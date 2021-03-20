@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90600729"
 ---
 # <a name="start-using-privileged-identity-management"></a>Börja använda Privileged Identity Management
@@ -86,7 +86,7 @@ För att göra det lättare att öppna Privileged Identity Management lägger du
 
     ![Azure AD Privileged Identity Management i alla tjänster](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Välj **snabb start**för Privileged Identity Management.
+1. Välj **snabb start** för Privileged Identity Management.
 
 1. Välj **Fäst bladet på instrument panelen** för att fästa Privileged Identity Management **snabb start** sidan på instrument panelen.
 

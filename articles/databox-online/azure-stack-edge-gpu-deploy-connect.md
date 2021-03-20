@@ -10,27 +10,27 @@ ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: f069f711ccf5672041ea6f3b15a52fa2b3ba2022
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900036"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-with-gpu"></a>Självstudie: Anslut till Azure Stack Edge Pro med GPU
 
 I den här självstudien beskrivs hur du kan ansluta till din Azure Stack Edge Pro-enhet med en onboard-GPU med hjälp av det lokala webb gränssnittet.
 
-Anslutnings processen kan ta cirka 5 minuter att slutföra.
+Den här anslutningsprocessen kan ta omkring 5 minuter att slutföra.
 
 I den här självstudien lär du dig:
 
 > [!div class="checklist"]
 >
-> * Krav
+> * Förutsättningar
 > * Ansluta till en fysisk enhet
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet med GPU måste du kontrol lera att:
 
@@ -41,7 +41,7 @@ Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet med GPU m�
 
 1. Konfigurera Ethernet-kortet på datorn för att ansluta till den Azure Stack Edge Pro-enheten med en statisk IP-adress för 192.168.100.5 och undernät 255.255.255.0.
 
-2. Anslut datorn till PORT 1 på enheten. Om du ansluter datorn till enheten direkt (utan någon växel) använder du en korskopplad kabel eller ett USB Ethernet-kort. Använd följande bild för att identifiera PORT 1 på enheten.
+2. Anslut datorn till PORT 1 på din enhet. Om du ansluter datorn till enheten direkt (utan någon switch) använder du en korskopplad kabel eller ett USB Ethernet-nätverkskort. Använd följande bild för att identifiera PORT 1 på enheten.
 
     ![Baksidan på en kabelansluten enhet](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
@@ -63,7 +63,7 @@ Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet med GPU m�
     ![Inloggnings sida för Azure Stack Edge Pro-enhet](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. Ändra enhetens administratörs lösen ord vid prompten.  
-    Det nya lösen ordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla tre av följande tecken: versaler, gemener, numeriska tecken och specialtecken.
+    Det nya lösenordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla tre av följande tecken: versaler, gemener, siffror och specialtecken.
 
 Du är nu på sidan **Översikt** på enheten. Nästa steg är att konfigurera nätverks inställningarna för enheten.
 
@@ -73,7 +73,7 @@ Du är nu på sidan **Översikt** på enheten. Nästa steg är att konfigurera n
 I den här självstudien lärde du dig att:
 
 > [!div class="checklist"]
-> * Krav
+> * Förutsättningar
 > * Ansluta till en fysisk enhet
 
 

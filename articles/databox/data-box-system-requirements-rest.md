@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/05/2020
 ms.author: alkohli
 ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744122"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob Storage-krav
@@ -28,7 +28,7 @@ Vi rekommenderar att du läser informationen noggrant innan du ansluter till Dat
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure File Storage                                   |    Molnbaserade SMB-filresurser stöds              |    Stöds inte      |
 |    Tjänst kryptering för vilande data                  |    256-bitars AES-kryptering                             |    256-bitars AES-kryptering |
-|    Storage Account-typ                                 |    Generell användnings-och Azure Blob Storage-konton    |    Allmän användning endast v1|
+|    Typ av lagringskonto                                 |    Generell användnings-och Azure Blob Storage-konton    |    Allmän användning endast v1|
 |    Blobnamn                                            |    1 024 tecken (2 048 byte)                     |    880 tecken (1 760 byte)|
 |    Maximal storlek för Block Blob                              |    4,75 TB (100 MB X 50 000 block)                   |    4,75 TB (100 MB x 50 000 block) för Azure Data Box v 3,0 och senare.|
 |    Maximal storlek för Page BLOB                               |    8 TB                                               |    1 TB                   |

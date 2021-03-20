@@ -4,10 +4,10 @@ description: Konfigurera vilka Azure Marketplace-avbildningar som kan användas 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86512443"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurera inställningarna för Azure Marketplace-avbildningar i Azure DevTest Labs
@@ -17,11 +17,11 @@ DevTest Labs har stöd för att skapa virtuella datorer baserat på Azure Market
 Följ dessa steg för att ange vilka Azure Marketplace-avbildningar som tillåts när du skapar en virtuell dator. 
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du ditt labb. 
 4. På Start sidan för labb sidan väljer du **konfiguration och principer**.
-5. På sidan **konfiguration och principer** för labb i de **virtuella dator baserna**väljer du **Marketplace-avbildningar**.
-6. Ange om du vill att alla kvalificerade Azure Marketplace-avbildningar ska vara tillgängliga för användning som bas för en ny virtuell dator. Om du väljer **Ja**tillåts alla Azure Marketplace-avbildningar som uppfyller alla följande kriterier i labbet:
+5. På sidan **konfiguration och principer** för labb i de **virtuella dator baserna** väljer du **Marketplace-avbildningar**.
+6. Ange om du vill att alla kvalificerade Azure Marketplace-avbildningar ska vara tillgängliga för användning som bas för en ny virtuell dator. Om du väljer **Ja** tillåts alla Azure Marketplace-avbildningar som uppfyller alla följande kriterier i labbet:
    
    * Avbildningen skapar en enskild virtuell dator **och**
    * Avbildningen använder Azure Resource Manager för att etablera virtuella datorer **och**

@@ -4,10 +4,10 @@ description: Service Fabric kluster som körs på Windows Server och Linux, vilk
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94684006"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Översikt över Service Fabric fristående kluster
@@ -54,7 +54,7 @@ Program krav ändras med tiden. Du kan behöva öka kluster resurserna för att 
 
 Mer information finns i [skala fristående kluster](service-fabric-cluster-scaling-standalone.md).
 
-## <a name="upgrading"></a>Fortsätter
+## <a name="upgrading"></a>Uppgradera
 
 Ett fristående kluster är en resurs som du helt äger. Du ansvarar för korrigering av underliggande operativ system och att initiera Fabric-uppgraderingar. Du kan ange att klustret ska ta emot automatiska körnings uppgraderingar, när Microsoft släpper en ny version eller väljer att välja en version som stöds för körning. Förutom Fabric-uppgraderingar kan du också korrigera operativ systemet och uppdatera kluster konfigurationen, till exempel certifikat eller program portar. 
 

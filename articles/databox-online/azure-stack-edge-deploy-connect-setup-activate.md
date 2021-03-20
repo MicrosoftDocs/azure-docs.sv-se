@@ -10,10 +10,10 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91743343"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Självstudie: ansluta, konfigurera och aktivera Azure Stack Edge Pro 
@@ -29,7 +29,7 @@ I den här guiden får du lära dig att:
 > * Ansluta till en fysisk enhet
 > * Konfigurera och aktivera den fysiska enheten
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet ser du till att:
 
@@ -40,7 +40,7 @@ Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet ser du til
 
 1. Konfigurera Ethernet-kortet på datorn för att ansluta till den Azure Stack Edge Pro-enheten med en statisk IP-adress för 192.168.100.5 och undernät 255.255.255.0.
 
-2. Anslut datorn till PORT 1 på enheten. Använd följande bild för att identifiera PORT 1 på enheten.
+2. Anslut datorn till PORT 1 på din enhet. Använd följande bild för att identifiera PORT 1 på enheten.
 
     ![Baksidan på en kabelansluten enhet](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
@@ -59,17 +59,17 @@ Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet ser du til
     ![Inloggnings sida för Azure Stack Edge Pro-enhet](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. Ändra enhetens administratörs lösen ord vid prompten.  
-    Det nya lösen ordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla tre av följande tecken: versaler, gemener, numeriska tecken och specialtecken.
+    Det nya lösenordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla tre av följande tecken: versaler, gemener, siffror och specialtecken.
 
 Du är nu på instrument panelen för din enhet.
 
 ## <a name="set-up-and-activate-the-physical-device"></a>Konfigurera och aktivera den fysiska enheten
  
-På instrument panelen visas de olika inställningar som krävs för att konfigurera och registrera den fysiska enheten med Azure Stack Edge-tjänsten. **Enhets namnet**, **nätverks inställningarna**, **webbproxyinställningarna**och **tids inställningarna** är valfria. De enda nödvändiga inställningarna är **moln inställningar**.
+På instrument panelen visas de olika inställningar som krävs för att konfigurera och registrera den fysiska enheten med Azure Stack Edge-tjänsten. **Enhets namnet**, **nätverks inställningarna**, **webbproxyinställningarna** och **tids inställningarna** är valfria. De enda nödvändiga inställningarna är **moln inställningar**.
    
 ![Sidan instrument panel för lokalt webb gränssnitt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
-1. I den vänstra rutan väljer du **enhets namn**och anger sedan ett eget namn för din enhet.  
+1. I den vänstra rutan väljer du **enhets namn** och anger sedan ett eget namn för din enhet.  
     Det egna namnet måste innehålla mellan 1 och 15 tecken och bestå av bokstäver, siffror och bindestreck.
 
     ![Sidan enhets namn för lokalt webb gränssnitt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-2.png)
@@ -88,7 +88,7 @@ På instrument panelen visas de olika inställningar som krävs för att konfigu
      >[!NOTE] 
      > Vi rekommenderar att du inte byter nätverksgränssnittets lokala IP-adress från statisk till DCHP om du inte har någon annan IP-adress för att ansluta till enheten. Om du använder ett nätverksgränssnitt och växlar till DHCP finns det inget sätt att fastställa DHCP-adressen. Om du vill byta till en DHCP-adress ska du vänta med ändringen tills enheten har registrerats i tjänsten. Du kan sedan Visa IP-adresserna för alla nätverkskort i **enhets egenskaperna** i Azure Portal för din tjänst.
 
-3. Valfritt I den vänstra rutan väljer du **Inställningar för webbproxy**och konfigurerar sedan webbproxyservern. Även om webbproxy-konfigurationen är valfri, kan du bara konfigurera den på den här sidan om du använder en webbproxy.
+3. Valfritt I den vänstra rutan väljer du **Inställningar för webbproxy** och konfigurerar sedan webbproxyservern. Även om webbproxy-konfigurationen är valfri, kan du bara konfigurera den på den här sidan om du använder en webbproxy.
    
    ![Sidan Web Proxy-inställningar för lokalt webb gränssnitt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
@@ -96,7 +96,7 @@ På instrument panelen visas de olika inställningar som krävs för att konfigu
    
    a. I rutan **webbproxy-URL** anger du webb adressen i följande format: `http://host-IP address or FQDN:Port number` . Du kan inte använda HTTPS-adresser.
 
-   b. Under **autentisering**väljer du **ingen** eller **NTLM**. Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge Pro-enhet rekommenderar vi att du ställer in webbproxy-autentisering på **ingen**. **NTLM** stöds inte.
+   b. Välj **Ingen** eller **NTLM** under **Autentisering**. Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge Pro-enhet rekommenderar vi att du ställer in webbproxy-autentisering på **ingen**. **NTLM** stöds inte.
 
    c. Om du använder autentisering anger du ett användar namn och lösen ord.
 
@@ -107,7 +107,7 @@ På instrument panelen visas de olika inställningar som krävs för att konfigu
    > Proxyservrar som försöker avlyssna och läsa all trafik (och sedan signera om allting med sin egen certifiering) är inte kompatibla eftersom proxyns certifikat inte är betrott.
    > Oftast fungerar transparenta proxyservrar bra med Azure Stack Edge Pro.
 
-4. Valfritt I det vänstra fönstret väljer du **tids inställningar**och konfigurerar sedan tids zonen och de primära och sekundära NTP-servrarna för enheten.  
+4. Valfritt I det vänstra fönstret väljer du **tids inställningar** och konfigurerar sedan tids zonen och de primära och sekundära NTP-servrarna för enheten.  
     NTP-servrar krävs eftersom din enhet måste synkronisera tid så att den kan autentiseras med dina moln tjänst leverantörer.
        
     Gör följande på sidan **tids inställningar** :
@@ -131,7 +131,7 @@ På instrument panelen visas de olika inställningar som krävs för att konfigu
 
     ![Sidan lagrings inställningar för lokalt webb gränssnitt](./media/azure-stack-edge-deploy-connect-setup-activate/storage-settings.png)
 
-6. I det vänstra fönstret väljer du **moln inställningar**och aktiverar sedan enheten med Azure Stack Edge-tjänsten i Azure Portal.
+6. I det vänstra fönstret väljer du **moln inställningar** och aktiverar sedan enheten med Azure Stack Edge-tjänsten i Azure Portal.
     
     1. I rutan **aktiverings nyckel** anger du aktiverings nyckeln som du fick i [Hämta aktiverings nyckeln](azure-stack-edge-deploy-prep.md#get-the-activation-key) för Azure Stack Edge Pro.
     2. Välj **Använd**.

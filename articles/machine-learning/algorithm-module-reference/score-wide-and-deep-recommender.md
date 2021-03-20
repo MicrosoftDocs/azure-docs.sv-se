@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
 ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905168"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Bedöma modulen Wide and Deep Recommender
@@ -60,7 +60,7 @@ När du förutsäger klassificeringarna beräknar modellen hur en viss användar
 
     Data uppsättningen för användar funktioner ska innehålla användar identifieraren i den första kolumnen. De återstående kolumnerna måste innehålla värden som karaktäriserar användarna, till exempel kön, inställningar, plats osv.
   
-    Funktioner för användare som har klassificerat objekt i träning-datauppsättningen ignoreras av **resultat bred och djup rekommendation**, eftersom de redan har lärts under utbildningen. Filtrera därför din data uppsättning i förväg för att endast ta med *kall start användare*eller användare som inte har klassificerat några objekt.
+    Funktioner för användare som har klassificerat objekt i träning-datauppsättningen ignoreras av **resultat bred och djup rekommendation**, eftersom de redan har lärts under utbildningen. Filtrera därför din data uppsättning i förväg för att endast ta med *kall start användare* eller användare som inte har klassificerat några objekt.
 
     > [!WARNING]
     > Om modellen har tränats utan att använda användar funktioner kan du inte införa användar funktioner under poängsättningen.
@@ -69,7 +69,7 @@ När du förutsäger klassificeringarna beräknar modellen hur en viss användar
 
     Data uppsättningen för objektet features måste innehålla en objekt identifierare i den första kolumnen. De återstående kolumnerna ska innehålla värden som karaktäriserar objekten.
 
-    Funktioner för beräknade objekt i träning-datauppsättningen ignoreras av **Poäng och djup rekommenderar** allt eftersom de redan har lärts under utbildningen. Därför bör du begränsa din bedömnings data uppsättning till *kall start objekt*eller objekt som inte har klassificerats av några användare.
+    Funktioner för beräknade objekt i träning-datauppsättningen ignoreras av **Poäng och djup rekommenderar** allt eftersom de redan har lärts under utbildningen. Därför bör du begränsa din bedömnings data uppsättning till *kall start objekt* eller objekt som inte har klassificerats av några användare.
 
     > [!WARNING]
     > Om modellen har tränats utan att använda objekt funktioner kan du inte införa objekt funktioner under poängsättningen.
@@ -95,8 +95,8 @@ För att rekommendera objekt för användare, ange en lista med användare och o
 
 3. **Rekommenderat objekt val**: Ange om du använder bedömnings modulen i produktion eller för modell utvärdering genom att välja något av följande värden:
 
-    - **Från beräknade objekt (för modell utvärdering)**: Välj det här alternativet om du utvecklar eller testar en modell. Med det här alternativet aktive ras **utvärderings läge**och modulen gör rekommendationer enbart från de objekt i data uppsättningen för indata som har klassificerats.
-    - **Från alla objekt**: Välj det här alternativet om du vill konfigurera ett experiment som ska användas i en webb tjänst eller produktion.  Det här alternativet aktiverar **produktions läge**och modulen gör rekommendationer från alla objekt som ses under utbildningen.
+    - **Från beräknade objekt (för modell utvärdering)**: Välj det här alternativet om du utvecklar eller testar en modell. Med det här alternativet aktive ras **utvärderings läge** och modulen gör rekommendationer enbart från de objekt i data uppsättningen för indata som har klassificerats.
+    - **Från alla objekt**: Välj det här alternativet om du vill konfigurera ett experiment som ska användas i en webb tjänst eller produktion.  Det här alternativet aktiverar **produktions läge** och modulen gör rekommendationer från alla objekt som ses under utbildningen.
     - **Från oklassificerade objekt (för att föreslå nya objekt till användare)**: Välj det här alternativet om du vill att modulen bara ska göra rekommendationer från de objekt i den utbildnings data uppsättning som inte har klassificerats. 
 4. Lägg till den data uppsättning som du vill göra förutsägelser för och Anslut den till **data uppsättningen för att få poäng**.
 
@@ -112,7 +112,7 @@ För att rekommendera objekt för användare, ange en lista med användare och o
 
         Data uppsättningen kan innehålla en tredje kolumn med klassificeringar av användar objekt, men den här kolumnen ignoreras.
 
-5. (Valfritt). Om du har en data uppsättning med **användar funktioner**ansluter du den till **användar funktioner**.
+5. (Valfritt). Om du har en data uppsättning med **användar funktioner** ansluter du den till **användar funktioner**.
 
     Den första kolumnen i data uppsättningen för användar funktioner ska innehålla användar-ID. De återstående kolumnerna måste innehålla värden som karaktäriserar användaren, t. ex. kön, inställningar, plats osv.
 
@@ -121,11 +121,11 @@ För att rekommendera objekt för användare, ange en lista med användare och o
     > [!WARNING]
     >  Om modellen har tränats utan att använda användar funktioner kan du inte använda tillämpa funktioner under poängsättningen.
 
-6. Valfritt Om du har en data uppsättning med **objekt funktioner**kan du ansluta den till **objekt funktioner**.
+6. Valfritt Om du har en data uppsättning med **objekt funktioner** kan du ansluta den till **objekt funktioner**.
 
     Den första kolumnen i data uppsättningen för objekt funktioner måste innehålla objekt-ID. De återstående kolumnerna ska innehålla värden som karaktäriserar objekten.
 
-    Funktioner i betygsatta objekt ignoreras av **poängen bred och djup rekommenderar**, eftersom dessa funktioner redan har lärts under utbildningen. Därför kan du begränsa din bedömnings data uppsättning till *kalla start objekt*eller objekt som inte har klassificerats av några användare.
+    Funktioner i betygsatta objekt ignoreras av **poängen bred och djup rekommenderar**, eftersom dessa funktioner redan har lärts under utbildningen. Därför kan du begränsa din bedömnings data uppsättning till *kalla start objekt* eller objekt som inte har klassificerats av några användare.
 
     > [!WARNING]
     >  Om modellen har tränats utan att använda objekt funktioner ska du inte använda objekt funktioner när du anger poäng.  

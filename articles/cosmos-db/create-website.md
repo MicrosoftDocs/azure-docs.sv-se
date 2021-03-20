@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333587"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Distribuera Azure Cosmos DB och Azure App Service med en webbapp från GitHub med en Azure Resource Manager mall
@@ -29,7 +29,7 @@ Resource Manager-mallar är relativt flexibla och gör det möjligt att skapa ko
 
 Den resulterande distributionen har ett fullständigt fungerande webb program som kan ansluta till Azure Cosmos DB utan att behöva klippa ut och klistra in Azure Cosmos DBs slut punkts-URL eller autentiseringsinställningar från Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!TIP]
 > Även om den här självstudien inte antar tidigare erfarenhet med Azure Resource Manager mallar eller JSON, bör du ändra de refererade mallarna eller distributions alternativen och sedan krävs kunskap om var och en av dessa områden.
@@ -78,7 +78,7 @@ När mallen har distribuerat resurserna kan du nu se var och en av dem i din res
 
 Gå sedan till Azure App Service i resurs gruppen. Klicka på fliken konfiguration om du vill visa program inställningarna för App Service. Program inställningarna innehåller det Cosmos DB konto och primär nyckel värden som krävs för att ansluta till Cosmos DB samt de databas-och behållar namn som skickades in från mallen distribution.
 
-:::image type="content" source="./media/create-website/application-settings.png" alt-text="Program inställningar":::
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Programinställningar":::
 
 ### <a name="view-web-app-in-deployment-center"></a>Visa webbapp i distributions Center
 
@@ -104,7 +104,7 @@ Först måste programmet begära Cosmos DB slut punkt och nyckel i `Startup` -kl
 
 ### <a name="using-special-azure-resource-management-functions"></a>Använda särskilda funktioner för Azure-resurs hantering
 
-För att dessa värden ska vara tillgängliga för programmet när de distribueras kan Azure Resource Manager-mallen fråga efter dessa värden från Cosmos DB-kontot med hjälp av särskilda funktioner för Azure-resurs hantering, inklusive [referens](../azure-resource-manager/templates/template-functions-resource.md#reference) -och [listnycklar](../azure-resource-manager/templates/template-functions-resource.md#listkeys) som hämtar värdena från Cosmos DB-kontot och infogar dem i program inställnings värden med nyckel namn som matchar det som används i programmet ovan i formatet {section: Key}. Exempelvis `CosmosDb:Account`.
+För att dessa värden ska vara tillgängliga för programmet när de distribueras kan Azure Resource Manager-mallen fråga efter dessa värden från Cosmos DB-kontot med hjälp av särskilda funktioner för Azure-resurs hantering, inklusive [referens](../azure-resource-manager/templates/template-functions-resource.md#reference) -och [listnycklar](../azure-resource-manager/templates/template-functions-resource.md#listkeys) som hämtar värdena från Cosmos DB-kontot och infogar dem i program inställnings värden med nyckel namn som matchar det som används i programmet ovan i formatet {section: Key}. Till exempel `CosmosDb:Account`.
 
 :::image type="content" source="./media/create-website/template-keys.png" alt-text="Mallens nycklar":::
 

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91756831"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Snabb start: etablera och aktivera en hanterad HSM med Azure CLI
@@ -22,7 +22,7 @@ Azure Key Vault hanterad HSM är en fullständigt hanterad moln tjänst med hög
 
 I den här snabb starten skapar du och aktiverar en hanterad HSM med Azure CLI. När du har gjort det kommer du att lagra en hemlighet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen i den här artikeln, måste du ha följande objekt:
 
@@ -63,7 +63,7 @@ Du måste ange följande indata för att skapa en hanterad HSM-resurs:
 - Azure-plats.
 - En lista med inledande administratörer.
 
-Exemplet nedan skapar en HSM med namnet **ContosoMHSM**i resurs gruppen  **ContosoResourceGroup**, som finns på platsen **östra USA 2** , med **den aktuella inloggade användaren** som administratör.
+Exemplet nedan skapar en HSM med namnet **ContosoMHSM** i resurs gruppen  **ContosoResourceGroup**, som finns på platsen **östra USA 2** , med **den aktuella inloggade användaren** som administratör.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)

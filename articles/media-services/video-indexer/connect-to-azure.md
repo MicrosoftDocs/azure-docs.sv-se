@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 35d01fd60d0549a528a45013add48bd203b86d6e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727268"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654687"
 ---
 # <a name="create-a-video-indexer-account"></a>Skapa ett Video Indexer konto
 
@@ -203,7 +203,7 @@ Att automatisera skapandet av kontot är en process i två steg:
 
 -   En Azure-prenumeration i [Azure Government](../../azure-government/index.yml).
 - Ett Azure AD-konto i Azure Government.
-- Alla före krav på behörigheter och resurser enligt beskrivningen ovan i [krav för att ansluta till Azure](#prerequisites-for-connecting-to-azure).
+- Alla före krav på behörigheter och resurser enligt beskrivningen ovan i [krav för att ansluta till Azure](#prerequisites-for-connecting-to-azure). Se till att kontrol lera om det finns [ytterligare krav för automatisk flöde](#additional-prerequisites-for-automatic-flow) och [ytterligare krav för manuellt flöde](#additional-prerequisites-for-manual-flow).
 
 ### <a name="create-new-account-via-the-azure-government-portal"></a>Skapa ett nytt konto via Azure Government portalen
 

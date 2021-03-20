@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
 ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898403"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Bedöma Vowpal Wabbit-modell
@@ -46,7 +46,7 @@ Den här modulen innehåller den senaste versionen av Vowpal Wabbit Framework, v
 
    Vid hantering av text data kräver Vowpal Wabbit inte etiketter, och returnerar bara poängen för varje datarad.  
 
-8. Välj alternativet, **Lägg till en extra kolumn som innehåller rå Scores**om du vill skriva ut rå data tillsammans med resultaten.  
+8. Välj alternativet, **Lägg till en extra kolumn som innehåller rå Scores** om du vill skriva ut rå data tillsammans med resultaten.  
 
 9. Skicka pipelinen.
 

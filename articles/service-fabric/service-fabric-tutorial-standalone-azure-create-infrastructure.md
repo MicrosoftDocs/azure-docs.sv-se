@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90561848"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Självstudie: skapa en Azure VM-infrastruktur som värd för ett Service Fabric kluster
@@ -25,7 +25,7 @@ I del ett i den här serien lärde du dig att:
 > * Logga in på någon av instanserna
 > * Förbereda instansen för Service Fabric
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver en Azure-prenumeration för att kunna utföra stegen i den här självstudiekursen.  Om du inte redan har ett konto går du till [Azure Portal](https://portal.azure.com) för att skapa ett.
 
@@ -41,7 +41,7 @@ Du behöver en Azure-prenumeration för att kunna utföra stegen i den här sjä
 
 4. Ändra **avbildnings** typen till **Windows Server 2016 Data Center**. 
  
-5. Ändra instans **storleken** till **standard DS2 v2**. Ange ett administratörs **användar namn** och **lösen ord**och notera vad de är.
+5. Ändra instans **storleken** till **standard DS2 v2**. Ange ett administratörs **användar namn** och **lösen ord** och notera vad de är.
 
 6. Lämna **reglerna för inkommande port** blockerade för tillfället. de kommer att konfigureras i nästa avsnitt.
 
@@ -95,7 +95,7 @@ Starta ytterligare två **Virtual Machines**, se till att behålla samma instäl
 
 7. Upprepa den här processen för andra instanser och notera de privata IP-adresserna.
 
-## <a name="verify-your-settings"></a>Verifiera dina inställningar
+## <a name="verify-your-settings"></a>Kontrollera inställningarna
 
 1. Om du vill verifiera den grundläggande anslutningen ansluter du till en av de virtuella datorerna med hjälp av RDP.
 

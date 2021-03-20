@@ -4,10 +4,10 @@ description: Lär dig hur du ansluter till din virtuella Linux-dator i ett labb 
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: 52fe245f85034a4c6300615ad8fb6040c1168298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86532187"
 ---
 # <a name="connect-to-a-linux-vm-in-your-lab-azure-devtest-labs"></a>Ansluta till en virtuell Linux-dator i labbet (Azure DevTest Labs)
@@ -20,13 +20,13 @@ Den här artikeln visar hur du ansluter till en virtuell Linux-dator i labbet.
     :::image type="content" source="./media/connect-linux-virtual-machine/search-select.png" alt-text="Sök efter och välj DevTest Labs":::    
 1. I listan med labb väljer du ditt **labb**.
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="Sök efter och välj DevTest Labs":::            
+    :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="Välj ditt labb":::            
 1. På Start sidan för ditt labb väljer du din virtuella Linux-dator i listan **mina virtuella datorer** . 
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/select-linux-vm.png" alt-text="Sök efter och välj DevTest Labs":::        
+    :::image type="content" source="./media/connect-linux-virtual-machine/select-linux-vm.png" alt-text="Välj din virtuella Linux-dator":::        
 5. På sidan **Översikt** kan du se det fullständigt kvalificerade domän namnet (FQDN) eller IP-adressen för den virtuella datorn. Du kan också se porten som visas i följande bild.
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/vm-overview.png" alt-text="Sök efter och välj DevTest Labs":::    
+    :::image type="content" source="./media/connect-linux-virtual-machine/vm-overview.png" alt-text="Fullständigt kvalificerat domän namn för den virtuella datorn":::    
 
     Observera att knappen **Anslut** är nedtonad även om den virtuella datorn har startats. Detta är avsiktligt.
 6.  Använd SSH för att ansluta till din virtuella Linux-dator. Följande exempel ansluter till den virtuella datorn med FQDN `mydtl07172452621450000.eastus.cloudapp.azure.com` med användar namnet `vmuser` och porten `51637` . Ange lösen ordet för användaren för att ansluta till den virtuella datorn. 

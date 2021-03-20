@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359823"
 ---
 # <a name="deploy-a-configuration-server"></a>Distribuera en konfigurationsserver
@@ -26,7 +26,7 @@ Du distribuerar en lokal konfigurations server när du använder [Azure Site Rec
 
 Konfigurations servern måste konfigureras som en virtuell VMware-dator med hög tillgänglighet och vissa minimi krav för maskin vara och storlek. För bekväm och enkel distribution tillhandahåller Site Recovery en hämtnings bar mall för öppen Virtualization-program (ägg) för att konfigurera konfigurations servern som uppfyller alla krav som anges här.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 De minsta maskin varu kraven för en konfigurations Server sammanfattas i följande avsnitt.
 
@@ -42,7 +42,7 @@ Du måste ha en användare med någon av följande behörigheter i Azure Active 
     - Verifiera att rollen programutvecklare är tilldelad till användaren. Om inte, använder du en användare med den här behörigheten eller kontaktar en [administratör för att aktivera behörigheten](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Om rollen programutvecklare inte kan tilldelas kontrollerar du att flaggan **användare kan registrera program** är inställd på **Sant** för att användaren ska kunna skapa en identitet. Så här aktiverar du följande behörigheter:
-    - Logga in på Azure Portal.
+    - Logga in på Azure-portalen.
     - Gå till **Azure Active Directory**  >  **användar inställningar**.
     - Under **Appregistreringar** **kan användare registrera program**, välja **Ja**.
 
@@ -78,8 +78,8 @@ Du måste ha en användare med någon av följande behörigheter i Azure Active 
 7. Acceptera standardinställningarna på resten av sidorna i guiden.
 8. I **Klart att slutföras**:
 
-    * Om du vill konfigurera den virtuella datorn med standardinställningarna väljer du **ström när distributionen**är  >  **klar**.
-    * Om du vill lägga till ytterligare ett nätverks gränssnitt avmarkerar du **Energis par efter distributionen**och väljer sedan **Slutför**. Konfigurationsservermallen distribueras som standard med ett enda nätverkskort. Du kan lägga till ytterligare nätverkskort efter distributionen.
+    * Om du vill konfigurera den virtuella datorn med standardinställningarna väljer du **ström när distributionen** är  >  **klar**.
+    * Om du vill lägga till ytterligare ett nätverks gränssnitt avmarkerar du **Energis par efter distributionen** och väljer sedan **Slutför**. Konfigurationsservermallen distribueras som standard med ett enda nätverkskort. Du kan lägga till ytterligare nätverkskort efter distributionen.
 
 > [!IMPORTANT]
 > Ändra inte resursfiler, till exempel minne, kärnor och processor begränsning, eller ändra eller ta bort installerade tjänster eller filer på konfigurations servern efter distributionen. Dessa typer av ändringar påverkar registreringen av konfigurations servern med Azure-tjänster och konfigurations serverns prestanda.
@@ -123,14 +123,14 @@ Om du vill lägga till ett extra nätverkskort i konfigurations servern lägger 
 
     |Scenario   |Steg att följa  |
     |---------|---------|
-    |Kan jag hämta och installera MySQL manuellt?     |  Ja. Hämta MySQL-programmet, placera det i mappen **C:\Temp\ASRSetup**och installera manuellt. När du har accepterat villkoren och valt **Hämta och installera**är portalen *redan installerad*. Du kan fortsätta till nästa steg.       |
-    |Kan jag undvika att hämta MySQL online?     |   Ja. Placera ditt MySQL installations program i mappen **C:\Temp\ASRSetup**. Godkänn villkoren, Välj **Ladda ned och installera**och portalen använder installations programmet som du har lagt till för att installera programmet. När installationen är klar fortsätter du till nästa steg.    |
+    |Kan jag hämta och installera MySQL manuellt?     |  Ja. Hämta MySQL-programmet, placera det i mappen **C:\Temp\ASRSetup** och installera manuellt. När du har accepterat villkoren och valt **Hämta och installera** är portalen *redan installerad*. Du kan fortsätta till nästa steg.       |
+    |Kan jag undvika att hämta MySQL online?     |   Ja. Placera ditt MySQL installations program i mappen **C:\Temp\ASRSetup**. Godkänn villkoren, Välj **Ladda ned och installera** och portalen använder installations programmet som du har lagt till för att installera programmet. När installationen är klar fortsätter du till nästa steg.    |
     |Jag vill hämta och installera MySQL via Azure Site Recovery.    |  Godkänn licens avtalet och välj **Ladda ned och installera**. När installationen är klar fortsätter du till nästa steg.       |
 
 5. Innan du fortsätter måste du kontrol lera **konfigurationen av enheten**.
-6. På **konfigurera vCenter Server/vSphere ESXi-Server**anger du FQDN eller IP-adressen för vCenter-servern eller vSphere-värden, där de virtuella datorer som du vill replikera finns. Ange porten som servern lyssnar på. Ange ett eget namn som ska användas för VMware-servern i valvet.
+6. På **konfigurera vCenter Server/vSphere ESXi-Server** anger du FQDN eller IP-adressen för vCenter-servern eller vSphere-värden, där de virtuella datorer som du vill replikera finns. Ange porten som servern lyssnar på. Ange ett eget namn som ska användas för VMware-servern i valvet.
 7. Ange de autentiseringsuppgifter som ska användas av konfigurationsservern för att ansluta till VMware-servern. Site Recovery använder dessa autentiseringsuppgifter för att automatiskt identifiera virtuella VMware-datorer som är tillgängliga för replikering. Välj **Lägg till**  >  **Fortsätt**. De autentiseringsuppgifter som anges här sparas lokalt.
-8. På **Konfigurera autentiseringsuppgifter för virtuell dator**anger du användar namn och lösen ord för virtuella datorer för att automatiskt installera mobilitets tjänsten under replikeringen. För **Windows** -datorer måste kontot ha lokal administratörs behörighet på de datorer som du vill replikera. För **Linux**anger du information om rot kontot.
+8. På **Konfigurera autentiseringsuppgifter för virtuell dator** anger du användar namn och lösen ord för virtuella datorer för att automatiskt installera mobilitets tjänsten under replikeringen. För **Windows** -datorer måste kontot ha lokal administratörs behörighet på de datorer som du vill replikera. För **Linux** anger du information om rot kontot.
 9. Välj **Slutför konfigurationen** för att slutföra registreringen.
 10. När registreringen är klar öppnar du Azure Portal och kontrollerar att konfigurations servern och VMware-servern visas på **Recovery Services valv**  >  **Hantera**  >  **Site Recovery infrastruktur**  >  **konfigurations servrar**.
 
@@ -175,7 +175,7 @@ Se vår [fel söknings artikel](vmware-azure-troubleshoot-configuration-server.m
     Nej. Ändra inte lösen frasen för konfigurations servern. En ändring i lösen frasen avbryter replikeringen av skyddade datorer och leder till ett kritiskt hälso tillstånd.
 * Var kan jag hämta valv registrerings nycklar?
 
-    I **Recovery Services valv**väljer du **Hantera**  >  **Site Recovery infrastruktur**  >  **konfigurations servrar**. I **servrar**väljer du **Ladda ned registrerings nyckel** för att ladda ned valv filen med autentiseringsuppgifter.
+    I **Recovery Services valv** väljer du **Hantera**  >  **Site Recovery infrastruktur**  >  **konfigurations servrar**. I **servrar** väljer du **Ladda ned registrerings nyckel** för att ladda ned valv filen med autentiseringsuppgifter.
 * Kan jag klona en befintlig konfigurations Server och använda den för att dirigera om replikeringen?
 
     Nej. Användning av en Server komponent för klonad konfiguration stöds inte. Att klona en skalbar processerver är också ett scenario som inte stöds. Kloning av Site Recovery-komponenter påverkar pågående replikeringar.

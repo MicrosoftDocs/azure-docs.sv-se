@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898487"
 ---
 # <a name="partition-and-sample-module"></a>Partition och exempel modul
@@ -79,13 +79,13 @@ Det här alternativet stöder enkel slumpmässig provtagning eller Stratified sl
 
    Raderna i data uppsättningen för indata är blandade och placeras selektivt i den utgående data uppsättningen enligt det angivna förhållandet.
 
-1. **Slumpmässigt utsäde för sampling: om**du vill kan du ange ett heltal som ska användas som ett Seed-värde.
+1. **Slumpmässigt utsäde för sampling: om** du vill kan du ange ett heltal som ska användas som ett Seed-värde.
 
    Det här alternativet är viktigt om du vill att raderna ska delas upp på samma sätt varje gång. Standardvärdet är **0**, vilket innebär att ett startutsäde genereras baserat på system klockan. Det här värdet kan leda till något annorlunda resultat varje gången du kör pipelinen.
 
 1. **Stratified Split för sampling**: Välj det här alternativet om det är viktigt att raderna i data uppsättningen delas jämnt av en nyckel kolumn före sampling.
 
-   För **Stratification nyckel kolumn för sampling**väljer du en enda *Strata-kolumn* som ska användas vid division av data uppsättningen. Raderna i data uppsättningen delas sedan upp på följande sätt:
+   För **Stratification nyckel kolumn för sampling** väljer du en enda *Strata-kolumn* som ska användas vid division av data uppsättningen. Raderna i data uppsättningen delas sedan upp på följande sätt:
 
    1. Alla ingående rader grupperas (Stratified) med värdena i den angivna Strata-kolumnen.
 
@@ -104,7 +104,7 @@ Använd det här alternativet om du vill dela upp data uppsättningen i del män
 
 1. Lägg till **partition och exempel** modul i din pipeline och Anslut data uppsättningen.
 
-1. För **partition eller exempel läge**väljer **du tilldela till vikning**.
+1. För **partition eller exempel läge** väljer **du tilldela till vikning**.
 
 1. **Använd ersättnings i partitionering**: Välj det här alternativet om du vill att den exempel rad som ska läggas till i poolen med rader för eventuell åter användning. Därför kan samma rad tilldelas till flera vikningar.
 
@@ -126,9 +126,9 @@ Använd det här alternativet om du vill dela upp data uppsättningen i del män
 
      Summan av alla partition storlekar måste vara upp till exakt 1.
 
-     Om du anger siffror som lägger till upp till *mindre än 1*, skapas en extra partition som innehåller de återstående raderna. Om du till exempel anger värdena **2** och **.3**skapas en tredje partition som innehåller de återstående 50 procenten av alla rader.
+     Om du anger siffror som lägger till upp till *mindre än 1*, skapas en extra partition som innehåller de återstående raderna. Om du till exempel anger värdena **2** och **.3** skapas en tredje partition som innehåller de återstående 50 procenten av alla rader.
      
-     Om du anger siffror som lägger till upp till *fler än 1*uppstår ett fel när du kör pipelinen.
+     Om du anger siffror som lägger till upp till *fler än 1* uppstår ett fel när du kör pipelinen.
 
 1. **Stratified Split**: Välj det här alternativet om du vill att raderna ska Stratified vid delning, och sedan välja _kolumnen Strata_.
 
@@ -154,7 +154,7 @@ Använd det här alternativet när du har delat upp en data uppsättning i flera
 
 1. Om du arbetar med flera partitioner måste du lägga till fler instanser av **partition och exempel** -modulen för att hantera varje partition.
 
-   Till exempel är **partition och exempel** modul på den andra raden inställd på **vikning**och modulen på den tredje raden är inställd på att **välja vikning**.   
+   Till exempel är **partition och exempel** modul på den andra raden inställd på **vikning** och modulen på den tredje raden är inställd på att **välja vikning**.   
 
    ![Partition och exempel](./media/module/partition-and-sample.png)
 

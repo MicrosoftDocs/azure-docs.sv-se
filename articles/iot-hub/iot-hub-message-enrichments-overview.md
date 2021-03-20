@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92541527"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Meddelande anrikning för IoT Hub från enhet till molnet
@@ -35,9 +35,9 @@ En meddelande anrikning har tre viktiga element:
 
 * En statisk sträng. Dynamiska värden som villkor, logik, åtgärder och funktioner är inte tillåtna. Om du t. ex. utvecklar ett SaaS-program som används av flera kunder, kan du tilldela en identifierare till varje kund och göra den identifieraren tillgänglig i programmet. När programmet körs stämplar IoT Hub enheten telemetri-meddelanden med kundens identifierare, vilket gör det möjligt att bearbeta meddelandena på olika sätt för varje kund.
 
-* Namnet på IoT-hubben som skickar meddelandet. Det här värdet är *$iothubname* .
+* Namnet på IoT-hubben som skickar meddelandet. Det här värdet är *$iothubname*.
 
-* Information från enheten, till exempel dess sökväg. Exempel är *$Twin. taggar. Field* och *$Twin. Tags. latitud* .
+* Information från enheten, till exempel dess sökväg. Exempel är *$Twin. taggar. Field* och *$Twin. Tags. latitud*.
 
    > [!NOTE]
    > För närvarande är det bara $iothubname, $twin. taggar, $twin. Properties. Reporting, och $twin. Properties. rapporterade variabler som stöds för meddelande anrikning.
@@ -62,7 +62,7 @@ Anrikninger kan konfigureras med hjälp av följande metoder:
 
 | **Metod** | **Kommando** |
 | ----- | -----| 
-| Portalen | [Azure-portalen](https://portal.azure.com) | Se [självstudien om meddelande vägledning](tutorial-message-enrichments.md) | 
+| Portal | [Azure-portalen](https://portal.azure.com) | Se [självstudien om meddelande vägledning](tutorial-message-enrichments.md) | 
 | Azure CLI   | [AZ IoT Hub-meddelande – anrikning](/cli/azure/iot/hub/message-enrichment) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
@@ -84,11 +84,11 @@ Information om hur du provar meddelanden finns i [själv studie kursen om meddel
 
 * Det kan ta upp till fem minuter innan uppdateringar av enheten visas i motsvarande anriknings värde.
 
-* Den totala meddelande storleken, inklusive berikarna, får inte överstiga 256 KB. Om en meddelande storlek överskrider 256 KB ignoreras meddelandet av IoT Hub. Du kan använda [IoT Hub mått](monitor-iot-hub-reference.md#metrics) för att identifiera och felsöka fel när meddelanden släpps. Du kan till exempel övervaka telemetri- *meddelanden som inte är kompatibla* ( *D2C. telemetri. utgående. ogiltigt* ) i måtten för [routning](monitor-iot-hub-reference.md#routing-metrics). Mer information finns i [övervaka IoT Hub](monitor-iot-hub.md).
+* Den totala meddelande storleken, inklusive berikarna, får inte överstiga 256 KB. Om en meddelande storlek överskrider 256 KB ignoreras meddelandet av IoT Hub. Du kan använda [IoT Hub mått](monitor-iot-hub-reference.md#metrics) för att identifiera och felsöka fel när meddelanden släpps. Du kan till exempel övervaka telemetri- *meddelanden som inte är kompatibla* (*D2C. telemetri. utgående. ogiltigt*) i måtten för [routning](monitor-iot-hub-reference.md#routing-metrics). Mer information finns i [övervaka IoT Hub](monitor-iot-hub.md).
 
 * Meddelande anrikninger gäller inte för digitala dubbla ändrings händelser.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Meddelande anrikninger är tillgängliga utan extra kostnad. För närvarande debiteras du när du skickar ett meddelande till en IoT Hub. Du debiteras bara en gång för det meddelandet, även om meddelandet går till flera slut punkter.
 

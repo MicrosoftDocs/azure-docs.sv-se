@@ -4,10 +4,10 @@ description: Aviseringar för tjänst hälsa gör att du kan visa meddelanden om
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86529020"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Använd Azure Portal för att visa meddelanden om tjänst hälsa
@@ -37,18 +37,18 @@ subStatus | Vanligt vis är HTTP-statuskoden för motsvarande REST-anrop, men ka
 eventTimestamp | Tidsstämpel när händelsen genererades av Azure-tjänsten som bearbetar begäran som motsvarar händelsen.
 submissionTimestamp | Tidsstämpel när händelsen blev tillgänglig för frågor.
 subscriptionId | Azure-prenumerationen som den här händelsen loggades i.
-status | Sträng som beskriver status för åtgärden. Några vanliga värden är: **startade**, **pågår**, **lyckades**, **misslyckades**, **aktiva**och **löst**.
+status | Sträng som beskriver status för åtgärden. Några vanliga värden är: **startade**, **pågår**, **lyckades**, **misslyckades**, **aktiva** och **löst**.
 operationName | Åtgärdens namn.
 category | Den här egenskapen är alltid **ServiceHealth**.
 resourceId | Resurs-ID för den påverkade resursen.
 Egenskaper. title | Den lokaliserade rubriken för den här kommunikationen. Engelska är standard.
 Egenskaper. kommunikation | Lokaliserad information om kommunikationen med HTML-kod. Engelska är standard.
-Egenskaper. incidentType | Ett av följande värden: **åtgärd krävs**, **information**, **incident**, **Underhåll**eller **säkerhet**.
+Egenskaper. incidentType | Ett av följande värden: **åtgärd krävs**, **information**, **incident**, **Underhåll** eller **säkerhet**.
 Egenskaper. trackingId | Incidenten som den här händelsen är associerad med. Använd detta för att korrelera händelser som rör en incident.
 Egenskaper. impactedServices | En Escaped JSON-blob som beskriver de tjänster och regioner som påverkas av incidenten. Egenskapen innehåller en lista över tjänster, som var och en har en **ServiceName**, och en lista över påverkade regioner, som var och en har en **RegionName**.
 Egenskaper. defaultLanguageTitle | Kommunikationen på engelska.
 Egenskaper. defaultLanguageContent | Kommunikationen på engelska antingen som HTML-kod eller oformaterad text.
-Egenskaper. Stage | Möjliga värden för **incident**och **säkerhet** är **aktiva,** **löst** eller **RCA**. För **åtgärd krävs** eller **information** är det enda värdet **aktivt.** För **Underhåll** är de: aktiva, **planerade**, **InProgress** **inaktuella**, **avbrutna**, **omplanerade**, **stängda**eller **fullständiga**.
+Egenskaper. Stage | Möjliga värden för **incident** och **säkerhet** är **aktiva,** **löst** eller **RCA**. För **åtgärd krävs** eller **information** är det enda värdet **aktivt.** För **Underhåll** är de: aktiva, **planerade**,  **inaktuella**, **avbrutna**, **omplanerade**, **stängda** eller **fullständiga**.
 Egenskaper. communicationId | Den kommunikation som den här händelsen är associerad med.
 
 ### <a name="details-on-service-health-level-information"></a>Information om information om tjänste hälso nivå

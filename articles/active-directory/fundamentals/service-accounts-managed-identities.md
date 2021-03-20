@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032368"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587839"
 ---
 # <a name="securing-managed-identities"></a>Skydda hanterade identiteter
 
@@ -50,11 +50,11 @@ Azure har ett kontroll plan och ett data plan. I kontroll planet skapar du resur
 
 När mål systemet accepterar token för autentisering, kan det stödja olika mekanismer för auktorisering för kontroll planet och data planet.
 
-Alla kontroll Plans åtgärder i Azure hanteras av [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) och använder [Azure-rollbaserad Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview). I data planet har varje mål system en egen mekanism för auktorisering. Azure Storage stöder Azure RBAC på data planet. Till exempel kan program som använder Azure App-tjänster läsa data från Azure Storage och program som använder Azure Kubernetes-tjänsten kan läsa hemligheter lagrade i Azure Key Vault.
+Alla kontroll Plans åtgärder i Azure hanteras av [Azure Resource Manager](../../azure-resource-manager/management/overview.md) och använder [Azure-rollbaserad Access Control](../../role-based-access-control/overview.md). I data planet har varje mål system en egen mekanism för auktorisering. Azure Storage stöder Azure RBAC på data planet. Till exempel kan program som använder Azure App-tjänster läsa data från Azure Storage och program som använder Azure Kubernetes-tjänsten kan läsa hemligheter lagrade i Azure Key Vault.
 
-Mer information om kontroll och data plan finns i [kontroll plan och data plan åtgärder-Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane).
+Mer information om kontroll och data plan finns i [kontroll plan och data plan åtgärder-Azure Resource Manager](../../azure-resource-manager/management/control-plane-and-data-plane.md).
 
-Alla Azure-tjänster kommer slutligen att ha stöd för hanterade identiteter. Mer information finns i [tjänster som stöder hanterade identiteter för Azure-resurser](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Alla Azure-tjänster kommer slutligen att ha stöd för hanterade identiteter. Mer information finns i [tjänster som stöder hanterade identiteter för Azure-resurser](../managed-identities-azure-resources/services-support-managed-identities.md).
 
 ##  
 
@@ -116,7 +116,7 @@ Du kan göra detta genom att räkna upp medlemmarna i dina privilegierade gruppe
 
    `Get-AzureADGroupMember -ObjectId <String> [-All <Boolean>] [-Top <Int32>] [<CommonParameters>]`
 
-* [Se till att du vet vilka resurser som den hanterade identiteten har åtkomst till](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell).
+* [Se till att du vet vilka resurser som den hanterade identiteten har åtkomst till](../../role-based-access-control/role-assignments-list-powershell.md).
 
 ## <a name="move-to-managed-identities"></a>Flytta till hanterade identiteter
 
@@ -126,11 +126,11 @@ Om du använder ett huvud namn för tjänsten eller ett Azure AD-användarkonto 
 
 **Information om hur du skapar hanterade identiteter finns i:** 
 
-[Skapa en användare som tilldelats en hanterad identitet](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). 
+[Skapa en användare som tilldelats en hanterad identitet](../managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
-[Aktivera en systemtilldelad hanterad identitet när en resurs skapas](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Aktivera en systemtilldelad hanterad identitet när en resurs skapas](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-[Aktivera systemtilldelad hanterad identitet för en befintlig resurs](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Aktivera systemtilldelad hanterad identitet för en befintlig resurs](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Mer information om tjänst konton finns i:**
 
@@ -146,4 +146,3 @@ Om du använder ett huvud namn för tjänsten eller ett Azure AD-användarkonto 
 
  
 
- 

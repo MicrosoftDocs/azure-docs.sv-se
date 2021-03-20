@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/18/2020
 ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898622"
 ---
 # <a name="create-python-model-module"></a>Skapa python modell-modul
@@ -42,7 +42,7 @@ Den här artikeln visar hur du använder **create python-modellen** med en enkel
 
 ![Diagram över skapa python-modell](./media/module/create-python-model.png)
 
-1. Välj **skapa python-modell**och redigera skriptet för att implementera modellerings-eller data hanterings processen. Du kan basera modellen på valfri elev som ingår i ett python-paket i Azure Machine Learnings miljön.
+1. Välj **skapa python-modell** och redigera skriptet för att implementera modellerings-eller data hanterings processen. Du kan basera modellen på valfri elev som ingår i ett python-paket i Azure Machine Learnings miljön.
 
 > [!NOTE]
 > Betala extra uppmärksamhet på kommentarerna i exempel koden för skriptet och kontrol lera att skriptet följer kraven, inklusive klass namnet, metoderna och Metodsignaturen. Överträdelsen leder till undantag. 

@@ -4,10 +4,10 @@ description: Lär dig hur du kör ett Quick Diagnostic-kommando för att identif
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88245391"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Kontrol lera hälso tillståndet för ett Azure Container Registry
@@ -19,7 +19,7 @@ Som ett första diagnostiskt steg kör du kommandot [AZ ACR check-Health][az-acr
 Ytterligare fel söknings vägledning för registret finns i:
 * [Felsöka inloggning av registret](container-registry-troubleshoot-login.md)
 * [Felsöka nätverks problem med registret](container-registry-troubleshoot-access.md)
-* [Felsöka registerprestanda](container-registry-troubleshoot-performance.md)
+* [Felsöka register prestanda](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Kör AZ ACR-kontroll – hälsa
 

@@ -4,10 +4,10 @@ description: Lär dig hur du skapar artefakter som ska användas med Azure DevTe
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270690"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Skapa anpassade artefakter för den virtuella DevTest Labs-datorn
@@ -48,7 +48,7 @@ I följande exempel visas de avsnitt som utgör bas strukturen för en definitio
 | --- | --- | --- |
 | $schema |Inga |Plats för JSON-schemafilen. JSON-schemafilen kan hjälpa dig att testa giltighets tiden för definitions filen. |
 | title |Ja |Namnet på den artefakt som visas i labbet. |
-| description |Ja |Beskrivning av den artefakt som visas i labbet. |
+| beskrivning |Ja |Beskrivning av den artefakt som visas i labbet. |
 | iconUri |Inga |URI för den ikon som visas i labbet. |
 | targetOsType |Ja |Operativ system för den virtuella dator där artefakten är installerad. Alternativ som stöds är Windows och Linux. |
 | parametrar |Inga |Värden som anges när kommandot artefakt installation körs på en dator. Detta hjälper dig att anpassa din artefakt. |
@@ -73,7 +73,7 @@ Använd följande struktur för att definiera parametrar:
 | --- | --- | --- |
 | typ |Ja |Typ av parameter värde. Se följande lista för de tillåtna typerna. |
 | displayName |Ja |Namnet på den parameter som visas för en användare i labbet. |
-| description |Ja |Beskrivning av den parameter som visas i labbet. |
+| beskrivning |Ja |Beskrivning av den parameter som visas i labbet. |
 
 Tillåtna typer är:
 

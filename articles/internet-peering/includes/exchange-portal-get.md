@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92548128"
 ---
 När **peering** -resursen har distribuerats kan du Visa den genom att följa dessa steg.
@@ -44,7 +44,7 @@ När **peering** -resursen har distribuerats kan du Visa den genom att följa de
 
     * **Anslutnings status** motsvarar statusen för installationen av peering-anslutningen. De lägen som visas i det här fältet följer tillstånds diagrammet som visas i [genom gången av Exchange-peering](../walkthrough-exchange-all.md).
     * Status för **IPv4-sessionstillstånd** och **IPv6-sessionstillstånd** motsvarar tillstånden för IPv4-och IPv6 BGP-sessionstillstånd.  
-    * När du väljer en rad högst upp på skärmen visas information om varje anslutning i avsnittet **anslutning** längst ned. Välj pilarna för att expandera **konfigurationen** , **IPv4-adressen** och **IPv6-adressen** .
+    * När du väljer en rad högst upp på skärmen visas information om varje anslutning i avsnittet **anslutning** längst ned. Välj pilarna för att expandera **konfigurationen**, **IPv4-adressen** och **IPv6-adressen**.
 
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar en pil som visar ett avsnitt.](../media/setup-exchange-get-connectionsipv4.png)

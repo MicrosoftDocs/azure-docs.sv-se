@@ -3,12 +3,12 @@ title: Självstudie – säkerhetskopiera SAP HANA databaser i virtuella Azure-d
 description: I den här självstudien lär du dig att säkerhetskopiera SAP HANA databaser som körs på virtuella Azure-datorer till ett Azure Backup Recovery Services-valv.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703689"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587652"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Självstudie: säkerhetskopiera SAP HANA databaser på en virtuell Azure-dator
 
@@ -167,6 +167,18 @@ Kommandots utdata ska Visa nyckeln {SID} {DBNAME}, där användaren visas som AZ
 
 >[!NOTE]
 > Se till att du har en unik uppsättning SSFS-filer under `/usr/sap/{SID}/home/.hdb/` . Det får bara finnas en mapp i den här sökvägen.
+
+Här är en sammanfattning av de steg som krävs för att köra skriptet för för registrering.
+
+|Vem  |Från  |Vad som ska köras  |Kommentarer  |
+|---------|---------|---------|---------|
+|```<sid>```ADM (OS)     |  HANA OS       |   Läs självstudie och hämta skript för för registrering      |   Läs för [hands kraven ovan](#prerequisites)    Ladda ned skript för för [registrering härifrån](https://aka.ms/scriptforpermsonhana)  |
+|```<sid>```ADM (OS) och SYSTEM användare (HANA)    |      HANA OS   |   Kör kommandot hdbuserstore set      |   t. ex. hdbuserstore ange SYSTEM värdnamn>:3 ```<Instance#>``` 13 system ```<password>``` **Obs:**  se till att använda hostname i stället för IP-adress eller fullständigt domän namn      |
+|```<sid>```ADM (OS)    |   HANA OS      |  Kör kommandot hdbuserstore List       |   Kontrol lera om resultatet innehåller standard arkivet som nedan: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|Rot (OS)     |   HANA OS        |    Kör Azure Backup HANA för registrerings skript      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```ADM (OS)    |  HANA OS       |   Kör kommandot hdbuserstore List      |    Kontrol lera om resultatet innehåller nya rader enligt nedan:  ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+När skriptet har körts och verifierats kan du fortsätta med att kontrol lera [anslutnings kraven](#set-up-network-connectivity) och sedan [Konfigurera säkerhets kopiering](#discover-the-databases) från Recovery Services-valvet
 
 ## <a name="create-a-recovery-services-vault"></a>skapar ett Recovery Services-valv
 

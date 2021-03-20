@@ -2,14 +2,14 @@
 title: 'Snabb start: övervaka webbplatser med Azure Monitor Application Insights'
 description: I den här snabb starten får du lära dig hur du konfigurerar övervakning av webbplatser på klient-och webb sidan med Azure Monitor Application Insights.
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488587"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654932"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Snabb start: börja övervaka din webbplats med Azure Monitor Application Insights
 
@@ -60,9 +60,9 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
 
 ## <a name="configure-application-insights-sdk"></a>Konfigurera Application Insights SDK
 
-1. Välj **Översikt**  >  **Essentials** och kopiera sedan programmets **Instrumentation-nyckel**.
+1. Välj **Översikt** och kopiera sedan programmets **anslutnings sträng**. I det här exemplet behöver vi bara Instrumentation-delen av anslutnings strängen `InstrumentationKey=00000000-0000-0000-0000-000000000000;` .
 
-   ![Nytt Application Insights-resursformulär](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="Skärm bild av översikts sida med Instrumentation-nyckel och anslutnings sträng.":::
 
 1. Lägg till följande skript i ``hello_world.html`` filen före den avslutande ``</head>`` taggen:
 
@@ -76,7 +76,7 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
 
     > [!NOTE]
     > Det aktuella kodfragmentet (anges ovan) är version "5", versionen är kodad i kodfragmentet som sv: "#" och den [aktuella versionen och konfigurations informationen är tillgänglig på GitHub](https://go.microsoft.com/fwlink/?linkid=2156318).
-   
+
 1. Redigera ``hello_world.html`` och Lägg till din instrumentationsnyckel.
 
 1. Öppna ``hello_world.html`` i en lokal webbläsarsession. Den här åtgärden skapar en enskild sid visning. Du kan uppdatera din webbläsare om du vill generera flera vyer på prov sidan.
@@ -95,7 +95,7 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
 
    De fyra standarddiagrammen på översiktssidan är begränsade till programdata på serversidan. Eftersom vi instrumenterar klient-och webb läsar interaktioner med Java Script SDK, gäller inte den här vyn om vi även har installerat SDK för Server sidan.
 
-1. Välj ikonen **analys** ![ program karta ](media/website-monitoring/006.png) .  Den här åtgärden öppnar **analys**, som innehåller ett omfattande frågespråk för analys av alla data som samlas in av Application Insights. Kör följande fråga om du vill visa data som är relaterade till förfrågningar på klient sidan:
+1. Välj **loggar**.  Den här åtgärden öppnar **loggar**, som innehåller ett rikt frågespråk för analys av alla data som samlas in av Application Insights. Kör följande fråga om du vill visa data som är relaterade till förfrågningar på klient sidan:
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
     | render timechart
     ```
 
-   ![analysdiagram över användarbegäranden under en viss tidsperiod](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="Skärm bild av Log Analytics-diagram över användar begär Anden under en viss tids period.":::
 
-1. Gå tillbaka till sidan **Översikt**. Under **Undersök** rubriken väljer du **webbläsare** och sedan **prestanda**.  Mått som rör webbplatsens prestanda visas. Det finns en motsvarande vy för att analysera fel och undantag på din webbplats. Du kan välja **exempel** för att få åtkomst till [slut punkt till slut punkts transaktions information](./transaction-diagnostics.md).
+1. Gå tillbaka till sidan **Översikt**. Under **Undersök** rubriken väljer du **prestanda** och sedan fliken **webbläsare** .  Mått som rör webbplatsens prestanda visas. Det finns en motsvarande vy för att analysera fel och undantag på din webbplats. Du kan välja **exempel** för att få åtkomst till [slut punkt till slut punkts transaktions information](./transaction-diagnostics.md).
 
-   ![Diagram för servermått](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="Skärm bild av fliken prestanda med webb läsar mått diagram.":::
 
-1. Gå till huvud Application Insights-menyn och välj [**användare**](./usage-segmentation.md) under **användnings** rubriken för att börja utforska [verktygen för analys av användar beteende](./usage-overview.md). Eftersom vi testar från en enda dator ser vi bara data för en användare. För en Live-webbplats kan distributionen av användare se ut så här:
-
-     ![Användardiagram](./media/website-monitoring/usage-users.png)
+1. Gå till huvud Application Insights-menyn och välj [**användare**](./usage-segmentation.md) under **användnings** rubriken för att börja utforska [verktygen för analys av användar beteende](./usage-overview.md). Eftersom vi testar från en enda dator ser vi bara data för en användare.
 
 1. För en mer komplex webbplats med flera sidor kan du använda [**användarflöden**](./usage-flows.md) -verktyget för att spåra den väg besökarna tar genom de olika delarna av webbplatsen.
-
-   ![Visualisering av användarflöden](./media/website-monitoring/user-flows.png)
 
 Mer avancerade konfigurationer för övervakning av webbplatser finns i [Java Script SDK API-referensen](./javascript.md).
 

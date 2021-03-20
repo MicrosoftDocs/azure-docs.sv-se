@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366198"
 ---
 # <a name="conditional-access-block-access"></a>Villkorlig åtkomst: blockera åtkomst
@@ -47,20 +47,20 @@ Den första principen blockerar åtkomst till alla appar förutom Microsoft 365 
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
 1. Under **Tilldelningar** väljer du **Användare och grupper**.
-   1. Under **Inkludera**väljer du **alla användare**.
-   1. Under **exkludera**väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**väljer du följande alternativ:
-   1. Under **Inkludera**väljer du **alla molnappar**.
-   1. Under **exkludera**väljer du **Office 365**, väljer **Välj**och väljer sedan **Slutför**.
+   1. Under **Inkludera** väljer du **alla användare**.
+   1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder** väljer du följande alternativ:
+   1. Under **Inkludera** väljer du **alla molnappar**.
+   1. Under **exkludera** väljer du **Office 365**, väljer **Välj** och väljer sedan **Slutför**.
 1. Under **villkor**:
    1. Under **villkor**  >  **plats**.
       1. **Konfigurera** till **Ja**
-      1. Under **Inkludera**väljer du **valfri plats**.
-      1. Under **exkludera**väljer du **alla betrodda platser**.
-      1. Välj **Done** (Klar).
-   1. Under **klient program (för hands version)** anger du **Konfigurera** till **Ja**och **väljer sedan** **klart**.
-1. Under **åtkomst kontroller**  >  **beviljas**väljer du **blockera åtkomst**och väljer sedan **Välj**.
+      1. Under **Inkludera** väljer du **valfri plats**.
+      1. Under **exkludera** väljer du **alla betrodda platser**.
+      1. Välj **Klar**.
+   1. Under **klient program (för hands version)** anger du **Konfigurera** till **Ja** och **väljer sedan** **klart**.
+1. Under **åtkomst kontroller**  >  **beviljas** väljer du **blockera åtkomst** och väljer sedan **Välj**.
 1. Bekräfta inställningarna och ange att **principen** endast ska **rapporteras**.
 1. Välj **skapa** för att skapa för att aktivera principen.
 
@@ -69,11 +69,11 @@ En andra princip skapas nedan för att kräva Multi-Factor Authentication eller 
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
 1. Under **Tilldelningar** väljer du **Användare och grupper**.
-   1. Under **Inkludera**väljer du **alla användare**.
-   1. Under **exkludera**väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **Välj appar**, sedan **Office 365**och väljer **Välj**och sedan **Slutför**.
-1. Under **åtkomst kontroller**  >  **bevilja**väljer du **bevilja åtkomst**.
+   1. Under **Inkludera** väljer du **alla användare**.
+   1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **Välj appar**, sedan **Office 365** och väljer **Välj** och sedan **Slutför**.
+1. Under **åtkomst kontroller**  >  **bevilja** väljer du **bevilja åtkomst**.
    1. Välj **Kräv Multi-Factor Authentication** och **Kräv att enheten är markerad som kompatibel** Välj **Välj**.
    1. Se till att **alla markerade kontroller** är markerat.
    1. Välj **Välj**.

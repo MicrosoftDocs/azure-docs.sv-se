@@ -4,15 +4,15 @@ description: Det här Azure Policys mönstret innehåller exempel på hur du anv
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88545598"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy mönster: logiska operatorer
 
-En princip definition kan innehålla flera villkorliga uttryck. Du kan behöva varje instruktion för att vara sann eller behöver bara vissa av dem vara sanna. För att stödja dessa behov har språket [logiska operatörer](../concepts/definition-structure.md#logical-operators) för **not**, **allOf**och **anyOf**. De är valfria och kan kapslas för att skapa komplexa scenarier.
+En princip definition kan innehålla flera villkorliga uttryck. Du kan behöva varje instruktion för att vara sann eller behöver bara vissa av dem vara sanna. För att stödja dessa behov har språket [logiska operatörer](../concepts/definition-structure.md#logical-operators) för **not**, **allOf** och **anyOf**. De är valfria och kan kapslas för att skapa komplexa scenarier.
 
 ## <a name="sample-1-one-logical-operator"></a>Exempel 1: en logisk operator
 
@@ -49,7 +49,7 @@ Den här princip definitionen utvärderar Java våren-konton för att se om spå
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
 
-Den här **policyRule. om** block innehåller både logiska operatorerna **allOf** och **anyOf** . Den logiska operatorn **anyOf** utvärderar True så länge ett villkor som ingår är sant. Eftersom _typen_ är i kärnan i **allOf**måste den alltid utvärdera sant. Om _typen_ och ett av villkoren i **anyOf** är sant utlöses princip påverkan.
+Den här **policyRule. om** block innehåller både logiska operatorerna **allOf** och **anyOf** . Den logiska operatorn **anyOf** utvärderar True så länge ett villkor som ingår är sant. Eftersom _typen_ är i kärnan i **allOf** måste den alltid utvärdera sant. Om _typen_ och ett av villkoren i **anyOf** är sant utlöses princip påverkan.
 
 ## <a name="next-steps"></a>Nästa steg
 

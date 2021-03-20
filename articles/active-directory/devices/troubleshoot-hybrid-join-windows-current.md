@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083224"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578030"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Felsöka Azure Active Directory-hybridanslutna enheter
 
@@ -99,7 +99,7 @@ Det här fältet anger om enheten är ansluten till en lokal Active Directory el
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined: Nej
 
-Det här fältet anger om enheten är registrerad med Azure AD som en personlig enhet (markerad som *arbets plats ansluten* ). Det här värdet ska vara **Nej** för en domänansluten dator som också är hybrid Azure AD-ansluten. Om värdet är **Ja** , har ett arbets-eller skol konto lagts till innan hybriden av Azure AD-anslutning slutfördes. I det här fallet ignoreras kontot när du använder Windows 10 version 1607 eller senare.
+Det här fältet anger om enheten är registrerad med Azure AD som en personlig enhet (markerad som *arbets plats ansluten*). Det här värdet ska vara **Nej** för en domänansluten dator som också är hybrid Azure AD-ansluten. Om värdet är **Ja**, har ett arbets-eller skol konto lagts till innan hybriden av Azure AD-anslutning slutfördes. I det här fallet ignoreras kontot när du använder Windows 10 version 1607 eller senare.
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: Ja
 
@@ -137,7 +137,7 @@ Använd Loggboken loggar för att hitta fasen och felkoden för kopplings felen.
 
 :::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="Skärm bild av logg boken. En händelse med I D 304 är markerad och dess information visas, med felkoden och den markerade fasen." border="false":::
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Skärm bild av logg boken. En händelse med I D 304 är markerad och dess information visas, med felkoden och den markerade fasen." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Skärm bild av logg boken. En händelse med I D 305 är synlig och dess information visas, och felkoden är markerad." border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Steg 4: Sök efter möjliga orsaker och lösningar från listorna nedan
 
@@ -210,7 +210,7 @@ Använd Loggboken loggar för att hitta fasen och ErrorCode för kopplings felen
 1. Öppna händelse loggarna för **registrering av användar enheter** i logg boken. Finns under **program och tjänster logga**  >  **Microsoft**  >  **Windows**  >  **användar enhets registrering**
 2. Sök efter händelser med följande eventIDs 201
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Skärm bild av logg boken. En händelse med I D 304 är markerad och dess information visas, med felkoden och den markerade fasen." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Skärm bild av logg boken. En händelse med I D 201 är markerad och dess information visas, och felkoden är markerad." border="false":::
 
 ###### <a name="network-errors"></a>Nätverks fel
 
@@ -255,7 +255,7 @@ Använd Loggboken loggar för att hitta felkod, underfelkod, Server fel kod och 
 1. Öppna händelse loggarna för **registrering av användar enheter** i logg boken. Finns under **program och tjänster logga**  >  **Microsoft**  >  **Windows**  >  **användar enhets registrering**
 2. Sök efter händelser med följande eventID 305
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Skärm bild av logg boken. En händelse med I D 304 är markerad och dess information visas, med felkoden och den markerade fasen." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Skärm bild av logg boken. En händelse med I D 305 är synlig. Informationen visas, med en D-felkoder och status markerad." border="false":::
 
 ##### <a name="configuration-errors"></a>Konfigurationsfel
 
@@ -330,7 +330,7 @@ Använd Loggboken loggar för att hitta fasen och ErrorCode för kopplings felen
 1. Öppna händelse loggarna för **registrering av användar enheter** i logg boken. Finns under **program och tjänster logga**  >  **Microsoft**  >  **Windows**  >  **användar enhets registrering**
 2. Sök efter händelser med följande eventIDs 204
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Skärm bild av logg boken. En händelse med I D 304 är markerad och dess information visas, med felkoden och den markerade fasen." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Skärm bild av logg boken. Information om en händelse med I D 204 visas, med felkod, H T T P-status och meddelande markerat." border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>HTTP-fel som returnerats från DRS-servern
 
@@ -387,9 +387,9 @@ Använd Loggboken loggar för att hitta fasen och ErrorCode för kopplings felen
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Steg 5: samla in loggar och kontakta Microsoft Support
 
-Hämta filen Auth.zip från [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Hämta filen Auth.zip från [https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth)
 
-1. Zippa upp filerna och Byt namn på de inkluderade filerna **start-auth.txt** och **stop-auth.txt** till **Start-auth. cmd** och **Stop-auth. cmd** .
+1. Zippa upp filerna och Byt namn på de inkluderade filerna **start-auth.txt** och **stop-auth.txt** till **Start-auth. cmd** och **Stop-auth. cmd**.
 1. Kör **Start-auth. cmd** från en upphöjd kommando tolk.
 1. Använd switch-konto för att växla till en annan session med problem användaren.
 1. Återskapa problemet.

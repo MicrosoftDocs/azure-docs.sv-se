@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552158"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587856"
 ---
 # <a name="securing-service-principals"></a>Skydda tjänstens huvud namn
 
-En Azure Active Directory (Azure AD) [tjänstens huvud namn](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) är den lokala åter givningen av ett program objekt i en enda klient eller katalog.  Den fungerar som identitet för program instansen. Tjänstens huvud namn definierar vem som kan komma åt programmet och vilka resurser som programmet kan komma åt. Ett huvud namn för tjänsten skapas i varje klient där programmet används och refererar till objektet globalt unikt program. Klienten skyddar tjänstens huvud namn för inloggning och åtkomst till resurser.  
+En Azure Active Directory (Azure AD) [tjänstens huvud namn](../develop/app-objects-and-service-principals.md) är den lokala åter givningen av ett program objekt i en enda klient eller katalog.  Den fungerar som identitet för program instansen. Tjänstens huvud namn definierar vem som kan komma åt programmet och vilka resurser som programmet kan komma åt. Ett huvud namn för tjänsten skapas i varje klient där programmet används och refererar till objektet globalt unikt program. Klienten skyddar tjänstens huvud namn för inloggning och åtkomst till resurser.  
 
 ### <a name="tenant-service-principal-relationships"></a>Innehavarens huvud relationer för tjänsten
 Ett program med en enda klient organisation har bara ett huvud namn för tjänsten i hem klienten. Ett webb program eller API för flera innehavare kräver ett huvud namn för tjänsten i varje klient organisation. Ett tjänst objekt skapas när en användare från den klienten har samtyckt till programmets eller API: s användning. Detta medgivande skapar en en-till-många-relation mellan programmet för flera klienter och dess associerade tjänst huvud namn.
@@ -39,7 +39,7 @@ En viss program instans har två distinkta egenskaper: ApplicationID (kallas äv
 
 ApplicationID representerar det globala programmet och är detsamma för alla program instanser mellan klienter. ObjectID är ett unikt värde för ett program objekt och representerar tjänstens huvud namn. Precis som med användare, grupper och andra resurser hjälper ObjectID unikt att identifiera en program instans i Azure AD.
 
-Mer detaljerad information om det här ämnet finns i [relation till program-och tjänst objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Mer detaljerad information om det här ämnet finns i [relation till program-och tjänst objekt](../develop/app-objects-and-service-principals.md).
 
 Du kan också skapa ett program och dess tjänst huvud objekt (ObjectID) i en klient med hjälp av Azure PowerShell, Azure CLI, Microsoft Graph, Azure Portal och andra verktyg. 
 
@@ -63,7 +63,7 @@ Certifikat är säkrare: Använd klient certifikat om möjligt. Till skillnad fr
 
 * lösenord 
 
-Mer information om Azure Key Vault och hur du använder den för certifikat-och hemlighets hantering finns i [om Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) och [tilldela en Key Vault åtkomst princip med hjälp av Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal). 
+Mer information om Azure Key Vault och hur du använder den för certifikat-och hemlighets hantering finns i [om Azure Key Vault](../../key-vault/general/overview.md) och [tilldela en Key Vault åtkomst princip med hjälp av Azure Portal](../../key-vault/general/assign-access-policy-portal.md). 
 
  ### <a name="challenges-and-mitigations"></a>Utmaningar och begränsningar
 I följande tabell visas åtgärder för utmaningar som du kan stöta på när du använder tjänstens huvud namn.
@@ -89,7 +89,7 @@ Använda PowerShell
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-Mer information finns i [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal)
+Mer information finns i [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal)
 
 ## <a name="assess-service-principal-security"></a>Utvärdera tjänstens huvud namn säkerhet
 
@@ -105,7 +105,7 @@ Det går inte att hantera tjänstens huvud namn med villkorlig åtkomst.| Överv
 | Standard rollen för Azure RBAC är deltagare. |Utvärdera behoven och tillämpa rollen med minsta möjliga behörighet för att uppfylla det behovet.|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Flytta från ett användar konto till ett huvud namn för tjänsten  
-Om du använder ett Azure-användarkonto som tjänstens huvud namn kan du utvärdera om du kan flytta till en [hanterad identitet](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) eller ett huvud namn för tjänsten. Om du inte kan använda en hanterad identitet, etablerar du ett huvud namn för tjänsten som bara har tillräcklig behörighet och omfattning för att köra de uppgifter som krävs. Du kan skapa ett huvud namn för tjänsten genom att [Registrera ett program](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)eller med [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell).
+Om du använder ett Azure-användarkonto som tjänstens huvud namn kan du utvärdera om du kan flytta till en [hanterad identitet](../../app-service/overview-managed-identity.md?tabs=dotnet) eller ett huvud namn för tjänsten. Om du inte kan använda en hanterad identitet, etablerar du ett huvud namn för tjänsten som bara har tillräcklig behörighet och omfattning för att köra de uppgifter som krävs. Du kan skapa ett huvud namn för tjänsten genom att [Registrera ett program](../develop/howto-create-service-principal-portal.md)eller med [PowerShell](../develop/howto-authenticate-service-principal-powershell.md).
 
 När du använder Microsoft Graph bör du kontrol lera dokumentationen för det specifika API: t, [som i det här exemplet](/powershell/azure/create-azure-service-principal-azureps), och se till att behörighets typen för programmet visas som stöds.
 
@@ -115,7 +115,7 @@ När du använder Microsoft Graph bör du kontrol lera dokumentationen för det 
 
 [Skapa ett huvudnamn för tjänsten](../develop/howto-create-service-principal-portal.md)
 
- [Övervaka inloggningar för tjänstens huvud namn](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [Övervaka inloggningar för tjänstens huvud namn](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **Lär dig mer om att skydda tjänst konton:**
 

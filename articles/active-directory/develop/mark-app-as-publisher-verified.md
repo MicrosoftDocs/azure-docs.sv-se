@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92363461"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Markera din app som verifierad av utgivare
@@ -66,7 +66,7 @@ Se till att du har uppfyllt [kraven](publisher-verification-overview.md#requirem
 
 1. Vänta tills begäran har bearbetats, det kan ta några minuter. 
 
-1. Om verifieringen lyckades stängs fönstret utgivar verifiering och du kommer tillbaka till bladet anpassning. Ett blått verifierat märke visas bredvid **visnings namnet**för din verifierade utgivare. 
+1. Om verifieringen lyckades stängs fönstret utgivar verifiering och du kommer tillbaka till bladet anpassning. Ett blått verifierat märke visas bredvid **visnings namnet** för din verifierade utgivare. 
 
 1. Användare som uppmanas att godkänna din app kommer att börja se aktivitets ikonen snart när du har gått igenom processen, men det kan ta en stund innan detta kan replikeras i systemet. 
 

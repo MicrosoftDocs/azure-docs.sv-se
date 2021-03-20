@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90894113"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Aktivera beräknings nätverk på Azure Stack Edge Pro
@@ -58,12 +58,12 @@ Utför följande steg i det lokala webb gränssnittet för att konfigurera berä
 Utför följande steg för att lägga till en modul för webserver-app på din Azure Stack Edge Pro-enhet.
 
 1. Gå till den IoT Hub resurs som är kopplad till din Azure Stack Edge Pro-enhet och välj sedan **IoT Edge enhet**.
-2. Välj den IoT Edge enhet som är kopplad till din Azure Stack Edge Pro-enhet. Välj **Ange moduler**på **enhets informationen**. I **Lägg till moduler**väljer du **+ Lägg till** och väljer sedan **IoT Edge modul**.
+2. Välj den IoT Edge enhet som är kopplad till din Azure Stack Edge Pro-enhet. Välj **Ange moduler** på **enhets informationen**. I **Lägg till moduler** väljer du **+ Lägg till** och väljer sedan **IoT Edge modul**.
 3. På bladet **IoT Edge anpassade moduler** :
 
     1. Ange ett **namn** för den webserver-app som du vill distribuera.
     2. Ange en **bild-URI** för din modul-avbildning. En modul som matchar det tillhandahållna namnet och taggarna hämtas. I det här fallet `nginx:stable` hämtar en stabil nginx-avbildning (Taggad som stabil) från den [offentliga Docker-lagringsplatsen](https://hub.docker.com/_/nginx/).
-    3. I **behållaren skapa alternativ**klistrar du in följande exempel kod:  
+    3. I **behållaren skapa alternativ** klistrar du in följande exempel kod:  
 
         ```
         {
@@ -87,7 +87,7 @@ Utför följande steg för att lägga till en modul för webserver-app på din A
 
 ## <a name="verify-module-access"></a>Verifiera åtkomst till modulen
 
-1. Kontrol lera att modulen har distribuerats och att den körs. Körnings status för modulen ska **köras**på fliken **moduler** på sidan med **enhets information** .  
+1. Kontrol lera att modulen har distribuerats och att den körs. Körnings status för modulen ska **köras** på fliken **moduler** på sidan med **enhets information** .  
 2. Anslut till app-modulen för webb server. Öppna ett webbläsarfönster och skriv:
 
     `http://<compute-network-IP-address>:8080`

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890287"
 ---
 # <a name="select-columns-in-dataset-module"></a>Välj kolumner i data uppsättnings modul
@@ -62,7 +62,7 @@ Det finns flera alternativ i modulen för att välja kolumner efter namn:
     Om data uppsättningen är bred kan det vara lättare att använda index eller genererade listor med namn, i stället för att välja kolumner separat. Förutsatt att du har för berett listan i förväg:
 
     1. Klicka på alternativet **med regler** . 
-    2. Välj **inga kolumner**, Välj  **Inkludera**och klicka sedan i text rutan med det röda utrops tecknet. 
+    2. Välj **inga kolumner**, Välj  **Inkludera** och klicka sedan i text rutan med det röda utrops tecknet. 
     3. Klistra in eller Skriv en kommaavgränsad lista över tidigare validerade kolumn namn. Du kan inte spara modulen om en kolumn har ett ogiltigt namn, så se till att du kontrollerar namnen på förhand.
     
     Du kan också använda den här metoden för att ange en lista med kolumner som använder sina index värden. 
