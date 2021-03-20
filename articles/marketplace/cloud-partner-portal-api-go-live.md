@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87292938"
 ---
 # <a name="go-live"></a>Gå live
@@ -30,10 +30,10 @@ Detta API startar processen för att skicka en app till produktion. Den här åt
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | Utgivarens identifierare för erbjudandet att hämta, till exempel `contoso`       |  Sträng       |
 | offerId        | Erbjudande-ID för erbjudandet som ska hämtas                                   |  Sträng       |
-| api-version    | Senaste versionen av API: et                                                   |  Date         |
+| api-version    | Senaste versionen av API: et                                                   |  Datum         |
 |  |  |  |
 
-## <a name="header"></a>Sidhuvud
+## <a name="header"></a>Huvud
 ------
 
 |  **Namn**       |     **Värde**       |

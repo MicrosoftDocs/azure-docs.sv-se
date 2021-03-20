@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc
 ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91961416"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Hantera en Azure Database for PostgreSQL-flexibel server med hjälp av Azure Portal
@@ -27,7 +27,7 @@ Logga in på [Azure-portalen](https://portal.azure.com). Gå till din flexibla S
 
 ## <a name="scale-compute-and-storage"></a>Skala beräkning och lagring
 
-När servern har skapats kan du skala mellan olika [pris nivåer](https://azure.microsoft.com/pricing/details/postgresql/) när dina behov förändras. Du kan också skala upp eller ned din beräkning och minne genom att öka eller minska virtuella kärnor.
+När servern har skapats kan du skala mellan olika [pris nivåer](https://azure.microsoft.com/pricing/details/postgresql/) när dina behov förändras. Du kan även skala upp eller ned beräkning och minne genom att öka eller minska virtuella kärnor.
 
 > [!NOTE]
 > Det går inte att skala upp lagrings utrymmet till lägre värde.
@@ -48,11 +48,11 @@ När servern har skapats kan du skala mellan olika [pris nivåer](https://azure.
 
 Du kan ändra administratörs rollens lösen ord med hjälp av Azure Portal.
 
-1. Välj din server i Azure Portal. Välj **Återställ lösen ord**i **översikts** fönstret.
+1. Välj din server i Azure Portal. Välj **Återställ lösen ord** i **översikts** fönstret.
 2. Ange ett nytt lösen ord och bekräfta lösen ordet. I text rutan visas ett varnings krav för lösen ords komplexitet.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="skala flexibel lagrings Server":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="Återställ ditt lösen ord för flexibel Server":::
 
 3. Välj **Spara** för att spara det nya lösen ordet.
 
@@ -63,7 +63,7 @@ Du kan ta bort servern om du inte längre behöver den.
 1. Välj din server i Azure Portal. I **översikts** fönstret väljer du **ta bort**.
 2. Skriv namnet på servern i indatatypen för att bekräfta att du vill ta bort servern.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="skala flexibel lagrings Server":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="ta bort den flexibla servern":::
 
    > [!IMPORTANT]
    > Det går inte att ångra borttagningen av en server.

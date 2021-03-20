@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375297"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601393"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurera data beständighet för en Premium Azure-cache för Redis-instans
 
@@ -19,7 +19,7 @@ Med [Redis beständighet](https://redis.io/topics/persistence) kan du spara data
 
 Azure cache för Redis erbjuder Redis beständighet med hjälp av följande modeller:
 
-* **RDB beständighet** – när RDB (Redis Database) har kon figurer ATS, sparar Azure cache för Redis en ögonblicks bild av Azure cache för Redis i ett Redis binärformat till disk baserat på en konfigurerbar säkerhets kopierings frekvens. Om en oåterkallelig händelse inträffar som inaktiverar både den primära cachen och replik cachen, rekonstrueras cachen med den senaste ögonblicks bilden. Läs mer om [fördelarna](https://redis.io/topics/persistence#rdb-advantages) och [nack delarna](https://redis.io/topics/persistence#rdb-disadvantages) med RDB persistence.
+* **RDB beständighet** – när RDB (Redis Database) har kon figurer ATS, sparar Azure cache för Redis en ögonblicks bild av Azure cache för Redis i ett Redis binärformat till disk (i ett Azure Storage konto) baserat på en konfigurerbar säkerhets kopierings frekvens. Om en oåterkallelig händelse inträffar som inaktiverar både den primära cachen och replik cachen, rekonstrueras cachen med den senaste ögonblicks bilden. Läs mer om [fördelarna](https://redis.io/topics/persistence#rdb-advantages) och [nack delarna](https://redis.io/topics/persistence#rdb-disadvantages) med RDB persistence.
 * **AOF beständighet** – när AOF (append Only File) har kon figurer ATS, sparar Azure cache för Redis varje Skriv åtgärd till en logg som sparas minst en gång i taget till ett Azure Storage-konto. Om en oåterkallelig händelse inträffar som inaktiverar både den primära cachen och replik cachen, rekonstrueras cachen med hjälp av lagrade Skriv åtgärder. Läs mer om [fördelarna](https://redis.io/topics/persistence#aof-advantages) och [nack delarna](https://redis.io/topics/persistence#aof-disadvantages) med AOF persistence.
 
 Persistence skriver Redis-data till ett Azure Storage-konto som du äger och hanterar. Du kan konfigurera från bladet **ny Azure-cache för Redis** under skapandet av cacheminnet och på **resurs menyn** för befintliga Premium-cacheminnen.

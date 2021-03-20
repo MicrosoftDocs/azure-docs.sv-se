@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313101"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Självstudie: Konfigurera PHS som säkerhets kopiering för AD FS i Azure AD Connect
@@ -29,7 +29,7 @@ Följande självstudie vägleder dig genom att ställa in synkronisering av lös
 >[!NOTE]
 >I händelse av att du inte har åtkomst till Azure AD Connect Server eller om servern inte har åtkomst till Internet, kan du kontakta [Microsoft Support](https://support.microsoft.com/en-us/contactus/) för att hjälpa till med ändringarna i Azure AD-sidan.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Den här självstudien bygger på [självstudien: federera en enda AD-skogs miljö till molnet](tutorial-federation.md) och är ett krav som krävs innan du provar den här kursen.  Om du inte har slutfört den här kursen kan du göra det innan du provar att utföra stegen i det här dokumentet.
 
 >[!IMPORTANT]
@@ -48,9 +48,9 @@ Gör följande:
 6.  På skärmen **Domän- och organisationsenhetsfiltrering** klickar du på **Nästa**.
 7.  På skärmen **Valfria funktioner** kan du markera **Synkronisering av lösenordshash** och klicka på **Nästa**.
 ![Välj](media/tutorial-phs-backup/backup1.png)</br>
-8.  Klicka på **Konfigurera**på skärmen **redo att konfigurera** .
+8.  Klicka på **Konfigurera** på skärmen **redo att konfigurera** .
 9.  När konfigurationen är klar klickar du på **Avsluta**.
-10. Det är allt.  Du är klar.  Synkronisering av lösenordshash utförs nu och kan användas som en säkerhetskopia om AD FS blir otillgänglig.
+10. Klart!  Du är klar.  Synkronisering av lösenordshash utförs nu och kan användas som en säkerhetskopia om AD FS blir otillgänglig.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Växla till synkronisering av lösenordshash
 Nu ska vi visa hur du byter till synkronisering av lösenordshash. Innan du börjar bör du fundera på under vilka villkor du ska göra växlingen. Växla inte av tillfälliga skäl, som ett nätverksavbrott, ett mindre AD FS-problem eller ett problem som påverkar en delmängd av dina användare. Om du vill växla eftersom det tar för lång tid att lösa problemet kan du göra följande:
@@ -101,7 +101,7 @@ Nu måste vi återställa förtroendet mellan AD FS och Azure.
 2.  Klicka på **Konfigurera**.
 3.  Välj **Hantera Federation** och klicka på **Nästa**.
 4.  Välj **Återställ Azure AD-förtroende** och klicka på **Nästa**.
-![Återställ](media/tutorial-phs-backup/backup6.png)</br>
+![Återställning](media/tutorial-phs-backup/backup6.png)</br>
 5.  På skärmen **Anslut till Azure AD** anger du användar namn och lösen ord för din globala administratör.
 6.  På skärmen **Anslut till AD FS** anger du användar namn och lösen ord för contoso\Administrator och klickar på **Nästa.**
 7.  I fönstret **certifikat** klickar du på **Nästa**.
@@ -119,4 +119,4 @@ Du har nu har installerat en hybrididentitetsmiljö som du kan använda för att
 
 - [Maskin vara och krav](how-to-connect-install-prerequisites.md) 
 - [Standardinställningar](how-to-connect-install-express.md)
-- [Synkronisering av lösenordshash](how-to-connect-password-hash-synchronization.md)
+- [Hash-synkronisering av lösen ord](how-to-connect-password-hash-synchronization.md)

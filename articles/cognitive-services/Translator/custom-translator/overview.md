@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890721"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657169"
 ---
 # <a name="what-is-custom-translator"></a>Vad är Custom Translator?
 
@@ -24,13 +24,20 @@ ms.locfileid: "98890721"
 
 Custom Translator stöder mer än tre dussin språk och mappas direkt till språken som är tillgängliga för neural maskinöversättning. En komplett lista finns i artikeln om [Microsoft Translator-språk](../language-support.md#customization).
 
+Den här dokumentationen innehåller följande artikel typer:
+
+* [**Snabb starter**](quickstart-build-deploy-custom-model.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.  
+* [**Instruktions guider**](how-to-create-project.md) innehåller instruktioner för hur du använder funktionen på mer exakta eller anpassade sätt.  
+* [**Begreppen**](workspace-and-project.md) ger djupgående förklaringar av funktions funktionerna.  
+
+
 ## <a name="features"></a>Funktioner
 
-Custom Translator har olika funktioner för att skapa ett anpassat översättningssystem och därefter använda det.
+Anpassad översättare tillhandahåller olika funktioner för att bygga ett anpassat översättnings system och senare komma åt det.
 
 |Funktion  |Beskrivning  |
 |---------|---------|
-|[Utnyttja neural maskinöversättningsteknik](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Förbättra översättningen genom att utnyttja neural maskinöversättning (NMT) som tillhandahålls av Custom Translator.       |
+|[Använd teknik för neurala-maskin Översättning](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Förbättra din översättning genom att använda NMT (neurala Machine Translation) som tillhandahålls av anpassad översättare.       |
 |[Skapa system som känner till din affärsterminologi](what-are-parallel-documents.md)     |  Anpassa och skapa översättningssystem med hjälp av parallella dokument, som förstår den terminologi som används i din egen verksamhet och bransch.       |
 |[Använda ordlista till att skapa dina modeller](what-is-dictionary.md)     |   Om du inte har angett träningsdata kan du träna en modell med bara ordlistedata.       |
 |[Samarbeta med andra](how-to-manage-settings.md#share-your-workspace)     |   Samarbeta med teamet genom att dela ditt arbete med olika personer.     |
@@ -52,7 +59,7 @@ Med [Custom Translator](https://portal.customtranslator.azure.ai) kräver träni
 
 Med hjälp av den säkra [Custom Translator](https://portal.customtranslator.azure.ai)-portalen kan användare ladda upp träningsdata, träna system, testa system och distribuera dem till en produktionsmiljö via ett intuitivt användargränssnitt. Systemet är sedan tillgängligt för användning skalanpassat inom några timmar (faktisk tid beror på storleken på träningsdata).
 
-[Custom Translator](https://portal.customtranslator.azure.ai) kan även användas programmatiskt via ett [dedikerat API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (för närvarande en förhandsversion). Med API:et kan användare hantera skapandet eller uppdateringen av träning regelbundet via en egen app eller webbtjänst.
+[Custom Translator](https://portal.customtranslator.azure.ai) kan även användas programmatiskt via ett [dedikerat API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (för närvarande en förhandsversion). Med API: et kan användare hantera skapande eller uppdatering av utbildning via egna appar eller webbtjänster.
 
 Kostnaden för att använda en anpassad modell till att översätta innehåll baseras på användarens prisnivå för Translator Text API. Se Cognitive Services [webbsidan med priser för Translator Text API](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) information om olika prisnivåer.
 

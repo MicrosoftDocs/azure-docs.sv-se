@@ -12,10 +12,10 @@ ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96170930"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera TheAccessHub Admin Tool med Azure Active Directory B2C
@@ -194,7 +194,7 @@ Behörigheter för att hantera kund-och CSR/helpdesk-användare i TheAccessHub a
 
 1. Logga in på TheAccessHub admin-verktyget med autentiseringsuppgifter som du fått av N8 identitet
 
-2. Navigera till trädvyn för **hanterings verktyg**  >  **Tree View**
+2. Navigera till trädvyn för **hanterings verktyg**  >  
 
 3. I den här representationen kan du visualisera vilka kollegor och grupper som kan hantera vilka organisationer.
 
@@ -378,7 +378,7 @@ Ibland kan synkronisering av TheAccessHub-administrationsverktyget vara begräns
 
 1. Logga in på TheAccessHub admin-verktyget med autentiseringsuppgifter som du fått av N8 identitet
 
-2. Gå till **System Admin**  >  **administrations verktyg** för system administratör  >  **Azure B2C-principer**
+2. Gå till   >  **administrations verktyg** för system administratör  >  **Azure B2C-principer**
 
 3. Ange din Azure AD B2C klient domän och de två ID: na för identitets erfarenhet från din konfiguration av Identity Experience Framework
 

@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98746078"
 ---
 # <a name="risky-ip-report-public-preview"></a>Riskfylld IP-rapport (offentlig för hands version)
@@ -97,7 +97,7 @@ Aviseringströskelvärdet kan uppdateras i Tröskelinställningar. Systemet har 
 >
 >
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 **Varför ser jag privata IP-adressintervall i rapporten?**  <br />
 Privata IP-adresser (<i>10. x. x, 172. x. x. x & 192.168. x. x</i>) och Exchange IP-adresser filtreras och markeras som true i listan över godkända IP-adresser. Om du ser privata IP-adressintervall är det mycket troligt att en extern lastbalanserare inte skickar klientens IP-adress när den skickar sin begäran till servern för webbprogramproxyn.
 

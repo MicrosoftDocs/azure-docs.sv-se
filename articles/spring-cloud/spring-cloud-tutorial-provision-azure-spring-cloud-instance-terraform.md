@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533799"
 ---
 # <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Etablera en Azure våren Cloud-instans med terraform
@@ -31,7 +31,7 @@ I det här exemplet skapas en Azure våren Cloud-instans med terraform. Procedur
 > * Frågor, use-Cases och användbara mönster: [avsnittet terraform i HashiCorp community portal](https://discuss.hashicorp.com/c/terraform-core)
 > * Provider-relaterade frågor: [terraform providers-avsnittet i HashiCorp community-portalen](https://discuss.hashicorp.com/c/terraform-providers)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - **Azure-prenumeration**: Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) innan du börjar.
 

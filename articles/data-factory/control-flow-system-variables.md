@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 119ecb3ec9c208340f09f513bf10b3ad24312cb5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a5d2043c29db87876cc0d5ddb5b3708abad033c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201234"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591989"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systemvariabler som stöds av Azure Data Factory
 
@@ -24,7 +24,7 @@ I den här artikeln beskrivs systemvariabler som stöds av Azure Data Factory. D
 
 Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 
-| Variabelnamn | Beskrivning |
+| Variabelnamn | Description |
 | --- | --- |
 | @pipeline(). DataFactory |Namnet på den data fabrik som pipelinen körs i |
 | @pipeline(). Pipeline |Namn på pipelinen |
@@ -41,7 +41,7 @@ Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
-| Variabelnamn | Beskrivning |
+| Variabelnamn | Description |
 | --- | --- |
 | @trigger().scheduledTime |Tiden då utlösaren schemalades för att anropa pipeline-körningen. |
 | @trigger(). StartTime |Tiden då utlösaren **faktiskt** startade för att anropa pipeline-körningen. Detta kan skilja sig något från den schemalagda tiden för utlösaren. |
@@ -50,7 +50,7 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
-| Variabelnamn | Beskrivning |
+| Variabelnamn | Description |
 | --- | --- |
 | @trigger(). outputs. windowStartTime |Början av fönstret som är associerat med utlösarens körning. |
 | @trigger(). outputs. windowEndTime |Slutet av fönstret som är kopplat till utlösarens körning. |
@@ -61,11 +61,25 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
 
-| Variabelnamn | Beskrivning |
+| Variabelnamn | Description |
 | --- | --- |
 | @triggerBody(). fileName  |Namnet på filen vars skapande eller borttagning orsakade utlösaren för brand.   |
 | @triggerBody(). mappnamn  |Sökväg till den mapp som innehåller filen som anges av `@triggerBody().fileName` . Det första segmentet i mappsökvägen är namnet på Azure Blob Storage-behållaren.  |
 | @trigger(). StartTime |Tiden då utlösaren startade för att anropa pipeline-körningen. |
+
+## <a name="custom-event-trigger-scope"></a>Intervall för anpassad händelse utlösare
+
+Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
+
+>[!NOTE]
+>Azure Data Factory förväntar sig att anpassad händelse ska formateras med [Azure Event Grid-händelse schema](../event-grid/event-schema.md).
+
+| Variabelnamn | Description
+| --- | --- |
+| @triggerBody(). event. eventType | Typ av händelser som utlöste körningen av den anpassade händelse utlösaren. Händelse typ är kunddefinierat fält och kan ta med värden av sträng typ. |
+| @triggerBody(). event. Subject | Ämne för den anpassade händelse som orsakade utlösaren att utlösa. |
+| @triggerBody(). event. data. _attributnamn_ | Data fältet i en anpassad händelse är en kostnads fri från JSON-BLOB, som kunden kan använda för att skicka meddelanden och data. Använd data. _namn_ att referera till varje fält. Till exempel @triggerBody (). event. data. motringning returnerar värdet för _återanrops_ fältet som lagras under _data_. |
+| @trigger(). StartTime | Tiden då utlösaren startade för att anropa pipeline-körningen. |
 
 ## <a name="next-steps"></a>Nästa steg
 

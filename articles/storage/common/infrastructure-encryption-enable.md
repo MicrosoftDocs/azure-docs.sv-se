@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746574"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Skapa ett lagrings konto med infrastruktur kryptering aktiverat för dubbel kryptering av data
@@ -32,7 +32,7 @@ Om du vill skapa ett lagrings konto som har infrastruktur kryptering aktiverat m
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-E.t.
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -80,7 +80,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Mall](#tab/template)
 
-E.t.
+Ej tillämpligt
 
 ---
 
@@ -96,7 +96,7 @@ Följ dessa steg om du vill använda PowerShell för att skapa ett lagrings kont
 
 1. Gå till sidan **lagrings konton** i Azure Portal.
 1. Välj knappen **Lägg** till för att lägga till ett nytt allmänt lagrings konto för-syfte v2.
-1. På fliken **Avancerat** letar du reda på **infrastruktur** kryptering och väljer **aktive rad** .
+1. På fliken **Avancerat** letar du reda på **infrastruktur** kryptering och väljer **aktive rad**.
 1. Välj **Granska + skapa** för att slutföra skapandet av lagrings kontot.
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="Skärm bild som visar hur du aktiverar infrastruktur kryptering när du skapar ett konto":::
@@ -179,9 +179,9 @@ Följande JSON-exempel skapar ett allmänt-syfte v2-lagrings konto som är konfi
 Följ dessa steg om du vill kontrol lera att infrastruktur kryptering har Aktiver ATS för ett lagrings konto med Azure Portal:
 
 1. Navigera till ditt lagringskonto i Azure-portalen.
-1. Under **Inställningar** väljer du **kryptering** .
+1. Under **Inställningar** väljer du **kryptering**.
 
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Skärm bild som visar hur du aktiverar infrastruktur kryptering när du skapar ett konto":::
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Skärm bild som visar hur du verifierar att infrastruktur kryptering har Aktiver ATS för kontot":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -209,7 +209,7 @@ az storage account show /
 
 # <a name="template"></a>[Mall](#tab/template)
 
-E.t.
+Ej tillämpligt
 
 ---
 

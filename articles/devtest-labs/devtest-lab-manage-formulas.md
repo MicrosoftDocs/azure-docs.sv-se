@@ -4,10 +4,10 @@ description: Den här artikeln visar hur du skapar en formel från antingen en b
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91308902"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Hantera Azure DevTest Labs formler
@@ -29,7 +29,7 @@ Följande steg vägleder dig genom processen att skapa en formel från en anpass
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 
 3. I listan med labb väljer du önskat labb.  
 
@@ -39,7 +39,7 @@ Följande steg vägleder dig genom processen att skapa en formel från en anpass
     ![Lägg till en formel](./media/devtest-lab-create-formulas/add-formula.png)
 6. På sidan **Välj en bas** väljer du bas (anpassad avbildning, Marketplace-avbildning eller en avbildning av ett delat bild galleri) som du vill skapa formeln från.
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="Välj bas avbildningen&quot;:::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="Välj bas avbildningen":::
 1. På fliken **grundläggande inställningar** på sidan **skapa formel** anger du följande värden:
    
     * **Formel namn** – ange ett namn för din formel. Det här värdet visas i listan med bas avbildningar när du skapar en virtuell dator. Namnet verifieras när du skriver det och om det inte är giltigt anger ett meddelande kraven för ett giltigt namn.
@@ -58,7 +58,7 @@ Följande steg vägleder dig genom processen att skapa en formel från en anpass
     - **Undernät** – om du vill ändra under nätet väljer du **ändra undernät**. 
     - **IP-adresskonfiguration** – ange om du vill använda offentliga, privata eller delade IP-adresser. Mer information om delade IP-adresser finns [i Förstå delade IP-adresser i Azure DevTest Labs](./devtest-lab-shared-ip.md).
     - **Förfallo datum och-tid** -du kan inte redigera det här fältet. 
-    - **Gör så att den här datorn kan kräva** en dator &quot;anspråkable" innebär att den inte tilldelas ägande vid tidpunkten för skapandet. I stället kommer labb användare att kunna ta ägarskap ("anspråk") till datorn på labb sidan.  
+    - **Gör så att den här datorn kan kräva** en dator "anspråkable" innebär att den inte tilldelas ägande vid tidpunkten för skapandet. I stället kommer labb användare att kunna ta ägarskap ("anspråk") till datorn på labb sidan.  
 
         ![Skärm bild som visar avancerade inställningar för sidan "skapa formel (återanvändbara Base)".](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Om du har valt en avbildning av ett delat bild galleri som bas, visas även fältet **bild version** som gör att du kan välja den version av avbildningen från galleriet som du vill använda som bas. 
@@ -77,7 +77,7 @@ Följande steg vägleder dig genom processen att skapa en formel som baseras på
 > 
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du önskat labb.  
 4. På labb **översikts** sidan väljer du den virtuella dator som du vill skapa formeln från.
    
@@ -94,7 +94,7 @@ Följande steg vägleder dig genom processen att skapa en formel som baseras på
 Följ dessa steg om du vill ändra en formel:
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du önskat labb.  
 4. På labb sidan väljer du **formler (återanvändbara baser)**.
    
@@ -106,7 +106,7 @@ Följ dessa steg om du vill ändra en formel:
 Följ dessa steg om du vill ta bort en formel:
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du önskat labb.  
 4. På sidan labb **Inställningar** väljer du **formler**.
    

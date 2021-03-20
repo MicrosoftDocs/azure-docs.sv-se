@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
 ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579299"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>Konfigurera inlärnings beteendet för personanpassa
@@ -52,10 +52,10 @@ I Azure Portal går du till **utvärderings** sidan för din personanpassa resur
 > [!div class="mx-imgBorder"]
 > ![Skärm bild av granskning av inlärnings beteende i lärlings läge i Azure Portal](media/settings/evaluate-apprentice-mode.png)
 
-Lärlings läget tillhandahåller följande **utvärderings mått** :
-* **Bas linje – genomsnittlig belöning** : Genomsnittligt antal förmåner för programmets standard (bas linje).
-* **Personanpassa – genomsnittlig belöning** : genomsnitt av den totala belönings anpassningen kan ha uppnåtts.
-* **Utmärkelse för utmärkelse över de senaste 1000 händelserna** : förhållandet mellan bas linje och personanpassa belöning – normaliserade över de senaste 1000-händelserna.
+Lärlings läget tillhandahåller följande **utvärderings mått**:
+* **Bas linje – genomsnittlig belöning**: Genomsnittligt antal förmåner för programmets standard (bas linje).
+* **Personanpassa – genomsnittlig belöning**: genomsnitt av den totala belönings anpassningen kan ha uppnåtts.
+* **Utmärkelse för utmärkelse över de senaste 1000 händelserna**: förhållandet mellan bas linje och personanpassa belöning – normaliserade över de senaste 1000-händelserna.
 
 ## <a name="switch-behavior-to-online-mode"></a>Växla beteende till onlineläge
 

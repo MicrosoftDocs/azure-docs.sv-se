@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97387062"
 ---
 # <a name="display-controls"></a>Visa kontroller
@@ -28,7 +28,7 @@ Följande bild illustrerar en självkontrollerad registrerings sida med två vis
 
 ![Exempel på renderad visnings kontroll](media/display-controls/display-control-email.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
  I avsnittet [metadata](self-asserted-technical-profile.md#metadata) i en [självkontrollerad teknisk profil](self-asserted-technical-profile.md)måste den refererade [ContentDefinition](contentdefinitions.md) ha `DataUri` ställts in på sid kontrakt version 2.0.0 eller högre. Exempel:
 
@@ -104,7 +104,7 @@ Elementet **Actions** innehåller följande element:
 | ------- | ----------- | ----------- |
 | Åtgärd | 1: n | Lista med åtgärder som ska utföras. |
 
-#### <a name="action"></a>Åtgärd
+#### <a name="action"></a>Action
 
 **Åtgärds** elementet innehåller följande attribut:
 
@@ -152,7 +152,7 @@ Elementet **Actions** innehåller följande element:
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | Värde | 1: n | De data som används av kontrollen. Om typen av kontroll är `ClaimsExist` , anger det här fältet en ClaimTypeReferenceId att fråga efter. Om typen av kontroll är `ClaimEquals` , anger det här fältet en ClaimTypeReferenceId att fråga efter. Ange det värde som ska kontrol leras i ett annat värde element.|
-| Åtgärd | 1:1 | Den åtgärd som ska vidtas om villkors kontrollen i ett Orchestration-steg är sann. Värdet för **åtgärden** är inställt på `SkipThisValidationTechnicalProfile` , vilket anger att den tillhör ande tekniska profilen för verifiering inte ska köras. |
+| Action | 1:1 | Den åtgärd som ska vidtas om villkors kontrollen i ett Orchestration-steg är sann. Värdet för **åtgärden** är inställt på `SkipThisValidationTechnicalProfile` , vilket anger att den tillhör ande tekniska profilen för verifiering inte ska köras. |
 
 I följande exempel skickas och verifieras e-postadressen med hjälp av [Azure AD SSPR Technical Profile](aad-sspr-technical-profile.md).
 

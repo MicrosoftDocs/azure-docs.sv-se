@@ -4,14 +4,14 @@ description: Lär dig hur du kör ett Service Fabric program under system-och lo
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610138"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Köra en tjänst som ett lokalt användar konto eller lokalt system konto
-Genom att använda Azure Service Fabric kan du skydda program som körs i klustret under olika användar konton. Som standard körs Service Fabric-program under det konto som Fabric.exe processen körs under. Service Fabric ger också möjlighet att köra program under ett lokalt användar-eller system konto. Lokala system konto typer som stöds är **lokal användare**, **NetworkService**, **LocalService**och **LocalSystem**.  Om du kör Service Fabric på ett fristående Windows-kluster kan du köra en tjänst under [Active Directory domän konton](service-fabric-run-service-as-ad-user-or-group.md) eller [grupphanterade tjänst konton](service-fabric-run-service-as-gmsa.md).
+Genom att använda Azure Service Fabric kan du skydda program som körs i klustret under olika användar konton. Som standard körs Service Fabric-program under det konto som Fabric.exe processen körs under. Service Fabric ger också möjlighet att köra program under ett lokalt användar-eller system konto. Lokala system konto typer som stöds är **lokal användare**, **NetworkService**, **LocalService** och **LocalSystem**.  Om du kör Service Fabric på ett fristående Windows-kluster kan du köra en tjänst under [Active Directory domän konton](service-fabric-run-service-as-ad-user-or-group.md) eller [grupphanterade tjänst konton](service-fabric-run-service-as-gmsa.md).
 
 I applikations manifestet definierar du de användar konton som krävs för att köra tjänster eller säkra resurser i avsnittet **säkerhets objekt** . Du kan också definiera och skapa användar grupper så att en eller flera användare kan hanteras tillsammans. Detta är användbart när det finns flera användare för olika tjänst start punkter och de behöver vanliga behörigheter på grupp nivå.  Användarna refereras sedan till i en RunAs-princip som tillämpas på en specifik tjänst eller alla tjänster i programmet. 
 
@@ -24,7 +24,7 @@ Som standard tillämpas RunAs-principen på huvud start punkten.  Du kan också 
 ## <a name="run-a-service-as-a-local-user"></a>Köra en tjänst som lokal användare
 Du kan skapa en lokal användare som kan användas för att skydda en tjänst i programmet. När en **lokal användare** -kontotyp anges i avsnittet säkerhets objekt i program manifestet skapar Service Fabric lokala användar konton på datorer där programmet distribueras. Som standard har dessa konton inte samma namn som de som anges i applikations manifestet (till exempel *Customer3* i följande program manifest exempel). De genereras i stället dynamiskt och har slumpmässiga lösen ord.
 
-I avsnittet **runas policy** för en **service manifest import**anger du användar kontot från avsnittet **säkerhets objekt** för att köra service kod paketet.  I följande exempel visas hur du skapar en lokal användare och tillämpar en RunAs-princip på huvud start punkten:
+I avsnittet **runas policy** för en **service manifest import** anger du användar kontot från avsnittet **säkerhets objekt** för att köra service kod paketet.  I följande exempel visas hur du skapar en lokal användare och tillämpar en RunAs-princip på huvud start punkten:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

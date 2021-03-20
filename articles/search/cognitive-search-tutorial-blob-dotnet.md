@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745724"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Självstudie: AI-genererat sökbart innehåll från Azure-blobbar med .NET SDK
@@ -38,7 +38,7 @@ Indexeraren ansluter till en BLOB-behållare som anges i objektet data källa oc
 
 Färdigheter är kopplad till indexeraren. Den använder inbyggda kunskaper från Microsoft för att hitta och extrahera information. Stegen i pipelinen inkluderar optisk tecken läsning (OCR) på bilder, språk identifiering på text, extrahering av nyckel fraser och enhets igenkänning (organisationer). Ny information som skapas av pipelinen lagras i nya fält i ett index. När indexet har fyllts kan du använda fälten i frågor, ansikts och filter.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [Azure.Search.Documents 11. x NuGet-paket](https://www.nuget.org/packages/Azure.Search.Documents) 

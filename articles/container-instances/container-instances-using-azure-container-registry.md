@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92736737"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Distribuera till Azure Container Instances från Azure Container Registry
@@ -18,9 +18,9 @@ ms.locfileid: "92736737"
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-**Azure Container Registry** : du behöver ett Azure Container Registry-och minst en behållar avbildning i registret – för att slutföra stegen i den här artikeln. Om du behöver ett register kan du läsa [skapa ett behållar register med hjälp av Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
+**Azure Container Registry**: du behöver ett Azure Container Registry-och minst en behållar avbildning i registret – för att slutföra stegen i den här artikeln. Om du behöver ett register kan du läsa [skapa ett behållar register med hjälp av Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Azure CLI** : kommando rads exemplen i den här artikeln använder [Azure CLI](/cli/azure/) och är formaterade för bash-gränssnittet. Du kan [Installera Azure CLI](/cli/azure/install-azure-cli) lokalt eller använda [Azure Cloud Shell][cloud-shell-bash].
+**Azure CLI**: kommando rads exemplen i den här artikeln använder [Azure CLI](/cli/azure/) och är formaterade för bash-gränssnittet. Du kan [Installera Azure CLI](/cli/azure/install-azure-cli) lokalt eller använda [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -70,7 +70,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Argumentet `--role` i föregående kommando konfigurerar huvudnamnet för tjänsten med rollen *acrpull* , vilket endast ger den hämtningsåtkomst till registret. Om du vill bevilja både sändnings- och hämtningsåtkomst ändrar du argumentet `--role` till *acrpush* .
+Argumentet `--role` i föregående kommando konfigurerar huvudnamnet för tjänsten med rollen *acrpull*, vilket endast ger den hämtningsåtkomst till registret. Om du vill bevilja både sändnings- och hämtningsåtkomst ändrar du argumentet `--role` till *acrpush*.
 
 Sedan lagrar du tjänstens huvud namn *i* valvet, vilket är det **användar namn** som du skickar till Azure Container Registry för autentisering.
 
@@ -84,8 +84,8 @@ az keyvault secret set \
 
 Du har skapat ett Azure-nyckelvalv och lagrat två hemligheter i det:
 
-* `$ACR_NAME-pull-usr`: ID för tjänstens huvudnamn som ska användas som containerregistrets **användarnamn** .
-* `$ACR_NAME-pull-pwd`: Lösenord för tjänstens huvudnamn som ska användas som containerregistrets **lösenord** .
+* `$ACR_NAME-pull-usr`: ID för tjänstens huvudnamn som ska användas som containerregistrets **användarnamn**.
+* `$ACR_NAME-pull-pwd`: Lösenord för tjänstens huvudnamn som ska användas som containerregistrets **lösenord**.
 
 Nu kan du referera till dessa hemligheter efter namn när du eller dina program och tjänster hämtar avbildningar från registret.
 
@@ -149,7 +149,7 @@ Om du underhåller behållar avbildningar i ett Azure Container Registry kan du 
 
 1. Bekräfta att administratörs kontot är aktiverat genom att välja **åtkomst nycklar** och välj **Aktivera** under **Administratörs användare** .
 
-1. Välj **databaser** , Välj den lagrings plats som du vill distribuera från, högerklicka på taggen för den behållar avbildning som du vill distribuera och välj **Kör instans** .
+1. Välj **databaser**, Välj den lagrings plats som du vill distribuera från, högerklicka på taggen för den behållar avbildning som du vill distribuera och välj **Kör instans**.
 
     !["Kör instans" i Azure Container Registry i Azure Portal][acr-runinstance-contextmenu]
 

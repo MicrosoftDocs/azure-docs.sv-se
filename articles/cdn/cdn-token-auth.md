@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
 ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95978054"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Skydda Azure CDN-tillgångar med token-autentisering
@@ -114,7 +114,7 @@ Följande flödes schema beskriver hur Azure CDN verifierar en klientbegäran n�
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Indatavärde `/pictures/` : endast begär Anden som innehåller `/pictures/` sökvägen tillåts. Exempelvis `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Indatavärde `/pictures/` : endast begär Anden som innehåller `/pictures/` sökvägen tillåts. Till exempel `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
       >       <li>Indatavärde `/pictures/city/strasbourg.png` : endast begär Anden för denna angivna sökväg och till gång är tillåtna.</li>
       >    </ul>
       > </tr>
@@ -162,7 +162,7 @@ Följande flödes schema beskriver hur Azure CDN verifierar en klientbegäran n�
 
    7. Välj **kryptera** för att generera token.
 
-      När token har skapats visas den i rutan **genererad token** . Om du vill använda token lägger du till den som en frågesträng i slutet av filen i URL-sökvägen. Exempelvis `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
+      När token har skapats visas den i rutan **genererad token** . Om du vill använda token lägger du till den som en frågesträng i slutet av filen i URL-sökvägen. Till exempel `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
    8. Du kan också testa din token med dekrypterings verktyget så att du kan visa din tokens parametrar. Klistra in token-värdet i rutan **token för att dekryptera** . Välj den krypterings nyckel som du vill använda från **nyckeln för att dekryptera** listan och välj sedan **dekryptera**.
 

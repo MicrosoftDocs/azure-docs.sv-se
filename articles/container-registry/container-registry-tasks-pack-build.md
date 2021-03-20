@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 264fc7314c78088ebfefb9ddb8edbe38fa16581a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92736628"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Bygga och skicka en avbildning från en app med hjälp av en inbyggd Cloud-Buildpack
@@ -45,7 +45,7 @@ az acr pack build \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-I det här exemplet skapas `node-app` avbildningen med `1.0` taggen och skickas till registret för *myregistry* behållar registret. I det här exemplet är mål register namnet explicit anpassningsprefix till avbildningens namn. Om inget anges anpassningsprefix namnet på inloggnings servern för registret automatiskt till avbildningens namn.
+I det här exemplet skapas `node-app` avbildningen med `1.0` taggen och skickas till registret för  behållar registret. I det här exemplet är mål register namnet explicit anpassningsprefix till avbildningens namn. Om inget anges anpassningsprefix namnet på inloggnings servern för registret automatiskt till avbildningens namn.
 
 Kommandoutdata visar förloppet för att skapa och skicka avbildningen. 
 
@@ -75,7 +75,7 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-I det här exemplet skapas en `java-app` avbildning som taggats med kommandots körnings-ID och push *myregistry* -överför den till registret för behållar behållaren.
+I det här exemplet skapas en `java-app` avbildning som taggats med kommandots körnings-ID och push  -överför den till registret för behållar behållaren.
 
 Kommandoutdata visar förloppet för att skapa och skicka avbildningen. 
 
@@ -85,7 +85,7 @@ När avbildningen har skapats kan du köra den med Docker, om du har den install
 az acr login --name myregistry
 ```
 
-Kör avbildningen och ersätt din avbildnings tag för *RunId* :
+Kör avbildningen och ersätt din avbildnings tag för *RunId*:
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid

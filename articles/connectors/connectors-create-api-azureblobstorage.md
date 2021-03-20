@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677717"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Skapa och hantera blobbar i Azure Blob Storage med Azure Logic Apps
@@ -29,11 +29,11 @@ Om du inte har arbetat med Logic Apps läser du [Vad är Azure Logic Apps](../lo
 
 ## <a name="limits"></a>Gränser
 
-* Som standard kan Azure Blob Storage-åtgärder läsa eller skriva filer som är *50 MB eller mindre* . För att hantera filer som är större än 50 MB men upp till 1024 MB, stöder Azure Blob Storage-åtgärder [meddelande segment](../logic-apps/logic-apps-handle-large-messages.md). Åtgärden **Hämta BLOB-innehåll** använder implicit segment.
+* Som standard kan Azure Blob Storage-åtgärder läsa eller skriva filer som är *50 MB eller mindre*. För att hantera filer som är större än 50 MB men upp till 1024 MB, stöder Azure Blob Storage-åtgärder [meddelande segment](../logic-apps/logic-apps-handle-large-messages.md). Åtgärden **Hämta BLOB-innehåll** använder implicit segment.
 
 * Azure Blob Storage-utlösare stöder inte segment. När du begär fil innehåll väljer utlösare endast filer som är 50 MB eller mindre. Följ det här mönstret om du vill hämta filer som är större än 50 MB:
 
-  * Använd en Azure Blob Storage-utlösare som returnerar fil egenskaper, till exempel **när en BLOB läggs till eller ändras (endast egenskaper)** .
+  * Använd en Azure Blob Storage-utlösare som returnerar fil egenskaper, till exempel **när en BLOB läggs till eller ändras (endast egenskaper)**.
 
   * Följ utlösaren med åtgärden Azure Blob Storage **Hämta BLOB-innehåll** , som läser den fullständiga filen och som implicit använder segment.
 
@@ -85,11 +85,11 @@ I Azure Logic Apps är en [åtgärd](../logic-apps/logic-apps-overview.md#logic-
 
 1. Öppna din Logic app i Logic App Designer i [Azure Portal](https://portal.azure.com) eller Visual Studio. I det här exemplet används Azure Portal.
 
-2. I Logic App Designer går du till utlösaren eller åtgärden och väljer **nytt steg** .
+2. I Logic App Designer går du till utlösaren eller åtgärden och väljer **nytt steg**.
 
    ![Lägg till nytt steg i Logic app-arbetsflöde](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Om du vill lägga till en åtgärd mellan befintliga steg flyttar du musen över den anslutande pilen. Välj plus tecknet ( **+** ) som visas och välj **Lägg till en åtgärd** .
+   Om du vill lägga till en åtgärd mellan befintliga steg flyttar du musen över den anslutande pilen. Välj plus tecknet ( **+** ) som visas och välj **Lägg till en åtgärd**.
 
 3. I rutan Sök anger du "Azure Blob" som filter. Välj den åtgärd du vill använda i listan åtgärder.
 
@@ -183,9 +183,9 @@ För att ge Microsoft-betrodda tjänster åtkomst till ett lagrings konto via en
 
 Följ dessa allmänna steg om du vill ställa in undantag och hanterad identitets support:
 
-1. Välj **brand väggar och virtuella nätverk** på ditt lagrings konto under **Inställningar** . Under **Tillåt åtkomst från** väljer du alternativet **valda nätverk** så att de relaterade inställningarna visas.
+1. Välj **brand väggar och virtuella nätverk** på ditt lagrings konto under **Inställningar**. Under **Tillåt åtkomst från** väljer du alternativet **valda nätverk** så att de relaterade inställningarna visas.
 
-1. Under **undantag** väljer **du Tillåt att betrodda Microsoft-tjänster har åtkomst till det här lagrings kontot** och väljer sedan **Spara** .
+1. Under **undantag** väljer **du Tillåt att betrodda Microsoft-tjänster har åtkomst till det här lagrings kontot** och väljer sedan **Spara**.
 
    ![Välj undantag som tillåter Microsoft-betrodda tjänster](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 

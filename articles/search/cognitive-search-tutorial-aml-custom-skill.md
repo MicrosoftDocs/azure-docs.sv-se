@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745641"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Exempel: bygga och distribuera en anpassad kunskap med Azure Machine Learning 
@@ -33,7 +33,7 @@ Det finns två angivna data uppsättningar. Om du vill träna modellen själv, k
 > [!IMPORTANT] 
 > Den här kunskapen är för närvarande en offentlig för hands version. För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Det finns för närvarande inget stöd för .NET SDK.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – hämta en [kostnads fri prenumeration](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Kognitiv sökning tjänst](./search-get-started-arm.md)
@@ -41,7 +41,7 @@ Det finns två angivna data uppsättningar. Om du vill träna modellen själv, k
 * [Azure-lagringskonto](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Machine Learning-arbetsyta](../machine-learning/how-to-manage-workspace.md)
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 * Klona eller hämta innehållet i [exempel lagrings platsen](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill).
 * Extrahera innehåll om hämtningen är en zip-fil. Kontrol lera att filerna är Läs-och skrivbara.

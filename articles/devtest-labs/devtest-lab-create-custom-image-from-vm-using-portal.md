@@ -4,10 +4,10 @@ description: Lär dig hur du skapar en anpassad avbildning i Azure DevTest Labs 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87277035"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Skapa en anpassad avbildning från en virtuell dator
@@ -20,7 +20,7 @@ Du kan skapa en anpassad avbildning från en etablerad virtuell dator och sedan 
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 
 1. I listan med labb väljer du önskat labb.  
 
@@ -33,13 +33,13 @@ Du kan skapa en anpassad avbildning från en etablerad virtuell dator och sedan 
     :::image type="content" source="./media/devtest-lab-create-template/create-custom-image.png" alt-text="Meny alternativet Skapa anpassad avbildning":::
 1. I fönstret **anpassad avbildning** anger du ett namn och en beskrivning för din anpassade avbildning. Den här informationen visas i listan över baser när du skapar en virtuell dator. Den anpassade avbildningen innehåller OS-disken och alla data diskar som är anslutna till den virtuella datorn.
 
-    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Meny alternativet Skapa anpassad avbildning":::
+    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Sidan Skapa anpassad avbildning":::
 1. Välj om Sysprep kördes på den virtuella datorn. Om Sysprep inte kördes på den virtuella datorn anger du om du vill att Sysprep ska köras på den virtuella datorn när den anpassade avbildningen skapas.
 1. Välj **OK** när du är färdig för att skapa den anpassade avbildningen.
 
     Efter några minuter skapas den anpassade avbildningen och lagras i Labbets lagrings konto. När en labb användare vill skapa en ny virtuell dator är avbildningen tillgänglig i listan med bas avbildningar.
 
-    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="Meny alternativet Skapa anpassad avbildning":::
+    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="anpassad avbildning tillgänglig i listan med bas avbildningar":::
 
 ## <a name="related-blog-posts"></a>Relaterade blogg inlägg
 

@@ -4,10 +4,10 @@ description: Ladda upp VHD-filen till Labbets lagrings konto med hjälp av Micro
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91282535"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Ladda upp VHD-filen till Labbets lagrings konto med hjälp av Microsoft Azure Storage Explorer
@@ -26,7 +26,7 @@ Följande steg beskriver hur du laddar upp en VHD-fil till DevTest Labs med [Mic
 
     1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
-    1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+    1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
     
     1. I listan med labb väljer du önskat labb.  
     
@@ -76,9 +76,9 @@ Följande steg beskriver hur du laddar upp en VHD-fil till DevTest Labs med [Mic
 
     1. Leta upp och expandera noden för den Azure-prenumeration som äger labbet i Storage Explorer vänstra fönstret.
     
-    1. Expandera **lagrings konton**under prenumerationens nod.
+    1. Expandera **lagrings konton** under prenumerationens nod.
 
-    1. Utöka Labbets lagrings konto nod för att Visa noder för **BLOB-behållare**, **fil resurser**, **köer**och **tabeller**.
+    1. Utöka Labbets lagrings konto nod för att Visa noder för **BLOB-behållare**, **fil resurser**, **köer** och **tabeller**.
     
     1. Expandera noden **BLOB-behållare** .
     
@@ -100,7 +100,7 @@ Följande steg beskriver hur du laddar upp en VHD-fil till DevTest Labs med [Mic
 
     1. I dialog rutan **Välj filer att ladda upp** bläddrar du till önskad VHD-fil, markerar den och väljer sedan **Öppna**.
     
-    1. Ändra **Blob-typ** till **Page BLOB**när den returneras till dialog rutan **Ladda upp filer** .
+    1. Ändra **Blob-typ** till **Page BLOB** när den returneras till dialog rutan **Ladda upp filer** .
     
     1. Välj **Överför**.
 

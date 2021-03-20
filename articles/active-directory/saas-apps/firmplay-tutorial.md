@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 2230958fb41d8e42967beeca57cf10ea048d1ef9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Självstudie: Azure Active Directory integration med FirmPlay-anställda rådgivnings för rekrytering
@@ -30,7 +30,7 @@ Att integrera FirmPlay – anställda rådgivnings för rekrytering med Azure AD
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med FirmPlay-anställda rådgivnings för rekrytering behöver du följande objekt:
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning för Azure AD med FirmPlay-anställda rådgivnings för rekrytering:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **FirmPlay-anställda rådgivnings för rekrytering av** program integration.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **FirmPlay-anställda rådgivnings för rekrytering av** program integration.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -152,7 +152,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till FirmPlay personal rådgivnings för rekrytering.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **FirmPlay-anställda rådgivnings för rekrytering**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **FirmPlay-anställda rådgivnings för rekrytering**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75649941"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Självstudie: resurs onboarding med Azure-anpassade leverantörer
 
 I den här självstudien distribuerar du till Azure en anpassad resurs leverantör som utökar Azure Resource Manager-API: t med resurs typen Microsoft. CustomProviders/associationer. I självstudien visas hur du utökar befintliga resurser som ligger utanför resurs gruppen där den anpassade Provider-instansen finns. I den här självstudien drivs den anpassade resurs leverantören av en Azure Logic-app, men du kan använda valfri offentlig API-slutpunkt.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här självstudien måste du känna till följande:
 
@@ -219,7 +219,7 @@ Nu ska vi distribuera infrastrukturen för anpassad Provider. Kopiera, Spara och
 
    ![Välj Lägg till](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. Under **Allmänt**anger du ett **namn** och en **Beskrivning** för den nya mallen:
+4. Under **Allmänt** anger du ett **namn** och en **Beskrivning** för den nya mallen:
 
    ![Mallens namn och beskrivning](media/tutorial-resource-onboarding/templatesdescription.png)
 

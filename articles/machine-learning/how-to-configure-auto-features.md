@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
 ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610309"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data funktionalisering i Automatisk maskin inlärning
@@ -48,7 +48,7 @@ För experiment som du konfigurerar med python SDK, kan du aktivera eller inakti
 
 I följande tabell visas de accepterade inställningarna för `featurization` i [klassen AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Funktionalisering-konfiguration | Description|
+|Funktionalisering-konfiguration | Beskrivning|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att steg som en del av processen för att bearbeta [data guardrails](#data-guardrails) och [funktionalisering](#featurization) ska göras automatiskt. Den här inställningen är standardinställningen.|
 |`"featurization": 'off'`| Anger att funktionalisering-steg inte ska göras automatiskt.|
@@ -63,13 +63,13 @@ I följande tabell sammanfattas de tekniker som automatiskt tillämpas på dina 
 > [!NOTE]
 > Om du planerar att exportera AutoML-modeller till en ONNX- [modell](concept-onnx.md)stöds bara de funktionalisering-alternativ som anges med en asterisk ("*") i ONNX-formatet. Lär dig mer om [att konvertera modeller till ONNX](how-to-use-automl-onnx-model-dotnet.md).
 
-|Funktionalisering- &nbsp; steg| Description |
+|Funktionalisering- &nbsp; steg| Beskrivning |
 | ------------- | ------------- |
-|**Släpp hög kardinalitet eller inga varians funktioner** _ |Släpp dessa funktioner från utbildning och validerings uppsättningar. Gäller för funktioner med alla värden som saknas, med samma värde för alla rader eller med hög kardinalitet (till exempel hash-värden, ID: n eller GUID).|
-|_*Imputerade värden som saknas**_ |För numeriska funktioner måste du räkna ut med medelvärdet av värdena i kolumnen.<br/><br/>För kategoriska-funktioner ska du räkna med det vanligaste värdet.|
-|_*Generera fler funktioner**_ |För DateTime-funktioner: år, månad, dag, veckodag, dag på år, kvartal, vecka på år, timme, minut och sekund.<br><br> _For prognostisering av aktiviteter, * dessa ytterligare DateTime-funktioner skapas: ISO Year, halvårs vis, kalender månad som sträng, vecka, veckodag som sträng, dag i kvartal, dag på år, fm/em (0 om timme är före 12.00 (12 PM), 1), fm/em som sträng, timme på dagen (12-HR-bas)<br/><br/>För text funktioner: term frekvens baserat på unigrams, bigram och trigrams. Läs mer om [hur detta görs med Bert.](#bert-integration)|
-|**Transformera och koda** _|Transformera numeriska funktioner med några få unika värden i kategoriska-funktioner.<br/><br/>En-frekvent kodning används för kategoriska-funktioner med låg kardinalitet. En-frekvent-hash-kodning används för kategoriska-funktioner med hög kardinalitet.|
-|_ *Word-inbäddningar**|En text upplärda konverterar vektorer med text-token till menings vektorer med hjälp av en förtränad modell. Varje ords inbäddnings vektor i ett dokument sammanställs med resten för att skapa en dokument funktions vektor.|
+|**Släpp hög kardinalitet eller inga varians funktioner*** |Släpp dessa funktioner från utbildning och validerings uppsättningar. Gäller för funktioner med alla värden som saknas, med samma värde för alla rader eller med hög kardinalitet (till exempel hash-värden, ID: n eller GUID).|
+|**Imputerade värden som saknas*** |För numeriska funktioner måste du räkna ut med medelvärdet av värdena i kolumnen.<br/><br/>För kategoriska-funktioner ska du räkna med det vanligaste värdet.|
+|**Generera fler funktioner** _ |För DateTime-funktioner: år, månad, dag, veckodag, dag på år, kvartal, vecka på år, timme, minut och sekund.<br><br> _For prognostisering av aktiviteter, * dessa ytterligare DateTime-funktioner skapas: ISO Year, halvårs vis, kalender månad som sträng, vecka, veckodag som sträng, dag i kvartal, dag på år, fm/em (0 om timme är före 12.00 (12 PM), 1), fm/em som sträng, timme på dagen (12-HR-bas)<br/><br/>För text funktioner: term frekvens baserat på unigrams, bigram och trigrams. Läs mer om [hur detta görs med Bert.](#bert-integration)|
+|**Transformera och koda***|Transformera numeriska funktioner med några få unika värden i kategoriska-funktioner.<br/><br/>En-frekvent kodning används för kategoriska-funktioner med låg kardinalitet. En-frekvent-hash-kodning används för kategoriska-funktioner med hög kardinalitet.|
+|**Word-inbäddningar**|En text upplärda konverterar vektorer med text-token till menings vektorer med hjälp av en förtränad modell. Varje ords inbäddnings vektor i ett dokument sammanställs med resten för att skapa en dokument funktions vektor.|
 |**Kluster avstånd**|Tågen a k: kluster modell på alla numeriska kolumner. Ger nya *k* nya funktioner (en ny numerisk funktion per kluster) som innehåller avståndet för varje exempel till centroid för varje kluster.|
 
 ## <a name="data-guardrails"></a>Data guardrails

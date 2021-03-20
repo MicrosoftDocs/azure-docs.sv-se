@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/18/2021
 ms.author: victorh
-ms.openlocfilehash: fba95214a6bbb0482166eab8f77f30911986fbb7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525502"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590474"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Distribuera och konfigurera Enterprise CA-certifikat för för hands versionen av Azure Firewall
 
@@ -42,7 +42,7 @@ Om du vill använda en företags certifikat utfärdare för att skapa ett certif
 1. Få åtkomst till webbplatsen för webb registrering på rot certifikat utfärdaren, vanligt vis `https://<servername>/certsrv` och välj **begär ett certifikat**.
 1. Välj **Avancerad certifikat förfrågan**.
 1. Välj **skapa och skicka en begäran till denna certifikat utfärdare**.
-1. Fyll i formuläret med den underordnade certifikat utfärdarens mall som visas:
+1. Fyll i formuläret med hjälp av mallen för underordnad certifikat utfärdare.
 1. Skicka begäran och installera certifikatet.
 1. Om du antar att denna begäran görs från en Windows-Server med Internet Explorer öppnar du **Internet alternativ**.
 1. Gå till fliken **innehåll** och välj **certifikat**.

@@ -8,10 +8,10 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931108"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Storleks guide för Azure HDInsight-interaktiv fråga kluster (Hive LLAP)
@@ -26,10 +26,10 @@ Det här dokumentet beskriver storleken på det interaktiva LLAP-klustret för H
 | Företag   | **D14 v2**        | **16 virtuella processorer, 112 GB RAM, 800 GB SSD**       |
 | ZooKeeper   | A4 V2        | 4 virtuella processorer, 8 GB RAM, 40 GB SSD       |
 
-**_Obs! alla rekommenderade konfigurationer baseras på D14 v2-typ Worker Node_* _  
+***Obs! alla rekommenderade konfigurations värden baseras på D14 v2-typ Worker Node***  
 
-### <a name="_configuration"></a>_ *Konfiguration:**    
-| Konfigurationsnyckel      | Rekommenderat värde  | Description |
+### <a name="configuration"></a>**Inställningarna**    
+| Konfigurationsnyckel      | Rekommenderat värde  | Beskrivning |
 | :---        |    :----:   | :---     |
 | garn. nodemanager. Resource. Memory-MB | 102400 (MB) | Totalt minne angivet i MB för alla garn behållare på en nod | 
 | garn. Scheduler. maximum-Allocation-MB | 102400 (MB) | Maximal allokering för varje container förfrågan i RM, i MB. Minnes förfrågningar som är högre än det här värdet börjar gälla |
@@ -52,59 +52,59 @@ Det här dokumentet beskriver storleken på det interaktiva LLAP-klustret för H
 ### <a name="llap-daemon-size-estimations"></a>**Storleks uppskattningar för LLAP daemon:** 
 
 #### <a name="1-determining-total-yarn-memory-allocation-for-all-containers-on-a-node"></a>**1. bestämmande av total GARNs minnesallokering för alla behållare på en nod**    
-Konfiguration: **_garn. nodemanager. Resource. Memory-MB_* _  
+Konfiguration: ***garn. nodemanager. Resource. Memory-MB***  
 
 Det här värdet anger en högsta mängd minne i MB som kan användas av garn behållare på varje nod. Det angivna värdet måste vara mindre än den totala mängden fysiskt minne på den noden.   
 Totalt minne för alla garn behållare på en Node = (Totalt fysiskt minne – minne för OS + andra tjänster)  
 Ange det här värdet till ~ 90% av den tillgängliga RAM-storleken.  
-För D14 v2 är det rekommenderade värdet _ * 102400 MB * *. 
+För D14 v2 är det rekommenderade värdet **102400 MB**. 
 
 #### <a name="2-determining-maximum-amount-of-memory-per-yarn-container-request"></a>**2. fastställer den maximala mängden minne per garn container förfrågan**  
-Konfiguration: **_garn. Scheduler. maximum-Allocation-MB_* _
+Konfiguration: ***garn. Scheduler. maximum-Allocation-MB***
 
-Det här värdet anger den maximala allokeringen för varje container förfrågan i Resource Manager, i MB. Minnes förfrågningar som är större än det angivna värdet börjar gälla. Resurs hanteraren kan ge minne till behållare i steg om _yarn. Scheduler. minimum-Allocation-MB * och får inte överskrida den storlek som anges av *garn. Scheduler. maximum-Allocation-MB*. Det angivna värdet får inte vara större än det totala antalet angivna minne för alla behållare på den nod som anges av *garn. nodemanager. Resource. Memory-MB*.    
+Det här värdet anger den maximala allokeringen för varje container förfrågan i Resource Manager, i MB. Minnes förfrågningar som är större än det angivna värdet börjar gälla. Resurs hanteraren kan ge minne till behållare i steg om *garn. Scheduler. minimum-Allocation-MB* och får inte överskrida den storlek som anges av *garn. Scheduler. maximum-Allocation-MB*. Det angivna värdet får inte vara större än det totala antalet angivna minne för alla behållare på den nod som anges av *garn. nodemanager. Resource. Memory-MB*.    
 För D14 v2 Worker-arbetsnoder är det rekommenderade värdet **102400 MB**
 
 #### <a name="3-determining-maximum-amount-of-vcores-per-yarn-container-request"></a>**3. fastställer maximal mängd virtuella kärnor per garn container-begäran**  
-Konfiguration: **_garn. Scheduler. maximum-Allocation-virtuella kärnor_* _  
+Konfiguration: ***garn. Scheduler. maximum-Allocation-virtuella kärnor***  
 
 Det här värdet anger det maximala antalet virtuella processor kärnor för varje container förfrågan i Resource Manager. Att begära ett högre antal virtuella kärnor än det här värdet börjar inte gälla. Det är en global egenskap hos garn Scheduler. För LLAP daemon-behållare kan det här värdet anges till 75% av det totala antalet tillgängliga virtuella kärnor. Återstående 25% bör vara reserverad för NodeManager, DataNode och andra tjänster som körs på arbetsnoderna.  
 Det finns 16 virtuella kärnor på D14 v2-VM: ar och 75% av totalt 16 virtuella kärnor kan användas av LLAP daemon-behållare.  
-För D14 v2 är det rekommenderade värdet _ * 12 * *.  
+För D14 v2 är det rekommenderade värdet **12**.  
 
 #### <a name="4-number-of-concurrent-queries"></a>**4. antal samtidiga frågor**  
-Konfiguration: **_Hive. Server2. Tez. sessions. per. default. Queue_* _
+Konfiguration: ***Hive. Server2. Tez. sessions. per. default. Queue***
 
 Det här konfiguration svärdet avgör antalet Tez-sessioner som kan startas parallellt. Dessa Tez-sessioner startas för var och en av de köer som anges av "Hive. Server2. Tez. default. Queues". Det motsvarar antalet Tez-AMs (fråga koordinatorer). Vi rekommenderar att du är samma som antalet arbetsnoder. Antalet Tez-AMs kan vara högre än antalet LLAP daemon-noder. Tez är ett primärt ansvar för att samordna frågekörningen och tilldela till motsvarande LLAP-daemon för körning. Behåll det här värdet i multipler av ett antal LLAP daemon-noder för att uppnå högre genomflöde.  
 
-Standard-HDInsight-kluster har fyra LLAP-daemonar som körs på fyra arbetsnoder, så det rekommenderade värdet är _ * 4 * *.  
+Standard-HDInsight-kluster har fyra LLAP-daemonar som körs på fyra arbetsnoder, så det rekommenderade värdet är **4**.  
 
 **Ambari UI-skjutreglage för Hive-konfigurations variabel `hive.server2.tez.sessions.per.default.queue` :**
 
 ![' LLAP maximalt antal samtidiga frågor '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP maximalt antal samtidiga frågor")
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. Tez-behållare och Tez program huvud storlek**    
-Konfiguration: **_Tez. am. Resource. Memory. MB, Hive. Tez. container. size_* _  
+Konfiguration: ***Tez. am. Resource. Memory. MB, Hive. Tez. container. size***  
 
-_tez. am. Resource. Memory. MB *-definierar programmets huvud storlek för Tez.  
+*Tez. am. Resource. Memory. MB* – definierar programmets huvud storlek för Tez.  
 Det rekommenderade värdet är **4096 MB**.
    
 *Hive. Tez. container. size* -definierar mängden minne som anges för Tez container. Det här värdet måste anges mellan den minsta storleken för garn behållare (*garn. Scheduler. minimum-Allocation-MB*) och maximal container storlek för garn (*garn. Scheduler. maximum-Allocation-MB*). LLAP daemon-körningar använder det här värdet för att begränsa minnes användning per utförar.  
 Det rekommenderade värdet är **4096 MB**.  
 
 #### <a name="6-llap-queue-capacity-allocation"></a>**6. LLAP för kös kap.**   
-Konfiguration: **_garn. Scheduler. Capacity. root. LLAP. Capacity_* _  
+Konfiguration: ***garn. Scheduler. Capacity. root. LLAP. Capacity***  
 
 Det här värdet anger en procent andel av kapaciteten som har tilldelats LLAP-kön. Kapacitets tilldelningarna kan ha olika värden för olika arbets belastningar beroende på hur garn köerna har kon figurer ATS. Om arbets belastningen är skrivskyddad kan du ställa in den så hög som 90% av kapaciteten. Men om arbets belastningen är blandning av uppdaterings-/borttagnings-/sammanfognings åtgärder med hjälp av hanterade tabeller, rekommenderar vi att du ger 85% av kapaciteten för LLAP-kön. Den återstående 15% kapaciteten kan användas av andra aktiviteter, till exempel komprimering osv. för att allokera behållare från standard kön. På så sätt kan uppgifter i standard kön inte berövas garn resurser.    
 
-För D14v2 Worker-arbetsnoder är det rekommenderade värdet för LLAP-kön _ * 85 * *.     
+För D14v2 Worker-arbetsnoder är det rekommenderade värdet för LLAP-kön **85**.     
 (För skrivskyddade arbets belastningar kan det ökas upp till 90 på lämpligt sätt.)  
 
 #### <a name="7-llap-daemon-container-size"></a>**7. LLAP daemon container-storlek**    
-Konfiguration: **_Hive. LLAP. daemon. garn. container. MB_* _  
+Konfiguration: ***Hive. LLAP. daemon. garn. container. MB***  
    
 LLAP Daemon körs som en garn behållare på varje arbetsnod. Den totala minnes storleken för LLAP daemon-behållaren beror på följande faktorer,    
-_ Konfigurationer av garn behållarens storlek (garn. Scheduler. minimum-Allocation-MB, garn. Scheduler. maximum-Allocation-MB, garn. nodemanager. Resource. Memory-MB)
+*  Konfigurationer av garn behållarens storlek (garn. Scheduler. minimum-Allocation-MB, garn. Scheduler. maximum-Allocation-MB, garn. nodemanager. Resource. Memory-MB)
 *  Antalet Tez-AMs på en nod
 *  Totalt minne som kon figurer ATS för alla behållare i en nod och LLAP-kös Kap kap.  
 
@@ -112,11 +112,11 @@ Det minne som krävs av Tez program hanterare (Tez) kan beräknas på följande 
 Tez fungerar som en frågeplan och antalet Tez-AMs bör konfigureras baserat på ett antal samtidiga frågor som ska hanteras. Teoretiskt sett kan vi betrakta en Tez per arbets nod. Men det är möjligt att du kan se fler än en Tez på en arbetsnod. I beräknings syfte antar vi en enhetlig distribution av Tez-AMs över alla LLAP daemon-noder/arbetsnoder.
 Vi rekommenderar att du har 4 GB minne per Tez.  
 
-Antalet Tez-AMS = värdet som anges av Hive config ***Hive. Server2. Tez. sessions. per. default. Queue** _.  
-Antalet LLAP daemon-noder som anges av miljövariabeln _*_num_llap_nodes_for_llap_daemons_*_ i AMBARI-användargränssnittet.  
-Tez AM container storlek = värdet som anges av Tez config _*_Tez. am. Resource. Memory. MB_*_.  
+Antalet Tez-AMS = värdet som anges av Hive-konfiguration ***Hive. Server2. Tez. sessions. per. default. Queue***.  
+Antalet LLAP daemon-noder som anges av miljövariabeln ***num_llap_nodes_for_llap_daemons*** i AMBARI-användargränssnittet.  
+Tez AM container storlek = värdet som anges av Tez config ***Tez. am. Resource. Memory. MB***.  
 
-Tez am minne per nod = _ *(** ceil **(** antal Tez AMS **/** antalet LLAP daemon **-noder)** **x** Tez am container storlek **)**  
+Tez am minne per nod = **(** ceil **(** antal Tez AMS **/** antalet LLAP daemon **-noder)** **x** Tez am container storlek **)**  
 För D14 v2 har standard konfigurationen fyra Tez-AMs och fyra LLAP daemon-noder.  
 Tez AM minne per nod = (ceil (4/4) x 4 GB) = 4 GB
 
@@ -133,22 +133,25 @@ För D14 v2 Work Node, HDI 4,0 – det rekommenderade värdet är (85 GB-4 GB-1 
 (För HDI 3,6 är det rekommenderade värdet **79 GB** eftersom du bör reservera ytterligare ~ 2 GB för skjutreglaget.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. fastställer antalet körningar per LLAP daemon**  
-Konfiguration: **_hive.llap.daemon.num.executors_* _, _*_Hive. LLAP. io. trådpool. size_*_
+Konfiguration: ***hive.llap.daemon.num.executors** _, _ *_Hive. LLAP. io. trådpool. size_**
 
-_*_hive.llap.daemon.num.executors_*_:   
+***hive.llap.daemon.num.executors***:   
 Den här konfigurationen styr antalet körningar som kan köra aktiviteter parallellt per LLAP daemon. Det här värdet beror på antalet virtuella kärnor, mängden använt minne per utförar och mängden totalt minne som är tillgängligt för LLAP daemon-behållare.    Antalet körningar kan överföras till 120% av de tillgängliga virtuella kärnor per arbets nod. Det bör dock justeras om det inte uppfyller minnes kraven baserat på det minne som krävs per utförar och storleken på LLAP daemon-behållare.
 
 Varje utförar motsvarar en Tez-behållare och kan förbruka 4 GB (Tez container storlek) för minnet. Alla körningar i LLAP daemon delar samma heap-minne. Med antagandet att inte alla körningar kör minnes intensiva åtgärder samtidigt kan du överväga 75% av storleken på Tez container (4 GB) per utförar. På så sätt kan du öka antalet körningar genom att ge varje utförar mindre minne (t. ex. 3 GB) för ökad parallellitet. Vi rekommenderar dock att du justerar den här inställningen för mål arbets belastningen.
 
 Det finns 16 virtuella kärnor på D14 v2-virtuella datorer.
-För D14 v2 är det rekommenderade värdet för antal körningar (16 virtuella kärnor x 120%) ~ = _ *19** på varje arbetsnoden som överväger 3 GB per utförar.
+För D14 v2 är det rekommenderade värdet för antal körningar (16 virtuella kärnor x 120%) ~ = **19** på varje arbetsnoden som överväger 3 GB per utförar.
 
-**_Hive. LLAP. io. trådpool. size_*_: det här värdet anger Poolens storlek för körningar. Eftersom körningar har åtgärd ATS som de har angetts kommer det att vara samma som antalet körningar per LLAP daemon. För D14 v2 är det rekommenderade värdet _* 19**.
+***Hive. LLAP. io. trådpool. size***:   
+Det här värdet anger storleken på trådpoolen för körningar. Eftersom körningar har åtgärd ATS som de har angetts kommer det att vara samma som antalet körningar per LLAP daemon.    
+För D14 v2 är det rekommenderade värdet **19**.
 
 #### <a name="9-determining-llap-daemon-cache-size"></a>**9. avgör storleken på LLAP daemon-cachen**  
-Konfiguration: **_Hive. LLAP. io. Memory. size_* _
+Konfiguration: ***Hive. LLAP. io. Memory. size***
 
-LLAP daemon container Memory består av följande komponenter: _ Huvud rum
+LLAP daemon container Memory består av följande komponenter:
+*  Huvud rum
 *  Heap-minne som används av exekverare (XMX)
 *  Minnes intern cache per daemon (minnes storlek för ledigt minne, ej tillämpbar när SSD-cachen är aktive rad)
 *  Metadata för minnes intern cache (gäller endast när SSD-cachen är aktive rad)
@@ -181,18 +184,18 @@ För D14 v2 och HDI 4,0 är den rekommenderade storleken på SSD-cache = 19 GB/0
 För D14 v2 och HDI 3,6 är den rekommenderade storleken på SSD-cache = 18 GB/0,08 ~ = **225 GB**
 
 #### <a name="10-adjusting-map-join-memory"></a>**10. Justera kart kopplings minne**   
-Konfiguration: **_Hive. Auto. convert. Join. noconditionaltask. size_* _
+Konfiguration: ***Hive. Auto. convert. Join. noconditionaltask. size***
 
-Kontrol lera att du har _hive. Auto. convert. Join. noconditionaltask * Enabled för att den här parametern ska börja gälla.
+Kontrol lera att du har *Hive. Auto. convert. Join. noconditionaltask* aktiverat för att den här parametern ska börja gälla.
 Den här konfigurationen fastställer tröskelvärdet för MapJoin-val av Hive-optimering som tar hänsyn till övermontering av minne från andra körningar för att få mer utrymme för hash-tabeller i minnet för att tillåta fler kart kopplings konverteringar. Med avseende på 3 GB per utförar kan den här storleken överföras till 3 GB, men vissa heap-minnen kan också användas för sorterings-buffertar, blanda buffertar osv. av andra åtgärder.   
 För D14 v2, med 3 GB minne per utförar, rekommenderar vi att du anger det här värdet till **2048 MB**.  
 
 (Obs! det här värdet kan kräva justeringar som är lämpliga för din arbets belastning. Om värdet anges för lågt får inte funktionen konvertera in. Om du ställer in den för hög kan det medföra att minnes undantagen eller GC pausas, vilket kan leda till försämrade prestanda.)  
 
 #### <a name="11-number-of-llap-daemons"></a>**11. antal LLAP-daemonar**
-Ambari för miljövariabler: **_num_llap_nodes num_llap_nodes_for_llap_daemons_* _  
+Ambari-miljövariabler: ***num_llap_nodes num_llap_nodes_for_llap_daemons***  
 
-_ *num_llap_nodes**-anger antalet noder som används av Hive LLAP-tjänsten, inklusive noder som kör LLAP daemon, LLAP Service Master och Tez program Master (Tez).  
+**num_llap_nodes** -anger antalet noder som används av Hive LLAP-tjänsten, inklusive noder som kör LLAP daemon, LLAP Service Master och Tez program Master (Tez).  
 
 ![' Antal noder för LLAP-tjänsten '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "Antal noder för LLAP-tjänsten")  
 

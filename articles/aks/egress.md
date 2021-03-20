@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: Lär dig hur du skapar och använder en statisk offentlig IP-adress för utgående trafik i ett Azure Kubernetes service-kluster (AKS)
 services: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: e1f81bf4c4d35108557449a8bebd126bdf744191
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726554"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592378"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Använd en statisk offentlig IP-adress för utgående trafik med en *Basic* SKU-belastningsutjämnare i Azure Kubernetes service (AKS)
 
-Som standard tilldelas den utgående IP-adressen från ett Azure Kubernetes service-kluster (AKS) slumpmässigt. Den här konfigurationen är inte idealisk när du behöver identifiera en IP-adress för åtkomst till externa tjänster, till exempel. I stället kan du behöva tilldela en statisk IP-adress som ska läggas till i en lista över tillåtna tjänster för åtkomst till tjänsten.
+Som standard tilldelas den utgående IP-adressen från ett Azure Kubernetes service-kluster (AKS) slumpmässigt. Den här konfigurationen är inte idealisk när du behöver identifiera en IP-adress för åtkomst till externa tjänster, till exempel. I stället kan du behöva tilldela en statisk IP-adress som ska läggas till i en tillåten för åtkomst till tjänsten.
 
 Den här artikeln visar hur du skapar och använder en statisk offentlig IP-adress för användning med utgående trafik i ett AKS-kluster.
 
@@ -107,7 +107,7 @@ Du kan kontrol lera att den statiska offentliga IP-adressen används genom att a
 Starta och koppla till en grundläggande *Debian* -pod:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Om du vill komma åt en webbplats inifrån behållaren använder `apt-get` du för att installera `curl` i behållaren.

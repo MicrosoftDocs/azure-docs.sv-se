@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: e73a02c93807072e30c8ce2a1a7feb30e9d3c8c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91978976"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>Använd Azure Portal för att hantera bandbredds scheman på din Azure Stack Edge Pro  
@@ -40,7 +40,7 @@ Lägg till ett schema genom att utföra följande steg i Azure Portal.
 
 3. I **Lägg till schema**: 
 
-   1. Ange **Start dag**, **slut dag**, **Start tid**och **slut tid** för schemat.
+   1. Ange **Start dag**, **slut dag**, **Start tid** och **slut tid** för schemat.
    2. Markera alternativet **alla dagar** om schemat ska köras hela dagen.
    3. **Bandbredds hastighet** är den bandbredd i megabit per sekund (Mbit/s) som används av enheten i åtgärder som involverar molnet (både uppladdning och nedladdning). Ange ett tal mellan 20 och 1 000 000 007 för det här fältet.
    4. Markera **Obegränsad** bandbredd om du inte vill begränsa upp- och nedladdningen.
@@ -75,7 +75,7 @@ Utför följande steg för att ta bort ett schema för bandbredd som är kopplat
 
 1. Gå till Azure Stack Edge-resursen i Azure Portal och gå sedan till **bandbredd**.  
 
-2. I listan över bandbreddsscheman väljer du det schema som du vill ta bort. I **Redigera schema**väljer du **ta bort**. Välj **Ja**när du uppmanas att bekräfta.
+2. I listan över bandbreddsscheman väljer du det schema som du vill ta bort. I **Redigera schema** väljer du **ta bort**. Välj **Ja** när du uppmanas att bekräfta.
 
    ![Ta bort en användare](media/azure-stack-edge-manage-bandwidth-schedules/delete-schedule-2.png)
 

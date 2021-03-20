@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: 8ee124f866a5241620671ff84c24f3713f62efe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078477"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Självstudie: Skala en VM-skalningsuppsättning automatiskt med Azure PowerShell
@@ -192,7 +192,7 @@ Efter att du loggat in kan du öppna Internet Explorer från aktivitetsfältet.
 - Välj **OK** för att acceptera uppmaningen *Använd rekommenderade inställningar för säkerhet, sekretess och kompatibilitet*
 - Skriv *http://download.sysinternals.com/files/CPUSTRES.zip* i adress fältet.
 - Eftersom Förbättrad säkerhetskonfiguration i Internet Explorer är aktiverat, välj **Lägg till***http://download.sysinternals.com* domänen i listan över betrodda platser.
-- När du tillfrågas om filhämtning, välj **Öppna**och välj och **Kör** verktyget *CPUSTRES. EXE*.
+- När du tillfrågas om filhämtning, välj **Öppna** och välj och **Kör** verktyget *CPUSTRES. EXE*.
 
 Om du vill generera viss CPU-belastning markerar du två kryssrutor för **Aktiva** trådar. Från den nedrullningsbara menyn **Aktivitet** för båda trådarna väljer du *Maximal*. Du kan öppna Aktivitetshanteraren för att bekräfta att CPU-belastningen på den virtuella datorn är på 100 %.
 

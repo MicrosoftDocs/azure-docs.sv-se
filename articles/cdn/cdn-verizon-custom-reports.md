@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84888715"
 ---
 # <a name="custom-reports-from-verizon"></a>Anpassade rapporter från Verizon
@@ -68,7 +68,7 @@ Du kan exportera data i Excel-format genom att klicka på Excel-symbolen till h�
 
 ## <a name="edge-cnames-custom-report-fields"></a>Edge CNAME-anpassade rapport fält
 
-| Field                     | Beskrivning   |
+| Fält                     | Beskrivning   |
 |---------------------------|---------------|
 | 2xx                       | Anger det totala antalet begär Anden eller överförda data (MB) för Edge CNAME som resulterar i en HTTP-statuskod för 2xx (till exempel 200 OK). |
 | 3xx                       | Anger det totala antalet begär Anden eller överförda data (MB) för Edge CNAME som resulterar i en HTTP-statuskod för 3xx (till exempel 302 eller 304 som inte har ändrats). |

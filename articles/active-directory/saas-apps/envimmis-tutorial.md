@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 6ccf755a73cafa4b855f602aa18246d710e5e1ff
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Självstudie: Azure Active Directory integrering med ENVI MMIS
@@ -158,7 +158,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för En
 
     c. Klicka på **OK**.
 
-7. När du har laddat upp den nedladdade metadatafilen fylls fälten i automatiskt. Klicka på **Uppdatera**
+7. När du har laddat upp den nedladdade metadatafilen fylls fälten i automatiskt. Klicka på **Update** (Uppdatera)
 
     ![Konfigurera enkel inloggning – knappen Spara](./media/envimmis-tutorial/configure6.png)
 
@@ -243,7 +243,7 @@ För att göra det möjligt för Azure AD-användare att logga in i Envi MMIS m�
     
     e. I text rutan **e-postadress** skriver du e-postadressen för Britta Simon-konto som **brittasimon \@ contoso.com**.
 
-    f. Skriv användar **namnet** för Britta Simon-kontot som **brittasimon \@ contoso.com**i text rutan SSO-användarnamn.
+    f. Skriv användar **namnet** för Britta Simon-kontot som **brittasimon \@ contoso.com** i text rutan SSO-användarnamn.
 
     ex. Klicka på **Spara**.
 

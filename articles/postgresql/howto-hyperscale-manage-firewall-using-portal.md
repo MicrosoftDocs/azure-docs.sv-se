@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
 ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275429"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Hantera brand Väggs regler för Azure Database for PostgreSQL-storskalig (citus)
@@ -24,24 +24,24 @@ För att gå igenom den här instruktions guiden behöver du:
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Skapa en brandväggsregel på servernivå på Azure Portal
 
 > [!NOTE]
-> De här inställningarna är också tillgängliga när du skapar en citus-servergrupp (Azure Database for PostgreSQL-storskalig). Klicka på **offentlig slut punkt**under fliken **nätverk** .
+> De här inställningarna är också tillgängliga när du skapar en citus-servergrupp (Azure Database for PostgreSQL-storskalig). Klicka på **offentlig slut punkt** under fliken **nätverk** .
 
 > :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png" alt-text="Fliken Azure Portal-nätverk":::
 
 1. Öppna brand Väggs reglerna genom att klicka på **nätverk** under säkerhets rubriken på sidan postgresql server Group.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Fliken Azure Portal-nätverk":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal på nätverk":::
 
 2. Klicka på **Lägg till aktuell klient-IP-adress** för att skapa en brand Väggs regel med den offentliga IP-adressen för din dator, som den uppfattas av Azure-systemet.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Fliken Azure Portal-nätverk":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal-Klicka på Lägg till klient-IP":::
 
 Alternativt kan du klicka på **+ Lägg till 0.0.0.0-255.255.255.255** (till höger om alternativ B) för att inte bara använda din IP-adress, men hela Internet för att få åtkomst till koordinator nodens port 5432. I den här situationen måste klienter fortfarande logga in med rätt användar namn och lösen ord för att använda klustret. Vi rekommenderar dock att du ger global åtkomst för endast korta tids perioder och endast för icke-produktions databaser.
 
 3. Verifiera din IP-adress innan du sparar konfigurationen. I vissa situationer skiljer sig IP-adressen som observerats av Azure Portal från den IP-adress som användes vid åtkomst till Internet-och Azure-servrar. Därför kan du behöva ändra Start-IP och slut-IP för att funktionen regel ska fungera som förväntat.
    Använd en sökmotor eller ett annat online verktyg för att kontrol lera din egen IP-adress. Sök till exempel efter "What ' min IP".
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Fliken Azure Portal-nätverk":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Bing-sökning för vad är min IP":::
 
 4. Lägg till ytterligare adress intervall. I brand Väggs reglerna kan du ange en enskild IP-adress eller ett adress intervall. Om du vill begränsa regeln till en enskild IP-adress skriver du samma adress i fältet för Start-IP och slut-IP. Genom att öppna brand väggen kan administratörer, användare och program komma åt koordinator-noden på port 5432.
 

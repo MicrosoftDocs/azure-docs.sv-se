@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 69685afa14352a22b58bccbea342038e4273696e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320620"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Event telemetri: Application Insights data modell
@@ -17,7 +17,7 @@ Du kan skapa objekt för telemetri (i [Application Insights](./app-insights-over
 
 Semantiskt, händelser kan eventuellt inte korreleras med begär Anden. Men om det används korrekt är event telemetri viktigare än begär Anden eller spårningar. Händelser representerar affärstelemetri och bör vara föremål för separat, mindre aggressiv [sampling](./api-filtering-sampling.md).
 
-## <a name="name"></a>Namn
+## <a name="name"></a>Name
 
 Händelse namn. Begränsa ditt program så att det genererar ett litet antal separata händelse namn för att tillåta rätt gruppering och användbara mått. Använd till exempel inte ett separat namn för varje genererad instans av en händelse.
 
