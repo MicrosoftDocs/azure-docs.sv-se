@@ -1,7 +1,7 @@
 ---
-title: inkludera fil
+title: ta med fil
 titleSuffix: Azure
-description: inkludera fil
+description: ta med fil
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81678837"
 ---
 1. På sidan **skapa en peering** på fliken **konfiguration** fyller du i rutorna som visas här.
@@ -20,8 +20,8 @@ ms.locfileid: "81678837"
     > [!div class="mx-imgBorder"]
     > ![Fliken Konfiguration av sidan Skapa en peering-sida](../media/setup-direct-conf-tab.png)
 
-    * För **peering-typ**väljer du **Direct**.
-    * För **Microsoft Network**väljer du **AS8075**. Välj inte ASN 8069. Den är reserverad för särskilda program och används endast av [Microsoft-peering](mailto:peering@microsoft.com).
+    * För **peering-typ** väljer du **Direct**.
+    * För **Microsoft Network** väljer du **AS8075**. Välj inte ASN 8069. Den är reserverad för särskilda program och används endast av [Microsoft-peering](mailto:peering@microsoft.com).
     * Välj **SKU** som **standard kostnads fritt**. Välj inte Premium kostnads fritt eftersom det är reserverat för särskilda program.
     * Välj den **tunnelbane** plats där du vill konvertera peering till en Azure-resurs. Om du har peering-anslutningar med Microsoft på den valda **Metro** -platsen som inte har konverterats till en Azure-resurs visas dessa anslutningar i avsnittet **peering Connections** (se). Nu kan du konvertera peering-anslutningarna till en Azure-resurs.
 
@@ -42,7 +42,7 @@ ms.locfileid: "81678837"
     > [!div class="mx-imgBorder"]
     > ![Fliken peering-verifiering](../media/setup-direct-review-tab-validation.png)
 
-1. När meddelandet har ändrats till *verifieringen*verifierar du din information. Skicka begäran genom att välja **skapa**. Om du vill ändra din begäran väljer du **föregående** och upprepar stegen.
+1. När meddelandet har ändrats till *verifieringen* verifierar du din information. Skicka begäran genom att välja **skapa**. Om du vill ändra din begäran väljer du **föregående** och upprepar stegen.
 
     > [!div class="mx-imgBorder"]
     > ![Överföring av peering](../media/setup-direct-review-tab-submit.png)

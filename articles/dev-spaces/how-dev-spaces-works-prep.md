@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Beskriver hur du förbereder ditt projekt med Azure dev Spaces
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91968165"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Så här förbereder du ett projekt för Azure dev Spaces
@@ -36,7 +36,7 @@ azds prep --enable-ingress
 
 Du *måste* köra `prep` kommandot från en katalog som innehåller käll koden. Genom att köra `prep` kommandot från rätt katalog kan verktyget på klient sidan identifiera språket och skapa en lämplig Dockerfile för att Använd ditt program. Du kan också köra `prep` kommandot från en katalog som innehåller en *pom.xml* -fil för Java-projekt.
 
-Om du kör `prep` kommandot från en katalog som inte innehåller någon käll kod genererar klient sidans verktyg inget Dockerfile. Det visar också ett fel som säger: *Dockerfile kunde inte genereras på grund*av ett språk som inte stöds. Det här felet uppstår även om verktyg på klient sidan inte känner igen projekt typen.
+Om du kör `prep` kommandot från en katalog som inte innehåller någon käll kod genererar klient sidans verktyg inget Dockerfile. Det visar också ett fel som säger: *Dockerfile kunde inte genereras på grund* av ett språk som inte stöds. Det här felet uppstår även om verktyg på klient sidan inte känner igen projekt typen.
 
 När du kör `prep` kommandot har du möjlighet att ange `--enable-ingress` flaggan. Den här flaggan anger att kontrollanten ska skapa en tillgänglig slut punkt för Internet för den här tjänsten. Om du inte anger den här flaggan är tjänsten bara tillgänglig i klustret eller med hjälp av den localhost-tunnel som skapats av klient sidans verktyg. Du kan aktivera eller inaktivera det här beteendet när du har kört `prep` kommandot genom att uppdatera det genererade Helm-diagrammet.
 

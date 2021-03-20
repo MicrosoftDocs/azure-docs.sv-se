@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86503089"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Så här skapar du en skalnings uppsättning för virtuella datorer med Visual Studio
@@ -24,7 +24,7 @@ Den här artikeln visar hur du distribuerar en skalnings uppsättning för en vi
 
 Distributioner av Azure-resurs grupper är ett sätt att gruppera och publicera en uppsättning relaterade Azure-resurser i en enda distributions åtgärd. Mer information finns i [skapa och Distribuera Azure-resurs grupper via Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång med att distribuera Virtual Machine Scale Sets i Visual Studio behöver du följande förutsättningar:
 
@@ -38,9 +38,9 @@ För att komma igång med att distribuera Virtual Machine Scale Sets i Visual St
 
 1. Öppna Visual Studio och välj **skapa ett nytt projekt**.
 
-1. I **skapa ett nytt projekt**väljer du **Azure resurs grupp** för C# och väljer sedan **Nästa**.
+1. I **skapa ett nytt projekt** väljer du **Azure resurs grupp** för C# och väljer sedan **Nästa**.
 
-1. I **Konfigurera ditt nya projekt anger du**ett namn och väljer **skapa**.
+1. I **Konfigurera ditt nya projekt anger du** ett namn och väljer **skapa**.
 
     ![Namnge och skapa ditt projekt](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
@@ -64,11 +64,11 @@ Med belastningsutjämnaren kan du ansluta till de virtuella dator instanserna me
 
 Distribuera Azure Resource Manager-mallen för att skapa den virtuella datorns skalnings uppsättnings resurs:
 
-1. I **Solution Explorer**högerklickar du på projektet och väljer **distribuera**  >  **nytt**.
+1. I **Solution Explorer** högerklickar du på projektet och väljer **distribuera**  >  **nytt**.
 
     ![Distribuera projektet](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-1. I **distribuera till resurs grupp**väljer du vilken prenumeration som ska användas och väljer en resurs grupp. Om det behövs kan du skapa en resurs grupp.
+1. I **distribuera till resurs grupp** väljer du vilken prenumeration som ska användas och väljer en resurs grupp. Om det behövs kan du skapa en resurs grupp.
 
 1. Välj sedan **Redigera parametrar** för att ange parametrar som skickas till din mall.
 
@@ -78,7 +78,7 @@ Distribuera Azure Resource Manager-mallen för att skapa den virtuella datorns s
 
     ![Redigera distributions parametrar](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. I **distribuera till resurs grupp**väljer du **distribuera**. Åtgärden kör **Deploy-AzureResourceGroup.ps1** -skriptet. I fönstret **utdata** visas distributions förloppet.
+1. I **distribuera till resurs grupp** väljer du **distribuera**. Åtgärden kör **Deploy-AzureResourceGroup.ps1** -skriptet. I fönstret **utdata** visas distributions förloppet.
 
    ![Utdata visar resultat](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 

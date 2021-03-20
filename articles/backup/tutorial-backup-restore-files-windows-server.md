@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263120"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Återställa filer från Azure till Windows Server
@@ -43,7 +43,7 @@ En praktisk användargränssnittsguide som heter Microsoft Azure Backup är inst
 
     ![Välj volym och datum](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    När du väljer **montera**gör Azure Backup återställnings punkten tillgänglig som en disk. Bläddra till och återställ filer från disken.
+    När du väljer **montera** gör Azure Backup återställnings punkten tillgänglig som en disk. Bläddra till och återställ filer från disken.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Återställa objekt från en återställningspunkt
 

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057985"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Snabb start: skapa en Azure-brandvägg med flera offentliga IP-adresser – ARM-mall
@@ -61,7 +61,7 @@ Distribuera ARM-mallen till Azure:
 
 2. På sidan **skapa en Azure-brandvägg med flera offentliga IP-adresser** i portalen skriver eller väljer du följande värden:
    - Prenumeration: Välj från befintliga prenumerationer 
-   - Resurs grupp: Välj från befintliga resurs grupper eller Välj **Skapa ny**och välj **OK**.
+   - Resurs grupp: Välj från befintliga resurs grupper eller Välj **Skapa ny** och välj **OK**.
    - Plats: Välj en plats
    - Admin-användar namn: Ange användar namn för administratörs användar kontot 
    - Administratörs lösen ord: Ange ett administratörs lösen ord eller en nyckel

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70166788"
 ---
 ## <a name="specifying-formats"></a>Ange format
@@ -23,7 +23,7 @@ Azure Data Factory har stöd för följande typer av format:
 ### <a name="specifying-textformat"></a>Ange TextFormat
 Om du vill parsa textfilerna eller skriva data i textformat anger du egenskapen `format` `type` till **TextFormat**. Du kan också ange följande **valfria** egenskaper i avsnittet `format`. Konfigurationsinformation finns i avsnittet med [TextFormat-exempel](#textformat-example).
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | columnDelimiter |Det tecken som används för att avgränsa kolumner i en fil. Överväg att använda ett sällsynt icke utskrivbart tecken som sannolikt inte finns i dina data: använd till exempel "\u0001" som representerar rubrikens början (SOH, Start of Heading). |Endast ett tecken är tillåtet. **Standardvärdet** är **kommatecken (,)**. <br/><br/>Om du vill använda ett Unicode-tecken letar du upp motsvarande kod i avsnittet med [Unicode-tecken](https://en.wikipedia.org/wiki/List_of_Unicode_characters). |Inga |
 | rowDelimiter |Det tecken som används för att avgränsa rader i en fil. |Endast ett tecken är tillåtet. **Standardvärdet** är något av följande värden vid läsning: **["\r\n", "\r", "\n"]** och **"\r\n"** vid skrivning. |Inga |

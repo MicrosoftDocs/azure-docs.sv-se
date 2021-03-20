@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88141677"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Granska aktivitets historiken för grupp tilldelningar för privilegierade åtkomst (för hands version) i Privileged Identity Management
@@ -40,7 +40,7 @@ Följ dessa steg om du vill visa gransknings historiken för privilegierade åtk
 
 1. Välj den privilegierade åtkomst grupp som du vill visa gransknings historik för.
 
-1. Under **aktivitet**väljer du **resurs granskning**.
+1. Under **aktivitet** väljer du **resurs granskning**.
 
 1. Filtrera historiken med ett fördefinierat datum eller anpassat intervall.
 
@@ -56,7 +56,7 @@ I **min granskning** kan du Visa din personliga roll aktivitet för en privilegi
 
 1. Välj den privilegierade åtkomst grupp som du vill visa gransknings historik för.
 
-1. Under **aktivitet**väljer du **min granskning**.
+1. Under **aktivitet** väljer du **min granskning**.
 
 1. Filtrera historiken med ett fördefinierat datum eller anpassat intervall.
 

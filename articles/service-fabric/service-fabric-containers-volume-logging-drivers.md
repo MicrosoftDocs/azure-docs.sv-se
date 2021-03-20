@@ -4,10 +4,10 @@ description: Service Fabric stöder användning av Azure Files för att säkerhe
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86247701"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files volym driv rutin för Service Fabric
@@ -18,7 +18,7 @@ Azure Files volym driv rutinen är ett [Docker-volym-plugin-program](https://doc
 > Version 6.5.661.9590 av Azure Files volym-plugin-programmet har släppts för allmän tillgänglighet.
 >
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * Windows-versionen av Azure Files volym-plugin-programmet fungerar på [Windows Server version 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [windows 10 version 1709](/windows/whats-new/whats-new-windows-10-version-1709) eller senare operativ system.
 
 * Linux-versionen av Azure Files volym-plugin-programmet fungerar på alla operativ system versioner som stöds av Service Fabric.

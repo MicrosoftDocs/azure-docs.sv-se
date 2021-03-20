@@ -1,7 +1,7 @@
 ---
-title: inkludera fil
+title: ta med fil
 titleSuffix: Azure
-description: inkludera fil
+description: ta med fil
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81687061"
 ---
 1. Välj en peering-anslutning som du vill aktivera för Azure peering-tjänsten. Välj sedan **...**  >  **Redigera anslutning**.
     > [!div class="mx-imgBorder"]
     > ![Redigera anslutning för peering-anslutning](../media/setup-direct-modify-editconnection.png)
-1. Under **Använd för peering-tjänsten**väljer du **aktive rad** och väljer sedan **Spara**.
+1. Under **Använd för peering-tjänsten** väljer du **aktive rad** och väljer sedan **Spara**.
     > [!div class="mx-imgBorder"]
     > ![Peering-anslutning aktivera peering-tjänsten](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
 1. På **översikts** skärmen ser du distributions informationen. När distributionen är färdig väljer **du gå till resurs**.
@@ -32,7 +32,7 @@ ms.locfileid: "81687061"
     > [!div class="mx-imgBorder"]
     >  ![Registrera ett prefix](../media/setup-direct-modify-register-a-prefix.png) 
 
-1. När ett prefix har skapats visas det i listan över **registrerade**prefix. Välj prefixets **namn** om du vill visa mer information.
+1. När ett prefix har skapats visas det i listan över **registrerade** prefix. Välj prefixets **namn** om du vill visa mer information.
     > [!div class="mx-imgBorder"]
     > ![Registrerade prefix och anslutningar](../media/setup-direct-modify-registered-prefixes.png)
 1. På sidan registrerat prefix ser du all information, som innehåller **prefixet** för varje prefix. Den här nyckeln måste tillhandahållas kunden som tilldelats det här prefixet från sin leverantörs Internet leverantör. Kunden kan sedan registrera sitt prefix i prenumerationen med hjälp av den här nyckeln.

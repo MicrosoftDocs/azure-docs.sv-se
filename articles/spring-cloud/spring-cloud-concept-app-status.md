@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90892855"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Förstå appstatus i Azure Spring Cloud
@@ -44,7 +44,7 @@ Om du vill visa allmän status för en program typ väljer du **appar** i det v�
 | Skapar | Resursen skapas. |
 | Uppdatera | Resursen uppdateras. |
 | Lyckades | Har tillhandahållit resurser och distribuerat binärfilen. |
-| Misslyckades | Det gick inte att uppnå det *slutförda* målet. |
+| Misslyckad | Det gick inte att uppnå det *slutförda* målet. |
 | Tas bort | Resursen tas bort. Detta förhindrar åtgärden och resursen är inte tillgänglig i denna status. |
 
 ## <a name="app-instances-status"></a>Status för App-instanser
@@ -61,7 +61,7 @@ Om du vill visa status för en angiven instans av en distribuerad app klickar du
 |:--:|:----------------:|
 | Startar | Binärfilen har distribuerats till den aktuella instansen. Instansen som startar jar-filen kan Miss lyckas eftersom jar inte kan köras korrekt. |
 | Körs | Instansen fungerar. |
-| Misslyckades | App-instansen kunde inte starta användarens binärfil efter flera omförsök. |
+| Misslyckad | App-instansen kunde inte starta användarens binärfil efter flera omförsök. |
 | Avslutande | App-instansen stängs av. |
 
 **Identifierings statusen för instansen rapporteras som ett av följande värden:**

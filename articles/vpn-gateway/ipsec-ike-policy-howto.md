@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878552"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>Konfigurera IPsec/IKE-princip för S2S VPN-anslutningar och VNet-till-VNet-anslutningar: Azure Portal
@@ -28,8 +28,10 @@ Den här artikeln innehåller anvisningar för att skapa och konfigurera en IPse
 ### <a name="considerations"></a>Överväganden
 
 * IPsec/IKE-principen fungerar bara på följande Gateway-SKU: er:
-  * ***VpnGw1 ~ 5 och VpnGw1AZ ~ 5AZ** _ _ ***standard** _ och _*_HighPerformance_*_ _ Det går bara att ange ***en** _ princip kombination för en specifik anslutning.
-  _ Du måste ange alla algoritmer och parametrar för både IKE (huvud läge) och IPsec (snabb läge). Partiell principspecifikationen tillåts inte.
+  * ***VpnGw1 ~ 5 och VpnGw1AZ ~ 5AZ***
+  * ***Standard** _ och _ *_HighPerformance_**
+* Du kan bara ange ***en*** principkombination för en viss anslutning.
+* Du måste ange alla algoritmer och parametrar för både IKE (huvud läge) och IPsec (snabb läge). Partiell principspecifikationen tillåts inte.
 * Kontakta din VPN-enhets specifikationer för att se till att principen stöds på dina lokala VPN-enheter. S2S-eller VNet-till-VNet-anslutningar kan inte upprätta om principerna är inkompatibla.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Arbetsflöde

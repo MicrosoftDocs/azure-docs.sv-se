@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375110"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-säkerhets överväganden för data förflyttning
@@ -140,7 +140,7 @@ I följande bilder visas användningen av Data Management Gateway för att flytt
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Brand Väggs konfigurationer och filtrering av IP-adresser för gateway
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Brand Väggs krav för lokalt/privat nätverk    
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Brandväggskrav för lokala/privata nätverk    
 I ett företag körs en **företags brand vägg** på den centrala routern i organisationen. Och **Windows-brandväggen** körs som en daemon på den lokala dator där gatewayen är installerad. 
 
 Följande tabell innehåller **utgående port** -och domän krav för **företags brand väggen**.

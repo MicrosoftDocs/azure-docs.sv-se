@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135701"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Snabb start: Konfigurera haveri beredskap till en sekundär Azure-region för en virtuell Azure-dator
@@ -26,15 +26,15 @@ Du behöver en Azure-prenumeration och en virtuell dator för att kunna slutför
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
-Logga in på [Azure Portal](https://portal.azure.com).
+Logga in på [Azure-portalen](https://portal.azure.com).
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Aktivera replikering för virtuella Azure-datorer
 
 Följande steg aktiverar VM-replikering till en sekundär plats.
 
-1. På sidan Azure Portal väljer du **Home**  >  en virtuell dator som ska replikeras från menyn Start**virtuella datorer** .
+1. På sidan Azure Portal väljer du   >  en virtuell dator som ska replikeras från menyn Start **virtuella datorer** .
 1. I **åtgärder** väljer du **haveri beredskap**.
-1. **Basics**  >  Välj mål region i avsnittet grundläggande**mål**.
+1.   >  Välj mål region i avsnittet grundläggande **mål**.
 1. Om du vill visa inställningarna för replikering väljer du **Granska + starta replikering**. Om du behöver ändra standardvärden väljer du **Avancerade inställningar**.
 1. Starta jobbet som aktiverar VM-replikering genom att välja **starta replikering**.
 
@@ -46,9 +46,9 @@ När replikeringen är klar kan du kontrol lera replikeringsstatus, ändra repli
 
 1. På Azure Portal-menyn väljer du **virtuella datorer** och väljer den virtuella dator som du replikerade.
 1. I **åtgärder** väljer du **haveri beredskap**.
-1. Om du vill visa replikeringsinformation från **översikten** väljer du **Essentials**. Mer information visas i **tillståndet hälsa och status**, **redundans**och **infrastruktur** översikt.
+1. Om du vill visa replikeringsinformation från **översikten** väljer du **Essentials**. Mer information visas i **tillståndet hälsa och status**, **redundans** och **infrastruktur** översikt.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Aktivera replikering.":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Replikeringsstatus.":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -62,10 +62,10 @@ Utför följande steg för att inaktivera replikering:
 
 1. På Azure Portal-menyn väljer du **virtuella datorer** och väljer den virtuella dator som du replikerade.
 1. I **åtgärder** väljer du **haveri beredskap**.
-1. Välj **inaktivera replikering**i **översikten**.
-1. Om du vill avinstallera Site Recovery-tillägget går du till **inställnings**tillägg för den virtuella datorn  >  **Extensions**.
+1. Välj **inaktivera replikering** i **översikten**.
+1. Om du vill avinstallera Site Recovery-tillägget går du till **inställnings** tillägg för den virtuella datorn  >  .
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Aktivera replikering.":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Inaktivera replikering.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

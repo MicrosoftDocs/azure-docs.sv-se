@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Beskriver de processer som Power Spaces för Azure dev och hur routning fungerar
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 2d2c6f336222b4ae0907d6579289a8cad8d73aa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91977977"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hur routning fungerar med Azure dev Spaces
@@ -57,12 +57,12 @@ Du kan också skapa ett nytt dev-utrymme som härleds från ett annat dev-utrymm
 
 Det härledda dev-utrymmet kommer också att dirigera begär Anden mellan sina egna program och de program som delas från dess överordnade. Routningen fungerar genom att försöka skicka begäran till ett program i det härledda dev-utrymmet och återgå till det delade programmet från det överordnade dev-utrymmet. Routningen kommer att återgå till det delade programmet på det föräldrarade utrymmet om programmet inte finns i det överordnade utrymmet.
 
-Till exempel:
+Exempel:
 * *Standard* för dev-utrymme har program *service* och *serviceB*.
 * *Azureuser* för dev-ytan härleds från *standard*.
 * En uppdaterad version av *servicen* har distribuerats till *azureuser*.
 
-När du använder *azureuser*kommer alla begär Anden att *serva* att dirigeras till den uppdaterade versionen i *azureuser*. En begäran till *serviceB* kommer först att försöka dirigeras till *azureuser* -versionen av *serviceB*. Eftersom den inte finns kommer den att dirigeras till *standard* versionen av *serviceB*. Om *azureuser* -versionen av *servicen* tas bort, kommer alla begär Anden att *serva* att återgå till att använda *standard* versionen av *tjänsten*.
+När du använder *azureuser* kommer alla begär Anden att *serva* att dirigeras till den uppdaterade versionen i *azureuser*. En begäran till *serviceB* kommer först att försöka dirigeras till *azureuser* -versionen av *serviceB*. Eftersom den inte finns kommer den att dirigeras till *standard* versionen av *serviceB*. Om *azureuser* -versionen av *servicen* tas bort, kommer alla begär Anden att *serva* att återgå till att använda *standard* versionen av *tjänsten*.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b9999ae92840d79bb19464216c0f28504011b3f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008329"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Skapa en adresspool i Windows Virtual Desktop (klassisk) med en Azure Resource Manager-mall
@@ -38,11 +38,11 @@ Starta genom att gå till [den här GitHub-URL: en](https://github.com/Azure/RDS
 
 ### <a name="deploy-the-template-to-azure"></a>Distribuera mallen till Azure
 
-Om du distribuerar i en Enterprise-prenumeration kan du rulla nedåt och välja **distribuera till Azure**och sedan gå vidare fylla i parametrarna baserat på din avbildnings källa.
+Om du distribuerar i en Enterprise-prenumeration kan du rulla nedåt och välja **distribuera till Azure** och sedan gå vidare fylla i parametrarna baserat på din avbildnings källa.
 
 Om du distribuerar i en prenumeration på Cloud Solution Provider följer du de här stegen för att distribuera till Azure:
 
-1. Rulla nedåt och högerklicka på **distribuera till Azure**och välj sedan **Kopiera länk plats**.
+1. Rulla nedåt och högerklicka på **distribuera till Azure** och välj sedan **Kopiera länk plats**.
 2. Öppna en text redigerare som anteckningar och klistra in länken där.
 3. Höger efter " https://portal.azure.com/ " och innan hashtagg (#) anger ett @-tecken följt av klient domän namnet. Här är ett exempel på det format som du bör använda: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` .
 4. Logga in på Azure Portal som en användare med administratörs-/deltagar behörighet för Cloud Solution Provider-prenumerationen.

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97356739"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Lagringskonfiguration för SQL Server VM
@@ -100,7 +100,7 @@ För befintliga SQL Server virtuella datorer kan du ändra vissa lagrings instä
 * SQL-data
 * SQL-logg
 * Annat (icke-SQL-lagring)
-* Tillgängligt
+* Tillgänglig
 
 Om du vill ändra lagrings inställningarna väljer du **Konfigurera** under **Inställningar**. 
 
@@ -143,7 +143,7 @@ I följande tabell beskrivs de tre tillgängliga alternativen för arbets belast
 
 | Arbets belastnings typ | Beskrivning | Optimeringar |
 | --- | --- | --- |
-| **Allmänt** |Standardinställning som stöder de flesta arbets belastningar |Inga |
+| **Allmänt** |Standardinställning som stöder de flesta arbets belastningar |Inget |
 | **Transaktionell bearbetning** |Optimerar lagringen för traditionella databas OLTP-arbetsbelastningar |Spårnings flagga 1117<br/>Spårnings flagga 1118 |
 | **Data lager hantering** |Optimerar lagringen för analys-och rapporterings arbets belastningar |Spårnings flagga 610<br/>Spårnings flagga 1117 |
 

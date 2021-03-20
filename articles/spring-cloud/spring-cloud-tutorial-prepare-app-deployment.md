@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98874150"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Förbereda ett program för distribution i Azure våren Cloud
@@ -57,7 +57,7 @@ För Steeltoe 3,0 lägger du till det senaste paketet [Microsoft. Azure. SpringC
 </ItemGroup>
 ```
 
-## <a name="update-programcs"></a>Uppdatera Program.cs
+## <a name="update-programcs"></a>Uppdatera program. CS
 
 `Program.Main`Anropa metoden i-metoden `UseAzureSpringCloudService` .
 

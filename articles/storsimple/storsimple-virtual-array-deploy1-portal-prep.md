@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87070328"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Distribuera StorSimple Virtual Array – förbereda Azure Portal
@@ -127,9 +127,9 @@ Utför följande steg på [Azure-portalen](https://portal.azure.com/).
 
 #### <a name="to-get-the-virtual-array-image"></a>Så här hämtar du den virtuella mat ris avbildningen
 
-1. Logga in på [Azure Portal](https://portal.azure.com/). 
-2. Klicka på **bläddra > StorSimple Device Managers**i Azure Portal.
-3. Välj en befintlig StorSimple Enhetshanteraren-tjänst. Klicka på **Snabbstart**i bladet **StorSimple Enhetshanteraren** . 
+1. Logga in på [Azure-portalen](https://portal.azure.com/). 
+2. Klicka på **bläddra > StorSimple Device Managers** i Azure Portal.
+3. Välj en befintlig StorSimple Enhetshanteraren-tjänst. Klicka på **Snabbstart** i bladet **StorSimple Enhetshanteraren** . 
 4. Klicka på länken som motsvarar den avbildning som du vill ladda ned från Microsoft Download Center. Avbildningsfilerna är cirka 4,8 GB.
    
    * VHDX för Hyper-V på Windows Server 2012 och senare
@@ -152,7 +152,7 @@ Utför följande steg i [Azure Portal](https://ms.portal.azure.com/) på StorSim
 3. Klicka på **Lägg till**.
 4. På bladet **Lägg till ett lagrings konto** gör du följande:
    
-   1. För **prenumeration**väljer du **aktuell**.
+   1. För **prenumeration** väljer du **aktuell**.
    
    2. Ange namnet på ditt Azure Storage-konto.
    

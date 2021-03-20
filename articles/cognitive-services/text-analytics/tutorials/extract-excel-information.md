@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359909"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrahera information i Excel med Textanalys och energi automatisering 
@@ -76,7 +76,7 @@ Skapa variabler som representerar den information som ska läggas till i Excel-f
 
 Lägg till följande information till de variabler som du har skapat. De representerar kolumnerna i Excel-filen. Om några variabler är komprimerade kan du klicka på dem för att expandera dem.
 
-| Åtgärd |Namn   | Typ | Värde |
+| Action |Namn   | Typ | Värde |
 |---------|---------|---|---|
 | Initiera variabel | var_person | Sträng | Person |
 | Initiera variabel 2 | var_phone | Sträng | Phone_Number |
@@ -123,7 +123,7 @@ Ange följande information i ditt flöde för att skapa en ny Textanalys-anslutn
 
 | Fält           | Värde                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Anslutningsnamn | Ett namn på anslutningen till din Textanalys-resurs. Exempelvis `TAforPowerAutomate`. |
+| Anslutningsnamn | Ett namn på anslutningen till din Textanalys-resurs. Till exempel `TAforPowerAutomate`. |
 | Kontonyckel     | Nyckeln till din Textanalys-resurs.                                                                                   |
 | Webbplats-URL        | Slut punkten för Textanalys resursen.                                                       |
 
@@ -170,7 +170,7 @@ I villkoret **om ja** skriver du i Excel och väljer sedan **Uppdatera en rad**.
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Lägg till Textanalys autentiseringsuppgifter till ditt flöde. 3-6":::
 
-Ange Excel-informationen och uppdatera **nyckel kolumnen** , **nyckel värde** och **PersonName** fält. Detta lägger till namnet som identifieras av API: t i Excel-bladet. 
+Ange Excel-informationen och uppdatera **nyckel kolumnen**, **nyckel värde** och **PersonName** fält. Detta lägger till namnet som identifieras av API: t i Excel-bladet. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Lägg till Textanalys autentiseringsuppgifter till ditt flöde. 3,7":::
@@ -218,7 +218,7 @@ I **om inget** villkor klickar du på **Lägg till en åtgärd** och väljer **U
 
 ## <a name="test-the-workflow"></a>Testa arbetsflödet
 
-I det övre högra hörnet på skärmen klickar du på **Spara** och sedan på **testa**. Välj  **jag utför utlösnings åtgärden**. Klicka på **spara & test** , **Kör Flow** och sedan på **Slutför**.
+I det övre högra hörnet på skärmen klickar du på **Spara** och sedan på **testa**. Välj  **jag utför utlösnings åtgärden**. Klicka på **spara & test**, **Kör Flow** och sedan på **Slutför**.
 
 Excel-filen kommer att uppdateras i ditt OneDrive-konto. Det ser ut ungefär så här.
 

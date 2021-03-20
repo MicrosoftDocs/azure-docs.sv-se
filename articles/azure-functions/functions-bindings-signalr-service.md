@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763497"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR Service-bindningar för Azure Functions
 
 I den här uppsättningen artiklar förklaras hur du autentiserar och skickar meddelanden i real tid till klienter som är anslutna till [Azure SignalR-tjänsten](https://azure.microsoft.com/services/signalr-service/) med hjälp av SignalR tjänst bindningar i Azure Functions. Azure Functions stöder indata- och utdatabindningar för SignalR Service.
 
-| Åtgärd | Typ |
+| Action | Typ |
 |---------|---------|
 | Hantera meddelanden från SignalR-tjänsten | [Utlös bindning](./functions-bindings-signalr-service-trigger.md) |
 | Returnera URL för tjänst slut punkt och åtkomsttoken | [Binda in](./functions-bindings-signalr-service-input.md) |

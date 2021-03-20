@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/13/2020
 ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91998479"
 ---
 # <a name="group-data-into-bins-module"></a>Gruppera data i modulen lager
@@ -65,21 +65,21 @@ Eftersom det finns många sätt att gruppera data på, rekommenderar vi att du e
 
     - **Anpassade kanter**: du kan ange de värden som börjar varje lager plats. Värdet Edge är alltid den nedre gränsen för lager platsen. 
     
-      Anta till exempel att du vill gruppera värden i två lager platser. En har värden som är större än 0 och en har värden som är mindre än eller lika med 0. I det här fallet anger du **0** i en **kommaavgränsad lista över lager plats kanter**för plats kanter. Utdata från modulen är 1 och 2, vilket anger lager plats indexet för varje rad värde. Observera att listan med kommaavgränsade värden måste vara i stigande ordning, till exempel 1, 3, 5, 7.
+      Anta till exempel att du vill gruppera värden i två lager platser. En har värden som är större än 0 och en har värden som är mindre än eller lika med 0. I det här fallet anger du **0** i en **kommaavgränsad lista över lager plats kanter** för plats kanter. Utdata från modulen är 1 och 2, vilket anger lager plats indexet för varje rad värde. Observera att listan med kommaavgränsade värden måste vara i stigande ordning, till exempel 1, 3, 5, 7.
     
     > [!Note]
     > *Entropi mdl* -läge definieras i Studio (klassisk) och det finns inget motsvarande paket med öppen källkod som kan utnyttjas för att stödja i designern ännu.        
 
-4. Om du använder diskretisering-lägena **Quantiles** och **samma bredd** använder du alternativet **antal lager platser** för att ange hur många lager platser eller *Quantiles*som du vill skapa.
+4. Om du använder diskretisering-lägena **Quantiles** och **samma bredd** använder du alternativet **antal lager platser** för att ange hur många lager platser eller *Quantiles* som du vill skapa.
 
-5. För **kolumner till bin**använder du kolumn väljaren för att välja de kolumner som har de värden som du vill använda för bin. Kolumner måste vara en numerisk datatyp.
+5. För **kolumner till bin** använder du kolumn väljaren för att välja de kolumner som har de värden som du vill använda för bin. Kolumner måste vara en numerisk datatyp.
 
     Samma diskretisering-regel tillämpas på alla tillämpliga kolumner som du väljer. Om du behöver använda en annan metod för att lägga till binge i vissa kolumner använder du en separat instans av grupp data i modulen lager platser för varje uppsättning kolumner.
 
     > [!WARNING]
     > Om du väljer en kolumn som inte är en tillåten typ genereras ett körnings fel. Modulen returnerar ett fel så fort den hittar en kolumn av en otillåten typ. Om du får ett fel meddelande granskar du alla valda kolumner. Felet visar inte alla ogiltiga kolumner.
 
-6. I **output-läge**anger du hur du vill att quantized-värdena ska matas ut:
+6. I **output-läge** anger du hur du vill att quantized-värdena ska matas ut:
 
     + **Lägg till**: skapar en ny kolumn med diskretiseras-värdena och lägger till dem i tabellen indatamängd.
 

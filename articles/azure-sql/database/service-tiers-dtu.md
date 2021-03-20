@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
 ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793185"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Tjänstnivåer i en DTU-baserad inköpsmodell
@@ -42,8 +42,8 @@ Att välja en tjänst nivå beror främst på verksamhets kontinuitet, lagring o
 |**Processor**|Låg|Låg, medel, hög|Medel, hög|
 |**IOPS (ungefärlig)**\* |1-4 IOPS per DTU| 1-4 IOPS per DTU | 25 IOPS per DTU|
 |**I/o-latens (ungefärligt)**|5 ms (läsning), 10 ms (Skriv)|5 ms (läsning), 10 ms (Skriv)|2 ms (Läs/skriv)|
-|**Columnstore-indexering** |E.t.|S3 och högre|Stöds|
-|**Minnesintern OLTP**|Saknas|Saknas|Stöds|
+|**Columnstore-indexering** |Ej tillämpligt|S3 och högre|Stöds|
+|**Minnes intern OLTP**|Saknas|Saknas|Stöds|
 
 \* Alla Läs-och skriv-IOPS mot datafiler, inklusive Background IO (Checkpoint och Lazy Writer)
 
@@ -73,7 +73,7 @@ Beräknings storlekar uttrycks i databas transaktions enheter (DTU: er) för ens
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Gränser för eDTU-, lagrings-och databas i elastisk pool
 
-|| **Basic** | **Standard** | **Denaturering** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | **Maximal lagrings storlek per databas**  | 2 GB | 1 TB | 1 TB |
 | **Maximal lagrings storlek per pool** | 156 GB | 4 TB | 4 TB |
@@ -177,7 +177,7 @@ Nyckel måtten i Benchmark är data flöde och svars tid.
 | --- | --- | --- |
 | Premium |Transaktioner per sekund |95 percentil vid 0,5 sekunder |
 | Standard |Transaktioner per minut |90: e percentilen vid 1,0 sekunder |
-| Basic |Transaktioner per timma |80th percentil vid 2,0 sekunder |
+| Grundläggande |Transaktioner per timma |80th percentil vid 2,0 sekunder |
 
 ## <a name="next-steps"></a>Nästa steg
 

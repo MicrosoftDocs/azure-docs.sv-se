@@ -4,10 +4,10 @@ description: Referens för YAML-filen som stöds av Azure Container Instances at
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87084768"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-referens: Azure Container Instances
@@ -330,7 +330,7 @@ I följande tabeller beskrivs de värden som du måste ange i schemat.
 |  Namn | Typ | Obligatorisk | Värde |
 |  ---- | ---- | ---- | ---- |
 |  katalog | sträng | No | Mål katalog namn. Får inte innehålla eller börja med "..".  Om "." anges blir volym katalogen git-lagringsplatsen.  Annars kommer volymen att innehålla git-lagringsplatsen i under katalogen med det angivna namnet. |
-|  lagrings platsen | sträng | Ja | URL för databas |
+|  repository | sträng | Ja | URL för databas |
 |  revision | sträng | No | Genomför hash för den angivna revisionen. |
 
 
@@ -415,8 +415,8 @@ I följande tabeller beskrivs de värden som du måste ange i schemat.
 
 |  Namn | Typ | Obligatorisk | Värde |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | nummer | Ja | Minnes förfrågan i GB av den här behållar instansen. |
-|  registrera | nummer | Ja | PROCESSOR förfrågan för den här behållar instansen. |
+|  memoryInGB | antal | Ja | Minnes förfrågan i GB av den här behållar instansen. |
+|  registrera | antal | Ja | PROCESSOR förfrågan för den här behållar instansen. |
 |  grafik | objekt | Inga | GPU-begäran för den här behållar instansen. - [GpuResource-objekt](#gpuresource-object) |
 
 
@@ -426,8 +426,8 @@ I följande tabeller beskrivs de värden som du måste ange i schemat.
 
 |  Namn | Typ | Obligatorisk | Värde |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | nummer | Inga | Minnes gränsen i GB för den här behållar instansen. |
-|  registrera | nummer | Inga | PROCESSOR gränsen för den här behållar instansen. |
+|  memoryInGB | antal | Inga | Minnes gränsen i GB för den här behållar instansen. |
+|  registrera | antal | Inga | PROCESSOR gränsen för den här behållar instansen. |
 |  grafik | objekt | Inga | GPU-gränsen för den här behållar instansen. - [GpuResource-objekt](#gpuresource-object) |
 
 

@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 08d5e53facce172c2287c2e341895f0ee38571f0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943706"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Självstudie: sentiment-analys med Cognitive Services (för hands version)
@@ -111,4 +111,4 @@ Sentiment returneras som **positiva**, **negativa**, **neutrala** eller **blanda
 ## <a name="next-steps"></a>Nästa steg
 - [Självstudie: avvikelse identifiering med Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Självstudie: Machine Learning-modellens poängsättning i Azure Synapse dedikerade SQL-pooler](tutorial-sql-pool-model-scoring-wizard.md)
-- [Machine Learning funktioner i Azure Synapse Analytics](what-is-machine-learning.md)
+- [Maskininlärningsfunktioner i Azure Synapse Analytics](what-is-machine-learning.md)

@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104044"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Åtkomst Azure Data Lake Storage Gen1 från virtuella datorer i ett Azure VNET
@@ -29,7 +29,7 @@ Azure Data Lake Storage Gen1 är en PaaS-tjänst som körs på offentliga Intern
 I den här artikeln får du lära dig hur du aktiverar åtkomst till Azure Data Lake Storage Gen1 från virtuella Azure-datorer, som har begränsad åtkomst till resurser med någon av de tre metoderna som anges ovan.
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Aktivera anslutning till Azure Data Lake Storage Gen1 från virtuella datorer med begränsad anslutning
-För att få åtkomst till Azure Data Lake Storage Gen1 från sådana virtuella datorer måste du konfigurera dem för att få åtkomst till IP-adressen för den region där Azure Data Lake Storage Gen1 kontot är tillgängligt. Du kan identifiera IP-adresserna för dina Data Lake Storage Gen1 konto områden genom att matcha DNS-namnen för dina konton ( `<account>.azuredatalakestore.net` ). Du kan använda verktyg som **nslookup**för att lösa DNS-namn för dina konton. Öppna en kommando tolk på datorn och kör följande kommando:
+För att få åtkomst till Azure Data Lake Storage Gen1 från sådana virtuella datorer måste du konfigurera dem för att få åtkomst till IP-adressen för den region där Azure Data Lake Storage Gen1 kontot är tillgängligt. Du kan identifiera IP-adresserna för dina Data Lake Storage Gen1 konto områden genom att matcha DNS-namnen för dina konton ( `<account>.azuredatalakestore.net` ). Du kan använda verktyg som **nslookup** för att lösa DNS-namn för dina konton. Öppna en kommando tolk på datorn och kör följande kommando:
 
 ```console
 nslookup mydatastore.azuredatalakestore.net

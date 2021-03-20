@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92107580"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio instrument paneler
@@ -24,7 +24,7 @@ ms.locfileid: "92107580"
 
 ## <a name="connecting-to-a-data-controller"></a>Ansluta till en datakontrollant
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 - Ladda ned [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - Azure Arc-tillägget har installerats
@@ -62,7 +62,7 @@ https://52.154.152.24:30080
 
 Anteckna din IP-adress eftersom du kommer att använda den i nästa steg.
 
-### <a name="connect"></a>Anslut
+### <a name="connect"></a>Ansluta
 
 1. Öppna Azure Data Studio
 

@@ -8,10 +8,10 @@ ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88606799"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Vanliga frågor om API: er för SaaS-utförande
@@ -40,7 +40,7 @@ När du prenumererar på SaaS-erbjudandet har användaren enats om att betala f�
 
 När du prenumererar på ett erbjudande kan Azure-användaren identifiera och hantera alla erbjudanden i Azure. Som standard visas statusen för ett nyligen prenumererat SaaS-erbjudande som **etablering, som väntar på att utföras**. I det här läget uppmanas Azure-användaren att ange en åtgärd för att **Konfigurera kontot**, så att du kan bläddra till sin SaaS-prenumerations hanterings upplevelse i Azure Portal.
 
-När användaren väljer **Konfigurera konto**omdirigeras de till SaaS-tjänstens webbplats. Utgivaren konfigurerade URL: en vid tidpunkten för publiceringen av erbjudandet. Den här sidan kallas utgivarens landnings sida. Azure-användare loggar in på SaaS-landnings sidan baserat på deras befintliga AAD-autentiseringsuppgifter i Azure.
+När användaren väljer **Konfigurera konto** omdirigeras de till SaaS-tjänstens webbplats. Utgivaren konfigurerade URL: en vid tidpunkten för publiceringen av erbjudandet. Den här sidan kallas utgivarens landnings sida. Azure-användare loggar in på SaaS-landnings sidan baserat på deras befintliga AAD-autentiseringsuppgifter i Azure.
 
 När Azure-användaren omdirigeras till landnings sidan läggs en token till i fråge-URL: en. Den här token är kort livs längd och giltig under 24 timmar. Du kan sedan identifiera förekomsten av denna token och anropa Microsofts API för att få mer kontext som är associerad med token.
 
