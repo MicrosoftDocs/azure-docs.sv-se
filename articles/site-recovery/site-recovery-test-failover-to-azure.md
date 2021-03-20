@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 815a35c167bbcd3ac03dfdaaf6d699e58a791f33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369394"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Köra ett redundanstest (haveri beredskap) till Azure 
@@ -41,10 +41,10 @@ Den här proceduren beskriver hur du kör ett redundanstest för en återställn
     - Site Recovery försöker skapa virtuella test datorer i ett undernät med samma namn och samma IP-adress som anges i **beräknings-och nätverks** inställningarna för den virtuella datorn.
     - Om ett undernät med samma namn inte är tillgängligt i det virtuella Azure-nätverket som används för redundanstest, skapas den virtuella test datorn i det första under nätet i alfabetisk ordning.
     - Om samma IP-adress inte är tillgänglig i under nätet får den virtuella datorn en annan tillgänglig IP-adress i under nätet. [Läs mer](#create-a-network-for-test-failover).
-4. Om du växlar över till Azure och data kryptering har Aktiver ATS i **krypterings nyckel**väljer du det certifikat som utfärdades när du aktiverade kryptering under installationen av providern. Du kan ignorera det här steget om kryptering inte är aktiverat.
+4. Om du växlar över till Azure och data kryptering har Aktiver ATS i **krypterings nyckel** väljer du det certifikat som utfärdades när du aktiverade kryptering under installationen av providern. Du kan ignorera det här steget om kryptering inte är aktiverat.
 5. Spåra förlopp för redundansväxling på fliken **jobb** . Du bör kunna se test replik datorn i Azure Portal.
 6. Om du vill initiera en RDP-anslutning till den virtuella Azure-datorn måste du [lägga till en offentlig IP-adress](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) i nätverks gränssnittet för den misslyckade virtuella datorn.
-7. När allt fungerar som förväntat klickar du på **rensning**av redundanstest. Detta tar bort de virtuella datorer som skapades under redundanstest.
+7. När allt fungerar som förväntat klickar du på **rensning** av redundanstest. Detta tar bort de virtuella datorer som skapades under redundanstest.
 8. I **Kommentarer** skriver du och sparar eventuella observationer från redundanstestningen.
 
 
@@ -105,7 +105,7 @@ Om du vill ansluta till virtuella Azure-datorer med RDP/SSH efter redundans föl
 
 **Redundans** | **Plats** | **Åtgärder**
 --- | --- | ---
-**Virtuell Azure-dator som kör Windows** | Lokal dator före redundans | För att få åtkomst till den virtuella Azure-datorn via Internet aktiverar du RDP och kontrollerar att TCP-och UDP-regler har lagts till för **offentlig**och att RDP tillåts för alla profiler i **Windows-brandväggen**  >  **tillåtna appar**.<br/><br/> För att komma åt den virtuella Azure-datorn via en plats-till-plats-anslutning aktiverar du RDP på datorn och ser till att RDP tillåts i **Windows-brandväggen**  ->  **tillåtna appar och funktioner**för **domän nätverk och privata** nätverk.<br/><br/>  Kontrol lera att SAN-principen för operativ systemet är inställd på **OnlineAll**. [Läs mer](https://support.microsoft.com/kb/3031135).<br/><br/> Se till att inga Windows-uppdateringar väntar på den virtuella datorn när du aktiverar en redundansväxling. Windows Update kan starta när du växlar över och du kan inte logga in på den virtuella datorn förrän uppdateringen är klar.
+**Virtuell Azure-dator som kör Windows** | Lokal dator före redundans | För att få åtkomst till den virtuella Azure-datorn via Internet aktiverar du RDP och kontrollerar att TCP-och UDP-regler har lagts till för **offentlig** och att RDP tillåts för alla profiler i **Windows-brandväggen**  >  **tillåtna appar**.<br/><br/> För att komma åt den virtuella Azure-datorn via en plats-till-plats-anslutning aktiverar du RDP på datorn och ser till att RDP tillåts i **Windows-brandväggen**  ->  **tillåtna appar och funktioner** för **domän nätverk och privata** nätverk.<br/><br/>  Kontrol lera att SAN-principen för operativ systemet är inställd på **OnlineAll**. [Läs mer](https://support.microsoft.com/kb/3031135).<br/><br/> Se till att inga Windows-uppdateringar väntar på den virtuella datorn när du aktiverar en redundansväxling. Windows Update kan starta när du växlar över och du kan inte logga in på den virtuella datorn förrän uppdateringen är klar.
 **Virtuell Azure-dator som kör Windows** | Virtuell Azure-dator efter redundans |  [Lägg till en offentlig IP-adress](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) för den virtuella datorn.<br/><br/> Reglerna för nätverks säkerhets gruppen på den misslyckade virtuella datorn (och det Azure-undernät som den är ansluten till) måste tillåta inkommande anslutningar till RDP-porten.<br/><br/> Kontrol lera **startdiagnostik** för att verifiera en skärm bild av den virtuella datorn.<br/><br/> Om du inte kan ansluta kontrollerar du att den virtuella datorn körs och läser igenom de här [fel söknings tipsen](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Virtuell Azure-dator som kör Linux** | Lokal dator före redundans | Kontrol lera att Secure Shell-tjänsten på den virtuella datorn är inställd på att starta automatiskt vid system start.<br/><br/> Kontrollera att brandväggsreglerna tillåter en SSH-anslutning till tjänsten.
 **Virtuell Azure-dator som kör Linux** | Virtuell Azure-dator efter redundans | Reglerna för nätverks säkerhets gruppen på den misslyckade virtuella datorn (och det Azure-undernät som den är ansluten till) måste tillåta inkommande anslutningar till SSH-porten.<br/><br/> [Lägg till en offentlig IP-adress](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) för den virtuella datorn.<br/><br/> Kontrol lera **startdiagnostiken** för en skärm bild av den virtuella datorn.<br/><br/>

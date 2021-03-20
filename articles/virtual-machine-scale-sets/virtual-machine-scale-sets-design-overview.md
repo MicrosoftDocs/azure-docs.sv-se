@@ -11,10 +11,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88648572"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Design överväganden för skalnings uppsättningar
@@ -60,7 +60,7 @@ Under överetablering kan du förbättra etableringen av lyckade kostnader, men 
 
 Om din skalnings uppsättning använder användar hanterad lagring och du inaktiverar överetablering, kan du ha fler än 20 virtuella datorer per lagrings konto, men vi rekommenderar inte att gå över 40 för prestanda orsaker i i/o. 
 
-## <a name="limits"></a>Begränsningar
+## <a name="limits"></a>Gränser
 En skalnings uppsättning som bygger på en Marketplace-avbildning (kallas även plattforms avbildning) och som kon figurer ATS för att använda Azure Managed Disks har stöd för en kapacitet på upp till 1 000 virtuella datorer. Om du konfigurerar din skalnings uppsättning så att den stöder fler än 100 virtuella datorer fungerar inte alla scenarier (till exempel belastnings utjämning). Mer information finns i [arbeta med stora skalnings uppsättningar för virtuella datorer](virtual-machine-scale-sets-placement-groups.md). 
 
 En skalnings uppsättning som kon figurer ATS med användar hanterade lagrings konton är för närvarande begränsad till 100 virtuella datorer (och 5 lagrings konton rekommenderas för den här skalan).

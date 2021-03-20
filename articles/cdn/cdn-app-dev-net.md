@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919496"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>Kom igång med Azure CDN-biblioteket för .NET
@@ -49,7 +49,7 @@ I Visual Studio 2015 klickar du på **Arkiv**, **nytt**, **projekt...** för att
 
 Vårt projekt kommer att använda vissa Azure-bibliotek som finns i NuGet-paket.  Nu ska vi lägga till dem i projektet.
 
-1. Klicka på **verktyg** -menyn, **NuGet Package Manager**och sedan **Package Manager-konsolen**.
+1. Klicka på **verktyg** -menyn, **NuGet Package Manager** och sedan **Package Manager-konsolen**.
 
     ![Hantera NuGet-paket](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. Kör följande kommando i Package Manager-konsolen för att installera **Active Directory-autentiseringsbibliotek (ADAL)**:
@@ -62,7 +62,7 @@ Vårt projekt kommer att använda vissa Azure-bibliotek som finns i NuGet-paket.
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Direktiv, konstanter, huvudsakliga metoder och hjälp metoder
 Låt oss få den grundläggande strukturen i vårt program skrivet.
 
-1. Gå tillbaka till Program.cs-fliken och Ersätt `using` direktiven överst med följande:
+1. Gå tillbaka till fliken program. CS och Ersätt `using` direktiven överst med följande:
 
     ```csharp
     using System;
@@ -74,7 +74,7 @@ Låt oss få den grundläggande strukturen i vårt program skrivet.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Vi måste definiera vissa konstanter som metoderna kommer att använda.  I `Program` -klassen, men före `Main` -metoden lägger du till följande.  Se till att ersätta plats hållarna, inklusive ** &lt; vinkel paren tes &gt; **, med dina egna värden efter behov.
+2. Vi måste definiera vissa konstanter som metoderna kommer att använda.  I `Program` -klassen, men före `Main` -metoden lägger du till följande.  Se till att ersätta plats hållarna, inklusive **&lt; vinkel paren tes &gt;**, med dina egna värden efter behov.
 
     ```csharp
     //Tenant app constants

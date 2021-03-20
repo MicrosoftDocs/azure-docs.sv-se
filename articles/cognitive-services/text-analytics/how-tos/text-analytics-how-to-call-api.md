@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650736"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599222"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
@@ -66,6 +66,7 @@ Se tabellen nedan för att se vilka funktioner som kan användas asynkront. Obse
 | Åsikts utvinning | ✔ |  |
 | Extrahering av nyckelfraser | ✔ | ✔* |
 | Identifiering av namngiven entitet (inklusive PII och PHI) | ✔ | ✔* |
+| Länkning av entitet | ✔ | ✔* |
 | Textanalys för hälsa (container) | ✔ |  |
 | Textanalys för hälso tillstånd (API) |  | ✔  |
 
@@ -118,8 +119,9 @@ Följande är ett exempel på en API-begäran för synkrona Textanalys-slutpunkt
 
 Med `/analyze` slut punkten kan du välja vilken av de textanalys funktioner som stöds som du vill använda i ett enda API-anrop. Den här slut punkten stöder för närvarande:
 
-* extrahering av nyckel fraser 
+* Extrahering av nyckelfraser 
 * Identifiering av namngiven entitet (inklusive PII och PHI)
+* Entity Linking
 
 | Element | Giltiga värden | Obligatoriskt? | Användning |
 |---------|--------------|-----------|-------|
@@ -128,7 +130,7 @@ Med `/analyze` slut punkten kan du välja vilken av de textanalys funktioner som
 |`documents` | Innehåller `id` fälten och `text` nedan | Obligatorisk | Innehåller information för varje dokument som skickas och dokumentets rå text. |
 |`id` | Sträng | Obligatorisk | De ID: n som du anger används för att strukturera utdata. |
 |`text` | Ostrukturerad rå text, upp till 125 000 tecken. | Obligatorisk | Måste vara på det engelska språket, vilket är det enda språk som stöds för närvarande. |
-|`tasks` | Innehåller följande Textanalys funktioner: `entityRecognitionTasks` , `keyPhraseExtractionTasks` eller `entityRecognitionPiiTasks` . | Obligatorisk | En eller flera av de Textanalys-funktioner som du vill använda. Observera att `entityRecognitionPiiTasks` har en valfri `domain` parameter som kan anges till `pii` eller `phi` . Om inget anges används standardvärdet i systemet `pii` . |
+|`tasks` | Innehåller följande textanalys funktioner: `entityRecognitionTasks` , `entityLinkingTasks` , `keyPhraseExtractionTasks` eller `entityRecognitionPiiTasks` . | Obligatorisk | En eller flera av de Textanalys-funktioner som du vill använda. Observera att `entityRecognitionPiiTasks` har en valfri `domain` parameter som kan anges till `pii` eller `phi` och `pii-categories` för identifiering av valda entitetstyper. Om `domain` parametern inte anges används standardvärdet `pii` . |
 |`parameters` | Innehåller `model-version` fälten och `stringIndexType` nedan | Obligatorisk | Det här fältet ingår i ovanstående funktions uppgifter som du väljer. De innehåller information om modell versionen som du vill använda och index typen. |
 |`model-version` | Sträng | Obligatorisk | Ange vilken version av modellen som du vill använda.  |
 |`stringIndexType` | Sträng | Obligatorisk | Ange den text avkodare som matchar din programmerings miljö.  De typer som stöds är `textElement_v8` (standard), `unicodeCodePoint` , `utf16CodeUnit` . Mer information finns i [artikeln text förskjutning](../concepts/text-offsets.md#offsets-in-api-version-31-preview) .  |
@@ -158,6 +160,14 @@ Med `/analyze` slut punkten kan du välja vilken av de textanalys funktioner som
                 }
             }
         ],
+        "entityLinkingTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
         "keyPhraseExtractionTasks": [{
             "parameters": {
                 "model-version": "latest"
@@ -165,7 +175,10 @@ Med `/analyze` slut punkten kan du välja vilken av de textanalys funktioner som
         }],
         "entityRecognitionPiiTasks": [{
             "parameters": {
-                "model-version": "latest"
+                "model-version": "latest",
+                "stringIndexType": "TextElements_v8",
+                "domain": "phi",
+                "pii-categories":"default"
             }
         }]
     }
@@ -231,16 +244,16 @@ I Postman (eller något annat verktyg för webb-API-testning) lägger du till sl
 
 | Funktion | Typ av begäran | Resurs slut punkter |
 |--|--|--|
-| Skicka analys jobb | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
-| Hämta analys status och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
+| Skicka analys jobb | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
+| Hämta analys status och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Slut punkter för att skicka asynkrona begär anden till `/health` slut punkten
 
 | Funktion | Typ av begäran | Resurs slut punkter |
 |--|--|--|
-| Skicka Textanalys för hälso tillstånds jobb  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
-| Hämta jobb status och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| Avbryt jobb | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| Skicka Textanalys för hälso tillstånds jobb  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
+| Hämta jobb status och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| Avbryt jobb | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -266,7 +279,7 @@ När du har slut punkten, i Postman (eller något annat verktyg för webb-API-te
 
       + [Språk identifiering](text-analytics-how-to-language-detection.md)
       + [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md)
-      + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md)
+      + [Attitydanalys](text-analytics-how-to-sentiment-analysis.md)
       + [Enhets igenkänning](text-analytics-how-to-entity-linking.md)
 
 ## <a name="send-the-request"></a>Skicka begäran
@@ -278,7 +291,7 @@ Om du har gjort anropet till asynkrona `/analyze` eller `/health` slut punkter k
 1. I API-svaret hittar du `Operation-Location` från-huvudet, som identifierar det jobb som du skickade till API: et. 
 2. Skapa en GET-begäran för den slut punkt som du använde. Se [tabellen ovan](#set-up-a-request) för slut punkts formatet och granska [API-referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Exempel:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
 
 3. Lägg till i `Operation-Location` begäran.
 
@@ -296,7 +309,7 @@ Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du 
 
 + [Språk identifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
 + [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
-+ [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md#view-the-results)
++ [Attitydanalys](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 
 # <a name="asynchronous"></a>[Asynkrona](#tab/asynchronous)

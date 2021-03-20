@@ -4,10 +4,10 @@ description: Lär dig hur du ansluter till en virtuell Windows-dator i ett labb 
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: e1e786daa396548030976159d1b150caa4b24396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540718"
 ---
 # <a name="connect-to-a-windows-vm-in-your-lab-azure-devtest-labs"></a>Ansluta till en virtuell Windows-dator i labbet (Azure DevTest Labs)
@@ -20,16 +20,16 @@ Den här artikeln visar hur du ansluter till en virtuell Windows-dator i labbet.
     :::image type="content" source="./media/connect-windows-virtual-machine/search-select.png" alt-text="Sök efter och välj DevTest Labs":::    
 1. I listan med labb väljer du ditt **labb**.
 
-    :::image type="content" source="./media/connect-windows-virtual-machine/select-lab.png" alt-text="Sök efter och välj DevTest Labs":::            
+    :::image type="content" source="./media/connect-windows-virtual-machine/select-lab.png" alt-text="Välj ditt labb":::            
 1. På Start sidan för ditt labb väljer du din virtuella Windows-dator i listan **mina virtuella datorer** . 
 
-    :::image type="content" source="./media/connect-windows-virtual-machine/select-windows-vm.png" alt-text="Sök efter och välj DevTest Labs":::                
+    :::image type="content" source="./media/connect-windows-virtual-machine/select-windows-vm.png" alt-text="Välj din virtuella Windows-dator":::                
 1. På sidan **virtuell dator** för den virtuella datorn väljer du **Anslut** i verktygsfältet. Om den virtuella datorn är stoppad väljer du **Starta** först för att starta den virtuella datorn.
 
-    :::image type="content" source="./media/connect-windows-virtual-machine/select-connect.png" alt-text="Sök efter och välj DevTest Labs":::                    
+    :::image type="content" source="./media/connect-windows-virtual-machine/select-connect.png" alt-text="Välj Anslut i verktygsfältet":::                    
 1. Om du använder Edge-webbläsaren visas länken till den **nedladdade RDP-filen** längst ned i webbläsaren. 
 
-    :::image type="content" source="./media/connect-windows-virtual-machine/rdp-download.png" alt-text="Sök efter och välj DevTest Labs":::                        
+    :::image type="content" source="./media/connect-windows-virtual-machine/rdp-download.png" alt-text="RDP-nedladdning":::                        
 1. Öppna RDP-filen och ange dina autentiseringsuppgifter för virtuella datorer som du angav när du skapade den virtuella datorn. Du bör vara ansluten till den virtuella Windows-datorn nu. 
 
 ## <a name="next-steps"></a>Nästa steg

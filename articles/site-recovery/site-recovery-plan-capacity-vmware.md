@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368034"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planera kapacitet och skalning för VMware haveri beredskap till Azure
@@ -85,7 +85,7 @@ När du använder [Site Recovery distributions planeraren](site-recovery-deploym
 ### <a name="throttle-bandwidth"></a>Begränsa bandbredden
 
 1. Öppna snapin-modulen Azure Backup MMC på den dator som du använder som processerver. Som standard är en genväg till backup tillgänglig på Skriv bordet eller i följande mapp: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
-2. Välj **ändra egenskaper**i snapin-modulen.
+2. Välj **ändra egenskaper** i snapin-modulen.
 
     ![Skärm bild av alternativet Azure Backup MMC-snapin-modulen för att ändra egenskaper](./media/site-recovery-vmware-to-azure/throttle1.png)
 3. På fliken **begränsning** väljer du **Aktivera användnings begränsning för Internet bandbredd för säkerhets kopierings åtgärder**. Ange gränserna för arbets tid och ledig tid. Giltiga intervall är mellan 512 och 1 023 Mbit/s.
@@ -105,8 +105,8 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>Ändra nätverks bandbredden för en virtuell dator
 
 1. I VM-registret går du till **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * Ändra värdet för **UploadThreadsPerVM**för att ändra bandbredds trafik på en replikerande disk. Skapa nyckeln om den inte finns.
-   * Ändra värdet för **DownloadThreadsPerVM**för att ändra bandbredden för återställning av återställnings trafik från Azure.
+   * Ändra värdet för **UploadThreadsPerVM** för att ändra bandbredds trafik på en replikerande disk. Skapa nyckeln om den inte finns.
+   * Ändra värdet för **DownloadThreadsPerVM** för att ändra bandbredden för återställning av återställnings trafik från Azure.
 2. Standardvärdet för varje nyckel är **4**. I ett ”överetablerat” nätverk bör du ändra registernycklarnas standardvärden. Det maximala värdet som du kan använda är **32**. Övervaka trafiken för att optimera värdet.
 
 ## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Konfigurera Site Recovery-infrastrukturen för att skydda över 500 virtuella datorer
@@ -132,7 +132,7 @@ Om du skalar ut distributionen utöver 200-käll datorer, eller om du har en tot
 2. Högerklicka på den processerver som för närvarande används och välj sedan **switch**.
 
     ![Skärm bild av dialog rutan konfigurations Server](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. I **Välj mål process Server**väljer du den nya processervern som du vill använda. Välj sedan de virtuella datorer som servern ska hantera. Om du vill hämta information om servern väljer du informations ikonen. För att hjälpa dig att fatta inläsnings beslut visas det genomsnittliga utrymmet som krävs för att replikera varje vald virtuell dator till den nya processervern. Markera kryss rutan för att börja replikera till den nya processervern.
+3. I **Välj mål process Server** väljer du den nya processervern som du vill använda. Välj sedan de virtuella datorer som servern ska hantera. Om du vill hämta information om servern väljer du informations ikonen. För att hjälpa dig att fatta inläsnings beslut visas det genomsnittliga utrymmet som krävs för att replikera varje vald virtuell dator till den nya processervern. Markera kryss rutan för att börja replikera till den nya processervern.
 
 ## <a name="deploy-additional-master-target-servers"></a>Distribuera ytterligare huvud mål servrar
 

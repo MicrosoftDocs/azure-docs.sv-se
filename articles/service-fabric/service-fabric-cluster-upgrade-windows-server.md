@@ -4,10 +4,10 @@ description: Uppgradera Azure Service Fabric-koden som kör ett fristående Serv
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842945"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Uppgradera den Service Fabric version som körs i klustret 
@@ -24,7 +24,7 @@ Du kan bara uppgradera klustret till den nya versionen om du använder en konfig
 Två distinkta arbets flöden kan uppgradera klustret till den senaste versionen eller en Service Fabric version som stöds. Ett arbets flöde är för kluster som har anslutning för att ladda ned den senaste versionen automatiskt. Det andra arbets flödet är för kluster som inte har någon anslutning för att ladda ned den senaste versionen av Service Fabric.
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Aktivera automatisk uppgradering av Service Fabric versionen av klustret
-Ange `fabricClusterAutoupgradeEnabled` kluster konfigurationen till *Sant*om du vill att klustret ska hämta uppdateringar av Service Fabric när Microsoft släpper en ny version. Om du vill välja en version av Service Fabric som du vill att klustret ska vara på manuellt, ställer du in `fabricClusterAutoupgradeEnabled` kluster konfigurationen på *falskt*.
+Ange `fabricClusterAutoupgradeEnabled` kluster konfigurationen till *Sant* om du vill att klustret ska hämta uppdateringar av Service Fabric när Microsoft släpper en ny version. Om du vill välja en version av Service Fabric som du vill att klustret ska vara på manuellt, ställer du in `fabricClusterAutoupgradeEnabled` kluster konfigurationen på *falskt*.
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Uppgradera kluster som har anslutning för att ladda ned den senaste koden och konfigurationen
 Använd de här stegen för att uppgradera klustret till en version som stöds om dina klusternoder har Internet anslutning till [Microsoft Download Center](https://download.microsoft.com).

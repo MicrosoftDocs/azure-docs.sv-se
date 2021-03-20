@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934845"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-spatial-funktioner i Azure Kognitiv sökning – `geo.distance` och `geo.intersects`
 
 Azure Kognitiv sökning stöder geo-spatiala frågor i [OData filter-uttryck](query-odata-filter-orderby-syntax.md) via- `geo.distance` och- `geo.intersects` funktionerna. `geo.distance`Funktionen returnerar avståndet i kilo meter mellan två punkter, ett fält eller en intervall variabel, och en är en konstant som ska skickas som en del av filtret. `geo.intersects`Funktionen returnerar `true` om en viss punkt är inom en viss polygon, där punkten är en fält-eller intervall variabel och polygonen anges som en konstant som skickas som en del av filtret.
 
-`geo.distance`Funktionen kan också användas i [ **$OrderBy** -parametern](search-query-odata-orderby.md) för att sortera Sök Resultat efter avstånd från en viss punkt. Syntaxen för `geo.distance` i **$OrderBy** är samma som i **$filter**. När du använder `geo.distance` i **$OrderBy**måste det fält som det gäller för vara av typen `Edm.GeographyPoint` och det måste också vara **sorterbart**.
+`geo.distance`Funktionen kan också användas i [ **$OrderBy** -parametern](search-query-odata-orderby.md) för att sortera Sök Resultat efter avstånd från en viss punkt. Syntaxen för `geo.distance` i **$OrderBy** är samma som i **$filter**. När du använder `geo.distance` i **$OrderBy** måste det fält som det gäller för vara av typen `Edm.GeographyPoint` och det måste också vara **sorterbart**.
 
 > [!NOTE]
 > När `geo.distance` du använder i **$OrderBy** -parametern får fältet som du skickar till funktionen bara innehålla en enda geo-punkt. Med andra ord måste den vara av typen `Edm.GeographyPoint` och inte `Collection(Edm.GeographyPoint)` . Det går inte att sortera i samlings fält i Azure Kognitiv sökning.

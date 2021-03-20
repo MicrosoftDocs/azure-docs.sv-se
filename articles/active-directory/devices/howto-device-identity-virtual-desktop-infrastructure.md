@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96029355"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Enhets identitet och skriv bords virtualisering
@@ -48,16 +48,16 @@ Innan du konfigurerar enhets identiteter i Azure AD för din VDI-miljö kan du b
 
 | Enhets identitets typ | Infrastruktur för identiteter | Windows-enheter | VDI-plattforms version | Stöds |
 | --- | --- | --- | --- | --- |
-| Hybrid Azure AD-ansluten | Federerad<sup>3</sup> | Windows aktuella och Windows-äldre | Permanent | Yes |
+| Hybrid Azure AD-ansluten | Federerad<sup>3</sup> | Windows aktuella och Windows-äldre | Permanent | Ja |
 |   |   | Windows-aktuell | Icke-beständig | Ja<sup>5</sup> |
 |   |   | Äldre Windows-enheter | Icke-beständig | Ja<sup>6</sup> |
-|   | Hanterad<sup>4</sup> | Windows aktuella och Windows-äldre | Permanent | Yes |
-|   |   | Windows-aktuell | Icke-beständig | No |
+|   | Hanterad<sup>4</sup> | Windows aktuella och Windows-äldre | Permanent | Ja |
+|   |   | Windows-aktuell | Icke-beständig | Inga |
 |   |   | Äldre Windows-enheter | Icke-beständig | Ja<sup>6</sup> |
-| Azure AD-ansluten | Federerade | Windows-aktuell | Permanent | No |
-|   |   |   | Icke-beständig | No |
-|   | Hanterade | Windows-aktuell | Permanent | No |
-|   |   |   | Icke-beständig | No |
+| Azure AD-ansluten | Federerade | Windows-aktuell | Permanent | Inga |
+|   |   |   | Icke-beständig | Inga |
+|   | Hanterad | Windows-aktuell | Permanent | Inga |
+|   |   |   | Icke-beständig | Inga |
 | Azure AD-registrerad | Federerad/hanterad | Windows aktuella/Windows-äldre | Beständiga/icke-beständiga | Ej tillämpligt |
 
 <sup>1</sup> **Windows aktuella** enheter representerar Windows 10, Windows Server 2016 V1803 eller senare och Windows Server 2019.

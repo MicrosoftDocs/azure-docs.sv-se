@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935355"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentations resurser för AI-anrikning i Azure Kognitiv sökning
@@ -100,4 +100,4 @@ Följande är en lista över dokumentation för AI-berikning.
 
 + [REST-API:er för Azure Cognitive Search](/rest/api/searchservice/)
 + [Indexerare i Azure Cognitive Search](search-indexer-overview.md)
-+ [Vad är Azure Kognitiv sökning?](search-what-is-azure-search.md)
++ [Vad är Azure Cognitive Search?](search-what-is-azure-search.md)

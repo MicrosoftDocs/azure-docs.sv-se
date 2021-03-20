@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936511"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostisera undantag i dina webbappar med Application Insights
@@ -76,9 +76,9 @@ I det syftet har du flera alternativ:
 * [TrackException ()](#exceptions) skickar stack spår. [Mer om undantag](#exceptions).
 * Om du redan använder ett loggnings ramverk som Log4Net eller NLog kan du [samla in dessa loggar](asp-net-trace-logs.md) och se dem i diagnostisk sökning, tillsammans med förfrågningar och undantags data.
 
-Om du vill se de här händelserna öppnar du [Sök](./diagnostic-search.md) på menyn till vänster, väljer **händelse typerna**för List rutan och väljer sedan anpassad händelse, spårning eller undantag.
+Om du vill se de här händelserna öppnar du [Sök](./diagnostic-search.md) på menyn till vänster, väljer **händelse typerna** för List rutan och väljer sedan anpassad händelse, spårning eller undantag.
 
-![Visning av detaljerad information](./media/asp-net-exceptions/customevents.png)
+![Visa detaljerad information](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
 > Om din app genererar mycket telemetri minskar den anpassningsbara insamlingsmodulen automatiskt den mängd som skickas till portalen genom att bara skicka en representativ del av händelserna. Händelser som är en del av samma åtgärd markeras eller avmarkeras som en grupp, så att du kan navigera mellan relaterade händelser. [Lär dig mer om sampling.](./sampling.md)
@@ -184,7 +184,7 @@ public class GoodController : ApiController
 ## <a name="web-forms"></a>Webb formulär
 För webb formulär kommer HTTP-modulen att kunna samla in undantag när det inte finns några omdirigeringar konfigurerade med CustomErrors.
 
-Men om du har aktiva omdirigeringar lägger du till följande rader i Application_Error-funktionen i Global.asax.cs. (Lägg till en global. ASAX-fil om du inte redan har en.)
+Men om du har aktiva omdirigeringar lägger du till följande rader i Application_Error-funktionen i global. asax. cs. (Lägg till en global. ASAX-fil om du inte redan har en.)
 
 ```csharp
     void Application_Error(object sender, EventArgs e)
@@ -256,10 +256,10 @@ Ersätt attributet HandleError med ditt nya attribut i dina styrenheter.
     ...
 ```
 
-[Urvalsundersökningar](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[Exempel](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-Registrera `AiHandleErrorAttribute` som ett globalt filter i global.asax.CS:
+Registrera `AiHandleErrorAttribute` som ett globalt filter i global. asax. CS:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -271,10 +271,10 @@ Registrera `AiHandleErrorAttribute` som ett globalt filter i global.asax.CS:
      ...
 ```
 
-[Urvalsundersökningar](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[Exempel](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
-Registrera AiHandleErrorAttribute som ett globalt filter i FilterConfig.cs:
+Registrera AiHandleErrorAttribute som ett globalt filter i FilterConfig. CS:
 
 ```csharp
     public class FilterConfig
@@ -287,7 +287,7 @@ Registrera AiHandleErrorAttribute som ett globalt filter i FilterConfig.cs:
     }
 ```
 
-[Urvalsundersökningar](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[Exempel](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Webb-API
 Från och med Application Insights Web SDK version 2,6 (beta3 och senare) samlar Application Insights ut ohanterade undantag som har utlösts i styrenhets metoderna automatiskt för WebAPI 2 +. Om du tidigare har lagt till en anpassad hanterare för att spåra sådana undantag (enligt beskrivningen i följande exempel) kan du ta bort den för att förhindra dubbel spårning av undantag.
@@ -355,7 +355,7 @@ Du kan lägga till detta åsidosatta attribut till vissa styrenheter eller lägg
     }
 ```
 
-[Urvalsundersökningar](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[Exempel](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Webb-API 2. x
 Lägg till en implementering av IExceptionLogger:
@@ -410,7 +410,7 @@ Lägg till detta i tjänsterna i WebApiConfig:
      }
 ```
 
-[Urvalsundersökningar](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[Exempel](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 Som alternativ kan du:
 
@@ -480,12 +480,12 @@ Add the attribute to the service implementations:
          ...
 ```
 
-[Urvalsundersökningar](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[Exempel](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Prestanda räknare för undantag
 Om du har [installerat Application Insights agent](./monitor-performance-live-website-now.md) på servern kan du få ett diagram över undantags frekvensen, mätt av .net. Detta inkluderar både hanterade och ohanterade .NET-undantag.
 
-Öppna fliken Metric Explorer, Lägg till ett nytt diagram och välj **undantags frekvens**i listan under prestanda räknare.
+Öppna fliken Metric Explorer, Lägg till ett nytt diagram och välj **undantags frekvens** i listan under prestanda räknare.
 
 .NET Framework beräknar frekvensen genom att räkna antalet undantag i ett intervall och dividera med längden på intervallet.
 

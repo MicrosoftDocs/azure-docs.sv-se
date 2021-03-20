@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3111b3a102abd923169cf655f1d71e79b19f7d5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875017"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598141"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrera och skanna Azure Synapse Analytics
 
@@ -127,7 +127,7 @@ Registrera en ny Azure Synapse Analytics-Server i din Data Catalog genom att gö
 På skärmen **Registrera källor (Azure Synapse Analytics)** gör du följande:
 
 1. Ange ett **namn** som data källan ska visas med i katalogen.
-1. Välj hur du vill peka på önskat lagrings konto:
+1. Välj hur du vill peka på din önskade logiska SQL Server:
    1. Välj **från Azure-prenumeration**, Välj lämplig prenumeration i list rutan **Azure-prenumeration** och lämplig server från List rutan **Server namn** .
    1. Alternativt kan du välja **ange manuellt** och ange ett **Server namn**.
 1. **Slutför** för att registrera data källan.

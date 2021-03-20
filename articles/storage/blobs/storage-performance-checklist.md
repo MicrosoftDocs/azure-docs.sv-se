@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544759"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Check lista för prestanda och skalbarhet för Blob Storage
@@ -37,8 +37,8 @@ Den här artikeln ordnar beprövade metoder för prestanda i en check lista som 
 | &nbsp; |Nätverk |[Har klient sidan enheter en nätverks länk med hög kvalitet?](#link-quality) |
 | &nbsp; |Nätverk |[Är klient programmet i samma region som lagrings kontot?](#location) |
 | &nbsp; |Direkt klient åtkomst |[Använder du signaturer för delad åtkomst (SAS) och resurs delning mellan ursprung (CORS) för att ge direkt åtkomst till Azure Storage?](#sas-and-cors) |
-| &nbsp; |Caching |[Är ditt program caching-data som används ofta och ändras sällan?](#reading-data) |
-| &nbsp; |Caching |[Är ditt program batch-uppdateringar att cachelagra dem på klienten och sedan ladda upp dem i större mängder?](#uploading-data-in-batches) |
+| &nbsp; |Cachelagring |[Är ditt program caching-data som används ofta och ändras sällan?](#reading-data) |
+| &nbsp; |Cachelagring |[Är ditt program batch-uppdateringar att cachelagra dem på klienten och sedan ladda upp dem i större mängder?](#uploading-data-in-batches) |
 | &nbsp; |.NET-konfiguration |[Använder du .NET Core 2,1 eller senare för bästa prestanda?](#use-net-core) |
 | &nbsp; |.NET-konfiguration |[Har du konfigurerat att klienten ska använda ett tillräckligt antal samtidiga anslutningar?](#increase-default-connection-limit) |
 | &nbsp; |.NET-konfiguration |[Har du konfigurerat .NET att använda ett tillräckligt antal trådar för .NET-program?](#increase-minimum-number-of-threads) |
@@ -132,7 +132,7 @@ För bandbredd är problemet ofta klientens funktioner. Större Azure-instanser 
 
 I takt med att nätverks användningen används bör du tänka på att nätverks förhållandena som resulterar i fel och paket förlust kommer att ta en långsam effektiv data flöde.  Att använda WireShark eller NetMon kan hjälpa dig att diagnostisera det här problemet.  
 
-### <a name="location"></a>Plats
+### <a name="location"></a>Location
 
 I alla distribuerade miljöer ger klienten nära-servern den bästa prestandan. För att få åtkomst till Azure Storage med den lägsta svars tiden är den bästa platsen för din klient i samma Azure-region. Om du till exempel har en Azure-webbapp som använder Azure Storage kan du söka efter dem i en enda region, till exempel västra USA eller Asien, sydöstra. Samplacering av resurser minskar svars tiden och kostnaden, eftersom bandbredds användningen i en enda region är kostnads fri.  
 
@@ -152,7 +152,7 @@ Anta till exempel att ett webb program som körs i Azure gör en begäran om en 
   
 Både SAS och CORS kan hjälpa dig att undvika onödig belastning på ditt webb program.  
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>Cachelagring
 
 Cachelagring spelar en viktig roll i prestandan. I följande avsnitt beskrivs hur du cachelagrar bästa praxis.
 

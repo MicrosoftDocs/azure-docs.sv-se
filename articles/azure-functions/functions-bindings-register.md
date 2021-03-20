@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88689581"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrera Azure Functions bindnings tillägg
@@ -25,7 +25,7 @@ I följande tabell visas när och hur du registrerar bindningar.
 |Azure Portal|Automatiskt|Autokorrigering<sup>*</sup>|
 |Non-.NET-språk|Automatiskt|Använd [tilläggs paket](#extension-bundles) (rekommenderas) eller [installera tillägg uttryckligen](#explicitly-install-extensions)|
 |C#-klass bibliotek med Visual Studio|[Använda NuGet-verktyg](#vs)|[Använda NuGet-verktyg](#vs)|
-|C#-klass bibliotek med Visual Studio Code|E.t.|[Använd .NET Core CLI](#vs-code)|
+|C#-klass bibliotek med Visual Studio Code|Ej tillämpligt|[Använd .NET Core CLI](#vs-code)|
 
 <sup>*</sup> Portalen använder tilläggs paket.
 
@@ -65,7 +65,7 @@ För ett C#-projekt med klass biblioteks funktioner bör du installera tillägg 
 
 ### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a> C- \# klass bibliotek med Visual Studio
 
-I **Visual Studio**kan du installera paket från Package Manager-konsolen med kommandot [install-Package](/nuget/tools/ps-ref-install-package) , som du ser i följande exempel:
+I **Visual Studio** kan du installera paket från Package Manager-konsolen med kommandot [install-Package](/nuget/tools/ps-ref-install-package) , som du ser i följande exempel:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -79,7 +79,7 @@ Om du använder `Install-Package` för att referera till en bindning behöver du
 
 ### <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C#-klass bibliotek med Visual Studio Code
 
-I **Visual Studio Code**installerar du paket för ett C#-klass biblioteks projekt från kommando tolken med kommandot [dotNet Lägg till paket](/dotnet/core/tools/dotnet-add-package) i .net Core cli. Följande exempel visar hur du lägger till en bindning:
+I **Visual Studio Code** installerar du paket för ett C#-klass biblioteks projekt från kommando tolken med kommandot [dotNet Lägg till paket](/dotnet/core/tools/dotnet-add-package) i .net Core cli. Följande exempel visar hur du lägger till en bindning:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>

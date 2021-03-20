@@ -8,10 +8,10 @@ ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 9d769cb6e2cc33df259da46a82ad27a8bfd9e74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90888523"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Använda beständig lagring i Azure Spring Cloud
@@ -32,7 +32,7 @@ Beständig lagring är en fil resurs behållare som hanteras av Azure och tillde
 
 ## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Använd Azure Portal för att aktivera beständig lagring
 
-1. Välj **alla resurser**på **Start** sidan för din Azure Portal.
+1. Välj **alla resurser** på **Start** sidan för din Azure Portal.
 
     >![Leta upp ikonen alla resurser](media/portal-all-resources.jpg)
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91825620"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrera API Management i ett internt VNET med Application Gateway
 
-## <a name="overview"></a><a name="overview"> </a> Översikt
+## <a name="overview"></a><a name="overview"></a> Översikt
 
 API Managements tjänsten kan konfigureras i en Virtual Network i internt läge, vilket gör den endast tillgänglig från Virtual Network. Azure Application Gateway är en PAAS-tjänst som tillhandahåller en Layer-7-belastningsutjämnare. Den fungerar som en omvänd proxy-tjänst och tillhandahåller en brand vägg för webbaserade program (WAF).
 
@@ -47,7 +47,7 @@ För att följa stegen som beskrivs i den här artikeln måste du ha:
 
 * Certifikat – PFX och CER för API hostname och PFX för Developer-portalens värdnamn.
 
-## <a name="scenario"></a><a name="scenario"> </a> Scenario
+## <a name="scenario"></a><a name="scenario"></a> Scenario
 
 Den här artikeln beskriver hur du använder en enskild API Management tjänst för både interna och externa konsumenter och gör att den fungerar som en enda klient del för både lokala och molnbaserade API: er. Du kommer också att se hur du exponerar endast en delmängd av dina API: er (i exemplet är de markerade i grönt) för extern förbrukning med hjälp av routningsfunktioner som är tillgängliga i Application Gateway.
 
@@ -55,7 +55,7 @@ I det första installations exemplet hanteras bara dina API: er från din Virtua
 
 ![URL-väg](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a><a name="before-you-begin"> </a> Innan du börjar
+## <a name="before-you-begin"></a><a name="before-you-begin"></a> Innan du börjar
 
 * Kontrollera att du använder den senaste versionen av Azure PowerShell. Se installations anvisningarna vid [installationen Azure PowerShell](/powershell/azure/install-az-ps). 
 
@@ -69,7 +69,7 @@ I det första installations exemplet hanteras bara dina API: er från din Virtua
 * **Anpassad hälso avsökning:** Application Gateway används som standard IP-baserade avsökningar för att ta reda på vilka servrar i BackendAddressPool som är aktiva. Tjänsten API Management svarar bara på begär Anden med rätt värd huvud, och därför fungerar inte standard avsökningarna. En anpassad hälso avsökning måste definieras för att hjälpa Application Gateway att fastställa att tjänsten är aktiv och att den vidarebefordrar begär Anden.
 * **Anpassade domän certifikat:** För att få åtkomst till API Management från Internet måste du skapa en CNAME-mappning av sitt värdnamn till Application Gateway DNS-namn på klient sidan. Detta säkerställer att värd namns huvudet och certifikatet som skickas till Application Gateway som vidarebefordras till API Management är ett APIM som kan identifieras som giltigt. I det här exemplet ska vi använda två certifikat – för Server delen och för Developer-portalen.  
 
-## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> Steg som krävs för att integrera API Management och Application Gateway
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"></a> Steg som krävs för att integrera API Management och Application Gateway
 
 1. Skapa en resursgrupp för Resource Manager.
 2. Skapa en Virtual Network, ett undernät och en offentlig IP-adress för Application Gateway. Skapa ett annat undernät för API Management.
@@ -368,10 +368,10 @@ Application Gatewayens DNS-namn ska användas för att skapa en CNAME-post som p
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a><a name="summary"> </a> Sammanfattning
+## <a name="summary"></a><a name="summary"></a> Sammanfattning
 Azure API Management som kon figurer ATS i ett VNET tillhandahåller ett enda Gateway-gränssnitt för alla konfigurerade API: er, oavsett om de finns lokalt eller i molnet. Genom att integrera Application Gateway med API Management får du flexibiliteten att selektivt aktivera specifika API: er som kan nås via Internet, samt att tillhandahålla en brand vägg för webbaserade program som en klient del till din API Management-instans.
 
-## <a name="next-steps"></a><a name="next-steps"> </a> Nästa steg
+## <a name="next-steps"></a><a name="next-steps"></a> Nästa steg
 * Läs mer om Azure Application Gateway
   * [Översikt över Application Gateway](../application-gateway/overview.md)
   * [Application Gateway brand vägg för webbaserade program](../web-application-firewall/ag/ag-overview.md)

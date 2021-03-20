@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: bb1390a32abfe9ccf31002fc569936d39e4e5428
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553235"
 ---
 Konfigurera partnerprogrammet så att det ansluter till klienten. Om du vill ansluta till partnerprogrammet behöver du normalt följande information (variationer kan förekomma) som du har samlat in från sidan **Anslut och kopiera** för det lokala webbanvändargränssnittet i föregående steg:

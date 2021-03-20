@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090836"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588396"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Integrera Azure Spring Cloud med Azure Load Balance Solutions
 
@@ -76,6 +76,17 @@ Om du vill integrera med moln tjänsten Azure våren slutför du följande konfi
 1.  **Använd anpassad avsökning**: Välj *Ja* och välj anpassad avsökning som skapats ovan.
 
     ![App Gateway 3](media/spring-cloud-load-balancers/app-gateway-3.png)
+
+### <a name="configure-rewrite-set"></a>Konfigurera omskrivnings uppsättning
+1.  Välj **omskrivning** och **Skriv om ange** om du vill lägga till en omskrivning.
+1.  Välj de routningsregler som dirigerar begär anden till Azure våren Cloud Public-slutpunkter.
+1.  På fliken **konfiguration av Skriv regel** väljer du **Lägg till omskrivning-regel**.
+1.  **Typ av omskrivning**: Välj **begär ande huvud**
+1.  **Åtgärds typ**: Välj **ta bort**
+1.  **Rubrik namn**: Välj **gemensam rubrik**
+1.  **Gemensamt sidhuvud**: Välj **X-forwarded-proto**
+
+    ![App Gateway 4](media/spring-cloud-load-balancers/app-gateway-4.png)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-front-door"></a>Integrera Azure våren Cloud med Azures front dörr
 

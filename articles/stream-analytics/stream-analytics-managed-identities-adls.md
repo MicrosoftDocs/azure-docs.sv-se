@@ -5,16 +5,16 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 03/16/2021
 ms.custom: seodec18
-ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d5b406d260b1c6518d9227c51d84ab7eb3754329
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020357"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598158"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Autentisera Stream Analytics för att Azure Data Lake Storage Gen1 med hanterade identiteter (för hands version)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Autentisera Stream Analytics för att Azure Data Lake Storage Gen1 med hanterade identiteter
 
 Azure Stream Analytics stöder gen1-utdata (Managed Identity Authentication) med Azure Data Lake Storage (ADLS). Identiteten är ett hanterat program som är registrerat i Azure Active Directory som representerar ett angivet Stream Analytics jobb och som kan användas för att autentisera till en mål resurs. Hanterade identiteter eliminerar begränsningar för användarbaserade autentiseringsmetoder, som att behöva autentisera på grund av lösen ords ändringar eller förfallo datum för användar-token som inträffar var 90: e dag. Dessutom kan hanterade identiteter hjälpa till med automatisering av Stream Analytics jobb distributioner som utdata till Azure Data Lake Storage Gen1.
 
@@ -36,7 +36,7 @@ Den här artikeln visar tre sätt att aktivera hanterad identitet för ett Azure
  
    Tjänstens huvud namn har samma namn som Stream Analyticss jobbet. Om namnet på ditt jobb till exempel är **MyASAJob**, är namnet på det skapade tjänst huvud namnet också **MyASAJob**.
 
-3. I fönstret utmatnings egenskaper i ADLS Gen1 utgående mottagare klickar du på list rutan autentiseringsläge och väljer * * hanterad identitet * *.
+3. I fönstret utmatnings egenskaper i ADLS Gen1 utgående mottagare klickar du på list rutan autentiseringsläge och väljer **hanterad identitet**.
 
 4. Fyll i resten av egenskaperna. Mer information om hur du skapar en ADLS-utdata finns i [skapa ett data Lake Store-utdata med Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md). När du är klar klickar du på **Spara**.
 
@@ -70,7 +70,7 @@ Den här artikeln visar tre sätt att aktivera hanterad identitet för ett Azure
 
    ![Stream Analytics hanterade identiteter för jobb konfiguration](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. I fönstret utmatnings egenskaper i ADLS Gen1 utgående mottagare klickar du på list rutan autentiseringsläge och väljer * * hanterad identitet * *.
+2. I fönstret utmatnings egenskaper i ADLS Gen1 utgående mottagare klickar du på list rutan autentiseringsläge och väljer **hanterad identitet**.
 
    ![ADLS utdata hanterade identiteter](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 

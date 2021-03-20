@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e7fe68c2d0c51ffcc67693da722d9243ea3506f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840803"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Självstudie: Övervaka och diagnostisera en ASP.NET Core-app för Service Fabric med Application Insights
@@ -30,7 +30,7 @@ I den här självstudieserien får du lära du dig att:
 > * [Konfigurera CI/CD med hjälp av Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Konfigurera övervakning och diagnostik för programmet
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 
@@ -99,8 +99,8 @@ Så här konfigurerar du NuGet-paketet:
 4. Till höger markerar du de två kryss rutorna bredvid de två tjänsterna i programmet, **VotingWeb** och **VotingData** och väljer **Installera**.
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. Välj **OK** i dialog rutan *Förhandsgranska ändringar* som visas och godkänn *licens godkännandet*. Du är nu klar med att lägga till NuGet till tjänsterna.
-6. Nu måste du konfigurera telemetriinitieraren i de två tjänsterna. Det gör du genom att öppna *VotingWeb.cs* och *VotingData.cs*. Gör följande i båda två:
-    1. Lägg till dessa två *using* -uttryck högst upp i varje * \<ServiceName> . cs*, efter de befintliga *using* -satserna:
+6. Nu måste du konfigurera telemetriinitieraren i de två tjänsterna. Det gör du genom att öppna *VotingWeb. cs* och *VotingData. cs*. Gör följande i båda två:
+    1. Lägg till dessa två *using* -uttryck högst upp i varje *\<ServiceName> . cs*, efter de befintliga *using* -satserna:
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -148,7 +148,7 @@ Så här konfigurerar du NuGet-paketet:
         .Build();
     ```
 
-Kontrol lera att `UseApplicationInsights()` metoden anropas i både *VotingWeb.cs* och *VotingData.cs* som visas ovan.
+Dubbel kontrol lera att `UseApplicationInsights()` metoden anropas i både *VotingWeb. cs* och *VotingData. cs* enligt ovan.
 
 >[!NOTE]
 >Det här exempelprogrammet använder http för tjänster för att kommunicera. Om du utvecklar ett program med Service Remoting V2 behöver du även lägga till följande kodrader på samma plats som ovan

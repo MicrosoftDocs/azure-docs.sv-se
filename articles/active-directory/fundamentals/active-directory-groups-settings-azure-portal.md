@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369139"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Redigera din grupp information med Azure Active Directory
@@ -27,7 +27,7 @@ Med hjälp av Azure Active Directory (Azure AD) kan du redigera en grupps instä
 ## <a name="to-edit-your-group-settings"></a>Redigera dina grupp inställningar
 1. Logga in på [Azure-portalen](https://portal.azure.com) med ett Globalt administratörskonto för katalogen.
 
-2. Välj **Azure Active Directory**och välj sedan **grupper**.
+2. Välj **Azure Active Directory** och välj sedan **grupper**.
 
     Sidan **grupper – alla grupper** visas med alla dina aktiva grupper.
 
@@ -37,7 +37,7 @@ Med hjälp av Azure Active Directory (Azure AD) kan du redigera en grupps instä
 
     ![Sidan alla grupper, med söktext i sökrutan](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. Välj grup **princip för MDM-väst**och välj sedan **Egenskaper** från **hanterings** ytan.
+4. Välj grup **princip för MDM-väst** och välj sedan **Egenskaper** från **hanterings** ytan.
 
     ![Sidan grupp översikt med medlems alternativ och information markerad](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
@@ -49,7 +49,7 @@ Med hjälp av Azure Active Directory (Azure AD) kan du redigera en grupps instä
     
     - **Grupp beskrivning.** Redigera den befintliga grupp beskrivningen.
 
-    - **Grupptyp.** Du kan inte ändra typ av grupp när den har skapats. Om du vill ändra **grupp typen**måste du ta bort gruppen och skapa en ny.
+    - **Grupptyp.** Du kan inte ändra typ av grupp när den har skapats. Om du vill ändra **grupp typen** måste du ta bort gruppen och skapa en ny.
     
     - **Medlemskaps typ.** Ändra medlemskaps typ. Mer information om de olika tillgängliga medlemskaps typerna finns i [så här gör du: skapa en grundläggande grupp och lägga till medlemmar med hjälp av Azure Active Directory portalen](active-directory-groups-create-azure-portal.md).
     

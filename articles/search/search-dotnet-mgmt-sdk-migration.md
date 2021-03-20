@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936715"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Uppgradera versioner av Azure Search .NET Management SDK
@@ -26,9 +26,9 @@ Hanterings-SDK: er är riktade till en angiven version av hanterings REST API. M
 
 | SDK-version | Motsvarande REST API version | Ändring av funktions tillägg eller beteende |
 |-------------|--------------------------------|-------------------------------------|
-| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-version = 2020-30-20 | Lägger till slut punkts säkerhet (IP-brandväggar och integrering med [Azures privata länk](../private-link/private-endpoint-overview.md)) |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-version = 2019-10-01 | Förbättrad användbarhet. Ändring av [list nyckel nycklar](/rest/api/searchmanagement/querykeys/listbysearchservice) (Get är upphör). |
-| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-version = 2015-08-19  | Första versionen |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-version = 2020-30-20 | Lägger till slut punkts säkerhet (IP-brandväggar och integrering med [Azures privata länk](../private-link/private-endpoint-overview.md)) |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-version = 2019-10-01 | Förbättrad användbarhet. Ändring av [list nyckel nycklar](/rest/api/searchmanagement/querykeys/listbysearchservice) (Get är upphör). |
+| [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-version = 2015-08-19  | Första versionen |
 
 ## <a name="how-to-upgrade"></a>Så här uppgraderar du
 
@@ -60,7 +60,7 @@ Du kan inte längre använda Hämta i en [lista över](/rest/api/searchmanagemen
 
 ## <a name="upgrade-to-20"></a>Uppgradera till 2,0
 
-Version 2 av Azure Search .NET Management SDK är en mindre uppgradering, så om du ändrar koden bör du bara kräva minimal ansträngning. Ändringarna i SDK är strikta ändringar på klient sidan för att förbättra användbarheten hos själva SDK: n. Dessa ändringar omfattar följande:
+Version 2 av Azure Search .NET Management SDK är en mindre uppgradering, så om du ändrar koden bör du bara kräva minimal ansträngning. Ändringarna i SDK är strikta ändringar på klient sidan för att förbättra användbarheten hos själva SDK: n. Dessa förändringar sker på flera plan:
 
 * `Services.CreateOrUpdate` och dess asynkrona versioner avsöker nu automatiskt etableringen `SearchService` och returnerar inte förrän tjänst etableringen har slutförts. Detta gör att du slipper skriva en sådan avsöknings kod själv.
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673061"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599140"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Gör så här: sentiment analys och avyttrande
 
-API för textanalysens Attitydanalys-funktion erbjuder två sätt att identifiera positiva och negativa sentiment. Om du skickar en Attitydanalys-begäran kommer API: et att returnera sentiment-etiketter (till exempel "negativa", "neutral" och "positiv") och säkerhets resultat på meningen och dokument nivå. Du kan också skicka avyttranden om utgångs punkt med Attitydanalys slut punkten, som innehåller detaljerad information om de åsikter som rör aspekter (till exempel attributen för produkter eller tjänster) i text. 
+API för textanalysens Attitydanalys-funktion erbjuder två sätt att identifiera positiva och negativa sentiment. Om du skickar en Attitydanalys-begäran kommer API: et att returnera sentiment-etiketter (till exempel "negativa", "neutral" och "positiv") och säkerhets resultat på meningen och dokument nivå. Du kan också skicka åsikts utvinnings begär Anden med Attitydanalys slut punkten, som ger detaljerad information om de åsikter som rör ord (till exempel attributen för produkter eller tjänster) i texten. 
 
 AI-modellerna som används av API: et tillhandahålls av tjänsten. du behöver bara skicka innehåll för analys.
 
@@ -49,9 +49,9 @@ Förtroendet sträcker sig från 1 till 0. Resultat närmare 1 anger en högre e
 
 ## <a name="opinion-mining"></a>Åsikts utvinning
 
-Åsikts utvinning är en funktion i Attitydanalys, med början i för hands versionen av version 3,1. Den här funktionen är även känd som Aspect-baserad Attitydanalys i naturlig språk bearbetning (NLP) och ger mer detaljerad information om de åsikter som rör aspekter (till exempel attributen för produkter eller tjänster) i text.
+Åsikts utvinning är en funktion i Attitydanalys, med början i för hands versionen av version 3,1. Den här funktionen är även känd som aspekt-baserad Attitydanalys i naturlig språk bearbetning (NLP) och ger mer detaljerad information om de åsikter som rör attribut för produkter eller tjänster i text. API-ytorna bedöms som ett mål (Substantiv eller verb) och en utvärdering (adjektiv).
 
-Om en kund till exempel lämnar feedback om ett hotell, till exempel "rummet var fantastiskt, men personalen var friendd.", skall yttrandet för att hitta aspekter i texten och deras associerade åsikter och sentiment. Attitydanalys kan bara rapportera ett negativt sentiment.
+Till exempel, om en kund lämnar feedback om ett hotell, t. ex. att rummet var fantastiskt, men att personalen var Friend-anställd, kommer yttrandet att hitta mål (aspekter) i texten och deras associerade bedömningar (åsikter) och sentiment. Attitydanalys kan bara rapportera ett negativt sentiment.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Ett diagram över utvinnings exemplet för yttrandet" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ Dokument storleken måste vara under 5 120 tecken per dokument. Det maximala ant
 
 Skicka en POST-begäran. Du kan [använda Postman](text-analytics-how-to-call-api.md) eller **konsolen för API-testning** i följande referens länkar för att snabbt strukturera och skicka en. 
 
-#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3,1 – för hands version](#tab/version-3-1)
 
 [Attitydanalys v 3.1-referens](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -89,17 +89,17 @@ Ange HTTPS-slutpunkten för sentiment-analys genom att antingen använda en Text
 > [!NOTE]
 > Du kan hitta din nyckel och slut punkt för din Textanalys resurs på Azure Portal. De kommer att finnas på resursens **snabb start** sida under **resurs hantering**. 
 
-#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3,1 – för hands version](#tab/version-3-1)
 
 **Attitydanalys**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **Åsikts utvinning**
 
 Du måste inkludera parametern för att få ett utgångs resultat för utåsikts utvinning `opinionMining=true` . Exempel:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 Den här parametern är inställd på `false` som standard. 
 
@@ -142,7 +142,7 @@ API för textanalys är tillstånds lös. Inga data lagras i ditt konto och resu
 
 Utdata returneras direkt. Du kan strömma resultaten till ett program som accepterar JSON eller spara utdata till en fil på det lokala systemet. Importera sedan utdata till ett program som du kan använda för att sortera, söka och ändra data. På grund av stöd för flerspråkig och emoji kan svaret innehålla text förskjutningar. Mer information finns i [så här bearbetar du förskjutningar](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3,1 – för hands version](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Svar på Attitydanalys och avyttrande av utvinnings exempel
 
@@ -151,97 +151,99 @@ Utdata returneras direkt. Du kan strömma resultaten till ett program som accept
 
 Attitydanalys v 3.1 kan returnera svars objekt för både Attitydanalys och avyttrande av utvinning.
   
-Sentiment-analys returnerar en sentiment-etikett och förtroende poäng för hela dokumentet och varje mening i det. Resultat närmare 1 anger en högre exakthet i etikettens klassificering, medan lägre poäng visar lägre exakthet. Ett dokument kan ha flera meningar och konfidens intervallet i varje dokument eller mening lägger upp till 1.
+Sentiment-analys returnerar en sentiment-etikett och förtroende poäng för hela dokumentet och varje mening i det. Resultat närmare 1 anger en högre exakthet i etikettens klassificering, medan lägre poäng visar lägre exakthet. Ett dokument kan ha flera meningar och konfidens intervallet i varje dokument eller mening lägger upp till 1. utvärderingar 
 
-Yttrandet kommer att söka efter aspekter i texten och deras associerade åsikter och sentiment. Under svaret nedan hade den mening *som restaurangen haft fantastisk mat och vår vänte* tid hade två aspekter: *mat* och *Waiter*. Varje aspekts `relations` egenskap innehåller ett `ref` värde med URI-referensen till associerade `documents` , `sentences` -och- `opinions` objekt.
+Utåsikts utvinning kommer att hitta mål (Substantiv eller verb) i texten och deras associerade bedömning (adjektiv). Under svaret nedan har den mening *som restaurangen haft fantastisk mat och vår vänte* tid hade två mål: *mat* och *Waiter*. Varje måls `relations` egenskap innehåller ett `ref` värde med URI-referensen till associerade `documents` , `sentences` -och- `assessments` objekt.
+
+API: et returnerar åsikter som ett mål (Substantiv eller verb) och en utvärdering (adjektiv).
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 

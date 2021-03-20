@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: c0dbda298cf808dd3caa7a767e0ec5e847c92108
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385531"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Om villkors aktivitet i Azure Data Factory
@@ -286,7 +286,7 @@ $result.Error -join "`r`n"
 ## <a name="next-steps"></a>Nästa steg
 Se andra kontroll flödes aktiviteter som stöds av Data Factory: 
 
-- [Köra pipelineaktivitet](control-flow-execute-pipeline-activity.md)
+- [Kör pipeline-aktivitet](control-flow-execute-pipeline-activity.md)
 - [För varje aktivitet](control-flow-for-each-activity.md)
 - [Hämta metadataaktivitet](control-flow-get-metadata-activity.md)
 - [Sökningsaktivitet](control-flow-lookup-activity.md)

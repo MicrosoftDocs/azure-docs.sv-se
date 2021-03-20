@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366351"
 ---
 # <a name="common-conditional-access-policies"></a>Vanliga principer för villkorlig åtkomst
@@ -28,7 +28,7 @@ ms.locfileid: "92366351"
 
 Mer information om konton för nöd åtkomst och varför de är viktiga finns i följande artiklar: 
 
-* [Hantera konton för nöd åtkomst i Azure AD](../roles/security-emergency-access.md)
+* [Hantera konton för nödåtkomst i Azure AD](../roles/security-emergency-access.md)
 * [Skapa en elastisk strategi för hantering av åtkomst kontroll med Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 ## <a name="typical-policies-deployed-by-organizations"></a>Vanliga principer som distribueras av organisationer

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968596"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Snabb korrigering för Advisor
@@ -26,7 +26,7 @@ Funktionen är endast tillgänglig för vissa rekommendationer, via Azure Portal
 
 2. På sidan rekommendations information visas en lista över resurser som du har den här rekommendationen för. Välj alla resurser som du vill åtgärda för rekommendationen.
 
-   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Skärm bild av Azure Advisor som visar snabb korrigerings etiketter i rekommendationerna.}":::
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="Skärm bild av fönstret påverkade resurser med list objekt och knappen snabb korrigering markerat.":::
    
    *Priserna i bilden är endast till exempel syfte*
 

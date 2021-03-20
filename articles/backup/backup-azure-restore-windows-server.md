@@ -4,10 +4,10 @@ description: I den här artikeln får du lära dig hur du återställer data som
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91813261"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Återställa filer till Windows Server med MARS-agenten
@@ -31,7 +31,7 @@ Använd omedelbar återställning med Recovery Services valv i Azure Portal. Om 
 
 Om du av misstag har tagit bort en fil och vill återställa den till samma dator (från vilken säkerhets kopian görs) kan du använda följande steg för att återställa data.
 
-1. Öppna snapin-modulen **Microsoft Azure Backup**. Om du inte vet var snapin-modulen har installerats söker du efter **Microsoft Azure Backup**i datorn eller servern.
+1. Öppna snapin-modulen **Microsoft Azure Backup**. Om du inte vet var snapin-modulen har installerats söker du efter **Microsoft Azure Backup** i datorn eller servern.
 
     Skriv bords appen bör visas i Sök resultaten.
 
@@ -70,7 +70,7 @@ Om du av misstag har tagit bort en fil och vill återställa den till samma dato
 
     ![Skärm bild av Utforskaren i Windows med kopiera markerat (Återställ till samma dator)](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-9. När du är klar väljer du **demontera**på sidan **Bläddra och återställa filer** . Välj sedan **Ja** för att bekräfta att du vill demontera volymen.
+9. När du är klar väljer du **demontera** på sidan **Bläddra och återställa filer** . Välj sedan **Ja** för att bekräfta att du vill demontera volymen.
 
     ![Skärm bild av guiden Återställ data för att bläddra och återställa filer-sidan (Återställ till samma dator)-bekräfta avmonteringen av återställnings volymen](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
@@ -109,7 +109,7 @@ Dessa steg omfattar följande terminologi:
 
     Om valvet för valvet är ogiltigt (eller har gått ut) [laddar du ned en ny fil för valvet från exempel valvet](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) i Azure Portal. När du har angett giltiga autentiseringsuppgifter för valvet visas namnet på motsvarande säkerhets kopierings valv.
 
-6. På sidan **Välj säkerhets kopierings Server** väljer du käll datorn i listan med datorer som visas och anger lösen frasen. Välj **Nästa**.
+6. På sidan **Välj säkerhets kopierings Server** väljer du käll datorn i listan med datorer som visas och anger lösen frasen. Välj sedan **Nästa**.
 
     ![Skärm bild av guiden Återställ data på sidan Välj säkerhets kopierings Server (Återställ till alternativ dator)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
@@ -133,7 +133,7 @@ Dessa steg omfattar följande terminologi:
 
     ![Skärm bild av Utforskaren i Windows med kopiera markerat (Återställ till alternativ dator)](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. När du är klar väljer du **demontera**på sidan **Bläddra och återställa filer** . Välj sedan **Ja** för att bekräfta att du vill demontera volymen.
+12. När du är klar väljer du **demontera** på sidan **Bläddra och återställa filer** . Välj sedan **Ja** för att bekräfta att du vill demontera volymen.
 
     ![Demontera volymen (Återställ till en annan dator)](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 

@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827761"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Återställa ditt arbets-eller skol lösen ord med hjälp av säkerhets information
@@ -37,7 +37,7 @@ Om du inte kan komma åt ditt Azure Active Directory-konto (Azure AD) kan det be
 
 ### <a name="to-reset-your-password-and-get-back-into-your-account"></a>Så här återställer du ditt lösen ord och återgår till ditt konto
 
-1. Välj **glömt mitt lösen ord**på skärmen **Ange lösen ord** .
+1. Välj **glömt mitt lösen ord** på skärmen **Ange lösen ord** .
 
 2. I fönstret **kom tillbaka till ditt konto** skriver du **användar-ID:** t för arbets-eller skol användaren (till exempel din e-postadress), visar att du inte är en robot genom att ange de tecken som visas på skärmen och sedan välja **Nästa**.
 
@@ -55,7 +55,7 @@ Om du inte kan komma åt ditt Azure Active Directory-konto (Azure AD) kan det be
 
 - **Återställ ditt lösen ord med hjälp av en e-postadress.** Skickar ett e-postmeddelande till den e-postadress som du tidigare har konfigurerat i tvåstegsverifiering eller säkerhets information. Om din administratör har aktiverat säkerhets informationen kan du hitta mer information om hur du konfigurerar en e-postadress i artikeln [Konfigurera säkerhets information för att använda e-post (för hands version)](security-info-setup-email.md) . Om du ännu inte använder säkerhets information kan du hitta mer information om hur du konfigurerar en e-postadress i artikeln [Konfigurera mitt konto för](multi-factor-authentication-end-user-first-time.md) tvåstegsverifiering. 
 
-    1. Välj **e-posta min alternativa e-postadress**och välj sedan **e-post**.
+    1. Välj **e-posta min alternativa e-postadress** och välj sedan **e-post**.
 
     2. Skriv verifierings koden från e-postmeddelandet i rutan och välj sedan **Nästa**.
 
@@ -85,7 +85,7 @@ Om du inte kan komma åt ditt Azure Active Directory-konto (Azure AD) kan det be
 
 - **Återställ ditt lösen ord med hjälp av ett meddelande från din Authenticator-app.** Skickar ett meddelande om godkännande till Authenticator-appen. Om din administratör har aktiverat säkerhets informationen kan du hitta mer information om hur du konfigurerar en Authenticator-app för att skicka ett meddelande i artikeln [Konfigurera säkerhets information för att använda en autentiseringstjänst (förhands granskning)](security-info-setup-auth-app.md) . Om du ännu inte använder säkerhets information kan du hitta mer information om hur du konfigurerar en Authenticator-app för att skicka ett meddelande i artikeln [Konfigurera mitt konto för](multi-factor-authentication-end-user-first-time.md) tvåstegsverifiering.
 
-    1. Välj **Godkänn ett meddelande i min Authenticator-app**och välj sedan **Skicka meddelande**.
+    1. Välj **Godkänn ett meddelande i min Authenticator-app** och välj sedan **Skicka meddelande**.
 
     2. Godkänn inloggningen från din Authenticator-app.
 
@@ -93,7 +93,7 @@ Om du inte kan komma åt ditt Azure Active Directory-konto (Azure AD) kan det be
 
 - **Återställ ditt lösen ord med hjälp av en kod från din Authenticator-app.** Accepterar en slumpmässig kod från din webbapp. Om din administratör har aktiverat säkerhets informationen kan du hitta mer information om hur du konfigurerar en Authenticator-app för att tillhandahålla en kod i artikeln [Konfigurera säkerhets information för att använda en autentiseringstjänst (förhands granskning)](security-info-setup-auth-app.md) . Om du ännu inte använder säkerhets information kan du hitta mer information om hur du konfigurerar en Authenticator-app för att tillhandahålla en kod i artikeln [Konfigurera mitt konto för tvåstegsverifiering](multi-factor-authentication-end-user-first-time.md) .
 
-  1. Välj **Ange en kod från min Authenticator-app**och välj sedan **Skicka meddelande**.
+  1. Välj **Ange en kod från min Authenticator-app** och välj sedan **Skicka meddelande**.
 
   2. Öppna din Authenticator-app, skriv verifierings koden för ditt konto i rutan och välj sedan **Nästa**.
 

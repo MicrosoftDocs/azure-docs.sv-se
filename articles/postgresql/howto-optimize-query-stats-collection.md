@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bc731f6f6a5a60bce0851bf8fe5874f7149f3899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90901461"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Optimera frågan statistik samling på en Azure Database for PostgreSQL-enskild server
@@ -19,7 +19,7 @@ I den här artikeln beskrivs hur du optimerar frågans statistik samling på en 
 ## <a name="use-pg_stats_statements"></a>Använd pg_stats_statements
 **Pg_stat_statements** är ett postgresql-tillägg som är aktiverat som standard i Azure Database for PostgreSQL. Tillägget är ett sätt att spåra körnings statistik för alla SQL-uttryck som körs av en server. Den här modulen hookar i varje frågekörning och levereras med en icke-trivial prestanda kostnad. När du aktiverar **pg_stat_statements** tvingar det att skriva text till filer på disk.
 
-Om du har unika frågor med lång frågetext eller om du inte aktivt övervakar **pg_stat_statements**kan du inaktivera **pg_stat_statements** för bästa prestanda. Det gör du genom att ändra inställningen till `pg_stat_statements.track = NONE` .
+Om du har unika frågor med lång frågetext eller om du inte aktivt övervakar **pg_stat_statements** kan du inaktivera **pg_stat_statements** för bästa prestanda. Det gör du genom att ändra inställningen till `pg_stat_statements.track = NONE` .
 
 Vissa kund arbets belastningar har sett upp till en 50 procents prestanda förbättring när **pg_stat_statements** har inaktiverats. Den kompromiss som du gör när du inaktiverar pg_stat_statements är möjligheten att felsöka prestanda problem.
 

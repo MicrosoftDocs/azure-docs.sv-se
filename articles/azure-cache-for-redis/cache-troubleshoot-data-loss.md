@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538603"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Felsöka dataförlust i Azure Cache for Redis
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Felaktigt databas val
 
-Azure cache för Redis använder **DB0** -databasen som standard. Om du växlar till en annan databas (till exempel **DB1** ) och försöker läsa nycklar från den, hittar inte Azure cache för Redis dem där. Varje databas är en logiskt separat enhet och innehåller en annan data uppsättning. Använd kommandot [Välj](https://redis.io/commands/select) för att använda andra tillgängliga databaser och leta efter nycklar i var och en av dem.
+Azure cache för Redis använder **DB0** -databasen som standard. Om du växlar till en annan databas (till exempel **DB1**) och försöker läsa nycklar från den, hittar inte Azure cache för Redis dem där. Varje databas är en logiskt separat enhet och innehåller en annan data uppsättning. Använd kommandot [Välj](https://redis.io/commands/select) för att använda andra tillgängliga databaser och leta efter nycklar i var och en av dem.
 
 ### <a name="redis-instance-failure"></a>Redis instans-problem
 

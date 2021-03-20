@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om hur du ansluter Akka-s
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 92ab927189329493696c70b61ffc7f11cad22a66
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369581"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Använda Akka Streams med Event Hubs för Apache Kafka
@@ -24,7 +24,7 @@ I den här guiden får du lära dig att:
 > [!NOTE]
 > Det här exemplet finns på [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrol lera att du har följande krav för att slutföra den här självstudien:
 

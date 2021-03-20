@@ -4,10 +4,10 @@ description: I den här artikeln hittar du lösningar på problem som kan uppst�
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86513820"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Felsöka System Center Data Protection Manager
@@ -58,7 +58,7 @@ Lös problemet genom att utföra följande åtgärder:
 
 - Se till att du använder den senaste versionen av Azure Backup agenten.
 - Se till att det finns anslutning (nätverk/brand vägg/proxy) mellan Data Protection Manager-servern och den skyddade servern.
-- Om du skyddar en SQL-Server kontrollerar du att inställningen sysadmin är aktive rad i egenskapen för **inloggnings egenskaper**  >  **NT instans\system** . **sysadmin**
+- Om du skyddar en SQL-Server kontrollerar du att inställningen sysadmin är aktive rad i egenskapen för **inloggnings egenskaper**  >  **NT instans\system** . 
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Fel: servern är inte registrerad enligt vad som anges i valvets loggfil
 

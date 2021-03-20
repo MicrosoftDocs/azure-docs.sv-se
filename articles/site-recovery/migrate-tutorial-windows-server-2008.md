@@ -9,10 +9,10 @@ ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369496"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrera servrar som kör Windows Server 2008 till Azure
@@ -53,7 +53,7 @@ Vi rekommenderar att du migrerar datorer till Azure med hjälp av tjänsten [Azu
 > - Se till att du har senaste service pack och Windows-uppdateringar installerade innan du migrerar.
 
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar är det bra att granska Azure Site Recovery arkitekturen för migrering av [VMware och fysisk server](vmware-azure-architecture.md) eller [migrering av virtuella Hyper-V-datorer](hyper-v-azure-architecture.md) 
 
@@ -120,7 +120,7 @@ Det nya valvet läggs till på **Instrumentpanelen** under **Alla resurser** och
 
 Välj och kontrollera målresurserna.
 
-1. Klicka på **Förbered infrastruktur**  >  **mål**och välj den Azure-prenumeration som du vill använda.
+1. Klicka på **Förbered infrastruktur**  >  **mål** och välj den Azure-prenumeration som du vill använda.
 2. Ange Resource Manager-distributionsmodellen.
 3. Site Recovery kontrollerar att du har ett eller flera kompatibla Azure-lagringskonton och Azure-nätverk.
 

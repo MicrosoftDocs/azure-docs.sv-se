@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 018cf621c65e86877a76c9861c999caf67f3b8cf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553152"
 ---
 När du genererar ett klient certifikat installeras det automatiskt på den dator som du använde för att generera det. Om du vill installera klient certifikatet på en annan klient dator måste du exportera det klient certifikat som du skapade.
@@ -26,13 +26,13 @@ När du genererar ett klient certifikat installeras det automatiskt på den dato
 3. Välj **Ja, exportera den privata nyckeln** och klicka sedan på **Nästa**.
 
    ![Exportera privat nyckel](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
-4. På sidan **Filformat för export** låter du standardalternativen vara markerade. Se till att **Ta med om möjligt alla certifikat i certifieringssökvägen** har valts. Den här inställningen exporterar även rot certifikat informationen som krävs för lyckad klientautentisering. Utan den Miss lyckas klientautentisering eftersom klienten inte har det betrodda rot certifikatet. Klicka sedan på **Nästa**.
+4. På sidan **Filformat för export** låter du standardalternativen vara markerade. Se till att **Ta med om möjligt alla certifikat i certifieringssökvägen** har valts. Den här inställningen exporterar även rot certifikat informationen som krävs för lyckad klientautentisering. Utan den Miss lyckas klientautentisering eftersom klienten inte har det betrodda rot certifikatet. Klicka sedan på **Nästa.**
 
    ![fil format för export](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
-5. Du måste skydda den privata nyckeln på sidan **Säkerhet**. Om du väljer att använda ett lösenord måste du vara noga med att skriva ned eller komma ihåg lösenordet som du anger för det här certifikatet. Klicka sedan på **Nästa**.
+5. Du måste skydda den privata nyckeln på sidan **Säkerhet**. Om du väljer att använda ett lösenord måste du vara noga med att skriva ned eller komma ihåg lösenordet som du anger för det här certifikatet. Klicka sedan på **Nästa.**
 
    ![Skärm bild som visar säkerhets sidan för guiden Exportera certifikat med det angivna lösen ordet och bekräftat och nästa markerat.](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
-6. På sidan **Fil som ska exporteras****bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa**.
+6. På sidan **Fil som ska exporteras****bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa.**
 
    ![fil att exportera](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. Klicka på **Slutför** för att exportera certifikatet.

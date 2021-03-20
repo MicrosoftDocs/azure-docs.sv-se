@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75445743"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Rekommendationer för taggning och versions behållar avbildningar
@@ -49,7 +49,7 @@ Om en bild med en stabil tagg uppdateras, är den tidigare taggade bilden omärk
 Unik taggning innebär bara att varje bild som flyttas till ett register har en unik tagg. Taggar återanvänds inte. Det finns flera mönster som du kan följa för att generera unika taggar, inklusive:
 
 * **Datum-** tidstämpel – den här metoden är ganska vanlig, eftersom du tydligt kan se när avbildningen har skapats. Men hur kan du korrelera tillbaka till ditt versions system? Måste du hitta versionen som slutfördes samtidigt? Vilken tidszon är du i? Är alla dina Bygg system kalibrerade för UTC?
-* **Git-incheckning**  – den här metoden fungerar tills du har startat stöd för bas avbildnings uppdateringar. Om en bas avbildnings uppdatering sker, kommer ditt build-system att sätta igång med samma git-incheckning som den tidigare versionen. Bas avbildningen har dock nytt innehåll. I allmänhet tillhandahåller en git-incheckning en *halv*stabil tagg.
+* **Git-incheckning**  – den här metoden fungerar tills du har startat stöd för bas avbildnings uppdateringar. Om en bas avbildnings uppdatering sker, kommer ditt build-system att sätta igång med samma git-incheckning som den tidigare versionen. Bas avbildningen har dock nytt innehåll. I allmänhet tillhandahåller en git-incheckning en *halv* stabil tagg.
 * **Manifest Sammanfattning** -varje behållar avbildning som skickas till ett behållar register är associerad med ett manifest som identifieras av en unik SHA-256-hash eller Digest. När det är unikt är sammanfattningen lång, svår att läsa och korrelerad med din build-miljö.
 * **Build-ID** – det här alternativet kan vara bäst eftersom det är troligt vis stegvist, och det gör att du kan korrelera tillbaka till den specifika versionen för att hitta alla artefakter och loggar. Men liksom en manifest sammandrag kan det vara svårt för en mänsklig att läsa.
 
