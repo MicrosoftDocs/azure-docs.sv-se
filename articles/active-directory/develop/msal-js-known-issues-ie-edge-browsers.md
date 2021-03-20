@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83772088"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Kända problem i Internet Explorer och Microsoft Edge-webbläsare (MSAL.js)
@@ -28,7 +28,7 @@ Vi hade flera rapporter om problem med autentisering i IE och Microsoft Edge (se
 ### <a name="cause"></a>Orsak
 Orsaken till de flesta av de här problemen är som följer. Session Storage och Local Storage partitioneras av säkerhets zoner i Microsoft Edge-webbläsaren. I den här specifika versionen av Microsoft Edge, när programmet omdirigeras mellan zoner, rensas sessionens lagring och lokala lagrings enheter. Mer specifikt rensas sessionens lagrings utrymme i webbläsarens vanliga navigering, och både sessionen och den lokala lagringen rensas i webbläsarens InPrivate-läge. MSAL.js sparar ett visst tillstånd i sessionens lagrings utrymme och förlitar sig på att kontrol lera det här läget under autentiseringen. När sessionen har rensats går det inte att spara det här läget och därför resulterar det i trasiga upplevelser.
 
-### <a name="issues"></a>Problem
+### <a name="issues"></a>Ärenden
 
 - **Oändliga omdirigerings-slingor och hämtning av sidor vid autentisering**. När användarna loggar in på programmet i Microsoft Edge, omdirigeras de tillbaka från inloggnings sidan för AAD och fastnar i en oändlig omdirigerings slinga som resulterar i upprepade inläsningar av sidor. Detta åtföljs vanligt vis av ett `invalid_state` fel i session Storage.
 
@@ -65,7 +65,7 @@ Observera att detta inte löser problemet med InPrivate-surfning eftersom både 
 
 Det finns fall då popup-fönster blockeras i IE eller Microsoft Edge, till exempel när ett andra popup-fönster inträffar under [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). Du får en avisering i webbläsaren så att popup-fönstret kan visas en gång eller alltid. Om du väljer att tillåta öppnar webbläsaren automatiskt popup-fönstret och returnerar en `null` referens för det. Därför har biblioteket ingen referens för fönstret och det finns inget sätt att stänga popup-fönstret. Samma problem inträffar inte i Chrome när du blir ombedd att tillåta popup-fönster eftersom det inte automatiskt öppnar ett popup-fönster.
 
-Som en **lösning**måste utvecklare tillåta popup-fönster i IE och Microsoft Edge innan de börjar använda appen för att undvika det här problemet.
+Som en **lösning** måste utvecklare tillåta popup-fönster i IE och Microsoft Edge innan de börjar använda appen för att undvika det här problemet.
 
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om hur du [använder MSAL.js i Internet Explorer](msal-js-use-ie-browser.md).

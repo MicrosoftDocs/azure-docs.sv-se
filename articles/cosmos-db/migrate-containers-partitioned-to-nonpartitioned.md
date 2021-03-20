@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
 ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334097"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrera icke-partitionerade behållare till partitionerade behållare
@@ -20,7 +20,7 @@ ms.locfileid: "93334097"
 
 Azure Cosmos DB har stöd för att skapa behållare utan en partitionsnyckel. För närvarande kan du skapa icke-partitionerade behållare med hjälp av Azure CLI och Azure Cosmos DB SDK: er (.net, Java, NodeJs) som har en version som är mindre än eller lika med 2. x. Du kan inte skapa icke-partitionerade behållare med hjälp av Azure Portal. Sådana icke-partitionerade behållare är dock inte elastiska och har en fast lagrings kapacitet på 20 GB och data flödes gränsen på 10 000 RU/s.
 
-Icke-partitionerade behållare är äldre och du bör migrera befintliga icke-partitionerade behållare till partitionerade behållare för att skala lagring och data flöde. Azure Cosmos DB innehåller en systemdefinierad mekanism för att migrera icke-partitionerade behållare till partitionerade behållare. I det här dokumentet beskrivs hur alla befintliga icke-partitionerade behållare automatiskt migreras till partitionerade behållare. Du kan bara dra nytta av funktionen för automatisk migrering om du använder v3-versionen av SDK: er på alla språk.
+Icke-partitionerade containrar är äldre och du bör migrera befintliga icke-partitionerade containrar till partitionerade containrar för att skala lagring och dataflöde. Azure Cosmos DB innehåller en systemdefinierad mekanism för att migrera icke-partitionerade containrar till partitionerade containrar. I det här dokumentet beskrivs hur alla befintliga icke-partitionerade containrar automatiskt migreras till partitionerade containrar. Du kan bara dra nytta av funktionen för automatisk migrering om du använder v3-versionen av SDK:er på alla språk.
 
 > [!NOTE]
 > För närvarande kan du inte migrera Azure Cosmos DB MongoDB-och Gremlin API-konton med hjälp av stegen som beskrivs i det här dokumentet.

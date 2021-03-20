@@ -8,10 +8,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339554"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Skapa aviseringar för Azure Cosmos DB med Azure Monitor
@@ -65,7 +65,7 @@ Det här avsnittet visar hur du skapar en avisering när du får en HTTP-statusk
 
    * Ange **tröskelvärdet** som **statisk** i **aviserings logiken**. Det statiska tröskelvärdet använder ett användardefinierat tröskelvärde för att utvärdera regeln, medan de dynamiska tröskelvärdena använder inbyggda Machine Learning-algoritmer för att kontinuerligt lära sig att använda måttet för mått beteendet och beräkna tröskelvärdena automatiskt.
 
-   * Ange att **operatören** ska vara **större än** , **agg regerings typen** till **Total** och **tröskelvärdet** till **100**. Med den här logiken utlöses aviseringen om klienten ser fler än 100 förfrågningar som har 429-status kod. Du kan också konfigurera agg regerings typ, sammansättnings precision och utvärderings frekvensen utifrån ditt krav.
+   * Ange att **operatören** ska vara **större än**, **agg regerings typen** till **Total** och **tröskelvärdet** till **100**. Med den här logiken utlöses aviseringen om klienten ser fler än 100 förfrågningar som har 429-status kod. Du kan också konfigurera agg regerings typ, sammansättnings precision och utvärderings frekvensen utifrån ditt krav.
 
    * När du har fyllt formuläret väljer du **klar**. Följande skärm bild visar information om aviserings logiken:
 

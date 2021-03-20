@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933522"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Skapa frågor för att lista batch-resurser effektivt
@@ -53,9 +53,9 @@ I det här exempel scenariot, om det finns tusentals uppgifter i jobbet, kommer 
 
 ## <a name="filter-select-and-expand"></a>Filtrera, välja och expandera
 
-API: erna för [batch .net](/dotnet/api/microsoft.azure.batch) och [batch rest](/rest/api/batchservice/) ger möjlighet att minska antalet objekt som returneras i en lista, samt hur mycket information som returneras för varje. Du gör detta genom att ange **filter**, **välja**och **expandera strängar** när du utför List frågor.
+API: erna för [batch .net](/dotnet/api/microsoft.azure.batch) och [batch rest](/rest/api/batchservice/) ger möjlighet att minska antalet objekt som returneras i en lista, samt hur mycket information som returneras för varje. Du gör detta genom att ange **filter**, **välja** och **expandera strängar** när du utför List frågor.
 
-### <a name="filter"></a>Filter
+### <a name="filter"></a>Filtrera
 
 Filter strängen är ett uttryck som minskar antalet objekt som returneras. Du kan till exempel endast lista de aktiviteter som körs för ett jobb, eller en lista med enbart datornoder som är redo att köra uppgifter.
 
@@ -184,7 +184,7 @@ Därför blir filter strängen för att lista alla aktiviteter med en slutkod so
 
 Om du vill skapa [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)läser du tabellen ovan under "mappningar för Select Strings" och navigerar till REST API sidan som motsvarar den typ av enhet som du visar. Du hittar de valbara egenskaperna och de operatörer som stöds i den första multirow-tabellen på den sidan. Om du till exempel bara vill hämta ID och kommando rad för varje aktivitet i en lista, så hittar du till exempel raderna i den tillämpliga tabellen på [Hämta information om en aktivitet](/rest/api/batchservice/task/get):
 
-| Egenskap | Typ | Obs! |
+| Egenskap | Typ | Kommentarer |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |

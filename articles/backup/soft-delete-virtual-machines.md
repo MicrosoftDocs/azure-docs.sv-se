@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
 ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89022249"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Mjuk borttagning för virtuella datorer
@@ -29,7 +29,7 @@ Mjuk borttagning stöds för närvarande i USA, västra centrala, Asien, östra,
 
    ![Skärm bild av Azure Portal säkerhets kopierings objekt](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
-2. I följande fönster kan du välja att ta bort eller behålla säkerhetskopierade data. Om du väljer **ta bort säkerhetskopierade data** och sedan **stoppar säkerhets kopieringen**tas inte den virtuella datorns säkerhets kopia bort permanent. I stället behålls säkerhets kopierings data i 14 dagar i läget Soft Deleted. Om du väljer **ta bort säkerhets kopierings data** skickas en e-postavisering till det konfigurerade e-postmeddelandet som informerar användaren om att 14 dagar fortfarande är av utökad kvarhållning för säkerhetskopierade data. Dessutom skickas en e-postavisering den 12: e dagen på att det finns två dagar kvar för att Resurrect borttagna data. Borttagningen skjuts upp fram till den femtonde dagen, när permanent borttagning kommer att ske och en slutgiltig e-postavisering skickas för att informera om permanent borttagning av data.
+2. I följande fönster kan du välja att ta bort eller behålla säkerhetskopierade data. Om du väljer **ta bort säkerhetskopierade data** och sedan **stoppar säkerhets kopieringen** tas inte den virtuella datorns säkerhets kopia bort permanent. I stället behålls säkerhets kopierings data i 14 dagar i läget Soft Deleted. Om du väljer **ta bort säkerhets kopierings data** skickas en e-postavisering till det konfigurerade e-postmeddelandet som informerar användaren om att 14 dagar fortfarande är av utökad kvarhållning för säkerhetskopierade data. Dessutom skickas en e-postavisering den 12: e dagen på att det finns två dagar kvar för att Resurrect borttagna data. Borttagningen skjuts upp fram till den femtonde dagen, när permanent borttagning kommer att ske och en slutgiltig e-postavisering skickas för att informera om permanent borttagning av data.
 
    ![Skärm bild av Azure Portal, stoppa säkerhets kopierings skärmen](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 

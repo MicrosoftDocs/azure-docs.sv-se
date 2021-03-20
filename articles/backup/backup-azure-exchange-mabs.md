@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263002"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Säkerhetskopiera en Exchange-Server till Azure med Azure Backup Server
@@ -28,7 +28,7 @@ Följ dessa steg om du vill installera MABS-skyddsagenten på Exchange-servern:
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Skapa en skydds grupp för Exchange-servern
 
-1. I MABS Administratörskonsol väljer du **skydd**och väljer sedan **nytt** i menyfliksområdet verktyg för att öppna guiden **Skapa ny skydds grupp** .
+1. I MABS Administratörskonsol väljer du **skydd** och väljer sedan **nytt** i menyfliksområdet verktyg för att öppna guiden **Skapa ny skydds grupp** .
 2. På **välkomst** skärmen i guiden väljer du **Nästa**.
 3. På skärmen **Välj typ av skydds grupp** väljer du **servrar** och väljer **Nästa**.
 4. Välj den Exchange Server-databas som du vill skydda och välj **Nästa**.
@@ -58,20 +58,20 @@ Följ dessa steg om du vill installera MABS-skyddsagenten på Exchange-servern:
    >
    >
 8. Välj **Nästa**.
-9. Välj databasen för kopiering av **säkerhets kopia**och välj sedan **Nästa**.
+9. Välj databasen för kopiering av **säkerhets kopia** och välj sedan **Nästa**.
 
    > [!NOTE]
    > Om du inte väljer fullständig säkerhets kopiering för minst en DAG kopia av en databas trunkeras inte loggarna.
    >
    >
-10. Konfigurera målen för **kortsiktig säkerhets kopiering**och välj sedan **Nästa**.
+10. Konfigurera målen för **kortsiktig säkerhets kopiering** och välj sedan **Nästa**.
 11. Granska tillgängligt disk utrymme och välj sedan **Nästa**.
 12. Välj den tid då MABS-servern ska skapa den inledande replikeringen och välj sedan **Nästa**.
 13. Välj alternativ för konsekvens kontroll och välj sedan **Nästa**.
 14. Välj den databas som du vill säkerhetskopiera till Azure och välj sedan **Nästa**. Exempel:
 
     ![Ange skydds data online](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definiera schemat för **Azure Backup**och välj sedan **Nästa**. Exempel:
+15. Definiera schemat för **Azure Backup** och välj sedan **Nästa**. Exempel:
 
     ![Ange schemat för onlinesäkerhetskopiering](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -79,7 +79,7 @@ Följ dessa steg om du vill installera MABS-skyddsagenten på Exchange-servern:
     > Antecknings återställnings punkter baseras på snabba och fullständiga återställnings punkter. Därför måste du schemalägga onlineåterställningspunkt efter den tid som har angetts för den fullständiga snabb återställnings punkten.
     >
     >
-16. Konfigurera bevarande principen för **Azure Backup**och välj sedan **Nästa**.
+16. Konfigurera bevarande principen för **Azure Backup** och välj sedan **Nästa**.
 17. Välj ett alternativ för replikering online och välj **Nästa**.
 
     Om du har en stor databas kan det ta lång tid för den första säkerhets kopieringen att skapas över nätverket. För att undvika det här problemet kan du skapa en säkerhets kopiering offline.  

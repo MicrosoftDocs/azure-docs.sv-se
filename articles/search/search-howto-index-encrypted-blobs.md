@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530943"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Så här indexerar du krypterade blobbar med BLOB-indexerare och färdighetsuppsättningar i Azure Kognitiv sökning
@@ -30,7 +30,7 @@ Från och med tidigare krypterade hela dokument (ostrukturerad text) som PDF, HT
 
 Om du inte har någon Azure-prenumeration kan du öppna ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 I det här exemplet förutsätts att du redan har laddat upp dina filer till Azure Blob Storage och har krypterat dem i processen. Om du behöver hjälp med att hämta filer som ursprungligen har laddats upp och krypteras kan du kolla in [den här självstudien](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) för hur du gör det.
 

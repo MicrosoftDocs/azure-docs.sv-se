@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88922335"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Självstudie: självstudie om Azure WCF Relay REST
@@ -28,7 +28,7 @@ Du utför följande uppgifter i den här självstudien:
 > * Värd och kör REST-baserade WCF-tjänster.
 > * Kör och testa tjänsten.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här självstudien, finns följande förhandskrav:
 
@@ -53,22 +53,22 @@ Den främsta skillnaden mellan ett WCF-kontrakt och ett REST-format-kontrakt är
 
 1. Starta Microsoft Visual Studio som administratör. Det gör du genom att högerklicka på program ikonen för Visual Studio och välja **Kör som administratör**.
 1. I Visual Studio väljer du **skapa ett nytt projekt**.
-1. I **skapa ett nytt projekt**väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
-1. Ge projektet namnet *ImageListener*. Använd standard **platsen**och välj sedan **skapa**.
+1. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
+1. Ge projektet namnet *ImageListener*. Använd standard **platsen** och välj sedan **skapa**.
 
-   Visual Studio skapar en *program.cs* -fil för ett C#-projekt. Den här klassen innehåller en tom `Main()`-metod, ett krav för att ett konsolapprojekt ska kunna skapas på rätt sätt.
+   För ett C#-projekt skapar Visual Studio en *program. cs* -fil. Den här klassen innehåller en tom `Main()`-metod, ett krav för att ett konsolapprojekt ska kunna skapas på rätt sätt.
 
-1. I **Solution Explorer**högerklickar du på projektet **ImageListener** och väljer sedan **Hantera NuGet-paket**.
-1. Välj **Bläddra**, leta upp och välj **windowsazure. Service Bus**. Välj **Installera**och godkänn användnings villkoren.
+1. I **Solution Explorer** högerklickar du på projektet **ImageListener** och väljer sedan **Hantera NuGet-paket**.
+1. Välj **Bläddra**, leta upp och välj **windowsazure. Service Bus**. Välj **Installera** och godkänn användnings villkoren.
 
     Det här steget lägger till referenser till Service Bus och *System.ServiceModel.dll*. Det här paketet lägger automatiskt till referenser till Service Bus bibliotek och WCF `System.ServiceModel` .
 
-1. Lägg uttryckligen till en referens till `System.ServiceModel.Web.dll` i projektet. I **Solution Explorer**högerklickar du på **referenser** under projektmappen och väljer **Lägg till referens**.
-1. I **Lägg till referens**väljer du **ramverk** och anger *system. ServiceModel. Web* i **search**. Markera kryssrutan **System.ServiceModel.Web** och klicka sedan på **OK**.
+1. Lägg uttryckligen till en referens till `System.ServiceModel.Web.dll` i projektet. I **Solution Explorer** högerklickar du på **referenser** under projektmappen och väljer **Lägg till referens**.
+1. I **Lägg till referens** väljer du **ramverk** och anger *system. ServiceModel. Web* i **search**. Markera kryssrutan **System.ServiceModel.Web** och klicka sedan på **OK**.
 
 Gör sedan följande kod ändringar till projektet:
 
-1. Lägg till följande- `using` instruktioner överst i *program.cs* -filen.
+1. Lägg till följande- `using` instruktioner överst i filen *program. cs* .
 
     ```csharp
     using System.ServiceModel;
@@ -248,13 +248,13 @@ Precis som i föregående steg är det mycket skillnad mellan att implementera e
     }
     ```
 
-    Den här implementeringen använder `MemoryStream` för att hämta avbildningen och förbereda den för strömning till webbläsaren. Den startar ström positionen vid noll, deklarerar Stream-innehållet som en *. jpg*och strömmar informationen.
+    Den här implementeringen använder `MemoryStream` för att hämta avbildningen och förbereda den för strömning till webbläsaren. Den startar ström positionen vid noll, deklarerar Stream-innehållet som en *. jpg* och strömmar informationen.
 
 1. Välj **bygge**  >  **build-lösning**.
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Definiera konfigurationen för att köra webbtjänsten på Service Bus
 
-1. I **Solution Explorer**dubbelklickar du på **App.config** för att öppna filen i Visual Studio-redigeraren.
+1. I **Solution Explorer** dubbelklickar du på **App.config** för att öppna filen i Visual Studio-redigeraren.
 
     *App.config* -filen innehåller tjänst namnet, slut punkten och bindningen. Slut punkten är platsen Azure Relay visar för klienter och värdar för att kommunicera med varandra. Bindningen är den typ av protokoll som används för att kommunicera. Den största skillnaden här är att den konfigurerade tjänst slut punkten refererar till en [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) -bindning.
 
@@ -620,7 +620,7 @@ namespace Microsoft.ServiceBus.Samples
 
 Gör följande för att köra appen när du har skapat lösningen:
 
-1. Välj F5 eller bläddra till platsen för den körbara filen *ImageListener\bin\Debug\ImageListener.exe*för att köra tjänsten. Låt appen köras, eftersom det krävs för nästa steg.
+1. Välj F5 eller bläddra till platsen för den körbara filen *ImageListener\bin\Debug\ImageListener.exe* för att köra tjänsten. Låt appen köras, eftersom det krävs för nästa steg.
 1. Kopiera och klistra in adressen från kommandotolken i en webbläsare för att se bilden.
 1. När du är klar väljer du retur i kommando tolks fönstret för att stänga appen.
 

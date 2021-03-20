@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: b057d07e10676291f42a9a070e32cb17df672651
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735169"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ekarda
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar ekarda med Azure Ac
 * Gör det möjligt för användarna att logga in automatiskt på ekarda med hjälp av deras Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 

@@ -4,10 +4,10 @@ description: Lär dig hur du skapar en batch-pool som använder dina egna offent
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.openlocfilehash: e822311718847e173763847d503335f71457308b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91849336"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Skapa en Azure Batch pool med angivna offentliga IP-adresser
@@ -39,7 +39,7 @@ Tänk på följande när du skapar dina offentliga IP-adresser:
 - Ett DNS-namn måste anges.
 - De offentliga IP-adresserna får endast användas för konfigurations pooler för virtuella datorer. Inga andra resurser bör använda dessa IP-adresser, eller så kan poolen uppleva allokeringsfel.
 - Inga säkerhets principer eller resurs lås bör begränsa en användares åtkomst till den offentliga IP-adressen.
-- Antalet offentliga IP-adresser som har angetts för poolen måste vara tillräckligt stora för att rymma antalet virtuella datorer som är avsedda för poolen. Detta måste vara minst summan av **targetDedicatedNodes**-   och targetLowPriorityNodes- **targetLowPriorityNodes**   egenskaperna för poolen. Om det inte finns tillräckligt med IP-adresser allokerar poolen Compute-noderna och ett storleks fel uppstår. För närvarande använder batch en offentlig IP-adress för varje 100 virtuella datorer.
+- Antalet offentliga IP-adresser som har angetts för poolen måste vara tillräckligt stora för att rymma antalet virtuella datorer som är avsedda för poolen. Detta måste vara minst summan av **targetDedicatedNodes**-   och targetLowPriorityNodes- ****   egenskaperna för poolen. Om det inte finns tillräckligt med IP-adresser allokerar poolen Compute-noderna och ett storleks fel uppstår. För närvarande använder batch en offentlig IP-adress för varje 100 virtuella datorer.
 - Ha alltid ytterligare en buffert med offentliga IP-adresser. Vi rekommenderar att du lägger till minst en offentlig IP-adress eller cirka 10% av de totala offentliga IP-adresser som du lägger till i en pool, beroende på vilket som är störst. Den här ytterligare bufferten hjälper till med sin interna optimering vid skalning, samt ger snabbare skalning efter en lyckad skalning eller skalning.
 - När poolen har skapats kan du inte lägga till eller ändra listan över offentliga IP-adresser som används av poolen. Om du behöver ändra listan måste du ta bort poolen och sedan återskapa den.
 

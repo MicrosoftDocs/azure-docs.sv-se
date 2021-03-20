@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ca8df21e0221d364f75eaeb26f0b2961d7e0b08
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: dcd58e966da7ca596a14ca1b2839cbeb6399a855
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204472"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576466"
 ---
 # <a name="cloud-tiering-overview"></a>Översikt över moln nivåer
 Med moln nivåer, en valfri funktion i Azure File Sync, minskar mängden lokal lagring som krävs, samtidigt som prestandan för en lokal fil Server hålls kvar.
@@ -39,7 +39,7 @@ Med **datum policyn** på nivå av låg frekventa filer till molnet, om de inte 
 Fler exempel på hur datum principen och mängden ledigt utrymme på volymen fungerar tillsammans finns i [välj Azure File Sync principer för moln nivå](storage-sync-choose-cloud-tiering-policies.md)hantering.
 
 ### <a name="windows-server-data-deduplication"></a>Windows Server-datadeduplicering
-Datadeduplicering stöds på volymer som har aktiverat moln skiktning från och med Windows Server 2016. Mer information finns i [Planera för en Azure File Sync distribution](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication).
+Datadeduplicering stöds på volymer som har aktiverat moln skiktning från och med Windows Server 2016. Mer information finns i [Planera för en Azure File Sync distribution](./storage-sync-files-planning.md#data-deduplication).
 
 ### <a name="cloud-tiering-heatmap"></a>Termisk karta för moln nivåer
 Azure File Sync övervakar fil åtkomst (Läs-och skriv åtgärder) över tid och, baserat på hur frekvent och senaste åtkomst är, tilldelar en värme poäng till varje fil. De här poängen används för att bygga en "termisk karta" för ditt namn område på varje server slut punkt. Den här termisk karta är en lista över alla synkroniserade filer på en plats med aktive rad lagrings nivå för molnet. Ofta använda filer som nyligen har öppnats betraktas som frekventa, medan filer som är knappt vidrörta och som inte har använts under en viss tid anses vara häftiga. 
@@ -109,4 +109,3 @@ Det är också möjligt för en fil att delvis skiktas (eller delvis återkallas
 ## <a name="next-steps"></a>Nästa steg
 * [Välj Azure File Sync principer för moln nivåer](storage-sync-choose-cloud-tiering-policies.md)
 * [Planera för distribution av Azure File Sync](storage-sync-files-planning.md)
-

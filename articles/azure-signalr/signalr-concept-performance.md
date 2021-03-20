@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74157668"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Prestandaguide för Azure SignalR Service
@@ -43,7 +43,7 @@ Azure SignalR service definierar sju standard nivåer för olika prestanda kapac
 
 -   Vilken typ av app server (VM-storlek) är lämplig för mig? Hur många av dem ska jag distribuera?
 
-För att besvara dessa frågor ger den här guiden först en övergripande förklaring av de faktorer som påverkar prestandan. Den visar sedan de maximalt inkommande och utgående meddelandena för varje nivå för vanliga användnings fall: **eko**, **sändning**, **Skicka till grupp**och **Skicka till anslutning** (peer-to-peer-samtal).
+För att besvara dessa frågor ger den här guiden först en övergripande förklaring av de faktorer som påverkar prestandan. Den visar sedan de maximalt inkommande och utgående meddelandena för varje nivå för vanliga användnings fall: **eko**, **sändning**, **Skicka till grupp** och **Skicka till anslutning** (peer-to-peer-samtal).
 
 Den här guiden beskriver inte alla scenarier (och olika användnings fall, meddelande storlekar, meddelanden som skickar mönster och så vidare). Men det finns några metoder som hjälper dig att:
 
@@ -58,7 +58,7 @@ I det här avsnittet beskrivs metoder för prestanda utvärdering och en lista �
 
 *Data flöde* och *svars tider* är två typiska aspekter av prestanda kontroll. För Azure SignalR-tjänsten har varje SKU-nivå sin egen data flödes begränsnings princip. Principen definierar *högsta tillåtna data flöde (inkommande och utgående bandbredd)* som maximalt uppnått data flöde när 99 procent av meddelanden har svars tid som är mindre än 1 sekund.
 
-Latens är det tidsintervall från anslutningen som skickar meddelandet om att ta emot svarsmeddelandet från Azure SignalR-tjänsten. Vi tar **eko** som exempel. Varje klient anslutning lägger till en tidstämpel i meddelandet. App Server-hubben skickar det ursprungliga meddelandet tillbaka till klienten. Det innebär att spridnings fördröjning enkelt beräknas av varje klient anslutning. Tidstämpeln bifogas för varje meddelande i **sändning**, **Skicka till grupp**och **Skicka till anslutning**.
+Latens är det tidsintervall från anslutningen som skickar meddelandet om att ta emot svarsmeddelandet från Azure SignalR-tjänsten. Vi tar **eko** som exempel. Varje klient anslutning lägger till en tidstämpel i meddelandet. App Server-hubben skickar det ursprungliga meddelandet tillbaka till klienten. Det innebär att spridnings fördröjning enkelt beräknas av varje klient anslutning. Tidstämpeln bifogas för varje meddelande i **sändning**, **Skicka till grupp** och **Skicka till anslutning**.
 
 För att simulera tusentals samtidiga klient anslutningar skapas flera virtuella datorer i ett virtuellt privat nätverk i Azure. Alla dessa virtuella datorer ansluter till samma Azure SignalR-tjänstinstans.
 
@@ -74,7 +74,7 @@ WebSocket är ett dubbelriktat kommunikations protokoll med dubbelriktad duplex 
 
 Kostnaden för vidarebefordring av meddelanden begränsar också prestanda. Azure SignalR service spelar en roll som en Message router, som dirigerar meddelandet från en uppsättning klienter eller servrar till andra klienter eller servrar. Ett annat scenario eller API kräver en annan princip för routning. 
 
-För **ECHO**skickar klienten ett meddelande till sig själv, och routningstjänsten är också själva. Det här mönstret har den lägsta produktionskostnaden. Men för **sändning**, **Skicka till grupp**och **Skicka till anslutning**måste Azure Signaling-tjänsten leta upp mål anslutningarna via den interna distribuerade data strukturen. Den här extra bearbetningen använder mer processor, minne och nätverks bandbredd. Därför är prestanda långsammare.
+För **ECHO** skickar klienten ett meddelande till sig själv, och routningstjänsten är också själva. Det här mönstret har den lägsta produktionskostnaden. Men för **sändning**, **Skicka till grupp** och **Skicka till anslutning** måste Azure Signaling-tjänsten leta upp mål anslutningarna via den interna distribuerade data strukturen. Den här extra bearbetningen använder mer processor, minne och nätverks bandbredd. Därför är prestanda långsammare.
 
 I standard läget kan app-servern också bli en Flask hals för vissa scenarier. Azure SignalR SDK måste anropa hubben, medan den upprätthåller en Live-anslutning med varje klient genom pulsslags signaler.
 
@@ -172,7 +172,7 @@ För Unit100 är den maximala utgående bandbredden 400 MB från föregående ta
 
 ##### <a name="mixed-use-cases"></a>Blandade användnings fall
 
-Det verkliga användnings fallet blandar vanligt vis fyra grundläggande användnings fall: **eko**, **sändning**, **Skicka till grupp**och **Skicka till anslutning**. Den metod som du använder för att utvärdera kapaciteten är att:
+Det verkliga användnings fallet blandar vanligt vis fyra grundläggande användnings fall: **eko**, **sändning**, **Skicka till grupp** och **Skicka till anslutning**. Den metod som du använder för att utvärdera kapaciteten är att:
 
 1. Dela in blandade användnings fall i fyra grundläggande användnings fall.
 1. Beräkna den maximala inkommande och utgående meddelande bandbredden med hjälp av föregående formler separat.
@@ -187,7 +187,7 @@ Kontrol lera att app-servern *inte* är Flask hals för användnings fall för a
 
 ## <a name="case-study"></a>Fallstudie
 
-Följande avsnitt går igenom fyra vanliga användnings fall för WebSocket-transport: **eko**, **sändning**, **Skicka till grupp**och **Skicka till anslutning**. I avsnittet visas den aktuella inkommande och utgående kapaciteten för Azure SignalR-tjänsten för varje scenario. Den förklarar också de huvudsakliga faktorer som påverkar prestanda.
+Följande avsnitt går igenom fyra vanliga användnings fall för WebSocket-transport: **eko**, **sändning**, **Skicka till grupp** och **Skicka till anslutning**. I avsnittet visas den aktuella inkommande och utgående kapaciteten för Azure SignalR-tjänsten för varje scenario. Den förklarar också de huvudsakliga faktorer som påverkar prestanda.
 
 I standard läget skapar app server fem Server anslutningar med Azure SignalR-tjänsten. App Server använder Azure SignalR service SDK som standard. I följande prestanda test resultat ökas Server anslutningarna till 15 (eller mer för sändning och sändning av ett meddelande till en stor grupp).
 
@@ -307,7 +307,7 @@ Många klient anslutningar anropar hubben, så app server-numret är också krit
 
 ##### <a name="big-group"></a>Stor grupp
 
-För **att skicka till Big-gruppen**blir den utgående bandbredden Flask hals innan du påträffar den kostnads gränsen för routning. I följande tabell visas den maximala utgående bandbredden som är nästan samma som för **sändning**.
+För **att skicka till Big-gruppen** blir den utgående bandbredden Flask hals innan du påträffar den kostnads gränsen för routning. I följande tabell visas den maximala utgående bandbredden som är nästan samma som för **sändning**.
 
 |    Skicka till stor grupp      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|

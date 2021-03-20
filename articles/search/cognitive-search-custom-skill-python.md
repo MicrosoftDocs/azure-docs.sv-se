@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936137"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Exempel: skapa en anpassad kunskap med hjälp av python
@@ -44,7 +44,7 @@ Med Azure Functions-projektmallen i Visual Studio Code skapas ett projekt som ka
 
 1. I Visual Studio Code, trycker du på F1 för att öppna kommando paletten. I paletten kommando söker du efter och väljer `Azure Functions: Create new project...` .
 
-1. Välj en katalog plats för projekt arbets ytan och välj **Välj**.
+1. Välj en katalogplats för projektarbetsytan och välj **Välj**.
 
     > [!NOTE]
     > De här stegen har utformats för att slutföras utanför en arbets yta. Därför ska du inte välja en projektmapp som är en del av en arbets yta.
@@ -196,7 +196,7 @@ När du är nöjd med funktions beteendet kan du publicera den.
 
 I det här läget skapas de nödvändiga resurserna i din Azure-prenumeration för att vara värd för den nya Azure-funktionen på Azure. Vänta tills distributionen har slutförts. I fönstret Utdata visas distributions processens status.
 
-1. I [Azure Portal](https://portal.azure.com)navigerar du till **alla resurser** och letar efter funktionen som du har publicerat med namnet. Om du har namngett IT- **sammansättning**väljer du resursen.
+1. I [Azure Portal](https://portal.azure.com)navigerar du till **alla resurser** och letar efter funktionen som du har publicerat med namnet. Om du har namngett IT- **sammansättning** väljer du resursen.
 
 1. Klicka på knappen **</> Hämta funktions-URL** . Detta gör att du kan kopiera URL: en för att anropa funktionen.
 

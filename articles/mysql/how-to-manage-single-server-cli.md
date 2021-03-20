@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: bd068f0cf76a8edefca854d72d5240c0becaf8fc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542073"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>Hantera en Azure Database for MySQL enskild server med Azure CLI
@@ -47,7 +47,7 @@ Här följer information om argument ovan:
 ---|---|---
 name | mydemoserver | Ange ett unikt namn för din Azure Database for MySQL-server. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken.
 resource-group | myresourcegroup | Ange namnet på Azure-resursgruppen.
-sku-name|GP_Gen5_2|Ange namnet på pris nivån och beräknings konfigurationen. Följer konventionen {prisnivå} _{beräkningsgenerering}_ {vCores} i snabbformat. Mer information finns på [pris nivåerna](./concepts-pricing-tiers.md) .
+sku-name|GP_Gen5_2|Ange namnet på pris nivån och beräknings konfigurationen. Följer konventionen {prisnivå}_{beräkningsgenerering}_{vCores} i snabbformat. Mer information finns på [pris nivåerna](./concepts-pricing-tiers.md) .
 storage-size | 6144 | Serverns lagringskapacitet (enheten är megabyte). Lägsta 5120 och ökar i steg om 1024.
 
 > [!Important]

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/08/2020
 ms.author: alkohli
 ms.openlocfilehash: 0e1b70ba3f1359c7cf9c6633ab5e0e05c7b6e946
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96027694"
 ---
 I det här avsnittet beskrivs gränserna för Azure Storage tjänst och de namngivnings konventioner som krävs för Azure Files, Azure block-blobbar och Azure Page-blobbar, som är tillämpliga för Data Box-enhet-tjänsten. Granska lagrings gränserna noggrant och följ alla rekommendationer.

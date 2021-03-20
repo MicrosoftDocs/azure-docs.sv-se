@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: aaa1d6df9faa20b1a561bfccdfea682af7645c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88930255"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Skriv kod för att spåra begär Anden med Application Insights
@@ -32,7 +32,7 @@ Gör så här om du vill spåra begär Anden manuellt:
         ```
       Mer information om den här nyckel konfigurationen för global Instrumentation finns i [använda Service Fabric med Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. Lägg till en using-instruktion runt den kod som du vill använda, `StartOperation<RequestTelemetry>` **using** som du ser i följande exempel:
+  1. Lägg till en using-instruktion runt den kod som du vill använda, `StartOperation<RequestTelemetry>`  som du ser i följande exempel:
 
         ```csharp
         using Microsoft.ApplicationInsights;

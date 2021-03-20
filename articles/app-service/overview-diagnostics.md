@@ -8,10 +8,10 @@ ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962816"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Översikt över Azure App Service diagnostik
@@ -24,9 +24,9 @@ App Service diagnostik fungerar bara för din app i Windows, utan även appar p�
 
 ## <a name="open-app-service-diagnostics"></a>Öppna App Service diagnostik
 
-Om du vill komma åt App Service diagnostik navigerar du till din App Service webbapp eller App Service-miljön i [Azure Portal](https://portal.azure.com). Klicka på **diagnostisera och lös problem**i det vänstra navigerings fältet.
+Om du vill komma åt App Service diagnostik navigerar du till din App Service webbapp eller App Service-miljön i [Azure Portal](https://portal.azure.com). Klicka på **diagnostisera och lös problem** i det vänstra navigerings fältet.
 
-För Azure Functions navigerar du till din Function-app. i det övre navigerings fönstret klickar du på **plattforms funktioner**och väljer **diagnostisera och löser problem** i avsnittet **resurs hantering** .
+För Azure Functions navigerar du till din Function-app. i det övre navigerings fönstret klickar du på **plattforms funktioner** och väljer **diagnostisera och löser problem** i avsnittet **resurs hantering** .
 
 På Start sidan för App Service diagnostik kan du välja den kategori som bäst beskriver problemet med din app med hjälp av nyckelorden på varje start sida. Den här sidan är också där du kan hitta **diagnostikverktyg** för Windows-appar. Se [diagnostikverktyg (endast för Windows-app)](#diagnostic-tools-only-for-windows-app).
 

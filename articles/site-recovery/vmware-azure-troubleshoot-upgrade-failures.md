@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84434366"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Felsöka uppgraderingsfel för Microsoft Azure Site Recovery-providern
@@ -32,7 +32,7 @@ Använd följande steg för att uppgradera:
 
 2. Öppna en kommando tolk och navigera till den mapp som du laddade ned den enhetliga installations filen till. Extrahera installationsfilerna från nedladdningen med följande kommando, MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: &lt; mappsökväg för de extraherade filerna &gt; .
     
-    Exempelkommando:
+    Exempel kommando:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: C:\Temp\Extracted
 
@@ -46,7 +46,7 @@ Använd följande steg för att uppgradera:
 
 För att uppgraderingen ska lyckas får inte mappen tredje part byta namn.
 
-För att lösa problemet.
+Så här löser du problemet.
 
 1. Starta Registereditorn (regedit.exe) och öppna HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 grenen.
 1. Kontrol lera `Build_Version` värdet för nyckeln. Om den är inställd på den senaste versionen minskar du versions numret. Till exempel, om den senaste versionen är 9,22. \* och `Build_Version` nyckeln har angetts till värdet och minskar sedan den till 9,21. \*
@@ -55,7 +55,7 @@ För att lösa problemet.
    2. På sidan sammanställning letar du upp avsnittet **uppdaterings information** och laddar ned Samlad uppdatering för Microsoft Azure Site Recovery enhetlig installation.
 1. Öppna en kommando tolk och navigera till mappen som du laddade ned den enhetliga installations filen till och Extrahera installationsfilerna från nedladdningen med hjälp av följande kommando, MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: &lt; mappsökväg för de extraherade filerna &gt; .
 
-    Exempelkommando:
+    Exempel kommando:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: C:\Temp\Extracted
 
@@ -74,7 +74,7 @@ När du uppgraderar Microsoft Azure Site Recovery Provider (DRA) Miss lyckas ins
 Detta kan bero på null-värde för en parameter i register nyckeln. Så här löser du problemet
 
 1. Starta Registereditorn (regedit.exe) och öppna HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 grenen.
-1. Kontrol lera nyckel värdet ' InstallDirectory '.Om den är null lägger du till värdet för aktuell installations katalog.
-1. På samma sätt öppnar du HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5-grenen i Registereditorn.
+1. Kontrol lera nyckel värdet ' InstallDirectory '. Om den är null lägger du till värdet för aktuell installations katalog.
+1. På samma sätt öppnar du HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 grenen i Registereditorn.
 1. Kontrol lera nyckel värdet ' InstallDirectory ' och Lägg till det aktuella installations katalog svärdet.
 1. Kör installations programmet för enhetliga installations program igen.

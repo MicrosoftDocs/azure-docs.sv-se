@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.openlocfilehash: e1b40e3116d56e87a2f397350ef2ba5510e04c0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91707701"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Konfigurera Server parametrar i Azure Database for PostgreSQL-enskild server via Azure Portal 
@@ -29,19 +29,19 @@ För att gå igenom den här instruktions guiden behöver du:
 :::image type="content" source="./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png" alt-text="Översikts sida för parametrar":::
 
 4. Välj den **nedrullningsbara** knappen för att se möjliga värden för parametrar med uppräknad typ som client_min_messages.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Översikts sida för parametrar":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Räkna upp listruta":::
 
 5. Välj eller hovra över knappen **i** (information) för att se möjliga värden för numeriska parametrar som cpu_index_tuple_cost.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="Översikts sida för parametrar":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="informations knapp":::
 
 6. Om det behövs kan du använda **sökrutan** för att begränsa till en specifik parameter. Sökningen har ett namn och en beskrivning av parametrarna.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="Översikts sida för parametrar":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="Sökresultat":::
 
 7. Ändra de parameter värden som du vill justera. Alla ändringar du gör i en session markeras i lila. När du har ändrat värdena kan du välja **Spara**. Eller så kan du **Ignorera** dina ändringar.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="Översikts sida för parametrar":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="Spara eller ta bort ändringar":::
 
 8. Om du har sparat nya värden för parametrarna kan du alltid återställa allt tillbaka till standardvärdena genom att välja **Återställ alla till standard**.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Översikts sida för parametrar":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Återställ alla till standard":::
 
 ## <a name="next-steps"></a>Nästa steg
 Läs om:

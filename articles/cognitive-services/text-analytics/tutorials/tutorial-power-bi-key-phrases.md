@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47feddb88fd7ddae1f8be54709019b4c339d177d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736686"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599178"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Självstudie: integera Power BI med tjänsten kognitiv textanalys
 
@@ -190,7 +190,7 @@ Nu ska du generera ett ordmoln med den här kolumnen. Börja med att klicka på 
 > [!NOTE]
 > Varför generera ett ordmoln med extraherade nyckelfraser i stället för hela texten i varje kommentar? Nyckelfraser förser oss med de *viktiga* orden från kundkommentarerna, inte bara de *vanligaste* orden. Ordstorleken i det resulterande molnet påverkas dessutom inte av ord som används ofta i ett relativt litet antal kommentarer.
 
-Installera den anpassade ordmolnsvyn om du inte redan har den. Navigera till panelen Visualiseringar till höger om arbetsytan. Klicka på de tre punkterna (**...**) och välj **Importera från lagret**. Sök sedan efter moln och klicka på knappen **Lägg till** bredvid ordmolnsvyn. Power BI installerar ordmolnsvyn och bekräftar att installationen slutfördes.
+Installera den anpassade ordmolnsvyn om du inte redan har den. I panelen visualiseringar till höger om arbets ytan klickar du på de tre punkterna (**...**) och väljer **Importera från marknaden**. Om ordet "moln" inte är bland de visade visualiserings verktygen i listan kan du söka efter "Cloud" och klicka på knappen **Lägg till** bredvid molnet för ord i molnet. Power BI installerar ordmolnsvyn och bekräftar att installationen slutfördes.
 
 ![[lägga till anpassad visuell vy]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,7 +200,7 @@ Klicka först på ikonen Ordmoln på panelen visualiseringar.
 
 En ny rapport visas i arbetsytan. Dra fältet `keyphrases` från fältpanelen till kategorifältet på panelen Visualiseringar. Ordmolnet visas i rapporten.
 
-Växla nu till sidan Format på panelen Visualiseringar. I kategorin Stoppord slår du på **Standard-stoppord** för att slippa korta och vanliga ord som ”och” i molnet. 
+Växla nu till sidan Format på panelen Visualiseringar. I kategorin Stoppord slår du på **Standard-stoppord** för att slippa korta och vanliga ord som ”och” i molnet. Men eftersom vi visualiserar viktiga fraser kan de inte innehålla stoppord.
 
 ![[aktivera standard-stoppord]](../media/tutorials/power-bi/default-stop-words.png)
 
@@ -232,8 +232,7 @@ Attitydanalysen returnerar ett värde som anger hur positiva åsikterna som uttr
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[confidenceScores]
-in  sentiment
+    sentiment   = jsonresp[documents]{0}[detectedLanguage][confidenceScore] in  sentiment
 ```
 
 Här följer två typer av språkidentifiering. Den första returnerar ISO-språkkoden (t.ex. `en` för engelska), och den andra returnerar ett smeknamn (t.ex. `English`). Du kanske märker att bara den sista raden i texten skiljer sig åt mellan de två versionerna.
@@ -249,8 +248,7 @@ Här följer två typer av språkidentifiering. Den första returnerar ISO-språ
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[iso6391Name]
-in  language
+    language    = jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 ```fsharp
 // Returns the name (for example, 'English') of the language in which the text is written
@@ -263,8 +261,7 @@ in  language
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[name]
-in  language
+    language    jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 
 Här är en variant av nyckelfrasfunktionen som redan visas. Den returnerar fraserna som listobjekt snarare än som en sträng med kommaseparerade fraser. 

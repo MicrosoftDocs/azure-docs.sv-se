@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537804"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599443"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Gör så här: använda Textanalys för hälsa (för hands version)
 
@@ -44,7 +44,7 @@ Igenkänning av namngivna enheter identifierar ord och fraser som nämns i ostru
 
 ### <a name="relation-extraction"></a>[Relations extrahering](#tab/relation-extraction)
 
-Relations extrahering identifierar meningsfulla anslutningar mellan begrepp som anges i text. Till exempel hittas en relation för "villkor" för att associera ett villkors namn med en tid. 
+Relations extrahering identifierar meningsfulla anslutningar mellan begrepp som anges i text. Till exempel hittas en relation för "villkor" för att associera ett villkors namn med en tid eller mellan en förkortning och en fullständig beskrivning.  
 
 > [!div class="mx-imgBorder"]
 > ![Hälso vård](../media/ta-for-health/health-relation-extraction.png)
@@ -52,19 +52,23 @@ Relations extrahering identifierar meningsfulla anslutningar mellan begrepp som 
 
 ### <a name="entity-linking"></a>[Entity Linking](#tab/entity-linking)
 
-Entiteten länkar disambiguates distinkta entiteter genom att associera namngivna entiteter som nämns i text till begrepp som finns i en fördefinierad databas med begrepp. Till exempel det enhetliga medicinska språk systemet (UMLS).
+Entiteten länkar disambiguates distinkta entiteter genom att associera namngivna entiteter som nämns i text till begrepp som finns i en fördefinierad databas med koncept, inklusive Unified medicinska språk system (UMLS). Medicinska begrepp tilldelas också önskad namngivning, som en ytterligare form av normalisering.
 
 > [!div class="mx-imgBorder"]
 > ![Hälsa, EL](../media/ta-for-health/health-entity-linking.png)
 
 Textanalys för hälso tillstånd stöder länkning till hälso-och biomedicin-vokabulär som finns i Metathesaurus-kunskaps källan (Unified medicin language system) ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)).
 
-### <a name="negation-detection"></a>[Negation identifiering](#tab/negation-detection) 
+### <a name="assertion-detection"></a>[Kontroll av identifiering](#tab/assertion-detection) 
 
-Innebörden av medicinskt innehåll påverkas starkt av modifierare, till exempel negation, som kan ha kritiska indirekt om de feldiagnostiseras. Textanalys för hälso tillstånd stöder negation identifiering för de olika entiteter som anges i texten. 
+Innebörden av medicinskt innehåll påverkas starkt av modifierare, till exempel negativa eller villkorliga kontroller som kan ha kritiska konsekvenser om de är fel. Textanalys för hälso tillstånd stöder tre kategorier av kontroll av identifiering för entiteter i texten: 
+
+* fastställa
+* före
+* association
 
 > [!div class="mx-imgBorder"]
-> ![Hälso NEG](../media/ta-for-health/health-negation.png)
+> ![Hälso NEG](../media/ta-for-health/assertions.png)
 
 ---
 
@@ -137,20 +141,20 @@ example.json
 
 Eftersom den här POST-begäran används för att skicka ett jobb för den asynkrona åtgärden finns det ingen text i objektet Response.  Du behöver dock värdet för åtgärds plats nyckeln i svarshuvuden för att göra en GET-begäran för att kontrol lera status för jobbet och utdata.  Nedan visas ett exempel på värdet för åtgärds plats nyckeln i svars huvudet för POST-begäran:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
 
 Om du vill kontrol lera jobbets status gör du en GET-begäran till URL: en i värdet för nyckel rubriken åtgärds plats i POST-svaret.  Följande tillstånd används för att visa status för ett jobb:,,,,, `NotStarted` `running` `succeeded` `failed` `rejected` `cancelling` och `cancelled` .  
 
 Du kan avbryta ett jobb med en `NotStarted` eller `running` -status med ett Delete http-anrop till samma URL som Get-begäran.  Det finns mer information om BORTTAGNINGs anropet i [textanalys för hälso värdbaserade API-referens](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob).
 
-Följande är ett exempel på svaret på en GET-begäran.  Observera att utmatningen är tillgänglig för hämtning tills `expirationDateTime` (24 timmar från den tidpunkt då jobbet skapades) har passerat efter vilken utdata rensas.
+Följande är ett exempel på svaret på en GET-begäran.  Resultatet är tillgängligt för hämtning tills `expirationDateTime` (24 timmar från det att jobbet skapades) har passerat efter vilket utdata rensas.
 
 ```json
 {
-    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
-    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
-    "createdDateTime": "2020-11-18T01:44:55Z",
-    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
+    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
+    "createdDateTime": "2021-03-11T05:42:32Z",
+    "expirationDateTime": "2021-03-12T05:42:32Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -163,8 +167,7 @@ Följande är ett exempel på svaret på en GET-begäran.  Observera att utmatni
                         "length": 5,
                         "text": "100mg",
                         "category": "Dosage",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 31,
@@ -172,15 +175,35 @@ Följande är ett exempel på svaret på en GET-begäran.  Observera att utmatni
                         "text": "remdesivir",
                         "category": "MedicationName",
                         "confidenceScore": 1.0,
-                        "isNegated": false,
+                        "name": "remdesivir",
                         "links": [
                             {
                                 "dataSource": "UMLS",
                                 "id": "C4726677"
                             },
                             {
+                                "dataSource": "DRUGBANK",
+                                "id": "DB14761"
+                            },
+                            {
+                                "dataSource": "GS",
+                                "id": "6192"
+                            },
+                            {
+                                "dataSource": "MEDCIN",
+                                "id": "398132"
+                            },
+                            {
+                                "dataSource": "MMSL",
+                                "id": "d09540"
+                            },
+                            {
                                 "dataSource": "MSH",
                                 "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "MTHSPL",
+                                "id": "3QKI37EEHE"
                             },
                             {
                                 "dataSource": "NCI",
@@ -189,6 +212,22 @@ Följande är ett exempel på svaret på en GET-begäran.  Observera att utmatni
                             {
                                 "dataSource": "NCI_FDA",
                                 "id": "3QKI37EEHE"
+                            },
+                            {
+                                "dataSource": "NDDF",
+                                "id": "018308"
+                            },
+                            {
+                                "dataSource": "RXNORM",
+                                "id": "2284718"
+                            },
+                            {
+                                "dataSource": "SNOMEDCT_US",
+                                "id": "870592005"
+                            },
+                            {
+                                "dataSource": "VANDF",
+                                "id": "4039395"
                             }
                         ]
                     },
@@ -197,57 +236,62 @@ Följande är ett exempel på svaret på en GET-begäran.  Observera att utmatni
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
-                    },
-                    {
-                        "offset": 56,
-                        "length": 4,
-                        "text": "over",
-                        "category": "Time",
-                        "confidenceScore": 0.87,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.99,
-                        "isNegated": false
+                        "confidenceScore": 0.94
                     }
                 ],
                 "relations": [
                     {
                         "relationType": "DosageOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/0",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
                     },
                     {
                         "relationType": "RouteOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/2",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
                     },
                     {
                         "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/3",
-                        "target": "#/results/documents/0/entities/1"
-                    },
-                    {
-                        "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/4",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/3",
+                                "role": "Time"
+                            }
+                        ]
                     }
                 ],
                 "warnings": []
             }
         ],
         "errors": [],
-        "modelVersion": "2020-09-03"
+        "modelVersion": "2021-03-01"
     }
 }
 ```
@@ -294,30 +338,47 @@ Följande JSON är ett exempel på Textanalys för hälso-API-svars text från d
             "id": "1",
             "entities": [
                 {
-                    "id": "0",
                     "offset": 25,
                     "length": 5,
                     "text": "100mg",
                     "category": "Dosage",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "1",
                     "offset": 31,
                     "length": 10,
                     "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
-                    "isNegated": false,
+                    "name": "remdesivir",
                     "links": [
                         {
                             "dataSource": "UMLS",
                             "id": "C4726677"
                         },
                         {
+                            "dataSource": "DRUGBANK",
+                            "id": "DB14761"
+                        },
+                        {
+                            "dataSource": "GS",
+                            "id": "6192"
+                        },
+                        {
+                            "dataSource": "MEDCIN",
+                            "id": "398132"
+                        },
+                        {
+                            "dataSource": "MMSL",
+                            "id": "d09540"
+                        },
+                        {
                             "dataSource": "MSH",
                             "id": "C000606551"
+                        },
+                        {
+                            "dataSource": "MTHSPL",
+                            "id": "3QKI37EEHE"
                         },
                         {
                             "dataSource": "NCI",
@@ -326,115 +387,215 @@ Följande JSON är ett exempel på Textanalys för hälso-API-svars text från d
                         {
                             "dataSource": "NCI_FDA",
                             "id": "3QKI37EEHE"
+                        },
+                        {
+                            "dataSource": "NDDF",
+                            "id": "018308"
+                        },
+                        {
+                            "dataSource": "RXNORM",
+                            "id": "2284718"
+                        },
+                        {
+                            "dataSource": "SNOMEDCT_US",
+                            "id": "870592005"
+                        },
+                        {
+                            "dataSource": "VANDF",
+                            "id": "4039395"
                         }
                     ]
                 },
                 {
-                    "id": "2",
                     "offset": 42,
                     "length": 13,
                     "text": "intravenously",
                     "category": "MedicationRoute",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "3",
-                    "offset": 56,
-                    "length": 4,
-                    "text": "over",
-                    "category": "Time",
-                    "confidenceScore": 0.87,
-                    "isNegated": false
-                },
-                {
-                    "id": "4",
                     "offset": 73,
                     "length": 7,
                     "text": "120 min",
                     "category": "Time",
-                    "confidenceScore": 0.99,
-                    "isNegated": false
+                    "confidenceScore": 0.94
                 }
             ],
             "relations": [
                 {
                     "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/0",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/0",
+                            "role": "Dosage"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        }
+                    ]
                 },
                 {
                     "relationType": "RouteOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/2",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/2",
+                            "role": "Route"
+                        }
+                    ]
                 },
                 {
                     "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/3",
-                    "target": "#/documents/0/entities/1"
-                },
-                {
-                    "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/4",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/3",
+                            "role": "Time"
+                        }
+                    ]
                 }
-            ]
+            ],
+            "warnings": []
         }
     ],
     "errors": [],
-    "modelVersion": "2020-09-03"
+    "modelVersion": "2021-03-01"
 }
 ```
 
-### <a name="negation-detection-output"></a>Identifierings resultat för negation
+### <a name="assertion-output"></a>Försäkrade utdata
 
-När du använder negation identifiering kan i vissa fall en enskild negations period hantera flera villkor samtidigt. Negationen av en identifierad entitet representeras i JSON-utdata av flaggans booleska värde `isNegated` , till exempel:
+Textanalys för hälso tillstånds ändringar, som är informativa attribut som är tilldelade till medicinska begrepp som ger djupare förståelse för koncepten i texten. Dessa modifierare delas in i tre kategorier, varje fokusering på en annan aspekt och innehåller en uppsättning ömsesidigt uteslutande värden. Endast ett värde per kategori har tilldelats varje entitet. Det vanligaste värdet för varje kategori är standardvärdet. Tjänstens utdata-svar innehåller bara ändrings bara ändringar som skiljer sig från standardvärdet.
+
+**Säkerhet**  – ger information om närvaron (nuvarande eller frånvarande) av konceptet och hur den är specifik för dess förekomst (obestämd vs. möjlig).
+*   **Positivt** [standard]: konceptet finns eller har inträffat.
+* **Negativt**: konceptet finns inte nu eller så har det aldrig hänt.
+* **Positive_Possible**: konceptet finns förmodligen, men det finns en del osäkerhet.
+* **Negative_Possible**: begreppet existens är osannolik, men det finns en del osäkerhet.
+* **Neutral_Possible**: det kan bero på att det inte finns någon tendens till endera sidan.
+
+**Villkorlighet** – ger information om huruvida förekomsten av ett koncept är beroende av vissa villkor. 
+*   **Ingen** [standard]: begreppet är ett faktum och inte hypotetiskt och är inte beroende av vissa villkor.
+*   **Hypotetisk**: begreppet kan utvecklas eller ske i framtiden.
+*   **Villkorlig**: konceptet finns eller inträffar endast under vissa omständigheter.
+
+**Association** – beskriver om konceptet är associerat med ämnet för texten eller någon annan.
+*   **Subject** [standard]: konceptet är associerat med texten för texten, vanligt vis patienten.
+*   **Someone_Else**: begreppet är associerat med någon som inte är ämne för texten.
+
+
+Kontroll av försäkran representerar negationde entiteter som ett negativt värde för kategorin säkerhet, till exempel:
 
 ```json
 {
-  "id": "2",
-  "offset": 90,
-  "length": 10,
-  "text": "chest pain",
-  "category": "SymptomOrSign",
-  "score": 0.9972,
-  "isNegated": true,
-  "links": [
-    {
-      "dataSource": "UMLS",
-      "id": "C0008031"
-    },
-    {
-      "dataSource": "CHV",
-      "id": "0000023593"
-    },
+                        "offset": 381,
+                        "length": 3,
+                        "text": "SOB",
+                        "category": "SymptomOrSign",
+                        "confidenceScore": 0.98,
+                        "assertion": {
+                            "certainty": "negative"
+                        },
+                        "name": "Dyspnea",
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C0013404"
+                            },
+                            {
+                                "dataSource": "AOD",
+                                "id": "0000005442"
+                            },
     ...
 ```
 
 ### <a name="relation-extraction-output"></a>Utmatning för Relations extrahering
 
-Utmatningen för Relations extrahering innehåller URI-referenser till relationens *källa* och dess *mål*. Entiteter med relations roll för `ENTITY` är tilldelade till `target` fältet. Entiteter med relations roll för `ATTRIBUTE` är tilldelade till `source` fältet. Förkortnings relationer innehåller dubbelriktade `source` och `target` fält, och `bidirectional` kommer att anges till `true` . 
+Textanalys för hälsa kan identifiera relationer mellan olika koncept, inklusive relationer mellan attribut och entiteter (till exempel riktningen på bröd text strukturen, dosering av medicin) och mellan entiteter (t. ex. förkortnings identifiering).
+
+**FÖRKORTNING**
+
+**DIRECTION_OF_BODY_STRUCTURE**
+
+**DIRECTION_OF_CONDITION**
+
+**DIRECTION_OF_EXAMINATION**
+
+**DIRECTION_OF_TREATMENT**
+
+**DOSAGE_OF_MEDICATION**
+
+**FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_MEDICATION**
+
+**FREQUENCY_OF_TREATMENT**
+
+**QUALIFIER_OF_CONDITION**
+
+**RELATION_OF_EXAMINATION**
+
+**ROUTE_OF_MEDICATION** 
+
+**TIME_OF_CONDITION**
+
+**TIME_OF_EVENT**
+
+**TIME_OF_EXAMINATION**
+
+**TIME_OF_MEDICATION**
+
+**TIME_OF_TREATMENT**
+
+**UNIT_OF_CONDITION**
+
+**UNIT_OF_EXAMINATION**
+
+**VALUE_OF_CONDITION**  
+
+**VALUE_OF_EXAMINATION**
+
+> [!NOTE]
+> * Relationer som hänvisar till villkor kan referera till antingen typen av diagnos enhet eller entiteten SYMPTOM_OR_SIGN.
+> * Relationer som hänvisar till medicin kan referera till antingen MEDICATION_NAME entitetstyp eller MEDICATION_CLASS entitetstyp.
+> * Relationer som refererar till tid kan referera till tidsenhets typ eller datum enhets typ.
+
+Utmatningen för Relations extrahering innehåller URI-referenser och tilldelade roller för entiteterna i Relations typen. Exempel:
 
 ```json
-"relations": [
-                {
-                    "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
-                },
-                {
-                    "relationType": "FrequencyOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
-                }
-            ]
-  },
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
 ...
 ]
 ```

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674816"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Kom igång med Oracle Database-anslutningsprogrammet
@@ -52,7 +52,7 @@ Den här artikeln visar hur du använder Oracle Database Connector i en Logic ap
 ## <a name="add-the-connector"></a>Lägg till anslutningen
 
 > [!IMPORTANT]
-> Det finns inga utlösare för den här anslutningen. Den har bara åtgärder. När du skapar din Logic-app lägger du till en annan utlösare för att starta din Logi Kap par, till exempel **schema-upprepning** eller **begär ande/svars svar** . 
+> Det finns inga utlösare för den här anslutningen. Den har bara åtgärder. När du skapar din Logic-app lägger du till en annan utlösare för att starta din Logi Kap par, till exempel **schema-upprepning** eller **begär ande/svars svar**. 
 
 1. Skapa en tom Logic-app i [Azure Portal](https://portal.azure.com).
 
@@ -60,16 +60,16 @@ Den här artikeln visar hur du använder Oracle Database Connector i en Logic ap
 
     ![En dialog ruta innehåller en ruta för att söka i alla utlösare. Det finns också en enda utlösare som visas, "Request/Response-Request", med en urvals knapp.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Välj **Spara** . När du sparar skapas en URL för begäran automatiskt. 
+3. Välj **Spara**. När du sparar skapas en URL för begäran automatiskt. 
 
-4. Välj **Nytt steg** och välj sedan **Lägg till en åtgärd** . Skriv in `oracle` för att se tillgängliga åtgärder: 
+4. Välj **Nytt steg** och välj sedan **Lägg till en åtgärd**. Skriv in `oracle` för att se tillgängliga åtgärder: 
 
     ![En sökruta innehåller "Oracle". Sökningen skapar en träff med etiketten "Oracle Database". Det finns en tabbad sida som visar "utlösare (0)", en annan som visar "åtgärder (6)". Sex åtgärder visas. Den första av dessa är "Hämta rad förhands granskning".](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > Detta är också det snabbaste sättet att se utlösare och åtgärder som är tillgängliga för alla anslutningar. Ange en del av kopplings namnet, till exempel `oracle` . Designern visar alla utlösare och åtgärder. 
 
-5. Välj en av åtgärderna, till exempel **Oracle Database-get-rad** . Välj **Anslut via lokal datagateway** . Ange Oracle-servernamn, autentiseringsmetod, användar namn, lösen ord och välj gatewayen:
+5. Välj en av åtgärderna, till exempel **Oracle Database-get-rad**. Välj **Anslut via lokal datagateway**. Ange Oracle-servernamn, autentiseringsmetod, användar namn, lösen ord och välj gatewayen:
 
     ![Dialog rutan heter "Oracle Database-get Row". Det finns en ruta, markerad, märkt "Anslut via lokal datagateway". Nedan visas de fem andra text rutorna.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -83,7 +83,7 @@ Den här artikeln visar hur du använder Oracle Database Connector i en Logic ap
 
     ![Det finns två dialog rutor. Rutorna "Skicka ett e-postmeddelande" innehåller rutor för att ange "Body", "subject" och "till"-adressen för e-postmeddelandet. I dialog rutan Lägg till dynamiskt innehåll kan du söka efter dynamiskt innehåll från appar och tjänster i flödet.](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **Spara** din Logic app och välj sedan **Kör** . Stäng designern och titta på körnings historiken för status. Om det Miss lyckas väljer du raden fel meddelande. Designern öppnas och visar det steg som misslyckades, och visar även fel informationen. Om det lyckas bör du få ett e-postmeddelande med den information som du har lagt till.
+8. **Spara** din Logic app och välj sedan **Kör**. Stäng designern och titta på körnings historiken för status. Om det Miss lyckas väljer du raden fel meddelande. Designern öppnas och visar det steg som misslyckades, och visar även fel informationen. Om det lyckas bör du få ett e-postmeddelande med den information som du har lagt till.
 
 
 ### <a name="workflow-ideas"></a>Arbets flödes idéer
@@ -98,23 +98,23 @@ Den här artikeln visar hur du använder Oracle Database Connector i en Logic ap
 
 ## <a name="common-errors"></a>Vanliga fel
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Fel** : det går inte att ansluta till gatewayen
+#### <a name="error-cannot-reach-the-gateway"></a>**Fel**: det går inte att ansluta till gatewayen
 
-**Orsak** : den lokala datagatewayen kan inte ansluta till molnet. 
+**Orsak**: den lokala datagatewayen kan inte ansluta till molnet. 
 
-**Minskning** : kontrol lera att din gateway körs på den lokala datorn där du installerade den och att den kan ansluta till Internet.  Vi rekommenderar att du inte installerar gatewayen på en dator som kan vara avstängd eller i vilo läge. Du kan också starta om den lokala datagateway-tjänsten (PBIEgwService).
+**Minskning**: kontrol lera att din gateway körs på den lokala datorn där du installerade den och att den kan ansluta till Internet.  Vi rekommenderar att du inte installerar gatewayen på en dator som kan vara avstängd eller i vilo läge. Du kan också starta om den lokala datagateway-tjänsten (PBIEgwService).
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fel** : providern som används är föråldrad: system. data. OracleClient kräver version 8.1.7 av Oracle-klientprogramvaran eller mer. Se [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) så här installerar du den officiella providern.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fel**: providern som används är föråldrad: system. data. OracleClient kräver version 8.1.7 av Oracle-klientprogramvaran eller mer. Se [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) så här installerar du den officiella providern.
 
-**Orsak** : Oracle-klientens SDK är inte installerad på den dator där den lokala datagatewayen körs.  
+**Orsak**: Oracle-klientens SDK är inte installerad på den dator där den lokala datagatewayen körs.  
 
-**Lösning** : Hämta och installera Oracle client SDK på samma dator som den lokala datagatewayen.
+**Lösning**: Hämta och installera Oracle client SDK på samma dator som den lokala datagatewayen.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fel** : tabellen [TableName] definierar inga nyckel kolumner
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fel**: tabellen [TableName] definierar inga nyckel kolumner
 
-**Orsak** : tabellen har ingen primär nyckel.  
+**Orsak**: tabellen har ingen primär nyckel.  
 
-**Lösning** : Oracle Database-anslutningen kräver att en tabell med en primär nyckel kolumn används.
+**Lösning**: Oracle Database-anslutningen kräver att en tabell med en primär nyckel kolumn används.
  
 ## <a name="connector-specific-details"></a>Anslutningsspecifika Detaljer
 

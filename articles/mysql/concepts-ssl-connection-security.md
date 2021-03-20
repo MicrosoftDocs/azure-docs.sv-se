@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6fb0b6f38869192e89bb849950e8822a157b23c8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 1b272755652d018a0d5364e4d67c783774c68da8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241947"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655248"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-anslutning i Azure Database for MySQL
 
@@ -63,7 +63,7 @@ Om du till exempel anger värdet för lägsta TLS-inställnings version till TLS
 >
 > När du har tillverkat en lägsta TLS-version kan du inte senare inaktivera den lägsta version som tillämpas.
 
-Information om hur du anger TLS-inställningen för Azure Database for MySQL finns i [Konfigurera TLS-inställningen](howto-tls-configurations.md).
+Inställningen för minsta TLS-version kräver ingen omstart av servern när servern är online. Information om hur du anger TLS-inställningen för Azure Database for MySQL finns i [Konfigurera TLS-inställningen](howto-tls-configurations.md).
 
 ## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Cipher-stöd av Azure Database for MySQL enskild server
 

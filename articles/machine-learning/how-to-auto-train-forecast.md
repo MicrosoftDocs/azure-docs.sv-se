@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 66fa56b45e8d3cff7a8ace300a450b9c41df9bc0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503512"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588723"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisk träna en tids serie prognos modell
 
@@ -128,7 +128,7 @@ Automatisk maskin inlärning försöker automatiskt med olika modeller och algor
 >[!Tip]
 > Traditionella Regressions modeller testas också som en del av rekommendations systemet för att förutse experiment. Se [tabellen modell som stöds](how-to-configure-auto-train.md#supported-models) för den fullständiga listan över modeller. 
 
-Modeller| Beskrivning | Fördelar
+Modeller| Description | Fördelar
 ----|----|---
 Prophet (för hands version)|Prophet fungerar bäst med tids serier som har starka säsongs effekter och flera säsonger av historiska data. Om du vill utnyttja den här modellen installerar du den lokalt med `pip install fbprophet` . | Korrekt & snabb, robust för att kunna avvika, saknade data och dramatiska ändringar i din tids serie.
 Auto-ARIMA (för hands version)|Autoregressiva Integrated glidande medelvärde (ARIMA) fungerar bäst när data är Station ära. Det innebär att dess statistiska egenskaper, t. ex. medelvärdet och var Ian sen är konstant över hela uppsättningen. Om du till exempel vänder en mynt är sannolikheten för att du får 50%, oavsett om du vänder idag, imorgon eller nästa år.| Perfekt för univariate-serien, eftersom de tidigare värdena används för att förutsäga framtida värden.
@@ -349,7 +349,7 @@ Du kan också använda- `forecast_destination` parametern i `forecast()` funktio
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_pipeline.forecast(
+label_fcst, data_trans = fitted_model.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
@@ -373,7 +373,7 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-Upprepa de nödvändiga stegen för att läsa in framtida data till en dataframe och kör sedan `best_run.predict(test_data)` för att förutsäga framtida värden.
+Upprepa de nödvändiga stegen för att läsa in framtida data till en dataframe och kör sedan `best_run.forecast(test_data)` för att förutsäga framtida värden.
 
 > [!NOTE]
 > In-Sample-förutsägelser stöds inte för prognostisering med automatisk ML när `target_lags` och/eller `target_rolling_window_size` är aktiverade.

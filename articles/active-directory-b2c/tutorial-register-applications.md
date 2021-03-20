@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918219"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579645"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Självstudie: registrera ett webb program i Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ Om du vill registrera ett webb program i din Azure AD B2C klient kan du använda
 
 ## <a name="create-a-client-secret"></a>Skapa en klient hemlighet
 
-För ett webb program måste du skapa en program hemlighet. Den här hemligheten kommer att användas av ditt program för att byta ut en auktoriseringskod för en åtkomsttoken.
+För ett webb program måste du skapa en program hemlighet. Klient hemligheten kallas även för ett *program lösen ord*. Hemligheten kommer att användas av ditt program för att byta ut en auktoriseringskod för en åtkomsttoken.
 
 #### <a name="app-registrations"></a>[Appregistreringar](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ För ett webb program måste du skapa en program hemlighet. Den här hemligheten
 1. Välj **Ny klienthemlighet**.
 1. Ange en beskrivning av klient hemligheten i rutan **Beskrivning** . Till exempel *clientsecret1*.
 1. Under **upphör ande** väljer du en varaktighet för vilken hemligheten är giltig och väljer sedan **Lägg till**.
-1. Registrera hemlighetens **värde**. Du använder det här värdet som program hemlighet i programmets kod.
+1. Registrera hemlighetens **värde** för användning i klient program koden. Detta hemliga värde visas aldrig igen när du lämnar den här sidan. Du använder det här värdet som program hemlighet i programmets kod.
 
 #### <a name="applications-legacy"></a>[Program (bakåtkompatibelt)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ För ett webb program måste du skapa en program hemlighet. Den här hemligheten
 1. Välj **Spara** för att Visa nyckeln. Anteckna **appnyckel**-värdet. Du använder det här värdet som program hemlighet i programmets kod.
 
 * * *
+
+> [!NOTE]
+> Av säkerhets synpunkt kan du regelbundet återställa program hemligheten eller omedelbart i nödfall. Alla program som integreras med Azure AD B2C bör förberedas för att hantera en hemlig överrullning-händelse, oavsett hur ofta den kan inträffa. Du kan ange två program hemligheter, så att ditt program kan fortsätta att använda den gamla hemligheten under en program hemlighets rotations händelse. Upprepa stegen i det här avsnittet om du vill lägga till en annan klient hemlighet. 
 
 ## <a name="enable-id-token-implicit-grant"></a>Aktivera ID-token implicit beviljande
 

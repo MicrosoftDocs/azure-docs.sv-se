@@ -8,10 +8,10 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069025"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Distribuera ett hanterings verktyg för Windows Virtual Desktop (klassiskt) med PowerShell
@@ -145,7 +145,7 @@ Så här kontrollerar du Azure AD-programkonfigurationen och ger godkännande:
 
    [![Sidan autentisering med angiven omdirigerings-URI ](../media/management-ui-redirect-uri-inline.png)](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. I den vänstra panelen väljer du **API-behörigheter** för att bekräfta att behörigheterna har lagts till. Om du är global administratör väljer du knappen **bevilja administratörs medgivande för `tenantname` ** och följer dialog rutorna för att ge din organisation ett administrativt medgivande.
+5. I den vänstra panelen väljer du **API-behörigheter** för att bekräfta att behörigheterna har lagts till. Om du är global administratör väljer du knappen **bevilja administratörs medgivande för `tenantname`** och följer dialog rutorna för att ge din organisation ett administrativt medgivande.
 
     [![Sidan ](../media/management-ui-permissions-inline.png) API-behörigheter](../media/management-ui-permissions-expanded.png#lightbox)
 
@@ -162,7 +162,7 @@ Nu när du har konfigurerat hanterings verktyget kan du när som helst starta de
    > Om du inte beviljade administrativt medgivande när du konfigurerade hanterings verktyget måste varje användare som loggar in ange sitt eget användar medgivande för att kunna använda verktyget.
 
 3. När du uppmanas att välja en klient grupp väljer du **standard grupp för klient organisation** i list rutan.
-4. När du väljer **standard klient grupp**visas en meny på vänster sida i fönstret. I den här menyn letar du reda på namnet på din klient grupp och väljer den.
+4. När du väljer **standard klient grupp** visas en meny på vänster sida i fönstret. I den här menyn letar du reda på namnet på din klient grupp och väljer den.
 
    > [!NOTE]
    > Om du har en anpassad klient grupp anger du namnet manuellt i stället för att välja i list rutan.

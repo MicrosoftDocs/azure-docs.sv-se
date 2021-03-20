@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88959008"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Vanliga frågor och svar om program prestanda för Web Apps i Azure
@@ -32,11 +32,11 @@ Flera faktorer kan bidra till dåliga program prestanda. Detaljerade fel söknin
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hur gör jag för att felsöka ett scenario med hög CPU-förbrukning?
 
-I vissa scenarier med hög CPU-förbrukning kan din app faktiskt kräva mer data bearbetnings resurser.I så fall bör du överväga att skala till en högre tjänst nivå så att programmet får alla resurser som krävs. Andra gånger kan hög processor förbrukning orsakas av en dålig loop eller en kodnings metod. Att få insikt i vad som utlöser ökad processor förbrukning är en process i två delar. Börja med att skapa en process dumpning och analysera sedan process dumpningen. Mer information finns i [avbilda och analysera en dumpfil för hög CPU-förbrukning för Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
+I vissa scenarier med hög CPU-förbrukning kan din app faktiskt kräva mer data bearbetnings resurser. I så fall bör du överväga att skala till en högre tjänst nivå så att programmet får alla resurser som krävs. Andra gånger kan hög processor förbrukning orsakas av en dålig loop eller en kodnings metod. Att få insikt i vad som utlöser ökad processor förbrukning är en process i två delar. Börja med att skapa en process dumpning och analysera sedan process dumpningen. Mer information finns i [avbilda och analysera en dumpfil för hög CPU-förbrukning för Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hur gör jag för att felsöka ett scenario med hög minnes förbrukning?
 
-I vissa scenarier med hög minnes användning kan din app faktiskt kräva mer data bearbetnings resurser.I så fall bör du överväga att skala till en högre tjänst nivå så att programmet får alla resurser som krävs. Andra gånger kan ett fel i koden orsaka en minnes läcka. En kodnings metod kan också öka minnes användningen.Att få insikt i vad som utlöser hög minnes användning är en process i två delar. Börja med att skapa en process dumpning och analysera sedan process dumpningen. Crash Diagnostic från Azure Site Extension-galleriet kan effektivt utföra båda dessa steg. Mer information finns i [avbilda och analysera en dumpfil för återkommande hög minnes storlek för Web Apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
+I vissa scenarier med hög minnes användning kan din app faktiskt kräva mer data bearbetnings resurser. I så fall bör du överväga att skala till en högre tjänst nivå så att programmet får alla resurser som krävs. Andra gånger kan ett fel i koden orsaka en minnes läcka. En kodnings metod kan också öka minnes användningen. Att få insikt i vad som utlöser hög minnes användning är en process i två delar. Börja med att skapa en process dumpning och analysera sedan process dumpningen. Crash Diagnostic från Azure Site Extension-galleriet kan effektivt utföra båda dessa steg. Mer information finns i [avbilda och analysera en dumpfil för återkommande hög minnes storlek för Web Apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hur gör jag för att automatisera App Service webbappar med PowerShell?
 
@@ -71,7 +71,7 @@ Det finns två alternativ för att visa information på process nivå för din w
 *   I kudu-konsolen:
     1. Logga in på din **kudu-webbplats** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
     2. Välj menyn **process Utforskaren** .
-    3. Välj **Egenskaper**för **w3wp.exes** processen.
+    3. Välj **Egenskaper** för **w3wp.exes** processen.
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>När jag bläddrar till min app visas "fel 403 – den här webbappen har stoppats". Hur gör jag för att lösa det?
 
@@ -94,7 +94,7 @@ Som standard inaktive ras Web Apps om de är inaktiva under en angiven tids peri
 1. I Azure Portal går du till din webbapp.
 2. Välj **konfiguration**
 3. Välj **allmänna inställningar**.
-4. För **Always on**väljer du **på**.
+4. För **Always on** väljer du **på**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hur gör jag för att du aktivera spårning av misslyckade förfrågningar?
 
@@ -102,12 +102,12 @@ Aktivera spårning av misslyckade begär Anden:
 
 1. I Azure Portal går du till din webbapp.
 3. Välj **alla inställningar**  >  **diagnostikloggar**.
-4. För **spårning av misslyckade begär Anden**väljer du **på**.
+4. För **spårning av misslyckade begär Anden** väljer du **på**.
 5. Välj **Spara**.
 6. På bladet webbapp väljer du **verktyg**.
 7. Välj **Visual Studio Online**.
-8. Om inställningen inte är **på**väljer du **på**.
-9. Välj **gå**till.
+8. Om inställningen inte är **på** väljer du **på**.
+9. Välj **gå** till.
 10. Välj **Web.config**.
 11. I system. webserver lägger du till den här konfigurationen (för att avbilda en viss URL):
 

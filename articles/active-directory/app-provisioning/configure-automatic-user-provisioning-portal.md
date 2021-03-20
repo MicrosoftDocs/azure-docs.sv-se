@@ -1,23 +1,22 @@
 ---
-title: Hantering av användar etablering för företags program i Azure AD
-description: Lär dig hur du hanterar användar konto etablering för företags program med hjälp av Azure Active Directory
+title: Hantering av användar etablering för företags program i Azure Active Directory
+description: Lär dig hur du hanterar användar konto etablering för företags program med hjälp av Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/04/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555623"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579424"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Hantera användar konto etablering för företags program i Azure Portal
 
@@ -63,9 +62,7 @@ Välj **test anslutning** för att testa autentiseringsuppgifterna genom att lå
 
 Expandera **mappningar** för att visa och redigera användarattribut som flödar mellan Azure AD och mål programmet när användar konton har skapats eller uppdaterats.
 
-Det finns en förkonfigurerad uppsättning mappningar mellan användar objekt i Azure AD och varje SaaS-Apps användar objekt. Vissa appar hanterar även grupp objekt. Välj en mappning i tabellen för att öppna mappnings redigeraren till höger, där du kan visa och anpassa dem.
-
-![Visar skärmen för mappning av attribut](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+Det finns en förkonfigurerad uppsättning mappningar mellan användar objekt i Azure AD och varje SaaS-Apps användar objekt. Vissa appar hanterar även grupp objekt. Välj en mappning i tabellen för att öppna mappnings redigeraren, där du kan visa och anpassa dem.
 
 Anpassningar som stöds är:
 
@@ -79,10 +76,10 @@ Anpassningar som stöds är:
 
 ### <a name="settings"></a>Inställningar
 
-Du kan starta och stoppa Azure AD Provisioning-tjänsten för det valda programmet i **Inställningar** -avsnittet på **etablerings** skärmen. Du kan också välja att rensa etablerings-cachen och starta om tjänsten.
+Expandera **inställningarna** för att ange en e-postadress för att ta emot meddelanden och om du vill ta emot aviseringar om fel. Du kan också välja omfånget för de användare som ska synkroniseras. Du kan välja att synkronisera alla användare och grupper eller bara de som har tilldelats.
+
+### <a name="provisioning-status"></a>Etablerings status 
 
 Om etableringen aktive ras för första gången för ett program aktiverar du tjänsten genom att ändra **etablerings statusen** till **på**. Den här ändringen gör att Azure AD Provisioning-tjänsten kör en första cykel. Den läser de användare som tilldelats i avsnittet **användare och grupper** , frågar mål programmet för dem och kör sedan de etablerings åtgärder som definierats i avsnittet Azure AD- **mappningar** . Under den här processen lagrar etablerings tjänsten cachelagrade data om vilka användar konton den hanterar, så icke-hanterade konton i mål programmen som aldrig fanns i omfattningen för tilldelningen påverkas inte av inetablerings åtgärder. Efter den första cykeln synkroniserar etablerings tjänsten automatiskt användar-och grupp objekt i ett intervall om 40 minuter.
 
 Ändra **etablerings statusen** till **av**  för att pausa etablerings tjänsten. I det här läget skapar inte Azure, uppdaterar eller tar bort användar-eller grupp objekt i appen. Ändra statusen tillbaka till **på** och tjänsten hämtar var den slutade.
-
-**Rensa nuvarande tillstånd och starta om synkronisering** utlöser en första cykel. Tjänsten utvärderar sedan alla användare i käll systemet igen och fastställer om de är inom omfånget för etablering. Detta kan vara användbart när ditt program är i karantän eller om du behöver göra en ändring i mappningarna för attribut. Observera att den första cykeln tar längre tid än den normala stegvisa cykeln på grund av antalet objekt som måste utvärderas. Du kan lära dig mer om prestanda för inledande och stegvisa cykler [här](application-provisioning-when-will-provisioning-finish-specific-user.md).

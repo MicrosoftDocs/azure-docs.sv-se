@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99af0ee46e2827ac8a5749d58bb19cf85f96aa46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733524"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577469"
 ---
 # <a name="get-started-with-custom-voice"></a>Komma igång med Custom Voice
 
@@ -69,7 +69,9 @@ Skapa ditt första projekt genom att välja fliken **text-till-tal/anpassad rös
 
 ## <a name="how-to-migrate-to-custom-neural-voice"></a>Så här migrerar du till den anpassade neurala rösten
 
-Om du använder den anpassade rösten icke-neurala (eller standard) bör du överväga att migrera till anpassad neurala röst direkt genom att följa stegen nedan. Genom att flytta till den anpassade neurala rösten kan du utveckla mer realistiska röster för ännu mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. 
+Standard-/icke-neurala utbildnings nivå (adaptiv, statistisk parameter, concacenative) för anpassad röst är föråldrad. Meddelandet har skickats ut till alla befintliga tal prenumerationer före 2/28/2021. Under utfasnings perioden (3/1/2021-2/29/2024) kan befintliga standard nivå användare fortsätta att använda sina icke-neurala modeller. Alla nya användare/nya tal resurser bör gå över till neurala-nivån/den anpassade neurala rösten. Efter 2/29/2024 kommer alla standard-/icke-neurala anpassade röster inte längre att stödjas. 
+
+Om du använder icke-neurala/standard anpassad röst, migrera till anpassad neurala röst direkt genom att följa stegen nedan. Genom att flytta till den anpassade neurala rösten kan du utveckla mer realistiska röster för ännu mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. 
 
 1. Läs mer om vår [policy om att begränsa åtkomsten](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) och [tillämpa den här](https://aka.ms/customneural). Observera att åtkomsten till den anpassade röst tjänsten för neurala är föremål för Microsofts enda val utifrån våra Berättiganderegler. Kunder kan få till gång till tekniken först efter det att programmet har granskats och de har åtagit sig att använda det i sin egen anpassning med våra [ansvariga AI-principer](https://microsoft.com/ai/responsible-ai) och [uppförandekod](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 2. När ditt program har godkänts får du till gång till inlärnings funktionen "neurala". Se till att du loggar in på den [anpassade röst portalen](https://speech.microsoft.com/customvoice) med samma Azure-prenumeration som du anger i ditt program. 

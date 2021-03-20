@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96028240"
 ---
 Följande krav måste uppfyllas för att du ska kunna upprätta en enhets tunnel:
@@ -28,7 +28,7 @@ Följande krav måste uppfyllas för att du ska kunna upprätta en enhets tunnel
 
 När du har konfigurerat den virtuella Nätverksgatewayen och installerat klient certifikatet i den lokala datorns Arkiv på Windows 10-klienten, använder du följande exempel för att konfigurera en klient enhets tunnel:
 
-1. Kopiera följande text och spara den som ***devicecert.ps1** _.
+1. Kopiera följande text och spara den som ***devicecert.ps1***.
 
    ```
    Param(
@@ -80,7 +80,7 @@ När du har konfigurerat den virtuella Nätverksgatewayen och installerat klient
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Kopiera följande text och spara den som _*_VPNProfile.xml_*_ i samma mapp som _ * devicecert.ps1 * *. Redigera följande text för att matcha din miljö.
+1. Kopiera följande text och spara den som ***VPNProfile.xml** _ i samma mapp som _ * devicecert.ps1 * *. Redigera följande text för att matcha din miljö.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`

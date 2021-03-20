@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961813"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Anslut säkert till Server dels resurser från en App Service-miljö
@@ -42,7 +42,7 @@ En vanlig SQL Server konfiguration har en slut punkt som lyssnar på port 1433:
 Det finns två metoder för att begränsa trafik till den här slut punkten:
 
 * [Nätverks Access Control listor][NetworkAccessControlLists] (nätverks-ACL: er)
-* [Nätverks säkerhets grupper][NetworkSecurityGroups]
+* [Nätverkssäkerhetsgrupper][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Begränsa åtkomst med en nätverks-ACL
 Port 1433 kan skyddas med hjälp av en lista över nätverks åtkomst kontroll.  Exemplet nedan lägger till tilldelnings behörighet för klient adresserna från i ett virtuellt nätverk och blockerar åtkomsten till alla andra klienter.

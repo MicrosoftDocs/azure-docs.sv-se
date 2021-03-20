@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 9087261865b07d32afab65012e04ea478cb60611
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88921655"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Snabbstart: Kör ditt första Azure Batch-jobb med .NET-API
@@ -43,7 +43,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Gå till den katalog som innehåller filen med Visual Studio-lösningen `BatchDotNetQuickstart.sln`.
 
-Öppna lösningsfilen i Visual Studio och uppdatera strängarna med autentiseringsuppgifterna i `Program.cs` med värdena för dina konton. Till exempel:
+Öppna lösningsfilen i Visual Studio och uppdatera strängarna med autentiseringsuppgifterna i `Program.cs` med värdena för dina konton. Exempel:
 
 ```csharp
 // Batch account credentials

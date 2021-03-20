@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88797674"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Konfigurera en säkerhets nyckel som verifierings metod
@@ -65,24 +65,24 @@ Du måste skapa din säkerhets nyckel och ge den en unik PIN-kod innan du kan lo
 
 1. Gå till sidan **min profil** i https://myaccount.microsoft.com och logga in om du inte redan har gjort det.
 
-2. Välj **säkerhets information**, Välj **Lägg till metod**och välj sedan **säkerhets nyckel** i list rutan **Lägg till en metod** .
+2. Välj **säkerhets information**, Välj **Lägg till metod** och välj sedan **säkerhets nyckel** i list rutan **Lägg till en metod** .
 
     ![Rutan Lägg till metod med säkerhets nyckeln vald](media/security-info/security-info-security-key-add-method.png)
 
-3. Välj **Lägg till**och välj sedan den typ av säkerhets nyckel du har, antingen **USB-enhet** eller **NFC-enhet**.
+3. Välj **Lägg till** och välj sedan den typ av säkerhets nyckel du har, antingen **USB-enhet** eller **NFC-enhet**.
 
     ![Välj om du har en USB-eller NFC-typ för säkerhets nyckel](media/security-info/security-info-security-key-choose-type.png)
 
     > [!Note]
     > Om du inte är säker på vilken typ av säkerhets nyckel du har kan du läsa tillverkarens dokumentation. Om du inte är säker på tillverkaren kan du kontakta supportavdelningen för att få hjälp.
 
-4. Ha din säkerhets nyckel fysiskt tillgänglig och välj sedan **Nästa**i rutan **säkerhets nyckel** .
+4. Ha din säkerhets nyckel fysiskt tillgänglig och välj sedan **Nästa** i rutan **säkerhets nyckel** .
 
     ![Start registrerings ruta för säkerhets nyckel](media/security-info/security-info-security-key-start-setup.png)
 
     En ny ruta visas för att hjälpa dig att konfigurera din nya inloggnings metod.
 
-5. I rutan konfigurera **din nya inloggnings metod väljer du** **Nästa**och sedan:
+5. I rutan konfigurera **din nya inloggnings metod väljer du** **Nästa** och sedan:
 
     - Om din säkerhets nyckel är en USB-enhet sätter du in din säkerhets nyckel i USB-porten på enheten.
 
@@ -134,7 +134,7 @@ Om du vill ta bort all konto information som lagras i din fysiska säkerhets nyc
 
 #### <a name="to-reset-your-security-key"></a>Återställa din säkerhets nyckel
 
-1. Öppna appen Windows-inställningar, Välj **konton**, Välj **inloggnings alternativ**, Välj **säkerhets nyckel**och välj sedan **Hantera**.
+1. Öppna appen Windows-inställningar, Välj **konton**, Välj **inloggnings alternativ**, Välj **säkerhets nyckel** och välj sedan **Hantera**.
 
 2. Sätt i din säkerhets nyckel i USB-porten eller tryck på din NFC-läsare för att verifiera din identitet.
 
@@ -148,7 +148,7 @@ Du kan skapa en ny PIN-kod för säkerhets nyckeln för din säkerhets nyckel.
 
 #### <a name="to-create-a-new-security-key-pin"></a>Så här skapar du en ny PIN-kod för säkerhets nyckeln
 
-1. Öppna appen Windows-inställningar, Välj **konton**, Välj **inloggnings alternativ**, Välj **säkerhets nyckel**och välj sedan **Hantera**.
+1. Öppna appen Windows-inställningar, Välj **konton**, Välj **inloggnings alternativ**, Välj **säkerhets nyckel** och välj sedan **Hantera**.
 
 2. Sätt i din säkerhets nyckel i USB-porten eller tryck på din NFC-läsare för att verifiera din identitet.
 3. Välj **Lägg till** från rutan **PIN-kod för säkerhets nyckel** , skriv och bekräfta din nya PIN-kod för säkerhets nyckeln och välj sedan **OK**.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 51034fb5da5c8fd69ab3bb2b770a9bc88b90488b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Självstudie: Azure Active Directory integrering med Voyance
@@ -51,11 +51,11 @@ Om du vill konfigurera integreringen av Voyance i Azure AD måste du lägga till
 
 **Utför följande steg för att lägga till Voyance från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -63,13 +63,13 @@ Om du vill konfigurera integreringen av Voyance i Azure AD måste du lägga till
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **Voyance** , väljer **Voyance** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **Voyance**, väljer **Voyance** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![Voyance i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Voyance baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Voyance baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Voyance upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med Voyance i Azure AD måste du slutföra följande Bygg stenar:
@@ -95,7 +95,7 @@ Utför följande steg för att konfigurera enkel inloggning med Voyance i Azure 
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Utför följande steg för att konfigurera enkel inloggning med Voyance i Azure 
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<companyname>.nyansa.com/saml/create/`
 
-5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Skärm bild som visar ytterligare U R LS där du kan ange ett tecken på U R L.](common/metadata-upload-additional-signon.png)
 
@@ -116,7 +116,7 @@ Utför följande steg för att konfigurera enkel inloggning med Voyance i Azure 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Voyance client support team](mailto:support@nyansa.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** , klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
+6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
     ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
@@ -134,11 +134,11 @@ Utför följande steg för att konfigurera enkel inloggning med Voyance i Azure 
 
 1. Logga in på din Voyance-klient som administratör i ett annat webbläsarfönster.
 
-2. Gå till det övre högra hörnet i navigerings fältet och klicka på **profil** .
+2. Gå till det övre högra hörnet i navigerings fältet och klicka på **profil**.
     
     ![Konfigurera en enskild Sign-On på App-sidans University University](./media/voyance-tutorial/tutorial_voyance_001.png) 
 
-3. Klicka på **Administratörs inställningar** .
+3. Klicka på **Administratörs inställningar**.
 
     ![Konfigurera inställningar för enkel Sign-On på App-sidan](./media/voyance-tutorial/tutorial_voyance_002.png)
 
@@ -154,19 +154,19 @@ Utför följande steg för att konfigurera enkel inloggning med Voyance i Azure 
 
     ![Konfigurera en enskild Sign-On på App-sidans SAML v2](./media/voyance-tutorial/tutorial-voyance-005.png)
     
-    a. Välj **Aktiverad** .
+    a. Välj **Aktiverad**.
     
-    b. Klistra in **inloggnings-URL** , som du har kopierat från Azure Portal till text rutan för **IDP-inloggnings-URL** .
+    b. Klistra in **inloggnings-URL**, som du har kopierat från Azure Portal till text rutan för **IDP-inloggnings-URL** .
 
     c. Öppna det hämtade base64-kodade certifikatet i anteckningar, kopiera innehållet i det till Urklipp och klistra in det i text rutan **IDP-cert** .
     
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -178,31 +178,31 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Voyance.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **Voyance** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Voyance**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **Voyance** .
+2. I listan program väljer du **Voyance**.
 
     ![Voyance-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -210,7 +210,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-voyance-test-user"></a>Skapa Voyance test användare
 

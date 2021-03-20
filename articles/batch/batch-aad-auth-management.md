@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88930221"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Autentisera lösningar för batch-hantering med Active Directory
@@ -39,7 +39,7 @@ Därefter måste du delegera åtkomst till ditt program till Azure Resource Mana
 
 Följ dessa steg i Azure-portalen:
 
-1. I det vänstra navigerings fönstret i Azure Portal väljer du **alla tjänster**, klickar på app- **registreringar**och klickar på **Lägg till**.
+1. I det vänstra navigerings fönstret i Azure Portal väljer du **alla tjänster**, klickar på app- **registreringar** och klickar på **Lägg till**.
 2. Sök efter namnet på ditt program i listan med app-registreringar:
 
     ![Sök efter ditt program namn](./media/batch-aad-auth-management/search-app-registration.png)
@@ -47,7 +47,7 @@ Följ dessa steg i Azure-portalen:
 3. Visa bladet **Inställningar** . I avsnittet **API-åtkomst** väljer du **nödvändiga behörigheter**.
 4. Klicka på **Lägg** till för att lägga till en ny nödvändig behörighet.
 5. I steg 1 anger du **Windows Azure Service Management-API**, väljer detta API i listan över resultat och klickar på knappen **Välj** .
-6. I steg 2 markerar du kryss rutan bredvid åtkomst till den **klassiska Azure-distributions modellen som organisations användare**och klickar på knappen **Välj** .
+6. I steg 2 markerar du kryss rutan bredvid åtkomst till den **klassiska Azure-distributions modellen som organisations användare** och klickar på knappen **Välj** .
 7. Klicka på knappen **OK** .
 
 Bladet **nödvändiga behörigheter** visar nu att behörigheterna till ditt program beviljas både ADAL-och Resource Manager-API: er. Behörigheter beviljas till ADAL som standard när du först registrerar din app med Azure AD.

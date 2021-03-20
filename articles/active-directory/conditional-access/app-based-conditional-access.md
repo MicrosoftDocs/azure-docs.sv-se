@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91266147"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Gör så här: Kräv godkända klient program för Cloud app-åtkomst med villkorlig åtkomst
@@ -44,17 +44,17 @@ Organisationer måste utföra följande tre steg för att kräva att en godkänd
 1. Bläddra till **Azure Active Directory**  >  **säkerhet**  >  **villkorlig åtkomst**.
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
-1. Under **tilldelningar**väljer **du användare och grupper**
-   1. Under **Inkludera**väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **Office 365**.
-1. Under **villkor**väljer du **enhets plattformar**.
+1. Under **tilldelningar** väljer **du användare och grupper**
+   1. Under **Inkludera** väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **Office 365**.
+1. Under **villkor** väljer du **enhets plattformar**.
    1. **Konfigurera** till **Ja**.
    1. Ta med **Android** och **iOS**.
-1. Under **villkor**väljer du **klient program (för hands version)**.
+1. Under **villkor** väljer du **klient program (för hands version)**.
    1. **Konfigurera** till **Ja**.
    1. Välj **Mobilappar och skrivbordsklienter** och **Moderna autentiseringsklienter**.
-1. Under **åtkomst kontroller**  >  **tilldelar**väljer du **bevilja åtkomst**, **kräver godkänd klient app**och väljer **Välj**.
+1. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver godkänd klient app** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa och aktivera din princip.
 
@@ -63,15 +63,15 @@ Organisationer måste utföra följande tre steg för att kräva att en godkänd
 1. Bläddra till **Azure Active Directory**  >  **säkerhet**  >  **villkorlig åtkomst**.
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
-1. Under **tilldelningar**väljer **du användare och grupper**
-   1. Under **Inkludera**väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **Office 365 Exchange Online**.
+1. Under **tilldelningar** väljer **du användare och grupper**
+   1. Under **Inkludera** väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **Office 365 Exchange Online**.
 1. Under **villkor**:
    1. **Klient program (för hands version)**:
       1. **Konfigurera** till **Ja**.
       1. Välj **mobilappar och skriv bords klienter** och **Exchange ActiveSync-klienter**.
-1. Under **åtkomst kontroller**  >  **tilldelar**väljer du **bevilja åtkomst**, **kräver godkänd klient app**och väljer **Välj**.
+1. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver godkänd klient app** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa och aktivera din princip.
 
@@ -91,17 +91,17 @@ Organisationer måste utföra följande tre steg för att kräva att en godkänd
 1. Bläddra till **Azure Active Directory**  >  **säkerhet**  >  **villkorlig åtkomst**.
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
-1. Under **tilldelningar**väljer **du användare och grupper**
-   1. Under **Inkludera**väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **Office 365 Exchange Online** och **Office 365 SharePoint Online**.
-1. Under **villkor**väljer du **enhets plattformar**.
+1. Under **tilldelningar** väljer **du användare och grupper**
+   1. Under **Inkludera** väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **Office 365 Exchange Online** och **Office 365 SharePoint Online**.
+1. Under **villkor** väljer du **enhets plattformar**.
    1. **Konfigurera** till **Ja**.
    1. Ta med **Android** och **iOS**.
-1. Under **villkor**väljer du **klient program (för hands version)**.
+1. Under **villkor** väljer du **klient program (för hands version)**.
    1. **Konfigurera** till **Ja**.
    1. Välj **Mobilappar och skrivbordsklienter** och **Moderna autentiseringsklienter**.
-1. Under **åtkomst kontroller**  >  **tilldelar**väljer du **bevilja åtkomst**, **kräver godkänd klient app**och väljer **Välj**.
+1. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver godkänd klient app** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa och aktivera din princip.
 
@@ -110,15 +110,15 @@ Organisationer måste utföra följande tre steg för att kräva att en godkänd
 1. Bläddra till **Azure Active Directory**  >  **säkerhet**  >  **villkorlig åtkomst**.
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
-1. Under **tilldelningar**väljer **du användare och grupper**
-   1. Under **Inkludera**väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **Office 365 Exchange Online**.
+1. Under **tilldelningar** väljer **du användare och grupper**
+   1. Under **Inkludera** väljer du **alla användare** eller de enskilda **användare och grupper** som du vill tillämpa principen på. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **Office 365 Exchange Online**.
 1. Under **villkor**:
    1. **Klient program (för hands version)**:
       1. **Konfigurera** till **Ja**.
       1. Välj **mobilappar och skriv bords klienter** och **Exchange ActiveSync-klienter**.
-1. Under **åtkomst kontroller**  >  **tilldelar**väljer du **bevilja åtkomst**, **kräver godkänd klient app**och väljer **Välj**.
+1. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver godkänd klient app** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa och aktivera din princip.
 

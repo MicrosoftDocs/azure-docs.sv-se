@@ -9,10 +9,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339350"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Hantera principer för konfliktlösning i Azure Cosmos DB
@@ -136,10 +136,10 @@ De här exemplen visar hur du konfigurerar en container med en anpassad konflikt
 
 De lagrade procedurerna för anpassad konflikt lösning måste implementeras med hjälp av funktions under skriften som visas nedan. Funktions namnet behöver inte matcha namnet som används för att registrera den lagrade proceduren med behållaren, men det fören klar namngivningen. Här följer en beskrivning av de parametrar som måste implementeras för den här lagrade proceduren.
 
-- **incomingItem** : objektet som infogas eller uppdateras i commit som genererar konflikter. Är null för Delete-åtgärder.
-- **existingItem** : det för tillfället allokerade objektet. Det här värdet är inte null i en uppdatering och null för en infogning eller borttagning.
-- **isTombstone** : booleskt värde som anger om incomingItem står i konflikt med ett borttaget objekt som redan har tagits bort. När värdet är True är existingItem också null.
-- **conflictingItems** : matris för allokerad version av alla objekt i behållaren som står i konflikt med INCOMINGITEM på ID eller andra unika index egenskaper.
+- **incomingItem**: objektet som infogas eller uppdateras i commit som genererar konflikter. Är null för Delete-åtgärder.
+- **existingItem**: det för tillfället allokerade objektet. Det här värdet är inte null i en uppdatering och null för en infogning eller borttagning.
+- **isTombstone**: booleskt värde som anger om incomingItem står i konflikt med ett borttaget objekt som redan har tagits bort. När värdet är True är existingItem också null.
+- **conflictingItems**: matris för allokerad version av alla objekt i behållaren som står i konflikt med INCOMINGITEM på ID eller andra unika index egenskaper.
 
 > [!IMPORTANT]
 > Precis som med alla lagrade procedurer kan en anpassad lösning för konflikt lösning komma åt alla data med samma partitionsnyckel och kan utföra alla åtgärder för att infoga, uppdatera eller ta bort för att lösa konflikter.

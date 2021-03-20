@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
 ms.openlocfilehash: 887dc13eb5e351688718d2a221e69499557b23e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93338313"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-sats i Azure Cosmos DB
@@ -81,7 +81,7 @@ Resultatet är:
     ]
 ```
 
-Följande fråga hämtar Family `id` s i ordning efter deras objekts skapande datum. Objektet `creationDate` är ett tal som representerar den *Epoka tiden* , eller förfluten tid sedan Jan. 1, 1970 på några sekunder.
+Följande fråga hämtar Family `id` s i ordning efter deras objekts skapande datum. Objektet `creationDate` är ett tal som representerar den *Epoka tiden*, eller förfluten tid sedan Jan. 1, 1970 på några sekunder.
 
 ```sql
     SELECT f.id, f.creationDate

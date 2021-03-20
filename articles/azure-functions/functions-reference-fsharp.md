@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088027"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F # referens för utvecklare
@@ -61,7 +61,7 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Din F # Azure-funktion tar ett eller flera argument. När vi pratar om Azure Functions argument, refererar vi till argument för *indata* och *utdata* . Ett indataargument är precis vad det låter som: indatamängden för din F # Azure-funktion. Ett argument för *utdata* är föränderligt data eller ett `byref<>` argument som fungerar som ett sätt att skicka tillbaka *out* data från din funktion.
+Din F # Azure-funktion tar ett eller flera argument. När vi pratar om Azure Functions argument, refererar vi till argument för *indata* och *utdata* . Ett indataargument är precis vad det låter som: indatamängden för din F # Azure-funktion. Ett argument för *utdata* är föränderligt data eller ett `byref<>` argument som fungerar som ett sätt att skicka tillbaka  data från din funktion.
 
 I exemplet ovan `blob` är ett indataargumentet och `output` är ett argument för utdata. Observera att vi använde `byref<>` för `output` (du behöver inte lägga till `[<Out>]` anteckningen). Om du använder en `byref<>` typ kan din funktion ändra vilken post eller vilket objekt argumentet refererar till.
 

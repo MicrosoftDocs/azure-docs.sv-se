@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339214"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL Query-konstanter  
@@ -25,11 +25,11 @@ ms.locfileid: "93339214"
 |-|-|  
 |**Odefinierad**|Enskilt värde: **odefinierat**|  
 |**Null**|Enskilt värde: **Null**|  
-|**Boolesk**|Värden: **false** , **True**.|  
+|**Boolesk**|Värden: **false**, **True**.|  
 |**Nummer**|Ett flyttal med dubbel precision, IEEE 754-standard.|  
 |**Sträng**|En sekvens med noll eller flera Unicode-tecken. Strängar måste omges av enkla eller dubbla citat tecken.|  
 |**Lagringsmatriser**|En sekvens med noll eller flera element. Varje-element kan vara ett värde av vilken skalär datatyp som helst, förutom **Odefinierad**.|  
-|**Jobbobjektet**|En oordnad uppsättning med noll eller flera namn/värde-par. Namnet är en Unicode-sträng, värdet kan vara av vilken skalär datatyp som helst, förutom **Odefinierad**.|  
+|**Objekt**|En oordnad uppsättning med noll eller flera namn/värde-par. Namnet är en Unicode-sträng, värdet kan vara av vilken skalär datatyp som helst, förutom **Odefinierad**.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
@@ -115,7 +115,7 @@ ms.locfileid: "93339214"
 |f|formulär inmatning|U + 000C|  
 |\n|rad matning|U + 000A|  
 |\r| vagnretur|U + 000D|  
-|\| tabb|U + 0009|  
+|\|tabbtecken|U + 0009|  
 |\uXXXX|Ett Unicode-tecken som definieras av 4 hexadecimala siffror.|U + XXXX|  
 
 ## <a name="next-steps"></a>Nästa steg

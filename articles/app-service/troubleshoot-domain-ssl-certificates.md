@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97607617"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Felsök problem med domän-och TLS/SSL-certifikat i Azure App Service
@@ -201,8 +201,8 @@ Det App Service certifikatet kräver domän verifiering innan certifikatet kan a
 #### <a name="solution"></a>Lösning
 Verifiera din domän manuellt genom att lägga till en TXT-post:
 
-1. Gå till den Domain Name Service (DNS)-providern som är värd för ditt domän namn.
-1. Lägg till en TXT-post för din domän som använder värdet för den domän-token som visas i Azure Portal. 
+1. Gå till den DNS-provider (Domain Name Service) som är värd för ditt domännamn.
+1. Lägg till en TXT-post för din domän med värdet för den domäntoken som visas i Azure-portalen. 
 
 Vänta några minuter på att DNS-spridningen ska köras och välj sedan knappen **Uppdatera** för att utlösa verifieringen. 
 
@@ -265,7 +265,7 @@ Det här problemet uppstår av någon av följande orsaker:
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Måste jag konfigurera min anpassade domän för min webbplats när jag köper den?**
 

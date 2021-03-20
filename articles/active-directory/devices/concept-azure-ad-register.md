@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91256446"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-registrerade enheter
@@ -34,7 +34,7 @@ Målet med registrerade Azure AD-enheter är att ge användarna stöd för scena
 |   | iOS/Android – Företagsportal-eller Microsoft Authenticator-app |
 |   | MacOS – Företagsportal |
 | **Alternativ för enhets inloggning** | Lokala autentiseringsuppgifter för slutanvändare |
-|   | lösenordsinställning |
+|   | Lösenord |
 |   | Windows Hello |
 |   | PIN-KOD |
 |   | Biometrik eller mönster för andra enheter |

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: charwen
 ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980724"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Övervakning och hantering av sessioner för Azure-skydds
 
-När skydds-tjänsten har tillhandahållits och distribuerats i det virtuella nätverket kan du använda den för att sömlöst ansluta till en virtuell dator i det här virtuella nätverket. När användare ansluter till arbets belastningar kan Azure skydds användas för att övervaka fjärrsessioner och vidta åtgärder för snabb hantering. Med övervakningen av Azure skydds-sessionen kan du se vilka användare som är anslutna till vilka virtuella datorer. Den visar IP-adressen som användaren anslöt från, hur länge de har varit anslutna och när de är anslutna. Med hjälp av sessionen kan du välja en pågående session och framtvinga-från koppling eller ta bort en session för att koppla bort användaren från den pågående sessionen.
+När skydds-tjänsten har tillhandahållits och distribuerats i det virtuella nätverket kan du använda den för att sömlöst ansluta till en virtuell dator i det här virtuella nätverket. När användare ansluter till arbets belastningar kan Azure skydds användas för att övervaka fjärrsessioner och vidta åtgärder för snabb hantering. Med övervakningen av Azure Bastion-sessionen kan du se vilka användare som är anslutna till vilka virtuella datorer. Den visar IP-adressen som användaren anslöt från, hur länge de har varit anslutna och när de är anslutna. Med hjälp av sessionen kan du välja en pågående session och framtvinga-från koppling eller ta bort en session för att koppla bort användaren från den pågående sessionen.
 
 ## <a name="monitor-remote-sessions"></a><a name="monitor"></a>Övervaka fjärrsessioner
 
