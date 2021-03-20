@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955045"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Exempel på Java-kod för Azure Kognitiv sökning
@@ -30,7 +30,7 @@ Lär dig mer om Java-kod exemplen som demonstrerar funktionerna och arbets flöd
 
 Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hittar dessa exempel i [**Azure/Azure-SDK-för-Java/tree/master/SDK/search/Azure-Search-Documents/src/samples**](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) på GitHub.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [Skapa Sök index](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) | Visar hur du skapar [Sök index](search-what-is-an-index.md). |
 | [Skapa synonym](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SynonymMapsCreateExample.java) | Visar hur du skapar [synonym Maps](search-synonyms.md).  |
@@ -55,7 +55,7 @@ Kod exempel från Kognitiv sökning team demonstrerar funktioner och arbets flö
 
 Följande exempel publiceras också av Kognitiv sökning-teamet, men det finns inga referenser till dokumentationen. Tillhör ande README-filer innehåller användnings instruktioner.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [Sök-Java-kom igång](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-getting-started) | Använder klient biblioteket Java SDK för att skapa, läsa in och fråga ett sökindex. Det här exemplet är för fristående. |
 | [Sök-Java-indexerare – demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/search-java-indexer-demo) | Visar en Azure Cosmos DB-indexerare i Java. Det här exemplet har inte uppdaterats för Java SDK. Den anropar REST-API: erna.|

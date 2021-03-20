@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 5620a9fb95fb52a487095afd75d5f30c82a8bce1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341478"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE-sats i Azure Cosmos DB
@@ -75,7 +75,7 @@ Du kan använda följande binära operatorer som stöds:
 |---------|---------|
 |Aritmetisk | +,-,*,/,% |
 |Binär    | \|, &, ^, <<, >>, >>> (högerskiftning med nollfyllning) |
-|Logisk    | AND, OR, NOT (och, eller, inte)      |
+|Logiskt    | AND, OR, NOT (och, eller, inte)      |
 |Jämförelse | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
 |Sträng     |  \|\| (sammanfoga) |
 
@@ -113,4 +113,4 @@ Du kan också använda egenskaps referenser i frågor. Returnerar till exempel `
 
 - [Komma igång](sql-query-getting-started.md)
 - [Nyckelordet IN (I)](sql-query-keywords.md#in)
-- [FROM-satsen](sql-query-from.md)
+- [FROM-sats](sql-query-from.md)

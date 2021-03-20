@@ -15,10 +15,10 @@ ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358698"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Kör SQL Server VM på en dedikerad Azure-värd 
@@ -65,7 +65,7 @@ En av fördelarna med en dedikerad värd är obegränsad virtualisering. Du kan 
 
 Eftersom eftersom det är din värd, är du berättigad att ställa in virtualiseringen med 1:2-förhållandet. 
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **F: Hur fungerar Azure Hybrid-förmån för Windows Server/SQL Server-licenser på en särskild Azure-värd?**
 

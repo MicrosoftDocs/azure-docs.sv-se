@@ -8,16 +8,16 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 8b4bd9ece5f010f1294356ad4673543834e5076a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94626919"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Snabbstart: Skapa och hantera en Azure-filresurs med Azure PowerShell 
 Den här guiden går igenom grunderna med att arbeta med [Azure-filresurser](storage-files-introduction.md) med PowerShell. Azure-filresurser är precis som andra filresurser men lagras i molnet och täcks av Azure-plattformen. Azure-filresurser stöder SMB-protokollet (Server Message Block) i branschen, NFS-protokollet (Network File System) (för hands version) och möjliggör fildelning över flera datorer, program och instanser. 
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -37,7 +37,7 @@ New-AzResourceGroup `
     -Location $region | Out-Null
 ```
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 Ett lagrings konto är en delad pool av lagrings utrymme som du kan använda för att distribuera Azure-filresurser. Ett lagringskonto kan innehålla ett obegränsat antal resurser och en resurs kan lagra ett obegränsat antal filer, upp till lagringskontots kapacitetsgräns. I det här exemplet skapas en generell användnings version 2 (GPv2 lagrings konto), som kan lagra standard-Azure-filresurser eller andra lagrings resurser, till exempel blobbar eller köer, på hård diskens (HDD) rotations medium. Azure Files stöder också Premium solid-state disk-enheter (SSD). Premium Azure-filresurser kan skapas i FileStorage-lagrings konton.
 
 I det här exemplet skapas ett lagringskonto med cmdleten [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Lagringskontot har namnet *mystorageaccount\<random number>* och en referens till det lagringskontot lagras i variabeln **$storageAcct**. Lagringskontonamn måste vara unika så använd `Get-Random` för att lägga till ett tal till namnet som gör det unikt. 

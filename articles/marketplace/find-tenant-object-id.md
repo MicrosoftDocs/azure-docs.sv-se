@@ -7,10 +7,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
 ms.openlocfilehash: 2b1ba0779649c4955987c7dae9802cefaba89b79
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97109354"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>Hitta klient-ID, objekt-ID och information om partner associationer
@@ -24,7 +24,7 @@ Om du behöver ta skärm bilder av dessa objekt i Azure Cloud Shell för att kun
 
 ## <a name="find-tenant-id"></a>Sök efter klient-ID
 
-1. Öppna [Azure-portalen](https://ms.portal.azure.com/).
+1. Gå till [Azure-portalen](https://ms.portal.azure.com/).
 2. Välj **Azure Active Directory**.
 
     :::image type="content" source="media/tenant-and-object-id/icon-azure-ad.png" alt-text="Ikonen Azure Active Directory i Azure Portal.":::
@@ -70,7 +70,7 @@ Om du behöver ta skärm bilder av dessa objekt i Azure Cloud Shell för att kun
 
 I det här avsnittet beskrivs hur du hittar klient-, objekt-och partner-ID-associationer för fel sökning.
 
-1. Öppna [Azure-portalen](https://ms.portal.azure.com/).
+1. Gå till [Azure-portalen](https://ms.portal.azure.com/).
 2. Öppna Azure Cloud Shell genom att välja PowerShell-ikonen längst upp till höger.
 
     :::image type="content" source="media/tenant-and-object-id/icon-azure-cloud-shell-1.png" alt-text="PowerShell-ikon överst till höger på skärmen.":::

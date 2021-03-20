@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 184fb4bbf8845b749459e1963bed3c6d9fa64856
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323853"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Snabb start: registrera TPM-enhet för att IoT Hub Device Provisioning Service med hjälp av Node.js service SDK
@@ -71,7 +71,7 @@ I den här snabb starten skapar du program mässigt en enskild registrering för
   
 1. Om du vill köra exemplet behöver du anslutningssträngen för etableringstjänsten. 
     1. Logga in på Azure Portal, Välj knappen **alla resurser** i den vänstra menyn och öppna Device Provisioning-tjänsten. 
-    2. Välj **principer för delad åtkomst**och välj sedan den åtkomst princip som du vill använda för att öppna dess egenskaper. I fönstret **Åtkomstprincip** kopierar du och antecknar primärnyckelns anslutningssträng. 
+    2. Välj **principer för delad åtkomst** och välj sedan den åtkomst princip som du vill använda för att öppna dess egenskaper. I fönstret **Åtkomstprincip** kopierar du och antecknar primärnyckelns anslutningssträng. 
 
        ![Hämta etableringsanslutningssträng från portalen](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
 
@@ -103,7 +103,7 @@ Om du planerar att utforska Node.js-tjänsteexempel ska du inte rensa resurserna
 
 1. Stäng utdatafönstret för Node.js på datorn.
 1. Om du har skapat en simulerad TPM-enhet stänger du TPM-simulatorfönstret.
-2. Gå till enhets etablerings tjänsten i Azure Portal, Välj **Hantera registreringar**och välj sedan fliken **enskilda registreringar** . Markera kryss rutan bredvid *registrerings-ID* för registrerings posten som du skapade med den här snabb starten och klicka på knappen **ta bort** högst upp i fönstret. 
+2. Gå till enhets etablerings tjänsten i Azure Portal, Välj **Hantera registreringar** och välj sedan fliken **enskilda registreringar** . Markera kryss rutan bredvid *registrerings-ID* för registrerings posten som du skapade med den här snabb starten och klicka på knappen **ta bort** högst upp i fönstret. 
  
 ## <a name="next-steps"></a>Nästa steg
 I den här snabb starten har du skapat en enskild registrerings post för en TPM-enhet genom programmering, och du kan också skapa en TPM-simulerad enhet på datorn och allokera den till IoT-hubben med hjälp av Azure-IoT Hub Device Provisioning Service. Om du vill ha mer djupgående information om enhetsetablering kan du fortsätta till självstudien om konfiguration av Device Provisioning-tjänsten i Azure-portalen. 

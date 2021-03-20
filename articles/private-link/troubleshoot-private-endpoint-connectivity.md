@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97807560"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Felsöka anslutningsproblem för privata slutpunkter i Azure
@@ -45,7 +45,7 @@ Granska de här stegen för att se till att alla vanliga konfigurationer är de 
 
     b. I det vänstra fönstret väljer du **privata slut punkter**.
     
-      ![Privata slut punkter](./media/private-endpoint-tsg/private-endpoints.png)
+      ![Privata slutpunkter](./media/private-endpoint-tsg/private-endpoints.png)
 
     c. Filtrera och välj den privata slut punkt som du vill diagnostisera.
 

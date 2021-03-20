@@ -4,10 +4,10 @@ description: I den här artikeln lär du dig hur du konfigurerar Microsoft Azure
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332822"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Säkerhetskopiera SQL Server på Azure Stack
@@ -89,7 +89,7 @@ Hantering av SQL Server databas säkerhets kopiering till Azure och återställn
 
 7. På skärmen **Granska diskallokering** kontrollerar du det övergripande tillgängliga lagrings utrymmet och det potentiella disk utrymmet. Välj **Nästa**.
 
-8. I **metoden Välj skapande av replik**väljer du hur du vill skapa din första återställnings punkt. Du kan överföra den första säkerhets kopieringen manuellt (av nätverket) för att undvika överbelastning av bandbredd eller över nätverket. Om du väljer att vänta med att överföra den första säkerhets kopian kan du ange tiden för den inledande överföringen. Välj **Nästa**.
+8. I **metoden Välj skapande av replik** väljer du hur du vill skapa din första återställnings punkt. Du kan överföra den första säkerhets kopieringen manuellt (av nätverket) för att undvika överbelastning av bandbredd eller över nätverket. Om du väljer att vänta med att överföra den första säkerhets kopian kan du ange tiden för den inledande överföringen. Välj **Nästa**.
 
     ![Metod för inledande replikering](./media/backup-azure-backup-sql/pg-manual.png)
 

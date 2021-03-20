@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87760132"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Åtgärder i standard regel motorn för Azure CDN
@@ -85,7 +85,7 @@ Använd den här åtgärden för att omdirigera klienter till en ny URL.
 
 #### <a name="required-fields"></a>Obligatoriska fält
 
-Field | Beskrivning 
+Fält | Beskrivning 
 ------|------------
 Typ | Välj den svarstyp som ska returneras till begär ande: hittas (302), flyttad (301), tillfällig omdirigering (307) och permanent omdirigering (308).
 Protokoll | Matcha begäran, HTTP, HTTPS.
@@ -102,7 +102,7 @@ Använd den här åtgärden för att skriva om sökvägen för en begäran som �
 
 #### <a name="required-fields"></a>Obligatoriska fält
 
-Field | Beskrivning 
+Fält | Beskrivning 
 ------|------------
 Käll mönster | Definiera käll mönstret i URL-sökvägen som ska ersättas. För närvarande använder käll mönstret en prefix-baserad matchning. Använd ett snedstreck ( **/** ) som käll mönster värde för att matcha alla URL-sökvägar.
 Mål | Definiera den mål Sök väg som ska användas vid omskrivning. Mål Sök vägen skriver över käll mönstret.

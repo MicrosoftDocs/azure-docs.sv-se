@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94616084"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Använda en ONNX-modell från Custom Vision med Windows ML (förhandsversion)
@@ -55,7 +55,7 @@ Följ dessa steg om du vill använda en egen bild klassificerings modell:
 1. I Solution Explorer högerklickar du på filen ONNX och väljer **Egenskaper**. Ändra följande egenskaper för filen:
    * __Bygg åtgärd__  ->  __Innehåll__
    * __Kopiera till utdatakatalogen__  ->  __Kopiera om nyare__
-1. Öppna sedan _mainpage.XAML.cs_ och ändra värdet för `_ourOnnxFileName` till namnet på din ONNX-fil.
+1. Öppna sedan _mainpage. XAML. cs_ och ändra värdet för `_ourOnnxFileName` till namnet på din ONNX-fil.
 1. Använd `F5` för att skapa och köra projektet.
 1. Klicka på knappen för att välja bild att utvärdera.
 

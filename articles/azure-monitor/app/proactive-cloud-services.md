@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87309298"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Avisera om problem i Azure Cloud Services med Azure Diagnostics-integrering med Azure Application Insights
@@ -80,11 +80,11 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Skapa en avisering
 
-I navigerings menyn i Application Insights resursen går du till **aviseringar**och väljer sedan **ny aviserings regel**.
+I navigerings menyn i Application Insights resursen går du till **aviseringar** och väljer sedan **ny aviserings regel**.
 
 ![Skärm bild av Skapa regel](./media/proactive-cloud-services/001.png)
 
-I fönstret **Skapa regel** , under avsnittet **definiera aviserings villkor** , klickar du på **Lägg till kriterier**och väljer sedan **anpassad loggs ökning**.
+I fönstret **Skapa regel** , under avsnittet **definiera aviserings villkor** , klickar du på **Lägg till kriterier** och väljer sedan **anpassad loggs ökning**.
 
 ![Skärm bild av definiera villkors villkor för avisering](./media/proactive-cloud-services/002.png)
 

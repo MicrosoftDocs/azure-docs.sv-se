@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: 5b2df194761ebc167e67498a985960a4fce35f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76905299"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>Skapa scheman för att spåra X12-meddelanden i Azure Logic Apps
@@ -74,7 +74,7 @@ Du kan använda dessa X12 spårnings scheman i integrations kontot för att hjä
 | isTechnicalAcknowledgmentExpected | Ja | Boolesk | Om den tekniska bekräftelsen är konfigurerad i X12-avtalet |
 | isFunctionalAcknowledgmentExpected | Ja | Boolesk | Om funktions bekräftelsen har kon figurer ATS i X12-avtalet |
 | needAk2LoopForValidMessages | Ja | Boolesk | Om AK2-loopen krävs för ett giltigt meddelande |
-| segmentsCount | Inga | Heltal | Antalet segment i X12-transaktions uppsättningen |
+| segmentsCount | Inga | Integer | Antalet segment i X12-transaktions uppsättningen |
 |||||
 
 ## <a name="x12-transaction-set-acknowledgment-tracking-schema"></a>Schema för X12 för transaktions uppsättning

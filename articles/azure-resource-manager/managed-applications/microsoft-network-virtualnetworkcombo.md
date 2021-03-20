@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87033228"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>GRÄNSSNITTs element för Microsoft. Network. VirtualNetworkCombo
@@ -112,7 +112,7 @@ När användaren väljer ett befintligt virtuellt nätverk måste användaren ma
 - När du skapar ett nytt virtuellt nätverk beräknas varje undernäts adressprefix automatiskt baserat på det virtuella nätverkets adressprefix och respektive `addressPrefixSize` .
 - När du använder ett befintligt virtuellt nätverk är alla undernät som är mindre än respektive inte `constraints.minAddressPrefixSize` tillgängliga för markering. Dessutom är undernät som inte har minst `minAddressCount` tillgängliga adresser inte tillgängliga för markering. Standardvärdet är **0**. Om du vill se till att de tillgängliga adresserna är sammanhängande anger du **Sant** för `requireContiguousAddresses` . Standardvärdet är **True**.
 - Det finns inte stöd för att skapa undernät i ett befintligt virtuellt nätverk.
-- Om `options.hideExisting` är **Sant**kan användaren inte välja ett befintligt virtuellt nätverk. Standardvärdet är **falskt**.
+- Om `options.hideExisting` är **Sant** kan användaren inte välja ett befintligt virtuellt nätverk. Standardvärdet är **falskt**.
 
 ## <a name="next-steps"></a>Nästa steg
 

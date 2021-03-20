@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87826219"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Flytta logiska app-resurser till andra Azure-resurs grupper, regioner eller prenumerationer
@@ -41,7 +41,7 @@ Om du vill flytta en resurs, till exempel en Logic app eller ett integrations ko
 
 1. I [Azure Portal](https://portal.azure.com)letar du reda på och väljer den logiska app-resurs som du vill flytta.
 
-1. På resurs sidan **Översikt** bredvid **prenumeration**väljer du länken **ändra** .
+1. På resurs sidan **Översikt** bredvid **prenumeration** väljer du länken **ändra** .
 
 1. På sidan **Flytta resurser** väljer du den logiska app-resurs och eventuella relaterade resurser som du vill flytta.
 
@@ -102,9 +102,9 @@ Den mall som du hämtar från Visual Studio innehåller bara resurs definitioner
 
 1. Leta upp och öppna ditt integrations konto i [Azure Portal](https://portal.azure.com).
 
-1. På integrations kontots meny väljer du **Exportera mall**under **Inställningar**.
+1. På integrations kontots meny väljer du **Exportera mall** under **Inställningar**.
 
-1. I verktygsfältet väljer du **Ladda ned**och sparar mallen.
+1. I verktygsfältet väljer du **Ladda ned** och sparar mallen.
 
 1. Öppna och redigera mallen för att Parameterisera de nödvändiga värdena för distribution.
 

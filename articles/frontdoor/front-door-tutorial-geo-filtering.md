@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: f9b5869f7dd472c50ffb2c1c0dce765200f53882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324035"
 ---
 # <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Självstudie: så här konfigurerar du en princip för geo-filtrering WAF för din front dörr
@@ -30,7 +30,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * Innan du börjar konfigurera en geo-filter-princip konfigurerar du din PowerShell-miljö och skapar en profil för en front dörr.
 * Skapa en frontend-dörr genom att följa instruktionerna som beskrivs i [snabb start: skapa en profil för en front dörr](quickstart-create-front-door.md).
 

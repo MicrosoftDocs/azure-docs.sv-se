@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ffa937f91af7078b28331a655f99397d3821def
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545901"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrera LinkedIn-konto anslutningar i Azure Active Directory
@@ -94,7 +94,7 @@ Om du vill använda gruppen från steg två som den valda gruppen i inställning
 1. Skapa ett Grupprincip-objekt med följande inställning: **användar konfiguration**  >  **administrativa mallar**  >  **Microsoft Office 2016**  >  **Diverse**  >  **Visa LinkedIn-funktioner i Office-program**.
 1. Välj **aktive rad** eller **inaktive** rad.
   
-   Stat | Effekt
+   Tillstånd | Effekt
    ------ | ------
    **Aktiverad** | Inställningen **Visa LinkedIn-funktioner i Office-program** i alternativ för Office 2016 är aktive rad. Användare i din organisation kan använda LinkedIn-funktioner i sina Office 2016-program.
    **Disabled** (Inaktiverat) | Inställningen **Visa LinkedIn-funktioner i Office-program** i alternativ för Office 2016 är inaktive rad och slutanvändare kan inte ändra den här inställningen. Användare i din organisation kan inte använda LinkedIn-funktioner i sina Office 2016-program.

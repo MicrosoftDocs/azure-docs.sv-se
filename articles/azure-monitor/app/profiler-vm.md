@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87315843"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilera webbappar som körs på en virtuell Azure-dator eller en virtuell dators skalnings uppsättning med hjälp av Application Insights Profiler
@@ -65,7 +65,7 @@ Den här artikeln visar hur du kan få Application Insights Profiler som körs p
     Set-AzVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Aktivera Windows-funktionen om det avsedda [IIS](https://www.microsoft.com/web/downloads/platform.aspx)programmet körs via IIS `IIS Http Tracing` .
+1. Aktivera Windows-funktionen om det avsedda [](https://www.microsoft.com/web/downloads/platform.aspx)programmet körs via IIS `IIS Http Tracing` .
 
    a. Upprätta fjärråtkomst till miljön och Använd sedan fönstret [Lägg till Windows-funktioner](/iis/configuration/system.webserver/tracing/) . Eller kör följande kommando i PowerShell (som administratör):  
 

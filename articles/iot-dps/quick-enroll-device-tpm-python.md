@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 96bd1e85de45ac36515580025dfc392e931643f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323771"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Snabb start: registrera TPM-enhet för att IoT Hub Device Provisioning Service med hjälp av python Provisioning service SDK
@@ -117,7 +117,7 @@ Om du planerar att utforska Java-tjänsteexemplet ska du inte rensa upp resurser
 
 1. Stäng utdatafönstret för Python-exemplet på datorn.
 1. Om du har skapat en simulerad TPM-enhet stänger du TPM-simulatorfönstret.
-1. Gå till enhets etablerings tjänsten i Azure Portal, Välj **Hantera registreringar**och välj sedan fliken **enskilda registreringar** . Markera kryss rutan bredvid *registrerings-ID* för registrerings posten som du skapade med den här snabb starten och klicka på knappen **ta bort** högst upp i fönstret.
+1. Gå till enhets etablerings tjänsten i Azure Portal, Välj **Hantera registreringar** och välj sedan fliken **enskilda registreringar** . Markera kryss rutan bredvid *registrerings-ID* för registrerings posten som du skapade med den här snabb starten och klicka på knappen **ta bort** högst upp i fönstret.
 
 
 ## <a name="next-steps"></a>Nästa steg

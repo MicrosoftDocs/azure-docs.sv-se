@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
 ms.openlocfilehash: d12a7d52562fe32126e12a844c2d36c14cf01431
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96554871"
 ---
 # <a name="apply-classifications-on-assets-in-azure-purview"></a>Tillämpa klassificeringar på till gångar i Azure avdelningens kontroll
@@ -24,12 +24,12 @@ Klassificeringar kan vara system-eller anpassade typer. System klassificeringar 
 
 Det här dokumentet beskriver hur du tillämpar klassificeringar på dina data.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa anpassade klassificeringar utifrån dina behov.
 - Konfigurera genomsökningen på dina data källor.
 
-## <a name="apply-classifications"></a>Tillämpa klassificeringar
+## <a name="apply-classifications"></a>Applicera klassificeringar
 I Azure avdelningens kontroll kan du använda system eller anpassade klassificeringar på en fil-, tabell-eller kolumn till gång. Den här artikeln beskriver stegen för att manuellt tillämpa klassificeringar på dina till gångar.
 
 ### <a name="apply-classification-to-a-file-asset"></a>Tillämpa klassificering på en fil till gång

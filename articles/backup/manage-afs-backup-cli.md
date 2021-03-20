@@ -4,10 +4,10 @@ description: Lär dig hur du använder Azure CLI för att hantera och övervaka 
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566460"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Hantera säkerhets kopior av Azure-filresurser med Azure CLI
@@ -17,10 +17,10 @@ Azure CLI innehåller en kommando rads upplevelse för att hantera Azure-resurse
 ## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du redan har en Azure-filresurs som har säkerhetskopierats av [Azure Backup](./backup-overview.md). Om du inte har en sådan, se [säkerhetskopiera Azure-filresurser med CLI](backup-afs-cli.md) för att konfigurera säkerhets kopiering för dina fil resurser. I den här artikeln använder du följande resurser:
-   -  **Resurs grupp** : *migreringsåtgärden*
-   -  **RecoveryServicesVault** : *azurefilesvault*
-   -  **Lagrings konto** : *afsaccount*
-   -  **Fil resurs** : *migreringsåtgärden*
+   -  **Resurs grupp**: *migreringsåtgärden*
+   -  **RecoveryServicesVault**: *azurefilesvault*
+   -  **Lagrings konto**: *afsaccount*
+   -  **Fil resurs**: *migreringsåtgärden*
   
   [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
    - I den här självstudien krävs version 2.0.18 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
@@ -96,9 +96,9 @@ Du kan ändra en säkerhets kopierings princip för att ändra säkerhets kopier
 
 Definiera följande parametrar för att ändra principen:
 
-* **--container-Name** : namnet på det lagrings konto som är värd för fil resursen. Om du vill hämta **namnet** eller det **egna namnet** på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
-* **--Name** : namnet på den fil resurs som du vill ändra principen för. Om du vill hämta **namnet** eller det **egna namnet** på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
-* **--princip namn** : namnet på den säkerhets kopierings princip som du vill ange för din fil resurs. Du kan använda [AZ säkerhets kopierings princip lista](/cli/azure/backup/policy#az-backup-policy-list) för att visa alla principer för ditt valv.
+* **--container-Name**: namnet på det lagrings konto som är värd för fil resursen. Om du vill hämta **namnet** eller det **egna namnet** på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
+* **--Name**: namnet på den fil resurs som du vill ändra principen för. Om du vill hämta **namnet** eller det **egna namnet** på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
+* **--princip namn**: namnet på den säkerhets kopierings princip som du vill ange för din fil resurs. Du kan använda [AZ säkerhets kopierings princip lista](/cli/azure/backup/policy#az-backup-policy-list) för att visa alla principer för ditt valv.
 
 I följande exempel anges *schedule2* säkerhets kopierings policy för *migreringsåtgärden* -filresursen i *afsaccount* Storage-kontot.
 
@@ -108,8 +108,8 @@ az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name
 
 Du kan också köra föregående kommando genom att använda de egna namnen för behållaren och objektet genom att tillhandahålla följande två ytterligare parametrar:
 
-* **--säkerhets kopiering-hantering-typ** : *azurestorage*
-* **--arbets belastning-typ** : *azurefileshare*
+* **--säkerhets kopiering-hantering-typ**: *azurestorage*
+* **--arbets belastning-typ**: *azurefileshare*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --name azurefiles --backup-management-type azurestorage --out table
@@ -134,8 +134,8 @@ Det kan finnas en kostnad som är kopplad till att lämna återställnings punkt
 
 Definiera följande parametrar för att stoppa skyddet av fil resursen:
 
-* **--container-Name** : namnet på det lagrings konto som är värd för fil resursen. Om du vill hämta **namnet** eller det **egna namnet** på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
-* **--objekt namn** : namnet på den fil resurs som du vill stoppa skyddet för. Om du vill hämta **namnet** eller det **egna namnet** på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
+* **--container-Name**: namnet på det lagrings konto som är värd för fil resursen. Om du vill hämta **namnet** eller det **egna namnet** på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
+* **--objekt namn**: namnet på den fil resurs som du vill stoppa skyddet för. Om du vill hämta **namnet** eller det **egna namnet** på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>Stoppa skyddet och behåll återställnings punkter
 
@@ -149,8 +149,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 Du kan också köra föregående kommando genom att använda det egna namnet för behållaren och objektet genom att tillhandahålla följande två ytterligare parametrar:
 
-* **--säkerhets kopiering-hantering-typ** : *azurestorage*
-* **--arbets belastning-typ** : *azurefileshare*
+* **--säkerhets kopiering-hantering-typ**: *azurestorage*
+* **--arbets belastning-typ**: *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --out table
@@ -176,8 +176,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 Du kan också köra föregående kommando genom att använda det egna namnet för behållaren och objektet genom att tillhandahålla följande två ytterligare parametrar:
 
-* **--säkerhets kopiering-hantering-typ** : *azurestorage*
-* **--arbets belastning-typ** : *azurefileshare*
+* **--säkerhets kopiering-hantering-typ**: *azurestorage*
+* **--arbets belastning-typ**: *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --delete-backup-data true --out table
@@ -189,9 +189,9 @@ Om du har stoppat skyddet för en Azure-filresurs men behåller återställnings
 
 Definiera följande parametrar för att återuppta skyddet av fil resursen:
 
-* **--container-Name** : namnet på det lagrings konto som är värd för fil resursen. Om du vill hämta **namnet** eller det **egna namnet** på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
-* **--objekt namn** : namnet på den fil resurs som du vill återuppta skyddet för. Om du vill hämta **namnet** eller det **egna namnet** på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
-* **--princip namn** : namnet på den säkerhets kopierings princip för vilken du vill återuppta skyddet av fil resursen.
+* **--container-Name**: namnet på det lagrings konto som är värd för fil resursen. Om du vill hämta **namnet** eller det **egna namnet** på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
+* **--objekt namn**: namnet på den fil resurs som du vill återuppta skyddet för. Om du vill hämta **namnet** eller det **egna namnet** på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
+* **--princip namn**: namnet på den säkerhets kopierings princip för vilken du vill återuppta skyddet av fil resursen.
 
 I följande exempel används cmdleten [AZ backup Protection Resume](/cli/azure/backup/protection#az-backup-protection-resume) för att återuppta skyddet av fil resursen *migreringsåtgärden* med hjälp av *schedule1* säkerhets kopierings princip.
 
@@ -201,8 +201,8 @@ az backup protection resume --vault-name azurefilesvault --resource-group azuref
 
 Du kan också köra föregående kommando genom att använda det egna namnet för behållaren och objektet genom att tillhandahålla följande två ytterligare parametrar:
 
-* **--säkerhets kopiering-hantering-typ** : *azurestorage*
-* **--arbets belastning-typ** : *azurefileshare*
+* **--säkerhets kopiering-hantering-typ**: *azurestorage*
+* **--arbets belastning-typ**: *azurefileshare*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --policy-name schedule2 --out table
@@ -230,7 +230,7 @@ az backup container unregister --vault-name azurefilesvault --resource-group azu
 
 Du kan också köra föregående cmdlet med hjälp av det egna namnet för behållaren genom att ange följande ytterligare parameter:
 
-* **--säkerhets kopiering-hantering-typ** : *azurestorage*
+* **--säkerhets kopiering-hantering-typ**: *azurestorage*
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --out table

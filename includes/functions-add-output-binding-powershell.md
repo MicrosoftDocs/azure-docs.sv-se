@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
 ms.openlocfilehash: 753a3d16792e0dbaffe318cd188ea3f0d40bd5cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78191086"
 ---
 Lägg till kod som använder `Push-OutputBinding` cmdleten för att skriva text till kön med hjälp av `msg` utgående bindning. Lägg till den här koden innan du anger statusen OK i `if` instruktionen.

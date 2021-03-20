@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340863"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Exempel på SQL-underfrågan för Azure Cosmos DB
@@ -25,16 +25,16 @@ I den här artikeln beskrivs SQL-underfrågor och deras vanliga användnings fal
 
 Det finns två huvud typer av under frågor:
 
-* **Korrelerade** : en under fråga som refererar till värden från den yttre frågan. Under frågan utvärderas en gång för varje rad som den yttre frågan bearbetar.
-* **Icke-korrelerad** : en under fråga som är oberoende av den yttre frågan. Den kan köras på egen hand utan att det förlitar sig på den yttre frågan.
+* **Korrelerade**: en under fråga som refererar till värden från den yttre frågan. Under frågan utvärderas en gång för varje rad som den yttre frågan bearbetar.
+* **Icke-korrelerad**: en under fråga som är oberoende av den yttre frågan. Den kan köras på egen hand utan att det förlitar sig på den yttre frågan.
 
 > [!NOTE]
 > Azure Cosmos DB stöder endast korrelerade under frågor.
 
 Under frågor kan klassificeras ytterligare baserat på antalet rader och kolumner som de returnerar. Det finns tre typer:
-* **Tabell** : returnerar flera rader och flera kolumner.
-* **Flera värden** : returnerar flera rader och en kolumn.
-* **Skalär** : returnerar en enskild rad och en enskild kolumn.
+* **Tabell**: returnerar flera rader och flera kolumner.
+* **Flera värden**: returnerar flera rader och en kolumn.
+* **Skalär**: returnerar en enskild rad och en enskild kolumn.
 
 SQL-frågor i Azure Cosmos DB returnerar alltid en enda kolumn (antingen ett enkelt värde eller ett komplext dokument). Därför kan bara flera värden och skalära under frågor användas i Azure Cosmos DB. Du kan bara använda en under fråga med flera värden i FROM-satsen som ett Relations uttryck. Du kan använda en skalär under fråga som ett skalärt uttryck i SELECT-eller WHERE-satsen eller som ett Relations uttryck i from-satsen.
 

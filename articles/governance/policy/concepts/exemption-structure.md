@@ -4,10 +4,10 @@ description: Beskriver den princip undantags definition som används av Azure Po
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950184"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy undantags struktur
@@ -20,7 +20,7 @@ Funktionen Azure Policy undantag (för hands version) används för att _undanta
 Du använder JSON för att skapa ett princip undantag. Princip undantaget innehåller element för:
 
 - visningsnamn
-- description
+- beskrivning
 - metadata
 - princip tilldelning
 - princip definitioner inom ett initiativ
@@ -88,7 +88,7 @@ Du kan använda **DisplayName** och **Description** för att identifiera princip
 
 ## <a name="metadata"></a>Metadata
 
-Med egenskapen **metadata** kan du skapa en underordnad egenskap som krävs för att lagra relevant information. I exemplet ovan innehåller egenskaperna **RequestedBy**, **approvedBy**, **approvedOn**och **ticketRef** kund värden för att tillhandahålla information om vem som begärde undantaget, vem som godkänt det och när och en intern spårnings biljett för begäran. Dessa **metadata** -egenskaper är exempel, men de är inte obligatoriska och **metadata** är inte begränsade till dessa underordnade egenskaper.
+Med egenskapen **metadata** kan du skapa en underordnad egenskap som krävs för att lagra relevant information. I exemplet ovan innehåller egenskaperna **RequestedBy**, **approvedBy**, **approvedOn** och **ticketRef** kund värden för att tillhandahålla information om vem som begärde undantaget, vem som godkänt det och när och en intern spårnings biljett för begäran. Dessa **metadata** -egenskaper är exempel, men de är inte obligatoriska och **metadata** är inte begränsade till dessa underordnade egenskaper.
 
 ## <a name="policy-assignment-id"></a>ID för princip tilldelning
 
@@ -104,7 +104,7 @@ Om `policyAssignmentId` är för en initiativ tilldelning `policyDefinitionRefer
 Det finns två undantags kategorier och används för att gruppera undantag:
 
 - **Dämpat**: undantaget beviljas eftersom princip avsikten är uppfyllt genom en annan metod.
-- **Befrielse: undantaget**beviljas eftersom resursens icke-hälsotillstånd är tillfälligt accepterat. En annan orsak till att använda den här kategorin är för en resurs-eller resurs-hierarki som ska uteslutas från en eller flera definitioner i ett initiativ, men bör inte uteslutas från hela initiativet.
+- **Befrielse: undantaget** beviljas eftersom resursens icke-hälsotillstånd är tillfälligt accepterat. En annan orsak till att använda den här kategorin är för en resurs-eller resurs-hierarki som ska uteslutas från en eller flera definitioner i ett initiativ, men bör inte uteslutas från hela initiativet.
 
 ## <a name="expiration"></a>Förfallodatum
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92738859"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Självstudie: Paketera och distribuera containers som en Service Fabric-app med Yeoman
@@ -80,7 +80,7 @@ Följande visar indata och utdata vid körning av yo-kommandot:
 
 Om du vill lägga till en till containertjänst till ett program som redan har skapats med hjälp av Yeoman utför du följande steg:
 
-1. Byt katalog en nivå till **TestContainer** -katalogen, till exempel *./TestContainer*
+1. Byt katalog en nivå till **TestContainer**-katalogen, till exempel *./TestContainer*
 2. Kör `yo azuresfcontainer:AddService`
 3. Kalla tjänsten ”azurevoteback”
 4. Ange sökvägen för containeravbildningen – ”alpine:redis”
@@ -99,7 +99,7 @@ De poster som används för att lägga till tjänsten visas:
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Under resten av den här självstudien kommer vi att arbeta i katalogen **TestContainer** . Till exempel *./TestContainer/TestContainer* . Katalogen ska innehålla följande.
+Under resten av den här självstudien kommer vi att arbeta i katalogen **TestContainer**. Till exempel *./TestContainer/TestContainer*. Katalogen ska innehålla följande.
 
 ```bash
 $ ls
@@ -108,7 +108,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Konfigurera applikationsmanifestet med autentiseringsuppgifter för Azure Container Registry
 
-Service Fabric behöver autentiseringsuppgifter för att hämta behållaravbildningar från Azure Container Registry. Dessa anges i **ApplicationManifest.xml** .
+Service Fabric behöver autentiseringsuppgifter för att hämta behållaravbildningar från Azure Container Registry. Dessa anges i **ApplicationManifest.xml**.
 
 Logga in på din ACR-instans. Använd kommandot **az acr login** till att slutföra åtgärden. Ange det unika namn du angav för containerregistret när det skapades.
 
@@ -124,7 +124,7 @@ Kör sedan följande kommando för att hämta lösenordet för containerregistre
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-I **ApplicationManifest.xml** lägger du till kodfragmentet under elementet **ServiceManifestImport** för klientdelstjänsten. Ange **acrName** i fältet **Kontonamn** och lösenordet från föregående kommando i fältet **Lösenord** . En fullständig **ApplicationManifest.xml** finns i slutet av det här dokumentet.
+I **ApplicationManifest.xml** lägger du till kodfragmentet under elementet **ServiceManifestImport** för klientdelstjänsten. Ange **acrName** i fältet **Kontonamn** och lösenordet från föregående kommando i fältet **Lösenord**. En fullständig **ApplicationManifest.xml** finns i slutet av det här dokumentet.
 
 ```xml
 <Policies>
@@ -138,7 +138,7 @@ I **ApplicationManifest.xml** lägger du till kodfragmentet under elementet **Se
 
 ### <a name="configure-communication-port"></a>Konfigurera kommunikationsporten
 
-Konfigurera en HTTP-slutpunkt så att klienter kan kommunicera med din tjänst. Öppna filen *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* och deklarera en slutpunktsresurs i elementet **ServiceManifest** .  Lägg till protokollet, porten och namnet. I den här självstudien lyssnar tjänsten på port 80. Följande kodfragment placeras under taggen *ServiceManifest* i resursen.
+Konfigurera en HTTP-slutpunkt så att klienter kan kommunicera med din tjänst. Öppna filen *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* och deklarera en slutpunktsresurs i elementet **ServiceManifest**.  Lägg till protokollet, porten och namnet. I den här självstudien lyssnar tjänsten på port 80. Följande kodfragment placeras under taggen *ServiceManifest* i resursen.
 
 ```xml
 <Resources>
@@ -152,7 +152,7 @@ Konfigurera en HTTP-slutpunkt så att klienter kan kommunicera med din tjänst. 
 
 ```
 
-Modifiera på tjänstemanifestet på samma sätt för serverdeltjänsten. Öppna *./TestContainer/azurevotebackPkg/ServiceManifest.xml* och deklarera en slutpunktsresurs i elementet **ServiceManifest** . För denna självstudiekurs behålls redis-standardvärdet på 6379. Följande kodfragment placeras under taggen *ServiceManifest* i resursen.
+Modifiera på tjänstemanifestet på samma sätt för serverdeltjänsten. Öppna *./TestContainer/azurevotebackPkg/ServiceManifest.xml* och deklarera en slutpunktsresurs i elementet **ServiceManifest**. För denna självstudiekurs behålls redis-standardvärdet på 6379. Följande kodfragment placeras under taggen *ServiceManifest* i resursen.
 
 ```xml
 <Resources>
@@ -169,7 +169,7 @@ Genom att tillhandahålla **UriScheme** registreras automatiskt containerslutpun
 
 ### <a name="map-container-ports-to-a-service"></a>Mappa containerportar till en tjänst
 
-För att göra containrarna tillgängliga i klustret måste vi även skapa en portbindning i ”ApplicationManifest.xml”. Principen **PortBinding** använder de **slutpunkter** vi definierade i **ServiceManifest.xml** -filerna som referens. Inkommande begäranden till dessa slutpunkter mappas till de containerportar som öppnas och binds här. I **ApplicationManifest.xml** -filen lägger du till följande kod för att binda port 80 och 6379 till slutpunkterna. En fullständig **ApplicationManifest.xml** finns i slutet av det här dokumentet.
+För att göra containrarna tillgängliga i klustret måste vi även skapa en portbindning i ”ApplicationManifest.xml”. Principen **PortBinding** använder de **slutpunkter** vi definierade i **ServiceManifest.xml**-filerna som referens. Inkommande begäranden till dessa slutpunkter mappas till de containerportar som öppnas och binds här. I **ApplicationManifest.xml**-filen lägger du till följande kod för att binda port 80 och 6379 till slutpunkterna. En fullständig **ApplicationManifest.xml** finns i slutet av det här dokumentet.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -185,7 +185,7 @@ För att göra containrarna tillgängliga i klustret måste vi även skapa en po
 
 ### <a name="add-a-dns-name-to-the-backend-service"></a>Lägg till ett DNS-namn till serverdelstjänsten
 
-Service Fabric kan inte tilldela DNS-namnet till serverdelstjänsten om namnet inte anges i **ApplicationManifest.xml** . Lägg till attributet **ServiceDnsName** till elementet **Service** som visat:
+Service Fabric kan inte tilldela DNS-namnet till serverdelstjänsten om namnet inte anges i **ApplicationManifest.xml**. Lägg till attributet **ServiceDnsName** till elementet **Service** som visat:
 
 ```xml
 <Service Name="azurevoteback" ServiceDnsName="redisbackend.testapp">

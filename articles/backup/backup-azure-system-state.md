@@ -4,10 +4,10 @@ description: Lär dig hur du säkerhetskopierar system tillstånd för Windows S
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332905"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Säkerhetskopiera Windows system State till Azure
@@ -46,7 +46,7 @@ Nu när du har skapat ett valv konfigurerar du det för att säkerhetskopiera Wi
 
 ## <a name="configure-the-vault"></a>Konfigurera valvet
 
-1. I fönstret Recovery Services valv (för det valv som du nyss skapade) går du till avsnittet Komma igång, väljer **säkerhets kopiering**och väljer sedan **säkerhets kopierings mål**i rutan **komma igång med säkerhets kopia** .
+1. I fönstret Recovery Services valv (för det valv som du nyss skapade) går du till avsnittet Komma igång, väljer **säkerhets kopiering** och väljer sedan **säkerhets kopierings mål** i rutan **komma igång med säkerhets kopia** .
 
     ![Öppna inställningar för säkerhetskopiering](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
@@ -58,11 +58,11 @@ Nu när du har skapat ett valv konfigurerar du det för att säkerhetskopiera Wi
 
     Du väljer **lokalt** eftersom din Windows Server-eller Windows-dator är en fysisk dator som inte är i Azure.
 
-3. Från menyn **vad vill du säkerhetskopiera? väljer du** **system tillstånd**och väljer **OK**.
+3. Från menyn **vad vill du säkerhetskopiera? väljer du** **system tillstånd** och väljer **OK**.
 
     ![Konfigurera filer och mappar](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    När du har valt **OK**visas en bock bredvid **säkerhets kopierings mål**och fönstret **Förbered infrastruktur** öppnas.
+    När du har valt **OK** visas en bock bredvid **säkerhets kopierings mål** och fönstret **Förbered infrastruktur** öppnas.
 
     ![När säkerhetskopieringsmålet har konfigurerats går du vidare och förbereder infrastrukturen](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91331768"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Schemalagt underhåll i Azure Database for MySQL – flexibel server
@@ -29,8 +29,8 @@ Aviseringar om kommande schemalagt underhåll kan vara:
 * Skickas via e-post till en speciell adress
 * Skickas via e-post till en Azure Resource Manager roll
 * Skickas i ett textmeddelande (SMS) till mobila enheter
-* PUSHD som ett meddelande till en Azure-App
-* Levereras som ett röst meddelande
+* Som en push-avisering till en Azure-app
+* Som ett röstmeddelande
 
 När du anger inställningar för underhållsschemat kan du välja en veckodag och en tidsperiod. Om du inte anger detta väljer systemet tider mellan 23:00 och 07:00 (i serverns tidszon). Du kan definiera olika scheman för varje flexibel server i din Azure-prenumeration.
 

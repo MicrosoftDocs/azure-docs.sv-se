@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: references_regions
 ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87077019"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Distribuera Azure blockchain Workbench Preview
@@ -59,12 +59,12 @@ När de nödvändiga stegen har slutförts är du redo att distribuera blockchai
 
     ![Skapa Azure blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | Inställningen | Beskrivning  |
+    | Inställning | Beskrivning  |
     |---------|--------------|
     | Resource prefix | Kort unik identifierare för din distribution. Det här värdet används som bas för namngivning av resurser. |
     | Användar namn för virtuell dator | Användar namnet används som administratör för alla virtuella datorer (VM). |
     | Autentiseringstyp | Välj om du vill använda ett lösen ord eller en nyckel för att ansluta till virtuella datorer. |
-    | lösenordsinställning | Lösen ordet används för att ansluta till virtuella datorer. |
+    | Lösenord | Lösen ordet används för att ansluta till virtuella datorer. |
     | SSH | Använd en offentlig RSA-nyckel i det enradiga formatet som börjar med **SSH-RSA** eller Använd multi-line PEM-formatet. Du kan generera SSH-nycklar med hjälp av `ssh-keygen` Linux och OS X, eller genom att använda PuTTYGen i Windows. Mer information om SSH-nycklar finns i [så här använder du SSH-nycklar med Windows på Azure](../../virtual-machines/linux/ssh-from-windows.md). |
     | Databas-och blockchain-lösenord | Ange det lösen ord som ska användas för åtkomst till databasen som skapats som en del av distributionen. Lösen ordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen bokstav, 1 versal bokstav, 1 siffra och 1 specialtecken som inte är nummer tecken (#), procent (%), komma (,), stjärna (*), citat tecken ( \` ), dubbelt citat tecken ("), enkla citat tecken (), bindestreck (-) och semicolumn (;) |
     | Distributions region | Ange var du vill distribuera blockchain Workbench-resurser. För bästa tillgänglighet ska detta överensstämma med inställningen **region** plats. Alla regioner är inte tillgängliga under för hands versionen. Funktioner kanske inte är tillgängliga i vissa regioner. Azure blockchain Data Manager finns i följande Azure-regioner: USA, östra och Västeuropa.|
@@ -74,7 +74,7 @@ När de nödvändiga stegen har slutförts är du redo att distribuera blockchai
 
 1. Klicka på **OK** för att slutföra inställningen konfiguration av grundläggande konfiguration.
 
-1. I **Avancerade inställningar**väljer du om du vill skapa ett nytt blockchain-nätverk eller använda ett befintligt blockchain-nätverk (proof-of-Authority).
+1. I **Avancerade inställningar** väljer du om du vill skapa ett nytt blockchain-nätverk eller använda ett befintligt blockchain-nätverk (proof-of-Authority).
 
     **Skapa ny**:
 
@@ -82,7 +82,7 @@ När de nödvändiga stegen har slutförts är du redo att distribuera blockchai
 
     ![Avancerade inställningar för nytt blockchain-nätverk](media/deploy/advanced-blockchain-settings-new.png)
 
-    | Inställningen | Beskrivning  |
+    | Inställning | Beskrivning  |
     |---------|--------------|
     | Pris nivå för Azure blockchain service | Välj **standard** nivån **för Azure-** blockchain som används för blockchain Workbench |
     | Azure Active Directory-inställningar | Välj **Lägg till senare**.</br>Obs: om du väljer att [förkonfigurera Azure AD](#azure-ad-configuration) eller omdistribueras väljer du att *lägga till nu*. |
@@ -101,7 +101,7 @@ När de nödvändiga stegen har slutförts är du redo att distribuera blockchai
 
      ![Avancerade inställningar för befintligt blockchain-nätverk](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | Inställningen | Beskrivning  |
+     | Inställning | Beskrivning  |
      |---------|--------------|
      | Ethereum RPC-slutpunkt | Ange RPC-slutpunkten för ett befintligt PoA blockchain-nätverk. Slut punkten börjar med https://eller http://och slutar med ett port nummer. Till exempel `http<s>://<network-url>:<port>` |
      | Azure Active Directory-inställningar | Välj **Lägg till senare**.</br>Obs: om du väljer att [förkonfigurera Azure AD](#azure-ad-configuration) eller omdistribueras väljer du att *lägga till nu*. |
@@ -118,7 +118,7 @@ När de nödvändiga stegen har slutförts är du redo att distribuera blockchai
 Distributionen kan ta upp till 90 minuter. Du kan använda Azure Portal för att övervaka förloppet. I den nyligen skapade resurs gruppen väljer du **distributioner > översikt** för att se status för de distribuerade artefakterna.
 
 > [!IMPORTANT]
-> Efter distributionen måste du slutföra Active Directory inställningar. Om du väljer **Lägg till senare**måste du köra [konfigurations skriptet för Azure AD](#azure-ad-configuration-script).  Om du väljer **Lägg till nu**måste du [Konfigurera svars-URL: en](#configuring-the-reply-url).
+> Efter distributionen måste du slutföra Active Directory inställningar. Om du väljer **Lägg till senare** måste du köra [konfigurations skriptet för Azure AD](#azure-ad-configuration-script).  Om du väljer **Lägg till nu** måste du [Konfigurera svars-URL: en](#configuring-the-reply-url).
 
 ## <a name="blockchain-workbench-web-url"></a>Webb-URL för blockchain Workbench
 
@@ -132,7 +132,7 @@ När distributionen av blockchain Workbench har slutförts innehåller en ny res
 
     ![App Service-lista](media/deploy/resource-group-list.png)
 
-1. Kopiera **URL** -värdet i App Service **Översikt**som representerar webb adressen till din distribuerade blockchain Workbench.
+1. Kopiera **URL** -värdet i App Service **Översikt** som representerar webb adressen till din distribuerade blockchain Workbench.
 
     ![Viktig information för App Service](media/deploy/app-service.png)
 
@@ -230,8 +230,8 @@ Därefter måste du ändra manifestet för att använda program roller i Azure A
 
 API-programmet måste begära behörighet från användaren för att få åtkomst till katalogen. Ange följande nödvändiga behörighet för API-programmet:
 
-1. Välj **API-behörigheter**i *blockchain API* -appens registrering. Som standard läggs Graph API **User. Read** -behörighet till.
-1. Workbench-programmet kräver Läs behörighet till användarnas grundläggande profil information. I *konfigurerade behörigheter*väljer du **Lägg till en behörighet**. I **Microsoft API: er**väljer du **Microsoft Graph**.
+1. Välj **API-behörigheter** i *blockchain API* -appens registrering. Som standard läggs Graph API **User. Read** -behörighet till.
+1. Workbench-programmet kräver Läs behörighet till användarnas grundläggande profil information. I *konfigurerade behörigheter* väljer du **Lägg till en behörighet**. I **Microsoft API: er** väljer du **Microsoft Graph**.
 1. Eftersom Workbench-programmet använder de autentiserade användarnas autentiseringsuppgifter väljer du **delegerade behörigheter**.
 1. Välj **User. ReadBasic. all** behörighet i kategorin *användare* .
 
@@ -239,7 +239,7 @@ API-programmet måste begära behörighet från användaren för att få åtkoms
 
     Välj **Lägg till behörigheter**.
 
-1. I *konfigurerade behörigheter*väljer du **bevilja administratörs medgivande** för domänen och väljer sedan **Ja** för verifierings frågan.
+1. I *konfigurerade behörigheter* väljer du **bevilja administratörs medgivande** för domänen och väljer sedan **Ja** för verifierings frågan.
 
    ![Bevilja behörigheter](media/deploy/client-app-grant-permissions.png)
 
@@ -249,7 +249,7 @@ API-programmet måste begära behörighet från användaren för att få åtkoms
 
 Program-ID och klient information krävs för distribution. Samla in och lagra informationen som ska användas under distributionen.
 
-1. Välj **Översikt**för det program som du har registrerat.
+1. Välj **Översikt** för det program som du har registrerat.
 1. Kopiera och lagra **programmets ID-** värde för senare användning under distributionen.
 
     ![Egenskaper för API-app](media/deploy/app-properties.png)

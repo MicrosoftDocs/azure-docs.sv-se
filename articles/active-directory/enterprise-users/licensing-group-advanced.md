@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72a28aebe71809f3e47f9cc6936366cd027a32bb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546683"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenarier, begränsningar och kända problem med grupper för att hantera licensiering i Azure Active Directory
@@ -28,7 +28,7 @@ Använd följande information och exempel för att få en mer avancerad förstå
 
 ## <a name="usage-location"></a>Användnings plats
 
-Vissa Microsoft-tjänster är inte tillgängliga på alla platser. Innan en licens kan tilldelas en användare måste administratören ange egenskapen för **användnings plats** för användaren. I [Azure Portal](https://portal.azure.com)kan du ange användnings plats i inställningar för **användar** &gt; **profil** &gt; **Settings**.
+Vissa Microsoft-tjänster är inte tillgängliga på alla platser. Innan en licens kan tilldelas en användare måste administratören ange egenskapen för **användnings plats** för användaren. I [Azure Portal](https://portal.azure.com)kan du ange användnings plats i inställningar för **användar** &gt; **profil** &gt; .
 
 För grupp licens tilldelningen ärver alla användare som saknar en användnings plats platsen för katalogen. Om du har användare på flera platser måste du se till att de stämmer överens med dina användar resurser innan du lägger till användare i grupper med licenser.
 

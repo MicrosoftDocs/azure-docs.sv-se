@@ -14,10 +14,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97356981"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Snabb start: skapa SQL Server 2017 på en virtuell Windows-dator i Azure Portal
@@ -107,7 +107,7 @@ Du kan övervaka distributionen från Azure Portal. Knappen **Meddelanden** län
 1. Öppna [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)på en annan dator som är ansluten till Internet.
 
 
-1. I dialogrutan **Anslut till server** eller **Anslut till databasmotor**, redigerar du värdet för **Servernamn**. Ange den virtuella datorns offentliga IP-adress. Lägg sedan till ett kommatecken och Lägg till den anpassade port (**1401**) som du angav när du konfigurerade den nya virtuella datorn. Ett exempel är `11.22.33.444,1401`.
+1. I dialogrutan **Anslut till server** eller **Anslut till databasmotor**, redigerar du värdet för **Servernamn**. Ange den virtuella datorns offentliga IP-adress. Lägg sedan till ett kommatecken och Lägg till den anpassade port (**1401**) som du angav när du konfigurerade den nya virtuella datorn. Till exempel `11.22.33.444,1401`.
 
 1. I rutan **Autentisering**, markerar du **SQL Server-autentisering**.
 

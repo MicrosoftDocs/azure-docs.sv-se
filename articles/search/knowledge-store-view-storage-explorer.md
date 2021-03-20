@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85566017"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Visa ett kunskaps lager med Storage Explorer
 
 I den här artikeln lär du dig hur du kan ansluta till och utforska ett kunskaps lager med hjälp av Storage Explorer i Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 + Följ stegen i [skapa ett kunskaps lager i Azure Portal](knowledge-store-create-portal.md) för att skapa ett exempel på kunskaps lager som används i den här genom gången.
 

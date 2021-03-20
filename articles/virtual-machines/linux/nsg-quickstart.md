@@ -11,10 +11,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91975135"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Öppna portar och slut punkter till en virtuell dator med Azure CLI
@@ -24,7 +24,7 @@ Du öppnar en port eller skapar en slut punkt för en virtuell dator (VM) i Azur
 
 Om du vill skapa en nätverks säkerhets grupp och regler måste du ha det senaste [Azure CLI](/cli/azure/install-az-cli2) installerat och inloggat på ett Azure-konto med [AZ-inloggning](/cli/azure/reference-index).
 
-Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn är *myResourceGroup*, *myNetworkSecurityGroup*och *myVnet*.
+Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn är *myResourceGroup*, *myNetworkSecurityGroup* och *myVnet*.
 
 
 ## <a name="quickly-open-a-port-for-a-vm"></a>Öppna en port för en virtuell dator snabbt

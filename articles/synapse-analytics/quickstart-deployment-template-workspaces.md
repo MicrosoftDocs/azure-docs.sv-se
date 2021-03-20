@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740373"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Snabb start: skapa en Azure dataSynapses-arbetsyta med en ARM-mall
@@ -21,7 +21,7 @@ Med den här Azure Resource Manager mallen (ARM-mallen) skapas en Azure Synapse-
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure 1](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -31,7 +31,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Du kan granska mallen genom att välja länken **visualisera** . Välj sedan **Redigera mall** .
+Du kan granska mallen genom att välja länken **visualisera** . Välj sedan **Redigera mall**.
 
 [![Visualisera](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -48,15 +48,15 @@ Mallen definierar två resurser:
 
 1. Ange eller uppdatera följande värden:
 
-   - **Prenumeration** : Välj en Azure-prenumeration.
-   - **Resurs grupp** : Välj **Skapa ny** och ange ett unikt namn för resurs gruppen och välj **OK** . En ny resurs grupp gör det lättare att rensa resursen.
-   - **Region** : Välj en region.  Välj till exempel **USA, centrala** .
-   - **Namn** : Ange ett namn för din arbets yta.
-   - **SQL-administratör inloggning** : Ange administratörs användar namnet för SQL Server.
-   - **SQL-administratörs lösen ord** : Ange administratörs lösen ordet för SQL Server.
-   - **Tagg värden** : Acceptera standardvärdet.
-   - **Granska och skapa** : Välj.
-   - **Skapa** : Välj.
+   - **Prenumeration**: Välj en Azure-prenumeration.
+   - **Resurs grupp**: Välj **Skapa ny** och ange ett unikt namn för resurs gruppen och välj **OK**. En ny resurs grupp gör det lättare att rensa resursen.
+   - **Region**: Välj en region.  Välj till exempel **USA, centrala**.
+   - **Namn**: Ange ett namn för din arbets yta.
+   - **SQL-administratör inloggning**: Ange administratörs användar namnet för SQL Server.
+   - **SQL-administratörs lösen ord**: Ange administratörs lösen ordet för SQL Server.
+   - **Tagg värden**: Acceptera standardvärdet.
+   - **Granska och skapa**: Välj.
+   - **Skapa**: Välj.
 
 ## <a name="next-steps"></a>Nästa steg
 

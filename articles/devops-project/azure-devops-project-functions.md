@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355482"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Distribuera till Azure Functions med DevOps starter
@@ -49,11 +49,11 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com)
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Välj **.NET** och sedan **Nästa**. Under **Välj ett program ramverk**väljer du **ASP.net** och klickar på **Nästa**.
+1. Välj **.NET** och sedan **Nästa**. Under **Välj ett program ramverk** väljer du **ASP.net** och klickar på **Nästa**.
 
 1. Välj **Funktionsapp** och välj sedan **Nästa**.
 
@@ -136,17 +136,17 @@ DevOps starter skapar och konfigurerar automatiskt de nödvändiga stegen för a
 
 Du är nu redo att samar beta med ett team i din app genom att använda en CI/CD-process som automatiskt distribuerar det senaste arbetet till din Azure-funktion. Varje ändring i Git-lagringsplatsen startar en version i Azure DevOps och en CD-pipeline för kör en distribution till Azure. Följ proceduren i det här avsnittet eller använd en annan metod för att checka in ändringarna till lagringsplatsen. Du kan till exempel klona Git-lagringsplatsen i ditt favoritverktyg eller IDE och sedan push-överföra ändringarna till den här lagringsplatsen.
 
-1. På menyn Azure-DevOps väljer du **databaser | Filer**och gå sedan till din lagrings platsen.
+1. På menyn Azure-DevOps väljer du **databaser | Filer** och gå sedan till din lagrings platsen.
 
 1. Databasen innehåller redan kod som heter **SampleFunctionApp** baserat på det program språk som du valde i skapande processen. Öppna filen **Application/SampleFunctionApp/Function1. cs** .
 
-1. Välj **Redigera**och gör sedan en ändring av **rad numret 31** . Du kan till exempel uppdatera den till **Hej där! Välkommen till Azure Functions med DevOps starter**
+1. Välj **Redigera** och gör sedan en ändring av **rad numret 31** . Du kan till exempel uppdatera den till **Hej där! Välkommen till Azure Functions med DevOps starter**
 
 1. Längst upp till höger väljer du **Checka in** och sedan **Checka in** igen för att push-överföra ändringarna.
 
 1. Öppna filen **Application/SampleFunctionApp. test/Function1TestRunner. cs** . 
 
-1. Välj **Redigera**och gör sedan en ändring av **rad nummer 21**. Du kan till exempel uppdatera den till **Hej där! Välkommen till Azure Functions med Azure DevOps starter**.
+1. Välj **Redigera** och gör sedan en ändring av **rad nummer 21**. Du kan till exempel uppdatera den till **Hej där! Välkommen till Azure Functions med Azure DevOps starter**.
 
      Efter en stund startar en version i Azure DevOps och därefter körs en version för att distribuera ändringarna. Övervaka Bygg status på DevOps starter-instrumentpanelen eller i webbläsaren med din Azure DevOps-organisation.
 

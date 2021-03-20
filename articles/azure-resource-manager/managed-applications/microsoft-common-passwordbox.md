@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7902ea2e30dec20e57d88344dc9507aec3993600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87064105"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>GRÄNSSNITTs element för Microsoft. Common. password
@@ -53,7 +53,7 @@ En kontroll som kan användas för att ange och bekräfta ett lösen ord.
 
 - Det här elementet har inte stöd för `defaultValue` egenskapen.
 - Information om implementeringen av `constraints` finns i [Microsoft. Common. text ruta](microsoft-common-textbox.md).
-- Om `options.hideConfirmation` är inställt på **Sant**döljs den andra text rutan för att bekräfta användarens lösen ord. Standardvärdet är **falskt**.
+- Om `options.hideConfirmation` är inställt på **Sant** döljs den andra text rutan för att bekräfta användarens lösen ord. Standardvärdet är **falskt**.
 
 ## <a name="next-steps"></a>Nästa steg
 

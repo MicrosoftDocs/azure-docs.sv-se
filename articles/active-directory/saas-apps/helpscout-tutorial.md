@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92445281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Självstudie: Azure Active Directory integrering med Help Scout
@@ -51,7 +51,7 @@ För att konfigurera integreringen av Help Scout i Azure AD måste du lägga til
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **Help Scout** i sökrutan.
 1. Välj **Hjälp Scout** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -201,7 +201,7 @@ I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning me
 
     ![Skärm bild som visar den enkla Sign-On-fliken där du aktiverar SAML och lägger till annan information.](./media/helpscout-tutorial/settings4.png)
 
-    a. I text rutan för **en Sign-On URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
+    a. I text rutan för **en Sign-On URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
     b. Klicka på **Ladda upp certifikat** för att ladda upp det **certifikat (Base64)** som laddats ned från Azure-portalen.
 

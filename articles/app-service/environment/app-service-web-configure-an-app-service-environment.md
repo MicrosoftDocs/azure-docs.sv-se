@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962595"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurera en App Service-miljön v1
@@ -21,7 +21,7 @@ ms.locfileid: "88962595"
 > 
 
 ## <a name="overview"></a>Översikt
-På en hög nivå består en Azure App Service-miljön av flera huvud komponenter:
+På en hög nivå består en Azure App Service Environment av flera huvud komponenter:
 
 * Beräknings resurser som körs i den App Service-miljön värdbaserade tjänsten
 * Storage
@@ -37,7 +37,7 @@ Värdarna i resurspooler (klient delar och arbetare) är inte direkt tillgängli
 Du kan ange antal och storlek för resurspoolen. I en ASE har du fyra storleks alternativ som heter P1 till P4. Mer information om de storlekar och deras priser finns i [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/).
 Ändring av kvantitet eller storlek kallas för en skalnings åtgärd.  Endast en skalnings åtgärd kan pågå åt gången.
 
-**Klient**delar: klient delens slut punkter är http/https-slutpunkterna för dina appar som lagras i din ASE. Du kör inte arbets belastningar på klient delen.
+**Klient** delar: klient delens slut punkter är http/https-slutpunkterna för dina appar som lagras i din ASE. Du kör inte arbets belastningar på klient delen.
 
 * En ASE börjar med två P2s, vilket är tillräckligt för arbets belastningar för utveckling/testning och produktions arbets belastningar på låg nivå. Vi rekommenderar starkt P3s för måttlig till tung produktions arbets belastningar.
 * För måttliga till tunga produktions arbets belastningar rekommenderar vi att du har minst fyra P3s för att se till att det finns tillräckligt med klient ändar när det schemalagda underhållet sker. Schemalagda underhålls aktiviteter kommer att ta en klient del åt gången. Detta minskar den övergripande tillgängliga klient delens kapacitet under underhålls aktiviteter.
@@ -98,7 +98,7 @@ När du skapar en ASE skapas en VIP i ditt VNet.  Det finns två VIP-typer, exte
 
 Under ILB ASE skapar du den under domän som används av ILB-ASE och måste hantera din egen DNS för den under domän som du anger.  Eftersom du anger namnet på under domänen måste du också hantera certifikatet som används för HTTPS-åtkomst.  När ASE har skapats uppmanas du att ange certifikatet.  Mer information om hur du skapar och använder en ILB-ASE finns i [använda ett internt Load Balancer med ett App Service-miljön][ILBASE]. 
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 Du kan hantera och övervaka dina App Service-miljön med hjälp av användar gränssnittet i Azure Portal. Om du har en ASE kan du förmodligen se App Service symbolen på din marginal List. Den här symbolen används för att representera App Service miljöer i Azure Portal:
 
 ![App Service-miljön symbol][1]

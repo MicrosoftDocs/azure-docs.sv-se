@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85554915"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybrid Azure AD-anslutna enheter
@@ -42,7 +42,7 @@ Om din miljö har ett lokalt AD-fotavtryck och du vill dra nytta av funktionerna
 |   | Domän anslutning av Windows autopilot och Autojoin via Azure AD Connect eller ADFS-konfiguration |
 |   | Windows 8,1, Windows 7, Windows Server 2012 R2, Windows Server 2012 och Windows Server 2008 R2-Kräv MSI |
 | **Alternativ för enhets inloggning** | Organisations konton med: |
-|   | lösenordsinställning |
+|   | Lösenord |
 |   | Windows Hello för företag för Win10 |
 | **Enhetshantering** | Grupprincip |
 |   | Configuration Manager fristående eller samtidig hantering med Microsoft Intune |

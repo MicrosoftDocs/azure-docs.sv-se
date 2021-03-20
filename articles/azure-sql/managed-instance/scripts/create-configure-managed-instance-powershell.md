@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: fd091cedb67c07b7de2c7e8540e99c3e8daf7dcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323880"
 ---
 # <a name="use-powershell-to-create-a-managed-instance"></a>Använd PowerShell för att skapa en hanterad instans
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 Det här skriptet använder några av följande kommandon. Om du vill ha mer information om hur du använder och andra kommandon i tabellen nedan, klickar du på länkarna till den aktuella dokumentationen.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Skapar en resursgrupp där alla resurser lagras.
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Skapar ett virtuellt nätverk. |
