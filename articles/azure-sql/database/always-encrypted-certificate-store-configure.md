@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: 60dea826a12ea475806adb6db88faa88e26463a1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674830"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurera Always Encrypted med hjälp av Windows certifikat Arkiv
@@ -70,8 +70,8 @@ Om fönstret **ny brand Väggs regel** öppnas loggar du in på Azure och låter
 
 I det här avsnittet ska du skapa en tabell för att lagra patient data. Detta är en normal tabell – du kommer att konfigurera kryptering i nästa avsnitt.
 
-1. Expandera **databaser** .
-2. Högerklicka på **klinik** -databasen och klicka på **ny fråga** .
+1. Expandera **databaser**.
+2. Högerklicka på **klinik** -databasen och klicka på **ny fråga**.
 3. Klistra in följande Transact-SQL (T-SQL) i fönstret ny fråga och **Kör** det.
     
     ```tsql
@@ -94,12 +94,12 @@ I det här avsnittet ska du skapa en tabell för att lagra patient data. Detta �
 
 SSMS innehåller en guide för att enkelt konfigurera Always Encrypted genom att konfigurera CMK, CEK och krypterade kolumner åt dig.
 
-1. Expandera **Databases**  >  **klinik** -  >  **tabeller** för databaser.
+1. Expandera   >  **klinik**-  >  **tabeller** för databaser.
 2. Högerklicka på tabellen **patienter** och välj **kryptera kolumner** för att öppna guiden Always Encrypted:
 
     ![Skärm bild som visar Colunns för kryptering... meny alternativ i tabellen patienter.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-Guiden Always Encrypted innehåller följande avsnitt: **kolumn val** , **huvud nyckel konfiguration** (CMK), **verifiering** och **Sammanfattning** .
+Guiden Always Encrypted innehåller följande avsnitt: **kolumn val**, **huvud nyckel konfiguration** (CMK), **verifiering** och **Sammanfattning**.
 
 ### <a name="column-selection"></a>Kolumn val
 
@@ -107,7 +107,7 @@ Klicka på **Nästa** på sidan **Introduktion** för att öppna sidan **kolumn 
 
 Kryptera uppgifter om **SSN** och **födelse datum** för varje patient. Kolumnen **SSN** använder deterministisk kryptering, som stöder likhets uppslag, kopplingar och gruppering av. Kolumnen **födelse datum** kommer att använda slumpmässig kryptering, som inte stöder åtgärder.
 
-Ange **krypterings typ** för kolumnen **SSN** till **deterministisk** och kolumnen **födelse datum** till **slumpmässig** . Klicka på **Nästa** .
+Ange **krypterings typ** för kolumnen **SSN** till **deterministisk** och kolumnen **födelse datum** till **slumpmässig**. Klicka på **Nästa**.
 
 ![Kryptera kolumner](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -115,13 +115,13 @@ Ange **krypterings typ** för kolumnen **SSN** till **deterministisk** och kolum
 
 På sidan **konfiguration av huvud nyckel** kan du konfigurera din CMK och välja den nyckel lagrings leverantör där CMK ska lagras. För närvarande kan du lagra en CMK i certifikat arkivet i Windows, Azure Key Vault eller en HSM (Hardware Security Module). I den här självstudien visas hur du lagrar dina nycklar i Windows certifikat arkiv.
 
-Kontrol lera att **Windows certifikat Arkiv** är markerat och klicka på **Nästa** .
+Kontrol lera att **Windows certifikat Arkiv** är markerat och klicka på **Nästa**.
 
 ![Huvud nyckel konfiguration](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Validering
 
-Du kan kryptera kolumnerna nu eller spara ett PowerShell-skript för att köra senare. I den här självstudien väljer **du Fortsätt för att slutföra nu** och klickar på **Nästa** .
+Du kan kryptera kolumnerna nu eller spara ett PowerShell-skript för att köra senare. I den här självstudien väljer **du Fortsätt för att slutföra nu** och klickar på **Nästa**.
 
 ### <a name="summary"></a>Sammanfattning
 
@@ -137,7 +137,7 @@ När guiden har slutförts konfigureras databasen för Always Encrypted. Följan
 * Skapade en CEK.
 * Konfigurerade de markerade kolumnerna för kryptering. Din **patienter** -tabell har för närvarande inga data, men alla befintliga data i de markerade kolumnerna är nu krypterade.
 
-Du kan kontrol lera att nycklarna skapas i SSMS genom att gå till **Clinic**  >  **Security**  >  **Always Encrypted nycklar** för klinik-säkerhet. Nu kan du se de nya nycklar som skapas av guiden.
+Du kan kontrol lera att nycklarna skapas i SSMS genom att gå till   >    >  **Always Encrypted nycklar** för klinik-säkerhet. Nu kan du se de nya nycklar som skapas av guiden.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Skapa ett klient program som fungerar med krypterade data
 
@@ -147,7 +147,7 @@ Nu när Always Encrypted har kon figurer ATS kan du skapa ett program som utför
 > Ditt program måste använda [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) -objekt när du skickar oformaterade data till servern med Always Encrypted kolumner. Att skicka litterala värden utan att använda SqlParameter-objekt resulterar i ett undantag.
 
 1. Öppna Visual Studio och skapa ett nytt C#-konsol program. Kontrol lera att ditt projekt är inställt på **.NET Framework 4,6** eller senare.
-2. Ge projektet namnet **AlwaysEncryptedConsoleApp** och klicka på **OK** .
+2. Ge projektet namnet **AlwaysEncryptedConsoleApp** och klicka på **OK**.
 
 ![Skärm bild som visar det nyligen namngivna AlwaysEncryptedConsoleApp-projektet.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
@@ -155,9 +155,9 @@ Nu när Always Encrypted har kon figurer ATS kan du skapa ett program som utför
 
 I det här avsnittet beskrivs hur du aktiverar Always Encrypted i databas anslutnings strängen. Du ändrar den-konsol app som du nyss skapade i nästa avsnitt, "Always Encrypted exempel konsol program".
 
-Om du vill aktivera Always Encrypted måste du lägga till nyckelordet för **kolumn krypterings inställningen** i anslutnings strängen och ange det som **aktive rad** .
+Om du vill aktivera Always Encrypted måste du lägga till nyckelordet för **kolumn krypterings inställningen** i anslutnings strängen och ange det som **aktive rad**.
 
-Du kan ställa in detta direkt i anslutnings strängen, eller så kan du ange den med hjälp av en [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder). Exempel programmet i nästa avsnitt visar hur du använder **SqlConnectionStringBuilder** .
+Du kan ställa in detta direkt i anslutnings strängen, eller så kan du ange den med hjälp av en [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder). Exempel programmet i nästa avsnitt visar hur du använder **SqlConnectionStringBuilder**.
 
 > [!NOTE]
 > Detta är den enda ändringen som krävs i ett klient program som är specifika för Always Encrypted. Om du har ett befintligt program som lagrar anslutnings strängen externt (det vill säga i en konfigurations fil) kanske du kan aktivera Always Encrypted utan att ändra någon kod.
@@ -190,7 +190,7 @@ Det här exemplet visar hur du:
 * Infoga data i de krypterade kolumnerna.
 * Välj en post genom att filtrera efter ett särskilt värde i en krypterad kolumn.
 
-Ersätt innehållet i **Program.cs** med följande kod. Ersätt anslutnings strängen för den globala connectionString-variabeln på raden direkt ovanför huvud metoden med din giltiga anslutnings sträng från Azure Portal. Detta är den enda ändringen du behöver göra i den här koden.
+Ersätt innehållet i **program. cs** med följande kod. Ersätt anslutnings strängen för den globala connectionString-variabeln på raden direkt ovanför huvud metoden med din giltiga anslutnings sträng från Azure Portal. Detta är den enda ändringen du behöver göra i den här koden.
 
 Kör appen för att se Always Encrypted i praktiken.
 
@@ -514,9 +514,9 @@ Du kan se att de krypterade kolumnerna inte innehåller några oformaterade data
 
 Om du vill använda SSMS för att komma åt data i klartext kan du lägga till **kolumn krypterings inställningen = aktive rad** parameter till anslutningen.
 
-1. I SSMS högerklickar du på servern i **Object Explorer** och klickar sedan på **Koppla från** .
-2. Klicka på **Anslut**  >  **databas motor** för att öppna fönstret **Anslut till Server** och klicka sedan på **alternativ** .
-3. Klicka på **ytterligare anslutnings parametrar** och ange **kolumn krypterings inställning = aktive rad** .
+1. I SSMS högerklickar du på servern i **Object Explorer** och klickar sedan på **Koppla från**.
+2. Klicka på **Anslut**  >  **databas motor** för att öppna fönstret **Anslut till Server** och klicka sedan på **alternativ**.
+3. Klicka på **ytterligare anslutnings parametrar** och ange **kolumn krypterings inställning = aktive rad**.
 
     ![Skärm bild som visar fliken Ytterligare anslutnings parametrar med inställningen för kolumn kryptering som har Aktiver ATS i rutan.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Kör följande fråga i **klinik** -databasen.

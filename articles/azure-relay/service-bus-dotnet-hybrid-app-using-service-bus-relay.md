@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983889"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Göra en lokal WCF-tjänst tillgänglig för en webbapp i molnet med Azure Relay
@@ -78,20 +78,20 @@ Först skapar du ett simulerat lokalt produktkatalogsystem.  Det här projektet 
 
 1. Starta Microsoft Visual Studio som administratör. Det gör du genom att högerklicka på program ikonen för Visual Studio och välja **Kör som administratör**.
 1. I Visual Studio väljer du **skapa ett nytt projekt**.
-1. I **skapa ett nytt projekt**väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
+1. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
 1. Ge projektet namnet *ProductsServer* och välj **skapa**.
 
    ![Konfigurera ditt nya projekt][11]
 
-1. I **Solution Explorer**högerklickar du på projektet **ProductsServer** och väljer sedan **Hantera NuGet-paket**.
-1. Välj **Bläddra**, leta upp och välj **windowsazure. Service Bus**. Välj **Installera**och godkänn användnings villkoren.
+1. I **Solution Explorer** högerklickar du på projektet **ProductsServer** och väljer sedan **Hantera NuGet-paket**.
+1. Välj **Bläddra**, leta upp och välj **windowsazure. Service Bus**. Välj **Installera** och godkänn användnings villkoren.
 
    ![Välj NuGet-paket][13]
 
    Alla nödvändiga klientsammansättningar nu är refererade.
 
-1. Lägg till en ny klass för ditt produktkontrakt. I **Solution Explorer**högerklickar du på projektet **ProductsServer** och väljer **Lägg till**  >  **klass**.
-1. I **namn**anger du namnet *ProductsContract.cs* och väljer **Lägg till**.
+1. Lägg till en ny klass för ditt produktkontrakt. I **Solution Explorer** högerklickar du på projektet **ProductsServer** och väljer **Lägg till**  >  **klass**.
+1. I **namn** anger du namnet *ProductsContract. cs* och väljer **Lägg till**.
 
 Gör följande kod ändringar i din lösning:
 
@@ -132,7 +132,7 @@ Gör följande kod ändringar i din lösning:
     }
     ```
 
-1. I *program.cs*ersätter du namn områdets definition med följande kod, som lägger till profil tjänsten och värden för den.
+1. I *program. cs* ersätter du namn områdets definition med följande kod, som lägger till profil tjänsten och värden för den.
 
     ```csharp
     namespace ProductsServer
@@ -187,7 +187,7 @@ Gör följande kod ändringar i din lösning:
     }
     ```
 
-1. I **Solution Explorer**dubbelklickar du på **App.config** för att öppna filen i Visual Studio-redigeraren. `<system.ServiceModel>` `<system.ServiceModel>` Lägg till följande XML-kod längst ned i elementet, men fortfarande i. Se till att ersätta `yourServiceNamespace` med namnet på ditt namn område och `yourKey` med SAS-nyckeln som du hämtade tidigare från portalen:
+1. I **Solution Explorer** dubbelklickar du på **App.config** för att öppna filen i Visual Studio-redigeraren. `<system.ServiceModel>` `<system.ServiceModel>` Lägg till följande XML-kod längst ned i elementet, men fortfarande i. Se till att ersätta `yourServiceNamespace` med namnet på ditt namn område och `yourKey` med SAS-nyckeln som du hämtade tidigare från portalen:
 
     ```xml
     <system.serviceModel>
@@ -234,26 +234,26 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
 
 1. Se till att Visual Studio körs som administratör.
 1. I Visual Studio väljer du **skapa ett nytt projekt**.
-1. I **skapa ett nytt projekt**väljer du **ASP.NET-webbprogram (.NET Framework)** för C# och väljer **Nästa**.
+1. I **skapa ett nytt projekt** väljer du **ASP.NET-webbprogram (.NET Framework)** för C# och väljer **Nästa**.
 1. Ge projektet namnet *ProductsPortal* och välj **skapa**.
-1. I **skapa ett nytt ASP.NET-webbprogram**väljer du **MVC** och väljer **ändra** under **autentisering**.
+1. I **skapa ett nytt ASP.NET-webbprogram** väljer du **MVC** och väljer **ändra** under **autentisering**.
 
    ![Välj ASP.NET-webbprogram][16]
 
-1. I **ändra autentisering**väljer du **Ingen autentisering** och väljer sedan **OK**. I den här självstudien distribuerar du en app som inte behöver en användare för att logga in.
+1. I **ändra autentisering** väljer du **Ingen autentisering** och väljer sedan **OK**. I den här självstudien distribuerar du en app som inte behöver en användare för att logga in.
 
     ![Ange autentisering][18]
 
 1. Tillbaka i **skapa ett nytt ASP.NET-webbprogram**, Välj **skapa** för att skapa MVC-appen.
 1. Konfigurera Azure-resurser för en ny webbapp. Följ stegen i [publicera din](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)webbapp. Gå sedan tillbaka till den här självstudien och fortsätt till nästa steg.
-1. I **Solution Explorer**högerklickar du på **modeller** och väljer sedan **Lägg till**  >  **klass**.
-1. Namnge klassen *Product.cs*och välj sedan **Lägg till**.
+1. I **Solution Explorer** högerklickar du på **modeller** och väljer sedan **Lägg till**  >  **klass**.
+1. Namnge klassen *Product. cs* och välj sedan **Lägg till**.
 
     ![Skapa produktmodell][17]
 
 ### <a name="modify-the-web-application"></a>Göra ändringar i webbprogrammet
 
-1. Ersätt den befintliga namn områdets definition med följande kod i *Product.cs* -filen i Visual Studio:
+1. Ersätt den befintliga namn områdets definition med följande kod i filen *Product. cs* i Visual Studio:
 
    ```csharp
     // Declare properties for the products inventory.
@@ -268,7 +268,7 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
     }
     ```
 
-1. I **Solution Explorer**expanderar du **kontrollanter**och dubbelklickar sedan på **HomeController.cs** för att öppna filen i Visual Studio.
+1. I **Solution Explorer** expanderar du **kontrollanter** och dubbelklickar sedan på **HomeController. cs** för att öppna filen i Visual Studio.
 1. Ersätt den befintliga definitionen för namnområdet med följande kod i *HomeController.cs*:
 
     ```csharp
@@ -291,13 +291,13 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
     }
     ```
 
-1. I **Solution Explorer**expanderar **Views**du  >  **delade**vyer och dubbelklickar sedan på **_Layout. cshtml** för att öppna filen i Visual Studio-redigeraren.
+1. I **Solution Explorer** expanderar du  >  **delade** vyer och dubbelklickar sedan på **_Layout. cshtml** för att öppna filen i Visual Studio-redigeraren.
 1. Ändra alla förekomster av `My ASP.NET Application` till *Northwind Traders-produkter*.
 1. Ta bort `Home` `About` länkarna, och `Contact` . Ta bort den markerade koden i följande exempel.
 
     ![Ta bort de genererade listobjekten][41]
 
-1. I **Solution Explorer**, expandera **vyer**  >  **Start**och dubbelklicka sedan på **index. cshtml** för att öppna filen i Visual Studio-redigeraren. Ersätt hela innehållet i filen med följande kod:
+1. I **Solution Explorer**, expandera **vyer**  >  **Start** och dubbelklicka sedan på **index. cshtml** för att öppna filen i Visual Studio-redigeraren. Ersätt hela innehållet i filen med följande kod:
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -351,10 +351,10 @@ Programmet bör visas och körs i en webbläsare.
 Nästa steg är att koppla samman den lokala produktservern med ASP.NET-programmet.
 
 1. Om det inte redan är öppet öppnar du det **ProductsPortal** -projekt som du skapade i avsnittet [skapa ett ASP.NET program](#create-an-aspnet-application) i Visual Studio.
-1. Precis som steget i avsnittet [skapa en lokal server](#create-an-on-premises-server) lägger du till NuGet-paketet i projekt referenserna. I **Solution Explorer**högerklickar du på projektet **ProductsPortal** och väljer sedan **Hantera NuGet-paket**.
+1. Precis som steget i avsnittet [skapa en lokal server](#create-an-on-premises-server) lägger du till NuGet-paketet i projekt referenserna. I **Solution Explorer** högerklickar du på projektet **ProductsPortal** och väljer sedan **Hantera NuGet-paket**.
 1. Sök efter *WindowsAzure.ServiceBus* och markera posten **WindowsAzure.ServiceBus**. Slutför sedan installationen och Stäng den här dialog rutan.
-1. I **Solution Explorer**högerklickar du på projektet **ProductsPortal** och väljer sedan **Lägg till**  >  **befintligt objekt**.
-1. Navigera till filen *ProductsContract.cs* från konsolprojektet **ProductsServer**. Markera *ProductsContract.cs*. Välj nedpilen bredvid **Lägg till**och välj sedan **Lägg till som länk**.
+1. I **Solution Explorer** högerklickar du på projektet **ProductsPortal** och väljer sedan **Lägg till**  >  **befintligt objekt**.
+1. Navigera till filen *ProductsContract.cs* från konsolprojektet **ProductsServer**. Markera *ProductsContract. cs*. Välj nedpilen bredvid **Lägg till** och välj sedan **Lägg till som länk**.
 
    ![Lägg till som en länk][24]
 
@@ -400,19 +400,19 @@ Nästa steg är att koppla samman den lokala produktservern med ASP.NET-programm
    }
    ```
 
-1. I **Solution Explorer**högerklickar du på **ProductsPortal** -lösningen. Se till att högerklicka på lösningen, inte projektet. Välj **Lägg till**  >  **befintligt projekt**.
+1. I **Solution Explorer** högerklickar du på **ProductsPortal** -lösningen. Se till att högerklicka på lösningen, inte projektet. Välj **Lägg till**  >  **befintligt projekt**.
 1. Navigera till projektet **ProductsServer** och dubbelklicka sedan på lösningsfilen *ProductsServer.csproj* för att lägga till den.
-1. **ProductsServer** måste köras för att visa data på **ProductsPortal**. I **Solution Explorer**högerklickar du på lösningen **ProductsPortal** och väljer **Egenskaper** för att visa **egenskaps sidor**.
+1. **ProductsServer** måste köras för att visa data på **ProductsPortal**. I **Solution Explorer** högerklickar du på lösningen **ProductsPortal** och väljer **Egenskaper** för att visa **egenskaps sidor**.
 1. Välj **vanliga egenskaper**  >  **Start projekt** och välj **flera start projekt**. Se till att **ProductsServer** och **ProductsPortal** visas i den ordningen och att **åtgärden** för båda är **Start**.
 
       ![Flera startprojekt][25]
 
 1. Välj **vanliga egenskaper**  >  **projekt beroenden** till vänster.
-1. För **projekt**väljer du **ProductsPortal**. Se till att **ProductsServer** är markerat.
+1. För **projekt** väljer du **ProductsPortal**. Se till att **ProductsServer** är markerat.
 
     ![Projektberoenden][26]
 
-1. För **projekt**väljer du **ProductsServer**. Se till att **ProductsPortal** inte är markerat och välj sedan **OK** för att spara ändringarna.
+1. För **projekt** väljer du **ProductsServer**. Se till att **ProductsPortal** inte är markerat och välj sedan **OK** för att spara ändringarna.
 
 ## <a name="run-the-project-locally"></a>Köra projektet lokalt
 
@@ -428,7 +428,7 @@ Stäng båda programmen innan du fortsätter till nästa avsnitt.
 
 Nästa steg är att publicera om Azure Web App **ProductsPortal** -klient delen:
 
-1. I **Solution Explorer**högerklickar du på projektet **ProductsPortal** och väljer **publicera**. På sidan **Publicera** väljer du **Publicera**.
+1. I **Solution Explorer** högerklickar du på projektet **ProductsPortal** och väljer **publicera**. På sidan **Publicera** väljer du **Publicera**.
 
    > [!NOTE]
    > Du kanske får upp ett felmeddelande i webbläsarfönstret när webbprojektet **ProductsPortal** startas automatiskt efter distributionen. Detta är normalt och beror på att **ProductsServer**-programmet ännu inte körs.
@@ -443,7 +443,7 @@ Nästa steg är att publicera om Azure Web App **ProductsPortal** -klient delen:
 <a name="set-productsportal-as-web-app"></a>Innan du kör programmet i molnet måste du se till att **ProductsPortal** startas inifrån Visual Studio som en webbapp.
 
 1. I Visual Studio högerklickar du på projektet **ProductsPortal** och väljer **Egenskaper**.
-1. Välj **webb**. Under **Start åtgärd**väljer du **start-URL**. Ange URL: en för din tidigare distribuerade webbapp, i det här exemplet `https://productsportal20190906122808.azurewebsites.net/` .
+1. Välj **webb**. Under **Start åtgärd** väljer du **start-URL**. Ange URL: en för din tidigare distribuerade webbapp, i det här exemplet `https://productsportal20190906122808.azurewebsites.net/` .
 
     ![Start-URL][27]
 

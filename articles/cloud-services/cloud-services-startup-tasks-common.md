@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741204"
 ---
 # <a name="common-cloud-service-classic-startup-tasks"></a>Vanliga start uppgifter för moln tjänst (klassisk)
@@ -87,7 +87,7 @@ De relevanta avsnitten i filen [service definition. csdef] visas här, som inklu
 Kommando filen *startup. cmd* använder *AppCmd.exe* för att lägga till ett komprimerings avsnitt och en komprimerings post för JSON till *Web.config* -filen. Den förväntade **errorlevel** på 183 är inställd på noll med VERIFY.EXE kommando rads program. Oväntade errorlevels loggas till StartupErrorLog.txt.
 
 ```cmd
-REM   **_ Add a compression section to the Web.config file. _*_
+REM   *** Add a compression section to the Web.config file. ***
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -102,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   _*_ Add compression for json. _*_
+REM   *** Add compression for json. ***
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -110,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   _*_ Exit batch file. _*_
+REM   *** Exit batch file. ***
 EXIT /b 0
 
-REM   _*_ Log error and exit _*_
+REM   *** Log error and exit ***
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -129,7 +129,7 @@ Den andra brand väggen kontrollerar anslutningar mellan den virtuella datorn oc
 
 Azure skapar brand Väggs regler för de processer som startas i dina roller. När du exempelvis startar en tjänst eller ett program skapar Azure automatiskt de nödvändiga brand Väggs reglerna för att tillåta tjänsten att kommunicera med Internet. Men om du skapar en tjänst som startas av en process utanför din roll (som en COM+-tjänst eller en schemalagd schemalagd aktivitet) måste du skapa en brand Väggs regel manuellt för att tillåta åtkomst till tjänsten. Dessa brand Väggs regler kan skapas med hjälp av en start åtgärd.
 
-En start aktivitet som skapar en brand Väggs regel måste ha en [ExecutionContext][av _] * förhöjd * *. Lägg till följande start åtgärd i filen [service definition. csdef] .
+En [Start åtgärd som] skapar en brand Väggs regel måste ha en [ExecutionContext]med **utökade privilegier**. Lägg till följande start åtgärd i filen [service definition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

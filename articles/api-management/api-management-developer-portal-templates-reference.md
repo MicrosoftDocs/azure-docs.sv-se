@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73176788"
 ---
 # <a name="developer-portal-templates"></a>Mallar för utvecklare
@@ -40,7 +40,7 @@ Mer information om hur du arbetar med mallar finns i [anpassa API Management Dev
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Mål C](api-management-api-templates.md#ObjectiveC)  
+        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
@@ -59,12 +59,12 @@ Mer information om hur du arbetar med mallar finns i [anpassa API Management Dev
     -   [Uppdatera konto information](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [Sidor](api-management-page-templates.md)  
     -   [Logga in](api-management-page-templates.md#SignIn)  
-    -   [Registrera sig](api-management-page-templates.md#SignUp)  
+    -   [Registrera dig](api-management-page-templates.md#SignUp)  
     -   [Sidan hittades inte](api-management-page-templates.md#PageNotFound)
 
 ## <a name="next-steps"></a>Nästa steg  
 
 + [Mallreferens](api-management-developer-portal-templates-reference.md)  
 + [Referens för datamodell](api-management-template-data-model-reference.md)  
-+ [Sid kontroller](api-management-page-controls.md)  
++ [Sidkontroller](api-management-page-controls.md)  
 + [Mallresurser](api-management-template-resources.md)

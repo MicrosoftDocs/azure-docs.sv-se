@@ -12,10 +12,10 @@ ms.date: 04/08/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83741617"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Lägga till personliga Microsoft-konton i Microsoft Authenticator-appen
@@ -33,7 +33,7 @@ Du kan lägga till din personliga Microsoft-konto genom att först aktivera två
 
 ## <a name="turn-on-two-factor-verification"></a>Aktivera tvåstegsverifiering
 
-1. På din dator går du till sidan [grundläggande om säkerhet](https://account.microsoft.com/security) och loggar in med din personliga Microsoft-konto. Exempelvis alain@outlook.com.
+1. På din dator går du till sidan [grundläggande om säkerhet](https://account.microsoft.com/security) och loggar in med din personliga Microsoft-konto. Till exempel alain@outlook.com.
 
 2. Längst ned på sidan **grundläggande säkerhets** inställningar väljer du länken **fler säkerhets alternativ** .
 
@@ -64,7 +64,7 @@ Du kan lägga till din personliga Microsoft-konto genom att först aktivera två
     >[!Note]
     >Om du inte har någon personlig Microsoft-konto [kan du skapa ett](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index).
 
-1. Ange ditt lösen ord och välj sedan **Logga**in. Ditt personliga konto läggs till i Microsoft Authenticator-appen.
+1. Ange ditt lösen ord och välj sedan **Logga** in. Ditt personliga konto läggs till i Microsoft Authenticator-appen.
 
 ## <a name="next-steps"></a>Nästa steg
 

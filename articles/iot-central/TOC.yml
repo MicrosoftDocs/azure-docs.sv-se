@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: Senaste uppdateringarna
       items:
+        - name: Nya och uppdaterade funktioner i februari 2021
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: Nya och uppdaterade funktioner i januari 2021
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: Nya och ändrade funktioner i november 2020
@@ -129,6 +131,8 @@
       href: core/concepts-architecture.md
     - name: Guide för enhetsutvecklare
       href: core/overview-iot-central-developer.md
+    - name: Operatörs guide
+      href: core/overview-iot-central-operator.md
     - name: Guide för Solution Builder
       href: core/overview-iot-central-solution-builder.md
     - name: Vad är programmallar?

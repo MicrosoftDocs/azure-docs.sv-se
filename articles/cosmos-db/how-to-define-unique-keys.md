@@ -9,10 +9,10 @@ ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 55fc5222c1c245c56ba0a26caa816c5c845147c1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336647"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definiera unika nycklar för en Azure Cosmos-behållare
@@ -22,7 +22,7 @@ Den här artikeln visar olika sätt att definiera [unika nycklar](unique-keys.md
 
 ## <a name="use-the-azure-portal"></a>Använda Azure-portalen
 
-1. Logga in i [Azure-portalen](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. [Skapa ett nytt Azure Cosmos-konto](create-sql-api-dotnet.md#create-account) eller Välj ett befintligt.
 

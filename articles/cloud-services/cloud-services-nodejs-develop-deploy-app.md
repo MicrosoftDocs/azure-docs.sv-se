@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741629"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>Bygga och distribuera ett Node.js program till en Azure-moln tjänst (klassisk)
@@ -33,7 +33,7 @@ Programmet är ett enkelt ”hello world”-program:
 
 ![En webbläsare som visar webbsidan Hello World][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 > [!NOTE]
 > I den här kursen används Azure PowerShell, vilket kräver Windows.
 

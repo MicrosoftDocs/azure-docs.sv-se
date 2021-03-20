@@ -4,10 +4,10 @@ description: Lär dig hur du tilldelar säkerhets åtkomst principer till HTTP-e
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614663"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Tilldela en säkerhets åtkomst princip för HTTP-och HTTPS-slutpunkter

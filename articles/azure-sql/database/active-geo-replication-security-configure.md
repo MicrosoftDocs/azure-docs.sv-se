@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674798"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurera och hantera Azure SQL Database säkerhet för geo-återställning eller redundans
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** -och **sys** -användare har *Null* -sid och **gäst** -sid är **0x00** . **Dbo** -sid kan starta med *0x01060000000001648000000000048454* , om databasens skapare var Server administratören i stället för en medlem i **DBManager** .
+> **INFORMATION_SCHEMA** -och **sys** -användare har *Null* -sid och **gäst** -sid är **0x00**. **Dbo** -sid kan starta med *0x01060000000001648000000000048454*, om databasens skapare var Server administratören i stället för en medlem i **DBManager**.
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. skapa inloggningar på mål servern
 

@@ -4,13 +4,13 @@ description: Referens för händelse av aktivitets schema för batch-aktivitet. 
 ms.topic: reference
 ms.date: 09/20/2020
 ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91852189"
 ---
-# <a name="task-schedule-fail-event"></a>Händelse för misslyckad aktivitets schemaläggning
+# <a name="task-schedule-fail-event"></a>Händelse för misslyckad aktivitetsschemaläggning
 
  Den här händelsen genereras när en aktivitet inte kan schemaläggas och kommer att göras om senare. Detta är ett tillfälligt haveri vid schemaläggning av aktiviteter på grund av resurs begränsning, till exempel att det inte finns tillräckligt många platser på noder för att köra en uppgift med `requiredSlots` angiven.
 
@@ -41,7 +41,7 @@ ms.locfileid: "91852189"
 }
 ```
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`jobId`|Sträng|ID för jobbet som innehåller uppgiften.|
 |`id`|Sträng|Aktivitetens ID.|
@@ -55,27 +55,27 @@ ms.locfileid: "91852189"
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`poolId`|Sträng|ID för den pool där aktiviteten kördes.|
 |`nodeId`|Sträng|ID: t för noden som aktiviteten kördes på.|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|Antalet Compute-noder som aktiviteten kräver.|
 
 ###  <a name="constraints"></a><a name="constraints"></a> begränsningar
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Det maximala antalet gånger som aktiviteten kan göras om. Batch-tjänsten försöker igen med en aktivitet om dess slutkod är skilt från noll.<br /><br /> Observera att det här värdet specifikt styr antalet återförsök. Batch-tjänsten kommer att försöka utföra åtgärden en gång och kan sedan försöka igen till den här gränsen. Om till exempel det maximala antalet försök är 3, försöker batch utföra en aktivitet upp till fyra gånger (ett första försök och tre försök).<br /><br /> Om det maximala antalet försök är 0, gör batch-tjänsten inte om aktiviteterna.<br /><br /> Om det maximala antalet försök är-1, kommer batch-tjänsten att försöka utföra aktiviteter utan begränsning.<br /><br /> Standardvärdet är 0 (inga återförsök).|
 
 
 ###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`category`|Sträng|Fel kategori.|
 |`code`|Sträng|En identifierare för aktivitets schemaläggnings felet. Koder är invarianter och är avsedda att konsumeras program mässigt.|

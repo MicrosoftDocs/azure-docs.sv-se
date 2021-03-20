@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -9,21 +9,21 @@ ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
 ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73182286"
 ---
 ### <a name="what-is-expressroute-direct"></a>Vad är ExpressRoute Direct?
 
 Med ExpressRoute Direct får kunder möjligheten att ansluta direkt till Microsofts globala nätverk vid peering-platser strategiskt fördelade runt om i världen. ExpressRoute Direct tillhandahåller dubbla 100-eller 10 Gbit/s-anslutningar, som har stöd för aktiv/aktiv anslutning i stor skala. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hur ansluter kunderna till ExpressRoute Direct? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hur ansluter kunderna till ExpressRoute Direct? 
 
 Kunderna måste arbeta med sina lokala operatörer och samlokaliserings leverantörer för att få anslutning till ExpressRoute-routrar för att kunna dra nytta av ExpressRoute Direct.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Vilka platser stöder för närvarande ExpressRoute Direct? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Vilka platser stöder för närvarande ExpressRoute Direct? 
 
 Kontrol lera tillgängligheten på [sidan plats](../articles/expressroute/expressroute-locations-providers.md). 
 
@@ -31,11 +31,11 @@ Kontrol lera tillgängligheten på [sidan plats](../articles/expressroute/expres
 
 ExpressRoute Direct kommer att använda samma [ExpressRoute i företags klass](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Vilka scenarier bör kunderna överväga med ExpressRoute Direct?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Vilka scenarier bör kunderna överväga med ExpressRoute Direct?  
 
-ExpressRoute Direct tillhandahåller kunder med port par för Direct 100 eller 10 Gbit/s i Microsofts globala stamnät. De scenarier som ger kunderna de största fördelarna är: massiv data inmatning, fysisk isolering för reglerade marknader och dedikerad kapacitet för burst-scenario, som åter givning. 
+ExpressRoute Direct tillhandahåller kunder med port par för Direct 100 eller 10 Gbit/s i Microsofts globala stamnät. De scenarier som ger kunderna de största fördelarna är: massiv data inmatning, fysisk isolering för reglerade marknader och dedikerad kapacitet för burst-scenario, som åter givning. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Vad är fakturerings modellen för ExpressRoute Direct? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Vad är fakturerings modellen för ExpressRoute Direct? 
 
 ExpressRoute Direct debiteras för port paret vid ett fast belopp. Standard kretsar tas med utan ytterligare timmar och Premium har en kort avgift. Utgående kommer att debiteras per krets baserat på peering-platsens zon.
 

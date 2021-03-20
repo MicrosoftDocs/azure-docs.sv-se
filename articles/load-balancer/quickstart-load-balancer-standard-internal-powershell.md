@@ -17,17 +17,17 @@ ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
 ms.openlocfilehash: 5844b321fd3050bab9288657189ddcd87bba14db
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98562343"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med Azure PowerShell
 
 Kom igång med Azure Load Balancer genom att använda Azure PowerShell för att skapa en intern belastningsutjämnare och två virtuella datorer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell installerat lokalt eller Azure Cloud Shell
@@ -684,7 +684,7 @@ New-AzVM @vm
 
 ```
 
-### <a name="test"></a>Testa
+### <a name="test"></a>Test
 
 1. [Logga in](https://portal.azure.com) i Azure-portalen.
 

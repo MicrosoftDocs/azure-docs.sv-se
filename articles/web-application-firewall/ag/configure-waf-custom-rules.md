@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83758970"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurera brand vägg för webbaserade program v2 på Application Gateway med en anpassad regel med hjälp av Azure PowerShell
@@ -27,7 +27,7 @@ Mer information om anpassade regel exempel finns i [skapa och använda anpassade
 
 Om du vill köra Azure PowerShell i den här artikeln i ett kontinuerligt skript som du kan kopiera, klistra in och köra, se [Azure Application Gateway PowerShell-exempel](powershell-samples.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell-modul
 
@@ -40,7 +40,7 @@ Om du väljer att installera och använda Azure PowerShell lokalt kräver det h�
 
 ## <a name="example-script"></a>Exempelskript
 
-### <a name="set-up-variables"></a>Konfigurera variabler
+### <a name="set-up-variables"></a>Skapa variabler
 
 ```azurepowershell
 $rgname = "CustomRulesTest"

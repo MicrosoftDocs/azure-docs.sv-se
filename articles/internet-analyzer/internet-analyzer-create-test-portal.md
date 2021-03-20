@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73501773"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Skapa ett Internet Analyzer-test med hjälp av Portal (för hands version)
@@ -29,13 +29,13 @@ Den offentliga för hands versionen är tillgänglig för användning globalt; d
 ## <a name="basics"></a>Grundläggande inställningar
 
 1. Få till gång till Internet Analyzer Preview genom att följa **Hur gör jag för att delta i för hands versionen?** instruktioner från [vanliga frågor och svar om Azure Internet Analyzer](internet-analyzer-faq.md).
-2. Klicka på **+ skapa en resurs**från start sidan i [Azure Portal](https://preview.portal.azure.com). Internet Analyzer är för närvarande endast tillgängligt från för hands versionen av Azure Portal.
+2. Klicka på **+ skapa en resurs** från start sidan i [Azure Portal](https://preview.portal.azure.com). Internet Analyzer är för närvarande endast tillgängligt från för hands versionen av Azure Portal.
 3. På sidan **ny** söker du efter "Internet Analyzer" i fältet *Sök på Marketplace* .
 4. Klicka på **Internet Analyzer (för hands version)**. Kontrol lera att utgivaren är *Microsoft* och att kategorin är *nätverk*.
 5. På sidan för **Internet Analyzer (förhands granskning)** klickar du på **skapa** för att öppna sidan **skapa en Internet analys** .
 6. Ange följande konfigurations inställningar för din Internet Analyzer-resurs:
 
-    * **Prenumeration:** Azure-prenumerationen som är värd för den nya Internet Analyzer-resursen. ***Använd samma prenumerations-ID som används för att begära för hands versions åtkomst.***
+    * **Prenumeration:** Azure-prenumerationen som är värd för den nya Internet Analyzer-resursen. **_Använd samma prenumerations-ID som används för att begära för hands versions åtkomst._**
     * **Resurs grupp:** Den Azure-resurs grupp som den nya Internet Analyzer-resursen kommer att skapas i. Om du inte har en befintlig resurs grupp kan du skapa en ny.
     * **Namn:** Namnet på den nya resurs profilen för Internet Analyzer.
     * **Region:** Den offentliga Azure-region som resursen ska skapas i. Under för hands versionen är endast *USA, väst 2* , tillgängligt.
@@ -65,12 +65,12 @@ Du måste slutföra de grundläggande stegen för att konfigurera ett test och b
 4. Klicka på **Lägg** till för att lägga till slut punkten i testet.
 5. Upprepa steg 1-4 för att konfigurera din andra slut punkt. Slut punkten B mäts alltid i förhållande till slut punkten A – när du konfigurerar slut punkter bör du fundera över vilken slut punkt som ska vara din test kontroll.
 6. Spara testet genom att klicka på knappen **Spara** . När du har sparat ett test kan du inte längre redigera slut punkterna för ett visst test.
-7. Välj de test (er) som du vill starta och klicka på **Starta test**. Detta ändrar ***statusen*** för dina tester till att ***köra***. Du kan börja testa när som helst, men JavaScript-klienten måste vara inbäddad för att testet ska börja samla in mått.
+7. Välj de test (er) som du vill starta och klicka på **Starta test**. Detta ändrar **_status_*_ för dina tester till _*_körs_**. Du kan börja testa när som helst, men JavaScript-klienten måste vara inbäddad för att testet ska börja samla in mått.
 8. Lägg till fler tester när som helst. Observera att den unika JavaScript-klienten inte skapas förrän ett test har skapats.
 
 ## <a name="embed-client"></a>Bädda in klient
 
-För att kunna påbörja ett test måste JavaScript-klienten bäddas in i ditt webb program. När du har konfigurerat minst ett test klickar du på **Granska + skapa**, går till **Inställningar > konfiguration**och kopierar JavaScript-klienten. Du hittar mer information på sidan [bädda in Internet Analyzer-klienten](internet-analyzer-embed-client.md) .  
+För att kunna påbörja ett test måste JavaScript-klienten bäddas in i ditt webb program. När du har konfigurerat minst ett test klickar du på **Granska + skapa**, går till **Inställningar > konfiguration** och kopierar JavaScript-klienten. Du hittar mer information på sidan [bädda in Internet Analyzer-klienten](internet-analyzer-embed-client.md) .  
 
 ## <a name="next-steps"></a>Nästa steg
 

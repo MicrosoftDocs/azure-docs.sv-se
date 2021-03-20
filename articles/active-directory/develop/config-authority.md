@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96169451"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Gör så här: Konfigurera MSAL för iOS och macOS för att använda olika identitets leverantörer
@@ -180,7 +180,7 @@ Du kan behöva skicka olika omfattningar till varje suverän moln. Vilka omfattn
 
 När auktoritets-URL: en är inställt på `"login.microsoftonline.com/common"` , kommer användaren att loggas in på sin hem klient. Vissa appar kan dock behöva signera användaren till en annan klient och vissa appar fungerar bara med en enda klient.
 
-Om du vill signera användaren till en speciell klient konfigurerar du `MSALPublicClientApplication` med en speciell myndighet. Ett exempel:
+Om du vill signera användaren till en speciell klient konfigurerar du `MSALPublicClientApplication` med en speciell myndighet. Exempel:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

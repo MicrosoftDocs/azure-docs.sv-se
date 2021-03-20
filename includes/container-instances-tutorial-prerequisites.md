@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -9,10 +9,10 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75552433"
 ---
 Du måste uppfylla följande krav för att kunna slutföra den här självstudiekursen:

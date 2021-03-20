@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 44a9d5b273e13886b0674b3b2e9f5f7a75e72fcc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93338585"
 ---
 # <a name="log-azure-cosmos-db"></a>LOGG (Azure Cosmos DB)
@@ -42,7 +42,7 @@ LOG (<numeric_expr> [, <base>])
   
   Som standard returnerar LOG () den naturliga logaritmen. Du kan ändra logaritmens bas till ett annat värde med hjälp av den valfria bas parametern.  
   
-  Den naturliga logaritmen är logaritmen för basen **e** , där **e** är en onormal konstant ungefär lika med 2,718281828.  
+  Den naturliga logaritmen är logaritmen för basen **e**, där **e** är en onormal konstant ungefär lika med 2,718281828.  
   
   Den naturliga logaritmen av exponenten för ett tal är själva siffran: LOG (EXP (n)) = n. Och exponenten för den naturliga logaritmen för ett tal är själva siffran: EXP (LOG (n)) = n.
 

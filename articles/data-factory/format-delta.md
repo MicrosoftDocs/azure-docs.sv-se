@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: daperlov
 ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386500"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Delta format i Azure Data Factory
@@ -29,7 +29,7 @@ Den här kopplingen är tillgänglig som en [infogad data uppsättning](data-flo
 
 I tabellen nedan visas de egenskaper som stöds av en delta källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Formatet måste vara `delta` | ja | `delta` | format |
 | Filsystem | Container/File-systemet för delta Lake | ja | Sträng | Fil Systems |
@@ -66,7 +66,7 @@ source(output(movieId as integer,
 
 I tabellen nedan visas de egenskaper som stöds av en delta mottagare. Du kan redigera dessa egenskaper på fliken **Inställningar** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Formatet måste vara `delta` | ja | `delta` | format |
 | Filsystem | Container/File-systemet för delta Lake | ja | Sträng | Fil Systems |

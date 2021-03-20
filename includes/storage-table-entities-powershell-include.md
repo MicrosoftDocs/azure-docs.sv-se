@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67187018"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,7 +18,7 @@ ms.locfileid: "67187018"
 
 Nu när du har en tabell kan vi titta på hur du hanterar entiteter eller rader i tabellen. 
 
-Entiteter kan ha upp till 255 egenskaper, inklusive tre system egenskaper: **PartitionKey**, **RowKey**och **timestamp**. Du är ansvarig för att infoga och uppdatera värdena för **PartitionKey** och **RowKey**. Servern hanterar värdet för **tidsstämpel**, som inte kan ändras. Tillsammans identifierar **PartitionKey** och **RowKey** varje entitet i en tabell.
+Entiteter kan ha upp till 255 egenskaper, inklusive tre system egenskaper: **PartitionKey**, **RowKey** och **timestamp**. Du är ansvarig för att infoga och uppdatera värdena för **PartitionKey** och **RowKey**. Servern hanterar värdet för **tidsstämpel**, som inte kan ändras. Tillsammans identifierar **PartitionKey** och **RowKey** varje entitet i en tabell.
 
 * **PartitionKey**: bestämmer partitionen som entiteten lagras i.
 * **RowKey**: entiteten identifieras unikt i partitionen.
@@ -60,7 +60,7 @@ Add-AzTableRow `
 Du kan fråga entiteterna i en tabell med hjälp av kommandot **Get-AzTableRow** .
 
 > [!NOTE]
-> Cmdletarna **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName**och **Get-AzureStorageTableRowByCustomFilter** är föråldrade och tas bort i en framtida versions uppdatering.
+> Cmdletarna **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName** och **Get-AzureStorageTableRowByCustomFilter** är föråldrade och tas bort i en framtida versions uppdatering.
 
 #### <a name="retrieve-all-entities"></a>Hämta alla entiteter
 

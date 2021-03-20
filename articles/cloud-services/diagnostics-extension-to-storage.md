@@ -9,10 +9,10 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98740082"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Lagra och visa diagnostikdata i Azure Storage
@@ -75,7 +75,7 @@ Loggdata lagras antingen i BLOB-eller Table Storage med följande namn:
 * **anpassad** – en anpassad behållare baserat på konfigurations kataloger som övervakas av diagnostiken.  Namnet på den här BLOB-behållaren anges i WADDirectoriesTable.
 
 ## <a name="tools-to-view-diagnostic-data"></a>Verktyg för att Visa diagnostikdata
-Det finns flera verktyg för att visa data när de har överförts till lagring. Ett exempel:
+Det finns flera verktyg för att visa data när de har överförts till lagring. Exempel:
 
 * Server Explorer i Visual Studio – om du har installerat Azure-verktygen för Microsoft Visual Studio kan du använda noden Azure Storage i Server Explorer för att visa skrivskyddade blob-och tabell data från dina Azure Storage-konton. Du kan visa data från ditt lokala Storage emulator-konto och även från lagrings konton som du har skapat för Azure. Mer information finns i avsnittet [om att bläddra och hantera lagrings resurser med Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) är en fristående app som gör det enkelt att arbeta med Azure Storage data på Windows, OSX och Linux.

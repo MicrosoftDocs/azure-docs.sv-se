@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0a84d0310573a1210e21157102a445fff9244782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923984"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>OData- `search.score` funktion i Azure kognitiv sökning
 
-När du skickar en fråga till Azure Kognitiv sökning utan parametern [ **$OrderBy** ](search-query-odata-orderby.md), sorteras resultaten som kommer tillbaka i fallande ordning efter relevans-poäng. Även om du använder **$OrderBy**, kommer relevans poängen att användas för att avbryta band som standard. Men ibland är det praktiskt att använda relevans poängen som ett inledande sorterings villkor och andra villkor som slip-Break. `search.score`Funktionen gör det möjligt att göra detta.
+När du skickar en fråga till Azure Kognitiv sökning utan parametern [ **$OrderBy**](search-query-odata-orderby.md), sorteras resultaten som kommer tillbaka i fallande ordning efter relevans-poäng. Även om du använder **$OrderBy**, kommer relevans poängen att användas för att avbryta band som standard. Men ibland är det praktiskt att använda relevans poängen som ett inledande sorterings villkor och andra villkor som slip-Break. `search.score`Funktionen gör det möjligt att göra detta.
 
 ## <a name="syntax"></a>Syntax
 

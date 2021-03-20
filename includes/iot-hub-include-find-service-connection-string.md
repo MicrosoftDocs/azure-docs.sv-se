@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,10 +9,10 @@ ms.date: 07/16/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 55cdd864d73ce084d994c64233e79d5a58b17def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "69558506"
 ---
 <!-- This tells how to get the connection string for the service shared access policy of your IoT hub -->
@@ -25,7 +25,7 @@ Följ dessa steg om du vill hämta IoT Hub anslutnings sträng för **tjänst** 
 
 1. Välj **tjänst** princip i listan över principer.
 
-1. Under **delade åtkomst nycklar**väljer du kopierings ikonen för **anslutnings strängen – primär nyckel** och spara värdet.
+1. Under **delade åtkomst nycklar** väljer du kopierings ikonen för **anslutnings strängen – primär nyckel** och spara värdet.
 
     ![Visa hur anslutningssträngen hämtas](./media/iot-hub-include-find-service-connection-string/iot-hub-get-connection-string.png)
 

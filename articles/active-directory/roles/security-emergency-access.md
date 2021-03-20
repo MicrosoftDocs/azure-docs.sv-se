@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98740830"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Hantera konton för nödåtkomst i Azure AD
@@ -72,7 +72,7 @@ Om du använder lösen ord kontrollerar du att kontona har starka lösen ord som
 
 Organisationer bör övervaka inloggnings-och gransknings loggs aktiviteter från nödfalls kontona och utlösa meddelanden till andra administratörer. När du övervakar aktiviteten på Bryt glas konton kan du kontrol lera att dessa konton endast används för testning eller faktiska nöd situationer. Du kan använda Azure Log Analytics för att övervaka inloggnings loggarna och utlösa e-post och SMS-aviseringar till dina administratörer när Break glas-konton loggar in.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 1. [Skicka inloggnings loggar för Azure AD](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) till Azure Monitor.
 

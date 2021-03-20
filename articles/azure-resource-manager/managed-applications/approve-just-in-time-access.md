@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651025"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurera och godkänn just-in-Time-åtkomst för Azure Managed Applications
@@ -43,7 +43,7 @@ Den här artikeln fokuserar på de åtgärder som kunderna vidtar för att aktiv
 
    ![Konfigurera åtkomst](./media/approve-just-in-time-access/configure-jit-access.png)
 
-   Du kan bara aktivera JIT-åtkomst under distributionen. Om du väljer **Nej**får utgivaren permanent åtkomst till den hanterade resurs gruppen. Du kan inte aktivera JIT-åtkomst senare.
+   Du kan bara aktivera JIT-åtkomst under distributionen. Om du väljer **Nej** får utgivaren permanent åtkomst till den hanterade resurs gruppen. Du kan inte aktivera JIT-åtkomst senare.
 
 1. Om du vill ändra standardinställningarna för godkännande väljer du **Anpassa JIT-konfiguration**.
 
@@ -55,7 +55,7 @@ Den här artikeln fokuserar på de åtgärder som kunderna vidtar för att aktiv
    * Maximal åtkomst varaktighet – 8 timmar
    * God kännare – ingen
 
-   När godkännande läget är inställt på **automatiskt**får god kännare ett meddelande för varje begäran, men begäran godkänns automatiskt. När god kännare är inställd på **manuell**får de ett meddelande för varje begäran och en av dem måste godkänna det.
+   När godkännande läget är inställt på **automatiskt** får god kännare ett meddelande för varje begäran, men begäran godkänns automatiskt. När god kännare är inställd på **manuell** får de ett meddelande för varje begäran och en av dem måste godkänna det.
 
    Maximal varaktighet för aktivering anger den maximala tid som en utgivare kan begära åtkomst till den hanterade resurs gruppen.
 
@@ -103,7 +103,7 @@ För att godkänna begär Anden via Azure AD Privileged Identity Management:
 
    ![Välj Godkänn begär Anden](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. Välj **Azure-hanterade program**och välj begäran att godkänna.
+1. Välj **Azure-hanterade program** och välj begäran att godkänna.
 
    ![Välj begär Anden](./media/approve-just-in-time-access/view-requests.png)
 

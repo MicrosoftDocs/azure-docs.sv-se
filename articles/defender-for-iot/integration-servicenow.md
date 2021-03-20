@@ -9,10 +9,10 @@ ms.date: 1/17/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98558732"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>Hanterings programmet Defender för IoT-anslutningsdelning för ServiceNow
@@ -153,7 +153,7 @@ Definiera regeln:
 
 ### <a name="send-defender-for-iot-device-attributes"></a>Skicka Defender för IoT-enhetens attribut
 
-I den här artikeln beskrivs hur du konfigurerar Defender för IoT för att skicka en stor mängd enhets attribut till ServiceNow-tabeller. Se **_Inventory information_* _ för information om vilken typ av information som skickas till ServiceNow.
+I den här artikeln beskrivs hur du konfigurerar Defender för IoT för att skicka en stor mängd enhets attribut till ServiceNow-tabeller. Se ***inventerings information*** för information om vilken typ av information som skickas till ServiceNow.
 
 Om du vill skicka attribut till ServiceNow måste du mappa den lokala hanterings konsolen till en ServiceNow-instans. Detta säkerställer att Defender för IoT-plattformen kan kommunicera och autentisera med-instansen.
 
@@ -161,7 +161,7 @@ Så här lägger du till en ServiceNow-instans:
 
 1. Logga in på din lokala Defender för IoT-hanteringskonsolen.
 
-1. Välj _ *Systeminställningar** och sedan **ServiceNow** i integrerings avsnittet för den lokala hanterings konsolen.
+1. Välj **Systeminställningar** och sedan **ServiceNow** i integrations avsnittet för den lokala hanterings konsolen.
 
       :::image type="content" source="media/integration-servicenow/servicenow.png" alt-text="Välj knappen ServiceNow.":::
 
@@ -276,7 +276,7 @@ I den här artikeln beskrivs enhetens attribut som skickas till ServiceNow.
 | Leverantör | Enhets leverantören. |
 | Protokoll | De protokoll som identifierades i trafiken som genereras av enheten. |
 | Ägare | Ange namnet på enhetens ägare. |
-| Plats | Ange enhetens fysiska plats. |
+| Location | Ange enhetens fysiska plats. |
 
 Visa enheter som är anslutna till en enhet i den här vyn.
 
@@ -329,7 +329,7 @@ Den här artikeln beskriver enhetens aviserings information som skickas till Ser
 | Skapad | Datum och tid då aviseringen genererades. |
 | Motor | Den motor som identifierade händelsen. |
 | Rubrik | Aviserings rubriken. |
-| Description | Aviserings beskrivningen. |
+| Beskrivning | Aviserings beskrivningen. |
 | Protokoll | Protokollet identifierades i trafiken. |
 | Allvarlighetsgrad | Allvarlighets graden för aviseringen som definieras av Defender för IoT. |
 | Enhet | Namnet på sensorn som identifierade trafiken. |
@@ -349,9 +349,9 @@ Välj posten i kolumnen skapad om du vill visa aviserings information i ett form
 
 I den här artikeln beskrivs vilka typer av aviseringar varje motor utlösare.
 
-| Aviseringstyp | Description |
+| Aviseringstyp | Beskrivning |
 |--|--|
-| Aviseringar om princip överträdelser | Utlöses när motorn för policy överträdelse identifierar en avvikelse från trafik som tidigare har lärts. Här är några exempel: <br /><br />-En ny enhet har identifierats. <br /><br />– En ny konfiguration identifieras på en enhet. <br /><br />– En enhet som inte har definierats som en programmerings enhet utför en program ändring. <br /><br />-En version av inbyggd program vara har ändrats. |
+| Aviseringar om princip överträdelser | Utlöses när motorn för policy överträdelse identifierar en avvikelse från trafik som tidigare har lärts. Exempel: <br /><br />-En ny enhet har identifierats. <br /><br />– En ny konfiguration identifieras på en enhet. <br /><br />– En enhet som inte har definierats som en programmerings enhet utför en program ändring. <br /><br />-En version av inbyggd program vara har ändrats. |
 | Varningar om protokoll fel | Utlöses när motorn för protokoll överträdelse identifierar paket strukturer eller fält värden som inte uppfyller protokoll specifikationen. |
 | Drift aviseringar | Utlöses när drift motorn identifierar problem med nätverks drift eller enhets fel. Till exempel stoppades en nätverks enhet med ett Stop PLC-kommando, eller ett gränssnitt på en sensor som slutade övervaka trafiken. |
 | Varningar om skadlig kod | Utlöses när motorn för skadlig kod identifierar skadlig nätverks aktivitet, till exempel kända attacker som Conficker. |

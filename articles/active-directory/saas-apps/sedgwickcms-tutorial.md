@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: ccda5c050c9f8af711637ea45090b6647c6c3488
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Självstudie: Azure Active Directory-integrering med Sedgwick CMS
@@ -49,11 +49,11 @@ Om du vill konfigurera integreringen av Sedgwick CMS i Azure AD måste du lägga
 
 **Utför följande steg för att lägga till Sedgwick CMS från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Om du vill konfigurera integreringen av Sedgwick CMS i Azure AD måste du lägga
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **SEDGWICK CMS** , väljer **Sedgwick CMS** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **SEDGWICK CMS**, väljer **Sedgwick CMS** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
     ![Sedgwick CMS i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning i Azure AD med Sedgwick CMS baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning i Azure AD med Sedgwick CMS baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Sedgwick CMS upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med Sedgwick CMS i Azure AD måste du slutföra följande Bygg stenar:
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Sedgwick CMS i Azure AD:
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan **Sedgwick CMS** Application Integration väljer du **enkel inloggning** .
+1. I [Azure Portal](https://portal.azure.com/)på sidan **Sedgwick CMS** Application Integration väljer du **enkel inloggning**.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -93,7 +93,7 @@ Utför följande steg för att konfigurera enkel inloggning med Sedgwick CMS i A
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -136,7 +136,7 @@ Om du vill konfigurera enkel inloggning på **SEDGWICK CMS** -sidan måste du sk
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -148,31 +148,31 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Sedgwick CMS.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **Sedgwick CMS** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Sedgwick CMS**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **SEDGWICK CMS** .
+2. I listan program väljer du **SEDGWICK CMS**.
 
     ![Sedgwick CMS-länk i listan program](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -180,7 +180,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-sedgwick-cms-test-user"></a>Skapa Sedgwick CMS test User
 

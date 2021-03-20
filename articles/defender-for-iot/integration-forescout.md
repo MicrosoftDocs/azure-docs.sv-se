@@ -9,10 +9,10 @@ ms.date: 1/17/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: faa53c770d0d6caac471e770c80b4dfd5c5ff603
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98558622"
 ---
 # <a name="about-the-forescout-integration"></a>Om Forescout-integrering
@@ -32,7 +32,7 @@ Integrationen tillhandahåller SOC-analytiker med detaljerad insyn i andra proto
 
 > [!Note]
 > Referenser till CyberX hänvisar till Azure Defender för IoT.
-## <a name="devices"></a>Egenskaper
+## <a name="devices"></a>Enheter
 
 ### <a name="device-visibility-and-management"></a>Synlighet och hantering av enheter
 
@@ -110,7 +110,7 @@ Konfigurera:
    - **Server adress** – ange IP-adressen för den Defender for IoT-sensor som ska frågas av Forescout-enheten.
    - **Åtkomsttoken – ange** den åtkomsttoken som skapats för den Defender för IoT-sensor som ska ansluta till Forescout-enheten. Information om hur du skapar en token finns i [Konfigurera Defender för IoT-plattformen](#set-up-the-defender-for-iot-platform).
 
-1. Välj **Tillämpa**.
+1. Välj **Använd**.
 
 Om du vill att Forescout-plattformen ska kommunicera med en annan sensor:
 

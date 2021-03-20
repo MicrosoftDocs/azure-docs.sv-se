@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741340"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Anpassa livs cykeln för en webb-eller arbets roll i .NET
@@ -37,7 +37,7 @@ När du utökar **RoleEntryPoint** bör du vara medveten om följande beteenden 
 Om din roll inte startar eller om du förbrukar mellan att initiera, upptagen och stoppa tillstånd, kan din kod leda till ett ohanterat undantag i en av livs cykel händelserna varje gång rollen startas om. I det här fallet använder du [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) -händelsen för att fastställa orsaken till undantaget och hanterar det på lämpligt sätt. Din roll kan också returneras från [körnings](/previous-versions/azure/reference/ee772746(v=azure.100)) metoden, vilket gör att rollen startas om. Mer information om distributions tillstånd finns i [vanliga problem som orsakar att roller återanvänds](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Om du använder Azure- **verktygen för Microsoft Visual Studio** för att utveckla ditt program, utökar rollens projekt mallar automatiskt **klassen RoleEntryPoint** åt dig, i *WebRole.cs* -och *WorkerRole.cs* -filerna.
+> Om du använder Azure- **verktygen för Microsoft Visual Studio** för att utveckla ditt program, utökar rollens projekt mallar automatiskt **klassen RoleEntryPoint** åt dig, i filerna *webrole. cs* och *WorkerRole. cs* .
 > 
 > 
 

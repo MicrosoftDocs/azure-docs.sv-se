@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: b5e6a0cd58fca954646640e43a81155822cdba04
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98566998"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>Självstudie: utvärdera Google Cloud Platform (GCP) VM-instanser för migrering till Azure
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure bedömer du dina lokala arbets belastningar
 
 Den här artikeln visar hur du bedömer Google Cloud Platform (GCP) VM-instanser för migrering till Azure med hjälp av verktyget Azure Migrate: Server bedömning.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 - Kör en utvärdering baserat på datorns metadata och konfigurations information.
 - Kör en utvärdering baserat på prestanda data.

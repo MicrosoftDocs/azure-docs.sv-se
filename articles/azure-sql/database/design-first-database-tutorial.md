@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674885"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Självstudie: utforma en Relations databas i Azure SQL Database med SSMS
@@ -56,8 +56,8 @@ En databas i Azure SQL Database skapas med en definierad uppsättning beräkning
 
 Följ de här stegen för att skapa en tom databas.
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs** .
-2. Välj **Databaser** i avsnittet Azure Marketplace på sidan **Nytt** och klicka sedan på **SQL Database** i avsnittet **Aktuellt** .
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
+2. Välj **Databaser** i avsnittet Azure Marketplace på sidan **Nytt** och klicka sedan på **SQL Database** i avsnittet **Aktuellt**.
 
    ![skapa tom databas](./media/design-first-database-tutorial/create-empty-database.png)
 
@@ -70,7 +70,7 @@ Följ de här stegen för att skapa en tom databas.
     | **Resursgrupp** | *yourResourceGroup* | Giltiga resursgruppnamn finns i [Namngivningsregler och begränsningar](/azure/architecture/best-practices/resource-naming). |
     | **Välj källa** | Tom databas | Anger att en tom databas ska skapas. |
 
-4. Klicka på **Server** för att använda en befintlig server eller skapa och konfigurera en ny server. Välj antingen en befintlig server eller klicka på **Skapa en ny server** och fyll i följande information i formuläret **Ny server** :
+4. Klicka på **Server** för att använda en befintlig server eller skapa och konfigurera en ny server. Välj antingen en befintlig server eller klicka på **Skapa en ny server** och fyll i följande information i formuläret **Ny server**:
 
     | Inställning       | Föreslaget värde | Beskrivning |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -81,14 +81,14 @@ Följ de här stegen för att skapa en tom databas.
 
     ![skapa databas-server](./media/design-first-database-tutorial/create-database-server.png)
 
-5. Klicka på **Välj** .
+5. Klicka på **Välj**.
 6. Klicka på **Prisnivå** för att ange tjänstnivå, antalet DTU:er eller V-kärnor och mängden lagring. Du kan undersöka alternativen för antalet DTU:er/V-kärnor och lagringsutrymme som du har tillgång till på varje tjänstnivå.
 
-    När du har valt tjänstnivå, antalet DTU:er eller virtuella kärnor samt mängden lagring klickar du på **Använd** .
+    När du har valt tjänstnivå, antalet DTU:er eller virtuella kärnor samt mängden lagring klickar du på **Använd**.
 
 7. Ange en **sortering** för den tomma databasen (använd standardvärdet för de här självstudierna). Mer information om sorteringar finns i [Sorteringar](/sql/t-sql/statements/collations).
 
-8. Nu när du har fyllt i **SQL Database** -formuläret klickar du på **Skapa** så att databasen etableras. Det här steget kan ta några minuter.
+8. Nu när du har fyllt i **SQL Database**-formuläret klickar du på **Skapa** så att databasen etableras. Det här steget kan ta några minuter.
 
 9. Klicka på **Aviseringar** i verktygsfältet för att övervaka distributionsprocessen.
 
@@ -115,9 +115,9 @@ Azure SQL Database skapar en IP-brandvägg på server nivå. Den här brandvägg
 
 1. Klicka på **Lägg till klient-IP** i verktygsfältet och lägg till din aktuella IP-adress i en ny IP-brandväggsregel. Med en IP-brandväggsregel kan du öppna port 1433 för en enskild IP-adress eller för IP-adressintervall.
 
-1. Klicka på **Spara** . En regel för IP-brandvägg på server nivå skapas för den aktuella IP-adressen som öppnar port 1433 på servern.
+1. Klicka på **Spara**. En regel för IP-brandvägg på server nivå skapas för den aktuella IP-adressen som öppnar port 1433 på servern.
 
-1. Klicka på **OK** och stäng sedan sidan **Brandväggsinställningar** .
+1. Klicka på **OK** och stäng sedan sidan **Brandväggsinställningar**.
 
 Din IP-adress kan nu passera genom IP-brandväggen. Nu kan du ansluta till din databas med SQL Server Management Studio eller något annat verktyg som du själv väljer. Se till att använda serveradmin-kontot som du skapade tidigare.
 
@@ -134,18 +134,18 @@ Använd [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
    | Inställning       | Föreslaget värde | Beskrivning |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servertyp** | Databasmotor | Det här värdet är obligatoriskt. |
-   | **Servernamn** | Fullständigt kvalificerat servernamn | Till exempel *yourserver.database.windows.net* . |
+   | **Servernamn** | Fullständigt kvalificerat servernamn | Till exempel *yourserver.database.windows.net*. |
    | **Autentisering** | SQL Server-autentisering | SQL-autentisering är den enda autentiseringstypen som vi har konfigurerat i den här självstudien. |
    | **Inloggning** | Serveradministratörskontot | Kontot som du angav när du skapade servern. |
    | **Lösenord** | Lösenordet för serveradministratörskontot | Detta är det lösenord som du angav när du skapade servern. |
 
    ![Anslut till server](./media/design-first-database-tutorial/connect.png)
 
-3. Klicka på **Alternativ** i dialogrutan **Anslut till server** . I avsnittet **Anslut till databas** anger du *yourDatabase* så att du ansluter till den här databasen.
+3. Klicka på **Alternativ** i dialogrutan **Anslut till server**. I avsnittet **Anslut till databas** anger du *yourDatabase* så att du ansluter till den här databasen.
 
     ![ansluta till databas på server](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
-4. Klicka på **Anslut** . Fönstret **Object Explorer** öppnas i SSMS.
+4. Klicka på **Anslut**. Fönstret **Object Explorer** öppnas i SSMS.
 
 5. I **Object Explorer** expanderar du **Databaser** och sedan *yourDatabase* för att visa objekten i exempeldatabasen.
 
@@ -160,14 +160,14 @@ Skapa ett databasschema med fyra tabeller som visar ett studenthanteringssystem 
 - Student
 - Kredit
 
-Följande diagram visar hur tabellerna är relaterade till varandra. Vissa av tabellerna hänvisar till kolumner i andra tabeller. Till exempel hänvisar *studenttabellen* till kolumnen *PersonId* i tabellen *Person* . Studera diagrammet för att förstå hur tabellerna i de här självstudierna är relaterade till varandra. Mer information om hur du skapar effektiva databastabeller finns i [Skapa effektiva databastabeller](/previous-versions/tn-archive/cc505842(v=technet.10)). Information om hur du väljer datatyper finns i [Datatyper](/sql/t-sql/data-types/data-types-transact-sql).
+Följande diagram visar hur tabellerna är relaterade till varandra. Vissa av tabellerna hänvisar till kolumner i andra tabeller. Till exempel hänvisar *studenttabellen* till kolumnen *PersonId* i tabellen *Person*. Studera diagrammet för att förstå hur tabellerna i de här självstudierna är relaterade till varandra. Mer information om hur du skapar effektiva databastabeller finns i [Skapa effektiva databastabeller](/previous-versions/tn-archive/cc505842(v=technet.10)). Information om hur du väljer datatyper finns i [Datatyper](/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
 > Du kan också använda [tabelldesignern i SQL Server Management Studio](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools) för att skapa och utforma tabeller.
 
 ![Relationer mellan tabellerna](./media/design-first-database-tutorial/tutorial-database-tables.png)
 
-1. I **Object Explorer** högerklickar du på *yourDatabase* och väljer sedan **Ny fråga** . Ett tomt frågefönster öppnas som är anslutet till databasen.
+1. I **Object Explorer** högerklickar du på *yourDatabase* och väljer sedan **Ny fråga**. Ett tomt frågefönster öppnas som är anslutet till databasen.
 
 2. I frågefönstret skriver du följande fråga om du vill skapa fyra tabeller i databasen:
 
@@ -222,16 +222,16 @@ Följande diagram visar hur tabellerna är relaterade till varandra. Vissa av ta
 
 1. Skapa en mapp med namnet *sampleData* i din mapp för nedladdningar för att lagra exempeldata till din databas.
 
-2. Högerklicka på följande länkar och spara dem i mappen *sampleData* .
+2. Högerklicka på följande länkar och spara dem i mappen *sampleData*.
 
    - [SampleCourseData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCourseData)
    - [SamplePersonData](https://sqldbtutorial.blob.core.windows.net/tutorials/SamplePersonData)
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-3. Öppna en kommandotolk och navigera till mappen *sampleData* .
+3. Öppna en kommandotolk och navigera till mappen *sampleData*.
 
-4. Kör följande kommandon för att infoga exempeldata i tabellerna där du ersätter värdena för *server* , *databas* , *användare* och *lösenord* med värdena för din miljö.
+4. Kör följande kommandon för att infoga exempeldata i tabellerna där du ersätter värdena för *server*, *databas*, *användare* och *lösenord* med värdena för din miljö.
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","

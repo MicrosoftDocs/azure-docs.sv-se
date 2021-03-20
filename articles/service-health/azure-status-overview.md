@@ -4,10 +4,10 @@ description: En global vy över Azure-tjänsternas hälsa
 ms.topic: overview
 ms.date: 06/11/2019
 ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82732558"
 ---
 # <a name="azure-status-overview"></a>Översikt över Azure-status
@@ -30,7 +30,7 @@ Sidan Azure-status visar alltid den senaste hälso informationen, du kan visa ä
 
 Azure-status ger också [en RSS-feed](https://status.azure.com/status/feed/) med ändringar av hälso tillståndet för Azure-tjänster som du kan prenumerera på.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 * Lär dig hur du kan få en mer anpassad vy i Azure Health med [service Health](./service-health-overview.md).
 * Lär dig hur du kan få en mer detaljerad översikt över hälso tillståndet för dina Azure-resurser med [Resource Health](./resource-health-overview.md).

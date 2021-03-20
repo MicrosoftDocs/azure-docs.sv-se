@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 9721ffa807c9adbeb50839113bc64fd23d8eb13f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533731"
 ---
 # <a name="categorize-images-by-subject-matter"></a>Kategorisera bilder efter ämne
@@ -53,7 +53,7 @@ Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du katego
 
 I följande tabell visas en typisk avbildnings uppsättning och kategorin som returneras av Visuellt innehåll för varje bild.
 
-| Avbildning | Kategori |
+| Bild | Kategori |
 |-------|----------|
 | ![Fyra personer träffas tillsammans som en familj](./Images/family_photo.png) | people_group |
 | ![En Puppy som sitter i ett gräs fält](./Images/cute_dog.png) | animal_dog |
