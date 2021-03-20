@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891005"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Lägg till ett polygon-lager till kartan
@@ -60,7 +60,7 @@ Ett linje lager används för att återge konturen för polygoner. I följande k
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Polygon och linje skikt för att lägga till polygon' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lägg till polygon med Azure Maps () på CodePen i Pen- <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>polygonen och linje lagret</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Polygon och linje skikt för att lägga till polygon' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lägg till polygon med Azure Maps () på CodePen i Pen- <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>polygonen och linje lagret</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>Fylla en polygon med ett mönster

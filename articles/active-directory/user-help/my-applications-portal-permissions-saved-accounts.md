@@ -13,10 +13,10 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791094"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Redigera eller återkalla program behörigheter i portalen Mina appar
@@ -30,13 +30,13 @@ När du använder organisations program i portalen **Mina appar** , beviljar du 
 
 ## <a name="manage-app-accounts"></a>Hantera app-konton
 
-Om du vill visa appar som meddelats av dig eller administratören väljer du **...** när du hovrar över en app i portalen för **Mina appar** väljer du **Hantera ditt program** :
+Om du vill visa appar som meddelats av dig eller administratören väljer du **...** när du hovrar över en app i portalen för **Mina appar** väljer du **Hantera ditt program**:
 
 ![Hantera ett program i portalen för Mina appar](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 Den övre delen av behörighets fönstret visar vad du personligen har samtyckt till. Exempel på Apps-behörigheter är möjligheten att komma åt din kalender, dina kontakter eller din kamera.
 
-Du kan återkalla alla behörigheter som du har samtyckt till genom att välja **återkalla behörigheter** , men att ta bort en behörighet kan leda till att vissa av Apps-funktionerna bryts. Om du har problem när du har tagit bort behörigheter eller konton kan du kontakta din organisations supportavdelning om du behöver ytterligare hjälp.
+Du kan återkalla alla behörigheter som du har samtyckt till genom att välja **återkalla behörigheter**, men att ta bort en behörighet kan leda till att vissa av Apps-funktionerna bryts. Om du har problem när du har tagit bort behörigheter eller konton kan du kontakta din organisations supportavdelning om du behöver ytterligare hjälp.
 
 ![Återkalla behörigheter för ett program i portalen för Mina appar](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 

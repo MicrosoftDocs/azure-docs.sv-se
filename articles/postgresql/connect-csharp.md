@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
 ms.openlocfilehash: a06d07a7d54b6399ab5f83c41284fb2fab7217fb
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97360279"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Snabb start: använda .NET (C#) för att ansluta och fråga efter data i Azure Database for PostgreSQL-enskild server
@@ -26,7 +26,7 @@ För den här snabb starten behöver du:
 - Skapa en Azure Database for PostgreSQL enskild server med [Azure Portal](./quickstart-create-server-database-portal.md) <br/> eller [Azure CLI](./quickstart-create-server-database-azure-cli.md) om du inte har något.
 - Baserat på om du använder offentlig eller privat åtkomst utför du **en** av åtgärderna nedan för att aktivera anslutningen.
 
-  |Åtgärd| Anslutningsmetod|Instruktionsguide|
+  |Action| Anslutningsmetod|Instruktionsguide|
   |:--------- |:--------- |:--------- |
   | **Konfigurera brandväggsregler** | Offentliga | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
   | **Konfigurera tjänstens slut punkt** | Offentliga | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1b7f5d1ad671b6d97bd6597386c714b026c02232
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376861"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Skapa, övervaka och hantera Azure-datafabriker med Azure Data Factory .NET SDK
@@ -135,7 +135,7 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
     </configuration>
     ```
 5. I App.Config-filen uppdaterar du värden för **&lt; program- &gt; ID**, **&lt; lösen ord &gt;**, **&lt; prenumerations-ID &gt;** och **&lt; klient-ID &gt;** med dina egna värden.
-6. Lägg till följande **using** -uttryck i **program.cs** -filen i projektet.
+6. Lägg till följande **using** -instruktioner i filen **program. cs** i projektet.
 
     ```csharp
     using System.Configuration;

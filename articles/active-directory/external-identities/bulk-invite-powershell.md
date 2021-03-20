@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892493"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Självstudie: Använd PowerShell för att skicka inbjudan till Azure AD B2B Collaboration-användare
@@ -63,7 +63,7 @@ Gör något av följande, baserat på utdata:
    Install-Module AzureADPreview
    ```
 
-Du får eventuellt en uppmaning om att installera modulen från en ej betrodd lagringsplats. Det här inträffar om du inte tidigare angett PSGallery-lagringsplatsen som en betrodd lagringsplats. Installera modulen genom att trycka på **Y** .
+Du får eventuellt en uppmaning om att installera modulen från en ej betrodd lagringsplats. Det här inträffar om du inte tidigare angett PSGallery-lagringsplatsen som en betrodd lagringsplats. Installera modulen genom att trycka på **Y**.
 
 ### <a name="get-test-email-accounts"></a>Hämta test-e-postkontona
 
@@ -71,13 +71,13 @@ Du behöver två eller flera test-e-postkonton att skicka inbjudningar till. Kon
 
 ## <a name="prepare-the-csv-file"></a>Förbered CSV-filen
 
-Skapa en CSV-fil i Microsoft Excel med listan med de inbjudnas användarnamn och e-postadresser. Se till att inkludera kolumnrubrikerna **Namn** och **InvitedUserEmailAddress** .
+Skapa en CSV-fil i Microsoft Excel med listan med de inbjudnas användarnamn och e-postadresser. Se till att inkludera kolumnrubrikerna **Namn** och **InvitedUserEmailAddress**.
 
 Du kan t.ex. skapa ett kalkylblad i följande format:
 
 ![PowerShell-utdata som visar väntande godkännande av användare](media/tutorial-bulk-invite/AddUsersExcel.png)
 
-Spara filen som **C:\BulkInvite\Invitations.csv** . 
+Spara filen som **C:\BulkInvite\Invitations.csv**. 
 
 Om du inte har Excel kan du skapa en CSV-fil i en textredigerare, t.ex. Anteckningar. Avgränsa varje värde med ett kommatecken och varje rad med ny rad. 
 
@@ -126,7 +126,7 @@ Kontrollera att de inbjudna användarna har lagts till i Azure AD genom att kör
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Du bör se de användare som du har bjudit in i listan, med en User Principal Name (UPN) i formatet *emailaddress* #EXT # \@ *Domain* . Till exempel *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com* , där contoso.onmicrosoft.com är organisationen som du skickade inbjudningarna från.
+Du bör se de användare som du har bjudit in i listan, med en User Principal Name (UPN) i formatet *emailaddress*#EXT # \@ *Domain*. Till exempel *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, där contoso.onmicrosoft.com är organisationen som du skickade inbjudningarna från.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

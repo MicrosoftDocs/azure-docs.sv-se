@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 0aa0dab7b512c85fbbdf374c962e6ee8e1c7d616
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Självstudie: Azure Active Directory integrering med Cezanne HR-programvara
@@ -231,7 +231,7 @@ För att Azure AD-användare ska kunna logga in i Cezanne HR Software måste de 
 
     a. Ange **Intern användare** till AV.
 
-    b. Skriv det första namnet på användaren som **Britta**i text rutan för **förnamn** .  
+    b. Skriv det första namnet på användaren som **Britta** i text rutan för **förnamn** .  
 
     c. I text rutan **efter namn** skriver du det senaste namnet på användaren som **Simon**.
 
@@ -251,15 +251,15 @@ För att Azure AD-användare ska kunna logga in i Cezanne HR Software måste de 
 
 5. Gå till fliken **Enkel inloggning** och markera **Lägg till ny** i området **SAML 2.0 Identifiers** (SAML 2.0-identifierare).
 
-    ![Skärm bild som visar fliken enkel Sign-On där du kan välja Lägg till ny.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Användare")
+    ![Skärm bild som visar fliken enkel Sign-On där du kan välja Lägg till ny.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
 
 6. Välj din identitetsprovider för **Identitetsprovider**. I textrutan för **Användaridentifierare** anger du e-postadressen för kontot Britta Simon.
 
-    ![Skärm bild visar SAML 2,0-identifierarna där du kan välja identitets leverantör och användar-ID.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Användare")
+    ![Skärm bild visar SAML 2,0-identifierarna där du kan välja identitets leverantör och användar-ID.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
 
 7. Klicka på knappen **Spara**.
 
-    ![Skärm bild som visar knappen Spara för användar inställningar.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Användare")
+    ![Skärm bild som visar knappen Spara för användar inställningar.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

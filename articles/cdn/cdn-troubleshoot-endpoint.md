@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192490"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Felsöka Azure CDN slut punkter som returnerar en 404-status kod
@@ -90,9 +90,9 @@ Sidan **konfiguration** av CDN-slutpunkt visas.
 ![Konfigurera sida](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
 
 #### <a name="protocols"></a>Protokoll
-För **protokoll**kontrollerar du att protokollet som används av klienterna är markerat. Eftersom samma protokoll som används av klienten är den som används för att komma åt ursprunget, är det viktigt att du har de ursprungliga portarna konfigurerade korrekt i föregående avsnitt. CDN-slutpunkten lyssnar bara på HTTP-och HTTPS-portarna (80 och 443), oavsett ursprungs portar.
+För **protokoll** kontrollerar du att protokollet som används av klienterna är markerat. Eftersom samma protokoll som används av klienten är den som används för att komma åt ursprunget, är det viktigt att du har de ursprungliga portarna konfigurerade korrekt i föregående avsnitt. CDN-slutpunkten lyssnar bara på HTTP-och HTTPS-portarna (80 och 443), oavsett ursprungs portar.
 
-Vi går tillbaka till vårt hypotetiska exempel med http: \/ /www.contoso.com:8080/file.txt.  Som du kommer ihåg contoso angav du *8080* som http-port, men vi antar också att de har angett *44300* som https-port.  Om de skapade en slut punkt med namnet *contoso*skulle deras CDN-slutpunkts-värdnamn vara *contoso.azureedge.net*.  En begäran om http: \/ /contoso.azureedge.net/file.txt är en HTTP-begäran, så slut punkten använder http på port 8080 för att hämta den från ursprunget.  En säker begäran över HTTPS, https: \/ /contoso.azureedge.net/file.txt, skulle leda till att slut punkten använder https på port 44300 vid hämtning av filen från ursprunget.
+Vi går tillbaka till vårt hypotetiska exempel med http: \/ /www.contoso.com:8080/file.txt.  Som du kommer ihåg contoso angav du *8080* som http-port, men vi antar också att de har angett *44300* som https-port.  Om de skapade en slut punkt med namnet *contoso* skulle deras CDN-slutpunkts-värdnamn vara *contoso.azureedge.net*.  En begäran om http: \/ /contoso.azureedge.net/file.txt är en HTTP-begäran, så slut punkten använder http på port 8080 för att hämta den från ursprunget.  En säker begäran över HTTPS, https: \/ /contoso.azureedge.net/file.txt, skulle leda till att slut punkten använder https på port 44300 vid hämtning av filen från ursprunget.
 
 #### <a name="origin-host-header"></a>Ursprungsvärdadress
 **Ursprungs värd huvudet** är värd huvud värde som skickas till ursprunget med varje begäran.  I de flesta fall bör det vara samma som det **ursprungliga värd namnet** som vi verifierade tidigare.  Ett felaktigt värde i det här fältet ger normalt sett 404 status, men det kan förmodligen orsaka andra 4xx status, beroende på vad ursprunget förväntar sig.
@@ -102,5 +102,5 @@ Slutligen bör vi kontrol lera vår **ursprungs Sök väg**.  Som standard är d
 
 I exempel slut punkten ville vi att alla resurser på lagrings kontot är tillgängliga, så **ursprungs Sök vägen** lämnades tomt.  Det innebär att en begäran till https: \/ /cdndocdemo.azureedge.net/publicblob/lorem.txt resulterar i en anslutning från slut punkten till cdndocdemo.Core.Windows.net som begär */publicblob/lorem.txt*.  På samma sätt kan en begäran om https: \/ /cdndocdemo.azureedge.net/donotcache/status.png resultera i slut punkten som begär */donotcache/status.png* från ursprunget.
 
-Men vad händer om du inte vill använda CDN för varje sökväg i ditt ursprung?  Anta att du bara ville exponera *publicblob* -sökvägen.  Om vi anger */publicblob* i fältet **ursprungs Sök väg** så kommer slut punkten att infoga */publicblob* innan varje begäran görs till ursprunget.  Det innebär att begäran för https: \/ /cdndocdemo.azureedge.net/publicblob/-lorem.txt nu faktiskt tar den begär ande delen av URL: en, */publicblob/lorem.txt*och lägger till */publicblob* i början. Detta resulterar i en begäran om */publicblob/publicblob/lorem.txt* från ursprunget.  Om sökvägen inte matchar en faktisk fil returnerar ursprunget status 404.  Rätt URL för att hämta lorem.txt i det här exemplet skulle faktiskt vara https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Observera att vi inte inkluderar */publicblob* -sökvägen alls, eftersom begär ande delen av URL: en är */lorem.txt* och slut punkten lägger till */publicblob*, vilket resulterar i att */publicblob/lorem.txt* att begäran skickas till ursprunget.
+Men vad händer om du inte vill använda CDN för varje sökväg i ditt ursprung?  Anta att du bara ville exponera *publicblob* -sökvägen.  Om vi anger */publicblob* i fältet **ursprungs Sök väg** så kommer slut punkten att infoga */publicblob* innan varje begäran görs till ursprunget.  Det innebär att begäran för https: \/ /cdndocdemo.azureedge.net/publicblob/-lorem.txt nu faktiskt tar den begär ande delen av URL: en, */publicblob/lorem.txt* och lägger till */publicblob* i början. Detta resulterar i en begäran om */publicblob/publicblob/lorem.txt* från ursprunget.  Om sökvägen inte matchar en faktisk fil returnerar ursprunget status 404.  Rätt URL för att hämta lorem.txt i det här exemplet skulle faktiskt vara https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Observera att vi inte inkluderar */publicblob* -sökvägen alls, eftersom begär ande delen av URL: en är */lorem.txt* och slut punkten lägger till */publicblob*, vilket resulterar i att */publicblob/lorem.txt* att begäran skickas till ursprunget.
 

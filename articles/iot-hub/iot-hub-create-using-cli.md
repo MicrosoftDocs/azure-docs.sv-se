@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659938"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Skapa en IoT-hubb med Azure CLI
@@ -26,7 +26,7 @@ Den här artikeln visar hur du skapar en IoT Hub med Azure CLI.
 
 ## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
-Använd Azure CLI för att skapa en resurs grupp och Lägg sedan till en IoT-hubb.
+Använd Azure CLI för att skapa en resursgrupp och lägg sedan till en IoT-hubb.
 
 1. När du skapar en IoT-hubb måste du skapa den i en resurs grupp. Använd en befintlig resursgrupp eller kör följande [kommando för att skapa en resursgrupp](/cli/azure/resource):
     
@@ -42,7 +42,7 @@ Använd Azure CLI för att skapa en resurs grupp och Lägg sedan till en IoT-hub
    > ```
    >
 
-2. Kör följande [kommando för att skapa en IoT-hubb](/cli/azure/iot/hub#az-iot-hub-create) i resurs gruppen med ett globalt unikt namn för din IoT Hub:
+2. Kör följande [kommando för att skapa en IoT-hubb](/cli/azure/iot/hub#az-iot-hub-create) i din resursgrupp med ett globalt unikt namn för IoT-hubben:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \

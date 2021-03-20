@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192670"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabler för Azure CDN-regel motor
@@ -34,11 +34,11 @@ HTTP-variabler tillhandahåller de metoder genom vilka du kan hämta metadata f�
 I följande tabell beskrivs de HTTP-variabler som stöds. Ett tomt värde returneras när GEO-metadata (till exempel post nummer) inte är tillgängliga för en viss begäran.
 
 
-| Namn | Variabel | Beskrivning | Exempelvärde |
+| Name | Variabel | Beskrivning | Exempelvärde |
 | ---- | -------- | ----------- | ------------ |
 | ASN (beställare) | % {geo_asnum} | Anger beställarens AS-nummer. <br /><br />**Föråldrad:** % {virt_dst_asnum}. <br />Den här variabeln har ersatts av% {geo_asnum}. Även om en regel som använder den här inaktuella variabeln fortsätter att fungera, bör du uppdatera den så att den använder den nya variabeln. | AS15133 |
 | Ort (beställare) | % {geo_city} | Anger beställarens ort. | Los Angeles |
-| Kontinent (beställare) | % {geo_continent} | Anger förfrågans kontinent via dess förkortning. <br />Giltiga värden är: <br />AF: Afrika<br />SOM: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Oceanien<br />SA: södra Amerika<br /><br />**Föråldrad:** % {virt_dst_continent}. <br />Den här variabeln har ersatts av% {geo_continent}. <br />Även om en regel som använder den här inaktuella variabeln fortsätter att fungera, bör du uppdatera den så att den använder den nya variabeln.| E.t. |
+| Kontinent (beställare) | % {geo_continent} | Anger förfrågans kontinent via dess förkortning. <br />Giltiga värden är: <br />AF: Afrika<br />SOM: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Oceanien<br />SA: södra Amerika<br /><br />**Föråldrad:** % {virt_dst_continent}. <br />Den här variabeln har ersatts av% {geo_continent}. <br />Även om en regel som använder den här inaktuella variabeln fortsätter att fungera, bör du uppdatera den så att den använder den nya variabeln.| Ej tillämpligt |
 | Cookie-värde | % {cookie_Cookie} | Returnerar värdet som motsvarar cookie-nyckeln som identifieras av cookie-termen. | Exempel på användning: <br />% {cookie__utma}<br /><br />Exempel värde:<br />111662281.2.10.1222100123 |
 | Land/region (beställare) | % {geo_country} | Anger förfrågans land/region med hjälp av lands-/region koden. <br />**Föråldrad:** % {virt_dst_country}. <br /><br />Den här variabeln har ersatts av% {geo_country}. Även om en regel som använder den här inaktuella variabeln fortsätter att fungera, bör du uppdatera den så att den använder den nya variabeln. | USA |
 | Utsedd marknads region (beställare) | % {geo_dma_code} |Anger förfrågans medie marknad enligt dess regions kod. <br /><br />Det här fältet gäller endast för begär Anden som kommer från USA.| 745 |
@@ -110,7 +110,7 @@ Avgränsarna beskrivs i följande tabell.
 ## <a name="exceptions"></a>Undantag
 I följande tabell beskrivs under vilka omständigheter den angivna texten inte behandlas som en HTTP-variabel.
 
-| Condition (Väderförhållanden) | Beskrivning | Exempel |
+| Villkor | Beskrivning | Exempel |
 | --------- | ----------- | --------|
 | Hoppar över% symbol | Procent symbolen kan undantas genom att använda ett omvänt snedstreck. <br />Exempel värdet till höger kommer att behandlas som ett litteralt värde och inte som en HTTP-variabel.| \%värd |
 | Okända variabler | En tom sträng returneras alltid för okända variabler. | % {unknown_variable} |
@@ -125,7 +125,7 @@ Ett standardvärde kan tilldelas till ett sidhuvud när det uppfyller något av 
 
 I följande tabell beskrivs hur du definierar ett standardvärde.
 
-| Condition (Väderförhållanden) | Syntax | Exempel | Beskrivning |
+| Villkor | Syntax | Exempel | Beskrivning |
 | --------- | ------ | --------| ----------- |
 | Ange ett huvud värde för ett standardvärde när det uppfyller något av följande villkor: <br /><br />– Rubrik saknas <br /><br />– Huvud värde är inställt på NULL.| % {Variable: = värde} | % {http_referrer: = ospecificerad} | Referent-rubriken anges bara till *ospecificerad* när den antingen saknas eller har angetts till null. Ingen åtgärd sker om den har angetts. |
 | Ange ett huvud värde för ett standardvärde när det saknas. | % {Variable = värde} | % {http_referrer = ospecificerad} | Referent-rubriken anges bara till *ospecificerad* när den saknas. Ingen åtgärd sker om den har angetts. |
@@ -229,13 +229,13 @@ Viktig information:
 - Fallet med en mönster plats hållare (till exempel $1) kan ändras genom följande flaggor:
      - U: versaler expanderat värde.
 
-         Exempel på syntax:
+         Exempelsyntax:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
      - L: gemener i det expanderade värdet.
 
-         Exempel på syntax:
+         Exempelsyntax:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$L2.$3:80}`
 

@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530263"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Konfigurera en mobil enhet som en metod för verifiering av två faktorer
@@ -43,7 +43,7 @@ Du kan konfigurera din mobila enhet så att den fungerar som en metod för verif
     >[!Note]
     >Information om hur du använder applösenord med dina äldre appar finns i [Hantera applösenord](multi-factor-authentication-end-user-app-passwords.md). Du behöver bara använda applösenord om du fortsätter att använda äldre appar som inte stöder tvåstegsverifiering.
 
-5. Välj **Done** (Klar).
+5. Välj **Klar**.
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Konfigurera din mobila enhet för att ta emot ett telefonsamtal
 
@@ -64,7 +64,7 @@ Du kan konfigurera din mobila enhet så att den fungerar som en metod för verif
     >[!Note]
     >Information om hur du använder applösenord med dina äldre appar finns i [Hantera applösenord](multi-factor-authentication-end-user-app-passwords.md). Du behöver bara använda applösenord om du fortsätter att använda äldre appar som inte stöder tvåstegsverifiering.
 
-5. Välj **Done** (Klar).
+5. Välj **Klar**.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Självstudie: Azure Active Directory integrering med recept Labs – mobil-och webb testning
@@ -50,11 +50,11 @@ Om du vill konfigurera integreringen av recept Labs – mobil-och webbtest i Azu
 
 **Utför följande steg för att lägga till recept Labs – mobil-och webb testning från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -62,13 +62,13 @@ Om du vill konfigurera integreringen av recept Labs – mobil-och webbtest i Azu
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan skriver du **recept Labs-mobil och webb testning** , väljer **recept Labs – mobil och webbtest** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **recept Labs-mobil och webb testning**, väljer **recept Labs – mobil och webbtest** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
     ![Recept Labs – mobil-och webb testning i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet ska du konfigurera och testa enkel inloggning med Azure AD med recept Labs – mobil-och webb testning baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet ska du konfigurera och testa enkel inloggning med Azure AD med recept Labs – mobil-och webb testning baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i recept Labs-mobil-och webb testning vara upprättad.
 
 Om du vill konfigurera och testa enkel inloggning med recept Labs – mobil-och webb testning i Azure AD måste du slutföra följande Bygg stenar:
@@ -94,7 +94,7 @@ Utför följande steg för att konfigurera enkel inloggning med recept Labs – 
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -140,13 +140,13 @@ Utför följande steg för att konfigurera enkel inloggning med recept Labs – 
 
     b. Markera kryss rutan **Tillåt just-in-Time-etablering** .
 
-    c. Klicka på **Spara** .
+    c. Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -158,32 +158,32 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du `brittasimon@yourcompanydomain.extension`  
     Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till recept Labs – mobil-och webb testning.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **recept Labs-mobil och webb testning** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **recept Labs-mobil och webb testning**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **recept Labs – mobil-och webb testning** .
+2. I listan program väljer du **recept Labs – mobil-och webb testning**.
 
     ![Länken recept Labs – Mobile och Web testing i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -191,7 +191,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-sauce-labs---mobile-and-web-testing-test-user"></a>Skapa recept Labs – test användare för mobil-och webb testning
 

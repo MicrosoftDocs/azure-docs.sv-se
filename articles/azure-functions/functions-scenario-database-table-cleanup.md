@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/02/2019
 ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88207255"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Använd Azure Functions för att ansluta till en Azure SQL Database
@@ -76,7 +76,7 @@ Nu kan du lägga till C#-funktions koden som ansluter till din SQL Database.
 
 1. I Solution Explorer högerklickar du på programmets Function-projekt och väljer **Lägg till**  >  **ny Azure-funktion**.
 
-1. När du har valt mallen **Azure Functions** väljer du `DatabaseCleanup.cs` **Lägg till**det nya objektet.
+1. När du har valt mallen **Azure Functions** väljer du `DatabaseCleanup.cs` **Lägg till** det nya objektet.
 
 1. I dialog rutan **ny Azure Function** väljer du **timer-utlösare** och sedan **OK**. Den här dialog rutan skapar en kod fil för den timer-aktiverade funktionen.
 

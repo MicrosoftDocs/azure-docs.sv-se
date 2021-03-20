@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/03/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99539221"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuerad spårning och korrelation genom Service Bus meddelanden
@@ -22,7 +22,7 @@ Microsoft Azure Service Bus Messaging har definierat nytto Last egenskaper som p
 Protokollet baseras på [http-korrelations protokollet](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
 # <a name="azuremessagingservicebus-sdk-latest"></a>[Azure. Messaging. Service Bus SDK (senaste)](#tab/net-standard-sdk-2)
-| Egenskapens namn        | Description                                                 |
+| Egenskapens namn        | Beskrivning                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Unikt ID för ett externt anrop från producent till kön. Se [begärande-ID i HTTP-protokollet](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) för att få rationella, överväganden och format |
 
@@ -195,7 +195,7 @@ I närvaro av flera `DiagnosticSource` lyssnare för samma källa räcker det ba
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
-| Egenskapens namn        | Description                                                 |
+| Egenskapens namn        | Beskrivning                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Unikt ID för ett externt anrop från producent till kön. Se [begärande-ID i HTTP-protokollet](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) för att få rationella, överväganden och format |
 |  Correlation-Context | Åtgärds kontext, som sprids över alla tjänster som ingår i åtgärds bearbetning. Mer information finns i [korrelations kontext i HTTP-protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |

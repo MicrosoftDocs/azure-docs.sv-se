@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81730113"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Schemalägga jobb på flera enheter
@@ -182,7 +182,7 @@ I följande lista visas egenskaper och motsvarande beskrivningar, som du kan anv
 | --- | --- |
 | **jobId** |ID för programbegäran för jobbet. |
 | **/St** |Den angivna start tiden för programmet (ISO-8601) för jobbet. |
-| **endTime** |IoT Hub det angivna datumet (ISO-8601) för när jobbet har slutförts. Endast giltigt efter att jobbet har nått status ' slutfört '. |
+| **Slut** |IoT Hub det angivna datumet (ISO-8601) för när jobbet har slutförts. Endast giltigt efter att jobbet har nått status ' slutfört '. |
 | **bastyp** |Typer av jobb: |
 | | **scheduleUpdateTwin**: ett jobb som används för att uppdatera en uppsättning av önskade egenskaper eller taggar. |
 | | **scheduleDeviceMethod**: ett jobb som används för att anropa en enhets metod på en uppsättning enheter. |

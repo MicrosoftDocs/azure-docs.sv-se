@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375212"
 ---
 # <a name="data-management-gateway"></a>Gateway för datahantering
@@ -361,7 +361,7 @@ Följande tabell innehåller beskrivningar av kolumner i listan **Gateway-noder*
 
 Övervaknings egenskap | Beskrivning
 :------------------ | :----------
-Namn | Namnet på den logiska gatewayen och noder som är associerade med gatewayen. Node är en lokal Windows-dator där gatewayen är installerad. Information om hur du har fler än en nod (upp till fyra noder) i en enda logisk Gateway finns i [Data Management Gateway-hög tillgänglighet och skalbarhet](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Namnet på den logiska gatewayen och noder som är associerade med gatewayen. Node är en lokal Windows-dator där gatewayen är installerad. Information om hur du har fler än en nod (upp till fyra noder) i en enda logisk Gateway finns i [Data Management Gateway-hög tillgänglighet och skalbarhet](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Status för den logiska gatewayen och gateway-noderna. Exempel: online/offline/begränsat/osv. Information om dessa statusar finns i avsnittet om [Gateway-status](#gateway-status) .
 Version | Visar versionen för den logiska gatewayen och varje gateway-nod. Versionen av den logiska gatewayen fastställs baserat på den version av majoriteten av noderna i gruppen. Om det finns noder med olika versioner i installations programmet för den logiska gatewayen fungerar bara noderna med samma versions nummer som den logiska gatewayen. Andra är i begränsat läge och måste uppdateras manuellt (endast om automatisk uppdatering Miss lyckas).
 Tillgängligt minne | Tillgängligt minne på en gateway-nod. Det här värdet är en nära real tids ögonblicks bild.

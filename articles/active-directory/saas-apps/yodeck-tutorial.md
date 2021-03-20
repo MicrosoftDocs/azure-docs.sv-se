@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Självstudie: Azure Active Directory integrering med Yodeck
@@ -49,11 +49,11 @@ Om du vill konfigurera integreringen av Yodeck i Azure AD måste du lägga till 
 
 **Utför följande steg för att lägga till Yodeck från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Om du vill konfigurera integreringen av Yodeck i Azure AD måste du lägga till 
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **Yodeck** , väljer **Yodeck** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **Yodeck**, väljer **Yodeck** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![Yodeck i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Yodeck baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Yodeck baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Yodeck upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med Yodeck i Azure AD måste du slutföra följande Bygg stenar:
@@ -93,7 +93,7 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -103,7 +103,7 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
     I textrutan **Identifierare** skriver du en URL: `https://app.yodeck.com/api/v1/account/metadata/`
 
-5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Skärm bild som visar en grundläggande SAML-konfiguration med fil länken Ladda upp metadata.](common/both-preintegrated-signon.png)
 
@@ -115,7 +115,7 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
 ### <a name="configure-yodeck-single-sign-on"></a>Konfigurera Yodeck Single Sign-On
 
-1. Om du vill automatisera konfigurationen i **Yodeck** måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget** .
+1. Om du vill automatisera konfigurationen i **Yodeck** måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
 
     ![Skärm bild som visar knappen Installera tillägg.](./media/target-process-tutorial/install_extension.png)
 
@@ -127,7 +127,7 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
 1. Logga in på din Yodeck-företags webbplats som administratör i ett annat webbläsarfönster.
 
-1. Klicka på alternativ för **användar inställningar** i det övre högra hörnet på sidan och välj **konto inställningar** .
+1. Klicka på alternativ för **användar inställningar** i det övre högra hörnet på sidan och välj **konto inställningar**.
 
     ![Skärm bild som visar med konto inställningar valt för användaren.](./media/yodeck-tutorial/configure1.png)
 
@@ -135,19 +135,19 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
     ![Skärm bild visar fliken SAML där du kan utföra de här stegen.](./media/yodeck-tutorial/configure2.png)
 
-    a. Välj **Importera från URL** .
+    a. Välj **Importera från URL**.
 
-    b. I text rutan **URL** klistrar du in URL-värdet för **app Federation-Metadata** , som du har kopierat från Azure Portal och klickar på **Importera** .
+    b. I text rutan **URL** klistrar du in URL-värdet för **app Federation-Metadata** , som du har kopierat från Azure Portal och klickar på **Importera**.
     
     c. När URL: en för **appens Federation Metadata** har importer ATS fylls de återstående fälten i automatiskt.
 
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -159,31 +159,31 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Yodeck.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **Yodeck** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Yodeck**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **Yodeck** .
+2. I listan program väljer du **Yodeck**.
 
     ![Yodeck-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -191,7 +191,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-yodeck-test-user"></a>Skapa Yodeck test användare
 
@@ -201,7 +201,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Yodeck måste de tillh
 
 1. Logga in på din Yodeck-företags webbplats som administratör.
 
-2. Klicka på alternativ för **användar inställningar** i det övre högra hörnet på sidan och välj **användare** .
+2. Klicka på alternativ för **användar inställningar** i det övre högra hörnet på sidan och välj **användare**.
 
     ![Skärm bild som visar användare som har marker ATS för användaren.](./media/yodeck-tutorial/user1.png)
 
@@ -213,15 +213,15 @@ Om du vill att Azure AD-användare ska kunna logga in på Yodeck måste de tillh
 
     ![Skärm bild som visar fliken Användar information där du kan utföra de här stegen.](./media/yodeck-tutorial/user3.png)
 
-    a. I text rutan **förnamn** skriver du det första namnet på användaren som **Britta** .
+    a. I text rutan **förnamn** skriver du det första namnet på användaren som **Britta**.
 
-    b. I textrutan **Efternamn** skriver du efternamnet: **Simon** .
+    b. I textrutan **Efternamn** skriver du efternamnet: **Simon**.
 
     c. I textrutan **E-post** skriver du e-postadressen för användaren: brittasimon@contoso.com.
 
     d. Välj lämpligt **konto behörighets** alternativ enligt organisationens behov.
     
-    e. Klicka på **Spara** .
+    e. Klicka på **Spara**.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

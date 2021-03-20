@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92093658"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Snabb start: dirigera Blob Storage-händelser till webb slut punkt med hjälp av en ARM-mall
@@ -89,5 +89,5 @@ Mer information om Azure Resource Manager-mallar finns i följande artiklar:
 
 * [Dokumentation om Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Definiera resurser i Azure Resource Manager-mallar](/azure/templates/)
-* [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/)
+* [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid mallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

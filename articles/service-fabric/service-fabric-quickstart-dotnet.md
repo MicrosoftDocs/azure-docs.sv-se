@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 06/26/2019
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575898"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Snabbstart: Distribuera en .NET-app (tillförlitliga tjänster) till Service Fabric
@@ -28,7 +28,7 @@ Med det här programmet får du lära dig att:
 * Skala ut programmet över flera noder
 * Utföra en löpande programuppgradering
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
@@ -168,7 +168,7 @@ Gör så här om du vill uppgradera programmet:
 
     Du kan fortfarande använda programmet när uppgraderingen körs. Eftersom du har två instanser av tjänsten som körs i klustret kan en del förfrågningar få en uppgraderad version av programmet, medan andra kan få den gamla versionen.
 
-11. Öppna webbläsaren och bläddra till klusteradressen på port 19080. Exempelvis `http://localhost:19080/`.
+11. Öppna webbläsaren och bläddra till klusteradressen på port 19080. Till exempel `http://localhost:19080/`.
 12. Klicka på noden **Program** i trädvyn och sedan **Pågående uppgraderingar** i det högra fönstret. Du kan se hur uppgraderingen går igenom uppgraderingsdomänerna i klustret och ser till att varje domän fungerar som den ska innan den går vidare till nästa. En uppgraderingsdomän i förloppsfältet visas som grön när domänens hälsotillstånd har verifierats.
     ![Uppgraderingsvy i Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

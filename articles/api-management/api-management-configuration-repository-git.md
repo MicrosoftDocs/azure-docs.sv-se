@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400371"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Så gör du för att spara och konfigurera din API Management-tjänstkonfiguration med Git
@@ -96,7 +96,7 @@ Om du får fel meddelanden kan du försöka `git clone` att ändra kommandot så
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-Om detta är ett fel kan du prova URL: en och ange lösen ordets del av kommandot. Ett snabbt sätt att göra detta är att öppna Visual Studio och utfärda följande kommando i kommando **tolken**. Öppna **direkt fönstret**genom att öppna en lösning eller ett projekt i Visual Studio (eller skapa ett nytt tomt konsol program) och välj **Windows**, **omedelbart** från **fel söknings** menyn.
+Om detta är ett fel kan du prova URL: en och ange lösen ordets del av kommandot. Ett snabbt sätt att göra detta är att öppna Visual Studio och utfärda följande kommando i kommando **tolken**. Öppna **direkt fönstret** genom att öppna en lösning eller ett projekt i Visual Studio (eller skapa ett nytt tomt konsol program) och välj **Windows**, **omedelbart** från **fel söknings** menyn.
 
 ```
 ?System.Net.WebUtility.UrlEncode("password from the Azure portal")

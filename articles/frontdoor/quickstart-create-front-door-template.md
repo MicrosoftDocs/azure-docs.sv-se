@@ -15,10 +15,10 @@ ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
 ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896063"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Snabb start: skapa en front dörr med en ARM-mall
@@ -27,7 +27,7 @@ I den här snabb starten beskrivs hur du använder en Azure Resource Manager mal
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
 
@@ -69,11 +69,11 @@ En Azure-resurs har definierats i mallen:
 
 1. Kopiera PowerShell-skriptet genom att välja **Kopiera** från föregående kodblock.
 
-1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in** .
+1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in**.
 
 1. Ange värdena.
 
-    Mallen för distribution skapar en frontend-dörr med en enda server del. I det här exemplet `microsoft.com` används som **backendAddress** .
+    Mallen för distribution skapar en frontend-dörr med en enda server del. I det här exemplet `microsoft.com` används som **backendAddress**.
 
     Resurs gruppens namn är projekt namnet med **RG** tillagt.
 
@@ -96,7 +96,7 @@ Azure PowerShell används för att distribuera mallen. Förutom Azure PowerShell
 
 1. Välj den främre dörren som du skapade tidigare och klicka på **klient dels värd** länken. Länken öppnar en webbläsare som omdirigerar dig till ditt FQDN-namn som du definierade när du skapade.
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Start dörr Resource Manager-mall PowerShell-distribution av utdata":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Översikt över front dörrs portalen":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360002"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure Portal
@@ -41,7 +41,7 @@ När du har aktiverat hanterad identitet på en Azure-resurs, till exempel en vi
 
 2. Navigera till önskad resurs där du vill ändra åtkomst kontrollen. I det här exemplet ger vi en virtuell Azure-dator åtkomst till ett lagrings konto, så vi går till lagrings kontot.
 
-3. Välj sidan **åtkomst kontroll (IAM)** i resursen och välj **+ Lägg till roll tilldelning**. Ange sedan **rollen** , **tilldela åtkomst till** och ange motsvarande **prenumeration**. Under Sök villkors ytan bör du se resursen. Välj resursen och välj **Spara**. 
+3. Välj sidan **åtkomst kontroll (IAM)** i resursen och välj **+ Lägg till roll tilldelning**. Ange sedan **rollen**, **tilldela åtkomst till** och ange motsvarande **prenumeration**. Under Sök villkors ytan bör du se resursen. Välj resursen och välj **Spara**. 
 
    ![Skärm bild för åtkomst kontroll (IAM)](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 81949736603d22cac779d08d14bd6db65065d730
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Självstudie: Azure Active Directory integrering med LockPath-indikering
@@ -30,7 +30,7 @@ Att integrera LockPath-indikering med Azure AD ger följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med LockPath-indikering behöver du följande objekt:
 
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning för Azure AD med LockPath-indikering:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på LockPath-sidan för program integrering i **LockPath Keylight** .
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på LockPath-sidan för program integrering i  .
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -131,11 +131,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Lo
 
     a. Logga in på ditt LockPath-konto som administratör.
 
-    b. I menyn högst upp klickar du på **person**och väljer sedan inställningar för att ställa in en **indikering**.
+    b. I menyn högst upp klickar du på **person** och väljer sedan inställningar för att ställa in en **indikering**.
 
     ![Skärm bild som visar ikonen "person" som är markerad och "indikering för att konfigureras" med den nedrullningsbara List rutan.](./media/keylight-tutorial/401.png)
 
-    c. Klicka på **SAML**i trädvyn till vänster.
+    c. Klicka på **SAML** i trädvyn till vänster.
 
     ![Skärm bild som visar "S A M L" som marker ATS i trädvyn.](./media/keylight-tutorial/402.png)
 
@@ -165,7 +165,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Lo
 
     i. Ange **säkerhets roll för automatisk etablering**, Välj **Standard användare med SAML**.
 
-    j. Ange **Automatisk etablering av säkerhets**konfiguration, Välj **standard användar konfiguration**.
+    j. Ange **Automatisk etablering av säkerhets** konfiguration, Välj **standard användar konfiguration**.
 
     k. I text rutan **email-attribut** skriver du `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
@@ -203,7 +203,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till LockPath-ljus.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **LockPath-indikering**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **LockPath-indikering**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

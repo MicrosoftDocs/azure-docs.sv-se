@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: d660e62ea293bd3cc377b95612cfaf41a9f1cd6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793372"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Använda klient biblioteket för Elastic Database med dapper
@@ -23,7 +23,7 @@ ms.locfileid: "92793372"
 
 Det här dokumentet är för utvecklare som är beroende av dapper för att skapa program, men som även vill använda [elastiska databas verktyg](elastic-scale-introduction.md) för att skapa program som implementerar horisontell partitionering för att skala ut data nivån.  Det här dokumentet illustrerar ändringarna i dapper-baserade program som behövs för att integrera med Elastic Database-verktyg. Vårt fokus är att skapa en elastisk databas Shard hantering och data beroende routning med dapper. 
 
-**Exempel kod** : [elastiska databas verktyg för Azure SQL Database-dapper-integrering](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Exempel kod**: [elastiska databas verktyg för Azure SQL Database-dapper-integrering](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Det är enkelt att integrera **dapper** och **DapperExtensions** med klient biblioteket för Elastic Database för Azure SQL Database. Dina program kan använda data beroende routning genom att ändra skapandet och öppningen av nya [SQLConnection](/dotnet/api/system.data.sqlclient.sqlconnection) -objekt för att använda [OpenConnectionForKey](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) -anropet från [klient biblioteket](/previous-versions/azure/dn765902(v=azure.100)). Detta begränsar ändringar i programmet till endast de nya anslutningar som skapas och öppnas. 
 
@@ -39,7 +39,7 @@ En annan fördel med dapper och även DapperExtensions är att programmet styr s
 För att hämta dapper-sammansättningarna, se [dapper dot net](https://www.nuget.org/packages/Dapper/). För dapper-tilläggen, se [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>En snabb titt på klient biblioteket för Elastic Database
-Med klient biblioteket för Elastic Database definierar du partitioner för dina program data som kallas *shardletar* , mappar dem till databaser och identifierar dem med *horisontell partitionering-nycklar* . Du kan ha så många databaser som du behöver och distribuera shardletar över dessa databaser. Mappningen av horisontell partitionering-nyckel värden till databaserna lagras av en Shard-mappning från bibliotekets API: er. Den här funktionen kallas **Shard Map Management** . Shard-kartan fungerar också som koordinator för databas anslutningar för begär Anden som har en horisontell partitionering-nyckel. Den här funktionen kallas för **data beroende routning** .
+Med klient biblioteket för Elastic Database definierar du partitioner för dina program data som kallas *shardletar*, mappar dem till databaser och identifierar dem med *horisontell partitionering-nycklar*. Du kan ha så många databaser som du behöver och distribuera shardletar över dessa databaser. Mappningen av horisontell partitionering-nyckel värden till databaserna lagras av en Shard-mappning från bibliotekets API: er. Den här funktionen kallas **Shard Map Management**. Shard-kartan fungerar också som koordinator för databas anslutningar för begär Anden som har en horisontell partitionering-nyckel. Den här funktionen kallas för **data beroende routning**.
 
 ![Shard Maps och data beroende routning][1]
 
@@ -50,11 +50,11 @@ I stället för att använda det traditionella sättet att skapa anslutningar f�
 ### <a name="requirements-for-dapper-integration"></a>Krav för dapper-integrering
 När du arbetar med både klient biblioteket för Elastic Database och dapper-API: erna, vill du behålla följande egenskaper:
 
-* **Skala ut** : vi vill lägga till eller ta bort databaser från data nivån i shardade-programmet vid behov för programmets kapacitets krav. 
-* **Konsekvens** : eftersom programmet skalas ut med horisontell partitionering måste du utföra data beroende routning. Vi vill använda de data beroende Dirigerings funktionerna i biblioteket. I synnerhet vill du behålla de verifierings-och konsekvens garantier som tillhandahålls av anslutningar som har frigörs genom Shard Map Manager för att undvika fel eller felaktiga frågeresultat. Detta säkerställer att anslutningar till en specifik shardlet avvisas eller stoppas om shardlet för närvarande flyttas till en annan Shard med hjälp av API: er för delad/sammanslagning.
-* **Objekt mappning** : vi vill behålla bekvämligheten för de mappningar som tillhandahålls av dapper för att översätta mellan klasser i programmet och de underliggande databas strukturerna. 
+* **Skala ut**: vi vill lägga till eller ta bort databaser från data nivån i shardade-programmet vid behov för programmets kapacitets krav. 
+* **Konsekvens**: eftersom programmet skalas ut med horisontell partitionering måste du utföra data beroende routning. Vi vill använda de data beroende Dirigerings funktionerna i biblioteket. I synnerhet vill du behålla de verifierings-och konsekvens garantier som tillhandahålls av anslutningar som har frigörs genom Shard Map Manager för att undvika fel eller felaktiga frågeresultat. Detta säkerställer att anslutningar till en specifik shardlet avvisas eller stoppas om shardlet för närvarande flyttas till en annan Shard med hjälp av API: er för delad/sammanslagning.
+* **Objekt mappning**: vi vill behålla bekvämligheten för de mappningar som tillhandahålls av dapper för att översätta mellan klasser i programmet och de underliggande databas strukturerna. 
 
-Följande avsnitt innehåller vägledning för de här kraven för program som baseras på **dapper** och **DapperExtensions** .
+Följande avsnitt innehåller vägledning för de här kraven för program som baseras på **dapper** och **DapperExtensions**.
 
 ## <a name="technical-guidance"></a>Teknisk vägledning
 ### <a name="data-dependent-routing-with-dapper"></a>Data beroende routning med dapper

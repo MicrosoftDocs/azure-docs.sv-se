@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893676"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med SD-element
@@ -47,7 +47,7 @@ Om du vill konfigurera integrering av SD-element i Azure AD måste du lägga til
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **SD-element** i sökrutan.
 1. Välj **SD-element** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
@@ -55,7 +55,7 @@ Om du vill konfigurera integrering av SD-element i Azure AD måste du lägga til
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sd-elements"></a>Konfigurera och testa enkel inloggning med Azure AD för SD-element
 
-Konfigurera och testa Azure AD SSO med SD-element med hjälp av en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SD-element.
+Konfigurera och testa Azure AD SSO med SD-element med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SD-element.
 
 Om du vill konfigurera och testa Azure AD SSO med SD-element slutför du följande Bygg stenar:
 
@@ -70,8 +70,8 @@ Om du vill konfigurera och testa Azure AD SSO med SD-element slutför du följan
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. På sidan för **SD-elementens** program integration i [Azure Portal](https://portal.azure.com/), letar du upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. På sidan för **SD-elementens** program integration i [Azure Portal](https://portal.azure.com/), letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -91,7 +91,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig program med SD-element att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
 
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | --- | --- |
     | e-post |user.mail |
     | förnamn |user.givenname |
@@ -109,21 +109,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till SD-element.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan program väljer du **SD-element** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **SD-element**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -141,7 +141,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på dina SD-element i ett annat webbläsarfönster som administratör.
 
-1. I menyn högst upp klickar du på **system** och sedan **på enkel inloggning** .
+1. I menyn högst upp klickar du på **system** och sedan **på enkel inloggning**.
 
     ![Skärm bild som visar "system" markerat och "enkel inloggning" valt i list rutan.](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
@@ -149,13 +149,13 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Konfigurera enkel inloggning](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
-    a. Som **SSO-typ** väljer du **SAML** .
+    a. Som **SSO-typ** väljer du **SAML**.
 
-    b. I text rutan för **entitets-ID för identitetsprovider** klistrar du in värdet för **Azure AD-identifierare** , som du har kopierat från Azure Portal.
+    b. I text rutan för **entitets-ID för identitetsprovider** klistrar du in värdet för **Azure AD-identifierare**, som du har kopierat från Azure Portal.
 
-    c. Klistra in värdet för **inloggnings-URL** : en som du har kopierat från Azure Portal i text rutan **identitets leverantörens enskild Sign-On** .
+    c. Klistra in värdet för **inloggnings-URL**: en som du har kopierat från Azure Portal i text rutan **identitets leverantörens enskild Sign-On** .
 
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
 ### <a name="create-sd-elements-test-user"></a>Skapa SD-element testa användare
 
@@ -165,11 +165,11 @@ Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i 
 
 1. Logga in på dina SD-element på företags platsen som administratör i ett webbläsarfönster.
 
-1. Klicka på **användar hantering** på menyn längst upp och sedan på **användare** .
+1. Klicka på **användar hantering** på menyn längst upp och sedan på **användare**.
 
     ![Skärm bild som visar "användare" som marker ATS från List rutan "användar hantering".](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
-1. Klicka på **Lägg till ny användare** .
+1. Klicka på **Lägg till ny användare**.
 
     ![Skärm bild som visar knappen "Lägg till ny användare" vald.](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
@@ -179,13 +179,13 @@ Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i 
 
     a. I text rutan **e-post** anger du e-postmeddelandet för användaren **b.simon@contoso.com** .
 
-    b. I text rutan för det **första namnet** anger du det första namnet på användaren, t **. ex. B.** ..
+    b. I text rutan för det **första namnet** anger du det första namnet på användaren, t **. ex. B.**..
 
-    c. I text rutan **efter namn** anger du det senaste namnet på användaren som **Simon** .
+    c. I text rutan **efter namn** anger du det senaste namnet på användaren som **Simon**.
 
-    d. Som **roll** väljer du **användare** .
+    d. Som **roll** väljer du **användare**.
 
-    e. Klicka på **Skapa användare** .
+    e. Klicka på **Skapa användare**.
 
 ## <a name="test-sso"></a>Testa SSO 
 

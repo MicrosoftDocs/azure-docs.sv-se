@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91532030"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Självstudie: Övervaka dina Service Fabric-program med ELK
@@ -29,7 +29,7 @@ I den här självstudieserien får du lära du dig att:
 > * Konfigurera övervakning och diagnostik för programmet
 > * [Konfigurera CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 

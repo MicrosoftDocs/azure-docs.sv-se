@@ -12,10 +12,10 @@ ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792182"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Skapa, konfigurera och hantera elastiska jobb (för hands version)
@@ -42,7 +42,7 @@ Om du inte har använt elastiska jobb kan du [läsa mer om jobb automatiserings 
 6. Kör ett jobb med [PowerShell](elastic-jobs-powershell-create.md#run-the-job) eller [T-SQL](elastic-jobs-tsql-create-manage.md#begin-unplanned-execution-of-a-job).
 7. Övervaka jobb körnings status med hjälp av portalen, [PowerShell](elastic-jobs-powershell-create.md#monitor-status-of-job-executions) eller [T-SQL](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status).
 
-   ![Portalen](./media/elastic-jobs-overview/elastic-job-executions-overview.png)
+   ![Portal](./media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
 ## <a name="credentials-for-running-jobs"></a>Autentiseringsuppgifter för att köra jobb
 
@@ -50,15 +50,15 @@ Jobbet använder [databasbegränsade autentiseringsuppgifter](/sql/t-sql/stateme
 
 Att konfigurera rätt autentiseringsuppgifter för att köra ett jobb kan vara något förvirrande, så tänk på följande punkter:
 
-- Autentiseringsuppgifterna för databasens omfång måste skapas i *jobb databasen* .
+- Autentiseringsuppgifterna för databasens omfång måste skapas i *jobb databasen*.
 - **Alla mål databaser måste ha en inloggning med [tillräckliga behörigheter](/sql/relational-databases/security/permissions-database-engine) för att jobbet ska kunna slutföras** ( `jobuser` i diagrammet nedan).
 - Autentiseringsuppgifter kan återanvändas mellan jobb och lösen ord för autentiseringsuppgifter krypteras och skyddas från användare som har skrivskyddad åtkomst till jobb objekt.
 
-Följande bild är utformad för att underlätta förståelse och konfiguration av rätt autentiseringsuppgifter för jobb. **Kom ihåg att skapa användaren i varje databas (alla *målanvändardatabaser* ) som jobbet behöver köras mot** .
+Följande bild är utformad för att underlätta förståelse och konfiguration av rätt autentiseringsuppgifter för jobb. **Kom ihåg att skapa användaren i varje databas (alla *målanvändardatabaser*) som jobbet behöver köras mot**.
 
 ![Autentiseringsuppgifter för elastiska jobb](./media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>Metodtips för säkerhet
+## <a name="security-best-practices"></a>Rekommenderade säkerhetsmetoder
 
 Några metodtips för att arbeta med elastiska jobb:
 

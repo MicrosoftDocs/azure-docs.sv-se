@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369165"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Översikt över Azure Security benchmark (v2)
@@ -58,7 +58,7 @@ Varje rekommendation innehåller följande information:
 
 Vi välkomnar din detaljerade feedback och aktivt deltagande i Azures säkerhets benchmark-ansträngning. Om du vill ge Azures informations benchmark-grupp direkt inmatat fyller du i formuläret på https://aka.ms/AzSecBenchmark
 
-## <a name="download"></a>Hämta
+## <a name="download"></a>Ladda ned
 
 Du kan ladda ned Azures säkerhets benchmark i [kalkyl blads format](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark).
 
