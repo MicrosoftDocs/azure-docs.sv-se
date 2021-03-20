@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96339616"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Lägg till komplettera automatiskt och förslag till klient program med Azure Kognitiv sökning
@@ -117,7 +117,7 @@ $(function () {
 });
 ```
 
-I `source` beskrivs funktionen Komplettera automatiskt i JQUERY UI där du kan hämta listan över objekt som ska visas under sökrutan. Eftersom projektet är ett MVC-projekt anropas funktionen **föreslå** i **HomeController.cs** som innehåller logiken för att returnera fråge förslag. Den här funktionen skickar också några parametrar för att kontrol lera högdagrar, fuzzy Matching och term. JavaScript-API:et för automatisk komplettering lägger till term-parametern.
+I `source` beskrivs funktionen Komplettera automatiskt i JQUERY UI där du kan hämta listan över objekt som ska visas under sökrutan. Eftersom projektet är ett MVC-projekt anropas funktionen **föreslå** i **HomeController. cs** som innehåller logiken för att returnera fråge förslag. Den här funktionen skickar också några parametrar för att kontrol lera högdagrar, fuzzy Matching och term. JavaScript-API:et för automatisk komplettering lägger till term-parametern.
 
 Det `minLength: 3` säkerställer att rekommendationerna endast visas när det finns minst tre tecken i sökrutan.
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Funktionen föreslå
 
-Om du använder C# och ett MVC-program är **HomeController.cs** -filen under katalogen kontrollanter där du kan skapa en klass för föreslagna resultat. I .NET baseras en förslags funktion på [metoden SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync). Mer information om .NET SDK finns i [så här använder du Azure kognitiv sökning från ett .NET-program](search-howto-dotnet-sdk.md).
+Om du använder C# och ett MVC-program är **HomeController. cs** under katalogen controllers där du kan skapa en klass för föreslagna resultat. I .NET baseras en förslags funktion på [metoden SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync). Mer information om .NET SDK finns i [så här använder du Azure kognitiv sökning från ett .NET-program](search-howto-dotnet-sdk.md).
 
 `InitSearch`Metoden skapar en autentiserad HTTP-index-klient till Azure kognitiv sökning-tjänsten. Egenskaperna för [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) -klassen avgör vilka fält som genomsöks och returneras i resultaten, antalet matchningar och om fuzzy Matching används. 
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Funktionen Komplettera automatiskt
 
-Autoavsluta baseras på AutocompleteAsync- [metoden](/dotnet/api/azure.search.documents.searchclient.autocompleteasync). Som med förslag skulle det här kod blocket gå till filen **HomeController.cs** .
+Autoavsluta baseras på AutocompleteAsync- [metoden](/dotnet/api/azure.search.documents.searchclient.autocompleteasync). Som med förslag kan det här kod blocket placeras i filen **HomeController. cs** .
 
 ```csharp
 public async Task<ActionResult> AutoCompleteAsync(string term)

@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097591"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Alternativ för att migrera dina lokala eller molnbaserade data till Azure Cosmos DB
@@ -25,19 +25,19 @@ Du kan läsa in data från olika data källor till Azure Cosmos DB. Eftersom Azu
 
 För att stödja migrations vägar från olika källor till de olika Azure Cosmos DB-API: erna finns det flera lösningar som ger specialiserad hantering för varje sökväg för migrering. Det här dokumentet listar de tillgängliga lösningarna och beskriver deras fördelar och begränsningar.
 
-## <a name="factors-affecting-the-choice-of-migration-tool"></a>Faktorer som påverkar valet av Migreringsverktyg
+## <a name="factors-affecting-the-choice-of-migration-tool"></a>Faktorer som påverkar valet av migreringsverktyg
 
-Följande faktorer avgör valet av Migreringsverktyg:
+Följande faktorer är avgörande för valet av migreringsverktyg:
 
-* **Online vs offline-migrering** : många Migreringsverktyg tillhandahåller en sökväg för endast en migrering. Det innebär att program som har åtkomst till databasen kan råka ut för en drifts tid. Vissa migrations lösningar är ett sätt att utföra en Direktmigrering där en replikerings-pipeline har kon figurer ATS mellan källan och målet.
+* **Online- eller offlinemigrering**: Med många migreringsverktyg kan du bara göra en engångsmigrering. Det innebär att de program som använder databasen kanske får en viss stilleståndstid. Vissa migreringslösningar kan tillhandahålla ett sätt att göra en direktmigrering med en konfigurerad replikeringspipeline mellan källan och målet.
 
-* **Data källa** : befintliga data kan finnas i olika data källor som Oracle DB2, DataStax Cassanda, Azure SQL Database, postgresql osv. Data kan också finnas i ett befintligt Azure Cosmos DB konto och syftet med migreringen kan vara att ändra data modellen eller partitionera om data i en behållare med en annan partitionsnyckel.
+* **Data källa**: befintliga data kan finnas i olika data källor som Oracle DB2, DataStax Cassanda, Azure SQL Database, postgresql osv. Data kan också finnas i ett befintligt Azure Cosmos DB konto och syftet med migreringen kan vara att ändra data modellen eller partitionera om data i en behållare med en annan partitionsnyckel.
 
-* **Azure Cosmos DB-API** : för SQL-API: et i Azure Cosmos DB finns det flera olika verktyg som har utvecklats av Azure Cosmos DB teamet som har stöd för olika migrerings scenarier. Alla andra API: er har sina egna specialiserade verktyg som utvecklats och underhålls av communityn. Eftersom Azure Cosmos DB stöder dessa API: er på nivån Wire Protocol, bör dessa verktyg fungera som de är medan man migrerar data till Azure Cosmos DB. De kan dock kräva anpassad hantering för begränsningar eftersom det här konceptet är begränsat till Azure Cosmos DB.
+* **Azure Cosmos DB-API**: För SQL-API:et i Azure Cosmos DB finns flera olika verktyg som har utvecklats av Azure Cosmos DB-teamet. Dessa kan vara till hjälp i olika migreringsscenarier. Alla andra API:er har egna specialiserade verktyg som har utvecklats och underhålls av communityn. Eftersom Azure Cosmos DB stöder dessa API:er på trådprotokollnivå ska dessa verktyg också fungera vid migrering av data till Azure Cosmos DB. Men hanteringen av begränsningar kan behöva anpassas för dessa verktyg eftersom det här konceptet är specifikt för Azure Cosmos DB.
 
-* **Storlek på data** : de flesta Migreringsverktyg fungerar bra för mindre data uppsättningar. När data uppsättningen överstiger några hundra gigabyte är alternativen för migrering begränsade. 
+* **Storlek på data**: De flesta migreringsverktyg fungerar mycket bra för mindre datauppsättningar. Om datauppsättningen överskrider ett par hundra GB är valet av migreringsverktyg begränsat. 
 
-* **Förväntad varaktighet för migrering** : migreringar kan konfigureras för att ske i en långsam, stegvis hastighet som förbrukar mindre data flöde eller kan använda hela data flödet som har allokerats på mål Azure Cosmos DBS behållaren och slutföra migreringen på kortare tid.
+* **Förväntad varaktighet för migreringen**: Migreringar kan konfigureras så att de utförs i en långsam, inkrementell takt där ett mindre dataflöde används, eller så kan hela dataflödet som etablerats på Azure Cosmos DB-målcontainern användas för att slutföra migreringen på kortare tid.
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 

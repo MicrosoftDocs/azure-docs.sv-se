@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: dfde9bbbeb7f6b349ecbdc4c2da605d39a0708da
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Självstudie: Azure Active Directory integrering med Printix
@@ -55,7 +55,7 @@ Om du vill konfigurera integreringen av Printix i Azure AD måste du lägga till
 
 **Utför följande steg för att lägga till Printix från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen. 
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen. 
 
     ![Active Directory][1]
 
@@ -123,7 +123,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 1. Logga in på Printix-klienten som administratör.
 
-1. I menyn högst upp klickar du på ikonen i det övre högra hörnet och väljer " **autentisering** ".
+1. I menyn högst upp klickar du på ikonen i det övre högra hörnet och väljer "**autentisering**".
    
     ![Skärm bild som visar den autentisering som valts från menyn.](./media/printix-tutorial/tutorial_printix_06.png)
 
@@ -131,13 +131,13 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
    
     ![Skärm bild som visar Printix.net-sidan där du kan välja Aktivera Azure/Office 365-autentisering.](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. På fliken **Azure** i URL: en för indatakälla-metadata till text rutan för " **federationsmetadata** ". 
+1. På fliken **Azure** i URL: en för indatakälla-metadata till text rutan för "**federationsmetadata**". 
 
     Bifoga metadata-XML-filen som du laddade ned från Azure AD till [Printix support team](mailto:support@printix.net). Sedan laddar de upp XML-filen och anger en URL för federationsmetadata.
    
     ![Skärm bild som visar Printix.net-sidan där du kan ange ett dokument för federationsmetadata.](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. Klicka på knappen " **test** " och klicka på **OK** om testet lyckades.
+1. Klicka på knappen "**test**" och klicka på **OK** om testet lyckades.
    
      Sidan Azure Active Directory visas när du klickar på knappen **testa** . "Testet lyckades" här betyder att när du har angett autentiseringsuppgifterna för ditt Azure test-konto visas ett meddelande om att inställningar har testats OK. Klicka sedan på **OK** .
    
@@ -147,7 +147,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 
 > [!TIP]
-> Nu kan du läsa en kortare version av instruktionerna i [Azure Portal](https://portal.azure.com), samtidigt som du konfigurerar appen!  När du har lagt till appen från avsnittet **Active Directory > Företagsprogram** , behöver du bara klicka på fliken **Enkel inloggning**. Du kommer då till den inbäddade dokumentationen via avsnittet **Konfiguration** längst ned. Du kan läsa mer om den inbäddade dokumentations funktionen här: [Azure AD Embedded-dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Nu kan du läsa en kortare version av instruktionerna i [Azure Portal](https://portal.azure.com), samtidigt som du konfigurerar appen!  När du har lagt till appen från avsnittet **Active Directory > Företagsprogram**, behöver du bara klicka på fliken **Enkel inloggning**. Du kommer då till den inbäddade dokumentationen via avsnittet **Konfiguration** längst ned. Du kan läsa mer om den inbäddade dokumentations funktionen här: [Azure AD Embedded-dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare för Azure AD

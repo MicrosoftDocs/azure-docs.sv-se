@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395231"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Konfigurera replikering till Azure SQL Edge 
@@ -83,7 +83,7 @@ Följande alternativ stöds inte för Azure SQL Edge-prenumerationer:
 Skapa en publikation och en utgivarinitierad prenumeration. Mer information finns i:
   
 - [Skapa en publikation](/sql/relational-databases/replication/publish/create-a-publication)
-- [Skapa en push-prenumeration](/sql/relational-databases/replication/create-a-push-subscription/) med hjälp av Azure SQL Edge-servernamnet och IP som prenumerant (till exempel **myEdgeinstance, 1433** ) och ett databas namn på Azure SQL Edge-instansen som mål databas (till exempel **AdventureWorks** ).  
+- [Skapa en push-prenumeration](/sql/relational-databases/replication/create-a-push-subscription/) med hjälp av Azure SQL Edge-servernamnet och IP som prenumerant (till exempel **myEdgeinstance, 1433**) och ett databas namn på Azure SQL Edge-instansen som mål databas (till exempel **AdventureWorks**).  
 
 ## <a name="next-steps"></a>Nästa steg  
 

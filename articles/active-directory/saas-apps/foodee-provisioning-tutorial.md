@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358702"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Självstudie: Konfigurera en livsmedelsingrediens för automatisk användar etablering
@@ -83,7 +83,7 @@ Gör så här om du vill lägga till en livsmedelsingrediens från Azure AD-prog
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-1. I sökrutan anger du **livsmedelsingrediens** , väljer en **livsmedelsingrediens** i resultat fönstret och väljer sedan **Lägg** till för att lägga till programmet.
+1. I sökrutan anger du **livsmedelsingrediens**, väljer en **livsmedelsingrediens** i resultat fönstret och väljer sedan **Lägg** till för att lägga till programmet.
 
     ![Livsmedelsingrediensen i resultat listan](common/search-new-app.png)
 

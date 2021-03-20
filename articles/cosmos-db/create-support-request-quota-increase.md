@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090043"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Så här begär du en kvot ökning för Azure Cosmos DB resurser
@@ -24,7 +24,7 @@ Om du vill begära en kvot ökning måste du skapa en ny support förfrågan med
 
 1. Logga in i Azure-portalen.
 
-1. Välj **Hjälp + Support** på menyn till vänster och välj sedan **ny supportbegäran** .
+1. Välj **Hjälp + Support** på menyn till vänster och välj sedan **ny supportbegäran**.
 
 1. På fliken **grundläggande** fyller du i följande information:
 
@@ -38,7 +38,7 @@ Om du vill begära en kvot ökning måste du skapa en ny support förfrågan med
 
 1. Fyll i följande information i det här formuläret:
 
-   * **Beskrivning** : Ange en kort beskrivning av din begäran, till exempel din arbets belastning, varför standardvärdena inte räcker. Baserat på den resurs typ som du vill ha en kvot ökning för, är det obligatoriskt att ange följande information i fältet **Beskrivning** :
+   * **Beskrivning**: Ange en kort beskrivning av din begäran, till exempel din arbets belastning, varför standardvärdena inte räcker. Baserat på den resurs typ som du vill ha en kvot ökning för, är det obligatoriskt att ange följande information i fältet **Beskrivning** :
 
      **Regioner-begäranden** Om din begäran motsvarar att lägga till en region i listan över tillåtna, måste du ange följande värden:
 
@@ -56,15 +56,15 @@ Om du vill begära en kvot ökning måste du skapa en ny support förfrågan med
        * Prenumerations-ID:t
        * Ny databas konto gräns
 
-   * **Fil uppladdning** : Ladda upp diagnostikfiler eller andra filer som du tror är relevanta för support förfrågan. Mer information om fil uppladdnings vägledning finns i Support artikeln för [Azure]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) .
+   * **Fil uppladdning**: Ladda upp diagnostikfiler eller andra filer som du tror är relevanta för support förfrågan. Mer information om fil uppladdnings vägledning finns i Support artikeln för [Azure]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) .
 
-   * **Allvarlighets grad** : Välj en av de tillgängliga allvarlighets graderna utifrån påverkan på verksamheten.
+   * **Allvarlighets grad**: Välj en av de tillgängliga allvarlighets graderna utifrån påverkan på verksamheten.
 
-   * **Önskad kontakt metod** : du kan antingen välja att kontaktas via **e-post** eller via **telefon** .
+   * **Önskad kontakt metod**: du kan antingen välja att kontaktas via **e-post** eller via **telefon**.
 
 1. Fyll i återstående information, till exempel din tillgänglighet, support språk, kontakt information, e-postadress och telefonnummer i formuläret.
 
-1. Välj **Nästa: granska + skapa** . Verifiera den information som anges och välj **skapa** för att skapa en support förfrågan.
+1. Välj **Nästa: granska + skapa**. Verifiera den information som anges och välj **skapa** för att skapa en support förfrågan.
 
 Inom 24 timmar utvärderar Azure Cosmos DB support teamet din begäran och kommer tillbaka till dig.
 

@@ -5,10 +5,10 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.openlocfilehash: 8c671b1b54b937f518f7179bb6940f31a28a78d4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841026"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Säkerhetsfunktioner som hjälper till att skydda hybrid säkerhets kopieringar som använder Azure Backup
@@ -89,7 +89,7 @@ Som en del av att lägga till ett extra lager av autentisering för kritiska åt
 För att ta emot den här PIN-koden:
 
 1. Logga in på Azure-portalen.
-2. Bläddra till **Recovery Services egenskaper för valv**  >  **Inställningar**  >  **Properties**.
+2. Bläddra till **Recovery Services egenskaper för valv**  >  **Inställningar**  >  .
 3. Under **säkerhets-PIN** väljer du **generera**. Då öppnas ett fönster som innehåller den PIN-kod som ska anges i användar gränssnittet för Azure Recovery Services-agenten.
     Den här PIN-koden är bara giltig i fem minuter och genereras automatiskt efter den perioden.
 

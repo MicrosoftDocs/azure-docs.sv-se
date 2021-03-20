@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
 ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895432"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3,0: translittererad
@@ -58,7 +58,7 @@ Begärandehuvuden innehåller:
 
 <table width="100%">
   <th width="20%">Sidhuvuden</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>Authentication-huvud (er)</td>
     <td><em>Begär ande huvud för begäran</em>.<br/>Se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">tillgängliga alternativ för autentisering</a>.</td>
@@ -115,7 +115,7 @@ Ett exempel på JSON-svar är:
 
 <table width="100%">
   <th width="20%">Sidhuvuden</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>X-RequestId</td>
     <td>Värde som genereras av tjänsten för att identifiera begäran. Den används i fel söknings syfte.</td>
@@ -128,7 +128,7 @@ Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
 <table width="100%">
   <th width="20%">Statuskod</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>200</td>
     <td>Åtgärden lyckades.</td>

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94836197"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiera en strategi för införande av hybrid identitet
@@ -158,7 +158,7 @@ För att göra detta måste följande vara sant:
 * En DNS-domän kan bara registreras i en enda Azure AD-katalog, så att UPN-användare i den lokala AD måste använda separata namn områden
 * Användare i en instans av Azure AD kommer bara att kunna se användare från sin instans.  De kommer inte att kunna se användare i de andra instanserna
 * Endast en av Azure AD-katalogerna kan aktivera Exchange hybrid med lokal AD
-* Ömsesidiga exklusivitet gäller även för Skriv återställning.  Detta gör att vissa skriv-och bakgrunds funktioner inte stöds med den här topologin eftersom dessa förutsätter en enda lokal konfiguration.  Det här omfattar:
+* Ömsesidiga exklusivitet gäller även för Skriv återställning.  Detta gör att vissa skriv-och bakgrunds funktioner inte stöds med den här topologin eftersom dessa förutsätter en enda lokal konfiguration.  Du måste bland annat:
   * Skriv åtgärd för grupp med standard konfiguration
   * Tillbakaskrivning av enhet
 

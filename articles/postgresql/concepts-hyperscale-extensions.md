@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620910"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-tillägg i Azure Database for PostgreSQL – storskalig (citus)
@@ -31,7 +31,7 @@ I följande tabeller visas de standard PostgreSQL-tillägg som för närvarande 
 ### <a name="data-types-extensions"></a>Tillägg för data typer
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Innehåller en Skift läges okänslig tecken sträng typ. |
 > | [kuben](https://www.postgresql.org/docs/current/static/cube.html) | Tillhandahåller en datatyp för flerdimensionella kuber. |
@@ -47,7 +47,7 @@ I följande tabeller visas de standard PostgreSQL-tillägg som för närvarande 
 ### <a name="full-text-search-extensions"></a>Full texts öknings tillägg
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [dict \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Innehåller en mall för text Sök lexikon för heltal. |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Mall för text Sök lexikon för utökad synonym bearbetning. |
@@ -56,7 +56,7 @@ I följande tabeller visas de standard PostgreSQL-tillägg som för närvarande 
 ### <a name="functions-extensions"></a>Funktions tillägg
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Funktioner för att autoöka fält. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Ger ett sätt att beräkna fantastiska avstånd på jordens yta. |
@@ -78,14 +78,14 @@ I följande tabeller visas de standard PostgreSQL-tillägg som för närvarande 
 ### <a name="hyperscale-citus-extensions"></a>Citus-tillägg (storskalig)
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus distribuerad databas. |
 
 ### <a name="index-types-extensions"></a>Tillägg för index typer
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [hinna](https://www.postgresql.org/docs/current/bloom.html) | Anslutnings metod för blomma – Signature filbaserat index. |
 > | [b \_ gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Tillhandahåller exempel på GIN operator klasser som implementerar B-träd-liknande beteenden för vissa data typer. |
@@ -94,14 +94,14 @@ I följande tabeller visas de standard PostgreSQL-tillägg som för närvarande 
 ### <a name="language-extensions"></a>Språk tillägg
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL-inbelastnings förfarande språk. |
 
 ### <a name="miscellaneous-extensions"></a>Diverse tillägg
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [adminpaket](https://www.postgresql.org/docs/current/adminpack.html) | Administrativa funktioner för PostgreSQL. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funktioner för att verifiera Relations integritet. |
@@ -126,7 +126,7 @@ I följande tabeller visas de standard PostgreSQL-tillägg som för närvarande 
 ### <a name="postgis-extensions"></a>PostGIS-tillägg
 
 > [!div class="mx-tableFixed"]
-> | **Filnamnstillägg** | **Beskrivning** |
+> | **Anknytning** | **Beskrivning** |
 > |---|---|
 > | [Postgis](https://www.postgis.net/), postgis \_ -topologi, postgis \_ Tiger \_ -kod, postgis \_ sfcgal | Spatialdata och geografiska objekt för PostgreSQL. |
 > | adress \_ standardiserare, adress \_ standardiserade \_ data \_ US | Används för att parsa en adress till komponent element. Används för att stödja kod normaliserings steg för den här adressen. |

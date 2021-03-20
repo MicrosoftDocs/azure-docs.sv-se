@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: be52d220848a27c1307e71fdb7cc4dccfaeb9618
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Självstudie: Azure Active Directory integrering med UserEcho
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med UserEcho i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **UserEcho** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **UserEcho** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -134,7 +134,7 @@ Utför följande steg för att konfigurera enkel inloggning med UserEcho i Azure
    
     ![Skärm bild som visar de integreringar som valts på menyn Inställningar.](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
-4. Klicka på **webbplats**och sedan på **enkel inloggning (SAML2)**.
+4. Klicka på **webbplats** och sedan på **enkel inloggning (SAML2)**.
    
     ![Skärm bild som visar SAML2 för enkel inloggning valda från menyn integrationer.](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
@@ -142,7 +142,7 @@ Utför följande steg för att konfigurera enkel inloggning med UserEcho i Azure
    
     ![Skärm bild som visar SAML-sidan enkel inloggning där du kan ange de värden som beskrivs.](./media/userecho-tutorial/tutorial_userecho_09.png)
     
-    a. Som **SAML-aktiverad**väljer du **Ja**.
+    a. Som **SAML-aktiverad** väljer du **Ja**.
     
     b. Klistra in **inloggnings-URL**, som du har kopierat från Azure Portal till URL-text rutan för **SAML SSO** .
     
@@ -180,7 +180,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till UserEcho.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **UserEcho**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **UserEcho**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

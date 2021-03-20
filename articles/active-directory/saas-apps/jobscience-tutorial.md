@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 5a104dcd6ccf500c115359a1b72c67b85359a802
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Självstudie: Azure Active Directory integrering med Jobscience
@@ -129,7 +129,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 1. Gå till **installations programmet**.
    
-   ![Skärm bild som visar installations objekt för ditt företag.](./media/jobscience-tutorial/IC784358.png "Installation")
+   ![Skärm bild som visar installations objekt för ditt företag.](./media/jobscience-tutorial/IC784358.png "Konfiguration")
 
 1. Klicka på **domän hantering** i avsnittet **Administrera** i det vänstra navigerings fönstret för att expandera det relaterade avsnittet och klicka sedan på **min domän** för att öppna sidan **min domän** . 
    
@@ -240,7 +240,7 @@ För att Azure AD-användare ska kunna logga in på Jobscience måste de tillhan
 
 1. Gå till installations programmet.
    
-   ![Skärm bild som visar installations objekt.](./media/jobscience-tutorial/ic784358.png "Installation")
+   ![Skärm bild som visar installations objekt.](./media/jobscience-tutorial/ic784358.png "Konfiguration")
 1. Gå till **Hantera användare \> användare**.
    
    ![Användare](./media/jobscience-tutorial/ic784369.png "Användare")

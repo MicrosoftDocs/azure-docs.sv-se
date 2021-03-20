@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337924"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Använd distribuerad spårning med Azure våren Cloud
@@ -37,7 +37,7 @@ För Steeltoe-3.0.0 lägger du till följande NuGet-paket:
 
 * [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 
-## <a name="update-startupcs"></a>Uppdatera Startup.cs
+## <a name="update-startupcs"></a>Uppdatera start. CS
 
 1. För Steeltoe-2.4.4 anropar `AddDistributedTracing` `AddZipkinExporter` du och i- `ConfigureServices` metoden.
 
@@ -79,7 +79,7 @@ Lägg till följande inställningar i konfigurations källan som ska användas n
 
 1. Ange `management.tracing.alwaysSample` till Sant.
 
-2. Om du vill se spårnings förrymder som skickas mellan Eureka-servern, konfigurations servern och användarens appar: ange `management.tracing.egressIgnorePattern` till "/API/v2/spans |/v2/Apps/. */Permissions |/Eureka/.* | /oauth/.*".
+2. Om du vill se spårnings förrymder som skickas mellan Eureka-servern, konfigurations servern och användarens appar: ange `management.tracing.egressIgnorePattern` till "/API/v2/spans |/v2/Apps/.*/Permissions |/Eureka/.*| /oauth/.*".
 
 *appsettings.jspå* är till exempel följande egenskaper:
  

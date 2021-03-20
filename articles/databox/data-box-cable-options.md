@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94334624"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Alternativ för kabelanslutning av Azure Data Box
@@ -78,8 +78,8 @@ Kabelanslut enheten med hjälp av följande steg.
 2. Använd en RJ45-kabel för DATA 3 eller SFP+-kabel för att ansluta DATA 1 eller DATA 2 till servern. Vi rekommenderar att du använder 10-GbE DATA 1- eller DATA 2-portar för bra prestanda. Dataportarna ansluts via en 10-GbE-switch till servern med data.
 3. Konfigurera Ethernet-adaptern på den bärbara datorn du använder för att ansluta enheten med:
 
-   - **IP-adress** : 192.168.100.5
-   - **Undernät** : 255.255.255.0.
+   - **IP-adress**: 192.168.100.5
+   - **Undernät**: 255.255.255.0.
   
    ![Installation med två portar med en växel](media/data-box-cable-options/cabling-with-static-ip.png)
 
@@ -102,8 +102,8 @@ Kabelanslut enheten med hjälp av följande steg.
 2. Använd en RJ45-kabel för DATA 3 eller SFP+-kabel för att ansluta DATA 1 eller DATA 2 till servern. Vi rekommenderar att du använder 10-GbE DATA 1- eller DATA 2-portar för bra prestanda.
 3. Konfigurera Ethernet-adaptern på den bärbara datorn du använder för att ansluta enheten med:
 
-   - **IP-adress** : 192.168.100.5
-   - **Undernät** : 255.255.255.0.
+   - **IP-adress**: 192.168.100.5
+   - **Undernät**: 255.255.255.0.
 
      ![Installation med två portar med en växel 2](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 

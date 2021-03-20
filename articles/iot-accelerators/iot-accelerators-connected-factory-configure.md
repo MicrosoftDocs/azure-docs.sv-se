@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002246"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurera den anslutna fabriks lösnings acceleratorn
@@ -32,7 +32,7 @@ Varje contoso-fabrik har produktions linjer som består av tre stationer. Varje 
 * Test Station
 * Förpacknings Station
 
-Dessa OPC UA-servrar har OPC UA-noder och [OPC Publisher](overview-opc-publisher.md) skickar värdena för de här noderna till den anslutna fabriken. Det här omfattar:
+Dessa OPC UA-servrar har OPC UA-noder och [OPC Publisher](overview-opc-publisher.md) skickar värdena för de här noderna till den anslutna fabriken. Du måste bland annat:
 
 * Aktuell drift status, till exempel aktuell energi förbrukning.
 * Produktions information, till exempel antalet producerade produkter.
@@ -270,7 +270,7 @@ Egenskaperna i den här kategorin definierar det visuella utseendet på den ansl
 * Name
 * Beskrivning
 * Bild
-* Plats
+* Location
 * Enheter
 * Synliga
 

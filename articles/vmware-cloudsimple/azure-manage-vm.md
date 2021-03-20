@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895197"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Hantera dina virtuella CloudSimple privata moln datorer i Azure
@@ -23,7 +23,7 @@ Logga in på [Azure Portal](https://portal.azure.com)för att hantera de virtuel
 
 Följande kontroller är tillgängliga på **översikts** sidan för den valda virtuella datorn.
 
-| Kontroll | Description |
+| Kontroll | Beskrivning |
 | ------------ | ------------- |
 | Ansluta | Anslut till den angivna virtuella datorn.  |
 | Start | Starta den angivna virtuella datorn.  |

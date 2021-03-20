@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
 ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841141"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Använda Multi-Factor Azure Active Directory-autentisering
@@ -45,10 +45,10 @@ Den interaktiva metoden som också stöder Azure AD Multi-Factor Authentication 
 
 - `Azure Active Directory - Universal with MFA`
 
-Azure AD MFA hjälper till att skydda åtkomsten till data och program samtidigt som du kan möta användarnas behov av en enkel inloggnings process. Den ger stark autentisering med en rad enkla verifierings alternativ (telefonsamtal, textmeddelande, smartkort med PIN-kod eller meddelande för mobilapp), så att användarna kan välja den metod de föredrar. Interaktiv MFA med Azure AD kan resultera i en popup-dialogruta för verifiering.
+Azure AD MFA bidrar till att skydda åtkomsten till data och program och tillgodoser samtidigt användarens önskemål om en enkel inloggningsprocess. Den ger stark autentisering med en rad enkla verifierings alternativ (telefonsamtal, textmeddelande, smartkort med PIN-kod eller meddelande för mobilapp), så att användarna kan välja den metod de föredrar. Interaktiv MFA med Azure AD kan resultera i en popup-dialogruta för verifiering.
 
 En beskrivning av Azure AD Multi-Factor Authentication finns [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
-Konfigurations steg finns i [konfigurera Azure SQL Database Multi-Factor Authentication för SQL Server Management Studio](authentication-mfa-ssms-configure.md).
+Konfigurationssteg finns i [Konfigurera Azure SQL Database-multifaktorautentisering för SQL Server Management Studio](authentication-mfa-ssms-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-domän namn eller klient-ID-parameter
 
@@ -90,7 +90,7 @@ När databas användaren har skapats `steve@gmail.com` kan användaren logga in 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Konfigurations steg finns i [konfigurera Azure SQL Database Multi-Factor Authentication för SQL Server Management Studio](authentication-mfa-ssms-configure.md).
+- Konfigurationssteg finns i [Konfigurera Azure SQL Database-multifaktorautentisering för SQL Server Management Studio](authentication-mfa-ssms-configure.md).
 - Ge andra åtkomst till databasen: [SQL Database autentisering och auktorisering: bevilja åtkomst](logins-create-manage.md)  
 - Se till att andra kan ansluta genom brand väggen: [Konfigurera en brand Väggs regel på server nivå med hjälp av Azure Portal](firewall-configure.md)  
 - [Konfigurera och hantera Azure Active Directory autentisering med SQL Database eller Azure Synapse](authentication-aad-configure.md)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Självstudie: Azure Active Directory integration med enkel inloggning med Prezi
@@ -52,8 +52,8 @@ Om du vill konfigurera integreringen av Prezi i Azure AD måste du lägga till P
 
 1. Logga in på [Azure Portal](https://portal.azure.com) genom att använda antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I rutan längst till vänster väljer du **Azure Active Directory**.
-1. Gå till **företags program**och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Gå till **företags program** och välj sedan **alla program**.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , ange **Prezi** i sökrutan.
 1. Välj **Prezi** i panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -82,7 +82,7 @@ Aktivera Azure AD SSO i Azure Portal:
 
 1. I avsnittet **grundläggande SAML-konfiguration** behöver användaren inte göra något steg, eftersom appen redan är Förintegrerad med Azure.
 
-1. Välj **Ange ytterligare URL: er**och gör följande om du vill konfigurera programmet i **SP**-initierat läge:
+1. Välj **Ange ytterligare URL: er** och gör följande om du vill konfigurera programmet i **SP**-initierat läge:
 
     I rutan **inloggnings-URL** anger du webb adressen: `https://prezi.com/login/sso/` .
 
@@ -94,7 +94,7 @@ Aktivera Azure AD SSO i Azure Portal:
 
 1. Prezi-programmet förväntar sig också några fler attribut som ska skickas tillbaka i SAML-svar, som visas här. Dessa attribut är också förifyllda, men du kan granska dem utifrån dina behov.
     
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ---------------| --------------- |
     | given_name | user.givenname |
     | family_name | user.surname |
@@ -111,7 +111,7 @@ Aktivera Azure AD SSO i Azure Portal:
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. Välj **Azure Active Directory**i rutan till vänster i rutan Azure Portal. Gå till **användare**och välj sedan **alla användare**.
+1. Välj **Azure Active Directory** i rutan till vänster i rutan Azure Portal. Gå till **användare** och välj sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I användar egenskaperna följer du de här stegen:
    1. I rutan **namn** anger du **B. Simon**.
@@ -141,7 +141,7 @@ I det här avsnittet aktiverar du B. Simon för att använda Azure SSO genom att
 
 1. Logga in på Prezi med ditt team-konto i ett annat webbläsarfönster och gå till [Administratörs konsolen](https://prezi.com/organizations/manage).
 
-1. I **Administratörs konsolen**väljer du fliken **Inställningar** .
+1. I **Administratörs konsolen** väljer du fliken **Inställningar** .
 
     ![Fliken Inställningar](./media/prezi-tutorial/settings-image.png)
 

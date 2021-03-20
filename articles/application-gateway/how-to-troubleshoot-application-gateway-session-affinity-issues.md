@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397577"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Felsöka fel vid tillhörighet mellan Azure Application Gateway-session
@@ -52,7 +52,7 @@ Ibland kan problem med sessionsgränsen uppstå när du glömmer att aktivera in
 
 
 
-Du kan också kontrol lera *värdet för alternativet* " **CookieBasedAffinity** " är inställt på " **backendHttpSettingsCollection** " med någon av följande metoder:
+Du kan också kontrol lera *värdet för alternativet*"**CookieBasedAffinity**" är inställt på "**backendHttpSettingsCollection**" med någon av följande metoder:
 
 - Kör [Get-AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) i PowerShell
 - Titta igenom JSON-filen med hjälp av Azure Resource Manager mall
@@ -80,9 +80,9 @@ Du har aktiverat inställningen cookie-baserad tillhörighet när du kommer åt 
 Följ instruktionerna för att identifiera problemet:
 
 1. Ta en webb fel söknings spårning på "klienten" som ansluter till programmet bakom Application Gateway (vi använder Fiddler i det här exemplet).
-    **Tips** Om du inte vet hur du använder Fiddler markerar du alternativet " **Jag vill samla in nätverks trafik och analysera den med hjälp av webb fel sökning** " längst ned.
+    **Tips** Om du inte vet hur du använder Fiddler markerar du alternativet "**Jag vill samla in nätverks trafik och analysera den med hjälp av webb fel sökning**" längst ned.
 
-2. Kontrol lera och analysera sessions loggarna för att avgöra om de cookies som tillhandahålls av klienten har ARRAffinity-information. Om du inte hittar ARRAffinity-information, till exempel " **ARRAffinity =** *ARRAffinityValue* " inom cookie-uppsättningen, innebär det att klienten inte svarar med Arra cookie, som tillhandahålls av Application Gateway.
+2. Kontrol lera och analysera sessions loggarna för att avgöra om de cookies som tillhandahålls av klienten har ARRAffinity-information. Om du inte hittar ARRAffinity-information, till exempel "**ARRAffinity =** *ARRAffinityValue*" inom cookie-uppsättningen, innebär det att klienten inte svarar med Arra cookie, som tillhandahålls av Application Gateway.
     Exempel:
 
     ![Skärm bild som visar en loggfil med en enda post markerad.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
@@ -131,7 +131,7 @@ aktivera loggning via Azure Portal
 
    ![Skärm bild som visar övervakning med diagnostikloggar markerade.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. Välj " **ApplicationGatewayAccessLog** " i list rutan under **logg kategorier** på höger sida.  
+2. Välj "**ApplicationGatewayAccessLog**" i list rutan under **logg kategorier** på höger sida.  
 
    ![Skärm bild som visar List rutan för logg kategorier med ApplicationGatewayAccessLog valt.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
@@ -141,19 +141,19 @@ aktivera loggning via Azure Portal
 
 5. Kontrol lera följande data:
 
-- **ClientIP** – det här är KLIENTens IP-adress från den anslutande klienten.
+- **ClientIP**– det här är KLIENTens IP-adress från den anslutande klienten.
 - **ClientPort** – detta är käll porten från den anslutande klienten för begäran.
 - **RequestQuery** – Detta anger mål servern som begäran tas emot.
-- **Server-routad** : backend-instans som begäran tas emot.
-- **X-AzureApplicationGateway-log-ID** : KORRELATIONS-ID som används för begäran. Den kan användas för att felsöka trafik problem på backend-servrarna. Exempel: X-AzureApplicationGateway-CACHE-träff = 0&SERVER-ROUTad = 10.0.2.4.
+- **Server-routad**: backend-instans som begäran tas emot.
+- **X-AzureApplicationGateway-log-ID**: KORRELATIONS-ID som används för begäran. Den kan användas för att felsöka trafik problem på backend-servrarna. Exempel: X-AzureApplicationGateway-CACHE-träff = 0&SERVER-ROUTad = 10.0.2.4.
 
-  - **Server status** : http-svarskod som Application Gateway emot från Server delen.
+  - **Server status**: http-svarskod som Application Gateway emot från Server delen.
 
   ![Skärm bild som visar Server status som oformaterad text, som huvudsakligen döljs, med clientPort och DIRIGERAd SERVER.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
 Om du ser två objekt kommer från samma ClientIP och klient port, och de skickas till samma backend-server, vilket innebär att den Application Gateway har kon figurer ATS korrekt.
 
-Om du ser två objekt som kommer från samma ClientIP och klient port och de skickas till de olika backend-servrarna, innebär det att begäran är bouncing mellan backend-servrar. Välj " **programmet använder cookie-baserad tillhörighet men begär Anden som fortfarande bouncing mellan backend-servrar** " längst ned för att felsöka den.
+Om du ser två objekt som kommer från samma ClientIP och klient port och de skickas till de olika backend-servrarna, innebär det att begäran är bouncing mellan backend-servrar. Välj "**programmet använder cookie-baserad tillhörighet men begär Anden som fortfarande bouncing mellan backend-servrar**" längst ned för att felsöka den.
 
 ### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>Använd webb fel sökning för att avbilda och analysera HTTP-eller HTTPS-trafik
 
@@ -174,7 +174,7 @@ Använd den webb fel sökare som du väljer. I det här exemplet ska vi använda
 
     ![Skärm bild som visar Fiddler webb fel sökare med insamlings indikatorn markerad.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Förmodligen är du intresse rad av dekrypterad HTTPS-trafik och du kan aktivera https-dekryptering genom att välja **verktyg**  >  **Fiddler alternativ** och markera kryss rutan " **dekryptera HTTPS-trafik** ".
+4. Förmodligen är du intresse rad av dekrypterad HTTPS-trafik och du kan aktivera https-dekryptering genom att välja **verktyg**  >  **Fiddler alternativ** och markera kryss rutan " **dekryptera HTTPS-trafik**".
 
     ![Skärm bild som visar alternativen i Fiddler med H T T P markerat och dekryptera HTTPS-trafik har valts.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -190,7 +190,7 @@ Använd den webb fel sökare som du väljer. I det här exemplet ska vi använda
 
     Exempel:
 
-- **Exempel:** Du hittar en loggfil som begäran skickas från klienten och den går till den offentliga IP-adressen för Application Gateway. Klicka på loggen för att visa information.  På den högra sidan är data i den nedre rutan det som Application Gateway återgår till klienten. Välj fliken "RAW" och ta reda på om klienten får en " **set-cookie: ARRAffinity =** *ARRAffinityValue* ". Om det inte finns någon cookie är tillhörigheten för sessionen inte angiven, eller så använder Application Gateway inte cookie tillbaka till klienten.
+- **Exempel:** Du hittar en loggfil som begäran skickas från klienten och den går till den offentliga IP-adressen för Application Gateway. Klicka på loggen för att visa information.  På den högra sidan är data i den nedre rutan det som Application Gateway återgår till klienten. Välj fliken "RAW" och ta reda på om klienten får en "**set-cookie: ARRAffinity =** *ARRAffinityValue*". Om det inte finns någon cookie är tillhörigheten för sessionen inte angiven, eller så använder Application Gateway inte cookie tillbaka till klienten.
 
    > [!NOTE]
    > Detta ARRAffinity-värde är cookie-ID: t, som Application Gateways uppsättningar för klienten som ska skickas till en viss backend-server.

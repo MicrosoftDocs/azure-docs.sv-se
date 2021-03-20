@@ -6,17 +6,17 @@ ms.date: 12/14/2020
 ms.topic: quickstart
 ms.author: tomfitz
 ms.openlocfilehash: 1d3e7c6ee6d19d4d2cd3828d5abf95ccb5457e76
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511356"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Snabb start: skapa och distribuera mall specifikation (för hands version)
 
 Den här snabb starten visar hur du paketerar en Azure Resource Manager-mall (ARM-mall) i en [mall-specifikation](template-specs.md). Sedan distribuerar du mallen specifikation. Din Template-specifikation innehåller en ARM-mall som distribuerar ett lagrings konto.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

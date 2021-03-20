@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91538729"
 ---
 # <a name="iterative-app-design-for-luis"></a>Iterativ app-design för LUIS
@@ -21,7 +21,7 @@ ms.locfileid: "91538729"
 En Language Understanding-app (LUIS) lär sig och fungerar effektivt med iteration. Här är en typisk upprepnings cykel:
 
 * Skapa ny version
-* Redigera LUIS app-schema. Det här omfattar:
+* Redigera LUIS app-schema. Du måste bland annat:
     * Avsikter med exempel yttranden
     * Entiteter
     * Funktioner

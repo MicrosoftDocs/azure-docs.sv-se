@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 4d03edac98329d7c47b8bfafbf4d30cfca18863c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618237"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Självstudie: skapa och konfigurera en Azure Active Directory Domain Services hanterad domän med avancerade konfigurations alternativ
@@ -56,7 +56,7 @@ I den här självstudien skapar du och konfigurerar den hanterade domänen med h
 
 Utför följande steg för att starta guiden för att **aktivera Azure AD Domain Services** :
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
 1. Ange *domän tjänster* i Sök fältet och välj sedan *Azure AD Domain Services* från Sök förslagen.
 1. På sidan Azure AD Domain Services väljer du **skapa**. Guiden **aktivera Azure AD Domain Services** startas.
 1. Välj den Azure- **prenumeration** där du vill skapa den hanterade domänen.

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100413"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Självstudie: Migrera data till ett Cassandra API-konto i Azure Cosmos DB
@@ -25,13 +25,13 @@ Den här självstudien omfattar följande uppgifter:
 
 > [!div class="checklist"]
 > * Planera för migrering
-> * Krav för migrering
+> * Förutsättningar för migrering
 > * Migrera data med hjälp av COPY-kommandot i cqlsh
 > * Migrera data med Spark
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites-for-migration"></a>Krav för migrering
+## <a name="prerequisites-for-migration"></a>Förutsättningar för migrering
 
 * **Beräkna dina dataflödesbehov:** Innan du migrerar data till Cassandra-API-kontot i Azure Cosmos DB bör du beräkna dataflödesbehoven för din arbetsbelastning. I allmänhet rekommenderar vi att du börjar med ett genomsnittligt dataflöde som krävs av CRUD-åtgärderna och att du sedan lägger till det ytterligare dataflödet som krävs för ETL-åtgärder (Extract Transform Load) eller vid belastningstoppar. Du behöver följande information för att planera för migreringen: 
 

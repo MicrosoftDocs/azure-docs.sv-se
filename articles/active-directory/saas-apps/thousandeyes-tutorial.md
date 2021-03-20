@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
 ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ThousandEyes
@@ -51,14 +51,14 @@ Om du vill konfigurera integreringen av ThousandEyes i Azure AD måste du lägga
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **ThousandEyes** i sökrutan.
 1. Välj **ThousandEyes** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>Konfigurera och testa enkel inloggning med Azure AD för ThousandEyes
 
-Konfigurera och testa Azure AD SSO med ThousandEyes med hjälp av en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i ThousandEyes.
+Konfigurera och testa Azure AD SSO med ThousandEyes med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i ThousandEyes.
 
 Om du vill konfigurera och testa Azure AD SSO med ThousandEyes, slutför du följande Bygg stenar:
 
@@ -73,15 +73,15 @@ Om du vill konfigurera och testa Azure AD SSO med ThousandEyes, slutför du föl
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **ThousandEyes** , letar upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **ThousandEyes** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** är programmet förkonfigurerat och de nödvändiga URL: erna är redan ifyllda med Azure. Användaren måste spara konfigurationen genom att klicka på knappen **Spara** .
 
-1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     Skriv en URL i text rutan **inloggnings-URL** :  `https://app.thousandeyes.com/login/sso`
 
@@ -97,21 +97,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till ThousandEyes.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan program väljer du **ThousandEyes** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **ThousandEyes**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -127,7 +127,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på din **ThousandEyes** -företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. På menyn längst upp klickar du på **Inställningar** .
+2. På menyn längst upp klickar du på **Inställningar**.
 
     ![Skärm bild som visar ThousandEyes-platsen med valda inställningar.](./media/thousandeyes-tutorial/ic790066.png "Inställningar")
 
@@ -143,17 +143,17 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Konfigurera enkel inloggning](./media/thousandeyes-tutorial/ic790069.png "Konfigurera enskilda Sign-On")
 
-    a. Välj **aktivera enkel inloggning** .
+    a. Välj **aktivera enkel inloggning**.
 
-    b. I text rutan **URL för inloggnings sida** , klistra in **inloggnings-URL** , som du har kopierat från Azure Portal.
+    b. I text rutan **URL för inloggnings sida** , klistra in **inloggnings-URL**, som du har kopierat från Azure Portal.
 
     c. I text rutan URL för inloggnings **sida** , klistra in **URL** för att klistra in, som du har kopierat från Azure Portal.
 
-    d. Text ruta för **identitets leverantör** , klistra in **Azure AD-identifierare** , som du har kopierat från Azure Portal.
+    d. Text ruta för **identitets leverantör** , klistra in **Azure AD-identifierare**, som du har kopierat från Azure Portal.
 
     e. I **verifierings certifikat** klickar du på **Välj fil** och överför sedan det certifikat som du har laddat ned från Azure Portal.
 
-    f. Klicka på **Spara** .
+    f. Klicka på **Spara**.
 
 ### <a name="create-thousandeyes-test-user"></a>Skapa ThousandEyes test användare
 
@@ -163,11 +163,11 @@ Syftet med det här avsnittet är att skapa en användare som kallas Britta Simo
 
 1. Logga in på din ThousandEyes-företags webbplats som administratör.
 
-2. Klicka på **Inställningar** .
+2. Klicka på **Inställningar**.
 
     ![Skärm bild som visar ThousandEyes-platsen med valda inställningar.](./media/thousandeyes-tutorial/ic790066.png "Inställningar")
 
-3. Klicka på **Konto** .
+3. Klicka på **Konto**.
 
     ![Skärm bild som visar det konto som valts från menyn Inställningar.](./media/thousandeyes-tutorial/ic790067.png "Konto")
 
@@ -179,11 +179,11 @@ Syftet med det här avsnittet är att skapa en användare som kallas Britta Simo
 
     ![Lägg till användar konton](./media/thousandeyes-tutorial/IC790074.png "Lägg till användar konton")
 
-    a. I text rutan **namn** skriver du namnet på användaren, t. ex. **B. Simon** .
+    a. I text rutan **namn** skriver du namnet på användaren, t. ex. **B. Simon**.
 
     b. Skriv e-postmeddelandets e-postadress i rutan **e-post** b.simon@contoso.com .
 
-    b. Klicka på **Lägg till ny användare till konto** .
+    b. Klicka på **Lägg till ny användare till konto**.
 
     > [!NOTE]
     > Azure Active Directory konto innehavaren får ett e-postmeddelande med en länk för att bekräfta och aktivera kontot.

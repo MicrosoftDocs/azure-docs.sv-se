@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218433"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Hantera Azure Data Lake Analytics med hjälp av Azure-portalen
@@ -26,7 +26,7 @@ Den här artikeln beskriver hur du hanterar Azure Data Lake Analytics-konton, da
 ### <a name="create-an-account"></a>Skapa ett konto
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Klicka på **skapa en resurs**informations-och  >  **analys**  >  **data Lake Analytics**.
+2. Klicka på **skapa en resurs** informations-och  >  **analys**  >  **data Lake Analytics**.
 3. Välj värden för följande objekt: 
    1. **Namn**: namnet på data Lake Analytics kontot.
    2. **Prenumeration**: den Azure-prenumeration som används för kontot.
@@ -74,14 +74,14 @@ Om andra Azure-tjänster, t. ex. Azure Data Factory eller virtuella datorer, ans
 ### <a name="set-up-a-firewall-rule"></a>Konfigurera en brandväggsregel
 
 1. I Azure Portal går du till ditt Data Lake Analytics-konto.
-2. Klicka på **brand vägg**på menyn till vänster.
+2. Klicka på **brand vägg** på menyn till vänster.
 
 ## <a name="add-a-new-user"></a>Lägga till en ny användare
 
 Du kan använda **guiden Lägg till användare** för att enkelt etablera nya data Lake användare.
 
 1. I Azure Portal går du till ditt Data Lake Analytics-konto.
-2. Till vänster, under **komma igång**klickar du på **guiden Lägg till användare**.
+2. Till vänster, under **komma igång** klickar du på **guiden Lägg till användare**.
 3. Välj en användare och klicka sedan på **Välj**.
 4. Välj en roll och klicka sedan på **Välj**. Om du vill konfigurera en ny utvecklare att använda Azure Data Lake väljer du rollen **data Lake Analytics utvecklare** .
 5. Välj åtkomst kontrol listor (ACL: er) för U-SQL-databaserna. När du är nöjd med dina val klickar du på **Välj**.
@@ -137,7 +137,7 @@ Använd rollen som Data Lake Analytics utvecklare för att göra det möjligt f�
 
 1. I Azure Portal går du till ditt Data Lake Analytics-konto.
 2. Klicka på **Visa alla jobb**. En lista över alla aktiva och senast avslutade jobb i kontot visas.
-3. Du kan också klicka på **filter** för att hitta jobben efter **tidsintervall**, **jobb namn**och **författar** värden. 
+3. Du kan också klicka på **filter** för att hitta jobben efter **tidsintervall**, **jobb namn** och **författar** värden. 
 
 ### <a name="monitoring-pipeline-jobs"></a>Övervaka pipeline-jobb
 Jobb som ingår i en pipeline fungerar tillsammans, vanligt vis i turordning, för att uppnå ett speciellt scenario. Du kan till exempel ha en pipeline som rensar, extraherar, transformerar och sammanställer användning för kund insikter. Pipeline-jobb identifieras med hjälp av egenskapen "Pipeline" när jobbet skickades. Jobb som schemalagts med ADF v2 har automatiskt den här egenskapen ifylld. 

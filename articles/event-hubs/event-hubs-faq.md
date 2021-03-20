@@ -4,10 +4,10 @@ description: Den här artikeln innehåller en lista med vanliga frågor och svar
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98696116"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Vanliga frågor och svar om Event Hubs
@@ -176,7 +176,7 @@ Antalet partitioner kan ökas till exakt 40. I det här fallet måste antalet an
 
 Minskningen av partitioner påverkar inte befintliga händelse nav eftersom partitioner används på händelsens hubbnivå och de är oföränderliga när hubben har skapats. 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 ### <a name="where-can-i-find-more-pricing-information"></a>Var hittar jag mer pris information?
 

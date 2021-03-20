@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 9d378b21132e6646329c459401255ef9a3ed9426
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724254"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snabb start: skapa en Azure Functions-app med Azure App konfiguration
 
 I den här snabb starten införlivar du Azure App konfigurations tjänsten i en Azure Functions-app för att centralisera lagring och hantering av alla dina program inställningar separat från din kod.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) med arbets belastningen **Azure Development** .
@@ -50,7 +50,7 @@ Det här projektet kommer att använda [beroende inmatning i .net Azure Function
    - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) version 4.1.0 eller senare
    - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) version 1.1.0 eller senare 
 
-2. Lägg till en ny fil, *startup.cs*, med följande kod. Den definierar en klass med namnet `Startup` som implementerar den `FunctionsStartup` abstrakta klassen. Ett Assembly-attribut används för att ange det typ namn som används vid Azure Functions start.
+2. Lägg till en ny fil, *startup. cs*, med följande kod. Den definierar en klass med namnet `Startup` som implementerar den `FunctionsStartup` abstrakta klassen. Ett Assembly-attribut används för att ange det typ namn som används vid Azure Functions start.
 
     `ConfigureAppConfiguration`Metoden åsidosätts och Azure App Konfigurationsprovider läggs till som en extra konfigurations källa genom att anropa `AddAzureAppConfiguration()` . `Configure`Metoden lämnas tom eftersom du inte behöver registrera några tjänster i det här läget.
     
@@ -78,7 +78,7 @@ Det här projektet kommer att använda [beroende inmatning i .net Azure Function
     }
     ```
 
-3. Öppna *Function1.cs* och Lägg till följande namnrymd.
+3. Öppna *Function1. cs* och Lägg till följande namnrymd.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2e3e5abdfbb2bf2e9d7a12a677422adc67336775
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92210269"
 ---
 # <a name="remove-change-tracking-and-inventory-from-automation-account"></a>Ta bort Ändringsspårning och inventering från Automation-konto
@@ -32,7 +32,7 @@ Innan du kan ta bort länken till Automation-kontot från arbets ytan måste du 
 
 2. I listan med Log Analytics arbets ytor väljer du den arbets yta som du valde när du aktiverade Ändringsspårning och inventering.
 
-3. Välj **lösningar**till vänster.  
+3. Välj **lösningar** till vänster.  
 
 4. I listan med lösningar väljer du **ChangeTracking (arbets ytans namn)**. På sidan **Översikt** för lösningen väljer du **ta bort**. När du uppmanas att bekräfta väljer du **Ja**.
 

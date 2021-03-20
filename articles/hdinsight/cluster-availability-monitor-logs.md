@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100571901"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Övervaka kluster tillgänglighet med Azure Monitor loggar i HDInsight
@@ -37,7 +37,7 @@ När Azure Monitor logg integrering har Aktiver ATS (det här kan ta några minu
 
 Loggar visar ett antal exempel frågor, till exempel:
 
-| Frågenamn                      | Description                                                               |
+| Frågenamn                      | Beskrivning                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Tillgänglighet för datorer idag    | Rita ett diagram över antalet datorer som skickar loggar, varje timme                     |
 | Visa pulsslag                 | Visa en lista över alla dator pulsslag från den senaste timmen                           |

@@ -13,19 +13,19 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840207"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Användar flöden i Azure Active Directory B2C
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Användarflöden i Azure Active Directory B2C
 
-För att hjälpa dig att skapa de vanligaste identitets uppgifterna för dina program, innehåller Azure AD B2C Portal fördefinierade, konfigurerbara principer som kallas **användar flöden**. Med ett användar flöde kan du bestämma hur användare interagerar med ditt program när de gör saker som att logga in, registrera sig, redigera en profil eller återställa ett lösen ord. Med användar flöden kan du kontrol lera följande funktioner:
+För att hjälpa dig att konfigurera vanliga identitetsuppgifter för dina program finns det fördefinierade konfigurerbara principer, som kallas **användarflöden**, i Azure AD B2C-portalen. Med ett användar flöde kan du bestämma hur användare interagerar med ditt program när de gör saker som att logga in, registrera sig, redigera en profil eller återställa ett lösen ord. Med användar flöden kan du kontrol lera följande funktioner:
 
 - Konto typer som används för inloggning, till exempel sociala konton som ett Facebook-eller lokala konto
 - Attribut som ska samlas in från konsumenten, till exempel förnamn, post nummer och sko storlek
-- Azure AD-Multi-Factor Authentication
+- Azure AD-multifaktorautentisering
 - Anpassning av användar gränssnittet
 - Information som programmet tar emot som anspråk i en token
 
@@ -68,7 +68,7 @@ Azure AD B2C innehåller flera typer av användar flöden:
 De flesta typer av användar flöden har både en **Rekommenderad** version och en **standard** version. Mer information finns i [användar flödes versioner](user-flow-versions.md).
 
 > [!IMPORTANT]
-> Om du har arbetat med användar flöden i Azure AD B2C tidigare, ser vi att vi har ändrat hur vi refererar till användar flödes versioner. Tidigare erbjöd vi v1 (produktions klara) versioner och V 1.1 och v2 (för hands version). Nu har vi konsoliderat användar flöden i två versioner:
+> Om du har arbetat med användar flöden i Azure AD B2C tidigare, ser vi att vi har ändrat hur vi refererar till användar flödes versioner. Tidigare erbjöd vi V1-versioner (produktionsklara), V1.1 och V2 (förhandsversion). Nu har vi konsoliderat användar flöden i två versioner:
 >
 >- **Rekommenderade** användar flöden är de nya för hands versionerna av användar flöden. De har testats noggrant och kombinerar alla funktioner i äldre **v2** -och **v 1.1** -versioner. De nya rekommenderade användar flödena kommer att behållas och uppdateras. När du flyttar till dessa nya rekommenderade användar flöden har du till gång till nya funktioner när de släpps.
 >- **Standard** användar flöden, som tidigare kallats **v1**, är allmänt tillgängliga, produktions färdiga användar flöden. Om dina användar flöden är verksamhets kritiska och är beroende av hög stabila versioner, kan du fortsätta att använda standard användar flöden, vilket innebär att dessa versioner inte upprätthålls och uppdateras.

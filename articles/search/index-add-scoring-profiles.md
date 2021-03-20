@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537641"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Lägga till rankningsprofiler i ett Azure Cognitive Search-index
@@ -36,24 +36,24 @@ ms.locfileid: "91537641"
 "scoringProfiles": [
   {  
     "name":"geo",
-    "text": {  
-      "weights": {  
-        "hotelName": 5
-      }                              
+    "text": {  
+      "weights": {  
+        "hotelName": 5
+      }                              
     },
     "functions": [
       {  
         "type": "distance",
-        "boost": 5,
-        "fieldName": "location",
-        "interpolation": "logarithmic",
-        "distance": {
-          "referencePointParameter": "currentLocation",
-          "boostingDistance": 10
-        }                        
-      }                                      
-    ]                     
-  }            
+        "boost": 5,
+        "fieldName": "location",
+        "interpolation": "logarithmic",
+        "distance": {
+          "referencePointParameter": "currentLocation",
+          "boostingDistance": 10
+        }                        
+      }                                      
+    ]                     
+  }            
 ]
 ```  
 
@@ -281,6 +281,6 @@ Sök poängen beräknas baserat på statistiska egenskaper för data och frågan
 
 ## <a name="see-also"></a>Se även  
 
-+ [Referens för REST API](/rest/api/searchservice/)
++ [REST API referens](/rest/api/searchservice/)
 + [Skapa index-API](/rest/api/searchservice/create-index)
 + [Azure Kognitiv sökning .NET SDK](/dotnet/api/overview/azure/search?)

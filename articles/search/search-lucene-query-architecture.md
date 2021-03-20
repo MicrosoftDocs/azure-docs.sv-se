@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002756"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Full texts ökning i Azure Kognitiv sökning
@@ -251,7 +251,7 @@ Det är vanligt, men krävs inte, för att använda samma analyser för sökning
 
 I vårt exempel, för fältet **title** ser det inverterade indexet ut så här:
 
-| Term | Dokument lista |
+| Period | Dokument lista |
 |------|---------------|
 | atman | 1 |
 | bollar | 2 |
@@ -265,7 +265,7 @@ I fältet Rubrik visas bara *hotell* i två dokument: 1, 3.
 
 I fältet **Beskrivning** ser indexet ut så här:
 
-| Term | Dokument lista |
+| Period | Dokument lista |
 |------|---------------|
 | löst | 3
 | och | 4

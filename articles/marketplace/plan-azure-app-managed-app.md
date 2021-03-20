@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621424"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Planera ett Azure-hanterat program för ett erbjudande för Azure-program
@@ -92,7 +92,7 @@ Med JIT-åtkomst kan du begära utökad åtkomst till ett hanterat programs resu
 > [!NOTE]
 > Se till att uppdatera din `createUiDefinition.json` fil för att stödja den här funktionen.
 
-## <a name="deployment-mode"></a>Distributions läge
+## <a name="deployment-mode"></a>Distributionsläge
 
 Du kan konfigurera en hanterad program plan att använda antingen det **fullständiga** eller **stegvisa** distributions läget. I komplett läge leder en omdistribution av programmet av kunden till att resurser i den hanterade resurs gruppen tas bort om resurserna inte har definierats i [mainTemplate.jspå](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template). I stegvist läge lämnar en omdistribution av programmet befintliga resurser oförändrade. Läs mer i [Azure Resource Manager distributions lägen](../azure-resource-manager/templates/deployment-modes.md).
 
@@ -126,11 +126,11 @@ Du kan konfigurera högst fem principer och bara en instans av varje typ av prin
 
 | Principtyp | Princip parametrar krävs |
 | ------------ | ------------- |
-| Azure SQL Database kryptering | No |
-| Gransknings inställningar för Azure SQL Server | Yes |
-| Azure Data Lake Store kryptering | No |
-| Granska diagnostikinställningar | Yes |
-| Granska kompatibilitet för resurs plats | No |
+| Azure SQL Database kryptering | Inga |
+| Gransknings inställningar för Azure SQL Server | Ja |
+| Azure Data Lake Store kryptering | Inga |
+| Granska diagnostikinställningar | Ja |
+| Granska kompatibilitet för resurs plats | Inga |
 |||
 
 För varje princip typ som du lägger till måste du associera standard-eller kostnads fria princip-SKU. Standard-SKU: n krävs för gransknings principer. Princip namn är begränsade till 50 tecken.

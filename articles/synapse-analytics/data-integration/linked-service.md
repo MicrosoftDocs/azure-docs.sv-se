@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220124"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Skydda en länkad tjänst med privata länkar
@@ -62,7 +62,7 @@ Om du inte har valt att använda hyperlänken när du testar anslutningen ovan f
 ## <a name="check-the-connection-works"></a>Kontrol lera att anslutningen fungerar
 1. Gå till fliken **Hantera** och välj den länkade tjänst som du har skapat.
 1. Se till att **interaktiv redigering** är aktiv.
-1. Välj **test anslutning**. Du bör se att anslutningen lyckades.
+1. Välj **Testanslutning**. Du bör se att anslutningen lyckades.
 
 Nu har du upprättat en säker och privat anslutning mellan Synapse och den länkade tjänsten.
 

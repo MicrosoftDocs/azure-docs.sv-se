@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220345"
 ---
 # <a name="plan-virtual-networks"></a>Planera virtuella nätverk
@@ -85,7 +85,7 @@ Azure skapar flera standard vägar för utgående trafik från ett undernät. Du
 
 Om du behöver implementera anpassad routning rekommenderar vi att du bekantar dig med [routning i Azure](virtual-networks-udr-overview.md).
 
-## <a name="connectivity"></a>Anslutningar
+## <a name="connectivity"></a>Anslutning
 
 Du kan ansluta ett virtuellt nätverk till andra virtuella nätverk med hjälp av peering för virtuella nätverk eller till ditt lokala nätverk med hjälp av en Azure VPN-gateway.
 

@@ -10,10 +10,10 @@ ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096992"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Snabb start: Bygg en att göra-app med Xamarin med Azure Cosmos DB SQL API-konto
@@ -90,20 +90,20 @@ Nu ska vi klona SQL API-appen i Xamarin från GitHub, granska koden, hämta API-
 
 Gå tillbaka till Azure Portal för att hämta API-nyckelinformationen och kopiera den till appen.
 
-1. I [Azure Portal](https://portal.azure.com/) går du till ditt SQL API-konto i Azure Cosmos DB. Klicka på **Nycklar** i den vänstra navigeringen och sedan på **Läs- och skrivnycklar** . Använd kopieringsknapparna till höger på skärmen till att kopiera URI:n och primärnyckeln till filen APIKeys.cs i nästa steg.
+1. I [Azure Portal](https://portal.azure.com/) går du till ditt SQL API-konto i Azure Cosmos DB. Klicka på **Nycklar** i den vänstra navigeringen och sedan på **Läs- och skrivnycklar**. Använd kopieringsknapparna till höger på skärmen till att kopiera URI:n och primärnyckeln till filen APIKeys.cs i nästa steg.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Visa och kopiera en åtkomstnyckel i Azure Portal, bladet Nycklar":::
 
 2. Öppna **ToDoItems. Core/helpers/APIKeys. cs** i Visual Studio.
 
-3. Kopiera **URI** -värdet i Azure-portalen med kopierings knappen och gör det till värdet för `CosmosEndpointUrl` variabeln i APIKeys.cs.
+3. Kopiera **URI** -värdet i Azure-portalen med kopierings knappen och gör det till värdet för `CosmosEndpointUrl` variabeln i APIKeys. cs.
 
     ```csharp
     //#error Enter the URL of your Azure Cosmos DB endpoint here
             public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
     ```
 
-4. I Azure-portalen, med kopierings knappen, kopierar du värdet för **primär nyckel** och gör det till värdet för `Cosmos Auth Key` i APIKeys.cs.
+4. I Azure Portal, med hjälp av kopierings knappen, kopierar du värdet för **primär nyckel** och gör det till värdet för `Cosmos Auth Key` i APIKeys. cs.
 
     ```csharp
     //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
@@ -116,7 +116,7 @@ Gå tillbaka till Azure Portal för att hämta API-nyckelinformationen och kopie
 
 Den här lösningen visar hur du skapar en att göra-app med SQL API i Azure Cosmos DB och Xamarin.Forms. Appen har två flikar, den första fliken innehåller en listvy med att göra-objekt som inte har slutförts än. Den andra fliken visar att göra-objekt som har slutförts. Förutom att visa att göra-objekt som inte slutförts i den första fliken, kan du också lägga till nya att göra-objekt, redigera befintliga och markera objekt som slutförda.
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="Kopiera in json-data och klicka på Spara i Datautforskaren i Azure Portal":::
 
 Koden i ToDoItems-lösningen innehåller:
 
@@ -182,27 +182,27 @@ Följande steg visar hur du kör appen med felsökningsprogrammet i Visual Studi
 
 1. Först väljer du plattform genom att klicka på den markerade listrutan och välja antingen ToDoItems.iOS för iOS eller ToDoItems.Android för Android.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Välja en plattform för felsökning i Visual Studio för Mac":::
 
 2. Tryck på cmd+Retur eller klicka på uppspelningsknappen för att starta felsökningen av appen.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Börja felsöka i Visual Studio för Mac":::
 
 3. När iOS-simulatorn eller Android-emulatorn har startats visar appen två flikar längst ned på skärmen för iOS och högst upp på skärmen för Android. Först visas de att göra-objekt som inte är slutförda, därefter visas att göra-objekten som har slutförts.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Starta skärmen i Att göra-appen":::
 
-4. Om du vill slutföra ett att göra-objekt i iOS drar du det till vänster > och trycker på knappen **Slutför** . Om du vill slutföra ett att göra-objekt i Android trycker du länge på objektet > tryck sedan på knappen Slutför.
+4. Om du vill slutföra ett att göra-objekt i iOS drar du det till vänster > och trycker på knappen **Slutför**. Om du vill slutföra ett att göra-objekt i Android trycker du länge på objektet > tryck sedan på knappen Slutför.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Slutföra ett att göra-objekt":::
 
 5. Om du vill redigera ett att göra-objekt > trycker du på objektet > en ny skärm visas där du kan ange nya värden. Tryck på Spara-knappen för att behålla ändringarna i Azure Cosmos DB.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Redigera att göra-objekt":::
 
 6. Om du vill lägga till ett att göra-objekt > trycker du på knappen **Lägg till** längst upp till höger på startsidan > en ny tom redigeringssida visas.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Att göra-app i Xamarin som körs på iOS":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Lägga till att göra-objekt":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Granska serviceavtal i Azure-portalen
 

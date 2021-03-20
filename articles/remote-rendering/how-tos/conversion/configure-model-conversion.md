@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205327"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurera modellkonverteringen
@@ -182,7 +182,7 @@ De här formaten är tillåtna för respektive komponenter:
 
 | :::no-loc text="Vertex"::: -komponent | Format som stöds (fet = standard) |
 |:-----------------|:------------------|
-|position| **32_32_32_FLOAT**16_16_16_16_FLOAT |
+|position| **32_32_32_FLOAT** 16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, ingen |
 |color1| 8_8_8_8_UNSIGNED_NORMALIZED, **ingen**|
 |gängse| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, ingen |

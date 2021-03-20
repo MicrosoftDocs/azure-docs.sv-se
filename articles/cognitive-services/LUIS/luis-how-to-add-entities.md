@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540973"
 ---
 # <a name="add-entities-to-extract-data"></a>Lägga till entiteter för att extrahera data
@@ -62,7 +62,7 @@ Den här processen fungerar för enheter som har lärts in, lista entiteter och 
 1. Logga in på [Luis-portalen](https://www.luis.ai)och välj din **prenumerations** -och **redigerings resurs** för att se vilka appar som tilldelats den här redigerings resursen.
 1. Öppna din app genom att välja namnet på sidan **Mina appar** .
 1. Välj sidan **entiteter** .
-1. Välj **+ skapa**och välj sedan enhets typ.
+1. Välj **+ skapa** och välj sedan enhets typ.
 1. Fortsätt att konfigurera entiteten och välj sedan **skapa** när du är färdig.
 
 ## <a name="create-a-machine-learned-entity"></a>Skapa en enhet som har lärts in
@@ -75,7 +75,7 @@ Den här processen fungerar för enheter som har lärts in, lista entiteter och 
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar hur du skapar en enhet som har lärts.](media/add-entities/machine-learned-entity-with-structure.png)
 
-1. I **Lägg till underentiteter**lägger du till en underordnad entitet genom att välja **+** på raden för den överordnade entiteten.
+1. I **Lägg till underentiteter** lägger du till en underordnad entitet genom att välja **+** på raden för den överordnade entiteten.
 
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar hur du lägger till underentiteter.](media/add-entities/machine-learned-entity-with-subentities.png)
@@ -116,8 +116,8 @@ I följande lista visas kanoniskt namn och synonymer.
 
 |Objekt namn för färg lista|Färg synonymer|
 |--|--|
-|Röd|Crimson, blod, äpple, eld-motor|
-|Blå|Himmelsblå, kobolt|
+|Red|Crimson, blod, äpple, eld-motor|
+|Blue|Himmelsblå, kobolt|
 |Green|Kelly, kalk|
 
 Använd proceduren för att skapa en lista med entiteter. När entiteten lista har skapats behöver du inte märka exempel yttranden i ett avsikts syfte. List objekt och synonymer matchas med hjälp av exakt text.

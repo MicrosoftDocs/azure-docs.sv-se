@@ -1,7 +1,7 @@
 ---
-title: Konfigurera ett värdbaserat användar gränssnitt för Anpassad sökning i Bing | Microsoft Docs
+title: Konfigurera ett värdbaserat användar gränssnitt för Anpassad Bing-sökning | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Använd den här artikeln för att konfigurera och integrera ett värdbaserad gränssnitt för Anpassad sökning i Bing.
+description: Använd den här artikeln för att konfigurera och integrera ett värdbaserad gränssnitt för Anpassad Bing-sökning.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: ca3f9da681c60608b5b196b17191f0b4d549f305
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96338375"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurera värdbaserad UI-upplevelse
@@ -25,7 +25,7 @@ ms.locfileid: "96338375"
 > API:er för Bing-sökresultat som har tillhandahållits med hjälp av Cognitive Services kommer att stödjas under de kommande tre åren eller tills Enterprise-avtals slut, beroende på vilket som sker först.
 > Instruktioner för migrering finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Anpassad sökning i Bing tillhandahåller ett värdbaserad gränssnitt som du enkelt kan integrera med dina webb sidor och webb program som ett JavaScript-kodfragment. Med hjälp av Anpassad sökning i Bing Portal kan du konfigurera alternativ för layout, färg och sökning i användar gränssnittet.
+Anpassad Bing-sökning tillhandahåller ett värdbaserad gränssnitt som du enkelt kan integrera med dina webb sidor och webb program som ett JavaScript-kodfragment. Med hjälp av Anpassad Bing-sökning Portal kan du konfigurera alternativ för layout, färg och sökning i användar gränssnittet.
 
 
 
@@ -33,9 +33,9 @@ Anpassad sökning i Bing tillhandahåller ett värdbaserad gränssnitt som du en
 
 Följ dessa steg om du vill konfigurera ett värdbaserat användar gränssnitt för dina webb program. När du gör ändringar får du en förhands granskning av ditt användar gränssnitt i rutan till höger. De visade Sök resultaten är inte faktiska resultat för din instans.
 
-1. Logga in på Anpassad sökning i Bing [Portal](https://customsearch.ai).  
+1. Logga in på Anpassad Bing-sökning [Portal](https://customsearch.ai).  
   
-2. Välj din Anpassad sökning i Bing-instans.
+2. Välj din Anpassad Bing-sökning-instans.
 
 3. Klicka på fliken för **värdbaserat användargränssnitt**.  
   

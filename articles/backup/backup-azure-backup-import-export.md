@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704371"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Arbets flöde för offline-säkerhetskopiering i Azure Backup
@@ -42,7 +42,7 @@ Följande Azure Backup funktioner eller arbets belastningar stöder användning 
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
   > [!NOTE]
   > Följande nödvändiga komponenter och arbets flöde gäller endast offline-säkerhetskopiering av filer och mappar med hjälp av den [senaste Azure Recovery Services-agenten](https://aka.ms/azurebackup_agent). Om du vill utföra säkerhets kopiering offline för arbets belastningar med System Center DPM eller Azure Backup Server, se [arbets flöde för offline-säkerhetskopiering för DPM och Azure Backup Server](backup-azure-backup-server-import-export.md).
