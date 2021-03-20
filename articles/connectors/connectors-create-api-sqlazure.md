@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 tags: connectors
 ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013455"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisera arbets flöden för en SQL-databas med hjälp av Azure Logic Apps
@@ -77,7 +77,7 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
    | Autentisering | Beskrivning |
    |----------------|-------------|
    | [**Azure AD-integrerad**](../azure-sql/database/authentication-aad-overview.md) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver en giltig identitet i Azure Active Directory (Azure AD) som har åtkomst till din databas. <p>Mer information finns i de här ämnena: <p>- [Översikt över Azure SQL-säkerhet – autentisering](../azure-sql/database/security-overview.md#authentication) <br>- [Auktorisera databas åtkomst till Azure SQL – autentisering och auktorisering](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – integrerad Azure AD-autentisering](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver ett giltigt användar namn och ett starkt lösen ord som skapas och lagras i databasen. <p>Mer information finns i de här ämnena: <p>- [Översikt över Azure SQL-säkerhet – autentisering](../azure-sql/database/security-overview.md#authentication) <br>- [Auktorisera databas åtkomst till Azure SQL – autentisering och auktorisering](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver ett giltigt användar namn och ett starkt lösen ord som skapas och lagras i databasen. <p>Mer information finns i de här ämnena: <p>- [Översikt över Azure SQL-säkerhet – autentisering](../azure-sql/database/security-overview.md#authentication) <br>- [Auktorisera databas åtkomst till Azure SQL – autentisering och auktorisering](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Det här exemplet fortsätter med **Azure AD Integrated**:
@@ -92,7 +92,7 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
    |----------|----------|-------------|
    | **Servernamn** | Yes | Adressen till din SQL-Server, till exempel `Fabrikam-Azure-SQL.database.windows.net` |
    | **Databasnamn** | Ja | Namnet på din SQL-databas, till exempel `Fabrikam-Azure-SQL-DB` |
-   | **Tabellnamn** | Ja | Den tabell som du vill använda, till exempel `SalesLT.Customer` |
+   | **Tabell namn** | Ja | Den tabell som du vill använda, till exempel `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -126,7 +126,7 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
    | Autentisering | Beskrivning |
    |----------------|-------------|
    | [**Windows-autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Stöder endast non-ISE SQL Server-anslutningen, som kräver en data gateway-resurs som tidigare har skapats i Azure för anslutningen, oavsett om du använder Azure med flera innehavare eller en ISE. <p><p>-Kräver ett giltigt Windows-användarnamn och-lösen ord för att bekräfta din identitet via ditt Windows-konto. <p>Mer information finns i [Windows-autentisering](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server-autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver ett giltigt användar namn och ett starkt lösen ord som skapas och lagras i SQL Server. <p>Mer information finns i [SQL Server autentisering](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
+   | [**SQL Server autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver ett giltigt användar namn och ett starkt lösen ord som skapas och lagras i SQL Server. <p>Mer information finns i [SQL Server autentisering](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
    |||
 
    Det här exemplet fortsätter med **Windows-autentisering**:

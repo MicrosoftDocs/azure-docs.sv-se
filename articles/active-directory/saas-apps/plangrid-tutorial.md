@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 40bc9da59138a2e5f70f1b8c5f06a9ba606791fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>Självstudie: Azure Active Directory integrering med PlanGrid
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med PlanGrid i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **PlanGrid** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **PlanGrid** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -156,7 +156,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till PlanGrid.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **PlanGrid**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **PlanGrid**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

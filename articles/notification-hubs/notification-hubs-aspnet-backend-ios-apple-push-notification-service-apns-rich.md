@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090371"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
@@ -142,7 +142,7 @@ På hög nivå:
 Nu när du har ändrat appens Server del för att skicka bara *ID: t* för ett meddelande, ändra din iOS-app för att hantera detta ID och hämta det omfattande meddelandet från Server delen:
 
 1. Öppna ditt iOS-projekt och aktivera fjärraviseringar genom att gå till huvudappens mål i avsnittet **mål** .
-2. Välj **funktioner**, aktivera **bakgrunds lägen**och markera kryss rutan **fjärraviseringar** .
+2. Välj **funktioner**, aktivera **bakgrunds lägen** och markera kryss rutan **fjärraviseringar** .
 
     ![Skärm bild av iOS-projektet som visar funktions skärmen. Bakgrunds lägen är aktiverat och kryss rutan fjärraviseringar är markerad.][IOS3]
 3. Öppna `Main.storyboard` och kontrol lera att du har en Visa kontrollant (kallas för start visning i den här självstudien) från självstudien [meddela användaren](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) .
@@ -153,7 +153,7 @@ Nu när du har ändrat appens Server del för att skicka bara *ID: t* för ett m
 6. Klicka på **Start-kontrollanten** i storyboard och kontrol lera att den har **HomeViewController** som dess **anpassade klass** och **storyboard-ID** under identitets kontrollen.
 7. Gör samma sak för bildview-styrenheten som **imageViewController**.
 8. Skapa sedan en ny View Controller-klass med namnet **imageViewController** för att hantera det användar gränssnitt som du nyss skapade.
-9. I **imageViewController. h**lägger du till följande kod i kontrollantens gränssnitts deklarationer. Kontrol lera att du drar från vyn storyboard bild till dessa egenskaper för att länka två:
+9. I **imageViewController. h** lägger du till följande kod i kontrollantens gränssnitts deklarationer. Kontrol lera att du drar från vyn storyboard bild till dessa egenskaper för att länka två:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
@@ -379,7 +379,7 @@ Nu när du har ändrat appens Server del för att skicka bara *ID: t* för ett m
 
 1. I XCode kör du appen på en fysisk iOS-enhet (push-meddelanden fungerar inte i simulatorn).
 2. I iOS-appens användar gränssnitt anger du ett användar namn och lösen ord för samma värde för autentisering och klickar på **Logga in**.
-3. Klicka på **skicka push** och du bör se en avisering i appen. Om du klickar på **mer**kommer du till den avbildning som du valde att ta med i appens Server del.
+3. Klicka på **skicka push** och du bör se en avisering i appen. Om du klickar på **mer** kommer du till den avbildning som du valde att ta med i appens Server del.
 4. Du kan också klicka på **skicka push** och direkt trycka på enhetens Start knapp. Om en stund så får du ett push-meddelande. Om du knackar på den eller klickar på mer kommer du till din app och innehållet i innehålls sidan.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png

@@ -8,15 +8,15 @@ ms.date: 09/03/2020
 ms.author: cherylmc
 ms.topic: how-to
 ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440770"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Ta bort en virtuell nätverksgateway med PowerShell
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure-portalen](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klassisk)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >

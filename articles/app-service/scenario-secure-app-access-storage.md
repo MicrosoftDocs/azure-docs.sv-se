@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435849"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Självstudie: åtkomst Azure Storage från en webbapp
@@ -64,7 +64,7 @@ Blobbar i Azure Storage ordnas i behållare. Innan du kan ladda upp en BLOB sena
 
 Följ dessa steg om du vill skapa ett allmänt-syfte v2-lagrings konto i Azure Portal.
 
-1. I menyn i Azure-portalen väljer du **Alla tjänster**. Ange **lagrings konton** i listan över resurser. När du börjar skriva filtreras listan baserat på det du skriver. Välj **lagrings konton**.
+1. Välj **Alla tjänster** på menyn i Azure-portalen. Ange **lagrings konton** i listan över resurser. När du börjar skriva filtreras listan baserat på det du skriver. Välj **lagrings konton**.
 
 1. I fönstret **lagrings konton** som visas väljer du **Lägg till**.
 

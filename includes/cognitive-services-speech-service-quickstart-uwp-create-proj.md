@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 7386cfaaf410614c6eeee19669f8f769ad691c1f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99214162"
 ---
 Om du vill skapa ett Visual Studio-projekt för Universell Windows-plattform (UWP)-utveckling måste du ställa in alternativ för Visual Studio-utveckling, skapa projektet, välja mål arkitektur, konfigurera ljud fångst och installera tal-SDK.

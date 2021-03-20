@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657123"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Nästa steg och hur du hanterar Azure AD Connect
@@ -35,10 +35,10 @@ Nu när användarna har synkroniserats till molnet måste du tilldela dem en lic
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Tilldela en licens för Azure AD Premium eller Enterprise Mobility Suite
 
 1. Logga in på Azure Portal som administratör.
-2. Välj **Active Directory**till vänster.
+2. Välj **Active Directory** till vänster.
 3. På sidan **Active Directory** dubbelklickar du på katalogen som innehåller de användare som du vill konfigurera.
 4. Överst på katalogsidan väljer du **Licenser**.
-5. På sidan **licenser** väljer du **Active Directory Premium** -eller **Enterprise Mobility Suite**och klickar sedan på **tilldela**.
+5. På sidan **licenser** väljer du **Active Directory Premium** -eller **Enterprise Mobility Suite** och klickar sedan på **tilldela**.
 6. I dialogrutan väljer du de användare som du vill tilldela licenser till och klickar sedan på bockmarkeringen för att spara ändringarna.
 
 ## <a name="verify-the-scheduled-synchronization-task"></a>Verifiera aktiviteten för schemalagd synkronisering
@@ -46,7 +46,7 @@ Använd Azure Portal för att kontrol lera status för en synkronisering.
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>Så här verifierar du aktiviteten för schemalagd synkronisering
 1. Logga in på Azure Portal som administratör.
-2. Välj **Active Directory**till vänster.
+2. Välj **Active Directory** till vänster.
 3. Välj **Azure AD Connect** till vänster
 4. Lägg märke till den senaste synkroniseringen längst upp på sidan.
 

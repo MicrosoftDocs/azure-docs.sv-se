@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: c585cedce677599528e036525dead13a85c8b102
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012384"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Snabbstart: Skapa ett Stream Analytics-jobb med hjälp av Azure-portalen
@@ -90,7 +90,7 @@ Innan du definierar Stream Analytics jobbet bör du förbereda indata. Real tids
    |Jobbnamn   |  MyASAJob   |   Ange ett namn som identifierar Stream Analytics-jobbet. Stream Analytics-jobbets namn får enbart innehålla alfanumeriska tecken, bindestreck och understreck och måste vara mellan 3 och 63 tecken långt. |
    |Prenumeration  | \<Your subscription\> |  Välj den Azure-prenumeration som du vill använda för jobbet. |
    |Resursgrupp   |   asaquickstart-resourcegroup  |   Använd samma resursgrupp som din IoT-hubb. |
-   |Plats  |  \<Select the region that is closest to your users\> | Välj den geografiska plats där du kan ha ditt Stream Analytics-jobb. Använd den plats som är närmast dina användare för att få bättre prestanda och minska kostnaderna för dataöverföring. |
+   |Location  |  \<Select the region that is closest to your users\> | Välj den geografiska plats där du kan ha ditt Stream Analytics-jobb. Använd den plats som är närmast dina användare för att få bättre prestanda och minska kostnaderna för dataöverföring. |
    |Strömningsenheter  | 1  |   Strömningsenheter representerar de bearbetningsresurser som krävs för att köra ett jobb. Standardvärdet är 1. Mer information om skalning av strömningsenheter finns i artikeln om att [förstå och justera strömningsenheter](stream-analytics-streaming-unit-consumption.md).   |
    |Värdmiljö  |  Moln  |   Stream Analytics-jobb kan distribueras till molnet eller edge. Med molnet kan du distribuera till Azure-molnet, och med Edge kan du distribuera till en IoT Edge enhet. |
 

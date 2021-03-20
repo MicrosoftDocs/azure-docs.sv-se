@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401089"
 ---
 Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som SQL Server tillgänglighets gruppen lyssnar på. Skapa tillgänglighets gruppens lyssnare genom att göra följande:
@@ -37,7 +37,7 @@ Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som S
 
     d. Slutför skapandet av lyssnaren genom att klicka på **Nästa** två gånger och sedan på **Slutför**. Ta inte med lyssnaren eller resursen online just nu.
 
-1. Koppla från tillgänglighets gruppens kluster roll offline. I **Klusterhanteraren för växling vid fel** under **roller**högerklickar du på rollen och väljer **stoppa roll**.
+1. Koppla från tillgänglighets gruppens kluster roll offline. I **Klusterhanteraren för växling vid fel** under **roller** högerklickar du på rollen och väljer **stoppa roll**.
 
 1. <a name="congroup"></a>Konfigurera IP-resursen för tillgänglighets gruppen.
 
@@ -48,7 +48,7 @@ Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som S
 
     b. Högerklicka på IP-resursen och klicka sedan på egenskaper. Anteckna namnet på IP-adressen och Använd det i `$IPResourceName` variabeln i PowerShell-skriptet.
 
-    c. Under **IP-adress**klickar du på **statisk IP-adress**. Ange IP-adressen som samma adress som du använde när du konfigurerade adressen för belastningsutjämnaren på Azure Portal.
+    c. Under **IP-adress** klickar du på **statisk IP-adress**. Ange IP-adressen som samma adress som du använde när du konfigurerade adressen för belastningsutjämnaren på Azure Portal.
 
    ![Skärm bild som visar var du anger IP-adressen.](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
@@ -58,7 +58,7 @@ Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som S
 
 1. <a name = "dependencyGroup"></a>Gör SQL Server tillgänglighets grupps resurs beroende av klient åtkomst punkten.
 
-    a. Klicka på **roller**i Klusterhanteraren för växling vid fel och klicka sedan på din tillgänglighets grupp.
+    a. Klicka på **roller** i Klusterhanteraren för växling vid fel och klicka sedan på din tillgänglighets grupp.
 
     b. På fliken **resurser** , under **andra resurser**, högerklickar du på resurs gruppen tillgänglighet och klickar sedan på **Egenskaper**. 
 
@@ -70,9 +70,9 @@ Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som S
 
 1. <a name="listname"></a>Gör klient åtkomst punkt resursen beroende av IP-adressen.
 
-    a. Klicka på **roller**i Klusterhanteraren för växling vid fel och klicka sedan på din tillgänglighets grupp. 
+    a. Klicka på **roller** i Klusterhanteraren för växling vid fel och klicka sedan på din tillgänglighets grupp. 
 
-    b. På fliken **resurser** högerklickar du på resursen för klient åtkomst punkt under **Server namn**och klickar sedan på **Egenskaper**. 
+    b. På fliken **resurser** högerklickar du på resursen för klient åtkomst punkt under **Server namn** och klickar sedan på **Egenskaper**. 
 
    ![Skärm bild som visar meny alternativet egenskaper för serverns namn.](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
@@ -81,7 +81,7 @@ Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som S
    ![IP-resurs](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Du kan kontrol lera att beroendena är korrekt konfigurerade. I Klusterhanteraren för växling vid fel går du till roller, högerklickar på tillgänglighets gruppen, klickar på **fler åtgärder**och klickar sedan på  **Visa beroende rapport**. När beroendena är korrekt konfigurerade är tillgänglighets gruppen beroende av nätverks namnet och nätverks namnet är beroende av IP-adressen. 
+    >Du kan kontrol lera att beroendena är korrekt konfigurerade. I Klusterhanteraren för växling vid fel går du till roller, högerklickar på tillgänglighets gruppen, klickar på **fler åtgärder** och klickar sedan på  **Visa beroende rapport**. När beroendena är korrekt konfigurerade är tillgänglighets gruppen beroende av nätverks namnet och nätverks namnet är beroende av IP-adressen. 
 
 
 1. <a name="setparam"></a>Ange kluster parametrarna i PowerShell.
@@ -108,13 +108,13 @@ Tillgänglighets gruppens lyssnare är en IP-adress och ett nätverks namn som S
    > [!NOTE]
    > Om SQL Server instanserna finns i olika regioner måste du köra PowerShell-skriptet två gånger. Första gången använder du `$ListenerILBIP` och `$ListenerProbePort` från den första regionen. Den andra gången använder du `$ListenerILBIP` och `$ListenerProbePort` från den andra regionen. Kluster nätverks namnet och kluster-IP-resursens namn är också olika för varje region.
 
-1. Ta tillgänglighets gruppens kluster roll online. I **Klusterhanteraren för växling vid fel** under **roller**högerklickar du på rollen och väljer **Starta roll**.
+1. Ta tillgänglighets gruppens kluster roll online. I **Klusterhanteraren för växling vid fel** under **roller** högerklickar du på rollen och väljer **Starta roll**.
 
 Om det behövs upprepar du stegen ovan för att ange kluster parametrar för IP-adressen för WSFC-klustret.
 
-1. Hämta IP-adress namnet för WSFC-klustrets IP-adress. Leta upp **Server namn**i **Klusterhanteraren för växling vid fel** under **kluster kärn resurser**.
+1. Hämta IP-adress namnet för WSFC-klustrets IP-adress. Leta upp **Server namn** i **Klusterhanteraren för växling vid fel** under **kluster kärn resurser**.
 
-1. Högerklicka på **IP-adress**och välj **Egenskaper**.
+1. Högerklicka på **IP-adress** och välj **Egenskaper**.
 
 1. Kopiera **namnet** på IP-adressen. Det kan vara `Cluster IP Address` . 
 

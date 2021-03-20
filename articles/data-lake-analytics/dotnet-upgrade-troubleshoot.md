@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/11/2019
 ms.openlocfilehash: ab03ea8a88187289f5dce55f8a396a9d51346a3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217685"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics uppgraderar till .NET Framework v-4.7.2
@@ -61,7 +61,7 @@ De vanligaste baklänges-inkompatibiliteterna som granskaren är troligt vis att
   - Föreslagen åtgärd: kontrol lera att TaskFactory. FromAsync returnerar korrekt värde
 
 - DataObject. GetData hämtar nu data som UTF-8
-  - För appar som är riktade till .NET Framework 4 eller som körs i .NET Framework 4.5.1 eller tidigare versioner hämtar DataObject. GetData HTML-formaterad data som en ASCII-sträng. Det innebär att icke-ASCII-tecken (tecken vars ASCII-koder är större än 0x7F) representeras av två slumpmässiga tecken. #N # #N # för appar som är riktade till .NET Framework 4,5 eller senare och som körs på .NET Framework 4.5.2 `DataObject.GetData` hämtar HTML-formaterade data som UTF-8, vilket motsvarar tecken som är större än 0x7f.
+  - För appar som är riktade till .NET Framework 4 eller som körs i .NET Framework 4.5.1 eller tidigare versioner hämtar DataObject. GetData HTML-formaterad data som en ASCII-sträng. Det innebär att icke-ASCII-tecken (tecken vars ASCII-koder är större än 0x7F) representeras av två slumpmässiga tecken. #N # #N#For appar som är riktade till .NET Framework 4,5 eller senare och som körs på .NET Framework 4.5.2 `DataObject.GetData` hämtar HTML-formaterade data som UTF-8, vilket motsvarar tecken som är större än 0x7f.
   - Påverkade bibliotek: Glo
   - Föreslagen åtgärd: se till att data hämtas är det format som du vill använda
 

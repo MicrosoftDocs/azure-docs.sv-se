@@ -5,10 +5,10 @@ ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80676521"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Gränser i Azure blockchain-tjänsten
@@ -21,7 +21,7 @@ De maximala gränserna för transaktioner och validator-noder beror på om du et
 
 | Prisnivå | Max transaktions noder | Max verifierings-noder |
 |:---|:---:|:---:|
-| Basic | 10 | 1 |
+| Grundläggande | 10 | 1 |
 | Standard | 10 | 2 |
 
 Ditt konsortiums nätverk bör ha minst två noder i Azure blockchain-tjänstens standard nivå. På standard-nivå-noderna finns två verifierade noder. Det krävs fyra validator-noder för att uppfylla den [Byzantine fel toleransen på Istanbul](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus).

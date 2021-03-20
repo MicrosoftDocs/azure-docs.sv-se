@@ -4,10 +4,10 @@ description: Så här lägger du till ett tillägg för skalnings uppsättning f
 ms.topic: article
 ms.date: 09/28/2020
 ms.openlocfilehash: a47908b511f79c18482e9d21e623f1cb4dc70ed1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737774"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Lägg till ett tillägg för skalnings uppsättning för virtuell dator till en Service Fabric hanterad kluster nodtyp (för hands version)

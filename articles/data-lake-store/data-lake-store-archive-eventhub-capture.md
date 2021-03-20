@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578248"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Använd Azure Data Lake Storage Gen1 för att avbilda data från Event Hubs
@@ -44,13 +44,13 @@ I det här avsnittet skapar du en mapp i kontot där du vill samla in data från
 
     ![Skärm bild av data Utforskaren med roten för kontot och åtkomst alternativet som anropas.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Tilldela behörigheter för Data Lake Storage Gen1 roten")
 
-    b. Under **åtkomst**klickar du på **Lägg till**, klicka på **Välj användare eller grupp**och Sök sedan efter `Microsoft.EventHubs` . 
+    b. Under **åtkomst** klickar du på **Lägg till**, klicka på **Välj användare eller grupp** och Sök sedan efter `Microsoft.EventHubs` . 
 
     ![Skärm bild av åtkomst sidan med alternativet Lägg till, Välj alternativ för användare eller grupp och alternativet Microsoft-Eventhubs som kallas.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Tilldela behörigheter för Data Lake Storage Gen1 roten")
     
     Klicka på **Välj**.
 
-    c. Under **tilldela behörigheter**klickar du på **Välj behörigheter**. Ange **behörigheter** som ska **köras**. Ange **Lägg** till i **den här mappen och alla underordnade**. Ange **Lägg till som** **åtkomst behörighets post och en standard behörighets post**.
+    c. Under **tilldela behörigheter** klickar du på **Välj behörigheter**. Ange **behörigheter** som ska **köras**. Ange **Lägg** till i **den här mappen och alla underordnade**. Ange **Lägg till som** **åtkomst behörighets post och en standard behörighets post**.
 
     > [!IMPORTANT]
     > När du skapar en ny mapphierarki för att fånga data som tagits emot av Azure Event Hubs är det ett enkelt sätt att säkerställa åtkomst till målmappen.  Men det kan ta lång tid att lägga till behörigheter till alla underordnade till en mapp på översta nivån med många underordnade filer och mappar.  Om rotmappen innehåller ett stort antal filer och mappar kan det gå snabbare att lägga till **körnings** behörigheter för `Microsoft.EventHubs` enskilda mappar i sökvägen till den slutliga målmappen. 
@@ -65,13 +65,13 @@ I det här avsnittet skapar du en mapp i kontot där du vill samla in data från
 
     ![Skärm bild av data Utforskaren med en mapp i kontot och åtkomst alternativet har anropats.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Tilldela behörigheter för mappen Data Lake Storage Gen1")
 
-    b. Under **åtkomst**klickar du på **Lägg till**, klicka på **Välj användare eller grupp**och Sök sedan efter `Microsoft.EventHubs` . 
+    b. Under **åtkomst** klickar du på **Lägg till**, klicka på **Välj användare eller grupp** och Sök sedan efter `Microsoft.EventHubs` . 
 
     ![Skärm bild av åtkomst sidan för data Utforskaren med alternativet Lägg till, Välj alternativ för användare eller grupp och alternativet Microsoft-Eventhubs.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Tilldela behörigheter för mappen Data Lake Storage Gen1")
     
     Klicka på **Välj**.
 
-    c. Under **tilldela behörigheter**klickar du på **Välj behörigheter**. Ange **behörigheter** för att **läsa, skriva** och **köra**. Ange **Lägg** till i **den här mappen och alla underordnade**. Slutligen anger du **Lägg till som** till **en åtkomst behörighets post och en standard behörighets post**.
+    c. Under **tilldela behörigheter** klickar du på **Välj behörigheter**. Ange **behörigheter** för att **läsa, skriva** och **köra**. Ange **Lägg** till i **den här mappen och alla underordnade**. Slutligen anger du **Lägg till som** till **en åtkomst behörighets post och en standard behörighets post**.
 
     ![Skärm bild av avsnittet tilldela behörigheter med alternativet Välj behörigheter inringat. Avsnittet Välj behörigheter är intill det med alternativen läsa, skriva och köra, alternativet Lägg till i och alternativet Lägg till som anropas.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Tilldela behörigheter för mappen Data Lake Storage Gen1")
     
@@ -95,7 +95,7 @@ I det här avsnittet skapar du en Event Hub i ett Event Hubs namn område. Du ko
     
     c. Ställ **in** på **på**. Ange **tidsfönstret** (hur ofta hämtningen ska uppfångas) och **storleks fönstret** (data storleken för att avbilda). 
     
-    d. För **avbildnings leverantör**väljer du **Azure Data Lake Store** och väljer sedan det data Lake Storage gen1 konto som du skapade tidigare. Ange namnet på den mapp som du skapade i Data Lake Storage Gen1-kontot för **data Lake sökväg**. Du behöver bara ange den relativa sökvägen till mappen.
+    d. För **avbildnings leverantör** väljer du **Azure Data Lake Store** och väljer sedan det data Lake Storage gen1 konto som du skapade tidigare. Ange namnet på den mapp som du skapade i Data Lake Storage Gen1-kontot för **data Lake sökväg**. Du behöver bara ange den relativa sökvägen till mappen.
 
     e. Lämna **exempel fil namns formatet** till standardvärdet. Med det här alternativet styrs mappstrukturen som skapas under mappen Capture.
 

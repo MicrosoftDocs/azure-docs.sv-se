@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: ac6ac7ec871f789b0a1459cea102c5f9dc7e1958
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>Självstudie: Azure Active Directory integrering med Merchlogix
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Merchlogix i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Merchlogix** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Merchlogix** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Merchlogix.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Merchlogix**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Merchlogix**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

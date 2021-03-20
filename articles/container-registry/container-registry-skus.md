@@ -4,10 +4,10 @@ description: Lär dig mer om funktionerna och begränsningarna (kvoterna) i Azur
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015676"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry tjänst nivåer
@@ -48,7 +48,7 @@ I behållarens register **Översikt** i Azure Portal väljer du **Uppdatera** oc
 
 ![Uppdatera container Registry-SKU: n i Azure Portal][update-registry-sku]
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 För pris information om var och en av Azure Container Registry tjänst nivåerna, se [container Registry prissättning][container-registry-pricing].
 

@@ -4,10 +4,10 @@ description: Den här artikeln visar hur en administratör kan lägga till en an
 ms.topic: article
 ms.date: 09/04/2020
 ms.openlocfilehash: 4b46dd08a3b9527cdfc7bdf766ee4976e67656d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89482677"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Så här lägger du till ytterligare ägare till ett befintligt labb i Azure Lab Services
@@ -17,9 +17,9 @@ Den här artikeln visar hur du, som administratör, kan lägga till ytterligare 
 Om du vill lägga till en användare som ytterligare ägare till ett befintligt labb måste du först ge användaren **Läs** behörighet till labb kontot.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. På menyn till vänster väljer du **Alla tjänster**. Sök efter **labb tjänster**och markera det sedan.
+2. På menyn till vänster väljer du **Alla tjänster**. Sök efter **labb tjänster** och markera det sedan.
 3. Välj ditt **labb konto** i listan. 
-2. På **sidan labb konto**väljer du **Access Control (IAM)** på den vänstra menyn. 
+2. På **sidan labb konto** väljer du **Access Control (IAM)** på den vänstra menyn. 
 2. Välj **Lägg till** i verktygsfältet på sidan **åtkomst kontroll (IAM)** och välj **Lägg till roll tilldelning**.
 
     ![Roll tilldelning för labb kontot ](./media/how-to-add-user-lab-owner/lab-account-access-control-page.png)

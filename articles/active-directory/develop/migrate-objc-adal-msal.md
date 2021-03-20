@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98754939"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrera program till MSAL för iOS och macOS
@@ -65,7 +65,7 @@ I MSAL, i stället för en enda resurs-ID, tillhandahåller appar en uppsättnin
 
 Det finns två sätt att tillhandahålla omfång i MSAL:
 
-* Ange en lista över alla behörigheter som dina appar behöver. Ett exempel: 
+* Ange en lista över alla behörigheter som dina appar behöver. Exempel: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -146,7 +146,7 @@ Så här aktiverar du koordinator för ditt program:
 
 1. Registrera ett Service Broker-kompatibelt omdirigerings-URI-format för programmet. URI-formatet för Broker-kompatibel omdirigering är `msauth.<app.bundle.id>://auth` . Ersätt `<app.bundle.id>` med programmets paket-ID. Om du migrerar från ADAL och ditt program redan har stöd för Service Broker behöver du inte göra något. Din tidigare omdirigerings-URI är helt kompatibel med MSAL, så du kan gå vidare till steg 3.
 
-2. Lägg till programmets omdirigerings-URI-schema i filen info. plist. För standard omdirigerings-URI för MSAL är formatet `msauth.<app.bundle.id>` . Ett exempel:
+2. Lägg till programmets omdirigerings-URI-schema i filen info. plist. För standard omdirigerings-URI för MSAL är formatet `msauth.<app.bundle.id>` . Exempel:
 
     ```xml
     <key>CFBundleURLSchemes</key>

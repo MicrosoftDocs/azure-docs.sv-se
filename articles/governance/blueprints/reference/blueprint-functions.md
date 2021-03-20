@@ -4,10 +4,10 @@ description: Beskriver de funktioner som är tillgängliga för användning med 
 ms.date: 01/27/2021
 ms.topic: reference
 ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919282"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktioner för användning med Azure-ritningar
@@ -34,7 +34,7 @@ Returnerar ett objekt med egenskaper som har fyllts med den skiss artefaktens ut
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | artifactName |Ja |sträng |Namnet på skiss artefakten. |
 
@@ -123,7 +123,7 @@ Kombinerar flera sträng värden och returnerar den sammanfogade strängen.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | sträng1 |Ja |sträng |Det första värdet för sammanfogning. |
 | ytterligare argument |Inga |sträng |Ytterligare värden i sekventiell ordning för sammanfogning |
@@ -148,7 +148,7 @@ Returnerar ett skiss parameter värde. Det angivna parameter namnet måste defin
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |sträng |Namnet på den parameter som ska returneras. |
 
@@ -269,7 +269,7 @@ Returnerar ett objekt som representerar den angivna resurs grupps artefakten. Ti
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Ja |sträng |Plats hållarens namn för den resurs grupps artefakt som ska returneras. |
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 0bc5977a581006dc760c0435f9d68371ced7e4cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83648776"
 ---
 Azure Storage krypterar alla data i ett lagrings konto i vila. Mer information finns i [Azure Storage kryptering för vilande data](../articles/storage/common/storage-service-encryption.md).

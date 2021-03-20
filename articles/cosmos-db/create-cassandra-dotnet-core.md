@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f228386d8cf0e708080b7f6c5f6cef7258b2eafb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93099988"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Snabb start: Bygg en Cassandra-app med .NET Core och Azure Cosmos DB
@@ -133,13 +133,13 @@ Det här är valfritt. Om du vill lära dig hur databasresurserna skapas i koden
 
 Gå nu tillbaka till Azure Portal för att hämta information om din anslutningssträng och kopiera den till appen. Informationen i anslutningssträngen gör det möjligt för appen att kommunicera med den värdbaserade databasen.
 
-1. På [Azure-portalen](https://portal.azure.com/) väljer du **Anslutningssträng** .
+1. På [Azure-portalen](https://portal.azure.com/) väljer du **Anslutningssträng**.
 
 1. Använd :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: knappen på höger sida av skärmen för att kopiera värdet username.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Visa och kopiera en åtkomstnyckel från Azure-portalen, sidan Anslutningssträng":::
 
-1. Öppna filen Program.cs i Visual Studio. 
+1. Öppna filen program. cs i Visual Studio. 
 
 1. Klistra in värdet för ANVÄNDARNAMN från portalen över `<PROVIDE>` på rad 13.
 
@@ -159,7 +159,7 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
 
 1. Gå tillbaka till portalen och kopiera värdet KONTAKTPUNKT. Klistra in värdet för kontakt punkt från portalen över `<PROVIDE>` på rad 16.
 
-    Rad 16 i Program.cs bör nu se ut ungefär så här 
+    Rad 16 i program. cs bör nu se ut ungefär så här 
 
     `private const string CASSANDRACONTACTPOINT = "quickstart-cassandra-api.cassandra.cosmos.azure.com";`
 
@@ -167,7 +167,7 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
     
 ## <a name="run-the-net-core-app"></a>Kör .NET Core-appen
 
-1. I Visual Studio väljer du **verktyg**  >  **NuGet Package Manager**  >  **Package Manager-konsolen** .
+1. I Visual Studio väljer du **verktyg**  >  **NuGet Package Manager**  >  **Package Manager-konsolen**.
 
 2. I kommandotolken installerar du .NET-drivrutinens NuGet-paket genom att köra följande kommando. 
 
@@ -176,13 +176,13 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
     ```
 3. Tryck på Ctrl + F5 för att köra programmet. Appen visas i konsolfönstret. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Visa och kopiera en åtkomstnyckel från Azure-portalen, sidan Anslutningssträng":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Visa och verifiera utdata":::
 
     Tryck på CTRL + C om du vill stoppa körningen av programmet och stänga konsolfönstret. 
     
 4. I **Datautforskaren** på Azure-portalen kan du fråga, ändra och arbeta med dessa nya data.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Visa och kopiera en åtkomstnyckel från Azure-portalen, sidan Anslutningssträng":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Visa data i Datautforskaren":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Granska serviceavtal i Azure-portalen
 

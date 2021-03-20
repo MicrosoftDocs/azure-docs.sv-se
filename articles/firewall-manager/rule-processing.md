@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86512188"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Regelbearbetningslogik för Azure Firewall
@@ -30,7 +30,7 @@ Inkommande anslutningar kan aktive ras genom att konfigurera mål nätverks adre
 
 Nätverks regel samlingar som har ärvts från en överordnad princip prioriteras alltid ovanför nätverks regel samlingar som definieras som en del av den nya principen. Samma logik gäller även för program regel samlingar. Nätverks regel samlingar bearbetas dock alltid innan program regel samlingar, oavsett arv.
 
-Som standard ärver din princip sitt överordnade princip hot informations läge. Du kan åsidosätta detta genom att ställa in ditt hot informations läge på ett annat värde på sidan princip inställningar. Det går bara att åsidosätta med ett striktare värde. Om du till exempel har angett *enbart avisering*för överordnad princip kan du konfigurera den här lokala principen för att *Varna och neka*, men du kan inte inaktivera den.
+Som standard ärver din princip sitt överordnade princip hot informations läge. Du kan åsidosätta detta genom att ställa in ditt hot informations läge på ett annat värde på sidan princip inställningar. Det går bara att åsidosätta med ett striktare värde. Om du till exempel har angett *enbart avisering* för överordnad princip kan du konfigurera den här lokala principen för att *Varna och neka*, men du kan inte inaktivera den.
 
 ## <a name="next-steps"></a>Nästa steg
 

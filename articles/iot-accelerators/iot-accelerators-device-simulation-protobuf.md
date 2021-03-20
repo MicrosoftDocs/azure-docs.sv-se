@@ -10,10 +10,10 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852158"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisera telemetri med hjälp av Protocol buffrar
@@ -32,7 +32,7 @@ Stegen i den här instruktions guiden visar hur du:
 1. Generera protobuf-klasser
 1. Testa lokalt
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill följa stegen i den här instruktions guiden behöver du:
 
@@ -180,7 +180,7 @@ När du har en **proto** -fil är nästa steg att generera de klasser som behöv
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    Det här kommandot genererar en **Assettracker.cs** -fil i mappen **Services\Models\Protobuf** .
+    Det här kommandot genererar en **Assettracker. cs** -fil i mappen **Services\Models\Protobuf** .
 
 ## <a name="test-protobuf-locally"></a>Testa protobuf lokalt
 

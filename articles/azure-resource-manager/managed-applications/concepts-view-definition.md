@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: 55263d3c742d18cf03303f96f08fb9aa370c7af8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100592064"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Visa definitions artefakt i Azure Managed Applications
@@ -127,9 +127,9 @@ När du anger den här vyn i **viewDefinition.jspå**, åsidosätter den standar
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|sidhuvud|No|Översikts sidans sidhuvud.|
-|beskrivning|No|Beskrivningen av ditt hanterade program.|
-|kommandon|No|Matrisen med ytterligare verktygsfälts knappar på översikts sidan finns i [kommandon](#commands).|
+|sidhuvud|Inga|Översikts sidans sidhuvud.|
+|beskrivning|Inga|Beskrivningen av ditt hanterade program.|
+|kommandon|Inga|Matrisen med ytterligare verktygsfälts knappar på översikts sidan finns i [kommandon](#commands).|
 
 ![Skärm bild som visar översikten för ett hanterat program med en test åtgärds kontroll för att köra ett demo program.](./media/view-definition/overview.png)
 
@@ -166,27 +166,27 @@ Med vyn mått kan du samla in och samla in data från dina hanterade program res
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|displayName|No|Den visade rubriken för vyn.|
-|version|No|Versionen av plattformen som används för att rendera vyn.|
-|charts|Yes|Matrisen med diagram på sidan mått.|
+|displayName|Inga|Den visade rubriken för vyn.|
+|version|Inga|Versionen av plattformen som används för att rendera vyn.|
+|charts|Ja|Matrisen med diagram på sidan mått.|
 
 ### <a name="chart"></a>Diagram
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|displayName|Yes|Diagrammets visade rubrik.|
-|chartType|No|Visualiseringen som ska användas för det här diagrammet. Som standard använder den ett linje diagram. Diagram typer som stöds: `Bar, Line, Area, Scatter` .|
-|metrics|Yes|Matrisen med mått som ska ritas upp i det här diagrammet. Mer information om mått som stöds i Azure Portal finns i [mått som stöds med Azure Monitor](../../azure-monitor/essentials/metrics-supported.md)|
+|displayName|Ja|Diagrammets visade rubrik.|
+|chartType|Inga|Visualiseringen som ska användas för det här diagrammet. Som standard använder den ett linje diagram. Diagram typer som stöds: `Bar, Line, Area, Scatter` .|
+|metrics|Ja|Matrisen med mått som ska ritas upp i det här diagrammet. Mer information om mått som stöds i Azure Portal finns i [mått som stöds med Azure Monitor](../../azure-monitor/essentials/metrics-supported.md)|
 
 ### <a name="metric"></a>Metric
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|name|Yes|Namnet på måttet.|
-|aggregationType|Yes|Den sammansättnings typ som ska användas för måttet. Sammansättnings typer som stöds: `none, sum, min, max, avg, unique, percentile, count`|
-|namnområde|No|Ytterligare information som ska användas när du fastställer rätt mått Provider.|
-|resourceTagFilter|No|Resurs tag gen mat ris (separeras med `or` ord) för vilka mått visas. Gäller över resurs typs filter.|
-|resourceType|Yes|Den resurs typ som måtten ska visas för.|
+|name|Ja|Namnet på måttet.|
+|aggregationType|Ja|Den sammansättnings typ som ska användas för måttet. Sammansättnings typer som stöds: `none, sum, min, max, avg, unique, percentile, count`|
+|namnområde|Inga|Ytterligare information som ska användas när du fastställer rätt mått Provider.|
+|resourceTagFilter|Inga|Resurs tag gen mat ris (separeras med `or` ord) för vilka mått visas. Gäller över resurs typs filter.|
+|resourceType|Ja|Den resurs typ som måtten ska visas för.|
 
 ![Skärm bild som visar en övervaknings sida som kallas det här är min mått-vy för ett hanterat program.](./media/view-definition/metrics.png)
 
@@ -226,13 +226,13 @@ I den här vyn kan du utföra GET-, GET-, DELETE-och POST-åtgärder för din an
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|displayName|Yes|Den visade rubriken för vyn. Rubriken måste vara **unik** för varje CustomResources-vy i **viewDefinition.jspå**.|
-|version|No|Versionen av plattformen som används för att rendera vyn.|
-|resourceType|Yes|Anpassad resurs typ. Måste vara en **unik** anpassad resurs typ för din anpassade Provider.|
-|storleken på|No|Ikonen i vyn. En lista med exempel ikoner definieras i [JSON-schemat](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
-|createUIDefinition|No|Skapa ett GRÄNSSNITTs definitions schema för kommandot Skapa anpassad resurs. En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md)|
-|kommandon|No|Matrisen med ytterligare verktygsfälts knappar i CustomResources-vyn finns i [kommandon](#commands).|
-|kolumner|No|Matrisen med kolumner för den anpassade resursen. Om den inte är definierad `name` visas kolumnen som standard. Kolumnen måste innehålla `"key"` och `"displayName"` . För nyckel anger du nyckeln för den egenskap som ska visas i en vy. Om det är kapslat använder du punkt som avgränsare, till exempel `"key": "name"` eller `"key": "properties.property1"` . I visnings namn anger du visnings namnet för den egenskap som ska visas i en vy. Du kan också ange en `"optional"` egenskap. När värdet är True är kolumnen dold i en vy som standard.|
+|displayName|Ja|Den visade rubriken för vyn. Rubriken måste vara **unik** för varje CustomResources-vy i **viewDefinition.jspå**.|
+|version|Inga|Versionen av plattformen som används för att rendera vyn.|
+|resourceType|Ja|Anpassad resurs typ. Måste vara en **unik** anpassad resurs typ för din anpassade Provider.|
+|storleken på|Inga|Ikonen i vyn. En lista med exempel ikoner definieras i [JSON-schemat](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|createUIDefinition|Inga|Skapa ett GRÄNSSNITTs definitions schema för kommandot Skapa anpassad resurs. En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md)|
+|kommandon|Inga|Matrisen med ytterligare verktygsfälts knappar i CustomResources-vyn finns i [kommandon](#commands).|
+|kolumner|Inga|Matrisen med kolumner för den anpassade resursen. Om den inte är definierad `name` visas kolumnen som standard. Kolumnen måste innehålla `"key"` och `"displayName"` . För nyckel anger du nyckeln för den egenskap som ska visas i en vy. Om det är kapslat använder du punkt som avgränsare, till exempel `"key": "name"` eller `"key": "properties.property1"` . I visnings namn anger du visnings namnet för den egenskap som ska visas i en vy. Du kan också ange en `"optional"` egenskap. När värdet är True är kolumnen dold i en vy som standard.|
 
 ![Skärm bild som visar en resurs sida med namnet test anpassad resurs typ och åtgärden anpassad kontext åtgärd.](./media/view-definition/customresources.png)
 
@@ -255,10 +255,10 @@ Kommandon är en matris med ytterligare verktygsfälts knappar som visas på sid
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|displayName|Yes|Det namn som visas på kommando knappen.|
-|path|Yes|Åtgärds namnet för den anpassade providern. Åtgärden måste definieras i **mainTemplate.jspå**.|
-|storleken på|No|Kommando knappens ikon. En lista med exempel ikoner definieras i [JSON-schemat](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
-|createUIDefinition|No|Skapa GRÄNSSNITTs definitions schema för kommando. En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md).|
+|displayName|Ja|Det namn som visas på kommando knappen.|
+|path|Ja|Åtgärds namnet för den anpassade providern. Åtgärden måste definieras i **mainTemplate.jspå**.|
+|storleken på|Inga|Kommando knappens ikon. En lista med exempel ikoner definieras i [JSON-schemat](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|createUIDefinition|Inga|Skapa GRÄNSSNITTs definitions schema för kommando. En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md).|
 
 ## <a name="associations"></a>Typer
 
@@ -282,10 +282,10 @@ I den här vyn kan du utöka befintliga Azure-resurser baserat på `targetResour
 
 |Egenskap|Krävs|Beskrivning|
 |---------|---------|---------|
-|displayName|Yes|Den visade rubriken för vyn. Rubriken måste vara **unik** för varje association i **viewDefinition.jspå**.|
-|version|No|Versionen av plattformen som används för att rendera vyn.|
-|targetResourceType|Yes|Mål resurs typen. Detta är den resurs typ som ska visas för resurs onboarding.|
-|createUIDefinition|No|Skapa ett GRÄNSSNITTs definitions schema för kommandot Skapa Associations resurs. En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md)|
+|displayName|Ja|Den visade rubriken för vyn. Rubriken måste vara **unik** för varje association i **viewDefinition.jspå**.|
+|version|Inga|Versionen av plattformen som används för att rendera vyn.|
+|targetResourceType|Ja|Mål resurs typen. Detta är den resurs typ som ska visas för resurs onboarding.|
+|createUIDefinition|Inga|Skapa ett GRÄNSSNITTs definitions schema för kommandot Skapa Associations resurs. En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md)|
 
 ## <a name="looking-for-help"></a>Söker efter hjälp
 

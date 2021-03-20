@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745774"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Självstudie: indexera Azure SQL-data med .NET SDK
@@ -125,8 +125,8 @@ API-anrop kräver tjänst-URL och en åtkomst nyckel. En Sök tjänst skapas med
 
 Indexerare kräver ett data käll objekt och ett index. Relevant kod finns i två filer:
 
-  + **Hotel.cs**, som innehåller ett schema som definierar indexet
-  + **Program.cs**, som innehåller funktioner för att skapa och hantera strukturer i din tjänst
+  + **hotell. cs**, som innehåller ett schema som definierar indexet
+  + **Program. cs**, som innehåller funktioner för att skapa och hantera strukturer i din tjänst
 
 ### <a name="in-hotelcs"></a>I hotel.cs
 

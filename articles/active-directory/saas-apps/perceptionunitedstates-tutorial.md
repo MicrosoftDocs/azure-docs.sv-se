@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Självstudie: Azure Active Directory integration med uppfattning USA (icke-UltiPro)
@@ -131,7 +131,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med upp
 
 1. I ett annat webbläsarfönster loggar du in på din uppfattning USA-företags (icke-UltiPro) företags plats som administratör.
 
-2. Klicka på **konto inställningar**i huvud verktygsfältet.
+2. Klicka på **konto inställningar** i huvud verktygsfältet.
 
     ![Skärm bild som visar "konto inställningar" som valts från huvud verktygsfältet.](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
@@ -141,7 +141,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med upp
 
     a. I text rutan **företags namn** skriver du namnet på **företaget**.
     
-    b. Skriv namnet på **kontot**i text rutan **konto namn** .
+    b. Skriv namnet på **kontot** i text rutan **konto namn** .
 
     c. Skriv giltig **e**-postadress i text rutan **standard Reply-To e-postadress** .
 
@@ -157,7 +157,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med upp
     
     c. I text rutan **namn på identitetsprovider** , klistrar du in värdet för **Azure AD-identifierare**, som du har kopierat från Azure Portal. 
 
-    d. I **text rutan SAML-domän**anger du domänen som @contoso.com .
+    d. I **text rutan SAML-domän** anger du domänen som @contoso.com .
 
     e. Klicka på **överför igen** för att ladda upp **metadata-XML-** filen.
 
@@ -191,7 +191,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till uppfattning USA (icke-UltiPro).
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **uppfattning USA (icke-UltiPro)**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **uppfattning USA (icke-UltiPro)**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

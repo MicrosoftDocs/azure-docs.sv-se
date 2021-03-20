@@ -8,13 +8,13 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/01/2020
 ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489343"
 ---
-# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Kunden får ett erbjudande från ditt kommersiella Marketplace
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Kundleads från ditt erbjudande på den kommersiella marknadsplatsen
 
 Leads är kunder som är intresserade av eller distribuerar dina erbjudanden från [Microsoft AppSource](https://appsource.microsoft.com) och [Azure Marketplace](https://azuremarketplace.microsoft.com). Du kan ta emot kund leads när ditt erbjudande har publicerats till den kommersiella marknads platsen. I den här artikeln förklaras följande koncept för lead-hantering:
 
@@ -50,19 +50,19 @@ Här är platser där ett lead genereras:
 
 Varje lead som du får under kund förvärvs processen har data i specifika fält. Det första fältet som ska inblickas för är `LeadSource` fältet, som följer detta format: **käll åtgärds**  |  **erbjudande**.
 
-**Källor** : värdet för det här fältet fylls i baserat på marknads platsen som skapade leadet. Möjliga värden är `"AzureMarketplace"` , `"AzurePortal"` och `"AppSource (SPZA)"` .
+**Källor**: värdet för det här fältet fylls i baserat på marknads platsen som skapade leadet. Möjliga värden är `"AzureMarketplace"` , `"AzurePortal"` och `"AppSource (SPZA)"` .
 
-**Åtgärder** : värdet för det här fältet fylls i baserat på den åtgärd som kunden vidtog i marknads platsen som skapade leadet.
+**Åtgärder**: värdet för det här fältet fylls i baserat på den åtgärd som kunden vidtog i marknads platsen som skapade leadet.
 
 Möjliga värden:
 
-- **"Ins"** : står för *installation*. Den här åtgärden är i Azure Marketplace eller AppSource när en kund köper din produkt.
-- **"PLT"** : står för en *utvärderings version av partner lampan*. Den här åtgärden är i AppSource när en kund väljer alternativet **kontakta mig** .
-- **"DNC"** : står *inte för kontakt*. Den här åtgärden är i AppSource när en partner som fanns tvärs över på din app-sida uppmanas att kontaktas. Vi delar ett meddelande om att kunden fanns tvärt i listan i din app, men de behöver inte kontaktas.
-- **"Skapa"** : den här åtgärden finns bara i Azure Portal och genereras när en kund köper ditt erbjudande till sitt konto.
-- **"StartTestDrive"** : den här åtgärden gäller endast för alternativet **test enhet** och genereras när en kund startar sin test-enhet.
+- **"Ins"**: står för *installation*. Den här åtgärden är i Azure Marketplace eller AppSource när en kund köper din produkt.
+- **"PLT"**: står för en *utvärderings version av partner lampan*. Den här åtgärden är i AppSource när en kund väljer alternativet **kontakta mig** .
+- **"DNC"**: står *inte för kontakt*. Den här åtgärden är i AppSource när en partner som fanns tvärs över på din app-sida uppmanas att kontaktas. Vi delar ett meddelande om att kunden fanns tvärt i listan i din app, men de behöver inte kontaktas.
+- **"Skapa"**: den här åtgärden finns bara i Azure Portal och genereras när en kund köper ditt erbjudande till sitt konto.
+- **"StartTestDrive"**: den här åtgärden gäller endast för alternativet **test enhet** och genereras när en kund startar sin test-enhet.
 
-**Erbjudanden** : du kan ha flera erbjudanden i den kommersiella marknads platsen. Värdet för det här fältet fylls i baserat på det erbjudande som genererade leadet. Utgivar-ID och erbjudande-ID skickas både i det här fältet och är värden som du angav när du publicerade erbjudandet till Marketplace.
+**Erbjudanden**: du kan ha flera erbjudanden i den kommersiella marknads platsen. Värdet för det här fältet fylls i baserat på det erbjudande som genererade leadet. Utgivar-ID och erbjudande-ID skickas både i det här fältet och är värden som du angav när du publicerade erbjudandet till Marketplace.
 
 I följande exempel visas värden i förväntat format `publisherid.offerid` : 
 
@@ -89,10 +89,10 @@ Kundens information skickas via flera fält. I följande exempel visas kund info
 
 Här följer några rekommendationer för att driva leads genom din försäljnings cykel:
 
-- **Process** : definiera en klar försäljnings process, med mil stolpar, analys och ta bort teamets ägarskap.
-- **Kvalificering** : definiera förutsättningar, som anger om ett lead har varit fullständigt. Se till att Sälj-eller marknadsförings representanter kvalificerar leads noggrant innan du tar dem genom hela försäljnings processen.
-- **Uppföljning** : Glöm inte att följa upp inom 24 timmar. Du får leadet i din CRM-valmöjlighet direkt efter att kunden har distribuerat en testenhet. skicka dem med e-post medan de fortfarande är i varma. Begär att schemalägga ett telefonsamtal för att bättre förstå om produkten är en bra lösning för deras problem. Vänta en typisk transaktion för att kräva ett antal uppföljnings anrop.
-- **Nurture** : Nurture dina leads för att få dig på väg till en högre vinst marginal. Checka in, men Bombard inte. Vi rekommenderar att du skickar e-post minst några gånger innan du stänger ut dem. lämna inte upp efter det första försöket. Kom ihåg att dessa kunder direkt arbetar med din produkt och förbrukade tid i en kostnads fri utvärderings version. de är fantastiska utsikter.
+- **Process**: definiera en klar försäljnings process, med mil stolpar, analys och ta bort teamets ägarskap.
+- **Kvalificering**: definiera förutsättningar, som anger om ett lead har varit fullständigt. Se till att Sälj-eller marknadsförings representanter kvalificerar leads noggrant innan du tar dem genom hela försäljnings processen.
+- **Uppföljning**: Glöm inte att följa upp inom 24 timmar. Du får leadet i din CRM-valmöjlighet direkt efter att kunden har distribuerat en testenhet. skicka dem med e-post medan de fortfarande är i varma. Begär att schemalägga ett telefonsamtal för att bättre förstå om produkten är en bra lösning för deras problem. Vänta en typisk transaktion för att kräva ett antal uppföljnings anrop.
+- **Nurture**: Nurture dina leads för att få dig på väg till en högre vinst marginal. Checka in, men Bombard inte. Vi rekommenderar att du skickar e-post minst några gånger innan du stänger ut dem. lämna inte upp efter det första försöket. Kom ihåg att dessa kunder direkt arbetar med din produkt och förbrukade tid i en kostnads fri utvärderings version. de är fantastiska utsikter.
 
 När den tekniska konfigurationen är på plats kan du lägga till dessa leads i din aktuella strategi och drift process för försäljning och marknadsföring. Vi är intresserade av att bättre förstå den övergripande Sälj processen och vill arbeta nära dig med att tillhandahålla högkvalitativa leads och tillräckligt med data för att lyckas. Vi välkomnar din feedback om hur vi kan optimera och förbättra de leads som vi skickar till dig med ytterligare data för att hjälpa kunderna att lyckas. Berätta för oss om du är intresse rad av att [ge feedback](mailto:AzureMarketOnboard@microsoft.com) och förslag för att göra det möjligt för ditt säljteam att bli mer framgångs rik med leads på kommersiella platser.
 

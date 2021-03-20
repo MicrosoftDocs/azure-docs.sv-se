@@ -11,10 +11,10 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618037"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Aktiverar konfiguration av tjänstens konfiguration för under nätverk för Azure SQL-hanterad instans
@@ -22,7 +22,7 @@ ms.locfileid: "91618037"
 
 Konfiguration av tjänstens konfiguration för under nätet ger automatisk hantering av nätverks konfiguration för undernät som är värdar för hanterade instanser. Med konfigurations användaren för tjänste under nätet förblir fullständig kontroll över åtkomsten till data (TDS-trafikflöden) medan den hanterade instansen tar ansvar för att säkerställa oavbrutet flöde av hanterings trafik för att uppfylla SLA.
 
-Automatiskt konfigurerade nätverks säkerhets grupper och regler för routningstabellen är synliga för kunden och kommenteras med prefix _Microsoft. SQL-managedInstances_UseOnly__.
+Automatiskt konfigurerade nätverks säkerhets grupper och regler för routningstabellen är synliga för kunden och kommenteras med prefix _Microsoft. SQL-managedInstances_UseOnly_ _.
 
 Konfiguration av tjänstens konfiguration aktive ras automatiskt när du aktiverar [under nätets delegering](../../virtual-network/subnet-delegation-overview.md) för `Microsoft.Sql/managedInstances` resurs leverantör.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098475"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Säkerhetsöversikt
@@ -39,13 +39,13 @@ Det här diagrammet visar antalet nya riskfyllda användare som identifierades u
 
 Det här diagrammet visar antalet riskfyllda inloggningar som har identifierats under den valda tids perioden. Du kan filtrera visningen av det här diagrammet efter inloggnings risk typ (i real tid eller mängd) och inloggnings risk nivån (låg, medium, hög). Oskyddade inloggningar har slutförts i real tids risk inloggningar som inte är MFA-anropade. (Obs! inloggnings program som är riskfyllda på grund av att det inte går att skydda dem i real tid med hjälp av inloggnings risk principer). Hovra över UTC-datumen för att se hur många inloggningar som har identifierats vid risk för den dagen. Om du klickar på det här diagrammet visas rapporten "riskfyllda inloggningar".
 
-## <a name="tiles"></a>Paneler
+## <a name="tiles"></a>Ikoner
  
 ### <a name="high-risk-users"></a>Användare med hög risk
 
 Panelen "hög risk användare" visar det senaste antalet användare med hög sannolikhet för identitets kompromisser. Dessa bör vara en högsta prioritet för undersökning. Ett klick på panelen "hög risk användare" kommer att omdirigeras till en filtrerad vy av rapporten "riskfyllda användare" som endast visar användare med risk nivån hög. Med den här rapporten kan du läsa mer och åtgärda dessa användare med lösen ords återställning.
 
-:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Skärm bild av Azure Portal säkerhets översikt. Liggande diagram visar antalet risker över tid. Sammanfattningar sammanfattar information om användare och inloggningar." border="false":::
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Skärm bild av Azure Portal säkerhets översikt med paneler som är synliga för användare med hög risk och medelhög risk och andra riskfaktorer." border="false":::
 
 ### <a name="medium-risk-users"></a>Medel stora risk användare
 Panelen "medel risk användare" visar det senaste antalet användare med medelhög sannolikhet för identitets kompromisser. Ett klick på panelen "medelhög risk användare" omdirigeras till en filtrerad vy av rapporten "riskfyllda användare" som endast visar användare med risk nivån medel. Med hjälp av den här rapporten kan du ytterligare undersöka och åtgärda dessa användare.

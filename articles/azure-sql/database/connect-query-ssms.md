@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
 ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91598270"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: Använd SSMS för att ansluta till och fråga Azure SQL Database eller Azure SQL-hanterad instans
@@ -33,7 +33,7 @@ För att slutföra den här snabb starten krävs följande objekt:
 
 - En databas i Azure SQL Database. Du kan använda någon av dessa snabbstarter för att skapa och därefter konfigurera en databas i Azure SQL Database:
 
-  | Åtgärd | SQL Database | SQL-hanterad instans | SQL Server på virtuella Azure-datorer |
+  | Action | SQL Database | SQL-hanterad instans | SQL Server på virtuella Azure-datorer |
   |:--- |:--- |:---|:---|
   | Skapa| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -53,7 +53,7 @@ Om du bara vill köra vissa ad hoc-frågor utan att installera SSMS, se [snabb s
 
 Hämta anslutnings informationen du behöver för att ansluta till databasen. Du behöver det fullständigt kvalificerade [Server](logical-servers.md) namnet eller värd namnet, databas namnet och inloggnings informationen för att slutföra den här snabb starten.
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 2. Navigera till **databasen** eller den **hanterade instans** som du vill fråga.
 

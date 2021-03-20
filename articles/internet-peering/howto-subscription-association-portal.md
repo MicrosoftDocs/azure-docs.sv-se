@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540276"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Associera peer-ASN till en Azure-prenumeration med hjälp av portalen
@@ -39,7 +39,7 @@ Registrera dig för peering Resource Provider i prenumerationen genom att följa
     > [!div class="mx-imgBorder"]
     > ![Starta prenumeration](./media/rp-subscriptions-launch.png)
 
-1. När prenumerationen har öppnats klickar du på **resurs leverantörer**till vänster. Sök sedan efter *peering* i sökfönstret i den högra rutan eller Använd rullnings listen för att hitta **Microsoft. peering** och titta på **status**. Om statusen är ***registrerad***, hoppar du över stegen nedan och fortsätter till avsnittet **skapa PeerAsn**. Om statusen är ***NotRegistered***väljer du **Microsoft. peering** och klickar på **Registrera**.
+1. När prenumerationen har öppnats klickar du på **resurs leverantörer** till vänster. Sök sedan efter *peering* i sökfönstret i den högra rutan eller Använd rullnings listen för att hitta **Microsoft. peering** och titta på **status**. Om statusen är **_registrerad_*_ hoppar du över stegen nedan och fortsätter till avsnittet _* skapa PeerAsn**. Om statusen är **_NotRegistered_*_ väljer du _* Microsoft. peering** och klickar på **Registrera**.
 
     > [!div class="mx-imgBorder"]
     > ![Registrering start](./media/rp-register-start.png)
@@ -49,7 +49,7 @@ Registrera dig för peering Resource Provider i prenumerationen genom att följa
     > [!div class="mx-imgBorder"]
     > ![Registrering pågår](./media/rp-register-progress.png)
 
-1. Vänta en stund och slutför registreringen. Klicka sedan på **Uppdatera** och kontrol lera att statusen är ***registrerad***.
+1. Vänta en stund och slutför registreringen. Klicka sedan på **Uppdatera** och kontrol lera att statusen är **_registrerad_**.
 
     > [!div class="mx-imgBorder"]
     > ![Registreringen är klar](./media/rp-register-completed.png)
@@ -72,7 +72,7 @@ Som Internet leverantör eller Internet Exchange-Provider kan du skapa en ny Pee
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar fliken koppla en peer A S N-grunder.](./media/peerasn-review-tab-validation.png)
 
-1. När meddelandet i menyfliksområdet är klar med *verifieringen*verifierar du din information och skickar in begäran genom att klicka på **skapa**. Om verifieringen inte godkänns klickar du på **föregående** och upprepar stegen ovan för att ändra din begäran och se till att de värden du anger inte innehåller några fel.
+1. När meddelandet i menyfliksområdet är klar med *verifieringen* verifierar du din information och skickar in begäran genom att klicka på **skapa**. Om verifieringen inte godkänns klickar du på **föregående** och upprepar stegen ovan för att ändra din begäran och se till att de värden du anger inte innehåller några fel.
 
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar fliken koppla en peer A S N-grunder med verifieringen godkänd.](./media/peerasn-review-tab.png)

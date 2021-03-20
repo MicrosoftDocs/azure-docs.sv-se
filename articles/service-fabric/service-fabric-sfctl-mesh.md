@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 4682eee93b5ff9f01e65611e8d5e0920930776a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257245"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
@@ -22,8 +22,8 @@ Ta bort och hantera Service Fabric nät-program.
 | [kod-paket-logg](service-fabric-sfctl-mesh-code-package-log.md) | Hämta loggarna för behållaren för det angivna kod paketet för den angivna tjänst repliken. |
 | [spridningen](service-fabric-sfctl-mesh-deployment.md) | Skapa Service Fabric nät resurser. |
 | [nyckeln](service-fabric-sfctl-mesh-gateway.md) | Hämta och ta bort nät gateway-resurser. |
-| [nätverks](service-fabric-sfctl-mesh-network.md) | Hämta och ta bort nätverks resurser för nätverk. |
-| [icke](service-fabric-sfctl-mesh-secret.md) | Hämta och ta bort resurser för nät hemlighet. |
+| [network](service-fabric-sfctl-mesh-network.md) | Hämta och ta bort nätverks resurser för nätverk. |
+| [hemlighet](service-fabric-sfctl-mesh-secret.md) | Hämta och ta bort resurser för nät hemlighet. |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Hämta och ta bort nät secretvalue-resurser. |
 | [telefonitjänstprovider](service-fabric-sfctl-mesh-service.md) | Hämta tjänst information och lista över tjänster för en program resurs. |
 | [tjänst-replik](service-fabric-sfctl-mesh-service-replica.md) | Hämta replik information och lista repliker för en specifik tjänst i en program resurs. |

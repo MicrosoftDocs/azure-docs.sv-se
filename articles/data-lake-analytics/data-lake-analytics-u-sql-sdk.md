@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215543"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Köra och testa U-SQL med Azure Data Lake U-SQL SDK
@@ -160,7 +160,7 @@ Här är ett exempel:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
-Förutom att kombinera **kompilera** och **köra**kan du kompilera och köra kompilerade körbara filer separat.
+Förutom att kombinera **kompilera** och **köra** kan du kompilera och köra kompilerade körbara filer separat.
 
 #### <a name="compile-a-u-sql-script"></a>Kompilera ett U-SQL-skript
 
@@ -374,7 +374,7 @@ offentlig LocalRunHelper ([system. IO. TextWriter messageOutput = null])
 
 E_CSC_SYSTEM_INTERNAL: internt fel! Det gick inte att läsa in filen eller sammansättningen ScopeEngineManaged.dll eller ett av dess beroenden. Det gick inte att hitta den angivna modulen.
 
-Kontrol lera följande:
+Kontrollera följande:
 
 - Se till att du har x64-miljö. Versions mål plattformen och test miljön bör vara x64, se **steg 1: skapa C#-enhets test projekt och konfiguration** ovan.
 - Se till att du har kopierat alla beroende filer under NugetPackage\build\runtime\ till projektets arbets katalog.

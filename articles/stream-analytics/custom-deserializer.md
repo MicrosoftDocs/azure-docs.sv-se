@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018215"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Självstudie: anpassade .NET-deserialiserare för Azure Stream Analytics
@@ -85,7 +85,7 @@ Den behållare som du skapar kommer att användas för att lagra till gångar so
    |Resurs|Läsa in från ASA projekt referens eller CodeBehind|
    |Sammansättnings namn för CSharp|ProtobufDeserializer.dll|
    |Klassnamn|MessageBodyProto.MessageBodyDeserializer|
-   |Händelse komprimerings typ|Ingen|
+   |Händelse komprimerings typ|Inget|
 
 3. Lägg till följande fråga i filen **script. asaql** .
 

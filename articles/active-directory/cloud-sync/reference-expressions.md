@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 869d60d4ccb3bae58924fe4221f83b1b0125ae04
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614024"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Skriver uttryck för mappningar av attribut i Azure Active Directory
@@ -30,7 +30,7 @@ Syntaxen för-uttryck för attributmappning är reminiscent av Visual Basic for 
 
 * Hela uttrycket måste definieras i termer av functions, som består av ett namn följt av argument inom parentes: <br>
   *FunctionName ( `<<argument 1>>` , `<<argument N>>` )*
-* Du kan kapsla funktioner i varandra. Till exempel: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
+* Du kan kapsla funktioner i varandra. Exempel: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * Du kan skicka tre olika typer av argument till funktioner:
   
   1. Attribut, som måste omges av hakparenteser. Exempel: [attributeName]
@@ -383,7 +383,7 @@ Om uttrycket kan utvärderas till en sträng typ, utvärderar funktionen IsStrin
 Används för att avgöra om CStr () kan lyckas parsa uttrycket.
 
 ---
-### <a name="join"></a>Slå ihop
+### <a name="join"></a>Anslut
 **Funktioner**<br> Gå till (avgränsare, source1, SOURCE2,...)
 
 **Beskrivning:**<br> JOIN () liknar append (), förutom att det kan kombinera flera **käll** sträng värden till en enda sträng, och varje värde skiljs åt av en **avgränsnings** sträng.

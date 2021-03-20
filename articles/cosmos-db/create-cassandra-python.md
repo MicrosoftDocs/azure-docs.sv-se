@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 8a76a37de64733ba3e0126c7885d8690d2d83c1b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93099733"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Snabb start: Bygg en Cassandra-app med python SDK och Azure Cosmos DB
@@ -127,13 +127,13 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
     
 ## <a name="use-the-x509-certificate"></a>Använda X509-certifikatet
 
-1. Hämta Baltimore CyberTrust Root Certificate lokalt från [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Byt namn på filen med fil namns tillägget *. cer* .
+1. Hämta Baltimore CyberTrust Root Certificate lokalt från [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Byt namn på filen med fil namns tillägget *. cer*.
 
    Certifikatet har serienummer `02:00:00:b9` och SHA1-fingeravtryck `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
 2. Öppna *pyquickstart.py* och ändra `path\to\cert` till att peka på det nya certifikatet.
 
-3. Spara *pyquickstart.py* .
+3. Spara *pyquickstart.py*.
 
 ## <a name="run-the-python-app"></a>Köra Python-appen
 
@@ -158,11 +158,11 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
 
     Tryck på CTRL + C för att stoppa körningen av programmet och stänga konsol fönstret. 
 
-    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Visa och kopiera åtkomstanvändarnamn, lösenord och kontaktpunkt i Azure-portalen, på bladet för anslutningssträng":::
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Visa och verifiera utdata":::
     
 4. I **Datautforskaren** på Azure-portalen kan du fråga, ändra och arbeta med dessa nya data. 
 
-    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Visa och kopiera åtkomstanvändarnamn, lösenord och kontaktpunkt i Azure-portalen, på bladet för anslutningssträng":::
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Visa data i Datautforskaren":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Granska serviceavtal i Azure-portalen
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745741"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurera MPIO på en StorSimple-värd som kör CentOS
@@ -59,7 +59,7 @@ En StorSimple-enhet som är ansluten till en Linux-värd kan konfigureras för h
 
 Följande procedur beskriver hur du konfigurerar flera sökvägar när en StorSimple-enhet med två nätverks gränssnitt är ansluten till en värd med två nätverks gränssnitt.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 I det här avsnittet beskrivs konfigurations kraven för CentOS-servern och din StorSimple-enhet.
 
 ### <a name="on-centos-host"></a>På CentOS-värd

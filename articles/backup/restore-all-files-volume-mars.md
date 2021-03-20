@@ -4,10 +4,10 @@ description: Lär dig hur du återställer alla filer i en volym med MARS-agente
 ms.topic: conceptual
 ms.date: 01/17/2021
 ms.openlocfilehash: 44c12809fc94f78721ab1788cb352076dfebabe4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614423"
 ---
 # <a name="restore-all-the-files-in-a-volume-using-the-mars-agent"></a>Återställa alla filer i en volym med MARS-agenten

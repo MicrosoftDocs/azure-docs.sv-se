@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 4307838df56fb2dc1cdf6ee4044b8ce8de164227
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Nuclino
@@ -49,7 +49,7 @@ Om du vill konfigurera integreringen av Nuclino i Azure AD måste du lägga till
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Nuclino** i sökrutan.
 1. Välj **Nuclino** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -98,7 +98,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 7. Utöver ovan förväntar sig Nuclino-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
 
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | ---------------| --------- |
     | first_name | user.givenname |
     | last_name | user.surname |
@@ -115,7 +115,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -127,13 +127,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Nuclino.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Nuclino**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

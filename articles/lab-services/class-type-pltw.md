@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar labb för att lära projektet att leda
 ms.topic: article
 ms.date: 10/28/2020
 ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95024627"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Konfigurera labb för projekt som leder till att klasser
@@ -130,7 +130,7 @@ Studenter kan ansluta till sina labbbaserade virtuella datorer från Windows-dat
 - [Anslut från Mac](./connect-virtual-machine-mac-remote-desktop.md)
 - [Anslut från Chromebook](./connect-virtual-machine-chromebook-remote-desktop.md)
 
-## <a name="cost"></a>Cost (Kostnad)
+## <a name="cost"></a>Cost
 Vi tar upp ett exempel på kostnads uppskattning för PLTW-klasserna.  Den här uppskattningen omfattar inte kostnaden för att köra en licens Server eller använda ett delat avbildnings Galleri. Anta att du har en klass av 25 studenter, som var och en har 20 timmar med schemalagda klass tider.  Varje student har också ytterligare 10 kvot timmar för läxor eller tilldelningar utanför den schemalagda klass tiden.  Här är de uppskattade kostnaderna:
 
 - **Stor virtuell dator**

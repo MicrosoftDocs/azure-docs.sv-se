@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 89d086ce136885e203e300f04bdbf3ade0affeb3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Självstudie: Azure Active Directory integrering med SilkRoad Life Suite
@@ -159,11 +159,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Si
     > [!NOTE]
     > För att få åtkomst till SilkRoad Life Suite Authentication Application för att konfigurera Federation med Microsoft Azure AD, kontakta SilkRoad-supporten eller din SilkRoad Services-representant.
 
-1. Gå till **tjänst leverantör**och klicka sedan på **Federations information**.
+1. Gå till **tjänst leverantör** och klicka sedan på **Federations information**.
 
     ![Skärm bild visar den Federations information som valts från tjänst leverantören.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
-1. Klicka på **Ladda ned federationsmetadata**och spara sedan metadatafilen på datorn. Använd hämtade federationsmetadata som en fil för en **tjänst leverantörs-metadata** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+1. Klicka på **Ladda ned federationsmetadata** och spara sedan metadatafilen på datorn. Använd hämtade federationsmetadata som en fil för en **tjänst leverantörs-metadata** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
     ![Skärm bild som visar länken Hämta federationsmetadata.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
@@ -179,7 +179,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Si
 
     ![Skärm bild som visar Lägg till autentiserings källa med knappen Skapa identitets leverantör med fil data vald.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
-    a. Under **Alternativ 2 – metadatafil**klickar du på **Bläddra** för att ladda upp den hämtade Metadata-filen från Azure Portal.
+    a. Under **Alternativ 2 – metadatafil** klickar du på **Bläddra** för att ladda upp den hämtade Metadata-filen från Azure Portal.
   
     b. Klicka på **skapa identitets leverantör med fildata**.
 
@@ -191,7 +191,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Si
 
     ![Skärm bild som visar dialog rutan Redigera autentiserings källa där du kan ange de värden som beskrivs.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
-    a. Välj **Ja**som **aktive rad**.
+    a. Välj **Ja** som **aktive rad**.
 
     b. I text rutan **EntityId** klistrar du in värdet för **Azure AD-identifieraren** som du kopierade från Azure Portal.
 
@@ -240,7 +240,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till SilkRoad Life Suite.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **SilkRoad Life Suite**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **SilkRoad Life Suite**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

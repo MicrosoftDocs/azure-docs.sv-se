@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90056011"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Använd MMC-meny åtgärderna i StorSimple Snapshot Manager
@@ -53,7 +53,7 @@ Du kan använda alternativet **Visa** för att ändra **resultat** fönstrets vy
 
 #### <a name="to-change-the-console-window-view"></a>Ändra konsol fönstrets vy
 1. Klicka på Skriv bords ikonen för att starta StorSimple Snapshot Manager.
-2. I fönstret **omfattning** högerklickar du på en nod, klickar på **Visa**och klickar sedan på **Anpassa**. Dialog rutan **Anpassa** visas.
+2. I fönstret **omfattning** högerklickar du på en nod, klickar på **Visa** och klickar sedan på **Anpassa**. Dialog rutan **Anpassa** visas.
    
     ![Anpassa konsol fönstret](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
 3. Markera eller avmarkera kryss rutorna för att visa eller dölja objekt i konsol fönstret. När du är färdig med dina val klickar du på **OK**.
@@ -63,7 +63,7 @@ Du kan använda det **nya fönstret härifrån** för att öppna ett nytt konsol
 
 #### <a name="to-open-a-new-console-window"></a>Öppna ett nytt konsol fönster
 1. Klicka på Skriv bords ikonen för att starta StorSimple Snapshot Manager.
-2. I fönstret **omfattning** högerklickar du på en nod och klickar sedan på **nytt fönster**härifrån. 
+2. I fönstret **omfattning** högerklickar du på en nod och klickar sedan på **nytt fönster** härifrån. 
    
     Ett nytt fönster visas med endast den omfattning som du har valt. Om du till exempel högerklickar på noden **säkerhets kopierings principer** visas bara noden **säkerhets kopierings principer** i fönstret **omfattning** och en lista över definierade säkerhets kopierings principer i **resultat** fönstret. Se följande exempel.
    

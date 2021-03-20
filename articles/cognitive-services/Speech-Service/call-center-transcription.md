@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021974"
 ---
 # <a name="speech-service-for-telephony-data"></a>Tal tjänst för telefoni data
@@ -121,7 +121,7 @@ Ett annat scenario är direkt integrering med session initierings protokollet (S
 
  Tal tjänsten fungerar bra med inbyggda modeller. Men du kanske vill anpassa och justera upplevelsen för din produkt eller miljö ytterligare. Anpassnings alternativ sträcker sig från akustisk modell justering till unika röst teckensnitt för ditt varumärke. När du har skapat en anpassad modell kan du använda den med någon av funktionerna i tal tjänsten i real tid eller batchläge.
 
-| Tjänst för taligenkänning | Modell | Description |
+| Tjänst för taligenkänning | Modell | Beskrivning |
 | -------------- | ----- | ----------- |
 | Tal till text | [Akustisk modell](./how-to-custom-speech-train-model.md) | Skapa en anpassad akustisk modell för program, verktyg eller enheter som används i vissa miljöer som i en bil eller på en fabriks våning, var och en med särskilda registrerings villkor. Exempel är accenttecken, vissa bakgrunds brus eller med en speciell mikrofon för inspelning. |
 |                | [Språkmodell](./how-to-custom-speech-train-model.md) | Skapa en anpassad språk modell för att förbättra avskriften av branschspecifika vokabulär och grammatik, till exempel medicinsk terminologi eller IT-jargong. |
