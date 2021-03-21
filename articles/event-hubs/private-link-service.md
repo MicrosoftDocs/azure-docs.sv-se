@@ -4,10 +4,10 @@ description: Lär dig hur du integrerar Azure Event Hubs med Azure Private Link 
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94427759"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Tillåt åtkomst till Azure Event Hubs-namnrymder via privata slut punkter 
@@ -41,7 +41,7 @@ Din privata slut punkt använder en privat IP-adress i det virtuella nätverket.
 ### <a name="steps"></a>Steg
 Om du redan har ett Event Hubs namn område kan du skapa en privat länk anslutning genom att följa dessa steg:
 
-1. Logga in på [Azure Portal](https://portal.azure.com). 
+1. Logga in på [Azure-portalen](https://portal.azure.com). 
 2. I Sök fältet skriver du i **Event Hub**.
 3. Välj det **namn område** i listan som du vill lägga till en privat slut punkt för.
 4. Välj **nätverk** under **Inställningar** på den vänstra menyn.
@@ -66,7 +66,7 @@ Om du redan har ett Event Hubs namn område kan du skapa en privat länk anslutn
 
         ![Sidan skapa privat slut punkt – grunder](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Följ de här stegen på sidan **resurs** :
-    1. För anslutnings metod, om du väljer **Anslut till en Azure-resurs i min katalog** , följer du dessa steg: 
+    1. För anslutnings metod, om du väljer **Anslut till en Azure-resurs i min katalog**, följer du dessa steg: 
         1. Välj den **Azure-prenumeration** där **Event Hubs namn området** finns. 
         2. För **resurs typ** väljer du **Microsoft. EventHub/Namespaces** för **resurs typen**.
         3. För **resurs** väljer du ett Event Hubs namn område i list rutan. 
@@ -205,7 +205,7 @@ Det finns fyra etablerings tillstånd:
 1. Logga in på Azure-portalen.
 2. I Sök fältet skriver du i **Event Hub**.
 3. Välj det **namn område** som du vill hantera.
-4. Välj fliken **nätverk** .
+4. Välj fliken **Nätverk**.
 5. Gå till lämpligt avsnitt nedan, baserat på den åtgärd du vill: Godkänn, avvisa eller ta bort.
 
 ### <a name="approve-a-private-endpoint-connection"></a>Godkänna en privat slut punkts anslutning
@@ -261,11 +261,11 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Begränsningar och design överväganden
 
-**Priser** : information om priser finns i [priser för privata Azure-länkar](https://azure.microsoft.com/pricing/details/private-link/).
+**Priser**: information om priser finns i [priser för privata Azure-länkar](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Begränsningar** : den här funktionen är tillgänglig i alla offentliga Azure-regioner.
+**Begränsningar**: den här funktionen är tillgänglig i alla offentliga Azure-regioner.
 
-**Maximalt antal privata slut punkter per Event Hubs namnrymd** : 120.
+**Maximalt antal privata slut punkter per Event Hubs namnrymd**: 120.
 
 Mer information finns i [Azure Private Link service: begränsningar](../private-link/private-link-service-overview.md#limitations)
 

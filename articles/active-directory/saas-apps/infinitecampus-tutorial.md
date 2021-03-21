@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 08cee87d94b20e99bcc46d42cbac7eb4272561bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Självstudie: Azure Active Directory integrering med oändligt Campus
@@ -116,7 +116,7 @@ Utför följande steg för att konfigurera enkel inloggning med oändliga campus
 
 1. Logga in på oändligt Campus som säkerhets administratör i ett annat webbläsarfönster.
 
-2. Klicka på **system administration**på vänster sida av menyn.
+2. Klicka på **system administration** på vänster sida av menyn.
 
     ![Administratören](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
@@ -169,7 +169,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till oändligt campus.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **oändligt Campus**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **oändligt Campus**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: eed0ea075c5e9eb39810259be2aa6781a59f2f22
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Självstudie: Azure Active Directory integrering med Rackspace SSO
@@ -159,7 +159,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Rackspace SSO.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Rackspace SSO**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Rackspace SSO**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

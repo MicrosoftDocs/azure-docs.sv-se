@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 04e6595e107f23514b3825e666c9c65f9719186a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kindling"></a>Självstudie: Azure Active Directory integrering med typ
@@ -156,11 +156,11 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Natura.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **typ**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **typ**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **typ**av.
+2. I listan program väljer du **typ** av.
 
     ![Typ länken i program listan](common/all-applications.png)
 

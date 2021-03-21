@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575728"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Översikt över Service Fabric-programmeringsmodell
@@ -21,7 +21,7 @@ En [körbar gäst](service-fabric-guest-executables-introduction.md) är en befi
 
 Kom igång med körbara gäst program genom att distribuera ditt första [gäst körbara program](service-fabric-deploy-existing-app.md).
 
-## <a name="containers"></a>Containrar
+## <a name="containers"></a>Containers
 
 Som standard distribuerar Service Fabric och aktiverar tjänster som processer. Service Fabric kan även distribuera tjänster i [behållare](service-fabric-containers-overview.md). Service Fabric stöder distribution av Linux-behållare och Windows-behållare på Windows Server 2016 och senare. Behållar avbildningar kan hämtas från alla behållar lagrings platser och distribueras till datorn. Du kan distribuera befintliga program som körbara gäst program, Service Fabric tillstånds lösa eller tillstånds känsliga Reliable Services eller Reliable Actors i behållare, och du kan blanda tjänster i processer och tjänster i behållare i samma program.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573926"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Lösningar för periodisk dataöverföring
@@ -42,13 +42,13 @@ I den här tabellen sammanfattas skillnaderna mellan de viktigaste funktionerna.
 
 ### <a name="scriptedprogrammatic-network-data-transfer"></a>Skriptad/programmatisk nätverks data överföring
 
-| Kapacitet                  | AzCopy                                 | REST-API:er för Azure Storage       |
+| Funktion                  | AzCopy                                 | REST-API:er för Azure Storage       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | Form faktor                 | Kommando rads verktyg från Microsoft       | Kunderna utvecklar mot lagring <br> REST API: er med Azures klient bibliotek |
 | Inledande eng ång slöin ställning     | Minimal                                | Måttlig, varierande utvecklings ansträngning    |
 | Data format                 | Azure-blobbar, Azure Files, Azure-tabeller | Azure-blobbar, Azure Files, Azure-tabeller   |
 | Prestanda                 | Redan optimerad                      | Optimera när du utvecklar                  |
-| Prissättning                     | Kostnads fritt gäller avgifterna för utgående data      | Kostnads fritt gäller avgifterna för utgående data        |
+| Priser                     | Kostnads fritt gäller avgifterna för utgående data      | Kostnads fritt gäller avgifterna för utgående data        |
 
 ### <a name="continuous-data-ingestion-over-network"></a>Kontinuerlig data inmatning över nätverk
 
@@ -58,10 +58,10 @@ I den här tabellen sammanfattas skillnaderna mellan de viktigaste funktionerna.
 | Maskinvara                                      | Din hypervisor            | Tillhandahålls av Microsoft    | NA                                                            |
 | Första installations ansträngning                          | Låg (<30 minuter.)            | Måttlig (~ paret timmar) | Stor (~ dagar)                                                 |
 | Data format                                   | Azure-blobbar, Azure Files   | Azure-blobbar, Azure Files | [Stöd för 70 + data anslutningar för data lager och format](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)|
-| För bearbetning av data                           | Nej                         | Ja, via Edge Compute    | Ja                                                           |
-| Lokal cache<br>(för att lagra lokala data)    | Ja                        | Ja                      | Nej                                                            |
-| Överföring från andra moln                    | Nej                         | Nej                       | Ja                                                           |
-| Prissättning                                       | [Prissättning](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Prissättning](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Prissättning](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
+| För bearbetning av data                           | Inga                         | Ja, via Edge Compute    | Ja                                                           |
+| Lokal cache<br>(för att lagra lokala data)    | Ja                        | Ja                      | Inga                                                            |
+| Överföring från andra moln                    | Inga                         | Inga                       | Ja                                                           |
+| Priser                                       | [Prissättning](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Prissättning](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Prissättning](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Nästa steg
 

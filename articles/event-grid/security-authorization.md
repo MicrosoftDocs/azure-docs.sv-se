@@ -3,12 +3,12 @@ title: Azure Event Grid säkerhet och autentisering
 description: Beskriver Azure Event Grid och dess begrepp.
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371728"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601048"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Auktorisera åtkomst till Event Grid resurser
 Med Azure Event Grid kan du kontrol lera åtkomst nivån som ges till olika användare för att utföra olika **hanterings åtgärder** , till exempel lista händelse prenumerationer, skapa nya och generera nycklar. Event Grid använder rollbaserad åtkomst kontroll i Azure (Azure RBAC).
@@ -31,80 +31,23 @@ Följande åtgärder returnerar potentiellt hemlig information som filtreras bor
 
 
 ## <a name="built-in-roles"></a>Inbyggda roller
+Event Grid tillhandahåller följande tre inbyggda roller. 
 
-Event Grid innehåller två inbyggda roller för att hantera händelse prenumerationer. De är viktiga när du implementerar [händelse domäner](event-domains.md) eftersom de ger användarna de behörigheter de behöver för att prenumerera på ämnen i din händelse domän. De här rollerna fokuserar på händelse prenumerationer och beviljar inte åtkomst för åtgärder som att skapa ämnen.
+Rollerna Event Grid prenumerations läsare och Event Grid prenumerations deltagare används för att hantera händelse prenumerationer. De är viktiga när du implementerar [händelse domäner](event-domains.md) eftersom de ger användarna de behörigheter de behöver för att prenumerera på ämnen i din händelse domän. De här rollerna fokuserar på händelse prenumerationer och beviljar inte åtkomst för åtgärder som att skapa ämnen.
 
-Du kan [tilldela dessa roller till en användare eller grupp](../role-based-access-control/quickstart-assign-role-user-portal.md).
+Med rollen Event Grid Contributor kan du skapa och hantera Event Grid-resurser. 
 
-**EventGrid EventSubscription-deltagare**: hantera Event Grid prenumerations åtgärder
 
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+| Roll | Beskrivning |
+| ---- | ----------- | 
+| [Event Grid prenumerations läsare](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Låter dig hantera Event Grid händelse prenumerations åtgärder. |
+| [Event Grid prenumerations deltagare](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Låter dig läsa Event Grid händelse prenumerationer. |
+| [Event Grid deltagare](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | Gör att du kan skapa och hantera Event Grid-resurser. |
 
-**EventGrid EventSubscription-läsare**: läsa Event Grid prenumerationer
 
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+> [!NOTE]
+> Välj länkar i den första kolumnen för att navigera till en artikel som innehåller mer information om rollen. Instruktioner för hur du tilldelar användare eller grupper till RBAC-roller finns i [den här artikeln](../role-based-access-control/quickstart-assign-role-user-portal.md).
+
 
 ## <a name="custom-roles"></a>Anpassade roller
 

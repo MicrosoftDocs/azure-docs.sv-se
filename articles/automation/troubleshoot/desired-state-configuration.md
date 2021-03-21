@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896536"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Felsöka konfigurations problem med Azure Automation tillstånd
@@ -107,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Det här problemet orsakas av ett felaktigt eller utgånget certifikat. Se [Omregistrera en nod](../automation-dsc-onboarding.md#re-register-a-node).
 
-Det här problemet kan även bero på att en proxykonfiguration inte tillåter åtkomst till **_. Azure-Automation.net_*. Mer information finns i [konfiguration av privata nätverk](../automation-dsc-overview.md#network-planning). 
+Det här problemet kan även bero på att en proxykonfiguration inte tillåter åtkomst till ***. Azure-Automation.net**. Mer information finns i [konfiguration av privata nätverk](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Lösning
 

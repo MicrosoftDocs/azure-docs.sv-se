@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Beskriver migreringsprocessen från Azure dev Spaces till Bridge till Kubernetes
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes-tjänsten, behållare, bro till Kubernetes
 ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888529"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrera till Bridge to Kubernetes
@@ -46,25 +46,25 @@ Azure dev Spaces och Bridge till Kubernetes har liknande funktioner, men de skil
 | Azure Kubernetes Service | I 15 Azure-regioner | Alla AKS-tjänsteregion    |
 | **Säkerhet** |
 | Säkerhets åtkomst krävs i klustret  | AKS-kluster deltagare  | Kubernetes RBAC – distributions uppdatering   |
-| Säkerhets åtkomst krävs på din utvecklings dator  | E.t.  | Lokal administratör/sudo   |
+| Säkerhets åtkomst krävs på din utvecklings dator  | Ej tillämpligt  | Lokal administratör/sudo   |
 | **Användbarhet** |
-| Oberoende av Kubernetes och Docker-artefakter  | Nej  | Ja   |
-| Automatisk återställning av ändringar, efter fel sökning  | Nej  | Ja   |
+| Oberoende av Kubernetes och Docker-artefakter  | Inga  | Ja   |
+| Automatisk återställning av ändringar, efter fel sökning  | Inga  | Ja   |
 | **Klient verktyg som stöds** |
 | Fungerar med Visual Studio 2019  | Ja  | Ja   |
 | Fungerar med Visual Studio Code  | Ja  | Ja   |
-| Fungerar med CLI  | Ja  | Nej   |
+| Fungerar med CLI  | Ja  | Inga   |
 | **Kompatibilitet för operativ system** |
 | Fungerar i Windows 10  | Ja  | Ja  |
 | Fungerar på Linux  | Ja  | Ja  |
 | Fungerar på macOS  | Ja  | Ja  |
 | **Funktioner** |
 | Isolering av utvecklare eller grupp utveckling  | Ja  | Ja  |
-| Skriv över miljövariabler selektivt  | Nej  | Ja  |
-| Skapa Dockerfile-och Helm-diagram  | Ja  | Nej  |
-| Beständig distribution av kod till Kubernetes  | Ja  | Nej  |
-| Fjärrfelsökning i en Kubernetes-Pod  | Ja  | Nej  |
-| Lokal fel sökning, ansluten till Kubernetes  | Nej  | Ja  |
+| Skriv över miljövariabler selektivt  | Inga  | Ja  |
+| Skapa Dockerfile-och Helm-diagram  | Ja  | Inga  |
+| Beständig distribution av kod till Kubernetes  | Ja  | Inga  |
+| Fjärrfelsökning i en Kubernetes-Pod  | Ja  | Inga  |
+| Lokal fel sökning, ansluten till Kubernetes  | Inga  | Ja  |
 | Felsöka flera tjänster samtidigt, på samma arbets Station  | Ja  | Ja  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Kubernetes inre loop-utveckling

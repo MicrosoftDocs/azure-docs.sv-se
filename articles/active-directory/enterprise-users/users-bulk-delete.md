@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b57d675003c1ebeb29927b86338f95cf7dd68090
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574471"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Mass borttagning av användare i Azure Active Directory
@@ -35,7 +35,7 @@ Hämta och fyll i CSV-mallen så att du kan ta bort Azure AD-användare i bulk. 
 Raderna i en Hämtad CSV-mall är följande:
 
 - **Versions nummer**: den första raden som innehåller versions numret måste inkluderas i överförings-CSV-filen.
-- **Kolumn rubriker**: kolumn rubrikernas format är &lt; *objekt namnet* &gt; [PropertyName] &lt; *obligatoriskt eller tomt* &gt; . Exempelvis `User name [userPrincipalName] Required`. Vissa äldre versioner av mallen kan ha små variationer.
+- **Kolumn rubriker**: kolumn rubrikernas format är &lt; *objekt namnet* &gt; [PropertyName] &lt; *obligatoriskt eller tomt* &gt; . Till exempel `User name [userPrincipalName] Required`. Vissa äldre versioner av mallen kan ha små variationer.
 - **Exempel rad**: vi har inkluderat i mallen en rad exempel på acceptabla värden för varje kolumn. Du måste ta bort exempel raden och ersätta den med dina egna poster.
 
 ### <a name="additional-guidance"></a>Mer information
@@ -62,7 +62,7 @@ Raderna i en Hämtad CSV-mall är följande:
 1. När din fil klarar valideringen väljer du **Skicka** för att starta den Azure Mass åtgärd som tar bort användarna.
 1. När borttagnings åtgärden har slutförts visas ett meddelande om att Mass åtgärden har slutförts.
 
-Om det finns fel kan du hämta och Visa resultat filen på resultat sidan för **Mass åtgärder** . Filen innehåller orsaken för varje fel.
+Om det finns fel kan du hämta och Visa resultat filen på resultat sidan för **Mass åtgärder** . I filen kan du se orsaken till varje fel.
 
 ## <a name="check-status"></a>Kontrollera status
 

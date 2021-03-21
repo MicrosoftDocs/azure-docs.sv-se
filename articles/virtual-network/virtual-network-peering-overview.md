@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
 ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98216758"
 ---
-# <a name="virtual-network-peering"></a>Peering för virtuella nätverk
+# <a name="virtual-network-peering"></a>Virtuell nätverkspeering
 
 Med peering för virtuella nätverk kan du sömlöst ansluta två eller fler [virtuella nätverk](virtual-networks-overview.md) i Azure. De virtuella nätverken visas som ett för anslutnings syfte. Trafiken mellan virtuella datorer i peer-kopplat virtuella nätverk använder Microsofts stamnät infrastruktur. Som trafik mellan virtuella datorer i samma nätverk dirigeras trafiken bara via Microsofts *privata* nätverk.
 
@@ -39,7 +39,7 @@ Fördelar med att använda VNET-peering (avsett om den är lokal eller global):
 
 Nätverkstrafiken mellan peer-kopplade virtuella nätverk är privat. Trafiken mellan de virtuella nätverken finns i Microsoft-stamnätverket. Vid kommunikation mellan virtuella nätverk krävs inget offentligt Internet, inga gatewayer eller ingen kryptering.
 
-## <a name="connectivity"></a>Anslutningar
+## <a name="connectivity"></a>Anslutning
 
 För peer-kopplade virtuella nätverk kan resurser i antingen det virtuella nätverket ansluta direkt till resurser i det peer-kopplade virtuella nätverket.
 
@@ -97,7 +97,7 @@ Mer information finns i [krav och begränsningar](virtual-network-manage-peering
 
 Information om vilka behörigheter som krävs för att skapa en virtuell nätverks-peering finns i [behörigheter](virtual-network-manage-peering.md#permissions).
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Det finns en nominell avgift för ingångs-och utgående trafik som använder en peering-anslutning för virtuellt nätverk. Mer information finns i [Virtual Network prissättning](https://azure.microsoft.com/pricing/details/virtual-network).
 

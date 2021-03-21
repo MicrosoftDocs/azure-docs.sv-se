@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95559660"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Tilldela åtkomst behörigheter till en identitet
@@ -122,7 +122,7 @@ Använd Utforskaren i Windows för att ge fullständig behörighet till alla kat
 5. I fönstret prompt för att lägga till nya användare anger du det mål användar namn som du vill ge behörighet i rutan **Ange de objekt namn som ska väljas** och väljer **kontrol lera namn** för att hitta det fullständiga UPN-namnet för mål användaren.
 7.    Välj **OK**.
 8.    På fliken **säkerhet** väljer du alla behörigheter som du vill ge den nya användaren.
-9.    Välj **Tillämpa**.
+9.    Välj **Använd**.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurera NTFS-behörigheter med icacls
 

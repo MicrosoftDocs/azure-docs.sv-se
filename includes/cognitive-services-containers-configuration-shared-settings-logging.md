@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2bfb700ac5c220b780c05c8d415a4506c7a2f871
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001227"
 ---
 `Logging`Inställningarna hanterar ASP.net Core loggnings stöd för din behållare. Du kan använda samma konfigurations inställningar och värden för din behållare som du använder för ett ASP.NET Core-program. 
@@ -18,8 +18,8 @@ Följande loggnings leverantörer stöds av behållaren:
 |Leverantör|Syfte|
 |--|--|
 |[Konsol](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|ASP.NET Core `Console` Logging-providern. Alla ASP.NET Core konfigurations inställningar och standardvärden för den här Logging-providern stöds.|
-|[Felsökning](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` Logging-providern. Alla ASP.NET Core konfigurations inställningar och standardvärden för den här Logging-providern stöds.|
-|[Diskdefragmenter](#disk-logging)|JSON-Logging-providern. Den här loggnings leverantören skriver loggdata till utgående data montering.|
+|[Felsöka](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` Logging-providern. Alla ASP.NET Core konfigurations inställningar och standardvärden för den här Logging-providern stöds.|
+|[Disk](#disk-logging)|JSON-Logging-providern. Den här loggnings leverantören skriver loggdata till utgående data montering.|
 
 Det här behållar kommandot lagrar loggnings information i JSON-format till utmatnings monteringen:
 

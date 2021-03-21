@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
 ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556016"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Tilldela Azure-roller med hjälp av Azure Resource Manager mallar

@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879266"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581311"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planera ett SaaS-erbjudande för den kommersiella marknaden
 
-I den här artikeln beskrivs de olika alternativen och kraven för att publicera ett SaaS-erbjudande (Software as a Service) på Microsofts kommersiella marknads plats. Med SaaS-erbjudanden kan du leverera och licensiera program varu lösningar till dina kunder via en Online-prenumeration i stället för lokal installation på enskilda datorer. I den här artikeln får du hjälp att förbereda ditt erbjudande för publicering till den kommersiella Marketplace med partner Center.
+I den här artikeln beskrivs de olika alternativen och kraven för att publicera SaaS-erbjudanden (Software as a Service) på Microsofts kommersiella marknads platser. Med SaaS-erbjudanden kan du leverera och licensiera program varu lösningar till dina kunder via online-prenumerationer. Som SaaS-utgivare kan du hantera och betala för den infrastruktur som krävs för att stödja kundernas användning av ditt erbjudande. I den här artikeln får du hjälp att förbereda ditt erbjudande för publicering till den kommersiella Marketplace med partner Center.
 
 ## <a name="listing-options"></a>Listalternativ
 
@@ -79,7 +79,7 @@ Om du skapar ett transactable-erbjudande måste du samla in följande informatio
   Webhooken som du tillhandahåller bör vara igång 24/7. Detta är det enda sättet att få information om uppdateringar om dina kunders SaaS prenumerationer som köpts via den kommersiella Marketplace.
 
   > [!NOTE]
-  > I Azure Portal kräver vi att du skapar en app med en enda klient [Azure Active Directory (Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) för att kunna använda ett Azure App-ID för att autentisera anslutningen mellan våra två tjänster. Du hittar [klient-ID: t](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)genom att gå till din Azure Active Directory och välja **Egenskaper**. Leta sedan reda på katalog-ID-numret som visas. Ett exempel är `50c464d3-4930-494c-963c-1e951d15360e`.
+  > I Azure Portal kräver vi att du skapar en app med en enda klient [Azure Active Directory (Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) för att kunna använda ett Azure App-ID för att autentisera anslutningen mellan våra två tjänster. Du hittar [klient-ID: t](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)genom att gå till din Azure Active Directory och välja **Egenskaper**. Leta sedan reda på katalog-ID-numret som visas. Till exempel `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **Azure Active Directory klient-ID**: (kallas även katalog-ID). I Azure Portal måste du [Registrera en Azure Active Directory (AD)-app](../active-directory/develop/howto-create-service-principal-portal.md) så att vi kan lägga till den i åtkomst kontrol listan (ACL) för API: et för att kontrol lera att du har behörighet att anropa den. Du hittar klient-ID: t för din Azure Active Directory (AD)-appen genom att gå till bladet [Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) i Azure Active Directory. I kolumnen **visnings namn** väljer du appen. Leta sedan efter den **katalog (klient) ID-** nummer som anges (till exempel `50c464d3-4930-494c-963c-1e951d15360e` ).
 
@@ -113,10 +113,10 @@ Om ditt SaaS-erbjudande är *både* en IT-lösning (Azure Marketplace) och en f�
 
 | Avgiftsbelagd fakturering | Offentligt abonnemang | Privat plan | Tillgängligt i: |
 |---|---|---|---|
-| Ja             | Ja         | Nej           | Azure Marketplace och Azure Portal |
+| Ja             | Ja         | Inga           | Azure Marketplace och Azure Portal |
 | Ja             | Ja         | Ja          | Azure Marketplace och Azure Portal * |
-| Ja             | Nej          | Ja          | Endast Azure Portal |
-| Nej              | Nej          | Ja          | Endast Azure Portal |
+| Ja             | Inga          | Ja          | Endast Azure Portal |
+| Inga              | Inga          | Ja          | Endast Azure Portal |
 |||||
 
 &#42; privat plan för erbjudandet är endast tillgängligt via Azure Portal

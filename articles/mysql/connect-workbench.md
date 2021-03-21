@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5e27cfec0a3f0a58c1e94a822e0c831f4efa1b32
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535545"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Snabb start: Använd MySQL Workbench för att ansluta och fråga efter data i Azure Database for MySQL
@@ -35,7 +35,7 @@ Skaffa den information som du behöver för att ansluta till Azure Database för
 
 1. Logga in på [Azure Portal](https://portal.azure.com/).
 
-2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver** ).
+2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver**).
 
 3. Klicka på servernamnet.
 
@@ -47,7 +47,7 @@ Ansluta till Azure MySQL-servern med GUI-verktyget MySQL Workbench:
 
 1.    Starta programmet MySQL Workbench på datorn. 
 
-2.    I dialogrutan **Konfigurera ny anslutning** anger du följande information på fliken **Parametrar** :
+2.    I dialogrutan **Konfigurera ny anslutning** anger du följande information på fliken **Parametrar**:
 
 :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="konfigurera ny anslutning":::
 

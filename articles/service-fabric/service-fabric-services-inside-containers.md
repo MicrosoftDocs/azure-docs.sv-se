@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999815"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Containeranpassa Service Fabric Reliable Services och Reliable Actors i Windows
@@ -24,7 +24,7 @@ Det här dokumentet innehåller rikt linjer för hur du får din tjänst att kö
 
 1. Öppna ditt Service Fabric-program i Visual Studio.
 
-2. Lägg till klass [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) i ditt projekt. Koden i den här klassen är en hjälp program att läsa in Service Fabric körbara binärfiler i programmet när de körs i en behållare.
+2. Lägg till klass [SFBinaryLoader. cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) i projektet. Koden i den här klassen är en hjälp program att läsa in Service Fabric körbara binärfiler i programmet när de körs i en behållare.
 
 3. Initiera inläsaren vid program start punkten för varje kod paket som du vill Använd. Lägg till den statiska konstruktorn som visas i följande kodfragment till din program start punkt fil.
 

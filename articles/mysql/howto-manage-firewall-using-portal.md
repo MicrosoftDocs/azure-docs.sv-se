@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 032db324f9dd2f0d6a5dce5c4fd5c64342fed59f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540492"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Skapa och hantera Azure Database for MySQL brand Väggs regler med hjälp av Azure Portal
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Skapa och hantera brandväggsregler för Azure Database for MySQL med hjälp av Azure-portalen
 Brand Väggs regler på server nivå kan användas för att hantera åtkomst till en Azure Database for MySQL-server från en angiven IP-adress eller ett intervall med IP-adresser. 
 
 Virtual Network-regler (VNet) kan också användas för att skydda åtkomsten till servern. Lär dig mer om [att skapa och hantera Virtual Network tjänst slut punkter och regler med hjälp av Azure Portal](howto-manage-vnet-using-portal.md).
@@ -50,7 +50,7 @@ Om du vill tillåta att program från Azure ansluter till din Azure Database for
 ## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>Hantera befintliga brand Väggs regler på server nivå med hjälp av Azure Portal
 Upprepa stegen för att hantera brand Väggs reglerna.
 * Klicka på **+ Lägg till min IP** för att lägga till den aktuella datorn. Klicka på **Spara** för att spara ändringarna.
-* Om du vill lägga till ytterligare IP-adresser skriver du in **regel namn** , **Start-IP** och **slut-IP**. Klicka på **Spara** för att spara ändringarna.
+* Om du vill lägga till ytterligare IP-adresser skriver du in **regel namn**, **Start-IP** och **slut-IP**. Klicka på **Spara** för att spara ändringarna.
 * Om du vill ändra en befintlig regel klickar du på något av fälten i regeln och ändrar sedan. Klicka på **Spara** för att spara ändringarna.
 * Om du vill ta bort en befintlig regel klickar du på ellipsen [...] och klickar sedan på **ta bort**. Klicka på **Spara** för att spara ändringarna.
 

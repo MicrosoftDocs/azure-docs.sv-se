@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001515"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operativ system funktioner på Azure App Service
@@ -45,7 +45,7 @@ Det finns olika enheter inom App Service, inklusive lokala enheter och nätverks
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Lokala enheter
-På grund av detta är App Service en tjänst som körs ovanpå Azure-PaaS (plattform som en tjänst)-infrastruktur. Därför är de lokala enheter som är anslutna till en virtuell dator samma enhets typer som är tillgängliga för alla arbets roller som körs i Azure. Det här omfattar:
+På grund av detta är App Service en tjänst som körs ovanpå Azure-PaaS (plattform som en tjänst)-infrastruktur. Därför är de lokala enheter som är anslutna till en virtuell dator samma enhets typer som är tillgängliga för alla arbets roller som körs i Azure. Du måste bland annat:
 
 - En operativ system enhet (D:\ kombinationsenhet
 - En program enhet som innehåller Azure Package cspkg-filer som används exklusivt av App Service (och inte är tillgänglig för kunder)

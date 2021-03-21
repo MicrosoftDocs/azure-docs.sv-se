@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558869"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Självstudie: Konfigurera 8x8 för automatisk användar etablering
@@ -29,7 +29,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både 8x8-admini
 > * Behåll användarattribut synkroniserade mellan Azure AD och 8x8
 > * [Enkel inloggning](./8x8virtualoffice-tutorial.md) till 8x8 (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -52,7 +52,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera 8x8 för att 
 
 1. Logga in på [Administratörs konsolen](https://admin.8x8.com). Välj **identitets hantering**.
 
-   ![Admin](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![Administratör](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. Klicka på länken **Visa information om användar etablering** för att generera en token.
 

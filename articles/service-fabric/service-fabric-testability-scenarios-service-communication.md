@@ -4,10 +4,10 @@ description: Tjänst-till-tjänst-kommunikation är en viktig integrations plats
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575932"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric testnings scenarier: tjänst kommunikation

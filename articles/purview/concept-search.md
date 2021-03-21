@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: af8ec9e0aac38240c7da92edd614892ff65712e2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553969"
 ---
 # <a name="understand-search-features-in-azure-purview"></a>Förstå Sök funktioner i Azure avdelningens kontroll
 
 Den här artikeln innehåller en översikt över Sök funktionen i Azure avdelningens kontroll. Sök är en kärn plattforms funktion i avdelningens kontroll, som ger data identifiering och data användning styrnings upplevelser i en organisation.
 
-## <a name="search"></a>Search
+## <a name="search"></a>Sök
 
 Avdelningens kontroll Sök upplevelsen drivs av ett hanterat sökindex. När en data källa har registrerats med avdelningens kontroll indexeras dess metadata av Sök tjänsten för att möjliggöra enkel identifiering. Indexet tillhandahåller Sök funktioner och slutför Sök begär Anden genom att fråga miljon tals metadata till gångar. Genom att söka kan du identifiera, förstå och använda data för att få ut det mesta av det.
 

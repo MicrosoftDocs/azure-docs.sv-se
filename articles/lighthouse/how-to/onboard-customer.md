@@ -4,10 +4,10 @@ description: Lär dig hur du kan publicera en kund i Azure Lighthouse, så att d
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556105"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Registrera en kund i Azure Lighthouse
@@ -117,7 +117,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Skapa en Azure Resource Manager mall
 
-För att publicera kunden måste du skapa en [Azure Resource Manager](../../azure-resource-manager/index.yml) mall för ditt erbjudande med följande information. Värdena för **mspOfferName** och **mspOfferDescription** visas för kunden på [sidan tjänst leverantörer](view-manage-service-providers.md) i Azure Portal.
+För att registrera kunden behöver du skapa en [Azure Resource Manager](../../azure-resource-manager/index.yml)-mall för ditt erbjudande med följande information. Värdena för **mspOfferName** och **mspOfferDescription** visas för kunden på [sidan tjänst leverantörer](view-manage-service-providers.md) i Azure Portal.
 
 |Field  |Definition  |
 |---------|---------|

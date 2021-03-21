@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097422"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Data drivna format uttryck (Android SDK)
@@ -874,7 +874,7 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 Det finns tre typer av interpolation-metoder som kan användas i ett `interpolate` uttryck:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 |------|-------------|
 | `linear()` | Interpolerar linjärt mellan stopp paret.  |
 | `exponential(number)` \| `exponential(Expression)` | Interpolerar exponentiellt mellan stoppen. En "base" anges och styr den hastighet som utdata ökar. Högre värden gör att utdata ökar till den övre delen av intervallet. Ett "bas"-värde nära 1 ger en utmatning som ökar linjärt.|
