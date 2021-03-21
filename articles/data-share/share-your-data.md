@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659632"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Självstudier: Dela data med Azure Data Share  
@@ -114,7 +114,7 @@ Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
     |---|---|---|
     | Prenumeration | Din prenumeration | Välj den Azure-prenumeration som du vill använda för ditt data resurs konto.|
     | Resursgrupp | *testresourcegroup* | Använd en befintlig resursgrupp eller skapa en ny resursgrupp. |
-    | Plats | *USA, östra 2* | Välj en region för ditt data resurs konto.
+    | Location | *USA, östra 2* | Välj en region för ditt data resurs konto.
     | Name | *datashareaccount* | Ange ett namn för ditt data resurs konto. |
     | | |
 

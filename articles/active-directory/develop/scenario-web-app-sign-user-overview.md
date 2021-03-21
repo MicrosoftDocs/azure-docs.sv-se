@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 0bbc799f946d318c305a96d9cb8c6831d9242ff6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573055"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578302"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: webb program som loggar in användare
 
@@ -43,6 +43,12 @@ Om du är en Java-utvecklare kan du prova följande snabb start:
 
 [Snabb start: lägga till inloggning med Microsoft i en Java-webbapp](quickstart-v2-java-webapp.md)
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Om du är Node.js utvecklare kan du prova följande snabb start:
+
+[Snabb start: lägga till inloggning med Microsoft i ett Node.js-webbprogram](quickstart-v2-nodejs-webapp-msal.md)
+
 # <a name="python"></a>[Python](#tab/python)
 
 Om du utvecklar med python kan du prova följande snabb start:
@@ -62,7 +68,7 @@ Web Apps autentiserar en användare i en webbläsare. I det här scenariot dirig
 Som en andra fas kan du aktivera ditt program så att det anropar webb-API: er åt den inloggade användaren. Nästa fas är ett annat scenario, som du hittar i [webb program som anropar webb-API: er](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Att lägga till inloggning i en webbapp är att skydda webbappen och verifiera en användartoken, vilket är vad  **mellan** -program varu bibliotek gör. I fallet med .NET kräver det här scenariot ännu inte Microsoft Authentication Library (MSAL), som handlar om att förvärva en token för att anropa skyddade API: er. Autentiseringsscheman kommer att införas i uppföljnings scenariot när webbappen behöver anropa webb-API: er.
+> Att lägga till inloggning i en webbapp är att skydda webbappen och verifiera en användartoken, vilket är vad  **mellan** -program varu bibliotek gör. I fallet med .NET kräver det här scenariot ännu inte Microsoft Authentication Library (MSAL), som handlar om att förvärva en token för att anropa skyddade API: er. Autentiseringsscheman för .NET kommer att införas i uppföljnings scenariot när webbappen behöver anropa webb-API: er.
 
 ## <a name="specifics"></a>Information
 
@@ -87,6 +93,10 @@ Gå vidare till nästa artikel i det här scenariot, [Registrera appen](./scenar
 # <a name="java"></a>[Java](#tab/java)
 
 Gå vidare till nästa artikel i det här scenariot, [Registrera appen](./scenario-web-app-sign-user-app-registration.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Gå vidare till nästa artikel i det här scenariot, [Registrera appen](./scenario-web-app-sign-user-app-registration.md?tabs=nodejs).
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -7,10 +7,10 @@ ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730793"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Vad är Windows Virtual Desktop?
@@ -138,12 +138,12 @@ Tillgängliga alternativ för Automation och distribution beror på vilket opera
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 Enterprise (multi-session), version 2004|Ja|Ja|Ja|Ja|
 |Windows 10 Enterprise (multi-session), version 1909|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise (multi-session), version 1903|Ja|Ja|Nej|Nej|
-|Windows 10 Enterprise (multi-session), version 1809|Ja|Ja|Nej|Nej|
-|Windows 7 Enterprise|Ja|Ja|Nej|Nej|
-|Windows Server 2019|Ja|Ja|Nej|Nej|
+|Windows 10 Enterprise (multi-session), version 1903|Ja|Ja|Inga|Inga|
+|Windows 10 Enterprise (multi-session), version 1809|Ja|Ja|Inga|Inga|
+|Windows 7 Enterprise|Ja|Ja|Inga|Inga|
+|Windows Server 2019|Ja|Ja|Inga|Inga|
 |Windows Server 2016|Ja|Ja|Ja|Ja|
-|Windows Server 2012 R2|Ja|Ja|Nej|Nej|
+|Windows Server 2012 R2|Ja|Ja|Inga|Nej|
 
 ## <a name="next-steps"></a>Nästa steg
 

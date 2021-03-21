@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.openlocfilehash: 5c4a5f5d792a60ed3fef07797fdbdfa0c9cfb8fe
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534338"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Ansluta Azure Kubernetes-tjänsten och Azure Database for MySQL
@@ -43,5 +43,5 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 
 ## <a name="next-steps"></a>Nästa steg
-- [Skapa ett Azure Kubernetes service-kluster](../aks/kubernetes-walkthrough.md)
+- [Skapa ett Azure Kubernetes Service-kluster](../aks/kubernetes-walkthrough.md)
 - Lär dig hur du [installerar WordPress från ett Helm-diagram med OSBA och Azure Database for MySQL](../aks/index.yml)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630274"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590627"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -48,7 +48,7 @@ Välj programmets typ av *Event Grid utlösare* och välj _skapa_.
 
 :::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan för att skapa ett nytt Azure Functions-program. Alternativet Event Grid utlösare är markerat.":::
 
-När din Function-app har skapats kommer Visual Studio att generera ett kod exempel i en **Function1.cs** -fil i projektmappen. Den här korta funktionen används för att logga händelser.
+När din Function-app har skapats kommer Visual Studio att generera ett kod exempel i en **Function1. cs** -fil i projektmappen. Den här korta funktionen används för att logga händelser.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Skärm bild av Visual Studio i projekt fönstret för det nya projektet som har skapats. Det finns en kod för en exempel funktion som kallas Function1." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
@@ -63,13 +63,13 @@ För att kunna använda SDK måste du inkludera följande paket i projektet. Du 
 * [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Öppna sedan _Function1.cs_ -filen i Visual Studio-Solution Explorer där du har exempel kod och Lägg till följande `using` instruktioner för dessa paket i din funktion.
+I Visual Studio-Solution Explorer öppnar du sedan filen _Function1. cs_ där du har exempel kod och lägger till följande `using` instruktioner för dessa paket i din funktion.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>Lägg till autentiserings kod till funktionen
 
-Du kommer nu att deklarera variabler på klass nivå och lägga till en kod som gör det möjligt att komma åt Azure Digitals dubbla. Du lägger till följande i din funktion i _Function1.cs_ -filen.
+Du kommer nu att deklarera variabler på klass nivå och lägga till en kod som gör det möjligt att komma åt Azure Digitals dubbla. Du lägger till följande i din funktion i filen _Function1. cs_ .
 
 * Kod för att läsa URL: en för Azure Digitals dubblare-tjänst som en **miljö variabel**. Det är en bra idé att läsa tjänste-URL: en från en miljö variabel, i stället för att hårdkoda den i-funktionen. Du anger värdet för den här miljövariabeln [senare i den här artikeln](#set-up-security-access-for-the-function-app). Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
@@ -118,12 +118,14 @@ Du kan ställa in säkerhets åtkomst för Function-appen med hjälp av antingen
 # <a name="cli"></a>[CLI](#tab/cli)
 
 Du kan köra dessa kommandon i [Azure Cloud Shell](https://shell.azure.com) eller en [lokal Azure CLI-installation](/cli/azure/install-azure-cli).
+Du kan använda Function-appens systemhanterade identitet för att ge den _**Azure Digitals data ägar**_ roll för Azure Digitals-instansen. Detta ger funktionen app behörighet i instansen för att utföra data Plans aktiviteter. Sedan kan du göra webb adressen till Azure Digitals dubblare-instans tillgänglig för din funktion genom att ange en miljö variabel.
 
 ### <a name="assign-access-role"></a>Tilldela åtkomst roll
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 Funktionen Skeleton från tidigare exempel kräver att en Bearer-token skickas till den, för att kunna autentisera med Azure Digital-dubbla. För att se till att denna Bearer-token överförs måste du konfigurera [hanterad tjänstidentitet (MSI)](../active-directory/managed-identities-azure-resources/overview.md) -behörigheter för Function-appen för att få åtkomst till Azure Digital-dubbla. Detta måste bara göras en gång för varje Function-app.
 
-Du kan använda Function-appens systemhanterade identitet för att ge den _**Azure Digitals data ägar**_ roll för Azure Digitals-instansen. Detta ger funktionen app behörighet i instansen för att utföra data Plans aktiviteter. Sedan kan du göra webb adressen till Azure Digitals dubblare-instans tillgänglig för din funktion genom att ange en miljö variabel.
 
 1. Använd följande kommando för att se information om den systemhanterade identiteten för funktionen. Anteckna fältet _principalId_ i utdata.
 
@@ -162,6 +164,8 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 Utför följande steg i [Azure Portal](https://portal.azure.com/).
 
 ### <a name="assign-access-role"></a>Tilldela åtkomst roll
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 En systemtilldelad hanterad identitet gör det möjligt för Azure-resurser att autentisera till moln tjänster (till exempel Azure Key Vault) utan att lagra autentiseringsuppgifter i kod. När den är aktive rad kan alla nödvändiga behörigheter beviljas via rollbaserad åtkomst kontroll i Azure. Livs cykeln för den här typen av hanterad identitet är kopplad till livs cykeln för den här resursen. Dessutom kan varje resurs bara ha en systemtilldelad hanterad identitet.
 

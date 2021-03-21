@@ -5,59 +5,102 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7f5e5e4da9fea671fc85a55fc8cc191fa14b720f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12f6acda632b9c0fbee2db570df5293c1daf32ea
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101663852"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720822"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Så här uppdaterar du Azure percept DK över en USB-anslutning
 
-Följ den här guiden för att lära dig hur du utför en USB-uppdatering för transport kortet för din Azure percept DK.
+Även om du använder OTA-uppdateringar (över-Air) är den bästa metoden för att hålla ditt utvecklings pakets operativ system och inbyggd program vara uppdaterad, finns det scenarier där du behöver uppdatera (eller "blinka") dev-paketet via en USB-anslutning:
+
+- Det går inte att uppdatera en OTA på grund av anslutning eller andra tekniska problem
+- Enheten måste återställas till fabriks läget igen
+
+Den här guiden visar hur du kan uppdatera ditt utvecklings pakets operativ system och inbyggd program vara via en USB-anslutning.
+
+> [!WARNING]
+> Om du uppdaterar ditt dev-paket via USB raderas alla befintliga data på enheten, inklusive AI-modeller och behållare.
+>
+> Följ alla instruktioner i ordning. Att hoppa över steg kan leda till att ditt dev kit är i ett oanvändbart tillstånd.
 
 ## <a name="prerequisites"></a>Förutsättningar
-- Värddator med en tillgänglig USB-C-eller USB-A-port.
-- Azure percept DK-bärvåg (dev Kit) och levererat USB-C till USB-C-kabel. Om värddatorn har en USB-A-port, men inte en USB-C-port, kan du använda en USB-C för USB-A-kabel (säljs separat).
-- Installera [SparaTillFil](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (administratörs åtkomst krävs).
-- Installera NXP UUU-verktyget. [Hämta den senaste versionen](https://github.com/NXPmicro/mfgtools/releases) uuu.exe-filen (för Windows) eller uuu-filen (för Linux) under fliken till gångar.
-- [Installera 7-zip](https://www.7-zip.org/). Den här program varan kommer att användas för att extrahera RAW-bildfilen från den komprimerade filen XZ. Hämta och installera lämplig. exe-fil.
 
-## <a name="steps"></a>Steg
-1.  Hämta följande [tre USB-uppdateringsfiler](https://go.microsoft.com/fwlink/?linkid=2155734):
-    - pe101-UEFI-***&lt; versions &gt; nummer***. RAW. XZ
-    - emmc_full.txt
+- En Azure percept DK
+- En Windows-, Linux-eller OS X-baserad värd dator med Wi-Fi kapacitet och en tillgänglig USB-C-eller USB-A-port
+- En USB-C till USB-kabel (valfritt, säljs separat)
+- En SSH-inloggning som skapats under [installationen av Azure PERCEPT DK](./quickstart-percept-dk-set-up.md)
+
+## <a name="download-software-tools-and-update-files"></a>Hämta program varu verktyg och uppdateringsfiler
+
+1. [Verktyget NXP uuu](https://github.com/NXPmicro/mfgtools/releases). Hämta den **senaste versionen** uuu.exe-filen (för Windows) eller uuu-filen (för Linux) under fliken **till gångar** .
+
+1. [7-zip](https://www.7-zip.org/). Den här program varan kommer att användas för att extrahera RAW-bildfilen från den komprimerade filen XZ. Hämta och installera lämplig. exe-fil.
+
+1. [Hämta uppdateringsfilerna](https://go.microsoft.com/fwlink/?linkid=2155734).
+
+1. Se till att alla tre Bygg artefakter finns:
+    - Azure-percept-DK-*&lt; versions &gt; nummer*. RAW. XZ
     - fast-HAB-FW. RAW
- 
-1. Extrahera till pe101-UEFI-***&lt; versions &gt; nummer**_. Raw från den komprimerade pe101-UEFI_- * _&lt; &gt; versions nummer_* *. RAW. XZ-filen. Är du osäker på hur du extraherar? Ladda ned och installera 7-zip, högerklicka sedan på avbildnings filen **. XZ** och välj 7-zip- &gt; extrahering här.
+    - emmc_full.txt
 
-1. Kopiera följande tre filer till den mapp som innehåller UUU-verktyget:
-    - Extraherade pe101-UEFI-***&lt; versions nummer &gt;***. RAW-fil (från steg 2).
-    - emmc_full.txt (från steg 1).
-    - fast-HAB-FW. RAW (från steg 1).
- 
-1. Slå på dev-paketet.
-1. [Ansluta till dev-paketet via SSH](./how-to-ssh-into-percept-dk.md)
-1. Öppna en kommando tolk i Windows (Start &gt; cmd) eller en Linux-terminal och navigera till mappen där uppdateringsfilerna lagras. Kör följande kommando för att initiera uppdateringen:
-    - Windows: ```uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    - Linux: ```sudo ./uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    
-När du har kört dessa kommandon kan du se ett meddelande om att "väntar på enhet..." i kommando tolken. Detta är förväntat och du bör gå vidare till nästa steg.
-    
-1. Anslut dev-paketets transport kort till värddatorn via en USB-kabel. Anslut alltid från frakt tavlornas USB-C-port till antingen värddatorns USB-C-eller USB-A-port (USB-C till USB-en kabel som säljs separat), beroende på vilka portar som är tillgängliga. 
- 
-1. I SSH/SparaTillFil-terminalen anger du följande kommandon för att ställa in dev-paketet i USB-läge och sedan starta om dev-paketet.
-    - ```flagutil    -wBfRequestUsbFlash    -v1```
-    - ```reboot -f```
- 
-1. Du kan få en indikation på att värddatorn känner igen enheten och att uppdaterings processen startar automatiskt. Gå tillbaka till kommando tolken för att se statusen. Processen tar upp till tio minuter och när uppdateringen lyckas visas ett meddelande om att "lyckades 1"-fel 0 "
- 
-1. Stäng av frakt kortet när uppdateringen är klar. Koppla från USB-kabeln från datorn.  Anslut Azure percept vision-modulen tillbaka till frakt tavlan med USB-kabeln.
+## <a name="set-up-your-environment"></a>Konfigurera din miljö
 
-1. Sätt tillbaka operatörs kortet på.
+1. Skapa en mapp/katalog på värddatorn på en plats som är lätt att komma åt via kommando raden.
+
+1. Kopiera UUU-verktyget (**uuu.exe** eller **uuu**) till den nya mappen.
+
+1. Extrahera filen **Azure-percept-DK-*&lt; version Number &gt;*. RAW** från den komprimerade filen genom att högerklicka på **Azure-percept-DK-*&lt; version Number &gt;*. RAW. XZ** och välja **7 zip** - &gt; **extrahering här**.
+
+1. Flytta den extraherade **Azure-percept-DK-*&lt; version &gt; Number*. RAW-** filen, **fast-HAB-FW. RAW** och **emmc_full.txt** till mappen som innehåller uuu-verktyget.
+
+## <a name="update-your-device"></a>Uppdatera din enhet
+
+1. [SSH till ditt dev-paket](./how-to-ssh-into-percept-dk.md).
+
+1. Öppna sedan en kommando tolk i Windows (**Starta**  >  **cmd**) eller en Linux-terminal och navigera till mappen där uppdateringsfiler och uuu-verktyget lagras. Ange följande kommando i kommando tolken eller terminalen för att förbereda datorn för att ta emot en flashable-enhet:
+
+    - Windows:
+
+        ```bash
+        uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw 
+        ```
+
+    - Linux:
+
+        ```bash
+        sudo ./uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw
+        ```
+
+1. Koppla från Azure percept Vision-enheten från operatörens USB C-port.
+
+1. Anslut den angivna USB-C-kabeln till nätverkskortets USB-C-port och värd datorns USB-C-port. Om datorn bara har en USB-A-port ansluter du en USB-C till USB-A-kabel (säljs separat) till frakt kortet och värddatorn.
+
+1. I kommando tolken för SSH-klienten anger du följande kommandon:
+
+    1. Ställ in enhet till USB-uppdaterings läge:
+
+        ```bash
+        sudo flagutil    -wBfRequestUsbFlash    -v1
+        ```
+
+    1. Starta om enheten. Installationen av uppdateringen påbörjas.
+
+        ```bash
+        sudo reboot -f
+        ```
+
+1. Gå tillbaka till den andra kommando tolken eller terminalen. När uppdateringen är avslutad visas ett meddelande med ```Success 1    Failure 0``` :
+
+    > [!NOTE]
+    > Efter uppdateringen återställs enheten till fabriks inställningarna och du kommer att förlora Wi-Fi anslutningen och SSH-inloggningen.
+
+1. Stäng av frakt kortet när uppdateringen är klar. Koppla från USB-kabeln från datorn.  
 
 ## <a name="next-steps"></a>Nästa steg
 
-Ditt dev-paket har nu uppdaterats. Du kan fortsätta utveckling och drift med din devkit.
+Arbeta med [installations upplevelsen för Azure PERCEPT DK](./quickstart-percept-dk-set-up.md) för att konfigurera om enheten.

@@ -4,10 +4,10 @@ description: Lär dig hur du publicerar ett anpassat meddelande i ett befintligt
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270775"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Publicera ett meddelande till ett labb i Azure DevTest Labs
@@ -25,13 +25,13 @@ Funktionen meddelande är avsedd att användas för tillfälliga meddelanden.  D
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Steg för att publicera ett meddelande i ett befintligt labb
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Om det behövs väljer du **alla tjänster**och väljer sedan **DevTest Labs** i listan. (Ditt labb kanske redan visas på instrument panelen under **alla resurser**).
+1. Om det behövs väljer du **alla tjänster** och väljer sedan **DevTest Labs** i listan. (Ditt labb kanske redan visas på instrument panelen under **alla resurser**).
 1. I listan med labb väljer du det labb som du vill skicka ett meddelande till.
 1. I labb **översikts** avsnittet väljer du **konfiguration och principer**.
 
     ![Knappen konfiguration och principer](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. Välj **labb meddelande**till vänster under **Inställningar**.
+1. Välj **labb meddelande** till vänster under **Inställningar**.
 
     ![Knappen labb meddelande](./media/devtest-lab-announcements/devtestlab-announcements.png)
 

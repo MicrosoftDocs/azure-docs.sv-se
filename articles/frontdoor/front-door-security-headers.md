@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91270057"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Självstudie: Lägg till säkerhets rubriker med regel motor
@@ -29,7 +29,7 @@ I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Konfigurera en innehålls-säkerhets princip i regel motorn.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Innan du kan slutföra stegen i den här kursen behöver du skapa en Front Door. Mer information finns i [Snabbstart: Skapa en Front Door](quickstart-create-front-door.md).
 * Om det här är första gången du använder funktionen för regel motor, se så här [konfigurerar du en regel motor](front-door-tutorial-rules-engine.md).

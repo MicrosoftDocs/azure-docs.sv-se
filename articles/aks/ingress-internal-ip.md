@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Lär dig hur du installerar och konfigurerar en NGINX ingress Controller för ett internt, privat nätverk i ett Azure Kubernetes service-kluster (AKS).
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 976c5581ad217064da37b0b092d2d634d30cb7e5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: 3201f510db9970b7db548ee6a3348fa68d278248
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601473"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Skapa en ingångs kontroll för ett internt virtuellt nätverk i Azure Kubernetes service (AKS)
 
@@ -232,7 +232,7 @@ ingress.extensions/hello-world-ingress created
 Om du vill testa vägarna för ingångs styrenheten bläddrar du till de två programmen med en webb klient. Vid behov kan du snabbt testa den här interna funktionen från en POD i AKS-klustret. Skapa en test-Pod och koppla en terminalsession till den:
 
 ```console
-kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
+kubectl run -it --rm aks-ingress-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --namespace ingress-basic
 ```
 
 Installera `curl` i pod med `apt-get` :

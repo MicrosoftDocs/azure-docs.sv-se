@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102632447"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>Självstudie: Använd Azures snabb starts mallar för Azure Resource Manager bicep-utveckling

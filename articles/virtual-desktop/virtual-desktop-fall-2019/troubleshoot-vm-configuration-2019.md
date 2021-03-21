@@ -7,10 +7,10 @@ ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008635"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Konfiguration av virtuell dator för virtuella Windows-datorer (klassisk)
@@ -82,7 +82,7 @@ Det rekommenderade sättet att etablera virtuella datorer med hjälp av Azure Re
 
 Följ de här anvisningarna för att bekräfta att komponenterna är installerade och för att söka efter fel meddelanden.
 
-1. Bekräfta att de två komponenterna är installerade genom att kontrol **Control Panel**lera i program  >  **Programs**  >  **och funktioner**på kontroll panelen. Om **Windows Virtual Desktop-agenten** och **Start inläsaren för virtuella Skriv bords agenter** för Windows inte visas, är de inte installerade på den virtuella datorn.
+1. Bekräfta att de två komponenterna är installerade genom att kontrol lera i program  >    >  **och funktioner** på kontroll panelen. Om **Windows Virtual Desktop-agenten** och **Start inläsaren för virtuella Skriv bords agenter** för Windows inte visas, är de inte installerade på den virtuella datorn.
 2. Öppna **Utforskaren** och gå till **C:\Windows\Temp\ScriptLog.log**. Om filen saknas, anger det att PowerShell DSC som installerade de två komponenterna inte kunde köras i den angivna säkerhets kontexten.
 3. Om filen **C:\Windows\Temp\ScriptLog.log** finns öppnar du den och kontrollerar om det finns fel meddelanden.
 
@@ -316,7 +316,7 @@ Om något av dessa meddelanden visas innebär det att avbildningen inte har de s
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Inaktivera grup princip inställningen för fjärr skrivbords licensierings läge
 
-Kontrol lera grup princip inställningen genom att öppna grupprincip redigeraren på den virtuella datorn och navigera till **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **värd**  >  **licensiering**för fjärrskrivbordssession  >  **Ange fjärr skrivbords licensierings läge**. Om grup princip inställningen är **aktive rad**ändrar du den till **inaktive rad**. Om den redan är inaktive rad lämnar du den som den är.
+Kontrol lera grup princip inställningen genom att öppna grupprincip redigeraren på den virtuella datorn och navigera till **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **värd**  >  **licensiering** för fjärrskrivbordssession  >  **Ange fjärr skrivbords licensierings läge**. Om grup princip inställningen är **aktive rad** ändrar du den till **inaktive rad**. Om den redan är inaktive rad lämnar du den som den är.
 
 >[!NOTE]
 >Om du anger grup princip via din domän inaktiverar du den här inställningen för principer som riktar sig mot de här Windows 10 Enterprise-datorer med flera sessioner.

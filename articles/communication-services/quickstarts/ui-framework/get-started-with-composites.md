@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 7356fb90914e948b6a74a478ce1e19722b224346
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488065"
 ---
 # <a name="quickstart-get-started-with-ui-framework-composite-components"></a>Snabb start: kom igång med sammansatta UI Framework-komponenter
@@ -73,7 +73,7 @@ npm run start
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i klient biblioteket för Azure Communication Services UI:
 
-| Namn                                  | Beskrivning                                                  |
+| Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | GroupCall | Sammansatt komponent som återger en grupp som anropar erfarenhet med deltagar galleriet och kontroller. |
 | GroupChat | Sammansatt komponent som återger en grupps Chat-upplevelse med Chat-tråd och-ingångar |

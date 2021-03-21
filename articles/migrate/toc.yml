@@ -73,7 +73,7 @@
     - name: Använd
       items:
         - name: Använd ASP.NET-appar och migrera till AKS
-          href: tutorial-containerize-aspnet-kubernetes.md
+          href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Använd Java-webbappar och migrera till AKS
           href: tutorial-containerize-java-kubernetes.md
 - name: Begrepp

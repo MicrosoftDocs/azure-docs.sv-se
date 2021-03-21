@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41cf1646d75080bc5b5996504ce8711edfae89fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612824"
+ms.locfileid: "104719681"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -115,7 +115,7 @@ Kör programmet och en syntetisk `.wav` fil skrivs till den plats som du har ang
 
 ## <a name="synthesize-to-speaker-output"></a>Syntetisera till talare-utdata
 
-I vissa fall kanske du vill direkt mata ut syntetiskt tal direkt till en talare. Det gör du genom att utelämna `AudioConfig` paramn när du skapar `SpeechSynthesizer` i exemplet ovan. Dessa utdata till den aktuella aktiva utmatnings enheten.
+I vissa fall kanske du vill direkt mata ut syntetiskt tal direkt till en talare. Det gör du genom att utelämna `AudioConfig` parametern när du skapar `SpeechSynthesizer` i exemplet ovan. Den här syntetiseran till den aktuella aktiva utmatnings enheten.
 
 ```cpp
 void synthesizeSpeech()
@@ -255,10 +255,10 @@ Om du vill växla till en neurala röst ändrar `name` du till ett av [röst alt
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Hämta händelser för ansikts attityd
 
-Tal behandlas vanligt vis som ett bra sätt att köra animeringen av ansikts uttryck.
-[Visemes](../../../how-to-speech-synthesis-viseme.md) används ofta för att representera viktiga attityder i observerat tal (t. ex. läpparnas position, Jaw och tunghet vid framställning av en viss fonem).
-Du kan prenumerera på Viseme-händelsen i tal-SDK för att skapa data för ansikts animationer.
-Sedan kan du använda sådana data på ett specialtecken för att använda ansikts animering.
-Lär dig [hur du hämtar viseme-utdata](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
+Tal kan vara ett bra sätt att köra animeringen av ansikts uttryck.
+[Visemes](../../../how-to-speech-synthesis-viseme.md) används ofta för att representera viktiga faktorer i observerade tal, till exempel positionen för läppar, Jaw och tunga när de skapar en viss fonem.
+Du kan prenumerera på händelsen viseme i tal-SDK.
+Sedan kan du använda viseme-händelser för att animera FACET för ett Character som tal ljud spelas upp.
+Lär dig [hur du hämtar viseme-händelser](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

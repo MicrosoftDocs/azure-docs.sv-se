@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98792039"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric program uppgradering med PowerShell
@@ -56,7 +56,7 @@ Nu kan du använda [Service Fabric Explorer för att Visa klustret och programme
 ## <a name="step-2-update-the-visual-objects-sample"></a>Steg 2: uppdatera det visuella objekt exemplet
 Du kanske märker att de visuella objekten inte roterar med den version som distribuerades i steg 1. Vi ska uppgradera det här programmet till ett ställe där de visuella objekten också roterar.
 
-Välj VisualObjects. ActorService-projektet i VisualObjects-lösningen och öppna StatefulVisualObjectActor.cs-filen. I den filen navigerar du till metoden `MoveObject` , kommentera ut `this.State.Move()` och ta bort kommentaren `this.State.Move(true)` . Den här ändringen roterar objekten när tjänsten har uppgraderats.
+Välj VisualObjects. ActorService-projektet i VisualObjects-lösningen och öppna filen StatefulVisualObjectActor. cs. I den filen navigerar du till metoden `MoveObject` , kommentera ut `this.State.Move()` och ta bort kommentaren `this.State.Move(true)` . Den här ändringen roterar objekten när tjänsten har uppgraderats.
 
 Vi måste också uppdatera *ServiceManifest.xml* -filen (under PackageRoot) för projektet **VisualObjects. ActorService**. Uppdatera *CodePackage* och tjänst versionen till 2,0 och motsvarande rader i *ServiceManifest.xml* -filen.
 Du kan använda alternativet Visual Studio *Edit manifest Files* när du har högerklickat på lösningen för att göra manifest filen ändringar.

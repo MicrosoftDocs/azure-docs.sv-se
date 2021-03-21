@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
 ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100530747"
 ---
 # <a name="examine-the-video-indexer-output"></a>Granska Video Indexer utdata
@@ -53,7 +53,7 @@ Mer information finns i [Visa och redigera video insikter](video-indexer-view-ed
 
 ## <a name="root-elements-of-the-insights"></a>Rot element i insikter
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |accountId|Spel listans konto-ID.|
 |id|Spelnings listans ID.|
@@ -113,7 +113,7 @@ I det här avsnittet visas en sammanfattning av insikterna.
 
 ## <a name="videos"></a>videor
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |accountId|Videons konto-ID.|
 |id|Videons ID.|
@@ -219,7 +219,7 @@ pipe|En lista över tidsintervallen för det här blocket.|
 
 #### <a name="transcript"></a>avskrifts
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Rad-ID.|
 |text|Själva avskriften.|
@@ -266,7 +266,7 @@ Exempel:
 
 #### <a name="ocr"></a>stöd
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|ID för OCR-linje.|
 |text|OCR-text.|
@@ -301,7 +301,7 @@ Exempel:
 
 #### <a name="keywords"></a>nyckelord
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Nyckelords-ID: t.|
 |text|Nyckelords texten.|
@@ -336,7 +336,7 @@ Exempel:
 
 Om det finns ansikten (inte animerade tecken) använder Video Indexer Ansikts-API på alla video bild rutor för att identifiera ansikten och kändisar.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Ansikts-ID.|
 |name|Namnet på FACET. Det kan vara okänt #0, en identifierad kändis eller en kundutbildad person.|
@@ -381,7 +381,7 @@ Om det finns ansikten (inte animerade tecken) använder Video Indexer Ansikts-AP
 
 #### <a name="labels"></a>Etiketter
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Etikett-ID: t.|
 |name|Etikett namnet (till exempel "dator", "TV").|
@@ -440,7 +440,7 @@ Om det finns ansikten (inte animerade tecken) använder Video Indexer Ansikts-AP
 
 #### <a name="scenes"></a>scen
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Scen-ID: t.|
 |pipe|En lista med tidsintervall för den här scenen (en scen kan bara ha 1 instans).|
@@ -473,7 +473,7 @@ Om det finns ansikten (inte animerade tecken) använder Video Indexer Ansikts-AP
 
 #### <a name="shots"></a>bilder
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Bild-ID.|
 |Nyckel rutor|En lista med nyckel rutor i bilden (var och en har ett ID och en lista över instanser av instans intervallet). Varje instans av en nyckel ruta har ett thumbnailId-fält som innehåller nyckel rutans miniatyr-ID.|
@@ -523,7 +523,7 @@ Om det finns ansikten (inte animerade tecken) använder Video Indexer Ansikts-AP
 
 Företags-och produkt märkes namn identifieras i tal till text avskrift och/eller video-OCR. Detta omfattar inte visuell igenkänning av varumärken eller logo typ identifiering.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Varumärkes-ID.|
 |name|Namn på varumärken.|
@@ -582,7 +582,7 @@ Företags-och produkt märkes namn identifieras i tal till text avskrift och/ell
 
 #### <a name="statistics"></a>uppgifterna
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |CorrespondenceCount|Antal korrespondens i videon.|
 |SpeakerWordCount|Antalet ord per talare.|
@@ -592,7 +592,7 @@ Företags-och produkt märkes namn identifieras i tal till text avskrift och/ell
 
 #### <a name="audioeffects-public-preview"></a>audioEffects (offentlig för hands version)
 
-|Namn|Beskrivning
+|Name|Beskrivning
 |---|---|
 |id|Ljudets effekter-ID|
 |typ|Typ av ljud påverkan|
@@ -623,7 +623,7 @@ Företags-och produkt märkes namn identifieras i tal till text avskrift och/ell
 
 Sentiment sammanställs av deras sentimentType-fält (positiv/neutral/negativ). Till exempel 0-0,1, 0,1-0,2.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Sentiment-ID.|
 |averageScore |Medelvärdet av alla resultat från alla instanser av sentiment-typ positiv/neutral/negativ|
@@ -662,7 +662,7 @@ VisualContentModeration-blocket innehåller tidsintervall som Video Indexer hitt
 
 Videor som innehåller vuxen eller vågat innehåll kan endast vara tillgängliga för privat vy. Användare har möjlighet att skicka en begäran om en mänsklig granskning av innehållet, i så fall kan IsAdult-attributet innehålla resultatet av mänsklig granskning.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|ID för moderator för visuellt innehåll.|
 |adultScore|Den vuxen poängen (från Content moderator).|
@@ -698,7 +698,7 @@ Videor som innehåller vuxen eller vågat innehåll kan endast vara tillgänglig
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|ID för text innehållets moderator.|
 |bannedWordsCount |Antalet förbjudna ord.|
@@ -708,7 +708,7 @@ Videor som innehåller vuxen eller vågat innehåll kan endast vara tillgänglig
 
 Video Indexer identifierar känslor baserat på tal-och ljud signaler. Den identifierade känslo kan vara: Joy, ledsenhet, ilska eller frukt.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Känslo-ID.|
 |typ|Känslo som identifierades baserat på tal-och ljud signaler. Känslo kan vara: Joy, ledsenhet, ilska eller frukt.|
@@ -798,7 +798,7 @@ Video Indexer identifierar känslor baserat på tal-och ljud signaler. Den ident
 
 Video Indexer gör det lättare att utföra huvud ämnena i avskrifter. När det är möjligt ingår [IPTC](https://iptc.org/standards/media-topics/) -taxonomi på andra nivån. 
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Avsnitts-ID.|
 |name|Ämnes namnet, till exempel: "farmaceutiska".|
@@ -841,7 +841,7 @@ Video Indexer gör det lättare att utföra huvud ämnena i avskrifter. När det
 
 #### <a name="speakers"></a>högtalare
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |id|Högtalar-ID.|
 |name|Högtalar namnet i formatet "talare # *<number>* ", till exempel: "talare #1".|

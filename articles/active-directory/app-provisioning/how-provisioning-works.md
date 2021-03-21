@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988977"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579458"
 ---
 # <a name="how-provisioning-works"></a>Så här fungerar etablering
 
@@ -138,7 +138,7 @@ Efter den första cykeln kommer alla andra cykler att:
 Etablerings tjänsten fortsätter att köra stegvisa stegvisa cykler på obestämd tid, med intervall som definierats i [självstudien som är specifik för varje program](../saas-apps/tutorial-list.md). Stegvisa cykler fortsätter tills någon av följande händelser inträffar:
 
 - Tjänsten stoppas manuellt med Azure Portal eller med lämpligt Microsoft Graph API-kommando.
-- En ny första cykel utlöses med alternativet **Rensa tillstånd och starta om** i Azure Portal, eller med lämpligt Microsoft Graph API-kommando. Den här åtgärden rensar en lagrad vattenstämpel och gör så att alla käll objekt utvärderas igen.
+- En ny första cykel utlöses med hjälp av alternativet **starta om etablering** i Azure Portal eller med lämpligt Microsoft Graph API-kommando. Den här åtgärden rensar en lagrad vattenstämpel och gör så att alla käll objekt utvärderas igen.
 - En ny första cykel utlöses på grund av en ändring av attributens mappningar eller omfångs filter. Den här åtgärden tar också bort alla lagrade vattenstämplar och gör så att alla käll objekt utvärderas igen.
 - Etablerings processen placeras i karantän (se nedan) på grund av en hög fel frekvens och finns kvar i karantän i mer än fyra veckor. I så fall kommer tjänsten att inaktive ras automatiskt.
 

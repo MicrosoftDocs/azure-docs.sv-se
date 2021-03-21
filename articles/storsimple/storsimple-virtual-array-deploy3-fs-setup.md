@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005936"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Distribuera virtuell StorSimple-matris – Ställ in som fil server via Azure Portal
@@ -72,11 +72,11 @@ Använd följande steg-för-steg-instruktioner för att konfigurera och konfigur
    1. Tilldela enheten ett unikt **namn** . Namnet kan innehålla 1-15 tecken och får innehålla bokstäver, siffror och bindestreck.
    2. Klicka på ikonen **fil Server** :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png"::: för den **typ** av enhet som du skapar. Med en fil Server kan du skapa delade mappar.
    3. Eftersom enheten är en fil server måste du ansluta enheten till en domän. Ange ett **domän namn**.
-   4. Klicka på **Använd**.
+   4. Klicka på **Applicera**.
 7. En dialog ruta visas. Ange autentiseringsuppgifterna för domänen i det angivna formatet. Klicka på kryss ikonen. Domänautentiseringsuppgifter verifieras. Ett fel meddelande visas om autentiseringsuppgifterna är felaktiga.
    
    ![Skärm bild som visar en dialog ruta med användar namn och lösen ord ifyllt.](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. Klicka på **Använd**. Detta gäller och validerar enhets inställningarna.
+8. Klicka på **Applicera**. Detta gäller och validerar enhets inställningarna.
    
    ![Skärm bild av sidan enhets inställningar. Enhets namnet och domän namnet fylls i.](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -93,7 +93,7 @@ Använd följande steg-för-steg-instruktioner för att konfigurera och konfigur
    1. Ange **webbproxy-URL** i det här formatet: *http:// &lt; host-IP Address eller FQDN &gt; :P ort nummer*. Observera att HTTPS-URL: er inte stöds.
    2. Ange **autentisering** som **Basic** eller **none**.
    3. Om du använder autentisering måste du också ange ett **användar namn** och **lösen ord**.
-   4. Klicka på **Använd**. Detta validerar och tillämpar de konfigurerade webbproxyinställningarna.
+   4. Klicka på **Applicera**. Detta validerar och tillämpar de konfigurerade webbproxyinställningarna.
 10. (Valfritt) Konfigurera tid inställningarna för enheten, till exempel tidszon och primära och sekundära NTP-servrar. NTP-servrar krävs eftersom din enhet måste synkronisera tid så att den kan autentiseras med dina moln tjänst leverantörer.
     
     ![Skärm bild av sidan med tids inställningar. Tids zonen och den primära N T P-servern fylls i. Den sekundära N T T P-servern är tom.](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -103,7 +103,7 @@ Använd följande steg-för-steg-instruktioner för att konfigurera och konfigur
     1. I list rutan väljer du **tidszon baserat på** den geografiska plats där enheten distribueras. Standard tids zonen för enheten är PST. Enheten använder den här tidszonen för alla schemalagda åtgärder.
     2. Ange en **primär NTP-server** för din enhet eller acceptera standardvärdet för Time.Windows.com. Kontrollera att ditt nätverk tillåter att NTP-trafik skickas från ditt datacenter till Internet.
     3. Alternativt kan du ange en **sekundär NTP-server** för enheten.
-    4. Klicka på **Använd**. Detta validerar och tillämpar de konfigurerade tids inställningarna.
+    4. Klicka på **Applicera**. Detta validerar och tillämpar de konfigurerade tids inställningarna.
 11. Konfigurera moln inställningarna för enheten. I det här steget ska du slutföra konfigurationen av den lokala enheten och sedan registrera enheten med StorSimple Enhetshanteraren-tjänsten.
     
     1. Ange **tjänst registrerings nyckeln** som du fick i [steg 2: Hämta tjänst registrerings nyckeln](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) för StorSimple Virtual Array.

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
 ms.openlocfilehash: 1e9062b111c30efa90b98c4ebcee710b1d975a1d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99507938"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>Förhindra Rate-Limiting-fel för Azure Cosmos DB-API för MongoDB-åtgärder

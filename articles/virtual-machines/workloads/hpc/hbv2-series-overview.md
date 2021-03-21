@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674646"
+ms.locfileid: "104721155"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>Översikt över virtuell dator i HBv2-serien 
 
@@ -53,14 +53,16 @@ Process fästning fungerar på virtuella datorer i HBv2-serien eftersom vi expon
 |-----------------------------|-----------------------------------------------------------|
 | Maximal jobb storlek för MPI            | 36000 kärnor (300 virtuella datorer i en skalnings uppsättning för en virtuell dator med singlePlacementGroup = true) |
 | MPI-stöd                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, Platform MPI  |
-| Ytterligare ramverk       | Enhetlig kommunikation X, libfabric, PGAS                  |
-| Azure Storage support       | Standard-och Premium-diskar (högst 8 diskar)              |
-| OS-stöd för IOV RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +           |
-| Stöd för Orchestrator        | CycleCloud, batch                                         | 
+| Ytterligare ramverk       | UCX, libfabric, PGAS |
+| Azure Storage support       | Standard-och Premium-diskar (högst 8 diskar) |
+| OS-stöd för IOV RDMA   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Stöd för Orchestrator        | CycleCloud, batch, AKS; [kluster konfigurations alternativ](../../sizes-hpc.md#cluster-configuration-options)  |
 
+> [!NOTE] 
+> Windows Server 2012 R2 stöds inte på HBv2 och andra virtuella datorer med mer än 64 (virtuella eller fysiska) kärnor. Mer information finns [här](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [AMD EPYC-arkitekturen](https://bit.ly/2Epv3kC) och [multi-chip-arkitekturer](https://bit.ly/2GpQIMb). Mer detaljerad information finns i HPC- [justerings guiden för AMD EPYC-processorer](https://bit.ly/2T3AWZ9).
-- Läs om de senaste meddelandena och några HPC-exempel i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

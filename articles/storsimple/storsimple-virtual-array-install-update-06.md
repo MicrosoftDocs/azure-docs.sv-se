@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 4b379bb76eaf7587c53ec55972ccee3f54a55f22
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534253"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Installera Uppdatering 0,6 på din virtuella StorSimple-matris
@@ -99,7 +99,7 @@ Använd den här metoden för att installera uppdateringar på en enhet som kör
    
     ![Skärm bild som visar den program uppdatering som valts på menyn underhåll.](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. I **Uppdatera fil Sök väg** anger du fil namnet för uppdateringen eller snabb korrigeringen. Du kan också bläddra till installations filen för uppdateringen eller hotfixen om den placeras på en nätverks resurs. Klicka på **Använd**.
+2. I **Uppdatera fil Sök väg** anger du fil namnet för uppdateringen eller snabb korrigeringen. Du kan också bläddra till installations filen för uppdateringen eller hotfixen om den placeras på en nätverks resurs. Klicka på **Applicera**.
    
     ![Skärm bild som visar text rutan Sökväg till uppdaterings fil på sidan program uppdatering.](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -118,7 +118,7 @@ Använd den här metoden för att installera uppdateringar på en enhet som kör
    
     ![Skärm bild som visar sidan program uppdatering med den aktuella program varu versionen.](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
-6. Hoppa över det här steget om du körde StorSimple Virtual Array uppdatering 0,5 ( **10.0.10290.0** ) innan du använde den här uppdateringen. Du har gjort en anteckning om program varu versionen i steg 1 innan du började uppdatera. Om du körde uppdatering 0,5 är MDS-agenten redan uppdaterad.
+6. Hoppa över det här steget om du körde StorSimple Virtual Array uppdatering 0,5 (**10.0.10290.0**) innan du använde den här uppdateringen. Du har gjort en anteckning om program varu versionen i steg 1 innan du började uppdatera. Om du körde uppdatering 0,5 är MDS-agenten redan uppdaterad.
 
     Om du kör en program varu version före uppdateringen 0,5 är nästa steg att uppdatera MDS-agenten. På sidan **program uppdatering** går du till sökvägen för **uppdaterings filen** och bläddrar till `GenevaMonitoringAgentPackageInstaller.msi` filen. Upprepa steg 2-4. När den virtuella matrisen har startats om loggar du in på det lokala webb gränssnittet.
 

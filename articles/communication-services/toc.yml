@@ -105,7 +105,8 @@
     - name: Data och åtgärder
       items:
         - name: Tjänst händelser (EventGrid)
-          href: concepts/event-handling.md
+          href: ../event-grid/event-schema-communication-services.md
+          maintainContext: true
         - name: Loggning och diagnostik
           href: concepts/logging-and-diagnostics.md
         - name: Mått

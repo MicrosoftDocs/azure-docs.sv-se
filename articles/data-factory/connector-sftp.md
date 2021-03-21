@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 9b8402e5ae4d0358d17342d30ddf36f5e1228f65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393470"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592038"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopiera data från och till SFTP-servern med hjälp av Azure Data Factory
 
@@ -34,7 +34,7 @@ SFTP-anslutningen stöds för följande aktiviteter:
 
 Mer specifikt stöder SFTP-anslutningen:
 
-- Kopiera filer från och till SFTP-servern med *Basic* -eller *SshPublicKey* -autentisering.
+- Kopiera filer från och till SFTP-servern med hjälp av **Basic**, **Offentlig SSH-nyckel** eller **Multi-Factor** Authentication.
 - Kopiera filer som de är eller genom att parsa eller generera filer med de [fil format och komprimerings-codec som stöds](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -53,13 +53,13 @@ Följande egenskaper stöds för den länkade SFTP-tjänsten:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till *SFTP*. |Ja |
-| värd | Namnet eller IP-adressen för SFTP-servern. |Ja |
-| port | Porten som SFTP-servern lyssnar på.<br/>Det tillåtna värdet är ett heltal och standardvärdet är *22*. |Inga |
-| skipHostKeyValidation | Ange om du vill hoppa över validering av värd nycklar.<br/>Tillåtna värden är *True* och *false* (standard).  | Inga |
+| typ | Egenskapen Type måste anges till *SFTP*. |Yes |
+| värd | Namnet eller IP-adressen för SFTP-servern. |Yes |
+| port | Porten som SFTP-servern lyssnar på.<br/>Det tillåtna värdet är ett heltal och standardvärdet är *22*. |No |
+| skipHostKeyValidation | Ange om du vill hoppa över validering av värd nycklar.<br/>Tillåtna värden är *True* och *false* (standard).  | No |
 | hostKeyFingerprint | Ange finger avtrycket för värd nyckeln. | Ja, om "skipHostKeyValidation" är inställt på false.  |
-| authenticationType | Ange autentiseringstyp.<br/>Tillåtna värden är *Basic* -och *SshPublicKey*. Mer egenskaper finns i avsnittet [använda grundläggande autentisering](#use-basic-authentication) . JSON-exempel finns i avsnittet [använda autentisering med offentlig SSH-nyckel](#use-ssh-public-key-authentication) . |Ja |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Mer information finns i avsnittet [krav](#prerequisites) . Om integration runtime inte har angetts använder tjänsten standard Azure Integration Runtime. |Inga |
+| authenticationType | Ange autentiseringstyp.<br/>Tillåtna värden är *Basic*, *SshPublicKey* och *multifaktaor*. Mer egenskaper finns i avsnittet [använda grundläggande autentisering](#use-basic-authentication) . JSON-exempel finns i avsnittet [använda autentisering med offentlig SSH-nyckel](#use-ssh-public-key-authentication) . |Yes |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Mer information finns i avsnittet [krav](#prerequisites) . Om integration runtime inte har angetts använder tjänsten standard Azure Integration Runtime. |No |
 
 ### <a name="use-basic-authentication"></a>Använd grundläggande autentisering
 
@@ -67,15 +67,14 @@ Om du vill använda grundläggande autentisering ställer du in egenskapen *auth
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| userName | Användaren som har åtkomst till SFTP-servern. |Ja |
-| password | Användarens lösen ord (användar namn). Markera det här fältet som en SecureString för att lagra det på ett säkert sätt i din data fabrik eller [referera till en hemlighet som lagras i ett Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| userName | Användaren som har åtkomst till SFTP-servern. |Yes |
+| password | Användarens lösen ord (användar namn). Markera det här fältet som en SecureString för att lagra det på ett säkert sätt i din data fabrik eller [referera till en hemlighet som lagras i ett Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Exempel:**
 
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -104,7 +103,7 @@ Om du vill använda autentisering med offentlig SSH-nyckel anger du egenskapen "
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| userName | Användaren som har åtkomst till SFTP-servern. |Ja |
+| userName | Användaren som har åtkomst till SFTP-servern. |Yes |
 | privateKeyPath | Ange den absoluta sökvägen till den privata nyckel filen som integration Runtime har åtkomst till. Detta gäller endast när den egen värdbaserade typen av integration runtime anges i "connectVia". | Ange antingen `privateKeyPath` eller `privateKeyContent` .  |
 | privateKeyContent | Base64-kodat innehåll i SSH-privat nyckel. Den privata SSH-nyckeln måste vara OpenSSH-format. Markera det här fältet som en SecureString för att lagra det på ett säkert sätt i din data fabrik eller [referera till en hemlighet som lagras i ett Azure Key Vault](store-credentials-in-key-vault.md). | Ange antingen `privateKeyPath` eller `privateKeyContent` . |
 | Fraser | Ange pass frasen eller lösen ordet för att dekryptera den privata nyckeln om nyckel filen eller nyckel innehållet skyddas av en pass fras. Markera det här fältet som en SecureString för att lagra det på ett säkert sätt i din data fabrik eller [referera till en hemlighet som lagras i ett Azure Key Vault](store-credentials-in-key-vault.md). | Ja, om den privata nyckel filen eller nyckel innehållet skyddas av en pass fras. |
@@ -117,7 +116,6 @@ Om du vill använda autentisering med offentlig SSH-nyckel anger du egenskapen "
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -171,6 +169,43 @@ Om du vill använda autentisering med offentlig SSH-nyckel anger du egenskapen "
 }
 ```
 
+### <a name="use-multi-factor-authentication"></a>Använd Multi-Factor Authentication
+
+Om du vill använda Multi-Factor Authentication, som är en kombination av autentiseringar av offentliga och SSH-nycklar, anger du användar namn, lösen ord och privat nyckel information som beskrivs i ovanstående avsnitt.
+
+**Exempel: Multi-Factor Authentication**
+
+```json
+{
+    "name": "SftpLinkedService",
+    "properties": {
+        "type": "Sftp",
+        "typeProperties": {
+            "host": "<host>",
+            "port": 22,
+            "authenticationType": "MultiFactor",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            },
+            "privateKeyContent": {
+                "type": "SecureString",
+                "value": "<base64 encoded private key content>"
+            },
+            "passPhrase": {
+                "type": "SecureString",
+                "value": "<passphrase for private key>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of integration runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
 
 En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [data uppsättningar](concepts-datasets-linked-services.md) . 
@@ -181,9 +216,9 @@ Följande egenskaper stöds för SFTP under `location` Inställningar i den form
 
 | Egenskap   | Beskrivning                                                  | Krävs |
 | ---------- | ------------------------------------------------------------ | -------- |
-| typ       | *Typ* egenskapen under `location` i data mängden måste anges till *SftpLocation*. | Ja      |
-| folderPath | Sökvägen till mappen. Om du vill använda ett jokertecken för att filtrera mappen, hoppar du över den här inställningen och anger sökvägen i aktivitetens käll inställningar. | Inga       |
-| fileName   | Fil namnet under den angivna folderPath. Om du vill använda ett jokertecken för att filtrera filer, hoppar du över den här inställningen och anger fil namnet i inställningarna för aktivitets källan. | Inga       |
+| typ       | *Typ* egenskapen under `location` i data mängden måste anges till *SftpLocation*. | Yes      |
+| folderPath | Sökvägen till mappen. Om du vill använda ett jokertecken för att filtrera mappen, hoppar du över den här inställningen och anger sökvägen i aktivitetens käll inställningar. | No       |
+| fileName   | Fil namnet under den angivna folderPath. Om du vill använda ett jokertecken för att filtrera filer, hoppar du över den här inställningen och anger fil namnet i inställningarna för aktivitets källan. | No       |
 
 **Exempel:**
 
@@ -223,20 +258,20 @@ Följande egenskaper stöds för SFTP under `storeSettings` inställningarna i d
 
 | Egenskap                 | Beskrivning                                                  | Krävs                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| typ                     | *Typ* egenskapen under `storeSettings` måste anges till *SftpReadSettings*. | Ja                                           |
+| typ                     | *Typ* egenskapen under `storeSettings` måste anges till *SftpReadSettings*. | Yes                                           |
 | ***Leta upp de filer som ska kopieras*** |  |  |
 | ALTERNATIV 1: statisk sökväg<br> | Kopiera från den mapp-/fil Sök väg som anges i data uppsättningen. Om du vill kopiera alla filer från en mapp anger du även `wildcardFileName` som `*` . |  |
-| ALTERNATIV 2: jokertecken<br>- wildcardFolderPath | Mappsökvägen med jokertecken för att filtrera källmappen. <br>Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inte noll eller ett enskilt tecken). används `^` för att undanta om det faktiska mappnamnet har ett jokertecken eller detta escape-tecken inuti. <br>Fler exempel finns i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Inga                                            |
-| ALTERNATIV 2: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den angivna folderPath/wildcardFolderPath för att filtrera källfiler. <br>Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inte noll eller ett enskilt tecken). Använd `^` om du vill använda Escape om det faktiska fil namnet har jokertecken eller detta escape-tecken inuti.  Fler exempel finns i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja |
-| ALTERNATIV 3: en lista över filer<br>- fileListPath | Anger om du vill kopiera en angiven fil uppsättning. Peka på en textfil som innehåller en lista över filer som du vill kopiera (en fil per rad, med den relativa sökvägen till den sökväg som kon figurer ATS i data uppsättningen).<br/>När du använder det här alternativet ska du inte ange fil namnet i data uppsättningen. Fler exempel finns i [exempel på fil lista](#file-list-examples). |Inga |
+| ALTERNATIV 2: jokertecken<br>- wildcardFolderPath | Mappsökvägen med jokertecken för att filtrera källmappen. <br>Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inte noll eller ett enskilt tecken). används `^` för att undanta om det faktiska mappnamnet har ett jokertecken eller detta escape-tecken inuti. <br>Fler exempel finns i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | No                                            |
+| ALTERNATIV 2: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den angivna folderPath/wildcardFolderPath för att filtrera källfiler. <br>Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inte noll eller ett enskilt tecken). Använd `^` om du vill använda Escape om det faktiska fil namnet har jokertecken eller detta escape-tecken inuti.  Fler exempel finns i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Yes |
+| ALTERNATIV 3: en lista över filer<br>- fileListPath | Anger om du vill kopiera en angiven fil uppsättning. Peka på en textfil som innehåller en lista över filer som du vill kopiera (en fil per rad, med den relativa sökvägen till den sökväg som kon figurer ATS i data uppsättningen).<br/>När du använder det här alternativet ska du inte ange fil namnet i data uppsättningen. Fler exempel finns i [exempel på fil lista](#file-list-examples). |No |
 | ***Ytterligare inställningar*** |  | |
-| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. När rekursivt är inställt på True och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är *True* (standard) och *false*.<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . |Inga |
-| deleteFilesAfterCompletion | Anger om de binära filerna kommer att tas bort från käll arkivet efter att du har flyttat till mål lagret. Filen som ska tas bort är per fil, så när kopierings aktiviteten Miss lyckas visas några filer som redan har kopierats till målet och tagits bort från källan, medan andra fortfarande är kvar på käll arkivet. <br/>Den här egenskapen är endast giltig i ett binärt fil kopierings scenario. Standardvärdet: false. |Inga |
-| modifiedDatetimeStart    | Filerna filtreras baserat på det *senast ändrade* attributet. <br>Filerna väljs om deras senaste ändrings tid ligger inom intervallet `modifiedDatetimeStart` till `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet *2018-12-01T05:00:00Z*. <br> Egenskaperna kan vara NULL, vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.<br/>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . | Inga                                            |
-| modifiedDatetimeEnd      | Samma som ovan.                                               | Inga                                            |
-| enablePartitionDiscovery | För filer som är partitionerade anger du om du vill parsa partitionerna från fil Sök vägen och lägga till dem som ytterligare käll kolumner.<br/>Tillåtna värden är **false** (standard) och **True**. | Inga                                            |
-| partitionRootPath | När partitions identifiering har Aktiver ATS anger du den absoluta rot Sök vägen för att kunna läsa partitionerade mappar som data kolumner.<br/><br/>Om den inte anges, som standard,<br/>– När du använder fil Sök vägen i data uppsättningen eller en lista med filer på källan, är partitionens rot Sök väg den sökväg som kon figurer ATS i data uppsättningen.<br/>– När du använder mapp-filter med jokertecken är partitionens rot Sök väg den underordnade sökvägen före det första jokertecknet.<br/><br/>Anta till exempel att du konfigurerar sökvägen i dataset som "rot/mapp/år = 2020/månad = 08/Day = 27":<br/>– Om du anger partitionens rot Sök väg som "rot/mapp/år = 2020" genererar kopierings aktiviteten två kolumner `month` och `day` värdet "08" respektive "27", förutom kolumnerna inuti filerna.<br/>-Om partitionens rot Sök väg inte anges genereras ingen extra kolumn. | Inga                                            |
-| maxConcurrentConnections | Antalet anslutningar som kan ansluta till lagrings lagret samtidigt. Ange bara ett värde om du vill begränsa den samtidiga anslutningen till data lagret. | Inga                                            |
+| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. När rekursivt är inställt på True och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är *True* (standard) och *false*.<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . |No |
+| deleteFilesAfterCompletion | Anger om de binära filerna kommer att tas bort från käll arkivet efter att du har flyttat till mål lagret. Filen som ska tas bort är per fil, så när kopierings aktiviteten Miss lyckas visas några filer som redan har kopierats till målet och tagits bort från källan, medan andra fortfarande är kvar på käll arkivet. <br/>Den här egenskapen är endast giltig i ett binärt fil kopierings scenario. Standardvärdet: false. |No |
+| modifiedDatetimeStart    | Filerna filtreras baserat på det *senast ändrade* attributet. <br>Filerna väljs om deras senaste ändrings tid ligger inom intervallet `modifiedDatetimeStart` till `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet *2018-12-01T05:00:00Z*. <br> Egenskaperna kan vara NULL, vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.<br/>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . | No                                            |
+| modifiedDatetimeEnd      | Samma som ovan.                                               | No                                            |
+| enablePartitionDiscovery | För filer som är partitionerade anger du om du vill parsa partitionerna från fil Sök vägen och lägga till dem som ytterligare käll kolumner.<br/>Tillåtna värden är **false** (standard) och **True**. | No                                            |
+| partitionRootPath | När partitions identifiering har Aktiver ATS anger du den absoluta rot Sök vägen för att kunna läsa partitionerade mappar som data kolumner.<br/><br/>Om den inte anges, som standard,<br/>– När du använder fil Sök vägen i data uppsättningen eller en lista med filer på källan, är partitionens rot Sök väg den sökväg som kon figurer ATS i data uppsättningen.<br/>– När du använder mapp-filter med jokertecken är partitionens rot Sök väg den underordnade sökvägen före det första jokertecknet.<br/><br/>Anta till exempel att du konfigurerar sökvägen i dataset som "rot/mapp/år = 2020/månad = 08/Day = 27":<br/>– Om du anger partitionens rot Sök väg som "rot/mapp/år = 2020" genererar kopierings aktiviteten två kolumner `month` och `day` värdet "08" respektive "27", förutom kolumnerna inuti filerna.<br/>-Om partitionens rot Sök väg inte anges genereras ingen extra kolumn. | No                                            |
+| maxConcurrentConnections | Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No                                            |
 
 **Exempel:**
 
@@ -287,11 +322,11 @@ Följande egenskaper stöds för SFTP under `storeSettings` Inställningar i en 
 
 | Egenskap                 | Beskrivning                                                  | Krävs |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| typ                     | *Typ* egenskapen under `storeSettings` måste anges till *SftpWriteSettings*. | Ja      |
-| copyBehavior             | Definierar kopierings beteendet när källan är filer från ett filbaserat data lager.<br/><br/>Tillåtna värden är:<br/><b>-PreserveHierarchy (standard)</b>: bevarar filens hierarki i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><b>-FlattenHierarchy</b>: alla filer från källmappen är på den första nivån i målmappen. Filerna har automatiskt genererade namn. <br/><b>-MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om fil namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars är det ett automatiskt genererat fil namn. | Inga       |
-| maxConcurrentConnections | Antalet anslutningar som kan ansluta till lagrings lagret samtidigt. Ange bara ett värde om du vill begränsa den samtidiga anslutningen till data lagret. | Inga       |
+| typ                     | *Typ* egenskapen under `storeSettings` måste anges till *SftpWriteSettings*. | Yes      |
+| copyBehavior             | Definierar kopierings beteendet när källan är filer från ett filbaserat data lager.<br/><br/>Tillåtna värden är:<br/><b>-PreserveHierarchy (standard)</b>: bevarar filens hierarki i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><b>-FlattenHierarchy</b>: alla filer från källmappen är på den första nivån i målmappen. Filerna har automatiskt genererade namn. <br/><b>-MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om fil namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars är det ett automatiskt genererat fil namn. | No       |
+| maxConcurrentConnections | Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar. | No       |
 | useTempFileRename | Ange om du vill överföra till temporära filer och byta namn på dem eller Skriv direkt till målmappen eller filens plats. Som standard skriver Azure Data Factory först till temporära filer och byter sedan namn på dem när överföringen är färdig. Den här sekvensen hjälper till (1) att undvika konflikter som kan resultera i en skadad fil om du har andra processer som skriver till samma fil och (2) kontrol lera att den ursprungliga versionen av filen finns under överföringen. Om SFTP-servern inte stöder en namnbytes åtgärd inaktiverar du det här alternativet och kontrollerar att du inte har en samtidig skrivning till målfilen. Mer information finns i fel söknings tipset i slutet av den här tabellen. | Nej. Standardvärdet är *True*. |
-| operationTimeout | Vänte tiden innan varje skrivbegäran till SFTP-servern orsakar timeout. Standardvärdet är 60 min (01:00:00).|Inga |
+| operationTimeout | Vänte tiden innan varje skrivbegäran till SFTP-servern orsakar timeout. Standardvärdet är 60 min (01:00:00).|No |
 
 >[!TIP]
 >Om du får fel meddelandet "UserErrorSftpPathNotFound", "UserErrorSftpPermissionDenied" eller "SftpOperationFail" när du skriver data till SFTP, och den SFTP-användare som du använder har rätt behörigheter, kontrollerar du om din SFTP- *Server stöder fil* namnbytes åtgärden. Om den inte är det inaktiverar du alternativet **Ladda upp med temporär fil** ( `useTempFileRename` ) och försöker igen. Mer information om den här egenskapen finns i tabellen ovan. Om du använder en lokal integration runtime för kopierings aktiviteten, måste du använda version 4,6 eller senare.
@@ -371,13 +406,13 @@ Information om hur du tar bort aktivitets egenskaper finns i [ta bort aktivitet 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens *typ* -egenskap måste anges till *fileshare*. |Ja |
-| folderPath | Sökvägen till mappen. Ett Wildcard-filter stöds. Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inte noll eller ett enskilt tecken). används `^` för att undanta om det faktiska fil namnet har ett jokertecken eller detta escape-tecken inuti. <br/><br/>Exempel: RootFolder/undermapp/, se fler exempel i [mapp-och fil filter exempel](#folder-and-file-filter-examples). |Ja |
-| fileName |  **Namn eller Wildcard-filter** för filerna under den angivna "folderPath". Om du inte anger ett värde för den här egenskapen pekar data uppsättningen på alla filer i mappen. <br/><br/>För filter är tillåtna jokertecken `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken).<br/>– Exempel 1: `"fileName": "*.csv"`<br/>– Exempel 2: `"fileName": "???20180427.txt"`<br/>Används `^` för att kringgå om det faktiska mappnamnet har jokertecken eller detta escape-tecken inuti. |Inga |
-| modifiedDatetimeStart | Filerna filtreras baserat på det *senast ändrade* attributet. Filerna väljs om deras senaste ändrings tid ligger inom intervallet `modifiedDatetimeStart` till `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet *2018-12-01T05:00:00Z*. <br/><br/> Den övergripande prestandan för data förflyttning påverkas genom att aktivera den här inställningen när du vill göra fil filter från ett stort antal filer. <br/><br/> Egenskaperna kan vara NULL, vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.| Inga |
-| modifiedDatetimeEnd | Filerna filtreras baserat på det *senast ändrade* attributet. Filerna väljs om deras senaste ändrings tid ligger inom intervallet `modifiedDatetimeStart` till `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet *2018-12-01T05:00:00Z*. <br/><br/> Den övergripande prestandan för data förflyttning påverkas genom att aktivera den här inställningen när du vill göra fil filter från ett stort antal filer. <br/><br/> Egenskaperna kan vara NULL, vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.| Inga |
+| typ | Data uppsättningens *typ* -egenskap måste anges till *fileshare*. |Yes |
+| folderPath | Sökvägen till mappen. Ett Wildcard-filter stöds. Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inte noll eller ett enskilt tecken). används `^` för att undanta om det faktiska fil namnet har ett jokertecken eller detta escape-tecken inuti. <br/><br/>Exempel: RootFolder/undermapp/, se fler exempel i [mapp-och fil filter exempel](#folder-and-file-filter-examples). |Yes |
+| fileName |  **Namn eller Wildcard-filter** för filerna under den angivna "folderPath". Om du inte anger ett värde för den här egenskapen pekar data uppsättningen på alla filer i mappen. <br/><br/>För filter är tillåtna jokertecken `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken).<br/>– Exempel 1: `"fileName": "*.csv"`<br/>– Exempel 2: `"fileName": "???20180427.txt"`<br/>Används `^` för att kringgå om det faktiska mappnamnet har jokertecken eller detta escape-tecken inuti. |No |
+| modifiedDatetimeStart | Filerna filtreras baserat på det *senast ändrade* attributet. Filerna väljs om deras senaste ändrings tid ligger inom intervallet `modifiedDatetimeStart` till `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet *2018-12-01T05:00:00Z*. <br/><br/> Den övergripande prestandan för data förflyttning påverkas genom att aktivera den här inställningen när du vill göra fil filter från ett stort antal filer. <br/><br/> Egenskaperna kan vara NULL, vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.| No |
+| modifiedDatetimeEnd | Filerna filtreras baserat på det *senast ändrade* attributet. Filerna väljs om deras senaste ändrings tid ligger inom intervallet `modifiedDatetimeStart` till `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet *2018-12-01T05:00:00Z*. <br/><br/> Den övergripande prestandan för data förflyttning påverkas genom att aktivera den här inställningen när du vill göra fil filter från ett stort antal filer. <br/><br/> Egenskaperna kan vara NULL, vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.| No |
 | format | Om du vill kopiera filer som är mellan filbaserade arkiv (binär kopia) hoppar du över avsnittet format i definitionerna för både indata och utdata.<br/><br/>Om du vill parsa filer med ett särskilt format stöds följande fil format typer: *Autoformat*, *JsonFormat*, *AvroFormat*, *OrcFormat* och *ParquetFormat*. Ange egenskapen *Type* under format till något av dessa värden. Mer information finns i [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro-format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), Orc- [format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) -avsnitt. |Nej (endast för binär kopierings scenario) |
-| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Typer som stöds är *gzip*, *DEFLATE*, *BZip2* och *ZipDeflate*.<br/>De nivåer som stöds är *optimala* och *snabbaste*. |Inga |
+| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Typer som stöds är *gzip*, *DEFLATE*, *BZip2* och *ZipDeflate*.<br/>De nivåer som stöds är *optimala* och *snabbaste*. |No |
 
 >[!TIP]
 >Om du vill kopiera alla filer under en mapp anger du endast *folderPath* .<br>Om du vill kopiera en enskild fil med ett angivet namn, anger du *folderPath* med mappnamnet *och fil namnet med* fil namnet.<br>Om du vill kopiera en delmängd av filerna under en mapp, anger du *folderPath* med mappen del och *filename* med wildcard-filtret.
@@ -420,9 +455,9 @@ Information om hur du tar bort aktivitets egenskaper finns i [ta bort aktivitet 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | *Typ* egenskapen för kopierings aktivitets källan måste anges till *FileSystemSource* |Ja |
-| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. När rekursivt är inställt på *True* och sinken är ett filbaserat Arkiv, kopieras inte tomma mappar och undermappar till mottagaren.<br/>Tillåtna värden är *Sant* (standard) och *falskt* | Inga |
-| maxConcurrentConnections | Antalet anslutningar som kan ansluta till ett lagrings lager samtidigt. Ange bara ett nummer när du vill begränsa samtidiga anslutningar till data lagret. | Inga |
+| typ | *Typ* egenskapen för kopierings aktivitets källan måste anges till *FileSystemSource* |Yes |
+| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. När rekursivt är inställt på *True* och sinken är ett filbaserat Arkiv, kopieras inte tomma mappar och undermappar till mottagaren.<br/>Tillåtna värden är *Sant* (standard) och *falskt* | No |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No |
 
 **Exempel:**
 

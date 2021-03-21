@@ -7,10 +7,10 @@ author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
 ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734578"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri-processorer (för hands version) – Azure Monitor Application Insights för Java
@@ -36,7 +36,7 @@ Innan du lär dig om telemetri-processorer bör du förstå term *omfånget*. Et
 
 För telemetri-processorer är dessa intervall komponenter viktiga:
 
-* Namn
+* Name
 * Attribut
 
 Intervall namnet är den primära visningen för begär Anden och beroenden i Azure Portal. Span-attribut representerar både standard-och anpassade egenskaper för en specifik begäran eller beroende.
