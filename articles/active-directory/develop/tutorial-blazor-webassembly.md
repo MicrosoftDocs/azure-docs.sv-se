@@ -9,10 +9,10 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
 ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552124"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Självstudie: Logga in användare och anropa ett skyddat API från en blixt WebAssembly-app
@@ -102,7 +102,7 @@ Lägg sedan till följande i projektets *. CSPROJ* -fil i netstandard 2.1- **Ite
 
 Ändra sedan koden enligt anvisningarna i följande steg. De här ändringarna lägger till [åtkomsttoken](access-tokens.md) till de utgående förfrågningar som skickas till Microsoft Graph-API: et. Det här mönstret beskrivs i detalj i [ASP.net Core blixt WebAssembly ytterligare säkerhets scenarier](/aspnet/core/blazor/security/webassembly/additional-scenarios).
 
-Börja med att skapa en ny fil med namnet *GraphAPIAuthorizationMessageHandler.cs* med följande kod. Den här hanteraren kommer att vara användare att lägga till en åtkomsttoken för- `User.Read` och- `Mail.Read` omfattningarna till utgående begär anden till Microsoft Graph-API: et.
+Börja med att skapa en ny fil med namnet *GraphAPIAuthorizationMessageHandler. cs* med följande kod. Den här hanteraren kommer att vara användare att lägga till en åtkomsttoken för- `User.Read` och- `Mail.Read` omfattningarna till utgående begär anden till Microsoft Graph-API: et.
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -121,7 +121,7 @@ public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-Ersätt sedan innehållet i- `Main` metoden i *program.cs* med följande kod. Den här koden använder den nya `GraphAPIAuthorizationMessageHandler` och lägger till `User.Read` och `Mail.Read` som standard omfattningar som appen begär när användaren loggar in första gången.
+Ersätt sedan innehållet i- `Main` metoden i *program. cs* med följande kod. Den här koden använder den nya `GraphAPIAuthorizationMessageHandler` och lägger till `User.Read` och `Mail.Read` som standard omfattningar som appen begär när användaren loggar in första gången.
 
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

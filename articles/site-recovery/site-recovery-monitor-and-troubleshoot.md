@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023575"
 ---
 # <a name="monitor-site-recovery"></a>Övervaka Site Recovery
@@ -46,7 +46,7 @@ Du kanske vill se [vanliga övervaknings frågor](monitoring-common-questions.md
 
 I **replikerade objekt** övervakar du hälsan för alla datorer i valvet där replikering är aktiverat.
 
-**Tillstånd** | **Detaljer**
+**Tillstånd** | **Information**
 --- | ---
 Felfri | Replikering pågår normalt. Inga fel eller varnings symtom har identifierats.
 Varning | Ett eller flera varnings symtom som kan påverka replikeringen identifieras.
@@ -60,7 +60,7 @@ I redundanstestning **lyckades** övervaka redundansväxlingen för datorer i va
 - Vi rekommenderar att du kör en redundanstest på replikerade datorer minst en gång var sjätte månad. Det är ett sätt att kontrol lera att redundansväxlingen fungerar som förväntat, utan att störa produktions miljön. 
 - Ett redundanstest betraktas som lyckat efter redundansväxlingen och rensningen efter redundans har slutförts.
 
-**Tillstånd** | **Detaljer**
+**Tillstånd** | **Information**
 --- | ---
 Test rekommenderas | Datorer som inte har haft en redundanstest sedan skyddet aktiverades.
 Har genomförts | Datorer med eller flera lyckade redundanstest.
@@ -73,7 +73,7 @@ I **konfigurations problem** övervakar du eventuella problem som kan påverka d
 - Konfigurations problem (förutom för program uppdaterings tillgänglighet) identifieras av en regelbunden validator-åtgärd som körs var 12: e timme som standard. Du kan tvinga validerings åtgärden att köras omedelbart genom att klicka på uppdaterings ikonen bredvid avsnitts rubriken **konfigurations problem** .
 - Klicka på länkarna om du vill ha mer information. För problem som påverkar specifika datorer klickar du på **behöver uppmärksamhet** i kolumnen **mål konfiguration** . Information innehåller reparations rekommendationer.
 
-**Tillstånd** | **Detaljer**
+**Tillstånd** | **Information**
 --- | ---
 Konfigurationer som saknas | En nödvändig inställning saknas, till exempel ett återställnings nätverk eller en resurs grupp.
 Resurser som saknas | Det går inte att hitta en angiven resurs eller så är den inte tillgänglig i prenumerationen. Till exempel har resursen tagits bort eller migrerats. Övervakade resurser inkluderade mål resurs gruppen, målets virtuella nätverk/undernät, logg-/mål lagrings konto, mål tillgänglighets uppsättning, mål-IP-adress.
@@ -109,12 +109,12 @@ I **vyn infrastruktur** övervakar du de infrastruktur komponenter som ingår i 
 
     **Scenario** | **Tillstånd**  | **Vyn är tillgänglig?**
     --- |--- | ---
-    **Replikering mellan lokala platser** | Alla delstater | No 
-    **Azure VM-replikering mellan Azure-regioner**  | Replikering har Aktiver ATS/inledande replikering pågår | Yes
-    **Azure VM-replikering mellan Azure-regioner** | Misslyckad/misslyckad återställning | No   
-    **Replikering av VMware till Azure** | Replikering har Aktiver ATS/inledande replikering pågår | Yes     
-    **Replikering av VMware till Azure** | Misslyckad/misslyckad återställning | No      
-    **Hyper-V-replikering till Azure** | Misslyckad/misslyckad återställning | No
+    **Replikering mellan lokala platser** | Alla delstater | Inga 
+    **Azure VM-replikering mellan Azure-regioner**  | Replikering har Aktiver ATS/inledande replikering pågår | Ja
+    **Azure VM-replikering mellan Azure-regioner** | Misslyckad/misslyckad återställning | Inga   
+    **Replikering av VMware till Azure** | Replikering har Aktiver ATS/inledande replikering pågår | Ja     
+    **Replikering av VMware till Azure** | Misslyckad/misslyckad återställning | Inga      
+    **Hyper-V-replikering till Azure** | Misslyckad/misslyckad återställning | Inga
 
 - Om du vill se vyn infrastruktur för en enskild replikerande dator klickar du på **replikerade objekt** i menyn valv och väljer en server.  
 
@@ -154,7 +154,7 @@ I **replikerade objekt** hämtar du en lista över replikerade datorer.
 5. Högerklicka på en dator om du vill initiera åtgärder som redundanstest för den, eller om du vill visa detaljerad fel information som är kopplad till den.
 6. Klicka på en dator om du vill gå vidare till mer information om den. Informationen omfattar:
    - **Replikeringsinformation**: aktuell status och hälsa för datorn.
-   - **RPO** Återställnings punkt mål: aktuell återställnings punkt för den virtuella datorn och tiden då återställningen senast beräknades.
+   -  Återställnings punkt mål: aktuell återställnings punkt för den virtuella datorn och tiden då återställningen senast beräknades.
    - **Återställnings punkter**: senaste tillgängliga återställnings punkter för datorn.
    - **Beredskap för redundans**: anger om ett redundanstest har körts för datorn, agent versionen som körs på datorn (för datorer som kör mobilitets tjänsten) och eventuella konfigurations problem.
    - **Fel**: lista över replikeringsfel som för närvarande observerats på datorn och möjliga orsaker/åtgärder.

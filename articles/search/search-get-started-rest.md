@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/17/2020
 ms.openlocfilehash: b701a80c3c3b7e5a558d875aca2fb34aea89edff
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119636"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-rest-apis"></a>Snabb start: skapa ett Azure Kognitiv sökning-index med hjälp av REST API: er
 
 Den här artikeln förklarar hur du formulerar REST API begär Anden interaktivt med [Azure KOGNITIV sökning REST-API: er](/rest/api/searchservice) och en API-klient för att skicka och ta emot förfrågningar. Med en API-klient och dessa instruktioner kan du skicka begär Anden och Visa svar innan du skriver någon kod.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 Artikeln använder Desktop-programmet Postman. Du kan [Hämta och importera en Postman-samling](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) om du föredrar att använda fördefinierade begär Anden.
 

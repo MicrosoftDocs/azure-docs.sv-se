@@ -10,10 +10,10 @@ ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: c19e1156f897873defaba4cebaabb904d034ead3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032753"
 ---
 # <a name="what-is-vpn-gateway"></a>Vad är en VPN-gateway?
@@ -65,13 +65,13 @@ När du skapar en virtuell nätverksgateway anger du vilken gateway-SKU som du v
 
 VPN-gatewayer kan distribueras i Azure-tillgänglighetszoner. Det ger flexibilitet, skalbarhet och högre tillgänglighet för virtuella nätverksgatewayer. Distribution av gatewayer i Azure-tillgänglighetszoner skiljer gatewayerna åt fysiskt och logiskt i en region, samtidigt som din lokala nätverksanslutning till Azure skyddas mot fel på zonnivå. Se [om zoner – redundanta virtuella nätverksgateway i Azure-tillgänglighetszoner](about-zone-redundant-vnet-gateways.md).
 
-## <a name="pricing"></a><a name="pricing"></a>Prissättning
+## <a name="pricing"></a><a name="pricing"></a>Priser
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
 
 Se [Gateway-SKU:er](vpn-gateway-about-vpn-gateway-settings.md#gwsku) för information om gateway-SKU:er för VPN Gateway.
 
-## <a name="faq"></a><a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a><a name="faq"></a>Vanliga frågor
 
 Vanliga frågor om VPN Gateway finns i [Vanliga frågor och svar om VPN Gateway](vpn-gateway-vpn-faq.md).
 

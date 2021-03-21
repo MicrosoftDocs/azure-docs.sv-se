@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
 ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033894"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
@@ -21,11 +21,11 @@ Du behöver följande för att slutföra stegen i den här artikeln:
 
 ## <a name="review-the-code"></a>Granska koden
 
-I kopian av Microsoft Azure IoT-exempel för C#-lagringsplatsen som du laddade ned tidigare öppnar du projekt filen *Azure-IoT-samples-csharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.CSPROJ* i Visual Studio. I **termostat** -projektet öppnar du *Program.cs* -och *ThermostatSample.cs* -filerna för att visa koden för det här exemplet.
+I kopian av Microsoft Azure IoT-exempel för C#-lagringsplatsen som du laddade ned tidigare öppnar du projekt filen *Azure-IoT-samples-csharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.CSPROJ* i Visual Studio. I **termostat** -projektet öppnar du filen *program. cs* och *ThermostatSample. cs* för att visa koden för det här exemplet.
 
 När du kör exemplet för att ansluta till IoT Central, används enhets etablerings tjänsten (DPS) för att registrera enheten och skapa en anslutnings sträng. Exemplet hämtar den information om DPS-anslutningen som krävs från miljön.
 
-I *program.cs* `main` anropar metoden `SetupDeviceClientAsync` till:
+Metoden anropar i *program. cs* `main` `SetupDeviceClientAsync` för att:
 
 * Använd modell-ID: t `dtmi:com:example:Thermostat;1` när den etablerar enheten med DPS. IoT Central använder modell-ID: t för att identifiera eller generera enhets mal len för den här enheten. Mer information finns i [associera en enhet med en enhets mall](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Skapa en **DeviceClient** -instans för att ansluta till IoT Central.
@@ -57,7 +57,7 @@ private static async Task<DeviceClient> SetupDeviceClientAsync(Parameters parame
 
 Main-metoden skapar sedan en **ThermostatSample** -instans och anropar `PerformOperationsAsync` metoden för att hantera interaktioner med IoT Central.
 
-I *ThermostatSample.cs* är `PerformOperationsAsync` metoden:
+I *ThermostatSample. cs* är `PerformOperationsAsync` metoden:
 
 * Ställer in en hanterare för att ta emot mål temperatur för önskade egenskaps uppdateringar.
 * Anger en hanterare för **getMaxMinReport** -kommandot.

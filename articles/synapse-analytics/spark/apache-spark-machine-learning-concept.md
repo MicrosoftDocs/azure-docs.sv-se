@@ -1,5 +1,5 @@
 ---
-title: Machine Learning med Apache Spark
+title: Maskininlärning med Apache Spark
 description: Den här artikeln innehåller en översikt över funktionerna för maskin inlärning och data vetenskap som är tillgängliga via Apache Spark på Azure Synapse Analytics.
 services: synapse-analytics
 author: midesa
@@ -10,10 +10,10 @@ ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.openlocfilehash: 0485f697b9360b0f2dfe94fdf07629978b5127c1
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98116933"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Maskin inlärning med Apache Spark

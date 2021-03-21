@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790414"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Migrera din SQLite-databas till Azure SQL Database Server lös
@@ -21,7 +21,7 @@ ms.locfileid: "92790414"
 
 För många användare ger SQLite sin första upplevelse av databaser och SQL-programmering. Den ingår i många operativ system och populära program gör SQLite till en mest distribuerad och använda databas motorer i världen. Och eftersom det är troligt att den första databas motorn många användare använder, kan den ofta bli en central del av projekt eller program. I sådana fall där projektet eller programmet ökar den inledande SQLite-implementeringen, kan utvecklare behöva migrera sina data till ett tillförlitligt centraliserat data lager.
 
-Azure SQL Database utan server är en beräknings nivå för enskilda databaser som automatiskt skalar beräkning baserat på arbets belastnings behov och fakturerar för mängden data bearbetning som används per sekund. Server lös beräknings nivån pausar också automatiskt databaser under inaktiva perioder när endast lagring faktureras och återupptar automatiskt databaser när aktiviteten returnerar.
+Azure SQL Database utan server är en beräknings nivå för enskilda databaser som automatiskt skalar beräkning baserat på arbets belastnings behov och fakturerar för mängden data bearbetning som används per sekund. På den serverlösa beräkningsnivån pausas databaser automatiskt under inaktiva perioder och då faktureras endast lagring. Databaserna startas igen automatiskt när aktiviteten återupptas.
 
 När du har följt stegen nedan kommer databasen att migreras till Azure SQL Database Server lös, så att du kan göra databasen tillgänglig för andra användare eller program i molnet och bara betala för det du använder, med minimala program kod ändringar.
 
@@ -53,13 +53,13 @@ När du har följt stegen nedan kommer databasen att migreras till Azure SQL Dat
     - Starta ADF (författare och övervakare från tjänsten i Azure Portal)
     - Klicka på fliken "författare" (blå penna) till vänster
     - Klicka på anslutningar (längst ned till vänster) och sedan på integration runtime
-    - Lägg till ny Self-Hosted Integration Runtime, ge den ett namn och välj *Alternativ 2* .
+    - Lägg till ny Self-Hosted Integration Runtime, ge den ett namn och välj *Alternativ 2*.
 
 5. Skapa en ny länkad tjänst för käll-SQLite-databasen i din Data Factory.
 
     ![Skärm bild som visar tomma blad för länkade tjänster i Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. I **anslutningar** , under **länkad tjänst** , klickar du på **ny** .
+6. I **anslutningar**, under **länkad tjänst**, klickar du på **ny**.
 
 7. Sök efter och välj "ODBC"-anslutningen
 

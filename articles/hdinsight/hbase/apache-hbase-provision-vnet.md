@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946122"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Skapa Apache HBase-kluster på HDInsight i Azure Virtual Network
@@ -108,7 +108,7 @@ Leta upp posten "host_name" i de JavaScript Object Notation (JSON) som returnera
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
-Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Ett exempel är `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Till exempel `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 <!--
 3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
@@ -127,7 +127,7 @@ Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Ett ex
 
 ### <a name="verify-communication-inside-virtual-network"></a>Verifiera kommunikation i virtuellt nätverk
 
-Du kan kontrol lera att den virtuella datorn kan kommunicera med HBase-klustret genom att använda kommandot `ping headnode0.<dns suffix>` från den virtuella datorn. Ett exempel är `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Du kan kontrol lera att den virtuella datorn kan kommunicera med HBase-klustret genom att använda kommandot `ping headnode0.<dns suffix>` från den virtuella datorn. Till exempel `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 Om du vill använda den här informationen i ett Java-program kan du följa stegen i [använda Apache Maven för att skapa Java-program som använder Apache HBase med HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) för att skapa ett program. Om du vill att programmet ska ansluta till en fjärran sluten HBase-Server ändrar du **hbase-site.xml** filen i det här exemplet för att använda det fullständiga domän namnet för Zookeeper. Exempel:
 

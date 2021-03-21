@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020287"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Självstudie: Konfigurera fysiskt baserat åter givnings material i 3ds Max
@@ -50,7 +50,7 @@ För att starta ska vi skapa ett antal Box-objekt som representerar en annan typ
 
 Följande skärm bild visar stegen för att ställa in system enheter på mätare i max. 
 
-1. På huvud menyn går du till **Anpassa** enheter konfigurera installations programmet för  >  **Units Setup**  >  **system enheter**. I **system enhets skala** väljer du **mätare**: ![ skärm bild som visar hur du ställer in system enheter.](media/3dsmax/system-units.jpg)
+1. På huvud menyn går du till **Anpassa** enheter konfigurera installations programmet för  >    >  **system enheter**. I **system enhets skala** väljer du **mätare**: ![ skärm bild som visar hur du ställer in system enheter.](media/3dsmax/system-units.jpg)
 
 1. Nu kan vi börja skapa modeller. I exempel scenen skapar vi flera Box-objekt, som var och en representerar en annan material typ. Till exempel metall, gummi och plast. 
 

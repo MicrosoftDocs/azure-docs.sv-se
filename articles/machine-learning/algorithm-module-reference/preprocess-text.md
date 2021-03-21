@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/16/2020
 ms.openlocfilehash: 366b30df677a5b74bc7d70e1aea60e05b4df0152
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659315"
 ---
 # <a name="preprocess-text"></a>Förbearbeta text
@@ -93,8 +93,8 @@ Här följer några exempel:
 
 | Konfiguration | Resultat av utdata |
 | --- | --- |
-|Med alla alternativ markerade </br> Skriftliga </br> För de fall som "3test" i "WC-3 3test 4test" tar konstruktören bort hela ordet "3test", eftersom i den här kontexten anger för den här token "tagger" som siffror, och enligt den här delen tar modulen bort den.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Med alla alternativ markerade" border="True"::: |
-|Med endast `Removing number` valt </br> Skriftliga </br> För de fall som "3test", "4-EG", har designern tokenizer-dosen inte delat dessa fall och behandlar dem som hela tokens. Det innebär att det inte tar bort talen i dessa ord.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Med endast &quot;ta bort nummer&quot; valt" border="True"::: |
+|Med alla alternativ markerade </br> Förklaring: </br> För de fall som "3test" i "WC-3 3test 4test" tar konstruktören bort hela ordet "3test", eftersom i den här kontexten anger för den här token "tagger" som siffror, och enligt den här delen tar modulen bort den.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Med alla alternativ markerade" border="True"::: |
+|Med endast `Removing number` valt </br> Förklaring: </br> För de fall som "3test", "4-EG", har designern tokenizer-dosen inte delat dessa fall och behandlar dem som hela tokens. Det innebär att det inte tar bort talen i dessa ord.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Med endast &quot;ta bort nummer&quot; valt" border="True"::: |
 
 Du kan också använda reguljärt uttryck för att generera anpassade resultat:
 

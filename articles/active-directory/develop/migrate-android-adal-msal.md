@@ -15,10 +15,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99581048"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL till MSAL migration guide för Android
@@ -237,7 +237,7 @@ public interface SilentAuthenticationCallback {
 I ADAL finns en typ av undantag, `AuthenticationException` som innehåller en metod för att hämta `ADALError` Enum-värdet.
 I MSAL finns det en hierarki med undantag och var och en har en egen uppsättning av tillhör ande specifika felkoder.
 
-| Undantag                                        | Description                                                         |
+| Undantag                                        | Beskrivning                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
 | `MsalArgumentException`                          | Utlöstes om ett eller flera argument för indata är ogiltiga.                 |
 | `MsalClientException`                            | Genereras om felet är klient sidan.                                 |

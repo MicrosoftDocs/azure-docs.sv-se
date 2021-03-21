@@ -8,10 +8,10 @@ ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
 ms.openlocfilehash: 56cf30d89460df8ac50d258bd8b29cf4e7236690
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734638"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Planera och hantera kostnader för Azure SQL Database
@@ -19,7 +19,7 @@ ms.locfileid: "98734638"
 I den här artikeln beskrivs hur du planerar för och hanterar kostnader för Azure SQL Database. Först använder du pris Kalkylatorn för Azure för att lägga till Azure-resurser och granska de uppskattade kostnaderna. När du har börjat använda Azure SQL Database resurser använder du Cost Management funktioner för att ställa in budgetar och övervaka kostnader. Du kan också granska prognostiserade kostnader och identifiera utgifts trender för att identifiera områden där du kanske vill handla. Kostnaderna för Azure SQL Database är bara en del av månads kostnaderna på din Azure-faktura. Även om den här artikeln förklarar hur du planerar för och hanterar kostnader för Azure SQL Database debiteras du för alla Azure-tjänster och-resurser som används i din Azure-prenumeration, inklusive alla tjänster från tredje part.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kostnads analys stöder de flesta typer av Azure-konton, men inte alla. Om du vill se hela listan med kontotyper som stöds kan du läsa [Förstå Cost Management-data](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Om du vill visa kostnads data måste du ha minst Läs behörighet för ett Azure-konto. 
 

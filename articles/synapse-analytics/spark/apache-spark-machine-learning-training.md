@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
 ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98116814"
 ---
-# <a name="train-machine-learning-models"></a>Träna Machine Learning-modeller
+# <a name="train-machine-learning-models"></a>Träna maskininlärningsmodeller
 Apache Spark i Azure Synapse Analytics möjliggör maskin inlärning med Big data, vilket ger möjlighet att få värdefulla insikter från stora mängder strukturerade, ostrukturerade och snabbt flyttade data. Det finns flera alternativ när du tränar maskin inlärnings modeller med Azure spark i Azure Synapse Analytics: Apache Spark MLlib, Azure Machine Learning och olika bibliotek med öppen källkod. 
 
 ## <a name="apache-sparkml-and-mllib"></a>Apache SparkML och MLlib

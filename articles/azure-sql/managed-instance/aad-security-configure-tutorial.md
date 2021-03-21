@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788629"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Självstudie: säkerhet i Azure SQL-hanterad instans med hjälp av Azure AD server-huvudobjekt (inloggningar)
@@ -27,7 +27,7 @@ Azure SQL-hanterad instans innehåller nästan alla säkerhetsfunktioner som den
 - Använda auktorisering med rollbaserade medlemskap och behörigheter
 - Aktivera säkerhetsfunktioner
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -74,7 +74,7 @@ I följande artiklar finns exempel på hur du ansluter till SQL-hanterad instans
 
 1. Logga in på den hanterade instansen med ett standard konto för SQL-inloggning (icke-Azure AD) som är en `sysadmin` Azure AD-administratör för SQL-hanterad instans med hjälp av [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms).
 
-2. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
+2. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
 
 3. Använd följande syntax i frågefönstret för att skapa en inloggning för ett lokalt Azure AD-konto:
 
@@ -120,14 +120,14 @@ För att andra Azure AD-serverhuvudkonton (inloggningar) ska kunna skapas måste
 
 - För att ge det nyligen skapade Azure AD-serverhuvudkontot (inloggning) möjlighet att skapa andra inloggningar för andra Azure AD-användare, grupper eller program beviljar du inloggningen serverrollen `sysadmin` eller `securityadmin`.
 - Som minst måste behörigheten **ALTER ANY LOGIN** ges till Azure AD-serverhuvudkontot (inloggning) för att skapa andra Azure AD-serverhuvudkonton (inloggningar).
-- Som standard är standard behörigheten som beviljats nyligen skapade Azure AD server-Huvudkonton (inloggningar) i huvud servern: **Anslut SQL** och **Visa alla databaser** .
+- Som standard är standard behörigheten som beviljats nyligen skapade Azure AD server-Huvudkonton (inloggningar) i huvud servern: **Anslut SQL** och **Visa alla databaser**.
 - Serverrollen `sysadmin` kan ges till många Azure AD-serverhuvudkonton (inloggningar) i en hanterad instans.
 
 Så här lägger du till inloggningen till serverrollen `sysadmin`:
 
 1. Logga in på den hanterade instansen igen eller Använd den befintliga anslutningen till Azure AD-administratören eller SQL-huvudobjektet som är en `sysadmin` .
 
-1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
+1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
 
 1. Bevilja Azure AD-serverhuvudkontot (inloggning) serverrollen `sysadmin` med hjälp av följande T-SQL-syntax:
 
@@ -157,11 +157,11 @@ När Azure AD-serverhuvudkontot (inloggning) har skapats och har getts `sysadmin
 
      Mer information finns i [Universal Authentication (SSMS-stöd för Multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
-1. Välj **Active Directory – Universell med stöd för MFA** . Detta öppnar ett Multi-Factor Authentication inloggnings fönster. Logga in med ditt Azure AD-lösenord.
+1. Välj **Active Directory – Universell med stöd för MFA**. Detta öppnar ett Multi-Factor Authentication inloggnings fönster. Logga in med ditt Azure AD-lösenord.
 
     ![Skärm bild av Multi-Factor Authentication inloggnings fönstret med markören i fältet ange lösen ord.](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
-1. I SSMS **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
+1. I SSMS **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
 1. Använd följande syntax i frågefönstret för att skapa en inloggning för ytterligare ett Azure AD-konto:
 
     ```sql
@@ -183,8 +183,8 @@ När Azure AD-serverhuvudkontot (inloggning) har skapats och har getts `sysadmin
     ```
 
 1. Skapa en databas i den hanterade instansen med hjälp av syntaxen [create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) . Den här databasen används för att testa användarinloggningar i nästa avsnitt.
-    1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
-    1. Använd följande syntax i frågefönstret för att skapa en databas med namnet **MyMITestDB** .
+    1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
+    1. Använd följande syntax i frågefönstret för att skapa en databas med namnet **MyMITestDB**.
 
         ```sql
         CREATE DATABASE MyMITestDB;
@@ -220,7 +220,7 @@ När Azure AD-serverhuvudkontot (inloggning) har skapats och har getts `sysadmin
 
 Auktorisering till enskilda databaser fungerar ungefär på samma sätt i SQL-hanterad instans som med databaser i SQL Server. En användare kan skapas från en befintlig inloggning i en databas och få behörigheter för databasen eller läggas till i en databasroll.
 
-Nu när vi har skapat en databas som heter **MyMITestDB** , och en inloggning som endast har standardbehörigheterna, är nästa steg att skapa en användare från den inloggningen. För tillfället kan inloggningen ansluta till den hanterade instansen och se alla databaser, men inte interagera med databaserna. Om du loggar in med Azure AD-kontot som har standardbehörigheterna och försöker expandera den nyligen skapade databasen visas följande fel:
+Nu när vi har skapat en databas som heter **MyMITestDB**, och en inloggning som endast har standardbehörigheterna, är nästa steg att skapa en användare från den inloggningen. För tillfället kan inloggningen ansluta till den hanterade instansen och se alla databaser, men inte interagera med databaserna. Om du loggar in med Azure AD-kontot som har standardbehörigheterna och försöker expandera den nyligen skapade databasen visas följande fel:
 
 ![Skärm bild av ett fel meddelande från S S M Object Explorer som läser "det går inte att komma åt databasen MyMITestDB. (ObjectExplorer)".](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
@@ -229,7 +229,7 @@ Läs mer om hur du beviljar databasbehörigheter i [Getting Started with Databas
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>Skapa en Azure AD-användare och skapa en exempeltabell
 
 1. Logga in på den hanterade instansen med ett `sysadmin`-konto i SQL Server Management Studio.
-1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
+1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
 1. I frågefönstret använder du följande syntax för att skapa en Azure AD-användare från ett Azure AD-serverhuvudkonto (inloggning):
 
     ```sql
@@ -259,7 +259,7 @@ Läs mer om hur du beviljar databasbehörigheter i [Getting Started with Databas
     GO
     ```
 
-    Alla användare som tillhör *mygroup* kan komma åt databasen **MyMITestDB** .
+    Alla användare som tillhör *mygroup* kan komma åt databasen **MyMITestDB**.
 
     > [!IMPORTANT]
     > När du skapar en **USER** (Användare) från ett Azure AD-serverhuvudkonto (inloggning) anger du samma user_name som login_name från **LOGIN** (Inloggning).
@@ -295,7 +295,7 @@ För att användaren ska kunna se data i databasen ger vi användaren [roller p�
 
 1. Logga in på den hanterade instansen med ett `sysadmin`-konto i SQL Server Management Studio.
 
-1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
+1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
 
 1. Bevilja Azure AD-användaren `db_datareader`-databasrollen med hjälp av följande T-SQL-syntax:
 
@@ -305,7 +305,7 @@ För att användaren ska kunna se data i databasen ger vi användaren [roller p�
     GO
     ```
 
-    I följande exempel får användaren bob@aadsqlmi.net och gruppen _mygroup_`db_datareader` behörigheter för **MyMITestDB** -databasen:
+    I följande exempel får användaren bob@aadsqlmi.net och gruppen _mygroup_`db_datareader` behörigheter för **MyMITestDB**-databasen:
 
     ```sql
     USE MyMITestDB
@@ -347,7 +347,7 @@ SQL-hanterad instans stöder personifiering av Azure AD-säkerhetsobjekt på ser
 
 1. Logga in på den hanterade instansen med ett `sysadmin`-konto i SQL Server Management Studio.
 
-1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
+1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
 
 1. Kör följande kommando i frågefönstret för att skapa en lagrad procedur:
 
@@ -361,7 +361,7 @@ SQL-hanterad instans stöder personifiering av Azure AD-säkerhetsobjekt på ser
     GO
     ```
 
-1. Använd följande kommando för att se att den användare som du personifierar när du kör den lagrade proceduren är **bob \@ aadsqlmi.net** .
+1. Använd följande kommando för att se att den användare som du personifierar när du kör den lagrade proceduren är **bob \@ aadsqlmi.net**.
 
     ```sql
     Exec dbo.usp_Demo
@@ -388,8 +388,8 @@ SQL-hanterad instans stöder personifiering av Azure AD-säkerhetsobjekt på ser
 Databasöverskridande frågor stöds för Azure AD-konton med Azure AD-serverhuvudkonton (inloggningar). Vi måste skapa en annan databas och tabell för att testa en databasöverskridande fråga med en Azure AD-grupp. Du kan hoppa över att skapa en annan databas och tabell om det redan finns en.
 
 1. Logga in på den hanterade instansen med ett `sysadmin`-konto i SQL Server Management Studio.
-1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga** .
-1. I frågefönstret använder du följande kommando för att skapa en databas med namnet **MyMITestDB2** och en tabell med namnet **TestTable2** :
+1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
+1. I frågefönstret använder du följande kommando för att skapa en databas med namnet **MyMITestDB2** och en tabell med namnet **TestTable2**:
 
     ```sql
     CREATE DATABASE MyMITestDB2;
@@ -405,7 +405,7 @@ Databasöverskridande frågor stöds för Azure AD-konton med Azure AD-serverhuv
     );
     ```
 
-1. I ett nytt frågefönster kör du följande kommando för att skapa användaren _mygroup_ i den nya databasen **MyMITestDB2** , och beviljar SELECT-behörigheter för databasen för _mygroup_ :
+1. I ett nytt frågefönster kör du följande kommando för att skapa användaren _mygroup_ i den nya databasen **MyMITestDB2**, och beviljar SELECT-behörigheter för databasen för _mygroup_:
 
     ```sql
     USE MyMITestDB2
@@ -424,7 +424,7 @@ Databasöverskridande frågor stöds för Azure AD-konton med Azure AD-serverhuv
     GO
     ```
 
-    Du bör se tabellresultaten från **TestTable2** .
+    Du bör se tabellresultaten från **TestTable2**.
 
 ## <a name="additional-supported-scenarios"></a>Ytterligare scenarier som stöds
 
@@ -445,7 +445,7 @@ Se artikeln [SQL-hanterad instans säkerhetsfunktioner](sql-managed-instance-paa
 - [SQL-hanterad instans granskning](auditing-configure.md)
 - [Alltid krypterad](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Hotidentifiering](threat-detection-configure.md)
-- [Dynamisk datamaskning](/sql/relational-databases/security/dynamic-data-masking)
+- [Dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking)
 - [Säkerhet på radnivå](/sql/relational-databases/security/row-level-security)
 - [Transparent data kryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 

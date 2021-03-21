@@ -9,15 +9,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: fd5ee9085cf716128c5b3ae073f963c76d2bd17a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370464"
 ---
 # <a name="how-to-create-plans-for-your-azure-application-offer"></a>Skapa planer för ditt Azure Application-erbjudande
 
-Erbjudanden som säljs via Microsofts handels marknads plats måste ha minst en plan för att lista ditt erbjudande i den kommersiella marknads platsen. Du kan skapa flera olika planer med olika alternativ i samma erbjudande. Dessa planer (kallas ibland SKU: er) kan variera beroende på typ av plan ( _lösnings mal len_ eller _hanterat program_ ), monetarisering eller mål grupp. Allmän vägledning om planer finns i [planer och priser för kommersiella Marketplace-erbjudanden](plans-pricing.md).
+Erbjudanden som säljs via Microsofts handels marknads plats måste ha minst en plan för att lista ditt erbjudande i den kommersiella marknads platsen. Du kan skapa flera olika planer med olika alternativ i samma erbjudande. Dessa planer (kallas ibland SKU: er) kan variera beroende på typ av plan (_lösnings mal len_ eller _hanterat program_), monetarisering eller mål grupp. Allmän vägledning om planer finns i [planer och priser för kommersiella Marketplace-erbjudanden](plans-pricing.md).
 
 ## <a name="create-a-plan"></a>Skapa en plan
 

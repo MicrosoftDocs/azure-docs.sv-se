@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898767"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Skapa en virtuell dator i Azure med hjälp av mallar för virtuella datorer i VMware-infrastrukturen
@@ -45,7 +45,7 @@ Logga in på [Azure-portalen](https://portal.azure.com).
     | Prenumeration | Azure-prenumeration som är associerad med ditt privata moln.  |
     | Resursgrupp | Resurs grupp som den virtuella datorn ska tilldelas till. Du kan välja en befintlig grupp eller skapa en ny. |
     | Name | Namn för att identifiera den virtuella datorn.  |
-    | Plats | Azure-region där den här virtuella datorn finns.  |
+    | Location | Azure-region där den här virtuella datorn finns.  |
     | Privata moln | CloudSimple privata moln där du vill skapa den virtuella datorn. |
     | Resurspool | Mappad resurspool för den virtuella datorn. Välj bland tillgängliga resurspooler. |
     | vSphere-mall | vSphere-mall för den virtuella datorn.  |

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
 ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724262"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Snabb start: Lägg till funktions flaggor i en Azure Functions app
@@ -21,7 +21,7 @@ I den här snabb starten skapar du en Azure Functions app och använder funktion
 
 Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funktions flagga. Dessa bibliotek skapas ovanpå .NET-konfigurations systemet. De integreras med app-konfiguration via dess .NET-Konfigurationsprovider.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) med arbets belastningen **Azure Development** .
@@ -53,7 +53,7 @@ Det här projektet kommer att använda [beroende inmatning i .net Azure Function
    - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) version 2.2.0 eller senare
    - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) version 1.1.0 eller senare 
 
-2. Lägg till en ny fil, *startup.cs*, med följande kod. Den definierar en klass med namnet `Startup` som implementerar den `FunctionsStartup` abstrakta klassen. Ett Assembly-attribut används för att ange det typ namn som används vid Azure Functions start.
+2. Lägg till en ny fil, *startup. cs*, med följande kod. Den definierar en klass med namnet `Startup` som implementerar den `FunctionsStartup` abstrakta klassen. Ett Assembly-attribut används för att ange det typ namn som används vid Azure Functions start.
 
     ```csharp
     using System;
@@ -107,7 +107,7 @@ Det här projektet kommer att använda [beroende inmatning i .net Azure Function
     }
     ```
 
-5. Öppna *Function1.cs* och Lägg till följande namn rymder.
+5. Öppna *Function1. cs* och Lägg till följande namn rymder.
 
     ```csharp
     using System.Linq;

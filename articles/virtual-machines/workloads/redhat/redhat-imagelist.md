@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: 0a4d2ef5b7f367130151fabda3f1d97b65605931
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676041"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux-avbildningar (RHEL) som är tillgängliga i Azure
@@ -43,9 +43,9 @@ RHEL          | 6.7      | OUTSPÄDD    | Linux-agent | Stöd för utökad livs 
 |             | 74 – Gen2  | OUTSPÄDD    | Linux-agent | Ansluten till EUS-databaser som standard.
 |             | 7.5      | OUTSPÄDD    | Linux-agent | Anslutet till EUS-databaser som standard från och med juni 2019.
 |             | 75 – Gen2  | OUTSPÄDD    | Linux-agent | Ansluten till EUS-databaser som standard.
-|             | 7,6      | OUTSPÄDD    | Linux-agent | Bifogad till EUS-databaser som standard från maj 2019.
+|             | 7.6      | OUTSPÄDD    | Linux-agent | Bifogad till EUS-databaser som standard från maj 2019.
 |             | 76 – Gen2  | OUTSPÄDD    | Linux-agent | Ansluten till EUS-databaser som standard.
-|             | 7,7      | LVM    | Linux-agent | Ansluten till EUS-databaser som standard.
+|             | 7.7      | LVM    | Linux-agent | Ansluten till EUS-databaser som standard.
 |             | 77 – Gen2  | LVM    | Linux-agent | Ansluten till EUS-databaser som standard.
 |             | 7,8      | LVM    | Linux-agent | Anslutet till vanliga databaser (EUS är inte tillgängliga för RHEL 7,8)
 |             | 78 – Gen2  | LVM    | Linux-agent | Anslutet till vanliga databaser (EUS är inte tillgängliga för RHEL 7,8)
@@ -67,17 +67,17 @@ RHEL – SAP      | 7,4      | LVM    | Linux-agent | RHEL 7,4 för SAP HANA-och
 |             | 74sap – Gen2| LVM    | Linux-agent | RHEL 7,4 för SAP HANA-och Business-appar. Avbildning av generation 2. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
 |             | 7.5       | LVM    | Linux-agent | RHEL 7,5 för SAP HANA-och Business-appar. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
 |             | 75sap – Gen2| LVM    | Linux-agent | RHEL 7,5 för SAP HANA-och Business-appar. Avbildning av generation 2. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
-|             | 7,6       | LVM    | Linux-agent | RHEL 7,6 för SAP HANA-och Business-appar. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
+|             | 7.6       | LVM    | Linux-agent | RHEL 7,6 för SAP HANA-och Business-appar. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
 |             | 76sap – Gen2| LVM    | Linux-agent | RHEL 7,6 för SAP HANA-och Business-appar. Avbildning av generation 2. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
-|             | 7,7       | LVM    | Linux-agent | RHEL 7,7 för SAP HANA-och Business-appar. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
+|             | 7.7       | LVM    | Linux-agent | RHEL 7,7 för SAP HANA-och Business-appar. Ansluten till E4S-lagringsplatser kommer att ta betalt för SAP och RHEL samt bas beräknings avgiften.
 RHEL – SAP-HANA (som ska tas bort i november 2020) | 6.7       | OUTSPÄDD    | Linux-agent | RHEL 6,7 för SAP HANA. Föråldrad till förmån för RHEL-SAP-avbildningarna. Den här avbildningen tas bort i november 2020. Mer information om Red Hats SAP Cloud-erbjudanden finns [här](https://access.redhat.com/articles/3751271).
 |             | 7.2       | LVM    | Linux-agent | RHEL 7,2 för SAP HANA. Föråldrad till förmån för RHEL-SAP-avbildningarna. Den här avbildningen tas bort i november 2020. Mer information om Red Hats SAP Cloud-erbjudanden finns [här](https://access.redhat.com/articles/3751271).
 |             | 7.3       | LVM    | Linux-agent | RHEL 7,3 för SAP HANA. Föråldrad till förmån för RHEL-SAP-avbildningarna. Den här avbildningen tas bort i november 2020. Mer information om Red Hats SAP Cloud-erbjudanden finns [här](https://access.redhat.com/articles/3751271).
 RHEL – SAP-APPS | 6.8       | OUTSPÄDD    | Linux-agent | RHEL 6,8 för SAP Business Applications. Föråldrad till förmån för RHEL-SAP-avbildningarna.
 |             | 7.3       | LVM    | Linux-agent | RHEL 7,3 för SAP Business Applications. Föråldrad till förmån för RHEL-SAP-avbildningarna.
 |             | 7,4       | LVM    | Linux-agent | RHEL 7,4 för SAP Business Applications.
-|             | 7,6       | LVM    | Linux-agent | RHEL 7,6 för SAP Business Applications.
-|             | 7,7       | LVM    | Linux-agent | RHEL 7,7 för SAP Business Applications.
+|             | 7.6       | LVM    | Linux-agent | RHEL 7,6 för SAP Business Applications.
+|             | 7.7       | LVM    | Linux-agent | RHEL 7,7 för SAP Business Applications.
 |             | 77 – Gen2       | LVM    | Linux-agent | RHEL 7,7 för SAP Business Applications. Generation 2-avbildning
 |             | 8.1       | LVM    | Linux-agent | RHEL 8,1 för SAP Business Applications.
 |             | 81 – Gen2      | LVM    | Linux-agent | RHEL 8,1 för SAP Business Applications. Avbildning av generation 2.
@@ -85,13 +85,13 @@ RHEL – SAP-APPS | 6.8       | OUTSPÄDD    | Linux-agent | RHEL 6,8 för SAP B
 |             | 82 – Gen2      | LVM    | Linux-agent | RHEL 8,2 för SAP Business Applications. Avbildning av generation 2.
 RHEL-HA       | 7,4       | LVM    | Linux-agent | RHEL 7,4 med HA-tillägget. Debiterar ett Premium för HA-och RHEL ovanpå bas beräknings avgiften. Föråldrad till förmån för RHEL-SAP-HA-avbildningarna.
 |             | 7.5       | LVM    | Linux-agent | RHEL 7,5 med HA-tillägget. Debiterar ett Premium för HA-och RHEL ovanpå bas beräknings avgiften. Föråldrad till förmån för RHEL-SAP-HA-avbildningarna.
-|             | 7,6       | LVM    | Linux-agent | RHEL 7,6 med HA-tillägget. Debiterar ett Premium för HA-och RHEL ovanpå bas beräknings avgiften. Föråldrad till förmån för RHEL-SAP-HA-avbildningarna.
+|             | 7.6       | LVM    | Linux-agent | RHEL 7,6 med HA-tillägget. Debiterar ett Premium för HA-och RHEL ovanpå bas beräknings avgiften. Föråldrad till förmån för RHEL-SAP-HA-avbildningarna.
 RHEL – SAP-HA   | 7,4          | LVM    | Linux-agent | RHEL 7,4 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
 |             | 74sapha – Gen2 | LVM    | Linux-agent | RHEL 7,4 för SAP med HA och uppdaterings tjänster. Avbildning av generation 2. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
 |             | 7.5          | LVM    | Linux-agent | RHEL 7,5 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
-|             | 7,6          | LVM    | Linux-agent | RHEL 7,6 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
+|             | 7.6          | LVM    | Linux-agent | RHEL 7,6 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
 |             | 76sapha – Gen2 | LVM    | Linux-agent | RHEL 7,6 för SAP med HA och uppdaterings tjänster. Avbildning av generation 2. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
-|             | 7,7          | LVM    | Linux-agent | RHEL 7,7 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
+|             | 7.7          | LVM    | Linux-agent | RHEL 7,7 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
 |             | 77sapha – Gen2 | LVM    | Linux-agent | RHEL 7,7 för SAP med HA och uppdaterings tjänster. Avbildning av generation 2. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
 |             | 8.1          | LVM    | Linux-agent | RHEL 8,1 för SAP med HA och uppdaterings tjänster. Ansluten till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.
 |             | 81sapha – Gen2          | LVM    | Linux-agent | RHEL 8,1 för SAP med HA och uppdaterings tjänster. Generation 2-avbildningar kopplade till E4S-lagringsplatser. Debiterar ett Premium för SAP-och HA-databaser samt RHEL, ovanpå bas beräknings avgifterna.

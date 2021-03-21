@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97095363"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Flytta stordator lagring till Azure
@@ -51,7 +51,7 @@ Azure Storage är tillgängligt som [Azure-diskar](../../../managed-disks-overvi
 
 <table>
 <thead>
-    <tr><th>Typ</th><th>Description</th><th>Använd när du vill:</th></tr>
+    <tr><th>Typ</th><th>Beskrivning</th><th>Använd när du vill:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021052"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Viktig information om StorSimple 8000-seriens uppdatering 5
@@ -46,7 +46,7 @@ Följande tabell innehåller en sammanfattning av problem som korrigerades i upp
 
 | Nej | Visning av aktuellt objekt | Problem | Gäller fysisk enhet | Gäller för virtuell enhet |
 | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell-fjärrkommunikation |I den tidigare versionen skulle en användare få ett fel meddelande vid försök att upprätta en fjärr anslutning till StorSimple Cloud Appliance via Windows PowerShell. Det här problemet var rot-orsakade och korrigerade i den här versionen. |Nej |Ja |
+| 1 |Windows PowerShell-fjärrkommunikation |I den tidigare versionen skulle en användare få ett fel meddelande vid försök att upprätta en fjärr anslutning till StorSimple Cloud Appliance via Windows PowerShell. Det här problemet var rot-orsakade och korrigerade i den här versionen. |Inga |Ja |
 | 2 |Mallar för bandbredd |I en tidigare version fick du ett problem med bandbredds-mallar som resulterade i lägre bandbredd än vad enheten hade kon figurer ATS för. Det här problemet har lösts i den här versionen. |Ja |Ja |
 | 3 |Redundans |När en enhet med ett stort antal volymer redundansväxlats till en annan enhet som kör uppdatering 4 i en tidigare version, skulle processen Miss lyckas vid försök att tillämpa åtkomst kontroll posterna. Det här problemet åtgärdas i den här versionen. |Ja |Ja |
 

@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021749"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Snabb start: klient biblioteket för Azure Blob Storage-V11 för .NET
@@ -54,7 +54,7 @@ Det här avsnittet beskriver hur du förbereder ett projekt för att arbeta med 
 
 Börja med att skapa ett .NET Core-program med namnet *BLOB-snabb start*.
 
-1. I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet *BLOB-snabb start*. Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*.
+1. I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet *BLOB-snabb start*. Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*.
 
    ```console
    dotnet new console -n blob-quickstart
@@ -99,7 +99,7 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 Från projekt katalogen:
 
-1. Öppna filen *program.cs* i redigeraren
+1. Öppna filen *program. cs* i redigeraren
 2. Ta bort `Console.WriteLine` instruktionen
 3. Lägg till `using` direktiv
 4. Skapa en `ProcessAsync` metod där huvud koden för exemplet kommer att finnas

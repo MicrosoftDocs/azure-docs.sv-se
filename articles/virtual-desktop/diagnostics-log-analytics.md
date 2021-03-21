@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576149"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Använd Log Analytics för funktionen diagnostik
@@ -29,7 +29,7 @@ Windows Virtual Desktop använder [Azure Monitor](../azure-monitor/overview.md) 
     - När användarna initierar och slutför anslutningar till tjänsten.
 - Värd registrering:
     - Har sessions värden registrerats med tjänsten vid anslutning?
-- Kompileringsfel
+- Fel:
     - Påträffar användarna eventuella problem med specifika aktiviteter? Den här funktionen kan generera en tabell som spårar aktivitets data så länge informationen är kopplad till aktiviteterna.
 - Kontroll punkter
     - Vissa steg i livs längden för en aktivitet som har nåtts. Under en-session har en användare exempelvis belastnings utjämning till en viss värd, sedan var användaren inloggad vid en anslutning och så vidare.
