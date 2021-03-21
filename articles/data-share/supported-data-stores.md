@@ -7,10 +7,10 @@ ms.author: jife
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963687"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Datalager som stöds i Azure Data Share
@@ -31,7 +31,7 @@ I följande tabell förklaras de data lager som stöds av Azure Data Share.
 | Azure SQL Database |✓ | | |
 | Azure Synapse Analytics (tidigare Azure SQL Data Warehouse) |✓ | | |
 | Dedikerad SQL-pool för Azure Synapse Analytics (arbets yta) |✓ | | |
-| Azure-datautforskaren | | |✓ |
+| Öppna Azure-datautforskaren | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Support mat ris för data lager
 

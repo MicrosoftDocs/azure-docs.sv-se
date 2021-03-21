@@ -7,10 +7,10 @@ ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
 ms.openlocfilehash: cc356b307a752b10ba6f1c1a7151381c5644ca1e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98762722"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Kontinuerlig leverans med hjälp av GitHub-åtgärd
@@ -23,13 +23,13 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 För ett Azure Functions-arbetsflöde har filen tre delar: 
 
-| Avsnitt | Aktiviteter |
+| Avsnitt | Uppgifter |
 | ------- | ----- |
 | **Autentisering** | Ladda ned en publicerings profil.<br/>Skapa en GitHub-hemlighet.|
 | **Skapa** | Konfigurera miljön.<br/>Bygg in Function-appen.|
 | **Distribuera** | Distribuera Function-appen.|
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  

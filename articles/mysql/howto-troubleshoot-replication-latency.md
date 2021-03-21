@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
 ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249779"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Felsök replikeringsfördröjning i Azure Database for MySQL
@@ -95,7 +95,7 @@ Här är en typisk utmatning:
 
 Utdata innehåller mycket information. Normalt behöver du bara fokusera på de rader som visas i följande tabell.
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |---|---|
 |Slave_IO_State| Representerar IO-trådens aktuella status. Normalt är statusen "väntar på att huvud servern ska skickas" om käll servern (huvud servern) synkroniseras. En status som "anslutning till Master" anger att repliken förlorade anslutningen till käll servern. Se till att käll servern körs eller kontrol lera om en brand vägg blockerar anslutningen.|
 |Master_Log_File| Representerar den binära logg filen som käll servern skriver till.|
@@ -177,7 +177,7 @@ I följande avsnitt beskrivs vanliga orsaker till den här typen av svars tid.
 
 #### <a name="no-primary-key-or-unique-key-on-a-table"></a>Ingen primär nyckel eller unik nyckel för en tabell
 
-Azure Database for MySQL använder Row-baserad replikering. Käll servern skriver händelser till den binära loggen och registrerar ändringar i enskilda tabell rader. SQL-tråden replikerar sedan ändringarna till motsvarande tabell rader på replik servern. När en tabell saknar primär nyckel eller unik nyckel genomsöker SQL-tråden alla rader i mål tabellen för att tillämpa ändringarna. Den här genomsökningen kan orsaka replikeringsfördröjning.
+Azure Database for MySQL använder Row-baserad replikering. Käll servern skriver händelser till den binära loggen och registrerar ändringar i enskilda tabell rader. SQL-tråden replikerar sedan ändringarna till motsvarande tabell rader på replik servern. När en tabell saknar primär nyckel eller unik nyckel genomsöker SQL-tråden alla rader i mål tabellen för att tillämpa ändringarna. Genomsökningen kan orsaka en replikeringsfördröjning.
 
 I MySQL är primär nyckeln ett associerat index som säkerställer snabba frågeresultat eftersom det inte får innehålla NULL-värden. Om du använder InnoDB lagrings motor är tabell data fysiskt organiserade för att göra extremt snabba sökningar och sorteras baserat på den primära nyckeln.
 

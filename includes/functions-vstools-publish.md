@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100529723"
 ---
 1. I **Solution Explorer** högerklickar du på projektet och väljer **publicera** och i **mål** väljer du **Azure** och sedan **Nästa**.
@@ -29,7 +29,7 @@ ms.locfileid: "100529723"
     | ------------ |  ------- | -------------------------------------------------- |
     | **Namn** | Globalt unikt namn | Namn som unikt identifierar din nya funktionsapp. Acceptera det här namnet eller ange ett nytt namn. Giltiga tecken är: `a-z` , `0-9` , och `-` . |
     | **Prenumeration** | Din prenumeration | Den Azure-prenumeration som ska användas. Godkänn denna prenumeration eller Välj en ny i list rutan. |
-    | **[Resurs grupp](../articles/azure-resource-manager/management/overview.md)** | Namnet på din resurs grupp |  Resurs gruppen där du vill skapa din Function-app. Välj en befintlig resurs grupp i den nedrullningsbara listan eller Välj **ny** för att skapa en ny resurs grupp.|
+    | **[Resursgrupp](../articles/azure-resource-manager/management/overview.md)** | Namnet på din resurs grupp |  Resurs gruppen där du vill skapa din Function-app. Välj en befintlig resurs grupp i den nedrullningsbara listan eller Välj **ny** för att skapa en ny resurs grupp.|
     | **[Typ av plan](../articles/azure-functions/functions-scale.md)** | Förbrukning | När du publicerar projektet till en Function-app som körs i en [förbruknings plan](../articles/azure-functions/consumption-plan.md)betalar du bara för körningar av Functions-appen. Andra värd planer ådrar sig högre kostnader. |
     | **Plats** | Platsen för App Service | Välj en **plats** i en [region](https://azure.microsoft.com/regions/) nära dig eller andra tjänster som dina funktioner har åtkomst till. |
     | **[Azure Storage](../articles/azure-functions/storage-considerations.md)** | Allmänt lagrings konto | Ett Azure Storage-konto krävs av Functions-körningen. Välj **nytt** om du vill konfigurera ett allmänt lagrings konto. Du kan också välja ett befintligt konto som uppfyller [kraven för lagrings kontot](../articles/azure-functions/storage-considerations.md#storage-account-requirements).  |

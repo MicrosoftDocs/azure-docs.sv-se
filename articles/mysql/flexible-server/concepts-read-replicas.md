@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98251309"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Läs repliker i Azure Database for MySQL-flexibel Server
@@ -116,7 +116,7 @@ När programmet har bearbetat läsningar och skrivningar har du slutfört redund
 |:-|:-|
 | Replik på server med zon-redundant HA aktiverat | Stöds inte |
 | Läs replikering mellan regioner | Stöds inte |
-| Prissättning | Kostnaden för att köra replik servern baseras på den region där replik servern körs |
+| Priser | Kostnaden för att köra replik servern baseras på den region där replik servern körs |
 | Omstart av käll Server | När du skapar en replik för en källa som inte har några befintliga repliker startas källan om först för att förbereda sig för replikering. Ta detta i beaktande och utför dessa åtgärder under en låg belastnings period |
 | Nya repliker | En Läs replik skapas som en ny Azure Database for MySQL flexibel Server. Det går inte att göra en befintlig server till en replik. Du kan inte skapa en replik av en annan Läs replik |
 | Replik konfiguration | En replik skapas med samma server konfiguration som källan. När en replik har skapats kan flera inställningar ändras oberoende av käll servern: beräknings generering, virtuella kärnor, lagring och kvarhållning av säkerhets kopior. Beräknings nivån kan också ändras oberoende av varandra.<br> <br> **Viktigt!**  <br> – Innan en käll Server konfiguration uppdateras till nya värden uppdaterar du replik konfigurationen till samma eller större värden. På så sätt säkerställer du att repliken klarar alla ändringar som görs av källan. <br/> Anslutnings metoden och parameter inställningarna ärvs från käll servern till repliken när repliken skapas. Därefter är replikens regler oberoende av varandra. |

@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/03/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5877db6b3bc7366f28e679882a2c784e6828b1c1
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 804cdbd6266f2e77b5562d914bac089fce80f645
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523591"
 ---
 # <a name="view-information-in-alerts"></a>Visa information i aviseringar
@@ -90,7 +90,7 @@ Om du vill ladda ned en PCAP-fil väljer du :::image type="content" source="medi
 
 I **rekommendations** delen av en avisering visas information som kan hjälpa dig att förstå en händelse bättre. Granska den här informationen innan du hanterar aviserings händelsen eller vidtar åtgärder på enheten eller nätverket.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Påskynda aviserings arbets flöden](how-to-accelerate-alert-incident-response.md)
 

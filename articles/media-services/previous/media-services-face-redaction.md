@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7d416810f6a39fb36bfa3c5225301fe87fdd128c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013473"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bortredigering-ansikten med Azure-medieanalys
@@ -46,7 +46,7 @@ Detta skapar en förredigerad MP4 automatiskt utan manuella indatatyper.
 
 | Fas | Filnamn | Kommentarer |
 | --- | --- | --- |
-| Inmatad till gång |foo. bar |Video i WMV-, MOV-eller MP4-format |
+| Inmatad till gång |foo.bar |Video i WMV-, MOV-eller MP4-format |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' kombinerat '}} |
 | Mata ut till gång |foo_redacted.mp4 |Video med suddigt använt |
 
@@ -56,7 +56,7 @@ Det **analyserande** passet i det två-pass-arbets flödet tar en video indata o
 
 | Fas | Filnamn | Kommentarer |
 | --- | --- | --- |
-| Inmatad till gång |foo. bar |Video i WMV-, MPV-eller MP4-format |
+| Inmatad till gång |foo.bar |Video i WMV-, MPV-eller MP4-format |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' analysera '}} |
 | Mata ut till gång |foo_annotations.jspå |Antecknings data för ansikts platser i JSON-format. Detta kan redige ras av användaren för att ändra de oskarpa avgränsnings rutorna. Se exemplet nedan. |
 | Mata ut till gång |foo_thumb% 06d.jpg [foo_thumb000001.jpg foo_thumb000002.jpg] |En beskurna jpg för varje identifierad ansikte, där talet anger labelId för ansikte |
@@ -122,7 +122,7 @@ Den ursprungliga videon ingår inte i resultatet från analys steget. Videon må
 
 | Fas | Filnamn | Kommentarer |
 | --- | --- | --- |
-| Inmatad till gång |foo. bar |Video i WMV-, MPV-eller MP4-format. Samma video som i steg 1. |
+| Inmatad till gång |foo.bar |Video i WMV-, MPV-eller MP4-format. Samma video som i steg 1. |
 | Inmatad till gång |foo_annotations.jspå |anteckningarnas metadatafil från fas ett, med valfria ändringar. |
 | Inmatad till gång |foo_IDList.txt (valfritt) |Valfri ny blankstegsavgränsad lista över ansikts-ID: n till bortredigering. Om detta lämnas tomt oskarps alla ansikten. |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' bortredigering '}} |

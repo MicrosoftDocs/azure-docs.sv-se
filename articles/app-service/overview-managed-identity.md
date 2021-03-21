@@ -8,10 +8,10 @@ ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736179"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Använda hanterade identiteter för App Service och Azure Functions
@@ -326,12 +326,12 @@ En app med en hanterad identitet har två miljövariabler definierade:
 
 > | Parameternamn    | I     | Beskrivning                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | resource          | Söka i data  | Azure AD-resurs-URI för resursen som en token ska hämtas för. Detta kan vara en av de [Azure-tjänster som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) eller andra resurs-URI: er.    |
-> | api-version       | Söka i data  | Den version av token API som ska användas. Använd "2019-08-01" eller senare (om du inte använder Linux-förbrukning, som för närvarande bara erbjuder "2017-09-01", se kommentaren ovan).                                                                                                                                                                                                                                                                 |
+> | resource          | Fråga  | Azure AD-resurs-URI för resursen som en token ska hämtas för. Detta kan vara en av de [Azure-tjänster som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) eller andra resurs-URI: er.    |
+> | api-version       | Fråga  | Den version av token API som ska användas. Använd "2019-08-01" eller senare (om du inte använder Linux-förbrukning, som för närvarande bara erbjuder "2017-09-01", se kommentaren ovan).                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | Huvud | Värdet för IDENTITY_HEADER-miljövariabeln. Den här rubriken används för att minska risken för förfalskning av SSRF-attacker (Server sidans begäran).                                                                                                                                                                                                    |
-> | client_id         | Söka i data  | Valfritt Klient-ID för den användar tilldelnings identitet som ska användas. Kan inte användas på en begäran som innehåller `principal_id` , `mi_res_id` eller `object_id` . Om alla ID-parametrar ( `client_id` , `principal_id` ,, `object_id` och `mi_res_id` ) utelämnas används den systemtilldelade identiteten.                                             |
-> | principal_id      | Söka i data  | Valfritt Ägar-ID för den användar tilldelnings identitet som ska användas. `object_id` är ett alias som kan användas i stället. Kan inte användas på en begäran som innehåller client_id, mi_res_id eller object_id. Om alla ID-parametrar ( `client_id` , `principal_id` ,, `object_id` och `mi_res_id` ) utelämnas används den systemtilldelade identiteten. |
-> | mi_res_id         | Söka i data  | Valfritt Azure-resurs-ID för den användar tilldelnings identitet som ska användas. Kan inte användas på en begäran som innehåller `principal_id` , `client_id` eller `object_id` . Om alla ID-parametrar ( `client_id` , `principal_id` ,, `object_id` och `mi_res_id` ) utelämnas används den systemtilldelade identiteten.                                      |
+> | client_id         | Fråga  | Valfritt Klient-ID för den användar tilldelnings identitet som ska användas. Kan inte användas på en begäran som innehåller `principal_id` , `mi_res_id` eller `object_id` . Om alla ID-parametrar ( `client_id` , `principal_id` ,, `object_id` och `mi_res_id` ) utelämnas används den systemtilldelade identiteten.                                             |
+> | principal_id      | Fråga  | Valfritt Ägar-ID för den användar tilldelnings identitet som ska användas. `object_id` är ett alias som kan användas i stället. Kan inte användas på en begäran som innehåller client_id, mi_res_id eller object_id. Om alla ID-parametrar ( `client_id` , `principal_id` ,, `object_id` och `mi_res_id` ) utelämnas används den systemtilldelade identiteten. |
+> | mi_res_id         | Fråga  | Valfritt Azure-resurs-ID för den användar tilldelnings identitet som ska användas. Kan inte användas på en begäran som innehåller `principal_id` , `client_id` eller `object_id` . Om alla ID-parametrar ( `client_id` , `principal_id` ,, `object_id` och `mi_res_id` ) utelämnas används den systemtilldelade identiteten.                                      |
 
 > [!IMPORTANT]
 > Om du försöker hämta tokens för användarspecifika identiteter måste du inkludera en av de valfria egenskaperna. Annars försöker token-tjänsten hämta en token för en tilldelad identitet, som kan vara eller inte finns.

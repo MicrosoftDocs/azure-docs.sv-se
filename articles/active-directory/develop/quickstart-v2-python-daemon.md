@@ -13,10 +13,10 @@ ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
 ms.openlocfilehash: 734fad7d3f4fb7a2a816d9ad10fb6b15e2faf9e2
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99820417"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Snabb start: Hämta en token och anropa Microsoft Graph API från en python-konsol app med appens identitet
@@ -190,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Plats: |Description |
+> | Plats: |Beskrivning |
 > |---------|---------|
 > | `config["secret"]` | Är klienthemligheten som skapats för appen i Azure-portalen. |
 > | `config["client_id"]` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
@@ -211,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Plats:| Description |
+> |Plats:| Beskrivning |
 > |---------|---------|
 > | `config["scope"]` | Innehåller omfattningarna som begärdes. För konfidentiella klienter bör det använda formatet som liknar `{Application ID URI}/.default` för att indikera att de omfattningar som begärs är de statiskt definierade i app-objektet som anges i Azure Portal (för Microsoft Graph `{Application ID URI}` pekar på `https://graph.microsoft.com` ). För anpassade webb-API: er `{Application ID URI}` definieras under avsnittet **exponera ett API** i **Appregistreringar** i Azure-portalen.|
 

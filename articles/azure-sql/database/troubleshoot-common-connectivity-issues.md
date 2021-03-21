@@ -13,10 +13,10 @@ ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99093765"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Felsök tillfälliga anslutnings fel i SQL Database och SQL-hanterad instans
@@ -276,7 +276,7 @@ Enterprise Library 6 (EntLib60) erbjuder .NET-hanterade klasser som hjälp vid l
 
 Här följer några Transact-SQL SELECT-uttryck som frågar efter fel loggar och annan information.
 
-| Fråga efter logg | Description |
+| Fråga efter logg | Beskrivning |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |I [sys.event_logs](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) vyn finns information om enskilda händelser som innehåller vissa som kan orsaka tillfälliga fel eller anslutnings fel.<br/><br/>Vi rekommenderar att du korrelerar **start_time** -eller **end_times** värden med information om när ditt klient program fick problem.<br/><br/>Du måste ansluta till *huvud* databasen för att köra den här frågan. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |I [sys.database_connection_statss](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) vyn finns sammansatta antal händelse typer för ytterligare diagnostik.<br/><br/>Du måste ansluta till *huvud* databasen för att köra den här frågan. |

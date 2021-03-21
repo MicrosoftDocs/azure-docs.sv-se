@@ -4,10 +4,10 @@ description: Den här artikeln innehåller svar på några vanliga frågor om Az
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250066"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay vanliga frågor
@@ -27,7 +27,7 @@ Ett [namn område](relay-create-namespace-portal.md) är en omfattnings behålla
 ### <a name="what-happened-to-service-bus-relay-service"></a>Vad hände med att Service Bus Relay tjänsten?
 Den tidigare namngivna Service Bus Relays tjänsten kallas nu [Azure Relay](service-bus-relay-tutorial.md). Du kan fortsätta att använda den här tjänsten som vanligt. Den Hybridanslutningar funktionen är en uppdaterad version av en tjänst som har planterats från Azure BizTalk Services. WCF Relay och Hybridanslutningar fortsätter att stödjas.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 I det här avsnittet besvaras några vanliga frågor om relä pris strukturen. Du kan också se [vanliga frågor och svar om Azure-support](https://azure.microsoft.com/support/faq/) för allmän pris information om Azure. Fullständig information om priser för Reläering finns [Service Bus pris information][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hur debiteras du för Hybridanslutningar och WCF Relay?

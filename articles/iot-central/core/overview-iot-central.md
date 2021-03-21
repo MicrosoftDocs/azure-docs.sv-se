@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
 ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99833821"
 ---
 # <a name="what-is-azure-iot-central"></a>Vad är Azure IoT Central?
@@ -132,7 +132,7 @@ Bygg IoT-lösningar som:
 
 IoT Central program är helt värdar för Microsoft, vilket minskar administrations kostnaderna för att hantera dina program. Administratörer hanterar åtkomst till ditt program med [användar roller och behörigheter](howto-administer.md).
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Du kan skapa IoT Central program med en kostnads fri utvärderings version på 7 dagar eller använda en standard pris plan.
 

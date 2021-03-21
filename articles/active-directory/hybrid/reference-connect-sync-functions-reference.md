@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98246714"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Functions reference
@@ -904,7 +904,7 @@ ItemOrNull-funktionen är användbar tillsammans med funktionen contains efterso
 Om index ligger utanför intervallet returnerar värdet null.
 
 ---
-### <a name="join"></a>Slå ihop
+### <a name="join"></a>Anslut
 **Beskrivning:**  
 Funktionen Join tar en multi-Value-sträng och returnerar en ensiffrig sträng med angiven avgränsare som infogas mellan varje objekt.
 

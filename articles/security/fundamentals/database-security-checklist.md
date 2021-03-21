@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100595578"
 ---
 # <a name="azure-database-security-checklist"></a>Check lista för Azure Database Security
@@ -44,7 +44,7 @@ Molnbaserad data behandling kräver nya säkerhets paradigm som är okända för
 Vi rekommenderar att du läser artikeln [metod tips för Azure Database Security](../../azure-sql/database/security-best-practice.md)  innan du läser igenom check listan. Du kommer att kunna få ut det mesta av check listan när du förstår de bästa metoderna. Du kan sedan använda den här check listan för att kontrol lera att du har åtgärdat de viktiga problemen i Azure Database Security.
 
 
-|Check lista kategori| Description|
+|Check lista kategori| Beskrivning|
 | ------------ | -------- |
 |**Skydda data**||
 | <br> Kryptering i rörelse/överföring| <ul><li>[Transport Layer Security](/windows-server/security/tls/transport-layer-security-protocol)för data kryptering när data flyttas till nätverken.</li><li>Databasen kräver säker kommunikation från klienter som baseras på [TDS-protokollet (tabell data ström)](/openspecs/windows_protocols/ms-tds/893fcc7e-8a39-4b3c-815a-773b7b982c50) över TLS (Transport Layer Security).</li></ul> |

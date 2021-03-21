@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: victorh
 ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735086"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Självstudie: skapa och konfigurera en Application Gateway som värd för flera webbplatser med hjälp av Azure Portal

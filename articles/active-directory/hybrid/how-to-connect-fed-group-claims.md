@@ -13,10 +13,10 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349358"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurera grupp anspråk för program med Azure Active Directory
@@ -64,7 +64,7 @@ Men om ett befintligt program förväntar sig att använda grupp information via
 
 ## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Krav för att använda Gruppattribut synkroniserade från Active Directory
 
-Anspråk för grupp medlemskap kan genereras i tokens för alla grupper om du använder ObjectId-formatet. Om du vill använda grupp anspråk i andra format än gruppen ObjectId måste grupperna synkroniseras från Active Directory med Azure AD Connect.
+Anspråk på gruppmedlemskap kan genereras i token för valfri grupp om du använder ObjectId-formatet. Om du vill använda grupp anspråk i andra format än gruppen ObjectId måste grupperna synkroniseras från Active Directory med Azure AD Connect.
 
 Det finns två steg för att konfigurera Azure Active Directory att generera grupp namn för Active Directory grupper.
 

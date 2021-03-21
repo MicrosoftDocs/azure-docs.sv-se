@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523557"
 ---
 # <a name="work-with-alerts-on-your-sensor"></a>Arbeta med aviseringar på sensorn
@@ -68,9 +68,9 @@ Exempel:
 
   - Händelser för skadlig kod som identifierats på nätverks enheter rapporteras i riskbedömnings rapporter. När aviseringar om händelser för skadlig kod är *avstängda*, kommer berörda enheter inte att beräknas i rapporten om riskbedömning.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
-Lägen för inlärning [och smart IT-utbildning](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
- [Visa information som finns i aviseringar](how-to-view-information-provided-in-alerts.md) 
- [Hantera aviserings händelsen](how-to-manage-the-alert-event.md) 
- [Påskynda aviserings arbets flöden](how-to-accelerate-alert-incident-response.md)
+- [Lägen för inlärning och smart IT-utbildning](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+- [Visa informationen som tillhandahålls i aviseringar](how-to-view-information-provided-in-alerts.md)
+- [Hantera aviseringshändelsen](how-to-manage-the-alert-event.md)
+- [Påskynda aviserings arbets flöden](how-to-accelerate-alert-incident-response.md)
