@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/09/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462770"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579050"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- och hjälpalternativ för utvecklare
 
@@ -44,17 +44,17 @@ Få svar på dina frågor om utvecklings frågor direkt från Microsoft-tekniker
 
 [Microsoft Q&A](/answers/products/) är Azures rekommenderade källa för Community-support.
 
-Om du inte hittar något svar på problemet genom att söka i Microsoft Q&A skickar du en ny fråga. Använd en av följande Taggar när du ställer [frågor till hög kvalitet](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html):
+Om du inte hittar något svar på problemet genom att söka i Microsoft Q&A skickar du en ny fråga. Använd en av följande Taggar när du ställer [frågor till hög kvalitet](/answers/articles/24951/how-to-write-a-quality-question.html):
 
 | Komponent/Area| Taggar  |
 |------------|---------------------------|
-| Autentiseringsbiblioteket i Active Directory (ADAL)                              | [ADAL](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
-| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
-| Open Web Interface för .NET (OWIN) mellanprogram                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure AD B2B/externa identiteter](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
-| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
-| Alla andra områden för autentisering och auktorisering                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| Autentiseringsbiblioteket i Active Directory (ADAL)                              | [ADAL](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](/answers/topics/azure-ad-msal.html)                            |
+| Open Web Interface för .NET (OWIN) mellanprogram                               | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/externa identiteter](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-Graph]](/answers/topics/azure-ad-graph.html)                 |
+| Alla andra områden för autentisering och auktorisering                            | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>Skapa ett GitHub-problem
 
@@ -98,10 +98,8 @@ Om du vill begära nya funktioner kan du publicera dem på Azure feedback. Dela 
 
 - [Azure-uppdateringar](https://azure.microsoft.com/updates/?category=identity): Lär dig mer om viktiga produkt uppdateringar, översikt och meddelanden.
 
-- [Nyheter i dokument](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs): bekanta dig med nyheterna i dokumentationen för Microsoft Identity Platform.
+- [Nyheter i dokument](./whats-new-docs.md): bekanta dig med nyheterna i dokumentationen för Microsoft Identity Platform.
 
 - [Azure Active Directory identitets blogg](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): Hämta nyheter och information om Azure AD.
 
 - [Teknisk community](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): Dela dina upplevelser, engagera och lär dig av experter.
-
-

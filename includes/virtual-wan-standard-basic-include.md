@@ -9,15 +9,15 @@ ms.date: 10/20/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 732c08a1d97735ef1df04abbed548fd4af4e3411
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96187451"
 ---
 | **Virtuell WAN-typ** | **Typ av hubb** | **Tillgängliga konfigurationer** |
 |---|---|---|
-|Basic | Basic | Endast plats-till-plats-VPN |
+|Grundläggande | Grundläggande | Endast plats-till-plats-VPN |
 | Standard | Standard | ExpressRoute<br>Användarens VPN (P2S)<br>VPN (plats-till-plats)<br> Överföring mellan hubb och VNet-till-VNet via den virtuella hubben |
 
 >[!NOTE]

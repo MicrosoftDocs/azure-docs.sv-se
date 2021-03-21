@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du använder hanterade identiteter 
 ms.topic: article
 ms.date: 01/21/2021
 ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954318"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Autentisera en hanterad identitet med Azure Active Directory för att få åtkomst till Azure Service Bus resurser
@@ -125,7 +125,7 @@ Om du vill tilldela en roll till en Service Bus-namnrymd navigerar du till namn 
 ### <a name="run-the-app"></a>Kör appen
 Ändra nu standard sidan för det ASP.NET-program som du skapade. Du kan använda webb program koden från [den här GitHub-lagringsplatsen](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
-Sidan default. aspx är din landnings sida. Du hittar koden i Default.aspx.cs-filen. Resultatet är ett minimalt webb program med några fält och med knapparna **Skicka** och **ta emot** som ansluter till Service Bus för att antingen skicka eller ta emot meddelanden.
+Sidan default. aspx är din landnings sida. Du hittar koden i filen default. aspx. cs. Resultatet är ett minimalt webb program med några fält och med knapparna **Skicka** och **ta emot** som ansluter till Service Bus för att antingen skicka eller ta emot meddelanden.
 
 Observera hur [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) -objektet initieras. I stället för att använda token Provider för delad åtkomst (SAS) skapar koden en token-Provider för den hanterade identiteten med `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` anropet. Det finns därför inga hemligheter att kvarhålla och använda. Flödet av den hanterade identitets kontexten till Service Bus och handskakningen för auktoriseringen hanteras automatiskt av token-providern. Det är en enklare modell än att använda SAS.
 

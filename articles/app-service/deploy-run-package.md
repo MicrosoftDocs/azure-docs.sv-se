@@ -3,12 +3,12 @@ title: Köra din app från ett ZIP-paket
 description: Distribuera appens ZIP-paket med Atomicitet. Förbättra förutsägbarheten och tillförlitligheten för appens beteende under ZIP-distributions processen.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 036dd8c86251af2ed5553939e74a0d85fc303ecb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008137"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577554"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Kör din app i Azure App Service direkt från ett ZIP-paket
 
@@ -67,6 +67,7 @@ Om du publicerar ett uppdaterat paket med samma namn i Blob Storage måste du st
 
 - Att köra direkt från ett paket är `wwwroot` skrivskyddat. Din app får ett fel meddelande om det försöker skriva filer till den här katalogen.
 - TAR-och GZIP-format stöds inte.
+- ZIP-filen kan vara högst 1 GB
 - Den här funktionen är inte kompatibel med [lokal cache](overview-local-cache.md).
 - För förbättrade kall start prestanda använder du det lokala zip-alternativet ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 

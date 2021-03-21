@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460295"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Tekniska specifikationer för Azure Stack Edge Pro
@@ -45,7 +45,7 @@ Azure Stack Edge Pro-enheten har två 100-240 V-enheter för strömförsörjning
 | Maximal uteffekt    | 750 W                     |
 | Frekvens               | 50/60 Hz                   |
 | Val av spännings intervall | Automatisk mellan: 100-240 V AC |
-| Hot pluggable           | Yes                        |
+| Hot pluggable           | Ja                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Specifikationer för Azure Stack Edge Pro-ström sladd per region
 
@@ -60,13 +60,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Din Azure Stack Edge Pro-enhet har 6 nätverks gränssnitt, PORT1-PORT6.
 
-| Specifikation           | Description                 |
+| Specifikation           | Beskrivning                 |
 |-------------------------|----------------------------|
 |  Nätverksgränssnitt    | 2 x 1 GbE-gränssnitt – 1 för hantering som inte kan konfigureras av användaren används för installationen. Det andra gränssnittet kan konfigureras av användaren, kan användas för dataöverföring och är DHCP som standard. <br>2 x 25 GbE-gränssnitt – dessa kan även fungera som 10 GbE-gränssnitt. Dessa datagränssnitt kan konfigureras av användaren som DHCP (standard) eller statiska. <br> 2 x 25 GbE-gränssnitt – dessa datagränssnitt kan konfigureras av användaren som DHCP (standard) eller statiska.                  |
 
 De nätverkskort som används är: 
 
-| Specifikation           | Description                 |
+| Specifikation           | Beskrivning                 |
 |-------------------------|----------------------------|
 |Network dotter-kort (rNDC) |QLogic FastLinQ 41264 med dubbel port 25GbE SFP +, dubbel port 1GbE, rNDC|
 |PCI-nätverkskort |QLogic FastLinQ 41262 Zwei ports 25Gbit/s SFP28 adapter|

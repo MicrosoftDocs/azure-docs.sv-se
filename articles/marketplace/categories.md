@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
 ms.openlocfilehash: 5042c6801678f94c749454dac28eec56fdcb7559
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94811102"
 ---
 # <a name="categories-and-subcategories-in-the-commercial-marketplace"></a>Kategorier och under Kategorier i den kommersiella marknads platsen
@@ -38,15 +38,15 @@ I den här tabellen visas de primära kategorierna och under kategorierna som ma
 | Containers | Behållar appar<br>Behållar avbildningar<br>Kom igång med behållare |
 | Databas | Data sjöar<br>-informationslager<br>Ledger/blockchain-databaser<br>NoSQL-databaser<br>Relationsdatabaser |
 | Utvecklarverktyg | Developer Service<br>Skript<br>Verktyg |
-| DevOps | E.t. |
-| Developer Service | Meddelandetjänster |
+| DevOps | Ej tillämpligt |
+| Developer Service | Meddelandefunktion |
 | Identitet | Åtkomst hantering |
 | Hanterings verktyg för IT-& | Hanteringslösningar<br>Företagsprogram |
 | Sakernas Internet | Visualisering av data analys &<br>IoT-anslutning<br>IoT Core-tjänster<br>IoT Edge moduler<br>IoT-lösningar |
 | Media | Content Protection<br>Live & strömning på begäran<br>Media Services |
 | Migrering | Datamigrering |
-| Mixed Reality | E.t. |
-| Övervaka & diagnostik | E.t. |
+| Mixed Reality | Ej tillämpligt |
+| Övervaka & diagnostik | Ej tillämpligt |
 | Nätverk | Utrustnings hanterare<br>Anslutning<br>Brandväggar<br>Lastbalanserare |
 | Säkerhet | Identitets & åtkomst hantering<br>Information Protection<br>Hotskydd |
 | Storage | Säkerhets kopiering & återställning<br>Data livs cykel hantering<br>Enterprise hybrid Storage<br>Fildelning |

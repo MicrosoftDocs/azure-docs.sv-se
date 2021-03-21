@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010239"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Självstudie: transformera och skydda ditt API
@@ -20,7 +20,7 @@ I självstudien visas hur du transformerar ditt API så att det inte visar infor
 
 Den här kursen visar också hur enkelt det är att lägga till skydd för Server dels-API: et genom att konfigurera en hastighets gräns med Azure API Management. Du kanske vill begränsa antalet API-anrop så att API: t inte används av utvecklare. Mer information finns i [API Management principer](api-management-policies.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >

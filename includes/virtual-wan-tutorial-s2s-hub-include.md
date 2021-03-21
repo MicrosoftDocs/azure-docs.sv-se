@@ -9,16 +9,16 @@ ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f469664c716ecef6b82de2befa40b33f253e229f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627734"
 ---
 1. Leta upp det virtuella WAN-nätverket som du har skapat. På sidan virtuellt WAN, under avsnittet **anslutning** , väljer du **hubbar**.
 2. På sidan **hubbar** väljer du **+ ny hubb** för att öppna sidan **Skapa virtuell hubb** .
 
-    ![Skärm bild som visar fönstret Skapa virtuellt nav med fliken grundläggande valt.](./media/virtual-wan-tutorial-hub-include/basics.png "Grunder")
+    ![Skärm bild som visar fönstret Skapa virtuellt nav med fliken grundläggande valt.](./media/virtual-wan-tutorial-hub-include/basics.png "Grundläggande inställningar")
 3. Fyll i följande fält på fliken **grundläggande grunder** på sidan **Skapa virtuell hubb** :
 
    * **Region** (tidigare kallad plats)

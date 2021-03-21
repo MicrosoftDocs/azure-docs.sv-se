@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214481"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Snabb start: Distribuera ditt första Azure våren Cloud-program
@@ -154,7 +154,7 @@ I Visual Studio skapar du ett ASP.NET Core webb program med namnet "Hello-World"
 
    Paketen är för Steeltoe-tjänst identifiering och klient biblioteket för Azure våren Cloud. `Zip`Uppgiften är för distribution till Azure. När du kör `dotnet publish` kommandot genereras binärfilerna i *publicerings* mappen och den här uppgiften zips i en *. zip* -  fil som du överför till Azure.
 
-3. I *program.cs* -filen lägger du till ett `using` direktiv och kod som använder klient biblioteket för Azure våren Cloud:
+3. I filen *program. cs* lägger du till ett `using` direktiv och kod som använder klient biblioteket Azure våren Cloud:
 
    ```csharp
    using Microsoft.Azure.SpringCloud.Client;
@@ -170,7 +170,7 @@ I Visual Studio skapar du ett ASP.NET Core webb program med namnet "Hello-World"
                    });
    ```
 
-4. I *startup.cs* -filen lägger du till ett `using` direktiv och kod som använder identifiering av Steeltoe-tjänsten i slutet av `ConfigureServices` `Configure` metoderna och:
+4. I filen *startup. cs* lägger du till ett `using` direktiv och kod som använder identifiering av Steeltoe-tjänsten i slutet av `ConfigureServices` metoderna och `Configure` :
 
    ```csharp
    using Steeltoe.Discovery.Client;

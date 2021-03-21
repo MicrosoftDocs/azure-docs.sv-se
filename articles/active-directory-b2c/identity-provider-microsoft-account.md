@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: db6793389df0df169745ddd50551f836d06cf08c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 12e8222ad59aae31baa7a549519c97550b711703
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488762"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579951"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med en Microsoft-konto med hjälp av Azure Active Directory B2C
 
@@ -68,6 +68,8 @@ Om du vill aktivera inloggning för användare med en Microsoft-konto i Azure Ac
 1. Välj **Spara**.
 
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>Lägg till Microsoft Identity Provider i ett användar flöde 
+
+Microsoft Identity Provider har nu kon figurer ATS, men den är inte tillgänglig ännu på någon av inloggnings sidorna. Så här lägger du till Microsoft Identity-providern i ett användar flöde:
 
 1. Välj **användar flöden** i Azure AD B2C klient.
 1. Klicka på det användar flöde som du vill lägga till Microsoft Identity Provider.

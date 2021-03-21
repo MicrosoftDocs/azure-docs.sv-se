@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740041"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Övervaka en integreringskörning i Azure Data Factory
@@ -43,8 +43,8 @@ Följande tabell innehåller beskrivningar av egenskaper som returneras av cmdle
 
 | Egenskap | Beskrivning |
 -------- | ------------- | 
-| Namn | Namnet på Azure integration Runtime. |  
-| Stat | Status för Azure integration Runtime. | 
+| Name | Namnet på Azure integration Runtime. |  
+| Tillstånd | Status för Azure integration Runtime. | 
 | Location | Platsen för Azure integration Runtime. Mer information om platsen för en Azure integration runtime finns i [Introduktion till integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Namnet på den data fabrik som Azure integration runtime tillhör. | 
 | ResourceGroupName | Namnet på den resurs grupp som data fabriken tillhör.  |
@@ -72,7 +72,7 @@ Följande tabell innehåller beskrivningar av övervaknings egenskaper för **va
 
 | Egenskap | Beskrivning | 
 | -------- | ----------- | 
-| Namn | Namnet på den egna värdbaserade integrerings körningen och noder som är kopplade till den. Node är en lokal Windows-dator som har den lokala integrerings körningen installerad. |  
+| Name | Namnet på den egna värdbaserade integrerings körningen och noder som är kopplade till den. Node är en lokal Windows-dator som har den lokala integrerings körningen installerad. |  
 | Status | Status för den övergripande integrerings körningen med egen värd och varje nod. Exempel: online/offline/begränsat/osv. Information om dessa statusar finns i nästa avsnitt. | 
 | Version | Versionen av integration runtime med egen värd och varje nod. Versionen av den lokala integration runtime-versionen bestäms baserat på den version av majoriteten av noderna i gruppen. Om det finns noder med olika versioner i installations programmet för lokal installation av integration runtime fungerar bara noderna med samma versions nummer som den logiska integrerings körningen för egen värd. Andra är i begränsat läge och måste uppdateras manuellt (endast om automatisk uppdatering Miss lyckas). | 
 | Tillgängligt minne | Tillgängligt minne på en egen värd för integration runtime-noden. Det här värdet är en nära real tids ögonblicks bild. | 
@@ -177,7 +177,7 @@ Följande tabell innehåller beskrivningar av egenskaper som returneras av ovans
 | Noder                        | De allokerade/tillgängliga noderna i din Azure-SSIS IR med Node-/regionsspecifika status (start/tillgänglighet/åter användning/ej tillgänglig) och åtgärds bara fel. |
 | OtherErrors                  | De åtgärds bara fel som inte är noder i Azure-SSIS IR. |
 | LastOperation                | Resultatet av den senaste start-/stopp åtgärden på Azure-SSIS IR med åtgärds bara fel om det Miss lyckas. |
-| Stat                        | Övergripande status (första/starta/starta/stoppa/stoppas) för Azure-SSIS IR. |
+| Tillstånd                        | Övergripande status (första/starta/starta/stoppa/stoppas) för Azure-SSIS IR. |
 | Location                     | Azure-SSIS IR plats. |
 | NodeSize                     | Storleken på varje nod i Azure-SSIS IR. |
 | NodeCount                    | Antalet noder i Azure-SSIS IR. |
@@ -192,7 +192,7 @@ Följande tabell innehåller beskrivningar av egenskaper som returneras av ovans
 | Typ                         | IR-typen (hanterad/egen värd) för din Azure-SSIS IR. |
 | ResourceGroupName            | Namnet på din Azure-adressresurs där ADF och Azure-SSIS IR skapades. |
 | DataFactoryName              | Namnet på din ADF. |
-| Namn                         | Namnet på din Azure-SSIS IR. |
+| Name                         | Namnet på din Azure-SSIS IR. |
 | Beskrivning                  | Beskrivning av din Azure-SSIS IR. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Status (per Azure-SSIS IR nod)

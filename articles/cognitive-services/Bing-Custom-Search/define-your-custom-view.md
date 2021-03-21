@@ -1,5 +1,5 @@
 ---
-title: Konfigurera din Anpassad sökning i Bing upplevelse | Microsoft Docs
+title: Konfigurera din Anpassad Bing-sökning upplevelse | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: Med portalen kan du skapa en Sök instans som anger webb sektorerna. domäner, under sidor och webb sidor.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96338647"
 ---
-# <a name="configure-your-bing-custom-search-experience"></a>Konfigurera din Anpassad sökning i Bing upplevelse
+# <a name="configure-your-bing-custom-search-experience"></a>Konfigurera din Anpassad Bing-sökning upplevelse
 
 > [!WARNING]
 > API:er för Bing-sökresultat flyttas från Cognitive Services till Bing-sökning tjänster. Från och med den **30 oktober 2020** måste alla nya instanser av Bing-sökning tillhandahållas enligt processen som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
@@ -32,7 +32,7 @@ Använd följande när du definierar dina segment på webben:
 
 | Segment namn | Beskrivning                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | En domän sektor inkluderar allt innehåll som finns i en Internet domän. Exempelvis `www.microsoft.com`. Om `www.` du utelämnar Bing genomsöks även domänens under domäner. Om du till exempel anger `microsoft.com` , returnerar Bing även resultat från `support.microsoft.com` eller `technet.microsoft.com` . |
+| Domain     | En domän sektor inkluderar allt innehåll som finns i en Internet domän. Till exempel `www.microsoft.com`. Om `www.` du utelämnar Bing genomsöks även domänens under domäner. Om du till exempel anger `microsoft.com` , returnerar Bing även resultat från `support.microsoft.com` eller `technet.microsoft.com` . |
 | Undersida    | En subpage-sektor innehåller allt innehåll som finns på undersidan och Sök vägarna under det. Du kan ange högst två under sidor i sökvägen. Till exempel `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Historik    | En webb sidas sektor kan bara innehålla den webb sidan i en anpassad sökning. Du kan också ange om du vill inkludera under sidor.                                                                                                                                                                                  |
 
@@ -64,18 +64,18 @@ Klicka på fliken **aktiv** och Lägg till en eller flera URL: er för att ange 
 
 När du lägger till URL: er i den **aktiva** listan kan du lägga till enskilda URL: er eller flera URL: er samtidigt genom att ladda upp en textfil med hjälp av ikonen Ladda upp.
 
-![Fliken Anpassad sökning i Bing aktiv](media/file-upload-icon.png)
+![Fliken Anpassad Bing-sökning aktiv](media/file-upload-icon.png)
 
 Om du vill överföra en fil skapar du en textfil och anger en enda domän, undersida eller webb sida per rad. Filen kommer att avvisas om den inte är korrekt formaterad.
 
 > [!NOTE]
 > * Du kan bara ladda upp en fil till den **aktiva** listan. Du kan inte använda den för att lägga till segment **i blockeringslistan.**  
 > * Om den **blockerade** listan innehåller en domän, under sida eller webb sida som du har angett i uppladdnings filen, tas den bort **från blockeringslistan och** läggs till i den **aktiva** listan.
-> * Dubbla poster i uppladdnings filen ignoreras av Anpassad sökning i Bing. 
+> * Dubbla poster i uppladdnings filen ignoreras av Anpassad Bing-sökning. 
 
 ### <a name="get-website-suggestions-for-your-search-experience"></a>Hämta webbplats förslag för din Sök upplevelse
 
-När du har lagt till WebSlices i den **aktiva** listan genererar anpassad sökning i Bing-portalen webbplats-och undersidors förslag längst ned på fliken. Detta är segment som Anpassad sökning i Bing tror att du kanske vill inkludera. Klicka på **Uppdatera** för att få uppdaterade förslag efter att du har uppdaterat inställningarna för den anpassade Sök instansen. Det här avsnittet visas bara om förslag är tillgängligt.
+När du har lagt till WebSlices i den **aktiva** listan genererar anpassad Bing-sökning-portalen webbplats-och undersidors förslag längst ned på fliken. Detta är segment som Anpassad Bing-sökning tror att du kanske vill inkludera. Klicka på **Uppdatera** för att få uppdaterade förslag efter att du har uppdaterat inställningarna för den anpassade Sök instansen. Det här avsnittet visas bara om förslag är tillgängligt.
 
 ## <a name="search-for-images-and-videos"></a>Sök efter bilder och videor
 
@@ -113,7 +113,7 @@ Du kan höja förstärkningen, förstärka eller nedgradera alla domäner och un
 Du kan höja, förstärka eller nedgradera objekt med hjälp av **rangordnings justerings** kontrollerna i den **aktiva** listan eller genom att använda kontrollerna Boost och degradera i förhands gransknings fönstret. Tjänsten lägger till sektorn i din aktiva lista och justerar rangordningen enligt detta.
 
 > [!NOTE] 
-> Att öka och nedgradera domäner och under sidor är en av många metoder som Anpassad sökning i Bing används för att fastställa ordningen på Sök resultaten. På grund av andra faktorer som påverkar rankningen av olika webb innehåll kan effekterna av att justera rang variera. Använd förhands gransknings fönstret för att testa effekterna av att justera rangordningen för dina Sök resultat. 
+> Att öka och nedgradera domäner och under sidor är en av många metoder som Anpassad Bing-sökning används för att fastställa ordningen på Sök resultaten. På grund av andra faktorer som påverkar rankningen av olika webb innehåll kan effekterna av att justera rang variera. Använd förhands gransknings fönstret för att testa effekterna av att justera rangordningen för dina Sök resultat. 
 
 Super Boost, Boost och nedgradering är inte tillgängliga för bild-och videos ökningar.
 
@@ -147,7 +147,7 @@ Om du vill ändra PIN-kodens matchnings villkor klickar du på PIN-kodens redige
 
 Om du vill ändra ordningen på dina PIN-kod kan du dra och släppa dem eller redigera deras beställnings nummer genom att klicka på ikonen "redigera" i kolumnen **kontroller** i den **fästa** listan.
 
-Om flera PIN-krav uppfyller ett matchnings villkor kommer Anpassad sökning i Bing att använda den högst i listan.
+Om flera PIN-krav uppfyller ett matchnings villkor kommer Anpassad Bing-sökning att använda den högst i listan.
 
 ## <a name="view-statistics"></a>Visa statistik
 

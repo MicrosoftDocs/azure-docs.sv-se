@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94651320"
 ---
-# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Håll koll på data under jakt med Azure Sentinel
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Hålla koll på data när du jagar hot med Azure Sentinel
 
 Hot jakt kräver vanligt vis en granskande av berg av loggdata som letar efter bevis på skadligt beteende. Under den här processen kan du söka efter händelser som de vill komma ihåg, gå tillbaka och analysera som en del av att verifiera potentiella Hypotheses och förstå den fullständiga artikeln i en kompromiss.
 
-Med bok märken i Azure Sentinel kan du göra detta genom att bevara frågorna som du körde i **Azure Sentinel-loggar**, tillsammans med frågeresultaten som du anser är relevanta. Du kan också registrera dina sammanhangsbaserade observationer och referera till dina resultat genom att lägga till anteckningar och taggar. Bok märkes data är synliga för dig och dina samarbets kamrater för att förenkla samarbetet.
+Med bok märken i Azure Sentinel kan du göra detta genom att bevara frågorna som du körde i **Azure Sentinel-loggar**, tillsammans med frågeresultaten som du anser är relevanta. Du kan också registrera dina kontextbaserade observationer och lägga till referenser till dina upptäckter genom att lägga till kommentarer och taggar. Genom att visa bokmärkta data blir det enklare för dig och andra teammedlemmar att samarbeta.
 
-Du kan när som helst gå tillbaka till bok märkes data på fliken **bok märken** i **jakt** fönstret. Du kan använda filtrerings-och sökalternativ för att snabbt hitta vissa data för din aktuella undersökning. Du kan också visa dina data bok märken direkt i **HuntingBookmark** -tabellen i din Log Analytics-arbetsyta. Exempel:
+Du kan när som helst gå tillbaka till bok märkes data på fliken **bok märken** i **jakt** fönstret. Du kan använda filtrerings- och sökalternativ för att snabbt hitta specifika data för din aktuella undersökning. Du kan också visa dina data bok märken direkt i **HuntingBookmark** -tabellen i din Log Analytics-arbetsyta. Exempel:
 
 > [!div class="mx-imgBorder"]
 > ![Visa HuntingBookmark-tabell](./media/bookmarks/bookmark-table.png)
@@ -110,7 +110,7 @@ Anvisningar om hur du använder undersöknings diagrammet finns i [använda unde
     > [!div class="mx-imgBorder"]
     > ![Lägg till bok märken i incidenten](./media/bookmarks/incident-actions.png)
 
-3. Välj antingen **Skapa ny incident** eller **Lägg till i befintlig incident, om** det behövs. Efter det:
+3. Välj antingen **Skapa ny incident** eller **Lägg till i befintlig incident, om** det behövs. Sedan:
     
     - För en ny incident: kan du uppdatera informationen om incidenten och sedan välja **skapa**.
     - För att lägga till ett bok märke till en befintlig incident: Välj en incident och välj sedan **Lägg till**. 

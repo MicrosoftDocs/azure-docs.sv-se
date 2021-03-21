@@ -11,10 +11,10 @@ author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
 ms.openlocfilehash: 584e421b6beac0e4ecfab5b3e3cb735b8465e1b4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503529"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Vad är Azure Machine Learning pipelines?
@@ -30,7 +30,7 @@ Azure-molnet tillhandahåller flera typer av pipelines, var och en med olika än
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | Modell dirigering (maskin inlärning) | Dataexpert | Azure Machine Learning pipelines | Kubeflow-pipeline | Data > modell | Distribution, cachelagring, kod-första, återanvänd | 
 | Data dirigering (Förbered data) | Datatekniker | [Azure Data Factory-pipeliner](../data-factory/concepts-pipelines-activities.md) | Apache-luft flöde | Data-> data | Starkt inskriven förflyttning, datainriktade aktiviteter |
-| Code & app Orchestration (CI/CD) | App-utvecklare/OPS | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kod + modell-> App/Service | Det mest öppna och flexibla aktivitets stödet, godkännande köer, faser med hantera | 
+| Code & app Orchestration (CI/CD) | App-utvecklare/OPS | [Azure-pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kod + modell-> App/Service | Det mest öppna och flexibla aktivitets stödet, godkännande köer, faser med hantera | 
 
 ## <a name="what-can-machine-learning-pipelines-do"></a>Vad kan maskin inlärnings pipeliner göra?
 

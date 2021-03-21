@@ -8,10 +8,10 @@ ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
 ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594239"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybridanslutningar med Azure App Service
@@ -107,7 +107,7 @@ Välj hybrid anslutning för att se information. Du kan se all information som d
 
 Det finns en gräns för antalet hybrid anslutnings slut punkter som kan användas i en App Service plan. Varje hybrid anslutning som används kan dock användas över valfritt antal appar i planen. Till exempel räknas en enskild hybrid anslutning som används i fem separata appar i ett App Service plan som en hybrid anslutning.
 
-### <a name="pricing"></a>Prissättning ###
+### <a name="pricing"></a>Priser ###
 
 Förutom att det finns ett App Service plan SKU-krav finns det ytterligare kostnader att använda Hybridanslutningar. Det finns en avgift för varje lyssnare som används av en hybrid anslutning. Lyssnaren är Hybridanslutningshanteraren. Om du har fem Hybridanslutningar stöd för två hybrid anslutnings hanterare, är det 10 lyssnare. Mer information finns i [Service Bus prissättning][sbpricing].
 

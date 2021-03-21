@@ -8,11 +8,11 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523370"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Avsektor för Horisont av patentskyddat protokoll
@@ -1640,6 +1640,6 @@ Du kan övervaka programmets beteende i real tid genom att analysera antalet *Ma
 
 Välj knappen övervaka för ditt plugin-program från översikten.
 
-## <a name="next-steps"></a>Nästa steg
+Nästa steg
 
 Konfigurera ditt [Horisont-API](references-horizon-api.md)

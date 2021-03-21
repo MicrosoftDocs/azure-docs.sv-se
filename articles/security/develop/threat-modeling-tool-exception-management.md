@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 41532e554623c47e9728c6ccab92d99500e42021
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94517435"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Säkerhets ram: undantags hantering | Åtgärder 
@@ -37,7 +37,7 @@ ms.locfileid: "94517435"
 | **Komponent**               | WCF | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänt, NET Framework 3 |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [FORTIFY kungariket](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Steg** | WCF-tjänster (Windows Communication Framework) kan konfigureras för att Visa felsöknings information. Felsöknings information ska inte användas i produktions miljöer. `<serviceDebug>`Taggen definierar om funktionen för fel söknings information är aktive rad för en WCF-tjänst. Om attributet includeExceptionDetailInFaults har angetts till True returneras undantags information från programmet till klienter. Angripare kan utnyttja den ytterligare information som de får från att felsöka utdata för att montera attacker riktade mot ramverket, databasen eller andra resurser som används av programmet. |
 
@@ -72,7 +72,7 @@ Inaktivera fel söknings information i tjänsten. Detta kan åstadkommas genom a
 | **Komponent**               | Webb-API | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | MVC 5, MVC 6 |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Undantags hantering i ASP.net webb-API](https://www.asp.net/web-api/overview/error-handling/exception-handling), [modell validering i ASP.net webb-API](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Steg** | Som standard översätts de mest undantagna undantagen i ASP.NET webb-API till ett HTTP-svar med status kod `500, Internal Server Error`|
 
@@ -190,8 +190,8 @@ Se länkarna i avsnittet referenser om du vill ha mer information om exceptionel
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | <p>Allmänna fel meddelanden tillhandahålls direkt till användaren utan att inkludera känsliga program data. Exempel på känsliga data är:</p><ul><li>Server namn</li><li>Anslutningssträngar</li><li>Användar namn</li><li>Lösenord</li><li>SQL-procedurer</li><li>Information om dynamiska SQL-problem</li><li>Stack spårning och kodrader</li><li>Variabler lagrade i minnet</li><li>Platser för enheter och mappar</li><li>Program installations punkter</li><li>Konfigurations inställningar för värd</li><li>Information om andra interna program</li></ul><p>Att svälla alla fel i ett program och tillhandahålla allmänna fel meddelanden, samt att aktivera anpassade fel i IIS, förhindrar att information avslöjas. SQL Server databas-och .NET-undantags hantering, bland annat fel hanterings arkitekturer, är särskilt utförligt och mycket användbart för en skadlig användare som profileringr ditt program. Visa inte direkt innehållet i en klass som härletts från .NET-undantags klassen och se till att du har rätt undantags hantering så att ett oväntat undantag inte oavsiktligt höjs direkt till användaren.</p><ul><li>Ange allmänna fel meddelanden direkt till användaren som har abstrakt information som finns direkt i undantags-eller fel meddelandet</li><li>Visa inte innehållet i en .NET-undantags klass direkt till användaren</li><li>Sväll alla fel meddelanden och meddela användaren via ett allmänt fel meddelande som skickas till program klienten</li><li>Exponera inte innehållet i undantags klassen direkt till användaren, särskilt returvärdet från `.ToString()` , eller värdena för egenskaperna för meddelandet eller stacktrace. Logga informationen på ett säkert sätt och visa ett mer innocuous-meddelande till användaren</li></ul>|
 
 ## <a name="implement-default-error-handling-page"></a><a id="default"></a>Implementera standard fel hanterings sida
@@ -201,7 +201,7 @@ Se länkarna i avsnittet referenser om du vill ha mer information om exceptionel
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Redigera dialogrutan för inställningar av ASP.NET-felsidor](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd569096(v=ws.10)) |
 | **Steg** | <p>När ett ASP.NET-program Miss lyckas och orsakar ett internt HTTP/1. x 500-server fel eller en funktions konfiguration (till exempel filtrering av begär Anden) förhindrar att en sida visas, kommer ett fel meddelande att genereras. Administratörer kan välja om programmet ska visa ett eget meddelande för klienten, ett detaljerat fel meddelande till klienten eller enbart ett detaljerat fel meddelande till localhost. `<customErrors>`Taggen i web.config har tre lägen:</p><ul><li>**På:** Anger att anpassade fel har Aktiver ATS. Om inget defaultRedirect-attribut anges ser användarna ett allmänt fel. De anpassade felen visas för fjärrklienter och till den lokala värden</li><li>**Av:** Anger att anpassade fel har inaktiverats. De detaljerade ASP.NET-felen visas för fjärrklienterna och den lokala värden</li><li>**RemoteOnly:** Anger att anpassade fel endast visas för fjärrklienter och att ASP.NET-fel visas för den lokala värden. Detta är standardvärdet</li></ul><p>Öppna `web.config` filen för programmet/platsen och kontrol lera att taggen har antingen `<customErrors mode="RemoteOnly" />` eller `<customErrors mode="On" />` definierats.</p>|
 
@@ -212,7 +212,7 @@ Se länkarna i avsnittet referenser om du vill ha mer information om exceptionel
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [distributions element (ASP.NET Settings schema)](/previous-versions/dotnet/netframework-2.0/ms228298(v=vs.80)) |
 | **Steg** | <p>`<deployment retail>`Växeln är avsedd att användas av produktions-IIS-servrar. Den här växeln används för att hjälpa program att köra med bästa möjliga prestanda och minst möjliga läckage av säkerhets information genom att inaktivera programmets möjlighet att generera spårningsutdata på en sida, inaktivera möjligheten att visa detaljerade fel meddelanden för slutanvändare och inaktivera fel söknings växeln.</p><p>Ofta kan växlar och alternativ som är förfokuserade för utvecklare, till exempel spårning av misslyckade begär Anden och fel sökning, aktive ras under pågående utveckling. Vi rekommenderar att distributions metoden på alla produktions servrar anges till återförsäljarversion. öppna machine.config-filen och se `<deployment retail="true" />` till att förblir inställt på sant.</p>|
 
@@ -223,7 +223,7 @@ Se länkarna i avsnittet referenser om du vill ha mer information om exceptionel
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Rapportera ett problem](https://owasp.org/www-community/Fail_securely) |
 | **Steg** | Programmet bör inte fungera på ett säkert sätt. Alla metoder som returnerar ett booleskt värde, baserat på vilka ett visst beslut fattas, bör ha ett noggrant skapat undantags block. Det finns många logiska fel på grund av vilka säkerhets problem som är krypa i när undantags blocket skrivs carelessly.|
 

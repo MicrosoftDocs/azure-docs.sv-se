@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94991238"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindningar
@@ -357,16 +357,16 @@ Med [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/
 
 I följande tabell visas de egenskaper för bindnings konfiguration som är tillgängliga i  *function.js* filen och `SendGrid` attributet/anteckningen.
 
-| *function.jspå* egenskap | Attribut/antecknings egenskap | Description | Valfritt |
+| *function.jspå* egenskap | Attribut/antecknings egenskap | Beskrivning | Valfritt |
 |--------------------------|-------------------------------|-------------|----------|
-| typ |saknas| Måste anges till `sendGrid` .| No |
-| riktning |saknas| Måste anges till `out` .| No |
-| name |saknas| Variabel namnet som används i funktions koden för begäran eller begär ande texten. Det här värdet är `$return` när det bara finns ett retur värde. | No |
-| apiKey | ApiKey | Namnet på en app-inställning som innehåller din API-nyckel. Om den inte anges är standardinställnings namnet för appen *AzureWebJobsSendGridApiKey*.| No |
-| på| Om du vill | Mottagarens e-postadress. | Yes |
-| Från| Från | Avsändarens e-postadress. |  Yes |
-| motiv| Ämne | E-postmeddelandets ämne. | Yes |
-| text| Text | E-postinnehållet. | Yes |
+| typ |saknas| Måste anges till `sendGrid` .| Inga |
+| riktning |saknas| Måste anges till `out` .| Inga |
+| name |saknas| Variabel namnet som används i funktions koden för begäran eller begär ande texten. Det här värdet är `$return` när det bara finns ett retur värde. | Inga |
+| apiKey | ApiKey | Namnet på en app-inställning som innehåller din API-nyckel. Om den inte anges är standardinställnings namnet för appen *AzureWebJobsSendGridApiKey*.| Inga |
+| på| Om du vill | Mottagarens e-postadress. | Ja |
+| Från| Från | Avsändarens e-postadress. |  Ja |
+| Ämne| Ämne | E-postmeddelandets ämne. | Ja |
+| text| Text | E-postinnehållet. | Ja |
 
 Valfria egenskaper kan ha standardvärden definierade i bindningen och antingen läggas till eller åsidosättas program mässigt.
 
@@ -392,7 +392,7 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 }
 ```  
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------| 
 |Från|saknas|Avsändarens e-postadress för alla funktioner.| 
 
