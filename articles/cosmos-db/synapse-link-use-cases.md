@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
 ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463122"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link för Azure Cosmos DB: Användningsfall för nära realtidsanalys
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link för Azure Cosmos DB: Användningsfall för analys i nästan realtid
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Azure Synapse-länken](synapse-link.md) för Azure Cosmos DB är en inbyggd hybrid transaktions-och analys bearbetnings funktion (HTAP) i molnet som gör det möjligt att köra nära real tids analys över drift data. Synapse-länken skapar en tätt sömlös integrering mellan Azure Cosmos DB och Azure Synapse Analytics.
@@ -133,7 +133,7 @@ Låt oss ta ett exempel på ett e-handelsföretags CompanyXYZ med globala åtgä
 
 Mer information finns i följande dokument:
 
-* [Azure Synapse-länk för Azure Cosmos DB](synapse-link.md) 
+* [Azure Synapse Link för Azure Cosmos DB](synapse-link.md) 
 
 * [Azure Cosmos DB-analysarkiv](analytical-store-introduction.md)
 

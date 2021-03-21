@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94518132"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Säkerhets ram: känsliga data | Åtgärder 
@@ -45,8 +45,8 @@ ms.locfileid: "94518132"
 | **Komponent**               | Datorns förtroende gränser | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Se till att binärfilerna är fördunklade om de innehåller känslig information, till exempel affärs hemligheter, känslig affärs logik som inte ska ångras. Detta är att stoppa omvända konstruktioner av sammansättningar. Verktyg som `CryptoObfuscator` kan användas för detta ändamål. |
 
 ## <a name="consider-using-encrypted-file-system-efs-is-used-to-protect-confidential-user-specific-data"></a><a id="efs-user"></a>Överväg att använda krypterat fil system (EFS) används för att skydda konfidentiella användarspecifika data
@@ -56,8 +56,8 @@ ms.locfileid: "94518132"
 | **Komponent**               | Datorns förtroende gränser | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Överväg att använda krypterat fil system (EFS) används för att skydda konfidentiella användarspecifik information från angripare med fysisk åtkomst till datorn. |
 
 ## <a name="ensure-that-sensitive-data-stored-by-the-application-on-the-file-system-is-encrypted"></a><a id="filesystem"></a>Se till att känsliga data som lagras av programmet på fil systemet är krypterade
@@ -67,8 +67,8 @@ ms.locfileid: "94518132"
 | **Komponent**               | Datorns förtroende gränser | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Se till att känsliga data som lagras av programmet på fil systemet är krypterade (t. ex. med DPAPI), om EFS inte kan tillämpas |
 
 ## <a name="ensure-that-sensitive-content-is-not-cached-on-the-browser"></a><a id="cache-browser"></a>Se till att känsligt innehåll inte cachelagras i webbläsaren
@@ -78,8 +78,8 @@ ms.locfileid: "94518132"
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Generiska, webb formulär, MVC5, MVC6 |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Webbläsare kan lagra information i syfte att cachelagra och historik. Dessa cachelagrade filer lagras i en mapp, t. ex. mappen Temporary Internet Files, i Internet Explorer. När dessa sidor refereras igen, visar webbläsaren dem från cachen. Om känslig information visas för användaren (till exempel adress, kreditkorts information, person nummer eller användar namn) kan den här informationen lagras i webbläsarens cacheminne och därför kan hämtas genom att undersöka webbläsarens cacheminne eller genom att helt enkelt trycka på webbläsarens "bak"-knapp. Ange värdet "No-Store" för Cache-Control svar för alla sidor. |
 
 ### <a name="example"></a>Exempel
@@ -131,7 +131,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | Gör så [här: kryptera konfigurations avsnitt i ASP.NET 2,0 med DPAPI](/previous-versions/msp-n-p/ff647398(v=pandp.10)), [Ange en skyddad Konfigurationsprovider](/previous-versions/68ze1hb2(v=vs.140)) [med hjälp av Azure Key Vault för att skydda program hemligheter](/azure/architecture/multitenant-identity/web-api) |
 | **Steg** | Konfigurationsfiler som Web.config, appsettings.jspå används ofta för att lagra känslig information, inklusive användar namn, lösen ord, databas anslutnings strängar och krypterings nycklar. Om du inte skyddar den här informationen är ditt program sårbart för angripare eller skadliga användare som erhåller känslig information, till exempel användar namn och lösen ord för kontot, databas namn och Server namn. Med hjälp av distributions typen (Azure/on-lokal) krypterar du de känsliga delarna av config-filerna med DPAPI eller tjänster som Azure Key Vault. |
 
@@ -142,7 +142,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [MSDN: Autoavsluta-attribut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [använda Autoavsluta i HTML](/previous-versions/windows/internet-explorer/ie-developer/), [sårbarhet för HTML-säkerhetsspråkning](/security-updates/SecurityBulletins/2010/ms10-071), [Autoavsluta., igen?!](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Steg** | Attributet Autoavsluta anger om ett formulär ska ha Autoavsluta eller inte. När autocomplete är aktiverat Slutför webbläsaren automatiskt värden baserat på värden som användaren har angett tidigare. Om till exempel ett nytt namn och lösen ord anges i ett formulär och formuläret skickas, frågar webbläsaren om lösen ordet ska sparas. Därefter när formuläret visas fylls namnet och lösen ordet i automatiskt eller slutförs när namnet anges. En angripare med lokal åtkomst kan hämta lösen ordet för klartext från webbläsarens cacheminne. Som standard är automatisk komplettering aktiverat och måste inaktive ras explicit. |
 
@@ -161,8 +161,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Komponent**               | Webbprogram | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Känsliga data, till exempel lösen ord, kreditkorts nummer, SSN osv. bör maskeras när de visas på skärmen. Detta är att förhindra obehöriga personer från att komma åt data (t. ex. axel-och lösen ord, support personal som visar SSN-nummer för användare). Se till att dessa data element inte är synliga i oformaterad text och maskeras på lämpligt sätt. Detta måste vara försiktig när du accepterar dem som inmatade (t. ex.. Indatatyp = "lösen ord") och Visa tillbaka på skärmen (t. ex. visar bara de sista 4 siffrorna i kreditkorts numret). |
 
 ## <a name="implement-dynamic-data-masking-to-limit-sensitive-data-exposure-non-privileged-users"></a><a id="dynamic-users"></a>Implementera dynamisk data maskning för att begränsa känsliga data exponeringar som inte är privilegierade användare
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | SQL Azure, OnPrem |
 | **Attribut**              | SQL-version – V12, SQL-version – MsSQL2016 |
-| **Referenser**              | [Dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking) |
+| **Referenser**              | [Dynamisk datamaskering](/sql/relational-databases/security/dynamic-data-masking) |
 | **Steg** | Syftet med dynamisk datamaskering är att begränsa exponeringen av känsliga data, vilket förhindrar användare som inte ska ha åtkomst till data från att visas. Dynamisk data maskning syftar inte till att hindra databas användare från att ansluta direkt till databasen och köra omfattande frågor som visar delar av känsliga data. Dynamisk data maskning kompletterar andra SQL Server säkerhetsfunktioner (granskning, kryptering och säkerhet på radnivå...) och vi rekommenderar att du använder den här funktionen tillsammans med dem för att bättre skydda känsliga data i databasen. Observera att den här funktionen endast stöds av SQL Server som börjar med 2016 och Azure SQL Database. |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>Se till att lösen ord lagras i saltat hash-format
@@ -183,7 +183,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Komponent**               | Databas | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Lösen ords hash med .NET-API för kryptering](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **Steg** | Lösen ord bör inte lagras i databaserna för anpassade användar arkiv. Lösen ords-hashar ska lagras med salt värden i stället. Se till att saltet för användaren alltid är unikt och att du använder b-crypt, s-Encryption eller PBKDF2 innan du lagrar lösen ordet, med ett minsta antal arbets faktorer i 150 000-slingor för att eliminera risken för brute framtvingande.| 
 
@@ -205,7 +205,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Komponent**               | Databas | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Förstå SQL Server transparent datakryptering (TDE)](/previous-versions/sql/sql-server-2008-r2/bb934049(v=sql.105)) |
 | **Steg** | Transparent datakryptering-funktionen (TDE) i SQL Server hjälper till att kryptera känsliga data i en databas och skydda nycklar som används för att kryptera data med ett certifikat. Detta förhindrar att någon utan nycklarna använder data. TDE skyddar data i vila, vilket innebär data-och loggfilerna. Det ger möjlighet att följa många lagar, förordningar och rikt linjer som har upprättats i olika branscher. |
 
@@ -228,7 +228,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | MVC 5, MVC 6 |
 | **Attribut**              | Identitetsprovider-ADFS, identitetsprovider – Azure AD |
-| **Referenser**              | E.t.  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | <p>I vissa implementeringar lagras känsliga artefakter som är relevanta för webb-API: s autentisering i webbläsarens lokala lagring. T. ex. Azure AD-autentisering som ADAL. idtoken, ADAL. nonce. idtoken, ADAL. Access. token. Key, ADAL. token. Keys, ADAL. State. Login, ADAL. session. State, ADAL. förfallo datum. nyckel osv.</p><p>Alla dessa artefakter är tillgängliga även efter att utloggning eller webbläsare har stängts. Om en angripare får åtkomst till dessa artefakter kan han/hon återanvända dem för att få åtkomst till de skyddade resurserna (API: erna). Se till att alla känsliga artefakter relaterade till webb-API: n inte lagras i webbläsarens lagrings utrymme. I de fall där lagring på klient sidan inte kan undvikas (t. ex. en enda sida program (SPA) som utnyttjar implicita OpenIdConnect/OAuth-flöden behöver lagra åtkomsttoken lokalt), Använd lagrings alternativ med inte beständighet. till exempel föredra SessionStorage till LocalStorage.</p>| 
 
 ### <a name="example"></a>Exempel
@@ -251,8 +251,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Azure Document DB | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Kryptera känsliga data på program nivå innan du lagrar i dokument databasen eller lagra känsliga data i andra lagrings lösningar som Azure Storage eller Azure SQL| 
 
 ## <a name="use-azure-disk-encryption-to-encrypt-disks-used-by-virtual-machines"></a><a id="disk-vm"></a>Använd Azure Disk Encryption för att kryptera diskar som används av Virtual Machines
@@ -262,7 +262,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Azure IaaS VM Trust-gränser | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Använda Azure Disk Encryption för att kryptera diskar som används av dina virtuella datorer](../../storage/blobs/security-recommendations.md#data-protection) |
 | **Steg** | <p>Azure Disk Encryption är en ny funktion som för närvarande är en för hands version. Med den här funktionen kan du kryptera de OS-diskar och data diskar som används av en virtuell IaaS-dator. För Windows krypteras enheterna med hjälp av teknik för BitLocker-kryptering enligt bransch standard. För Linux krypteras diskarna med DM-Crypt-teknik. Detta är integrerat med Azure Key Vault så att du kan styra och hantera disk krypterings nycklarna. Azure Disk Encryption-lösningen stöder följande tre kund krypterings scenarier:</p><ul><li>Aktivera kryptering på nya virtuella IaaS-datorer som skapats från kundens krypterade VHD-filer och de krypterings nycklar som anges av kunden, som lagras i Azure Key Vault.</li><li>Aktivera kryptering på nya virtuella IaaS-datorer som skapats från Azure Marketplace.</li><li>Aktivera kryptering på befintliga virtuella IaaS-datorer som redan körs i Azure.</li></ul>| 
 
@@ -284,8 +284,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Dynamics CRM | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Utför säkerhets modellering och Använd affär Senheter/team där det behövs |
 
 ## <a name="minimize-access-to-share-feature-on-critical-entities"></a><a id="entities"></a>Minimera åtkomst till delnings funktionen på kritiska entiteter
@@ -295,8 +295,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Dynamics CRM | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Minimera åtkomst till delnings funktionen på kritiska entiteter |
 
 ## <a name="train-users-on-the-risks-associated-with-the-dynamics-crm-share-feature-and-good-security-practices"></a><a id="good-practices"></a>Utbilda användare om risker som är kopplade till funktionerna i Dynamics CRM-resursen och de bästa säkerhets metoderna
@@ -306,8 +306,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Dynamics CRM | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Utbilda användare om risker som är kopplade till funktionerna i Dynamics CRM-resursen och de bästa säkerhets metoderna |
 
 ## <a name="include-a-development-standards-rule-proscribing-showing-config-details-in-exception-management"></a><a id="exception-mgmt"></a>Ta med en regel för utvecklings standarder som beskriver hur du visar konfigurations information i undantags hanteringen
@@ -317,8 +317,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Dynamics CRM | 
 | **SDL-fas**               | Distribution |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
-| **Referenser**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
+| **Referenser**              | Ej tillämpligt  |
 | **Steg** | Ta med en regel för utvecklings standarder som beskriver hur du visar konfigurations information i undantags hantering utanför utvecklingen. Testa för detta som en del av kod granskning eller periodisk kontroll.|
 
 ## <a name="use-azure-storage-service-encryption-sse-for-data-at-rest-preview"></a><a id="sse-preview"></a>Använda Azure Storage Service Encryption (SSE) för vilande data (för hands version)
@@ -339,7 +339,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Azure Storage | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Kryptering på klient sidan och Azure Key Vault för Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md), [Självstudier: kryptera och dekryptera blobbar i Microsoft Azure Storage använda Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md), [lagra data på ett säkert sätt i Azure Blob Storage med Azure Encryption-tillägg](/archive/blogs/partnercatalystteam/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions) |
 | **Steg** | <p>Azure Storage klient bibliotek för .NET NuGet-paket stöder kryptering av data i klient program innan överföring till Azure Storage, och dekryptering av data vid hämtning till klienten. Biblioteket stöder även integrering med Azure Key Vault för hantering av nycklar för lagringskonton. Här är en kort beskrivning av hur kryptering på klient sidan fungerar:</p><ul><li>Azure Storage klient-SDK: n genererar en innehålls krypterings nyckel (CEK), som är en symmetrisk nyckel som används i ett tillfälle</li><li>Kund information krypteras med den här CEK</li><li>CEK omsluts sedan (krypteras) med nyckel krypterings nyckeln (KEK). KEK identifieras av en nyckel identifierare och kan vara ett asymmetriskt nyckel par eller en symmetrisk nyckel och kan hanteras lokalt eller lagras i Azure Key Vault. Själva lagrings klienten har aldrig åtkomst till KEK. Den anropar bara den nyckel brytnings algoritm som tillhandahålls av Key Vault. Kunder kan välja att använda anpassade providers för nyckel brytningar/avradbyte om de vill</li><li>Krypterade data överförs sedan till Azure Storages tjänsten. Kontrol lera länkarna i avsnittet referenser för implementerings information på låg nivå.</li></ul>|
 
@@ -350,7 +350,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Komponent**               | Mobil klient | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Generisk, Xamarin  |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Hantera inställningar och funktioner på dina enheter med Microsoft Intune principer](/mem/intune/configuration/), [nyckel Ring valet](https://components.xamarin.com/view/square.valet) |
 | **Steg** | <p>Om programmet skriver känslig information som användarens PII (e-post, telefonnummer, förnamn, efter namn, preferenser osv.) -på mobilens fil system bör den krypteras innan du skriver till det lokala fil systemet. Om programmet är ett företags program kan du utforska möjligheten att publicera program med hjälp av Windows Intune.</p>|
 
@@ -400,7 +400,7 @@ Om programmet inte är ett företags program använder du plattforms oberoende n
 | **Komponent**               | Mobil klient | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | Allmänna |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Krypto-döljande för .net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Steg** | Genererade binärfiler (sammansättningar inom APK) bör vara fördunklade för att stoppa omvända konstruktioner av sammansättningar. Verktyg som `CryptoObfuscator` kan användas för detta ändamål. |
 
@@ -411,7 +411,7 @@ Om programmet inte är ett företags program använder du plattforms oberoende n
 | **Komponent**               | WCF | 
 | **SDL-fas**               | Skapa |  
 | **Tillämpliga tekniker** | .NET Framework 3 |
-| **Attribut**              | E.t.  |
+| **Attribut**              | Ej tillämpligt  |
 | **Referenser**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **Steg** | Om du använder en UsernameToken med ett lösen ord i klartext över en okrypterad kanal exponeras lösen ordet för angripare som kan avhjälpa SOAP-meddelanden. Tjänst leverantörer som använder UsernameToken kan acceptera lösen ord som skickas i klartext. Om du skickar lösen ord i klartext över en okrypterad kanal kan du exponera autentiseringsuppgifterna för angripare som kan sniffa SOAP-meddelandet. | 
 

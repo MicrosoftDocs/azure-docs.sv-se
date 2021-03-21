@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/11/2021
 ms.author: alkohli
 ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382862"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-seriens program vara, hög tillgänglighet och nätverks krav

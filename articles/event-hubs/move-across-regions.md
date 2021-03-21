@@ -4,10 +4,10 @@ description: Den här artikeln visar hur du flyttar ett Azure Event Hubs-namnomr
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019930"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Flytta ett Azure Event Hubs-namnområde till en annan region
@@ -26,7 +26,7 @@ Kom igång genom att exportera en Resource Manager-mall. Den här mallen innehå
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **alla resurser** och välj sedan din Event Hubs namn område.
-3. Välj **Settings**  >  **Exportera mall** för > inställningar.
+3. Välj   >  **Exportera mall** för > inställningar.
 4. Välj **Hämta** på sidan **Exportera mall** .
 
     ![Ladda ned Resource Manager-mall](./media/move-across-regions/download-template.png)

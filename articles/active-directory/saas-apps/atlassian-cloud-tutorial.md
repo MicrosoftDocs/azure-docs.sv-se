@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: jeedes
 ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94330565"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Självstudie: integrera Atlassian Cloud med Azure Active Directory
@@ -41,7 +41,7 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. 
 
-* Atlassian Cloud stöder **SP- och IDP** -initierad enkel inloggning
+* Atlassian Cloud stöder **SP- och IDP**-initierad enkel inloggning
 * Atlassian Cloud stöder [Automatisk användar etablering och avetablering](atlassian-cloud-provisioning-tutorial.md)
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>Lägga till Atlassian Cloud från galleriet
@@ -166,7 +166,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
       ![attribut och anspråk](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlassian Cloud förväntar sig att **NameIdentifier** ( **unik användar identifierare** ) ska mappas till användarens e-post ( **User. e-post** ). Redigera **källattributet** och ändra det till **User. mail**. Spara ändringarna i anspråket.
+      b. Atlassian Cloud förväntar sig att **NameIdentifier** (**unik användar identifierare**) ska mappas till användarens e-post (**User.email**). Redigera **källattributet** och ändra det till **User. mail**. Spara ändringarna i anspråket.
 
       ![unikt användar-ID](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
@@ -180,7 +180,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
       ![bild 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Även om Azure inte fyller i **User. mail-** attributet för användare som skapats i Azure AD-klienter utan Microsoft 365 licenser och lagrar e-postmeddelandet för sådana användare i **userPrincipalName** -attributet. Atlassian Cloud förväntar sig att **NameIdentifier** ( **unik användar identifierare** ) ska mappas till användarens e-post ( **User. UserPrincipalName** ).  Redigera **källattributet**  och ändra det till **User. UserPrincipalName**. Spara ändringarna i anspråket.
+      b. Även om Azure inte fyller i **User. mail-** attributet för användare som skapats i Azure AD-klienter utan Microsoft 365 licenser och lagrar e-postmeddelandet för sådana användare i **userPrincipalName** -attributet. Atlassian Cloud förväntar sig att **NameIdentifier** (**unik användar identifierare**) ska mappas till användarens e-post (**User. UserPrincipalName**).  Redigera **källattributet**  och ändra det till **User. UserPrincipalName**. Spara ändringarna i anspråket.
 
       ![Ange e-post](./media/atlassian-cloud-tutorial/set-email.png)
          
@@ -192,11 +192,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -216,7 +216,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 Om du vill aktivera Azure AD-användare så att de kan logga in på Atlassian Cloud måste du etablera användarkontona manuellt i Atlassian Cloud genom att göra följande:
 
-1. Välj **Användare** på **Administration** -panelen.
+1. Välj **Användare** på **Administration**-panelen.
 
     ![Atlassian Cloud-användarlänken](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-14.png)
 

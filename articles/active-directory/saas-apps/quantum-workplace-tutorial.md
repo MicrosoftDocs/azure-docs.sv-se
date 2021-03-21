@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
 ms.openlocfilehash: dbc1c68f666fed280ef5eea0b74836d0cb9f305d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Självstudie: Azure Active Directory integrering med Quantum Workplace
@@ -61,7 +61,7 @@ Om du vill konfigurera integreringen av Quantum Workplace i Azure AD måste du l
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. Skriv **Quantum Workplace**i sökrutan, Välj **Quantum Workplace** från resultat panelen och klicka sedan på **Lägg till** för att lägga till programmet.
+4. Skriv **Quantum Workplace** i sökrutan, Välj **Quantum Workplace** från resultat panelen och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Quantum arbets plats i resultat listan](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Azure AD med Quantum-arbets plats:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan program integration i **Quantum arbets plats** .
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan program integration i **Quantum arbets plats** .
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Quantum Workplace.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Quantum Workplace**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Quantum Workplace**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

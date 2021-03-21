@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
 ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942642"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Skala Azure HDInsight-kluster automatiskt
@@ -221,7 +221,7 @@ Kluster statusen som visas i Azure Portal kan hjälpa dig att övervaka automati
 
 Alla de kluster status meddelanden som du kan se förklaras i listan nedan.
 
-| Klusterstatus | Description |
+| Klusterstatus | Beskrivning |
 |---|---|
 | Körs | Klustret fungerar normalt. Alla tidigare autoskalning-aktiviteter har slutförts. |
 | Uppdatera  | Konfigurationen för automatisk skalning av klustret uppdateras.  |
@@ -239,7 +239,7 @@ Välj **mått** under **övervakning**. Välj sedan **Lägg till mått** och **A
 
 ![Aktivera schema baserat på arbetsnodens mått för autoskalning](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="best-practices"></a>Rekommenderade metoder
+## <a name="best-practices"></a>Bästa praxis
 
 ### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>Beakta svars tiden för skalning upp-och nedskalning
 

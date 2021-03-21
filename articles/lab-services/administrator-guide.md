@@ -4,10 +4,10 @@ description: Den här guiden hjälper administratörer som skapar och hanterar l
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462478"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-administratörs guide
@@ -168,7 +168,7 @@ När administratörer eller labb skapare skapar ett labb kan de välja mellan ol
 | Storlek | Specifikationer | Serie | Föreslagen användning |
 | ---- | ----- | ------ | ------------- |
 | Liten| <ul><li>2 &nbsp; kärnor</li><li>3,5 GB RAM-minne</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Lämpar sig bäst för kommando rad, öppna webbläsare, webb servrar med låg trafik, små till medel stora databaser. |
-| Medium | <ul><li>4 &nbsp; kärnor</li><li>7 &nbsp; GB &nbsp; ram</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Passar bäst för Relations databaser, minnes intern cachelagring och analys. |
+| Medel | <ul><li>4 &nbsp; kärnor</li><li>7 &nbsp; GB &nbsp; ram</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Passar bäst för Relations databaser, minnes intern cachelagring och analys. |
 | Medium (kapslad virtualisering) | <ul><li>4 &nbsp; kärnor</li><li>16 &nbsp; GB &nbsp; ram</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Passar bäst för Relations databaser, minnes intern cachelagring och analys.
 | Stor | <ul><li>8 &nbsp; kärnor</li><li>16 &nbsp; GB &nbsp; ram</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Lämpar sig bäst för program som behöver snabbare processorer, bättre prestanda för lokala diskar, stora databaser, stora minnes-cacheminnen.  Den här storleken stöder även kapslad virtualisering. |
 | Stor (kapslad virtualisering) | <ul><li>8 &nbsp; kärnor</li><li>32 &nbsp; GB &nbsp; ram</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Lämpar sig bäst för program som behöver snabbare processorer, bättre prestanda för lokala diskar, stora databaser, stora minnes-cacheminnen. |
@@ -216,7 +216,7 @@ När du tilldelar roller, hjälper det dig att följa dessa tips:
    - För att ge lärare möjlighet att skapa nya labb och hantera labb som de skapar, behöver du bara tilldela dem rollen som labb skapare.
    - För att ge lärare möjlighet att hantera vissa labb, men *inte* möjligheten att skapa nya labb, tilldelar du antingen rollen ägare eller deltagare för varje labb som de ska hantera. Du kanske till exempel vill ge en lärare och en undervisnings assistent möjlighet att samar beta med ett labb. Mer information finns i [Lägg till ägare i ett labb](./how-to-add-user-lab-owner.md).
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
 

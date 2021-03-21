@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397628"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway infrastruktur konfiguration
@@ -56,7 +56,7 @@ I det här scenariot använder du NSG: er i under nätet Application Gateway. L�
 
 1. Tillåt inkommande trafik från en käll-IP-adress eller ett IP-intervall med målet som hela Application Gateway under nätets adress intervall och målport som din port för inkommande åtkomst, till exempel port 80 för HTTP-åtkomst.
 2. Tillåt inkommande begär Anden från källan som **GatewayManager** service tag och destination som **alla** och mål portar som 65503-65534 för Application Gateway v1 sku och portarna 65200-65535 för v2 SKU för [kommunikation med backend-hälsostatus](./application-gateway-diagnostics.md). Det här port intervallet krävs för kommunikation mellan Azure-infrastrukturen. Dessa portar är skyddade (låsta) av Azure-certifikat. Externa entiteter kan inte initiera ändringar på dessa slut punkter utan lämpliga certifikat på plats.
-3. Tillåt inkommande Azure Load Balancer-avsökningar ( *AzureLoadBalancer* -tagg) och inkommande virtuell nätverks trafik ( *VirtualNetwork* -tagg) i [nätverks säkerhets gruppen](../virtual-network/network-security-groups-overview.md).
+3. Tillåt inkommande Azure Load Balancer-avsökningar (*AzureLoadBalancer* -tagg) och inkommande virtuell nätverks trafik (*VirtualNetwork* -tagg) i [nätverks säkerhets gruppen](../virtual-network/network-security-groups-overview.md).
 4. Blockera all annan inkommande trafik med hjälp av en regel för neka-alla.
 5. Tillåt utgående trafik till Internet för alla destinationer.
 
@@ -69,7 +69,7 @@ I det här scenariot använder du NSG: er i under nätet Application Gateway. L�
 
    För v1-SKU: n (UDR) stöds de användardefinierade vägarna i Application Gateway under nätet, så länge de inte ändrar svars-/svars kommunikation från slut punkt till slut punkt. Du kan till exempel konfigurera en UDR i Application Gateway under nätet så att den pekar på en brand Väggs enhet för paket granskning. Men du måste se till att paketet når sitt avsedda mål efter inspektion. Om du inte gör det kan det leda till felaktig hälso avsökning eller trafik-routning. Detta inkluderar inlärda vägar eller standard 0.0.0.0/0-vägar som sprids av Azure ExpressRoute eller VPN-gatewayer i det virtuella nätverket. Alla scenarier där 0.0.0.0/0 måste omdirigeras lokalt (Tvingad tunnel trafik) stöds inte för v1.
 
-- **v2**
+- **2**
 
    För v2-SKU: n finns det stöd för och scenarier som inte stöds:
 
@@ -78,7 +78,7 @@ I det här scenariot använder du NSG: er i under nätet Application Gateway. L�
    > En felaktig konfiguration av väg tabellen kan resultera i asymmetrisk routning i Application Gateway v2. Se till att all hanterings-och kontroll Plans trafik skickas direkt till Internet och inte via en virtuell installation. Loggning och mått kan också påverkas.
 
 
-  **Scenario 1** : UDR för att inaktivera Border Gateway Protocol (BGP)-spridning av vägar till Application Gateway-undernätet
+  **Scenario 1**: UDR för att inaktivera Border Gateway Protocol (BGP)-spridning av vägar till Application Gateway-undernätet
 
    Ibland annonseras standard-gateway-vägen (0.0.0.0/0) via de ExpressRoute eller VPN-gatewayer som är associerade med Application Gateway virtuella nätverket. Detta bryter hanterings Plans trafik, som kräver en direkt sökväg till Internet. I sådana fall kan en UDR användas för att inaktivera spridning av BGP-vägar. 
 
@@ -90,11 +90,11 @@ I det här scenariot använder du NSG: er i under nätet Application Gateway. L�
 
    Om du aktiverar UDR för det här scenariot bör du inte bryta eventuella befintliga inställningar.
 
-  **Scenario 2** : UDR till Direct 0.0.0.0/0 till Internet
+  **Scenario 2**: UDR till Direct 0.0.0.0/0 till Internet
 
    Du kan skapa en UDR för att skicka 0.0.0.0/0-trafik direkt till Internet. 
 
-  **Scenario 3** : UDR för Azure Kubernetes service med Kubernetes
+  **Scenario 3**: UDR för Azure Kubernetes service med Kubernetes
 
   Om du använder Kubernetes med Azure Kubernetes service (AKS) och Application Gateway ingress (AGIC) behöver du en routningstabell för att tillåta trafik som skickas till poddar från Application Gateway att dirigeras till rätt nod. Detta behövs inte om du använder Azure-CNI. 
 
@@ -109,7 +109,7 @@ I det här scenariot använder du NSG: er i under nätet Application Gateway. L�
     
   **scenarier som inte stöds i v2**
 
-  **Scenario 1** : UDR för virtuella enheter
+  **Scenario 1**: UDR för virtuella enheter
 
   Alla scenarier där 0.0.0.0/0 behöver omdirigeras via en virtuell installation, ett virtuellt nätverk för hubb/eker eller lokalt (Tvingad tunnel trafik) stöds inte för v2.
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: d3e3dc4b0e3bc64a38856da8344583b744ea62b6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96906054"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Begär offentlig överförings data i real tid med hjälp av Azure Maps Mobility Services (för hands version) 
@@ -27,7 +27,7 @@ Den här artikeln visar hur du använder Azure Maps [mobilitets tjänster](/rest
 
 I den här artikeln får du lära dig hur du begär nästa mottagna real tid för alla rader som kommer vid ett angivet stopp
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du måste först ha ett Azure Maps konto och en prenumerations nyckel för att kunna anropa de Azure Maps offentliga API: erna för överföring. Om du vill ha mer information följer du instruktionerna i [skapa ett konto](quick-demo-map-app.md#create-an-azure-maps-account) för att skapa ett Azure Maps-konto. Följ stegen i [Hämta primär nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account) för att hämta den primära nyckeln för ditt konto. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](./how-to-manage-authentication.md).
 

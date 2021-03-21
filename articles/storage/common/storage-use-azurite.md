@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490789"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Använd Azurite-emulatorn för lokal Azure Storage utveckling
@@ -136,7 +136,7 @@ När du har installerat och skapat Azurite kan du läsa [Kör Azurite från en k
 > [!NOTE]
 > Azurite kan inte köras från kommando raden om du bara har installerat Visual Studio Code-tillägget. Använd i stället kommando paletten Visual Studio Code. Mer information finns i [Installera och köra Azurite Visual Studio Code Extension](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Kom igång direkt med kommando raden genom att skapa en katalog med namnet *c:\azurite*och sedan starta Azurite genom att utfärda följande kommando:
+Kom igång direkt med kommando raden genom att skapa en katalog med namnet *c:\azurite* och sedan starta Azurite genom att utfärda följande kommando:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
@@ -148,7 +148,7 @@ Det här kommandot instruerar Azurite att lagra alla data i en viss katalog, *c:
 
 Det här avsnittet innehåller information om kommando rads växlar som är tillgängliga när du startar Azurite.
 
-### <a name="help"></a>Hjälp
+### <a name="help"></a>Help
 
 **Valfritt** -Hämta kommando rads hjälp med `-h` `--help` växeln eller.
 
@@ -178,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>Konfiguration av BLOB-lyssnings port
 
-**Optional** Som standard kommer Azurite att lyssna efter BLOB service på port 10000. Använd `--blobPort` växeln för att ange den lyssnings port som du behöver.
+ Som standard kommer Azurite att lyssna efter BLOB service på port 10000. Använd `--blobPort` växeln för att ange den lyssnings port som du behöver.
 
 > [!NOTE]
 > När du har använt en anpassad port måste du uppdatera anslutnings strängen eller motsvarande konfiguration i Azure Storage verktyg eller SDK: er.
@@ -218,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>Köa lyssnings port konfiguration
 
-**Optional** Som standard kommer Azurite att lyssna efter kötjänst på port 10001. Använd `--queuePort` växeln för att ange den lyssnings port som du behöver.
+ Som standard kommer Azurite att lyssna efter kötjänst på port 10001. Använd `--queuePort` växeln för att ange den lyssnings port som du behöver.
 
 > [!NOTE]
 > När du har använt en anpassad port måste du uppdatera anslutnings strängen eller motsvarande konfiguration i Azure Storage verktyg eller SDK: er.
@@ -480,7 +480,7 @@ I Storage Explorer ansluter du till Azurite genom att följa dessa steg:
 
 #### <a name="connect-to-azurite-using-https"></a>Ansluta till Azurite med HTTPS
 
-Som standard öppnas Storage Explorer inte en HTTPS-slutpunkt som använder ett självsignerat certifikat. Om du kör Azurite med HTTPS använder du förmodligen ett självsignerat certifikat. I Storage Explorer importerar du SSL-certifikat via **Edit**  ->  **SSL Certificates**  ->  dialog rutan Redigera**import certifikat** för SSL-certifikat.
+Som standard öppnas Storage Explorer inte en HTTPS-slutpunkt som använder ett självsignerat certifikat. Om du kör Azurite med HTTPS använder du förmodligen ett självsignerat certifikat. I Storage Explorer importerar du SSL-certifikat via   ->    ->  dialog rutan Redigera **import certifikat** för SSL-certifikat.
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Importera certifikat till Storage Explorer
 

@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016836"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Skapa en profil behållare med Azure NetApp Files och AD DS
@@ -166,7 +166,7 @@ Det här avsnittet baseras på [skapa en profil behållare för en värdbaserad 
 
 5. Markera kryss rutan bredvid **Jag accepterar licens villkoren**.
 
-6. Välj **Installera**.
+6. Välj **installera**.
 
 7. Gå till **C: \\ Program Files \\ FSLogix- \\ appar** för att bekräfta att agenten är installerad.
 

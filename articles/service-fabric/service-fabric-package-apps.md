@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789710"
 ---
 # <a name="package-an-application"></a>Paketera ett program
@@ -44,7 +44,7 @@ Mapparna heter för att matcha **namnattribut** för varje motsvarande element. 
 
 ## <a name="use-setupentrypoint"></a>Använd SetupEntryPoint
 
-Vanliga scenarier för att använda **SetupEntryPoint** är när du behöver köra en körbar fil innan tjänsten startar eller så måste du utföra en åtgärd med utökade privilegier. Ett exempel:
+Vanliga scenarier för att använda **SetupEntryPoint** är när du behöver köra en körbar fil innan tjänsten startar eller så måste du utföra en åtgärd med utökade privilegier. Exempel:
 
 * Konfigurera och initiera miljövariabler som tjänstens körbara fil behöver. Den är inte begränsad till enbart körbara filer som skrivits via Service Fabric programmerings modeller. npm.exe behöver till exempel vissa miljövariabler som har kon figurer ATS för att distribuera ett node.js-program.
 * Konfigurera åtkomst kontroll genom att installera säkerhets certifikat.

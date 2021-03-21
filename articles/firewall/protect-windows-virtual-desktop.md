@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94654991"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Använd Azure Firewall för att skydda distributioner av Window Virtual Desktop
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Använda Azure Firewall för att skydda Window Virtual Desktop-distributioner
 
 Windows Virtual Desktop är en Desktop-och app Virtualization-tjänst som körs på Azure. När en användare ansluter till en Windows Virtual Desktop-miljö körs sessionen av en adresspool. En Host-pool är en samling virtuella Azure-datorer som registreras på Windows Virtual Desktop som värdar för Windows-sessioner. De här virtuella datorerna körs i det virtuella nätverket och omfattas av de virtuella nätverks säkerhets kontrollerna. De behöver utgående Internet åtkomst till Windows Virtual Desktop-tjänsten för att fungera korrekt och kan också kräva utgående Internet åtkomst för slutanvändare. Azure-brandväggen kan hjälpa dig att låsa din miljö och filtrera utgående trafik.
 

@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059729"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisk skalning och zonredundant Application Gateway v2 
@@ -27,7 +27,7 @@ Den nya v2-SKU: n innehåller följande förbättringar:
   Zon redundans är bara tillgängligt där Azure-zoner är tillgängliga. I andra regioner stöds alla andra funktioner. Mer information finns i [regioner och Tillgänglighetszoner i Azure](../availability-zones/az-overview.md)
 - **Statisk VIP**: Application Gateway v2 SKU stöder enbart statisk VIP-typ. Detta säkerställer att den VIP som är associerad med programgatewayen inte ändras för distributionens livs cykel, även efter en omstart.  Det finns ingen statisk VIP i v1, så du måste använda Application Gateway-URL: en i stället för IP-adressen för att routning av domän namn ska kunna App Services via programgatewayen.
 - **Omskrivning av rubrik**: Application Gateway låter dig lägga till, ta bort eller uppdatera http-begäran och svarshuvuden med v2-SKU. Mer information finns i [skriva om HTTP-huvuden med Application Gateway](rewrite-http-headers.md)
-- **Key Vault-integrering**: Application Gateway v2 stöder integrering med Key Vault för Server certifikat som är anslutna till https-aktiverade lyssnare. Mer information finns i [TLS-terminering med Key Vault certifikat](key-vault-certs.md).
+- **Key Vault-integrering**: Application Gateway v2 stöder integrering med Key Vault för Server certifikat som är anslutna till https-aktiverade lyssnare. Läs mer i [TLS-avslutning med Key Vault-certifikat](key-vault-certs.md).
 - Ingångs **kontroll av Azure Kubernetes-tjänsten**: Application Gateway v2 ingångs styrenheten tillåter att Azure Application Gateway används som ingångs punkt för en Azure Kubernetes-tjänst (AKS) som kallas AKS-kluster. Mer information finns i [Vad är Application Gateway ingress-kontrollant?](ingress-controller-overview.md).
 - **Prestanda förbättringar**: v2-SKU: n erbjuder upp till fem bättre TLS-avläsnings prestanda jämfört med standard-/WAF SKU: n.
 - **Snabbare distribution och uppdaterings tid** V2-SKU: n ger snabbare distribution och uppdaterings tid jämfört med standard-/WAF SKU. Detta inkluderar även WAF konfigurations ändringar.
@@ -38,7 +38,7 @@ Den nya v2-SKU: n innehåller följande förbättringar:
 
 Standard_v2-och WAF_v2 SKU: n är tillgänglig i följande regioner: Norra centrala USA, södra centrala USA, västra USA, västra USA 2, östra USA, östra USA 2, centrala USA, norra Europa, Västeuropa, Sydostasien, Frankrike Storbritannien, västra, USA, östra, västra Japan, östra Australien, sydöstra Australien, södra Brasilien, centrala Kanada, östra USA Asien, östra, centrala Korea , Storbritannien, södra, centrala Indien, västra Indien, södra Indien.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Med v2-SKU: n drivs pris sättnings modellen av förbrukning och är inte längre kopplad till instans antal eller storlekar. Priserna för v2-SKU har två komponenter:
 

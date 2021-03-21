@@ -4,10 +4,10 @@ description: Den här artikeln förklarar hur du tillfälligt inaktiverar och å
 ms.topic: article
 ms.date: 09/29/2020
 ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543059"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pausa och återaktivera meddelande enheter (inaktivera)
@@ -21,10 +21,10 @@ En SUS pension eller reaktivering kan utföras antingen av användaren eller av 
 ## <a name="queue-status"></a>Status för kö 
 De tillstånd som kan ställas in för en **kö** är:
 
--   **Aktiv** : kön är aktiv. Du kan skicka meddelanden till och ta emot meddelanden från kön. 
--   **Inaktive rad** : kön har pausats. Det motsvarar att ställa in både **SendDisabled** och **ReceiveDisabled**. 
--   **SendDisabled** : det går inte att skicka meddelanden till kön, men du kan ta emot meddelanden från den. Du får ett undantag om du försöker skicka meddelanden till kön. 
--   **ReceiveDisabled** : du kan skicka meddelanden till kön, men du kan inte ta emot meddelanden från den. Du får ett undantag om du försöker ta emot meddelanden till kön.
+-   **Aktiv**: kön är aktiv. Du kan skicka meddelanden till och ta emot meddelanden från kön. 
+-   **Inaktive rad**: kön har pausats. Det motsvarar att ställa in både **SendDisabled** och **ReceiveDisabled**. 
+-   **SendDisabled**: det går inte att skicka meddelanden till kön, men du kan ta emot meddelanden från den. Du får ett undantag om du försöker skicka meddelanden till kön. 
+-   **ReceiveDisabled**: du kan skicka meddelanden till kön, men du kan inte ta emot meddelanden från den. Du får ett undantag om du försöker ta emot meddelanden till kön.
 
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>Ändra köns status i Azure Portal: 
@@ -57,9 +57,9 @@ Du kan ändra ämnes status i Azure Portal. Välj aktuell status för avsnittet 
 :::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Ändra ämnes status":::
 
 De tillstånd som kan ställas in för ett **ämne** är:
-- **Aktiv** : ämnet är aktivt. Du kan skicka meddelanden till ämnet. 
-- **Inaktive rad** : avsnittet har pausats. Du kan inte skicka meddelanden till ämnet. 
-- **SendDisabled** : samma resultat som **inaktive rad**. Du kan inte skicka meddelanden till ämnet. Du får ett undantag om du försöker skicka meddelanden till ämnet. 
+- **Aktiv**: ämnet är aktivt. Du kan skicka meddelanden till ämnet. 
+- **Inaktive rad**: avsnittet har pausats. Du kan inte skicka meddelanden till ämnet. 
+- **SendDisabled**: samma resultat som **inaktive rad**. Du kan inte skicka meddelanden till ämnet. Du får ett undantag om du försöker skicka meddelanden till ämnet. 
 
 ## <a name="subscription-status"></a>Prenumerations status
 Du kan ändra prenumerations status i Azure Portal. Välj aktuell status för prenumerationen för att se följande sida, vilket gör att du kan ändra status. 
@@ -67,9 +67,9 @@ Du kan ändra prenumerations status i Azure Portal. Välj aktuell status för pr
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Ändra prenumerations status":::
 
 De tillstånd som kan ställas in för en **prenumeration** är:
-- **Aktiv** : prenumerationen är aktiv. Du kan ta emot meddelanden frm prenumerationen.
-- **Inaktive rad** : prenumerationen har pausats. Du kan inte ta emot meddelanden från prenumerationen. 
-- **ReceiveDisabled** : samma resultat som **inaktive rad**. Du kan inte ta emot meddelanden från prenumerationen. Du får ett undantag om du försöker ta emot meddelanden till prenumerationen.
+- **Aktiv**: prenumerationen är aktiv. Du kan ta emot meddelanden frm prenumerationen.
+- **Inaktive rad**: prenumerationen har pausats. Du kan inte ta emot meddelanden från prenumerationen. 
+- **ReceiveDisabled**: samma resultat som **inaktive rad**. Du kan inte ta emot meddelanden från prenumerationen. Du får ett undantag om du försöker ta emot meddelanden till prenumerationen.
 
 | Ämnes status | Prenumerations status | Beteende | 
 | ------------ | ------------------- | -------- | 

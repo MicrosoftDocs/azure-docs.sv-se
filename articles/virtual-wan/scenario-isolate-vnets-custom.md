@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92461829"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scenario: anpassad isolering för virtuella nätverk
@@ -55,7 +55,7 @@ Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-vi
 
 ## <a name="workflow"></a><a name="architecture"></a>Arbetsflöde
 
-I **bild 1**finns det blå och röda VNet-anslutningar.
+I **bild 1** finns det blå och röda VNet-anslutningar.
 
 * Blue-anslutna virtuella nätverk kan komma åt varandra, samt komma åt alla grenar (VPN/ER/P2S)-anslutningar.
 * Red virtuella nätverk kan komma åt varandra, samt komma åt alla grenar (VPN/ER/P2S)-anslutningar.
@@ -63,7 +63,7 @@ I **bild 1**finns det blå och röda VNet-anslutningar.
 Överväg följande steg när du konfigurerar routning.
 
 1. Skapa två anpassade väg tabeller i Azure Portal **RT_BLUE** och **RT_RED**.
-2. För väg tabell **RT_BLUE**för följande inställningar:
+2. För väg tabell **RT_BLUE** för följande inställningar:
    * **Association**: Markera alla blå virtuella nätverk.
    * **Spridning**: för grenar väljer du alternativet för grenar, vilket innebär att förgreningar (VPN/er/P2s)-anslutningar sprider vägar till den här routningstabellen.
 3. Upprepa samma steg för **RT_RED** routningstabell för Red virtuella nätverk och grenar (VPN/er/P2s).

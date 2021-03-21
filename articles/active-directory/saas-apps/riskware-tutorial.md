@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: e33664501483280978c67b100cd56a714ef63a30
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Självstudie: Azure Active Directory integration med risk
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med risk för Azure AD:
 
-1. På sidan [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **riskfylld** program integrering.
+1. På sidan [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **riskfylld** program integrering.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -210,7 +210,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till riskmaterial.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **riskfyllda**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **riskfyllda**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

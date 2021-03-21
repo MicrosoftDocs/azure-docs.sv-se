@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576556"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Förstå digitala sammanflätade och deras dubbla diagram
@@ -70,7 +70,7 @@ Digitala dubbla data och Relations data lagras både i JSON-format. Det innebär
 
 När ett digitalt objekt visas som ett JSON-objekt visas följande fält:
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | `$dtId` | En användardefinierad sträng som representerar ID: t för den digitala dubbla |
 | `$etag` | Standard-HTTP-fält som tilldelas av webb servern |
@@ -137,7 +137,7 @@ Här är ett exempel på en digital, dubbels formaterad som ett JSON-objekt:
 
 När den visas som ett JSON-objekt, visas följande fält i en relation från en digital:
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | `$relationshipId` | En användardefinierad sträng som representerar ID: t för den här relationen. Den här strängen är unik i kontexten för källan Digital, som också innebär att `sourceId`  +  `relationshipId` är unik i kontexten för Azure Digitals-instansen. |
 | `$etag` | Standard-HTTP-fält som tilldelas av webb servern |

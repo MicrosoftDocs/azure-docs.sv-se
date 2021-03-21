@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: f6b1ea00684495333ba7b04dbf146aa6104fa589
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>Självstudie: Azure Active Directory integrering med Icertis för avtals hanterings plattform
@@ -112,7 +112,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ic
 
     ![Länk för nedladdning av certifikatet](common/metadataxml.png)
 
-6. I avsnittet **Konfigurera Icertis för avtals hantering** kopierar du lämpliga URL: er enligt ditt krav. För **inloggnings-URL**använder du värdet med följande mönster: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+6. I avsnittet **Konfigurera Icertis för avtals hantering** kopierar du lämpliga URL: er enligt ditt krav. För **inloggnings-URL** använder du värdet med följande mönster: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ är klient-ID: t för Azure AD-prenumerationen.
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Icertis-kontrakt för hanterings plattform.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Icertis kontrakts hanterings plattform**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Icertis kontrakts hanterings plattform**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

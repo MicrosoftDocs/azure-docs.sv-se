@@ -4,10 +4,10 @@ description: Lär dig hur du använder Azure CLI för att återställa säkerhet
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94562329"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Återställa Azure-filresurser med Azure CLI
@@ -50,8 +50,8 @@ az backup recoverypoint list --vault-name azurefilesvault --resource-group azure
 
 Du kan också köra föregående cmdlet med hjälp av det egna namnet för behållaren och objektet genom att tillhandahålla följande två ytterligare parametrar:
 
-* **--säkerhets kopiering-hantering-typ** : *azurestorage*
-* **--arbets belastning-typ** : *azurefileshare*
+* **--säkerhets kopiering-hantering-typ**: *azurestorage*
+* **--arbets belastning-typ**: *azurefileshare*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --item-name azurefiles --workload-type azurefileshare --out table
@@ -75,8 +75,8 @@ Du kan använda det här alternativet för återställning för att återställa
 
 Definiera följande parametrar för att utföra återställnings åtgärder:
 
-* **--container-Name** : namnet på det lagrings konto som är värd för säkerhets kopian av den ursprungliga fil resursen. Om du vill hämta namnet eller det egna namnet på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
-* **--objekt namn** : namnet på den säkerhetskopierade original fil resurs som du vill använda för återställnings åtgärden. Om du vill hämta namnet eller det egna namnet på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
+* **--container-Name**: namnet på det lagrings konto som är värd för säkerhets kopian av den ursprungliga fil resursen. Om du vill hämta namnet eller det egna namnet på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
+* **--objekt namn**: namnet på den säkerhetskopierade original fil resurs som du vill använda för återställnings åtgärden. Om du vill hämta namnet eller det egna namnet på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>Återställa en fullständig resurs till den ursprungliga platsen
 
@@ -100,10 +100,10 @@ Namnattributet **i** utdata motsvarar namnet på jobbet som skapas av säkerhets
 
 Du kan använda det här alternativet för att återställa en fil resurs till en annan plats och behålla den ursprungliga fil resursen som den är. Ange följande parametrar för alternativ plats återställning:
 
-* **--mål-Storage – konto** : det lagrings konto som det säkerhetskopierade innehållet återställs till. Mål lagrings kontot måste finnas på samma plats som valvet.
-* **--mål-fildelning** : fil resursen i det mål lagrings konto som det säkerhetskopierade innehållet återställs till.
+* **--mål-Storage – konto**: det lagrings konto som det säkerhetskopierade innehållet återställs till. Mål lagrings kontot måste finnas på samma plats som valvet.
+* **--mål-fildelning**: fil resursen i det mål lagrings konto som det säkerhetskopierade innehållet återställs till.
 * **--** målmapp: mappen under den fil resurs som data återställs till. Om det säkerhetskopierade innehållet ska återställas till en rotmapp, ger du målmappens värden som en tom sträng.
-* **--resolve-konflikt** : instruktioner om det finns en konflikt med återställda data. Accepterar **överskrivning** eller **Skip**.
+* **--resolve-konflikt**: instruktioner om det finns en konflikt med återställda data. Accepterar **överskrivning** eller **Skip**.
 
 I följande exempel används [AZ backup](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) Restore Restore-azurefileshare med Restore Mode som *alternatelocation* för att återställa *migreringsåtgärden* -filresursen i *afsaccount* lagrings konto till *azurefiles1* -filresursen i *afaccount1* Storage-kontot.
 
@@ -125,14 +125,14 @@ Du kan använda det här alternativet för återställning för att återställa
 
 Definiera följande parametrar för att utföra återställnings åtgärder:
 
-* **--container-Name** : namnet på det lagrings konto som är värd för säkerhets kopian av den ursprungliga fil resursen. Om du vill hämta namnet eller det egna namnet på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
-* **--objekt namn** : namnet på den säkerhetskopierade original fil resurs som du vill använda för återställnings åtgärden. Om du vill hämta namnet eller det egna namnet på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
+* **--container-Name**: namnet på det lagrings konto som är värd för säkerhets kopian av den ursprungliga fil resursen. Om du vill hämta namnet eller det egna namnet på din behållare använder du kommandot [AZ backup container List](/cli/azure/backup/container#az-backup-container-list) .
+* **--objekt namn**: namnet på den säkerhetskopierade original fil resurs som du vill använda för återställnings åtgärden. Om du vill hämta namnet eller det egna namnet på det säkerhetskopierade objektet använder du kommandot [AZ backup item List](/cli/azure/backup/item#az-backup-item-list) .
 
 Ange följande parametrar för de objekt som du vill återställa:
 
-* **SourceFilePath** : den absoluta sökvägen till filen som ska återställas inom fil resursen, som en sträng. Den här sökvägen är samma sökväg som används i [AZ Storage File Download](/cli/azure/storage/file#az-storage-file-download) eller [AZ Storage-filen show](/cli/azure/storage/file#az-storage-file-show) CLI-kommandon.
-* **SourceFileType** : Välj om en katalog eller en fil är markerad. Accepterar **katalog** eller **fil**.
-* **ResolveConflict** : instruktion om det finns en konflikt med återställda data. Accepterar **överskrivning** eller **Skip**.
+* **SourceFilePath**: den absoluta sökvägen till filen som ska återställas inom fil resursen, som en sträng. Den här sökvägen är samma sökväg som används i [AZ Storage File Download](/cli/azure/storage/file#az-storage-file-download) eller [AZ Storage-filen show](/cli/azure/storage/file#az-storage-file-show) CLI-kommandon.
+* **SourceFileType**: Välj om en katalog eller en fil är markerad. Accepterar **katalog** eller **fil**.
+* **ResolveConflict**: instruktion om det finns en konflikt med återställda data. Accepterar **överskrivning** eller **Skip**.
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Återställa enskilda filer eller mappar till den ursprungliga platsen
 
@@ -156,8 +156,8 @@ Namnattributet **i** utdata motsvarar namnet på jobbet som skapas av säkerhets
 
 Om du vill återställa specifika filer eller mappar till en annan plats använder du AZ Backup Restore [-migreringsåtgärden-](/cli/azure/backup/restore#az-backup-restore-restore-azurefiles) cmdleten med återställnings läge inställt på *alternatelocation* och anger följande Target-relaterade parametrar:
 
-* **--mål-Storage – konto** : det lagrings konto som det säkerhetskopierade innehållet återställs till. Mål lagrings kontot måste finnas på samma plats som valvet.
-* **--mål-fildelning** : fil resursen i det mål lagrings konto som det säkerhetskopierade innehållet återställs till.
+* **--mål-Storage – konto**: det lagrings konto som det säkerhetskopierade innehållet återställs till. Mål lagrings kontot måste finnas på samma plats som valvet.
+* **--mål-fildelning**: fil resursen i det mål lagrings konto som det säkerhetskopierade innehållet återställs till.
 * **--** målmapp: mappen under den fil resurs som data återställs till. Om det säkerhetskopierade innehållet ska återställas till en rotmapp ger du målmappens värde som en tom sträng.
 
 I följande exempel återställs *RestoreTest.txt* -filen som ursprungligen fanns i *migreringsåtgärden* -filresursen till en alternativ plats: mappen *restoredata* i *azurefiles1* -filresursen som finns i *afaccount1* -lagrings kontot.
