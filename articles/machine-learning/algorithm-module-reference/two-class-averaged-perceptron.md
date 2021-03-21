@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: f1161dc99b84026bcc830c08b63b95d0bf3b0994
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421149"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Two-Class genomsnittlig Perceptron-modul
@@ -36,9 +36,9 @@ De enklare Perceptron-modellerna är lämpliga för inlärning av linjärt särs
 
 2.  Ange hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .  
   
-    -   **Enskild parameter** : Ange en viss uppsättning värden som argument om du vet hur du vill konfigurera modellen.
+    -   **Enskild parameter**: Ange en viss uppsättning värden som argument om du vet hur du vill konfigurera modellen.
 
-    -   **Parameter intervall** : Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.  
+    -   **Parameter intervall**: Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.  
   
 3.  För **inlärnings frekvens** anger du ett värde för *inlärnings takten*. Inlärnings takt svärdet styr storleken på det steg som används i Stochastic gradient-brantaste varje gång modellen testas och korrigeras.
   

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: f12c823f609ac309d4b5ddbbaa7d5a076a7bb9ad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96447286"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analys av flera klienter med extraherade data-multi-Apps-appen
@@ -64,7 +64,7 @@ Slutligen frågas stjärn schema-tabellerna. Frågeresultaten visas visuellt fö
 
 Att förstå hur konsekvent varje klient använder tjänsten ger möjlighet att skapa Service planer för att tillgodose deras behov. Den här självstudien innehåller grundläggande exempel på insikter som kan uppnår från klient data.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 ### <a name="prerequisites"></a>Förutsättningar
 

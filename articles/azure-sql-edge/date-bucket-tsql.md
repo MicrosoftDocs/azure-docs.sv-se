@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073527"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -34,37 +34,37 @@ DATE_BUCKET (datePart, number, date, origin)
 
 *datePart*
 
-Den del av *datumet* som används med parametern "tal". Till exempel År, månad, minut, sekund osv.
+Den del av *datumet* som används med parametern "tal". t.ex. År, månad, minut, sekund osv.
 
 > [!NOTE]
 > `DATE_BUCKET` accepterar inte användardefinierade variabel motsvarigheter för *datepPart* -argumenten.
   
 |*datePart*|Förkortningar|  
 |---|---|
-|**dagen**|**DD** , **d**|  
-|**vecka**|**veckor** , **WW**| 
-|**månad**|**mm** , **m**|
-|**början**|**QQ** , **q**|  
-|**år**|**yy** , **åååå**|  
+|**dagen**|**DD**, **d**|  
+|**vecka**|**veckor**, **WW**| 
+|**månad**|**mm**, **m**|
+|**början**|**QQ**, **q**|  
+|**år**|**yy**, **åååå**|  
 |**timkostnad**|**hh**|  
-|**minut**|**mi** , **n**|  
-|**senare**|**SS** , **s**|  
+|**minut**|**mi**, **n**|  
+|**senare**|**SS**, **s**|  
 |**tiden**|**millisekund**|  
 
-*nummer*
+*många*
 
-Det heltals värde som bestämmer bredden på Bucket tillsammans med argumentet *DatumDel* . Detta representerar bredden på dataPart-buckets från ursprungs tiden. **`This argument cannot be a negative integer value`** . 
+Det heltals värde som bestämmer bredden på Bucket tillsammans med argumentet *DatumDel* . Detta representerar bredden på dataPart-buckets från ursprungs tiden. **`This argument cannot be a negative integer value`**. 
 
-*ikraftträdande*
+*date*
 
 Ett uttryck som kan matcha till något av följande värden:
 
-+ **ikraftträdande**
++ **date**
 + **datetime**
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
-+ **time**
++ **tid**
 
 För *datum* `DATE_BUCKET` accepterar att ett kolumn uttryck, ett uttryck eller en användardefinierad variabel om de matchar någon av de data typer som anges ovan.
 
@@ -72,12 +72,12 @@ För *datum* `DATE_BUCKET` accepterar att ett kolumn uttryck, ett uttryck eller 
 
 Ett valfritt uttryck som kan matcha till något av följande värden:
 
-+ **ikraftträdande**
++ **date**
 + **datetime**
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
-+ **time**
++ **tid**
 
 Data typen för `Origin` måste matcha `Date` Parameterns datatyp. 
 
@@ -125,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>DatumDel-argument
 
-**DAYOFYEAR** , **Day** och **veckodag** returnerar samma värde. Varje *DatumDel* och dess förkortningar returnerar samma värde.
+**DAYOFYEAR**, **Day** och **veckodag** returnerar samma värde. Varje *DatumDel* och dess förkortningar returnerar samma värde.
   
 ## <a name="number-argument"></a>tal argument
 
@@ -200,7 +200,7 @@ De här exemplen använder olika typer av uttryck som argument för parametrarna
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>Ange användardefinierade variabler som tal och datum  
 
-I det här exemplet anges användardefinierade variabler som argument för *tal* och *datum* :
+I det här exemplet anges användardefinierade variabler som argument för *tal* och *datum*:
   
 ```sql
 DECLARE @days int = 365,
@@ -250,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>Ange skalär system funktion som datum
 
-I det här exemplet anges `SYSDATETIME` *datum* . Det exakta värde som returneras beror på dag och tidpunkt för körning av instruktionen:
+I det här exemplet anges `SYSDATETIME` *datum*. Det exakta värde som returneras beror på dag och tidpunkt för körning av instruktionen:
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -267,7 +267,7 @@ Här är resultatuppsättningen.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Ange skalära under frågor och skalära funktioner som tal och datum
 
-I det här exemplet används skalära `MAX(OrderDate)` under frågor, som argument för *tal* och *datum* . `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` fungerar som ett artificiellt argument för parametern Number, för att visa hur du väljer ett *tal* argument från en värde lista.
+I det här exemplet används skalära `MAX(OrderDate)` under frågor, som argument för *tal* och *datum*. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` fungerar som ett artificiellt argument för parametern Number, för att visa hur du väljer ett *tal* argument från en värde lista.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -284,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Ange en sammansatt fönster funktion som antal
 
-I det här exemplet används en mängd fönster funktion som ett argument för *tal* .
+I det här exemplet används en mängd fönster funktion som ett argument för *tal*.
   
 ```sql
 Select 

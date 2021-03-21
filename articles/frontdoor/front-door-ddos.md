@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
 ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350791"
 ---
 # <a name="ddos-protection-on-front-door"></a>DDoS skydd på front dörren
@@ -34,7 +34,7 @@ Frontend-dörren accepterar bara trafik på HTTP-och HTTPS-protokollen och bearb
 
 Front dörren är en storskaligt skalad, globalt distribuerad tjänst. Vi har många kunder, inklusive Microsofts egna storskaliga moln produkter, som får hundratals tusen förfrågningar varje sekund. Front dörren finns på kanten av Azures nätverk, absorberande och geografiskt isolerade stora volym attacker. Detta kan förhindra att skadlig trafik går utöver gränsen för Azure-nätverket.
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>Cachelagring
 
 [Frontend-funktioner för front dörren](./front-door-caching.md) kan användas för att skydda Server delar från stora trafik volymer som genereras av en attack. Cachelagrade resurser returneras från de främre dörr kant-noderna så att de inte vidarebefordras till Server delen. Jämna användnings tider för kort cache (sekunder eller minuter) på dynamiska svar kan avsevärt minska belastningen på backend-tjänster. Mer information om cachelagring av koncept och mönster finns i avsnittet [cachelagring](/azure/architecture/best-practices/caching) och [cache-undan mönster](/azure/architecture/patterns/cache-aside).
 

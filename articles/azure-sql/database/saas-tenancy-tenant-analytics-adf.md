@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: dc47c996748b126841cbeff1ea3f6f18f423951f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96457640"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Utforska SaaS Analytics med Azure SQL Database, Azure Synapse Analytics, Data Factory och Power BI
@@ -64,7 +64,7 @@ Slutligen frågas stjärn schema-tabellerna. Frågeresultat visas visuellt med P
 
 Den här självstudien innehåller grundläggande exempel på insikter som kan uppnår från Wingtip Ticket-data. Om du förstår hur varje plats använder tjänsten kan det leda till att Wingtip Ticket-leverantören funderar på olika tjänst planer som riktar sig till mer eller mindre aktiva platser, till exempel.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 ### <a name="prerequisites"></a>Förutsättningar
 

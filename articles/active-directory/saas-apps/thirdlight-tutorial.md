@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f15d00f1050177c6255fb5528f03314153c3ed9a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Självstudie: Azure Active Directory integrering med ThirdLight
@@ -47,7 +47,7 @@ I den här självstudien konfigurerar och testar du enkel inloggning i Azure AD 
 
 Om du vill ställa in integreringen av ThirdLight i Azure AD måste du lägga till ThirdLight från galleriet i listan över hanterade SaaS-appar.
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory**i den vänstra rutan:
+1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory** i den vänstra rutan:
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
@@ -59,7 +59,7 @@ Om du vill ställa in integreringen av ThirdLight i Azure AD måste du lägga ti
 
     ![Välj nytt program](common/add-new-app.png)
 
-4. Skriv **ThirdLight**i rutan Sök. Välj **ThirdLight** i Sök resultaten och välj sedan **Lägg till**.
+4. Skriv **ThirdLight** i rutan Sök. Välj **ThirdLight** i Sök resultaten och välj sedan **Lägg till**.
 
      ![Sökresultat](common/search-new-app.png)
 
@@ -138,7 +138,7 @@ Utför följande steg för att konfigurera enkel inloggning med ThirdLight i Azu
 
     1. Välj **aktivera enkel inloggning med SAML2**.
 
-    1. Under **källa för IDP metadata**väljer du **läsa in IDP metadata från XML**.
+    1. Under **källa för IDP metadata** väljer du **läsa in IDP metadata från XML**.
 
     1. Öppna den metadatafil som du laddade ned från Azure Portal i föregående avsnitt. Kopiera filens innehåll och klistra in det i rutan **IDP metadata XML** .
 
@@ -148,7 +148,7 @@ Utför följande steg för att konfigurera enkel inloggning med ThirdLight i Azu
 
 I det här avsnittet ska du skapa en test användare med namnet Britta Simon i Azure Portal.
 
-1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare**och väljer sedan **alla användare**:
+1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare** och väljer sedan **alla användare**:
 
     ![Välj alla användare](common/users.png)
 
@@ -162,9 +162,9 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Till exempel BrittaSimon@contoso.com .)
 
-    1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
+    1. Välj **Visa lösen ord** och skriv sedan ned värdet i rutan **lösen ord** .
 
     1. Välj **Skapa**.
 
@@ -172,7 +172,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure genom att ge hennes åtkomst till ThirdLight.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **ThirdLight**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **ThirdLight**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

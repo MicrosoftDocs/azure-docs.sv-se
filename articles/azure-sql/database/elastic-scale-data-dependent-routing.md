@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 60e8b4b21a9e62279cd0eccfabbbed680183e2a9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92787031"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>Använd data beroende routning för att dirigera en fråga till en lämplig databas
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-**Data beroende routning** är möjligheten att använda data i en fråga för att dirigera begäran till en lämplig databas. Data beroende routning är ett grundläggande mönster när du arbetar med shardade-databaser. Kontexten för begäran kan också användas för att dirigera begäran, särskilt om horisontell partitionering-nyckeln inte är en del av frågan. Varje specifik fråga eller transaktion i ett program som använder data beroende routning är begränsad till åtkomst till en databas per begäran. För Azure SQL Database elastiska verktyg utförs denna routning med klassen **ShardMapManager** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
+**Data beroende routning** är möjligheten att använda data i en fråga för att dirigera begäran till en lämplig databas. Data beroende routning är ett grundläggande mönster när du arbetar med shardade-databaser. Kontexten för begäran kan också användas för att dirigera begäran, särskilt om horisontell partitionering-nyckeln inte är en del av frågan. Varje specifik fråga eller transaktion i ett program som använder data beroende routning är begränsad till åtkomst till en databas per begäran. För Azure SQL Database elastiska verktyg utförs denna routning med klassen **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
 
-Programmet behöver inte spåra olika anslutnings strängar eller DB-platser som är kopplade till olika data sektorer i shardade-miljön. I stället öppnar [Shard Map Manager](elastic-scale-shard-map-management.md) anslutningar till rätt databaser vid behov, baserat på data i Shard-mappningen och värdet för horisontell partitionering-nyckeln som är målet för programmets begäran. Nyckeln är vanligt vis *customer_id* , *tenant_id* , *date_key* eller någon annan unik identifierare som är en grundläggande parameter för databas förfrågan.
+Programmet behöver inte spåra olika anslutnings strängar eller DB-platser som är kopplade till olika data sektorer i shardade-miljön. I stället öppnar [Shard Map Manager](elastic-scale-shard-map-management.md) anslutningar till rätt databaser vid behov, baserat på data i Shard-mappningen och värdet för horisontell partitionering-nyckeln som är målet för programmets begäran. Nyckeln är vanligt vis *customer_id*, *tenant_id*, *date_key* eller någon annan unik identifierare som är en grundläggande parameter för databas förfrågan.
 
 Mer information finns i [skala ut SQL Server med Data-Dependent routing](/previous-versions/sql/sql-server-2005/administrator/cc966448(v=technet.10)).
 
@@ -36,7 +36,7 @@ Hämta:
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>Använda en ShardMapManager i ett data beroende Dirigerings program
 
-Program ska instansiera **ShardMapManager** under initieringen med hjälp av Factory-anropet **GetSQLShardMapManager** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). I det här exemplet initieras både en **ShardMapManager** och en speciell **ShardMap** som den innehåller. I det här exemplet visas metoderna GetSqlShardMapManager och GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.net](/previous-versions/azure/dn824173(v=azure.100))).
+Program ska instansiera **ShardMapManager** under initieringen med hjälp av Factory-anropet **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). I det här exemplet initieras både en **ShardMapManager** och en speciell **ShardMap** som den innehåller. I det här exemplet visas metoderna GetSqlShardMapManager och GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.net](/previous-versions/azure/dn824173(v=azure.100))).
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -54,7 +54,7 @@ Om ett program inte ändrar själva Shard-kartan ska de autentiseringsuppgifter 
 
 ## <a name="call-the-openconnectionforkey-method"></a>Anropa metoden OpenConnectionForKey
 
-**Metoden ShardMap. OpenConnectionForKey** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) returnerar en anslutning som är klar för att utfärda kommandon till lämplig databas baserat på värdet för **nyckel** parametern. Shard-information cachelagras i programmet av **ShardMapManager** , så dessa begär Anden brukar inte inkludera en databas sökning mot den **globala Shard Map** -databasen.
+**Metoden ShardMap. OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) returnerar en anslutning som är klar för att utfärda kommandon till lämplig databas baserat på värdet för **nyckel** parametern. Shard-information cachelagras i programmet av **ShardMapManager**, så dessa begär Anden brukar inte inkludera en databas sökning mot den **globala Shard Map** -databasen.
 
 ```Java
 // Syntax:
@@ -67,14 +67,14 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 ```
 
 * **Nyckel** parametern används som en uppslags nyckel i Shard-kartan för att fastställa lämplig databas för begäran.
-* **ConnectionString** används för att skicka endast användarautentiseringsuppgifter för önskad anslutning. Inget databas namn eller server namn ingår i den här *ConnectionString* eftersom metoden bestämmer databasen och servern med hjälp av **ShardMap** .
-* **ConnectionOptions** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) måste anges till **connectionOptions. kontrol lera** om en miljö där Shard Maps kan ändras och rader kan flyttas till andra databaser som ett resultat av Split eller sammanslagnings åtgärder. Den här verifieringen innebär en kort fråga till den lokala Shard-kartan på mål databasen (inte till den globala Shard-mappningen) innan anslutningen skickas till programmet.
+* **ConnectionString** används för att skicka endast användarautentiseringsuppgifter för önskad anslutning. Inget databas namn eller server namn ingår i den här *ConnectionString* eftersom metoden bestämmer databasen och servern med hjälp av **ShardMap**.
+* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) måste anges till **connectionOptions. kontrol lera** om en miljö där Shard Maps kan ändras och rader kan flyttas till andra databaser som ett resultat av Split eller sammanslagnings åtgärder. Den här verifieringen innebär en kort fråga till den lokala Shard-kartan på mål databasen (inte till den globala Shard-mappningen) innan anslutningen skickas till programmet.
 
 Om valideringen av den lokala Shard-kartan Miss lyckas (vilket indikerar att cacheminnet är felaktigt) frågar Shard Map Manager den globala Shard-mappningen för att hämta det nya korrekta värdet för sökningen, uppdaterar cachen och hämtar och returnerar lämplig databas anslutning.
 
 Använd **connectionOptions. None** när Shard mappnings ändringar inte förväntas när ett program är online. I så fall kan de cachelagrade värdena alltid vara korrekta och det extra verifierings anropet för tur och retur till mål databasen kan hoppas över på ett säkert sätt. Detta minskar databas trafiken. **ConnectionOptions** kan också ställas in via ett värde i en konfigurations fil för att indikera om horisontell partitionering-ändringar förväntas eller inte under en viss tids period.  
 
-I det här exemplet används värdet för en heltals nyckel som **CustomerID** med hjälp av ett **ShardMap** -objekt med namnet **customerShardMap** .  
+I det här exemplet används värdet för en heltals nyckel som **CustomerID** med hjälp av ett **ShardMap** -objekt med namnet **customerShardMap**.  
 
 ```Java
 int customerId = 12345;
@@ -112,7 +112,7 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 
 Metoden **OpenConnectionForKey** returnerar en ny anslutning som redan är öppen till rätt databas. Anslutningar som används på det här sättet kommer fortfarande att dra full nytta av anslutningspoolen.
 
-**OpenConnectionForKeyAsync-metoden** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) är också tillgänglig om programmet använder asynkron programmering.
+**OpenConnectionForKeyAsync-metoden** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) är också tillgänglig om programmet använder asynkron programmering.
 
 ## <a name="integrating-with-transient-fault-handling"></a>Integrera med tillfälligt fel hantering
 

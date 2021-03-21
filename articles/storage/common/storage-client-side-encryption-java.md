@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
 ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043736"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Client-Side kryptering och Azure Key Vault med Java för Microsoft Azure Storage
@@ -74,7 +74,7 @@ Under krypteringen genererar klient biblioteket ett slumpmässigt IV av 16 byte 
 
 Under dekrypteringen extraheras den omslutna nyckeln från kösystemet och packas upp. IV extraheras också från meddelandet i kön och används tillsammans med den icke-omslutna nyckeln för att dekryptera köns meddelande data. Observera att krypterings-metadata är små (under 500 byte), så om det sker mot 64 KB-gränsen för ett Queue meddelande bör påverkan vara hanterbar.
 
-### <a name="tables"></a>Tabeller
+### <a name="tables"></a>Tables
 Klient biblioteket stöder kryptering av enhets egenskaper för åtgärderna Infoga och ersätt.
 
 > [!NOTE]

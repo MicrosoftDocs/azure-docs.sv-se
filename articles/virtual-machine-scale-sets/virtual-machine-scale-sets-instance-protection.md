@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: avverma
+ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746803"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Instans skydd för instanser av skalnings uppsättningar för virtuella Azure-datorer
@@ -50,11 +50,11 @@ Det finns flera sätt att tillämpa skalnings skydd på dina skalnings uppsättn
 Du kan använda skalnings skydd genom Azure Portal till en instans i skalnings uppsättningen. Det går inte att justera fler än en instans i taget. Upprepa stegen för varje instans som du vill skydda.
  
 1. Gå till en befintlig skalnings uppsättning för virtuella datorer.
-1. Välj **instanser** på menyn till vänster under **Inställningar** .
+1. Välj **instanser** på menyn till vänster under **Inställningar**.
 1. Välj namnet på den instans som du vill skydda.
 1. Välj fliken **skydds princip** .
 1. På bladet **skydds princip** väljer du alternativet **skydda från skalbarhet** .
-1. Välj **Spara** . 
+1. Välj **Spara**. 
 
 ### <a name="rest-api"></a>REST-API
 
@@ -118,11 +118,11 @@ Det finns flera sätt att tillämpa skalnings uppsättnings åtgärder på dina 
 Du kan använda skydd från skalnings uppsättnings åtgärder via Azure Portal till en instans i skalnings uppsättningen. Det går inte att justera fler än en instans i taget. Upprepa stegen för varje instans som du vill skydda.
  
 1. Gå till en befintlig skalnings uppsättning för virtuella datorer.
-1. Välj **instanser** på menyn till vänster under **Inställningar** .
+1. Välj **instanser** på menyn till vänster under **Inställningar**.
 1. Välj namnet på den instans som du vill skydda.
 1. Välj fliken **skydds princip** .
 1. Välj alternativet **skydda från skalnings uppsättning åtgärder** på bladet **skydds princip** .
-1. Välj **Spara** . 
+1. Välj **Spara**. 
 
 ### <a name="rest-api"></a>REST-API
 

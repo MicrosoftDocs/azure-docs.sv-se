@@ -12,15 +12,15 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: acbd2918bd311cec1c27018763ad10771d779d85
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953329"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Logga in med ett Android-program i Azure Active Directory B2C
 
-Microsofts identitetsplattform använder öppna standarder som OAuth2 och OpenID Connect. Med dessa standarder kan du utnyttja alla bibliotek som du vill integrera med Azure Active Directory B2C. För att hjälpa dig att använda andra bibliotek kan du använda en genom gång som här för att demonstrera hur du konfigurerar bibliotek från tredje part för att ansluta till Microsoft Identity Platform. De flesta bibliotek som implementerar [RFC6749 OAuth2-specifikationen](https://tools.ietf.org/html/rfc6749) kan ansluta till Microsoft Identity Platform.
+Microsofts identitetsplattform använder öppna standarder som OAuth2 och OpenID Connect. Med dessa standarder kan du använda alla bibliotek som du vill integrera med Azure Active Directory B2C. För att hjälpa dig att använda andra bibliotek kan du använda en genom gång som här för att demonstrera hur du konfigurerar bibliotek från tredje part för att ansluta till Microsoft Identity Platform. De flesta bibliotek som implementerar [RFC6749 OAuth2-specifikationen](https://tools.ietf.org/html/rfc6749) kan ansluta till Microsoft Identity Platform.
 
 > [!WARNING]
 > Microsoft tillhandahåller inte korrigeringar för bibliotek från tredje part och har inte utfört en granskning av dessa bibliotek. Det här exemplet använder ett bibliotek från tredje part med namnet AppAuth som har testats för kompatibilitet i grundläggande scenarier med Azure AD B2C. Problem och funktions begär Anden ska dirigeras till bibliotekets projekt med öppen källkod. Mer information finns i [den här artikeln](../active-directory/develop/reference-v2-libraries.md) .
@@ -41,7 +41,7 @@ Registrera sedan ett program i Azure AD B2C klient organisationen. Det ger Azure
 
 Registrera **program-ID: t (Client)** för användning i ett senare steg.
 
-Registrera även en anpassad omdirigerings-URI för användning i ett senare steg. Exempelvis `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Registrera även en anpassad omdirigerings-URI för användning i ett senare steg. Till exempel `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Skapa dina användar flöden
 
@@ -120,8 +120,8 @@ AuthorizationServiceConfiguration config =
 
 När du har konfigurerat eller hämtat en Authorization service-konfiguration kan en auktoriseringsbegäran konstrueras. Om du vill skapa begäran behöver du följande information:
 
-* Klient-ID (program-ID) som du registrerade tidigare. Exempelvis `00000000-0000-0000-0000-000000000000`.
-* Anpassad omdirigerings-URI som du registrerade tidigare. Exempelvis `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+* Klient-ID (program-ID) som du registrerade tidigare. Till exempel `00000000-0000-0000-0000-000000000000`.
+* Anpassad omdirigerings-URI som du registrerade tidigare. Till exempel `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 Båda objekten bör ha sparats när du [registrerade appen](#create-an-application).
 

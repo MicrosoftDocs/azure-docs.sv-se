@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 81523a1c11b6a3da4e7d1db5d8249921ad5047ff
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92635872"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Velpic SAML
@@ -47,14 +47,14 @@ Om du vill konfigurera integrationen av Velpic SAML i Azure AD måste du lägga 
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **Velpic SAML** i sökrutan.
 1. Välj **VELPIC SAML** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.    
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-velpic-saml"></a>Konfigurera och testa enkel inloggning med Azure AD för Velpic SAML
 
-Konfigurera och testa Azure AD SSO med Velpic SAML med en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i Velpic SAML.
+Konfigurera och testa Azure AD SSO med Velpic SAML med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i Velpic SAML.
 
 Om du vill konfigurera och testa Azure AD SSO med Velpic SAML slutför du följande Bygg stenar:
 
@@ -69,8 +69,8 @@ Om du vill konfigurera och testa Azure AD SSO med Velpic SAML slutför du följa
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. På sidan **VELPIC SAML** application integration i [Azure Portal](https://portal.azure.com/)letar du upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. På sidan **VELPIC SAML** application integration i [Azure Portal](https://portal.azure.com/)letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -96,21 +96,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Velpic SAML.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan program väljer du **VELPIC SAML** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **VELPIC SAML**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -124,7 +124,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-velpic-saml-sso"></a>Konfigurera Velpic SAML SSO
 
-1. Om du vill automatisera konfigurationen inom Velpic SAML måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget** .
+1. Om du vill automatisera konfigurationen inom Velpic SAML måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
 
     ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
 
@@ -164,7 +164,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     e. Kopiera **URL: en för enkel inloggning** från text rutan och klistra in den i Azure Portal.
     
-    f. Klicka på **Spara** .
+    f. Klicka på **Spara**.
 
 ### <a name="create-velpic-saml-test-user"></a>Skapa Velpic SAML test User
 
@@ -190,7 +190,7 @@ Logga in på din Velpic SAML-företags webbplats som administratör och utför f
 
     e. Resten av informationen är valfri, du kan fylla det om det behövs.
     
-    f. Klicka på **Spara** .
+    f. Klicka på **Spara**.
 
 ## <a name="test-sso"></a>Testa SSO 
 

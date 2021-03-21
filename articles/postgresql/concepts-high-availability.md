@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485451"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hög tillgänglighet i Azure Database for PostgreSQL – enskild server
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL är lämpligt för att köra verksamhets kritiska 
 | ------------ | ----------- |
 | <b>PostgreSQL-databasserver | Azure Database for PostgreSQL tillhandahåller säkerhet, isolering, resurs skydd och snabb omstart för databas servrar. Dessa funktioner underlättar åtgärder som skalnings-och databas server återställnings åtgärder när ett avbrott inträffar på några sekunder. <br/> Data ändringar i databas servern sker vanligt vis i samband med en databas transaktion. Alla databas ändringar registreras synkront i form av Skriv Ahead-loggar (WAL) på Azure Storage – som är kopplad till databas servern. Under [kontroll punkts](https://www.postgresql.org/docs/11/sql-checkpoint.html) processen för databasen rensas data sidor från databas serverns minne också till lagringen. |
 | <b>Fjärrlagring | Alla PostgreSQL fysiska datafiler och WAL-filer lagras på Azure Storage, vilket är utformat för att lagra tre kopior av data inom en region för att säkerställa dataredundans, tillgänglighet och tillförlitlighet. Lagrings lagret är också oberoende av databas servern. Den kan kopplas från en misslyckad databas server och återkopplas till en ny databas server inom några sekunder. Dessutom övervakas Azure Storage kontinuerligt för eventuella lagrings fel. Om en blockerande skada identifieras korrigeras den automatiskt genom att en ny lagrings kopia instansieras. |
-| <b>Nyckeln | Gatewayen fungerar som en databas-proxy och dirigerar alla klient anslutningar till databas servern. |
+| <b>Gateway | Gatewayen fungerar som en databas-proxy och dirigerar alla klient anslutningar till databas servern. |
 
 ## <a name="planned-downtime-mitigation"></a>Minskning av planerad stillestånds tid
 Azure Database for PostgreSQL konstrueras för att ge hög tillgänglighet under planerade stillestånds åtgärder. 
@@ -49,7 +49,7 @@ Här följer några planerade underhålls scenarier:
 Oplanerade stillestånd kan uppstå på grund av oförutsedda fel, inklusive underliggande maskin varu fel, nätverks problem och program fel. Om databas servern slutar fungera som den ska skapas en ny databas server automatiskt på några sekunder. Fjärrlagringen ansluts automatiskt till den nya databas servern. PostgreSQL-motorn utför återställnings åtgärden med WAL-och databasfiler och öppnar databas servern så att klienter kan ansluta. Ej allokerade transaktioner förloras och måste göras om av programmet. En oplanerad stillestånds tid kan inte undvikas, Azure Database for PostgreSQL minimerar stillestånds tiden genom att automatiskt utföra återställnings åtgärder på både databas server och lagrings lager utan mänsklig inblandning. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="vy över elastisk skalning i Azure PostgreSQL":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="vy över hög tillgänglighet i Azure PostgreSQL":::
 
 1. Azure PostgreSQL-servrar med snabba skalnings funktioner.
 2. Gateway som fungerar som proxy för att dirigera klient anslutningar till rätt databas server

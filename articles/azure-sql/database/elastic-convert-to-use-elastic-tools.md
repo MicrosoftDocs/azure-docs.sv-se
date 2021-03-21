@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92787150"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrera befintliga databaser för att skala ut
@@ -72,7 +72,7 @@ För en modell med en enda klient organisation skapar du en **list mappning** Sh
 
 ![List mappning][1]
 
-Modellen för flera innehavare tilldelar flera klienter till en enskild databas (och du kan distribuera grupper av klienter i flera databaser). Använd den här modellen när du förväntar dig att varje klient ska ha små data behov. I den här modellen tilldelar du ett antal klienter till en databas med hjälp av **intervall mappning** .
+Modellen för flera innehavare tilldelar flera klienter till en enskild databas (och du kan distribuera grupper av klienter i flera databaser). Använd den här modellen när du förväntar dig att varje klient ska ha små data behov. I den här modellen tilldelar du ett antal klienter till en databas med hjälp av **intervall mappning**.
 
 ![Intervall mappning][2]
 

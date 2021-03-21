@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 0b8b499613f8234f449e6d72f6ed6ec1f2f21287
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545420"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatisk hantering av IoT-enheter och -moduler med Azure CLI
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Automatisk enhets hantering i Azure IoT Hub automatiserar många av de repetitiva och komplexa uppgifterna i hanteringen av stora enhets flottor. Med automatisk enhets hantering kan du rikta en uppsättning enheter baserat på deras egenskaper, definiera en önskad konfiguration och sedan låta IoT Hub uppdatera enheterna när de kommer i omfång. Den här uppdateringen görs med hjälp av en _Automatisk enhets konfiguration_ eller _automatisk konfiguration av modulen_ , som gör att du kan sammanfatta, hantera sammanslagning och konflikter och distribuera konfigurationer i en stegvis metod.
+Automatisk enhets hantering i Azure IoT Hub automatiserar många av de repetitiva och komplexa uppgifterna i hanteringen av stora enhets flottor. Med automatisk enhets hantering kan du rikta en uppsättning enheter baserat på deras egenskaper, definiera en önskad konfiguration och sedan låta IoT Hub uppdatera enheterna när de kommer i omfång. Den här uppdateringen görs med hjälp av en _Automatisk enhets konfiguration_ eller _automatisk konfiguration av modulen_, som gör att du kan sammanfatta, hantera sammanslagning och konflikter och distribuera konfigurationer i en stegvis metod.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -28,7 +28,7 @@ Automatisk enhets hantering fungerar genom att uppdatera en uppsättning enheter
 
 * **Målets innehåll** definierar önskade egenskaper som ska läggas till eller uppdateras i den riktade enheten, med dubbla eller moduler. Innehållet innehåller en sökväg till avsnittet av önskade egenskaper som ska ändras.
 
-* **Måtten** definierar antalet olika konfigurations tillstånd, till exempel **lyckad** , **pågående** och **fel** . Anpassade mått anges som frågor på dubbla rapporterade egenskaper.  System mått är standard mått som mäter dubbel uppdaterings status, t. ex. antalet värden som är riktade till varandra och antalet dubbla objekt som har uppdaterats.
+* **Måtten** definierar antalet olika konfigurations tillstånd, till exempel **lyckad**, **pågående** och **fel**. Anpassade mått anges som frågor på dubbla rapporterade egenskaper.  System mått är standard mått som mäter dubbel uppdaterings status, t. ex. antalet värden som är riktade till varandra och antalet dubbla objekt som har uppdaterats.
 
 Automatiska konfigurationer körs för första gången strax efter att konfigurationen har skapats och sedan var femte minut. Mått frågor körs varje gången den automatiska konfigurationen körs.
 

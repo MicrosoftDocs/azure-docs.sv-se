@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421931"
 ---
 # <a name="convert-to-csv-module"></a>Konvertera till CSV-modul
@@ -48,9 +48,9 @@ När du konverterar en data uppsättning till CSV sparas CSV-filen i din Azure M
 
 Välj fliken **utdata** i den högra panelen i **konvertera till CSV** och välj en av dessa ikoner under **portens utdata**.  
 
-+ **Registrera data uppsättning** : Välj ikonen och spara CSV-filen till Azure ml-arbetsytan som en separat data uppsättning. Du kan hitta data uppsättningen som en modul i modul trädet under avsnittet **mina data uppsättningar** .
++ **Registrera data uppsättning**: Välj ikonen och spara CSV-filen till Azure ml-arbetsytan som en separat data uppsättning. Du kan hitta data uppsättningen som en modul i modul trädet under avsnittet **mina data uppsättningar** .
 
- + **Visa utdata** : Välj ögon ikonen och följ anvisningarna för att bläddra i mappen **Results_dataset** och ladda ned data.csv-filen.
+ + **Visa utdata**: Välj ögon ikonen och följ anvisningarna för att bläddra i mappen **Results_dataset** och ladda ned data.csv-filen.
 
 ## <a name="next-steps"></a>Nästa steg
 

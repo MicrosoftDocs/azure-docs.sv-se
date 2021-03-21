@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574173"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Villkorlig åtkomst insikter och rapportering
@@ -91,7 +91,7 @@ När du har angett parametrarna läses effekt sammanfattningen in. Sammanfattnin
 
 Visa nedbrytningen av användare eller inloggningar för varje villkor. Du kan filtrera inloggnings tilläggen för ett visst resultat (till exempel lyckat eller misslyckat) genom att välja på sammanfattnings panelerna överst i arbets boken. Du kan se fördelningen av inloggningar för var och en av de villkorliga åtkomst villkoren: enhets tillstånd, enhets plattform, klient program, plats, program och inloggnings risk.  
 
-## <a name="sign-in-details"></a>Inloggnings information 
+## <a name="sign-in-details"></a>Inloggningsinformation 
 
 ![Inloggnings information för arbets bok](./media/howto-conditional-access-insights-reporting/workbook-sign-in-details.png)
 

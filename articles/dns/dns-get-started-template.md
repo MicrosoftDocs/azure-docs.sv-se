@@ -10,10 +10,10 @@ ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
 ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791009"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Snabb start: skapa en Azure DNS zon och en post med en ARM-mall
@@ -22,7 +22,7 @@ I den här snabb starten beskrivs hur du använder en Azure Resource Manager mal
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-dns-new-zone%2Fazuredeploy.json)
 
@@ -66,7 +66,7 @@ Du hittar fler mallar som är relaterade till Azure Traffic Manager i [Azure sna
 
 1. Kopiera PowerShell-skriptet genom att välja **Kopiera** från föregående kodblock.
 
-1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in** .
+1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in**.
 
 1. Ange värdena.
 
@@ -88,11 +88,11 @@ Azure PowerShell används för att distribuera mallen. Förutom Azure PowerShell
 
 1. Resurs gruppen måste innehålla följande resurser som visas här:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS Zone Resource Manager-mall utdata för PowerShell-distribution":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Resurs grupp för distribution av DNS-zoner":::
 
 1. Välj DNS-zonen med suffixet för `azurequickstart.org` att kontrol lera att zonen har skapats korrekt med en `A` post som refererar till värdet för `1.2.3.4` och `1.2.3.5` .
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS Zone Resource Manager-mall utdata för PowerShell-distribution":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Distribution av DNS-zon":::
 
 1. Kopiera ett namn server namn från föregående steg.
 
@@ -110,7 +110,7 @@ Azure PowerShell används för att distribuera mallen. Förutom Azure PowerShell
 
    Du bör se något som liknar följande skärm bild:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS Zone Resource Manager-mall utdata för PowerShell-distribution":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS-zon för nslookup":::
 
 Värd namnet `www.2lwynbseszpam.azurequickstart.org` matchas till `1.2.3.4` och `1.2.3.5` , precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt.
 

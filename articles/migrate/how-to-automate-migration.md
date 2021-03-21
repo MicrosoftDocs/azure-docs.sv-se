@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.openlocfilehash: cdae1fe13f8e08cb6b817f8ec6431c77013020d7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754274"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Skala migrering av virtuella VMware-datorer 
@@ -23,7 +23,7 @@ Automation-skripten Azure Migrate VMware-migrering är tillgängliga för hämtn
 - Dessa skript stöder migrering av virtuella VMware-datorer med alla diskar. Du kan uppdatera skripten om du vill replikera diskarna som är anslutna till en virtuell VMware-dator selektivt. 
 - Skripten stöder användning av bedömnings rekommendationer. Om utvärderings rekommendationer inte används migreras alla diskar som är anslutna till den virtuella VMware-datorn till samma typ av hanterad disk (standard eller Premium). Du kan uppdatera skripten om du vill använda flera typer av hanterade diskar med samma virtuella dator
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [Slutför identifierings självstudien](tutorial-discover-vmware.md) för att förbereda Azure och VMware för migrering.
 - Vi rekommenderar att du slutför den andra självstudien för att [utvärdera virtuella VMware-datorer](./tutorial-assess-vmware-azure-vm.md) innan du migrerar dem till Azure.

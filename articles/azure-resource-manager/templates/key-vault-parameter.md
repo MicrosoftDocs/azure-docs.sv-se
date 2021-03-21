@@ -4,13 +4,13 @@ description: Visar hur du skickar en hemlighet från ett nyckel valv som en para
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672713"
 ---
-# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Använd Azure Key Vault för att skicka ett säkert parameter värde under distributionen
+# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Använda Azure Key Vault till att säkert skicka parametervärden under en distribution
 
 I stället för att ange ett säkert värde (till exempel ett lösen ord) direkt i din mall eller parameter fil kan du hämta värdet från en [Azure Key Vault](../../key-vault/general/overview.md) under en distribution. Du hämtar värdet genom att referera till nyckel valvet och hemligheten i parameter filen. Värdet exponeras aldrig eftersom du bara refererar till dess nyckelvalvs-ID. Nyckel valvet kan finnas i en annan prenumeration än den resurs grupp som du distribuerar till.
 

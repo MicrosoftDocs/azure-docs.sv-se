@@ -1,7 +1,7 @@
 ---
-title: Sök i en anpassad vy – Anpassad sökning i Bing
+title: Sök i en anpassad vy – Anpassad Bing-sökning
 titleSuffix: Azure Cognitive Services
-description: När du har konfigurerat din anpassade Sök upplevelse kan du testa den från Anpassad sökning i Bing-portalen.
+description: När du har konfigurerat din anpassade Sök upplevelse kan du testa den från Anpassad Bing-sökning-portalen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: 07b0dd68e39f555171e5606b71cd1eec92a4035c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353348"
 ---
-# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Anropa din Anpassad sökning i Bing instans från portalen
+# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Anropa din Anpassad Bing-sökning instans från portalen
 
 > [!WARNING]
 > API:er för Bing-sökresultat flyttas från Cognitive Services till Bing-sökning tjänster. Från och med den **30 oktober 2020** måste alla nya instanser av Bing-sökning tillhandahållas enligt processen som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 > API:er för Bing-sökresultat som har tillhandahållits med hjälp av Cognitive Services kommer att stödjas under de kommande tre åren eller tills Enterprise-avtals slut, beroende på vilket som sker först.
 > Instruktioner för migrering finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-När du har konfigurerat din anpassade Sök upplevelse kan du testa den från Anpassad sökning i Bing- [portalen](https://customsearch.ai). 
+När du har konfigurerat din anpassade Sök upplevelse kan du testa den från Anpassad Bing-sökning- [portalen](https://customsearch.ai). 
 
 ![en skärm bild av den anpassade Bing search-portalen](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Skapa en Sök fråga 
 
-När du har loggat in på Anpassad sökning i Bing- [portalen](https://customsearch.ai)väljer du din Sök instans och klickar på fliken **produktion** . Under **slut punkter** väljer du en API-slutpunkt (till exempel webb-API). Din prenumeration avgör vilka slut punkter som visas.
+När du har loggat in på Anpassad Bing-sökning- [portalen](https://customsearch.ai)väljer du din Sök instans och klickar på fliken **produktion** . Under **slut punkter** väljer du en API-slutpunkt (till exempel webb-API). Din prenumeration avgör vilka slut punkter som visas.
 
 Om du vill skapa en Sök fråga anger du parameter värden för slut punkten. Observera att parametrarna som visas i portalen kan ändras beroende på vilken slut punkt du väljer. Mer information finns i [referensen för API för anpassad sökning](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) . Om du vill ändra vilken prenumeration din Sök instans använder lägger du till rätt prenumerations nyckel och uppdaterar lämplig marknad och/eller språk parametrar.
 
@@ -54,9 +54,9 @@ Om du klickar på **ytterligare parametrar upptäcks** följande parametrar:
     
 När du har angett alla obligatoriska alternativ klickar du på **anropa** för att Visa JSON-svaret i den högra rutan. Om du väljer den värdbaserade användar gränssnitts slut punkten kan du testa Sök funktionen i det nedre fönstret.
 
-## <a name="change-your-bing-custom-search-subscription"></a>Ändra din Anpassad sökning i Bing prenumeration
+## <a name="change-your-bing-custom-search-subscription"></a>Ändra din Anpassad Bing-sökning prenumeration
 
-Du kan ändra prenumerationen som är kopplad till din Anpassad sökning i Bing instans utan att skapa en ny instans. Om du vill att API-anrop ska skickas och debiteras till en ny prenumeration skapar du en ny Anpassad sökning i Bing resurs i Azure Portal. Använd den nya prenumerations nyckeln i API-begärandena, tillsammans med instansens anpassade konfigurations-ID.
+Du kan ändra prenumerationen som är kopplad till din Anpassad Bing-sökning instans utan att skapa en ny instans. Om du vill att API-anrop ska skickas och debiteras till en ny prenumeration skapar du en ny Anpassad Bing-sökning resurs i Azure Portal. Använd den nya prenumerations nyckeln i API-begärandena, tillsammans med instansens anpassade konfigurations-ID.
 
 ## <a name="next-steps"></a>Nästa steg
 

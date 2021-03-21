@@ -4,10 +4,10 @@ description: Dokumentation som rör förberedelse av miljön och skapandet av kl
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790960"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planera och förbereda din Service Fabric fristående kluster distribution

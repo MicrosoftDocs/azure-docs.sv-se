@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080659"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Använd Azure Policy för att implementera styrning och kontroller för Azure Cosmos DB resurser
@@ -25,7 +25,7 @@ Azure Policy innehåller inbyggda princip definitioner. Du kan skapa anpassade p
 
 ## <a name="assign-a-built-in-policy-definition"></a>Tilldela en inbyggd principdefinition
 
-Princip definitioner beskriver kraven på resursanvändningen och vilken påverkan som ska vidtas om ett villkor är uppfyllt. Princip _tilldelningar_ skapas från princip _definitioner_ . Du kan använda inbyggda eller anpassade princip definitioner för dina Azure Cosmos DB-resurser. Princip tilldelningar är begränsade till en hanterings grupp för Azure, en Azure-prenumeration eller en resurs grupp och de tillämpas på resurserna i det valda omfånget. Alternativt kan du undanta vissa resurser från omfånget.
+Princip definitioner beskriver kraven på resursanvändningen och vilken påverkan som ska vidtas om ett villkor är uppfyllt. Princip _tilldelningar_ skapas från princip _definitioner_. Du kan använda inbyggda eller anpassade princip definitioner för dina Azure Cosmos DB-resurser. Princip tilldelningar är begränsade till en hanterings grupp för Azure, en Azure-prenumeration eller en resurs grupp och de tillämpas på resurserna i det valda omfånget. Alternativt kan du undanta vissa resurser från omfånget.
 
 Du kan skapa princip tilldelningar med [Azure Portal](../governance/policy/assign-policy-portal.md)-, [Azure PowerShell](../governance/policy/assign-policy-powershell.md)-, [Azure CLI](../governance/policy/assign-policy-azurecli.md)-eller [arm-mall](../governance/policy/assign-policy-template.md).
 
@@ -40,7 +40,7 @@ I steget för att välja en princip definition anger `Cosmos DB` du i Sök fält
 
 ## <a name="create-a-custom-policy-definition"></a>Skapa en anpassad principdefinition
 
-För vissa scenarier som inte omfattas av inbyggda principer kan du skapa [en anpassad princip definition](../governance/policy/tutorials/create-custom-policy-definition.md). Senare skapar du en princip _tilldelning_ från din anpassade princip _definition_ .
+För vissa scenarier som inte omfattas av inbyggda principer kan du skapa [en anpassad princip definition](../governance/policy/tutorials/create-custom-policy-definition.md). Senare skapar du en princip _tilldelning_ från din anpassade princip _definition_.
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>Egenskaps typer och egenskaps-alias i princip regler
 
@@ -127,7 +127,7 @@ Skärm bilden visar följande utvärderings resultat för omfångs Azure Cosmos 
 - Noll av två konton är kompatibla med en princip som kräver att kontot konfigureras för flera Skriv platser
 - Noll av två konton är kompatibla med en princip som resurserna distribuerades till tillåtna Azure-regioner.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Sök efter Azure Cosmos DB inbyggda princip definitioner":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Resultat för Azure Policy tilldelningar visas":::
 
 Information om hur du reparerar icke-kompatibla resurser finns i [så här åtgärdar du resurser med Azure policy](../governance/policy/how-to/remediate-resources.md).
 

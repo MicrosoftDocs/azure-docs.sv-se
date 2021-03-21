@@ -4,10 +4,10 @@ description: Begränsa åtkomsten till ett Azure Container Registry med hjälp a
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93026232"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Begränsa åtkomsten till ett behållar register med hjälp av en tjänst slut punkt i ett virtuellt Azure-nätverk
@@ -53,7 +53,7 @@ I det här avsnittet konfigurerar du behållar registret för att tillåta åtko
 
 ### <a name="add-a-service-endpoint-to-a-subnet"></a>Lägga till en tjänst slut punkt i ett undernät
 
-När du skapar en virtuell dator skapar Azure som standard ett virtuellt nätverk i samma resurs grupp. Namnet på det virtuella nätverket baseras på namnet på den virtuella datorn. Om du till exempel namnger din virtuella dator *myDockerVM* är det virtuella standard nätverks namnet *myDockerVMVNET* , med ett undernät som heter *myDockerVMSubnet* . Verifiera detta genom att använda kommandot [AZ Network VNet List][az-network-vnet-list] :
+När du skapar en virtuell dator skapar Azure som standard ett virtuellt nätverk i samma resurs grupp. Namnet på det virtuella nätverket baseras på namnet på den virtuella datorn. Om du till exempel namnger din virtuella dator *myDockerVM* är det virtuella standard nätverks namnet *myDockerVMVNET*, med ett undernät som heter *myDockerVMSubnet*. Verifiera detta genom att använda kommandot [AZ Network VNet List][az-network-vnet-list] :
 
 ```azurecli
 az network vnet list \

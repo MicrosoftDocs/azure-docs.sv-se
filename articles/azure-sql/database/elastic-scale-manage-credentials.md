@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 5b91986d4f94861b87e413c9ff781107c3ed04a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786606"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Autentiseringsuppgifter som används för att komma åt Elastic Database klient biblioteket
@@ -23,15 +23,15 @@ ms.locfileid: "92786606"
 
 I [Elastic Database klient biblioteket](elastic-database-client-library.md) används tre olika typer av autentiseringsuppgifter för att få åtkomst till [Shard Map Manager](elastic-scale-shard-map-management.md). Beroende på behov använder du autentiseringsuppgiften med den lägsta möjliga åtkomst nivån.
 
-* **Autentiseringsuppgifter för hantering** : för att skapa eller ändra en Shard Map Manager. (Se [ord](elastic-scale-glossary.md)listan.)
-* **Autentiseringsuppgifter för åtkomst** : för att få åtkomst till en befintlig Shard Map Manager för att hämta information om Shards.
-* **Autentiseringsuppgifter för anslutning** : för att ansluta till Shards.
+* **Autentiseringsuppgifter för hantering**: för att skapa eller ändra en Shard Map Manager. (Se [ord](elastic-scale-glossary.md)listan.)
+* **Autentiseringsuppgifter för åtkomst**: för att få åtkomst till en befintlig Shard Map Manager för att hämta information om Shards.
+* **Autentiseringsuppgifter för anslutning**: för att ansluta till Shards.
 
 Se även [Hantera databaser och inloggningar i Azure SQL Database](logins-create-manage.md).
 
 ## <a name="about-management-credentials"></a>Om autentiseringsuppgifter för hantering
 
-Hanterings autentiseringsuppgifter används för att skapa ett **ShardMapManager** -objekt ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) för program som manipulerar Shard-kartor. (Se till exempel [lägga till en Shard med hjälp av Elastic Database verktyg](elastic-scale-add-a-shard.md) och [data beroende routning](elastic-scale-data-dependent-routing.md)). Användaren av klient biblioteket för elastisk skalning skapar SQL-användare och SQL-inloggningar och ser till att varje beviljas Läs-/Skriv behörighet för den globala Shard Map-databasen och alla Shard-databaser. Dessa autentiseringsuppgifter används för att underhålla den globala Shard-kartan och de lokala Shard-kartorna när ändringar i Shard-mappningen utförs. Använd till exempel hanterings uppgifter för att skapa Shard Map Manager-objektet (med **GetSqlShardMapManager** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
+Hanterings autentiseringsuppgifter används för att skapa ett **ShardMapManager** -objekt ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) för program som manipulerar Shard-kartor. (Se till exempel [lägga till en Shard med hjälp av Elastic Database verktyg](elastic-scale-add-a-shard.md) och [data beroende routning](elastic-scale-data-dependent-routing.md)). Användaren av klient biblioteket för elastisk skalning skapar SQL-användare och SQL-inloggningar och ser till att varje beviljas Läs-/Skriv behörighet för den globala Shard Map-databasen och alla Shard-databaser. Dessa autentiseringsuppgifter används för att underhålla den globala Shard-kartan och de lokala Shard-kartorna när ändringar i Shard-mappningen utförs. Använd till exempel hanterings uppgifter för att skapa Shard Map Manager-objektet (med **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
 
 ```java
 // Obtain a shard map manager.
@@ -48,7 +48,7 @@ Använd inte värden i formatet " username@server ", istället för att använda
 
 ## <a name="access-credentials"></a>Autentiseringsuppgifter för åtkomst
 
-När du skapar en Shard Map Manager i ett program som inte administrerar Shard Maps, använder du autentiseringsuppgifter som har Läs behörighet för den globala Shard-kartan. Informationen som hämtas från den globala Shard-kartan under dessa autentiseringsuppgifter används för [data beroende routning](elastic-scale-data-dependent-routing.md) och för att fylla i Shard Map-cachen på klienten. Autentiseringsuppgifterna tillhandahålls via samma anrops mönster till **GetSqlShardMapManager** :
+När du skapar en Shard Map Manager i ett program som inte administrerar Shard Maps, använder du autentiseringsuppgifter som har Läs behörighet för den globala Shard-kartan. Informationen som hämtas från den globala Shard-kartan under dessa autentiseringsuppgifter används för [data beroende routning](elastic-scale-data-dependent-routing.md) och för att fylla i Shard Map-cachen på klienten. Autentiseringsuppgifterna tillhandahålls via samma anrops mönster till **GetSqlShardMapManager**:
 
 ```java
 // Obtain shard map manager.
@@ -59,7 +59,7 @@ Observera användningen av **smmReadOnlyConnectionString** för att återspegla 
 
 ## <a name="connection-credentials"></a>Autentiseringsuppgifter för anslutning
 
-Ytterligare autentiseringsuppgifter krävs när du använder metoden **OpenConnectionForKey**  ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) för att få åtkomst till en Shard som är associerad med en horisontell partitionering-nyckel. Dessa autentiseringsuppgifter måste ge behörighet för skrivskyddad åtkomst till de lokala Shard kart tabeller som finns på Shard. Detta krävs för att utföra anslutnings validering för data beroende routning på Shard. Det här kodfragmentet ger åtkomst till data i kontexten för data beroende Routning:
+Ytterligare autentiseringsuppgifter krävs när du använder metoden **OpenConnectionForKey**  ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) för att få åtkomst till en Shard som är associerad med en horisontell partitionering-nyckel. Dessa autentiseringsuppgifter måste ge behörighet för skrivskyddad åtkomst till de lokala Shard kart tabeller som finns på Shard. Detta krävs för att utföra anslutnings validering för data beroende routning på Shard. Det här kodfragmentet ger åtkomst till data i kontexten för data beroende Routning:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))

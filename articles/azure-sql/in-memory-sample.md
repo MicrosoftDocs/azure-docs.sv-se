@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786589"
 ---
 # <a name="in-memory-sample"></a>In-Memory exempel
@@ -74,7 +74,7 @@ Resultatet **0** innebär att In-Memory inte stöds och **1** innebär att det s
 
 ### <a name="about-the-created-memory-optimized-items"></a>Om de färdiga minnesoptimerade objekten
 
-**Tabeller** : exemplet innehåller följande minnesoptimerade tabeller:
+**Tabeller**: exemplet innehåller följande minnesoptimerade tabeller:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Internt kompilerad lagrad procedur** : du kan kontrol lera SalesLT.usp_InsertSalesOrder_inmem via en katalog visnings fråga:
+**Internt kompilerad lagrad procedur**: du kan kontrol lera SalesLT.usp_InsertSalesOrder_inmem via en katalog visnings fråga:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -122,7 +122,7 @@ Men du kanske vill starta med mycket mindre värden som-N10 och-R50 för att sä
 
 I det här avsnittet visas T-SQL-skriptet som är inbäddat i vår ostress.exe kommando rad. Skriptet använder objekt som har skapats av T-SQL-skriptet som du installerade tidigare.
 
-Följande skript infogar en exempel försäljnings order med fem rad objekt i följande minnesoptimerade *tabeller* :
+Följande skript infogar en exempel försäljnings order med fem rad objekt i följande minnesoptimerade *tabeller*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -150,7 +150,7 @@ begin;
 end
 ```
 
-Om du vill göra *_ondisk* versionen av föregående T-SQL-skript för ostress.exe ersätter du båda förekomsterna av den *_inmem* under strängen med *_ondisk* . Dessa ersättningar påverkar namnen på tabeller och lagrade procedurer.
+Om du vill göra *_ondisk* versionen av föregående T-SQL-skript för ostress.exe ersätter du båda förekomsterna av den *_inmem* under strängen med *_ondisk*. Dessa ersättningar påverkar namnen på tabeller och lagrade procedurer.
 
 #### <a name="install-rml-utilities-and-ostress"></a>Installera RML-verktyg och `ostress`
 
@@ -215,7 +215,7 @@ När du har fått resultatet från *_inmem* kör utför du följande steg för *
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Redigera ostress.exe kommando rad för att ersätta alla *_inmem* med *_ondisk* .
+2. Redigera ostress.exe kommando rad för att ersätta alla *_inmem* med *_ondisk*.
 
 3. Kör ostress.exe igen för den andra gången och avbilda varaktighets resultatet.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 5eed5f0df5c6b8537beef2adcbcf81180bc997db
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92512836"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Självstudie: Azure Active Directory integrering med Panopto
@@ -87,7 +87,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Panopto i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Panopto** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Panopto** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Utför följande steg för att konfigurera enkel inloggning med Panopto i Azure 
 
 1. Logga in på din Panopto-företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. I verktygsfältet till vänster klickar du på **system**och sedan på **identitets leverantörer**.
+2. I verktygsfältet till vänster klickar du på **system** och sedan på **identitets leverantörer**.
    
     ![System](./media/panopto-tutorial/ic777670.png "System")
 
@@ -144,7 +144,7 @@ Utför följande steg för att konfigurera enkel inloggning med Panopto i Azure 
 
     c. Skriv en egen beskrivning i text rutan **egen beskrivning** .
     
-    d. I text rutan **URL för studs-URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
+    d. I text rutan **URL för studs-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
     e. I text rutan **utfärdare** klistrar du in värdet för **Azure AD-identifierare**, som du har kopierat från Azure Portal.
 
@@ -181,7 +181,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Panopto.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Panopto**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Panopto**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

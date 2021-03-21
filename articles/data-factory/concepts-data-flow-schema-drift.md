@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027490"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schema avvikelse i mappnings data flödet
@@ -43,7 +43,7 @@ I en käll omvandling definieras schema avvikelsen som att läsa kolumner som in
 
 ![Schema avvikelse källa](media/data-flow/schemadrift001.png "Schema avvikelse källa")
 
-När schema avvikelsen är aktive rad läses alla inkommande fält från din källa under körningen och skickas genom hela flödet till mottagaren. Som standard tas alla nyligen identifierade kolumner, som kallas för inkommande *kolumner* , emot som en sträng data typ. Om du vill att data flödet automatiskt ska härleda data typer av inaktuella kolumner kontrollerar du **härledda kolumn typer** i dina käll inställningar.
+När schema avvikelsen är aktive rad läses alla inkommande fält från din källa under körningen och skickas genom hela flödet till mottagaren. Som standard tas alla nyligen identifierade kolumner, som kallas för inkommande *kolumner*, emot som en sträng data typ. Om du vill att data flödet automatiskt ska härleda data typer av inaktuella kolumner kontrollerar du **härledda kolumn typer** i dina käll inställningar.
 
 ## <a name="schema-drift-in-sink"></a>Schema avvikelse i mottagare
 

@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6cb30b96f9c2094e6d690b565edf487d6508d520
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487124"
 ---
 1. Från [Azure Portal](https://portal.azure.com), i **Sök efter resurser, tjänster och dokument (G +/)** typ **virtuell nätverksgateway**. Leta upp en **virtuell nätverksgateway** i Sök resultaten och markera den.
@@ -21,12 +21,12 @@ ms.locfileid: "92487124"
 
 1. På sidan **virtuell nätverksgateway** väljer du **+ Lägg till**. Då öppnas sidan **Skapa virtuell nätverksgateway**.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/add.png" alt-text="Sök fält":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/add.png" alt-text="Sidan för virtuella nätverksgateway":::
 1. På fliken **grundläggande** fyller du i värdena för din virtuella nätverksgateway.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway.png" alt-text="Sök fält":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway.png" alt-text="Gateway-fält":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway-vnet.png" alt-text="Sök fält":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway-vnet.png" alt-text="Ytterligare Gateway-fält":::
 
    **Projektinformation**
 

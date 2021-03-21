@@ -4,10 +4,10 @@ description: I den här artikeln får du lära dig att använda HTTP-tilläggspr
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: c3a9b5b70467479fdb9b1473a1f6738eaa8a7e1b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102455898"
 ---
 # <a name="http-extension-protocol"></a>Protokoll för HTTP-tillägg

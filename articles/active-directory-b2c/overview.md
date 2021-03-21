@@ -11,10 +11,10 @@ ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953958"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Vad är Azure Active Directory B2C?
@@ -23,7 +23,7 @@ Azure Active Directory B2C ger affärs-till-kund-identitet som en tjänst. Dina 
 
 ![Informations grafiken av Azure AD B2C identitets leverantörer och underordnade program](./media/overview/azureadb2c-overview.png)
 
-Azure Active Directory B2C (Azure AD B2C) är en CIAM-lösning (Customer Identity Access Management) som stöder miljon tals användare och miljarder autentiseringar per dag. Det tar hand om skalning och säkerhet för Autentiseringstjänsten, övervakning och hantering av hot som denial-of-service, lösen ords spray eller brute force-attacker.
+Azure Active Directory B2C (Azure AD B2C) är en CIAM-lösning (Customer Identity Access Management) som har stöd för miljontals användare och miljarder autentiseringar per dag. Det tar hand om skalning och säkerhet för Autentiseringstjänsten, övervakning och hantering av hot som denial-of-service, lösen ords spray eller brute force-attacker.
 
 ## <a name="custom-branded-identity-solution"></a>Lösning för anpassad identitet
 

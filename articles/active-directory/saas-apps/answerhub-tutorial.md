@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Självstudie: Azure Active Directory integrering med AnswerHub
@@ -30,7 +30,7 @@ När du integrerar AnswerHub med Azure AD innebär det följande fördelar:
 Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att konfigurera Azure AD-integrering med AnswerHub:
 
@@ -181,7 +181,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
     a. I rutan **Namn** anger du **BrittaSimon**.
 
     b. I rutan **användar namn** anger du **brittasimon \@<yourcompanydomain. extension>**.  
-    Ett exempel är BrittaSimon@contoso.com.
+    Till exempel BrittaSimon@contoso.com.
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 

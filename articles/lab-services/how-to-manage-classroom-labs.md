@@ -4,10 +4,10 @@ description: Lär dig hur du skapar och konfigurerar ett klass rums labb, visar 
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434217"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>Hantera labb i Azure Lab Services 
@@ -89,10 +89,10 @@ Om du vill konfigurera ett klassrumslabb i ett labbkonto måste du vara medlem i
 
 ### <a name="vm-sizes"></a>VM-storlekar  
 
-| Storlek | Kärnor | RAM | Description | 
+| Storlek | Kärnor | RAM | Beskrivning | 
 | ---- | ----- | --- | ----------- | 
 | Liten | 2 | 3,5 GB | Den här storleken passar bäst för kommando rad, öppna webbläsare, webb servrar med låg trafik, små till medel stora databaser. |
-| Medium | 4 | 7 GB | Den här storleken passar bäst för Relations databaser, minnes intern cachelagring och analys | 
+| Medel | 4 | 7 GB | Den här storleken passar bäst för Relations databaser, minnes intern cachelagring och analys | 
 | Medium (kapslad virtualisering) | 4 | 16 GB | Den här storleken passar bäst för Relations databaser, minnes intern cachelagring och analys. Den här storleken stöder även kapslad virtualisering. <p>Den här storleken kan användas i scenarier där varje student behöver flera virtuella datorer. Lärare kan använda kapslad virtualisering för att konfigurera ett fåtal kapslade virtuella datorer med liten storlek inuti den virtuella datorn. </p> |
 | Liten GPU (Compute) | 6 | 56 GB | <p>Den här storleken passar bäst för beräknings intensiva och nätverks intensiva program som artificiell intelligens och djup inlärnings program.</p><p>Azure Lab Services installerar och konfigurerar automatiskt de nödvändiga GPU-drivrutinerna åt dig när du skapar ett labb med GPU-avbildningar. </p> | 
 | Liten GPU (visualisering) | 6 | 56 GB | Den här storleken passar bäst för fjärrvisualisering, strömning, spel, kodning med hjälp av ramverk som OpenGL och DirectX. | 

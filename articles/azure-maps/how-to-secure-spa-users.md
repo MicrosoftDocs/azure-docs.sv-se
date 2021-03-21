@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895621"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Skydda ett enda sid program med användar inloggning
@@ -27,19 +27,19 @@ Följande guide gäller ett program som finns på en innehålls Server eller som
 
 Skapa webb programmet i Azure AD för användare för att logga in. Webb programmet delegerar användar åtkomsten till Azure Maps REST-API: er.
 
-1. I listan med Azure-tjänster i Azure Portal väljer du **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering** .  
+1. I listan med Azure-tjänster i Azure Portal väljer du **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering**.  
 
     > [!div class="mx-imgBorder"]
     > ![Appregistrering](./media/how-to-manage-authentication/app-registration.png)
 
-2. Ange ett **namn** , Välj en **Support konto typ** , ange en omdirigerings-URI som representerar URL: en som Azure AD utfärdar token och är URL: en där kart kontrollen är värd. Ett detaljerat exempel finns [Azure Maps Azure AD-exempel](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Välj **Registrera** .  
+2. Ange ett **namn**, Välj en **Support konto typ**, ange en omdirigerings-URI som representerar URL: en som Azure AD utfärdar token och är URL: en där kart kontrollen är värd. Ett detaljerat exempel finns [Azure Maps Azure AD-exempel](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Välj **Registrera**.  
 
-3. Om du vill tilldela delegerade API-behörigheter till Azure Maps går du till programmet. Under **Appregistreringar** väljer du **API-behörigheter**  >  **Lägg till en behörighet** . Sök efter och välj **Azure Maps** under **API: er som används i organisationen** .
+3. Om du vill tilldela delegerade API-behörigheter till Azure Maps går du till programmet. Under **Appregistreringar** väljer du **API-behörigheter**  >  **Lägg till en behörighet**. Sök efter och välj **Azure Maps** under **API: er som används i organisationen**.
 
     > [!div class="mx-imgBorder"]
     > ![Lägg till API-behörigheter för app](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Markera kryss rutan bredvid **åtkomst Azure Maps** och välj sedan **Lägg till behörigheter** .
+4. Markera kryss rutan bredvid **åtkomst Azure Maps** och välj sedan **Lägg till behörigheter**.
 
     > [!div class="mx-imgBorder"]
     > ![Välj API-behörigheter för app](./media/how-to-manage-authentication/select-app-permissions.png)
