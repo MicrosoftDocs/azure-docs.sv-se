@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371404"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>IP-adresser i Azure Integration Runtime
@@ -27,7 +27,7 @@ Vilka IP-adresser som Azure Integration Runtime använder beror på den region d
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP-adresser: vissa regioner
 
-Tillåt trafik från IP-adresserna som anges för Azure integration runtime i den aktuella Azure-region där dina resurser finns. Du kan hämta en lista över tjänst etiketter från service märken från [service Tags-länken för hämtning av IP-intervall](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Om Azure-regionen till exempel är **AustraliaEast** kan du hämta en lista över IP-intervall från **DataFactory. AustraliaEast**.
+Tillåt trafik från IP-adresserna som anges för Azure integration runtime i den aktuella Azure-region där dina resurser finns. Du kan hämta en lista med IP-intervall för tjänsttaggar via [nedladdningslänk för IP-intervall för tjänsttaggar](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Om Azure-regionen till exempel är **AustraliaEast** kan du hämta en lista över IP-intervall från **DataFactory. AustraliaEast**.
 
 
 ## <a name="known-issue-with-azure-storage"></a>Känt problem med Azure Storage

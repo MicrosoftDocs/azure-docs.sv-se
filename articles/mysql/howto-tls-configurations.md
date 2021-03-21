@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 290752c0e577e6c2cd58d83f77fea8a5406388e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 5ecf2992fa9ea56f73748a9f1f98c75f9076c68f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240638"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656897"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Konfigurera TLS-inställningar i Azure Database for MySQL att använda Azure Portal
 
@@ -31,15 +31,15 @@ Följ de här stegen om du vill ange lägsta TLS-server version:
 
 1. I [Azure Portal](https://portal.azure.com/)väljer du din befintliga Azure Database for MySQL-server.
 
-1. På sidan MySQL server, under **Inställningar** , klickar du på **anslutnings säkerhet** för att öppna sidan anslutnings säkerhets konfiguration.
+1. På sidan MySQL server, under **Inställningar**, klickar du på **anslutnings säkerhet** för att öppna sidan anslutnings säkerhets konfiguration.
 
 1. I **lägsta TLS-version** väljer du **1,2** för att neka anslutningar med en TLS-version som är mindre än TLS 1,2 för MySQL-servern.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Azure Database for MySQL TLS-konfiguration":::
 
-1. Klicka på **Spara** för att spara ändringarna.
+1. Klicka på **Spara** för att spara ändringarna. 
 
-1. Ett meddelande bekräftar att anslutnings säkerhets inställningen har Aktiver ATS.
+1. Ett meddelande bekräftar att anslutnings säkerhets inställningarna har Aktiver ATS och att de körs direkt. Det finns **ingen omstart** av servern som krävs eller utförs. När ändringarna har sparats godkänns alla nya anslutningar till servern endast om TLS-versionen är större än eller lika med den lägsta TLS-versionen som har angetts på portalen.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Azure Database for MySQL TLS-konfiguration lyckades":::
 

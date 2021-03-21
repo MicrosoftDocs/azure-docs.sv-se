@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en instrument panel i Azure Portal med Azure
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 1b001c8f1ab73d23441697c93202cf1f6ea65687
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745748"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613332"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Snabb start: skapa en Azure Portal instrument panel med PowerShell
 
@@ -146,19 +146,7 @@ Kontrol lera att instrument panelen har skapats.
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-Kontrol lera att du kan se data om den virtuella datorn i Azure Portal.
-
-1. Öppna Azure-portalen och välj **Instrumentpanel**.
-
-   ![Azure Portal navigering till instrument panelen](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. På instrument panels sidan väljer du **enkel instrument panel för virtuell dator**.
-
-   ![Navigera till en enkel instrument panel för virtuell dator](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Granska instrumentpanelen. Du kan se att en del av innehållet är statiskt, men det finns även diagram som visar prestanda för den virtuella datorn.
-
-   ![Granska enkel instrument panel för virtuell dator](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

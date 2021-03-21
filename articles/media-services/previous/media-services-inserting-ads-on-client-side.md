@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103014969"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Infoga annonser på klient Sidan
@@ -475,7 +475,7 @@ Det här exemplet interagerar med Media Player. ProgrammaticAdPage. XAML-filen i
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-ProgrammaticAdPage.xaml.cs-filen skapar en AdHandlerPlugin, lägger till en TimelineMarker för att ange när en annons ska visas och lägger sedan till en hanterare för händelsen MarkerReached som läser in en RemoteAdSource som anger en URI till en stor fil och sedan spelar upp AD.
+Filen ProgrammaticAdPage. XAML. cs skapar en AdHandlerPlugin, lägger till en TimelineMarker för att ange när en annons ska visas och lägger sedan till en hanterare för MarkerReached-händelsen som läser in en RemoteAdSource med en URI till en omfattande fil och sedan kör AD.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage

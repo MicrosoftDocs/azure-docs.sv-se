@@ -12,10 +12,10 @@ ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573752"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Vanliga frågor och svar om tjänsten för tal tjänst behållare
@@ -292,7 +292,7 @@ Kan du fylla i följande test mått, inklusive vilka funktioner som ska testas o
 
 | Slutpunkt                                                | Funktionellt test                                                   | SDK | REST-API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Yes      |
+| `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Ja      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services lokal Diktering v1 WebSocket-slutpunkt        | Ja | Inga       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Den Cognitive Services lokal interaktiva v1 WebSocket-slutpunkten  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Kognitiva tjänster på lokal-konversation v1 WebSocket-slutpunkt |     |          |

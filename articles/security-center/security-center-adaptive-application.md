@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/07/2021
 ms.author: memildin
 ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439586"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
@@ -48,7 +48,7 @@ Inga tvingande alternativ är tillgängliga för närvarande. Anpassningsbara pr
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)|
 |Datorer som stöds:|![Ja ](./media/icons/yes-icon.png) Azure-och icke-Azure-datorer som kör Windows och Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure båg](../azure-arc/index.yml) -datorer|
 |Nödvändiga roller och behörigheter:|**Säkerhets läsare** och **läsar** roller kan båda Visa grupper och listor över kända säkra program<br>Rollerna **deltagare** och **säkerhets administratör** kan både redigera grupper och listor över kända säkra program|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 

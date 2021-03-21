@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
 ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720944"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Beräknings-och lagrings alternativ i Azure Database for MySQL-flexibel Server (för hands version)
@@ -156,7 +156,7 @@ När du ändrar beräknings nivån eller beräknings storleken startas servern o
 
 Skalning av lagring och ändring av kvarhållning av säkerhets kopior är online-åtgärder och kräver inte omstart av servern.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/MySQL/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) månads kostnaden på fliken **beräkning + lagring** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer **du Lägg till objekt**, expanderar kategorin **databaser** , väljer **Azure Database for MySQL** och **flexibel Server** som distributions typ för att anpassa alternativen.
 

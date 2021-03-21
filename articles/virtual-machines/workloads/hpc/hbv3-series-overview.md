@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 94e4590c66cdee74555611302f4f9228a755c76a
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: b1f2800c3787cd28437afa70b78ef8388461e413
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472897"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721171"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Översikt över virtuell dator i HBv3-serien 
 
@@ -63,13 +63,16 @@ Vid länkning i en stripe-matris ger NVMe SSD upp till 7 GB/s läsningar och 3 G
 |--------------------------------|-----------------------------------------------------------|
 | Maximal jobb storlek för MPI               | 36 000 kärnor (300 virtuella datorer i en skalnings uppsättning för en virtuell dator med singlePlacementGroup = true) |
 | MPI-stöd                    | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH  |
-| Ytterligare ramverk          | Enhetlig kommunikation X, libfabric, PGAS                  |
+| Ytterligare ramverk          | UCX, libfabric, PGAS                  |
 | Azure Storage support          | Standard-och Premium-diskar (högst 32 diskar)              |
-| OS-stöd för IOV RDMA      | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +           |
+| OS-stöd för IOV RDMA      | CentOS/RHEL 7.6 +, Ubuntu 18.04 +, SLES 12 SP4 +, WinServer 2016 +           |
 | Rekommenderat operativ system för prestanda | CentOS 8,1, Windows Server 2019 +
-| Stöd för Orchestrator           | Azure CycleCloud, Azure Batch, Azure Kubernetes-tjänsten                      | 
+| Stöd för Orchestrator           | Azure CycleCloud, Azure Batch, AKS; [kluster konfigurations alternativ](../../sizes-hpc.md#cluster-configuration-options)                      | 
+
+> [!NOTE] 
+> Windows Server 2012 R2 stöds inte på HBv3 och andra virtuella datorer med mer än 64 (virtuella eller fysiska) kärnor. Mer information finns [här](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs om de senaste meddelandena och några HPC-exempel i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582337"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104669312"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>En webbapp som anropar webb-API: er kod konfiguration
 
@@ -28,15 +28,11 @@ Som du ser i [webbappen som loggar in i användar](scenario-web-app-sign-user-ov
 
 [Webbappen som loggar in i användar](scenario-web-app-sign-user-overview.md) scenarier täcker bara det första steget. Här kan du lära dig hur du ändrar din webbapp så att den inte bara signerar användare i, men nu anropar webb-API: er.
 
-## <a name="libraries-that-support-web-app-scenarios"></a>Bibliotek som stöder scenarier med webb program
+## <a name="microsoft-libraries-supporting-web-apps"></a>Microsoft-bibliotek som stöder webbappar
 
-Följande bibliotek i Microsoft Authentication Library (MSAL) stöder Authorization Code Flow för Web Apps:
+Följande Microsoft-bibliotek stöder webbappar:
 
-| MSAL-bibliotek | Description |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Stöd för .NET Framework-och .NET Core-plattformar. Stöds inte Universell Windows-plattform (UWP), Xamarin. iOS och Xamarin. Android, eftersom dessa plattformar används för att bygga offentliga klient program. <br/><br/>För ASP.NET Core webbappar och webb-API: er, kapslas MSAL.NET in i ett bibliotek på högre nivå med namnet [Microsoft. Identity. Web](https://aka.ms/ms-identity-web). |
-| ![MSAL python](media/sample-v2-code/logo_python.png) <br/> MSAL för Python | Stöd för python-webbprogram. |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL för Java | Stöd för Java-webbprogram. |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Välj fliken för den plattform som du är intresse rad av:
 
@@ -99,7 +95,7 @@ I stället för en klient hemlighet kan du ange ett klient certifikat. Följande
 
 ## <a name="startupcs"></a>Startup.cs
 
-Din webbapp måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i din styrenhet och sid åtgärder. Men eftersom du ser i följande två alternativ kan det göras mer enkelt. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *startup.cs*:
+Din webbapp måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i din styrenhet och sid åtgärder. Men eftersom du ser i följande två alternativ kan det göras mer enkelt. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *Start. cs*:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -129,7 +125,7 @@ Om du inte vill hämta token själv ger *Microsoft. Identity. Web* två mekanism
 Om du vill anropa Microsoft Graph kan du  direkt använda `GraphServiceClient` (som exponeras av Microsoft Graph SDK) i dina API-åtgärder med hjälp av Microsoft. Identity. Web. För att exponera Microsoft Graph:
 
 1. Lägg till [Microsoft. Identity. Web. MicrosoftGraph NuGet-](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) paketet i projektet.
-1. Lägg till `.AddMicrosoftGraph()` efter `.EnableTokenAcquisitionToCallDownstreamApi()` i *startup.cs* -filen. `.AddMicrosoftGraph()` har flera åsidosättningar. Med den åsidosättning som tar ett konfigurations avsnitt som en parameter blir koden:
+1. Lägg till `.AddMicrosoftGraph()` efter `.EnableTokenAcquisitionToCallDownstreamApi()` i filen *startup. cs* . `.AddMicrosoftGraph()` har flera åsidosättningar. Med den åsidosättning som tar ett konfigurations avsnitt som en parameter blir koden:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -179,7 +175,7 @@ Om du vill anropa ett webb-API förutom Microsoft Graph tillhandahåller *Micros
 
 Precis som med webb-API: er kan du välja olika implementationer för cachelagring av token. Mer information finns i [Microsoft. Identity. Web-token cache-serialisering](https://aka.ms/ms-id-web/token-cache-serialization) på GitHub.
 
-Följande bild visar de olika möjligheterna för *Microsoft. Identity. Web* och deras inverkan på *startup.cs* -filen:
+Följande bild visar de olika möjligheterna med *Microsoft. Identity. Web* och deras inverkan på filen *startup. cs* :
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blockera diagram som visar tjänst konfigurations alternativ i Start punkt C S för att anropa ett webb-API och ange en implementation av token cache":::
 
@@ -218,9 +214,9 @@ Microsoft. Identity. Web fören klar din kod genom att ange rätt OpenID Connect
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET hanterar saker på samma sätt som ASP.NET Core, förutom att konfigurationen av OpenID Connect och prenumerationen på `OnAuthorizationCodeReceived` händelsen inträffar i [App_Start \STARTUP.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -filen. Begreppen liknar dem i ASP.NET Core, förutom att i ASP.NET måste du ange `RedirectUri` i [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Den här konfigurationen är mindre stabil än den som finns i ASP.NET Core eftersom du måste ändra den när du distribuerar programmet.
+ASP.NET hanterar saker på samma sätt som ASP.NET Core, förutom att konfigurationen av OpenID Connect och prenumerationen på `OnAuthorizationCodeReceived` händelsen inträffar i [App_Start \STARTUP.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -filen. Begreppen liknar dem i ASP.NET Core, förutom att i ASP.NET måste du ange `RedirectUri` i [Web.config#L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Den här konfigurationen är mindre stabil än den som finns i ASP.NET Core eftersom du måste ändra den när du distribuerar programmet.
 
-Här är koden för Startup.Auth.cs:
+Här är koden för start. auth. CS:
 
 ```csharp
 public partial class Startup
@@ -391,7 +387,7 @@ Användningen av klientens intyg är ett avancerat scenario, som beskrivs i [kli
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-I självstudien om ASP.NET Core används beroende inmatning för att bestämma hur token cache ska implementeras i Startup.cs-filen för ditt program. Microsoft. Identity. Web levereras med förbyggda token cache-serialiserare som beskrivs i [cachelagring av token](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). En intressant möjlighet är att välja ASP.NET Core [distribuerade cacheminnen](/aspnet/core/performance/caching/distributed#distributed-memory-cache):
+I självstudien om ASP.NET Core används beroende inmatning för att du ska kunna bestämma token cache-implementering i filen startup. cs för ditt program. Microsoft. Identity. Web levereras med förbyggda token cache-serialiserare som beskrivs i [cachelagring av token](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). En intressant möjlighet är att välja ASP.NET Core [distribuerade cacheminnen](/aspnet/core/performance/caching/distributed#distributed-memory-cache):
 
 ```csharp
 // Use a distributed token cache by adding:

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2021
+ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: e890ff1cb64961c7747b8865b68504ff0a266a3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599705"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720736"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med enkel inloggning för AWS
 
@@ -37,7 +37,7 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* AWS enkel inloggning stöder SP- **och IDP** -INITIERAd SSO
+* AWS enkel inloggning stöder SP- **och IDP** -initierad SSO.
 
 * AWS enkel inloggning stöder [**Automatisk användar etablering**](./aws-single-sign-on-provisioning-tutorial.md).
 
@@ -72,7 +72,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal på sidan för **enkel inloggning på AWS** , letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -80,9 +80,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. Klicka på **Ladda upp metadatafil**.
 
-    ![image1](common/upload-metadata.png)
-
-    b. Klicka på **mappikonen** för att välja metadatafilen och klicka på **Ladda upp**.
+    b. Klicka på **mapp-logotyp** för att välja den metadatafil som du har laddat ned från avsnittet **Konfigurera AWS enkel inloggning i SSO** (punkt 8) och klicka på **Lägg till**.
 
     ![image2](common/browse-upload-metadata.png)
 
@@ -148,15 +146,45 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-aws-single-sign-on-sso"></a>Konfigurera AWS enkel inloggning
 
-1. Öppna **AWS SSO-konsolen** . 
+1. Om du vill automatisera konfigurationen i AWS enkel inloggning måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren, klickar du på **Konfigurera AWS Single Sign-on** för att dirigera dig till AWS-programmet för enkel inloggning. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på AWS-enkel inloggning. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-10.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera AWS enkel inloggning manuellt i ett annat webbläsarfönster loggar du in på företagets webbplats för AWS-enkel inloggning som administratör.
+
+1. Gå till **tjänsterna-> säkerhet, identitet, & kompatibilitet – > AWS för enkel inloggning**.
 2. I det vänstra navigerings fönstret väljer du **Inställningar**.
-3. På sidan **Inställningar** , leta upp **identitets källa**, Välj **ändra**.
-4. På sidan Ändra katalog väljer du **extern identitetsprovider**.
-5. I avsnittet **metadata för tjänst leverantör** hittar du **AWS SSO SAML-metadata** och väljer **Hämta metadatafil** för att ladda ned metadatafilen och spara den på din dator.
-6. I avsnittet **metadata för identitetsprovider** väljer du **Bläddra** för att ladda upp metadatafilen som du har laddat ned från Azure Portal.
-7. Välj **Nästa: granska**.
-8. I text rutan skriver du **Bekräfta** för att bekräfta ändringar i katalogen.
-9. Välj **Slutför**.
+3. På sidan **Inställningar** letar du reda på **identitets källa** och klickar på **ändra**.
+
+    ![Skärm bild för ändrings tjänst för identitets källa](./media/aws-single-sign-on-tutorial/settings.png)
+
+4. På sidan Ändra identitets källa väljer du **extern identitetsprovider**.
+
+    
+    ![Skärm bild för att välja avsnittet extern identitetsprovider](./media/aws-single-sign-on-tutorial/external-identity-provider.png)
+
+
+1. Utför stegen nedan i avsnittet **Konfigurera extern identitets leverantör** :
+
+    ![Skärm bild som visar avsnittet metadata för hämtning och uppladdning](./media/aws-single-sign-on-tutorial/upload-metadata.png)
+
+    a. I avsnittet **metadata för tjänst leverantör** hittar du **AWS SSO SAML-metadata** och väljer **Hämta metadatafil** för att ladda ned metadatafilen och sparar den på datorn och använder den här metadatafilen för att ladda upp på Azure Portal.
+
+    b. Kopiera **inloggnings-URL-värde för AWS SSO** , klistra in det här värdet i text rutan för **INLOGGNINGs-URL** i **avsnittet grundläggande SAML-konfiguration** i Azure Portal.
+
+    c. I avsnittet **metadata för identitetsprovider** väljer du **Bläddra** för att ladda upp metadatafilen som du har laddat ned från Azure Portal.
+
+    d. Välj **Nästa: granska**.
+
+8. I text rutan skriver du **accepterar** för att ändra identitets källan.
+
+    ![Skärm bild för att bekräfta konfigurationen](./media/aws-single-sign-on-tutorial/accept.png)
+
+9. Klicka på **ändra identitets källa**.
 
 ### <a name="create-aws-single-sign-on-test-user"></a>Skapa test användare av AWS-enkel inloggning
 

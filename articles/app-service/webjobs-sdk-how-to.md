@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 063924dccb7d7b95b962b24ecc1af1870a855194
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102617139"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Så använder du Azure WebJobs SDK för händelsedriven bakgrundsbearbetning
@@ -829,7 +829,7 @@ Varje logg som skapats av en `ILogger` instans har en associerad `Category` och 
 |Loggnivå    |Kod|
 |------------|---|
 |Spårning       | 0 |
-|Felsökning       | 1 |
+|Felsöka       | 1 |
 |Information | 2 |
 |Varning     | 3 |
 |Fel       | 4 |

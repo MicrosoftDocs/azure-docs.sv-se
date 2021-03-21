@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: tyao
 ms.openlocfilehash: 805c3ba0360fcffe2bfd4217c0ef625fe61e5d64
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030587"
 ---
 # <a name="connect-azure-front-door-premium-to-a-web-app-origin-with-private-link"></a>Anslut Azure front dörr Premium till ett webb programs ursprung med privat länk

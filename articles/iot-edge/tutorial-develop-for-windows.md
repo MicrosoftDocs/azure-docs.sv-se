@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463365"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Självstudie: utveckla IoT Edge moduler med Windows-behållare
@@ -153,7 +153,7 @@ När ditt nya projekt har lästs in i Visual Studio-fönstret kan du bekanta dig
     > [!TIP]
     > I avsnittet autentiseringsuppgifter för registret fylls adressen till från den information som du angav när du skapade lösningen. Variablerna användar namn och lösen ord är dock lagrade i. miljö-filen. Detta är av säkerhets nivå, eftersom. miljö filen är git, men distributions mal len inte är det.
 * Ett IoT Edge module-projekt med namnet **IotEdgeModule1**.
-  * **Program.cs** -filen innehåller den C#-modulens standard kod som medföljer projekt mal len. Standardmodulen tar emot inmatade objekt från en källa och skickar den vidare till IoT Hub.
+  * Filen **program. cs** innehåller den C#-modul kod som medföljer projekt mal len. Standardmodulen tar emot inmatade objekt från en källa och skickar den vidare till IoT Hub.
   * **module.jspå** fil innehåller information om modulen, inklusive den fullständiga avbildnings lagrings platsen, avbildnings versionen och vilken Dockerfile som ska användas för varje plattform som stöds.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Ange autentiseringsuppgifterna för registret för IoT Edge agenten
@@ -188,7 +188,7 @@ Varje modul kan ha flera *indata* -och *utmatnings* köer som deklareras i koden
 
 C#-koden som medföljer projekt mal len använder [klassen ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) från IoT Hub SDK för .net.
 
-1. I **program.cs** -filen letar du reda på **SetInputMessageHandlerAsync** -metoden.
+1. Leta reda på **SetInputMessageHandlerAsync** -metoden i filen **program. cs** .
 
 2. Metoden [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) konfigurerar en inkommande kö för att ta emot inkommande meddelanden. Granska den här metoden och se hur den initierar en indatakö med namnet **INPUT1**.
 

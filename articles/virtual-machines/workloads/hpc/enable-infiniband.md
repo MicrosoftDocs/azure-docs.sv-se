@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666959"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721234"
 ---
 # <a name="enable-infiniband"></a>Aktivera InfiniBand
 
@@ -22,9 +22,9 @@ ms.locfileid: "101666959"
 Det finns olika sätt att aktivera InfiniBand på de kompatibla VM-storlekarna.
 
 ## <a name="vm-images-with-infiniband-drivers"></a>VM-avbildningar med InfiniBand-drivrutiner
-Se [VM-avbildningar](configure.md#vm-images) för en lista över virtuella dator avbildningar som stöds på Marketplace, som är förinstallerade med InfiniBand-drivrutiner (för SR-IOV eller icke-SR-IOV-VM) eller som kan konfigureras med lämpliga driv rutiner.
-För SR-IOV-aktiverade [RDMA-kompatibla virtuella datorer](../../sizes-hpc.md#rdma-capable-instances)är [CentOS-HPC version 7,6 eller en senare](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) version av VM-avbildningar på Marketplace det enklaste sättet att komma igång.
-De virtuella Ubuntu-avbildningarna kan konfigureras med rätt driv rutiner för både SR-IOV-och icke-SR-IOV-aktiverade virtuella datorer med hjälp av [instruktionerna här](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351).
+Se [VM-avbildningar](configure.md#vm-images) för en lista över virtuella dator avbildningar som stöds på Marketplace, som är förinstallerade med InfiniBand-drivrutiner (för SR-IOV eller icke-SR-IOV-VM) eller som kan konfigureras med lämpliga driv rutiner för [RDMA-kompatibla virtuella datorer](../../sizes-hpc.md#rdma-capable-instances).
+- De virtuella [CentOS-HPC-](configure.md#centos-hpc-vm-images) avbildningarna i Marketplace är det enklaste sättet att komma igång.
+- De virtuella [Ubuntu](configure.md#ubuntu-vm-images) -avbildningarna kan konfigureras med rätt IB-drivrutiner.
 
 ## <a name="infiniband-driver-vm-extensions"></a>InfiniBand-drivrutin för VM-tillägg
 I Linux kan [INFINIBANDDRIVERLINUX VM-tillägget](../../extensions/hpc-compute-infiniband-linux.md) användas för att installera Mellanox ofed-drivrutinerna och aktivera InfiniBand på de virtuella SR-IOV-datorerna H-och N-serien.
@@ -68,6 +68,6 @@ sudo systemctl restart waagent
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om att installera olika [MPI-bibliotek som stöds](setup-mpi.md) och deras optimala konfiguration på de virtuella datorerna.
-- Läs översikten över [HB-serien](hb-series-overview.md) och [HC-serien](hc-series-overview.md) för att lära dig mer om att konfigurera arbets belastningar optimalt för prestanda och skalbarhet.
-- Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs översikt över [HBv3-serien](hbv3-series-overview.md) och [HC-serien](hc-series-overview.md).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

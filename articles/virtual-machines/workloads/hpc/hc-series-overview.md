@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e2f6fb167ec8b1ea15f7f08cf77720e705b2e4a3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666079"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721382"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Översikt över virtuell dator i HC-serien
 
@@ -51,13 +51,13 @@ Följande diagram visar ansvars fördelning av kärnor som är reserverade för 
 |-----------------------------|-----------------------|
 | Maximal jobb storlek för MPI            | 13200 kärnor (300 virtuella datorer i en skalnings uppsättning för en virtuell dator med singlePlacementGroup = true)  |
 | MPI-stöd                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, Platform MPI  |
-| Ytterligare ramverk       | Enhetlig kommunikation X, libfabric, PGAS |
+| Ytterligare ramverk       | UCX, libfabric, PGAS |
 | Azure Storage support       | Standard-och Premium-diskar (högst 4 diskar) |
-| OS-stöd för IOV RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
-| Stöd för Orchestrator        | CycleCloud, batch  |
+| OS-stöd för IOV RDMA   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Stöd för Orchestrator        | CycleCloud, batch, AKS; [kluster konfigurations alternativ](../../sizes-hpc.md#cluster-configuration-options)  |
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [Intel Xeon SP-arkitektur](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html).
-- Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

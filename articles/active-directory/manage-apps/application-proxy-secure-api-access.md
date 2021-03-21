@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258990"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Säker åtkomst till lokala API: er med Azure AD-programproxy
@@ -136,7 +136,7 @@ Nu har du registrerat AppProxyNativeAppSample-appen i Azure Active Directory. S�
 
 ## <a name="configure-the-native-app-code"></a>Konfigurera koden för den inbyggda appen
 
-Det sista steget är att konfigurera den inbyggda appen. Följande kodfragment från *Form1.cs* -filen i NativeClient-exempel appen gör att MSAL-biblioteket hämtar token för att begära API-anropet och kopplar det som innehavare till app-huvudet.
+Det sista steget är att konfigurera den inbyggda appen. Följande fragment från *Form1. cs* -filen i NativeClient-exempel appen gör att MSAL-biblioteket hämtar token för att begära API-anropet och kopplar det som innehavare till app-huvudet.
 
    ```
    // Acquire Access Token from AAD for Proxy Application

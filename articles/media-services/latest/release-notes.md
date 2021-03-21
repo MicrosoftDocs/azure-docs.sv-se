@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562577"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596747"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
@@ -84,7 +84,7 @@ Version 3 tillhandahåller:
  
 - Real tids support dygnet runt
 - ARM-REST-API: er, klient-SDK: er för .NET Core, Node.js, python, Java, go och Ruby.
-- Kundhanterade nycklar, betrodd lagrings integrering, stöd för privat länk och [mycket mer](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Kundhanterade nycklar, betrodd lagrings integrering, stöd för privat länk och [mycket mer](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
 #### <a name="action-required"></a>Åtgärd krävs
 
@@ -123,7 +123,6 @@ Uppdatera till de senaste klient-SDK: erna i dina kod baser med hjälp av din pa
 - **[Betrodd lagring](concept-trusted-storage.md)**: Media Services kan konfigureras för åtkomst till Azure Storage med hjälp av en hanterad identitet som är kopplad till Media Services-kontot. När lagrings konton nås med hjälp av en hanterad identitet kan kunderna konfigurera mer restriktiva nätverks-ACL: er på lagrings kontot utan att blockera Media Services scenarier.
 
 - **[Hanterade identiteter](concept-managed-identities.md)**: kunder kan aktivera en systemtilldelad hanterad identitet för ett Media Services konto för att ge åtkomst till nyckel valv (för Kundhanterade nycklar) och lagrings konton (för betrodd lagring).
-
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Uppdaterade typescript Node.js-exempel med isomorphic SDK för Java Script
 
@@ -373,7 +372,7 @@ Nu kan du ange en lista över till gångs-eller konto filter som ska gälla för
 
 Media Services v3 stöds nu i Azure National-moln. Alla funktioner är inte tillgängliga i alla moln än. Mer information finns i [moln och regioner där Azure Media Services v3 finns](azure-clouds-regions.md).
 
-[Microsoft. Media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) -händelsen har lagts till i Azure Event Grid scheman för Media Services.
+[Microsoft. Media. JobOutputProgress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) -händelsen har lagts till i Azure Event Grid scheman för Media Services.
 
 ## <a name="january-2019"></a>Januari 2019
 

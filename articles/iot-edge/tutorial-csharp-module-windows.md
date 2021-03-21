@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
 ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103464077"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Självstudie: utveckla C# IoT Edge moduler med Windows-behållare
@@ -129,7 +129,7 @@ Distributions manifestet delar autentiseringsuppgifterna för behållar registre
 
 Koden för standardmodulen tar emot meddelanden i en indatakö och skickar dem vidare via en utgående kö. Nu ska vi lägga till ytterligare kod så att modulen bearbetar meddelandena på gränsen innan de vidarebefordrar dem till din IoT-hubb. Uppdatera modulen så att den analyserar temperatur data i varje meddelande och skickar meddelandet till IoT Hub endast om temperaturen överskrider ett visst tröskelvärde.
 
-1. I Visual Studio väljer du **CSharpModule**  >  **program.cs**.
+1. I Visual Studio väljer du **CSharpModule**  >  **program. cs**.
 
 1. Överst i **CSharpModule**-namnrymden läger du till tre **using**-instruktioner för typer som ska användas senare:
 

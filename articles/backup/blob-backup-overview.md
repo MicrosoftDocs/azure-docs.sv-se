@@ -4,10 +4,10 @@ description: Lär dig om drift säkerhets kopiering för Azure-blobar (i för ha
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101746123"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Översikt över drift säkerhets kopiering för Azure-blobar (i för hands version)
@@ -59,7 +59,7 @@ Du kan återställa data från alla tidpunkter som det finns en återställnings
 
 Med den operativa säkerhets kopian kan du återställa alla block blobbar i lagrings kontot, bläddra bland och återställa vissa behållare eller använda prefix matchningar för att återställa en delmängd av blobbar. Alla återställningar kan endast utföras på käll lagrings kontot.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Du debiteras inga hanterings avgifter eller instans avgifter när du använder drift säkerhets kopiering för blobbar. Du kommer dock att debiteras följande avgifter:
 
