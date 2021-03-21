@@ -16,10 +16,10 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e15b592aaa780ea80b6931c6d44fbf99e2f3a730
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673057"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache och Content Server-distribution på virtuella Azure-datorer
@@ -348,7 +348,7 @@ I korthet måste du:
 ![Referens konfiguration för Azure IaaS VM för SAP MaxDB-DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Säkerhetskopiering och återställning
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Säkerhets kopiering och återställning
 När du distribuerar SAP MaxDB till Azure måste du granska din säkerhets kopierings metod. Även om systemet inte är ett produktivt system måste SAP-databasen som hanteras av SAP MaxDB säkerhets kopie ras regelbundet. Eftersom Azure Storage behåller tre avbildningar är en säkerhets kopia nu mindre viktig när det gäller att skydda systemet mot lagrings problem och viktigare drift-eller administrativa problem. Det främsta skälet till att underhålla en lämplig säkerhets kopierings-och återställnings plan är att du kan kompensera för logiska eller manuella fel genom att tillhandahålla funktioner för återställning av tidpunkter. Målet är att antingen använda säkerhets kopieringar för att återställa databasen till en viss tidpunkt eller för att använda säkerhets kopieringarna i Azure för att dirigera ett annat system genom att kopiera den befintliga databasen. 
 
 Att säkerhetskopiera och återställa en databas i Azure fungerar på samma sätt som för lokala system, så du kan använda standard verktyg för SAP MaxDB Backup/Restore, som beskrivs i något av SAP-MaxDB dokumentations dokument som anges i SAP anmärkning [767598]. 

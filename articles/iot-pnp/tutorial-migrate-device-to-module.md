@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831219"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Självstudie: ansluta en IoT Plug and Play-modul (C#)
@@ -103,7 +103,7 @@ Så här öppnar och förbereder du exempelprojektet:
 
 1. I Visual Studio navigerar du till **Project > termostat-egenskaper > Felsök**. Lägg sedan till följande miljövariabler i projektet:
 
-    | Namn | Värde |
+    | Name | Värde |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | Begär |
     | IOTHUB_MODULE_CONNECTION_STRING | Den anslutnings sträng för modul som du antecknade tidigare |
@@ -114,18 +114,18 @@ Så här öppnar och förbereder du exempelprojektet:
 
 Ändra koden så att den fungerar som en modul i stället för en enhet:
 
-1. Öppna *parameter.cs* i Visual Studio och ändra raden som anger variabeln **PrimaryConnectionString** enligt följande:
+1. I Visual Studio öppnar du *parameter. cs* och ändrar raden som anger **PrimaryConnectionString** -variabeln enligt följande:
 
     ```csharp
     public string PrimaryConnectionString { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_MODULE_CONNECTION_STRING");
     ```
 
-1. I Visual Studio öppnar du *program.cs* och ersätter de sju instanserna av `DeviceClient` klassen med `ModuleClient` klassen.
+1. Öppna *program. cs* i Visual Studio och ersätt de sju instanserna av `DeviceClient` klassen med `ModuleClient` klassen.
 
     > [!TIP]
     > Använd Visual Studio search och ersätt funktionen med **match-Case** och **Matcha hela ord** som är aktiverade för att ersätta `DeviceClient` med `ModuleClient` .
 
-1. Öppna *thermostat.cs* i Visual Studio och ersätt båda förekomsterna av `DeviceClient` klassen med `ModuleClient` klassen enligt följande.
+1. Öppna *termostat. cs* i Visual Studio och ersätt båda instanserna av `DeviceClient` klassen med `ModuleClient` klassen enligt följande.
 
 1. Spara ändringarna av de filer som du ändrade.
 
@@ -178,7 +178,7 @@ Med tjänst-SDK: er kan du hämta modell-ID: t för anslutna IoT Plug and Play e
 
 1. I Visual Studio navigerar du till **Project > termostat-egenskaper > Felsök**. Lägg sedan till följande miljövariabler i projektet:
 
-    | Namn | Värde |
+    | Name | Värde |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | min-modul-enhet |
     | IOTHUB_CONNECTION_STRING | Värdet du antecknade när du slutförde [konfiguration av din miljö](set-up-environment.md) |
@@ -186,13 +186,13 @@ Med tjänst-SDK: er kan du hämta modell-ID: t för anslutna IoT Plug and Play e
     > [!TIP]
     > Du kan också hitta anslutnings strängen för IoT Hub i Azure IoT Explorer-verktyget.
 
-1. Öppna filen *program.cs* och ändra raden som anropar ett kommando enligt följande:
+1. Öppna filen *program. cs* och ändra raden som anropar ett kommando enligt följande:
 
     ```csharp
     CloudToDeviceMethodResult result = await s_serviceClient.InvokeDeviceMethodAsync(s_deviceId, "my-module", commandInvocation);
     ```
 
-1. I *program.cs* -filen ändrar du raden som hämtar enheten på följande sätt:
+1. I filen *program. cs* ändrar du raden som hämtar enheten på följande sätt:
 
     ```csharp
     Twin twin = await s_registryManager.GetTwinAsync(s_deviceId, "my-module");

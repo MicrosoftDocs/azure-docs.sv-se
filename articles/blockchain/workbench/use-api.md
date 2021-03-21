@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004848"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Använda Azure blockchain Workbench Preview REST API
@@ -134,7 +134,7 @@ HTTP/1.1 200
 
 Använd [programmen Hämta API](/rest/api/azure-blockchain-workbench/applications/applicationsget) för att hämta alla blockchain Workbench-program för användaren. I det här exemplet har den inloggade användaren åtkomst till två program:
 
-- [Till gångs överföring](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Tillgångsöverföring](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
 - [Kyld transport](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 ### <a name="applications-get-request"></a>Begäran om hämtning av program

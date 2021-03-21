@@ -7,10 +7,10 @@ ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102216391"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP-utlösare
@@ -547,7 +547,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `HttpTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 | **bastyp** | saknas| Required-måste anges till `httpTrigger` . |
 | **position** | saknas| Required-måste anges till `in` . |

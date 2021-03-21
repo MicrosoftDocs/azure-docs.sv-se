@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523846"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Undersök sensor identifieringar i enhets kartan
@@ -318,7 +318,7 @@ Följande information kan uppdateras manuellt. Information som anges manuellt å
 | Objekt | Beskrivning |
 |--|--|
 | Grundläggande information | Den grundläggande information som krävs. |
-| Namn | Enhetens namn. <br /> Sensorn identifierar som standard enhets namnet som det definieras i nätverket. Till exempel ett namn som definierats i DNS-servern. <br /> Om inga sådana namn har definierats visas enhetens IP-adress i det här fältet. <br /> Du kan ändra ett enhets namn manuellt. Ge dina enheter meningsfulla namn som återspeglar deras funktioner. |
+| Name | Enhetens namn. <br /> Sensorn identifierar som standard enhets namnet som det definieras i nätverket. Till exempel ett namn som definierats i DNS-servern. <br /> Om inga sådana namn har definierats visas enhetens IP-adress i det här fältet. <br /> Du kan ändra ett enhets namn manuellt. Ge dina enheter meningsfulla namn som återspeglar deras funktioner. |
 | Typ | Enhets typen som identifierades av sensorn. <br /> Mer information finns i [Visa enhets typer](#view-device-types). |
 | Leverantör | Enhets leverantören. Detta bestäms av de inledande tecknen i enhetens MAC-adress. Det här fältet är skrivskyddat. |
 | Operativsystem | Enhetens operativ system identifierat av sensorn. |
@@ -327,7 +327,7 @@ Följande information kan uppdateras manuellt. Information som anges manuellt å
 | Attribut | Eventuell ytterligare information som identifierades om enheten under inlärnings perioden och som inte tillhör andra kategorier visas i avsnittet attribut. <br /> Informationen är RO. |
 | Inställningar | Du kan ändra enhets inställningarna manuellt för att förhindra falska positiva identifieringar: <br /> - **Auktoriserad enhet**: under inlärnings perioden identifieras alla enheter som identifieras i nätverket som auktoriserade enheter. När en enhet identifieras efter inlärnings perioden visas den som en oauktoriserad enhet som standard. Du kan ändra den här definitionen manuellt. <br /> - **Kallas skanner**: aktivera det här alternativet om du vet att enheten är känd som skanner och det inte finns något behov av att varna dig om den. <br /> - **Programmerings enhet**: aktivera det här alternativet om du vet att den här enheten kallas en programmerings enhet och används för att göra programmerings ändringar. Att identifiera det som en programmerings enhet förhindrar aviseringar för programmerings ändringar från den här till gången. |
 | Anpassade grupper | De anpassade grupperna i enhets kartan där enheten ingår. |
-| Stat | Enhetens säkerhet och status för auktorisering: <br /> -Statusen är `Secured` när det inte finns några aviseringar <br /> – När det finns aviseringar om enheten visas antalet aviseringar <br /> – Statusen `Unauthorized` visas för enheter som har lagts till i nätverket efter inlärnings perioden. Du kan definiera enheten manuellt som `Authorized Device` i inställningarna <br /> – Om den här enhetens adress definieras som en dynamisk adress `DHCP` läggs den till i status. |
+| Tillstånd | Enhetens säkerhet och status för auktorisering: <br /> -Statusen är `Secured` när det inte finns några aviseringar <br /> – När det finns aviseringar om enheten visas antalet aviseringar <br /> – Statusen `Unauthorized` visas för enheter som har lagts till i nätverket efter inlärnings perioden. Du kan definiera enheten manuellt som `Authorized Device` i inställningarna <br /> – Om den här enhetens adress definieras som en dynamisk adress `DHCP` läggs den till i status. |
 
 
 | Nätverk | Beskrivning |
@@ -709,6 +709,6 @@ Att exportera:
 
 1. Välj ett export alternativ.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 9cfc48e3fdb96ba5b63b28288a801095f7b36f43
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Självstudie: Azure Active Directory integrering med SpringCM
@@ -30,7 +30,7 @@ Genom att integrera SpringCM med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med SpringCM behöver du följande objekt:
 

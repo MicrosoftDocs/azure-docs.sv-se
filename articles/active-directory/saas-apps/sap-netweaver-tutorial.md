@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
 ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97962813"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SAP NetWeaver
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar SAP NetWeaver med A
 * Gör det möjligt för användarna att logga in automatiskt till SAP NetWeaver med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -193,7 +193,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
     1. I **Namn**-fältet skriver du `B.Simon`.  
-    1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
     1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
     1. Klicka på **Skapa**.
 
@@ -378,6 +378,6 @@ Om du förväntar dig att en roll ska tilldelas användarna kan du välja den fr
 
 5. Klicka på **Slutför**.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 När du har konfigurerat Azure AD SAP-NetWeaver kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

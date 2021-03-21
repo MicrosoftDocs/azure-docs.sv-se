@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520569"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Distribuera Azure Machine Learning Studio (klassiska) webb tjänster som använder moduler för data import och data export
@@ -104,7 +104,7 @@ Distribuera som en klassisk webb tjänst och skapa ett program för att använda
 4. I **standard slut punkts** tabellen klickar du på länken för **batch-körning** för att öppna API-hjälp sidan.
 5. I Visual Studio skapar du ett C#-konsol program: **nytt**  >  **projekt**  >  **Visual C#**  >  **Windows klassisk Desktop**  >  **console-app (.NET Framework)**.
 6. På sidan API-hjälp hittar du avsnittet **exempel kod** längst ned på sidan.
-7. Kopiera och klistra in C#-exempel koden i Program.cs-filen och ta bort alla referenser till blob-lagringen.
+7. Kopiera och klistra in C#-exempel koden i filen program. CS och ta bort alla referenser till blob-lagringen.
 8. Uppdatera värdet för variabeln *apiKey* med API-nyckeln Sparad tidigare.
 9. Leta upp deklarationen för begäran och uppdatera värdena för webb tjänst parametrar som skickas till modulerna *Importera data* och *Exportera data* . I det här fallet använder du den ursprungliga frågan, men definierar ett nytt tabell namn.
 
@@ -134,7 +134,7 @@ Distribuera som en ny webb tjänst och skapa ett program för att använda den:
 4. Klicka på **förbruka** på sidan **snabb start** .
 5. I avsnittet **exempel kod** klickar du på **batch**.
 6. I Visual Studio skapar du ett C#-konsol program: **nytt**  >  **projekt**  >  **Visual C#**  >  **Windows klassisk Desktop**  >  **console-app (.NET Framework)**.
-7. Kopiera och klistra in C#-exempel koden i din Program.cs-fil.
+7. Kopiera och klistra in C#-exempel koden i filen program. cs.
 8. Uppdatera värdet för variabeln *apiKey* med **primär nyckeln** som finns i avsnittet **grundläggande förbruknings information** .
 9. Leta upp *ScoreRequest* -deklarationen och uppdatera värdena för webb tjänst parametrar som skickas till modulerna *Importera data* och *Exportera data* . I det här fallet använder du den ursprungliga frågan, men definierar ett nytt tabell namn.
 

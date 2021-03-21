@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: e669e27547633639a88674ffee499fb1d84facdf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673961"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Självstudie: skapa flera resurs instanser med ARM-mallar
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Självstudie: Skapa flera resursinstanser med ARM-mallar
 
 Lär dig hur du itererar i din Azure Resource Manager-mall (ARM-mall) för att skapa flera instanser av en Azure-resurs. I den här självstudien ändrar du en mall för att skapa tre lagringskontoinstanser.
 
@@ -30,7 +30,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 En Microsoft Learn-modul som täcker resurs kopiering finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner i arm-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 
@@ -60,7 +60,7 @@ Från Visual Studio Code gör du följande fyra ändringar:
 ![Azure Resource Manager skapar flera instanser](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Lägg till elementet `copy` i resursdefinitionen för lagringskontot. I `copy` elementet anger du antalet iterationer och en variabel för den här slingan. Värdet för antal måste vara ett positivt heltal och får inte överskrida 800.
-2. Funktionen `copyIndex()` returnerar den aktuella iterationen i loopen. Du kan använda indexet som namnprefix. `copyIndex()` är nollbaserat. Du kan ange ett värde i funktionen för att kompensera värdet för indexet `copyIndex()` . Ett exempel är `copyIndex(1)`.
+2. Funktionen `copyIndex()` returnerar den aktuella iterationen i loopen. Du kan använda indexet som namnprefix. `copyIndex()` är nollbaserat. Du kan ange ett värde i funktionen för att kompensera värdet för indexet `copyIndex()` . Till exempel `copyIndex(1)`.
 3. Ta bort `variables` elementet eftersom det inte används längre.
 4. Ta bort `outputs` elementet. Det behövs inte längre.
 

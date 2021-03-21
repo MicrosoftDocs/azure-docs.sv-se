@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523574"
 ---
 # <a name="work-with-device-notifications"></a>Arbeta med enhetsmeddelanden
@@ -98,6 +98,6 @@ Undersök rekommendationerna för att utöka OS-klassificeringen. Den här infor
 
 När du godkänner en rekommendation kommer operativ systemets typ information att uppdateras i sensorn.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Visa aviseringar](how-to-view-alerts.md)

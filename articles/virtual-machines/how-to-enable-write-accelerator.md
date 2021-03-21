@@ -10,10 +10,10 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
 ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737922"
 ---
 # <a name="enable-write-accelerator"></a>Aktivera Skrivningsaccelerator
@@ -63,7 +63,7 @@ IOPS-gränserna är per virtuell dator och *inte* per disk. Alla Skrivningsaccel
 
 I följande avsnitt beskrivs hur Skrivningsaccelerator kan aktive ras på Azure Premium Storage-VHD: er.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 Följande krav gäller för användning av Skrivningsaccelerator vid den här tidpunkten:
 

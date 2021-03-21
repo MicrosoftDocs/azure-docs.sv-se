@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 1/29/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f97a99bf2d055805ee665ab51aff8cff12dc5a69
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99094200"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Självstudie: optimera indexering med push-API
@@ -104,10 +104,10 @@ Den här enkla/.NET-distribution.-konsolen i C# utför följande uppgifter:
 
  Innan du kör programmet ska du ta en minut för att undersöka koden och index definitionerna för det här exemplet. Relevant kod finns i flera filer:
 
-  + **Hotel.cs** och **address.cs** innehåller det schema som definierar indexet
-  + **DataGenerator.cs** innehåller en enkel klass som gör det enkelt att skapa stora mängder hotell data
-  + **ExponentialBackoff.cs** innehåller kod för att optimera indexerings processen enligt beskrivningen nedan
-  + **Program.cs** innehåller funktioner som skapar och tar bort Azure kognitiv sökning indexet, indexerar batchar med data och testar olika batch-storlekar
+  + **Hotell. cs** och **address. cs** innehåller det schema som definierar indexet
+  + **DataGenerator. cs** innehåller en enkel klass som gör det enkelt att skapa stora mängder hotell data
+  + **ExponentialBackoff. cs** innehåller kod för att optimera indexerings processen enligt beskrivningen nedan
+  + **Program. cs** innehåller funktioner som skapar och tar bort Azure kognitiv sökning indexet, indexerar batchar med data och testar olika batch-storlekar
 
 ### <a name="creating-the-index"></a>Skapar indexet
 
@@ -115,7 +115,7 @@ Det här exempel programmet använder .NET SDK för att definiera och skapa ett 
 
 Data modellen definieras av hotell klassen, som också innehåller referenser till klassen address. FieldBuilder går igenom flera klass definitioner för att generera en komplex data struktur för indexet. Metadata-Taggar används för att definiera attributen för varje fält, till exempel om det är sökbart eller sorterbart.
 
-Följande kodfragment från **Hotel.cs** -filen visar hur ett enskilt fält och en referens till en annan data modell klass kan anges.
+Följande kodfragment från filen **hotell. cs** visar hur ett enskilt fält och en referens till en annan data modell klass kan anges.
 
 ```csharp
 . . .
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-I **program.cs** -filen definieras indexet med ett namn och en fält samling som genereras av `FieldBuilder.Build(typeof(Hotel))` metoden, och sedan skapas följande:
+I filen **program. cs** definieras index med ett namn och en fält samling som genereras av `FieldBuilder.Build(typeof(Hotel))` metoden, och sedan skapas följande:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
@@ -143,7 +143,7 @@ private static async Task CreateIndexAsync(string indexName, SearchIndexClient i
 
 ### <a name="generating-data"></a>Genererar data
 
-En enkel klass implementeras i **DataGenerator.cs** -filen för att generera data för testning. Det enda syftet med den här klassen är att göra det enkelt att generera ett stort antal dokument med ett unikt ID för indexering.
+En enkel klass implementeras i filen **DataGenerator. cs** för att generera data för testning. Det enda syftet med den här klassen är att göra det enkelt att generera ett stort antal dokument med ett unikt ID för indexering.
 
 Om du vill hämta en lista över 100 000 hotell med unika ID: n kör du följande kodrader:
 
@@ -345,7 +345,7 @@ do
 
 Härifrån kommer vi att packa upp exponent backoff-koden i en funktion så att den enkelt kan anropas.
 
-En annan funktion skapas sedan för att hantera aktiva trådar. För enkelhetens skull ingår inte den funktionen här, men den kan hittas i [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs). Funktionen kan anropas med följande kommando där `hotels` är de data som vi vill överföra, `1000` är batchstorleken och `8` är antalet samtidiga trådar:
+En annan funktion skapas sedan för att hantera aktiva trådar. För enkelhetens skull ingår inte funktionen här, men den finns i [ExponentialBackoff. cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs). Funktionen kan anropas med följande kommando där `hotels` är de data som vi vill överföra, `1000` är batchstorleken och `8` är antalet samtidiga trådar:
 
 ```csharp
 await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
@@ -388,7 +388,7 @@ long indexDocCount = await searchClient.GetDocumentCountAsync();
 var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 I Azure Portal öppnar du sidan Sök tjänst **Översikt** och letar rätt på **optimerings** indexet i listan **index** .
 
