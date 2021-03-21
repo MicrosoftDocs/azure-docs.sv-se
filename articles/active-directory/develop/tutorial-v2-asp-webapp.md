@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 38def2b5af3a5f0f9a32c2b681bd0ee95ca44086
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174690"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Självstudie: lägga till inloggning till Microsoft i en ASP.NET-webbapp
@@ -88,11 +88,11 @@ Följande steg används för att skapa en OWIN-mellanprogram start klass för at
 > [!TIP]
 > Om ditt projekt inte har en `Startup.cs`-fil i rotmappen:
 > 1. Högerklicka på projektets rotmapp och välj sedan **Lägg till**  >  **nytt objekt**  >  **OWIN start klass**.<br/>
-> 2. Ge den namnet **startup.cs**.
+> 2. Namn som den **startar. cs**.
 >
 >> Kontrol lera att den valda klassen är en OWIN-startklass och inte en standard klass i C#. Bekräfta detta genom att kontrol lera att du ser [Assembly: OwinStartup (typeof ({NameSpace}. Start))] ovanför namn området.
 
-1. Lägg till *OWIN* -och *Microsoft. IdentityModel* -referenser till startup.CS:
+1. Lägg till *OWIN* -och *Microsoft. IdentityModel* -referenser till startup. CS:
 
     ```csharp
     using Microsoft.Owin;

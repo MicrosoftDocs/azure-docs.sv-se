@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/16/2020
 ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176101"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Använda hanterade identiteter i Azure Kubernetes-tjänsten
@@ -33,7 +33,7 @@ Du måste ha följande resurs installerad:
 
 AKS använder flera hanterade identiteter för inbyggda tjänster och tillägg.
 
-| Identitet                       | Namn    | Användningsfall | Standard behörigheter | Ta med din egen identitet
+| Identitet                       | Name    | Användningsfall | Standard behörigheter | Ta med din egen identitet
 |----------------------------|-----------|----------|
 | Kontrollplan | inte synlig | Används av AKS Control plan-komponenter för att hantera kluster resurser, inklusive belastnings utjämning och AKS-hanterade offentliga IP-adresser och åtgärder för automatisk skalnings åtgärd i klustret | Deltagar roll för nod resurs grupp | stöds
 | Kubelet | AKS-kluster namn – agentpoolegenskap | Autentisering med Azure Container Registry (ACR) | NA (för Kubernetes v 1.15 +) | Stöds för närvarande inte

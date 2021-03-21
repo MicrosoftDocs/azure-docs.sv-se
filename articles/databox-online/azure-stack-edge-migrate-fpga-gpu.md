@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
 ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573292"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrera arbets belastningar från en Azure Stack Edge Pro-FPGA till en Azure Stack Edge Pro GPU
@@ -39,7 +39,7 @@ Det här avsnittet innehåller en jämför ande Sammanfattning av funktionerna m
 | Användbar lagring | 4,19 TB <br> Efter reserverat utrymme för paritets återhämtning och intern användning | 12,5 TB <br> Efter reservering av utrymme för intern användning |
 | Säkerhet       | Certifikat |                                                     |
 | Arbetsbelastningar      | IoT Edge arbets belastningar <br> Arbetsbelastningar för virtuella datorer <br> Kubernetes-arbetsbelastningar| IoT Edge arbets belastningar |
-| Prissättning        | [Prissättning](https://azure.microsoft.com/pricing/details/azure-stack/edge/) | [Prissättning](https://azure.microsoft.com/pricing/details/azure-stack/edge/)|
+| Priser        | [Prissättning](https://azure.microsoft.com/pricing/details/azure-stack/edge/) | [Prissättning](https://azure.microsoft.com/pricing/details/azure-stack/edge/)|
 
 ## <a name="migration-plan"></a>Migrations plan
 

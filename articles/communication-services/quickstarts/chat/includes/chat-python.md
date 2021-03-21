@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: mikben
 ms.openlocfilehash: 2d1c3d3be412f6f11f9d2e300b3a97cf5634f5e4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495462"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
@@ -61,7 +61,7 @@ pip install azure-communication-chat
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för python.
 
-| Namn                                  | Beskrivning                                                  |
+| Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton. |

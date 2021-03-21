@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036797"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Samla in prestanda data källor för Windows och Linux med Log Analytics agent
@@ -204,7 +204,7 @@ Prestanda poster har en typ av **prestanda** och har egenskaperna i följande ta
 ## <a name="log-queries-with-performance-records"></a>Logga frågor med prestanda poster
 Följande tabell innehåller olika exempel på logg frågor som hämtar prestanda poster.
 
-| Söka i data | Beskrivning |
+| Fråga | Beskrivning |
 |:--- |:--- |
 | Prest |Alla prestanda data |
 | Perf &#124; där dator = = "Min Dator" |Alla prestanda data från en viss dator |

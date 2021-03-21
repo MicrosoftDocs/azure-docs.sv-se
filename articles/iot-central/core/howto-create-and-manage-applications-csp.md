@@ -5,19 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123121"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675815"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Skapa och hantera ett Azure IoT Central-program från CSP-portalen
 
 CSP-programmet (Microsoft Cloud Solution Provider) är ett Microsoft-program för åter försäljare. Avsikten är att tillhandahålla våra kanal partner med ett program som gör att du kan sälja alla Microsofts kommersiella online tjänster. Läs mer om [Cloud Solution Provider-programmet](https://partner.microsoft.com/cloud-solution-provider).
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 Som KRYPTOGRAFIPROVIDER kan du skapa och hantera Microsoft Azure IoT Central program för dina kunders räkning via [Microsoft Partner Center](https://partnercenter.microsoft.com/partner/home). När Azure IoT Central-program skapas för kunders räkning med kryptografiproviders, precis som med andra CSP-hanterade Azure-tjänster, hanterar CSP fakturering för kunder. En avgift för Azure IoT Central kommer att visas i din totala faktura i Microsoft Partner Center.
 
@@ -73,9 +75,9 @@ Om du inte har någon Azure-prenumeration kan du skapa en i Microsoft Partner Ce
 
 Mer information finns i [Azure-prenumerationer](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing).
 
-## <a name="location"></a>Plats
+## <a name="location"></a>Location
 
-**Plats** är den [geografi](https://azure.microsoft.com/global-infrastructure/geographies/) där du vill skapa programmet. Normalt bör du välja den plats som är fysiskt närmast dina enheter för att få optimala prestanda. För närvarande kan du skapa ett IoT Central-program i regionerna **Australien**, **Asien och Stillahavsområdet**, **Europa**, **USA**, **Storbritannien**och **Japan** . När du har valt en plats kan du inte senare flytta programmet till en annan plats.
+**Plats** är den [geografi](https://azure.microsoft.com/global-infrastructure/geographies/) där du vill skapa programmet. Normalt bör du välja den plats som är fysiskt närmast dina enheter för att få optimala prestanda. För närvarande kan du skapa ett IoT Central-program i regionerna **Australien**, **Asien och Stillahavsområdet**, **Europa**, **USA**, **Storbritannien** och **Japan** . När du har valt en plats kan du inte senare flytta programmet till en annan plats.
 
 ## <a name="application-template"></a>Programmall
 

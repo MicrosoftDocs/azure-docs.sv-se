@@ -7,10 +7,10 @@ ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
 ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493670"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Kubernetes-versioner som stöds i Azure Kubernetes Service (AKS)
@@ -147,7 +147,7 @@ Tidigare versions historik finns i [Kubernetes](https://en.wikipedia.org/wiki/Ku
 \* Kubernetes 1,21-versionen av överordnade versioner kan komma att ändras när den överordnade kalendern har slutförts.
 
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Hur ofta ska jag förvänta mig att uppgradera Kubernetes-versioner för att stanna kvar i supporten?**
 

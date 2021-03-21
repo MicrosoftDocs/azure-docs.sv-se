@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/06/2021
 ms.author: jafreebe
 ms.openlocfilehash: 404fac634a628da49dee72b10b52785820fe1bf6
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443785"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service som en Event Grid källa
@@ -20,7 +20,7 @@ Den här artikeln innehåller egenskaper och schema för Azure App Service händ
 
 Azure App Service avger följande händelse typer
 
-|    Händelsetyp                                             |    Description                                                     |
+|    Händelsetyp                                             |    Beskrivning                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/Sites. BackupOperationStarted             |    Utlöses när en säkerhets kopiering har påbörjats                             |
 |    Microsoft. Web/Sites. BackupOperationCompleted           |    Utlöses när en säkerhets kopiering har slutförts                           |
@@ -128,7 +128,7 @@ Det här avsnittet innehåller ett exempel på hur data ska se ut för varje hä
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Description                                                                                                       |
+|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                  |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -194,7 +194,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Description                                                                                                       |
+|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                  |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -260,7 +260,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Description                                                                                                       |
+|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                 |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -327,7 +327,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Description                                                                                                       |
+|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                 |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -393,7 +393,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet har följande egenskaper:
 
-|    Egenskap                |    Typ      |    Description                                                                                                       |
+|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                  |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -477,7 +477,7 @@ Data-objektet har följande egenskaper:
 
 Data-objektet har följande egenskaper:
 
-|    Egenskap                         |    Typ      |    Description                                                                                                       |
+|    Egenskap                         |    Typ      |    Beskrivning                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appServicePlanEventTypeDetail`    |    objekt    |    Information om åtgärder i App Service-planen                                                                          |
 |    `stampKind`                        |    sträng    |    Typ av miljö där App Service-plan är                                                                     |

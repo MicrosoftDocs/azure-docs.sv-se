@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
 ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102429858"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klicka på analys-plugin-programmet för automatisk insamling för Application Insights JavaScript SDK
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Konfiguration
 
-| Namn                  | Typ                               | Standardvärde | Description                                                                                                                              |
+| Namn                  | Typ                               | Standardvärde | Beskrivning                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autofånga           | boolean                            | true    | Automatisk avbildnings konfiguration.                                                                                                         |
 | motringningsalternativ              | [IValueCallback](#ivaluecallback)  | null    | Konfigurationen för motringning.                                                                                                                 |
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| Namn                      | Typ    | Standardvärde   | Standard tag gen som ska användas i HTML |   Description                                                                                |
+| Namn                      | Typ    | Standardvärde   | Standard tag gen som ska användas i HTML |   Beskrivning                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | useDefaultContentNameOrId | boolean | falskt     | E.t.         |Samlar in standard-HTML-attribut för contentName när ett visst element inte är taggat med standard-customDataPrefix eller när customDataPrefix inte anges av användaren. |
 | customDataPrefix          | sträng  | `data-`   | `data-*`| Automatiskt insamling av innehålls namn och värde för element som är taggade med det angivna prefixet. Kan till exempel `data-*-id` `data-<yourcustomattribute>` användas i HTML-taggarna.   |

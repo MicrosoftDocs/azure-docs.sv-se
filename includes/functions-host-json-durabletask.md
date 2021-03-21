@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013740"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719868"
 ---
 Konfigurations inställningar för [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -99,16 +99,16 @@ Konfigurations inställningar för [Durable Functions](../articles/azure-functio
 
 Namn på uppgifts hubbar måste börja med en bokstav och får bara bestå av bokstäver och siffror. Om inget värde anges är standard namnet på uppgifts navet för en Function-app **DurableFunctionsHub**. Mer information finns i [aktivitets nav](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
-|Egenskap  |Standardvärde | Description |
-|---------|---------|---------|
+|Egenskap  |Standardvärde | Beskrivning |
+|---------|---------|----------|
 |hubName|DurableFunctionsHub|Alternativa [aktivitets Hubbs](../articles/azure-functions/durable/durable-functions-task-hubs.md) namn kan användas för att isolera flera Durable Functions program från varandra, även om de använder samma lagrings Server del.|
 |controlQueueBatchSize|32|Antalet meddelanden att hämta från kontroll kön i taget.|
-|controlQueueBufferThreshold|256|Antalet kontrollmeddelanden som kan buffras i minnet i taget, vid vilken tidpunkt Dispatchern väntar innan eventuella ytterligare meddelanden tas ur kö.|
+|controlQueueBufferThreshold| **Förbruknings plan**: 32 <br> **Dedikerade/Premium-plan**: 256 |Antalet kontrollmeddelanden som kan buffras i minnet i taget, vid vilken tidpunkt Dispatchern väntar innan eventuella ytterligare meddelanden tas ur kö.|
 |partitionCount |4|Antalet partitioner för kontroll kön. Kan vara ett positivt heltal mellan 1 och 16.|
 |controlQueueVisibilityTimeout |5 minuter|Timeout för visning av köade kontrollmeddelanden.|
 |workItemQueueVisibilityTimeout |5 minuter|Tids gränsen för visning av meddelanden i kö för arbets objekt i kö.|
-|maxConcurrentActivityFunctions |10X antalet processorer på den aktuella datorn|Det maximala antalet aktivitets funktioner som kan bearbetas samtidigt på en enda värd instans.|
-|maxConcurrentOrchestratorFunctions |10X antalet processorer på den aktuella datorn|Det maximala antalet Orchestrator-funktioner som kan bearbetas samtidigt på en enda värd instans.|
+|maxConcurrentActivityFunctions | **Förbruknings plan**: 10 <br> **Dedikerad/Premium-plan**: 10X antalet processorer på den aktuella datorn|Det maximala antalet aktivitets funktioner som kan bearbetas samtidigt på en enda värd instans.|
+|maxConcurrentOrchestratorFunctions | **Förbruknings plan**: 5 <br> **Dedikerad/Premium-plan**: 10X antalet processorer på den aktuella datorn |Det maximala antalet Orchestrator-funktioner som kan bearbetas samtidigt på en enda värd instans.|
 |maxQueuePollingInterval|30 sekunder|Det maximala avsöknings intervallet för kontroll och arbets objekt kön i formatet *hh: mm: SS* . Högre värden kan resultera i högre meddelande fördröjning. Lägre värden kan resultera i högre lagrings kostnader på grund av ökade lagrings transaktioner.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Namnet på den app-inställning som har Azure Storage anslutnings strängen som används för att hantera de underliggande Azure Storage resurserna.|
 |trackingStoreConnectionStringName||Namnet på en anslutnings sträng som ska användas för tabellerna historik och instans. Om inget anges `connectionStringName` används (tålig 2. x) eller `azureStorageConnectionStringName` (tålig 1. x)-anslutningen.|

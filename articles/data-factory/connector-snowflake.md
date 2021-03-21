@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/16/2021
 ms.openlocfilehash: c18a48f8e72c28fd39f839566b18528806e7245d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561608"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopiera och transformera data i snö genom att använda Azure Data Factory
@@ -400,10 +400,10 @@ När du transformerar data i mappnings data flödet kan du läsa från och skriv
 
 I tabellen nedan visas de egenskaper som stöds av snö Source. Du kan redigera dessa egenskaper på fliken **käll alternativ** . Anslutningen använder vinter [intern data överföring](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer).
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Tabell | Om du väljer tabell som indata hämtar data flödet alla data från tabellen som anges i den snö data uppsättningen eller i käll alternativen när du använder en infogad data uppsättning. | Inga | Sträng | *(endast för infogad data uppsättning)*<br>tableName<br>schemaName |
-| Söka i data | Om du väljer fråga som indata anger du en fråga för att hämta data från snö. Den här inställningen åsidosätter alla tabeller som du har valt i data uppsättningen.<br>Om namnet på schemat, tabellen och kolumnerna innehåller gemener, så citera objekt identifieraren i frågan t. ex. `select * from "schema"."myTable"` . | Inga | Sträng | DocumentDB |
+| Fråga | Om du väljer fråga som indata anger du en fråga för att hämta data från snö. Den här inställningen åsidosätter alla tabeller som du har valt i data uppsättningen.<br>Om namnet på schemat, tabellen och kolumnerna innehåller gemener, så citera objekt identifieraren i frågan t. ex. `select * from "schema"."myTable"` . | Inga | Sträng | DocumentDB |
 
 #### <a name="snowflake-source-script-examples"></a>Skript exempel för snö-källa
 
@@ -430,7 +430,7 @@ source(allowSchemaDrift: true,
 
 I tabellen nedan visas de egenskaper som stöds av snö handfat. Du kan redigera dessa egenskaper på fliken **Inställningar** . När du använder en infogad data uppsättning visas ytterligare inställningar, som är samma som de egenskaper som beskrivs i avsnittet [Egenskaper för data mängd](#dataset-properties) . Anslutningen använder vinter [intern data överföring](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer).
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Uppdaterings metod | Ange vilka åtgärder som tillåts på ditt snö flingor-mål.<br>Om du vill uppdatera, upsert eller ta bort rader krävs en [Alter Row-omvandling](data-flow-alter-row.md) för att tagga rader för dessa åtgärder. | Ja | `true` eller `false` | bort <br/>infognings bara <br/>uppdaterings bara <br/>upsertable |
 | Nyckel kolumner | För uppdateringar, upsertar och borttagningar måste en nyckel kolumn eller kolumner anges för att avgöra vilken rad som ska ändras. | Inga | Matris | keys |

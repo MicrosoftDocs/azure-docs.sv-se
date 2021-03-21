@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21168e403ffa8fb1472a5bfcac1fcd2079a52e2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019029"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674928"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Så här dokumenterar du data källor i Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Introduktion
 **Microsoft Azure Data Catalog** är en fullständigt hanterad moln tjänst som fungerar som ett system för registrering och identifierings system för företags data källor. Med andra ord är **Azure Data Catalog** att hjälpa människor att upptäcka, *förstå* och använda data källor och hjälpa organisationer att få mer värde än befintliga data.
