@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dd84b8f2f0834a03b41179531245ebdff35b7ff
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612913"
+ms.locfileid: "104719899"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -255,9 +255,9 @@ Om du vill växla till en neurala röst ändrar `name` du till ett av [röst alt
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Hämta händelser för ansikts attityd
 
-Tal behandlas vanligt vis som ett bra sätt att köra animeringen av ansikts uttryck.
-[Visemes](../../../how-to-speech-synthesis-viseme.md) används ofta för att representera viktiga attityder i observerat tal (t. ex. läpparnas position, Jaw och tunghet vid framställning av en viss fonem).
-Du kan prenumerera på Viseme-händelsen i tal-SDK för att skapa data för ansikts animationer. Sedan kan du använda sådana data på ett specialtecken för att använda ansikts animering.
-Lär dig [hur du hämtar viseme-utdata](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
+Tal kan vara ett bra sätt att köra animeringen av ansikts uttryck.
+[Visemes](../../../how-to-speech-synthesis-viseme.md) används ofta för att representera viktiga faktorer i observerade tal, till exempel positionen för läppar, Jaw och tunga när de skapar en viss fonem.
+Du kan prenumerera på viseme-händelser i Speech SDK för att hämta data för ansikts animering och sedan använda data på ett tangent under ansikts animation.
+Lär dig [hur du hämtar viseme-händelser](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

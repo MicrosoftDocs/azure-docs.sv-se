@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035092"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Förnyelse av signerings nyckel i Microsoft Identity Platform
@@ -68,7 +68,7 @@ Azure App Services-funktionen för autentisering/auktorisering (EasyAuth) har re
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webb program/API: er som skyddar resurser med .NET OWIN OpenID Connect, WS-Fed eller WindowsAzureActiveDirectoryBearerAuthentication mellan program
 Om ditt program använder .NET OWIN OpenID Connect, WS-Fed eller WindowsAzureActiveDirectoryBearerAuthentication mellan program, har den redan den logik som krävs för att hantera nyckel förnyelse automatiskt.
 
-Du kan bekräfta att ditt program använder något av dessa genom att söka efter något av följande kodfragment i programmets Startup.cs-eller Startup.Auth.cs-filer.
+Du kan bekräfta att ditt program använder något av dessa genom att leta efter något av följande kodfragment i programmets start-. CS-eller startup. auth. cs-filer.
 
 ```csharp
 app.UseOpenIdConnectAuthentication(
@@ -97,7 +97,7 @@ app.UseWindowsAzureActiveDirectoryBearerAuthentication(
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webb program/API: er som skyddar resurser med .NET Core OpenID Connect eller JwtBearerAuthentication mellan program
 Om ditt program använder .NET Core OWIN OpenID Connect eller JwtBearerAuthentication mellan program, har den redan den logik som krävs för att hantera nyckel förnyelse automatiskt.
 
-Du kan bekräfta att ditt program använder något av dessa genom att söka efter något av följande kodfragment i programmets Startup.cs eller Startup.Auth.cs
+Du kan bekräfta att ditt program använder något av dessa genom att leta efter något av följande kodfragment i programmets start. CS eller startup. auth. CS
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -248,12 +248,12 @@ Om ditt program har skapats i Visual Studio 2012 använde du förmodligen verkty
 Om du har skapat programmet med något av kod exemplen eller genom gångs dokumentationen från Microsoft ingår nyckel förnyelse logiken redan i projektet. Du ser att koden nedan redan finns i ditt projekt. Om programmet inte redan har den här logiken följer du stegen nedan för att lägga till den och kontrol lera att den fungerar som den ska.
 
 1. I **Solution Explorer** lägger du till en referens till sammansättningen **system. IdentityModel** för lämpligt projekt.
-2. Öppna filen **Global.asax.cs** och Lägg till följande med hjälp av direktiv:
+2. Öppna filen **Global. asax. cs** och Lägg till följande med hjälp av direktiv:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. Lägg till följande metod i **Global.asax.cs** -filen:
+3. Lägg till följande metod i filen **Global. asax. cs** :
    ```
    protected void RefreshValidationSettings()
    {
@@ -263,7 +263,7 @@ Om du har skapat programmet med något av kod exemplen eller genom gångs dokume
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Anropa metoden **RefreshValidationSettings ()** i metoden **Application_Start ()** i **Global.asax.cs** som visas:
+4. Anropa metoden **RefreshValidationSettings ()** i metoden **Application_Start ()** i **Global. asax. cs** som visas:
    ```
    protected void Application_Start()
    {

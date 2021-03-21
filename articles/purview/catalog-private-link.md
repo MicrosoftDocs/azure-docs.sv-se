@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: d9088e5c6302c41c64f2a2e9034e7c3d659e37eb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 09fa10e7f7751321601c5c4871b2cf36ccf6f01f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615643"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720921"
 ---
 # <a name="use-private-endpoints-for-your-purview-account"></a>Använd privata slut punkter för ditt avdelningens kontroll-konto
 
@@ -24,13 +24,16 @@ Du kan använda privata slut punkter för dina avdelningens kontroll-konton för
 
 1. Fyll grundläggande information och ange anslutnings metod till privat slut punkt i fliken **nätverk** . Konfigurera dina inmatnings privata slut punkter genom att ange information om **prenumeration, VNet och undernät** som du vill koppla till din privata slut punkt.
 
+    > [!NOTE]
+    > Skapa bara en privat slut punkt om du vill aktivera nätverks isolering för sökning från slut punkt till slut punkt för både dina Azure-och lokala källor. Vi stöder för närvarande inte inmatnings privata slut punkter som arbetar med dina AWS-källor.
+
     :::image type="content" source="media/catalog-private-link/create-pe-azure-portal.png" alt-text="Skapa en privat slut punkt i Azure Portal":::
 
 1. Du kan också välja att ställa in en **privat DNS zon** för varje intag privat slut punkt.
 
 1. Klicka på Lägg till för att lägga till en privat slut punkt för ditt avdelningens kontroll-konto.
 
-1. På sidan Skapa privat slut punkt ställer du in avdelningens kontroll under resurs till **konto**, väljer ditt virtuella nätverk och undernät och väljer den privat DNS zon där DNS ska registreras (du kan också använda dina vunna DNS-servrar eller skapa DNS-poster med hjälp av filer på dina virtuella datorer).
+1. På sidan Skapa privat slut punkt anger du avdelningens kontroll under resurs till **konto**, väljer ditt virtuella nätverk och undernät och väljer den privat DNS zon där DNS ska registreras (du kan också använda dina egna DNS-servrar eller skapa DNS-poster med hjälp av filer på dina virtuella datorer).
 
     :::image type="content" source="media/catalog-private-link/create-pe-account.png" alt-text="Val av privat slut punkts skapande":::
 
@@ -89,6 +92,20 @@ Anvisningarna nedan är till för att komma åt avdelningens kontroll på ett s�
 6. När den nya regeln har skapats går du tillbaka till den virtuella datorn och försöker logga in med autentiseringsuppgifterna för AAD igen. Om inloggningen lyckas är avdelningens kontroll-portalen redo att användas. Men i vissa fall omdirigerar AAD till andra domäner för inloggning baserat på kundens kontotyp. För ett live.com-konto omdirigeras t. ex. AAD till live.com för att logga in, kommer dessa förfrågningar att blockeras igen. För Microsoft Employee-konton kommer AAD att få åtkomst till msft.sts.microsoft.com för inloggnings information. Kontrol lera nätverks förfrågningarna i webb läsar fliken nätverk om du vill se vilka domän förfrågningar som blockeras, gör om föregående steg för att få dess IP-adress och lägga till utgående port regler i nätverks säkerhets gruppen för att tillåta begär Anden för den IP-adressen (om möjligt, Lägg till URL-adressen och IP-adressen till den virtuella datorns värd fil för att åtgärda Om du känner till den exakta inloggnings domänens IP-intervall kan du också lägga till dem direkt i nätverks regler.
 
 7. Nu måste inloggningen till AAD lyckas. Avdelningens kontroll-portalen kommer att läsas in men det går inte att visa alla avdelningens kontroll-konton eftersom det bara kan komma åt ett speciellt avdelningens kontroll-konto. Ange *Web. avdelningens kontroll. Azure. com/Resource/{PurviewAccountName}* om du vill gå direkt till det avdelningens kontroll-konto som du har konfigurerat en privat slut punkt för.
+ 
+## <a name="ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints"></a>Inmatnings privata slut punkter och skannings källor i privata nätverk, virtuella nätverk och bakom privata slut punkter
+
+Om du vill säkerställa nätverks isolering för dina metadata som flödar från källan som genomsöks till avdelningens kontroll-DataMap måste du följa dessa steg:
+1. Aktivera en privat inmatnings **slut punkt** genom att följa stegen i [det här](#creating-an-ingestion-private-endpoint) avsnittet
+1. Skanna källan med hjälp av en **IR med egen värd**.
+ 
+    1. Alla lokala käll typer, t. ex. SQL Server, Oracle, SAP och andra, stöds för närvarande endast via IR-baserade inläsningar med egen värd. IR med egen värd måste köras i ditt privata nätverk och sedan peer-kopplas med ditt VNet i Azure. Ditt Azure-VNet måste sedan aktive ras på den privata slut punkten för inmatningen genom att följa stegen [nedan](#creating-an-ingestion-private-endpoint) 
+    1. För alla typer av **Azure** -källor, till exempel Azure Blob storage, Azure SQL Database och andra, måste du uttryckligen välja att köra genomsökningen med hjälp av egen värd-IR för att säkerställa nätverks isolering. Följ stegen [nedan](manage-integration-runtimes.md) för att konfigurera en lokal IR. Sedan ställer du in din genomsökning på Azure-källan genom att välja att använda IR med egen värd i list rutan **Anslut via integration runtime** för att säkerställa nätverks isolering. 
+    
+    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="Köra Azure Scan med egen värd-IR":::
+
+> [!NOTE]
+> Vi stöder för närvarande inte metoden MSI-autentiseringsuppgifter när du skannar dina Azure-källor med hjälp av en lokal IR. Du måste använda någon av de andra metoderna som stöds för Azure-källan.
 
 ## <a name="enable-private-endpoint-on-existing-purview-accounts"></a>Aktivera privat slut punkt för befintliga avdelningens kontroll-konton
 
@@ -101,7 +118,7 @@ Det finns två sätt att lägga till avdelningens kontroll privata slut punkter 
 
 1. Gå till avdelningens kontroll-kontot från Azure Portal och välj de privata slut punkts anslutningarna under avsnittet **nätverk** i **Inställningar**.
 
-:::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Skapa Portal privat slut punkt":::
+    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Skapa privat slut punkt för konto":::
 
 1. Klicka på + privat slut punkt för att skapa en ny privat slut punkt.
 
@@ -115,6 +132,20 @@ Det finns två sätt att lägga till avdelningens kontroll privata slut punkter 
 
 > [!NOTE]
 > Du måste följa samma steg som ovan för den mål under resurs som valts som **Portal** .
+
+#### <a name="creating-an-ingestion-private-endpoint"></a>Skapar en privat slut punkt för inmatning
+
+1. Gå till avdelningens kontroll-kontot från Azure Portal och välj de privata slut punkts anslutningarna under avsnittet **nätverk** i **Inställningar**.
+1. Gå till fliken inmatning **privat slut punkt anslutningar** och klicka på **+ ny** för att skapa en ny inmatnings privat slut punkt.
+
+1. Fyll i grundläggande information och VNET-information.
+ 
+    :::image type="content" source="media/catalog-private-link/ingestion-pe-fill-details.png" alt-text="Fyll privat slut punkts information":::
+
+1. Slutför inställningen genom att klicka på **skapa** .
+
+> [!NOTE]
+> Inmatnings privata slut punkter kan bara skapas via avdelningens kontroll Azure Portal erfarenhet som beskrivs ovan. Den kan inte skapas från det privata länk centret.
 
 ### <a name="using-the-private-link-center"></a>Använda det privata länk centret
 
@@ -132,6 +163,15 @@ Det finns två sätt att lägga till avdelningens kontroll privata slut punkter 
 
 > [!NOTE]
 > Du måste följa samma steg som ovan för den mål under resurs som valts som **Portal** .
+
+## <a name="firewalls-to-restrict-public-access"></a>Brand väggar som begränsar offentlig åtkomst
+
+Följ stegen nedan om du vill klippa ut åtkomsten till avdelningens kontroll-kontot helt från det offentliga Internet. Den här inställningen gäller för privata slut punkts anslutningar för privata slut punkter och inläsningar.
+
+1. Gå till avdelningens kontroll-kontot från Azure Portal och välj de privata slut punkts anslutningarna under avsnittet **nätverk** i **Inställningar**.
+1. Gå till fliken brand vägg och kontrol lera att växlingen är inställd på **neka**.
+
+    :::image type="content" source="media/catalog-private-link/private-endpoint-firewall.png" alt-text="Brand Väggs inställningar för privata slut punkt":::
 
 ## <a name="next-steps"></a>Nästa steg
 

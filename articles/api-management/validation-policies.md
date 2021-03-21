@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 03/12/2021
 ms.author: apimpm
-ms.openlocfilehash: e92d509cdbeba142ec1c740277b45aa3eb5fd21e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 3f91ca21512b8cddcac7fe71fa3eec07e1a8745a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565320"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720091"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>API Management principer för att validera begär Anden och svar
 
@@ -92,10 +92,10 @@ I följande exempel verifieras JSON-nyttolasten i begär Anden och svar i identi
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
+| Name                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | ospecificerad-innehålls typ-åtgärd | [Åtgärd](#actions) som ska utföras för begär Anden eller svar med en innehålls typ som inte har angetts i API-schemat. |  Ja     | Ej tillämpligt   |
-| Max storlek | Den maximala längden på bröd texten i begäran eller svaret, kontrollerad mot `Content-Length` sidhuvudet. Om begär ande texten eller svars texten är komprimerad är det här värdet den dekomprimerade längden. Högsta tillåtna värde: 102 400 byte (100 KB).  | Ja       | Ej tillämpligt   |
+| Max storlek | Den maximala längden på innehållet i begäran eller svaret i byte, kontrol leras mot `Content-Length` rubriken. Om begär ande texten eller svars texten är komprimerad är det här värdet den dekomprimerade längden. Högsta tillåtna värde: 102 400 byte (100 KB).  | Ja       | Ej tillämpligt   |
 | storlek-överskriden-åtgärd | [Åtgärd](#actions) som ska utföras för förfrågningar eller svar vars brödtext överskrider den storlek som anges i `max-size` . |  Ja     | Ej tillämpligt   |
 | fel-variabel-namn | Namnet på variabeln i `context.Variables` som loggar validerings fel till.  |   Ja    | Ej tillämpligt   |
 | typ | Innehålls typ för att köra verifiering av brödtext för, kontrollerad mot `Content-Type` sidhuvudet. Det här värdet är Skift läges okänsligt. Om den är tom används den för alla innehålls typer som anges i API-schemat. |   Inga    |  Ej tillämpligt  |
@@ -160,7 +160,7 @@ I det här exemplet verifieras alla frågor och Sök vägs parametrar i skydds l
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
+| Name                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | angiven parameter-åtgärd | [Åtgärd](#actions) att utföra för begär ande parametrar som anges i API-schemat. <br/><br/> När det finns i ett `headers` -, `query` -eller- `path` element, åsidosätter värdet för `specified-parameter-action` i- `validate-parameters` elementet.  |  Ja     | Ej tillämpligt   |
 | ospecificerad-parameter-åtgärd | [Åtgärd](#actions) som ska utföras för parametrar för begäran som inte anges i API-schemat. <br/><br/>När värdet i ett `headers` eller `query` -element anges åsidosätts värdet för `unspecified-parameter-action` i- `validate-parameters` elementet. |  Ja     | Ej tillämpligt   |
@@ -205,7 +205,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
+| Name                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | angiven – huvud åtgärd | [Åtgärd](#actions) som ska utföras för svars rubriker som anges i API-schemat.  |  Ja     | Ej tillämpligt   |
 | ej angivet – rubrik-åtgärd | [Åtgärd](#actions) som ska utföras för svars rubriker som inte har angetts i API-schemat.  |  Ja     | Ej tillämpligt   |
@@ -248,7 +248,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
+| Name                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | ej angivet-status-kod-åtgärd | [Åtgärd](#actions) som ska utföras för HTTP-statuskod i svar som inte anges i API-schemat.  |  Ja     | Ej tillämpligt   |
 | fel-variabel-namn | Namnet på variabeln i `context.Variables` som loggar validerings fel till.  |   Ja    | Ej tillämpligt   |

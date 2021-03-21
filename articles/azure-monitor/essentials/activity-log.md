@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 557fc6e358f371b47c1df314508e3565d843a28c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049193"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722862"
 ---
 # <a name="azure-activity-log"></a>Azure-aktivitetslogg
 Aktivitetsloggen är en [plattformslogg](./platform-logs-overview.md) i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Om du vill ha ytterligare funktioner bör du skapa en diagnostisk inställning för att skicka aktivitets loggen till [Azure Monitor loggar](../logs/data-platform-logs.md), till Azure Event Hubs att vidarebefordra utanför Azure eller till Azure Storage för arkivering. Den här artikeln innehåller information om hur du visar aktivitets loggen och skickar den till olika destinationer.
@@ -27,6 +27,11 @@ Du kan öppna aktivitetsloggen från de flesta menyer i Azure-portalen. Startfil
 ![Visa aktivitets logg](./media/activity-log/view-activity-log.png)
 
 En beskrivning av aktivitets loggs kategorier finns i [händelse schema för Azure aktivitets logg](activity-log-schema.md#categories).
+
+## <a name="download-the-activity-log"></a>Hämta aktivitets loggen
+Välj **Hämta som CSV** för att ladda ned händelserna i den aktuella vyn.
+
+![Hämta aktivitets logg](media/activity-log/download-activity-log.png)
 
 ### <a name="view-change-history"></a>Visa ändrings historik
 
@@ -201,7 +206,7 @@ Om det redan finns en logg profil måste du först ta bort den befintliga logg p
 
     | Egenskap | Krävs | Beskrivning |
     | --- | --- | --- |
-    | Namn |Ja |Namn på din logg profil. |
+    | Name |Ja |Namn på din logg profil. |
     | StorageAccountId |Inga |Resurs-ID för det lagrings konto där aktivitets loggen ska sparas. |
     | serviceBusRuleId |Inga |Service Bus regel-ID för det Service Bus namn område som du vill ha händelse hubbar skapade i. Det här är en sträng med formatet: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Plats |Ja |Kommaavgränsad lista över regioner för vilka du vill samla in aktivitets logg händelser. |

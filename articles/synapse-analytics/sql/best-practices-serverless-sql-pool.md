@@ -10,18 +10,26 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75e187369eccefb255ae2bbd88de79afbc4fd4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669482"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720397"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Metod tips för Server lös SQL-pool i Azure Synapse Analytics
 
 I den här artikeln hittar du en samling bästa metoder för att använda SQL-poolen utan server. SQL-poolen utan server är en resurs i Azure Synapse Analytics.
 
 Med Server lös SQL-pool kan du söka efter filer i dina Azure Storage-konton. Den har inte funktioner för lokal lagring eller inmatning. Alla filer som frågan riktar sig till är externa för SQL-poolen utan server. Allt som rör läsning av filer från lagring kan påverka frågans prestanda.
+
+## <a name="client-applications-and-network-connections"></a>Klient program och nätverks anslutningar
+
+Kontrol lera att klient programmet är anslutet till den närmast möjliga Synapse-arbetsytan med den optimala anslutningen.
+- Samplacera ett klient program med Synapse-arbetsytan. Om du använder program som Power BI eller Azure Analysis Service kontrollerar du att de finns i samma region där du har placerat din Synapse-arbetsyta. Om det behövs skapar du de separata arbets ytorna som är kopplade till dina klient program. Att placera ett klient program och Synapse-arbetsytan i en annan region kan orsaka större latens och långsammare strömning av resultat.
+- Om du läser data från ditt lokala program kontrollerar du att arbets ytan Synapse finns i den region som ligger nära din plats.
+- Kontrol lera att du inte har några problem med nätverks bandbredden när du läser en stor mängd data.
+- Använd inte Synapse Studio för att returnera en stor mängd data. Synapse Studio är ett webb verktyg som använder HTTPS-protokoll för att överföra data. Använd Azure Data Studio eller SQL Server Management Studio för att läsa en stor mängd data.
 
 ## <a name="storage-and-content-layout"></a>Layout för lagring och innehåll
 
@@ -55,6 +63,10 @@ Om möjligt kan du förbereda filer för bättre prestanda:
 - Försök att behålla storleken på CSV-filen mellan 100 MB och 10 GB.
 - Det är bättre att ha lika stora filer för en enskild OpenRowSet-sökväg eller en extern tabell plats.
 - Partitionera dina data genom att lagra partitioner i olika mappar eller fil namn. Se [använda fil namns-och fil Sök vägar för att fokusera på specifika partitioner](#use-filename-and-filepath-functions-to-target-specific-partitions).
+
+### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>Samplacera din CosmosDB Analytical Storage och Server lös SQL-poolen
+
+Se till att din CosmosDB-analytiska lagring är placerad i samma region som Synapse-arbetsytan. Frågor över flera regioner kan orsaka enorma fördröjningar.
 
 ## <a name="csv-optimizations"></a>CSV-optimeringar
 

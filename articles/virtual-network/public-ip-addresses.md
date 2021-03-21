@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103418070"
 ---
 # <a name="public-ip-addresses"></a>Offentliga IP-adresser
@@ -199,7 +199,7 @@ Begränsningarna för IP-adresser anges i den fullständiga uppsättningen [nät
 
 Gränserna anges per region och per prenumeration. [Kontakta supporten](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om du vill öka standard gränserna upp till de maximala gränserna utifrån dina affärs behov.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Offentliga IP-adresser kan medföra en nominell avgift. Mer information om priserna för IP-adresser i Azure finns på sidan med [priser för IP-adresser](https://azure.microsoft.com/pricing/details/ip-addresses).
 

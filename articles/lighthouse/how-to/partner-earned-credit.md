@@ -4,15 +4,15 @@ description: Lär dig hur du associerar ditt partner-ID för att få partner int
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100372101"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Länka ditt partner-ID för att spåra påverkan på delegerade resurser 
 
-Om du är medlem i [Microsoft Partner Network](https://partner.microsoft.com/)kan du länka ditt partner-ID med de autentiseringsuppgifter som används för att hantera delegerade kund resurser, så att Microsoft kan identifiera och identifiera partner som driver Azure-kund. Med den här länken kan du också använda CSP-partner [(Cloud Solution Provider)](/partner-center/csp-overview) för att få [partner intjänade kredit för hanterade tjänster (PEC)](/partner-center/partner-earned-credit) för kunder som har [undertecknat Microsofts kund avtal (MCA)](/partner-center/confirm-customer-agreement) och som följer [Azure-prenumerationen](/partner-center/azure-plan-get-started).
+Om du är medlem i [Microsoft Partner Network](https://partner.microsoft.com/)kan du länka ditt partner-ID med de autentiseringsuppgifter som används för att hantera delegerade kund resurser, så att Microsoft kan identifiera och identifiera partner som driver Azure-kund. Med den här länken kan [CSP-partner (molnlösningsleverantörer)](/partner-center/csp-overview) få [intjänad partnerkredit för hanterade tjänster (PEC)](/partner-center/partner-earned-credit) för kunder som har [signerat Microsofts kundavtal (MCA)](/partner-center/confirm-customer-agreement) och använder [Azure-planen](/partner-center/azure-plan-get-started).
 
 För att få erkännande för Azure Lighthouse-aktiviteter måste du [Länka ditt MPN-ID](../../cost-management-billing/manage/link-partner-id.md) med minst ett användar konto i hanterings klienten och se till att det länkade kontot har åtkomst till var och en av dina inbyggda prenumerationer.
 

@@ -3,18 +3,21 @@ title: Scenarier för att använda ett virtuellt nätverk
 description: Scenarier, resurser och begränsningar för att distribuera behållar grupper till ett virtuellt Azure-nätverk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 20c2b4fe2f19402d6647f398a9696b7e16550d8e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033837"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606896"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scenarier och resurser för virtuella nätverk
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) ger säker, privat nätverk för dina Azure-resurser och lokala resurser. Genom att distribuera behållar grupper till ett virtuellt Azure-nätverk kan dina behållare kommunicera säkert med andra resurser i det virtuella nätverket. 
 
 Den här artikeln innehåller bakgrunds information om virtuella nätverks scenarier, begränsningar och resurser. Exempel på distributions exempel med Azure CLI finns i [distribuera behållar instanser i ett virtuellt Azure-nätverk](container-instances-vnet.md).
+
+> [!IMPORTANT]
+> Distribution av container grupper till ett virtuellt nätverk är allmänt tillgängligt för Linux-behållare i de flesta regioner där Azure Container Instances är tillgängligt. Mer information finns i [regioner och resurs tillgänglighet](container-instances-region-availability.md). 
 
 ## <a name="scenarios"></a>Scenarier
 
@@ -45,12 +48,6 @@ Behållar grupper som distribueras till ett virtuellt Azure-nätverk möjliggör
 * Om du ansluter din behållar grupp till ett Azure Storage konto måste du lägga till en [tjänst slut punkt](../virtual-network/virtual-network-service-endpoints-overview.md) till resursen.
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
-
-## <a name="where-to-deploy"></a>Distributions plats
-
-Följande regioner och maximalt antal resurser är tillgängliga för att distribuera en behållar grupp i ett virtuellt Azure-nätverk.
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="required-network-resources"></a>Nödvändiga nätverks resurser
 

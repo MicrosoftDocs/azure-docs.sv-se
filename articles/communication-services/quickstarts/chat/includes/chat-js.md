@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495478"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612665"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -66,6 +66,27 @@ I den här snabb starten används WebPack för att paketera program till gångar
 npm install webpack webpack-cli webpack-dev-server --save-dev
 ```
 
+Skapa en `webpack.config.js` fil i rot katalogen. Kopiera följande konfiguration till den här filen:
+
+```
+module.exports = {
+  entry: "./client.js",
+  output: {
+    filename: "bundle.js"
+  },
+  devtool: "inline-source-map",
+  mode: "development"
+}
+```
+
+Lägg till ett `start` skript till din `package.json` , vi använder detta för att köra appen. Inuti `scripts` avsnittet i `package.json` Lägg till följande:
+
+```
+"scripts": {
+  "start": "webpack serve --config ./webpack.config.js"
+}
+```
+
 Skapa en **index.html** -fil i projektets rot Katalog. Vi använder den här filen som en mall för att lägga till chatt-funktioner med hjälp av klient biblioteket för Azure Communication Chat för Java Script.
 
 ```html
@@ -111,9 +132,9 @@ console.log('Azure Communication Chat client created!');
 
 ### <a name="run-the-code"></a>Kör koden
 
-Använd `webpack-dev-server` för att skapa och köra din app. Kör följande kommando för att paketera program värden i på en lokal webserver:
+Kör följande kommando för att paketera program värden i på en lokal webserver:
 ```console
-npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
+npm run start
 ```
 Öppna webbläsaren och gå till http://localhost:8080/ .
 I konsolen för utvecklarverktyg i webbläsaren bör du se följande:
@@ -125,7 +146,7 @@ Azure Communication Chat client created!
 ## <a name="object-model"></a>Objekt modell
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
 
-| Namn                                   | Beskrivning                                                                                                                                                                           |
+| Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |

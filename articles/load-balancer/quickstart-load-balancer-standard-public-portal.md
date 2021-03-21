@@ -16,10 +16,10 @@ ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034395"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snabb start: skapa en offentlig belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal
@@ -58,7 +58,7 @@ När du skapar en offentlig belastningsutjämnare, skapar du en ny offentlig IP-
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och ange **CreatePubLBQS-RG** i text rutan.|
-    | Namn                   | Ange **myLoadBalancer**                                   |
+    | Name                   | Ange **myLoadBalancer**                                   |
     | Region         | Välj **(Europa) Västeuropa**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
     | SKU           | Lämna kvar standardinställningen **Standard**. |
@@ -276,7 +276,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
     | Inställning | VM 2| VM 3|
     | ------- | ----- |---|
-    | Namn |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Tillgänglighetszon | **2** |**3**|
     | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**| Välj den befintliga **myNSG**|
 
@@ -346,7 +346,7 @@ När du skapar en offentlig belastningsutjämnare, skapar du en ny offentlig IP-
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och skriv **CreatePubLBQS-RG** i text rutan.|
-    | Namn                   | Ange **myLoadBalancer**                                   |
+    | Name                   | Ange **myLoadBalancer**                                   |
     | Region         | Välj **Europa, västra**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
     | SKU           | Välj **grundläggande** |
@@ -562,7 +562,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
     | Inställning | VM 2| VM 3|
     | ------- | ----- |---|
-    | Namn |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Tillgänglighetsuppsättning| Välj **myAvailabilitySet** | Välj **myAvailabilitySet**|
     | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**| Välj den befintliga **myNSG**|
 

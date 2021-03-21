@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466260"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konton och behörigheter
@@ -200,7 +200,7 @@ Förklaring:
 - sMSA- [fristående hanterat tjänst konto](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 - gMSA- [grupphanterat tjänst konto](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Anpassat | Fjärr-SQL</br>Anpassat |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Anpassad | Fjärr-SQL</br>Anpassad |
 | --- | --- | --- | --- |
 | **domänansluten dator** | **ATTRIBUTET**</br>Lokalt konto (2008) | **ATTRIBUTET**</br>Lokalt konto (2008)</br>Lokalt konto</br>Domänkonto</br>sMSA, gMSA | **gMSA**</br>Domänkonto |
 | **Domänkontrollant** | **Domänkonto** | *gMSA*</br>**Domänkonto**</br>sMSA| *gMSA*</br>**Domänkonto**|

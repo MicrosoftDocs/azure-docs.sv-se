@@ -4,10 +4,10 @@ description: Lär dig hur du tar bort ett privat moln i Azure VMware-lösningen 
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 453e7a3316c342cd724a951eafea0ae9fa045506
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462107"
 ---
 # <a name="tutorial-delete-an-azure-vmware-solution-private-cloud"></a>Självstudie: ta bort ett privat moln för Azure VMware-lösningen

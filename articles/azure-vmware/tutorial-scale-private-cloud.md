@@ -4,10 +4,10 @@ description: I den här självstudien använder du Azure Portal för att skala e
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463637"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Självstudie: skala ett privat moln i Azure VMware-lösningen

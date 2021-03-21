@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461427"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Självstudie: utveckla IoT Edge moduler med Linux-behållare
@@ -183,9 +183,9 @@ Varje modul kan ha flera *indata* -och *utmatnings* köer som deklareras i koden
 
 C#-koden som medföljer projekt mal len använder [klassen ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) från IoT Hub SDK för .net.
 
-1. Öppna filen **program.cs** , som finns i **modulerna/SampleModule/** Folder.
+1. Öppna filen **program. cs** , som finns i mappen **moduler/SampleModule/** Folder.
 
-2. I program.cs hittar du **SetInputMessageHandlerAsync** -metoden.
+2. Hitta **SetInputMessageHandlerAsync** -metoden i program. cs.
 
 3. Metoden [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) konfigurerar en inkommande kö för att ta emot inkommande meddelanden. Granska den här metoden och se hur den initierar en indatakö med namnet **INPUT1**.
 

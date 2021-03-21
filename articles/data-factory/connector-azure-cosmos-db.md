@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 2a084683d99117697657ba8900fcd6534b4a3e95
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: d42f30ebd72dca81255ddc02a9440db19979536d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379955"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608078"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Cosmos DB (SQL API) med hjälp av Azure Data Factory
 
@@ -60,9 +60,9 @@ Följande egenskaper stöds för den länkade tjänsten Azure Cosmos DB (SQL API
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** måste anges till **CosmosDb**. | Ja |
-| Begär |Ange information som krävs för att ansluta till Azure Cosmos DB databasen.<br />**Obs!** du måste ange databas information i anslutnings strängen som visas i exemplen som följer. <br/> Du kan också ange konto nyckeln i Azure Key Vault och hämta `accountKey` konfigurationen från anslutnings strängen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. |Ja |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller en egen värd för integration Runtime (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges används standard Azure Integration Runtime. |Inga |
+| typ | Egenskapen **Type** måste anges till **CosmosDb**. | Yes |
+| Begär |Ange information som krävs för att ansluta till Azure Cosmos DB databasen.<br />**Obs!** du måste ange databas information i anslutnings strängen som visas i exemplen som följer. <br/> Du kan också ange konto nyckeln i Azure Key Vault och hämta `accountKey` konfigurationen från anslutnings strängen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. |Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller en egen värd för integration Runtime (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges används standard Azure Integration Runtime. |No |
 
 **Exempel**
 
@@ -116,8 +116,8 @@ Följande egenskaper stöds för data uppsättningen Azure Cosmos DB (SQL API):
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens **typ** -egenskap måste anges till **CosmosDbSqlApiCollection**. |Ja |
-| Samling |Namnet på den Azure Cosmos DB dokument samlingen. |Ja |
+| typ | Data uppsättningens **typ** -egenskap måste anges till **CosmosDbSqlApiCollection**. |Yes |
+| Samling |Namnet på den Azure Cosmos DB dokument samlingen. |Yes |
 
 Om du använder data uppsättningen "DocumentDbCollection" stöds den fortfarande för bakåtkompatibilitet för kopierings-och söknings aktiviteter, men det stöds inte för data flöden. Du rekommenderas att använda den nya modellen som går framåt.
 
@@ -152,11 +152,11 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **CosmosDbSqlApiSource**. |Ja |
-| DocumentDB |Ange Azure Cosmos DB fråga för att läsa data.<br/><br/>Exempel:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Inga <br/><br/>Om detta inte anges körs SQL-instruktionen: `select <columns defined in structure> from mycollection` |
-| preferredRegions | Den önskade listan över regioner att ansluta till när data hämtas från Cosmos DB. | Inga |
-| pageSize | Antalet dokument per sida i frågeresultatet. Standardvärdet är "-1", vilket innebär att den dynamiska sid storleken på tjänst sidan är upp till 1000. | Inga |
-| detectDatetime | Anger om datetime ska identifieras från sträng värden i dokumenten. Tillåtna värden är: **Sant** (standard), **falskt**. | Inga |
+| typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **CosmosDbSqlApiSource**. |Yes |
+| DocumentDB |Ange Azure Cosmos DB fråga för att läsa data.<br/><br/>Exempel:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Om detta inte anges körs SQL-instruktionen: `select <columns defined in structure> from mycollection` |
+| preferredRegions | Den önskade listan över regioner att ansluta till när data hämtas från Cosmos DB. | No |
+| pageSize | Antalet dokument per sida i frågeresultatet. Standardvärdet är "-1", vilket innebär att den dynamiska sid storleken på tjänst sidan är upp till 1000. | No |
+| detectDatetime | Anger om datetime ska identifieras från sträng värden i dokumenten. Tillåtna värden är: **Sant** (standard), **falskt**. | No |
 
 Om du använder typen "DocumentDbCollectionSource"-källa stöds den fortfarande för bakåtkompatibilitet. Du rekommenderas att använda den nya modellen som går framåt, vilket ger rikare funktioner för att kopiera data från Cosmos DB.
 
@@ -205,10 +205,12 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **mottagare** :
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** för kopierings aktivitetens Sink måste anges till **CosmosDbSqlApiSink**. |Ja |
-| writeBehavior |Beskriver hur du skriver data till Azure Cosmos DB. Tillåtna värden: **insert** och **upsert**.<br/><br/>Beteendet för **upsert** är att ersätta dokumentet om det redan finns ett dokument med samma ID. annars infogar du dokumentet.<br /><br />**Obs!** Data Factory automatiskt genererar ett ID för ett dokument om inget ID anges i det ursprungliga dokumentet eller med kolumn mappning. Det innebär att du måste se till att ditt dokument har ett ID för att **upsert** ska fungera som förväntat. |Inga<br />(Standardvärdet är **insert**) |
-| writeBatchSize | Data Factory använder [Azure Cosmos DB bulk utförar-biblioteket](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) för att skriva data till Azure Cosmos dB. Egenskapen **writeBatchSize** styr storleken på dokument som ADF tillhandahåller till biblioteket. Du kan prova att öka värdet för **writeBatchSize** för att förbättra prestandan och minska värdet om dokument storleken är stor, se tipsen nedan. |Inga<br />(Standardvärdet är **10 000**) |
+| typ | Egenskapen **Type** för kopierings aktivitetens Sink måste anges till **CosmosDbSqlApiSink**. |Yes |
+| writeBehavior |Beskriver hur du skriver data till Azure Cosmos DB. Tillåtna värden: **insert** och **upsert**.<br/><br/>Beteendet för **upsert** är att ersätta dokumentet om det redan finns ett dokument med samma ID. annars infogar du dokumentet.<br /><br />**Obs!** Data Factory automatiskt genererar ett ID för ett dokument om inget ID anges i det ursprungliga dokumentet eller med kolumn mappning. Det innebär att du måste se till att ditt dokument har ett ID för att **upsert** ska fungera som förväntat. |No<br />(Standardvärdet är **insert**) |
+| writeBatchSize | Data Factory använder [Azure Cosmos DB bulk utförar-biblioteket](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) för att skriva data till Azure Cosmos dB. Egenskapen **writeBatchSize** styr storleken på dokument som ADF tillhandahåller till biblioteket. Du kan prova att öka värdet för **writeBatchSize** för att förbättra prestandan och minska värdet om dokument storleken är stor, se tipsen nedan. |No<br />(Standardvärdet är **10 000**) |
 | disableMetricsCollection | Data Factory samlar in mått som Cosmos DB ru: er för att kopiera prestanda optimering och rekommendationer. Om du är orolig för det här beteendet anger `true` du för att inaktivera det. | Nej (standard är `false` ) |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No |
+
 
 >[!TIP]
 >Information om hur du importerar JSON-dokument finns i avsnittet [Importera eller exportera JSON-dokument](#import-and-export-json-documents) . Om du vill kopiera från tabellbaserade data, se [Migrera från Relations databas till Cosmos DB](#migrate-from-relational-database-to-cosmos-db).

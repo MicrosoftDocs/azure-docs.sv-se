@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aeecdcddaeba385c6dc0773356bcd0e36231e1e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552787"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607474"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Använda SSH-nycklar med Windows på Azure
 
@@ -97,4 +97,4 @@ Om den virtuella datorn använder just-in-Time-åtkomst-principen måste du beg�
 
 - Du kan också använda PowerShell i Azure Cloud Shell för att generera SSH-nycklar och göra SSH-anslutningar till virtuella Linux-datorer. Se [snabb start för PowerShell](../../cloud-shell/quickstart-powershell.md#ssh).
 
-- Om du har problem med att använda SSH för att ansluta till dina virtuella Linux-datorer kan du läsa [FELSÖK SSH-anslutningar till en virtuell Azure Linux-dator](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+- Om du har problem med att använda SSH för att ansluta till dina virtuella Linux-datorer kan du läsa [FELSÖK SSH-anslutningar till en virtuell Azure Linux-dator](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

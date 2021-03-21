@@ -6,14 +6,14 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1dc85cb10a9e4300c57ad03900d8c8924988c6d5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012533"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588128"
 ---
-# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klassisk) integrering i Stream Analytics (förhands granskning)
+# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics"></a>Azure Machine Learning Studio (klassisk) integrering i Stream Analytics
 Stream Analytics stöder användardefinierade funktioner som anropar till Azure Machine Learning Studio (klassiska) slut punkter. REST API stöd för den här funktionen beskrivs i [Stream Analytics rest Apis biblioteket](/rest/api/streamanalytics/). Den här artikeln innehåller kompletterande information som krävs för lyckad implementering av den här funktionen i Stream Analytics. En själv studie kurs har också publicerats och är tillgänglig [här](stream-analytics-machine-learning-integration-tutorial.md).
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Översikt: Azure Machine Learning Studio (klassisk) terminologi

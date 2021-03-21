@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6d4840dcbe67a0bd94c74b43164c24e0c45e9daf
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: feb77339c9c7f36eb17b43dfe2c220dfb54efa25
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200645"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720533"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Uppdatera IoT Edge-säkerhetsdaemon och runtime
 
@@ -150,9 +150,9 @@ Kontrol lera versionen av IoT Edge agent och IoT Edge Hub-moduler som finns på 
 
 IoT Edge-agenten och IoT Edge Hub-avbildningarna är taggade med den IoT Edge-version som de är associerade med. Det finns två olika sätt att använda taggar med körnings avbildningarna:
 
-* **Rullande Taggar** – Använd bara de första två värdena i versions numret för att hämta den senaste bilden som matchar de siffrorna. 1,0 uppdateras till exempel när det finns en ny version som pekar på den senaste 1.0. x-versionen. Om behållar körningen på din IoT Edge enhet hämtar avbildningen igen, uppdateras runtime-modulerna till den senaste versionen. Den här metoden föreslås i utvecklings syfte. Distributioner från Azure Portal standardvärde till rullande taggar.
+* **Rullande Taggar** – Använd bara de första två värdena i versions numret för att hämta den senaste bilden som matchar de siffrorna. 1,1 uppdateras till exempel när det finns en ny version som pekar på den senaste 1.1. x-versionen. Om behållar körningen på din IoT Edge enhet hämtar avbildningen igen, uppdateras runtime-modulerna till den senaste versionen. Distributioner från Azure Portal standardvärde till rullande taggar. *Den här metoden föreslås i utvecklings syfte.*
 
-* **Vissa Taggar** -Använd alla tre värdena i versions numret för att uttryckligen ange avbildnings versionen. 1.0.7 ändras till exempel inte efter den första versionen. Du kan deklarera ett nytt versions nummer i distributions manifestet när du är redo att uppdatera. Den här metoden rekommenderas för produktions syfte.
+* **Vissa Taggar** -Använd alla tre värdena i versions numret för att uttryckligen ange avbildnings versionen. 1.1.0 ändras till exempel inte efter den första versionen. Du kan deklarera ett nytt versions nummer i distributions manifestet när du är redo att uppdatera. *Den här metoden rekommenderas för produktions syfte.*
 
 ### <a name="update-a-rolling-tag-image"></a>Uppdatera en rullande tag-bild
 

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738126"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607530"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure Boot-diagnostik
 
@@ -106,9 +106,9 @@ Allt efter att API-version 2020-06-01 har stöd för hanterad startdiagnostik. M
 - Managed Boot Diagnostics stöder inte virtuella datorer med ohanterade OS-diskar.
 - Startdiagnostiken har inte stöd för Premium Storage-konton, om ett Premium Storage-konto används för att starta diagnostiska användare får ett `StorageAccountTypeNotSupported` fel meddelande när den virtuella datorn startas. 
 - Hanterade lagrings konton stöds i Resource Manager API-versionen "2020-06-01" och senare.
-- Azures serie konsol är för närvarande inte kompatibel med ett hanterat lagrings konto för startdiagnostik. Lär dig mer om [Azures serie konsol](./troubleshooting/serial-console-overview.md).
+- Azures serie konsol är för närvarande inte kompatibel med ett hanterat lagrings konto för startdiagnostik. Lär dig mer om [Azures serie konsol](/troubleshoot/azure/virtual-machines/serial-console-overview).
 - Portalen stöder bara användning av startdiagnostik med ett hanterat lagrings konto för virtuella datorer med en instans.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om [Azures serie konsol](./troubleshooting/serial-console-overview.md) och hur du använder startdiagnostik för att [Felsöka virtuella datorer i Azure](./troubleshooting/boot-diagnostics.md).
+Lär dig mer om [Azures serie konsol](/troubleshoot/azure/virtual-machines/serial-console-overview) och hur du använder startdiagnostik för att [Felsöka virtuella datorer i Azure](/troubleshoot/azure/virtual-machines/boot-diagnostics).

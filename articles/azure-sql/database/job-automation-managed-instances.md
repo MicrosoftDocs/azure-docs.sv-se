@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3be01c304a40317e0d21baf6789ef1376cd89b80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691900"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608086"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Automatisera hanterings uppgifter med hjälp av SQL Agent-jobb i Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -81,7 +81,7 @@ SQL Agent-jobbsteg är sekvenser med åtgärder som SQL Agent ska köra. Varje s
 Med SQL-agenten kan du skapa olika typer av jobb, t. ex. Transact-SQL-jobb, som kör en enskild Transact-SQL-batch mot databasen, eller operativ systemets kommando/PowerShell-steg som kan köra ett anpassat OS-skript, [SSIS jobb steg](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) som gör det möjligt att läsa in data med SSIS- [körning eller med](../managed-instance/replication-transactional-overview.md) hjälp av de steg som kan användas för att läsa
 
 > [!Note]
-> Mer information om hur du använder Azure SSIS Integration Runtime med SSISDB som hanteras av Azure SQL Managed instance finns i [använda Azure SQL Managed instance med SQL Server Integration Services (SSIS) i Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).
+> Mer information om hur du använder Azure SSIS Integration Runtime med SSISDB som hanteras av Azure SQL Managed instance finns i [använda Azure SQL Managed instance med SQL Server Integration Services (SSIS) i Azure Data Factory](../../data-factory/how-to-use-sql-managed-instance-with-ir.md).
 
 [Transaktionsreplikering](../managed-instance/replication-transactional-overview.md) kan replikera ändringarna från dina tabeller till andra databaser i Azure SQL Managed Instance, Azure SQL Database eller SQL Server. Mer information finns i [Konfigurera replikering i Azure SQL-hanterad instans](../../azure-sql/managed-instance/replication-between-two-instances-configure-tutorial.md). 
 

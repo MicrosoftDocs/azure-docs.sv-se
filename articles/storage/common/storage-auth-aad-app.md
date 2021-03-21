@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: baad1a0b173ae89fec9d160572224c6cb0aa615d
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103574636"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Hämta en token från Azure AD för att auktorisera begär Anden från ett klient program
@@ -151,7 +151,7 @@ Install-Package Azure.Storage.Blobs
 Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
 ```
 
-Lägg sedan till följande using-instruktioner till filen HomeController.cs:
+Lägg sedan till följande using-instruktioner till filen HomeController. CS:
 
 ```csharp
 using Microsoft.Identity.Web; //MSAL library for getting the access token
@@ -165,7 +165,7 @@ Install-Package Microsoft.Azure.Storage.Blob
 Install-Package Microsoft.Identity.Web -Version 0.4.0-preview //or a later version
 ```
 
-Lägg sedan till följande using-instruktioner till filen HomeController.cs:
+Lägg sedan till följande using-instruktioner till filen HomeController. CS:
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
@@ -284,7 +284,7 @@ Uppdatera *appsettings.jspå* filen med dina egna värden enligt följande:
 
 ### <a name="update-the-storage-account-and-container-name"></a>Uppdatera lagrings kontot och behållar namnet
 
-I *HomeController.cs* -filen uppdaterar du den URI som refererar till block-bloben för att använda namnet på ditt lagrings konto och din behållare, och ersätter värdena i vinkelparenteser med dina egna värden:
+I filen *HomeController. cs* uppdaterar du URI: n som refererar till block-bloben för att använda namnet på ditt lagrings konto och din behållare, och ersätter värdena i vinkelparenteser med dina egna värden:
 
 ```html
 https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt

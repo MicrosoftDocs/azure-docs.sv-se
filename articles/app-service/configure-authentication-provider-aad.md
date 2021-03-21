@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 2805500e4a4c98ad7b8360393e7d69ad9fb704a3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0f028f264d02d7300bb888e2053708ef6b06ea51
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563344"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721570"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning
 
@@ -97,8 +97,8 @@ Registrera appen genom att utföra följande steg:
     |-|-|
     |Klient-ID| Använd **program-ID: t (klient)** för appens registrering. |
     |Utfärdar-URL| Använd `<authentication-endpoint>/<tenant-id>/v2.0` och Ersätt *\<authentication-endpoint>* med [slut punkten för autentisering för din moln miljö](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (t. ex. " https://login.microsoftonline.com " för Global Azure), och ersätt även *\<tenant-id>* med den **katalog (klient) ID** där appens registrering skapades. Det här värdet används för att omdirigera användare till rätt Azure AD-klient, samt för att hämta lämpliga metadata för att fastställa lämpliga token för signerings nycklar och token Issuer-anspråk till exempel. För program som använder Azure AD v1 och för Azure Functions appar, utelämna `/v2.0` i URL: en.|
-    |Klient hemlighet (valfritt)| Använd den klient hemlighet som du genererade i appens registrering.|
-    |Tillåtna token-mottagare| Om det här är en moln-eller Server App och du vill tillåta autentiseringstoken från en webbapp lägger du till **program-ID-URI: n** för webbappen här. Det konfigurerade **klient-ID: t** anses *alltid* vara en tillåten mål grupp. |
+    |Klient hemlighet (valfritt)| Använd den klient hemlighet som du genererade i appens registrering. Med en klient hemlighet används hybrid flöde och App Service returnerar åtkomst-och uppdateringstoken. När klient hemligheten inte anges används implicit flöde och endast en ID-token returneras. Dessa token skickas av providern och lagras i EasyAuth token Store.|
+    |Tillåtna token-mottagare| Om det här är en moln-eller Server App och du vill tillåta autentiseringstoken från en webbapp lägger du till **program-ID-URI: n** för webbappen här. Det konfigurerade **klient-ID: t** anses *alltid* vara en tillåten mål grupp.|
 
 2. Välj **OK** och välj sedan **Spara**.
 

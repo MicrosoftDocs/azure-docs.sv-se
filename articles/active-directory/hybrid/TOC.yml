@@ -308,6 +308,8 @@
           href: whatis-aadc-admin-agent.md
         - name: Vad är ADConnectivityTools PowerShell-modulen?
           href: how-to-connect-adconnectivitytools.md
+        - name: Azure AD Connect synkronisering av enstaka objekt
+          href: how-to-connect-single-object-sync.md
         - name: Anslutning
           href: tshoot-connect-connectivity.md
         - name: Fel under synkronisering
@@ -336,6 +338,8 @@
           href: tshoot-connect-install-issues.md
         - name: UPN-ändringar
           href: howto-troubleshoot-upn-changes.md
+        - name: Fel sökning från slut punkt till slut punkt av objekt och attribut
+          href: 'https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes'
 - name: Referens
   items:
     - name: Portar och protokoll som krävs för hybrididentitet

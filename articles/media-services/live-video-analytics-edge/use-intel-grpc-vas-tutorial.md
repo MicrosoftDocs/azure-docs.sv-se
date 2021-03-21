@@ -7,10 +7,10 @@ ms.service: media-services
 ms.author: faneerde
 author: fvneerden
 ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465767"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Självstudie: analysera direktsänd video genom att använda Intel Open™ DL-dataströmmar – Edge AI-tillägg 
@@ -98,7 +98,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 
     * ***C2D-console-app. CSPROJ*** – projekt filen för Visual Studio Code.
     * ***operations.js*** en lista över de åtgärder som du vill att programmet ska köra.
-    * ***Program.cs*** – exempel koden. Den här koden:
+    * ***Program. cs*** -kod för exempel program. Den här koden:
 
         * Läser in appinställningar.
         * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess [direkta metoder](direct-methods.md).

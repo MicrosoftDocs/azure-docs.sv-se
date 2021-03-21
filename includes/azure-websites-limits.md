@@ -2,14 +2,14 @@
 author: rothja
 ms.service: app-service
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 80d295d017b11d86df7a3fe4c14afc7a5665cd96
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102532615"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612141"
 ---
 | Resurs | Kostnadsfri | Delad | Basic | Standard | Premium (v1-v3) | Isolerad </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,18 +45,28 @@ ms.locfileid: "102532615"
 | Kudu | X | X | X | X | X | X |
 | [Autentisering och auktorisering](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
 | [App Service hanterade certifikat (offentlig för hands version)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
-| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
+| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|
 
-<sup>1</sup> Appar och lagrings kvoter per App Service plan om inget annat anges.  
-<sup>2</sup> Det faktiska antalet appar som du kan vara värd för på de här datorerna beror på aktivitetens appar, storleken på dator instanserna och motsvarande resursutnyttjande.  
-<sup>3</sup> Dedikerade instanser kan ha olika storlekar. Mer information finns i [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> Fler tillåts på begäran.  
-<sup>5</sup> Lagrings gränsen är den totala innehålls storleken för alla appar i samma app service-plan. Den totala innehålls storleken för alla appar i alla App Service-planer i en enda resurs grupp och region får inte överstiga 500 GB.  
-<sup>6</sup> Dessa resurser begränsas av fysiska resurser på dedikerade instanser (instans storlek och antal instanser).  
-<sup>7</sup> Om du skalar en app på Basic-nivån till två instanser har du 350 samtidiga anslutningar för var och en av de två instanserna. För standard-nivån och ovan finns det inga teoretiska gränser för Web Sockets, men andra faktorer kan begränsa antalet Web Sockets. Till exempel tillåts maximalt antal samtidiga begär Anden (definieras av `maxConcurrentRequestsPerCpu` ): 7 500 per liten virtuell dator, 15 000 per virtuell dator (7 500 x 2 kärnor) och 75 000 per stor virtuell dator (18 750 x 4 kärnor).  
-<sup>8</sup> De högsta IP-anslutningarna är per instans och är beroende av instans storleken: 1 920 per B1/S1/P1V3-instans, 3 968 per B2/S2/P2V3-instans, 8 064 per B3/S3/P3V3-instans.  
-<sup>9</sup> Gränsen för App Service Certificate kvot per prenumeration kan ökas via en supportbegäran till en maximal gräns på 200.  
-<sup>10</sup> App Service Isolerad SKU: er kan vara internt belastningsutjämnade (ILB) med Azure Load Balancer, så det finns ingen offentlig anslutning från Internet. Därför måste vissa funktioner i en ILB isolerad App Service användas från datorer som har direkt åtkomst till ILB-nätverks slut punkten.  
-<sup>11</sup> Kör anpassade körbara filer och/eller skript på begäran, enligt schema eller kontinuerligt som bakgrunds aktivitet i App Service-instansen. Always on krävs för kontinuerliga WebJobs-körningar. Det finns ingen fördefinierad gräns för antalet WebJobs som kan köras i en App Service instans. Det finns praktiska gränser som beror på vad program koden försöker göra.
+<sup>1</sup> appar och lagrings kvoter per app service plan om inget annat anges.
 
-<sup>12</sup> Det finns inte stöd för blott-domäner. Endast utfärdande av standard certifikat (jokertecken är inte tillgängliga). Begränsat till endast ett kostnads fritt certifikat per anpassad domän.
+<sup>2</sup> det faktiska antalet appar som du kan vara värd för på de här datorerna beror på aktivitetens appar, storleken på dator instanserna och motsvarande resursutnyttjande.
+
+<sup>3</sup> dedikerade instanser kan ha olika storlekar. Mer information finns i [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/).
+
+<sup>4</sup> fler tillåts på begäran.
+
+<sup>5</sup> lagrings gränsen är den totala innehålls storleken för alla appar i samma app service-plan. Den totala innehålls storleken för alla appar i alla App Service-planer i en enda resurs grupp och region får inte överstiga 500 GB. Fil system kvoten för App Service värdbaserade appar bestäms av mängden App Service planer som skapats i en region och resurs grupp.
+
+<sup>6</sup> dessa resurser begränsas av fysiska resurser på dedikerade instanser (instans storlek och antal instanser).
+
+<sup>7</sup> om du skalar en app på Basic-nivån till två instanser har du 350 samtidiga anslutningar för var och en av de två instanserna. För standard-nivån och ovan finns det inga teoretiska gränser för Web Sockets, men andra faktorer kan begränsa antalet Web Sockets. Till exempel tillåts maximalt antal samtidiga begär Anden (definieras av `maxConcurrentRequestsPerCpu` ): 7 500 per liten virtuell dator, 15 000 per virtuell dator (7 500 x 2 kärnor) och 75 000 per stor virtuell dator (18 750 x 4 kärnor).
+
+<sup>8</sup> högsta antal IP-anslutningar är per instans och är beroende av instans storleken: 1 920 per B1/S1/P1V3-instans, 3 968 per B2/S2/P2V3-instans, 8 064 per B3/S3/P3V3-instans.
+
+<sup>9</sup> gränsen för App Service Certificate kvot per prenumeration kan ökas via en support förfrågan till max gränsen på 200.
+
+<sup>10</sup> App Service isolerad SKU: er kan vara internt BELASTNINGSUTJÄMNAD (ILB) med Azure Load Balancer, så det finns ingen offentlig anslutning från Internet. Därför måste vissa funktioner i en ILB isolerad App Service användas från datorer som har direkt åtkomst till ILB-nätverks slut punkten.
+
+<sup>11</sup> kör anpassade körbara filer och/eller skript på begäran, enligt schema eller kontinuerligt som bakgrunds aktivitet i App Service-instansen. Always on krävs för kontinuerliga WebJobs-körningar. Det finns ingen fördefinierad gräns för antalet WebJobs som kan köras i en App Service instans. Det finns praktiska gränser som beror på vad program koden försöker göra.
+
+<sup>12</sup> blott-domäner stöds inte. Endast utfärdande av standard certifikat (jokertecken är inte tillgängliga). Begränsat till endast ett kostnads fritt certifikat per anpassad domän.

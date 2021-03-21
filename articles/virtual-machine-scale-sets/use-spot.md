@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596424"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722573"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Virtual Machines för skalnings uppsättningar för virtuella datorer 
 
@@ -23,7 +23,7 @@ Genom att använda Azure-Virtual Machines i skalnings uppsättningar kan du dra 
 Mängden tillgänglig kapacitet kan variera beroende på storlek, region, tid och dag. När du distribuerar instanser av virtuella Azure-datorer i skalnings uppsättningar, kommer Azure att allokera instansen endast om det finns tillgänglig kapacitet, men det finns inget service avtal för dessa instanser. En skalnings uppsättning för en virtuell Azure-dator distribueras i en enskild feldomän och ger inga garantier för hög tillgänglighet.
 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Priser för virtuella Azure-dator instanser är varierande, baserat på region och SKU. Mer information finns i avsnittet om priser för [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) och [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/). 
 
@@ -44,8 +44,8 @@ En virtuell Azure-dator kan distribueras till vilken region som helst, förutom 
 Följande [typer av erbjudanden](https://azure.microsoft.com/support/legal/offer-details/) stöds för närvarande:
 
 -   Enterprise-avtal
--   Erbjudande för betala per användning-kod 003P
--   Sponsrat
+-   Erbjudande kod för betala per användning (003P)
+-   Sponsrat (0036P och 0136P)
 - För Cloud Service Provider (CSP), se [partner Center](/partner-center/azure-plan-get-started) eller kontakta din partner direkt.
 
 ## <a name="eviction-policy"></a>Avlägsnandeprincip
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Mallar för Resurshanteraren

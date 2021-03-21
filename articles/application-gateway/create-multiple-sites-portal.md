@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 02/23/2021
+ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfbd5301bc2b24c4d5614e5f88c6ae18d4affc66
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735086"
+ms.locfileid: "104721638"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Självstudie: skapa och konfigurera en Application Gateway som värd för flera webbplatser med hjälp av Azure Portal
 
@@ -27,7 +27,7 @@ I den här guiden får du lära dig att:
 > * Skapa backend-pooler med backend-servrar
 > * Skapa lyssnare för serverdelen
 > * Skapa routningsregler
-> * Skapa en CNAME-post i domänen
+> * Redigera hosts-filen för namn matchning
 
 :::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Application Gateway för flera platser":::
 
@@ -212,9 +212,9 @@ I det här exemplet installerar du bara IIS på de virtuella datorerna för att 
 
 Vänta tills distributionen har slutförts innan du fortsätter till nästa steg.
 
-## <a name="edit-your-hosts-file"></a>Redigera värd filen
+## <a name="edit-your-hosts-file-for-name-resolution"></a>Redigera hosts-filen för namn matchning
 
-När Application Gateway har skapats med dess offentliga IP-adress kan du hämta IP-adressen och använda den för att redigera värd filen för att lösa `www.contoso.com` och `www.fabrikam.com` 
+När Application Gateway har skapats med dess offentliga IP-adress kan du hämta IP-adressen och använda den för att redigera värd filen för att lösa `www.contoso.com` och `www.fabrikam.com` . I en produktions miljö kan du skapa en `CNAME` i DNS för namn matchning.
 
 1. Klicka på **alla resurser** och sedan på **myAGPublicIPAddress**.
 

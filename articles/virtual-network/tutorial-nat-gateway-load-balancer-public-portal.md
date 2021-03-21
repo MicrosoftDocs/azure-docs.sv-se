@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 345ccb68ebb31460f4a75b31a7d3a946160da6e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8382dd10536a8c0475444d0cdff30340ad124e9c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657970"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722811"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-a-public-load-balancer-using-the-azure-portal"></a>Självstudie: integrera en NAT-gateway med en offentlig belastningsutjämnare med hjälp av Azure Portal
 
@@ -48,15 +48,18 @@ I det här avsnittet ska du skapa en standard Azure Load Balancer.
 
     | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
+    | **Projektinformation** |   |
     | Prenumeration               | Välj din prenumeration.    |    
-    | Resursgrupp         | Välj **Skapa ny** och ange **TutorPubLBNAT-RG** i text rutan.|
+    | Resursgrupp         | Välj **Skapa ny** och ange **TutorPubLBNAT-RG** i text rutan. </br> Välj **OK**.|
+    | **Instansinformation** |   |
     | Name                   | Ange **myLoadBalancer**                                   |
     | Region         | Välj **(US) USA, östra**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
     | SKU           | Lämna kvar standardinställningen **Standard**. |
     | Nivå          | Lämna standard **regionen**. |
-    | Offentlig IP-adress | Välj **Skapa ny**. Om du har en befintlig offentlig IP-adress som du vill använda väljer du **Använd befintlig**. |
-    | Namn på offentlig IP-adress | Skriv **myPublicIP – lb** i text rutan.|
+    | **Offentlig IP-adress** |   |
+    | Offentlig IP-adress | Välj **Skapa ny**. </br> Om du har en befintlig offentlig IP-adress som du vill använda väljer du **Använd befintlig**. |
+    | Namn på offentlig IP-adress | Ange **myPublicIP – lb** i text rutan.|
     | Tillgänglighetszon | Välj **zon-redundant** för att skapa en elastisk belastningsutjämnare. Om du vill skapa en zonindelade-belastningsutjämnare väljer du en speciell zon från 1, 2 eller 3 |
     | Lägg till en offentlig IPv6-adress | Välj **Nej**. </br> Mer information om IPv6-adresser och belastningsutjämnare finns i [Vad är IPv6 för Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
     | Routningsprioritet | Lämna standardvärdet för **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](../virtual-network/routing-preference-overview.md). |
@@ -135,7 +138,7 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
     | Serverdelsport | Ange **80**. |
     | Serverdelspool | Välj **myBackendPool**.|
     | Hälsoavsökning | Välj **myHealthProbe**. |
-    | Tids gräns för inaktivitet (minuter) | Flytta skjutreglaget till **15** minuter. |
+    | Tids gräns för inaktivitet (minuter) | Ange **15** minuter. |
     | TCP-återställning | Välj **Aktiverad**. |
     | Utgående käll Network Address Translation (SNAT) | Välj **(rekommenderas) Använd utgående regler för att ge backend-poolens medlemmar åtkomst till Internet.** |
 
@@ -237,7 +240,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
     | Nätverks säkerhets grupp för nätverkskort | Välj **Avancerat**|
     | Konfigurera nätverks säkerhets grupp | Välj **Skapa ny**. </br> I **gruppen Skapa nätverks säkerhet** anger du **myNSG** i **namn**. </br> Under **regler för inkommande** trafik väljer du **+ Lägg till en regel för inkommande trafik**. </br> Under  **mål ports intervall** anger du **80**. </br> Under **prioritet** anger du **100**. </br> I **namn** anger du **myHTTPRule** </br> Välj **Lägg till** </br> Välj **OK** |
     | **Belastningsutjämning**  |
-    | Placerar du den virtuella datorn bakom en befintlig belastnings Utjämnings lösning? | Välj **Ja** |
+    | Placerar du den virtuella datorn bakom en befintlig belastnings Utjämnings lösning? | Markera kryssrutan.|
     | **Inställningar för belastnings utjämning** |
     | Alternativ för belastnings utjämning | Välj **Azure Load Balancer** |
     | Välj en belastningsutjämnare | Välj **myLoadBalancer**  |
@@ -302,7 +305,7 @@ I det här avsnittet ska vi testa NAT-gatewayen. Vi identifierar först den offe
 
 2. Anteckna den offentliga IP-adressen:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="Identifiera offentlig IP-adress för NAT-gateway" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="Skärm bild som identifierar NAT-gatewayens offentliga IP-adress." border="true":::
 
 3. Välj **alla tjänster** i den vänstra menyn, Välj **alla resurser** och välj **myVM1** i resurs gruppen **TutorPubLBNAT-RG** i resurs listan.
 
@@ -318,7 +321,7 @@ I det här avsnittet ska vi testa NAT-gatewayen. Vi identifierar först den offe
 
 9. Kontrol lera att den IP-adress som visas matchar NAT-gateway-adressen som du antecknade i föregående steg:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Internet Explorer som visar extern utgående IP" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Skärm bild av Internet Explorer som visar extern utgående IP." border="true":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

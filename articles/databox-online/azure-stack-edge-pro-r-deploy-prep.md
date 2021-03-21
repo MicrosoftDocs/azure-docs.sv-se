@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5c668783232533098822cca982f1af9008f13640
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 5e220759a46ad9098f81a9534fa64145adade2b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761735"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613132"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Pro R
 
@@ -55,7 +55,7 @@ Nu kan du börja konfigurera Azure-portalen.
 
 Innan du distribuerar enheten måste du samla in information för att konfigurera program varan på din Azure Stack Edge Pro-enhet. Att förbereda en del av den här informationen i förväg bidrar till att effektivisera processen att distribuera enheten i din miljö. Använd den [Azure Stack Edge Pro R Deployment Configuration check lista](azure-stack-edge-pro-r-deploy-checklist.md) för att anteckna konfigurations informationen när du distribuerar enheten.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande är konfigurations kraven för din Azure Stack Edge-resurs, din Azure Stack Edge-enhet och data Center nätverket.
 
@@ -86,6 +86,8 @@ Innan du börjar ska du kontrollera att:
 ## <a name="create-a-new-resource"></a>Skapa en ny resurs
 
 Om du har en befintlig Azure Stack Edge-resurs för att hantera din fysiska enhet kan du hoppa över det här steget och gå till [Hämta aktiverings nyckeln](#get-the-activation-key).
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
@@ -128,7 +130,7 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
         ![Skapa en resurs 5](media/azure-stack-edge-pro-r-deploy-prep/create-resource-5.png)
 
-    - Om det här är den nya enhet som du beställer anger du kontakt namn, företag, adress för att leverera enheten och kontakt information.
+    - Om enheten är den nya enhet som du beställer anger du kontakt namnet, företaget, adressen för att leverera enheten och kontakt information.
 
         ![Skapa en resurs 6](media/azure-stack-edge-pro-r-deploy-prep/create-resource-6.png)
 
@@ -148,7 +150,7 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
     ![Gå till Azure Stack Edge Pro-resursen](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
 
-När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
+När ordern har placerats, granskar Microsoft order och kontakter som du (via e-post) med leverans information.
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
@@ -156,6 +158,51 @@ När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) m
 > Om du vill skapa flera beställningar samtidigt eller klona en befintlig order kan du använda [skripten i Azure-exempel](https://github.com/Azure-Samples/azure-stack-edge-order). Mer information finns i README-filen.
 
 Om du stöter på problem under beställnings processen går du till [Felsöka beställnings problem](azure-stack-edge-troubleshoot-ordering.md).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Förbered din miljö för Azure CLI om det behövs.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Om du vill skapa en Azure Stack Edge-resurs kör du följande kommandon i Azure CLI.
+
+1. Skapa en resurs grupp med kommandot [AZ Group Create](/cli/azure/group#az_group_create) eller Använd en befintlig resurs grupp:
+
+   ```azurecli
+   az group create --name myasepgpu1 --location eastus
+   ```
+
+1. Om du vill skapa en enhet använder du kommandot [AZ databoxedge Device Create](/cli/azure/databoxedge/device#az_databoxedge_device_create) :
+
+   ```azurecli
+   az databoxedge device create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --location eastus --sku EdgePR_Base
+   ```
+
+   Välj den plats som är närmast den geografiska region där du vill distribuera enheten. Regionen lagrar bara metadata för enhets hantering. Faktiska data kan lagras i valfritt lagrings konto.
+
+   För en lista över alla regioner där Azure Stack Edge-resursen är tillgänglig, se [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Om du använder Azure Government är alla myndigheter tillgängliga som de visas i Azure- [regionerna](https://azure.microsoft.com/global-infrastructure/regions/).
+
+1. Om du vill skapa en order kör du kommandot [AZ databoxedge order Create](/cli/azure/databoxedge/order#az_databoxedge_order_create) :
+
+   ```azurecli
+   az databoxedge order create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --company-name "Contoso" \
+      --address-line1 "1020 Enterprise Way" --city "Sunnyvale" \
+      --state "California" --country "United States" --postal-code 94089 \
+      --contact-person "Gus Poland" --email-list gus@contoso.com --phone 4085555555
+   ```
+
+Det tar några minuter att skapa resursen. Kör kommandot [AZ databoxedge order show](/cli/azure/databoxedge/order#az_databoxedge_order_show) för att se ordningen:
+
+```azurecli
+az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1 
+```
+
+När du har placerat en order, granskar Microsoft ordern och kontaktar dig via e-post med leverans information.
+
+---
 
 ## <a name="get-the-activation-key"></a>Hämta aktiveringsnyckeln
 

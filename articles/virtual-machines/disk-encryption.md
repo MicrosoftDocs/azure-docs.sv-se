@@ -2,26 +2,26 @@
 title: Kryptering på Server sidan av Azure Managed disks
 description: Azure Storage skyddar dina data genom att kryptera dem i vila innan du sparar dem i lagrings kluster. Du kan använda Kundhanterade nycklar för att hantera kryptering med dina egna nycklar, eller så kan du lita på Microsoft-hanterade nycklar för kryptering av dina hanterade diskar.
 author: roygara
-ms.date: 03/02/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014391"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721859"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Kryptering på Server sidan av Azure-disklagring
 
-Server Side Encryption (SSE) skyddar dina data och hjälper dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. SSE krypterar automatiskt dina data som lagras på Azure Managed disks (OS-och data diskar) i vila som standard när de sparas i molnet. 
+De flesta Azure Managed disks krypteras med Azure Storage kryptering, som använder Server Side Encryption (SSE) för att skydda dina data och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Azure Storage kryptering krypterar automatiskt dina data som lagras på Azure Managed disks (OS-och data diskar) i vila som standard när de sparas i molnet. Diskar med kryptering på värden är dock inte krypterade via Azure Storage. För diskar med kryptering på värden är servern som är värd för din virtuella dator kryptering för dina data och att krypterade data flödar till Azure Storage.
 
 Data i Azure Managed disks krypteras transparent med 256-bitars [AES-kryptering](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), en av de starkaste block chiffer som är tillgängliga och är FIPS 140-2-kompatibel. Mer information om de kryptografiska modulerna underliggande Azure Managed disks finns i [Cryptography-API: nästa generation](/windows/desktop/seccng/cng-portal)
 
-Kryptering på Server sidan påverkar inte prestanda för hanterade diskar och det finns ingen ytterligare kostnad. 
+Azure Storage kryptering påverkar inte prestanda för hanterade diskar och det kostar inget extra. Mer information om Azure Storage kryptering finns i [Azure Storage kryptering](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > Temporära diskar är inte hanterade diskar och krypteras inte av SSE, om du inte aktiverar kryptering på värden.

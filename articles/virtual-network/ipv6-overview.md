@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103419107"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Vad är IPv6 för Azure Virtual Network?
@@ -82,7 +82,7 @@ Aktuell IPv6 för Azure Virtual Network-versionen har följande begränsningar:
 - När du lägger till IPv6 i befintliga IPv4-distributioner går det inte att lägga till IPv6-intervall i ett VNET med befintliga länkar för resurs navigering.  
 - Vidarebefordring av DNS för IPv6 stöds för Azures offentliga DNS idag men omvänd DNS stöds inte ännu.   
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 IPv6 Azure-resurser och bandbredd debiteras enligt samma taxa som IPv4. Det finns inga ytterligare eller andra avgifter för IPv6. Du kan hitta information om priser för [offentliga IP-adresser](https://azure.microsoft.com/pricing/details/ip-addresses/), [nätverks bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/)eller [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
 
