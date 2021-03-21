@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96859529"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referens guide för Azure Active Directory hanterings åtgärder för autentisering
@@ -314,7 +314,7 @@ Nedan visas en lista över appar med behörigheter som du kanske vill granska f�
 |Resurs | Behörighet |
 | :- | :- |
 | Microsoft Graph API| Directory. AccessAsUser. all |
-| REST-API för Azure | user_impersonation |
+| Azure REST API | user_impersonation |
 
 För att undvika det här scenariot bör du läsa om att [identifiera och åtgärda illegala medgivande i Office 365](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) för att identifiera och åtgärda alla program med illegala bidrag eller program som har fler bidrag än vad som behövs. Ta sedan bort självbetjäningen [helt och hållet](../manage-apps/configure-user-consent.md) och [upprätta styrnings procedurer](../manage-apps/configure-admin-consent-workflow.md). Slutligen kan du schemalägga regelbundna granskningar av app-behörigheter och ta bort dem när de inte behövs.
 

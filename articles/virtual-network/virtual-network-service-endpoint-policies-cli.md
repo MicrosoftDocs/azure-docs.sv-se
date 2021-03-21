@@ -18,10 +18,10 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: 9ce1e320a93a834a938ce95f3931d885d2214faa
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98216877"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Hantera data exfiltrering för att Azure Storage konton med tjänst slut punkts principer för virtuella nätverk med hjälp av Azure CLI
@@ -152,7 +152,7 @@ az network nsg rule create \
 
 Det här avsnittet innehåller steg för att begränsa nätverks åtkomsten för ett Azure Storage konto från det tilldelade under nätet i ett virtuellt nätverk via tjänst slut punkt.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Skapa två Azure Storage-konton med [AZ lagrings konto Create](/cli/azure/storage/account).
 

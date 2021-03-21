@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541435"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Självstudie: identifiera Google Cloud Platform-instanser (GCP) med Server utvärdering
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure identifierar du dina servrar för utvärder
 
 Den här självstudien visar hur du identifierar Google Cloud Platform-instanser (GCP) med verktyget Azure Migrate: Server bedömning med en förenklad Azure Migrate-installation. Du distribuerar installationen på en GCP VM-instans för att kontinuerligt identifiera dator-och prestanda-metadata.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera ett Azure-konto.

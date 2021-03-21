@@ -9,10 +9,10 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653825"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Förbereda Azure för lokal haveriberedskap till Azure
@@ -54,17 +54,17 @@ För att slutföra dessa uppgifter måste ditt konto tilldelas en inbyggd roll s
 
 ## <a name="create-a-recovery-services-vault"></a>skapar ett Recovery Services-valv
 
-1. Från Azure Portal-menyn väljer du **skapa en resurs**och söker efter **återställning**i Marketplace.
-2. Välj **säkerhets kopiering och Site Recovery** från Sök resultaten och klicka på **skapa**på sidan säkerhets kopiering och Site Recovery. 
+1. Från Azure Portal-menyn väljer du **skapa en resurs** och söker efter **återställning** i Marketplace.
+2. Välj **säkerhets kopiering och Site Recovery** från Sök resultaten och klicka på **skapa** på sidan säkerhets kopiering och Site Recovery. 
 3. På sidan **skapa Recovery Services valv** väljer du **prenumerationen**. Vi använder **contoso-prenumerationen**.
 4. I **Resursgrupp** väljer du en befintlig resursgrupp eller skapar en ny. I den här självstudien använder vi **contosoRG**.
-5. I **valv namn**anger du ett eget namn som identifierar valvet. I de här självstudierna använder vi namnet **ContosoVMVault**.
-6. I **region**väljer du den region där valvet ska placeras. Använder vi **Europa, västra**.
+5. I **valv namn** anger du ett eget namn som identifierar valvet. I de här självstudierna använder vi namnet **ContosoVMVault**.
+6. I **region** väljer du den region där valvet ska placeras. Använder vi **Europa, västra**.
 7. Välj **Granska + skapa**.
 
    ![Skärm bild av sidan Skapa Recovery Services valv.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Det nya valvet visas nu i **instrument panelen**  >  **alla resurser**och på huvud sidan **Recovery Services valv** .
+   Det nya valvet visas nu i **instrument panelen**  >  **alla resurser** och på huvud sidan **Recovery Services valv** .
 
 ## <a name="set-up-an-azure-network"></a>Skapa ett Azure-nätverk
 
@@ -73,11 +73,11 @@ Lokala datorer replikeras till Azure Managed disks. När redundansväxlingen int
 1. I [Azure-portalen](https://portal.azure.com) väljer du **Skapa en resurs** > **Nätverk** > **Virtuellt nätverk**.
 2. Behåll **Resource Manager** valt som distributions modell.
 3. I **Namn** anger du ett nätverksnamn. Namnet måste vara unikt inom Azure-resursgruppen. Vi använder **ContosASRnet** i den här självinlärningskursen.
-4. I **adress utrymme**anger du det virtuella nätverkets adress intervall i CDR-notation. Vi använder **10.1.0.0/24**.
+4. I **adress utrymme** anger du det virtuella nätverkets adress intervall i CDR-notation. Vi använder **10.1.0.0/24**.
 5. I **Prenumeration** väljer du den prenumeration där du vill skapa nätverket.
 6. Ange **resurs gruppen** som nätverket ska skapas i. Vi använder den befintliga resursgruppen **contosoRG**.
-7. I **plats**väljer du samma region som Recovery Servicess valvet har skapats i. I vår självstudie är det **Västeuropa**. Nätverket måste finnas i samma region som valvet.
-8. I **adress intervall**anger du intervallet för nätverket. Vi använder **10.1.0.0/24**och använder inte ett undernät.
+7. I **plats** väljer du samma region som Recovery Servicess valvet har skapats i. I vår självstudie är det **Västeuropa**. Nätverket måste finnas i samma region som valvet.
+8. I **adress intervall** anger du intervallet för nätverket. Vi använder **10.1.0.0/24** och använder inte ett undernät.
 9. Vi lämnar standard alternativen för grundläggande DDoS-skydd, utan tjänst slut punkt eller brand vägg i nätverket.
 9. Välj **Skapa**.
 

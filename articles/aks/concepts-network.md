@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88243912"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Nätverks koncept för program i Azure Kubernetes service (AKS)
@@ -63,7 +63,7 @@ I AKS kan du distribuera ett kluster som använder någon av följande två nät
 
 ### <a name="kubenet-basic-networking"></a>Kubernetes (grundläggande) nätverk
 
-Alternativet *Kubernetes* Networking är standard konfigurationen för skapande av AKS-kluster. Med *Kubernetes*hämtar noder en IP-adress från det virtuella nätverkets undernät i Azure. Poddar får en IP-adress från ett annat logiskt adressutrymme än det virtuella Azure-nätverkets undernät för noderna. NAT (Network Address Translation) konfigureras sedan så att poddarna kan komma åt resurser i det virtuella Azure-nätverket. Käll-IP-adressen för trafiken är NAT till nodens primära IP-adress.
+Alternativet *Kubernetes* Networking är standard konfigurationen för skapande av AKS-kluster. Med *Kubernetes* hämtar noder en IP-adress från det virtuella nätverkets undernät i Azure. Poddar får en IP-adress från ett annat logiskt adressutrymme än det virtuella Azure-nätverkets undernät för noderna. NAT (Network Address Translation) konfigureras sedan så att poddarna kan komma åt resurser i det virtuella Azure-nätverket. Käll-IP-adressen för trafiken är NAT till nodens primära IP-adress.
 
 Noder använder plugin-programmet [Kubernetes][kubenet] Kubernetes. Du kan låta Azure-plattformen skapa och konfigurera de virtuella nätverken åt dig, eller välja att distribuera ditt AKS-kluster till ett befintligt undernät för virtuella nätverk. Återigen får bara noderna en IP-adress med IP-adresser och poddar använder NAT för att kommunicera med andra resurser utanför AKS-klustret. Den här metoden minskar antalet IP-adresser som du behöver reservera i ditt nätverks utrymme för att poddar ska kunna användas.
 
@@ -135,7 +135,7 @@ Med tillägget Application Gateway ingress Controller (AGIC) kan AKS-kunder anv�
 
 En annan vanlig funktion i ingress är SSL/TLS-avslutning. I stora webb program som nås via HTTPS kan TLS-terminering hanteras av den ingående resursen i stället för i själva programmet. För att tillhandahålla automatisk generering och konfiguration av TLS-certifiering kan du konfigurera ingångs resursen så att leverantörer kan använda providers, till exempel för att kryptera. Mer information om hur du konfigurerar en NGINX ingress-styrenhet med att kryptera finns i [ingress och TLS][aks-ingress-tls].
 
-Du kan också konfigurera ingångs styrenheten för att bevara klientens käll-IP på begär anden till behållare i ditt AKS-kluster. När en klients begäran dirigeras till en behållare i ditt AKS-kluster via din ingångs kontroll, kommer den ursprungliga käll-IP: en för den begäran inte att vara tillgänglig för mål behållaren. När du aktiverar *IP-konservering för klient källa*är käll-IP: en för klienten tillgänglig i begär ande huvudet under *X-forwarded-for*. Om du använder IP-konservering för klient källa på din ingångs kontroll kan du inte använda TLS-vidarekoppling. Klient Källans IP-konservering och TLS-vidarekoppling kan användas med andra tjänster, till exempel *Loadbalancer* -typen.
+Du kan också konfigurera ingångs styrenheten för att bevara klientens käll-IP på begär anden till behållare i ditt AKS-kluster. När en klients begäran dirigeras till en behållare i ditt AKS-kluster via din ingångs kontroll, kommer den ursprungliga käll-IP: en för den begäran inte att vara tillgänglig för mål behållaren. När du aktiverar *IP-konservering för klient källa* är käll-IP: en för klienten tillgänglig i begär ande huvudet under *X-forwarded-for*. Om du använder IP-konservering för klient källa på din ingångs kontroll kan du inte använda TLS-vidarekoppling. Klient Källans IP-konservering och TLS-vidarekoppling kan användas med andra tjänster, till exempel *Loadbalancer* -typen.
 
 ## <a name="network-security-groups"></a>Nätverkssäkerhetsgrupper
 

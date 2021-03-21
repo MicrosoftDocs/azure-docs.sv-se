@@ -3,11 +3,11 @@ title: Få åtkomst till nätverks begränsad register med hjälp av betrodd Azu
 description: Aktivera en betrodd Azure-tjänstinstans för säker åtkomst till en nätverks begränsad behållar register för att hämta eller skicka avbildningar
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 3cc32630ea689891e7ba75163c33bc499a38becd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716490"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Tillåt betrodda tjänster att säkert komma åt en nätverks begränsad container Registry (för hands version)
@@ -41,6 +41,7 @@ Instanser av följande tjänster kan komma åt en nätverks begränsad behållar
 |Betrodd tjänst  |Användnings scenarier som stöds  |
 |---------|---------|
 |ACR-uppgifter     | [Få åtkomst till ett annat register från en ACR-uppgift](container-registry-tasks-cross-registry-authentication.md)       |
+|Machine Learning | [Distribuera](../machine-learning/how-to-deploy-custom-docker-image.md) eller [träna](../machine-learning/how-to-train-with-custom-image.md) en modell i en Machine Learning arbets yta med en anpassad Docker-behållar avbildning |
 |Azure Container Registry | [Importera avbildningar från ett annat Azure Container Registry](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]

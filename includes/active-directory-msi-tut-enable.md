@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
 ms.openlocfilehash: 7100a28479e6c9b5e36a36e6400622793e4cd13b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006990"
 ---
 Att aktivera en systemtilldelad hanterad identitet är en upplevelse med ett klick. Du kan antingen aktivera det när du skapar en virtuell dator eller i egenskaperna för en befintlig virtuell dator.

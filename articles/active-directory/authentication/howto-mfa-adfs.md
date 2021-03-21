@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b42f920726d4b3046ab0c292e1090f5217e8b1f9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743249"
 ---
 # <a name="securing-cloud-resources-with-azure-ad-multi-factor-authentication-and-ad-fs"></a>Skydda moln resurser med Azure AD Multi-Factor Authentication och AD FS
@@ -80,7 +80,7 @@ Det första vi måste göra är att konfigurera AD FS-anspråken. Skapa två ans
 ```
 
 13. Klicka på **Finish**.
-14. Klicka på **Använd**.
+14. Klicka på **Applicera**.
 15. Klicka på **OK**.
 16. Stäng AD FS-hantering.
 
@@ -89,7 +89,7 @@ Det första vi måste göra är att konfigurera AD FS-anspråken. Skapa två ans
 När nu anspråken är på plats kan vi konfigurera tillförlitliga IP-adresser.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **Azure Active Directory**  >  **Security**  >  platser för **villkorlig åtkomst**  >  **med** säkerhet
+2. Välj **Azure Active Directory**  >    >  platser för **villkorlig åtkomst**  >  **med** säkerhet
 3. Från bladet **villkorlig åtkomst – namngivna platser** väljer du **Konfigurera MFA-betrodda IP-adresser**
 
    ![Namngivna platser för villkorlig åtkomst i Azure AD Konfigurera MFA-betrodda IP-adresser](./media/howto-mfa-adfs/trustedip6.png)

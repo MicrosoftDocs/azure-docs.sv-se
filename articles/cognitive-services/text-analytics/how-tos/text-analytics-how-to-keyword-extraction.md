@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
 ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654786"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Exempel: extrahera viktiga fraser med Textanalys
@@ -110,7 +110,7 @@ Information om definition av begäran finns i [så här anropar du API för text
 
 + Skicka en **POST**-begäran. Läs API-dokumentationen för denna begäran: [API för nyckel fraser](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Ange HTTP-slutpunkten för extrahering av nyckel fraser genom att antingen använda en Textanalys-resurs på Azure eller en instansierad [textanalys-behållare](text-analytics-how-to-install-containers.md). Om du använder API: et synkront måste du ta med `/text/analytics/v3.0/keyPhrases` i URL: en. Till exempel: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
++ Ange HTTP-slutpunkten för extrahering av nyckel fraser genom att antingen använda en Textanalys-resurs på Azure eller en instansierad [textanalys-behållare](text-analytics-how-to-install-containers.md). Om du använder API: et synkront måste du ta med `/text/analytics/v3.0/keyPhrases` i URL: en. Exempel: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Ange ett rubrik för begäran för att inkludera [åtkomst nyckeln](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) för textanalys åtgärder.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001212"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurera Language Understanding Docker-behållare 
@@ -28,14 +28,14 @@ Den här behållaren har följande konfigurations inställningar:
 
 |Obligatorisk|Inställning|Syfte|
 |--|--|--|
-|Yes|[ApiKey](#apikey-setting)|Används för att spåra fakturerings information.|
-|No|[ApplicationInsights](#applicationinsights-setting)|Gör att du kan lägga till stöd för [Azure Application Insights](/azure/application-insights) -telemetri till din behållare.|
-|Yes|[Billing](#billing-setting)|Anger slut punkts-URI för tjänst resursen på Azure.|
-|Yes|[Villkoren](#eula-setting)| Anger att du har accepterat licensen för behållaren.|
-|No|[Fluent](#fluentd-settings)|Skriv logg och, om du vill, Metric-data till en Fluent-Server.|
-|No|[Http-proxy](#http-proxy-credentials-settings)|Konfigurera en HTTP-proxy för att göra utgående begär Anden.|
-|No|[Loggning](#logging-settings)|Tillhandahåller ASP.NET Core loggnings stöd för din behållare. |
-|Yes|[Monterar](#mount-settings)|Läs och Skriv data från värddatorn till behållare och från behållare tillbaka till värddatorn.|
+|Ja|[ApiKey](#apikey-setting)|Används för att spåra fakturerings information.|
+|Inga|[ApplicationInsights](#applicationinsights-setting)|Gör att du kan lägga till stöd för [Azure Application Insights](/azure/application-insights) -telemetri till din behållare.|
+|Ja|[Billing](#billing-setting)|Anger slut punkts-URI för tjänst resursen på Azure.|
+|Ja|[Villkoren](#eula-setting)| Anger att du har accepterat licensen för behållaren.|
+|Inga|[Fluent](#fluentd-settings)|Skriv logg och, om du vill, Metric-data till en Fluent-Server.|
+|Inga|[Http-proxy](#http-proxy-credentials-settings)|Konfigurera en HTTP-proxy för att göra utgående begär Anden.|
+|Inga|[Loggning](#logging-settings)|Tillhandahåller ASP.NET Core loggnings stöd för din behållare. |
+|Ja|[Monterar](#mount-settings)|Läs och Skriv data från värddatorn till behållare och från behållare tillbaka till värddatorn.|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)Inställningarna, [`Billing`](#billing-setting) och [`Eula`](#eula-setting) används tillsammans och du måste ange giltiga värden för alla dessa tre. i annat fall startar inte behållaren. Mer information om hur du använder dessa konfigurations inställningar för att instansiera en behållare finns i [fakturering](luis-container-howto.md#billing).
@@ -97,7 +97,7 @@ I följande tabell beskrivs de inställningar som stöds.
 |Obligatorisk| Name | Datatyp | Beskrivning |
 |-------|------|-----------|-------------|
 |Ja| `Input` | Sträng | Målet för den inmatade monteringen. Standardvärdet är `/input`. Det här är platsen för LUIS. <br><br>Exempel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Nej| `Output` | Sträng | Målet för utmatnings monteringen. Standardvärdet är `/output`. Detta är platsen för loggarna. Detta inkluderar LUIS-frågemeddelanden och behållar loggar. <br><br>Exempel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Inga| `Output` | Sträng | Målet för utmatnings monteringen. Standardvärdet är `/output`. Detta är platsen för loggarna. Detta inkluderar LUIS-frågemeddelanden och behållar loggar. <br><br>Exempel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Exempel på Docker-körnings kommandon
 

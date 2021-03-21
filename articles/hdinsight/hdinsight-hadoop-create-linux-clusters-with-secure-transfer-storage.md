@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: a02da7237252811d89e2c19a29f49f0bf9bb3804
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945728"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop kluster med lagrings konton för säker överföring i Azure HDInsight
@@ -21,7 +21,7 @@ Funktionen [Säker överföring krävs](../storage/common/storage-require-secure
 
 ## <a name="storage-accounts"></a>Lagringskonton
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Som standard aktive ras egenskapen för säker överföring som krävs när du skapar ett lagrings konto i Azure Portal.
 

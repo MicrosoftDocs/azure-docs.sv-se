@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: c9995df0f292c5e528156a3280df5484db017fca
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101100517"
 ---
 # <a name="azure-front-door-standardpremium-rule-set-actions"></a>Regel uppsättnings åtgärder för Azures främre dörr standard/Premium
@@ -36,7 +36,7 @@ Använd den här åtgärden om du vill skriva över TTL-värdet (Time to Live) f
 
 Följande beskrivning gäller när du väljer dessa cache-beteenden och regeln matchar:
 
-Cache-beteende |  Description              
+Cache-beteende |  Beskrivning              
 ---------------|----------------
 Kringgå cacheminne | Innehållet är inte cachelagrat.
 Åsidosätt | Det TTL-värde som returneras från ditt ursprung skrivs över med det värde som anges i åtgärden. Detta beteende gäller endast om svaret är cacheable. För Cache-Control-svarshuvuden med värdena "no-cache", "privat", "No-Store", är åtgärden inte tillämplig.
@@ -56,7 +56,7 @@ Använd den här åtgärden för att ändra cache-nyckeln baserat på frågestr�
 
 Följande beskrivning gäller när du väljer dessa beteenden och regeln matchar:
 
-Beteende | Description
+Beteende | Beskrivning
 ---------|------------
 Inkludera | Frågesträngar som anges i parametrarna kommer att tas med när cache-nyckeln genereras. 
 Cachelagra varje unik URL | Varje unik URL har sin egen cache-nyckel. 
@@ -122,7 +122,7 @@ Bevara omatchad sökväg | Om värdet är **Ja**, läggs den återstående sökv
 
 ### <a name="supported-variables"></a>Variabler som stöds
 
-| Variabelnamn | Description                                                  |
+| Variabelnamn | Beskrivning                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | socket_ip                  | IP-adressen för den direkta anslutningen till Azures främre dörr kant. Om klienten använder en HTTP-proxy eller en belastningsutjämnare för att skicka begäran, är värdet för SocketIp IP-adressen för proxyservern eller belastningsutjämnaren. |
 | client_ip                  | IP-adressen för klienten som gjorde den ursprungliga begäran. Om det fanns ett X-vidarebefordrat-för-huvud i begäran plockas klientens IP-adress från samma. |
