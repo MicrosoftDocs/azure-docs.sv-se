@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: edc773ec2db078b6c50b55c81ad6570758a3f5f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389254"
 ---
 # <a name="data-access-strategies"></a>Dataåtkomststrategier
@@ -48,7 +48,7 @@ Mer information om de mekanismer för nätverks säkerhet som stöds på data la
     | Datalager                  | Mekanism för nätverks säkerhet som stöds på data lager | Private Link     | Betrodd tjänst     | Statiskt IP-intervall | Tjänsttaggar | Tillåt Azure-tjänster |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|-----------------|
     | Data lager för Azure PaaS       | Azure Cosmos DB                                     | Ja              | -                   | Ja             | -            | Ja                  |
-    |                              | Azure-datautforskaren                                 | -                | -                   | Ja*            | Ja*         | -                    |
+    |                              | Öppna Azure-datautforskaren                                 | -                | -                   | Ja*            | Ja*         | -                    |
     |                              | Azure Data Lake gen1                                | -                | -                   | Ja             | -            | Ja                  |
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Ja             | -            | Ja                  |
     |                              | Azure File Storage                                  | Ja              | -                   | Ja             | -            | .                    |
@@ -66,7 +66,7 @@ Mer information om de mekanismer för nätverks säkerhet som stöds på data la
     | Data lager                  | Mekanism för nätverks säkerhet som stöds på data lager         | Statisk IP | Betrodda tjänster  |
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
     | Data lager för Azure PaaS       | Azure Cosmos DB                                               | Ja       | -                   |
-    |                                | Azure-datautforskaren                                           | -         | -                   |
+    |                                | Öppna Azure-datautforskaren                                           | -         | -                   |
     |                                | Azure Data Lake gen1                                          | Ja       | -                   |
     |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Ja       | -                   |
     |                                | Azure File Storage                                            | Ja       | -                   |

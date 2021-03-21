@@ -11,10 +11,10 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 11/16/2020
 ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070107"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Ansluta till en Azure Machine Learning beräknings instans i Visual Studio Code (för hands version)
@@ -135,7 +135,7 @@ Här finns information om fälten:
 |Värd|Använd den stenografiska du gillar för beräknings instansen |
 |HostName|Detta är beräknings instansens IP-adress |
 |Port|Detta är porten som visas i dialog rutan SSH ovan |
-|Användare|Detta måste vara `azureuser` |
+|User|Detta måste vara `azureuser` |
 |IdentityFile|Ska peka på filen där du sparade den privata nyckeln |
 
 Nu bör du kunna använda SSH till din beräknings instans med hjälp av den kort skrift som du använde ovan `ssh azmlci1` .

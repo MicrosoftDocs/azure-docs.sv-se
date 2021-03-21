@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/09/2020
 ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94376850"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algoritmen & module-referens för Azure Machine Learning designer
@@ -32,24 +32,24 @@ Hjälp med att välja algoritmer finns i
 ## <a name="data-preparation-modules"></a>Moduler för data förberedelse
 
 
-| Funktioner | Description | Modul |
+| Funktioner | Beskrivning | Modul |
 | --- |--- | --- |
 | Data indata och utdata | Flytta data från moln källor till din pipeline. Skriv resultaten eller mellanliggande data till Azure Storage, SQL Database eller Hive, medan du kör en pipeline eller Använd moln lagring för att utbyta data mellan pipeliner.  | [Ange data manuellt](enter-data-manually.md) <br/> [Exportera data](export-data.md) <br/> [Importera data](import-data.md) |
-| Data Transformation | Åtgärder för data som är unika för maskin inlärning, till exempel normaliserande eller diskretisering data, Dimensional reducering och konvertering av data mellan olika fil format.| [Lägg till kolumner](add-columns.md) <br/> [Lägga till rader](add-rows.md) <br/> [Använda matematisk åtgärd](apply-math-operation.md) <br/> [Använda SQL-transformering](apply-sql-transformation.md) <br/> [Rensa data som saknas](clean-missing-data.md) <br/> [Beskärningsvärden](clip-values.md) <br/> [Konvertera till CSV](convert-to-csv.md) <br/> [Konvertera till datamängd](convert-to-dataset.md) <br/> [Konvertera till indikatorvärden](convert-to-indicator-values.md) <br/> [Redigera metadata](edit-metadata.md) <br/> [Gruppera data till lagerplatser](group-data-into-bins.md) <br/> [Koppla data](join-data.md) <br/> [Normalisera Data](normalize-data.md) <br/> [Partitionera och prova](partition-and-sample.md)  <br/> [Ta bort dubblettrader](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Välja kolumntranformering](select-columns-transform.md) <br/> [Välja kolumner i datauppsättning](select-columns-in-dataset.md) <br/> [Dela data](split-data.md) |
+| Data Transformation | Åtgärder för data som är unika för maskin inlärning, till exempel normaliserande eller diskretisering data, Dimensional reducering och konvertering av data mellan olika fil format.| [Lägg till kolumner](add-columns.md) <br/> [Lägg till rader](add-rows.md) <br/> [Använda matematisk åtgärd](apply-math-operation.md) <br/> [Använda SQL-transformering](apply-sql-transformation.md) <br/> [Rensa data som saknas](clean-missing-data.md) <br/> [Beskärningsvärden](clip-values.md) <br/> [Konvertera till CSV](convert-to-csv.md) <br/> [Konvertera till datamängd](convert-to-dataset.md) <br/> [Konvertera till indikatorvärden](convert-to-indicator-values.md) <br/> [Redigera metadata](edit-metadata.md) <br/> [Gruppera data till lagerplatser](group-data-into-bins.md) <br/> [Koppla data](join-data.md) <br/> [Normalisera Data](normalize-data.md) <br/> [Partitionera och prova](partition-and-sample.md)  <br/> [Ta bort dubblettrader](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Välja kolumntranformering](select-columns-transform.md) <br/> [Välja kolumner i datauppsättning](select-columns-in-dataset.md) <br/> [Dela data](split-data.md) |
 | Val av funktion | Välj en delmängd av relevanta, användbara funktioner som du kan använda när du skapar en analys modell. | [Filterbaserat funktionsval](filter-based-feature-selection.md) <br/> [Permutationfunktionsprioritet](permutation-feature-importance.md) |
 | Statistiska funktioner | Tillhandahålla en mängd olika statistiska metoder för data vetenskap. | [Sammanfatta data](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>Maskininlärningsalgoritmer
 
-| Funktioner | Description | Modul |
+| Funktioner | Beskrivning | Modul |
 | --- |--- | --- |
 | Regression | Förutsäg ett värde. | [Förbättrad regression för beslutsträd](boosted-decision-tree-regression.md) <br/> [Regression för beslutsskog](decision-forest-regression.md) <br/> [Fast Forest Quantile Regression](fast-forest-quantile-regression.md)  <br/> [Linjär regression](linear-regression.md)  <br/> [Regression för Neural Network](neural-network-regression.md)  <br/> [Poisson-regression](poisson-regression.md)  <br/>|
 | Klustring | Gruppera data tillsammans.| [K-means-klustring](k-means-clustering.md)
-| Klassificering | Förutsäg en klass.  Välj mellan binära (två klasser) eller algoritmer för multiklasser.| [Förbättrat beslutsträd med flera klasser](multiclass-boosted-decision-tree.md) <br/> [Beslutsskog med två klasser](multiclass-decision-forest.md) <br/> [Logistic Regression med flera klasser](multiclass-logistic-regression.md)  <br/> [Neural Network med flera klasser](multiclass-neural-network.md) <br/> [En-mot- alla-multiklass](one-vs-all-multiclass.md) <br/> [En vs. en multiklass](one-vs-one-multiclass.md) <br/>[Genomsnittsperceptron med två klasser](two-class-averaged-perceptron.md) <br/>  [Tvåklassigt förbättrat beslutsträd](two-class-boosted-decision-tree.md)  <br/> [Beslutsskog med två klasser](two-class-decision-forest.md) <br/>  [Logistic Regression med två klasser](two-class-logistic-regression.md) <br/> [Neural Network med två klasser](two-class-neural-network.md) <br/> [Tvåklassig dator för vektorstöd](two-class-support-vector-machine.md) | 
+| Klassificering | Förutsäg en klass.  Välj mellan binära (två klasser) eller algoritmer för multiklasser.| [Förbättrat beslutsträd med flera klasser](multiclass-boosted-decision-tree.md) <br/> [Beslutsskog med två klasser](multiclass-decision-forest.md) <br/> [Logistic Regression med flera klasser](multiclass-logistic-regression.md)  <br/> [Neural Network med flera klasser](multiclass-neural-network.md) <br/> [En-mot- alla-multiklass](one-vs-all-multiclass.md) <br/> [En-mot- En multiklass](one-vs-one-multiclass.md) <br/>[Genomsnittsperceptron med två klasser](two-class-averaged-perceptron.md) <br/>  [Tvåklassigt förbättrat beslutsträd](two-class-boosted-decision-tree.md)  <br/> [Beslutsskog med två klasser](two-class-decision-forest.md) <br/>  [Logistic Regression med två klasser](two-class-logistic-regression.md) <br/> [Neural Network med två klasser](two-class-neural-network.md) <br/> [Tvåklassig dator för vektorstöd](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Moduler för att skapa och utvärdera modeller
 
-| Funktioner | Description | Modul |
+| Funktioner | Beskrivning | Modul |
 | --- |--- | --- |
 | Modell träning | Kör data via algoritmen. |  [Träna klustringsmodellen](train-clustering-model.md) <br/> [Träningsmodell](train-model.md) <br/> [Träna Pytorch-modell](train-pytorch-model.md) <br/> [Finjustera hyperparametrar för modell](tune-model-hyperparameters.md) |
 | Bedömnings-och utvärderings modell | Mät noggrannheten för den tränade modellen. | [Använda transformering](apply-transformation.md) <br/> [Tilldela data till kluster](assign-data-to-clusters.md) <br/> [Korsvalidera modell](cross-validate-model.md) <br/> [Utvärdera modell](evaluate-model.md) <br/> [Bildpoängmodell](score-image-model.md) <br/> [Poängmodell](score-model.md) |

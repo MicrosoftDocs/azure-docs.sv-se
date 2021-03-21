@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874533"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snabbstart: Sända realtidsmeddelanden från konsolapp
@@ -139,7 +139,7 @@ Version | API-tillstånd | Door | Specifik
 
 Listan över tillgängliga API:er för varje specifika version finns i följande lista.
 
-API | 1,0 – för hands version | 1,0
+API | 1,0 – för hands version | 1.0
 --- | --- | ---
 [Sänd till alla](#broadcast) | **&#x2713;** | **&#x2713;**
 [Sänd till en grupp](#broadcast-group) | **&#x2713;** | **&#x2713;**

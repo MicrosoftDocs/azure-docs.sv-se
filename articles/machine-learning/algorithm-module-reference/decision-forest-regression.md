@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375371"
 ---
 # <a name="decision-forest-regression-module"></a>Besluts skogs Regressions modul
@@ -42,15 +42,15 @@ Mer information om det teoretiska ramverket för den här algoritmen och dess im
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Konfigurera Regressions modellen för besluts skogar
 
-1. Lägg till **besluts skogs Regressions** modulen i pipelinen. Du kan hitta modulen i designern under **Machine Learning** , **initiera modellen** och **regression**.
+1. Lägg till **besluts skogs Regressions** modulen i pipelinen. Du kan hitta modulen i designern under **Machine Learning**, **initiera modellen** och **regression**.
 
 2. Öppna egenskaperna för modulen och välj den metod som används för att skapa enskilda träd för **omsamplings metod**.  Du kan välja mellan **bagage** eller **Replikera**.
 
-    - **Bagage** : bagage kallas även *Start agg regering*. Varje träd i en Regressions besluts skog matar ut en Gaussisk fördelning genom förutsägelse. Aggregation är att hitta en Gaussisk vars första två moment motsvarar momentet i blandningen av Gaussisk distributioner genom att kombinera alla distributioner som returneras av enskilda träd.
+    - **Bagage**: bagage kallas även *Start agg regering*. Varje träd i en Regressions besluts skog matar ut en Gaussisk fördelning genom förutsägelse. Aggregation är att hitta en Gaussisk vars första två moment motsvarar momentet i blandningen av Gaussisk distributioner genom att kombinera alla distributioner som returneras av enskilda träd.
 
          Mer information finns i Wikipedia-posten för [Start agg regering](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
-    - **Replikera** : i replikering tränas varje träd på exakt samma indata. Bestämning av vilket delat predikat som används för varje trädnod förblir slumpmässigt och träden är olika.
+    - **Replikera**: i replikering tränas varje träd på exakt samma indata. Bestämning av vilket delat predikat som används för varje trädnod förblir slumpmässigt och träden är olika.
 
          Mer information om inlärnings processen med alternativet **Replikera** finns i [besluts skogar för visuellt innehåll och medicinsk bild analys. Criminisi och J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/).
 
@@ -60,7 +60,7 @@ Mer information om det teoretiska ramverket för den här algoritmen och dess im
 
       Om du vet hur du vill konfigurera modellen kan du ange en speciell uppsättning värden som argument. Du kanske har lärt dig dessa värden genom att experimentera eller ta emot dem som vägledning.
 
-    - **Parameter intervall** : Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat. 
+    - **Parameter intervall**: Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat. 
 
 
 

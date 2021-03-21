@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f441a1cf97c069c4755b436bbb8cb9268b469eb3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199755"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Självstudie: del 2 – Visa dirigerade meddelanden
@@ -190,7 +190,7 @@ Det här programmet skickar meddelanden för var och en av de olika metoderna f�
 
 Om du inte hämtade filerna från lagrings platsen i del 1 av den här självstudien kan du gå vidare och ladda ned dem från [IoT Device simulering](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Om du väljer den här länken hämtas en lagrings plats med flera program. lösningen du söker efter är IoT-Hub/självstudier/routing/IoT_SimulatedDevice. SLN. 
 
-Dubbelklicka på lösnings filen (IoT_SimulatedDevice. SLN) för att öppna koden i Visual Studio och öppna sedan Program.cs. Ersätt `{your hub name}` med IoT-hubbens värdnamn. Formatet för IoT-hubbens värdnamn är **{iot-hub-name}.azure-devices.net**. För den här självstudien är hubbens värdnamn **ContosoTestHub.azure-devices.net**. Ersätt därefter `{your device key}` med enhetsnyckeln du sparade tidigare när du konfigurerade den simulerade enheten. 
+Dubbelklicka på lösnings filen (IoT_SimulatedDevice. SLN) för att öppna koden i Visual Studio och öppna sedan program. cs. Ersätt `{your hub name}` med IoT-hubbens värdnamn. Formatet för IoT-hubbens värdnamn är **{iot-hub-name}.azure-devices.net**. För den här självstudien är hubbens värdnamn **ContosoTestHub.azure-devices.net**. Ersätt därefter `{your device key}` med enhetsnyckeln du sparade tidigare när du konfigurerade den simulerade enheten. 
 
    ```csharp
         static string s_myDeviceId = "Contoso-Test-Device";

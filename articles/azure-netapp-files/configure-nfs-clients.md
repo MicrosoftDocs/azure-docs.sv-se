@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
 ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409577"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurera en NFS-klient för Azure NetApp Files
@@ -46,7 +46,7 @@ I exemplen i det här avsnittet används följande domän namn och IP-adress:
 
 1. Konfigurera `/etc/resolv.conf` med rätt DNS-server.  
 
-    Till exempel:  
+    Exempel:  
 
     `[root@reddoc cbs]# cat /etc/resolv.conf`   
     `search contoso.com`   
@@ -72,7 +72,7 @@ I exemplen i det här avsnittet används följande domän namn och IP-adress:
 
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
 
-    Till exempel: 
+    Exempel: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
     
@@ -91,7 +91,7 @@ I exemplen i det här avsnittet används följande domän namn och IP-adress:
  
     `sudo kinit $SERVICEACCOUNT@DOMAIN`  
 
-    Till exempel:   
+    Exempel:   
 
     `sudo kinit ad_admin@CONTOSO.COM`
 
@@ -206,14 +206,14 @@ I exemplen i det här avsnittet används följande domän namn och IP-adress:
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
-    Till exempel:    
+    Exempel:    
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
 
 7. Utför `kinit` med användaren för att hämta biljetter: 
  
     `sudo kinit $SERVICEACCOUNT`   
  
-    Till exempel:    
+    Exempel:    
     `sudo kinit ad_admin`  
 
 ### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>Ubuntu-konfiguration om du använder dubbla protokoll  

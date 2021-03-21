@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895279"
 ---
 # <a name="drawing-package-requirements"></a>Krav för ritningspaket
@@ -198,7 +198,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `directoryInfo`
 
-| Egenskap  | Typ | Obligatorisk | Description |
+| Egenskap  | Typ | Obligatorisk | Beskrivning |
 |-----------|------|----------|-------------|
 | `name`      | sträng | true   |  Namn på byggnaden. |
 | `streetAddress`|    sträng |    falskt    | Byggnadens adress. |
@@ -219,7 +219,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `buildingLevels`Objektet innehåller en JSON-matris med byggnader-nivåer.
 
-| Egenskap  | Typ | Obligatorisk | Description |
+| Egenskap  | Typ | Obligatorisk | Beskrivning |
 |-----------|------|----------|-------------|
 |`levelName`    |sträng    |true |    Namn på beskrivande nivå. Till exempel: våning 1, lobbyn, blå parkering eller Basement.|
 |`ordinal` | heltal |    true | Anger den lodräta ordningen för nivåer. Varje funktion måste ha en nivå med ordnings tal 0. |
@@ -251,7 +251,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `unitProperties`Objektet innehåller en JSON-matris med enhets egenskaper.
 
-| Egenskap  | Typ | Obligatorisk | Description |
+| Egenskap  | Typ | Obligatorisk | Beskrivning |
 |-----------|------|----------|-------------|
 |`unitName`    |sträng    |true    |Namnet på den enhet som ska associeras med den här `unitProperty` posten. Posten är endast giltig när en etikett matchning finns `unitName` i `unitLabel` skikten. |
 |`categoryName`|    sträng|    falskt    |Kategori namn. En fullständig lista över kategorier finns i [Kategorier](https://aka.ms/pa-indoor-spacecategories). |

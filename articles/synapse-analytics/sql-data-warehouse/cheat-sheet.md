@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98120231"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Lathund-blad för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse-analys
@@ -43,7 +43,7 @@ Börja med att läsa in data i [Azure Data Lake Storage](../../data-factory/conn
 |:--- |:--- |
 | Distribution | Resursallokering (round robin) |
 | Indexering | Heap |
-| Partitionering | Ingen |
+| Partitionering | Inget |
 | Resursklass | largerc eller xlargerc |
 
 Läs mer om [datamigrering](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), [datainläsning](design-elt-data-loading.md) och [ELT-processen (Extract, Load, and Transform)](design-elt-data-loading.md).

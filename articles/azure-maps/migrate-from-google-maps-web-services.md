@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386857"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Självstudie: Migrera webb tjänsten från Google Maps
@@ -116,7 +116,7 @@ Den här tabellen kors referenser till Google Maps API-parametrar med jämförba
 | `key`                       | `subscription-key` – Se även [autentiseringen med Azure Maps](azure-maps-authentication.md) -dokumentationen. |
 | `language`                  | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Ej tillämpligt*     |
+| `location_type`             | *EJ TILLÄMPLIGT*     |
 | `result_type`               | `entityType`    |
 
 Granska [metod tips för sökning](how-to-use-best-practices-for-search.md).
@@ -160,9 +160,9 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara Azur
 
 | Google Maps API-parameter | Jämförbar Azure Maps API-parameter |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Ej tillämpligt*                               |
+| `fields`                  | *EJ TILLÄMPLIGT*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Ej tillämpligt*                               |
+| `inputtype`               | *EJ TILLÄMPLIGT*                               |
 | `key`                     | `subscription-key` – Se även [autentiseringen med Azure Maps](azure-maps-authentication.md) -dokumentationen. |
 | `language`                | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `locationbias`            | `lat`, `lon` och `radius`<br/>`topLeft` och `btmRight`<br/>`countrySet`  |
@@ -179,13 +179,13 @@ I tabellen visas Google Maps API-parametrar med de jämförbara Azure Maps API-p
 | `keyword`                   | `categorySet` och `brandSet`        |
 | `language`                  | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `location`                  | `lat` och `lon`                     |
-| `maxprice`                  | *Ej tillämpligt*                               |
-| `minprice`                  | *Ej tillämpligt*                               |
+| `maxprice`                  | *EJ TILLÄMPLIGT*                               |
+| `minprice`                  | *EJ TILLÄMPLIGT*                               |
 | `name`                      | `categorySet` och `brandSet`        |
-| `opennow`                   | *Ej tillämpligt*                               |
+| `opennow`                   | *EJ TILLÄMPLIGT*                               |
 | `pagetoken`                 | `ofs` och `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Ej tillämpligt*                               |
+| `rankby`                    | *EJ TILLÄMPLIGT*                               |
 | `type`                      | `categorySet –` Se dokumentation om [Sök kategorier som stöds](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Beräkna vägar och vägbeskrivningar
@@ -265,10 +265,10 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara API-
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Ej tillämpligt* – det här är en funktion för att koda en funktion. Använd `countrySet` parametern när du använder API: et för Azure Maps-kodning.  |
-| `scale`                     | *Ej tillämpligt*                              |
+| `scale`                     | *EJ TILLÄMPLIGT*                              |
 | `size`                      | `width` och `height` – kan vara upp till 8192x8192 i storlek. |
-| `style`                     | *Ej tillämpligt*                              |
-| `visible`                   | *Ej tillämpligt*                              |
+| `style`                     | *EJ TILLÄMPLIGT*                              |
+| `visible`                   | *EJ TILLÄMPLIGT*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

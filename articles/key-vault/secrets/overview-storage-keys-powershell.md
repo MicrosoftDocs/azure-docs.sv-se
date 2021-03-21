@@ -10,10 +10,10 @@ manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023116"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Hantera lagrings konto nycklar med Key Vault och Azure PowerShell
@@ -34,7 +34,7 @@ Tänk på följande när du använder funktionen för hanterad lagrings konto ny
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="service-principal-application-id"></a>Program-ID för tjänstens huvud namn
+## <a name="service-principal-application-id"></a>Program-ID för tjänstens huvudnamn
 
 En Azure AD-klient tillhandahåller varje registrerat program med ett [huvud namn för tjänsten](../../active-directory/develop/developer-glossary.md#service-principal-object). Tjänstens huvud namn fungerar som program-ID, som används vid konfiguration av auktorisering för åtkomst till andra Azure-resurser via Azure RBAC.
 
@@ -51,7 +51,7 @@ Key Vault är ett Microsoft-program som är förregistrerat i alla Azure AD-klie
 För att slutföra den här guiden måste du först göra följande:
 
 - [Installera Azure PowerShell-modulen](/powershell/azure/install-az-ps).
-- [Skapa ett nyckel valv](quick-create-powershell.md)
+- [Skapa ett nyckelvalv](quick-create-powershell.md)
 - [Skapa ett Azure Storage-konto](../../storage/common/storage-account-create.md?tabs=azure-powershell). Lagrings konto namnet får bara innehålla gemena bokstäver och siffror. Namnet måste innehålla mellan 3 och 24 tecken.
 
 

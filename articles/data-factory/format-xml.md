@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
 ms.openlocfilehash: a4082e1e00ecb1d3b0157fcc35616704eaab0aae
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386364"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-format i Azure Data Factory
@@ -97,7 +97,7 @@ I mappa data flöden kan du läsa och skriva till XML-format i följande data la
 
 I tabellen nedan visas de egenskaper som stöds av en XML-källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** . Lär dig mer från [XML-kopplingens beteende](#xml-connector-behavior). När du använder en infogad data uppsättning visas ytterligare fil inställningar, som är samma som de egenskaper som beskrivs i avsnittet [Egenskaper för data mängd](#dataset-properties) . 
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Jokertecken sökvägar | Alla filer som matchar sökvägen för jokertecken kommer att bearbetas. Åsidosätter mappen och fil Sök vägen som angetts i data uppsättningen. | Inga | Sträng [] | wildcardPaths |
 | Partitionens rot Sök väg | För fildata som är partitionerade kan du ange en rot Sök väg för partitionen för att kunna läsa partitionerade mappar som kolumner | Inga | Sträng | partitionRootPath |

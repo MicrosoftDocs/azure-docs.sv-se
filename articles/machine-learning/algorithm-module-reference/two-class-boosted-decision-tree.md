@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375935"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class utökat besluts träd
@@ -38,15 +38,15 @@ Du kan träna den här typen av modell med hjälp av [träna modell](././train-m
   
 2.  Ange hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .
   
-    + **Enskild parameter** : om du vet hur du vill konfigurera modellen kan du ange en viss uppsättning värden som argument.
+    + **Enskild parameter**: om du vet hur du vill konfigurera modellen kan du ange en viss uppsättning värden som argument.
   
-    + **Parameter intervall** : om du inte är säker på de bästa parametrarna kan du hitta de optimala parametrarna med hjälp av modulen [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Du anger några värden och utbildaren upprepas över flera kombinationer av inställningarna för att avgöra vilken kombination av värden som ger bäst resultat.
+    + **Parameter intervall**: om du inte är säker på de bästa parametrarna kan du hitta de optimala parametrarna med hjälp av modulen [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Du anger några värden och utbildaren upprepas över flera kombinationer av inställningarna för att avgöra vilken kombination av värden som ger bäst resultat.
   
-3.  För **maximalt antal löv per träd** , anger du det maximala antalet terminalservrar (löv) som kan skapas i alla träd.
+3.  För **maximalt antal löv per träd**, anger du det maximala antalet terminalservrar (löv) som kan skapas i alla träd.
   
      Genom att öka det här värdet kan du öka storleken på trädet och få bättre precision vid överanpassning och längre inlärnings tid.
   
-4.  För **minsta antal exempel per lövnod** , anger du antalet fall som krävs för att skapa en terminalserversession (löv) i ett träd.  
+4.  För **minsta antal exempel per lövnod**, anger du antalet fall som krävs för att skapa en terminalserversession (löv) i ett träd.  
   
      Genom att öka det här värdet ökar du tröskelvärdet för att skapa nya regler. Till exempel, med standardvärdet 1, kan ett enda ärende orsaka att en ny regel skapas. Om du ökar värdet till 5 måste tränings data innehålla minst fem fall som uppfyller samma villkor.
   

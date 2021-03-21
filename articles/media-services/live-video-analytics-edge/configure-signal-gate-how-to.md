@@ -4,10 +4,10 @@ description: Den här artikeln innehåller anvisningar om hur du konfigurerar en
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94410801"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Konfigurera en signal grind för händelse-baserad videoinspelning
@@ -58,35 +58,35 @@ Korrelations-ID: n anges för varje händelse. Dessa ID: n anges från den inled
 
 ### <a name="parameters-based-on-the-physical-time-that-events-arrive-at-the-signal-gate"></a>Parametrar, baserat på den fysiska tid som händelser anländer till signal porten
 
-* **minimumActivationTime (kortaste varaktighet för en inspelning)** : det minsta antal sekunder som signal porten är öppen när den utlöses för att ta emot nya händelser, om den inte avbryts av maximumActivationTime.
-* **maximumActivationTime (längsta möjliga varaktighet för en inspelning)** : det maximala antalet sekunder från den första händelsen som signal grind processorn är öppen efter att ha utlösts för att ta emot nya händelser, oavsett vilka händelser som tas emot.
-* **activationSignalOffset** : antalet sekunder mellan aktivering av signalens grind processor och video inspelningens start. Normalt är det här värdet negativt eftersom det startar inspelningen innan händelsen utlöses.
-* **activationEvaluationWindow** : med början från den inledande Utlös ande händelsen, måste antalet sekunder som en händelse som inträffat före den inledande händelsen, i medie tid, tas emot vid signalen om signal-grind innan den ignoreras och betraktas som en sent ankomst.
+* **minimumActivationTime (kortaste varaktighet för en inspelning)**: det minsta antal sekunder som signal porten är öppen när den utlöses för att ta emot nya händelser, om den inte avbryts av maximumActivationTime.
+* **maximumActivationTime (längsta möjliga varaktighet för en inspelning)**: det maximala antalet sekunder från den första händelsen som signal grind processorn är öppen efter att ha utlösts för att ta emot nya händelser, oavsett vilka händelser som tas emot.
+* **activationSignalOffset**: antalet sekunder mellan aktivering av signalens grind processor och video inspelningens start. Normalt är det här värdet negativt eftersom det startar inspelningen innan händelsen utlöses.
+* **activationEvaluationWindow**: med början från den inledande Utlös ande händelsen, måste antalet sekunder som en händelse som inträffat före den inledande händelsen, i medie tid, tas emot vid signalen om signal-grind innan den ignoreras och betraktas som en sent ankomst.
 
 > [!NOTE]
 > En *sent införsel* är en händelse som anländer efter att utvärderings perioden för aktivering har passerat, men som kommer före den inledande händelsen i medie tid.
 
 ### <a name="limits-of-parameters"></a>Parameter gränser
 
-* **activationEvaluationWindow** : 0 sekunder till 10 sekunder
-* **activationSignalOffset** :-1 minut till 1 minut
-* **minimumActivationTime** : 1 sekund till 1 timme
-* **maximumActivationTime** : 1 sekund till 1 timme
+* **activationEvaluationWindow**: 0 sekunder till 10 sekunder
+* **activationSignalOffset**:-1 minut till 1 minut
+* **minimumActivationTime**: 1 sekund till 1 timme
+* **maximumActivationTime**: 1 sekund till 1 timme
 
 
 I användnings fallet ställer du in parametrarna enligt följande:
 
-* **activationEvaluationWindow** : *K* sekunder
-* **activationSignalOffset** : *-X* sekunder
-* **minimumActivationWindow** : *Y* sekunder
-* **maximumActivationWindow** : *Z* sekunder
+* **activationEvaluationWindow**: *K* sekunder
+* **activationSignalOffset**: *-X* sekunder
+* **minimumActivationWindow**: *Y* sekunder
+* **maximumActivationWindow**: *Z* sekunder
 
 
 Här är ett exempel på hur avsnittet **signal-processor** -noden ska se ut i en Media Graph-topologi för följande parameter värden:
-* **activationEvaluationWindow** : 1 sekund
-* **activationSignalOffset** :-5 sekunder
-* **minimumActivationTime** : 20 sekunder
-* **maximumActivationTime** : 40 sekunder
+* **activationEvaluationWindow**: 1 sekund
+* **activationSignalOffset**:-5 sekunder
+* **minimumActivationTime**: 20 sekunder
+* **maximumActivationTime**: 40 sekunder
 
 > [!IMPORTANT]
 > [Varaktighets formatet i ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -120,7 +120,7 @@ Här är ett exempel på hur avsnittet **signal-processor** -noden ska se ut i e
 
 ### <a name="recording-scenarios"></a>Registrera scenarier
 
-**En händelse från en källa ( *Normal aktivering* )**
+**En händelse från en källa (*Normal aktivering*)**
 
 En signal grind processor som tar emot en händelse resulterar i en inspelning som påbörjar 5 sekunder (aktiverings signal = 5 sekunder) innan händelsen anländer till porten. Resten av inspelningen är 20 sekunder (minsta aktiverings tid = 20 sekunder) eftersom inga andra händelser kommer före slutet av den minsta aktiverings tiden för att utlösa porten igen.
 
@@ -131,7 +131,7 @@ Exempel diagram:
 * Varaktighet för inspelning =-offset + minimumActivationTime = [E1 + offset, E1 + minimumActivationTime]
 
 
-**Två händelser från en källa ( *Återaktiverad aktivering* )**
+**Två händelser från en källa (*Återaktiverad aktivering*)**
 
 En signal grind processor som tar emot två händelser resulterar i en inspelning som börjar 5 sekunder (aktiverings signal förskjutning = 5 sekunder) innan händelsen anländer till porten. Händelse 2 kommer också 5 sekunder efter händelse 1. Eftersom händelse 2 tar emot innan den minsta aktiverings tiden på händelse 1 (20 sekunder) utlöses porten. Resten av inspelningen är 20 sekunder (minsta aktiverings tid = 20 sekunder) eftersom inga andra händelser kommer före slutet av den minsta aktiverings tiden från händelse 2 för att utlösa porten igen.
 
@@ -142,7 +142,7 @@ Exempel diagram:
 * Varaktighet för inspelning =-offset + (ankomst av händelse 2 – ankomst av händelse 1) + minimumActivationTime
 
 
-***N* händelser från en källa ( *maximal aktivering* )**
+***N* händelser från en källa (*maximal aktivering*)**
 
 En signal grind processor som tar emot *N* händelser resulterar i en inspelning som börjar 5 sekunder (aktivering av signal förskjutning = 5 sekunder) innan den första händelsen kommer till porten. När varje händelse tas emot före slutet av den minsta aktiverings tiden på 20 sekunder från föregående händelse utlöses porten kontinuerligt. Den förblir öppen tills den maximala aktiverings tiden på 40 sekunder har infallit efter den första händelsen. Sedan stängs porten och accepterar inte längre några nya händelser.
 

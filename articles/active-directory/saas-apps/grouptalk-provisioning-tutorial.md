@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0af41127577c172cdab74ae908f0645733d49a42
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735766"
 ---
 # <a name="tutorial-configure-grouptalk-for-automatic-user-provisioning"></a>Självstudie: Konfigurera GroupTalk för automatisk användar etablering
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både GroupTalk 
 > * Behåll användarattribut synkroniserade mellan Azure AD och GroupTalk
 > * Etablera grupper och grupp medlemskap i GroupTalk
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

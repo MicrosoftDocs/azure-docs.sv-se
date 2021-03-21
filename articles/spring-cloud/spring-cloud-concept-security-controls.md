@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 25636611795a18761a1fc7135efd4abba5af5fe3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501115"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Säkerhetskontroller för Azure Spring Cloud-tjänsten
@@ -26,15 +26,15 @@ En säkerhets kontroll är en kvalitet eller funktion i en Azure-tjänst som bid
 
 | Säkerhets kontroll | Ja/nej | Kommentarer | Dokumentation |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Kryptering på Server sidan i vila: Microsoft-hanterade nycklar | Yes | Användare som överfört källa och artefakter, konfigurations Server inställningar, appinställningar och data i beständig lagring lagras i Azure Storage, som automatiskt krypterar innehållet i vila.<br><br>Config server cache, binärfiler för körbara filer som skapats utifrån Uppladdad källa och program loggar under programmets livs längd sparas till Azure Managed disk, som automatiskt krypterar innehållet i vila.<br><br>Behållar avbildningar som skapats från användarens överförda källa sparas i Azure Container Registry som automatiskt krypterar avbildnings innehållet i vila. | [Azure Storage-kryptering av vilande data](../storage/common/storage-service-encryption.md)<br><br>[Kryptering på Server sidan av Azure Managed disks](../virtual-machines/disk-encryption.md)<br><br>[Lagrings avbildnings lagring i Azure Container Registry](../container-registry/container-registry-storage.md) |
-| Kryptering i tillfällig | Yes | Användar programmets offentliga slut punkter använder HTTPS för inkommande trafik som standard. |  |
-| Krypterade API-anrop | Yes | Hanterings anrop för att konfigurera Azure våren Cloud service sker via Azure Resource Manager-anrop via HTTPS. | [Azure Resource Manager](../azure-resource-manager/index.yml) |
+| Kryptering på Server sidan i vila: Microsoft-hanterade nycklar | Ja | Användare som överfört källa och artefakter, konfigurations Server inställningar, appinställningar och data i beständig lagring lagras i Azure Storage, som automatiskt krypterar innehållet i vila.<br><br>Config server cache, binärfiler för körbara filer som skapats utifrån Uppladdad källa och program loggar under programmets livs längd sparas till Azure Managed disk, som automatiskt krypterar innehållet i vila.<br><br>Behållar avbildningar som skapats från användarens överförda källa sparas i Azure Container Registry som automatiskt krypterar avbildnings innehållet i vila. | [Azure Storage-kryptering av vilande data](../storage/common/storage-service-encryption.md)<br><br>[Kryptering på Server sidan av Azure Managed disks](../virtual-machines/disk-encryption.md)<br><br>[Lagrings avbildnings lagring i Azure Container Registry](../container-registry/container-registry-storage.md) |
+| Kryptering i tillfällig | Ja | Användar programmets offentliga slut punkter använder HTTPS för inkommande trafik som standard. |  |
+| Krypterade API-anrop | Ja | Hanterings anrop för att konfigurera Azure våren Cloud service sker via Azure Resource Manager-anrop via HTTPS. | [Azure Resource Manager](../azure-resource-manager/index.yml) |
 
 **Säkerhets kontroller för nätverks åtkomst**
 
 | Säkerhets kontroll | Ja/nej | Kommentarer | Dokumentation |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Service tag | Yes | Använd **AzureSpringCloud** service tag för att definiera utgående nätverks åtkomst kontroller i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md#security-rules) eller [Azure-brandvägg](../firewall/service-tags.md)för att tillåta trafik till Azure våren Cloud-program.<br><br>*Obs:* För närvarande är det bara ny Azure våren Cloud Service-instans som skapats efter 2020/07/14 som stöder **AzureSpringCloud** service tag. | [Tjänsttaggar](../virtual-network/service-tags-overview.md) |
+| Service tag | Ja | Använd **AzureSpringCloud** service tag för att definiera utgående nätverks åtkomst kontroller i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md#security-rules) eller [Azure-brandvägg](../firewall/service-tags.md)för att tillåta trafik till Azure våren Cloud-program.<br><br>*Obs:* För närvarande är det bara ny Azure våren Cloud Service-instans som skapats efter 2020/07/14 som stöder **AzureSpringCloud** service tag. | [Tjänsttaggar](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Nästa steg
 

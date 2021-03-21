@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
 ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94959789"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Stöd för Azure IoT Hub Device Provisioning Service (DPS) för virtuella nätverk
@@ -43,7 +43,7 @@ Enheter som arbetar i lokala nätverk kan använda [virtuella privata nätverk (
 En privat slut punkt är en privat IP-adress som tilldelas i ett kundägda VNET som en Azure-resurs kan komma åt. Genom att ha en privat slut punkt för din DPS-resurs kommer du att kunna tillåta att enheter som körs i ditt VNET för att begära etablering av DPS-resursen utan att tillåta trafik till den offentliga slut punkten.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du fortsätter kontrollerar du att följande krav uppfylls:
 

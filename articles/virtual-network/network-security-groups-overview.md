@@ -15,10 +15,10 @@ ms.author: kumud
 ms.reviewer: kumud
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 4e23c6f25145724a5300c9e5cdcb55431fb0b4f2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97028775"
 ---
 # <a name="network-security-groups"></a>Nätverkssäkerhetsgrupper
@@ -52,7 +52,7 @@ Det finns gränser för hur många säkerhetsregler du kan skapa i en nätverkss
 
 Azure skapar följande standardregler i varje nätverkssäkerhetsgrupp som du skapar:
 
-#### <a name="inbound"></a>Inbound (Inkommande)
+#### <a name="inbound"></a>Inkommande
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
@@ -72,7 +72,7 @@ Azure skapar följande standardregler i varje nätverkssäkerhetsgrupp som du sk
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Valfri|Neka|
 
-#### <a name="outbound"></a>Outbound (Utgående)
+#### <a name="outbound"></a>Utgående
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
