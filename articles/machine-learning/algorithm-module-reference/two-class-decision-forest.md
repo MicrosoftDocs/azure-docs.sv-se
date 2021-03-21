@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/03/2020
 ms.openlocfilehash: c4c303a7640454ba0cb6622b21fd161354266068
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375949"
 ---
 # <a name="two-class-decision-forest-module"></a>Two-Class modul för besluts skog
@@ -55,19 +55,19 @@ Mer information finns i [besluts skogar](https://go.microsoft.com/fwlink/?LinkId
   
 2.  För **metoden** för att sampla om väljer du den metod som används för att skapa enskilda träd.  Du kan välja mellan **bagage** eller **Replikera**.  
   
-    -   **Bagage** : bagage kallas även *Start agg regering*. I den här metoden odlas varje träd på ett nytt exempel som skapats genom att slumpmässigt sampla den ursprungliga data uppsättningen med ersättning tills du har en data uppsättning som är den ursprungliga storleken.  
+    -   **Bagage**: bagage kallas även *Start agg regering*. I den här metoden odlas varje träd på ett nytt exempel som skapats genom att slumpmässigt sampla den ursprungliga data uppsättningen med ersättning tills du har en data uppsättning som är den ursprungliga storleken.  
   
-         Modellernas utdata kombineras med *röstning* , vilket är en form av agg regering. Varje träd i en klassificering besluts skog utvärderar ett normaliserat frekvens histogram med etiketter. Aggregation är att summera dessa histogram och normalisera för att få "sannolikhet" för varje etikett. På det här sättet kommer de träd som har hög förutsägelse tillförlitlighet att ha en större vikt i det slutliga beslutet av ensemblen.  
+         Modellernas utdata kombineras med *röstning*, vilket är en form av agg regering. Varje träd i en klassificering besluts skog utvärderar ett normaliserat frekvens histogram med etiketter. Aggregation är att summera dessa histogram och normalisera för att få "sannolikhet" för varje etikett. På det här sättet kommer de träd som har hög förutsägelse tillförlitlighet att ha en större vikt i det slutliga beslutet av ensemblen.  
   
          Mer information finns i Wikipedia-posten för start agg regering.  
   
-    -   **Replikera** : i replikering tränas varje träd på exakt samma indata. Bestämning av vilket delat predikat som används för varje trädnod förblir slumpmässigt och träden är olika.   
+    -   **Replikera**: i replikering tränas varje träd på exakt samma indata. Bestämning av vilket delat predikat som används för varje trädnod förblir slumpmässigt och träden är olika.   
   
 3.  Ange hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .  
   
-    -   **Enskild parameter** : om du vet hur du vill konfigurera modellen kan du ange en viss uppsättning värden som argument.
+    -   **Enskild parameter**: om du vet hur du vill konfigurera modellen kan du ange en viss uppsättning värden som argument.
 
-    -   **Parameter intervall** : om du inte är säker på de bästa parametrarna kan du hitta de optimala parametrarna med hjälp av modulen [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Du anger några värden och utbildaren upprepas över flera kombinationer av inställningarna för att avgöra vilken kombination av värden som ger bäst resultat.
+    -   **Parameter intervall**: om du inte är säker på de bästa parametrarna kan du hitta de optimala parametrarna med hjälp av modulen [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Du anger några värden och utbildaren upprepas över flera kombinationer av inställningarna för att avgöra vilken kombination av värden som ger bäst resultat.
   
 4.  För **antal besluts träd** anger du det maximala antalet besluts träd som kan skapas i ensemblen. Genom att skapa fler besluts träd kan du eventuellt få bättre täckning, men inlärnings tiden ökar.  
   

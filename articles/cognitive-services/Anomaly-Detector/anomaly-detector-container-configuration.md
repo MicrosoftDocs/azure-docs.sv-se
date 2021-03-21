@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94363722"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurera avvikelseidentifieringscontainrar
@@ -27,14 +27,14 @@ Den här behållaren har följande konfigurations inställningar:
 
 |Obligatorisk|Inställning|Syfte|
 |--|--|--|
-|Yes|[ApiKey](#apikey-configuration-setting)|Används för att spåra fakturerings information.|
-|No|[ApplicationInsights](#applicationinsights-setting)|Gör att du kan lägga till stöd för [Azure Application Insights](/azure/application-insights) -telemetri till din behållare.|
-|Yes|[Billing](#billing-configuration-setting)|Anger slut punkts-URI för tjänst resursen på Azure.|
-|Yes|[Villkoren](#eula-setting)| Anger att du har accepterat licensen för behållaren.|
-|No|[Fluent](#fluentd-settings)|Skriv logg och, om du vill, Metric-data till en Fluent-Server.|
-|No|[Http-proxy](#http-proxy-credentials-settings)|Konfigurera en HTTP-proxy för att göra utgående begär Anden.|
-|No|[Loggning](#logging-settings)|Tillhandahåller ASP.NET Core loggnings stöd för din behållare. |
-|No|[Monterar](#mount-settings)|Läs och Skriv data från värddatorn till behållare och från behållare tillbaka till värddatorn.|
+|Ja|[ApiKey](#apikey-configuration-setting)|Används för att spåra fakturerings information.|
+|Inga|[ApplicationInsights](#applicationinsights-setting)|Gör att du kan lägga till stöd för [Azure Application Insights](/azure/application-insights) -telemetri till din behållare.|
+|Ja|[Billing](#billing-configuration-setting)|Anger slut punkts-URI för tjänst resursen på Azure.|
+|Ja|[Villkoren](#eula-setting)| Anger att du har accepterat licensen för behållaren.|
+|Inga|[Fluent](#fluentd-settings)|Skriv logg och, om du vill, Metric-data till en Fluent-Server.|
+|Inga|[Http-proxy](#http-proxy-credentials-settings)|Konfigurera en HTTP-proxy för att göra utgående begär Anden.|
+|Inga|[Loggning](#logging-settings)|Tillhandahåller ASP.NET Core loggnings stöd för din behållare. |
+|Inga|[Monterar](#mount-settings)|Läs och Skriv data från värddatorn till behållare och från behållare tillbaka till värddatorn.|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)Inställningarna, [`Billing`](#billing-configuration-setting) och [`Eula`](#eula-setting) används tillsammans och du måste ange giltiga värden för alla dessa tre. i annat fall startar inte behållaren. Mer information om hur du använder dessa konfigurations inställningar för att instansiera en behållare finns i [fakturering](anomaly-detector-container-howto.md#billing).
@@ -97,8 +97,8 @@ Den exakta syntaxen för värd monterings platsen varierar beroende på värd op
 
 I följande exempel används konfigurations inställningarna för att illustrera hur du skriver och använder `docker run` kommandon.  När den körs fortsätter behållaren att köras tills du [stoppar](anomaly-detector-container-howto.md#stop-the-container) den.
 
-* **Rad fortsättnings bokstav** : Docker-kommandona i följande avsnitt använder omvänt snedstreck, `\` som ett linje fortsättnings alternativ för ett bash-gränssnitt. Ersätt eller ta bort detta baserat på värd operativ systemets krav. Linje fortsättnings tecknet för Windows är till exempel ett cirkumflex, `^` . Ersätt omvänt snedstreck med cirkumflex. 
-* **Argument ordning** : Ändra inte ordningen på argumenten om du inte är bekant med Docker-behållare.
+* **Rad fortsättnings bokstav**: Docker-kommandona i följande avsnitt använder omvänt snedstreck, `\` som ett linje fortsättnings alternativ för ett bash-gränssnitt. Ersätt eller ta bort detta baserat på värd operativ systemets krav. Linje fortsättnings tecknet för Windows är till exempel ett cirkumflex, `^` . Ersätt omvänt snedstreck med cirkumflex. 
+* **Argument ordning**: Ändra inte ordningen på argumenten om du inte är bekant med Docker-behållare.
 
 Ersätt värdet inom hakparenteser, `{}` med dina egna värden:
 

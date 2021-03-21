@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686588"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Ett webb-API som anropar webb-API: er kod konfiguration
@@ -88,7 +88,7 @@ Microsoft. Identity. Web tillhandahåller flera olika sätt att beskriva certifi
 
 ## <a name="startupcs"></a>Startup.cs
 
-Ditt webb-API måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i åtgärder för styrenhet/sidor. Men som du ser i de följande två punkterna kan du göra ännu enklare. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *startup.cs*:
+Ditt webb-API måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i åtgärder för styrenhet/sidor. Men som du ser i de följande två punkterna kan du göra ännu enklare. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *Start. cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -116,7 +116,7 @@ Om du inte vill hämta token själv ger *Microsoft. Identity. Web* två mekanism
 Om du vill anropa Microsoft Graph kan du direkt använda `GraphServiceClient` (som exponeras av Microsoft Graph SDK) i dina API-åtgärder med hjälp av Microsoft. Identity. Web. För att exponera Microsoft Graph:
 
 1. Lägg till [Microsoft. Identity. Web. MicrosoftGraph NuGet-](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) paketet i projektet.
-1. Lägg till `.AddMicrosoftGraph()` efter `.EnableTokenAcquisitionToCallDownstreamApi()` i *startup.cs* -filen. `.AddMicrosoftGraph()` har flera åsidosättningar. Med den åsidosättning som tar ett konfigurations avsnitt som en parameter blir koden:
+1. Lägg till `.AddMicrosoftGraph()` efter `.EnableTokenAcquisitionToCallDownstreamApi()` i filen *startup. cs* . `.AddMicrosoftGraph()` har flera åsidosättningar. Med den åsidosättning som tar ett konfigurations avsnitt som en parameter blir koden:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -164,7 +164,7 @@ public class Startup
 
 Precis som med Web Apps kan du välja olika implementationer för cachelagring av token. Mer information finns i [Microsoft Identity Web-token cache-serialisering](https://aka.ms/ms-id-web/token-cache-serialization) på GitHub.
 
-Följande bild visar de olika möjligheterna för *Microsoft. Identity. Web* och deras inverkan på *startup.cs* -filen:
+Följande bild visar de olika möjligheterna med *Microsoft. Identity. Web* och deras inverkan på filen *startup. cs* :
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blockera diagram som visar tjänst konfigurations alternativ i Start punkt C S för att anropa ett webb-API och ange en implementation av token cache":::
 

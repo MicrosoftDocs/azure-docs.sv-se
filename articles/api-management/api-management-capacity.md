@@ -13,10 +13,10 @@ ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
 ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081067"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapacitet hos en Azure API Management-instans
@@ -52,7 +52,7 @@ För att följa stegen i den här artikeln måste du ha:
 
 Total **kapacitet** är ett genomsnitt av sina egna värden från varje enhet i en API Management instans.
 
-Även om **kapacitets måttet** är utformat för att visa problem med API Management-instansen, finns det fall när problem inte återspeglas i förändringar i **kapacitets måttet** .
+Även om **kapacitets måttet** är utformat för att visa problem med API Management-instansen, finns det fall när problem inte återspeglas i förändringar i **kapacitets måttet**.
 
 ## <a name="capacity-metric-behavior"></a>Beteende för kapacitets mått
 
@@ -78,7 +78,7 @@ Låg **kapacitets mått** innebär inte nödvändigt vis att API Management inst
 ![Kapacitetsmått](./media/api-management-capacity/capacity-metric.png)  
 
 1. Navigera till din APIM-instans i [Azure Portal](https://portal.azure.com/).
-2. Välj **Mått** .
+2. Välj **Mått**.
 3. I det lila avsnittet väljer du **kapacitets** mått från tillgängliga mått och **lämnar standard agg** regeringen.
 
     > [!TIP]

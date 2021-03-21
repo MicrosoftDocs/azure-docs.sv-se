@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086898"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Förbereda utvecklingsmiljön i Linux
@@ -300,15 +300,15 @@ Du kan installera Eclipse-pluginprogrammet för Service Fabric i Eclipse IDE fö
 
 1. I Eclipse kontrollerar du att Eclipse Neon eller senare och Buildship version 2.2.1 eller senare är installerade. Kontrol lera de installerade komponenternas versioner genom att välja **Hjälp**  >  **om**  >  **installations information** för Sol förmörkelse. Om du vill uppdatera Buildship kan du läsa [Eclipse Buildship: Eclipse-plugin-program för Gradle][buildship-update].
 
-2. Installera Service Fabric plugin-programmet genom att välja **Hjälp**  >  **installera ny program vara** .
+2. Installera Service Fabric plugin-programmet genom att välja **Hjälp**  >  **installera ny program vara**.
 
-3. I rutan **arbeta med** anger du **https: \/ /dl.Microsoft.com/Eclipse** .
+3. I rutan **arbeta med** anger du **https: \/ /dl.Microsoft.com/Eclipse**.
 
-4. Välj **Lägg till** .
+4. Välj **Lägg till**.
 
     ![Sidan Tillgänglig programvara][sf-eclipse-plugin]
 
-5. Välj **ServiceFabric** -plugin-programmet och välj sedan **Nästa** .
+5. Välj **ServiceFabric**-plugin-programmet och välj sedan **Nästa**.
 
 6. Utför följande installationssteg. Acceptera sedan licensavtalet.
 

@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103011943"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementera redundans med Media Services v2
@@ -68,7 +68,7 @@ I det här avsnittet skapar du och konfigurerar ett C#-konsol program projekt.
 2. Skapa mappen **SupportFiles** på samma nivå som projekt filen **HandleRedundancyForOnDemandStreaming. CSPROJ** . Under mappen **SupportFiles** skapar du mapparna **OutputFiles** och **MP4Files** . Kopiera en. mp4-fil till mappen **MP4Files** (I det här exemplet används filen **ignite.mp4** .) 
 3. Använd **NuGet** för att lägga till referenser till DLL: er som är relaterade till Media Services. I **Visual Studio main-menyn** väljer du **verktyg**  >  **NuGet Package Manager**  >  **Package** Manager-konsolen. I konsol fönstret skriver du **install-Package windowsazure. Media Services** och trycker på RETUR.
 4. Lägg till andra referenser som krävs för det här projektet: system. Runtime. Serialization och system. Web.
-5. Ersätt **med** -instruktioner som har lagts till i **programs.cs** -filen som standard med följande:
+5. Ersätt **med** -instruktioner som har lagts till i filen **program. cs** som standard med följande:
 
 ```csharp
 using System;

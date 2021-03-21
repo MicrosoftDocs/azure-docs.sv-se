@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542322"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Självstudie: Felsöka API: er med hjälp av spårning av förfrågningar
@@ -53,12 +53,12 @@ Inställningen **Tillåt spårning** för den prenumeration som används för di
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="Konfigurera API-spårning":::
 
 > [!TIP]
-> Om **OCP-APIM-Subscription-Key** inte fylls i automatiskt i HTTP-förfrågan kan du hämta den i portalen. Välj **prenumerationer** och öppna snabb menyn ( **...** ) för din suscription. Välj **Visa/Dölj nycklar**. Du kan också återskapa nycklar om det behövs. Lägg sedan till en nyckel i rubriken.
+> Om **OCP-APIM-Subscription-Key** inte fylls i automatiskt i HTTP-förfrågan kan du hämta den i portalen. Välj **prenumerationer** och öppna snabb menyn (**...**) för din suscription. Välj **Visa/Dölj nycklar**. Du kan också återskapa nycklar om det behövs. Lägg sedan till en nyckel i rubriken.
 
 ## <a name="review-trace-information"></a>Granska spårnings information
 
 1. När anropet är klart går du till fliken **spåra** i **http-svaret**.
-1. Välj någon av följande länkar för att gå till detaljerad spårnings information: **inkommande** , **backend** , **utgående**.
+1. Välj någon av följande länkar för att gå till detaljerad spårnings information: **inkommande**, **backend**, **utgående**.
 
      :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Granska svars spårning":::
 

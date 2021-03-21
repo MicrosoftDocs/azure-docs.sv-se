@@ -9,10 +9,10 @@ ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 11d2172d085fe9b47587f4084908f99d7b54437e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103245"
 ---
 När du skapar en klassisk virtuella nätverk i Azure Portal, är det namn som du visar inte det fullständiga namnet som du använder för PowerShell. Ett VNet som verkar ha namnet **TestVNet1** i portalen kan till exempel ha ett mycket längre namn i nätverks konfigurations filen. För ett VNet i resurs gruppen "ClassicRG" kan det se ut ungefär så här: **Group ClassicRG TestVNet1**. När du skapar dina anslutningar är det viktigt att använda de värden som visas i nätverks konfigurations filen.

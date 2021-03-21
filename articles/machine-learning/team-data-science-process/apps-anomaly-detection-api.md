@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305705"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>API för Machine Learning avvikelse identifiering
@@ -28,9 +28,9 @@ ms.locfileid: "93305705"
 
 Detta API kan identifiera följande typer av avvikande mönster i tids serie data:
 
-* **Positiva och negativa trender** : om du till exempel övervakar minnes användningen i data behandling kan en uppåtgående trend vara intressant eftersom det kan vara en indikation på en minnes läcka.
-* **Ändringar i det dynamiska värde intervallet** : om du till exempel övervakar undantagen som har utlösts av en moln tjänst kan alla ändringar i det dynamiska värde intervallet vara instabilitet i tjänstens hälso tillstånd.
-* **Toppar och DIP** : om du till exempel övervakar antalet inloggnings försök i en tjänst eller antalet utcheckningar på en e-handelsplats kan toppar eller dip tyda på onormalt beteende.
+* **Positiva och negativa trender**: om du till exempel övervakar minnes användningen i data behandling kan en uppåtgående trend vara intressant eftersom det kan vara en indikation på en minnes läcka.
+* **Ändringar i det dynamiska värde intervallet**: om du till exempel övervakar undantagen som har utlösts av en moln tjänst kan alla ändringar i det dynamiska värde intervallet vara instabilitet i tjänstens hälso tillstånd.
+* **Toppar och DIP**: om du till exempel övervakar antalet inloggnings försök i en tjänst eller antalet utcheckningar på en e-handelsplats kan toppar eller dip tyda på onormalt beteende.
 
 Dessa maskin inlärnings detektorer spårar sådana förändringar i värden över tid och rapporterar pågående ändringar i sina värden som avvikande poäng. De kräver inte justering av adhoc-tröskel och deras resultat kan användas för att styra falsk positiv hastighet. API: t för avvikelse identifiering är användbart i flera scenarier som tjänst övervakning genom att spåra KPI: er över tid, användnings övervakning via mått, till exempel antal sökningar, antal klick, prestanda övervakning via räknare som minne, CPU, fil läsningar osv. över tid.
 
@@ -133,7 +133,7 @@ Mer detaljerad information om dessa indataparametrar finns i tabellen nedan:
 | trenddetector. känslighet |Känslighet för positiv trend detektor. |3.25 |double |Inget |3,25-5 (lägre värden betyder mer känslig) |
 | tspikedetector. känslighet |Känslighet för TSpike detektor |3 |heltal |1-10 |3-5 (lägre värden betyder mer känsligt) |
 | zspikedetector. känslighet |Känslighet för ZSpike detektor |3 |heltal |1-10 |3-5 (lägre värden betyder mer känsligt) |
-| postprocess.tailRows |Antal senaste data punkter som ska behållas i resultatet av utdata |0 |heltal |0 (Behåll alla data punkter) eller ange antalet punkter som ska behållas i resultatet |E.t. |
+| postprocess.tailRows |Antal senaste data punkter som ska behållas i resultatet av utdata |0 |heltal |0 (Behåll alla data punkter) eller ange antalet punkter som ska behållas i resultatet |Ej tillämpligt |
 
 ### <a name="output"></a>Utdata
 API: et kör alla identifieringar i dina tids serie data och returnerar avvikelser och binära inöknings indikatorer för varje tidpunkt. I tabellen nedan visas utdata från API: et.
@@ -164,8 +164,8 @@ Mer detaljerad information om dessa indataparametrar finns i tabellen nedan:
 | Indataparametrar | Beskrivning | Standardinställning | Typ | Giltigt intervall | Föreslaget intervall |
 | --- | --- | --- | --- | --- | --- |
 | preprocess. aggregationInterval |Agg regerings intervall i sekunder för agg regering av indatamängds tids serier |0 (ingen agg regering utförs) |heltal |0: hoppa över agg regering, > 0 annars |5 minuter till 1 dag, tids serie beroende |
-| preprocess. aggregationFunc |Funktion som används för att aggregera data till angiven AggregationInterval |medelvärde |räknas upp |medelvärde, Summa, längd |E.t. |
-| preprocess. replaceMissing |Värden som används för att tillräkna data som saknas |LKV (senast kända värde) |räknas upp |noll, LKV, medel |E.t. |
+| preprocess. aggregationFunc |Funktion som används för att aggregera data till angiven AggregationInterval |medelvärde |räknas upp |medelvärde, Summa, längd |Ej tillämpligt |
+| preprocess. replaceMissing |Värden som används för att tillräkna data som saknas |LKV (senast kända värde) |räknas upp |noll, LKV, medel |Ej tillämpligt |
 | detektorer. historywindow |Historik (i antal data punkter) som används för avvikelse beräkning |500 |heltal |10-2000 |Tids serie beroende |
 | detektorer. spikesdips | Om endast toppar, endast DIP eller båda ska identifieras |Båda |räknas upp |Både, toppar, DIP |Båda |
 | bileveldetector. känslighet |Känslighet för ändrings detektor i dubbelriktad nivå. |3.25 |double |Inget |3,25-5 (lägre värden betyder mer känslig) |
@@ -175,8 +175,8 @@ Mer detaljerad information om dessa indataparametrar finns i tabellen nedan:
 | zspikedetector. känslighet |Känslighet för ZSpike detektor |3 |heltal |1-10 |3-5 (lägre värden betyder mer känsligt) |
 | säsongs beroende. enable |Om säsongs beroende-analys ska utföras |true |boolean |SANT, FALSKT |Tids serie beroende |
 | säsongs beroende. numSeasonality |Maximalt antal periodiska cykler som ska identifieras |1 |heltal |1, 2 |1-2 |
-| säsongs beroende. Transform |Om trender (och) trend komponenter ska tas bort innan avvikelse identifiering tillämpas |tids säsong |räknas upp |ingen, avsäsong, deseasontrend |E.t. |
-| postprocess.tailRows |Antal senaste data punkter som ska behållas i resultatet av utdata |0 |heltal |0 (Behåll alla data punkter) eller ange antalet punkter som ska behållas i resultatet |E.t. |
+| säsongs beroende. Transform |Om trender (och) trend komponenter ska tas bort innan avvikelse identifiering tillämpas |tids säsong |räknas upp |ingen, avsäsong, deseasontrend |Ej tillämpligt |
+| postprocess.tailRows |Antal senaste data punkter som ska behållas i resultatet av utdata |0 |heltal |0 (Behåll alla data punkter) eller ange antalet punkter som ska behållas i resultatet |Ej tillämpligt |
 
 ### <a name="output"></a>Utdata
 API: et kör alla identifieringar i dina tids serie data och returnerar avvikelser och binära inöknings indikatorer för varje tidpunkt. I tabellen nedan visas utdata från API: et.

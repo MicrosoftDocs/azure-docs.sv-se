@@ -11,10 +11,10 @@ ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788746"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Självstudie: Använd en hanterad identitet för att ansluta Key Vault till en Azure-webbapp i .NET
@@ -28,7 +28,7 @@ Mer information om Azure App tjänst webb program och distribution som presenter
 - [Skapa en webbASP.NET Core-webbapp i Azure App Service](../../app-service/quickstart-dotnetcore.md)
 - [Lokal Git-distribution till Azure App Service](../../app-service/deploy-local-git.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -277,7 +277,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 
 #### <a name="update-the-code"></a>Uppdatera koden
 
-Hitta och öppna filen Startup.cs i ditt akvwebapp-projekt. 
+Leta upp och öppna filen startup. cs i ditt akvwebapp-projekt. 
 
 Lägg till följande rader i rubriken:
 

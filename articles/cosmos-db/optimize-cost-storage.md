@@ -1,5 +1,5 @@
 ---
-title: Optimera lagrings kostnaden i Azure Cosmos DB
+title: Optimera kostnader för lagring i Azure Cosmos DB
 description: Den här artikeln förklarar hur du hanterar lagrings kostnader för data som lagras i Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92bd3ff925080def4b2f074d07e662dfdbdbee01
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080858"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimera lagrings kostnaden i Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimera kostnader för lagring i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB erbjuder obegränsad lagring och data flöde. Till skillnad från genom strömning, som du måste etablera/konfigurera på dina Azure Cosmos-behållare eller databaser, faktureras lagrings utrymmet utifrån en konsumtions bas. Du faktureras bara för den logiska lagring som du använder och du behöver inte reservera någon lagring i förväg. Lagring skalas automatiskt upp och ned baserat på de data som du lägger till eller tar bort i en Azure Cosmos-behållare.

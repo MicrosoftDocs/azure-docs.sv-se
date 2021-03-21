@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 88f6da7e43e269816c7e4ae2fd7bbc3f5e26522b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453101"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Fivetran
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Fivetran med Azure 
 * Gör det möjligt för användarna att logga in automatiskt till Fivetran med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -50,7 +50,7 @@ Om du vill konfigurera integreringen av Fivetran i Azure AD måste du lägga til
 1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Fivetran** i sökrutan.
 1. Välj **Fivetran** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -104,7 +104,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -116,10 +116,10 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Fivetran.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Fivetran**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har ställts in för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
@@ -137,9 +137,9 @@ I det här avsnittet ska du konfigurera enkel inloggning på **Fivetran** -sidan
 
    ![Skärm bild som visar SAML config-fönstret med konfigurations alternativ markerat.](media/fivetran-tutorial/fivetran-2.png)
 
-   1. För **Aktivera SAML-autentisering**väljer du **på**.
-   1. I **inloggnings-URL**klistrar du in värdet för **inloggnings-URL: en**som du kopierade från Azure Portal.
-   1. I **utfärdare**klistrar du in värdet för **Azure AD-identifierare**som du kopierade från Azure Portal.
+   1. För **Aktivera SAML-autentisering** väljer du **på**.
+   1. I **inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du kopierade från Azure Portal.
+   1. I **utfärdare** klistrar du in värdet för **Azure AD-identifierare** som du kopierade från Azure Portal.
    1. Öppna den hämtade certifikat filen i en text redigerare, kopiera certifikatet till Urklipp och klistra in det i text rutan **publikt certifikat** .
    1. Välj **Spara konfiguration**.
 

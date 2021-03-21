@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/18/2021
 ms.author: mimart
 ms.openlocfilehash: 4f6ba0892438d49dcc982a01a6b30dfa36ed43b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98674245"
 ---
 ## <a name="add-a-user-journey"></a>Lägg till en användar resa 
@@ -20,7 +20,7 @@ I det här läget har identitets leverantören kon figurer ATS, men den är inte
 1. Sök efter och kopiera hela innehållet i **UserJourney** -elementet som innehåller `Id="SignUpOrSignIn"` .
 1. Öppna *TrustFrameworkExtensions.xml* och hitta **UserJourneys** -elementet. Om elementet inte finns lägger du till ett.
 1. Klistra in hela innehållet i **UserJourney** -elementet som du kopierade som ett underordnat objekt till **UserJourneys** -elementet.
-1. Byt namn på användar resans ID. Ett exempel är `Id="CustomSignUpSignIn"`.
+1. Byt namn på användar resans ID. Till exempel `Id="CustomSignUpSignIn"`.
 
 ## <a name="add-the-identity-provider-to-a-user-journey"></a>Lägg till identitets leverantören till en användar resa 
 

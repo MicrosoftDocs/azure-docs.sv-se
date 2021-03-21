@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100584072"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Hantering av geolokalisering och IP-adresser
@@ -58,7 +58,7 @@ För att aktivera IP-insamling och lagring `DisableIpMasking` måste egenskapen 
 }
 ```
 
-### <a name="portal"></a>Portalen 
+### <a name="portal"></a>Portal 
 
 Om du bara behöver ändra beteendet för en enskild Application Insights resurs använder du Azure Portal. 
 

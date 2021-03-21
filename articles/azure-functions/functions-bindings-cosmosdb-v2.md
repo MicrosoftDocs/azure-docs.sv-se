@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
 ms.openlocfilehash: dde3b95c7997a7f742a9d48a964f4275169f6e9c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106934"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB utlösare och bindningar för Azure Functions 2. x och högre översikt
@@ -20,7 +20,7 @@ ms.locfileid: "92106934"
 
 I den här uppsättningen artiklar förklaras hur du arbetar med [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) -bindningar i Azure Functions 2. x och högre. Azure Functions stöd för utlösare, indata och utgående bindningar för Azure Cosmos DB.
 
-| Åtgärd | Typ |
+| Action | Typ |
 |---------|---------|
 | Köra en funktion när ett Azure Cosmos DB-dokument skapas eller ändras | [Utlösare](./functions-bindings-cosmosdb-v2-trigger.md) |
 | Läsa ett Azure Cosmos DB dokument | [Binda in](./functions-bindings-cosmosdb-v2-input.md) |
@@ -31,7 +31,7 @@ I den här uppsättningen artiklar förklaras hur du arbetar med [Azure Cosmos D
 >
 > Den här bindningen hade ursprungligen namnet DocumentDB. I functions version 2. x och högre är utlösaren, bindningarna och paketet alla namngivna Cosmos DB.
 
-## <a name="supported-apis"></a>API: er som stöds
+## <a name="supported-apis"></a>API:er som stöds
 
 [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 

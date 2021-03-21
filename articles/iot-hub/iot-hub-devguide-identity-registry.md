@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146934"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Förstå identitets registret i din IoT-hubb
@@ -94,9 +94,9 @@ Enhets data som en specifik IoT-lösning lagrar beror på de särskilda kraven f
 
 ## <a name="device-heartbeat"></a>Enhetens pulsslag
 
-IoT Hub Identity-registret innehåller ett fält med namnet **connectionState** . Använd bara fältet **connectionState** vid utveckling och fel sökning. IoT-lösningar bör inte fråga fältet vid körning. Fråga till exempel inte fältet **connectionState** för att kontrol lera om en enhet är ansluten innan du skickar ett meddelande från molnet till enheten eller ett SMS. Vi rekommenderar att du prenumererar på [händelsen **frånkopplad enhet**](iot-hub-event-grid.md#event-types) på Event Grid för att få aviseringar och övervaka enhetens anslutnings tillstånd. I den här [självstudien](iot-hub-how-to-order-connection-state-events.md) får du lära dig hur du integrerar enhet anslutna och avkopplade händelser från IoT Hub i din IoT-lösning.
+IoT Hub Identity-registret innehåller ett fält med namnet **connectionState**. Använd bara fältet **connectionState** vid utveckling och fel sökning. IoT-lösningar bör inte fråga fältet vid körning. Fråga till exempel inte fältet **connectionState** för att kontrol lera om en enhet är ansluten innan du skickar ett meddelande från molnet till enheten eller ett SMS. Vi rekommenderar att du prenumererar på [händelsen **frånkopplad enhet**](iot-hub-event-grid.md#event-types) på Event Grid för att få aviseringar och övervaka enhetens anslutnings tillstånd. I den här [självstudien](iot-hub-how-to-order-connection-state-events.md) får du lära dig hur du integrerar enhet anslutna och avkopplade händelser från IoT Hub i din IoT-lösning.
 
-Om din IoT-lösning behöver veta om en enhet är ansluten, kan du implementera *pulsslags mönstret* .
+Om din IoT-lösning behöver veta om en enhet är ansluten, kan du implementera *pulsslags mönstret*.
 I pulsslags mönstret skickar enheten enhet-till-moln-meddelanden minst en gång varje fast tids period (till exempel minst en gång i timmen). Det innebär att även om en enhet inte har några data att skicka, skickar den fortfarande ett tomt meddelande från enhet till molnet (vanligt vis med en egenskap som identifierar den som ett pulsslag). På tjänst sidan upprätthåller lösningen en karta med det sista pulsslag som tagits emot för varje enhet. Om lösningen inte tar emot ett pulsslags meddelande inom den förväntade tiden från enheten förutsätts det att det är problem med enheten.
 
 En mer komplex implementering kan omfatta information från [Azure Monitor](../azure-monitor/index.yml) och [Azure Resource Health](../service-health/resource-health-overview.md) för att identifiera enheter som försöker ansluta eller kommunicera men som inte fungerar. Mer information finns i [övervaka IoT Hub](monitor-iot-hub.md) och [kontrol lera IoT Hub resurs hälsa](iot-hub-azure-service-health-integration.md#check-health-of-an-iot-hub-with-azure-resource-health). När du implementerar pulsslags mönstret måste du kontrol lera [IoT Hub kvoter och begränsningar](iot-hub-devguide-quotas-throttling.md).
@@ -106,13 +106,13 @@ En mer komplex implementering kan omfatta information från [Azure Monitor](../a
 
 ## <a name="device-and-module-lifecycle-notifications"></a>Livs cykel meddelanden för enhet och modul
 
-IoT Hub kan meddela din IoT-lösning när en identitet skapas eller tas bort genom att skicka livs cykel meddelanden. För att göra det måste IoT-lösningen skapa en väg och ange data källan som lika med *DeviceLifecycleEvents* eller *ModuleLifecycleEvents* . Som standard skickas inga livs cykel meddelanden, det vill säga inte finns några sådana vägar i förväg. Aviserings meddelandet innehåller egenskaper och brödtext.
+IoT Hub kan meddela din IoT-lösning när en identitet skapas eller tas bort genom att skicka livs cykel meddelanden. För att göra det måste IoT-lösningen skapa en väg och ange data källan som lika med *DeviceLifecycleEvents* eller *ModuleLifecycleEvents*. Som standard skickas inga livs cykel meddelanden, det vill säga inte finns några sådana vägar i förväg. Aviserings meddelandet innehåller egenskaper och brödtext.
 
 Egenskaper: meddelande system egenskaper föregås av `$` symbolen.
 
 Meddelande för enhet:
 
-| Namn | Värde |
+| Name | Värde |
 | --- | --- |
 |$content-typ | application/json |
 |$iothub-enqueuedtime |  Tid när meddelandet skickades |
@@ -148,7 +148,7 @@ Brödtext: det här avsnittet är i JSON-format och representerar den dubbla av 
 ```
 Aviserings meddelande för modul:
 
-| Namn | Värde |
+| Name | Värde |
 | --- | --- |
 $content-typ | application/json |
 $iothub-enqueuedtime |  Tid när meddelandet skickades |
@@ -191,14 +191,14 @@ Enhets identiteter visas som JSON-dokument med följande egenskaper:
 | Egenskap | Alternativ | Beskrivning |
 | --- | --- | --- |
 | deviceId |krävs, skrivskyddad på uppdateringar |En Skift läges känslig sträng (upp till 128 tecken) av ASCII 7-bitars alfanumeriska tecken plus särskilda specialtecken: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
-| generationId |krävs, skrivskyddad |En IoT Hub-genererad, SKIFT läges känslig sträng som är upp till 128 tecken lång. Det här värdet används för att särskilja enheter med samma **deviceId** , när de har tagits bort och återskapas. |
+| generationId |krävs, skrivskyddad |En IoT Hub-genererad, SKIFT läges känslig sträng som är upp till 128 tecken lång. Det här värdet används för att särskilja enheter med samma **deviceId**, när de har tagits bort och återskapas. |
 | etag |krävs, skrivskyddad |En sträng som representerar en svag ETag för enhets identiteten per [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | Factor |valfri |Ett sammansatt objekt som innehåller autentiseringsinformation och säkerhets material. |
 | auth. symkey |valfri |Ett sammansatt objekt som innehåller en primär och en sekundär nyckel, lagrad i base64-format. |
 | status |krävs |En åtkomst indikator. Kan **aktive ras** eller **inaktive** ras. Om **aktive rad** tillåts enheten att ansluta. Om den är **inaktive rad** kan den här enheten inte komma åt någon enhets slut punkt. |
 | statusReason |valfri |En 128 tecken lång sträng som lagrar orsaken till enhetens identitets status. Alla UTF-8-tecken tillåts. |
 | statusUpdateTime |skrivskyddad |En temporal indikator som visar datum och tid för senaste status uppdateringen. |
-| connectionState |skrivskyddad |Ett fält som visar anslutnings status: antingen **ansluten** eller **frånkopplad** . Det här fältet representerar IoT Hub visning av enhetens anslutnings status. **Viktigt** : det här fältet ska endast användas för utveckling/fel sökning. Anslutnings statusen uppdateras bara för enheter som använder MQTT eller AMQP. Dessutom baseras den på protokoll nivå pingar (MQTT-pingar eller AMQP-ping) och kan ha en maximal fördröjning på bara 5 minuter. Därför kan det finnas falska positiva identifieringar, till exempel enheter som rapporter ATS som anslutna, men som är frånkopplade. |
+| connectionState |skrivskyddad |Ett fält som visar anslutnings status: antingen **ansluten** eller **frånkopplad**. Det här fältet representerar IoT Hub visning av enhetens anslutnings status. **Viktigt**: det här fältet ska endast användas för utveckling/fel sökning. Anslutnings statusen uppdateras bara för enheter som använder MQTT eller AMQP. Dessutom baseras den på protokoll nivå pingar (MQTT-pingar eller AMQP-ping) och kan ha en maximal fördröjning på bara 5 minuter. Därför kan det finnas falska positiva identifieringar, till exempel enheter som rapporter ATS som anslutna, men som är frånkopplade. |
 | connectionStateUpdatedTime |skrivskyddad |En temporal indikator som visar datum och tidpunkt då anslutnings statusen uppdaterades. |
 | lastActivityTime |skrivskyddad |En temporal indikator som visar datum och tid då enheten anslöt, togs emot eller skickat ett meddelande. Den här egenskapen är konsekvent konsekvent, men kan fördröjas upp till 5 till 10 minuter. Därför bör den inte användas i produktions scenarier. |
 
@@ -206,7 +206,7 @@ Enhets identiteter visas som JSON-dokument med följande egenskaper:
 > Anslutnings status kan bara representera IoT Hub visning av anslutningens status. Uppdateringar av det här tillståndet kan bli fördröjda, beroende på nätverks förhållanden och konfigurationer.
 
 > [!NOTE]
-> För närvarande har enhets-SDK: erna inte stöd för användning av `+` and- `#` tecknen i **deviceId** .
+> För närvarande har enhets-SDK: erna inte stöd för användning av `+` and- `#` tecknen i **deviceId**.
 
 ## <a name="module-identity-properties"></a>Egenskaper för modulens identitet
 
@@ -216,19 +216,19 @@ Modul identiteter representeras som JSON-dokument med följande egenskaper:
 | --- | --- | --- |
 | deviceId |krävs, skrivskyddad på uppdateringar |En Skift läges känslig sträng (upp till 128 tecken) av ASCII 7-bitars alfanumeriska tecken plus särskilda specialtecken: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |krävs, skrivskyddad på uppdateringar |En Skift läges känslig sträng (upp till 128 tecken) av ASCII 7-bitars alfanumeriska tecken plus särskilda specialtecken: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
-| generationId |krävs, skrivskyddad |En IoT Hub-genererad, SKIFT läges känslig sträng som är upp till 128 tecken lång. Det här värdet används för att särskilja enheter med samma **deviceId** , när de har tagits bort och återskapas. |
+| generationId |krävs, skrivskyddad |En IoT Hub-genererad, SKIFT läges känslig sträng som är upp till 128 tecken lång. Det här värdet används för att särskilja enheter med samma **deviceId**, när de har tagits bort och återskapas. |
 | etag |krävs, skrivskyddad |En sträng som representerar en svag ETag för enhets identiteten per [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | Factor |valfri |Ett sammansatt objekt som innehåller autentiseringsinformation och säkerhets material. |
 | auth. symkey |valfri |Ett sammansatt objekt som innehåller en primär och en sekundär nyckel, lagrad i base64-format. |
 | status |krävs |En åtkomst indikator. Kan **aktive ras** eller **inaktive** ras. Om **aktive rad** tillåts enheten att ansluta. Om den är **inaktive rad** kan den här enheten inte komma åt någon enhets slut punkt. |
 | statusReason |valfri |En 128 tecken lång sträng som lagrar orsaken till enhetens identitets status. Alla UTF-8-tecken tillåts. |
 | statusUpdateTime |skrivskyddad |En temporal indikator som visar datum och tid för senaste status uppdateringen. |
-| connectionState |skrivskyddad |Ett fält som visar anslutnings status: antingen **ansluten** eller **frånkopplad** . Det här fältet representerar IoT Hub visning av enhetens anslutnings status. **Viktigt** : det här fältet ska endast användas för utveckling/fel sökning. Anslutnings statusen uppdateras bara för enheter som använder MQTT eller AMQP. Dessutom baseras den på protokoll nivå pingar (MQTT-pingar eller AMQP-ping) och kan ha en maximal fördröjning på bara 5 minuter. Därför kan det finnas falska positiva identifieringar, till exempel enheter som rapporter ATS som anslutna, men som är frånkopplade. |
+| connectionState |skrivskyddad |Ett fält som visar anslutnings status: antingen **ansluten** eller **frånkopplad**. Det här fältet representerar IoT Hub visning av enhetens anslutnings status. **Viktigt**: det här fältet ska endast användas för utveckling/fel sökning. Anslutnings statusen uppdateras bara för enheter som använder MQTT eller AMQP. Dessutom baseras den på protokoll nivå pingar (MQTT-pingar eller AMQP-ping) och kan ha en maximal fördröjning på bara 5 minuter. Därför kan det finnas falska positiva identifieringar, till exempel enheter som rapporter ATS som anslutna, men som är frånkopplade. |
 | connectionStateUpdatedTime |skrivskyddad |En temporal indikator som visar datum och tidpunkt då anslutnings statusen uppdaterades. |
 | lastActivityTime |skrivskyddad |En temporal indikator som visar datum och tid då enheten anslöt, togs emot eller skickat ett meddelande. |
 
 > [!NOTE]
-> För närvarande har enhets-SDK: erna inte stöd för användning av `+` and- `#` tecknen i **DeviceID** -och **moduleId** .
+> För närvarande har enhets-SDK: erna inte stöd för användning av `+` and- `#` tecknen i **DeviceID** -och **moduleId**.
 
 ## <a name="additional-reference-material"></a>Ytterligare referens material
 

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619444"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Ansluta en virtuell Windows Server-dator till en Azure Active Directory Domain Services hanterad domän med hjälp av en Resource Manager-mall
@@ -88,7 +88,7 @@ Om du vill skapa en virtuell Windows Server-dator ansluter du den till en hanter
     |---------------------------|-------|
     | Prenumeration              | Välj samma Azure-prenumeration där du har aktiverat Azure AD Domain Services. |
     | Resursgrupp            | Välj resurs grupp för den virtuella datorn. |
-    | Plats                  | Välj platsen för den virtuella datorn. |
+    | Location                  | Välj platsen för den virtuella datorn. |
     | Befintligt VNET-namn        | Namnet på det befintliga virtuella nätverket för att ansluta den virtuella datorn till, till exempel *myVnet*. |
     | Befintligt under näts namn      | Namnet på det befintliga under nätet för virtuella nätverk, till exempel *arbets belastningar*. |
     | DNS-etikett-prefix          | Ange ett DNS-namn som ska användas för den virtuella datorn, till exempel *myvm*. |
@@ -121,7 +121,7 @@ Slutför följande steg för att ansluta en befintlig virtuell Windows Server-da
     |---------------------------|-------|
     | Prenumeration              | Välj samma Azure-prenumeration där du har aktiverat Azure AD Domain Services. |
     | Resursgrupp            | Välj resurs gruppen med din befintliga virtuella dator. |
-    | Plats                  | Välj plats för den befintliga virtuella datorn. |
+    | Location                  | Välj plats för den befintliga virtuella datorn. |
     | VM-lista                   | Ange den kommaavgränsade listan över de befintliga virtuella datorerna för att ansluta till den hanterade domänen, till exempel *myVM1, myVM2*. |
     | Användar namn för domän anslutning     | Användar kontot i den hanterade domänen som ska användas för att ansluta den virtuella datorn till den hanterade domänen, till exempel `contosoadmin@aaddscontoso.com` . Det här kontot måste vara en del av den hanterade domänen. |
     | Användar lösen ord för domän anslutning | Lösen ordet för det användar konto som anges i föregående inställning. |

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358430"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Konfigurera en Indexer-anslutning till Azure SQL Database med hjälp av en hanterad identitet
@@ -103,7 +103,7 @@ När du skapar en data källa med hjälp av [REST API](/rest/api/searchservice/c
 * **klientautentiseringsuppgifter**
     * När du använder en hanterad identitet för att autentisera, skiljer sig formatet på **autentiseringsuppgifter** till om du inte använder en hanterade-identitet. Här anger du en initial katalog eller ett databas namn och ett ResourceId som inte har någon konto nyckel eller lösen ord. ResourceId måste innehålla prenumerations-ID: t för Azure SQL Database, resurs gruppen för SQL Database och namnet på SQL-databasen. 
     * Format för anslutnings sträng för hanterad identitet:
-        * *Initial katalog | Databas = **databas namn** ; ResourceId =/Subscriptions/ **ditt prenumerations-ID** /resourceGroups/ **resurs gruppens namn** /providers/Microsoft.SQL/Servers/ **ditt SQL Server namn** /; Timeout för anslutning = **anslutningens timeout-längd** ;*
+        * *Initial katalog | Databas =**databas namn**; ResourceId =/Subscriptions/**ditt prenumerations-ID**/resourceGroups/**resurs gruppens namn**/providers/Microsoft.SQL/Servers/**ditt SQL Server namn**/; Timeout för anslutning =**anslutningens timeout-längd**;*
 * **container** anger namnet på den tabell eller vy som du vill indexera.
 
 Exempel på hur du skapar ett Azure SQL Data Source-objekt med hjälp av [REST API](/rest/api/searchservice/create-data-source):

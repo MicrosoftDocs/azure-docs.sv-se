@@ -4,10 +4,10 @@ description: I den här självstudien får du lära dig hur du lägger till och 
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791247"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>Självstudie: lägga till och ta bort nodtyper från ett Service Fabric hanterat kluster (för hands version)
@@ -26,7 +26,7 @@ Den här delen av serien handlar om hur du:
 > * Lägga till en nodtyp i ett Service Fabric hanterat kluster
 > * Ta bort en nodtyp från ett Service Fabric hanterat kluster
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Service Fabric hanterat kluster (se [*distribuera ett hanterat kluster*](tutorial-managed-cluster-deploy.md)).
 * [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) eller senare (se [*Installera Azure PowerShell*](/powershell/azure/install-az-ps)).

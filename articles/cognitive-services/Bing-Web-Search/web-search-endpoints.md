@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: c882e3e4d0cd6ba594a700f4fd53c14103a8d1d1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94381260"
 ---
 # <a name="web-search-endpoint"></a>Webbsökning slut punkt
@@ -30,7 +30,7 @@ ms.locfileid: "94381260"
 
 Skicka en `GET` begäran till följande slut punkt om du vill få webb Sök resultat med Bing-API: et. Rubrik-och URL-parametrarna definierar ytterligare specifikationer.
 
-**Slut punkt** : returnerar webb resultat som är relevanta för användarens Sök fråga som definieras av `?q=""` .
+**Slut punkt**: returnerar webb resultat som är relevanta för användarens Sök fråga som definieras av `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

@@ -4,10 +4,10 @@ description: I den här snabb starten använder du syntaxen terraform och HCL f�
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93106406"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med terraform
@@ -58,7 +58,7 @@ Konfigurera först terraform-konfiguration, variabel och utdatafiler. Terraform-
 
    Ett omfång avgör vilka resurser eller grupper med resurser som principtilldelningen används i. Det kan vara ett intervall från en hanterings grupp till en enskild resurs. Se till att ersätta `{scope}` med något av följande mönster:
 
-   - Prenumerera `/subscriptions/{subscriptionId}`
+   - Prenumeration: `/subscriptions/{subscriptionId}`
    - Resursgrupp: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
    - Klusterresursen `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 
@@ -94,7 +94,7 @@ Initiera sedan terraform för att ladda ned nödvändiga providers och skapa sed
    terraform plan -out assignment.tfplan
    ```
 
-   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Skärm bild av körning av terraform init-kommandot som visar hur du laddar ned azurerm-modulen och ett meddelande om att det lyckades.":::
+   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Skärm bild av kommandot terraform plan och out parameter för att visa den Azure-resurs som ska skapas.":::
 
    > [!NOTE]
    > Information om att bevara körnings planer och säkerhet finns i [terraform plan: säkerhets varning](https://www.terraform.io/docs/commands/plan.html#security-warning).
@@ -109,7 +109,9 @@ Kör kommandot [terraform Apply](https://www.terraform.io/docs/commands/apply.ht
 terraform apply assignment.tfplan
 ```
 
-:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Skärm bild av körning av terraform init-kommandot som visar hur du laddar ned azurerm-modulen och ett meddelande om att det lyckades." meddelandet skapas nu princip tilldelningen. Eftersom vi har definierat `outputs.tf` filen returneras även _tilldelnings \_ -ID_ .
+:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Skärm bild där du kör kommandot terraform Apply och den resulterande resurs skapandet.":::
+
+Med alternativet "tillämpa klart! Resurser: 1 tillagt, 0 har ändrats, 0 har förstörts. " meddelandet skapas nu princip tilldelningen. Eftersom vi har definierat `outputs.tf` filen returneras även _tilldelnings \_ -ID_ .
 
 ## <a name="identify-non-compliant-resources"></a>Identifiera icke-kompatibla resurser
 
