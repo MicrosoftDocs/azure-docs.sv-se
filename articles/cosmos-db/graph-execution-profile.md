@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087493"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Använda stegen i körningsprofilen för att utvärdera Gremlin-frågor
@@ -139,12 +139,12 @@ Följande är ett kommenterat exempel på utdata som kommer att returneras:
 ## <a name="execution-profile-response-objects"></a>Svars objekt för körnings profil
 
 Svaret på en executionProfile ()-funktion kommer att ge en hierarki med JSON-objekt med följande struktur:
-  - **Gremlin-åtgärds objekt** : representerar hela Gremlin-åtgärden som kördes. Innehåller följande egenskaper.
+  - **Gremlin-åtgärds objekt**: representerar hela Gremlin-åtgärden som kördes. Innehåller följande egenskaper.
     - `gremlin`: Den explicita Gremlin-instruktion som kördes.
     - `totalTime`: Tiden, i millisekunder, som körningen av steget i. 
     - `metrics`: En matris som innehåller var och en av de Cosmos DB runtime-operatörer som kördes för att uppfylla frågan. Den här listan sorteras i körnings ordning.
     
-  - **Cosmos DB runtime-operatörer** : representerar var och en av komponenterna i hela Gremlin-åtgärden. Den här listan sorteras i körnings ordning. Varje-objekt innehåller följande egenskaper:
+  - **Cosmos DB runtime-operatörer**: representerar var och en av komponenterna i hela Gremlin-åtgärden. Den här listan sorteras i körnings ordning. Varje-objekt innehåller följande egenskaper:
     - `name`: Namnet på operatorn. Detta är den typ av steg som utvärderades och kördes. Läs mer i tabellen nedan.
     - `time`: Hur lång tid i millisekunder som en specifik operatör vidtog.
     - `annotations`: Innehåller ytterligare information, som är speciell för den operator som kördes.
@@ -177,7 +177,7 @@ Följande är exempel på vanliga optimeringar som kan Spotted med hjälp av kö
 
 ### <a name="blind-fan-out-query-patterns"></a>Fråga mönster för blinda fläktar
 
-Antag följande körnings profil svar från en **partitionerad graf** :
+Antag följande körnings profil svar från en **partitionerad graf**:
 
 ```json
 [

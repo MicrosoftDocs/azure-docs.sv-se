@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063293"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>GRÄNSSNITTs element för Microsoft. Network. PublicIpAddressCombo
@@ -80,14 +80,14 @@ Om användaren väljer en ny eller befintlig IP-adress returnerar kontrollen fö
 }
 ```
 
-- När `options.hideNone` har angetts som **Sant**får `newOrExistingOrNone` bara värdet **New** eller **existing**.
+- När `options.hideNone` har angetts som **Sant** får `newOrExistingOrNone` bara värdet **New** eller **existing**.
 - När `options.hideDomainNameLabel` har angetts som **Sant** `domainNameLabel` är odeklarerat.
 
 ## <a name="remarks"></a>Kommentarer
 
-- Om `constraints.required.domainNameLabel` är inställt på **Sant**måste användaren ange en domän namns etikett när de skapar en ny offentlig IP-adress. Befintliga offentliga IP-adresser utan en etikett kan inte väljas.
-- Om `options.hideNone` är inställt på **Sant**döljs alternativet för att välja **ingen** för den offentliga IP-adressen. Standardvärdet är **falskt**.
-- Om `options.hideDomainNameLabel` är inställt på **Sant**döljs text rutan för domän namns etiketten. Standardvärdet är **falskt**.
+- Om `constraints.required.domainNameLabel` är inställt på **Sant** måste användaren ange en domän namns etikett när de skapar en ny offentlig IP-adress. Befintliga offentliga IP-adresser utan en etikett kan inte väljas.
+- Om `options.hideNone` är inställt på **Sant** döljs alternativet för att välja **ingen** för den offentliga IP-adressen. Standardvärdet är **falskt**.
+- Om `options.hideDomainNameLabel` är inställt på **Sant** döljs text rutan för domän namns etiketten. Standardvärdet är **falskt**.
 - Om `options.hideExisting` är sant kan användaren inte välja en befintlig offentlig IP-adress. Standardvärdet är **falskt**.
 - För är `zone` det bara offentliga IP-adresser för den angivna zonen eller zonens elastiska offentliga IP-adresser tillgängliga.
 

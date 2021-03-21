@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046541"
 ---
 # <a name="how-to-query-logs-from-vm-insights"></a>Så här frågar du efter loggar från VM Insights
@@ -441,7 +441,7 @@ Poster med en typ av *InsightsMetrics* har prestanda data från gäst operativ s
 |Dator | Datorns FQDN | 
 |Ursprung | *vm.azm.ms* |
 |Namnområde | Prestanda räknarens kategori | 
-|Namn | Namn på prestanda räknaren |
+|Name | Namn på prestanda räknaren |
 |Val | Insamlat värde | 
 |Taggar | Relaterad information om posten. Se tabellen nedan för taggar som används med olika post typer.  |
 |AgentId | Unik identifierare för varje dators agent |
@@ -450,7 +450,7 @@ Poster med en typ av *InsightsMetrics* har prestanda data från gäst operativ s
 
 De prestanda räknare som för närvarande samlas in i tabellen *InsightsMetrics* visas i följande tabell:
 
-| Namnområde | Namn | Beskrivning | Enhet | Taggar |
+| Namnområde | Name | Beskrivning | Enhet | Taggar |
 |:---|:---|:---|:---|:---|
 | Dator    | Pulsslag             | Datorns pulsslag                        | | |
 | Minne      | AvailableMB           | Tillgängliga byte för minne                    | Megabyte      | memorySizeMB – total minnes storlek|

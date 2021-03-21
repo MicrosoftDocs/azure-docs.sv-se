@@ -4,10 +4,10 @@ description: I den här artikeln lär du dig hur du använder PowerShell för at
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987095"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Distribuera och hantera säkerhetskopiering till Azure för Windows Server/Windows-klient med hjälp av PowerShell
@@ -58,7 +58,7 @@ Följande steg vägleder dig genom att skapa ett Recovery Services-valv. Ett Rec
 
 Använd **Get-AzRecoveryServicesVault** för att visa listan över alla valv i den aktuella prenumerationen. Du kan använda det här kommandot för att kontrol lera att ett nytt valv har skapats, eller att se vilka valv som är tillgängliga i prenumerationen.
 
-Kör kommandot, **Get-AzRecoveryServicesVault**och alla valv i prenumerationen visas.
+Kör kommandot, **Get-AzRecoveryServicesVault** och alla valv i prenumerationen visas.
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 De tillgängliga alternativen är:
 
-| Alternativ | Information | Default |
+| Alternativ | Information | Standardvärde |
 | --- | --- | --- |
 | /q |Tyst installation |- |
 | /p: "plats" |Sökväg till installationsmappen för Azure Backup agenten. |C:\Program\Microsoft Azure Recovery Services agent |
@@ -209,7 +209,7 @@ Server properties updated successfully.
 
 De säkerhets kopierings data som skickas till Azure Backup krypteras för att skydda data sekretessen. Krypterings lösen frasen är "Password" för att dekryptera data vid tidpunkten för återställningen.
 
-Du måste skapa en säkerhets-PIN-kod genom att välja **generera**under **Inställningar**  >  **Egenskaper**  >  **säkerhet PIN-kod** i avsnittet **Recovery Services Vault** i Azure Portal.
+Du måste skapa en säkerhets-PIN-kod genom att välja **generera** under **Inställningar**  >  **Egenskaper**  >  **säkerhet PIN-kod** i avsnittet **Recovery Services Vault** i Azure Portal.
 
 >[!NOTE]
 > Det går bara att skapa en säkerhets kod via Azure Portal.

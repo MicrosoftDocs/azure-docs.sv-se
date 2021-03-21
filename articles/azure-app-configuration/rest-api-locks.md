@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: e99ce5595bae8ed64285317d9249da60e0fc1b83
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932531"
 ---
 # <a name="locks"></a>Lås
@@ -22,7 +22,7 @@ Detta API (version 1,0) tillhandahåller låsnings-och upplåsnings-semantik fö
 
 Om det finns `label` en sådan måste det vara ett explicit etikett värde (inte ett jokertecken). För alla åtgärder är det en valfri parameter. Om detta utelämnas, betyder det ingen etikett.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 

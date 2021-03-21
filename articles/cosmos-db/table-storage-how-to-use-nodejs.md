@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
 ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079719"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Använda Azure Table Storage eller Azure Cosmos DB Table-API:et från Node.js
@@ -58,7 +58,7 @@ För att använda Azure Storage eller Azure Cosmos DB behöver du Azure Storage 
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
    ```
 
-3. Du kan kontrollera att mappen **node_modules** har skapats genom att köra kommandot **ls** manuellt. I mappen hittar du paketet **azure storage** , som innehåller de bibliotek som du behöver för att få åtkomst till lagring.
+3. Du kan kontrollera att mappen **node_modules** har skapats genom att köra kommandot **ls** manuellt. I mappen hittar du paketet **azure storage**, som innehåller de bibliotek som du behöver för att få åtkomst till lagring.
 
 ### <a name="import-the-package"></a>Importera paketet
 
@@ -133,7 +133,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 ## <a name="add-an-entity-to-a-table"></a>Lägga till en entitet i en tabell
 
-Du lägger till en entitet genom att först skapa ett objekt som definierar entitetens egenskaper. Alla entiteter måste innehålla en **PartitionKey** och **RowKey** , som är unika identifierare för entiteten.
+Du lägger till en entitet genom att först skapa ett objekt som definierar entitetens egenskaper. Alla entiteter måste innehålla en **PartitionKey** och **RowKey**, som är unika identifierare för entiteten.
 
 * **PartitionKey** – Anger i vilken partition entiteten lagras.
 * **RowKey** – Identifierar entiteten i partitionen unikt.
@@ -221,7 +221,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 
 Med `replaceEntity` och `mergeEntity` , om den entitet som uppdateras inte finns, Miss lyckas uppdateringen. om du vill lagra en entitet oavsett om den redan finns använder du `insertOrReplaceEntity` eller `insertOrMergeEntity` .
 
-För lyckade uppdateringsåtgärder innehåller `result` den uppdaterade entitetens **Etag** .
+För lyckade uppdateringsåtgärder innehåller `result` den uppdaterade entitetens **Etag**.
 
 ## <a name="work-with-groups-of-entities"></a>Arbeta med grupper av entiteter
 
@@ -269,7 +269,7 @@ Du kan inspektera åtgärder som lagts till i en batch genom att visa egenskapen
 
 ## <a name="retrieve-an-entity-by-key"></a>Hämta en entitet baserat på nyckel
 
-Om du vill returnera en specifik entitet baserat på **PartitionKey** och **RowKey** använder du metoden **retrieveEntity** .
+Om du vill returnera en specifik entitet baserat på **PartitionKey** och **RowKey** använder du metoden **retrieveEntity**.
 
 ```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
@@ -300,7 +300,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Eftersom **select** inte används returneras alla fält. Om du vill köra frågan mot en tabell använder du **queryEntities** . I följande exempel används den här frågan för att returnera entiteter från ”mytable”.
+Eftersom **select** inte används returneras alla fält. Om du vill köra frågan mot en tabell använder du **queryEntities**. I följande exempel används den här frågan för att returnera entiteter från ”mytable”.
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -315,7 +315,7 @@ Om åtgärden lyckas innehåller `result.entries` en matris med entiteter som ma
 ### <a name="query-a-subset-of-entity-properties"></a>Fråga en deluppsättning entitetsegenskaper
 
 En fråga till en tabell kan bara hämta några fält från en entitet.
-Detta minskar bandbredden och kan förbättra frågeprestanda, särskilt för stora entiteter. Använd **select** -satsen och ange namnen på fälten som ska returneras. Följande fråga returnerar till exempel bara **description** - och **dueDate** -fälten.
+Detta minskar bandbredden och kan förbättra frågeprestanda, särskilt för stora entiteter. Använd **select**-satsen och ange namnen på fälten som ska returneras. Följande fråga returnerar till exempel bara **description**- och **dueDate**-fälten.
 
 ```javascript
 var query = new azure.TableQuery()
@@ -326,7 +326,7 @@ var query = new azure.TableQuery()
 
 ## <a name="delete-an-entity"></a>Ta bort en entitet
 
-Du kan ta bort en entitet med hjälp av dess partitions- och radnycklar. I det här exemplet innehåller **task1** -objektet **RowKey** - och **PartitionKey** -värdena för entiteten som ska tas bort. Objektet skickas sedan till metoden **deleteEntity** .
+Du kan ta bort en entitet med hjälp av dess partitions- och radnycklar. I det här exemplet innehåller **task1**-objektet **RowKey**- och **PartitionKey**-värdena för entiteten som ska tas bort. Objektet skickas sedan till metoden **deleteEntity**.
 
 ```javascript
 var task = {
@@ -358,13 +358,13 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-Om du är osäker på om tabellen finns använder du **deleteTableIfExists** .
+Om du är osäker på om tabellen finns använder du **deleteTableIfExists**.
 
 ## <a name="use-continuation-tokens"></a>Använda fortsättningstoken
 
 Leta efter en fortsättningstoken när du frågar tabeller efter stora mängder resultat. Stora mängder data kan finnas tillgängliga för din fråga, som du kanske missar om du inte uppmärksammar en fortsättningstoken.
 
-**results** -objektet som returneras när du kör frågor mot entiteter anger en `continuationToken`-egenskap när den här typen av token finns. Du kan sedan använda denna token när du kör en fråga för att fortsätta att flytta mellan partitionen och tabellentiteterna.
+**results**-objektet som returneras när du kör frågor mot entiteter anger en `continuationToken`-egenskap när den här typen av token finns. Du kan sedan använda denna token när du kör en fråga för att fortsätta att flytta mellan partitionen och tabellentiteterna.
 
 När du frågar kan du lägga till en `continuationToken`-parameter mellan instansen av frågeobjektet och återanropsfunktionen:
 
@@ -393,7 +393,7 @@ Du kan också använda `top` tillsammans med `continuationToken` för att ange s
 
 Signaturer för delad åtkomst (SAS) är ett säkert sätt att ge detaljerad åtkomst till tabeller utan att ange namnet på eller nycklarna för ditt lagringskontot. SAS används ofta för att ge begränsad åtkomst till data, till exempel om du vill tillåta att en mobilapp frågar efter poster.
 
-Ett betrott program, till exempel en molnbaserad tjänst, genererar en SAS med hjälp av **generateSharedAccessSignature** för **TableService** , och delar den sedan med ett program som inte är betrott eller endast delvis betrott, t.ex. en mobilapp. Signaturen för delad åtkomst genereras med hjälp av en princip, som definierar mellan vilket start- och slutdatum signaturen för delad åtkomst är giltig, samt vilken åtkomstnivå SAS-innehavaren beviljas.
+Ett betrott program, till exempel en molnbaserad tjänst, genererar en SAS med hjälp av **generateSharedAccessSignature** för **TableService**, och delar den sedan med ett program som inte är betrott eller endast delvis betrott, t.ex. en mobilapp. Signaturen för delad åtkomst genereras med hjälp av en princip, som definierar mellan vilket start- och slutdatum signaturen för delad åtkomst är giltig, samt vilken åtkomstnivå SAS-innehavaren beviljas.
 
 I följande exempel genereras en ny SAS-princip som ger innehavaren av signaturen för delad åtkomst tillåtelse att fråga (”r”) tabellen. Den här principen upphör att gälla 100 minuter efter den tidpunkt då den skapas.
 
@@ -456,7 +456,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-Koden i följande exempel hämtar den aktuella åtkomstkontrollistan för tabellen **hometasks** och lägger sedan till de nya principerna med hjälp av **setTableAcl** . Med den här metoden kan du göra följande:
+Koden i följande exempel hämtar den aktuella åtkomstkontrollistan för tabellen **hometasks** och lägger sedan till de nya principerna med hjälp av **setTableAcl**. Med den här metoden kan du göra följande:
 
 ```javascript
 var extend = require('extend');

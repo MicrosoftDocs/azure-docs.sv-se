@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a4c93b12ad654e54a7f3c7ee0e75507d5cb45e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907826"
 ---
 # <a name="split-data-module"></a>Modulen dela data
@@ -48,7 +48,7 @@ Den här modulen är användbar när du behöver separera data till inlärnings-
 
 1. Lägg till modulen [dela data](./split-data.md) i din pipeline i designern och Anslut den data uppsättning som du vill dela.
   
-1. För **delnings läge**väljer du **dela upp rader**. 
+1. För **delnings läge** väljer du **dela upp rader**. 
 
 1. **Bråk del av rader i den första data uppsättningen**: Använd det här alternativet för att avgöra hur många rader som ska gå till den första (vänstra sidan) utdata. Alla andra rader hamnar i den andra (högra sidan) utdata.
 
@@ -73,7 +73,7 @@ Den här modulen är användbar när du behöver separera data till inlärnings-
 
 1. Lägg till modulen [dela data](./split-data.md) i din pipeline och Anslut den som indata till den data uppsättning som du vill dela.  
   
-1. För **delnings läge**väljer du **delad reguljära uttryck**.
+1. För **delnings läge** väljer du **delad reguljära uttryck**.
 
 1. I rutan **reguljära uttryck** anger du ett giltigt reguljärt uttryck. 
   
@@ -107,7 +107,7 @@ Den första resultat data uppsättningen innehåller alla rader där index-kolum
 
 1. Lägg till modulen [dela data](./split-data.md) i din pipeline och Anslut den som indata till den data uppsättning som du vill dela.
   
-1. För **delnings läge**väljer du **relativt uttryck**.
+1. För **delnings läge** väljer du **relativt uttryck**.
   
 1. I rutan **Relations uttryck** anger du ett uttryck som utför en jämförelse åtgärd på en enskild kolumn.
 

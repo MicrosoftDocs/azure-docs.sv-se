@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324511"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integrering av Azure blockchain Workbench-meddelanden
@@ -63,7 +63,7 @@ Blockchain Workbench returnerar ett svar med följande fält:
 | connectionId          | Unikt ID för blockchain-anslutningen|
 | messageSchemaVersion  | Meddelande schema version |
 | messageName           | **CreateUserUpdate** |
-| status                | Status för begäran om att skapa användare.  Om det lyckas är värdet **klart**. Vid haveriering, **Miss lyckas**värdet.     |
+| status                | Status för begäran om att skapa användare.  Om det lyckas är värdet **klart**. Vid haveriering, **Miss lyckas** värdet.     |
 | additionalInformation | Ytterligare information som tillhandahålls utifrån status |
 
 Exemplet lyckades **skapa användarens** svar från blockchain Workbench:
@@ -354,7 +354,7 @@ Om en användare vill använda Event Grid för att få meddelanden om händelser
 Service Bus ämnen kan användas för att meddela användare om händelser som inträffar i blockchain Workbench. 
 
 1. Bläddra till Service Bus i arbets stationens resurs grupp.
-2. Välj **ämnen**.
+2. Välj **Ämnen**.
 3. Välj **utgående – ämne**.
 4. Skapa en ny prenumeration på det här ämnet. Hämta en nyckel för den.
 5. Skapa ett program som prenumererar på händelser från den här prenumerationen.
@@ -369,7 +369,7 @@ Service Bus ämnen kan användas för att meddela användare om händelser som i
 
 ## <a name="notification-message-reference"></a>Referens för meddelande meddelande
 
-Beroende på **messageName**har aviseringarna en av följande typer av meddelanden.
+Beroende på **messageName** har aviseringarna en av följande typer av meddelanden.
 
 ### <a name="block-message"></a>Blockera meddelande
 
@@ -561,7 +561,7 @@ Innehåller information när en kontrakts funktion anropas, t. ex. funktions nam
 | contractId                  | Unikt ID för kontraktet i Azure blockchain Workbench |
 | contractLedgerIdentifier    | Unik identifierare för kontraktet i redovisningen |
 | functionName                | Namnet på funktionen |
-| parametrar                  | [Parameter information](#parameter-information) |
+| parametrar                  | [Parameterinformation](#parameter-information) |
 | transaktionen                 | Transaktionsinformation |
 | inTransactionSequenceNumber | Ordnings numret för transaktionen i blocket |
 | connectionId                | Unikt ID för anslutningen |
@@ -577,7 +577,7 @@ Innehåller information när en kontrakts funktion anropas, t. ex. funktions nam
 | id | Unikt ID för anroparen i Azure blockchain Workbench |
 | ledgerIdentifier | Unikt ID för anroparen i redovisningen |
 
-#### <a name="parameter-information"></a>Parameter information
+#### <a name="parameter-information"></a>Parameterinformation
 
 | Name | Beskrivning |
 |------|-------------|

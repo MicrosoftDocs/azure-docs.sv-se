@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: ff14bb1daeef6fc54ee5d11632ad98a29db2a172
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90947890"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Snabb start: Använd python för att ansluta och fråga efter data i Azure Database for MySQL-flexibel Server
@@ -60,7 +60,7 @@ Installera python och MySQL Connector för python på datorn med hjälp av följ
 
 Hämta anslutnings informationen du behöver för att ansluta till Azure Database for MySQL flexibel Server från Azure Portal. Du behöver Server namnet, databas namnet och inloggnings uppgifterna.
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
    
 1. I Portal Sök fältet söker du efter och väljer den Azure Database for MySQL flexibla server som du skapade, till exempel **mydemoserver**.
    

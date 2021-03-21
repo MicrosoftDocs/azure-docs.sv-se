@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102313"
 ---
 # <a name="accessing-the-azure-education-hub"></a>Åtkomst till Azure-Education Hub
@@ -32,7 +32,7 @@ För att få åtkomst till Azure-Education Hub bör du redan ha fått ett e-post
    > [!IMPORTANT]
    > Bekräfta att du loggar in med ett organisations-eller arbets konto (t. ex. Institutionen @domain.edu ). I så fall väljer du det här alternativet på vänster sida av fönstret först. Detta tar dig till en annan inloggnings skärm.
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Öppna ett privat webbläsarfönster." border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Dialog rutan organisations inloggning." border="false":::
 
 1. När du har loggat in dirigeras du till Azure Portal. Om du vill hitta Education Hub går du till menyn **alla tjänster** och söker efter **utbildning**.
    Första gången du loggar in visas sidan kom igång.

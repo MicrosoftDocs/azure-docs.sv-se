@@ -8,15 +8,15 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 64bd9e4a4cf78d2628e946af30c2d290ff002cf7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081152"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installera och konfigurera lokal datagateway
 
-En lokal datagateway krävs när en eller flera Azure Analysis Services-servrar i samma region ansluter till lokala data källor.  Även om den gateway som du installerar är samma som används av andra tjänster som Power BI, Power Apps och Logic Apps när du installerar för Azure Analysis Services, finns det några ytterligare steg som du måste utföra. Den här installations artikeln är unik för **Azure Analysis Services** . 
+En lokal datagateway krävs när en eller flera Azure Analysis Services-servrar i samma region ansluter till lokala data källor.  Även om den gateway som du installerar är samma som används av andra tjänster som Power BI, Power Apps och Logic Apps när du installerar för Azure Analysis Services, finns det några ytterligare steg som du måste utföra. Den här installations artikeln är unik för **Azure Analysis Services**. 
 
 Mer information om hur Azure Analysis Services fungerar med gatewayen finns i [ansluta till lokala data källor](analysis-services-gateway.md). Mer information om avancerade installations scenarier och gatewayen i allmänhet finns i [dokumentationen om lokala datagatewayer](/data-integration/gateway/service-gateway-onprem).
 
@@ -52,11 +52,11 @@ Mer information om hur Azure Analysis Services fungerar med gatewayen finns i [a
 
 1. Kör installations programmet.
 
-2. Välj **lokal datagateway** .
+2. Välj **lokal datagateway**.
 
    ![Välj](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
-2. Välj en plats, Godkänn villkoren och klicka sedan på **Installera** .
+2. Välj en plats, Godkänn villkoren och klicka sedan på **Installera**.
 
    ![Installations plats och licens villkor](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
@@ -71,11 +71,11 @@ Mer information om hur Azure Analysis Services fungerar med gatewayen finns i [a
 
 För att kunna skapa en gateway-resurs i Azure måste du registrera den lokala instansen som du installerade med Gateway-moln tjänsten. 
 
-1.  Välj **Registrera en ny gateway på den här datorn** .
+1.  Välj **Registrera en ny gateway på den här datorn**.
 
     ![Skärm bild som markerar alternativet registrera en ny gateway på den här datorn.](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
-2. Ange ett namn och en återställnings nyckel för din gateway. Som standard använder gatewayen din prenumerations standard region. Om du behöver välja en annan region väljer du **ändra region** .
+2. Ange ett namn och en återställnings nyckel för din gateway. Som standard använder gatewayen din prenumerations standard region. Om du behöver välja en annan region väljer du **ändra region**.
 
     > [!IMPORTANT]
     > Spara återställnings nyckeln på en säker plats. Återställnings nyckeln krävs för att kunna ta över, migrera eller återställa en gateway. 
@@ -87,25 +87,25 @@ För att kunna skapa en gateway-resurs i Azure måste du registrera den lokala i
 
 När du har installerat och registrerat din gateway måste du skapa en gateway-resurs i Azure. Logga in på Azure med samma konto som du använde när du registrerade gatewayen.
 
-1. Klicka på **skapa en resurs** i Azure Portal och Sök sedan efter **lokal datagateway** och klicka sedan på **skapa** .
+1. Klicka på **skapa en resurs** i Azure Portal och Sök sedan efter **lokal datagateway** och klicka sedan på **skapa**.
 
    ![Skapa en gateway-resurs](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
 2. I **skapa Gateway för anslutning** anger du följande inställningar:
 
-   * **Namn** : Ange ett namn för din gateway-resurs. 
+   * **Namn**: Ange ett namn för din gateway-resurs. 
 
-   * **Prenumeration** : Välj den Azure-prenumeration som du vill koppla till din gateway-resurs. 
+   * **Prenumeration**: Välj den Azure-prenumeration som du vill koppla till din gateway-resurs. 
    
      Standard prenumerationen baseras på det Azure-konto som du använde för att logga in.
 
-   * **Resursgrupp** : Skapa en resursgrupp eller välj en befintlig resursgrupp.
+   * **Resursgrupp**: Skapa en resursgrupp eller välj en befintlig resursgrupp.
 
-   * **Plats** : Välj den region som du registrerade din gateway i.
+   * **Plats**: Välj den region som du registrerade din gateway i.
 
-   * **Installations namn** : om inte Gateway-installationen redan är vald väljer du den gateway som du har installerat på datorn och registrerat. 
+   * **Installations namn**: om inte Gateway-installationen redan är vald väljer du den gateway som du har installerat på datorn och registrerat. 
 
-     När du är klar klickar du på **skapa** .
+     När du är klar klickar du på **skapa**.
 
 ## <a name="connect-gateway-resource-to-server"></a>Anslut gateway-resurs till Server
 
@@ -118,14 +118,14 @@ När du har installerat och registrerat din gateway måste du skapa en gateway-r
 
    ![Anslut server till gateway](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. I **Välj en lokal datagateway att ansluta** väljer du din gateway-resurs och klickar sedan på **Anslut vald Gateway** .
+2. I **Välj en lokal datagateway att ansluta** väljer du din gateway-resurs och klickar sedan på **Anslut vald Gateway**.
 
    ![Anslut server till gateway-resurs](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
     > Om din Gateway inte visas i listan, är servern förmodligen inte i samma region som den region som du angav när du registrerade gatewayen.
 
-    När anslutningen mellan servern och gateway-resursen lyckas visas statusen **ansluten** .
+    När anslutningen mellan servern och gateway-resursen lyckas visas statusen **ansluten**.
 
 
     ![Anslutning av server till gateway-resurs lyckades](media/analysis-services-gateway-install/aas-gateway-connect-success.png)

@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
 ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250079"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Uppgradera Windows Server Server/System Center 2012 R2 VMM till Windows Server/VMM 2016 
@@ -42,7 +42,7 @@ Observera följande innan du uppgraderar:-
 
 - Om du använder System Center 2012 R2 VMM 
 
-    - Kontrol lera databas informationen på VMM: inställningar för **VMM-konsolen**  ->  **settings**  ->  **allmän**  ->  **databas anslutning**
+    - Kontrol lera databas informationen på VMM: inställningar för **VMM-konsolen**  ->    ->  **allmän**  ->  **databas anslutning**
     - Kontrol lera vilka tjänst konton som används för tjänsten System Center Virtual Machine Manager agent
     - Kontrol lera att du har en säkerhets kopia av VMM-databasen.
     - Anteckna databas namnet för de SCVMM-servrar som berörs. Detta kan göras genom att gå till **VMM-konsolens**  ->  **Inställningar**  ->  **allmän**  ->  **databas anslutning**
@@ -75,7 +75,7 @@ Innan du uppgraderar dina Windows Server-2012 R2-värdar måste du uppgradera SC
 
 1.  Avinstallera ASR-providern genom att gå till kontroll panelen – > program – > program och funktioner – >Microsoft Azure Site Recovery och klicka på Avinstallera
 2. [Behåll SCVMM-databasen och uppgradera operativ systemet](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. I **Lägg till ta bort program**väljer du **VMM**-  >  **avinstallation**. b. Välj **ta bort funktioner**och välj sedan V**mm-hanterings Server och VMM-konsol**. c. I **databas alternativ**väljer du **Kvarhåll databas**. d. Granska sammanfattningen och klicka på **Avinstallera**.
+3. I **Lägg till ta bort program** väljer du **VMM**-  >  **avinstallation**. b. Välj **ta bort funktioner** och välj sedan V **mm-hanterings Server och VMM-konsol**. c. I **databas alternativ** väljer du **Kvarhåll databas**. d. Granska sammanfattningen och klicka på **Avinstallera**.
 
 4. [Installera VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Starta SCVMM och kontrol lera status för varje värd under fliken **infrastruktur** resurs. Klicka på **Uppdatera** för att få den senaste statusen. Du bör se status som "behöver åtgärdas". 

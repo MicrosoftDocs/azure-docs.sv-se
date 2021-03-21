@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487695"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Snabb start: dela data med Azure Data Share och ARM-mall
@@ -77,14 +77,14 @@ Det beror på att distributionen försöker skapa data uppsättningen innan Azur
     * **E-postadress till inbjudan**: Ange mottagarens e-postadress till data resursen.  E-postalias fungerar inte.
 
     Använd standardvärdet för resten av inställningarna.
-1. Välj **Jag accepterar de villkor som anges ovan**och välj **köp**.
+1. Välj **Jag accepterar de villkor som anges ovan** och välj **köp**.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Öppna det data resurs konto som du har skapat.
-1. Välj **skicka resurser**på den vänstra menyn.  Du ser det lagrings konto som anges i listan.
-1. Välj lagrings konto.  Under **Detaljer**visas synkroniseringsinställningarna som du konfigurerade i mallen.
+1. Välj **skicka resurser** på den vänstra menyn.  Du ser det lagrings konto som anges i listan.
+1. Välj lagrings konto.  Under **Detaljer** visas synkroniseringsinställningarna som du konfigurerade i mallen.
 
     ![Synkroniseringsinställningar för Azure Data resurs lagrings konto](./media/share-your-data-arm/azure-data-share-storage-account-synchronization-settings.png)
 1. Välj **inbjudningar** överst. Du ska se den e-postadress som du angav när du distribuerar mallen. **Statusen** är **väntande**.

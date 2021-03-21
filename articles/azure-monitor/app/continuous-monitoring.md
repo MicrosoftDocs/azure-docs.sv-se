@@ -4,10 +4,10 @@ description: Innehåller instruktioner för att snabbt konfigurera kontinuerlig 
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86517135"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Lägg till kontinuerlig övervakning i din versions pipeline
@@ -24,7 +24,7 @@ Med kontinuerlig övervakning kan lanserings pipelines omfatta övervaknings dat
    
 1. Släpp pilen bredvid **ny** och välj **ny versions pipeline**. Eller, om du inte har en pipeline ännu, väljer du **ny pipeline** på sidan som visas.
    
-1. I fönstret **Välj en mall** söker du efter och väljer **Azure App service distribution med kontinuerlig övervakning**och väljer sedan **Använd**. 
+1. I fönstret **Välj en mall** söker du efter och väljer **Azure App service distribution med kontinuerlig övervakning** och väljer sedan **Använd**. 
 
    ![Ny pipeline för Azure pipeline-utgåvor](media/continuous-monitoring/001.png)
 
@@ -47,7 +47,7 @@ Med kontinuerlig övervakning kan lanserings pipelines omfatta övervaknings dat
 
 ## <a name="modify-alert-rules"></a>Ändra aviserings regler
 
-I rutan har **Azure App service distribution med kontinuerlig övervakning** fyra aviserings regler: **tillgänglighet**, **misslyckade förfrågningar**, **Server svars tid**och **Server undantag**. Du kan lägga till fler regler eller ändra regel inställningarna så att de uppfyller dina service nivå behov. 
+I rutan har **Azure App service distribution med kontinuerlig övervakning** fyra aviserings regler: **tillgänglighet**, **misslyckade förfrågningar**, **Server svars tid** och **Server undantag**. Du kan lägga till fler regler eller ändra regel inställningarna så att de uppfyller dina service nivå behov. 
 
 Ändra inställningar för varnings regler:
 
@@ -77,13 +77,13 @@ Lägga till distributions portar:
    
 1. I konfigurations fönstret **villkor för distribution** anger du att **portarna** ska **aktive ras**.
    
-1. Bredvid **distributions portar**väljer du **Lägg till**.
+1. Bredvid **distributions portar** väljer du **Lägg till**.
    
 1. Välj **fråga Azure Monitor aviseringar** från List menyn. Med det här alternativet kan du komma åt både Azure Monitor-och Application Insights-aviseringar.
    
    ![Fråga Azure Monitor aviseringar](media/continuous-monitoring/005.png)
    
-1. Under **utvärderings alternativ**anger du de värden som du vill använda för inställningar som **tiden mellan omutvärderingen av grindarna** och **den tids gräns efter vilken grinden har misslyckats**. 
+1. Under **utvärderings alternativ** anger du de värden som du vill använda för inställningar som **tiden mellan omutvärderingen av grindarna** och **den tids gräns efter vilken grinden har misslyckats**. 
 
 ## <a name="view-release-logs"></a>Visa versions loggar
 
@@ -93,7 +93,7 @@ Du kan se beteendet för distributions porten och andra versions steg i versions
    
 1. Välj en version. 
    
-1. Under **steg**väljer du ett steg för att visa en versions Sammanfattning. 
+1. Under **steg** väljer du ett steg för att visa en versions Sammanfattning. 
    
 1. Om du vill visa loggar väljer du **Visa loggar** i versions sammanfattningen, väljer länken **slutförd** eller **misslyckad** i något Stadium eller hovrar över alla steg och väljer **loggar**. 
    

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983665"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Konfigurera Azure-brandväggen i en virtuell WAN-hubb
@@ -57,7 +57,7 @@ På sidan Virtual WAN- **Översikt** väljer du den skyddade hubben. På sidan h
 
 [![Visa nav resurser](./media/howto-firewall/view-resources.png)](./media/howto-firewall/view-resources.png#lightbox)
 
-Om du vill visa inställningarna för Azure-brandväggen från den skyddade hubben väljer du **skyddade inställningar för virtuella nav**under **säkerhet**.
+Om du vill visa inställningarna för Azure-brandväggen från den skyddade hubben väljer du **skyddade inställningar för virtuella nav** under **säkerhet**.
 [![Visa Hubbs inställningar](./media/howto-firewall/hub-settings.png)](./media/howto-firewall/hub-settings.png#lightbox)
 
 ## <a name="configure-additional-settings"></a>Konfigurera ytterligare inställningar

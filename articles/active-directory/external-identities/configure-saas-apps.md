@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90705518"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurera SaaS-appar för B2B-samarbete
@@ -48,7 +48,7 @@ Om du vill att användarna ska kunna logga in med sitt organisations konto måst
 
    ![Konfigurera enkel inloggning för appen](media/configure-saas-apps/configure-app-sso.png)
 
-4. Om du vill ladda ned certifikatet som ska användas för Dropbox-konfiguration väljer du **Konfigurera Dropbox**och väljer sedan **SAML-URL för enkel inloggning** i listan.
+4. Om du vill ladda ned certifikatet som ska användas för Dropbox-konfiguration väljer du **Konfigurera Dropbox** och väljer sedan **SAML-URL för enkel inloggning** i listan.
 
    ![Laddar ned certifikatet för Dropbox-konfiguration](media/configure-saas-apps/download-certificate.png)
 
@@ -86,13 +86,13 @@ Du kan göra det möjligt för användare att autentisera Box gäst användare m
 
    b. I rutan **användar identifierare** anger du **User. mail** (för SSO för gäst konton).
 
-   c. Under **SAML-signerings certifikat**klickar du på **Skapa nytt certifikat**.
+   c. Under **SAML-signerings certifikat** klickar du på **Skapa nytt certifikat**.
 
    d. Börja konfigurera din Box.com-klient för att använda Azure AD som en identitetsprovider genom att ladda ned metadatafilen och sedan spara den på den lokala enheten.
 
    e. Vidarebefordra metadatafilen till Box support-teamet, som konfigurerar enkel inloggning åt dig.
 
-3. För automatisk användar konfiguration i Azure AD väljer du **etablering**i den vänstra rutan och väljer sedan **auktorisera**.
+3. För automatisk användar konfiguration i Azure AD väljer du **etablering** i den vänstra rutan och väljer sedan **auktorisera**.
 
    ![Auktorisera Azure AD för att ansluta till Box](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 

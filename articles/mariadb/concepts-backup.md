@@ -3,14 +3,14 @@ title: Säkerhets kopiering och återställning – Azure Database for MariaDB
 description: Lär dig mer om automatisk säkerhets kopiering och att återställa Azure Database for MariaDB-servern.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 1d5fc158d2e37223e048c4106206ddba4602fabb
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659945"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Säkerhets kopiering och återställning i Azure Database for MariaDB
@@ -21,7 +21,7 @@ Azure Database for MariaDB skapar automatiskt Server säkerhets kopior och lagra
 
 Azure Database for MariaDB tar fullständiga, differentiella och transaktions logg säkerhets kopior. Med dessa säkerhets kopieringar kan du återställa en server till alla tidpunkter inom den konfigurerade kvarhållningsperioden för säkerhets kopior. Standard kvarhållningsperioden för säkerhets kopiering är sju dagar. Du kan också konfigurera det upp till 35 dagar. Alla säkerhetskopior krypteras med AES 256-bitars kryptering.
 
-De här säkerhetskopierade filerna är inte användare-exponerade och kan inte exporteras. Dessa säkerhets kopior kan bara användas för återställnings åtgärder i Azure Database for MariaDB. Du kan använda [mysqldump](howto-migrate-dump-restore.md) för att kopiera en databas.
+De säkerhetskopierade filerna visas inte för användarna och kan inte exporteras. Dessa säkerhets kopior kan bara användas för återställnings åtgärder i Azure Database for MariaDB. Du kan använda [mysqldump](howto-migrate-dump-restore.md) för att kopiera en databas.
 
 ### <a name="backup-frequency"></a>Säkerhetskopieringsfrekvens
 

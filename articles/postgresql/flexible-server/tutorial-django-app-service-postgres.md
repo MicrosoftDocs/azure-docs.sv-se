@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490109"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Självstudie: Distribuera django-app med App Service och Azure Database for PostgreSQL-flexibel Server (för hands version)
@@ -57,7 +57,7 @@ cd djangoapp
 
 # <a name="download"></a>[Ladda ned](#tab/download)
 
-Besök [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) , Välj **klona**och välj sedan **Hämta zip**.
+Besök [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) , Välj **klona** och välj sedan **Hämta zip**.
 
 Packa upp ZIP-filen i en mapp med namnet *djangoapp*.
 
@@ -159,9 +159,9 @@ Django Database-migreringar ser till att schemat i PostgreSQL i Azure Database m
 
 ### <a name="create-a-poll-question-in-the-app"></a>Skapa en avsöknings fråga i appen
 
-1. Öppna webb adressen *http: \/ / \<app-name> . azurewebsites.net*i en webbläsare. Appen ska visa meddelandet "inga avsökningar är tillgängliga" eftersom det inte finns några speciella avsökningar än i databasen.
+1. Öppna webb adressen *http: \/ / \<app-name> . azurewebsites.net* i en webbläsare. Appen ska visa meddelandet "inga avsökningar är tillgängliga" eftersom det inte finns några speciella avsökningar än i databasen.
 
-1. Bläddra till *http: \/ / \<app-name> . azurewebsites.net/admin*. Logga in med behörigheter för superanvändare från föregående avsnitt ( `root` och `postgres1` ). Under **avsökningar**väljer du **Lägg till** bredvid **frågor** och skapar en avsöknings fråga med några val.
+1. Bläddra till *http: \/ / \<app-name> . azurewebsites.net/admin*. Logga in med behörigheter för superanvändare från föregående avsnitt ( `root` och `postgres1` ). Under **avsökningar** väljer du **Lägg till** bredvid **frågor** och skapar en avsöknings fråga med några val.
 
 1. Bläddra igen till *http: \/ / \<app-name> . azurewebsites.net/* för att bekräfta att frågorna nu visas för användaren. Besvara frågor som du vill skapa vissa data i databasen.
 
@@ -200,7 +200,7 @@ Testa appen lokalt med följande steg:
 
 1. Gå till *http: \/ /localhost: 8000* i en webbläsare, som ska visa meddelandet "det finns inga avsökningar".
 
-1. Gå till *http: \/ /localhost: 8000/admin* och logga in med administratörs användaren som du skapade tidigare. Under **avsökningar**väljer du **Lägg till** bredvid **frågor** och skapar en avsöknings fråga med några val.
+1. Gå till *http: \/ /localhost: 8000/admin* och logga in med administratörs användaren som du skapade tidigare. Under **avsökningar** väljer du **Lägg till** bredvid **frågor** och skapar en avsöknings fråga med några val.
 
 1. Gå till *http: \/ /localhost: 8000* igen och besvara frågan för att testa appen.
 
@@ -270,11 +270,11 @@ Bläddra till *http: \/ / \<app-name> . azurewebsites.net* och testa appen igen 
 
 I [Azure Portal](https://portal.azure.com)söker du efter appens namn och väljer appen i resultaten.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Exempel på utdata för django Development Server":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Navigera till din python django-app i Azure Portal":::
 
 Som standard visar portalen appens **översikts** sida, som ger en allmän prestanda vy. Här kan du också utföra grundläggande hanterings åtgärder som att bläddra, stoppa, starta om och ta bort. På flikarna till vänster på sidan kan du se olika konfigurationssidor som du kan öppna.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Exempel på utdata för django Development Server":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Hantera din python django-app på sidan Översikt i Azure Portal":::
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser

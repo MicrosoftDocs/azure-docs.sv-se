@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027269"
 ---
 # <a name="http-features"></a>HTTP-funktioner
@@ -57,7 +57,7 @@ I [artikeln om http-API: er](durable-functions-http-api.md) finns en fullständi
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__init__ . py**
+**__init__. py**
 
 ```python
 import logging
@@ -140,7 +140,7 @@ En beskrivning av alla inbyggda HTTP API: er finns i [http API-referensen](durab
 
 ### <a name="async-operation-tracking"></a>Asynkron åtgärds spårning
 
-Det HTTP-svar som tidigare nämnts är utformat för att hjälpa till att implementera långvariga HTTP asynkrona API: er med Durable Functions. Det här mönstret kallas ibland för *avsökningens konsument mönster* . Klient/server-flödet fungerar på följande sätt:
+Det HTTP-svar som tidigare nämnts är utformat för att hjälpa till att implementera långvariga HTTP asynkrona API: er med Durable Functions. Det här mönstret kallas ibland för *avsökningens konsument mönster*. Klient/server-flödet fungerar på följande sätt:
 
 1. Klienten utfärdar en HTTP-begäran om att starta en långvarig process som en Orchestrator-funktion.
 1. Målets HTTP-utlösare returnerar ett HTTP 202-svar med ett plats huvud som har värdet "statusQueryGetUri".

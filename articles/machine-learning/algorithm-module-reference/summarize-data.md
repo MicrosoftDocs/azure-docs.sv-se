@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898218"
 ---
 # <a name="summarize-data"></a>Sammanfatta data
@@ -46,7 +46,7 @@ Modulen beräknar de viktiga poängen för varje kolumn och returnerar en rad me
 
 Rapporten från modulen kan innehålla följande statistik. 
 
-|Kolumnnamn|Beskrivning|
+|Kolumnnamn|Description|
 |------|------|  
 |**Funktion**|Kolumnens namn|
 |**Reparationer**|Antal rader|

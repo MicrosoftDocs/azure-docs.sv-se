@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040238"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Komma åt och hantera filer i OneDrive-anslutning med hjälp av Azure Logic Apps
@@ -50,7 +50,7 @@ En utlösare är en händelse som kan användas för att starta arbets flödet s
 
    I det här exemplet körs Logic-appen när en fil i den mapp du väljer uppdateras. Om du vill se resultatet av den här utlösaren lägger du till en annan åtgärd som skickar ett e-postmeddelande. Lägg till exempel till Office 365 Outlook *skicka en e-* poståtgärd som skickar ett e-postmeddelande till dig när en fil uppdateras.
 
-3. Välj knappen **Redigera** och ange värdena för **frekvens** och **intervall** . Om du till exempel vill att utlösaren ska avsöka var 15: e minut anger du **frekvensen** till **minut**och anger **intervallet** till **15**. 
+3. Välj knappen **Redigera** och ange värdena för **frekvens** och **intervall** . Om du till exempel vill att utlösaren ska avsöka var 15: e minut anger du **frekvensen** till **minut** och anger **intervallet** till **15**. 
 
    ![En dialog ruta med namnet "när en fil ändras" visar fem rutor märkta: "mapp", "frekvens", "intervall", "tidszon" och "START tid". Det finns List Rute listor för fälten "frekvens" och "tidszon".](./media/connectors-create-api-onedrive/trigger-properties.png)
 
@@ -60,7 +60,7 @@ En utlösare är en händelse som kan användas för att starta arbets flödet s
 
 En åtgärd är en åtgärd som utförs av arbets flödet som definierats i en Logic app. [Läs mer om åtgärder](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Välj plus tecknet. Du ser flera alternativ: **Lägg till en åtgärd**, **Lägg till ett villkor**eller något av de **fler** alternativen.
+1. Välj plus tecknet. Du ser flera alternativ: **Lägg till en åtgärd**, **Lägg till ett villkor** eller något av de **fler** alternativen.
 
    ![En skärm bild visar fyra knappar: "+ nytt steg", "lägga till en åtgärd", "Lägg till ett villkor" och "... Mer ".](./media/connectors-create-api-onedrive/add-action.png)
 
@@ -70,7 +70,7 @@ En åtgärd är en åtgärd som utförs av arbets flödet som definierats i en L
 
    ![En dialog ruta med rubriken "Visa Microsoft Managed A s I" har en ruta som innehåller "OneDrive". Nedan visas en lista över åtta åtgärder. Den första är "OneDrive-skapa fil" och är markerad.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
-4. I vårt exempel väljer du **OneDrive-skapa fil**. Om det redan finns en anslutning väljer du **mappsökvägen** för att placera filen, anger **fil namnet**och väljer det **fil innehåll** som du vill använda:  
+4. I vårt exempel väljer du **OneDrive-skapa fil**. Om det redan finns en anslutning väljer du **mappsökvägen** för att placera filen, anger **fil namnet** och väljer det **fil innehåll** som du vill använda:  
 
    ![En dialog ruta med namnet "skapa fil" visar tre rutor med namnet "MAPPSÖKVÄG", "fil namn" och "MAPPINNEHÅLL". Det finns en katalogs bläddringsknappen bredvid rutan "MAPPSÖKVÄG".](./media/connectors-create-api-onedrive/sample-action.png)
 

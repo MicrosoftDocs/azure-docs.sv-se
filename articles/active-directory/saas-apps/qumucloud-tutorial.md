@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 3547de9ce307686e8796b1b3ad0f4fdfff18c9c2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Självstudie: Azure Active Directory integrering med Qumu Cloud
@@ -122,7 +122,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med Qum
 
 7. Utöver ovan förväntar sig Qumu Cloud Application att fler attribut skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ---------------| --------------- |    
     | urn:oid:2.5.4.42 | user.givenname |
     | urn:oid:2.5.4.4 | user.surname |
@@ -191,7 +191,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Qumu-molnet.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Qumu Cloud**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Qumu Cloud**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
