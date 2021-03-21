@@ -1,5 +1,5 @@
 ---
-title: Fel sökning av Defender IoT Micro-agent
+title: Fel sökning av Defender IoT Micro-agent (för hands version)
 titleSuffix: Azure Defender for IoT
 description: Lär dig hur du hanterar oväntade eller oförutsedda fel.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 07198a5d0ef5d0a6c9eed97523c61826e451b7f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124184"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting"></a>Fel sökning av Defender IoT Micro-agent 
+# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Fel sökning av Defender IoT Micro-agent (för hands version)
 
 I händelse av oväntade eller oförutsedda fel kan du försöka lösa problemen med följande fel söknings metoder. Du kan också kontakta produkt teamet för Azure Defender för IoT om du behöver hjälp.   
 

@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 88ac8bb1bc804604b96d5c90025b8325a6ce4962
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/11/2021
+ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503133"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604261"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -32,10 +32,54 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 
 ## <a name="march-2021"></a>Mars 2021
 
-- [Microsoft 365 Defender incident integrering](#microsoft-365-defender-incident-integration) (offentlig för hands version)
+- [Automatiserings regler och incident utlösta spel böcker](#automation-rules-and-incident-triggered-playbooks) (inklusive all ny Spelbok-dokumentation)
+- [Nya aviserings anrikninger: utökad enhets mappning och anpassad information](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [Skriv ut dina Azure Sentinel-arbetsböcker eller Spara som PDF](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
+- [Incident filter och sorterings inställningar sparas nu i din session (offentlig för hands version)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
+- [Microsoft 365 Defender incident integrering (offentlig för hands version)](#microsoft-365-defender-incident-integration-public-preview)
 - [Nya Microsoft Service Connectors med Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
+ 
+### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automation-regler och incident utlösta spel böcker
 
-### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender incident integrering
+Automation-regler är ett nytt koncept i Azure Sentinel som gör att du kan hantera automatisering av incident hantering centralt. Förutom att du kan tilldela spel böcker till incidenter (inte bara aviseringar som tidigare), kan du med automatiserings regler också automatisera svar för flera analys regler samtidigt, tagga, tilldela eller stänga incidenter utan att behöva spel böcker och styra ordningen på de åtgärder som utförs. Automation-regler effektiviserar automatiserings användningen i Azure Sentinel och gör det möjligt att förenkla komplexa arbets flöden för dina incident Dirigerings processer.
+
+Läs mer i den här [fullständiga förklaringen av Automation-regler](automate-incident-handling-with-automation-rules.md).
+
+Som nämnts ovan kan spel böcker nu aktive ras med incident utlösaren, förutom aviserings utlösaren. Incident utlösaren ger din spel böcker en större uppsättning indata att arbeta med (eftersom incidenten även omfattar all avisering och enhets data), vilket ger dig ännu mer kraft och flexibilitet i dina svars arbets flöden. Incident-utlöst spel böcker aktive ras genom att anropas från Automation-regler.
+
+Lär dig mer om [spel böcker "Enhanced funktioner](automate-responses-with-playbooks.md)och hur du kan skapa [ett svars arbets flöde](tutorial-respond-threats-playbook.md) med spel böcker tillsammans med automatiserings regler.
+
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Nya aviserings anrikninger: utökad enhets mappning och anpassad information
+
+Förbättra dina aviseringar på två nya sätt för att göra dem mer användbara och mer informativa.
+
+Börja med att ta enhets mappningen till nästa nivå. Nu kan du mappa nästan 20 typer av entiteter, från användare, värdar och IP-adresser till filer och processer till post lådor, Azure-resurser och IoT-enheter. Du kan också använda flera identifierare för varje entitet för att förstärka sin unika identifiering. Detta ger dig en mycket rikare data uppsättning i dina incidenter, vilket ger en bredare korrelation och mer kraftfullare undersökning. [Lär dig det nya sättet att mappa entiteter](map-data-fields-to-entities.md) i dina aviseringar.
+
+[Läs mer om entiteter](entities-in-azure-sentinel.md) och se den [fullständiga listan över tillgängliga entiteter och deras identifierare](entities-reference.md).
+
+Ge dina utrednings-och svars funktioner en ännu större ökning genom att anpassa aviseringar till Surface-information från dina obehandlade händelser. Få insyn i händelse innehåll i dina incidenter, vilket ger dig större kraft och flexibilitet när du svarar på och undersöker säkerhetshot. [Lär dig hur du kan anpassa informationen](surface-custom-details-in-alerts.md) i dina aviseringar.
+
+
+
+### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>Skriv ut dina Azure Sentinel-arbetsböcker eller Spara som PDF
+
+Nu kan du skriva ut Azure Sentinel-arbetsböcker, vilket innebär att du även kan exportera dem till PDF-filer och spara lokalt eller dela dem.
+
+I arbets boken väljer du menyn Alternativ > :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **Skriv ut innehåll**. Välj sedan din skrivare eller Välj **Spara som PDF** efter behov.
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Skriv ut din arbets bok eller Spara som PDF.":::
+
+Mer information finns i [Självstudier: visualisera och övervaka dina data](tutorial-monitor-your-data.md).
+
+### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Incident filter och sorterings inställningar sparas nu i din session (offentlig för hands version)
+
+Nu sparas dina incident filter och sortering i hela Azure Sentinel-sessionen, även om du navigerar till andra delar av produkten.
+Så länge som du fortfarande befinner dig i samma session, kan du navigera tillbaka till [incidenter](tutorial-investigate-cases.md) -avsnittet i Azure Sentinel och Visa dina filter och sortering precis som du lämnade det.
+
+> [!NOTE]
+> Incident filter och sortering sparas inte när du har lämnat Azure Sentinel eller uppdaterat din webbläsare.
+
+### <a name="microsoft-365-defender-incident-integration-public-preview"></a>Microsoft 365 Defender incident integrering (offentlig för hands version)
 
 Med incident integrering med Azure Sentinels [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) kan du strömma alla M365D-incidenter till Azure Sentinel och hålla dem synkroniserade mellan båda portalerna. Incidenter från M365D (tidigare kallat Microsoft Threat Protection eller MTP) inkluderar alla associerade aviseringar, entiteter och relevant information, vilket ger dig tillräckligt med sammanhang för att utföra prioritering och förberedande undersökningar i Azure Sentinel. Incidenter i Sentinel förblir i dubbelriktat läge med M365D, så att du kan dra nytta av fördelarna med båda portalerna i incident undersökningen.
 
@@ -60,8 +104,8 @@ Kunderna kommer fortfarande att kunna skicka loggarna manuellt för vissa instan
 
 - [Arbets bok för cybersäkerhet mognads modell certifiering (CMMC)](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Data anslutningar från tredje part](#third-party-data-connectors)
-- [UEBA insikter på sidan entitet](#ueba-insights-in-the-entity-page)
-- [Förbättrad incident sökning](#improved-incident-search)
+- [UEBA insikter på sidan entitet (offentlig för hands version)](#ueba-insights-in-the-entity-page-public-preview)
+- [Förbättrad incident sökning (offentlig för hands version)](#improved-incident-search-public-preview)
 
 ### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Arbets bok för cybersäkerhet mognads modell certifiering (CMMC)
 
@@ -117,13 +161,13 @@ Vår samling tredjeparts integreringar fortsätter att växa, med trettio koppli
 - [Trend Micro XDR](connect-data-sources.md)
 - [VMware ESXi](connect-vmware-esxi.md)
 
-### <a name="ueba-insights-in-the-entity-page"></a>UEBA insikter på sidan entitet
+### <a name="ueba-insights-in-the-entity-page-public-preview"></a>UEBA insikter på sidan entitet (offentlig för hands version)
 
 Informations sidorna för Azure Sentinel-entiteten innehåller ett [insikts fönster](identify-threats-with-entity-behavior-analytics.md#entity-insights)som visar insikter om entiteten och hjälper till att snabbt identifiera avvikelser och säkerhetshot.
 
 Om du har [aktiverat UEBA](ueba-enrichments.md)och har valt en tidsram på minst fyra dagar, kommer nu fönstret insikter även att innehålla följande nya avsnitt för UEBA Insights:
 
-|Avsnitt  |Beskrivning  |
+|Avsnitt  |Description  |
 |---------|---------|
 |**UEBA Insights**     | Sammanfattar avvikande användar aktiviteter: <br>– Över geografiska platser, enheter och miljöer<br>– Över tid-och frekvens horisonter jämfört med användarens egna historik <br>– Jämfört med peer-beteende <br>– Jämfört med organisationens beteende     |
 |**Användar-peer-datorer baserade på säkerhets grupp medlemskap**     |   Visar en lista över användarens peer-datorer baserat på medlemskap i Azure AD-säkerhetsgrupper, som tillhandahåller säkerhets arbets grupper med en lista över andra användare som delar liknande behörigheter.  |
@@ -131,7 +175,7 @@ Om du har [aktiverat UEBA](ueba-enrichments.md)och har valt en tidsram på minst
 |**Hot indikatorer relaterade till användaren**     |  Visar en samling kända hot som rör IP-adresser som representeras i användarens aktiviteter. Hot visas efter hot typen och familjen och berikas av Microsofts tjänst för hot information.       |
 |     |         |
 
-### <a name="improved-incident-search"></a>Förbättrad incident sökning
+### <a name="improved-incident-search-public-preview"></a>Förbättrad incident sökning (offentlig för hands version)
 
 Vi har förbättrat Sök upplevelsen av Azure Sentinel-incidenter, så att du kan navigera snabbare genom incidenter när du undersöker ett speciellt hot.
 
@@ -148,7 +192,7 @@ När du söker efter incidenter i Azure Sentinel kan du nu söka efter följande
 - [Analys regel guiden: förbättrad redigerings upplevelse för frågor (offentlig för hands version)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [PowerShell-modulen AZ. SecurityInsights (offentlig för hands version)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-anslutning](#sql-database-connector)
-- [Dynamics 365-anslutning](#dynamics-365-connector)
+- [Dynamics 365-anslutning (offentlig för hands version)](#dynamics-365-connector-public-preview)
 - [Förbättrade incident kommentarer](#improved-incident-comments)
 - [Dedikerade Log Analytics kluster](#dedicated-log-analytics-clusters)
 - [Hanterade identiteter för Logic Apps](#logic-apps-managed-identities)
@@ -183,7 +227,7 @@ Azure SQL är en fullständigt hanterad databas motor för PaaS (Platform-as-a-S
 
 Mer information finns i [ansluta Azure SQL Database-diagnostik och gransknings loggar](connect-azure-sql-logs.md).
 
-### <a name="dynamics-365-connector"></a>Dynamics 365-anslutning
+### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365-anslutning (offentlig för hands version)
 
 Azure Sentinel tillhandahåller nu en koppling för Microsoft Dynamics 365 som gör att du kan samla in dina Dynamics 365-programs användar-, administratörs-och support aktivitets loggar i Azure Sentinel. Du kan använda dessa data för att granska den helheten för data bearbetnings åtgärder som äger rum och analysera dem för möjliga säkerhets överträdelser.
 

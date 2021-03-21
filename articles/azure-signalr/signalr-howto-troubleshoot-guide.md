@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201662"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589178"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Fel söknings guide för Azure SignalR service vanliga problem
 
@@ -19,14 +19,14 @@ Den här vägledningen är att tillhandahålla en användbar fel söknings guide
 
 ## <a name="access-token-too-long"></a>Åtkomsttoken är för lång
 
-### <a name="possible-errors"></a>Möjliga fel:
+### <a name="possible-errors"></a>Möjliga fel
 
 * Klient Sidan `ERR_CONNECTION_`
 * 414 URI är för lång
 * 413-nyttolasten är för stor
 * Åtkomsttoken får inte vara längre än 4K. 413 begär ande enheten är för stor
 
-### <a name="root-cause"></a>Rotorsak:
+### <a name="root-cause"></a>Rotorsak
 
 För HTTP/2 är max längden **4 K**, så om du använder webbläsare för att få åtkomst till Azure-tjänsten, kommer det att finnas ett fel `ERR_CONNECTION_` för den här begränsningen.
 
@@ -34,7 +34,7 @@ För HTTP/1.1-eller C#-klienter är den maximala URI-längden **12 k**, den maxi
 
 Med SDK-version **1.0.6** eller högre `/negotiate` utlöses `413 Payload Too Large` när den genererade åtkomsttoken är större än **4 KB**.
 
-### <a name="solution"></a>Lösning:
+### <a name="solution"></a>Lösning
 
 Som standard ingår anspråk från `context.User.Claims` när du genererar JWT-åtkomsttoken till **ASRS**(**en** zure **S** ignal **R** **s** servicenivåmå), så att anspråken bevaras och kan skickas från **ASRS** till `Hub` när klienten ansluter till `Hub` .
 
@@ -45,7 +45,8 @@ Den genererade åtkomsttoken skickas via nätverket, och för WebSocket/SSE-ansl
 `ClaimsProvider`Du kan anpassa anspråk som skickas till **ASRS** i åtkomsttoken.
 
 För ASP.NET Core:
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 För ASP.NET:
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -67,13 +69,13 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 ## <a name="tls-12-required"></a>TLS 1,2 krävs
 
-### <a name="possible-errors"></a>Möjliga fel:
+### <a name="possible-errors"></a>Möjliga fel
 
 * ASP.NET "det finns inga tillgängliga servrar"-fel [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET "anslutningen är inte aktiv, det går inte att skicka data till tjänsten." fel [#324](https://github.com/Azure/azure-signalr/issues/324)
 * "Ett fel uppstod när HTTP-begäran skulle utföras till https:// <API endpoint> . Det här felet kan bero på att Server certifikatet inte har kon figurer ATS korrekt med HTTP.SYS i HTTPS-fallet. Det här felet kan också orsakas av en matchning av säkerhets bindningen mellan klienten och servern. "
 
-### <a name="root-cause"></a>Rotorsak:
+### <a name="root-cause"></a>Rotorsak
 
 Azure-tjänsten stöder bara TLS 1.2 för säkerhets frågor. Med .NET Framework är det möjligt att TLS 1.2 inte är standard protokollet. Det innebär att Server anslutningarna till ASRS inte kan upprättas.
 
@@ -93,16 +95,18 @@ Azure-tjänsten stöder bara TLS 1.2 för säkerhets frågor. Med .NET Framework
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="Undantags Throw":::
 
 2. För ASP.NET kan du också lägga till följande kod i `Startup.cs` för att aktivera detaljerad spårning och se felen från loggen.
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>Lösning:
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>Lösning
 
 Lägg till följande kod i Start programmet:
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
@@ -158,19 +162,19 @@ När [klient anslutningen](#client_connection_drop)går ur ASP.net SignalR, åte
 
 Det finns två fall.
 
-### <a name="concurrent-connection-count-exceeds-limit"></a>Antalet **samtidiga** anslutningar överskrider gränsen.
+### <a name="concurrent-connection-count-exceeds-limit"></a>Antalet **samtidiga** anslutningar överskrider gränsen
 
 För **lediga** instanser är gränsen för **samtidiga** anslutningar 20 för **standard** instanser, gränsen för antal **samtidiga** anslutningar **per enhet** är 1 K, vilket innebär att Unit100 tillåter 100 samtidiga anslutningar.
 
 Anslutningarna omfattar både klient-och Server anslutningar. Sök [efter](./signalr-concept-messages-and-connections.md#how-connections-are-counted) hur anslutningar räknas.
 
-### <a name="too-many-negotiate-requests-at-the-same-time"></a>För många Negotiate-begäranden på samma tidpunkt.
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>För många Negotiate-begäranden på samma tid
 
-Vi rekommenderar att du har en slumpmässig fördröjning innan du [ansluter igen.](#restart_connection) Sök efter försök igen.
+Vi rekommenderar att du har en slumpmässig fördröjning innan du [ansluter igen.](#restart_connection) om du vill försöka igen kan du söka igen.
 
 [Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 fel vid Negotiate: Azure SignalR-tjänsten är inte ansluten ännu, försök igen senare.
+## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 fel vid Negotiate: Azure SignalR-tjänsten är inte ansluten ännu, försök igen senare
 
 ### <a name="root-cause"></a>Rotorsak
 
@@ -180,18 +184,21 @@ Det här felet rapporteras när det inte finns någon server anslutning till Azu
 
 Aktivera spårning på Server sidan för att ta reda på fel informationen när servern försöker ansluta till Azure SignalR-tjänsten.
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivera loggning på Server sidan för ASP.NET Core Signalerare
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivera loggning på Server sidan för ASP.NET Core Signalerare
 
-Loggning på Server sidan för ASP.NET Core Signalerare integreras med den `ILogger` baserade [loggningen](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) som finns i ASP.net Core Framework. Du kan aktivera loggning på Server sidan genom att använda `ConfigureLogging` , en exempel användning på följande sätt:
-```cs
+Loggning på Server sidan för ASP.NET Core Signalerare integreras med den `ILogger` baserade [loggningen](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true) som finns i ASP.net Core Framework. Du kan aktivera loggning på Server sidan genom att använda `ConfigureLogging` , en exempel användning på följande sätt:
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Loggnings kategorier för Azure SignalR börjar alltid med `Microsoft.Azure.SignalR` . Om du vill aktivera detaljerade loggar från Azure-Signaleraren konfigurerar du föregående prefix till `Debug` nivå i **appsettings.jspå** filen som nedan:
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Loggnings kategorier för Azure SignalR börjar alltid med `Microsoft.Azure.Sign
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>Aktivera spårning på Server sidan för ASP.NET-Signalerare
 
 När du använder SDK-version >= `1.0.0` kan du aktivera spår genom att lägga till följande i `web.config` : ([information](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102))
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -235,14 +243,14 @@ När du använder SDK-version >= `1.0.0` kan du aktivera spår genom att lägga 
 
 När klienten är ansluten till Azure-Signaleraren kan den permanenta anslutningen mellan klienten och Azure-signaler ibland släppas av olika orsaker. I det här avsnittet beskrivs flera möjligheter som gör att den här anslutningen släpps och ger viss vägledning om hur du identifierar rotor saken.
 
-### <a name="possible-errors-seen-from-the-client-side"></a>Möjliga fel visas från klient Sidan
+### <a name="possible-errors-seen-from-the-client-side"></a>Möjliga fel som visas från klient Sidan
 
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>Rotorsak:
+### <a name="root-cause"></a>Rotorsak
 
 Klient anslutningar kan släppas under olika omständigheter:
 * Vid `Hub` Utlös ande av undantag med inkommande begäran.
@@ -268,13 +276,13 @@ Klient anslutningar stiger ständigt under lång tid i Azure signalers mått.
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="Klient anslutningen ökar ständigt":::
 
-### <a name="root-cause"></a>Rotorsak:
+### <a name="root-cause"></a>Rotorsak
 
 SignalR klient anslutning har `DisposeAsync` aldrig anropats. anslutningen förblir öppen.
 
 ### <a name="troubleshooting-guide"></a>Felsökningsguide
 
-1. Kontrol lera om signal klienten **aldrig** stängs.
+Kontrol lera om signal klienten **aldrig** stängs.
 
 ### <a name="solution"></a>Lösning
 
@@ -282,7 +290,7 @@ Kontrol lera om du stänger anslutningen. Anropa manuellt `HubConnection.Dispose
 
 Exempel:
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -324,21 +332,95 @@ Med jämna mellanrum finns det nya versions versioner för Azure SignalR-tjänst
 
 I det här avsnittet beskrivs flera möjligheter som leder till att Server anslutning släpps och ger viss vägledning om hur du identifierar rotor saken.
 
-### <a name="possible-errors-seen-from-server-side"></a>Möjliga fel visas från Server sidan:
+### <a name="possible-errors-seen-from-the-server-side"></a>Möjliga fel visas från Server Sidan
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>Rotorsak:
+### <a name="root-cause"></a>Rotorsak
 
 Server-tjänst anslutning har stängts av **ASRS**(**en** zure **s** ignal **R** **s** servicenivåmå).
 
+För ping-tidsgräns kan det bero på hög CPU-användning eller effekter på Server sidan.
+
+För ASP.NET-signaler har ett känt problem åtgärd ATS i SDK-1.6.0. Uppgradera SDK till den senaste versionen.
+
+## <a name="thread-pool-starvation"></a>Effekter för tråd-pool
+
+Om din server är svälter innebär det att inga trådar fungerar vid meddelande bearbetning. Alla trådar hänger sig i en viss metod.
+
+Normalt orsakas det här scenariot av asynkron över synkronisering eller av `Task.Result` / `Task.Wait()` i asynkrona metoder.
+
+Se [metod tips för ASP.net core prestanda](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls).
+
+Läs mer om [effekter för tråd-pool](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall).
+
+### <a name="how-to-detect-thread-pool-starvation"></a>Så här identifierar du effekter för tråds bassäng
+
+Kontrol lera antalet trådar. Gör så här om det inte finns några toppar:
+* Om du använder Azure App Service kontrollerar du antalet trådar i mått. Kontrol lera `Max` agg regeringen:
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Skärm bild av fönstret maximalt antal trådar i Azure App Service.":::
+
+* Om du använder .NET Framework kan du hitta [mått](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) i prestanda övervakaren på den virtuella Server-datorn.
+* Om du använder .NET core i en behållare, se [samla in diagnostik i behållare](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers).
+
+Du kan också använda kod för att identifiera effekter för trådpoolen:
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+Lägg till den i din tjänst:
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+Kontrol lera sedan loggen när Server anslutningen är frånkopplad via ping-timeout.
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>Så här hittar du rotor saken till effekter för tråd-pool
+
+Så här hittar du rotor saken till effekter för trådens pool:
+
+* Dumpa minnet och analysera sedan anrops stacken. Mer information finns i [samla in och analysera minnes dum par](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/).
+* Använd [clrmd](https://github.com/microsoft/clrmd) för att dumpa minnet när trådpoolen effekter identifieras. Logga sedan anrops stacken.
+
 ### <a name="troubleshooting-guide"></a>Felsökningsguide
 
-1. Öppna App Server-Side log för att se om något onormalt ägt rum
-2. Kontrol lera händelse loggen för App Server-sidan för att se om App Server har startats om
-3. Skapa ett problem för att tillhandahålla tids ramen och skicka e-post till resurs namnet till oss
+1. Öppna App Server-Side-loggen för att se om något onormalt ägde rum.
+2. Kontrol lera händelse loggen för App Server-sidan för att se om App Server har startats om.
+3. Skapa ett problem. Ange tidsram och e-posta resurs namnet till oss.
 
 [Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 

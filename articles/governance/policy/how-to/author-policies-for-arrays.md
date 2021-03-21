@@ -3,12 +3,12 @@ title: Redigera principer för mat ris egenskaper för resurser
 description: Lär dig att arbeta med mat ris parametrar och matris språk uttryck, utvärdera [*]-aliaset och lägga till element med Azure Policy definitions regler.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98220753"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721621"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Redigera principer för mat ris egenskaper på Azure-resurser
 
@@ -448,7 +448,8 @@ Det faktum att `where` uttrycket utvärderas mot **hela** begär ande innehålle
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +458,60 @@ Det faktum att `where` uttrycket utvärderas mot **hela** begär ande innehålle
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-Kapslade Count-uttryck tillåts också:
+Kapslade Count-uttryck kan användas för att tillämpa villkor på kapslade mat ris fält. Följande villkor kontrollerar till exempel att `objectArray[*]` matrisen har exakt 2 medlemmar med `nestedArray[*]` som innehåller 1 eller flera medlemmar:
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| Upprepning av yttre loop | Valda värden | Inre loop-iteration | Valda värden |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| Iteration | Valda värden | Utvärderings resultat för kapslade räknare |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` har 2 medlemmar => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` har 2 medlemmar => `true` |
+
+Eftersom båda medlemmarna i `objectArray[*]` har en underordnad matris `nestedArray[*]` med 2 medlemmar, returnerar det yttre Count-uttrycket `2` .
+
+Mer komplext exempel: kontrol lera att `objectArray[*]` matrisen har exakt 2 medlemmar med `nestedArray[*]` alla medlemmar som är lika med `2` eller `3` :
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| Iteration | Valda värden | Utvärderings resultat för kapslade räknare
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` ingår `2` => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` ingår `3` => `true` |
+
+Eftersom båda medlemmarna i `objectArray[*]` har en underordnad matris `nestedArray[*]` som innehåller antingen `2` eller `3` , returnerar det yttre antalet uttryck `2` .
+
+> [!NOTE]
+> Uttryck för kapslade fält räknare kan bara referera till kapslade matriser. Exempel: Count-uttryck som refererar till `Microsoft.Test/resourceType/objectArray[*]` kan ha ett kapslat antal som mål för den kapslade matrisen `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` , men det får inte ha ett kapslat Count-uttryck `Microsoft.Test/resourceType/stringArray[*]` .
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>Åtkomst till aktuell mat ris medlem med mall funktioner
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034769"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590542"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Förstå tvillingmodeller i Azure Digital Twins
 
@@ -24,9 +24,13 @@ Azure Digitals-modeller visas i det JSON-LD-baserade **digitala DTDL-språket (d
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>Digitalt DTDL (Digital Definition Language) för modeller
 
-Modeller för Azure Digital Twins definieras med Digital Twins Definition Language (DTDL). DTDL är baserat på JSON-LD och är programmeringsspråksoberoende. DTDL är inte exklusiv för Azure Digitals, men används också för att representera enhets data i andra IoT-tjänster som [iot plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
+Modeller för digitala Azure-dubbla grupper definieras med hjälp av DTDL (Digital enforming Definition Language). 
 
-Azure Digitals flätar använder **DTDL _version 2_**. Mer information om den här versionen av DTDL finns i Specifikations dokumentationen för GitHub: [*digital, Definition Language (DTDL)-version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Användning av DTDL _version 1_ med Azure Digitals dubbla är nu föråldrad.
+Du kan visa de fullständiga språkspecifikationerna för DTDL i GitHub: [**digital, Definition Language (DTDL)-version 2**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+
+DTDL är baserat på JSON-LD och är programmeringsspråksoberoende. DTDL är inte exklusiv för Azure Digitals, men används också för att representera enhets data i andra IoT-tjänster som [iot plug and Play](../iot-pnp/overview-iot-plug-and-play.md). Azure Digitals dubblare använder DTDL **version 2** (användning av DTDL-version 1 med Azure Digitals, är nu föråldrad). 
+
+Resten av den här artikeln sammanfattar hur språket används i Azure Digitals.
 
 > [!NOTE] 
 > Alla tjänster som använder DTDL implementerar exakt samma funktioner i DTDL. IoT Plug and Play använder till exempel inte de DTDL-funktioner som är för grafer, medan Azures digitala dubbla för närvarande inte implementerar DTDL-kommandon.

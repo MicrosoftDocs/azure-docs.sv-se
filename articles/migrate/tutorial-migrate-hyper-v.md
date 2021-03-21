@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878180"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604584"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrera virtuella Hyper-V-datorer till Azure 
 
@@ -135,12 +135,7 @@ När identifieringen är klar kan du påbörja replikering av virtuella Hyper-V-
 ## <a name="provision-for-the-first-time"></a>Etablera för första gången
 
 Om det här är den första virtuella dator som du replikerar i Azure Migrate projektet, Azure Migrate: Server migreringen etablerar automatiskt resurserna i samma resurs grupp som projektet.
-
-- **Service Bus**: Azure Migrate: Server-migreringen använder Service Bus för att skicka Dirigerings meddelanden för replikering till enheten.
-- **Gateway Storage-konto**: Azure Migrate: Server Migration använder Gateway Storage-kontot för att lagra statusinformation om de virtuella datorer som replikeras.
-- **Logg lagrings konto**: Azure Migrate-installationen överför replik loggar för virtuella datorer till ett logg lagrings konto. Azure Migrate använder replikeringsinformation på de replik hanterade diskarna.
-- **Nyckel valv**: Azure Migrates enheten använder nyckel valvet för att hantera anslutnings strängar för Service Bus och åtkomst nycklar för de lagrings konton som används i replikeringen. Du bör ha ställt in de behörigheter som nyckel valvet behöver för att komma åt lagrings kontot när du för [beredde Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) för utvärdering av Hyper-V-VM och migrering. 
-
+- **Cache-lagrings konto**: Azure Site Recovery leverantörs program vara som är installerad på Hyper-V-värdar överför replikeringsdata för de virtuella datorerna som kon figurer ATS för replikering till ett lagrings konto (kallas lagrings konto för cache eller logg lagrings konto) i din prenumeration. Azure Migrates tjänsten kopierar sedan överförda replikeringsdata från lagrings kontot till de replikbaserade diskar som motsvarar den virtuella datorn. Du måste ange ett cache Storage-konto när du konfigurerar replikering för en virtuell dator och Azure Migrate Portal skapar automatiskt ett för Azure Migrate-projektet när replikeringen har kon figurer ATS för första gången i projektet.
 
 ## <a name="track-and-monitor"></a>Spåra och övervaka
 

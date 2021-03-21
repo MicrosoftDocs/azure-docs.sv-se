@@ -9,15 +9,15 @@ ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91855998"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>Självstudie: ansluta ett virtuellt nätverk till en ExpressRoute-krets
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure-portalen](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -41,7 +41,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Granska kraven [prerequisites](expressroute-prerequisites.md), kraven för [routning](expressroute-routing.md)och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
+* Granska kraven [](expressroute-prerequisites.md), kraven för [routning](expressroute-routing.md)och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
 
 * Du måste ha en aktiv ExpressRoute-krets. 
   * Följ anvisningarna för att [skapa en ExpressRoute-krets](expressroute-howto-circuit-arm.md) och ha den krets som Aktiver ATS av anslutnings leverantören. 

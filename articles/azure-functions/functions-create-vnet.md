@@ -4,10 +4,10 @@ description: Den här självstudien visar hur du ansluter en funktion till ett v
 ms.topic: article
 ms.date: 2/22/2021
 ms.openlocfilehash: 3dd5e700b3081f1c1ef8e4601385c707a5738321
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102630477"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Självstudie: integrera Azure Functions med ett virtuellt Azure-nätverk med hjälp av privata slut punkter
@@ -39,7 +39,7 @@ Du skapar en .NET Function-app i Premium-planen eftersom den här självstudien 
     | Inställning      | Föreslaget värde  | Beskrivning |
     | ------------ | ---------------- | ----------- |
     | **Prenumeration** | Din prenumeration | Prenumeration som den här nya Function-appen skapas under. |
-    | **[Resursgrupp](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Namn för den nya resurs gruppen där du ska skapa din Function-app. |
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Namn för den nya resurs gruppen där du ska skapa din Function-app. |
     | **Funktionsappens namn** | Globalt unikt namn | Namn som identifierar din nya funktionsapp. Giltiga tecken är `a-z` (skiftlägesokänsligt), `0-9` och `-`.  |
     |**Publicera**| Kod | Välj att publicera kod filer eller en Docker-behållare. |
     | **Körningsstack** | .NET | I den här självstudien används .NET. |
@@ -85,7 +85,7 @@ Dina virtuella nätverk behöver ett lagrings konto som är skilt från det som 
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
+    | **[Resursgrupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | mysecurestorage| Namnet på det lagrings konto som den privata slut punkten ska tillämpas på. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
 
@@ -102,7 +102,7 @@ Dina virtuella nätverk behöver ett lagrings konto som är skilt från det som 
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. |
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
+    | **[Resursgrupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | myServiceBus| Namnet på den Service Bus som den privata slut punkten ska tillämpas på. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
     | **Prisnivå** | Premium | Välj den här nivån om du vill använda privata slut punkter med Azure Service Bus. |
@@ -128,7 +128,7 @@ Skapa det virtuella nätverk som Function-appen ska integreras med:
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
+    | **[Resursgrupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | myVirtualNet| Namnet på det virtuella nätverk som din Function-app ska ansluta till. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
 
@@ -160,7 +160,7 @@ Skapa privata slut punkter för Azure Files lagring och Azure Blob Storage genom
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. | |
+    | **[Resursgrupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. | |
     | **Namn** | fil slut punkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region där du skapade ditt lagrings konto. |
 
@@ -201,7 +201,7 @@ Skapa den privata slut punkten för att låsa din Service Bus:
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
+    | **[Resursgrupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | SB-slutpunkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade ditt lagrings konto. |
 

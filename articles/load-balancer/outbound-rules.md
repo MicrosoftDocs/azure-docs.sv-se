@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033161"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590219"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Utgående regler Azure Load Balancer
 
@@ -36,11 +36,11 @@ Med utgående regler kan du uttryckligen definiera beteendet för utgående **SN
 Med utgående regler kan du styra:
 
 * **Vilka virtuella datorer som översätts till offentliga IP-adresser.**
-     * Två regler var backend-pool A använder IP-adress A och B, backend-pool B använder IP-adress C och D.
+     * Två regler var backend-pool 1 använder den blå IP-adressen 1 och 2, backend-pool 2 använder det gula IP-prefixet.
 * **Hur utgående SNAT-portar allokeras.**
-     * Backend-pool B är den enda poolen som gör utgående anslutningar, ge alla SNAT-portar till backend-pool B och ingen till backend-pool A.
+     * Om Server delens pool 2 är den enda poolen som gör utgående anslutningar, ger du alla SNAT-portar till backend-pool 2 och ingen till backend-pool 1.
 * **Vilka protokoll som ska tillhandahålla utgående översättning för.**
-     * Backend-pool B behöver UDP-portar för utgående. Backend-poolen kräver TCP. Ge TCP-portar till A-och UDP-portar till B.
+     * Om Server delens pool 2 behöver UDP-portar för utgående, och backend-pool 1 behöver TCP, ska du ge TCP-portarna till 1 och UDP-portarna till 2.
 * **Vilken varaktighet som ska användas för utgående timeout för utgående anslutning (4-120 minuter).**
      * Om det finns tids krävande anslutningar med keepalive-anslutningar ska du reservera inaktiva portar för tids krävande anslutningar i upp till 120 minuter. Anta att inaktuella anslutningar är övergivna och frigör portar på 4 minuter för nya anslutningar 
 * **Om du vill skicka en TCP-återställning vid inaktivitet.**

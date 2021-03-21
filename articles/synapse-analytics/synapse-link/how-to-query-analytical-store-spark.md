@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 615998de45c4a9993899065a4aef7a15332a59c8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671275"
+ms.locfileid: "104720414"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Interagera med Azure Cosmos DB att använda Apache Spark i Azure Synapse-länken
 
@@ -28,6 +28,10 @@ Följande funktioner stöds när du interagerar med Azure Cosmos DB:
 * Synapse Apache Spark stöder också Spark-strukturerad strömning med Azure Cosmos DB som källa samt en mottagare. 
 
 I följande avsnitt får du stegvisa anvisningar för funktionerna ovan. Gester i Azure Synapse Analytics-arbetsytan är utformade för att ge en enkel välkomst upplevelse för att komma igång. Gester visas när du högerklickar på en Azure Cosmos DB behållare på fliken **data** i arbets ytan Synapse. Med gester kan du snabbt generera kod och skräddarsy den efter dina behov. Gester passar också perfekt för att upptäcka data med ett enda klick.
+
+> [!IMPORTANT]
+> Du bör vara medveten om vissa begränsningar i analys schemat som kan leda till oväntad beteende vid data inläsnings åtgärder.
+> Som exempel är endast de första 1000 egenskaperna från transaktions scheman tillgängliga i analys schemat, egenskaper med blank steg är inte tillgängliga osv. Om du får oväntade resultat kan du kontrol lera [begränsningarna för analys lagrings schema](../../cosmos-db/analytical-store-introduction.md#schema-constraints) för mer information.
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>Fråga Azure Cosmos DB analys lager
 

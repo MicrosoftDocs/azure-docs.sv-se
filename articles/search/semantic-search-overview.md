@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 443d6349aab68fd05edfe4c4007fd043c932f4f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604278"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720499"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantisk sökning i Azure Kognitiv sökning
 
@@ -50,7 +50,9 @@ Komponenter för semantisk sökning utökar den befintliga pipeline för körnin
 
 Frågekörningen fortsätter som vanligt, med termen tolkning, analys och skanningar över de inverterade indexen. Motorn hämtar dokument med hjälp av token-matchning och ger resultaten med hjälp av [standard bedömnings algoritmen för likhet](index-similarity-and-scoring.md#similarity-ranking-algorithms). Poängen beräknas baserat på den språkliga likheten mellan sökorden och matchnings villkoren i indexet. Om du har definierat dem tillämpas bedömnings profiler också i det här skedet. Resultaten skickas sedan till under systemet för semantisk sökning.
 
-I förberedelse steget analyseras det dokument sökkorpus som returnerades från den första resultat uppsättningen på menings-och stycke nivå för att hitta resultat som sammanfattar varje dokument. I motsats till nyckelords sökning använder det här steget maskin läsning och förståelse för att utvärdera innehållet. Som en del av resultat sammansättningen returnerar en semantisk fråga under texter och svar. För att formulera dem använder semantisk sökning en språk representation för att extrahera och markera nyckel passager som bäst sammanfattar ett resultat. Om Sök frågan är en fråga – och svar begärs – svaret innehåller även en text passage som bäst svarar på frågan, som uttrycks av Sök frågan. För både bild texter och svar används befintlig text i formuleringen. De semantiska modellerna skapar inte nya meningar eller fraser från det tillgängliga innehållet, och använder inte heller logik för att komma till nya slut satser. I korthet returnerar systemet aldrig innehåll som inte redan finns.
+I förberedelse steget analyseras det dokument sökkorpus som returnerades från den första resultat uppsättningen på menings-och stycke nivå för att hitta resultat som sammanfattar varje dokument. I motsats till nyckelords sökning använder det här steget maskin läsning och förståelse för att utvärdera innehållet. Genom den här fasen av innehålls bearbetning returnerar en semantisk fråga under [texter](semantic-how-to-query-request.md) och [svar](semantic-answers.md). För att formulera dem använder semantisk sökning en språk representation för att extrahera och markera nyckel passager som bäst sammanfattar ett resultat. Om Sök frågan är en fråga – och svar begärs – svaret innehåller även en text passage som bäst svarar på frågan, som uttrycks av Sök frågan. 
+
+För både bild texter och svar används befintlig text i formuleringen. De semantiska modellerna skapar inte nya meningar eller fraser från det tillgängliga innehållet, och använder inte heller logik för att komma till nya slut satser. I korthet returnerar systemet aldrig innehåll som inte redan finns.
 
 Resultaten visas sedan på nytt baserat på det [konceptuella likhets](semantic-ranking.md) tecknet för sökord.
 

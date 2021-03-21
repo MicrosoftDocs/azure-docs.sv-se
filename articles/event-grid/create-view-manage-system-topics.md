@@ -4,10 +4,10 @@ description: Den här artikeln visar hur du visar det befintliga system avsnitte
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86115119"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Skapa, Visa och hantera Event Grid system ämnen i Azure Portal
@@ -20,7 +20,7 @@ Du kan skapa ett system ämne för en Azure-resurs (lagrings konto, Event Hubs n
 - Använd sidan **Event Grid system ämnen** . Följande steg beskriver hur du skapar ett system avsnitt på sidan **Event Grid Systems ämnen** . 
 
 1. Logga in på [Azure Portal](https://portal.azure.com).
-2. I rutan Sök högst upp skriver du **Event Grid system ämnen**och trycker sedan på **RETUR**. 
+2. I rutan Sök högst upp skriver du **Event Grid system ämnen** och trycker sedan på **RETUR**. 
 
     ![Sök efter system avsnitt](./media/create-view-manage-system-topics/search-system-topics.png)
 3. På sidan **Event Grid system ämnen** väljer du **+ Lägg till** i verktygsfältet.
@@ -50,7 +50,7 @@ Du kan skapa ett system ämne för en Azure-resurs (lagrings konto, Event Hubs n
 Följ dessa steg om du vill visa alla befintliga Event Grid system ämnen. 
 
 1. Logga in på [Azure Portal](https://portal.azure.com).
-2. I rutan Sök högst upp skriver du **Event Grid system ämnen**och trycker sedan på **RETUR**. 
+2. I rutan Sök högst upp skriver du **Event Grid system ämnen** och trycker sedan på **RETUR**. 
 
     ![Sök efter system avsnitt](./media/create-view-manage-system-topics/search-system-topics.png)
 3. På sidan **Event Grid system ämnen** visas alla system ämnen. 
@@ -83,7 +83,7 @@ Följ dessa steg om du vill visa alla befintliga Event Grid system ämnen.
 2. På **avsnittet Event Grid system** på sidan väljer du **+ händelse prenumeration** i verktygsfältet. 
 
     ![System ämne – knappen Lägg till händelse prenumeration](./media/create-view-manage-system-topics/add-event-subscription-button.png)
-3. Bekräfta att **ämnes typen**, **käll resursen**och **ämnes namnet** fylls i automatiskt. Ange ett namn, Välj en **slut punkts typ**och ange **slut punkten**. Välj sedan **skapa** för att skapa händelse prenumerationen. 
+3. Bekräfta att **ämnes typen**, **käll resursen** och **ämnes namnet** fylls i automatiskt. Ange ett namn, Välj en **slut punkts typ** och ange **slut punkten**. Välj sedan **skapa** för att skapa händelse prenumerationen. 
 
     ![System ämne – skapa händelse prenumeration](./media/create-view-manage-system-topics/create-event-subscription.png)
 

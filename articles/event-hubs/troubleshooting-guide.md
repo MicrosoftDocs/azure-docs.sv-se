@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om fel sökning av anslut
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012688"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Felsöka anslutnings problem – Azure Event Hubs
@@ -83,7 +83,7 @@ Några av de tillfälliga anslutnings problemen kan ha åtgärd ATS i senare ver
 Information om klient-SDK: er finns i artikeln om [Azure Event Hubs-klient-SDK](sdks.md) : er. 
 
 ### <a name="run-the-command-to-check-dropped-packets"></a>Kör kommandot för att kontrol lera ignorerade paket
-När det finns tillfälliga anslutnings problem kör du följande kommando för att kontrol lera om det finns några paket som ignoreras. Med det här kommandot görs ett försök att upprätta 25 olika TCP-anslutningar varje sekund med tjänsten. Sedan kan du kontrol lera hur många av dem som har lyckats/misslyckats och även se TCP-anslutningssträngen. Du kan hämta `psping` verktyget härifrån. [here](/sysinternals/downloads/psping)
+När det finns tillfälliga anslutnings problem kör du följande kommando för att kontrol lera om det finns några paket som ignoreras. Med det här kommandot görs ett försök att upprätta 25 olika TCP-anslutningar varje sekund med tjänsten. Sedan kan du kontrol lera hur många av dem som har lyckats/misslyckats och även se TCP-anslutningssträngen. Du kan hämta `psping` verktyget härifrån. [](/sysinternals/downloads/psping)
 
 ```shell
 .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     

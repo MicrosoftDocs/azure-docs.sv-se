@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793440"
 ---
 # <a name="split-merge-security-configuration"></a>Säkerhets konfiguration för delad sammanslagning
@@ -34,7 +34,7 @@ Certifikat konfigureras på två sätt.
 
 Certifikat kan hämtas från offentliga certifikat utfärdare (ca: er) eller från [Windows Certificate service](/windows/win32/seccrypto/certificate-services). Det här är de bästa metoderna för att hämta certifikat.
 
-Om dessa alternativ inte är tillgängliga kan du generera **självsignerade certifikat** .
+Om dessa alternativ inte är tillgängliga kan du generera **självsignerade certifikat**.
 
 ## <a name="tools-to-generate-certificates"></a>Verktyg för att skapa certifikat
 
@@ -124,7 +124,7 @@ Standard konfigurationen nekar all åtkomst till HTTP-slutpunkten. Detta är den
 Standard konfigurationen ger all åtkomst till HTTPS-slutpunkten. Den här inställningen kan begränsas ytterligare.
 
 ### <a name="changing-the-configuration"></a>Ändra konfigurationen
-Gruppen med åtkomst kontroll regler som gäller för och slut punkten konfigureras i **\<EndpointAcls>** avsnittet i **tjänst konfigurations filen** .
+Gruppen med åtkomst kontroll regler som gäller för och slut punkten konfigureras i **\<EndpointAcls>** avsnittet i **tjänst konfigurations filen**.
 
 ```xml
 <EndpointAcls>
@@ -441,31 +441,31 @@ Följ de här stegen:
 
 1. Kör mmc.exe.
 2. Fil-> Lägg till/ta bort snapin-modul...
-3. Välj **Certifikat** .
-4. Klicka på **Lägg till** .
+3. Välj **Certifikat**.
+4. Klicka på **Lägg till**.
 5. Välj plats för certifikat arkiv.
-6. Klicka på **Finish** .
-7. Klicka på **OK** .
-8. Expandera **certifikat** .
+6. Klicka på **Finish**.
+7. Klicka på **OK**.
+8. Expandera **certifikat**.
 9. Expandera noden certifikat arkiv.
 10. Expandera noden certifikatets underordnade.
 11. Välj ett certifikat i listan.
 
 ## <a name="export-certificate"></a>Exportera certifikatet
-I **guiden Exportera certifikat** :
+I **guiden Exportera certifikat**:
 
-1. Klicka på **Nästa** .
-2. Välj **Ja** och sedan **Exportera den privata nyckeln** .
-3. Klicka på **Nästa** .
+1. Klicka på **Nästa**.
+2. Välj **Ja** och sedan **Exportera den privata nyckeln**.
+3. Klicka på **Nästa**.
 4. Välj önskat utdatatyps fil format.
 5. Markera önskade alternativ.
-6. Kontrol lera **lösen ordet** .
+6. Kontrol lera **lösen ordet**.
 7. Ange ett starkt lösen ord och bekräfta det.
-8. Klicka på **Nästa** .
+8. Klicka på **Nästa**.
 9. Skriv eller bläddra i ett fil namn där certifikatet ska lagras (Använd en. PFX-tillägg).
-10. Klicka på **Nästa** .
-11. Klicka på **Finish** .
-12. Klicka på **OK** .
+10. Klicka på **Nästa**.
+11. Klicka på **Finish**.
+12. Klicka på **OK**.
 
 ## <a name="import-certificate"></a>Importera certifikatet
 I guiden Importera certifikat:
@@ -474,7 +474,7 @@ I guiden Importera certifikat:
    
    * Välj **Aktuell användare** om endast processer som körs under aktuell användare kommer åt tjänsten
    * Välj **lokal dator** om andra processer på den här datorn kommer att få åtkomst till tjänsten
-2. Klicka på **Nästa** .
+2. Klicka på **Nästa**.
 3. Om du importerar från en fil, bekräftar du sökvägen till filen.
 4. Om du importerar en. PFX-fil:
    1. Ange lösen ordet som skyddar den privata nyckeln
@@ -482,15 +482,15 @@ I guiden Importera certifikat:
 5. Välj "placera" certifikat i följande Arkiv
 6. Klicka på **Browse** (Bläddra).
 7. Välj önskat arkiv.
-8. Klicka på **Finish** .
+8. Klicka på **Finish**.
    
-   * Om arkivet Betrodda rot certifikat utfärdare valdes klickar du på **Ja** .
+   * Om arkivet Betrodda rot certifikat utfärdare valdes klickar du på **Ja**.
 9. Klicka på **OK** i alla dialog fönster.
 
 ## <a name="upload-certificate"></a>Överför certifikat
 I [Azure Portal](https://portal.azure.com/)
 
-1. Välj **Cloud Services** .
+1. Välj **Cloud Services**.
 2. Välj moln tjänst.
 3. Klicka på **certifikat** på den översta menyn.
 4. Klicka på **överför** i det nedre fältet.

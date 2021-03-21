@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371336"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Säkerhets överväganden för data förflyttning i Azure Data Factory
@@ -169,7 +169,7 @@ I följande avbildningar visas användningen av integration runtime med egen vä
 > [!NOTE]
 > Mer information om data åtkomst strategier i Azure Data Factory finns i [den här artikeln](./data-access-strategies.md#data-access-strategies-through-azure-data-factory).
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Brand Väggs krav för lokalt/privat nätverk
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Brandväggskrav för lokala/privata nätverk
 
 I ett företag körs en företags brand vägg på den centrala routern i organisationen. Windows-brandväggen körs som en daemon på den lokala datorn där den lokala integrerings körningen är installerad. 
 

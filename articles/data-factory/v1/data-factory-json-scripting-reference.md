@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f17d851e517e1ea0297bf8169c42496068e57533
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371268"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Referens för Azure Data Factory-JSON-skript
@@ -350,7 +350,7 @@ I **princip** avsnittet i data uppsättnings definitionen definieras villkoren e
 
 Om inte en data uppsättning skapas av Azure Data Factory ska den markeras som **extern**. Den här inställningen gäller normalt indata för den första aktiviteten i en pipeline om inte aktivitet eller pipeline-kedja används.
 
-| Namn | Beskrivning | Krävs | Standardvärde |
+| Name | Beskrivning | Krävs | Standardvärde |
 | --- | --- | --- | --- |
 | dataDelay |Tid för att försena kontrollen av tillgängligheten för externa data för den aktuella sektorn. Om data till exempel är tillgängliga varje timme, är kontrollen för att se de externa data tillgängliga och motsvarande sektor kan fördröjas med hjälp av dataDelay.<br/><br/>Gäller endast för aktuell tid.  Om det till exempel är 1:00 PM nu och det här värdet är 10 minuter, börjar verifieringen med 1:10 PM.<br/><br/>Den här inställningen påverkar inte segment tidigare (segment med sektor slut tid + dataDelay < nu) bearbetas utan fördröjning.<br/><br/>Tiden som är större än 23:59 timmar måste anges med `day.hours:minutes:seconds` formatet. Om du till exempel vill ange 24 timmar ska du inte använda 24:00:00; Använd i stället 1,00:00:00. Om du använder 24:00:00 behandlas det som 24 dagar (24.00:00:00). I 1 dag och 4 timmar anger du 1:04:00:00. |Inga |0 |
 | retryInterval |Vänte tiden mellan ett fel och nästa försök att försöka igen. Om ett försök Miss lyckas är nästa försök efter retryInterval. <br/><br/>Om det är 1:00 PM börjar vi med det första försöket. Om varaktigheten för att slutföra den första verifierings kontrollen är 1 minut och åtgärden misslyckades, är nästa nytt försök på 1:00 + 1 min (varaktighet) + 1 min (återförsöksintervall) = 1:02 PM. <br/><br/>För sektorer i det förflutna sker ingen fördröjning. Återförsöket sker omedelbart. |Inga |00:01:00 (1 minut) |

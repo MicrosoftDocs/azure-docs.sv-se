@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206959"
 ---
 # <a name="what-is-azure-expressroute"></a>Vad är Azure ExpressRoute?
-Med ExpressRoute kan du utöka dina lokala nätverk till Microsoft-molnet via en privat anslutning med hjälp av en anslutnings leverantör. Med ExpressRoute kan du upprätta anslutningar till Microsofts moln tjänster, till exempel Microsoft Azure och Microsoft 365.
+Med ExpressRoute kan du utöka ditt lokala nätverk till Microsofts moln över en privat anslutning med hjälp av en anslutningsprovider. Med ExpressRoute kan du upprätta anslutningar till Microsofts molntjänster, t.ex. Microsoft Azure och Microsoft 365.
 
-Anslutningen kan vara från ett valfritt-till-alla (IP VPN)-nätverk, ett Ethernet-nätverk från punkt till punkt eller en virtuell kors anslutning via en anslutnings leverantör till en samplacering. ExpressRoute-anslutningar går inte via det offentliga Internet. Detta gör att ExpressRoute-anslutningar ger bättre tillförlitlighet, snabbare hastigheter, konsekvent fördröjning och högre säkerhet än vanliga anslutningar via Internet. Mer information om hur du ansluter nätverket till Microsoft med ExpressRoute finns [ExpressRoute-anslutningsmodeller](expressroute-connectivity-models.md).
+Anslutningen kan vara från ett ”any-to-any”-nätverk (IP VPN), en punkt-till-punkt-anslutning via Ethernet eller en virtuell korsanslutning via en anslutningsleverantör till ett samlokaliseringscenter. ExpressRoute-anslutningar går inte via det offentliga Internet. Detta gör att ExpressRoute-anslutningar ger bättre tillförlitlighet, snabbare hastigheter, konsekventa svarstider och högre säkerhet än typiska anslutningar via Internet. Information om hur du ansluter nätverket till Microsoft med ExpressRoute finns i ExpressRoute- [anslutnings modeller](expressroute-connectivity-models.md).
 
 ![Översikt över ExpressRoute-anslutning](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -28,7 +28,7 @@ Anslutningen kan vara från ett valfritt-till-alla (IP VPN)-nätverk, ett Ethern
 * Global anslutning till Microsofts tjänster i alla regioner med ExpressRoutes-premiumtillägget.
 * Dynamisk routning mellan ditt nätverk och Microsoft via BGP.
 * Inbyggd redundans i varje peeringplats för högre tillförlitlighet.
-* Anslutningens drifttids-[SLA](https://azure.microsoft.com/support/legal/sla/).
+* [SLA](https://azure.microsoft.com/support/legal/sla/)för anslutnings drift tid.
 * QoS-stöd för Skype för företag.
 
 Mer information finns i [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md).
@@ -109,10 +109,10 @@ Du kan välja den faktureringsmodell som passar dig bäst. Välj mellan de faktu
   * Global anslutning för tjänster. En ExpressRoute-krets som har skapats i vilken region som helst (exklusive nationella moln) har till gång till resurser i alla andra regioner i världen. Till exempel kan ett virtuellt nätverk som skapats i Europa, västra nås via en ExpressRoute-krets som etablerats i Silicon Valley.
   * Ökat antal VNet-länkar per ExpressRoute-krets från 10 till en högre gräns, beroende på kretsens bandbredd.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 Vanliga frågor om ExpressRoute finns i [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md).
 
-## <a name="whats-new"></a><a name="new"></a>Nyheter
+## <a name="whats-new"></a><a name="new"></a>Vad är det senaste?
 
 Prenumerera på RSS-flödet och Visa de senaste ExpressRoute-funktions uppdateringarna på sidan [Azure updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) .
 

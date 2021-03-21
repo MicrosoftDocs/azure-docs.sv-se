@@ -8,16 +8,16 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 03/07/2021
 ms.custom: ''
-ms.openlocfilehash: 215abb1ce8d65b5ecdd25aeb78c17c70e801a9d2
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 9d40bbd7e08d8d3869166827a22f3f08536532bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555755"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590712"
 ---
 # <a name="generate-arm-template-for-cloud-services-extended-support-using-the-azure-portal"></a>Skapa ARM-mall för Cloud Services (utökad support) med hjälp av Azure Portal
 
-Den här artikeln förklarar hur du hämtar ARM-mallen och parameter filen från [Azure Portal](https://portal.azure.com) när moln tjänsten (utökad support) har distribuerats. ARM-mallen och parameter filen kan användas i framtida distributioner för att uppgradera eller uppdatera en moln tjänst (utökad support)
+Den här artikeln beskriver hur du hämtar ARM-mallen och parameter filen från [Azure Portal](https://portal.azure.com) när moln tjänsten (utökad support) har distribuerats. ARM-mallen och parameter filen kan användas i framtida distributioner för att uppgradera eller uppdatera en moln tjänst (utökad support)
 
 ## <a name="get-arm-template-via-portal"></a>Hämta ARM-mall via portalen
 

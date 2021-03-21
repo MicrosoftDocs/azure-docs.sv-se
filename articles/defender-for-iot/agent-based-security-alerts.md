@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/16/2021
 ms.author: shhazam
 ms.openlocfilehash: 9e4a65e67200a682313dae8e326128edce3367d1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495767"
 ---
 # <a name="defender-for-iot-devices-security-alerts"></a>Defender för IoT-enheter säkerhets aviseringar
@@ -33,7 +33,7 @@ Mer information finns i [anpassningsbara aviseringar](concept-customizable-secur
 
 ## <a name="agent-based-security-alerts"></a>Agentbaserade säkerhets aviseringar
 
-| Namn | Allvarlighetsgrad | Datakälla | Beskrivning | Föreslagna reparations steg |
+| Name | Allvarlighetsgrad | Datakälla | Beskrivning | Föreslagna reparations steg |
 |--|--|--|--|--|
 | **Hög** allvarlighets grad |  |  |  |
 | Binär kommando rad | Högt | Klassisk Defender-IoT-Micro-agent | LA Linux Binary som anropas/körs från kommando raden upptäcktes. Den här processen kan vara en legitim aktivitet eller en indikation på att enheten har komprometterats. | Granska kommandot med den användare som körde det och kontrol lera om det är något giltigt förväntat att köras på enheten. Annars eskalerar du aviseringen till ditt informations säkerhets team. |

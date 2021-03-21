@@ -8,10 +8,10 @@ ms.service: frontdoor
 ms.topic: sample
 ms.date: 03/16/2021
 ms.openlocfilehash: 241c4c713890af0db8fce74b0817b5bdcf9a1403
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573803"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Resource Manager mallar för Azures front dörr
@@ -21,7 +21,7 @@ ms.locfileid: "103573803"
 
 Följande tabell innehåller länkar till Azure Resource Manager mallar för Azures front dörr, med referens arkitekturer, inklusive andra Azure-tjänster.
 
-| App Service | Description |
+| App Service | Beskrivning |
 |-|-|
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Skapar en App Service-app med en offentlig slut punkt och en profil för en front dörr.  |
 | [App Service med privat länk](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Skapar en App Service-app med en privat slut punkt och en profil för en front dörr.  |
