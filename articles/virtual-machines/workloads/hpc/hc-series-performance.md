@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0d164c19da1ed2cbf6930a92686b35690fb0afb5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 177a58090303a70491d9a9226eca40d0bb371764
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666920"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722267"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>Storlekar på virtuella datorer i HC-serien
 
@@ -58,5 +58,5 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs om de senaste meddelandena och vissa HPC-exempel (data behandling med höga prestanda) och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En mer övergripande arkitektur för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

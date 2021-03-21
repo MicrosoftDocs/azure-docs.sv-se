@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 12/15/2019
 ms.author: kumud
 ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586119"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Anpassa en varumärke modell med Video Indexer webbplats
@@ -36,7 +36,7 @@ Du kan använda Video Indexer webbplats för att skapa, använda och redigera an
 
 ## <a name="edit-brands-model-settings"></a>Redigera inställningar för varumärkes modell
 
-Du har möjlighet att ange om du vill att märken från Bing-databasen ska identifieras eller inte. Om du vill ange det här alternativet måste du redigera inställningarna för din varumärkes-modell. Gör så här:
+Du har möjlighet att ange om du vill att märken från Bing-databasen ska identifieras eller inte. Om du vill ange det här alternativet måste du redigera inställningarna för din varumärkes-modell. Följ de här stegen:
 
 1. Gå till [video Indexer](https://www.videoindexer.ai/) webbplats och logga in.
 1. Om du vill anpassa en modell i ditt konto väljer du knappen **anpassning av innehålls modell** till vänster på sidan.

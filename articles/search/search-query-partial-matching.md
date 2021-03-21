@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/03/2020
-ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e2625fff802e71f797bf6970e763f2bf11c393e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573994"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584184"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>Partiell terms ökning och mönster med specialtecken (bindestreck, jokertecken, regex, mönster)
 
@@ -85,7 +85,7 @@ När du väljer en analys som producerar token för en hel period är följande 
 | [språk analys verktyg](index-add-language-analyzers.md) | Bevarar bindestreck i sammansatta ord eller strängar, vokal mutationer och verb-formulär. Om fråga mönster innehåller bindestreck kan det vara tillräckligt med språk analys. |
 | [följt](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Innehållet i hela fältet är token som en enskild term. |
 | [blank steg](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Separerar bara på blank steg. Termer som innehåller bindestreck eller andra tecken behandlas som en enda token. |
-| [anpassad analys](index-add-custom-analyzers.md) | rekommenderas Genom att skapa en anpassad analys kan du ange både tokenizer och token-filtret. Föregående analyser måste användas som de är. Med en anpassad analys kan du välja vilka tokenizers och token filter som ska användas. <br><br>En rekommenderad kombination är [nyckelordet tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) med ett [lägsta token-filter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Den fördefinierade [nyckelords analysen](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) innehåller i själva fall inte gemener och versaler, vilket kan orsaka att frågor Miss söker. Med en anpassad analys får du en mekanism för att lägga till det nedre token-filtret. |
+| [anpassad analys](index-add-custom-analyzers.md) | rekommenderas Genom att skapa en anpassad analys kan du ange både tokenizer och token-filtret. Föregående analyser måste användas som de är. Med en anpassad analys kan du välja vilka tokenizers och token filter som ska användas. <br><br>En rekommenderad kombination är [nyckelordet tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) med ett [lägsta token-filter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Den inbyggda [nyckelords analysen](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) innehåller i själva fall inte gemener och versaler, vilket kan orsaka att frågor Miss söker. Med en anpassad analys får du en mekanism för att lägga till det nedre token-filtret. |
 
 Om du använder ett webb-API-testverktyg som Postman kan du lägga till [test analys rest-anropet](/rest/api/searchservice/test-analyzer) för att inspektera token-utdata.
 
@@ -160,9 +160,9 @@ Oavsett om du utvärderar analyser eller om du flyttar framåt med en speciell k
 
 ### <a name="use-built-in-analyzers"></a>Använda inbyggda analyser
 
-Inbyggda eller fördefinierade analyser kan anges efter namn på en `analyzer` egenskap i en fält definition, utan ytterligare konfiguration som krävs i indexet. Följande exempel visar hur du ställer in analys funktionen `whitespace` för ett fält. 
+Inbyggda analyser kan anges efter namn på en `analyzer` egenskap i en fält definition, utan ytterligare konfiguration som krävs i indexet. Följande exempel visar hur du ställer in analys funktionen `whitespace` för ett fält. 
 
-För andra scenarier och mer information om andra inbyggda analyser, se [fördefinierade analys listor](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
+För andra scenarier och mer information om andra inbyggda analyser, se [inbyggda analyser](./index-add-custom-analyzers.md#built-in-analyzers). 
 
 ```json
     {

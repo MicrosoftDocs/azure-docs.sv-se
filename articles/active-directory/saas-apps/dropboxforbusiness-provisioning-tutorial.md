@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96938774"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Dropbox för företag för automatisk användar etablering
@@ -28,7 +28,7 @@ Syftet med den här självstudien är att demonstrera de steg som ska utföras i
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som skapats ovanpå Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

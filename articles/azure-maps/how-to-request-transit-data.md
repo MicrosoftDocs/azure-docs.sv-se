@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96906037"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Begär offentliga överförings data med Azure Maps mobilitets tjänster (för hands version) 
@@ -32,7 +32,7 @@ I den här artikeln får du lära dig hur du:
 * Fråga [Hämta API för överförings vägar](/rest/api/maps/mobility/gettransitroutepreview) för att planera en väg med hjälp av offentlig överföring.
 * Begär transiterings flödets geometri och ett detaljerat schema för vägen med hjälp av [API: et get transit itinerary](https://aka.ms/https://azure.microsoft.com/services/azure-maps/).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](./how-to-manage-authentication.md).

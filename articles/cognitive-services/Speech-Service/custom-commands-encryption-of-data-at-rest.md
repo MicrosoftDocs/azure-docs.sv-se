@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
 ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716592"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Anpassade kommandon för kryptering av vilande data
@@ -118,7 +118,7 @@ Om du vill ange en nyckel från ett nyckel valv måste du först kontrol lera at
 
 ## <a name="update-the-key-version"></a>Uppdatera nyckel versionen
 
-När du skapar en ny version av en nyckel uppdaterar du tal resursen för att använda den nya versionen. Gör så här:
+När du skapar en ny version av en nyckel uppdaterar du tal resursen för att använda den nya versionen. Följ de här stegen:
 
 1. Navigera till din tal resurs och visa **krypterings** inställningarna.
 1. Ange URI för den nya nyckel versionen. Alternativt kan du välja nyckel valvet och nyckeln igen för att uppdatera versionen.

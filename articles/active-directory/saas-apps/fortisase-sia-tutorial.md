@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: fb648983224b4f3bb99b6cc0578f8c7de301b522
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7165fb1c8a3bf608ac1f754168ba40647b954b10
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055672"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583776"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortisase-sia"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med FortiSASE SIA
 
@@ -94,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig FortiSASE SIA-program att fler attribut skickas tillbaka i SAML-svar, som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | --------------- | --------- |
     | group | användare. grupper |
     | användarnamn | user.userprincipalname |
@@ -146,10 +146,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till FortiSASE SIA-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen FortiSASE SIA i Mina appar omdirigeras det till FortiSASE SIA-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen FortiSASE SIA i Mina appar omdirigeras det till FortiSASE SIA-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat FortiSASE SIA kan du framtvinga sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+När du har konfigurerat FortiSASE SIA kan du framtvinga sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

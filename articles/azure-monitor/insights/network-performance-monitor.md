@@ -6,10 +6,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711135"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Övervakare av nätverksprestanda lösning i Azure
@@ -289,7 +289,7 @@ Varje gång du skapar en avisering skapar NPM en fråga baserad logg aviserings 
 Meddelanden debiteras separat enligt [priset per meddelande på sidan Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/).
 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Information om priser är tillgänglig [online](network-performance-monitor-pricing-faq.md).
 

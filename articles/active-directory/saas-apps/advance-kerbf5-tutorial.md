@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.openlocfilehash: db8977e484e8d1f2cf4b30427d47ba45969f2147
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654467"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Självstudie: Azure Active Directory (AD) integrering med enkel inloggning (SSO) med F5
@@ -204,7 +204,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
  
     * session. logon. senaste. usernameUPN uttryck {[mcget {session. SAML. Last. Identity}]}
 
-    * session. AD. lastactualdomain TEXT superdemo. Live
+    * session. AD. lastactualdomain TEXT superdemo.live
 
     ![Skärm bild som visar AD-frågeegenskaper.](./media/advance-kerbf5-tutorial/configure17.png)
 
@@ -262,7 +262,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 * **Steg 3: SPN-delegering (för det App Service kontot)**
 
     * Konfigurera lämplig delegering för F5-Delegerings kontot.
-    * I exemplet nedan konfigureras APM Delegerings kontot för KCD för FRP-app1. superdemo. Live-appen.
+    * I exemplet nedan konfigureras APM Delegerings kontot för KCD för FRP-App1.superdemo.live-appen.
 
         ![Skärm bild som visar Delegatio för APM-konto egenskaper > delegering.](./media/advance-kerbf5-tutorial/configure25.png)
 

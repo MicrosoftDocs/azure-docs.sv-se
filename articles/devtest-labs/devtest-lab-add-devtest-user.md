@@ -4,10 +4,10 @@ description: Lägg till ägare och användare i Azure DevTest Labs med antingen 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511985"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Lägg till ägare och användare i Azure DevTest Labs
@@ -29,19 +29,19 @@ Följande tabell visar de åtgärder som kan utföras av användare i var och en
 | **Åtgärder som användare med den här rollen kan utföra** | **DevTest Labs-användare** | **Ägare** | **Deltagare** |
 | --- | --- | --- | --- |
 | **Labb uppgifter** | | | |
-| Lägga till användare i ett labb |Nej |Ja |Nej |
-| Uppdatera kostnads inställningar |Nej |Ja |Ja |
+| Lägga till användare i ett labb |Inga |Ja |Inga |
+| Uppdatera kostnads inställningar |Inga |Ja |Ja |
 | **Bas uppgifter för virtuella datorer** | | | |
-| Lägga till och ta bort anpassade avbildningar |Nej |Ja |Ja |
+| Lägga till och ta bort anpassade avbildningar |Inga |Ja |Ja |
 | Lägga till, uppdatera och ta bort formler |Ja |Ja |Ja |
-| Aktivera Marketplace-avbildningar |Nej |Ja |Ja |
+| Aktivera Marketplace-avbildningar |Inga |Ja |Ja |
 | **VM-aktiviteter** | | | |
 | Skapa VM:ar |Ja |Ja |Ja |
 | Starta, stoppa och ta bort virtuella datorer |Endast virtuella datorer som har skapats av användaren |Ja |Ja |
-| Uppdatera VM-principer |Nej |Ja |Ja |
+| Uppdatera VM-principer |Inga |Ja |Ja |
 | Lägga till/ta bort data diskar till och från virtuella datorer |Endast virtuella datorer som har skapats av användaren |Ja |Ja |
 | **Artefakt uppgifter** | | | |
-| Lägga till och ta bort artefakt databaser |Nej |Ja |Ja |
+| Lägga till och ta bort artefakt databaser |Inga |Ja |Ja |
 | Tillämpa artefakter |Ja |Ja |Ja |
 
 > [!NOTE]

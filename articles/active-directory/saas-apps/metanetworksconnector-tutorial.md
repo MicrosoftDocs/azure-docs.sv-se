@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: b14a75dba2860c9dee58e40673d3299fdde277e7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516893"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Självstudie: Azure Active Directory integrering med meta Networks Connector
@@ -124,7 +124,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Meta 
     
 7. Utöver ovanstående förväntar sig Meta Networks Connector-programmet att några fler attribut skickas tillbaka i SAML-svaret. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
     
-    | Namn | Källattribut | Namnområde|
+    | Name | Källattribut | Namnområde|
     | ---------------| --------------- | -------- |
     | förnamn | user.givenname | |
     | efternamn | user.surname | |

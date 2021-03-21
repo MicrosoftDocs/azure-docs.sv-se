@@ -10,10 +10,10 @@ ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
 ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101669486"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Snabb start: skapa en server lös Apache Spark pool i Azure Synapse Analytics med hjälp av webb verktyg

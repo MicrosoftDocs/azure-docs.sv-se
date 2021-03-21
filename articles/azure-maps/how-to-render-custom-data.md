@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96906088"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Återge anpassade data på en raster karta
@@ -25,7 +25,7 @@ Om du vill återge anpassade kartnålar, etiketter och geometri överlägg kan d
 > [!Tip]
 > Det är ofta mycket mer kostnads effektivt att använda Azure Maps Web SDK för att visa en enkel karta på en webb sida än att använda tjänsten för statisk avbildning. Webb-SDK: n använder kart paneler och om inte användaren Pans och zoomar in kartan så genererar de ofta bara en bråkdel av en transaktion per kart belastning. Observera att Azure Maps Web SDK har alternativ för att inaktivera panorering och zoomning. Dessutom tillhandahåller Azure Maps Web SDK en mer omfattande uppsättning data visualiserings alternativ än en statisk kart webb tjänst.  
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="create-an-azure-maps-account"></a>Skapa ett Azure Maps-konto
 

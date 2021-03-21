@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: eb178e38001e54ac39a269c8b8cdef12c77d74cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96901957"
 ---
-# <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL server brand Väggs regler
+# <a name="azure-database-for-mysql-server-firewall-rules"></a>Brandväggsregler för Azure Database for MySQL-server
 Brand väggar förhindrar all åtkomst till din databas server tills du anger vilka datorer som har behörighet. Brand väggen beviljar åtkomst till servern baserat på den ursprungliga IP-adressen för varje begäran.
 
 Konfigurera en brand vägg genom att skapa brand Väggs regler som anger intervall för acceptabla IP-adresser. Du kan skapa brand Väggs regler på server nivå.

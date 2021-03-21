@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: c10681a053631a338bd0b9a7d19c5625151a9a5a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Självstudie: Azure Active Directory integrering med optimalt
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Azure AD med optimering:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **optimera** program integrering.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **optimera** program integrering.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -114,7 +114,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med opt
 
 6. Utöver ovan förväntar sig programmet optimerat fler attribut för att skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Namn | Källattribut |
+    | Name | Källattribut |
     | ---------------| --------------- |
     | e-post | user.mail |
     
@@ -201,7 +201,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att ge åtkomst till optimalt.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **optimera**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **optimera**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

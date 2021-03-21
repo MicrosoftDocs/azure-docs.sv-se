@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 87cb19daa23c9fcca601771a9fe168b98be02627
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050740"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586275"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Samla in IIS-loggar med Log Analytics agent i Azure Monitor
 Internet Information Services (IIS) lagrar användar aktivitet i loggfiler som kan samlas in av Log Analytics-agenten och lagras i [Azure Monitor loggar](../data-platform.md).
@@ -60,11 +60,13 @@ Poster i IIS-loggen har en typ av **W3CIISLog** och har egenskaperna i följande
 | sSiteName |Namnet på IIS-webbplatsen. |
 | TimeGenerated |Datum och tid då posten loggades. |
 | TimeTaken |Tids längd för att bearbeta begäran i millisekunder. |
+| csHost | Värd namn. |
+| csBytes | Antal byte som servern tog emot. |
 
 ## <a name="log-queries-with-iis-logs"></a>Logga frågor med IIS-loggar
 Följande tabell innehåller olika exempel på logg frågor som hämtar poster i IIS-loggen.
 
-| Söka i data | Beskrivning |
+| Söka i data | Description |
 |:--- |:--- |
 | W3CIISLog |Alla logg poster i IIS. |
 | W3CIISLog &#124; där scStatus = = 500 |Alla poster i IIS-loggen med retur status 500. |

@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802515"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722794"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Bevilja begränsad åtkomst till Azure Storage resurser med signaturer för delad åtkomst (SAS)
 
@@ -181,6 +181,9 @@ Följande rekommendationer för att använda signaturer för delad åtkomst kan 
 - **Vet när du inte ska använda en SAS.** Ibland uppväger riskerna som är kopplade till en viss åtgärd mot ditt lagrings konto fördelarna med att använda en SAS. För sådana åtgärder skapar du en tjänst på mellan nivå som skriver till ditt lagrings konto när du har utfört verifiering, autentisering och granskning av affärs regler. Ibland är det också enklare att hantera åtkomst på andra sätt. Om du till exempel vill att alla blobbar i en behållare ska kunna läsas offentligt kan du göra behållaren offentlig i stället för att tillhandahålla en SAS för varje klient för åtkomst.
 
 - **Använd Azure Monitor och Azure Storage loggar för att övervaka ditt program.** Auktoriseringsfel kan uppstå på grund av ett avbrott i SAS-providern. De kan också utföras från en oavsiktlig borttagning av en lagrad åtkomst princip. Du kan använda Azure Monitor-och Storage Analytics-loggning för att se insamling i dessa typer av auktoriseringsfel. Mer information finns i [Azure Storage mått i Azure Monitor](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) och [Azure-lagringsanalys loggning](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+> [!NOTE]
+> Lagringen spårar inte antalet signaturer för delad åtkomst som har genererats för ett lagrings konto och inget API kan tillhandahålla denna information. Om du behöver veta antalet signaturer för delad åtkomst som har genererats för ett lagrings konto måste du spåra numret manuellt.
 
 ## <a name="get-started-with-sas"></a>Kom igång med SAS
 

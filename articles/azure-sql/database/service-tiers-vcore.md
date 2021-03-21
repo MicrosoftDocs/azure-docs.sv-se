@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
 ms.openlocfilehash: 499e0aa1ee451969923dbdf5f84be1c844a9aab4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659349"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Översikt över vCore-modellen – Azure SQL Database och Azure SQL-hanterad instans 
@@ -119,7 +119,7 @@ För att få åtkomst till DC-serien måste prenumerationen vara en betald erbju
 ### <a name="compute-and-memory-specifications"></a>Beräknings-och minnes specifikationer
 
 
-|Maskin varu generering  |Beräkning  |Minne  |
+|Maskin varu generering  |Compute  |Minne  |
 |:---------|:---------|:---------|
 |Gen4     |– Intel® E5-2673 v3 (Haswell) 2,4 GHz-processorer<br>-Etablera upp till 24 virtuella kärnor (1 vCore = 1 fysisk kärna)  |– 7 GB per vCore<br>-Etablera upp till 168 GB|
 |Gen5     |**Allokerad beräkning**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* och intel® 8272CL (Cascade Lake) 2,5 GHz- \* processorer<br>-Etablera upp till 80 virtuella kärnor (1 vCore = 1 Hyper-Thread)<br><br>**Serverlös databearbetning**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz och Intel® SP-8160 (Skylake) * processorer<br>-Skala upp till 40 virtuella kärnor (1 vCore = 1 Hyper-Thread) automatiskt|**Allokerad beräkning**<br>– 5,1 GB per vCore<br>-Etablera upp till 408 GB<br><br>**Serverlös databearbetning**<br>-Skala upp till 24 GB per vCore automatiskt<br>-Skala upp till 120 GB max|

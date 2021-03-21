@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: 4807d1d5e97f7f95521df054d1a71f8925ac4ebb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bca2158f448f74ba596114fce5d1631249124a92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367613"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606743"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Kopiera flera tabeller i bulk genom att använda Azure Data Factory i Azure Portal
 
@@ -98,7 +98,7 @@ I det här steget skapar du en länkad tjänst för att länka databasen i Azure
 
 1. På sidan länkade tjänster väljer du **+ ny** för att skapa en ny länkad tjänst.
 
-   ![Ny länkad tjänst](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Ny länkad tjänst.":::
 1. I fönstret **New Linked Service** (Ny länkad tjänst) väljer du **Azure SQL Database** och klickar på **Fortsätt**. 
 1. Utför följande steg i fönstret **ny länkad tjänst (Azure SQL Database)** : 
 

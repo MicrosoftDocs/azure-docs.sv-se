@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: 706b2306fbe9f2a744d2874a8b55f78fa2fc8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9572f4c663c820c76a57cdbdcecff082b150b577
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89303668"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761234"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Skapa en versions pipeline för kontinuerlig distribution
 
@@ -17,7 +17,7 @@ I det här avsnittet skapar du en versions pipeline som är konfigurerad för at
 
 Skapa en ny pipeline och Lägg till ett nytt steg:
 
-1. På fliken **utgåvor** under **pipelines**väljer du **+ ny pipeline**. Eller, om du redan har versions pipeliner, väljer du knappen **+ ny** och väljer **+ ny versions pipeline**.  
+1. På fliken **utgåvor** under **pipelines** väljer du **+ ny pipeline**. Eller, om du redan har versions pipeliner, väljer du knappen **+ ny** och väljer **+ ny versions pipeline**.  
 
     ![Lägg till en versions pipeline med knappen + Ny pipeline](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-release-pipeline.png)
 
@@ -25,7 +25,7 @@ Skapa en ny pipeline och Lägg till ett nytt steg:
 
     ![Börja med ett tomt jobb för din versions pipeline](./media/iot-edge-create-release-pipeline-for-continuous-deployment/start-with-empty-release-job.png)
 
-3. Din nya versions pipeline initieras med en fas, som kallas **steg 1**. Byt namn på steg 1 till **dev** och behandla den som en pipeline för kontinuerlig distribution för din utvecklings miljö. Vanligt vis har kontinuerliga distributions pipeliner flera steg, inklusive **utveckling**, **mellanlagring**och **Prod**. Du kan använda olika namn och skapa mer baserat på din DevOps-praxis. Stäng fönstret steg information när det har bytt namn.
+3. Din nya versions pipeline initieras med en fas, som kallas **steg 1**. Byt namn på steg 1 till **dev** och behandla den som en pipeline för kontinuerlig distribution för din utvecklings miljö. Vanligt vis har kontinuerliga distributions pipeliner flera steg, inklusive **utveckling**, **mellanlagring** och **Prod**. Du kan använda olika namn och skapa mer baserat på din DevOps-praxis. Stäng fönstret steg information när det har bytt namn.
 
    Du kan också byta namn på din versions pipeline genom att välja texten "ny version pipelining" längst upp.
 
@@ -33,7 +33,7 @@ Skapa en ny pipeline och Lägg till ett nytt steg:
 
    ![Klicka på Lägg till i avsnittet artefakter i gränssnittet](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-artifacts.png)
 
-5. På **sidan Lägg till en artefakt**väljer du **skapa** som **Källtyp**. Välj det projekt och den build-pipeline som du skapade. Om du vill kan du ändra **käll Ali Aset** till något mer beskrivande. Välj sedan **Lägg till**.
+5. På **sidan Lägg till en artefakt** väljer du **skapa** som **Källtyp**. Välj det projekt och den build-pipeline som du skapade. Om du vill kan du ändra **käll Ali Aset** till något mer beskrivande. Välj sedan **Lägg till**.
 
    ![På sidan Lägg till en artefakt väljer du Lägg till för att skapa artefakten](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-artifact.png)
 
@@ -63,8 +63,18 @@ Skapa en ny pipeline och Lägg till ett nytt steg:
     * **ACR_PASSWORD**: ditt Azure Container Registry lösen ord.
     * **ACR_USER**: ditt Azure Container Registry användar namn.
 
-    Om du har andra variabler i projektet kan du ange namn och värde i den här fliken. Det **genererade distributions manifestet** kan bara identifiera variablerna är i `${VARIABLE}` smak. Se till att du använder den här smaken i dina `*.template.json` filer.
-
+    Om du har andra variabler i projektet kan du ange namn och värde i den här fliken. **Generera distributions manifestet** kan bara identifiera variabler som är i `${VARIABLE}` smak. Se till att du använder den här smaken i dina `*.template.json` filer.
+    
+    ```json-interactive
+    "registryCredentials": {
+      "<ACR name>": { // Your Azure Container Registry **Registry name** value
+        "username": "${ACR_USER}",
+        "password": "${ACR_PASSWORD}",
+        "address": "${ACR_ADDRESS}"
+      }
+    }
+    ```
+    
     ![Konfigurera variablerna för din versions pipeline på fliken variabler](./media/iot-edge-create-release-pipeline-for-continuous-deployment/configure-variables.png)
 
 10. Välj den andra **Azure IoT Edge** aktiviteten och konfigurera den med följande värden:

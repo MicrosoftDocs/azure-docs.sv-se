@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418189"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587907"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Styrande Azure AD-tjänstekonton
 
@@ -32,7 +32,7 @@ Det finns tre typer av tjänst konton i Azure Active Directory (Azure AD): [hant
 
 Innan du skapar ett tjänst konto, eller registrerar ett program, dokumenterar du tjänst kontots viktig information. Med information som dokumenteras gör det lättare att effektivt övervaka och styra kontot. Vi rekommenderar att du samlar in följande data och spårar dem i din centraliserade konfigurations hanterings databas (CMDB).
 
-| Data| Beskrivning| Information |
+| Data| Description| Information |
 | - | - | - |
 | Ägare| Användare eller grupp som är konto för att hantera och övervaka tjänst kontot.| Etablera ägaren med nödvändiga behörigheter för att övervaka kontot och implementera ett sätt att åtgärda problem. Ärende minskning kan göras av ägaren eller via en begäran till den. |
 | Syfte| Hur kontot ska användas.| Mappa tjänst kontot till en specifik tjänst, ett program eller ett skript. Undvik att skapa tjänst konton för flera användare. |
@@ -53,7 +53,7 @@ Vi rekommenderar följande metoder för behörigheter för tjänst konton.
 
 * Tilldela inte inbyggda roller till tjänst konton. Använd i stället [OAuth2-modellen för behörighets beviljande för Microsoft Graph](/graph/api/resources/oauth2permissiongrant),
 
-* Om tjänstens huvud namn måste tilldelas en privilegie rad roll, bör du överväga att tilldela en [anpassad roll](https://docs.microsoft.com/azure/active-directory/roles/custom-create) med särskilda, nödvändiga privilegier, i en tids gräns.
+* Om tjänstens huvud namn måste tilldelas en privilegie rad roll, bör du överväga att tilldela en [anpassad roll](../roles/custom-create.md) med särskilda, nödvändiga privilegier, i en tids gräns.
 
 * Ta inte med tjänst konton som medlemmar i grupper med utökade behörigheter. 
 
@@ -63,10 +63,10 @@ Vi rekommenderar följande metoder för behörigheter för tjänst konton.
    eller Använd  
 `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }`
 
-* [Använd OAuth 2,0-omfattningar](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) för att begränsa vilka funktioner ett tjänst konto har åtkomst till på en resurs.
+* [Använd OAuth 2,0-omfattningar](../develop/v2-permissions-and-consent.md) för att begränsa vilka funktioner ett tjänst konto har åtkomst till på en resurs.
 * Tjänstens huvud namn och hanterade identiteter kan använda OAuth 2,0-scope i antingen en delegerad kontext som personifierar en inloggad användare eller som tjänst konto i program kontexten. I program kontexten är ingen inloggad.
 
-* Kontrol lera begär Anden tjänst begär Anden för att få resurser för att säkerställa att de är lämpliga. Om ett konto till exempel begär filer. ReadWrite. all, utvärdera om det verkligen bara behöver fil. Read. all. Mer information om behörigheter finns i [Microsoft Graph behörighets referens](https://docs.microsoft.com/graph/permissions-reference).
+* Kontrol lera begär Anden tjänst begär Anden för att få resurser för att säkerställa att de är lämpliga. Om ett konto till exempel begär filer. ReadWrite. all, utvärdera om det verkligen bara behöver fil. Read. all. Mer information om behörigheter finns i [Microsoft Graph behörighets referens](/graph/permissions-reference).
 
 * Se till att du litar på program-eller API-utvecklaren med den åtkomst som krävs för dina resurser.
 
@@ -78,9 +78,9 @@ Vi rekommenderar följande metoder för behörigheter för tjänst konton.
 
 När du har en tydlig förståelse av syftet, omfattningen och de behörigheter som krävs skapar du ditt tjänst konto. 
 
-[Skapa och Använd hanterade identiteter](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Skapa och Använd hanterade identiteter](../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-[Skapa och använda tjänstens huvud namn](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+[Skapa och använda tjänstens huvud namn](../develop/howto-create-service-principal-portal.md)
 
 Använd en hanterad identitet när det är möjligt. Om du inte kan använda en hanterad identitet använder du ett huvud namn för tjänsten. Om du inte kan använda ett huvud namn för tjänsten och sedan använda ett Azure AD-användarkonto.
 
@@ -100,7 +100,7 @@ Den här artikeln har tidigare täckt planerings-och skapande delen. Du måste o
 
 * Använda Azure AD Sign-In loggar i Azure AD-portalen.
 
-* Exportera Azure AD Sign-In-loggar till [Azure Storage](https://docs.microsoft.com/azure/storage/), [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)eller [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/logs/data-platform-logs).
+* Exportera Azure AD Sign-In-loggar till [Azure Storage](../../storage/index.yml), [Azure Event Hubs](../../event-hubs/index.yml)eller [Azure Monitor](../../azure-monitor/logs/data-platform-logs.md).
 
 
 ![Skärm bild som visar inloggnings skärmen för tjänstens huvud namn.](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
@@ -172,7 +172,7 @@ Upprätta en gransknings process för att säkerställa att tjänst konton regel
 
 **Processerna för avetablering bör omfatta följande uppgifter.**
 
-1. När det associerade programmet eller skriptet har avetablerats, [övervakar du inloggningar](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) och resurs åtkomst av tjänst kontot.
+1. När det associerade programmet eller skriptet har avetablerats, [övervakar du inloggningar](../reports-monitoring/concept-sign-ins.md#sign-ins-report) och resurs åtkomst av tjänst kontot.
 
    * Om kontot fortfarande är aktivt, avgör du hur det används innan du vidtar efterföljande steg.
  
@@ -196,4 +196,3 @@ Mer information om hur du skyddar Azure-tjänstekonton finns i:
 
  
 
- 
