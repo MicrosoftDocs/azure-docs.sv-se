@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e72c35af1f1990527b0154d2ba47a45d3f8b8c9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425637"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604074"
 ---
 # <a name="preview-azure-image-builder-overview"></a>För hands version: översikt över Azure Image Builder
 
@@ -70,7 +70,7 @@ Image Builder för Azure VM är en fullständigt hanterad Azure-tjänst som kan 
 
 Konfiguration av mallar kan skickas med PowerShell, AZ CLI, ARM-mallar och med Azure VM Image Builder DevOps-uppgiften när du skickar den till tjänsten skapar vi en resurs för bildmallar. När resursen avbildnings mal len har skapats visas en mellanlagringsplats som skapats i din prenumeration i formatet: IT_ \<DestinationResourceGroup> _\<TemplateName>_ \( GUID). Den mellanliggande resurs gruppen innehåller filer och skript som refereras till i filen, skalet, PowerShell-anpassningen i egenskapen ScriptURI.
 
-För att du ska kunna köra den version du anropar `Run` , kommer tjänsten att distribuera ytterligare resurser för bygget, till exempel en virtuell dator, ett nätverk, en disk, ett nätverkskort osv. Om du skapar en avbildning utan att använda ett befintligt VNET-avbildnings verktyg för att distribuera en offentlig IP-adress och en NSG, ansluter tjänsten till den virtuella datorns build med SSH eller WinRM. Om du väljer ett befintligt virtuellt nätverk kommer tjänsten att distribueras med hjälp av en privat Azure-länk, och det krävs ingen offentlig IP-adress. mer information om Image Builder-nätverk finns i [informationen](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+För att du ska kunna köra den version du anropar `Run` , kommer tjänsten att distribuera ytterligare resurser för bygget, till exempel en virtuell dator, ett nätverk, en disk, ett nätverkskort osv. Om du skapar en avbildning utan att använda ett befintligt VNET-avbildnings verktyg för att distribuera en offentlig IP-adress och en NSG, ansluter tjänsten till den virtuella datorns build med SSH eller WinRM. Om du väljer ett befintligt virtuellt nätverk kommer tjänsten att distribueras med hjälp av en privat Azure-länk, och det krävs ingen offentlig IP-adress. mer information om Image Builder-nätverk finns i [informationen](./linux/image-builder-networking.md).
 
 När versionen har slutförts tas alla resurser bort, förutom den mellanlagringsplatsen och lagrings kontot för att ta bort dessa, tar du bort bildmallens resurs, eller så kan du lämna dem där för att köra versionen igen.
 
@@ -84,7 +84,7 @@ När du registrerar dig för (AIB) ger detta behörigheten AIB-tjänst för att 
 
 Om du vill tillåta att Azure VM Image Builder distribuerar avbildningar till antingen de hanterade avbildningarna eller till ett delat avbildnings Galleri måste du skapa en Azure User-tilldelad identitet som har behörighet att läsa och skriva bilder. Om du använder Azure Storage måste du ha behörighet att läsa privata och offentliga behållare.
 
-Behörigheter förklaras i detalj för [PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-powershell)och [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-cli).
+Behörigheter förklaras i detalj för [PowerShell](./linux/image-builder-permissions-powershell.md)och [AZ CLI](./linux/image-builder-permissions-cli.md).
 
 ## <a name="costs"></a>Kostnader
 Du kommer att ådra dig några beräknings-, nätverks-och lagrings kostnader när du skapar, skapar och lagrar avbildningar med Azure Image Builder. Dessa kostnader liknar kostnaderna för att skapa anpassade avbildningar manuellt. För resurserna debiteras du enligt dina Azure-priser. 
@@ -101,4 +101,3 @@ Image Builder har för närvarande endast stöd för att skapa Hyper-V generatio
 ## <a name="next-steps"></a>Nästa steg 
  
 Om du vill prova Azure Image Builder kan du läsa artikeln om att skapa [Linux](./linux/image-builder.md) -eller [Windows](./windows/image-builder.md) -avbildningar.
-

@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703515"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Aktivera Azure-diagnostik i Azure Cloud Services (klassisk)
@@ -37,7 +37,7 @@ Den här artikeln förutsätter att du har en Azure-prenumeration och använder 
 6. Bygg din lösning för att kontrol lera att du inte har några fel.
 
 ### <a name="step-2-instrument-your-code"></a>Steg 2: instrumentera din kod
-Ersätt innehållet i WorkerRole.cs med följande kod. Klassen SampleEventSourceWriter, som ärvts från [EventSource-klassen][EventSource Class], implementerar fyra loggnings metoder: **SendEnums**, **MessageMethod**, **SetOther** och **HighFreq**. Den första parametern till **WriteEvent** -metoden definierar ID: t för respektive händelse. Metoden Run implementerar en oändlig loop som anropar var och en av de loggnings metoder som implementeras i **SampleEventSourceWriter** -klassen var 10: e sekund.
+Ersätt innehållet i WorkerRole. CS med följande kod. Klassen SampleEventSourceWriter, som ärvts från [EventSource-klassen][EventSource Class], implementerar fyra loggnings metoder: **SendEnums**, **MessageMethod**, **SetOther** och **HighFreq**. Den första parametern till **WriteEvent** -metoden definierar ID: t för respektive händelse. Metoden Run implementerar en oändlig loop som anropar var och en av de loggnings metoder som implementeras i **SampleEventSourceWriter** -klassen var 10: e sekund.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;

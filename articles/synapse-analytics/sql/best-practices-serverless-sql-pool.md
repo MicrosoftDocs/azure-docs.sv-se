@@ -10,28 +10,28 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e4dc7f50bc3734b78e9053fe2b35072b46af120
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 75e187369eccefb255ae2bbd88de79afbc4fd4dc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610088"
+ms.locfileid: "104669482"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Metod tips för Server lös SQL-pool i Azure Synapse Analytics
 
 I den här artikeln hittar du en samling bästa metoder för att använda SQL-poolen utan server. SQL-poolen utan server är en resurs i Azure Synapse Analytics.
 
-## <a name="general-considerations"></a>Generella saker att tänka på
-
 Med Server lös SQL-pool kan du söka efter filer i dina Azure Storage-konton. Den har inte funktioner för lokal lagring eller inmatning. Alla filer som frågan riktar sig till är externa för SQL-poolen utan server. Allt som rör läsning av filer från lagring kan påverka frågans prestanda.
 
-## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Samplacera din lagrings-och Server lös SQL-pool
+## <a name="storage-and-content-layout"></a>Layout för lagring och innehåll
+
+### <a name="colocate-your-storage-and-serverless-sql-pool"></a>Samplacera din lagrings-och Server lös SQL-pool
 
 Du kan minimera svars tiden genom att samplacera ditt Azure Storage-konto eller CosmosDB-analytiska lagrings utrymme och den serverbaserade SQL-adresspoolen. Lagrings konton och slut punkter som tillhandahålls när arbets ytan skapas befinner sig i samma region.
 
 För optimala prestanda bör du kontrol lera att de finns i samma region om du har åtkomst till andra lagrings konton med en server lös SQL-pool. Om de inte finns i samma region ökar svars tiden för data överföring mellan den fjärranslutna regionen och slut punktens region.
 
-## <a name="azure-storage-throttling"></a>Azure Storage begränsning
+### <a name="azure-storage-throttling"></a>Azure Storage begränsning
 
 Flera program och tjänster kan komma åt ditt lagrings konto. Lagrings begränsning sker när den sammanlagda IOPS eller data flödet som genereras av program, tjänster och arbets belastningen för en server fri SQL-pool överskrider lagrings kontots gränser. Därför får du en betydande negativ effekt på frågans prestanda.
 
@@ -40,7 +40,13 @@ När begränsningen har identifierats har SQL-poolen utan server inbyggd hanteri
 > [!TIP]
 > För optimal frågekörning ska du inte stressa lagrings kontot med andra arbets belastningar under frågekörningen.
 
-## <a name="prepare-files-for-querying"></a>Förbered filer för frågor
+### <a name="azure-ad-pass-through-performance"></a>Prestanda för Azure AD-vidarekoppling
+
+Med Server lös SQL-poolen kan du komma åt filer i lagringen med hjälp av Azure Active Directory (Azure AD) genom strömnings-eller SAS-autentiseringsuppgifter. Du kan uppleva sämre prestanda med Azure AD genom strömning än med SAS.
+
+Om du behöver bättre prestanda kan du försöka använda SAS-autentiseringsuppgifter för att komma åt lagringen.
+
+### <a name="prepare-files-for-querying"></a>Förbered filer för frågor
 
 Om möjligt kan du förbereda filer för bättre prestanda:
 
@@ -50,11 +56,20 @@ Om möjligt kan du förbereda filer för bättre prestanda:
 - Det är bättre att ha lika stora filer för en enskild OpenRowSet-sökväg eller en extern tabell plats.
 - Partitionera dina data genom att lagra partitioner i olika mappar eller fil namn. Se [använda fil namns-och fil Sök vägar för att fokusera på specifika partitioner](#use-filename-and-filepath-functions-to-target-specific-partitions).
 
-## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Jokertecken för push-meddelanden till lägre nivåer i sökvägen
+## <a name="csv-optimizations"></a>CSV-optimeringar
 
-Du kan använda jokertecken i din sökväg för att [fråga flera filer och mappar](query-data-storage.md#query-multiple-files-or-folders). SQL-pool utan server listar filer i ditt lagrings konto, från och med den första * använda Storage API. Den eliminerar filer som inte matchar den angivna sökvägen. Att minska den inledande listan över filer kan förbättra prestanda om det finns många filer som matchar den angivna sökvägen upp till det första jokertecknet.
+### <a name="use-parser_version-20-to-query-csv-files"></a>Använd PARSER_VERSION 2,0 för att fråga CSV-filer
 
-## <a name="use-appropriate-data-types"></a>Använd lämpliga data typer
+Du kan använda en Prestandaoptimerad parser när du frågar CSV-filer. Mer information finns i [PARSER_VERSION](develop-openrowset.md).
+
+### <a name="manually-create-statistics-for-csv-files"></a>Skapa statistik för CSV-filer manuellt
+
+SQL-poolen utan server använder statistik för att generera optimala fråge körnings planer. Statistik skapas automatiskt för kolumner i Parquet-filer vid behov. Nu skapas statistik inte automatiskt för kolumner i CSV-filer och du bör skapa statistik manuellt för kolumner som du använder i frågor, särskilt de som används i DISTINCT, JOIN, WHERE, ORDER BY och GROUP BY. Mer information finns [i statistik i SQL-poolen utan server](develop-tables-statistics.md#statistics-in-serverless-sql-pool) .
+
+
+## <a name="data-types"></a>Datatyper
+
+### <a name="use-appropriate-data-types"></a>Använd lämpliga data typer
 
 De data typer som du använder i frågan påverkar prestanda. Du kan få bättre prestanda om du följer dessa rikt linjer: 
 
@@ -66,7 +81,7 @@ De data typer som du använder i frågan påverkar prestanda. Du kan få bättre
 - Använd Integer-baserade data typer om möjligt. Åtgärder för att sortera, ansluta och gruppera efter slutförs snabbare med heltal än på Character data.
 - Om du använder schema härledning, [kontrollerar du härledda data typer](#check-inferred-data-types).
 
-## <a name="check-inferred-data-types"></a>Kontrol lera härledda data typer
+### <a name="check-inferred-data-types"></a>Kontrol lera härledda data typer
 
 [Schema härledning](query-parquet-files.md#automatic-schema-inference) hjälper dig att snabbt skriva frågor och utforska data utan att känna till fil scheman. Kostnaden för den här bekvämligheten är att härledda data typer kan vara större än de faktiska data typerna. Detta inträffar när det inte finns tillräckligt med information i källfilerna för att se till att rätt datatyp används. Parquet-filer innehåller till exempel inte metadata om maximal tecken kolumn längd. Så Server lös SQL-poolen härleds den som varchar (8000).
 
@@ -109,7 +124,13 @@ FROM
     ) AS nyc;
 ```
 
-## <a name="use-filename-and-filepath-functions-to-target-specific-partitions"></a>Använd filename-och filename-funktioner för att fokusera på specifika partitioner
+## <a name="filter-optimization"></a>Filter optimering
+
+### <a name="push-wildcards-to-lower-levels-in-the-path"></a>Jokertecken för push-meddelanden till lägre nivåer i sökvägen
+
+Du kan använda jokertecken i din sökväg för att [fråga flera filer och mappar](query-data-storage.md#query-multiple-files-or-folders). SQL-pool utan server listar filer i ditt lagrings konto, från och med den första * använda Storage API. Den eliminerar filer som inte matchar den angivna sökvägen. Att minska den inledande listan över filer kan förbättra prestanda om det finns många filer som matchar den angivna sökvägen upp till det första jokertecknet.
+
+### <a name="use-filename-and-filepath-functions-to-target-specific-partitions"></a>Använd filename-och filename-funktioner för att fokusera på specifika partitioner
 
 Data är ofta ordnade i partitioner. Du kan instruera Server lös SQL-poolen att fråga specifika mappar och filer. Då minskas antalet filer och mängden data som frågan behöver läsa och bearbeta. En extra bonus är att du får bättre prestanda.
 
@@ -123,28 +144,22 @@ Mer information finns i avsnittet om [fil namn](query-data-storage.md#filename-f
 
 Om dina lagrade data inte är partitionerade kan du partitionera dem. På så sätt kan du använda dessa funktioner för att optimera frågor som riktar sig mot dessa filer. När du [frågar partitionerade Apache Spark för Azure Synapse-tabeller](develop-storage-files-spark-tables.md) från en server lös SQL-pool, kommer frågan automatiskt att rikta in sig på de nödvändiga filerna.
 
-## <a name="use-parser_version-20-to-query-csv-files"></a>Använd PARSER_VERSION 2,0 för att fråga CSV-filer
+### <a name="use-proper-collation-to-utilize-predicate-pushdown-for-character-columns"></a>Använd rätt sortering för att använda predikat mottagnings för Character-kolumner
 
-Du kan använda en Prestandaoptimerad parser när du frågar CSV-filer. Mer information finns i [PARSER_VERSION](develop-openrowset.md).
+Data i Parquet-filen är ordnade i rad grupper. SQL-poolen utan server hoppar över rad grupper baserat på angivet predikat i WHERE-satsen och minskar därför IO-värdet som resulterar i ökad frågans prestanda. 
 
-## <a name="manually-create-statistics-for-csv-files"></a>Skapa statistik för CSV-filer manuellt
+Observera att predikatet mottagnings för Character-kolumner i Parquet-filer endast stöds för Latin1_General_100_BIN2_UTF8 sortering. Du kan ange sortering för viss kolumn med WITH-satsen. Om du inte anger den här sorteringen med WITH-satsen används databas sorteringen.
 
-SQL-poolen utan server använder statistik för att generera optimala fråge körnings planer. Statistik skapas automatiskt för kolumner i Parquet-filer vid behov. Nu skapas statistik inte automatiskt för kolumner i CSV-filer och du bör skapa statistik manuellt för kolumner som du använder i frågor, särskilt de som används i DISTINCT, JOIN, WHERE, ORDER BY och GROUP BY. Mer information finns [i statistik i SQL-poolen utan server](develop-tables-statistics.md#statistics-in-serverless-sql-pool) .
+## <a name="optimize-repeating-queries"></a>Optimera upprepade frågor
 
-## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Använd CETAS för att förbättra frågornas prestanda och kopplingar
+### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Använd CETAS för att förbättra frågornas prestanda och kopplingar
 
 [CETAS](develop-tables-cetas.md) är en av de viktigaste funktionerna som finns i SQL-poolen utan server. CETAS är en parallell åtgärd som skapar externa tabellens metadata och exporterar URVALs resultatet till en uppsättning filer i ditt lagrings konto.
 
-Du kan använda CETAS för att lagra ofta använda delar av frågor som kopplade referens tabeller till en ny uppsättning filer. Du kan sedan ansluta till den här enskilda externa tabellen i stället för att upprepa vanliga kopplingar i flera frågor.
+Du kan använda CETAS för att materialisera ofta använda delar av frågor som kopplade referens tabeller till en ny uppsättning filer. Du kan sedan ansluta till den här enskilda externa tabellen i stället för att upprepa vanliga kopplingar i flera frågor.
 
 När CETAS genererar Parquet-filer skapas statistik automatiskt när den första frågan riktar sig mot den här externa tabellen, vilket resulterar i förbättrade prestanda för efterföljande frågor som mål tabellen genererar med CETAS.
 
-## <a name="azure-ad-pass-through-performance"></a>Prestanda för Azure AD-vidarekoppling
-
-Med Server lös SQL-poolen kan du komma åt filer i lagringen med hjälp av Azure Active Directory (Azure AD) genom strömnings-eller SAS-autentiseringsuppgifter. Du kan uppleva sämre prestanda med Azure AD genom strömning än med SAS.
-
-Om du behöver bättre prestanda kan du försöka använda SAS-autentiseringsuppgifter för att komma åt lagrings utrymmet tills Azure AD-vidarekoppling har förbättrats.
-
 ## <a name="next-steps"></a>Nästa steg
 
-Läs [fel söknings](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) artikeln för lösningar på vanliga problem. Om du arbetar med en dedikerad SQL-pool i stället för en server lös SQL-pool, se [metod tips för dedikerade SQL-pooler](best-practices-dedicated-sql-pool.md) för särskilda rikt linjer.
+Läs [fel söknings](resources-self-help-sql-on-demand.md) artikeln för lösningar på vanliga problem. Om du arbetar med en dedikerad SQL-pool i stället för en server lös SQL-pool, se [metod tips för dedikerade SQL-pooler](best-practices-dedicated-sql-pool.md) för särskilda rikt linjer.

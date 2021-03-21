@@ -1,20 +1,20 @@
 ---
 title: Skapa prenumerationer på Azure Enterprise-avtal via programmering med de senaste API:erna
-description: Lär dig hur du skapar prenumerationer på Azure Enterprise-avtal via programmering med de senaste versionerna av REST API, Azure CLI och Azure PowerShell.
+description: Lär dig hur du skapar Azure Enterprise-avtal-prenumerationer program mässigt med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4de89892d27bb811be6670c1a14ca85859342ecc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3f07d18ccdca87f6395b24e4e3f9e6ee91cfaee3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218918"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593993"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Skapa prenumerationer på Azure Enterprise-avtal via programmering med de senaste API:erna
 
@@ -41,7 +41,7 @@ När du har lagt till ett registreringskonto som är associerat med en kontoäga
 
 För att kunna köra följande kommandon måste du vara inloggad på kontoägarens *hemkatalog*, vilket är den katalog som prenumerationer skapas i som standard.
 
-### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Begära en lista över alla registreringskonton som du har åtkomst till:
 
@@ -91,17 +91,13 @@ API-svaret visar alla registreringskonton som du har åtkomst till:
 
 ```
 
-Värdet för ett faktureringsomfång och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
+Värdena för en fakturerings omfattning och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
 
-<!-- 
-### [PowerShell](#tab/azure-powershell-getEnrollments)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+Använd antingen Azure CLI eller REST API för att hämta det här värdet.
 
--->
-
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getEnrollments)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Begära en lista över alla registreringskonton som du har åtkomst till:
 
@@ -159,7 +155,8 @@ Svar visar alla registrerings konton som du har åtkomst till
     "type": "Microsoft.Billing/billingAccounts"
   },
 ```
-Värdet för ett faktureringsomfång och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
+
+Värdena för en fakturerings omfattning och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
 
 ---
 
@@ -167,7 +164,7 @@ Värdet för ett faktureringsomfång och `id` är samma sak. `id` för ditt regi
 
 I följande exempel skapas en prenumeration med namnet *Dev Team Subscription* i det registreringskonto som valdes i föregående steg. 
 
-### <a name="rest"></a>[REST](#tab/rest-EA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Anropa PUT-API:et för att skapa ett alias/en begäran om att skapa en prenumeration.
 
@@ -227,7 +224,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 En ”pågående”-status returneras som ett `Accepted`-tillstånd under `provisioningState`.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Kör `Install-Module Az.Subscription` för att installera den senaste versionen av modulen som innehåller cmdleten `New-AzSubscriptionAlias`. Se [Hämta PowerShellGet-modul](/powershell/scripting/gallery/installing-psget) om du vill installera en nyare version av PowerShellGet.
 
@@ -251,7 +248,7 @@ subscriptionId returneras som en del av svaret från kommandot.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-EA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Installera först tillägget genom att köra `az extension add --name account` och `az extension add --name alias`.
 
@@ -277,6 +274,113 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 ---
 
+## <a name="use-arm-template"></a>Använda ARM-mall
+
+Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du överväga att använda en Azure Resource Manager mall (ARM-mall).
+
+Följande mall skapar en prenumeration. För `billingScope` , ange ID för registrerings kontot. För `targetManagementGroup` , ange den hanterings grupp där du vill skapa prenumerationen.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/templates/deploy-to-management-group.md).
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+Med en begär ande text:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Begränsningar för API:et för att skapa Azure Enterprise-prenumerationer
 
 - Endast Azure Enterprise-prenumerationer skapas med API:et.
@@ -289,3 +393,4 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 * Nu när du har skapat en prenumeration kan du bevilja den möjligheten till andra användare och tjänsthuvudnamn. Mer information finns i [Bevilja behörighet att skapa Azure Enterprise-prenumerationer (förhandsversion)](grant-access-to-create-subscription.md).
 * Mer information om hur du hanterar ett stort antal prenumerationer med hanteringsgrupper finns i [Ordna resurser med hanteringsgrupper i Azure](../../governance/management-groups/overview.md).
+* Information om hur du ändrar hanterings gruppen för en prenumeration finns i [Flytta prenumerationer](../../governance/management-groups/manage.md#move-subscriptions).

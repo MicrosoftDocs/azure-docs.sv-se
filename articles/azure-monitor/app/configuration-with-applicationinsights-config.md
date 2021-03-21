@@ -6,10 +6,10 @@ ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
 ms.openlocfilehash: c6d51210867e83c6acc74ca890ab65b195dc64fc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176679"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurera Application Insights SDK:n med ApplicationInsights.config eller .xml
@@ -173,7 +173,7 @@ Detta anger den Application Insights resurs som dina data visas i. Normalt skapa
 
 Om du vill ange nyckeln dynamiskt, till exempel om du vill skicka resultat från ditt program till olika resurser, kan du utelämna nyckeln från konfigurations filen och ange den i kod i stället.
 
-För att ange nyckeln för alla instanser av TelemetryClient, inklusive standardmoduler för telemetri. Gör detta i en initierings metod, till exempel global.aspx.cs i en ASP.NET-tjänst:
+För att ange nyckeln för alla instanser av TelemetryClient, inklusive standardmoduler för telemetri. Gör detta i en initierings metod, till exempel global. aspx. cs i en ASP.NET-tjänst:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

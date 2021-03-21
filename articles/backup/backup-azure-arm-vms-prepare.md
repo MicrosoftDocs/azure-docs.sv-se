@@ -3,12 +3,12 @@ title: Säkerhetskopiera virtuella Azure-datorer i ett Recovery Services valv
 description: Beskriver hur du säkerhetskopierar virtuella Azure-datorer i ett Recovery Services valv med hjälp av Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "92172755"
+ms.locfileid: "104670434"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Säkerhetskopiera virtuella Azure-datorer i ett Recovery Services valv
 
@@ -117,6 +117,8 @@ Om du har valt att skapa en ny säkerhets kopierings princip, fyller du i princi
 4. I **kvarhållningsintervall** anger du hur länge du vill behålla dina dagliga eller vecko Visa säkerhets kopierings punkter.
 5. Vid **kvarhållning av månatlig säkerhets kopierings punkt** och **kvarhållning av årlig säkerhets kopierings punkt** anger du om du vill behålla en månatlig eller årlig säkerhets kopia av dina dagliga eller veckovis säkerhets kopieringar.
 6. Välj **OK** för att spara principen.
+    > [!NOTE]
+    > För att lagra återställnings punkts samlingen (RPC) skapar säkerhets kopierings tjänsten en separat resurs grupp (RG). Den här RG skiljer sig från RG för den virtuella datorn. [Läs mer](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
     ![Ny säkerhets kopierings princip](./media/backup-azure-arm-vms-prepare/new-policy.png)
 

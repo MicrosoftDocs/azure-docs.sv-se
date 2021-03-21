@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/10/2021
 ms.author: memildin
 ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100370280"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Självstudie: Förbättra regelefterlevnaden
@@ -123,7 +123,7 @@ Till exempel kanske du vill Security Center e-posta en speciell användare när 
 
 
 
-## <a name="faq---regulatory-compliance-dashboard"></a>Vanliga frågor och svars paneler för regelefterlevnad
+## <a name="faq---regulatory-compliance-dashboard"></a>Vanliga frågor och svar om instrumentpanelen för regelefterlevnad
 
 - [Vilka standarder stöds i instrument panelen för efterlevnad?](#what-standards-are-supported-in-the-compliance-dashboard)
 - [Varför visas vissa kontroller nedtonade?](#why-do-some-controls-appear-grayed-out)

@@ -3,14 +3,14 @@ title: Så här skapar du uppdaterings distributioner för Azure Automation Uppd
 description: Den här artikeln beskriver hur du schemalägger uppdaterings distributioner och granskar deras status.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575888"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669686"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Så här distribuerar du uppdateringar och granskar resultat
 
@@ -21,6 +21,9 @@ Under varje scenario kan du skapa mål för den valda datorn eller servern, elle
 * Operativ systemet väljs automatiskt baserat på datorns operativ system
 * Mål datorn som ska uppdateras är inställd på själva målet automatiskt
 * När du konfigurerar schemat kan du ange **Uppdatera nu**, inträffar en gång eller använda ett återkommande schema.
+
+> [!IMPORTANT]
+> Genom att skapa en uppdaterings distribution accepterar du villkoren i licens villkoren för program vara (EULA) som tillhandahålls av företaget som erbjuder uppdateringar för sitt operativ system.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 

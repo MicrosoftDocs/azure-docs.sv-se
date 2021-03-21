@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: ''
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 57024d6cb23ab273aa69bf59f4ec436a6f873a05
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 50a9f9cd59ebeecae89580c878442eb20788f462
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193554"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593653"
 ---
 # <a name="reference-trigger-metadata-in-pipeline-runs"></a>Referens utlöser metadata i pipeline-körningar
 
@@ -22,7 +22,7 @@ Den här artikeln beskriver hur utlösare metadata, till exempel utlösarens sta
 
 Pipelinen måste ibland förstå och läsa metadata från utlösaren som anropar den. Till exempel, med utlösare för rullande fönster, baserat på fönster start och slut tid, bearbetar pipelinen olika data sektorer eller mappar. I Azure Data Factory använder vi parameterisering och [system variabel](control-flow-system-variables.md) för att skicka meta-data från utlösare till pipeline.
 
-Det här mönstret är särskilt användbart för [utlösare för rullande fönster](how-to-create-tumbling-window-trigger.md), där utlösaren tillhandahåller fönster start-och slut tid.
+Det här mönstret är särskilt användbart för [utlösare för rullande fönster](how-to-create-tumbling-window-trigger.md), där utlösaren tillhandahåller start-och slut tid för fönster och [Anpassad händelse utlösare](how-to-create-custom-event-trigger.md), där utlöser parsa och bearbeta värden i ett [anpassat definierat _data_ fält](../event-grid/event-schema.md).
 
 > [!NOTE]
 > En annan utlösnings typ tillhandahåller annan meta data-information. Mer information finns i [system variabel](control-flow-system-variables.md)

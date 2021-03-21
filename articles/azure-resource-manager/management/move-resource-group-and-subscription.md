@@ -4,18 +4,18 @@ description: Använd Azure Resource Manager för att flytta resurser till en ny 
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601397"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670213"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Flytta resurser till en ny resursgrupp eller prenumeration
 
 Den här artikeln visar hur du flyttar Azure-resurser till antingen en annan Azure-prenumeration eller en annan resurs grupp under samma prenumeration. Du kan använda Azure-portalen, Azure PowerShell, Azure CLI eller REST-API:et för att flytta resurser.
 
-Både käll gruppen och mål gruppen är låsta under flytt åtgärden. Skriv- och borttagningsåtgärder blockeras för resursgrupperna tills flytten är klar. Det här låset innebär att du inte kan lägga till, uppdatera eller ta bort resurser i resurs grupperna. Det innebär inte att resurserna är låsta. Om du till exempel flyttar en SQL Server och dess databas till en ny resursgrupp sker inga avbrott för programmet som använder databasen. Det kan fortfarande läsa och skriva till databasen. Låset kan sista i högst fyra timmar, men de flesta flyttningar slutförs på mycket kortare tid.
+Både käll gruppen och mål gruppen är låsta under flytt åtgärden. Skriv- och borttagningsåtgärder blockeras för resursgrupperna tills flytten är klar. Det här låset innebär att du inte kan lägga till, uppdatera eller ta bort resurser i resurs grupperna. Det innebär inte att resurserna är låsta. Om du till exempel flyttar en logisk Azure SQL-Server och dess databaser till en ny resurs grupp eller prenumeration kan program som använder databaserna uppleva ingen nedtid. De kan fortfarande läsa och skriva till databaserna. Låset kan sista i högst fyra timmar, men de flesta flyttningar slutförs på mycket kortare tid.
 
 Om du flyttar en resurs flyttas den bara till en ny resursgrupp eller prenumeration. Resursens plats ändras inte.
 

@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
 ms.subservice: translator-text
-ms.date: 02/15/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: översättare, text översättning, maskin översättning, översättnings tjänst
-ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec76aa7554110b7440eb825f2d5e86ae2da6baa2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727982"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657730"
 ---
 # <a name="what-is-the-translator-service"></a>Vad är tjänsten Translator?
 
-Translator är en molnbaserad maskin översättnings tjänst och ingår i [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) -familjen av kognitiva API: er som används för att bygga smarta appar. Translator är enkelt att integrera i dina program, webbplatser, verktyg och lösningar. Det gör att du kan lägga till användar upplevelser med flera språk på [90 språk och dialekter](./language-support.md). Och kan användas på alla maskin varu plattformar med alla operativ system för text översättning.
+Translator är en molnbaserad maskin översättnings tjänst och ingår i [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) -familjen av kognitiva API: er som används för att bygga smarta appar. Translator är enkelt att integrera i dina program, webbplatser, verktyg och lösningar. Det gör att du kan lägga till användar upplevelser med flera språk på [90 språk och dialekter](./language-support.md) och kan användas för text översättning med valfritt operativ system.
+
+Den här dokumentationen innehåller följande artikel typer:  
+
+* [**Snabb starter**](quickstart-translator.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.  
+* [**Instruktions guider**](translator-how-to-signup.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
+* [**Begreppen**](character-counts.md) ger djupgående förklaringar av tjänst funktionerna och funktionerna.  
+* [**Självstudier**](tutorial-wpf-translation-csharp.md) är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.  
+
 
 ## <a name="about-microsoft-translator"></a>Om Microsoft Translator
 
@@ -45,11 +53,9 @@ Lär dig mer om [hur NMT fungerar](https://www.microsoft.com/en-us/translator/mt
 
 ## <a name="improve-translations-with-custom-translator"></a>Förbättra översättningar med anpassad översättare
 
- Anpassad översättare, ett tillägg till Translator-tjänsten, kan användas tillsammans med Translator för att anpassa översättnings systemet neurala och förbättra översättningen för din speciella terminologi och stil.
+ [Anpassad översättare](customization.md), ett tillägg till tjänsten Translator, kan användas för att anpassa översättnings systemet neurala och förbättra översättningen för din speciella terminologi och stil.
 
 Med anpassad översättare kan du bygga översättnings system för att hantera den terminologi som används i ditt företag eller din bransch. Det anpassade översättnings systemet kan enkelt integreras med dina befintliga program, arbets flöden, webbplatser och enheter via den vanliga översättaren genom att använda kategori parametern.
-
-Läs mer om [Custom Translator](customization.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176543"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Övervakning av fil integritet i Azure Security Center
@@ -56,7 +56,7 @@ I den här kursen får du lära du dig att:
 
 Genom att jämföra det aktuella läget för dessa objekt med statusen under den föregående sökningen, varnar FIM dig om misstänkta ändringar har gjorts.
 
-FIM använder Azure Ändringsspårning-lösningen för att spåra och identifiera ändringar i din miljö. När fil integritets övervakning har Aktiver ATS har du en **ändringsspårning** resurs av typen **lösning**. Information om frekvens information om data insamling finns i [ändringsspårning information om data insamling](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection).
+Övervakning av filintegritet (FIM) använder Azures ändringsspårning för att spåra och identifiera ändringar i din miljö. När fil integritets övervakning har Aktiver ATS har du en **ändringsspårning** resurs av typen **lösning**. Information om frekvens information om data insamling finns i [ändringsspårning information om data insamling](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection).
 
 > [!NOTE]
 > Om du tar bort **ändringsspårning** resursen inaktiverar du även funktionen för övervakning av fil integritet i Security Center.
@@ -247,7 +247,7 @@ Använd jokertecken för att förenkla spårningen mellan kataloger. Följande r
 -   När du anger sökvägen bör du undvika allmänna sökvägar, till exempel c: \* . *, vilket leder till att för många mappar passerar.
 
 ## <a name="disable-fim"></a>Inaktivera FIM
-Du kan inaktivera FIM. FIM använder Azure Ändringsspårning-lösningen för att spåra och identifiera ändringar i din miljö. Genom att inaktivera FIM tar du bort Ändringsspårning-lösningen från den valda arbets ytan.
+Du kan inaktivera FIM. Övervakning av filintegritet (FIM) använder Azures ändringsspårning för att spåra och identifiera ändringar i din miljö. Genom att inaktivera FIM tar du bort Ändringsspårning-lösningen från den valda arbets ytan.
 
 1. Om du vill inaktivera FIM går du tillbaka till instrument panelen för **fil integritets övervakning** .
 2. Välj en arbetsyta.

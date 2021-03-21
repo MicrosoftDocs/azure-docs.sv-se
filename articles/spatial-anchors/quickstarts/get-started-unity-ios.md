@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b278ac6c824b1583e90cfc9152264f61357dd228
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0fe193ee76c56ec57d0643f4a156739d1a51230c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95971513"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670106"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Snabb start: skapa en enhets-iOS-app med avstånds ankare för Azure
 
@@ -34,7 +34,7 @@ Du lär dig följande:
 
 Kontrollera att du har följande så att du kan utföra den här snabbstarten:
 
-- En macOS-dator med <a href="https://unity3d.com/get-unity/download" target="_blank">unity 2019,4 (LTS)</a>, den senaste versionen av <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> installerad.
+- En macOS-dator med den senaste versionen av <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> och <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> installerad. Använd **unity 2020 LTS** med ASA sdk version 2,9 eller senare (som använder [Unity XR plugin-ramverket](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)) eller **Unity 2019 LTS** med ASA SDK version 2,8 eller tidigare.
 - Git installerat via HomeBrew. Ange följande kommando i en enskild rad i terminalen: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Kör sedan `brew install git` och `brew install git-lfs` .
 - En utvecklaraktiverad <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibel</a> iOS-enhet.
 
