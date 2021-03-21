@@ -4,10 +4,10 @@ description: I den här självstudien får du lära dig hur du skalar upp en nod
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785438"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Självstudie: skala ut ett Service Fabric hanterat kluster (förhands granskning)
@@ -25,7 +25,7 @@ Den här delen av serien handlar om hur du:
 > [!div class="checklist"]
 > * Skala en Service Fabric hanterad klusternod
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Service Fabric hanterat kluster (se [*distribuera ett hanterat kluster*](tutorial-managed-cluster-deploy.md)).
 * [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) eller senare (se [*Installera Azure PowerShell*](/powershell/azure/install-az-ps)).

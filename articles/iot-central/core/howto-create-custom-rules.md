@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179348"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Utöka Azure IoT Central med anpassade regler med hjälp av Stream Analytics, Azure Functions och SendGrid
@@ -119,28 +119,26 @@ Du kan konfigurera ett IoT Central program för att kontinuerligt exportera tele
 
 Event Hubs namn området ser ut som på följande skärm bild: 
 
-:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Skärm bild av Event Hubs namnrymd." border="false":::
+```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
+## Define the function
 
-## <a name="define-the-function"></a>Definiera funktionen
+This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
 
-Den här lösningen använder en Azure Functions app för att skicka ett e-postmeddelande när Stream Analytics jobbet identifierar en stoppad enhet. Så här skapar du en Function-app:
+1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
+1. Select **+** to create a new function.
+1. Select **HTTP Trigger**.
+1. Select **Add**.
 
-1. I Azure Portal navigerar du till **App Service** -instansen i resurs gruppen **DetectStoppedDevices** .
-1. Välj **+** om du vill skapa en ny funktion.
-1. Välj **http-utlösare**.
-1. Välj **Lägg till**.
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Bild av standard funktionen för HTTP-utlösare"::: 
+## Edit code for HTTP Trigger
 
-## <a name="edit-code-for-http-trigger"></a>Redigera kod för HTTP-utlösare
+The portal creates a default function called **HttpTrigger1**:
 
-Portalen skapar en standard funktion som kallas **HttpTrigger1**:
+```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Skärm bild av funktionen Redigera HTTP-utlösare.":::
-
-
-1. Ersätt C#-koden med följande kod:
+1. Replace the C# code with the following code:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -179,50 +177,50 @@ Portalen skapar en standard funktion som kallas **HttpTrigger1**:
     }
     ```
 
-    Du kan se ett fel meddelande tills du har sparat den nya koden.
-1. Spara funktionen genom att välja **Spara** .
+    You may see an error message until you save the new code.
+1. Select **Save** to save the function.
 
-## <a name="add-sendgrid-key"></a>Lägg till SendGrid-nyckel
+## Add SendGrid Key
 
-Om du vill lägga till din SendGrid API-nyckel måste du lägga till den i **funktions nycklarna** enligt följande:
+To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
 
-1. Välj **funktions tangenter**.
-1. Välj **+ ny funktions nyckel**.
-1. Ange *namn* och *värde* för den API-nyckel som du skapade tidigare.
-1. Klicka på **OK.**
+1. Select **Function Keys**.
+1. Choose **+ New Function Key**.
+1. Enter the *Name* and *Value* of the API Key you created before.
+1. Click **OK.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Skärm bild av Lägg till Sangrid-nyckel.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
 
 
-## <a name="configure-httptrigger-function-to-use-sendgrid"></a>Konfigurera HttpTrigger-funktionen för att använda SendGrid
+## Configure HttpTrigger function to use SendGrid
 
-Om du vill skicka e-postmeddelanden med SendGrid måste du konfigurera bindningarna för din funktion på följande sätt:
+To send emails with SendGrid, you need to configure the bindings for your function as follows:
 
-1. Välj **Integrera**.
-1. Välj **Lägg till utdata** under **http ($Return)**.
-1. Välj **ta bort.**
-1. Välj **+ ny utdata**.
-1. För bindnings typ väljer du **SendGrid**.
-1. För inställnings typen SendGrid API-nyckel klickar du på ny.
-1. Ange *namn* och *värde* för din SendGrid API-nyckel.
-1. Lägg till följande information:
+1. Select **Integrate**.
+1. Choose **Add Output** under **HTTP ($return)**.
+1. Select **Delete.**
+1. Choose **+ New Output**.
+1. For Binding Type, then choose **SendGrid**.
+1. For SendGrid API Key Setting Type, click New.
+1. Enter the *Name* and *Value* of your SendGrid API key.
+1. Add the following information:
 
-| Inställning | Värde |
+| Setting | Value |
 | ------- | ----- |
-| Meddelandeparameternamn | Välj ditt namn |
-| För att adressera | Välj namn på din adress |
-| Avsändaradress | Välj namnet på din från-adress |
-| Meddelandets ämne | Ange ditt ämnes huvud |
-| Meddelandetext | Ange meddelandet från din integrering |
+| Message parameter name | Choose your name |
+| To address | Choose the name of your To Address |
+| From address | Choose the name of your From Address |
+| Message subject | Enter your subject header |
+| Message text | Enter the message from your integration |
 
-1. Välj **OK**.
+1. Select **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Skärm bild av Lägg till SandGrid-utdata.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
 
 
-### <a name="test-the-function-works"></a>Testa funktionen fungerar
+### Test the function works
 
-Om du vill testa funktionen i portalen väljer du först **loggar** längst ned i kod redigeraren. Välj sedan **testa** till höger om kod redigeraren. Använd följande JSON som **begär ande text**:
+To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -230,9 +228,9 @@ Om du vill testa funktionen i portalen väljer du först **loggar** längst ned 
 
 Funktions logg meddelanden visas på panelen **loggar** :
 
-:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Funktions loggens utdata":::
+```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
-Efter några minuter får e-postadressen ett e **-postmeddelande med** följande innehåll:
+After a few minutes, the **To** email address receives an email with the following content:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -334,7 +332,7 @@ I det här avsnittet konfigurerar du programmet för att strömma Telemetrin fr�
 
 Vänta tills export status är **igång** innan du fortsätter.
 
-## <a name="test"></a>Testa
+## <a name="test"></a>Test
 
 Om du vill testa lösningen kan du inaktivera kontinuerlig data export från IoT Central till simulerade stoppade enheter:
 

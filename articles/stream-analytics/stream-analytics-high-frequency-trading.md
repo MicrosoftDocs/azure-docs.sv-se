@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 03/16/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f632c916c3de61b94532e96be23da511ad5863ea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020425"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593041"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Handelssimulering med hög frekvens med Stream Analytics
 Kombinationen av SQL-språket och JavaScript-användardefinierade funktion (UDF) och användardefinierade aggregeringar (UDA) i Azure Stream Analytics gör det möjligt för användare att utföra avancerade analyser. Avancerade analyser kan innehålla onlineutbildning för maskininlärning och bedömningar samt tillståndskänslig processimulering. I den här artikeln finns en beskrivning av hur du utför linjär regression i ett Azure Stream Analytics-jobb som kör kontinuerlig träning och bedömning i ett scenario med högfrekvent handel.
@@ -349,7 +349,7 @@ JavaScripts UDA initierar alla ackumulatorer i `init`-funktionen, beräknar till
 - Försäljning av aktier när en säljsignal inkommer och det finns ett aktieinnehav.
 - Blankning om det inte finns något innehav. 
 
-Om du har blankat och får en köpsignal görs köp för att täcka detta. I denna simulering behåller eller blankar vi aldrig 10 aktier. Transaktionskostnaden är 8 USD.
+Om du har blankat och får en köpsignal görs köp för att täcka detta. Vi håller eller kort 10 delar av en aktie i den här simuleringen. Transaktionskostnaden är 8 USD.
 
 ```javascript
 function main() {

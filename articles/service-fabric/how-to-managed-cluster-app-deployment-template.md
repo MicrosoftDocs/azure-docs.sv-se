@@ -4,10 +4,10 @@ description: Distribuera ett program till ett Azure Service Fabric-hanterat klus
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100642575"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>Distribuera ett Service Fabric hanterat kluster (för hands version) med hjälp av ARM-mall

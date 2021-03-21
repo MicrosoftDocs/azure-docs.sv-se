@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674131"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585442"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Design tabeller med Synapse SQL i Azure Synapse Analytics
 
 Det här dokumentet innehåller viktiga begrepp för att utforma tabeller med dedikerad SQL-pool och Server lös SQL-pool.  
 
-[SQL-poolen utan server](on-demand-workspace-overview.md) är en fråga till tjänsten över data i data Lake. Den har inte lokal lagring för data inmatning. [Dedikerad SQL-pool](best-practices-sql-pool.md) representerar en samling analys resurser som tillhandahålls när du använder Synapse SQL. Storleken på en dedikerad SQL-pool bestäms av data lager enheter (DWU).
+[SQL-poolen utan server](on-demand-workspace-overview.md) är en fråga till tjänsten över data i data Lake. Den har inte lokal lagring för data inmatning. [Dedikerad SQL-pool](best-practices-dedicated-sql-pool.md) representerar en samling analys resurser som tillhandahålls när du använder Synapse SQL. Storleken på en dedikerad SQL-pool bestäms av data lager enheter (DWU).
 
 I följande tabell visas de avsnitt som är relevanta för dedikerad SQL-pool jämfört med en server lös SQL-pool:
 
@@ -206,7 +206,7 @@ För dedikerad SQL-pool stöds endast primär nyckel när icke-KLUSTRad och inte
 
 För dedikerad SQL-pool kan du skapa en tabell som en ny tom tabell. Du kan också skapa och fylla i en tabell med resultatet av en SELECT-instruktion. Följande är T-SQL-kommandon för att skapa en tabell.
 
-| T-SQL-uttryck | Beskrivning |
+| T-SQL-uttryck | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Skapar en tom tabell genom att definiera alla tabell kolumner och alternativ. |
 | [SKAPA EXTERN TABELL](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Skapar en extern tabell. Definitionen av tabellen lagras i en dedikerad SQL-pool. Tabell data lagras i Azure Blob Storage eller Azure Data Lake Storage. |

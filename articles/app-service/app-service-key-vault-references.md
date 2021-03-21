@@ -7,10 +7,10 @@ ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100635395"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Använd Key Vault referenser för App Service och Azure Functions
@@ -38,7 +38,7 @@ För att kunna läsa hemligheter från Key Vault måste ett valv skapas och ge d
 En Key Vault referens är av formuläret `@Microsoft.KeyVault({referenceString})` , där `{referenceString}` ersätts av något av följande alternativ:
 
 > [!div class="mx-tdBreakAll"]
-> | Referens sträng                                                            | Description                                                                                                                                                                                 |
+> | Referens sträng                                                            | Beskrivning                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | **SecretUri** bör vara den fullständiga data Plans-URI: n för en hemlighet i Key Vault, om du vill, inklusive en version, t. ex. `https://myvault.vault.azure.net/secrets/mysecret/` eller`https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
 > | VaultName =_VaultName_; SecretName =_SecretName_; SecretVersion =_SecretVersion_ | **VaultName** är obligatoriskt och bör vara namnet på din Key Vault-resurs. **SecretName** är obligatoriskt och bör vara namnet på mål hemligheten. **SecretVersion** är valfritt, men om det finns en version av hemligheten som ska användas. |

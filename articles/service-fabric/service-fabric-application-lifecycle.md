@@ -4,10 +4,10 @@ description: Beskriver hur du utvecklar, distribuerar, testar, uppgraderar, unde
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: ae0c79cdaafc8fc016d463a01046f0a02121330a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785743"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Livscykeln för Service Fabric-program
@@ -41,7 +41,7 @@ Se [Kom igång med Reliable Actors](service-fabric-reliable-actors-get-started.m
 
 Mer information finns i [distribuera ett program](service-fabric-deploy-remove-applications.md) till exempel.
 
-## <a name="test"></a>Testa
+## <a name="test"></a>Test
 1. När du har distribuerat till det lokala utvecklings klustret eller ett test kluster kör en *tjänste utvecklare* det inbyggda test scenariot för redundansväxling med hjälp av [**FailoverTestScenarioParameters**](/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) -och [**FailoverTestScenario**](/dotnet/api/system.fabric.testability.scenario.failovertestscenario) -klasserna eller [cmdleten **Invoke-ServiceFabricFailoverTestScenario**](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario). Test scenariot för redundans kör en angiven tjänst via viktiga över gångar och redundans för att säkerställa att den fortfarande är tillgänglig och fungerar.
 2. *Tjänste utvecklaren* kör sedan det inbyggda test scenariot för kaos med hjälp [**av ChaosTestScenarioParameters**](/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) -och [**ChaosTestScenario**](/dotnet/api/system.fabric.testability.scenario.chaostestscenario) -klasserna eller [cmdleten **Invoke-ServiceFabricChaosTestScenario**](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario). Test scenariot för kaos inducerar slumpmässigt flera noder, kod paket och replik fel i klustret.
 3. *Tjänste utvecklaren* [testar tjänst-till-tjänst-kommunikation](service-fabric-testability-scenarios-service-communication.md) genom att redigera test scenarier som flyttar primära repliker runt klustret.

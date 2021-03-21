@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614334"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589879"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Network File System (NFS) 3,0 prestanda överväganden i Azure Blob Storage (för hands version)
 
@@ -46,7 +46,7 @@ Varje stapel i följande diagram visar skillnaden i uppnådd bandbredd mellan la
 > [!div class="mx-imgBorder"]
 > ![Relativa prestanda](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="avoid-frequent-overwrites-on-date"></a>Undvik frekvent överskrivning av datum
+## <a name="avoid-frequent-overwrites-on-data"></a>Undvik frekvent överskrivning av data
 
 Det tar längre tid att slutföra en överskrivnings åtgärd än en ny Skriv åtgärd. Det beror på att en skrivskyddad NFS-åtgärd, särskilt en delvis fil redigering på plats, är en kombination av flera underliggande BLOB-åtgärder: en läsning, en ändring och en Skriv åtgärd. Därför passar inte ett program som kräver frekventa ändringar på plats för NFS-aktiverade Blob Storage-konton. 
 

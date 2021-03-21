@@ -1,22 +1,22 @@
 ---
 title: System krav för Azure Kinect sensor SDK
 description: Förstå system kraven för Azure Kinect sensor SDK i Windows och Linux.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.custom:
 - CI 115266
 - CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
-ms.date: 03/12/2020
+ms.date: 03/05/2021
 ms.topic: article
 keywords: Azure, Kinect, system krav, processor, GPU, USB, installation, konfiguration, minimum, krav
-ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277733"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656982"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>System krav för Azure Kinect sensor SDK
 
@@ -52,7 +52,7 @@ Kraven för innehålls spårning av dator värden är strängare än kravet på 
 
 - Sjunde generation Intel &reg; CoreTM i5-processor (fyra kärnor på 2,4 GHz eller snabbare)
 - 4 GB minne
-- NVIDIA GEFORCE GTX 1070 eller bättre
+- NVIDIA GEFORCE GTX 1050 eller motsvarande
 - Dedikerad USB3-port
 
 Den rekommenderade minimala konfigurationen förutsätter K4A_DEPTH_MODE_NFOV_UNBINNED djupgående läge på 30fps tracking 5 Peoples. Lägre end-eller äldre processorer och NVIDIA-GPU: er kan också fungera beroende på dina användnings fall.

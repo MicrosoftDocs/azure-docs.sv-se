@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 67dd2b35229c15ae4df5ec8acb357aa35621d67c
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102436642"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Felsöka certifikat fel
@@ -28,7 +28,7 @@ Följande tabell visar vanliga certifikat fel och detaljerad information om dess
 > [!NOTE]
 > Förekomster av &#8220;{0} , {1} ,..., {n} &#8221; anger positions parametrar. Positions parametrarna tar värden beroende på de certifikat som du använder.
 
-| Felkod | Description |
+| Felkod | Beskrivning |
 |---|---|
 | CertificateManagement_UntrustedCertificate | Certifikatet med ämnes namnet {0} har en certifikat kedja bruten. Ladda upp certifikatet för signerings kedjan innan du laddar upp det här certifikatet.|
 | CertificateManagement_DeviceNotRegistered| Enheten är inte aktive rad. Du kan bara överföra ett support certifikat efter aktiveringen.|

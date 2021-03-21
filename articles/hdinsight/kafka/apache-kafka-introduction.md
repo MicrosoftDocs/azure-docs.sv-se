@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939266"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Vad är Apache Kafka i Azure HDInsight
@@ -58,7 +58,7 @@ Replikering används för att duplicera partitioner mellan noder, vilket skyddar
 
 Följande är vanliga uppgifter och mönster som kan utföras med hjälp av Kafka på HDInsight:
 
-|Användning |Description |
+|Användning |Beskrivning |
 |---|---|
 |Replikering av Apache Kafka data|Kafka innehåller verktyget MirrorMaker som replikerar data mellan olika Kafka-kluster. Information om hur du använder MirrorMaker finns i avsnittet om att [replikera Apache Kafka-ämnen med Apache Kafka i HDInsight](apache-kafka-mirroring.md).|
 |Publicera – prenumerera på meddelande mönster|Kafka innehåller ett producent-API för publicering av poster till ett Kafka-ämne. Konsument-API används när det finns en prenumererar på ett ämne. Mer information finns i [Kom igång med Apache Kafka i HDInsight](apache-kafka-get-started.md).|

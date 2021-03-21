@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du kan visa och analysera prestanda
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124320"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Övervaka Kubernetes-klustrets prestanda med behållar insikter
@@ -191,7 +191,7 @@ Den information som visas när du visar fliken **noder** beskrivs i följande ta
 
 | Kolumn | Beskrivning |
 |--------|-------------|
-| Namn | Namnet på värden. |
+| Name | Namnet på värden. |
 | Status | Kubernetes visar nodens status. |
 | Min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95 &nbsp; %, max&nbsp;%  | Genomsnittlig nod i procent baserat på percentil under den valda varaktigheten. |
 | Min, AVG, 50, nittionde, 95, max | Genomsnittligt antal noders faktiska värde baserat på percentil under den valda tids perioden. Det genomsnittliga värdet mäts från PROCESSORns/minnes gränsen som angetts för en nod. För poddar och behållare är det det genomsnittliga värdet som rapporteras av värden. |
@@ -234,7 +234,7 @@ Den information som visas när du visar kontrollanter beskrivs i följande tabel
 
 | Kolumn | Beskrivning |
 |--------|-------------|
-| Namn | Namnet på kontrollanten.|
+| Name | Namnet på kontrollanten.|
 | Status | Sammanslagnings statusen för behållarna när den har slutförts med status, till exempel *OK*, *avslutad*, *misslyckad*, *stoppad* eller *pausad*. Om behållaren körs men status antingen inte visas korrekt eller inte har hämtats av agenten och inte har svarat i mer än 30 minuter, är statusen *okänd*. Ytterligare information om status ikonen finns i följande tabell.|
 | Min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95 &nbsp; %, max&nbsp;%| Beräknat medelvärde för den genomsnittliga procent andelen av varje enhet för det valda måttet och percentilen. |
 | Min, AVG, 50, nittionde, 95, max  | Sammanslagning av genomsnittlig CPU-Millicore eller minnes prestanda för den valda percentilen. Det genomsnittliga värdet mäts från PROCESSORns/minnes gränsen som angetts för en pod. |
@@ -271,7 +271,7 @@ Den information som visas när du visar behållare beskrivs i följande tabell.
 
 | Kolumn | Beskrivning |
 |--------|-------------|
-| Namn | Namnet på kontrollanten.|
+| Name | Namnet på kontrollanten.|
 | Status | Status för behållarna, om det finns några. Ytterligare information om status ikonen finns i nästa tabell.|
 | Min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95 &nbsp; %, max&nbsp;% | Sammanställning av den genomsnittliga procent andelen av varje enhet för det valda måttet och percentilen. |
 | Min, AVG, 50, nittionde, 95, max | Sammanslagning av genomsnittlig CPU-Millicore eller minnes prestanda för behållaren för den valda percentilen. Det genomsnittliga värdet mäts från PROCESSORns/minnes gränsen som angetts för en pod. |

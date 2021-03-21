@@ -1,14 +1,14 @@
 ---
 title: Information om princip tilldelnings strukturen
 description: Beskriver den princip tilldelnings definition som används av Azure Policy för att relatera princip definitioner och parametrar till resurser för utvärdering.
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581954"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604873"
 ---
 # <a name="azure-policy-assignment-structure"></a>Tilldelningsstruktur i Azure Policy
 
@@ -70,7 +70,7 @@ Den här egenskapen har följande värden:
 |Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Description |
 |-|-|-|-|-|-|
 |Enabled |Standardvärde |sträng |Ja |Ja |Princip påverkan tillämpas när en resurs skapas eller uppdateras. |
-|Inaktiverad |DoNotEnforce |sträng |Ja |Nej | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
+|Inaktiverad |DoNotEnforce |sträng |Ja |Inga | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
 
 Om **enforcementMode** inte anges i en princip eller initiativ definition används värdet _default_ . [Reparations uppgifter](../how-to/remediate-resources.md) kan startas för [deployIfNotExists](./effects.md#deployifnotexists) -principer, även när **enforcementMode** har angetts till _DoNotEnforce_.
 
@@ -89,6 +89,9 @@ Det här fältet måste vara det fullständiga Sök vägs namnet för antingen e
 ## <a name="non-compliance-messages"></a>Meddelanden som inte uppfyller kraven
 
 Ange ett anpassat meddelande som beskriver varför en resurs inte är kompatibel med principen eller initiativ definitionen, som anges `nonComplianceMessages` i tilldelnings definitionen. Den här noden är en matris med `message` poster. Det anpassade meddelandet är förutom standard fel meddelandet för inkompatibilitet och är valfritt.
+
+> [!IMPORTANT]
+> Anpassade meddelanden för icke-efterlevnad stöds endast för definitioner eller initiativ med definitioner för [resurs hanterings lägen](./definition-structure.md#resource-manager-modes) .
 
 ```json
 "nonComplianceMessages": [

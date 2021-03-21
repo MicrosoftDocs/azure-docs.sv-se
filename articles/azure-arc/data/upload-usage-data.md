@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 578f0d1ca742fe4445b8aeed6876d1a73fd3f79e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378125"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669516"
 ---
 # <a name="upload-usage-data-to-azure-monitor"></a>Ladda upp användnings data till Azure Monitor
 
@@ -36,7 +36,7 @@ Innan du fortsätter kontrollerar du att du har skapat den nödvändiga tjänste
 * [Skapa tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal).
 * [Tilldela roller till tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#assign-roles-to-the-service-principal)
 
-## <a name="upload-usage-data"></a>Ladda upp användnings data
+## <a name="upload-usage-data"></a>Ladda upp användningsdata
 
 Användnings information som inventering och Resursanvändning kan laddas upp till Azure på följande två sätt:
 
@@ -64,7 +64,7 @@ Användnings information som inventering och Resursanvändning kan laddas upp ti
 
 Om du vill överföra mått och loggar regelbundet kan du skapa ett skript och köra det på en timer med några minuters mellanrum. Nedan visas ett exempel på hur du automatiserar uppladdningar med hjälp av ett Linux-gränssnitts skript.
 
-I din favorit text/kod redigerare lägger du till följande skript i filen och sparar som en körbar skript fil, till exempel. sh (Linux/Mac) eller. cmd,. bat,. ps1.
+I din favorit text/kod redigerare lägger du till följande skript i filen och sparar som en körbar skript fil, till exempel `.sh` (Linux/Mac) eller `.cmd` , `.bat` , eller `.ps1` .
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force
