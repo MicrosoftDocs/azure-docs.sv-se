@@ -30,6 +30,8 @@
       href: data-flow-create.md
 - name: Självstudier
   items:
+    - name: Lista över självstudier
+      href: data-factory-tutorials.md
     - name: Kopiera och mata in data
       items:
         - name: Från Azure Blob Storage till Azure SQL Database
@@ -694,14 +696,16 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: Skapa utlösare
       items:
-        - name: Skapa en utlösare för lagrings händelser
-          href: how-to-create-event-trigger.md
         - name: Skapa en schemautlösare
           href: how-to-create-schedule-trigger.md
         - name: Skapa en utlösare för rullande fönster
           href: how-to-create-tumbling-window-trigger.md
         - name: Skapa ett beroende för utlösare för rullande fönster
           href: tumbling-window-trigger-dependency.md
+        - name: Skapa en utlösare för lagrings händelser
+          href: how-to-create-event-trigger.md
+        - name: Skapa en anpassad händelse utlösare
+          href: how-to-create-custom-event-trigger.md
         - name: Referens utlöser metadata i pipeline
           href: how-to-use-trigger-parameterization.md
     - name: Data Catalog och styrning

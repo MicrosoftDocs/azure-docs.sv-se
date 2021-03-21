@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103196950"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Använd Visual Studio 2019 för att utveckla och felsöka moduler för Azure IoT Edge
@@ -114,7 +114,7 @@ Om du vill se hur den simulerade temperatur sensorn fungerar kan du Visa [käll 
 
 ## <a name="develop-your-module"></a>Utveckla din modul
 
-Standard koden för modulen som medföljer lösningen finns på **IotEdgeModule1**  >  **program.cs** (för C#) eller **main. c** (c). Modulen och `deployment.template.json` filen har kon figurer ATS så att du kan skapa lösningen, push-överför den till behållar registret och distribuera den till en enhet för att starta testning utan att behöva röra någon kod. Modulen är byggd för att ta emot data från en källa (i det här fallet **SimulatedTemperatureSensor** -modulen som simulerar data) och rör den till Azure IoT Hub.
+Koden för standardmodulen som medföljer lösningen finns i **IotEdgeModule1**-  >  **programmet. cs** (för C#) eller **main. c** (c). Modulen och `deployment.template.json` filen har kon figurer ATS så att du kan skapa lösningen, push-överför den till behållar registret och distribuera den till en enhet för att starta testning utan att behöva röra någon kod. Modulen är byggd för att ta emot data från en källa (i det här fallet **SimulatedTemperatureSensor** -modulen som simulerar data) och rör den till Azure IoT Hub.
 
 När du är redo att anpassa mallen med din egen kod använder du [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) : er för att bygga moduler som uppfyller nyckel behoven för IoT-lösningar som säkerhet, enhets hantering och pålitlighet.
 
@@ -149,7 +149,7 @@ Normalt vill du testa och felsöka varje modul innan du kör den i en hel lösni
 
    ![Modul som körs](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. Om du utvecklar i C# ställer du in en Bryt punkt i `PipeMessage()` funktionen i **program.cs**. om du använder C ställer du in en Bryt punkt i `InputQueue1Callback()` funktionen i **main. C**. Du kan sedan testa det genom att skicka ett meddelande genom att köra följande kommando i **git bash** eller **Wsl bash** Shell. (Du kan inte köra `curl` kommandot från PowerShell eller kommando tolken.)
+1. Om du utvecklar i C# ställer du in en Bryt punkt i `PipeMessage()` funktionen i **program. cs**; om du använder C ställer du in en Bryt punkt i `InputQueue1Callback()` funktionen i **main. C**. Du kan sedan testa det genom att skicka ett meddelande genom att köra följande kommando i **git bash** eller **Wsl bash** Shell. (Du kan inte köra `curl` kommandot från PowerShell eller kommando tolken.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages

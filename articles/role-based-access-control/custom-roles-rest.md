@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557517"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Skapa eller uppdatera anpassade Azure-roller med hjälp av REST API
@@ -44,7 +44,7 @@ Om du vill visa en lista med alla anpassade roller i en katalog använder du RES
 1. Ersätt *{filter}* med roll typen.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Description |
+    > | Filtrera | Beskrivning |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrera baserat på typen av CustomRole |
 
@@ -71,7 +71,7 @@ Om du vill visa en lista med anpassade roller i ett omfång använder du [roll d
 1. Ersätt *{filter}* med roll typen.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Description |
+    > | Filtrera | Beskrivning |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrera baserat på typen av CustomRole |
 
@@ -98,7 +98,7 @@ Om du vill hämta information om en anpassad roll med dess visnings namn använd
 1. Ersätt *{filter}* med rollens visnings namn.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Description |
+    > | Filtrera | Beskrivning |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Använd URL-kodad form med det exakta visnings namnet för rollen. Till exempel, `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 

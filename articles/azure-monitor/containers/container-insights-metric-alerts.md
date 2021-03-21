@@ -4,10 +4,10 @@ description: Den här artikeln granskar rekommenderade mått varningar tillgäng
 ms.topic: conceptual
 ms.date: 10/28/2020
 ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728900"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Rekommenderade mått varningar (förhands granskning) från container Insights
@@ -39,7 +39,7 @@ Innan du börjar ska du kontrol lera följande:
 
 För att varna om vad som är viktigt innehåller behållar insikter följande mått aviseringar för dina AKS-och Azure Arc-aktiverade Kubernetes-kluster:
 
-|Namn| Beskrivning |Standard tröskel |
+|Name| Beskrivning |Standard tröskel |
 |----|-------------|------------------|
 |Genomsnittlig container-CPU% |Beräknar Genomsnittlig CPU-användning per behållare.|När den genomsnittliga CPU-användningen per container är större än 95%.| 
 |Genomsnittlig container i arbets minnet% |Beräknar Genomsnittligt arbets minne som används per container.|När genomsnittlig användning av arbets minne per behållare är större än 95%. |

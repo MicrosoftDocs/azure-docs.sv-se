@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98916158"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Skydda dina hanterings portar med just-in-Time-åtkomst
@@ -209,7 +209,7 @@ Följande PowerShell-kommandon skapar den här JIT-konfigurationen:
     Använd parametern-name för att ange en virtuell dator. Om du till exempel vill upprätta JIT-konfigurationen för två olika virtuella datorer, VM1 och VM2, använder du: ```Set-AzJitNetworkAccessPolicy -Name VM1``` och ```Set-AzJitNetworkAccessPolicy -Name VM2``` .
 
 
-### <a name="rest-api"></a>[**REST API**](#tab/jit-config-api)
+### <a name="rest-api"></a>[**REST-API**](#tab/jit-config-api)
 
 ### <a name="enable-jit-on-your-vms-using-the-rest-api"></a>Aktivera JIT på dina virtuella datorer med hjälp av REST API
 
@@ -323,7 +323,7 @@ Läs mer i [PowerShell-cmdlet-dokumentationen](/powershell/scripting/developer/c
 
 
 
-### <a name="rest-api"></a>[**REST API**](#tab/jit-request-api)
+### <a name="rest-api"></a>[**REST-API**](#tab/jit-request-api)
 
 ### <a name="request-access-to-a-jit-enabled-vms-using-the-rest-api"></a>Begär åtkomst till en JIT-aktiverad virtuell dator med hjälp av REST API
 

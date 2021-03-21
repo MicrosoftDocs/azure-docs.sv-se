@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 9cab0597aeb3bc28f391de558240e5d894f5a49c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735255"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-header-based-authentication"></a>Självstudie: Azure Active Directory integrering med enkel inloggning med Citrix ADC (huvud-baserad autentisering)
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera Citrix ADC med Azure Ac
 * Gör det möjligt för användarna att logga in automatiskt till Citrix ADC med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -149,7 +149,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
    1. Som **namn** anger du `B.Simon` .  
 
-   1. För **användar namn** anger du _username@companydomain.extension_ . Ett exempel är `B.Simon@contoso.com`.
+   1. För **användar namn** anger du _username@companydomain.extension_ . Till exempel `B.Simon@contoso.com`.
 
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned eller kopiera värdet som visas i **lösen ordet**.
 

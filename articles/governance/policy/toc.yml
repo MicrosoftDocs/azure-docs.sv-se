@@ -265,22 +265,8 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: Händelser
-          href: /rest/api/policy-insights/policyevents
-        - name: Tillstånd
-          href: /rest/api/policy-insights/policystates
-        - name: Tilldelningar
-          href: /rest/api/resources/policyassignments
-        - name: Principdefinitioner
-          href: /rest/api/resources/policydefinitions
-        - name: Principundantag
-          href: /rest/api/resources/policyexemptions
-        - name: Initiativdefinitioner
-          href: /rest/api/resources/policysetdefinitions
-        - name: Principspårade resurser
-          href: /rest/api/policy-insights/policytrackedresources
-        - name: Reparationer
-          href: /rest/api/policy-insights/remediations
+        - name: Policy
+          href: /rest/api/policy/
         - name: Gästkonfiguration
           href: /rest/api/guestconfiguration/
     - name: Mallar för Resurshanteraren

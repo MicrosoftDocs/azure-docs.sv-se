@@ -12,17 +12,17 @@ ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
 ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97588819"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>Konfigurera CI/CD för en Node.js-app med DevOps starter med GitHub-åtgärder
 
 I den här snabb starten använder du den förenklade DevOps-startupplevelsen för att skapa ett arbets flöde för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din Node.js-app med GitHub-åtgärder. Du kan använda DevOps starter för att konfigurera allt du behöver för att utveckla, distribuera och övervaka din app. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Ett [GitHub](https://github.com/)-konto.

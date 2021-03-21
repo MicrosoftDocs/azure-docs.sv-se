@@ -4,10 +4,10 @@ description: Lär dig hur du använder Azure Policy-tillägget för Visual Studi
 ms.date: 01/11/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98107947"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Använd Azure Policy-tillägg för Visual Studio Code
@@ -22,7 +22,7 @@ Azure Policy-tillägget för Visual Studio Code kan installeras i Windows.
 
 Följande objekt krävs för att slutföra stegen i den här artikeln:
 
-- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-and-configure-the-azure-policy-extension"></a>Installera och konfigurera Azure Policy-tillägget

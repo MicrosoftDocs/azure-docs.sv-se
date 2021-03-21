@@ -4,10 +4,10 @@ description: Beskriver de egenskaper som har angetts för resurs grupps händels
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.openlocfilehash: 4c1990909dc555e9e2a6d09538b807ba7e07ce83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363227"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Azure-resurs grupp som en Event Grid källa

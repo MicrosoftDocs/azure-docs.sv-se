@@ -2,31 +2,24 @@
 title: Analysera videor med Media Services v3
 description: Lär dig hur du analyserar videor med Azure Media Services.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 4a050d838bae9b394f5f292698781a9a824af0bf
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: a083fbbf54d6f03316a2e647d47e76cdb5db7c2c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454132"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581258"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Självstudie: analysera videor med Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-> [!NOTE]
-> Även om den här självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) -exemplen är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
-
-Den här självstudien visar hur du analyserar videor med Azure Media Services. Det finns många scenarier där du kanske vill veta mer om inspelat video- eller ljudinnehåll. Organisationer kan till exempel för att uppnå högre kundnöjdhet köra tal-till-text-bearbetning och konvertera inspelningar från kundtjänst till en sökbar katalog med index och instrumentpaneler. Sedan kan de få insikter om deras verksamhet. Dessa insikter innehåller en lista över vanliga klagomål, källor till sådana klagomål och annan användbar information.
+Den här självstudien visar hur du analyserar videor med Azure Media Services. Det finns många scenarier där du kanske vill veta mer om inspelat video- eller ljudinnehåll. Organisationer kan till exempel för att uppnå högre kundnöjdhet köra tal-till-text-bearbetning och konvertera inspelningar från kundtjänst till en sökbar katalog med index och instrumentpaneler.
 
 I den här självstudiekursen lär du dig att:
 
@@ -41,7 +34,7 @@ I den här självstudiekursen lär du dig att:
 
 ## <a name="compliance-privacy-and-security"></a>Efterlevnad, sekretess och säkerhet
  
-Som en viktig påminnelse måste du följa alla tillämpliga lagar i din användning av Video Indexer och du får inte använda Video Indexer eller andra Azure-tjänster på ett sätt som strider mot andras rättigheter eller som kan vara skadliga för andra. Innan du laddar upp videor, inklusive bio metriska data, till den Video Indexer tjänsten för bearbetning och lagring, måste du ha alla lämpliga rättigheter, inklusive alla lämpliga medgivanden, från enskilda eller enskilda i videon. För att lära dig om efterlevnad, sekretess och säkerhet i Video Indexer, [villkoren](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)för Microsoft Cognitive Services. Information om Microsofts sekretess avtal och hantering av dina data finns i Microsofts [sekretess policy](https://privacy.microsoft.com/PrivacyStatement), [Online Services-villkoren](https://www.microsoft.com/licensing/product-licensing/products) ("ost") och tillägget för [data bearbetning](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Ytterligare sekretess information, inklusive information om datakvarhållning, borttagning/förstörelse, finns i OST-filen och [här](../video-indexer/faq.md). Genom att använda Video Indexer samtycker du till att vara kopplad till Cognitive Services villkor, OST, DPA och sekretess policyn.
+Som en viktig påminnelse måste du följa alla tillämpliga lagar i din användning av Video Indexer. Du får inte använda Video Indexer eller någon annan Azure-tjänst på ett sätt som strider mot andras rättigheter. Innan du laddar upp videor, inklusive bio metriska data, till den Video Indexer tjänsten för bearbetning och lagring måste du ha alla lämpliga rättigheter, inklusive alla lämpliga medgivanden, från personerna i videon. För att lära dig om efterlevnad, sekretess och säkerhet i Video Indexer, [Cognitive Services villkoren](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)i Azure. För Microsofts sekretess avtal och hantering av dina data kan du läsa Microsofts [sekretess policy](https://privacy.microsoft.com/PrivacyStatement), [Online Services-villkoren](https://www.microsoft.com/licensing/product-licensing/products) (ost) och [data bearbetnings tillägget](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Mer sekretess information, inklusive för datakvarhållning, borttagning/förstörelse, finns i OST-filen och [här](../video-indexer/faq.md). Genom att använda Video Indexer samtycker du till att vara kopplad till Cognitive Services villkor, OST, DPA och sekretess policyn.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -131,7 +124,7 @@ Det tar lite tid att slutföra jobbet. När du gör det, vill du bli meddelad. D
 
 Avsökningen är inte en rekommenderad metod för produktion av appar på grund av potentiell latens. Avsökningen kan begränsas om den överanvänds på ett konto. Utvecklare bör i stället använda Event Grid.
 
-Event Grid är utformat för hög tillgänglighet, konsekvent prestanda och dynamisk skalning. Med Event Grid kan dina appar lyssna efter och reagera på händelser från i princip alla Azure-tjänster, samt även från anpassade källor. Med enkel och HTTP-baserad reaktiv händelsehantering blir det lättare att skapa effektiva lösningar med hjälp av intelligent filtrering och dirigering av händelser. Mer information finns i [dirigera händelser till en anpassad webb slut punkt](job-state-events-cli-how-to.md).
+Event Grid är utformat för hög tillgänglighet, konsekvent prestanda och dynamisk skalning. Med Event Grid kan dina appar lyssna efter och reagera på händelser från i princip alla Azure-tjänster, samt även från anpassade källor. Med enkel och HTTP-baserad reaktiv händelsehantering blir det lättare att skapa effektiva lösningar med hjälp av intelligent filtrering och dirigering av händelser. Mer information finns i [dirigera händelser till en anpassad webb slut punkt](monitoring/job-state-events-cli-how-to.md).
 
 **Jobb** har vanligtvis följande tillstånd: **Schemalagd**, **I kö**, **Bearbetas**, **Slutförd** (slutlig status). Om jobbet har kommit över ett fel visas **fel** tillstånd. Om jobbet håller på att avbrytas **avbryts du och** **avbryts** när det är färdigt.
 
@@ -147,11 +140,19 @@ Följande funktion hämtar resultatet från utmatnings [till gången](/rest/api/
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
-### <a name="clean-up-resource-in-your-media-services-account"></a>Rensa resurser på ditt Media Services-konto
+### <a name="clean-up-resources-in-your-media-services-account"></a>Rensa resurser på ditt Media Services-konto
+
+[!INCLUDE [clean-up-warning](includes/clean-up-warning.md)]
 
 I allmänhet bör du rensa allt utom objekt som du planerar att återanvända (normalt återanvänder du transformeringar och persist StreamingLocators). Om du vill att ditt konto ska rensas efter experimentering tar du bort de resurser som du inte planerar att återanvända. Följande kod tar till exempel bort jobb-och utmatnings till gången:
 
+### <a name="delete-resources-with-code"></a>Ta bort resurser med kod
+
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
+
+Du kan också använda CLI.
+
+[!INCLUDE [clean-up-resources-cli](includes/clean-up-resources-cli.md)]
 
 ## <a name="run-the-sample-app"></a>Kör exempelappen
 
@@ -163,23 +164,10 @@ När vi kör programmet skapar jobbet miniatyrer för varje ansikte som hittas i
 
 Utdatafilen för videoanalysen kallas insights.json. Den här filen innehåller insikter om videon. Beskrivning av elementen i json-filen finns i artikeln [Medieintelligens](./analyzing-video-audio-files-concept.md).
 
-## <a name="clean-up-resources"></a>Rensa resurser
-
-Om du inte längre behöver någon av resurserna i resursgruppen, inklusive Media Services och de lagringskonton som du skapade för självstudien, tar du bort resursgruppen som du skapade tidigare.
-
-Kör följande CLI-kommando:
-
-```azurecli
-az group delete --name amsResourceGroup
-```
-
 ## <a name="multithreading"></a>Flertrådsteknik
 
-Azure Media Services v3 SDK: erna är inte tråd säkra. När du arbetar med en multi-trådad app bör du generera ett nytt AzureMediaServicesClient-objekt per tråd.
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Ställ frågor, ge feedback, hämta uppdateringar
-
-Kolla in [Azure Media Services community](media-services-community.md) -artikeln för att se olika sätt att ställa frågor, lämna feedback och få uppdateringar om Media Services.
+> [!WARNING]
+> Azure Media Services v3 SDK: erna är inte tråd säkra. När du arbetar med en multi-trådad app bör du generera ett nytt AzureMediaServicesClient-objekt per tråd.
 
 ## <a name="next-steps"></a>Nästa steg
 
