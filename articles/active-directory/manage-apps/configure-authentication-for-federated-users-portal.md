@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686452"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607117"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurera Azure Active Directory inloggnings beteende för ett program med hjälp av en princip för identifiering av start sfär
 
@@ -91,7 +91,7 @@ Vissa program har inget sätt att konfigurera autentiseringsbegäranden som de g
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>Identifierings princip för start sfär för att förhindra automatisk acceleration
 
-Vissa Microsoft-och SaaS-program inkluderar automatiskt domain_hints (till exempel `https://outlook.com/contoso.com` resulterar i en inloggningsbegäran med `&domain_hint=contoso.com` tillägg), vilket kan avbryta distributionen av hanterade AUTENTISERINGSUPPGIFTER som Fido.  Du kan använda [princip för identifiering av start sfär](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) för att ignorera domän tips från vissa appar eller för vissa domäner under distributionen av hanterade autentiseringsuppgifter.  
+Vissa Microsoft-och SaaS-program inkluderar automatiskt domain_hints (till exempel `https://outlook.com/contoso.com` resulterar i en inloggningsbegäran med `&domain_hint=contoso.com` tillägg), vilket kan avbryta distributionen av hanterade AUTENTISERINGSUPPGIFTER som Fido.  Du kan använda [princip för identifiering av start sfär](/graph/api/resources/homeRealmDiscoveryPolicy) för att ignorera domän tips från vissa appar eller för vissa domäner under distributionen av hanterade autentiseringsuppgifter.  
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Aktivera direkt ROPC-autentisering av federerade användare för äldre program
 
@@ -129,7 +129,7 @@ Följande är ett exempel på en HRD princip definition:
    }
 ```
 
-Princip typen är "[HomeRealmDiscoveryPolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)".
+Princip typen är "[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)".
 
 **AccelerateToFederatedDomain** är valfritt. Om **AccelerateToFederatedDomain** är false har principen ingen påverkan på automatisk acceleration. Om **AccelerateToFederatedDomain** är true och det bara finns en verifierad och federerad domän i klienten, kommer användarna att tas direkt till den federerade IDP för att logga in. Om det är sant och det finns fler än en verifierad domän i klient organisationen måste **PreferredDomain** anges.
 

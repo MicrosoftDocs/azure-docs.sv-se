@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1fad6274b1dbbc4bf255caabd79352b3c836e352
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724905"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606705"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Läs in data stegvis från flera tabeller i SQL Server till en databas i Azure SQL Database med hjälp av Azure Portal
 
@@ -253,7 +253,7 @@ END
 8. Klicka på **Skapa**.      
 9. När datafabriken har skapats visas sidan **Datafabrik** som på bilden.
    
-   ![Datafabrikens startsida](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Start sidan för Azure Data Factory, med panel för författar & övervakning.":::
 10. Klicka på rutan **Författare och övervakare** för att starta användargränssnittet för Azure Data Factory på en separat flik.
 
 ## <a name="create-self-hosted-integration-runtime"></a>Skapa Integration Runtime med lokal installation
@@ -291,7 +291,7 @@ I det här steget länkar du SQL Server-databasen till data fabriken.
 
 1. I fönstret **Anslutningar** växlar du från fliken **Integration Runtimes** till fliken med **länkade tjänster** och klickar på **+ Ny**.
 
-   ![Ny länkad tjänst](./media/doc-common-process/new-linked-service.png)
+    :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Ny länkad tjänst.":::
 1. I fönstret **New Linked Service** (Ny länkad tjänst) väljer du **SQL Server** och klickar på **Fortsätt**. 
 
 1. Utför följande steg i fönstret **New Linked Service** (Ny länkad tjänst):

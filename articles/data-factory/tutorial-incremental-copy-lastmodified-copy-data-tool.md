@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 25e39d3fc9c56a282714bafb630fee65421fb5ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740060"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606675"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Kopiera nya och ändrade filer stegvis baserat på LastModifiedDate med hjälp av verktyget Kopiera data
 
@@ -55,7 +55,7 @@ Förbered blob-lagringen för självstudien genom att utföra de här stegen:
 
    Namnet på datafabriken måste vara globalt unikt. Du kan få det här fel meddelandet:
 
-   ![Namnet är inte tillgängligt, fel meddelande](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fel meddelande för ny data fabrik för dubblettnamn.":::
 
    Ange ett annat namn för datafabriken om du får ett felmeddelande om namnvärdet. Använd till exempel namnet _**dittnamn**_**ADFTutorialDataFactory**. Se artikeln [Data Factory – namnregler](naming-rules.md) för namnregler för Data Factory-artefakter.
 3. Under **prenumeration** väljer du den Azure-prenumeration där du vill skapa den nya data fabriken.
@@ -73,7 +73,7 @@ Förbered blob-lagringen för självstudien genom att utföra de här stegen:
 9. När data fabriken har skapats visas start sidan för Data Factory.
 10. Om du vill öppna användar gränssnittet för Azure Data Factory på en separat flik väljer du panelen **skapare & övervakare** :
 
-    ![Datafabrikens startsida](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Start sidan för Azure Data Factory, med panel för författar & övervakning.":::
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Använd verktyget Kopiera data för att skapa en pipeline
 

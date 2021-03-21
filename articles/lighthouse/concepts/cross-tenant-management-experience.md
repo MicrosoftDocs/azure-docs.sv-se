@@ -4,10 +4,10 @@ description: Azure-delegerad resurs hantering möjliggör hantering av flera inn
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177927"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
@@ -46,7 +46,7 @@ Vi tillhandahåller också API: er som är speciella för att utföra Azure Ligh
 
 ## <a name="enhanced-services-and-scenarios"></a>Förbättrade tjänster och scenarier
 
-De flesta uppgifter och tjänster kan utföras på delegerade resurser över hanterade klienter. Nedan visas några viktiga scenarier där hantering av flera innehavare kan vara särskilt effektivt.
+De flesta uppgifter och tjänster kan utföras på delegerade resurser över hanterade klientorganisationer. Nedan visas några viktiga scenarier där hantering av flera innehavare kan vara särskilt effektivt.
 
 [Azure-båge](../../azure-arc/index.yml):
 

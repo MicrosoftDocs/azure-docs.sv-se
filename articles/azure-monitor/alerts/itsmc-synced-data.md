@@ -7,10 +7,10 @@ ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
 ms.openlocfilehash: 83994c1b6e150342a777a079d79d6a594d30c3ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041611"
 ---
 # <a name="data-synced-from-your-itsm-product"></a>Data har synkroniserats från din ITSM-produkt
@@ -34,7 +34,7 @@ ServiceDeskWorkItemType_s = "incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Stat
+- Tillstånd
 - Angelägenhetsgrad
 - Påverkan
 - Prioritet
@@ -67,7 +67,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 - Rubrik
 - Typ
 - Kategori
-- Stat
+- Tillstånd
 - Eskalering
 - Konflikt status
 - Angelägenhetsgrad
@@ -92,7 +92,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Log Analytics fält | ServiceNow-fält |
 |:--- |:--- |
 | ServiceDeskId_s| Antal |
-| IncidentState_s | Stat |
+| IncidentState_s | Tillstånd |
 | Urgency_s |Angelägenhetsgrad |
 | Impact_s |Påverkan|
 | Priority_s | Prioritet |
@@ -120,7 +120,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Title_s|  Kort beskrivning |
 | Type_s|  Typ |
 | Category_s|  Kategori |
-| CRState_s|  Stat|
+| CRState_s|  Tillstånd|
 | Urgency_s|  Angelägenhetsgrad |
 | Priority_s| Prioritet|
 | Risk_s| Risk|

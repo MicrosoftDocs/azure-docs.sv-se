@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102614079"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Team data science-process för utvecklings åtgärder
@@ -65,7 +65,7 @@ Följande tabell innehåller nivåbaserade rikt linjer som hjälper dig att slut
 |  | Skapa | [I den här kursen lär du dig att aktivera DevOps-metoder med Visual Studio Codespace build](https://mva.microsoft.com/training-courses/enabling-devops-practices-with-visual-studio-online-build-12478?l=ipCj6MuNB_6305094681) | Visual Studio-Codespace | Stött | Program utveckling, välbekanthet med en SDLC |
 |  |  | [Den här referensen förklarar kompilering och utveckling med Visual Studio](/previous-versions/visualstudio/visual-studio-2015/ide/compiling-and-building-in-visual-studio) | Visual Studio | Medel | Program utveckling, välbekanthet med en SDLC |
 |  |  | [Den här referensen förklarar hur du dirigerar processer som program varu versioner med Runbooks](/system-center/orchestrator/automate-runbooks) | System Center | Stött | Upplevelse med System Center Orchestrator |
-|  | Testa | [Använd den här referensen för att förstå hur du använder Visual Studio-Codespace för hantering av test ärenden](http://www.almguide.com/2014/07/visual-studio-online-test-case-management/) | Visual Studio-Codespace | Stött | Program utveckling, välbekanthet med en SDLC |
+|  | Test | [Använd den här referensen för att förstå hur du använder Visual Studio-Codespace för hantering av test ärenden](http://www.almguide.com/2014/07/visual-studio-online-test-case-management/) | Visual Studio-Codespace | Stött | Program utveckling, välbekanthet med en SDLC |
 |  |  | [Använd den här tidigare referensen för Runbooks för att automatisera tester med System Center](/system-center/orchestrator/automate-runbooks) | System Center | Stött | Upplevelse med System Center Orchestrator |
 |  |  | [Som en del av att inte bara testa men utveckla, bör du bygga säkerheten. Microsoft SDL-Threat Modeling Tool kan hjälpa dig i alla faser. Läs mer och ladda ned det här](https://www.microsoft.com/SDL/adopt/threatmodeling.aspx) | Verktyg för hot övervakning | Stött | Bekanta dig med säkerhetsbegrepp, program utveckling |
 |  |  | [Den här artikeln förklarar hur du använder Microsoft attack Surface Analyzer för att testa din lösning för avancerad analys](https://technet.microsoft.com/security/gg749821.aspx) | Attack Surface Analyzer | Stött | Bekanta dig med säkerhetsbegrepp, program utveckling |

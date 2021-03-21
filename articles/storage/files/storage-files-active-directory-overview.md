@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102519800"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Översikt över Azure Files Identity-baserade autentiseringsalternativ för SMB-åtkomst
@@ -141,7 +141,7 @@ En användare med lagrings konto nyckeln kan komma åt Azure-filresurser med beh
 
 Azure Files stöder bevarande av katalog-eller filnivå-ACL: er vid kopiering av data till Azure-filresurser. Du kan kopiera ACL: er på en katalog eller fil till Azure-filresurser med hjälp av antingen Azure File Sync eller vanliga verktyg för fil rörelse. Du kan till exempel använda [Robocopy](/windows-server/administration/windows-commands/robocopy) med `/copy:s` flaggan för att kopiera data samt ACL: er till en Azure-filresurs. ACL: er bevaras som standard, du behöver inte aktivera Identity-baserad autentisering på ditt lagrings konto för att bevara ACL: er.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Det finns ingen ytterligare service avgift för att aktivera identitets baserad autentisering över SMB på ditt lagrings konto. Mer information om priser finns i [Azure Files priser](https://azure.microsoft.com/pricing/details/storage/files/) och [Azure AD Domain Services priser](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
 ## <a name="next-steps"></a>Nästa steg

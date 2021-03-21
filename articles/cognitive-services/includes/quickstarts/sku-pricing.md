@@ -7,55 +7,53 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cc4bc6907f83ce062fed82dde17815fc4debd67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321610"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719691"
 ---
 Se listan över SKU: er och pris information nedan. 
 
 #### <a name="multi-service"></a>Multi-service
 
-| Tjänst                    | Typ                      |
+| Tjänst                    | Variant                      |
 |----------------------------|---------------------------|
 | Flera tjänster. Mer information finns på sidan med [priser](https://azure.microsoft.com/pricing/details/cognitive-services/) .            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>Visuellt innehåll
 
-| Tjänst                    | Typ                      |
+| Tjänst                    | Variant                      |
 |----------------------------|---------------------------|
 | Visuellt innehåll            | `ComputerVision`          |
 | Custom Vision förutsägelse | `CustomVision.Prediction` |
 | Custom Vision-utbildning   | `CustomVision.Training`   |
 | Ansikte                       | `Face`                    |
 | Formigenkänning            | `FormRecognizer`          |
-| Handskriftsigenkänning             | `InkRecognizer`           |
 
-#### <a name="search"></a>Search
+#### <a name="search"></a>Sök
 
-| Tjänst            | Typ                  |
+| Tjänst            | Variant                  |
 |--------------------|-----------------------|
 | Automatiska förslag i Bing   | `Bing.Autosuggest.v7` |
 | Anpassad sökning i Bing | `Bing.CustomSearch`   |
 | Entitetssökning i Bing | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
+| Bing-sökning        | `Bing.Search.v7`      |
 | Stavningskontroll i Bing   | `Bing.SpellCheck.v7`  |
 
-#### <a name="speech"></a>Tal
+#### <a name="speech"></a>Speech
 
-| Tjänst            | Typ                 |
+| Tjänst            | Variant                 |
 |--------------------|----------------------|
 | Speech Services    | `SpeechServices`     |
 | Taligenkänning | `SpeakerRecognition` |
 
 #### <a name="language"></a>Språk
 
-| Tjänst            | Typ                |
+| Tjänst            | Variant                |
 |--------------------|---------------------|
-| Formulär förståelse | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Textanalys     | `TextAnalytics`     |
@@ -63,7 +61,7 @@ Se listan över SKU: er och pris information nedan.
 
 #### <a name="decision"></a>Beslut
 
-| Tjänst           | Typ               |
+| Tjänst           | Variant               |
 |-------------------|--------------------|
 | Avvikelseidentifiering  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

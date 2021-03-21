@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2e7c9c96f237512d7f28f7243707b097c034aab
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: acaab347d56d320f2287bb8f548fd832f52efece
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198463"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595370"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Hantera enheter automatiskt i Azure Digitals med hjälp av enhets etablerings tjänsten (DPS)
 
@@ -99,7 +99,7 @@ Lägg till inställningen med följande Azure CLI-kommando:
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
-Se till att roll tilldelningen behörigheter och hanterad identitet är korrekt konfigurerad för Function-appen, enligt beskrivningen i avsnittet [*tilldela behörigheter till Function-appen*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) i slut punkt till slut punkt.
+Se till att roll tilldelningen behörigheter och hanterad identitet är korrekt konfigurerad för Function-appen, enligt beskrivningen i avsnittet [*tilldela behörigheter till Function-appen*](tutorial-end-to-end.md#configure-permissions-for-the-function-app) i slut punkt till slut punkt.
 
 ### <a name="create-device-provisioning-enrollment"></a>Skapa registrering av enhets etablering
 
@@ -202,7 +202,7 @@ Sedan måste du konfigurera funktions miljö variabeln för att ansluta till den
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
-Se till att roll tilldelningen behörigheter och hanterad identitet är korrekt konfigurerad för Function-appen, enligt beskrivningen i avsnittet [*tilldela behörigheter till Function-appen*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) i slut punkt till slut punkt.
+Se till att roll tilldelningen behörigheter och hanterad identitet är korrekt konfigurerad för Function-appen, enligt beskrivningen i avsnittet [*tilldela behörigheter till Function-appen*](tutorial-end-to-end.md#configure-permissions-for-the-function-app) i slut punkt till slut punkt.
 
 ### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>Skapa en IoT Hub väg för livs cykel händelser
 

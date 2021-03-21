@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfaa59f1800da084d611f6e050a59da63a7f195
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72801873"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674758"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metod och process för att börja använda Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Den här artikeln hjälper dig att komma igång med **Azure Data Catalog** i din organisation. Fokusera på följande tre huvudpunkter för att komma igång med **Azure Data Catalog** på ett smidigt sätt: fastställ din vision, identifiera viktiga användningsområden inom organisationen och välj ett pilotprojekt.
 
@@ -101,7 +103,7 @@ Ditt första pilotprojekt bör innehålla några personer som skapar data och n�
 
 **Datakonsumenter** är personer med expertkunskaper i att lösa verksamhetsproblem med hjälp av data. Till exempel är använder verksamhetsanalytikern Nancy Adventure Works SQL-datakällor för att analysera data.
 
-Ett av de verksamhetsproblem som **Azure Data Catalog** löser är sammankoppling av**dataproducenter** och **datakonsumenter**. Katalogen fungerar som ett centrallager för information om företagets datakällor. David registrerar Adventure Works- och SQL Server-datakällor i Data Catalog. Genom att använda gemensamt skapade kan alla användare som identifierar den här data källan dela sitt yttrande om data, förutom att använda de data som de har identifierat. Till exempel identifierar Nancy datakällor genom att söka i katalogen och delar med sig av sina specialkunskaper om dem.  Nu kan andra i organisationen dra nytta av kunskapen hon delat med sig av genom att söka i datakatalogen.
+Ett av de verksamhetsproblem som **Azure Data Catalog** löser är sammankoppling av **dataproducenter** och **datakonsumenter**. Katalogen fungerar som ett centrallager för information om företagets datakällor. David registrerar Adventure Works- och SQL Server-datakällor i Data Catalog. Genom att använda gemensamt skapade kan alla användare som identifierar den här data källan dela sitt yttrande om data, förutom att använda de data som de har identifierat. Till exempel identifierar Nancy datakällor genom att söka i katalogen och delar med sig av sina specialkunskaper om dem.  Nu kan andra i organisationen dra nytta av kunskapen hon delat med sig av genom att söka i datakatalogen.
 
 * Mer information om hur du registrerar datakällor finns i [Registrera datakällor](data-catalog-get-started.md).
 * Mer information om hur du identifierar datakällor finns i [Söka efter datakällor](data-catalog-get-started.md).

@@ -4,10 +4,10 @@ description: Lär dig hur du distribuerar VMware-Horisont på Azure VMware-lösn
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181405"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distribuera Horisont på Azure VMware-lösning 

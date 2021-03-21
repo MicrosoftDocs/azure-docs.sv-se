@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463042"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606998"
 ---
 # <a name="azure-functions-networking-options"></a>Nätverksalternativ för Azure Functions
 
@@ -81,34 +81,15 @@ Information om hur du konfigurerar integrering av virtuella nätverk finns i [in
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>Anslut till tjänst slut punktens säkra resurser
 
-För att ge en högre säkerhets nivå kan du begränsa ett antal Azure-tjänster till ett virtuellt nätverk med hjälp av tjänstens slut punkter. Du måste sedan integrera din Function-app med det virtuella nätverket för att få åtkomst till resursen. Den här konfigurationen stöds på alla planer som stöder integrering av virtuella nätverk.
+För att ge en högre säkerhets nivå kan du begränsa ett antal Azure-tjänster till ett virtuellt nätverk med hjälp av tjänstens slut punkter. Du måste sedan integrera din Function-app med det virtuella nätverket för att få åtkomst till resursen. Den här konfigurationen stöds på alla [planer](functions-scale.md#networking-features) som stöder integrering av virtuella nätverk.
 
 Mer information finns i [tjänst slut punkter för virtuella nätverk](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Begränsa ditt lagrings konto till ett virtuellt nätverk 
 
-När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt. Den här funktionen fungerar för närvarande för alla virtuella Windows-nätverk som stöds SKU: er som innehåller standard och Premium, med undantag för på de Flex-stämplar där virtuella nätverk endast är tillgängliga för Premium SKU. Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
+När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt. 
 
-1. Skapa en funktion med ett lagrings konto där tjänstens slut punkter inte är aktiverade.
-1. Konfigurera funktionen för att ansluta till ditt virtuella nätverk.
-1. Skapa eller konfigurera ett annat lagrings konto.  Det här är lagrings kontot som vi skyddar med tjänstens slut punkter och ansluter vår funktion.
-1. [Skapa en fil resurs](../storage/files/storage-how-to-create-file-share.md#create-file-share) på det skyddade lagrings kontot.
-1. Aktivera tjänstens slut punkter eller privata slut punkter för lagrings kontot.  
-    * Om du använder privata slut punkts anslutningar behöver lagrings kontot en privat slut punkt för-och-under `file` `blob` resurserna.  Om du använder vissa funktioner som Durable Functions, behöver du också `queue` och `table` kan nås via en privat slut punkt anslutning.
-    * Om du använder tjänst slut punkter aktiverar du det undernät som är dedikerat för dina funktions program för lagrings konton.
-1. Kopiera filen och blob-innehållet från funktionen app Storage-kontot till det skyddade lagrings kontot och fil resursen.
-1. Kopiera anslutnings strängen för det här lagrings kontot.
-1. Uppdatera **program inställningarna** under **konfigurationen** för Function-appen till följande:
-    - `AzureWebJobsStorage` till anslutnings strängen för det skyddade lagrings kontot.
-    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` till anslutnings strängen för det skyddade lagrings kontot.
-    - `WEBSITE_CONTENTSHARE` till namnet på fil resursen som skapats i det skyddade lagrings kontot.
-    - Skapa en ny inställning med namnet `WEBSITE_CONTENTOVERVNET` och värdet för `1` .
-    - Om lagrings kontot använder anslutningar för privata slut punkter, verifiera eller Lägg till följande inställningar
-        - `WEBSITE_VNET_ROUTE_ALL` med värdet `1` .
-        - `WEBSITE_DNS_SERVER` med värdet `168.63.129.16` 
-1. Spara program inställningarna.  
-
-Function-appen startas om och kommer nu att anslutas till ett skyddat lagrings konto.
+Den här funktionen fungerar för närvarande för alla Windows Virtual Network-stödda SKU: er i den dedikerade (App Service) planen och för Premium planen. Förbruknings planen stöds inte. Information om hur du konfigurerar en funktion med ett lagrings konto som är begränsat till ett privat nätverk finns i [begränsa ditt lagrings konto till ett virtuellt nätverk](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
 
 ## <a name="use-key-vault-references"></a>Använda Key Vault-referenser
 
@@ -173,6 +154,8 @@ Mer information finns i [App Service dokumentationen för hybridanslutningar](..
 Utgående IP-begränsningar är tillgängliga i en Premium-plan, App Service plan eller App Service-miljön. Du kan konfigurera utgående begränsningar för det virtuella nätverk där App Service-miljön har distribuerats.
 
 När du integrerar en Function-app i en Premium-plan eller en App Service plan med ett virtuellt nätverk kan appen fortfarande göra utgående anrop till Internet som standard. Genom att lägga till program inställningen `WEBSITE_VNET_ROUTE_ALL=1` tvingar du all utgående trafik att skickas till det virtuella nätverket, där regler för nätverks säkerhets grupper kan användas för att begränsa trafiken.
+
+Information om hur du styr den utgående IP-adressen med hjälp av ett virtuellt nätverk finns i [Självstudier: kontrol lera Azure Functions utgående IP med en Azure Virtual Network NAT gateway](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="automation"></a>Automation
 Med följande API: er kan du hantera regionala virtuella nätverks integreringar program mässigt:

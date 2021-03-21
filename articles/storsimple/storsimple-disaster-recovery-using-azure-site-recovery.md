@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301939"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670912"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatiserad katastrof återställnings lösning med Azure Site Recovery för fil resurser som finns på StorSimple
 
@@ -37,14 +37,14 @@ Det här dokumentet beskriver i detalj hur du kan skapa en katastrof återställ
 ## <a name="supported-azure-site-recovery-deployment-options"></a>Azure Site Recovery distributions alternativ som stöds
 Kunder kan distribuera fil servrar som fysiska servrar eller virtuella datorer som körs på Hyper-V eller VMware och sedan skapa fil resurser från volymer hämtas out of StorSimple Storage. Azure Site Recovery kan skydda både fysiska och virtuella distributioner till antingen en sekundär plats eller till Azure. Det här dokumentet beskriver information om en DR-lösning med Azure som återställnings plats för en virtuell fil server som finns på Hyper-V och med fil resurser på StorSimple-lagring. Andra scenarier där fil serverns virtuella dator finns på en virtuell VMware-dator eller en fysisk dator kan implementeras på samma sätt.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Att implementera en lösning för haveri beredskap med en klickning som använder Azure Site Recovery för fil resurser som finns på StorSimple-lagringen har följande krav:
 
    - Lokal Windows Server 2012 R2-baserad virtuell dator på Hyper-V eller VMware eller en fysisk dator
    - StorSimple lagrings enhet lokalt registrerad med Azure StorSimple Manager
    - StorSimple Cloud Appliance som skapats i Azure StorSimple Manager. Installationen kan behållas i avstängnings tillstånd.
    - Fil resurser som finns på de volymer som kon figurer ATS på StorSimple lagrings enhet
-   - [Azure Site Recovery Services-valvet](/azure/site-recovery/hyper-v-vmm-azure-tutorial) har skapats i en Microsoft Azure-prenumeration
+   - [Azure Site Recovery Services-valvet](../site-recovery/hyper-v-vmm-azure-tutorial.md) har skapats i en Microsoft Azure-prenumeration
 
 Om Azure är din återställnings plats kör du dessutom [verktyget för beredskap för virtuella Azure](https://azure.microsoft.com/downloads/vm-readiness-assessment/) -datorer på virtuella datorer för att säkerställa att de är kompatibla med virtuella Azure-datorer och Azure Site Recovery-tjänster.
 
@@ -112,7 +112,7 @@ Det här steget kräver att du förbereder den lokala fil Server miljön, skapar
    1. Använd rollen fil-och lagrings tjänster för att skapa fil resurser på dessa volymer.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Skapa och förbereda ett Azure Site Recovery-valv
-Läs Azure Site Recovery- [dokumentationen](/azure/site-recovery/) för att komma igång med Azure Site Recovery innan du skyddar den virtuella fil servern.
+Läs Azure Site Recovery- [dokumentationen](../site-recovery/index.yml) för att komma igång med Azure Site Recovery innan du skyddar den virtuella fil servern.
 
 #### <a name="to-enable-protection"></a>Aktivera skydd
 1. Koppla från iSCSI-målen från de lokala virtuella datorer som du vill skydda genom att Azure Site Recovery:
@@ -124,7 +124,7 @@ Läs Azure Site Recovery- [dokumentationen](/azure/site-recovery/) för att komm
    > [!NOTE]
    > Detta gör att fil resurserna är tillfälligt otillgängliga.
    
-1. [Aktivera skydd av virtuell dator](/azure/site-recovery/hyper-v-azure-tutorial) för den virtuella fil serverdatorn från Azure Site Recovery-portalen.
+1. [Aktivera skydd av virtuell dator](../site-recovery/hyper-v-azure-tutorial.md) för den virtuella fil serverdatorn från Azure Site Recovery-portalen.
 1. När den första synkroniseringen börjar kan du återansluta målet igen. Gå till iSCSI-initieraren, Välj StorSimple-enheten och klicka på **Anslut**.
 1. När synkroniseringen är klar och statusen för den virtuella datorn är **skyddad** väljer du den virtuella datorn, väljer fliken **Konfigurera** och uppdaterar nätverket för den virtuella datorn i enlighet med detta (det nätverk som det misslyckade över VM: ar kommer att ingå i). Om nätverket inte visas innebär det att synkroniseringen fortfarande pågår.
 
@@ -174,13 +174,13 @@ Du kan skapa en återställnings plan i ASR för att automatisera växlings proc
    - _RecoveryPlanName_**– ResourceGroupName**: Resource Manager-gruppen som har resursen StorSimple.
    - _RecoveryPlanName_**-ManagerName**: den StorSimple-resurs som har StorSimple-enheten.
    - _RecoveryPlanName_**-enhets** namn: den StorSimple-enhet som måste växlas över.
-   - _RecoveryPlanName_**-DeviceIpAddress**: enhetens IP-adress (detta finns på fliken **enheter** under StorSimple Enhetshanteraren avsnittet nätverks inställningar för &gt; **Settings** &gt; **Network** &gt; **DNS-inställningar** ).
+   - _RecoveryPlanName_**-DeviceIpAddress**: enhetens IP-adress (detta finns på fliken **enheter** under StorSimple Enhetshanteraren avsnittet nätverks inställningar för &gt;  &gt;  &gt; **DNS-inställningar** ).
    - _RecoveryPlanName_**-VolumeContainers**: en kommaavgränsad sträng med volym behållare som finns på den enhet som måste redundansväxla. till exempel: volcon1, volcon2, volcon3.
    - _RecoveryPlanName_**-TargetDeviceName**: StorSimple Cloud Appliance som behållarna ska redundansväxla till.
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**: IP-adressen för mål enheten (detta finns på **Virtual Machine** &gt; fliken nätverks **inställnings** grupp i avsnittet virtuell dator &gt; **Networking** ).
+   - _RecoveryPlanName_**-TargetDeviceIpAddress**: IP-adressen för mål enheten (detta finns på  &gt; fliken nätverks **inställnings** grupp i avsnittet virtuell dator &gt;  ).
    - _RecoveryPlanName_**-StorageAccountName**: namnet på det lagrings konto där skriptet (som måste köras på den virtuella datorn som har redundansväxlats) kommer att lagras. Det kan vara valfritt lagrings konto som har lite utrymme för att lagra skriptet tillfälligt.
    - _RecoveryPlanName_**– StorageAccountKey**: åtkomst nyckeln för lagrings kontot ovan.
-   - _RecoveryPlanName_**-VMGUIDS**: när du skyddar en virtuell dator tilldelar Azure Site Recovery varje virtuell dator ett unikt ID som ger information om den misslyckade virtuella datorn. Hämta VMGUID genom att välja fliken **Recovery Services** och klicka på **skyddade objekt** &gt; **skydds grupper** &gt; **Machines** &gt; **Egenskaper** för datorer. Om du har flera virtuella datorer lägger du till GUID som en kommaavgränsad sträng.
+   - _RecoveryPlanName_**-VMGUIDS**: när du skyddar en virtuell dator tilldelar Azure Site Recovery varje virtuell dator ett unikt ID som ger information om den misslyckade virtuella datorn. Hämta VMGUID genom att välja fliken **Recovery Services** och klicka på **skyddade objekt** &gt; **skydds grupper** &gt;  &gt; **Egenskaper** för datorer. Om du har flera virtuella datorer lägger du till GUID som en kommaavgränsad sträng.
 
      Om namnet på återställnings planen till exempel är fileServerpredayRP, ska fliken **variabler**, **anslutningar** och **certifikat** visas på följande sätt när du har lagt till alla till gångar.
 
@@ -304,7 +304,7 @@ Under en oplanerad redundansväxling växlar StorSimple-volymer över till den v
 
 #### <a name="to-perform-a-failover"></a>Utföra en redundansväxling
 1. I Azure Portal väljer du återställnings planer för **Recovery Services** &gt; **-valv (Site Recovery)** &gt; **recoveryplan_name** som skapats för den virtuella fil servern.
-1. Klicka på **mer** redundans på bladet återställnings plan &gt; **Failover**.  
+1. Klicka på **mer** redundans på bladet återställnings plan &gt; .  
 1. På bladet **Bekräfta redundans** väljer du käll-och mål platserna.
 1. Välj **Stäng virtuella datorer och synkronisera senaste data** för att ange att Site Recovery ska försöka stänga av den skyddade virtuella datorn och synkronisera data så att den senaste versionen av data kommer att Miss lyckas.
 1. Efter redundansväxlingen är de virtuella datorerna i ett väntande tillstånd. Klicka på **genomför** för att genomföra redundansväxlingen.

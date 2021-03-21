@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102611835"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Samla in Azure Active Directory B2C loggar med Application Insights
@@ -94,7 +94,7 @@ Det finns en kort fördröjning, vanligt vis mindre än fem minuter, innan du ka
 
 Här är en lista över frågor som du kan använda för att visa loggarna:
 
-| Söka i data | Beskrivning |
+| Fråga | Beskrivning |
 |---------------------|--------------------|
 `traces` | Se alla loggar som genererats av Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Se alla loggar som genererats av Azure AD B2C den senaste dagen

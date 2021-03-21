@@ -1,17 +1,17 @@
 ---
 title: Snabb start – Lägg till samtal till en iOS-app med Azure Communication Services
 description: I den här snabb starten får du lära dig hur du använder Azure Communication-tjänsterna som anropar klient biblioteket för iOS.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656661"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719609"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för iOS.
 
@@ -37,7 +37,8 @@ I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy*
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installera paketet och beroenden med CocoaPods
 
-1. Skapa en Podfile för ditt program, så här:
+1. För att skapa en Podfile för programmet öppnar du terminalen och navigerar till projektmappen och kör ```pod init```
+3. Lägg till följande kod i Podfile och spara:
 
    ```
    platform :ios, '13.0'
@@ -50,7 +51,7 @@ I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy*
    end
    ```
 
-2. Kör `pod install`.
+3. Kör `pod install`.
 3. Öppna `.xcworkspace` med Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Begär åtkomst till mikrofonen
@@ -120,7 +121,7 @@ struct ContentView: View {
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Namn                                  | Beskrivning                                                  |
+| Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.|
 | CallAgent | CallAgent används för att starta och hantera samtal. |

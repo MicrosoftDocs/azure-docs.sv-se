@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658360"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670895"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Fel sökning: en Azure plats-till-plats-VPN-anslutning kan inte ansluta och sluta fungera
 
@@ -110,5 +110,5 @@ Funktionen Perfect Forward Secrecy kan orsaka anslutnings problem. Om VPN-enhete
 
 ## <a name="next-steps"></a>Nästa steg
 
--   [Konfigurera en plats-till-plats-anslutning till ett virtuellt nätverk](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [Konfigurera en plats-till-plats-anslutning till ett virtuellt nätverk](./tutorial-site-to-site-portal.md)
 -   [Konfigurera en IPsec/IKE-princip för plats-till-plats-VPN-anslutningar](vpn-gateway-ipsecikepolicy-rm-powershell.md)
