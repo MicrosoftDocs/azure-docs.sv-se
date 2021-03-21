@@ -131,6 +131,8 @@
           href: how-to-update-iot-edge.md
         - name: Hantera enhetscertifikat
           href: how-to-manage-device-certificates.md
+        - name: Konfigurera kapslad virtualisering för virtuella Windows-datorer
+          href: nested-virtualization.md
     - name: Alternativa enhets scenarier
       items:
         - name: Kör IoT Edge med Windows-behållare

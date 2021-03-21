@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717476"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605808"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor för nätverk
 
@@ -71,7 +71,7 @@ Med olika filter kan du skala ned till en angiven sökväg och tillstånd. Välj
 
 Välj **Visa detaljerade mått** för att öppna en förkonfigurerad arbets bok som tillhandahåller detaljerade mått för programgatewayen, alla resurser för Server dels poolen och klient-IP-adresser. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Anslutning
+## <a name="connectivity"></a><a name="connectivity"></a>Anslutningsmöjlighet
 
 Fliken **anslutning** är ett enkelt sätt att visualisera alla tester som kon figurer ATS via [anslutnings övervakaren](../../network-watcher/connection-monitor-overview.md) och anslutnings övervakaren (klassisk) för den valda uppsättningen prenumerationer.
 
@@ -108,10 +108,12 @@ Diagnostic Toolkit ger till gång till alla diagnostiska funktioner som är till
 
 ![Skärm bild som visar fliken Diagnostic Toolkit.](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="onboarded-resources"></a>Inbyggda resurser 
+
+Inbyggda resurser har inbyggda arbets böcker och beroende vyer. För tillfället inbyggda resurser är virtuella WAN, Application Gateway, Load Balancer och ExpressRoute.
+
 ## <a name="troubleshooting"></a>Felsökning 
-
 Allmän fel söknings vägledning finns i [artikeln](troubleshoot-workbooks.md)om dedikerad insikter om arbets böcker-baserade insikter.
-
 Det här avsnittet hjälper dig att diagnostisera och felsöka vanliga problem som kan uppstå när du använder Azure Monitor för nätverk. 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>Hur gör jag för att lösa prestanda problem eller fel?

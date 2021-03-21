@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: alkohli
 ms.openlocfilehash: 348ddff56ed61cd608d6b9f28417e7cd4c4e6b13
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563971"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurera och köra en modul på GPU på Azure Stack Edge Pro-enhet
@@ -51,7 +51,7 @@ Konfigurera en modul så att den använder GPU: n på din Azure Stack Edge Pro-e
    |Prenumeration      | Prenumeration som används av Azure Stack Edge-resursen. |
    |Resursgrupp    | Resurs grupp som används av Azure Stack Edge-resursen. |
    |IoT Hub           | Välj från **Skapa ny** eller **Använd befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I båda fallen använder IoT Hub-resursen samma prenumeration och resursgrupp som Azure Stack Edge-resursen använder.     |
-   |Namn              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
+   |Name              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
 
    När du är klar med inställningarna väljer du **Granska + skapa**. Granska inställningarna för din IoT Hub resurs och välj **skapa**.
 

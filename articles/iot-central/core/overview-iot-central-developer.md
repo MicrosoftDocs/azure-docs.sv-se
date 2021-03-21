@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043107"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585867"
 ---
 # <a name="iot-central-device-development-guide"></a>Guide för utveckling av IoT Central enhet
 
@@ -105,7 +105,7 @@ En DTDL modell kan vara _ingen-komponent_ eller en modell _med flera komponenter
 - Ingen-komponent modell: en enkel modell använder inte inbäddade eller överlappande komponenter. Alla telemetri, egenskaper och kommandon definieras som en enda _standard komponent_. Ett exempel finns i [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -modellen.
 - Modell med flera komponenter. En mer komplex modell som innehåller två eller flera komponenter. Dessa komponenter innehåller en enda standard komponent och en eller flera ytterligare kapslade komponenter. Ett exempel finns i [temperatur styrenhets](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modellen.
 
-Läs mer i [IoT plug and Play-komponenter i modeller](../../iot-pnp/concepts-components.md)
+Läs mer i [IoT plug and Play modellerings guide](../../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="conventions"></a>Konventioner
 

@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a8d8fcd0b9b9ee1ff918ead250c88b83f86cb7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523714"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674843"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Spara sökningar och fäst data till gångar i Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Introduktion
 Azure Data Catalog tillhandahåller funktioner för identifiering av data källor. Du kan snabbt söka efter och filtrera katalogen för att hitta data källor och förstå deras avsedda syfte, vilket gör det enklare att hitta rätt data för jobbet i handen.
 
@@ -24,7 +27,7 @@ En sparad sökning i Data Catalog är en återanvändbar Sök definition per anv
 
 ### <a name="create-a-saved-search"></a>Skapa en sparad sökning
 Gör så här om du vill skapa en sparad sökning:
-1. Klicka på **Spara**i fönstret **aktuell sökning** i Azure Data Catalog Portal. 
+1. Klicka på **Spara** i fönstret **aktuell sökning** i Azure Data Catalog Portal. 
 
     ![Den aktuella Sök inställningen Spara länk](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
@@ -49,7 +52,7 @@ Gör något av följande:
 
 * Om du vill ange ett nytt namn för den sparade sökningen väljer du **Byt namn**. Sök definitionen har inte ändrats.
 
-* Om du vill ta bort den sparade sökningen från listan väljer du **ta bort**och bekräftar sedan borttagningen.
+* Om du vill ta bort den sparade sökningen från listan väljer du **ta bort** och bekräftar sedan borttagningen.
 
 * Om du vill markera den sparade sökningen som standard Sök väljer du **Spara som standard**. Om du utför en "Tom" sökning från Azure Data Catalog start sida körs din standard sökning. Dessutom visas den sökning som är markerad som standard Sök högst upp i listan över **sparade sökningar** .
 

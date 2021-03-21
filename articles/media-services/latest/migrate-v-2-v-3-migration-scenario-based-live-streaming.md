@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955301"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598294"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Vägledning för Live streaming-scenario-baserad migrering
 
@@ -42,7 +42,7 @@ Testa det nya sättet att leverera Live-händelser med Media Services innan du f
 - Om du behöver snabb start av Live-händelser går du igenom de nya funktionerna i [vänte läge](live-events-outputs-concept.md#standby-mode) .
 - Om du vill skriva över din Live-händelse medan den inträffar kan du utforska den nya funktionen för [direkt avskriftning](live-transcription.md) .
 - Skapa 24x7x365 Live-händelser i v3 om du behöver en längre strömnings tid.
-- Använd [Event Grid](monitor-events-portal-how-to.md) för att övervaka dina Live-händelser.
+- Använd [Event Grid](monitoring/monitor-events-portal-how-to.md) för att övervaka dina Live-händelser.
 
 Se begrepp för Live-händelser, självstudier och hur du vägleder dig nedan för olika steg.
 

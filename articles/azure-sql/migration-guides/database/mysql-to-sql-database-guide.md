@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: d59a4fc2cbf52d95e6b5a5100b5ffe06c5dbed7e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ff7b2115b396bf42cdeffa9c58bffb1802e980d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565341"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721893"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Guide för migrering: MySQL till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -42,10 +42,18 @@ Genom att använda [SQL Server Migration Assistant för MySQL](https://www.micro
 Utför följande steg för att skapa en utvärdering.
 
 1. Öppna SQL Server Migration Assistant för MySQL. 
-1. Välj **fil** på menyn och välj sedan **nytt projekt**. Ange projekt namnet, en plats där du vill spara projektet.
-1. Välj **Azure SQL Database** som mål för migrering. 
+1. Välj **fil** på menyn och välj sedan **nytt projekt**. Ange projekt namnet, en plats där du vill spara projektet. Välj **Azure SQL Database** som mål för migrering. 
+
+   ![Nytt projekt](./media/mysql-to-sql-database-guide/new-project.png)
+
 1. Välj **Anslut till MySQL** och ange anslutnings information för att ansluta MySQL-servern. 
+
+   ![Anslut till MySQL](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
+
 1. Högerklicka på MySQL-schemat i **MySQL metadata Explorer** och välj **Skapa rapport**. Alternativt kan du välja **Skapa rapport** i det övre navigerings fältet. 
+
+   ![Skapa rapport](./media/mysql-to-sql-database-guide/create-report.png)
+
 1. Granska HTML-rapporten för konverterings statistik, samt fel och varningar. Analysera den för att förstå konverterings problem och lösningar. 
 
    Den här rapporten kan också nås från mappen SSMA-projekt som har marker ATS på den första skärmen. I exemplet ovan letar du upp report.xml-filen från:
@@ -54,9 +62,19 @@ Utför följande steg för att skapa en utvärdering.
  
    och öppna den i Excel för att få en inventering av MySQL-objekt och den insats som krävs för att utföra schema konverteringar.
 
+    ![Konverterings rapport](./media/mysql-to-sql-database-guide/conversion-report.png)
+
 ### <a name="validate-data-types"></a>Verifiera data typer
 
-Innan du utför schema konverteringen verifierar du standard typ mappningar eller ändrar dem baserat på kraven. Du kan göra detta genom att gå till menyn verktyg och välja "projekt inställningar" eller ändra typ mappningen för varje tabell genom att markera tabellen i "MySQL metadata Explorer".
+Validera standard mappningar för data typer och ändra dem baserat på krav vid behov. Det gör du på följande sätt: 
+
+1. Välj **verktyg** på menyn. 
+1. Välj **projekt inställningar**. 
+1. Välj fliken **typ mappningar** . 
+
+   ![Typ mappningar](./media/mysql-to-sql-database-guide/type-mappings.png)
+
+1. Du kan ändra typ mappningen för varje tabell genom att välja tabellen i den **MySQL-metadata Explorer**. 
 
 ### <a name="convert-schema"></a>Konvertera schema 
 
@@ -64,9 +82,22 @@ Följ dessa steg om du vill konvertera schemat:
 
 1. Valfritt Om du vill konvertera dynamiska eller ad hoc-frågor högerklickar du på noden och väljer **Lägg till instruktion**. 
 1. Välj **Anslut till Azure SQL Database** från det övre navigerings fältet och ange anslutnings information. Du kan välja att ansluta till en befintlig databas eller ange ett nytt namn, vilket innebär att en databas skapas på mål servern.
+
+   ![Anslut till SQL](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
+ 
 1. Högerklicka på schemat och välj **konvertera schema**. 
+
+   ![Konvertera schema](./media/mysql-to-sql-database-guide/convert-schema.png)
+
 1. När schemat har konverterats jämför du den konverterade koden till den ursprungliga koden för att identifiera eventuella problem. 
 
+   Jämför konverterade objekt med ursprungliga objekt: 
+
+   ![ Jämför och granska objekt ](./media/mysql-to-sql-database-guide/table-comparison.png)
+
+   Jämför konverterade procedurer med ursprungliga procedurer: 
+
+   ![Jämför och granska objekt kod](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
 
 ## <a name="migrate"></a>Migrera 
@@ -76,9 +107,25 @@ När du har slutfört utvärderingen av dina databaser och åtgärdat eventuella
 Följ dessa steg om du vill publicera schemat och migrera data: 
 
 1. Högerklicka på databasen i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**. Den här åtgärden publicerar MySQL-schemat till Azure SQL Database.
+
+   ![Synkronisera med databas](./media/mysql-to-sql-database-guide/synchronize-database.png)
+
+   Granska mappningen mellan käll projektet och målet:
+
+   ![Synkronisera med databas granskning](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
+
 1. Högerklicka på MySQL-schemat från **Utforskaren MySQL metadata** och välj **migrera data**. Alternativt kan du välja **migrera data** från den översta navigerings raden. 
+
+   ![Migrera data](./media/mysql-to-sql-database-guide/migrate-data.png)
+
 1. När migreringen är klar kan du Visa **data flyttnings** rapporten: 
+
+   ![Data flyttnings rapport](./media/mysql-to-sql-database-guide/data-migration-report.png)
+
 1.  Verifiera migreringen genom att granska data och schema på Azure SQL Database med SQL Server Management Studio (SSMS).
+
+    ![Validera i SSMA](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
+
 
 
 ## <a name="post-migration"></a>Efter migreringen 

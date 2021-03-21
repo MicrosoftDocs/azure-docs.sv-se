@@ -4,10 +4,10 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.openlocfilehash: 6a09d435613a715d4ae4e162f42f59402d0bc5cd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102444640"
 ---
 Kom igång med Custom Vision klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för att skapa en modell för objekt identifiering. Du skapar ett projekt, lägger till taggar, tränar projektet på exempel bilder och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
@@ -48,7 +48,7 @@ När du har skapat ett nytt projekt installerar du klient biblioteket genom att 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `custom-vision-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*. 
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `custom-vision-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*. 
 
 ```console
 dotnet new console -n custom-vision-quickstart
@@ -84,7 +84,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 > [!TIP]
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs), som innehåller kod exemplen i den här snabb starten.
 
-Från projekt katalogen öppnar du filen *program.cs* och lägger till följande `using` direktiv:
+Från projekt katalogen öppnar du filen *program. cs* och lägger till följande `using` direktiv:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_imports)]
 

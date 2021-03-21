@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102613467"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Händelse agg regering och insamling med Windows Azure-diagnostik
@@ -282,7 +282,7 @@ Om du vill aktivera den **grundläggande operativa kanalen** för vår rekommend
 
 Om du vill uppdatera diagnostiken för att samla in loggar från nya EventSource-kanaler som representerar ett nytt program som du håller på att distribuera, utför du samma steg som tidigare beskrivits för installation av diagnostik för ett befintligt kluster.
 
-Uppdatera `EtwEventSourceProviderConfiguration` avsnittet i template.jspå filen för att lägga till poster för de nya EventSource-kanalerna innan du installerar konfigurations uppdateringen med hjälp av `New-AzResourceGroupDeployment` PowerShell-kommandot. Namnet på händelse källan definieras som en del av koden i den Visual Studio-genererade ServiceEventSource.cs-filen.
+Uppdatera `EtwEventSourceProviderConfiguration` avsnittet i template.jspå filen för att lägga till poster för de nya EventSource-kanalerna innan du installerar konfigurations uppdateringen med hjälp av `New-AzResourceGroupDeployment` PowerShell-kommandot. Namnet på händelse källan definieras som en del av koden i Visual Studio-genererad ServiceEventSource. CS-fil.
 
 Om din händelse källa exempelvis kallas My-EventSource, lägger du till följande kod för att placera händelserna från My-Eventsource i en tabell med namnet MyDestinationTableName.
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.openlocfilehash: c1ca594626d4384c9dfb62990ee2017d2094fca4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371863"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights för Worker service-program (icke-HTTP-program)
@@ -227,7 +227,7 @@ Det fullständiga exemplet delas [här](https://github.com/microsoft/Application
 
 1. Installera [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) -paketet i programmet.
 
-2. Ändra Program.cs enligt exemplet nedan.
+2. Ändra program. cs enligt exemplet nedan.
 
 ```csharp
     using Microsoft.ApplicationInsights;

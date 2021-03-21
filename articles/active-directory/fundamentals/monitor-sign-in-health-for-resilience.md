@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2021
+ms.date: 03/17/2021
 ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f2092c3f6402d5c6e7a0bc8c93015d3a900b9e38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650999"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588005"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Övervaka programmets inloggnings hälsa för återhämtning
 
@@ -43,7 +43,7 @@ Vid en påverkande händelse kan två saker hända:
 
 Den här artikeln beskriver hur du konfigurerar arbets boken för inloggnings hälsa för att övervaka avbrott i användarnas inloggnings program.
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure AD-klientorganisation.
 
@@ -56,8 +56,6 @@ Den här artikeln beskriver hur du konfigurerar arbets boken för inloggnings h�
 * Azure AD-loggar integrerade med Azure Monitor loggar
 
    * Lär dig hur du [integrerar inloggnings loggar för Azure AD med Azure Monitor Stream.](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
- 
 
 ## <a name="configure-the-app-sign-in-health-workbook"></a>Konfigurera arbets boken för appens inloggnings hälsa 
 
@@ -78,11 +76,11 @@ Som standard visar arbets boken två grafer. Dessa diagram Jämför vad som hän
 
 **Det första diagrammet är en timmes användning (antalet lyckade användare)**. Genom att jämföra det aktuella antalet lyckade användare till en typisk användnings period får du en utgångs punkt i användningen som kan kräva en undersökning. En minskning av lyckade användnings frekvenser kan hjälpa till att identifiera prestanda-och användnings problem som fel frekvensen inte kan göra. Om användarna till exempel inte kan komma åt ditt program för att försöka logga in, så skulle det inte finnas några problem, bara en direkt användning. En exempel fråga för dessa data finns i följande avsnitt.
 
-Den andra grafen är en timmes problem frekvens. En ökning i fel frekvens kan tyda på ett problem med dina autentiseringsmekanismer. Felfrekvensen kan bara mätas om användarna kan försöka autentisera sig. Om användarna inte kan få åtkomst till att göra försöket visas inte felen.
+**Den andra grafen är en timmes problem frekvens**. En ökning i fel frekvens kan tyda på ett problem med dina autentiseringsmekanismer. Felfrekvensen kan bara mätas om användarna kan försöka autentisera sig. Om användarna inte kan få åtkomst till att göra försöket visas inte felen.
 
 Du kan konfigurera en avisering som meddelar en specifik grupp när användningen eller felfrekvensen överskrider ett angivet tröskelvärde. En exempel fråga för dessa data finns i följande avsnitt.
 
- ## <a name="configure-the-query-and-alerts"></a>Konfigurera frågan och aviseringar
+## <a name="configure-the-query-and-alerts"></a>Konfigurera frågan och aviseringar
 
 Du skapar varnings regler i Azure Monitor och kan automatiskt köra sparade frågor eller anpassade loggs ökningar med jämna mellanrum.
 
@@ -96,116 +94,18 @@ Använd följande instruktioner för att skapa e-postaviseringar baserat på de 
 
 Mer information om hur du skapar, visar och hanterar logg aviseringar med Azure Monitor finns i [Hantera logg aviseringar](../../azure-monitor/alerts/alerts-log.md).
 
- 
 1. I arbets boken väljer du **Redigera** och väljer sedan **ikonen fråga** ovanför den högra sidan i grafen.   
 
    [![Skärm bild som visar redigera arbets bok.](./media/monitor-sign-in-health-for-resilience/edit-workbook.png)](./media/monitor-sign-in-health-for-resilience/edit-workbook.png)
 
    Fråge loggen öppnas.
 
-  [![Skärm bild som visar loggen för frågor.](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
+   [![Skärm bild som visar loggen för frågor.](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
 ‎
 
-2. Kopiera något av följande exempel skript för en ny Kusto-fråga.
-
-**Kusto fråga för att ta bort användning**
-
-```Kusto
-
-let thisWeek = SigninLogs
-
-| where TimeGenerated > ago(1h)
-
-| project TimeGenerated, AppDisplayName, UserPrincipalName
-
-//| where AppDisplayName contains "Office 365 Exchange Online"
-
-| summarize users = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-let lastWeek = SigninLogs
-
-| where TimeGenerated between((ago(1h) - totimespan(2d))..(now() - totimespan(2d)))
-
-| project TimeGenerated, AppDisplayName, UserPrincipalName
-
-//| where AppDisplayName contains "Office 365 Exchange Online"
-
-| summarize usersPriorWeek = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-thisWeek
-
-| join
-
-(
-
- lastWeek
-
-)
-
-on rn
-
-| project TimeGenerated, users, usersPriorWeek, difference = abs(users - usersPriorWeek), max = max_of(users, usersPriorWeek)
-
-| where (difference * 2.0) / max > 0.9
-
-```
-
- 
-
-**Kusto fråga för ökning i felgrad**
-
-
-```kusto
-
-let thisWeek = SigninLogs
-
-| where TimeGenerated > ago(1 h)
-
-| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
-
-| where AppDisplayName == **APP NAME**
-
-| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h)
-
-| project TimeGenerated, failureRate = (failure * 1.0) / ((failure + success) * 1.0)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-let lastWeek = SigninLogs
-
-| where TimeGenerated between((ago(1 h) - totimespan(2d))..(ago(1h) - totimespan(2d)))
-
-| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
-
-| where AppDisplayName == **APP NAME**
-
-| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h)
-
-| project TimeGenerated, failureRatePriorWeek = (failure * 1.0) / ((failure + success) * 1.0)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-thisWeek
-
-| join (lastWeek) on rn
-
-| project TimeGenerated, failureRate, failureRatePriorWeek
-
-| where abs(failureRate – failureRatePriorWeek) > **THRESHOLD VALUE**
-
-```
+2. Kopiera ett av exempel skripten för en ny Kusto-fråga.  
+   * [Kusto fråga för ökning i felgrad](#kusto-query-for-increase-in-failure-rate)
+   * [Kusto fråga för att ta bort användning](#kusto-query-for-drop-in-usage)
 
 3. Klistra in frågan i fönstret och välj **Kör**. Se till att du ser det slutförda meddelandet som visas i bilden nedan och resultaten under meddelandet.
 
@@ -222,7 +122,7 @@ thisWeek
  
    * **Tröskelvärde**: 0. Det här värdet meddelar om eventuella resultat.
 
-   * **Utvärderings period (i minuter)**: 60. Det här värdet ser ut ungefär en gång i timmen
+   * **Utvärderings period (i minuter)**: 2880. Det här värdet ser ut ungefär en gång i timmen
 
    * **Frekvens (i minuter)**: 60. Det här värdet anger utvärderings perioden till en gång per timme för den föregående timmen.
 
@@ -254,9 +154,8 @@ thisWeek
 
    [![Skärm bild som visar knappen Spara fråga.](./media/monitor-sign-in-health-for-resilience/save-query.png)](./media/monitor-sign-in-health-for-resilience/save-query.png)
 
-
-
 ### <a name="refine-your-queries-and-alerts"></a>Förfina dina frågor och aviseringar
+
 Ändra dina frågor och aviseringar för maximal effektivitet.
 
 * Se till att testa dina aviseringar.
@@ -267,11 +166,135 @@ thisWeek
 
 * Aviserings frågan i Azure Monitor får bara innehålla resultat från de senaste 48 timmarna. [Detta är en aktuell begränsning efter design](https://github.com/MicrosoftDocs/azure-docs/issues/22637).
 
+## <a name="sample-scripts"></a>Exempelskript
+
+### <a name="kusto-query-for-increase-in-failure-rate"></a>Kusto fråga för ökning i felgrad
+
+   Kvoten längst ned kan justeras vid behov och representerar den procentuella förändringen i trafiken under den senaste timmen jämfört med samma tid igår. 0,5 innebär att det finns en skillnad på 50% i trafiken.
+
+```kusto
+
+let today = SigninLogs
+
+| where TimeGenerated > ago(1h) // Query failure rate in the last hour
+ 
+| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
+
+// Optionally filter by a specific application
+
+//| where AppDisplayName == **APP NAME**
+
+| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h) // hourly failure rate
+
+| project TimeGenerated, failureRate = (failure * 1.0) / ((failure + success) * 1.0)
+
+| sort by TimeGenerated desc
+
+| serialize rowNumber = row_number();
+
+let yesterday = SigninLogs
+
+| where TimeGenerated between((ago(1h) - totimespan(1d))..(now() - totimespan(1d))) // Query failure rate at the same time yesterday
+
+| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
+
+// Optionally filter by a specific application
+
+//| where AppDisplayName == **APP NAME**
+
+| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h) // hourly failure rate at same time yesterday
+
+| project TimeGenerated, failureRateYesterday = (failure * 1.0) / ((failure + success) * 1.0)
+
+| sort by TimeGenerated desc
+
+| serialize rowNumber = row_number();
+today
+| join (yesterday) on rowNumber // join data from same time today and yesterday
+
+| project TimeGenerated, failureRate, failureRateYesterday
+
+// Set threshold to be the percent difference in failure rate in the last hour as compared to the same time yesterday
+
+| where abs(failureRate - failureRateYesterday) > 0.5
+
+```
+
+### <a name="kusto-query-for-drop-in-usage"></a>Kusto fråga för att ta bort användning
+
+I följande fråga jämför vi trafiken under den senaste timmen till samma tid igår.
+Vi undantar lördag, söndag och måndag eftersom det förväntas på dessa dagar att det skulle finnas stor variation i trafiken på samma tidpunkt som föregående dag. 
+
+Kvoten längst ned kan justeras vid behov och representerar den procentuella förändringen i trafiken under den senaste timmen jämfört med samma tid igår. 0,5 innebär att det finns en skillnad på 50% i trafiken.
+
+*Du bör justera dessa värden så att de passar din verksamhets modell*.
+
+```Kusto
+ let today = SigninLogs // Query traffic in the last hour
+
+| where TimeGenerated > ago(1h)
+
+| project TimeGenerated, AppDisplayName, UserPrincipalName
+
+// Optionally filter by AppDisplayName to scope query to a single application
+
+//| where AppDisplayName contains "Office 365 Exchange Online"
+
+| summarize users = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr) // Count distinct users in the last hour
+
+| sort by TimeGenerated desc
+
+| serialize rn = row_number();
+
+let yesterday = SigninLogs // Query traffic at the same hour yesterday
+
+| where TimeGenerated between((ago(1h) - totimespan(1d))..(now() - totimespan(1d))) // Count distinct users in the same hour yesterday
+
+| project TimeGenerated, AppDisplayName, UserPrincipalName
+
+// Optionally filter by AppDisplayName to scope query to a single application
+
+//| where AppDisplayName contains "Office 365 Exchange Online"
+
+| summarize usersYesterday = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
+
+| sort by TimeGenerated desc
+
+| serialize rn = row_number();
+
+today
+| join // Join data from today and yesterday together
+(
+yesterday
+)
+on rn
+
+// Calculate the difference in number of users in the last hour compared to the same time yesterday
+
+| project TimeGenerated, users, usersYesterday, difference = abs(users - usersYesterday), max = max_of(users, usersYesterday)
+
+ extend ratio = (difference * 1.0) / max // Ratio is the percent difference in traffic in the last hour as compared to the same time yesterday
+
+// Day variable is the number of days since the previous Sunday. Optionally ignore results on Sat, Sun, and Mon because large variability in traffic is expected.
+
+| extend day = dayofweek(now())
+
+| where day != time(6.00:00:00) // exclude Sat
+
+| where day != time(0.00:00:00) // exclude Sun
+
+| where day != time(1.00:00:00) // exclude Mon
+
+| where ratio > 0.7 // Threshold percent difference in sign-in traffic as compared to same hour yesterday
+
+```
+
 ## <a name="create-processes-to-manage-alerts"></a>Skapa processer för att hantera aviseringar
 
 När du har konfigurerat frågan och aviseringarna skapar du affärs processer för att hantera aviseringarna.
 
 * Vem ska övervaka arbets boken och när?
+
 * Vem kommer att undersöka när en avisering genereras?
 
 * Vilka är kommunikations behoven? Vem kommer att skapa kommunikationen och vem som ska få dem?
@@ -281,8 +304,3 @@ När du har konfigurerat frågan och aviseringarna skapar du affärs processer f
 ## <a name="next-steps"></a>Nästa steg
 
 [Läs mer om arbets böcker](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
-
- 
-
- 
-

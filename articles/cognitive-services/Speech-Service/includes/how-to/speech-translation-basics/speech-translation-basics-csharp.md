@@ -6,10 +6,10 @@ ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5efe6e9cf3227857300d649a8c2ecb4973627335
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102445119"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att identifiera mänskligt tal och översätta den till andra språk. I den här snabb starten lär du dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativ tal översättning. Den här snabb starten behandlar ämnen, inklusive:
@@ -32,7 +32,7 @@ Innan du kan göra något måste du installera talet SDK. Beroende på din platt
 
 ## <a name="import-dependencies"></a>Importera beroenden
 
-Om du vill köra exemplen i den här artikeln inkluderar du följande `using` instruktioner överst i *program.cs* -filen.
+Om du vill köra exemplen i den här artikeln inkluderar du följande `using` instruktioner överst i filen *program. cs* .
 
 ```csharp
 using System;

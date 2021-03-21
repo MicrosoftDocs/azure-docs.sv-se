@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b0e8e2e0ee7ce730f6bf00d7e5ef4bd4eae65ce7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfaab3f095dbf2f1657f5ebb587a3de958d11cda
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666935"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721196"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Översikt över virtuella datorer i HB-serien
 
@@ -51,13 +51,13 @@ Följande diagram visar ansvars fördelning av kärnor som är reserverade för 
 |-----------------------------|-----------------------|
 | Maximal jobb storlek för MPI            | 18000 kärnor (300 virtuella datorer i en skalnings uppsättning för en virtuell dator med singlePlacementGroup = true)  |
 | MPI-stöd                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, Platform MPI  |
-| Ytterligare ramverk       | Enhetlig kommunikation X, libfabric, PGAS |
+| Ytterligare ramverk       | UCX, libfabric, PGAS |
 | Azure Storage support       | Standard-och Premium-diskar (högst 4 diskar) |
-| OS-stöd för IOV RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
-| Stöd för Orchestrator        | CycleCloud, batch  |
+| OS-stöd för IOV RDMA   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Stöd för Orchestrator        | CycleCloud, batch, AKS; [kluster konfigurations alternativ](../../sizes-hpc.md#cluster-configuration-options) |
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [AMD EPYC-arkitekturen](https://bit.ly/2Epv3kC) och [multi-chip-arkitekturer](https://bit.ly/2GpQIMb). Mer detaljerad information finns i HPC- [justerings guiden för AMD EPYC-processorer](https://bit.ly/2T3AWZ9).
-- Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

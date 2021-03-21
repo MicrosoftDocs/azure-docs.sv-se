@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176424"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598022"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hantera bibliotek för Apache Spark i Azure Synapse Analytics
 Bibliotek ger återanvändbar kod som du kanske vill inkludera i dina program eller projekt. 
@@ -60,10 +60,6 @@ Mer information om dessa funktioner finns i dokumentationen om hantering av [pyt
 När du utför interaktiv data analys eller maskin inlärning kan du ofta se att du vill testa nya paket eller så kan du behöva paket som inte redan finns i Apache Spark-poolen. I stället för att uppdatera poolinställningarna kan användarna nu använda paket som är baserade på sessioner för att lägga till, hantera och uppdatera sessions beroenden.
 
 Med session-omfångs paket kan användare definiera paket beroenden i början av sessionen. När du installerar ett paket som omfattas av en session har endast den aktuella sessionen åtkomst till de angivna paketen. Detta innebär att de här sessionens omfångs paket inte påverkar andra sessioner eller jobb med samma Apache Spark pool. Dessutom installeras dessa bibliotek ovanpå bas körnings-och Poolnivå-paketen. 
-
-Dessa paket läggs automatiskt till i python-miljön. Paketen får inte anges i *requirements.txts* filen.
-
-Observera att den här metoden för närvarande endast Suports `*.whl` filer. Lägg inte till några `*.tar.gz` filer i behållaren.
 
 Mer information om hur du hanterar sessionsbaserade paket finns i följande instruktions guider:
 

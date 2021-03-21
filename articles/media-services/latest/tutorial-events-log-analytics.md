@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571859"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596713"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Självstudie: lagra Azure Media Services händelser i Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services händelser
 
-Azure Media Services v3 genererar händelser på [Azure Event Grid](media-services-event-schemas.md). Du kan prenumerera på händelser på många sätt och lagra dem i data lager. I den här självstudien kommer du att prenumerera på Media Services händelser med hjälp av ett [logg program flöde](https://azure.microsoft.com/services/logic-apps/). Logic app utlöses för varje händelse och lagrar händelsens innehåll i Azure Log Analytics. När händelserna finns i Azure Log Analytics kan du använda andra Azure-tjänster för att skapa en instrument panel, övervakare och avisering för dessa händelser, men vi kommer inte att se den i den här självstudien.
+Azure Media Services v3 genererar händelser på [Azure Event Grid](monitoring/media-services-event-schemas.md). Du kan prenumerera på händelser på många sätt och lagra dem i data lager. I den här självstudien kommer du att prenumerera på Media Services händelser med hjälp av ett [logg program flöde](https://azure.microsoft.com/services/logic-apps/). Logic app utlöses för varje händelse och lagrar händelsens innehåll i Azure Log Analytics. När händelserna finns i Azure Log Analytics kan du använda andra Azure-tjänster för att skapa en instrument panel, övervakare och avisering för dessa händelser, men vi kommer inte att se den i den här självstudien.
 
 > [!NOTE]
 > Det skulle vara bra om du redan är bekant med att använda FFmpeg som din lokala kodare.  Annars är det OK. Kommando raden och anvisningarna för att strömma en video finns nedan.

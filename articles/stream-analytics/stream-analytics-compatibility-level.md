@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094097"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606250"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitetsnivå för Azure Stream Analytics jobb
 
-I den här artikeln beskrivs alternativet kompatibilitetsnivå i Azure Stream Analytics. Stream Analytics är en hanterad tjänst, med regelbundna funktions uppdateringar och prestanda förbättringar. De flesta av tjänstens körnings uppdateringar görs automatiskt tillgängliga för slutanvändare. 
+I den här artikeln beskrivs alternativet kompatibilitetsnivå i Azure Stream Analytics.
 
-Vissa nya funktioner i tjänsten kan dock medföra en större förändring, till exempel en ändring av beteendet för ett befintligt jobb eller en ändring i hur data förbrukas i jobb som körs. Du kan behålla dina befintliga Stream Analytics-jobb som körs utan större ändringar genom att lämna inställningen för kompatibilitetsnivå lägre. När du är redo för de senaste körnings funktionerna kan du välja att öka kompatibilitetsnivån. 
+Stream Analytics är en hanterad tjänst med [regelbundna funktions uppdateringar och prestanda förbättringar](https://azure.microsoft.com/updates/?product=stream-analytics). De flesta av tjänstens körnings uppdateringar görs automatiskt tillgängliga för slutanvändare, oberoende av kompatibilitetsnivån. Men när en ny funktion medför en ändring av beteendet hos befintliga jobb, eller om en ändring av hur data förbrukas i jobb som körs, så introducerar vi den här ändringen under en ny kompatibilitetsnivå. Du kan behålla dina befintliga Stream Analytics-jobb som körs utan större ändringar genom att lämna inställningen för kompatibilitetsnivå lägre. När du är redo för de senaste körnings funktionerna kan du välja att öka kompatibilitetsnivån.
+
 
 ## <a name="choose-a-compatibility-level"></a>Välj en kompatibilitetsnivå
 
-Kompatibilitetsnivå styr körnings beteendet för ett Stream Analytics-jobb. 
+Kompatibilitetsnivå styr körnings beteendet för ett Stream Analytics-jobb.
 
 Azure Stream Analytics stöder för närvarande tre kompatibilitetsnivå:
 
-* 1,0 – ursprunglig kompatibilitetsnivå, som introducerades under allmän tillgänglighet för Azure Stream Analytics flera år sedan.
-* 1,1-tidigare beteende
 * 1,2-senaste beteende med de senaste förbättringarna
+* 1,1-tidigare beteende
+* 1,0 – ursprunglig kompatibilitetsnivå, som introducerades under allmän tillgänglighet för Azure Stream Analytics flera år sedan. 
 
 När du skapar ett nytt Stream Analytics jobb är det en bra idé att skapa det med den senaste kompatibilitetsnivån. Starta din jobb design som förlitar sig på de senaste beteendena, för att undvika ökad förändring och komplexitet senare.
 

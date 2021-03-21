@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 17f3c31334517ad560cd40fd22b4def031279ca5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 08ab3c9181f4fdcfc9b55bf80c53f88ff26f90ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741063"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584411"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopiera data från Azure Blob Storage till en databas i Azure SQL Database genom att använda Azure Data Factory
 
@@ -90,7 +90,7 @@ I det här steget skapar du en datafabrik och startar sedan användargränssnitt
 
    Namnet på Azure Data Factory måste vara *globalt unikt*. Ange ett annat namn för datafabriken om du får ett felmeddelande om namnvärdet. (till exempel Dittnamnadftutorialdatafactory). Se artikeln [Namnregler för Data Factory](naming-rules.md) för namnregler för Data Factory-artefakter.
 
-     ![Ny datafabrik](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fel meddelande för ny data fabrik för dubblettnamn.":::
 
 7. Under **Version** väljer du **V2**.
 8. Välj fliken **git-konfiguration** högst upp och markera kryss rutan **Konfigurera git senare** .

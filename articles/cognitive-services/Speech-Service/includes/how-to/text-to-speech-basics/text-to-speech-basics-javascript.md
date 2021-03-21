@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bfaa9f649fd4d44e45b6d4a513e74e12e169c4f8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428258"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719680"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -30,7 +30,7 @@ Den här artikeln förutsätter att du har ett Azure-konto och en tjänst resurs
 ## <a name="install-the-speech-sdk"></a>Installera Speech SDK
 
 Innan du kan göra något måste du installera <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Speech SDK för Java Script </a>. Använd följande instruktioner, beroende på plattform:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webbläsare </a>
 
@@ -162,14 +162,14 @@ För många scenarier i tal program utveckling behöver du förmodligen resulter
 * Integrera resultatet med andra API: er eller tjänster.
 * Ändra ljud data, skriv anpassade `.wav` rubriker osv.
 
-Det är enkelt att göra den här ändringen från föregående exempel. Ta först bort `AudioConfig` blocket, eftersom du kommer att hantera utmatnings beteendet manuellt från den här punkten och därefter för ökad kontroll. Pass sedan `undefined` efter `AudioConfig` i `SpeechSynthesizer` konstruktorn. 
+Det är enkelt att göra den här ändringen från föregående exempel. Ta först bort `AudioConfig` blocket, eftersom du kommer att hantera utmatnings beteendet manuellt från den här punkten och därefter för ökad kontroll. Pass sedan `undefined` efter `AudioConfig` i `SpeechSynthesizer` konstruktorn.
 
 > [!NOTE]
 > `undefined`Att skicka till `AudioConfig` , i stället för att utesluta det som i exemplet ovan, spelar inte upp ljudet som standard på den aktuella aktiva utmatnings enheten.
 
-Den här gången sparar du resultatet i en [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) variabel. `SpeechSynthesisResult.audioData`Egenskapen returnerar en `ArrayBuffer` av utdata, standard typen för webbläsarens data ström. För Server kod konverterar du arrayBuffer till en buffert. 
+Den här gången sparar du resultatet i en [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) variabel. `SpeechSynthesisResult.audioData`Egenskapen returnerar en `ArrayBuffer` av utdata, standard typen för webbläsarens data ström. För Server kod konverterar du arrayBuffer till en buffert.
 
-Följande kod fungerar för kod på klient sidan. 
+Följande kod fungerar för kod på klient sidan.
 
 ```javascript
 function synthesizeSpeech() {
@@ -189,9 +189,9 @@ function synthesizeSpeech() {
 }
 ```
 
-Härifrån kan du implementera anpassade beteenden med det resulterande `ArrayBuffer` objektet. ArrayBuffer är en vanlig typ som kan tas emot i en webbläsare och spelas från det här formatet. 
+Härifrån kan du implementera anpassade beteenden med det resulterande `ArrayBuffer` objektet. ArrayBuffer är en vanlig typ som kan tas emot i en webbläsare och spelas från det här formatet.
 
-Om du behöver arbeta med data som en data ström i stället för en ArrayBuffer måste du konvertera objektet till en data ström för all serverbaserad kod. 
+Om du behöver arbeta med data som en data ström i stället för en ArrayBuffer måste du konvertera objektet till en data ström för all serverbaserad kod.
 
 ```javascript
 function synthesizeSpeech() {
@@ -342,3 +342,11 @@ Om du vill växla till en neurala röst ändrar `name` du till ett av [röst alt
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>Hämta händelser för ansikts attityd
+
+Tal kan vara ett bra sätt att köra animeringen av ansikts uttryck.
+[Visemes](../../../how-to-speech-synthesis-viseme.md) används ofta för att representera viktiga faktorer i observerade tal, till exempel positionen för läppar, Jaw och tunga när de skapar en viss fonem.
+Du kan prenumerera på händelsen viseme i tal-SDK.
+Sedan kan du använda viseme-händelser för att animera FACET för ett Character som tal ljud spelas upp.
+Lär dig [hur du hämtar viseme-händelser](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

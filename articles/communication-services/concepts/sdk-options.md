@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: 01a5f4a947f0b89b5881eddb3c743b9a9b184b19
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495648"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientbibliotek och REST-API:er
@@ -41,7 +41,7 @@ Observera att klient biblioteken Azure Resource Manager, identitet och SMS fokus
 
 Publicerings platser för enskilda klient biblioteks paket beskrivs nedan.
 
-| Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Annat                          |
+| Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Övrigt                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Gå via GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Ej tillämpligt      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |

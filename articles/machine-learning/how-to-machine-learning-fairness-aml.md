@@ -12,10 +12,10 @@ ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
 ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100366995"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Använd Azure Machine Learning med Fairlearn-paketet med öppen källkod för att utvärdera skälighet för ML-modeller (för hands version)

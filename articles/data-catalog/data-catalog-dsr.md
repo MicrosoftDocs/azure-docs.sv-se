@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439092"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674639"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Data källor som stöds i Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Du kan publicera metadata med hjälp av ett offentligt API eller ett klick för registrerings verktyg, eller genom att manuellt ange information direkt till Azure Data Catalog webb portalen. I följande tabell sammanfattas alla data källor som stöds av katalogen idag och publicerings funktionerna för var och en. I listan visas även de externa data verktyg som varje data källa kan starta från vår portal "öppna i"-upplevelse. Den andra tabellen innehåller en mer teknisk specifikation av varje anslutnings egenskap för data källa.
 
