@@ -6,10 +6,10 @@ ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573140"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Vanliga frågor och svar om Azure Container Instances
@@ -99,7 +99,7 @@ För närvarande är skalning inte tillgängligt för behållare eller behållar
 
 Du kan [distribuera behållar grupper i ett virtuellt Azure-nätverk](container-instances-vnet.md) och delegera privata IP-adresser till behållar grupper för att dirigera trafik i VNet över dina Azure-resurser. För nätverks scenarier och begränsningar med Azure Container Instances, se [scenarier och resurser för virtuella nätverk](container-instances-virtual-network-concepts.md).
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 ### <a name="when-does-the-meter-start-running"></a>När körs mätaren?
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Självstudie: Azure Active Directory integrering med TeamSeer
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med TeamSeer i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **TeamSeer** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **TeamSeer** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Utför följande steg för att konfigurera enkel inloggning med TeamSeer i Azure
 
 1. Klicka på **Konfigurera**.
 
-    ![Installation](./media/teamseer-tutorial/ic789635.png "Installation")
+    ![Installation](./media/teamseer-tutorial/ic789635.png "Konfiguration")
 
 1. Klicka på **Konfigurera information om SAML-Provider**.
 
@@ -148,7 +148,7 @@ Utför följande steg för att konfigurera enkel inloggning med TeamSeer i Azure
 
     ![Skärm bild som visar konfiguration av SAML-Provider där du kan ange de värden som beskrivs.](./media/teamseer-tutorial/ic789638.png "SAML-inställningar")
 
-    a. I **test-e-postadresserna**anger du test användarens e-postadress.
+    a. I **test-e-postadresserna** anger du test användarens e-postadress.
   
     b. I text rutan **utfärdare** anger du utfärdar-URL: en för tjänst leverantören.
   
@@ -183,7 +183,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till TeamSeer.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **TeamSeer**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **TeamSeer**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

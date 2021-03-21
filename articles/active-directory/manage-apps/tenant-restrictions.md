@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050910"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589335"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram
 
@@ -178,9 +178,9 @@ Fiddler är en kostnads fri webb fel söknings proxy som kan användas för att 
       }
    ```
 
-Om du behöver tillåta flera klienter kan du använda ett kommatecken för att avgränsa klient namnen. Exempel:
+   Om du behöver tillåta flera klienter kan du använda ett kommatecken för att avgränsa klient namnen. Exempel:
 
-      `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
+   `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. Spara och Stäng filen CustomRules.
 
@@ -197,13 +197,13 @@ Mer information finns i Proxy Server-dokumentationen.
 
 ## <a name="blocking-consumer-applications-public-preview"></a>Blockera konsument program (offentlig för hands version)
 
-Program från Microsoft som stöder både konsument konton och organisations konton, t. ex. [OneDrive](https://onedrive.live.com/) eller [Microsoft Learn](https://docs.microsoft.com/learn/), kan ibland finnas på samma URL.  Det innebär att användare som måste komma åt den URL: en för arbets sätt också har åtkomst till den för personligt bruk, vilket kanske inte tillåts enligt dina operativa rikt linjer.
+Program från Microsoft som stöder både konsument konton och organisations konton, t. ex. [OneDrive](https://onedrive.live.com/) eller [Microsoft Learn](/learn/), kan ibland finnas på samma URL.  Det innebär att användare som måste komma åt den URL: en för arbets sätt också har åtkomst till den för personligt bruk, vilket kanske inte tillåts enligt dina operativa rikt linjer.
 
 Vissa organisationer försöker åtgärda detta genom att blockeras för `login.live.com` att blockera personliga konton från autentisering.  Detta har flera nack del:
 
 1. Blockering `login.live.com` förhindrar användning av personliga konton i B2B-gäst scenarier, vilket kan inkräktar på besökare och samarbete.
-1. [Autopilot kräver användning av `login.live.com` ](https://docs.microsoft.com/mem/autopilot/networking-requirements) för att kunna distribuera. Intune-och autopilot-scenarier kan sluta fungera när `login.live.com` blockeras.
-1. Organisatorisk telemetri och Windows-uppdateringar som är beroende av login.live.com-tjänsten för enhets-ID: n [upphör att fungera](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. [Autopilot kräver användning av `login.live.com` ](/mem/autopilot/networking-requirements) för att kunna distribuera. Intune-och autopilot-scenarier kan sluta fungera när `login.live.com` blockeras.
+1. Organisatorisk telemetri och Windows-uppdateringar som är beroende av login.live.com-tjänsten för enhets-ID: n [upphör att fungera](/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>Konfiguration för konsument program
 
@@ -216,7 +216,7 @@ För närvarande visas inte autentiseringen till klient program i [Administratö
 `restrict-msa`Principen blockerar användningen av konsument program, men tillåter flera andra typer av trafik och autentisering:
 
 1. Användar lös trafik för enheter.  Detta omfattar trafik för autopilot, Windows Update och organisatorisk telemetri.
-1. B2B-autentisering av konsument konton. Användare med Microsoft-konton som [bjuds in att samar beta med en klient](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) autentiseras till login.live.com för att få åtkomst till en resurs klient.
+1. B2B-autentisering av konsument konton. Användare med Microsoft-konton som [bjuds in att samar beta med en klient](../external-identities/redemption-experience.md#invitation-redemption-flow) autentiseras till login.live.com för att få åtkomst till en resurs klient.
     1. Den här åtkomsten kontrol leras med hjälp av `Restrict-Access-To-Tenants` rubriken för att tillåta eller neka åtkomst till den resurs klienten.
 1. "Passthrough"-autentisering, som används av många Azure-appar samt Office.com, där appar använder Azure AD för att logga in konsument användare i ett konsument sammanhang.
     1. Den här åtkomsten kontrol leras också med `Restrict-Access-To-Tenants` rubriken för att tillåta eller neka åtkomst till den särskilda "passthrough"-klienten ( `f8cdef31-a31e-4b4a-93e4-5f571e91255a` ).  Om den här klienten inte visas i `Restrict-Access-To-Tenants` listan över tillåtna domäner blockeras konsument konton av Azure AD från att logga in på dessa appar.
