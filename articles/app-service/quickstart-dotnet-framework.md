@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004108"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Skapa en ASP.NET Framework-webbapp i Azure
@@ -81,10 +81,10 @@ Skapa en ASP.NET-webbapp genom att följa dessa steg:
 
 1. I dialog rutan **värd plan** anger du värdena i följande tabell och väljer sedan **OK**.
 
-   | Inställning | Föreslaget värde | Description |
+   | Inställning | Föreslaget värde | Beskrivning |
    |-|-|-|
    | Värdplan| myAppServicePlan | Namnet på App Service-planen. |
-   | Plats | Europa, västra | Datacenter som är värd för webbappen. |
+   | Location | Europa, västra | Datacenter som är värd för webbappen. |
    | Storlek | Kostnadsfri | [Prisnivån](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) avgör tillgängliga värdfunktioner. |
 
    ![Skapa apptjänstplan](./media/quickstart-dotnet-framework/app-service-plan-framework-vs2019.png)

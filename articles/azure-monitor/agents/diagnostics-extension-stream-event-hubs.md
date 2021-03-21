@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732045"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Skicka data från Windows Azure Diagnostics-tillägget till Azure Event Hubs
@@ -37,7 +37,7 @@ Azure-diagnostik skickar alltid loggar och mått till ett Azure Storage-konto. D
 
 | Egenskap | Beskrivning |
 |:---|:---|
-| Namn | Beskrivande namn för mottagaren. Används i konfigurationen för att ange vilka data källor som ska skickas till mottagaren. |
+| Name | Beskrivande namn för mottagaren. Används i konfigurationen för att ange vilka data källor som ska skickas till mottagaren. |
 | URL  | Webb adress för händelsehubben i formatet form \<event-hubs-namespace\> . ServiceBus.Windows.net/ \<event-hub-name\> .          |
 | SharedAccessKeyName | Namnet på en delad åtkomst princip för händelsehubben som har minst en **send** -auktoritet. |
 | SharedAccessKey     | Primär eller sekundär nyckel från den delade åtkomst principen för händelsehubben. |

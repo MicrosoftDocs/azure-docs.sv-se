@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: twooley
 ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97724688"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Justera Azure Data Lake Storage Gen1 för prestanda
@@ -43,11 +43,11 @@ När du har åtgärdat käll maskin varan och nätverks anslutningens Flask hals
 
 | Verktyg          | Inställningar | Mer information                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Operationsföljdslänkkod](./data-lake-store-get-started-powershell.md) |
-| AdlCopy    | Azure Data Lake Analytics enheter | [Operationsföljdslänkkod](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (mapper) | [Operationsföljdslänkkod](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies | [Operationsföljdslänkkod](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. block. size,-m (mapper) | [Operationsföljdslänkkod](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Länk](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics enheter | [Länk](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapper) | [Länk](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies | [Länk](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. block. size,-m (mapper) | [Länk](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Strukturera din data uppsättning
 

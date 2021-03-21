@@ -12,10 +12,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
 ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99582816"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Begränsningar och begränsningar för omdirigerings-URI (svars-URL)
@@ -32,7 +32,7 @@ En omdirigerings-URI eller svars-URL är den plats där auktoriseringsservern sk
 
 Den här tabellen visar det maximala antalet omdirigerings-URI: er som du kan lägga till i en app-registrering i Microsoft Identity Platform.
 
-| Konton som är inloggade | Maximalt antal omdirigerings-URI: er | Description |
+| Konton som är inloggade | Maximalt antal omdirigerings-URI: er | Beskrivning |
 |--------------------------|---------------------------------|-------------|
 | Microsoft arbets-eller skol konton i en organisations Azure Active Directory-klient (Azure AD) | 256 | `signInAudience` fältet i applikations manifestet har angetts till antingen *AzureADMyOrg* eller *AzureADMultipleOrgs* |
 | Personliga Microsoft-konton och arbets-och skol konton | 100 | `signInAudience` fältet i applikations manifestet har angetts till *AzureADandPersonalMicrosoftAccount* |
@@ -70,7 +70,7 @@ I en utvecklings synpunkt innebär detta några saker:
 
 #### <a name="prefer-127001-over-localhost"></a>Föredra till 127.0.0.1 över localhost
 
-För att förhindra att appen bryts av felkonfigurerade brand väggar eller byter namn på nätverks gränssnitt, använder du IP-literal loopback-adress `127.0.0.1` i omdirigerings-URI i stället för `localhost` . Ett exempel är `https://127.0.0.1`.
+För att förhindra att appen bryts av felkonfigurerade brand väggar eller byter namn på nätverks gränssnitt, använder du IP-literal loopback-adress `127.0.0.1` i omdirigerings-URI i stället för `localhost` . Till exempel `https://127.0.0.1`.
 
 Du kan dock inte använda text rutan **omdirigerings-URI: er** i Azure Portal för att lägga till en loopback-baserad omdirigerings-URI som använder `http` schemat:
 

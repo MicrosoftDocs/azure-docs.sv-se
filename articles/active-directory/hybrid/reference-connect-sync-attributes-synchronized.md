@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413198"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synkronisering: Attribut synkroniserade till Azure Active Directory
@@ -39,7 +39,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 >
 
 ## <a name="microsoft-365-apps-for-enterprise"></a>Microsoft 365-appar för företag
-| Attributnamn | Användare | Kommentar |
+| Attributnamn | User | Kommentar |
 | --- |:---:| --- |
 | accountEnabled |X |Definierar om ett konto är aktiverat. |
 | nomenklatur |X | |
@@ -52,7 +52,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | userPrincipalName |X |UPN är inloggnings-ID: t för användaren. Oftast samma som [mail]-värdet. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | - |X |X | | |
@@ -152,7 +152,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | otherTelephone |X |X | | |
 | personsökare |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| Post nummer |X |X | | |
+| postalCode |X |X | | |
 | proxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
 | pwdLastSet |X | | |mekanisk egenskap. Används för att veta när redan utfärdade token ska inverifieras. Används både för synkronisering av lösen ord och Federation. |
@@ -175,7 +175,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>sharepoint online
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | authOrig |X |X |X | |
@@ -233,7 +233,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | otherTelephone |X |X | | |
 | personsökare |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| Post nummer |X |X | | |
+| postalCode |X |X | | |
 | postOfficeBox |X |X | |Det här attributet används inte för närvarande av SharePoint Online. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
@@ -257,7 +257,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Team och Skype för företag – Online
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | c |X |X | | |
@@ -289,7 +289,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | objekt-SID |X | |X |mekanisk egenskap. AD-användarnamn som används för att upprätthålla synkronisering mellan Azure AD och AD. |
 | otherTelephone |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| Post nummer |X |X | | |
+| postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mekanisk egenskap. Används för att veta när redan utfärdade token ska inverifieras. Används av både hash-synkronisering av lösen ord, direkt autentisering och Federation. |
@@ -305,7 +305,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | nomenklatur |X | |X |Eget namn eller alias. Oftast är prefixet för [mail]-värdet. |
@@ -320,7 +320,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | userPrincipalName |X | | |Detta UPN är inloggnings-ID: t för användaren. Oftast samma som [mail]-värdet. |
 
 ## <a name="intune"></a>Intune
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | c |X |X | | |
@@ -338,7 +338,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | userPrincipalName |X | | |UPN är inloggnings-ID: t för användaren. Oftast samma som [mail]-värdet. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | c |X |X | | |
@@ -357,7 +357,7 @@ I det här fallet börjar du med listan med attribut i det här avsnittet och id
 | mobil |X |X | | |
 | objekt-SID |X | |X |mekanisk egenskap. AD-användarnamn som används för att upprätthålla synkronisering mellan Azure AD och AD. |
 | physicalDeliveryOfficeName |X |X | | |
-| Post nummer |X |X | | |
+| postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |mekanisk egenskap. Används för att veta när redan utfärdade token ska inverifieras. Används av både hash-synkronisering av lösen ord, direkt autentisering och Federation. |
 | sn |X |X | | |
@@ -377,7 +377,7 @@ Den här gruppen är en uppsättning attribut som används som de minimala attri
 
 Den här gruppen är en uppsättning attribut som kan användas om Azure AD-katalogen inte används för att stödja Microsoft 365, Dynamics eller Intune. Den har en liten uppsättning Core-attribut. Observera att enkel inloggning eller etablering till vissa tredjepartsprogram kräver att du konfigurerar synkronisering av attribut utöver de attribut som beskrivs här. Program kraven beskrivs i [själv studie kursen om SaaS-appar](../saas-apps/tutorial-list.md) för varje program.
 
-| Attributnamn | Användare | Kontakt | Group | Kommentar |
+| Attributnamn | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definierar om ett konto är aktiverat. |
 | nomenklatur |X | |X | |
@@ -413,7 +413,7 @@ En Windows 10-domänansluten dator (enhet) synkroniserar vissa attribut till Azu
 
 De här attributen för **användaren** är förutom de andra appar som du har valt.  
 
-| Attributnamn | Användare | Kommentar |
+| Attributnamn | User | Kommentar |
 | --- |:---:| --- |
 | domainFQDN |X |Kallas även dnsDomainName. Till exempel contoso.com. |
 | domainNetBios |X |Kallas även netBiosName. Till exempel CONTOSO. |
@@ -422,7 +422,7 @@ De här attributen för **användaren** är förutom de andra appar som du har v
 ## <a name="exchange-hybrid-writeback"></a>Exchange hybrid tillbakaskrivning
 Dessa attribut skrivs tillbaka från Azure AD till lokala Active Directory när du väljer att aktivera **Exchange hybrid**. Beroende på din Exchange-version kan färre attribut synkroniseras.
 
-| Attributnamn (lokal AD) | Attributnamn (Connect UI) | Användare | Kontakt | Group | Kommentar |
+| Attributnamn (lokal AD) | Attributnamn (Connect UI) | User | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-extern-Directory-Object-ID |X | | |Härlett från cloudAnchor i Azure AD. Det här attributet är nytt i Exchange 2016 och Windows Server 2016 AD. |
 | msExchArchiveStatus| MS-ArchiveStatus |X | | |Online-Arkiv: gör det möjligt för kunder att arkivera e-post. |

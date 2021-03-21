@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98676598"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Självstudie: Ladda upp bilddata i molnet med Azure Storage
@@ -246,7 +246,7 @@ Välj region för att **Ladda upp foton** för att ange och ladda upp en fil ell
 
 ![Ladda upp foton i .NET](media/storage-upload-process-images/figure1.png)
 
-I exempel koden `UploadFileToStorage` används uppgiften i *Storagehelper.cs* -filen för att ladda upp avbildningarna till behållaren *avbildningar* i lagrings kontot med hjälp av [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) -metoden. Följande kodexempel innehåller aktiviteten `UploadFileToStorage`.
+I exempel koden `UploadFileToStorage` används uppgiften i filen *Storagehelper. cs* för att ladda upp avbildningarna till behållaren *avbildningar* i lagrings kontot med hjälp av [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) -metoden. Följande kodexempel innehåller aktiviteten `UploadFileToStorage`.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,

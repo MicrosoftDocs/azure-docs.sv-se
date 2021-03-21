@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182945"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Felsöka felaktig gateway i Application Gateway
@@ -108,7 +108,7 @@ Följande ytterligare egenskaper läggs till:
 
 | Egenskapen avsökning | Beskrivning |
 | --- | --- |
-| Namn |Namn på avsökningen. Det här namnet används för att referera till avsökningen i HTTP-inställningarna på backend-sidan. |
+| Name |Namn på avsökningen. Det här namnet används för att referera till avsökningen i HTTP-inställningarna på backend-sidan. |
 | Protokoll |Protokoll som används för att skicka avsökningen. Avsökningen använder protokollet som definierats i Server delens HTTP-inställningar |
 | Värd |Värdnamn för att skicka avsökningen. Gäller endast när flera platser har kon figurer ATS på Application Gateway. Detta skiljer sig från värd namnet för den virtuella datorn. |
 | Sökväg |Den relativa sökvägen för avsökningen. Den giltiga sökvägen börjar från/. Avsökningen skickas till \<protocol\> :// \<host\> :\<port\>\<path\> |

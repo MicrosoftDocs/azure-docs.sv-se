@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/22/2020
 ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004895"
 ---
 # <a name="monitor-data-flows"></a>Övervaka data flöden
@@ -58,7 +58,7 @@ När ditt data flöde körs i Spark, fastställer Azure Data Factory optimala ko
   
 ![Skärm bild som visar uppdaterings alternativet.](media/data-flow/monitornew.png "Data flödes övervakning New")
 
-## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Total bearbetnings tid för mottagare jämfört med omvandlings tid för transformering
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Total bearbetningstid för mottagare jämfört med bearbetningstid för transformering
 
 Varje omvandlings steg innehåller en total tid för fasen att slutföras med varje partitions körnings tid sammanlagt tillsammans. När du klickar på mottagaren visas "mottagar bearbetnings tid". Den här tiden inkluderar summan av Transformations tiden *plus* i/O-tiden det tog att skriva data till mål lagret. Skillnaden mellan bearbetnings tiden för mottagaren och det totala antalet omvandlingar är i/O-tiden för att skriva data.
 

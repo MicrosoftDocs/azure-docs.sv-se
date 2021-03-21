@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659717"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Konfigurera ett labb för att hantera och utveckla med SQL Server
@@ -20,7 +20,7 @@ I den här artikeln visar vi hur du konfigurerar en mall för virtuella datorer 
 
 ## <a name="lab-configuration"></a>Labb konfiguration
 
-För att kunna konfigurera det här labbet behöver du ett Azure-prenumerations-och labb konto för att komma igång. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar. När du har skaffat en Azure-prenumeration kan du skapa ett nytt labb konto i Azure Lab Services. Mer information om hur du skapar ett nytt labb konto finns i [självstudier för att konfigurera ett labb konto](./tutorial-setup-lab-account.md). Du kan också använda ett befintligt labb konto.
+För att kunna konfigurera det här labbet behöver du ett Azure-prenumerations-och labb konto för att komma igång. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar. När du har skaffat en Azure-prenumeration kan du skapa ett nytt labb konto i Azure Lab Services. Mer information om hur du skapar ett nytt labb konto finns i [självstudier för att konfigurera ett labb konto](./tutorial-setup-lab-account.md). Du kan också använda ett befintligt labb konto.
 
 ### <a name="lab-account-settings"></a>Labb konto inställningar
 
@@ -50,7 +50,7 @@ Nu när nätverks sidan av saker hanteras, kan du skapa en SQL Server databas.  
 9. Välj region för **platsen**.  Ange om möjligt samma plats som labb kontot och peer-kopplat VNet för att minimera svars tiden.
 10. Klicka på **OK** för att återgå till formuläret **skapa SQL Database** .
 11. Klicka på **Konfigurera databas** länk under **beräknings-och lagrings** inställningen.
-12. Ändra databas inställningarna efter behov för klassen.  Du kan välja mellan etablerade och Server lös alternativ.  I det här exemplet ska vi använda alternativet för autoskalad utan server med max virtuella kärnor på 4, min virtuella kärnor 1. Vi behåller inställningen AutoPause på minst 1 timme. Klicka på **Använd**.
+12. Ändra databas inställningarna efter behov för klassen.  Du kan välja mellan etablerade och Server lös alternativ.  I det här exemplet ska vi använda alternativet för autoskalad utan server med max virtuella kärnor på 4, min virtuella kärnor 1. Vi behåller inställningen AutoPause på minst 1 timme. Klicka på **Applicera**.
 13. Klicka på **Nästa: knappen nätverk** .
 14. På fliken nätverk väljer du privat slut punkt för **anslutnings metoden**.
 15. Under avsnittet **privata slut punkter** klickar du på **Lägg till privat slut punkt**.

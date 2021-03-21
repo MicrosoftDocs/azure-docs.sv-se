@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955215"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline-Widevine strömning för Android med Media Services v3
@@ -145,7 +145,7 @@ Från och med lanseringen av [Chrome för Android v. 62](https://developers.goog
 
 Dessutom har Google skapat ett PWA-exempel (PWA) med öppen källkod: 
 
-- [Källkod](https://github.com/GoogleChromeLabs/sample-media-pwa)
+- [Käll kod](https://github.com/GoogleChromeLabs/sample-media-pwa)
 - [Google-värdbaserad version](https://biograf-155113.appspot.com/ttt/episode-2/) (fungerar bara i Chrome v 62 och högre på Android-enheter)
 
 Om du uppgraderar din mobila Chrome-webbläsare till V62 (eller högre) på en Android-telefon och testar den ovan värdbaserade exempel appen, kommer du att se att både online-direktuppspelning och offline-uppspelning fungerar.

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413470"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Felsöka ett objekt som inte synkroniseras med Azure Active Directory
@@ -91,7 +91,7 @@ Börja med att välja fel strängen. (I föregående bild är fel strängen **Sy
 
 Högerklicka på informations rutan **anrops stack** , klicka på **Markera alla** och välj sedan **Kopiera**. Kopiera sedan stacken och titta på felet i din favorit redigerare, till exempel Anteckningar.
 
-Om felet är från **SyncRulesEngine** , visar anrops stacken information först alla attribut på objektet. Rulla nedåt tills du ser rubriken **InnerException =>**.  
+Om felet är från **SyncRulesEngine**, visar anrops stacken information först alla attribut på objektet. Rulla nedåt tills du ser rubriken **InnerException =>**.  
 
   ![Skärm bild av Synchronization Service Manager som visar fel information under rubriken InnerException =>](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
@@ -104,7 +104,7 @@ Om fliken [**åtgärder**](#operations) visar inga fel följer du kopplings rumm
 
 ### <a name="searching-for-an-object-in-the-cs"></a>Söker efter ett objekt i CS
 
-I Synchronization Service Manager väljer du **kopplingar** , väljer Active Directorys anslutningen och väljer **Sök kopplings utrymme**.
+I Synchronization Service Manager väljer du **kopplingar**, väljer Active Directorys anslutningen och väljer **Sök kopplings utrymme**.
 
 I rutan **omfattning** väljer du **RDN** när du vill söka efter attributet CN eller väljer **DN eller ankare** när du vill söka efter **distinguishedName** -attributet. Ange ett värde och välj **Sök**. 
  
@@ -143,7 +143,7 @@ I föregående bild kan du också se i kolumnen **PasswordSync** att det inkomma
 På fliken **härkomst** kan du gå till metaversum genom att välja [**metaversum objekt egenskaper**](#mv-attributes).
 
 ### <a name="preview"></a>Förhandsgranskning
-I det nedre vänstra hörnet av objekt fönstret **Egenskaper för kopplings utrymme** är knappen **Förhandsgranska** . Välj den här knappen för att öppna **förhands gransknings** sidan där du kan synkronisera ett enskilt objekt. Den här sidan är användbar om du felsöker vissa anpassade regler för synkronisering och vill se resultatet av en ändring på ett enskilt objekt. Du kan välja en **fullständig synkronisering** eller en **delta-synkronisering**. Du kan också välja **generera förhands granskning** , som endast behåller ändringen i minnet. Eller Välj **Förhandsgranskning av incheckning** , som uppdaterar metaversum och steg alla ändringar i mål kopplings utrymmen.  
+I det nedre vänstra hörnet av objekt fönstret **Egenskaper för kopplings utrymme** är knappen **Förhandsgranska** . Välj den här knappen för att öppna **förhands gransknings** sidan där du kan synkronisera ett enskilt objekt. Den här sidan är användbar om du felsöker vissa anpassade regler för synkronisering och vill se resultatet av en ändring på ett enskilt objekt. Du kan välja en **fullständig synkronisering** eller en **delta-synkronisering**. Du kan också välja **generera förhands granskning**, som endast behåller ändringen i minnet. Eller Välj **Förhandsgranskning av incheckning**, som uppdaterar metaversum och steg alla ändringar i mål kopplings utrymmen.  
 
 ![Skärm bild av sidan för förhands granskning med starta förhands granskning valt](./media/tshoot-connect-object-not-syncing/preview.png)  
 
@@ -158,7 +158,7 @@ Klicka på knappen **Logga** bredvid knappen **Förhandsgranska** för att öppn
 Det är vanligt vis bättre att börja söka från käll Active Directory kopplings utrymme. Men du kan också börja söka från metaversum.
 
 ### <a name="searching-for-an-object-in-the-mv"></a>Söker efter ett objekt i MV
-I Synchronization Service Manager väljer du **metaversum search** , som i följande bild. Skapa en fråga som du vet hittar användaren. Sök efter vanliga attribut, till exempel **accountName** ( **sAMAccountName** ) och **userPrincipalName**. Mer information finns i avsnittet om [synkronisering Service Manager metaversum search](how-to-connect-sync-service-manager-ui-mvsearch.md).
+I Synchronization Service Manager väljer du **metaversum search**, som i följande bild. Skapa en fråga som du vet hittar användaren. Sök efter vanliga attribut, till exempel **accountName** (**sAMAccountName**) och **userPrincipalName**. Mer information finns i avsnittet om [synkronisering Service Manager metaversum search](how-to-connect-sync-service-manager-ui-mvsearch.md).
 
 ![Skärm bild av Synchronization Service Manager med fliken Sök metaversum vald](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
@@ -191,8 +191,8 @@ På fliken **attribut** kan du se värdena och vilka kopplingar som bidragit til
 ![Skärm bild av metaversum-objektet Fönstret Egenskaper med fliken attribut valt](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 Om ett objekt inte synkroniseras ställer du följande frågor om attribut tillstånd i metaversum:
-- Är attributet **cloudFiltered** tillgängligt och inställt på **Sant** ? Om så är fallet har den filtrerats enligt stegen i [attributbaserade filtrering](how-to-connect-sync-configure-filtering.md#attribute-based-filtering).
-- Finns attributet **sourceAnchor** ? Om inte, har du en topologi för konto resurs skogen? Om ett objekt identifieras som en länkad post låda (attributet **msExchRecipientTypeDetails** har värdet **2** ), bidrogs **sourceAnchor** av skogen med ett aktiverat Active Directory-konto. Kontrol lera att huvud kontot har importer ATS och synkroniserats korrekt. Huvud kontot måste anges bland [anslutningarna](#mv-connectors) för objektet.
+- Är attributet **cloudFiltered** tillgängligt och inställt på **Sant**? Om så är fallet har den filtrerats enligt stegen i [attributbaserade filtrering](how-to-connect-sync-configure-filtering.md#attribute-based-filtering).
+- Finns attributet **sourceAnchor** ? Om inte, har du en topologi för konto resurs skogen? Om ett objekt identifieras som en länkad post låda (attributet **msExchRecipientTypeDetails** har värdet **2**), bidrogs **sourceAnchor** av skogen med ett aktiverat Active Directory-konto. Kontrol lera att huvud kontot har importer ATS och synkroniserats korrekt. Huvud kontot måste anges bland [anslutningarna](#mv-connectors) för objektet.
 
 ### <a name="mv-connectors"></a>MV-kopplingar
 Fliken **anslutningar** visar alla kopplings utrymmen som har en representation av objektet. 

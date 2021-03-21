@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
 ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027808"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Ändringsflöde i Azure Cosmos DB
@@ -28,10 +28,10 @@ Den här funktionen stöds för närvarande av följande Azure Cosmos DB-API: er
 
 | **Klient driv rutiner** | **SQL-API** | **Azure Cosmos DB s API för Cassandra** | **API för Azure Cosmos DB för MongoDB** | **Gremlin-API**|**Tabell-API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Ja | Ja | Ja | Ja | Nej |
-|Java|Ja|Ja|Ja|Ja|Nej|
-|Python|Ja|Ja|Ja|Ja|Nej|
-|Node/JS|Ja|Ja|Ja|Ja|Nej|
+| .NET | Ja | Ja | Ja | Ja | Inga |
+|Java|Ja|Ja|Ja|Ja|Inga|
+|Python|Ja|Ja|Ja|Ja|Inga|
+|Node/JS|Ja|Ja|Ja|Ja|Inga|
 
 ## <a name="change-feed-and-different-operations"></a>Ändra feed och olika åtgärder
 

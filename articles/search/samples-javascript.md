@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955028"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>JavaScript-kod exempel för Azure Kognitiv sökning
@@ -32,7 +32,7 @@ Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hi
 
 ### <a name="javascript-sdk-samples"></a>JavaScript SDK-exempel
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [index](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [Sök index](search-what-is-an-index.md). Den här exempel kategorin innehåller också ett exempel på tjänst statistik. |
 | [dataSourceConnections (för indexerare)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort indexerare data källor, som krävs för indexerare-baserad indexering av [Azure-datakällor som stöds](search-indexer-overview.md#supported-data-sources). |
@@ -43,7 +43,7 @@ Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hi
 
 ### <a name="typescript-samples"></a>TypeScript-exempel
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [index](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [Sök index](search-what-is-an-index.md). Den här exempel kategorin innehåller också ett exempel på tjänst statistik. |
 | [dataSourceConnections (för indexerare)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort indexerare data källor, som krävs för indexerare-baserad indexering av [Azure-datakällor som stöds](search-indexer-overview.md#supported-data-sources). |
@@ -67,6 +67,6 @@ Kod exempel från Kognitiv sökning team demonstrerar funktioner och arbets flö
 
 Följande exempel publiceras också av Kognitiv sökning-teamet, men det finns inga referenser till dokumentationen. Tillhör ande README-filer innehåller användnings instruktioner.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [Azure-Search-reakta-Template](https://github.com/dereklegenzoff/azure-search-react-template) | Reagera på mall för Azure Kognitiv sökning (github.com) |

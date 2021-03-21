@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94653342"
 ---
 # <a name="fqdn-tags-overview"></a>Översikt över FQDN-Taggar
@@ -28,7 +28,7 @@ I följande tabell visas de aktuella FQDN-taggar som du kan använda. Microsoft 
 
 ## <a name="current-fqdn-tags"></a>Aktuella FQDN-Taggar
 
-|FQDN-tagg  |Description  |
+|FQDN-tagg  |Beskrivning  |
 |---------|---------|
 |Windows Update     |Tillåt utgående åtkomst till Microsoft Update enligt beskrivningen i [så här konfigurerar du en brand vägg för program uppdateringar](/mem/configmgr/sum/get-started/install-a-software-update-point).|
 |Windows-diagnostik|Tillåt utgående åtkomst till alla [slut punkter för Windows-diagnostik](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|

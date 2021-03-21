@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895857"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Vägledning för dokument format och namngivnings konvention
@@ -22,7 +22,7 @@ Alla filer som används för anpassad översättning måste vara minst **fyra** 
 
 Den här tabellen innehåller alla fil format som stöds och som du kan använda för att bygga ditt översättnings system:
 
-| Format            | Tillägg   | Description                                                                                                                                                                                                                                                                    |
+| Format            | Tillägg   | Beskrivning                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF, . XLIFF | Ett parallellt dokument format, export av översättnings minnes system. De språk som används definieras i filen.                                                                                                                                                              |
 | TMX               | . TMX         | Ett parallellt dokument format, export av översättnings minnes system. De språk som används definieras i filen.                                                                                                                                                              |

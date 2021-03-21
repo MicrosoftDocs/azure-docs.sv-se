@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8d26b6c92462abc13c42257d2c6e571156eacc0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011786"
 ---
 Azure-filresurser distribueras till *lagrings konton* som är toppnivå objekt som representerar en delad lagringspool. Den här lagringspoolen kan användas för att distribuera flera fil resurser, samt andra lagrings resurser som BLOB-behållare, köer och tabeller. Alla lagrings resurser som distribueras till ett lagrings konto delar de gränser som gäller för det lagrings kontot. Om du vill se de aktuella gränserna för ett lagrings konto kan du läsa [Azure Files skalbarhets-och prestanda mål](../articles/storage/files/storage-files-scale-targets.md).

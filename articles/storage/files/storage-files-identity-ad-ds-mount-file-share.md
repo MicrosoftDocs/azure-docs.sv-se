@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3aa7ab2fd3217377e9c56c8c71a1c1acc959bcd9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472276"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587006"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Del fyra: montera en fil resurs från en domänansluten virtuell dator
 
@@ -28,7 +28,7 @@ Logga in på klienten genom att använda de autentiseringsuppgifter som du har b
 
 Innan du kan montera fil resursen måste du kontrol lera att du har gått igenom följande krav:
 
-- Om du monterar fil resursen från en klient som tidigare har monterat fil resursen med hjälp av lagrings kontots nyckel kontrollerar du att du har kopplat från resursen, tagit bort beständiga autentiseringsuppgifter för lagrings konto nyckeln och använder AD DS-autentiseringsuppgifter för autentisering. Instruktioner för hur du avmarkerar den monterade resursen med lagrings konto nyckeln finns på [sidan med vanliga frågor och svar](https://docs.microsoft.com/azure/storage/files/storage-files-faq#ad-ds--azure-ad-ds-authentication).
+- Om du monterar fil resursen från en klient som tidigare har monterat fil resursen med hjälp av lagrings kontots nyckel kontrollerar du att du har kopplat från resursen, tagit bort beständiga autentiseringsuppgifter för lagrings konto nyckeln och använder AD DS-autentiseringsuppgifter för autentisering. Instruktioner för hur du avmarkerar den monterade resursen med lagrings konto nyckeln finns på [sidan med vanliga frågor och svar](./storage-files-faq.md#ad-ds--azure-ad-ds-authentication).
 - Din klient måste ha detaljerad information om din AD DS. Om datorn eller den virtuella datorn ligger utanför nätverket som hanteras av AD DS måste du aktivera VPN för att komma åt AD DS för autentisering.
 
 Ersätt plats hållarnas värden med dina egna värden och Använd sedan följande kommando för att montera Azure-filresursen. Du måste alltid montera med sökvägen som visas nedan. Användning av CNAME för fil montering stöds inte för identitets baserad autentisering (AD DS eller Azure AD DS).

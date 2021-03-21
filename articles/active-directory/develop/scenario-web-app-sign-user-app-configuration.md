@@ -12,27 +12,23 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f315f473c3ba9efd4e01f9424f01884a46011dbb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582255"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578386"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webbapp som loggar in användare: kod konfiguration
 
 Lär dig hur du konfigurerar koden för din webbapp som loggar in användare.
 
-## <a name="libraries-for-protecting-web-apps"></a>Bibliotek för att skydda webb program
+## <a name="microsoft-libraries-supporting-web-apps"></a>Microsoft-bibliotek som stöder webbappar
 
 <!-- This section can be in an include for web app and web APIs -->
-De bibliotek som används för att skydda en webbapp (och ett webb-API) är:
+Följande Microsoft-bibliotek används för att skydda en webbapp (och ett webb-API):
 
-| Plattform | Bibliotek | Description |
-|----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [Identitets modells tillägg för .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Som används direkt av ASP.NET och ASP.NET Core föreslår Microsoft Identity Model-tillägg för .NET en uppsättning dll: er som körs på både .NET Framework och .NET Core. Från en ASP.NET-eller ASP.NET Core-webbapp kan du kontrol lera token-verifieringen med hjälp av **TokenValidationParameters** -klassen (särskilt i vissa partner scenarier). I praktiken kapslas komplexiteten in i biblioteket [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Stöd för Java-webbprogram |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Stöd för python-webbprogram |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Välj den flik som motsvarar den plattform som du är intresse rad av:
 
@@ -51,6 +47,12 @@ Du kanske vill referera till det här exemplet för fullständig implementerings
 # <a name="java"></a>[Java](#tab/java)
 
 Kodfragment i den här artikeln och följande extraheras från [Java-webbprogrammet som anropar Microsoft Graph-](https://github.com/Azure-Samples/ms-identity-java-webapp) EXEMPLET i MSAL Java.
+
+Du kanske vill referera till det här exemplet för fullständig implementerings information.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Kodfragment i den här artikeln och följande extraheras från [Node.js webb program signerings användare i](https://github.com/Azure-Samples/ms-identity-node) EXEMPLET i MSAL-noden.
 
 Du kanske vill referera till det här exemplet för fullständig implementerings information.
 
@@ -177,6 +179,37 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 I Azure Portal måste de svars-URI: er som du registrerar på sidan **autentisering** för programmet matcha de `redirectUri` instanser som programmet definierar. Det vill säga att de ska vara `http://localhost:8080/msal4jsample/secure/aad` och `http://localhost:8080/msal4jsample/graph/me` .
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Här finns konfigurations parametrarna i `index.js`
+
+```javascript
+
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+const config = {
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/",
+        clientSecret: "Enter_the_Client_Secret_Here"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+```
+
+I Azure Portal måste de svars-URI: er som du registrerar på sidan autentisering för programmet matcha de redirectUri-instanser som programmet definierar ( `http://localhost:3000/redirect` ).
+
+> [!NOTE]
+> Den här snabb starten planerar att lagra klient hemligheten i konfigurations filen för enkelhetens skull. I din webbapp skulle du vilja använda andra sätt att lagra din hemliga hemlighet, till exempel ett nyckel valv eller en miljö variabel.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Här är python-konfigurationsfilen i [app_config. py](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py):
@@ -207,7 +240,7 @@ Initierings koden skiljer sig beroende på plattform. För ASP.NET Core och ASP.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-I ASP.NET Core Web Apps (och webb-API: er) skyddas programmet eftersom du har ett `[Authorize]` attribut på styrenheterna eller styrenhets åtgärderna. Det här attributet kontrollerar att användaren är autentiserad. Koden som initierar programmet finns i filen *startup.cs* .
+I ASP.NET Core Web Apps (och webb-API: er) skyddas programmet eftersom du har ett `[Authorize]` attribut på styrenheterna eller styrenhets åtgärderna. Det här attributet kontrollerar att användaren är autentiserad. Koden som initierar programmet finns i filen *startup. cs* .
 
 Om du vill lägga till autentisering med Microsoft Identity Platform (tidigare Azure AD v 2.0) måste du lägga till följande kod. Kommentarerna i koden bör vara själv för klar Ande.
 
@@ -246,7 +279,7 @@ Om du vill lägga till autentisering med Microsoft Identity Platform (tidigare A
      }).AddMicrosoftIdentityUI();
     ```
 
-3. I `Configure` -metoden i *startup.cs* aktiverar du autentisering med ett anrop till `app.UseAuthentication();`
+3. I `Configure` metoden i *startup. cs* aktiverar du autentisering med ett anrop till `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -319,6 +352,15 @@ Mer information finns i `doFilter()` metoden i [AuthFilter. java](https://github
 
 Mer information om det auktoriseringskod som den här metoden utlöser finns i [Microsoft Identity Platform och OAuth 2,0 Authorization Code Flow](v2-oauth2-auth-code-flow.md).
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+const msal = require('@azure/msal-node');
+
+// Create msal application object
+const cca = new msal.ConfidentialClientApplication(config);
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python-exemplet använder kolv. Avställningen av kolven och MSAL python görs i [appen. py # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28).
@@ -354,6 +396,10 @@ Gå vidare till nästa artikel i det här scenariot, [Logga in och logga ut](./s
 # <a name="java"></a>[Java](#tab/java)
 
 Gå vidare till nästa artikel i det här scenariot, [Logga in och logga ut](./scenario-web-app-sign-user-sign-in.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Gå vidare till nästa artikel i det här scenariot och [Logga](./scenario-web-app-sign-user-sign-in.md?tabs=nodejs)in.
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Självstudie: Azure Active Directory integrering med Silverback
@@ -222,7 +222,7 @@ För att Azure AD-användare ska kunna logga in på Silverback måste de tillhan
     ex. Klicka på **Spara**.
 
 > [!NOTE]
-> Om du inte vill skapa varje användare manuellt aktiverar du kryss rutan för att **skapa dynamiska användare** under autentiseringsprovider för **Administration**  >  **Authentication Provider**.
+> Om du inte vill skapa varje användare manuellt aktiverar du kryss rutan för att **skapa dynamiska användare** under autentiseringsprovider för **Administration**  >  .
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

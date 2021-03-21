@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c4f054259aa7c3f2a9fdfaeeadd64f26dd9bea
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116979"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "94444919"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Hantera SameSite-cookieändringar i webbläsaren Chrome
 
@@ -26,7 +26,7 @@ ms.locfileid: "88116979"
 
 `SameSite` är en egenskap som kan anges i HTTP-cookies för att förhindra förfalskning av CSRF-attacker (Cross Site Request) i webb program:
 
-- När `SameSite` är inställt på **lax**skickas cookien i begär Anden inom samma plats och i Hämta förfrågningar från andra platser. Den skickas inte i GET-begäranden som är mellan domäner.
+- När `SameSite` är inställt på **lax** skickas cookien i begär Anden inom samma plats och i Hämta förfrågningar från andra platser. Den skickas inte i GET-begäranden som är mellan domäner.
 - Värdet **strict** garanterar att cookien skickas i begär Anden endast inom samma plats.
 
 Som standard `SameSite` är värdet inte angivet i webbläsare och det är därför att det inte finns några begränsningar för cookies som skickas i begär Anden. Ett program måste delta i CSRF-skyddet genom att ställa in **lax** eller **strict** enligt deras krav.
@@ -81,11 +81,8 @@ Mer information om hur du hanterar SameSite cookies i ASP.NET och ASP.NET Core f
 
 Läs mer om SameSite och scenariot för webb program:
 
-> [!div class="nextstepaction"]
-> [Vanliga frågor och svar om Google Chrome på SameSite](https://www.chromium.org/updates/same-site/faq)
+- [Vanliga frågor och svar om Google Chrome på SameSite](https://www.chromium.org/updates/same-site/faq)
 
-> [!div class="nextstepaction"]
-> [Sidan krom SameSite](https://www.chromium.org/updates/same-site)
+- [Sidan krom SameSite](https://www.chromium.org/updates/same-site)
 
-> [!div class="nextstepaction"]
-> [Scenario: webb program som loggar in användare](scenario-web-app-sign-user-overview.md)
+- [Scenario: webb program som loggar in användare](scenario-web-app-sign-user-overview.md)

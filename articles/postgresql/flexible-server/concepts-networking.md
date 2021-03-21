@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/21/2021
 ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732810"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Nätverks översikt – Azure Database for PostgreSQL – flexibel Server
@@ -122,7 +122,7 @@ Exempel
 ## <a name="tls-and-ssl"></a>TLS och SSL
 Azure Database for PostgreSQL-flexibel Server stöder anslutning av klient program till PostgreSQL-tjänsten med hjälp av Transport Layer Security (TLS). TLS är ett bransch standard protokoll som garanterar krypterade nätverks anslutningar mellan databas servern och klient programmen. TLS är ett uppdaterat protokoll av SSL (Secure Sockets Layer).
 
-Azure Database for PostgreSQL-flexibel Server stöder bara krypterade anslutningar med hjälp av Transport Layer Security. Alla inkommande anslutningar med TLS 1,0 och TLS 1,1 kommer att nekas. 
+Azure Database for PostgreSQL-flexibel Server stöder bara krypterade anslutningar med hjälp av Transport Layer Security. Alla inkommande anslutningar med TLS 1.0 och TLS 1.1 kommer att nekas. 
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig hur du skapar en flexibel server med **privat åtkomst (VNet-integrering)** i [Azure Portal](how-to-manage-virtual-network-portal.md) eller [Azure CLI](how-to-manage-virtual-network-cli.md).

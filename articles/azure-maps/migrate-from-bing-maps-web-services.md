@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97679075"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Självstudie: Migrera webb tjänsten från Bing Maps
@@ -68,7 +68,7 @@ Se även följande guider för bästa praxis:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -207,7 +207,7 @@ Följande tabell innehåller en kors referens till API-parametrarna Bing Maps me
 |------------------------------------------------------------|---------------------------------------------------|
 | `avoid`                                                    | `avoid`                                           |
 | `dateTime` (`dt`)                                          | `departAt` eller `arriveAt`                          |
-| `distanceBeforeFirstTurn` (`dbft`)                         | Saknas                                               |
+| `distanceBeforeFirstTurn` (`dbft`)                         | Ej tillämpligt                                               |
 | `distanceUnit` (`du`)                                      | Ej tillämpligt – Azure Maps endast använder Metric-systemet.     |
 | `heading` (`hd`)                                           | `vehicleHeading`                                  |
 | `maxSolutions` (`maxSolns`)                                | `maxAlternatives`, `alternativeType` , `minDeviationDistance` , och `minDeviationTime`  |
@@ -216,7 +216,7 @@ Följande tabell innehåller en kors referens till API-parametrarna Bing Maps me
 | `routeAttributes` (`ra`)                                   | `instructionsType`                                |
 | `routePathOutput` (`rpo`)                                  | `routeRepresentation`                             |
 | `timeType` (`tt`)                                          | `departAt` eller `arriveAt`                          |
-| `tolerances` (`tl`)                                        | Saknas                                               |
+| `tolerances` (`tl`)                                        | Ej tillämpligt                                               |
 | `travelMode`                                               | `travelMode`                                      |
 | `waypoint.n` ( `wp.n` ) eller `viaWaypoint.n` (`vwp.n`)         | `query` – koordinater i formatet `lat0,lon0:lat1,lon1….`   |
 | `key`                                                      | `subscription-key` – Se även [autentiseringen med Azure Maps](./azure-maps-authentication.md) -dokumentationen. |
@@ -234,12 +234,12 @@ API för Azure Maps routning stöder också Truck-routning inom samma API. I fö
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **Saknas**                                    |
+| `vehicleTrailers` (`vt`)                 | **EJ TILLÄMPLIGT**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **Saknas**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **Saknas**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **Saknas**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **Saknas**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **EJ TILLÄMPLIGT**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **EJ TILLÄMPLIGT**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **EJ TILLÄMPLIGT**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **EJ TILLÄMPLIGT**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -300,12 +300,12 @@ API: et för Azure Maps routning stöder också en väg för Truck i samma API f
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **Saknas**                                    |
+| `vehicleTrailers` (`vt`)                | **EJ TILLÄMPLIGT**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **Saknas**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **Saknas**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **Saknas**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **Saknas**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **EJ TILLÄMPLIGT**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **EJ TILLÄMPLIGT**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **EJ TILLÄMPLIGT**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **EJ TILLÄMPLIGT**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -340,7 +340,7 @@ Följande tabell innehåller en kors referens till API-parametrarna Bing Maps me
 | `heading`                | Ej tillämpligt – Streetside stöds inte.                |
 | `imagerySet`             | `layer` och `style` – se dokumentation om [mappnings format som stöds](./supported-map-styles.md) .   |
 | `mapArea` (`ma`)         | `bbox`                                         |
-| `mapLayer` (`ml`)        | Saknas                                            |
+| `mapLayer` (`ml`)        | Ej tillämpligt                                            |
 | `mapSize` (`ms`)         | `width` och `height` – kan vara upp till 8192x8192 i storlek. |
 | `declutterPins` (`dcl`)  | Saknas                                            |
 | `dpi`                    | Saknas                                            |
@@ -352,7 +352,7 @@ Följande tabell innehåller en kors referens till API-parametrarna Bing Maps me
 | `query`                  | N/A – centrera eller markerings ram måste användas.     |
 | `highlightEntity` (`he`) | Saknas                                            |
 | `style`                  | Saknas                                            |
-| flödes parametrar         | Saknas                                            |
+| flödes parametrar         | Ej tillämpligt                                            |
 | `key`                    | `subscription-key` – Se även [autentiseringen med Azure Maps](./azure-maps-authentication.md) -dokumentationen. |
 | `culture` (`c`)          | `language` – Se dokumentation om [språk som stöds](./supported-languages.md) .   |
 | `userRegion` (`ur`)      | `view` – Se dokumentation om [vilka vyer som stöds](./supported-languages.md#azure-maps-supported-views) . |
@@ -487,7 +487,7 @@ Följande tabell innehåller en kors referens till API-parametrarna Bing Maps me
 | `endTime`               | `arriveAt`                                                  |
 | `startTime`             | `departAt`                                                  |
 | `travelMode`            | `travelMode`                                                |
-| `resolution`            | Saknas                                                         |
+| `resolution`            | Ej tillämpligt                                                         |
 | `distanceUnit`          | Ej tillämpligt – alla avstånd i meter.                              |
 | `timeUnit`              | Ej tillämpligt – alla tider på några sekunder.                                 |
 | `key`                   | `subscription-key` – Se även [autentiseringen med Azure Maps](./azure-maps-authentication.md) -dokumentationen. |
@@ -568,7 +568,7 @@ I följande tabell beskrivs API-parametrarna för Bing Maps-trafik med informati
 | API-parameter för Bing Maps  | Jämförbar Azure Maps API-parameter   |
 |--------------------------|---------------------------------------|
 | `mapArea`                | `boundingBox` och `boundingZoom`      |
-| `includeLocationCodes`   | Saknas                                   |
+| `includeLocationCodes`   | Ej tillämpligt                                   |
 | `severity` (`s`)         | Ej tillämpligt – alla returnerade data               |
 | `type` (`t`)             | Ej tillämpligt – alla returnerade data               |
 | `key`                    | `subscription-key` – Se även [autentiseringen med Azure Maps](./azure-maps-authentication.md) -dokumentationen. |

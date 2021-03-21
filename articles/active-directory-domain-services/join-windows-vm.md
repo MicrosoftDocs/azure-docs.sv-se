@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 869c827485d9b7a6baf68d2619af98d4c2ee82b9
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619580"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Självstudie: ansluta en virtuell Windows Server-dator till en Azure Active Directory Domain Services hanterad domän
@@ -70,7 +70,7 @@ Om du redan har en virtuell dator som du vill ansluta till, kan du gå vidare ti
     | Namn på virtuell dator | Ange ett namn för den virtuella datorn, till exempel *myVM* |
     | Region               | Välj region för att skapa din virtuella dator i, t. ex. *USA, östra* |
     | Användarnamn             | Ange ett användar namn för det lokala administratörs kontot som ska skapas på den virtuella datorn, till exempel *azureuser* |
-    | lösenordsinställning             | Ange och bekräfta sedan ett säkert lösen ord för den lokala administratören som ska skapas på den virtuella datorn. Ange inte autentiseringsuppgifter för ett domän användar konto. |
+    | Lösenord             | Ange och bekräfta sedan ett säkert lösen ord för den lokala administratören som ska skapas på den virtuella datorn. Ange inte autentiseringsuppgifter för ett domän användar konto. |
 
 1. Som standard är virtuella datorer som skapats i Azure tillgängliga från Internet via RDP. När RDP är aktiverat, kommer automatiska inloggnings attacker att uppstå, vilket kan inaktivera konton med vanliga namn som *administratör* eller *administratör* på grund av flera misslyckade inloggnings försök.
 
