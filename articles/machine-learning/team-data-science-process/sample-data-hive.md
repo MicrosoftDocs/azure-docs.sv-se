@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321892"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Exempeldata i Azure HDInsight Hive-tabeller
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Här `<sample rate, 0-1>` anger den andel av de poster som användarna vill sampla.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Slumpmässig sampling efter grupper
-När du samplar kategoriska data kanske du vill antingen ta med eller undanta alla instanser av något värde för kategoriska-variabeln. Den här sortens sampling kallas "sampling by Group". Om du till exempel har en kategoriska variabel " *State* ", som har värden som New, MA, ca, NJ och PA, vill du att poster från varje tillstånd ska vara tillsammans, oavsett om de samplas eller inte.
+När du samplar kategoriska data kanske du vill antingen ta med eller undanta alla instanser av något värde för kategoriska-variabeln. Den här sortens sampling kallas "sampling by Group". Om du till exempel har en kategoriska variabel "*State*", som har värden som New, MA, ca, NJ och PA, vill du att poster från varje tillstånd ska vara tillsammans, oavsett om de samplas eller inte.
 
 Här är ett exempel på en fråga som samplas efter grupp:
 

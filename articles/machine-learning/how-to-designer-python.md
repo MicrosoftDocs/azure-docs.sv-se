@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
 ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94556241"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Kör python-kod i Azure Machine Learning designer
@@ -58,7 +58,7 @@ Inmatnings moduler är valfria eftersom du kan generera eller importera data dir
 
 Designern innehåller ett start punkt skript som du kan använda för att redigera och ange din egen python-kod. 
 
-I det här exemplet använder du Pandas för att kombinera två kolumner som finns i den mobila data uppsättningen, **priset** och **hästen** , för att skapa en ny kolumn, **dollar per häst**. Den här kolumnen visar hur mycket du betalar för varje häst kraft, vilket kan vara en användbar funktion för att avgöra om en bil är ett bra erbjudande för pengarna. 
+I det här exemplet använder du Pandas för att kombinera två kolumner som finns i den mobila data uppsättningen, **priset** och **hästen**, för att skapa en ny kolumn, **dollar per häst**. Den här kolumnen visar hur mycket du betalar för varje häst kraft, vilket kan vara en användbar funktion för att avgöra om en bil är ett bra erbjudande för pengarna. 
 
 1. Välj modulen **Kör Python-skript** .
 
@@ -83,7 +83,7 @@ I det här exemplet använder du Pandas för att kombinera två kolumner som fin
     
 1. Skicka pipelinen.
 
-Nu har du en data uppsättning med den nya funktionen **kronor/HP** , som kan vara användbart i träna en bil rekommendation. Detta är ett exempel på funktions extrahering och en minskning av dimensionalitet. 
+Nu har du en data uppsättning med den nya funktionen **kronor/HP**, som kan vara användbart i träna en bil rekommendation. Detta är ett exempel på funktions extrahering och en minskning av dimensionalitet. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -4,10 +4,10 @@ description: Beskriver hur du säkerhetskopierar virtuella Azure-datorer i ett R
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172755"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Säkerhetskopiera virtuella Azure-datorer i ett Recovery Services valv
@@ -72,14 +72,14 @@ Konfigurera en säkerhets kopierings policy för valvet.
 
    ![Säkerhetskopiera och säkerhetskopiera mål fönster](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-1. I **säkerhets kopierings princip**väljer du den princip som du vill associera med valvet.
+1. I **säkerhets kopierings princip** väljer du den princip som du vill associera med valvet.
     * Standard principen säkerhetskopierar den virtuella datorn en gång om dagen. De dagliga säkerhets kopiorna behålls i 30 dagar. Ögonblicks bilder av snabb återställning sparas i två dagar.
 
       ![Standard princip för säkerhets kopiering](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-    * Om du inte vill använda standard principen väljer du **Skapa ny**och skapar en anpassad princip enligt beskrivningen i nästa procedur.
+    * Om du inte vill använda standard principen väljer du **Skapa ny** och skapar en anpassad princip enligt beskrivningen i nästa procedur.
 
-1. Under **Virtual Machines**väljer du **Lägg till**.
+1. Under **Virtual Machines** väljer du **Lägg till**.
 
       ![Lägg till virtuella datorer](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
@@ -94,7 +94,7 @@ Konfigurera en säkerhets kopierings policy för valvet.
     >[!NOTE]
     > Alla virtuella datorer i samma region och prenumeration som för valvet är tillgängliga för att konfigurera säkerhets kopiering. När du konfigurerar säkerhets kopiering kan du bläddra till namnet på den virtuella datorn och dess resurs grupp, även om du inte har den behörighet som krävs för de virtuella datorerna. Om den virtuella datorn är i läget tyst Borttagning visas den inte i listan. Om du behöver skydda den virtuella datorn igen måste du vänta tills den mjuka borttagnings perioden upphör att gälla eller ta bort den virtuella datorn från listan över överförbara rader. Mer information finns i [artikeln om mjuk borttagning för virtuella datorer](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
-1. I **säkerhets kopiering**väljer du **Aktivera säkerhets kopiering**. Detta distribuerar principen till valvet och till de virtuella datorerna och installerar säkerhets kopierings tillägget på VM-agenten som körs på den virtuella Azure-datorn.
+1. I **säkerhets kopiering** väljer du **Aktivera säkerhets kopiering**. Detta distribuerar principen till valvet och till de virtuella datorerna och installerar säkerhets kopierings tillägget på VM-agenten som körs på den virtuella Azure-datorn.
 
 När du har aktiverat säkerhets kopiering:
 
@@ -109,13 +109,13 @@ När du har aktiverat säkerhets kopiering:
 
 Om du har valt att skapa en ny säkerhets kopierings princip, fyller du i princip inställningarna.
 
-1. I **princip namn**anger du ett beskrivande namn.
-2. I **schema för säkerhets kopiering**anger du när säkerhets kopior ska vidtas. Du kan utföra dagliga eller veckovis säkerhets kopieringar för virtuella Azure-datorer.
-3. I **omedelbar återställning**anger du hur länge du vill behålla ögonblicks bilder lokalt för omedelbar återställning.
+1. I **princip namn** anger du ett beskrivande namn.
+2. I **schema för säkerhets kopiering** anger du när säkerhets kopior ska vidtas. Du kan utföra dagliga eller veckovis säkerhets kopieringar för virtuella Azure-datorer.
+3. I **omedelbar återställning** anger du hur länge du vill behålla ögonblicks bilder lokalt för omedelbar återställning.
     * När du återställer kopieras de säkerhetskopierade virtuella dator diskarna från Storage, över nätverket till återställnings lagrings platsen. Med omedelbar återställning kan du utnyttja lokalt lagrade ögonblicks bilder som tas under ett säkerhets kopierings jobb utan att vänta på att säkerhets kopierings data överförs till valvet.
     * Du kan behålla ögonblicks bilder för omedelbar återställning mellan en och fem dagar. Standardvärdet är två dagar.
-4. I **kvarhållningsintervall**anger du hur länge du vill behålla dina dagliga eller vecko Visa säkerhets kopierings punkter.
-5. Vid **kvarhållning av månatlig säkerhets kopierings punkt** och **kvarhållning av årlig säkerhets kopierings punkt**anger du om du vill behålla en månatlig eller årlig säkerhets kopia av dina dagliga eller veckovis säkerhets kopieringar.
+4. I **kvarhållningsintervall** anger du hur länge du vill behålla dina dagliga eller vecko Visa säkerhets kopierings punkter.
+5. Vid **kvarhållning av månatlig säkerhets kopierings punkt** och **kvarhållning av årlig säkerhets kopierings punkt** anger du om du vill behålla en månatlig eller årlig säkerhets kopia av dina dagliga eller veckovis säkerhets kopieringar.
 6. Välj **OK** för att spara principen.
 
     ![Ny säkerhets kopierings princip](./media/backup-azure-arm-vms-prepare/new-policy.png)
@@ -128,10 +128,10 @@ Om du har valt att skapa en ny säkerhets kopierings princip, fyller du i princi
 Den första säkerhets kopieringen kommer att köras enligt schemat, men du kan köra den direkt på följande sätt:
 
 1. I menyn valv väljer du **säkerhets kopierings objekt**.
-2. I **säkerhets kopierings objekt**väljer du **virtuell Azure-dator**.
+2. I **säkerhets kopierings objekt** väljer du **virtuell Azure-dator**.
 3. I listan **säkerhets kopierings objekt** väljer du ellipserna (...).
 4. Välj **Säkerhetskopiera nu**.
-5. I **Säkerhetskopiera nu**använder du kalender kontrollen för att välja den sista dagen som återställnings punkten ska behållas. Välj sedan **OK**.
+5. I **Säkerhetskopiera nu** använder du kalender kontrollen för att välja den sista dagen som återställnings punkten ska behållas. Välj sedan **OK**.
 6. Övervaka Portal meddelanden. Du kan övervaka jobb förloppet i valv instrument panelen > **säkerhets kopierings jobb**  >  **pågår**. Beroende på den virtuella datorns storlek kan det ta en stund att skapa den första säkerhetskopian.
 
 ## <a name="verify-backup-job-status"></a>Verifiera status för säkerhets kopierings jobb
@@ -149,13 +149,13 @@ Det kan ta flera dagar innan **överförings data till valv** fasen slutförs be
 
 Jobbets status kan variera beroende på följande scenarier:
 
-**Ögonblicksbild** | **Överför data till valv** | **Jobb status**
+**Ögonblicks bild** | **Överför data till valv** | **Jobb status**
 --- | --- | ---
 Slutförd | Pågår | Pågår
 Slutförd | Överhoppad | Slutförd
 Slutförd | Slutförd | Slutförd
-Slutförd | Misslyckades | Slutfört med varning
-Misslyckades | Misslyckades | Misslyckades
+Slutförd | Misslyckad | Slutfört med varning
+Misslyckad | Misslyckad | Misslyckad
 
 Med den här funktionen kan två säkerhets kopior för samma virtuella dator köras parallellt, men i båda skedet (ögonblicks bilder, överför data till valv) kan endast en under aktivitet köras. I scenarier där en pågående säkerhets kopiering resulterade i att säkerhets kopieringen av nästa dag Miss Miss kan det undvikas med den här kopplings funktionen. De efterföljande dagarnas säkerhets kopieringar kan göra att ögonblicks bilden slutförs, medan **överföring av data till valvet** hoppas över om en tidigare daglig säkerhets kopierings jobb pågår.
 Den stegvisa återställnings punkten som skapades i valvet fångar upp omsättningen från den senaste återställnings punkten som skapats i valvet. Det kostar inget att påverka användaren.
@@ -166,7 +166,7 @@ Den stegvisa återställnings punkten som skapades i valvet fångar upp omsättn
 
 Azure Backup säkerhetskopierar virtuella Azure-datorer genom att installera ett tillägg till Azure VM-agenten som körs på datorn. Om den virtuella datorn skapades från en Azure Marketplace-avbildning installeras och körs agenten. Om du skapar en anpassad virtuell dator, eller om du migrerar en lokal dator, kan du behöva installera agenten manuellt, som sammanfattas i tabellen.
 
-**DATORN** | **Detaljer**
+**Virtuell dator** | **Information**
 --- | ---
 **Windows** | 1. [Ladda ned och installera](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) agent-MSI-filen.<br/><br/> 2. Installera med administratörs behörighet på datorn.<br/><br/> 3. kontrol lera installationen. I *C:\WindowsAzure\Packages* på den virtuella datorn högerklickar du på **WaAppAgent.exe**  >  **Egenskaper**. **Produkt versionen** bör vara 2.6.1198.718 eller högre på fliken **information** .<br/><br/> Om du uppdaterar agenten ser du till att inga säkerhets kopierings åtgärder körs och [installerar om agenten](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Installera med hjälp av ett RPM-eller DEB-paket från distributionens paket lagrings plats. Detta är den bästa metoden för att installera och uppgradera Azure Linux-agenten. Alla godkända [distributions leverantörer](../virtual-machines/linux/endorsed-distros.md) integrerar Azure Linux Agent-paketet i sina avbildningar och databaser. Agenten är tillgänglig på [GitHub](https://github.com/Azure/WALinuxAgent), men vi rekommenderar inte att du installerar därifrån.<br/><br/> Om du uppdaterar agenten ska du kontrol lera att inga säkerhets kopierings åtgärder körs och uppdatera binärfilerna.

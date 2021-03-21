@@ -1,5 +1,5 @@
 ---
-title: Översikt över Azure Application Gateway Resource Health
+title: Översikt över Resource Health för Azure Application Gateway
 description: Den här artikeln innehåller en översikt över resurs hälso funktionen för Azure Application Gateway
 services: application-gateway
 author: vhorne
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397180"
 ---
-# <a name="azure-application-gateway-resource-health-overview"></a>Översikt över Azure Application Gateway Resource Health
+# <a name="azure-application-gateway-resource-health-overview"></a>Översikt över Resource Health för Azure Application Gateway
 
 [Azure Resource Health](../service-health/resource-health-overview.md) hjälper dig att diagnostisera och lösa problem med Azure-tjänster som påverkar dina resurser. Det informerar dig om dina resursers aktuella och senaste hälso tillstånd. Och ger teknisk support för att hjälpa dig att åtgärda problem.
 
@@ -31,7 +31,7 @@ En **tillgänglig** status innebär att tjänsten inte har identifierat några h
 
 ![Tillgänglig hälso status](media/resource-health-overview/available-full.png)
 
-## <a name="unavailable"></a>Ej tillgänglig
+## <a name="unavailable"></a>Inte tillgänglig
 
 En **otillgänglig** status innebär att tjänsten har identifierat en pågående plattforms-eller icke-plattforms händelse som påverkar gatewayens hälso tillstånd.
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88761652"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Hantera IBM Informix Database-resurser med hjälp av Azure Logic Apps
@@ -78,14 +78,14 @@ Det här avsnittet visar hur du använder-anslutningen i en Logic app för att b
 
 1. Ange den här anslutnings informationen och välj sedan **skapa**.
 
-   | Egenskap | JSON-egenskap | Krävs | Exempelvärde | Beskrivning |
+   | Egenskap | JSON-egenskap | Obligatorisk | Exempelvärde | Beskrivning |
    |----------|---------------|----------|---------------|-------------|
    | Anslutningsnamn | `name` | Ja | `informix-demo-connection` | Namnet som ska användas för anslutningen till din Informix-databas |
    | Server | `server` | Ja | Kunde `informixdemo.cloudapp.net:9089` <br>-Lokalt: `informixdemo:9089` | TCP/IP-adressen eller aliaset i antingen IPv4-eller IPv6-format, följt av ett kolon och ett TCP/IP-portnummer |
    | Databas | `database` | Ja | `nwind` | DRDA Relations databas namnet (RDBNAM) eller Informix-databasens namn (dbname). Informix accepterar en sträng på 128 byte. |
    | Autentisering | `authentication` | Endast lokalt | **Basic** eller **Windows** (Kerberos) | Autentiseringstypen som krävs av din Informix-databas. Den här egenskapen visas bara när du väljer **Anslut via en lokal datagateway**. |
    | Användarnamn | `username` | Inga | <*databas-användar namn*> | Ett användar namn för databasen |
-   | lösenordsinställning | `password` | Inga | <*databas – lösen ord*> | Ett lösen ord för databasen |
+   | Lösenord | `password` | Inga | <*databas – lösen ord*> | Ett lösen ord för databasen |
    | Gateway | `gateway` | Endast lokalt | – <*Azure – prenumeration*> <br>-<*Azure-on-premises-data-gateway-resurs*> | Azure-prenumerationen och Azure-resursens namn för den lokala datagatewayen som du skapade i Azure Portal. **Gateway** -egenskapen och underordnade egenskaper visas bara när du väljer **Anslut via lokal datagateway**. |
    ||||||
 
@@ -107,9 +107,9 @@ Det här avsnittet visar hur du använder-anslutningen i en Logic app för att b
 
 1. I verktygsfältet Logic App Designer väljer du **Kör**. När din Logic App körs kan du Visa de utdata som körs.
 
-1. Från din Logic Apps-meny väljer du **Översikt**. I fönstret Översikt **Summary**  >  väljer du den senaste körningen under Sammanfattning**Kör historik**.
+1. Från din Logic Apps-meny väljer du **Översikt**. I fönstret Översikt   >  väljer du den senaste körningen under Sammanfattning **Kör historik**.
 
-1. Under **Logic app-körning**väljer du **Kör information**.
+1. Under **Logic app-körning** väljer du **Kör information**.
 
 1. I listan åtgärder väljer du åtgärden med de utdata som du vill visa, till exempel **Get_tables**.
 

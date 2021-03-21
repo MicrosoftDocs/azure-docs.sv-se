@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
 ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219181"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Felsöka ett avvikande, återkommande jobb
@@ -29,7 +29,7 @@ Om du vill använda vyn relaterad jobb för att felsöka ett återkommande jobb 
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Fall 1: du har URL: en för det återkommande jobbet
 
-Med hjälp av **verktygen**  >  **data Lake**  >  **jobb**kan du klistra in jobb-URL: en för att öppna jobb visning i Visual Studio. Välj **Visa relaterade jobb** för att öppna vyn relaterade jobb.
+Med hjälp av **verktygen**  >  **data Lake**  >  **jobb** kan du klistra in jobb-URL: en för att öppna jobb visning i Visual Studio. Välj **Visa relaterade jobb** för att öppna vyn relaterade jobb.
 
 ![Visa relaterade jobb länkar i Data Lake Analytics verktyg](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  

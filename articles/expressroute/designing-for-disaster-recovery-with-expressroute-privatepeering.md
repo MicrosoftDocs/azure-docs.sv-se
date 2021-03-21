@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202421"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Design för haveri beredskap med ExpressRoute privat peering
 
 ExpressRoute har utformats för att ge hög tillgänglighet för att tillhandahålla bärvåg för privat nätverks anslutning till Microsoft-resurser. Det finns med andra ord ingen enskild felpunkt i ExpressRoute-sökvägen i Microsoft-nätverket. Design överväganden för att maximera tillgängligheten för en ExpressRoute-krets finns i [utforma för hög tillgänglighet med ExpressRoute][HA].
 
-Men om du tar Murphy populärt Adage – *om något går fel, kommer det att* övervägas, i den här artikeln kan vi fokusera på lösningar som går utöver fel som kan åtgärdas med hjälp av en enda ExpressRoute-krets. I den här artikeln kan vi med andra ord titta på nätverks arkitektur för att skapa robusta Server dels nätverks anslutningar för haveri beredskap med geo-redundanta ExpressRoute-kretsar.
+Men om du tar Murphy populärt Adage –*om något går fel, kommer det att* övervägas, i den här artikeln kan vi fokusera på lösningar som går utöver fel som kan åtgärdas med hjälp av en enda ExpressRoute-krets. I den här artikeln kan vi med andra ord titta på nätverks arkitektur för att skapa robusta Server dels nätverks anslutningar för haveri beredskap med geo-redundanta ExpressRoute-kretsar.
 
 >[!NOTE]
 >Begreppen som beskrivs i den här artikeln gäller även när en ExpressRoute-krets skapas under Virtual WAN eller utanför den.
@@ -45,7 +45,7 @@ Men om du belastningsutjämna trafik över geo-redundanta parallella sökvägar,
 
 Nu ska vi titta på exempel nätverket som illustreras i följande diagram. I exemplet upprättas Geo-redundant ExpressRoute-anslutning mellan en lokal plats i Contoso och Contosos VNet i en Azure-region. I diagrammet indikerar heldragen grön linje önskad sökväg (via ExpressRoute 1) och den prickade en representerar en behållen väg (via ExpressRoute 2).
 
-[![1]][1]
+[![81.1]][1]
 
 När du utformar ExpressRoute-anslutningen för haveri beredskap måste du tänka på följande:
 

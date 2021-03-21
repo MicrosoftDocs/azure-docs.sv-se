@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: e60e8c73c9f1da617851cc67fb2dbab7171f1cb0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Självstudie: Azure Active Directory integrering med InstaVR Viewer
@@ -77,7 +77,7 @@ För att konfigurera och testa enkel inloggning för Azure AD med InstaVR Viewer
 2. **[Konfigurera enkel inloggning för InstaVR Viewer](#configure-instavr-viewer-single-sign-on)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
 3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
 4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa testanvändare för InstaVR Viewer ](#create-instavr-viewer-test-user)** – för att ha en motsvarighet för Britta Simon i InstaVR Viewer som är länkad till Azure AD-representationen av användaren.
+5. **[Skapa testanvändare för InstaVR Viewer](#create-instavr-viewer-test-user)** – för att ha en motsvarighet för Britta Simon i InstaVR Viewer som är länkad till Azure AD-representationen av användaren.
 6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD

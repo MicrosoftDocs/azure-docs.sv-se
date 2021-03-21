@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
 ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779959"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimera prestanda genom att använda minnes intern teknik i Azure SQL Database och Azure SQL-hanterad instans
@@ -101,7 +101,7 @@ Det finns ett programmerings sätt för att förstå om en specifik databas stö
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Om frågan returnerar **1** , stöds In-Memory OLTP i den här databasen. Följande frågor identifierar alla objekt som måste tas bort innan en databas kan nedgraderas till Generell användning, standard eller Basic:
+Om frågan returnerar **1**, stöds In-Memory OLTP i den här databasen. Följande frågor identifierar alla objekt som måste tas bort innan en databas kan nedgraderas till Generell användning, standard eller Basic:
 
 ```sql
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Data storlek och lagrings hölje för In-Memory OLTP
 
-In-Memory OLTP innehåller minnesoptimerade tabeller som används för att lagra användar data. De här tabellerna krävs för att få plats i minnet. Eftersom du hanterar minne direkt i SQL Database har vi begreppet en kvot för användar data. Den här idén kallas för *minnes intern OLTP-lagring* .
+In-Memory OLTP innehåller minnesoptimerade tabeller som används för att lagra användar data. De här tabellerna krävs för att få plats i minnet. Eftersom du hanterar minne direkt i SQL Database har vi begreppet en kvot för användar data. Den här idén kallas för *minnes intern OLTP-lagring*.
 
 Varje pris nivå för en enskild databas som stöds och varje pris nivå för elastisk pool innehåller en viss mängd In-Memory OLTP-lagring.
 
@@ -149,7 +149,7 @@ Men nedgradering av nivån kan påverka databasen negativt. Påverkan är särsk
 
 Innan du nedgradera databasen till Generell användning, standard eller Basic, tar du bort alla minnesoptimerade tabeller och tabell typer, samt alla internt kompilerade T-SQL-moduler.
 
-Att *skala upp resurser i affärskritisk nivå* : data i minnesoptimerade tabeller måste rymmas i den In-Memory OLTP-lagring som är kopplad till nivån för databasen eller den hanterade instansen eller den är tillgänglig i den elastiska poolen. Om du försöker skala ned nivån eller flytta databasen till en pool som inte har tillräckligt med tillgänglig In-Memory OLTP-lagring, Miss lyckas åtgärden.
+Att *skala upp resurser i affärskritisk nivå*: data i minnesoptimerade tabeller måste rymmas i den In-Memory OLTP-lagring som är kopplad till nivån för databasen eller den hanterade instansen eller den är tillgänglig i den elastiska poolen. Om du försöker skala ned nivån eller flytta databasen till en pool som inte har tillräckligt med tillgänglig In-Memory OLTP-lagring, Miss lyckas åtgärden.
 
 ## <a name="in-memory-columnstore"></a>Minnes intern columnstore
 

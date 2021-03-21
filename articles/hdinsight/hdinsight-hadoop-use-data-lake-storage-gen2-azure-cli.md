@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 09/17/2020
 ms.openlocfilehash: bbc1cd27d5c16eddd3aaad748c34445e5017e209
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945499"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>Skapa ett kluster med Data Lake Storage Gen2 med Azure CLI
@@ -33,7 +33,7 @@ Följ dessa steg om du vill skapa ett HDInsight-kluster som använder Data Lake 
 
 Du kan [Ladda ned en mall för exempel filen](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) och [Ladda ned en exempel parameter fil](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Innan du använder mallen och kod avsnittet för Azure CLI nedan ersätter du följande plats hållare med rätt värden:
 
-| Platshållare | Description |
+| Platshållare | Beskrivning |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID för din Azure-prenumeration |
 | `<RESOURCEGROUPNAME>` | Den resurs grupp där du vill att det nya klustret och lagrings kontot ska skapas. |

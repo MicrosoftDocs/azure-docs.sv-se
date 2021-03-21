@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148792"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Dörr övervakare – använda Azure Functions och SendGrid, skicka e-post när en dörr öppnas           
@@ -130,11 +130,11 @@ Läs sedan in exempel koden i VS Code och etablera nödvändiga Azure-tjänster.
 
 ### <a name="open-arduino-examples-folder"></a>Öppna mappen Arduino exempel
 
-Expandera avsnittet exempel på vänster sida **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > AzureIoT**och välj **DoorMonitor**. Den här åtgärden öppnar ett nytt VS Code-fönster med en projektmapp i den.
+Expandera avsnittet exempel på vänster sida **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > AzureIoT** och välj **DoorMonitor**. Den här åtgärden öppnar ett nytt VS Code-fönster med en projektmapp i den.
 
 ![Mini-lösning – exempel](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Du kan också öppna exempel appen från kommando paletten. Använd `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino**och leta upp och välj **Arduino: exempel**.
+Du kan också öppna exempel appen från kommando paletten. Använd `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino** och leta upp och välj **Arduino: exempel**.
 
 ### <a name="provision-azure-services"></a>Etablera Azure-tjänster
 

@@ -11,10 +11,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
 ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92671185"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Självstudie: utforma en Relations databas i Azure SQL Database C&#x23; och ADO.NET
@@ -47,7 +47,7 @@ En databas i Azure SQL Database skapas med en definierad uppsättning beräkning
 Följ de här stegen för att skapa en tom databas.
 
 1. Klicka på **Skapa en resurs** längst upp till vänster i Azure Portal.
-2. Välj **Databaser** i avsnittet Azure Marketplace på sidan **Nytt** och klicka sedan på **SQL Database** i avsnittet **Aktuellt** .
+2. Välj **Databaser** i avsnittet Azure Marketplace på sidan **Nytt** och klicka sedan på **SQL Database** i avsnittet **Aktuellt**.
 
    ![skapa tom databas](./media/design-first-database-csharp-tutorial/create-empty-database.png)
 
@@ -60,7 +60,7 @@ Följ de här stegen för att skapa en tom databas.
     | **Resursgrupp** | *yourResourceGroup* | Giltiga resursgruppnamn finns i [Namngivningsregler och begränsningar](/azure/architecture/best-practices/resource-naming). |
     | **Välj källa** | Tom databas | Anger att en tom databas ska skapas. |
 
-4. Klicka på **Server** för att använda en befintlig server eller skapa och konfigurera en ny server. Välj antingen en befintlig server eller klicka på **Skapa en ny server** och fyll i följande information i formuläret **Ny server** :
+4. Klicka på **Server** för att använda en befintlig server eller skapa och konfigurera en ny server. Välj antingen en befintlig server eller klicka på **Skapa en ny server** och fyll i följande information i formuläret **Ny server**:
 
     | Inställning       | Föreslaget värde | Beskrivning |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -71,14 +71,14 @@ Följ de här stegen för att skapa en tom databas.
 
     ![skapa databas-server](./media/design-first-database-csharp-tutorial/create-database-server.png)
 
-5. Klicka på **Välj** .
+5. Klicka på **Välj**.
 6. Klicka på **Prisnivå** för att ange tjänstnivå, antalet DTU:er eller V-kärnor och mängden lagring. Du kan undersöka alternativen för antalet DTU:er/V-kärnor och lagringsutrymme som du har tillgång till på varje tjänstnivå.
 
-    När du har valt tjänstnivå, antalet DTU:er eller virtuella kärnor samt mängden lagring klickar du på **Använd** .
+    När du har valt tjänstnivå, antalet DTU:er eller virtuella kärnor samt mängden lagring klickar du på **Använd**.
 
 7. Ange en **sortering** för den tomma databasen (använd standardvärdet för de här självstudierna). Mer information om sorteringar finns i [Sorteringar](/sql/t-sql/statements/collations).
 
-8. Nu när du har fyllt i **SQL Database** -formuläret klickar du på **Skapa** så att databasen etableras. Det här steget kan ta några minuter.
+8. Nu när du har fyllt i **SQL Database**-formuläret klickar du på **Skapa** så att databasen etableras. Det här steget kan ta några minuter.
 
 9. Klicka på **Aviseringar** i verktygsfältet för att övervaka distributionsprocessen.
 
@@ -91,7 +91,7 @@ SQL Database skapar en IP-brandvägg på server nivå. Den här brandväggen fö
 > [!IMPORTANT]
 > SQL Database kommunicerar via port 1433. Om du försöker ansluta till den här tjänsten från ett företagsnätverk kan utgående trafik via port 1433 bli nekad av nätverkets brandvägg. I så fall kan du inte ansluta till databasen om administratören öppnar port 1433.
 
-1. När distributionen är klar klickar du på **SQL-databaser** på menyn till vänster och sedan på *YourDatabase* på sidan **SQL-databaser** . Översiktssidan för databasen öppnas och visar det fullständigt kvalificerade **servernamnet** (till exempel *yourserver.database.windows.net* ) tillsammans med alternativ för ytterligare konfiguration.
+1. När distributionen är klar klickar du på **SQL-databaser** på menyn till vänster och sedan på *YourDatabase* på sidan **SQL-databaser** . Översiktssidan för databasen öppnas och visar det fullständigt kvalificerade **servernamnet** (till exempel *yourserver.database.windows.net*) tillsammans med alternativ för ytterligare konfiguration.
 
 2. Kopiera det här fullständigt kvalificerade servernamnet. Du behöver det när du ansluter till servern och dess databaser från SQL Server Management Studio.
 
@@ -103,9 +103,9 @@ SQL Database skapar en IP-brandvägg på server nivå. Den här brandväggen fö
 
 4. Klicka på **Lägg till klient-IP** i verktygsfältet och lägg till din aktuella IP-adress i en ny IP-brandväggsregel. Med en IP-brandväggsregel kan du öppna port 1433 för en enskild IP-adress eller för IP-adressintervall.
 
-5. Klicka på **Spara** . En regel för IP-brandvägg på server nivå skapas för den aktuella IP-adressen som öppnar port 1433 på servern.
+5. Klicka på **Spara**. En regel för IP-brandvägg på server nivå skapas för den aktuella IP-adressen som öppnar port 1433 på servern.
 
-6. Klicka på **OK** och stäng sedan sidan **Brandväggsinställningar** .
+6. Klicka på **OK** och stäng sedan sidan **Brandväggsinställningar**.
 
 Din IP-adress kan nu passera genom IP-brandväggen. Nu kan du ansluta till din databas med SQL Server Management Studio eller något annat verktyg som du själv väljer. Se till att använda serveradmin-kontot som du skapade tidigare.
 

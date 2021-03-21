@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636790"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med titta på färger
@@ -47,14 +47,14 @@ Du måste lägga till titta på färger från galleriet till listan över hanter
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **titta efter färger** i sökrutan.
 1. Välj **titta efter färger** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Konfigurera och testa enkel inloggning med Azure AD för att se färger
 
-Konfigurera och testa Azure AD SSO med titta på färger med hjälp av en test användare som kallas **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i titta efter färger.
+Konfigurera och testa Azure AD SSO med titta på färger med hjälp av en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i titta efter färger.
 
 Om du vill konfigurera och testa Azure AD SSO med titta på färger, slutför du följande Bygg stenar:
 
@@ -69,15 +69,15 @@ Om du vill konfigurera och testa Azure AD SSO med titta på färger, slutför du
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan **titta efter färger** program integration och letar upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. I [Azure Portal](https://portal.azure.com/)går du till sidan **titta efter färger** program integration och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** är programmet förkonfigurerat i **IDP** initierat läge och de nödvändiga URL: erna redan är i förväg ifyllda med Azure. Användaren måste spara konfigurationen genom att klicka på knappen **Spara** .
 
-1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     Skriv en URL i text rutan **inloggnings-URL** :  `https://app.colorscorporation.com/login`
 
@@ -89,21 +89,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att ge åtkomst till titta på färger.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. Välj **titta efter färger** i listan program.
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -117,7 +117,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-watch-by-colors-sso"></a>Konfigurera bevakning av färger SSO
 
-1. Om du vill automatisera konfigurationen inom bevakade färger måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget** .
+1. Om du vill automatisera konfigurationen inom bevakade färger måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
 
     ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
 
@@ -135,13 +135,13 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Skärm bild som visar fliken SAML-konfiguration där du kan aktivera SAML.](./media/watch-by-colors-tutorial/config02.png)
 
-    a. Växla **Aktivera SAML** till **på** .
+    a. Växla **Aktivera SAML** till **på**.
 
-    b. I text rutan **URL** klistrar du in **URL** : en för federationsmetadata som du kopierade från Azure Portal.
+    b. I text rutan **URL** klistrar du in **URL**: en för federationsmetadata som du kopierade från Azure Portal.
 
     c. Klicka på **Importera** och fyll sedan i följande fält automatiskt på sidan.
 
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
 ### <a name="create-watch-by-colors-test-user"></a>Testa användaren genom att skapa titta efter färger
 
@@ -159,9 +159,9 @@ Om du vill att Azure AD-användare ska kunna logga in för att titta på färger
 
     ![Skärm bild som visar användar information där du kan ange de värden som beskrivs.](./media/watch-by-colors-tutorial/config04.png)
 
-    a. I text rutan **förnamn** anger du det första namnet på användaren, t. ex. **B** .
+    a. I text rutan **förnamn** anger du det första namnet på användaren, t. ex. **B**.
 
-    b. I text rutan **efter namn** anger du det senaste namnet på användaren som **Simon** .
+    b. I text rutan **efter namn** anger du det senaste namnet på användaren som **Simon**.
 
     c. I textrutan **E-post** anger du användarens e-postadress som `B.Simon@contoso.com`.
 
@@ -169,7 +169,7 @@ Om du vill att Azure AD-användare ska kunna logga in för att titta på färger
 
     e. Välj **konto behörigheter** per organisation.
 
-    f. Klicka på **Spara** .
+    f. Klicka på **Spara**.
 
 ## <a name="test-sso"></a>Testa SSO 
 

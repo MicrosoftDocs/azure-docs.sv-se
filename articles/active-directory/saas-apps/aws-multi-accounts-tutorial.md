@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 0ddcb239ba106bcdc2f0a29d68eb395876fadc06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services"></a>Självstudie: Azure Active Directory integration med Amazon Web Services
@@ -116,7 +116,7 @@ I det här avsnittet aktiverar du Azure AD SSO i Azure Portal och konfigurerar S
 
 1. I avsnittet **användar anspråk** **i fönstret användarattribut konfigurerar du attributet** SAML-token med hjälp av värdena i följande tabell:
 
-    | Namn  | Källattribut  | Namnområde |
+    | Name  | Källattribut  | Namnområde |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Roll | user.assignedroles | `https://aws.amazon.com/SAML/Attributes`|

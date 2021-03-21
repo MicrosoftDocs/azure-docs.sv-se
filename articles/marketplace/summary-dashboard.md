@@ -8,17 +8,17 @@ ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: c02ba12c790d745904d241f121e269aac3ed12f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462985"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Instrumentpanelen för sammanfattning i Commercial Marketplace-analys
 
 Den här artikeln innehåller information om sammanfattnings instrument panelen i Partner Center. Den här instrument panelen visar diagram, trender och värden för sammanställda data som sammanfattar Marketplace-aktivitet för dina erbjudanden.
 
-För att få åtkomst till sammanfattnings instrument panelen i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** Sammanfattning under **kommersiell marknads** plats  >  **Summary**.
+För att få åtkomst till sammanfattnings instrument panelen i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** Sammanfattning under **kommersiell marknads** plats  >  .
 
 >[!NOTE]
 > Detaljerade definitioner av analys terminologi finns i terminologi för [kommersiella Marketplace-analyser och vanliga frågor](./analytics-faq.md).

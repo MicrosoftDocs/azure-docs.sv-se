@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: aa5f908cdf25925db63054adaf1e6dab15f5260b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Självstudie: Azure Active Directory integrering med Kantega SSO för Bamboo
@@ -176,7 +176,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ka
 
     ![Skärm bild som visar avsnittet metadata-import där du kan bläddra till en metadatafil.](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. Välj **metadatafil på den här datorn**och ladda upp metadatafilen, som du har laddat ned från Azure Portal.
+    a. Välj **metadatafil på den här datorn** och ladda upp metadatafilen, som du har laddat ned från Azure Portal.
 
     b. Klicka på **Nästa**.
 
@@ -243,7 +243,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Kantega SSO för Bamboo.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Kantega SSO för Bamboo**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Kantega SSO för Bamboo**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

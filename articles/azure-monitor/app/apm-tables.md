@@ -4,10 +4,10 @@ description: Lär dig mer om den nya tabell strukturen och schemat för Azure Mo
 ms.topic: conceptual
 ms.date: 05/09/2020
 ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575606"
 ---
 # <a name="workspace-based-resource-changes"></a>Arbets ytans-baserade resurs ändringar
@@ -18,7 +18,7 @@ Med arbets ytans baserade Application Insights resurs data lagras i en Log Analy
 
 ## <a name="table-structure"></a>Tabellstruktur
 
-| Äldre tabell namn | Nytt tabellnamn | Description |
+| Äldre tabell namn | Nytt tabellnamn | Beskrivning |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Sammanfattnings data från tillgänglighets test.|
 | browserTimings | AppBrowserTimings | Data om klient prestanda, till exempel hur lång tid det tar att bearbeta inkommande data.|

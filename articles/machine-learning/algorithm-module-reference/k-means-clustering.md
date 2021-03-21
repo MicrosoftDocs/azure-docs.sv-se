@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
 ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323697"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-innebär klustring
@@ -58,7 +58,7 @@ När den bearbetar tränings data börjar algoritmen för K-medelvärdet med en 
   
 2.  Om du vill ange hur modellen ska tränas väljer du alternativet **skapa utbildare läge** .  
   
-    -   **Enskild parameter** : om du känner till de exakta parametrar som du vill använda i kluster modellen, kan du ange en viss uppsättning värden som argument.  
+    -   **Enskild parameter**: om du känner till de exakta parametrar som du vill använda i kluster modellen, kan du ange en viss uppsättning värden som argument.  
   
 3.  För **antal centroids** anger du det antal kluster som du vill att algoritmen ska börja med.  
   
@@ -66,15 +66,15 @@ När den bearbetar tränings data börjar algoritmen för K-medelvärdet med en 
   
 4.  Egenskaps **initieringen** används för att ange algoritmen som används för att definiera den inledande kluster konfigurationen.  
   
-    -   **Första N** : vissa inledande antal data punkter väljs från data uppsättningen och används som första metod. 
+    -   **Första N**: vissa inledande antal data punkter väljs från data uppsättningen och används som första metod. 
     
          Den här metoden kallas även för *förfalsknings metoden*.  
   
-    -   **Slumpmässig** : algoritmen placerar en data punkt slumpmässigt i ett kluster och sedan beräknar det inledande medelvärdet som centroid för klustrets slumpvis tilldelade punkter. 
+    -   **Slumpmässig**: algoritmen placerar en data punkt slumpmässigt i ett kluster och sedan beräknar det inledande medelvärdet som centroid för klustrets slumpvis tilldelade punkter. 
 
          Den här metoden kallas även för den *slumpmässiga partitionsfunktionen* .  
   
-    -   **K-betyder + +** : det här är standard metoden för att initiera kluster.  
+    -   **K-betyder + +**: det här är standard metoden för att initiera kluster.  
   
          **K-betyder + +** -algoritmen föreslogs i 2007 av David Arthur och Sergei Vassilvitskii för att undvika dåligt klustring av standardalgoritmen för K-=. **K-betyder + +** förbättrar standard K-metoden genom att använda en annan metod för att välja de första kluster centret.  
   
@@ -83,7 +83,7 @@ När den bearbetar tränings data börjar algoritmen för K-medelvärdet med en 
   
 6.  För **mått** väljer du den funktion som ska användas för att mäta avståndet mellan kluster vektorer eller mellan nya data punkter och den slumpmässigt valda centroid. Azure Machine Learning stöder följande kluster avstånds mått:  
   
-    -   **Euclidean** : Euclidean-avståndet används ofta som ett mått på kluster spridning för K-innebär klustring. Detta mått är att föredra eftersom det minimerar avståndet mellan punkter och centroids.
+    -   **Euclidean**: Euclidean-avståndet används ofta som ett mått på kluster spridning för K-innebär klustring. Detta mått är att föredra eftersom det minimerar avståndet mellan punkter och centroids.
   
 7.  För **iterationer** anger du hur många gånger algoritmen ska iterera över tränings data innan den slutför valet av centroids.  
   
@@ -93,11 +93,11 @@ När den bearbetar tränings data börjar algoritmen för K-medelvärdet med en 
   
      Eftersom K-betyder klustring är en oövervakad Machine Learning-metod, är etiketter valfria. Men om din data uppsättning redan har en etikett kolumn kan du använda dessa värden för att vägleda valet av kluster, eller så kan du ange att värdena ska ignoreras.  
   
-    -   **Ignorera etikett kolumn** : värdena i kolumnen Label ignoreras och används inte för att skapa modellen.
+    -   **Ignorera etikett kolumn**: värdena i kolumnen Label ignoreras och används inte för att skapa modellen.
   
-    -   **Fyll i saknade värden** : etikett kolumn värden används som funktioner för att bygga klustren. Om en etikett saknas i några rader tilldelas värdet med hjälp av andra funktioner.  
+    -   **Fyll i saknade värden**: etikett kolumn värden används som funktioner för att bygga klustren. Om en etikett saknas i några rader tilldelas värdet med hjälp av andra funktioner.  
   
-    -   **Skriv över från närmaste till Center** : etikett kolumnens värden ersätts med förväntade etikett värden med hjälp av etiketten för den punkt som är närmast den aktuella centroid.  
+    -   **Skriv över från närmaste till Center**: etikett kolumnens värden ersätts med förväntade etikett värden med hjälp av etiketten för den punkt som är närmast den aktuella centroid.  
 
 8.  Välj alternativet **normaliserings funktioner** om du vill normalisera funktioner innan du tränar.
   

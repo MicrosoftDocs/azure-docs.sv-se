@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d062412764a0a779d5a0e46186bfeaeb2dc567e9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>Självstudie: Azure Active Directory integrering med Lecorpio
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Lecorpio i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Lecorpio** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Lecorpio** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Lecorpio.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Lecorpio**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Lecorpio**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

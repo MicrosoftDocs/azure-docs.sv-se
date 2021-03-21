@@ -4,10 +4,10 @@ description: Den här artikeln förklarar hur du använder sessioner för att ak
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680761"
 ---
 # <a name="message-sessions"></a>Meddelandesessioner
@@ -34,9 +34,9 @@ I portalen anger du flaggan med följande kryss ruta:
 ![Skärm bild av dialog rutan skapa kö med alternativet Aktivera sessioner markerat och anges i rött.][2]
 
 > [!NOTE]
-> När sessioner aktive ras i en kö eller en prenumeration kan klient programmen **inte längre** skicka/ta emot vanliga meddelanden. Alla meddelanden måste skickas som en del av en session (genom att ställa in sessions-ID) och tas emot genom att ta emot sessionen.
+> När sessioner är aktiverade i en kö eller en prenumeration kan klient programmen ***inte längre*** skicka/ta emot vanliga meddelanden. Alla meddelanden måste skickas som en del av en session (genom att ställa in sessions-ID) och tas emot genom att ta emot sessionen.
 
-API: erna för sessioner finns i kö-och prenumerations klienter. Det finns en tvingande modell som styr när sessioner och meddelanden tas emot och en hanterad modell, som liknar _OnMessage *, som döljer komplexiteten med att hantera Receive-loopen.
+API: erna för sessioner finns i kö-och prenumerations klienter. Det finns en tvingande modell som styr när sessioner och meddelanden tas emot, och en hanterare-baserad modell, som liknar *motringningen OnMessage*, som döljer komplexiteten med att hantera Receive-slingan.
 
 ### <a name="session-features"></a>Session funktioner
 
@@ -78,8 +78,8 @@ Definitionen av leverans antal per meddelande i samband med sessioner skiljer si
 
 | Scenario | Är meddelandets leverans antal ökas |
 |----------|---------------------------------------------|
-| Sessionen godkänns, men sessions låset upphör att gälla (på grund av tids gräns) | Yes |
-| Sessionen godkänns, meddelandena i sessionen slutförs inte (även om de är låsta) och sessionen stängs | No |
+| Sessionen godkänns, men sessions låset upphör att gälla (på grund av tids gräns) | Ja |
+| Sessionen godkänns, meddelandena i sessionen slutförs inte (även om de är låsta) och sessionen stängs | Inga |
 | Sessionen godkänns, meddelanden slutförs och sedan stängs sessionen explicit | Ej tillämpligt (det är standard flödet. Meddelanden tas bort från sessionen) |
 
 ## <a name="request-response-pattern"></a>Mönster för begäran-svar

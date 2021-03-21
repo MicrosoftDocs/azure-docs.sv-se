@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282167"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Självstudie: Använda Azure DNS som värd för din domän
@@ -49,7 +49,7 @@ I det här exemplet kommer vi att referera till den överordnade domänen som **
       > [!NOTE] 
       > Om den nya zonen som du skapar är en underordnad zon (t. ex. överordnad zon = contoso.net underordnad zon = child.contoso.net), se vår [själv studie kurs om att skapa en ny underordnad DNS-zon](./tutorial-public-dns-zones-child.md)
 
-    | **Inställning** | **Värde** | **Detaljer** |
+    | **Inställning** | **Värde** | **Information** |
     |--|--|--|
     | **Projekt information:**  |  |  |
     | **Resursgrupp**    | ContosoRG | Skapa en resursgrupp. Resurs gruppens namn måste vara unikt inom den prenumeration som du har valt. Platsen för resurs gruppen har ingen inverkan på DNS-zonen. Platsen för DNS-zonen är alltid "global" och visas inte. |
@@ -65,7 +65,7 @@ Innan du kan delegera din DNS-zon till Azure DNS måste du känna till namnservr
 
 1. I Azure Portal klickar du på **Alla resurser** i rutan **Favoriter** för den DNS-zon du skapade. På sidan **Alla resurser** väljer du din DNS-zon. Om den prenumeration som du valde redan har flera resurser kan du ange ditt domännamn i rutan **Filtrera efter namn** för att enkelt få åtkomst till programgatewayen. 
 
-1. Hämta namnservrarna på sidan DNS-zon. I det här exemplet har zonen contoso.net tilldelats namnservrarna *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.net*, *NS3-01.Azure-DNS.org*och *NS4-01.Azure-DNS.info*:
+1. Hämta namnservrarna på sidan DNS-zon. I det här exemplet har zonen contoso.net tilldelats namnservrarna *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.net*, *NS3-01.Azure-DNS.org* och *NS4-01.Azure-DNS.info*:
 
    ![Lista över namnservrar](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 

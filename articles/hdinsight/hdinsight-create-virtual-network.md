@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
 ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946079"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Skapa virtuella nätverk för Azure HDInsight-kluster
@@ -286,7 +286,7 @@ På den anpassade DNS-servern i det virtuella nätverket:
     
     * Ersätt värdet `192.168.0.1` med IP-adressen för din lokala DNS-server. Den här posten dirigerar alla andra DNS-förfrågningar till den lokala DNS-servern.
 
-1. Starta om Bind om du vill använda konfigurationen. Ett exempel är `sudo service bind9 restart`.
+1. Starta om Bind om du vill använda konfigurationen. Till exempel `sudo service bind9 restart`.
 
 1. Lägg till en villkorlig vidarebefordrare till den lokala DNS-servern. Konfigurera den villkorliga vidarebefordraren att skicka begär Anden för DNS-suffixet från steg 1 till den anpassade DNS-servern.
 

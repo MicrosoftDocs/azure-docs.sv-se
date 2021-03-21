@@ -4,10 +4,10 @@ description: Bläddra och granska Service Bus meddelanden gör det möjligt för
 ms.topic: article
 ms.date: 11/11/2020
 ms.openlocfilehash: c52c9c967d4eada1a931e188ed4d25f7691cfb91
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553649"
 ---
 # <a name="message-browsing"></a>Bläddra i meddelanden
@@ -22,7 +22,7 @@ Peek returnerar även meddelanden som var låsta och som för närvarande bearbe
 
 ## <a name="peek-apis"></a>Granska API: er
 
-Metoderna [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) och [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) finns i .net-och Java-klient bibliotek och på mottagar objekt: **MessageReceiver** , **MessageSession**. Peek fungerar på köer, prenumerationer och deras respektive köer för obeställbara meddelanden.
+Metoderna [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) och [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) finns i .net-och Java-klient bibliotek och på mottagar objekt: **MessageReceiver**, **MessageSession**. Peek fungerar på köer, prenumerationer och deras respektive köer för obeställbara meddelanden.
 
 Vid anrop upprepas **granskningen** av alla meddelanden i kön eller i prenumerations loggen i ordning från det lägsta tillgängliga sekvensnumret till högsta. Det är ordningen i vilken meddelanden har placerats i kö, inte i den ordning som meddelanden kan komma att hämtas.
 

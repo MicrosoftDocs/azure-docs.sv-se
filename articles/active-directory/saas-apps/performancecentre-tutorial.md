@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 79255b98312b16fa21e07abad701e08578c6ca89
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Självstudie: Azure Active Directory integrering med PerformanceCentre
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med PerformanceCentre i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **PerformanceCentre** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **PerformanceCentre** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -130,11 +130,11 @@ Utför följande steg för att konfigurera enkel inloggning med PerformanceCentr
    
     ![Skärm bild som visar "PerformanceCenter"-menyn med alternativet "Konfigurera" valt.][10]
 
-3. Klicka på **Diverse**på fliken till vänster och klicka sedan på **enkel inloggning**.
+3. Klicka på **Diverse** på fliken till vänster och klicka sedan på **enkel inloggning**.
    
     ![Skärm bild som visar fliken "Konfigurera" med "enkel inloggning" vald från menyn "Diverse".][11]
 
-4. Som **protokoll**väljer du **SAML**.
+4. Som **protokoll** väljer du **SAML**.
    
     ![Skärm bild som visar avsnittet "enkel Sign-On konfiguration" med "S A M L" valt från "protokoll"-menyn.][12]
 
@@ -175,7 +175,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till PerformanceCentre.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **PerformanceCentre**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **PerformanceCentre**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -205,7 +205,7 @@ Syftet med det här avsnittet är att skapa en användare som kallas Britta Simo
 
 1. Logga in på din PerformanceCentre företags webbplats som administratör.
 
-2. Klicka på **relaterad**på menyn till vänster och klicka sedan på **skapa deltagare**.
+2. Klicka på **relaterad** på menyn till vänster och klicka sedan på **skapa deltagare**.
    
     ![Skärm bild som visar sidan "PerformanceCenter" företags webbplats "relaterad till deltagare" med knappen "skapa deltagare" vald.][400]
 

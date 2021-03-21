@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420537"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: när du har en befintlig klient
@@ -34,7 +34,7 @@ Du kan hantera vissa användare lokalt och andra i molnet. Ett vanligt scenario 
 Om du började hantera användare i Azure AD som också finns i lokala AD och senare vill använda Connect, finns det några ytterligare problem som du behöver tänka på.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synkronisera med befintliga användare i Azure AD
-När du installerar Azure AD Connect och startar synkronisering görs en kontroll av Azure AD Sync-tjänsten (i Azure AD) för varje nytt objekt och försöker hitta ett befintligt objekt som ska matchas. Det finns tre attribut som används för den här processen: **userPrincipalName** , **proxyAddresses** och **sourceAnchor** / **immutableID**. En matchning på **userPrincipalName** och **proxyAddresses** kallas för en **mjuk matchning**. En matchning på **sourceAnchor** kallas för **hård matchning**. För attributet **proxyAddresses** används endast värdet med **SMTP:** , det vill säga den primära e-postadressen, för utvärderingen.
+När du installerar Azure AD Connect och startar synkronisering görs en kontroll av Azure AD Sync-tjänsten (i Azure AD) för varje nytt objekt och försöker hitta ett befintligt objekt som ska matchas. Det finns tre attribut som används för den här processen: **userPrincipalName**, **proxyAddresses** och **sourceAnchor** / **immutableID**. En matchning på **userPrincipalName** och **proxyAddresses** kallas för en **mjuk matchning**. En matchning på **sourceAnchor** kallas för **hård matchning**. För attributet **proxyAddresses** används endast värdet med **SMTP:**, det vill säga den primära e-postadressen, för utvärderingen.
 
 Matchningen utvärderas endast för nya objekt som kommer från Connect. Om du ändrar ett befintligt objekt så att det matchar något av dessa attribut visas ett fel i stället.
 

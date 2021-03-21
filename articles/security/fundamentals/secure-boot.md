@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557850"
 ---
 # <a name="secure-boot"></a>Säker start
@@ -55,8 +55,8 @@ Verifierar att databas-och DBX-sammandrag är korrekta säkerställer:
 ## <a name="next-steps"></a>Nästa steg
 Mer information om vad vi gör för att driva plattforms integritet och säkerhet finns i:
 
-- [Säkerhet för inbyggd program vara](firmware.md)
+- [Säkerhet för inbyggd programvara](firmware.md)
 - [Uppmätt start-och värd attestering](measured-boot-host-attestation.md)
-- [Project-Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Kryptering i vila](encryption-atrest.md)
 - [Hypervisor-säkerhet](hypervisor.md)

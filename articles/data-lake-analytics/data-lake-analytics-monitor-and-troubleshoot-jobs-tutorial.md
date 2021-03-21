@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 12/05/2016
 ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220286"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Övervaka jobb i Azure Data Lake Analytics med Azure-portalen
@@ -23,7 +23,7 @@ ms.locfileid: "92220286"
    ![Azure Data Lake Analytics jobb hantering](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
     Jobb hanteringen ger dig en överblick över jobb statusen. Observera att det finns ett misslyckat jobb.
-3. Klicka på panelen **jobb hantering** om du vill se jobben. Jobben kategoriseras i **Kör**, **köade**och **avslutade**. Du får se det misslyckade jobbet i avsnittet **Avsluta** . Den måste först vara en i listan. När du har många jobb kan du klicka på **filter** för att få hjälp att hitta jobb.
+3. Klicka på panelen **jobb hantering** om du vill se jobben. Jobben kategoriseras i **Kör**, **köade** och **avslutade**. Du får se det misslyckade jobbet i avsnittet **Avsluta** . Den måste först vara en i listan. När du har många jobb kan du klicka på **filter** för att få hjälp att hitta jobb.
 
    ![Azure Data Lake Analytics filtrera jobb](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 

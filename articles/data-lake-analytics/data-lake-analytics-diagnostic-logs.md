@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221017"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Åtkomst till diagnostikloggar för Azure Data Lake Analytics
@@ -27,7 +27,7 @@ Med diagnostisk loggning kan du samla in gransknings historik för data åtkomst
 
     ![Skärm bild som visar åtgärden "diagnostikloggar" som valts och aktivera diagnostik för att samla in följande loggar "markerat.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. Från __diagnostikinställningar__anger du ett __namn__ för den här loggnings konfigurationen och väljer sedan loggnings alternativ.
+3. Från __diagnostikinställningar__ anger du ett __namn__ för den här loggnings konfigurationen och väljer sedan loggnings alternativ.
 
     ![Aktivera diagnostik för att samla in gransknings-och förfrågnings loggar](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Aktivera diagnostikloggar")
 
@@ -40,7 +40,7 @@ Med diagnostisk loggning kan du samla in gransknings historik för data åtkomst
      * Välj __Skicka till Log Analytics__ för att skicka data till Azure Monitors tjänsten. Använd det här alternativet om du vill använda Azure Monitor loggar för att samla in och analysera loggar.
    * Ange om du vill hämta gransknings loggar eller begär ande loggar eller båda.  En begär ande logg fångar varje API-begäran. I en Gransknings logg registreras alla åtgärder som utlöses av denna API-begäran.
 
-   * För __Arkiv till ett lagrings konto__anger du antalet dagar som data ska bevaras.
+   * För __Arkiv till ett lagrings konto__ anger du antalet dagar som data ska bevaras.
 
    * Klicka på __Spara__.
 
@@ -183,7 +183,7 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 | operationName |Sträng |Namnet på den åtgärd som loggas. Till exempel JobSubmitted. |
 | resultType |Sträng |En under status för jobb status (operationName). |
 | resultSignature |Sträng |Ytterligare information om jobb status (operationName). |
-| identity |Sträng |Användaren som begärde åtgärden. Exempelvis susan@contoso.com. |
+| identity |Sträng |Användaren som begärde åtgärden. Till exempel susan@contoso.com. |
 | properties |JSON |Mer information finns i nästa avsnitt (gransknings loggens egenskaps schema) |
 
 > [!NOTE]

@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
 ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779772"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Innehålls referens för Azure SQL-hanterad instans
@@ -79,13 +79,13 @@ I den här artikeln hittar du en innehålls referens till olika guider, skript o
 
 - [Skapa aviseringar på en hanterad instans](alerts-create.md)
 
-## <a name="operations"></a>Åtgärder
+## <a name="operations"></a>Operations
 
-- [Användarinitierade manuell redundans på SQL-hanterad instans](user-initiated-failover.md)
+- [Användarinitierad manuell redundansväxling på SQL Managed Instance](user-initiated-failover.md)
 
 ## <a name="develop-applications"></a>Utveckla program
 
-- [Anslutning](../database/connect-query-content-reference-guide.md#libraries)
+- [Anslutningsmöjligheter](../database/connect-query-content-reference-guide.md#libraries)
 - [Använda Spark-anslutningsappen](../../cosmos-db/spark-connector.md)
 - [Autentisera en app](../database/application-authentication-get-client-id-keys.md)
 - [Använd batching för bättre prestanda](../performance-improve-use-batching.md)

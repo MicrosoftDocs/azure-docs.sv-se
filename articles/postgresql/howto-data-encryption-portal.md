@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 98c413f85fe556f5fb413716037163931753e1d7
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240740"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Data kryptering för Azure Database for PostgreSQL enskild server med hjälp av Azure Portal
@@ -36,8 +36,8 @@ Lär dig hur du använder Azure Portal för att konfigurera och hantera data kry
     ```
 
 * Nyckeln måste ha följande attribut för att användas som en kundhanterad nyckel:
-  * Inget förfallo datum
-  * Inte inaktiverat
+  * Inget förfallodatum
+  * Inte aktiverat
   * Kan utföra get-, wrap-och unwrap Key-åtgärder
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Ange rätt behörigheter för viktiga åtgärder
@@ -46,7 +46,7 @@ Lär dig hur du använder Azure Portal för att konfigurera och hantera data kry
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Skärm bild av Key Vault med åtkomst principer och Lägg till åtkomst princip markerad":::
 
-2. Välj **nyckel behörigheter** och välj **Hämta** , **Radbryt** **, packa** upp och **huvudobjektet** , som är namnet på postgresql-servern. Om ditt Server huvud namn inte finns i listan över befintliga huvud konton måste du registrera det. Du uppmanas att registrera ditt Server huvud namn när du försöker konfigurera data kryptering för första gången, och det Miss lyckas.  
+2. Välj **nyckel behörigheter** och välj **Hämta**, **Radbryt** **, packa** upp och **huvudobjektet**, som är namnet på postgresql-servern. Om ditt Server huvud namn inte finns i listan över befintliga huvud konton måste du registrera det. Du uppmanas att registrera ditt Server huvud namn när du försöker konfigurera data kryptering för första gången, och det Miss lyckas.  
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Översikt över åtkomst princip":::
 
@@ -82,10 +82,10 @@ När Azure Database for PostgreSQL enskild server har krypterats med en kunds ha
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Skärm bild av Azure Database for PostgreSQL med otillgänglig status markerad":::
 
-3. Om du vill göra servern tillgänglig igen, verifierar du nyckeln på den återställda servern. Välj nyckel för att verifiera **data kryptering**  >  **Revalidate key**.
+3. Om du vill göra servern tillgänglig igen, verifierar du nyckeln på den återställda servern. Välj nyckel för att verifiera **data kryptering**  >  .
 
    > [!NOTE]
-   > Det första försöket att validera kommer att Miss lyckas eftersom den nya serverns tjänst huvud namn måste ges åtkomst till nyckel valvet. Om du vill generera tjänstens huvud namn väljer du **revalidate Key** , som visar ett fel, men som genererar tjänstens huvud namn. Därefter kan du se [de här stegen](#set-the-right-permissions-for-key-operations) tidigare i den här artikeln.
+   > Det första försöket att validera kommer att Miss lyckas eftersom den nya serverns tjänst huvud namn måste ges åtkomst till nyckel valvet. Om du vill generera tjänstens huvud namn väljer du **revalidate Key**, som visar ett fel, men som genererar tjänstens huvud namn. Därefter kan du se [de här stegen](#set-the-right-permissions-for-key-operations) tidigare i den här artikeln.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Skärm bild av Azure Database for PostgreSQL med omverifierings steg markerat":::
 
