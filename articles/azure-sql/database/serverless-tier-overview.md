@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 2/22/2021
 ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658596"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database utan Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Server lös är en beräknings nivå för enskilda databaser i Azure SQL Database som automatiskt skalar beräkning baserat på arbets belastnings behov och räkningar för mängden data bearbetning som används per sekund. Server lös beräknings nivån pausar också automatiskt databaser under inaktiva perioder när endast lagring faktureras och återupptar automatiskt databaser när aktiviteten returnerar.
+Serverlös är en beräkningsnivå för enskilda databaser i Azure SQL Database som automatiskt skalar beräkningen utifrån arbetsbelastningsbehovet. Kunden faktureras för den mängd databearbetning som används per sekund. På den serverlösa beräkningsnivån pausas databaser automatiskt under inaktiva perioder och då faktureras endast lagring. Databaserna startas igen automatiskt när aktiviteten återupptas.
 
 ## <a name="serverless-compute-tier"></a>Serverlös beräkningsnivå
 

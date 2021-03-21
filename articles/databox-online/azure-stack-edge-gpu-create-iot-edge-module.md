@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
 ms.openlocfilehash: d2ab96fcfa33301f0bd1212b23f9418fa39d0134
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102638746"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Utveckla en C# IoT Edge-modul för att flytta filer på Azure Stack Edge Pro
@@ -125,7 +125,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
 
 ### <a name="update-the-module-with-custom-code"></a>Uppdatera modulen med anpassad kod
 
-1. I VS Code-Utforskaren öppnar du **moduler > FileCopyModule > program.cs**.
+1. I VS Code-Utforskaren öppnar du **moduler > FileCopyModule > program. cs**.
 2. Längst upp i FileCopyModule- **namnområdet** lägger du till följande using-instruktioner för typer som används senare. **Microsoft. Azure. devices. client. transport. MQTT** är ett protokoll för att skicka meddelanden till IoT Edge Hub.
 
     ```
@@ -240,7 +240,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     ```
 
 7. Spara den här filen.
-8. Du kan också [Hämta ett befintligt kod exempel](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) för det här projektet. Du kan sedan validera filen som du sparade mot filen **program.cs** i det här exemplet.
+8. Du kan också [Hämta ett befintligt kod exempel](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) för det här projektet. Du kan sedan validera filen som du sparade mot filen **program. cs** i det här exemplet.
 
 ## <a name="build-your-iot-edge-solution"></a>Skapa din IoT Edge-lösning
 

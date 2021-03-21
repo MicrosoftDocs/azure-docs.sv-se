@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004712"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Check lista för prestanda och skalbarhet för tabell lagring
@@ -106,7 +106,7 @@ För bandbredd är problemet ofta klientens funktioner. Större Azure-instanser 
 
 I takt med att nätverks användningen används bör du tänka på att nätverks förhållandena som resulterar i fel och paket förlust kommer att ta en långsam effektiv data flöde.  Att använda WireShark eller NetMon kan hjälpa dig att diagnostisera det här problemet.  
 
-### <a name="location"></a>Plats
+### <a name="location"></a>Location
 
 I alla distribuerade miljöer ger klienten nära-servern den bästa prestandan. För att få åtkomst till Azure Storage med den lägsta svars tiden är den bästa platsen för din klient i samma Azure-region. Om du till exempel har en Azure-webbapp som använder Azure Storage kan du söka efter dem i en enda region, till exempel västra USA eller Asien, sydöstra. Samplacering av resurser minskar svars tiden och kostnaden, eftersom bandbredds användningen i en enda region är kostnads fri.  
 

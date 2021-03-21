@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
 ms.openlocfilehash: cb3a4b6a726ee9163582b15586c65fc750712c63
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97368301"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Självstudie: Begränsa nätverksåtkomst till PaaS-resurser med tjänstslutpunkter för virtuellt nätverk och Azure-portalen
@@ -53,7 +53,7 @@ Logga in på Azure Portal på https://portal.azure.com.
    |----|----|
    |Prenumeration| Välj din prenumeration|
    |Resursgrupp | Välj **Skapa ny** och skriv *myResourceGroup*.|
-   |Namn| Ange *myVirtualNetwork* |
+   |Name| Ange *myVirtualNetwork* |
    |Region| Välj **(US) USA, östra** |
 
    ![Ange grundläggande information om ditt virtuella nätverk](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
@@ -114,8 +114,8 @@ Som standard kan alla virtuella dator instanser i ett undernät kommunicera med 
     |----|----|
     |Prenumeration| Välj din prenumeration|
     |Resursgrupp | Välj *myResourceGroup* i listan|
-    |Namn| Ange **myNsgPrivate** |
-    |Plats| Välj **USA, östra** |
+    |Name| Ange **myNsgPrivate** |
+    |Location| Välj **USA, östra** |
 
 5. Klicka på **Granska + skapa** och klicka på **skapa** när validerings kontrollen har slutförts.
 6. När nätverks säkerhets gruppen har skapats klickar du på **gå till resurs** eller söker efter *myNsgPrivate*.
@@ -147,7 +147,7 @@ Som standard kan alla virtuella dator instanser i ett undernät kommunicera med 
     |Protokoll|Valfri|
     |Åtgärd|**Ändra standard till *neka*** |
     |Prioritet|110|
-    |Namn|Ändra till *neka – Internet – alla*|
+    |Name|Ändra till *neka – Internet – alla*|
 
 11. Skapa en *inkommande säkerhets regel* som tillåter att Remote Desktop Protocol (RDP)-trafik till under nätet var som helst. Regeln åsidosätter en standardsäkerhetsregel som nekar all inkommande trafik från internet. Fjärrskrivbordsanslutningar tillåts i undernätet så att anslutningen kan testas i ett senare steg. 
 12. Under **Inställningar** väljer du **inkommande säkerhets regler**.
@@ -162,7 +162,7 @@ Som standard kan alla virtuella dator instanser i ett undernät kommunicera med 
     |Protokoll|Valfri|
     |Åtgärd|Tillåt|
     |Prioritet|120|
-    |Namn|Ändra till *Tillåt-RDP – alla*|
+    |Name|Ändra till *Tillåt-RDP – alla*|
 
    >[!WARNING] 
    > RDP-port 3389 exponeras för Internet. Detta rekommenderas endast för testning. För *produktions miljöer* rekommenderar vi att du använder en VPN-eller privat anslutning.
@@ -188,7 +188,7 @@ De steg som krävs för att begränsa nätverks åtkomsten till resurser som ska
     |Prenumeration| Välj din prenumeration|
     |Resursgrupp| Välj *myResourceGroup*|
     |Lagrings konto namn| Ange ett namn som är unikt i alla Azure-platser, mellan 3–24 tecken långt och som endast innehåller siffror och gemener.|
-    |Plats| Välj **(US) USA, östra** |
+    |Location| Välj **(US) USA, östra** |
     |Prestanda|Standard|
     |Typ av konto| StorageV2 (generell användning v2)|
     |Replikering| Lokalt redundant lagring (LRS)|
@@ -257,7 +257,7 @@ Om du vill testa nätverksåtkomsten till ett lagringskonto distribuerar du en v
    |Region | (USA) USA, östra
    |Alternativ för tillgänglighet| Tillgänglighetszon|
    |Tillgänglighetszon | 1 |
-   |Avbildning | Windows Server 2019 Data Center – gen1 |
+   |Bild | Windows Server 2019 Data Center – gen1 |
    |Storlek | Välj den virtuella dator instans storlek som du vill använda |
    |Användarnamn|Ange ett valfritt användarnamn.|
    |Lösenord| Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|

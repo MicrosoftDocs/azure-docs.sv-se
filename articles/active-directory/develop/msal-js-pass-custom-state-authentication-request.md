@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5c1fad96ea6e3b75b3afdfd4a4d3baac43308541
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98063679"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Skicka anpassat tillstånd i autentiseringsbegäranden med hjälp av MSAL.js
@@ -51,7 +51,7 @@ export type AuthenticationParameters = {
 > Att hoppa över cachen bör endast användas i scenarier där du vet att cachelagrade data inte innehåller uppdaterad information.
 > Till exempel ett administrations verktyg som lägger till roller till en användare som behöver hämta en ny token med uppdaterade roller.
 
-Till exempel:
+Exempel:
 
 ```javascript
 let loginRequest = {

@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935758"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referens guide för Azure Active Directory styrnings åtgärder
@@ -31,7 +31,7 @@ Det här avsnittet i [hand boken för Azure AD-åtgärder](active-directory-ops-
 
 Hantering av Azure Active Directory kräver kontinuerlig körning av viktiga operativa uppgifter och processer, som kanske inte ingår i ett lanserings projekt. Det är fortfarande viktigt att du konfigurerar dessa uppgifter för att optimera din miljö. De viktigaste uppgifterna och deras rekommenderade ägare är:
 
-| Aktivitet | Ägare |
+| Uppgift | Ägare |
 | :- | :- |
 | Arkivera Azure AD audit-loggar i SIEM system | Åtgärds team för informations säkerhet |
 | Identifiera program som hanteras av efterlevnad | IAM-åtgärds team |
@@ -119,7 +119,7 @@ Om du vill att nivån för EA-portalen för närvarande är "blandat läge" mås
 
 #### <a name="privileged-access-recommended-reading"></a>Privilegie rad åtkomst Rekommenderad läsning
 
-- [Behörigheter för administratörsrollen i Azure Active Directory](../roles/permissions-reference.md)
+- [Behörigheter för administratörsroller i Azure Active Directory](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>Berättigandehantering
 

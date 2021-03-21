@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100582808"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Åtkomst till diagnostikloggar för Azure Data Lake Storage Gen1
@@ -115,7 +115,7 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 ```
 
 #### <a name="request-log-schema"></a>Begär logg schema
-| Namn | Typ | Description |
+| Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | time |Sträng |Tids stämplingen (i UTC) för loggen |
 | resourceId |Sträng |ID för den resurs som åtgärden ägde rum på |
@@ -128,7 +128,7 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 | properties |JSON |Se nedan för information |
 
 #### <a name="request-log-properties-schema"></a>Schema för begär ande logg egenskaper
-| Namn | Typ | Description |
+| Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | HttpMethod |Sträng |HTTP-metoden som används för åtgärden. Till exempel GET. |
 | Sökväg |Sträng |Den sökväg som åtgärden utfördes på |
@@ -167,7 +167,7 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 ```
 
 #### <a name="audit-log-schema"></a>Schema för spårningslogg
-| Namn | Typ | Description |
+| Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | time |Sträng |Tids stämplingen (i UTC) för loggen |
 | resourceId |Sträng |ID för den resurs som åtgärden ägde rum på |
@@ -180,7 +180,7 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 | properties |JSON |Se nedan för information |
 
 #### <a name="audit-log-properties-schema"></a>Schema för gransknings logg egenskaper
-| Namn | Typ | Description |
+| Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | StreamName |Sträng |Den sökväg som åtgärden utfördes på |
 

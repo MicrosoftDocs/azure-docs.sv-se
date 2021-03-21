@@ -7,10 +7,10 @@ ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594171"
 ---
 # <a name="shell-rendering"></a>Rendering av gränssnitt
@@ -23,7 +23,7 @@ Du kan konfigurera utseendet på objekt som återges av gränssnittet via det `S
 
 Klassen `ShellRenderingSettings` innehåller inställningar som rör globala skal åter givnings egenskaper:
 
-| Parameter      | Typ    | Description                                             |
+| Parameter      | Typ    | Beskrivning                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Desaturation` | flyt   | Mängden demättnad som ska användas för den vanliga slutgiltiga objekt färgen, i intervall 0 (ingen demättnad) till 1 (fullständig avmättnad) |
 | `Opacity`      | flyt   | Opaciteten för Shell-renderade objekt, i intervall 0 (osynliga) till 1 (helt täckande) |

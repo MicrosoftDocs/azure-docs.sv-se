@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389186"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link för Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Med hjälp av en privat Azure-länk kan du ansluta till olika plattformar som en tjänst (PaaS) distributioner i Azure via en privat slut punkt. En privat slut punkt är en privat IP-adress inom ett särskilt virtuellt nätverk och undernät. En lista över PaaS-distributioner som stöder funktionen för privat länk finns i [dokumentationen för privat länk](../private-link/index.yml). 
+Med hjälp av en privat Azure-länk kan du ansluta till olika plattformar som en tjänst (PaaS) distributioner i Azure via en privat slut punkt. En privat slutpunkt är en privat IP-adress i ett visst virtuellt nätverk och undernät. En lista över PaaS-distributioner som stöder funktionen för privat länk finns i [dokumentationen för privat länk](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Säker kommunikation mellan kund nätverk och Azure Data Factory 
-Du kan konfigurera ett virtuellt Azure-nätverk som en logisk representation av ditt nätverk i molnet. Detta ger följande fördelar:
-* Du hjälper till att skydda dina Azure-resurser mot attacker i offentliga nätverk.
-* Du låter nätverken och Data Factory kommunicera på ett säkert sätt med varandra. 
+Du kan konfigurera ett virtuellt Azure-nätverk som en logisk representation av ditt nätverk i molnet. Det är medför följande fördelar:
+* Du skyddar dina Azure-resurser mot attacker i offentliga nätverk.
+* Du låter nätverken och Data Factory kommunicera säkert med varandra. 
 
-Du kan också ansluta ett lokalt nätverk till ditt virtuella nätverk genom att konfigurera en Internet Protocol security (IPsec) VPN-anslutning (plats-till-plats) eller en Azure-ExpressRoute (privat peering). 
+Du kan också ansluta ett lokalt nätverk till ditt virtuella nätverk genom att konfigurera en IPsec VPN-anslutning (plats till-plats) eller en Azure ExpressRoute-anslutning (privat peering). 
 
 Du kan också installera en integration runtime med egen värd på en lokal dator eller en virtuell dator i det virtuella nätverket. På så sätt kan du:
-* Kör kopierings aktiviteter mellan ett moln data lager och ett data lager i ett privat nätverk.
-* Skicka transformerings aktiviteter mot beräknings resurser i ett lokalt nätverk eller i ett virtuellt Azure-nätverk. 
+* Köra kopieringsaktiviteter mellan molndatalager och ett datalager i ett privat nätverk.
+* Skicka transformeringsaktiviteter mot beräkningsresurser i ett lokalt nätverk eller ett virtuellt Azure-nätverk. 
 
 Flera kommunikations kanaler krävs mellan Azure Data Factory och det virtuella kund nätverket, som du ser i följande tabell:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005511"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Elium för automatisk användar etablering
@@ -49,7 +49,7 @@ När du tilldelar en användare till Elium måste du välja en giltig, programsp
 
 ## <a name="set-up-elium-for-provisioning"></a>Konfigurera Elium för etablering
 
-Innan du konfigurerar Elium för automatisk användar etablering med Azure AD måste du aktivera system för etablering av SCIM (Cross-Domain Identity Management) på Elium. Gör så här:
+Innan du konfigurerar Elium för automatisk användar etablering med Azure AD måste du aktivera system för etablering av SCIM (Cross-Domain Identity Management) på Elium. Följ de här stegen:
 
 1. Logga in på Elium och gå till **Mina profil**  >  **Inställningar**.
 
@@ -65,7 +65,7 @@ Innan du konfigurerar Elium för automatisk användar etablering med Azure AD m�
 
 ## <a name="add-elium-from-the-gallery"></a>Lägg till Elium från galleriet
 
-Om du vill konfigurera Elium för automatisk användar etablering med Azure AD måste du också lägga till Elium från Azure AD-programgalleriet till din lista över hanterade program som en tjänst (SaaS)-program. Gör så här:
+Om du vill konfigurera Elium för automatisk användar etablering med Azure AD måste du också lägga till Elium från Azure AD-programgalleriet till din lista över hanterade program som en tjänst (SaaS)-program. Följ de här stegen:
 
 1. Välj **Azure Active Directory** i den vänstra navigerings panelen i [Azure Portal](https://portal.azure.com).
 

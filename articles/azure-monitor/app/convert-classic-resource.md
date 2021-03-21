@@ -4,10 +4,10 @@ description: Lär dig mer om de steg som krävs för att uppgradera din Azure Mo
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100584250"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrera till arbets ytans baserade Application Insights resurser

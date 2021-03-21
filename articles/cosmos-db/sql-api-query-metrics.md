@@ -9,10 +9,10 @@ ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102488094"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Justera frågeprestanda med Azure Cosmos DB
@@ -260,7 +260,7 @@ Klient-SDK: erna kan internt göra flera frågor för att betjäna frågan i var
 
 Här följer några exempel frågor och hur du tolkar några av de mått som returneras från frågekörningen: 
 
-| Söka i data | Exempel mått | Beskrivning | 
+| Fråga | Exempel mått | Beskrivning | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Antalet dokument som hämtats är 100 + 1 för att matcha den översta satsen. Fråge tiden används främst i `WriteOutputTime` och `DocumentLoadTime` eftersom det är en genomsökning. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount är nu högre (500 + 1 för att matcha den övre satsen). | 

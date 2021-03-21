@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010874"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Om konfigurations inställningar för VPN Gateway
@@ -173,7 +173,7 @@ Ibland behöver du ändra inställningarna för den lokala Nätverksgatewayen. T
 
 För ytterligare tekniska resurser och särskilda syntax krav för att använda REST-API: er, PowerShell-cmdletar eller Azure CLI för VPN Gateway konfigurationer, se följande sidor:
 
-| **Klassisk** | **Resource Manager** |
+| **Form** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST-API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST-API](/rest/api/network/virtualnetworkgateways) |

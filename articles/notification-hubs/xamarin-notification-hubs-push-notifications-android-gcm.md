@@ -18,10 +18,10 @@ ms.author: matthewp
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
 ms.openlocfilehash: e7d4206de1e097c30e9f5e96bbd935e94892ce0e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221042"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Självstudie: skicka push-meddelanden till Xamarin. Android-appar med hjälp av Notification Hubs
@@ -91,7 +91,7 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
     1. Välj **Ja** i meddelande rutan om du vill fortsätta med att ändra mål ramverket.
 1. Lägg till nödvändiga NuGet-paket i projektet genom att följa dessa steg:
     1. Högerklicka på projektet och välj **Hantera NuGet-paket...**.
-    1. Växla till fliken **installerad** , Välj **Xamarin. Android. support. design** och välj **Uppdatera** i den högra rutan för att uppdatera paketet till den senaste versionen.
+    1. Växla till fliken **installerad** , Välj **Xamarin.Android.support.design** och välj sedan **Uppdatera** i den högra rutan för att uppdatera paketet till den senaste versionen.
     1. Växla till fliken **Bläddra** . Sök efter **Xamarin. GooglePlayServices. Base**. Välj **Xamarin.GooglePlayServices.Base** i resultatlistan. Markera **Installera**.
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)

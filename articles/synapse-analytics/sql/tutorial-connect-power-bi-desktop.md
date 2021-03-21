@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119993"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Självstudie: Använd Server lös SQL-pool med Power BI Desktop & skapa en rapport
@@ -100,7 +100,7 @@ Demonstrations data innehåller följande data uppsättningar:
 
 AMERIKANSKA befolkning efter kön och tävling för varje amerikansk region från 2000 och 2010 decennial-inventering i Parquet-format.
 
-| Mappsökväg                                                  | Description                                                  |
+| Mappsökväg                                                  | Beskrivning                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Överordnad mapp för data i demonstrations lagrings konto               |
 | /Release/us_population_county/                               | US population-datafiler i Parquet-format, partitionerade efter år med Hive/Hadoop partitionerings schema. |

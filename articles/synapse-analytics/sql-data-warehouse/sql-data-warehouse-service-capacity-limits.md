@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98117698"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Kapacitets begränsningar för dedikerad SQL-pool i Azure Synapse Analytics
@@ -68,16 +68,16 @@ Högsta tillåtna värden för olika komponenter i dedikerad SQL-pool i Azure Sy
 
 | Kategori | Beskrivning | Maximal |
 |:--- |:--- |:--- |
-| Söka i data |Köade frågor för användar tabeller. |1000 |
-| Söka i data |Samtidiga frågor i systemvyer. |100 |
-| Söka i data |Köade frågor om systemvyer |1000 |
-| Söka i data |Maximalt antal parametrar |2098 |
+| Fråga |Köade frågor för användar tabeller. |1000 |
+| Fråga |Samtidiga frågor i systemvyer. |100 |
+| Fråga |Köade frågor om systemvyer |1000 |
+| Fråga |Maximalt antal parametrar |2098 |
 | Batch |Maximal storlek |65536 * 4096 |
 | Välj resultat |Kolumner per rad |4096<br/><br/>Du kan aldrig ha fler än 4096 kolumner per rad i Välj resultat. Det finns ingen garanti för att du alltid kan ha 4096. Om din frågeplan kräver en temporär tabell, kan kolumnerna 1024 per tabell gälla. |
-| VÄLJ |Kapslade under frågor |32<br/><br/>Du kan aldrig ha fler än 32 kapslade under frågor i en SELECT-instruktion. Det finns ingen garanti för att du alltid kan ha 32. Till exempel kan en koppling introducera en under fråga i frågeuttrycket. Antalet under frågor kan också begränsas av tillgängligt minne. |
-| VÄLJ |Kolumner per koppling |1024 kolumner<br/><br/>Du kan aldrig ha fler än 1024 kolumner i kopplingen. Det finns ingen garanti för att du alltid kan ha 1024. Om JOIN-planen kräver en temporär tabell med fler kolumner än KOPPLINGs resultatet gäller gränsen 1024 för den temporära tabellen. |
-| VÄLJ |Byte per grupp efter kolumner. |8060<br/><br/>Kolumnerna i GROUP BY-satsen får innehålla högst 8060 byte. |
-| VÄLJ |Byte per sortering efter kolumner |8060 byte<br/><br/>Kolumnerna i ORDER BY-satsen får innehålla högst 8060 byte |
+| SELECT |Kapslade under frågor |32<br/><br/>Du kan aldrig ha fler än 32 kapslade under frågor i en SELECT-instruktion. Det finns ingen garanti för att du alltid kan ha 32. Till exempel kan en koppling introducera en under fråga i frågeuttrycket. Antalet under frågor kan också begränsas av tillgängligt minne. |
+| SELECT |Kolumner per koppling |1024 kolumner<br/><br/>Du kan aldrig ha fler än 1024 kolumner i kopplingen. Det finns ingen garanti för att du alltid kan ha 1024. Om JOIN-planen kräver en temporär tabell med fler kolumner än KOPPLINGs resultatet gäller gränsen 1024 för den temporära tabellen. |
+| SELECT |Byte per grupp efter kolumner. |8060<br/><br/>Kolumnerna i GROUP BY-satsen får innehålla högst 8060 byte. |
+| SELECT |Byte per sortering efter kolumner |8060 byte<br/><br/>Kolumnerna i ORDER BY-satsen får innehålla högst 8060 byte |
 | Identifierare per instruktion |Antalet refererade identifierare |65 535<br/><br/> Antalet identifierare som kan ingå i ett enda uttryck i en fråga är begränsat. Om antalet överskrids i SQL Server fel 8632. Mer information finns i [internt fel: en gräns för uttrycks tjänster har nåtts](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Strängliteraler | Antal sträng litteraler i en instruktion | 20 000 <br/><br/>Antalet sträng konstanter i ett enda uttryck i en fråga är begränsat. Om antalet överskrids i SQL Server fel 8632.|
 ||||

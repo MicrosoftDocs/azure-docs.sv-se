@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001532"
 ---
 # <a name="configure-storage"></a>Konfigurera lagring
@@ -119,7 +119,7 @@ Följ dessa steg om du vill lägga till Blob Storage när klustret har skapats.
 
    ![Azure Portal GUI för att kopiera nyckeln](media/avere-vfxt-copy-storage-key.png)
 
-1. Öppna kontroll panelen aver för klustret. Klicka på **Inställningar** och öppna **Cluster**  >  **autentiseringsuppgifter** för kluster moln i det vänstra navigerings fönstret. På sidan autentiseringsuppgifter för moln klickar du på **Lägg till autentiseringsuppgift**.
+1. Öppna kontroll panelen aver för klustret. Klicka på **Inställningar** och öppna   >  **autentiseringsuppgifter** för kluster moln i det vänstra navigerings fönstret. På sidan autentiseringsuppgifter för moln klickar du på **Lägg till autentiseringsuppgift**.
 
    ![Klicka på knappen Lägg till autentiseringsuppgift på sidan konfiguration av moln autentiseringsuppgifter](media/avere-vfxt-new-credential-button.png)
 

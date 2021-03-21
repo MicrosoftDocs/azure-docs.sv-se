@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96519050"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Data kryptering för Azure Database for MySQL med hjälp av Azure CLI
@@ -52,11 +52,11 @@ Lär dig hur du använder Azure CLI för att konfigurera och hantera data krypte
     ```
 
 * Nyckeln måste ha följande attribut för att användas som en kundhanterad nyckel:
-  * Inget förfallo datum
-  * Inte inaktiverat
+  * Inget förfallodatum
+  * Inte aktiverat
   * Utföra **Get**-, **wrap**-och **unwrap** -åtgärder
   * recoverylevel-attributet har angetts till **återställnings** Bart (Detta kräver att mjuk borttagning är aktiverat med kvarhållningsperioden inställt på 90 dagar)
-  * Rensnings skydd aktiverat
+  * Rensningsskydd aktiverat
 
 Du kan kontrol lera attributen ovan i nyckeln med hjälp av följande kommando:
 

@@ -10,10 +10,10 @@ ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935507"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Självstudie: transformera data med Azure Stack Edge Pro
@@ -34,7 +34,7 @@ I den här guiden får du lära dig att:
 > * Verifiera datatransformering och överföring
 
  
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser du till att:
 - Du har aktiverat din Azure Stack Edge Pro-enhet enligt beskrivningen i [aktivera din Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md).
@@ -58,8 +58,8 @@ Om du vill konfigurera Compute på Azure Stack Edge Pro skapar du en IoT Hub res
    |--------|---------|
    |Prenumeration      | Prenumeration som används av Azure Stack Edge-resursen. |
    |Resursgrupp    | Resurs grupp som används av Azure Stack Edge-resursen. |
-   |IoT Hub           | Välj från **Skapa ny** eller **Använd befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
-   |Namn              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
+   |IoT Hub           | Välj från **Skapa ny** eller **Använd befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I båda fallen använder IoT Hub-resursen samma prenumeration och resursgrupp som Azure Stack Edge-resursen använder.     |
+   |Name              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
 
     ![Kom igång med Compute 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 

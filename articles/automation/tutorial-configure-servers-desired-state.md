@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99053575"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurera datorer till ett önskat tillstånd
@@ -147,7 +147,7 @@ Om du väljer att ta bort noden från tjänsten kan du göra det med hjälp av a
 > Detta påverkar inte den konfiguration som för närvarande används på noden.
 > Om du vill ta bort den aktuella konfigurationen använder du [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) eller tar bort den lokala konfigurations filen (detta är det enda alternativet för Linux-noder).
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Klicka på **tillstånds konfiguration (DSC)** i innehålls förteckningen från Azure Automation.
 Klicka sedan på **noder** för att visa en lista över noder som är registrerade i tjänsten.

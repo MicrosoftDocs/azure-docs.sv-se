@@ -7,10 +7,10 @@ ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101663999"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Enhets uppdatering för IoT Hub-och IoT-Plug and Play
@@ -27,7 +27,7 @@ Det förväntade komponent namnet i din modell är **"azureDeviceUpdateAgent"** 
 
 Agentens metadata innehåller fält som enhets-eller enhets uppdaterings agenten använder för att skicka information och status till enhets uppdaterings tjänsterna.
 
-|Namn|Schema|Riktning|Beskrivning|Exempel|
+|Name|Schema|Riktning|Beskrivning|Exempel|
 |----|------|---------|-----------|-----------|
 |resultCode|heltal|enhet till molnet|En kod som innehåller information om resultatet av den senaste uppdaterings åtgärden. Kan fyllas i antingen lyckades eller Miss lyckas och bör följa [specifikationen för HTTP-statuskod](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).|500|
 |extendedResultCode|heltal|enhet till molnet|En kod som innehåller ytterligare information om resultatet. Kan fyllas i för lyckade eller misslyckade.|0x80004005 visas|
@@ -35,11 +35,11 @@ Agentens metadata innehåller fält som enhets-eller enhets uppdaterings agenten
 |installedUpdateId|sträng|enhet till molnet|Ett ID för uppdateringen som för närvarande är installerad (via enhets uppdatering). Det här värdet är null för en enhet som aldrig har tagit en uppdatering genom enhets uppdateringen.|Null|
 |`deviceProperties`|Karta|enhet till molnet|Uppsättningen egenskaper som innehåller tillverkare och modell.|Se nedan för information
 
-#### <a name="state"></a>Stat
+#### <a name="state"></a>Tillstånd
 
 Det är den status som rapporteras av enhets uppdaterings agenten efter att ha tagit emot en åtgärd från enhets uppdaterings tjänsten. `State` rapporteras som svar på en `Action` (se `Actions` nedan) som skickas till enhets uppdaterings agenten från enhets uppdaterings tjänsten. Se [arbets flödet för översikt](understand-device-update.md#device-update-agent) för begär Anden som flödar mellan enhets uppdaterings tjänsten och enhets uppdaterings agenten.
 
-|Namn|Värde|Beskrivning|
+|Name|Värde|Beskrivning|
 |---------|-----|-----------|
 |Inaktiv|0|Enheten är redo att ta emot en åtgärd från enhets uppdaterings tjänsten. Efter en lyckad uppdatering returneras tillstånd till `Idle` tillstånd.|
 |DownloadSucceeded|2|En lyckad nedladdning.|
@@ -50,7 +50,7 @@ Det är den status som rapporteras av enhets uppdaterings agenten efter att ha t
 
 Det är en uppsättning egenskaper som innehåller tillverkare och modell.
 
-|Namn|Schema|Riktning|Beskrivning|
+|Name|Schema|Riktning|Beskrivning|
 |----|------|---------|-----------|
 |manufacturer|sträng|enhet till molnet|Enhetens tillverkare, som rapporteras genom `deviceProperties` . Den här egenskapen läses från en av två platser – "AzureDeviceUpdateCore"-gränssnittet försöker först läsa värdet "aduc_manufacturer" från [konfigurations fil](device-update-configuration-file.md) filen.  Om värdet inte är ifyllt i konfigurations filen, är det standard att rapportera kompileringen av kompileringen för ADUC_DEVICEPROPERTIES_MANUFACTURER. Den här egenskapen rapporteras bara vid start.|
 |modell|sträng|enhet till molnet|Enhets modellen för enheten, som rapporteras genom `deviceProperties` . Den här egenskapen läses från en av två platser – AzureDeviceUpdateCore-gränssnittet kommer först att försöka läsa värdet "aduc_model" från [konfigurations fil](device-update-configuration-file.md) filen.  Om värdet inte är ifyllt i konfigurations filen, är det standard att rapportera kompileringen av kompileringen för ADUC_DEVICEPROPERTIES_MODEL. Den här egenskapen rapporteras bara vid start.|
@@ -61,7 +61,7 @@ Det är en uppsättning egenskaper som innehåller tillverkare och modell.
 
 Metadata för tjänsten innehåller fält som enhets uppdaterings tjänsterna använder för att kommunicera åtgärder och data till enhets uppdaterings agenten.
 
-|Namn|Schema|Riktning|Beskrivning|
+|Name|Schema|Riktning|Beskrivning|
 |----|------|---------|-----------|
 |åtgärd|heltal|moln till enhet|Det är ett heltal som motsvarar en åtgärd som agenten ska utföra. Värden som anges nedan.|
 |updateManifest|sträng|moln till enhet|Används för att beskriva innehållet i en uppdatering. Genererat från [import manifestet](import-update.md#create-device-update-import-manifest)|
@@ -72,7 +72,7 @@ Metadata för tjänsten innehåller fält som enhets uppdaterings tjänsterna an
 
 `Actions` nedan återges de åtgärder som vidtas av enhets uppdaterings agenten enligt anvisningarna i enhets uppdaterings tjänsten. Enhets uppdaterings agenten kommer att rapportera ett `State` (se `State` avsnittet ovan) som bearbetar den `Action` mottagna. Se [arbets flödet för översikt](understand-device-update.md#device-update-agent) för begär Anden som flödar mellan enhets uppdaterings tjänsten och enhets uppdaterings agenten.
 
-|Namn|Värde|Beskrivning|
+|Name|Värde|Beskrivning|
 |---------|-----|-----------|
 |Ladda ned|0|Ladda ned publicerat innehåll eller uppdatering och annat innehåll som behövs|
 |Installera|1|Installera innehållet eller uppdateringen. Det innebär vanligt vis att du anropar installations programmet för innehållet eller uppdateringen.|

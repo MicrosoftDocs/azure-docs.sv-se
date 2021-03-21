@@ -4,10 +4,10 @@ description: Konfigurera regler för åtkomst till ett Azure Container Registry 
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935996"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurera regler för åtkomst till ett Azure Container Registry bakom en brand vägg
@@ -126,7 +126,7 @@ Dedikerade data slut punkter är en valfri funktion i tjänst nivån **Premium**
 
 Du kan aktivera dedikerade data slut punkter med hjälp av Azure Portal eller Azure CLI. Data slut punkterna följer ett regionalt mönster, `<registry-name>.<region>.data.azurecr.io` . I ett geo-replikerat register aktiverar data slut punkter i alla replik regioner.
 
-### <a name="portal"></a>Portalen
+### <a name="portal"></a>Portal
 
 Så här aktiverar du data slut punkter med hjälp av portalen:
 

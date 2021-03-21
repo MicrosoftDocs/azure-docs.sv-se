@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: a7ab48759ac775c1195dedb4143d895bdcdec937
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98956586"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>REST Code-exempel för Azure Kognitiv sökning
@@ -47,6 +47,6 @@ Kod exempel från Kognitiv sökning team demonstrerar funktioner och arbets flö
 
 Följande exempel publiceras också av Kognitiv sökning-teamet, men det finns inga referenser till dokumentationen. Tillhör ande README-filer innehåller användnings instruktioner.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [Fråga – exempel](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Query-examples) | Postman-samlingar som demonstrerar de olika fråge teknikerna, inklusive fuzzy search, RegEx och jokertecken, komplettera automatiskt och så vidare. |
