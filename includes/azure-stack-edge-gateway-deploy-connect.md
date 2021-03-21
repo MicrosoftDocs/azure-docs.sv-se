@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.openlocfilehash: 60b0a1e07099c48474d6890480be663f2058797f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468928"
 ---
 1. Öppna en webbläsare och anslut till enhetens lokala webbgränssnitt på `https://192.168.100.10`. Den här åtgärden kan ta några minuter efter att du har aktiverat enheten.
@@ -25,6 +25,6 @@ ms.locfileid: "96468928"
 
 
 1. Ändra enhetens administratörs lösen ord vid prompten.  
-    Det nya lösen ordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla tre av följande tecken: versaler, gemener, numeriska tecken och specialtecken.
+    Det nya lösenordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla tre av följande tecken: versaler, gemener, siffror och specialtecken.
 
 Du är nu på sidan **Översikt** på enheten. Nästa steg är att konfigurera nätverks inställningarna för enheten.

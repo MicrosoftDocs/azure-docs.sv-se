@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020729"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimering av stor fil hämtning med Azure CDN
@@ -104,10 +104,10 @@ Mer information om byte Range-begäran finns i [RFC 7233](https://tools.ietf.org
 
 CDN cachelagrar alla segment när de tas emot. Hela filen behöver inte cachelagras i CDN-cachen. Efterföljande begär Anden för fil-eller byte-intervallen hanteras från CDN-cachen. Om inte alla segment cachelagras i CDN används för hämtning för att begära segment från ursprunget. Den här optimeringen är beroende av möjligheten för ursprungs servern att stödja byte intervall begär Anden. om ursprungs servern inte stöder byte intervall begär Anden är den här optimeringen inte effektiv.
 
-### <a name="caching"></a>Caching
+### <a name="caching"></a>Cachelagring
 Optimering av stora filer använder olika standardvärden för cachelagring – förfallo tider från allmän webb leverans. Det skiljer sig mellan positiv cachelagring och negativ cachelagring baserat på HTTP-svars koder. Om ursprungs servern anger en förfallo tid via en Cache-Control-eller Expires-rubrik i svaret, följer CDN det värdet. När ursprunget inte anges och filen matchar typ-och storleks villkoren för den här optimerings typen använder CDN standardvärden för optimering av stora filer. Annars använder CDN standardvärden för allmän webb leverans.
 
-| Caching  | Allmän webb | Optimering av stora filer 
+| Cachelagring  | Allmän webb | Optimering av stora filer 
 --- | --- | --- 
 Cachelagring: positiv <br> HTTP 200, 203, 300, <br> 301, 302 och 410 | 7 dagar |1 dag  
 Cachelagring: negativ <br> HTTP 204, 305, 404, <br> och 405 | Inget | 1 sekund 
@@ -122,7 +122,7 @@ När en anslutnings tid är slut försöker CDN ett antal gånger innan det skic
 
 I följande tabell visas en uppsättning villkor som ska uppfyllas för stor fil optimering:
 
-Condition (Väderförhållanden) | Värden 
+Villkor | Värden 
 --- | --- 
 Filtyper som stöds | 3G2, 3GP, ASF, AVI, bz2, DMG, exe, F4V, FLV, <br> GZ, HDP, ISO, JXR, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pkg, QT, RM, SWF, tar, <br> tgz, WDP, webm, WEBP, WMA, WMV, zip  
 Minsta fil storlek | 10 MB 

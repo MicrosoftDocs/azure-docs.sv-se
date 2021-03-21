@@ -8,20 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869bd7b02186873f490d324cec863c7f26ee8469
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 2de419885938b27ebce4a934db5ef966965b3dbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555447"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580172"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Aktivera anpassade domäner för Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 I den här artikeln beskrivs hur du aktiverar anpassade domäner i dina omdirigerings-URL: er för Azure Active Directory B2C (Azure AD B2C). Att använda en anpassad domän med ditt program ger en mer sömlös användar upplevelse. Från användarens perspektiv finns de kvar i din domän under inloggnings processen i stället för att omdirigera till Azure AD B2C standard domän *<klient organisations namnet>. b2clogin.com*.
 
@@ -48,7 +50,7 @@ Tänk på följande när du använder anpassade domäner:
 
 - Du kan konfigurera flera anpassade domäner. För det maximala antalet anpassade domäner som stöds, se [Azure AD-tjänstens gränser och begränsningar](../active-directory/enterprise-users/directory-service-limits-restrictions.md) för Azure AD B2C och [Azure-prenumeration och tjänst begränsningar, kvoter och begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits) för Azures front dörr.
 - Azures front dörr är en separat Azure-tjänst, så ytterligare avgifter kommer att debiteras. Mer information finns i [priser för front dörren](https://azure.microsoft.com/pricing/details/frontdoor).
-- För närvarande stöds inte brand Väggs funktionen för Azure frontend [-webbprogrammet](../web-application-firewall/afds/afds-overview.md) .
+- Om du vill använda [brand väggen för webbaserade webb program](../web-application-firewall/afds/afds-overview.md)i Azure måste du bekräfta att brand Väggs konfigurationen och reglerna fungerar korrekt med dina Azure AD B2C användar flöden.
 - När du har konfigurerat anpassade domäner kommer användarna fortfarande att kunna komma åt Azure AD B2C standard domän namn *<klient namn>. b2clogin.com* (om du inte använder en anpassad princip och du [blockerar åtkomsten](#block-access-to-the-default-domain-name).
 - Om du har flera program kan du migrera dem till den anpassade domänen eftersom webbläsaren lagrar Azure AD B2C-sessionen under det domän namn som används för närvarande.
 
@@ -193,7 +195,7 @@ Ersätt:
 - **princip-namn** med ditt princip namn. [Läs mer om Azure AD B2C-principer](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
 
 
-Metadata för [SAML-tjänstprovidern](connect-with-saml-service-providers.md) kan se ut så här: 
+Metadata för [SAML-tjänstprovidern](./saml-service-provider.md) kan se ut så här: 
 
 ```html
 https://custom-domain-name/tenant-name/policy-name/Samlp/metadata
@@ -258,12 +260,10 @@ Kopiera URL: en, ändra domän namnet manuellt och klistra sedan in det i webbl�
 
 Azures front dörr skickar användarens ursprungliga IP-adress. Detta är den IP-adress som du ser i gransknings rapporteringen eller den anpassade principen.
 
-### <a name="can-i-use-a-third-party-wab-application-firewall-waf-with-b2c"></a>Kan jag använda en WAF-brandvägg från en tredje part (WAB) med B2C?
+### <a name="can-i-use-a-third-party-web-application-firewall-waf-with-b2c"></a>Kan jag använda en brand vägg för webbaserade program från tredje part (WAF) med B2C?
 
-Azure AD B2C stöder för närvarande en anpassad domän genom att endast använda Azures frontend-dörr. Lägg inte till ytterligare en WAF framför Azures front dörr.
-
+Om du vill använda din egen brand vägg för webbaserade program framför Azures front dörr måste du konfigurera och kontrol lera att allt fungerar korrekt med dina Azure AD B2C användar flöden.
 
 ## <a name="next-steps"></a>Nästa steg
 
 Läs om [OAuth-auktoriseringsbegäran](protocols-overview.md).
-

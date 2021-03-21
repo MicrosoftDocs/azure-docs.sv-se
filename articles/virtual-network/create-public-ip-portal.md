@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
 ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694877"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Skapa en offentlig IP-adress med hjälp av Azure Portal
@@ -38,7 +38,7 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **standard**         |
     | Nivå                   | Välj **region**         |
-    | Namn                    | Ange **myStandardZRPublicIP**          |
+    | Name                    | Ange **myStandardZRPublicIP**          |
     | Tilldelning av IP-adress   | Observera att det här alternativet är låst som "statisk"                                        |
     | Cirkulations inställningar      | Lämna standardvärdet för **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](./routing-preference-overview.md). |
     | Tids gräns för inaktivitet (minuter)  | Lämna standardvärdet **4**.        |
@@ -73,7 +73,7 @@ I det här avsnittet skapar du en grundläggande offentlig IP-adress med namnet 
     | ---                     | ---                         |
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **grundläggande**         |
-    | Namn                    | Ange *myBasicPublicIP*          |
+    | Name                    | Ange *myBasicPublicIP*          |
     | Tilldelning av IP-adress   | Välj **statisk** (se anmärkning nedan)                                     |
     | Tids gräns för inaktivitet (minuter)  | Lämna standardvärdet **4**.       |
     | DNS-namnetikett          | Lämna värdet tomt    |

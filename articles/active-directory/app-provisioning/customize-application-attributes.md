@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091116"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579475"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Självstudie – anpassa användar etablering attribut-mappningar för SaaS-program i Azure Active Directory
 
@@ -113,13 +113,13 @@ Program och system som stöder anpassning av attributlistan är:
 - ServiceNow
 - Workday till Active Directory/arbets dag att Azure Active Directory
 - SuccessFactors för att Active Directory/SuccessFactors till Azure Active Directory
-- Azure Active Directory ([Azure AD Graph API standardattribut](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) och anpassade katalog tillägg stöds)
+- Azure Active Directory ([Azure AD Graph API standardattribut](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) och anpassade katalog tillägg stöds). Lär dig mer om att [skapa tillägg](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user) och [kända begränsningar](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues). 
 - Appar som stöder [SCIM 2,0](https://tools.ietf.org/html/rfc7643)
 - För att Azure Active Directory tillbakaskrivning till Workday eller SuccessFactors, stöds det att uppdatera relevanta metadata för attribut som stöds (XPATH och JSONPath), men det finns inte stöd för att lägga till nya Workday-eller SuccessFactors-attribut utöver de som ingår i standard schemat
 
 
 > [!NOTE]
-> Redigering av listan över attribut som stöds rekommenderas endast för administratörer som har anpassat schemat för sina program och system, och som har första kunskap om hur deras egna attribut har definierats. Detta kräver ibland välbekanthet med de API: er och utvecklingsverktyg som tillhandahålls av ett program eller system. Möjligheten att redigera listan över attribut som stöds är låst som standard, men kunder kan aktivera funktionen genom att gå till följande URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Du kan sedan navigera till programmet för att Visa attributlistan enligt beskrivningen [ovan](#editing-the-list-of-supported-attributes). 
+> Att redigera listan över attribut som stöds rekommenderas bara för administratörer som har anpassat schemat för sina program och system och har till gång till information om hur deras egna attribut har definierats eller om ett källattribut inte automatiskt visas i användar gränssnittet för Azure-portalen. Detta kräver ibland välbekanthet med de API: er och utvecklingsverktyg som tillhandahålls av ett program eller system. Möjligheten att redigera listan över attribut som stöds är låst som standard, men kunder kan aktivera funktionen genom att gå till följande URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Du kan sedan navigera till programmet för att Visa attributlistan enligt beskrivningen [ovan](#editing-the-list-of-supported-attributes). 
 
 När du redigerar listan över attribut som stöds anges följande egenskaper:
 

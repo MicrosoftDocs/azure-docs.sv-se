@@ -86,7 +86,7 @@
           href: stream-files-nodejs-quickstart.md
     - name: Python
       items:
-        - name: Snabb start för python Basic encoding
+        - name: Python Basic encoding
           href: quickstart-basic-encoding-python.md
     - name: Azure Portal
       items:
@@ -223,9 +223,9 @@
         - name: Övervaka med Event Grid
           items:
             - name: Händelser med Event Grid
-              href: reacting-to-media-services-events.md
+              href: monitoring/reacting-to-media-services-events.md
             - name: Event Grid-scheman
-              href: media-services-event-schemas.md
+              href: monitoring/media-services-event-schemas.md
     - name: Kompatibla spelare
       items:
         - name: Medie spelare för Media Services
@@ -394,15 +394,15 @@
     - name: Använda Event Grid
       items:
         - name: Övervaka händelser – portalen
-          href: monitor-events-portal-how-to.md
+          href: monitoring/monitor-events-portal-how-to.md
         - name: Övervaka händelser – CLI
-          href: job-state-events-cli-how-to.md
+          href: monitoring/job-state-events-cli-how-to.md
     - name: Använda Azure Monitor
       items:
         - name: Övervaka mått
-          href: media-services-metrics-howto.md
+          href: monitoring/media-services-metrics-howto.md
         - name: Övervaka diagnostikloggar
-          href: media-services-diagnostic-logs-howto.md
+          href: monitoring/media-services-diagnostic-logs-howto.md
     - name: Skydda innehåll
       items:
         - name: Hämta princip för innehållsnyckel

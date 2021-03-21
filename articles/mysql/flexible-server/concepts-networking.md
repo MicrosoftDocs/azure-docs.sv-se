@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
 ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96906156"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Anslutnings-och nätverks koncept för Azure Database for MySQL-flexibel Server (för hands version)
@@ -123,7 +123,7 @@ Exempel
 ## <a name="tls-and-ssl"></a>TLS och SSL
 Azure Database for MySQL flexibel Server stöder anslutning av klient program till MySQL-tjänsten med hjälp av Transport Layer Security (TLS). TLS är ett bransch standard protokoll som garanterar krypterade nätverks anslutningar mellan databas servern och klient programmen. TLS är ett uppdaterat protokoll för Secure Sockets Layer (SSL).
 
-Azure Database for MySQL flexibla servern stöder bara krypterade anslutningar med Transport Layer Security (TLS 1,2). Alla inkommande anslutningar med TLS 1,0 och TLS 1,1 kommer att nekas. Du kan inte inaktivera eller ändra TLS-versionen för anslutning till Azure Database for MySQL flexibel Server.
+Azure Database for MySQL flexibla servern stöder bara krypterade anslutningar med Transport Layer Security (TLS 1,2). Alla inkommande anslutningar med TLS 1.0 och TLS 1.1 kommer att nekas. Du kan inte inaktivera eller ändra TLS-versionen för anslutning till Azure Database for MySQL flexibel Server.
 
 
 ## <a name="next-steps"></a>Nästa steg

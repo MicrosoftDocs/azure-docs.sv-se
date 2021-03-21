@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730665"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Självstudie för att distribuera F5 stor IP Virtual Edition VM i Azure IaaS för säker hybrid åtkomst
@@ -26,7 +26,7 @@ Den här självstudien vägleder dig genom processen för att distribuera BIG-IP
 
 - En mellanlagringsdatabas som ska användas för att testa nya uppdateringar och snabb korrigeringar av BIG-IP-system
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Föregående F5 BIG-IP-upplevelse eller kunskap är inte nödvändigt, men vi rekommenderar dock att du bekantar dig med [F5 stor IP-terminologi](https://www.f5.com/services/resources/glossary). Distribution av en stor IP-adress i Azure för SHA kräver:
 
@@ -107,7 +107,7 @@ Utför följande uppgifter för att distribuera BIG-IP VE från [Azure Marketpla
  |Nätverks säkerhets grupp för nätverkskort| Välj ingen om det Azure-undernät som du valde i föregående steg redan är associerat med en nätverks säkerhets grupp (NSG). annars väljer du grundläggande|
  |Accelerera nätverk| Av |
  |**Belastningsutjämning**|     |
- |Belastningsutjämna virtuell dator| Nej|
+ |Belastningsutjämna virtuell dator| Inga|
 
 10. Välj **Nästa: hantering** och slutför de här inställningarna.
 
@@ -218,7 +218,7 @@ Följande steg förutsätter att DNS-zonen i den offentliga domänen som använd
  |DNS-zon| DNS-zon som är auktoritativ för det verifierade domänsuffix som de publicerade webbplatserna kommer att använda, till exempel www.contoso.com |
  |Name | Det värdnamn som du anger kommer att matcha den offentliga IP-adress som är associerad med den valda sekundära IP-adressen. Se till att definiera rätt DNS-till-IP-mappningar. Se avsnittet senaste avbildningen i avsnittet nätverks konfiguration, till exempel intranet.contoso.com > 13.77.148.215|
  | TTL-värde | 1 |
- |TTL-enheter | Timmar |
+ |TTL-enheter | Tider |
 
 7. Välj **skapa** för Azure för att spara inställningarna till offentlig DNS.
 
@@ -270,7 +270,7 @@ Du måste bestämma den lämpligaste metoden innan du kan fortsätta med de åte
 
 När du är klar kontrollerar du att du kan ansluta till den virtuella IP-adressen för den virtuella datorn och logga in med de autentiseringsuppgifter som angavs under distributionen av virtuella datorer:
 
-- Om du ansluter från en virtuell dator i det interna nätverket eller via VPN ansluter du direkt till den BIG-IPs primära IP-och webb konfigurations porten. Ett exempel är `https://<BIG-IP-VM_Primary_IP:8443`. Webbläsaren kommer att uppmanas om anslutningen är osäker, men du kan ignorera meddelandet tills BIG-IP har kon figurer ATS. Om webbläsaren insists blockerar åtkomsten rensar du dess cacheminne och försöker igen.
+- Om du ansluter från en virtuell dator i det interna nätverket eller via VPN ansluter du direkt till den BIG-IPs primära IP-och webb konfigurations porten. Till exempel `https://<BIG-IP-VM_Primary_IP:8443`. Webbläsaren kommer att uppmanas om anslutningen är osäker, men du kan ignorera meddelandet tills BIG-IP har kon figurer ATS. Om webbläsaren insists blockerar åtkomsten rensar du dess cacheminne och försöker igen.
 
 - Om du har publicerat webb konfigurationen via programproxyn använder du den URL som definierats för att få åtkomst till webb konfigurationen externt, utan att lägga till porten, till exempel `https://big-ip-vm.contoso.com` . Den interna URL: en måste definieras med hjälp av webb konfigurations porten, till exempel `https://big-ip-vm.contoso.com:8443` 
 

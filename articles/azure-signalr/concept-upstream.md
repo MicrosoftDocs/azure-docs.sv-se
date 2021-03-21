@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724069"
 ---
 # <a name="upstream-settings"></a>Överordnade inställningar
@@ -40,7 +40,7 @@ Du kan Parameterisera webb adressen för att stödja olika mönster. Det finns t
 |kategori| En kategori kan vara något av följande värden: <ul><li>**anslutningar**: anslutnings livs längds händelser. Den utlöses när en klient anslutning ansluts eller kopplas från. Den innehåller anslutna och frånkopplade händelser.</li><li>**meddelanden**: utlöses när klienter anropar en nav-metod. Den innehåller alla andra händelser, förutom de i kategorin **anslutningar** .</li></ul>|
 |händelse| I kategorin **meddelanden** är en händelse målet i ett [anrops meddelande](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) som klienter skickar. För kategorin **anslutningar** används endast *anslutna* och *frånkopplade* .|
 
-Dessa fördefinierade parametrar kan användas i URL-mönstret. Parametrarna ersätts med ett angivet värde när du utvärderar den överordnade URL: en. Ett exempel: 
+Dessa fördefinierade parametrar kan användas i URL-mönstret. Parametrarna ersätts med ett angivet värde när du utvärderar den överordnade URL: en. Exempel: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```

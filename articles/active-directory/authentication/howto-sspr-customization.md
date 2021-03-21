@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3766db0d5070f15216ac612353e2c25737ad092a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741634"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Anpassa användar upplevelsen för Azure Active Directory återställning av lösen ord för självbetjäning
@@ -56,8 +56,8 @@ Läs mer om de olika administratörs rollerna och hur du tilldelar dem i [tillde
 
 Om din organisation inte vill meddela administratörer om begär Anden om lösen ords återställning kan du använda följande konfigurations alternativ:
 
-* Anpassa supportavdelningen-länken för att tillhandahålla en webb-URL eller mailto:-adress som användarna kan använda för att få hjälp. Det här alternativet är under anpassning av **lösen ords återställning**  >  **Customization**  >  **anpassad supportavdelningen e-post eller URL**.
-* Aktivera självbetjäning för återställning av lösen ord för alla användare. Det här alternativet är under egenskaper för **lösen ords återställning**  >  **Properties**. Om du inte vill att användarna ska kunna återställa sina egna lösen ord kan du begränsa åtkomsten till en tom grupp. *Vi rekommenderar inte det här alternativet.*
+* Anpassa supportavdelningen-länken för att tillhandahålla en webb-URL eller mailto:-adress som användarna kan använda för att få hjälp. Det här alternativet är under anpassning av **lösen ords återställning**  >    >  **anpassad supportavdelningen e-post eller URL**.
+* Aktivera självbetjäning för återställning av lösen ord för alla användare. Det här alternativet är under egenskaper för **lösen ords återställning**  >  . Om du inte vill att användarna ska kunna återställa sina egna lösen ord kan du begränsa åtkomsten till en tom grupp. *Vi rekommenderar inte det här alternativet.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>Anpassa inloggnings sidan och åtkomst panelen
 

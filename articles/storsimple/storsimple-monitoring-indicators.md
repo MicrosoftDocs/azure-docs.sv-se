@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015408"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Använd StorSimple övervaknings indikatorer för att hantera din enhet
@@ -136,7 +136,7 @@ Följande bild hjälper dig att identifiera lysdioderna på den primära kontrol
 Använd följande tabell för att avgöra om Controller-modulen fungerar som den ska.  
 
 ### <a name="controller-indicator-leds"></a>Indikator lampor för kontrollant
-| SPOLNING | Description |
+| SPOLNING | Beskrivning |
 | --- | --- |
 | Indikator för ID (blå) |Anger att modulen identifieras. Om den blå INDIKATORn blinkar på en styrenhet som körs, är kontrollanten den aktiva styrenheten och den andra är vänte läges styrenheten. Mer information finns i [identifiera den aktiva kontrollanten på enheten](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | Fel indikator (gul) |Indikerar ett fel i kontrollanten. |
@@ -200,7 +200,7 @@ En StorSimple-enhet innehåller akustiska larm som är kopplade till både den p
 I följande tabell beskrivs de olika larm tillstånden.  
 
 ### <a name="alarm-states"></a>Larm tillstånd
-| Larm tillstånd | Åtgärd | Åtgärd med knappen Muted nedtryckt |
+| Larm tillstånd | Action | Åtgärd med knappen Muted nedtryckt |
 | --- | --- | --- |
 | S0 |Normal läge: tyst |PIP två gånger |
 | S1 |Fel läge: 1 sekund på/1 sekund av |Över gång till S2 eller S3 (se kommentarer) |

@@ -4,10 +4,10 @@ description: Använd Azure Backup Server för att säkerhetskopiera system tills
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021630"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Säkerhetskopiera system tillstånd och Återställ till Bare Metal genom att använda Azure Backup Server
@@ -25,21 +25,21 @@ I följande tabell sammanfattas vad du kan säkerhetskopiera och återställa. I
 
 |Backup|Problem|Återställa från Azure Backup Server säkerhets kopia|Återställa systemtillståndssäkerhetskopia|Återställning utan operativsystem|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Fildata**<br /><br />Regelbunden säkerhetskopiering av data<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorade fildata|J|N|N|
-|**Fildata**<br /><br />Azure Backup Server säkerhets kopiering av fildata<br /><br />BMR-/systemtillståndssäkerhetskopia|Saknad eller skadad operativsystem|N|J|J|
-|**Fildata**<br /><br />Azure Backup Server säkerhets kopiering av fildata<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad Server (data volymer är intakta)|N|N|J|
-|**Fildata**<br /><br />Azure Backup Server säkerhets kopiering av fildata<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad server (datavolymer förlorade)|J|N|J<br /><br />BMR, följt av regelbunden återställning av säkerhetskopierade fildata|
-|**SharePoint-data**<br /><br />Azure Backup Server säkerhets kopiering av Server grupps data<br /><br />BMR-/systemtillståndssäkerhetskopia|Borttappad webbplats, listor, list objekt, dokument|J|N|N|
-|**SharePoint-data**<br /><br />Azure Backup Server säkerhets kopiering av Server grupps data<br /><br />BMR-/systemtillståndssäkerhetskopia|Saknad eller skadad operativsystem|N|J|J|
+|**Fildata**<br /><br />Regelbunden säkerhetskopiering av data<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorade fildata|Y|N|N|
+|**Fildata**<br /><br />Azure Backup Server säkerhets kopiering av fildata<br /><br />BMR-/systemtillståndssäkerhetskopia|Saknad eller skadad operativsystem|N|Y|Y|
+|**Fildata**<br /><br />Azure Backup Server säkerhets kopiering av fildata<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad Server (data volymer är intakta)|N|N|Y|
+|**Fildata**<br /><br />Azure Backup Server säkerhets kopiering av fildata<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad server (datavolymer förlorade)|Y|N|Y<br /><br />BMR, följt av regelbunden återställning av säkerhetskopierade fildata|
+|**SharePoint-data**<br /><br />Azure Backup Server säkerhets kopiering av Server grupps data<br /><br />BMR-/systemtillståndssäkerhetskopia|Borttappad webbplats, listor, list objekt, dokument|Y|N|N|
+|**SharePoint-data**<br /><br />Azure Backup Server säkerhets kopiering av Server grupps data<br /><br />BMR-/systemtillståndssäkerhetskopia|Saknad eller skadad operativsystem|N|Y|Y|
 |**SharePoint-data**<br /><br />Azure Backup Server säkerhets kopiering av Server grupps data<br /><br />BMR-/systemtillståndssäkerhetskopia|Haveriberedskap|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Förlorad VM|J|N|N|
-|Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Saknad eller skadad operativsystem|N|J|J|
-|Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Förlorad Hyper-V-värd (virtuella datorer orörda)|N|N|J|
-|Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Förlorad Hyper-V-värd (virtuella datorer förlorade)|N|N|J<br /><br />BMR, följt av regelbunden Azure Backup Server återställning|
-|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorade appdata|J|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Saknad eller skadad operativsystem|N|J|J|
-|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad server (databas/transaktionsloggar orörda)|N|N|J|
-|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad server (databas/transaktionsloggar förlorade)|N|N|J<br /><br />BMR-återställning, följt av regelbunden Azure Backup Server återställning|
+|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Förlorad VM|Y|N|N|
+|Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Saknad eller skadad operativsystem|N|Y|Y|
+|Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Förlorad Hyper-V-värd (virtuella datorer orörda)|N|N|Y|
+|Hyper-V<br /><br />Azure Backup Server säkerhets kopiering av Hyper-V-värd eller gäst<br /><br />BMR-/systemtillståndssäkerhetskopia av värd|Förlorad Hyper-V-värd (virtuella datorer förlorade)|N|N|Y<br /><br />BMR, följt av regelbunden Azure Backup Server återställning|
+|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorade appdata|Y|N|N|
+|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Saknad eller skadad operativsystem|N|Y|Y|
+|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad server (databas/transaktionsloggar orörda)|N|N|Y|
+|SQL Server/Exchange<br /><br />Azure Backup Server säkerhets kopiering av app<br /><br />BMR-/systemtillståndssäkerhetskopia|Förlorad server (databas/transaktionsloggar förlorade)|N|N|Y<br /><br />BMR-återställning, följt av regelbunden Azure Backup Server återställning|
 
 ## <a name="how-system-state-backup-works"></a>Hur säkerhetskopiering av systemtillstånd fungerar
 

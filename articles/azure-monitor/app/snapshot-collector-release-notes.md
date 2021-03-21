@@ -6,10 +6,10 @@ author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
 ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093268"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Viktig information för Microsoft. ApplicationInsights. SnapshotCollector
@@ -67,10 +67,10 @@ En punkt version som åtgärdar ett par problem med hög påverkan.
 
 ## <a name="135"></a>[1.3.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.5)
 - Lägg till stöd för suveräna moln (äldre versioner fungerar inte i suveräna moln)
-- Det blir enklare att lägga till ögonblicks bilds insamling med AddSnapshotCollector (). Mer information hittar du [här](./snapshot-debugger-appservice.md).
+- Det blir enklare att lägga till ögonblicks bilds insamling med AddSnapshotCollector (). Läs mer [här](./snapshot-debugger-appservice.md).
 - Använd FISMA MD5-inställningen för att verifiera blob-block. Detta förhindrar standardalgoritmen för .NET MD5-kryptografi, som inte är tillgänglig när operativ systemet är inställt på FIPS-kompatibelt läge.
 - Ignorera .NET Framework ramar när du deoptimerar funktions anrop. Detta beteende kan styras av konfigurations inställningen DeoptimizeIgnoredModules.
-- Lägg till `DeoptimizeMethodCount` konfigurations inställning som tillåter deoptimering av fler än ett funktions anrop. Mer information finns här
+- Lägg till `DeoptimizeMethodCount` konfigurations inställning som tillåter deoptimering av fler än ett funktions anrop. Mer information här
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Tillåt strukturerade Instrumentation-nycklar.
@@ -115,7 +115,7 @@ Vi tror att detta inte är ett problem för de flesta program, men låt oss veta
 - När återställnings intervallet för problem räknaren är inställt på 24 dagar tolkar du det som 24 timmar.
 - En bugg har åtgärd ATS där överföring av ögonblicks bilder skulle upphöra att bearbeta nya ögonblicks bilder om ett undantag inträffade när en ögonblicks bild togs bort.
 
-## <a name="123"></a>[nedan](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.2.3)
+## <a name="123"></a>[1.2.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.2.3)
 - Åtgärda starkt namn signering med binärfiler för uppladdning av ögonblicks bilder.
 
 ## <a name="122"></a>[1.2.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.2.2)

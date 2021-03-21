@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
 ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052151"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurera övervakning av gäst hälsa för VM Insights med hjälp av data insamlings regler (för hands version)
@@ -174,7 +174,7 @@ Lista över en eller flera strängar som definierar vilka övervakare i hälsohi
 
 I följande tabell visas de aktuella tillgängliga övervakarens namn.
 
-| Typnamn | Namn | Beskrivning |
+| Typnamn | Name | Beskrivning |
 |:---|:---|:---|
 | skogen | skogen | Övervakaren på den översta nivån representerar hälsa för den virtuella datorn. | |
 | processor användning | processor användning | Övervakaren för processor användning. | |

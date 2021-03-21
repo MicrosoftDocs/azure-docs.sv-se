@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: bd009ae4909c8cb016a31323294df3a359eb7c51
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033671"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Prestanda tips för Azure Cosmos DB asynkron Java SDK v2
@@ -64,7 +64,7 @@ Så om du frågar "Hur kan jag förbättra min databas prestanda?" Överväg fö
     DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
 ```
 
-* **Samordna-klienter i samma Azure-region för prestanda**
+* **Samordna klienter i samma Azure-region för prestanda**
 
   När det är möjligt kan du placera alla program som anropar Azure Cosmos DB i samma region som Azure Cosmos-databasen. För en ungefärlig jämförelse kan anrop till Azure Cosmos DB inom samma region slutföras inom 1-2 MS, men svars tiden mellan västra USA och östra kust är >50 ms. Den här fördröjningen kan troligt vis variera från begäran till begäran beroende på den väg som tas av begäran när den skickas från klienten till Azure Data Center-gränser. Den lägsta möjliga fördröjningen uppnås genom att se till att det anropande programmet finns i samma Azure-region som den etablerade Azure Cosmos DB slut punkten. En lista över tillgängliga regioner finns i [Azure-regioner](https://azure.microsoft.com/regions/#services).
 
@@ -86,17 +86,17 @@ Så om du frågar "Hur kan jag förbättra min databas prestanda?" Överväg fö
 
   I Azure Cosmos DB asynkron Java SDK v2 är Direct-läget det bästa valet för att förbättra databasens prestanda med de flesta arbets belastningar. 
 
-  * ***Översikt över direkt läge** _
+  * ***Översikt över direkt läge***
 
   :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Bild av arkitekturen för direkt läge" border="false":::
   
-  Arkitekturen på klient sidan som används i direkt läge möjliggör förutsägbar nätverks användning och multiplex-åtkomst till Azure Cosmos DB repliker. Diagrammet ovan visar hur Direct-läge dirigerar klient begär anden till repliker i Cosmos DB-backend-servern. Arkitekturen för direkt läge allokerar upp till 10 _ *kanaler** på klient sidan per DB-replik. En kanal är en TCP-anslutning som föregås av en buffert för begäran, som är en djup på 30 begär Anden. Kanaler som tillhör en replik allokeras dynamiskt efter behov av replikens **tjänst slut punkt**. När användaren utfärdar en begäran i direkt läge dirigerar **TransportClient** begäran till rätt tjänst slut punkt utifrån partitionsnyckel. **Begär ande kön** buffrar begär Anden före tjänst slut punkten.
+  Arkitekturen på klient sidan som används i direkt läge möjliggör förutsägbar nätverks användning och multiplex-åtkomst till Azure Cosmos DB repliker. Diagrammet ovan visar hur Direct-läge dirigerar klient begär anden till repliker i Cosmos DB-backend-servern. Arkitekturen för direkt läge allokerar upp till 10 **kanaler** på klient sidan per DB-replik. En kanal är en TCP-anslutning som föregås av en buffert för begäran, som är en djup på 30 begär Anden. Kanaler som tillhör en replik allokeras dynamiskt efter behov av replikens **tjänst slut punkt**. När användaren utfärdar en begäran i direkt läge dirigerar **TransportClient** begäran till rätt tjänst slut punkt utifrån partitionsnyckel. **Begär ande kön** buffrar begär Anden före tjänst slut punkten.
 
-  * ***ConnectionPolicy konfigurations alternativ för direkt läge** _
+  * ***ConnectionPolicy konfigurations alternativ för direkt läge***
 
     I det första steget använder du följande rekommenderade konfigurations inställningar nedan. Kontakta Azure Cosmos DB- [teamet](mailto:CosmosDBPerformanceSupport@service.microsoft.com) om du stöter på problem på det här specifika ämnet.
 
-    Om du använder Azure Cosmos DB som en referens databas (det vill säga databasen används för många punkt läsnings åtgärder och få Skriv åtgärder) kan det vara acceptabelt att ange _idleEndpointTimeout * till 0 (det vill säga ingen tids gräns).
+    Om du använder Azure Cosmos DB som en referens databas (det vill säga databasen används för många punkt läsnings åtgärder och få Skriv åtgärder) kan det vara acceptabelt att ange *idleEndpointTimeout* till 0 (det vill säga ingen tids gräns).
 
 
     | Konfigurations alternativ       | Standardvärde    |
@@ -115,13 +115,13 @@ Så om du frågar "Hur kan jag förbättra min databas prestanda?" Överväg fö
     | sendHangDetectionTime      | "PT10S"    |
     | shutdownTimeout            | "PT15S"    |
 
-* ***Programmerings tips för Direct-läge** _
+* ***Programmerings tips för direkt läge***
 
   Läs artikeln Azure Cosmos DB async Java SDK v2- [Felsökning](troubleshoot-java-async-sdk.md) som en bas linje för att lösa eventuella SDK-problem.
   
   Några viktiga programmerings tips när du använder direkt läge:
   
-  _ **Använd multitrådning i ditt program för effektiv TCP-dataöverföring** – när du har gjort en förfrågan bör ditt program prenumerera på att ta emot data i en annan tråd. Om du inte gör det tvingas oavsiktligt "halv duplex"-åtgärd och efterföljande förfrågningar blockeras i väntan på föregående begärans svar.
+  * **Använd multitrådning i ditt program för effektiv TCP-dataöverföring** – när du har gjort en förfrågan bör ditt program prenumerera på att ta emot data i en annan tråd. Om du inte gör det tvingas oavsiktligt "halv duplex"-åtgärd och efterföljande förfrågningar blockeras i väntan på föregående begärans svar.
   
   * **Utför beräknings intensiva arbets belastningar på en dedikerad tråd** – av liknande skäl som i föregående tips, är åtgärder som komplex data bearbetning bäst placerade i en separat tråd. En begäran som hämtar data från ett annat data lager (till exempel om tråden använder Azure Cosmos DB och Spark-datalager samtidigt) kan öka svars tiden och vi rekommenderar att du skapar en ytterligare tråd som väntar på ett svar från det andra data lagret.
   
@@ -133,19 +133,19 @@ Så om du frågar "Hur kan jag förbättra min databas prestanda?" Överväg fö
 
   Azure Cosmos DB asynkron Java SDK v2 stöder parallella frågor som gör att du kan fråga en partitionerad samling parallellt. Mer information finns i [kod exempel](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) för att arbeta med SDK: er. Parallella frågor är utformade för att förbättra svars tid och data flöde för deras serie motsvarighet.
 
-  * ***Justera setMaxDegreeOfParallelism \:** _
+  * ***Justera setMaxDegreeOfParallelism\:***
     
     Parallella frågor fungerar genom att fråga flera partitioner parallellt. Data från en enskild partitionerad samling hämtas dock i serie med avseende på frågan. Använd setMaxDegreeOfParallelism för att ställa in antalet partitioner som har maximal chans att uppnå den mest utförda frågan, förutsatt att alla andra system villkor är desamma. Om du inte känner till antalet partitioner kan du använda setMaxDegreeOfParallelism för att ange ett högt antal, och systemet väljer det lägsta (antal partitioner, indata från användaren) som den högsta graden av parallellitet.
 
     Det är viktigt att Observera att parallella frågor ger de bästa fördelarna om data är jämnt fördelade över alla partitioner med avseende på frågan. Om den partitionerade samlingen är partitionerad, så att alla eller en majoritet av de data som returneras av en fråga är koncentrerade i några partitioner (en partition i värsta fall), skulle prestandan för frågan bli Flask hals av dessa partitioner.
 
-  _ ***Justering setMaxBufferedItemCount \:** _
+  * ***Justera setMaxBufferedItemCount\:***
     
     Parallell fråga är utformad för att hämta resultat när den aktuella gruppen med resultat bearbetas av klienten. För hämtning bidrar till den totala tids fördröjnings förbättringen av en fråga. setMaxBufferedItemCount begränsar antalet i förväg hämtade resultat. Om du anger setMaxBufferedItemCount till det förväntade antalet returnerade resultat (eller en högre siffra) kan frågan ta emot maximal nytta av för hämtning.
 
     För hämtning fungerar på samma sätt oavsett MaxDegreeOfParallelism, och det finns en enda buffert för data från alla partitioner.
 
-_ **Implementera backoff vid getRetryAfterInMilliseconds-intervall**
+* **Implementera backoff med getRetryAfterInMilliseconds-intervall**
 
   Under prestanda testningen bör du öka belastningen tills en låg frekvens av begär Anden blir begränsad. Om detta är begränsat bör klient programmet backoff för det Server-angivna återförsöksintervallet. Genom att respektera backoff garanterar du att du tillbringar minimal tid på att vänta mellan återförsök.
 
@@ -300,7 +300,7 @@ _ **Implementera backoff vid getRetryAfterInMilliseconds-intervall**
 
     Även om det automatiserade återförsöket hjälper till att förbättra återhämtning och användbarhet för de flesta program, kan det komma på strider när du gör prestanda mått, särskilt när du mäter svars tid. Den klientbaserade svars tiden kommer att inaktive ras om experimentet träffar Server begränsningen och gör att klient-SDK: n kan försöka tyst igen. För att undvika fördröjningar vid prestanda experiment kan du mäta den avgift som returneras av varje åtgärd och se till att förfrågningarna fungerar under den reserverade begär ande frekvensen. Mer information finns i [enheter för programbegäran](request-units.md).
 
-* **Design för mindre dokument för högre data flöde**
+* **Utforma för mindre dokument för högre dataflöde**
 
     Begär ande avgiften (bearbetnings kostnaden för begäran) för en specifik åtgärd är direkt korrelerad med dokumentets storlek. Åtgärder i stora dokument kostar mer än åtgärder för små dokument.
 

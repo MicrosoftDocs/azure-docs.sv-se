@@ -5,10 +5,10 @@ ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745833"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Skapa och dela instrumentpaneler i Azure-portalen
@@ -117,7 +117,7 @@ Följ dessa steg om du vill ta bort en panel från en instrument panel:
 
 * Välj snabb menyn i det övre högra hörnet i panelen och välj **ta bort från instrument panelen**. Eller:
 
-* Välj ![ Redigera Redigera ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Edit** ikon för att ange anpassnings läge. Hovra i det övre högra hörnet i panelen och välj ikonen Ta bort ![ ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) ta bort för att ta bort panelen från instrument panelen.
+* Välj ![ Redigera Redigera ](./media/azure-portal-dashboards/dashboard-edit-icon.png)  ikon för att ange anpassnings läge. Hovra i det övre högra hörnet i panelen och välj ikonen Ta bort ![ ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) ta bort för att ta bort panelen från instrument panelen.
 
    ![Skärm bild som visar hur du tar bort en panel från instrument panelen](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 

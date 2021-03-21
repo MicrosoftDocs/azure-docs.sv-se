@@ -8,10 +8,10 @@ ms.author: sumuth
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
 ms.openlocfilehash: 2e546801f95d9d884bdfb3f09a18b3fa6e2d78a1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97365121"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>Snabb start: använda GitHub-åtgärder för att ansluta till Azure PostgreSQL
@@ -34,7 +34,7 @@ Ett arbets flöde för GitHub-åtgärder definieras av en YAML-fil (. yml) i `/.
 
 Filen har två avsnitt:
 
-|Avsnitt  |Aktiviteter  |
+|Avsnitt  |Uppgifter  |
 |---------|---------|
 |**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. |
 |**Distribuera** | 1. distribuera databasen. |
