@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025709"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Fel söknings fel vid redigering av ett program för anpassade kommandon
@@ -53,8 +53,8 @@ LUIS har inbyggda Ja/Nej-avsikter. Om du har exempel på meningar med endast "Ja
 
 | Följt | Variationer | 
 | ------- | --------- | 
-| Yes | Säker, OK |
-| No | Nej, inte | 
+| Ja | Säker, OK |
+| Inga | Nej, inte | 
 
 ### <a name="common-sample-sentences"></a>Vanliga exempel meningar
 Anpassade kommandon tillåter inte vanliga exempel meningar som delas mellan olika kommandon. Träningen av ett program kan sluta fungera om några exempel meningar i ett kommando redan har definierats i ett annat kommando. 

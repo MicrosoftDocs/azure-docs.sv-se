@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861246"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>Använd inloggnings rapporten för att granska Azure AD Multi-Factor Authentication-händelser
@@ -171,7 +171,7 @@ Följande tabell kan användas för att felsöka händelser med den nedladdade v
 
 Följande ytterligare information och rapporter är tillgängliga för MFA-händelser, inklusive de för MFA-servern:
 
-| Rapport | Plats | Beskrivning |
+| Rapport | Location | Beskrivning |
 |:--- |:--- |:--- |
 | Blockerad användar historik | Azure AD >-säkerhet > MFA > blockera/avblockera användare | Visar historiken för förfrågningar om att blockera eller avblockera användare. |
 | Användning för lokala komponenter | Azure AD > säkerhets > MFA > aktivitets rapport | Innehåller information om den övergripande användningen av MFA server via NPS-tillägget, ADFS-och MFA-servern. |

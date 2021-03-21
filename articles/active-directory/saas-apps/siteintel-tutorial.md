@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92510006"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SiteIntel
@@ -49,9 +49,9 @@ Om du vill konfigurera integreringen av SiteIntel i Azure AD måste du lägga ti
 1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I den vänstra rutan väljer du **Azure Active Directory**.
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I rutan **Lägg till från galleriet** , ange **SiteIntel**.
-1. I listan resultat väljer du **SiteIntel**och lägger sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
+1. I listan resultat väljer du **SiteIntel** och lägger sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>Konfigurera och testa enkel inloggning med Azure AD för SiteIntel
 
@@ -89,7 +89,7 @@ Gör så här om du vill aktivera Azure AD SSO i Azure Portal:
 
     c. I rutan **relä tillstånd** anger du en URL i följande format: `https://<CLIENT>.siteintel.com`
 
-1. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er**och gör sedan följande:
+1. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er** och gör sedan följande:
 
    * I rutan **inloggnings-URL** skriver du en URL i följande format: `https://<CLIENT>.siteintel.com`
 
@@ -130,7 +130,7 @@ I det här avsnittet aktiverar du användare B. Simon för att använda enkel in
 
     ![Skärm bild av knappen "Lägg till användare"](common/add-assign-user.png)
 
-1. I fönstret **användare och grupper** väljer du **B. Simon**och väljer sedan knappen **Välj** i den nedre delen av skärmen.
+1. I fönstret **användare och grupper** väljer du **B. Simon** och väljer sedan knappen **Välj** i den nedre delen av skärmen.
 1. Om du förväntar dig ett roll värde i SAML-försäkran väljer du lämplig roll för användaren i listan i fönstret **Välj roll** och väljer sedan knappen **Välj** .
 1. I fönstret **Lägg till tilldelning** väljer du knappen **tilldela** .
 

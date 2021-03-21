@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93319282"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Skapa och hantera servrar och enkla databaser i Azure SQL Database
 
 Du kan skapa och hantera servrar och enkla databaser i Azure SQL Database med hjälp av Azure Portal, PowerShell, Azure CLI, REST API och Transact-SQL.
 
-## <a name="the-azure-portal"></a>Azure-portalen
+## <a name="the-azure-portal"></a>Azure Portal
 
 Du kan skapa resurs gruppen för Azure SQL Database i förväg eller när du skapar själva servern.
 
@@ -124,8 +124,8 @@ Om du vill skapa och hantera servrar, databaser och brand väggar med Transact-S
 | Kommando | Beskrivning |
 | --- | --- |
 |[SKAPA DATABAS](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|Skapar en ny enkel databas. Du måste vara ansluten till huvud databasen för att skapa en ny databas.|
-| [ÄNDRA DATABAS](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Ändrar en databas eller elastisk pool. |
-|[SLÄPP DATABAS](/sql/t-sql/statements/drop-database-transact-sql)|Tar bort en databas.|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Ändrar en databas eller elastisk pool. |
+|[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|Tar bort en databas.|
 |[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Returnerar utgåvan (tjänst nivån), tjänst målet (pris nivån) och ett elastiskt poolnamn, om det finns Azure SQL Database eller en dedikerad SQL-pool i Azure Synapse Analytics. Om du är inloggad på huvud databasen på en server i SQL Database, returnerar information om alla databaser. För Azure Synapse Analytics måste du vara ansluten till huvud databasen.|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Returnerar CPU-, IO-och minnes förbrukning för en databas i Azure SQL Database. Det finns en rad för var 15: e sekund, även om det inte finns någon aktivitet i databasen.|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Returnerar CPU-användning och lagrings data för en databas i Azure SQL Database. Data samlas in och sammanställs inom fem minuters intervall.|

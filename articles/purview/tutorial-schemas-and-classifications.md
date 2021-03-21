@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: c74324ebeeefeed361c0557c45a280a411effa22
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693320"
 ---
 # <a name="tutorial-explore-resource-sets-details-schemas-and-classifications-in-azure-purview-preview"></a>Självstudie: utforska resurs uppsättningar, information, scheman och klassificeringar i Azure dataavdelningens kontrolls (för hands version)
@@ -23,7 +23,7 @@ I den här självstudien får du utforska viktiga komponenter i katalogen: resur
 
 Den här självstudien är *del 4 i en själv studie serie i fem delar* där du får lära dig grunderna i hur du hanterar data styrning över en datafastighet med Azure avdelningens kontroll. Den här självstudien bygger på det arbete som du slutförde i [del 3: Bläddra till gångar i Azure avdelningens kontroll (för hands version) och visa deras härkomst](tutorial-browse-and-view-lineage.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >

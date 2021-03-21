@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96860221"
 ---
 # <a name="conditional-access-programmatic-access"></a>Villkorlig åtkomst: program mässig åtkomst
@@ -50,7 +50,7 @@ Använd API: er för villkorlig åtkomst för att distribuera principer för vil
 
 - [Konfigurera principer för villkorlig åtkomst med Microsoft Graph-API-mallar](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/01-configure/templates)
 
-## <a name="test"></a>Testa
+## <a name="test"></a>Test
 
 Det här exemplet modellerar säkrare distributions metoder med arbets flöden för godkännande som kan kopiera principer för villkorlig åtkomst från en miljö, t. ex. för produktion, till en annan, till exempel din produktions miljö.
 
@@ -62,7 +62,7 @@ I det här exemplet finns en mekanism för att utföra en stegvis distribution a
 
 - [Distribuera principer för villkorlig åtkomst till produktions miljöer med arbets flöden för godkännande](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Övervaka
+## <a name="monitor"></a>Monitor
 
 Det här exemplet innehåller en mekanism för att övervaka ändringar i princip för villkorlig åtkomst över tid och kan utlösa aviseringar när nyckel principer ändras.
 

@@ -11,10 +11,10 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014770"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Ansluta en Rigado kaskad 500-gateway-enhet till ditt Azure IoT Central-program
@@ -42,19 +42,19 @@ För att kunna publicera en överlappande 500-gateway-enhet i din Azure IoT Cent
 Lägga till en enhets mal len Cascade 500: 
 
 1. Gå till fliken ***enhets mallar** _ i den vänstra rutan, Välj _ * + ny * *: ![ Skapa ny enhets mall](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. Sidan ger dig ett alternativ till **_skapa en anpassad mall_* _ eller _*_Använd en förkonfigurerad enhets mall_*_
+1. Sidan ger dig ett alternativ till ***skapa en anpassad mall** _ eller _ *_Använd en förkonfigurerad enhets mall_**
 1. Välj enhets mal len C500 i listan med förkonfigurerade enhetsspecifika mallar enligt nedan: ![ Välj enhets mal len för C500](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. Välj _*_Nästa: anpassa_*_ för att fortsätta till nästa steg. 
-1. På nästa skärm väljer du _*_skapa_*_ för att publicera enhets mal len C500 i ditt IoT Central-program.
+1. Välj ***Nästa: anpassa*** för att fortsätta till nästa steg. 
+1. På nästa skärm väljer du ***skapa*** för att publicera enhets mal len C500 i ditt IoT Central-program.
 
 ## <a name="retrieve-application-connection-details"></a>Hämta information om program anslutning
 
-Du kommer nu att behöva hämta *scope-ID** och **primär nyckeln** för ditt Azure IoT Central-program för att kunna ansluta kaskad 500-enheten. 
+Du måste nu hämta **omfångs-ID** och **primär nyckel** för ditt Azure IoT Central-program för att kunna ansluta kaskad 500-enheten. 
 
 1. Navigera till **Administration**  i det vänstra fönstret och klicka på **enhets anslutning**. 
 2. Anteckna **omfångs-ID:** t för ditt IoT Central-program.
 ![App-scope-ID](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. Klicka nu på **Visa nycklar** och anteckna primär nyckelns primär **Primary key** 
+3. Klicka nu på **Visa nycklar** och anteckna primär nyckelns primär  
  ![ nyckel](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>Kontakta Rigado för att ansluta gatewayen 

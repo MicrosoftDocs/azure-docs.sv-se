@@ -18,10 +18,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130059"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Självstudie: Hämta data med hjälp av Azure Active Directory rapporterings-API med certifikat
@@ -34,7 +34,7 @@ I den här självstudien får du lära dig hur du använder ett test certifikat 
 
 1. Kontrol lera att du har en Azure Active Directory-klient med en Premium-licens (P1/P2) för att få åtkomst till inloggnings data. Se [Kom igång med Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) för att uppgradera din Azure Active Directory-version. Observera att om du inte har några aktivitetsdata före uppgraderingen tar det ett par dagar innan data visas i rapporterna när du har uppgraderat till en premiumlicens. 
 
-2. Skapa eller växla till ett användar konto i rollen **Global administratör** , **säkerhets administratör** , **säkerhets läsare** eller **rapport läsare** för klienten. 
+2. Skapa eller växla till ett användar konto i rollen **Global administratör**, **säkerhets administratör**, **säkerhets läsare** eller **rapport läsare** för klienten. 
 
 3. Slutför [kraven för att få åtkomst till Azure Active Directory rapporterings-API: et](howto-configure-prerequisites-for-reporting-api.md). 
 
@@ -45,7 +45,7 @@ I den här självstudien får du lära dig hur du använder ett test certifikat 
     - Åtkomsttoken från användare, programnycklar och certifikat med ADAL
     - Växlingsbara resultat för Graph API-hantering
 
-6. Om det är första gången du använder modulen kör **install-MSCloudIdUtilsModule** , annars importerar du den med hjälp av PowerShell **-kommandot Import-Module** . Din session bör se ut ungefär som den här skärmen: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Om det är första gången du använder modulen kör **install-MSCloudIdUtilsModule**, annars importerar du den med hjälp av PowerShell **-kommandot Import-Module** . Din session bör se ut ungefär som den här skärmen: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Använd PowerShell **-kommandot New-SelfSignedCertificate** för att skapa ett test certifikat.
 
@@ -64,9 +64,9 @@ I den här självstudien får du lära dig hur du använder ett test certifikat 
 
 1. Gå till [Azure Portal](https://portal.azure.com), Välj **Azure Active Directory** och välj sedan **Appregistreringar** och välj ditt program i listan. 
 
-2. Välj **certifikat & hemligheter** under **Hantera** avsnitt på program registrerings bladet och välj **Ladda upp certifikat** .
+2. Välj **certifikat & hemligheter** under **Hantera** avsnitt på program registrerings bladet och välj **Ladda upp certifikat**.
 
-3. Välj certifikat filen i föregående steg och välj **Lägg till** . 
+3. Välj certifikat filen i föregående steg och välj **Lägg till**. 
 
 4. Anteckna program-ID och tumavtrycket för det certifikat som du precis har registrerat i ditt program. Om du vill hitta tumavtrycket från din program sida i portalen går du till **certifikat & hemligheter** under avsnittet **Hantera** . Tumavtrycket kommer att finnas i listan **certifikat** .
 

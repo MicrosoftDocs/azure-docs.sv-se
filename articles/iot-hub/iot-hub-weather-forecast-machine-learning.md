@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
 ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452345"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Väder prognoser med sensor data från din IoT Hub i Azure Machine Learning Studio (klassisk)
@@ -231,7 +231,7 @@ I det här avsnittet verifierar du modellen, konfigurerar en förutsägbar webb 
 
 ### <a name="run-the-stream-analytics-job"></a>Köra Stream Analytics-jobbet
 
-I Stream Analytics jobb väljer du **Översikt** i det vänstra fönstret. Välj sedan **Starta**  >  **nu**  >  **Start**. När jobbet startar ändras jobbstatusen från **Stoppad** till **Körs**.
+I Stream Analytics jobb väljer du **Översikt** i det vänstra fönstret. Välj sedan **Starta**  >  **nu**  >  . När jobbet startar ändras jobbstatusen från **Stoppad** till **Körs**.
 
 ![Köra Stream Analytics-jobbet](media/iot-hub-weather-forecast-machine-learning/run-stream-analytics-job.png)
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122851"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Rapporter om inloggningsaktiviteter i Azure Active Directory-portalen
@@ -62,7 +62,7 @@ Välj **Azure Active Directory** på [Azure Portal](https://portal.azure.com) -m
 
 ![Välj Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-Öppna [inloggnings rapporten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)genom att välja **inloggningar** under **övervakning** .
+Öppna [inloggnings rapporten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)genom att välja **inloggningar** under **övervakning**.
 
 ![Skärm bild som visar inloggningar som valts på menyn för övervakning.](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Inloggningsaktivitet")
 
@@ -143,7 +143,7 @@ ID för **begäran** : ID för den begäran du bryr dig om.
 ![Filter för klient program](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Namn|Modern autentisering|Beskrivning|
+|Name|Modern autentisering|Beskrivning|
 |---|:-:|---|
 |Autentiserad SMTP| |Används av POP-och IMAP-klienten för att skicka e-postmeddelanden.|
 |Tjänsten automatisk upptäckt| |Används av Outlook och EAS-klienter för att hitta och ansluta till post lådor i Exchange Online.|
@@ -177,11 +177,11 @@ ID för **begäran** : ID för den begäran du bryr dig om.
 
 **Villkorlig åtkomst** – status för tillämpade regler för villkorlig åtkomst
 
-- **Används inte** : ingen princip tillämpas för användaren och programmet under inloggningen.
+- **Används inte**: ingen princip tillämpas för användaren och programmet under inloggningen.
 
-- **Lyckades** : en eller flera principer för villkorlig åtkomst som tillämpas på användaren och programmet (men inte nödvändigt vis de andra villkoren) under inloggningen. 
+- **Lyckades**: en eller flera principer för villkorlig åtkomst som tillämpas på användaren och programmet (men inte nödvändigt vis de andra villkoren) under inloggningen. 
 
-- **Fel** : inloggningen uppfyllde användar-och program villkoret för minst en princip för villkorlig åtkomst och beviljade kontroller är antingen inte uppfyllda eller har angetts till blockera åtkomst.
+- **Fel**: inloggningen uppfyllde användar-och program villkoret för minst en princip för villkorlig åtkomst och beviljade kontroller är antingen inte uppfyllda eller har angetts till blockera åtkomst.
 
 
 
@@ -228,21 +228,21 @@ Det här visas på varje rad i listan med inloggningsaktiviteter:
 När du klickar på ett objekt visas mer information om inloggningen:
 
 - Användar-ID
-- Användare
+- User
 - Användarnamn
 - Program-ID
 - Program
 - Klient
-- Plats
+- Location
 - IP-adress
-- Date
+- Datum
 - MFA krävs
 - Inloggningsstatus
 
 > [!NOTE]
 > IP-adresser utfärdas på ett sådant sätt att det inte finns någon slutgiltig anslutning mellan en IP-adress och där datorn med den adressen är fysiskt placerad. Mappning av IP-adresser är krångligt i det faktum att mobila leverantörer och VPN-nätverk utfärdar IP-adresser från centrala pooler som ofta är mycket från var klient enheten faktiskt används. För närvarande i Azure AD-rapporter är det bästa sättet att konvertera IP-adress till en fysisk plats baserat på spår, register data, omvänd sökning och annan information.
 
-På sidan **Användare** visas en fullständig översikt över alla användarinloggningar om du klickar på **Inloggningar** i avsnittet **Aktivitet** .
+På sidan **Användare** visas en fullständig översikt över alla användarinloggningar om du klickar på **Inloggningar** i avsnittet **Aktivitet**.
 
 ![Skärm bild som visar avsnittet aktivitet där du kan välja inloggnings program.](./media/concept-sign-ins/08.png "Inloggningsaktivitet")
 
@@ -254,7 +254,7 @@ Med en programcentrerad vy över dina inloggningsuppgifter kan du få svar på f
 * Vilka är de tre främsta programmen i organisationen?
 * Hur fungerar mitt nyaste program?
 
-Start punkten för dessa data är de tre främsta programmen i din organisation. Informationen finns i rapporten de senaste 30 dagarna i **översikts** avsnittet under **företags program** .
+Start punkten för dessa data är de tre främsta programmen i din organisation. Informationen finns i rapporten de senaste 30 dagarna i **översikts** avsnittet under **företags program**.
 
 ![Skärm bild som visar var du kan välja översikt.](./media/concept-sign-ins/10.png "Inloggningsaktivitet")
 
@@ -264,7 +264,7 @@ Grafen för app-Usage vecko Visa insamlingar av inloggningar för de tre främst
 
 Om du vill kan du ange att fokusera på ett visst program.
 
-![Rapportering](./media/concept-sign-ins/single-app-usage-graph.png "Rapportering")
+![Rapportering](./media/concept-sign-ins/single-app-usage-graph.png "Rapportera")
 
 När du klickar på en dag i programanvändningsdiagrammet kan du få en detaljerad lista över inloggningsaktiviteterna.
 

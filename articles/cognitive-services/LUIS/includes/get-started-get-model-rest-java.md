@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 5ece29b7189f31654056ec357f522b59ccb16587
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95096591"
 ---
 [Referens dokumentation](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
@@ -46,7 +46,7 @@ ms.locfileid: "95096591"
     |--|--|
     |`YOUR-APP-ID`| Ditt LUIS app-ID. |
     |`YOUR-AUTHORING-KEY`|Din redigerings nyckel för 32-tecknen.|
-    |`YOUR-AUTHORING-ENDPOINT`| URL-slutpunkten för redigering. Exempelvis `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Du anger resurs namnet när du skapade resursen.|
+    |`YOUR-AUTHORING-ENDPOINT`| URL-slutpunkten för redigering. Till exempel `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Du anger resurs namnet när du skapade resursen.|
 
     Tilldelade nycklar och resurser visas i LUIS-portalen i avsnittet hantera på sidan **Azure-resurser** . App-ID: t är tillgängligt i samma hantera-avsnitt på sidan **program inställningar** .
 

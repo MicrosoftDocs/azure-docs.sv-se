@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861314"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Planera en Azure AD Multi-Factor Authentication-distribution
@@ -31,7 +31,7 @@ Om du snabbt vill se Azure AD Multi-Factor Authentication i praktiken och återg
 > [!div class="nextstepaction"]
 > [Aktivera Azure AD-multifaktorautentisering](tutorial-enable-azure-mfa.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du påbörjar en distribution av Azure AD Multi-Factor Authentication finns det nödvändiga komponenter som bör övervägas.
 
@@ -357,7 +357,7 @@ Rapporter för Azure AD MFA
 
 Azure AD Multi-Factor Authentication ger rapporter via Azure Portal:
 
-| Rapport | Plats | Beskrivning |
+| Rapport | Location | Beskrivning |
 | --- | --- | --- |
 | Användnings-och bedrägeri varningar | Inloggnings program för Azure AD > | Innehåller information om allmän användning, användar Sammanfattning och användar information. samt en historik över bedrägeri aviseringar som skickats under det angivna datum intervallet. |
 

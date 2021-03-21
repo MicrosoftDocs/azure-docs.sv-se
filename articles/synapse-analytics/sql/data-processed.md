@@ -1,5 +1,5 @@
 ---
-title: Kostnads hantering för Server lös SQL-pool
+title: Kostnadshantering för serverlös SQL-pool
 description: Det här dokumentet beskriver hur du hanterar kostnaden för SQL-poolen utan server och hur data som bearbetas beräknas när du frågar efter data i Azure Storage.
 services: synapse analytics
 author: filippopovic
@@ -10,10 +10,10 @@ ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491592"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kostnads hantering för Server lös SQL-pool i Azure Synapse Analytics
@@ -71,23 +71,23 @@ Föreställ dig tre tabeller.
 - Population_parquet tabellen har samma data som population_csvs tabellen. Den backas upp med 1 TB av Parquet-filer. Den här tabellen är mindre än föregående, eftersom data komprimeras i Parquet-format.
 - Very_small_csv tabellen backas upp av 100 KB CSV-filer.
 
-**Fråga 1** : Välj sum (population) från population_csv
+**Fråga 1**: Välj sum (population) från population_csv
 
 Den här frågan läser och tolkar hela filer för att hämta värden för populations kolumnen. Noderna bearbetar fragmenten i den här tabellen och populations summan för varje fragment överförs mellan noder. Den sista summan överförs till din slut punkt. 
 
 Den här frågan bearbetar 5 TB data plus ett litet antal omkostnader för att överföra summor av fragment.
 
-**Fråga 2** : Välj sum (population) från population_parquet
+**Fråga 2**: Välj sum (population) från population_parquet
 
 När du frågar efter komprimerade och kolumnbaserade format som Parquet läses mindre data än i fråga 1. Du ser det här resultatet eftersom SQL-poolen utan Server läser en komprimerad kolumn i stället för hela filen. I det här fallet är 0,2 TB läst. (Fem lika stora kolumner är 0,2 TB vardera.) Noderna bearbetar fragmenten i den här tabellen och populations summan för varje fragment överförs mellan noder. Den sista summan överförs till din slut punkt. 
 
 Den här frågan bearbetar 0,2 TB plus en liten del av omkostnader för att överföra summor av fragment.
 
-**Fråga 3** : Välj * från population_parquet
+**Fråga 3**: Välj * från population_parquet
 
 Den här frågan läser alla kolumner och överför alla data i ett okomprimerat format. Om komprimerings formatet är 5:1, bearbetar frågan 6 TB eftersom den läser 1 TB och överför 5 TB okomprimerade data.
 
-**Fråga 4** : Välj Count (*) från very_small_csv
+**Fråga 4**: Välj Count (*) från very_small_csv
 
 Den här frågan läser hela filer. Den totala storleken på filer som lagras i den här tabellen är 100 KB. Noderna bearbetar fragment i den här tabellen och summan för varje fragment överförs mellan noder. Den sista summan överförs till din slut punkt. 
 

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: fec4cff974031982c782c9265a7d3186d6bb0233
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942562"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Stöd för program vara med öppen källkod i Azure HDInsight
@@ -45,7 +45,7 @@ Som användare av klustret kan du installera eller använda i din arbets belastn
 
 HDInsight-tjänsten tillhandahåller flera olika sätt att använda anpassade komponenter. Samma nivå av support gäller, oavsett hur en komponent används eller installeras i klustret. I följande tabell beskrivs de vanligaste sätten att använda anpassade komponenter i HDInsight-kluster:
 
-|Användning |Description |
+|Användning |Beskrivning |
 |---|---|
 |Jobböverföring|Hadoop eller andra typer av jobb som kör eller använder anpassade komponenter kan skickas till klustret.|
 |Kluster anpassning|När klustret skapas kan du ange ytterligare inställningar och anpassade komponenter som är installerade på klusternoderna.|

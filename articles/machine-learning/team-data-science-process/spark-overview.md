@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1dd82fb00c55e3676929999f204eae8755671038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93314742"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Översikt över data vetenskap med Spark på Azure HDInsight
@@ -156,13 +156,13 @@ Du kan starta Jupyter Notebook från Azure Portal. Hitta ditt Spark-kluster på 
 
 ![Kluster instrument paneler](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Du kan också bläddra till * *_`https://CLUSTERNAME.azurehdinsight.net/jupyter`_* _ för att få åtkomst till Jupyter-anteckningsböcker. Ersätt kluster namns delen av den här URL: en med namnet på ditt eget kluster. Du behöver lösen ordet för ditt administratörs konto för att få åtkomst till antecknings böckerna.
+Du kan också bläddra till ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** för att få åtkomst till Jupyter-anteckningsböcker. Ersätt kluster namns delen av den här URL: en med namnet på ditt eget kluster. Du behöver lösen ordet för ditt administratörs konto för att få åtkomst till antecknings böckerna.
 
 ![Bläddra bland Jupyter-anteckningsböcker](./media/spark-overview/spark-jupyter-notebook.png)
 
 Välj PySpark om du vill se en katalog som innehåller några exempel på förpaketerade antecknings böcker som använder PySpark-API: et. De antecknings böcker som innehåller kod exemplen för den här serien av Spark-ämne finns på [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-Du kan ladda upp antecknings böckerna direkt från [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) till Jupyter Notebook-servern i Spark-klustret. På Start sidan för din Jupyter klickar du på knappen _ *överför* * på den högra delen av skärmen. Den öppnar en Utforskaren. Här kan du klistra in URL: en för GitHub (RAW content) för antecknings boken och klicka på **Öppna**.
+Du kan ladda upp antecknings böckerna direkt från [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) till Jupyter Notebook-servern i Spark-klustret. På Start sidan för din Jupyter klickar du på knappen **överför** på den högra delen av skärmen. Den öppnar en Utforskaren. Här kan du klistra in URL: en för GitHub (RAW content) för antecknings boken och klicka på **Öppna**.
 
 Du ser fil namnet i Jupyter-fillistan med knappen **överför** igen. Klicka på den här knappen **överför** . Nu har du importerat antecknings boken. Upprepa de här stegen för att ladda upp de andra antecknings böckerna från den här genom gången.
 
@@ -192,4 +192,4 @@ Nu när du har skapat ett HDInsight Spark-kluster och har laddat upp Jupyter not
 
 **Modell förbrukning:** Information om hur du visar klassificerings-och Regressions modeller som skapats i det här avsnittet finns i [Poäng och utvärdera Spark-skapade maskin inlärnings modeller](spark-model-consumption.md).
 
-**Rensning av kors validering och Cross-parameter** : se [Avancerad data granskning och modellering med Spark](spark-advanced-data-exploration-modeling.md) om hur modeller kan tränas med kors validering och rensning av Hyper-parameter
+**Rensning av kors validering och Cross-parameter**: se [Avancerad data granskning och modellering med Spark](spark-advanced-data-exploration-modeling.md) om hur modeller kan tränas med kors validering och rensning av Hyper-parameter

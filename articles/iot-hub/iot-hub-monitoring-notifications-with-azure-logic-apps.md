@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490330"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Övervakning och aviseringar för IoT-fjärrhantering med Azure Logic Apps du ansluter din IoT Hub och post lådan
@@ -96,9 +96,9 @@ Skapa ett namnområde och en kö för Service Bus. Senare i det här avsnittet s
 
    ![Lägg till en Service Bus-kö i Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Gå tillbaka till rutan **Service Bus namnrymd** under **entiteter**och välj **köer**. Öppna kön Service Bus i listan och välj sedan **principer för delad åtkomst**  >  **+ Lägg till**.
+1. Gå tillbaka till rutan **Service Bus namnrymd** under **entiteter** och välj **köer**. Öppna kön Service Bus i listan och välj sedan **principer för delad åtkomst**  >  **+ Lägg till**.
 
-1. Ange ett namn för principen, kontrol lera **Hantera**och välj sedan **skapa**.
+1. Ange ett namn för principen, kontrol lera **Hantera** och välj sedan **skapa**.
 
    ![Lägg till en princip för Service Bus-kö i Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
 
@@ -110,7 +110,7 @@ Lägg till en anpassad slut punkt för Service Bus kön i IoT-hubben och skapa e
 
 1. Öppna din IoT Hub. Det enklaste sättet att komma till IoT Hub är att välja **resurs grupper** från resurs fönstret, välja din resurs grupp och sedan använda IoT Hub i listan över resurser.
 
-1. Under **meddelanden**väljer du **meddelanderoutning.** **I fönstret meddelanderoutning** väljer du fliken **anpassade slut punkter** och väljer sedan **+ Lägg till**. I list rutan väljer du **Service Bus-kö**.
+1. Under **meddelanden** väljer du **meddelanderoutning.** **I fönstret meddelanderoutning** väljer du fliken **anpassade slut punkter** och väljer sedan **+ Lägg till**. I list rutan väljer du **Service Bus-kö**.
 
    ![Skärm bild som visar alternativet för Service Bus-kön.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
@@ -150,7 +150,7 @@ I föregående avsnitt ställer du in IoT-hubben för att dirigera meddelanden s
 
 ### <a name="create-a-logic-app"></a>Skapa en logikapp
 
-1. Välj **skapa en**Logic-app för resurs  >  **integrering**  >  **Logic App**.
+1. Välj **skapa en** Logic-app för resurs  >  **integrering**  >  .
 
 1. Ange följande information:
 
@@ -176,7 +176,7 @@ I föregående avsnitt ställer du in IoT-hubben för att dirigera meddelanden s
 
    ![Välj Service Bus för att börja skapa din Logic app i Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. Under **utlösare**väljer du **när ett eller flera meddelanden anländer i en kö (komplettera automatiskt)**.
+1. Under **utlösare** väljer du **när ett eller flera meddelanden anländer i en kö (komplettera automatiskt)**.
 
    ![Välj utlösaren för din Logic app i Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
@@ -189,7 +189,7 @@ I föregående avsnitt ställer du in IoT-hubben för att dirigera meddelanden s
 
       ![Skapa en Service Bus-anslutning för din Logic app i Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-   1. På den sista skärmen, för **Könamn**väljer du den kö som du skapade i list rutan. Ange `175` för **maximalt antal meddelanden**.
+   1. På den sista skärmen, för **Könamn** väljer du den kö som du skapade i list rutan. Ange `175` för **maximalt antal meddelanden**.
 
       ![Ange maximalt antal meddelanden för Service Bus-anslutningen i din Logic app](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
@@ -199,7 +199,7 @@ I föregående avsnitt ställer du in IoT-hubben för att dirigera meddelanden s
 
 1. Skapa en SMTP-tjänst anslutning.
 
-   1. Välj **Nytt steg**. I **Välj en åtgärd**väljer du fliken **alla** .
+   1. Välj **Nytt steg**. I **Välj en åtgärd** väljer du fliken **alla** .
 
    1. Skriv `smtp` i sökrutan, Välj **SMTP** -tjänsten i Sök resultatet och välj sedan **skicka e-post**.
 
@@ -230,7 +230,7 @@ I föregående avsnitt ställer du in IoT-hubben för att dirigera meddelanden s
 
    1. Välj SMTP-anslutningen i listan över API-anslutningar.
 
-   1. I fönstret **SMTP API-anslutning** under **Allmänt**väljer du **Redigera API-anslutning**.
+   1. I fönstret **SMTP API-anslutning** under **Allmänt** väljer du **Redigera API-anslutning**.
 
    1. I fönstret **Redigera API-anslutning** väljer du **Aktivera SSL?**, anger lösen ordet för ditt e-postkonto igen och väljer **Spara**.
 

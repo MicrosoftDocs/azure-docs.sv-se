@@ -14,10 +14,10 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574807"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Använda MSAL.NET för att logga in användare med sociala identiteter
@@ -190,6 +190,6 @@ Mer information om hur du anger vilka anspråk som returneras av dina användar 
 
 Mer information om hur du hämtar token interaktivt med MSAL.NET för Azure AD B2C program finns i följande exempel.
 
-| Exempel | Plattform | Description|
+| Exempel | Plattform | Beskrivning|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | En Xamarin Forms-app som använder MSAL.NET för att autentisera användare via Azure AD B2C och sedan få åtkomst till ett webb-API med de token som returneras.|

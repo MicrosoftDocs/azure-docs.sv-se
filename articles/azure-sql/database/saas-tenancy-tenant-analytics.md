@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305978"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analys av flera klienter med extraherade data – en-klient-app
@@ -63,7 +63,7 @@ Slutligen frågas analys lagret med **Power BI** för att framhäva insikter om 
 
 Att förstå hur varje klient använder tjänsten används för att utforska alternativ för att använda tjänsten och förbättra tjänsten för att hjälpa klienter att bli mer framgångs rik. Den här självstudien innehåller grundläggande exempel på olika typer av insikter som kan uppnår från klient data.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 ### <a name="prerequisites"></a>Förutsättningar
 
@@ -93,7 +93,7 @@ I följande steg distribuerar du Analytics Store, som kallas **tenantanalytics**
     - Om du vill använda SQL Database med kolumn lagring anger du **$DemoScenario**  =  **3**  
 3. Tryck på **F5** för att köra demonstrations skriptet (som anropar skriptet *Deploy-TenantAnalytics \<XX> . ps1* ) som skapar klient analys arkivet. 
 
-Nu när du har distribuerat programmet och fyllt det med intressanta klient data använder du [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) för att ansluta **tenants1-DPT- &lt; User &gt;** och **Catalog-DPT- &lt; User &gt; -** servrar med login = *Developer* , Password = *P \@ ssword1*. Mer information finns i [introduktions kursen](./saas-dbpertenant-wingtip-app-overview.md) .
+Nu när du har distribuerat programmet och fyllt det med intressanta klient data använder du [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) för att ansluta **tenants1-DPT- &lt; User &gt;** och **Catalog-DPT- &lt; User &gt; -** servrar med login = *Developer*, Password = *P \@ ssword1*. Mer information finns i [introduktions kursen](./saas-dbpertenant-wingtip-app-overview.md) .
 
 ![Skärm bild som visar den information som behövs för att ansluta till SQL Server.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -107,7 +107,7 @@ Utför följande steg i Object Explorer:
 Se följande databas objekt i SSMS-Object Explorer genom att expandera noden analys Arkiv:
 
 - Tabellerna **TicketsRawData** och **EventsRawData** innehåller råa extraherade data från klient databaserna.
-- De stjärn schema tabellerna är **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** och **dim_Dates**.
+- De stjärn schema tabellerna är **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** och **dim_Dates**.
 - Den lagrade proceduren används för att fylla i stjärn schema tabeller från rå data tabeller.
 
 ![Skärm bild av de databas objekt som visas i SSMS-Object Explorer.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -209,7 +209,7 @@ Föregående rityta för Contoso konsert Hall visar att Mad skynda inte inträff
 
 Insikterna i biljett Sälj mönstren kan leda Wingtip-biljetter för att optimera sina affärs modeller. I stället för att debitera alla klienter på samma sätt bör Wingtip införa tjänst nivåer med olika beräknings storlekar. Större platser som behöver sälja fler biljetter per dag kan erbjudas en högre nivå med ett högre service nivå avtal (SLA). Dessa platser kan ha sina databaser placerade i poolen med högre resurs gränser per databas. Varje tjänst nivå kan ha en tilldelning per timme, med ytterligare avgifter som debiteras för att överskrida tilldelningen. Större platser som har regelbundna försäljnings nivåer skulle ha nytta av de högre nivåerna, och Wingtip-biljetter kan använda tjänsten mer effektivt.
 
-Samtidigt har vissa Wingtip-biljetter för kunder klagat att sälja tillräckligt med biljetter för att motivera tjänste kostnaden. I dessa insikter finns det en möjlighet att öka biljett försäljningen för att under utföra platser. Högre försäljning skulle öka det uppfattade värdet för tjänsten. Högerklicka på fact_Tickets och välj **nytt mått**. Ange följande uttryck för det nya måttet med namnet **AverageTicketsSold** :
+Samtidigt har vissa Wingtip-biljetter för kunder klagat att sälja tillräckligt med biljetter för att motivera tjänste kostnaden. I dessa insikter finns det en möjlighet att öka biljett försäljningen för att under utföra platser. Högre försäljning skulle öka det uppfattade värdet för tjänsten. Högerklicka på fact_Tickets och välj **nytt mått**. Ange följande uttryck för det nya måttet med namnet **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CALCULATE( SUM(TableName[Tickets Sold] ) ) )

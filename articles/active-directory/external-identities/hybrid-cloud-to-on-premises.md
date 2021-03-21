@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131028"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Bevilja B2B-användare i Azure AD åtkomst till dina lokala program
@@ -39,8 +39,8 @@ Du måste göra något av följande:
 
 För att ge B2B-användare åtkomst till lokala program som skyddas med integrerad Windows-autentisering och Kerberos-begränsad delegering, behöver du följande komponenter:
 
-- **Autentisering via Azure-AD-programproxy** . B2B-användare måste kunna autentisera till det lokala programmet. Om du vill göra det måste du publicera den lokala appen via Azure-AD-programproxy. Mer information finns i [Självstudier: Lägg till ett lokalt program för fjärråtkomst via Application Proxy](../manage-apps/application-proxy-add-on-premises-application.md).
-- **Auktorisering via ett B2B-användar objekt i den lokala katalogen** . Programmet måste kunna utföra kontroller för användar åtkomst och ge åtkomst till rätt resurser. IWA och KCD kräver ett användar objekt i den lokala Windows Server-Active Directory för att slutföra den här auktoriseringen. Som beskrivs i [hur enkel inloggning med KCD fungerar](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)måste programproxyn ha det här användarobjektet för att personifiera användaren och hämta en Kerberos-token till appen. 
+- **Autentisering via Azure-AD-programproxy**. B2B-användare måste kunna autentisera till det lokala programmet. Om du vill göra det måste du publicera den lokala appen via Azure-AD-programproxy. Mer information finns i [Självstudier: Lägg till ett lokalt program för fjärråtkomst via Application Proxy](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Auktorisering via ett B2B-användar objekt i den lokala katalogen**. Programmet måste kunna utföra kontroller för användar åtkomst och ge åtkomst till rätt resurser. IWA och KCD kräver ett användar objekt i den lokala Windows Server-Active Directory för att slutföra den här auktoriseringen. Som beskrivs i [hur enkel inloggning med KCD fungerar](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)måste programproxyn ha det här användarobjektet för att personifiera användaren och hämta en Kerberos-token till appen. 
 
    > [!NOTE]
    > När du konfigurerar Azure-AD-programproxy bör du se till att den **delegerade inloggnings identiteten** är inställd på **användarens huvud namn** (standard) i konfigurationen för enkel inloggning för integrerad Windows-autentisering (IWA).
