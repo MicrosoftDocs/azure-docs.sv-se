@@ -9,10 +9,10 @@ ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94411294"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Diagnostisera och Felsök Azure Cosmos DB timeout-undantag för Java v4 SDK
@@ -26,7 +26,7 @@ Följande lista innehåller kända orsaker och lösningar för timeout-undantag 
 ### <a name="existing-issues"></a>Befintliga problem
 Om du ser begär Anden som fastnat för längre varaktighet eller tids gräns oftare, kan du uppgradera Java v4 SDK till den senaste versionen. Obs: Vi rekommenderar starkt att du använder version 4.7.0 och senare. Kolla in [viktigt om Java v4 SDK](sql-api-sdk-java-v4.md) för mer information.
 
-### <a name="high-cpu-utilization"></a>Hög processor användning
+### <a name="high-cpu-utilization"></a>Hög CPU-belastning
 Hög processor användning är det vanligaste fallet. För optimal latens bör CPU-användningen vara ungefär 40 procent. Använd 10 sekunder som intervall för att övervaka maximal processor belastning (inte Genomsnittligt). CPU-toppar är vanligare med frågor över flera partitioner där det kan göra flera anslutningar för en enda fråga.
 
 #### <a name="solution"></a>Lösning:

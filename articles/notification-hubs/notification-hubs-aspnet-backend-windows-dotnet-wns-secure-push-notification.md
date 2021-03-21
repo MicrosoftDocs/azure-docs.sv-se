@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019436"
 ---
 # <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Skicka säkra push-meddelanden från Azure Notification Hubs
@@ -56,13 +56,13 @@ I den här självstudien visas hur du skickar ett push-meddelande på ett säker
 
 ## <a name="modify-the-windows-phone-project"></a>Ändra Windows Phone-projektet
 
-1. I **NotifyUserWindowsPhone** -projektet lägger du till följande kod i app.XAML.cs för att registrera push-bakgrunds aktiviteten. Lägg till följande kodrad i slutet av metoden `OnLaunched()`:
+1. I **NotifyUserWindowsPhone** -projektet lägger du till följande kod i app. XAML. cs för att registrera push-bakgrunds aktiviteten. Lägg till följande kodrad i slutet av metoden `OnLaunched()`:
 
     ```csharp
     RegisterBackgroundTask();
     ```
 
-2. Lägg fortfarande till följande kod direkt efter metoden i App.xaml.cs `OnLaunched()` :
+2. Lägg fortfarande till följande kod direkt efter metoden i app. XAML. cs `OnLaunched()` :
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -80,7 +80,7 @@ I den här självstudien visas hur du skickar ett push-meddelande på ett säker
     }
     ```
 
-3. Lägg till följande- `using` instruktioner överst i app.XAML.cs-filen:
+3. Lägg till följande- `using` instruktioner överst i filen app. XAML. CS:
 
     ```csharp
     using Windows.Networking.PushNotifications;

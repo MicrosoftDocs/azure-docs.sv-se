@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b939f10d2c3bcf3aeba7422809a1038b2a75f123
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Självstudie: Azure Active Directory integrering med rally-programvara
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med rally-programvara i Azure AD:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **Rally Software** integration.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **Rally Software** integration.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Utför följande steg för att konfigurera enkel inloggning med rally-programvar
 
 1. Logga in på din Rally-klient för **program vara** .
 
-2. I verktygsfältet högst upp klickar du på **konfiguration**och väljer sedan **prenumeration**.
+2. I verktygsfältet högst upp klickar du på **konfiguration** och väljer sedan **prenumeration**.
    
     ![Prenumeration](./media/rally-software-tutorial/ic769531.png "Prenumeration")
 
@@ -170,7 +170,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Rally-programvaran.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Rally-programvara**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Rally-programvara**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -200,7 +200,7 @@ För att Azure AD-användare ska kunna logga in måste de vara etablerade i Rall
 
 1. Logga in på din Rally-klient för program vara.
 
-2. Gå till **installations \> användare**och klicka sedan på **+ Lägg till ny**.
+2. Gå till **installations \> användare** och klicka sedan på **+ Lägg till ny**.
    
     ![Användare](./media/rally-software-tutorial/ic781039.png "Användare")
 

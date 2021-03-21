@@ -7,10 +7,10 @@ ms.date: 09/29/2020
 ms.author: normesta
 ms.custom: include file
 ms.openlocfilehash: 9750eabf2aa5af4f431f2db17e113b07d3bce863
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017701"
 ---
 Använd alltid [Azure AD-säkerhetsgrupper](../articles/active-directory/fundamentals/active-directory-manage-groups.md) som det tilldelade huvudobjektet i en ACL-post. Motstå möjligheten att direkt tilldela enskilda användare eller tjänst huvud namn. Med den här strukturen kan du lägga till och ta bort användare eller tjänstens huvud namn utan att behöva tillämpa ACL: er på en hel katalog struktur. I stället kan du bara lägga till eller ta bort användare och tjänstens huvud namn från rätt Azure AD-säkerhetsgrupp. 

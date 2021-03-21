@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
 ms.openlocfilehash: f63b0b523184917097c73c852a7624b366fbbb24
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100595208"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Övervakning i Azure Database for MariaDB
@@ -25,7 +25,7 @@ Steg för steg-anvisningar finns i [så här konfigurerar du aviseringar](howto-
 ### <a name="list-of-metrics"></a>Lista över mått
 De här måtten är tillgängliga för Azure Database for MariaDB:
 
-|Metric|Mått visnings namn|Enhet|Description|
+|Metric|Mått visnings namn|Enhet|Beskrivning|
 |---|---|---|---|
 |cpu_percent|CPU-procent|Procent|Procent andelen CPU som används.|
 |memory_percent|Minnes procent|Procent|Procent andelen minne som används.|

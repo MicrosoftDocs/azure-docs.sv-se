@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: efbb8a9ca0d475939d7713fa6a6a4a8245aead90
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Bizagi för digital process Automation
@@ -51,7 +51,7 @@ Om du vill konfigurera integrering av Bizagi för digital process automatisering
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Bizagi för automatisering av digital process** i sökrutan.
 1. Välj **Bizagi för digital process automatisering** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -94,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     
     URL: en för metadata måste registreras i Bizagi-projektets autentiseringsalternativ.
     
-1. På sidan **Konfigurera enkel inloggning med SAML**klickar du på ikonen Redigera/penna för användarattribut **& anspråk** för att redigera den unika användar identifieraren.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för användarattribut **& anspråk** för att redigera den unika användar identifieraren.
     
     Ange den unika användar identifieraren som user. mail.
 
@@ -102,7 +102,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -114,13 +114,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Bizagi för digital process automatisering.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Bizagi för Automation av digital process**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

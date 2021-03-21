@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358634"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Ansluta till och indexera Azure SQL-innehåll med hjälp av Azure Kognitiv sökning-indexeraren
@@ -316,7 +316,7 @@ När du använder metoden för att använda mjuk borttagning kan du ange princip
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Mappning mellan SQL-och Azure Kognitiv sökning data typer
-| SQL-datatyp | Tillåtna fält typer för mål index | Obs! |
+| SQL-datatyp | Tillåtna fält typer för mål index | Kommentarer |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
@@ -327,8 +327,8 @@ När du använder metoden för att använda mjuk borttagning kan du ange princip
 | smalldatetime, DateTime, datetime2, date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |Endast geografi instanser av typ punkt med SRID 4326 (vilket är standard) stöds |
-| rowversion |E.t. |Rad versions kolumner kan inte lagras i Sök indexet, men de kan användas för ändrings spårning |
-| tid, TimeSpan, Binary, varbinary, bild, XML, geometri, CLR-typer |E.t. |Stöds inte |
+| rowversion |Ej tillämpligt |Rad versions kolumner kan inte lagras i Sök indexet, men de kan användas för ändrings spårning |
+| tid, TimeSpan, Binary, varbinary, bild, XML, geometri, CLR-typer |Ej tillämpligt |Stöds inte |
 
 ## <a name="configuration-settings"></a>Konfigurations inställningar
 SQL-indexeraren visar flera konfigurations inställningar:
@@ -348,7 +348,7 @@ De här inställningarna används i `parameters.configuration` objektet i index 
     }
 ```
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **F: kan jag använda Azure SQL-indexeraren med SQL-databaser som körs på virtuella IaaS-datorer i Azure?**
 

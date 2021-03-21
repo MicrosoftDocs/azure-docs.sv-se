@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695132"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Självstudie: skapa din första Sökapp med hjälp av .NET SDK
@@ -130,7 +130,7 @@ Uppsättningen **hotell**-, **adress**-och **rums** klasser kallas [*komplexa ty
 
 1. I Solution Explorer högerklickar du på **modeller**  >  **Lägg till**  >  **nytt objekt**.
 
-1. Välj **klass** och namnge objektet Hotel.cs. Ersätt allt innehåll i Hotel.cs med följande kod. Lägg märke till klassens **adress** och **rums** medlemmar, dessa fält är klasser själva så att du även behöver modeller för dem.
+1. Välj **klass** och namnge objektet hotell. cs. Ersätt allt innehåll i hotellet. CS med följande kod. Lägg märke till klassens **adress** och **rums** medlemmar, dessa fält är klasser själva så att du även behöver modeller för dem.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -181,7 +181,7 @@ Uppsättningen **hotell**-, **adress**-och **rums** klasser kallas [*komplexa ty
     }
     ```
 
-1. Upprepa samma process för att skapa en modell för **adress** klassen och namnge filen address.cs. Ersätt innehållet med följande.
+1. Upprepa samma process för att skapa en modell för **adress** klassen och namnge filen address. cs. Ersätt innehållet med följande.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -208,7 +208,7 @@ Uppsättningen **hotell**-, **adress**-och **rums** klasser kallas [*komplexa ty
     }
     ```
 
-1. Och återigen följer du samma process för att skapa **rums** klassen och namnger filen Room.cs.
+1. Och återigen följer du samma process för att skapa **rums** klassen och namnger filen Room. cs.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -418,7 +418,7 @@ Vi slutför vyn. I det här läget har båda modellerna och vyerna slutförts. E
 
 I det här steget ändrar du till innehållet i **Start styrenheten**.
 
-1. Öppna filen HomeController.cs och Ersätt **using** -instruktionerna med följande.
+1. Öppna filen HomeController. CS och Ersätt **using** -instruktionerna med följande.
 
     ```csharp
     using Azure;

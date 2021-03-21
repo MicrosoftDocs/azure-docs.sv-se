@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 91b6d432042aa37a1b929f61e9742f814fb9dc40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370495"
 ---
 # <a name="how-to-configure-your-azure-application-offer-listing-details"></a>Så här konfigurerar du din Azure Application lista över erbjudanden om erbjudanden
@@ -24,7 +24,7 @@ Den information som du anger på sidan för **erbjudande listan** för ditt Azur
 
 ## <a name="marketplace-details"></a>Information om Marketplace
 
-På sidan **erbjudande lista** , under **Marketplace-information** , utför du följande steg. Om du vill veta mer om dessa uppgifter som krävs, se [erbjudande lista](plan-azure-application-offer.md#offer-listing-details).
+På sidan **erbjudande lista** , under **Marketplace-information**, utför du följande steg. Om du vill veta mer om dessa uppgifter som krävs, se [erbjudande lista](plan-azure-application-offer.md#offer-listing-details).
 
 1. Rutan **namn** är förifylld med det namn som du angav tidigare i dialog rutan **nytt erbjudande** . Du kan ändra namnet när som helst. Det namn som du anger här visas för kunder som rubrik på din erbjudande lista.
 1. Ange upp till 100 tecken text i rutan **Sammanfattning av Sök Resultat** . Den här sammanfattningen används i Sök resultaten för Marketplace-listan.
@@ -43,7 +43,7 @@ Slutför de här stegen för att lägga till länkar till kompletterande onlined
 
 ## <a name="enter-your-contact-information"></a>Ange din kontakt information
 
-Ange information för följande kontakter under **kontakt information** :
+Ange information för följande kontakter under **kontakt information**:
 
 - **Support kontakt** (krävs) – för allmänna supportfrågor.
 - Teknisk **kontakt** (krävs) – för tekniska frågor. Vi kommer att använda den här informationen för att kontakta dig när det finns problem med erbjudandet, inklusive certifierings problem.

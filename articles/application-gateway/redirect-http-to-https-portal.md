@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397288"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Skapa en Application Gateway med HTTP till HTTPS-omdirigering med hjälp av Azure Portal
@@ -26,7 +26,7 @@ I den här artikeln kan du se hur du:
 * Lägg till en regel för avlyssning och omdirigering
 * Skapa en VM-skalningsuppsättning med serverdelens standardpool
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -77,7 +77,7 @@ Det krävs ett virtuellt nätverk för kommunikation mellan de resurser som du s
      ![Skapa en ny programgateway](./media/create-url-route-portal/application-gateway-create.png)
 
 5. Godkänn standardvärdena för de andra inställningarna och klicka sedan på **OK**.
-6. Klicka på **Välj ett virtuellt nätverk** , klicka på **Skapa nytt** och ange sedan följande värden för det virtuella nätverket:
+6. Klicka på **Välj ett virtuellt nätverk**, klicka på **Skapa nytt** och ange sedan följande värden för det virtuella nätverket:
 
    - *myVnet* – Det virtuella nätverkets namn.
    - *10.0.0.0/16* – Det virtuella nätverkets adressutrymme.
@@ -142,7 +142,7 @@ I det här exemplet skapar du en VM-skalningsuppsättning som ska tillhandahåll
 9. För **lösen ord** skriver du *Azure123456!* och bekräfta lösen ordet.
 10. Kontrol lera att värdet är **2** för **instans antal**.
 11. Välj **D2s_v3** för **instans storlek**.
-12. Under **nätverk** , se till att **Välj alternativ för belastnings utjämning** är inställt på **Application Gateway**.
+12. Under **nätverk**, se till att **Välj alternativ för belastnings utjämning** är inställt på **Application Gateway**.
 13. Se till att **Application Gateway** är inställt på **myAppGateway**.
 14. Se till att **under nätet** är inställt på **myBackendSubnet**.
 15. Välj **Skapa**.

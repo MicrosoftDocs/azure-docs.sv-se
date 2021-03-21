@@ -12,18 +12,19 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99256127"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Hoppa över borttagning av användar konton som ingår i omfånget
 
 Som standard tar Azure AD Provisioning-motorn bort eller inaktiverar användare som omfattas av omfånget. Men för vissa scenarier som arbets dag till AD-användare inkommande etablering, kan det här beteendet vara förväntat och du kanske vill åsidosätta det här standard beteendet.  
 
-Den här artikeln beskriver hur du använder Microsoft Graph API och Microsoft Graph API Explorer för att ange flaggan ***SkipOutOfScopeDeletions** _ som styr bearbetningen av konton som omfattas av omfånget. _ IF ***SkipOutOfScopeDeletions** _ är inställt på 0 (falskt) inaktive ras de konton som omfattas av omfånget i målet.
-_ IF ***SkipOutOfScopeDeletions** _ har värdet 1 (sant) inaktive ras inte för konton som omfattas utanför definitions området i målet. Den här flaggan anges på _Provisioning app *-nivå och kan konfigureras med hjälp av Graph API. 
+Den här artikeln beskriver hur du använder Microsoft Graph API och Microsoft Graph API Explorer för att ange flaggan ***SkipOutOfScopeDeletions*** som styr bearbetningen av konton som omfattas av omfånget. 
+* Om ***SkipOutOfScopeDeletions*** är inställt på 0 (falskt) inaktive ras de konton som ingår i omfånget i målet.
+* Om ***SkipOutOfScopeDeletions** _ har värdet 1 (sant) inaktive ras inte konton som ligger utanför definitions området i målet. Den här flaggan anges på _Provisioning app *-nivå och kan konfigureras med hjälp av Graph API. 
 
 Eftersom den här konfigurationen ofta används med *arbets dagen för att Active Directory användar etablerings* appen, innehåller följande steg skärm bilder av programmet för arbets dagar. Konfigurationen kan dock också användas med *alla andra appar*, till exempel ServiceNow, Salesforce och Dropbox.
 
@@ -68,9 +69,9 @@ Här är JSON-blocket som ska läggas till i mappningen.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Steg 4: uppdatera hemligheter-slutpunkten med flaggan SkipOutOfScopeDeletions
 
-I Graph Explorer kör du kommandot nedan för att uppdatera hemligheter-slutpunkten med flaggan **_SkipOutOfScopeDeletions_* _. 
+I Graph Explorer kör du kommandot nedan för att uppdatera hemligheter-slutpunkten med flaggan ***SkipOutOfScopeDeletions*** . 
 
-I URL: en nedan ersätter du [servicePrincipalId] med *startservicePrincipalId** extraherat från [steg 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id). 
+I URL: en nedan ersätter du [servicePrincipalId] med **servicePrincipalId** som extraherades från [steg 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id). 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

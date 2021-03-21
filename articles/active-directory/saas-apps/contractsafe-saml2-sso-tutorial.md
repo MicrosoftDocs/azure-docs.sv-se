@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455329"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Självstudie: integrera Azure Active Directory enkel inloggning (SSO) med ContractSafe Saml2 SSO
@@ -46,7 +46,7 @@ Om du vill konfigurera integreringen av ContractSafe Saml2 SSO i Azure AD måste
 1. Logga in på [Azure Portal](https://portal.azure.com) genom att använda antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **ContractSafe Saml2 SSO** i sökrutan.
 1. Välj **ContractSafe SAML2 SSO** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -106,7 +106,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas **B. Simon**.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**. Välj **användare**och välj sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**. Välj **användare** och välj sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -118,7 +118,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas *
 
 I det här avsnittet ska du aktivera **B. Simon** för att använda Azure SSO genom att bevilja åtkomst till CONTRACTSAFE Saml2 SSO.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **ContractSafe SAML2 SSO**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer sedan **användare och grupper**.
 

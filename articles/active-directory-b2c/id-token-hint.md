@@ -12,10 +12,10 @@ ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97669167"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en teknisk profil för ID-token i en Azure Active Directory B2C anpassad princip
@@ -34,7 +34,7 @@ Med id_token_hint skapar token utfärdaren (en förlitande part eller en identit
 
 Id_token_hint måste vara en giltig JWT-token. I följande tabell visas de anspråk som är obligatoriska. Ytterligare anspråk är valfria.
 
-| Namn | Begär | Exempelvärde | Beskrivning |
+| Name | Begär | Exempelvärde | Beskrivning |
 | ---- | ----- | ------------- | ----------- |
 | Målgrupp | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifierar den avsedda mottagaren för token. Mål gruppen är en godtycklig sträng som definieras av token Issuer. Azure AD B2C validerar det här värdet och avvisar token om det inte matchar.  |
 | Utfärdare | `iss` |`https://localhost` | Identifierar Security Token Service (token Issuer). Utfärdaren är en godtycklig URI som definieras av token Issuer. Azure AD B2C validerar det här värdet och avvisar token om det inte matchar.  |
@@ -84,16 +84,16 @@ Följande metadata är relevanta när du använder symmetrisk nyckel.
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| utfärdare | Yes | Identifierar Security Token Service (token Issuer). Värdet måste vara identiskt med `iss` anspråket i JWT-token-anspråket. | 
-| IdTokenAudience | Yes | Identifierar den avsedda mottagaren för token. Måste vara identiskt med `aud` anspråket inom JWT-token-anspråket. | 
+| utfärdare | Ja | Identifierar Security Token Service (token Issuer). Värdet måste vara identiskt med `iss` anspråket i JWT-token-anspråket. | 
+| IdTokenAudience | Ja | Identifierar den avsedda mottagaren för token. Måste vara identiskt med `aud` anspråket inom JWT-token-anspråket. | 
 
 Följande metadata är relevanta när du använder en asymmetrisk nyckel. 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| METADATATJÄNST| Yes | En URL som pekar på ett konfigurations dokument för token, som även kallas en OpenID-känd konfigurations slut punkt.   |
-| utfärdare | Nej | Identifierar Security Token Service (token Issuer). Det här värdet kan användas för att skriva över värdet som kon figurer ATS i metadata och måste vara identiskt med `iss` anspråket i JWT-token-anspråket. |  
-| IdTokenAudience | Nej | Identifierar den avsedda mottagaren för token. Måste vara identiskt med `aud` anspråket inom JWT-token-anspråket. |  
+| METADATATJÄNST| Ja | En URL som pekar på ett konfigurations dokument för token, som även kallas en OpenID-känd konfigurations slut punkt.   |
+| utfärdare | Inga | Identifierar Security Token Service (token Issuer). Det här värdet kan användas för att skriva över värdet som kon figurer ATS i metadata och måste vara identiskt med `iss` anspråket i JWT-token-anspråket. |  
+| IdTokenAudience | Inga | Identifierar den avsedda mottagaren för token. Måste vara identiskt med `aud` anspråket inom JWT-token-anspråket. |  
 
 ## <a name="cryptographic-keys"></a>Kryptografiska nycklar
 
@@ -101,7 +101,7 @@ När du använder en symmetrisk nyckel innehåller **CryptographicKeys** -elemen
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Den kryptografiska nyckel som används för att validera JWT-tokens signatur.|
+| client_secret | Ja | Den kryptografiska nyckel som används för att validera JWT-tokens signatur.|
 
 
 ## <a name="how-to-guide"></a>Instruktionsguide
@@ -185,7 +185,7 @@ Token Issuer måste ange följande slut punkter:
 * `/.well-known/openid-configuration` – En välkänd konfigurations slut punkt med relevant information om token, t. ex. token utfärdarens namn och länken till JWK-slutpunkten. 
 * `/.well-known/keys` – slut punkten för JSON-webbnyckeln (JWK) med den offentliga nyckel som används för att signera nyckeln (med den privata nyckel delen av certifikatet).
 
-Se exemplet på [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC-kontrollanten.
+Se exemplet [TokenMetadataController. cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC Controller.
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Steg 1. Förbereda ett självsignerat certifikat
 

@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94365575"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Belönings Poäng visar att anpassningen lyckades
@@ -26,7 +26,7 @@ Förmåner skickas till Personanpassare av [belönings-API: et](/rest/api/cognit
 
 Förmåner skickas när användar beteendet har inträffat, vilket kan vara dagar senare. Den maximala tid som Personanpassaren väntar tills en händelse anses vara ingen belöning eller en standard belöning har kon figurer ATS med försvars [tid](#reward-wait-time) för betalning i Azure Portal.
 
-Om belönings poängen för en händelse inte har tagits emot inom svars **tiden för belöningen** , kommer **standard belöningen** att tillämpas. Normalt är **[standard belöningen](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** inställd på noll.
+Om belönings poängen för en händelse inte har tagits emot inom svars **tiden för belöningen**, kommer **standard belöningen** att tillämpas. Normalt är **[standard belöningen](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** inställd på noll.
 
 
 ## <a name="behaviors-and-data-to-consider-for-rewards"></a>Beteenden och data som ska övervägas för förmåner
@@ -72,24 +72,24 @@ Du kan också anropa belönings-API: et med samma händelse-ID och skicka olika 
 
 Sammansättnings värden:
 
-*  **Först** : tar de första belönings poängen emot för evenemanget och tar bort resten.
-* **Sum** : tar alla belönings resultat som samlas in för eventId och lägger till dem tillsammans.
+*  **Först**: tar de första belönings poängen emot för evenemanget och tar bort resten.
+* **Sum**: tar alla belönings resultat som samlas in för eventId och lägger till dem tillsammans.
 
-Alla förmåner för en händelse, som tas emot efter den **väntande tiden för belöningen** , tas bort och påverkar inte inlärningen av modeller.
+Alla förmåner för en händelse, som tas emot efter den **väntande tiden för belöningen**, tas bort och påverkar inte inlärningen av modeller.
 
 Genom att lägga till belönings resultat kan din slutliga belöning vara utanför det förväntade Poäng intervallet. Detta gör inte att tjänsten fungerar.
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Metod tips för att beräkna belönings Poäng
 
-* **Överväg de sanna anpassnings indikatorerna** : det är enkelt att tänka på när det gäller klickningar, men en bra belöning baseras på vad du vill att användarna ska *uppnå* i stället för vad du vill att användarna ska *göra*.  Till exempel kan belöningar i klick leda till att du väljer innehåll som är clickbaitt känsligt.
+* **Överväg de sanna anpassnings indikatorerna**: det är enkelt att tänka på när det gäller klickningar, men en bra belöning baseras på vad du vill att användarna ska *uppnå* i stället för vad du vill att användarna ska *göra*.  Till exempel kan belöningar i klick leda till att du väljer innehåll som är clickbaitt känsligt.
 
 * **Använd en belönings Poäng för hur stor anpassningen fungerade: att** anpassa ett film förslag skulle förhoppnings vis leda till att användaren tittar på filmen och ger den en hög klassificering. Eftersom film klassificeringen förmodligen beror på många saker (kvaliteten på det som fungerar, stämningen av användaren), är det inte en bra belönings signal för hur väl *anpassningen* fungerade. Användaren tittar på de första minuterna i filmen, men kan vara en bättre signal för anpassnings effektivitet och att skicka en belöning på 1 efter 5 minuter är en bättre signal.
 
-* **Förmåner gäller endast för RewardActionID** : med personanpassare tillämpas belöningarna för att förstå effektiviteten i den åtgärd som anges i RewardActionID. Om du väljer att visa andra åtgärder och användaren klickar på dem ska belöningen vara noll.
+* **Förmåner gäller endast för RewardActionID**: med personanpassare tillämpas belöningarna för att förstå effektiviteten i den åtgärd som anges i RewardActionID. Om du väljer att visa andra åtgärder och användaren klickar på dem ska belöningen vara noll.
 
-* **Ta hänsyn till oönskade konsekvenser** : skapa belönings funktioner som leder till ansvariga resultat med [etik och ansvarig användning](ethics-responsible-use.md).
+* **Ta hänsyn till oönskade konsekvenser**: skapa belönings funktioner som leder till ansvariga resultat med [etik och ansvarig användning](ethics-responsible-use.md).
 
-* **Använd ökande belöningar** : genom att lägga till del förmåner för mindre användar beteende kan du göra det lättare för användare att uppnå bättre fördelar. Den här stegvisa belöningen gör det möjligt för algoritmen att veta att den kommer närmare att engagera användaren i det slutliga önskade beteendet.
+* **Använd ökande belöningar**: genom att lägga till del förmåner för mindre användar beteende kan du göra det lättare för användare att uppnå bättre fördelar. Den här stegvisa belöningen gör det möjligt för algoritmen att veta att den kommer närmare att engagera användaren i det slutliga önskade beteendet.
     * Om du visar en lista över filmer, om användaren hovrar över den första för ett tag för att se mer information, kan du fastställa att vissa användar engagemang har inträffat. Beteendet kan räknas med en belönings poäng på 0,1.
     * Om användaren öppnade sidan och sedan avslutas, kan belönings poängen vara 0,2.
 

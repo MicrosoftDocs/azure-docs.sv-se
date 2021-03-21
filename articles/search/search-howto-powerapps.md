@@ -10,17 +10,17 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008573"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Självstudie: fråga ett Kognitiv sökning-index från Power Apps
 
 Använd den snabba program utvecklings miljön i Power Apps för att skapa en anpassad app för det sökbara innehållet i Azure Kognitiv sökning.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Ansluta till Azure Kognitiv sökning

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: aa9215fa001fb117000eb6a68867ddd46fac9b92
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780333"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Allmänna rikt linjer för att arbeta med Wingtip ticks-exempel SaaS-appar
@@ -25,17 +25,17 @@ Den här artikeln innehåller allmän vägledning för att köra Wingtip ticks-S
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Hämta och avblockera Wingtip Ticket SaaS-skript
 
-Körbart innehåll (skript, DLL-filer) kan blockeras av Windows när zip-filer laddas ned från en extern källa och extraheras. När du extraherar skripten från en zip-fil **följer du stegen nedan för att avblockera zip-filen innan du extraherar** . Detta säkerställer att skripten kan köras.
+Körbart innehåll (skript, DLL-filer) kan blockeras av Windows när zip-filer laddas ned från en extern källa och extraheras. När du extraherar skripten från en zip-fil **följer du stegen nedan för att avblockera zip-filen innan du extraherar**. Detta säkerställer att skripten kan köras.
 
 1. Bläddra till Wingtip Ticket SaaS GitHub-lagrings platsen för databasens hyres mönster som du vill utforska:
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. Klicka på **klona eller hämta** .
+2. Klicka på **klona eller hämta**.
 3. Klicka på **Hämta zip** och spara filen.
-4. Högerklicka på zip-filen och välj **Egenskaper** . Zip-filnamn motsvarar namnet på lagrings platsen. priset. _WingtipTicketsSaaS-DbPerTenant-master.zip_ )
-5. På fliken **Allmänt** väljer du **avblockera** .
-6. Klicka på **OK** .
+4. Högerklicka på zip-filen och välj **Egenskaper**. Zip-filnamn motsvarar namnet på lagrings platsen. priset. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. På fliken **Allmänt** väljer du **avblockera**.
+6. Klicka på **OK**.
 7. Extrahera filerna.
 
 Skript finns på *... \\ Mappen inlärnings moduler* .
@@ -57,7 +57,7 @@ Genom att ange dessa värden behöver du bara uppdatera de här distributions-/r
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Kör skripten genom att trycka på F5
 
-Flera skript använder *$PSScriptRoot* för att navigera i mappar och *$PSScriptRoot* utvärderas bara när skript körs genom att trycka på **F5** .  Att markera och köra en markering ( **F8** ) kan resultera i fel, så tryck på **F5** när du kör skript.
+Flera skript använder *$PSScriptRoot* för att navigera i mappar och *$PSScriptRoot* utvärderas bara när skript körs genom att trycka på **F5**.  Att markera och köra en markering (**F8**) kan resultera i fel, så tryck på **F5** när du kör skript.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Stega igenom skripten för att undersöka implementeringen
 
@@ -67,10 +67,10 @@ Tips för att utforska och stega igenom PowerShell-skript:
 
 - Öppna **demo –** skript i PowerShell ISE.
 - Kör eller Fortsätt med **F5** (Använd **F8** rekommenderas inte eftersom *$PSScriptRoot* inte utvärderas när du kör markeringar i ett skript).
-- Placera brytpunkter genom att klicka, eller välja en rad och trycka på **F9** .
-- Stega över en funktion eller skriptanrop med **F10** .
-- Stega in i en funktion eller skriptanrop med **F11** .
-- Stega ut ur den aktuella funktionen eller skriptanropet med **Skift + F11** .
+- Placera brytpunkter genom att klicka, eller välja en rad och trycka på **F9**.
+- Stega över en funktion eller skriptanrop med **F10**.
+- Stega in i en funktion eller skriptanrop med **F11**.
+- Stega ut ur den aktuella funktionen eller skriptanropet med **Skift + F11**.
 
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Utforska databasschemat och kör SQL-frågor med SSMS
@@ -87,14 +87,14 @@ För att säkerställa en lyckad demo anslutning har alla servrar en [brand Väg
 
 
 1. Öppna *SSMS* och Anslut till klienterna. Server namnet beror på databasens hyres mönster som du har valt (se nedan för information):
-    - **Fristående program:** servrar för enskilda klienter (t. ex. *contosoconcerthall – &lt; User &gt; . Database.Windows.net* )
+    - **Fristående program:** servrar för enskilda klienter (t. ex. *contosoconcerthall – &lt; User &gt; . Database.Windows.net*)
     - **Databas per klient:** *tenants1-DPT- &lt; User &gt; . Database.Windows.net*
     - **Databas för flera klient organisationer:** *tenants1-MT- &lt; User &gt; . Database.Windows.net*
-2. Klicka på **Anslut**  >  **databas motor...** :
+2. Klicka på **Anslut**  >  **databas motor...**:
 
    ![katalogserver](./media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Autentiseringsuppgifterna för demon är: login = *Developer* , Password = *P \@ ssword1*
+3. Autentiseringsuppgifterna för demon är: login = *Developer*, Password = *P \@ ssword1*
 
     Bilden nedan visar inloggningen för *databasen per klient* mönster.
     ![anslutningen](./media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

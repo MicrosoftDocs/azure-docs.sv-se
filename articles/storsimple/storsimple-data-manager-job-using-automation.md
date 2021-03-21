@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961217"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Använda Azure Automation till att utlösa ett jobb
@@ -22,7 +22,7 @@ Den här artikeln förklarar hur du kan använda funktionen datatransformering i
  
 Den här artikeln beskriver hur du skapar en Azure Automation Runbook och sedan använder den för att initiera ett data omvandlings jobb. Om du vill veta mer om hur du initierar datatransformering via .NET SDK går du till [använda .NET SDK för att utlösa data omvandlings jobb](storsimple-data-manager-dotnet-jobs.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du kontrol lera att du har:
 

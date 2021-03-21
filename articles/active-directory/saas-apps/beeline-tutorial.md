@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 4274596f7d53488a2ca5d0e0d3ab3021531907df
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Självstudie: Azure Active Directory integrering med Beeline
@@ -30,7 +30,7 @@ Genom att integrera Beeline med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Beeline behöver du följande objekt:
 

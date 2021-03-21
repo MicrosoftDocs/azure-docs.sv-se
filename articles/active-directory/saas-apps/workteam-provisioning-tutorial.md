@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: f465438a6be80a1b487a4df7d3ee8bd38be9c102
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94354236"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Självstudie: Konfigurera Workteam för automatisk användar etablering
@@ -52,7 +52,7 @@ Innan du konfigurerar och aktiverar automatisk användar etablering bör du best
 
 Innan du konfigurerar Workteam för automatisk användar etablering med Azure AD måste du aktivera SCIM-etablering på Workteam.
 
-1. Logga in på [Workteam](https://app.workte.am/account/signin). Klicka på Inställningar för **organisations inställningar**  >  **SETTINGS**.
+1. Logga in på [Workteam](https://app.workte.am/account/signin). Klicka på Inställningar för **organisations inställningar**  >  .
 
     ![Skärm bild av Workteam U i med alternativen organisations inställningar och inställningar som kallas för.](media/workteam-provisioning-tutorial/settings.png)
 
@@ -83,7 +83,7 @@ Om du vill konfigurera Workteam för automatisk användar etablering med Azure A
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan anger du **Workteam** , väljer **Workteam** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
+4. I sökrutan anger du **Workteam**, väljer **Workteam** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
 
     ![Workteam i resultat listan](common/search-new-app.png)
 

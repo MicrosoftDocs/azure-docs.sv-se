@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009712"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Felsöka problem som gäller Azure VM-tillägg
@@ -45,7 +45,7 @@ Felkod: "151099"
 
 Det här felet kan inträffa om Azure Guest-agenten i den virtuella datorn inte har statusen klar.
 
-Du kan kontrol lera statusen för Azures gästa Gent i [Azure Portal](https://portal.azure.com/). Gå till den virtuella datorn som du försöker skydda och kontrol lera statusen i egenskaper för **VM**-  >  **Inställningar**  >  **Properties**  >  **agent**. I de flesta fall är statusen för agenten klar efter omstart av den virtuella datorn. Men om du inte kan starta om eller om du fortfarande har problem, kan du utföra följande fel söknings steg:
+Du kan kontrol lera statusen för Azures gästa Gent i [Azure Portal](https://portal.azure.com/). Gå till den virtuella datorn som du försöker skydda och kontrol lera statusen i egenskaper för **VM**-  >  **Inställningar**  >    >  **agent**. I de flesta fall är statusen för agenten klar efter omstart av den virtuella datorn. Men om du inte kan starta om eller om du fortfarande har problem, kan du utföra följande fel söknings steg:
 
 - [Agenten installeras på den virtuella datorn, men den svarar inte (för virtuella Windows-datorer)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [Agenten som är installerad på den virtuella datorn är inaktuell (för virtuella Linux-datorer)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
@@ -105,7 +105,7 @@ Avinstallera tillägget och försök sedan igen.
 Så här avinstallerar du tillägget:
 
 1. I [Azure Portal](https://portal.azure.com/)går du till den virtuella dator som har problem med säkerhets kopieringen.
-1. Välj **Inställningar**.
+1. Välj **inställningar**.
 1. Välj **Tillägg**.
 1. Välj **Site Recovery tillägg**.
 1. Välj **Avinstallera**.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2caf0384a8e55a44f78b37c4ca8776675b6e971d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92504277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Självstudie: Azure Active Directory integrering med Montagelayout online
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Montagelayout online i Azure AD:
 
-1. Välj **enkel inloggning**på sidan för integration **online** -programintegration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan för integration **online** -programintegration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -163,7 +163,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Montagelayout online.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Montagelayout online**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Montagelayout online**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

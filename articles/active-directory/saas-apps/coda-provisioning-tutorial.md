@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
 ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673236"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Självstudie: Konfigurera CODA för automatisk användar etablering
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg som du måste utföra i både CODA och
 > * Behåll användarattribut synkroniserade mellan Azure AD och CODA
 > * [Enkel inloggning](./coda-tutorial.md) till CODA (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

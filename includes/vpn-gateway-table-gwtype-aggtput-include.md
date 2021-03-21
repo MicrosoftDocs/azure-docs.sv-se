@@ -9,30 +9,30 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010831"
 ---
 |**Generering av VPN <br> Gateway <br>** |**SKU**   | **S2S/VNet-till-VNet<br>tunnlar** | **P2S<br> SSTP-anslutningar** | **P2S <br> IKEv2/OpenVPN-anslutningar** | **Prestandamått för<br>aggregerat datagenomflöde** | **BGP** | **Zon – redundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generation1**|**Basic**   | Max. 10    | Max. 128  | Stöds inte  | 100 Mbit/s  | Stöds inte| No |
-|**Generation1**|**VpnGw1**  | Max. 30*   | Max. 128  | Max. 250       | 650 Mbit/s  | Stöds | No |
-|**Generation1**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1 Gbit/s    | Stöds | No |
-|**Generation1**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gbit/s | Stöds | No |
-|**Generation1**|**VpnGw1AZ**| Max. 30*   | Max. 128  | Max. 250       | 650 Mbit/s  | Stöds | Yes |
-|**Generation1**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1 Gbit/s    | Stöds | Yes |
-|**Generation1**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gbit/s | Stöds | Yes |
+|**Generation1**|**Basic**   | Max. 10    | Max. 128  | Stöds inte  | 100 Mbit/s  | Stöds inte| Inga |
+|**Generation1**|**VpnGw1**  | Max. 30*   | Max. 128  | Max. 250       | 650 Mbit/s  | Stöds | Inga |
+|**Generation1**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1 Gbit/s    | Stöds | Inga |
+|**Generation1**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gbit/s | Stöds | Inga |
+|**Generation1**|**VpnGw1AZ**| Max. 30*   | Max. 128  | Max. 250       | 650 Mbit/s  | Stöds | Ja |
+|**Generation1**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1 Gbit/s    | Stöds | Ja |
+|**Generation1**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gbit/s | Stöds | Ja |
 |        |            |            |           |                |           |           |     |
-|**Generation2**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1,25 Gbit/s | Stöds | No |
-|**Generation2**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 2,5 Gbit/s  | Stöds | No |
-|**Generation2**|**VpnGw4**  | Max. 30*   | Max. 128  | Max. 5000      | 5 Gbit/s    | Stöds | No |
-|**Generation2**|**VpnGw5**  | Max. 30*   | Max. 128  | Max. 10000      | 10 Gbit/s   | Stöds | No |
-|**Generation2**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1,25 Gbit/s | Stöds | Yes |
-|**Generation2**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 2,5 Gbit/s  | Stöds | Yes |
-|**Generation2**|**VpnGw4AZ**| Max. 30*   | Max. 128  | Max. 5000      | 5 Gbit/s    | Stöds | Yes |
-|**Generation2**|**VpnGw5AZ**| Max. 30*   | Max. 128  | Max. 10000      | 10 Gbit/s   | Stöds | Yes |
+|**Generation2**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1,25 Gbit/s | Stöds | Inga |
+|**Generation2**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 2,5 Gbit/s  | Stöds | Inga |
+|**Generation2**|**VpnGw4**  | Max. 30*   | Max. 128  | Max. 5000      | 5 Gbit/s    | Stöds | Inga |
+|**Generation2**|**VpnGw5**  | Max. 30*   | Max. 128  | Max. 10000      | 10 Gbit/s   | Stöds | Inga |
+|**Generation2**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1,25 Gbit/s | Stöds | Ja |
+|**Generation2**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 2,5 Gbit/s  | Stöds | Ja |
+|**Generation2**|**VpnGw4AZ**| Max. 30*   | Max. 128  | Max. 5000      | 5 Gbit/s    | Stöds | Ja |
+|**Generation2**|**VpnGw5AZ**| Max. 30*   | Max. 128  | Max. 10000      | 10 Gbit/s   | Stöds | Ja |
 
 (*) Använd [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md) om du behöver fler än 30 S2S VPN-tunnlar.
 

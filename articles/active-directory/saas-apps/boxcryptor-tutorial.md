@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 82f6d2a20943c1d8e91c6bfca76a192ee2b7b06e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Självstudie: Azure Active Directory integrering med BoxCryptor
@@ -30,7 +30,7 @@ Integreringen av Boxcryptor med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att konfigurera Azure AD-integrering med Boxcryptor:
 
