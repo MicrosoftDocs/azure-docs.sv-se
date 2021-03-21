@@ -13,10 +13,10 @@ ms.date: 03/02/2021
 ms.author: aahi
 keywords: lokal, Docker, behållare
 ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040200"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Installera och kör Docker-behållare för LUIS

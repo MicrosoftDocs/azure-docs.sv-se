@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
 ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212713"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Självstudie: skapa ett API för Cassandra konto i Azure Cosmos DB genom att använda ett Java-program för att lagra nyckel/värde-data
@@ -47,7 +47,7 @@ Den här självstudien omfattar följande uppgifter:
 
 3. I fönstret **Nytt konto** anger du inställningarna för det nya Azure Cosmos-kontot. 
 
-   |Inställning   |Föreslaget värde  |Description  |
+   |Inställning   |Föreslaget värde  |Beskrivning  |
    |---------|---------|---------|
    |ID   |   Ange ett unikt namn    | Ange ett unikt namn som identifierar Azure Cosmos-kontot. <br/><br/>Eftersomcassandra.cosmosdb.azure.com läggs till det ID du anger för att skapa din kontaktpunkt bör du använda ett unikt men identifierbart ID.         |
    |API    |  Cassandra   |  API:et avgör vilken typ av konto som skapas. <br/> Välj **Cassandra**, eftersom du i den här artikeln skapar en databas med breda kolumner som kan frågas med hjälp av CQL-syntaxen (Cassandra Query Language).  |

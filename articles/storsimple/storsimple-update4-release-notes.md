@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954060"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Viktig information om StorSimple 8000-seriens uppdatering 4
@@ -69,7 +69,7 @@ Följande tabell innehåller en sammanfattning av problem som korrigerades i upp
 | Nej | Visning av aktuellt objekt | Problem | Gäller fysisk enhet | Gäller för virtuell enhet |
 | --- | --- | --- | --- | --- |
 | 1 |Redundans |I den tidigare versionen, efter redundansväxlingen, uppstod ett problem med rensningen som observerats på kund webbplatsen. Det här problemet åtgärdas i den här versionen. |Ja |Ja |
-| 2 |Lokalt fixerade volymer |I den tidigare versionen fick du ett problem med att skapa en relaterad volym för lokalt fästa volymer som skulle resultera i att volymen skapas fel. Det här problemet var rot-orsakade och korrigerade i den här versionen. |Ja |Nej |
+| 2 |Lokalt fixerade volymer |I den tidigare versionen fick du ett problem med att skapa en relaterad volym för lokalt fästa volymer som skulle resultera i att volymen skapas fel. Det här problemet var rot-orsakade och korrigerade i den här versionen. |Ja |Inga |
 | 3 |Support paket |I tidigare versioner fanns det problem som rör ett support paket som skulle resultera i ett system. OutOfMemory-undantag eller andra fel som resulterade i ett fel när ett support paket skapas. Dessa buggar åtgärdas i den här versionen. |Ja |Ja |
 | 4 |Övervakning |I tidigare versioner fick du ett problem som rör övervaknings diagram för lokalt fästa volymer där förbrukningen visades i EB. Den här buggen har lösts i den här versionen. |Ja |Ja |
 | 5 |Migrering |I tidigare versioner fanns det flera problem som rör tillförlitligheten vid migrering från 5000-7000-serien till 8000-seriens enheter. De här problemen har åtgärd ATS i den här versionen. |Ja |Ja |

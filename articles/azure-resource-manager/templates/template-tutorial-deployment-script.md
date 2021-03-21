@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963971"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Självstudie: använda distributions skript för att skapa ett självsignerat certifikat
@@ -36,7 +36,7 @@ Den här självstudien omfattar följande uppgifter:
 
 En Microsoft Learn-modul som täcker distributions skript finns i [utöka arm-mallar med hjälp av distributions skript](/learn/modules/extend-resource-manager-template-deployment-scripts/).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c4871c3de8028eec1b6184c1d03ac2180b50f57d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881358"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process agent i Azure våren Cloud (för hands version)
@@ -47,7 +47,7 @@ Aktivera för hands versionen av Java In-Process-agenten med hjälp av följande
 5. Kyckling **Aktivera Java in process-agenten** för att aktivera förhands granskning av java i process agent-funktionen. Här kan du också anpassa samplings frekvensen från 0 till 100.
 6.  Spara ändringen genom att klicka på **Spara**.
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 1. Gå till **tjänsten | Sidan översikt** och välj **Application Insights** i avsnittet **övervakning** . 
 2. Aktivera Application Insights i Azure våren Cloud genom att klicka på **aktivera Application Insights** .

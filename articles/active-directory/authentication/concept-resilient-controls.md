@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937101"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Skapa en elastisk strategi för hantering av åtkomst kontroll med Azure Active Directory
@@ -120,7 +120,7 @@ En princip för en beredskaps villkorlig åtkomst är en **säkerhets kopierings
 * Konfigurera en uppsättning återställnings principer om ett avbrott i en typ av autentiseringsuppgift eller en mekanism för åtkomst kontroll påverkar åtkomsten till dina appar. Konfigurera en princip i endast rapport tillstånd som kräver domän anslutning som en kontroll, som en säkerhets kopia för en aktiv princip som kräver en MFA-provider från tredje part.
 * Minska risken för dåliga aktörer som gissar lösen ord, om MFA inte krävs, genom att följa anvisningarna i guiden för [lösen Ords vägledning](https://aka.ms/passwordguidance) White Paper.
 * Distribuera [Azure ad Self-Service lösen ords återställning (SSPR)](./tutorial-enable-sspr.md) och [Azure AD Password Protection](./howto-password-ban-bad-on-premises-deploy.md) för att se till att användarna inte använder vanliga lösen ord och villkor som du väljer att förbjuda.
-* Använd principer som begränsar åtkomsten i apparna om en viss autentiseringsnivå inte uppnås i stället för att bara komma tillbaka till fullständig åtkomst. Ett exempel:
+* Använd principer som begränsar åtkomsten i apparna om en viss autentiseringsnivå inte uppnås i stället för att bara komma tillbaka till fullständig åtkomst. Exempel:
   * Konfigurera en säkerhets kopierings princip som skickar anspråk för begränsad session till Exchange och SharePoint.
   * Om din organisation använder Microsoft Cloud App Security bör du överväga att återgå till en princip som samverkar med MCAS och sedan MCAS tillåter skrivskyddad åtkomst men inte uppladdning.
 * Namnge dina principer för att se till att det är enkelt att hitta dem under ett avbrott. Inkludera följande element i princip namnet:
@@ -282,7 +282,7 @@ Om din organisation använder äldre MFA-principer per användare, kan du överv
 >[!NOTE]
  > Det går bara att konfigurera [betrodda IP-adresser](./howto-mfa-mfasettings.md) för Azure AD MFA med [Azure AD Premium licenser](./concept-mfa-licensing.md).
 
-## <a name="learn-more"></a>Mer information
+## <a name="learn-more"></a>Läs mer
 
 * [Dokumentation om Azure AD-autentisering](./howto-mfaserver-iis.md)
 * [Hantera administrativa konton för katastrof åtkomst i Azure AD](../roles/security-emergency-access.md)

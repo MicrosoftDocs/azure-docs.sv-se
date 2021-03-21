@@ -10,10 +10,10 @@ ms.topic: how-to
 manager: peterpr
 ms.custom: device-developer
 ms.openlocfilehash: fc8ea41e804344735cfa2400d5d763622d8811c8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026258"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Skapa IoT Central Device Bridge för att ansluta andra IoT-moln till IoT Central
@@ -39,7 +39,7 @@ Om din IoT Central app känner igen enheten efter enhets-ID i det vidarebefordra
 ## <a name="how-do-i-set-it-up"></a>Hur gör jag för att konfigurerar du den?
 Anvisningarna visas i detalj i README-filen i GitHub-lagrings platsen. 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Azure-resurserna kommer att finnas i din Azure-prenumeration. Du kan lära dig mer om prissättning i [Readme-filen](https://aka.ms/iotcentralgithubdevicebridge).
 
 ## <a name="next-steps"></a>Nästa steg

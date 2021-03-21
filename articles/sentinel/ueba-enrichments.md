@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 01/04/2021
 ms.author: yelevin
 ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97901792"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Referens för Azure Sentinel UEBA-berikningar
@@ -155,7 +155,7 @@ De första två tabellerna, **användar insikter** och **enhets insikter**, inne
 | --- | --- | --- | --- |
 | **Senaste åtgärden när användaren utfördes**<br>*(LastTimeUserPerformedAction)* | 180 | Senaste gången användaren utförde samma åtgärd. | <Timestamp> |
 | **Liknande åtgärd utfördes inte tidigare**<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | Ingen åtgärd i samma resurs leverantör utfördes av användaren. | Sant, falskt |
-| **Käll-IP-plats**<br>*(SourceIPLocation)* | *Saknas* | Det land som åtgärd ATS från Källans IP-adress. | [Surrey, England] |
+| **Käll-IP-plats**<br>*(SourceIPLocation)* | *EJ TILLÄMPLIGT* | Det land som åtgärd ATS från Källans IP-adress. | [Surrey, England] |
 | **Ovanligt stor mängd åtgärder**<br>*(UncommonHighVolumeOfOperations)* | 7 | En användare utförde en burst av liknande åtgärder inom samma provider | Sant, falskt |
 | **Ovanligt antal problem med villkorlig åtkomst i Azure AD**<br>*(UnusualNumberOfAADConditionalAccessFailures)* | 5 | Ett ovanligt antal användare kunde inte autentiseras på grund av villkorlig åtkomst | Sant, falskt |
 | **Ovanligt antal enheter som lagts till**<br>*(UnusualNumberOfDevicesAdded)* | 5 | En användare har lagt till ett ovanligt antal enheter. | Sant, falskt |

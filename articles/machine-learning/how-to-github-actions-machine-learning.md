@@ -11,10 +11,10 @@ ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
 ms.openlocfilehash: b21f53f8ec76257fc19e0e30cd025ecc46ad2188
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218289"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Använda GitHub-åtgärder med Azure Machine Learning
@@ -35,7 +35,7 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 Filen har fyra avsnitt:
 
-|Avsnitt  |Aktiviteter  |
+|Avsnitt  |Uppgifter  |
 |---------|---------|
 |**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. |
 |**Anslut** | 1. Anslut till Machine Learning-arbetsytan. <br /> 2. Anslut till ett beräknings mål. |

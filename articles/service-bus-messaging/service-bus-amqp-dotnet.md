@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du använder Azure Service Bus frå
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632858"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Använda Service Bus från .NET med AMQP 1,0
@@ -86,7 +86,7 @@ För att under lätta samverkan med non-.NET-klienter använder du bara .NET-typ
 | URI |Beskrivnings sträng (se följande tabell) |AMQP-värde |
 | DateTimeOffset |Beskrivet långt (se följande tabell) |AMQP-värde |
 | TimeSpan |Beskrivet långt (se följande) |AMQP-värde |
-| Dataström |binary |AMQP-data (kan vara flera). Data avsnitten innehåller rå byte som lästs från Stream-objektet. |
+| Stream |binary |AMQP-data (kan vara flera). Data avsnitten innehåller rå byte som lästs från Stream-objektet. |
 | Annat objekt |binary |AMQP-data (kan vara flera). Innehåller den serialiserade binärfilen för det objekt som använder DataContractSerializer eller en serialiserare som tillhandahålls av programmet. |
 
 | .NET-typ | Mappad AMQP-beskrivande typ | Kommentarer |

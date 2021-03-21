@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
 ms.openlocfilehash: 7884f8baa24180fcb94f77a45c3457ba62d3f351
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018147"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurera aviseringar för Azure Stream Analytics jobb
@@ -57,7 +57,7 @@ I följande exempel visas hur du konfigurerar aviseringar för när jobbet över
 
 Följande aviseringar rekommenderas för att övervaka Stream Analytics jobbets prestanda. Dessa mått bör utvärderas varje minut under den senaste 5-minuters perioden.
 
-|Mått|Villkor|Tids mängd|Tröskelvärde|Korrigerande åtgärder|
+|Metric|Villkor|Tids mängd|Tröskelvärde|Korrigerande åtgärder|
 |-|-|-|-|-|
 |SU%-användning|Större än|Maximal|80|Det finns flera faktorer som ökar SU-användningen. Du kan skala med Query parallellisering eller öka antalet enheter för strömning. Mer information finns i [Utnyttja frågeparallellisering i Azure Stream Analytics](stream-analytics-parallelization.md).|
 |Körnings fel|Större än|Totalt|0|Granska aktivitets-eller resurs loggarna och gör lämpliga ändringar i indata, frågor eller utdata.|

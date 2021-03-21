@@ -13,10 +13,10 @@ ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
 ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936421"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Villkorlig åtkomst med Azure SQL Database-och Azure Synapse-analys
@@ -27,7 +27,7 @@ ms.locfileid: "97936421"
 
 Följande steg visar hur du konfigurerar Azure SQL Database, SQL-hanterad instans eller Azure-Synapse för att genomdriva en princip för villkorlig åtkomst.  
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste konfigurera Azure SQL Database, Azure SQL-hanterad instans eller dedikerad SQL-pool i Azure Synapse för att stödja Azure Active Directory (Azure AD)-autentisering. Detaljerade anvisningar finns i [Konfigurera och hantera Azure Active Directory autentisering med SQL Database eller Azure Synapse](authentication-aad-configure.md).  
 - När Multi-Factor Authentication är aktiverat måste du ansluta till ett verktyg som stöds, till exempel den senaste SQL Server Management Studio (SSMS). Mer information finns i [konfigurera Azure SQL Database Multi-Factor Authentication för SQL Server Management Studio](authentication-mfa-ssms-configure.md).  

@@ -10,10 +10,10 @@ ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199986"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Få åtkomst till extern lagring med Server lös SQL-pool i Azure Synapse Analytics
@@ -178,7 +178,7 @@ Anroparen måste ha följande behörigheter för att kunna läsa data:
 
 I följande tabell visas de behörigheter som krävs för de åtgärder som anges ovan.
 
-| Söka i data | Behörigheter som krävs|
+| Fråga | Behörigheter som krävs|
 | --- | --- |
 | OpenRowSet (BULK) utan DataSource | `ADMINISTER BULK OPERATIONS`, `ADMINISTER DATABASE BULK OPERATIONS` eller SQL-inloggningen måste ha referenser till autentiseringsuppgifter:: \<URL> för SAS-skyddad lagring |
 | OpenRowSet (BULK) med DataSource utan autentiseringsuppgifter | `ADMINISTER BULK OPERATIONS` eller `ADMINISTER DATABASE BULK OPERATIONS` , |

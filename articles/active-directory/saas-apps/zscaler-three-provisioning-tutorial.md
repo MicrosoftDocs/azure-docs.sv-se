@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c16c02a870edb1a777b63da6fea57fc02136d643
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936608"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zscaler tre för automatisk användar etablering
@@ -25,7 +25,7 @@ I den här självstudien får du lära dig hur du konfigurerar Azure Active Dire
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som bygger på Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör och hur den fungerar och svar på vanliga frågor finns i [Automatisera användar etablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen som beskrivs i den här självstudien behöver du följande:
 

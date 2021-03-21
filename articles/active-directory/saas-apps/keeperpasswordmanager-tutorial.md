@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
 ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178049"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Självstudie: Azure Active Directory integrering med lösen ords hanteraren i Keepr & digitalt valv
@@ -102,7 +102,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Dessutom förväntar sig lösen ords hanteraren & Digital Vault applikation att några fler attribut skickas tillbaka i SAML-svar. Dessa visas i följande tabell. Dessa attribut har också fyllts i automatiskt, men du kan granska dem enligt dina krav.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ------------| --------- |
     | Första | user.givenname |
     | Sista | user.surname |
@@ -124,7 +124,7 @@ I det här avsnittet ska du skapa en test användare i den Azure Portal som kall
 1. Överst på skärmen väljer du **ny användare**.
 1. I **användar** egenskaperna följer du de här stegen:
    1. Som **namn** anger du `B.Simon` .  
-   1. För **användar namn** anger du `username@companydomain.extension` . Exempelvis `B.Simon@contoso.com`.
+   1. För **användar namn** anger du `username@companydomain.extension` . Till exempel `B.Simon@contoso.com`.
    1. Välj **Visa lösen ord** och skriv sedan ned värdet som visas.
    1. Välj **Skapa**.
 
@@ -135,7 +135,7 @@ I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning me
 1. I Azure Portal väljer du **företags program**  >  **alla program**.
 1. I programlistan väljer du **Keeper Password Manager & Digital Vault**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-1. Välj **Lägg till användare**. I **Lägg till tilldelning** väljer **du användare och grupper**.
+1. Välj **Lägg till användare**. I **Lägg till tilldelning** väljer du **Användare och grupper**.
 1. I **användare och grupper** väljer du **B. Simon** från listan över användare. Välj sedan **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från listan **Välj en roll** . Om ingen roll har ställts in för den här appen väljs standard rollen för **åtkomst** .
 1. I **Lägg till tilldelning** väljer du **tilldela**.

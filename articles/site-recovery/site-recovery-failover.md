@@ -5,10 +5,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368629"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Köra en redundans från en lokal plats till Azure
@@ -32,7 +32,7 @@ Om du vill ansluta till virtuella Azure-datorer med RDP/SSH efter redundans, fin
 
 **Efter redundans** | **Plats** | **Åtgärder**
 --- | --- | ---
-**Virtuell Azure-dator som kör Windows** | Lokal dator före redundans | För att få åtkomst till den virtuella Azure-datorn via Internet aktiverar du RDP och kontrollerar att TCP-och UDP-regler har lagts till för **offentlig**och att RDP tillåts för alla profiler i **Windows-brandväggen**  >  **tillåtna appar**.<br/><br/> För att komma åt den virtuella Azure-datorn via en plats-till-plats-anslutning aktiverar du RDP på datorn och ser till att RDP tillåts i **Windows-brandväggen**  ->  **tillåtna appar och funktioner**för **domän nätverk och privata** nätverk.<br/><br/> <br/><br/> Ta bort alla statiska permanenta vägar och WinHTTP-proxy. Kontrol lera att SAN-principen för operativ systemet är inställd på **OnlineAll**. [Läs mer](https://support.microsoft.com/kb/3031135).<br/><br/> Se till att inga Windows-uppdateringar väntar på den virtuella datorn när du aktiverar en redundansväxling. Windows Update kan starta när du växlar över och du kan inte logga in på den virtuella datorn förrän uppdateringen är klar.
+**Virtuell Azure-dator som kör Windows** | Lokal dator före redundans | För att få åtkomst till den virtuella Azure-datorn via Internet aktiverar du RDP och kontrollerar att TCP-och UDP-regler har lagts till för **offentlig** och att RDP tillåts för alla profiler i **Windows-brandväggen**  >  **tillåtna appar**.<br/><br/> För att komma åt den virtuella Azure-datorn via en plats-till-plats-anslutning aktiverar du RDP på datorn och ser till att RDP tillåts i **Windows-brandväggen**  ->  **tillåtna appar och funktioner** för **domän nätverk och privata** nätverk.<br/><br/> <br/><br/> Ta bort alla statiska permanenta vägar och WinHTTP-proxy. Kontrol lera att SAN-principen för operativ systemet är inställd på **OnlineAll**. [Läs mer](https://support.microsoft.com/kb/3031135).<br/><br/> Se till att inga Windows-uppdateringar väntar på den virtuella datorn när du aktiverar en redundansväxling. Windows Update kan starta när du växlar över och du kan inte logga in på den virtuella datorn förrän uppdateringen är klar.
 **Virtuell Azure-dator som kör Linux** | Lokal dator före redundans | Kontrol lera att Secure Shell-tjänsten på den virtuella datorn är inställd på att starta automatiskt vid system start.<br/><br/> Kontrollera att brandväggsreglerna tillåter en SSH-anslutning till tjänsten.
 
 
@@ -48,12 +48,12 @@ Kör återställnings planens redundans på följande sätt:
 
     ![Skärm bild från Azure Site Recovery som visar ADRP-fönstret med redundans valt från menyn mer.](./media/site-recovery-failover/Failover.png)
 
-3. **Failover**  >  Lämna standard**riktningen i redundansväxlingen**om du replikerar till Azure.
-4. I **redundans**väljer du en **återställnings punkt** att redundansväxla.
+3.   >  Lämna standard **riktningen i redundansväxlingen** om du replikerar till Azure.
+4. I **redundans** väljer du en **återställnings punkt** att redundansväxla.
 
     - **Senaste**: Använd den senaste punkten. Detta bearbetar alla data som har skickats till Site Recovery-tjänsten och skapar en återställnings punkt för varje dator. Det här alternativet ger det lägsta återställnings punkt målet, eftersom den virtuella datorn som skapades efter redundansväxlingen har alla data som har repliker ATS till Site Recovery När redundansväxlingen utlöstes.
     Observera att det inte går att utföra mer logg bearbetning när käll regionen slutar fungera. Det innebär att du måste redundansväxla till den senaste bearbetade återställnings punkten. Mer information finns i nästa steg.
-   - **Senast bearbetade**: Använd det här alternativet om du vill redundansväxla virtuella datorer till den senaste återställnings punkten som redan bearbetats av Site Recovery. Du kan se den senast bearbetade återställnings punkten i den **senaste återställnings**punkten för den virtuella datorn. Det här alternativet ger en låg RTO eftersom ingen tid ägnas åt att bearbeta obearbetade data
+   - **Senast bearbetade**: Använd det här alternativet om du vill redundansväxla virtuella datorer till den senaste återställnings punkten som redan bearbetats av Site Recovery. Du kan se den senast bearbetade återställnings punkten i den **senaste återställnings** punkten för den virtuella datorn. Det här alternativet ger en låg RTO eftersom ingen tid ägnas åt att bearbeta obearbetade data
    - **Senaste appen – konsekvent**: Använd det här alternativet för att redundansväxla virtuella datorer till den senaste programkonsekventa återställnings punkten som bearbetats av Site Recovery.
    - Den **senaste Multi-VM-bearbetningen**: med det här alternativet kan virtuella datorer som ingår i en replikeringsgrupp redundansväxla till den senaste vanliga återställnings punkten med flera virtuella datorer. Andra virtuella datorer växlar över till den senaste bearbetade återställnings punkten. Det här alternativet är endast för återställnings planer som har minst en virtuell dator med konsekvens för flera virtuella datorer aktiverade.
    - **Senaste program med flera virtuella datorer – konsekvent**: med det här alternativet kan virtuella datorer som ingår i en replikeringsgrupp redundansväxla till den senaste vanliga programkonsekventa återställnings punkten med flera virtuella datorer. Andra virtuella datorer redundansväxlas till den senaste programkonsekventa återställnings punkten. Endast för återställnings planer som har minst en virtuell dator med konsekvens för flera virtuella datorer aktiverade.
@@ -66,7 +66,7 @@ Kör återställnings planens redundans på följande sätt:
 
 6. Följ förloppet för redundans på **jobb** sidan. Även om fel inträffar körs återställnings planen tills den är klar.
 7. Efter redundansväxlingen loggar du in på den virtuella datorn för att verifiera den. 
-8. Använd **ändrings återställnings punkt**om du vill växla till en annan återställnings punkt som ska användas för redundansväxlingen.
+8. Använd **ändrings återställnings punkt** om du vill växla till en annan återställnings punkt som ska användas för redundansväxlingen.
 9. När du är klar kan du genomföra redundansväxlingen. Åtgärden **commit** tar bort alla återställnings punkter som är tillgängliga med tjänsten. Alternativet **ändra återställnings punkt** är inte längre tillgängligt.
 
 ## <a name="run-a-planned-failover-hyper-v"></a>Köra en planerad redundansväxling (Hyper-V)

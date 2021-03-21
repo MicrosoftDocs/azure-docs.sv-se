@@ -7,10 +7,10 @@ ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169985"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Återställa en app i Azure från en ögonblicks bild
@@ -48,7 +48,7 @@ Att återställa från ögonblicks bilder är tillgängligt för appar som körs
     ![Skärm bild som visar hur du anger återställnings målet.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > Om du väljer **Skriv över**raderas och ersätts alla befintliga data i appens aktuella fil system. Kontrol lera att det är det du vill göra innan du klickar på **OK**.
+   > Om du väljer **Skriv över** raderas och ersätts alla befintliga data i appens aktuella fil system. Kontrol lera att det är det du vill göra innan du klickar på **OK**.
    > 
    > 
       

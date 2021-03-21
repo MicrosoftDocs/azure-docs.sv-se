@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972767"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synkronisering: konfigurera önskad data plats för Microsoft 365 resurser
@@ -143,7 +143,7 @@ Regeln för inkommande synkronisering tillåter att attributvärdet flödar frå
     | Attribut | Värde | Information |
     | --- | --- | --- |
     | Name | *Ange ett namn* | Till exempel "i från AD – User preferredDataLocation" |
-    | Description | *Ange en anpassad Beskrivning* |  |
+    | Beskrivning | *Ange en anpassad Beskrivning* |  |
     | Anslutet system | *Välj lokal Active Directory-anslutning* |  |
     | Ansluten system objekt typ | **Användare** |  |
     | Metaversum objekt typ | **Person** |  |
@@ -172,7 +172,7 @@ Regeln för utgående synkronisering tillåter att attributvärdet flödar från
     | Attribut | Värde | Information |
     | ----- | ------ | --- |
     | Name | *Ange ett namn* | Till exempel "ut till Azure AD – User preferredDataLocation" |
-    | Description | *Ange en beskrivning* ||
+    | Beskrivning | *Ange en beskrivning* ||
     | Anslutet system | *Välj Azure AD-anslutning* ||
     | Ansluten system objekt typ | **Användare** ||
     | Metaversum objekt typ | **Person** ||
@@ -183,7 +183,7 @@ Regeln för utgående synkronisering tillåter att attributvärdet flödar från
 
     | Attribut | Operator | Värde |
     | --- | --- | --- |
-    | sourceObjectType | SKEPPNINGSKVANTITETEN | Användare |
+    | sourceObjectType | SKEPPNINGSKVANTITETEN | User |
     | cloudMastered | NOTEQUAL | Sant |
 
     Omfångs filtret bestämmer vilka Azure AD-objekt den här utgående synkroniseringsregeln tillämpas på. I det här exemplet använder vi samma omfångs filter från "ut till Azure AD – användar identitet" OOB (out-of-Box) synkroniseringsregeln. Det förhindrar att synkroniseringsregeln tillämpas på **användar** objekt som inte synkroniseras från en lokal Active Directory. Du kan behöva justera omfångs filtret enligt din Azure AD Connect-distribution.

@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955407"
 ---
 # <a name="what-is-identity-protection"></a>Vad är Identity Protection?
@@ -107,15 +107,15 @@ Administratörer för villkorlig åtkomst kan också skapa principer som faktorn
 
 | Funktion | Information  | Azure AD Free/Microsoft 365 appar | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risk principer | Användar risk princip (via identitets skydd)  | Nej | Nej |Ja | 
-| Risk principer | Inloggnings risk princip (via identitets skydd eller villkorlig åtkomst)  | Nej |  Nej |Ja |
-| Säkerhetsrapporter | Översikt |  Nej | Nej |Ja |
+| Risk principer | Användar risk princip (via identitets skydd)  | Inga | Inga |Ja | 
+| Risk principer | Inloggnings risk princip (via identitets skydd eller villkorlig åtkomst)  | Inga |  Inga |Ja |
+| Säkerhetsrapporter | Översikt |  Inga | Inga |Ja |
 | Säkerhetsrapporter | Riskfyllda användare  | Begränsad information. Endast användare med medelhög och hög risk visas. Ingen informations låda eller risk historik. | Begränsad information. Endast användare med medelhög och hög risk visas. Ingen informations låda eller risk historik. | Fullständig åtkomst|
 | Säkerhetsrapporter | Riskfyllda inloggningar  | Begränsad information. Ingen risk information eller risk nivå visas. | Begränsad information. Ingen risk information eller risk nivå visas. | Fullständig åtkomst|
-| Säkerhetsrapporter | Riskidentifieringar   | No | Begränsad information. Ingen informations låda.| Fullständig åtkomst|
-| Meddelanden | Varningar för användare med risk identifiering  | Nej | Nej |Ja |
-| Meddelanden | Vecko sammandrag| Nej | Nej | Ja | 
-| | Registreringsprincip för multifaktorautentisering | Nej | Nej | Ja |
+| Säkerhetsrapporter | Riskidentifieringar   | Inga | Begränsad information. Ingen informations låda.| Fullständig åtkomst|
+| Meddelanden | Varningar för användare med risk identifiering  | Inga | Inga |Ja |
+| Meddelanden | Vecko sammandrag| Inga | Inga | Ja | 
+| | Registreringsprincip för multifaktorautentisering | Inga | Inga | Ja |
 
 Mer information om de här omfattande rapporterna finns i artikeln [så här gör du: Undersök risker](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

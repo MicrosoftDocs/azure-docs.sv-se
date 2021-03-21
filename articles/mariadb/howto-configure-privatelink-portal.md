@@ -3,14 +3,14 @@ title: Privat länk – Azure Portal-Azure Database for MariaDB
 description: Lär dig hur du konfigurerar en privat länk för Azure Database for MariaDB från Azure Portal
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659632"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Skapa och hantera en privat länk för Azure Database for MariaDB med hjälp av portalen
@@ -41,7 +41,7 @@ I det här avsnittet ska du skapa en Virtual Network och under nätet som är v�
     | Adressutrymme | Ange *10.1.0.0/16*. |
     | Prenumeration | Välj din prenumeration.|
     | Resursgrupp | Välj **Skapa ny**, ange *myResourceGroup* och välj sedan **OK**. |
-    | Plats | Välj **Europa, västra**.|
+    | Location | Välj **Europa, västra**.|
     | Undernät – Namn | Ange *undernät*. |
     | Undernät – adressintervall | Ange *10.1.0.0/24*. |
     |||
@@ -112,7 +112,7 @@ I det här avsnittet ska du skapa en Azure Database for MariaDB-server i Azure.
     |Servernamn  | Ange *Server*. Om det här namnet tas skapar du ett unikt namn.|
     | Användarnamn för administratör| Ange ett administratörs namn som du väljer. |
     | Lösenord | Ange ett valfritt lösenord. Lösen ordet måste vara minst 8 tecken långt och uppfylla de definierade kraven. |
-    | Plats | Välj en Azure-region där du vill att MariaDB-servern ska finnas. |
+    | Location | Välj en Azure-region där du vill att MariaDB-servern ska finnas. |
     |Version  | Välj den databas version av MariaDB-servern som krävs.|
     | Compute + Storage| Välj den pris nivå som krävs för servern baserat på arbets belastningen. |
     |||
@@ -179,7 +179,7 @@ I det här avsnittet ska du skapa en privat slut punkt till MariaDB-servern.
     ![Privat länk har skapats](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
 
     > [!NOTE] 
-    > FQDN i DNS-inställningen för kunden matchar inte den privata IP-adressen som kon figurer ATS. Du måste konfigurera en DNS-zon för den konfigurerade FQDN: en som visas [här](../dns/dns-operations-recordsets-portal.md).
+    > Det fullständiga domännamnet i DNS-inställningen för kunden matchar inte den privata IP-adressen som har konfigurerats. Du måste konfigurera en DNS-zon för den konfigurerade FQDN: en som visas [här](../dns/dns-operations-recordsets-portal.md).
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Ansluta till en virtuell dator med hjälp av Fjärrskrivbord (RDP)
 
