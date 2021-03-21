@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97509928"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Så här gör du för att forma och exportera omfattande
@@ -29,9 +29,9 @@ Exemplen som presenteras i den här artikeln finns i det här [REST API exemplet
 
 Det finns tre typer av [projektioner](knowledge-store-projection-overview.md):
 
-+ Tabeller
++ Tables
 + Objekt
-+ Files
++ Filer
 
 Tabell projektioner lagras i Azure Table Storage. Objekt-och fil projektioner skrivs till Blob Storage, där objekt projektioner sparas som JSON-filer och kan innehålla innehåll från käll dokumentet samt eventuella kunskaps utmatningar eller berikningar. Pipelinen kan också extrahera binärfiler som bilder, dessa binärfiler projiceras som fil prognoser. När ett binärt objekt projiceras som en objekt projektion, sparas bara de metadata som är kopplade till den som en JSON-blob. 
 

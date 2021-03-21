@@ -9,10 +9,10 @@ ms.author: shasb
 description: Den här artikeln innehåller en arkitektur översikt över Azure Arc-aktiverade Kubernetes-agenter
 keywords: Kubernetes, båge, Azure, behållare
 ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121906"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc Enabled Kubernetes-agent arkitektur

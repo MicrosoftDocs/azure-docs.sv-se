@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038636"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599892"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Använd Azure för att vara värd för och köra SAP-arbetsbelastnings scenarier
 
@@ -82,7 +82,8 @@ I det här avsnittet hittar du dokument om Microsoft Power BI integration i SAP-
 
 
 ## <a name="change-log"></a>Ändrings logg
-
+- 03/17/2021: ändra i [hektar för SAP HANA på virtuella Azure-datorer på SLES](./sap-hana-high-availability.md), [ha för SAP HANA på virtuella Azure-datorer på RHEL](./sap-hana-high-availability-rhel.md) och [ha för SAP HANA skala upp med ANF på RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) för att lägga till instruktioner för Hana aktiv/Read-aktiverad systemreplikering i pacemaker-kluster
+- 03/15/2021: ändra i [SAP ASCS/SCS-instans med WSFC och fil resurs](./sap-high-availability-guide-wsfc-file-share.md),[Installera SAP ASCS/SCS-instans med WSFC och fil resurs](./sap-high-availability-installation-wsfc-file-share.md) och [SAP ASCS/SCS multi-sid med WSFC och fil resurs](./sap-ascs-ha-multi-sid-wsfc-file-share.md) för att klargöra att SAP ASCS/SCS-instanserna och SOFS-resursen måste distribueras i separata kluster
 - 03/03/2021: ändra i [ha-guide för SAP ASCS/SCS med WSFC och Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md) för att lägga till en försiktighets instruktion som förhöjda privilegier krävs för användaren som kör SWPM, under installationen av SAP-systemet
 - 02/11/2021: ändringar i [hög tillgänglighet för IBM DB2-LUW på virtuella Azure-datorer på Red Hat Enterprise Linux server](./high-availability-guide-rhel-ibm-db2-luw.md) för att ändra pacemaker-kluster kommandon för RHEL 8. x
 - 02/03/2021: ändra i [ställa in pacemaker på RHEL i Azure](./high-availability-guide-rhel-pacemaker.md) för att uppdatera pcmk_host_map i kommandot stonith Create

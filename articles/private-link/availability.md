@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
 ms.openlocfilehash: 26485c84749b7d4c91159476b3f683c2b0f3831b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103555775"
 ---
 # <a name="azure-private-link-availability"></a>Tillgänglighet för Azure Private-länkar
@@ -62,7 +62,7 @@ I följande tabeller visas de privata länk tjänsterna och de regioner där de 
 |Azure Cosmos DB|  Alla offentliga regioner<br/> Alla myndighets regioner</br> Alla regioner i Kina | |Allmän tillgänglighet (GA) <br/> [Lär dig hur du skapar en privat slut punkt för Cosmos DB.](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL-enskild server         | Alla offentliga regioner <br/> Alla myndighets regioner<br/>Alla regioner i Kina     | Stöds för Generell användning och minnesoptimerade pris nivåer | Allmän tillgänglighet (GA) <br/> [Lär dig hur du skapar en privat slut punkt för Azure Database for PostgreSQL.](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | Alla offentliga regioner<br/> Alla myndighets regioner<br/>Alla regioner i Kina      |  | Allmän tillgänglighet (GA) <br/> [Lär dig hur du skapar en privat slut punkt för Azure Database for MySQL.](../mysql/concepts-data-access-security-private-link.md)     |
-|  Azure-databas för MariaDB         | Alla offentliga regioner<br/> Alla myndighets regioner<br/>Alla regioner i Kina     |  | Allmän tillgänglighet (GA) <br/> [Lär dig hur du skapar en privat slut punkt för Azure Database for MariaDB.](../mariadb/concepts-data-access-security-private-link.md)      |
+|  Azure Database for MariaDB         | Alla offentliga regioner<br/> Alla myndighets regioner<br/>Alla regioner i Kina     |  | Allmän tillgänglighet (GA) <br/> [Lär dig hur du skapar en privat slut punkt för Azure Database for MariaDB.](../mariadb/concepts-data-access-security-private-link.md)      |
 
 ### <a name="integration"></a>Integrering
 

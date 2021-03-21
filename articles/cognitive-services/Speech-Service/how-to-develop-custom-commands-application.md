@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
 ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935826"
 ---
 # <a name="develop-custom-commands-applications"></a>Utveckla anpassade kommandon program
@@ -221,7 +221,7 @@ Börja med att redigera det befintliga `TurnOn` kommandot för att aktivera och 
 
 #### <a name="modify-example-sentences"></a>Ändra exempel meningar
 
-För kommandon som använder parametrar är det bra att lägga till exempel meningar som beskriver alla möjliga kombinationer. Ett exempel:
+För kommandon som använder parametrar är det bra att lägga till exempel meningar som beskriver alla möjliga kombinationer. Exempel:
 
 * Fullständig parameter information: `turn {OnOff} the {SubjectDevice}`
 * Ofullständig parameter information: `turn it {OnOff}`
@@ -242,7 +242,7 @@ turn something
 Välj **Spara**.
 
 > [!TIP]
-> I redigeraren exempel – meningar använder du klammerparenteser för att referera till parametrarna. Ett exempel är `turn {OnOff} the {SubjectDevice}`.
+> I redigeraren exempel – meningar använder du klammerparenteser för att referera till parametrarna. Till exempel `turn {OnOff} the {SubjectDevice}`.
 > Använd en flik för automatisk komplettering som backas upp av parametrarna som skapats tidigare.
 
 #### <a name="modify-completion-rules-to-include-parameters"></a>Ändra regler för slut för ande för att inkludera parametrar
@@ -365,7 +365,7 @@ Börja med att lägga till en ny webb slut punkt för att flytta innehållet. G�
 |----|----|
 | **Namn** | `getDevices` |
 | **URL** | `https://aka.ms/speech/cc-sampledevices` |
-| **Metod** | **GET** |
+| **Metod** | **TA** |
 
 
 Om det föreslagna värdet för URL: en inte fungerar för dig kan du konfigurera och vara värd för en webb slut punkt som returnerar en JSON-fil som består av listan över enheter som kan kontrol leras. Webb slut punkten ska returnera en JSON-fil formaterad enligt följande:
@@ -396,7 +396,7 @@ Gå sedan till sidan med **SubjectDevice** parameter inställningar. Konfigurera
 | ----| ---- |
 | **Konfiguration** | **Acceptera fördefinierade indata från extern katalog** |                               
 | **Katalog slut punkt** | `getDevices` |
-| **Metod** | **GET** |
+| **Metod** | **TA** |
 
 Välj sedan **Spara**.
 

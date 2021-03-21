@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
-ms.openlocfilehash: bd28fa9f20775be659de6cef99f9ceda29fe52cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049142"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583470"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-baserade mått
 
@@ -95,6 +95,8 @@ Webb läsar mått samlas in av Application Insights JavaScript SDK från verklig
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Sid inläsnings tid för webbläsare (browserTimings/totalDuration)
 
+Tid från användar förfrågan tills DOM, formatmallar, skript och bilder har lästs in.
+
 |Måttenhet|Agg regeringar som stöds|Föraggregerade dimensioner|
 |---|---|---|
 |Millisekunder|Genomsnitt, min, max|Inget|
@@ -110,6 +112,8 @@ browserTimings
 ```
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>Klient bearbetnings tid (browserTiming/processingDuration)
+
+Tiden mellan att ta emot sista byten i ett dokument tills DOM har lästs in. Asynkrona begär Anden kan fortfarande bearbetas.
 
 |Måttenhet|Agg regeringar som stöds|Föraggregerade dimensioner|
 |---|---|---|
@@ -127,6 +131,8 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Sid inläsning nätverks anslutnings tid (browserTimings/networkDuration)
 
+Tid mellan användar förfrågan och nätverks anslutning. Inkluderar DNS-sökning och transport anslutning.
+
 |Måttenhet|Agg regeringar som stöds|Föraggregerade dimensioner|
 |---|---|---|
 |Millisekunder|Genomsnitt, min, max|Inget|
@@ -143,6 +149,8 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Tar emot svars tid (browserTimings/receiveDuration)
 
+Tiden mellan den första och sista byten, eller till från koppling.
+
 |Måttenhet|Agg regeringar som stöds|Föraggregerade dimensioner|
 |---|---|---|
 |Millisekunder|Genomsnitt, min, max|Inget|
@@ -158,6 +166,8 @@ browserTimings
 ```
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Sändnings tid för begäran (browserTimings/sendDuration)
+
+Tiden mellan nätverks anslutning och mottagande av den första byten.
 
 |Måttenhet|Agg regeringar som stöds|Föraggregerade dimensioner|
 |---|---|---|

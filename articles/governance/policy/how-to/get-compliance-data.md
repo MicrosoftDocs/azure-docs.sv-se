@@ -1,14 +1,14 @@
 ---
 title: Hämta information om efterlevnadsprinciper
 description: Azure Policy utvärderingar och effekter avgör efterlevnad. Lär dig hur du hämtar information om kompatibiliteten för dina Azure-resurser.
-ms.date: 10/05/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577112"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598549"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Hämta efterlevnads data för Azure-resurser
 
@@ -26,7 +26,7 @@ Innan du tittar på metoderna för att rapportera om efterlevnad ska vi titta p�
 
 ## <a name="evaluation-triggers"></a>Utvärderings utlösare
 
-Resultatet av en slutförd utvärderings cykel är tillgängligt i `Microsoft.PolicyInsights` resurs leverantören genom `PolicyStates` och `PolicyEvents` åtgärder. Mer information om åtgärder för Azure Policy insikter REST API finns i [Azure policy insikter](/rest/api/policy-insights/).
+Resultatet av en slutförd utvärderings cykel är tillgängligt i `Microsoft.PolicyInsights` resurs leverantören genom `PolicyStates` och `PolicyEvents` åtgärder. Mer information om åtgärder för Azure Policy insikter REST API finns i [Azure policy insikter](/rest/api/policy/).
 
 Utvärderingar av tilldelade principer och initiativ sker som resultatet av olika händelser:
 
@@ -205,7 +205,7 @@ Den övergripande resursens kompatibilitet är 95% (19 av 20).
 > [!NOTE]
 > Regelefterlevnad som följer Azure Policy är en förhands gransknings funktion. Egenskaperna för efterlevnad från SDK och sidor i portalen är olika för aktiverade initiativ. Mer [information finns i regelefterlevnad](../concepts/regulatory-compliance.md)
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 Azure Portal demonstrerar en grafisk upplevelse av visualisering och förståelse av status för miljön. På **princip** sidan innehåller **översikts** alternativet information om tillgängliga omfång för efterlevnad av både principer och initiativ. Tillsammans med kompatibilitetstillstånd och antalet per tilldelning innehåller det ett diagram som visar efterlevnad under de senaste sju dagarna. Sidan **efterlevnad** innehåller ungefär samma information (förutom diagrammet), men innehåller ytterligare alternativ för filtrering och sortering.
 
@@ -237,13 +237,13 @@ När en resurs bedöms vara **icke-kompatibel** finns det många möjliga orsake
 
 ## <a name="command-line"></a>Kommandorad
 
-Samma information som är tillgänglig i portalen kan hämtas med REST API (inklusive med [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell och Azure CLI. Fullständig information om REST API finns i [Azure policy Insights](/rest/api/policy-insights/) -referensen. REST API referens sidor har en grön "Try"-knapp för varje åtgärd som gör att du kan testa den direkt i webbläsaren.
+Samma information som är tillgänglig i portalen kan hämtas med REST API (inklusive med [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell och Azure CLI. Fullständig information om REST API finns i [Azure policy](/rest/api/policy/) referens. REST API referens sidor har en grön "Try"-knapp för varje åtgärd som gör att du kan testa den direkt i webbläsaren.
 
 Använd ARMClient eller ett liknande verktyg för att hantera autentisering till Azure för REST API exempel.
 
 ### <a name="summarize-results"></a>Sammanfatta resultat
 
-Med REST API kan Sammanfattning utföras av behållare, definition eller tilldelning. Här är ett exempel på en sammanfattning på prenumerations nivån med Azure Policy Insight- [Sammanfattning för prenumeration](/rest/api/policy-insights/policystates/summarizeforsubscription):
+Med REST API kan Sammanfattning utföras av behållare, definition eller tilldelning. Här är ett exempel på en sammanfattning på prenumerations nivån med Azure Policy Insight- [Sammanfattning för prenumeration](/rest/api/policy/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -353,7 +353,7 @@ Ditt resultat liknar följande exempel:
 }
 ```
 
-Mer information om hur du frågar princip händelser finns i artikeln referens för [Azure policy händelser](/rest/api/policy-insights/policyevents) .
+Mer information om hur du frågar princip händelser finns i artikeln referens för [Azure policy händelser](/rest/api/policy/policyevents) .
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -648,7 +648,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-Utdata från `$policyEvents` objektet ser ut ungefär så här:
+Utdata från `$policyEvents` objektet ser ut som följande utdata:
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

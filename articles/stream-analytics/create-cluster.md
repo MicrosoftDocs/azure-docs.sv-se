@@ -1,18 +1,18 @@
 ---
 title: Skapa en Azure Stream Analytics kluster snabb start
 description: Lär dig hur du skapar ett Azure Stream Analytics-kluster.
+ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.service: stream-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6b7a7c5feb6165f5b2c7c0ea052318a255e8025c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016566"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600232"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Snabb start: skapa ett dedikerat Azure Stream Analytics-kluster med Azure Portal
 
@@ -40,7 +40,7 @@ I det här avsnittet skapar du en Stream Analytics kluster resurs.
    |Prenumeration|Prenumerationens namn|Välj den Azure-prenumeration som du vill använda för Stream Analytics klustret. |
    |Resursgrupp|Namn på resursgrupp|Välj en resursgrupp eller välj **Skapa ny** och ange sedan ett unikt namn för den nya resursgruppen. |
    |Klusternamn|Ett unikt namn|Ange ett namn för att identifiera Stream Analytics klustret.|
-   |Plats|Den region som är närmast dina data källor och mottagare|Välj en geografisk plats som ska vara värd för ditt Stream Analytics-kluster. Använd den plats som ligger närmast dina data källor och mottagare för analys med låg latens.|
+   |Location|Den region som är närmast dina data källor och mottagare|Välj en geografisk plats som ska vara värd för ditt Stream Analytics-kluster. Använd den plats som ligger närmast dina data källor och mottagare för analys med låg latens.|
    |Kapacitet för strömnings enhet|36 till 216 |Bestäm klustrets storlek genom att uppskatta hur många Stream Analytics-jobb du planerar att köra och den totala SUs-SUs som jobbet kräver. Du kan börja med 36 SUs och sedan skala upp eller ned efter behov.|
 
    ![Skapa kluster](./media/create-cluster/create-cluster.png)

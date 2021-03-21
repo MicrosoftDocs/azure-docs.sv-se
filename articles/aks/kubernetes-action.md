@@ -8,17 +8,17 @@ ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
 ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761463"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub-åtgärder för att distribuera till Kubernetes-tjänsten
 
 [GitHub-åtgärder](https://docs.github.com/en/actions) ger dig flexibiliteten att bygga ett arbets flöde för automatiserad livs cykel för program utveckling. Du kan använda flera Kubernetes-åtgärder för att distribuera till behållare från Azure Container Registry till Azure Kubernetes-tjänsten med GitHub-åtgärder. 
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
@@ -31,7 +31,7 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 För ett arbets flöde som riktar sig till AKS har filen tre delar:
 
-|Avsnitt  |Aktiviteter  |
+|Avsnitt  |Uppgifter  |
 |---------|---------|
 |**Autentisering** | Logga in på ett privat container Registry (ACR) |
 |**Skapa** | Bygg & push-överför behållar avbildningen  |
@@ -68,7 +68,7 @@ Följ stegen för att konfigurera hemligheterna:
 
     ![Skärm bild som visar Lägg till en ny hemlig länk för en lagrings plats.](media/kubernetes-action/secrets.png)
 
-2. Klistra in innehållet i ovanstående `az cli` kommando som värde för den hemliga variabeln. Ett exempel är `AZURE_CREDENTIALS`.
+2. Klistra in innehållet i ovanstående `az cli` kommando som värde för den hemliga variabeln. Till exempel `AZURE_CREDENTIALS`.
 
 3. På samma sätt definierar du följande ytterligare hemligheter för autentiseringsuppgifterna för behållar registret och anger dem i Docker login login-åtgärd. 
 

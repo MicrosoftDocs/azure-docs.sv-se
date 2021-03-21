@@ -9,16 +9,26 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503921"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604666"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Så här aktiverar du Key Vault loggning
 
 När du har skapat ett eller flera nyckel valv vill du förmodligen övervaka hur och när nyckel valven nås, och av vem. Fullständig information om funktionen finns i [Key Vault loggning](logging.md).
+
+Vad loggas:
+
+* Alla autentiserade REST API begär Anden, inklusive misslyckade förfrågningar till följd av åtkomst behörigheter, systemfel eller felaktiga begär Anden.
+* Åtgärder i själva nyckel valvet, inklusive att skapa, ta bort, ställa in åtkomst principer för nyckel valv och uppdatera Key Vault-attribut som taggar.
+* Åtgärder för nycklar och hemligheter i nyckel valvet, inklusive:
+  * Skapa, ändra eller ta bort nycklar eller hemligheter.
+  * Signering, verifiering, kryptering, dekryptering, wrapping och unwrap-nycklar, Hämta hemligheter och Visa nycklar och hemligheter (och deras versioner).
+* Oautentiserade förfrågningar som resulterar i ett 401-svar. Exempel är begär Anden som inte har en Bearer-token, som har fel format eller som har upphört att gälla eller som har en ogiltig token.  
+* Event Grid meddelande händelser för snart utgångs datum, upphör ande och åtkomst principen för valv har ändrats (ny versions händelse loggas inte). Händelser loggas oavsett om det finns en händelse prenumeration som skapats i Key Vault. Mer information finns i [Event Grid händelse schema för Key Vault](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -58,7 +68,7 @@ För ytterligare enkel hantering kommer vi också att använda samma resurs grup
 
 Vi kommer också att behöva ange ett lagrings konto namn. Lagrings konto namn måste vara unika, vara mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener.  Slutligen kommer vi att skapa ett lagrings konto för SKU: n "Standard_LRS".
 
-Med Azure CLI använder du kommandot [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) .
+Med Azure CLI använder du kommandot [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) . 
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -100,44 +110,67 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 Resurs-ID för nyckel valvet kommer att vara i formatet "/Subscriptions/<Your-Subscription-ID>/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/<ditt-Unique-Key-namn>". Lägg märke till nästa steg.
 
-## <a name="enable-logging-using-azure-powershell"></a>Aktivera loggning med Azure PowerShell
+## <a name="enable-logging"></a>Aktivera loggning
 
-Om du vill aktivera loggning för Key Vault använder vi Azure CLI [-AZ övervaka diagnostiskt-Settings Create](/cli/azure/monitor/diagnostic-settings) eller cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) tillsammans med lagrings konto-ID: t och Key Vault-resurs-ID: t.
+Du kan aktivera loggning för Key Vault med hjälp av Azure CLI, Azure PowerShell eller Azure Portal.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>Azure CLI
+
+Använd Azure CLI [-AZ övervaka diagnostiskt-Settings Create](/cli/azure/monitor/diagnostic-settings) tillsammans med lagrings konto-ID: t och Key Vault-resurs-ID: t.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-Med Azure PowerShell använder vi cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) , där flaggan **-Enabled** har angetts till **$True** och kategorin har angetts till `AuditEvent` (den enda kategorin för Key Vault loggning):
+Du kan också ange en bevarande princip för loggarna så att äldre loggar tas bort automatiskt efter en viss tid. Du kan till exempel ange en bevarande princip som automatiskt tar bort loggar som är äldre än 90 dagar.
+
+Med Azure CLI använder du kommandot [AZ Monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) . 
+
+```azurecli-interactive
+az monitor diagnostic-settings update --name "Key vault retention policy" --resource "<key-vault-resource-id>" --set retentionPolicy.days=90
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Använd cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) med flaggan **-Enabled** inställd på **$True** och kategorin inställd på `AuditEvent` (den enda kategorin för Key Vault loggning):
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
 ```
 
-Du kan också ange en bevarande princip för loggarna så att äldre loggar tas bort automatiskt efter en viss tid. Du kan till exempel ställa in ange bevarande princip som automatiskt tar bort loggar som är äldre än 90 dagar.
+Du kan också ange en bevarande princip för loggarna så att äldre loggar tas bort automatiskt efter en viss tid. Du kan till exempel ange en bevarande princip som automatiskt tar bort loggar som är äldre än 90 dagar.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
-
-```azurecli-interactive
-az monitor diagnostic-settings update 
-```
--->
-
-Med Azure PowerShell använder du cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) . 
+Med Azure PowerShell använder du cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) .
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Vad loggas:
+# <a name="azure-portal"></a>[Azure-portalen](#tab/azure-portal)
 
-* Alla autentiserade REST API begär Anden, inklusive misslyckade förfrågningar till följd av åtkomst behörigheter, systemfel eller felaktiga begär Anden.
-* Åtgärder i själva nyckel valvet, inklusive att skapa, ta bort, ställa in åtkomst principer för nyckel valv och uppdatera Key Vault-attribut som taggar.
-* Åtgärder för nycklar och hemligheter i nyckel valvet, inklusive:
-  * Skapa, ändra eller ta bort nycklar eller hemligheter.
-  * Signering, verifiering, kryptering, dekryptering, wrapping och unwrap-nycklar, Hämta hemligheter och Visa nycklar och hemligheter (och deras versioner).
-* Oautentiserade förfrågningar som resulterar i ett 401-svar. Exempel är begär Anden som inte har en Bearer-token, som har fel format eller som har upphört att gälla eller som har en ogiltig token.  
-* Event Grid meddelande händelser för snart utgångs datum, upphör ande och åtkomst principen för valv har ändrats (ny versions händelse loggas inte). Händelser loggas oavsett om det finns en händelse prenumeration som skapats i Key Vault. Mer information finns i [Event Grid händelse schema för Key Vault](../../event-grid/event-schema-key-vault.md)
+Följ dessa steg om du vill konfigurera diagnostikinställningar i portalen.
+
+1. Välj diagnostikinställningar på menyn resurs blad.
+
+    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Diagnostisk Portal 1":::
+
+1. Klicka på inställningen "+ Lägg till diagnostik"
+
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Diagnostisk Portal 2":::
+ 
+1. Välj ett namn för att anropa den diagnostiska inställningen. Om du vill konfigurera loggning för Azure Monitor för Key Vault väljer du alternativet "AuditEvent" och "Skicka till Log Analytics arbets yta". Välj sedan den prenumeration och Log Analytics arbets yta som du vill skicka loggarna.
+
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Diagnostisk Portal 3":::
+
+    Annars väljer du de alternativ som är kopplade till de loggar som du vill välja
+
+1. När du har valt önskade alternativ väljer du spara.
+
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Diagnostisk Portal 4":::
+
+---
 
 ## <a name="access-your-logs"></a>Komma åt loggarna
 

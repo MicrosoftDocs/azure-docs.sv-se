@@ -1,24 +1,18 @@
 ---
 title: Aviserings validering i Azure Security Center | Microsoft Docs
 description: Lär dig hur du verifierar att dina säkerhets aviseringar är korrekt konfigurerade i Azure Security Center
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099530"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602391"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Aviserings validering i Azure Security Center
 I det här dokumentet får du hjälp med att verifiera systemet är rätt konfigurerat för aviseringar från Azure Security Center.
@@ -39,7 +33,7 @@ Använd exempel aviseringar för att:
 
 Så här skapar du exempel aviseringar:
 
-1. I verktygsfältet på sidan Aviseringar väljer du **Skapa exempel aviseringar**. 
+1. Som användare med rollen **säkerhets administratör** eller **prenumerations deltagare**, i verktygsfältet på sidan aviseringar, väljer du **Skapa exempel aviseringar**.
 1. Välj prenumerationen.
 1. Välj relevanta Azure Defender-planer som du vill visa aviseringar för. 
 1. Välj **Skapa exempel aviseringar**.

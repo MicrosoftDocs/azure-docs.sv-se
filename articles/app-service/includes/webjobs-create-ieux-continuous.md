@@ -6,10 +6,10 @@ ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 33dc766643355a5f5ebb6138e000595fd1bfe6fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101746675"
 ---
 ## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a> Skapa ett kontinuerligt webbjobb
@@ -30,7 +30,7 @@ ms.locfileid: "101746675"
 
    | Inställning      | Exempelvärde   | 
    | ------------ | ----------------- | 
-   | <abbr title="Ett namn som är unikt inom en App Service-app. Måste börja med en bokstav eller en siffra och får inte innehålla specialtecken förutom `-` och `_` .">Namn</abbr> | myContinuousWebJob | 
+   | <abbr title="Ett namn som är unikt inom en App Service-app. Måste börja med en bokstav eller en siffra och får inte innehålla specialtecken förutom `-` och `_` .">Name</abbr> | myContinuousWebJob | 
    | <abbr title=" En *zip* -fil som innehåller din körbara fil eller skript fil samt alla stödfiler som behövs för att köra programmet eller skriptet.">Fil uppladdning</abbr> | ConsoleApp.zip |
    | <abbr title="Typerna omfattar kontinuerlig, utlöst.">Typ</abbr> | Kontinuerlig igenkänning | 
    | <abbr title="Endast tillgängligt för kontinuerliga WebJobs. Bestämmer om programmet eller skriptet körs på alla instanser eller bara en instans. Alternativet att köra på flera instanser gäller inte för pris nivåerna kostnads fri eller delad.">Skala</abbr> | Flera instanser | 

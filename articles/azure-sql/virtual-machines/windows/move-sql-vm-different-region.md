@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97360160"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Flytta en SQL Server VM till en annan region inom Azure med Azure Site Recovery
@@ -65,7 +65,7 @@ Förbered både käll SQL Server VM och mål region för flytten.
     - Azure Site Recovery identifierar och skapar automatiskt ett virtuellt nätverk när du aktiverar replikering för den virtuella käll datorn. Du kan också skapa ett nätverk i förväg och tilldela det till den virtuella datorn i användar flödet för att aktivera replikering. Du måste manuellt skapa andra resurser i mål regionen.
 - Information om hur du skapar de vanligaste nätverks resurserna som är relevanta för dig baserat på konfigurationen av den virtuella käll datorn finns i följande dokumentation: 
     - [Nätverkssäkerhetsgrupper](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Lastbalanserare](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
+    - [Belastningsutjämnare](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [Offentlig IP-adress](../../../virtual-network/virtual-network-public-ip-address.md)
     - Ytterligare nätverks komponenter finns i [dokumentationen till nätverket](../../../virtual-network/virtual-networks-overview.md).
 - Skapa ett nätverk för icke-produktion manuellt i mål regionen om du vill testa konfigurationen innan du utför den slutliga flyttningen till mål regionen. Vi rekommenderar det här steget eftersom det garanterar minimal interferens med produktions nätverket. 

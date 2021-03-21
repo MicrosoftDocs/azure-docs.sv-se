@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103600957"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gör så här: anpassa anspråk som utfärdats i SAML-token för företags program
@@ -54,7 +54,7 @@ Om SAML-begäran inte innehåller ett element för NameIDPolicy, kommer Microsof
 
 I list rutan **Välj namn identifierare format** kan du välja något av följande alternativ.
 
-| NameID-format | Description |
+| NameID-format | Beskrivning |
 |---------------|-------------|
 | **Standardvärde** | Microsoft Identity Platform använder standard käll formatet. |
 | **Permanent** | Microsoft Identity Platform kommer att använda beständigt som NameID-format. |
@@ -128,7 +128,7 @@ Du kan använda följande funktioner för att transformera anspråk.
 | **Anslut ()** | Skapar ett nytt värde genom att koppla ihop två attribut. Du kan också använda en avgränsare mellan de två attributen. Vid omvandling av NameID-anspråk är kopplingen begränsad till en verifierad domän. Om värdet för den valda användar identifieraren har en domän extraheras användar namnet för att lägga till den valda verifierade domänen. Om du till exempel väljer e-postmeddelandet ( joe_smith@contoso.com ) som värde för användar-ID och väljer contoso.onmicrosoft.com som verifierade domän kommer detta att resultera i joe_smith@contoso.onmicrosoft.com . |
 | **ToLowercase()** | Konverterar tecknen i det valda attributet till gemener. |
 | **ToUppercase()** | Konverterar tecknen i det valda attributet till versaler. |
-| **Contains ()** | Matar ut ett attribut eller en konstant om indata matchar det angivna värdet. Annars kan du ange en annan utdata om det inte finns någon matchning.<br/>Om du till exempel vill generera ett anspråk där värdet är användarens e-postadress om den innehåller domänen " @contoso.com ", annars vill du spara User Principal Name. Det gör du genom att konfigurera följande värden:<br/>*Parameter 1 (indata)*: User. email<br/>*Värde*: " @contoso.com "<br/>Parameter 2 (utdata): User. email<br/>Parameter 3 (utdata om det inte finns någon matchning): User. UserPrincipalName |
+| **Contains ()** | Matar ut ett attribut eller en konstant om indata matchar det angivna värdet. Annars kan du ange en annan utdata om det inte finns någon matchning.<br/>Om du till exempel vill generera ett anspråk där värdet är användarens e-postadress om den innehåller domänen " @contoso.com ", annars vill du spara User Principal Name. Det gör du genom att konfigurera följande värden:<br/>*Parameter 1 (Indatatyp)*: User.email<br/>*Värde*: " @contoso.com "<br/>Parameter 2 (utdata): user.email<br/>Parameter 3 (utdata om det inte finns någon matchning): User. UserPrincipalName |
 | **EndWith()** | Matar ut ett attribut eller en konstant om indata slutar med det angivna värdet. Annars kan du ange en annan utdata om det inte finns någon matchning.<br/>Om du till exempel vill generera ett anspråk där värdet är användarens medarbetar-ID om anställnings-ID: t slutar med "000", annars vill du spara ett attribut för tillägg. Det gör du genom att konfigurera följande värden:<br/>*Parameter 1 (indata)*: User. Anställningsnr<br/>*Värde*: "000"<br/>Parameter 2 (utdata): User. Anställningsnr<br/>Parameter 3 (utdata om det inte finns någon matchning): User. extensionAttribute1 |
 | **StartWith()** | Matar ut ett attribut eller en konstant om indatan börjar med det angivna värdet. Annars kan du ange en annan utdata om det inte finns någon matchning.<br/>Om du till exempel vill generera ett anspråk där värdet är användarens anställnings-ID om landet/regionen börjar med "US", annars vill du spara ett attribut för tillägg. Det gör du genom att konfigurera följande värden:<br/>*Parameter 1 (indata)*: användare. land<br/>*Värde*: "US"<br/>Parameter 2 (utdata): User. Anställningsnr<br/>Parameter 3 (utdata om det inte finns någon matchning): User. extensionAttribute1 |
 | **Extrahera ()-efter matchning** | Returnerar del strängen när den matchar det angivna värdet.<br/>Om exempelvis värdet för indata är "Finance_BSimon" är det matchande värdet "Finance_", och anspråkets utdata är "BSimon". |
@@ -155,7 +155,7 @@ Användar typen kan vara:
 - **Externa gäster**: gäst användare tillhör en extern organisation som inte har Azure AD.
 
 
-Ett scenario där detta är användbart är när källan till ett anspråk är annorlunda för en gäst och en medarbetare som har åtkomst till ett program. Du kanske vill ange att om användaren är en medarbetare kommer NameID från User. e-post, men om användaren är en gäst, kommer NameID från User. extensionAttribute1.
+Ett scenario där detta är användbart är när källan till ett anspråk är annorlunda för en gäst och en medarbetare som har åtkomst till ett program. Du kanske vill ange att om användaren är en medarbetare NameID källan från user.email, men om användaren är en gäst, kommer NameID från User. extensionAttribute1.
 
 Så här lägger du till ett anspråks villkor:
 

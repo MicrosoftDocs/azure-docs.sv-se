@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016158"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Bygg en IoT-lösning med hjälp av Stream Analytics
@@ -42,7 +42,7 @@ Den här lösningen fungerar med två data strömmar. Sensorer som är installer
 ### <a name="entry-data-stream"></a>Data ström för post
 Data strömmen i posten innehåller information om bilar när de ansätts till ett avgifts stationer. Händelsen Avsluta data strömmas direkt till en Event Hub-kö från en webbapp som ingår i exempel appen.
 
-| TollID | EntryTime | LicensePlate | Tillstånd | Modell | Modell | VehicleType | VehicleWeight | Kostnads | Tagga |
+| TollID | EntryTime | LicensePlate | Tillstånd | Modell | Modell | VehicleType | VehicleWeight | Kostnads | Tagg |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -64,7 +64,7 @@ Här är en kort beskrivning av kolumnerna:
 | VehicleType |Antingen 1 för passagerar fordon eller 2 för kommersiella fordon |
 | WeightType |Fordons vikt i ton. 0 för personbils fordon |
 | Kostnads |Värdet för avgiftsbelagt i USD |
-| Tagga |E-tag gen på den bil som automatiserar betalningen. tomt där betalningen utfördes manuellt |
+| Tagg |E-tag gen på den bil som automatiserar betalningen. tomt där betalningen utfördes manuellt |
 
 ### <a name="exit-data-stream"></a>Avsluta data ström
 Slut data strömmen innehåller information om bilar som lämnar avgifts stationen. Händelsen Avsluta data strömmas direkt till en Event Hub-kö från en webbapp som ingår i exempel appen.

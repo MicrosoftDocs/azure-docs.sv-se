@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: 5e53f9e89dd9718111da4f8016bc3e5a7f791627
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103496583"
 ---
 # <a name="identity-model"></a>Identitetsmodell
@@ -63,7 +63,7 @@ En åtkomsttoken är alltid giltig i 24 timmar. När den har gått ut är åtkom
 
 En identitet behöver ett sätt att begära en ny åtkomsttoken från en server-side-tjänst. *Omfattnings* parametern definierar en uppsättning primitiver som kan användas. Azure Communication Services stöder följande omfattningar för åtkomsttoken.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |Chatt|  Ger möjlighet att delta i en chatt|
 |VoIP|  Ger möjlighet att anropa identiteter och telefonnummer|

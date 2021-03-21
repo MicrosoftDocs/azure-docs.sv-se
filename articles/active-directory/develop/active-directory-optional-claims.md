@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104288"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
@@ -49,7 +49,7 @@ Den uppsättning valfria anspråk som är tillgängliga som standard för progra
 
 **Tabell 2: v 1.0 och v 2.0 valfri anspråks uppsättning**
 
-| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
+| Name                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tid när användaren senast autentiserades. Se OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Resurs innehavarens region | JWT        |           | |
@@ -76,7 +76,7 @@ De här anspråken ingår alltid i v 1.0 Azure AD-tokens, men ingår inte i v 2.
 
 **Tabell 3: v 2.0 – endast valfria anspråk**
 
-| JWT-anspråk     | Namn                            | Beskrivning                                | Kommentarer |
+| JWT-anspråk     | Name                            | Beskrivning                                | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adress                      | IP-adressen som klienten loggade in från.   |       |
 | `onprem_sid`  | Lokal säkerhets identifierare |                                             |       |
@@ -94,7 +94,7 @@ Några av förbättringarna av v2-token-formatet är tillgängliga för appar so
 **Tabell 4: v 1.0 – endast valfria anspråk**
 
 
-| JWT-anspråk     | Namn                            | Beskrivning | Kommentarer |
+| JWT-anspråk     | Name                            | Beskrivning | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
 |`aud`          | Målgrupp | Finns alltid i JWTs, men i v1-åtkomsttoken kan den genereras på flera olika sätt: alla appID-URI: er, med eller utan avslutande snedstreck, samt klient-ID för resursen. Den här slumpmässigheten kan vara svår att koda mot när du utför verifiering av token.  Använd [Ytterligare egenskaper för det här anspråket](#additional-properties-of-optional-claims) för att säkerställa att det alltid är inställt på resurs-ID: t för resursen i v1-åtkomsttoken. | endast v1 JWT-åtkomsttoken|
 |`preferred_username` | Önskat användar namn        | Tillhandahåller önskat användar namns anspråk inom v1-token. Detta gör det enklare för appar att tillhandahålla användar tips och Visa visnings namn som kan läsas av människa, oavsett tokentyp.  Vi rekommenderar att du använder det här valfria kravet i stället för att använda t. ex. `upn` eller `unique_name` . | v1 ID-token och åtkomsttoken |
@@ -105,7 +105,7 @@ Vissa valfria anspråk kan konfigureras för att ändra hur anspråket returnera
 
 **Tabell 4: värden för konfiguration av valfria anspråk**
 
-| Egenskapsnamn  | Ytterligare egenskaps namn | Description |
+| Egenskapsnamn  | Ytterligare egenskaps namn | Beskrivning |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kan användas för både SAML-och JWT-svar och för v 1.0-och v 2.0-token. |
 |                | `include_externally_authenticated_upn`  | Inkluderar gäst-UPN som lagrats i resurs klienten. Till exempel `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -201,7 +201,7 @@ Deklarerar de valfria anspråk som begärs av ett program. Ett program kan konfi
 
 **Tabell 5: egenskaper för OptionalClaims-typ**
 
-| Namn          | Typ                       | Description                                           |
+| Namn          | Typ                       | Beskrivning                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Samling (OptionalClaim) | De valfria anspråk som returneras i JWT ID-token.     |
 | `accessToken` | Samling (OptionalClaim) | De valfria anspråk som returneras i JWT-åtkomsttoken. |
@@ -214,7 +214,7 @@ Om det stöds av ett angivet anspråk kan du också ändra beteendet för Option
 
 **Tabell 6: egenskaper för OptionalClaim-typ**
 
-| Namn                   | Typ                    | Description                                                                                                                                                                                                                                                                                                   |
+| Namn                   | Typ                    | Beskrivning                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Namnet på det valfria anspråket.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Källa (katalog objekt) för anspråket. Det finns fördefinierade anspråk och användardefinierade anspråk från tilläggs egenskaper. Om source-värdet är null är anspråket ett fördefinierat valfritt anspråk. Om source-värdet är User är värdet i egenskapen name egenskapen Extension från objektet User. |

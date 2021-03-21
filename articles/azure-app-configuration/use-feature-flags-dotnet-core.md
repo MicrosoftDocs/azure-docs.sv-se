@@ -14,10 +14,10 @@ ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726435"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Självstudie: använda funktions flaggor i en ASP.NET Core app
@@ -99,7 +99,7 @@ I stället för att hårdkoda dina funktions flaggor i ditt program, rekommender
 
 Det enklaste sättet att ansluta ASP.NET Core program till app-konfigurationen är via den Konfigurationsprovider som ingår i `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-paketet. När du har inkluderat en referens till paketet följer du dessa steg för att använda det här NuGet-paketet.
 
-1. Öppna *program.cs* -filen och Lägg till följande kod.
+1. Öppna filen *program. cs* och Lägg till följande kod.
     > [!IMPORTANT]
     > `CreateHostBuilder` ersätter `CreateWebHostBuilder` i .net Core 3. x. Välj rätt syntax baserat på din miljö.
 
@@ -151,7 +151,7 @@ Det enklaste sättet att ansluta ASP.NET Core program till app-konfigurationen �
     ```
     ---
 
-2. Öppna *startup.cs* och uppdatera `Configure` och `ConfigureServices` -metoden för att lägga till det inbyggda mellanprogram som kallas `UseAzureAppConfiguration` . Det här mellanprogramet tillåter att funktions flagg värden uppdateras vid ett återkommande intervall medan ASP.NET Core webbappen fortsätter att ta emot begär Anden.
+2. Öppna *Start. cs* och uppdatera `Configure` och `ConfigureServices` -metoden för att lägga till inbyggda mellanprogram som kallas `UseAzureAppConfiguration` . Det här mellanprogramet tillåter att funktions flagg värden uppdateras vid ett återkommande intervall medan ASP.NET Core webbappen fortsätter att ta emot begär Anden.
 
 
 

@@ -4,10 +4,10 @@ description: Stream Analytics kan kontinuerligt omvandla, filtrera och dirigera 
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101719805"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Använd Stream Analytics för att bearbeta exporterade data från Application Insights

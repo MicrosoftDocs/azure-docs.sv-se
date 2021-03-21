@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030789"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604414"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Skapa en förslags ställare för att aktivera Autoavsluta och föreslagna resultat i en fråga
 
@@ -66,7 +66,7 @@ Ditt val av analys bestämmer hur fälten ska vara token och sedan föregås. F�
 
 När du utvärderar analyser, bör du överväga att använda [analys text API](/rest/api/searchservice/test-analyzer) för att lära dig hur termer bearbetas. När du skapar ett index kan du prova olika analys verktyg i en sträng för att visa utdata för token.
 
-Fält som använder [anpassade analyserare](index-add-custom-analyzers.md) eller [fördefinierade analys](index-add-custom-analyzers.md#predefined-analyzers-reference) verktyg (med undantag för standard Lucene) är uttryckligen inte tillåtna för att förhindra dåliga resultat.
+Fält som använder [anpassade analyserare](index-add-custom-analyzers.md) eller [inbyggda analyser](index-add-custom-analyzers.md#built-in-analyzers) (med undantag för standard Lucene) är uttryckligen inte tillåtna för att förhindra dåliga resultat.
 
 > [!NOTE]
 > Om du behöver använda ett nyckelord eller ngram Analyzer för vissa fråge scenarier, bör du använda två separata fält för samma innehåll. Detta gör att ett av fälten kan ha en förslags ställare, medan det andra kan konfigureras med en anpassad Analyzer-konfiguration.

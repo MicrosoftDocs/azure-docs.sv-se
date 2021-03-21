@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 6bbd7d37418af68065daa194d4ff4bd80f6fd09c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100654562"
 ---
 # <a name="overview-connection-options-for-azure-iot-device-developers"></a>Översikt: anslutnings alternativ för Azure IoT Device-utvecklare
@@ -31,7 +31,7 @@ När du har valt IoT Hub eller IoT Central som värd för IoT-programmet har du 
 > [!NOTE]
 > Förutom följande verktyg kan du program mässigt skapa och hantera IoT-program med hjälp av REST API, Azure-SDK: er eller Azure Resource Manager mallar. Du kan läsa mer i dokumentationen för [IoT Hub](../iot-hub/about-iot-hub.md) och [IoT Central](../iot-central/core/overview-iot-central.md) -tjänsten.
 
-|Verktyg  |Stöder IoT-plattform &nbsp; &nbsp; &nbsp;&nbsp; |Dokumentation  |Description  |
+|Verktyg  |Stöder IoT-plattform &nbsp; &nbsp; &nbsp;&nbsp; |Dokumentation  |Beskrivning  |
 |---------|---------|---------|---------|
 |Centralt webb gränssnitt     | Centrala | [Central snabb start](../iot-central/core/quick-deploy-iot-central.md) | Webbläsarbaserad Portal för IoT Central. |
 |Azure Portal     | Hubb, Central      | [Skapa en IoT-hubb med Azure Portal](../iot-hub/iot-hub-create-through-portal.md), [hantera IoT Central från Azure Portal](../iot-central/core/howto-manage-iot-central-from-portal.md)| Webbläsarbaserad Portal för IoT Hub och enheter. Fungerar även med andra Azure-resurser, inklusive IoT Central. |

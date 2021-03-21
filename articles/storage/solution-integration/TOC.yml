@@ -1,5 +1,5 @@
 - name: Azure Storage validerade partner lösningar
-  href: /azure/storage/solution-integration
+  href: ./index.yml
 - name: Analytics och Big data partners
   items:
     - name: Översikt över verifierade partner

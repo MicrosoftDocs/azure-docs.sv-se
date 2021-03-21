@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
 ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100635956"
 ---
 # <a name="what-is-azure-virtual-network"></a>Vad är Azure Virtual Network?
@@ -76,7 +76,7 @@ Du kan integrera Azure-tjänster i ditt virtuella nätverk med följande alterna
 
 Det finns vissa begränsningar kring antalet Azure-resurser som du kan distribuera. De flesta gränser för Azure-nätverk har högsta tillåtna värden. Du kan dock [öka vissa nätverks gränser](../azure-portal/supportability/networking-quota-requests.md) enligt vad som anges på [sidan VNet-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Det kostar inget att använda Azure VNet, utan kostnad. Standard avgifterna gäller för resurser, till exempel Virtual Machines (VM) och andra produkter. Mer information finns i avsnittet om [priser för VNet](https://azure.microsoft.com/pricing/details/virtual-network/) och [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/)för Azure.
 

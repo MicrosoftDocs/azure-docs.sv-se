@@ -3,12 +3,12 @@ title: Bästa praxis
 description: Lär dig metod tips och användbara tips för att utveckla dina Azure Batch-lösningar.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 697ac5d213bbe2e52134cad519f69c233f1cd593
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561846"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583283"
 ---
 # <a name="azure-batch-best-practices"></a>Metod tips för Azure Batch
 
@@ -23,35 +23,29 @@ I den här artikeln beskrivs en samling med bästa praxis och användbara tips f
 
 ### <a name="pool-configuration-and-naming"></a>Konfiguration av pooler och namngivning
 
-- **Poolens fördelnings läge** När du skapar ett batch-konto kan du välja mellan två pool tilldelnings lägen: **Batch-tjänst** eller **användar prenumeration**. I de flesta fall bör du använda standard läget för batch-tjänsten, där pooler allokeras bakom scenerna i batch-hanterade prenumerationer. I det alternativa användarprenumerationsläget skapas virtuella Batch-datorer och andra resurser direkt i din prenumeration när en pool skapas. Användar prenumerations konton används främst för att aktivera en viktig, men liten del av scenarier. Du kan läsa mer om användar prenumerations läge på [ytterligare konfiguration för användar prenumerations läge](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Poolens fördelnings läge:** När du skapar ett batch-konto kan du välja mellan två pool tilldelnings lägen: **Batch-tjänst** eller **användar prenumeration**. I de flesta fall bör du använda standard läget för batch-tjänsten, där pooler allokeras bakom scenerna i batch-hanterade prenumerationer. I det alternativa användarprenumerationsläget skapas virtuella Batch-datorer och andra resurser direkt i din prenumeration när en pool skapas. Användar prenumerations konton används främst för att aktivera en viktig, men liten del av scenarier. Du kan läsa mer om användar prenumerations läge på [ytterligare konfiguration för användar prenumerations läge](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **' virtualMachineConfiguration ' eller ' cloudServiceConfiguration '.**
-    Även om du kan skapa pooler med hjälp av en konfiguration måste nya pooler konfigureras med hjälp av "virtualMachineConfiguration" och inte "cloudServiceConfiguration". Alla aktuella och nya batch-funktioner kommer att stödjas av konfigurations pooler för virtuella datorer. Cloud Services konfigurations grupper stöder inte alla funktioner och inga nya funktioner planeras. Du kommer inte att kunna skapa nya cloudServiceConfiguration-pooler eller lägga till nya noder i befintliga pooler [efter den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Mer information finns i [migrera konfiguration av batch-pool från Cloud Services till virtuell dator](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+- **' virtualMachineConfiguration ' eller ' cloudServiceConfiguration ':** Även om du kan skapa pooler med hjälp av en konfiguration måste nya pooler konfigureras med hjälp av "virtualMachineConfiguration" och inte "cloudServiceConfiguration". Alla aktuella och nya batch-funktioner kommer att stödjas av konfigurations pooler för virtuella datorer. Cloud Services konfigurations grupper stöder inte alla funktioner och inga nya funktioner planeras. Du kommer inte att kunna skapa nya cloudServiceConfiguration-pooler eller lägga till nya noder i befintliga pooler [efter den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Mer information finns i [migrera konfiguration av batch-pool från Cloud Services till virtuell dator](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
-- **Överväg jobb-och uppgifts körnings tid när du bestämmer jobb till pool-mappning.**
-    Om du har jobb som huvudsakligen är kortsiktiga och de förväntade totala antalet aktiviteter är små, så att den förväntade körnings tiden för jobbet inte är lång, allokera inte en ny pool för varje jobb. Tilldelnings tiden för noderna minskar jobbets körnings tid.
+- **Överväg jobb-och uppgifts körnings tid när du bestämmer jobb till pool-mappning:** Om du har jobb som huvudsakligen är kortsiktiga och de förväntade totala antalet aktiviteter är små, så att den förväntade körnings tiden för jobbet inte är lång, allokera inte en ny pool för varje jobb. Tilldelnings tiden för noderna minskar jobbets körnings tid.
 
-- **Pooler bör ha mer än en Compute-nod.**
-    Enskilda noder är inte garanterat alltid tillgängliga. Även om det är ovanligt kan maskin varu fel, operativ system uppdateringar och en annan värd för andra problem orsaka att enskilda noder är offline. Om batch-arbetsbelastningen kräver deterministisk, garanterad status, bör du allokera pooler med flera noder.
+- **Pooler bör ha fler än en Compute-nod:** Enskilda noder är inte garanterat alltid tillgängliga. Även om det är ovanligt kan maskin varu fel, operativ system uppdateringar och en annan värd för andra problem orsaka att enskilda noder är offline. Om batch-arbetsbelastningen kräver deterministisk, garanterad status, bör du allokera pooler med flera noder.
 
-- **Återanvänd inte resurs namn.**
-    Batch-resurser (jobb, pooler osv.) kommer ofta att gå över tid. Du kan till exempel skapa en pool på måndag, ta bort den på tisdag och sedan skapa en annan pool på torsdag. Varje ny resurs som du skapar ska tilldelas ett unikt namn som du inte har använt tidigare. Detta kan göras med hjälp av ett GUID (antingen som hela resurs namnet eller som en del av den) eller bädda in den tid som resursen skapades i resurs namnet. Batch stöder [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname), som kan användas för att ge en resurs ett läsligt namn även om det verkliga resurs-ID: t är något som inte är det som är mänskligt. Med hjälp av unika namn blir det enklare för dig att särskilja vilka specifika resurser som något i loggar och mått. Det tar också bort tvetydighet om du skulle behöva ange ett support ärende för en resurs.
+- **Återanvänd inte resurs namn:** Batch-resurser (jobb, pooler osv.) kommer ofta att gå över tid. Du kan till exempel skapa en pool på måndag, ta bort den på tisdag och sedan skapa en annan pool på torsdag. Varje ny resurs som du skapar ska tilldelas ett unikt namn som du inte har använt tidigare. Detta kan göras med hjälp av ett GUID (antingen som hela resurs namnet eller som en del av den) eller bädda in den tid som resursen skapades i resurs namnet. Batch stöder [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname), som kan användas för att ge en resurs ett läsligt namn även om det verkliga resurs-ID: t är något som inte är det som är mänskligt. Med hjälp av unika namn blir det enklare för dig att särskilja vilka specifika resurser som något i loggar och mått. Det tar också bort tvetydighet om du skulle behöva ange ett support ärende för en resurs.
 
-- **Kontinuitet under underhåll av pooler och haveri.**
-    Det är bäst att låta dina jobb använda pooler dynamiskt. Om dina jobb använder samma pool för allt, finns det en risk att dina jobb inte körs om något går fel med poolen. Detta är särskilt viktigt för tids känsliga arbets belastningar. Du kan åtgärda detta genom att välja eller skapa en pool dynamiskt när du schemalägger varje jobb, eller ha ett sätt att åsidosätta poolnamn så att du kan kringgå en ohälsosam pool.
+- **Kontinuitet under underhåll av pooler och haveri läge:** Det är bäst att låta dina jobb använda pooler dynamiskt. Om dina jobb använder samma pool för allt, finns det en risk att dina jobb inte körs om något går fel med poolen. Detta är särskilt viktigt för tids känsliga arbets belastningar. Du kan åtgärda detta genom att välja eller skapa en pool dynamiskt när du schemalägger varje jobb, eller ha ett sätt att åsidosätta poolnamn så att du kan kringgå en ohälsosam pool.
 
-- **Verksamhets kontinuitet under underhåll och haveri för pooler** Det finns många möjliga orsaker som kan förhindra att en pool växer till önskad storlek som du vill ha, till exempel interna fel, kapacitets begränsningar osv. Därför bör du vara redo att återanvända jobb på en annan pool (eventuellt med en annan VM-storlek – batch stöder detta via [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)) om det behövs. Undvik att använda ett statiskt pool-ID med förväntat att det aldrig kommer att tas bort och aldrig ändras.
+- **Verksamhets kontinuitet under underhåll och haveri för pooler:** Det finns många skäl till varför en pool inte kan växa till den storlek du önskar, t. ex. interna fel, kapacitets begränsningar osv. Därför bör du vara redo att återanvända jobb på en annan pool (eventuellt med en annan VM-storlek – batch stöder detta via [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)) om det behövs. Undvik att använda ett statiskt pool-ID med förväntat att det aldrig kommer att tas bort och aldrig ändras.
 
 ### <a name="pool-lifetime-and-billing"></a>Livstid för pool och fakturering
 
 Poolens livs längd kan variera beroende på vilken metod du vill tilldela och vilka alternativ som tillämpas på konfigurationen av poolen. Pooler kan ha en godtycklig livs längd och ett varierande antal data bearbetnings noder i poolen vid varje tidpunkt. Det är ditt ansvar att hantera Compute-noderna i poolen, antingen uttryckligen eller via funktioner som tillhandahålls av tjänsten ([autoskalning](nodes-and-pools.md#automatic-scaling-policy) eller [autopool](nodes-and-pools.md#autopools)).
 
-- **Se till att pooler är färska.**
-    Ändra storlek på dina pooler till noll med några månader för att se till att du får de [senaste uppdateringarna för Node agent och fel korrigeringar](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Poolen tar inte emot uppdateringar för Node-agenten om den inte återskapas eller ändras till 0 datornoder. Innan du återskapar eller ändrar storlek på poolen rekommenderar vi att du hämtar eventuella noder för fel sökning enligt beskrivningen i avsnittet [Nodes](#nodes) .
+- **Behåll pooler färska:** Ändra storlek på dina pooler till noll med några månader för att se till att du får de [senaste uppdateringarna för Node agent och fel korrigeringar](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Poolen tar inte emot uppdateringar för Node-agenten om den inte återskapas eller ändras till 0 datornoder. Innan du återskapar eller ändrar storlek på poolen rekommenderar vi att du hämtar eventuella noder för fel sökning enligt beskrivningen i avsnittet [Nodes](#nodes) .
 
-- **Skapa ny pool** På en liknande anteckning rekommenderar vi inte att du tar bort och återskapar dina pooler på daglig basis. Skapa i stället en ny pool och uppdatera dina befintliga jobb så att de pekar på den nya poolen. När alla aktiviteter har flyttats till den nya poolen tar du bort den gamla poolen.
+- **Skapa ny pool:** På en liknande anteckning rekommenderar vi inte att du tar bort och återskapar dina pooler på daglig basis. Skapa i stället en ny pool och uppdatera dina befintliga jobb så att de pekar på den nya poolen. När alla aktiviteter har flyttats till den nya poolen tar du bort den gamla poolen.
 
-- **Pool effektivitet och fakturering** Batch debiterar sig inga extra avgifter, men du debiteras för de beräknings resurser som används. Du debiteras för varje Compute-nod i poolen, oavsett vilken status den har i. Detta inkluderar eventuella avgifter som krävs för att noden ska kunna köras, till exempel lagrings-och nätverks kostnader. Mer information om bästa praxis finns i [kostnads analys och budgetar för Azure Batch](budget.md).
+- **Pool effektivitet och fakturering:** Batch debiterar sig inga extra avgifter, men du debiteras för de beräknings resurser som används. Du debiteras för varje Compute-nod i poolen, oavsett vilken status den har i. Detta inkluderar eventuella avgifter som krävs för att noden ska kunna köras, till exempel lagrings-och nätverks kostnader. Mer information om bästa praxis finns i [kostnads analys och budgetar för Azure Batch](budget.md).
 
 ### <a name="pool-allocation-failures"></a>Allokeringsfel för pool
 
@@ -73,7 +67,7 @@ Pooler kan skapas med avbildningar från tredje part som publicerats på Azure M
 
 ### <a name="azure-region-dependency"></a>Azure-region beroende
 
-Vi rekommenderar att du inte är beroende av en enda Azure-region om du har en tids känslig eller produktions belastning. Även om det är sällsynt, finns det problem som kan påverka en hel region. Om din bearbetning till exempel behöver starta vid en angiven tidpunkt, kan du överväga att skala upp poolen i din primära region på ett *bra sätt innan du börjar med start tiden*. Om poolens skalning Miss lyckas kan du återgå till att skala upp en pool i en säkerhets kopierings region (eller regioner). Pooler över flera konton i olika regioner ger en klar och lättillgänglig säkerhets kopia om något går fel med en annan pool. Mer information finns i [utforma ditt program för hög tillgänglighet](high-availability-disaster-recovery.md).
+Du bör inte förlita dig på en enda Azure-region om du har en tids känslig eller produktions belastning. Även om det är sällsynt, finns det problem som kan påverka en hel region. Om din bearbetning till exempel behöver starta vid en angiven tidpunkt, kan du överväga att skala upp poolen i din primära region på ett *bra sätt innan du börjar med start tiden*. Om poolens skalning Miss lyckas kan du återgå till att skala upp en pool i en säkerhets kopierings region (eller regioner). Pooler över flera konton i olika regioner ger en klar och lättillgänglig säkerhets kopia om något går fel med en annan pool. Mer information finns i [utforma ditt program för hög tillgänglighet](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Jobb
 
@@ -133,7 +127,7 @@ Ett vanligt exempel är en uppgift för att kopiera filer till en Compute-nod. E
 
 ### <a name="avoid-short-execution-time"></a>Undvik kort körnings tid
 
-Aktiviteter som bara körs för en till två sekunder är inte idealiska. Du bör försöka göra en stor mängd arbete i en enskild uppgift (10 sekunders tid på upp till timmar eller dagar). Om varje aktivitet körs i en minut (eller mer) är tids gränsen för schemaläggningen som en bråkdel av den totala beräknings tiden liten.
+Aktiviteter som bara körs för en till två sekunder är inte idealiska. Försök att göra en stor mängd arbete i en enskild uppgift (10 sekunders tid på upp till timmar eller dagar). Om varje aktivitet körs i en minut (eller mer) är tids gränsen för schemaläggningen som en bråkdel av den totala beräknings tiden liten.
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Använd pool-scope för korta uppgifter på Windows-noder
 
@@ -185,7 +179,7 @@ När du har överfört mallen till den nya regionen måste du återskapa certifi
 
 Mer information om Resource Manager och mallar finns i [snabb start: skapa och distribuera Azure Resource Manager mallar med hjälp av Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-## <a name="connectivity"></a>Anslutning
+## <a name="connectivity"></a>Anslutningsmöjlighet
 
 Läs följande rikt linjer för anslutning i dina batch-lösningar.
 

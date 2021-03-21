@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8dd84a0c4eb1fd74ef850cb6de4530f50b3bb409
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 54eead8daa6367f9e4869d0d6a19d96c32a2fe3a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331039"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612758"
 ---
 <!--Feature availability in region-->
 
@@ -17,7 +17,7 @@ ms.locfileid: "93331039"
 
 | Funktion | Central US | East US | USA, östra 2 | USA, norra centrala | USA, södra centrala | USA, Västra | USA, västra 2 | USA, västra centrala|
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Azure-EventGrid](../reacting-to-media-services-events.md) | ![Azure EventGrid Central USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid, östra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid östra USA 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid norra centrala USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid södra centrala USA allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid US västra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid US, väst 2, västra 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid västra centrala allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Azure EventGrid Central USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid, östra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid östra USA 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid norra centrala USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid södra centrala USA allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid US västra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid US, väst 2, västra 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid västra centrala allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![VideoAnalyzerPreset Central USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset, östra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset östra USA 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset norra centrala USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset södra centrala USA allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset USA, västra allmänna tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset USA, väst 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![VideoAnalyzerPreset västra centrala allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![AudioAnalyzerPreset Central USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset, östra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset östra USA 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset norra centrala USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset södra centrala USA allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![AudioAnalyzerPreset USA, västra allmänna tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset USA, väst 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![AudioAnalyzerPreset västra centrala allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) | ![StandardEncoderPreset Central USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset, östra USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset östra USA 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset norra centrala USA, allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset södra centrala USA allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![StandardEncoderPreset USA, västra allmänna tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset USA, väst 2 allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |  ![StandardEncoderPreset västra centrala allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |

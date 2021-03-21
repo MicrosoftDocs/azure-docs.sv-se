@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 56aa7c41934506c7de0c8d5cebe84eb5a6bc2164
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174622"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med min IBISWorld
@@ -95,7 +95,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Förutom ovan förväntar sig IBISWorld-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-   | Namn | Källattribut|
+   | Name | Källattribut|
    | --------------- | --------- |
    | avdelning | user.department |
    | language | User. preferredLanguage |

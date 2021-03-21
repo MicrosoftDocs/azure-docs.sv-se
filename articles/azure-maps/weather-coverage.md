@@ -10,10 +10,10 @@ services: azure-maps
 ms.custom: references_regions
 manager: philmea
 ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905493"
 ---
 # <a name="azure-maps-weather-services-preview-coverage"></a>Täckning för Azure Maps väder tjänster (för hands version)
@@ -80,19 +80,19 @@ Följande tabell innehåller information om vilken typ av väder information som
 | Paraguay                                 | ✓ |   | |✓| 
 | Peru                                     | ✓ |   | |✓| 
 | Puerto Rico                              | ✓ |   | ✓ |✓| 
-| Sankt Barthélemy                         | ✓ |   | |✓| 
+| Saint Barthélemy                         | ✓ |   | |✓| 
 | Saint Kitts och Nevis                    | ✓ |   | |✓| 
 | Saint Lucia                              | ✓ |   | |✓| 
 | Saint Martin                             | ✓ |   | |✓| 
-| Saint Pierre och Miquelon                | ✓ |   | |✓| 
+| Saint-Pierre och Miquelon                | ✓ |   | |✓| 
 | Saint Vincent och Grenadinerna         | ✓ |   | |✓| 
 | Sint Eustatius                           | ✓ |   | |✓|  
 | Sint Maarten                             | ✓ |   | |✓| 
-| Södra Georgien och Sydsandwichöarna | ✓ |   | |✓| 
+| Sydgeorgien och Sydsandwichöarna | ✓ |   | |✓| 
 | Surinam                                 | ✓ |   | |✓| 
 | Trinidad och Tobago                      | ✓ |   | |✓| 
 | Turks- och Caicosöarna                 | ✓ |   | |✓| 
-| USA:s yttre öar                    | ✓ |   | |✓| 
+| Amerikanska öar                    | ✓ |   | |✓| 
 | Amerikanska jungfru öarna                      | ✓ |   | ✓|✓| 
 | USA                            | ✓ | ✓ | ✓| ✓| 
 | Uruguay                                  | ✓ |   | |✓| 
@@ -196,7 +196,7 @@ Följande tabell innehåller information om vilken typ av väder information som
 | Fiji                              | ✓ |   | | ✓| 
 | Franska Polynesien                  | ✓ |   | | ✓| 
 | Guam                              | ✓ |   |  ✓| ✓| 
-| Heard-och McDonaldöarna | ✓ |   | | ✓| 
+| Heard- och McDonaldöarna | ✓ |   | | ✓| 
 | Folkrepubliken Kinas särskilda administrativa region Hongkong                     | ✓ |   | | ✓| 
 | Indien                             | ✓ |   | | ✓| 
 | Indonesien                         | ✓ |   | | ✓| 
