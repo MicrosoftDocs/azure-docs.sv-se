@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831558"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Felsöka säkerhets kopierings fel på virtuella Azure-datorer
@@ -93,13 +93,13 @@ Felkod: ExtensionInstallationFailedCOM  <br/>
 Fel meddelande: tilläggs installation/åtgärd misslyckades på grund av ett COM+-fel
 
 Felkod: ExtensionInstallationFailedMDTC <br/>
-Fel meddelande: tilläggs installationen misslyckades med felet "COM+ kunde inte kommunicera med Microsoft koordinator för distribuerad transaktion <br/>
+Fel meddelande: tilläggs installationen misslyckades med felet "COM+ kunde inte kommunicera med Microsoft Distributed Transaction Coordinator <br/>
 
 Säkerhets kopieringen misslyckades på grund av ett problem med Windows-tjänstens **com+-system** program.  Följ dessa anvisningar för att lösa problemet:
 
 * Försök starta/starta om Windows-tjänsten **com+-systemprogram** (från en upphöjd kommando tolk **-net start COMSysApp**).
-* Se till att **koordinator för distribuerad transaktion** -tjänsten körs som **nätverks tjänst** konto. Om inte, ändrar du den så att den körs som **nätverks tjänst** konto och startar om **com+-system programmet**.
-* Om du inte kan starta om tjänsten installerar du om **koordinator för distribuerad transaktion** tjänsten genom att följa stegen nedan:
+* Se till att **Distributed Transaction Coordinator** -tjänsten körs som **nätverks tjänst** konto. Om inte, ändrar du den så att den körs som **nätverks tjänst** konto och startar om **com+-system programmet**.
+* Om du inte kan starta om tjänsten installerar du om **Distributed Transaction Coordinator** tjänsten genom att följa stegen nedan:
   * Stoppa MSDTC-tjänsten
   * Öppna en kommandotolk (cmd)
   * Kör kommandot `msdtc -uninstall`
@@ -134,8 +134,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 Steg 3: om det inte gick att lösa problemet med steg 1 och 2 kan felet bero på att tids gränsen för VSS-skrivare orsakade timeout på grund av begränsade IOPS.<br>
 
-Kontrol lera genom att gå till ***system och Loggboken program loggar** _ och kontrol lera följande fel meddelande:<br>
-Tids gränsen nåddes för _The Shadow Copy Provider vid lagring av skrivning till volymen som skugg kopie ras. Detta beror troligen på överdriven aktivitet på volymen av ett program eller en system tjänst. Försök igen senare när aktivitet på volymen minskar. *<br>
+Kontrol lera genom att gå till ***system-och Loggboken program loggar*** och kontrol lera följande fel meddelande:<br>
+*Tids gränsen nåddes för skuggkopieprovidern vid lagring av skrivningar till den volym som skugg kopie ras. Detta beror troligen på överdriven aktivitet på volymen av ett program eller en system tjänst. Försök igen senare när aktivitet på volymen minskas.*<br>
 
 Lösning:
 
@@ -320,10 +320,10 @@ Om du har en Azure Policy som [styr Taggar i din miljö](../governance/policy/tu
 
 | Felinformation | Lösning |
 | --- | --- |
-| Annullering stöds inte för den här jobb typen: <br>Vänta tills jobbet har slutförts. |Ingen |
+| Annullering stöds inte för den här jobb typen: <br>Vänta tills jobbet har slutförts. |Inget |
 | Jobbet är inte i ett cancelable-tillstånd: <br>Vänta tills jobbet har slutförts. <br>**eller**<br> Det valda jobbet är inte i ett cancelable-tillstånd: <br>Vänta tills jobbet har slutförts. |Det är troligt att jobbet är nästan klart. Vänta tills jobbet är klart.|
 | Säkerhets kopieringen kan inte avbryta jobbet eftersom det inte pågår: <br>Annullering stöds bara för pågående jobb. Försök att avbryta ett pågående jobb. |Felet beror på ett överförings tillstånd. Vänta en minut och försök att avbryta åtgärden igen. |
-| Säkerhets kopieringen kunde inte avbryta jobbet: <br>Vänta tills jobbet har slutförts. |Ingen |
+| Säkerhets kopieringen kunde inte avbryta jobbet: <br>Vänta tills jobbet har slutförts. |Inget |
 
 ## <a name="restore"></a>Återställ
 
@@ -348,14 +348,14 @@ Försök att återställa den virtuella datorn från en annan återställnings p
 | --- | --- |
 | Återställningen misslyckades med ett internt moln fel. |<ol><li>Den moln tjänst som du försöker återställa till har kon figurer ATS med DNS-inställningar. Du kan kontrol lera följande: <br>**$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-plats "produktion" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Om **adress** har kon figurer ATS konfigureras DNS-inställningarna.<br> <li>Den moln tjänst som du försöker återställa till har kon figurer ATS med **reservedip** och befintliga virtuella datorer i moln tjänsten är i stoppat läge. Du kan kontrol lera att en moln tjänst har reserverat en IP-adress med hjälp av följande PowerShell-cmdlets: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-plats "produktion" $DEP. ReservedIPName**. <br><li>Du försöker återställa en virtuell dator med följande särskilda nätverkskonfigurationer i samma moln tjänst: <ul><li>Virtuella datorer under belastnings Utjämnings konfiguration, intern och extern.<li>Virtuella datorer med flera reserverade IP-adresser. <li>Virtuella datorer med flera nätverkskort. </ul><li>Välj en ny moln tjänst i användar gränssnittet eller se [återställnings överväganden](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) för virtuella datorer med särskilda nätverkskonfigurationer.</ol> |
 | Det valda DNS-namnet har redan tagits: <br>Ange ett annat DNS-namn och försök igen. |Det här DNS-namnet refererar till moln tjänstens namn, vanligt vis slutar med **. cloudapp.net**. Det här namnet måste vara unikt. Om du får det här felet måste du välja ett annat namn för virtuell dator under återställningen. <br><br> Det här felet visas endast för användare av Azure Portal. Återställnings åtgärden via PowerShell slutförs eftersom den återställer endast diskarna och inte skapar den virtuella datorn. Felet kommer att visas när den virtuella datorn skapas explicit av dig efter disk återställnings åtgärden. |
-| Den angivna konfigurationen för virtuellt nätverk är felaktig: <br>Ange en annan konfiguration för virtuellt nätverk och försök igen. |Ingen |
-| Den angivna moln tjänsten använder en reserverad IP-adress som inte matchar konfigurationen för den virtuella dator som återställs: <br>Ange en annan moln tjänst som inte använder en reserverad IP-adress. Eller Välj en annan återställnings punkt att återställa från. |Ingen |
-| Moln tjänsten har nått gränsen för antalet ingångs slut punkter: <br>Försök igen genom att ange en annan moln tjänst eller genom att använda en befintlig slut punkt. |Ingen |
-| Recovery Services valvet och mål lagrings kontot finns i två olika regioner: <br>Se till att det lagrings konto som anges i återställnings åtgärden finns i samma Azure-region som Recovery Services-valvet. |Ingen |
-| Det lagrings konto som har angetts för återställnings åtgärden stöds inte: <br>Endast Basic-eller standard-lagrings konton med lokalt redundanta eller geo-redundanta replikeringsinställningar stöds. Välj ett lagrings konto som stöds. |Ingen |
+| Den angivna konfigurationen för virtuellt nätverk är felaktig: <br>Ange en annan konfiguration för virtuellt nätverk och försök igen. |Inget |
+| Den angivna moln tjänsten använder en reserverad IP-adress som inte matchar konfigurationen för den virtuella dator som återställs: <br>Ange en annan moln tjänst som inte använder en reserverad IP-adress. Eller Välj en annan återställnings punkt att återställa från. |Inget |
+| Moln tjänsten har nått gränsen för antalet ingångs slut punkter: <br>Försök igen genom att ange en annan moln tjänst eller genom att använda en befintlig slut punkt. |Inget |
+| Recovery Services valvet och mål lagrings kontot finns i två olika regioner: <br>Se till att det lagrings konto som anges i återställnings åtgärden finns i samma Azure-region som Recovery Services-valvet. |Inget |
+| Det lagrings konto som har angetts för återställnings åtgärden stöds inte: <br>Endast Basic-eller standard-lagrings konton med lokalt redundanta eller geo-redundanta replikeringsinställningar stöds. Välj ett lagrings konto som stöds. |Inget |
 | Den angivna lagrings konto typen för återställnings åtgärden är inte online: <br>Kontrol lera att lagrings kontot som angetts i återställnings åtgärden är online. |Det här felet kan inträffa på grund av ett tillfälligt fel i Azure Storage eller på grund av ett avbrott. Välj ett annat lagrings konto. |
-| Resurs grupps kvoten har uppnåtts: <br>Ta bort några resurs grupper från Azure Portal eller kontakta Azure-supporten för att öka gränserna. |Ingen |
-| Det valda under nätet finns inte: <br>Välj ett undernät som finns. |Ingen |
+| Resurs grupps kvoten har uppnåtts: <br>Ta bort några resurs grupper från Azure Portal eller kontakta Azure-supporten för att öka gränserna. |Inget |
+| Det valda under nätet finns inte: <br>Välj ett undernät som finns. |Inget |
 | Säkerhets kopierings tjänsten har inte behörighet att komma åt resurser i din prenumeration. |Lös problemet genom att först återställa diskarna genom att följa stegen i [återställa säkerhetskopierade diskar](backup-azure-arm-restore-vms.md#restore-disks). Använd sedan PowerShell-stegen i [skapa en virtuell dator från återställda diskar](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Säkerhets kopiering eller återställning tar tid

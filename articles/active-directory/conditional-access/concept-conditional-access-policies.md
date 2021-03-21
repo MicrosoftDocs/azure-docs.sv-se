@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169689"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579101"
 ---
 # <a name="building-a-conditional-access-policy"></a>Skapa en princip för villkorlig åtkomst
 
@@ -37,7 +37,7 @@ Alla principer tillämpas i två faser:
    - Använd sessionsinformation som samlats in i fas 1 för att identifiera eventuella krav som inte har uppfyllts. 
    - Om det finns en princip som har kon figurer ATS för att blockera åtkomst, med blockera beviljande kontroll, kommer tvång att stoppas här och användaren kommer att blockeras. 
    - Användaren uppmanas att slutföra ytterligare krav för beviljande kontroll som inte uppfylldes under fas 1 i följande ordning, tills principen är nöjd:  
-      - Multi-Factor Authentication 
+      - Multifaktorautentisering 
       - Godkänd klient App/app-skydds princip 
       - Hanterad enhet (kompatibel eller hybrid Azure AD-anslutning) 
       - Villkor för användning 
@@ -106,6 +106,8 @@ Kontrollen Grant kan utlösa verk ställande av en eller flera kontroller.
 - Kräv hybrid Azure AD-ansluten enhet
 - Kräv godkänd klientapp
 - Kräva appskyddsprincip
+- Kräv lösen ords ändring
+- Kräva användningsvillkor
 
 Administratörer kan välja att kräva en av de tidigare kontrollerna eller alla valda kontroller med följande alternativ. Standardvärdet för flera kontroller är att kräva alla.
 
@@ -150,7 +152,7 @@ Artikeln [vanliga principer för villkorlig åtkomst](concept-conditional-access
 
 [Simulera inloggnings beteende med hjälp av What If verktyget för villkorlig åtkomst](troubleshoot-conditional-access-what-if.md)
 
-[Planera en molnbaserad Azure AD Multi-Factor Authentication-distribution](../authentication/howto-mfa-getstarted.md)
+[Planera en molnbaserad distribution av Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
 [Hantera enheternas kompatibilitet med Intune](/intune/device-compliance-get-started)
 

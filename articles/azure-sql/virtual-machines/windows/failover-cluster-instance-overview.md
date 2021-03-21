@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690931"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instanser av kluster för växling vid fel med SQL Server på Azure Virtual Machines
@@ -96,7 +96,7 @@ Information om hur du kommer igång finns [SQL Server kluster instans med Azure 
 - Stöder Azure Blob cache, så läsningar kan hanteras lokalt från cachen. (Uppdateringar replikeras samtidigt till båda noderna.) 
 - Stöder FileStream. 
 
-**Begränsningar:**
+**Hos**
 - Endast tillgängligt för Windows Server 2016 och senare. 
 - Tillgänglighets zoner stöds inte.
 - Kräver samma disk kapacitet som är kopplad till båda virtuella datorerna. 
@@ -116,7 +116,7 @@ Information om hur du kommer igång finns [SQL Server kluster instans med Lagrin
 - Endast delad lagrings lösning för virtuella datorer sprids över flera tillgänglighets zoner. 
 - Fullständigt hanterat fil system med ensiffriga latens och prestanda med burst I/O. 
 
-**Begränsningar:**
+**Hos**
 - Endast tillgängligt för Windows Server 2012 och senare. 
 - FileStream stöds inte. 
 

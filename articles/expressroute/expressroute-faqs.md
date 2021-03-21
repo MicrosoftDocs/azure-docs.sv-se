@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: duau
-ms.openlocfilehash: 417a6a55f0114ec35554e598b456f4fb67eb1c1b
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: da293f15ba070fc9a00ad37defd6a76175ded2f2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574466"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587287"
 ---
 # <a name="expressroute-faq"></a>Vanliga frågor och svar för ExpressRoute
 
@@ -204,7 +204,7 @@ Om din tjänst leverantör erbjuder ExpressRoute på båda platserna kan du arbe
 
 Ja. Du kan ha flera ExpressRoute-kretsar med samma eller olika tjänst leverantörer. Om tunnelbane linjen har flera ExpressRoute-peering-platser och kretsarna skapas på olika peering-platser, kan du länka dem till samma virtuella nätverk. Om kretsarna skapas på samma peering-plats kan du länka upp till fyra kretsar till samma virtuella nätverk.
 
-### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hur gör jag för att ansluta mina virtuella nätverk till en ExpressRoute-krets
+### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hur gör jag för att ansluta mina virtuella nätverk till en ExpressRoute-krets?
 
 De grundläggande stegen är:
 
@@ -298,6 +298,15 @@ Du måste också följa upp med din anslutnings leverantör för att säkerstäl
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Hur gör jag för att ändra bandbredden för en ExpressRoute-krets?
 
 Du kan uppdatera bandbredden för ExpressRoute-kretsen med hjälp av REST API eller PowerShell-cmdleten.
+
+### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>Jag har fått ett meddelande om underhåll av ExpressRoute-kretsen. Vad är den tekniska effekten av det här underhållet?
+
+Du bör uppleva minimal till ingen påverkan under underhålls processen om du använder kretsen i [aktivt-aktivt läge](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections). Vi utför underhåll på de primära och sekundära anslutningarna för din krets separat. Schemalagt underhåll utförs vanligt vis utanför kontors tid i tids zonen för peering-platsen, och du kan inte välja en underhålls tid.
+
+### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Jag har fått ett meddelande om en program uppgradering eller underhåll på min ExpressRoute-Gateway. Vad är den tekniska effekten av det här underhållet?
+
+Du bör uppleva minimal till ingen påverkan under en program uppgradering eller underhåll på din gateway. ExpressRoute-gatewayen består av flera instanser och under uppgraderingar tas instanser offline en i taget. Även om detta kan orsaka att din gateway tillfälligt stöder lägre nätverks flöden till det virtuella nätverket, kommer själva gatewayen inte att uppleva några avbrott.
+
 
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 

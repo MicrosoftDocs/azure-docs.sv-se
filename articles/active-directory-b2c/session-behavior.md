@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175115"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579747"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurera sessionsbeteende i Azure Active Directory B2C
 
@@ -81,7 +81,7 @@ Du kan konfigurera beteendet för Azure AD B2C session, inklusive:
   - **Klient** – den här inställningen är standard. Med den här inställningen kan flera program och användare flöda i B2C-klienten för att dela med sig av samma användarsession. När en användare till exempel loggar in på ett program, kan användaren också sömlöst logga in på en annan vid åtkomst till den.
   - **Program** – med den här inställningen kan du underhålla en användarsession exklusivt för ett program, oberoende av andra program. Du kan till exempel använda den här inställningen om du vill att användaren ska logga in på Contoso apotek oavsett om användaren redan har loggat in på Contosos inköp.
   - **Princip** – med den här inställningen kan du underhålla en användarsession exklusivt för ett användar flöde, oberoende av de program som använder den. Om användaren till exempel redan har loggat in och slutfört ett Multi-Factor Authentication (MFA)-steg, kan användaren få åtkomst till högre säkerhets delar av flera program, förutsatt att sessionen som är kopplad till användar flödet inte upphör att gälla.
-  - **Disabled** – inställningen tvingar användaren att köra genom hela användar flödet vid varje körning av principen.
+  - **Undertryckt** – den här inställningen tvingar användaren att köra hela användar flödet vid varje körning av principen.
 - **Håll mig inloggad (KMSI avgör)** – utökar sessionens livs längd genom att använda en beständig cookie. Om den här funktionen är aktive rad och användaren väljer den, förblir sessionen aktiv även när användaren har stängt och öppnat webbläsaren igen. Sessionen återkallas bara när användaren loggar ut. Funktionen KMSI avgör gäller bara för inloggning med lokala konton. KMSI avgör-funktionen har högre prioritet än sessionens livs längd.
 
 ::: zone pivot="b2c-user-flow"
@@ -249,7 +249,7 @@ Vid en inloggningsbegäran Azure AD B2C:
 ::: zone-end
 ::: zone pivot="b2c-custom-policy"
 3. Försök att logga ut från federerade identitets leverantörer:
-   - OpenId Connect – om den välkända konfigurations slut punkten för identitets leverantör anger en `end_session_endpoint` plats.
+   - OpenId Connect – om den välkända konfigurations slut punkten för identitets leverantör anger en `end_session_endpoint` plats. Inloggningsbegäran skickar inte `id_token_hint` parametern. Om den federerade identitets leverantören kräver den här parametern, kommer utloggningen att Miss Miss Ande.
    - OAuth2 – om [identitets leverantörens metadata](oauth2-technical-profile.md#metadata) innehåller `end_session_endpoint` platsen.
    - SAML – om [identitets leverantörens metadata](identity-provider-generic-saml.md) innehåller `SingleLogoutService` platsen.
 4. Du kan också logga ut från andra program. Mer information finns i avsnittet om [enkel inloggning](#single-sign-out) .

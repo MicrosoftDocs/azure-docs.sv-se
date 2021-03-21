@@ -5,10 +5,10 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7f91ac0aec46d0fc24901585156dceabb18640c1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586827"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay mått i Azure Monitor 
@@ -48,7 +48,7 @@ Alla mått värden skickas till Azure Monitor varje minut. Tids kornig het defin
 
 ## <a name="connection-metrics"></a>Anslutnings mått
 
-| Måttnamn | Description |
+| Måttnamn | Beskrivning |
 | ------------------- | ----------------- |
 | ListenerConnections-Success  | Antalet lyckade lyssnar anslutningar som har gjorts till Azure Relay under en angiven period. <br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
 |ListenerConnections-ClientError |Antalet klient fel i lyssnar anslutningar under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
@@ -65,7 +65,7 @@ Alla mått värden skickas till Azure Monitor varje minut. Tids kornig het defin
 
 ## <a name="memory-usage-metrics"></a>Minnes användnings mått
 
-| Måttnamn | Description |
+| Måttnamn | Beskrivning |
 | ------------------- | ----------------- |
 |BytesTransferred |Antalet byte som överförts under en angiven period.<br/><br/> Enhet: byte <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
 
@@ -73,7 +73,7 @@ Alla mått värden skickas till Azure Monitor varje minut. Tids kornig het defin
 
 Azure Relay stöder följande dimensioner för mått i Azure Monitor. Det är valfritt att lägga till dimensioner i måtten. Om du inte lägger till dimensioner anges måtten på namn områdes nivå. 
 
-|Dimensions namn|Description|
+|Dimensions namn|Beskrivning|
 | ------------------- | ----------------- |
 |Entitetsnamnet| Azure Relay stöder meddelande enheter under namn området.|
 

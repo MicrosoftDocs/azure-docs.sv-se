@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/07/2020
 ms.author: Zhchia
 ms.openlocfilehash: ce791337cb27d3704d1cfa007ed6dca3e8e7e0d9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729641"
 ---
 # <a name="tutorial-configure-shopify-plus-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Shopify plus för automatisk användar etablering
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Shopify pl
 > * Behåll användarattribut synkroniserade mellan Azure AD och Shopify plus
 > * [Enkel inloggning](./shopify-plus-tutorial.md) till Shopify plus (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

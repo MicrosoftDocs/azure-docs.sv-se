@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999202"
 ---
 # <a name="troubleshoot-the-process-server"></a>Felsöka processervern
@@ -32,7 +32,7 @@ Innan du påbörjar fel sökningen:
 
 För optimala prestanda för processervern har vi sammanfattat ett antal allmänna bästa metoder.
 
-**Bästa praxis** | **Detaljer**
+**Bästa praxis** | **Information**
 --- |---
 **Användning** | Kontrol lera att konfigurations servern/fristående processervern endast används för avsett syfte. Kör inte något annat på datorn.
 **IP-adress** | Kontrol lera att processervern har en statisk IPv4-adress och att NAT inte har kon figurer ATS.
@@ -113,7 +113,7 @@ Kontrol lera att inget antivirus program på den replikerade datorn blockerar Si
 3. Kontrol lera om anslutningen lyckades.
 
 
-**Anslutningsmöjligheter** | **Detaljer** | **Åtgärd**
+**Anslutningsmöjligheter** | **Information** | **Åtgärd**
 --- | --- | ---
 **Lyckad** | Telnet visar en tom skärm och processervern kan komma åt den. | Ingen ytterligare åtgärd krävs.
 **Misslyckade** | Du kan inte ansluta | Kontrol lera att den inkommande port 9443 är tillåten på processervern. Om du till exempel har ett perimeternätverk eller ett skärmat undernät. Kontrol lera anslutningen igen.

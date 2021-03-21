@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002229"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team data science-processen i praktiken: Använd Azure HDInsight Hadoop kluster
@@ -117,23 +117,23 @@ Här beskrivs hur du använder AzCopy för att överföra filer som innehåller 
 
 I följande AzCopy-kommandon ersätter du följande parametrar med de faktiska värden som du angav när du skapade Hadoop-klustret och avzippar datafilerna.
 
-* ***\<path_to_data_folder>** _ Katalogen (tillsammans med sökvägen) på datorn som innehåller de zippade datafilerna.  
-_ * **\<storage account name of Hadoop cluster>** _ Det lagrings konto som är associerat med ditt HDInsight-kluster.
-_ * **\<default container of Hadoop cluster>** _ Standard behållaren som används av klustret. Namnet på standard behållaren är vanligt vis samma namn som själva klustret. Om klustret till exempel kallas "abc123.azurehdinsight.net" är standard behållaren vi abc123.
-_ * **\<storage account key>** _ Nyckeln för det lagrings konto som används av klustret.
+* ***\<path_to_data_folder>*** Katalogen (tillsammans med sökvägen) på datorn som innehåller de zippade datafilerna.  
+* ***\<storage account name of Hadoop cluster>*** Det lagrings konto som är associerat med ditt HDInsight-kluster.
+* ***\<default container of Hadoop cluster>*** Standard behållaren som används av klustret. Namnet på standard behållaren är vanligt vis samma namn som själva klustret. Om klustret till exempel kallas "abc123.azurehdinsight.net" är standard behållaren vi abc123.
+* ***\<storage account key>*** Nyckeln för det lagrings konto som används av klustret.
 
 Kör följande två AzCopy-kommandon från en kommando tolk eller ett Windows PowerShell-fönster.
 
-Det här kommandot överför rese data till _*_nyctaxitripraw_*_ -katalogen i standard behållaren för Hadoop-klustret.
+Det här kommandot överför rese data till ***nyctaxitripraw*** -katalogen i standard behållaren för Hadoop-klustret.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 ```
 
-Det här kommandot överför pris data till ***nyctaxifareraw** _-katalogen i standard behållaren för Hadoop-klustret.
+Det här kommandot överför pris data till ***nyctaxifareraw*** -katalogen i standard behållaren för Hadoop-klustret.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 ```
 
 Data bör nu finnas i Blob Storage och vara redo att användas i HDInsight-klustret.
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-De här två kommandona laddar ned alla '. HQL '-filer som behövs i den här genom gången till den lokala katalogen ***C:\temp&#92;** _ i head-noden.
+De här två kommandona laddar ned alla '. HQL '-filer som behövs i den här genom gången till den lokala katalogen ***C:\temp&#92;*** i head-noden.
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Skapa Hive-databas och tabeller partitionerade efter månad
 > [!NOTE]
@@ -182,7 +182,7 @@ Från Hive-katalogen, kör du följande kommando på Hadoop-kommandoraden i head
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-Här är innehållet i filen _ *C:\temp\sample \_ Hive \_ create \_ db \_ och \_ Tables. HQL** som skapar Hive-databasen **nyctaxidb** och tabellerna **resa** och **pris**.
+Här är innehållet i Hive- **C:\temp\sample \_ \_ skapa \_ db- \_ och \_ Tables. HQL** -fil som skapar Hive-databasen **nyctaxidb** och tabellerna **resa** och **pris**.
 
 ```hiveql
 create database if not exists nyctaxidb;

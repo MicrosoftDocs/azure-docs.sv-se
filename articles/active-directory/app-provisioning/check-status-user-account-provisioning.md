@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5d93cec201feeb43700fe849f2fddc8eaf22488a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256685"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579492"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Självstudie: rapportering om automatisk etablering av användar konton
 
@@ -48,7 +48,7 @@ Härifrån kan du komma åt både etablerings förlopps fältet och etablerings 
 
 ## <a name="provisioning-progress-bar"></a>Förlopps indikator för etablering
 
-[Etablerings förlopps indikatorn](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) visas på fliken **etablering** för angivet program. Den finns i avsnittet **aktuell status** under **Inställningar** och visar statusen för den aktuella inledande eller stegvisa cykeln. I det här avsnittet visas även:
+[Etablerings förlopps indikatorn](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) visas på fliken **etablering** för ett angivet program. Den finns i avsnittet **aktuell status** och visar statusen för den aktuella inledande eller stegvisa cykeln. I det här avsnittet visas även:
 
 * Det totala antalet användare och/grupper som har synkroniserats och som för närvarande ingår i omfånget för etablering mellan käll systemet och mål systemet.
 * Den senaste gången som synkroniseringen kördes. Synkroniseringar sker vanligt vis var 20-40 minut, efter att en [första cykel](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) har slutförts.

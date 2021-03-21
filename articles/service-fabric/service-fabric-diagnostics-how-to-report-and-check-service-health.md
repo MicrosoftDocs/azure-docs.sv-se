@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998251"
 ---
 # <a name="report-and-check-service-health"></a>Rapportera och kontrollera hälsan hos tjänster
@@ -57,10 +57,10 @@ Du måste ha följande installerat:
 Service Fabric-projektmallar i Visual Studio innehåller exempel kod. Följande steg visar hur du kan rapportera anpassade hälso händelser från Service koden. Sådana rapporter visas automatiskt i standard verktyg för övervakning av hälso tillstånd som Service Fabric tillhandahåller, till exempel Service Fabric Explorer, Azure Portal Health View och PowerShell.
 
 1. Öppna programmet som du skapade tidigare i Visual Studio, eller skapa ett nytt program med hjälp av Visual Studio **-mallen tillstånds känslig tjänst** .
-1. Öppna filen Stateful1.cs och hitta `myDictionary.TryGetValueAsync` anropet i- `RunAsync` metoden. Du kan se att den här metoden returnerar en `result` som innehåller det aktuella värdet för räknaren eftersom nyckel logiken i det här programmet är att köra ett antal som körs. Om det här programmet var ett verkligt program, och om bristen på ett haveri resultat, skulle du vilja flagga den händelsen.
+1. Öppna filen Stateful1. CS och hitta `myDictionary.TryGetValueAsync` anropet i- `RunAsync` metoden. Du kan se att den här metoden returnerar en `result` som innehåller det aktuella värdet för räknaren eftersom nyckel logiken i det här programmet är att köra ett antal som körs. Om det här programmet var ett verkligt program, och om bristen på ett haveri resultat, skulle du vilja flagga den händelsen.
 1. Om du vill rapportera en hälso händelse när bristen på resultat representerar ett fel, lägger du till följande steg.
    
-    a. Lägg till `System.Fabric.Health` namn området i Stateful1.cs-filen.
+    a. Lägg till `System.Fabric.Health` namn området i filen Stateful1. cs.
    
     ```csharp
     using System.Fabric.Health;

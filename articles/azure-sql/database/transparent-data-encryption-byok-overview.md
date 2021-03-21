@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
 ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101691254"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent datakryptering i Azure SQL med kundhanterad nyckel
@@ -170,7 +170,7 @@ Konfigurera följande Azure-funktioner för att övervaka databas tillstånd och
 
 När en databas har krypterats med TDE med hjälp av en nyckel från Key Vault krypteras även eventuella nyligen genererade säkerhets kopior med samma TDE-skydd. När TDE-skyddet ändras, **uppdateras inte** gamla säkerhets kopior av databasen för att använda det senaste TDE-skyddet.
 
-För att återställa en säkerhets kopia krypterad med ett TDE-skydd från Key Vault, se till att nyckel materialet är tillgängligt för mål servern. Därför rekommenderar vi att du behåller alla gamla versioner av TDE-skyddskomponenten i Key Vault, så att databas säkerhets kopior kan återställas.
+För att återställa en säkerhets kopia krypterad med ett TDE-skydd från Key Vault, se till att nyckel materialet är tillgängligt för mål servern. Vi rekommenderar därför att du behåller alla gamla versioner av TDE-skyddet i nyckelvalvet, så att säkerhetskopior av databasen kan återställas.
 
 > [!IMPORTANT]
 > Det kan aldrig finnas fler än en TDE-skydds uppsättning för en server. Det är nyckeln markerat med "gör nyckeln till standard TDE skydd" på bladet Azure Portal. Flera ytterligare nycklar kan dock länkas till en server utan att markera dem som TDE skydd. Dessa nycklar används inte för att skydda DEK, men kan användas vid återställning från en säkerhets kopia, om säkerhets kopierings filen krypteras med nyckeln med motsvarande tumavtryck.

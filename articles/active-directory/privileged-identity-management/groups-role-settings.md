@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835398"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Konfigurera inställningar för privilegierad åtkomst grupp (för hands version) i Privileged Identity Management
@@ -40,7 +40,7 @@ Följ de här stegen för att öppna inställningarna för en Azure Privileged A
 
     ![Privilegierade åtkomst grupper som filtrerats efter ett grupp namn](./media/groups-role-settings/group-select.png)
 
-1. Välj **Inställningar**.
+1. Välj **inställningar**.
 
     ![Sidan Inställningar visar grupp inställningarna för den valda gruppen](./media/groups-role-settings/group-settings-select-role.png)
 

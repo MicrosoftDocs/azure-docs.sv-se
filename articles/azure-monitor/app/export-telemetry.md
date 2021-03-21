@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 ms.custom: references_regions
 ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737043"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportera telemetri från Application Insights
@@ -103,7 +103,7 @@ Det kan finnas en fördröjning på ungefär en timme innan data visas i lagring
 
 När den första exporten är klar hittar du en struktur som liknar följande i din Azure Blob Storage-behållare: (detta varierar beroende på vilka data som samlas in.)
 
-|Namn | Beskrivning |
+|Name | Beskrivning |
 |:----|:------|
 | [Tillgänglighet](export-data-model.md#availability) | Reports för [webb test för tillgänglighet](./monitor-web-app-availability.md).  |
 | [Händelse](export-data-model.md#events) | Anpassade händelser som genererats av [TrackEvent ()](./api-custom-events-metrics.md#trackevent). 

@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003794"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Självstudie: Styr trafikroutning med viktade slutpunkter med hjälp av Traffic Manager
 
 Den här självstudien beskriver hur du använder Azure Traffic Manager till att styra routningen av användartrafik mellan slutpunkter med hjälp av routningsmetoden Viktat. I den här routningsmetoden tilldelar du vikter till varje slutpunkt i Traffic Manager-profilkonfigurationen. Sedan dirigeras användartrafiken baserat på vikt som tilldelats varje slutpunkt. Vikten är ett heltal mellan 1 och 1000. Ju högre viktningsvärde som tilldelas till en slutpunkt desto högre prioritet har det.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa två virtuella datorer som kör en grundläggande webbplats i IIS.
@@ -78,7 +78,7 @@ I det här avsnittet installerar du IIS-servern på de två virtuella datorerna 
 
 1. Välj **Alla resurser** på menyn till vänster. I resurslistan väljer du **myIISVMEastUS** i resursgruppen **myResourceGroupTM1**.
 2. På **översiktssidan** väljer du **Anslut**. I **Anslut till virtuell dator** väljer du **Ladda ned RDP-fil**.
-3. Öppna den nedladdade RDP-filen. Välj **Anslut** om du uppmanas att göra det. Ange det namn och lösenord du angav när du skapade den virtuella datorn. Du kan behöva välja **fler alternativ**  >  **Use a different account** för att ange de autentiseringsuppgifter som du angav när du skapade den virtuella datorn.
+3. Öppna den nedladdade RDP-filen. Välj **Anslut** om du uppmanas att göra det. Ange det namn och lösenord du angav när du skapade den virtuella datorn. Du kan behöva välja **fler alternativ**  >  för att ange de autentiseringsuppgifter som du angav när du skapade den virtuella datorn.
 4. Välj **OK**.
 5. Du kan få en certifikatvarning under inloggningen. Om du får varningen väljer du **Ja** eller **fortsätter** att fortsätta med anslutningen.
 6. På server Skriv bordet bläddrar du till **administrations verktyg för Windows**  >  **Serverhanteraren**.
@@ -192,7 +192,7 @@ I det här avsnittet får du se Traffic Manager i arbete.
 
 1. Välj **Alla resurser** på menyn till vänster. I resurslistan väljer du **myVMEastUS** i resursgruppen **myResourceGroupTM1**.
 2. På **översiktssidan** väljer du **Anslut**. I **Anslut till virtuell dator** väljer du **Ladda ned RDP-fil**.
-3. Öppna den nedladdade RDP-filen. Välj **Anslut** om du uppmanas att göra det. Ange användarnamnet och lösenordet du angav när du skapade den virtuella datorn. Du kan behöva välja **fler alternativ**  >  **Use a different account** för att ange de autentiseringsuppgifter som du angav när du skapade den virtuella datorn.
+3. Öppna den nedladdade RDP-filen. Välj **Anslut** om du uppmanas att göra det. Ange användarnamnet och lösenordet du angav när du skapade den virtuella datorn. Du kan behöva välja **fler alternativ**  >  för att ange de autentiseringsuppgifter som du angav när du skapade den virtuella datorn.
 4. Välj **OK**.
 5. Du kan få en certifikatvarning under inloggningen. Om du får varningen väljer du **Ja** eller **fortsätter** att fortsätta med anslutningen.
 6. I en webbläsare på den virtuella datorn myVMEastUS anger du DNS-namnet i Traffic Manager-profilen för at visa din webbplats. Du dirigeras till en webbplats på IIS-servern myIISVMEastUS eftersom den har tilldelats en högre vikt på **100**. IIS-myIISVMWestEurope tilldelas ett lägre värde för slut punkts vikt på **25**.

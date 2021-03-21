@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.openlocfilehash: 2359855ce3949eb022a03f6e8e2dbc05f98907db
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054998"
 ---
 # <a name="provide-server-credentials-to-discover-applications-dependencies-and-sql-server-instances-and-databases"></a>Ange autentiseringsuppgifter för servern för att identifiera program, beroenden och SQL Server instanser och databaser
@@ -18,7 +18,7 @@ ms.locfileid: "102054998"
 Följ den här artikeln för att lära dig hur du lägger till flera autentiseringsuppgifter för server i Konfigurations hanteraren för att utföra program varu inventering (identifiera installerade program), en agent lös beroende analys och identifiera SQL Server instanser och databaser.
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 [Azure Migrate](migrate-appliance.md) -installationen är en förenklad utrustning som används av Azure Migrate: Server utvärdering för att identifiera lokala servrar som körs i VMware-miljön och skicka Server konfiguration och prestanda-metadata till Azure. Installationen kan också användas för att utföra program varu inventering, en agent lös beroende analys och upptäcka SQL Server instanser och databaser.
 

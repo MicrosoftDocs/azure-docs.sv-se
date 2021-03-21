@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745085"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Köra en anpassad behållare i Azure
@@ -146,7 +146,7 @@ De strömmade loggarna ser ut så här:
 
 ## <a name="update-locally-and-redeploy"></a>Uppdatera lokalt och omdistribuera
 
-1. Öppna **Solution Explorer** **vyer**  >  **Start**  >  **index. cshtml** i Solution Explorer i Visual Studio.
+1. Öppna  **vyer**  >  **Start**  >  **index. cshtml** i Solution Explorer i Visual Studio.
 
 1. Leta reda på HTML-taggen `<div class="jumbotron">` längst upp på sidan och ersätt hela elementet med följande kod:
 
