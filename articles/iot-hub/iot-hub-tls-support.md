@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: jlian
 ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234026"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Stöd för Transport Layer Security (TLS) i IoT Hub
@@ -119,11 +119,11 @@ Använd länkarna nedan för att konfigurera TLS 1,2 och tillåtna chiffer i IoT
 
 | Språk | Versioner som stöder TLS 1,2 | Dokumentation |
 |----------|------------------------------------|---------------|
-| C        | Tag 2019-12-11 eller senare            | [Operationsföljdslänkkod](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Version 2.0.0 eller senare             | [Operationsföljdslänkkod](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Version 1.21.4 eller senare            | [Operationsföljdslänkkod](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Version 1.19.0 eller senare            | [Operationsföljdslänkkod](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Version 1.12.2 eller senare            | [Operationsföljdslänkkod](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Tag 2019-12-11 eller senare            | [Länk](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Version 2.0.0 eller senare             | [Länk](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Version 1.21.4 eller senare            | [Länk](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Version 1.19.0 eller senare            | [Länk](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Version 1.12.2 eller senare            | [Länk](https://aka.ms/Tls_Node_SDK_IoT) |
 
 IoT Edge enheter kan konfigureras för att använda TLS 1,2 vid kommunikation med IoT Hub. För det här ändamålet använder du [sidan IoT Edge dokumentation](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
 

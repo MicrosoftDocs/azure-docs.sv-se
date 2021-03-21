@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b344e2a845a9da8333860599bd4ff9041108202f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100588262"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Gransknings loggning i Azure Database for PostgreSQL-flexibel Server
@@ -45,7 +45,7 @@ När du har [aktiverat pgAudit](#enabling-pgaudit)kan du konfigurera dess parame
 
 > [!NOTE]
 > Om du ställer in på `pgaudit.log_client` på omdirigeras loggarna till en klient process (som psql) i stället för att skrivas till filen. Den här inställningen bör normalt vara inaktiverad. <br> <br>
-> `pgaudit.log_level` är bara aktive rad när `pgaudit.log_client` är på.
+> `pgaudit.log_level` är bara aktiverad när `pgaudit.log_client` är på.
 
 > [!NOTE]
 > I Azure Database for PostgreSQL-flexibel Server, `pgaudit.log` kan inte anges med en `-` (minus) Sign-genväg enligt beskrivningen i pgAudit-dokumentationen. Alla obligatoriska instruktions klasser (läsa, skriva osv.) måste anges var för sig.

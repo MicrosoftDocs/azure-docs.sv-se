@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
 ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841469"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurera Always Encrypted med Azure Key Vault 
@@ -146,7 +146,7 @@ GO
 
 SSMS innehåller en guide som hjälper dig att enkelt konfigurera Always Encrypted genom att ställa in kolumnens huvud nyckel, kolumn krypterings nyckel och krypterade kolumner åt dig.
 
-1. Expandera **Databases**  >  **klinik**-  >  **tabeller** för databaser.
+1. Expandera   >  **klinik**-  >  **tabeller** för databaser.
 2. Högerklicka på tabellen **patienter** och välj **kryptera kolumner** för att öppna guiden Always Encrypted:
 
     ![Skärm bild som visar krypterade kolumner... meny alternativ.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
@@ -193,7 +193,7 @@ När guiden har slutförts konfigureras databasen för Always Encrypted. Följan
 - Skapade en kolumn krypterings nyckel och lagrade den i Azure Key Vault.
 - Konfigurerade de markerade kolumnerna för kryptering. Tabellen patienter har för närvarande inga data, men alla befintliga data i de markerade kolumnerna är nu krypterade.
 
-Du kan kontrol lera att nycklarna skapas i SSMS genom att expandera **Clinic**  >  **säkerhets**  >  **Always Encrypted nycklar** för klinik.
+Du kan kontrol lera att nycklarna skapas i SSMS genom att expandera   >  **säkerhets**  >  **Always Encrypted nycklar** för klinik.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Skapa ett klient program som fungerar med krypterade data
 
@@ -266,7 +266,7 @@ Det här exemplet visar hur du:
 - Infoga data i de krypterade kolumnerna.
 - Välj en post genom att filtrera efter ett särskilt värde i en krypterad kolumn.
 
-Ersätt innehållet i *program.cs* med följande kod. Ersätt anslutnings strängen för den globala connectionString-variabeln på raden som direkt föregår huvud metoden med en giltig anslutnings sträng från Azure Portal. Detta är den enda ändringen du behöver göra i den här koden.
+Ersätt innehållet i *program. cs* med följande kod. Ersätt anslutnings strängen för den globala connectionString-variabeln på raden som direkt föregår huvud metoden med en giltig anslutnings sträng från Azure Portal. Detta är den enda ändringen du behöver göra i den här koden.
 
 Kör appen för att se Always Encrypted i praktiken.
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: c9b732bd25e7ef8aa084c98d5b059d422f86a4b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003522"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Visa användningsstatistik för Azure Maps API
@@ -42,7 +42,7 @@ Fortsätt till nästa avsnitt om du behöver anpassa diagrammen för just din an
 
       ![Fönstret Azure Maps användnings statistik](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Sedan kan du välja *tidsintervallet* genom att klicka på de **senaste 24 timmarna (automatiskt)**. Som standard är tidsintervallet inställt på 24 timmar. När du har klickat visas alla Selectable Time-intervall. Du kan välja *tids kornig het* och välja att visa tiden som *lokal* eller *GMT* i samma listruta. Klicka på **Använd**.
+5. Sedan kan du välja *tidsintervallet* genom att klicka på de **senaste 24 timmarna (automatiskt)**. Som standard är tidsintervallet inställt på 24 timmar. När du har klickat visas alla Selectable Time-intervall. Du kan välja *tids kornig het* och välja att visa tiden som *lokal* eller *GMT* i samma listruta. Klicka på **Applicera**.
 
     ![Tidsintervallet Azure Maps mått](media/how-to-view-api-usage/time-range.png)
 

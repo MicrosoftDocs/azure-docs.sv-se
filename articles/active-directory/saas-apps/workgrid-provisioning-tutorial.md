@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: ec39e4796d2a06ad88a8e88ea99b953064eb6d21
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348338"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Självstudie: Konfigurera Workgrid för automatisk användar etablering

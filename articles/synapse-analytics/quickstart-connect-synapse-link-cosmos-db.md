@@ -10,10 +10,10 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222164"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Snabb start: ansluta till Azure Synapse-länken för Azure Cosmos DB
@@ -41,16 +41,16 @@ Anslutning av en Azure Cosmos DB databas görs som en länkad tjänst. Med en Co
 
 Från data Object Explorer kan du ansluta en Azure Cosmos DB databas direkt genom att utföra följande steg:
 
-1. Välj * *_+_* _ ikon nära data
-2. Välj _ *Anslut till externa data**
+1. Välj ***+*** ikon nära data
+2. Välj **Anslut till externa data**
 3. Välj det API som du vill ansluta till: SQL eller MongoDB
-4. Välj **_Fortsätt_* _
+4. Välj ***Fortsätt***
 5. Namnge den länkade tjänsten. Namnet visas i Object Explorer och används av Synapse körnings tider för att ansluta till databasen och behållarna. Vi rekommenderar att du använder ett eget namn.
-6. Välj _ *Cosmos DB konto namn** och **databas namn**
+6. Välj det **Cosmos DB konto namnet** och **databas namnet**
 7. Valfritt Om ingen region anges dirigeras Synapse kör tids åtgärder till den närmaste region där analys lagret är aktiverat. Du kan dock ange manuellt vilken region du vill att användarna ska ha åtkomst till Cosmos DB analys lager. Välj **ytterligare anslutnings egenskaper** och sedan **ny**. Under **egenskaps namn** skriver du **_PreferredRegions_*_ och anger _*-värdet** till den region som du vill ha (exempel: WestUS2, det finns inget blank steg mellan ord och siffror)
-8. Välj **_skapa_* _
+8. Välj ***Skapa***
 
-Azure Cosmos DB-databaser visas under fliken _ *länkad** i avsnittet Azure Cosmos dB. Du kan skilja en HTAP-aktiverad Azure Cosmos DB-behållare från en skrivskyddad OLTP-behållare med följande ikoner:
+Azure Cosmos DB-databaser visas under den flik som är **länkad** i avsnittet Azure Cosmos dB. Du kan skilja en HTAP-aktiverad Azure Cosmos DB-behållare från en skrivskyddad OLTP-behållare med följande ikoner:
 
 **Synapse-behållare**:
 

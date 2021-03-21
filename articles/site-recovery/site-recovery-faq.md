@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99820204"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allmänna frågor om Azure Site Recovery
@@ -61,7 +61,7 @@ Vi har stöd för Azure-paket, moln plattforms system och System Center-baserade
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Finns det stöd för distributioner med ett enda Azure Pack och en enda VMM-server?
 Ja, du kan replikera virtuella Hyper-V-datorer till Azure, eller mellan Service Provider-platser.  Observera att Azure Runbook-integrering inte är tillgängligt om du replikerar mellan platser för tjänst leverantörer.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 ### <a name="where-can-i-find-pricing-information"></a>Var kan jag hitta pris information?
 Granska [Site Recovery pris](https://azure.microsoft.com/pricing/details/site-recovery/) information.

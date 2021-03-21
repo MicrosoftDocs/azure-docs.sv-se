@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/26/2021
 ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897993"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Hantera en Azure Database for MySQL-server med hjälp av Azure Portal
@@ -90,7 +90,7 @@ Du kan ändra administratörs rollens lösen ord med hjälp av Azure Portal.
  
 
 > [!IMPORTANT]
-> Återställning av Server administratörs lösen ord återställer automatiskt Server administratörs behörighet till standard. Överväg att återställa lösen ordet för Server administratören om du råkat återkalla en eller flera av Server administratörs behörigheterna.
+> Återställning av serverns administratörslösenord återställer automatiskt serverns administratörsbehörighet till standard. Överväg att återställa lösen ordet för Server administratören om du råkat återkalla en eller flera av Server administratörs behörigheterna.
    
 > [!NOTE]
 > Server administratörs användaren har följande behörigheter som standard: Välj, infoga, uppdatera, ta bort, skapa, ta bort, läsa in, bearbeta, REFERERA, INDEXERA, ändra, Visa databaser, skapa TEMPORÄRa tabeller, Lås tabeller, köra, replikering slav, REPLIKERINGSPARTNER, skapa, Visa, Visa, skapa rutin, ändra rutin, skapa användare, händelse, utlösare

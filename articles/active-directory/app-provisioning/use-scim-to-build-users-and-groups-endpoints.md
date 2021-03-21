@@ -12,10 +12,10 @@ ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101689342"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Självstudie: utveckla en exempel SCIM-slutpunkt
@@ -104,7 +104,7 @@ Standard verifierings koden för token har kon figurer ATS för att använda en 
 
 När du har distribuerat SCIM-slutpunkten kan du testa för att säkerställa att den är kompatibel med SCIM RFC. Det här exemplet innehåller en uppsättning tester i Postman som verifierar åtgärder för CRUD (skapa, läsa, uppdatera och ta bort) för användare och grupper, filtrering, uppdateringar av grupp medlemskap och inaktive ring av användare.
 
-Slut punkterna finns i `{host}/scim/` katalogen och du kan använda standard-HTTP-begäranden för att interagera med dem. Information om hur du ändrar `/scim/` vägen finns i *ControllerConstant.cs* i **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **controllers**.
+Slut punkterna finns i `{host}/scim/` katalogen och du kan använda standard-HTTP-begäranden för att interagera med dem. Information om hur du ändrar `/scim/` vägen finns i *ControllerConstant. cs* i **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **controllers**.
 
 > [!NOTE]
 > Du kan bara använda HTTP-slutpunkter för lokala tester. Azure AD Provisioning-tjänsten kräver att slut punkten stöder HTTPS.

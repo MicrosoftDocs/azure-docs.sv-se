@@ -8,10 +8,10 @@ ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100588590"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Felsöka Azure Digitals sammanflätade: diagnostikloggning
@@ -63,7 +63,7 @@ Mer detaljerad information om diagnostikinställningar och deras installations a
 
 Här är mer information om de kategorier av loggar som Azure Digitals samlar in.
 
-| Loggkategori | Description |
+| Loggkategori | Beskrivning |
 | --- | --- |
 | ADTModelsOperation | Logga alla API-anrop som rör modeller |
 | ADTQueryOperation | Logga alla API-anrop som rör frågor |

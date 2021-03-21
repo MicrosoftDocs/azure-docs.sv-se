@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100587951"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Vanliga frågor och svar om Virtual Machine Scale Sets
@@ -224,9 +224,9 @@ Du kan tillhandahålla offentliga SSH-nycklar i oformaterad text när du skapar 
 }
 ```
 
-linuxConfiguration element namn | Krävs | Typ | Description
+linuxConfiguration element namn | Krävs | Typ | Beskrivning
 --- | --- | --- | ---
-SSH | No | Samling | Anger SSH-nyckeln för ett Linux-operativsystem
+SSH | Inga | Samling | Anger SSH-nyckeln för ett Linux-operativsystem
 path | Ja | Sträng | Anger sökvägen till Linux-filen där SSH-nycklar eller certifikatet ska placeras
 Data | Ja | Sträng | Anger en Base64-kodad Offentlig SSH-nyckel
 

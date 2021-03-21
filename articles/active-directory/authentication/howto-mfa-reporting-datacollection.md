@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2124ca9fae76d87a695a2c453f7b222e7a08794
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742801"
 ---
 # <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Azure AD Multi-Factor Authentication användar data insamling
@@ -89,7 +89,7 @@ Block (används för att fastställa blockerat tillstånd och för rapportering)
 - Landskod
 - Telefonnummer
 - Telefonnummer formaterat
-- Filnamnstillägg
+- Anknytning
 - Rensa tillägg
 - Blockerad
 - Orsak till blockering
@@ -109,7 +109,7 @@ Kringgås (används för rapportering):
 - Landskod
 - Telefonnummer
 - Telefonnummer formaterat
-- Filnamnstillägg
+- Anknytning
 - Rensa tillägg
 - Kringgå orsak
 - Tidsstämpel för slut för ande

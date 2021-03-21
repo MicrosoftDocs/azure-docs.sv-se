@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 75d46edb332fb28132592e414e78bad64e75fef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736447"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-kerberos-based-authentication"></a>Självstudie: Azure Active Directory integrering med enkel inloggning med Citrix ADC (Kerberos-baserad autentisering)
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera Citrix ADC med Azure Ac
 * Gör det möjligt för användarna att logga in automatiskt på Citrix ADC med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -126,7 +126,7 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 
    1. Som **namn** anger du `B.Simon` .  
 
-   1. För **användar namn** anger du _username@companydomain.extension_ . Ett exempel är `B.Simon@contoso.com`.
+   1. För **användar namn** anger du _username@companydomain.extension_ . Till exempel `B.Simon@contoso.com`.
 
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned eller kopiera värdet som visas i **lösen ordet**.
 

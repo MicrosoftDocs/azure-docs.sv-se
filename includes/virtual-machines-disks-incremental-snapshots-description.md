@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 39750a86ccf781a10109e299e27a55a03173acb6
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98901213"
 ---
 Stegvisa ögonblicks bilder är tidpunkter för säkerhets kopiering av hanterade diskar som, när de tas, bara består av ändringarna sedan den senaste ögonblicks bilden. När du återställer en disk från en stegvis ögonblicks bild, konstruerar systemet om den fullständiga disken som representerar tidpunkten för säkerhets kopiering av disken när den stegvisa ögonblicks bilden togs. Den här nya funktionen för ögonblicks bilder av hanterade diskar kan eventuellt vara mer kostnads effektivt, eftersom du inte behöver lagra hela disken med varje enskild ögonblicks bild, om du inte väljer att göra det. Precis som med fullständiga ögonblicks bilder kan stegvisa ögonblicks bilder användas för att antingen skapa en fullständig hanterad disk eller en fullständig ögonblicks bild.

@@ -8,10 +8,10 @@ ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735428"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Självstudier som använder Azure-tjänster med Azure Data Lake Storage Gen2
@@ -33,7 +33,7 @@ Den här artikeln innehåller länkar till självstudier som visar hur du använ
 | HDInsight | [Använda Azure Data Lake Storage Gen2 med Azure HDInsight-kluster](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | HDInsight | [Extrahera, transformera och läsa in data med hjälp av Apache Hive i Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 | Power BI | [Analysera data i Data Lake Storage Gen2 med Power BI](/power-query/connectors/datalakestorage) |
-| Azure-datautforskaren | [Fråga efter data i Azure Data Lake med Azure Datautforskaren](/azure/data-explorer/data-lake-query-data) |
+| Öppna Azure-datautforskaren | [Fråga efter data i Azure Data Lake med Azure Datautforskaren](/azure/data-explorer/data-lake-query-data) |
 | Azure Cognitive Search | [Index och Sök Azure Data Lake Storage Gen2 dokument (förhands granskning)](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]

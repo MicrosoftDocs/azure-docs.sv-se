@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389679"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurera Redis-klustring för en Premium Azure-cache för Redis-instansen
@@ -82,7 +82,7 @@ Det tar en stund innan cacheminnet skulle skapas. Du kan övervaka förloppet p�
 > 
 > 
 
-Exempel kod för att arbeta med kluster med StackExchange. Redis-klienten finns i [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) -delen av [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) -exemplet.
+Exempel kod för att arbeta med kluster med StackExchange. Redis-klienten finns i delen [Clustering. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) i [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) exemplet.
 
 <a name="cluster-size"></a>
 
@@ -135,7 +135,7 @@ Vi rekommenderar att du distribuerar nycklarna jämnt för bästa prestanda och 
 
 Mer information finns i [nyckel distributions modell](https://redis.io/topics/cluster-spec#keys-distribution-model), [Redis kluster data horisontell partitionering](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)och [nycklar hash-Taggar](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
-Exempel kod för att arbeta med kluster och hitta nycklar i samma Shard med StackExchange. Redis-klienten finns i [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) -delen av [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) exemplet.
+Exempel kod för att arbeta med kluster och hitta nycklar i samma Shard med StackExchange. Redis-klienten finns i avsnittet [klustring. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) i [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) exemplet.
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>Vilken största cachestorlek kan jag skapa?
 Den största storleken på Premium-cache är 120 GB. Du kan skapa upp till 10 Shards och ge den maximala storleken 1,2 TB GB. Om du behöver en större storlek kan du [begära mer](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Mer information finns i [Azure cache för Redis-priser](https://azure.microsoft.com/pricing/details/cache/).

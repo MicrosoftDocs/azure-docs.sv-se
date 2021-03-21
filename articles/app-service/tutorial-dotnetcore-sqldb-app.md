@@ -7,10 +7,10 @@ ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623862"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Självstudie: Bygg en ASP.NET Core-och Azure SQL Database-app i Azure App Service
@@ -29,7 +29,7 @@ ms.locfileid: "98623862"
 
 ![app som körs i App Service](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * skapa en SQL Database i Azure
@@ -462,7 +462,7 @@ När ASP.NET Core-appen körs i Azure App Service kan du skicka konsolloggarna t
 Exempelprojektet följer redan riktlinjerna i [ASP.NET Core-loggning i Azure](/aspnet/core/fundamentals/logging#azure-app-service-provider) med två konfigurationsändringar:
 
 - Innehåller en referens till `Microsoft.Extensions.Logging.AzureAppServices` i *DotNetCoreSqlDb.csproj*.
-- Anrop `loggerFactory.AddAzureWebAppDiagnostics()` i *program.cs*.
+- Anrop `loggerFactory.AddAzureWebAppDiagnostics()` i *program. cs*.
 
 För att ange [loggnivå](/aspnet/core/fundamentals/logging#log-level) för ASP.NET Core i App Service till `Information` från standardnivån `Error`använder du kommandot [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) i Cloud Shell.
 

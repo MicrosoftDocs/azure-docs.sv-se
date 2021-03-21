@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 29b3cdde328a994e5806df810db15b529a6da9af
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96188674"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Självstudie: Konfigurera den geografiska Traffic routing-metoden med hjälp av Traffic Manager
 
 Med metoden för geografisk trafik cirkulation kan du dirigera trafik till specifika slut punkter baserat på den geografiska plats där begär Anden kommer. Den här självstudien visar hur du skapar en Traffic Manager-profil med den här routningsmetod och konfigurerar slut punkterna för att ta emot trafik från vissa geografiska områden.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Skapa en Traffic Manager profil med geografisk routning.
 > - Konfigurera en kapslad slut punkt.
@@ -43,7 +43,7 @@ I de här självstudierna får du lära dig att
 
 1. Definiera följande inställningar på sidan *skapa Traffic Manager profil* :
 
-    | Inställningen         | Värde                                              |
+    | Inställning         | Värde                                              |
     | ---             | ---                                                |
     | Namn            | Ange ett namn för din profil. Det här namnet måste vara unikt inom trafficmanager.net-zonen. För att få åtkomst till din Traffic Manager-profil använder du DNS-namnet `<profilename>.trafficmanager.net` . |    
     | Routningsmetod  | Välj **geografisk**. |
@@ -66,10 +66,10 @@ I de här självstudierna får du lära dig att
 
 1. Välj eller ange följande inställningar: 
 
-    | Inställningen                | Värde                                              |
+    | Inställning                | Värde                                              |
     | ---                    | ---                                                |
     | Typ                   | Välj typ av slut punkt. För geografiska routnings profiler som används i produktion rekommenderar vi att du använder kapslade slut punkts typer som innehåller en underordnad profil med fler än en slut punkt. Mer information finns i [vanliga frågor och svar om metoder för geografisk trafik cirkulation](traffic-manager-FAQs.md). |    
-    | Namn                   | Ange ett namn för att identifiera slut punkten. |
+    | Name                   | Ange ett namn för att identifiera slut punkten. |
     | Målresurstyp   | Välj resurs typ för målet. |
     | Målresurs        | Välj resursen i listan. |
 
