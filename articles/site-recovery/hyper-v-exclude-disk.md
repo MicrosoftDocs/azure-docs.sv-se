@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86131249"
 ---
 # <a name="exclude-disks-from-replication"></a>Undanta diskar från replikering
@@ -41,7 +41,7 @@ Observera följande innan du börjar:
 
 ## <a name="exclude-disks"></a>Uteslut diskar
 
-1. Om du vill utesluta diskar när du [aktiverar replikering](./hyper-v-azure-tutorial.md) för en virtuell Hyper-V-dator, när du har valt de virtuella datorer som **Enable replication**du vill replikera,  >  **Properties**  >  granskar du kolumnen **diskar som ska replikeras** i kolumnen Aktivera egenskaper för replikering på sidan Aktivera**Egenskaper** för replikering. Som standard är alla diskar markerade för replikering.
+1. Om du vill utesluta diskar när du [aktiverar replikering](./hyper-v-azure-tutorial.md) för en virtuell Hyper-V-dator, när du har valt de virtuella datorer som du vill replikera,  >    >  granskar du kolumnen **diskar som ska replikeras** i kolumnen Aktivera egenskaper för replikering på sidan Aktivera **Egenskaper** för replikering. Som standard är alla diskar markerade för replikering.
 2. Om du inte vill replikera en speciell disk går du **till diskar för att replikera** rensa urvalet för diskar som du vill undanta. 
 
     ![Undanta diskar från replikering](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

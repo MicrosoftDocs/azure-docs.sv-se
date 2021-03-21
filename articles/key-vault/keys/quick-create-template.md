@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: d68ec580f25bfd5f9c1a994efc15abd8835ac8a5
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: daf6d90ae6b5d95c54e0e83eff4c2d606e7054fe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093509"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585765"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Snabb start: skapa ett Azure Key Vault och en nyckel med hjälp av ARM-mall (för hands version)
 
@@ -163,6 +163,9 @@ Två resurser definieras i mallen:
 - Microsoft. nyckel valv/valv/nycklar
 
 Fler Azure Key Vault mal sampel finns i [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
+
+## <a name="deploy-the-template"></a>Distribuera mallen
+Du kan använda [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal), Azure PowerShell, Azure CLI eller REST API. Mer information om distributions metoder finns i [distribuera mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell).
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 

@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874550"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Snabb start: skapa ett chattrum med ASP.NET och SignalR-tjänsten
@@ -83,7 +83,7 @@ Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md
     </configuration>
     ```
 
-1. I *startup.cs*, i stället för `MapSignalR()` att anropa, måste du anropa `MapAzureSignalR({YourApplicationName})` och skicka anslutnings strängen för att programmet ska kunna ansluta till tjänsten i stället för att vara värd för SignalR. Ersätt `{YourApplicationName}` till namnet på ditt program. Det här namnet är ett unikt namn som särskiljer det här programmet från andra program. Du kan använda `this.GetType().FullName` som värde.
+1. I *Start. cs*, i stället för `MapSignalR()` att anropa, måste du anropa `MapAzureSignalR({YourApplicationName})` och skicka anslutnings strängen för att programmet ska kunna ansluta till tjänsten i stället för att vara värd för SignalR. Ersätt `{YourApplicationName}` till namnet på ditt program. Det här namnet är ett unikt namn som särskiljer det här programmet från andra program. Du kan använda `this.GetType().FullName` som värde.
 
     ```cs
     public void Configuration(IAppBuilder app)

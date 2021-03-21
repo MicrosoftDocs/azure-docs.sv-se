@@ -2,19 +2,19 @@
 title: 'Snabb start: Mass inläsning av data med en dedikerad SQL-pool'
 description: Använd Synapse Studio för att överföra data till en dedikerad SQL-pool i Azure Synapse Analytics.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
 ms.date: 12/11/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53b6810b0042df382fd1f553bc4bd0fae61793b3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: be15a37a9a2965da36f7e8f884a0a3112106b9ba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672805"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586734"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-studio"></a>Snabb start: Mass inläsning med Synapse Studio
 
@@ -26,7 +26,7 @@ Du kan Mass inläsning av data genom att högerklicka på följande område i Sy
 
 ![Skärm bild som visar hur du högerklickar på en fil eller mapp från ett lagrings konto.](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Guiden genererar en KOPIERINGs instruktion som använder Azure Active Directory (Azure AD) genom strömning för autentisering. Din [Azure AD-användare måste ha åtkomst](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) till arbets ytan med minst Storage BLOB data Contributor Azure-rollen för det Azure Data Lake Storage Gen2 kontot. 
 

@@ -4,10 +4,10 @@ description: Visar hur du använder parametrar för att ange porten för ett pro
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: ba2fb459dc9c981ad168aca4d0edf969650ccf48
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576714"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Så här anger du Port numret för en tjänst med hjälp av parametrar i Service Fabric

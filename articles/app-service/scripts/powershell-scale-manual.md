@@ -9,10 +9,10 @@ ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.openlocfilehash: 1b88e5928d276b58339cb0266505295808bc7a7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91335491"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Skala en webbapp manuellt med Azure PowerShell
@@ -39,7 +39,7 @@ Remove-AzResourceGroup -Name $ResourceGroupName -Force
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Skapar en resursgrupp där alla resurser lagras. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Skapar en App Service-plan. |

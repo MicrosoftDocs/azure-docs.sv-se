@@ -6,10 +6,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 12/18/2020
 ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695880"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Hantera stora meddelanden med segment i Azure Logic Apps
@@ -170,7 +170,7 @@ De här stegen beskriver den detaljerade processen Logic Apps använder för att
 
    | Rubrik fält för slut punkts svar | Typ | Obligatorisk | Beskrivning |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-segment-storlek** | Integer | Nej | Den föreslagna segment storleken i byte |
+   | **x-MS-segment-storlek** | Integer | Inga | Den föreslagna segment storleken i byte |
    | **Plats** | Sträng | Ja | Den URL-plats dit meddelanden om HTTP-KORRIGERINGarna ska skickas |
    ||||
 
@@ -192,7 +192,7 @@ De här stegen beskriver den detaljerade processen Logic Apps använder för att
    | Rubrik fält för slut punkts svar | Typ | Obligatorisk | Beskrivning |
    |--------------------------------|------|----------|-------------|
    | **Intervall** | Sträng | Ja | Byte-intervallet för innehåll som har tagits emot av slut punkten, till exempel: "byte = 0-1023" |   
-   | **x-MS-segment-storlek** | Integer | Nej | Den föreslagna segment storleken i byte |
+   | **x-MS-segment-storlek** | Integer | Inga | Den föreslagna segment storleken i byte |
    ||||
 
 Denna åtgärds definition visar till exempel en HTTP POST-begäran om att överföra segment innehåll till en slut punkt. I åtgärdens `runTimeConfiguration` egenskap `contentTransfer` anges egenskapen `transferMode` till `chunked` :

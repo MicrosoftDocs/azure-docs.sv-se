@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746821"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Skapa en profil behållare med Azure Files och AD DS
@@ -33,18 +33,18 @@ Så här konfigurerar du ett lagrings konto:
 
 2. Sök efter **lagrings konto** i Sök fältet.
 
-3. Välj **+Lägg till** .
+3. Välj **+Lägg till**.
 
 4. Ange följande information på sidan  **skapa lagrings konto** :
 
     - Skapa en ny resursgrupp.
     - Ange ett unikt namn för lagringskontot.
     - För **plats** rekommenderar vi att du väljer samma plats som Windows-adresspoolen för virtuella skriv bord.
-    - För **Prestanda** väljer du **Standard** . (Beroende på dina IOPS-krav. Mer information finns i [lagrings alternativ för FSLogix profil behållare i Windows Virtual Desktop](store-fslogix-profile.md).)
+    - För **Prestanda** väljer du **Standard**. (Beroende på dina IOPS-krav. Mer information finns i [lagrings alternativ för FSLogix profil behållare i Windows Virtual Desktop](store-fslogix-profile.md).)
     - För **Kontotyp** väljer du **StorageV2** eller **FileStorage** (endast tillgängligt om prestanda nivån är Premium).
-    - För **replikering** väljer du **lokalt REDUNDANT lagring (LRS)** .
+    - För **replikering** väljer du **lokalt REDUNDANT lagring (LRS)**.
 
-5. När du är klar väljer du **Granska + skapa** och väljer sedan **skapa** .
+5. När du är klar väljer du **Granska + skapa** och väljer sedan **skapa**.
 
 Om du behöver mer detaljerade konfigurations anvisningar, se [regional tillgänglighet](../storage/files/storage-files-identity-auth-active-directory-enable.md#regional-availability).
 
@@ -54,13 +54,13 @@ Därefter måste du skapa en Azure-filresurs.
 
 Så här skapar du en filresurs:
 
-1. Välj **Gå till resurs** .
+1. Välj **Gå till resurs**.
 
-2. På sidan Översikt väljer du **Filresurser** .
+2. På sidan Översikt väljer du **Filresurser**.
 
-3. Välj **+ fil resurser** , skapa en ny fil resurs med namnet **profiler** , ange sedan en lämplig kvot eller lämna fältet tomt utan kvot.
+3. Välj **+ fil resurser**, skapa en ny fil resurs med namnet **profiler**, ange sedan en lämplig kvot eller lämna fältet tomt utan kvot.
 
-4. Välj **Skapa** .
+4. Välj **Skapa**.
 
 ## <a name="enable-active-directory-authentication"></a>Aktivera Active Directory autentisering
 
@@ -70,7 +70,7 @@ Därefter måste du aktivera autentisering med Active Directory (AD). Om du vill
 
 2. Följ anvisningarna i [Aktivera AD DS-autentisering för Azure-filresurser](../storage/files/storage-files-identity-ad-ds-enable.md) för att installera AzFilesHybrid-modulen och aktivera autentisering.
 
-3.  Öppna Azure Portal, öppna ditt lagrings konto, Välj **konfiguration** och bekräfta **Active Directory (AD)** är inställt på **aktive rad** .
+3.  Öppna Azure Portal, öppna ditt lagrings konto, Välj **konfiguration** och bekräfta **Active Directory (AD)** är inställt på **aktive rad**.
 
      > [!div class="mx-imgBorder"]
      > ![En skärm bild av konfigurations sidan med Azure Active Directory (AD) aktive rad.](media/active-directory-enabled.png)
@@ -94,15 +94,15 @@ Så här tilldelar du Azure-rollbaserad åtkomst kontroll (Azure RBAC) behörigh
 
 3. Välj **fil resurser** och välj sedan namnet på den fil resurs som du planerar att använda.
 
-4. Välj **Access Control (IAM)** .
+4. Välj **Access Control (IAM)**.
 
-5. Välj **Lägg till en roll tilldelning** .
+5. Välj **Lägg till en roll tilldelning**.
 
 6. På fliken **Lägg till roll tilldelning** väljer du **Storage File data SMB resurs upphöjt bidrags givare** för administratörs kontot.
 
      Följ samma instruktioner för att tilldela användare behörigheter för deras FSLogix-profiler. Men när du går till steg 5, väljer du **Storage File data SMB Share Contributor** i stället.
 
-7. Välj **Spara** .
+7. Välj **Spara**.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Tilldela användare behörigheter på Azure-filresursen
 
@@ -121,7 +121,7 @@ Så här hämtar du UNC-sökvägen:
 
 2. Öppna det lagrings konto som du skapade i [Konfigurera ett lagrings konto](#set-up-a-storage-account).
 
-3. Välj **Inställningar** och välj sedan **Egenskaper** .
+3. Välj **Inställningar** och välj sedan **Egenskaper**.
 
 4. Kopiera den **primära fil tjänstens slut punkts-** URI till valfri text redigerare.
 
@@ -141,7 +141,7 @@ Hämta lagrings konto nyckeln:
 
 2. Öppna det lagrings konto som du skapade i [Konfigurera ett lagrings konto](#set-up-a-storage-account).
 
-3. På fliken **lagrings konto** väljer du **åtkomst nycklar** .
+3. På fliken **lagrings konto** väljer du **åtkomst nycklar**.
 
 4. Kopiera **KEY1** eller **key2** till en fil på den lokala datorn.
 
@@ -200,13 +200,13 @@ Så här konfigurerar du FSLogix på den virtuella datorn för sessionsvärd:
 
 5. Följ instruktionerna i [Konfigurera registerinställningar för profilcontainer](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings):
 
-    - Navigera till **datorn**  >  **HKEY_LOCAL_MACHINE**  >  **program vara**  >  **FSLogix** .
+    - Navigera till **datorn**  >  **HKEY_LOCAL_MACHINE**  >  **program vara**  >  **FSLogix**.
 
     - Skapa en **profil** nyckel.
 
     - Skapa **aktiverat, DWORD** med värdet 1.
 
-    - Skapa **VHDLocations, MULTI_SZ** .
+    - Skapa **VHDLocations, MULTI_SZ**.
 
     - Ange värdet för **VHDLocations** till den UNC-sökväg som du genererade i [Hämta UNC-sökvägen](#get-the-unc-path).
 

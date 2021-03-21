@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92739058"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Självstudie: Skapa containeravbildningar i ett Service Fabric-kluster i Linux
@@ -65,7 +65,7 @@ Det här kommandot kan ta lite tid eftersom alla nödvändiga beroenden måste h
 docker images
 ```
 
-Observera att två avbildningar har laddats ned eller skapats. Avbildningen *azure-vote-front* innehåller själva programmet. Det har härletts från en *Python* -avbildning från Docker Hub.
+Observera att två avbildningar har laddats ned eller skapats. Avbildningen *azure-vote-front* innehåller själva programmet. Det har härletts från en *Python*-avbildning från Docker Hub.
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
@@ -90,7 +90,7 @@ az account set --subscription <subscription_id>
 
 När du distribuerar ett Azure Container Registry behöver du först en resursgrupp. En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-Skapa en resursgrupp med kommandot **az group create** . I det här exemplet skapas en resursgrupp med namnet *myResourceGroup* i regionen *westus* .
+Skapa en resursgrupp med kommandot **az group create**. I det här exemplet skapas en resursgrupp med namnet *myResourceGroup* i regionen *westus*.
 
 ```azurecli
 az group create --name <myResourceGroup> --location westus

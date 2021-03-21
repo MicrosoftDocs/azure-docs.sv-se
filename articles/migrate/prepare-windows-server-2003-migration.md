@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753763"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Förbereda Windows Server 2003-datorer för migrering
@@ -55,4 +55,4 @@ Innan du migrerar kontrollerar du om integrerings tjänsterna för Hyper-V är i
 ## <a name="next-steps"></a>Nästa steg
 
 - Granska kraven för migrering för virtuella [VMware](migrate-support-matrix-vmware-migration.md) [-och Hyper-V-](migrate-support-matrix-hyper-v-migration.md) datorer.
-- Migrera [VMware](server-migrate-overview.md) virtuella VMware [-och Hyper-V-](tutorial-migrate-hyper-v.md) datorer.
+- Migrera [](server-migrate-overview.md) virtuella VMware [-och Hyper-V-](tutorial-migrate-hyper-v.md) datorer.

@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.openlocfilehash: c6e946d5aedb06899a44851b79581dbc518f41b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052321"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Anpassade mått i Azure Monitor (förhands granskning)
@@ -74,7 +74,7 @@ Varje data punkt som skickas till Azure Monitor måste markeras med en tidsstäm
 ### <a name="namespace"></a>Namnområde
 Namn områden är ett sätt att kategorisera eller gruppera likartade mått tillsammans. Genom att använda namn rymder kan du isolera olika grupper av mått som kan samla in olika insikter eller prestanda indikatorer. Du kan till exempel ha ett namn område med namnet **contosomemorymetrics** som spårar minnes användnings mått som innehåller en profil för din app. Ett annat namn område med namnet **contosoapptransaction** kan spåra alla mått för användar transaktioner i programmet.
 
-### <a name="name"></a>Namn
+### <a name="name"></a>Name
 **Namn** är namnet på det mått som rapporteras. Vanligt vis är namnet tillräckligt beskrivande för att hjälpa dig att identifiera vad som mäts. Ett exempel är ett mått som mäter antalet minnes byte som används på en specifik virtuell dator. Det kan ha ett Metric-namn som **minnes byte som används**.
 
 ### <a name="dimension-keys"></a>Dimensions nycklar

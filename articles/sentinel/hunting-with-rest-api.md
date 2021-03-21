@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 64f05e18ff757d9f086cf06d74109bf64e32a05c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795685"
 ---
-# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>Hantera jakt-och liveström-frågor i Azure Sentinel med hjälp av REST API
+# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>Hantera livestream- och jaktfrågor i Azure Sentinel med hjälp av REST API
 
 Azure Sentinel, som bygger delvis på Azure Monitor Log Analytics, gör att du kan använda Log Analytics REST API för att hantera jakt-och liveström-frågor. Det här dokumentet visar hur du skapar och hanterar frågor om jakt med hjälp av REST API.  Frågor som skapas på det här sättet kommer att visas i användar gränssnittet för Azure Sentinel.
 

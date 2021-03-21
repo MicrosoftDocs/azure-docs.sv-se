@@ -10,10 +10,10 @@ ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
 ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673814"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Övervaka, skapa och hantera SFTP-filer i Azure Logic Apps
@@ -45,10 +45,10 @@ SFTP-anslutaren hanterar endast filer som är *50 MB eller mindre* och stöder i
   > SFTP-anslutningen stöder de här privata nyckel formaten: OpenSSH, ssh.com och SparaTillFil
   >
   > När du skapar din Logic app måste du ange anslutnings information för din SFTP-server när du har lagt till den SFTP-utlösare eller åtgärd du vill ha. 
-  > Om du använder en privat SSH-nyckel ser du till att du * **kopierar** _ nyckeln från filen med din privata SSH-nyckel och _*_klistrar in_*_ nyckeln i anslutnings informationen, _*_anger eller redigerar inte nyckeln manuellt_*_ , vilket kan leda till att anslutningen Miss klaras. 
+  > Om du använder en privat SSH-nyckel, se till att du ***kopierar*** nyckeln från filen med din privata SSH-nyckel och ***klistrar in*** nyckeln i anslutnings informationen, ***Ange eller redigera inte nyckeln manuellt***, vilket kan leda till att anslutningen Miss klaras. 
   > Mer information finns i de senare stegen i den här artikeln.
 
-_ Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Den Logic app där du vill komma åt ditt SFTP-konto. [Skapa en tom Logic-app](../logic-apps/quickstart-create-first-logic-app-workflow.md)för att starta med en SFTP-utlösare. Om du vill använda en SFTP-åtgärd startar du din Logic-app med en annan utlösare, till exempel utlösaren **upprepning** .
 
@@ -56,7 +56,7 @@ _ Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickst
 
 SFTP-utlösare fungerar genom att söka i SFTP-filsystemet och leta efter en fil som har ändrats sedan den senaste avsökningen. Med vissa verktyg kan du bevara tidsstämpeln när filerna ändras. I dessa fall måste du inaktivera den här funktionen så att utlösaren kan fungera. Här följer några vanliga inställningar:
 
-| SFTP-klient | Åtgärd |
+| SFTP-klient | Action |
 |-------------|--------|
 | WinSCP | Gå till **alternativ**  >  **Inställningar**  >  **överför**  >  **Redigera**  >  **bevara tidsstämpel**  >  **inaktivera** |
 | FileZilla | Gå till **överför**  >  **bevara tidsstämplar för överförda filer**  >  **inaktivera** |
@@ -74,9 +74,9 @@ När en utlösare hittar en ny fil, kontrollerar utlösaren att den nya filen ä
 
    \- eller -
 
-   För befintliga Logic Apps, under det sista steget där du vill lägga till en åtgärd, väljer du **nytt steg** . I rutan Sök anger du "SFTP" som filter. Under listan åtgärder väljer du den åtgärd som du vill använda.
+   För befintliga Logic Apps, under det sista steget där du vill lägga till en åtgärd, väljer du **nytt steg**. I rutan Sök anger du "SFTP" som filter. Under listan åtgärder väljer du den åtgärd som du vill använda.
 
-   Om du vill lägga till en åtgärd mellan stegen flyttar du pekaren över pilen mellan stegen. Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd** .
+   Om du vill lägga till en åtgärd mellan stegen flyttar du pekaren över pilen mellan stegen. Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd**.
 
 1. Ange nödvändig information för anslutningen.
 
@@ -89,13 +89,13 @@ När en utlösare hittar en ny fil, kontrollerar utlösaren att den nya filen ä
 
    1. Öppna din privata SSH-nyckel fil i en text redigerare. I dessa steg används anteckningar som exempel.
 
-   1. I **redigerings** menyn i Anteckningar väljer du **Markera alla** .
+   1. I **redigerings** menyn i Anteckningar väljer du **Markera alla**.
 
-   1. Välj **Redigera**  >  **kopia** .
+   1. Välj **Redigera**  >  **kopia**.
 
-   1. I en SFTP-utlösare eller åtgärd som du har lagt till klistrar du in den *fullständiga* nyckeln som du kopierade i egenskapen **SSH Private Key** , som stöder flera rader. **_Se till att klistra in_* _ Key. _*_Ange eller redigera inte nyckeln manuellt_*_ .
+   1. I en SFTP-utlösare eller åtgärd som du har lagt till klistrar du in den *fullständiga* nyckeln som du kopierade i egenskapen **SSH Private Key** , som stöder flera rader. **_Se till att klistra in_*_ Key. _*_Ange eller redigera inte nyckeln manuellt_**.
 
-1. När du är klar med att ange anslutnings informationen väljer du _ * skapa * *.
+1. När du är klar med att ange anslutnings informationen väljer du **skapa**.
 
 1. Ange nödvändig information för den valda utlösaren eller åtgärden och fortsätt att skapa din Logic Apps-arbetsflöde.
 
@@ -107,7 +107,7 @@ När en utlösare hittar en ny fil, kontrollerar utlösaren att den nya filen ä
 
 Den här utlösaren startar ett Logic app-arbetsflöde när en fil läggs till eller ändras på en SFTP-server. Du kan till exempel lägga till ett villkor som kontrollerar filens innehåll och hämtar innehållet baserat på om innehållet uppfyller ett angivet villkor. Du kan sedan lägga till en åtgärd som hämtar filens innehåll och placerar innehållet i en mapp på SFTP-servern.
 
-**Enterprise-exempel** : du kan använda den här utlösaren för att övervaka en SFTP-mapp för nya filer som representerar kund order. Du kan sedan använda en SFTP-åtgärd, till exempel **Hämta fil innehåll** , så att du kan hämta Beställningens innehåll för ytterligare bearbetning och lagra den i en order databas.
+**Enterprise-exempel**: du kan använda den här utlösaren för att övervaka en SFTP-mapp för nya filer som representerar kund order. Du kan sedan använda en SFTP-åtgärd, till exempel **Hämta fil innehåll** , så att du kan hämta Beställningens innehåll för ytterligare bearbetning och lagra den i en order databas.
 
 <a name="get-content"></a>
 

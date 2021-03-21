@@ -11,10 +11,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790159"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Etablera en virtuell Linux-dator som kör SQL Server i Azure Portal
@@ -42,51 +42,51 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 1. Välj **Skapa en resurs** i fönstret till vänster.
 
-1. Klicka på **Compute** i fönstret **Skapa en resurs** .
+1. Klicka på **Compute** i fönstret **Skapa en resurs**.
 
-1. Välj **Visa alla** bredvid rubriken **Aktuella** .
+1. Välj **Visa alla** bredvid rubriken **Aktuella**.
 
    ![Se alla VM-avbildningar](./media/sql-vm-create-portal-quickstart/azure-compute-blade.png)
 
 1. I rutan Sök skriver du **SQL Server 2019** och väljer **RETUR** för att starta sökningen.
 
-1. Begränsa Sök resultaten genom att välja **operativ systemets**  >  **RedHat** .
+1. Begränsa Sök resultaten genom att välja **operativ systemets**  >  **RedHat**.
 
     ![Sök filter för SQL Server 2019 VM-avbildningar](./media/sql-vm-create-portal-quickstart/searchfilter.png)
 
-1. Välj en SQL Server 2019 Linux-avbildning från Sök resultaten. I den här självstudien används **SQL Server 2019 på RHEL74** .
+1. Välj en SQL Server 2019 Linux-avbildning från Sök resultaten. I den här självstudien används **SQL Server 2019 på RHEL74**.
 
    > [!TIP]
    > Med Developer-utgåvan kan du testa eller utveckla med funktionerna i Enterprise-utgåvan, men utan SQL Server-licenskostnader. Du betalar bara för kostnaden för att köra den virtuella Linux-datorn.
 
-1. Välj **Skapa** . 
+1. Välj **Skapa**. 
 
 
 ### <a name="set-up-your-linux-vm"></a>Konfigurera din virtuella Linux-dator
 
-1. Välj **Prenumeration** och **Resursgrupp** på fliken **Grunder** . 
+1. Välj **Prenumeration** och **Resursgrupp** på fliken **Grunder**. 
 
     ![Fönstret Grunder](./media/sql-vm-create-portal-quickstart/basics.png)
 
-1. Ange ett namn för din nya virtuella Linux-dator i **Virtuellt datornamn** .
+1. Ange ett namn för din nya virtuella Linux-dator i **Virtuellt datornamn**.
 1. Ange eller välj sedan följande värden:
-   * **Region** : Välj den Azure-region som passar dig.
-   * **Tillgänglighets alternativ** : Välj det alternativ för tillgänglighet och redundans som passar bäst för dina appar och data.
-   * **Ändra storlek** : Välj det här alternativet om du vill välja dator storlek och när du är färdig väljer du **Välj** . Mer information om storlekar för VM-datorer finns i [VM-storlekar](../../../virtual-machines/sizes.md).
+   * **Region**: Välj den Azure-region som passar dig.
+   * **Tillgänglighets alternativ**: Välj det alternativ för tillgänglighet och redundans som passar bäst för dina appar och data.
+   * **Ändra storlek**: Välj det här alternativet om du vill välja dator storlek och när du är färdig väljer du **Välj**. Mer information om storlekar för VM-datorer finns i [VM-storlekar](../../../virtual-machines/sizes.md).
 
      ![Välja storlek för virtuella datorer](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
    > [!TIP]
    > För utveckling och funktionstestning bör du använda en storlek för virtuella datorer på **DS2** eller högre. För prestandatestning använder du **DS13** eller högre.
 
-   * **Autentiseringstyp** : Välj **Offentlig SSH-nyckel** .
+   * **Autentiseringstyp**: Välj **Offentlig SSH-nyckel**.
 
      > [!Note]
      > Du kan välja mellan offentlig SSH-nyckel eller lösenord för autentisering. SSH är säkrare. Instruktioner om hur du genererar en SSH-nyckel finns i [Skapa SSH-nycklar på Linux och Mac för virtuella Linux-datorer i Azure](../../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-   * **Användar namn** : Ange administratörs namnet för den virtuella datorn.
-   * **Offentlig SSH-nyckel** : Ange din offentliga RSA-nyckel.
-   * **Offentliga inkommande portar** : Välj **Tillåt valda portar** och välj **SSH-porten (22)** i listan **Välj offentliga inkommande portar** . I den här snabbstarten är det här steget nödvändigt för att ansluta och slutföra SQL Server-konfigurationen. Om du vill fjärrans luta till SQL Server måste du manuellt tillåta trafik till standard porten (1433) som används av Microsoft SQL Server för anslutningar via Internet när den virtuella datorn har skapats.
+   * **Användar namn**: Ange administratörs namnet för den virtuella datorn.
+   * **Offentlig SSH-nyckel**: Ange din offentliga RSA-nyckel.
+   * **Offentliga inkommande portar**: Välj **Tillåt valda portar** och välj **SSH-porten (22)** i listan **Välj offentliga inkommande portar** . I den här snabbstarten är det här steget nödvändigt för att ansluta och slutföra SQL Server-konfigurationen. Om du vill fjärrans luta till SQL Server måste du manuellt tillåta trafik till standard porten (1433) som används av Microsoft SQL Server för anslutningar via Internet när den virtuella datorn har skapats.
 
      ![Ingående portar](./media/sql-vm-create-portal-quickstart/port-settings.png)
 
@@ -97,12 +97,12 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
     * **Gästkonfiguration**
     * **Taggar**
 
-1. Välj **Granska + skapa** .
-1. Välj **Skapa** i fönstret **Granska + skapa** .
+1. Välj **Granska + skapa**.
+1. Välj **Skapa** i fönstret **Granska + skapa**.
 
 ## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Ansluta till den virtuella Linux-datorn
 
-Om du redan använder ett BASH-gränssnitt ansluter du till den virtuella Azure-datorn med **ssh** -kommandot. I följande kommando ersätter du VM-användarnamnet och IP-adressen för att ansluta till din virtuella Linux-dator.
+Om du redan använder ett BASH-gränssnitt ansluter du till den virtuella Azure-datorn med **ssh**-kommandot. I följande kommando ersätter du VM-användarnamnet och IP-adressen för att ansluta till din virtuella Linux-dator.
 
 ```bash
 ssh azureadmin@40.55.55.555
@@ -125,7 +125,7 @@ Om du kör på Windows och inte har något BASH-gränssnitt kan du installera en
 Mer information om hur du ansluter till virtuella Linux-datorer finns i [Skapa en virtuell Linux-dator i Azure med hjälp av portalen](../../../virtual-machines/linux/quick-create-portal.md).
 
 > [!NOTE]
-> Om du ser en PuTTY-säkerhetsvarning om att serverns värdnyckel inte cachelagras i registret kan du välja bland följande alternativ. Om du litar på den här värden väljer du **Ja** för att lägga till nyckeln i PuTTy-cacheminnet och fortsätta anslutningen. Om du vill fortsätta med att bara ansluta en gång utan att lägga till nyckeln i cacheminnet väljer du **Nej** . Om du inte litar på den här värden lämnar du anslutningen genom att välja **Avbryt** .
+> Om du ser en PuTTY-säkerhetsvarning om att serverns värdnyckel inte cachelagras i registret kan du välja bland följande alternativ. Om du litar på den här värden väljer du **Ja** för att lägga till nyckeln i PuTTy-cacheminnet och fortsätta anslutningen. Om du vill fortsätta med att bara ansluta en gång utan att lägga till nyckeln i cacheminnet väljer du **Nej**. Om du inte litar på den här värden lämnar du anslutningen genom att välja **Avbryt**.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> Ändra SA-lösenordet
 
@@ -150,7 +150,7 @@ Den nya virtuella datorn installerar SQL Server med ett slumpmässigt SA-löseno
 
 ## <a name="add-the-tools-to-your-path-optional"></a>Lägga till verktygen på sökvägen (valfritt)
 
-Flera SQL Server-[paket](sql-server-on-linux-vm-what-is-iaas-overview.md#packages) är installerade som standard, inklusive SQL Server-kommandoradspaketet Tools. Paketet innehåller verktygen **sqlcmd** och **bcp** . För enkelhetens skull kan du lägga till verktygssökvägen, `/opt/mssql-tools/bin/`, i miljövariabeln **PATH** .
+Flera SQL Server-[paket](sql-server-on-linux-vm-what-is-iaas-overview.md#packages) är installerade som standard, inklusive SQL Server-kommandoradspaketet Tools. Paketet innehåller verktygen **sqlcmd** och **bcp**. För enkelhetens skull kan du lägga till verktygssökvägen, `/opt/mssql-tools/bin/`, i miljövariabeln **PATH**.
 
 1. Kör följande kommandon för att ändra **PATH** för både inloggningssessioner och interaktiva/icke-inloggningssessioner:
 
@@ -168,12 +168,12 @@ Om du behöver fjärransluta till SQL Server på den virtuella Azure-datorn mås
 > Om du har valt den inkommande porten **MS SQL (1433)** i inställningarna under etableringen har dessa ändringar har gjorts för dig. Du kan gå till nästa avsnitt om hur du konfigurerar brandväggen.
 
 1. I Portal väljer du **Virtuella datorer** och väljer sedan din virtuella SQL Server-dator.
-1. Välj **Nätverk** i det vänstra navigeringsfönstret under **Inställningar** .
+1. Välj **Nätverk** i det vänstra navigeringsfönstret under **Inställningar**.
 1. Välj **Lägg till inkommande port** under **Inkommande portregler** i fönstret Nätverk.
 
    ![Regler för inkommande portar](./media/sql-vm-create-portal-quickstart/networking.png)
 
-1. I listan **Tjänst** väljer du **MS SQL** .
+1. I listan **Tjänst** väljer du **MS SQL**.
 
     ![Regel för MS SQL-säkerhetsgrupp](./media/sql-vm-create-portal-quickstart/sqlnsgrule.png)
 

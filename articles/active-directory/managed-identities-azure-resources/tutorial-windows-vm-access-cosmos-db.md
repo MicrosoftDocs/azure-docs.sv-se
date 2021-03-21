@@ -16,10 +16,10 @@ ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04508f1aa8ee9d6b4f730f57c60d959fab209122
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101093798"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Windows-dator för åtkomst till Azure Cosmos DB

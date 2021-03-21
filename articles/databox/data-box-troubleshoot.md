@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92124687"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Felsöka problem som rör Azure Data Box och Azure Data Box Heavy
@@ -104,7 +104,7 @@ Detta är fel som rör behållare och resurs namn.
 - På sidan Anslut och kopiera i det lokala webb gränssnittet laddar du ned och granskar felfilerna för att identifiera mappnamnen med problem. 
 - Byt namn på katalogen eller behållare för att säkerställa att de är kompatibla med namngivnings konventionerna i Azure.
 
-Mer information finns i namngivnings konventionerna för [kataloger](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   och [behållare](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)i Azure.
+Mer information finns i namngivnings konventionerna för [kataloger](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) och [behållare](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)i Azure.
 
 ## <a name="container-or-share-size-limit-errors"></a>Gräns fel för behållare eller resurs storlek
 

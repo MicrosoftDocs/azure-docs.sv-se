@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91996463"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Förstå och Använd modul dubbla i IoT Hub
@@ -116,7 +116,7 @@ I det föregående exemplet innehåller modul två en `batteryLevel` egenskap so
 
 ### <a name="desired-property-example"></a>Exempel på önskad egenskap
 
-I föregående exempel `telemetryConfig` används modulens dubbla önskade och rapporterade egenskaper av lösningens Server del och modulens app för att synkronisera telemetri-konfigurationen för den här modulen. Till exempel:
+I föregående exempel `telemetryConfig` används modulens dubbla önskade och rapporterade egenskaper av lösningens Server del och modulens app för att synkronisera telemetri-konfigurationen för den här modulen. Exempel:
 
 1. Server delen för lösningen anger önskad egenskap med det önskade konfiguration svärdet. Här är den del av dokumentet med önskad egenskaps uppsättning:
 
@@ -300,7 +300,7 @@ IoT Hub avvisar alla åtgärder som skulle öka storleken på dokumenten över g
 ## <a name="module-twin-metadata"></a>Modul, dubbla metadata
 
 IoT Hub behåller tidsstämpeln för den senaste uppdateringen för varje JSON-objekt i modulen, och rapporterade egenskaper. Tidsstämplar anges i UTC och kodas i [iso8601](https://en.wikipedia.org/wiki/ISO_8601) -format `YYYY-MM-DDTHH:MM:SS.mmmZ` .
-Till exempel:
+Exempel:
 
 ```json
 {

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000920"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0,6 viktig information

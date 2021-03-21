@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 403d04039deef7890bdd5dba1ef337a4b26e86ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671802"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Självstudie: Azure Active Directory integrering med bambu av grodd social
@@ -30,7 +30,7 @@ Integreringen av Bambu by Sprout Social med Azure AD medför följande fördelar
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Bambu by Sprout Social behöver du följande:
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310051"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Snabb start: skapa en privat Azure-DNS-zon med hjälp av Azure Portal
@@ -40,9 +40,9 @@ En DNS-zon innehåller DNS-poster för en domän. Om du vill låta Azure DNS var
 
 1. På sidan **skapa privat DNS zon** skriver eller väljer du följande värden:
 
-   - **Resurs grupp**: Välj **Skapa ny**, ange *MyAzureResourceGroup*och välj **OK**. Resursgruppens namn måste vara unikt inom Azure-prenumerationen.
+   - **Resurs grupp**: Välj **Skapa ny**, ange *MyAzureResourceGroup* och välj **OK**. Resursgruppens namn måste vara unikt inom Azure-prenumerationen.
    -  **Namn**: Skriv *Private.contoso.com* i det här exemplet.
-1. För **resurs gruppens plats**väljer du **västra centrala USA**.
+1. För **resurs gruppens plats** väljer du **västra centrala USA**.
 
 1. Välj **Granska + skapa**.
 
@@ -76,7 +76,7 @@ Om du vill länka den privata DNS-zonen till ett virtuellt nätverk skapar du en
 2. I det vänstra fönstret väljer du **länkar till virtuella nätverk**.
 3. Välj **Lägg till**.
 4. Skriv en **länk** till **länk namnet**.
-5. För **virtuellt nätverk**väljer du **myAzureVNet**.
+5. För **virtuellt nätverk** väljer du **myAzureVNet**.
 6. Markera kryss rutan **Aktivera automatisk registrering** .
 7. Välj **OK**.
 
@@ -84,18 +84,18 @@ Om du vill länka den privata DNS-zonen till ett virtuellt nätverk skapar du en
 
 Nu skapar du två virtuella datorer så att du kan testa din privata DNS-zon:
 
-1. Välj **skapa en resurs**på Portal sidan längst upp till vänster och välj sedan **Windows Server 2016 Data Center**.
+1. Välj **skapa en resurs** på Portal sidan längst upp till vänster och välj sedan **Windows Server 2016 Data Center**.
 1. Välj **MyAzureResourceGroup** för resurs gruppen.
 1. Skriv **myVM01** – för namnet på den virtuella datorn.
 1. Välj **västra centrala USA** för **regionen**.
 1. Ange ett namn på administratörs användar namnet.
 2. Ange ett lösen ord och bekräfta lösen ordet.
-5. För **offentliga inkommande portar**väljer du **Tillåt valda portar**och väljer sedan **RDP (3389)** för **Välj inkommande portar**.
+5. För **offentliga inkommande portar** väljer du **Tillåt valda portar** och väljer sedan **RDP (3389)** för **Välj inkommande portar**.
 10. Godkänn de andra standardvärdena för sidan och klicka sedan på **Nästa: diskar >**.
 11. Godkänn standardvärdena på sidan **diskar** och klicka sedan på **nästa: nätverks >**.
 1. Kontrol lera att **myAzureVNet** har valts för det virtuella nätverket.
 1. Godkänn de andra standardvärdena för sidan och klicka sedan på **Nästa: hanterings >**.
-2. För **startdiagnostik**väljer du **av**, godkänner de andra standardvärdena och väljer sedan **Granska + skapa**.
+2. För **startdiagnostik** väljer du **av**, godkänner de andra standardvärdena och väljer sedan **Granska + skapa**.
 1. Granska inställningarna och klicka sedan på **skapa**.
 
 Upprepa de här stegen och skapa en annan virtuell dator med namnet **myVM02**.
@@ -104,12 +104,12 @@ Det tar några minuter för båda virtuella datorerna att slutföras.
 
 ## <a name="create-an-additional-dns-record"></a>Skapa en ytterligare DNS-post
 
- I följande exempel skapas en post med det relativa namnet **db** i DNS-zonen **Private.contoso.com**i resurs gruppen **MyAzureResourceGroup**. Det fullständigt kvalificerade namnet på post uppsättningen är **db.Private.contoso.com**. Post typen är "A", med IP-adressen för **myVM01**.
+ I följande exempel skapas en post med det relativa namnet **db** i DNS-zonen **Private.contoso.com** i resurs gruppen **MyAzureResourceGroup**. Det fullständigt kvalificerade namnet på post uppsättningen är **db.Private.contoso.com**. Post typen är "A", med IP-adressen för **myVM01**.
 
 1. Öppna resurs gruppen **MyAzureResourceGroup** och välj den privata **Private.contoso.com** -zonen.
 2. Välj **+ Postuppsättning**.
-3. I **namn**skriver du **db**.
-4. För **IP-adress**anger du den IP-adress som du ser för **myVM01**. Detta bör registreras automatiskt när den virtuella datorn startas.
+3. I **namn** skriver du **db**.
+4. För **IP-adress** anger du den IP-adress som du ser för **myVM01**. Detta bör registreras automatiskt när den virtuella datorn startas.
 5. Välj **OK**.
 
 ## <a name="test-the-private-zone"></a>Testa den privata zonen
@@ -180,5 +180,5 @@ När de inte längre behövs tar du bort resurs gruppen **MyAzureResourceGroup**
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Azure DNS Private Zones scenarier](private-dns-scenarios.md)
+> [Scenarier för Azure DNS Private Zones](private-dns-scenarios.md)
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 049025a5d871f1dd26e5dab498756aa44d2ebfe2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693287"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587873"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Introduktion till att skydda Azure-tjänstekonton
 
@@ -38,13 +38,13 @@ För tjänster som är värd för Azure rekommenderar vi att du använder en han
 
 ## <a name="managed-identities"></a>Hanterade identiteter
 
-Hanterade identiteter är säkra Azure Active Directory (Azure AD)-identiteter som skapas för att tillhandahålla identiteter för Azure-resurser. Det finns [två typer av hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types): 
+Hanterade identiteter är säkra Azure Active Directory (Azure AD)-identiteter som skapas för att tillhandahålla identiteter för Azure-resurser. Det finns [två typer av hanterade identiteter](../managed-identities-azure-resources/overview.md#managed-identity-types): 
  
 * Systemtilldelade hanterade identiteter kan tilldelas direkt till en instans av en tjänst. 
 
 * Användare som tilldelats hanterade identiteter kan skapas som en fristående resurs. 
 
-Mer information finns i [skydda hanterade identiteter](service-accounts-managed-identities.md). Allmän information om hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Mer information finns i [skydda hanterade identiteter](service-accounts-managed-identities.md). Allmän information om hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](../managed-identities-azure-resources/overview.md)
 
 ## <a name="service-principals"></a>Tjänstens huvudnamn
 
@@ -67,6 +67,3 @@ Mer information om hur du skyddar Azure-tjänstekonton finns i:
 [Skydda tjänstens huvud namn](service-accounts-principal.md)
 
 [Styrande Azure-tjänstekonton](service-accounts-governing-azure.md)
-
-
-

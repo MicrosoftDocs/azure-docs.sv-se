@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 1b8c0c5bf533765e589e022233af14855b26d29c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101656949"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Vad är Azure Synapse Link för Azure Cosmos DB?
@@ -136,7 +136,7 @@ Synapse-länk rekommenderas inte om du söker efter traditionella informations l
 
 * Det går inte att komma åt Azure Cosmos DB Analytics Store med SQL-etableringen för Synapse.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 I fakturerings modellen för Azure Synapse-länken ingår kostnader som uppstår med hjälp av Azure Cosmos DB analys lager och Synapse Runtime. Mer information finns i artikeln om priser för [Azure Cosmos DB analys lager](analytical-store-introduction.md#analytical-store-pricing) och [Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/) .
 

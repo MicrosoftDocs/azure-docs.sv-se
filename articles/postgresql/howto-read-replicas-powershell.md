@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674539"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Skapa och hantera Läs repliker i Azure Database for PostgreSQL med PowerShell
@@ -22,7 +22,7 @@ I den här artikeln får du lära dig hur du skapar och hanterar Läs repliker i
 
 Du kan skapa och hantera Läs repliker med PowerShell.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här instruktions guiden behöver du:
 
@@ -54,7 +54,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | Inställning | Exempelvärde | Beskrivning  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där replik servern skapas.  |
-| Namn | mydemoreplicaserver | Namnet på den nya replik servern som skapas. |
+| Name | mydemoreplicaserver | Namnet på den nya replik servern som skapas. |
 
 Om du vill skapa en skrivskyddad replik av en kors region använder du parametern **location** . I följande exempel skapas en replik i regionen **USA, västra** .
 

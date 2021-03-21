@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: functions
 author: ggailey777
 ms.service: azure-functions
@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 164620bdcee7ac546468354f999dcb3ad96ecf4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84731053"
 ---
 Azure Functions projekt mal len i Visual Studio skapar ett projekt som du kan publicera till en Function-app i Azure. Du kan använda en Function-app för att gruppera funktioner som en logisk enhet för enklare hantering, distribution, skalning och delning av resurser.
@@ -21,11 +21,11 @@ Azure Functions projekt mal len i Visual Studio skapar ett projekt som du kan pu
 
 1. I **skapa ett nytt projekt**, ange *funktioner* i sökrutan, Välj mallen **Azure Functions** och välj sedan **Nästa**.
 
-1. I **Konfigurera ditt nya projekt**anger du ett **projekt namn** för projektet och väljer sedan **skapa**. Funktionsappens namn måste vara ett giltigt C#-namnområde. Du kan inte använda understreck, bindestreck eller andra icke-alfanumeriska tecken.
+1. I **Konfigurera ditt nya projekt** anger du ett **projekt namn** för projektet och väljer sedan **skapa**. Funktionsappens namn måste vara ett giltigt C#-namnområde. Du kan inte använda understreck, bindestreck eller andra icke-alfanumeriska tecken.
 
 1. Använd värdena i följande tabell för **program inställningarna skapa en ny Azure Functions** :
 
-    | Inställningen      | Värde  | Beskrivning                      |
+    | Inställning      | Värde  | Beskrivning                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Functions-körning** | **Azure Functions v3 <br /> (.net Core)** | Det här värdet skapar ett funktions projekt som använder version 3. x-körningen av Azure Functions, som stöder .NET Core 3. x. Azure Functions 1.x har stöd för .NET Framework. Mer information finns i [Översikt över Azure Functions körnings versioner](../articles/azure-functions/functions-versions.md).   |
     | **Funktions mal len** | **HTTP-utlösare** | Det här värdet skapar en funktion som utlöses av en HTTP-begäran. |
@@ -35,6 +35,6 @@ Azure Functions projekt mal len i Visual Studio skapar ett projekt som du kan pu
     
     ![Azure Functions projekt inställningar](./media/functions-vs-tools-create/functions-project-settings.png)
 
-    Se till att du anger en **Anonym** **åtkomst nivå** . Om du väljer standard **funktions**nivån måste du presentera [funktions nyckeln](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) i begär Anden för att få åtkomst till funktions slut punkten.
+    Se till att du anger en **Anonym** **åtkomst nivå** . Om du väljer standard **funktions** nivån måste du presentera [funktions nyckeln](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) i begär Anden för att få åtkomst till funktions slut punkten.
 
 1. Välj **skapa** för att skapa funktionen Project och funktionen http-utlösare.

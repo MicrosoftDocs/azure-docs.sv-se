@@ -4,10 +4,10 @@ description: Lär dig hur Azure Policy använder klienten för gäst konfigurati
 ms.date: 01/14/2021
 ms.topic: conceptual
 ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702886"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
@@ -63,7 +63,7 @@ Klienten för gäst konfiguration söker efter nytt innehåll var 5: e minut. N�
 
 Princip definitioner för gäst konfiguration inkluderar nya versioner. Äldre versioner av operativ system som är tillgängliga på Azure Marketplace utesluts om gäst konfigurations klienten inte är kompatibel. I följande tabell visas en lista över operativ system som stöds på Azure-avbildningar:
 
-|Publisher|Namn|Versioner|
+|Publisher|Name|Versioner|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 20,04|
 |Credativ|Debian|8 - 10|

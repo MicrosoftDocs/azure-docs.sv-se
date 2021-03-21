@@ -4,10 +4,10 @@ description: Distribuera steg för ISO 27001-skissen för delade tjänster, inkl
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: 2eb9ed2199b28ad7cb349e6088c3cc583d8f011d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100577317"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Distribuera skiss exemplet för delade tjänster i ISO 27001

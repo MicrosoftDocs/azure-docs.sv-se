@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92013907"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynkron uppdatering med REST API
@@ -98,7 +98,7 @@ Bröd texten kan likna följande:
 
 Du behöver inte ange parametrar. Standardvärdet används.
 
-| Namn             | Typ  | Beskrivning  |Default  |
+| Namn             | Typ  | Beskrivning  |Standardvärde  |
 |------------------|-------|--------------|---------|
 | `Type`           | Enum  | Typ av bearbetning som ska utföras. Typerna justeras med kommando typerna TMSL [Refresh](/analysis-services/tmsl/refresh-command-tmsl) : full, clearValues, beräkning, dataOnly, Automatic och defragmentering. Det finns inte stöd för att lägga till typen.      |   automatiskt      |
 | `CommitMode`     | Enum  | Anger om objekt ska allokeras i batchar eller bara när de är slutförda. Lägena är: standard, transaktionell, partialBatch.  |  transaktions       |

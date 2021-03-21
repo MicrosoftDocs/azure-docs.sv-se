@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449301"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Server delar och backend-pooler i Azures front dörr
@@ -33,7 +33,7 @@ Backend-arbetsdelar syftar på värd namnet eller den offentliga IP-adressen fö
 
 - **Namn på prenumeration och backend-värd**. Om du inte har valt en **anpassad värd** för Server dels värd typ väljer du din server del genom att välja lämplig prenumeration och motsvarande Server dels värd namn i användar gränssnittet.
 
-- **Värd rubrik för Server**del. Värd huvud värde som skickas till Server delen för varje begäran. Mer information finns i [värd rubriken för Server delen](#hostheader).
+- **Värd rubrik för Server** del. Värd huvud värde som skickas till Server delen för varje begäran. Mer information finns i [värd rubriken för Server delen](#hostheader).
 
 - **Prioritet**. Tilldela prioriteter till olika Server delar när du vill använda en primär tjänst Server del för all trafik. Du kan också ange säkerhets kopior om den primära säkerhets kopian eller säkerhets kopieringen inte är tillgänglig. Mer information finns i [prioritet](front-door-routing-methods.md#priority).
 

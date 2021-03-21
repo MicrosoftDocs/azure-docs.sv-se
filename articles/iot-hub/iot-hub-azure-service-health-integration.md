@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 27fca7b76ab148fc355eb7d52ee0cbcbd3540458
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92548583"
 ---
 # <a name="check-iot-hub-service-and-resource-health"></a>Kontrol lera IoT Hub tjänst-och resurs hälsa
@@ -33,7 +33,7 @@ Följ dessa steg om du vill se status och status historik för din IoT Hub med h
 
 1. I [Azure Portal](https://portal.azure.com)går du till din IoT-hubb i Azure Portal.
 
-1. I den vänstra rutan under **support + fel sökning** väljer du **Resource Health** .
+1. I den vänstra rutan under **support + fel sökning** väljer du **Resource Health**.
 
     :::image type="content" source="./media/iot-hub-azure-service-health-integration/iot-hub-resource-health.png" alt-text="Sidan resurs hälsa för en IoT Hub":::
 
@@ -49,7 +49,7 @@ Följ dessa steg om du vill kontrol lera hälso tillståndet för dina IoT-hubba
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-2. Navigera till **service Health**  >  **resurs hälsa** .
+2. Navigera till **service Health**  >  **resurs hälsa**.
 
 3. Välj din prenumeration i list rutan och välj **IoT Hub** som resurs typ.
 

@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962085"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrera en ILB App Service-miljö med Azure Application Gateway #
@@ -60,31 +60,31 @@ Du kan inte heller ange den gateway i under nätet som ILB-App Service-miljön a
 
 2. I avsnittet **grundläggande** :
 
-   a. I **namn**anger du namnet på Application Gateway.
+   a. I **namn** anger du namnet på Application Gateway.
 
-   b. För **nivå**väljer du **WAF**.
+   b. För **nivå** väljer du **WAF**.
 
-   c. För **prenumeration**väljer du den prenumeration som App Service-miljön virtuellt nätverk använder.
+   c. För **prenumeration** väljer du den prenumeration som App Service-miljön virtuellt nätverk använder.
 
-   d. För **resurs grupp**skapar eller väljer du resurs gruppen.
+   d. För **resurs grupp** skapar eller väljer du resurs gruppen.
 
-   e. För **plats**väljer du platsen för det App Service-miljön virtuella nätverket.
+   e. För **plats** väljer du platsen för det App Service-miljön virtuella nätverket.
 
    ![Grunderna för att skapa nya Application Gateway][2]
 
 3. I **inställnings** avsnittet:
 
-   a. För **virtuellt nätverk**väljer du det virtuella nätverket App Service-miljön.
+   a. För **virtuellt nätverk** väljer du det virtuella nätverket App Service-miljön.
 
-   b. För **undernät**väljer du det undernät där Application Gateway måste distribueras. Använd inte GatewaySubnet, eftersom det gör att VPN-gatewayer inte kan skapas.
+   b. För **undernät** väljer du det undernät där Application Gateway måste distribueras. Använd inte GatewaySubnet, eftersom det gör att VPN-gatewayer inte kan skapas.
 
-   c. I **typ av IP-adress**väljer du **offentlig**.
+   c. I **typ av IP-adress** väljer du **offentlig**.
 
-   d. För **offentlig IP-adress**väljer du en offentlig IP-adress. Om du inte har ett kan du skapa en nu.
+   d. För **offentlig IP-adress** väljer du en offentlig IP-adress. Om du inte har ett kan du skapa en nu.
 
-   e. För **protokoll**väljer du **http** eller **https**. Om du konfigurerar för HTTPS måste du ange ett PFX-certifikat.
+   e. För **protokoll** väljer du **http** eller **https**. Om du konfigurerar för HTTPS måste du ange ett PFX-certifikat.
 
-   f. För **brand vägg för webbaserade program**kan du aktivera brand väggen och även ställa in den för **identifiering** eller **skydd** när du ser anpassa.
+   f. För **brand vägg för webbaserade program** kan du aktivera brand väggen och även ställa in den för **identifiering** eller **skydd** när du ser anpassa.
 
    ![Nya inställningar för att skapa Application Gateway][3]
     
@@ -98,7 +98,7 @@ Du kan inte heller ange den gateway i under nätet som ILB-App Service-miljön a
 
    ![Konfigurera hälsotillståndsavsökningar][5]
     
-7. När du har konfigurerat hälso avsökningarna har slutförts väljer du **http-inställningar**. Redigera befintliga inställningar, Välj **Använd anpassad avsökning**och välj den avsökning som du har konfigurerat.
+7. När du har konfigurerat hälso avsökningarna har slutförts väljer du **http-inställningar**. Redigera befintliga inställningar, Välj **Använd anpassad avsökning** och välj den avsökning som du har konfigurerat.
 
    ![Konfigurera HTTP-inställningar][6]
     
@@ -106,7 +106,7 @@ Du kan inte heller ange den gateway i under nätet som ILB-App Service-miljön a
 
    ![Application Gateway Portal][7]
 
-9. Ange det anpassade domän namnet för din app i din ILB-App Service-miljön. Gå till din app i portalen och välj **anpassade domäner**under **Inställningar**.
+9. Ange det anpassade domän namnet för din app i din ILB-App Service-miljön. Gå till din app i portalen och välj **anpassade domäner** under **Inställningar**.
 
    ![Ange anpassat domän namn i appen][8]
 

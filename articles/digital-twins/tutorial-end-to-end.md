@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634982"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577265"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -48,7 +48,7 @@ Om du vill arbeta igenom scenariot interagerar du med komponenterna i den förde
 
 Här följer de komponenter som implementeras av *AdtSampleApp* -exempel appen för bygg scenariot:
 * Enhetsautentisering 
-* Användnings exempel för [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (hittades i *CommandLoop.cs*)
+* Användnings exempel för [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (hittades i *CommandLoop. cs*)
 * Konsol gränssnitt för att anropa Azure Digitals dubbla API: er
 * *SampleClientApp* – ett exempel på Azure Digitals dubbla lösningar
 * *SampleFunctionsApp* – en Azure Functions app som uppdaterar ditt Azure Digitals-diagram till följd av telemetri från IoT Hub och Azures digitala dubbla händelser
@@ -121,35 +121,51 @@ Gå tillbaka till Visual Studio-fönstret där _**AdtE2ESample**_ -projektet är
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-För att din Function-app ska kunna komma åt Azure Digitals, måste den ha en Systemhanterad identitet med behörigheter för åtkomst till din Azure Digital-instansen. Nu ska du ställa in det här.
+För att din Function-app ska kunna komma åt Azures digitala dubbla, måste du ha behörighet att komma åt din Azure Digital-instans och instansens värdnamn. Du konfigurerar dessa härnäst.
 
-### <a name="assign-permissions-to-the-function-app"></a>Tilldela behörigheter till Function-appen
+### <a name="configure-permissions-for-the-function-app"></a>Konfigurera behörigheter för Function-appen
 
-Om du vill göra det möjligt för Function-appen att komma åt Azure Digitals, är nästa steg att konfigurera en app-inställning, tilldela appen en Systemhanterad Azure AD-identitet och ge den identiteten *Azure Digitals data ägar* roll i Azure Digital-instansen. Den här rollen krävs för alla användare eller funktioner som vill utföra många data Plans aktiviteter på instansen. Du kan läsa mer om säkerhets-och roll tilldelningar i [*begrepp: säkerhet för Azure Digitals dubbla lösningar*](concepts-security.md).
+Det finns två inställningar som måste ställas in för att Function-appen ska kunna få åtkomst till Azure Digitals-instansen. De kan båda göras via kommandon i [Azure Cloud Shell](https://shell.azure.com). 
 
-I Azure Cloud Shell använder du följande kommando för att ange en program inställning som din Function-app ska använda för att referera till din Azure Digital-instansen. Fyll i plats hållarna med information om dina resurser (kom ihåg att URL: en för Azure Digital-instansen är värd namnet föregånget av *https://*).
+#### <a name="assign-access-role"></a>Tilldela åtkomst roll
+
+Den första inställningen ger funktionen appen **Azure Digitals-rollen data ägare** i Azure Digitals-instansen. Den här rollen krävs för alla användare eller funktioner som vill utföra många data Plans aktiviteter på instansen. Du kan läsa mer om säkerhets-och roll tilldelningar i [*begrepp: säkerhet för Azure Digitals dubbla lösningar*](concepts-security.md). 
+
+1. Använd följande kommando för att se information om den systemhanterade identiteten för funktionen. Anteckna fältet **principalId** i utdata.
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > Om resultatet är tomt i stället för att visa information om en identitet skapar du en ny Systemhanterad identitet för funktionen med hjälp av det här kommandot:
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > Utdata visar sedan information om identiteten, inklusive det **principalId** -värde som krävs för nästa steg. 
+
+1. Använd **principalId**-värdet i följande kommando för att tilldela funktionsappens identitet till **Azure Digital Twins-dataägarrollen** för Azure Digital-instansen.
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+Resultatet av det här kommandot är information om den roll tilldelning som du har skapat. Function-appen har nu behörighet att komma åt data i Azure Digitals-instansen.
+
+#### <a name="configure-application-settings"></a>Konfigurera programinställningar
+
+Den andra inställningen skapar en **miljö variabel** för funktionen med URL: en för din Azure Digital-instansen. Funktions koden använder detta för att referera till din instans. Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
+
+Kör kommandot nedan och fyll i plats hållarna med information om dina resurser.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
 Utdata är listan över inställningar för Azure-funktionen som nu ska innehålla en post som kallas **ADT_SERVICE_URL**.
 
-Använd följande kommando för att skapa den systemhanterade identiteten. Leta efter fältet **principalId** i utdata.
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-Använd **principalId** -värdet från utdata i följande kommando för att tilldela Function-appens identitet till den *digitala Azure-dataägarens data ägar* roll för Azure Digitals-instansen.
-
-[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-Resultatet av det här kommandot är information om den roll tilldelning som du har skapat. Function-appen har nu åtkomst behörighet till din Azure Digital-instansen.
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>Bearbeta simulerad telemetri från en IoT Hub-enhet
 
@@ -242,7 +258,7 @@ Du kopplar dessa värden till enhets Simulator koden i det lokala projektet för
 >[!NOTE]
 > Nu bör du ha två Visual Studio-fönster, ett med _**DeviceSimulator. SLN**_ och ett från tidigare med _**AdtE2ESample. SLN**_.
 
-I fönstret *Solution Explorer* i det nya Visual Studio-fönstret väljer du _DeviceSimulator/**AzureIoTHub.cs**_ för att öppna den i redigerings fönstret. Ändra följande anslutnings sträng värden till värdena som du samlade in ovan:
+I fönstret *Solution Explorer* i det nya Visual Studio-fönstret väljer du _DeviceSimulator/**AzureIoTHub. cs**_ för att öppna den i redigerings fönstret. Ändra följande anslutnings sträng värden till värdena som du samlade in ovan:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>

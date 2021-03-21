@@ -11,18 +11,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2020
+ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f8090ea9c0d307d1bd290c4cf4dac9bfaabf7c4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221926"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576361"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Självstudie: Dirigera nätverkstrafik med en routningstabell med hjälp av Azure-portalen
 
-Som standard dirigerar Azure trafik mellan alla undernät inom ett virtuellt nätverk. Du kan skapa egna vägar för att åsidosätta Azures standardroutning. Anpassade vägar är användbara när du till exempel vill dirigera trafik mellan undernät via en virtuell nätverks installation (NVA). I de här självstudierna får du lära dig att
+Som standard dirigerar Azure trafik mellan alla undernät inom ett virtuellt nätverk. Du kan skapa egna vägar för att åsidosätta Azures standardroutning. Anpassade vägar är användbara när du till exempel vill dirigera trafik mellan undernät via en virtuell nätverks installation (NVA). I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en NVA som dirigerar trafik
@@ -36,222 +36,301 @@ I den här självstudien används [Azure Portal](https://portal.azure.com). Du k
 
 Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
+## <a name="prerequisites"></a>Förutsättningar
+
+- En Azure-prenumeration.
+
+## <a name="sign-in-to-azure"></a>Logga in på Azure
+
+Logga in på Azure Portal på https://portal.azure.com.
+
+## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
+
+1. I menyn i Azure-portalen väljer du **Skapa en resurs**. Välj **nätverk**  >  **virtuellt nätverk** på Azure Marketplace eller Sök efter **Virtual Network** i sökrutan.
+
+2. Välj **Skapa**.
+
+2. I **Skapa virtuellt nätverk** anger eller väljer du följande information:
+
+    | Inställning | Värde |
+    | ------- | ----- |
+    | Prenumeration | Välj din prenumeration.|
+    | Resursgrupp | Välj **Skapa ny**, ange **myResourceGroup**. </br> Välj **OK**. |
+    | Name | Ange **myVirtualNetwork**. |
+    | Location | Välj **(US) USA, östra**.|
+
+3. Välj fliken **IP-adresser** eller klicka på knappen **Nästa: IP-adresser** längst ned på sidan.
+
+4. I **IPv4-adress utrymme** väljer du det befintliga adress utrymmet och ändrar det till **10.0.0.0/16**.
+
+4. Välj **+ Lägg till undernät** och ange sedan **offentlig** för **under nätets namn** och **10.0.0.0/24** för **under nätets adress intervall**.
+
+5. Välj **Lägg till**.
+
+6. Välj **+ Lägg till undernät** och ange sedan **privat** för under nätets **namn** och **10.0.1.0/24** för **under nätets adress intervall**.
+
+7. Välj **Lägg till**.
+
+8. Välj **+ Lägg till undernät** och ange sedan **DMZ** för **under nätets namn** och **10.0.2.0/24** för **under nätets adress intervall**.
+
+9. Välj **Lägg till**.
+
+10. Välj fliken **säkerhet** eller Välj **Nästa: knappen säkerhet** längst ned på sidan.
+
+11. Under **BastionHost** väljer du **Aktivera**. Ange den här informationen:
+
+    | Inställning            | Värde                      |
+    |--------------------|----------------------------|
+    | Skydds namn | Ange **myBastionHost** |
+    | AzureBastionSubnet-adressutrymme | Ange **10.0.3.0/24** |
+    | Offentlig IP-adress | Välj **Skapa ny**. </br> Som **namn** anger du **myBastionIP**. </br> Välj **OK**. |
+
+12. Välj fliken **Granska + skapa** eller Välj knappen **Granska + skapa** .
+
+13. Välj **Skapa**.
+
 ## <a name="create-an-nva"></a>Skapa en NVA
 
-Virtuella nätverks installationer (NVA) är virtuella datorer som hjälper till med nätverksfunktioner, t. ex. Routning och brand Väggs optimering. Den här självstudien förutsätter att du använder **Windows Server 2016 Datacenter**. Du kan välja ett annat operativsystem om du vill.
+Virtuella nätverks installationer (NVA) är virtuella datorer som hjälper till med nätverksfunktioner, t. ex. Routning och brand Väggs optimering. I den här självstudien förutsätter vi att du använder **Windows Server 2019 Data Center**. Du kan välja ett annat operativsystem om du vill.
 
-1. I menyn i [Azure-portalen](https://portal.azure.com) eller på sidan **Start** väljer du **Skapa en resurs**.
+1. På den övre vänstra sidan av portalen väljer du **skapa en resurs**  >  **beräkning**  >  **virtuell dator**. 
+   
+2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
 
-1. Välj **säkerhet**  >  **Windows Server 2016 Data Center**.
+    | Inställning | Värde                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt information** |  |
+    | Prenumeration | Välj din Azure-prenumeration |
+    | Resursgrupp | Välj **myResourceGroup** |
+    | **Instansinformation** |  |
+    | Namn på virtuell dator | Ange **myVMNVA** |
+    | Region | Välj **(US) USA, östra** |
+    | Tillgänglighets alternativ | Välj **ingen redundans för infrastruktur krävs** |
+    | Bild | Välj **Windows Server 2019 Data Center** |
+    | Azure Spot-instans | Välj **Nej** |
+    | Storlek | Välj storlek på virtuell dator eller Ställ in standardinställningen |
+    | **Administratörs konto** |  |
+    | Användarnamn | Ange ett användar namn |
+    | Lösenord | Ange ett lösen ord |
+    | Bekräfta lösenordet | Ange lösenordet igen |
+    | **Regler för inkommande portar** |    |
+    | Offentliga inkommande portar | Välj **Ingen**. |
+    |
 
-    ![Windows Server 2016 Data Center, skapa en virtuell dator Azure Portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
+3. Välj fliken **Nätverk** eller **Nästa: diskar** och sedan **Nästa: nätverk**.
+  
+4. På fliken nätverk väljer eller anger du:
 
-1. På sidan **skapa en virtuell dator** under **grunderna** anger eller väljer du den här informationen:
-
-    | Avsnitt | Inställningen | Action |
-    | ------- | ------- | ----- |
-    | **Projektinformation** | Prenumeration | Välj din prenumeration. |
-    | | Resursgrupp | Välj **Skapa ny**, ange *myResourceGroup* och välj **OK**. |
-    | **Instansinformation** | Namn på virtuell dator | Ange *myVmNva*. |
-    | | Region | Välj **(US) USA, östra**. |
-    | | Alternativ för tillgänglighet | Välj **ingen infrastruktur redundans krävs**. |
-    | | Bild | Välj **Windows Server 2016 Data Center**. |
-    | | Storlek | Behåll standard **ds1 v2-standarden**. |
-    | **Administratörs konto** | Användarnamn | Ange ett valfritt användarnamn. |
-    | | Lösenord | Ange ett lösen ord som du väljer, vilket måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm). |
-    | | Bekräfta lösenord | Ange lösen ordet igen. |
-    | **Regler för inkommande portar** | Offentliga inkommande portar | Välj **ingen**. |
-    | **Spara pengar** | Har du redan en Windows Server-licens? | Välj **Nej**. |
-
-    ![Grunderna, skapa en virtuell dator, Azure Portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
-
-    Välj sedan **Nästa: diskar >**.
-
-1. Under **diskar** väljer du de inställningar som passar bäst för dina behov och väljer sedan **nästa: nätverks >**.
-
-1. Under **nätverk**:
-
-    1. För **virtuellt nätverk** väljer du **Skapa nytt**.
-    
-    1. I dialog rutan **Skapa virtuellt nätverk** , under **namn**, anger du *myVirtualNetwork*.
-
-    1. I **adress utrymme** ersätter du det befintliga adress intervallet med *10.0.0.0/16*.
-
-    1. I **undernät** väljer du ikonen **ta bort** för att ta bort det befintliga under nätet och anger sedan följande kombinationer av namn och **adress intervall** för **under nätet** . När ett giltigt namn och intervall har angetts visas en ny tom rad under den.
-
-        | Namn på undernät | Adressintervall |
-        | ----------- | ------------- |
-        | *Offentlig* | *10.0.0.0/24* |
-        | *Privat* | *10.0.1.0/24* |
-        | *DMZ* | *10.0.2.0/24* |
-
-    1. Välj **OK** för att stänga dialog rutan.
-
-    1. I **undernät** väljer du **DMZ (10.0.2.0/24)**.
-
-    1. I **offentlig IP** väljer du **ingen**, eftersom den virtuella datorn inte ansluter via Internet.
-
-    1. Välj **Nästa: hanterings >**.
-
-1. Under **hantering**:
-
-    1. I **lagrings konto för diagnostik** väljer du **Skapa nytt**.
-    
-    1. I dialog rutan **skapa lagrings konto** anger eller väljer du den här informationen:
-
-        | Inställning | Värde |
-        | ------- | ----- |
-        | Namn | *mynvastorageaccount* |
-        | Typ av konto | **Lagring (generell användning v1)** |
-        | Prestanda | **Standard** |
-        | Replikering | **Lokalt redundant lagring (LRS)** |
-    
-    1. Välj **OK** för att stänga dialog rutan.
-
-    1. Välj **Granska + skapa**. Du kommer till sidan **Granska + skapa** och Azure verifierar konfigurationen.
-
-1. När du ser ett meddelande som anger att **valideringen har slutförts** klickar du på **Skapa**.
-
-    Det tar några minuter att skapa den virtuella datorn. Vänta tills Azure har skapat den virtuella datorn. Sidan **distributionen är** igång visar distributions information.
-
-1. När den virtuella datorn är klar väljer du **Gå till resurs**.
+    | Inställning | Värde |
+    |-|-|
+    | **Nätverksgränssnitt** |  |
+    | Virtuellt nätverk | Välj **myVirtualNetwork**. |
+    | Undernät | Välj **DMZ** |
+    | Offentlig IP-adress | Välj **ingen** |
+    | Nätverks säkerhets grupp för nätverkskort | Välj **grundläggande**|
+    | Nätverk för offentliga inkommande portar | Välj **Ingen**. |
+   
+5. Välj fliken **Granska + skapa** eller Välj knappen blå **granskning + skapa** längst ned på sidan.
+  
+6. Granska inställningarna och välj sedan **Skapa**.
 
 ## <a name="create-a-route-table"></a>Skapa en routningstabell
 
 1. I menyn i [Azure-portalen](https://portal.azure.com) eller på sidan **Start** väljer du **Skapa en resurs**.
 
-2. I rutan Sök anger du *routningstabellen*. När **routningstabellen** visas i Sök resultaten väljer du den.
+2. I rutan Sök anger du **routningstabellen**. När **routningstabellen** visas i Sök resultaten väljer du den.
 
 3. På sidan **routningstabell** väljer du **skapa**.
 
-4. I **Skapa routningstabell** anger eller väljer du följande information:
+4. I **skapa routningstabell** på fliken **grundläggande** anger eller väljer du följande information:
 
     | Inställning | Värde |
     | ------- | ----- |
-    | Namn | *myRouteTablePublic* |
-    | Prenumeration | Din prenumeration |
-    | Resursgrupp | **myResourceGroup** |
-    | Plats | **(USA) USA, östra** |
-    | Väg spridning för virtuell nätverks-Gateway | **Aktiverad** |
+    | **Projektinformation** |   |
+    | Prenumeration | Välj din prenumeration.|
+    | Resursgrupp | Välj **myResourceGroup**. |
+    | **Instansinformation** |    |
+    | Region | Välj **USA, östra**. |
+    | Name | Ange **myRouteTablePublic**. |
+    | Sprida Gateway-vägar | Välj **Ja**. |
 
-    ![Skapa routningstabell, Azure Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/create-route-table.png" alt-text="Skapa routningstabellen, Azure Portal." border="true":::
 
-5. Välj **Skapa**.
+5. Välj fliken **Granska + skapa** eller Välj knappen blå **granskning + skapa** längst ned på sidan.
 
 ## <a name="create-a-route"></a>Skapa en väg
 
 1. Gå till [Azure Portal](https://portal.azure.com) för att hantera routningstabellen. Sök efter och välj **routningstabeller**.
 
-1. Välj namnet på din routningstabell (**myRouteTablePublic**).
+2. Välj namnet på din routningstabell **myRouteTablePublic**.
 
-1. Välj **vägar**  >  **Lägg till**.
+3. På sidan **myRouteTablePublic** i avsnittet **Inställningar** väljer du **vägar**.
 
-    ![Lägg till väg, routningstabell Azure Portal](./media/tutorial-create-route-table-portal/add-route.png)
+4. På sidan vägar väljer du knappen **+ Lägg till** .
 
-1. I **Lägg till väg** anger eller väljer du följande information:
+5. I **Lägg till väg** anger eller väljer du följande information:
 
     | Inställning | Värde |
     | ------- | ----- |
-    | Vägnamn | *ToPrivateSubnet* |
-    | Adressprefix | *10.0.1.0/24* (adress intervallet för det *privata* under nätet som skapades tidigare) |
-    | Nästa hopptyp | **Virtuell installation** |
-    | Nexthop-adress | *10.0.2.4* (en adress inom adress intervallet för *DMZ* -undernätet) |
+    | Vägnamn | Ange **ToPrivateSubnet** |
+    | Adressprefix | Ange **10.0.1.0/24** (adress intervallet för det **privata** under nätet som skapades tidigare) |
+    | Nästa hopptyp | Välj **Virtuell installation**. |
+    | Nexthop-adress | Ange **10.0.2.4** (en adress inom adress intervallet för **DMZ** -undernätet) |
 
-1. Välj **OK**.
+6. Välj **OK**.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Associera en routningstabell till ett undernät
 
 1. Gå till [Azure Portal](https://portal.azure.com) för att hantera ditt virtuella nätverk. Sök efter och välj **virtuella nätverk**.
 
-1. Välj namnet på ditt virtuella nätverk (**myVirtualNetwork**).
+2. Välj namnet på ditt virtuella nätverk **myVirtualNetwork**.
 
-1. I meny fältet för det virtuella nätverket väljer du **undernät**.
+3. På sidan **myVirtualNetwork** i avsnittet **Inställningar** väljer du **undernät**.
 
-1. Välj **offentlig** i listan undernät för virtuellt nätverk.
+4. Välj **offentlig** i listan undernät för virtuellt nätverk.
 
-1. I **routningstabellen** väljer du den routningstabell som du skapade (**myRouteTablePublic**) och väljer sedan **Spara** för att koppla routningstabellen till det *offentliga* under nätet.
+5. I **routningstabellen** väljer du den routningstabell som du skapade **myRouteTablePublic**. 
 
-    ![Associera routningstabellen, under näts lista, virtuellt nätverk Azure Portal](./media/tutorial-create-route-table-portal/associate-route-table.png)
+6. Välj **Spara** för att koppla din routningstabell till det **offentliga** under nätet.
+
+    :::image type="content" source="./media/tutorial-create-route-table-portal/associate-route-table.png" alt-text="Associera routningstabellen, under näts lista, virtuellt nätverk Azure Portal." border="true":::
 
 ## <a name="turn-on-ip-forwarding"></a>Aktivera IP-vidarebefordran
 
-Aktivera sedan IP-vidarebefordring för den nya virtuella NVA-datorn, *myVmNva*. När Azure skickar nätverks trafik till *myVmNva*, och om trafiken är avsedd för en annan IP-adress, skickar IP-vidarebefordring trafiken till rätt plats.
+Aktivera sedan IP-vidarebefordring för den nya virtuella NVA-datorn, **myVMNVA**. När Azure skickar nätverks trafik till **myVMNVA**, och om trafiken är avsedd för en annan IP-adress, skickar IP-vidarebefordring trafiken till rätt plats.
 
 1. Gå till [Azure Portal](https://portal.azure.com) för att hantera den virtuella datorn. Sök efter och välj **virtuella datorer**.
 
-1. Välj namnet på den virtuella datorn (**myVmNva**).
+2. Välj namnet på den virtuella datorn **myVMNVA**.
 
-1. I meny raden för den virtuella datorns NVA väljer du **nätverk**.
+3. På sidan Översikt över **myVMNVA** i **Inställningar** väljer du **nätverk**.
 
-1. Välj **myvmnva123**. Det är det nätverksgränssnitt som Azure skapade för den virtuella datorn. Azure lägger till siffror för att säkerställa ett unikt namn.
+4. På sidan **nätverk** i **myVMNVA** väljer du nätverks gränssnittet bredvid **nätverks gränssnittet**.  Namnet på gränssnittet kommer att börja med **myvmnva**.
 
-    ![Nätverk, virtuell nätverks installation (NVA) virtuell dator (VM), Azure Portal](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/virtual-machine-networking.png" alt-text="Nätverk, virtuell nätverks installation (NVA) virtuell dator (VM), Azure Portal" border="true":::
 
-1. I meny raden för nätverks gränssnittet väljer du **IP-konfigurationer**.
+5. På sidan Översikt över nätverks gränssnitt väljer du **IP-konfigurationer** i **Inställningar**.
 
-1. På sidan **IP-konfigurationer** anger du **IP-vidarebefordran** till **aktive rad** och väljer **Spara**.
+6. På sidan **IP-konfigurationer** anger du **IP-vidarebefordran** till **aktive rad** och väljer sedan **Spara**.
 
-    ![Aktivera IP-vidarebefordring, IP-konfigurationer, nätverks gränssnitt, virtuell nätverks installation (virtuell dator) Azure Portal](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/enable-ip-forwarding.png" alt-text="Aktivera IP-vidarebefordran" border="true":::
 
 ## <a name="create-public-and-private-virtual-machines"></a>Skapa offentliga och privata virtuella datorer
 
-Skapa en offentlig virtuell dator och en privat virtuell dator i det virtuella nätverket. Senare använder du dem för att se att Azure dirigerar trafik för det *offentliga* undernätet till det *privata* undernätet via NVA.
+Skapa en offentlig virtuell dator och en privat virtuell dator i det virtuella nätverket. Senare använder du dem för att se att Azure dirigerar trafik för det **offentliga** undernätet till det **privata** undernätet via NVA.
 
-Följ stegen i [skapa en NVA](#create-an-nva) tidigare om du vill skapa en offentlig virtuell dator och en privat virtuell dator. Du behöver inte vänta på att distributionen ska slutföras eller gå till den virtuella dator resursen. Du använder de flesta av samma inställningar, förutom vad som beskrivs nedan.
-
-Innan du väljer **skapa** för att skapa den offentliga eller privata virtuella datorn går du till följande två underavsnitt ([offentlig virtuell dator](#public-vm) och [privat virtuell dator](#private-vm)), som visar de värden som måste vara olika. Du kan fortsätta till nästa avsnitt ([dirigera trafik via en NVA](#route-traffic-through-an-nva)) när Azure har distribuerat båda virtuella datorerna.
 
 ### <a name="public-vm"></a>Offentlig virtuell dator
 
-| Flik | Inställning | Värde |
-| --- | ------- | ----- |
-| Grunder | Resursgrupp | **myResourceGroup** |
-| | Namn på virtuell dator | *myVmPublic* |
-| | Offentliga inkommande portar | **Tillåt valda portar** |
-| | Välj inkommande portar | **RDP** |
-| Nätverk | Virtuellt nätverk | **myVirtualNetwork** |
-| | Undernät | **Offentlig (10.0.0.0/24)** |
-| | Offentlig IP-adress | Standard |
-| Hantering | Lagringskonto för diagnostik | **mynvastorageaccount** |
+1. På den övre vänstra sidan av portalen väljer du **skapa en resurs**  >  **beräkning**  >  **virtuell dator**. 
+   
+2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
+
+    | Inställning | Värde                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt information** |  |
+    | Prenumeration | Välj din Azure-prenumeration |
+    | Resursgrupp | Välj **myResourceGroup** |
+    | **Instansinformation** |  |
+    | Namn på virtuell dator | Ange **myVMPublic** |
+    | Region | Välj **(US) USA, östra** |
+    | Tillgänglighets alternativ | Välj **ingen redundans för infrastruktur krävs** |
+    | Bild | Välj **Windows Server 2019 Data Center** |
+    | Azure Spot-instans | Välj **Nej** |
+    | Storlek | Välj storlek på virtuell dator eller Ställ in standardinställningen |
+    | **Administratörs konto** |  |
+    | Användarnamn | Ange ett användar namn |
+    | Lösenord | Ange ett lösen ord |
+    | Bekräfta lösenordet | Ange lösenordet igen |
+    | **Regler för inkommande portar** |    |
+    | Offentliga inkommande portar | Välj **Ingen**. |
+    |
+
+3. Välj fliken **Nätverk** eller **Nästa: diskar** och sedan **Nästa: nätverk**.
+  
+4. På fliken nätverk väljer eller anger du:
+
+    | Inställning | Värde |
+    |-|-|
+    | **Nätverksgränssnitt** |  |
+    | Virtuellt nätverk | Välj **myVirtualNetwork**. |
+    | Undernät | Välj **offentlig** |
+    | Offentlig IP-adress | Välj **ingen** |
+    | Nätverks säkerhets grupp för nätverkskort | Välj **grundläggande**|
+    | Nätverk för offentliga inkommande portar | Välj **Ingen**. |
+   
+5. Välj fliken **Granska + skapa** eller Välj knappen blå **granskning + skapa** längst ned på sidan.
+  
+6. Granska inställningarna och välj sedan **Skapa**.
 
 ### <a name="private-vm"></a>Privat virtuell dator
 
-| Flik | Inställning | Värde |
-| --- | ------- | ----- |
-| Grunder | Resursgrupp | **myResourceGroup** |
-| | Namn på virtuell dator | *myVmPrivate* |
-| | Offentliga inkommande portar | **Tillåt valda portar** |
-| | Välj inkommande portar | **RDP** |
-| Nätverk | Virtuellt nätverk | **myVirtualNetwork** |
-| | Undernät | **Privat (10.0.1.0/24)** |
-| | Offentlig IP-adress | Standard |
-| Hantering | Lagringskonto för diagnostik | **mynvastorageaccount** |
+1. På den övre vänstra sidan av portalen väljer du **skapa en resurs**  >  **beräkning**  >  **virtuell dator**. 
+   
+2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
+
+    | Inställning | Värde                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt information** |  |
+    | Prenumeration | Välj din Azure-prenumeration |
+    | Resursgrupp | Välj **myResourceGroup** |
+    | **Instansinformation** |  |
+    | Namn på virtuell dator | Ange **myVMPrivate** |
+    | Region | Välj **(US) USA, östra** |
+    | Tillgänglighets alternativ | Välj **ingen redundans för infrastruktur krävs** |
+    | Bild | Välj **Windows Server 2019 Data Center** |
+    | Azure Spot-instans | Välj **Nej** |
+    | Storlek | Välj storlek på virtuell dator eller Ställ in standardinställningen |
+    | **Administratörs konto** |  |
+    | Användarnamn | Ange ett användar namn |
+    | Lösenord | Ange ett lösen ord |
+    | Bekräfta lösenordet | Ange lösenordet igen |
+    | **Regler för inkommande portar** |    |
+    | Offentliga inkommande portar | Välj **Ingen**. |
+    |
+
+3. Välj fliken **Nätverk** eller **Nästa: diskar** och sedan **Nästa: nätverk**.
+  
+4. På fliken nätverk väljer eller anger du:
+
+    | Inställning | Värde |
+    |-|-|
+    | **Nätverksgränssnitt** |  |
+    | Virtuellt nätverk | Välj **myVirtualNetwork**. |
+    | Undernät | Välj **privat** |
+    | Offentlig IP-adress | Välj **ingen** |
+    | Nätverks säkerhets grupp för nätverkskort | Välj **grundläggande**|
+    | Nätverk för offentliga inkommande portar | Välj **Ingen**. |
+   
+5. Välj fliken **Granska + skapa** eller Välj knappen blå **granskning + skapa** längst ned på sidan.
+  
+6. Granska inställningarna och välj sedan **Skapa**.
 
 ## <a name="route-traffic-through-an-nva"></a>Dirigera trafik via NVA
 
-### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>Logga in på myVmPrivate via fjärrskrivbord
+### <a name="sign-in-to-private-vm"></a>Logga in på privat virtuell dator
 
 1. Gå till [Azure Portal](https://portal.azure.com) för att hantera din privata virtuella dator. Sök efter och välj **virtuella datorer**.
 
-1. Välj namnet på den privata virtuella datorn (**myVmPrivate**).
+2. Välj namnet på den privata virtuella datorn **myVmPrivate**.
 
-1. I meny raden för virtuell dator väljer du **Anslut** för att skapa en fjärr skrivbords anslutning till den privata virtuella datorn.
+3. I meny raden för virtuell dator väljer du **Anslut** och väljer sedan **skydds**.
 
-1. På sidan **Anslut med RDP** väljer du **Hämta RDP-fil**. Azure skapar en Remote Desktop Protocol-fil (*. RDP*) och laddar ned den till datorn.
+4. På sidan **Anslut** väljer du knappen blå **användnings skydds** .
 
-1. Öppna den nedladdade *RDP* -filen. Välj **Anslut** om du uppmanas att göra det. Välj **fler alternativ**  >  **Använd ett annat konto** och ange sedan det användar namn och lösen ord som du angav när du skapade den privata virtuella datorn.
+5. På sidan **skydds** anger du det användar namn och lösen ord som du skapade för den virtuella datorn tidigare.
 
-1. Välj **OK**.
+6. Välj **Anslut**.
 
-1. Om du får en certifikat varning under inloggnings processen väljer du **Ja** för att ansluta till den virtuella datorn.
+### <a name="configure-firewall"></a>Konfigurera brandvägg
 
-### <a name="enable-icmp-through-the-windows-firewall"></a>Aktivera ICMP via Windows-brandväggen
+I ett senare steg använder du vägspårningsverktyget för att testa routningen. Vägspårning använder ICMP (Internet Control Message Protocol), vilket Windows-brandväggen nekar som standard. 
 
-I ett senare steg använder du vägspårningsverktyget för att testa routningen. Vägspårning använder ICMP (Internet Control Message Protocol), vilket Windows-brandväggen nekar som standard. Aktivera ICMP via Windows-brandväggen.
+Aktivera ICMP via Windows-brandväggen.
 
-1. På fjärrskrivbordet för *myVmPrivate* öppnar du PowerShell.
+1. Öppna PowerShell med administratörs behörighet i skydds-anslutningen för **myVMPrivate**.
 
-1. Ange följande kommando:
+2. Ange följande kommando:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -259,34 +338,40 @@ I ett senare steg använder du vägspårningsverktyget för att testa routningen
 
     Du använder spårnings väg för att testa routning i den här självstudien. För produktionsmiljöer rekommenderar vi inte att du tillåter ICMP via Windows-brandväggen.
 
-### <a name="turn-on-ip-forwarding-within-myvmnva"></a>Aktivera IP-vidarebefordran i myVmNva
+### <a name="turn-on-ip-forwarding-within-myvmnva"></a>Aktivera IP-vidarebefordring i myVMNVA
 
-Du [aktiverade IP-vidarebefordran](#turn-on-ip-forwarding) för den virtuella datorns nätverksgränssnitt med hjälp av Azure. Den virtuella datorns operativsystem behöver också vidarebefordra nätverkstrafik. Aktivera IP-vidarebefordran för operativsystemet för den virtuella datorn *myVmNva* med följande kommandon.
+Du [aktiverade IP-vidarebefordran](#turn-on-ip-forwarding) för den virtuella datorns nätverksgränssnitt med hjälp av Azure. Den virtuella datorns operativ system måste också vidarebefordra nätverks trafik. 
 
-1. Från en kommandotolk på den virtuella datorn *myVmPrivate* öppnar du ett fjärrskrivbord till den virtuella datorn *myVmNva*:
+Aktivera IP-vidarebefordran för **myVMNVA** med dessa kommandon.
 
-    ```cmd
+1. Från PowerShell på den virtuella datorn **myVMPrivate** öppnar du ett fjärr skrivbord till den virtuella **myVMNVA** -datorn:
+
+    ```powershell
     mstsc /v:myvmnva
     ```
 
-1. Från PowerShell på den virtuella datorn *myVmNva* anger du det här kommandot för att aktivera IP-vidarebefordring:
+2. Från PowerShell på den virtuella datorn **myVMNVA** anger du det här kommandot för att aktivera IP-vidarebefordring:
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. Starta om den virtuella datorn *myVmNva* : i aktivitets fältet väljer du **Starta**  >  **kraft**, **övrigt (planerat)**  >  **Fortsätt**.
+3. Starta om **myVMNVA**.
 
-    Detta kopplar också från fjärrskrivbordssessionen.
-
-1. När den virtuella datorn *myVmNva* har startat om skapar du en fjärrskrivbordssession till den virtuella datorn *myVmPublic*. När du fortfarande är ansluten till den virtuella datorn *myVmPrivate* öppnar du en kommandotolk och kör följande kommando:
-
-    ```cmd
-    mstsc /v:myVmPublic
+    ```powershell
+    Restart-Computer
     ```
-1. Öppna PowerShell i fjärr skrivbordet för *myVmPublic*.
 
-1. Aktivera ICMP via Windows-brandväggen genom att ange följande kommando:
+4. När **myVMNVA** har startats om skapar du en fjärrskrivbordssession till **myVMPublic**. 
+    
+    När du fortfarande är ansluten till **myVMPrivate** öppnar du PowerShell och kör det här kommandot:
+
+    ```powershell
+    mstsc /v:myvmpublic
+    ```
+5. Öppna PowerShell i fjärr skrivbordet för **myVMPublic**.
+
+6. Aktivera ICMP via Windows-brandväggen genom att ange följande kommando:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -294,71 +379,79 @@ Du [aktiverade IP-vidarebefordran](#turn-on-ip-forwarding) för den virtuella da
 
 ## <a name="test-the-routing-of-network-traffic"></a>Testa routningen av nätverkstrafik
 
-Först testar vi att dirigera nätverkstrafik från den virtuella datorn *myVmPublic* till den virtuella datorn *myVmPrivate*.
+Vi börjar med att testa routning av nätverks trafik från **myVMPublic** till **myVMPrivate**.
 
-1. Från PowerShell på den virtuella datorn *myVmPublic* anger du följande kommando:
+1. Från PowerShell på **myVMPublic** anger du följande kommando:
 
     ```powershell
-    tracert myVmPrivate
+    tracert myvmprivate
     ```
 
     Svaret liknar det här exemplet:
 
     ```powershell
-    Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
+    Tracing route to myvmprivate.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.1.4]
     over a maximum of 30 hops:
 
-    1    <1 ms     *        1 ms  10.0.2.4
-    2     1 ms     1 ms     1 ms  10.0.1.4
+      1     1 ms     *        2 ms  myvmnva.internal.cloudapp.net [10.0.2.4]
+      2     2 ms     1 ms     1 ms  myvmprivate.internal.cloudapp.net [10.0.1.4]
 
     Trace complete.
     ```
 
-    Du kan se att det första hoppet är till 10.0.2.4, vilket är NVA privata IP-adress. Det andra hoppet är till den privata IP-adressen för den virtuella datorn *myVmPrivate* : 10.0.1.4. Tidigare lade du till vägen till vägtabellen *myRouteTablePublic* och associerade den till det *offentliga* undernätet. Därför skickade Azure trafiken via NVA och inte direkt till det *privata* undernätet.
+    * Du kan se att det första hoppet är till 10.0.2.4, vilket är **myVMNVA** privata IP-adress. 
 
-1. Stäng fjärrskrivbordssession för den virtuella datorn *myVmPublic*. Du är fortfarande ansluten till *myVmPrivate*.
+    * Det andra hoppet är till den privata IP-adressen för **myVMPrivate**: 10.0.1.4. 
 
-1. Från en kommandotolk på den virtuella datorn *myVmPrivate* anger du följande kommando:
+    Tidigare lade du till vägen till vägtabellen **myRouteTablePublic** och associerade den till det *offentliga* undernätet. Azure skickade trafiken genom NVA och inte direkt till det *privata* under nätet.
 
-    ```cmd
-    tracert myVmPublic
+2. Stäng fjärrskrivbordssessionen till **myVMPublic**, vilket låter dig fortfarande vara ansluten till **myVMPrivate**.
+
+3. Öppna PowerShell på **myVMPrivate**, ange följande kommando:
+
+    ```powershell
+    tracert myvmpublic
     ```
 
     Det här kommandot testar routningen av nätverks trafik från den virtuella datorn *myVmPrivate* till den virtuella *myVmPublic* -datorn. Svaret liknar det här exemplet:
 
     ```cmd
-    Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
+    Tracing route to myvmpublic.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.0.4]
     over a maximum of 30 hops:
 
-    1     1 ms     1 ms     1 ms  10.0.0.4
+      1     1 ms     1 ms     1 ms  myvmpublic.internal.cloudapp.net [10.0.0.4]
 
     Trace complete.
     ```
 
-    Du kan se att Azure dirigerar trafik direkt från den virtuella datorn *myVmPrivate* till den virtuella *myVmPublic* -datorn. Som standard dirigerar Azure trafik direkt mellan undernät.
+    Du kan se att Azure dirigerar trafik direkt från *myVMPrivate* till *myVMPublic*. Som standard dirigerar Azure trafik direkt mellan undernät.
 
-1. Stäng fjärrskrivbordssessionen för den virtuella datorn *myVmPrivate*.
+4. Stäng skydds-sessionen för **myVMPrivate**.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När resurs gruppen inte längre behövs tar du bort *myResourceGroup* och alla resurser den har:
+När resurs gruppen inte längre behövs tar du bort **myResourceGroup** och alla resurser den innehåller:
 
 1. Gå till [Azure Portal](https://portal.azure.com) för att hantera resurs gruppen. Sök efter och välj **resurs grupper**.
 
-1. Välj namnet på resurs gruppen (**myResourceGroup**).
+2. Välj namnet på din resurs grupp **myResourceGroup**.
 
-1. Välj **Ta bort resursgrupp**.
+3. Välj **Ta bort resursgrupp**.
 
-1. I bekräftelse dialog rutan anger du *myResourceGroup* för **Skriv resurs gruppens namn** och välj sedan **ta bort**. Azure tar bort *myResourceGroup* och alla resurser som är kopplade till den resurs gruppen, inklusive dina väg tabeller, lagrings konton, virtuella nätverk, virtuella datorer, nätverks gränssnitt och offentliga IP-adresser.
+4. I bekräftelse dialog rutan anger du **myResourceGroup** för **Skriv resurs gruppens namn** och välj sedan **ta bort**. 
+
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skapat en routningstabell och associerat den till ett undernät. Du har skapat en enkel NVA som dirigerade trafik från ett offentligt till ett privat undernät. Nu kan du distribuera olika förkonfigurerade NVA från [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking), vilket ger många användbara nätverksfunktioner. Mer information om routning finns i [routningsöversikten](virtual-networks-udr-overview.md) och [Hantera en routningstabell](manage-route-table.md).
+I den här kursen får du:
 
-Du kan distribuera många Azure-resurser inom ett virtuellt nätverk, men Azure kan inte distribuera resurser för vissa PaaS-tjänster till ett virtuellt nätverk. Det är möjligt att begränsa åtkomsten till resurser i vissa Azure PaaS-tjänster, även om begränsningen bara får vara trafik från ett undernät i ett virtuellt nätverk. Information om hur du begränsar nätverks åtkomsten till Azure PaaS-resurser finns i nästa självstudie.
+* Skapade en routningstabell och kopplade den till ett undernät.
+* Skapade en enkel NVA som dirigerade trafik från ett offentligt undernät till ett privat undernät. 
 
+Du kan distribuera olika förkonfigurerade NVA från [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking), vilket ger många användbara nätverksfunktioner. 
+
+Mer information om routning finns i [routningsöversikten](virtual-networks-udr-overview.md) och [Hantera en routningstabell](manage-route-table.md).
+
+Information om hur du filtrerar nätverks trafik i ett virtuellt nätverk finns i:
 > [!div class="nextstepaction"]
-> [Begränsa nätverksåtkomst till PaaS-resurser](tutorial-restrict-network-access-to-resources.md)
-
-> [!NOTE] 
-> Azure-tjänster kostar pengar. Azure Cost Management hjälper dig att ställa in budgetar och konfigurera aviseringar för att behålla utgifter under kontroll. Analysera, hantera och optimera dina Azure-kostnader med Cost Management. Mer information finns i snabb starten [när du analyserar dina kostnader](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+> [Självstudie: filtrera nätverks trafik med en nätverks säkerhets grupp med hjälp av Azure Portal](tutorial-filter-network-traffic.md)
