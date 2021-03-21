@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703379"
 ---
 # <a name="create-a-custom-voice"></a>Skapa en anpassad röst
@@ -44,7 +44,7 @@ Data uppsättningar verifieras automatiskt när du trycker på knappen Överför
 
 Följande tabell visar bearbetnings tillstånd för importerade data uppsättningar:
 
-| Stat | Innebörd |
+| Tillstånd | Innebörd |
 | ----- | ------- |
 | Bearbetar | Din data uppsättning har tagits emot och bearbetas. |
 | Lyckades | Din data uppsättning har verifierats och kan nu användas för att bygga en röst modell. |
@@ -97,7 +97,7 @@ I övnings tabellen visas en ny post som motsvarar den nyligen skapade modellen.
 
 Den status som visas visar processen för att konvertera data uppsättningen till en röst modell, som visas här.
 
-| Stat | Innebörd |
+| Tillstånd | Innebörd |
 | ----- | ------- |
 | Bearbetar | Din röst modell skapas. |
 | Lyckades | Din röst modell har skapats och kan distribueras. |

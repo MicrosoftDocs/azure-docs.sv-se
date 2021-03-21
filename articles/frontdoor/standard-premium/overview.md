@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 574340825567dcd512a5da1b311c57fe12954e34
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030553"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Vad är Azures främre dörr standard/Premium (för hands version)?
@@ -73,7 +73,7 @@ Viktiga funktioner som ingår i Azures främre dörr standard/Premium (för hand
 
 - Inbyggt stöd för IPv6-anslutning från slut punkt till slut punkt och HTTP/2-protokoll.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Azures front dörr standard/Premium har två SKU: er, standard och Premium. Se [jämförelse av nivåer](tier-comparison.md). Information om priser finns i [Prissättning för Front Door](https://azure.microsoft.com/pricing/details/frontdoor/). 
 

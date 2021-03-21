@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594174"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurera lokala mått och loggar för Azure API Management egen värd-Gateway
@@ -149,7 +149,7 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 Nu när både statistik-och Prometheus har distribuerats kan vi uppdatera konfigurationerna för den egna värdbaserade gatewayen för att börja generera mått via statistik. Funktionen kan aktive ras eller inaktive ras med `telemetry.metrics.local` nyckeln i ConfigMap för lokal gateway-distribution med ytterligare alternativ. Nedan visas en uppdelning av tillgängliga alternativ:
 
-| Fält  | Standardvärde | Description |
+| Fält  | Standardvärde | Beskrivning |
 | ------------- | ------------- | ------------- |
 | telemetri. Metrics. local  | `none` | Aktiverar loggning via statistik. Värdet kan vara `none` , `statsd` . |
 | telemetri. Metrics. local. statal. Endpoint  | saknas | Anger den statistikbaserade slut punkten. |
@@ -208,7 +208,7 @@ Om din egen värdbaserade Gateway distribueras i Azure Kubernetes-tjänsten kan 
 
 Den egna värdbaserade gatewayen stöder också ett antal protokoll `localsyslog` , inklusive, `rfc5424` och `journal` . I tabellen nedan sammanfattas alla alternativ som stöds. 
 
-| Fält  | Standardvärde | Description |
+| Fält  | Standardvärde | Beskrivning |
 | ------------- | ------------- | ------------- |
 | telemetri. logs. STD  | `text` | Aktiverar loggning till standard strömmar. Värdet kan vara `none` , `text` , `json` |
 | telemetri. logs. local  | `none` | Aktiverar lokal loggning. Värdet kan vara `none` ,,, `auto` `localsyslog` `rfc5424` , `journal`  |

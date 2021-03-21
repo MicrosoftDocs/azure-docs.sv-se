@@ -6,16 +6,21 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 692033e323880db1699d7265a991775d41b05f7f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713022"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656013"
 ---
 # <a name="what-is-document-translation-preview"></a>Vad är dokument översättning (för hands version)?
 
 Dokument översättning är en molnbaserad funktion i tjänsten [Azure Translator](../translator-info-overview.md) och är en del av Azure-tjänst familjen med REST-API: er. API för dokument översättning översätter dokument till och från 90 språk och dialekter samtidigt som dokument strukturen och data formatet bevaras.
+
+Den här dokumentationen innehåller följande artikel typer:  
+
+* [**Snabb starter**](get-started-with-document-translation.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.
+* [**Instruktions guider**](create-sas-tokens.md) innehåller instruktioner för hur du använder funktionen på mer exakta eller anpassade sätt.  
 
 ## <a name="document-translation-key-features"></a>Nyckel funktioner för dokument Översättning
 
@@ -64,5 +69,3 @@ Följande ord fil typer stöds av dokument översättning:
 
 > [!div class="nextstepaction"]
 > [Kom igång med dokument Översättning](get-started-with-document-translation.md)
->
->

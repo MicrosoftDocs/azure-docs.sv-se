@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
 ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503835"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Bifoga Apache Spark pooler (drivs av Azure Synapse Analytics) för data datatransformering (för hands version)
@@ -75,7 +75,7 @@ Du kan koppla Apache Spark pooler via,
 * Python SDK 
 
 ### <a name="attach-a-pool-via-the-studio"></a>Koppla en pool via Studio
-Gör så här: 
+Följ de här stegen: 
 
 1. Logga in på [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Välj **länkade tjänster** i avsnittet **Hantera** i det vänstra fönstret.

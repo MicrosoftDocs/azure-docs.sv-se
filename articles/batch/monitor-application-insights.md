@@ -4,12 +4,12 @@ description: Lär dig att instrumentera ett Azure Batch .NET-program med hjälp 
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933570"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605791"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Övervaka och felsöka ett Azure Batch .NET-program med Application Insights
 
@@ -32,7 +32,7 @@ Ett exempel på en C#-lösning med kod som medföljer den här artikeln finns p�
   
    * Använd Azure Portal för att skapa en Application Insights *resurs*. Välj *allmän* **program typ**.
 
-   * Kopiera [Instrumentation-nyckeln](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) från portalen. Det krävs senare i den här artikeln.
+   * Kopiera [Instrumentation-nyckeln](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key) från portalen. Det krävs senare i den här artikeln.
   
   > [!NOTE]
   > Du kanske [debiteras](https://azure.microsoft.com/pricing/details/application-insights/) för data som lagras i Application Insights. Detta omfattar diagnostik-och övervaknings data som diskuteras i den här artikeln.
@@ -54,9 +54,9 @@ För att kunna instrumentera din kod måste din lösning skapa en Application In
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
-Lägg också till Instrumentation-nyckeln i filen TopNWords.cs.
+Lägg också till Instrumentation-nyckeln i filen TopNWords. cs.
 
-I exemplet i TopNWords.cs används följande [Instrumentation-anrop](../azure-monitor/app/api-custom-events-metrics.md) från Application Insights API:
+Exemplet i TopNWords. cs använder följande [Instrumentation-anrop](../azure-monitor/app/api-custom-events-metrics.md) från Application Insights API:
 * `TrackMetric()` – Spårar hur lång tid det tar för en beräknings nod att ladda ned den nödvändiga text filen.
 * `TrackTrace()` – Lägger till fel söknings anrop till din kod.
 * `TrackEvent()` – Spårar intressanta händelser som ska fångas.
@@ -177,7 +177,7 @@ För att aktivera telemetri-initieraren innehåller ApplicationInsights.config f
 
 ## <a name="update-the-job-and-tasks-to-include-application-insights-binaries"></a>Uppdatera jobbet och aktiviteterna så att de inkluderar Application Insights-binärfiler
 
-För att Application Insights ska kunna köras korrekt på dina datornoder kontrollerar du att binärfilerna är rätt placerade. Lägg till de binärfiler som krävs i aktivitetens resurs fil samling så att de hämtas när uppgiften körs. Följande kodfragment liknar kod i Job.cs.
+För att Application Insights ska kunna köras korrekt på dina datornoder kontrollerar du att binärfilerna är rätt placerade. Lägg till de binärfiler som krävs i aktivitetens resurs fil samling så att de hämtas när uppgiften körs. Följande kodfragment liknar kod i Job. cs.
 
 Skapa först en statisk lista med Application Insights filer som ska överföras.
 
@@ -287,7 +287,7 @@ Så här skapar du ett exempel diagram:
    * Ange **diagram typ** till **rutnät**.
    * Ange **agg regering** till **genomsnitt**.
    * Ange **Gruppera efter** till **nodeId**.
-   * I **mått**väljer du **anpassad**  >  **BLOB-hämtning på några sekunder**.
+   * I **mått** väljer du **anpassad**  >  **BLOB-hämtning på några sekunder**.
    * Justera **paletten** för bildskärms färg efter eget val. 
 
 ![Hämtnings tid för BLOB per nod](./media/monitor-application-insights/blobdownloadtime.png)

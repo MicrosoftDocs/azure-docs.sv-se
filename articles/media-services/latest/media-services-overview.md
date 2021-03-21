@@ -78,7 +78,7 @@ Instruktions guider innehåller kod exempel som visar hur du utför en uppgift. 
 * [Skapa ett konto – CLI](./create-account-howto.md)
 * [Använd API:er – CLI](./access-api-howto.md)
 * [Koda med HTTPS som Job-inkommande – .NET](job-input-from-http-how-to.md)  
-* [Övervaka händelser – portalen](monitor-events-portal-how-to.md)
+* [Övervaka händelser – portalen](monitoring/monitor-events-portal-how-to.md)
 * [Kryptera dynamiskt med multi-DRM-.NET](protect-with-drm.md) 
 * [Koda med en anpassad Transform-CLI](custom-preset-cli-howto.md)
 

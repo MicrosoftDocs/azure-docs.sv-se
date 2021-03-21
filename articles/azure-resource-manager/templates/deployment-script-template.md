@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/18/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175659"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594250"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
 
@@ -162,11 +162,11 @@ Information om egenskaps värde:
   > [!NOTE]
   > Azure Portal kan inte parsa ett distributions skript med flera rader. Om du vill distribuera en mall med distributions skriptet från Azure Portal kan du antingen koppla PowerShell-kommandona genom att använda semikolon till en rad eller använda `primaryScriptUri` egenskapen med en extern skript fil.
 
-- `primaryScriptUri`: Ange en offentligt tillgänglig URL till det primära distributions skriptet med fil namns tillägg som stöds.
-- `supportingScriptUris`: Ange en matris med offentligt tillgängliga URL: er till stöd för filer som anropas i antingen `scriptContent` eller `primaryScriptUri` .
+- `primaryScriptUri`: Ange en offentligt tillgänglig URL till det primära distributions skriptet med fil namns tillägg som stöds. Mer information finns i [använda externa skript](#use-external-scripts).
+- `supportingScriptUris`: Ange en matris med offentligt tillgängliga URL: er till stöd för filer som anropas i antingen `scriptContent` eller `primaryScriptUri` . Mer information finns i [använda externa skript](#use-external-scripts).
 - `timeout`: Ange den högsta tillåtna körnings tiden för skript som anges i [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601). Standardvärdet är **P1D**.
 - `cleanupPreference`. Ange inställningen för att rensa distributions resurser när skript körningen blir i ett Terminal-tillstånd. Standardinställningen är **Always**, vilket innebär att resurserna tas bort trots att terminalens tillstånd (lyckades, misslyckades, avbröts). Mer information finns i [Rensa distribution skript resurser](#clean-up-deployment-script-resources).
-- `retentionInterval`: Ange med vilket intervall som tjänsten ska behålla distributions skript resurserna när distributions skript körningen har nått ett terminalfönster. Distributions skript resurserna tas bort när denna varaktighet upphör att gälla. Varaktigheten baseras på [ISO 8601-mönstret](https://en.wikipedia.org/wiki/ISO_8601). Kvarhållningsintervallet är mellan 1 och 26 timmar (PT26H). Den här egenskapen används när `cleanupPreference` är inställd på **OnExpiration**. Egenskapen **OnExpiration** har inte Aktiver ATS för närvarande. Mer information finns i [Rensa distribution skript resurser](#clean-up-deployment-script-resources).
+- `retentionInterval`: Ange med vilket intervall som tjänsten ska behålla distributions skript resurserna när distributions skript körningen har nått ett terminalfönster. Distributions skript resurserna tas bort när denna varaktighet upphör att gälla. Varaktigheten baseras på [ISO 8601-mönstret](https://en.wikipedia.org/wiki/ISO_8601). Kvarhållningsintervallet är mellan 1 och 26 timmar (PT26H). Den här egenskapen används när `cleanupPreference` är inställd på **OnExpiration**. Mer information finns i [Rensa distribution skript resurser](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Ytterligare exempel
 
@@ -212,7 +212,7 @@ Förutom infogade skript kan du också använda externa skriptfiler. Endast prim
 
 Mer information finns i [exempel mal len](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-De externa skriptfilerna måste vara tillgängliga. Information om hur du skyddar skriptfilerna som lagras i Azure Storage-konton finns i [distribuera privat arm-mall med SAS-token](./secure-template-with-sas-token.md).
+De externa skriptfilerna måste vara tillgängliga. Om du vill skydda skriptfilerna som lagras i Azure Storage-konton skapar du en SAS-token och inkluderar den i URI: n för mallen. Ange förfallo tid för att tillåta tillräckligt med tid för att slutföra distributionen. Mer information finns i [distribuera privat arm-mall med SAS-token](./secure-template-with-sas-token.md).
 
 Du ansvarar för att säkerställa integriteten för skript som refereras till av distributions skriptet, antingen `primaryScriptUri` eller `supportingScriptUris` . Referera endast till skript som du litar på.
 
@@ -313,7 +313,7 @@ Skript tjänsten anger resurs etablerings statusen till **misslyckades** när sk
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Skicka skyddade strängar till distributions skript
 
-Genom att ställa in miljövariabler (EnvironmentVariable) i behållar instanser kan du tillhandahålla dynamisk konfiguration av programmet eller skriptet som körs av behållaren. Distributions skriptet hanterar icke-skyddade och skyddade miljövariabler på samma sätt som Azure Container instance. Mer information finns i [Ange miljövariabler i container instances](../../container-instances/container-instances-environment-variables.md#secure-values).
+Genom att ställa in miljövariabler (EnvironmentVariable) i behållar instanser kan du tillhandahålla dynamisk konfiguration av programmet eller skriptet som körs av behållaren. Distributions skriptet hanterar icke-skyddade och skyddade miljövariabler på samma sätt som Azure Container instance. Mer information finns i [Ange miljövariabler i container instances](../../container-instances/container-instances-environment-variables.md#secure-values). Ett exempel finns i [exempel på mallar](#sample-templates).
 
 Den högsta tillåtna storleken för miljövariabler är 64 KB.
 
@@ -566,7 +566,7 @@ När skriptet har testats kan du använda det som ett distributions skript i mal
 
 ## <a name="deployment-script-error-codes"></a>Fel koder för distributions skript
 
-| Felkod | Beskrivning |
+| Felkod | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Resurs definitionen för distributions skriptet i mallen innehåller ogiltiga egenskaps namn. |
 | DeploymentScriptResourceConflict | Det går inte att ta bort en distributions skript resurs som är i icke-terminal-tillstånd och körningen har inte överskridit 1 timme. Eller också kan du inte köra samma distributions skript igen med samma resurs-ID (samma prenumeration, resurs grupp namn och resurs namn), men olika skript texts innehåll på samma tid. |

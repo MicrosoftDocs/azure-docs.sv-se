@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/12/2021
-ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.reviewer: stmummer
+ms.date: 3/17/2021
+ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225072"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593398"
 ---
 # <a name="co-sell-requirements"></a>Krav för samförsäljning
 
-Den här artikeln innehåller kraven för de olika nivåerna av samförsäljnings status. Den senaste listan med erbjudande typer som stöder samförsäljning finns i  [Konfigurera samförsäljning för ett erbjudande för en kommersiell Marketplace](commercial-marketplace-co-sell.md). En översikt över samförsäljningen finns i [samförsäljning med Microsoft Sales Teams and Partners Overview](marketplace-co-sell.md).
+Den här artikeln innehåller kraven för de olika nivåerna av samförsäljnings status. Den senaste listan med erbjudande typer som stöder samförsäljning finns i  [Konfigurera samförsäljning för ett erbjudande för en kommersiell Marketplace](co-sell-configure.md). En översikt över samförsäljningen finns i [samförsäljning med Microsoft Sales Teams and Partners Overview](co-sell-overview.md).
 
 I den här tabellen visas alla möjliga status för samma försäljning:
 
@@ -25,7 +26,7 @@ I den här tabellen visas alla möjliga status för samma försäljning:
 | Är inte färdig att sälja | Minimi [kraven för status för medförsäljnings klar](#requirements-for-co-sell-ready-status) har inte uppfyllts. |
 | Färdiga försäljnings produkter | Alla [krav för klar status för medförsäljning](#requirements-for-co-sell-ready-status) har uppfyllts. |
 | Azure IP Co-Sälj motiverade | Medförsäljnings klara krav har uppfyllts utöver [dessa ytterligare krav](#requirements-for-azure-ip-co-sell-incentivized-status). |
-| BIZ Apps ISV Connect Premium-incitament  | Den här statusen gäller för Dynamics 365 och Power apps erbjuder och indikerar att alla [krav för den här statusen](#requirements-for-biz-apps-isv-connect-premium-incentive-status) har uppfyllts. |
+| Business Applications Co-Sälj motiverade | Den här statusen gäller för Dynamics 365 och Power Apps-erbjudanden i [Microsoft Business Applications ISV Connect-programmet](business-applications-isv-program.md) och indikerar att alla [krav för den här statusen](#requirements-for-business-applications-co-sell-incentivized-status) har uppfyllts. |
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>Krav för klar status för medförsäljning
@@ -37,15 +38,15 @@ För ett erbjudande om att uppnå en färdig status för medförsäljning måste
 - Ha ett MPN-ID och ett aktivt [kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md).
 - Se till att du har en fullständig [företags profil](/partner-center/create-a-marketing-profile) i Partner Center. Som kvalificerad Microsoft-partner hjälper din företags profil dig att presentera din verksamhet för kunder som letar efter dina unika lösningar och expertis för att lösa sina affärs behov, vilket resulterar i [hänvisningar](/partner-center/referrals).
 - Slutför fliken **Co-Sälj med Microsoft** och publicera erbjudandet på den kommersiella Marketplace.
-- Ange en försäljnings kontakt för varje samsäljande geografi och obligatorisk struktur lista
+- Ange en försäljnings kontakt för varje samsäljande geografisk region och nödvändig material struktur.
 
 **Tjänste partner**:
 
 - För erbjudanden av typen av _tjänst lösning_ måste du ha en aktiv guld-kompetens i alla kompetens områden.
- 
+
 **Business Applications-ISV**: ar:
 
-- Dynamics 365 kundens engagemang & PowerApps och Dynamics 365 ekonomi & Ops (förutom Dynamics 365 Business Central) och PowerApps-lösningar kräver registrering av ISV Connect.
+- Dynamics 365 & PowerApps (utom Dynamics 365 Business Central) lösningar kräver registrering av ISV Connect.
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>Slutför fliken Co-Sälj med Microsoft
 
@@ -82,13 +83,9 @@ Krav 2 – skicka Microsofts tekniska validering för en Azure-baserad lösning:
 Krav 3 – Ange ett referens arkitektur diagram:
 - Ladda upp ett referens arkitektur diagram med dina samsäljande dokument i Partner Center för granskning. Vägledning om hur du skapar diagrammet finns i [referens arkitektur diagram](reference-architecture-diagram.md). Information om hur du laddar upp diagrammet finns i [Konfigurera samförsäljning för ett erbjudande för handels platser](commercial-marketplace-co-sell.md).
 
-## <a name="requirements-for-biz-apps-isv-connect-premium-incentive-status"></a>Krav för BIZ-appar ISV Connect Premium stimulans status
+## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Krav för Business Applications medförsäljning motiverade-status
 
-Den här statusen gäller för IP-baserade lösningar, appar och tjänster som bygger på Dynamics 365 eller Power Apps.
-
-Du behöver inte ge medförsäljnings klar status (visas ovan) för att uppnå BIZ Apps ISV Connect standard-incitament. Men när en app har uppnått status för medförsäljning kan det ta hänsyn till status för BIZ Apps ISV Connect Premium, baserat på de senaste 12 månaderna av intäkts delning och resultat/tröskelvärden för medfinansiering.
-
-Krav – du måste ha en aktiv registrering i [ISV Connect](business-applications-isv-program.md) Premium-nivån.
+Den här statusen gäller för IP-baserade lösningar som bygger på Dynamics 365 eller Power Apps (förutom för Dynamics 365 Business Central) som har registrerats i ISV Connect-programmet. Erbjudandena måste dock också uppfylla kraven för klar ande status för medförsäljning (beskrivs ovan) för att Microsoft-säljarna ska kunna samsälja erbjudandet med dig.
 
 ## <a name="next-steps"></a>Nästa steg
 

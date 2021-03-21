@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
 ms.openlocfilehash: 2a5c298c201aa2a1f968c2a96dcfd6963a410cf7
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149230"
 ---
 # <a name="what-is-azure-front-door"></a>Vad är Azure Front Door?
@@ -65,7 +65,7 @@ Viktiga funktioner som ingår i front dörren:
 
 * Inbyggt stöd för IPv6-anslutning från slut punkt till slut punkt och **[http/2-protokoll](front-door-http2.md)**.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Information om priser finns i [Prissättning för Front Door](https://azure.microsoft.com/pricing/details/frontdoor/). Se [SLA för Azures front dörr](https://azure.microsoft.com/en-us/support/legal/sla/frontdoor/v1_0/).
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/16/2021
 ms.author: shhazam
 ms.openlocfilehash: e746f37fdf3b67467c1844ebea9191679d52d6d1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491273"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>Säkerhets rekommendationer för IoT-enheter
@@ -32,7 +32,7 @@ I den här artikeln hittar du en lista över rekommendationer som kan utlösas p
 
 Enhets rekommendationer ger insikter och förslag för att förbättra position för enhets säkerhet.
 
-| Allvarlighetsgrad | Namn | Datakälla | Beskrivning |
+| Allvarlighetsgrad | Name | Datakälla | Beskrivning |
 |--|--|--|--|
 | Medel | Öppna portar på enheten | Klassisk Defender-IoT-Micro-agent| En lyssnande slut punkt hittades på enheten. |
 | Medel | Princip för att tillåta brand vägg hittas i en av kedjorna. | Klassisk Defender-IoT-Micro-agent| Tillåten brand Väggs princip hittades (indata/utdata). Brand Väggs principen bör neka all trafik som standard och definiera regler för att tillåta nödvändig kommunikation till/från enheten. |
@@ -44,7 +44,7 @@ Enhets rekommendationer ger insikter och förslag för att förbättra position 
 
 Drift rekommendationer ger insikter och förslag för att förbättra konfigurationen av säkerhets agenten.
 
-| Allvarlighetsgrad | Namn | Datakälla | Beskrivning |
+| Allvarlighetsgrad | Name | Datakälla | Beskrivning |
 |--|--|--|--|
 | Låg | Agent skickar meddelanden som inte används | Klassisk Defender-IoT-Micro-agent| 10% eller flera säkerhets meddelanden var mindre än 4 KB under de senaste 24 timmarna. |
 | Låg | Säkerhet, dubbel konfiguration inte optimal | Klassisk Defender-IoT-Micro-agent| En dubbel säkerhets konfiguration är inte optimalt. |

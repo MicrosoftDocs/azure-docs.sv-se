@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595268"
+ms.locfileid: "104656999"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referens – IoT Hub kvoter och begränsning
 
@@ -87,7 +87,7 @@ Du kan till exempel använda en simulerad enhet för att skicka 200 enhet-till-m
 
 Åtgärder för enhets identitets registret är avsedda för körnings användning i enhets hantering och etablerings scenarier. Läsning eller uppdatering av ett stort antal enhets identiteter stöds via [import-och export jobb](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
-När du initierar identitets åtgärder via [Mass enhets åtgärder](iot-hub-bulk-identity-mgmt.md)gäller samma begränsnings gränser. Om du till exempel vill skicka en Mass åtgärd för att skapa 50-enheter och du har en S1-IoT Hub med 1 enhet godkänns bara två av dessa Mass begär Anden per minut. Detta beror på att identitets åtgärden för en S1-IoT Hub med 1 enhet är 100 per minut/enhet. I det här fallet skulle en tredje begäran (och mer) på samma minut nekas eftersom gränsen redan hade uppnåtts. 
+När du initierar identitets åtgärder via [Mass register uppdaterings åtgärder](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) (*inte* Mass import-och export jobb) gäller samma begränsnings gränser. Om du till exempel vill skicka en Mass åtgärd för att skapa 50-enheter och du har en S1-IoT Hub med 1 enhet godkänns bara två av dessa Mass begär Anden per minut. Detta beror på att identitets åtgärden för en S1-IoT Hub med 1 enhet är 100 per minut/enhet. I det här fallet skulle en tredje begäran (och mer) på samma minut nekas eftersom gränsen redan hade uppnåtts. 
 
 ### <a name="device-connections-throttle"></a>Begränsning av enhets anslutningar
 

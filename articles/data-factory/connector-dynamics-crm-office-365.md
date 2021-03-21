@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 03/08/2021
-ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/17/2021
+ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447460"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597395"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiera data från och till Dynamics 365 (Common Data Service/Microsoft Dataverse) eller Dynamics CRM genom att använda Azure Data Factory
 
@@ -75,16 +75,16 @@ Följande egenskaper stöds för den länkade Dynamics-tjänsten.
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen måste anges till "Dynamics", "DynamicsCrm" eller "CommonDataServiceForApps". | Ja |
-| deploymentType | Dynamics-instansens distributions typ. Värdet måste vara "online" för Dynamics Online. | Ja |
-| serviceUri | Tjänst-URL: en för din Dynamics-instans, samma som du har åtkomst till från webbläsaren. Ett exempel är "https:// \<organization-name> . CRM [x]. Dynamics. com". | Ja |
-| authenticationType | Autentiseringstypen för att ansluta till en Dynamics-Server. Giltiga värden är "AADServicePrincipal" och "Office365". | Ja |
+| typ | Typ egenskapen måste anges till "Dynamics", "DynamicsCrm" eller "CommonDataServiceForApps". | Yes |
+| deploymentType | Dynamics-instansens distributions typ. Värdet måste vara "online" för Dynamics Online. | Yes |
+| serviceUri | Tjänst-URL: en för din Dynamics-instans, samma som du har åtkomst till från webbläsaren. Ett exempel är "https:// \<organization-name> . CRM [x]. Dynamics. com". | Yes |
+| authenticationType | Autentiseringstypen för att ansluta till en Dynamics-Server. Giltiga värden är "AADServicePrincipal" och "Office365". | Yes |
 | servicePrincipalId | Klient-ID för Azure AD-programmet. | Ja när autentiseringen är "AADServicePrincipal" |
 | servicePrincipalCredentialType | Den typ av autentiseringsuppgift som ska användas för autentisering av tjänstens huvud namn. Giltiga värden är "ServicePrincipalKey" och "ServicePrincipalCert". | Ja när autentiseringen är "AADServicePrincipal" |
 | servicePrincipalCredential | Tjänstens huvud behörighet. <br/><br/>När du använder "ServicePrincipalKey" som autentiseringstyp `servicePrincipalCredential` kan vara en sträng som Azure Data Factory krypteras vid en länkad tjänst distribution. Eller så kan det vara en referens till en hemlighet i Azure Key Vault. <br/><br/>När du använder "ServicePrincipalCert" som autentiseringsuppgift `servicePrincipalCredential` måste vara en referens till ett certifikat i Azure Key Vault. | Ja när autentiseringen är "AADServicePrincipal" |
 | användarnamn | Användar namnet för att ansluta till Dynamics. | Ja när autentiseringen är "Office365" |
 | password | Lösen ordet för det användar konto som du har angett som användar namn. Markera det här fältet med "SecureString" för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja när autentiseringen är "Office365" |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | Inga |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | No |
 
 >[!NOTE]
 >Dynamics Connector använde tidigare egenskap för **företags namn** för att identifiera Dynamics CRM-eller Dynamics 365 online-instansen. Även om egenskapen fortfarande fungerar föreslår vi att du anger den nya **serviceUri** -egenskapen i stället för att få bättre prestanda för instans identifiering.
@@ -180,7 +180,7 @@ Ytterligare egenskaper som jämförs med Dynamics Online är **värdnamn** och *
 | authenticationType | Autentiseringstypen för att ansluta till Dynamics-servern. Ange "IFD" för Dynamics lokalt med IFD. | Ja. |
 | användarnamn | Användar namnet för att ansluta till Dynamics. | Ja. |
 | password | Lösen ordet för det användar konto som du har angett för användar namnet. Du kan markera det här fältet med "SecureString" för att lagra det på ett säkert sätt i Data Factory. Eller så kan du lagra ett lösen ord i Key Vault och låta kopierings aktiviteten ta en stund när den kopierar data. Läs mer [om att lagra autentiseringsuppgifter i Key Vault](store-credentials-in-key-vault.md). | Ja. |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | Inga |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | No |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Exempel: Dynamics lokalt med IFD med IFD-autentisering
 
@@ -218,7 +218,7 @@ Följande egenskaper stöds för att kopiera data från och till Dynamics:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till "DynamicsEntity", "DynamicsCrmEntity" eller "CommonDataServiceForAppsEntity". |Ja |
+| typ | Data uppsättningens typ-egenskap måste anges till "DynamicsEntity", "DynamicsCrmEntity" eller "CommonDataServiceForAppsEntity". |Yes |
 | Entitetsnamnet | Det logiska namnet på den entitet som ska hämtas. | Nej för källa om aktivitets källan har angetts som "fråga" och Ja för mottagare |
 
 #### <a name="example"></a>Exempel
@@ -250,7 +250,7 @@ För att kopiera data från Dynamics stöder avsnittet för **kopierings aktivit
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste anges till "DynamicsSource", "DynamicsCrmSource" eller "CommonDataServiceForAppsSource". | Ja |
+| typ | Typ egenskapen för kopierings aktivitets källan måste anges till "DynamicsSource", "DynamicsCrmSource" eller "CommonDataServiceForAppsSource". | Yes |
 | DocumentDB | FetchXML är ett patentskyddat frågespråk som används i Dynamics Online och lokalt. Se följande exempel. Mer information finns i [Bygg frågor med FetchXML](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8)). | Nej om `entityName` i data uppsättningen anges |
 
 >[!NOTE]
@@ -319,10 +319,11 @@ För att kunna kopiera data till Dynamics stöder avsnittet Kopiera aktivitets *
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till "DynamicsSink", "DynamicsCrmSink" eller "CommonDataServiceForAppsSink". | Ja. |
-| writeBehavior | Åtgärdens Skriv funktion. Värdet måste vara "upsert". | Ja |
+| writeBehavior | Åtgärdens Skriv funktion. Värdet måste vara "upsert". | Yes |
 | alternateKeyName | Det alternativa nyckel namnet som definierats i entiteten för att göra en upsert. | Nej. |
 | writeBatchSize | Rad antalet data som skrivs till Dynamics i varje batch. | Nej. Standardvärdet är 10. |
 | ignoreNullValues | Om null-värden ska ignoreras från indata förutom nyckel fält under en Skriv åtgärd.<br/><br/>Giltiga värden är **True** och **false**:<ul><li>**True**: lämna kvar data i målobjektet oförändrade när du gör en upsert-eller uppdaterings åtgärd. Infoga ett definierat standardvärde när du infogar en åtgärd.</li><li>**False**: uppdatera data i målobjektet till ett null-värde när du gör en upsert-eller uppdaterings åtgärd. Infoga ett null-värde när du gör en infognings åtgärd.</li></ul> | Nej. Standardvärdet är **false**. |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No |
 
 >[!NOTE]
 >Standardvärdet för både Sink- **writeBatchSize** och kopierings aktiviteten **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** för Dynamics-Sink är 10. Därför skickas 100-poster samtidigt som standard till Dynamics.

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: 8f960e58d47963cbb239d498af52e7adfc77caa9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586874"
 ---
 # <a name="internet-peering-overview"></a>Översikt över Internet-peering
@@ -46,7 +46,7 @@ Om du redan har upprättat peer-kopplingar med Microsoft kallas de för **äldre
 ## <a name="peering-policy"></a>Peering-policy
 Microsoft har en selektiv, men ofta öppen peering-princip. Peer-datorer väljs utifrån prestanda, kapacitet och var de har ömsesidig nytta och omfattas av vissa tekniska, kommersiella och juridiska krav. Mer information finns i [peering-principen](policy.md).
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 Vanliga frågor och svar om peering finns i [Internet-peering – vanliga frågor och svar](faqs.md).
 
 ## <a name="next-steps"></a>Nästa steg

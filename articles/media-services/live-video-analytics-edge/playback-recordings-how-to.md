@@ -4,10 +4,10 @@ description: Du kan använda video analys i real tid för IoT Edge för kontinue
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99490903"
 ---
 # <a name="playback-of-recordings"></a>Uppspelning av inspelningar 
@@ -50,7 +50,7 @@ Om precision svärdet kan vara ett av: år, månad, dag eller fullständig (se n
 
 |Precision|år|månad|day|fullständig|
 |---|---|---|---|---|
-|Söka i data|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
+|Fråga|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
 |Svarsåtgärder|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Svar med fullständig åter givning. Om det inte fanns några luckor alls skulle starten vara StartTime och end skulle vara slut tid.|
 |Villkor|&#x2022;StartTime <= slut tid<br/>&#x2022;båda ska vara i formatet åååå, annars returnerar fel.<br/>&#x2022;värden kan vara vilket som helst av flera års mellanrum.<br/>&#x2022;värden inkluderas.|&#x2022;StartTime <= slut tid<br/>&#x2022;båda ska vara i formatet ÅÅÅÅ-MM, annars returnerar fel.<br/>&#x2022;värden kan vara högst 12 månader isär.<br/>&#x2022;värden inkluderas.|&#x2022;StartTime <= slut tid<br/>&#x2022;båda ska vara i formatet ÅÅÅÅ-MM-DD, annars returnerar fel.<br/>&#x2022;värden kan vara högst 31 dagar isär.<br/>Värdena är inkluderade.|&#x2022;StartTime < slut tid<br/>&#x2022;värden kan vara högst 25 timmar isär.<br/>&#x2022;värden inkluderas.|
 

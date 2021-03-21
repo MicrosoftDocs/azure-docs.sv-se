@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 120bec65c92e2a13022682265b83bfe0f69d8ed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692274"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592101"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Vanliga frågor och svar om Azure Synapse Link för Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +33,10 @@ När du planerar att konfigurera ett Azure Cosmos DBs konto för flera regioner 
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kan jag välja att bara aktivera Azure Synapse-länken för vissa regioner och inte alla regioner i ett konto med flera regioner?
 
 När Azure Synapse-länken är aktive rad för ett konto med flera regioner skapas analys lagret i alla regioner. Underliggande data är optimerade för data flöde och transaktions konsekvens i transaktions arkivet.
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>Stöds analys lagring i alla Azure Cosmos DB regioner?
+
+Ja.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Stöds säkerhets kopiering och återställning av Azure Synapse Link-aktiverade konton?
 
@@ -165,6 +169,10 @@ Den här funktionen är för närvarande inte tillgänglig.
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>Kan jag använda Spark-strukturerad strömning från analys lager?
 
 För närvarande används Spark-stöd för direkt uppspelning för Azure Cosmos DB implementeras med hjälp av funktionen ändra feed i transaktions arkivet och det stöds ännu inte från analytisk lagring.
+
+### <a name="is-streaming-supported"></a>Stöds strömning?
+
+Vi stöder inte strömning av data från analys lagret.
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

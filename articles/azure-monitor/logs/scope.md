@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
 ms.openlocfilehash: 43e4e861905352c2818dfb08b8cb442bd70481c1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047187"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Logg frågans omfång och tidsintervall i Azure Monitor Log Analytics
@@ -47,7 +47,7 @@ När fråge omfånget är en Log Analytics arbets yta eller ett Application Insi
 Du kan inte använda följande kommandon i en fråga som är begränsad till en resurs eftersom fråge omfånget redan innehåller arbets ytor med data för resursen eller en uppsättning resurser:
 
 - [mobilappar](../logs/app-expression.md)
-- [arbetsyta](../logs/workspace-expression.md)
+- [platsen](../logs/workspace-expression.md)
  
 
 ## <a name="query-scope-limits"></a>Omfattnings gränser för fråga
