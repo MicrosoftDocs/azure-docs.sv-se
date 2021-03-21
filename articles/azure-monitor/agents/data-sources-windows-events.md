@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0eaa73fa7e0a9896a875af7e3a3aab22db2a37d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036611"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657067"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Samla in data källor för Windows-händelseloggen med Log Analytics agent
 Windows-händelseloggar är en av de vanligaste [data källorna](../agents/agent-data-sources.md) för Log Analytics agenter på virtuella Windows-datorer eftersom många program skriver till händelse loggen i Windows.  Du kan samla in händelser från standard loggar som system och program, förutom att ange anpassade loggar som skapats av program som du behöver övervaka.
@@ -28,6 +28,10 @@ Azure Monitor samlar endast in händelser från Windows-händelseloggen som ange
 När du skriver namnet på en händelse logg ger Azure Monitor förslag på vanliga händelse logg namn. Om loggen som du vill lägga till inte visas i listan kan du fortfarande lägga till den genom att skriva i det fullständiga namnet på loggen. Du kan hitta det fullständiga namnet på loggen med hjälp av logg boken. I logg boken öppnar du sidan *Egenskaper* för loggen och kopierar strängen från fältet *fullständigt namn* .
 
 [![Konfigurera Windows-händelser](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
+
+> [!IMPORTANT]
+> Du kan inte konfigurera insamling av säkerhets händelser från arbets ytan. Du måste använda [Azure Security Center](../../security-center/security-center-enable-data-collection.md) eller [Azure Sentinel](../../sentinel/connect-windows-security-events.md) för att samla in säkerhets händelser.
+
 
 > [!NOTE]
 > Kritiska händelser från händelse loggen i Windows har allvarlighets graden "Error" i Azure Monitor loggar.

@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100369653"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory sömlös enkel inloggning: tekniskt djup
@@ -67,10 +67,6 @@ Inloggnings flödet i en webbläsare är följande:
 6. Active Directory söker efter dator kontot och returnerar en Kerberos-biljett till webbläsaren som krypteras med dator kontots hemlighet.
 7. Webbläsaren vidarebefordrar Kerberos-biljetten som den erhöll från Active Directory till Azure AD.
 8. Azure AD dekrypterar Kerberos-biljetten, som innehåller identiteten för användaren som är inloggad på företags enheten, med hjälp av den tidigare delade nyckeln.
-
-   >[!NOTE]
-   >Azure AD kommer att försöka matcha användarens UPN från Kerberos-biljetten till ett Azure AD-användarkonto som har ett motsvarande värde i userPrincipalName-attributet. Om detta inte lyckas kommer Azure AD att återgå till att matcha samAccountName från Kerberos-biljetten till ett Azure AD-användarkonto som har ett motsvarande värde i egna namnet onpremisessamaccountname-attributet.
-   
 9. Efter utvärderingen returnerar Azure AD antingen en token tillbaka till programmet eller ber användaren att utföra ytterligare Korrektur, t. ex. Multi-Factor Authentication.
 10. Om användar inloggningen lyckas kan användaren komma åt programmet.
 

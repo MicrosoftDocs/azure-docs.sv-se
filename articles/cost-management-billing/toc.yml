@@ -216,8 +216,6 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: Skapa MPA-prenumerationer programmässigt
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Skapa prenumerationer – ARM-mall
-              href: manage/create-subscription-template.md
             - name: 'Skapa prenumerationer programmässigt – förhandsversions-API:er'
               href: manage/programmatically-create-subscription-preview.md
         - name: Hantera Enterprise-avtalsprenumerationer

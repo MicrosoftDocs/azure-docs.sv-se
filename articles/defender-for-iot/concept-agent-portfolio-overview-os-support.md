@@ -1,5 +1,5 @@
 ---
-title: Översikt över agent portfölj och OS-stöd
+title: Översikt över agent portfölj och OS-support (för hands version)
 description: Azure Defender för IoT tillhandahåller en stor portfölj av agenter baserat på enhets typen.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120155"
 ---
-# <a name="agent-portfolio-overview-and-os-support"></a>Översikt över agent portfölj och OS-stöd 
+# <a name="agent-portfolio-overview-and-os-support-preview"></a>Översikt över agent portfölj och OS-support (för hands version)
 
 Azure Defender för IoT tillhandahåller en stor portfölj av agenter baserat på enhets typen. 
 
@@ -38,4 +38,4 @@ Azure Defender for IoT Micro agent har skapats som en del av Azure återställni
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om [Översikt över fristående mikroagenter ](concept-standalone-micro-agent-overview.md).
+Läs mer om [Översikt över fristående Micro agent (för hands version)](concept-standalone-micro-agent-overview.md).

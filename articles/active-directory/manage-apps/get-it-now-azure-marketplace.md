@@ -12,10 +12,10 @@ ms.date: 07/16/2020
 ms.author: kenwith
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bff0ca3dfa561f836f94e362ee84d025de020ab
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258345"
 ---
 # <a name="get-it-now---add-an-app-from-the-azure-marketplace"></a>Hämta nu – Lägg till en app från Azure Marketplace

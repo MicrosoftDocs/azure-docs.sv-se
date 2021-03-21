@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
 ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100370125"
 ---
 ### <a name="functional-limits"></a>Funktionella gränser
@@ -33,7 +33,7 @@ I följande tabell visas funktionella gränser för Azure Digital-dubbla.
 | Modeller | Antal modeller som kan överföras i ett enda API-anrop | 250 | Inga |
 | Modeller | Maximal storlek (för JSON-innehåll i en begäran eller en PATCH-begäran) för en enskild modell | 1 MB | Inga |
 | Modeller | Antal objekt som har returnerats på en enda sida | 100 | Inga |
-| Söka i data | Antal objekt som har returnerats på en enda sida | 100 | Ja |
+| Fråga | Antal objekt som har returnerats på en enda sida | 100 | Ja |
 | Söka i data | Antal `AND`  /  `OR` uttryck i en fråga | 50 | Ja |
 | Söka i data | Antal mat ris objekt i en `IN`  /  `NOT IN` sats | 50 | Ja |
 | Söka i data | Antal tecken i en fråga | 8,000 | Ja |

@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: mikben
 ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495433"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
@@ -28,7 +28,7 @@ Innan du börjar ska du se till att:
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `ChatQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: **program.cs**.
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `ChatQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: **program. cs**.
 
 ```console
 dotnet new console -o ChatQuickstart
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 Följande klasser hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för C#.
 
-| Namn                                  | Beskrivning                                                  |
+| Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/Hämta deltagare, skicka Skriv meddelanden och läsa kvitton. |
@@ -66,7 +66,7 @@ Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 
 Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera token för chatt-programmet, men det rekommenderas. Läs mer om [chatt-arkitekturen](../../../concepts/chat/concepts.md)
 
-Kopiera följande kodfragment och klistra in dem i käll filen: **program.cs**
+Kopiera följande kodfragment och klistra in dem i käll filen: **program. cs**
 ```csharp
 using Azure;
 using Azure.Communication;
