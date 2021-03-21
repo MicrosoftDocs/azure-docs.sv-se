@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6b039d934993d2acee630205c5b5e5d8e0f6145e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101667600"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Ansluta till Synapse SQL med Azure Data Studio
@@ -71,7 +71,7 @@ Följande skärm bild visar **anslutnings information** med **SQL-inloggning**:
 
 Efter en lyckad inloggning bör du se en instrument panel så här: ![ instrument panelen](./media/get-started-azure-data-studio/4-dashboard.png)
 
-## <a name="query"></a>Söka i data
+## <a name="query"></a>Fråga
 
 När du har anslutit kan du fråga Synapse SQL med stöd för [Transact-SQL-uttryck (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) som stöds mot instansen. Kom igång genom att välja **ny fråga** från vyn instrument panel.
 

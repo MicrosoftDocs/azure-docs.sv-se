@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97585674"
 ---
 <!-- docutune:casing "Timeout and Server Busy errors" -->
@@ -86,7 +86,7 @@ För bandbredd är problemet ofta klientens funktioner. Större Azure-instanser 
 
 I takt med att nätverks användningen används bör du tänka på att nätverks förhållandena som resulterar i fel och paket förlust kommer att ta en långsam effektiv data flöde. Att använda wireshark eller Network Monitor kan hjälpa dig att diagnostisera det här problemet.
 
-### <a name="location"></a>Plats
+### <a name="location"></a>Location
 
 I alla distribuerade miljöer ger klienten nära-servern den bästa prestandan. För att få åtkomst till Azure Storage med den lägsta svars tiden är den bästa platsen för din klient i samma Azure-region. Om du till exempel har en Azure-webbapp som använder Azure Storage kan du söka efter dem i en enda region, t. ex. västra USA eller Sydostasien. Samplacering av resurser minskar svars tiden och kostnaden, eftersom bandbredds användningen i en enda region är kostnads fri.
 

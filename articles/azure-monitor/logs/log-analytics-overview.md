@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
 ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052304"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Översikt över Log Analytics i Azure Monitor
@@ -56,7 +56,7 @@ Listor över tabeller i arbets ytan, exempel frågor och filter alternativ för 
 
 | Flik | Beskrivning |
 |:---|:---|
-| Tabeller | Visar en lista över de tabeller som är en del av det valda omfånget. Välj **Gruppera efter** för att ändra grupperingen av tabellerna. Hovra över ett tabell namn för att visa en dialog ruta med en beskrivning av tabellen och alternativ för att visa dess dokumentation och för att förhandsgranska data. Expandera en tabell om du vill visa dess kolumner. Dubbelklicka på ett tabell-eller kolumn namn om du vill lägga till det i frågan. |
+| Tables | Visar en lista över de tabeller som är en del av det valda omfånget. Välj **Gruppera efter** för att ändra grupperingen av tabellerna. Hovra över ett tabell namn för att visa en dialog ruta med en beskrivning av tabellen och alternativ för att visa dess dokumentation och för att förhandsgranska data. Expandera en tabell om du vill visa dess kolumner. Dubbelklicka på ett tabell-eller kolumn namn om du vill lägga till det i frågan. |
 | Frågor | Lista med exempel frågor som du kan öppna i frågefönstret. Det här är samma lista som visas när du öppnar Log Analytics. Välj **Gruppera efter** för att ändra grupperingen av frågorna. Dubbelklicka på en fråga för att lägga till den i frågefönstret eller hovra över den för andra alternativ. |
 | Filtrera | Skapar filter alternativ baserat på resultatet av en fråga. När du har kört en fråga visas kolumner med olika värden från resultaten. Välj ett eller flera värden och klicka sedan på **tillämpa & kör** för att lägga till ett **WHERE** -kommando i frågan och kör det igen. |
 

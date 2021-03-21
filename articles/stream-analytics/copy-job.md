@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
 ms.openlocfilehash: 864c5ffc9ed88f438a5be5a1fcb55d0b78df5e07
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016619"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopiera eller säkerhetskopiera Azure Stream Analytics-jobb
@@ -24,7 +24,7 @@ Du kan kopiera eller säkerhetskopiera de distribuerade Azure Stream Analytics j
 
 * Installera [Azure Stream Analytics-tillägget för Visual Studio Code](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension) eller [Azure Stream Analytics Tools för Visual Studio](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension).  
 
-## <a name="visual-studio-code"></a>Visual Studio-koden
+## <a name="visual-studio-code"></a>Visuell Studio-kod
 
 1. Klicka på **Azure** -ikonen i aktivitets fältet i Visual Studio Code och expandera **Stream Analytics** nod. Dina jobb bör visas under prenumerationerna.
 

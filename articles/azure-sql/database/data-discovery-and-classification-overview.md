@@ -14,16 +14,16 @@ ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
 ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690812"
 ---
 # <a name="data-discovery--classification"></a>Data Discovery & Classification
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Data identifierings & klassificeringen är inbyggd i Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics. Den innehåller grundläggande funktioner för att upptäcka, klassificera, märka och rapportera känsliga data i dina databaser.
+Dataidentifiering och -klassificering är inbyggt i Azure SQL Database, Azure SQL Managed Instance och Azure Synapse Analytics. Den här funktionen ger grundläggande funktioner för identifiering, klassificering, etikettering och rapportering av känsliga data i dina databaser.
 
 Dina mest känsliga data kan omfatta affärs-, finans-, sjukvårds-eller personlig information. Identifiering och klassificering av dessa data kan spela en pivot-roll i din organisations informations skydds metod. Tjänsten kan fungera som infrastruktur inom följande områden:
 
@@ -138,7 +138,7 @@ Lär dig mer om rollbaserade behörigheter i [Azure RBAC](../../role-based-acces
 
 Du kan använda T-SQL, en REST API eller PowerShell för att hantera klassificeringar.
 
-### <a name="use-t-sql"></a>Använd T-SQL
+### <a name="use-t-sql"></a>Använda T-SQL
 
 Du kan använda T-SQL för att lägga till eller ta bort kolumn klassificeringar och hämta alla klassificeringar för hela databasen.
 
@@ -188,7 +188,7 @@ Du kan använda REST API för att program mässigt hantera klassificeringar och 
 ## <a name="faq---advanced-classification-capabilities"></a>Vanliga frågor och svar om avancerade funktioner
 
 **Fråga**: kommer [Azure AVDELNINGENS kontroll](../../purview/overview.md) att ersätta SQL data Discovery & klassificering eller kommer att inaktive ras för SQL data Discovery &-klassificeringen snart?
-**Svar**: vi fortsätter att stödja SQL Data Discovery & klassificering och du uppmanas att använda [Azure-avdelningens kontroll](../../purview/overview.md) som har rikare funktioner för att driva avancerade klassificerings funktioner och data styrning. Om vi bestämmer sig för att dra tillbaka alla tjänster, funktioner, API eller SKU: er, får du förhands meddelande, inklusive en migrering eller över gångs Sök väg. Läs mer om Microsofts livs cykel principer här.
+**Svar**: vi fortsätter att stödja SQL Data Discovery & klassificering och du uppmanas att använda [Azure-avdelningens kontroll](../../purview/overview.md) som har rikare funktioner för att driva avancerade klassificerings funktioner och data styrning. Om vi bestämmer oss för att dra tillbaka en tjänst, funktion, API eller SKU får du meddelande i förväg inklusive en migrerings- eller övergångssökväg. Mer information om Microsofts livscykelprinciper finns här.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nästa steg

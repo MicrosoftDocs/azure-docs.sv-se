@@ -8,10 +8,10 @@ ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
 ms.openlocfilehash: 2f5ad8deb702e312f7dd7275128e8ca8098ab90c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393793"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Inbyggda och förinstallerade komponenter på Azure-SSIS Integration Runtime
@@ -28,28 +28,28 @@ Den här artikeln innehåller alla inbyggda och förinstallerade komponenter, ti
 
 ## <a name="built-in-and-preinstalled-connection-managers-on-azure-ssis-ir"></a>Inbyggda och förinstallerade anslutnings hanterare på Azure-SSIS IR
 
-| Typ | Namn |
+| Typ | Name |
 |------|------|
 | **Inbyggda anslutnings hanterare** | [ADO-anslutnings hanteraren](/sql/integration-services/connection-manager/ado-connection-manager)<br/><br/>[ADO.NET anslutnings hanterare](/sql/integration-services/connection-manager/ado-net-connection-manager)<br/><br/>[Analysis Services anslutnings hanteraren](/sql/integration-services/connection-manager/analysis-services-connection-manager)<br/><br/>[Anslutnings hanteraren för Excel](/sql/integration-services/connection-manager/excel-connection-manager)<br/><br/>[Fil anslutnings hanteraren](/sql/integration-services/connection-manager/file-connection-manager)<br/><br/>[Fil anslutnings hanteraren för Flate](/sql/integration-services/connection-manager/flat-file-connection-manager)<br/><br/>[Anslutnings hanteraren för FTP](/sql/integration-services/connection-manager/ftp-connection-manager)<br/><br/>[Hadoop anslutnings hanterare](/sql/integration-services/connection-manager/hadoop-connection-manager)<br/><br/>[HTTP-anslutnings hanteraren](/sql/integration-services/connection-manager/http-connection-manager)<br/><br/>[MSMQ anslutnings hanteraren](/sql/integration-services/connection-manager/msmq-connection-manager)<br/><br/>[Anslutnings hanteraren för flera filer](/sql/integration-services/connection-manager/multiple-files-connection-manager)<br/><br/>[Anslutnings hanteraren för flera flata filer](/sql/integration-services/connection-manager/multiple-flat-files-connection-manager)<br/><br/>[ODBC-anslutnings hanteraren](/sql/integration-services/connection-manager/odbc-connection-manager)<br/><br/>[OLEDB anslutnings hanteraren](/sql/integration-services/connection-manager/ole-db-connection-manager)<br/><br/>[SAP BW anslutnings hanteraren](/sql/integration-services/connection-manager/sap-bw-connection-manager) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[SMO anslutnings hanterare](/sql/integration-services/connection-manager/smo-connection-manager)<br/><br/>[SMTP-anslutnings hanterare](/sql/integration-services/connection-manager/smtp-connection-manager)<br/><br/>[Anslutnings hanteraren för SQL Server Compact Edition](/sql/integration-services/connection-manager/sql-server-compact-edition-connection-manager)<br/><br/>[Hantering av WMI-anslutning](/sql/integration-services/connection-manager/wmi-connection-manager) |
 | **Förinstallerade anslutnings hanterare ([Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis))** | [Azure Data Lake Analytics anslutnings hanteraren](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager)<br/><br/>[Azure Data Lake Store anslutnings hanteraren](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)<br/><br/>[Anslutnings hanteraren för Azure HDInsight](/sql/integration-services/connection-manager/azure-hdinsight-connection-manager)<br/><br/>[Azure Resource Manager anslutnings hanteraren](/sql/integration-services/connection-manager/azure-resource-manager-connection-manager)<br/><br/>[Azure Storage anslutnings hanteraren](/sql/integration-services/connection-manager/azure-storage-connection-manager)<br/><br/>[Anslutnings hanteraren för Azure-prenumeration](/sql/integration-services/connection-manager/azure-subscription-connection-manager) |
 
 ## <a name="built-in-and-preinstalled-data-sources-on-azure-ssis-ir"></a>Inbyggda och förinstallerade data källor på Azure-SSIS IR
 
-| Typ | Namn |
+| Typ | Name |
 |------|------|
 | **Inbyggda data källor** | [ADO.NET-källa](/sql/integration-services/data-flow/ado-net-source)<br/><br/>[CDC-källa](/sql/integration-services/data-flow/cdc-source) ([Enterprise-utgåva](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[Excel-källa](/sql/integration-services/data-flow/excel-source)<br/><br/>[Flat fil källa](/sql/integration-services/data-flow/flat-file-source)<br/><br/>[HDFS-filkälla](/sql/integration-services/data-flow/hdfs-file-source)<br/><br/>[OData-källa](/sql/integration-services/data-flow/odata-source)<br/><br/>[ODBC-källa](/sql/integration-services/data-flow/odbc-source)<br/><br/>[OLEDB-källa](/sql/integration-services/data-flow/ole-db-source)<br/><br/>[Rå data Källa](/sql/integration-services/data-flow/raw-file-source)<br/><br/>[SAP BW källa](/sql/integration-services/data-flow/sap-bw-source) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[XML-källa](/sql/integration-services/data-flow/xml-source) |
 | **Förinstallerade data källor ([Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)  +  [Power Query källa](/sql/integration-services/data-flow/power-query-source))** | [Azure Blob-källa](/sql/integration-services/data-flow/azure-blob-source)<br/><br/>[Azure Data Lake Store källa](/sql/integration-services/data-flow/azure-data-lake-store-source)<br/><br/>[Flexibel fil källa](/sql/integration-services/data-flow/flexible-file-source)<br/><br/>[Power Query källa](/sql/integration-services/data-flow/power-query-source) |
 
 ## <a name="built-in-and-preinstalled-data-destinations-on-azure-ssis-ir"></a>Inbyggda och förinstallerade data destinationer på Azure-SSIS IR
 
-| Typ | Namn |
+| Typ | Name |
 |------|------|
 | **Inbyggda data destinationer** | [ADO.NET-mål](/sql/integration-services/data-flow/ado-net-destination)<br/><br/>[Utbildnings mål för data utvinnings modell](/sql/integration-services/data-flow/data-mining-model-training-destination) ([Enterprise-utgåva](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[DataReader-mål](/sql/integration-services/data-flow/datareader-destination)<br/><br/>[Data Streaming Destination](/sql/integration-services/data-flow/data-streaming-destination)<br/><br/>[Dimensions bearbetnings mål](/sql/integration-services/data-flow/dimension-processing-destination) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[Excel-mål](/sql/integration-services/data-flow/excel-destination)<br/><br/>[Flat File-destination](/sql/integration-services/data-flow/flat-file-destination)<br/><br/>[HDFS-Fildestination](/sql/integration-services/data-flow/hdfs-file-destination)<br/><br/>[ODBC-mål](/sql/integration-services/data-flow/odbc-destination)<br/><br/>[OLEDB-mål](/sql/integration-services/data-flow/ole-db-destination)<br/><br/>[Partitionens bearbetnings mål](/sql/integration-services/data-flow/partition-processing-destination) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[Rå fil mål](/sql/integration-services/data-flow/raw-file-destination)<br/><br/>[Post mängds mål](/sql/integration-services/data-flow/recordset-destination)<br/><br/>[SAP BW destination](/sql/integration-services/data-flow/sap-bw-destination) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[SQL Server Compact Edition-mål](/sql/integration-services/data-flow/sql-server-compact-edition-destination)<br/><br/>[SQL Server destination](/sql/integration-services/data-flow/sql-server-destination) |
 | **Förinstallerade data destinationer ([Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis))** | [Azure Blob-mål](/sql/integration-services/data-flow/azure-blob-destination)<br/><br/>[Azure Data Lake Store destination](/sql/integration-services/data-flow/azure-data-lake-store-destination)<br/><br/>[Flexibelt fil mål](/sql/integration-services/data-flow/flexible-file-destination) |
 
 ## <a name="built-in-and-preinstalled-data-transformations-on-azure-ssis-ir"></a>Inbyggda och förinstallerade data transformationer på Azure-SSIS IR
 
-| Typ | Namn |
+| Typ | Name |
 |------|------|
 | **Inbyggda gransknings omvandlingar** | [Granska omvandling](/sql/integration-services/data-flow/transformations/audit-transformation)<br/><br/>[Transformering av rad antal](/sql/integration-services/data-flow/transformations/row-count-transformation) |
 | **Inbyggda BI-omvandlingar** | [Transformering av data utvinnings fråga](/sql/integration-services/data-flow/transformations/data-mining-query-transformation) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[DQS-rengöring, omvandling](/sql/integration-services/data-flow/transformations/dqs-cleansing-transformation)<br/><br/>[Fuzzy Grouping-transformering](/sql/integration-services/data-flow/transformations/fuzzy-grouping-transformation) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[Transformering av Fuzzy Lookup](/sql/integration-services/data-flow/transformations/fuzzy-lookup-transformation) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[Transformering av term extrahering](/sql/integration-services/data-flow/transformations/term-extraction-transformation) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md))<br/><br/>[Omtransformering av term sökning](/sql/integration-services/data-flow/transformations/term-lookup-transformation) ([Enterprise Edition](./how-to-configure-azure-ssis-ir-enterprise-edition.md)) |
@@ -59,7 +59,7 @@ Den här artikeln innehåller alla inbyggda och förinstallerade komponenter, ti
 
 ## <a name="built-in-and-preinstalled-tasks-on-azure-ssis-ir"></a>Inbyggda och förinstallerade uppgifter på Azure-SSIS IR
 
-| Typ | Namn |
+| Typ | Name |
 |------|------|
 | **Inbyggda Analysis Services uppgifter** | [Analysis Services köra DDL-uppgift](/sql/integration-services/control-flow/analysis-services-execute-ddl-task)<br/><br/>[Analysis Services bearbetnings aktivitet](/sql/integration-services/control-flow/analysis-services-processing-task)<br/><br/>[Uppgift för data utvinnings fråga](/sql/integration-services/control-flow/data-mining-query-task) |
 | **Inbyggda data flödes uppgifter** | [Data flödes uppgift](/sql/integration-services/control-flow/data-flow-task) |

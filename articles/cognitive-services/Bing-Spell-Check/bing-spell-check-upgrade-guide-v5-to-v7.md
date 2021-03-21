@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 77910c964ed45c012163e27ca58b092e1972d114
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349596"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Stavningskontrolls-API uppgraderings guide
@@ -30,7 +30,7 @@ Den här uppgraderings guiden identifierar ändringarna mellan version 5 och ver
 
 ### <a name="endpoints"></a>Slutpunkter
 
-- Slut punktens versions nummer har ändrats från V5 till v7. Exempelvis `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
+- Slut punktens versions nummer har ändrats från V5 till v7. Till exempel `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fel svars objekt och felkoder
 

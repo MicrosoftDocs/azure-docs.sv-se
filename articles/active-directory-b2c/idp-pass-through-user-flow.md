@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: a99d41f5f9fc9538aaf563bd3ae56075d269c94a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97584654"
 ---
 # <a name="pass-an-identity-provider-access-token-to-your-application-in-azure-active-directory-b2c"></a>Skicka en Identity Provider-åtkomsttoken till ditt program i Azure Active Directory B2C
@@ -42,7 +42,7 @@ Följande diagram visar hur en Identity Provider-token återgår till din app:
 
 ![Strömnings flöde för identitetsprovider](./media/idp-pass-through-user-flow/identity-provider-pass-through-flow.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

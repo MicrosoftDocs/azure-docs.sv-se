@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019915"
 ---
 # <a name="troubleshoot-input-connections"></a>Felsöka indataanslutningar
@@ -44,7 +44,7 @@ Aktivera resurs loggar om du vill visa information om felet och meddelandet (nyt
 
 ![Varnings meddelande om indata](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
-Om meddelandets nytto Last är större än 32 KB eller är i binärformat, kör du CheckMalformedEvents.cs-koden som finns i [lagrings platsen för GitHub-exempel](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Den här koden läser partitions-ID, förskjutning och skriver ut de data som finns i den förskjutningen. 
+I de fall då meddelande nytto lasten är större än 32 KB eller är i binärformat, kör du CheckMalformedEvents. cs-koden som finns i [lagrings platsen för GitHub-exempel](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Den här koden läser partitions-ID, förskjutning och skriver ut de data som finns i den förskjutningen. 
 
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Jobbet överskrider maximal mottagare av Event Hub
 

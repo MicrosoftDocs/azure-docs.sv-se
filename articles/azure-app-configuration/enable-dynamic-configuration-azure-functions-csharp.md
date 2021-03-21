@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963572"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Självstudie: Använd dynamisk konfiguration i en Azure Functions app
@@ -32,7 +32,7 @@ I den här guiden får du lära dig att:
 > * Konfigurera din Azure Functions-app för att uppdatera konfigurationen som svar på ändringar i ett konfigurations lager för appar.
 > * Mata in den senaste konfigurationen till dina Azure Functions-anrop.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) med arbets belastningen **Azure Development**
@@ -41,7 +41,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="reload-data-from-app-configuration"></a>Läsa in data på nytt från App Configuration
 
-1. Öppna *startup.cs* och uppdatera `ConfigureAppConfiguration` metoden. 
+1. Öppna *startup. cs* och uppdatera `ConfigureAppConfiguration` metoden. 
 
    `ConfigureRefresh`Metoden registrerar en inställning för att kontrol lera ändringar varje gång en uppdatering utlöses i programmet, vilket du gör i det senare steget när du lägger till `_configurationRefresher.TryRefreshAsync()` . `refreshAll`Parametern instruerar appens konfigurations leverantör att läsa in hela konfigurationen igen varje gång en ändring identifieras i den registrerade inställningen.
 
@@ -74,7 +74,7 @@ I den här guiden får du lära dig att:
     }
     ```
 
-3. Öppna *Function1.cs* och Lägg till följande namn rymder.
+3. Öppna *Function1. cs* och Lägg till följande namn rymder.
 
     ```csharp
     using System.Linq;

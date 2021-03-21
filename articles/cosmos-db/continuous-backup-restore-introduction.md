@@ -9,10 +9,10 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
 ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393147"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Kontinuerlig säkerhets kopiering med funktionen för återställning av en viss tidpunkt (för hands version) i Azure Cosmos DB
@@ -41,7 +41,7 @@ I offentlig för hands version kan du återställa Azure Cosmos DB-kontot för S
 
 I ett stabilt tillstånd säkerhets kopie ras alla mutationer som utförs på käll kontot (som innehåller databaser, behållare och objekt) asynkront inom 100 sekunder. Om säkerhets kopierings mediet (som är Azure-lagring) är otillgängligt eller inte tillgängligt behålls mutationerna lokalt tills mediet är tillgängligt och sedan töms de för att förhindra förlust av åtgärder som kan återställas.
 
-Du kan välja att återställa en kombination av etablerade data flödes behållare, delade data flödes databaser eller hela kontot. Restore-åtgärden återställer alla data och dess index egenskaper till ett nytt konto. Med återställnings processen ser du till att alla data som återställs i ett konto, en databas eller en behållare är konsekventa med den angivna återställnings tiden. Varaktigheten för återställning beror på mängden data som behöver återställas.
+Du kan välja att återställa en kombination av containrar för etablerat dataflöde, databaser för delat dataflöde eller hela kontot. Återställningsåtgärden återställer alla data och dess indexegenskaper till ett nytt konto. Återställningsprocessen ser till att alla data som återställs i ett konto, en databas eller en container är konsekventa med den angivna återställningstiden. Hur lång tid återställningen tar beror på mängden data som behöver återställas.
 
 > [!NOTE]
 > Med läget för kontinuerlig säkerhets kopiering tas säkerhets kopiorna i varje region där ditt Azure Cosmos DB-konto är tillgängligt. Säkerhets kopieringar som görs för varje region konto är lokalt redundanta som standard och zonen är redundanta om ditt konto har aktiverat funktionen [tillgänglighets zon](high-availability.md#availability-zone-support) för den regionen. Restore-åtgärden återställer alltid data till ett nytt konto.
@@ -51,7 +51,7 @@ Du kan välja att återställa en kombination av etablerade data flödes behåll
 Följande konfigurationer återställs inte efter tidpunkts återställningen:
 
 * Inställningar för brand vägg, VNET, privat slut punkt.
-* Konsekvens inställningar. Som standard återställs kontot med konsekvens i sessionen.  
+* Konsekvensinställningar. Som standard återställs kontot med sessionskonsekvens.  
 * Områdena.
 * Lagrade procedurer, utlösare, UDF: er.
 
@@ -80,7 +80,7 @@ e. **Återställ ett konto till en tidigare tidpunkt innan du tar bort eller än
 
 Med Azure Cosmos DB kan du isolera och begränsa återställnings behörigheter för kontinuerligt säkerhets kopierings konto till en speciell roll eller ett huvud konto. Kontots ägare kan utlösa en återställning och tilldela en roll till andra huvud konton för att utföra återställnings åtgärden. Mer information finns i artikeln [behörigheter](continuous-backup-restore-permissions.md) .
 
-## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Prissättning
+## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Priser
 
 Azure Cosmos DB konton som har kontinuerlig säkerhets kopiering aktiverat debiteras ytterligare en månatlig avgift för att *lagra säkerhets kopian* och *återställa dina data*. Restore Cost läggs till varje gång återställnings åtgärden initieras. Om du konfigurerar ett konto med kontinuerlig säkerhets kopiering men inte återställer data, ingår bara lagrings kostnaden för säkerhets kopiering på fakturan.
 

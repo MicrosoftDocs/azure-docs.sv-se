@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: eb57be94e460241e3cacbe2dd20c071504a9222a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209772"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104578693"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snabb start: lägga till Microsoft Identity Platform-inloggning till en ASP.NET-webbapp
 
@@ -79,6 +79,8 @@ I den här snabb starten hämtar och kör du ett kod exempel som visar hur en AS
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Ladda ned kod exemplet](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras
 > Vi har konfigurerat ditt projekt med värdena för appens egenskaper.
@@ -135,7 +137,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWIN start klass
 
-OWIN mellanprogram använder en *Start klass* som körs när värd processen startar. I den här snabb starten finns *startup.cs* -filen i rotmappen. Följande kod visar de parametrar som används i den här snabb starten:
+OWIN mellanprogram använder en *Start klass* som körs när värd processen startar. I den här snabb starten finns filen *startup. cs* i rotmappen. Följande kod visar de parametrar som används i den här snabb starten:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -172,7 +174,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Var  | Description |
+> |Var  | Beskrivning |
 > |---------|---------|
 > | `ClientId`     | Program-ID: t från programmet som är registrerat i Azure Portal. |
 > | `Authority`    | STS-slutpunkten (Security Token Service) för användaren som ska autentiseras. Det är vanligt vis `https://login.microsoftonline.com/{tenant}/v2.0` för det offentliga molnet. I den URL: en är *{Tenant}* namnet på din klient, ditt klient-ID eller `common` en referens till den gemensamma slut punkten. (Den vanliga slut punkten används för program med flera klienter.) |

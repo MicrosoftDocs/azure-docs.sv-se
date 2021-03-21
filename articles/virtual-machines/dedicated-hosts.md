@@ -10,10 +10,10 @@ ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 46de182c7acfaf75b2e65fa318717348dd1c4b73
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101667355"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikerade Azure-värdar
@@ -136,7 +136,7 @@ Mer information finns i [vCPU kvoter för virtuella datorer](./windows/quotas.md
 
 Den kostnads fria utvärderings versionen och MSDN-prenumerationen har inte kvot för Azure-dedikerade värdar.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Användare debiteras per dedikerad värd, oavsett hur många virtuella datorer som distribueras. I din månads instruktion visas en ny fakturerbar resurs typ för värdar. De virtuella datorerna på en dedikerad värd visas fortfarande i din instruktion, men kommer att ha priset 0.
 

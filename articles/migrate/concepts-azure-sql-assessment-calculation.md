@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
 ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054990"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Översikt över utvärdering (migrera till Azure SQL)
@@ -17,7 +17,7 @@ ms.locfileid: "102054990"
 Den här artikeln innehåller en översikt över utvärderingar för migrering av lokala SQL Server instanser från en VMware-miljö till Azure SQL-databaser eller hanterade instanser med hjälp av [verktyget Azure Migrate: identifiering och bedömning](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool).
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 ## <a name="whats-an-assessment"></a>Vad är en utvärdering?
 En utvärdering med identifierings-och utvärderings verktyget är en tidpunkt för ögonblicks bilder av data och mäter den beredskap och uppskattar effekterna av att migrera lokala servrar till Azure.
@@ -93,7 +93,7 @@ Här är what's som ingår i utvärderings egenskaperna för Azure SQL:
 ## <a name="calculate-readiness"></a>Beräkna beredskap
 
 > [!NOTE]
-> Utvärderingen inkluderar bara databaser som har statusen online. Om databasen är i någon annan status ignorerar utvärderingen beredskapen, storleks ändringen och kostnads beräkningen för dessa databaser. Om du vill utvärdera sådana databaser, ändra databasens status och beräkna om utvärderingen i en viss tid.
+> Utvärderingen inkluderar bara databaser som har statusen online. Om det finns databaser med någon annan status, ignorerar utvärderingen beredskapen, storleken och kostnadsberäkningen för dessa databaser. Om du vill utvärdera dessa databaser ändrar du databasens status och beräknar om utvärderingen efter ett tag.
 
 ### <a name="azure-sql-readiness"></a>Azure SQL-beredskap
 
@@ -127,7 +127,7 @@ Om du väljer mål distributions typen som **rekommenderas** i Azure SQL Assessm
 Om SQL-instansen inte är klar för Azure SQL Database och Azure SQL-hanterad instans, markeras den rekommenderade distributions typen som *potentiellt redo för virtuella Azure-datorer*.
 - Användaren rekommenderas att skapa en utvärdering i Azure Migrate med utvärderings typ som "Azure VM" för att avgöra om den server där instansen körs är redo att migrera till en virtuell Azure-dator i stället. Tänk på följande:
     - Azure VM-utvärderingar i Azure Migrate lyfts för närvarande och flyttas fokuserat och tar inte hänsyn till de exakta prestanda måtten för att köra SQL-instanser och databaser på den virtuella Azure-datorn. 
-    - När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnads uppskattningarna att vara för alla instanser som körs på servern och kan migreras till en virtuell Azure-dator med hjälp av verktyget Migreringsverktyg. Innan du migrerar bör du [gå igenom rikt linjerna för prestanda](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) för SQL Server på virtuella Azure-datorer.
+    - När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnadsuppskattningarna att gälla för alla instanser som körs på servern och som kan migreras till en virtuell Azure-dator med hjälp av verktyget för servermigrering. Innan du migrerar bör du [gå igenom prestandariktlinjerna](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) för SQL Server på virtuella Azure-datorer.
 
 
 ## <a name="calculate-sizing"></a>Beräkna storlek
@@ -172,11 +172,11 @@ I den här tabellen visas klassificeringen av bedömning av säkerhet, vilket be
 #### <a name="low-confidence-ratings"></a>Värderingar med låg exakthet
 Här följer några skäl till varför en utvärdering kan få en låg exakthet:
 - Du har inte profilerat din miljö under den tid som du skapar utvärderingen. Om du till exempel skapar utvärderingen med varaktigheten inställd på en dag måste du vänta minst en dag efter att du har startat identifieringen för alla data punkter som ska samlas in.
-- Utvärderingen kan inte samla in prestanda data för vissa eller alla servrar i utvärderings perioden. För en hög exakthet bör du se till att:
+- Utvärderingen kan inte samla in prestandadata för vissa eller alla servrar under utvärderingsperioden. För en hög exakthet bör du se till att:
     - Servrarna är påslagna under utvärderings perioden
     - Utgående anslutningar på portarna 443 tillåts
     - Om Azure Migrate anslutnings status för SQL-agenten i Azure Migrate är ansluten och kontrol lera senaste pulsslag 
-    - Om Azure Migrate anslutnings status för alla SQL-instanser är "ansluten" på bladet identifierad SQL-instans
+    - Att anslutningsstatusen i Azure Migrate för alla SQL-instanser är ”Ansluten” på bladet med den identifierade SQL-instansen
 
     Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet.
 - Vissa databaser eller instanser skapades under den tid då utvärderingen beräknades. Anta till exempel att du har skapat en utvärdering för prestanda historiken för den senaste månaden, men vissa databaser eller instanser skapades bara för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt.

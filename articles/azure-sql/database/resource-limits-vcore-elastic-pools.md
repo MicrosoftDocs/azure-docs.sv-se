@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 01/22/2021
 ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737580"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resurs begränsningar för elastiska pooler med vCore inköps modell
@@ -427,7 +427,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Maximalt antal samtidiga sessioner|30000|30000|30000|30000|30000|30000|
 |Minsta/högsta antal vCore alternativ för elastisk pool per databas|0-8|0-10|0-12|0-14|0-16|0-18|
 |Antal repliker|4|4|4|4|4|4|
-|Multi-AZ|Nej|Nej|Nej|Nej|Nej|Nej|
+|Multi-AZ|Inga|Inga|Inga|Inga|Inga|Inga|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
@@ -460,7 +460,7 @@ Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i 
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|2 000|2 400|3 200|6 400|12 800|
 |Maximalt antal samtidiga sessioner|30000|30000|30000|30000|30000|
 |Antal repliker|4|4|4|4|4|
-|Multi-AZ|Nej|Nej|Nej|Nej|Nej|
+|Multi-AZ|Inga|Inga|Inga|Inga|Inga|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
@@ -494,7 +494,7 @@ Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i 
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
 |Minsta/högsta antal vCore alternativ för elastisk pool per databas|2|2... 4|2... 6|2... 8|
 |Antal repliker|4|4|4|4|
-|Multi-AZ|Nej|Nej|Nej|Nej|
+|Multi-AZ|Inga|Inga|Inga|Inga|
 |Lässkalning|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 

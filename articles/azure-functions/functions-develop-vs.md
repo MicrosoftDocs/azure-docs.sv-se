@@ -5,10 +5,10 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655823"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Utveckla Azure Functions med hjälp av Visual Studio  
@@ -27,7 +27,7 @@ Den här artikeln innehåller information om hur du använder Visual Studio för
 
 Om inget annat anges är procedurer och exempel som visas för Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure Functions verktyg. Om du vill lägga till Azure Function tools inkluderar du arbets belastningen **Azure Development** i Visual Studio-installationen. Azure Functions-verktyg är tillgängliga i Azure Development-arbetsbelastningen från och med Visual Studio 2017.
 

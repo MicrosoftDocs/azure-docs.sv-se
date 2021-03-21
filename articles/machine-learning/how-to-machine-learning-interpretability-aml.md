@@ -12,10 +12,10 @@ ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
 ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222759"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Använd tolknings paketet till att förklara ML-modeller & förutsägelser i python (för hands version)
@@ -242,7 +242,7 @@ I följande exempel visas hur du kan använda- `ExplanationClient` klassen för 
     ```bash
     pip install azureml-interpret
     ```
-1. Skapa ett utbildnings skript i en lokal Jupyter Notebook. Ett exempel är `train_explain.py`.
+1. Skapa ett utbildnings skript i en lokal Jupyter Notebook. Till exempel `train_explain.py`.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -340,7 +340,7 @@ Utforska de viktigaste viktiga funktionerna som påverkar de övergripande model
 
 Den fjärde fliken på fliken förklaring gör det möjligt att öka detalj nivån för en enskild Datapoint och deras enskilda funktions betydelse. Du kan läsa in prioritets kurvan för enskilda funktioner för alla data punkter genom att klicka på någon av de enskilda data punkterna i huvud punkt ritningen eller välja en viss Datapoint i panel guiden till höger.
 
-|Basera|Description|
+|Basera|Beskrivning|
 |----|-----------|
 |Enskild funktions prioritet|Visar viktiga viktiga funktioner för en individuell förutsägelse. Hjälper till att illustrera den underliggande modellens lokala beteende på en viss data punkt.|
 |What-If analys|Tillåter ändringar av funktions värden för den valda verkliga data punkten och observerar resulterande ändringar i förutsägelse värde genom att generera en hypotetisk Datapoint med de nya funktions värdena.|

@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937050"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Självstudie: upprätta Azure Functions åtkomst till privat webbplats
@@ -39,7 +39,7 @@ Följande diagram visar arkitekturen för den lösning som ska skapas:
 
 ![Högnivå arkitektur diagram för åtkomst lösning för privat webbplats](./media/functions-create-private-site-access/topology.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 I den här självstudien är det viktigt att du förstår IP-adressering och undernät. Du kan börja med [den här artikeln som beskriver grunderna för adressering och undernät](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Många fler artiklar och videor är tillgängliga online.
 
@@ -65,7 +65,7 @@ Det första steget i den här självstudien är att skapa en ny virtuell dator i
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | _Prenumeration_ | Din prenumeration | Den prenumeration som dina resurser skapas under. |
-    | [_Resurs grupp_](../azure-resource-manager/management/overview.md) | myResourceGroup | Välj den resurs grupp som innehåller alla resurser för den här självstudien.  Med samma resurs grupp blir det enklare att rensa resurser när du är klar med den här självstudien. |
+    | [_Resursgrupp_](../azure-resource-manager/management/overview.md) | myResourceGroup | Välj den resurs grupp som innehåller alla resurser för den här självstudien.  Med samma resurs grupp blir det enklare att rensa resurser när du är klar med den här självstudien. |
     | _Namn på virtuell dator_ | myVM | Det virtuella dator namnet måste vara unikt i resurs gruppen |
     | [_Region_](https://azure.microsoft.com/regions/) | USA Norra centrala USA | Välj en region nära dig eller nära de funktioner som ska nås. |
     | _Offentliga inkommande portar_ | Inga | Välj **ingen** för att se till att det inte finns någon inkommande anslutning till den virtuella datorn från Internet. Fjärråtkomst till den virtuella datorn kommer att konfigureras via Azure skydds-tjänsten. |
@@ -84,7 +84,7 @@ Det första steget i den här självstudien är att skapa en ny virtuell dator i
     | ------------ | ---------------- | ---------------- |
     | _Namn_ | myResourceGroup-VNet | Du kan använda standard namnet som genereras för det virtuella nätverket. |
     | _Adressintervall_ | 10.10.0.0/16 | Använd ett enda adress intervall för det virtuella nätverket. |
-    | _Namn på undernät_ | Självstudier | Namnet på under nätet. |
+    | _Namn på undernät_ | Självstudie | Namnet på under nätet. |
     | _Adress intervall_ (undernät) | 10.10.1.0/24 | Under näts storleken definierar hur många gränssnitt som kan läggas till i under nätet. Det här under nätet används av den virtuella datorn. Ett/24-undernät tillhandahåller 254-värd adresser. |
 
 1. Välj **OK** för att skapa det virtuella nätverket.

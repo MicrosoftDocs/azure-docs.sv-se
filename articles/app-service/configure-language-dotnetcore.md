@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655976"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Konfigurera en ASP.NET Core app för Azure App Service
@@ -144,7 +144,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="access-diagnostic-logs"></a>Få åtkomst till diagnostikloggar
 
-ASP.NET Core tillhandahåller en [inbyggd Logging-Provider för App Service](/aspnet/core/fundamentals/logging/#azure-app-service). I *program.cs* för ditt projekt lägger du till providern i programmet via `ConfigureLogging` tilläggs metoden, som du ser i följande exempel:
+ASP.NET Core tillhandahåller en [inbyggd Logging-Provider för App Service](/aspnet/core/fundamentals/logging/#azure-app-service). I *program. cs* för ditt projekt lägger du till providern i programmet via `ConfigureLogging` tilläggs metoden, som du ser i följande exempel:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -167,7 +167,7 @@ Mer information om hur du felsöker ASP.NET Core appar i App Service finns i [fe
 
 ## <a name="get-detailed-exceptions-page"></a>Sidan Hämta detaljerade undantag
 
-När din ASP.NET Core-app genererar ett undantag i Visual Studio-felsökaren, visar webbläsaren en detaljerad undantags sida, men i App Service sidan ersätts av ett allmänt **HTTP 500-** fel eller **så uppstod ett fel när din begäran bearbetades.** . Om du vill visa sidan detaljerad undantag i App Service lägger du till `ASPNETCORE_ENVIRONMENT` appens inställning i din app genom att köra följande kommando i <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+När din ASP.NET Core-app genererar ett undantag i Visual Studio-felsökaren, visar webbläsaren en detaljerad undantags sida, men i App Service sidan ersätts av ett allmänt **HTTP 500-** fel eller **så uppstod ett fel när din begäran bearbetades.** som meddelande. Om du vill visa sidan detaljerad undantag i App Service lägger du till `ASPNETCORE_ENVIRONMENT` appens inställning i din app genom att köra följande kommando i <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>Identifiera HTTPS-sessionen
 
-I App Service sker [SSL-avslutning](https://wikipedia.org/wiki/TLS_termination_proxy) på lastbalanserare för nätverk, så alla HTTPS-begäranden når din app som okrypterade HTTP-begäranden. Om din app-logik behöver veta om användarnas begär Anden är krypterade eller inte, konfigurerar du de vidarebefordrade rubrikernas mellanprogram i *startup.cs*:
+I App Service sker [SSL-avslutning](https://wikipedia.org/wiki/TLS_termination_proxy) på lastbalanserare för nätverk, så alla HTTPS-begäranden når din app som okrypterade HTTP-begäranden. Om din app-logik behöver veta om användar förfrågningarna är krypterade eller inte, konfigurerar du de vidarebefordrade rubrikerna mellan program i *startup. cs*:
 
 - Konfigurera mellanprogram med [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) för att vidarebefordra- `X-Forwarded-For` och- `X-Forwarded-Proto` rubrikerna i `Startup.ConfigureServices` .
 - Lägg till privata IP-adressintervall i de kända nätverken så att mellanprogram kan lita på App Service belastningsutjämnare.

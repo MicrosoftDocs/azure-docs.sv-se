@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
 ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734731"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Övervaka Azure App Service-prestanda
@@ -395,7 +395,7 @@ Tabellen nedan innehåller en mer detaljerad förklaring av vad dessa värden in
 |Problem värde|Förklaring|Åtgärda
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Det här värdet anger att tillägget har identifierat att en aspekt av SDK: n redan finns i programmet och kommer att stängas av. Det kan bero på en referens till `System.Diagnostics.DiagnosticSource` ,  `Microsoft.AspNet.TelemetryCorrelation` eller `Microsoft.ApplicationInsights`  | Ta bort referenserna. Vissa av dessa referenser läggs till som standard från vissa Visual Studio-mallar och äldre versioner av Visual Studio kan lägga till referenser till `Microsoft.ApplicationInsights` .
-|`AppAlreadyInstrumented:true` | Om programmet är riktat ASP.NET Core 2,1 eller 2,2, anger det här värdet att tillägget har identifierat att en viss aspekt av SDK: n redan finns i programmet och kommer att återställas | Kunder på .NET Core 2.1, 2.2 [rekommenderar](https://github.com/aspnet/Announcements/issues/287) att du använder Microsoft. AspNetCore. app-meta-paketet i stället. Aktivera dessutom "interop with Application Insights SDK" i portalen (se anvisningarna ovan).|
+|`AppAlreadyInstrumented:true` | Om programmet är riktat ASP.NET Core 2,1 eller 2,2, anger det här värdet att tillägget har identifierat att en viss aspekt av SDK: n redan finns i programmet och kommer att återställas | Kunder på .NET Core 2.1, 2.2 [rekommenderar](https://github.com/aspnet/Announcements/issues/287) att du använder Microsoft.AspNetCore.app-meta-paket i stället. Aktivera dessutom "interop with Application Insights SDK" i portalen (se anvisningarna ovan).|
 |`AppAlreadyInstrumented:true` | Det här värdet kan också orsakas av förekomsten av ovanstående DLL-filer i mappen app från en tidigare distribution. | Rensa mappen app för att se till att dessa DLL-filer tas bort. Kontrol lera både den lokala appens bin-katalog och katalogen wwwroot på App Service. (Om du vill kontrol lera katalogen wwwroot i App Service webbappen: avancerade verktyg (kudu) > fel söknings konsolen > CMD > home\site\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Det här värdet anger att tillägget har identifierat referenser till `Microsoft.AspNet.TelemetryCorrelation` i programmet och kommer att återställas. | Ta bort referensen.
 |`AppContainsDiagnosticSourceAssembly**:true`|Det här värdet anger att tillägget har identifierat referenser till `System.Diagnostics.DiagnosticSource` i programmet och kommer att återställas.| Ta bort referensen för ASP.NET. 

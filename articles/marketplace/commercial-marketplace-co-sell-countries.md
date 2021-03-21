@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: af110a66bc7ef5737f3d2d97a85ca07525b1d9e7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96744711"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Lands- och regionkoder för säljsamarbete
@@ -123,7 +123,7 @@ Om en kontakt omfattar mer än ett land/region, anger du var och en av de två b
 | Guinea-Bissau                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Heard-och McDonaldöarna   | IGNERINGSALGORITM        |
+| Heard- och McDonaldöarna   | IGNERINGSALGORITM        |
 | Honduras                            | HN        |
 | Folkrepubliken Kinas särskilda administrativa region Hongkong                       | HK        |
 | Ungern                             | HU        |
@@ -210,11 +210,11 @@ Om en kontakt omfattar mer än ett land/region, anger du var och en av de två b
 | Rumänien                             | RO        |
 | Ryssland                              | RU        |
 | Rwanda                              | RW        |
-| Sankt Barthélemy                    | BL        |
+| Saint Barthélemy                    | BL        |
 | Saint Kitts och Nevis               | KN        |
 | Saint Lucia                         | LC        |
 | Saint Martin                        | MF        |
-| Saint Pierre och Miquelon           | PM        |
+| Saint-Pierre och Miquelon           | PM        |
 | Saint Vincent och Grenadinerna    | VC        |
 | Samoa                               | WS        |
 | San Marino                          | SM        |
@@ -231,7 +231,7 @@ Om en kontakt omfattar mer än ett land/region, anger du var och en av de två b
 | Solomonöarna                     | SA        |
 | Somalia                             | SO        |
 | Sydafrika                        | ZA        |
-| Södra Georgien och Sydsandwichöarna | GS    |
+| Sydgeorgien och Sydsandwichöarna | GS    |
 | Sydsudan                         | SS        |
 | Spanien                               | ES        |
 | Sri Lanka                           | LK        |
@@ -249,7 +249,7 @@ Om en kontakt omfattar mer än ett land/region, anger du var och en av de två b
 | Timor-Leste                         | TL        |
 | Togo                                | TG        |
 | Tokelau                             | TK        |
-| Tonga                               | ATT        |
+| Tonga                               | TO        |
 | Trinidad och Tobago                 | TT        |
 | Tunisien                             | TN        |
 | Turkiet                              | TR        |
@@ -262,7 +262,7 @@ Om en kontakt omfattar mer än ett land/region, anger du var och en av de två b
 | Storbritannien                      | GB        |
 | USA                       | USA        |
 | Uruguay                             | UY        |
-| USA:s yttre öar               | UM        |
+| Amerikanska öar               | UM        |
 | Amerikanska jungfru öarna                 | VI        |
 | Uzbekistan                          | UZ        |
 | Vanuatu                             | ANTECKNING        |

@@ -9,10 +9,10 @@ ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
 ms.openlocfilehash: 1eb3728e9697cefc3621221e4a918656efcba3c6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936642"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Snabb start: Azure Key Vault hemligt klient bibliotek för python
@@ -21,7 +21,7 @@ Kom igång med klient biblioteket Azure Key Vault Secret för python. Följ steg
 
 [API-referens dokumentation](/python/api/overview/azure/keyvault-secrets-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Paket (python-paket index)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + eller 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -210,7 +210,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över Azure Key Vault](../general/overview.md)
-- [Säker åtkomst till ett nyckel valv](../general/secure-your-key-vault.md)
+- [Säker åtkomst till ett nyckelvalv](../general/secure-your-key-vault.md)
 - [Guide för Azure Key Vault utvecklare](../general/developers-guide.md)
 - [Översikt över Key Vault säkerhet](../general/security-overview.md)
 - [Autentisera med Key Vault](../general/authentication.md)

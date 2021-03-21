@@ -7,17 +7,17 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96302475"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Skapa en profil behållare med Azure Files och Azure AD DS
 
 I den här artikeln visas hur du skapar en FSLogix profil behållare med Azure Files och Azure Active Directory Domain Services (AD DS).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du redan har konfigurerat en Azure AD DS-instans. Om du inte har en ännu, följ instruktionerna i [skapa en grundläggande hanterad domän](../active-directory-domain-services/tutorial-create-instance.md) först och gå sedan tillbaka hit.
 
@@ -107,7 +107,7 @@ Så här hämtar du åtkomst nyckeln för lagrings kontot:
     - Ersätt `<share-name>` med namnet på resursen som du skapade tidigare.
     - Ersätt `<storage-account-key>` med lagrings konto nyckeln från Azure.
 
-    Ett exempel:
+    Exempel:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
@@ -125,7 +125,7 @@ Så här hämtar du åtkomst nyckeln för lagrings kontot:
     - Ersätt `<mounted-drive-letter>` med bokstaven för den enhet som du använde för att mappa enheten.
     - Ersätt `<user-email>` med UPN för den användare eller Active Directory grupp som innehåller de användare som ska ha åtkomst till resursen.
 
-    Ett exempel:
+    Exempel:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -146,7 +146,7 @@ Så här konfigurerar du en FSLogix profil behållare:
 
 3. När installations programmet har startat väljer **du jag accepterar licens villkoren.** Ange en ny nyckel om det är tillämpligt.
 
-4. Välj **Installera**.
+4. Välj **installera**.
 
 5. Öppna **enhet C** och gå sedan till **program filer**  >  **FSLogix**-  >  **appar** för att kontrol lera att FSLogix-agenten har installerats korrekt.
 
@@ -206,7 +206,7 @@ Så här tilldelar du användare:
 
     Precis som de tidigare cmdletarna, se till att ersätta `<your-wvd-tenant>` , `<wvd-pool>` och `<user-principal>` med relevanta värden.
 
-    Ett exempel:
+    Exempel:
 
      ```powershell
      $pool1 = "contoso"

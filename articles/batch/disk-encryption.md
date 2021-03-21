@@ -7,10 +7,10 @@ ms.date: 01/27/2021
 ms.author: peshultz
 ms.custom: references_regions
 ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99055322"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Skapa en pool med diskkryptering aktiverat
@@ -39,7 +39,7 @@ Du kan inte ange vilken krypterings metod som ska användas för noderna i poole
 > [!IMPORTANT]
 > Om du skapar en pool med en [anpassad avbildning](batch-sig-images.md)kan du bara aktivera disk kryptering om du använder virtuella Windows-datorer.
 
-## <a name="azure-portal"></a>Azure-portalen
+## <a name="azure-portal"></a>Azure Portal
 
 När du skapar en batch-pool i Azure Portal väljer du antingen **TemporaryDisk** eller **OsAndTemporaryDisk** under **disk krypterings konfiguration**.
 

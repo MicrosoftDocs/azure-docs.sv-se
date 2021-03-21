@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
 ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052134"
 ---
 # <a name="vm-insights-guest-health-preview"></a>Gäst hälsa för VM Insights (förhands granskning)
@@ -18,7 +18,7 @@ Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för vir
 ## <a name="enable-virtual-machine-health"></a>Aktivera hälsa för virtuell dator
 Se [Aktivera VM Insights-gäst hälsa (för hands version)](vminsights-health-enable.md) för information om hur du aktiverar funktionen för gäst hälsa och onboarding av virtuella datorer.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Det finns ingen direkt kostnad för funktionen för gäst hälsa, men det finns en kostnad för att mata in och lagra hälso tillstånds data i Log Analytics-arbetsytan. Alla data lagras i tabellen *HealthStateChangeEvent* . Mer information om pris modeller och kostnader finns i [Hantera användning och kostnader med Azure Monitor loggar](../logs/manage-cost-storage.md) .
 
 ## <a name="view-virtual-machine-health"></a>Visa hälsa för virtuell dator

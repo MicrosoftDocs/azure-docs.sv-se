@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 0efc8105295ca7f97e6f465071c31b193173c5cd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100588725"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Introduktion till en SaaS-app med flera innehavare som använder mönstret för databas per klient organisation med Azure SQL Database
@@ -40,7 +40,7 @@ När du går igenom självstudierna och arbetar med appen kan du fokusera på Sa
 När du har distribuerat appen kan du utforska följande självstudier som bygger på den första distributionen. De här självstudierna visar vanliga SaaS-mönster som utnyttjar inbyggda funktioner i SQL Database, Azure Synapse Analytics och andra Azure-tjänster. Självstudier innehåller PowerShell-skript med detaljerade förklaringar. Förklaringarna fören klar förståelse och implementering av samma SaaS hanterings mönster i dina program.
 
 
-| Självstudie | Description |
+| Självstudie | Beskrivning |
 |:--|:--|
 | [Vägledning och tips för SQL Database SaaS-exempel för flera klient organisationer](saas-tenancy-wingtip-app-guidance-tips.md) | Hämta och kör PowerShell-skript för att förbereda delar av programmet. |
 |[Distribuera och utforska Wingtip SaaS-programmet](./saas-dbpertenant-get-started-deploy.md)|  Distribuera och utforska Wingtip SaaS-programmet med din Azure-prenumeration. |
