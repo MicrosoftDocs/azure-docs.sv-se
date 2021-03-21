@@ -5,10 +5,10 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787628"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Vanliga frågor om SQL Server databaser som körs på en virtuell Azure-säkerhetskopiering
@@ -39,7 +39,7 @@ Auto-läka som en funktion aktive ras för alla användare som standard. Men om 
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Kan jag styra hur många säkerhetskopieringar som körs på SQL-servern samtidigt?
 
-Ja. Du kan begränsa den hastighet som säkerhets kopierings principen körs för att minimera påverkan på en SQL Server instans. Så här ändrar du inställningen:
+Ja. Du kan begränsa den hastighet som säkerhetskopieringspolicyn körs med för att minimera påverkan på en SQL Server-instans. Så här ändrar du inställningen:
 
 1. På SQL Server-instansen i mappen *C:\Program Files\Azure arbets belastning Backup\bin* skapar du *ExtensionSettingsOverrides.jspå* filen.
 2. Ändra inställningen **DefaultBackupTasksThreshold** till ett lägre värde (till exempel 5) i filen *ExtensionSettingsOverrides.js* . <br>

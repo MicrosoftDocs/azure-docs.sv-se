@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036747"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Samla in syslog-datakällor med Log Analytics agent
@@ -221,7 +221,7 @@ Syslog-poster har en typ av **syslog** och har egenskaperna i följande tabell.
 ## <a name="log-queries-with-syslog-records"></a>Logga frågor med syslog-poster
 Följande tabell innehåller olika exempel på logg frågor som hämtar syslog-poster.
 
-| Söka i data | Beskrivning |
+| Fråga | Beskrivning |
 |:--- |:--- |
 | Syslog |Alla Syslogs. |
 | Syslog-&#124; där SeverityLevel = = "Error" |Alla syslog-poster med allvarlighets graden fel. |

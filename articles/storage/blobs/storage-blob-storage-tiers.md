@@ -3,17 +3,17 @@ title: Åtkomst nivåer för Azure Blob Storage – frekvent, låg frekvent och 
 description: Läs om åtkomst nivåer för frekvent åtkomst, låg frekvent åtkomst och arkivering för Azure Blob Storage. Granska lagrings konton som stöder skiktning.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/11/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928801"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656846"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Åtkomst nivåer för Azure Blob Storage – frekvent, låg frekvent och Arkiv lag ring
 
@@ -100,7 +100,9 @@ Endast frekventa och frekventa åtkomst nivåer kan anges som standard åtkomst 
 
 Med skiktning på blobnivå kan du ladda upp data till den åtkomst nivå som du väljer med hjälp av åtgärden [Lägg till BLOB](/rest/api/storageservices/put-blob) eller Lägg till [blockera-lista](/rest/api/storageservices/put-block-list) och ändra nivån för dina data på objekt nivå med hjälp av funktionen [Ange BLOB-nivå](/rest/api/storageservices/set-blob-tier) eller [livs cykel hantering](#blob-lifecycle-management) . Du kan ladda upp data till den nödvändiga åtkomst nivån och sedan enkelt ändra BLOB-åtkomsten mellan nivåerna frekvent, låg frekvent eller Arkiv form när användnings mönster ändras, utan att behöva flytta data mellan konton. Alla ändrings begär Anden sker omedelbart och nivå förändringar mellan frekvent och låg frekvent omedelbar omedelbar inaktive ras. Det kan ta flera timmar att återuppväcks en BLOB från Arkiv lag rings nivån.
 
-Tiden för den senaste ändringen på blobnivån är tillgänglig via blobegenskapen **Ändringstid för åtkomstnivå**. När en BLOB skrivs över på frekvent eller låg frekvent nivå ärver den nya bloben den nivå i blobben som skrevs av, såvida inte den nya BLOB-åtkomst nivån uttryckligen anges när den skapas. Om en BLOB finns på Arkiv nivån kan den inte skrivas över, så det är inte tillåtet att ladda upp samma BLOB i det här scenariot.
+Tiden för den senaste ändringen på blobnivån är tillgänglig via blobegenskapen **Ändringstid för åtkomstnivå**. **Ändrings tid för åtkomst nivå** är en egenskap på BLOB-nivå och uppdateras inte när standard konto nivån ändras. Konto egenskaperna och blob-egenskaperna är separata. Det skulle bli prohibitivelyt dyrt att uppdatera **ändrings tiden för åtkomst nivån** för varje BLOB i ett lagrings konto när kontots standard åtkomst nivå ändras.
+
+När en BLOB skrivs över på frekvent eller låg frekvent nivå ärver den nya bloben den nivå i blobben som skrevs av, såvida inte den nya BLOB-åtkomst nivån uttryckligen anges när den skapas. Om en BLOB finns på Arkiv nivån kan den inte skrivas över, så det är inte tillåtet att ladda upp samma BLOB i det här scenariot.
 
 > [!NOTE]
 > Arkivlagring och blobnivåindelning stöder endast blockblobar.

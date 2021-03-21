@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519715"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594741"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>För hands version: skapa en Azure Image Builder-mall 
 
@@ -249,7 +249,7 @@ När du använder `customize` :
 - Om en anpassning Miss lyckas, kommer hela anpassnings komponenten att Miss lyckas och rapportera ett fel.
 - Det rekommenderas starkt att du testar skriptet noggrant innan du använder det i en mall. Det blir enklare att felsöka skriptet på din egen virtuella dator.
 - Lägg inte till känsliga data i skripten. 
-- Skript platserna måste vara offentligt tillgängliga, såvida du inte använder [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity).
+- Skript platserna måste vara offentligt tillgängliga, såvida du inte använder [MSI](./image-builder-user-assigned-identity.md).
 
 ```json
         "customize": [
@@ -417,7 +417,7 @@ Fil anpassnings egenskaper:
 - **sourceUri** – en tillgänglig lagrings slut punkt kan vara GitHub eller Azure Storage. Du kan bara ladda ned en fil, inte en hel katalog. Om du behöver hämta en katalog använder du en komprimerad fil och expanderar den sedan med Shell-eller PowerShell-anpassningarna. 
 
 > [!NOTE]
-> Om sourceUri är ett Azure Storage konto, oavsett om blobben har marker ATS som offentlig, så kommer du att ge den hanterade användarens identitet behörighet att läsa åtkomst till bloben. Se det här [exemplet](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) för att ange lagrings behörigheter.
+> Om sourceUri är ett Azure Storage konto, oavsett om blobben har marker ATS som offentlig, så kommer du att ge den hanterade användarens identitet behörighet att läsa åtkomst till bloben. Se det här [exemplet](./image-builder-user-assigned-identity.md#create-a-resource-group) för att ange lagrings behörigheter.
 
 - **destination** – detta är den fullständiga sökvägen till målet och fil namnet. Alla refererade sökvägar och under kataloger måste finnas, Använd Shell-eller PowerShell-anpassningarna för att ställa in dem på förhand. Du kan använda skript anpassningarna för att skapa sökvägen. 
 
@@ -456,7 +456,7 @@ Anpassa egenskaper:
 - **updateLimit** – valfritt, definierar hur många uppdateringar som kan installeras, standard 1000.
  
 > [!NOTE]
-> Windows Update anpassning kan Miss lyckas om det finns väntande Windows-omstarter eller om program installationer fortfarande körs, så det kan hända att du ofta ser det här felet i anpassningen. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Vi rekommenderar starkt att du funderar på att lägga till i en Windows-omstart och/eller att göra det möjligt för program att slutföra sina installationer med [vila](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) -eller wait-kommandon i infogade kommandon eller skript innan du kör Windows Update.
+> Windows Update anpassning kan Miss lyckas om det finns väntande Windows-omstarter eller om program installationer fortfarande körs, så det kan hända att du ofta ser det här felet i anpassningen. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Vi rekommenderar starkt att du funderar på att lägga till i en Windows-omstart och/eller att göra det möjligt för program att slutföra sina installationer med [vila](/powershell/module/microsoft.powershell.utility/start-sleep) -eller wait-kommandon i infogade kommandon eller skript innan du kör Windows Update.
 
 ### <a name="generalize"></a>Generalisera 
 Som standard kommer Azure Image Builder också att köra "avetablering"-kod i slutet av varje bild anpassnings fas till "generalize"-avbildningen. Att generalisera är en process där avbildningen konfigureras så att den kan återanvändas för att skapa flera virtuella datorer. För virtuella Windows-datorer använder Azure Image Builder Sysprep. För Linux kör Azure Image Builder "waagent-deetablering". 

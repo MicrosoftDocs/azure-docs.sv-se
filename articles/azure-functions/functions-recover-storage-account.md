@@ -3,12 +3,12 @@ title: 'Fel söknings fel: Körmiljö för Azure Functions kan inte kontaktas'
 description: Lär dig hur du felsöker ett ogiltigt lagrings konto.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 392882fc2f0394e61aee973a20479d8f1fa9bc92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499636"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606981"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Fel söknings fel: "Körmiljö för Azure Functions kan inte kontaktas"
 
@@ -59,6 +59,7 @@ Din Function-app måste kunna komma åt lagrings kontot. Vanliga problem som blo
 * Function-appen distribueras till din App Service-miljön (ASE) utan rätt nätverks regler för att tillåta trafik till och från lagrings kontot.
 
 * Lagrings kontots brand vägg är aktive rad och inte konfigurerad för att tillåta trafik till och från funktioner. Mer information finns i [Konfigurera Azure Storage-brandväggar och virtuella nätverk](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Kontrol lera att `allowSharedKeyAccess` inställningen är inställd på `true` som är standardvärdet. Mer information finns i [förhindra auktorisering av delad nyckel för ett Azure Storage-konto](https://docs.microsoft.com/azure/storage/common/shared-key-authorization-prevent?tabs=portal#verify-that-shared-key-access-is-not-allowed). 
 
 ## <a name="daily-execution-quota-is-full"></a>Kvoten för daglig körning är full
 

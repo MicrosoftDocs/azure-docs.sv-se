@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: peiliu
 ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622227"
 ---
 Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna C# SMS-klient biblioteket för att skicka SMS-meddelanden.
@@ -41,7 +41,7 @@ Att slutföra den här snabb starten innebär en låg kostnad av några USD cent
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `SmsQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: **program.cs**.
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `SmsQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: **program. cs**.
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -62,7 +62,7 @@ När du fortfarande är i program katalogen installerar du Azure Communication S
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
-Lägg till ett `using` direktiv överst i **program.cs** för att inkludera `Azure.Communication` namn området.
+Lägg till ett `using` direktiv överst i **programmet. cs** för att inkludera `Azure.Communication` namn området.
 
 ```csharp
 
@@ -87,7 +87,7 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
- Öppna **program.cs** i en text redigerare och ersätt bröd texten i- `Main` metoden med kod för att initiera en `SmsClient` med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+ Öppna **program. cs** i en text redigerare och ersätt bröd texten i `Main` metoden med kod för att initiera en `SmsClient` med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
 
 
 ```csharp
@@ -100,7 +100,7 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-11-sms-message"></a>Skicka ett 1:1 SMS-meddelande
 
-Om du vill skicka ett SMS-meddelande till en enda mottagare anropar du `Send` eller- `SendAsync` funktionen från SmsClient. Lägg till den här koden i slutet av `Main` metoden i **program.cs**:
+Om du vill skicka ett SMS-meddelande till en enda mottagare anropar du `Send` eller- `SendAsync` funktionen från SmsClient. Lägg till den här koden i slutet av `Main` metoden i **programmet. cs**:
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(

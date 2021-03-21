@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c80a17b1e458793fe8f18ad5c4438884e007d666
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 11bee8a36bcf6f5cbf0d16b27c6cff38414d4647
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242732"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612278"
 ---
 <!--Feature availability in region-->
 
@@ -17,7 +17,7 @@ ms.locfileid: "93242732"
 
 | Funktion| Sydafrika, norra | Sydafrika, västra |
 | --- | --- | --- |
-| [Azure-EventGrid](../reacting-to-media-services-events.md) | ![Afrika, norra händelse rutnät allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![södra evenemangs rutnät allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Afrika, norra händelse rutnät allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![södra evenemangs rutnät allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![Afrika, Nord allmän tillgänglighet i Afrika](../media/azure-clouds-regions/ga.svg) | ![Afrika södra video analysator allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![Afrika, norra AudioAnalyzerPreset allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Afrika, södra AudioAnalyzerPreset allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) | ![Afrika, norra StandardEncoderPreset allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) | ![Afrika, södra StandardEncoderPreset allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |

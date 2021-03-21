@@ -4,14 +4,14 @@ description: Beskriver kritiska öppna problem och lösningar för den virtuella
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 01/22/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452568"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657560"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1,3 viktig information
 
@@ -31,6 +31,11 @@ Uppdatering 1,3 motsvarar program varu versionen 10.0.10319.0.
 Den här uppdateringen innehåller följande förbättringar: KB4540725
 
 - Transport Layer Security (TLS) 1,2 är en obligatorisk uppdatering och måste vara installerad. I den här versionen kommer TLS 1,2 att bli standard protokoll för all Azure Portal kommunikation.
+  
+   Om du ser följande varning måste du uppdatera program varan på enheten innan du fortsätter:
+
+   En eller flera StorSimple-enheter kör en äldre program varu version. Den senaste tillgängliga uppdateringen för TLS 1,2 är en obligatorisk uppdatering och installeras omedelbart på dessa enheter. TLS 1,2 används för all Azure Portal kommunikation och utan den här uppdateringen kommer enheten inte att kunna kommunicera med StorSimple-tjänsten.
+
 - Skräp insamling fel korrigeringar förbättra prestanda för skräp insamlings cykeln när enhets-och lagrings kontot finns i två regioner.
 - Korrigering för säkerhets kopierings problem på grund av BLOB-timeout.
 - Uppdaterade säkerhets korrigeringar för OS/. NET Framework:
@@ -65,4 +70,4 @@ Letar du efter en äldre versions anteckning? Gå till:
 - [StorSimple Virtual Array Update 0,4 viktig information](./storsimple-virtual-array-update-04-release-notes.md)
 - [StorSimple Virtual Array Update 0,3 viktig information](./storsimple-ova-update-03-release-notes.md)
 - [StorSimple Virtual Array Update 0,1 och 0,2 viktig information](./storsimple-ova-update-01-release-notes.md)
-- [Viktig information om allmän tillgänglighet för StorSimple Virtual Array](/azure/storsimple/storsimple-ova-pp-release-notes)
+- [Viktig information om allmän tillgänglighet för StorSimple Virtual Array](./storsimple-virtual-array-update-06-release-notes.md)

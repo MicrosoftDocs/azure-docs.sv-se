@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 0531305364b3e6f914a6de00614a3f9af4be3531
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 058873df989c444ebe06fc20a2f8a40fd2d3c594
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418784"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594554"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
 
@@ -73,7 +73,7 @@ I följande lista kan du konfigurera hanterad identitet för Azure App Service (
 | Systemtilldelad | Förhandsgranskning | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
 | Användartilldelad | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
 
-Azure Arc-aktiverade Kubernetes [stöder för närvarande systemtilldelad identitet](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Det hanterade tjänst identitets certifikatet används av alla Azure Arc-aktiverade Kubernetes-agenter för kommunikation med Azure.
+Azure Arc-aktiverade Kubernetes [stöder för närvarande systemtilldelad identitet](../../azure-arc/kubernetes/quickstart-connect-cluster.md). Det hanterade tjänst identitets certifikatet används av alla Azure Arc-aktiverade Kubernetes-agenter för kommunikation med Azure.
 
 ### <a name="azure-arc-enabled-servers"></a>Azure Arc-aktiverade servrar
 

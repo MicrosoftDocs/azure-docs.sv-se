@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: radeltch
-ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671570"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599926"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hög tillgänglighet för SAP HANA skala upp med Azure NetApp Files på Red Hat Enterprise Linux
 
@@ -599,6 +599,15 @@ I det här exemplet har varje klusternod sina egna HANA NFS-filsystem/Hana/Share
     nc_HN1_03  (ocf::heartbeat:azure-lb):  Started hanadb1
     vip_HN1_03 (ocf::heartbeat:IPaddr2):   Started hanadb1
     ```
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurera HANA aktiv/Läs aktive rad system replikering i pacemaker-kluster
+
+Från och med SAP HANA 2,0 SPS 01 SAP tillåts aktiva/skrivskyddade installations program för SAP HANA system replikering, där de sekundära systemen i SAP HANA systemreplikering kan användas aktivt för Läs intensiva arbets belastningar. För att stödja den här installationen i ett kluster krävs en andra virtuell IP-adress som gör att klienterna kan komma åt den sekundära Read-aktiverade SAP HANA databasen. För att säkerställa att den sekundära replikerings platsen fortfarande kan nås efter det att ett övertag har inträffat måste klustret flytta den virtuella IP-adressen med den sekundära av SAPHana-resursen.
+
+Den ytterligare konfigurationen, som krävs för att hantera HANA aktiv/läsning aktive rad systemreplikering i ett kluster med hög tillgänglighet i Red Hat med andra virtuella IP-adresser, beskrivs i [Konfigurera Hana aktiv/Läs aktiv system replikering i pacemaker-kluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster).  
+
+Innan du fortsätter bör du kontrol lera att du har konfigurerat ett kluster med hög tillgänglighet för Red Hat-kluster som hanterar SAP HANA databasen, enligt beskrivningen i ovanstående segment i dokumentationen.    
+
 
 ## <a name="test-the-cluster-setup"></a>Testa kluster konfigurationen
 

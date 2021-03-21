@@ -2,21 +2,21 @@
 title: Använda Azure Stream Analytics i dedikerad SQL-pool
 description: Tips för att använda Azure Stream Analytics med dedikerad SQL-pool i Azure Synapse för utveckling av real tids lösningar.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "96458230"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600096"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Använda Azure Stream Analytics med dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Azure Stream Analytics är en helt hanterad tjänst som tillhandahåller låg la
 
 I den här artikeln får du lära dig hur du använder din dedikerade SQL-pool som utgående mottagare för data inmatning med hög data flöde med Azure Stream Analytics-jobb.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure Stream Analytics jobb – om du vill skapa ett Azure Stream Analytics jobb följer du stegen i självstudien [komma igång med Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) för att:  
 
@@ -52,8 +52,8 @@ Ange följande värden:
 
 * *Alias för utdata*: Ange ett eget namn för jobbets utdata.
 * *Prenumeration*:
-  * Om din dedikerade SQL-pool är i samma prenumeration som Stream Analytics jobb klickar du på ***Välj Azure Synapse Analytics från dina prenumerationer** _.
-  _ Om din dedikerade SQL-pool finns i en annan prenumeration klickar du på Ange inställningar för Azure Synapse Analytics manuellt.
+  * Om din dedikerade SQL-pool är i samma prenumeration som Stream Analytics jobb klickar du på ***Välj Azure Synapse Analytics från dina prenumerationer***.
+  * Om din dedikerade SQL-pool finns i en annan prenumeration klickar du på Ange inställningar för Azure Synapse Analytics manuellt.
 * *Databas*: Välj mål databas i list rutan.
 * *Användar namn*: Ange användar namnet för ett konto som har Skriv behörighet för databasen.
 * *Lösen ord*: Ange lösen ordet för det angivna användar kontot.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>Steg 5
 
-Klicka på jobb namnet på Azure Portal för Stream Analytics jobb.  Klicka på knappen **_test_* _ i fönstret _*_utdata_*_ .
+Klicka på jobb namnet på Azure Portal för Stream Analytics jobb.  Klicka på knappen ***test** _ i fönstret _ *_utdata_**.
 
 ![Test knapp på Outpout information ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) när anslutningen till databasen lyckas visas ett meddelande i portalen.
 
 ### <a name="step-6"></a>Steg 6
 
-Klicka på menyn _*_fråga_*_ under _*_jobb sto pol Ogin_*_ och ändra frågan om du vill infoga data i Stream-utdata som du skapade.  Testa frågan genom att klicka på knappen _*_testa vald fråga_*_ .  Klicka på knappen _*_Spara fråga_*_ när du har lyckats testa frågan.
+Klicka på ***fråga** _-menyn under _*_jobb sto pol Ogin_*_ och ändra frågan om du vill infoga data i Stream-utdata som du skapade.  Testa frågan genom att klicka på knappen _*_testa vald fråga_*_ .  Klicka på _ *_Spara fråga_** knappen när du har testat frågan.
 
 ![Spara fråga](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>Steg 7
 
-Starta Azure Stream Analytics jobbet.  Klicka på _*_Start_*_ -knappen på _*_översikts_*_ menyn.
+Starta Azure Stream Analytics jobbet.  Klicka på knappen ***Start** _ på menyn _ *_Översikt_**.
 
 ![Starta Stream Analytics-jobb](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Klicka på knappen _ *_Start_** i fönstret Starta jobb.
+Klicka på ***Start*** -knappen i fönstret Starta jobb.
 
 ![Klicka på Start](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

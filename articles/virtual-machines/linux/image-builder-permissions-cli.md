@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201489"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607542"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurera Azure Image Builder-tjänstens behörigheter med Azure CLI
 
@@ -239,7 +239,7 @@ Ersätt följande plats hållarnas inställningar:
 | \<Storage account container\> | Namn på lagringskontocontainer |
 | \<Subscription ID\> | Azure-prenumeration |
 
-Mer information om hur du använder en användardefinierad hanterad identitet finns i avsnittet [skapa en anpassad avbildning som ska använda en Azure User-Assigned-hanterad identitet för att komma åt filer Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity). Snabb starten guidar dig genom hur du skapar och konfigurerar den användarspecifika hanterade identiteten för åtkomst till ett lagrings konto.
+Mer information om hur du använder en användardefinierad hanterad identitet finns i avsnittet [skapa en anpassad avbildning som ska använda en Azure User-Assigned-hanterad identitet för att komma åt filer Azure Storage](./image-builder-user-assigned-identity.md). Snabb starten guidar dig genom hur du skapar och konfigurerar den användarspecifika hanterade identiteten för åtkomst till ett lagrings konto.
 
 ## <a name="next-steps"></a>Nästa steg
 

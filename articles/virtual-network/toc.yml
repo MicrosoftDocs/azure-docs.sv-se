@@ -29,6 +29,8 @@
       href: tutorial-create-nat-gateway-portal.md
     - name: Integrera offentlig belastningsutjämnare för NAT-gateway
       href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: Integrera intern belastningsutjämnare för NAT-gateway
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: Exempel
   items:
     - name: Azure CLI

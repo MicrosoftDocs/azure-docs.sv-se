@@ -6,16 +6,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13e274a0d43ba4399e039d1280aa5ada3c94afe5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601482"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600470"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Använd privata slut punkter för Azure Storage
 
@@ -53,6 +53,16 @@ Du kan skydda ditt lagrings konto så att det bara accepterar anslutningar från
 
 ## <a name="creating-a-private-endpoint"></a>Skapa en privat slut punkt
 
+Information om hur du skapar en privat slut punkt med hjälp av Azure Portal finns i [ansluta privat till ett lagrings konto från lagrings konto upplevelsen i Azure Portal](../../private-link/tutorial-private-endpoint-storage-portal.md).
+
+Information om hur du skapar en privat slut punkt med hjälp av PowerShell eller Azure CLI finns i någon av dessa artiklar. Båda funktionerna är en Azure-webbapp som mål tjänst, men stegen för att skapa en privat länk är desamma för ett Azure Storage-konto.
+
+- [Skapa en privat slut punkt med Azure CLI](../../private-link/create-private-endpoint-cli.md)
+
+- [Skapa en privat slut punkt med hjälp av Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+
+
+
 När du skapar en privat slut punkt måste du ange det lagrings konto och den lagrings tjänst som den ansluter till. 
 
 Du behöver en separat privat slut punkt för varje lagrings resurs som du behöver komma åt, nämligen [blobbar](../blobs/storage-blobs-overview.md), [data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [filer](../files/storage-files-introduction.md), [köer](../queues/storage-queues-introduction.md), [tabeller](../tables/table-storage-overview.md)eller [statiska webbplatser](../blobs/storage-blob-static-website.md). På den privata slut punkten definieras dessa lagrings tjänster som **mål under resurs** för det associerade lagrings kontot. 
@@ -64,13 +74,6 @@ Om du skapar en privat slut punkt för Data Lake Storage Gen2 lagrings resurs b�
 > Se till att skapa ett lagrings konto för generell användning v2 (standard eller Premium).
 
 Om du vill ha Läs behörighet till den sekundära regionen med ett lagrings konto som kon figurer ATS för Geo-redundant lagring, behöver du separata privata slut punkter för både den primära och sekundära tjänstens instanser av tjänsten. Du behöver inte skapa en privat slut punkt för den sekundära instansen för **redundansväxling**. Den privata slut punkten ansluts automatiskt till den nya primära instansen efter redundansväxlingen. Mer information om alternativ för redundans finns [Azure Storage redundans](storage-redundancy.md).
-
-Mer detaljerad information om hur du skapar en privat slut punkt för ditt lagrings konto finns i följande artiklar:
-
-- [Anslut privat till ett lagrings konto från lagrings konto upplevelsen i Azure Portal](../../private-link/tutorial-private-endpoint-storage-portal.md)
-- [Skapa en privat slut punkt med hjälp av det privata länk centret i Azure Portal](../../private-link/create-private-endpoint-portal.md)
-- [Skapa en privat slut punkt med Azure CLI](../../private-link/create-private-endpoint-cli.md)
-- [Skapa en privat slut punkt med hjälp av Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
 <a id="connecting-to-private-endpoints"></a>
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.custom: references_regions
 ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438736"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure avdelningens kontroll-anslutning för Amazon S3
@@ -351,7 +351,7 @@ När du har lagt till Bucket som avdelningens kontroll-datakällor kan du konfig
 
     Om du väljer att skapa en ny anpassad skannings regel uppsättning använder du guiden för att definiera följande inställningar:
 
-    |Fönster  |Description  |
+    |Fönster  |Beskrivning  |
     |---------|---------|
     |**Ny skannings regel uppsättning** /<br>**Beskrivning av genomsöknings regel**    |   Ange ett meningsfullt namn och en valfri beskrivning av regel uppsättningen      |
     |**Välj filtyper**     | Välj alla filtyper som du vill ta med i genomsökningen och välj sedan **Fortsätt**.<br><br>Om du vill lägga till en ny filtyp väljer du **ny filtyp** och definierar följande: <br>– Det fil namns tillägg som du vill lägga till <br>– En valfri beskrivning  <br>– Om fil innehållet har en anpassad avgränsare eller är en system fil typ. Ange sedan din anpassade avgränsare eller Välj system fil typ. <br><br>Välj **skapa** för att skapa din anpassade filtyp.     |

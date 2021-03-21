@@ -12,10 +12,10 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c817528ff26dd10112eaf69c7ad20f8fb5813695
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102550407"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrera från Amazon Web Services (AWS) och andra plattformar som ska Managed Disks i Azure
@@ -87,7 +87,7 @@ Det finns sju typer av standard-hanterade diskar som kan användas med den virtu
 
 Som standard är diskcachelagring *-principen skrivskyddad* för alla Premium-datadiskarna och *Läs-och skriv* behörighet för den Premium-operativsystems disk som är ansluten till den virtuella datorn. Den här konfigurations inställningen rekommenderas för att uppnå optimala prestanda för ditt programs IOs. För skrivskyddade eller skrivskyddade data diskar (till exempel SQL Server loggfiler) inaktiverar du diskcachelagring så att du kan uppnå bättre program prestanda.
 
-### <a name="pricing"></a>Prissättning
+### <a name="pricing"></a>Priser
 
 Läs [om prissättningen för Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Priset för Premium-Managed Disks är detsamma som de Premium-ohanterade diskarna. Priser för standard Managed Disks skiljer sig dock från vanliga ohanterade diskar.
 

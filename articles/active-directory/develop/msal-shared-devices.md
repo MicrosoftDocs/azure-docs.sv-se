@@ -1,7 +1,7 @@
 ---
 title: Översikt över delad enhets läge
 titleSuffix: Microsoft identity platform | Azure
-description: Lär dig mer om delad enhets läge för att aktivera enhets delning för dina firstline-arbetare.
+description: Lär dig mer om delad enhets läge för att aktivera enhets delning för dina Frontline-arbetare.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9e48d8f55efa8bc4c82eaa973a6feaeb42390064
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562091"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578782"
 ---
 # <a name="overview-of-shared-device-mode"></a>Översikt över delad enhets läge
 
-Läget för delad enhet är en funktion i Azure Active Directory som gör att du kan skapa program som stöder firstline-arbetare och aktivera delad enhets läge på de enheter som distribueras till dem.
+Läget för delad enhet är en funktion i Azure Active Directory som gör att du kan skapa program som stöder Frontline-arbetare och aktivera delad enhets läge på de enheter som distribueras till dem.
 
 >[!IMPORTANT]
-> Den här funktionen [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+> Delat enhets läge för iOS [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="what-are-firstline-workers"></a>Vad är firstline Worker?
+## <a name="what-are-frontline-workers"></a>Vad är Frontline Worker?
 
-Firstline-anställda är detaljister, underhålls-och fält agenter, medicinsk personal och andra användare som inte sitter framför en dator eller använder företagets e-post för samarbete. I följande avsnitt beskrivs aspekter och utmaningar med stöd för firstline-arbetskrafter, följt av en introduktion till de funktioner som tillhandahålls av Microsoft och som gör att ditt program kan användas av en organisations firstline arbetare.
+Frontline-anställda är detaljister, underhålls-och fält agenter, medicinsk personal och andra användare som inte sitter framför en dator eller använder företagets e-post för samarbete. I följande avsnitt beskrivs aspekter och utmaningar med stöd för Frontline-arbetskrafter, följt av en introduktion till de funktioner som tillhandahålls av Microsoft och som gör att ditt program kan användas av en organisations Frontline arbetare.
 
-### <a name="challenges-of-supporting-firstline-workers"></a>Utmaningar med stöd för firstline-arbetskrafter
+### <a name="challenges-of-supporting-frontline-workers"></a>Utmaningar med stöd för Frontline-arbetskrafter
 
-Att aktivera firstline Worker-arbetsflöden innehåller utmaningar som vanligt vis presenteras av vanliga informations anställda. Sådana utmaningar kan vara höga omsättnings takt och mindre bekant med en organisations kärn produktivitets verktyg. Organisationer antar olika strategier för att ge sina firstline-arbetskrafter. Vissa använder sig av en BYOD-strategi (en egen enhet) där deras anställda använder affärsappar på sin personliga telefon, medan andra ger sina anställda till delade enheter som iPad eller Android-surfplattor.
+Att aktivera Frontline Worker-arbetsflöden innehåller utmaningar som vanligt vis presenteras av vanliga informations anställda. Sådana utmaningar kan vara höga omsättnings takt och mindre bekant med en organisations kärn produktivitets verktyg. Organisationer antar olika strategier för att ge sina Frontline-arbetskrafter. Vissa använder sig av en BYOD-strategi (en egen enhet) där deras anställda använder affärsappar på sin personliga telefon, medan andra ger sina anställda till delade enheter som iPad eller Android-surfplattor.
 
 ### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>Stöd för flera användare på enheter som har utformats för en användare
 
@@ -49,12 +49,12 @@ Azure Active Directory aktiverar de här scenarierna med en funktion som kallas 
 
 Som det nämns är delad enhets läge en funktion i Azure Active Directory som gör att du kan:
 
-* Bygg program som stöder firstline-arbetare
-* Distribuera enheter till firstline-arbetare och aktivera delad enhets läge
+* Bygg program som stöder Frontline-arbetare
+* Distribuera enheter till Frontline-arbetare och aktivera delad enhets läge
 
-### <a name="build-applications-that-support-firstline-workers"></a>Bygg program som stöder firstline-arbetare
+### <a name="build-applications-that-support-frontline-workers"></a>Bygg program som stöder Frontline-arbetare
 
-Du kan stödja firstline-arbetare i dina program med hjälp av Microsoft Authentication Library (MSAL) och [Microsoft Authenticator app](../user-help/user-help-auth-app-overview.md) för att aktivera ett enhets tillstånd som kallas *delad enhets läge*. När en enhet är i delad enhets läge ger Microsoft ditt program information så att den kan ändra dess beteende baserat på användarens tillstånd, vilket skyddar användar data.
+Du kan stödja Frontline-arbetare i dina program med hjälp av Microsoft Authentication Library (MSAL) och [Microsoft Authenticator app](../user-help/user-help-auth-app-overview.md) för att aktivera ett enhets tillstånd som kallas *delad enhets läge*. När en enhet är i delad enhets läge ger Microsoft ditt program information så att den kan ändra dess beteende baserat på användarens tillstånd, vilket skyddar användar data.
 
 Funktioner som stöds är:
 
@@ -69,15 +69,15 @@ Användarna är beroende av att deras data inte läcker till en annan användare
 
 Mer information om hur du ändrar dina program för att stödja delad enhets läge finns i avsnittet [Nästa steg](#next-steps) i slutet av den här artikeln.
 
-### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>Distribuera enheter till firstline-arbetare och aktivera delad enhets läge
+### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>Distribuera enheter till Frontline-arbetare och aktivera delad enhets läge
 
-När dina program har stöd för delad enhets läge och inkluderar nödvändiga data-och säkerhets ändringar kan du annonsera dem som användbara av firstline-arbetarna.
+När dina program har stöd för delad enhets läge och inkluderar nödvändiga data-och säkerhets ändringar kan du annonsera dem som användbara av Frontline-arbetarna.
 
 En organisations enhets administratörer kan distribuera sina enheter och dina program till sina butiker och arbets platser via en lösning för hantering av mobila enheter (MDM) som Microsoft Intune. En del av etablerings processen markerar enheten som en *delad enhet*. Administratörer konfigurerar delad enhets läge genom att distribuera [Microsoft Authenticator app](../user-help/user-help-auth-app-overview.md) och ange delad enhets läge via konfigurations parametrar. När du har genomfört de här stegen kommer alla program som har stöd för delad enhets läge att använda Microsoft Authenticator programmet för att hantera dess användar tillstånd och tillhandahålla säkerhetsfunktioner för enheten och organisationen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Vi stöder iOS-och Android-plattformar för delad enhets läge. Läs dokumentationen nedan för din plattform för att börja stödja firstline-arbetare i dina program.
+Vi stöder iOS-och Android-plattformar för delad enhets läge. Läs dokumentationen nedan för din plattform för att börja stödja Frontline-arbetare i dina program.
 
 * [Stöd för delad enhets läge för iOS](msal-ios-shared-devices.md)
 * [Stöd för delad enhets läge för Android](msal-android-shared-devices.md)

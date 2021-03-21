@@ -4,16 +4,18 @@ description: 'Snabb start: Lär dig hur du skapar en instrument panel i Azure Po
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745663"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613251"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Snabb start: skapa en Azure Portal instrument panel med Azure CLI
 
-En instrument panel i Azure Portal är en fokuserad och ordnad vy av dina moln resurser.
+En instrument panel i Azure Portal är en fokuserad och ordnad vy av dina moln resurser. Den här artikeln fokuserar på hur du använder Azure CLI för att skapa en instrument panel.
+Instrument panelen visar prestanda för en virtuell dator (VM) samt en statisk information och länkar.
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Kontrol lera att du kan se data om den virtuella datorn inifrån Azure Portal.
-
-1. Öppna Azure-portalen och välj **Instrumentpanel**.
-
-   ![Azure Portal navigering till instrument panelen](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. På instrument panels sidan väljer du **enkel instrument panel för virtuell dator**.
-
-   ![Navigera till en enkel instrument panel för virtuell dator](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Granska instrumentpanelen. Du kan se att en del av innehållet är statiskt, men det finns även diagram som visar prestanda för den virtuella datorn.
-
-   ![Granska enkel instrument panel för virtuell dator](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

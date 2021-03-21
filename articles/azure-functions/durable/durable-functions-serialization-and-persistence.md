@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: azfuncdf
 ms.openlocfilehash: ea4aaa1cdbe10e2db9cf619452558d104a2293ab
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449381"
 ---
 # <a name="data-persistence-and-serialization-in-durable-functions-azure-functions"></a>Data beständighet och serialisering i Durable Functions (Azure Functions)
@@ -26,7 +26,7 @@ Durable Functions använder Azure Storage köer för att schemalägga alla funkt
 
 I en enda [aktivitets hubb](durable-functions-task-hubs.md)skapar Durable Functions och lägger till meddelanden i en kö för *arbets objekt* med namnet `<taskhub>-workitem` för schemaläggning av aktiviteter och en eller flera *kontroll köer* `<taskhub>-control-##` som heter schema-eller återuppta funktioner för Orchestrator och entitet. Antalet kontroll köer är lika med antalet partitioner som har kon figurer ATS för ditt program. Mer information om köer och partitioner finns i dokumentationen om [prestanda och skalbarhet](durable-functions-perf-and-scale.md).
 
-### <a name="tables"></a>Tabeller
+### <a name="tables"></a>Tables
 
 När dirigeringen bearbetar meddelanden sparas poster för deras resulterande åtgärder i *Historik* tabellen med namnet `<taskhub>History` . Orchestration-indata, utdata och anpassade status data sparas också i *instans* tabellen med namnet `<taskhub>Instances` .
 

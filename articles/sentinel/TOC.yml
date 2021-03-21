@@ -21,7 +21,7 @@
       href: tutorial-monitor-your-data.md
     - name: Undersöka incidenter
       href: tutorial-investigate-cases.md
-    - name: Reagera på hot
+    - name: Använd Automation för att svara på hot
       href: tutorial-respond-threats-playbook.md
     - name: Skapa KQL-frågor (lära modulen)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
@@ -37,6 +37,14 @@
           href: resource-context-rbac.md
     - name: Avancerad attackidentifiering i flera faser
       href: fusion.md
+    - name: Automation (SOAR)
+      items:
+        - name: SOAR i Azure Sentinel
+          href: automation-in-azure-sentinel.md
+        - name: Automatiserings regler för incident hantering
+          href: automate-incident-handling-with-automation-rules.md
+        - name: Avancerad automatisering med spel böcker
+          href: automate-responses-with-playbooks.md
     - name: Identifiera avancerade hot med UEBA
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Importera hotinformation till Azure Sentinel

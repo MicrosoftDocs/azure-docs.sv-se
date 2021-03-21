@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar Service Fabric hanterat kluster för N
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.openlocfilehash: e17251523c0720665c4c6f5b7811304eebc9923e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101746992"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters-preview"></a>Konfigurera nätverks inställningar för Service Fabric hanterade kluster (för hands version)
