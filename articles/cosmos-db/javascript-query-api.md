@@ -10,13 +10,13 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340999"
 ---
-# <a name="javascript-query-api-in-azure-cosmos-db"></a>Java Script-fråge-API i Azure Cosmos DB
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript-fråge-API i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Förutom att skicka frågor med hjälp av SQL-API: et i [Cosmos DB Azure Cosmos DB tillhandahåller SDK: n på Server sidan](https://github.com/Azure/azure-cosmosdb-js-server/) ett JavaScript-gränssnitt för att utföra optimerade frågor i Cosmos DB lagrade procedurer och utlösare. Du behöver inte vara medveten om SQL-språket för att kunna använda det här JavaScript-gränssnittet. Med Java Script-API: et kan du skapa frågor genom programmering genom att skicka predikat till sekvenser med funktions anrop, med en syntax som är välbekant för ECMAScript5's-matriser och populära JavaScript-bibliotek som Lodash. Frågor parsas av JavaScript-körningen och körs effektivt med Azure Cosmos DB index.
@@ -57,10 +57,10 @@ I följande tabell presenteras olika SQL-frågor och motsvarande JavaScript-frå
 |**SQL**|**Java Script-fråge-API**|**Beskrivning**|
 |---|---|---|
 |Select<br>FRÅN dokument| _ _. map (funktion (doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;returnera dokument;<br>});|Resulterar i alla dokument (med fortsättnings-token) som är.|
-|VÄLJ <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;dok. Message som MSG,<br>&nbsp;&nbsp;&nbsp;dokument. åtgärder <br>FRÅN dokument|_ _. map (funktion (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;returrelaterade<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc. Message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;åtgärder: doc. Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekterar ID, meddelande (alias till MSG) och åtgärd från alla dokument.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;dok. Message som MSG,<br>&nbsp;&nbsp;&nbsp;dokument. åtgärder <br>FRÅN dokument|_ _. map (funktion (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;returrelaterade<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc. Message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;åtgärder: doc. Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekterar ID, meddelande (alias till MSG) och åtgärd från alla dokument.|
 |Select<br>FRÅN dokument<br>WHERE<br>&nbsp;&nbsp;&nbsp;dok. ID = "X998_Y998"|_ _ filter (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;returnera doc.id = = = "X998_Y998";<br>});|Frågor för dokument med predikatet: ID = "X998_Y998".|
 |Select<br>FRÅN dokument<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (dokument. Taggar, 123)|_ _. filter (Function (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;returnera x. Taggar && x. Tags. indexOf (123) >-1;<br>});|Frågor för dokument med egenskapen Taggar och taggar är en matris som innehåller värdet 123.|
-|VÄLJ<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;dok. Message som MSG<br>FRÅN dokument<br>WHERE<br>&nbsp;&nbsp;&nbsp;dok. ID = "X998_Y998"|_ _. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. filter (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returnera doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (funktion (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returrelaterade<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|Frågor om dokument med ett predikat, ID = "X998_Y998" och projekterar sedan ID och meddelande (alias till MSG).|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;dok. Message som MSG<br>FRÅN dokument<br>WHERE<br>&nbsp;&nbsp;&nbsp;dok. ID = "X998_Y998"|_ _. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. filter (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returnera doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (funktion (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returrelaterade<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|Frågor om dokument med ett predikat, ID = "X998_Y998" och projekterar sedan ID och meddelande (alias till MSG).|
 |Välj värde tagg<br>FRÅN dokument<br>KOPPLA tagg i dokument. Taggen<br>Sortera efter docs._ts|_ _. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. filter (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returnera dokument. Taggar && array. isArray (doc. Taggar);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returnera doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. plocka ("Taggar")<br>&nbsp;&nbsp;&nbsp;&nbsp;. förenkla ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Filter för dokument som har en mat ris egenskap, taggar och sorterar de resulterande dokumenten med system egenskapen _ts timestamp, och sedan lägger Project + samman taggarna array.|
 
 ## <a name="next-steps"></a>Nästa steg

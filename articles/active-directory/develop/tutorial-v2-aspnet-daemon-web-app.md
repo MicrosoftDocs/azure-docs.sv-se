@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653770"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
@@ -178,15 +178,15 @@ Den relevanta koden för det här exemplet är i följande filer:
    - Microsoft.Owin.Security.OpenIdConnect
    - Microsoft. Identity. client
 1. I mappen **App_Start** :
-   1. Skapa en klass med namnet **startup.auth.cs**.
+   1. Skapa en klass med namnet **startup. auth. cs**.
    1. Ta bort **. App_Start** från namn områdes namnet.
    1. Ersätt koden för **Start** klassen med koden från samma fil i exempel programmet.
    Se till att du tar hela klass definitionen. Definitionen ändras från en **offentlig klass som startar** till en **offentlig del klass.**
-1. I **startup.auth.cs** löser du de referenser som saknas genom att lägga till **using** -instruktioner som föreslås av Visual Studio IntelliSense.
+1. I **Start. auth. cs**, lös referenser som saknas genom att lägga till **using** -instruktioner som föreslås av Visual Studio IntelliSense.
 1. Högerklicka på projektet, Välj **Lägg till** och välj sedan **klass**.
-1. Skriv **OWIN** i rutan Sök. **Start klassen OWIN** visas som ett val. Markera det och ge klassen namnet **startup.cs**.
-1. I **startup.cs** ersätter du koden för **Start** klassen med koden från samma fil i exempel programmet. Observera återigen att definitions ändringarna från den **offentliga klassen startar** till en **offentlig, delvis klass start**.
-1. Lägg till en ny klass med namnet **MsGraphUser.cs** i mappen **modeller** . Ersätt implementeringen med innehållet i filen med samma namn från exemplet.
+1. Skriv **OWIN** i rutan Sök. **Start klassen OWIN** visas som ett val. Markera den och ge klassen namnet **startup. cs**.
+1. I **startup. cs** ersätter du koden för **Start** klassen med koden från samma fil i exempel programmet. Observera återigen att definitions ändringarna från den **offentliga klassen startar** till en **offentlig, delvis klass start**.
+1. Lägg till en ny klass med namnet **MsGraphUser. cs** i mappen **modeller** . Ersätt implementeringen med innehållet i filen med samma namn från exemplet.
 1. Lägg till en ny **MVC 5-kontrollant – tom** instans med namnet **AccountController**. Ersätt implementeringen med innehållet i filen med samma namn från exemplet.
 1. Lägg till en ny **MVC 5-kontrollant – tom** instans med namnet **UserController**. Ersätt implementeringen med innehållet i filen med samma namn från exemplet.
 1. Lägg till en ny **Web API 2-kontrollant-tom** instans med namnet **SyncController**. Ersätt implementeringen med innehållet i filen med samma namn från exemplet.

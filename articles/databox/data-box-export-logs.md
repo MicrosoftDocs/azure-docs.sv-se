@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337516"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Spårning och händelse loggning för din Azure Data Box och Azure Data Box Heavy export order
@@ -252,7 +252,7 @@ Om du bläddrar igenom order historiken visas:
 
 - Information om operatörs spårning för enheten.
 - Händelser med *SecureErase* -aktivitet. Dessa händelser motsvarar radering av data på disken.
-- Data Box-enhet logg länkar. Sök vägarna till *gransknings loggarna* , *kopierings loggar* och *BOM* -filer visas.
+- Data Box-enhet logg länkar. Sök vägarna till *gransknings loggarna*, *kopierings loggar* och *BOM* -filer visas.
 
 Här är ett exempel på loggen för order historik från Azure Portal:
 

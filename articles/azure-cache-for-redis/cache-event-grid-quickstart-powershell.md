@@ -7,10 +7,10 @@ ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
 ms.openlocfilehash: 6c3b433a8e433f39b723a7155bb6de116857efca
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508171"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>Snabb start: dirigera Azure cache efter Redis-händelser till webb slut punkt med PowerShell
@@ -19,7 +19,7 @@ Azure Event Grid är en händelsetjänst för molnet. I den här snabb starten s
 
 Normalt kan du skicka händelser till en slutpunkt som bearbetar informationen om händelsen och utför åtgärder. För att förenkla den här snabb starten kommer du dock att skicka händelser till en webbapp som samlar in och visar meddelandena. När du slutför stegen som beskrivs i den här snabb starten ser du att händelse data har skickats till webbappen.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Den här snabb starten kräver att du kör den senaste versionen av Azure PowerShell. Om du behöver installera eller uppgradera kan du läsa [Installera och konfigurera Azure PowerShell](/powershell/azure/install-Az-ps).
 

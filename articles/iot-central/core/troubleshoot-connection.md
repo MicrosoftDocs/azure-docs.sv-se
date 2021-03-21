@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
 ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98673242"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Felsök varför data från dina enheter inte visas i Azure IoT Central
@@ -130,7 +130,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Enhets etablerings status | Description | Möjlig minskning |
+| Enhets etablerings status | Beskrivning | Möjlig minskning |
 | - | - | - |
 | Etablerad | Ingen direkt identifierbar fråga. | Ej tillämpligt |
 | Registrerad | Enheten har ännu inte anslutits till IoT Central. | Kontrol lera dina enhets loggar för anslutnings problem. |
@@ -150,7 +150,7 @@ Följande tabeller visar de vanliga felkoderna och möjliga åtgärder för att 
 
 Om du ser problem som rör ditt autentiseringspaket:
 
-| Felkod | Description | Möjlig minskning |
+| Felkod | Beskrivning | Möjlig minskning |
 | - | - | - |
 | 400 | Bröd texten i begäran är inte giltig. Det går till exempel inte att parsa den, eller så går det inte att verifiera objektet. | Se till att du skickar rätt begär ande text som en del av attesterings flödet eller Använd en enhets-SDK. |
 | 401 | Det går inte att verifiera autentiseringstoken. Till exempel har den upphört att gälla eller inte gäller för frågans URI. Den här felkoden returneras även till enheter som en del av flödet för TPM-attestering. | Kontrol lera att enheten har rätt autentiseringsuppgifter. |

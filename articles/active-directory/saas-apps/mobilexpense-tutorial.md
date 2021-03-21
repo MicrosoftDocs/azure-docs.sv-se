@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: fbe711652d11a426d80dd767eb3069170f67f1b3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Självstudie: Azure Active Directory integrering med mobil Xpense
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med mobila Xpense i Azure AD:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan för program integrering på **mobil Xpense** .
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan för program integrering på **mobil Xpense** .
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -161,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till mobila Xpense.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **mobil Xpense**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **mobil Xpense**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

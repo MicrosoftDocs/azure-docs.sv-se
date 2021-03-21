@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996720"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Vad är Azure Active Directory arkitekturen?
@@ -79,7 +79,7 @@ Läsåtgärder (som är avsevärt många fler än skrivåtgärderna) skickas end
 
 Varaktigt allokeras till minst två Data Center innan det bekräftas. Detta inträffar när du först genomför skrivningen på den primära servern och sedan omedelbart replikerar skrivningen till minst ett annat data Center. Den här Skriv åtgärden garanterar att en potentiell förlust av data Center som är värd för den primära inte leder till data förlust.
 
-Azure AD har ett tomt [återställnings tids mål (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) för att inte förlora data vid redundans. Det här omfattar:
+Azure AD har ett tomt [återställnings tids mål (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) för att inte förlora data vid redundans. Du måste bland annat:
 
 * Utfärdande av token och katalog läsningar
 * Tillåter endast cirka 5 minuter RTO för katalog skrivningar

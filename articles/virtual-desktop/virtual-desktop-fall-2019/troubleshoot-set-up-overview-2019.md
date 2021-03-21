@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005439"
 ---
 #  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Översikt över fel sökning av virtuella Windows-datorer (klassisk), feedback och support
@@ -31,7 +31,7 @@ Använd följande tabell för att identifiera och lösa problem som kan uppstå 
 >[!NOTE]
 > Vi har ett Tech community-forum som du kan använda för att diskutera dina problem med produkt teamet och aktiva community-medlemmar. Besök [Windows-Tech-communityn](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) för att starta en diskussion.
 
-| **Problem**                                                            | **Föreslagen lösning**  |
+| **Ge**                                                            | **Föreslagen lösning**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Skapa en Windows-klient för virtuella skriv bord                                                    | Om det uppstår ett Azure-avbrott [öppnar du en support förfrågan för Azure](https://azure.microsoft.com/support/create-ticket/). [Öppna annars en support förfrågan för Azure](https://azure.microsoft.com/support/create-ticket/), Välj **Windows Virtual Desktop** för tjänsten, Välj **distribution** för problem typen och välj sedan **problem som skapar en Windows-klient för virtuella skriv bord** för problem under typen.|
 | Åtkomst till Marketplace-mallar i Azure Portal       | Om det uppstår ett Azure-avbrott [öppnar du en support förfrågan för Azure](https://azure.microsoft.com/support/create-ticket/). <br> <br> Windows Virtual Desktop-mallar för Azure Marketplace är tillgängliga på ett kostnads fritt.|

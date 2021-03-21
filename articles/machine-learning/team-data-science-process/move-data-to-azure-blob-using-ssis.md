@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321997"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Flytta data till eller från Azure Blob Storage med SSIS-kopplingar
@@ -42,8 +42,8 @@ För att utföra de uppgifter som beskrivs i den här artikeln måste du ha en A
 
 Om du vill använda **SSIS-anslutningarna** måste du ladda ned:
 
-* **SQL Server 2014 eller 2016 standard (eller senare)** : installera inkluderar SQL Server Integration Services.
-* **Microsoft SQL Server 2014-eller 2016 Integration Services Feature Pack för Azure** : dessa anslutningar kan laddas ned från [SQL Server 2014 integrerings tjänster](https://www.microsoft.com/download/details.aspx?id=47366) och [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) -sidor.
+* **SQL Server 2014 eller 2016 standard (eller senare)**: installera inkluderar SQL Server Integration Services.
+* **Microsoft SQL Server 2014-eller 2016 Integration Services Feature Pack för Azure**: dessa anslutningar kan laddas ned från [SQL Server 2014 integrerings tjänster](https://www.microsoft.com/download/details.aspx?id=47366) och [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) -sidor.
 
 > [!NOTE]
 > SSIS installeras med SQL Server, men ingår inte i Express versionen. Information om vilka program som ingår i olika versioner av SQL Server finns i [SQL Server-versioner](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)

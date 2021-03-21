@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929165"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Utveckla C#-topologier för Apache Storm med hjälp av Data Lake verktyg för Visual Studio
@@ -132,11 +132,11 @@ Så här skapar du ett C#-Topology-projekt i Visual Studio:
 
 När du har skapat projektet bör du ha följande filer:
 
-* *Program.cs*: definitions miljön för ditt projekt. En standardtopologi som består av en kanalen och en bult skapas som standard.
+* *Program. cs*: topologins definition för ditt projekt. En standardtopologi som består av en kanalen och en bult skapas som standard.
 
-* *Spout.cs*: ett exempel på kanalen som avger slumpmässiga tal.
+* *Kanalen. cs*: ett exempel på kanalen som avger slumpmässiga tal.
 
-* *Bolt.cs*: en exempels bult som innehåller antalet tal som skickas av kanalen.
+* *Bult. cs*: ett exempel på en blixt som innehåller ett antal tal som genereras av kanalen.
 
 När du skapar projektet laddar NuGet ned det senaste [SCP.net-paketet](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
 
@@ -144,7 +144,7 @@ När du skapar projektet laddar NuGet ned det senaste [SCP.net-paketet](https://
 
 Lägg sedan till koden för kanalen, som används för att läsa data i en topologi från en extern källa. Den här kanalen avger slumpmässigt en mening i topologin.
 
-1. Öppna *Spout.cs*. Huvud komponenterna för en kanalen är:
+1. Öppna *kanalen. cs*. Huvud komponenterna för en kanalen är:
 
    * `NextTuple`: Anropas av storm när kanalen får generera nya tupler.
 
@@ -216,18 +216,18 @@ Lägg sedan till koden för kanalen, som används för att läsa data i en topol
 
 Nu ska du skapa två Storm-bultar i det här exemplet:
 
-1. Ta bort den befintliga *Bolt.cs* -filen från projektet.
+1. Ta bort den befintliga filen *bult. cs* från projektet.
 
-2. I **Solution Explorer** högerklickar du på projektet och väljer **Lägg till**  >  **nytt objekt**. I listan väljer du **Storm bult** och anger *splitter.cs* som namn. I den nya filens kod ändrar du namn områdets namn till `WordCount` . Upprepa sedan processen för att skapa en andra bult med namnet *Counter.cs*.
+2. I **Solution Explorer** högerklickar du på projektet och väljer **Lägg till**  >  **nytt objekt**. I listan väljer du **Storm bult** och anger *delare. cs* som namn. I den nya filens kod ändrar du namn områdets namn till `WordCount` . Upprepa sedan processen för att skapa en andra bult med namnet *Counter. cs*.
 
-   * *Splitter.cs*: implementerar en bult som delar upp meningar i enskilda ord och avger en ny data ström.
+   * *Delarer. cs*: implementerar en bult som delar upp meningar i enskilda ord och avger en ny data ström.
 
-   * *Counter.cs*: implementerar en bult som räknar varje ord och utvärderar en ny ström med ord och antalet för varje ord.
+   * *Counter. cs*: implementerar en bult som räknar varje ord och utvärderar en ny ström med ord och antalet för varje ord.
 
      > [!NOTE]  
      > Dessa bultar läser och skriver till strömmar, men du kan också använda en bult för att kommunicera med källor som en databas eller tjänst.
 
-3. Öppna *splitter.cs*. Den har bara en metod som standard: `Execute` . `Execute`Metoden anropas när bulten tar emot en tupel för bearbetning. Här kan du läsa och bearbeta inkommande tupler och generera utgående tupler.
+3. Öppna *delarer. cs*. Den har bara en metod som standard: `Execute` . `Execute`Metoden anropas när bulten tar emot en tupel för bearbetning. Här kan du läsa och bearbeta inkommande tupler och generera utgående tupler.
 
 4. Ersätt innehållet i `Splitter` klassen med följande kod:
 
@@ -275,7 +275,7 @@ Nu ska du skapa två Storm-bultar i det här exemplet:
     }
     ```
 
-5. Öppna *Counter.cs* och ersätt klass innehållet med följande kod:
+5. Öppna *Counter. cs* och ersätt klass innehållet med följande kod:
 
     ```csharp
     private Context ctx;
@@ -572,9 +572,9 @@ För Linux-baserade HDInsight-kluster ser du till att ditt projekt använder bin
    > [!NOTE]
    > Kom ihåg att ändra **utdatatypen tillbaka till** **klass biblioteket** innan du distribuerar topologin till ett kluster.
 
-1. I **Solution Explorer** högerklickar du på projektet och väljer sedan **Lägg till**  >  **nytt objekt**. Välj **klass** och ange *LocalTest.cs* som klass namn. Välj slutligen **Lägg till**.
+1. I **Solution Explorer** högerklickar du på projektet och väljer sedan **Lägg till**  >  **nytt objekt**. Välj **klass** och ange *LocalTest. cs* som klass namn. Välj slutligen **Lägg till**.
 
-1. Öppna *LocalTest.cs* och Lägg till följande- `using` instruktion högst upp:
+1. Öppna *LocalTest. cs* och Lägg till följande- `using` instruktion högst upp:
 
     ```csharp
     using Microsoft.SCP;
@@ -661,7 +661,7 @@ För Linux-baserade HDInsight-kluster ser du till att ditt projekt använder bin
 
     Ta en stund att läsa igenom kod kommentarerna. Den här koden används `LocalContext` för att köra komponenterna i utvecklings miljön. Den behåller data strömmen mellan komponenter till textfiler på den lokala enheten.
 
-1. Öppna *program.cs* och Lägg till följande kod i- `Main` metoden:
+1. Öppna *program. cs* och Lägg till följande kod i- `Main` metoden:
 
     ```csharp
     Console.WriteLine("Starting tests");

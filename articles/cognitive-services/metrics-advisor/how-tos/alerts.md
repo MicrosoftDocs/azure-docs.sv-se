@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420928"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Anvisningar: Konfigurera aviseringar och få meddelanden med hjälp av en Hook
@@ -59,7 +59,7 @@ Om du vill skapa en webhook måste du lägga till följande information:
 |---------|---------|
 |Slutpunkt     | API-adressen som ska anropas när en avisering utlöses.        |
 |Användar namn/lösen ord | För autentisering till API-adressen. Lämna det här svart om autentisering inte behövs.         |
-|Sidhuvud     | Anpassade rubriker i API-anropet.        |
+|Huvud     | Anpassade rubriker i API-anropet.        |
 
 :::image type="content" source="../media/alerts/create-web-hook.png" alt-text="fönstret Skapa webb-Hook.":::
 
@@ -86,7 +86,7 @@ Om du vill skapa en Azure DevOps-Hook måste du lägga till följande informatio
 ## <a name="add-or-edit-alert-settings"></a>Lägg till eller redigera aviserings inställningar
 
 Gå till sidan med mått information för att hitta avsnittet **aviserings inställningar** i det nedre vänstra hörnet av mått informations sidan. Den visar alla aviserings inställningar som gäller för den valda identifierings konfigurationen. När en ny identifierings konfiguration skapas, finns det ingen varnings inställning och inga aviseringar kommer att skickas.  
-Du kan ändra aviserings inställningarna med hjälp av ikonerna **Lägg till** , **Redigera** och **ta bort** .
+Du kan ändra aviserings inställningarna med hjälp av ikonerna **Lägg till**, **Redigera** och **ta bort** .
 
 :::image type="content" source="../media/alerts/alert-setting.png" alt-text="Meny alternativet aviserings inställningar.":::
 
@@ -94,9 +94,9 @@ Klicka på knappen **Lägg till** eller **Redigera** för att hämta ett fönste
 
 :::image type="content" source="../media/alerts/edit-alert.png" alt-text="Lägg till eller redigera aviserings inställningar":::
 
-**Namn på varnings inställning** : namnet på den här varnings inställningen. Den visas i rubriken aviserings-e-postadress.
+**Namn på varnings inställning**: namnet på den här varnings inställningen. Den visas i rubriken aviserings-e-postadress.
 
-**Hookar** : listan över hookar som aviseringar ska skickas till.
+**Hookar**: listan över hookar som aviseringar ska skickas till.
 
 Avsnittet som är markerat i skärm bilden ovan är inställningarna för en identifierings konfiguration. Du kan ange olika aviserings inställningar för olika identifierings konfigurationer. Välj mål konfigurationen med hjälp av den tredje List rutan i det här fönstret. 
 
@@ -106,10 +106,10 @@ Följande är filter inställningar för en identifierings konfiguration.
 
 **Avisering för** har fyra alternativ för att filtrera avvikelser:
 
-* **Avvikelser i alla serier** : alla avvikelser tas med i aviseringen.         
-* **Avvikelser i serie gruppen** : filtrera serier efter dimensions värden. Ange ett visst värde för vissa dimensioner. Avvikelser inkluderas bara i aviseringen när serien matchar det angivna värdet.       
-* **Avvikelser i favorit serien** : endast serien som marker ATS som favorit tas med i aviseringen.        |
-* **Avvikelser i de översta n i alla serier** : det här filtret gäller för det fall du bara bryr dig om serien vars värde är i de översta n. Vi ser tillbaka några tidsstämplar och kontrollerar om seriens värde i den här tidsstämpeln är i översta N. Om antalet i högsta n-antal är större än det angivna antalet tas avvikelsen med i en avisering.        |
+* **Avvikelser i alla serier**: alla avvikelser tas med i aviseringen.         
+* **Avvikelser i serie gruppen**: filtrera serier efter dimensions värden. Ange ett visst värde för vissa dimensioner. Avvikelser inkluderas bara i aviseringen när serien matchar det angivna värdet.       
+* **Avvikelser i favorit serien**: endast serien som marker ATS som favorit tas med i aviseringen.        |
+* **Avvikelser i de översta n i alla serier**: det här filtret gäller för det fall du bara bryr dig om serien vars värde är i de översta n. Vi ser tillbaka några tidsstämplar och kontrollerar om seriens värde i den här tidsstämpeln är i översta N. Om antalet i högsta n-antal är större än det angivna antalet tas avvikelsen med i en avisering.        |
 
 **Filtrera avvikelse alternativ** är ett ytterligare filter med följande alternativ:
 

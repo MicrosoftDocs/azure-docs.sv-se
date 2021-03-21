@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 9791d99598fe3d043c42a37e2f4993edd6c5b3ba
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487141"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>V7-referens för Bing Local Business Search API
@@ -55,7 +55,7 @@ Begäran måste använda HTTPS-protokollet.
 ## <a name="headers"></a>Sidhuvuden  
 Följande är huvuden som en begäran och ett svar kan innehålla.  
   
-|Huvud|Description|  
+|Huvud|Beskrivning|  
 |------------|-----------------|  
 |Acceptera|Valfritt begärandehuvud.<br /><br /> Standard medie typen är Application/JSON. Om du vill ange att svaret använder [JSON-LD](https://json-ld.org/), ställer du in accept-huvudet på Application/LD + JSON.|  
 |<a name="acceptlanguage"></a>Accept-Language|Valfritt begärandehuvud.<br /><br /> En kommaavgränsad lista över språk som ska användas för användargränssnittssträngar. Listan är i fallande prioritetsordning. Mer information, bland annat om det förväntade formatet, finns i [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Det är huvudet och [setLang](#setlang)-frågeparametern utesluter varandra&mdash;ange inte båda två.<br /><br /> Om du anger huvudet måste du även ange frågeparametern cc. För att fastställa vilken marknad som resultat ska returneras för använder Bing det första språk som stöds på listan och kombinerar det med parametervärdet `cc`. Om listan inte innehåller något språk som stöds hittar Bing det närmaste språket och marknaden som har stöd för begäran, eller så använder Bing en aggregerad eller standardmarknad för resultatet. För att avgöra vilken marknad som används i Bing kan du gå till BingAPIs-Market-huvudet.<br /><br /> Använd enbart det här huvudet och `cc`-frågeparametern om du anger flera språk. Annars kan du använda frågeparametrarna [mkt](#mkt) och [setLang](#setlang).<br /><br /> En användargränssnittssträng är en sträng som används som en etikett i ett användargränssnitt. Det finns några användargränssnittssträngar i JSON-svarsobjekt. Alla länkar till Bing.com-egenskaper i svarsobjekten använder det angivna språket.|  
@@ -78,21 +78,21 @@ Begäran kan innehålla följande frågeparametrar. Se kolumnen obligatorisk fö
   
 |Name|Värde|Typ|Obligatorisk|  
 |----------|-----------|----------|--------------|
-|<a name="count"></a>reparationer|Antalet resultat som ska returneras, med början på det index som anges av `offset` parametern.|Sträng|No|   
-|<a name="localCategories"></a>localCategories|Lista med alternativ som definierar Sök efter affärs kategori.  Se [Sök efter lokala affärs kategorier](local-categories.md)|Sträng|No|  
-|<a name="mkt"></a>mkt|Marknaden som resultatet kommer från. <br /><br />En lista över möjliga marknads värden finns i marknads koder.<br /><br /> **Obs:** Det lokala Business Search-API: t stöder för närvarande endast en-US-marknad och-språk.<br /><br />|Sträng|Yes|
-|<a name="offset"></a>redovisningsmotkonto|Indexet att starta resultat som anges av `count` parametern.|Integer|No|  
-|<a name="query"></a>c|Användarens sökterm.|Sträng|No|  
-|<a name="responseformat"></a>responseFormat|Den medietyp som ska användas för svaret. Följande är möjliga Skift läges känsliga värden.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Standardvärdet är JSON. Information om JSON-objekt som svaret innehåller finns i [Response Objects](#response-objects).<br /><br />  Om du anger JsonLd innehåller svars texten JSON-LD objekt som innehåller Sök resultaten. Information om JSON-LD finns i [JSON-LD](https://json-ld.org/).|Sträng|No|  
-|<a name="safesearch"></a>safeSearch|Ett filter som används för att filtrera innehåll som är olämpligt för barn. Här följer de möjliga skiftlägeskänsliga filtervärdena.<br /><ul><li>Inaktivera &mdash; RETUR webb sidor med vuxen text, bilder eller videor.<br /><br/></li><li>Måttliga &mdash; RETUR webb sidor med vuxen text, men inte vuxna bilder eller videor.<br /><br/></li><li>Strict &mdash; returnerar inte webb sidor med vuxen text, bilder eller videor.</li></ul><br /> Standardinställningen är Måttlig.<br /><br /> **Obs:** Om begäran kommer från en marknad som Bing: s vuxen princip kräver att `safeSearch` är inställd på Strict, ignorerar Bing `safeSearch` värdet och använder strikt.<br/><br/>**Obs!** Beroende på om du använder frågeoperator `site:` finns det en risk att svaret har innehåll som är olämpligt för barn oberoende av vad frågeparametern `safeSearch` är inställd på. Använd endast `site:` om du är medveten om innehållet på webbplatsen och ditt scenario tillåter möjligheten att det förekommer innehåll som är olämpligt för barn. |Sträng|No|  
-|<a name="setlang"></a>setLang|Språket som ska användas för användargränssnittssträngar. Ange språk med hjälp av den tvåstaviga språkkoden ISO 639-1. Språkkoden för engelska är till exempel EN. Standardvärdet är EN (engelska).<br /><br /> Även om det är valfritt bör du alltid ange språket. Normalt anger du `setLang` på samma språk som anges av `mkt` om inte användaren vill att gränssnittets strängar ska visas på ett annat språk.<br /><br /> Den här parametern och [Accept-Language](#acceptlanguage)-huvudet utesluter varandra&mdash;ange inte båda två.<br /><br /> En användargränssnittssträng är en sträng som används som en etikett i ett användargränssnitt. Det finns några användargränssnittssträngar i JSON-svarsobjekt. Alla länkar till Bing.com-egenskaper i svarsobjekten använder det angivna språket.|Sträng|No| 
+|<a name="count"></a>count|Antalet resultat som ska returneras, med början på det index som anges av `offset` parametern.|Sträng|Inga|   
+|<a name="localCategories"></a>localCategories|Lista med alternativ som definierar Sök efter affärs kategori.  Se [Sök efter lokala affärs kategorier](local-categories.md)|Sträng|Inga|  
+|<a name="mkt"></a>mkt|Marknaden som resultatet kommer från. <br /><br />En lista över möjliga marknads värden finns i marknads koder.<br /><br /> **Obs:** Det lokala Business Search-API: t stöder för närvarande endast en-US-marknad och-språk.<br /><br />|Sträng|Ja|
+|<a name="offset"></a>offset|Indexet att starta resultat som anges av `count` parametern.|Integer|Inga|  
+|<a name="query"></a>c|Användarens sökterm.|Sträng|Inga|  
+|<a name="responseformat"></a>responseFormat|Den medietyp som ska användas för svaret. Följande är möjliga Skift läges känsliga värden.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Standardvärdet är JSON. Information om JSON-objekt som svaret innehåller finns i [Response Objects](#response-objects).<br /><br />  Om du anger JsonLd innehåller svars texten JSON-LD objekt som innehåller Sök resultaten. Information om JSON-LD finns i [JSON-LD](https://json-ld.org/).|Sträng|Inga|  
+|<a name="safesearch"></a>safeSearch|Ett filter som används för att filtrera innehåll som är olämpligt för barn. Här följer de möjliga skiftlägeskänsliga filtervärdena.<br /><ul><li>Inaktivera &mdash; RETUR webb sidor med vuxen text, bilder eller videor.<br /><br/></li><li>Måttliga &mdash; RETUR webb sidor med vuxen text, men inte vuxna bilder eller videor.<br /><br/></li><li>Strict &mdash; returnerar inte webb sidor med vuxen text, bilder eller videor.</li></ul><br /> Standardinställningen är Måttlig.<br /><br /> **Obs:** Om begäran kommer från en marknad som Bing: s vuxen princip kräver att `safeSearch` är inställd på Strict, ignorerar Bing `safeSearch` värdet och använder strikt.<br/><br/>**Obs!** Beroende på om du använder frågeoperator `site:` finns det en risk att svaret har innehåll som är olämpligt för barn oberoende av vad frågeparametern `safeSearch` är inställd på. Använd endast `site:` om du är medveten om innehållet på webbplatsen och ditt scenario tillåter möjligheten att det förekommer innehåll som är olämpligt för barn. |Sträng|Inga|  
+|<a name="setlang"></a>setLang|Språket som ska användas för användargränssnittssträngar. Ange språk med hjälp av den tvåstaviga språkkoden ISO 639-1. Språkkoden för engelska är till exempel EN. Standardvärdet är EN (engelska).<br /><br /> Även om det är valfritt bör du alltid ange språket. Normalt anger du `setLang` på samma språk som anges av `mkt` om inte användaren vill att gränssnittets strängar ska visas på ett annat språk.<br /><br /> Den här parametern och [Accept-Language](#acceptlanguage)-huvudet utesluter varandra&mdash;ange inte båda två.<br /><br /> En användargränssnittssträng är en sträng som används som en etikett i ett användargränssnitt. Det finns några användargränssnittssträngar i JSON-svarsobjekt. Alla länkar till Bing.com-egenskaper i svarsobjekten använder det angivna språket.|Sträng|Inga| 
 
 
 ## <a name="response-objects"></a>Svars objekt  
 Följande är de JSON-svars objekt som svaret kan innehålla. Om begäran lyckas, är objektet på den översta nivån i svaret [SearchResponse](#searchresponse) -objektet. Om begäran Miss lyckas är objektet på den översta nivån [ErrorResponse](#errorresponse) -objektet.
 
 
-|Objekt|Description|  
+|Objekt|Beskrivning|  
 |------------|-----------------|  
 |[Ringa](#place)|Definierar information om en lokal verksamhet, till exempel en restaurang eller hotell.|  
 
@@ -226,7 +226,7 @@ Observera att om tjänsten misstänker en denial of service-attack kommer begär
 
 Följande är de möjliga HTTP-statuskod som en begäran returnerar.  
   
-|Statuskod|Description|  
+|Statuskod|Beskrivning|  
 |-----------------|-----------------|  
 |200|Åtgärden lyckades.|  
 |400|En av frågeparametrarna saknas eller är ogiltig.|  
@@ -266,7 +266,7 @@ Om begäran Miss lyckas innehåller svaret ett [ErrorResponse](#errorresponse) -
 
 Följande är möjliga felkoder och underordnade fel kod värden.
 
-|Kod|Under kod|Description
+|Kod|Under kod|Beskrivning
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP-statuskod är 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blockerad|Bing returnerar InvalidRequest när någon del av begäran är ogiltig. Till exempel saknas en obligatorisk parameter eller också är ett parameter värde ogiltigt.<br/><br/>Om felet är ParameterMissing eller ParameterInvalidValue är HTTP-status koden 400.<br/><br/>Om du använder HTTP-protokollet i stället för HTTPS returnerar Bing HttpNotAllowed och HTTP-statuskod är 410.

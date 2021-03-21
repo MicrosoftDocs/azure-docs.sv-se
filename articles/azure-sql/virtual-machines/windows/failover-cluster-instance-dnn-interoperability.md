@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358222"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Funktions samverkan med SQL Server FCI & DNN
@@ -106,7 +106,7 @@ För klient åtkomst kan egenskapen för **redundansrelationen** hantera växlin
 
 ## <a name="msdtc"></a>MSDTC
 
-FCI kan delta i distribuerade transaktioner koordinerade av Microsoft koordinator för distribuerad transaktion (MSDTC). Även om både klustrade MSDTC och lokala MSDTC stöds med FCI DNN, i Azure, är en belastningsutjämnare fortfarande nödvändig för klustrade MSDTC. DNN som definieras i FCI ersätter inte Azure Load Balancer kravet för klustrade MSDTC i Azure. 
+FCI kan delta i distribuerade transaktioner koordinerade av Microsoft Distributed Transaction Coordinator (MSDTC). Även om både klustrade MSDTC och lokala MSDTC stöds med FCI DNN, i Azure, är en belastningsutjämnare fortfarande nödvändig för klustrade MSDTC. DNN som definieras i FCI ersätter inte Azure Load Balancer kravet för klustrade MSDTC i Azure. 
 
 ## <a name="filestream"></a>-
 
