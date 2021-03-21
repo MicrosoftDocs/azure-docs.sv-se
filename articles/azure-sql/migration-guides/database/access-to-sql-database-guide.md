@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 9b64dc95c6ee00a834c2741b30026df7350780c0
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: e323b1c15d78da4e8c1a82ae8848df7f59b0dd87
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565349"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657364"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Guide för migrering: åtkomst till Azure SQL Database
 
@@ -42,17 +42,58 @@ Följ dessa steg om du vill skapa en utvärdering:
 
 1. Öppna SQL Server Migration Assistant för åtkomst. 
 1. Välj **fil** och välj sedan **nytt projekt**. Ange ett namn för ditt migreringsjobb. 
-1. Välj **Lägg till databaser** och välj databaser som ska läggas till i det nya projektet
+
+   ![Välj nytt projekt](./media/access-to-sql-database-guide/new-project.png)
+
+1. Välj **Lägg till databaser** och välj databaser som ska läggas till i det nya projektet. 
+
+   ![Välj Lägg till databaser](./media/access-to-sql-database-guide/add-databases.png)
+
 1. I **Access metadata Explorer** högerklickar du på databasen och väljer sedan **Skapa rapport**. 
+
+   ![Högerklicka på databasen och välj Skapa rapport](./media/access-to-sql-database-guide/create-report.png)
+
 1. Granska exempel utvärderingen. Exempel: 
+
+   ![Granska utvärderings exempel rapporten](./media/access-to-sql-database-guide/sample-assessment.png)
+
+### <a name="validate-data-types"></a>Verifiera data typer
+
+Validera standard mappningar för data typer och ändra dem baserat på krav vid behov. Det gör du på följande sätt:
+
+1. Välj **verktyg** på menyn. 
+1. Välj **projekt inställningar**. 
+1. Välj fliken **typ mappningar** . 
+
+   ![Typ mappningar](./media/access-to-sql-database-guide/type-mappings.png)
+
+1. Du kan ändra typ mappningen för varje tabell genom att välja tabellen i **Access metadata Explorer**.
+
 
 ### <a name="convert-schema"></a>Konvertera schema
 
 Följ dessa steg om du vill konvertera databas objekt: 
 
 1. Välj **Anslut till Azure SQL Database** och ange anslutnings information.
-1. Högerklicka på databasen i **Access metadata Explorer** och välj **konvertera schema**.  
-1. Valfritt Om du vill konvertera ett enskilt objekt högerklickar du på objektet och väljer **konvertera schema**. Ett objekt som har konverterats visas i fetstil i **Access metadata Explorer**: 
+
+   ![Ansluta till Azure SQL Database](./media/access-to-sql-database-guide/connect-to-sqldb.png)
+
+1. Högerklicka på databasen i **Access metadata Explorer** och välj **konvertera schema**. Alternativt kan du välja **konvertera schema** från det övre navigerings fältet när du har valt din databas.
+
+   ![Högerklicka på databasen och välj Konvertera schema](./media/access-to-sql-database-guide/convert-schema.png)
+
+   Jämför konverterade frågor till ursprungliga frågor: 
+
+   ![Konverterade frågor kan jämföras med käll koden](./media/access-to-sql-database-guide/query-comparison.png)
+
+   Jämför konverterade objekt med ursprungliga objekt: 
+
+   ![Konverterade objekt kan jämföras med källa](./media/access-to-sql-database-guide/table-comparison.png)
+
+1. Valfritt Om du vill konvertera ett enskilt objekt högerklickar du på objektet och väljer **konvertera schema**. Konverterade objekt visas i fetstil i **Access metadata Explorer**: 
+
+   ![Fetstilta objekt i metadata Explorer har konverterats](./media/access-to-sql-database-guide/converted-items.png)
+ 
 1. Välj **gransknings resultat** i fönstret utdata och granska fel i **fel listans** fönster. 
 
 
@@ -64,9 +105,28 @@ Följ dessa steg om du vill migrera data med hjälp av SSMA för åtkomst:
 
 1. Om du inte redan har gjort det väljer du **Anslut till Azure SQL Database** och anger anslutnings information. 
 1. Högerklicka på databasen i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**. Den här åtgärden publicerar MySQL-schemat till Azure SQL Database.
+
+   ![Synkronisera med databas](./media/access-to-sql-database-guide/synchronize-with-database.png)
+
+   Granska mappningen mellan käll projektet och målet:
+
+   ![Granska synkroniseringen med databasen](./media/access-to-sql-database-guide/synchronize-with-database-review.png)
+
 1. Använd **Utforskaren för åtkomst-metadata** för att markera rutor bredvid de objekt som du vill migrera. Markera kryss rutan bredvid databasen om du vill migrera hela databasen. 
 1. Högerklicka på databasen eller objektet som du vill migrera och välj **migrera data**. 
    Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar tabeller och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller.
+
+    ![Migrera data](./media/access-to-sql-database-guide/migrate-data.png)
+
+    Granska migrerade data: 
+
+    ![Migrera data granskning](./media/access-to-sql-database-guide/migrate-data-review.png)
+
+1. Anslut till din Azure SQL Database genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema.
+
+   ![Validera i SSMA](./media/access-to-sql-database-guide/validate-data.png)
+
+
 
 ## <a name="post-migration"></a>Efter migreringen 
 

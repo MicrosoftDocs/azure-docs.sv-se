@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559791"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601868"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Tillägg och funktioner för virtuella datorer för Windows
 
@@ -120,7 +120,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-I följande exempel används VM Access-tillägget för att återställa det administrativa lösen ordet för en virtuell Windows-dator till ett tillfälligt lösen ord. Mer information om åtkomst tillägget för virtuella datorer finns i [återställa fjärr skrivbords tjänster på en virtuell Windows-dator](../troubleshooting/reset-rdp.md). När du har kört detta bör du återställa lösen ordet vid första inloggningen:
+I följande exempel används VM Access-tillägget för att återställa det administrativa lösen ordet för en virtuell Windows-dator till ett tillfälligt lösen ord. Mer information om åtkomst tillägget för virtuella datorer finns i [återställa fjärr skrivbords tjänster på en virtuell Windows-dator](/troubleshoot/azure/virtual-machines/reset-rdp). När du har kört detta bör du återställa lösen ordet vid första inloggningen:
 
 ```powershell
 $cred=Get-Credential
@@ -414,7 +414,7 @@ Du kan också ta bort ett tillägg i Azure Portal på följande sätt:
 4. Välj **Avinstallera**.
 
 ## <a name="common-vm-extensions-reference"></a>Common VM Extensions-referens
-| Tilläggs namn | Beskrivning | Mer information |
+| Tilläggs namn | Description | Mer information |
 | --- | --- | --- |
 | Anpassat skripttillägg för Windows |Kör skript mot en virtuell Azure-dator |[Anpassat skripttillägg för Windows](custom-script-windows.md) |
 | DSC-tillägg för Windows |PowerShell DSC (Desired State Configuration)-tillägg |[DSC-tillägg för Windows](dsc-overview.md) |

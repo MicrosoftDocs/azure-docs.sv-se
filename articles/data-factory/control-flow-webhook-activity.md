@@ -7,18 +7,21 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 59aa395db27c26a7c94eebdc0e3b34d7776ee75f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361493"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592004"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-aktivitet i Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 En webhook-aktivitet kan styra körningen av pipeliner via din anpassade kod. Med webhook-aktiviteten kan kundernas kod anropa en slut punkt och skicka den till en återanrops-URL. Pipeline-körningen väntar på motringningen innan den fortsätter till nästa aktivitet.
+
+> [!IMPORTANT]
+> Med webhook-aktiviteten kan du nu visa fel status för platsen och anpassade meddelanden tillbaka till aktivitet och pipeline. Ange _reportStatusOnCallBack_ till true och inkludera _StatusCode_ och _fel_ i nytto lasten för återanrop. Mer information finns i avsnittet [Ytterligare anmärkningar](#additional-notes) .
 
 ## <a name="syntax"></a>Syntax
 
@@ -37,6 +40,7 @@ En webhook-aktivitet kan styra körningen av pipeliner via din anpassade kod. Me
             "key": "value"
         },
         "timeout": "00:03:00",
+        "reportStatusOnCallBack": false,
         "authentication": {
             "type": "ClientCertificate",
             "pfx": "****",
@@ -51,15 +55,15 @@ En webhook-aktivitet kan styra körningen av pipeliner via din anpassade kod. Me
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-**name** | Namnet på webhook-aktiviteten. | Sträng | Ja |
-**bastyp** | Måste vara inställt på "webhook". | Sträng | Ja |
-**metodsignatur** | REST API metod för mål slut punkten. | Sträng. Den typ som stöds är "POST". | Ja |
-**adresser** | Mål slut punkten och sökvägen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Ja |
+**name** | Namnet på webhook-aktiviteten. | Sträng | Yes |
+**bastyp** | Måste vara inställt på "webhook". | Sträng | Yes |
+**metodsignatur** | REST API metod för mål slut punkten. | Sträng. Den typ som stöds är "POST". | Yes |
+**adresser** | Mål slut punkten och sökvägen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Yes |
 **sidhuvud** | Huvuden som skickas till begäran. Här är ett exempel som anger språk och typ på en begäran: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Ja. En `Content-Type` rubrik som `"headers":{ "Content-Type":"application/json"}` är obligatorisk. |
-**brödtext** | Representerar den nytto last som skickas till slut punkten. | Giltigt JSON eller ett uttryck med **resultType** -värdet för JSON. Se [nytto Last schema för begäran](./control-flow-web-activity.md#request-payload-schema) om schemat för nytto lasten för begäran. | Ja |
-**anspråksautentisering** | Autentiseringsmetoden som används för att anropa slut punkten. De typer som stöds är "grundläggande" och "ClientCertificate". Mer information finns i [Autentisering](./control-flow-web-activity.md#authentication). Om autentisering inte krävs utelämnar du den här egenskapen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Inga |
-**timeout** | Hur länge aktiviteten väntar på att återanropet som anges av **callBackUri** ska anropas. Standardvärdet är 10 minuter ("00:10:00"). Värdena har formatet TimeSpan *d*. *HH*:*mm*:*SS*. | Sträng | Inga |
-**Rapportera status vid motringning** | Låter en användare rapportera den misslyckade statusen för en webhook-aktivitet. | Boolesk | Inga |
+**brödtext** | Representerar den nytto last som skickas till slut punkten. | Giltigt JSON eller ett uttryck med **resultType** -värdet för JSON. Se [nytto Last schema för begäran](./control-flow-web-activity.md#request-payload-schema) om schemat för nytto lasten för begäran. | Yes |
+**autentisering** | Autentiseringsmetoden som används för att anropa slut punkten. De typer som stöds är "grundläggande" och "ClientCertificate". Mer information finns i [Autentisering](./control-flow-web-activity.md#authentication). Om autentisering inte krävs utelämnar du den här egenskapen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | No |
+**timeout** | Hur länge aktiviteten väntar på att återanropet som anges av **callBackUri** ska anropas. Standardvärdet är 10 minuter ("00:10:00"). Värdena har formatet TimeSpan *d*. *HH*:*mm*:*SS*. | Sträng | No |
+**Rapportera status vid motringning** | Låter en användare rapportera den misslyckade statusen för en webhook-aktivitet. | Boolesk | No |
 
 ## <a name="authentication"></a>Autentisering
 
@@ -141,7 +145,7 @@ När du använder egenskapen **rapportera status på motringning** måste du lä
 Se följande kontroll flödes aktiviteter som stöds av Data Factory:
 
 - [If-villkorsaktivitet](control-flow-if-condition-activity.md)
-- [Köra pipelineaktivitet](control-flow-execute-pipeline-activity.md)
+- [Kör pipeline-aktivitet](control-flow-execute-pipeline-activity.md)
 - [För varje aktivitet](control-flow-for-each-activity.md)
 - [Hämta metadataaktivitet](control-flow-get-metadata-activity.md)
 - [Sökningsaktivitet](control-flow-lookup-activity.md)

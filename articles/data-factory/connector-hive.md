@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
 ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100367035"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopiera och transformera data från Hive med Azure Data Factory 
@@ -169,13 +169,13 @@ Hive-anslutningen stöds som en [inbäddad data uppsättnings](data-flow-source.
 
 I tabellen nedan visas de egenskaper som stöds av en Hive-källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Lagringsplats | Arkivet måste vara `hive` | ja |  `hive` | butik | 
 | Format | Om du läser från en tabell eller fråga | ja | `table` eller `query` | format |
 | Schemanamn | Om du läser från en tabell används schemat för käll tabellen |  Ja, om formatet är `table` | Sträng | schemaName |
 | Tabellnamn | Om du läser från en tabell används tabell namnet |   Ja, om formatet är `table` | Sträng | tableName |
-| Söka i data | Om format är `query` , käll frågan på den länkade Hive-tjänsten | Ja, om formatet är `query` | Sträng | DocumentDB |
+| Fråga | Om format är `query` , käll frågan på den länkade Hive-tjänsten | Ja, om formatet är `query` | Sträng | DocumentDB |
 | Mellanlagrad | Hive-tabellen kommer alltid att mellanlagras. | ja | `true` | mellanlagrad |
 | Lagrings behållare | Lagrings behållare som används för att mellanlagra data innan den läses från Hive eller skrivs till Hive. Hive-klustret måste ha åtkomst till den här behållaren. | ja | Sträng | storageContainer |
 | Mellanlagringsdatabas | Schemat/databasen där det användar konto som anges i den länkade tjänsten har åtkomst till. Den används för att skapa externa tabeller under mellanlagringen och tas bort efteråt | nej | `true` eller `false` | stagingDatabaseName |

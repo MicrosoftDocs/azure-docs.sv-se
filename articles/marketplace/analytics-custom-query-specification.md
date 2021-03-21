@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 4be063342a6c46d73c86f2d9dff1da5395328389
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102584202"
 ---
 # <a name="custom-query-specification"></a>Anpassad fråga-specifikation
@@ -58,7 +58,7 @@ Här är ett exempel på en data uppsättning som visas som en JSON.
 
 Detta är några exempel frågor som visar hur du extraherar olika typer av data.
 
-| Söka i data | Beskrivning |
+| Fråga | Beskrivning |
 | ------------ | ------------- |
 | **Välj** MarketplaceSubscriptionId, CustomerId **från** ISVUsage **TIMESPAN LAST_MONTH** | Den här frågan kommer att få varje unik `MarketplaceSubscriptionId` och dess motsvarande `CustomerId` under den senaste månaden. |
 | **Välj** MarketplaceSubscriptionId, EstimatedExtendedChargeCC **från** ISVUSAGE **order by** EstimatedExtendedChargeCC, **gräns** 10 | Den här frågan hämtar de 10 främsta prenumerationerna i fallande ordning efter antalet licenser som säljs under varje prenumeration. |

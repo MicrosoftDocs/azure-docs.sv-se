@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0d9769a2cfdbd5f552e97a6cd665263cbd488325
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633435"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592973"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Vad är nytt i Azure Active Directory?
 
@@ -79,7 +79,7 @@ Tillfälligt åtkomst pass är ett tidsbegränsat lösen ord som fungerar som st
 **Tjänste kategori:** B2C – konsument identitets hantering  
 **Produkt kapacitet:** B2B/B2C
 
-Nästa generation av B2C User flows stöder nu funktionen [Behåll mig inloggad (KMSI avgör)](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) som gör det möjligt för kunderna att förlänga livs längden för sessionen för användare av sina webb program och interna program genom att använda en beständig cookie.  funktionen håller sessionen aktiv även när användaren stänger och öppnar webbläsaren igen och återkallas när användaren loggar ut.
+Nästa generation av B2C User flows stöder nu funktionen [Behåll mig inloggad (KMSI avgör)](../../active-directory-b2c/session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) som gör det möjligt för kunderna att förlänga livs längden för sessionen för användare av sina webb program och interna program genom att använda en beständig cookie.  funktionen håller sessionen aktiv även när användaren stänger och öppnar webbläsaren igen och återkallas när användaren loggar ut.
 
 ---
 
@@ -109,7 +109,7 @@ Kunder kan nu bjuda in befintliga externa gäst användare för att återställa
 **Tjänste kategori:** App-etablering  
 **Produkt kapacitet:** Hantering av identitets livs cykel
  
-Kunder kan nu använda Application. readwrite. ownedby som program behörighet för att anropa API: erna för synkronisering. OBS! detta stöds endast för etablering från Azure AD i program från tredje part (till exempel AWS, datastenar osv.). Det finns för närvarande inte stöd för HR-etablering (Workday/SuccessFactors) eller molnbaserad synkronisering (AD till Azure AD). [Läs mer](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
+Kunder kan nu använda Application. readwrite. ownedby som program behörighet för att anropa API: erna för synkronisering. OBS! detta stöds endast för etablering från Azure AD i program från tredje part (till exempel AWS, datastenar osv.). Det finns för närvarande inte stöd för HR-etablering (Workday/SuccessFactors) eller molnbaserad synkronisering (AD till Azure AD). [Läs mer](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
  
 ---
 
@@ -199,7 +199,7 @@ Nu kan du automatisera att skapa, uppdatera och ta bort användar konton för de
 - [Iris Intranet](../saas-apps/iris-intranet-provisioning-tutorial.md)
 - [Preciate](../saas-apps/preciate-provisioning-tutorial.md)
 
-Mer information finns [i automatisera användar etablering för SaaS-program med Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+Mer information finns [i automatisera användar etablering för SaaS-program med Azure AD](../app-provisioning/user-provisioning.md).
 
 ---
 
@@ -209,7 +209,7 @@ Mer information finns [i automatisera användar etablering för SaaS-program med
 **Tjänste kategori:** RBAC  
 **Produkt kapacitet:** Access Control
  
-10 inbyggda Azure AD-roller har döpts om så att de är justerade i [Microsoft 365 administrations Center](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD-portalen](https://portal.azure.com/)och [Microsoft Graph](https://developer.microsoft.com/graph/). Mer information om de nya rollerna finns [i administratörs roll behörigheter i Azure Active Directory](../roles/permissions-reference.md#all-roles).
+10 inbyggda Azure AD-roller har döpts om så att de är justerade i [Microsoft 365 administrations Center](/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD-portalen](https://portal.azure.com/)och [Microsoft Graph](https://developer.microsoft.com/graph/). Mer information om de nya rollerna finns [i administratörs roll behörigheter i Azure Active Directory](../roles/permissions-reference.md#all-roles).
 
 ![Tabell som visar roll namn i MS Graph API och Azure Portal och det föreslagna slutliga namnet över API, Azure Portal och Mac.](media/whats-new/roles-table-rbac.png)
 
@@ -270,20 +270,20 @@ Kunder kan komma runt detta krav för testning genom att använda en funktions f
  
 ---
 
-### <a name="public-preview---customize-and-configure-android-shared-devices-for-firstline-workers-at-scale"></a>Offentlig för hands version – anpassa och konfigurera Android-delade enheter för firstline arbetare i stor skala
+### <a name="public-preview---customize-and-configure-android-shared-devices-for-frontline-workers-at-scale"></a>Offentlig för hands version – anpassa och konfigurera Android-delade enheter för Frontline arbetare i stor skala
 
 **Typ:** Ny funktion  
 **Tjänste kategori:** Enhets registrering och hantering  
 **Produkt kapacitet:** & skydd för identitets säkerhet
  
-Azure AD-och Microsoft Endpoint Manager-grupper har kombinerat för att kunna anpassa, skala och säkra dina firstline-arbetsenheter.
+Azure AD-och Microsoft Endpoint Manager-grupper har kombinerat för att kunna anpassa, skala och säkra dina Frontline-arbetsenheter.
 
 Följande för hands versions funktioner gör att du kan:
 - Etablera Android-delade enheter i stor skala med Microsoft Endpoint Manager
 - Skydda din åtkomst för Shift-arbetare med enhets-baserad villkorlig åtkomst
 - Anpassa inloggnings upplevelser för växla arbetare med hanterad start sida
 
-Mer information finns i [Anpassa och konfigurera delade enheter för firstline-arbetskrafter i stor skala](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708).
+Mer information finns i [Anpassa och konfigurera delade enheter för Frontline-arbetskrafter i stor skala](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708).
 
 ---
 

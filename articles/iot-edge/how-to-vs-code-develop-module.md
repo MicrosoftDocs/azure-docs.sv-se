@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
 ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200634"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Använd Visual Studio Code för att utveckla och felsöka moduler för Azure IoT Edge
@@ -125,7 +125,7 @@ Om du vill lägga till ytterligare moduler till din lösning kör du kommandot *
 Standard koden för modulen som medföljer lösningen finns på följande plats:
 
 - Azure function (C#): **moduler > *&lt; modulens namn &gt;*  >  *&lt; ditt Modulnamn &gt;*. cs**
-- C#: **moduler > *&lt; ditt &gt; Modulnamn* > program.cs**
+- C#: **moduler > *&lt; modulens namn &gt;* > program. cs**
 - Python: **moduler > *&lt; ditt &gt; Modulnamn* > main.py**
 - Node.js: **moduler > *&lt; ditt &gt; Modulnamn* > app.js**
 - Java: **moduler > *&lt; modulens namn &gt;* > src > main > java > com > edgemodulemodules > app. java**

@@ -1,5 +1,5 @@
 ---
-title: Översikt över fristående Micro agent
+title: Översikt över fristående Micro agent (för hands version)
 titleSuffix: Azure Defender for IoT
 description: Med Azure Defender för IoT-säkerhetsagenter kan du bygga säkerhet direkt i dina nya IoT-enheter och Azure IoT-projekt.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a3f71860801c7f611a10acd4ec4e8f8ed03ab20a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120087"
 ---
-# <a name="standalone-micro-agent-overview"></a>Översikt över fristående Micro agent 
+# <a name="standalone-micro-agent-overview-preview"></a>Översikt över fristående Micro agent (för hands version)
 
 Säkerhet är ett nära universellt problem för IoT-implementeringar. IoT-enheter har unika behov för slut punkts övervakning, hantering av säkerhets position och hot identifiering – allt med mycket specifika prestanda krav. 
 
@@ -47,4 +47,4 @@ Azure Defender for IoT Micro agent är enkelt att distribuera och har minimal pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-Kontrol lera dina autentiseringsmetoder för [Micro agent ](concept-security-agent-authentication.md).
+Kontrol lera dina autentiseringsmetoder för [Micro agent (för hands version)](concept-security-agent-authentication.md).

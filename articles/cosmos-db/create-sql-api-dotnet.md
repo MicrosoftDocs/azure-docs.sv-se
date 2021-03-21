@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 4c552e6ac195555990cdbbab44f16be32b7930c8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425336"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Snabb start: Bygg en .NET-konsol-app för att hantera Azure Cosmos DB SQL API-resurser
@@ -249,7 +249,7 @@ using System.Net;
 using Microsoft.Azure.Cosmos;
 ```
 
-I **program.cs** -filen lägger du till kod för att läsa de miljövariabler som du har angett i föregående steg. Definiera `CosmosClient` objekten, `Database` och `Container` . Lägg till kod till main-metoden som anropar `GetStartedDemoAsync` metoden där du hanterar Azure Cosmos Account-resurser. 
+Till filen **program. cs** lägger du till kod för att läsa de miljövariabler som du har angett i föregående steg. Definiera `CosmosClient` objekten, `Database` och `Container` . Lägg till kod till main-metoden som anropar `GetStartedDemoAsync` metoden där du hanterar Azure Cosmos Account-resurser. 
 
 ```csharp
 namespace todo

@@ -4,10 +4,10 @@ description: Den här självstudien visar hur du använder real tids analys till
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101698764"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysera direktsänd video med Visuellt innehåll för rums analys (för hands version)
@@ -221,7 +221,7 @@ Följ dessa steg om du vill se de här händelserna:
      
 ## <a name="run-the-program"></a>Köra programmet
 
-Det finns en program.cs som kommer att anropa direkta metoder i src/Cloud-to-Device-console-app/operations.jspå. Vi måste konfigurera operations.jspå och tillhandahålla en topologi för användning av Media diagram.  
+Det finns ett program. cs som kommer att anropa de direkta metoderna i src/Cloud-to-Device-console-app/operations.jspå. Vi måste konfigurera operations.jspå och tillhandahålla en topologi för användning av Media diagram.  
 
 I operations.jspå:
 

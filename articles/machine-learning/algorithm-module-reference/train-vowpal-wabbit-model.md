@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210213"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657662"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Träna Vowpal Wabbit-modell
 Den här artikeln beskriver hur du använder modulen **träna Vowpal Wabbit modell** i Azure Machine Learning designer för att skapa en maskin inlärnings modell med Vowpal Wabbit.  
@@ -91,6 +91,13 @@ Vowpal Wabbit har stöd för stegvis utbildning genom att lägga till nya data i
 
 6. Skicka pipelinen.  
 7. Välj modulen och välj **registrera data uppsättning** under **utdata + fliken loggar** i den högra rutan för att bevara den uppdaterade modellen i Azure Machine Learning-arbetsytan.  Om du inte anger ett nytt namn skriver den uppdaterade modellen över den befintliga sparade modellen.
+
+## <a name="results"></a>Resultat
+
++ Om du vill generera Poäng från modellen använder du [score Vowpal Wabbit modell](score-vowpal-wabbit-model.md).
+
+> [!NOTE]
+> Om du behöver distribuera den tränade modellen i designern ser du till att [score Vowpal Wabbit-modellen](score-vowpal-wabbit-model.md) i stället för **Poäng modellen** är ansluten till indata för [webb tjänstens output-modul](web-service-input-output.md) i härlednings pipelinen.
 
 ## <a name="technical-notes"></a>Tekniska anteckningar
 

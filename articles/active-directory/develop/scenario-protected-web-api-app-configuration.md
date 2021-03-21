@@ -13,10 +13,10 @@ ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5206c2295ee7c01b4a2908e59da1cfdd8782bccd
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517726"
 ---
 # <a name="protected-web-api-code-configuration"></a>Skyddat webb-API: kod konfiguration
@@ -123,7 +123,7 @@ Du kan skapa ett webb-API från grunden med hjälp av Microsoft. Identity. Web P
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Från ett befintligt ASP.NET Core 3,1-program
 
-I dag ASP.NET Core 3,1 använder biblioteket Microsoft. AspNetCore. AzureAD. UI. Mellanprogram initieras i Startup.cs-filen.
+I dag ASP.NET Core 3,1 använder biblioteket Microsoft. AspNetCore. AzureAD. UI. Mellanprogram initieras i filen startup. cs.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- För närvarande skapar ASP.NET Core mallar Azure Active Directory (Azure AD) webb-API: er som loggar in användare i din organisation eller i en organisation. De loggar inte in användare med personliga konton. Du kan dock ändra mallarna till att använda Microsoft Identity Platform genom att använda [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) och ersätta koden i *startup.cs*:
+ För närvarande skapar ASP.NET Core mallar Azure Active Directory (Azure AD) webb-API: er som loggar in användare i din organisation eller i en organisation. De loggar inte in användare med personliga konton. Du kan dock ändra mallarna till att använda Microsoft Identity Platform genom att använda [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) och ersätta koden i *startup. cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -210,7 +210,7 @@ Verifierarna är kopplade till egenskaperna för klassen **TokenValidationParame
 
 I de flesta fall behöver du inte ändra parametrarna. Appar som inte är enskilda klienter är undantag. Dessa webbappar godkänner användare från vilken organisation som helst eller från personliga Microsoft-konton. Utfärdare i det här fallet måste val IDE ras. Microsoft. Identity. Web tar hand om verifiering av utfärdaren. Mer information finns i Microsoft. Identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-I ASP.NET Core, om du vill anpassa parametrarna för token-validering, använder du följande kod avsnitt i din *startup.cs*:
+I ASP.NET Core, om du vill anpassa parametrarna för token-validering, använder du följande kod avsnitt i *Start. cs*:
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

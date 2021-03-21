@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495801"
 ---
 # <a name="pricing-scenarios"></a>Prissättnings scenarier
@@ -27,7 +27,7 @@ Priserna för Azure Communication Services baseras vanligt vis på en modell dä
 
 Azure Communication Services gör det möjligt att lägga till röst-/video samtal och skärm delning till dina program. Du kan bädda in upplevelsen i dina program med hjälp av Java Script, mål-C (Apple), Java (Android) eller .NET-klient bibliotek. Se vår [fullständiga lista över tillgängliga klient bibliotek](./sdk-options.md).
 
-### <a name="pricing"></a>Prissättning
+### <a name="pricing"></a>Priser
 
 Anrops-och skärm delnings tjänster debiteras per minut per deltagare vid $0,004 per deltagare per minut för grupp anrop. Se [den här sidan](./call-flows.md)för att förstå de olika anrops flöden som är möjliga.
 

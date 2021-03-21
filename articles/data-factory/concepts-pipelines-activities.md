@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364536"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines och aktiviteter i Azure Data Factory
@@ -58,8 +58,8 @@ Datatransformeringsaktivitet | Compute-miljö
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Anpassad aktivitet](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-anteckningsbok](transform-data-databricks-notebook.md) | Azure Databricks
-[Databricks Jar-aktivitet](transform-data-databricks-jar.md) | Azure Databricks
-[Databricks Python-aktivitet](transform-data-databricks-python.md) | Azure Databricks
+[Databricks jar-aktivitet](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks python-aktivitet](transform-data-databricks-python.md) | Azure Databricks
 
 Mer information finns i artikeln om [datatransformeringsaktiviteter](transform-data.md).
 
@@ -75,7 +75,7 @@ Kontrollaktivitet | Beskrivning
 [Hämta metadata](control-flow-get-metadata-activity.md) | GetMetadata-aktiviteten kan användas till att hämta metadata för data i Azure Data Factory.
 [If-villkorsaktivitet](control-flow-if-condition-activity.md) | If-villkoret kan användas grenbaserat på villkor som utvärderas som sanna eller falska. If-villkoret fungerar på samma sätt som en if-sats i ett programmeringsspråk. Den utvärderar en uppsättning aktiviteter när villkoret utvärderas till `true` och en annan uppsättning aktiviteter när villkoret utvärderas till `false.`
 [Sökningsaktivitet](control-flow-lookup-activity.md) | Lookup-aktiviteten kan användas till att läsa eller söka efter en post/ett tabellnamn/ett värde från valfri extern källa. Dessa utdata kan vidare refereras av efterföljande aktiviteter.
-[Ange variabel](control-flow-set-variable-activity.md) | Ange värdet för en befintlig variabel.
+[Set Variable](control-flow-set-variable-activity.md) | Ange värdet för en befintlig variabel.
 [Tills-aktivitet](control-flow-until-activity.md) | Implementerar Do-Until-loop som liknar Do-Until-loopstrukturen i programmeringsspråk. En uppsättning aktiviteter körs i en loop tills det villkor som är associerat med aktiviteten utvärderas till sant. Du kan ange en tidsgräns för Until-aktiviteten i Data Factory.
 [Verifieringsaktivitet](control-flow-validation-activity.md) | Se till att en pipeline bara fortsätter att köras om det finns en referens data uppsättning som uppfyller ett angivet villkor, eller om en tids gräns har nåtts.
 [Vänteaktivitet](control-flow-wait-activity.md) | När du använder en vänta-aktivitet i en pipeline väntar pipelinen under den angivna tiden innan du fortsätter att köra efterföljande aktiviteter.

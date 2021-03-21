@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: bd04c692655161a2ba8d4ff51a8ff07e9b9bd374
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb27401b2925c800ebde3b554c076f0d8cb747ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696130"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593024"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>Självstudie: ansluta och övervaka Azure Synapse Spark-programnivå mått
 
@@ -176,7 +176,7 @@ Svar ser ut så här:
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2. Visa en lista med program som körs i Azure dataSynapses-arbetsytan
 
-Om du vill hämta en lista över Spark-program för en Synapse-arbetsyta kan du följa den här dokument [övervakningen – Hämta Spark jobb lista](https://docs.microsoft.com/rest/api/synapse/data-plane/monitoring/getsparkjoblist).
+Om du vill hämta en lista över Spark-program för en Synapse-arbetsyta kan du följa den här dokument [övervakningen – Hämta Spark jobb lista](/rest/api/synapse/data-plane/monitoring/getsparkjoblist).
 
 
 ### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3. samla in Spark-programmått med Prometheus eller REST-API: er

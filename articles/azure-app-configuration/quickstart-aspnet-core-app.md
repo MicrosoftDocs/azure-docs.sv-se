@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: alkemper
 ms.openlocfilehash: 353a934842fd872d48d091f1df1b6d94ac4599ff
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98663442"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Snabb start: skapa en ASP.NET Core-app med Azure App konfiguration
@@ -76,7 +76,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
     Få åtkomst till den här hemligheten med API för .NET Core-konfiguration. Ett kolon ( `:` ) fungerar i konfigurations namnet med Konfigurations-API: et på alla plattformar som stöds. Mer information finns i [konfigurations nycklar och värden](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. I *program.cs* lägger du till en referens till API-namnrymden för .net Core Configuration:
+1. Lägg till en referens till .NET Core Configuration API-namnrymd i *program. cs*:
 
     ```csharp
     using Microsoft.Extensions.Configuration;

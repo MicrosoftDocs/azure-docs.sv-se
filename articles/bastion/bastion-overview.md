@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
 ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492186"
 ---
 # <a name="what-is-azure-bastion"></a>Vad är Azure Bastion?
@@ -51,7 +51,7 @@ Följande funktioner är tillgängliga:
 
 Prenumerera på RSS-flödet och Visa de senaste Azure skydds-funktions uppdateringarna på sidan [Azure updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion) .
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 

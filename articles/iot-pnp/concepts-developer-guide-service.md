@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: df913716ff34a61e5bde4c0771ea8b7599db3d30
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a5889be88dfd0870a2eee868c97787ff354cff68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521405"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582739"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT Plug and Play service Developer Guide
 
@@ -61,8 +61,8 @@ Med tjänst-SDK: er kan du komma åt enhets information från en lösning, till 
 
 Nu när du har lärt dig om enhets modellering är här några ytterligare resurser:
 
-- [Digitalt flätat definitions språk (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C (enhets-SDK)](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT-REST API](/rest/api/iothub/device)
-- [Modell komponenter](./concepts-components.md)
+- [IoT Plug and Play modellerings guide](concepts-modeling-guide.md)
 - [Installera och Använd DTDL redigerings verktyg](howto-use-dtdl-authoring-tools.md)

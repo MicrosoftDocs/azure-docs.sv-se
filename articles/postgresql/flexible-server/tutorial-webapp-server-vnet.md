@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546576"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657594"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Självstudie: skapa en Azure Database for PostgreSQL flexibel server med App Services webbapp i virtuellt nätverk
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546576"
 
 Den här självstudien visar hur du skapar en Azure App Service webbapp med Azure Database for PostgreSQL-flexibel Server (för hands version) i ett [virtuellt nätverk](../../virtual-network/virtual-networks-overview.md).
 
-I den här självstudien kommer du att
+I den här självstudien får du lära dig hur man
 >[!div class="checklist"]
 > * Skapa en PostgreSQL flexibel server i ett virtuellt nätverk
+> * Skapa ett undernät för att delegera till App Service
 > * Skapa en webbapp
 > * Lägg till webbappen i det virtuella nätverket
 > * Ansluta till postgres från webbappen 
@@ -44,7 +45,7 @@ az login
 Om du har flera prenumerationer ska du välja lämplig prenumeration där resursen ska debiteras. Välj det specifika prenumerations-ID:t under ditt konto med hjälp av kommandot [az account set](/cli/azure/account). Ersätt egenskapen **prenumerations-ID** från **AZ-inloggnings** resultatet för din prenumeration till plats hållaren för prenumerations-ID.
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>Skapa en PostgreSQL-flexibel server i ett nytt virtuellt nätverk
@@ -68,14 +69,21 @@ Detta kommando utför följande åtgärder, vilket kan ta några minuter:
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>Skapa undernät för App Service slut punkt
+Vi måste nu ha ett undernät som är delegerat till App Service Web App-slutpunkten. Kör följande kommando för att skapa ett nytt undernät i samma virtuella nätverk som databas servern skapades. 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+Anteckna namnet på det virtuella nätverket och under nätet efter det här kommandot som skulle behövas för att lägga till en regel för VNET-integrering för webbappen när den har skapats. 
 
 ## <a name="create-a-web-app"></a>Skapa en webbapp
-I det här avsnittet skapar du app Host i App Service app, ansluter den här appen till postgres-databasen och distribuerar sedan koden till den värden. Se till att du är i lagrings platsen för din program kod i terminalen.
+I det här avsnittet skapar du app Host i App Service app, ansluter den här appen till postgres-databasen och distribuerar sedan koden till den värden. Se till att du är i lagrings platsen för din program kod i terminalen. Observera att Basic-planen inte stöder VNET-integrering. Använd standard eller Premium. 
 
 Skapa en App Service app (värd processen) med kommandot AZ webapp up
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,7 +93,6 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 Detta kommando utför följande åtgärder, vilket kan ta några minuter:
 
 - Skapa resurs gruppen om den inte redan finns. (I det här kommandot använder du samma resurs grupp där du skapade databasen tidigare.)
-- Skapa App Service plan ```testappserviceplan``` i den grundläggande pris nivån (B1) om den inte finns. --plan och--SKU är valfria.
 - Skapa App Service-appen om den inte finns.
 - Aktivera standard loggning för appen om den inte redan är aktive rad.
 - Ladda upp lagrings platsen med hjälp av ZIP-distribution med build Automation aktiverat.
@@ -94,7 +101,7 @@ Detta kommando utför följande åtgärder, vilket kan ta några minuter:
 Använd **AZ webapp VNet-integration-** kommandot för att lägga till en regional virtuell nätverks integrering i en webapp. Ersätt <VNet-Name> och <namn på undernät> med det virtuella nätverket och under nätets namn som den flexibla servern använder.
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>Konfigurera miljövariabler för att ansluta databasen
