@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99807011"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Ta med din egen Machine Learning (ML) till Azure Sentinel
@@ -79,7 +79,7 @@ Om du redan har Databricks eller någon annan Spark-miljö, och föredrar att an
 
 BYOD ML-paketet innehåller bästa praxis och forskning från Microsoft i den första delen av ML för säkerhet. I det här paketet innehåller vi följande lista över verktyg, mallar för bärbara datorer och algoritmer för säkerhets problem.
 
-| Filnamn | Description |
+| Filnamn | Beskrivning |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Innehåller verktyg för att läsa blobbar från Azure och skriva till Log Analytics. |
 | AnomalousRASampleData | Notebook visar användningen av avvikande resurs åtkomst modell i Azure Sentinel med genererad utbildning och testning av exempel data. |

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91367860"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Förbereda Azure Active Directory-klient för VPN-OpenVPN för användare
@@ -78,7 +78,7 @@ Följ stegen i [den här artikeln](../active-directory/fundamentals/add-users-az
 
     ![Skärm bild som visar dialog rutan med de meddelande behörigheter som har begärts acceptera för din organisation och ytterligare information.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-5. I **företags program**i Azure AD bör du nu se **Azure VPN** i listan.
+5. I **företags program** i Azure AD bör du nu se **Azure VPN** i listan.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 

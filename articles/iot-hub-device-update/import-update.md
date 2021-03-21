@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
 ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008570"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
@@ -135,7 +135,7 @@ Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal anv�
 
 6. Välj mappikonen eller text rutan under "Välj en lagrings behållare". Välj sedan lämpligt lagrings konto. Lagrings behållaren används för att mellanlagra uppdateringsfilerna tillfälligt.
 
-   :::image type="content" source="media/import-update/storage-account.png" alt-text="Lagringskonto" lightbox="media/import-update/storage-account.png":::
+   :::image type="content" source="media/import-update/storage-account.png" alt-text="Lagrings konto" lightbox="media/import-update/storage-account.png":::
 
 7. Om du redan har skapat en behållare kan du återanvända den. (Annars väljer du "+ behållare" för att skapa en ny lagrings behållare för uppdateringar.).  Välj den behållare som du vill använda och klicka på Välj.
 

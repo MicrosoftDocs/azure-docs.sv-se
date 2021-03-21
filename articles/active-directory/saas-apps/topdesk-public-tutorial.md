@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520446"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Självstudie: Azure Active Directory integrering med TOPdesk-Public
@@ -225,7 +225,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till TOPdesk-Public.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **TOPdesk-Public**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **TOPdesk-Public**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -255,7 +255,7 @@ För att Azure AD-användare ska kunna logga in på TOPdesk-offentliga måste de
 
 1. Logga in på din **TOPdesk-offentliga** företags webbplats som administratör.
 
-2. Klicka på **TOPdesk \> nya \> stödfiler \> **på menyn högst upp.
+2. Klicka på **TOPdesk \> nya \> stödfiler \>** på menyn högst upp.
    
     ![Person](./media/topdesk-public-tutorial/ic790628.png "Person")
 

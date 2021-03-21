@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
 ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077735"
 ---
-# <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Skapa en Azure skydds-värd med hjälp av Azure PowerShell
+# <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Skapa en Azure Bastion-värd med hjälp av Azure PowerShell
 
 Den här artikeln visar hur du skapar en Azure skydds-värd med PowerShell. När du etablerar Azure skydds-tjänsten i det virtuella nätverket är den sömlösa RDP/SSH-upplevelsen tillgänglig för alla virtuella datorer i samma virtuella nätverk. Azure skydds-distributionen är per virtuellt nätverk, inte per prenumeration/konto eller virtuell dator.
 
@@ -38,7 +38,7 @@ Det här avsnittet hjälper dig att skapa en ny Azure skydds-resurs med hjälp a
    $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
-2. Skapa en offentlig IP-adress för Azure-skydds. Den offentliga IP-adressen är den offentliga IP-adressen som skydds-resursen som RDP/SSH kommer att få åtkomst till (via port 443). Den offentliga IP-adressen måste finnas i samma region som den skydds-resurs som du skapar.
+2. Skapa en offentlig IP-adress för Azure Bastion. Den offentliga IP-adressen är den offentliga IP-adressen som skydds-resursen som RDP/SSH kommer att få åtkomst till (via port 443). Den offentliga IP-adressen måste finnas i samma region som den skydds-resurs som du skapar.
 
    ```azurepowershell-interactive
    $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard

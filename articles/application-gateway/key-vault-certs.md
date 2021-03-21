@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
 ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185945"
 ---
-# <a name="tls-termination-with-key-vault-certificates"></a>TLS-avslutning med Key Vault certifikat
+# <a name="tls-termination-with-key-vault-certificates"></a>TLS-avslutning med Key Vault-certifikat
 
 [Azure Key Vault](../key-vault/general/overview.md) är ett plattforms hanterat hemligt arkiv som du kan använda för att skydda hemligheter, nycklar och TLS/SSL-certifikat. Azure Application Gateway stöder integrering med Key Vault för Server certifikat som är anslutna till HTTPS-aktiverade lyssnare. Detta stöd är begränsat till v2-SKU: n för Application Gateway.
 

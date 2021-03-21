@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
 ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178086"
 ---
 I det här steget skapar du en [logisk SQL-Server](../database/logical-servers.md) och en [enkel databas](../database/single-database-overview.md) som använder AdventureWorksLT exempel data. Du kan skapa databasen med hjälp av Azure Portal menyer och skärmar, eller genom att använda ett Azure CLI-eller PowerShell-skript i Azure Cloud Shell.

@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873513"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Snabb start: skapa ett chattrum med hjälp av signal tjänsten
@@ -107,7 +107,7 @@ Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md
     Den här hemligheten nås med Konfigurations-API: et. Ett kolon (:) fungerar i konfigurations namnet med Konfigurations-API: et på alla plattformar som stöds. Se [konfiguration efter miljö](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Öppna *startup.cs* och uppdatera `ConfigureServices` metoden för att använda Azure SignalR service genom att anropa `AddSignalR()` `AddAzureSignalR()` metoderna och:
+4. Öppna *Start. cs* och uppdatera `ConfigureServices` metoden för att använda Azure SignalR-tjänsten genom att `AddSignalR()` anropa `AddAzureSignalR()` metoderna och:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -119,7 +119,7 @@ Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md
 
     Genom att inte skicka en parameter till `AddAzureSignalR()` använder den här koden standard konfigurations nyckeln för signal anslutningens tjänst resurs anslutnings sträng. Standard konfigurations nyckeln är *Azure: SignalR: ConnectionString*.
 
-5. I *startup.cs* uppdaterar du `Configure` metoden genom att ersätta den med följande kod.
+5. I *startup. cs* uppdaterar du `Configure` metoden genom att ersätta den med följande kod.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -142,9 +142,9 @@ I SignalR är en hubb en kärn komponent som exponerar en uppsättning metoder s
 
 Båda metoderna använder `Clients` gränssnittet som ASP.net Core SignalR SDK tillhandahåller. Det här gränssnittet ger dig åtkomst till alla anslutna klienter, så att du kan skicka innehåll till dina klienter.
 
-1. Lägg till en ny mapp med namnet *Hubb* i projektkatalogen. Lägg till en ny hubb kod fil med namnet *ChatHub.cs* i den nya mappen.
+1. Lägg till en ny mapp med namnet *Hubb* i projektkatalogen. Lägg till en ny hubb kod fil med namnet *ChatHub. cs* i den nya mappen.
 
-2. Lägg till följande kod i *ChatHub.cs* för att definiera Hub-klassen och spara filen.
+2. Lägg till följande kod i *ChatHub. cs* för att definiera Hub-klassen och spara filen.
 
     Uppdatera namn området för den här klassen om du använde ett projekt namn som skiljer sig från *SignalR. MVC*.
 

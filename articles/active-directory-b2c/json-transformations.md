@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102119883"
 ---
 # <a name="json-claims-transformations"></a>JSON-anspråk omvandlingar
@@ -58,11 +58,11 @@ I följande exempel genereras en JSON-sträng baserat på anspråks värdet "ema
 Följande anspråks omvandling matar ut ett JSON-sträng anspråk som kommer att bli bröd texten i begäran som skickas till SendGrid (en tredjeparts e-postprovider). JSON-objektets struktur definieras av ID: n i punkt notation för indataparametrarna och TransformationClaimTypes för InputClaims. Siffror i punkt notation innebär att matriser. Värdena hämtas från InputClaims-värdena och värdet för indataparametrar.
 
 - Inmatade anspråk:
-  - **e-post**, typ  **anpassningar av omvandlings anspråk. 0. till. 0. e-post**: " someone@example.com "
+  - **e-post**, omvandlings anspråks typ  **personalizations.0.to.0.email**: " someone@example.com "
   - **eng ång slö sen ord**, typ av omvandlings anspråk **personalizations.0.dynamic_template_data. eng ång slö 346349 sen ord**
 - Indataparameter:
   - **TEMPLATE_ID**: "d-4c56ffb40fa648b1aa6822283df94f60"
-  - **från. e-post**: " service@contoso.com "
+  - **from.email**: " service@contoso.com "
   - **anpassningar. 0. Subject** "e-postverifierings kod för Contoso-konto"
 - Utgående anspråk:
   - **requestBody**: JSON-värde
@@ -115,7 +115,7 @@ I följande exempel genereras en JSON-sträng baserat på anspråks värden och 
 Följande anspråks omvandling matar ut ett JSON-sträng anspråk som kommer att vara bröd texten i begäran som skickas till en REST API. JSON-objektets struktur definieras av ID: n i punkt notation för indataparametrarna och TransformationClaimTypes för InputClaims. Värdena hämtas från InputClaims-värdena och värdet för indataparametrar.
 
 - Inmatade anspråk:
-  - **e-post**, omvandlings anspråks typ  **customerEntity. e-post**: " john.s@contoso.com "
+  - **e-post**, omvandlings anspråks typ  **customerEntity.email**: " john.s@contoso.com "
   - **ObjectID**, omvandlings anspråks typ **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
   - **givenName**, omvandlings anspråks typ **customerEntity. FirstName** "John"
   - Efter **namn**, typ av omvandlings anspråk **customerEntity. LastName** "Svensson"

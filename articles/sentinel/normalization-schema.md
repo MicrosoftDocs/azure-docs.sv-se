@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 4cd97aef5d8c959aeb2e0314e051790fd0421585
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806943"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Schema referens för Azure Sentinel-datanormalisering
@@ -59,7 +59,7 @@ Värdena ska normaliseras baserat på rikt linjerna nedan. Detta är obligatoris
 
 Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 
-| Fältnamn | Värdetyp | Exempel | Description | Associerade OSSEM-entiteter |
+| Fältnamn | Värdetyp | Exempel | Beskrivning | Associerade OSSEM-entiteter |
 |-|-|-|-|-|
 | Typ | Sträng | Trafik | Typ av händelse som samlas in | Händelse |
 | EventSubType | Sträng | Autentisering | Ytterligare beskrivning av typ om tillämpligt | Händelse |

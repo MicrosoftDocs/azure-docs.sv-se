@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330622"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Dirigera implementeringen av Azure DevTest Labs
@@ -29,7 +29,7 @@ Det första avsnittet i fokus när du distribuerar en Azure DevTest Labs-lösnin
 1. Definiera **första IP-adressintervall** som har tilldelats DevTest Labs-prenumerationen i Azure. Det här steget kräver en prognos av förväntad användning i antal virtuella datorer så att du kan tillhandahålla ett tillräckligt stort block för framtida expansion.
 2. Identifiera **metoder för önskad åtkomst** i DevTest Labs (till exempel extern/intern åtkomst). En viktig punkt i det här steget är att fastställa om virtuella datorer har offentliga IP-adresser (som är tillgängliga direkt från Internet).
 3. Identifiera och upprätta **anslutnings metoder** med resten av moln miljön i Azure och lokalt. Om den tvingade routningen med Express Route är aktive rad, är det troligt att de virtuella datorerna behöver rätt proxykonfiguration för att passera företags brand väggen.
-4. Om de virtuella datorerna **ska vara domänanslutna, avgör**du om de ansluter till en molnbaserad domän (t. ex. katalog tjänster av AAD) eller en lokal domän. För lokal, Bestäm vilken organisationsenhet (OU) i Active Directory som de virtuella datorerna ansluter till. Bekräfta dessutom att användarna har åtkomst till (eller upprätta ett tjänst konto som har möjlighet att skapa dator poster i domänen)
+4. Om de virtuella datorerna **ska vara domänanslutna, avgör** du om de ansluter till en molnbaserad domän (t. ex. katalog tjänster av AAD) eller en lokal domän. För lokal, Bestäm vilken organisationsenhet (OU) i Active Directory som de virtuella datorerna ansluter till. Bekräfta dessutom att användarna har åtkomst till (eller upprätta ett tjänst konto som har möjlighet att skapa dator poster i domänen)
 
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>Mil stolpe 2: Distribuera pilot labbet
 När nätverk sto pol Ogin är på plats kan du skapa det första/pilot labbet genom att vidta följande steg:

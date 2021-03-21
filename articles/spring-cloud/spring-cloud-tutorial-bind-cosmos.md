@@ -8,10 +8,10 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 20926988d554d562f36587734bd99c34b4731e69
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92088728"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Bind en Azure Cosmos DB-databas till ditt Azure våren Cloud-program
@@ -87,7 +87,7 @@ Azure Cosmos DB har fem olika API-typer som stöder bindning. Följande procedur
 
 1. Gå till sidan Azure våren Cloud service i Azure Portal. Gå till **instrument panelen för program** och välj det program som du vill binda till Azure Cosmos dB. Det här programmet är samma som du uppdaterade eller distribuerade i föregående steg.
 
-1. Välj **tjänst bindning**och välj **skapa tjänst bindning**. Om du vill fylla i formuläret väljer du:
+1. Välj **tjänst bindning** och välj **skapa tjänst bindning**. Om du vill fylla i formuläret väljer du:
    * Värdet för **bindnings typen** **Azure Cosmos DB**.
    * API-typ.
    * Ditt databas namn.

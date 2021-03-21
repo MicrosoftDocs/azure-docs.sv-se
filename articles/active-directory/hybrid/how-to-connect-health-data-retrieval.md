@@ -15,10 +15,10 @@ ms.date: 09/02/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d147d2c094923e971e52e1dbfe3f7a19776d38c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89463658"
 ---
 # <a name="azure-ad-connect-health-instructions-for-data-retrieval"></a>Azure AD Connect Health instruktioner för data hämtning
@@ -50,7 +50,7 @@ Använd följande steg för att hämta konton som har flaggats med AD FS Felakti
 1.  Från bladet Azure Active Directory hälsa väljer du **synkroniseringsfel**.
  ![Synkroniseringsfel](./media/how-to-connect-health-data-retrieval/retrieve6.png)
 
-2.  Klicka på **Exportera**i bladet **synkroniseringsfel** . En lista med de inspelade synkroniseringsfel kommer att exporteras.
+2.  Klicka på **Exportera** i bladet **synkroniseringsfel** . En lista med de inspelade synkroniseringsfel kommer att exporteras.
  ![Exporteraera](./media/how-to-connect-health-data-retrieval/retrieve7.png)
 
 ## <a name="next-steps"></a>Nästa steg

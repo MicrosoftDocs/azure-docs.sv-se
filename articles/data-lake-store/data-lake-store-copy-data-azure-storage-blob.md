@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85980097"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopiera data från Azure Storage blobbar till Azure Data Lake Storage Gen1
@@ -31,7 +31,7 @@ Du kan också använda AdlCopy-verktyget i två olika lägen:
 * **Fristående**, där verktyget använder data Lake Storage gen1 resurser för att utföra uppgiften.
 * Genom att **använda ett data Lake Analytics konto**, där de enheter som tilldelats ditt data Lake Analytics-konto används för att utföra kopieringen. Du kanske vill använda det här alternativet när du vill utföra kopierings aktiviteterna på ett förutsägbart sätt.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du påbörjar den här artikeln måste du ha:
 

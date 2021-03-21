@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/01/2020
 ms.openlocfilehash: 681498073a5f111e3babd50443623589ffeec02f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330928"
 ---
 # <a name="common-questions-and-troubleshooting-for-lead-configuration"></a>Vanliga frågor och fel sökning för ledar konfiguration
@@ -52,7 +52,7 @@ Sök efter `"MSFT_TEST"` i ditt lead-mål. Nedan visas ett exempel på ett lead-
 
 #### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Jag har ett Live-erbjudande, men varför ser jag inte några leads?
 
-Kontrol lera att din anslutning till målet för målet är giltig. Vi skickar ett test lead när du har valt **publicera** på ditt erbjudande i Partner Center. Om du ser testets lead är anslutningen giltig. Du kan också testa din lead-anslutning genom att försöka skaffa för hands versionen av erbjudandet under för hands versions steget. Välj **Hämta nu**, **kontakta mig**eller **kostnads fri utvärderings version** på listan på den kommersiella Marketplace.
+Kontrol lera att din anslutning till målet för målet är giltig. Vi skickar ett test lead när du har valt **publicera** på ditt erbjudande i Partner Center. Om du ser testets lead är anslutningen giltig. Du kan också testa din lead-anslutning genom att försöka skaffa för hands versionen av erbjudandet under för hands versions steget. Välj **Hämta nu**, **kontakta mig** eller **kostnads fri utvärderings version** på listan på den kommersiella Marketplace.
 
 Kontrol lera också att du letar efter rätt data. Se [förstå lead-data](partner-center-portal/commercial-marketplace-get-customer-leads.md) för en förklaring av lead-data som vi skickar till ditt lead-mål.
 
@@ -88,7 +88,7 @@ Om din fråga inte besvaras kontaktar du Microsoft Support via [partner Center H
 
 #### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Jag får e-postmeddelanden när nya kund ledare tas emot. Hur kan jag konfigurera någon annan att ta emot e-postmeddelanden?
 
-Kom åt ditt erbjudande i Partner Center och gå till sidan för **erbjudande konfiguration** > **hantering av lead-hantering**  >  **Edit**. Uppdatera e-postadresserna under fältet **kontakt epost** .
+Kom åt ditt erbjudande i Partner Center och gå till sidan för **erbjudande konfiguration** > **hantering av lead-hantering**  >  . Uppdatera e-postadresserna under fältet **kontakt epost** .
 
 ## <a name="troubleshooting-lead-configuration-errors"></a><a id="publishing-config-errors"></a> Felsöka fel vid lead-konfiguration
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708840"
 ---
 # <a name="best-practices-for-query-store"></a>Metod tips för Frågearkivet
@@ -26,7 +26,7 @@ Låt Query Store samla in de data som är viktiga för dig.
 |---|---|
 |_Alla_  |Analysera din arbets belastning noggrant med avseende på alla frågor och deras körnings frekvenser och annan statistik. Identifiera nya frågor i din arbets belastning. Identifiera om ad hoc-frågor används för att identifiera möjligheter för användare eller automatiska Parameterisering. _Allt_ levereras med en ökad kostnad för resursförbrukning. |
 |_Översta_  |Fokusera din uppmärksamhet på de vanligaste frågorna – de som utfärdats av klienter.
-|_Inga_ |Du har redan skapat ett fönster för frågeinställningar och tid som du vill undersöka och du vill undvika de störande som andra frågor kan introducera. _Ingen_ är lämplig för testning och bänk märknings miljöer. _Ingen_ bör användas med försiktighet eftersom du kan förlora möjligheten att spåra och optimera viktiga nya frågor. Det går inte att återställa data på de senaste tidnas fönster. |
+|_Ingen_ |Du har redan skapat ett fönster för frågeinställningar och tid som du vill undersöka och du vill undvika de störande som andra frågor kan introducera. _Ingen_ är lämplig för testning och bänk märknings miljöer. _Ingen_ bör användas med försiktighet eftersom du kan förlora möjligheten att spåra och optimera viktiga nya frågor. Det går inte att återställa data på de senaste tidnas fönster. |
 
 Query Store innehåller även en butik för väntande statistik. Det finns en extra infångnings läges fråga som styr väntande statistik: **pgms_wait_sampling. query_capture_mode** kan anges till _none_ eller _all_. 
 

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101093046"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Kom igång för Azure IT-operatörer
@@ -322,7 +322,7 @@ Eftersom Azure Virtual Machines ger fullständig kontroll över konfigurationen,
 
 Du kan distribuera virtuella Azure-datorer med hjälp av Azure Portal med hjälp av Automation med modulen Azure PowerShell eller genom att använda Automation med plattforms oberoende CLI.
 
-#### <a name="portal"></a>Portalen
+#### <a name="portal"></a>Portal
 
 Att distribuera en virtuell dator med hjälp av Azure Portal kräver bara en aktiv Azure-prenumeration och åtkomst till en webbläsare. Du kan välja många olika operativ system avbildningar med varierande konfigurationer. Alla krav på lagring och nätverk konfigureras under distributionen. Mer information finns i "skapa en virtuell dator i Azure Portal" för [Windows](../../virtual-machines/windows/quick-create-portal.md) och [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
@@ -404,7 +404,7 @@ Mer information finns i [Kom igång med Azure Queue Storage](../../storage/queue
 
 Det finns flera alternativ för att distribuera ett lagrings konto.
 
-#### <a name="portal"></a>Portalen
+#### <a name="portal"></a>Portal
 
 Distribution av ett lagrings konto med hjälp av Azure Portal kräver bara en aktiv Azure-prenumeration och åtkomst till en webbläsare. Du kan distribuera ett nytt lagrings konto till en ny eller befintlig resurs grupp. När du har skapat lagrings kontot kan du skapa en BLOB-behållare eller fil resurs med hjälp av portalen. Du kan skapa lagrings enheter för tabeller och köer program mässigt. Mer information finns i [Skapa ett lagringskonto](../../storage/common/storage-account-create.md).
 
