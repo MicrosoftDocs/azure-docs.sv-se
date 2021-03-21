@@ -27,11 +27,11 @@
           href: security-overview.md
 - name: Anvisningar
   items:
-    - name: Ansluta till Azure Arc
+    - name: Distribuera
       items:
         - name: Översikt över Connected Machine-agent
           href: agent-overview.md
-        - name: Planera för distribution i skala
+        - name: Planera för distribution
           href: plan-at-scale-deployment.md
         - name: Ansluta datorer till Azure Arc från Microsoft Azure-portalen
           href: onboard-portal.md

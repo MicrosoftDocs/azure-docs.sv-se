@@ -10,10 +10,10 @@ ms.author: chrande
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 15e94dac02770bf28aae4cbfc4e337cb68b8be40
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425333"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Använda Graph-utförar .NET-bibliotek för att utföra Mass åtgärder i Azure Cosmos DB Gremlin API
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Den här lagringsplatsen innehåller GraphBulkExecutor-exemplet med följande filer:
 
-Fil|Description
+Fil|Beskrivning
 ---|---
 `App.config`|Det här är där program- och databasspecifika parametrar anges. Den här filen ska först ändras för att ansluta till måldatabasen och -samlingarna.
 `Program.cs`| Den här filen innehåller logiken bakom skapandet av `DocumentClient` samlingen, hantering av rensningar och sändning av Mass utförar-begäranden.

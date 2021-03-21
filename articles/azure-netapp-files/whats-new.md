@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571037"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590916"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Vad är nytt i Azure NetApp Files
 
 Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en översikt över de senaste nya funktionerna och förbättringarna. 
+
+## <a name="march-2021"></a>Mars 2021 
+
+* [Automatisk storleks ändring av en mål volym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    I en replikeringsrelation mellan regioner ändras storleken på mål volymen automatiskt baserat på käll volymens storlek. Därför behöver du inte ändra storlek på mål volymen separat. Det här beteendet för automatisk storleks ändring är tillämpligt när volymerna finns i en aktiv replikeringsrelation, eller när replikeringen är bruten vid omsynkroniseringen. För att den här funktionen ska fungera måste du se till att det finns tillräckligt med utrymme i kapacitets poolerna för både käll-och mål volymerna.
 
 ## <a name="december-2020"></a>December 2020
 

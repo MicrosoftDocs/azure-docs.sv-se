@@ -4,10 +4,10 @@ description: Dirigera telemetri till olika resurser för utveckling, testning oc
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424673"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hur många Application Insights-resurser ska jag distribuera
@@ -46,7 +46,7 @@ Varje Application Insights resurs levereras med mått som är tillgängliga dire
 
 För att göra det enklare att ändra iKey när koden flyttas mellan produktions faserna, referera till nyckeln dynamiskt i kod i stället för att använda ett hårdkodad/static-värde.
 
-Ange nyckeln i en initierings metod, till exempel global.aspx.cs i en ASP.NET-tjänst:
+Ange nyckeln i en initierings metod, till exempel global. aspx. cs i en ASP.NET-tjänst:
 
 ```csharp
 protected void Application_Start()
@@ -123,7 +123,7 @@ Det finns flera olika metoder för att ange program versions egenskapen.
 
     Versions etiketten innehåller en plats hållare (AutoGen_...) när du skapar med Visual Studio. Men när det har skapats med MSBuild fylls det i med rätt versions nummer.
 
-    Om du vill tillåta att MSBuild genererar versions nummer ställer du in versionen som `1.0.*` i AssemblyReference.CS
+    Om du vill tillåta att MSBuild genererar versions nummer ställer du in versionen som `1.0.*` i AssemblyReference. CS
 
 ## <a name="version-and-release-tracking"></a>Spårning av versionen och utgåva
 Om du vill kunna spåra programversionen, se till att `buildinfo.config` genereras av Microsoft Build Engine-processen. I `.csproj` filen lägger du till:  

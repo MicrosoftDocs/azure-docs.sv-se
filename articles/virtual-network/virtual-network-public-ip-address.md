@@ -18,10 +18,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: d52430c87d99f8837c78fcff89d8b214e45350ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934938"
 ---
 # <a name="manage-public-ip-addresses"></a>Hantera offentliga IP-adresser
@@ -81,7 +81,7 @@ Mer information om de speciella attributen för en offentlig IP-adress under ska
    >[!WARNING]
    >Om du vill ändra tilldelningen för en offentlig IP-adress från statisk till dynamisk måste du först koppla bort adressen från några tillämpliga IP-konfigurationer (se **ta bort** avsnitt).  Observera också att när du ändrar tilldelnings metoden från statisk till dynamisk försvinner IP-adressen som har tilldelats till den offentliga IP-adressen. Medan de offentliga Azure-DNS-servrarna underhåller en mappning mellan statiska eller dynamiska adresser och alla DNS-namn (om du har definierat en), kan en dynamisk IP-adress ändras när den virtuella datorn startas efter att den stoppats (frigjort). Om du vill förhindra att adressen ändras tilldelar du en statisk IP-adress.
    
-|Åtgärd|Azure-portalen|Azure PowerShell|Azure CLI|
+|Åtgärd|Azure Portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
 |Visa | I **översikts** avsnittet för en offentlig IP-adress |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) för att hämta ett offentligt IP-objekt och visa dess inställningar| [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show) för att Visa inställningar|
 |Lista | Under kategorin **offentliga IP-adresser** |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) för att hämta en eller flera offentliga IP-adresser och visa dess inställningar|[AZ Network Public-IP List](/cli/azure/network/public-ip#az-network-public-ip-list) för att visa en lista över offentliga IP-adresser|
@@ -89,7 +89,7 @@ Mer information om de speciella attributen för en offentlig IP-adress under ska
 
    - **Ta bort**: borttagning av offentliga IP-adresser kräver att det offentliga IP-objektet inte är kopplat till någon IP-konfiguration eller virtuellt dator nätverkskort. Se tabellen nedan för mer information.
 
-|Resurs|Azure-portalen|Azure PowerShell|Azure CLI|
+|Resurs|Azure Portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
 |[Virtuell dator](./remove-public-ip-address-vm.md)|Välj Koppla bort för att koppla bort IP-adressen från NIC-konfigurationen **och välj sedan** **ta bort**.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) för att koppla bort IP-adressen från NIC-konfigurationen; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) att ta bort|[AZ Network Public-IP Update--Remove](/cli/azure/network/public-ip#az-network-public-ip-update) för att koppla bort IP-adressen från NIC-konfigurationen; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to delete |
 |Load Balancer-frontend | Navigera till en oanvänd offentlig IP-adress och välj **associera** och välj den Load Balancer med lämplig IP-konfiguration för klient delen för att ersätta den (sedan kan den gamla IP-adressen tas bort med samma metod som för VM)  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) för att associera ny klient del IP-konfiguration med offentlig Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) att ta bort. kan också använda [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) för att ta bort klient DELENS IP-konfiguration om det finns fler än en |[AZ Network lb frontend-IP Update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) för att koppla ny klient del IP-konfiguration med offentlig Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) att ta bort. kan också använda [AZ Network lb frontend-IP Delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) för att ta bort klient DELENS IP-konfiguration om det finns mer än en|

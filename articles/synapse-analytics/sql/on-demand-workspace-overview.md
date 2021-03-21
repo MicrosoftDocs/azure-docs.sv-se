@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101667508"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>SQL-pool utan server i Azure Synapse Analytics 
@@ -81,7 +81,7 @@ T-SQL som stöds:
 
 SQL-poolen utan server har ingen lokal lagring, endast metadata-objekt lagras i-databaser. Det går därför inte att använda T-SQL som är relaterade till följande begrepp:
 
-- Tabeller
+- Tables
 - Utlösare
 - Materialiserade vyer
 - Andra DDL-instruktioner än de som är relaterade till vyer och säkerhet

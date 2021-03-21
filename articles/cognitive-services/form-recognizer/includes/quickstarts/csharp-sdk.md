@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6407f6af4b142333d2a52f60eb0b05024e64d88e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444670"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761154"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ ms.locfileid: "102444670"
 
 ## <a name="setting-up"></a>Konfigurera
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `formrecognizer-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*.
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `formrecognizer-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*.
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -66,7 +66,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 
 > [!NOTE]
-> Formulär tolken 3.1.0 SDK visar API version 2,1 Preview
+> Formulär tolken 3.1.0 SDK visar _API version 2,1 Preview. 2_. Använd [**REST API**](../../quickstarts/client-library.md) för för _hands versionen av API version 2,1.3_.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -82,7 +82,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!TIP]
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md), som innehåller kod exemplen i den här snabb starten.
 
-Från projekt katalogen öppnar du *program.cs* -filen i önskat redigerings program eller IDE. Lägg till följande `using` direktiv:
+Från projekt katalogen öppnar du filen *program. cs* i önskat redigerings program eller IDE. Lägg till följande `using` direktiv:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_using)]
 

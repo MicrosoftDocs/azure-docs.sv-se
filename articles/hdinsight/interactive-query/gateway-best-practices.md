@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933118"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Gateway-djupgående och bästa praxis för Apache Hive i Azure HDInsight
@@ -31,7 +31,7 @@ För tjänst identifiering är fördelen med Gateway att varje komponent i klust
 
 För autentisering gör det möjligt för användare att autentisera med hjälp av ett `username:password` Credential-par. För ESP-aktiverade kluster skulle den här autentiseringsuppgiften vara användarens domän användar namn och lösen ord. Autentisering till HDInsight-kluster via gatewayen kräver inte att klienten skaffar en Kerberos-biljett. Eftersom gatewayen accepterar `username:password` autentiseringsuppgifter och hämtar användarens Kerberos-biljett för användarens räkning, kan säkra anslutningar göras till gatewayen från valfri klient värd, inklusive klienter som är anslutna till olika AA-DDS-domäner än (ESP)-klustret.
 
-## <a name="best-practices"></a>Rekommenderade metoder
+## <a name="best-practices"></a>Bästa praxis
 
 Gatewayen är en enskild tjänst (belastning bal anse rad över två värdar) som ansvarar för vidarebefordran av förfrågningar och autentisering. Gatewayen kan bli en Flask hals för Hive-frågor som överskrider en viss storlek. Prestanda försämring av frågor kan observeras när mycket stora **urvals** frågor körs på gatewayen via ODBC eller JDBC. "Mycket stor" innebär frågor som utgör mer än 5 GB data över rader eller kolumner. Den här frågan kan innehålla en lång lista med rader och eller ett brett kolumn antal.
 
@@ -53,9 +53,9 @@ Det finns flera platser för att undvika och förstå prestanda problem som en d
 
 * Använd **begränsnings** satsen när du kör stora **urvals** frågor. **Begränsnings** satsen minskar antalet rader som rapporteras till klient värden. **Begränsnings** satsen påverkar endast generering av resultat och ändrar inte frågeplan. Använd konfigurationen om du vill tillämpa **begränsnings** satsen i frågeuttrycket `hive.limit.optimize.enable` . **Gränsen** kan kombineras med en förskjutning med hjälp av argument formen **Limit x, y**.
 
-* Namnge dina kolumner med intresse när du kör **Select** -frågor i stället för att använda **Select \** _. Om du väljer färre kolumner sänks mängden data som ska läsas.
+* Namnge dina kolumner med intresse när du kör **Select** -frågor i stället för att använda **Select \***. Om du väljer färre kolumner sänks mängden data som ska läsas.
 
-_ Prova att köra frågan på intresse genom Apache Beeline. Om resultat hämtning via Apache Beeline tar en längre tid, förväntar sig fördröjningar vid hämtning av samma resultat via externa verktyg.
+* Prova att köra frågan på intresse genom Apache Beeline. Om resultat hämtning via Apache Beeline tar en längre tid, förväntar sig fördröjningar vid hämtning av samma resultat via externa verktyg.
 
 * Testa en grundläggande Hive-fråga för att säkerställa att det går att upprätta en anslutning till HDInsight-gatewayen. Prova att köra en grundläggande fråga från två eller flera externa verktyg för att se till att inget enskilt verktyg körs i problem.
 

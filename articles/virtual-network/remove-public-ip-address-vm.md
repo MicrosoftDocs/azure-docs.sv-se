@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
 ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934196"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Koppla bort en offentlig IP-adress från en virtuell Azure-dator 
@@ -26,7 +26,7 @@ I den här artikeln får du lära dig hur du kopplar från en offentlig IP-adres
 
 Du kan använda [Azure Portal](#azure-portal), Azures [kommando rads gränssnitt](#azure-cli) (CLI) eller [PowerShell](#powershell) för att koppla bort en offentlig IP-adress från en virtuell dator.
 
-## <a name="azure-portal"></a>Azure-portalen
+## <a name="azure-portal"></a>Azure Portal
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Bläddra till eller Sök efter den virtuella dator som du vill koppla från den offentliga IP-adressen från och välj sedan den.

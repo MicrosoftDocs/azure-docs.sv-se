@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8319885de26bf79f5e402c4d06b29e9dd94894de
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734629"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655859"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Visualiseringar för program ändrings analys (för hands version)
 
@@ -22,11 +22,11 @@ Sök efter ändrings analys i Sök fältet på Azure Portal för att starta uppl
 
 ![Skärm bild av sökning av ändrings analys i Azure Portal](./media/change-analysis/search-change-analysis.png)
 
-Alla resurser under en vald prenumeration visas med ändringar från de senaste 24 timmarna. För att optimera prestanda för sid inläsning visar tjänsten 10 resurser i taget. Välj nästa sida om du vill visa fler resurser. Vi arbetar med att ta bort den här begränsningen.
+Alla resurser under en vald prenumeration visas med ändringar från de senaste 24 timmarna. Alla ändringar visas med gammalt värde och nytt värde för att ge insikter på ett ögonblick.
 
 ![Skärm bild av bladet för ändrings analys i Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
 
-Visa alla ändringar genom att klicka på en resurs. Vid behov kan du öka detalj nivån i en ändring om du vill visa JSON-formaterad ändrings information och insikter.
+Klicka i en ändring om du vill visa fullständig Resource Manager-kodfragment och andra egenskaper.
 
 ![Skärm bild av ändrings information](./media/change-analysis/change-details.png)
 
@@ -40,11 +40,6 @@ Användar gränssnittet har stöd för att välja flera prenumerationer för att
 
 ![Skärm bild av prenumerations filter som stöder val av flera prenumerationer](./media/change-analysis/multiple-subscriptions-support.png)
 
-### <a name="web-app-diagnose-and-solve-problems"></a>Webbappen diagnostisera och lösa problem
-
-I Azure Monitor är även ändrings analys inbyggd i självbetjänings **diagnos och lösa problem** . Få åtkomst till den här upplevelsen från sidan **Översikt** i ditt App Service-program.
-
-![Skärm bild av knappen "Översikt" och "diagnosticera och lösa problem"](./media/change-analysis/change-analysis.png)
 
 ## <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Program ändrings analys i verktyget diagnostisera och lösa problem
 
@@ -69,6 +64,13 @@ Program ändrings analys är en fristående detektor i webbappen diagnostisera o
 5. Ändrings data finns också i Välj identifierings program för **webbappar ned** och **programkrascher** . Du ser en graf som sammanfattar typen av ändringar över tid tillsammans med information om dessa ändringar. Som standard visas ändringar under de senaste 24 timmarna för att hjälpa till med omedelbara problem.
 
      ![Skärm bild av vyn ändra diff](./media/change-analysis/change-view.png)
+
+## <a name="diagnose-and-solve-problems-tool"></a>Diagnostikverktyg för att diagnostisera och lösa problem
+Ändrings analys är tillgängligt som ett inblicks kort i diagnostisera och lösa problem verktyg. Om det uppstår problem med en resurs och det finns ändringar som upptäckts under de senaste 72 timmarna, visas antalet ändringar i insikts kortet. Om du klickar på länken Visa ändrings information leder det till den filtrerade vyn från det fristående användar gränssnittet för ändrings analys.
+
+![Skärm bild av visning av ändrings insikter i diagnostisera och lösa problem verktyget.](./media/change-analysis/change-insight-diagnose-and-solve.png)
+
+
 
 ## <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostisera och lösa problem med den virtuella datorn
 
