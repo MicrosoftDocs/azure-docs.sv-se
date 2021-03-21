@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
 ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94695562"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Felsök vanliga problem med Azure-distribution med Azure Load Balancer
@@ -36,7 +36,7 @@ I den här artikeln beskrivs några vanliga Azure Load Balancer distributions fe
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Du kan inte ha flera belastningsutjämnare av samma typ (intern, offentlig). Du kan ha högst en intern och en offentlig Load Balancer. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Basic-Load Balancer stöds inte för grupper av virtuella datorer med flera placerings grupper eller skalnings uppsättning för virtuella datorer i olika zoner. Använd Standard Load Balancer i stället. |
 |MarketplacePurchaseEligibilityFailed | Växla till rätt administratörs konto för att aktivera köp på grund av att prenumerationen är en EA-prenumeration. Mer information finns [här](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase). |
-|ResourceDeploymentFailure| Om belastningsutjämnaren är i fel tillstånd följer du de här stegen för att ta tillbaka den från det felaktiga läget:<ol><li>Gå till https://resources.azure.com och logga in med dina Azure Portal autentiseringsuppgifter.</li><li>Välj **Läs/skriv**.</li><li>Till vänster expanderar du **prenumerationer** och expanderar sedan prenumerationen med Load Balancer att uppdatera.</li><li>Expandera **ResourceGroups** och expandera sedan resurs gruppen med Load Balancer att uppdatera.</li><li>Välj **Microsoft. Network**  >  **belastningsutjämnare** och välj sedan Load Balancer att uppdatera **LoadBalancer_1**.</li><li>På visnings sidan för **LoadBalancer_1** väljer du **Hämta**  >  **redigering**.</li><li>Det **gick inte** att uppdatera **ProvisioningState** - **värdet.**</li><li>Välj **PUT**.</li></ol>|
+|ResourceDeploymentFailure| Om lastbalanseraren har ett feltillstånd följer du de här stegen för att återställa den från felläget:<ol><li>Gå till https://resources.azure.com och logga in med dina Azure Portal autentiseringsuppgifter.</li><li>Välj **Läsa/skriva**.</li><li>Expandera **Prenumerationer** till vänster och expandera sedan prenumerationen med den lastbalanserare som behöver uppdateras.</li><li>Expandera **ResourceGroups** och expandera sedan resursgruppen med den lastbalanserare som behöver uppdateras.</li><li>Välj **Microsoft. Network**  >  **belastningsutjämnare** och välj sedan Load Balancer att uppdatera **LoadBalancer_1**.</li><li>På visnings sidan för **LoadBalancer_1** väljer du **Hämta**  >  **redigering**.</li><li>Det **gick inte** att uppdatera **ProvisioningState** - **värdet.**</li><li>Välj **PUT**.</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>Nästa steg

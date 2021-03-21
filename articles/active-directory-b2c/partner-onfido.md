@@ -12,10 +12,10 @@ ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928638"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera Onfido med Azure Active Directory B2C
@@ -24,7 +24,7 @@ I den här självstudien ger vi vägledning om hur du integrerar Azure AD B2C me
 
 I det här exemplet ansluter vi Onfido-tjänsten i registrerings-eller inloggnings flödet för att verifiera identiteten. Välgrundade beslut om vilken produkt och tjänst som användaren har åtkomst till görs baserat på Onfido resultat.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du:
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020423"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN från Verizon Premium Rules Engine-funktioner
@@ -25,7 +25,7 @@ Den tredje delen av en regel är funktionen. En funktion definierar vilken typ a
 Tillgängliga typer av funktioner är:
 
 * [Åtkomst](#access)
-* [Caching](#caching)
+* [Cachelagring](#caching)
 * [Kommentar](#comment)
 * [Sidhuvuden](#headers)
 * [Loggar](#logs)
@@ -49,7 +49,7 @@ Dessa funktioner är utformade för att styra åtkomsten till innehåll.
 
 **[Tillbaka till början](#top)**
 
-### <a name="caching"></a><a name="caching"></a>Caching
+### <a name="caching"></a><a name="caching"></a>Cachelagring
 
 Dessa funktioner är utformade för att anpassa när och hur innehållet ska cachelagras.
 
@@ -173,6 +173,6 @@ De senaste funktionerna finns i [dokumentationen om Verizon Rules Engine](https:
 
 - [Regel motor referens](cdn-verizon-premium-rules-engine-reference.md)
 - [Regelmotor – villkorliga uttryck](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Regel motor matchnings villkor](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Regelmotor – matchningsvillkor](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Åsidosätt HTTP-beteende med regel motorn](cdn-verizon-premium-rules-engine.md)
 - [Översikt över Azure CDN](cdn-overview.md)

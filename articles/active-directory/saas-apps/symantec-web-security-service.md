@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: d7e0db1b0bc1e7aef68ee06f3bdd5e5e0f83b73e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94354741"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Symantec Web Security Service (WSS) för automatisk användar etablering
@@ -86,7 +86,7 @@ Om du vill konfigurera Symantec Web Security Service (WSS) för automatisk anvä
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan anger du **Symantec Web Security Service** , väljer **Symantec Web Security Service** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
+4. I sökrutan anger du **Symantec Web Security Service**, väljer **Symantec Web Security Service** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
 
     ![Symantec Web Security Service (WSS) i resultatlistan](common/search-new-app.png)
 

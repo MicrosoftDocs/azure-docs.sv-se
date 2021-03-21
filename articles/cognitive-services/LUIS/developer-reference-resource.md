@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 08a1965aadf8f50625e54d7c5e3b3f6a44c0bbd4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946168"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-och CLI-utvecklarresurser för Language Understanding (LUIS)
@@ -89,7 +89,7 @@ I följande tabell förklaras parametrarna, med klammerparenteser `{}` , i före
 |Språk |Referens dokumentation|Paket|Snabbstarter|
 |--|--|--|--|
 |C#|[Redigering](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring)</br>[Förutsägelse](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime)|[NuGet-redigering](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet förutsägelse](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Redigering](./client-libraries-rest-api.md?pivots=rest-api)<br>[Fråga förutsägelse](./client-libraries-rest-api.md?pivots=rest-api)|
-|Go|[Redigering och förutsägelse](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[GRÄNSSNITTET](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
+|Go|[Redigering och förutsägelse](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[Redigering och förutsägelse](/java/api/overview/azure/cognitiveservices/client/languageunderstanding)|[Maven-redigering](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven förutsägelse](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
 |JavaScript|[Redigering](/javascript/api/@azure/cognitiveservices-luis-authoring/)<br>[Förutsägelse](/javascript/api/@azure/cognitiveservices-luis-runtime/)|[NPM-redigering](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM förutsägelse](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Redigering](./client-libraries-rest-api.md?pivots=rest-api)<br>[Förutsägelse](./client-libraries-rest-api.md?pivots=rest-api)|
 |Python|[Redigering och förutsägelse](./client-libraries-rest-api.md?pivots=rest-api)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Redigering](./client-libraries-rest-api.md?pivots=rest-api)<br>[Förutsägelse](./client-libraries-rest-api.md?pivots=rest-api)|

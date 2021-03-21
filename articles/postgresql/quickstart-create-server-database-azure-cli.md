@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659462"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Snabb start: skapa en Azure Database for PostgreSQL-server med hjälp av Azure CLI
@@ -118,7 +118,7 @@ Resultatet är i JSON-format. Anteckna värdena för **administratorLogin** och 
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Ansluta till den Azure Database for PostgreSQL servern med hjälp av psql
-[Psql](https://www.postgresql.org/docs/current/static/app-psql.html) -klienten är ett populärt alternativ för att ansluta till postgresql-servrar. Du kan ansluta till servern med hjälp av psql med [Azure Cloud Shell](../cloud-shell/overview.md). Du kan också använda psql i din lokala miljö om du har den tillgänglig. En tom databas, **postgres**, skapas automatiskt med en ny postgresql-server. Du kan använda databasen för att ansluta till psql, som du ser i följande kod. 
+[Psql](https://www.postgresql.org/docs/current/static/app-psql.html) -klienten är ett populärt alternativ för att ansluta till postgresql-servrar. Du kan ansluta till servern med hjälp av psql med [Azure Cloud Shell](../cloud-shell/overview.md). Du kan även använda psql i din lokala miljö om du har det tillgängligt. En tom databas, **postgres**, skapas automatiskt med en ny postgresql-server. Du kan använda databasen för att ansluta till psql, som du ser i följande kod. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres

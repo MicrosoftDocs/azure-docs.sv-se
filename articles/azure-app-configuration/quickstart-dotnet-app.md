@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932099"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snabb start: skapa en .NET Framework-app med Azure App konfiguration
 
 I den här snabb starten inkluderar du Azure App konfiguration i en .NET Framework-baserad konsolsession för att centralisera lagring och hantering av program inställningar separat från din kod.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -80,7 +80,7 @@ I den här snabb starten inkluderar du Azure App konfiguration i en .NET Framewo
 
    Anslutnings strängen för appens konfigurations lager läses från miljövariabeln `ConnectionString` . Lägg till `Environment` konfigurations verktyget före `MyConfigStore` i `configBuilders` egenskapen för `appSettings` avsnittet.
 
-1. Öppna *program.cs* och uppdatera `Main` metoden för att använda app-konfiguration genom att anropa `ConfigurationManager` .
+1. Öppna *program. cs* och uppdatera `Main` metoden för att använda app-konfiguration genom att anropa `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)

@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
 ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928808"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Snabb start: återställa en databas till en Azure SQL-hanterad instans med SSMS
@@ -30,7 +30,7 @@ I den här snabb starten använder du SQL Server Management Studio (SSMS) för a
 > Mer information om migrering med hjälp av Azure Database Migration Service finns i [migrering av SQL-hanterad instans med hjälp av Database migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
 > Mer information om olika metoder för migrering finns i [SQL Server migrering till Azure SQL-hanterad instans](migrate-to-instance-from-sql-server.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här snabbstarten:
 

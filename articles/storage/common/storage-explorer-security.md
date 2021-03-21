@@ -8,10 +8,10 @@ ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
 ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783767"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer säkerhets guide
@@ -81,7 +81,7 @@ Lagrings konto nycklar ger obegränsad åtkomst till tjänster och resurser i et
 
 Vissa Azure-roller ger behörighet att hämta lagrings konto nycklar. Individer med dessa roller kan effektivt kringgå behörigheter som beviljas eller nekas av Azure RBAC. Vi rekommenderar inte att du beviljar den här behörigheten om det inte är nödvändigt.
 
-Storage Explorer försöker använda lagrings konto nycklar, om de är tillgängliga, för att autentisera begär Anden. Du kan inaktivera den här funktionen i inställningar ( **tjänster > lagrings konton > inaktivera användning av nycklar** ). Vissa funktioner har inte stöd för Azure RBAC, till exempel att arbeta med klassiska lagrings konton. Sådana funktioner kräver fortfarande nycklar och påverkas inte av den här inställningen.
+Storage Explorer försöker använda lagrings konto nycklar, om de är tillgängliga, för att autentisera begär Anden. Du kan inaktivera den här funktionen i inställningar (**tjänster > lagrings konton > inaktivera användning av nycklar**). Vissa funktioner har inte stöd för Azure RBAC, till exempel att arbeta med klassiska lagrings konton. Sådana funktioner kräver fortfarande nycklar och påverkas inte av den här inställningen.
 
 Om du måste använda nycklar för att komma åt dina lagrings resurser rekommenderar vi följande rikt linjer:
 

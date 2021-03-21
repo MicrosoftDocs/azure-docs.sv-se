@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/06/2020
 ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501234"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Mål kod för händelse filen för utökade händelser i Azure SQL Database
@@ -449,7 +449,7 @@ ALTER EVENT SESSION ... STATE = START;
 GO
 ```
 
-## <a name="output"></a>Resultat
+## <a name="output"></a>Utdata
 
 När Transact-SQL-skriptet är klart klickar du på en cell under **event_data_XML** kolumn rubriken. Ett **\<event>** element visas som visar en Update-instruktion.
 

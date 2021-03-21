@@ -11,16 +11,16 @@ ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788408"
 ---
-# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurera minimal TLS-version i Azure SQL-hanterad instans
+# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurera lägsta TLS-version i Azure SQL Managed Instance
 Inställningen minimalt [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) gör det möjligt för kunder att kontrol lera vilken version av TLS som används av deras Azure SQL-hanterade instanser.
 
-För närvarande har vi stöd för TLS 1,0, 1,1 och 1,2. Genom att ange en minimal TLS-version kan du se till att senare TLS-versioner stöds. T. ex. kan du välja en TLS-version som är större än 1,1. innebär endast anslutningar med TLS 1,1 och 1,2 godkänns och TLS 1,0 avvisas. När du har testat för att bekräfta att programmen har stöd för det rekommenderar vi att du ställer in minimal TLS-version på 1,2 eftersom den innehåller korrigeringar för sårbarheter som finns i tidigare versioner och är den högsta versionen av TLS som stöds i Azure SQL Managed instance.
+För närvarande finns stöd för TLS 1.0, 1.1 och 1.2. Genom att ange en lägsta TLS-version kan du vara säker på att senare TLS-versioner stöds. T. ex. kan du välja en TLS-version som är större än 1,1. innebär det att endast anslutningar med TLS 1.1 och 1.2 accepteras och att TLS 1.0 avvisas. När du har testat och bekräftat att dina program stöder den, rekommenderar vi att du väljer 1.2 som den lägsta TLS-versionen. Den här versionen har korrigeringar som åtgärdar sårbarheter i tidigare versioner och är den högsta TLS-versionen som stöds i Azure SQL Managed Instance.
 
 För kunder med program som förlitar sig på äldre versioner av TLS rekommenderar vi att du ställer in den lägsta TLS-versionen enligt kraven för dina program. För kunder som förlitar sig på att program ska ansluta via en okrypterad anslutning rekommenderar vi inte att du anger någon minimal TLS-version. 
 

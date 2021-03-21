@@ -8,16 +8,16 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95819429"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>Självstudie: svara på Azure Service Bus händelser som tas emot via Azure Event Grid med Azure Functions
 I den här självstudien får du lära dig hur du svarar på Azure Service Bus händelser som tas emot via Azure Event Grid med Azure Functions och Azure Logic Apps. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Skapa ett namnområde för Service Bus
 > * Förbereda ett exempel program för att skicka meddelanden
@@ -37,8 +37,8 @@ Installera [Visual Studio 2019](https://www.visualstudio.com/vs) och ta med arbe
 >[!NOTE]
 > Mer information om hur du skapar och distribuerar en Azure Functions-app finns i [utveckla Azure Functions med Visual Studio](../azure-functions/functions-develop-vs.md)
 
-1. Öppna **ReceiveMessagesOnEvent.cs** -filen från **FunctionApp1** -projektet i lösningen **SBEventGridIntegration. SLN** . 
-1. Ersätt `<SERCICE BUS NAMESPACE - CONNECTION STRING>` med anslutnings strängen till Service Bus namn området. Den bör vara samma som den som du använde i **program.cs** -filen för **MessageSender** -projektet i samma lösning. 
+1. Öppna filen **ReceiveMessagesOnEvent. cs** från **FunctionApp1** -projektet för lösningen **SBEventGridIntegration. SLN** . 
+1. Ersätt `<SERCICE BUS NAMESPACE - CONNECTION STRING>` med anslutnings strängen till Service Bus namn området. Den bör vara samma som den som du använde i filen **program. cs** i **MessageSender** -projektet i samma lösning. 
 1. Högerklicka på **FunctionApp1** och välj **publicera**. 
 1. På sidan **publicera** väljer du **Start**. De här stegen kan skilja sig från vad du ser, men publicerings processen bör vara liknande. 
 1. I guiden **publicera** på sidan **mål** väljer du **Azure** for **target**. 

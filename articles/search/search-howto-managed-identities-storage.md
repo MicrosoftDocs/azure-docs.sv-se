@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358379"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Konfigurera en anslutning till ett Azure Storage-konto med en hanterad identitet
@@ -77,7 +77,7 @@ När du indexerar från ett lagrings konto måste data källan ha följande obli
 * **klientautentiseringsuppgifter**
     * När du använder en hanterad identitet för att autentisera, skiljer sig formatet på **autentiseringsuppgifter** till om du inte använder en hanterad identitet. Här kommer du att ange ett ResourceId som saknar konto nyckel eller lösen ord. ResourceId måste innehålla prenumerations-ID för lagrings kontot, resurs gruppen för lagrings kontot och lagrings kontots namn.
     * Hanterat identitets format: 
-        * *ResourceId =/Subscriptions/ **ditt prenumerations-ID** /resourceGroups/ **resurs gruppens namn** /providers/Microsoft.Storage/storageAccounts/ **ditt lagrings konto namn** /;*
+        * *ResourceId =/Subscriptions/**ditt prenumerations-ID**/resourceGroups/**resurs gruppens namn**/providers/Microsoft.Storage/storageAccounts/**ditt lagrings konto namn**/;*
 * **container** anger ett behållar-eller tabell namn i ditt lagrings konto. Som standard kan alla blobar i behållaren hämtas. Om du bara vill indexera blobbar i en viss virtuell katalog kan du ange den katalogen med hjälp av parametern valfri **fråga** .
 
 Exempel på hur du skapar ett BLOB-källdokument med hjälp av [REST API](/rest/api/searchservice/create-data-source):

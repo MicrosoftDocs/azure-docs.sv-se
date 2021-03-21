@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498650"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Så här använder du behörigheter i Azure våren Cloud
@@ -21,7 +21,7 @@ Vi kommer att implementera följande anpassade roller:
 
 * **Rollen utvecklare**: 
     * Distribuera
-    * Testa
+    * Test
     * Starta om appar
     * Kan tillämpa och göra ändringar i AppData på git-lagringsplatsen
     * Kan hämta logg strömmen
@@ -54,7 +54,7 @@ Följ de här stegen för att börja definiera en roll.
    ![Lägg till behörigheter start](media/spring-cloud-permissions/add-permissions.png)
 
 ### <a name="search-for-azure-spring-cloud-permissions"></a>Sök efter Azure våren Cloud-behörigheter:
-7. Sök efter *Microsoft. app* i rutan Sök.
+7. Sök efter *Microsoft.app* i sökrutan.
 Välj *Microsoft Azure våren Cloud*.
 
    ![Välj moln för Azure våren](media/spring-cloud-permissions/spring-cloud-permissions.png)

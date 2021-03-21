@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
 ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357869"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Självstudie: Konfigurera prioritets mat ris för automatisk användar etablering
@@ -79,7 +79,7 @@ Om du vill konfigurera prioritets mat ris för automatisk användar etablering m
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök anger du **prioritets mat ris** , väljer **prioritets mat ris** i resultat panelen. 
+4. I rutan Sök anger du **prioritets mat ris**, väljer **prioritets mat ris** i resultat panelen. 
 
     ![Prioritets mat ris i resultat listan](common/search-new-app.png)
 

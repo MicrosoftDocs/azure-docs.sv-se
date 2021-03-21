@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.openlocfilehash: 1d343c952f01185d2360d6cf238dd3a7512849fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912135"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure PowerShell-exempel för Azure Blob Storage
 
 Följande tabell innehåller länkar till PowerShell-skriptexempel som skapar och hanterar Azure Storage.
 
-| Skript | Description |
+| Skript | Beskrivning |
 |---|---|
 |**Lagringskonton**||
 | [Skapa ett lagringskonto och hämta/rotera åtkomstnycklarna](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Skapar ett Azure Storage-konto och hämtar och roterar en av dess åtkomstnycklar. |

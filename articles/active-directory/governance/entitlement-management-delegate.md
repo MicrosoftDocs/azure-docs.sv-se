@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100577844"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegering och roller i hantering av Azure AD-rättigheter
@@ -74,7 +74,7 @@ Efter delegeringen kan marknadsförings avdelningen ha roller som liknar följan
 
 Rättighets hantering har följande roller som är speciella för rättighets hantering.
 
-| Rättighets hanterings roll | Description |
+| Rättighets hanterings roll | Beskrivning |
 | --- | --- |
 | Katalog skapare | Skapa och hantera kataloger. Vanligt vis en IT-administratör som inte är en global administratör eller resurs ägare för en samling resurser. Personen som skapar en katalog blir automatiskt katalogens första katalog ägare och kan lägga till fler katalog ägare. En katalog skapare kan inte hantera eller se kataloger som de inte äger och kan inte lägga till resurser som de inte äger i en katalog. Om katalog skaparen behöver hantera en annan katalog eller lägga till resurser som de inte äger, kan de begära att bli medägare till katalogen eller resursen. |
 | Katalog ägare | Redigera och hantera befintliga kataloger. Vanligt vis en IT-administratör eller resurs ägare, eller en användare som katalog ägaren har valt. |
@@ -83,7 +83,7 @@ Rättighets hantering har följande roller som är speciella för rättighets ha
 
 Dessutom har den valda god kännaren och en beställare av ett Access-paket behörighet, även om de inte är roller.
 
-| Höger | Description |
+| Höger | Beskrivning |
 | --- | --- |
 | Godkännare | Auktoriserad av en princip för att godkänna eller neka begär Anden om åtkomst till paket, men de kan inte ändra definitioner för åtkomst paket. |
 | Requestor | Auktoriserad av en princip för ett Access-paket för att begära det Access-paketet. |

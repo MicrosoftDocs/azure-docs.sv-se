@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 9df10760164dcd0d207663c14107f72c46b76d25
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501251"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Distribuera en modell från Visual Studio
@@ -39,7 +39,7 @@ Välj **Azure Portal** > server > **Översikt** > **Servernamn** och kopiera ser
 
 ## <a name="to-deploy-from-visual-studio"></a>Distribuera från Visual Studio
 
-1. I Visual Studio > **Solution Explorer** högerklickar du på projektets > **Egenskaper**. Klistra sedan **Deployment**  >  in Server namnet i distribution **Server** .   
+1. I Visual Studio > **Solution Explorer** högerklickar du på projektets > **Egenskaper**. Klistra sedan   >  in Server namnet i distribution **Server** .   
    
     ![Klistra in servernamnet i egenskapen för distributionsservern](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
 2. I **Solution Explorer** högerklickar du på **Egenskaper** och klickar sedan på **Distribuera**. Du kan uppmanas att logga in i Azure.

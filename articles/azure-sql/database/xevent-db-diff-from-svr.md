@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501217"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Utökade händelser i Azure SQL Database 
@@ -73,7 +73,7 @@ Relaterade ämnen innehåller två kod exempel:
 
 Funktionen utökade händelser stöds av flera [katalogvyer](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql). I katalogvyer visas *metadata eller definitioner* för användarsessioner som skapats av användare i den aktuella databasen. Vyer returnerar inte information om instanser av aktiva Event-sessioner.
 
-| Namn på<br/>katalogvy | Description |
+| Namn på<br/>katalogvy | Beskrivning |
 |:--- |:--- |
 | **sys.database_event_session_actions** |Returnerar en rad för varje åtgärd vid varje händelse i en användarsession. |
 | **sys.database_event_session_events** |Returnerar en rad för varje händelse i en användarsession. |
@@ -87,7 +87,7 @@ I Microsoft SQL Server har liknande katalogvy-vyer namn som inkluderar *. Server
 
 Azure SQL Database har [dynamiska Management views (DMV: er)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) som stöder utökade händelser. DMV: er anger om *aktiva* Event-sessioner.
 
-| Namn på DMV | Description |
+| Namn på DMV | Beskrivning |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Returnerar information om Event session-åtgärder. |
 | **sys.dm_xe_database_session_events** |Returnerar information om sessions händelser. |

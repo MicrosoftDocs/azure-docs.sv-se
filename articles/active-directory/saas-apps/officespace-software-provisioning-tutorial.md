@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
 ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359939"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Självstudie: Konfigurera OfficeSpace-programvara för automatisk användar etablering
@@ -80,7 +80,7 @@ Innan du konfigurerar OfficeSpace-programvaran för automatisk användar etabler
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan anger du **OfficeSpace program vara** , väljer **OfficeSpace program vara** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
+4. I sökrutan anger du **OfficeSpace program vara**, väljer **OfficeSpace program vara** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
 
     ![OfficeSpace program vara i resultat listan](common/search-new-app.png)
 
