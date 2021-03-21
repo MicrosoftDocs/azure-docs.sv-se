@@ -4,10 +4,10 @@ description: Beskriver de funktioner som används i en Azure Resource Manager-ma
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99834008"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Jämförelse funktioner för ARM-mallar
@@ -31,7 +31,7 @@ Returnerar det första värdet som inte är null från parametrarna. Tomma strä
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |heltal, sträng, matris eller objekt |Det första värdet som ska testas för null. |
 | ytterligare argument |Inga |heltal, sträng, matris eller objekt |Ytterligare värden att testa för null. |
@@ -133,7 +133,7 @@ Kontrollerar om två värden är lika med varandra. `equals`Funktionen stöds in
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |heltal, sträng, matris eller objekt |Det första värdet för att kontrol lera om det är lika. |
 | arg2 |Ja |heltal, sträng, matris eller objekt |Det andra värdet för att kontrol lera om det är lika. |
@@ -317,7 +317,7 @@ Kontrollerar om det första värdet är större än det andra värdet. `greater`
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för större jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för större jämförelse. |
@@ -398,7 +398,7 @@ Kontrollerar om det första värdet är större än eller lika med det andra vä
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för större eller lika jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för större eller lika jämförelse. |
@@ -479,7 +479,7 @@ Kontrollerar om det första värdet är mindre än det andra värdet. `less`Funk
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för mindre jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för mindre jämförelse. |
@@ -560,7 +560,7 @@ Kontrollerar om det första värdet är mindre än eller lika med det andra vär
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för mindre eller lika med jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för jämförelsen som är mindre eller lika med. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fd704d45aa7dc10835a205f12ce26fc01a7ea44f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584507"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hur ger Azure Cosmos DB hög tillgänglighet
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -69,12 +69,14 @@ I sällsynta fall av regionala avbrott ser Azure Cosmos DB till att databasen al
 
 * Under ett avbrott i Skriv region befordrar Azure Cosmos-kontot automatiskt en sekundär region som är den nya primära Skriv regionen när **aktivering av automatisk redundans** har kon figurer ATS på Azure Cosmos-kontot. När den är aktive rad kommer redundansväxlingen att ske till en annan region i ordningen för regionens prioritet som du har angett.
 
+* Observera att manuell växling vid fel inte ska utlösas och inte kommer att lyckas i närvaro av ett avbrott i käll-eller mål regionen. Detta beror på en konsekvens kontroll som krävs av redundansväxlingen som kräver anslutning mellan regionerna.
+
 * När den tidigare påverkade regionen är online igen görs eventuella Skriv data som inte har repliker ATS när regionen misslyckades, görs tillgängliga via [feeden för konflikter](how-to-manage-conflicts.md#read-from-conflict-feed). Program kan läsa konflikten, lösa konflikterna baserat på programspecifik logik och skriva uppdaterade data tillbaka till Azure Cosmos-behållaren efter behov.
 
 * När den tidigare påverkade Skriv regionen återställs blir den automatiskt tillgänglig som en Läs region. Du kan växla tillbaka till den återställda regionen som Skriv region. Du kan byta region med hjälp av [PowerShell, Azure CLI eller Azure Portal](how-to-manage-database-account.md#manual-failover). Det finns **Ingen förlust av data eller tillgänglighet** innan, under eller efter att du byter Skriv region och programmet fortfarande har hög tillgänglighet.
 
 > [!IMPORTANT]
-> Vi rekommenderar starkt att du konfigurerar de Azure Cosmos-konton som används för produktions arbets belastningar för att **Aktivera automatisk redundans**. Manuell redundans kräver anslutning mellan sekundär och primär Skriv region för att slutföra en konsekvens kontroll för att säkerställa att inga data går förlorade under redundansväxlingen. Om den primära regionen inte är tillgänglig kan konsekvens kontrollen inte slutföras och den manuella redundansväxlingen Miss lyckas, vilket leder till förlust av Skriv tillgänglighet under den tid det regionala avbrottet varar.
+> Vi rekommenderar starkt att du konfigurerar de Azure Cosmos-konton som används för produktions arbets belastningar för att **Aktivera automatisk redundans**. Detta gör det möjligt för Cosmos DB att redundansväxla konto databaser till tillgänglig regioner automatiskt. Om den här konfigurationen saknas kommer kontot att förlora Skriv-tillgänglighet under hela varaktigheten för Skriv åtgärds avbrott, eftersom manuell redundans inte lyckas på grund av brist på region anslutning.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Konton med flera regioner och en enkel-eller region (Läs regions avbrott)
 
@@ -138,7 +140,22 @@ Tillgänglighetszoner kan aktive ras via:
 
 * Även om ditt Azure Cosmos-konto har hög tillgänglighet är ditt program kanske inte korrekt utformat för att hålla hög tillgänglighet. Om du vill testa hög tillgänglighet från slut punkt till slut punkt för ditt program, som en del av dina program testnings-eller haveri beredskap (DR), kan du tillfälligt inaktivera automatisk redundans för kontot, anropa den [manuella redundansväxlingen med hjälp av PowerShell, Azure CLI eller Azure Portal](how-to-manage-database-account.md#manual-failover)och sedan övervaka programmets redundans. När du är klar kan du växla tillbaka till den primära regionen och återställa automatisk redundans för kontot.
 
+> [!IMPORTANT]
+> Aktivera inte manuell redundans under ett Cosmos DB avbrott i antingen käll-eller mål regionerna, eftersom det krävs regions anslutningar för att upprätthålla data konsekvensen och det kommer inte att lyckas.
+
 * I en globalt distribuerad databas miljö finns det ett direkt förhållande mellan konsekvens nivån och data hållbarhet i närvaro av ett områdes omfattande avbrott. När du utvecklar din verksamhets kontinuitets plan måste du förstå hur lång tid det tar innan programmet återställs fullständigt efter en störnings händelse. Tiden som krävs för att ett program ska återställas fullständigt kallas för återställnings tids mål (RTO). Du måste också förstå hur lång tid det tar för nya data uppdateringar som programmet kan tolerera vid återställning efter en störnings händelse. Tidsperioden för uppdateringar som du kan ha råd att förlora kallas mål för återställningspunkt (RPO). Om du vill se återställnings-och RTO för Azure Cosmos DB, se [konsekvens nivåer och data hållbarhet](./consistency-levels.md#rto)
+
+## <a name="what-to-expect-during-a-region-outage"></a>Vad som ska förväntas under en regions störning
+
+För konton med en region får klienterna förlust av Läs-och skriv tillgänglighet.
+
+Konton med flera regioner kommer att uppleva olika beteenden beroende på följande tabell.
+
+| Skriv regioner | Automatisk redundans | Vad du kan förvänta dig | Vad bör jag göra |
+| -- | -- | -- | -- |
+| Enskild Skriv region | Inte aktiverat | Om det uppstår avbrott i en Läs region omdirigeras alla klienter till andra regioner. Ingen förlust av Läs-eller Skriv tillgänglighet. Ingen data förlust. <p/> Om det uppstår ett avbrott i Skriv regionen får klienterna möjlighet att förlora Skriv åtgärder. Data förlust är beroende av vald constistency-nivå. <p/> Cosmos DB återställer Skriv tillgängligheten automatiskt när avbrottet är slut. | Under avbrottet kontrollerar du att det finns tillräckligt med kapacitet etablerade i de återstående regionerna för att stödja Läs trafik. <p/> Utlös *inte* en manuell redundansväxling under avbrottet eftersom det inte kommer att lyckas. <p/> När avbrottet är över justerar du den etablerade kapaciteten på lämpligt sätt. |
+| Enskild Skriv region | Enabled | Om det uppstår avbrott i en Läs region omdirigeras alla klienter till andra regioner. Ingen förlust av Läs-eller Skriv tillgänglighet. Ingen data förlust. <p/> Om det uppstår ett avbrott i Skriv regionen kommer klienterna att uppleva förlust av Skriv tillgänglighet tills Cosmos DB automatiskt väljer en ny region som den nya Skriv regionen enligt dina önskemål. Data förlust är beroende av vald constistency-nivå. | Under avbrottet kontrollerar du att det finns tillräckligt med kapacitet etablerade i de återstående regionerna för att stödja Läs trafik. <p/> Utlös *inte* en manuell redundansväxling under avbrottet eftersom det inte kommer att lyckas. <p/> När avbrottet är över kan du återställa icke-replikerade data i den felande regionen från din problem- [feed](how-to-manage-conflicts.md#read-from-conflict-feed), flytta tillbaka Skriv regionen till den ursprungliga regionen och justera den etablerade kapaciteten efter behov. |
+| Flera Skriv regioner | Inte tillämpligt | Ingen förlust av Läs-eller Skriv tillgänglighet. <p/> Data förlust enligt vald konsekvens nivå. | Under avbrottet kontrollerar du att det finns tillräckligt med kapacitet i de återstående regionerna för att stödja ytterligare trafik. <p/> När avbrottet är över kan du återställa icke-replikerade data i den felande regionen från din [feeds-feed](how-to-manage-conflicts.md#read-from-conflict-feed) och justera den etablerade kapaciteten efter behov. |
 
 ## <a name="next-steps"></a>Nästa steg
 

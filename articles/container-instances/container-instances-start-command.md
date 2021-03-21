@@ -4,10 +4,10 @@ description: Ange en kommando rad för att åsidosätta EntryPoint i en behålla
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169637"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Ange kommando raden i en behållar instans för att åsidosätta standard kommando rads åtgärden
@@ -59,7 +59,7 @@ Kommando rads koden varierar beroende på vilket Azure-API eller verktyg som anv
 
 ## <a name="azure-cli-example"></a>Azure CLI-exempel
 
-Du kan t. ex. ändra beteendet för behållar avbildningen [Microsoft/ACI-WORDCOUNT][aci-wordcount] , som analyserar text i Shakespeares *Hamlet* för att hitta de ord som ofta förekommer. I stället för att analysera *Hamlet*kan du ange en kommando rad som pekar på en annan text källa.
+Du kan t. ex. ändra beteendet för behållar avbildningen [Microsoft/ACI-WORDCOUNT][aci-wordcount] , som analyserar text i Shakespeares *Hamlet* för att hitta de ord som ofta förekommer. I stället för att analysera *Hamlet* kan du ange en kommando rad som pekar på en annan text källa.
 
 Om du vill se resultatet av behållaren [Microsoft/ACI-WORDCOUNT][aci-wordcount] när den analyserar standard texten, kör du den med följande [AZ container Create][az-container-create] -kommando. Ingen start kommando rad har angetts, så standard behållar kommandot körs. I illustrations syfte anger det här exemplet [miljövariabler](container-instances-environment-variables.md) för att hitta de tre översta orden som är minst fem bokstäver långa:
 
@@ -98,7 +98,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Igen när behållaren har *avbrutits*visas utdata genom att Visa behållarens loggar:
+Igen när behållaren har *avbrutits* visas utdata genom att Visa behållarens loggar:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2

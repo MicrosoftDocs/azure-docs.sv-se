@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102557020"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
@@ -935,7 +935,7 @@ Du kan publicera din Logi Kap par som en ny resurs, som automatiskt skapar nödv
          | Allvarlighetsgrad | Spårnings typ |
          |----------------|------------|
          | Kritiskt | Loggar som beskriver ett oåterkalleligt fel i din Logic app. |
-         | Felsökning | Loggar som du kan använda för undersökning under utvecklingen, till exempel inkommande och utgående HTTP-anrop. |
+         | Felsöka | Loggar som du kan använda för undersökning under utvecklingen, till exempel inkommande och utgående HTTP-anrop. |
          | Fel | Loggar som indikerar ett problem i arbets flödes körningen, men inte ett allmänt haveri i din Logic app. |
          | Information | Loggar som spårar den allmänna aktiviteten i din Logic app eller arbets flöde, till exempel: <p><p>– När en utlösare, åtgärd eller kör startar och slutar. <br>– När din Logic app startar eller slutar. |
          | Spårning | Loggar som innehåller de mest detaljerade meddelandena, till exempel lagrings begär Anden eller dispatcher-aktivitet, samt alla meddelanden som är relaterade till körnings aktivitet för arbets flöde. |

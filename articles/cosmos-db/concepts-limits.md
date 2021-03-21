@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611040"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB tjänst kvoter
@@ -62,15 +62,15 @@ Exempel: anta att du har en behållare etablerad med 400 RU/s och 0 GB lagring. 
 
 **Obs!** det lägsta data flödet på 10 ru/s per GB lagrings utrymme kan sänkas om ditt konto är berättigat till vårt [program för "hög lagring/låg data flöde"](set-throughput.md#high-storage-low-throughput-program).
 
-#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minsta data flöde på delad data flödes databas 
-För att uppskatta det minsta data flöde som krävs för en delad data flödes databas med manuellt data flöde, hitta Max:
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minsta dataflöde på databas för delat dataflöde 
+För att beräkna det minsta dataflödet för en databas med delat dataflöde med manuellt dataflöde tar du reda på maxvärdet för:
 
 * 400 RU/s 
 * Aktuellt lagrings utrymme i GB * 10 RU/s
 * Mest RU/s etablerad i databasen/100
 * 400 + MAX (antal behållare-25,0) * 100 RU/s
 
-Exempel: anta att du har en databas etablerad med 400 RU/s, 15 GB lagring och 10 behållare. Lägsta RU/s är `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Om det fanns 30 behållare i databasen skulle minimivärdet RU/s vara `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
+Exempel: Anta att du har en databas som etablerats med 400 RU/s, 15 GB lagring och 10 containrar. Lägsta RU/s är `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Om det fanns 30 behållare i databasen skulle minimivärdet RU/s vara `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
 **Obs!** det lägsta data flödet på 10 ru/s per GB lagrings utrymme kan sänkas om ditt konto är berättigat till vårt [program för "hög lagring/låg data flöde"](set-throughput.md#high-storage-low-throughput-program).
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91945710"
 ---
 # <a name="filter-based-feature-selection"></a>Filterbaserat funktionsval
@@ -66,7 +66,7 @@ Du väljer ett standard statistik mått. Modulen beräknar korrelationen mellan 
     > Se till att de kolumner som du har angett som indatamängd är möjliga funktioner. Till exempel har en kolumn som innehåller ett enda värde inget värde för information.
     >
     > Om du vet att vissa kolumner skulle medföra dåliga funktioner kan du ta bort dem från kolumn urvalet. Du kan också använda modulen [Redigera metadata](edit-metadata.md) för att flagga dem som **kategoriska**. 
-3.  För **funktions bedömnings metod**väljer du någon av följande etablerade statistiska metoder som ska användas för att beräkna poängen.  
+3.  För **funktions bedömnings metod** väljer du någon av följande etablerade statistiska metoder som ska användas för att beräkna poängen.  
 
     | Metod              | Krav                             |
     | ------------------- | ---------------------------------------- |
@@ -79,10 +79,10 @@ Du väljer ett standard statistik mått. Modulen beräknar korrelationen mellan 
 
     Om du avmarkerar det här alternativet skapar modulen en poäng för alla kolumner som på annat sätt uppfyller villkoren, upp till antalet kolumner som anges i **antal önskade funktioner**.  
 
-5.  För **kolumnen mål**väljer du **Starta kolumn väljare** för att välja etikettens kolumn antingen efter namn eller index. (Index är ett-baserat.)  
+5.  För **kolumnen mål** väljer du **Starta kolumn väljare** för att välja etikettens kolumn antingen efter namn eller index. (Index är ett-baserat.)  
     En etikett kolumn krävs för alla metoder som inbegriper statistisk korrelation. Modulen returnerar ett design tids fel om du väljer ingen etikett kolumn eller flera etikett kolumner. 
 
-6.  För **antal önskade funktioner**anger du det antal funktions kolumner som du vill ska returneras som ett resultat:  
+6.  För **antal önskade funktioner** anger du det antal funktions kolumner som du vill ska returneras som ett resultat:  
 
     - Det minsta antalet funktioner som du kan ange är ett, men vi rekommenderar att du ökar det här värdet.  
 
@@ -112,7 +112,7 @@ Om data uppsättningen innehåller färre kolumner än förväntat, kontrollerar
 
 ##  <a name="technical-notes"></a>Tekniska anteckningar  
 
-### <a name="implementation-details"></a>Implementerings information
+### <a name="implementation-details"></a>Implementeringsdetaljer
 
 Om du använder Pearson-korrelation på en numerisk funktion och en kategoriska-etikett, beräknas funktions poängen på följande sätt:  
 

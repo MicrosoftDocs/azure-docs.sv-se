@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461104"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Självstudie: skicka data via transparent Gateway
@@ -51,7 +51,7 @@ Titta på koden för att se hur dessa två objekt implementeras.
 
 1. Använd öppna **fil**-  >  **mapp...** för att öppna C: \\ Source \\ IoTEdgeAndMlSample \\ DeviceHarness.
 
-1. Titta på metoden InstallCertificate () i Program.cs.
+1. Titta på metoden InstallCertificate () i program. cs.
 
 1. Observera att om koden hittar certifikat Sök vägen anropas metoden CertificateManager. InstallCACert för att installera certifikatet på datorn.
 

@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 01/12/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98132196"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Vad är nytt för Azure Key Vault
@@ -80,7 +80,7 @@ Nya funktioner som lanseras i år:
 ## <a name="2015"></a>2015
 
 Nya funktioner som lanseras i år:
-- Certifikathantering. Lades till som en funktion i GA version 2015-06-01 den 26 september 2016.
+- Certifikat hantering. Lades till som en funktion i GA version 2015-06-01 den 26 september 2016.
 
 Allmän tillgänglighet (version 2015-06-01) presenterades den 24 juni 2015. Följande ändringar har gjorts i den här versionen:
 - Ta bort ett fält för nyckel användning borttaget.

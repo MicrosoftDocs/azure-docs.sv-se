@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576675"
 ---
 # <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuellt nätverk
@@ -42,7 +42,7 @@ Den här funktionen är tillgänglig för följande Azure-tjänster och-regioner
 - **[Azure App Service](../app-service/app-service-ip-restrictions.md)** (*Microsoft. Web*): allmänt tillgänglig i alla Azure-regioner där App Service är tillgängligt.
 - **[Azure Cognitive Services](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft. CognitiveServices*): allmänt tillgänglig i alla Azure-regioner där kognitiva tjänster är tillgängliga.
 
-**Offentlig för hands version**
+**Offentlig förhandsversion**
 
 - **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (*Microsoft. ContainerRegistry*): för hands version tillgänglig i begränsade Azure-regioner där Azure Container Registry är tillgängligt.
 

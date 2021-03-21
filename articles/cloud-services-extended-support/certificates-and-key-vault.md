@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d9ff86eeb0e64e7edbad0eeca51b04cabbd191e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7357703af41afc913ef63dff6ecae3d230c9eca0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722661"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583300"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Använda certifikat med Azure Cloud Services (utökad support)
 
@@ -41,7 +41,7 @@ Key Vault används för att lagra certifikat som är kopplade till Cloud Service
 
     :::image type="content" source="media/certs-and-key-vault-4.png" alt-text="Bild visar hur du väljer alternativet för att generera/importera":::
 
-4.  Slutför den information som krävs för att slutföra överföringen av certifikatet. 
+4.  Slutför den information som krävs för att slutföra överföringen av certifikatet. Certifikatet måste finnas i **. PFX** -format.
 
     :::image type="content" source="media/certs-and-key-vault-5.png" alt-text="Bild som visar hur du importerar fönster i Azure Portal.":::
 

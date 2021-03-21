@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
 ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034973"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Övervaka hälsan för Log Analytics arbets ytan i Azure Monitor
@@ -81,7 +81,7 @@ En rekommenderad strategi är att börja med två varnings regler baserat på pr
 Använd processen i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../alerts/alerts-log.md) för att skapa logg varnings reglerna. I följande avsnitt beskrivs informationen för varje regel.
 
 
-| Söka i data | Tröskelvärde | Period | Frekvens |
+| Fråga | Tröskelvärde | Period | Frekvens |
 |:---|:---|:---|:---|
 | `_LogOperation | where Level == "Error"`   | 0 | 5 | 5 |
 | `_LogOperation | where Level == "Warning"` | 0 | 1440 | 1440 |

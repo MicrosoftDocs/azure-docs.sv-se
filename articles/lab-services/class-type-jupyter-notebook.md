@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
 ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94648029"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Konfigurera ett labb för att lära data vetenskap med python-och Jupyter-anteckningsböcker
@@ -20,7 +20,7 @@ Jupyter Notebooks är ett projekt med öppen källkod som gör att du enkelt kan
 ## <a name="set-up-the-lab"></a>Konfigurera labbet
 
 ### <a name="lab-configuration"></a>Labb konfiguration
-Om du vill ställa in det här labbet måste du ha åtkomst till en Azure-prenumeration och ett labb konto. Diskutera med din organisations administratör för att se om du kan få åtkomst till en befintlig Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du vill ställa in det här labbet måste du ha åtkomst till en Azure-prenumeration och ett labb konto. Diskutera med din organisations administratör för att se om du kan få åtkomst till en befintlig Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
 När du har en Azure-prenumeration kan du skapa ett nytt labb konto i Azure Lab Services genom att följa anvisningarna i självstudien: [Konfigurera ett labb konto](tutorial-setup-lab-account.md). Du kan också använda ett befintligt labb konto.
 

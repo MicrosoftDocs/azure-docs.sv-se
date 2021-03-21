@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873275"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsplan för Azure AD Connect och Azure AD Connect Health
@@ -46,7 +46,7 @@ Du kan ladda ned Azure AD Connect från [Microsoft Download Center](https://go.m
 |Installera med standardinställningar | [Snabbinstallation av Azure AD Connect](./how-to-connect-install-express.md)|
 |Installera med anpassade inställningar | [Anpassad installation av Azure AD Connect](./how-to-connect-install-custom.md)|
 |Uppgradera från DirSync | [Uppgradera från Azure AD-synkroniseringsverktyget (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
-|Efter installation | [Verifiera installationen och tilldela licenser](how-to-connect-post-installation.md)|
+|Efter installationen | [Verifiera installationen och tilldela licenser](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Mer information om installationen av Azure AD Connect
 Det är bra att vara förberedd om det skulle uppstå [driftproblem](./how-to-connect-sync-staging-server.md). Du kanske vill ha en reservserver som du enkelt kan redundansväxla till i händelse av ett [allvarligt fel](how-to-connect-sync-staging-server.md#disaster-recovery). Om du ofta kommer att göra konfigurationsändringar bör du planera för ett server i [mellanlagringsläge](how-to-connect-sync-staging-server.md).
@@ -78,7 +78,7 @@ Funktionen [Automatisk uppgradering](how-to-connect-install-automatic-upgrade.md
 |Avsnitt |Länk|  
 | --- | --- |
 |Konfigurera filtrering | [Azure AD Connect-synkronisering: Konfigurera filtrering](how-to-connect-sync-configure-filtering.md)|
-|Synkronisering av lösenordshash | [Synkronisering av lösenordshash](how-to-connect-password-hash-synchronization.md)|
+|Synkronisering av lösenordshash | [Hash-synkronisering av lösen ord](how-to-connect-password-hash-synchronization.md)|
 |Direktautentisering | [Direktautentisering](how-to-connect-pta.md)
 |Tillbakaskrivning av lösenord | [Komma igång med lösen ords hantering](../authentication/tutorial-enable-sspr.md)|
 |Tillbakaskrivning av enheter | [Aktivera tillbakaskrivning av enheter i Azure AD Connect](how-to-connect-device-writeback.md)|

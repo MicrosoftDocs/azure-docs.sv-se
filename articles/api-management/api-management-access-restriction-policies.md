@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/26/2021
 ms.author: apimpm
 ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688254"
 ---
 # <a name="api-management-access-restriction-policies"></a>Principer för åtkomstbegränsning i API Management
@@ -63,7 +63,7 @@ Använd `check-header` principen för att genomdriva att en begäran har ett ang
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
+| Name                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | misslyckades-kontrol lera fel meddelande | Fel meddelande att returnera i HTTP-svarets text om huvudet inte finns eller har ett ogiltigt värde. Det här meddelandet måste ha specialtecken som kan undantas korrekt. | Ja      | Ej tillämpligt     |
 | misslyckades-check-httpcode      | HTTP-statuskod att returnera om huvudet inte finns eller har ett ogiltigt värde.                                                                                        | Ja      | Ej tillämpligt     |
@@ -134,7 +134,7 @@ I följande exempel är antalet per prenumerations frekvens 20 anrop per 90 seku
 
 ### <a name="attributes"></a>Attribut
 
-| Namn           | Beskrivning                                                                                           | Krävs | Standardvärde |
+| Name           | Beskrivning                                                                                           | Krävs | Standardvärde |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Namnet på det API som hastighets begränsningen ska tillämpas för.                                                | Ja      | Ej tillämpligt     |
 | fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Ej tillämpligt     |
@@ -209,7 +209,7 @@ I följande exempel anges frekvens gränsen på 10 anrop per 60 sekunder av IP-a
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                | Beskrivning                                                                                           | Krävs | Standardvärde |
+| Name                | Beskrivning                                                                                           | Krävs | Standardvärde |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Ej tillämpligt     |
 | räknare-nyckel         | Den nyckel som ska användas för frekvens begränsnings principen.                                                             | Ja      | Ej tillämpligt     |
@@ -263,7 +263,7 @@ I följande exempel tillåter principen bara begär Anden som kommer från den e
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                                      | Beskrivning                                                                                 | Krävs                                           | Standardvärde |
+| Name                                      | Beskrivning                                                                                 | Krävs                                           | Standardvärde |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | adress – intervall från = "adress" till = "adress" | Ett intervall med IP-adresser som tillåter eller nekar åtkomst för.                                        | Krävs när `address-range` elementet används. | Ej tillämpligt     |
 | IP-filter åtgärd = "Tillåt &#124; nekad"    | Anger om anrop ska tillåtas eller inte för de angivna IP-adresserna och intervallen. | Ja                                                | Ej tillämpligt     |
@@ -321,7 +321,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 
 ### <a name="attributes"></a>Attribut
 
-| Namn           | Beskrivning                                                                                               | Krävs                                                         | Standardvärde |
+| Name           | Beskrivning                                                                                               | Krävs                                                         | Standardvärde |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | Namnet på det API eller den åtgärd som kvoten gäller.                                             | Ja                                                              | Ej tillämpligt     |
 | bredd      | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
@@ -384,7 +384,7 @@ I följande exempel anges kvoten av IP-adressen för anroparen.
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                | Beskrivning                                                                                               | Krävs                                                         | Standardvärde |
+| Name                | Beskrivning                                                                                               | Krävs                                                         | Standardvärde |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bredd           | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
 | fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
@@ -560,7 +560,7 @@ Det här exemplet visar hur du använder [validate JWT](api-management-access-re
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                            | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                                            | Krävs                                                                         | Standardvärde                                                                           |
+| Name                            | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                                            | Krävs                                                                         | Standardvärde                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | klock skevning                      | Intervall. Används för att ange den maximala förväntade tids skillnaden mellan system klockorna i token Issuer och API Management-instansen.                                                                                                                                                                                                                                                                                                               | Inga                                                                               | 0 sekunder                                                                         |
 | misslyckades-validering-fel-meddelande | Fel meddelande att returnera i HTTP-svarets text om JWT inte klarar verifieringen. Det här meddelandet måste ha specialtecken som kan undantas korrekt.                                                                                                                                                                                                                                                                                                 | Inga                                                                               | Standard fel meddelandet är beroende av verifierings problemet, till exempel "JWT saknas". |

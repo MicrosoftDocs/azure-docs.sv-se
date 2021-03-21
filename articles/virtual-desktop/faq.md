@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613977"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582144"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Vanliga frågor och svar om Windows Virtual Desktop
 
@@ -110,7 +110,7 @@ När du har skapat en värdbaserad pool kan du inte ändra dess typ. Du kan dock
 
 Begränsningar eller kvoter i FSLogix är beroende av den lagrings infrastruktur som används för att lagra filer med VHD (X) för användar profiler.
 
-Följande tabell innehåller ett exempel på hur resurser en FSLogix-profil måste ha stöd för varje användare. Kraven kan variera mycket beroende på användare, program och aktivitet på varje profil.
+Följande tabell innehåller ett exempel på hur många IOPS en FSLogix-profil behöver för att stödja varje användare. Kraven kan variera mycket beroende på användare, program och aktivitet på varje profil.
 
 | Resurs | Krav |
 |---|---|

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.openlocfilehash: bef8706d9dcef966397dcddc64ffbd567a8431f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034412"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Namngivnings regler för Azure Data Factory
@@ -20,7 +20,7 @@ ms.locfileid: "102034412"
 
 Följande tabell innehåller namngivnings regler för Data Factory artefakter.
 
-| Namn | Namn unikhet | Verifierings kontroller |
+| Name | Namn unikhet | Verifierings kontroller |
 |:--- |:--- |:--- |
 | Data fabrik | Unikt mellan Microsoft Azure. Namn är inte Skift läges känsliga, det `MyDF` vill säga och `mydf` referera till samma data fabrik. |<ul><li>Varje data fabrik är knuten till exakt en Azure-prenumeration.</li><li>Objekt namn måste börja med en bokstav eller en siffra och får bara innehålla bokstäver, siffror och bindestreck (-).</li><li>Varje bindestreck (-) måste föregås omedelbart och följas av en bokstav eller en siffra. Efterföljande bindestreck tillåts inte i behållar namn.</li><li>Namnet kan vara 3-63 tecken långt.</li></ul> |
 | Länkade tjänster/data uppsättningar/pipelines/data flöden | Unikt inom en data fabrik. Namn är inte Skift läges känsliga. |<ul><li>Objekt namn måste börja med en bokstav.</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \\ "</li><li>Bindestreck ("-") tillåts inte i namnen på länkade tjänster, data flöden och data uppsättningar.</li></ul>  |

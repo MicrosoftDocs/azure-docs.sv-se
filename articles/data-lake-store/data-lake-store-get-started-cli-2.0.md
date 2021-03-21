@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103636"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Kom igång med Azure Data Lake Storage Gen1 med Azure CLI
@@ -29,7 +29,7 @@ Lär dig hur du använder Azure CLI för att skapa ett Azure Data Lake Storage G
 Azure CLI är Azures kommandoradsmiljö för att hantera Azure-resurser. Den kan användas i Mac OS, Linux och Windows. Mer information finns i [Översikt över Azure CLI](/cli/azure). Du kan också titta på [Azure Data Lake Storage GEN1 CLI-referensen](/cli/azure/dls) för en fullständig lista över kommandon och syntax.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Innan du påbörjar den här artikeln måste du ha:
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -132,7 +132,7 @@ Resultatet av detta ska se ut ungefär så här:
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Byt namn på, ladda ned och ta bort data från ett Data Lake Storage Gen1 konto 
 
-* **Om du vill byta namn på en fil**använder du följande kommando:
+* **Om du vill byta namn på en fil** använder du följande kommando:
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
