@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199623"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Ansluta en underordnad enhet till en Azure IoT Edge-gateway
@@ -171,7 +171,7 @@ Det här avsnittet introducerar ett exempel program för att ansluta en Azure Io
 3. I **egenskaperna/launchSettings.jspå** filen uppdaterar du **DEVICE_CONNECTION_STRING** och **CA_CERTIFICATE_PATH** variabler. Lämna den här variabeln tom om du vill använda certifikatet som är installerat i det betrodda certifikat arkivet på värd systemet.
 4. I SDK-dokumentationen hittar du instruktioner för hur du kör exemplet på enheten.
 
-Om du vill installera ett betrott certifikat program mässigt i certifikat arkivet via ett .NET-program, se funktionen **InstallCACert ()** i filen **EdgeDownstreamDevice/program.cs** . Den här åtgärden är idempotenta, så kan köras flera gånger med samma värden utan ytterligare påverkan.
+Program mässigt installera ett betrott certifikat i certifikat arkivet via ett .NET-program finns i **InstallCACert ()** -funktionen i filen **EdgeDownstreamDevice/program. cs** . Den här åtgärden är idempotenta, så kan köras flera gånger med samma värden utan ytterligare påverkan.
 
 ### <a name="c"></a>C
 

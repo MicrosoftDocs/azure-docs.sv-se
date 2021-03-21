@@ -8,10 +8,10 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424469"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Självstudie: koda med Azure Digitals dubbla API: er
@@ -53,7 +53,7 @@ Navigera till den nya katalogen.
 dotnet new console
 ```
 
-Detta skapar flera filer i katalogen, inklusive en som kallas *program.cs* där du skriver merparten av koden.
+Detta skapar flera filer i katalogen, inklusive en som kallas *program. cs* där du skriver merparten av koden.
 
 Se till att kommando fönstret är öppet, eftersom du fortsätter att använda det i självstudien.
 
@@ -76,7 +76,7 @@ I det här avsnittet ska du skriva koden för att ditt nya app-projekt ska funge
 
 Det finns också ett avsnitt som visar den fullständiga koden i slutet av självstudien. Du kan använda den som en referens för att kontrol lera programmet när du går.
 
-Börja genom att öppna filen *program.cs* i valfri kod redigerare. En minimal kod mall visas som ser ut ungefär så här:
+Starta genom att öppna filen *program. cs* i valfri kod redigerare. En minimal kod mall visas som ser ut ungefär så här:
 
 :::row:::
     :::column:::
@@ -98,7 +98,7 @@ Det första du behöver göra är att autentisera mot tjänsten Azure Digitals d
 
 För att kunna autentisera behöver du *värd namnet* för din Azure Digital-instansen.
 
-I *program.cs* klistrar du in följande kod under "Hello, World!" Skriv ut rad i `Main` metoden. Ange värdet för `adtInstanceUrl` till ditt Azure Digital-instansen *värdnamn*.
+I *program. cs* klistrar du in följande kod under "Hello, World!" Skriv ut rad i `Main` metoden. Ange värdet för `adtInstanceUrl` till ditt Azure Digital-instansen *värdnamn*.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -130,7 +130,7 @@ Skapa en ny *. JSON* -fil med namnet *SampleModel.jspå* i katalogen där du ska
 > [!TIP] 
 > Det finns ett språk-oberoende [DTDL-verifierings exempel](/samples/azure-samples/dtdl-validator/dtdl-validator) som du kan använda för att kontrol lera modell dokument för att kontrol lera att DTDL är giltig. Det bygger på DTDL parser-biblioteket, som du kan läsa mer om i [*instruktion: parsa och validera modeller*](how-to-parse-models.md).
 
-Lägg sedan till ytterligare kod i *program.cs* för att ladda upp den modell som du precis har skapat i Azure Digitals-instansen.
+Lägg sedan till ytterligare kod i *program. cs* för att ladda upp den modell som du precis har skapat i Azure Digitals-instansen.
 
 Lägg först till några `using` instruktioner överst i filen:
 
@@ -248,7 +248,7 @@ Kör programmet med i kommando fönstret `dotnet run` . Du bör se alla digitala
 
 ## <a name="complete-code-example"></a>Fullständigt kod exempel
 
-I den här kursen har du en komplett klient-app som kan utföra grundläggande åtgärder mot digitala Azure-enheter. Den fullständiga koden för programmet i *program.cs* visas som referens nedan:
+I den här kursen har du en komplett klient-app som kan utföra grundläggande åtgärder mot digitala Azure-enheter. Den fullständiga koden för programmet i *program. cs* visas i listan nedan:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 

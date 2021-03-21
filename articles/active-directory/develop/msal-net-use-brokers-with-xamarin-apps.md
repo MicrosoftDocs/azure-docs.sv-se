@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199580"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Använda Microsoft Authenticator eller Intune-företagsportal på Xamarin-program
@@ -65,7 +65,7 @@ Mer information finns i [aktivera nyckel rings åtkomst](msal-net-xamarin-ios-co
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Steg 3: uppdatera AppDelegate för att hantera återanropet
 
-När MSAL.NET anropar koordinatorn anropar Broker tillbaka till ditt program via- `OpenUrl` metoden för- `AppDelegate` klassen. Eftersom MSAL väntar på svar från Service Broker måste ditt program samar beta för att anropa MSAL.NET tillbaka. Om du vill aktivera det här samarbetet uppdaterar du *AppDelegate.cs* -filen för att åsidosätta följande metod.
+När MSAL.NET anropar koordinatorn anropar Broker tillbaka till ditt program via- `OpenUrl` metoden för- `AppDelegate` klassen. Eftersom MSAL väntar på svar från Service Broker måste ditt program samar beta för att anropa MSAL.NET tillbaka. Om du vill aktivera det här samarbetet uppdaterar du filen *AppDelegate. cs* för att åsidosätta följande metod.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -91,23 +91,23 @@ Den här metoden anropas varje gång programmet startas. Den används som en mö
 
 ### <a name="step-4-set-uiviewcontroller"></a>Steg 4: Ange UIViewController ()
 
-Ange ett objekt fönster fortfarande i *AppDelegate.cs* -filen. Du behöver normalt inte ange objekt fönstret för Xamarin iOS, men du behöver ett objekt fönster för att skicka och ta emot svar från Service Broker.
+Ange ett objekt fönster fortfarande i filen *AppDelegate. cs* . Du behöver normalt inte ange objekt fönstret för Xamarin iOS, men du behöver ett objekt fönster för att skicka och ta emot svar från Service Broker.
 
 Så här konfigurerar du objekt fönstret:
 
-1. I *AppDelegate.cs* -filen anger `App.RootViewController` du till en ny `UIViewController()` . Den här tilldelningen säkerställer att anropet till Service Broker innehåller `UIViewController` . Om den här inställningen tilldelas felaktigt kan du få följande fel meddelande:
+1. I filen *AppDelegate. cs* anger `App.RootViewController` du till en ny `UIViewController()` . Den här tilldelningen säkerställer att anropet till Service Broker innehåller `UIViewController` . Om den här inställningen tilldelas felaktigt kan du få följande fel meddelande:
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
 1. `AcquireTokenInteractive`Använd `.WithParentActivityOrWindow(App.RootViewController)` och skicka sedan i referensen till objekt fönstret som du vill använda på anropet.
 
-    I *app.cs*:
+    I *app. cs*:
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    I *AppDelegate.cs*:
+    I *AppDelegate. cs*:
 
     ```csharp
        LoadApplication(new App());

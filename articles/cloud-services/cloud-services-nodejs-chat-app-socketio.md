@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743329"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Bygg ett Node.js chatt-program med Socket.IO på en Azure Cloud Service (klassisk)
@@ -26,7 +26,7 @@ En skärm bild av det färdiga programmet är nedan:
 
 ![Ett webbläsarfönster som visar tjänsten som finns på Azure][completed-app]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Se till att följande produkter och versioner är installerade för att kunna slutföra exemplet i den här artikeln:
 
 * Installera [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -140,7 +140,7 @@ När du har sparat ändringarna i **server.js** använder du följande steg för
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Använd cmdleten **Publish-AzureServiceProject** om du vill distribuera programmet till Azure. Ett exempel:
+5. Använd cmdleten **Publish-AzureServiceProject** om du vill distribuera programmet till Azure. Exempel:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

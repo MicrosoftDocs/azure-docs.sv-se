@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 01c5d4aaa3896e05bc743be309df050471ece5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582059"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Betrodd start för Azure Virtual Machines (för hands version)
 
@@ -73,7 +73,7 @@ Azure erbjuder betrodd lansering som ett sömlöst sätt att förbättra säkerh
 
 ## <a name="secure-boot"></a>Säker start
 
-Vid roten av den betrodda starten är säker start för den virtuella datorn. Det här läget, som implementeras i inbyggd plattform, skyddar mot installation av skadlig rootkits och start paket. Säker start fungerar för att säkerställa att endast signerade operativ system och driv rutiner kan starta. Den upprättar en "förtroende rot" för program varu stacken på den virtuella datorn. När säker start är aktiverat måste alla start komponenter för operativ systemet (start inläsare, kernel, kernel-drivrutiner) signeras av betrodda utgivare. Både Windows och Select Linux-distributioner stöder säker start. Om den säkra starten inte kan autentisera att avbildningen har signerats av en betrodd utgivare, kommer den virtuella datorn inte att kunna starta. Mer information finns i [Säker start](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
+Vid roten av den betrodda starten är säker start för den virtuella datorn. Det här läget, som implementeras i inbyggd plattform, skyddar mot installation av skadlig rootkits och start paket. Säker start fungerar för att säkerställa att endast signerade operativ system och driv rutiner kan starta. Den upprättar en "förtroende rot" för program varu stacken på den virtuella datorn. När säker start är aktiverat måste alla start komponenter för operativ systemet (start inläsare, kernel, kernel-drivrutiner) signeras av betrodda utgivare. Både Windows och Select Linux-distributioner stöder säker start. Om den säkra starten inte kan autentisera att avbildningen har signerats av en betrodd utgivare, kommer den virtuella datorn inte att kunna starta. Mer information finns i [Säker start](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## <a name="vtpm"></a>vTPM
 
@@ -87,7 +87,7 @@ Betrodd start använder vTPM för att utföra fjärrattestering av molnet. Detta
 
 BEGÄRDA HVCI är en kraftfull system minskning som skyddar Windows kernel-läges processer mot insprutning och körning av skadlig eller overifierad kod. Det kontrollerar kernel mode-drivrutiner och binärfiler innan de körs, vilket hindrar osignerade filer från att läsas in i minnet. Detta säkerställer att sådan körbar kod inte kan ändras när den har tillåtelse att läsa in. Mer information om VBS och begärda HVCI finns i [virtualiseringsbaserad säkerhet (VBS) och hypervisor-framtvingad kod integritet (begärda hvci)](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571).
 
-Med betrodd start och VBS kan du aktivera Windows Defender Credential Guard. Den här funktionen isolerar och skyddar hemligheter så att endast privilegie rad system program vara kan komma åt dem. Det hjälper till att förhindra obehörig åtkomst till hemligheter och stöld attacker, t. ex. pass-The-hash (PtH)-attacker. Mer information finns i [Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard).
+Med betrodd start och VBS kan du aktivera Windows Defender Credential Guard. Den här funktionen isolerar och skyddar hemligheter så att endast privilegie rad system program vara kan komma åt dem. Det hjälper till att förhindra obehörig åtkomst till hemligheter och stöld attacker, t. ex. pass-The-hash (PtH)-attacker. Mer information finns i [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard).
 
 
 ## <a name="security-center-integration"></a>Security Center-integrering
@@ -134,7 +134,7 @@ I en säker start kedja kontrollerar varje steg i Start processen en kryptografi
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>Vad händer när ett integritets fel upptäcks?
 
-Betrodd lansering för virtuella Azure-datorer övervakas för avancerade hot. Om sådana hot identifieras aktive ras en avisering. Aviseringar är bara tillgängliga på [Standard-nivån](/azure/security-center/security-center-pricing) för Azure Security Center.
+Betrodd lansering för virtuella Azure-datorer övervakas för avancerade hot. Om sådana hot identifieras aktive ras en avisering. Aviseringar är bara tillgängliga på [Standard-nivån](../security-center/security-center-pricing.md) för Azure Security Center.
 Azure Security Center regelbundet utför attestering. Om attesteringen Miss lyckas aktive ras en avisering om medelhög allvarlighets grad. Attestering av betrodd start kan inte utföras av följande orsaker: 
 - Den bestyrkade informationen, som innehåller en logg över den betrodda dator basen (TCB), avviker från en betrodd bas linje (t. ex. När säker start är aktiverat). Detta kan tyda på att ej betrodda moduler har lästs in och att operativ systemet kan komprometteras.
 - Det gick inte att verifiera attesterings offerten som härstammar från vTPM för den verifierade virtuella datorn. Detta kan tyda på att skadlig kod finns och kan fånga upp trafik till TPM. 

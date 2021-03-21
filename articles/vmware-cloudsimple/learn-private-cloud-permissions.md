@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898053"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple privata moln behörighets modell för VMware vCenter
@@ -57,7 +57,7 @@ Om du vill ge enskilda användare behörighet att hantera det privata molnet, sk
 | **Kryptografiska åtgärder** | Lägg till disk <br> Klona <br> Avkryptera <br> Direktåtkomst <br> Kryptera <br> Kryptera ny <br> Hantera KMS <br> Hantera krypterings principer <br> Hantera nycklar <br> Migrera <br> Dekryptera om <br> Registrera VM <br> Registrera värd |
 | **dvPort-grupp** | Skapa <br> Ta bort <br> Ändra <br> Princip åtgärd <br> Omfattnings åtgärd |
 | **Datalager** | Allokera utrymme <br> Bläddra i data lager <br> Konfigurera data lager <br> Fil åtgärder på låg nivå <br> Flytta data lager <br> Ta bort data lager <br> Ta bort fil <br> Byt namn på data lager <br> Uppdatera filer för virtuella datorer <br> Uppdatera metadata för virtuell dator |
-| **ESX Agent Manager** | Konfigurera <br> Ändra <br> Vy |
+| **ESX Agent Manager** | Konfigurera <br> Ändra <br> Visa |
 | **Anknytning** | Registrera tillägg <br> Avregistrera tillägg <br> Uppdatera tillägg |
 | **Extern stats Provider**| Registrera dig <br> Avregistrera <br> Uppdatera |
 | **Mapp** | Skapa mapp <br> Ta bort mapp <br> Flytta mapp <br> Byt namn på mapp |
@@ -68,15 +68,15 @@ Om du vill ge enskilda användare behörighet att hantera det privata molnet, sk
 | **vSphere taggning** | Tilldela eller ta bort tilldelning av vSphere-tagg <br> Skapa vSphere-tagg <br> Skapa vSphere tag-kategori <br> Ta bort vSphere-tagg <br> Ta bort vSphere tag-kategori <br> Redigera vSphere-tagg <br> Redigera vSphere tag-kategori <br> Ändra UsedBy-fält för kategori <br> Ändra fältet UsedBy för tagg |
 | **Nätverk** | Tilldela nätverk <br> Konfigurera <br> Flytta nätverk <br> Ta bort |
 | **Prestanda** | Ändra intervall |
-| **Värd profil** | Vy |
+| **Värd profil** | Visa |
 | **Resurs** | Använd rekommendation <br> Tilldela vApp till resurspoolen <br> Tilldela en virtuell dator till en resurspool <br> Skapa resurspool <br> Migrera avstängd virtuell dator <br> Migrera på den virtuella datorn <br> Ändra resurspool <br> Flytta resurspool <br> Fråga vMotion <br> Ta bort resurspool <br> Byt namn på resurspool |
 | **Schemalagd aktivitet** | Skapa uppgifter <br> Ändra uppgift <br> Ta bort aktivitet <br> Kör uppgift |
 | **Sessioner** | Personifiera användare <br> Meddelande <br> Verifiera session <br> Visa och stoppa sessioner |
 | **Data lager kluster** | Konfigurera ett data lager kluster |
 | **Profil driven lagring** | Profil driven lagrings uppdatering <br> Profil driven Storage-vy |
-| **Lagringspooler** | Konfigurera tjänst <br> Vy |
+| **Lagringspooler** | Konfigurera tjänst <br> Visa |
 | **Aktiviteter** | Skapa uppgift <br> Uppdatera uppgift |
-| **Överförings tjänst**| Hantera <br> Övervaka |
+| **Överförings tjänst**| Hantera <br> Monitor |
 | **vApp** | Lägg till virtuell dator <br> Tilldela resurspool <br> Tilldela vApp <br> Klona <br> Skapa <br> Ta bort <br> Exportera <br> Importera <br> Flytta <br> Avstängning <br> Slå på <br> Byt namn <br> Suspend <br> Avregistrera <br> Visa OVF-miljö <br> vApp program konfiguration <br> konfiguration av vApp-instans <br> vApp managedBy-konfiguration <br> resurs konfiguration för vApp |
 | **VRMPolicy** | Fråga VRMPolicy <br> Uppdatera VRMPolicy |
 | **Konfiguration av virtuell dator >** | Lägg till befintlig disk <br> Lägg till ny disk <br> Lägg till eller ta bort enhet <br> Avancerat <br> Ändra antal processorer <br> Ändra resurs <br> Konfigurera managedBy <br> Disk ändrings spårning <br> Disk lån <br> Visa anslutnings inställningar <br> Utöka virtuell disk <br> Värd USB-enhet <br> Minne <br> Ändra enhets inställningar <br> Kompatibilitet för fel tolerans för fråga <br> Fråga efter filer som inte ägs <br> RAW-enhet <br> Läs in på nytt från sökväg <br> Ta bort disk <br> Byt namn <br> Återställ gäst information <br> Ange anteckning <br> Inställningar <br> Swapfile placering <br> Växla överordnad förgrening <br> Lås upp virtuell dator <br> Uppgradera kompatibilitet för virtuell dator |
@@ -119,7 +119,7 @@ Om du vill ge enskilda användare behörighet att hantera det privata molnet, sk
 | **Konfiguration av värd >** | Konfiguration av lagringspool |
 | **Data lager kluster** | Konfigurera ett data lager kluster |
 | **Profil driven lagring** | Profil driven lagrings uppdatering <br> Profil driven Storage-vy |
-| **Lagringspooler** | Konfigurera tjänst <br> Vy |
+| **Lagringspooler** | Konfigurera tjänst <br> Visa |
 
 ### <a name="cloud-network-admin-role"></a>Cloud-network-admin-Role
 

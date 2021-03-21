@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 01/14/2021
 ms.topic: how-to
 ms.openlocfilehash: 1cd07f9322837c03e15aaeabec993820deb3170a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232122"
 ---
 # <a name="rendering-using-azure"></a>Rendering med hjälp av Azure
@@ -43,7 +43,7 @@ Av många skäl är åter givning en arbets belastning som passar perfekt för A
 
 Det vanligaste fallet är att det finns en befintlig lokal åter givning-grupp som hanteras av ett program för rendering Management, till exempel PipelineFX Qube, den senaste frågan, tids gräns eller ett anpassat program.  Kravet är att utöka den lokala åter givnings Server gruppens kapacitet med hjälp av virtuella Azure-datorer.
 
-Azure-infrastruktur och-tjänster används för att skapa en hybrid miljö där Azure används för att komplettera den lokala kapaciteten. Här är några exempel:
+Azure-infrastruktur och-tjänster används för att skapa en hybrid miljö där Azure används för att komplettera den lokala kapaciteten. Exempel:
 
 * Använd en [Virtual Network](../virtual-network/virtual-networks-overview.md) för att placera Azure-resurserna i samma nätverk som den lokala åter givnings Server gruppen.
 * Använd [AVERT vFXT för Azure](../avere-vfxt/avere-vfxt-overview.md) eller [Azure HPC cache](../hpc-cache/hpc-cache-overview.md) för att cachelagra källfiler i Azure för att minska bandbredds användningen och fördröjningen, vilket maximerar prestandan.

@@ -12,10 +12,10 @@ ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 161266a69308175637f5967b2ded48621d4d9c53
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424078"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Använd en Insights-token för att få insikter om en bild
@@ -95,7 +95,7 @@ Exempel som använder Insights-token finns i:
 Följ dessa steg om du vill köra programmet:
 
 1. Skapa en konsol lösning i Visual Studio.
-2. Ersätt innehållet i Program.cs med koden som visas i den här snabb starten.
+2. Ersätt innehållet i program. CS med den kod som visas i den här snabb starten.
 3. Ersätt värdet `accessKey` med din prenumerationsnyckel.
 4. Ersätt `insightsToken` värdet med en Insights-token från ett/images/search-svar.
 5. Kör programmet.

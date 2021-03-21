@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: 5f0af7d6bf16a05fad1ca9df5db1729abd088010
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96603561"
 ---
 # <a name="iot-hub-data-plane-mqtt-5-api-reference"></a>API-referens för IoT Hub data plan MQTT 5
@@ -200,7 +200,7 @@ Ta emot och hantera direkta metod anrop
 
 | Status | Name | Beskrivning |
 | :----- | :--- | :---------- |
-| 06A0 |  Ej tillgänglig | Anger att klienten inte kan kontaktas via den här anslutningen. |
+| 06A0 |  Inte tillgänglig | Anger att klienten inte kan kontaktas via den här anslutningen. |
 
 #### <a name="pseudo-code-sample"></a>Exempel på pseudo-kod
 

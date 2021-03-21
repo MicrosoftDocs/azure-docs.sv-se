@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102509038"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor
@@ -247,7 +247,7 @@ Om du vill använda OMS-Gateway för att stödja Operations Manager måste du ha
 
 Om din Operations Manager hanterings grupp registreras med en Log Analytics arbets yta för första gången visas inte alternativet för att ange proxykonfigurationen för hanterings gruppen i drift konsolen. Det här alternativet är bara tillgängligt om hanterings gruppen har registrerats med tjänsten.  
 
-Om du vill konfigurera en integrering uppdaterar du konfigurationen av systemets proxy med hjälp av netsh på det system där du kör drift konsolen och på alla hanterings servrar i hanterings gruppen. Gör så här:
+Om du vill konfigurera en integrering uppdaterar du konfigurationen av systemets proxy med hjälp av netsh på det system där du kör drift konsolen och på alla hanterings servrar i hanterings gruppen. Följ de här stegen:
 
 1. Öppna en upphöjd kommando tolk:
 

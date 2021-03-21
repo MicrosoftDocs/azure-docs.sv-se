@@ -4,10 +4,10 @@ description: Använd en fristående Service Fabric regelbunden säkerhets kopier
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103198696"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Periodisk säkerhets kopiering och återställning i en fristående Service Fabric

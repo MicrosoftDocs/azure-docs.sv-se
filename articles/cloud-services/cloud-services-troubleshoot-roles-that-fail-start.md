@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743227"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>Felsöka Azure Cloud Service-roller (klassiska) som inte startar
@@ -67,7 +67,7 @@ Du kan använda fjärr skrivbord för att få åtkomst till rollen och Visa mer 
 7. Skriv `IPconfig`.
 8. Observera värdet för IPV4-adressen.
 9. Öppna Internet Explorer.
-10. Ange adress och namn för webb programmet. Ett exempel är `http://<IPV4 Address>/default.aspx`.
+10. Ange adress och namn för webb programmet. Till exempel `http://<IPV4 Address>/default.aspx`.
 
 Att navigera till webbplatsen kommer nu att returnera fler explicita fel meddelanden:
 
@@ -75,7 +75,7 @@ Att navigera till webbplatsen kommer nu att returnera fler explicita fel meddela
 * Beskrivning: ett ohanterat undantag inträffade under körningen av den aktuella webb förfrågan. Läs stack spårningen om du vill ha mer information om felet och var det kom i koden.
 * Undantags information: system. IO. FIleNotFoundException: det gick inte att läsa in filen eller sammansättningen "Microsoft. WindowsAzure. StorageClient, version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35" eller något av dess beroenden. Det går inte att hitta den angivna filen.
 
-Ett exempel:
+Exempel:
 
 ![Explicit Server fel i programmet '/'](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 

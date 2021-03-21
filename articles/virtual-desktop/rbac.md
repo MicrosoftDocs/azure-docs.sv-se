@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f0151fd4be7505cf7beea0eeb54f8e34404997
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1120db685c54ff062f03aca9002bf77af549bc26
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577761"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582127"
 ---
 # <a name="built-in-roles-for-windows-virtual-desktop"></a>Inbyggda roller för virtuella Windows-datorer
 
@@ -146,7 +146,7 @@ I följande lista beskrivs vilka behörigheter den här rollen har åtkomst till
 
 ## <a name="session-host-operator"></a>Session Host-operatör
 
-Med rollen Session Host Contributor kan du Visa och ta bort värdar för sessioner, samt ändra dränerings läge. De kan inte lägga till sessionsnycklar med Azure Portal eftersom de inte har Skriv behörighet för objekt i värd pooler. Om registrerings-token är giltig (genererad och inte upphör att gälla) kan du använda den här rollen för att lägga till värddatorer i poolen utanför Azure Portal om administratören har beräknings behörigheter via rollen virtuell dator deltagare.
+Med rollen Session Host-operatör kan du Visa och ta bort värdar, samt ändra dränerings läge. De kan inte lägga till sessionsnycklar med Azure Portal eftersom de inte har Skriv behörighet för objekt i värd pooler. Om registrerings-token är giltig (genererad och inte upphör att gälla) kan du använda den här rollen för att lägga till värddatorer i poolen utanför Azure Portal om administratören har beräknings behörigheter via rollen virtuell dator deltagare.
 
 I följande lista beskrivs vilka behörigheter den här rollen har åtkomst till:
 
