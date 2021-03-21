@@ -17,10 +17,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313889"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Skicka aviseringar mellan plattformar med Azure Notification Hubs
@@ -41,7 +41,7 @@ I det här avsnittet används den exempel kod som du skapade i [skicka meddeland
 
 Om du vill skicka meddelanden mellan plattformar med hjälp av mallar gör du följande:
 
-1. I Visual Studio i **Solution Explorer**expanderar du mappen **kontrollanter** och öppnar sedan filen *RegisterController.cs* .
+1. I Visual Studio i **Solution Explorer** expanderar du mappen **kontrollanter** och öppnar sedan filen *RegisterController. cs* .
 
 1. Leta upp kod blocket i `Put` -metoden som skapar en ny registrering och ersätt sedan `switch` innehållet med följande kod:
 
@@ -76,7 +76,7 @@ Om du vill skicka meddelanden mellan plattformar med hjälp av mallar gör du f�
 
     Den här koden anropar den plattformsspecifika metoden för att skapa en mall registrering i stället för en intern registrering. Eftersom mallens registreringar härleds från interna registreringar behöver du inte ändra befintliga registreringar.
 
-1. Öppna **NotificationsController.cs** -filen i mappen **kontrollanter** i **Solution Explorer**. Ersätt metoden `Post` med följande kod:
+1. Öppna filen **NotificationsController. cs** i **Solution Explorer** i mappen **kontrollanter** . Ersätt metoden `Post` med följande kod:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om hur du felsöker probl
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92329618"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Felsök problem med autentisering och auktorisering – Azure Event Hubs
@@ -41,7 +41,7 @@ Följ dessa steg om du använder [SAS](authenticate-shared-access-signature.md):
 - Se till att den SAS-nyckel som du använder är korrekt. Om inte använder du rätt SAS-nyckel.
 - Kontrol lera att nyckeln har rätt behörigheter (skicka, ta emot eller hantera). Om inte, använder du en nyckel som har den behörighet du behöver. 
 - Kontrol lera om nyckeln har upphört att gälla. Vi rekommenderar att du förnyar SAS-välbefinnandet innan det upphör att gälla. Om det finns en klock lutning mellan klienten och Event Hubs-tjänstenoderna kan autentiseringstoken förfalla innan klienten realiserar den. Aktuella implementerings konton klock sneda upp till 5 minuter, det vill säga att klienten förnyar token 5 minuter innan den upphör att gälla. Om klock skillnaden är större än 5 minuter kan klienten därför studera tillfälliga autentiseringsfel.
-- Om **Start tiden för SAS** har angetts till **nu**kan du se tillfälliga haverier för de första minuterna på grund av klock skevningen (skillnader i aktuell tid på olika datorer). Ange start tiden som minst 15 minuter tidigare eller ange inte alls. Samma gäller vanligt vis förfallo tiden. 
+- Om **Start tiden för SAS** har angetts till **nu** kan du se tillfälliga haverier för de första minuterna på grund av klock skevningen (skillnader i aktuell tid på olika datorer). Ange start tiden som minst 15 minuter tidigare eller ange inte alls. Samma gäller vanligt vis förfallo tiden. 
 
 Mer information finns i följande artiklar: 
 

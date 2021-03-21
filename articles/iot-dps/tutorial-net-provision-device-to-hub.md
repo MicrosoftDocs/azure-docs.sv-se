@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966572"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Självstudie: registrera enheten till en IoT-hubb med Azure IoT Hub Provisioning service-klienten (.NET)
@@ -25,7 +25,7 @@ I den förra självstudien lärde du dig att konfigurera en enhet för att anslu
 > * Starta enheten
 > * Kontrollera att enheten är registrerad
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du fortsätter måste du konfigurera din enhet och dess *säkerhetsmodul för maskinvara* enligt anvisningarna i självstudien [Konfigurera en enhet för etablering med Azure IoT Hub Device Provisioning-tjänsten](./tutorial-set-up-device.md).
 
@@ -63,7 +63,7 @@ Det finns två sätt att registrera enheten till enhetsetableringstjänsten:
 
 1. I fönstret **NuGet-pakethanteraren** väljer du **Bläddra** och letar upp **microsoft.azure.devices.provisioning.service**. Välj posten och klicka på **Installera** för att installera **Microsoft.Azure.Devices.Provisioning.Service**-paketet och godkänn användningsvillkoren. Den här proceduren hämtar, installerar och lägger till en referens för NuGet-paketet för [Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) och dess beroenden.
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -146,7 +146,7 @@ När enheten har registrerats bör du se den i portalen på följande sätt:
 
 1. Öppna projektet **DeviceProvisioning** som du skapade ovan i Visual Studio Solution Explorer. 
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;

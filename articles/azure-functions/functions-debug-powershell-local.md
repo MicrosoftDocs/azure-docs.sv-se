@@ -7,10 +7,10 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422968"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Felsöka PowerShell Azure Functions lokalt
@@ -250,7 +250,7 @@ Om den här rasten inträffar kör du `continue` eller- `c` kommandot för att h
 
 Om du har problem under fel sökningen bör du kontrol lera följande:
 
-| Markera | Åtgärd |
+| Markera | Action |
 |------|------|
 | Kör `func --version` från terminalen. Om du får ett fel som `func` inte går att hitta, kan det saknas kärn verktyg (func.exe) från den lokala `path` variabeln.| [Installera om kärn verktyg](functions-run-local.md#v2).|  
 | I Visual Studio Code måste standard terminalen ha åtkomst till func.exe. Kontrol lera att du inte använder en standard-Terminal som inte har några installerade verktyg, till exempel Windows-undersystemet för Linux (WSL).  | Ange standard gränssnittet i Visual Studio Code till antingen PowerShell 7 (rekommenderas) eller Windows PowerShell 5,1.|

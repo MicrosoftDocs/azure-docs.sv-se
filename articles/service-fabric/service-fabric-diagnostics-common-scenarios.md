@@ -4,10 +4,10 @@ description: Lär dig mer om fel sökning av vanliga övervaknings-och diagnosti
 ms.topic: article
 ms.date: 02/25/2019
 ms.openlocfilehash: 3083348948ce97ae9d99098896878d79081a15f0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580484"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostisera vanliga scenarier med Service Fabric

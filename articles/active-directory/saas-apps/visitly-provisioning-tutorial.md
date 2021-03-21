@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358617"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Självstudie: Konfigurera besök för automatisk användar etablering
@@ -83,7 +83,7 @@ Följ dessa steg om du vill lägga till besök från Azure AD-programgalleriet.
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan går du till **besök** , väljer **besök** i panelen resultat och väljer sedan **Lägg** till för att lägga till programmet.
+4. I sökrutan går du till **besök**, väljer **besök** i panelen resultat och väljer sedan **Lägg** till för att lägga till programmet.
 
     ![Visitly i resultatlistan](common/search-new-app.png)
 

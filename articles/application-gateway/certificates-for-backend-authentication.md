@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397730"
 ---
-# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Skapa certifikat för att tillåta Server delen med Azure Application Gateway
+# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Skapa certifikat för att tillåta serverdelen i Azure Application Gateway
 
 För att kunna avsluta TLS måste Application Gateway kräva att Server dels instanserna ska tillåtas genom att överföra autentisering/betrodda rot certifikat. För v1 SKU krävs autentiserings-certifikat, men för de v2 SKU-betrodda rot certifikaten krävs för att tillåta certifikaten.
 
@@ -51,7 +51,7 @@ Exportera filen offentlig Key. cer från TLS/SSL-certifikatet (inte den privata 
 
    ![Base – 64-kodad](./media/certificates-for-backend-authentication/base64.png)
 
-5. För **fil som ska exporteras** **bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa**.
+5. För **fil som ska exporteras** **bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa.**
 
    ![Skärm bild som visar guiden Exportera certifikat där du anger en fil som ska exporteras.](./media/certificates-for-backend-authentication/browse.png)
 

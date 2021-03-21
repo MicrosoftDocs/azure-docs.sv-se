@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 69898e64934c363a18a3ce2fa5e678116624bd24
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026377"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Hämta Cognitive Services Speech-enheter SDK
@@ -23,7 +23,7 @@ Tal enheter SDK är ett förjusterat bibliotek som utformats för att fungera me
 
 ## <a name="choose-a-development-kit"></a>Välj ett utvecklings paket
 
-|Egenskaper|Specifikation|Description|Scenarier|
+|Enheter|Specifikation|Beskrivning|Scenarier|
 |--|--|--|--|
 |[Urbetter dev-paket](http://www.urbetter.com/products_56/278.html) ![ URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 MIC-matris, ARM-SOC, WIFI, Ethernet, HDMI, USB-kamera. <br>Linux|En nivå för tal enheter på bransch nivå som anpassar Microsoft MIC-matrisen och stöder utökade I/O, till exempel HDMI/Ethernet och mer USB-kringutrustning <br> [Kontakta Urbetter](http://www.urbetter.com/products_56/278.html)|Konversations avskrift, utbildning, sjukhus, robots, OTT Box, Voice agent, enhet till|
 |[Roobo Smart Audio dev-paket](http://ddk.roobo.com)<br>[Installations program](speech-devices-sdk-roobo-v1.md)  /  [Snabb start](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android) ![ Roobo Smart Audio dev-paket](media/speech-devices-sdk/device-roobo-v1.jpg)|7 MIC-matris, ARM-SOC, WIFI, ljud ut, i/o. <br>[Android](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)|De första tal enheternas SDK för att anpassa Microsoft MIC-matrisen och front bearbetnings-SDK: n för att utveckla högkvalitativa avskrifter och tal scenarier|Konversations avskrift, smart högtalare, röst agent, Wearable|

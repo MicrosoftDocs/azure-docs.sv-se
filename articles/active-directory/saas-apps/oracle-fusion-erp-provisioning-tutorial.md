@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358449"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Oracle Fusion ERP för automatisk användar etablering
@@ -82,7 +82,7 @@ Om du vill konfigurera Oracle Fusion ERP för automatisk användar etablering me
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan anger du **Oracle Fusion ERP** , väljer **Oracle Fusion ERP** i resultat panelen.
+4. I sökrutan anger du **Oracle Fusion ERP**, väljer **Oracle Fusion ERP** i resultat panelen.
 
     ![Oracle Fusion ERP i resultatlistan](common/search-new-app.png)
 

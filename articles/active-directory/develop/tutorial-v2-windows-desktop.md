@@ -13,10 +13,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686894"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Självstudie: anropa Microsoft Graph-API: et från en Windows Desktop-app
@@ -115,7 +115,7 @@ Du registrerar programmet och lägger till programregistreringsinformationen i d
 1. Välj **mobil-och skriv bords program**.
 1. I avsnittet **omdirigerings-URI** väljer du **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Välj **Konfigurera**.
-1. Gå till Visual Studio, öppna filen *app.XAML.cs* och Ersätt `Enter_the_Application_Id_here` i kodfragmentet nedan med det program-ID som du precis registrerade och kopierade.
+1. Gå till Visual Studio, öppna filen *app. XAML. cs* och ersätt sedan `Enter_the_Application_Id_here` i kodfragmentet nedan med det program-ID som du precis registrerade och kopierade.
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -125,7 +125,7 @@ Du registrerar programmet och lägger till programregistreringsinformationen i d
 
 I det här steget skapar du en-klass för att hantera interaktion med MSAL, till exempel hantering av token.
 
-1. Öppna filen *app.XAML.cs* och Lägg sedan till referensen för MSAL i klassen:
+1. Öppna filen *app. XAML. cs* och Lägg sedan till referensen för MSAL i klassen:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -188,7 +188,7 @@ En *MainWindow. XAML* -fil ska skapas automatiskt som en del av projekt mal len.
 
 I det här avsnittet använder du MSAL för att hämta en token för Microsoft Graph-API: et.
 
-1. I *MainWindow.XAML.cs* -filen lägger du till referensen för MSAL i klassen:
+1. I filen *MainWindow. XAML. cs* lägger du till referensen för MSAL i klassen:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -355,7 +355,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 
 ## <a name="display-basic-token-information"></a>Visa grundläggande information om token
 
-Om du vill visa grundläggande information om token lägger du till följande metod i din *MainWindow.XAML.cs* -fil:
+Om du vill visa grundläggande information om token lägger du till följande metod i filen *MainWindow. XAML. cs* :
 
 ```csharp
 /// <summary>

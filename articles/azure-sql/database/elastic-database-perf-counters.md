@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781268"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Skapa prestanda räknare för att spåra prestanda för Shard Map Manager
@@ -42,12 +42,12 @@ Om du vill skapa räknarna anropar du CreatePerformanceCategoryAndCounters-metod
 Du kan också använda [det här](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell-skriptet för att köra-metoden.
 Metoden skapar följande prestanda räknare:  
 
-* **Cachelagrade mappningar** : antal mappningar som cachelagrats i Shard-kartan.
-* **DDR-åtgärder/SEK** : frekvensen för data beroende routnings åtgärder för Shard-kartan. Den här räknaren uppdateras när ett anrop till [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) resulterar i en lyckad anslutning till mål-Shard.
-* **Mappning av söknings-cacheträffar träffar/SEK** : takt för lyckade sökåtgärder för sökning i Shard-mappningen.
-* **Mappning av sökningar i cache-missar/SEK** : frekvensen av misslyckade söknings åtgärder för sökning i Shard-kartan.
-* **Mappningar som lagts till eller uppdaterats i cache/s** : den hastighet med vilken mappningar läggs till eller uppdateras i cacheminnet för Shard-kartan.
-* **Mappningar som tagits bort från cache/s** : den hastighet med vilken mappningar tas bort från cachen för Shard-kartan.
+* **Cachelagrade mappningar**: antal mappningar som cachelagrats i Shard-kartan.
+* **DDR-åtgärder/SEK**: frekvensen för data beroende routnings åtgärder för Shard-kartan. Den här räknaren uppdateras när ett anrop till [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) resulterar i en lyckad anslutning till mål-Shard.
+* **Mappning av söknings-cacheträffar träffar/SEK**: takt för lyckade sökåtgärder för sökning i Shard-mappningen.
+* **Mappning av sökningar i cache-missar/SEK**: frekvensen av misslyckade söknings åtgärder för sökning i Shard-kartan.
+* **Mappningar som lagts till eller uppdaterats i cache/s**: den hastighet med vilken mappningar läggs till eller uppdateras i cacheminnet för Shard-kartan.
+* **Mappningar som tagits bort från cache/s**: den hastighet med vilken mappningar tas bort från cachen för Shard-kartan.
 
 Prestanda räknare skapas för varje cachelagrad Shard-mappning per process.  
 

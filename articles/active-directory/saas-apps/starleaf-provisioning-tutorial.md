@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357950"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Självstudie: Konfigurera StarLeaf för automatisk användar etablering
@@ -54,7 +54,7 @@ Innan du konfigurerar StarLeaf för automatisk användar etablering med Azure AD
 
     ![Skärm bild av StarLeaf-administratörskonsolen med Integreringarna och Lägg till integrations alternativ som kallas för.](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Välj den **typ** som ska Microsoft Azure Active Directory. Ange ett lämpligt namn i **namn**. Klicka på **Använd**.
+2. Välj den **typ** som ska Microsoft Azure Active Directory. Ange ett lämpligt namn i **namn**. Klicka på **Applicera**.
 
     ![Skärm bild av dialog rutan Lägg till integrering med text rutorna text och namn som kallas för.](media/starleaf-provisioning-tutorial/image01.png)
 

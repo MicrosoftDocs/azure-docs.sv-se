@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97696083"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Självstudie: skapa och importera ord listans villkor i Azure avdelningens kontroll (för hands version)
@@ -23,7 +23,7 @@ En ord lista är ett viktigt verktyg för att underhålla och organisera din kat
 
 Den här självstudien är *del 5 i en själv studie serie i fem delar* där du får lära dig grunderna i hur du hanterar data styrning över en datafastighet med Azure avdelningens kontroll. Den här självstudien bygger på det arbete som du avslutade i [del 4: utforska resurs uppsättningar, information, scheman och klassificeringar i Azure avdelningens kontroll (för hands version)](tutorial-schemas-and-classifications.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -184,4 +184,4 @@ I den här självstudiekursen lärde du dig att:
 Gå vidare till nästa artikel om du vill lära dig mer om olika katalog insikter.
 
 > [!div class="nextstepaction"]
-> [Förstå insikter i Azure avdelningens kontroll](concept-insights.md)
+> [Förstå insikter i Azure Purview](concept-insights.md)

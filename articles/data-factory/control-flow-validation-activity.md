@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: e00090fc31c129f35632d30b9a5ed6c39c13a414
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385259"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Validerings aktivitet i Azure Data Factory
@@ -71,7 +71,7 @@ minimumSize | Minsta storlek på en fil i byte. Om inget värde anges är standa
 Se andra kontroll flödes aktiviteter som stöds av Data Factory:
 
 - [If-villkorsaktivitet](control-flow-if-condition-activity.md)
-- [Köra pipelineaktivitet](control-flow-execute-pipeline-activity.md)
+- [Kör pipeline-aktivitet](control-flow-execute-pipeline-activity.md)
 - [För varje aktivitet](control-flow-for-each-activity.md)
 - [Hämta metadataaktivitet](control-flow-get-metadata-activity.md)
 - [Sökningsaktivitet](control-flow-lookup-activity.md)

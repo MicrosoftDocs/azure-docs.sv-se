@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 664943fc5535883b3df77b2795383e5c0586a71c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375337"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Regressions modul för besluts träd
@@ -52,30 +52,30 @@ Metoden för tonings förstärkning kan också användas för klassificerings pr
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Så här konfigurerar du Regressions trädet för besluts träd
 
-1.  Lägg till modulen för **besluts träd med högre** till din pipeline. Du hittar den här modulen under **Machine Learning** , **initiera** under **Regressions** kategorin. 
+1.  Lägg till modulen för **besluts träd med högre** till din pipeline. Du hittar den här modulen under **Machine Learning**, **initiera** under **Regressions** kategorin. 
   
 2.  Ange hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .  
   
-    -   **Enskild parameter** : Välj det här alternativet om du vet hur du vill konfigurera modellen och ange en viss uppsättning värden som argument. 
+    -   **Enskild parameter**: Välj det här alternativet om du vet hur du vill konfigurera modellen och ange en viss uppsättning värden som argument. 
      
-    -   **Parameter intervall** : Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.    
+    -   **Parameter intervall**: Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.    
    
   
-3. **Maximalt antal löv per träd** : Ange det maximala antalet terminalservrar (löv) som kan skapas i alla träd.  
+3. **Maximalt antal löv per träd**: Ange det maximala antalet terminalservrar (löv) som kan skapas i alla träd.  
 
     Genom att öka det här värdet kan du öka storleken på trädet och få bättre precision vid överanpassning och längre inlärnings tid.  
 
-4. **Minsta antal sampel per lövnod** : Ange det minsta antal fall som krävs för att skapa en terminalsession (löv) i ett träd.
+4. **Minsta antal sampel per lövnod**: Ange det minsta antal fall som krävs för att skapa en terminalsession (löv) i ett träd.
 
     Genom att öka det här värdet ökar du tröskelvärdet för att skapa nya regler. Till exempel, med standardvärdet 1, kan ett enda ärende orsaka att en ny regel skapas. Om du ökar värdet till 5 måste tränings data innehålla minst 5 fall som uppfyller samma villkor.
 
-5. **Inlärnings pris** : Ange ett tal mellan 0 och 1 som definierar steg storleken under inlärningen. Inlärnings frekvensen avgör hur snabbt eller långsamt en elev konvergerar på den optimala lösningen. Om steg storleken är för stor kanske du överbelastar den optimala lösningen. Om steg storleken är för liten tar inlärningen längre tid att konvergera i den bästa lösningen.
+5. **Inlärnings pris**: Ange ett tal mellan 0 och 1 som definierar steg storleken under inlärningen. Inlärnings frekvensen avgör hur snabbt eller långsamt en elev konvergerar på den optimala lösningen. Om steg storleken är för stor kanske du överbelastar den optimala lösningen. Om steg storleken är för liten tar inlärningen längre tid att konvergera i den bästa lösningen.
 
-6. **Antal skapade träd** : Ange det totala antalet besluts träd som ska skapas i ensemblen. Genom att skapa fler besluts träd kan du eventuellt få bättre täckning, men inlärnings tiden ökar.
+6. **Antal skapade träd**: Ange det totala antalet besluts träd som ska skapas i ensemblen. Genom att skapa fler besluts träd kan du eventuellt få bättre täckning, men inlärnings tiden ökar.
 
     Om du ställer in värdet på 1; dock skapas endast ett träd (trädet med den inledande uppsättningen parametrar) och inga ytterligare iterationer utförs.
 
-7. Värde för **slumpmässig siffra** : Ange ett valfritt icke-negativt heltal som ska användas som det slumpmässiga startvärdet. Genom att ange ett utsäde säkerställer du reproducerbarhet i körningar som har samma data och parametrar.
+7. Värde för **slumpmässig siffra**: Ange ett valfritt icke-negativt heltal som ska användas som det slumpmässiga startvärdet. Genom att ange ett utsäde säkerställer du reproducerbarhet i körningar som har samma data och parametrar.
 
     Som standard är det slumpmässiga startvärdet inställt på 0, vilket innebär att det första startvärdet hämtas från system klockan.
   

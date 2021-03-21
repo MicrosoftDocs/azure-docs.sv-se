@@ -8,10 +8,10 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070141"
 ---
 # <a name="what-is-azure-files"></a>Vad är Azure Files?
@@ -36,7 +36,7 @@ Azure-filresurser kan användas för att:
     Azure Files gör det enkelt att "lyfta och flytta" program till molnet som förväntar sig en filresurs för att lagra filprograms- eller användardata. Azure Files gör det möjligt att använda både det "klassiska" scenariot för att lyfta och flytta, där både programmet och dess data flyttas till Azure, och "hybridvarianten" av att lyfta och flytta, där programdata flyttas till Azure Files och programmet fortsätter att köras lokalt. 
 
 * **Förenkla moln utveckling**:  
-    Azure Files kan även användas på flera sätt för att förenkla nya molnutvecklingsprojekt. Till exempel:
+    Azure Files kan även användas på flera sätt för att förenkla nya molnutvecklingsprojekt. Exempel:
     * **Inställningar för delade program**:  
         Ett vanligt mönster för distribuerade program är att ha konfigurationsfilerna på en central plats där de kan nås från många programinstanser. Programinstanser kan läsa in konfigurationen via File REST API och människor kan komma åt dem efter behov genom att montera SMB-resursen lokalt.
 
@@ -55,7 +55,7 @@ Azure-filresurser kan användas för att:
 * **Återhämtning**. Azure Files har byggts från grunden för att alltid vara tillgänglig. Om du ersätter lokala filresurser med Azure Files behöver du inte längre vakna tidigt på morgonen för att hantera lokala strömavbrott eller nätverksproblem. 
 * **Välbekant programmering**. Program som körs i Azure kan komma åt data i resursen via [filsystemets I/O-API:er](/dotnet/api/system.io.file). Utvecklare kan därför utnyttja befintlig kod och erfarenhet för att migrera befintliga program. Förutom system-I/O-API:er kan du använda [Azure Storage-klientbibliotek](/previous-versions/azure/dn261237(v=azure.100)) eller [Azure Storage REST API](/rest/api/storageservices/file-service-rest-api).
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 * [Lär dig mer om tillgängliga fil resurs protokoll](storage-files-compare-protocols.md)
 * [Skapa Azure-filresurs](storage-how-to-create-file-share.md)
 * [Ansluta och montera en SMB-resurs i Windows](storage-how-to-use-files-windows.md)

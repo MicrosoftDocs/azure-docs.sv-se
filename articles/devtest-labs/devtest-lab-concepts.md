@@ -4,10 +4,10 @@ description: Lär dig de grundläggande begreppen i DevTest Labs och hur det kan
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92327866"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-koncept
@@ -55,7 +55,7 @@ Med hjälp av principer kan du kontrol lera kostnaderna i labbet. Du kan till ex
 ## <a name="caps"></a>Kepsar
 Caps är en mekanism för att minimera spill i labbet. Du kan till exempel ange en Cap för att begränsa antalet virtuella datorer som kan skapas per användare eller i ett labb.
 
-## <a name="security-levels"></a>Säkerhets nivåer
+## <a name="security-levels"></a>Säkerhetsnivåer
 Säkerhets åtkomst bestäms av Azure-rollbaserad åtkomst kontroll (Azure RBAC). För att förstå hur Access fungerar, hjälper det att förstå skillnaderna mellan en behörighet, en roll och ett omfång som definieras av Azure RBAC.
 
 * Behörighet – en behörighet är en definierad åtkomst till en viss åtgärd (t. ex. Läs åtkomst till alla virtuella datorer).

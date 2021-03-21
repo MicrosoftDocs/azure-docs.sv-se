@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946142"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
@@ -298,13 +298,13 @@ Verktyget stöder även **Spark SQL** -fr åga:
 
 4. [Anslut](#connect-to-an-azure-account) till ditt Azure-konto eller länka ett kluster om du inte redan har gjort det.
 
-5. Högerklicka på skript redigeraren och välj sedan **Spark: PySpark batch** eller **Synapse: PySpark batch** _.
+5. Högerklicka på skript redigeraren och välj sedan **Spark: PySpark batch** eller * * Synapse: PySpark batch * * *.
 
 6. Välj en kluster/Spark-pool för att skicka ditt PySpark-jobb till:
 
    ![Skicka python jobb resultat utdata](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-När du har skickat ett python-jobb visas sändnings loggar i fönstret _ *utdata** i Visual Studio Code. URL: en för Spark UI URL och garn-UI visas också. Om du skickar batch-jobbet till en Apache Spark pool visas också URL: en för Spark-historik och Spark-jobbets användar gränssnitts webb adress. Du kan öppna webb adressen i en webbläsare för att spåra jobbets status.
+När du har skickat ett python-jobb visas sändnings loggar i fönstret **utdata** i Visual Studio Code. URL: en för Spark UI URL och garn-UI visas också. Om du skickar batch-jobbet till en Apache Spark pool visas också URL: en för Spark-historik och Spark-jobbets användar gränssnitts webb adress. Du kan öppna webb adressen i en webbläsare för att spåra jobbets status.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrera med HDInsight Identity Broker (HIB)
 

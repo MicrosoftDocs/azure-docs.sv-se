@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895655"
 ---
 # <a name="secure-a-daemon-application"></a>Skydda ett daemon-program
@@ -75,29 +75,29 @@ Fördelar med hanterade identiteter:
 
 När det körs på en icke-Azure-miljö hanterade identiteter är inte tillgängliga. Därför måste du konfigurera ett huvud namn för tjänsten via en Azure AD-programregistrering för daemon-programmet.
 
-1. I listan med Azure-tjänster i Azure Portal väljer du **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering** .  
+1. I listan med Azure-tjänster i Azure Portal väljer du **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering**.  
 
     > [!div class="mx-imgBorder"]
     > ![Appregistrering](./media/how-to-manage-authentication/app-registration.png)
 
-2. Om du redan har registrerat appen fortsätter du till nästa steg. Om du inte har registrerat appen, ange ett **namn** , Välj en **Support konto typ** och välj sedan **Registrera** .  
+2. Om du redan har registrerat appen fortsätter du till nästa steg. Om du inte har registrerat appen, ange ett **namn**, Välj en **Support konto typ** och välj sedan **Registrera**.  
 
     > [!div class="mx-imgBorder"]
     > ![Registrerings information för appen](./media/how-to-manage-authentication/app-create.png)
 
-3. Om du vill tilldela delegerade API-behörigheter till Azure Maps går du till programmet. Under **Appregistreringar** väljer du **API-behörigheter**  >  **Lägg till en behörighet** . Sök efter och välj **Azure Maps** under **API: er som används i organisationen** .
+3. Om du vill tilldela delegerade API-behörigheter till Azure Maps går du till programmet. Under **Appregistreringar** väljer du **API-behörigheter**  >  **Lägg till en behörighet**. Sök efter och välj **Azure Maps** under **API: er som används i organisationen**.
 
     > [!div class="mx-imgBorder"]
     > ![Lägg till API-behörigheter för app](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Markera kryss rutan bredvid **åtkomst Azure Maps** och välj sedan **Lägg till behörigheter** .
+4. Markera kryss rutan bredvid **åtkomst Azure Maps** och välj sedan **Lägg till behörigheter**.
 
     > [!div class="mx-imgBorder"]
     > ![Välj API-behörigheter för app](./media/how-to-manage-authentication/select-app-permissions.png)
 
 5. Utför följande steg för att skapa en klient hemlighet eller konfigurera certifikat.
 
-    * Om programmet använder Server-eller programautentisering kan du gå till **certifikat & hemligheter** på din app Registration-sida. Överför sedan antingen ett offentligt nyckel certifikat eller skapa ett lösen ord genom att välja **ny klient hemlighet** .
+    * Om programmet använder Server-eller programautentisering kan du gå till **certifikat & hemligheter** på din app Registration-sida. Överför sedan antingen ett offentligt nyckel certifikat eller skapa ett lösen ord genom att välja **ny klient hemlighet**.
 
         > [!div class="mx-imgBorder"]
         > ![Skapa en klient hemlighet](./media/how-to-manage-authentication/app-keys.png)
@@ -109,12 +109,12 @@ När det körs på en icke-Azure-miljö hanterade identiteter är inte tillgäng
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Bevilja rollbaserad åtkomst för daemon-programmet till Azure Maps
 
-Du beviljar *Azure rollbaserad åtkomst kontroll (Azure RBAC)* genom att tilldela antingen den skapade hanterade identiteten eller tjänstens huvud namn till en eller flera Azure Maps roll definitioner. Om du vill visa de roll definitioner för Azure som är tillgängliga för Azure Maps går du till **åtkomst kontroll (IAM)** . Välj **roller** och Sök sedan efter roller som börjar med *Azure Maps* . Dessa Azure Maps roller är de roller som du kan bevilja åtkomst till.
+Du beviljar *Azure rollbaserad åtkomst kontroll (Azure RBAC)* genom att tilldela antingen den skapade hanterade identiteten eller tjänstens huvud namn till en eller flera Azure Maps roll definitioner. Om du vill visa de roll definitioner för Azure som är tillgängliga för Azure Maps går du till **åtkomst kontroll (IAM)**. Välj **roller** och Sök sedan efter roller som börjar med *Azure Maps*. Dessa Azure Maps roller är de roller som du kan bevilja åtkomst till.
 
 > [!div class="mx-imgBorder"]
 > ![Visa tillgängliga roller](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Gå till ditt **Azure Maps-konto** . Välj **Åtkomstkontroll (IAM)** > **Rolltilldelningar** .
+1. Gå till ditt **Azure Maps-konto**. Välj **Åtkomstkontroll (IAM)** > **Rolltilldelningar**.
 
     > [!div class="mx-imgBorder"]
     > ![Bevilja åtkomst med Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -124,7 +124,7 @@ Du beviljar *Azure rollbaserad åtkomst kontroll (Azure RBAC)* genom att tilldel
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar de sammanslagnings tilldelningar som har marker ATS.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Välj en inbyggd Azure Maps roll definition som **Azure Maps data läsare** eller **Azure Maps data deltagare** . Under **tilldela åtkomst till** väljer du **Azure AD-användare, grupp eller tjänstens huvud namn** eller hanterad identitet med användaren tilldelad hanterad identitet **hanterad** identitet  /  **System assigned Managed identity** . Välj huvud konto. Välj sedan **Spara** .
+3. Välj en inbyggd Azure Maps roll definition som **Azure Maps data läsare** eller **Azure Maps data deltagare**. Under **tilldela åtkomst till** väljer du **Azure AD-användare, grupp eller tjänstens huvud namn** eller hanterad identitet med användaren tilldelad hanterad identitet **hanterad** identitet  /  . Välj huvud konto. Välj sedan **Spara**.
 
     > [!div class="mx-imgBorder"]
     > ![Så här lägger du till roll tilldelning](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

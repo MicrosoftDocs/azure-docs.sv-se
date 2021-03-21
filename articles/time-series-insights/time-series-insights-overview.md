@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: cebe0e018b4483a9de1771fb3171effbbd5ca59c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020069"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Vad är Azure Time Series Insights gen1?
@@ -91,7 +91,7 @@ Följ dessa steg för att komma igång.
 
 Visa, analysera och identifiera trender i dina data med hjälp av Azure Time Series Insights Explorer.
 
-![Azure Time Series Insights Explorer](media/overview/time-series-insights-explorer-panel.png)
+![Azure Time Series Insights-utforskaren](media/overview/time-series-insights-explorer-panel.png)
 
 Lär dig hur du använder [Azure Time Series Insights Explorer](time-series-insights-explorer.md) och ritar insikter från dina data.
 

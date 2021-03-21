@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92079011"
 ---
 # <a name="run-opc-publisher"></a>Köra OPC Publisher
@@ -405,7 +405,7 @@ Om du vill lägga till OPC-utgivare som modul till din IoT Edge-distribution gå
     }
     ```
 
-1. Gå tillbaka till sidan **Ange moduler** , Välj **Nästa**tills du når den sista sidan i konfigurationen.
+1. Gå tillbaka till sidan **Ange moduler** , Välj **Nästa** tills du når den sista sidan i konfigurationen.
 1. Välj **Skicka** för att skicka konfigurationen till IoT Edge.
 1. När du har startat IoT Edge på din Edge-enhet och Docker-behållar **utgivaren** körs, kan du se logg utmatningen för OPC-utgivaren antingen genom att använda `docker logs -f publisher` eller genom att kontrol lera logg filen. I föregående exempel är logg filen ovanför `d:\iiotegde\publisher-publisher.log` . Du kan också använda [verktyget IoT-Edge-OPC-Publisher-Diagnostics](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics).
 

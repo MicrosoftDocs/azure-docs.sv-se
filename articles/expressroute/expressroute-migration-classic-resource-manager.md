@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: duau
 ms.openlocfilehash: 57c439cf8ac52d93d231d6ff33f72a5a942dec6a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351613"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrera ExpressRoute-associerade virtuella nätverk från klassiskt läge till Resource Manager
@@ -23,7 +23,7 @@ Den här artikeln förklarar hur du migrerar ExpressRoute virtuella nätverk fr�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Kontrol lera att du har de senaste versionerna av Azure PowerShell-modulerna. Mer information finns i [Installera och konfigurera Azure PowerShell](/powershell/azure/). Information om hur du installerar PowerShell-modulen för service hantering (som behövs för den klassiska distributions modellen) finns i [installera modulen för Azure PowerShell Service Management](/powershell/azure/servicemanagement/install-azure-ps).
-* Kontrol lera att du har granskat [prerequisites](expressroute-prerequisites.md) [kraven, routningsstatus](expressroute-routing.md)och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
+* Kontrol lera att du har granskat [](expressroute-prerequisites.md) [kraven, routningsstatus](expressroute-routing.md)och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
 * Granska informationen som anges under [flytta en ExpressRoute-krets från klassisk till Resource Manager](expressroute-move.md). Se till att du fullständigt förstår begränsningarna och begränsningarna.
 * Kontrol lera att kretsen är fullt fungerande i den klassiska distributions modellen.
 * Se till att du har en resurs grupp som har skapats i distributions modellen för Resource Manager.

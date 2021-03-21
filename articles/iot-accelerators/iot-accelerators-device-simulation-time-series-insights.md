@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854571"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Använd Time Series Insights för att visualisera telemetri som skickas från Device simulering Solution Accelerator
@@ -68,7 +68,7 @@ I följande steg används Azure CLI i Azure Cloud Shell för att skapa konsument
     | Namn på miljö | Följande skärm bild använder namnet **contoso-TSD**. Välj ditt eget unika namn när du är klar med det här steget. |
     | Prenumeration | I listrutan väljer du din Azure-prenumeration. |
     | Resursgrupp | **contoso-simulering**. Använd namnet på din lösnings Accelerator. |
-    | Plats | I det här exemplet används **östra USA**. Skapa din miljö i samma region som din enhets simulerings Accelerator. |
+    | Location | I det här exemplet används **östra USA**. Skapa din miljö i samma region som din enhets simulerings Accelerator. |
     | Sku |**S1** |
     | Kapacitet | **1** |
 

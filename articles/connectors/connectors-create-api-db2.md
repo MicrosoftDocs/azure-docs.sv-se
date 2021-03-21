@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
 ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967410"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Få åtkomst till och hantera IBM DB2-resurser med hjälp av Azure Logic Apps
@@ -82,7 +82,7 @@ Om du vill konfigurera din anslutning anger du följande information när du upp
 
 | Egenskap | Krävs | Beskrivning |
 |----------|----------|-------------|
-| **Anslut via lokal gateway** | Nej | Gäller endast för lokala anslutningar. |
+| **Anslut via lokal gateway** | Inga | Gäller endast för lokala anslutningar. |
 | **Anslutnings namn** | Ja | Namnet på anslutningen, till exempel "MyLogicApp-DB2-Connection" |
 | **Server** | Ja | Adressen eller Ali Asets kolon port nummer för DB2-servern, till exempel "myDB2server.cloudapp.net:50000" <p><p>**Obs!** det här värdet är en sträng som representerar en TCP/IP-adress eller ett alias, antingen i IPv4-eller IPv6-format, följt av ett kolon och ett port nummer för TCP/IP. |
 | **Databas** | Ja | Namnet på din databas <p><p>**Obs!** det här värdet är en sträng som representerar ett DRDA Relations databas namn (RDBNAM): <p>– DB2 för z/OS accepterar en 16 byte-sträng där databasen kallas "IBM DB2 for z/OS"-plats. <br>-DB2 för jag accepterar en 18-byte-sträng där databasen kallas "IBM DB2 for i" Relations databas. <br>– DB2 för LUW accepterar en 8-byte-sträng. |
@@ -109,7 +109,7 @@ Innan du skapar anslutningen måste du redan ha din lokala datagateway installer
 | **Autentisering** | Ja | Autentiseringstypen för anslutningen, till exempel "grundläggande" <p><p>**Obs**: Välj det här värdet i listan, som innehåller Basic eller Windows (Kerberos). |
 | **Användarnamn** | Ja | Ditt användar namn för databasen <p><p>**Obs!** det här värdet är en sträng vars längd baseras på den angivna databasen: <p><p>– DB2 för z/OS accepterar en 8-byte-sträng. <br>– DB2 för jag accepterar en 10 byte-sträng. <br>– DB2 för Linux eller UNIX accepterar en 8-byte-sträng. <br>– DB2 för Windows accepterar en 30 byte-sträng. |
 | **Lösenord** | Ja | Ditt lösen ord för databasen |
-| **Nyckeln** | Ja | Namnet på din installerade lokala datagateway <p><p>**Obs**: Välj det här värdet i listan, som innehåller alla installerade datagatewayer i din Azure-prenumeration och resurs grupp. |
+| **Gateway** | Ja | Namnet på din installerade lokala datagateway <p><p>**Obs**: Välj det här värdet i listan, som innehåller alla installerade datagatewayer i din Azure-prenumeration och resurs grupp. |
 ||||
 
 Exempel:
@@ -153,7 +153,7 @@ Om du vill hämta en post i en DB2 Database-tabell använder du åtgärden **Hä
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
-   | **Tabellnamn** | Ja | Den tabell som innehåller den post som du vill ha, till exempel "AREA" i det här exemplet |
+   | **Tabell namn** | Ja | Den tabell som innehåller den post som du vill ha, till exempel "AREA" i det här exemplet |
    | **Area-ID** | Ja | ID för den post som du vill ha, till exempel "99999" i det här exemplet |
    ||||
 
@@ -233,7 +233,7 @@ Om du vill lägga till en enskild post i en DB2-databas tabell använder du åtg
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
-   | **Tabellnamn** | Ja | Tabellen där posten ska läggas till, till exempel "AREA" |
+   | **Tabell namn** | Ja | Tabellen där posten ska läggas till, till exempel "AREA" |
    | **Area-ID** | Ja | ID för det utrymme som ska läggas till, till exempel "99999" |
    | **Beskrivning av områden** | Ja | Beskrivningen för det utrymme som ska läggas till, till exempel "Area 99999" |
    | **Regions-ID** | Ja | ID för den region som ska läggas till, till exempel "102" |
@@ -280,7 +280,7 @@ Om du vill uppdatera en enskild post i en DB2-databas tabell använder du åtgä
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
-   | **Tabellnamn** | Ja | Den tabell där posten ska uppdateras, t. ex. "AREA" |
+   | **Tabell namn** | Ja | Den tabell där posten ska uppdateras, t. ex. "AREA" |
    | **Rad-ID** | Ja | ID för den post som ska uppdateras, till exempel "99999" |
    | **Area-ID** | Ja | Det nya yt-ID: t, till exempel "99999" |
    | **Beskrivning av områden** | Ja | Beskrivningen av det nya fältet, till exempel "uppdaterad 99999" |
@@ -328,7 +328,7 @@ Om du vill ta bort en enskild post från en DB2-databas tabell använder du åtg
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
-   | **Tabellnamn** | Ja | Den tabell där posten ska tas bort, till exempel "AREA" |
+   | **Tabell namn** | Ja | Den tabell där posten ska tas bort, till exempel "AREA" |
    | **Rad-ID** | Ja | ID för den post som ska tas bort, till exempel "99999" |
    ||||
 

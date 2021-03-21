@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5110e97e52939ea2115bb839768cc7ab96802961
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020716"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Anpassa Remote Desktop Protocol egenskaper för en Windows Virtual Desktop (klassisk)-värd pool
@@ -34,7 +34,7 @@ Som standard innehåller publicerade RDP-filer följande egenskaper:
 
 |RDP-egenskaper | Stationära datorer | RemoteApp |
 |---|---| --- |
-| Läge för flera övervakare | Enabled | E.t. |
+| Läge för flera övervakare | Enabled | Ej tillämpligt |
 | Aktiverade enhets omdirigeringar | Enheter, Urklipp, skrivare, COM-portar, USB-enheter och smartkort| Enheter, urklipp och skrivare |
 | Fjärr ljud läge | Spela lokalt | Spela lokalt |
 

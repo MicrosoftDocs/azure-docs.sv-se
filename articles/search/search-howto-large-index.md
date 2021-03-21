@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358400"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Så här indexerar du stora data uppsättningar i Azure Kognitiv sökning
@@ -45,7 +45,7 @@ När du är nöjd med nivån kan nästa steg vara att öka antalet partitioner. 
 
 ### <a name="review-index-schema"></a>Granska index schema
 
-Schemat för ditt index spelar en viktig roll i indexerings data. De fler fälten som du har och fler egenskaper som du anger (till exempel *sökbar* , *fasettable* eller *filtrerings* bara) bidrar till att öka indexerings tiden. I allmänhet bör du bara skapa och ange de fält som du faktiskt behöver i ett sökindex.
+Schemat för ditt index spelar en viktig roll i indexerings data. De fler fälten som du har och fler egenskaper som du anger (till exempel *sökbar*, *fasettable* eller *filtrerings* bara) bidrar till att öka indexerings tiden. I allmänhet bör du bara skapa och ange de fält som du faktiskt behöver i ett sökindex.
 
 > [!NOTE]
 > Undvik att lägga till icke-frågedata till ett index för att hålla nere dokument storleken. Bilder och andra binära data är inte direkt sökbara och bör inte lagras i indexet. Om du vill integrera data som inte går att köra i Sök resultaten bör du definiera ett fält som inte går att söka i som lagrar en URL-referens till resursen.
@@ -142,7 +142,7 @@ För indexerare är bearbetnings kapaciteten löst baserat på ett under system 
 
 1. På sidan **Översikt** för search service instrument panel på [Azure Portal](https://portal.azure.com)kontrollerar du **pris nivån** för att bekräfta att den kan hantera parallell indexering. Både Basic-och standard-nivån erbjuder flera repliker.
 
-2. Du kan köra så många indexerare parallellt som antalet Sök enheter i din tjänst. I **Inställningar**  >  **skala** , [öka repliker](search-capacity-planning.md) eller partitioner för parallell bearbetning: en ytterligare replik eller partition för varje Indexer-arbetsbelastning. Lämna ett tillräckligt antal för den befintliga frågesträngen. Att offra frågor mot arbets belastningar för indexering är inte ett utmärkt kompromiss.
+2. Du kan köra så många indexerare parallellt som antalet Sök enheter i din tjänst. I **Inställningar**  >  **skala**, [öka repliker](search-capacity-planning.md) eller partitioner för parallell bearbetning: en ytterligare replik eller partition för varje Indexer-arbetsbelastning. Lämna ett tillräckligt antal för den befintliga frågesträngen. Att offra frågor mot arbets belastningar för indexering är inte ett utmärkt kompromiss.
 
 3. Distribuera data till flera behållare på en nivå som Azure Kognitiv sökning indexerare kan komma åt. Detta kan vara flera tabeller i Azure SQL Database, flera behållare i Azure Blob Storage eller flera samlingar. Definiera ett data käll objekt för varje tabell eller behållare.
 
