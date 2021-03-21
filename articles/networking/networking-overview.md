@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234196"
 ---
 # <a name="azure-networking-services-overview"></a>Översikt över Azures nätverkstjänster
@@ -53,7 +53,7 @@ Följande diagram illustrerar flera plats-till-plats-VPN-anslutningar till samma
 
 Mer information om olika typer av VPN-anslutningar finns [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuellt WAN
 Azure Virtual WAN är en nätverks tjänst som tillhandahåller optimerad och automatiserad gren anslutning till och via Azure. Azure-regioner fungerar som hubbar som du kan välja att ansluta dina grenar till. Du kan använda Azures stamnät för att även ansluta grenar och dra nytta av anslutningar från förgrening till VNet. Azure Virtual WAN ger tillsammans många Azure-tjänster för moln anslutning, till exempel VPN för plats till plats, ExpressRoute, punkt-till-plats-VPN för användare i ett enda drift gränssnitt. Anslutning till Azure-virtuella nätverk upprättas med hjälp av virtuella nätverks anslutningar. Mer information finns i [Vad är Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
 :::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Virtual WAN-diagram":::
@@ -93,7 +93,7 @@ I det här avsnittet beskrivs nätverks tjänster i Azure som hjälper dig att s
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
+### <a name="azure-private-link"></a><a name="privatelink"></a>Privat Azure-länk
 Med [Azures privata länk](../private-link/private-link-overview.md) kan du få åtkomst till Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade/partner tjänster som ägs av en privat slut punkt i det virtuella nätverket.
 Trafik mellan ditt virtuella nätverk och tjänsten flyttar Microsoft stamnät nätverket. Det är inte längre nödvändigt att exponera tjänsten för det offentliga Internet. Du kan skapa en egen privat länk-tjänst i ditt virtuella nätverk och leverera den till dina kunder.
 
@@ -106,17 +106,17 @@ Mer information om Azure-brandväggen finns i [dokumentationen för Azure-brandv
 
 :::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Översikt över brandväggar":::
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Brand vägg för webbaserade program
+### <a name="web-application-firewall"></a><a name="waf"></a>Brandvägg för webbaserade program
 [Azure brand vägg](../web-application-firewall/overview.md) för webbaserade program (WAF) ger skydd för dina webb program från vanliga webbutnyttjande och sårbarheter som SQL-inmatning och Cross Site Scripting. Azure WAF tillhandahåller direkt skydd från OWASP de 10 viktigaste säkerhets problemen via hanterade regler. Dessutom kan kunderna också konfigurera anpassade regler, som är kund hanterade regler för att ge ytterligare skydd baserat på käll-IP-intervall och begära attribut, till exempel huvuden, cookies, formulär data fält eller frågesträngs parametrar.
 
 Kunderna kan välja att distribuera [Azure-WAF med Application Gateway](../web-application-firewall/ag/ag-overview.md) som tillhandahåller regionalt skydd till entiteter i offentligt och privat adress utrymme. Kunder kan också välja att distribuera [Azure-WAF med en front dörr](../web-application-firewall/afds/afds-overview.md) som ger skydd på nätverks sidan till offentliga slut punkter.
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Brandvägg för webbaserade program":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Nätverkssäkerhetsgrupper
+### <a name="network-security-groups"></a><a name="nsg"></a>Nätverks säkerhets grupper
 Du kan filtrera nätverkstrafik till och från Azure-resurser i ett virtuellt nätverk i Azure med en nätverkssäkerhetsgrupp. Mer information finns i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md).
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Tjänst slut punkter
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Tjänstslutpunkter
 Med tjänstslutpunkter för Virtual Network (VNet) får du ett utökat privat adressutrymme för det virtuella nätverket och identiteten för ditt VNet till Azure-tjänsterna, via en direktanslutning. Med slutpunkter kan du skydda dina kritiska Azure-tjänstresurser till endast dina virtuella nätverk. Trafik från ditt VNet till Azure-tjänsten förblir alltid på Microsoft Azure-stamnätverket. Mer information finns i [tjänst slut punkter för virtuella nätverk](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 :::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Tjänstslutpunkter för virtuellt nätverk":::

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102507491"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referens arkitekturer för Oracle Database Enterprise Edition på Azure
@@ -55,7 +55,7 @@ Om ditt program inte tillåter prestanda förlust vid inställning av en avlägs
 
 När du använder Oracle Standard Edition-databaser finns det ISV-lösningar som DBVisit standby som gör att du kan konfigurera hög tillgänglighet och haveri beredskap.
 
-## <a name="reference-architectures"></a>Referensarkitekturer
+## <a name="reference-architectures"></a>Referenserarkitekturer
 
 ### <a name="oracle-data-guard"></a>Oracle Data Guard
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785877"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Självstudie: Lägg till sid indelning i Sök resultat med hjälp av .NET SDK
@@ -35,7 +35,7 @@ Färdiga versioner av koden som du kommer att utveckla i den här självstudien 
 
 * [2b-Lägg till oändlig rullning (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [1 – Basic-search-Page-projekt (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) . Projektet kan antingen vara din egen version som skapats från den föregående själv studie kursen eller en kopia från GitHub.
 
@@ -55,7 +55,7 @@ Systemet kommer att hantera knapparna längst till vänster och höger-högst si
 
 Ha den grundläggande Sök sid lösningen öppen.
 
-1. Öppna SearchData.cs-modell filen.
+1. Öppna modell filen SearchData. cs.
 
 1. Lägg till globala variabler för att stödja sid brytning. I MVC deklareras globala variabler i sin egen statiska klass. **ResultsPerPage** anger antalet resultat per sida. **MaxPageRange** bestämmer antalet synliga sid nummer i vyn. **PageRangeDelta** anger hur många sidor som ska flyttas till vänster eller höger när sid numret längst till vänster eller höger är markerat. Det sistnämnda talet är vanligt vis cirka hälften av **MaxPageRange**. Lägg till följande kod i namn området.
 
@@ -223,7 +223,7 @@ Ha den grundläggande Sök sid lösningen öppen.
 
 ### <a name="add-a-page-action-to-the-controller"></a>Lägg till en sid åtgärd för kontrollanten
 
-1. Öppna filen HomeController.cs och Lägg till **PageAsync** -åtgärden. Den här åtgärden svarar på något av de valda sid alternativen.
+1. Öppna filen HomeController. CS och Lägg till **PageAsync** -åtgärden. Den här åtgärden svarar på något av de valda sid alternativen.
 
     ```csharp
     public async Task<ActionResult> PageAsync(SearchData model)
@@ -413,7 +413,7 @@ Om du vill implementera oändlig rullning börjar vi med projektet innan något 
 
 ### <a name="add-paging-fields-to-the-model"></a>Lägg till växlings fält i modellen
 
-1. Lägg först till en **växlings** egenskap i **SearchData** -klassen (i SearchData.cs-modell filen).
+1. Lägg först till en **växlings** egenskap i **SearchData** -klassen (i modell filen SearchData. CS).
 
     ```csharp
     // Record if the next page is requested.

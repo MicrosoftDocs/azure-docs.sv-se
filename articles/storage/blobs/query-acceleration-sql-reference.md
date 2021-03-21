@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95908786"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Språk referens för Query acceleration SQL
@@ -122,8 +122,8 @@ SQL-språket för frågespråk stöder följande SQL-standardfunktioner:
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |Returnerar ett tecken uttryck med gemena tecken som konverterats till versaler.|
 |[UNDER sträng](/sql/t-sql/functions/substring-transact-sql)    |Returnerar en del av ett tecken-, binär-, text-eller bild uttryck i SQL Server.|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Tar bort blank steg tecken (32) eller andra angivna tecken från början och slutet av en sträng.|
-|LEDANDE    |Description|
-|AVSLUTANDE    |Description|
+|LEDANDE    |Beskrivning|
+|AVSLUTANDE    |Beskrivning|
 
 Här är några exempel:
 

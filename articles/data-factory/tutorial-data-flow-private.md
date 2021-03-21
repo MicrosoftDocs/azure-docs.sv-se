@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249451"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Transformera data på ett säkert sätt med hjälp av data flödet för mappning
@@ -126,7 +126,7 @@ I det här steget konfigurerar du Data Lake Storage Gen2 som källa.
 
     ![Skärm bild som visar interaktiv redigering.](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. Välj **test anslutning**. Det bör inte utföras eftersom lagrings kontot inte tillåter åtkomst till det utan att en privat slut punkt skapas och godkänns. I fel meddelandet bör du se en länk för att skapa en privat slut punkt som du kan följa för att skapa en hanterad privat slut punkt. Ett alternativ är att gå direkt till fliken **Hantera** och följa instruktionerna i [det här avsnittet](#create-a-managed-private-endpoint) för att skapa en hanterad privat slut punkt.
+1. Välj **Testanslutning**. Det bör inte utföras eftersom lagrings kontot inte tillåter åtkomst till det utan att en privat slut punkt skapas och godkänns. I fel meddelandet bör du se en länk för att skapa en privat slut punkt som du kan följa för att skapa en hanterad privat slut punkt. Ett alternativ är att gå direkt till fliken **Hantera** och följa instruktionerna i [det här avsnittet](#create-a-managed-private-endpoint) för att skapa en hanterad privat slut punkt.
 
 1. Håll dialog rutan öppen och gå sedan till ditt lagrings konto.
 

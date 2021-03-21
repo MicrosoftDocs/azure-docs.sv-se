@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119092"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Använd egenskaper i en Azure IoT Central-lösning
@@ -45,7 +45,7 @@ I följande tabell visas konfigurations inställningarna för en egenskaps funkt
 | Enhet            | En enhet för egenskap svärdet, till exempel **mph**, **%** eller **&deg; C**.                                                                                                                                                              |
 | Visa enhet    | En visnings enhet för användning på instrument paneler och formulär.                                                                                                                                                                                    |
 | Kommentar         | Kommentarer om egenskaps funktionen.                                                                                                                                                                                        |
-| Description     | En beskrivning av egenskaps funktionen.                                                                                                                                                                                          |
+| Beskrivning     | En beskrivning av egenskaps funktionen.                                                                                                                                                                                          |
 
 Egenskaperna kan också definieras i ett gränssnitt i en enhets mall som visas här:
 
@@ -210,7 +210,7 @@ Svars meddelandet ska innehålla `ac` fälten och `av` . Fältet `ad` är valfri
 * `av` är versions numret som skickas till enheten.
 * `ad` är en beskrivning av alternativ strängen.
 
-| Värde | Etikett | Description |
+| Värde | Etikett | Beskrivning |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Slutförd | Egenskaps ändrings åtgärden har slutförts. |
 | `'ac': 202` eller `'ac': 201` | Väntar | Egenskaps ändrings åtgärden väntar eller pågår. |

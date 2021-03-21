@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100535249"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard
@@ -83,7 +83,7 @@ Den här [principen](https://aka.ms/ddosvnetpolicy) identifierar virtuella nätv
 
 Börja med att kontrol lera informationen om din DDoS-skydds plan:
 
-1. Välj **alla tjänster** längst upp till vänster i portalen.
+1. Välj **Alla tjänster** längst upp till vänster i portalen.
 2. Ange *DDoS* i **filter** rutan. När **DDoS skydds planer** visas i resultaten väljer du det.
 3. Välj din DDoS-skydds plan från listan.
 

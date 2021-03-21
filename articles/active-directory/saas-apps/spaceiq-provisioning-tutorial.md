@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
 ms.openlocfilehash: a5bd3c39c293880e31ebe63f85b3814725f6027a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96347318"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Självstudie: Konfigurera SpaceIQ för automatisk användar etablering

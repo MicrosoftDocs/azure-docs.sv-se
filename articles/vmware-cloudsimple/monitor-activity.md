@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899311"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Övervaka VMware-lösning per CloudSimple-aktivitet
@@ -54,7 +54,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Resursnamn | Namnet som tilldelats resursen, till exempel namnet på det privata molnet. |
 | Resurstyp | Resurs kategori: privat moln, moln rack. |
 | Resurs-ID | Identifierare för resursen. |
-| Description | Beskrivning av vad som utlöste aviseringen. |
+| Beskrivning | Beskrivning av vad som utlöste aviseringen. |
 | Bekräftad | Indikerar om aviseringen har bekräftats. |
 
 ## <a name="events"></a>Händelser
@@ -70,9 +70,9 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Allvarlighetsgrad | Allvarlighets grad för händelse.|
 | Resursnamn | Namnet som tilldelats resursen, till exempel namnet på det privata molnet. |
 | Resurstyp | Resurs kategori: privat moln, moln rack. |
-| Description | Beskrivning av vad som utlöste aviseringen. |
+| Beskrivning | Beskrivning av vad som utlöste aviseringen. |
 
-## <a name="tasks"></a>Aktiviteter
+## <a name="tasks"></a>Uppgifter
 
 Aktiviteter är privata moln aktiviteter som förväntas ta 30 sekunder eller mer att slutföra. (Aktiviteter som förväntas ta mindre än 30 sekunder rapporteras endast som händelser.) Öppna sidan aktiviteter för att spåra förloppet för aktiviteterna i ditt privata moln.
 
@@ -82,7 +82,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 ------------ | ------------- |
 | Aktivitets-ID | Unikt ID för uppgiften. |
 | Åtgärd | Åtgärd som ska utföras av uppgiften. |
-| Användare | Användaren har tilldelats för att slutföra uppgiften. |
+| User | Användaren har tilldelats för att slutföra uppgiften. |
 | Resursnamn | Namn som tilldelats resursen. |
 | Resurstyp | Resurs kategori: privat moln, moln rack. |
 | Resurs-ID | Identifierare för resursen. |
@@ -90,7 +90,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Slut | Slut tid för aktiviteten. |
 | Status | Aktuell uppgifts status. |
 | Förfluten tid | Tid som aktiviteten tog att slutföra (om den har slutförts) eller håller på att tas (om den pågår). |
-| Description | Uppgifts beskrivning. |
+| Beskrivning | Uppgifts beskrivning. |
 
 ## <a name="audit"></a>Granska
 
@@ -102,13 +102,13 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 ------------ | ------------- |
 | Tid | Tid för gransknings posten. |
 | Åtgärd | Åtgärd som ska utföras av uppgiften. |
-| Användare | Användaren har tilldelats uppgiften. |
+| User | Användaren har tilldelats uppgiften. |
 | Resursnamn | Namn som tilldelats resursen. |
 | Resurstyp | Resurs kategori: privat moln, moln rack. |
 | Resurs-ID | Identifierare för resursen. |
 | Resultat | Resultat av aktiviteten, till exempel **lyckad**. |
 | Tidsåtgång | Tid för att slutföra uppgiften. |
-| Description | Beskrivning av åtgärden. |
+| Beskrivning | Beskrivning av åtgärden. |
 
 ## <a name="next-steps"></a>Nästa steg
 
