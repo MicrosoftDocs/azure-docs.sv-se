@@ -11,10 +11,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555294"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Tilldela Azure-roller med hjälp av Azure Portal
@@ -82,7 +82,7 @@ Om du behöver tilldela administratörs roller i Azure Active Directory, se [Vis
 
 1. I listan **tilldela åtkomst till** väljer du vilken typ av säkerhets objekt som ska tilldelas åtkomst.
 
-    | Typ | Description |
+    | Typ | Beskrivning |
     | --- | --- |
     | **Användare, grupp eller tjänstens huvud namn** | Om du vill tilldela rollen till en användare, grupp eller tjänstens huvud namn (program) väljer du den här typen. |
     | **Användare tilldelad hanterad identitet** | Om du vill tilldela rollen till en [användardefinierad hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md)väljer du den här typen. |

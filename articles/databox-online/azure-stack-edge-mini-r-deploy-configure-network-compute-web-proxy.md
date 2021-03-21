@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546779"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Självstudie: Konfigurera nätverk för Azure Stack Edge Mini R
@@ -182,7 +182,7 @@ Detta är en valfri konfiguration.
 
     1. I rutan **webbproxy-URL** anger du webb adressen i följande format: `http://host-IP address or FQDN:Port number` . Du kan inte använda HTTPS-adresser.
 
-    2. Under **autentisering** väljer du **ingen** eller **NTLM**. Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge-Mini R-enhet rekommenderar vi att du ställer in webbproxy-autentisering på **ingen**. **NTLM** stöds inte.
+    2. Välj **Ingen** eller **NTLM** under **Autentisering**. Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge-Mini R-enhet rekommenderar vi att du ställer in webbproxy-autentisering på **ingen**. **NTLM** stöds inte.
 
     3. Om du använder autentisering anger du ett användar namn och lösen ord.
 

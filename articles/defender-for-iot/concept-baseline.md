@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491086"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender för IoT-bas linje och anpassade kontroller
@@ -66,7 +66,7 @@ Så här konfigurerar du anpassade bas kontroller:
 
 ## <a name="baseline-custom-check-properties"></a>Egenskaper för anpassad kontroll bas linje
 
-| Namn| Status | Giltiga värden| Standardvärden| Beskrivning |
+| Name| Status | Giltiga värden| Standardvärden| Beskrivning |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Krävs: sant |Giltiga värden: **Boolean** |Standardvärde: **falskt** |Max tidsintervall innan meddelanden med hög prioritet skickas.|
 |baselineCustomChecksFilePath |Krävs: sant|Giltiga värden: **sträng**, **Null** |Standardvärde: **Null** |Fullständig sökväg till bas linje XML-konfigurationen|

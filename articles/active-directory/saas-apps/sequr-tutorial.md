@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: Azure Active Directory integrering med Sequr | Microsoft Docs'
-description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Sequr.
+title: 'Självstudie: Azure Active Directory integrering med Gena Access Control | Microsoft Docs'
+description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Gena Access Control.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,137 +9,129 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: d1993f89f8b1da4789541006c15380d2145d3d81
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 82c05f77781abdaea3b2c84aa1071656c206439a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674498"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669901"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Självstudie: Azure Active Directory integrering med Sequr
+# <a name="tutorial-azure-active-directory-integration-with-genea-access-control"></a>Självstudie: Azure Active Directory integrering med Gena Access Control
 
-I den här självstudien får du lära dig hur du integrerar Sequr med Azure Active Directory (Azure AD).
-Genom att integrera Sequr med Azure AD får du följande fördelar:
+I den här självstudien får du lära dig att integrera gen-Access Control med Azure Active Directory (Azure AD). När du integrerar Gena Access Control med Azure AD kan du:
 
-* Du kan styra i Azure AD som har åtkomst till Sequr.
-* Du kan göra det möjligt för användarna att logga in automatiskt till Sequr (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
-
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+* Kontroll i Azure AD som har åtkomst till genera Access Control.
+* Gör det möjligt för användarna att logga in automatiskt till att genera Access Control med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill konfigurera Azure AD-integrering med Sequr behöver du följande objekt:
+Om du vill konfigurera Azure AD-integrering med gen-Access Control behöver du följande objekt:
 
 * En Azure AD-prenumeration. Om du inte har en Azure AD-miljö kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/)
-* Sequr-aktiverad prenumeration med enkel inloggning
+* Gena Access Control-aktiverad prenumeration med enkel inloggning
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
-I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
+I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Sequr stöder **SP-och IDP** -INITIERAd SSO
+* Gena Access Control stöder **SP-och IDP** -initierad SSO.
+> [!NOTE]
+> ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
 
-## <a name="adding-sequr-from-the-gallery"></a>Lägga till Sequr från galleriet
 
-Om du vill konfigurera integreringen av Sequr i Azure AD måste du lägga till Sequr från galleriet i listan över hanterade SaaS-appar.
+## <a name="adding-genea-access-control-from-the-gallery"></a>Lägga till genera Access Control från galleriet
 
-**Utför följande steg för att lägga till Sequr från galleriet:**
+Om du vill konfigurera integrering av Gena Access Control i Azure AD måste du lägga till Genning-Access Control från galleriet i listan över hanterade SaaS-appar.
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
+1. Navigera till **företags program** och välj sedan **alla program**.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
+1. I avsnittet **Lägg till från galleriet** , skriver du **Gena Access Control** i sökrutan.
+1. Välj **gena Access Control** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-genea-access-control"></a>Konfigurera och testa Azure AD SSO för genera Access Control
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+Konfigurera och testa Azure AD SSO med gen Access Control med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i gen-Access Control.
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+Utför följande steg för att konfigurera och testa Azure AD SSO med gen Access Control:
 
-3. Lägg till ett nytt program genom att klicka på knappen **Nytt program** högst upp i dialogrutan.
+1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
+    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
+    1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
+1. **[Konfigurera gen Access Control SSO](#configure-genea-access-control-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
+    1. **[Skapa gen-Access Control testa användare](#create-genea-access-control-test-user)** – för att få en motsvarighet till B. Simon i gena-Access Control som är länkad till Azure AD-representation av användare.
+1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
-    ![Knappen Nytt program](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-4. I rutan Sök skriver du **Sequr** , väljer **Sequr** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-    ![Sequr i resultat listan](common/search-new-app.png)
+1. I Azure Portal går du till sidan för program integration i **gen-Access Control** och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
-
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Sequr baserat på en test användare som kallas **Britta Simon** .
-För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Sequr upprättas.
-
-Om du vill konfigurera och testa enkel inloggning med Sequr i Azure AD måste du slutföra följande Bygg stenar:
-
-1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera Sequr enkel inloggning](#configure-sequr-single-sign-on)** – om du vill konfigurera de enskilda Sign-On inställningarna på program sidan.
-3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa Sequr test User](#create-sequr-test-user)** – om du vill ha en motsvarighet till Britta Simon i Sequr som är länkad till Azure AD-representation av användare.
-6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
-
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
-
-Utför följande steg för att konfigurera enkel inloggning med Sequr i Azure AD:
-
-1. Välj **enkel inloggning** på sidan **Sequr** Application Integration i [Azure Portal](https://portal.azure.com/).
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
-
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
-    ![Information om enkel inloggning för Sequr-domän och URL: er](common/idp-identifier.png)
-
     I textrutan **Identifierare** skriver du URL:en: `https://login.sequr.io`
 
-5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
-
-    ![image](common/both-advanced-urls.png)
+5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     a. I text rutan **inloggnings-URL** anger du URL: en: `https://login.sequr.io`
 
     b. I text rutan för **vidarebefordran** visas detta värde, som beskrivs senare i självstudien.
 
-6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** , klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
+6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
     ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
-7. I avsnittet **Konfigurera Sequr** kopierar du lämpliga URL: er enligt ditt krav.
+7. I avsnittet **Konfigurera gen Access Control** kopierar du lämpliga URL: er enligt ditt krav.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
+### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
-    b. Azure AD-identifierare
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-    c. Utloggnings-URL
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
-### <a name="configure-sequr-single-sign-on"></a>Konfigurera Sequr Single Sign-On
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-1. Logga in på din Sequr-företags webbplats som administratör i ett annat webbläsarfönster.
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till genera Access Control.
+
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **gena Access Control**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
+## <a name="configure-genea-access-control-sso"></a>Konfigurera genera Access Control SSO
+
+1. Logga in på ditt gen-Access Control företags webbplats som administratör i ett annat webbläsarfönster.
 
 1. Klicka på **integreringarna** på den vänstra navigerings panelen.
 
-    ![Skärm bild som visar den integrering som valts på navigerings panelen.](./media/sequr-tutorial/configure1.png)
+    ![Skärm bild som visar den integrering som valts på navigerings panelen.](./media/sequr-tutorial/configure-1.png)
 
-1. Rulla ned till avsnittet **enkel inloggning** och klicka på **Hantera** .
+1. Rulla ned till avsnittet **enkel inloggning** och klicka på **Hantera**.
 
-    ![Skärm bild som visar avsnittet enkel inloggning med knappen Hantera valt.](./media/sequr-tutorial/configure2.png)
+    ![Skärm bild som visar avsnittet enkel inloggning med knappen Hantera valt.](./media/sequr-tutorial/configure-2.png)
 
 1. I avsnittet **hantera enkel inloggning** utför du följande steg:
 
-    ![Skärm bild som visar avsnittet hantera en enda Sign-On där du kan ange de värden som beskrivs.](./media/sequr-tutorial/configure3.png)
+    ![Skärm bild som visar avsnittet hantera en enda Sign-On där du kan ange de värden som beskrivs.](./media/sequr-tutorial/configure-3.png)
 
     a. I text rutan för **identitets leverantörens enkla Sign-On URL** klistrar du in URL-värdet för **inloggning** som du har kopierat från Azure Portal.
 
@@ -147,72 +139,28 @@ Utför följande steg för att konfigurera enkel inloggning med Sequr i Azure AD
 
     c. När du har sparat konfigurationen genereras värdet för relä status. Kopiera värdet för **relä status** och klistra in det i text rutan för **relä läge** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
+### <a name="create-genea-access-control-test-user"></a>Skapa gen Access Control-test användare
 
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
+I det här avsnittet ska du skapa en användare med namnet Britta Simon i gen-Access Control. Arbeta med [Access Control klient support teamet](mailto:support@sequr.io) för att lägga till användare i modulen gena Access Control. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+## <a name="test-sso"></a>Testa SSO 
 
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-2. Välj **ny användare** överst på skärmen.
+#### <a name="sp-initiated"></a>SP initierad:
 
-    ![Knappen Ny användare](common/new-user.png)
+* Klicka på **testa det här programmet** i Azure Portal. Detta kommer att omdirigeras till genera Access Control inloggnings-URL där du kan starta inloggnings flödet.  
 
-3. Genomför följande steg i Användaregenskaper.
+* Gå till gen-Access Control inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-    ![Dialogrutan Användare](common/user-properties.png)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
-  
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på gen-Access Control för vilka du konfigurerar SSO 
 
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen Gena Access Control i Mina appar, om den har kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på gen-Access Control för vilka du konfigurerar SSO. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-    d. Klicka på **Skapa** .
+## <a name="next-steps"></a>Nästa steg
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
-
-I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Sequr.
-
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **Sequr** .
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-
-2. I listan program väljer du **Sequr** .
-
-    ![Sequr-länken i program listan](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper** .
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
-
-### <a name="create-sequr-test-user"></a>Skapa Sequr test användare
-
-I det här avsnittet skapar du en användare som heter Britta Simon i Sequr. Arbeta med [Sequr-klientens support team](mailto:support@sequr.io) för att lägga till användare i Sequr-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
-
-### <a name="test-single-sign-on"></a>Testa enkel inloggning 
-
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
-
-När du klickar på panelen Sequr på åtkomst panelen, bör du loggas in automatiskt på den Sequr som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>Ytterligare resurser
-
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
-
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+När du har konfigurerat gen Access Control kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
 ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99475058"
 ---
 Storleken på den virtuella datorn avgör hur mycket data bearbetnings resurser (t. ex. processor, GPU och minne) som görs tillgängliga för den virtuella datorn. Du bör skapa virtuella datorer med hjälp av en storlek på den virtuella datorn som är lämplig för arbets belastningen. Även om alla datorer ska köras på samma maskin vara, har dator storlekarna olika begränsningar för disk åtkomst. Detta kan hjälpa dig att hantera den totala disk åtkomsten över dina virtuella datorer. Om en arbets belastning ökar kan du också ändra storlek på en befintlig virtuell dator.

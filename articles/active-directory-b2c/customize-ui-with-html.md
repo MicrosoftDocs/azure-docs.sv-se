@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050557"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104675833"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Anpassa användar gränssnittet med HTML-mallar i Azure Active Directory B2C
 
@@ -59,7 +59,7 @@ I stället för att skapa ett anpassat sid innehåll från grunden kan du anpass
 
 I följande tabell visas standard sid innehållet som tillhandahålls av Azure AD B2C. Hämta filerna och Använd dem som utgångs punkt för att skapa egna anpassade sidor.
 
-| Standard sida | Description | ID för innehålls definition<br/>(endast anpassad princip) |
+| Standard sida | Beskrivning | ID för innehålls definition<br/>(endast anpassad princip) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Felsida**. Den här sidan visas när ett undantag eller ett fel påträffas. | *API. error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Själv kontrollerad sida**. Använd den här filen som ett anpassat sid innehåll för registrerings sidan för ett socialt konto, en registrerings sida för lokalt konto, en inloggnings sida för lokalt konto, lösen ords återställning med mera. Formuläret kan innehålla olika inmatnings kontroller, t. ex. en text inmatnings ruta, en ruta för lösen ords inmatning, en alternativ knapp, en listruta med flera val och kryss rutor med flera val. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -215,7 +215,7 @@ Utför följande steg för att skapa en offentlig behållare i Blob Storage:
 Konfigurera Blob Storage för resurs delning mellan ursprung genom att utföra följande steg:
 
 1. I menyn väljer du **CORS**.
-1. För **tillåtna ursprung** anger du `https://your-tenant-name.b2clogin.com` . Ersätt `your-tenant-name` med namnet på din Azure AD B2C-klient. Ett exempel är `https://fabrikam.b2clogin.com`. Använd små bokstäver när du anger ditt klient namn.
+1. För **tillåtna ursprung** anger du `https://your-tenant-name.b2clogin.com` . Ersätt `your-tenant-name` med namnet på din Azure AD B2C-klient. Till exempel `https://fabrikam.b2clogin.com`. Använd små bokstäver när du anger ditt klient namn.
 1. För **tillåtna metoder** väljer du både `GET` och `OPTIONS` .
 1. För **tillåtna huvuden** anger du en asterisk (*).
 1. För **exponerade rubriker** anger du en asterisk (*).
@@ -266,7 +266,7 @@ Om du vill konfigurera UI-anpassning kopierar du **ContentDefinition** och dess 
 1. Öppna tilläggs filen. Till exempel *TrustFrameworkExtensions.xml*. Sök efter **BuildingBlocks** -elementet. Om elementet inte finns lägger du till det.
 1. Klistra in hela innehållet i **ContentDefinitions** -elementet som du kopierade som ett underordnat objekt till **BuildingBlocks** -elementet.
 1. Sök efter det **ContentDefinition** -element som innehåller `Id="api.signuporsignin"` i XML-filen som du kopierade.
-1. Ändra värdet för **LoadUri** till URL: en för HTML-filen som du laddade upp till lagringen. Ett exempel är `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+1. Ändra värdet för **LoadUri** till URL: en för HTML-filen som du laddade upp till lagringen. Till exempel `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Den anpassade principen bör se ut som följande kodfragment:
 
@@ -363,26 +363,31 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 Du hittar exempel på mallar för anpassning av användar gränssnittet här:
 
 ```bash
-git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
+git clone https://github.com/azure-ad-b2c/html-templates
 ```
 
 Det här projektet innehåller följande mallar:
-- [Havet, blå](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Platta, grå](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Havet, blå](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
+- [Platta, grå](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [Form](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
+- [Mallresurser](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 Så här använder du exemplet:
 
-1. Klona lagrings platsen på den lokala datorn. Välj en mall-mapp `/ocean_blue` eller `/slate_gray` .
-1. Ladda upp alla filer under mappen mallar och `/assets` mappen till Blob Storage enligt beskrivningen i föregående avsnitt.
-1. Sedan öppnar du varje `\*.html` fil i roten för antingen `/ocean_blue` eller `/slate_gray` , ersätter alla instanser av relativa URL: er med URL: er för de CSS-, bilder-och fonts-filer som du laddade upp i steg 2. Exempel:
+1. Klona lagrings platsen på den lokala datorn. Välj en mall `/AzureBlue` -mapp, `/MSA` eller `/classic` .
+1. Ladda upp alla filer under mappen mallar och `/src` mappen till Blob Storage enligt beskrivningen i föregående avsnitt.
+1. Öppna sedan varje `\*.html` fil i mappen mall. Ersätt sedan alla förekomster av `https://login.microsoftonline.com` webb adresser med URL: en som du laddade upp i steg 2. Exempel:
+    
+    Från:
     ```html
-    <link href="./css/assets.css" rel="stylesheet" type="text/css" />
+    https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF
     ```
 
-    Om du vill
+    Till:
     ```html
-    <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
+    https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
+    
 1. Spara `\*.html` filerna och överför dem till Blob Storage.
 1. Ändra principen genom att peka på HTML-filen som tidigare nämnts.
 1. Om du ser saknade teckensnitt, avbildningar eller CSS, kontrollerar du dina referenser i tillägg-principen och \* HTML-filerna.

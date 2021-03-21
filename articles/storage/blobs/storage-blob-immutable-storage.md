@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102430946"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Lagra affärskritiska blobdata med oföränderlig lagring
@@ -122,7 +122,7 @@ I följande tabell visas de typer av Blob Storage-åtgärder som har inaktiverat
 > [!IMPORTANT]
 > Vissa arbets belastningar, till exempel [SQL-säkerhetskopiering till URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url), skapar en blob och lägger sedan till den. Om behållaren har en aktiv tidsbaserad bevarande princip eller ett juridiskt undantag, kommer det här mönstret inte att fungera.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Det kostar inget extra att använda den här funktionen. Oföränderliga data priss ätts på samma sätt som föränderligt-data. Pris information om Azure Blob Storage finns på sidan med [Azure Storage priser](https://azure.microsoft.com/pricing/details/storage/blobs/).
 

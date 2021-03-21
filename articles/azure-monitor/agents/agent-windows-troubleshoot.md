@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100621422"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Felsöka problem med Log Analytics-agenten för Windows 
@@ -68,10 +68,10 @@ Kontrol lera att brand väggen eller proxyservern har kon figurer ATS för att t
 
 |Agentresurs|Portar |Riktning |Kringgå HTTPS-kontroll|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Utgående|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Utgående|Yes |  
-|*.blob.core.windows.net |Port 443 |Utgående|Yes |  
-|*. agentsvc.azure-automation.net |Port 443 |Utgående|Yes |  
+|*.ods.opinsights.azure.com |Port 443 |Utgående|Ja |  
+|*.oms.opinsights.azure.com |Port 443 |Utgående|Ja |  
+|*.blob.core.windows.net |Port 443 |Utgående|Ja |  
+|*. agentsvc.azure-automation.net |Port 443 |Utgående|Ja |  
 
 För brand Väggs information som krävs för Azure Government, se [Azure Government hantering](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Om du planerar att använda Azure Automation Hybrid Runbook Worker för att ansluta till och registrera med Automation-tjänsten för att använda Runbooks eller hanterings lösningar i din miljö, måste den ha åtkomst till port numret och de URL: er som beskrivs i [Konfigurera ditt nätverk för Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

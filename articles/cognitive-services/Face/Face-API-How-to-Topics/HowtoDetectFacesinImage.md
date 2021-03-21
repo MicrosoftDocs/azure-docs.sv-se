@@ -12,10 +12,10 @@ ms.date: 02/23/2021
 ms.author: sbowles
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a15cce45c527a92c99e0488661e0b67bb8e2371
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101713073"
 ---
 # <a name="get-face-detection-data"></a>Hämta ansikts identifierings data
@@ -28,7 +28,7 @@ Den här guiden visar hur du:
 - Få plats för olika ansikts landmärken, till exempel elever, näsa och mun, i en bild.
 - Gissa kön, ålder, känslo och andra attribut för ett identifierat ansikte.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Den här guiden förutsätter att du redan har skapat ett [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) -objekt `faceClient` med namnet, med en ansikts prenumerations nyckel och en slut punkts-URL. Härifrån kan du använda funktionen för ansikts igenkänning genom att anropa antingen [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync), som används i den här hand boken eller [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync). Instruktioner för hur du konfigurerar den här funktionen finns i en av snabb starterna.
 

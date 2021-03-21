@@ -10,16 +10,18 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 2a9f0a8c943f539166f18a1e41a36136fbb63a6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455067"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584299"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Använda Apache Spark (drivs av Azure Synapse Analytics) i din Machine Learning pipeline (för hands version)
 
 I den här artikeln får du lära dig hur du använder Apache Spark pooler som drivs av Azure Synapse Analytics som beräknings mål för steget förberedelse av data i en Azure Machine Learning pipeline. Du får lära dig hur en enskild pipeline kan använda beräknings resurser som passar för det aktuella steget, till exempel data förberedelse eller utbildning. Du ser hur data förbereds för Spark-steget och hur de skickas till nästa steg. 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 

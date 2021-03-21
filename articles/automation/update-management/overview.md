@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Uppdateringshantering
 description: Den här artikeln innehåller en översikt över den Uppdateringshantering funktionen som implementerar uppdateringar för dina Windows-och Linux-datorer.
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e24a90f05ef52c5164ce966e905e9c27055d1bf4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485681"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670621"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -76,8 +76,8 @@ I följande tabell visas de operativ system som stöds för uppdaterings bedömn
 |---------|---------|
 |Windows Server 2019 (Data Center/standard inklusive Server Core)<br><br>Windows Server 2016 (Data Center/standard exklusive Server Core)<br><br>Windows Server 2012 R2 (Data Center/standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM och SP1 standard)| Uppdateringshantering stöder utvärderingar och korrigeringar för det här operativ systemet. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) stöds för Windows Server 2008 R2. |
-|CentOS 6 och 7 (x64)      | Linux-agenter kräver åtkomst till ett uppdaterings lager. Klassificerings-baserad uppdatering kräver `yum` att returnera säkerhets data som CentOS inte har i sina RTM-versioner. Mer information om klassificerings-baserad uppdatering på CentOS finns i [uppdaterings klassificeringar i Linux](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6 och 7 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager.        |
+|CentOS 6, 7 och 8 (x64)      | Linux-agenter kräver åtkomst till ett uppdaterings lager. Klassificerings-baserad uppdatering kräver `yum` att returnera säkerhets data som CentOS inte har i sina RTM-versioner. Mer information om klassificerings-baserad uppdatering på CentOS finns i [uppdaterings klassificeringar i Linux](view-update-assessments.md#linux).          |
+|Red Hat Enterprise 6, 7 och 8 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager.        |
 |SUSE Linux Enterprise Server 12, 15 och 15,1 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager. Python 3 krävs på datorn för SUSE 15. x.      |
 |Ubuntu 14,04 LTS, 16,04 LTS och 18,04 LTS (x64)      |Linux-agenter kräver åtkomst till ett uppdaterings lager.         |
 

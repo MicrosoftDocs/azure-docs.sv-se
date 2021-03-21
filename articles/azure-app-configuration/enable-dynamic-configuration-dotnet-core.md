@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
 ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979869"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Självstudie: Använd dynamisk konfiguration i en .NET Core-app
@@ -46,7 +46,7 @@ Om du vill göra den här själv studie kursen installerar du [.net Core SDK](ht
 
 ## <a name="reload-data-from-app-configuration"></a>Läsa in data på nytt från App Configuration
 
-Öppna *program.cs* och uppdatera filen för att lägga till en referens till `System.Threading.Tasks` namn området, för att ange uppdaterings konfiguration i `AddAzureAppConfiguration` -metoden och aktivera manuell uppdatering med hjälp av- `TryRefreshAsync` metoden.
+Öppna *program. cs* och uppdatera filen för att lägga till en referens till `System.Threading.Tasks` namn området, för att ange uppdaterings konfiguration i `AddAzureAppConfiguration` -metoden och aktivera manuell uppdatering med hjälp av- `TryRefreshAsync` metoden.
 
 ```csharp
 using System;

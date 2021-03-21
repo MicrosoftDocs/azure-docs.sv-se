@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 88cfddb12de0949d56e4b8f9c3e363e4c8f75676
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121141"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657775"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Snabb start: Använd Azure cache för Redis med en ASP.NET-webbapp 
 
@@ -29,29 +29,29 @@ Om du vill hoppa över direkt till koden går du till snabb starten för [ASP.ne
 
 ## <a name="create-the-visual-studio-project"></a>Skapa Visual Studio-projektet
 
-1. Öppna Visual Studio och välj sedan **Arkiv**  > **nytt**  >  **projekt**.
+1. Öppna Visual Studio och välj sedan **Arkiv**  >  **nytt**  >  **projekt**.
 
-2. Gör följande i dialogrutan **Nytt projekt**:
+2. I dialog rutan **skapa ett nytt projekt** utför du följande steg:
 
     ![Skapa projekt](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. Expandera noden **Visual C#** i listan **Mallar**.
+    a. I sökrutan anger du _C# ASP.net-webb program_.
 
-    b. Välj **moln**.
+    b. Välj **ASP.NET-webbprogram (.NET Framework)**.
 
-    c. Välj **ASP.NET-webbapp**.
+    c. Välj **Nästa**.
 
-    d. Kontrollera att **.NET Framework 4.5.2** eller senare har valts.
+3. Ge projektet ett namn i rutan **projekt namn** . I det här exemplet använde vi **ContosoTeamStats**.
 
-    e. Ge projektet ett namn i rutan **Namn**. I det här exemplet använde vi **ContosoTeamStats**.
+4. Kontrol lera att **.NET Framework 4.6.1** eller högre är markerat.
 
-    f. Välj **OK**.
+5. Välj **Skapa**.
    
-3. Välj **MVC** som projekttyp.
+6. Välj **MVC** som projekttyp.
 
-4. Kontrollera att **Ingen autentisering** är angivet i **autentiseringsinställningarna**. Beroende på din version av Visual Studio kan det vara en annan standardinställning för **Autentisering**. För att ändra detta väljer du **Ändra autentisering** och sedan **Ingen autentisering**.
+7. Kontrollera att **Ingen autentisering** är angivet i **autentiseringsinställningarna**. Beroende på din version av Visual Studio kan det vara en annan standardinställning för **Autentisering**. För att ändra detta väljer du **Ändra autentisering** och sedan **Ingen autentisering**.
 
-5. Klicka på **OK** för att skapa projektet.
+8. Välj **Skapa** för att skapa projektet.
 
 ## <a name="create-a-cache"></a>Skapa en cache
 
@@ -125,10 +125,11 @@ ASP.NET-körningsmiljön sammanfogar innehållet i den externa filen med markeri
 
 1. I **Solution Explorer** expanderar du mappen **Controllers** och öppnar filen *HomeController.cs*.
 
-2. Lägg till följande två `using`-instruktioner överst i filen för att stödja cacheklienten och appinställningarna.
+2. Lägg till följande- `using` instruktioner överst i filen för att stödja cache-klienten, app-inställningarna och sträng Builder.
 
     ```csharp
     using System.Configuration;
+    using System.Text;
     using StackExchange.Redis;
     ```
 

@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b99c2efcb746a056adc76fdc161c8d8a8e2799e1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022640"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670128"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Snabb start: skapa en enhets-HoloLens-app som använder Azure spatiala ankare
 
@@ -33,10 +33,10 @@ Du lär dig följande:
 
 För att slutföra den här snabbstarten behöver du:
 
-- Du behöver en Windows-dator med <a href="https://unity3d.com/get-unity/download" target="_blank">unity 2019,4 (LTS)</a> och <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> eller senare installerat. Din Visual Studio-installation måste omfatta arbets belastningen **universell Windows-plattform utveckling** och **Windows 10 SDK-komponenten (10.0.18362.0 eller senare)** . Du måste också installera <a href="https://git-scm.com/download/win" target="_blank">git för Windows</a> och <a href="https://git-lfs.github.com/">git LF</a>.
+- Du behöver en Windows-dator med <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> och <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> eller senare installerat. Använd **unity 2020 LTS** med ASA sdk version 2,9 eller senare (som använder [Unity XR plugin-ramverket](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)) eller **Unity 2019 LTS** med ASA SDK version 2,8 eller tidigare. Din Visual Studio-installation måste omfatta arbets belastningen **universell Windows-plattform utveckling** och **Windows 10 SDK-komponenten (10.0.18362.0 eller senare)** . Du måste också installera <a href="https://git-scm.com/download/win" target="_blank">git för Windows</a> och <a href="https://git-lfs.github.com/">git LF</a>.
 - Du behöver en HoloLens-enhet där [utvecklarläge](/windows/mixed-reality/using-visual-studio) är aktiverat. [Windows 10 maj 2020 uppdatering](/windows/mixed-reality/whats-new/release-notes-may-2020) måste installeras på enheten. Om du vill uppdatera till den senaste versionen av HoloLens öppnar du appen **Inställningar** , går till **Uppdatera & säkerhet** och väljer sedan **Sök efter uppdateringar**.
-- I din app måste du aktivera **SpatialPerception** -funktionen. Den här inställningen finns **Build Settings** i inställningar för  >  **Player Settings**  >  **publicerings inställningar** för inställnings  >  **hantering** i versions spelaren.
-- I din app måste du aktivera **virtuell verklighet som stöds** med **Windows Mixed Reality SDK**. Den här inställningen finns **i inställningar för inställningar för**  >  **Player Settings**  >  **XR** inställningar.
+- I din app måste du aktivera **SpatialPerception** -funktionen. Den här inställningen finns i inställningar för  >    >  **publicerings inställningar** för inställnings  >  **hantering** i versions spelaren.
+- I din app måste du aktivera **virtuell verklighet som stöds** med **Windows Mixed Reality SDK**. Den här inställningen finns **i inställningar för inställningar för**  >    >  **XR** inställningar.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
