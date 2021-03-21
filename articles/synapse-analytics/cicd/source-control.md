@@ -9,10 +9,10 @@ ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
 ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98796964"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Käll kontroll i Azure Synapse Studio
@@ -122,7 +122,7 @@ I konfigurations fönstret visas följande inställningar för GitHub-lagringspl
 
 Att ansluta till en GitHub-organisation kräver att organisationen ger behörighet till Synapse Studio. En användare med ADMINISTRATÖRs behörighet för organisationen måste utföra stegen nedan.
 
-#### <a name="connecting-to-github-for-the-first-time"></a>Ansluter till GitHub för första gången
+#### <a name="connecting-to-github-for-the-first-time"></a>Ansluta till GitHub för första gången
 
 Om du ansluter till GitHub från Synapse Studio för första gången, följer du dessa steg för att ansluta till en GitHub organisation.
 

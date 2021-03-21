@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: fc41d2904d5a6676f1e9e1e2d178985bef0a9aa3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095552"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Så här använder du rollbaserad åtkomstkontroll i Azure API Management
@@ -32,7 +32,7 @@ API Management tillhandahåller för närvarande tre inbyggda roller och lägger
 
 Följande tabell innehåller korta beskrivningar av de inbyggda rollerna. Du kan tilldela dessa roller med hjälp av Azure Portal eller andra verktyg, inklusive Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md), [azure CLI](../role-based-access-control/role-assignments-cli.md)och [REST API](../role-based-access-control/role-assignments-rest.md). Mer information om hur du tilldelar inbyggda roller finns i [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../role-based-access-control/role-assignments-portal.md).
 
-| Roll          | Läs behörighet<sup>[1]</sup> | Skriv åtkomst<sup>[2]</sup> | Skapa, ta bort, skala, VPN och anpassad domän konfiguration för tjänsten | Åtkomst till den äldre Publisher-portalen | Description
+| Roll          | Läs behörighet<sup>[1]</sup> | Skriv åtkomst<sup>[2]</sup> | Skapa, ta bort, skala, VPN och anpassad domän konfiguration för tjänsten | Åtkomst till den äldre Publisher-portalen | Beskrivning
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | API Management Service Contributor | ✓ | ✓ | ✓ | ✓ | Super User. Har fullständig CRUD åtkomst till API Management tjänster och entiteter (till exempel API: er och principer). Har åtkomst till den äldre Publisher-portalen. |
 | API Management tjänst läsare | ✓ | | || Har skrivskyddad åtkomst till API Management tjänster och entiteter. |

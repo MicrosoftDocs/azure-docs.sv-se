@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896182"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps routnings täckning
@@ -37,7 +37,7 @@ Följande tabell innehåller information om disponering för Azure Maps routning
 <br>  
 
 
-## <a name="africa"></a>Africa
+## <a name="africa"></a>Afrika
 
 | Land/region                 | Routning         | Routning med trafik | Truck-routning |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
@@ -152,7 +152,7 @@ Följande tabell innehåller information om disponering för Azure Maps routning
 | Vietnam                        |        ✓       |         ✓            |             |
 
 
-## <a name="europe"></a>Europe
+## <a name="europe"></a>Europa
 
 | Land/region                 | Routning         | Routning med trafik | Truck-routning |
 |--------------------------------|:---------------:|:--------------------:|:------------:|

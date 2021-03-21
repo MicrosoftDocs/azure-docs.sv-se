@@ -12,23 +12,23 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6d753a90f2a4cb19c9f3933d007fb3d378af6d81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793219"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Program med flera klienter med elastiska databas verktyg och säkerhet på radnivå
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastiska databas verktyg](elastic-scale-get-started.md) och [säkerhet på radnivå (RLS)][rls] för att möjliggöra skalning av data nivån för ett program med flera klienter med Azure SQL Database. Tillsammans hjälper dessa tekniker dig att bygga ett program som har en mycket skalbar data nivå. Data nivån stöder Shards för flera innehavare och använder **ADO.net SqlClient** eller **Entity Framework** . Mer information finns i [design mönster för SaaS-program med flera innehavare med Azure SQL Database](./saas-tenancy-app-design-patterns.md).
+[Elastiska databas verktyg](elastic-scale-get-started.md) och [säkerhet på radnivå (RLS)][rls] för att möjliggöra skalning av data nivån för ett program med flera klienter med Azure SQL Database. Tillsammans hjälper dessa tekniker dig att bygga ett program som har en mycket skalbar data nivå. Data nivån stöder Shards för flera innehavare och använder **ADO.net SqlClient** eller **Entity Framework**. Mer information finns i [design mönster för SaaS-program med flera innehavare med Azure SQL Database](./saas-tenancy-app-design-patterns.md).
 
 - **Elastiska databas verktyg** gör det möjligt för utvecklare att skala ut data nivån med standard horisontell partitionering-metoder, med hjälp av .NET-bibliotek och Azure-tjänstmallar. Genom att hantera Shards med hjälp av [klient biblioteket för Elastic Database][s-d-elastic-database-client-library] kan du automatisera och effektivisera många av de infrastruktur-uppgifter som vanligt vis är kopplade till horisontell partitionering.
 - **Säkerhet på radnivå** gör att utvecklare säkert kan lagra data för flera klienter i samma databas. RLS säkerhets principer filtrera bort rader som inte tillhör klienten som kör en fråga. Att centralisera filter logiken i databasen fören klar underhållet och minskar risken för ett säkerhets fel. Alternativet att förlita dig på all klient kod för att genomdriva säkerheten är riskabelt.
 
 Genom att använda dessa funktioner tillsammans kan ett program lagra data för flera klienter i samma Shard-databas. IT kostar mindre per klient när klienterna delar en databas. Samma program kan också erbjuda sina Premium-klienter möjlighet att betala för sina egna dedikerade Shard för en klient. En fördel med en isolering med enskild klient är att garantera prestanda. Det finns ingen annan klient som konkurrerar för resurser i en databas för en enda klient.
 
-Målet är att använda [data beroende](elastic-scale-data-dependent-routing.md) API: er för klient bibliotekets elastiska databas för att automatiskt ansluta varje klient till rätt Shard-databas. Endast ett Shard innehåller ett visst TenantId-värde för den angivna innehavaren. TenantId är *nyckeln horisontell partitionering* . När anslutningen har upprättats säkerställer en säkerhets princip för RLS i databasen att den angivna innehavaren endast har åtkomst till de data rader som innehåller sitt TenantId.
+Målet är att använda [data beroende](elastic-scale-data-dependent-routing.md) API: er för klient bibliotekets elastiska databas för att automatiskt ansluta varje klient till rätt Shard-databas. Endast ett Shard innehåller ett visst TenantId-värde för den angivna innehavaren. TenantId är *nyckeln horisontell partitionering*. När anslutningen har upprättats säkerställer en säkerhets princip för RLS i databasen att den angivna innehavaren endast har åtkomst till de data rader som innehåller sitt TenantId.
 
 > [!NOTE]
 > Klient-ID: n kan bestå av mer än en kolumn. För att under lätta är den här diskussionen att vi har informerat ett TenantId i en kolumn.
@@ -42,7 +42,7 @@ Målet är att använda [data beroende](elastic-scale-data-dependent-routing.md)
 - Använda Visual Studio (2012 eller högre)
 - Skapa tre databaser i Azure SQL Database
 - Hämta exempel projekt: [elastiska dB-verktyg för Azure SQL-multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
-  - Fyll i informationen för dina databaser i början av **program.cs**
+  - Fyll i informationen för dina databaser i början av **programmet. cs**
 
 Det här projektet utökar det som beskrivs i [elastiska dB-verktyg för Azure SQL-Entity Framework-integrering](elastic-scale-use-entity-framework-applications-visual-studio.md) genom att lägga till stöd för Shard-databaser med flera innehavare. Projektet skapar ett enkelt konsol program för att skapa Bloggar och inlägg. Projektet innehåller fyra klienter, plus två Shard-databaser för flera innehavare. Den här konfigurationen illustreras i föregående diagram.
 
@@ -54,8 +54,8 @@ Skapa och kör programmet. Den här körningen startar starter av elastiska data
 
 Observera att eftersom RLS ännu inte har Aktiver ATS i Shard-databaserna visar var och en av dessa tester ett problem: innehavare kan se Bloggar som inte tillhör dem och programmet hindras inte från att infoga en blogg för fel klient. Resten av den här artikeln beskriver hur du löser problemen genom att tvinga klient isolering med RLS. Det finns två steg:
 
-1. **Program nivå** : ändra program koden så att den alltid anger aktuellt TENANTID i sessionens \_ kontext när du har öppnat en anslutning. Detta exempel projekt anger redan TenantId på det här sättet.
-2. **Datanivå** : skapa en säkerhets princip för RLS i varje Shard-databas för att filtrera rader baserat på det TenantId som lagras i sessionen \_ . Skapa en princip för var och en av dina Shard-databaser, annars filtreras inte rader i Shards med flera innehavare.
+1. **Program nivå**: ändra program koden så att den alltid anger aktuellt TENANTID i sessionens \_ kontext när du har öppnat en anslutning. Detta exempel projekt anger redan TenantId på det här sättet.
+2. **Datanivå**: skapa en säkerhets princip för RLS i varje Shard-databas för att filtrera rader baserat på det TenantId som lagras i sessionen \_ . Skapa en princip för var och en av dina Shard-databaser, annars filtreras inte rader i Shards med flera innehavare.
 
 ## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. program nivå: Ange TenantId i SESSION- \_ kontexten
 
@@ -303,7 +303,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 > [!NOTE]
 > Om du använder standard begränsningar för ett Entity Framework-projekt rekommenderar vi att du *inte* tar med kolumnen TenantId i din EF-datamodell. Den här rekommendationen beror på att Entity Framework frågor automatiskt tillhandahåller standardvärden som åsidosätter standard begränsningar som skapats i T-SQL och som använder SESSION \_ context.
-> Om du vill använda standard begränsningar i exempelprojektet, till exempel, bör du ta bort TenantId från DataClasses.cs (och köra Add-Migration i Package Manager-konsolen) och använda T-SQL för att se till att fältet endast finns i databas tabellerna. På så sätt anger EF automatiskt felaktiga standardvärden när data infogas.
+> Om du vill använda standard begränsningar i exempelprojektet, till exempel, bör du ta bort TenantId från DataClasses. CS (och köra Add-Migration i Package Manager-konsolen) och använda T-SQL för att se till att fältet endast finns i databas tabellerna. På så sätt anger EF automatiskt felaktiga standardvärden när data infogas.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Valfritt Aktivera en *superanvändare* för åtkomst till alla rader
 
@@ -341,7 +341,7 @@ GO
 
 ### <a name="maintenance"></a>Underhåll
 
-- **Lägger till nya Shards** : kör T-SQL-skriptet för att aktivera RLS på alla nya Shards, annars filtreras inte frågor på dessa Shards.
+- **Lägger till nya Shards**: kör T-SQL-skriptet för att aktivera RLS på alla nya Shards, annars filtreras inte frågor på dessa Shards.
 - **Nya tabeller läggs** till: Lägg till ett filter och blockera predikat i säkerhets principen på alla Shards varje gång som en ny tabell skapas. Andra frågor om den nya tabellen filtreras inte. Det här tillägget kan automatiseras med hjälp av en DDL-utlösare, enligt beskrivningen i [tillämpa Row-Level säkerhet automatiskt på nyligen skapade tabeller (blogg)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393).
 
 ## <a name="summary"></a>Sammanfattning

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793253"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Etablera och katalogisera nya klienter med hjälp av mönstret program per klient SaaS
@@ -56,7 +56,7 @@ EDCL-funktioner kan anropas från program eller PowerShell-skript för att skapa
 
 Varje klient kräver en ny Azure-resurs grupp som måste skapas innan resurser kan tillhandahållas i den. När resurs gruppen finns kan du använda en Azure Resource Management-mall för att distribuera program komponenterna och-databasen och sedan konfigurera databas anslutningen. För att initiera databasschemat kan mallen importera en BACPAC-fil.  Du kan också skapa databasen som en kopia av en mall-databas.  Databasen uppdateras sedan ytterligare med inledande plats data och registreras i katalogen.
 
-## <a name="tutorial"></a>Självstudier
+## <a name="tutorial"></a>Självstudie
 
 I den här guiden får du lära du dig hur man:
 
@@ -82,14 +82,14 @@ I den här uppgiften får du lära dig hur du etablerar katalogen som används f
 * **Etablera katalog databasen** med en Azure-resurs hanterings mall. Databasen initieras genom att importera en BACPAC-fil.
 * **Registrera de exempel på klient program** som du distribuerade tidigare.  Varje klient har registrerats med hjälp av en nyckel som skapats från en hash av klientens namn.  Klient namnet lagras också i en tilläggs tabell i katalogen.
 
-1. I PowerShell ISE öppnar du *. ..\Learning Modules\UserConfig.PSM* och uppdaterar **\<user\>** värdet till det värde som du använde när du distribuerade de tre exempel programmen.  **Spara filen** .
-1. I PowerShell ISE öppnar du *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* och anger **$Scenario = 1** . Distribuera klient katalogen och registrera de fördefinierade klient organisationerna.
+1. I PowerShell ISE öppnar du *. ..\Learning Modules\UserConfig.PSM* och uppdaterar **\<user\>** värdet till det värde som du använde när du distribuerade de tre exempel programmen.  **Spara filen**.
+1. I PowerShell ISE öppnar du *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* och anger **$Scenario = 1**. Distribuera klient katalogen och registrera de fördefinierade klient organisationerna.
 
-1. Lägg till en Bryt punkt genom att placera markören var som helst på den rad som står, `& $PSScriptRoot\New-Catalog.ps1` och tryck sedan på **F9** .
+1. Lägg till en Bryt punkt genom att placera markören var som helst på den rad som står, `& $PSScriptRoot\New-Catalog.ps1` och tryck sedan på **F9**.
 
     ![Ange en Bryt punkt för spårning](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
-1. Kör skriptet genom att trycka på **F5** .
+1. Kör skriptet genom att trycka på **F5**.
 1.  När skript körningen stoppas vid Bryt punkten trycker du på **F11** för att stega in i New-Catalog.ps1-skriptet.
 1.  Spåra skript körningen med hjälp av meny alternativen för fel sökning, F10 och F11, för att gå över eller till anropade funktioner.
     *   Mer information om hur du felsöker PowerShell-skript finns i [tips om att arbeta med och felsöka PowerShell-skript](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
@@ -99,7 +99,7 @@ När skriptet har slutförts kommer katalogen att finnas och alla exempel klient
 Titta nu på de resurser som du har skapat.
 
 1. Öppna [Azure Portal](https://portal.azure.com/) och bläddra bland resurs grupperna.  Öppna resurs gruppen **Wingtip-sa-catalog \<user\>** och anteckna katalog servern och databasen.
-1. Öppna databasen i portalen och välj *Data Explorer* på menyn till vänster.  Klicka på inloggnings kommandot och ange sedan lösen ordet = **P \@ ssword1** .
+1. Öppna databasen i portalen och välj *Data Explorer* på menyn till vänster.  Klicka på inloggnings kommandot och ange sedan lösen ordet = **P \@ ssword1**.
 
 
 1. Utforska schemat för *tenantcatalog* -databasen.
@@ -120,13 +120,13 @@ I den här uppgiften får du lära dig hur du etablerar ett enda klient program.
 
 * **Skapa en ny resurs grupp** för klient organisationen.
 * **Etablera programmet och databasen** i den nya resurs gruppen med hjälp av en Azure-mall för resurs hantering.  Den här åtgärden inkluderar att initiera databasen med vanliga schema-och referens data genom att importera en BACPAC-fil.
-* **Initiera databasen med grundläggande klient information** . Den här åtgärden inkluderar att ange platstyp, som avgör vilket fotografi som används som bakgrund på dess händelse webbplats.
-* **Registrera databasen i katalog databasen** .
+* **Initiera databasen med grundläggande klient information**. Den här åtgärden inkluderar att ange platstyp, som avgör vilket fotografi som används som bakgrund på dess händelse webbplats.
+* **Registrera databasen i katalog databasen**.
 
-1. I PowerShell ISE öppnar du *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* och anger **$Scenario = 2** . Distribuera klient katalogen och registrera de fördefinierade klient organisationerna
+1. I PowerShell ISE öppnar du *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* och anger **$Scenario = 2**. Distribuera klient katalogen och registrera de fördefinierade klient organisationerna
 
-1. Lägg till en Bryt punkt i skriptet genom att placera markören var som helst på rad 49 som står, `& $PSScriptRoot\New-TenantApp.ps1` och tryck sedan på **F9** .
-1. Kör skriptet genom att trycka på **F5** .
+1. Lägg till en Bryt punkt i skriptet genom att placera markören var som helst på rad 49 som står, `& $PSScriptRoot\New-TenantApp.ps1` och tryck sedan på **F9**.
+1. Kör skriptet genom att trycka på **F5**.
 1.  När skript körningen stoppas vid Bryt punkten trycker du på **F11** för att stega in i New-Catalog.ps1-skriptet.
 1.  Spåra skript körningen med hjälp av meny alternativen för fel sökning, F10 och F11, för att gå över eller till anropade funktioner.
 

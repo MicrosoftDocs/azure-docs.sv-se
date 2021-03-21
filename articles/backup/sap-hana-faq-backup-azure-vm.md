@@ -4,10 +4,10 @@ description: I den här artikeln hittar du svar på vanliga frågor om hur du s�
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95400215"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Vanliga frågor och svar – säkerhetskopiera SAP HANA databaser på virtuella Azure-datorer
@@ -139,7 +139,7 @@ Innan du skapar en princip bör du vara klar med kraven för återställnings-oc
 
 RTO (återställnings tid-mål) anger hur snabbt data ska återställas till den senaste tillgängliga tidpunkten efter ett data förlust scenario. Detta beror på återställnings strategin som används av HANA, som vanligt vis är beroende av hur många filer som krävs för återställning. Detta har också kostnads konsekvenser och följande tabell bör vara till hjälp vid förståelsen av alla scenarier och deras konsekvenser.
 
-|Säkerhetskopieringsprincip  |RTO  |Cost (Kostnad)  |
+|Säkerhetskopieringsprincip  |RTO  |Cost  |
 |---------|---------|---------|
 |Dagliga fullständiga + loggar     |   Snabbast eftersom vi bara behöver en fullständig kopia + krävs loggar för återställning av tidpunkter      |    Alternativet Costliest eftersom en fullständig kopia tas dagligen och så att fler och fler data samlas in i Server delen tills Retentions tiden   |
 |Veckovis full + daglig differential + loggar     |   Långsammare än alternativet ovan, men snabbare än nästa alternativ eftersom vi kräver en fullständig kopia + en differentiell kopia + loggar för återställning vid tidpunkter      |    Billigare alternativ eftersom den dagliga differentialen vanligt vis är mindre än fullständig och en fullständig kopia bara görs en gång i veckan      |

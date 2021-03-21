@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.openlocfilehash: cfbbc1f11a24379561df26e2fb8d9da20b249317
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942749"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installera Apache Hadoop program från tredje part i Azure HDInsight
@@ -20,7 +20,7 @@ An-HDInsight program är ett program som användare kan installera i ett HDInsig
 
 I följande lista visas de publicerade programmen:
 
-|Program |Kluster typ (er) | Description |
+|Program |Kluster typ (er) | Beskrivning |
 |---|---|---|
 |[AtScale intelligence-plattform](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |AtScale vänder ditt HDInsight-kluster till en skalbar OLAP-server, så att du kan fråga miljarder rader med data interaktivt med de BI-verktyg som du redan känner till, äger och gillar – från Microsoft Excel, Power BI, Tableau-programvara till QlikView. |
 |[CDAP för HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP är den första enhetliga integrerings plattformen för Big data som påskyndar tiden till värde för Hadoop och gör det möjligt att tillhandahålla självbetjänings data. Öppen källkod och utöknings bar CDAP tar bort hinder för innovation. Krav: 4 regionfiler, min D3 v2. |
@@ -86,7 +86,7 @@ På portalen kan du visa en lista över de installerade HDInsight-programmen fö
     |Status |Program status. |
     |Historik |URL: en för det webb program som du har distribuerat till Edge-noden. Autentiseringsuppgifterna är samma som HTTP-autentiseringsuppgifterna som du har konfigurerat för klustret. |
     |SSH-slutpunkt |Du kan använda SSH för att ansluta till Edge-noden. SSH-autentiseringsuppgifterna är samma som SSH-autentiseringsuppgifterna som du har konfigurerat för klustret. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight). |
-    |Description | Programbeskrivning. |
+    |Beskrivning | Programbeskrivning. |
 
 6. Om du vill ta bort ett program högerklickar du på programmet och klickar sedan på **ta bort** på snabb menyn.
 

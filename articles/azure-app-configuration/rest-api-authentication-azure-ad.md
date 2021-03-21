@@ -7,17 +7,17 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930525"
 ---
 # <a name="azure-active-directory-authentication"></a>Azure Active Directory-autentisering
 
 Du kan autentisera HTTP-begäranden med hjälp av `Bearer` autentiseringsschemat med en token som hämtats från Azure Active Directory (Azure AD). Du måste skicka dessa förfrågningar via Transport Layer Security (TLS).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du måste tilldela huvud kontot som används för att begära en Azure AD-token till en av de tillämpliga [Azure App konfigurations rollerna](./rest-api-authorization-azure-ad.md).
 

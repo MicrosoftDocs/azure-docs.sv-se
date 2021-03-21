@@ -1,16 +1,16 @@
 ---
-title: Hantera återställnings punkter
+title: Hantera återställningspunkter
 description: Lär dig hur tjänsten Azure Backup hanterar återställnings punkter för virtuella datorer
 ms.topic: conceptual
 ms.date: 11/08/2020
 ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94428711"
 ---
-# <a name="manage-recovery-points"></a>Hantera återställnings punkter
+# <a name="manage-recovery-points"></a>Hantera återställningspunkter
 
 Den här artikeln beskriver hur kvarhållning fungerar för virtuella datorer. När säkerhets kopieringar sker skapas återställnings punkter från vilka återställnings åtgärder kan utföras.
 
@@ -82,7 +82,7 @@ När den första återställnings punkten går ut slås den samman med nästa st
 
 ### <a name="case-3-on-demand-recovery-point-expires"></a>Fall 3: återställnings punkten på begäran upphör att gälla
 
-I det här exemplet är en schema princip (daglig säkerhets kopiering) schemalagd att köras med *n* dagars kvarhållningsperiod.  Om en säkerhets kopiering på begäran utlöses den fjärde dagen innan nästa schemalagda säkerhets kopiering och dess kvarhållningsperiod anges som 10 dagar, kommer det fortfarande att vara en stegvis säkerhets kopia. En återställnings punkt ( *RP1 på begäran* ) kommer att skapas efter *återställnings punkt 3* och innan *återställnings punkt 4*.  Vid slutet av dagen 14 upphör återställnings punkten på begäran ( *RP1 på begäran* ) och den slås samman med nästa tillgängliga återställnings punkt. De data block som fortfarande finns på servern slås samman, medan data block som har ändrats (överskrivna eller borttagna) tas bort från den utgångna återställnings punkten.
+I det här exemplet är en schema princip (daglig säkerhets kopiering) schemalagd att köras med *n* dagars kvarhållningsperiod.  Om en säkerhets kopiering på begäran utlöses den fjärde dagen innan nästa schemalagda säkerhets kopiering och dess kvarhållningsperiod anges som 10 dagar, kommer det fortfarande att vara en stegvis säkerhets kopia. En återställnings punkt (*RP1 på begäran*) kommer att skapas efter *återställnings punkt 3* och innan *återställnings punkt 4*.  Vid slutet av dagen 14 upphör återställnings punkten på begäran (*RP1 på begäran*) och den slås samman med nästa tillgängliga återställnings punkt. De data block som fortfarande finns på servern slås samman, medan data block som har ändrats (överskrivna eller borttagna) tas bort från den utgångna återställnings punkten.
 
 ![Tredje fallet](./media/manage-recovery-points/third-case.png)
 

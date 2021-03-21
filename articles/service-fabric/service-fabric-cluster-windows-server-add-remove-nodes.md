@@ -4,10 +4,10 @@ description: Lär dig hur du lägger till eller tar bort noder i ett Azure Servi
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 26945b4785a0591d997139f2427b0ae6b59fa742
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790604"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Lägga till eller ta bort noder i ett fristående Service Fabric-kluster som körs på Windows Server

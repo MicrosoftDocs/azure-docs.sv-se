@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
 ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95249902"
 ---
-# <a name="delete-volume-replications-or-volumes"></a>Ta bort volymer eller volymer
+# <a name="delete-volume-replications-or-volumes"></a>Ta bort volymreplikeringar eller volymer
 
 Den här artikeln beskriver hur du tar bort volym replikeringar. Det beskriver också hur du tar bort käll-eller mål volymen.
 
@@ -34,10 +34,10 @@ Du kan avsluta replikeringen mellan käll-och mål volymerna genom att ta bort v
     1. Välj *mål* volym. Klicka på **replikering** under lagrings tjänst.  
 
     2.  Kontrol lera följande fält innan du fortsätter:  
-        * Se till att speglings status visar ***speglade** _.   
-            Försök inte att avbryta replikerings-peering om speglings status visar _Uninitialized *.
-        * Se till att Relations status visar ***inaktiv** _.   
-            Försök inte att avbryta replikerings-peering om Relations status visar _Transferring *.   
+        * Kontrol lera att speglings statusen visas som ***speglad***.   
+            Försök inte att avbryta replikerings-peering om speglings status visar *oinitierad*.
+        * Se till att Relations status visar ***inaktiv***.   
+            Försök inte att avbryta replikerings-peering om Relations status visar *överföring*.   
 
         Se [Visa hälso status för replikeringsrelation](cross-region-replication-display-health-status.md). 
 

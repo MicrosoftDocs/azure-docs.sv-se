@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359837"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Vanliga frågor och svar om olika API: er i Azure Cosmos DB
@@ -180,7 +180,7 @@ SQL-API: et stöder låg latens agg regering i valfri skala via mängd funktione
 
 SQL-API: et stöder optimistisk samtidighets kontroll (OCC) via HTTP-entitetstyper eller ETags. Varje SQL-API-resurs har en ETag och ETag anges på servern varje gång ett dokument uppdateras. ETag-rubriken och det aktuella värdet ingår i alla svarsmeddelanden. ETags kan användas med If-Match-rubriken för att tillåta att servern bestämmer om en resurs ska uppdateras. Värdet If-Match är det ETag-värde som ska kontrol leras mot. Om ETag-värdet matchar Server-ETag-värdet, uppdateras resursen. Om ETag inte längre är aktuell, avvisar servern åtgärden med svars koden "HTTP 412-förväntas haveri". Klienten hämtar sedan resursen för att hämta det aktuella ETag-värdet för resursen. Dessutom kan ETags användas med rubriken If-None-Match för att avgöra om en återhämtning av en resurs krävs.
 
-Om du vill använda optimistisk samtidighet i .NET använder du klassen [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) . Ett .NET-exempel finns i [program.cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) i DocumentManagement-exemplet på GitHub.
+Om du vill använda optimistisk samtidighet i .NET använder du klassen [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) . Ett .NET-exempel finns i [program. cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) i DocumentManagement-exemplet på GitHub.
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Hur gör jag för att utföra transaktioner i SQL-API: et?
 
@@ -204,7 +204,7 @@ Ja. [Azure Cosmos DB emulatorn](local-emulator.md) ger en effektiv emulering av 
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Varför är långa flytt ALS värden i ett dokument avrundade när de visas från data Utforskaren i portalen.
 
-Detta är en begränsning i Java Script. Java Script använder dubbla precisions tal för flytt ALS formatering som anges i IEEE 754 och det kan på ett säkert sätt innehålla tal mellan-(2<sup>53</sup> -1) och 2<sup>53</sup>-1 (dvs. 9007199254740991).
+Detta är en begränsning i JavaScript. Java Script använder dubbla precisions tal för flytt ALS formatering som anges i IEEE 754 och det kan på ett säkert sätt innehålla tal mellan-(2<sup>53</sup> -1) och 2<sup>53</sup>-1 (dvs. 9007199254740991).
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Var är behörigheter tillåtna i Object-hierarkin?
 

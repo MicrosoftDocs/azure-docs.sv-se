@@ -13,10 +13,10 @@ ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 03/08/2021
 ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102489777"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Jämförelse av funktioner: Azure SQL Database och Azure SQL-hanterad instans
@@ -172,7 +172,7 @@ Azure SQL Database och Azure SQL Managed instance stöder olika data verktyg som
 | [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja | Ja |
 | [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja [version 18,0 och högre](/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Inga – se [utökade händelser](xevent-db-diff-from-svr.md) | Ja |
+| [SQL Server-profilerare](/sql/tools/sql-server-profiler/sql-server-profiler) | Inga – se [utökade händelser](xevent-db-diff-from-svr.md) | Ja |
 | [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | [Ja](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
 
 ## <a name="migration-methods"></a>Metoder för migrering

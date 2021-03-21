@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 4b62b591c408f663fd28d5077af924f785ee66c8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090417"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Snabb start: bygga en Java-app för att hantera Azure Cosmos DB SQL API-data
@@ -43,15 +43,15 @@ I den här snabb starten skapar och hanterar du ett Azure Cosmos DB SQL API-kont
 
 ## <a name="introductory-notes"></a>Inledande anmärkningar
 
-*Strukturen för ett Cosmos DB konto.* Oavsett API eller programmeringsspråk innehåller ett Cosmos DB- *konto* noll eller flera *databaser* , en *databas* (dB) innehåller noll eller flera *behållare* , och en *behållare* innehåller noll eller flera objekt, som visas i diagrammet nedan:
+*Strukturen för ett Cosmos DB konto.* Oavsett API eller programmeringsspråk innehåller ett Cosmos DB- *konto* noll eller flera *databaser*, en *databas* (dB) innehåller noll eller flera *behållare*, och en *behållare* innehåller noll eller flera objekt, som visas i diagrammet nedan:
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos Account-entiteter" border="false":::
 
-Du kan läsa mer om databaser, behållare och objekt [här.](account-databases-containers-items.md) Några viktiga egenskaper definieras på nivån för behållaren, bland dem med det *etablerade data flödet* och *partitionsnyckel* . 
+Du kan läsa mer om databaser, behållare och objekt [här.](account-databases-containers-items.md) Några viktiga egenskaper definieras på nivån för behållaren, bland dem med det *etablerade data flödet* och *partitionsnyckel*. 
 
-Det etablerade data flödet mäts i *ru: er* (Request units) som har ett penning pris och är en väsentlig avgörande faktor för kontots drift kostnad. Det etablerade data flödet kan väljas per behållar kornig het eller granularitet per databas, men data flödes specifikationen på behållare nivå är vanligt vis lämplig. Du kan läsa mer om data flödes etablering [här.](set-throughput.md)
+Det etablerade data flödet mäts i *ru: er*(Request units) som har ett penning pris och är en väsentlig avgörande faktor för kontots drift kostnad. Det etablerade data flödet kan väljas per behållar kornig het eller granularitet per databas, men data flödes specifikationen på behållare nivå är vanligt vis lämplig. Du kan läsa mer om data flödes etablering [här.](set-throughput.md)
 
-När objekt infogas i en Cosmos DB-behållare blir databasen vågrätt genom att lägga till mer lagrings utrymme och data bearbetning för att hantera begär Anden. Lagrings-och beräknings kapaciteten läggs till i diskreta enheter som kallas *partitioner* , och du måste välja ett fält i dina dokument för att vara den partitionsnyckel som mappar varje dokument till en partition. Hur partitioner hanteras är att varje partition tilldelas en ungefär lika stor sektor från intervallet av nyckel värden. Därför bör du välja en partitionsnyckel som är relativt slumpmässig eller jämnt distribuerad. Annars kommer vissa partitioner att se betydligt fler begär Anden ( *het partition* ) medan andra partitioner ser betydligt färre begär Anden ( *kall partition* ) och detta bör undvikas. Du kan lära dig mer om partitionering [här](partitioning-overview.md).
+När objekt infogas i en Cosmos DB-behållare blir databasen vågrätt genom att lägga till mer lagrings utrymme och data bearbetning för att hantera begär Anden. Lagrings-och beräknings kapaciteten läggs till i diskreta enheter som kallas *partitioner*, och du måste välja ett fält i dina dokument för att vara den partitionsnyckel som mappar varje dokument till en partition. Hur partitioner hanteras är att varje partition tilldelas en ungefär lika stor sektor från intervallet av nyckel värden. Därför bör du välja en partitionsnyckel som är relativt slumpmässig eller jämnt distribuerad. Annars kommer vissa partitioner att se betydligt fler begär Anden (*het partition*) medan andra partitioner ser betydligt färre begär Anden (*kall partition*) och detta bör undvikas. Du kan lära dig mer om partitionering [här](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Skapa ett databaskonto
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020000"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Vanliga fråge mönster i Azure Stream Analytics
@@ -414,14 +414,14 @@ Varaktigheten för en händelse kan beräknas genom att titta på den sista star
 
 **Inmatade**:  
 
-| Användare | Funktion | Händelse | Tid |
+| User | Funktion | Händelse | Tid |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Slut |2015-01-01T00:00:08.0000000 Z |
 
 **Utdata**:  
 
-| Användare | Funktion | Varaktighet |
+| User | Funktion | Varaktighet |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -463,7 +463,7 @@ Den **sista** funktionen kan användas för att hämta den sista händelsen inom
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
 
-**Frågeterm**
+**Fråga:**
 
 ```SQL
 SELECT

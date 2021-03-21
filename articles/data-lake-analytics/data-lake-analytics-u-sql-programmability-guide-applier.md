@@ -6,13 +6,13 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 0842a2cfa021ef8ea45c19ec885c7dec371730de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512644"
 ---
-# <a name="use-user-defined-applier"></a>Använd användardefinierad applier 
+# <a name="use-user-defined-applier"></a>Använda användardefinierad tillämpare 
 
 ## <a name="u-sql-udo-user-defined-applier"></a>U-SQL-UDO: användardefinierad applier
 Med ett U-SQL-användardefinierat applier kan du anropa en anpassad C#-funktion för varje rad som returneras av det yttre tabell uttrycket i en fråga. Den högra inmatningen utvärderas för varje rad från den vänstra inmatningen och de rader som skapas kombineras för slutliga utdata. Listan över kolumner som skapas av operatorn APPLY är en kombination av kolumn uppsättningen i vänster och höger Indatatyp.

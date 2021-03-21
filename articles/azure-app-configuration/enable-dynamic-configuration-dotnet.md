@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: alkemper
 ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932769"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Självstudie: Använd dynamisk konfiguration i en .NET Framework app
@@ -29,7 +29,7 @@ I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Konfigurera din .NET Framework-app för att uppdatera konfigurationen som svar på ändringar i ett konfigurations lager för appar.
 > * Mata in den senaste konfigurationen i ditt program.
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -60,7 +60,7 @@ I den här guiden får du lära dig att:
 ## <a name="reload-data-from-app-configuration"></a>Läsa in data på nytt från App Configuration
 1. Högerklicka på projektet och välj **Hantera NuGet-paket**. På fliken **Bläddra** söker du och lägger till *Microsoft.Extensions.Configuration. AzureAppConfiguration* NuGet-paket till ditt projekt. Om du inte hittar det markerar du kryss rutan **Inkludera för hands version** .
 
-1. Öppna *program.cs* och Lägg till en referens till .net Core app Configuration-providern.
+1. Öppna *program. cs* och Lägg till en referens till .net Core app Configuration-providern.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

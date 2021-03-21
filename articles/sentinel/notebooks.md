@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092201"
 ---
-# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Använd Jupyter Notebook för att efter säkerhetshot
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Använda Jupyter Notebook för att söka efter säkerhetshot
 
 Stiftelsen i Azure Sentinel är data lagret. den kombinerar högpresterande frågor, dynamiskt schema och skalar till enorma data volymer. Azure Portal och alla Azure Sentinel-verktyg använder ett gemensamt API för att få åtkomst till det här data lagret. Samma API är också tillgängligt för externa verktyg som [Jupyter](https://jupyter.org/) Notebooks och python. Många vanliga uppgifter kan utföras i portalen, och Jupyter utökar omfattningen av vad du kan göra med dessa data. Den kombinerar fullständig programmering med en enorm samling bibliotek för maskin inlärning, visualisering och data analys. Dessa attribut gör Jupyter till ett övertygande verktyg för säkerhets undersökning och jakt.
 

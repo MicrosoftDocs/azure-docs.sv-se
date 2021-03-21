@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021528"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Använda en intern Load Balancer med ett App Service-miljön
@@ -58,12 +58,12 @@ Att skapa en ILB-ASE är inte mycket annorlunda än att skapa en ASE normalt. En
 
 I rutan Virtual Network finns det ett konfigurations alternativ för virtuellt nätverk som låter dig välja mellan en extern VIP-eller intern VIP. Standardinställningen är Extern. Om du har angett till extern använder din ASE en tillgänglig VIP för Internet. Om du väljer Intern är din ASE konfigurerad med en ILB på en IP-adress inom ditt VNet. 
 
-När du har valt intern tas möjligheten att lägga till fler IP-adresser till din ASE bort, och i stället måste du ange under domänen för ASE. I en ASE med en extern VIP används namnet på ASE i under domänen för appar som har skapats i den ASE. Om din ASE har namnet **_contosotest_* _ och din app i denna ASE heter _*_test_*_, är under domänen formatet _*_contosotest.p.azurewebsites.net_*_ och URL: en för appen är _*_mytest.contosotest.p.azurewebsites.net_*_. Om du ställer in VIP-typen till Internal, används inte ditt ASE-namn i under domänen för ASE. Du anger en under domän explicit. Om din under domän är _*_contoso.Corp.net_*_ och du har gjort en app i ASE med namnet _*_timereporting_*_, är URL: en för den appen _*_timereporting.contoso.Corp.net_*_.
+När du har valt intern tas möjligheten att lägga till fler IP-adresser till din ASE bort, och i stället måste du ange under domänen för ASE. I en ASE med en extern VIP används namnet på ASE i under domänen för appar som har skapats i den ASE. Om din ASE har namnet ***contosotest** _ och din app i denna ASE heter _*_test_*_, är under domänen formatet _*_contosotest.p.azurewebsites.net_*_ och URL: en för appen är _* _mytest.contosotest.p.azurewebsites.net_* *. Om du ställer in VIP-typen till Internal, används inte ditt ASE-namn i under domänen för ASE. Du anger en under domän explicit. Om din under domän är ***contoso.Corp.net**_ och du har gjort en app i ASE med namnet _*_timereporting_*_, är URL: en för den appen _ *_timereporting.contoso.Corp.net_* *.
 
 ## <a name="apps-in-an-ilb-ase"></a>Appar i en ILB-ASE
 Att skapa en app i en ILB-ASE är detsamma som att skapa en app i en ASE på vanligt sätt. 
 
-1. I Azure Portal väljer du _ *skapa en resurs-> webb och mobilt-> webb** eller **mobil** -eller **API-app**.
+1. I Azure Portal väljer du **skapa en resurs-> webb och mobilt-> webb-** eller **mobil** -eller **API-app**.
 2. Ange appens namn.
 3. Välj din prenumeration.
 4. Välj eller skapa en Resursgrupp.

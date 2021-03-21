@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
 ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575445"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Real tids övervakning, Mät värden och åtkomst loggar för Azure CDN
@@ -219,7 +219,7 @@ Mer information finns i [Azure Monitor mått](../azure-monitor/essentials/data-p
 
 **Mått som stöds av Azure CDN från Microsoft**
 
-| Mått  | Description | Dimensioner |
+| Mått  | Beskrivning | Dimensioner |
 | ------------- | ------------- | ------------- |
 | Träff grad för byte * | Procent andelen utgående från CDN-cachen, beräknad mot det totala utgående värdet. | Slutpunkt |
 | RequestCount | Antalet klient begär Anden som hanteras av CDN. | Slutpunkt </br> Klient land. </br> Klient region. </br> HTTP-status. </br> HTTP-status grupp. |
