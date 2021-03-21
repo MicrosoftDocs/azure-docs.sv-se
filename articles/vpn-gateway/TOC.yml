@@ -262,6 +262,8 @@
     - name: Felsöka
       href: vpn-gateway-troubleshoot.md
       items:
+        - name: Felsöka Azure VPN Gateway med hjälp av diagnostikloggar
+          href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: Community-föreslaget VPN eller brandväggsinställningar för enhet
           href: vpn-gateway-third-party-settings.md
         - name: Konfigurera och verifiera VNet- eller VPN-anslutningar

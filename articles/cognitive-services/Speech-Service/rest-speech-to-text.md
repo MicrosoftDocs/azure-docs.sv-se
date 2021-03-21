@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90a4ad068f332b198696d96bddbb794c820f42f5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 76b4a749bff94cbf218d3cd3c7d132eef119b7ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564396"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606913"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API för tal-till-text
 
@@ -51,7 +51,8 @@ Se den fullständiga referensen för tal-till-text REST API v 3.0 [här](https:/
 
 ## <a name="speech-to-text-rest-api-for-short-audio"></a>Tal till text REST API för kort ljud
 
-Som ett alternativ till [tal-SDK](speech-sdk.md)gör röst tjänsten det möjligt för dig att konvertera tal till text med hjälp av en REST API. Varje tillgänglig slut punkt är associerad med en region. Ditt program kräver en prenumerations nyckel för den slut punkt som du planerar att använda. REST API för kort ljud är mycket begränsat och bör endast användas i fall där [tal-SDK: n](speech-sdk.md) inte kan användas.
+Som ett alternativ till [tal-SDK](speech-sdk.md)gör röst tjänsten det möjligt för dig att konvertera tal till text med hjälp av en REST API.
+REST API för kort ljud är mycket begränsat och bör endast användas i fall där [tal-SDK: n](speech-sdk.md) inte kan användas.
 
 Tänk på följande innan du använder tal-till-text-REST API för kort ljud:
 
@@ -95,7 +96,7 @@ Dessa parametrar kan ingå i frågesträngen för REST-begäran.
 
 I den här tabellen listas obligatoriska och valfria sidhuvuden för begäran om tal till text.
 
-|Huvud| Beskrivning | Obligatorisk/valfri |
+|Huvud| Description | Obligatorisk/valfri |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Din prenumerations nyckel för röst tjänst. | Antingen den här rubriken eller `Authorization` krävs. |
 | `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Antingen den här rubriken eller `Ocp-Apim-Subscription-Key` krävs. |
@@ -341,3 +342,4 @@ Ett typiskt svar för igenkänning av uttal av uttal:
 - [Anpassa akustiska modeller](./how-to-custom-speech-train-model.md)
 - [Anpassa språkmodeller](./how-to-custom-speech-train-model.md)
 - [Bekanta dig med batch-avskriftering](batch-transcription.md)
+

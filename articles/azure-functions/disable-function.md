@@ -2,14 +2,14 @@
 title: Så här inaktiverar du funktioner i Azure Functions
 description: Lär dig hur du inaktiverar och aktiverar funktioner i Azure Functions.
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1ad484804f66a2e2d4d0f1da4a37cf0d6c485f38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551051"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584745"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Så här inaktiverar du funktioner i Azure Functions
 
@@ -20,13 +20,26 @@ Det rekommenderade sättet att inaktivera en funktion är med en app-inställnin
 > [!NOTE]  
 > När du inaktiverar en HTTP-utlöst funktion med hjälp av metoderna som beskrivs i den här artikeln, kan slut punkten fortfarande vara tillgänglig när den körs på den lokala datorn.  
 
-## <a name="use-the-azure-cli"></a>Använda Azure CLI
+## <a name="disable-a-function"></a>Inaktivera en funktion
 
-I Azure CLI använder du [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) kommandot för att skapa och ändra appens inställning. Följande kommando inaktiverar en funktion `QueueTrigger` som heter genom att skapa en app-inställning med namnet `AzureWebJobs.QueueTrigger.Disabled` Ange den som `true` . 
+# <a name="portal"></a>[Portal](#tab/portal)
+
+Använd knapparna **Aktivera** och **inaktivera** på funktionens **översikts** sida. Dessa knappar fungerar genom att ändra värdet för `AzureWebJobs.<FUNCTION_NAME>.Disabled` appens inställning. Den här användarspecifika inställningen skapas första gången den inaktive ras. 
+
+![Funktions tillstånds växel](media/disable-function/function-state-switch.png)
+
+Även när du publicerar till din Function-app från ett lokalt projekt kan du fortfarande använda portalen för att inaktivera funktioner i Function-appen. 
+
+> [!NOTE]  
+> Den Portal-integrerade test funktionen ignorerar `Disabled` inställningen. Det innebär att en inaktive rad funktion fortfarande körs när den startas från **test** fönstret i portalen. 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+I Azure CLI använder du [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) kommandot för att skapa och ändra appens inställning. Följande kommando inaktiverar en funktion som heter genom att `QueueTrigger` skapa en app-inställning med namnet `AzureWebJobs.QueueTrigger.Disabled` och ställa in den på `true` . 
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <myFunctionApp> \
---resource-group <myResourceGroup> \
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
@@ -38,16 +51,55 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-## <a name="use-the-portal"></a>Använda portalen
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Du kan också använda knapparna **Aktivera** och **inaktivera** på funktionens **översikts** sida. Dessa knappar fungerar genom att ändra värdet för `AzureWebJobs.<FUNCTION_NAME>.Disabled` appens inställning. Den här användarspecifika inställningen skapas första gången den inaktive ras. 
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Kommandot lägger till eller uppdaterar en program inställning. Följande kommando inaktiverar en funktion som heter genom att `QueueTrigger` skapa en app-inställning med namnet `AzureWebJobs.QueueTrigger.Disabled` och ställa in den på `true` . 
 
-![Funktions tillstånds växel](media/disable-function/function-state-switch.png)
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "true"}
+```
 
-Även när du publicerar till din Function-app från ett lokalt projekt kan du fortfarande använda portalen för att inaktivera funktioner i Function-appen. 
+Om du vill aktivera funktionen igen kör du samma kommando med värdet `false` .
 
-> [!NOTE]  
-> Den Portal-integrerade test funktionen ignorerar `Disabled` inställningen. Det innebär att en inaktive rad funktion fortfarande körs när den startas från **test** fönstret i portalen. 
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "false"}
+```
+---
+
+## <a name="functions-in-a-slot"></a>Funktioner på en plats
+
+Som standard gäller appinställningar även för appar som körs på distributions platser. Du kan dock åsidosätta den app-inställning som används av facket genom att ange en plats för en speciell app. Till exempel kanske du vill att en funktion ska vara aktiv i produktion, men inte under distributions testning, till exempel en timer-utlöst funktion. 
+
+Så här inaktiverar du endast en funktion på mellanlagrings platsen:
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+Navigera till plats instansen för din Function-app genom att välja **distributions fack** under **distributionen**, välja plats och välja **funktioner** i plats instansen.  Välj din funktion och Använd knapparna **Aktivera** och **inaktivera** på funktionens **översikts** sida. Dessa knappar fungerar genom att ändra värdet för `AzureWebJobs.<FUNCTION_NAME>.Disabled` appens inställning. Den här användarspecifika inställningen skapas första gången den inaktive ras. 
+
+Du kan också direkt lägga till appens inställningen `AzureWebJobs.<FUNCTION_NAME>.Disabled` med namnet med värdet `true` i **konfigurationen** för plats instansen. När du lägger till en plats bestämd app-inställning kontrollerar du att kryss rutan **distributions plats inställning** är markerad. Detta bibehåller inställnings värdet med facket vid växlingar.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+Om du vill aktivera funktionen igen kör du samma kommando med värdet `false` .
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Azure PowerShell har för närvarande inte stöd för den här funktionen.
+
+---
+
+Läs mer i [Azure Functions distributions fack](functions-deployment-slots.md).
 
 ## <a name="localsettingsjson"></a>local.settings.json
 

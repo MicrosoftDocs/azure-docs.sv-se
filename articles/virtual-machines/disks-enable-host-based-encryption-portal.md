@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cdb22805e2e68893d3883272b66c2cfac13c807e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573610"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721876"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Använd Azure Portal för att aktivera kryptering från slut punkt till slut punkt med kryptering på värden
 
@@ -27,9 +27,6 @@ När du aktiverar kryptering på värden krypteras data som lagras på den virtu
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Regioner som stöds
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>VM-storlekar som stöds
 
@@ -37,7 +34,24 @@ När du aktiverar kryptering på värden krypteras data som lagras på den virtu
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft.com med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer.
+Du måste aktivera funktionen för din prenumeration innan du använder egenskapen EncryptionAtHost för din VM/VMSS. Följ stegen nedan för att aktivera funktionen för din prenumeration:
+
+1. **Azure Portal**: välj ikonen Cloud Shell på [Azure Portal](https://portal.azure.com):
+
+    ![Ikon för att starta Cloud Shell från Azure Portal](../Cloud-Shell/media/overview/portal-launch-icon.png)
+    
+2.  Kör följande kommando för att registrera funktionen för din prenumeration
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+3.  Kontrol lera att registrerings statusen är registrerad (tar några minuter) med kommandot nedan innan du testar funktionen.
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 Logga in på Azure Portal med den [angivna länken](https://aka.ms/diskencryptionupdates).
 

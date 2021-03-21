@@ -3,14 +3,14 @@ title: Välja rätt distributions typ – Azure Database for MariaDB
 description: I den här artikeln beskrivs vilka faktorer du bör tänka på innan du distribuerar Azure Database for MariaDB som antingen infrastruktur som en tjänst (IaaS) eller Platform as a Service (PaaS).
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664526"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Välj rätt MariaDB Server-alternativ i Azure
@@ -31,7 +31,7 @@ När du fattar ditt beslut bör du tänka på följande två alternativ:
 
 De huvudsakliga skillnaderna mellan dessa alternativ visas i följande tabell:
 
-| Attribut          | Azure-databas för MariaDB | MariaDB på virtuella Azure-datorer    |
+| Attribut          | Azure Database for MariaDB | MariaDB på virtuella Azure-datorer    |
 |:-------------------|:-----------------------------|:--------------------|
 | Service nivå avtal (SLA)                | Erbjuder SLA med 99,99% tillgänglighet| Upp till 99,95% tillgänglighet med två eller fler instanser i samma tillgänglighets uppsättning.<br/><br/>99,9% tillgänglighet med en enskild instans av en virtuell dator med Premium Storage.<br/><br/>99,99% med Tillgänglighetszoner med flera instanser i flera tillgänglighets uppsättningar.<br/><br/>Se [Virtual Machines service avtal](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Uppdatering av operativ system        | Automatiskt  | Hanteras av kunder |

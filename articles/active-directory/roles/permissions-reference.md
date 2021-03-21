@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2c327154e2f4eae735e7078be3b057b1d8cf1c5
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 99b74319581b4e74c63045afe73ee66b6efcf53c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490882"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585323"
 ---
 # <a name="azure-ad-built-in-roles"></a>Inbyggda roller i Azure AD
 
@@ -1415,7 +1415,7 @@ Rollen som [administratör för autentisering](#authentication-administrator) ha
 
 
 > [!IMPORTANT]
-> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) kommandot.
+> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](/powershell/module/msonline/set-msoluser) kommandot.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1780,7 +1780,7 @@ Användare med den här rollen har åtkomst till sammanställda data för klient
 
 Användare med den här rollen kan skapa användare och hantera alla aspekter av användare med vissa begränsningar (se tabellen) och kan uppdatera principer för lösen ordets giltighets tid. Dessutom kan användare med den här rollen skapa och hantera alla grupper. Den här rollen omfattar även möjligheten att skapa och hantera användar visningar, hantera support biljetter och övervaka tjänstens hälsa. Användar administratörer har inte behörighet att hantera vissa användar egenskaper för användare i de flesta administratörs roller. Användare med den här rollen har inte behörighet att hantera MFA. Rollerna som är undantag till den här begränsningen visas i följande tabell.
 
-| Användar administratörs behörighet | Anteckningar |
+| Användar administratörs behörighet | Kommentarer |
 | --- | --- |
 | Skapa användare och grupper<br/>Skapa och hantera användarvyer<br/>Hantera Office-support biljetter<br/>Uppdatera principer för förfallo datum för lösen ord |  |
 | Hantera licenser<br/>Hantera alla användar egenskaper utom användarens huvud namn | Gäller alla användare, inklusive alla administratörer |
@@ -1858,7 +1858,7 @@ Följande roller ska inte användas. De är inaktuella och kommer att tas bort f
 
 Alla roller som returneras av PowerShell eller MS Graph API visas i Azure Portal. I följande tabell ordnas skillnaderna.
 
-API-namn | Azure Portal namn | Anteckningar
+API-namn | Azure Portal namn | Kommentarer
 -------- | ------------------- | -------------
 Enhets anslutning | Inaktuell | [Dokumentation om föråldrade roller](#deprecated-roles)
 Enhets hanterare | Inaktuell | [Dokumentation om föråldrade roller](#deprecated-roles)

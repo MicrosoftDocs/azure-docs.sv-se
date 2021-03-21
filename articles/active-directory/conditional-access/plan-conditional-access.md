@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102427189"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planera en distribution av villkorsstyrd åtkomst
@@ -67,7 +67,7 @@ Om ytterligare funktioner krävs kan du också behöva relaterade licenser. Mer 
 Följande resurser kan vara användbara när du lär dig mer om villkorlig åtkomst:
 
 
-#### <a name="videos"></a>Video
+#### <a name="videos"></a>Videoklipp
 
 * [Vad är villkorsstyrd åtkomst?](https://youtu.be/ffMAw2IVO7A)
 * [Hur distribuerar jag villkorlig åtkomst?](https://youtu.be/c_izIRNJNuk)

@@ -2,13 +2,13 @@
 title: Planera distributionen av Azure VMware-lösningen
 description: Den här artikeln beskriver ett arbets flöde för distribution av Azure VMware-lösningar.  Det slutliga resultatet är en miljö som är redo för generering och migrering av virtuella datorer (VM).
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/17/2021
+ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462430"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584643"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planera distributionen av Azure VMware-lösningen
 
@@ -18,7 +18,6 @@ De steg som beskrivs i den här snabb starten ger dig en produktions klar miljö
 
 >[!IMPORTANT]
 >Innan du skapar din Azure VMware-lösning kan du följa artikeln [så här aktiverar du Azure VMware-lösningen](enable-azure-vmware-solution.md) för att skicka in ett support ärende för att låta dina värdar tilldelas. När support teamet får din begäran tar det upp till fem arbets dagar för att bekräfta din begäran och allokera dina värdar. Om du har ett befintligt privat moln i Azure VMware-lösningen och vill att fler värdar ska tilldelas, går du igenom samma process. 
-
 
 ## <a name="subscription"></a>Prenumeration
 
@@ -48,46 +47,42 @@ Identifiera de storleks värdar som du vill använda när du distribuerar Azure 
 
 ## <a name="number-of-clusters-and-hosts"></a>Antal kluster och värdar
 
-I Azure VMware-lösningen distribuerar du ett privat moln och skapar flera kluster. För distributionen måste du definiera antalet kluster och de f-värdar som du vill distribuera i varje kluster. Det minsta antalet värdar per kluster är tre och det maximala värdet är 16. Det maximala antalet kluster per privat moln är fyra. Det maximala antalet noder per privat moln är 64.
+Den första Azure VMware-lösningen för VMware-lösningen kommer att bestå av ett privat moln som innehåller ett enda kluster. För distributionen måste du definiera antalet värdar som du vill distribuera till det första klustret.
+
+>[!NOTE]
+>Det minsta antalet värdar per kluster är tre och det maximala värdet är 16. Det maximala antalet kluster per privat moln är fyra. 
 
 Mer information finns i dokumentationen för [Azure VMware-lösningen privat moln och kluster](concepts-private-clouds-clusters.md#clusters) .
 
 >[!TIP]
->Du kan alltid utöka klustret senare om du behöver gå bortom det ursprungliga distributions numret.
-
-## <a name="vcenter-admin-password"></a>administratörs lösen ord för vCenter
-Definiera vCenter-administratörens lösen ord. Under distributionen skapar du ett vCenter admin-lösenord. Lösen ordet tilldelas cloudadmin@vsphere.local Administratörs kontot under vCenter-versionen. Du använder dessa autentiseringsuppgifter för att logga in på vCenter.
-
-## <a name="nsx-t-admin-password"></a>NSX-T admin-lösenord
-Definiera NSX-T admin-lösenordet. Under distributionen skapar du ett NSX-T-administratörs lösen ord. Lösen ordet tilldelas administratörs användaren i NSX-kontot under NSX-versionen. Du använder dessa autentiseringsuppgifter för att logga in på NSX-T-hanteraren.
+>Du kan alltid utöka klustret och lägga till ytterligare kluster senare om du behöver gå utöver det ursprungliga distributions numret.
 
 ## <a name="ip-address-segment-for-private-cloud-management"></a>IP-adress segment för hantering av privata moln
 
-Det första steget när du planerar distributionen är att planera IP-segmentering. Azure VMware-lösningen kräver ett/22 CIDR-nätverk. Det här adress utrymmet carves det i mindre nätverks segment (undernät) och används för funktionerna vCenter, VMware HCX, NSX-T och vMotion.
+Det första steget när du planerar distributionen är att planera IP-segmentering. Azure VMware-lösningen kräver ett/22 CIDR-nätverk. Det här adress utrymmet är hämtas upp i mindre nätverks segment (undernät) och används för Azure VMware lösnings hanterings segment, inklusive vCenter-, VMware-HCX-, NSX-T-och vMotion-funktioner. Visualiseringen nedan visar var det här segmentet ska användas.
 
-Detta/22 CIDR-adressblock i nätverket får inte överlappa något befintligt nätverks segment som du redan har lokalt eller i Azure.
+Detta/22 CIDR-adressblock i nätverket får inte överlappa några befintliga nätverks segment som du redan har lokalt eller i Azure.
 
 **Exempel:** 10.0.0.0/22
 
-Azure VMware-lösningen ansluter till din Microsoft Azure Virtual Network via en intern ExpressRoute Global Reach-krets (D-MSEE: N i nedanstående visualisering). Den här funktionen är en del av Azure VMware Solution service och debiteras inte.
-
-Mer information finns i [Check lista för nätverks planering](tutorial-network-checklist.md#routing-and-subnet-considerations).
+En detaljerad beskrivning av hur/22 CIDR-nätverket är uppdelat per privat moln för [nätverks planerings check lista](tutorial-network-checklist.md#routing-and-subnet-considerations).
 
 :::image type="content" source="media/pre-deployment/management-vmotion-vsan-network-ip-diagram.png" alt-text="Identifiera IP-adress segment" border="false":::  
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>IP-adress segment för virtuella dator arbets belastningar
 
-Identifiera ett IP-segment för att skapa ditt första nätverk för arbets belastningar (NSX-segment) i ditt privata moln. Med andra ord måste du skapa ett nätverks segment i Azure VMware-lösningen så att du kan distribuera virtuella datorer i Azure VMware-lösningen.
+Precis som med alla VMware-miljöer måste de virtuella datorerna ansluta till ett nätverks segment. I Azure VMware-lösningen finns det två typer av segment, utökade L2-segment (beskrivs senare) och NSX-T-nätverksanslutningar. När produktions distributionen av Azure VMware-lösningen expanderas, finns ofta en kombination av utökade L2-segment från lokala och lokala NSX-T-datasegment. För att planera den första distributionen, i Azure VMware-lösning, identifierar du ett enskilt nätverks segment (IP-nätverk). Detta nätverk får inte överlappa några nätverks segment lokalt eller inom resten av Azure och får inte ligga inom det/22-nätverks segment som definierats tidigare.
 
-Även om du planerar att utöka nätverk lokalt till Azure VMware-lösningen (L2) måste du ändå skapa ett nätverks segment som validerar miljön.
+Det här nätverks segmentet används främst för test ändamål under den första distributionen.
 
-Kom ihåg att alla IP-segment som skapats måste vara unika i Azure och lokalt.
+>[!NOTE]
+>Det här nätverket eller nätverken behövs inte under distributionen. De skapas som ett steg efter distributionen.
   
 **Exempel:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifiera IP-adress segment för virtuella dator arbets belastningar" border="false":::     
 
-## <a name="optional-extend-networks"></a>Valfritt Utöka nätverk
+## <a name="optional-extend-your-networks"></a>Valfritt Utöka dina nätverk
 
 Du kan utöka nätverks segmenten från lokal till Azure VMware-lösning. om du gör det kan du identifiera dessa nätverk nu.  
 
@@ -96,9 +91,12 @@ Tänk på följande:
 - Om du planerar att utöka nätverk lokalt måste dessa nätverk ansluta till en [vSphere-distribuerad växel (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) i din lokala VMware-miljö.  
 - Om de nätverk som du vill utöka Live på en [vSphere standard växel](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html), kan de inte utökas.
 
+>[!NOTE]
+>Dessa nätverk utökas som ett sista steg i konfigurationen, inte under distributionen.
+
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Ansluta Azure Virtual Network till Azure VMware-lösning
 
-I det här steget ska du identifiera en ExpressRoute virtuell nätverksgateway och de stödda Azure-Virtual Network som används för att ansluta till ExpressRoute-kretsen för Azure VMware-lösningen.  ExpressRoute-kretsen fören klar anslutningen till och från Azure VMware-lösningens privata moln till andra Azure-tjänster, Azure-resurser och lokala miljöer.
+För att tillhandahålla anslutning till Azure VMware-lösningen skapas en ExpressRoute från Azure VMware-lösningen privat moln till en ExpressRoute virtuell nätverksgateway.
 
 Du kan använda en *befintlig* eller *ny* ExpressRoute virtuell nätverksgateway.
 
@@ -106,17 +104,17 @@ Du kan använda en *befintlig* eller *ny* ExpressRoute virtuell nätverksgateway
 
 ### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Använd en befintlig ExpressRoute virtuell nätverksgateway
 
-Om du använder en *befintlig* ExpressRoute virtuell nätverksgateway upprättas Azure VMware-lösningen ExpressRoute-kretsen efter att du har distribuerat det privata molnet. I det här fallet lämnar du fältet **Virtual Network** tomt.  
+Om du planerar att använda en *befintlig* ExpressRoute virtuell nätverksgateway upprättas Azure VMware-lösningen ExpressRoute-kretsen som ett steg efter distribution. I det här fallet lämnar du fältet **Virtual Network** tomt.
 
-Anteckna vilken ExpressRoute virtuell nätverksgateway du ska använda och fortsätt till nästa steg.
+Som en allmän rekommendation är det tillåtet att använda en befintlig ExpressRoute-Gateway för virtuella nätverk. I planerings syfte bör du anteckna vilken ExpressRoute virtuell nätverksgateway du ska använda och sedan fortsätta till nästa steg.
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Skapa en ny ExpressRoute virtuell nätverksgateway
 
 När du skapar en *ny* ExpressRoute virtuell nätverksgateway kan du använda en befintlig Azure-Virtual Network eller skapa en ny.  
 
 - För ett befintligt virtuellt Azure-nätverk:
-   1. Kontrol lera att det inte finns några befintliga ExpressRoute virtuella nätverksgateway i det virtuella nätverket. 
-   1. Välj den befintliga Azure-Virtual Network i listan **Virtual Network** .
+   1. Identifiera ett virtuellt Azure-nätverk där det inte finns några befintliga ExpressRoute-gatewayer för virtuella nätverk.
+   2. Innan du distribuerar skapar du en [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet) i Azure-Virtual Network.
 
 - För en ny Azure-Virtual Network kan du skapa den i förväg eller under distributionen. Välj länken **Skapa ny** i listan **Virtual Network** .
 

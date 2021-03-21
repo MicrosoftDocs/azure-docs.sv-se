@@ -4,12 +4,12 @@ description: Överföra samlingar med avbildningar eller andra artefakter från 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 30e6c0fa7a33c7a83543fee297c582b15bce4c8b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935352"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606777"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Överföra artefakter till ett annat register
 
@@ -426,7 +426,8 @@ az resource delete \
   * Alla artefakter eller inga artefakter överförs. Bekräfta stavningen av artefakter i export körningen och namn på BLOB i export-och import körningar. Bekräfta att du överför högst 50 artefakter.
   * Pipeline-körningen kanske inte har slutförts. En export-eller import körning kan ta lite tid. 
   * För andra pipeline-problem anger du distributions [korrelations-ID: t](../azure-resource-manager/templates/deployment-history.md) för export körningen eller import-körningen till Azure Container Registry-teamet.
-
+* **Problem med att hämta avbildningen i en fysiskt isolerad miljö**
+  * Om du ser fel som rör externa lager eller försöker lösa mcr.microsoft.com när du försöker hämta en avbildning i en fysiskt isolerad miljö, innehåller avbildnings manifestet troligen icke-distribuerbara lager. På grund av typen av en fysiskt isolerad miljö kan de här avbildningarna ofta inte hämta. Du kan bekräfta att detta är fallet genom att kontrol lera avbildnings manifestet för alla referenser till externa register. Om så är fallet måste du skicka de icke-distribuerbara lagren till ditt offentliga moln ACR innan du distribuerar en export pipeline – kör för avbildningen. Anvisningar om hur du gör detta finns i [Hur gör jag för att push-överförda lager till ett register?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>Nästa steg
 

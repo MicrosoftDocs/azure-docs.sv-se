@@ -7,16 +7,16 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 63daa7cda2f10448e9a0f8e250412137dc2af892
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8b450ddff0952777652a957ba2ed554a4bc6497d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563905"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584830"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>Snabb start: skapa en Redis företags-cache
 
-Azure cache för Redis "företags nivåer ger fullständigt integrerat och hanterade [Redis Enterprise](https://redislabs.com/redis-enterprise/) på Azure. De är för närvarande tillgängliga som för hands version. Det finns två nya nivåer i den här förhands granskningen:
+Azure cache för Redis "företags nivåer ger fullständigt integrerat och hanterade [Redis Enterprise](https://redislabs.com/redis-enterprise/) på Azure. Dessa nya nivåer är:
 * Enterprise, som använder flyktigt minne (DRAM) på en virtuell dator för att lagra data
 * Enterprise Flash, som använder både flyktigt och icke-flyktigt minne (NVMe eller SSD) för att lagra data.
 
@@ -25,7 +25,7 @@ Azure cache för Redis "företags nivåer ger fullständigt integrerat och hante
 Du behöver en Azure-prenumeration innan du börjar. Skapa ett [konto](https://azure.microsoft.com/)om du inte har något. Mer information finns i [särskilda överväganden för företags nivåer](cache-overview.md#special-considerations-for-enterprise-tiers).
 
 ## <a name="create-a-cache"></a>Skapa en cache
-1. Om du vill skapa en cache loggar du in på Azure Portal med hjälp av länken i din förhands gransknings inbjudan och väljer **skapa en resurs**.
+1. Om du vill skapa en cache loggar du in på Azure Portal och väljer **skapa en resurs**.
 
 1. Välj **databaser** på sidan **nytt** och välj sedan **Azure cache för Redis**.
    
@@ -38,7 +38,7 @@ Du behöver en Azure-prenumeration innan du börjar. Skapa ett [konto](https://a
    | **Prenumeration** | List rutan och välj din prenumeration. | Den prenumeration som du vill skapa den här nya Azure-cache för Redis-instansen för. | 
    | **Resursgrupp** | List rutan och välj en resurs grupp, eller Välj **Skapa ny** och ange ett nytt resurs grupp namn. | Namnet på resurs gruppen där du vill skapa cachen och andra resurser. Genom att lägga till alla dina app-resurser i en resurs grupp kan du enkelt hantera eller ta bort dem tillsammans. | 
    | **DNS-namn** | Ange ett globalt unikt namn. | Cache-namnet måste vara en sträng mellan 1 och 63 tecken som bara innehåller siffror, bokstäver eller bindestreck. Namnet måste börja och sluta med en siffra eller en bokstav och får inte innehålla flera bindestreck i rad. Din cacheposts *värdnamn* är *\<DNS name> . <Azure region> .. redisenterprise.cache.azure.net*. | 
-   | **Plats** | List rutan och välj en plats. | Företags nivåer är tillgängliga i begränsade Azure-regioner under för hands versionen. |
+   | **Plats** | List rutan och välj en plats. | Företags nivåer är tillgängliga i de valda Azure-regionerna. |
    | **Cachestorlek** | List rutan och välj en *Enterprise* -eller *Enterprise Flash* -nivå och en storlek. |  Nivån avgör storlek, prestanda och funktioner som är tillgängliga för cachen. |
    
    :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Fliken grundläggande för företags nivå":::

@@ -2,23 +2,23 @@
 title: Koncept – identitet och åtkomst
 description: Lär dig mer om identitets-och åtkomst koncepten i Azure VMware-lösningen
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/18/2021
+ms.openlocfilehash: 07a7ac8093524ef4240b8f7607d649520b9439e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364893"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586258"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitets koncept för Azure VMware-lösning
 
-Privata moln i Azure VMware-lösningen är etablerade med vCenter Server och NSX-T Manager. Du använder vCenter för att hantera arbets belastningar för virtuella datorer (VM). Du kan använda NSX-T-hanteraren för att utöka det privata molnet.
+Privata moln i Azure VMware-lösningen är etablerade med vCenter Server och NSX-T Manager. Du använder vCenter för att hantera arbets belastningar för virtuella datorer (VM). Du kan använda NSX-T-hanteraren för att hantera och utöka det privata moln nätverket.
 
-Åtkomst-och identitets hantering använder CloudAdmin grupp behörigheter för vCenter-och begränsade administratörs rättigheter för NSX-T Manager. Det garanterar att din privata moln plattform uppgraderas automatiskt med de senaste funktionerna och korrigeringarna.  Mer information finns i [artikeln om uppgraderingar av privata moln][concepts-upgrades].
+VCenter-åtkomst-och identitets hanteringen använder grupp privilegierna build-CloudAdmin. NSX-T-hanteraren använder begränsade administratörs behörigheter. Detta är av den hanterade tjänstens beskaffenhet och säkerställer att din privata moln plattform uppgraderas med de senaste funktionerna och korrigeringarna som ska förväntas.  Mer information finns i [artikeln om uppgraderingar av privata moln][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter-åtkomst och identitet
 
-CloudAdmin-gruppen ger behörighet i vCenter. Du hanterar gruppen lokalt i vCenter. Ett annat alternativ är genom integrering av enkel inloggning med vCenter LDAP med Azure Active Directory. Du aktiverar den integrationen när du har distribuerat ditt privata moln. 
+VCenter CloudAdmin-gruppen definierar och ger behörighet i vCenter. Ett annat alternativ är att ge åtkomst och identitet genom integrering av enkel inloggning med vCenter LDAP med Azure Active Directory. Du aktiverar den integrationen när du har distribuerat ditt privata moln. 
 
 Tabellen visar **CloudAdmin** -och **CloudGlobalAdmin** -privilegier.
 
@@ -49,7 +49,7 @@ Tabellen visar **CloudAdmin** -och **CloudGlobalAdmin** -privilegier.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T-hanterarens åtkomst och identitet
 
-Använd *Administratörs* kontot för att komma åt NSX-T-hanteraren. Den har fullständig behörighet och låter dig skapa och hantera nivåer-1 (T1) Gateway, segment (logiska växlar) och alla tjänster. Behörigheten ger dig åtkomst till NSX-T-nivå-0-gatewayen (t0). En ändring i t0-gatewayen kan resultera i försämrade nätverks prestanda eller ingen åtkomst till privata moln. Öppna en supportbegäran i Azure Portal för att begära ändringar i din NSX-T t0-Gateway.
+Använd *Administratörs* kontot för att komma åt NSX-T-hanteraren. Den har fullständig behörighet och låter dig skapa och hantera nivåer-1 (T1) Gateway, segment (logiska växlar) och alla tjänster. Det här kontot ger även åtkomst till NSX-T-nivå-0-gatewayen (t0). Var mindfull på att göra sådana ändringar, eftersom det kan leda till försämrade nätverks prestanda eller ingen åtkomst till privata moln. Öppna en supportbegäran i Azure Portal för att begära ändringar i din NSX-T t0-Gateway.
   
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,25 +6,25 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612073"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607661"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skala agent lös migrering av virtuella VMware-datorer till Azure
 
-Den här artikeln hjälper dig att förstå hur du använder en skalbar installation för att migrera ett stort antal virtuella VMware-datorer till Azure med hjälp av Migreringsverktyg för Azure Migrate Server. 
+Den här artikeln hjälper dig att förstå hur du använder en skalbar installation för att migrera ett stort antal virtuella VMware-datorer till Azure med hjälp av verktyget för migrering av Azure Migrate-Migreringsverktyg för virtuella VMware-datorer.
 
-Med en funktion utan agent migrering av virtuella VMware-datorer med Migreringsverktyg för Server kan du:
+Med hjälp av metoden för att migrera virtuella VMware-datorer kan du:
 
 - Replikera upp till 300 virtuella datorer från en enda vCenter-Server samtidigt med en Azure Migrate-apparat.
 - Replikera upp till 500 virtuella datorer från en enda vCenter-Server samtidigt genom att distribuera en andra skalnings apparat för migrering.
 
 I den här artikeln får du lära dig att:
 
-- Distribuera en skalbar apparat för VMware-migrering
+- Lägg till en skalbar installation för utan agent migrering av virtuella VMware-datorer
 - Migrera upp till 500 virtuella datorer samtidigt med den skalbara enheten.
 
 ##  <a name="prerequisites"></a>Förutsättningar
@@ -37,8 +37,9 @@ Innan du börjar måste du utföra följande steg:
 > [!IMPORTANT]
 > Du måste ha minst en replikerad virtuell dator i projektet innan du kan lägga till en skalbar installation för migrering.
 
-## <a name="deploy-a-scale-out-appliance"></a>Distribuera en skalbar apparat
+Läs självstudien om hur du utför ovanstående genom att [migrera virtuella VMware-datorer till Azure med metoden för migrering utan agent](./tutorial-migrate-vmware.md).
 
+## <a name="deploy-a-scale-out-appliance"></a>Distribuera en skalbar apparat
 
 Om du vill lägga till en skalbar installation följer du stegen som anges nedan:
 

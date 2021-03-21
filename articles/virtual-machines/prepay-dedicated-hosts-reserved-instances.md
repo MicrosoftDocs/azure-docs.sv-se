@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672272"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607423"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Spara kostnader med Azures dedikerade värd reservationer
 
@@ -29,7 +29,7 @@ Börja med att gå över de storlekar som stöds för [virtuella Windows-datorer
 
 Kontrol lera sedan om det stöds på Azure-dedikerade värdar. [Pris sidan för Azure-dedikerade värdar](https://aka.ms/ADHPricing) har den fullständiga listan över dedikerade värdar SKU: er, deras processor information och olika pris alternativ (inklusive reserverade instanser).
 
-Du kan hitta flera SKU: er som stöder VM-serien (med olika typer). Identifiera den bästa SKU: n genom att jämföra värdens kapacitet (antal virtuella processorer). Observera att du kan tillämpa reservation på flera dedikerade värdar SKU: er som stöder samma VM-serie (till exempel DSv3_Type1 och DSv3_Type2), men inte mellan olika VM-serier (t. ex. DSv3 och ESv3).
+Du kan hitta flera SKU: er som stöder din valda VM-serie (med olika typer). Identifiera den bästa SKU: n genom att jämföra värdens kapacitet (antal virtuella processorer). Observera att du kan tillämpa din reservation på flera dedikerade värdar SKU: er som stöder samma VM-serie (till exempel DSv3_Type1 och DSv3_Type2), men inte mellan olika VM-serier (t. ex. DSv3 och ESv3).
 
 
 

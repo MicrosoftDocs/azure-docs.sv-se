@@ -10,10 +10,10 @@ ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563631"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Mass import av data till Azure Cosmos DB SQL API-konto med hjälp av .NET SDK
@@ -172,7 +172,7 @@ För att kunna köra exemplet kan du göra det helt enkelt med `dotnet` kommando
 
 Om du inte har tid att slutföra stegen i den här självstudien eller bara vill ladda ned kodexemplen kan du hämta den från [GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer).
 
-När du har klonat projektet, se till att uppdatera önskade autentiseringsuppgifter i [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25).
+När du har klonat projektet, se till att uppdatera önskade autentiseringsuppgifter i [program. cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25).
 
 Exemplet kan köras genom att byta till databas katalogen och använda `dotnet` :
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0a0f48a311e5adf0dd7c70c43317d99cc94fca86
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 124e3ef734e03606372dc07059841b77c3a548de
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470531"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584575"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -250,7 +250,7 @@ Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar
 
 Använd den här tabellen för att avgöra vilka tal format som stöds för varje neurala röst.
 
-| Röst                   | Format                     | Beskrivning                                                 |
+| Röst                   | Format                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Uttrycker en formell, trygg och auktoritativ ton för nyhets leverans |
 |                         | `style="newscast-casual"` | Uttrycker en mångsidig och vardaglig ton för allmän nyhets leverans        |
@@ -398,7 +398,7 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 | `strength` | Anger den relativa varaktigheten för en paus med något av följande värden:<ul><li>inget</li><li>x-svaga</li><li>svaga</li><li>medel (standard)</li><li>kraftfull</li><li>x – stark</li></ul> | Valfritt |
 | `time` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Valfritt |
 
-| Styrka                      | Beskrivning |
+| Styrka                      | Description |
 |-------------------------------|-------------|
 | Ingen, eller om inget värde anges | 0 MS        |
 | x-svaga                        | 250 MS      |
@@ -868,6 +868,117 @@ Endast en bakgrunds ljud fil tillåts per SSML-dokument. Du kan dock blanda `aud
     </voice>
 </speak>
 ```
+
+## <a name="bookmark-element"></a>Bok märkes element
+
+Med- `bookmark` elementet kan du infoga bok märken i SSML och hämta ljud förskjutningen för varje bok märke för ljud strömmen för asynkrona meddelanden.
+
+**Syntax**
+
+```xml
+<bookmark mark="string"/>
+```
+
+**Attribut**
+
+| Attribut | Beskrivning                                   | Obligatorisk/valfri                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `mark`     | Anger bok märkets text för `bookmark` elementet. | Krävs. |
+
+**Exempel**
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-GuyNeural">
+        <bookmark mark='bookmark_one'/> one.
+        <bookmark mark='bookmark_two'/> two. three. four.
+    </voice>
+</speak>
+```
+
+### <a name="get-bookmark-using-speech-sdk"></a>Hämta bok märke med Speech SDK
+
+Du kan prenumerera på `BookmarkReached` händelsen i tal-SDK för att hämta bok märkes förskjutningar.
+
+> [!NOTE]
+> `BookmarkReached` händelsen är endast tillgänglig sedan tal SDK-versionen 1.16.0.
+
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Mer information finns i <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+
+```csharp
+synthesizer.BookmarkReached += (s, e) =>
+{
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    Console.WriteLine($"Bookmark reached. Audio offset: " +
+        $"{e.AudioOffset / 10000}ms, bookmark text: {e.Text}.");
+};
+```
+
+# <a name="c"></a>[C++](#tab/cpp)
+
+Mer information finns i <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+
+```cpp
+synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
+{
+    cout << "bookmark reached. "
+        // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+        << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
+        << "Bookmark text: " << e.Text << "." << endl;
+};
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+Mer information finns i <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>.
+
+```java
+synthesizer.BookmarkReached.addEventListener((o, e) -> {
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    System.out.print("Bookmark reached. Audio offset: " + e.getAudioOffset() / 10000 + "ms, ");
+    System.out.println("bookmark text: " + e.getText() + ".");
+});
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Mer information finns i <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
+
+```python
+# The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
+speech_synthesizer.bookmark_reached.connect(lambda evt: print(
+    "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Mer information finns i <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>.
+
+```javascript
+synthesizer.bookmarkReached = function (s, e) {
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text);
+}
+```
+
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+
+Mer information finns i <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+
+```objectivec
+[synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {
+    // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
+    NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
+}];
+```
+
+# <a name="swift"></a>[Swift](#tab/swift)
+
+Mer information finns i <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+
+---
 
 ## <a name="next-steps"></a>Nästa steg
 

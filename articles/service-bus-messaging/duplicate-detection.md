@@ -4,10 +4,10 @@ description: Den här artikeln förklarar hur du kan identifiera dubbletter i Az
 ms.topic: article
 ms.date: 01/13/2021
 ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711934"
 ---
 # <a name="duplicate-detection"></a>Dubblettidentifiering

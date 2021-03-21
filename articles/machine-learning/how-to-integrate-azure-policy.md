@@ -2,27 +2,29 @@
 title: Granska och hantera efterlevnad av principer
 titleSuffix: Azure Machine Learning
 description: Lär dig hur du använder Azure Policy för att använda inbyggda principer för Azure Machine Learning för att se till att dina arbets ytor är kompatibla med dina krav.
-author: jhirono
-ms.author: jhirono
-ms.date: 09/15/2020
+author: aashishb
+ms.author: aashishb
+ms.date: 03/12/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444576"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584320"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Granska och hantera Azure Machine Learning med Azure Policy
 
 [Azure policy](../governance/policy/index.yml) är ett styrnings verktyg som gör att du kan se till att Azure-resurserna är kompatibla med dina principer. Med Azure Machine Learning kan du tilldela följande principer:
 
-* **Kundhanterad nyckel** : granska eller Använd om arbets ytor måste använda en kundhanterad nyckel.
-* **Privat länk** : granska om arbets ytor använder en privat slut punkt för att kommunicera med ett virtuellt nätverk.
+* **Kundhanterad nyckel**: granska eller Använd om arbets ytor måste använda en kundhanterad nyckel.
+* **Privat länk**: granska eller Använd om arbets ytor använder en privat slut punkt för att kommunicera med ett virtuellt nätverk.
+* **Privat slut punkt**: konfigurera det Azure Virtual Network-undernät där den privata slut punkten ska skapas.
+* **Privat DNS zon**: Konfigurera den privata DNS-zon som ska användas för den privata länken.
 
 Principer kan ställas in i olika omfång, t. ex. på prenumerations-eller resurs grupps nivå. Mer information finns i Azure Policy- [dokumentationen](../governance/policy/overview.md).
 
@@ -40,19 +42,32 @@ Härifrån kan du välja princip definitioner för att visa dem. När du visar e
 
 Du kan också tilldela principer med hjälp av [Azure PowerShell](../governance/policy/assign-policy-powershell.md), [Azure CLI](../governance/policy/assign-policy-azurecli.md)och [mallar](../governance/policy/assign-policy-template.md).
 
-## <a name="workspaces-encryption-with-customer-managed-key"></a>Kryptering av arbets ytor med kundhanterad nyckel
+## <a name="workspace-encryption-with-customer-managed-key"></a>Arbets ytans kryptering med kundhanterad nyckel
 
-Kontrollerar om arbets ytor ska krypteras med en kundhanterad nyckel eller om du använder en Microsoft-hanterad nyckel för att kryptera mått och metadata. Mer information om hur du använder kundhanterad nyckel finns i avsnittet [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) i artikeln om data kryptering.
+Kontrollerar om en arbets yta ska krypteras med en kundhanterad nyckel eller en Microsoft-hanterad nyckel för att kryptera mått och metadata. Mer information om hur du använder kundhanterad nyckel finns i avsnittet [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) i artikeln om data kryptering.
 
-Om du vill konfigurera den här principen anger du bedömnings parametern till __audit__ eller __Deny__. Om det är inställt på __granskning__ kan du skapa arbets ytor utan en kundhanterad nyckel och en varnings händelse skapas i aktivitets loggen.
+Om du vill konfigurera den här principen anger du bedömnings parametern till __audit__ eller __Deny__. Om det är inställt på __granskning__ kan du skapa en arbets yta utan en kundhanterad nyckel och en varnings händelse skapas i aktivitets loggen.
 
 Om principen är inställd på __neka__ kan du inte skapa en arbets yta om den inte anger en kundhanterad nyckel. Försök att skapa en arbets yta utan Kundhanterade nycklar resulterar i ett fel som liknar `Resource 'clustername' was disallowed by policy` och skapar ett fel i aktivitets loggen. Princip identifieraren returneras också som en del av det här felet.
 
-## <a name="workspaces-should-use-private-link"></a>Arbets ytor ska använda privat länk
+## <a name="workspace-should-use-private-link"></a>Arbets ytan bör använda privat länk
 
-Kontrollerar om arbets ytor ska använda Azure Private-länken för att kommunicera med Azure Virtual Network. Mer information om hur du använder privat länk finns i [Konfigurera privat länk för en arbets yta](how-to-configure-private-link.md).
+Anger om en privat Azure-länk ska användas i en arbets yta för att kommunicera med Azure Virtual Network. Mer information om hur du använder privat länk finns i [Konfigurera privat länk för en arbets yta](how-to-configure-private-link.md).
 
-Konfigurera den här principen genom att ange bedömnings parametern till __audit__. Om du skapar en arbets yta utan att använda en privat länk skapas en varnings händelse i aktivitets loggen.
+Om du vill konfigurera den här principen anger du bedömnings parametern till __audit__ eller __Deny__. Om det är inställt på __granskning__ kan du skapa en arbets yta utan att använda en privat länk och en varnings händelse skapas i aktivitets loggen.
+
+Om principen är inställd på __neka__ kan du inte skapa en arbets yta om den inte använder en privat länk. Om du försöker skapa en arbets yta utan en privat länk uppstår ett fel. Felet loggas också i aktivitets loggen. Princip identifieraren returneras som en del av det här felet.
+
+## <a name="workspace-should-use-private-endpoint"></a>Arbets ytan bör använda privat slut punkt
+
+Konfigurerar en arbets yta för att skapa en privat slut punkt inom det angivna under nätet för ett Azure-Virtual Network.
+
+Om du vill konfigurera den här principen anger du parametern __DeployIfNotExists__. Ange __privateEndpointSubnetID__ till under nätets Azure Resource Manager-ID.
+## <a name="workspace-should-use-private-dns-zones"></a>Arbets ytan bör använda privata DNS-zoner
+
+Konfigurerar en arbets yta att använda en privat DNS-zon och åsidosätter standard-DNS-matchningen för en privat slut punkt.
+
+Om du vill konfigurera den här principen anger du parametern __DeployIfNotExists__. Ange __privateDnsZoneId__ till Azure Resource Manager-ID för den privata DNS-zon som ska användas. 
 
 ## <a name="next-steps"></a>Nästa steg
 

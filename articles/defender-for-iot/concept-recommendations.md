@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/16/2021
 ms.author: shhazam
 ms.openlocfilehash: 4ae479fcff0514b42d46aef455d8a32d6ebfaf23
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100636551"
 ---
 # <a name="security-recommendations-for-iot-hub"></a>Säkerhets rekommendationer för IoT Hub
@@ -31,7 +31,7 @@ I den här artikeln hittar du en lista över rekommendationer som kan utlösas p
 
 Rekommendations aviseringar ger insikter och förslag på åtgärder för att förbättra position säkerhets miljö.
 
-| Allvarlighetsgrad | Name | Datakälla | Description |
+| Allvarlighetsgrad | Name | Datakälla | Beskrivning |
 |--|--|--|--|
 | Högt | Identiska autentiseringsuppgifter för autentisering används av flera enheter | IoT Hub | IoT Hub autentiseringsuppgifter för autentisering används av flera enheter. Den här processen kan tyda på en Illegitimate-enhet som personifierar en legitim enhet. Dubblett av autentiseringsuppgifter ökar risken för personifiering av enheter av en skadlig aktör. |
 | Medel | Standard princip för IP-filter ska nekas | IoT Hub | IP-filterlistan måste ha definierade regler för tillåten trafik och ska som standard neka all annan trafik som standard. |

@@ -41,6 +41,12 @@
           href: tutorial-cross-region-powershell.md
         - name: Skapa en belastningsutjämnare för flera regioner – Azure CLI
           href: tutorial-cross-region-cli.md
+    - name: NAT Gateway
+      items:
+        - name: Integrera offentlig belastningsutjämnare för NAT-gateway
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+        - name: Integrera intern belastningsutjämnare för NAT-gateway
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
 - name: Exempel
   items:
     - name: Azure CLI
@@ -49,6 +55,8 @@
       href: powershell-samples.md
 - name: Begrepp
   items:
+    - name: Portalinställningar
+      href: manage.md
     - name: Lastbalanserare mellan regioner
       href: cross-region-overview.md
     - name: Nyheter
@@ -99,8 +107,6 @@
       href: instance-metadata-service-load-balancer.md
 - name: Så här gör du
   items:
-    - name: Portalinställningar
-      href: manage.md
     - name: Skalningsuppsättningar för virtuella datorer
       items:
         - name: Uppdatera eller ta bort befintliga Azure Load Balancer-objekt som används av VM-skalningsuppsättningar

@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 7e0bc21fde2c030de7a836d82384c09c78d993ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047833"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Support mat ris för VMware-utvärdering 
@@ -80,7 +80,7 @@ Förutom att identifiera servrar kan Server utvärderingen identifiera program, 
 ## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>Krav för identifiering av SQL Server instanser och databaser
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 [Program identifieringen](how-to-discover-applications.md) identifierar SQL Server instanser. Med hjälp av den här informationen försöker installations programmet ansluta till respektive SQL Server instanser via Windows-autentisering eller SQL Server autentiseringsuppgifter som anges på enheten. När enheten är ansluten samlar den in konfigurations-och prestanda data för SQL Server instanser och databaser. SQL Server konfigurations data uppdateras en gång var 24: e timme och prestanda data samlas in var 30: e sekund.
 

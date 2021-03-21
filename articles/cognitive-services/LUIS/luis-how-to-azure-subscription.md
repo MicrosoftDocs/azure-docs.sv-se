@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988157"
 ---
 # <a name="create-luis-resources"></a>Skapa LUIS-resurser
@@ -125,7 +125,7 @@ Det finns för närvarande ingen katalog över offentliga appar.
 
 Åtkomst för att skicka frågor till förutsägelse slut punkten styrs av en inställning på sidan **program information** i avsnittet **Hantera** .
 
-|[Privat slutpunkt](#runtime-security-for-private-apps)|[Offentlig slutpunkt](#runtime-security-for-public-apps)|
+|[Privat slut punkt](#runtime-security-for-private-apps)|[Offentlig slutpunkt](#runtime-security-for-public-apps)|
 |:--|:--|
 |Tillgängligt för ägare och deltagare|Tillgängligt för ägare, deltagare och någon annan som känner till app-ID|
 

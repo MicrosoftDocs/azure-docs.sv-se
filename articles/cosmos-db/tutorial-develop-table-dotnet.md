@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c641e24a498a6263d6a7c2325eed099b75a82caa
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102426441"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Kom igång med tabell-API för Azure Cosmos DB och Azure Table Storage med .NET SDK
@@ -53,7 +53,7 @@ Skapa ett nytt .NET-konsol program i Visual Studio. Följande steg visar hur du 
 
 1. Välj **Skapa**.
 
-Alla kod exempel i det här exemplet kan läggas till i Main ()-metoden i konsol programmets **program.cs** -fil.
+Alla kod exempel i det här exemplet kan läggas till i Main ()-metoden i konsol programmets **program. cs** -fil.
 
 ## <a name="install-the-required-nuget-package"></a>Installera det nödvändiga NuGet-paketet
 
@@ -83,15 +83,15 @@ Följ dessa steg för att hämta NuGet-paketet:
    }
    ```
 
-1. Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **appSettings.cs**.
+1. Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **appSettings. cs**.
 
-1. Lägg till följande kod i AppSettings.cs-filen. Den här filen läser anslutnings strängen från Settings.jspå filen och tilldelar den till konfigurations parametern:
+1. Lägg till följande kod i filen AppSettings. cs. Den här filen läser anslutnings strängen från Settings.jspå filen och tilldelar den till konfigurations parametern:
 
   :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/AppSettings.cs":::
 
 ## <a name="parse-and-validate-the-connection-details"></a>Analysera och verifiera anslutnings informationen
 
-1. Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **common.cs**. Du kommer att skriva kod för att verifiera anslutnings informationen och skapa en tabell i den här klassen.
+1. Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **common. cs**. Du kommer att skriva kod för att verifiera anslutnings informationen och skapa en tabell i den här klassen.
 
 1. Definiera en metod `CreateStorageAccountFromConnectionString` som visas nedan. Med den här metoden tolkas anslutnings Strängs informationen och du kan kontrol lera att konto namnet och konto nyckel informationen i filen "Settings.jspå" är giltig.
 
@@ -99,7 +99,7 @@ Följ dessa steg för att hämta NuGet-paketet:
 
 ## <a name="create-a-table"></a>Skapa en tabell 
 
-Med klassen [CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) kan du hämta tabeller och de entiteter som lagras i Table Storage. Eftersom vi inte har några tabeller i Cosmos DB Tabell-API-kontot ska vi lägga till `CreateTableAsync` metoden i klassen **common.cs** för att skapa en tabell:
+Med klassen [CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) kan du hämta tabeller och de entiteter som lagras i Table Storage. Eftersom vi inte har några tabeller i Cosmos DB Tabell-API-kontot lägger vi till `CreateTableAsync` metoden i klassen **common. cs** för att skapa en tabell:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
@@ -113,7 +113,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 Entiteter mappar till C#-objekt med hjälp av en anpassad klass som härletts från [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity). Om du vill lägga till en entitet i en tabell skapar du en klass som definierar egenskaperna för entiteten.
 
-Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **ny mapp** och ge den namnet som **modell**. I mappen modell lägger du till en klass med namnet **CustomerEntity.cs** och lägger till följande kod i den.
+Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **ny mapp** och ge den namnet som **modell**. I mappen modell lägger du till en klass med namnet **CustomerEntity. cs** och lägger till följande kod i den.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
@@ -123,25 +123,25 @@ Den här koden definierar en entitets klass som använder kundens förnamn som r
 
 Följande kod exempel skapar ett entitet-objekt och lägger till det i tabellen. Metoden InsertOrMerge i klassen [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) används för att infoga eller slå samman en entitet. Metoden [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync) anropas för att utföra åtgärden. 
 
-Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **SamplesUtils.cs**. Den här klassen lagrar all kod som krävs för att utföra CRUD-åtgärder på entiteterna. 
+Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **SamplesUtils. cs**. Den här klassen lagrar all kod som krävs för att utföra CRUD-åtgärder på entiteterna. 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
 ## <a name="get-an-entity-from-a-partition"></a>Hämta en entitet från en partition
 
-Du kan hämta entiteten från en partition med hjälp av metoden GET under klassen [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) . I följande kod exempel hämtas rad nyckel, e-postadress och telefonnummer för en kundentitet. I det här exemplet skrivs även de enheter för programbegäran som används för att fråga efter entiteten. Om du vill fråga efter en entitet lägger du till följande kod i **SamplesUtils.cs** -filen:
+Du kan hämta entiteten från en partition med hjälp av metoden GET under klassen [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) . I följande kod exempel hämtas rad nyckel, e-postadress och telefonnummer för en kundentitet. I det här exemplet skrivs även de enheter för programbegäran som används för att fråga efter entiteten. Om du vill fråga efter en entitet lägger du till följande kod i filen **SamplesUtils. cs** :
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="delete-an-entity"></a>Ta bort en entitet
 
-Du kan enkelt ta bort en enhet när du har hämtat den genom att använda samma mönster som när du uppdaterar en entitet. Följande kod hämtar och tar bort en kundentitet. Om du vill ta bort en entitet lägger du till följande kod i **SamplesUtils.cs** -filen: 
+Du kan enkelt ta bort en enhet när du har hämtat den genom att använda samma mönster som när du uppdaterar en entitet. Följande kod hämtar och tar bort en kundentitet. Om du vill ta bort en entitet lägger du till följande kod i filen **SamplesUtils. cs** : 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>Kör CRUD-åtgärder på exempel data
 
-När du har definierat metoder för att skapa tabeller, infoga eller sammanfoga entiteter kör du dessa metoder i exempel data. Det gör du genom att högerklicka på projektet **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **BasicSamples.cs** och Lägg till följande kod till den. Den här koden skapar en tabell, lägger till entiteter i den.
+När du har definierat metoder för att skapa tabeller, infoga eller sammanfoga entiteter kör du dessa metoder i exempel data. Det gör du genom att högerklicka på projektet **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **BasicSamples. cs** och Lägg till följande kod i den. Den här koden skapar en tabell, lägger till entiteter i den.
 
 Om du inte vill ta bort entiteten och tabellen i slutet av projektet, kommenterar du `await table.DeleteIfExistsAsync()` `SamplesUtils.DeleteEntityAsync(table, customer)` metoderna och från följande kod. Det är bäst att kommentera ut dessa metoder och verifiera data innan du tar bort tabellen.
 
@@ -149,11 +149,11 @@ Om du inte vill ta bort entiteten och tabellen i slutet av projektet, kommentera
 
 Föregående kod skapar en tabell som börjar med "demo" och det genererade GUID: t läggs till i tabell namnet. Sedan läggs en kundentitet med för-och efter namn till "Harp Walter" och senare uppdateras telefonnumret för den här användaren. 
 
-I den här självstudien har du skapat kod för att utföra grundläggande CRUD-åtgärder på de data som lagras i Tabell-API-kontot. Du kan också utföra avancerade åtgärder, till exempel – batch infoga data, fråga alla data i en partition, fråga efter data intervall i en partition, listar tabeller i kontot vars namn börjar med det angivna prefixet. Du kan hämta det fullständiga exempel formuläret [Azure-Cosmos-Table-dotNet-Core-komma igång-GitHub-](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) lagringsplats. [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/main/CosmosTableSamples/AdvancedSamples.cs) -klassen har fler åtgärder som du kan utföra på data.  
+I den här självstudien har du skapat kod för att utföra grundläggande CRUD-åtgärder på de data som lagras i Tabell-API-kontot. Du kan också utföra avancerade åtgärder, till exempel – batch infoga data, fråga alla data i en partition, fråga efter data intervall i en partition, listar tabeller i kontot vars namn börjar med det angivna prefixet. Du kan hämta det fullständiga exempel formuläret [Azure-Cosmos-Table-dotNet-Core-komma igång-GitHub-](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) lagringsplats. Klassen [AdvancedSamples. cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/main/CosmosTableSamples/AdvancedSamples.cs) innehåller fler åtgärder som du kan utföra på data.  
 
 ## <a name="run-the-project"></a>Kör projektet
 
-Från din Project- **CosmosTableSamples**. Öppna klassen med namnet **program.cs** och Lägg till följande kod i den för att anropa BasicSamples när projektet körs.
+Från din Project- **CosmosTableSamples**. Öppna klassen med namnet **program. cs** och Lägg till följande kod i den för att anropa BasicSamples när projektet körs.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 

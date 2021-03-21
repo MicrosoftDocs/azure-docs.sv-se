@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425591"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus utgående bindning för Azure Functions
@@ -317,7 +317,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `ServiceBus` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste vara inställd på "Service Bus". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position** | saknas | Måste anges till "out". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
@@ -425,7 +425,7 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 
 Om du har `isSessionsEnabled` ställt in till `true` , `sessionHandlerOptions` kommer att användas.  Om du har `isSessionsEnabled` ställt in till `false` , `messageHandlerOptions` kommer att användas.
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
 |prefetchCount|0|Hämtar eller anger antalet meddelanden som meddelande mottagaren samtidigt kan begära.|
 |maxAutoRenewDuration|00:05:00|Den längsta tid som meddelande låset ska förnyas automatiskt.|

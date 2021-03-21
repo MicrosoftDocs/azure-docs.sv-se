@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102656"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Självstudie: anropa Microsoft Graph API från ett Universell Windows-plattform-program (UWP)
@@ -48,7 +48,7 @@ Den här guiden skapar ett exempel på ett UWP-program som frågar Microsoft Gra
 
 I den här guiden används följande NuGet-paket:
 
-|Bibliotek|Description|
+|Bibliotek|Beskrivning|
 |---|---|
 |[Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsofts autentiseringsbibliotek|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph klient bibliotek|
@@ -105,9 +105,9 @@ Visual Studio skapar *mainpage. XAML* som en del av projekt mal len. Öppna den 
 
 ### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Använd Microsoft Authentication Library för att hämta en token för Microsoft Graph-API: et
 
-Det här avsnittet visar hur du använder Microsoft Authentication Library för att hämta en token för Microsoft Graph-API: et. Gör ändringar i *mainpage.XAML.cs* -filen.
+Det här avsnittet visar hur du använder Microsoft Authentication Library för att hämta en token för Microsoft Graph-API: et. Gör ändringar i filen *mainpage. XAML. cs* .
 
-1. I *mainpage.XAML.cs* lägger du till följande referenser:
+1. Lägg till följande referenser i *mainpage. XAML. cs*:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -239,7 +239,7 @@ Slutligen kan `AcquireTokenSilent` metoden Miss lyckas. Orsaken till problemet �
 
 ### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>Instansiera Microsoft Graph tjänst klienten genom att hämta token från SignInUserAndGetTokenUsingMSAL-metoden
 
-Lägg till följande nya metod i *mainpage.XAML.cs*:
+Lägg till följande nya metod i *mainpage. XAML. cs*:
 
 ```csharp
       /// <summary>
@@ -264,7 +264,7 @@ I det här exempel programmet `GetGraphServiceClient` instansierar-metoden `Grap
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Lägg till en metod för att logga ut användaren
 
-Om du vill logga ut användaren lägger du till följande metod i *mainpage.XAML.cs*:
+Om du vill logga ut användaren lägger du till följande metod i *mainpage. XAML. cs*:
 
 ```csharp
 /// <summary>
@@ -302,7 +302,7 @@ Programmet i det här exemplet stöder en enskild användare. Microsoft Authenti
 
 ### <a name="display-basic-token-information"></a>Visa grundläggande information om token
 
-Lägg till följande metod i *mainpage.XAML.cs* för att visa grundläggande information om token:
+Lägg till följande metod i *mainpage. XAML. cs* för att visa grundläggande information om token:
 
 ```csharp
 /// <summary>
@@ -325,7 +325,7 @@ ID-token som förvärv ATS med hjälp av **OpenID Connect** innehåller också e
 
 ### <a name="display-message"></a>Visa meddelande
 
-Lägg till följande nya metod i *mainpage.XAML.cs*:
+Lägg till följande nya metod i *mainpage. XAML. cs*:
 
 ```csharp
 /// <summary>
@@ -352,7 +352,7 @@ Registrera ditt program nu:
 1. Ange ett **namn** för programmet, till exempel `UWP-App-calling-MSGraph` . Användare av appen kan se det här namnet och du kan ändra det senare.
 1. Under **konto typer som stöds** väljer du **konton i valfri organisations katalog (alla Azure AD-klienter-flera klienter) och personliga Microsoft-konton (t. ex. Skype, Xbox)**. 
 1. Välj **Register** (Registrera).
-1. På sidan Översikt hittar du **ID-värdet för programmet (klienten)** och kopierar det. Gå tillbaka till Visual Studio, öppna *mainpage.XAML.cs* och Ersätt värdet för `ClientId` med det här värdet.
+1. På sidan Översikt hittar du **ID-värdet för programmet (klienten)** och kopierar det. Gå tillbaka till Visual Studio, öppna *mainpage. XAML. cs* och Ersätt värdet för `ClientId` med det här värdet.
 
 Konfigurera autentisering för ditt program:
 
@@ -385,7 +385,7 @@ Om du vill aktivera integrerad Windows-autentisering när den används med en fe
 
 I det aktuella exemplet `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` används metoden. `WithDefaultRedirectURI()`Slutför följande steg för att använda:
 
-1. I *mainpage.XAML.cs* ersätter du `WithRedirectUri` med `WithDefaultRedirectUri` :
+1. I *mainpage. XAML. cs* ersätter du `WithRedirectUri` med `WithDefaultRedirectUri` :
 
    **Aktuell kod**
 
@@ -418,7 +418,7 @@ I det aktuella exemplet `WithRedirectUri("https://login.microsoftonline.com/comm
        .Build();
    ```
 
-2.  Hitta återanrops-URI för appen genom att lägga till `redirectURI` fältet i *mainpage.XAML.cs* och ange en Bryt punkt för den:
+2.  Hitta återanrops-URI för appen genom att lägga till `redirectURI` fältet i *mainpage. XAML. cs* och ange en Bryt punkt för den:
 
     ```csharp
 

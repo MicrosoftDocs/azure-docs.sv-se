@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: b2baff33d9e91e1b5259d79eca0a22535c00f419
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555238"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>Konfigurera den lokala konto identitets leverantören
@@ -61,7 +61,7 @@ Lösenordsbaserad autentisering är en typ av autentisering där en användare i
 
 ![Registrering av telefon eller inloggning](./media/identity-provider-local/local-account-phone-experience.png)
 
-### <a name="pricing"></a>Prissättning
+### <a name="pricing"></a>Priser
 
 Eng ång slö sen ord skickas till användarna med SMS-textmeddelanden. Beroende på din mobil nätverks operatör kan du debiteras för varje meddelande som skickas. Information om priser finns i avsnittet **separata avgifter** i [Azure Active Directory B2C prissättning](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 

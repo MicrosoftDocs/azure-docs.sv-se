@@ -3,12 +3,12 @@ title: Leverera händelser med hjälp av tjänsten Private Link
 description: Den här artikeln beskriver hur du kan undvika begränsningen av att inte leverera händelser med hjälp av tjänsten Private Link.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100548630"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722335"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Leverera händelser med hjälp av tjänsten Private Link
 För närvarande går det inte att leverera händelser med [privata slut punkter](../private-link/private-endpoint-overview.md). Det finns inget stöd om du har strikta krav på nätverks isolering där dina levererade händelse trafik inte får lämna det privata IP-utrymmet. 
@@ -36,7 +36,7 @@ Följ dessa steg om du vill leverera händelser till händelse nav i Event Hubs 
 Följ dessa steg om du vill leverera händelser till Service Bus köer eller ämnen i Service Bus-namnrymden med hanterad identitet:
 
 1. [Aktivera systemtilldelad identitet för ett ämne eller en domän](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Lägg till identiteten i rollen [Azure Service Bus data avsändare](/service-bus-messaging/service-bus-managed-service-identity.md#azure-built-in-roles-for-azure-service-bus) i Service Bus-namnrymden
+1. Lägg till identiteten i rollen [Azure Service Bus data avsändare](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) i Service Bus-namnrymden
 1. [Aktivera inställningen **Tillåt att betrodda Microsoft-tjänster kringgår den här brand Väggs** inställningen på din Service Bus-namnrymd](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
 1. [Konfigurera händelse prenumerationen](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) som använder en Service Bus kö eller ett ämne som en slut punkt för att använda den systemtilldelade identiteten.
 

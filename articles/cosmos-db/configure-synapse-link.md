@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 64b9b6690eafe8f28fdf9711cd0534f4d7d96908
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222623"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584592"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurera och använda Azure Synapse Link för Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,6 +23,7 @@ Azure Synapse-länken är tillgänglig för Azure Cosmos DB SQL API-behållare e
 
 * [Aktivera Synapse-länk för dina Azure Cosmos DB-konton](#enable-synapse-link)
 * [Skapa ett analys lager som är aktiverat Azure Cosmos DB container](#create-analytical-ttl)
+* [Valfritt-uppdatera analytiskt lagrings-TTL för en Azure Cosmos DB container](#update-analytical-ttl)
 * [Anslut Azure Cosmos DB-databasen till en Synapse-arbetsyta](#connect-to-cosmos-database)
 * [Fråga analys lagret med hjälp av Synapse Spark](#query-analytical-store-spark)
 * [Fråga analys lagret med Server lös SQL-pool](#query-analytical-store-sql-on-demand)
@@ -32,7 +33,7 @@ Azure Synapse-länken är tillgänglig för Azure Cosmos DB SQL API-behållare e
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. [Skapa ett nytt Azure-konto](create-sql-api-dotnet.md#create-account)eller Välj ett befintligt Azure Cosmos DB-konto.
 
@@ -50,6 +51,21 @@ Azure Synapse-länken är tillgänglig för Azure Cosmos DB SQL API-behållare e
 
 > [!NOTE]
 > När du aktiverar Synapse-länken aktive ras inte analys lagret automatiskt. När du har aktiverat Synapse-länken i Cosmos DB-kontot aktiverar du analys lager på behållare när du skapar dem, för att börja replikera dina åtgärds data till ett analys lager. 
+
+### <a name="azure-cli"></a>Azure CLI
+
+Följande länkar visar hur du aktiverar Synapse-länken med hjälp av Azure CLI:
+
+* [Skapa ett nytt Azure Cosmos DB konto med Synapse-länk aktiverat](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
+* [Uppdatera ett befintligt Azure Cosmos DB-konto för att aktivera Synapse-länk](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+* [Skapa ett nytt Azure Cosmos DB konto med Synapse-länk aktiverat](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
+* [Uppdatera ett befintligt Azure Cosmos DB-konto för att aktivera Synapse-länk](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+
+
+Följande länkar visar hur du aktiverar Synapse-länken med hjälp av PowerShell:
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Skapa en Azure Cosmos-behållare med analys lager
 
@@ -159,11 +175,27 @@ except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
 
-### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Uppdatera tiden för analys av analys arkivet till Live
+### <a name="azure-cli"></a>Azure CLI
 
-När analysarkivet har aktiverats med ett visst TTL-värde kan du uppdatera det till ett annat giltigt värde senare. Du kan uppdatera värdet med hjälp av Azure Portal eller SDK:er. Information om de olika alternativen för konfiguration av analytiska TTL-alternativ finns i artikeln [stöd för analytiska TTL-värden](analytical-store-introduction.md#analytical-ttl) .
+Följande länkar visar hur du skapar ett analytiskt lager med aktiverade behållare med hjälp av Azure CLI:
 
-#### <a name="azure-portal"></a>Azure Portal
+* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Följande länkar visar hur du skapar ett analytiskt lager med aktiverade behållare med hjälp av PowerShell:
+
+* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+
+## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Valfri – uppdatera tiden för analys av analys platsen till Live
+
+När analys lagret har Aktiver ATS med ett visst TTL-värde kanske du vill uppdatera det till ett annat giltigt värde senare. Du kan uppdatera värdet med hjälp av Azure Portal, Azure CLI, PowerShell eller Cosmos DB SDK: er. Information om de olika alternativen för konfiguration av analytiska TTL-alternativ finns i artikeln [stöd för analytiska TTL-värden](analytical-store-introduction.md#analytical-ttl) .
+
+
+### <a name="azure-portal"></a>Azure Portal
 
 Om du har skapat en aktive rad behållare för analys lager via Azure Portal, innehåller den ett standard-analytiskt TTL-värde på-1. Använd följande steg för att uppdatera det här värdet:
 
@@ -178,7 +210,7 @@ Om du har skapat en aktive rad behållare för analys lager via Azure Portal, in
   * Välj **På (inte standard)** eller välj **På** och ange ett TTL-värde
   * Klicka på **Spara** för att spara ändringarna.
 
-#### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.NET SDK
 
 Följande kod visar hur du uppdaterar TTL för analytisk lagring med hjälp av .NET SDK:
 
@@ -190,7 +222,7 @@ containerResponse.Resource. AnalyticalStorageTimeToLiveInSeconds = 60 * 60 * 24 
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-#### <a name="java-v4-sdk"></a>Java v4 SDK
+### <a name="java-v4-sdk"></a>Java v4 SDK
 
 Följande kod visar hur du uppdaterar TTL för analytisk lagring med hjälp av Java v4 SDK:
 
@@ -203,6 +235,26 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 // Update container settings
 container.replace(containerProperties).block();
 ```
+
+### <a name="python-v4-sdk"></a>Python v4 SDK
+
+Stöds inte för närvarande.
+
+
+### <a name="azure-cli"></a>Azure CLI
+
+Följande länkar visar hur du uppdaterar behållare analys-TTL med hjälp av Azure CLI:
+
+* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Följande länkar visar hur du uppdaterar behållare analytiskt TTL med hjälp av PowerShell:
+
+* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Ansluta till en Synapse-arbetsyta
 
@@ -234,7 +286,7 @@ Mer information finns i följande dokument:
 
 * [Azure Synapse-länk för Azure Cosmos DB.](synapse-link.md)
 
-* [Översikt över Azure Cosmos DB analys lager.](analytical-store-introduction.md)
+* [Översikt över Azure Cosmos DB-analysarkiv.](analytical-store-introduction.md)
 
 * [Vanliga frågor om Synapse-länk för Azure Cosmos DB.](synapse-link-frequently-asked-questions.md)
 
