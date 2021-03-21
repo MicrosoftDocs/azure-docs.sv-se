@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 00c28a9ede01a74f4ae64109d277276050047461
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100653772"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Lagra autentiseringsuppgifter i Azure Key Vault
@@ -40,8 +40,8 @@ Följande egenskaper stöds för Azure Key Vault länkade tjänsten:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till: **AzureKeyVault**. | Yes |
-| baseUrl | Ange Azure Key Vault-URL. | Yes |
+| typ | Egenskapen Type måste anges till: **AzureKeyVault**. | Ja |
+| baseUrl | Ange Azure Key Vault-URL. | Ja |
 
 **Använda redigerings gränssnittet:**
 
@@ -73,10 +73,10 @@ Följande egenskaper stöds när du konfigurerar ett fält i en länkad tjänst 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type för fältet måste anges till: **AzureKeyVaultSecret**. | Yes |
-| secretName | Namnet på hemligheten i Azure Key Vault. | Yes |
-| secretVersion | Den hemliga versionen i Azure Key Vault.<br/>Om detta inte anges används alltid den senaste versionen av hemligheten.<br/>Om detta anges, kommer det att göras till den angivna versionen.| No |
-| butik | Refererar till en Azure Key Vault länkad tjänst som du använder för att lagra autentiseringsuppgifterna. | Yes |
+| typ | Egenskapen Type för fältet måste anges till: **AzureKeyVaultSecret**. | Ja |
+| secretName | Namnet på hemligheten i Azure Key Vault. | Ja |
+| secretVersion | Den hemliga versionen i Azure Key Vault.<br/>Om detta inte anges används alltid den senaste versionen av hemligheten.<br/>Om detta anges, kommer det att göras till den angivna versionen.| Inga |
+| butik | Refererar till en Azure Key Vault länkad tjänst som du använder för att lagra autentiseringsuppgifterna. | Ja |
 
 **Använda redigerings gränssnittet:**
 

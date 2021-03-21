@@ -1,19 +1,19 @@
 ---
 title: Ansluta till en Synapse Studio med privata länkar
 description: I den här artikeln får du lära dig hur du ansluter till din Azure Synapse Studio med privata länkar
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: d39beca60264023c8eb7c1bc78cd1ac15c3b45dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97586983"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586632"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Ansluta till Azure Synapse Studio med hjälp av Azure Private Link Hubs 
 
@@ -37,7 +37,9 @@ Du måste ansluta ditt virtuella Azure-nätverk till Synapse-resursen för priva
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Skärm bild som visar sidan anslutningar för privata slut punkter.":::
 
-Se till att välja resurs typen "Microsoft. Synapse/privateLinkHubs" på fliken "resurs". :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="skärm bild som visar sidan &quot;skapa en privat slut punkt&quot; med &quot;resurs typ&quot; markerad.":::
+Se till att välja resurs typen "Microsoft. Synapse/privateLinkHubs" på fliken "resurs".
+
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Skärm bild som visar sidan &quot;skapa en privat slut punkt&quot; med &quot;resurs typ&quot; markerad.":::
 
 På fliken konfiguration väljer du "privatelink.azuresynapse.net" för Privat DNS zoner vid integrering med ditt virtuella nätverk och en privat DNS-zon.
 

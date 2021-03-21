@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98757584"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till en sekundär plats
@@ -71,10 +71,10 @@ Endast Linux-datorer med följande lagring kan replikeras:
 Värd-NIC-teamning | Ja 
 Värd-VLAN | Ja 
 Värd-IPv4 | Ja 
-Värd-IPv6 | Nej 
-Gäst-VM – NIC Teaming | Nej
+Värd-IPv6 | Inga 
+Gäst-VM – NIC Teaming | Inga
 Gäst-VM – IPv4 | Ja
-Gäst-VM-IPv6 | Nej
+Gäst-VM-IPv6 | Inga
 Gäst-VM – Windows/Linux-statisk IP-adress | Ja
 Gäst-VM-Multi-NIC | Ja
 
@@ -98,14 +98,14 @@ VMDK | Ja
 VHD/VHDX | Ej tillämpligt 
 Generation 2 VM | Ej tillämpligt 
 Delad kluster disk | Ja 
-Krypterad disk | Nej 
+Krypterad disk | Inga 
 UEFI| Ja 
-NFS | Nej 
-SMB 3.0 | Nej 
+NFS | Inga 
+SMB 3.0 | Inga 
 RDM | Ja 
 Disk > 1 TB | Ja 
 Volym med Striped disk > 1 TB<br/><br/> LVM | Ja 
-Lagringsutrymmen | Nej 
+Lagringsutrymmen | Inga 
 Snabb Lägg till/ta bort disk | Ja 
 Uteslut disk | Ja 
 Multipath (MPIO) | Ej tillämpligt 
@@ -114,8 +114,8 @@ Multipath (MPIO) | Ej tillämpligt
 
 **Åtgärd** | **Stöds** 
 --- | --- 
-Flytta valv över resurs grupper (inom eller mellan prenumerationer) | Nej 
-Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | Nej 
+Flytta valv över resurs grupper (inom eller mellan prenumerationer) | Inga 
+Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | Inga 
 
 ## <a name="mobility-service-and-updates"></a>Mobilitets tjänsten och uppdateringar
 

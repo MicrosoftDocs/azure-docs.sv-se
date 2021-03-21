@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098782"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586649"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hantera python-bibliotek för Apache Spark i Azure Synapse Analytics
 
@@ -68,13 +68,13 @@ I det här exemplet anges kanaler och Conda/PyPI-beroenden.
 ```
 name: stats2
 channels:
-  - defaults
+- defaults
 dependencies:
-  - bokeh=0.9.2
-  - numpy=1.9.*
-  - flask
-  - pip:
-    - matplotlib
+- bokeh
+- numpy
+- pip:
+  - matplotlib
+  - koalas==1.7.0
 ```
 Mer information om hur du skapar en miljö från den här miljön. yml-filen finns i [skapa en miljö från en miljö. YML-fil](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
@@ -140,6 +140,11 @@ Så här lägger du till paket för arbets ytor:
 
 ![Skärm bild som visar arbets ytans paket.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Visa paket för arbets ytor")
 
+>[!WARNING]
+>- I Azure Synapse kan en Apache Spark pool använda anpassade bibliotek som antingen överförs som arbets ytans paket eller laddas upp i en välkänd Azure Data Lake Storage sökväg. Båda dessa alternativ kan dock inte användas samtidigt inom samma Apache Spark-pool. Om paketen anges med båda metoderna installeras bara de mushjul som anges i listan med paket för arbets ytor. 
+>
+>- När arbets ytans paket (för hands version) används för att installera paket på en specifik Apache Spark pool, finns det en begränsning som du inte längre kan ange paket med lagrings kontots sökväg i samma pool.  
+
 ### <a name="storage-account"></a>Lagringskonto
 Anpassade hjul paket kan installeras på den Apache Spark poolen genom att ladda upp alla hjul till Azure Data Lake Storage-kontot (Gen2) som är länkat till arbets ytan Synapse. 
 
@@ -149,13 +154,12 @@ Filerna ska överföras till följande sökväg i lagrings kontots standard beh�
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
-Du kan behöva lägga till ```python``` mappen i ```libraries``` mappen om den inte redan finns.
+>[!WARNING]
+> I vissa fall kan du behöva skapa fil Sök vägen baserat på strukturen ovan om den inte redan finns. Du kan till exempel behöva lägga till ```python``` mappen i ```libraries``` mappen om den inte redan finns.
 
 > [!IMPORTANT]
 > Om du vill installera anpassade bibliotek med hjälp av lagrings metoden för Azure-DataLake måste du ha behörigheter för **Storage BLOB-data deltagare** eller **lagrings-BLOB-data** för det primära Gen2-lagrings kontot som är länkat till Azure Synapse Analytics-arbetsytan.
 
->[!WARNING]
-> När du tillhandahåller anpassade Wheel-filer kan användarna inte ange drivrutinsfiler i både lagrings kontot och i bibliotekets biblioteks gränssnitt. Om båda anges installeras bara de Wheel-filer som anges i listan med paket för arbets ytor. 
 
 ## <a name="session-scoped-packages-preview"></a>Paket med sessionsbaserade paket (för hands version)
 Förutom paket på Poolnivå kan du också ange bibliotek för sessionsbaserade i början av en Notebook-session.  Med session-definitions bibliotek kan du ange och använda anpassade python-miljöer i en Notebook-session. 

@@ -12,10 +12,10 @@ ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939855"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementera röst assistenter i Windows
@@ -78,7 +78,7 @@ Om du vill använda röst aktivering måste en användare aktivera röst aktiver
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>Lyssna på de två aktiverings signalerna: OnBackgroundActivated och OnSignalDetected
 
-Windows kommer att signalera din app när den identifierar ett nyckelord på ett av två sätt. Om appen inte är aktiv (det vill säga att du inte har en referens till en icke-borttagen instans av `ConversationalAgentSession` ) kommer den att starta din app och anropa OnBackgroundActivated-metoden i app.XAML.cs-filen för ditt program. Om fältet Event argument `BackgroundActivatedEventArgs.TaskInstance.Task.Name` matchar strängen "AgentBackgroundTrigger" utlöstes program starten av röst aktiveringen. Programmet måste åsidosätta den här metoden och hämta en instans av ConversationalAgentSession för att signalera till Windows som nu är aktiv. När programmet är aktivt kommer Windows att signalera förekomsten av röst aktivering med `ConversationalAgentSession.OnSignalDetected` händelsen. Lägg till en händelse hanterare i den här händelsen så snart du hämtar `ConversationalAgentSession` .
+Windows kommer att signalera din app när den identifierar ett nyckelord på ett av två sätt. Om appen inte är aktiv (det vill säga att du inte har en referens till en icke-borttagen instans av `ConversationalAgentSession` ), kommer den att starta din app och anropa OnBackgroundActivated-metoden i filen app. XAML. cs i programmet. Om fältet Event argument `BackgroundActivatedEventArgs.TaskInstance.Task.Name` matchar strängen "AgentBackgroundTrigger" utlöstes program starten av röst aktiveringen. Programmet måste åsidosätta den här metoden och hämta en instans av ConversationalAgentSession för att signalera till Windows som nu är aktiv. När programmet är aktivt kommer Windows att signalera förekomsten av röst aktivering med `ConversationalAgentSession.OnSignalDetected` händelsen. Lägg till en händelse hanterare i den här händelsen så snart du hämtar `ConversationalAgentSession` .
 
 ## <a name="keyword-verification"></a>Nyckelords verifiering
 
@@ -122,9 +122,9 @@ När en app visar en vy över låset anses den vara i hel skärms läge. Mer inf
 
 ### <a name="transitioning-above-lock"></a>Över gång över lås
 
-En aktivering över låset liknar en aktivering under låset. Om det inte finns några aktiva instanser av programmet kommer en ny instans att startas i bakgrunden och `OnBackgroundActivated` i app.XAML.cs anropas. Om det finns en instans av programmet får den instansen ett meddelande via `ConversationalAgentSession.SignalDetected` händelsen.
+En aktivering över låset liknar en aktivering under låset. Om det inte finns några aktiva instanser av programmet kommer en ny instans att startas i bakgrunden och `OnBackgroundActivated` i app. XAML. CS kommer att anropas. Om det finns en instans av programmet får den instansen ett meddelande via `ConversationalAgentSession.SignalDetected` händelsen.
 
-Om programmet inte redan visas över låset måste det anropa `ConversationalAgentSession.RequestForegroundActivationAsync` . Detta utlöser `OnLaunched` metoden i app.XAML.cs som ska navigera till den vy som visas ovan.
+Om programmet inte redan visas över låset måste det anropa `ConversationalAgentSession.RequestForegroundActivationAsync` . Detta utlöser `OnLaunched` metoden i app. XAML. cs som ska navigera till den vy som visas ovan.
 
 ### <a name="detecting-lock-screen-transitions"></a>Identifiera lås skärms över gångar
 
