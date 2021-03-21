@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1f8100dd6340383eadec5d10b7f23db59ba0ebdf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786392"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Självstudie: Beställ Sök resultat med hjälp av .NET SDK
@@ -34,7 +34,7 @@ En färdig version av koden i den här självstudien finns i följande projekt:
 
 * [5-order-resultat (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [2b – Lägg till oändlig rullning (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll) lösning. Projektet kan antingen vara din egen version som skapats från den föregående själv studie kursen eller en kopia från GitHub.
 
@@ -50,7 +50,7 @@ Du behöver inte ändra någon av modellerna för att möjliggöra sortering. En
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Lägga till egenskapen OrderBy i Sök parametrarna
 
-1. I HomeController.cs lägger du till alternativet **OrderBy** och inkluderar egenskapen klassificering med en fallande sorterings ordning. I metoden **index (SearchData Model)** lägger du till följande rad i Sök parametrarna.
+1. I HomeController. cs lägger du till alternativet **OrderBy** och inkluderar egenskapen klassificering med en fallande sorterings ordning. I metoden **index (SearchData Model)** lägger du till följande rad i Sök parametrarna.
 
     ```cs
     options.OrderBy.Add("Rating desc");
@@ -120,7 +120,7 @@ Du behöver inte ändra någon av modellerna för att möjliggöra sortering. En
     ```
 
     > [!Tip]
-    > Webbläsare cachelagrar vanligt vis CSS-filer och det kan leda till att en gammal CSS-fil används och redigeringarna ignoreras. Ett bra sätt att avrunda detta är att lägga till en frågesträng med en versions parameter till länken. Ett exempel:
+    > Webbläsare cachelagrar vanligt vis CSS-filer och det kan leda till att en gammal CSS-fil används och redigeringarna ignoreras. Ett bra sätt att avrunda detta är att lägga till en frågesträng med en versions parameter till länken. Exempel:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -213,7 +213,7 @@ Du behöver inte ändra någon av modellerna för att möjliggöra sortering. En
 
 ### <a name="add-the-range-of-room-rates-to-the-view"></a>Lägg till intervallet för rums taxa i vyn
 
-1. Lägg till egenskaper som innehåller billigaste och mest kostsame rums taxa till Hotel.cs-modellen.
+1. Lägg till egenskaper som innehåller billigaste och mest kostsame rums taxa till modellen hotell. cs.
 
     ```cs
     // Room rate range
@@ -631,7 +631,7 @@ Bedömnings profiler definieras i ett Sök index i design läge. Det skrivskydda
     </body>
     ```
 
-1. Öppna filen SearchData.cs och Ersätt **SearchData** -klassen med följande kod.
+1. Öppna filen SearchData. CS och Ersätt **SearchData** -klassen med följande kod.
 
     ```cs
     public class SearchData

@@ -10,10 +10,10 @@ ms.date: 03/15/2021
 ms.author: kuthapar
 ms.custom: devx-track-java
 ms.openlocfilehash: 3c740aa00b158c7ddbca3e4f61d79e37978223c2
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493619"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB v3 for Core (SQL) API: viktig information och resurser
@@ -97,7 +97,7 @@ Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://az
 * Våren data Azure Cosmos DB stöder Java JDK 8 och Java JDK 11.
 * Våren data 2,3 stöds för närvarande, våren data 2,4 stöds inte för närvarande.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

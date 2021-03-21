@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 6474cb10cdb516bae0386b92e40ecd6f17250691
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225481"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593806"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Skapa en utlösare som kör en pipeline som svar på en lagrings händelse
 
@@ -49,7 +49,7 @@ I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i
    > Utlösaren för lagrings händelser stöder för närvarande endast Azure Data Lake Storage Gen2 och generella version 2-lagrings konton. På grund av en Azure Event Grid begränsning stöder Azure Data Factory bara maximalt 500 lagrings händelse utlösare per lagrings konto.
 
    > [!NOTE]
-   > Om du vill skapa och ändra en ny utlösare för lagrings händelser måste Azure-kontot som används för att logga in på Data Factory och publicera lagrings händelse utlösaren ha rätt rollbaserad åtkomst kontroll (Azure RBAC)-behörighet för lagrings kontot. Ingen ytterligare behörighet krävs: tjänstens huvud namn för Azure Data Factory behöver _inte_ ha särskild behörighet till antingen lagrings kontot eller event Grid. Mer information om åtkomst kontroll finns i avsnittet [rollbaserad åtkomst kontroll](#role-based-access-control) .
+   > Om du vill skapa en ny eller ändra en befintlig utlösare för lagrings händelser, måste Azure-kontot som används för att logga in på Data Factory och publicera lagrings händelse utlösaren ha rätt rollbaserad åtkomst kontroll (Azure RBAC)-behörighet för lagrings kontot. Ingen ytterligare behörighet krävs: tjänstens huvud namn för Azure Data Factory behöver _inte_ ha särskild behörighet till antingen lagrings kontot eller event Grid. Mer information om åtkomst kontroll finns i avsnittet [rollbaserad åtkomst kontroll](#role-based-access-control) .
 
 1. I **BLOB-sökvägen börjar med** och **BLOB-sökvägen slutar med** egenskaper kan du ange de behållare, mappar och blob-namn som du vill ta emot händelser för. Din utlösare för lagrings händelse kräver att minst en av dessa egenskaper definieras. Du kan använda olika mönster för båda **BLOB-sökvägen börjar med** och **BLOB-sökvägen slutar med** egenskaper, som du ser i exemplen senare i den här artikeln.
 
@@ -67,12 +67,12 @@ I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image3.png" alt-text="Skärm bild av sidan för hands version av lagrings händelse utlösare":::
 
-1. Om du vill koppla en pipeline till den här utlösaren går du till pipeline-arbetsytan och klickar på **Lägg till utlösare** och väljer **ny/redigera**. När sido navigerings fältet visas, klickar du på list rutan **Välj utlösare...** och väljer den utlösare som du skapade. Klicka på **Nästa: Förhandsgranska data** för att bekräfta att konfigurationen är korrekt och klicka sedan på **Nästa** för att verifiera att förhands granskningen är korrekt.
+1. Om du vill koppla en pipeline till den här utlösaren går du till pipeline-arbetsytan och klickar på **Utlös** och väljer **ny/redigera**. När sido navigerings fältet visas, klickar du på list rutan **Välj utlösare...** och väljer den utlösare som du skapade. Klicka på **Nästa: Förhandsgranska data** för att bekräfta att konfigurationen är korrekt och klicka sedan på **Nästa** för att verifiera att förhands granskningen är korrekt.
 
 1. Om din pipeline har parametrar, kan du ange dem i utlösaren kör parameter sidans navigerings fält. Utlösaren för lagrings händelser fångar in mappsökvägen och fil namnet för blobben i egenskaperna `@triggerBody().folderPath` och `@triggerBody().fileName` . Om du vill använda värdena för dessa egenskaper i en pipeline måste du mappa egenskaperna till pipeline-parametrar. När du har mappat egenskaperna till parametrar kan du komma åt de värden som samlas in av utlösaren genom `@pipeline().parameters.parameterName` uttrycket i hela pipelinen. Detaljerad förklaring finns i [referens utlösare metadata i pipelines](how-to-use-trigger-parameterization.md)
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="Skärm bild av mappnings egenskaper för utlösare för lagrings händelse till pipeline-parametrar.":::
-    
+
     I föregående exempel är utlösaren konfigurerad att utlösa när en BLOB-sökväg slutar i. csv skapas i mappen _Event-test_ i container _-data_. Egenskaperna **folderPath** och **filename** registrerar platsen för den nya blobben. Till exempel, när MoviesDB.csv läggs till i Sök vägs exemplet-data/Event-test, `@triggerBody().folderPath` har värdet `sample-data/event-testing` och `@triggerBody().fileName` har värdet `moviesDB.csv` . Dessa värden mappas i exemplet till pipeline-parametrarna `sourceFolder` och `sourceFile` , som kan användas i hela pipelinen som respektive `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
 1. Klicka på **Slutför** när du är klar.
@@ -83,11 +83,11 @@ Följande tabell innehåller en översikt över de schema element som är relate
 
 | **JSON-element** | **Beskrivning** | **Typ** | **Tillåtna värden** | **Obligatoriskt** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **utrymme** | Azure Resource Manager resurs-ID för lagrings kontot. | Sträng | Azure Resource Manager-ID | Ja |
+| **utrymme** | Azure Resource Manager resurs-ID för lagrings kontot. | Sträng | Azure Resource Manager-ID | Yes |
 | **planering** | Den typ av händelser som orsakar utlösaren att utlösa. | Matris    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Ja, valfri kombination av dessa värden. |
 | **blobPathBeginsWith** | BLOB-sökvägen måste börja med det mönster som tillhandahölls för utlösaren för att starta. Till exempel `/records/blobs/december/` utlöses utlösaren för blobbar i `december` mappen under `records` behållaren. | Sträng   | | Ange ett värde för minst en av följande egenskaper: `blobPathBeginsWith` eller `blobPathEndsWith` . |
 | **blobPathEndsWith** | BLOB-sökvägen måste sluta med det mönster som tillhandahölls för utlösaren för att starta. Till exempel `december/boxes.csv` utlöses endast utlösaren för blobbar som heter `boxes` i en `december` mapp. | Sträng   | | Du måste ange ett värde för minst en av följande egenskaper: `blobPathBeginsWith` eller `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Om blobar med noll byte ska utlösa en pipeline-körning. Som standard är detta inställt på sant. | Boolesk | sant eller falskt | Inga |
+| **ignoreEmptyBlobs** | Om blobar med noll byte ska utlösa en pipeline-körning. Som standard är detta inställt på sant. | Boolesk | sant eller falskt | No |
 
 ## <a name="examples-of-storage-event-triggers"></a>Exempel på utlösare för lagrings händelser
 
@@ -96,7 +96,7 @@ Det här avsnittet innehåller exempel på Inställningar för utlösare av lagr
 > [!IMPORTANT]
 > Du måste inkludera `/blobs/` segmentets segment, som du ser i följande exempel när du anger behållare och mapp, behållare och fil, eller behållare, mapp och fil. För **blobPathBeginsWith** läggs Data Factory-gränssnittet automatiskt till `/blobs/` mellan mappen och container namnet i utlösaren JSON.
 
-| Egenskap | Exempel | Beskrivning |
+| Egenskap | Exempel | Description |
 |---|---|---|
 | **BLOB-sökvägen börjar med** | `/containername/` | Tar emot händelser för alla blobar i behållaren. |
 | **BLOB-sökvägen börjar med** | `/containername/blobs/foldername/` | Tar emot händelser för alla blobbar i `containername` behållaren och `foldername` mappen. |

@@ -13,17 +13,17 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 1fdbdada54320ef28f6a4b04a7f415c835acc9dd
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756284"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scenario: en webbapp som anropar webb-API: er
 
 Lär dig hur du skapar en webbapp som loggar användare i Microsoft Identity Platform och anropar webb-API: er åt den inloggade användaren.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det här scenariot förutsätter att du redan har slutfört [scenariot: webbapp som loggar in användare](scenario-web-app-sign-user-overview.md).
 

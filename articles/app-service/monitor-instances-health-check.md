@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714484"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596033"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Övervaka App Service instanser med hjälp av hälso kontroll
 
@@ -48,7 +48,7 @@ I den här artikeln används hälso kontroll i Azure Portal för att övervaka A
 
 Förutom att konfigurera hälso kontroll alternativen kan du också konfigurera följande [Inställningar för appen](configure-common.md):
 
-| Namn på App-inställning | Tillåtna värden | Beskrivning |
+| Namn på App-inställning | Tillåtna värden | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximalt antal ping-försök. Om till exempel är inställt på `2` , tas instanserna bort efter `2` misslyckade ping-signaler. När du skalar upp eller ut, kommer App Service pinga till hälso kontroll Sök vägen för att se till att nya instanser är klara. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | För att undvika överbelastande av felfria instanser kommer högst hälften av instanserna att undantas. Till exempel, om en App Service plan skalas till fyra instanser och tre inte är felfria, kommer högst två att undantas. De andra två instanserna (en felfri och en skadad) fortsätter att ta emot begär Anden. I värsta fall där alla instanser är felaktiga kommer ingen att undantas. Om du vill åsidosätta det här beteendet ställer du in app-inställningen på ett värde mellan `0` och `100` . Ett högre värde innebär att fler felaktiga instanser tas bort (standard är 50). |
@@ -62,6 +62,10 @@ Stora företags utvecklings team behöver ofta följa säkerhets kraven för exp
 ## <a name="monitoring"></a>Övervakning
 
 När du har angett din program hälso kontroll Sök väg kan du övervaka webbplatsens hälso tillstånd med hjälp av Azure Monitor. Från **hälso kontroll** bladet i portalen klickar du på **måtten** i det övre verktygsfältet. Då öppnas ett nytt blad där du kan se platsens historiska hälso status och skapa en ny varnings regel. Mer information om övervakning av dina platser [finns i hand boken för Azure Monitor](web-sites-monitor.md).
+
+## <a name="limitations"></a>Begränsningar
+
+Hälso kontroll bör inte aktive ras på Premium Functions-webbplatser. På grund av den snabba skalningen av Premium funktioner kan hälso kontroll förfrågningar orsaka onödiga variationer i HTTP-trafik. Premium funktioner har sina egna interna hälso avsökningar som används för att informera om skalnings beslut.
 
 ## <a name="next-steps"></a>Nästa steg
 - [Skapa en aktivitets logg avisering för att övervaka alla åtgärder för autoskalning av motorn i din prenumeration](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

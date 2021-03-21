@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1443ab37beb28706227159c53d336384216d8387
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989168"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582467"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Snabbstart: Ställ in och hämta en hemlighet från Azure Key Vault med hjälp av Azure CLI
 
@@ -39,7 +39,7 @@ I den här snabb starten skapar du ett nyckel valv i Azure Key Vault med Azure C
 
 När du ska lägga till en hemlighet i valvet behöver du bara utföra några ytterligare steg. Det här lösenordet kan användas av ett program. Lösenordet kallas **ExamplePassword** och vi lagrar värdet **hVFkk965BuUv** i det.
 
-Skriv kommandona nedan för att skapa en hemlighet i Key Vault med namnet **ExamplePassword**, där värdet **hVFkk965BuUv** lagras:
+Använd kommandot Azure CLI [AZS Secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) nedan om du vill skapa en hemlighet i Key Vault som kallas **ExamplePassword** som ska lagra värdet **hVFkk965BuUv** :
 
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
@@ -64,5 +64,6 @@ Nu har du skapat ett nyckelvalv, lagrat en hemlighet och hämtat den.
 I den här snabb starten skapade du en Key Vault och sparade en hemlighet. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md)
+- Lär dig hur du [lagrar flera linje hemligheter i Key Vault](multiline-secrets.md)
 - Se referensen för [kommandon för Azure CLI-AZ](/cli/azure/keyvault)
 - Granska [Key Vault säkerhets översikt](../general/security-overview.md)

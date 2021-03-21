@@ -3,12 +3,12 @@ title: Svar på vanliga frågor
 description: 'Svar på vanliga frågor om: Azure Backup-funktioner inklusive Recovery Services-valvet, vad du kan säkerhetskopiera, hur det fungerar, kryptering och gränser. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 79ff404192de481965f3971f00328c49a591dd41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467637"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583385"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Vanliga frågor och svar
 
@@ -72,6 +72,13 @@ Ja. Information om hur du flyttar en prenumeration (som innehåller ett valv) ti
 
 >[!IMPORTANT]
 >Se till att du utför följande åtgärder när du har flyttat prenumerationen:<ul><li>Rollbaserade behörigheter för åtkomst kontroll och anpassade roller kan inte delegeras. Du måste återskapa behörigheter och roller i den nya Azure AD.</li><li>Du måste återskapa den hanterade identiteten (MI) för valvet genom att inaktivera och aktivera det igen. Du måste också utvärdera och återskapa MI-behörigheterna.</li><li>Om valvet använder funktioner som utnyttjar MI, till exempel [privata slut punkter](private-endpoints.md#before-you-start) och [Kundhanterade nycklar](encryption-at-rest-with-cmk.md#before-you-start), måste du konfigurera om funktionerna.</li></ul>
+
+### <a name="can-i-move-a-subscription-that-contains-a-recovery-services-vault-to-a-different-tenant"></a>Kan jag flytta en prenumeration som innehåller ett Recovery Services valv till en annan klient?
+
+Ja. Se till att du gör följande: 
+
+>[!IMPORTANT]
+>Se till att du utför följande åtgärder när du har flyttat prenumerationen:<ul><li>Om valvet använder CMK (kundens hanterade nycklar) måste du uppdatera valvet. Detta gör det möjligt för valvet att återskapa och konfigurera om den hanterade identiteten för valvet och CMK (som kommer att finnas i den nya klienten), annars Miss lyckas säkerhets kopieringen/återställnings åtgärden.</li><li>Du måste konfigurera om RBAC-behörigheterna i prenumerationen eftersom det inte går att flytta befintliga behörigheter.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 

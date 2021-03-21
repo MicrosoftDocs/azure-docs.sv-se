@@ -4,15 +4,15 @@ description: Vanliga frågor som påträffades när du skapade en virtuell dator
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: iqshahmicrosoft
-ms.author: iqshah
+author: kriti-ms
+ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: a74170af61c05d07a189b5ceb61dc0c9b7e14298
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200429"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593432"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Vanliga frågor om VM på Azure Marketplace
 
@@ -470,6 +470,17 @@ $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAdd
 # deploying VM with existing VHD
 New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName"
 ```
+
+## <a name="how-do-i-test-a-hidden-preview-image"></a>Hur gör jag för att testa en dold förhands gransknings bild?
+
+Du kan distribuera dolda förhands gransknings avbildningar med snabb starts mallar.
+För att distribuera en förhands gransknings bild 
+1. Gå till respektive snabb starts mall för [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) eller [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)och välj Distribuera till Azure. Detta bör ta dig Azure Portal.
+2. I Azure Portal väljer du "Redigera mall".
+3. I JSON-mallen söker du efter imageReference och uppdaterar publisherID, OfferID, SkuID och version av avbildningen. Om du vill testa förhands gransknings bilden lägger du till "-PREVIEW" i OfferID.
+ ![bild](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
+4. Klicka på Spara
+5. Fyll i resten av detaljerna. Granska och skapa
 
 
 ## <a name="next-steps"></a>Nästa steg

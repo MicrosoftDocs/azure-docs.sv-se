@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/22/2021
+ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 883c5a20612f4dab44c0d06776ee287b27174ab9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8b596a5e54c0b59c4c0b49aa5cdc4fd6477d46dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097311"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599349"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Entitets kategorier som stöds i API för textanalys v3
 
@@ -39,8 +39,8 @@ Du kan hitta en lista med typer som returneras av version 2,1 i [migreringsguide
 
 [!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
-**_
+***
 
 ## <a name="next-steps"></a>Nästa steg
 
-_ [Hur du använder namngiven entitets igenkänning i textanalys](how-tos/text-analytics-how-to-entity-linking.md)
+* [Använda namngiven enhets igenkänning i Textanalys](how-tos/text-analytics-how-to-entity-linking.md)

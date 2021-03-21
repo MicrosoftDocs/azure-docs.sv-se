@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/20/2020
-ms.openlocfilehash: 1448bb3ebf541af047759bc886b2c174d89c1c50
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 5674d656385d356f596f96cd7851d2cc05839761
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383780"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597425"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopiera data till och från Azure Table Storage med hjälp av Azure Data Factory
 
@@ -51,9 +51,9 @@ Du kan skapa en Azure Storage länkad tjänst genom att använda konto nyckeln. 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till **AzureTableStorage**. |Ja |
-| Begär | Ange den information som behövs för att ansluta till lagringen för egenskapen connectionString. <br/>Du kan också ange konto nyckeln i Azure Key Vault och hämta `accountKey` konfigurationen från anslutnings strängen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. |Ja |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |Inga |
+| typ | Egenskapen Type måste anges till **AzureTableStorage**. |Yes |
+| Begär | Ange den information som behövs för att ansluta till lagringen för egenskapen connectionString. <br/>Du kan också ange konto nyckeln i Azure Key Vault och hämta `accountKey` konfigurationen från anslutnings strängen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. |Yes |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |No |
 
 >[!NOTE]
 >Om du använder den länkade tjänsten "AzureStorage"-typ, stöds den fortfarande som den är, men du rekommenderas att använda den här nya länkade tjänst typen "AzureTableStorage".
@@ -120,9 +120,9 @@ Följande egenskaper stöds om du vill använda autentisering med signaturer fö
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till **AzureTableStorage**. |Ja |
-| sasUri | Ange SAS-URI för signatur-URI: n för delad åtkomst till tabellen. <br/>Markera det här fältet som en SecureString för att lagra det på ett säkert sätt i Data Factory. Du kan också ställa in SAS-token i Azure Key Vault för att dra nytta av automatisk rotation och ta bort token-delen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. | Ja |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller den lokala Integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |Inga |
+| typ | Egenskapen Type måste anges till **AzureTableStorage**. |Yes |
+| sasUri | Ange SAS-URI för signatur-URI: n för delad åtkomst till tabellen. <br/>Markera det här fältet som en SecureString för att lagra det på ett säkert sätt i Data Factory. Du kan också ställa in SAS-token i Azure Key Vault för att dra nytta av automatisk rotation och ta bort token-delen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. | Yes |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller den lokala Integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |No |
 
 >[!NOTE]
 >Om du använder den länkade tjänsten "AzureStorage"-typ, stöds den fortfarande som den är, men du rekommenderas att använda den här nya länkade tjänst typen "AzureTableStorage".
@@ -191,8 +191,8 @@ Om du vill kopiera data till och från Azure-tabellen anger du egenskapen type f
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till **AzureTable**. |Ja |
-| tableName |Namnet på tabellen i den tabell lagrings databas instans som den länkade tjänsten refererar till. |Ja |
+| typ | Data uppsättningens typ-egenskap måste anges till **AzureTable**. |Yes |
+| tableName |Namnet på tabellen i den tabell lagrings databas instans som den länkade tjänsten refererar till. |Yes |
 
 **Exempel:**
 
@@ -231,9 +231,9 @@ Om du vill kopiera data från Azure-tabellen anger du käll typen i kopierings a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste anges till **AzureTableSource**. |Ja |
-| azureTableSourceQuery |Använd den anpassade tabell lagrings frågan för att läsa data.<br/>Käll frågan är en direkt karta från `$filter` frågealternativet som stöds av Azure Table Storage, lär dig mer om syntaxen från [det här dokumentet](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)och se exemplen i följande azureTableSourceQuery- [exempel avsnitt](#azuretablesourcequery-examples). |Inga |
-| azureTableSourceIgnoreTableNotFound |Anger om undantag för tabellen inte finns.<br/>Tillåtna värden är **True** och **false** (standard). |Inga |
+| typ | Typ egenskapen för kopierings aktivitets källan måste anges till **AzureTableSource**. |Yes |
+| azureTableSourceQuery |Använd den anpassade tabell lagrings frågan för att läsa data.<br/>Käll frågan är en direkt karta från `$filter` frågealternativet som stöds av Azure Table Storage, lär dig mer om syntaxen från [det här dokumentet](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)och se exemplen i följande azureTableSourceQuery- [exempel avsnitt](#azuretablesourcequery-examples). |No |
+| azureTableSourceIgnoreTableNotFound |Anger om undantag för tabellen inte finns.<br/>Tillåtna värden är **True** och **false** (standard). |No |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-exempel
 
@@ -260,13 +260,14 @@ Om du vill kopiera data till Azure-tabellen ställer du in mottagar typen i kopi
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till **AzureTableSink**. |Ja |
-| azureTableDefaultPartitionKeyValue |Standardvärdet för partitionerings nyckel som kan användas av mottagaren. |Inga |
-| azureTablePartitionKeyName |Ange namnet på den kolumn vars värden används som partitionsnyckel. Om inget anges används "AzureTableDefaultPartitionKeyValue" som partitionsnyckel. |Inga |
-| azureTableRowKeyName |Ange namnet på den kolumn vars kolumn värden används som rad nyckel. Om inget anges ska du använda ett GUID för varje rad. |Inga |
-| azureTableInsertType |Det läge där data ska infogas i Azure-tabellen. Den här egenskapen anger om befintliga rader i utdatatabellen med matchande partition och rad nycklar har ersatts eller slås samman. <br/><br/>Tillåtna värden är **sammanfoga** (standard) och **Ersätt**. <br/><br> Den här inställningen gäller för rad nivån inte tabell nivån. Inget alternativ tar bort rader i den utgående tabell som inte finns i indata. Information om hur inställningarna för att sammanfoga och ersätta fungerar finns i [Infoga eller sammanfoga entitet](/rest/api/storageservices/Insert-Or-Merge-Entity) och [Infoga eller Ersätt entitet](/rest/api/storageservices/Insert-Or-Replace-Entity). |Inga |
+| typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till **AzureTableSink**. |Yes |
+| azureTableDefaultPartitionKeyValue |Standardvärdet för partitionerings nyckel som kan användas av mottagaren. |No |
+| azureTablePartitionKeyName |Ange namnet på den kolumn vars värden används som partitionsnyckel. Om inget anges används "AzureTableDefaultPartitionKeyValue" som partitionsnyckel. |No |
+| azureTableRowKeyName |Ange namnet på den kolumn vars kolumn värden används som rad nyckel. Om inget anges ska du använda ett GUID för varje rad. |No |
+| azureTableInsertType |Det läge där data ska infogas i Azure-tabellen. Den här egenskapen anger om befintliga rader i utdatatabellen med matchande partition och rad nycklar har ersatts eller slås samman. <br/><br/>Tillåtna värden är **sammanfoga** (standard) och **Ersätt**. <br/><br> Den här inställningen gäller för rad nivån inte tabell nivån. Inget alternativ tar bort rader i den utgående tabell som inte finns i indata. Information om hur inställningarna för att sammanfoga och ersätta fungerar finns i [Infoga eller sammanfoga entitet](/rest/api/storageservices/Insert-Or-Merge-Entity) och [Infoga eller Ersätt entitet](/rest/api/storageservices/Insert-Or-Replace-Entity). |No |
 | writeBatchSize |Infogar data i Azure-tabellen när writeBatchSize eller writeBatchTimeout har nåtts.<br/>Tillåtna värden är heltal (antal rader). |Nej (standard är 10 000) |
 | writeBatchTimeout |Infogar data i Azure-tabellen när writeBatchSize eller writeBatchTimeout har nåtts.<br/>Tillåtna värden är TimeSpan. Ett exempel är "00:20:00" (20 minuter). |Nej (standard är 90 sekunder, lagrings klientens standard-timeout) |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No |
 
 **Exempel:**
 

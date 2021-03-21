@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
 ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933980"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure Virtual Network
@@ -54,7 +54,7 @@ Du kan använda följande verktyg för att skapa eller konfigurera ett VNet:
 * Azure CLI
 * En nätverks konfigurations fil (netcfg – endast för klassisk virtuella nätverk). Se artikeln [Konfigurera ett VNet med hjälp av en nätverks konfigurations fil](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) .
 
-### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Vilka adress intervall kan jag använda i virtuella nätverk?
+### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Vilka adressintervall kan jag använda i mina virtuella nätverk?
 Vi rekommenderar att du använder de adress intervall som räknas upp i [RFC 1918](https://tools.ietf.org/html/rfc1918), som har tagits ur bruk av IETF för privata, icke-flyttbara adress utrymmen:
 * 10.0.0.0-10.255.255.255 (10/8-prefix)
 * 172.16.0.0-172.31.255.255 (172.16/12-prefix)
@@ -195,7 +195,7 @@ Ja. Du kan distribuera Web Apps inuti ett VNet med hjälp av en ASE (App Service
 
 * [App Service nätverksfunktioner](../app-service/networking-features.md)
 * [Skapa Web Apps i en App Service-miljön](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Integrera din app med en Azure-Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Integrera en app med Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Begränsningar för App Service åtkomst](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Kan jag distribuera Cloud Services med Web-och Worker-roller (PaaS) i ett VNet?

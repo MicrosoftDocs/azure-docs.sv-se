@@ -6,18 +6,21 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddeab4838feb07d1101993cab4ebc86581b4d8b1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799255"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674707"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog utveckla koncept
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Microsoft **Azure Data Catalog** är en helt hanterad moln tjänst som tillhandahåller funktioner för identifiering av data källor och gemensamt skapade metadata för data källan. Utvecklare kan använda tjänsten via dess REST-API: er. Att förstå begreppen som implementeras i tjänsten är viktigt för att utvecklare ska kunna integrera med **Azure Data Catalog**.
 
 ## <a name="key-concepts"></a>Viktiga begrepp 
-Den **Azure Data Catalog** konceptuella modellen baseras på fyra viktiga begrepp: **katalog**, **användare**, **till gångar**och **anteckningar**.
+Den **Azure Data Catalog** konceptuella modellen baseras på fyra viktiga begrepp: **katalog**, **användare**, **till gångar** och **anteckningar**.
 
 ![Bild av Azure Data Catalog konceptuella modell](./media/data-catalog-developer-concepts/concept2.png)
 
@@ -74,13 +77,13 @@ UX-modulen kan sedan välja hur kombinationen ska visas. Det finns tre olika mö
 Som vi introducerat i avsnittet viktiga begrepp innehåller **Azure Data Catalog** objekt modellen objekt, som kan vara till gångar eller kommentarer. Objekt har egenskaper som kan vara valfria eller obligatoriska. Vissa egenskaper gäller för alla objekt. Vissa egenskaper gäller för alla till gångar. Vissa egenskaper gäller endast för vissa till gångs typer.
 
 ### <a name="system-properties"></a>Systemegenskaper
-<table><tr><td><b>Egenskaps namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Den senaste gången objektet ändrades. Det här fältet genereras av servern när ett objekt infogas och varje gång ett objekt uppdateras. Värdet för den här egenskapen ignoreras vid inläsning av publicerings åtgärder.</td></tr><tr><td>ID</td><td>URI</td><td>Absolut URL för objektet (skrivskyddat). Det är den unika adresser bara URI: n för objektet.  Värdet för den här egenskapen ignoreras vid inläsning av publicerings åtgärder.</td></tr><tr><td>typ</td><td>Sträng</td><td>Typ av till gång (skrivskyddad).</td></tr><tr><td>etag</td><td>Sträng</td><td>En sträng som motsvarar den version av objektet som kan användas för optimistisk concurrency-kontroll när du utför åtgärder som uppdaterar objekt i katalogen. "*" kan användas för att matcha vilket värde som helst.</td></tr></table>
+<table><tr><td><b>Egenskapens namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Den senaste gången objektet ändrades. Det här fältet genereras av servern när ett objekt infogas och varje gång ett objekt uppdateras. Värdet för den här egenskapen ignoreras vid inläsning av publicerings åtgärder.</td></tr><tr><td>ID</td><td>URI</td><td>Absolut URL för objektet (skrivskyddat). Det är den unika adresser bara URI: n för objektet.  Värdet för den här egenskapen ignoreras vid inläsning av publicerings åtgärder.</td></tr><tr><td>typ</td><td>Sträng</td><td>Typ av till gång (skrivskyddad).</td></tr><tr><td>etag</td><td>Sträng</td><td>En sträng som motsvarar den version av objektet som kan användas för optimistisk concurrency-kontroll när du utför åtgärder som uppdaterar objekt i katalogen. "*" kan användas för att matcha vilket värde som helst.</td></tr></table>
 
 ### <a name="common-properties"></a>Gemensamma egenskaper
 Dessa egenskaper gäller för alla typer av rot till gångar och alla antecknings typer.
 
 <table>
-<tr><td><b>Egenskaps namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr>
+<tr><td><b>Egenskapens namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr>
 <tr><td>fromSourceSystem</td><td>Boolesk</td><td>Anger om objektets data härleds från ett käll system (t. ex. SQL Server Database, Oracle Database) eller har skapats av en användare.</td></tr>
 </table>
 
@@ -88,21 +91,21 @@ Dessa egenskaper gäller för alla typer av rot till gångar och alla anteckning
 <p>
 Dessa egenskaper gäller för alla typer av rot till gångar.
 
-<table><tr><td><b>Egenskaps namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr><tr><td>name</td><td>Sträng</td><td>Ett namn som härletts från data källans plats information</td></tr><tr><td>via</td><td>DataSourceLocation</td><td>Beskriver unikt data källan och är en av identifierarna för till gången. (Se avsnittet dubbla identiteter).  DSL-strukturen varierar beroende på protokoll och typ av källa.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Mer information om typen av till gång.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beskriver den användare som senast registrerade den här till gången.  Innehåller både det unika ID: t för användaren (UPN) och visnings namn (lastName och firstName).</td></tr><tr><td>Hålla</td><td>Sträng</td><td>ID för behållar till gången för data källan. Den här egenskapen stöds inte för behållar typen.</td></tr></table>
+<table><tr><td><b>Egenskapens namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr><tr><td>name</td><td>Sträng</td><td>Ett namn som härletts från data källans plats information</td></tr><tr><td>via</td><td>DataSourceLocation</td><td>Beskriver unikt data källan och är en av identifierarna för till gången. (Se avsnittet dubbla identiteter).  DSL-strukturen varierar beroende på protokoll och typ av källa.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Mer information om typen av till gång.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beskriver den användare som senast registrerade den här till gången.  Innehåller både det unika ID: t för användaren (UPN) och visnings namn (lastName och firstName).</td></tr><tr><td>Hålla</td><td>Sträng</td><td>ID för behållar till gången för data källan. Den här egenskapen stöds inte för behållar typen.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Vanliga egenskaper för icke-singleton-anteckning
 Dessa egenskaper gäller för alla typer av icke-singleton-anteckningar (kommentarer som kan vara flera per till gång).
 
 <table>
-<tr><td><b>Egenskaps namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr>
+<tr><td><b>Egenskapens namn</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr>
 <tr><td>key</td><td>Sträng</td><td>En användardefinierad nyckel som unikt identifierar anteckningen i den aktuella samlingen. Nyckel längden får inte överskrida 256 tecken.</td></tr>
 </table>
 
 ### <a name="root-asset-types"></a>Rot till gångs typer
 Rot till gångs typer är de typer som representerar de olika typerna av data till gångar som kan registreras i katalogen. Det finns en vy för varje rottyp, som beskriver till gångar och anteckningar som ingår i vyn. Vyns namn ska användas i motsvarande {view_name} URL-segment när du publicerar en till gång med REST API.
 
-<table><tr><td><b>Till gångs typ (visnings namn)</b></td><td><b>Ytterligare egenskaper</b></td><td><b>Datatyp</b></td><td><b>Tillåtna anteckningar</b></td><td><b>Kommentarer</b></td></tr><tr><td>Tabell ("tabeller")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagga<p>Schema<p>ColumnDescription<p>ColumnTag<p> Expert<p>Förhandsgranskning<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>En tabell representerar alla tabell data.  Exempel: SQL-tabell, SQL-vy, Analysis Services tabell tabell, Analysis Services flerdimensionell dimension, Oracle-tabell osv.   </td></tr><tr><td>Mått ("mått")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagga<p>Expert<p>AccessInstruction<p>Dokumentation<p></td><td>Den här typen representerar ett Analysis Services mått.</td></tr><tr><td></td><td>åtgärder</td><td>Kolumn</td><td></td><td>Metadata som beskriver måttet</td></tr><tr><td></td><td>isCalculated </td><td>Boolesk</td><td></td><td>Anger om måttet beräknas eller inte.</td></tr><tr><td></td><td>measureGroup</td><td>Sträng</td><td></td><td>Fysisk container för mått</td></tr><td>KPI ("KPI: er")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagga<p>Expert<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sträng</td><td></td><td>Fysisk container för mått</td></tr><tr><td></td><td>goalExpression</td><td>Sträng</td><td></td><td>Ett numeriskt MDX-uttryck eller en beräkning som returnerar KPI-värdets målvärde.</td></tr><tr><td></td><td>valueExpression</td><td>Sträng</td><td></td><td>Ett numeriskt MDX-uttryck som returnerar KPI-indikatorns faktiska värde.</td></tr><tr><td></td><td>statusExpression</td><td>Sträng</td><td></td><td>Ett MDX-uttryck som representerar status för KPI vid en angiven tidpunkt.</td></tr><tr><td></td><td>trendExpression</td><td>Sträng</td><td></td><td>Ett MDX-uttryck som utvärderar KPI-värdet över tid. Trenden kan vara ett tidsbaserat kriterium som är användbart i en speciell affärs kontext.</td>
-<tr><td>Rapport ("rapporter")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagga<p>Expert<p>AccessInstruction<p>Dokumentation<p></td><td>Den här typen representerar en SQL Server Reporting Services rapport </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sträng</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sträng</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sträng</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sträng</td><td></td><td></td></tr><tr><td>Container ("behållare")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagga<p>Expert<p>AccessInstruction<p>Dokumentation<p></td><td>Den här typen representerar en behållare för andra till gångar, till exempel en SQL-databas, en Azure-blobs-behållare eller en Analysis Services modell.</td></tr></table>
+<table><tr><td><b>Till gångs typ (visnings namn)</b></td><td><b>Ytterligare egenskaper</b></td><td><b>Datatyp</b></td><td><b>Tillåtna anteckningar</b></td><td><b>Kommentarer</b></td></tr><tr><td>Tabell ("tabeller")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagg<p>Schema<p>ColumnDescription<p>ColumnTag<p> Expert<p>Förhandsgranskning<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>En tabell representerar alla tabell data.  Exempel: SQL-tabell, SQL-vy, Analysis Services tabell tabell, Analysis Services flerdimensionell dimension, Oracle-tabell osv.   </td></tr><tr><td>Mått ("mått")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagg<p>Expert<p>AccessInstruction<p>Dokumentation<p></td><td>Den här typen representerar ett Analysis Services mått.</td></tr><tr><td></td><td>åtgärder</td><td>Kolumn</td><td></td><td>Metadata som beskriver måttet</td></tr><tr><td></td><td>isCalculated </td><td>Boolesk</td><td></td><td>Anger om måttet beräknas eller inte.</td></tr><tr><td></td><td>measureGroup</td><td>Sträng</td><td></td><td>Fysisk container för mått</td></tr><td>KPI ("KPI: er")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagg<p>Expert<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sträng</td><td></td><td>Fysisk container för mått</td></tr><tr><td></td><td>goalExpression</td><td>Sträng</td><td></td><td>Ett numeriskt MDX-uttryck eller en beräkning som returnerar KPI-värdets målvärde.</td></tr><tr><td></td><td>valueExpression</td><td>Sträng</td><td></td><td>Ett numeriskt MDX-uttryck som returnerar KPI-indikatorns faktiska värde.</td></tr><tr><td></td><td>statusExpression</td><td>Sträng</td><td></td><td>Ett MDX-uttryck som representerar status för KPI vid en angiven tidpunkt.</td></tr><tr><td></td><td>trendExpression</td><td>Sträng</td><td></td><td>Ett MDX-uttryck som utvärderar KPI-värdet över tid. Trenden kan vara ett tidsbaserat kriterium som är användbart i en speciell affärs kontext.</td>
+<tr><td>Rapport ("rapporter")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagg<p>Expert<p>AccessInstruction<p>Dokumentation<p></td><td>Den här typen representerar en SQL Server Reporting Services rapport </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sträng</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sträng</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sträng</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sträng</td><td></td><td></td></tr><tr><td>Container ("behållare")</td><td></td><td></td><td>Beskrivning<p>FriendlyName<p>Tagg<p>Expert<p>AccessInstruction<p>Dokumentation<p></td><td>Den här typen representerar en behållare för andra till gångar, till exempel en SQL-databas, en Azure-blobs-behållare eller en Analysis Services modell.</td></tr></table>
 
 ### <a name="annotation-types"></a>Antecknings typer
 Antecknings typer representerar typer av metadata som kan tilldelas andra typer i katalogen.
@@ -111,7 +114,7 @@ Antecknings typer representerar typer av metadata som kan tilldelas andra typer 
 <tr><td><b>Antecknings typ (namn på kapslad vy)</b></td><td><b>Ytterligare egenskaper</b></td><td><b>Datatyp</b></td><td><b>Kommentarer</b></td></tr>
 
 <tr><td>Beskrivning ("beskrivningar")</td><td></td><td></td><td>Den här egenskapen innehåller en beskrivning av en till gång. Varje användare av systemet kan lägga till en egen beskrivning.  Endast den användaren kan redigera Description-objektet.  (Administratörer och till gångs ägare kan ta bort Description-objektet men inte redigera det). Systemet bibehåller användarnas beskrivningar separat.  Det finns därför en matris med beskrivningar för varje till gång (en för varje användare som har bidragit med sina kunskaper om till gången, förutom en som innehåller information som härletts från data källan).</td></tr>
-<tr><td></td><td>description</td><td>sträng</td><td>En kort beskrivning (2-3 rader) av till gången</td></tr>
+<tr><td></td><td>beskrivning</td><td>sträng</td><td>En kort beskrivning (2-3 rader) av till gången</td></tr>
 
 <tr><td>Tagg ("Taggar")</td><td></td><td></td><td>Den här egenskapen definierar en tagg för en till gång. Varje användare av systemet kan lägga till flera taggar för en till gång.  Endast den användare som skapade tagga objekt kan redigera dem.  (Administratörer och till gångs ägare kan ta bort taggnamnet men inte redigera det). Systemet bibehåller användarnas Taggar separat.  Det finns därför en matris med att tagga objekt på varje till gång.</td></tr>
 <tr><td></td><td>tagg</td><td>sträng</td><td>En tagg som beskriver till gången.</td></tr>
@@ -124,7 +127,7 @@ Antecknings typer representerar typer av metadata som kan tilldelas andra typer 
 
 <tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Den här egenskapen innehåller en beskrivning av en kolumn.  Varje användare av systemet kan lägga till egna beskrivningar för flera kolumner (högst ett per kolumn). Endast den användare som skapade ColumnDescription-objekt kan redigera dem.  (Administratörer och till gångs ägare kan ta bort ColumnDescription-objektet men inte redigera det). Systemet underhåller dessa användares kolumn beskrivningar separat.  Därför finns det en matris med ColumnDescription-objekt på varje till gång (en per kolumn för varje användare som har bidragit till deras kännedom om kolumnen, förutom en som innehåller information som härletts från data källan).  ColumnDescription binds löst till schemat så att det kan bli osynkroniserade. ColumnDescription kan beskriva en kolumn som inte längre finns i schemat.  Det är upp till skrivaren att behålla beskrivningen och schemat synkroniserat.  Data källan kan också ha kolumn beskrivnings information och de är ytterligare ColumnDescription-objekt som skulle skapas när verktyget körs.</td></tr>
 <tr><td></td><td>columnName</td><td>Sträng</td><td>Namnet på kolumnen som beskrivningen refererar till.</td></tr>
-<tr><td></td><td>description</td><td>Sträng</td><td>en kort beskrivning (2-3 rader) i kolumnen.</td></tr>
+<tr><td></td><td>beskrivning</td><td>Sträng</td><td>en kort beskrivning (2-3 rader) i kolumnen.</td></tr>
 
 <tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Den här egenskapen innehåller en tagg för en kolumn. Varje användare av systemet kan lägga till flera taggar för en specifik kolumn och kan lägga till taggar för flera kolumner. Endast den användare som skapade ColumnTag-objekt kan redigera dem. (Administratörer och till gångs ägare kan ta bort ColumnTag-objektet men inte redigera det). Systemet underhåller dessa användares kolumn etiketter separat.  Därför finns det en matris med ColumnTag-objekt på varje till gång.  ColumnTag binds löst till schemat så att det kan bli osynkroniserade. ColumnTag kan beskriva en kolumn som inte längre finns i schemat.  Det är upp till skribenten att behålla kolumn tag gen och schemat synkroniserat.</td></tr>
 <tr><td></td><td>columnName</td><td>Sträng</td><td>Namnet på kolumnen som den här taggen refererar till.</td></tr>
@@ -142,7 +145,7 @@ Antecknings typer representerar typer av metadata som kan tilldelas andra typer 
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Antalet rader i data uppsättningen</td></tr>
-<tr><td></td><td>size</td><td>long</td><td>Data uppsättningens storlek i byte.  </td></tr>
+<tr><td></td><td>ikoner</td><td>long</td><td>Data uppsättningens storlek i byte.  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>sträng</td><td>När schemat senast ändrades</td></tr>
 <tr><td></td><td>dataModifiedTime</td><td>sträng</td><td>Den senaste gången data uppsättningen ändrades (data lades till, ändrades eller togs bort)</td></tr>
 
@@ -236,7 +239,7 @@ Azure Data Catalog använder två autentiseringsmetoder:
 * Behörighets-baserad auktorisering
 
 ### <a name="roles"></a>Roller
-Det finns tre roller: **administratör**, **ägare**och **deltagare**.  Varje roll har sitt omfång och rättigheter, som sammanfattas i följande tabell.
+Det finns tre roller: **administratör**, **ägare** och **deltagare**.  Varje roll har sitt omfång och rättigheter, som sammanfattas i följande tabell.
 
 <table><tr><td><b>Role</b></td><td><b>Omfång</b></td><td><b>Behörigheter</b></td></tr><tr><td>Administratör</td><td>Katalog (alla till gångar/anteckningar i katalogen)</td><td>Läs ta bort ViewRoles
 

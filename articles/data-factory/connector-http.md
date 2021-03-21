@@ -4,14 +4,14 @@ description: Lär dig hur du kopierar data från en moln-eller lokal HTTP-källa
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 247bec30e9933dfd75b7c31cbce15ff043959243
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573208"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588893"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiera data från en HTTP-slutpunkt med hjälp av Azure Data Factory
 
@@ -66,7 +66,8 @@ Följande egenskaper stöds för den länkade HTTP-tjänsten:
 | typ | Egenskapen **Type** måste anges till **HttpServer**. | Yes |
 | url | Bas-URL: en till webb servern. | Yes |
 | enableServerCertificateValidation | Ange om du vill aktivera verifiering av Server-TLS/SSL-certifikat när du ansluter till en HTTP-slutpunkt. Om HTTPS-servern använder ett självsignerat certifikat ställer du in den här egenskapen på **falskt**. | No<br /> (Standardvärdet är **Sant**) |
-| authenticationType | Anger autentiseringstypen. Tillåtna värden är **Anonym**, **Basic**, **Digest**, **Windows** och **ClientCertificate**. <br><br> Se de avsnitt som följer den här tabellen för fler egenskaper och JSON-exempel för de här typerna av autentisering. | Yes |
+| authenticationType | Anger autentiseringstypen. Tillåtna värden är **Anonym**, **Basic**, **Digest**, **Windows** och **ClientCertificate**. User-based OAuth stöds inte. Du kan också konfigurera autentiseringsscheman i `authHeader` egenskapen. Se de avsnitt som följer den här tabellen för fler egenskaper och JSON-exempel för de här typerna av autentisering. | Yes |
+| authHeaders | Ytterligare HTTP-begärandehuvuden för autentisering.<br/> Om du till exempel vill använda API-autentiseringsnyckel kan du välja autentiseringstyp som "Anonym" och ange API-nyckel i rubriken. | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |No |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Använda Basic-, Digest-eller Windows-autentisering
@@ -163,6 +164,35 @@ Om du använder **certThumbprint** för autentisering och certifikatet är insta
 }
 ```
 
+### <a name="using-authentication-headers"></a>Använda autentiseringsscheman
+
+Dessutom kan du konfigurera begärandehuvuden för autentisering tillsammans med de inbyggda autentiseringstyper.
+
+**Exempel: använda API-autentiseringsnyckel**
+
+```json
+{
+    "name": "HttpLinkedService",
+    "properties": {
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "<HTTP endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
 
 En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [data uppsättningar](concepts-datasets-linked-services.md) . 
@@ -224,7 +254,7 @@ Följande egenskaper stöds för HTTP under `storeSettings` Inställningar i for
 | additionalHeaders         | Ytterligare rubriker för HTTP-begäran.                             | No       |
 | requestBody              | Bröd texten för HTTP-begäran.                               | No       |
 | httpRequestTimeout           | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**. | No       |
-| maxConcurrentConnections | Antalet anslutningar för att ansluta till lagrings lagret samtidigt. Ange bara när du vill begränsa den samtidiga anslutningen till data lagret. | No       |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No       |
 
 **Exempel:**
 

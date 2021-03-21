@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 5138e542d1cc744a23fa1017dfec1f24b2ec1a5b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107890"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591885"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Ansluta till Azure Database for MySQL med dbForge Studio för MySQL
 
-Så här ansluter du till Azure Database for MySQL med dbForge Studio för MySQL:
+Så här ansluter du till Azure Database for MySQL med [dbforge Studio för MySQL](https://www.devart.com/dbforge/mysql/studio/):
 
 1. På menyn databas väljer du ny anslutning.
 

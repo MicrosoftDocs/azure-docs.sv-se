@@ -4,17 +4,17 @@ description: Lär dig hur du bättre uppskattar kostnaderna som du kan stöta p�
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100578568"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Uppskatta förbruknings Plans kostnader
 
 Det finns för närvarande tre typer av värd planer för en app som körs i Azure Functions, med varje plan med en egen pris modell: 
 
-| Planera | Description |
+| Planera | Beskrivning |
 | ---- | ----------- |
 | [**Förbrukning**](consumption-plan.md) | Du debiteras bara för den tid som din Function-App körs. Den här planen innehåller en[pris sida] för [gratis beviljande av bidrag]per prenumeration.|
 | [**Premium**](functions-premium-plan.md) | Ger dig samma funktioner och skalnings funktion som förbruknings planen, men med förbättrad prestanda och VNET-åtkomst. Kostnaden baseras på din valda pris nivå. Läs mer i [Azure Functions Premium-plan](functions-premium-plan.md). |

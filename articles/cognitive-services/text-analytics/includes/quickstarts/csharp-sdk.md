@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 6fc7b347dfc12f1dd7758ccc2a2d1c58f11debad
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2a43042fb1caeee7c652d7c38111ccb2fa9bb359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445662"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599092"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
 
-[v 3.1 referens dokumentation](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v 3.1 biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1-paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [v 3.1 exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v 3.1 referens dokumentation](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v 3.1 biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1-paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.5)  |  [v 3.1 exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
@@ -41,11 +41,11 @@ ms.locfileid: "102445662"
 
 ### <a name="create-a-new-net-core-application"></a>Skapa ett nytt .NET Core-program
 
-Skapa en ny .NET Core-konsol med hjälp av Visual Studio IDE. Då skapas ett "Hello World"-projekt med en enda C#-källfil: *program.cs*.
+Skapa en ny .NET Core-konsol med hjälp av Visual Studio IDE. Då skapas ett "Hello World"-projekt med en enda C#-källfil: *program. cs*.
 
 # <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
 
-Installera klient biblioteket genom att högerklicka på lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I den paket hanterare som öppnas väljer du **Bläddra** och söker efter `Azure.AI.TextAnalytics` . Markera kryss rutan **Inkludera prerelase** , Välj version `5.1.0-beta.3` och **Installera** sedan. Du kan också använda [Package Manager-konsolen](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Installera klient biblioteket genom att högerklicka på lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I den paket hanterare som öppnas väljer du **Bläddra** och söker efter `Azure.AI.TextAnalytics` . Markera kryss rutan **Inkludera prerelase** , Välj version `5.1.0-beta.5` och **Installera** sedan. Du kan också använda [Package Manager-konsolen](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
@@ -59,7 +59,7 @@ Installera klient biblioteket genom att högerklicka på lösningen i **Solution
 
 # <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
 
-Öppna filen *program.cs* och Lägg till följande `using` direktiv:
+Öppna filen *program. cs* och Lägg till följande `using` direktiv:
 
 ```csharp
 using Azure;
@@ -99,7 +99,7 @@ static void Main(string[] args)
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
-Öppna filen *program.cs* och Lägg till följande `using` direktiv:
+Öppna filen *program. cs* och Lägg till följande `using` direktiv:
 
 ```csharp
 using Azure;
@@ -216,7 +216,7 @@ Document sentiment: Positive
 
 ### <a name="opinion-mining"></a>Åsikts utvinning
 
-Skapa en ny funktion som anropar `SentimentAnalysisWithOpinionMiningExample()` den klient som du skapade tidigare och anropa dess `AnalyzeSentimentBatch()` funktion med `AdditionalSentimentAnalyses.OpinionMining` alternativet. Det returnerade `AnalyzeSentimentResultCollection` objektet kommer att innehålla samlingen `AnalyzeSentimentResult` i som representerar `Response<DocumentSentiment>` . Skillnaden mellan `SentimentAnalysis()` och `SentimentAnalysisWithOpinionMiningExample()` är att den senare kommer att innehålla `MinedOpinion` i varje mening, som visar en analyserad aspekt och de relaterade åsikterna. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion som anropar `SentimentAnalysisWithOpinionMiningExample()` den klient som du skapade tidigare och anropa dess `AnalyzeSentimentBatch()` funktion med `IncludeOpinionMining` alternativet i `AnalyzeSentimentOptions` säcken. Det returnerade `AnalyzeSentimentResultCollection` objektet kommer att innehålla samlingen `AnalyzeSentimentResult` i som representerar `Response<DocumentSentiment>` . Skillnaden mellan `SentimentAnalysis()` och `SentimentAnalysisWithOpinionMiningExample()` är att den senare kommer att innehålla `SentenceOpinion` i varje mening som visar ett analyserat mål och de relaterade utvärderingarna. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
 
 ```csharp
 static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
@@ -245,16 +245,16 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
             Console.WriteLine($"\tSentence negative score: {sentence.ConfidenceScores.Negative:0.00}");
             Console.WriteLine($"\tSentence neutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
 
-            foreach (MinedOpinion minedOpinion in sentence.MinedOpinions)
+            foreach (SentenceOpinion sentenceOpinion in sentence.Opinions)
             {
-                Console.WriteLine($"\tAspect: {minedOpinion.Aspect.Text}, Value: {minedOpinion.Aspect.Sentiment}");
-                Console.WriteLine($"\tAspect positive score: {minedOpinion.Aspect.ConfidenceScores.Positive:0.00}");
-                Console.WriteLine($"\tAspect negative score: {minedOpinion.Aspect.ConfidenceScores.Negative:0.00}");
-                foreach (OpinionSentiment opinion in minedOpinion.Opinions)
+                Console.WriteLine($"\tTarget: {sentenceOpinion.Target.Text}, Value: {sentenceOpinion.Target.Sentiment}");
+                Console.WriteLine($"\tTarget positive score: {sentenceOpinion.Target.ConfidenceScores.Positive:0.00}");
+                Console.WriteLine($"\tTarget negative score: {sentenceOpinion.Target.ConfidenceScores.Negative:0.00}");
+                foreach (AssessmentSentiment assessment in sentenceOpinion.Assessments)
                 {
-                    Console.WriteLine($"\t\tRelated Opinion: {opinion.Text}, Value: {opinion.Sentiment}");
-                    Console.WriteLine($"\t\tRelated Opinion positive score: {opinion.ConfidenceScores.Positive:0.00}");
-                    Console.WriteLine($"\t\tRelated Opinion negative score: {opinion.ConfidenceScores.Negative:0.00}");
+                    Console.WriteLine($"\t\tRelated Assessment: {assessment.Text}, Value: {assessment.Sentiment}");
+                    Console.WriteLine($"\t\tRelated Assessment positive score: {assessment.ConfidenceScores.Positive:0.00}");
+                    Console.WriteLine($"\t\tRelated Assessment negative score: {assessment.ConfidenceScores.Negative:0.00}");
                 }
             }
         }
@@ -278,25 +278,24 @@ Document sentiment: Positive
         Sentence negative score: 0.16
         Sentence neutral score: 0.00
 
-        Aspect: food, Value: Negative
-        Aspect positive score: 0.01
-        Aspect negative score: 0.99
-                Related Opinion: unacceptable, Value: Negative
-                Related Opinion positive score: 0.01
-                Related Opinion negative score: 0.99
-        Aspect: service, Value: Negative
-        Aspect positive score: 0.01
-        Aspect negative score: 0.99
-                Related Opinion: unacceptable, Value: Negative
-                Related Opinion positive score: 0.01
-                Related Opinion negative score: 0.99
-        Aspect: concierge, Value: Positive
-        Aspect positive score: 1.00
-        Aspect negative score: 0.00
-                Related Opinion: nice, Value: Positive
-                Related Opinion positive score: 1.00
-                Related Opinion negative score: 0.00
-
+        Target: food, Value: Negative
+        Target positive score: 0.01
+        Target negative score: 0.99
+                Related Assessment: unacceptable, Value: Negative
+                Related Assessment positive score: 0.01
+                Related Assessment negative score: 0.99
+        Target: service, Value: Negative
+        Target positive score: 0.01
+        Target negative score: 0.99
+                Related Assessment: unacceptable, Value: Negative
+                Related Assessment positive score: 0.01
+                Related Assessment negative score: 0.99
+        Target: concierge, Value: Positive
+        Target positive score: 1.00
+        Target negative score: 0.00
+                Related Assessment: nice, Value: Positive
+                Related Assessment positive score: 1.00
+                Related Assessment negative score: 0.00
 
 Press any key to exit.
 ```
@@ -724,7 +723,7 @@ Key phrases:
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Skapa en ny funktion som anropar `AnalyzeOperationExample()` den klient som du skapade tidigare och anropa dess `StartAnalyzeOperationBatch()` funktion. Det returnerade `AnalyzeOperation` objektet kommer att innehålla `Operation` gränssnitts objekt för `AnalyzeOperationResult` . Eftersom det är en tids krävande åtgärd går du till `await` `operation.WaitForCompletionAsync()` för värdet som ska uppdateras. När `WaitForCompletionAsync()` är klar ska samlingen uppdateras i `operation.Value` . Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion som anropar `AnalyzeOperationExample()` den klient som du skapade tidigare och anropa dess `StartAnalyzeBatchActionsAsync()` funktion. Det returnerade `AnalyzeBatchActionsOperation` objektet kommer att innehålla objektet `Operation` Interface. Eftersom det är en tids krävande åtgärd går du till `await` `operation.WaitForCompletionAsync()` för värdet som ska uppdateras. När `WaitForCompletionAsync()` är klar ska samlingen uppdateras i `operation.Value` . Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
 
 
 ```csharp
@@ -734,40 +733,49 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 
     var batchDocuments = new List<string> { inputText };
 
-    AnalyzeOperationOptions operationOptions = new AnalyzeOperationOptions()
+
+    TextAnalyticsActions actions = new TextAnalyticsActions()
     {
-        EntitiesTaskParameters = new EntitiesTaskParameters(),
+        RecognizeEntitiesOptions = new List<RecognizeEntitiesOptions>() { new RecognizeEntitiesOptions() },
         DisplayName = "Analyze Operation Quick Start Example"
     };
 
-    AnalyzeOperation operation = client.StartAnalyzeOperationBatch(batchDocuments, operationOptions, "en");
+    AnalyzeBatchActionsOperation operation = await client.StartAnalyzeBatchActionsAsync(batchDocuments, actions);
 
     await operation.WaitForCompletionAsync();
 
-    AnalyzeOperationResult resultCollection = operation.Value;
+    Console.WriteLine($"Status: {operation.Status}");
+    Console.WriteLine($"Created On: {operation.CreatedOn}");
+    Console.WriteLine($"Expires On: {operation.ExpiresOn}");
+    Console.WriteLine($"Last modified: {operation.LastModified}");
+    if (!string.IsNullOrEmpty(operation.DisplayName))
+        Console.WriteLine($"Display name: {operation.DisplayName}");
+    Console.WriteLine($"Total actions: {operation.TotalActions}");
+    Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
+    Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
+    Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
 
-    RecognizeEntitiesResultCollection entitiesResult = resultCollection.Tasks.EntityRecognitionTasks[0].Results;
-
-    Console.WriteLine("Analyze Operation Request Details");
-    Console.WriteLine($"    Status: {resultCollection.Status}");
-    Console.WriteLine($"    DisplayName: {resultCollection.DisplayName}");
-    Console.WriteLine("");
-
-    Console.WriteLine("Recognized Entities");
-
-    foreach (RecognizeEntitiesResult result in entitiesResult)
+    await foreach (AnalyzeBatchActionsResult documentsInPage in operation.Value)
     {
-        Console.WriteLine($"    Recognized the following {result.Entities.Count} entities:");
+        RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesActionsResults.FirstOrDefault().Result;
 
-        foreach (CategorizedEntity entity in result.Entities)
+        Console.WriteLine("Recognized Entities");
+
+        foreach (RecognizeEntitiesResult result in entitiesResult)
         {
-            Console.WriteLine($"    Entity: {entity.Text}");
-            Console.WriteLine($"    Category: {entity.Category}");
-            Console.WriteLine($"    Offset: {entity.Offset}");
-            Console.WriteLine($"    ConfidenceScore: {entity.ConfidenceScore}");
-            Console.WriteLine($"    SubCategory: {entity.SubCategory}");
+            Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
+
+            foreach (CategorizedEntity entity in result.Entities)
+            {
+                Console.WriteLine($"  Entity: {entity.Text}");
+                Console.WriteLine($"  Category: {entity.Category}");
+                Console.WriteLine($"  Offset: {entity.Offset}");
+                Console.WriteLine($"  Length: {entity.Length}");
+                Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
+                Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+            }
+            Console.WriteLine("");
         }
-        Console.WriteLine("");
     }
 }
 ```
@@ -780,30 +788,38 @@ await AnalyzeOperationExample(client).ConfigureAwait(false);
 ### <a name="output"></a>Utdata
 
 ```console
-Analyze Operation Request Details
-    Status: succeeded
-    DisplayName: Analyze Operation Quick Start Example
-
+Status: succeeded
+Created On: 3/10/2021 2:25:01 AM +00:00
+Expires On: 3/11/2021 2:25:01 AM +00:00
+Last modified: 3/10/2021 2:25:05 AM +00:00
+Display name: Analyze Operation Quick Start Example
+Total actions: 1
+  Succeeded actions: 1
+  Failed actions: 0
+  In progress actions: 0
 Recognized Entities
-    Recognized the following 3 entities:
-    Entity: Microsoft
-    Category: Organization
-    Offset: 0
-    ConfidenceScore: 0.83
-    SubCategory: 
-    Entity: Bill Gates
-    Category: Person
-    Offset: 25
-    ConfidenceScore: 0.85
-    SubCategory: 
-    Entity: Paul Allen
-    Category: Person
-    Offset: 40
-    ConfidenceScore: 0.9
-    SubCategory: 
+  Recognized the following 3 entities:
+  Entity: Microsoft
+  Category: Organization
+  Offset: 0
+  Length: 9
+  ConfidenceScore: 0.97
+  SubCategory:
+  Entity: Bill Gates
+  Category: Person
+  Offset: 25
+  Length: 10
+  ConfidenceScore: 1
+  SubCategory:
+  Entity: Paul Allen
+  Category: Person
+  Offset: 40
+  Length: 10
+  ConfidenceScore: 0.99
+  SubCategory:
 ```
 
-Du kan också använda analys åtgärden för att identifiera personligt identifierbar information och extrahering av nyckel fraser. Se [analys exemplet](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) på GitHub.
+Du kan också använda analys åtgärden för att identifiera PII, identifiera länkade entiteter och extrahering av nyckel fraser. Se [analys exemplet](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) på GitHub.
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
