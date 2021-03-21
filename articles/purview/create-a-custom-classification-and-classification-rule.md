@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
 ms.openlocfilehash: 2966618619aa40ed60c2f3d0fb2c8e080d34a016
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102617054"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Anpassade klassificeringar i Azure avdelningens kontroll
@@ -99,7 +99,7 @@ Så här skapar du en anpassad klassificerings regel:
    |Name   |    Krävs. Det maximala värdet är 100 tecken.    |
    |Beskrivning      |Valfritt. Det maximala värdet är 256 tecken.    |
    |Klassificerings namn    | Krävs. Välj namnet på klassificeringen i list rutan för att be skannern att tillämpa den om en matchning hittas.        |
-   |Stat   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
+   |Tillstånd   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="Skapa ny klassificerings regel" border="true":::
 

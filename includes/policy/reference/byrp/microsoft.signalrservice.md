@@ -2,16 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 293a32a52419d281409dcdfc7b234d8cdb5e6942
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 44bb56296edafaf8cac51ed182a8344a0945ff29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616675"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599596"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Azure SignalR-tjänsten bör använda privat länk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Med Azures privata länk kan du ansluta ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress på källan eller målet. Den privata länk plattformen hanterar anslutningen mellan konsumenter och tjänster över Azures stamnät nätverk. Genom att mappa privata slut punkter till dina signal resurser i stället för hela tjänsten, skyddas du också mot data läckage. Läs mer på: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Granskning, inaktive rad |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
+|[Azure SignalR service ska inaktivera offentlig nätverks åtkomst](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |För att förbättra säkerheten för Azure SignalR service-resursen, se till att den inte exponeras för det offentliga Internet och bara kan nås från en privat slut punkt. Inaktivera den offentliga nätverks åtkomst egenskapen enligt beskrivningen i [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Med det här alternativet inaktive RAS åtkomst från alla offentliga adress utrymmen utanför Azure IP-intervallet, och alla inloggningar som matchar IP-eller virtuella nätverksbaserade brand Väggs regler nekas. Detta minskar risken för data läckage. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
+|[Azure SignalR service ska använda en privat länk aktive rad SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Med Azures privata länk kan du ansluta ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress på källan eller målet som skyddar resurserna mot risker med offentlig data läckage. Principen begränsar dig till privat länk aktiverade SKU: er för Azure SignalR-tjänsten. Läs mer om privat länk på: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |
+|[Azure SignalR-tjänsten bör använda privat länk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Med Azures privata länk kan du ansluta ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress på källan eller målet. Den privata länk plattformen hanterar anslutningen mellan konsumenter och tjänster över Azures stamnät nätverk. Genom att mappa privata slut punkter till din Azure SignalR service-resurs i stället för hela tjänsten kan du minska risken för data läckage. Läs mer om privata länkar på: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Granska, neka, inaktive rad |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
+|[Ändra Azure SignalR service-resurser för att inaktivera offentlig nätverks åtkomst](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62a3ae95-8169-403e-a2d2-b82141448092) |För att förbättra säkerheten för Azure SignalR service-resursen, se till att den inte exponeras för det offentliga Internet och bara kan nås från en privat slut punkt. Inaktivera den offentliga nätverks åtkomst egenskapen enligt beskrivningen i [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Med det här alternativet inaktive RAS åtkomst från alla offentliga adress utrymmen utanför Azure IP-intervallet, och alla inloggningar som matchar IP-eller virtuella nätverksbaserade brand Väggs regler nekas. Detta minskar risken för data läckage. |Ändra, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_Modify.json) |

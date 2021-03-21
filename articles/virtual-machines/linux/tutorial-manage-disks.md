@@ -10,10 +10,10 @@ ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
 ms.openlocfilehash: 202125dfa1cd2760695672fb948fb47bfc3ca0c9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564653"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Självstudiekurs – hantera Azure-diskar med Azure CLI

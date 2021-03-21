@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 8a9149119bc754ff0715f2841925da01301faecd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750446"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Granska och redigera exempelfilerna
@@ -17,7 +17,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
     
     * C2D-console-app. CSPROJ – projekt filen för Visual Studio Code.
     * operations.jsen lista över de åtgärder som du vill att programmet ska köra.
-    * Program.cs – exempel koden. Den här koden:
+    * Program. cs-kod för exempel program. Den här koden:
 
         * Läser in appinställningar.
         * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess direkta metoder.

@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033630"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Hantera Azure AD B2C med Microsoft Graph
@@ -181,7 +181,7 @@ Exempel koden använder [Microsoft Graph SDK](/graph/sdks/sdks-overview), som ä
 
 Alla begär anden till Microsoft Graph API kräver en åtkomsttoken för autentisering. Lösningen använder sig av [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet-paketet som tillhandahåller ett gränssnitts scenario baserat på Microsoft Authentication Library (MSAL) för användning med Microsoft Graph SDK.
 
-`RunAsync`Metoden i _program.cs_ -filen:
+`RunAsync`Metoden i filen _program. cs_ :
 
 1. Läser program inställningar från _appsettings.jspå_ filen
 1. Initierar auth-providern med hjälp av [OAuth 2,0-klientens autentiseringsuppgifter för tilldelnings](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) flöde. Med hjälp av flödet för tilldelning av klientautentiseringsuppgifter kan appen Hämta en åtkomsttoken för att anropa Microsoft Graph-API: et.
@@ -203,7 +203,7 @@ Alla begär anden till Microsoft Graph API kräver en åtkomsttoken för autenti
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-Den initierade *GraphServiceClient* används sedan i _UserService.cs_ för att utföra användar hanterings åtgärder. Du kan till exempel hämta en lista över användar kontona i klienten:
+Den initierade *GraphServiceClient* används sedan i _UserService. cs_ för att utföra användar hanterings åtgärderna. Du kan till exempel hämta en lista över användar kontona i klienten:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)

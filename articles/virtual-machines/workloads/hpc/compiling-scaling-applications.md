@@ -5,19 +5,25 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470752"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721290"
 ---
 # <a name="scaling-hpc-applications"></a>Skala HPC-program
 
 Optimal skalbarhet och skalbar prestanda för HPC-program i Azure kräver prestanda justering och optimerings experiment för den speciella arbets belastningen. Det här avsnittet och de sidor för VM-serien innehåller allmänna rikt linjer för att skala dina program.
+
+## <a name="application-setup"></a>Programkonfiguration
+[Azurehpc-lagrings platsen](https://github.com/Azure/azurehpc) innehåller många exempel på:
+- Att konfigurera och köra [program](https://github.com/Azure/azurehpc/tree/master/apps) optimalt.
+- Konfiguration av [fil system och kluster](https://github.com/Azure/azurehpc/tree/master/examples).
+- [Själv studie kurser](https://github.com/Azure/azurehpc/tree/master/tutorials) om hur du snabbt kommer igång med några vanliga program arbets flöden.
 
 ## <a name="optimally-scaling-mpi"></a>Optimal skalning av MPI 
 
@@ -48,6 +54,9 @@ Följande rekommendationer gäller för optimal effektivitet, prestanda och kons
 - För betydligt större skalnings körning rekommenderar vi att du använder UD-eller hybrid RC + UD-transporter. Många MPI-bibliotek/körnings bibliotek gör detta internt (till exempel UCX eller MVAPICH2). Kontrol lera dina transport konfigurationer för storskaliga körningar.
 
 ## <a name="compiling-applications"></a>Kompilera program
+<br>
+<details>
+<summary>Klicka för att expandera</summary>
 
 Om du inte behöver kompilera program med lämpliga optimerings flaggor får du bästa möjliga skalnings prestanda på virtuella datorer i HB och HC-serien.
 
@@ -96,6 +105,7 @@ För HPC rekommenderar AMD GCC compiler 7,3 eller senare. Äldre versioner, till
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
+</details>
 
 ## <a name="next-steps"></a>Nästa steg
 

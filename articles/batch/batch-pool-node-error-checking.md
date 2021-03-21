@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564413"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720159"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sök efter fel i pooler och noder
 
@@ -136,14 +136,16 @@ En del av de här filerna skrivs bara en gång när pooler har skapats, till exe
 
 Andra filer skrivs ut för varje aktivitet som körs på en nod, till exempel STDOUT och stderr. Om ett stort antal aktiviteter körs på samma nod och/eller om originalfilerna är för stora kan de fylla den temporära enheten.
 
-Storleken på den tillfälliga enheten beror på storleken på den virtuella datorn. Ett övervägande när du väljer en VM-storlek är att säkerställa att den tillfälliga enheten har tillräckligt med utrymme.
+När noden har startat behövs dessutom en liten mängd utrymme på operativ system disken för att skapa användare.
+
+Storleken på den tillfälliga enheten beror på storleken på den virtuella datorn. Ett övervägande när du väljer en VM-storlek är att säkerställa att den temporära enheten har tillräckligt med utrymme för den planerade arbets belastningen.
 
 - I Azure Portal när du lägger till en pool, kan den fullständiga listan med VM-storlekar visas och det finns en resurs disk storleks kolumn.
 - Artiklarna som beskriver alla VM-storlekar har tabeller med kolumnen Temp Storage. till exempel [Compute-optimerade VM-storlekar](../virtual-machines/sizes-compute.md)
 
 För filer som skrivs ut av varje aktivitet kan en kvarhållningsperiod anges för varje aktivitet som avgör hur länge originalfilerna sparas innan de rensas automatiskt. Retentions tiden kan minskas för att minska lagrings kraven.
 
-Om den temporära disken tar slut på utrymme (eller ligger mycket nära att det tar slut på utrymme) flyttas noden till [oanvändbart](/rest/api/batchservice/computenode/get#computenodestate) läge och ett nodfel rapporteras om att disken är full.
+Om den temporära disken eller operativ system disken tar slut på utrymme (eller är mycket nära att det tar slut på utrymme) går noden över till [oanvändbart](/rest/api/batchservice/computenode/get#computenodestate) läge och ett nodfel rapporteras om att disken är full.
 
 Om du inte är säker på vad som tar upp utrymme på noden kan du försöka med fjärr kommunikation till noden och undersöka manuellt var utrymmet har försvunnit. Du kan också använda [API: erna för batch-lista](/rest/api/batchservice/file/listfromcomputenode) för att undersöka filer i grupphanterade mappar (till exempel Uppgiftsutdata). Observera att detta API endast listar filer i de hanterade katalogerna. Om dina aktiviteter har skapat filer någon annan stans visas de inte.
 

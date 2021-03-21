@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08243fd06de289941d8e6a9197ccb349614af056
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121042"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675965"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Förbered mobila appar för produktion
 
@@ -34,18 +34,9 @@ För varje MSAL-typ (Microsoft Authentication Library) kan du hitta exempel kod 
 - [MSAL iOS-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigate-and-investigate-issues"></a>Minimera och undersök problem
-
-För att bättre diagnostisera problem i din app, samla in data. Information om vilka typer av data som du kan samla in finns i [Logga in MSAL-program](./msal-logging.md).
-
-Här följer några förslag på data insamling:
-
-- Användarna kan be om hjälp när de har problem. Ett bra tips är att avbilda och lagra loggar tillfälligt. Ange en plats där användarna kan ladda upp loggarna. MSAL tillhandahåller loggnings tillägg för att samla in detaljerad information om autentisering.
-
-- Om telemetri är tillgängligt aktiverar du det via MSAL för att samla in data om hur användarna loggar in i din app.
-
-## <a name="next-steps"></a>Nästa steg
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
+## <a name="next-steps"></a>Nästa steg
 
 Information om hur du provar ytterligare exempel finns i [Desktop och mobila offentliga klient program](sample-v2-code.md#desktop-and-mobile-public-client-apps).

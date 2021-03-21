@@ -4,13 +4,14 @@ description: Översikt över Azure Monitor Agent (AMA) som samlar in övervaknin
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/16/2021
+ms.custom: references_regions
+ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039605"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608222"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Översikt över Azure Monitor Agent (för hands version)
 Azure Monitor agenten (AMA) samlar in övervaknings data från gäst operativ systemet på virtuella datorer och levererar det till Azure Monitor. Den här artikeln innehåller en översikt över Azure Monitor Agent, inklusive hur du installerar den och hur du konfigurerar data insamling.
@@ -60,6 +61,35 @@ Följande begränsningar gäller vid en offentlig för hands version av Azure Mo
   - *. control.monitor.azure.com
 
 
+## <a name="supported-regions"></a>Regioner som stöds
+Azure Monitor-agenten stöder för närvarande resurser i följande regioner:
+
+- Asien, östra
+- Sydostasien
+- Australien, centrala
+- Australien, östra
+- Australien, sydöstra
+- Kanada, centrala
+- Europa, norra
+- Europa, västra
+- Frankrike, centrala
+- Tyskland, västra centrala
+- Indien, centrala
+- Japan, östra
+- Sydkorea, centrala
+- Sydafrika, norra
+- Schweiz, norra
+- Storbritannien, södra
+- Storbritannien, västra
+- Central US
+- East US
+- USA, östra 2
+- USA, norra centrala
+- USA, södra centrala
+- USA, västra
+- USA, västra 2
+- USA, västra centrala
+
 ## <a name="coexistence-with-other-agents"></a>Samexistens med andra agenter
 Azure Monitor agenten kan samverka med befintliga agenter så att du kan fortsätta att använda sina befintliga funktioner under utvärderingen eller migreringen. Detta är särskilt viktigt på grund av begränsningarna i offentlig för hands version i stöd för befintliga lösningar. Du bör vara försiktig när du samlar in dubblettdata eftersom detta kan skeva frågeresultat och leda till ytterligare avgifter för data inmatning och kvarhållning.
 
@@ -75,7 +105,7 @@ I följande tabell visas de typer av data som du kan samla in med Azure Monitor-
 
 Azure Monitor Agent skickar data till Azure Monitor mått eller en Log Analytics arbets yta som stöder Azure Monitor loggar.
 
-| Datakälla | Mål | Beskrivning |
+| Datakälla | Mål | Description |
 |:---|:---|:---|
 | Prestanda        | Azure Monitor-statistik<br>Log Analytics-arbetsyta | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
 | Händelse loggar i Windows | Log Analytics-arbetsyta | Information som skickas till händelse loggnings systemet i Windows. |

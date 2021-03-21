@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 0f6a8ee7606f8efc49b1ba7da352c5719e13bf4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20f5a34208dbf4a6c0f84567a75673b8eeeb5e79
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92460467"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med IDC
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar IDC med Azure Activ
 * Kontroll i Azure AD som har åtkomst till IDC.
 * Gör det möjligt för användarna att logga in automatiskt till IDC med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -39,24 +37,27 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* IDC stöder **SP-och IDP** -INITIERAd SSO
+* IDC stöder **SP-och IDP** -initierad SSO.
+
+> [!NOTE]
+> ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
 
 ## <a name="adding-idc-from-the-gallery"></a>Lägga till IDC från galleriet
 
 Om du vill konfigurera integrering av IDC i Azure AD måste du lägga till IDC från galleriet i listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **IDC** i sökrutan.
 1. Välj **IDC** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-idc"></a>Konfigurera och testa enkel inloggning med Azure AD för IDC
+## <a name="configure-and-test-azure-ad-sso-for-idc"></a>Konfigurera och testa Azure AD SSO för IDC
 
 Konfigurera och testa Azure AD SSO med IDC med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i IDC.
 
-Om du vill konfigurera och testa Azure AD SSO med IDC slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med IDC:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -69,26 +70,26 @@ Om du vill konfigurera och testa Azure AD SSO med IDC slutför du följande Bygg
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. På sidan **IDC** -programintegration på sidan [Azure Portal](https://portal.azure.com/)letar du reda på avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **IDC** -programintegration på sidan Azure Portal letar du reda på avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `urn:idc:authentication:saml2:entity:cas:prod-2016:<ClientCode>`
+    a. Skriv webb adressen i text rutan **identifierare** : `https://www.idc.com/sp`
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://cas.idc.com:443/login?client_name=<ClientName>`
 
-    c. Skriv en URL i textrutan **Vidarebefordransstatus**: `https://www.idc.com/j_spring_cas_security_check`
+    c. I text rutan **relä tillstånd** anger du URL: en: `https://www.idc.com/j_spring_cas_security_check`
 
 1. Klicka på **Ange ytterligare URL:er** och utför följande steg om du vill konfigurera programmet i **SP**-initierat läge:
 
-    Skriv en URL i text rutan **inloggnings-URL** :  `https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
+    I rutan **Inloggnings-URL** anger du följande URL: `https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta support teamet för IDC-klienten för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Värdet för svars-URL:en är inte verkligt. Uppdatera värdet för med den faktiska svars-URL:en. Kontakta [support teamet för IDC-klienten](mailto:idc_support@idc.com) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -117,20 +118,14 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **IDC**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-idc-sso"></a>Konfigurera IDC SSO
 
-Om du vill konfigurera enkel inloggning på **IDC** -sidan skickar du de hämtade **XML-metadata för federationsmetadata** och lämpliga kopierade url: er från Azure Portal till IDC: s support team. IDC konfigurerar den här inställningen så att SAML SSO-anslutningen är korrekt inställd på båda sidor.
+Om du vill konfigurera enkel inloggning på **IDC** -sidan skickar du de hämtade **XML-metadata för federationsmetadata** och lämpliga kopierade url: er från Azure Portal till IDC: s [Support Team](mailto:idc_support@idc.com). IDC konfigurerar den här inställningen så att SAML SSO-anslutningen är korrekt inställd på båda sidor.
 
 ### <a name="create-idc-test-user"></a>Skapa IDC-test användare
 
@@ -138,16 +133,21 @@ En användare behöver inte skapas i IDC i förväg. Användaren skapas automati
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på IDC-panelen på åtkomst panelen bör du loggas in automatiskt på den IDC som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till IDC-inloggnings-URL där du kan starta inloggnings flödet.  
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+* Gå till inloggnings-URL: en för IDC direkt och starta inloggnings flödet därifrån.
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den IDC som du ställer in SSO för. 
 
-- [Prova IDC med Azure AD](https://aad.portal.azure.com/)
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på IDC-panelen i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du loggas in automatiskt på den IDC som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+
+## <a name="next-steps"></a>Nästa steg
+
+ När du har konfigurerat IDC kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: alkohli
 ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102610492"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Använda kubectl för att köra ett Kubernetes tillstånds känsligt program med en PersistentVolume på din Azure Stack Edge Pro-enhet
@@ -346,7 +346,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```
 
-NUVÄRDEt är inte längre kopplat till PVC: n eftersom den har tagits bort. När PV etablerades när resursen skapades måste du ta bort resursen. Gör så här:
+NUVÄRDEt är inte längre kopplat till PVC: n eftersom den har tagits bort. När PV etablerades när resursen skapades måste du ta bort resursen. Följ de här stegen:
 
 1. Demontera resursen. I Azure Portal går du till **Azure Stack Edge-resurs > resurser** och väljer och klickar på den resurs som du vill demontera. Välj **demontera** och bekräfta åtgärden. Vänta tills resursen har demonterats. Demonteringen frigör resursen (och därmed tillhör ande PersistentVolume) från Kubernetes-klustret. 
 

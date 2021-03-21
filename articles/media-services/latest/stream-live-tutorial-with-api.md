@@ -57,7 +57,7 @@ Observera att du också kan använda fil formatet. kuvert i roten i projektet f�
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Granska den kod som utför du liveuppspelningen
 
-I det här avsnittet beskrivs de funktioner som definierats i [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) -filen för *LiveEventWithDVR* -projektet.
+I det här avsnittet beskrivs de funktioner som definierats i filen [program. cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) i *LiveEventWithDVR* -projektet.
 
 Exemplet skapar ett unikt suffix för varje resurs så att du inte har några namn konflikter om du kör exemplet flera gånger utan att rensa.
 

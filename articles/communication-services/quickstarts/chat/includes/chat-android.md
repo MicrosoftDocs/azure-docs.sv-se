@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 02b47d7797eaebf6049099729ea51554a61a765e
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4a281e547691b7dee2f1a6d3e57b1c0030dbbd57
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495446"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612120"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -39,8 +39,8 @@ Innan du börjar ska du se till att:
 Vi använder Gradle för att installera de nödvändiga kommunikations tjänst beroendena. Från kommando raden navigerar du i `ChatQuickstart` projektets rot Katalog. Öppna appens build. gradle-fil och Lägg till följande beroenden till `ChatQuickstart` målet:
 
 ```
-implementation 'com.azure.android:azure-communication-common:1.0.0-beta.7'
-implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.7'
+implementation 'com.azure.android:azure-communication-common:1.0.0-beta.8'
+implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.8'
 ```
 
 #### <a name="exclude-meta-files-in-packaging-options-in-root-buildgradle"></a>Exkludera meta-filer i paket alternativ i rot versionen. gradle
@@ -169,7 +169,7 @@ ChatAsyncClient client = new ChatAsyncClient.Builder()
 ## <a name="object-model"></a>Objekt modell
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
 
-| Namn                                   | Beskrivning                                                                                                                                                                           |
+| Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient/ChatAsyncClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient/ChatThreadAsyncClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |

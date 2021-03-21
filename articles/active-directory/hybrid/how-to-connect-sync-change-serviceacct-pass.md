@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/02/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95996567"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720346"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Ändra lösen ordet för ADSync-tjänstkontot
 Om du ändrar lösen ordet för ADSync-tjänstkontot kan inte synkroniseringstjänsten starta korrekt förrän du har övergivit krypterings nyckeln och initierat om lösen ordet för ADSync-tjänstkontot. 
+
+>[!IMPORTANT]
+> Om du använder Connect med en version från 2017 mars eller tidigare bör du inte återställa lösen ordet för tjänst kontot eftersom Windows förstör krypterings nycklarna av säkerhets skäl. Du kan inte ändra kontot till något annat konto utan att installera om Azure AD Connect. Om du uppgraderar till en version från 2017 april eller senare, stöds det att ändra lösen ordet för tjänst kontot, men du kan inte ändra det konto som används. 
 
 Azure AD Connect, som en del av Synchronization Services, använder en krypterings nyckel för att lagra lösen orden för AD DS-anslutningsprogrammet och ADSync-tjänstkontot.  Dessa konton krypteras innan de lagras i-databasen. 
 

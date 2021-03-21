@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433258"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Hantera Azure Digitals dubbla modeller
@@ -142,7 +142,7 @@ En modells inaktive rings status ingår i `ModelData` posterna som returneras av
 
 Du kan ta bort alla modeller i din instans på samma gång, eller så kan du göra det på individuell basis.
 
-Ett exempel på hur du tar bort alla modeller får du genom att hämta den exempel app som används i [*självstudien: utforska grunderna med ett exempel på ett klient program*](tutorial-command-line-app.md). *CommandLoop.cs* -filen gör detta i en `CommandDeleteAllModels` funktion.
+Ett exempel på hur du tar bort alla modeller får du genom att hämta den exempel app som används i [*självstudien: utforska grunderna med ett exempel på ett klient program*](tutorial-command-line-app.md). Filen *CommandLoop. cs* gör detta i en `CommandDeleteAllModels` funktion.
 
 Resten av det här avsnittet delar ned modell borttagning i närmare detalj, och visar hur du gör det för en enskild modell.
 

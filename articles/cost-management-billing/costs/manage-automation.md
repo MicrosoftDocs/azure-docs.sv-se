@@ -3,17 +3,17 @@ title: Hantera Azure-kostnader med automatisering
 description: Den här artikeln beskriver hur du kan hantera Azure-kostnader med automatisering.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: a54b8243b5a680168b2e5806dd58c0fa4109728f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670281"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720125"
 ---
 # <a name="manage-costs-with-automation"></a>Hantera kostnader med automatisering
 
@@ -74,6 +74,10 @@ Priser i användningsinformation – Användningsfiler visar justerade data som 
   - Inkluderad kvantitet – Exempel: De första 100 enheterna är kostnadsfria och därefter är priset 10 USD per enhet.
   - Reservationer
   - Avrundning som görs under beräkningen – Avrundningen tar hänsyn till den förbrukade kvantiteten, priset per nivåindelad/inkluderad kvantitet och det justerade enhetspriset.
+
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>En enskild resurs kan ha flera poster för en enda dag
+
+Azure Resource providers genererar användning och kostnader för fakturerings systemet och fyller i `Additional Info` användnings poster. Ibland kan resurs leverantörer generera användning under en dag och stämpla poster med olika data Center i `Additional Info` fältet i användnings posterna. Det kan orsaka att flera poster för en mätning/resurs finns i din användnings fil för en enda dag. I så fall är du inte överbelastad. Flera poster representerar den totala kostnaden för den här dagen för resursen.
 
 ## <a name="example-usage-details-api-requests"></a>Exempelbegäranden till API:et för användningsinformation
 

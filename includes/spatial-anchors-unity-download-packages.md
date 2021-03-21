@@ -2,14 +2,14 @@
 author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 2/3/21
+ms.date: 03/18/2021
 ms.author: parkerra
-ms.openlocfilehash: f6c2780ccbb914228a9870cb3b5fe4b0e3d0b214
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: d91c0aeda2b7ae2f133d2099cbc9d238fd19d287
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569526"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719974"
 ---
 Du måste ha <a href="https://www.npmjs.com/get-npm" target="_blank">NPM</a> installerat för att kunna hämta de nödvändiga paketen.
 
@@ -25,6 +25,9 @@ npm pack com.microsoft.azure.spatial-anchors-sdk.core@<version_number> --registr
 > ```bash
 > npm view com.microsoft.azure.spatial-anchors-sdk.core --registry https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM versions
 > ```
+
+> [!WARNING]
+> ASA SDK-2.7.0 är den lägsta version som stöds. Om du använder Unity 2020 är ASA SDK 2.9.0 den lägsta version som stöds.
 
 Kärn paketet för Azure spatial-ankare kommer att laddas ned till den mapp där du körde kommandot.
 

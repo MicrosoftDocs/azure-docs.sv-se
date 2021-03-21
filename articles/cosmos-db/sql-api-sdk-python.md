@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8487743efd4f18806ae03ed7529927736314988b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505077"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595702"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK för SQL-API: Viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505077"
 > * [Mass utförar – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Masskörningsbibliotek – Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| Sida| Länk |
 |---|---|
 |**Hämta SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-dokumentation**|[Dokumentation om python API-referens](/python/api/azure-cosmos/)|
+|**API-dokumentation**|[Dokumentation om python API-referens](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**Instruktioner för SDK-installation**|[Installations anvisningar för python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Komma igång**|[Kom igång med python SDK](create-sql-api-python.md)|
 |**Aktuell plattform som stöds**|[Python 2,7](https://www.python.org/downloads/) och [python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Versions historik
 
-### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+## <a name="420"></a>4.2.0
+
+**Fel korrigeringar**
+- Åtgärdat fel där ingen fortsättnings-token används när query_iterable används för att hämta resultat per sida.
+- Ett fel har åtgärd ATS där resurs-token inte bearbetas för dokument läsning och borttagning. 
+
+**Nya funktioner**
+- Stöd har lagts till för överföring `partitionKey` vid frågekörning av ändrings-feed.
+
+## <a name="410"></a>4.1.0
 
 - Varning om utfasning har lagts till för "Lazy" Indexing-läge. Server delen tillåter inte längre att skapa behållare med det här läget och anger att de ska vara konsekventa i stället.
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505077"
 - Har lagt till möjligheten att ange TTL för analys lagring när du skapar en ny behållare.
 
 **Fel korrigeringar**
-- Fast stöd för förutsägelser som indata för get_client-API: er.
+- Fast stöd för `dicts` som indata för get_client-API: er.
 - Fast python 2/3-kompatibilitet i frågemeddelanden.
-- Fel i fast typ tips (problem #12570).
-- Ett fel har åtgärd ATS där alternativ rubriker inte lades till i upsert_item funktionen. Problem #11791 – tack @aalapatirvbd .
-- Ett fast fel uppstod när ett icke-sträng-ID används i ett objekt. Den genererar nu TypeError snarare än AttributeError (utfärdande #11793).
+- Fel i fast typ tips.
+- Ett fel har åtgärd ATS där alternativ rubriker inte lades till i upsert_item funktionen. 
+- Ett fast fel uppstod när ett icke-sträng-ID används i ett objekt. Nu genererar TypeError i stället för AttributeError.
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * Stabil utgåva.
 * Lade till HttpLoggingPolicy i pipeline för att aktivera överföring i en anpassad logg för begäran och svars rubriker.
@@ -80,8 +90,8 @@ ms.locfileid: "102505077"
 * Stöd har lagts till för frågor distinkt, förskjutning och gräns.
 * Standard kontext för körning av dokument fråga används nu för
 
-  * ChangeFeed-frågor
-  * frågor för enkla partitioner (partitionkey, partitionKeyRangeId finns i alternativ)
+  * Ändra feed-frågor
+  * Single partition-frågor ( `partitionkey` , finns `partitionKeyRangeId` i alternativ)
   * Frågor som inte är dokument
 
 * Fel för mängder på flera partitioner, med aktivera Cross partition-fråga inställd på True, men inget "värde"-nyckelord finns
@@ -324,6 +334,8 @@ Microsoft tillhandahåller ett meddelande minst **12 månader** i förväg för 
 
 | Version | Utgivningsdatum | Förfallodatum |
 | --- | --- | --- |
+| [4.2.0](#420) |Okt 09, 2020 |--- |
+| [4.1.0](#410) |Aug 10, 2020 |--- |
 | [4.0.0](#400) |20 maj, 2020 |--- |
 | [3.0.2](#302) |Den 15 november 2018 |--- |
 | [3.0.1](#301) |Okt 04, 2018 |--- |

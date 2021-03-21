@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 370bedf04dc61e2a637f735580cd4df14061264a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 0ab5baef925b7c8589dd7852b6ff8058d67ba745
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753337"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675880"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Ett webb-API som anropar webb-API: er: flytta till produktion
 
-När du har skaffat en token för att anropa webb-API: er kan du flytta din app till produktion.
+När du har skaffat en token för att anropa webb-API: er finns det några saker att tänka på när du flyttar ditt program till produktion.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>Läs mer
+## <a name="next-steps"></a>Nästa steg
 
 Nu när du vet grunderna för hur du anropar webb-API: er från ditt eget webb-API kan du vara intresse rad av följande självstudie, som beskriver koden som används för att bygga ett skyddat webb-API som anropar webb-API: er.
 

@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102442204"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostisera och felsöka problem med Azure Cosmos DB .NET SDK
@@ -63,7 +63,7 @@ Vid alla I/O-fel försöker Cosmos DB SDK utföra åtgärden igen om det är mö
 
 ## <a name="common-error-status-codes"></a>Vanliga fel status koder <a id="error-codes"></a>
 
-| Statuskod | Description | 
+| Statuskod | Beskrivning | 
 |----------|-------------|
 | 400 | Felaktig begäran (beror på fel meddelandet)| 
 | 401 | [Inte auktoriserad](troubleshoot-unauthorized.md) | 

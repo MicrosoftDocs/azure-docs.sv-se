@@ -9,16 +9,16 @@ ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
 ms.openlocfilehash: 2c6ac34d8daf00578cb1d03833a28eb8535708b7
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493653"
 ---
 # <a name="faq--known-issues"></a>FAQ/kända problem
 Den här artikeln innehåller information om kända problem och vanliga frågor som rör Azure Communication Services.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 ### <a name="why-is-the-quality-of-my-video-degraded"></a>Varför är kvaliteten på min video försämrad?
 

@@ -11,10 +11,10 @@ ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102520055"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Samla in loggfiler för Machine Learning-pipeline i Application Insights för aviseringar och fel sökning
@@ -155,7 +155,7 @@ Resultatet i Application Insights visar logg meddelandet och nivån, fil Sök v�
 
 Några av frågorna nedan använder "customDimensions. level". Dessa allvarlighets nivåer motsvarar den nivå som python-loggen ursprungligen skickades med. Mer information om frågor finns i [Azure Monitor logg frågor](/azure/data-explorer/kusto/query/).
 
-| Användningsfall                                                               | Söka i data                                                                                              |
+| Användningsfall                                                               | Fråga                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | Logg resultat för en speciell anpassad dimension, till exempel "parent_run_id" | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
 | Logg resultat för all utbildning körs under de senaste 7 dagarna                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |

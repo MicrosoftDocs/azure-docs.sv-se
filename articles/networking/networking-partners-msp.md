@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 598451192c44395c28ee6f027e389f1d15cf381c
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e2365fc76ca76423a5e6806f5dd23ef2bd9a4c52
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551138"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720431"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Om Azure Network MSP-partner
 
@@ -39,7 +39,7 @@ Använd länkarna i det här avsnittet för mer information om hanterade moln n�
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Nätverks optimering på Azure: 2 – HR-utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[Equinix](https://www.equinix.com/)|[Molnbaserad WAN-workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.cloudoptimizedwan?tab=Overview)|[ExpressRoute Connectivity strategi workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.expressroutestrategy?tab=Overview); [Equinix Cloud Exchange Fabric](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.equinix_ecx_fabric?tab=Overview)||||
 |[Federerad trådlös](https://www.federatedwireless.com/caas/)||||[Federerad trådlös anslutning-som-en-tjänst](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/federatedwireless1580839623708.fw_caas?tab=Overview)|
-|[MASKINVARUKOMPATIBILITETSLISTAN](https://www.hcltech.com/)|||[HCL Azure Virtual WAN-tjänster – 1 dagars utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/hcl-technologies.hclmanagedazurevitualwan?search=vWAN&page=1)|[HCL Azure Private LTE erbjudande – 1 dag utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/hcl-technologies.hclazureprivatelteoffering)|
+|[MASKINVARUKOMPATIBILITETSLISTAN](https://www.hcltech.com/)|[HCL Cloud Network Transformation-1 dagars utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/hcl-technologies.clo?tab=Overview)|[Azure ExpressRoute-tjänst med en timmes tid av HCL](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/hcl-technologies.hclmanagedazureexpressroute?tab=Overview)|[HCL Azure Virtual WAN-tjänster – 1 dagars utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/hcl-technologies.hclmanagedazurevitualwan?search=vWAN&page=1)|[HCL Azure Private LTE erbjudande – 1 dag utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/hcl-technologies.hclazureprivatelteoffering)|
 |[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute-implementering: 1 – HR-kort](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: 2-veckor-implementering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
 |[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys integrerar + för Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure-nätverks utvärdering – 5 dagar](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
