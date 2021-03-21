@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835976"
 ---
 # <a name="identity-protection-policies"></a>Principer om identitetsskydd
@@ -58,7 +58,7 @@ Om risken identifieras kan användarna utföra lösen ords återställning via s
 
 - [Aktivera återställning av lösen ord för självbetjäning i Azure AD](../authentication/howto-sspr-deployment.md)
 
-- [Aktivera Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Aktivera Azure AD-multifaktorautentisering](../authentication/howto-mfa-getstarted.md)
 
 - [Aktivera registrerings princip för Azure AD-Multi-Factor Authentication](howto-identity-protection-configure-mfa-policy.md)
 

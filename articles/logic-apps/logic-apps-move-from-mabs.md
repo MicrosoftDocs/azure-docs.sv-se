@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023660"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrera appar och lösningar från BizTalk Services till Azure Logic Apps
@@ -49,7 +49,7 @@ I den här tabellen mappas BizTalk Services-funktioner till Logic Apps.
 
 BizTalk Services har flera typer av artefakter. 
 
-## <a name="connectors"></a>Anslutningar
+## <a name="connectors"></a>Anslutningsappar
 
 Med hjälp av BizTalk Services kopplingar kan du skicka och ta emot data, inklusive tvåvägs bryggor som möjliggör HTTP-baserade förfrågningar/svar-interaktioner. Logic Apps använder samma terminologi och innehåller hundratals kopplingar som har samma syfte genom att ansluta till en mängd olika tekniker och tjänster. Till exempel är kopplingarna tillgängliga för Cloud SaaS-och PaaS-tjänster, till exempel OneDrive, Office365, Dynamics CRM och fler, plus lokala system via den lokala datagatewayen som ersätter BizTalk Adapter service för BizTalk Services. Källor i BizTalk Services är begränsade till FTP, SFTP och Service Bus kö-eller ämnes prenumeration.
 

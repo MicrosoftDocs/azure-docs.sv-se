@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966708"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Snabb start: etablera en simulerad enhet för att IoT Hub med symmetriska nycklar
@@ -32,7 +32,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Kontrol lera att du har [Java se Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) eller senare installerat på datorn.
 
@@ -132,7 +132,7 @@ I det här avsnittet ska du uppdatera enhets exempel koden för att skicka enhet
       Message received! Response status: OK_EMPTY
     ```
 
-6. I Azure Portal går du till den IoT-hubb som är kopplad till din etableringstjänst och öppnar bladet **Device Explorer**. Efter lyckad etablering av den simulerade symmetriska nyckel enheten i hubben visas dess enhets-ID på bladet **Device Explorer** , *STATUS* med status **aktive rad**.  Du kan behöva klicka på knappen **Uppdatera** längst upp om du redan har öppnat bladet innan du kör programmet för enhets exempel. 
+6. I Azure Portal går du till den IoT-hubb som är kopplad till din etableringstjänst och öppnar bladet **Device Explorer**. Efter lyckad etablering av den simulerade symmetriska nyckel enheten i hubben visas dess enhets-ID på bladet **Device Explorer** ,  med status **aktive rad**.  Du kan behöva klicka på knappen **Uppdatera** längst upp om du redan har öppnat bladet innan du kör programmet för enhets exempel. 
 
     ![Enheten är registrerad på IoT-hubben](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 

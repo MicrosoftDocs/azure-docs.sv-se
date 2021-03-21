@@ -9,10 +9,10 @@ ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a82c2cdf7084b31eb6ba861e48ecffb81e6d1363
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102453707"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Snabb start: Azure Key Vault hemligt klient bibliotek för .NET (SDK v4)
@@ -36,7 +36,7 @@ Mer information om Key Vault och hemligheter finns i:
 
 Den här snabb starten använder `dotnet` och Azure CLI
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Den här snabb starten använder Azure Identity Library med Azure CLI för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. mer information finns i [autentisera klienten med klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 
@@ -123,7 +123,7 @@ Med Azure Key Vault hemliga klient biblioteket för .NET kan du hantera hemlighe
 
 ### <a name="add-directives"></a>Lägg till direktiv
 
-Lägg till följande direktiv överst i *program.cs*:
+Lägg till följande direktiv överst i *programmet. cs*:
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 

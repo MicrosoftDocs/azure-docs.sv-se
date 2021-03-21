@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 66a1e22282864d0425173504735d6beb42b76ad7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967269"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple som ett säkerhets kopierings mål med Backup Exec
@@ -102,7 +102,7 @@ I följande tabeller visas inledande vägledning för enhets modell-till-arkitek
 | Säkerhets kopierings scenario  | Lokal lagringskapacitet  | Kapacitet för moln lagring  |
 |---|---|---|
 | Primär säkerhets kopia  | Senaste säkerhets kopior som lagrats på lokal lagring för snabb återställning för att uppfylla återställnings punkt mål (jobb) | Säkerhets kopierings historiken passar i moln kapaciteten |
-| Sekundär säkerhets kopiering | Sekundär kopia av säkerhets kopierings data kan lagras i moln kapaciteten  | E.t.  |
+| Sekundär säkerhets kopiering | Sekundär kopia av säkerhets kopierings data kan lagras i moln kapaciteten  | Ej tillämpligt  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple som primärt säkerhets kopierings mål
 
@@ -233,7 +233,7 @@ Konfigurera din lösning enligt rikt linjerna i följande avsnitt.
 -   StorSimple stöder fullständig och stegvis säkerhets kopiering. Vi rekommenderar att du inte använder syntetiska och differentiella säkerhets kopieringar.
 -   Säkerhetskopierade datafiler ska endast innehålla data för ett speciellt jobb. Till exempel tillåts inga medie tillägg över olika jobb.
 -   Inaktivera jobb verifiering. Vid behov bör verifieringen schemaläggas efter det senaste säkerhets kopierings jobbet. Det är viktigt att förstå att det här jobbet påverkar säkerhets kopierings fönstret.
--   Välj **lagring**  >  Egenskaper för **disk**  >  **information**  >  **Properties**. Inaktivera **förallokerat disk utrymme**.
+-   Välj **lagring**  >  Egenskaper för **disk**  >  **information**  >  . Inaktivera **förallokerat disk utrymme**.
 
 De senaste inställningarna för säkerhets kopierings-exec och bästa praxis för att implementera dessa krav finns [på Veritas webbplats](https://www.veritas.com).
 

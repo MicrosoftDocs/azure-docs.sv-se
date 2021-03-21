@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: f2328bd51712089f706c8491007f9f51eba52337
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92508136"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Självstudie: Azure Active Directory integrering med mina belönings punkter överst till-/topp-teamet
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning för Azure AD med mina belönings punkter överst till höger/Top-teamet:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **Mina upphandlings platser överst/översta team** program integration.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **Mina upphandlings platser överst/översta team** program integration.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -156,7 +156,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till mina belönings punkter överst till höger/översta teamet.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Mina tilldelnings punkter överst till-/topp-teamet**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Mina tilldelnings punkter överst till-/topp-teamet**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

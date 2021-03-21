@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d12df7197945a514ed8d3d0dca77271fb4bd0903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96509250"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
@@ -31,7 +31,7 @@ I det här steget ska du använda ett exempel program för att skicka meddelande
 
 1. Klona [GitHub Azure-Service-Bus-lagringsplatsen](https://github.com/Azure/azure-service-bus/).
 2. Gå till mappen *\samples\DotNet\Azure.Messaging.ServiceBus\ServiceBusEventGridIntegration* i Visual Studio och öppna filen *SBEventGridIntegration. SLN* .
-3. I fönstret Solution Explorer expanderar du projektet **MessageSender** och väljer **program.cs**.
+3. I fönstret Solution Explorer expanderar du projektet **MessageSender** och väljer **program. cs**.
 4. Ersätt `<SERVICE BUS NAMESPACE - CONNECTION STRING>` med anslutnings strängen till Service Bus namn området och `<TOPIC NAME>` namnet på ämnet. 
 
     ```csharp

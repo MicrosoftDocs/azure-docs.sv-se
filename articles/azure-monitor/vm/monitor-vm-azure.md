@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047051"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Övervaka virtuella Azure-datorer med Azure Monitor
@@ -160,7 +160,7 @@ Azure virtuella datorer samlar in följande data för att Azure Monitor loggar.
 
 Med VM Insights kan du samla in en fördefinierad uppsättning prestanda räknare som skrivs till tabellen *InsightsMetrics* . Detta är samma tabell som används av [behållar insikter](../containers/container-insights-overview.md). 
 
-| Datakälla | Krav | Tabeller |
+| Datakälla | Krav | Tables |
 |:---|:---|:---|
 | VM-insikter | Aktivera på varje virtuell dator. | InsightsMetrics<br>VMBoundPort<br>VMComputer<br>VMConnection<br>VMProcess<br>Mer information finns i [så här frågar du efter loggar från VM-insikter](../vm/vminsights-log-search.md) . |
 | Aktivitetslogg | Diagnostisk inställning för prenumerationen. | AzureActivity |

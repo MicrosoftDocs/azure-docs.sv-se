@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 6f3761b1c933d113bf65c70370c29bcfa7950eea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728662"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Aviseringshantering lösning i Azure Log Analytics
@@ -100,7 +100,7 @@ Lösningen importerar aviseringar från System Center Operations Manager och ska
 ## <a name="sample-log-searches"></a>Exempel på loggsökningar
 Följande tabell innehåller exempel på loggs ökningar för aviserings poster som samlas in av den här lösningen: 
 
-| Söka i data | Beskrivning |
+| Fråga | Beskrivning |
 |:---|:---|
 | Aviserings &#124; där SourceSystem = = "OpsManager" och AlertSeverity = = "Error" och TimeRaised > sedan (24 timmarna) |Kritiska aviseringar som genererats under de senaste 24 timmarna |
 | Aviserings &#124; där AlertSeverity = = "varning" och TimeRaised > sedan (24 timmarna) |Varnings aviseringar som har genererats under de senaste 24 timmarna |

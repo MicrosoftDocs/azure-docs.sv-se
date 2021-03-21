@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/07/2020
 ms.author: allensu
 ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370513"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>Publicera en rot-eller Apex-domän till en befintlig Azure CDN-slutpunkt
@@ -70,7 +70,7 @@ När du har registrerat din anpassade domän kan du lägga till den i din CDN-sl
 
    :::image type="content" source="media/onboard-apex-domain/cdn-custom-domain-button.png" alt-text="Knappen Lägg till anpassad domän" border="true":::
 
-4. I **Lägg till en anpassad domän** , fylls **slut punktens värdnamn** i i förväg och härleds från CDN-slutpunktens URL: **\<endpoint-hostname>** . azureedge.net. Det kan inte ändras.
+4. I **Lägg till en anpassad domän**, fylls **slut punktens värdnamn** i i förväg och härleds från CDN-slutpunktens URL: **\<endpoint-hostname>** . azureedge.net. Det kan inte ändras.
 
 5. För **anpassat värdnamn** anger du den anpassade rot-eller Apex-domänen som ska användas som käll domän för din CNAME-post. 
     1. Till exempel **contoso.com**. **Använd inte namnet på cdnverify-underdomänen**.
@@ -82,9 +82,9 @@ När du har registrerat din anpassade domän kan du lägga till den i din CDN-sl
    Azure verifierar att det finns en CNAME-post för det anpassade domännamnet som du har angett. Om CNAME är korrekt verifieras din anpassade domän. 
 
    Det kan ta lite tid innan inställningarna för den nya anpassade domänen sprids till alla CDN-gränsnoder: 
-    - För **Azure CDN Standard från Microsoft** -profiler slutförs spridningen vanligtvis inom 10 minuter. 
-    - För **Azure CDN Standard från Akamai** -profiler slutförs spridningen vanligtvis inom en minut. 
-    - För **Azure CDN Standard från Verizon** - och **Azure CDN Premium från Verizon** -profiler slutförs spridningen vanligtvis inom 10 minuter.   
+    - För **Azure CDN Standard från Microsoft**-profiler slutförs spridningen vanligtvis inom 10 minuter. 
+    - För **Azure CDN Standard från Akamai**-profiler slutförs spridningen vanligtvis inom en minut. 
+    - För **Azure CDN Standard från Verizon**- och **Azure CDN Premium från Verizon**-profiler slutförs spridningen vanligtvis inom 10 minuter.   
 
 ## <a name="enable-https-on-your-custom-domain"></a>Aktivera HTTPS på din anpassade domän
 

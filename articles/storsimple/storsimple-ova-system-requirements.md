@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966181"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemkrav för StorSimple Virtual Array
@@ -67,7 +67,7 @@ Program varu kraven innehåller information om de webbläsare som stöds, SMB-ve
 ### <a name="supported-storage-clients"></a>Lagrings klienter som stöds
 Följande program varu krav gäller för iSCSI-initierare som har åtkomst till din virtuella StorSimple-matris (konfigurerad som en iSCSI-server).
 
-| **Operativ system som stöds** | **Version som krävs** | **Ytterligare krav/anteckningar** |
+| **Operativsystem som stöds** | **Version som krävs** | **Ytterligare krav/anteckningar** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1, 2012, 2012R2 |StorSimple kan skapa tunt etablerade och helt etablerade volymer. Det går inte att skapa delvis allokerade volymer. StorSimple iSCSI-volymer stöds endast för: <ul><li>Enkla volymer på Windows Basic-diskar.</li><li>Windows NTFS för formatering av en volym.</li> |
 
@@ -91,13 +91,13 @@ I följande tabell visas de portar som måste öppnas i brand väggen för att t
 
 | **Port nr <sup>1</sup>** | **In eller ut** | **Port omfång** | **Obligatoriskt** | **Kommentarer** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Ut |WAN |Nej |Utgående port används för Internet åtkomst för att hämta uppdateringar. <br></br>Den utgående webbproxyn är användare konfigurerbar. |
+| TCP 80 (HTTP) |Ut |WAN |Inga |Utgående port används för Internet åtkomst för att hämta uppdateringar. <br></br>Den utgående webbproxyn är användare konfigurerbar. |
 | TCP 443 (HTTPS) |Ut |WAN |Ja |Utgående port används för att komma åt data i molnet. <br></br>Den utgående webbproxyn är användare konfigurerbar. |
 | UDP 53 (DNS) |Ut |WAN |I vissa fall, Se kommentarer. |Den här porten krävs bara om du använder en Internetbaserad DNS-server. <br></br> Observera att om du distribuerar en fil server rekommenderar vi att du använder den lokala DNS-servern. |
 | UDP 123 (NTP) |Ut |WAN |I vissa fall, Se kommentarer. |Den här porten krävs bara om du använder en Internetbaserad NTP-server.<br></br> Observera att om du distribuerar en fil server rekommenderar vi att du synkroniserar tid med Active Directory domän kontrol Lanterna. |
 | TCP 80 (HTTP) |I |LAN |Ja |Det här är den inkommande porten för lokalt användar gränssnitt på StorSimple-enheten för lokal hantering. <br></br> Observera att åtkomst till det lokala användar gränssnittet över HTTP omdirigeras automatiskt till HTTPS. |
 | TCP 443 (HTTPS) |I |LAN |Ja |Det här är den inkommande porten för lokalt användar gränssnitt på StorSimple-enheten för lokal hantering. |
-| TCP 3260 (iSCSI) |I |LAN |Nej |Den här porten används för att få åtkomst till data via iSCSI. |
+| TCP 3260 (iSCSI) |I |LAN |Inga |Den här porten används för att få åtkomst till data via iSCSI. |
 
 <sup>1</sup> inga inkommande portar måste öppnas på det offentliga Internet.
 

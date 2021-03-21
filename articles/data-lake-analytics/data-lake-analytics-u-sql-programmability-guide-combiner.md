@@ -6,13 +6,13 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: a6c560cf4ec11197183711656d69024591e7008c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512695"
 ---
-# <a name="use-user-defined-combiner"></a>Använd användardefinierad kombinations samling
+# <a name="use-user-defined-combiner"></a>Använda användardefinierad kombinerare
 
 ## <a name="u-sql-udo-user-defined-combiner"></a>U-SQL-UDO: användardefinierad kombinations
 Med användardefinierad kombinations-eller UDC-uppsättning kan du kombinera rader från vänster och höger rad uppsättningar, baserat på anpassad logik. Användardefinierad kombinerare används med kombinera-uttryck.

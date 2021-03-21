@@ -1,7 +1,7 @@
 ---
-title: Hämta videor från din anpassade vy – Anpassad sökning i Bing
+title: Hämta videor från din anpassade vy – Anpassad Bing-sökning
 titleSuffix: Azure Cognitive Services
-description: Översikt på hög nivå om hur du använder Anpassad sökning i Bing för att hämta videor från din anpassade vy av webben.
+description: Översikt på hög nivå om hur du använder Anpassad Bing-sökning för att hämta videor från din anpassade vy av webben.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 4e2bb14519f8ed4e3e4a0e9ac8800957b30229a9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96338426"
 ---
 # <a name="get-videos-from-your-custom-view"></a>Hämta videor från din anpassade vy

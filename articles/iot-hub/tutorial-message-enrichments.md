@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199789"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Självstudie: Använd Azure IoT Hub meddelande-anrikning
@@ -77,7 +77,7 @@ Om du inte redan har gjort det öppnar du ett Azure [Cloud Shell-fönster](https
 
 Här följer resurserna som skapats av skriptet. *Förrikat* innebär att resursen är för meddelanden med anrikninger. *Original* innebär att resursen avser meddelanden som inte är berikade.
 
-| Namn | Värde |
+| Name | Värde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container namn | originalspråket  |
@@ -297,7 +297,7 @@ Du kan använda en Resource Manager-mall för att skapa och konfigurera resurser
 
    Här är de resurser som skapas genom att läsa in mallen. **Förrikat** innebär att resursen är för meddelanden med anrikninger. **Original** innebär att resursen avser meddelanden som inte är berikade. Detta är samma värden som används i Azure CLI-skriptet.
 
-   | Namn | Värde |
+   | Name | Värde |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container namn | originalspråket  |
@@ -336,7 +336,7 @@ Nu när meddelande berikarna har kon figurer ATS för slut punkten kan du köra 
 
 Det simulerade enhets programmet är ett av programmen i den zippade nedladdningen. Programmet skickar meddelanden för var och en av de olika metoderna för meddelanderoutning i [operationsföljden](tutorial-routing.md), som innehåller Azure Storage.
 
-Dubbelklicka på lösnings filen **IoT_SimulatedDevice. SLN** för att öppna koden i Visual Studio och öppna sedan **program.cs**. Ersätt markörens IoT Hub-namn `{your hub name}` . Formatet på värd namnet för IoT Hub är **{ditt Hubbs namn}. Azure-Devices.net**. I den här självstudien är hubbens värd namn ContosoTestHubMsgEn.azure-devices.net. Ersätt sedan den enhets nyckel som du sparade tidigare när du körde skriptet för att skapa resurserna för markören `{your device key}` .
+Dubbelklicka på lösnings filen **IoT_SimulatedDevice. SLN** för att öppna koden i Visual Studio och öppna sedan **program. cs**. Ersätt markörens IoT Hub-namn `{your hub name}` . Formatet på värd namnet för IoT Hub är **{ditt Hubbs namn}. Azure-Devices.net**. I den här självstudien är hubbens värd namn ContosoTestHubMsgEn.azure-devices.net. Ersätt sedan den enhets nyckel som du sparade tidigare när du körde skriptet för att skapa resurserna för markören `{your device key}` .
 
 Om du inte har enhets nyckeln kan du hämta den från portalen. När du har loggat in går du till **resurs grupper**, väljer din resurs grupp och väljer sedan din IoT Hub. Titta på **IoT-enheter** för test enheten och välj din enhet. Välj kopierings ikonen bredvid **primär nyckel** för att kopiera den till Urklipp.
 

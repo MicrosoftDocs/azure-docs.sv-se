@@ -8,15 +8,15 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: f038392f03b94aa2c2450531c9da4a11d9900295
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93043121"
 ---
 I det här avsnittet installerar du Azure File Sync-agenten på Windows Server-instansen.
 
-[Distributions guiden](../articles/storage/files/storage-sync-files-deployment-guide.md) illustrerar att du behöver inaktivera **förbättrad säkerhets konfiguration i Internet Explorer** . Det här säkerhets måttet gäller inte för Azure File Sync. Genom att inaktivera det kan du autentisera till Azure utan problem.
+[Distributions guiden](../articles/storage/files/storage-sync-files-deployment-guide.md) illustrerar att du behöver inaktivera **förbättrad säkerhets konfiguration i Internet Explorer**. Det här säkerhets måttet gäller inte för Azure File Sync. Genom att inaktivera det kan du autentisera till Azure utan problem.
 
 Öppna PowerShell och installera de nödvändiga PowerShell-modulerna med hjälp av följande kommandon. Se till att installera hela modulen och NuGet-providern när du uppmanas till det.
 
@@ -37,4 +37,4 @@ Dessa steg beskrivs i detalj i distributions guiden, som innehåller de PowerShe
 
 Använd den senaste agenten. Du kan ladda ned det från Microsoft Download Center: [Azure File Sync-agenten](https://aka.ms/AFS/agent "Ladda ned Azure File Sync agent").
 
-Efter en lyckad installation och Server registrering kan du kontrol lera att du har slutfört det här steget. Gå till resursen Storage Sync service i Azure Portal. På den vänstra menyn går du till **registrerade servrar** . Servern visas där.
+Efter en lyckad installation och Server registrering kan du kontrol lera att du har slutfört det här steget. Gå till resursen Storage Sync service i Azure Portal. På den vänstra menyn går du till **registrerade servrar**. Servern visas där.

@@ -9,17 +9,17 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6684c4269f14b91ded651dadff3f0a2e0878a4f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96025908"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Stöds anpassade IPsec/IKE-principer på alla Azure VPN Gateway-SKU: er?
 Anpassad IPsec/IKE-princip stöds på alla Azure SKU: er förutom Basic SKU.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hur många principer kan jag ställa in för en anslutning?
-Du kan bara ange ***en** _ princip kombination för en specifik anslutning.
+Du kan bara ange ***en*** principkombination för en viss anslutning.
 
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>Kan jag ange en partiell princip på en anslutning? (till exempel endast IKE-algoritmer, men inte IPsec)
 Nej, du måste ange alla algoritmer och parametrar för både IKE (huvudläge) och IPsec (snabbläge). Partiell principspecifikationen tillåts inte.
@@ -27,7 +27,7 @@ Nej, du måste ange alla algoritmer och parametrar för både IKE (huvudläge) o
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Vilka är de algoritmer och viktiga fördelar som stöds i den anpassade principen?
 Tabellen nedan innehåller de krypteringsalgoritmer och nyckellängder som stöds och som kan konfigureras av kunden. Du måste välja ett alternativ för varje fält.
 
-| _ *IPSec/IKEv2**  | **Alternativ**                                                                   |
+| **IPsec/IKEv2**  | **Alternativ**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2-kryptering | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2 Integrity  | SHA384, SHA256, SHA1, MD5                                                     |
