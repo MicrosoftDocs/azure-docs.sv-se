@@ -5,10 +5,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94335034"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Vad är nytt i Azure blockchain-tjänsten?
@@ -69,7 +69,7 @@ Två faser hjälper till att optimera scenarier där en medlem skapas i ett lån
 I kvorum v-2.6.0 anropar funktionen *ETH. estimateGas* utan att tillhandahålla den ytterligare *värde* parametern att en *metod hanterare kraschade* undantaget. Kvorumresursen har meddelats och en korrigering förväntas sluta den 2020 juli. Du kan använda följande lösningar tills en korrigering är tillgänglig:
 
 - Undvik att använda *ETH. estimateGas* eftersom det kan påverka prestandan. Mer information om ETH. estimateGas prestanda problem finns i [anropa ETH. estimateGas-funktionen minskar prestandan](#calling-ethestimategas-function-reduces-performance). Inkludera ett gas värde för varje transaktion. De flesta bibliotek anropar ETH. estimateGas om ett gas värde inte anges vilket gör att kvorum v 2.6.0 kan krascha.
-- Om du behöver anropa *ETH. estimateGas* , föreslår kvorumresursen att du skickar ytterligare parameter *värde* som *0* som en lösning.
+- Om du behöver anropa *ETH. estimateGas*, föreslår kvorumresursen att du skickar ytterligare parameter *värde* som *0* som en lösning.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Utvinning stoppas om färre än fyra validator-noder
 

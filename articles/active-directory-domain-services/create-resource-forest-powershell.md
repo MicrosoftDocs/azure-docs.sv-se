@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: justinha
 ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619975"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Skapa en Azure Active Directory Domain Services resurs skog och utgående skogs förtroende till en lokal domän med hjälp av Azure PowerShell
@@ -106,13 +106,13 @@ Om du vill skapa en resurs skog för en hanterad domän använder du `New-AzureA
     |:-----------------------------|---------------------------|:------------|
     | Prenumeration                 | *– azureSubscriptionId*    | Prenumerations-ID som används för Azure AD DS-fakturering. Du kan hämta listan över prenumerationer med hjälp av cmdleten [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
     | Resursgrupp               | *-aaddsResourceGroupName* | Namnet på resurs gruppen för den hanterade domänen och de associerade resurserna. |
-    | Plats                     | *-aaddsLocation*          | Azure-regionen som är värd för din hanterade domän. För tillgängliga regioner, se [regioner som stöds för Azure AD DS.](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
+    | Location                     | *-aaddsLocation*          | Azure-regionen som är värd för din hanterade domän. För tillgängliga regioner, se [regioner som stöds för Azure AD DS.](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
     | Azure AD DS-administratör    | *-aaddsAdminUser*         | User Principal Name av den första hanterade domän administratören. Det här kontot måste vara ett befintligt moln användar konto i din Azure Active Directory. Användaren, och användaren som kör skriptet, läggs till i *Administratörs gruppen för AAD-domänkontrollanten* . |
     | Namn på Azure AD DS-domän      | *-aaddsDomainName*        | Det fullständiga domän namnet för den hanterade domänen, baserat på den tidigare vägledningen om hur du väljer ett skogs namn. |
 
     `New-AzureAaddsForest`Skriptet kan skapa det virtuella Azure-nätverket och Azure AD DS-undernätet om dessa resurser inte redan finns. Skriptet kan också skapa arbets belastnings under näten när det anges:
 
-    | Name                              | Skript parameter                  | Description |
+    | Name                              | Skript parameter                  | Beskrivning |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuellt nätverksnamn              | *-aaddsVnetName*                  | Namnet på det virtuella nätverket för den hanterade domänen.|
     | Adressutrymme                     | *-aaddsVnetCIDRAddressSpace*      | Det virtuella nätverkets adress intervall i CIDR-format (om du skapar det virtuella nätverket).|
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Ange nu skriptet med följande information:
 
-| Name                               | Skript parameter     | Description |
+| Name                               | Skript parameter     | Beskrivning |
 |:-----------------------------------|:---------------------|:------------|
 | Namn på Azure AD DS-domän            | *-ManagedDomainFqdn* | Fullständigt domän namn för den hanterade domänen, till exempel *aaddscontoso.com* |
 | Namn på lokal AD DS-domän      | *-TrustFqdn*         | FQDN för den betrodda skogen, till exempel *OnPrem.contoso.com* |

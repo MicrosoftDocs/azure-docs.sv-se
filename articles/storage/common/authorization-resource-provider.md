@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789683"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Använd Azure Storage Resource Provider för att få åtkomst till hanterings resurser
@@ -53,7 +53,7 @@ Inbyggda roller som ger behörighet att anropa lagrings hanterings åtgärder in
 | **Administratör för användaråtkomst** | Kan hantera åtkomst till lagrings kontot.   | Ja, tillåter ett säkerhets objekt att tilldela sig själva behörigheter och andra. |
 | **Virtuell datordeltagare** | Kan hantera virtuella datorer, men inte lagrings kontot som de är anslutna till.   | Ja, ger behörighet att visa och återskapa lagrings konto nycklar. |
 
-Den tredje kolumnen i tabellen visar om den inbyggda rollen stöder **Microsoft. Storage/storageAccounts/listnycklar/åtgärd** . Den här åtgärden ger behörighet att läsa och återskapa lagrings konto nycklar. Behörigheter för åtkomst till Azure Storage hanterings resurser omfattar inte även behörigheter för åtkomst till data. Men om en användare har åtkomst till konto nycklarna kan de använda konto nycklarna för att få åtkomst till Azure Storage data via autentisering med delad nyckel.
+Den tredje kolumnen i tabellen visar om den inbyggda rollen stöder **Microsoft. Storage/storageAccounts/listnycklar/åtgärd**. Den här åtgärden ger behörighet att läsa och återskapa lagrings konto nycklar. Behörigheter för åtkomst till Azure Storage hanterings resurser omfattar inte även behörigheter för åtkomst till data. Men om en användare har åtkomst till konto nycklarna kan de använda konto nycklarna för att få åtkomst till Azure Storage data via autentisering med delad nyckel.
 
 ### <a name="custom-roles-for-management-operations"></a>Anpassade roller för hanterings åtgärder
 

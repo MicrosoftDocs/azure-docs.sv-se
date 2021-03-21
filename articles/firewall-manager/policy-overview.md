@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: victorh
 ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95802031"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Översikt över Azure Firewall Manager-principer
@@ -47,16 +47,16 @@ Med arv tillämpas eventuella ändringar i den överordnade principen automatisk
 Azure-brandväggen stöder både traditionella regler och principer. I följande tabell jämförs principer och regler:
 
 
-| Ämne | Princip  | Regler |
+| Ämne | Policy  | Regler |
 | ------- | ------- | ----- |
 |Innehåller     |NAT, nätverk, program regler, anpassade inställningar för DNS-och DNS-proxy, IP-grupper och hot information-inställningar (inklusive listan över tillåtna)|NAT-, nätverks-och program regler, anpassade inställningar för DNS-och DNS-proxy, IP-grupper och hot informations inställningar (inklusive listan över tillåtna)|
 |Skyddar     |Virtuella hubbar och virtuella nätverk|Endast virtuella nätverk|
 |Portalmiljö     |Central hantering med hjälp av brand Väggs hanteraren|Fristående brand Väggs upplevelse|
 |Stöd för flera brand väggar     |Brand Väggs principen är en separat resurs som kan användas i olika brand väggar|Exportera och importera regler manuellt eller med hjälp av hanterings lösningar från tredje part |
-|Prissättning     |Faktureras baserat på brand Väggs Association. Se [prissättning](#pricing).|Kostnadsfri|
+|Priser     |Faktureras baserat på brand Väggs Association. Se [prissättning](#pricing).|Kostnadsfri|
 |Distributions metoder som stöds     |Portal, REST API, mallar, Azure PowerShell och CLI|Portal, REST API, mallar, PowerShell och CLI. |
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Principer faktureras baserat på brand Väggs associationer. En princip med noll eller en brand Väggs koppling är kostnads fri. En princip med flera brand Väggs associationer debiteras enligt ett fast pris. Mer information finns i [priser för Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/).
 

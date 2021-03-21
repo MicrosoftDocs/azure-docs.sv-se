@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: c0738e7033f0aa39ca5f12a44c06d086175eb8fe
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731490"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Självstudie: Konfigurera PaperCut Cloud Print Management för automatisk användar etablering
@@ -33,7 +33,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både PaperCut C
 > * Ta bort användare i PaperCut Cloud Print Management när de inte behöver åtkomst längre
 > * Behåll användarattribut synkroniserade mellan Azure AD och PaperCut Cloud Print Management
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

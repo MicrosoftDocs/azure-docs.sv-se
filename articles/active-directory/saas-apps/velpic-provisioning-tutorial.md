@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94354911"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Velpic för automatisk användar etablering
@@ -66,7 +66,7 @@ Det här avsnittet vägleder dig genom att ansluta din Azure AD till Velpic-API 
 
     ![Velpic-etablering](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. Under avsnittet **admin credentials** kan du mata in **klient-URL: en&hemlig token** för Velpic. (Du kan hitta de här värdena under ditt Velpic-konto: **Hantera**  >  **Integrering**  >  **Plugin**  >  **Scim** )
+5. Under avsnittet **admin credentials** kan du mata in **klient-URL: en&hemlig token** för Velpic. (Du kan hitta de här värdena under ditt Velpic-konto: **Hantera**  >  **Integrering**  >  **Plugin**  >  **Scim**)
 
     ![Authorization-värden](./media/velpic-provisioning-tutorial/Velpic2.png)
 

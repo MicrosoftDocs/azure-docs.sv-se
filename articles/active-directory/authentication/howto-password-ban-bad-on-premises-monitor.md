@@ -13,10 +13,10 @@ ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741770"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Övervaka och granska loggar för lokala Azure AD-miljöer för lösen ords skydd
@@ -240,7 +240,7 @@ Text loggning är inaktiverat som standard. En omstart av DC-agenttjänsten krä
 
 Program varan för DC-agenten installerar ett prestanda räknar objekt med namnet **Azure AD Password Protection**. Följande prestanda räknare är tillgängliga för närvarande:
 
-|Prestanda räknar namn | Description|
+|Prestanda räknar namn | Beskrivning|
 | --- | --- |
 |Bearbetade lösen ord |Den här räknaren visar det totala antalet bearbetade lösen ord (accepterade eller avvisade) sedan den senaste omstarten.|
 |Accepterade lösen ord |Den här räknaren visar det totala antalet lösen ord som har godkänts sedan den senaste omstarten.|

@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 01/07/2021
 ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027816"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Övervaka normaliserade RU/s för en Azure Cosmos-behållare eller ett konto
@@ -22,7 +22,7 @@ Det **normaliserade ru-förbruknings** måttet används för att se hur väl mä
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Vad som ska förväntas och göra när normaliserade RU/s är högre
 
-När den normaliserade RU/s-förbrukningen når 100% för det angivna partitionsnumret, och om en klient fortfarande skickar begär anden i tidsfönstret på 1 sekund till det särskilda partitionsnyckel, får det ett begränsat fel. Klienten bör respektera den föreslagna vänte tiden och försöka utföra begäran igen. SDK gör det enkelt att hantera den här situationen genom att försöka med förkonfigurerade tider på lämpligt sätt.  Det är inte nödvändigt att du ser begränsningen för RU-frekvensen eftersom den normaliserade RU har nått 100%. Det beror på att normaliserat RU är ett enda värde som representerar Max användningen för alla partitionsnyckel, men ett nyckel intervall kan vara upptaget, men de andra partition nyckel intervallen kan hantera begär Anden utan problem. Till exempel kan en enskild åtgärd, till exempel en lagrad procedur som förbrukar alla RU/s på ett nyckel intervall, leda till en kort insamling i den normaliserade RU/s-förbrukningen. I sådana fall uppstår inga omedelbara hastighets begränsnings fel om begär ande frekvensen är låg eller om begär Anden görs till andra partitioner på olika nyckel intervall. 
+När den normaliserade RU/s-förbrukningen når 100% för det angivna partitionsnumret, och om en klient fortfarande skickar begär anden i tidsfönstret på 1 sekund till det särskilda partitionsnyckel, får det ett begränsat fel. Klienten bör respektera den föreslagna vänte tiden och försöka utföra begäran igen. SDK gör det enkelt att hantera den här situationen genom att försöka med förkonfigurerade tider på lämpligt sätt.  Det är inte nödvändigt att du ser begränsningen för RU-frekvensen eftersom den normaliserade RU har nått 100%. Det beror på att normaliserat RU är ett enda värde som representerar Max användningen för alla partitionsnyckel, men ett nyckel intervall kan vara upptaget, men de andra partition nyckel intervallen kan hantera begär Anden utan problem. Till exempel kan en enskild åtgärd, till exempel en lagrad procedur som förbrukar alla RU/s på ett nyckel intervall, leda till en kort insamling i den normaliserade RU/s-förbrukningen. I dessa fall uppstår inga omedelbara hastighetsbegränsningsfel om begärandefrekvensen är låg eller om begäranden görs till andra partitioner med olika partitionsnyckelintervall. 
 
 Azure Monitor måtten hjälper dig att hitta åtgärder per status kod för SQL-API med hjälp av måttet **Totalt antal begär Anden** . Senare kan du filtrera efter dessa förfrågningar med status koden 429 och dela upp dem efter **Åtgärds typ**.  
 

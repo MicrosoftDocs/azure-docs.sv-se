@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: fb4c4c5a0cf6610af17aabc562c42d2e0eb4e6a4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409101"
 ---
 # <a name="security-control-incident-response"></a>Säkerhets kontroll: incident svar
@@ -24,7 +24,7 @@ Skydda organisationens information, samt dess rykte, genom att utveckla och impl
 |--|--|--|
 | 10.1 | 19,1, 19,2, 19,3 | Kund |
 
-Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten.  
+Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.  
 
 - [Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -40,7 +40,7 @@ Bygg ut en incident svars guide för din organisation. Se till att det finns skr
 
 Security Center tilldelar en allvarlighets grad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighets graden baseras på hur tillförlitlig Security Center befinner sig i att söka efter eller det analytiska som används för att utfärda aviseringen samt vilken konfidensnivå som det fanns skadlig avsikt bakom den aktivitet som ledde till aviseringen. 
 
-Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Prod.) med hjälp av taggar och skapa ett namngivnings system för att tydligt identifiera och kategorisera Azure-resurser, särskilt för bearbetning av känsliga data.  Det är ditt ansvar att prioritera reparationen av aviseringar baserat på allvarlighets graden för de Azure-resurser och den miljö där incidenten inträffade.
+Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Prod.) med hjälp av taggar och skapa ett namngivnings system för att tydligt identifiera och kategorisera Azure-resurser, särskilt för bearbetning av känsliga data.  Det är ditt ansvar att prioritera åtgärdandet av aviseringar baserat på allvarlighetsgraden för de Azure-resurser och den miljö där incidenten inträffade.
 
 - [Säkerhetsaviseringar i Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
@@ -52,7 +52,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 |--|--|--|
 | 10,3 | 19 | Kund |
 
-Genomför övningar för att testa dina Systems svar på incident hantering på en vanlig takt för att skydda dina Azure-resurser. Identifiera svaga punkter och luckor och ändra planen efter behov.
+Genomför övningar för att testa dina Systems svar på incident hantering på en vanlig takt för att skydda dina Azure-resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 - [NIST-guide för att testa, träna och träna program för IT-planer och funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -76,7 +76,7 @@ Exportera dina Azure Security Center aviseringar och rekommendationer med hjälp
 
 - [Så här konfigurerar du kontinuerlig export](../../security-center/continuous-export.md)
 
-- [Strömma aviseringar till Azure Sentinel](../../sentinel/connect-azure-security-center.md)
+- [Så här strömmar du aviseringar till Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
 ## <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
 

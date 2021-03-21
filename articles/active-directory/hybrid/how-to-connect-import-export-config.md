@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681963"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Importera och exportera Azure AD Connect konfigurations inställningar 
@@ -77,10 +77,10 @@ Så här migrerar du inställningarna:
 
    ![Skärm bild som visar Azure AD Connect kataloger.](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Kör skriptet som det visas här och spara hela Server konfigurations katalogen på äldre nivå. Kopiera den här katalogen till den nya Staging-servern. Du måste kopiera hela mappen **exporterad-ServerConfiguration-** _ till den nya servern.
+1. Kör skriptet som det visas här och spara hela Server konfigurations katalogen på äldre nivå. Kopiera den här katalogen till den nya Staging-servern. Du måste kopiera hela den **exporterade-ServerConfiguration-*-** mappen till den nya servern.
 
    ![Skärm bild som visar skript i Windows PowerShell. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Skärm bild som visar hur du kopierar den exporterade-ServerConfiguration-_-mappen.](media/how-to-connect-import-export-config/migrate3.png)
+    ![ Skärm bild som visar hur du kopierar den exporterade-ServerConfiguration-*-mappen.](media/how-to-connect-import-export-config/migrate3.png)
 
 1. Starta **Azure AD Connect** genom att dubbelklicka på ikonen på Skriv bordet. Godkänn licens villkoren för program vara från Microsoft och välj sedan **Anpassa** på nästa sida.
 1. Markera kryss rutan **Importera synkroniseringsinställningar** . Välj **Bläddra** för att bläddra i mappen kopierad – över exporterad-ServerConfiguration-*. Välj MigratedPolicy.jspå för att importera de migrerade inställningarna.

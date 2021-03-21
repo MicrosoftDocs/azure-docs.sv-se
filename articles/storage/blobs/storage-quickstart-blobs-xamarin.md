@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98802351"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Snabb start: Azure Blob Storage klient bibliotek V12 med Xamarin
@@ -114,7 +114,7 @@ Koden nedan deklarerar flera variabler på klass nivå. De behövde kommunicera 
 
 Dessa är förutom anslutnings strängen för lagrings kontot som anges i avsnittet [Konfigurera din lagrings anslutnings sträng](#configure-your-storage-connection-string) .
 
-Lägg till den här koden som variabler på klass nivå i *mainpage.XAML.cs* -filen:
+Lägg till den här koden som variabler på klass nivå i filen *mainpage. XAML. cs* :
 
 ```csharp
 string storageConnectionString = "{set in the Configure your storage connection string section}";
@@ -134,7 +134,7 @@ Välj ett namn för den nya behållaren. Koden nedan lägger till ett GUID-värd
 
 Skapa en instans av klassen [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) . Anropa sedan [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) -metoden för att skapa behållaren i ditt lagrings konto.
 
-Lägg till den här koden i *mainpage.XAML.cs* -filen:
+Lägg till den här koden i filen *mainpage. XAML. cs* :
 
 ```csharp
 protected async override void OnAppearing()
@@ -159,7 +159,7 @@ Följande kodfragment:
 1. Skapar en `MemoryStream` av text.
 1. Överför texten till en BLOB genom att anropa [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) -funktionen i [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) -klassen och skicka den i både fil namnet och i `MemoryStream` texten. Den här metoden skapar bloben om den inte redan finns, och skriver över den om den finns.
 
-Lägg till den här koden i *mainpage.XAML.cs* -filen:
+Lägg till den här koden i filen *mainpage. XAML. cs* :
 
 ```csharp
 async void Upload_Clicked(object sender, EventArgs e)
@@ -179,7 +179,7 @@ async void Upload_Clicked(object sender, EventArgs e)
 
 Visa en lista över blobarna i behållaren genom att anropa metoden [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) . I det här fallet har endast en BLOB lagts till i behållaren, så List åtgärden returnerar bara den en blob.
 
-Lägg till den här koden i *mainpage.XAML.cs* -filen:
+Lägg till den här koden i filen *mainpage. XAML. cs* :
 
 ```csharp
 async void List_Clicked(object sender, EventArgs e)
@@ -198,7 +198,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 Ladda ned den tidigare skapade blobben genom att anropa [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) -metoden. I exempel koden kopieras `Stream` åter givningen av blobben först till en `MemoryStream` och sedan till en `StreamReader` så att texten kan visas.
 
-Lägg till den här koden i *mainpage.XAML.cs* -filen:
+Lägg till den här koden i filen *mainpage. XAML. cs* :
 
 ```csharp
 async void Download_Clicked(object sender, EventArgs e)
@@ -227,7 +227,7 @@ Följande kod rensar resurserna som skapats av appen genom att ta bort hela beh�
 
 Appen måste först bekräfta innan den tar bort blobben och containern. Det här är en bra chans att verifiera att resurserna har skapats korrekt innan de tas bort.
 
-Lägg till den här koden i *mainpage.XAML.cs* -filen:
+Lägg till den här koden i filen *mainpage. XAML. cs* :
 
 ```csharp
 async void Delete_Clicked(object sender, EventArgs e)

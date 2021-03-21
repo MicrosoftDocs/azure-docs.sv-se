@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 3cc5e5114b435965eee4aa096e5898538b0a56e7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370451"
 ---
 # <a name="how-to-create-an-azure-application-offer-in-the-commercial-marketplace"></a>Så här skapar du ett erbjudande för Azure-program på den kommersiella Marketplace
@@ -25,7 +25,7 @@ Om du inte redan gjort det kan du läsa [planera ett Azure-program för den komm
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
 
-1. På den vänstra navigerings menyn väljer du **kommersiell Marketplace** -  >  **Översikt**.
+1. På den vänstra navigerings menyn väljer du **kommersiell Marketplace**-  >  **Översikt**.
 
 1. På sidan Översikt väljer du **+ nytt erbjudande**  >  **Azure Application**.
 
@@ -46,7 +46,7 @@ Om du inte redan gjort det kan du läsa [planera ett Azure-program för den komm
 
 ## <a name="configure-your-azure-application-offer-setup-details"></a>Konfigurera konfigurations information för Azure Application-erbjudandet
 
-På fliken **erbjudande konfiguration** , under **installations information** , väljer du om du vill konfigurera en testen het. Du kommer också att ansluta ditt CRM-system (Customer Relations hip Management) till ditt kommersiella Marketplace-erbjudande.
+På fliken **erbjudande konfiguration** , under **installations information**, väljer du om du vill konfigurera en testen het. Du kommer också att ansluta ditt CRM-system (Customer Relations hip Management) till ditt kommersiella Marketplace-erbjudande.
 
 ### <a name="enable-a-test-drive-optional"></a>Aktivera en testen het (valfritt)
 

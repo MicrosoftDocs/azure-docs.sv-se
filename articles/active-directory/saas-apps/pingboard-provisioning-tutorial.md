@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357903"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Pingboard för automatisk användar etablering
@@ -69,7 +69,7 @@ Det här avsnittet vägleder dig genom att ansluta din Azure AD till Pingboard-A
 
     b. Logga in på [Pingboard](https://pingboard.com/) med ditt administratörs konto.
 
-    c. Välj **Add-Ons**  >  **integrerings**  >  **Azure Active Directory** för tillägg.
+    c. Välj   >  **integrerings**  >  **Azure Active Directory** för tillägg.
 
     d. Gå till fliken **Konfigurera** och välj **Aktivera användar etablering från Azure**.
 

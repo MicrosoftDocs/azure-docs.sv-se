@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955130"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Python-kod exempel för Azure Kognitiv sökning
@@ -30,7 +30,7 @@ Lär dig mer om python-kod exemplen som demonstrerar funktionerna och arbets fl�
 
 Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hittar dessa exempel i [**Azure-SDK-för-python/tree/master/SDK/search/Azure-Search-Documents/samples**](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) på GitHub.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [Autentisera](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_authentication.py) | Visar hur du konfigurerar en klient och autentiserar till tjänsten. | 
 | [Index Create-Read-Update-Delete-åtgärder](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [Sök index](search-what-is-an-index.md). |

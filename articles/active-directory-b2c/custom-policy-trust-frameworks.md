@@ -11,15 +11,15 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592848"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Översikt över Azure AD B2C anpassad princip
 
-Anpassade principer är konfigurationsfiler som definierar beteendet för din Azure Active Directory B2C (Azure AD B2C)-klient. Medan [användar flöden](user-flow-overview.md) är fördefinierade i Azure AD B2C Portal för de vanligaste identitets uppgifterna kan anpassade principer redige ras fullständigt av en identitets utvecklare för att utföra många olika uppgifter.
+Anpassade principer är konfigurationsfiler som definierar beteendet för din Azure Active Directory B2C-klientorganisation (Azure AD B2C). Medan [användar flöden](user-flow-overview.md) är fördefinierade i Azure AD B2C Portal för de vanligaste identitets uppgifterna kan anpassade principer redige ras fullständigt av en identitets utvecklare för att utföra många olika uppgifter.
 
 En anpassad princip är helt konfigurerbar och princip driven. En anpassad princip dirigerar förtroende mellan entiteter i standard protokoll format, till exempel OpenID Connect, OAuth, SAML och några icke-standardvärden, t. ex. REST API-baserade system-till-system-anspråk. Ramverket skapar användarvänliga upplevelser med vita etiketter.
 
@@ -125,7 +125,7 @@ I följande diagram visas relationen mellan principfiler och de förlitande part
 
 ## <a name="guidance-and-best-practices"></a>Vägledning och metodtips
 
-### <a name="best-practices"></a>Rekommenderade metoder
+### <a name="best-practices"></a>Bästa praxis
 
 I en Azure AD B2C anpassad princip kan du integrera din egen affärs logik för att bygga de användar upplevelser du behöver och utöka funktionerna i tjänsten. Vi har en uppsättning av bästa praxis och rekommendationer för att komma igång.
 

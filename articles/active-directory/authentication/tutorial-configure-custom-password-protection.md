@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837897"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96741192"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Självstudie: Konfigurera anpassade förbjudna lösen ord för Azure Active Directory lösen ords skydd
 
@@ -72,7 +72,7 @@ Om du vill aktivera listan med anpassade förbjudna lösen ord och lägga till p
 
     * Listan med anpassade förbjudna lösen ord kan innehålla upp till 1000 villkor.
     * Den anpassade listan över blockerade lösen ord är Skift läges okänslig.
-    * Listan med anpassade förbjudna lösen ord kan vara en vanlig tecken ersättning, till exempel "o" och "0", eller "a" och "@".
+    * Listan med anpassade förbjudna lösen ord ser till att vanlig tecken ersättning används, till exempel "o" och "0", eller "a" och " \@ ".
     * Den minsta sträng längden är fyra tecken och det maximala värdet är 16 tecken.
 
     Ange egna anpassade lösen ord för att förbjuda detta, som visas i följande exempel
@@ -124,4 +124,4 @@ I den här självstudien har du aktiverat och konfigurerat anpassade lösen ords
 > * Testa lösen ords ändringar med ett blockerat lösen ord
 
 > [!div class="nextstepaction"]
-> [Aktivera riskfylld Azure AD-Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)
+> [Aktivera riskbaserad Azure AD-multifaktorautentisering](./tutorial-enable-azure-mfa.md)

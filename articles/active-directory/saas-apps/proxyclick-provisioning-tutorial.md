@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: f7d2a6f01e891a7fb1c14cde552d66679e474139
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359178"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Proxyclick för automatisk användar etablering
@@ -53,7 +53,7 @@ Innan du konfigurerar Proxyclick för automatisk användar etablering med Azure 
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan anger du **Proxyclick** , väljer **Proxyclick** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
+4. I sökrutan anger du **Proxyclick**, väljer **Proxyclick** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
 
     ![Proxyclick i resultat listan](common/search-new-app.png)
 

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: sethm
 ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019435"
 ---
 ## <a name="webapi-project"></a>WebAPI-projekt
 
 1. Öppna det **AppBackend** -projekt som du skapade i självstudien **meddela användare** i Visual Studio.
-2. I Notifications.cs ersätter du hela **meddelande** klassen med följande kod. Se till att ersätta plats hållarna med din anslutnings sträng (med fullständig åtkomst) för Notification Hub och hubbens namn. Du kan hämta dessa värden från [Azure Portal](https://portal.azure.com). Den här modulen representerar nu de olika säkra meddelanden som kommer att skickas. I en fullständig implementering kommer meddelandena att lagras i en databas. för enkelhetens skull lagrar vi dem i minnet.
+2. I Notifications. cs ersätter du hela **meddelande** klassen med följande kod. Se till att ersätta plats hållarna med din anslutnings sträng (med fullständig åtkomst) för Notification Hub och hubbens namn. Du kan hämta dessa värden från [Azure Portal](https://portal.azure.com). Den här modulen representerar nu de olika säkra meddelanden som kommer att skickas. I en fullständig implementering kommer meddelandena att lagras i en databas. för enkelhetens skull lagrar vi dem i minnet.
 
    ```csharp
     public class Notification
@@ -56,7 +56,7 @@ ms.locfileid: "96019435"
     }
     ```
 
-3. I NotificationsController.cs ersätter du koden inuti definitionen av **NotificationsController** -klassen med följande kod. Den här komponenten implementerar ett sätt för enheten att hämta meddelandet på ett säkert sätt och ger också ett sätt (i den här självstudien) att utlösa en säker push-överföring till dina enheter. Observera att när du skickar meddelandet till Notification Hub skickar vi bara ett RAW-meddelande med ID för meddelandet (och inget faktiskt meddelande):
+3. I NotificationsController. cs ersätter du koden inuti definitionen av **NotificationsController** -klassen med följande kod. Den här komponenten implementerar ett sätt för enheten att hämta meddelandet på ett säkert sätt och ger också ett sätt (i den här självstudien) att utlösa en säker push-överföring till dina enheter. Observera att när du skickar meddelandet till Notification Hub skickar vi bara ett RAW-meddelande med ID för meddelandet (och inget faktiskt meddelande):
 
    ```csharp
     public NotificationsController()

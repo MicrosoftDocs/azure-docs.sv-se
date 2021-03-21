@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010365"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Självstudie: utveckla ett ASP.NET Core MVC-webbprogram med Azure Cosmos DB med hjälp av .NET SDK
@@ -48,7 +48,7 @@ Den här självstudiekursen omfattar:
 
 Se till att du har följande resurser innan du följer anvisningarna i den här artikeln:
 
-* Ett aktivt Azure-konto. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+* Ett aktivt Azure-konto. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -88,7 +88,7 @@ Nu när vi har flest den ASP.NET Core MVC Framework-kod som vi behöver för den
 
 1. I **Solution Explorer** högerklickar du på projektet och väljer **Hantera NuGet-paket**.
 
-1. I **NuGet Package Manager** söker du efter och väljer **Microsoft. Azure. Cosmos**. Välj **Installera**.
+1. I **NuGet Package Manager** söker du efter och väljer **Microsoft. Azure. Cosmos**. Välj **installera**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Installera NuGet-paket":::
 
@@ -108,9 +108,9 @@ Nu ska vi lägga till modeller, vyer och styrenheter för det här MVC-programme
 
 1. I **Solution Explorer** högerklickar du på mappen **modeller** , väljer **Lägg till**  >  **klass**.
 
-1. I **Lägg till nytt objekt** namnger du den nya klassen *Item.cs* och väljer **Lägg till**.
+1. I **Lägg till nytt objekt** namnger du det nya klass *objekt. cs* och väljer **Lägg till**.
 
-1. Ersätt innehållet i *Item.cs* -klassen med följande kod:
+1. Ersätt innehållet i *Item. cs* -klassen med följande kod:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
@@ -221,7 +221,7 @@ Först lägger vi till en klass som innehåller logiken för att ansluta till oc
 
 1. Högerklicka på mappen **tjänster** , Välj **Lägg till**  >  **klass**. Ge den nya klassen namnet *CosmosDbService* och välj **Lägg till**.
 
-1. Ersätt innehållet i *CosmosDbService.cs* med följande kod:
+1. Ersätt innehållet i *CosmosDbService. cs* med följande kod:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
@@ -231,7 +231,7 @@ Först lägger vi till en klass som innehåller logiken för att ansluta till oc
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Öppna filen *startup.cs* i lösningen och Lägg till följande metod **InitializeCosmosClientInstanceAsync**, som läser konfigurationen och initierar klienten.
+1. Öppna filen *startup. cs* i lösningen och Lägg till följande metod **InitializeCosmosClientInstanceAsync**, som läser konfigurationen och initierar klienten.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -267,7 +267,7 @@ Först lägger vi till en klass som innehåller logiken för att ansluta till oc
 
 1. Namnge din nya kontrollants *ItemController*.
 
-1. Ersätt innehållet i *ItemController.cs* med följande kod:
+1. Ersätt innehållet i *ItemController. cs* med följande kod:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 

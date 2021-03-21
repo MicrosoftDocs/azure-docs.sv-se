@@ -37,7 +37,7 @@ Den maximala gränsen för strömnings enheter är vanligt vis 10. Kontakta oss 
 
 I tabellen beskrivs typerna:
 
-|Typ|Skalningsenheter|Description|
+|Typ|Skalningsenheter|Beskrivning|
 |--------|--------|--------|  
 |**Standard**|0|Standard slut punkten för direkt uppspelning är en **standard** typ – den kan ändras till Premium-typen genom att justera `scaleUnits` .|
 |**Premium**|> 0|**Premium** Slut punkter för direkt uppspelning passar för avancerade arbets belastningar och tillhandahåller dedikerad och skalbar bandbredds kapacitet. Du flyttar till en **Premium** typ genom att justera `scaleUnits` (enheter för strömning). `scaleUnits` ge dig dedikerad utgående kapacitet som kan köpas i steg om 200 Mbit/s. När du använder **Premium** -typen ger varje aktive rad enhet ytterligare bandbredds kapacitet till appen. |

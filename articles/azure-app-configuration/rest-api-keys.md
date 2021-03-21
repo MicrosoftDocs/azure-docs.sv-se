@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 65ca190d7fbd6d8d4df473fbe2112eafbd031fde
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932548"
 ---
 # <a name="keys"></a>Nycklar
@@ -33,7 +33,7 @@ Viktiga resurser har stöd för följande åtgärd:
 
 För alla åtgärder `name` är en valfri filter parameter. Om det utelämnas, betyder det vilken nyckel som *helst* .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780962"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikering till Azure SQL Database
@@ -55,11 +55,11 @@ Det finns olika [typer av replikering](/sql/relational-databases/replication/typ
 | Replikering | Azure SQL Database | Hanterad Azure SQL-instans |
 | :----| :------------- | :--------------- |
 | [**Standard transaktion**](/sql/relational-databases/replication/transactional/transactional-replication) | Ja (endast som prenumerant) | Ja | 
-| [**Ögonblicksbild**](/sql/relational-databases/replication/snapshot-replication) | Ja (endast som prenumerant) | Ja|
-| [**Sammanfoga replikering**](/sql/relational-databases/replication/merge/merge-replication) | Nej | Nej|
-| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nej | Nej|
-| [**Dubbelriktad**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nej | Ja|
-| [**Uppdaterings bara prenumerationer**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nej | Nej|
+| [**Ögonblicks bild**](/sql/relational-databases/replication/snapshot-replication) | Ja (endast som prenumerant) | Ja|
+| [**Sammanfoga replikering**](/sql/relational-databases/replication/merge/merge-replication) | Inga | Inga|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Inga | Inga|
+| [**Dubbelriktad**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Inga | Ja|
+| [**Uppdaterings bara prenumerationer**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Inga | Inga|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -127,7 +127,7 @@ Följande alternativ stöds inte för Azure SQL Database prenumerationer:
 Skapa en publikation och en utgivarinitierad prenumeration. Mer information finns i:
   
 - [Skapa en publikation](/sql/relational-databases/replication/publish/create-a-publication)
-- [Skapa en push-prenumeration](/sql/relational-databases/replication/create-a-push-subscription/) med hjälp av Server namnet som prenumerant (till exempel **N'azuresqldbdns. Database. Windows. net** ) och Azure SQL Database namn som mål databas (till exempel **AdventureWorks** ).  
+- [Skapa en push-prenumeration](/sql/relational-databases/replication/create-a-push-subscription/) med hjälp av Server namnet som prenumerant (till exempel **N'azuresqldbdns. Database. Windows. net**) och Azure SQL Database namn som mål databas (till exempel **AdventureWorks**).  
 
 ## <a name="see-also"></a>Se även  
 

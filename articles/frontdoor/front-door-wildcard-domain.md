@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94425770"
 ---
 # <a name="wildcard-domains"></a>Domäner med jokertecken
@@ -67,7 +67,7 @@ WAF-principer kan kopplas till domäner med jokertecken, ungefär som andra dom�
 
 Om du inte vill att en WAF-princip ska köras för en under domän kan du skapa en tom WAF-princip utan några hanterade eller anpassade rulesets.
 
-## <a name="routing-rules"></a>Hanteringsregler
+## <a name="routing-rules"></a>Dirigeringsregler
 
 När du konfigurerar en regel för routning kan du välja en domän med jokertecken som en klient dels värd. Du kan också ha olika väg beteenden för domäner och under domäner med jokertecken. Som det beskrivs i [hur Azure-frontend använder väg matchning](front-door-route-matching.md), väljs den mest exakta matchningen för domänen över olika regler för routning vid körning.
 

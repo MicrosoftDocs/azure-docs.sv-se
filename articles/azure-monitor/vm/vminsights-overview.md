@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
 ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046422"
 ---
 # <a name="overview-of-vm-insights"></a>Översikt över VM Insights
@@ -30,7 +30,7 @@ VM Insights lagrar data i Azure Monitor loggar, vilket gör det möjligt att lev
 ![Den virtuella datorns insikter perspektiv i Azure Portal](media/vminsights-overview/vminsights-azmon-directvm.png)
 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Det finns ingen direkt kostnad för VM-insikter, men du debiteras för aktiviteten i Log Analytics-arbetsytan. Utifrån priserna som publiceras på [sidan Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/)faktureras VM Insights för:
 
 - Data som matats in från agenter och lagras i arbets ytan.

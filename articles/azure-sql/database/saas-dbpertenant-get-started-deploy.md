@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780843"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Distribuera och utforska en SaaS-app med flera innehavare som använder mönstret för databas per klient organisation med Azure SQL Database
@@ -32,7 +32,7 @@ I den här guiden lär du dig:
 > - Så här distribuerar du Wingtip SaaS-programmet.
 > - Var du kan hämta program käll koden och hanterings skripten.
 > - Om servrar, pooler och databaser som utgör appen.
-> - Hur klienter mappas till sina data med *katalogen* .
+> - Hur klienter mappas till sina data med *katalogen*.
 > - Så här etablerar du en ny klient.
 > - Övervaka klient aktivitet i appen.
 
@@ -48,14 +48,14 @@ Se till att Azure PowerShell är installerat för att slutföra den här självs
 
 I stegen i det här avsnittet anger du ett användar värde som används för att se till att resurs namn är globalt unika. Du anger också ett namn för resurs gruppen som innehåller alla resurser som har skapats av en distribution av appen. För en fiktiv person med namnet Ann Finley föreslår vi:
 
-- **Användare** : *Af1* består av Ann-Finley initialer plus en siffra. Om du distribuerar appen en andra gång ska du använda ett annat värde. Ett exempel är AF2.
-- **Resurs grupp** : *Wingtip-DPT-AF1* anger att det här är en app för databas per klient. Lägg till användar namnet AF1 för att korrelera resurs grupps namnet med namnen på de resurser som den innehåller.
+- **Användare**: *Af1* består av Ann-Finley initialer plus en siffra. Om du distribuerar appen en andra gång ska du använda ett annat värde. Ett exempel är AF2.
+- **Resurs grupp**: *Wingtip-DPT-AF1* anger att det här är en app för databas per klient. Lägg till användar namnet AF1 för att korrelera resurs grupps namnet med namnen på de resurser som den innehåller.
 
 Välj dina namn nu och skriv ned dem.
 
 ### <a name="steps"></a>Steg
 
-1. Om du vill öppna distributions mal len Wingtip biljetter SaaS Database-per-innehavare i Azure Portal väljer du **distribuera till Azure** .
+1. Om du vill öppna distributions mal len Wingtip biljetter SaaS Database-per-innehavare i Azure Portal väljer du **distribuera till Azure**.
 
    [![Bild som visar en knapp med etiketten "distribuera till Azure".](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
@@ -64,15 +64,15 @@ Välj dina namn nu och skriv ned dem.
     > [!IMPORTANT]
     > Vissa autentiserings-och Server brand väggar är avsiktligt oskyddade i demonstrations syfte. Vi rekommenderar att du skapar en ny resurs grupp. Använd inte befintliga resurs grupper, servrar eller pooler. Använd inte det här programmet, skripten eller några distribuerade resurser för produktion. Ta bort den här resurs gruppen när du är klar med programmet för att stoppa relaterad fakturering.
 
-    - **Resurs grupp** : Välj **Skapa ny** och ange det unika namn som du valde tidigare för resurs gruppen.
-    - **Plats** : Välj en plats i den nedrullningsbara listan.
-    - **Användare** : Använd användar namn svärdet som du valde tidigare.
+    - **Resurs grupp**: Välj **Skapa ny** och ange det unika namn som du valde tidigare för resurs gruppen.
+    - **Plats**: Välj en plats i den nedrullningsbara listan.
+    - **Användare**: Använd användar namn svärdet som du valde tidigare.
 
 1. Distribuera programmet.
 
     a. Välj att godkänna de allmänna villkoren.
 
-    b. Välj **Köp** .
+    b. Välj **Köp**.
 
 1. Om du vill övervaka distributions status väljer du **meddelanden** (klock ikonen till höger om sökrutan). Att distribuera Wingtip-biljetterna SaaS-appen tar cirka fem minuter.
 
@@ -86,10 +86,10 @@ När programmet distribueras kan du ladda ned käll koden och hanterings skripte
 > Körbart innehåll (skript och DLL-filer) kan blockeras av Windows när. zip-filer laddas ned från en extern källa och extraheras. Följ stegen för att avblockera. zip-filen innan du extraherar skripten. Om du avblockerar ser du till att skripten får köras.
 
 1. Bläddra till [WingtipTicketsSaaS-DbPerTenant GitHub-lagrings platsen][github-wingtip-dpt].
-1. Välj **Klona eller ladda ned** .
+1. Välj **Klona eller ladda ned**.
 1. Välj **Hämta zip** och spara sedan filen.
-1. Högerklicka på **WingtipTicketsSaaS-DbPerTenant-master.zip** -filen och välj sedan **Egenskaper** .
-1. På fliken **Allmänt** väljer du **avblockera**  >  **Använd** .
+1. Högerklicka på **WingtipTicketsSaaS-DbPerTenant-master.zip** -filen och välj sedan **Egenskaper**.
+1. På fliken **Allmänt** väljer du **avblockera**  >  **Använd**.
 1. Välj **OK** och extrahera filerna
 
 Skript finns på... \\ WingtipTicketsSaaS – DbPerTenant-Master \\ Learning moduless-mappen.
@@ -130,7 +130,7 @@ Wingtip-programmet använder [*Azure Traffic Manager*](../../traffic-manager/tra
 
     | URL-del        | Beskrivning       |
     | :-------------- | :---------------- |
-    | Events. Wingtip-DPT | Händelse delarna i Wingtip-appen.<br /><br /> *-DPT* särskiljer implementeringen av en *databas per klient* för Wingtip-biljetter från andra implementeringar. Exempel är implementeringar av *en enda* app-per-klient ( *-sa* ) eller flera *klient databaser* ( *-MT* ). |
+    | Events. Wingtip-DPT | Händelse delarna i Wingtip-appen.<br /><br /> *-DPT* särskiljer implementeringen av en *databas per klient* för Wingtip-biljetter från andra implementeringar. Exempel är implementeringar av *en enda* app-per-klient (*-sa*) eller flera *klient databaser* (*-MT*). |
     | . *&lt; användare &gt;* | *AF1* i exemplet. |
     | . trafficmanager.net/ | Traffic Manager, bas-URL. |
     | fabrikamjazzclub | Identifierar klienten som heter Fabrikam jazz klubb. |
@@ -139,7 +139,7 @@ Wingtip-programmet använder [*Azure Traffic Manager*](../../traffic-manager/tra
 - Klient organisationens namn är parsat från URL: en av events-appen.
 - Klient namnet används för att skapa en nyckel.
 - Nyckeln används för att komma åt katalogen för att hämta platsen för klientens databas.
-  - Katalogen implementeras med hjälp av *Shard Map Management* .
+  - Katalogen implementeras med hjälp av *Shard Map Management*.
 - Events Hub använder utökade metadata i katalogen för att skapa sidan med webb adresser för List-of-Events för varje klient.
 
 I en produktions miljö kan du vanligt vis skapa en CNAME DNS-post för att [*peka företagets Internet domän*](../../traffic-manager/traffic-manager-point-internet-domain.md) till Traffic Manager DNS-namnet.
@@ -181,9 +181,9 @@ Om du vill kontrol lera och övervaka bakgrunds jobben använder du följande cm
 3. *LoadGenerator.ps1* startar ett bakgrunds-PowerShell-jobb för varje klient databas:
 
     - Som standard körs bakgrunds jobben i 120 minuter.
-    - Varje jobb orsakar en CPU-baserad belastning på en klient databas genom att köra *sp_CpuLoadGenerator* . Belastningens intensitet och varaktighet varierar beroende på `$DemoScenario` .
+    - Varje jobb orsakar en CPU-baserad belastning på en klient databas genom att köra *sp_CpuLoadGenerator*. Belastningens intensitet och varaktighet varierar beroende på `$DemoScenario` .
     - *sp_CpuLoadGenerator* slingor runt en SQL SELECT-instruktion som orsakar hög CPU-belastning. Tidsintervallet mellan problem med SELECT varierar enligt parameter värden för att skapa en kontrollerbar CPU-belastning. Belastnings nivåer och intervall är slumpmässiga för att simulera mer realistiska belastningar.
-    - Den här. SQL-filen lagras *under \\ WingtipTenantDB \\ dbo \\ StoredProcedures* .
+    - Den här. SQL-filen lagras *under \\ WingtipTenantDB \\ dbo \\ StoredProcedures*.
 
 4. Om `$OneTime = $false` inläsnings generatorn startar bakgrunds jobben och fortsätter att köras. Var tionde sekund övervakar den för alla nya klienter som är etablerade. Om du ställer in `$OneTime = $true` startar LoadGenerator bakgrunds jobben och slutar sedan att köra i förgrunden. I den här självstudien lämnar du `$OneTime = $false` .
 
@@ -200,7 +200,7 @@ Innan du fortsätter med nästa avsnitt måste du lämna belastnings generatorn 
 Den första distributionen skapar tre exempel klienter. Nu skapar du en annan klient för att se hur det distribuerade programmet påverkar. I Wingtip-appen förklaras arbets flödet för att etablera nya klienter i [själv studie kursen om etablering och katalog](saas-dbpertenant-provision-and-catalog.md). I det här steget skapar du en ny klient, som tar mindre än en minut.
 
 1. Öppna en ny PowerShell ISE.
-2. Öppna... \\ Lär dig Modules\Provision och katalog \\ *Demo-ProvisionAndCatalog.ps1* .
+2. Öppna... \\ Lär dig Modules\Provision och katalog \\ *Demo-ProvisionAndCatalog.ps1*.
 3. Tryck på F5 för att köra skriptet. Lämna standardvärdena för tillfället.
 
    > [!NOTE]
@@ -246,7 +246,7 @@ Bläddra till servern **tenants1-DPT- &lt; User &gt;** och välj **Pool1** för 
 
    ![Övervaka pool](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
-- Det första diagrammet, märkt **resursutnyttjande** , visar användning av pool-eDTU.
+- Det första diagrammet, märkt **resursutnyttjande**, visar användning av pool-eDTU.
 - Det andra diagrammet visar eDTU-användning för de fem mest aktiva databaserna i poolen.
 
 De två diagrammen visar att elastiska pooler och SQL Database lämpar sig väl för oförutsägbara SaaS program arbets belastningar. Diagrammen visar att fyra databaser är varje burst-överföring till så mycket som 40 eDTU: er och att alla databaser är smidiga att stödjas av en 50-eDTU-pool. Poolen 50-eDTU har stöd för även kraftigare arbets belastningar. Om databaserna är etablerade som enskilda databaser måste var och en vara en S2 (50 DTU) för att stödja burst-överföringarna. Kostnaden för fyra enkla S2-databaser är nästan tre gånger priset för poolen. I verkliga situationer kan SQL Database kunder köra upp till 500 databaser i 200 eDTU-pooler. Mer information finns i [själv studie kursen om prestanda övervakning](saas-dbpertenant-performance-monitoring.md).
@@ -265,7 +265,7 @@ I den här guiden har du lärt dig:
 > [!div class="checklist"]
 > - Så här distribuerar du Wingtip Ticket SaaS-program.
 > - Om servrar, pooler och databaser som utgör appen.
-> - Hur klienter mappas till sina data med *katalogen* .
+> - Hur klienter mappas till sina data med *katalogen*.
 > - Hur du etablerar nya klienter.
 > - Så här visar du användningen av poolen för att övervaka klient aktivitet.
 > - Så här tar du bort exempel resurser för att stoppa relaterad fakturering.

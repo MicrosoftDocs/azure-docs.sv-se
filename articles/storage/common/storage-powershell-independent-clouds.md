@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783580"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Hantera lagring i Azures oberoende moln med PowerShell
@@ -61,7 +61,7 @@ Get-AzLocation | select Location, DisplayName
 
 I följande tabell visas de platser som returneras för det tyska molnet.
 
-|Plats | Visningsnamn |
+|Location | Visningsnamn |
 |----|----|
 | `germanycentral` | Tyskland, centrala|
 | `germanynortheast` | Tyskland, nordöstra |
@@ -69,7 +69,7 @@ I följande tabell visas de platser som returneras för det tyska molnet.
 
 ## <a name="endpoint-suffix"></a>Slut punkts suffix
 
-Slut punktens suffix för var och en av dessa miljöer skiljer sig från den offentliga Azure-slutpunkten. Till exempel är BLOB Endpoint-suffixet för Azure Public **blob.Core.Windows.net** . För det offentliga molnet är BLOB-slutpunktens suffix **blob.Core.usgovcloudapi.net** .
+Slut punktens suffix för var och en av dessa miljöer skiljer sig från den offentliga Azure-slutpunkten. Till exempel är BLOB Endpoint-suffixet för Azure Public **blob.Core.Windows.net**. För det offentliga molnet är BLOB-slutpunktens suffix **blob.Core.usgovcloudapi.net**.
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Hämta slut punkt med Get-AzEnvironment
 
@@ -85,7 +85,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Det här kommandot returnerar följande resultat.
 
-| Namn| StorageEndpointSuffix|
+| Name| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -100,7 +100,7 @@ Get-AzEnvironment -Name AzureGermanCloud
 
 Resultatet liknar följande värden:
 
-|Egenskapsnamn|Värde|
+|Egenskapens namn|Värde|
 |----|----|
 | Namn | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |

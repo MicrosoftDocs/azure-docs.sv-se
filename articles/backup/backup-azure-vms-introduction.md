@@ -4,10 +4,10 @@ description: I den här artikeln lär du dig hur tjänsten Azure Backup säkerhe
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733578"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>En översikt över säkerhets kopiering av virtuella Azure-datorer
@@ -89,7 +89,7 @@ I följande tabell förklaras de olika typerna av ögonblicks bilds konsekvens:
 
 **Att tänka på** | **Information**
 --- | ---
-**Diskdefragmenter** | Säkerhets kopiering av virtuella dator diskar är parallell. Om till exempel en virtuell dator har fyra diskar, försöker säkerhets kopierings tjänsten säkerhetskopiera alla fyra diskarna parallellt. Backup är stegvis (endast ändrade data).
+**Disk** | Säkerhets kopiering av virtuella dator diskar är parallell. Om till exempel en virtuell dator har fyra diskar, försöker säkerhets kopierings tjänsten säkerhetskopiera alla fyra diskarna parallellt. Backup är stegvis (endast ändrade data).
 **Schemaläggning** |  Du kan minska säkerhets kopierings trafiken genom att säkerhetskopiera olika virtuella datorer vid olika tidpunkter på dagen och se till att tiderna inte överlappar varandra. Säkerhetskopiering av virtuella datorer samtidigt orsakar trafikstockningar.
 **Förbereder säkerhets kopiering** | Tänk på den tid som krävs för att förbereda säkerhets kopieringen. Förberedelsetiden omfattar installation eller uppdatering av säkerhetskopieringstillägget och utlösning av en ögonblicksbild enligt säkerhetskopieringsschemat.
 **Data överföring** | Ta reda på hur lång tid det tar för Azure Backup att identifiera de stegvisa ändringarna från den tidigare säkerhets kopian.<br/><br/> I en stegvis säkerhetskopiering fastställer Azure Backup ändringarna genom att beräkna kontrollsumman för blocket. Om ett block har ändrats markeras det för överföring till valvet. Tjänsten analyserar de identifierade blocken för att försöka minimera mängden data som ska överföras. När du har utvärderat alla ändrade block överför Azure Backup ändringarna till valvet.<br/><br/> Det kan finnas en fördröjning mellan att ta ögonblicksbilden och kopiera den till valvet. Vid hög belastnings tider kan det ta upp till åtta timmar innan ögonblicks bilderna överförs till valvet. Säkerhetskopieringstiden för en virtuell dator är mindre än 24 timmar för den dagliga säkerhetskopieringen.
@@ -121,7 +121,7 @@ När du konfigurerar säkerhetskopieringar av virtuella datorer föreslår vi at
 - Om du återställer virtuella datorer från ett enda valv rekommenderar vi starkt att du använder olika [generella v2-lagrings konton](../storage/common/storage-account-upgrade.md) för att säkerställa att mål lagrings kontot inte får någon begränsning. Till exempel måste varje virtuell dator ha ett annat lagrings konto. Om till exempel 10 virtuella datorer återställs använder du 10 olika lagrings konton.
 - För säkerhets kopiering av virtuella datorer som använder Premium Storage med omedelbar återställning rekommenderar vi att du allokerar *50%* ledigt utrymme för det totala allokerade lagrings utrymmet, vilket **endast** krävs för den första säkerhets kopieringen. Det lediga utrymmet på 50% är inte ett krav på säkerhets kopieringar när den första säkerhets kopieringen har slutförts
 - Gränsen för antalet diskar per lagringskonto är i förhållande till hur mycket diskarna används av programmen som körs på en virtuell dator med infrastruktur som en tjänst (IaaS). Som allmän praxis, om 5 till 10 diskar eller mer finns på ett enda lagringskonto balanserar du belastningen genom att flytta några diskar till separata lagringskonton.
-- Om du vill återställa virtuella datorer med hanterade diskar med hjälp av PowerShell anger du den ytterligare parametern **_TargetResourceGroupName_* _ för att ange resurs gruppen som de hanterade diskarna ska återställas till. [Läs mer här](./backup-azure-vms-automation.md#restore-managed-disks).
+- Om du vill återställa virtuella datorer med hanterade diskar med hjälp av PowerShell anger du den ytterligare parametern ***TargetResourceGroupName*** för att ange den resurs grupp som hanterade diskar ska återställas till. [Läs mer här](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Kostnader för säkerhets kopiering
 
@@ -131,13 +131,13 @@ Faktureringen startar inte förrän den första slutförda säkerhets kopieringe
 
 Faktureringen för en angiven virtuell dator stoppar endast om skyddet har stoppats och alla säkerhetskopierade data har tagits bort. När skyddet stoppas och det inte finns några aktiva säkerhets kopierings jobb blir storleken på den senaste virtuella säkerhets kopian den skyddade instans storleken som används för den månatliga fakturan.
 
-Storleken på den skyddade instans storleken baseras på _actual * storleken på den virtuella datorn. Storleken på den virtuella datorn är summan av alla data på den virtuella datorn, förutom den tillfälliga lagringen. Prissättningen baseras på faktiska data som lagras på data diskarna, inte på den högsta storlek som stöds för varje datadisk som är ansluten till den virtuella datorn.
+Storleken på den skyddade instans storleken baseras på den *faktiska* storleken på den virtuella datorn. Storleken på den virtuella datorn är summan av alla data på den virtuella datorn, förutom den tillfälliga lagringen. Prissättningen baseras på faktiska data som lagras på data diskarna, inte på den högsta storlek som stöds för varje datadisk som är ansluten till den virtuella datorn.
 
 På samma sätt baseras reserv lagrings fakturan på den mängd data som lagras i Azure Backup, vilket är summan av faktiska data i varje återställnings punkt.
 
 Ta till exempel en a2-standard virtuell dator som har två ytterligare data diskar med en maximal storlek på 32 TB. I följande tabell visas de faktiska data som lagras på var och en av dessa diskar:
 
-**Diskdefragmenter** | **Max storlek** | **Faktiska data finns**
+**Disk** | **Max storlek** | **Faktiska data finns**
 --- | --- | ---
 OS-disk | 32 TB | 17 GB
 Lokal/tillfällig disk | 135 GB | 5 GB (ingår inte i säkerhets kopian)

@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/20/2020
 ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992037"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Företags säkerhet och styrning för Azure Machine Learning
@@ -97,7 +97,7 @@ När du distribuerar modeller som webb tjänster kan du Aktivera TLS (Transport 
 
 ## <a name="vulnerability-scanning"></a>Sårbarhetsgenomsökning
 
-[Azure Security Center](../security-center/security-center-introduction.md) ger enhetlig säkerhets hantering och Avancerat skydd för arbets belastningar i hybrid moln. För Azure Machine Learning bör du Aktivera genomsökning av [Azure Container Registry](../container-registry/container-registry-intro.md) resurs-och Azure Kubernetes-tjänsteresurser. Mer information finns i [Azure Container Registry avbildnings genomsökning av Security Center](../security-center/defender-for-container-registries-introduction.md) och [integrering med Azure Kubernetes Services med Security Center](../security-center/defender-for-kubernetes-introduction.md).
+[Azure Security Center](../security-center/security-center-introduction.md) erbjuder enhetlig säkerhetshantering och avancerat skydd mot hot i olika hybridmolnarbetsbelastningar. För Azure Machine Learning bör du Aktivera genomsökning av [Azure Container Registry](../container-registry/container-registry-intro.md) resurs-och Azure Kubernetes-tjänsteresurser. Mer information finns i [Azure Container Registry avbildnings genomsökning av Security Center](../security-center/defender-for-container-registries-introduction.md) och [integrering med Azure Kubernetes Services med Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="audit-and-manage-compliance"></a>Granska och hantera efterlevnad
 

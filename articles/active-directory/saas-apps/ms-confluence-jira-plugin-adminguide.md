@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359165"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA och Confluence admin guide för Azure Active Directory
@@ -107,59 +107,59 @@ Följande bild visar konfigurations skärmen i både JIRA och Confluence:
 
 ![Konfigurations skärm för plugin-programmet](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **URL för metadata** : URL: en för att hämta federationsmetadata från Azure AD.
+* **URL för metadata**: URL: en för att hämta federationsmetadata från Azure AD.
 
-* **Identifierare** : den URL som Azure AD använder för att validera källan för begäran. Den mappas till **ID** -elementet i Azure AD. Plugin-programmet härleder automatiskt denna URL som https:// *\<domain:port>* /.
+* **Identifierare**: den URL som Azure AD använder för att validera källan för begäran. Den mappas till **ID** -elementet i Azure AD. Plugin-programmet härleder automatiskt denna URL som https:// *\<domain:port>* /.
 
-* **Svars-URL** : svars-URL: en i din identitets leverantör (IdP) som initierar SAML-inloggningen. Den mappas till **svars-URL** -elementet i Azure AD. Plugin-programmet härleder automatiskt denna URL som https:// *\<domain:port>* /plugins/servlet/SAML/auth.
+* **Svars-URL**: svars-URL: en i din identitets leverantör (IdP) som initierar SAML-inloggningen. Den mappas till **svars-URL** -elementet i Azure AD. Plugin-programmet härleder automatiskt denna URL som https:// *\<domain:port>* /plugins/servlet/SAML/auth.
 
-* **Inloggnings-URL** : inloggnings-URL: en i din IDP som initierar SAML-inloggningen. Den mappas till **inloggnings** elementet i Azure AD. Plugin-programmet härleder automatiskt denna URL som https:// *\<domain:port>* /plugins/servlet/SAML/auth.
+* **Inloggnings-URL**: inloggnings-URL: en i din IDP som initierar SAML-inloggningen. Den mappas till **inloggnings** elementet i Azure AD. Plugin-programmet härleder automatiskt denna URL som https:// *\<domain:port>* /plugins/servlet/SAML/auth.
 
-* **IDP entitets-ID** : entitets-ID: t som din IDP använder. Den här rutan fylls i när URL: en för metadata matchas.
+* **IDP entitets-ID**: entitets-ID: t som din IDP använder. Den här rutan fylls i när URL: en för metadata matchas.
 
-* **Inloggnings-URL** : inloggnings-URL: en från din IDP. Den här rutan fylls i från Azure AD när URL: en för metadata matchas.
+* **Inloggnings-URL**: inloggnings-URL: en från din IDP. Den här rutan fylls i från Azure AD när URL: en för metadata matchas.
 
-* **Utloggnings-URL** : utloggnings-URL: en från din IDP. Den här rutan fylls i från Azure AD när URL: en för metadata matchas.
+* **Utloggnings-URL**: utloggnings-URL: en från din IDP. Den här rutan fylls i från Azure AD när URL: en för metadata matchas.
 
-* **X. 509-certifikat** : ditt IDP x. 509-certifikat. Den här rutan fylls i från Azure AD när URL: en för metadata matchas.
+* **X. 509-certifikat**: ditt IDP x. 509-certifikat. Den här rutan fylls i från Azure AD när URL: en för metadata matchas.
 
-* **Namn på inloggnings knapp** : namnet på den inloggnings knapp som organisationen vill att användarna ska se på inloggnings sidan.
+* **Namn på inloggnings knapp**: namnet på den inloggnings knapp som organisationen vill att användarna ska se på inloggnings sidan.
 
-* **SAML-användar-ID-platser** : platsen där användar-ID för JIRA eller Confluence förväntas i SAML-svaret. Det kan vara i **NameID** eller i ett anpassat attributnamn.
+* **SAML-användar-ID-platser**: platsen där användar-ID för JIRA eller Confluence förväntas i SAML-svaret. Det kan vara i **NameID** eller i ett anpassat attributnamn.
 
-* **Attributnamn** : namnet på attributet där användar-ID förväntas.
+* **Attributnamn**: namnet på attributet där användar-ID förväntas.
 
-* **Aktivera identifiering av start sfär** : valet att göra om företaget använder Active Directory Federation Services (AD FS) (AD FS)-baserad inloggning.
+* **Aktivera identifiering av start sfär**: valet att göra om företaget använder Active Directory Federation Services (AD FS) (AD FS)-baserad inloggning.
 
-* **Domän namn** : domän namnet om inloggning är AD FS baserat.
+* **Domän namn**: domän namnet om inloggning är AD FS baserat.
 
-* **Aktivera enkel inloggning** : valet att göra om du vill logga ut från Azure AD när en användare loggar ut från JIRA eller Confluence.
+* **Aktivera enkel inloggning**: valet att göra om du vill logga ut från Azure AD när en användare loggar ut från JIRA eller Confluence.
 
 ## <a name="troubleshooting"></a>Felsökning
 
-* **Du får flera certifikat fel** : Logga in på Azure AD och ta bort de flera certifikat som är tillgängliga mot appen. Se till att det bara finns ett certifikat.
+* **Du får flera certifikat fel**: Logga in på Azure AD och ta bort de flera certifikat som är tillgängliga mot appen. Se till att det bara finns ett certifikat.
 
-* **Ett certifikat håller på att gå ut i Azure AD** :-tillägg tar hand om automatisk förnyelse av certifikatet. När ett certifikat håller på att gå ut måste ett nytt certifikat markeras som aktiva och oanvända certifikat ska tas bort. När en användare försöker logga in på JIRA i det här scenariot, hämtar plugin-programmet och sparar det nya certifikatet.
+* **Ett certifikat håller på att gå ut i Azure AD**:-tillägg tar hand om automatisk förnyelse av certifikatet. När ett certifikat håller på att gå ut måste ett nytt certifikat markeras som aktiva och oanvända certifikat ska tas bort. När en användare försöker logga in på JIRA i det här scenariot, hämtar plugin-programmet och sparar det nya certifikatet.
 
-* **Du vill inaktivera WebSudo (inaktivera den säkra administratörs sessionen)** :
+* **Du vill inaktivera WebSudo (inaktivera den säkra administratörs sessionen)**:
 
   * För JIRA är säkra administratörs sessioner (det vill säga lösen ords bekräftelse före åtkomst till administrations funktioner) aktiverade som standard. Om du vill ta bort den här möjligheten i JIRA-instansen anger du följande rad i JIRA-config. Properties-filen: `jira.websudo.is.disabled = true`
 
   * För Confluence följer du stegen på [Support webbplatsen för Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 
-* **Fält som ska fyllas i av metadata-URL: en är inte ifyllda** :
+* **Fält som ska fyllas i av metadata-URL: en är inte ifyllda**:
 
   * Kontrol lera att webb adressen är korrekt. Kontrol lera om du har mappat rätt klient-och app-ID.
 
   * Ange webb adressen i en webbläsare och se om du får XML-metadata för federationsmetadata.
 
-* **Det finns ett internt Server fel** : Granska loggarna i logg katalogen i installationen. Om du får ett fel meddelande när användaren försöker logga in med hjälp av Azure AD SSO kan du dela loggarna med support teamet.
+* **Det finns ett internt Server fel**: Granska loggarna i logg katalogen i installationen. Om du får ett fel meddelande när användaren försöker logga in med hjälp av Azure AD SSO kan du dela loggarna med support teamet.
 
-* **Fel meddelandet "Det gick inte att hitta användar-ID" visas när användaren försöker logga in** : skapa användar-ID: t i JIRA eller Confluence.
+* **Fel meddelandet "Det gick inte att hitta användar-ID" visas när användaren försöker logga in**: skapa användar-ID: t i JIRA eller Confluence.
 
-* **Det finns ett "app hittades inte"-fel i Azure AD** : se om rätt URL är mappad till appen i Azure AD.
+* **Det finns ett "app hittades inte"-fel i Azure AD**: se om rätt URL är mappad till appen i Azure AD.
 
-* **Du behöver support** : kontakta [Azure AD SSO integration-teamet](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Teamet svarar inom 24-48 arbets tid.
+* **Du behöver support**: kontakta [Azure AD SSO integration-teamet](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Teamet svarar inom 24-48 arbets tid.
 
   Du kan också utlösa ett support ärende med Microsoft via Azure Portal-kanalen.
 

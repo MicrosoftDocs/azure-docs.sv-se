@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358220"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Concur för automatisk användar etablering
@@ -58,7 +58,7 @@ Om du vill aktivera appar i utgifts tjänsten måste det finnas en korrekt konfi
 
 Concur-konsulter eller klient administratören måste skapa en distinkt profil för webb tjänst administratörer och klient administratören måste använda den här profilen för funktionerna för webb tjänst administratören (till exempel aktivera appar). De här profilerna måste hållas åtskilda från klient administratörens dagliga T&E admin-profil (T&E admin-profilen ska inte ha WSAdmin-rollen tilldelad).
 
-När du skapar profilen som ska användas för att aktivera appen anger du klient administratörens namn i användar profil fälten. Detta tilldelar ägarskapet till profilen. När en eller flera profiler har skapats måste klienten logga in med den här profilen för att klicka på knappen " *Aktivera* " för en partner app i menyn webb tjänster.
+När du skapar profilen som ska användas för att aktivera appen anger du klient administratörens namn i användar profil fälten. Detta tilldelar ägarskapet till profilen. När en eller flera profiler har skapats måste klienten logga in med den här profilen för att klicka på knappen "*Aktivera*" för en partner app i menyn webb tjänster.
 
 Av följande skäl bör den här åtgärden inte utföras med den profil som de använder för normal T&E-administration.
 

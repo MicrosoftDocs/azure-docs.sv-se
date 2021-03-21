@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500894"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Hitta och Använd prestanda rekommendationer
@@ -25,7 +25,7 @@ Du kan använda Azure Portal för att hitta prestanda rekommendationer som kan o
 
 ## <a name="viewing-recommendations"></a>Visa rekommendationer
 
-Om du vill visa och tillämpa prestanda rekommendationer behöver du rätt Azure RBAC-behörighet [(rollbaserad åtkomst kontroll)](../../role-based-access-control/overview.md) i Azure. **Reader** Du måste ha behörighet för **SQL DB-deltagare** för att kunna visa rekommendationer och **ägare**, behörigheter för **SQL DB-deltagare** krävs för att utföra åtgärder. Skapa eller släpp index och Avbryt skapandet av index.
+Om du vill visa och tillämpa prestanda rekommendationer behöver du rätt Azure RBAC-behörighet [(rollbaserad åtkomst kontroll)](../../role-based-access-control/overview.md) i Azure. Du måste ha behörighet för **SQL DB-deltagare** för att kunna visa rekommendationer och **ägare**, behörigheter för **SQL DB-deltagare** krävs för att utföra åtgärder. Skapa eller släpp index och Avbryt skapandet av index.
 
 Använd följande steg för att hitta prestanda rekommendationer på Azure Portal:
 
@@ -39,10 +39,10 @@ Prestanda rekommendationer visas i tabellen som liknar den som visas på följan
 
 Rekommendationerna sorteras efter deras potentiella påverkan på prestanda i följande kategorier:
 
-| Påverkan | Description |
+| Påverkan | Beskrivning |
 |:--- |:--- |
-| Hög |Rekommendationer för hög påverkan bör ge den mest betydande prestanda påverkan. |
-| Medium |Rekommendationer för medelhög påverkan bör förbättra prestanda, men inte i stor utsträckning. |
+| Högt |Rekommendationer för hög påverkan bör ge den mest betydande prestanda påverkan. |
+| Medel |Rekommendationer för medelhög påverkan bör förbättra prestanda, men inte i stor utsträckning. |
 | Låg |Rekommendationer för låg påverkan bör ge bättre prestanda än utan, men förbättringar kan vara betydande. |
 
 > [!NOTE]
@@ -132,7 +132,7 @@ Att tillämpa en rekommendation kanske inte sker omedelbart. Portalen innehålle
 | Väntar |Kommandot Använd rekommendation har mottagits och är schemalagt för körning. |
 | Köra |Rekommendationen har tillämpats. |
 | Verifiera |Rekommendationen har tillämpats och tjänsten mäter fördelarna. |
-| Success |Rekommendationen har tillämpats och fördelarna har mätts. |
+| Klart |Rekommendationen har tillämpats och fördelarna har mätts. |
 | Fel |Ett fel uppstod när rekommendationen skulle tillämpas. Detta kan vara ett tillfälligt problem eller en schema ändring i tabellen och skriptet är inte längre giltigt. |
 | Återställer |Rekommendationen har tillämpats, men har bedömts vara icke-utfört och återställs automatiskt. |
 | Återställts |Rekommendationen har återställts. |
