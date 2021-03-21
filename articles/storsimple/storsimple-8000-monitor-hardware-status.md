@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 6b750659bf22e856ee8ad7368e3fea64dd7245df
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94960367"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Använd tjänsten StorSimple Enhetshanteraren för att övervaka maskin varu komponenter och status
@@ -79,69 +79,69 @@ Utför följande steg för att Visa maskin varu status för en enhets komponent:
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Komponent lista för primär inne slutning av StorSimple-enhet
 I följande tabell visas de fysiska och logiska komponenterna som finns i den primära inne slutningen (finns både i 8100 och 8600) på din lokala StorSimple-enhet.
 
-| Komponent | Modul | Typ | Plats | Är fältet replacementable Unit (FRU)? | Beskrivning |
+| Komponent | Modul | Typ | Location | Är fältet replacementable Unit (FRU)? | Beskrivning |
 | --- | --- | --- | --- | --- | --- |
 | Enhet i fack [0-11] |Disk enheter |Fysisk |Delad |Ja |En rad visas för var och en av SSD-enheterna eller hård diskarna i den primära inne slutningen. |
-| Omgivnings temperatur sensor |Hölje |Fysisk |Delad |Nej |Mäter temperaturen i chassit. |
-| Temperatur sensor för Mid-plan |Hölje |Fysisk |Delad |Nej |Mäter temperaturen i mitten av planet. |
-| Akustiskt larm |Hölje |Fysisk |Delad |Nej |Anger om ljud signal under systemet på chassit fungerar. |
+| Omgivnings temperatur sensor |Hölje |Fysisk |Delad |Inga |Mäter temperaturen i chassit. |
+| Temperatur sensor för Mid-plan |Hölje |Fysisk |Delad |Inga |Mäter temperaturen i mitten av planet. |
+| Akustiskt larm |Hölje |Fysisk |Delad |Inga |Anger om ljud signal under systemet på chassit fungerar. |
 | Hölje |Hölje |Fysisk |Delad |Ja |Indikerar förekomsten av ett chassi. |
-| Kabinett inställningar |Hölje |Fysisk |Delad |Nej |Hänvisar till chassits front panel. |
-| Linje spännings sensorer |PCM |Fysisk |Delad |Nej |Många linje spännings sensorer har sitt tillstånd visas, vilket indikerar om den uppmätta spänningen är inom toleransen. |
-| Linje aktuella sensorer |PCM |Fysisk |Delad |Nej |Många linje ström sensorer har sitt tillstånd visas, vilket anger om den uppmätta strömmen är inom toleransen. |
-| Temperatur sensorer i PCM |PCM |Fysisk |Delad |Nej |Många temperatur sensorer, till exempel insugnings sensorer och hotspots sensorer har sitt tillstånd visas, vilket anger om den uppmätta temperaturen är inom toleransen. |
+| Kabinett inställningar |Hölje |Fysisk |Delad |Inga |Hänvisar till chassits front panel. |
+| Linje spännings sensorer |PCM |Fysisk |Delad |Inga |Många linje spännings sensorer har sitt tillstånd visas, vilket indikerar om den uppmätta spänningen är inom toleransen. |
+| Linje aktuella sensorer |PCM |Fysisk |Delad |Inga |Många linje ström sensorer har sitt tillstånd visas, vilket anger om den uppmätta strömmen är inom toleransen. |
+| Temperatur sensorer i PCM |PCM |Fysisk |Delad |Inga |Många temperatur sensorer, till exempel insugnings sensorer och hotspots sensorer har sitt tillstånd visas, vilket anger om den uppmätta temperaturen är inom toleransen. |
 | Strömförsörjning [0-1] |PCM |Fysisk |Delad |Ja |En linje presenteras för var och en av strömförsörjningarna i de två PCMs som finns på bak sidan av enheten. |
 | Kylning [0-1] |PCM |Fysisk |Delad |Ja |En linje presenteras för var och en av de fyra kyl fläktar som finns i de två PCMs. |
 | Batteri [0-1] |PCM |Fysisk |Delad |Ja |En rad visas för var och en av de moduler för säkerhets kopierings batterier som finns i PCM. |
-| Metis |E.t. |Logisk |Delad |E.t. |Visar batteriets status: om de behöver debiteras och närmar sig livs längd. |
-| Kluster |E.t. |Logisk |Delad |E.t. |Visar status för det kluster som skapas mellan de två integrerade Controller-modulerna. |
-| Klusternod |E.t. |Logisk |Delad |E.t. |Anger status för kontrollanten som en del av klustret. |
-| Klusterkvorum |E.t. |Logisk | |E.t. |Anger förekomsten av majoriteten av disk medlemskapet i HDD-lagringspoolen. |
-| Data utrymme på hård disk |E.t. |Logisk |Delad |E.t. |Det lagrings utrymme som används för data i lagringspoolen för hård diskar (HDD). |
-| Hanterings utrymme för HDD |E.t. |Logisk |Delad |E.t. |Utrymmet som reserver ATS i lagringspoolen för HDD-lagring för hanterings uppgifter. |
-| Kvorumdisk för HDD |E.t. |Logisk |Delad |E.t. |Utrymmet som reserver ATS i HDD-lagringspoolen för klusterkvorum. |
-| Utrymme för hård disk ersättning |E.t. |Logisk |Delad |E.t. |Utrymmet som reserver ATS i lagringspoolen för HDD-lagring för ersättning av kontrollant. |
-| Data utrymme för SSD |E.t. |Logisk |Delad |E.t. |Det lagrings utrymme som används för data i SSD-lagringspoolen (Solid State Drive). |
-| Utrymme för SSD NVRAM |E.t. |Logisk |Delad |E.t. |Lagrings utrymmet i lagringspoolen SSD som är dedikerat för NVRAM-logik. |
-| HDD-lagringspool |E.t. |Logisk |Delad |E.t. |Visar status för den logiska lagringspoolen som har skapats från enhetens hård diskar. |
-| Lagringspool för SSD |E.t. |Logisk |Delad |E.t. |Visar status för den logiska lagringspoolen som har skapats från enhetens SSD. |
-| Kontrollant [0-1] [State] |I/O |Fysisk |Domänkontrollant |Ja |Visar status för kontrollanten och om den är i aktivt eller vänte läge i chassit. |
-| Temperatur sensorer i styrenheten |I/O |Fysisk |Domänkontrollant |Nej |Många temperatur sensorer, till exempel I/O-modul, CPU-temperatur, DIMM-och PCIe-sensorer har tillstånd att visas, vilket anger om temperaturen som påträffats är inom toleransen eller inte. |
-| SAS-expandera |I/O |Fysisk |Domänkontrollant |Nej |Anger status för SAS-expanderaen (Serial Attached SCSI) som används för att ansluta den integrerade lagringen till kontrollanten. |
-| SAS-anslutning [0-1] |I/O |Fysisk |Domänkontrollant |Nej |Anger status för varje SAS-anslutning som används för att ansluta integrerad lagring till SAS-expanderingen. |
-| MITTPLANSSAMMANKOPPLING Mid-plan-sammanlänkning |I/O |Fysisk |Domänkontrollant |Nej |Anger läget för centrum-plan-kopplingen, som används för att ansluta varje kontrollant till mitten-planet. |
-| Processor kärna |I/O |Fysisk |Domänkontrollant |Nej |Anger tillstånd för processor kärnor inom varje kontrollant. |
-| Hölje Electronics Power |I/O |Fysisk |Domänkontrollant |Nej |Anger tillstånd för det energi system som används av kabinett filen. |
-| Hölje Electronics-diagnostik |I/O |Fysisk |Domänkontrollant |Nej |Anger status för de under system för diagnostik som tillhandahålls av kontrollanten. |
-| Styrenhet för huvudkortshantering (BMC) |I/O |Fysisk |Domänkontrollant |Nej |Anger status för BMC (Baseboard Management Controller), som är en specialiserad tjänst processor som övervakar maskin varu enheten via sensorer och kommunicerar med system administratören via en oberoende anslutning. |
-| Ethernet |I/O |Fysisk |Domänkontrollant |Nej |Anger tillstånd för varje nätverks gränssnitt, det vill säga hanterings-och data portarna som finns på styrenheten. |
-| Rensa |I/O |Fysisk |Domänkontrollant |Nej |Anger status för NVRAM, ett icke-flyktigt RAM-minne som säkerhets kopie ras av batteriet och som hanterar program kritisk information i händelse av strömavbrott. |
+| Metis |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Visar batteriets status: om de behöver debiteras och närmar sig livs längd. |
+| Kluster |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Visar status för det kluster som skapas mellan de två integrerade Controller-modulerna. |
+| Klusternod |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Anger status för kontrollanten som en del av klustret. |
+| Klusterkvorum |Ej tillämpligt |Logiskt | |Ej tillämpligt |Anger förekomsten av majoriteten av disk medlemskapet i HDD-lagringspoolen. |
+| Data utrymme på hård disk |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Det lagrings utrymme som används för data i lagringspoolen för hård diskar (HDD). |
+| Hanterings utrymme för HDD |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Utrymmet som reserver ATS i lagringspoolen för HDD-lagring för hanterings uppgifter. |
+| Kvorumdisk för HDD |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Utrymmet som reserver ATS i HDD-lagringspoolen för klusterkvorum. |
+| Utrymme för hård disk ersättning |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Utrymmet som reserver ATS i lagringspoolen för HDD-lagring för ersättning av kontrollant. |
+| Data utrymme för SSD |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Det lagrings utrymme som används för data i SSD-lagringspoolen (Solid State Drive). |
+| Utrymme för SSD NVRAM |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Lagrings utrymmet i lagringspoolen SSD som är dedikerat för NVRAM-logik. |
+| HDD-lagringspool |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Visar status för den logiska lagringspoolen som har skapats från enhetens hård diskar. |
+| Lagringspool för SSD |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Visar status för den logiska lagringspoolen som har skapats från enhetens SSD. |
+| Kontrollant [0-1] [State] |I/O |Fysisk |Kontrollant |Ja |Visar status för kontrollanten och om den är i aktivt eller vänte läge i chassit. |
+| Temperatur sensorer i styrenheten |I/O |Fysisk |Kontrollant |Inga |Många temperatur sensorer, till exempel I/O-modul, CPU-temperatur, DIMM-och PCIe-sensorer har tillstånd att visas, vilket anger om temperaturen som påträffats är inom toleransen eller inte. |
+| SAS-expandera |I/O |Fysisk |Kontrollant |Inga |Anger status för SAS-expanderaen (Serial Attached SCSI) som används för att ansluta den integrerade lagringen till kontrollanten. |
+| SAS-anslutning [0-1] |I/O |Fysisk |Kontrollant |Inga |Anger status för varje SAS-anslutning som används för att ansluta integrerad lagring till SAS-expanderingen. |
+| MITTPLANSSAMMANKOPPLING Mid-plan-sammanlänkning |I/O |Fysisk |Kontrollant |Inga |Anger läget för centrum-plan-kopplingen, som används för att ansluta varje kontrollant till mitten-planet. |
+| Processor kärna |I/O |Fysisk |Kontrollant |Inga |Anger tillstånd för processor kärnor inom varje kontrollant. |
+| Hölje Electronics Power |I/O |Fysisk |Kontrollant |Inga |Anger tillstånd för det energi system som används av kabinett filen. |
+| Hölje Electronics-diagnostik |I/O |Fysisk |Kontrollant |Inga |Anger status för de under system för diagnostik som tillhandahålls av kontrollanten. |
+| Styrenhet för huvudkortshantering (BMC) |I/O |Fysisk |Kontrollant |Inga |Anger status för BMC (Baseboard Management Controller), som är en specialiserad tjänst processor som övervakar maskin varu enheten via sensorer och kommunicerar med system administratören via en oberoende anslutning. |
+| Ethernet |I/O |Fysisk |Kontrollant |Inga |Anger tillstånd för varje nätverks gränssnitt, det vill säga hanterings-och data portarna som finns på styrenheten. |
+| Rensa |I/O |Fysisk |Kontrollant |Inga |Anger status för NVRAM, ett icke-flyktigt RAM-minne som säkerhets kopie ras av batteriet och som hanterar program kritisk information i händelse av strömavbrott. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Komponent lista för EBOD-inne slutning av StorSimple-enhet
 I följande tabell beskrivs de fysiska och logiska komponenterna i EBOD-kabinettet (endast i 8600-modellen) för den lokala StorSimple-enheten.
 
-| Komponent | Modul | Typ | Plats | Fru? | Beskrivning |
+| Komponent | Modul | Typ | Location | Fru? | Beskrivning |
 | --- | --- | --- | --- | --- | --- |
 | Enhet i fack [0-11] |Disk enheter |Fysisk |Delad |Ja |En rad visas för var och en av de HDD-enheterna framför EBOD-höljet. |
-| Omgivnings temperatur sensor |Hölje |Fysisk |Delad |Nej |Mäter temperaturen i chassit. |
-| Temperatur sensor för Mid-plan |Hölje |Fysisk |Delad |Nej |Mäter temperaturen i mitten av planet. |
-| Akustiskt larm |Hölje |Fysisk |Delad |Nej |Anger om ljud signal under systemet på chassit fungerar. |
+| Omgivnings temperatur sensor |Hölje |Fysisk |Delad |Inga |Mäter temperaturen i chassit. |
+| Temperatur sensor för Mid-plan |Hölje |Fysisk |Delad |Inga |Mäter temperaturen i mitten av planet. |
+| Akustiskt larm |Hölje |Fysisk |Delad |Inga |Anger om ljud signal under systemet på chassit fungerar. |
 | Hölje |Hölje |Fysisk |Delad |Ja |Indikerar förekomsten av ett chassi. |
-| Kabinett inställningar |Hölje |Fysisk |Delad |Nej |Avser OPS eller front panel på chassit. |
-| Linje spännings sensorer |PCM |Fysisk |Delad |Nej |Många linje spännings sensorer har sitt tillstånd visas, vilket indikerar om den uppmätta spänningen är inom toleransen. |
-| Linje aktuella sensorer |PCM |Fysisk |Delad |Nej |Många linje ström sensorer har sitt tillstånd visas, vilket anger om den uppmätta strömmen är inom toleransen. |
-| Temperatur sensorer i PCM |PCM |Fysisk |Delad |Nej |Många temperatur sensorer, till exempel insugnings sensorer och hotspots sensorer har sitt tillstånd visas, vilket anger om den uppmätta temperaturen är inom toleransen. |
+| Kabinett inställningar |Hölje |Fysisk |Delad |Inga |Avser OPS eller front panel på chassit. |
+| Linje spännings sensorer |PCM |Fysisk |Delad |Inga |Många linje spännings sensorer har sitt tillstånd visas, vilket indikerar om den uppmätta spänningen är inom toleransen. |
+| Linje aktuella sensorer |PCM |Fysisk |Delad |Inga |Många linje ström sensorer har sitt tillstånd visas, vilket anger om den uppmätta strömmen är inom toleransen. |
+| Temperatur sensorer i PCM |PCM |Fysisk |Delad |Inga |Många temperatur sensorer, till exempel insugnings sensorer och hotspots sensorer har sitt tillstånd visas, vilket anger om den uppmätta temperaturen är inom toleransen. |
 | Strömförsörjning [0-1] |PCM |Fysisk |Delad |Ja |En linje presenteras för var och en av strömförsörjningarna i de två PCMs som finns på bak sidan av enheten. |
 | Kylning [0-1] |PCM |Fysisk |Delad |Ja |En linje presenteras för var och en av de fyra kyl fläktar som finns i de två PCMs. |
-| Lokal lagring [HDD] |E.t. |Logisk |Delad |E.t. |Visar status för den logiska lagringspoolen som har skapats från enhetens hård diskar. |
-| Kontrollant [0-1] [State] |I/O |Fysisk |Domänkontrollant |Ja |Visar status för kontrollanter i EBOD-modulen. |
-| Temperatur sensorer i EBOD |I/O |Fysisk |Domänkontrollant |Nej |Ett flertal temperatur sensorer från varje kontrollant har sitt tillstånd visat, vilket anger om temperaturen påträffas inom toleransen. |
-| SAS-expandera |I/O |Fysisk |Domänkontrollant |Nej |Anger status för SAS-expanderingen, som används för att ansluta den integrerade lagringen till kontrollanten. |
-| SAS-anslutning [0-2] |I/O |Fysisk |Domänkontrollant |Nej |Anger status för varje SAS-anslutning som används för att ansluta integrerad lagring till SAS-expanderingen. |
-| MITTPLANSSAMMANKOPPLING Mid-plan-sammanlänkning |I/O |Fysisk |Domänkontrollant |Nej |Anger läget för centrum-plan-kopplingen, som används för att ansluta varje kontrollant till mitten-planet. |
-| Hölje Electronics Power |I/O |Fysisk |Domänkontrollant |Nej |Anger tillstånd för det energi system som används av kabinett filen. |
-| Hölje Electronics-diagnostik |I/O |Fysisk |Domänkontrollant |Nej |Anger status för de under system för diagnostik som tillhandahålls av kontrollanten. |
-| Anslutning till enhets styrenhet |I/O |Fysisk |Domänkontrollant |Nej |Anger status för anslutningen mellan EBOD I/O-modulen och enhets styrenheten. |
+| Lokal lagring [HDD] |Ej tillämpligt |Logiskt |Delad |Ej tillämpligt |Visar status för den logiska lagringspoolen som har skapats från enhetens hård diskar. |
+| Kontrollant [0-1] [State] |I/O |Fysisk |Kontrollant |Ja |Visar status för kontrollanter i EBOD-modulen. |
+| Temperatur sensorer i EBOD |I/O |Fysisk |Kontrollant |Inga |Ett flertal temperatur sensorer från varje kontrollant har sitt tillstånd visat, vilket anger om temperaturen påträffas inom toleransen. |
+| SAS-expandera |I/O |Fysisk |Kontrollant |Inga |Anger status för SAS-expanderingen, som används för att ansluta den integrerade lagringen till kontrollanten. |
+| SAS-anslutning [0-2] |I/O |Fysisk |Kontrollant |Inga |Anger status för varje SAS-anslutning som används för att ansluta integrerad lagring till SAS-expanderingen. |
+| MITTPLANSSAMMANKOPPLING Mid-plan-sammanlänkning |I/O |Fysisk |Kontrollant |Inga |Anger läget för centrum-plan-kopplingen, som används för att ansluta varje kontrollant till mitten-planet. |
+| Hölje Electronics Power |I/O |Fysisk |Kontrollant |Inga |Anger tillstånd för det energi system som används av kabinett filen. |
+| Hölje Electronics-diagnostik |I/O |Fysisk |Kontrollant |Inga |Anger status för de under system för diagnostik som tillhandahålls av kontrollanten. |
+| Anslutning till enhets styrenhet |I/O |Fysisk |Kontrollant |Inga |Anger status för anslutningen mellan EBOD I/O-modulen och enhets styrenheten. |
 
 ## <a name="next-steps"></a>Nästa steg
 * Om du vill använda tjänsten StorSimple Enhetshanteraren för att administrera enheten går du till [Använd tjänsten StorSimple Enhetshanteraren för att administrera StorSimple-enheten](storsimple-8000-manager-service-administration.md).

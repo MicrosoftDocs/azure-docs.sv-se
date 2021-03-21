@@ -4,10 +4,10 @@ description: Skala ett Service Fabric kluster i eller ut för att matcha efter f
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409968"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Skala in eller ut ett kluster
@@ -186,7 +186,7 @@ else
 }
 ```
 
-I **sfctl** -koden nedan används följande kommando för att hämta **node-name** -värdet för den nod som skapats senast: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
+I **sfctl**-koden nedan används följande kommando för att hämta **node-name**-värdet för den nod som skapats senast: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```shell
 # Inform the node that it is going to be removed
@@ -200,7 +200,7 @@ sfctl node remove-state --node-name _nt1vm_5
 ```
 
 > [!TIP]
-> Använd följande **sfctl** -frågor för att kontrollera status för varje steg
+> Använd följande **sfctl**-frågor för att kontrollera status för varje steg
 >
 > **Kontrol lera status för avaktivering**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`

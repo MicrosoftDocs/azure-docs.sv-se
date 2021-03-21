@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905187"
 ---
 # <a name="define-and-use-moderation-jobs-api-console"></a>Definiera och använda moderator jobb (API-konsolen)
 
 Ett redigerings jobb fungerar som en typ av omslutning för funktionerna i Content moderatoring, arbets flöden och granskningar. Den här guiden visar hur du använder REST-API: er för jobb för att initiera och kontrol lera innehålls moderator jobb. När du förstår API: ernas struktur kan du enkelt Porta dessa anrop till alla REST-kompatibla plattformar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Logga in eller skapa ett konto på webbplatsen för Content Moderator [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com/) .
 - Valfritt [Definiera ett anpassat arbets flöde](./Review-Tool-User-Guide/Workflows.md) som ska användas med ditt jobb. Du kan också använda standard arbets flödet.

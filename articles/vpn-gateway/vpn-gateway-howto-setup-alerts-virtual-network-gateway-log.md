@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656622"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Konfigurera aviseringar för resurs logg händelser från VPN Gateway
@@ -20,7 +20,7 @@ Den här artikeln hjälper dig att ställa in aviseringar baserat på resurs log
 
 Följande resurs loggar är tillgängliga i Azure:
 
-|***Namn** _ | _*_Beskrivning_*_ |
+|***Namn** _ | _ *_Beskrivning_** |
 |--- | --- |
 |GatewayDiagnosticLog | Innehåller resurs loggar för konfigurations händelser för gateway, primära ändringar och underhålls händelser |
 |TunnelDiagnosticLog | Innehåller ändringar av tunnel tillstånds händelser. Tunnel anslutning/från kopplings händelser har en sammanfattande orsak för tillstånds ändringen om det är tillämpligt |
@@ -33,7 +33,7 @@ Följande resurs loggar är tillgängliga i Azure:
 Följande exempel steg skapar en avisering för en från kopplings händelse som omfattar en plats-till-plats-VPN-tunnel:
 
 
-1. I Azure Portal söker du efter _ *Log Analytics** under **alla tjänster** och väljer **Log Analytics arbets ytor**.
+1. I Azure Portal söker du efter **Log Analytics** under **alla tjänster** och väljer **Log Analytics arbets ytor**.
 
    ![Val för att gå till Log Analytics arbets ytor](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Skapa")
 

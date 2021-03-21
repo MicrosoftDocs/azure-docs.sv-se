@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
 ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793287"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Distribuera och utforska ett fristående program med en enda klient som använder Azure SQL Database
@@ -60,16 +60,16 @@ Distribuera appen för de tre tillhandahållna klient organisationerna:
     > Vissa autentiserings-och Server brand väggar är avsiktligt oskyddade i demonstrations syfte. **Skapa en ny resurs grupp** för varje program distribution.  Använd inte en befintlig resurs grupp. Använd inte det här programmet eller några resurser som skapas för produktion. Ta bort alla resurs grupper när du är färdig med programmen för att stoppa relaterad fakturering.
 
     Det är bäst att endast använda gemena bokstäver, siffror och bindestreck i resurs namnen.
-    * För **resurs grupp** väljer du skapa ny och anger sedan ett gement namn för resurs gruppen. **Wingtip-sa- \<venueName\> - \<user\>** är det rekommenderade mönstret.  För \<venueName\> ersätter du platsens namn utan blank steg. För \<user\> ersätter du användar värdet nedan.  Med det här mönstret kan resurs grupp namn vara *Wingtip-sa-contosoconcerthall-AF1* , *Wingtip-sa-dogwooddojo-AF1* , *Wingtip-sa-fabrikamjazzclub-AF1* .
+    * För **resurs grupp** väljer du skapa ny och anger sedan ett gement namn för resurs gruppen. **Wingtip-sa- \<venueName\> - \<user\>** är det rekommenderade mönstret.  För \<venueName\> ersätter du platsens namn utan blank steg. För \<user\> ersätter du användar värdet nedan.  Med det här mönstret kan resurs grupp namn vara *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*.
     * Välj en **plats** i list rutan.
 
-    * För **användare** – vi rekommenderar ett kort användar värde, till exempel dina initialer plus en siffra: till exempel *AF1* .
+    * För **användare** – vi rekommenderar ett kort användar värde, till exempel dina initialer plus en siffra: till exempel *AF1*.
 
 
-3. **Distribuera programmet** .
+3. **Distribuera programmet**.
 
     * Klicka om du vill godkänna de allmänna villkoren.
-    * Klicka på **Köp** .
+    * Klicka på **Köp**.
 
 4. Övervaka status för alla tre distributioner genom att klicka på **aviseringar** (klock ikonen till höger om sökrutan). Det tar cirka fem minuter att distribuera apparna.
 

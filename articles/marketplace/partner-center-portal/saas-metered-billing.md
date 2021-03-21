@@ -8,10 +8,10 @@ ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892761"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Mätning av fakturering för SaaS med hjälp av den kommersiella tjänsten för avläsning av marknads platser
@@ -37,7 +37,7 @@ Att förstå erbjudandet är viktigt när det gäller att definiera erbjudandet 
 
 - Varje SaaS-erbjudande är konfigurerat för att sälja antingen via Microsoft eller inte.  Det går inte att ändra det här alternativet när ett erbjudande har publicerats.
 - Varje SaaS-erbjudande, konfigurerat att sälja via Microsoft, kan ha en eller flera planer.  En användare prenumererar på SaaS-erbjudandet, men det köps via Microsoft inom ramen för en plan.
-- Varje plan har en pris modell kopplad till sig: **fast** pris eller **per användare** . Alla planer i ett erbjudande måste vara kopplade till samma pris modell. Det kan till exempel vara ett erbjudande som inte har några planer för en pris sättnings modell med fast pris och en annan pris modell per användare.
+- Varje plan har en pris modell kopplad till sig: **fast** pris eller **per användare**. Alla planer i ett erbjudande måste vara kopplade till samma pris modell. Det kan till exempel vara ett erbjudande som inte har några planer för en pris sättnings modell med fast pris och en annan pris modell per användare.
 - I varje plan som kon figurer ATS för en fast fakturerings modell ingår minst en återkommande avgift (som kan vara $0):
     - Återkommande **månads** avgift: fast månads avgift som betalas för varje månad när användaren köper planen.
     - Återkommande **årlig** avgift: fast årlig avgift som betalas för varje år när användaren köper planen.
@@ -73,12 +73,12 @@ Baserat på den valda planen kommer en Azure-kund som köper prenumeration på C
 
 Varje fakturerings dimension definierar en anpassad enhet enligt vilken ISV kan generera användnings händelser.  Fakturerings dimensioner används också för att kommunicera med kunden om hur de kommer att faktureras för användning av program varan.  De definieras enligt följande:
 
-- **ID** : det oföränderliga dimensions-ID som refererades vid sändning av användnings händelser.
-- **Visnings namn** : det visnings namn som är associerat med dimensionen, till exempel "textmeddelanden har skickats".
-- Mått **enhet** : en beskrivning av fakturerings enheten, till exempel "per textmeddelande" eller "per 100-e-post".
-- **Pris per enhet i USD** : priset för en enhet i dimensionen.  Det kan vara 0. 
-- **Månatlig kvantitet som ingår i bas** : den kvantitet dimension som ingår per månad för kunder som betalar den återkommande månads avgiften måste vara ett heltal. Det kan vara 0 eller obegränsat.
-- **Årlig kvantitet som ingår i bas** : den kvantitet dimension som ingår per år för kunder som betalar den återkommande årliga avgiften måste vara ett heltal. Kan vara 0 eller obegränsad.
+- **ID**: det oföränderliga dimensions-ID som refererades vid sändning av användnings händelser.
+- **Visnings namn**: det visnings namn som är associerat med dimensionen, till exempel "textmeddelanden har skickats".
+- Mått **enhet**: en beskrivning av fakturerings enheten, till exempel "per textmeddelande" eller "per 100-e-post".
+- **Pris per enhet i USD**: priset för en enhet i dimensionen.  Det kan vara 0. 
+- **Månatlig kvantitet som ingår i bas**: den kvantitet dimension som ingår per månad för kunder som betalar den återkommande månads avgiften måste vara ett heltal. Det kan vara 0 eller obegränsat.
+- **Årlig kvantitet som ingår i bas**: den kvantitet dimension som ingår per år för kunder som betalar den återkommande årliga avgiften måste vara ett heltal. Kan vara 0 eller obegränsad.
 
 Fakturerings dimensioner delas i alla planer för ett erbjudande.  Vissa attribut gäller för dimensionen i alla planer, och andra attribut är plan-/regionsspecifika.
 

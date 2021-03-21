@@ -10,10 +10,10 @@ ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541852"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Snabb start: skapa en dedikerad SQL-pool med Synapse Studio
@@ -74,7 +74,7 @@ Logga in på [Azure-portalen](https://portal.azure.com/)
     > [!IMPORTANT]
     > Observera att det finns särskilda begränsningar för namn som dedikerade SQL-pooler kan använda. Namn får inte innehålla specialtecken, måste bestå av högst 15 tecken, får inte innehålla reserverade ord och vara unika i arbets ytan.
 
-4. På nästa flik, **ytterligare inställningar** , väljer du **ingen** för att etablera SQL-poolen utan data. Låt standard sorteringen vara markerad.
+4. På nästa flik, **ytterligare inställningar**, väljer du **ingen** för att etablera SQL-poolen utan data. Låt standard sorteringen vara markerad.
 
     Om du vill återställa din dedikerade SQL-pool från en återställnings punkt väljer du **återställnings punkt**. Mer information om hur du utför en återställning finns i [instruktion: återställa en befintlig dedikerad SQL-pool](backuprestore/restore-sql-pool.md)
 
@@ -103,7 +103,7 @@ Följ stegen nedan för att ta bort den dedikerade SQL-poolen från arbets ytan 
 Om du vill ta bort den dedikerade SQL-poolen gör du följande:
 
 1. Gå till SQL-poolerna i hanterings navet i Synapse Studio.
-1. Välj ellipsen i den dedikerade SQL-poolen som ska tas bort (i det här fallet **contosoedw** ) för att Visa kommandona för den DEDIKERADe SQL-poolen:
+1. Välj ellipsen i den dedikerade SQL-poolen som ska tas bort (i det här fallet **contosoedw**) för att Visa kommandona för den DEDIKERADe SQL-poolen:
 
     ![Lista över SQL-pooler med den nyligen skapade poolen vald.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. Tryck på **ta bort**.

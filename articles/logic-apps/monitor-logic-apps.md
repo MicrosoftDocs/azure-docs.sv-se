@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100580662"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Övervaka körningsstatus, granska utlösarhistorik och konfigurera aviseringar för Azure Logic Apps
@@ -49,7 +49,7 @@ Varje gång utlösaren utlöses för ett objekt eller en händelse skapas och k�
 
    Här är möjliga körnings status:
 
-   | Körnings status | Description |
+   | Körnings status | Beskrivning |
    |------------|-------------|
    | **Avbruten** | Körningen stoppades eller slutfördes inte på grund av externa problem, till exempel ett system avbrott eller en upphörde Azure-prenumeration. |
    | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
@@ -121,7 +121,7 @@ Varje Logic app-körning börjar med en utlösare. I utlösarens historik visas 
 
    Här följer de möjliga status för utlösarens försök:
 
-   | Utlösarstatus | Description |
+   | Utlösarstatus | Beskrivning |
    |----------------|-------------|
    | **Misslyckades** | Ett fel inträffade. Om du vill granska eventuella genererade fel meddelanden för en misslyckad utlösare väljer du det Utlös ande försöket och väljer **utdata**. Du kan till exempel hitta indata som inte är giltiga. |
    | **Överhoppad** | Utlösaren kontrollerade slut punkten men hittade inga data som uppfyller de angivna kriterierna. |

@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 25eaa4a66fb4a73f976edbd30e6f82015ce84f6f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086133"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>Etablera databas, container eller autoskalning av data flöde på Azure Cosmos DB API för MongoDB-resurser
@@ -28,13 +28,13 @@ Om du använder ett annat API, se [SQL API](how-to-provision-container-throughpu
 
 1. [Skapa ett nytt Azure Cosmos-konto](create-mongodb-dotnet.md#create-a-database-account)eller Välj ett befintligt Azure Cosmos-konto.
 
-1. Öppna fönsterrutan **Data Explorer** och välj **Ny samling** . Ange därefter följande information:
+1. Öppna fönsterrutan **Data Explorer** och välj **Ny samling**. Ange därefter följande information:
 
    * Ange om du skapar en ny databas eller använder en befintlig. Välj **data flödes alternativet etablera databas** om du vill etablera data flöde på databas nivå.
    * Ange ett samlings-ID.
    * Ange ett partitionsnyckelvärde (till exempel `/ItemID`).
    * Ange ett data flöde som du vill etablera (till exempel 1000 ru: er).
-   * Välj **OK** .
+   * Välj **OK**.
 
     :::image type="content" source="./media/how-to-provision-throughput-mongodb/provision-database-throughput-portal-mongodb-api.png" alt-text="Skärm bild av Datautforskaren när du skapar en ny samling med data flöde på databas nivå":::
 

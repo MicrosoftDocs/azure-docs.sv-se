@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788170"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Snabbstart: Distribuera Linux-containrar till Service Fabric
@@ -19,7 +19,7 @@ Den här snabbstarten visar hur du distribuerar Linux-containrar till ett Servic
 
 ![Webbsida för röstningsappen][quickstartpic]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
@@ -177,7 +177,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Om du är färdig med ditt kluster kan du ta bort certifikatet från certifikatarkivet. Ett exempel:
+Om du är färdig med ditt kluster kan du ta bort certifikatet från certifikatarkivet. Exempel:
 - I Windows: Använd [MMC-snapin-modulen Certifikat](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Välj **Mitt användarkonto** när du lägger till snapin-modulen. Gå till `Certificates - Current User\Personal\Certificates` och ta bort certifikatet.
 - I Mac: Använd nyckelringsappen.
 - I Ubuntu: Följ stegen som du använde för att visa certifikat och ta bort certifikatet.

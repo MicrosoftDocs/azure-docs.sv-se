@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9536cf41add73f494bfff451c201d36e951864e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997672"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection meddelanden
@@ -68,8 +68,8 @@ Användare i rollerna global administratör, säkerhets administratör eller sä
 
 Som administratör kan du växla att skicka ett e-postmeddelande med veckovis sammanfattning på eller av och välja de användare som ska tilldelas e-postmeddelandet.
 
-Konfigurera e-postmeddelandet om veckovis sammandrag i **Azure Portal** under **Azure Active Directory**  >  **säkerhet** för  >  **Identity Protection**  >  **veckovis sammandrag** av säkerhets identitet.
+Konfigurera e-postmeddelandet om veckovis sammandrag i **Azure Portal** under **Azure Active Directory**  >  **säkerhet** för  >    >  **veckovis sammandrag** av säkerhets identitet.
 
 ## <a name="see-also"></a>Se även
 
-- [Identitetsskydd för Azure Active Directory](./overview-identity-protection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

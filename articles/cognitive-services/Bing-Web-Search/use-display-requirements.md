@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351852"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Användnings- och visningskrav för API:er för Bing-sökresultat
@@ -44,7 +44,7 @@ Dessa användnings-och visnings krav gäller för all implementering av innehål
 |Svar     | En kategori av resultat som returneras i ett svar. Till exempel kan ett svar från API för webbsökning i Bing innehålla svar i kategorier av webb sidas resultat, bild, video, visuellt objekt och nyheter. |
 |Svarsåtgärder     | Alla svar och associerade data som tas emot som svar på ett enskilt anrop till ett API för sökning. |
 |Resultat    | Ett informations objekt i ett svar. Data uppsättningen som är kopplad till en enda nyhets artikel är till exempel ett resultat av ett nyhets svar. |
-|Sök-API: er    | gemensamt, Anpassad sökning i Bing, Entitetssökning, Bildsökning, Nyhetssökning, Videosökning, Visuell sökning, lokal företags sökning och Webbsökning-API: er. |
+|Sök-API: er    | gemensamt, Anpassad Bing-sökning, Entitetssökning, Bildsökning, Nyhetssökning, Videosökning, Visuell sökning, lokal företags sökning och Webbsökning-API: er. |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Stavningskontroll i Bing och API för automatiska förslag i Bing begränsningar
 

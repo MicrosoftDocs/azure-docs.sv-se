@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
 ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100579809"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Använd Azures privata länk för att på ett säkert sätt ansluta nätverk till Azure Automation
@@ -190,7 +190,7 @@ Du kan använda följande alternativ för att konfigurera dina DNS-inställninga
 
 * Använd DNS-vidarebefordraren (valfritt). Du kan använda DNS-vidarebefordraren för att åsidosätta DNS-matchningen för en viss privat länk resurs. Om din [DNS-Server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) finns i ett virtuellt nätverk kan du skapa en regel för vidarebefordran av DNS för att använda en privat DNS-zon för att förenkla konfigurationen för alla privata länk resurser.
 
-Mer information finns i [Azures DNS-konfiguration för privat slut punkt](../../private-link/private-endpoint-dns.md).
+Mer information finns i [DNS-konfiguration för privat slutpunkt i Azure](../../private-link/private-endpoint-dns.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

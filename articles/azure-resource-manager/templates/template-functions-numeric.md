@@ -4,17 +4,17 @@ description: Beskriver de funktioner som används i en Azure Resource Manager ma
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359718"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Numeriska funktioner för ARM-mallar
 
 Resource Manager innehåller följande funktioner för att arbeta med heltal i din Azure Resource Manager-mall (ARM-mall):
 
-* [skapa](#add)
+* [add](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
@@ -108,8 +108,8 @@ Returnerar indexet för en upprepnings slinga.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| loopName | Nej | sträng | Namnet på slingan för att hämta iterationen. |
-| offset |Nej |int |Talet som ska läggas till i det nollbaserade upprepning svärdet. |
+| loopName | Inga | sträng | Namnet på slingan för att hämta iterationen. |
+| offset |Inga |int |Talet som ska läggas till i det nollbaserade upprepning svärdet. |
 
 ### <a name="remarks"></a>Kommentarer
 

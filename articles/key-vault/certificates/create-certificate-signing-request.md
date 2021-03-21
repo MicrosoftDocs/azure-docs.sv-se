@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
 ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789034"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Skapa och slå samman en CSR i Key Vault
@@ -104,7 +104,7 @@ Certifikatbegäran har nu slagits samman.
 ## <a name="add-more-information-to-the-csr"></a>Lägg till mer information i CSR
 
 Om du vill lägga till mer information när du skapar CSR, definierar du den i **SubjectName**. Du kanske vill lägga till information som:
-- Country
+- Land
 - Stad/plats
 - Region/provins
 - Organisation

@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs Azure Instance Metadata Service stöd 
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: 49b70928ae972da8e0a0d14d711e4b6f246cca6a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96939197"
 ---
 # <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>Autentisera mot Azure-resurser med ARC-aktiverade servrar
@@ -38,7 +38,7 @@ Din kod som körs på servern kan begära en token från Azure instance metadata
 
 System miljö variabeln **IDENTITY_ENDPOINT** används för att identifiera slut punkt för identiteter för program. Program bör försöka hämta **IDENTITY_ENDPOINT** och **IMDS_ENDPOINT** värden och använda dem. Program med valfri åtkomst nivå får göra förfrågningar till slut punkterna. Svar på metadata hanteras som normalt och ges till alla processer på datorn. Men när en begäran görs som skulle exponera en token kräver vi att klienten tillhandahåller en hemlighet för att intyga att de kan komma åt data som endast är tillgängliga för användare med högre privilegier.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Förståelse för hanterade identiteter.
 - En server som är ansluten och registrerad med ARC-aktiverade servrar.

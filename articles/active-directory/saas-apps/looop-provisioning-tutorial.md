@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835092"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Självstudie: Konfigurera LOOOP för automatisk användar etablering
@@ -119,7 +119,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Skärm bild av list rutan etablerings läge med det automatiska alternativet inringat.](common/provisioning-automatic.png)
 
-5. Under avsnittet **admin credentials** , inmatat `https://<organisation_domain>.looop.co/scim/v2` i **klient-URL**. Exempelvis `https://demo.looop.co/scim/v2`. Mata in det värde som du hämtade och sparade tidigare från LOOOP i **hemlig token**. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till LOOOP. Om anslutningen Miss lyckas kontrollerar du att LOOOP-kontot har administratörs behörighet och försöker igen.
+5. Under avsnittet **admin credentials** , inmatat `https://<organisation_domain>.looop.co/scim/v2` i **klient-URL**. Till exempel `https://demo.looop.co/scim/v2`. Mata in det värde som du hämtade och sparade tidigare från LOOOP i **hemlig token**. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till LOOOP. Om anslutningen Miss lyckas kontrollerar du att LOOOP-kontot har administratörs behörighet och försöker igen.
 
     ![Klient-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 

@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008250"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Skapa din första beständiga funktion i C\#
@@ -88,9 +88,9 @@ Följande steg använder en mall för att skapa varaktig funktionskod.
 
 En klass som innehåller de nya funktionerna läggs till i projektet. VS Code lägger också till anslutnings strängen för lagrings kontot till *local.settings.jspå* och en referens till [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet-paketet *i. CSPROJ* -projektfilen.
 
-Öppna den nya *HelloOrchestration.cs* -filen för att visa innehållet. Det här beständiga funktionen är ett enkelt funktionslänkningsexempel med följande metoder:  
+Öppna den nya *HelloOrchestration. cs* -filen för att visa innehållet. Det här beständiga funktionen är ett enkelt funktionslänkningsexempel med följande metoder:  
 
-| Metod | FunctionName | Description |
+| Metod | FunctionName | Beskrivning |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Hanterar varaktig orkestrering. I det här fallet startar orkestreringen, den skapar en lista och lägger till resultatet av tre funktionsanrop i listan.  När de tre funktionsanropen har slutförts returnerar den listan. |
 | **`SayHello`** | `HelloOrchestration_Hello` | Funktionen returnerar ett ”hello”. Funktionen som innehåller affärs logiken som dirigeras. |
@@ -181,7 +181,7 @@ För att slutföra den här kursen behöver du:
 
 Med Azure Functions-mallen skapas ett projekt som kan publiceras till en funktionsapp i Azure. Med en Function-app kan du gruppera funktioner som en logisk enhet för enklare hantering, distribution, skalning och delning av resurser.
 
-1. I Visual Studio väljer du **nytt**  >  **projekt** på **Arkiv** -menyn.
+1. Välj **Nytt** > **Projekt** på **Arkiv**-menyn i Visual Studio.
 
 1. I dialog rutan **skapa ett nytt projekt** söker du efter `functions` , väljer mallen **Azure Functions** och väljer **Nästa**. 
 
@@ -217,7 +217,7 @@ Följande steg använder en mall för att skapa varaktig funktionskod.
 
 En ny beständig funktion läggs till i appen.  Öppna den nya .cs-filen för att visa innehållet. Det här beständiga funktionen är ett enkelt funktionslänkningsexempel med följande metoder:  
 
-| Metod | FunctionName | Description |
+| Metod | FunctionName | Beskrivning |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Hanterar varaktig orkestrering. I det här fallet startar orkestreringen, den skapar en lista och lägger till resultatet av tre funktionsanrop i listan.  När de tre funktionsanropen har slutförts returnerar den listan. |
 | **`SayHello`** | `<file-name>_Hello` | Funktionen returnerar ett ”hello”. Funktionen som innehåller affärs logiken som dirigeras. |
@@ -261,7 +261,7 @@ Med Azure Functions Core Tools kan du köra ett Azure Functions-projekt på din 
     }
     ```
 
-5. Stoppa fel sökningen genom att trycka på **SKIFT + F5**.
+5. Tryck på **Skift + F5** för att stoppa felsökningen.
 
 När du har kontrollerat att funktionen körs korrekt på den lokala datorn är det dags att publicera projektet på Azure.
 

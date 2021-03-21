@@ -8,16 +8,16 @@ ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 2629e9c6e048620d9490a1e091a16c138fd1e615
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525440"
 ---
-# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Säkerhets kopiering online och data återställning på begäran i Azure Cosmos DB
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Säkerhetskopiering online och dataåterställning på begäran i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB automatiskt tar säkerhets kopior av dina data med jämna mellanrum. Automatiska säkerhets kopieringar tas utan att påverka databas åtgärdernas prestanda eller tillgänglighet. Alla säkerhets kopior lagras separat i en lagrings tjänst. Automatiska säkerhets kopieringar är användbara i scenarier när du oavsiktligt tar bort eller uppdaterar ditt Azure Cosmos-konto, din databas eller behållare och senare behöver data återställningen. Det finns två säkerhets kopierings lägen:
+Azure Cosmos DB gör automatiskt en säkerhetskopia av dina data med jämna mellanrum. Automatiska säkerhetskopieringar görs utan att det påverkar databasernas prestanda eller tillgänglighet. Alla säkerhetskopior lagras separat i en lagringstjänst. Automatiska säkerhetskopieringar är användbara om du oavsiktligt skulle råka ta bort eller uppdatera ditt Azure Cosmos-konto, din databas eller container och senare behöver återställa data. Det finns två säkerhets kopierings lägen:
 
 * **Periodiskt säkerhets kopierings läge** – det här läget är standard läget för säkerhets kopiering för alla befintliga konton. I det här läget tas säkerhets kopieringen med ett periodiskt intervall och data återställs genom att en begäran skapas med support teamet. I det här läget konfigurerar du ett intervall för säkerhets kopiering och kvarhållning för ditt konto. Den maximala kvarhållningsperioden sträcker sig till en månad. Det lägsta intervallet för säkerhets kopiering kan vara en timme.  Mer information finns i artikeln om [Periodisk säkerhets kopierings läge](configure-periodic-backup-restore.md) .
 

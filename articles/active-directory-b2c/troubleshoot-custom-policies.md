@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840261"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Felsöka Azure AD B2C anpassade principer och identitets miljö ramverk
@@ -43,7 +43,7 @@ Vanliga verifierings fel inkluderar följande:
 
 * Värdet för ClaimType kan vara felstavat eller så finns det inte i schemat.
 * ClaimType-värden måste definieras i minst en av filerna i principen.
-    Exempel: `<ClaimType Id="issuerUserId">`
+    Exempelvis: `<ClaimType Id="issuerUserId">`
 * Om ClaimType definieras i tilläggs filen, men den också används i ett TechnicalProfile-värde i bas filen, resulterar det i ett fel när bas filen laddas upp.
 
 > Fel kodfragment: `...makes a reference to a ClaimsTransformation with id...`

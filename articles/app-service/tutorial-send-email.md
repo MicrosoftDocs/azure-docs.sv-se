@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95014670"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Självstudie: skicka e-post och anropa andra affärs processer från App Service
@@ -153,7 +153,7 @@ Klicka på fliken föredraget språk/ramverk nedan om du vill se ett exempel.
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-I ASP.NET kan du skicka HTTP-inlägget med klassen [system .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Ett exempel:
+I ASP.NET kan du skicka HTTP-inlägget med klassen [system .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Exempel:
 
 ```csharp
 // requires using System.Net.Http;
@@ -178,7 +178,7 @@ Om du testar den här koden i exempel appen för [Självstudier: skapa en ASP.ne
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-I ASP.NET Core kan du skicka HTTP-inlägget med klassen [system .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Ett exempel:
+I ASP.NET Core kan du skicka HTTP-inlägget med klassen [system .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Exempel:
 
 ```csharp
 // requires using System.Net.Http;
@@ -206,7 +206,7 @@ Om du testar den här koden i exempel appen för [Självstudier: skapa en ASP.ne
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-I Node.js kan du enkelt skicka HTTP-posten med ett NPM-paket som [Axios](https://www.npmjs.com/package/axios). Ett exempel:
+I Node.js kan du enkelt skicka HTTP-posten med ett NPM-paket som [Axios](https://www.npmjs.com/package/axios). Exempel:
 
 ```javascript
 // Requires npm install --save axios
@@ -233,7 +233,7 @@ Om du testar den här koden i exempel appen för [Självstudier: skapa en Node.j
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-I PHP kan du enkelt skicka HTTP-posten med [guzzle](http://docs.guzzlephp.org/en/stable/index.html). Ett exempel:
+I PHP kan du enkelt skicka HTTP-posten med [guzzle](http://docs.guzzlephp.org/en/stable/index.html). Exempel:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -265,7 +265,7 @@ Om du testar den här koden i exempel appen för [Självstudier: bygga en php-oc
 
 ### <a name="python"></a>[Python](#tab/python)
 
-I python kan du enkelt skicka HTTP-posten med [begär Anden](https://pypi.org/project/requests/). Ett exempel:
+I python kan du enkelt skicka HTTP-posten med [begär Anden](https://pypi.org/project/requests/). Exempel:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -296,7 +296,7 @@ Om du testar den här koden i exempel appen för [Självstudier: köra en python
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-I ruby kan du enkelt skicka HTTP-posten med JSONClient. Ett exempel:
+I ruby kan du enkelt skicka HTTP-posten med JSONClient. Exempel:
 
 ```ruby
 clnt = JSONClient.new

@@ -4,10 +4,10 @@ description: Beskriver de funktioner som används i en Azure Resource Manager ma
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920456"
 ---
 # <a name="object-functions-for-arm-templates"></a>Objekt funktioner för ARM-mallar
@@ -20,7 +20,7 @@ Resource Manager innehåller flera funktioner för att arbeta med objekt i din A
 * [överlappning](#intersection)
 * [utgör](#json)
 * [length](#length)
-* [ha](#null)
+* [null](#null)
 * [Union](#union)
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]

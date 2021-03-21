@@ -9,10 +9,10 @@ ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 35e080e0fe45c18ad6a6d5392e0c78b116853c3e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027476"
 ---
 # <a name="troubleshooting-network-performance"></a>Felsöka nätverks prestanda
@@ -179,7 +179,7 @@ Test konfiguration:
 >
 >
 
-| ExpressRoute<br/>Plats|Azure<br/>Region | Ungefärlig<br/>Avstånd (km) | Svarstid|1 session<br/>Bandbredd | Maximal<br/>Bandbredd |
+| ExpressRoute<br/>Location|Azure<br/>Region | Ungefärlig<br/>Avstånd (km) | Svarstid|1 session<br/>Bandbredd | Maximal<br/>Bandbredd |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | USA, västra 2        |    191 km |   5 MS | 262,0 Mbit per sekund |  3,74 Gbits per sekund |
 | Seattle | USA, västra          |  1 094 km |  18 MS |  82,3 Mbit per sekund |  3,70 Gbits per sekund |

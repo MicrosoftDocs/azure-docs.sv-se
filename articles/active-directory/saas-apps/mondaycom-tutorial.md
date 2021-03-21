@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
 ms.openlocfilehash: 06f4ddff9c897858eec27f97f8e45a3d656e951d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101650795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med monday.com
@@ -102,7 +102,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig monday.com-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
 
-    | Namn | Källattribut |
+    | Name | Källattribut |
     |--|--|
     | E-post | user.mail |
     | FirstName | user.givenname |

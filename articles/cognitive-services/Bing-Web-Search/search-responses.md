@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94380988"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>API för webbsökning i Bing svars struktur och svars typer  
@@ -309,7 +309,7 @@ Ett matematiskt uttryck kan innehålla följande symboler:
 
 Ett matematiskt uttryck kan innehålla följande konstanter:
 
-|Symbol|Description|
+|Symbol|Beskrivning|
 |------------|-----------------|
 |Pi|3,14159...|
 |Antal|Antal|
@@ -319,7 +319,7 @@ Ett matematiskt uttryck kan innehålla följande konstanter:
 
 Ett matematiskt uttryck kan innehålla följande funktioner:
 
-|Symbol|Description|
+|Symbol|Beskrivning|
 |------------|-----------------|
 |Sortera|Kvadratrot|
 |Sin [x], cos [x], Tan [x]<br />CSC [x], SEK [x], COT [x]|Trigonometriska funktioner (med argument i radianer)|
@@ -333,7 +333,7 @@ Matematiska uttryck som innehåller variabler (till exempel 4x + 6 = 18, där x 
 
 ## <a name="timezone-answer"></a>Svar på tidszon
 
-Om användaren anger en tid eller datum fråga kan svaret innehålla ett [tids zons](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) svar. Det här svaret stöder implicita eller explicita frågor. En implicit fråga, till exempel *vilken tid är den?* , returnerar den lokala tiden baserat på användarens plats. En explicit fråga, till exempel *vilken tid som finns i Seattle?* , returnerar den lokala tiden för Seattle, WA.
+Om användaren anger en tid eller datum fråga kan svaret innehålla ett [tids zons](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) svar. Det här svaret stöder implicita eller explicita frågor. En implicit fråga, till exempel *vilken tid är den?*, returnerar den lokala tiden baserat på användarens plats. En explicit fråga, till exempel *vilken tid som finns i Seattle?*, returnerar den lokala tiden för Seattle, WA.
 
 `timeZone`Svaret innehåller namnet på platsen, aktuellt UTC-datum och tid på den angivna platsen och UTC-förskjutningen. Om platsens gräns ligger inom flera tids zoner, innehåller svaret det aktuella UTC-datumet och-tiden för alla tids zoner inom gränsen. Eftersom Florida-tillstånd ligger inom två tids zoner, innehåller svaret till exempel det lokala datumet och tiden för båda tids zonerna.  
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion-svar
 
-Om Bing avgör att användaren kan ha tänkt att söka efter något annat, innehåller svaret ett [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) -objekt. Om användaren till exempel söker efter Carlos- *penna* kan Bing se till att användaren förmodligen vill söka efter Carlos-Pena i stället (baserat på tidigare sökningar av andra av *Carlos-pennan* ). Nedan visas ett exempel på ett stavnings svar.
+Om Bing avgör att användaren kan ha tänkt att söka efter något annat, innehåller svaret ett [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) -objekt. Om användaren till exempel söker efter Carlos- *penna* kan Bing se till att användaren förmodligen vill söka efter Carlos-Pena i stället (baserat på tidigare sökningar av andra av *Carlos-pennan*). Nedan visas ett exempel på ett stavnings svar.
 
 ```json
 "spellSuggestions": {
@@ -440,7 +440,7 @@ Om Bing avgör att användaren kan ha tänkt att söka efter något annat, inneh
 
 Svar från API för webbsökning i Bing kan innehålla följande rubriker:
 
-| Sidhuvud | Description |
+| Huvud | Beskrivning |
 |-|-|
 |`X-MSEdge-ClientID`|Det unika ID som Bing har tilldelat till användaren|
 |`BingAPIs-Market`|Marknaden som användes för att uppfylla begäran|

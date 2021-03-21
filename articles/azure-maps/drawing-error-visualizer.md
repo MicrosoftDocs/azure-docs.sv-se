@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96903589"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>Använda Azure Maps Rita fel visualiserare med skapare (för hands version)
@@ -24,7 +24,7 @@ ms.locfileid: "96903589"
 
 Ritnings fel Visualiseraren är ett fristående webb program som visar [varningar från ritnings paket och fel som](drawing-conversion-error-codes.md) upptäckts under konverterings processen. Webb programmet för fel visualiserare består av en statisk sida som du kan använda utan att ansluta till Internet.  Du kan använda fel Visualiseraren för att åtgärda fel och varningar i enlighet med [kraven för ritnings paket](drawing-requirements.md). [Azure Maps Conversion API](/rest/api/maps/conversion) returnerar bara ett svar med en länk till fel visualiseraren endast när ett fel upptäcks.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du kan ladda ned ritnings fel Visualiseraren måste du:
 
@@ -59,7 +59,7 @@ I den här självstudien används [Postman](https://www.postman.com/) -programme
 
 4. Hämta fel Visualiseraren för ritnings paket genom att göra en `HTTP-GET` begäran på URL: en `diagnosticPackageLocation` .
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 I det hämtade zippade paketet från `diagnosticPackageLocation` länken hittar du två filer.
 
