@@ -154,14 +154,10 @@
           href: service-bus-to-event-grid-integration-concept.md
 - name: Anvisningar
   items:
-    - name: Flytta mellan regioner
-      href: move-across-regions.md
-    - name: 'Migrera från API:er för Azure Service Manager (klassisk) till API:er för Resource Manager'
-      href: deprecate-service-bus-management.md
-    - name: Skapa ett namnområde
-      href: service-bus-create-namespace-portal.md
     - name: Utveckla
       items:
+        - name: Skapa ett namnområde
+          href: service-bus-create-namespace-portal.md
         - name: Ange prenumerations filter och åtgärder
           href: service-bus-filter-examples.md
         - name: Meddelandehantering
@@ -224,6 +220,8 @@
       items:
         - name: Migrera från ActiveMQ till Azure Service Bus
           href: migrate-jms-activemq-to-servicebus.md
+        - name: 'Migrera från API:er för Azure Service Manager (klassisk) till API:er för Resource Manager'
+          href: deprecate-service-bus-management.md
     - name: Monitor
       items:
         - name: Slutpunkt till slutpunkt – spårning och diagnostik
@@ -238,6 +236,8 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Hantera
       items:
+        - name: Flytta mellan regioner
+          href: move-across-regions.md
         - name: Uppdatera meddelandeenheter automatiskt
           href: automate-update-messaging-units.md
         - name: Etablera entiteter med Azure PowerShell

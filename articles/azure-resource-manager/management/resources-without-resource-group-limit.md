@@ -4,10 +4,10 @@ description: Visar en lista över de Azure-resurs typer som kan ha fler än 800 
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563121"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resurser som inte är begränsade till 800 instanser per resurs grupp

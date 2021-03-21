@@ -8,17 +8,83 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: cd52f6b9c0ab97132d328f3d9ca65564a4982540
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 8f3e8d72db6679a766991160c303948557719bb9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619094"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657747"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
+
+## <a name="speech-sdk-1160-2021-march-release"></a>Speech SDK-1.16.0:2021 – mars release
+
+**Obs!** Speech SDK i Windows är beroende av den delade Microsoft Visual C++ Redistributable för Visual Studio 2015, 2017 och 2019. Ladda ned den [här](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+
+**Sammanfattning av högdagrar**
+- Mindre minne och disk utrymme gör SDK: n mer effektiv – den här gången var på Android.
+- Förbättrat stöd för komprimerat ljud för både tal-till-text och text till tal, vilket skapar effektivare klient/server-kommunikation.
+- Animerade tecken som talar med text till tal-röster kan nu flytta sina läppar och ansikten naturligt, efter vad de säger.
+- Nya funktioner och förbättringar för att göra tal-SDK användbart för fler användnings fall och i fler konfigurationer.
+- Flera fel korrigeringar för att åtgärda problem, våra värdefulla kunder har flaggat på GitHub! Tack! Se till att feedback kommer!
+
+#### <a name="new-features"></a>Nya funktioner
+
+- **C++/c #/Java/python**: flyttad till den senaste versionen av gstreamer (1.18.3) för att lägga till stöd för att skriva _ett_ medie format i Windows, Linux och Android. Se dokumentationen [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). Tidigare stöddes SDK bara för en delmängd av GStreamer-format som stöds. Detta ger dig flexibiliteten att använda ljud formatet som passar ditt användnings fall.
+- **C++/c #/Java/Objective-C/python**: stöd har lagts till för att avkoda komprimerad TTS/syntetiskt ljud med SDK. Om du ställer in ljud format för indata till PCM och GStreamer är tillgängligt i systemet begär SDK automatiskt komprimerat ljud från tjänsten för att spara bandbredd och avkoda ljudet på klienten. Detta kan minska den bandbredd som behövs för ditt användnings fall. Du kan ange `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` att `false` den här funktionen ska inaktive ras. Information för [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable), [mål-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid), [python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python).
+- **Java Script**: Node.js användare kan nu använda [ `AudioConfig.fromWavFileInput` API: et](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_), så att kunderna kan skicka sökvägen på disken till en WAV-fil till SDK som SDK: n kommer att identifiera. Den här adressen [GitHub problem #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252).
+- **C++/c #/Java/Objective-C/python**: metoden har lagts till `GetVoicesAsync()` för TTS för att returnera alla tillgängliga syntes röster program mässigt. På så sätt kan du lista tillgängliga röster i ditt program eller program mässigt välja mellan olika röster. Information för [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods), [mål-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoices)och [python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods).
+- **C++/c #/Java/JavaScript/Objective-C/python**: händelsen har lagts till `VisemeReceived` för TTS/tal syntes för att returnera synkron viseme-animering. Med Visemes kan du skapa fler naturliga nyhets-och nyhets assistenter, mer interaktiva spel och tecknande tecken och mer intuitiva språkundervisnings videor. Förhöret kan också hämta ljud visuellt och "Lip-Read" vilket tal innehåll som helst. Se dokumentationen [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme).
+- **C++/c #/Java/JavaScript/Objective-C/python**: `BookmarkReached` händelsen tillagd för TTS. Du kan ställa in bok märken i SSML för indata och hämta ljud förskjutningarna för varje bok märke. Du kan använda detta i ditt program för att vidta en åtgärd när vissa ord talas av text till tal. Se dokumentationen [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element).
+- **Java**: stöd har lagts till för API: er för högtalar igenkänning, så att du kan använda högtalar igenkänning från Java. Information [här](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable).
+- **C++/c #/Java/JavaScript/Objective-C/python**: lade till två nya ljud format för utdata med webm container för TTS (Webm16Khz16BitMonoOpus och Webm24Khz16BitMonoOpus). Detta är ett bättre format för strömning av ljud med Opus-kodeken. Information för [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-java-stable), [Java Script](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest), [mål-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat), [python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python).
+- **C++/c #/Java/python**: stöd har lagts till i Linux för att tillåta att anslutningar lyckas i miljöer där nätverks åtkomst till listor över återkallade certifikat har blockerats. Detta möjliggör scenarier där du väljer att låta klient datorn bara ansluta till Azure Speech service. Se dokumentationen [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux).
+- **C++/c #/Java**: stöd har lagts till för att hämta röst profil för scenariot för föredrags igenkänning så att en app kan jämföra högtalar data med en befintlig röst profil. Information för [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognizer), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-dotnet)och [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable). Den här adressen [GitHub problem #808](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/808).
+- **Mål-C/Swift**: stöd har lagts till för modul Framework med paraply rubrik. På så sätt kan du importera tal-SDK som en modul i iOS/Mac mål-C/Swift-appar. Den här adressen [GitHub problem #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452).
+- **Python**: stöd har lagts till för [python 3,9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) och släppt stöd för python 3,5 per python: s [livs längd för 3,5](https://devguide.python.org/devcycle/#end-of-life-branches).
+
+#### <a name="improvements"></a>Bättre
+
+- **Java**: som en del av vår Multi-release-ansträngning för att minska tal SDK: s minnes användning och disk utrymme är Android-binärfiler nu 3% till 5% mindre.
+- **C#**: förbättrad precision, läsbarhet och se även avsnitt i vår C#-referens dokumentation [här](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet) för att förbättra SDK: n i c#.
+- **C++/c #/Java/Objective-C/python**: flytta mikrofon-och högtalar kontroll till separat delat bibliotek. Detta tillåter användning av SDK i användnings fall som inte kräver ljud maskin vara, till exempel om du inte behöver en mikrofon eller högtalare för ditt användnings fall på Linux, behöver du inte installera libasound.
+
+#### <a name="bug-fixes"></a>Felkorrigeringar
+
+- **Java Script**: stora WAV-filhuvuden parsas nu korrekt (ökar huvud segmentet till 512 byte). Den här adressen [GitHub problem #962](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/962).
+- **Java Script**: korrigerat problem med mikrofonens tids inställning om MIC-strömmen slutar innan den stoppas, kan du åtgärda ett problem med tal igenkänning som inte fungerar i Firefox.
+- **Java Script**: nu ska du hantera initierings löfte när webbläsaren tvingar mikrofonen innan turnOn har slutförts.
+- **Java Script**: vi har ersatt URL-beroende med URL-parsning. Den här adressen [GitHub problem #264](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/264).
+- **Android**: fasta återanrop som inte fungerar när `minifyEnabled` har angetts till true.
+- **C++/c #/Java/Objective-C/python**: `TCP_NODELAY` kommer att ställas in korrekt till underliggande socket IO för TTS för att minska svars tiden.
+- **C++/c #/Java/python/Objective-C/go**: åtgärdade en tillfällig krasch när tolken har avbrutits precis efter att du påbörjat ett erkännande.
+- **C++/c #/Java**: åtgärdat en tillfällig krasch vid destruktion av en högtalar tolk.
+
+#### <a name="samples"></a>Exempel
+
+- **Java Script**: [webb läsar exempel](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/browser) kräver inte längre separat nedladdning av JavaScript-biblioteks fil.
+
+## <a name="speech-cli-also-known-as-spx-2021-march-release"></a>Tal-CLI (kallas även SPX): 2021 mars release
+
+**Obs!** kom igång med Azure Speech service Command Line Interface (CLI) [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics). Med CLI kan du använda Azure Speech service utan att skriva någon kod.
+
+#### <a name="new-features"></a>Nya funktioner
+
+- Kommandot har lagts till `spx intent` för avsikts igenkänning, ersättning `spx recognize intent` .
+- Identifiera och avsikt kan nu använda Azure Functions för att beräkna ord fel frekvensen med hjälp av `spx recognize --wer url <URL>` .
+- Identifiera kan nu resultera i resultat som VTT-filer med hjälp av `spx recognize --output vtt file <FILENAME>` .
+- Känslig viktig information döljs nu i fel sökning/utförliga utdata.
+- URL-kontroll och fel meddelande för innehålls fält har lagts till i skapa batch-avskrifter.
+
+**COVID – 19 förkortad-testning**:
+
+Eftersom de pågående Pandemic fortfarande kräver att våra tekniker arbetar hemifrån, har Pandemic manuella verifierings skript avsevärt minskat. Vi testar på färre enheter med färre konfigurationer och sannolikheten för att miljöbaserade fel som är försenade kan ökas. Vi är fortfarande rigoröst validerade med en stor uppsättning Automation. I det förmodade fallet att vi missade något, kan du berätta för oss på [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Håll dig frisk!
+
+
 
 ## <a name="speech-sdk-1150-2021-january-release"></a>1.15.0 för tal-SDK: 2021 – januari utgåva
 

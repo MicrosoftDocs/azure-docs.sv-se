@@ -3,12 +3,12 @@ title: Distribuera exempel på arbets belastnings skiss för ISO 27001 ASE/SQL
 description: Distribuera steg i exemplet ISO 27001 App Service-miljön/SQL Database arbets belastnings skiss, inklusive information om skiss artefakt parameter.
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 60867c117c9f1fda6f8ba33333c19a7bd764d219
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627490"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669652"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Distribuera exempel på arbets belastnings skiss för ISO 27001 App Service-miljön/SQL Database
 
@@ -133,7 +133,7 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 |Azure SQL Database resurs grupp|Resursgrupp|Name|**Locked** -sammanfogar **organisations namnet** med `-workload-azsql-rg` för att göra resurs gruppen unik.|
 |Azure SQL Database resurs grupp|Resursgrupp|Plats|**Locked** – använder skiss parametern.|
 |Azure SQL Database mall|Resource Manager-mall|Användar namn för Azure SQL Server Admin|Användar namn för Azure-SQL Server. Måste matcha samma egenskaps värde i **Key Vault-mallen**. Standardvärdet är _SQL-admin-user_.|
-|Azure SQL Database mall|Resource Manager-mall|Azure SQL Server admin-lösenord (Key Vault resurs-ID)|Resurs-ID för Key Vault. Använd "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" och Ersätt `{subscriptionId}` med ditt prenumerations-ID och `{orgName}` med skiss parametern **organisations namn** .|
+|Azure SQL Database mall|Resource Manager-mall|Azure SQL Server admin-lösenord (Key Vault resurs-ID)|Resurs-ID för Key Vault. Använd "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" och Ersätt `{subscriptionId}` med ditt prenumerations-ID och `{orgName}` med skiss parametern **organisations namn** .|
 |Azure SQL Database mall|Resource Manager-mall|Azure SQL Server admin-lösenord (Key Vault hemligt namn)|SQL Server administratörens användar namn. Måste överensstämma med värdet i **Key Vault Template** -egenskapen **Azure SQL Server Admin användar namn**.|
 |Azure SQL Database mall|Resource Manager-mall|Kvarhållning av logg i dagar|Data kvarhållning i dagar. Standardvärdet är _365_.|
 |Azure SQL Database mall|Resource Manager-mall|AAD admin-objekt-ID|AAD-objekt-ID för den användare som ska tilldelas som Active Directory administratör. Inget standardvärde och får inte vara tomt. Du hittar det här värdet från Azure Portal genom att söka efter och välja "användare" under _tjänster_. Använd rutan _namn_ om du vill filtrera efter konto namnet och välj det kontot. På sidan _användar profil_ väljer du ikonen "Klicka för att kopiera" bredvid _objekt-ID_.|

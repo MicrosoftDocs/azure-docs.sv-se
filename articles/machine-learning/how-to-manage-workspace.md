@@ -11,10 +11,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
 ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518933"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Skapa och hantera Azure Machine Learning arbets ytor 
@@ -195,7 +195,7 @@ När du skapar en privat slut punkt skapas en ny Privat DNS zon med namnet __pri
 2. I __inställningarna__ väljer du __virtuella nätverks länkar__.
 3. Välj __Lägg till__. På sidan __Lägg till virtuell nätverks länk__ anger du ett unikt __länk namn__ och väljer sedan det __virtuella nätverk__ som ska läggas till. Välj __OK__ för att lägga till nätverks länken.
 
-Mer information finns i [Azures DNS-konfiguration för privat slut punkt](../private-link/private-endpoint-dns.md).
+Mer information finns i [DNS-konfiguration för privat slutpunkt i Azure](../private-link/private-endpoint-dns.md).
 
 ### <a name="vulnerability-scanning"></a>Sårbarhetsgenomsökning
 

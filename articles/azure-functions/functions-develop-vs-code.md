@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493962"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Utveckla Azure Functions med hjälp av Visual Studio Code
@@ -138,7 +138,7 @@ Dessa filer skapas, beroende på ditt språk:
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-* [HttpExample.cs klass biblioteks fil](functions-dotnet-class-library.md#functions-class-library-project) som implementerar funktionen.
+* [HttpExample. cs klass biblioteks fil](functions-dotnet-class-library.md#functions-class-library-project) som implementerar funktionen.
 
 # <a name="java"></a>[Java](#tab/java)
 

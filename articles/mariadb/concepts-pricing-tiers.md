@@ -3,14 +3,14 @@ title: Prisnivåer – Azure Database for MariaDB
 description: Lär dig mer om de olika pris nivåerna för Azure Database for MariaDB inklusive Compute-generationer, lagrings typer, lagrings storlek, virtuella kärnor, minne och kvarhållning av säkerhets kopior.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664256"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB pris nivåer
@@ -76,9 +76,9 @@ Vi ökar lagrings gränserna i våra Generell användning-och Minnesoptimerade n
 > Alla andra regioner stöder upp till 4 TB lagring och upp till 6000 IOPS.
 >
 
-### <a name="reaching-the-storage-limit"></a>Nått lagrings gränsen
+### <a name="reaching-the-storage-limit"></a>Lagringsgränsen är nådd
 
-Servrar med mindre än lika med 100 GB allokerat lagrings utrymme markeras som skrivskyddade om det lediga lagrings utrymmet är mindre än 5% av den allokerade lagrings storleken. Servrar med mer än 100 GB allokerat lagringsutrymme markeras bara som skrivskyddade när det lediga lagringsutrymmet är mindre än 5 GB.
+Servrar med 100 GB eller mindre allokerat lagringsutrymme markeras som skrivskyddade om det lediga lagringsutrymmet är mindre än 5 % av den allokerade lagringsstorleken. Servrar med mer än 100 GB allokerat lagringsutrymme markeras bara som skrivskyddade när det lediga lagringsutrymmet är mindre än 5 GB.
 
 Om du till exempel har allokerat 110 GB lagrings utrymme och den faktiska användningen går över 105 GB, är servern markerad som skrivskyddad. Alternativt, om du har allokerat 5 GB lagring, markeras servern som skrivskyddad när den kostnads fria lagrings platsen når mindre än 256 MB.
 
@@ -106,7 +106,7 @@ När du ändrar antalet virtuella kärnor, eller pris nivån, skapas en kopia av
 
 Skalning av lagring och ändring av kvarhållning av säkerhets kopior är true online-åtgärder. Det finns ingen nedtid och ditt program påverkas inte. Som IOPS-skala med storleken på den allokerade lagringen kan du öka tillgängligheten för IOPS för servern genom att skala upp lagringen.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/mariadb/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) månads kostnaden på fliken **pris nivå** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer du **Lägg till objekt**, expanderar kategorin **databaser** och väljer **Azure Database for MariaDB** för att anpassa alternativen.
 

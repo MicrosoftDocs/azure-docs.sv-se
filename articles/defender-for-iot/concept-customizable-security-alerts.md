@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 2/16/2021
 ms.author: shhazam
 ms.openlocfilehash: 04198432f2b600a3c703d5e4f253656f116000db
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100636534"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>Defender för IoT Hub anpassade säkerhets aviseringar
@@ -30,7 +30,7 @@ Följande listor över Defender för IoT-aviseringar är definierbara av dig bas
 
 ## <a name="built-in-custom-alerts-in-the-iot-hub"></a>Inbyggda anpassade aviseringar i IoT Hub
 
-| Allvarlighetsgrad | Aviseringsnamn | Datakälla | Description | Rekommenderad reparation |
+| Allvarlighetsgrad | Aviseringsnamn | Datakälla | Beskrivning | Rekommenderad reparation |
 |--|--|--|--|--|
 | Låg | Anpassad avisering – antalet moln till enhets meddelanden i AMQP-protokollet ligger utanför det tillåtna intervallet | IoT Hub | Antalet moln till enhets meddelanden (AMQP-protokoll) inom ett särskilt tidsintervall är utanför det konfigurerade och tillåtna intervallet. |  |
 | Låg | Anpassad avisering – antalet nekade moln till enhets meddelanden i AMQP-protokollet ligger utanför det tillåtna intervallet | IoT Hub | Antalet meddelanden om moln till enhet (AMQP-protokoll) som avvisats av enheten inom ett särskilt tidsintervall är utanför det konfigurerade och tillåtna intervallet. |  |

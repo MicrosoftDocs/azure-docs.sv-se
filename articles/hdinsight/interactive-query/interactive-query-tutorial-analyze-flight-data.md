@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
 ms.openlocfilehash: 1aab6b4fe4ffafb3cbba60b2b3774d2577d3d53c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103562475"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Självstudie: extrahera, transformera och läsa in data med hjälp av interaktiv fråga i Azure HDInsight
@@ -39,7 +39,7 @@ Den här självstudien omfattar följande uppgifter:
 
 2. På sidan rensar du alla fält och väljer sedan följande värden:
 
-   | Namn | Värde |
+   | Name | Värde |
    | --- | --- |
    | Filtrera år |2019 |
    | Filtrera period |Januari |

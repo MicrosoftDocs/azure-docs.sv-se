@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101091446"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Vanliga frågor om att använda Azure Database Migration Service
@@ -54,7 +54,7 @@ Azure Migrate hjälper till med migrering av lokala virtuella datorer till Azure
 **C. Lagrar Database Migration Service kund information?**
 Nej. Database Migration Service lagrar inte kund information.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 **C. Vilka är kraven för att använda Azure Database Migration Service?**
 Det krävs flera krav för att säkerställa att Azure Database Migration Service fungerar smidigt när du utför databas migreringar. Vissa krav gäller för alla scenarier (käll mål par) som stöds av tjänsten, medan andra krav är unika för ett visst scenario.

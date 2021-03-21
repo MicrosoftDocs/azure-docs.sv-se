@@ -3,16 +3,16 @@ title: 'Snabb start: skapa en server-Azure PowerShell-Azure Database for MariaDB
 description: I den här snabb starten beskrivs hur du använder PowerShell för att skapa en Azure Database for MariaDB-server i en Azure-resurs grupp.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91472d3f3cb39d34f560715f511f666079b1d1c0
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664672"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Snabb start: skapa en Azure Database for MariaDB-server med PowerShell
@@ -66,7 +66,7 @@ Följande tabell innehåller en lista över parametrar och exempel värden som a
 | Sku                        | GP_Gen5_2        | Namnet på SKU:n. Följer konventions **pris – nivå för \_ beräknings skapande \_ virtuella kärnor** i korthet. Mer information om SKU-parametern finns i informationen som följer den här tabellen.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Hur länge en säkerhetskopia ska behållas. Enheten är dagar. Intervallet är 7–35.                                                                                                                                                                                                                                                                       |
 | GeoRedundantBackup         | Enabled          | Huruvida geo-redundanta säkerhetskopieringar ska aktiveras för den här servern eller inte. Det går inte att aktivera det här värdet för servrar i den grundläggande pris nivån och det kan inte ändras efter att servern har skapats. Tillåtna värden: Enabled, Disabled.                                                                                                      |
-| Plats                   | westus           | Azure-regionen för-servern.                                                                                                                                                                                                                                                                                                         |
+| Location                   | westus           | Azure-regionen för-servern.                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | Enabled          | Om SSL ska vara aktiverat eller inte för den här servern. Tillåtna värden: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Serverns lagringskapacitet (enheten är megabyte). Giltig StorageInMb är minst 5120 MB och ökar i steg om 1024 MB. Mer information om lagrings storleks gränser finns i [Azure Database for MariaDB pris nivåer](./concepts-pricing-tiers.md).                                                                               |
 | Version                    | 5.7              | Den MariaDB huvud versionen.                                                                                                                                                                                                                                                                                                                 |

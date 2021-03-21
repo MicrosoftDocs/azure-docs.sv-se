@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
 ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703124"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standard översikt
@@ -44,7 +44,7 @@ Azure DDoS Protection lagrar inte kund information.
 - **DDoS Rapid Response**: engagera DDoS Protection Rapid Response-teamet (DRR) för hjälp med angrepps undersökning och analys. Läs mer i [DDoS Rapid Response](ddos-rapid-response.md).
 - **Kostnads garanti:** Ta emot data överföring och programskalbara service krediter för resurs kostnader som uppstår till följd av dokumenterade DDoS-attacker.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 DDoS skydds planer har en fast månads avgift på $2 944 per månad som omfattar upp till 100 offentliga IP-adresser. Skydd för ytterligare resurser kostar ytterligare $30 per resurs per månad.
 
@@ -52,7 +52,7 @@ Under en klient kan en enda DDoS skydds plan användas över flera prenumeration
 
 Mer information om Azure DDoS Protection standard priser finns i [Azure DDoS Protection standard prissättning](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
-## <a name="reference-architectures"></a>Referensarkitekturer
+## <a name="reference-architectures"></a>Referenserarkitekturer
 
 DDoS Protection standard är utformad för [tjänster som distribueras i ett virtuellt nätverk](../virtual-network/virtual-network-for-azure-services.md). För andra tjänster gäller standard tjänsten för DDoS Protection Basic. Mer information om arkitekturer som stöds finns i [DDoS Protection referens arkitekturer](./ddos-protection-reference-architectures.md). 
 

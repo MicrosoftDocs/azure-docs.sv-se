@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 626e89d8d758d5fe31ef6c913076a9154274bb61
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100654481"
 ---
 # <a name="use-net-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Använd .NET för att hantera ACL: er i Azure Data Lake Storage Gen2
@@ -234,6 +234,6 @@ Om du vill se ett exempel som anger ACL rekursivt i batchar genom att ange en ba
 - [Exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
 - [Gen1 till Gen2-mappning](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
 - [Kända problem](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Ge feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+- [Lämna feedback](https://github.com/Azure/azure-sdk-for-net/issues)
 - [Åtkomst kontroll modell i Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
 - [Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

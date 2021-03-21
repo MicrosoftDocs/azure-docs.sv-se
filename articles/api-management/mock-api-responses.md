@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100547286"
 ---
 # <a name="tutorial-mock-api-responses"></a>Självstudie: blå API-svar
@@ -84,7 +84,7 @@ Ett API visar en eller flera åtgärder. I det här avsnittet lägger du till en
 Även om detta inte krävs för det här exemplet kan ytterligare inställningar för en API-åtgärd konfigureras på andra flikar, inklusive:
 
 
-|Flik      |Description  |
+|Flik      |Beskrivning  |
 |---------|---------|
 |**Query**     |  Lägg till frågeparametrar. Förutom att ange ett namn och en beskrivning kan du ange värden som har tilldelats till en frågeparameter. Ett av värdena kan vara markerat som standard (valfritt).        |
 |**Förfrågan**     |  Definiera innehålls typer, exempel och scheman för begäran.       |

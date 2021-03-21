@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/15/2021
 ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561693"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestanda-och justerings guiden för att mappa data flöden
@@ -115,7 +115,7 @@ Data flöden distribuerar data bearbetningen över olika noder i ett Spark-klust
 
 Standard kluster storleken är fyra driv rutins noder och fyra arbetsnoder.  När du bearbetar mer data rekommenderas större kluster. Nedan visas möjliga alternativ för storleks ändring:
 
-| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Anteckningar |
+| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Kommentarer |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Inte tillgängligt för beräknings optimering |
 | 8 | 8 | 16 | |

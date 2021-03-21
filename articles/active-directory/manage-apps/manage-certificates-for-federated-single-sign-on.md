@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 63054b18589cdcc2d950d70452b4f982c324a6c3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259227"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604006"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Hantera certifikat för federerad enkel inloggning i Azure Active Directory
 
@@ -89,6 +89,8 @@ Azure AD skickar ett e-postmeddelande 60, 30 och 7 dagar innan SAML-certifikatet
 1. Upprepa föregående steg för varje e-postadress som du vill lägga till.
 1. För varje e-postadress som du vill ta bort väljer du ikonen **ta bort** (ett skräp post kan) bredvid e-postadressen.
 1. Välj **Spara**.
+
+Du kan lägga till upp till 5 e-postadresser i meddelande listan (inklusive e-postadressen till den administratör som lade till programmet). Om du vill att fler personer ska meddelas använder du e-postmeddelandena för distributions listan.
 
 Du får e-postmeddelandet via aadnotification@microsoft.com . Lägg till det här e-postmeddelandet till dina kontakter för att undvika att e-postmeddelandet till din skräp post
 
