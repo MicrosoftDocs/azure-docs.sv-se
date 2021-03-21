@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654957"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurera VMware haveri beredskap i en miljö med flera organisationer med Cloud Solution Provider (CSP)-programmet
@@ -22,7 +22,7 @@ Med [Azure Site Recovery](site-recovery-overview.md)kan du, som partner, hantera
 
 Den här artikeln beskriver hur du som partner kan skapa och hantera klient prenumerationer via CSP, för ett scenario med VMware-replikering för flera innehavare.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera VMware-replikering måste du göra följande:
 

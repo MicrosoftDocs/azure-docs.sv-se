@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
 ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028088"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Om virtuell nätverks installation i en Azure Virtual WAN Hub (för hands version)
@@ -85,7 +85,7 @@ NVA i den virtuella hubben är tillgänglig för för hands version i följande 
 | Asien | Japan, östra |
 | Australien | Australien, östra |
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Jag är en partner för nätverks installationer och vill få våra NVA i hubben.  Kan jag ansluta till det här partner programmet?
 

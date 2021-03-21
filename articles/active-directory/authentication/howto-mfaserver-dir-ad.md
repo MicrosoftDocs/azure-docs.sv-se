@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b3778ea68edf1fbbb41efb899749e6f35b39bae
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742297"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Katalogintegrering mellan Azure MFA Server och Active Directory
@@ -92,7 +92,7 @@ Attribut kan anges manuellt och behöver inte matcha ett attribut i attributlist
 | Efternamn |Ange attributnamnet för attributet som innehåller efternamnet i en användarpost.  Standardvärdet är sn. |
 | E-postadress |Ange attributnamnet för attributet som innehåller e-postadressen i en användarpost.  E-postadressen används för att skicka välkomst- och uppdateringsmeddelanden till användaren via e-post.  Standardvärdet är mail. |
 | Användargrupp |Ange attributnamnet för attributet som innehåller användargruppen i en användarpost.  Användargrupp kan användas för att filtrera användare i agenten och rapporter på Multi-Factor Auth Server-hanteringsportalen. |
-| Description |Ange attributnamnet för attributet som innehåller beskrivningen i en användarpost.  Beskrivningen används endast för sökning.  Standardvärdet är description. |
+| Beskrivning |Ange attributnamnet för attributet som innehåller beskrivningen i en användarpost.  Beskrivningen används endast för sökning.  Standardvärdet är description. |
 | Telefonsamtalsspråk |Ange attributnamnet för attributet som innehåller kortnamnet för språket som ska användas för röstsamtal för användaren. |
 | Textmeddelandespråk |Ange attributnamnet för attributet som innehåller kortnamnet för språket som ska användas för SMS-meddelanden för användaren. |
 | Mobilappspråk |Ange attributnamnet för attributet som innehåller kortnamnet för språket som ska användas för textmeddelanden i telefonappar för användaren. |
@@ -104,7 +104,7 @@ Attribut kan anges manuellt och behöver inte matcha ett attribut i attributlist
 | Fax |Ange attributnamnet för attributet som innehåller faxnumret i en användarpost.  Standardvärdet är facsimileTelephoneNumber. |
 | IP-telefon |Ange attributnamnet för attributet som innehåller IP-telefonnumret i en användarpost.  Standardvärdet är ipPhone. |
 | Anpassad |Ange attributnamnet för attributet som innehåller ett anpassat telefonnummer i en användarpost.  Standardvärdet är tomt. |
-| Filnamnstillägg |Ange attributnamnet för attributet som innehåller anknytningsnumret i en användarpost.  Värdet för anknytningsfältet används endast som anknytningen till det primära telefonnumret.  Standardvärdet är tomt. <br><br>Om attributet Anknytning inte anges kan anknytningar tas med som en del av telefonattributet. I så fall lägger du till ”x” före anknytningen så att den tolkas korrekt.  I exempelnumret 555-123-4567 x890 tolkas 555-123-4567 som telefonnumret och 890 som anknytningen. |
+| Anknytning |Ange attributnamnet för attributet som innehåller anknytningsnumret i en användarpost.  Värdet för anknytningsfältet används endast som anknytningen till det primära telefonnumret.  Standardvärdet är tomt. <br><br>Om attributet Anknytning inte anges kan anknytningar tas med som en del av telefonattributet. I så fall lägger du till ”x” före anknytningen så att den tolkas korrekt.  I exempelnumret 555-123-4567 x890 tolkas 555-123-4567 som telefonnumret och 890 som anknytningen. |
 | Knappen Återställ standardvärden |Klicka på **Återställ standardvärden** om du vill återställa standardvärdet för alla attribut.  Standardvärdena bör fungera korrekt med det vanliga Active Directory- eller ADAM-schemat. |
 
 Om du vill redigera attribut klickar du på **Redigera** på fliken attribut.  Då visas ett fönster där du kan redigera attributen. Välj **...** bredvid valfritt attribut så öppnas ett fönster där du kan välja vilka attribut som ska visas.

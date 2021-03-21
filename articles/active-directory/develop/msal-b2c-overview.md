@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
 ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98063730"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Använd Microsoft Authentication Library för Java Script för att arbeta med Azure AD B2C
@@ -215,6 +215,6 @@ När användaren väljer **glömt lösen ord**, genererar programmet ett fel som
 
 Lär dig mer om dessa Azure AD B2C koncept:
 
-- [Användar flöden](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Användarflöden](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Anpassade principer](../../active-directory-b2c/custom-policy-get-started.md)
 - [UX-anpassning](../../active-directory-b2c/configure-user-input.md)

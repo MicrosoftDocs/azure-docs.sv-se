@@ -4,10 +4,10 @@ description: 'Snabb start: Använd Azure Event Grid och Azure Portal för att sk
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005698"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Snabb start: dirigera Blob Storage-händelser till webb slut punkt med Azure Portal
@@ -20,7 +20,7 @@ När du är klar kan se du att händelsedata som har skickats till webbappen.
 
 ![Visa resultat](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 1. Logga in på [Azure Portal](https://portal.azure.com/).
 

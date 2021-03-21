@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899379"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrera arbetsbelastningar med hjälp av stretchade Layer 2-nätverk
@@ -57,8 +57,8 @@ I följande tabell visas vilka vSphere-versioner och typer av nätverks anpassni
 
 | vSphere-version | Typ av vSwitch-källa | Virtuell NIC-drivrutin | Typ av mål vSwitch | Stöds? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Alla | DVS | Alla | DVS | Yes |
-| vSphere 6,7 UI eller högre, 6,5 P03 eller högre | DVS | VMXNET3 | N-VDS | Yes |
+| Alla | DVS | Alla | DVS | Ja |
+| vSphere 6,7 UI eller högre, 6,5 P03 eller högre | DVS | VMXNET3 | N-VDS | Ja |
 | vSphere 6,7 UI eller högre, 6,5 P03 eller högre | DVS | E1000 | N-VDS | [Stöds inte per VWware](https://kb.vmware.com/s/article/56991) |
 | vSphere 6,7 UI eller 6.5 P03, NSX-V eller versioner under NSX-T 2.2, 6.5 P03 eller senare | Alla | Alla | N-VDS | [Stöds inte per VWware](https://kb.vmware.com/s/article/56991) |
 

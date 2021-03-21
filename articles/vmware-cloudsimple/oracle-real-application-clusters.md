@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899277"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimera ditt CloudSimple privata moln för att installera Oracle RAC
@@ -46,14 +46,14 @@ I följande exempel används diskarna som definierats i tabellen nedan.
 
 | Disk                                      | Syfte                                       | Delad disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Operativsystem                                        | Operativsystemdisk                         | No          |
-| STÖDRASTRET                                      | Installations plats för Oracle Grid-programvara     | No          |
-| DATABASE                                  | Installations plats för Oracle Database-programvara | No          |
-| ORAHOME                                   | Bas plats för binärfiler för Oracle-databasen    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Disk där Oracle-databasfiler lagras   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Gör om logg diskar                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Röstnings diskar                                  | Yes         |
-| FRA1, FRA2                                | Snabba återställnings områden diskar                      | Yes         |
+| Operativsystem                                        | Operativsystemdisk                         | Inga          |
+| STÖDRASTRET                                      | Installations plats för Oracle Grid-programvara     | Inga          |
+| DATABASE                                  | Installations plats för Oracle Database-programvara | Inga          |
+| ORAHOME                                   | Bas plats för binärfiler för Oracle-databasen    | Inga          |
+| DATA1, DATA2, DATA3, DATA4                | Disk där Oracle-databasfiler lagras   | Ja         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Gör om logg diskar                                | Ja         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Röstnings diskar                                  | Ja         |
+| FRA1, FRA2                                | Snabba återställnings områden diskar                      | Ja         |
 
 ![Disk konfiguration för Oracle-virtuell dator](media/oracle-vmdk.png)
 

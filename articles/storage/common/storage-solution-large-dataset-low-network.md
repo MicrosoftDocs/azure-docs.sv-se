@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704648"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Dataöverföring för stora datamängder med låg eller ingen nätverksbandbredd
@@ -52,7 +52,7 @@ I den här tabellen sammanfattas skillnaderna mellan de viktigaste funktionerna.
 |    **Form faktor**                  |    5 SSD per order             |    1 X 50 – kg. enhet för Skriv bords storlek per beställning    |    1 X ~ 500 – kg. stor enhet per beställning    |    Upp till 10 hård diskar/SSD per beställning        |
 |    **Första installations tid**           |    Låg <br>(15 minuter)            |    Låg till måttlig <br> (<30 minuter)               |    Medel<br>(1-2 timmar)               |    Måttligt till svårt<br>variabel |
 |    **Skicka data till Azure**           |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
-|    **Exportera data från Azure**       |    Nej                           |    Nej                                            |    Nej                                    |    Ja                                 |
+|    **Exportera data från Azure**       |    Inga                           |    Inga                                            |    Inga                                    |    Ja                                 |
 |    **Kryptering**                   |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    **Maskinvara**                     |     Microsoft tillhandahålls          |    Microsoft tillhandahålls                            |    Microsoft tillhandahålls                    |    Kunden har tillhandahållit                   |
 |    **Nätverksgränssnitt**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |

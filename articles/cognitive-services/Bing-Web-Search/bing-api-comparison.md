@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349545"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Vad är API:er för Bing-sökresultat?
@@ -47,7 +47,7 @@ Följande API: er för Bing-sökning returnerar särskilt innehåll från webben
 
 ## <a name="the-bing-custom-search-api"></a>API för anpassad Bing-sökning
 
-Genom att skapa en anpassad Sök instans med [Anpassad sökning i Bing](../Bing-Custom-Search/overview.md) API kan du skapa en Sök upplevelse som bara fokuserar på innehåll och ämnen som du bryr dig om. När du till exempel har angett domäner, webbplatser och vissa webb sidor som Bing söker, kommer Anpassad sökning i Bing att skräddarsy resultaten till det aktuella innehållet. Du kan lägga till anpassade automatiska förslag, bilder och Videosökning-API: er i Bing för att ytterligare anpassa din Sök upplevelse.
+Genom att skapa en anpassad Sök instans med [anpassad Bing-sökning](../Bing-Custom-Search/overview.md) API kan du skapa en Sök upplevelse som bara fokuserar på innehåll och ämnen som du bryr dig om. När du till exempel har angett domäner, webbplatser och vissa webb sidor som Bing söker, kommer Anpassad Bing-sökning att skräddarsy resultaten till det aktuella innehållet. Du kan lägga till anpassade automatiska förslag, bilder och Videosökning-API: er i Bing för att ytterligare anpassa din Sök upplevelse.
 
 ## <a name="additional-bing-search-apis"></a>Ytterligare API:er för Bing-sökresultat
 

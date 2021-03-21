@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
 ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790994"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Självstudie: undersöka incidenter med Azure Sentinel
@@ -36,8 +36,8 @@ Den här artikeln beskriver:
 
 En incident kan innehålla flera aviseringar. Det är en agg regering av alla relevanta bevis för en speciell undersökning. En incident skapas baserat på analys regler som du skapade på sidan **analys** . Egenskaperna som rör aviseringarna, till exempel allvarlighets grad och status, anges på incident nivå. När du har informerat Azure Sentinel vet vilka typer av hot du letar efter och hur du hittar dem kan du övervaka identifierade hot genom att undersöka incidenter.
 
-## <a name="prerequisites"></a>Krav
-- Du kommer bara att kunna undersöka incidenten om du använde enhets mappnings fälten när du konfigurerade din analys regel. Undersöknings diagrammet kräver att den ursprungliga incidenten innehåller entiteter.
+## <a name="prerequisites"></a>Förutsättningar
+- Du kommer bara att kunna undersöka incidenten om du använde enhets mappnings fälten när du konfigurerade din analys regel. Undersökningsdiagrammet förutsätter att den ursprungliga incidenten har entiteter.
 
 - Om du har en gäst användare som behöver tilldela incidenter måste användaren tilldelas [katalog läsar](../active-directory/roles/permissions-reference.md#directory-readers) rollen i din Azure AD-klient. Vanliga (icke-gäst) användare har den här rollen tilldelad som standard.
 
@@ -80,7 +80,7 @@ Så här använder du undersöknings diagrammet:
 1. Välj en incident och välj sedan **Undersök**. Då kommer du till undersöknings diagrammet. Grafen innehåller en illustrations karta över de entiteter som är direkt anslutna till aviseringen och varje resurs som är ansluten ytterligare.
 
    > [!IMPORTANT] 
-   > - Du kommer bara att kunna undersöka incidenten om du använde enhets mappnings fälten när du konfigurerade din analys regel. Undersöknings diagrammet kräver att den ursprungliga incidenten innehåller entiteter.
+   > - Du kommer bara att kunna undersöka incidenten om du använde enhets mappnings fälten när du konfigurerade din analys regel. Undersökningsdiagrammet förutsätter att den ursprungliga incidenten har entiteter.
    >
    > - Azure Sentinel stöder för närvarande undersökning av **incidenter upp till 30 dagar gammal**.
 

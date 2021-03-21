@@ -11,10 +11,10 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006395"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Ansluta en RuuviTag-sensor till ditt Azure IoT Central-program
@@ -45,10 +45,10 @@ Om du vill publicera en RuuviTag-sensor i din Azure IoT Central-programinstans m
 
 Så här lägger du till en RuuviTag enhets mal len:
 
-1. Gå till fliken ***enhets mallar** _ i den vänstra rutan, Välj _* + ny * *: ![ Skapa ny enhets mall ](./media/howto-connect-ruuvi/devicetemplate-new.png) sidan ger dig ett alternativ till **_skapa en anpassad mall_*_ eller _*_Använd en förkonfigurerad enhets mall_*_
+1. Gå till fliken ***enhets mallar** _ i den vänstra rutan, Välj _* + ny * *: ![ Skapa ny enhets mall ](./media/howto-connect-ruuvi/devicetemplate-new.png) sidan ger dig ett alternativ till ***skapa en anpassad mall**_ eller _ *_Använd en förkonfigurerad enhets mall_**
 1. Välj enhets mal len RuuviTag i listan med förkonfigurerade enhetsspecifika mallar enligt nedan:  ![ Välj enhets mal len för RuuviTag](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. Välj _*_Nästa: anpassa_*_ för att fortsätta till nästa steg.
-1. På nästa skärm väljer du _*_skapa_*_ för att publicera enhets mal len C500 i ditt IoT Central-program.
+1. Välj ***Nästa: anpassa*** för att fortsätta till nästa steg.
+1. På nästa skärm väljer du ***skapa*** för att publicera enhets mal len C500 i ditt IoT Central-program.
 
 ## <a name="connect-a-ruuvitag-sensor"></a>Ansluta en RuuviTag-sensor
 
@@ -68,7 +68,7 @@ Om du inte har någon fysisk RuuviTag-enhet kan du skapa en simulerad RuuviTag s
 
 Så här skapar du en simulerad RuuviTag:
 
-1. Välj _ * enheter > RuuviTag * *.
+1. Välj **enheter > RuuviTag**.
 1. Välj **+ Ny**.
 1. Ange ett unikt **enhets-ID** och ett eget **enhets namn**.  
 1. Aktivera **simulerad** inställning.

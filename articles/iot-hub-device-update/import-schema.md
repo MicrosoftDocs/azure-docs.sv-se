@@ -7,10 +7,10 @@ ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 13044b8f087b403f83516a32a490d2dee8db700f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102055011"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importera uppdateringar till enhets uppdatering för IoT Hub-schema och annan information
@@ -33,7 +33,7 @@ Om du vill importera en uppdatering till enhets uppdateringen för IoT Hub, se t
 | Namn | Typ | Beskrivning | Begränsningar |
 | --------- | --------- | --------- | --------- |
 | Leverantör | sträng | Leverantörs del av uppdaterings identiteten. | 1-64 tecken, alfanumeriskt, prick och tank streck. |
-| Namn | sträng | Namn på uppdaterings identiteten. | 1-64 tecken, alfanumeriskt, prick och tank streck. |
+| Name | sträng | Namn på uppdaterings identiteten. | 1-64 tecken, alfanumeriskt, prick och tank streck. |
 | Version | version | Versions del av uppdaterings identiteten. | 2 till 4 delar, punktavgränsat versions nummer mellan 0 och 2147483647. Inledande nollor tas bort. |
 
 ## <a name="file-object"></a>Fil objekt
@@ -53,7 +53,7 @@ Om du vill importera en uppdatering till enhets uppdateringen för IoT Hub, se t
 
 ## <a name="hashes-object"></a>Hash-objekt
 
-| Namn | Krävs | Typ | Beskrivning |
+| Name | Krävs | Typ | Beskrivning |
 | --------- | --------- | --------- | --------- |
 | SHA256 | True | sträng | Base64-kodad hash för filen med SHA-256-algoritmen. |
 

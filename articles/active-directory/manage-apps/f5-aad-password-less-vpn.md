@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730895"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Självstudie för Azure Active Directory integration med enkel inloggning med F5 BIG-IP för lösen ords mindre VPN
@@ -41,7 +41,7 @@ I det här scenariot kommer BIG-IP APM-instansen av SSL-VPN-tjänsten att konfig
 >[!NOTE]
 >Alla exempel strängar eller värden som refereras till i den här guiden bör ersättas med dem för din faktiska miljö.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Tidigare erfarenhet eller kunskaper om F5 BIG-IP är inte nödvändigt, men du behöver:
 
@@ -88,7 +88,7 @@ Genom att konfigurera ett SAML Federations förtroende mellan BIG-IP kan du få 
 
    - Gör samma sak med text rutan **svars-URL** , inklusive sökvägen till SAML-slutpunkten. Till exempel `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`
 
-   - I den här konfigurationen kommer programmet att köras i ett IDP initierat läge, där Azure AD utfärdar användaren med en SAML-kontroll innan den omdirigeras till tjänsten BIG-IP SAML. För appar som inte stöder IDP initierat läge anger du **inloggnings-URL: en** för tjänsten Big-IP SAML. Ett exempel är `https://ssl-vpn.contoso.com`.
+   - I den här konfigurationen kommer programmet att köras i ett IDP initierat läge, där Azure AD utfärdar användaren med en SAML-kontroll innan den omdirigeras till tjänsten BIG-IP SAML. För appar som inte stöder IDP initierat läge anger du **inloggnings-URL: en** för tjänsten Big-IP SAML. Till exempel `https://ssl-vpn.contoso.com`.
 
    - För utloggnings-URL: en anger du slut punkten för utloggnings punkten för BIG-IP APM (service nivå) för pended av värd rubriken för den tjänst som publiceras. Till exempel `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
 
@@ -165,7 +165,7 @@ Följande steg gör det möjligt för SSL-VPN att erbjudas användare via BIG-IP
 
 1. Gå till **åtkomst** till  >  **webbbäst**  >  **Webtop-listor** och välj **skapa**.
 
-2. Ge portalen ett namn och ange en **fullständig** typ. Ett exempel är `Contoso_webtop`.
+2. Ge portalen ett namn och ange en **fullständig** typ. Till exempel `Contoso_webtop`.
 
 3. Justera återstående inställningar och välj sedan **avslutad**.
 

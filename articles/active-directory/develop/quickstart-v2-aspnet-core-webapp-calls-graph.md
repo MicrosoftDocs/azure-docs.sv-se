@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 0a5d44f0cc42b80fa344e06f31275e87d265800e
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: efa9465adc13b50e6ae12628d21347152c3fc2c0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103846"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104578727"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Snabb start: ASP.NET Core-webbapp som loggar in användare och anropar Microsoft Graph för deras räkning
 
@@ -81,6 +81,8 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 > [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
 > [Ladda ned kod exemplet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1-callsgraph.zip)
+
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras
@@ -168,7 +170,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApp` lägger till Microsoft Identity Platform-autentisering till ditt program. Detta tillhandahålls av [Microsoft. Identity. Web](microsoft-identity-web.md). Den konfigureras sedan att logga in med Microsoft Identity Platform baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |

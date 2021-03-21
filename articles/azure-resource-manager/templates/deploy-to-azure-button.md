@@ -4,10 +4,10 @@ description: Använd knappen för att distribuera Azure Resource Manager mallar 
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028751"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Använd en distributions knapp för att distribuera mallar från GitHub-lagringsplatsen

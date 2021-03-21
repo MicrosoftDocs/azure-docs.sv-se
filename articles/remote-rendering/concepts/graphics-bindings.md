@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99593916"
 ---
 # <a name="graphics-binding"></a>Grafik bindning
@@ -275,7 +275,7 @@ public struct SimulationUpdateResult
 
 Struktur medlemmarna har följande betydelse:
 
-| Medlem | Description |
+| Medlem | Beskrivning |
 |--------|-------------|
 | FrameId | ID för kontinuerlig ram. Krävs för SimulationUpdateParameters-indatamängd och måste ökas kontinuerligt för varje ny ram. Kommer att vara 0 i SimulationUpdateResult om inga ramdata är tillgängliga än. |
 | ViewTransform | Vänster-höger-stereo-par av ramens omvandlings-matriser för kamera visning. Endast medlemmen är giltig för monoscopic-rendering `Left` . |

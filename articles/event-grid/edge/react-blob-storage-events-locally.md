@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005069"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Självstudie: reagera på Blob Storage händelser på IoT Edge (förhands granskning)
@@ -324,7 +324,7 @@ Grattis! Du har slutfört självstudien. I följande avsnitt finns information o
 
 Här är en lista över de händelse egenskaper som stöds och deras typer och beskrivningar. 
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | ämne | sträng | Fullständig resurs Sök väg till händelse källan. Det går inte att skriva till det här fältet. Event Grid ger det här värdet. |
 | Ämne | sträng | Utgivardefinierad sökväg till händelseobjektet. |
@@ -337,7 +337,7 @@ Här är en lista över de händelse egenskaper som stöds och deras typer och b
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | api | sträng | Den åtgärd som utlöste händelsen. Det kan vara något av följande värden: <ul><li>BlobCreated-tillåtna värden är: `PutBlob` och `PutBlockList`</li><li>BlobDeleted-tillåtna värden är `DeleteBlob` `DeleteAfterUpload` och `AutoDelete` . <p>`DeleteAfterUpload`Händelsen genereras när BLOB tas bort automatiskt eftersom den önskade deleteAfterUpload-egenskapen har angetts till true. </p><p>`AutoDelete` händelsen genereras när blobben tas bort automatiskt eftersom det önskade egenskap svärdet för deleteAfterMinutes har upphört att gälla.</p></li></ul>|
 | clientRequestId | sträng | ett ID för begäran som tillhandahållits för Storage API-åtgärden. Detta ID kan användas för att korrelera Azure Storage diagnostikloggar med hjälp av fältet "client-Request-ID" i loggarna och kan tillhandahållas i klient begär Anden med hjälp av huvudet "x-MS-client-Request-ID". Mer information finns i [logg format](/rest/api/storageservices/storage-analytics-log-format). |

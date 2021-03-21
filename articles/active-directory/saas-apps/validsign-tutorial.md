@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 16cd9c8c1cab8156cdc3384b01e991256b3b8c8e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102055649"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-validsign"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ValidSign
@@ -95,7 +95,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig ValidSign-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | ----------------- | --------- |
     | förnamn | user.givenname |
     | efternamn | user.surname |

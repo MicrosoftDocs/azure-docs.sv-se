@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f8f270f740951b95b0d4c00cbcf9b08e20a8e0c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743732"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licensierings krav för Azure Active Directory återställning av lösen ord för självbetjäning

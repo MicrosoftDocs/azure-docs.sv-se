@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103487878"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Snabb start: lägga till 1:1 video som anropar din app (Java Script)
@@ -126,7 +126,7 @@ let rendererRemote;
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Namn      | Beskrivning | 
+| Name      | Beskrivning | 
 | :---        |    :----   |
 | CallClient  | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.      |
 | CallAgent  | CallAgent används för att starta och hantera samtal.        |

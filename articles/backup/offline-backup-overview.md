@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 7c65cf6b36af3057fb06c6a6584fa458b1030c72
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704143"
 ---
 # <a name="overview-of-offline-backup"></a>Översikt över säkerhets kopiering offline
@@ -76,7 +76,7 @@ I följande tabell jämförs de två tillgängliga alternativen så att du kan g
 | Regioner som stöds                                           | [Azure Data Box disk regioner](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box regioner](../databox/data-box-disk-overview.md#region-availability) | [Azure import/export-tjänst regioner](../import-export/storage-import-export-service.md#region-availability) |
 | Leverans mellan länder                                     | Stöds inte  <br>    Käll adress och mål Azure-datacenter måste finnas i samma land/region * | Stöds                                                    |
 | Överför logistik (leverans, transport, upphämtning)           | Fullständigt Microsoft-hanterat                                     | Kund hantering                                            |
-| Prissättning                                                      | [Azure Data Box priser](https://azure.microsoft.com/pricing/details/databox/) <br> [Priser för Azure Data Box disken](https://azure.microsoft.com/pricing/details/databox/disk/) | [Prissättning för Azure import/export-tjänsten](https://azure.microsoft.com/pricing/details/storage-import-export/) |
+| Priser                                                      | [Azure Data Box priser](https://azure.microsoft.com/pricing/details/databox/) <br> [Priser för Azure Data Box disken](https://azure.microsoft.com/pricing/details/databox/disk/) | [Prissättning för Azure import/export-tjänsten](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
 * Om ditt land/din region inte har något Azure-datacenter, måste du leverera diskarna till ett Azure-datacenter i ett annat land/en annan region.
 

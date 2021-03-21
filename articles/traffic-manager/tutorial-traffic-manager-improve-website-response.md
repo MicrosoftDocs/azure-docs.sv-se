@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: d8262a80fac42f103d571523c75c5064d5d43949
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003828"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Självstudie: förbättra webbplatsens svar med hjälp av Traffic Manager
 
 I den här självstudien beskrivs hur du använder Traffic Manager för att skapa en webbplats med hög tillgänglighet genom att dirigera användar trafik till webbplatsen med den lägsta svars tiden. Normalt är data centret med den lägsta svars tiden det som är närmast det geografiska avståndet.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa två virtuella datorer som kör en grundläggande webbplats i IIS
@@ -54,7 +54,7 @@ I det här avsnittet skapar du två webbplatsinstanser som tillhandahåller två
 
 #### <a name="create-vms-for-running-websites"></a>Skapa virtuella datorer för att köra webbplatser
 
-I det här avsnittet skapar du två virtuella datorer *myIISVMEastUS* och *myIISVMWestEurope* i Azure-regionerna **USA, östra** och Västeuropa. **West Europe**
+I det här avsnittet skapar du två virtuella datorer *myIISVMEastUS* och *myIISVMWestEurope* i Azure-regionerna **USA, östra** och Västeuropa. 
 
 1. I det övre vänstra hörnet av Azure Portal väljer du **skapa en resurs**  >  **Compute**  >  **Windows Server 2019 Data Center**.
 2. I **Skapa en virtuell dator** skriver eller väljer du följande värden på fliken **Grundläggande**:
@@ -145,7 +145,7 @@ Skapa en Traffic Manager profil som dirigerar användar trafiken genom att skick
     | Routningsmetod          | Välj routningsmetod för **prestanda** .                                       |
     | Prenumeration            | Välj din prenumeration.                          |
     | Resursgrupp          | Välj resurs gruppen *myResourceGroupTM1*. |
-    | Plats                | Välj **USA, östra**. Inställningen refererar till platsen för resursgruppen och har ingen inverkan på Traffic Manager-profilen som distribueras globalt.                              |
+    | Location                | Välj **USA, östra**. Inställningen refererar till platsen för resursgruppen och har ingen inverkan på Traffic Manager-profilen som distribueras globalt.                              |
     |
 
     ![Skapa en Traffic Manager-profil](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)

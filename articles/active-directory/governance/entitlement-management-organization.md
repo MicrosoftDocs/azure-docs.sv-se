@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059389"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Lägga till en ansluten organisation i hantering av Azure AD-rättigheter
@@ -49,7 +49,7 @@ I det här fallet kan du konfigurera två anslutna organisationer. Du skapar en 
 Hur användare från Azure AD-katalogen eller domänen autentiseras beror på autentiseringstypen. Typerna av autentisering för anslutna organisationer är:
 
 - Azure AD
-- [Direkt federation](../external-identities/direct-federation.md)
+- [Direkt Federation](../external-identities/direct-federation.md)
 - [Eng ång slö sen ord](../external-identities/one-time-passcode.md) (domän)
 
 Se följande videoklipp om du vill ha en demonstration av hur du lägger till en ansluten organisation:

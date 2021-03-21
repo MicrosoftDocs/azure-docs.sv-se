@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d658d7e64f720a3fb700d157cd5194ff50a48c33
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103471636"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>API för Application Insights för anpassade händelser och mått
@@ -1026,7 +1026,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 För att undvika att kombinera telemetri från utvecklings-, test-och produktions miljöer, kan du [skapa separata Application Insights resurser](./create-new-resource.md) och ändra deras nycklar, beroende på miljön.
 
-I stället för att hämta Instrumentation-nyckeln från konfigurations filen kan du ange den i din kod. Ange nyckeln i en initierings metod, till exempel global.aspx.cs i en ASP.NET-tjänst:
+I stället för att hämta Instrumentation-nyckeln från konfigurations filen kan du ange den i din kod. Ange nyckeln i en initierings metod, till exempel global. aspx. cs i en ASP.NET-tjänst:
 
 *C#*
 

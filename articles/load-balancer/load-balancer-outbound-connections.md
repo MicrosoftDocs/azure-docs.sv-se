@@ -9,10 +9,10 @@ ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
 ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052830"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Använda SNAT för utgående anslutningar
@@ -66,7 +66,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
  | Offentlig belastningsutjämnare eller fristående | [SNAT (käll nätverks adress översättning)](#snat) </br> används inte. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Beskrivning
 
 
  Azure använder den offentliga IP-adress som tilldelats IP-konfigurationen av instansens nätverkskort för alla utgående flöden. Instansen har alla tillfälliga portar tillgängliga. Det spelar ingen roll om den virtuella datorn är belastningsutjämnad eller inte. Det här scenariot prioriteras framför de andra. 
@@ -83,7 +83,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
  | Standard offentlig belastningsutjämnare | Användning av IP-adresser för belastningsutjämnare för [SNAT](#snat).| TCP </br> UDP |
 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Beskrivning
 
 
  Belastnings Utjämnings resursen har kon figurer ATS med en utgående regel eller en regel för belastnings utjämning som aktiverar standard SNAT. Den här regeln används för att skapa en länk mellan den offentliga IP-klient delen med backend-poolen. 
@@ -110,7 +110,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
  | ------------ | ------ | ------------ |
  | Standard intern belastningsutjämnare | Ingen Internet anslutning.| Inget |
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Beskrivning
  
 När du använder en intern belastningsutjämnare med standard typ finns det ingen användning av tillfälliga IP-adresser för SNAT. Detta är att stödja säkerhet som standard och se till att alla IP-adresser som används av resursen kan konfigureras och kan reserveras. För att få en utgående anslutning till Internet när du använder en standard intern belastningsutjämnare, konfigurerar du en offentlig IP-adress på instans nivå för att följa beteendet i (scenario 1) [#scenario1] eller lägger till Server dels instanserna till en offentlig standard belastningsutjämnare med en utgående regel som kon figurer ATS i additon till den interna belastningsutjämnaren för att följa beteendet i (scenario 2) [#scenario2]. 
 
@@ -121,7 +121,7 @@ När du använder en intern belastningsutjämnare med standard typ finns det ing
  | ------------ | ------ | ------------ |
  |Inget </br> Basic Load Balancer | [SNAT](#snat) med dynamisk IP-adress på instans nivå| TCP </br> UDP | 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Beskrivning
 
 
  När den virtuella datorn skapar ett utgående flöde översätter Azure käll-IP-adressen till en dynamiskt allokerad offentlig käll-IP-adress. Den här offentliga IP-adressen kan **inte konfigureras** och kan inte reserveras. Den här adressen räknas inte mot prenumerationens offentliga IP-adressresurs. 

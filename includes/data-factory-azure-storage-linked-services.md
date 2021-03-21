@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001764"
 ---
 ### <a name="azure-storage-linked-service"></a>Länkad Azure Storage-tjänst
@@ -16,8 +16,8 @@ Med den **länkade tjänsten Azure Storage** kan du länka ett Azure Storage-kon
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ |Egenskapen Type måste anges till: **AzureStorage** |Yes |
-| Begär |Ange information som krävs för att ansluta till Azure Storage för egenskapen connectionString. |Yes |
+| typ |Egenskapen Type måste anges till: **AzureStorage** |Ja |
+| Begär |Ange information som krävs för att ansluta till Azure Storage för egenskapen connectionString. |Ja |
 
 Information om hur du hämtar åtkomst nycklar för lagrings kontot finns i [Hantera åtkomst nycklar för lagrings kontot](../articles/storage/common/storage-account-keys-manage.md).
 
@@ -49,8 +49,8 @@ Med den länkade tjänsten Azure Storage SAS kan du länka ett Azure Storage kon
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ |Egenskapen Type måste anges till: **AzureStorageSas** |Yes |
-| sasUri |Ange signatur-URI för delad åtkomst till Azure Storage resurser som BLOB, container eller Table.  |Yes |
+| typ |Egenskapen Type måste anges till: **AzureStorageSas** |Ja |
+| sasUri |Ange signatur-URI för delad åtkomst till Azure Storage resurser som BLOB, container eller Table.  |Ja |
 
 **Exempel:**
 

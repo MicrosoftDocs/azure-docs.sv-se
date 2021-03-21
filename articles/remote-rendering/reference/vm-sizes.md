@@ -7,10 +7,10 @@ ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0e2687954fb05ce826e780ae0dbd3931d899885f
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594408"
 ---
 # <a name="server-sizes"></a>Serverstorlekar
@@ -88,7 +88,7 @@ Det finns två sätt att fastställa antalet polygoner i en modell eller scen so
 * På sidan modell konvertering hämtar du JSON- [filen för konvertering av utdata](../how-tos/conversion/get-information.md)och kontrollerar `numFaces` posten i [avsnittet *inputStatistics*](../how-tos/conversion/get-information.md#the-inputstatistics-section)
 * Om ditt program hanterar dynamiskt innehåll kan antalet åter givnings bara polygoner efter frågas dynamiskt under körning. Använd en [utvärderings fråga för prestanda](../overview/features/performance-queries.md#performance-assessment-queries) och kontrol lera `polygonsRendered` medlemmen i `FrameStatistics` struct. `PolygonsRendered`Fältet ställs in på `bad` när åter givningen träffar i polygonens begränsning. Schack brädets bakgrund är alltid blek i en viss fördröjning för att se till att användar åtgärder kan vidtas efter den asynkrona frågan. Användar åtgärd kan till exempel dölja eller ta bort modell instanser.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 En detaljerad beskrivning av prissättningen för varje typ av konfiguration finns på [prissättnings sidan för Fjärråter givning](https://azure.microsoft.com/pricing/details/remote-rendering) .
 

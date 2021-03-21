@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
 ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100329"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center beredskaps översikt
@@ -32,7 +32,7 @@ Artiklar
 - [Introduktion till Azure Security Center](security-center-introduction.md)
 - [Snabbstartsguide för Azure Security Center](security-center-get-started.md)
 
-Video
+Videoklipp
 - [Snabb introduktionsvideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
 - [Översikt över Security Center-funktioner för skydd, identifiering och svar](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
@@ -71,7 +71,7 @@ För att minska kostnaderna och skadan är det viktigt att ha en incident svars 
 
 Med följande resurser kan du lära dig hur Security Center kan införlivas i processen för incidenthantering.
 
-Video    
+Videoklipp    
 * [Incidenthantering i Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response)
 * [Reagera snabbt på hot med nästa generations säkerhetsåtgärder och undersökning](https://youtu.be/e8iFCz5RM4g)
 
@@ -85,7 +85,7 @@ Virtuella Azure-datorer kan dra nytta av funktioner för avancerat molnskydd i S
 
 Använd följande resurser för att lära dig mer om hur du använder funktionerna i Security Center.
 
-Video    
+Videoklipp    
 * [Azure Security Center – just-in-Time VM-åtkomst](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center – Anpassningsbara programkontroller](https://youtu.be/wWWekI1Y9ck)
 

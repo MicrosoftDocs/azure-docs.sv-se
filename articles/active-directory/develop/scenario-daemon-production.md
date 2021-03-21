@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582849"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578455"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-app som anropar webb-API: er – flytta till produktion
 
@@ -54,18 +54,43 @@ Du måste förklara vad kunderna har för att utföra dessa åtgärder. Mer info
 
     ![topologi](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Prova snabb starten [Hämta en token och anropa Microsoft Graph API från en Java-konsol med appens identitet](quickstart-v2-java-daemon.md).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+- Mer information finns i:
+  - Förstå [konfiguration](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)
+  - Instansiera [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md)
+  - [VANLIGA FRÅGOR OCH SVAR](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+- Andra exempel/Självstudier:
+  - [MSAL Node Console daemon-exempel](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
+
+# <a name="python"></a>[Python](#tab/python)
+
+Försök att [Hämta en token med snabb start och anropa Microsoft Graph API från en python-konsol app med appens identitet](quickstart-v2-python-daemon.md).
+
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
 Här följer några länkar som hjälper dig att lära dig mer:
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Försök att [Hämta en token med snabb start och anropa Microsoft Graph API från en python-konsol app med appens identitet](./quickstart-v2-python-daemon.md).
+Prova snabb starten [Hämta en token och anropa Microsoft Graph API från en .net Core-konsolprogram med appens identitet](quickstart-v2-netcore-daemon.md).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Prova snabb starten [Hämta en token och anropa Microsoft Graph API från en Java-konsol med appens identitet](./quickstart-v2-java-daemon.md).
+Prova snabb starten [Hämta en token och anropa Microsoft Graph API från en Java-konsol med appens identitet](quickstart-v2-java-daemon.md).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Prova snabb starten [Hämta en token och anropa Microsoft Graph API från en Node.js-konsolsession som använder appens identitet](quickstart-v2-nodejs-console.md).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Försök att [Hämta en token med snabb start och anropa Microsoft Graph API från en python-konsol app med appens identitet](quickstart-v2-python-daemon.md).
 
 ---
