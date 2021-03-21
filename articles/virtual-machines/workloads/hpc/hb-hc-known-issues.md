@@ -5,39 +5,45 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470412"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721212"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Kända problem med virtuella datorer i H-serien och N-serien
 
-Den här artikeln innehåller de vanligaste problemen och lösningarna när du använder HPC-och [N-seriens](../../sizes-gpu.md) HPC [-](../../sizes-hpc.md) och GPU-datorer.
+Den här artikeln försöker visa en lista över de senaste vanliga problemen och deras lösningar när de använder HPC-och [N-seriens](../../sizes-gpu.md) HPC [-](../../sizes-hpc.md) och GPU-datorer.
+
+## <a name="mofed-installation-on-ubuntu"></a>MOFED installation på Ubuntu
+På Ubuntu-18,04 är kernel-versionen 5.4.0-1041-Azure inte kompatibel med MOFED-versionerna 5.2-2 och 5.2-1.0.4.0. Vi rekommenderar att du återställer till kernel-version 5.4.0-1040-Azure eller använder en Marketplace-avbildning med äldre kernel och inte uppdaterar kärnan. Det här problemet förväntas lösas med en nyare MOFED (TBD).
 
 ## <a name="known-issues-on-hbv3"></a>Kända problem på HBv3
-- InfiniBand stöds för närvarande endast på den virtuella datorn med 120 kärnor (Standard_HB120rs_v3). Stöd för andra VM-storlekar kommer snart att aktive ras.
-- Azure-accelererat nätverk stöds inte i HBv3-serien i alla regioner. Den här funktionen kommer snart att aktive ras.
+- För närvarande stöds bara InfiniBand på den virtuella datorn med 120 kärnor (Standard_HB120rs_v3).
+- Azure-accelererade nätverk stöds för närvarande inte i HBv3-serien i alla regioner.
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Accelererat nätverk på HB, HC, HBv2 och NDv2
 
-[Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är nu tillgängligt på RDMA-och InfiniBand-kompatibla och SR-IOV-aktiverade VM-storlekar [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)och [NDv2](../../ndv2-series.md). Den här funktionen kan nu utökas i hela (upp till 30 Gbit/s) och fördröjning i Azure Ethernet-nätverket. Även om detta är skilt från RDMA-funktionerna i InfiniBand-nätverket kan vissa plattforms ändringar för den här funktionen påverka beteendet för vissa MPI-implementeringar när du kör jobb över InfiniBand. Särskilt InfiniBand-gränssnittet på vissa virtuella datorer kan ha ett något annorlunda namn (mlx5_1 till skillnad från tidigare mlx5_0) och detta kan kräva att kommando raderna i MPI ändras särskilt när du använder UCX-gränssnittet (vanligt vis med OpenMPI och HPC-X).
-Mer information om detta finns i den här [blogg artikeln](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) med anvisningar om hur du åtgärdar eventuella observerade problem.
+[Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är nu tillgängligt på RDMA-och InfiniBand-kompatibla och SR-IOV-aktiverade VM-storlekar [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)och [NDv2](../../ndv2-series.md). Den här funktionen kan nu utökas i hela (upp till 30 Gbit/s) och fördröjning i Azure Ethernet-nätverket. Även om detta är skilt från RDMA-funktionerna i InfiniBand-nätverket kan vissa plattforms ändringar för den här funktionen påverka beteendet för vissa MPI-implementeringar när du kör jobb över InfiniBand. Särskilt InfiniBand-gränssnittet på vissa virtuella datorer kan ha ett något annorlunda namn (mlx5_1 till skillnad från tidigare mlx5_0) och detta kan kräva att kommando raderna i MPI ändras särskilt när du använder UCX-gränssnittet (vanligt vis med OpenMPI och HPC-X). Den enklaste lösningen kan för närvarande vara att använda de senaste HPC-X-avbildningarna i CentOS-HPC-avbildningar eller inaktivera accelererat nätverk om det inte behövs.
+Mer information om detta finns i den här [TechCommunity-artikeln](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) med anvisningar om hur du åtgärdar eventuella observerade problem.
 
-## <a name="infiniband-driver-installation-on-n-series-vms"></a>InfiniBand-drivrutin installation av virtuella datorer i N-serien
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>InfiniBand-drivrutin installation på virtuella datorer som inte är SR-IOV
 
-NC24r_v3 och ND40r_v2 är SR-IOV aktiverade medan NC24r och NC24r_v2 inte är SR-IOV-aktiverade. Information om bifurcation finns [här](../../sizes-hpc.md#rdma-capable-instances).
-InfiniBand (IB) kan konfigureras i SR-IOV-aktiverade VM-storlekar med OFED-drivrutinerna medan de virtuella datorerna som inte är SR-IOV kräver ND-drivrutiner. Detta IB-stöd är lämpligt på [CentOS-HPC-VMIs](configure.md). För Ubuntu, se [anvisningarna här](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) för att installera både ofed-och nd-drivrutinerna enligt beskrivningen i [dokumenten](enable-infiniband.md#vm-images-with-infiniband-drivers).
+För närvarande är H16r, H16mr och NC24r inte SR-IOV aktiverat. Viss information om InfiniBand stack-bifurcation finns [här](../../sizes-hpc.md#rdma-capable-instances).
+InfiniBand kan konfigureras på SR-IOV-aktiverade VM-storlekar med OFED-drivrutinerna medan icke-SR-IOV VM-storlekar kräver ND-drivrutiner. Detta IB-stöd är lämpligt för [CentOS, RHEL och Ubuntu](configure.md).
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Duplicera MAC med Cloud-Init med Ubuntu på virtuella datorer i H-serien och N-serien
 
-Det finns ett känt problem med Cloud-Init på Ubuntu VM-avbildningar eftersom det försöker öppna IB-gränssnittet. Detta kan inträffa antingen vid omstart av virtuella datorer eller när du försöker skapa en VM-avbildning efter generalisering. Den virtuella datorns start loggar kan visa ett fel som så här: "startar nätverks tjänsten... RuntimeError: dubblett av Mac hittades! både "eth1" och "ib0" har Mac ".
+Det finns ett känt problem med Cloud-Init på Ubuntu VM-avbildningar eftersom det försöker öppna IB-gränssnittet. Detta kan inträffa antingen vid omstart av virtuella datorer eller när du försöker skapa en VM-avbildning efter generalisering. Den virtuella datorns start loggar kan visa ett fel som så här:
+```console
+“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
+```
 
-Detta är ett känt problem med att duplicera MAC med Cloud-Init på Ubuntu. Lösningen är:
+Detta är ett känt problem med att duplicera MAC med Cloud-Init på Ubuntu. Detta kommer att lösas i nyare kärnor. Om problemet uppstår är lösningen följande:
 1) Distribuera VM-avbildningen (Ubuntu 18,04) för Marketplace
 2) Installera nödvändiga program varu paket för att aktivera IB ([instruktion här](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
 3) Redigera waagent. conf för att ändra EnableRDMA = y
@@ -56,13 +62,13 @@ Detta är ett känt problem med att duplicera MAC med Cloud-Init på Ubuntu. Lö
     EOF
     ```
 
-## <a name="dram-on-hb-series"></a>DRAM på HB-serien
-
-Virtuella datorer i HB-serien kan bara exponera 228 GB RAM-minne för virtuella gäst datorer för tillfället. På samma sätt är 458 GB på HBv2 och 448 GB på virtuella HBv3-datorer. Detta beror på en känd begränsning i Azure hypervisor för att förhindra att sidor tilldelas till det lokala DRAM av AMD CCX (NUMA-domäner) som är reserverade för den virtuella gäst datorn.
-
 ## <a name="qp0-access-restriction"></a>Åtkomst begränsning för qp0
 
 För att förhindra maskin vara på låg nivå som kan leda till säkerhets risker, är Queue-paret 0 inte tillgängligt för virtuella gäst datorer. Detta bör endast påverka åtgärder som vanligt vis är kopplade till administration av ConnectX-5-NÄTVERKSKORTet och som kör en viss InfiniBand-diagnostik som ibdiagnet, men inte slutanvändarens program.
+
+## <a name="dram-on-hb-series-vms"></a>DRAM på virtuella datorer i HB-serien
+
+Virtuella datorer i HB-serien kan bara exponera 228 GB RAM-minne för virtuella gäst datorer för tillfället. På samma sätt är 458 GB på HBv2 och 448 GB på virtuella HBv3-datorer. Detta beror på en känd begränsning i Azure hypervisor för att förhindra att sidor tilldelas till det lokala DRAM av AMD CCX (NUMA-domäner) som är reserverade för den virtuella gäst datorn.
 
 ## <a name="gss-proxy"></a>GSS-proxy
 

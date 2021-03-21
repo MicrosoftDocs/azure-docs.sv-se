@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 13d0bdf82052ff2c61c5b2c6010956c8fb27574d
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 30ea75a2df63fa935314fc103fe1e7e092f655b2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122471"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612994"
 ---
 Den här snabb starten visar hur du skapar ett exempel på IoT Plug and Play Device-program, ansluter det till din IoT-hubb och använder Azure IoT Explorer-verktyget för att Visa telemetri som skickas. Exempel programmet är skrivet i C# och ingår i Azure IoT-exemplen för C#. Ett Solution Builder kan använda Azure IoT Explorer-verktyget för att förstå funktionerna i en IoT Plug and Play-enhet utan att behöva visa någon enhets kod.
 
@@ -40,7 +40,7 @@ Nu kan du skapa exemplet i Visual Studio och köra det i fel söknings läge.
 
 1. I Visual Studio navigerar du till **Project > termostat-egenskaper > Felsök**. Lägg sedan till följande miljövariabler i projektet:
 
-    | Namn | Värde |
+    | Name | Värde |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | – |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -52,7 +52,7 @@ Nu kan du skapa exemplet i Visual Studio och köra det i fel söknings läge.
 
 ## <a name="run-the-device-sample"></a>Kör enhets exemplet
 
-Om du vill spåra kod körningen i Visual Studio på Windows lägger du till en Bryt punkt i `main` funktionen i program.cs-filen.
+Om du vill spåra kod körningen i Visual Studio på Windows lägger du till en Bryt punkt i `main` funktionen i filen program. cs.
 
 Enheten är nu redo att ta emot kommandon och egenskaps uppdateringar och har börjat skicka telemetridata till hubben. Se till att exemplet körs när du slutför nästa steg.
 
@@ -64,7 +64,7 @@ När enhets klient exemplet startar använder du verktyget Azure IoT Explorer f�
 
 ## <a name="review-the-code"></a>Granska koden
 
-I det här exemplet implementeras en enkel IoT Plug and Play termostat-enhet. Modellen som det här exemplet implementerar använder inte IoT Plug and Play- [komponenter](../articles/iot-pnp/concepts-components.md). [DTDL-Model-filen (Digital Definition Language) för termostat-enheten](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definierar telemetri, egenskaper och kommandon som enheten implementerar.
+I det här exemplet implementeras en enkel IoT Plug and Play termostat-enhet. Modellen som det här exemplet implementerar använder inte IoT Plug and Play- [komponenter](../articles/iot-pnp/concepts-modeling-guide.md). [DTDL-Model-filen (Digital Definition Language) för termostat-enheten](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definierar telemetri, egenskaper och kommandon som enheten implementerar.
 
 Enhets koden ansluter till IoT-hubben med hjälp av standard `CreateFromConnectionString` metoden. Enheten skickar modell-ID: t för DTDL-modellen som den implementerar i anslutningsbegäran. En enhet som skickar ett modell-ID är en IoT Plug and Play-enhet:
 

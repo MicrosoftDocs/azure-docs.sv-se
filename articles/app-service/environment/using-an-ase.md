@@ -8,10 +8,10 @@ ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594054"
 ---
 # <a name="use-an-app-service-environment"></a>Använd App Service Environment
@@ -226,7 +226,7 @@ Om du använder https://resources.azure.com följer du dessa steg för att ange 
 
 Funktionen **upgradePreferences** är den mest begripliga när du har flera ASE eftersom din "tidiga" ASE kommer att uppgraderas före "sent" ASE. När du har flera ASE bör du ställa in din utvecklings-och test-ASE så att den blir "tidig" och produktions ASE ska vara "sent".
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Pris-SKU: n som kallas *isolerad* är endast för användning med ASE. Alla App Service planer som finns i ASE finns i den isolerade pris-SKU: n. De isolerade priserna för App Service planer kan variera beroende på region.
 

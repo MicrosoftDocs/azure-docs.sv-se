@@ -3,14 +3,14 @@ title: Hantera scheman i Azure Automation
 description: Den här artikeln beskriver hur du skapar och arbetar med ett schema i Azure Automation.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149485"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669567"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Hantera scheman i Azure Automation
 
@@ -38,7 +38,7 @@ Cmdletarna i följande tabell skapar och hanterar Automation-scheman med PowerSh
 
 ## <a name="create-a-schedule"></a>Skapa ett schema
 
-Du kan skapa ett nytt schema för dina Runbooks i Azure Portal eller med PowerShell. För att undvika att dina runbooks påverkar dina runbooks och de processer de automatiserar bör du först testa alla Runbooks som har länkade scheman med ett Automation-konto dedikerat för testning. Ett test verifierar att dina schemalagda Runbooks fortfarande fungerar korrekt. Om du ser ett problem kan du felsöka och tillämpa eventuella ändringar som krävs innan du migrerar den uppdaterade Runbook-versionen till produktionen.
+Du kan skapa ett nytt schema för dina runbooks från Azure Portal, med PowerShell eller med en Azure Resource Manager ARM-mall (ARM). För att undvika att dina runbooks påverkar dina runbooks och de processer de automatiserar bör du först testa alla Runbooks som har länkade scheman med ett Automation-konto dedikerat för testning. Ett test verifierar att dina schemalagda Runbooks fortfarande fungerar korrekt. Om du ser ett problem kan du felsöka och tillämpa eventuella ändringar som krävs innan du migrerar den uppdaterade Runbook-versionen till produktionen.
 
 > [!NOTE]
 > Ditt Automation-konto får inte automatiskt några nya versioner av moduler om du inte har uppdaterat dem manuellt genom att välja alternativet [Uppdatera Azure-moduler](../automation-update-azure-modules.md) från **moduler**. Azure Automation använder de senaste modulerna i ditt Automation-konto när ett nytt schemalagt jobb körs. 

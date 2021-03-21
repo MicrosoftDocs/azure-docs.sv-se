@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504618"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Skicka händelser till och ta emot händelser från Azure Event Hubs-.NET (Azure. Messaging. EventHubs) 
@@ -19,7 +19,7 @@ Den här snabb starten visar hur du skickar händelser till och tar emot händel
 
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Om du inte har använt Azure Event Hubs tidigare, se [Event Hubs översikt](event-hubs-about.md) innan du gör den här snabb starten. 
 
 För att slutföra den här snabbstarten, behöver du följande förhandskrav:
@@ -58,7 +58,7 @@ Det här avsnittet visar hur du skapar ett .NET Core-konsolprogram för att skic
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Skriva kod för att skicka meddelanden till händelsehubben
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ I den här snabb starten använder du Azure Storage som kontroll punkts arkiv. F
 
 ### <a name="update-the-main-method"></a>Uppdatera main-metoden 
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen.
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** .
 
     ```csharp
     using System;

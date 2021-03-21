@@ -4,10 +4,10 @@ description: Analyserar skillnader och likheter mellan två typer av köer som e
 ms.topic: article
 ms.date: 11/04/2020
 ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928315"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-köer och Service Bus-köer – jämförelser och skillnader
@@ -130,7 +130,7 @@ I det här avsnittet jämförs lagrings köer och Service Bus köer från den [k
 | Maximal kös Tor lek |**500 TB**<br/><br/>(begränsat till en [enda lagrings konto kapacitet](../storage/common/storage-introduction.md#queue-storage)) |**1 GB till 80 GB**<br/><br/>(definieras när du skapar en kö och [aktiverar partitionering](service-bus-partitioning.md) – se avsnittet "Ytterligare information") |
 | Maximal meddelande storlek |**64 kB**<br/><br/>(48 KB vid användning av **base64** -kodning)<br/><br/>Azure stöder stora meddelanden genom att kombinera köer och blobbar – där du kan placera upp till 200 GB för ett enda objekt. |**256 KB** eller **1 MB**<br/><br/>(inklusive både sidhuvud och brödtext, maximal sidhuvud storlek: 64 KB).<br/><br/>Är beroende av [tjänst nivån](service-bus-premium-messaging.md). |
 | Maximalt meddelande-TTL |**Oändlig** (API-version 2017-07-27 eller senare) |**TimeSpan. Max** |
-| Maximalt antal köer |**Obegränsat** |**10 000**<br/><br/>(namn område per tjänst) |
+| Maximalt antal köer |**Obegränsat** |**10 000**<br/><br/>(namn område per tjänst) |
 | Maximalt antal samtidiga klienter |**Obegränsat** |**5 000** |
 
 ### <a name="additional-information"></a>Ytterligare information

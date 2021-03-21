@@ -9,10 +9,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101700583"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor arbets böcker data källor
@@ -57,7 +57,7 @@ Om du vill göra en fråg-kontroll använder du den här data källan, använder
 > [!NOTE]
 > Endast `GET` -, `POST` -och- `HEAD` åtgärder stöds för närvarande.
 
-## <a name="azure-data-explorer"></a>Azure-datautforskaren
+## <a name="azure-data-explorer"></a>Öppna Azure-datautforskaren
 
 Arbets böcker har nu stöd för frågor från [Azure datautforskaren](/azure/data-explorer/) -kluster med det kraftfulla [Kusto](/azure/kusto/query/index) -frågespråket.
 

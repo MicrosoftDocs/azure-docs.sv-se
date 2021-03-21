@@ -8,10 +8,10 @@ ms.author: alkemper
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96929692"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>Aktivera stegvis distribution av funktioner för mål grupper
@@ -46,7 +46,7 @@ I det här läget kan du använda funktions flaggan för att aktivera eller inak
    dotnet add package Microsoft.FeatureManagement.AspNetCore
    ```
 
-1. Lägg till en *TestTargetingContextAccessor.cs* -fil:
+1. Lägg till en *TestTargetingContextAccessor. cs* -fil:
 
     ```csharp
     using Microsoft.AspNetCore.Http;
@@ -91,7 +91,7 @@ I det här läget kan du använda funktions flaggan för att aktivera eller inak
     }
     ```
 
-1. I *startup.cs* lägger du till en referens till namn området *Microsoft. FeatureManagement. FeatureFilters* :
+1. I *startup. cs* lägger du till en referens till namn området *Microsoft. FeatureManagement. FeatureFilters* :
 
     ```csharp
     using Microsoft.FeatureManagement.FeatureFilters;

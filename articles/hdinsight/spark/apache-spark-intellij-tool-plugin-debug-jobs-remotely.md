@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
 ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940345"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Använd Azure Toolkit for IntelliJ för att felsöka Apache Spark program via fjärr anslutning i HDInsight via VPN
@@ -56,11 +56,11 @@ Vi rekommenderar att du även skapar ett Apache Spark kluster i Azure HDInsight 
 
     ![Välj värdar i Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Du ser en lista över Head-noder, arbetsnoder och Zookeeper-noder. Huvudnoderna har prefixet **HN** _. Välj den första Head-noden.
+1. Du ser en lista över Head-noder, arbetsnoder och Zookeeper-noder. Huvudnoderna har ett **HN***-prefix. Välj den första Head-noden.
 
     ![Hitta Head-noden i Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. I fönstret _ *Summary** längst ned på sidan som öppnas kopierar du **IP-adressen** för Head-noden och **värd namnet**.
+1. I fönstret **Sammanfattning** längst ned på sidan som öppnas kopierar du **IP-adressen** för Head-noden och **värd namnet**.
 
     ![Hitta IP-adressen i Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 

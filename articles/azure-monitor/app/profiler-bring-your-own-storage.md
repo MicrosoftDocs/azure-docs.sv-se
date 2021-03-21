@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589665"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurera ta med din egen lagring (BYOS) för Application Insights Profiler och Snapshot Debugger
@@ -31,7 +31,7 @@ Med ta med din egen lagring laddas dessa artefakter upp i ett lagrings konto som
 1. När du visar profilerings spårningen eller en ögonblicks bilds fel söknings analys, kommer tjänsten att hämta analys resultaten från Blob Storage.
 
 ## <a name="prerequisites"></a>Förutsättningar
-* Se till att skapa ditt lagrings konto på samma plats som din Application Insights-resurs. Till exempel Om din Application Insights-resurs ligger i USA, västra 2, måste ditt lagrings konto även vara i västra USA 2. 
+* Se till att skapa ditt lagrings konto på samma plats som din Application Insights-resurs. t.ex. Om din Application Insights-resurs ligger i USA, västra 2, måste ditt lagrings konto även vara i västra USA 2. 
 * Ge rollen "Storage BLOB data Contributor" till AAD-programmet "betrodd lagring för åtkomst till tillförlitliga enheter" i ditt lagrings konto via användar gränssnittet för Access Control (IAM).
 * Om den privata länken är aktive rad konfigurerar du ytterligare inställningen för att tillåta anslutning till vår betrodda Microsoft-tjänst från din Virtual Network. 
 

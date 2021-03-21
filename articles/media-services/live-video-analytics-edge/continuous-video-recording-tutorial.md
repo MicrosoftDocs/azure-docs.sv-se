@@ -4,10 +4,10 @@ description: I den här självstudien får du lära dig hur du använder Azure L
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 2dde1c9d917881d7a16dbc853e4af416dffe5d7b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702427"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Självstudie: kontinuerlig video inspelning till molnet och uppspelningen från molnet
@@ -126,7 +126,7 @@ Bläddra sedan till mappen src/Cloud-to-Device-console-app. Här ser du appsetti
 
 * **C2D-console-app. CSPROJ**: projekt filen för Visual Studio Code.
 * **operations.jspå**: den här filen visar de olika åtgärder som du skulle köra.
-* **Program.cs**: kod för exempel program som:
+* **Program. cs**: exempel program koden, som:
     * Läser in appinställningar.
     * Anropar direkta metoder som exponeras av direktsänd video analys i IoT Edge modul. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess [direkta metoder](direct-methods.md).
     * Pausar så att du kan granska utdata från programmet i **terminalfönstret** och de händelser som genererats av modulen i fönstret **utdata** .

@@ -4,10 +4,10 @@ description: Använda geografiska regioner för att redundansväxla och haveri b
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035402"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-haveri beredskap
@@ -50,7 +50,7 @@ Följande villkor används i den här artikeln:
 -  *Metadata*: entiteter som köer, ämnen och prenumerationer. och deras egenskaper för tjänsten som är associerad med namn området. Endast entiteter och deras inställningar replikeras automatiskt. Meddelanden replikeras inte.
 -  *Redundans*: processen att aktivera det sekundära namn området.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Följande avsnitt är en översikt över hur du konfigurerar ihopparning mellan namn områdena.
 

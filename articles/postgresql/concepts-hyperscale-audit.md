@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702121"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Gransknings loggning i Azure Database for PostgreSQL-storskalig (citus)
@@ -42,7 +42,7 @@ Du måste konfigurera pgAudit-parametrar för att starta loggning. [PgAudit-doku
 
 > [!NOTE]
 > Om du ställer in på `pgaudit.log_client` på omdirigeras loggarna till en klient process (som psql) i stället för att skrivas till filen. Den här inställningen bör normalt vara inaktiverad. <br> <br>
-> `pgaudit.log_level` är bara aktive rad när `pgaudit.log_client` är på.
+> `pgaudit.log_level` är bara aktiverad när `pgaudit.log_client` är på.
 
 > [!NOTE]
 > I Azure Database for PostgreSQL-Scale (citus) `pgaudit.log` kan inte anges med en `-` (minus) Sign-genväg enligt beskrivningen i pgAudit-dokumentationen. Alla obligatoriska instruktions klasser (läsa, skriva osv.) måste anges var för sig.

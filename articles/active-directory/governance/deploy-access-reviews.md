@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932443"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planera distribution av Azure Active Directory åtkomst granskningar
@@ -246,7 +246,7 @@ Om du vill skapa en princip för åtkomst granskning måste du ha följande info
 | **Resurser att granska**| Åtkomst till Microsoft Dynamics |
 | **Gransknings frekvens**| Varje månad |
 | **Som utför granskning**| Program hanterare för Dynamics Business Group |
-| **Indikering**| E-post 24 timmar innan granskning till alias Dynamics-Pms<p>Ta med att uppmuntra anpassade meddelanden till granskare för att skydda sina köp |
+| **Meddelande**| E-post 24 timmar innan granskning till alias Dynamics-Pms<p>Ta med att uppmuntra anpassade meddelanden till granskare för att skydda sina köp |
 | **Tidslinje**| 48 timmar från meddelande |
 |**Automatiska åtgärder**| Ta bort åtkomst från alla konton som inte har någon interaktiv inloggning inom 90 dagar genom att ta bort användaren från säkerhets gruppen Dynamics-Access. <p>*Utför åtgärder om de inte granskas inom tids linjen.* |
 | **Manuella åtgärder**| Granskare kan utföra borttagnings godkännande innan den automatiserade åtgärden om det behövs. |
@@ -496,7 +496,7 @@ När du skapar nya Graph API-frågor för Automation rekommenderar vi att du anv
 
 Åtkomst gransknings aktiviteter registreras och är tillgängliga från [Azure Ads gransknings loggar](../reports-monitoring/concept-audit-logs.md). Du kan filtrera gransknings data för kategorin, aktivitets typen och datum intervallet. Här är en exempel fråga:
 
-| Kategori| Princip |
+| Kategori| Policy |
 | - | - |
 | Aktivitetstyp| Skapa åtkomstgranskning |
 | | Uppdatera åtkomst granskning |

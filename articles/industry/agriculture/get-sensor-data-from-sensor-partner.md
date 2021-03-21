@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182782"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Hämta sensor data från sensor partner
@@ -124,7 +124,7 @@ För närvarande stöder FarmBeats följande enheter:
 - **Nod**: en enhet som en eller flera sensorer är kopplade till.
 - **Gateway**: en enhet som en eller flera noder är kopplade till.
 
-Gör så här:
+Följ de här stegen:
 
 1. På sidan start väljer du **enheter** på menyn.
   Sidan **enheter** visar enhets typ, modell, status, den server grupp som den placerats i och senaste uppdaterade datum för metadata. Som standard har kolumnen Server grupp värdet *Null*. Du kan välja att tilldela en enhet till en Server grupp. Mer information finns i [tilldela enheter](#assign-devices).
@@ -134,7 +134,7 @@ Gör så här:
 
 ### <a name="view-sensors"></a>Visa sensorer
 
-Gör så här:
+Följ de här stegen:
 
 1. På Start sidan väljer du **sensorer** på menyn.
   På sidan **sensorer** visas information om typen av sensor, Server grupp den är ansluten till, överordnad enhet, portnamn, porttyp och senaste uppdaterade status.
@@ -163,7 +163,7 @@ När sensor data flödar in kan du tilldela den till Server gruppen där du har 
 
 ### <a name="visualize-sensor-data"></a>Visualisera sensordata
 
-Gör så här:
+Följ de här stegen:
 
 1. På sidan start väljer du **Server grupper** på menyn för att visa sidan **grupper** .
 2. Välj den **Server grupp** som du vill visa sensor data för.
@@ -173,7 +173,7 @@ Gör så här:
 
 ## <a name="delete-a-sensor"></a>Ta bort en sensor
 
-Gör så här:
+Följ de här stegen:
 
 1. På Start sidan väljer du **sensorer** på menyn för att visa sidan **sensorer** .
 2. Välj den enhet som du vill ta bort och välj **ta bort** i bekräftelse fönstret.
@@ -184,7 +184,7 @@ Ett bekräftelse meddelande visas om att sensorn har tagits bort.
 
 ## <a name="delete-devices"></a>Ta bort enheter
 
-Gör så här:
+Följ de här stegen:
 
 1. På sidan start väljer du **enheter** på menyn för att visa sidan **enheter** .
 2. Välj den enhet som du vill ta bort och välj **ta bort** i bekräftelse fönstret.

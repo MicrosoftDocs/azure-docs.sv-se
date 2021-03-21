@@ -3,14 +3,14 @@ title: Hantera Server-Azure Portal-Azure Database for MariaDB
 description: Lär dig hur du hanterar en Azure Database for MariaDB-Server från Azure Portal.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: b492e04629f23c991c1c5d69dd5e2c472676d37a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664409"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Hantera en Azure Database for MariaDB-server med hjälp av Azure Portal
@@ -90,7 +90,7 @@ Du kan ta bort servern om du inte längre behöver den.
 
 1. Välj din server i Azure Portal. I **översikts** fönstret väljer du **ta bort**.
 
-    ![ta bort](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. Skriv namnet på servern i indatatypen för att bekräfta att det är den server som du vill ta bort.
 

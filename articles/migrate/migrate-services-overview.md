@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 858f006de7425a9fa8bea25e356a148b877aa30d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040608"
 ---
 # <a name="about-azure-migrate"></a>Om Azure Migrate
@@ -80,13 +80,13 @@ Server utvärderingen använder en förenklad [Azure Migrate](migrate-appliance.
 - Efter installationen av enheten kan du samla identifierade datorer i grupper och köra utvärderingar för varje grupp.
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://go.microsoft.com/fwlink/?linkid=2155668) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://go.microsoft.com/fwlink/?linkid=2155668) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 ## <a name="azure-migrate-server-migration-tool"></a>Azure Migrate: Migreringsverktyg för Server
 
 Med verktyget Azure Migrate: Migreringsverktyg kan du migrera till Azure:
 
-**Flyttar** | **Information**
+**Migrera** | **Information**
 --- | ---
 Lokala virtuella VMware-datorer | Migrera virtuella datorer till Azure med hjälp av en agent utan agent eller en agent-baserad migrering.<br/><br/> Vid migrering utan Agent använder Server Migration samma Azure Migrate-enhet som också kan användas av Server utvärdering för identifiering och utvärdering av virtuella VMware-datorer.<br/><br/> Vid certifikatbaserad migrering använder Server Migration en replikeringsfil.
 Lokala virtuella Hyper-V-datorer | Migrera virtuella datorer till Azure.<br/><br/> Server-migreringen använder leverantörs agenter som är installerade på Hyper-V-värden för migreringen.

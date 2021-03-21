@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47a8f1edb4afed41587eac3d539b5ad7cb8180f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488473"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655996"
 ---
 # <a name="quickstart-handle-sms-events"></a>Snabb start: Hantera SMS-händelser
 
@@ -27,7 +27,7 @@ Kom igång med Azure Communication Services genom att använda Azure Event Grid 
 
 ## <a name="about-azure-event-grid"></a>Om Azure Event Grid
 
-[Azure Event Grid](../../../event-grid/overview.md) är en molnbaserad händelse tjänst. I den här artikeln får du lära dig hur du prenumererar på händelser för [kommunikations tjänst händelser](../../concepts/event-handling.md)och utlöser en händelse för att visa resultatet. Normalt kan du skicka händelser till en slutpunkt som bearbetar informationen om händelsen och utför åtgärder. I den här artikeln ska vi skicka händelserna till en webbapp som samlar in och visar meddelandena.
+[Azure Event Grid](../../../event-grid/overview.md) är en molnbaserad händelse tjänst. I den här artikeln får du lära dig hur du prenumererar på händelser för [kommunikations tjänst händelser](../../../event-grid/event-schema-communication-services.md)och utlöser en händelse för att visa resultatet. Normalt kan du skicka händelser till en slutpunkt som bearbetar informationen om händelsen och utför åtgärder. I den här artikeln ska vi skicka händelserna till en webbapp som samlar in och visar meddelandena.
 
 ## <a name="prerequisites"></a>Förutsättningar
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -68,7 +68,7 @@ Du kan prenumerera på vissa händelser för att berätta Event Grid vilka SMS-h
 
 Om du uppmanas att ange ett **namn på ett system ämne** kan du ange en unik sträng. Det här fältet har ingen effekt på din upplevelse och används för interna telemetri.
 
-Ta en titt på den fullständiga listan med [händelser som stöds av Azure Communication Services](../../concepts/event-handling.md).
+Ta en titt på den fullständiga listan med [händelser som stöds av Azure Communication Services](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services).
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Skärm bild som visar mottagar rapporten mottagna och SMS-leverans mottagna händelse typer.":::
 
@@ -93,7 +93,7 @@ Om du vill visa händelse utlösare måste vi generera händelser på den först
 - `SMS Received` händelser skapas när telefon numret för kommunikations tjänster får ett SMS. Om du vill utlösa en händelse skickar du bara ett meddelande från din telefon till telefonnumret som är kopplat till kommunikations tjänst resursen.
 - `SMS Delivery Report Received` händelser skapas när du skickar ett SMS till en användare med hjälp av ett telefonnummer för kommunikations tjänster. Om du vill utlösa en händelse måste du aktivera `Delivery Report` i alternativen för den [skickade SMS](../telephony-sms/send.md)-filen. Försök att skicka ett meddelande till din telefon med `Delivery Report` . Att slutföra den här åtgärden innebär en låg kostnad av några USD cent eller mindre i ditt Azure-konto.
 
-Ta en titt på den fullständiga listan med [händelser som stöds av Azure Communication Services](../../concepts/event-handling.md).
+Ta en titt på den fullständiga listan med [händelser som stöds av Azure Communication Services](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services).
 
 ### <a name="receiving-sms-events"></a>Ta emot SMS-händelser
 
@@ -103,7 +103,7 @@ När du har slutfört ovanstående åtgärd kommer du att märka att `SMS Receiv
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Skärm bild som visar Event Grid schema för en SMS-leverans rapport händelse.":::
 
-Lär dig mer om [händelse scheman och andra begrepp för händelser](../../concepts/event-handling.md).
+Lär dig mer om [händelse scheman och andra begrepp för händelser](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -118,5 +118,5 @@ I den här snabb starten har du lärt dig hur du använder SMS-händelser. Du ka
 
 Du kanske också vill:
 
- - [Lär dig mer om händelse hanterings koncept](../../concepts/event-handling.md)
+ - [Lär dig mer om händelse hanterings koncept](../../../event-grid/event-schema-communication-services.md)
  - [Läs mer om Event Grid](../../../event-grid/overview.md)

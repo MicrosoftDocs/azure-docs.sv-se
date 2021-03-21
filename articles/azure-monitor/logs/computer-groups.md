@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: d8702b498e08561175aa7ee975c7b6b46fdf1687
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031097"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Dator grupper i Azure Monitor logg frågor
@@ -49,7 +49,7 @@ I följande tabell beskrivs de egenskaper som definierar en dator grupp.
 
 | Egenskap | Beskrivning |
 |:---|:---|
-| Namn   | Namnet på frågan som ska visas i portalen. |
+| Name   | Namnet på frågan som ska visas i portalen. |
 | Funktions Ali Aset | Ett unikt alias som används för att identifiera dator gruppen i en fråga. |
 | Kategori       | Kategori för att organisera frågorna i portalen. |
 

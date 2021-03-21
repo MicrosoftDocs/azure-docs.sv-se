@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100595292"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysera loggar för Apache Kafka i HDInsight
@@ -22,7 +22,7 @@ Lär dig hur du använder Azure Monitor loggar för att analysera loggar som gen
 
 Apache Kafka loggar i klustret finns på `/var/log/kafka` . Kafka-loggar sparas eller bevaras inte över klustrets livs cykel, oavsett om hanterade diskar används. I följande tabell visas de tillgängliga loggarna.
 
-|Loggas |Description |
+|Loggas |Beskrivning |
 |---|---|
 |Kafka. ut|STDOUT och stderr för Kafka-processen. Du hittar Kafka start-och avslutnings loggar i den här filen.|
 |Server. log|Huvud server loggen för Kafka. Alla Kafka Broker-loggar slutförs här.|
@@ -91,7 +91,7 @@ Stegen för att aktivera Azure Monitor loggar för HDInsight är desamma för al
 
     Du kan också ange `*` om du vill söka efter alla typer som loggas. För närvarande finns följande loggar för frågor:
 
-    | Loggtyp | Description |
+    | Loggtyp | Beskrivning |
     | ---- | ---- |
     | Logga \_ kafkaserver \_ cl | Kafka Broker-Server. log |
     | Logga \_ kafkacontroller \_ cl | Kafka Broker-styrenhet. log |

@@ -1,27 +1,27 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 9be85a7da67fa659e29d802d1f77fa09008f4428
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1102bcc18165d3bc705755f1bbb6faecddec4e91
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371328"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612912"
 ---
 Här följer användningsbegränsningarna och andra tjänstbegränsningar för Azure Active Directory-tjänsten (Azure AD).
 
 | Kategori | Gräns |
 | --- | --- |
 | Klientorganisationer | En enskild användare kan tillhöra högst 500 Azure AD-klienter som medlem eller gäst.<br/>En enskild användare kan skapa högst 200 kataloger. |
-| Domains | Du kan som mest lägga till 900 hanterade domännamn. Om du konfigurerar alla domäner för federation med lokala Active Directory kan du inte lägga till fler än 450 domän namn i varje klient organisation. |
-|Resources (Resurser) |<ul><li>Högst 50 000 Azure AD-resurser kan skapas i en enda klient organisation av användare av den kostnads fria versionen av Azure Active Directory som standard. Om du har minst en verifierad domän utökas standard kvoten för Azure AD-tjänsten för din organisation till 300 000 Azure AD-resurser. Azure AD-tjänstens kvot för organisationer som skapats av självbetjänings registrering förblir 50 000 Azure AD-resurser även efter att du utfört en intern administratörs övertag ande och organisationen har konverterats till en hanterad klient med minst en verifierad domän. Den här tjänst gränsen är inte relaterad till pris nivå gränsen på 500 000 resurser på prissättnings sidan för Azure AD. Om du vill gå bortom standard kvoten måste du kontakta Microsoft Support.</li><li>En användare som inte är administratör kan inte skapa mer än 250 Azure AD-resurser. Både aktiva resurser och borttagna resurser som är tillgängliga för att återställas mot den här kvoten. Endast Azure AD-resurser som har tagits bort under 30 dagar sedan är tillgängliga för återställning. Tog bort Azure AD-resurser som inte längre är tillgängliga för återställning till den här kvoten till ett värde av ett kvartal i 30 dagar. Om du har utvecklare som troligen ofta överskrider den här kvoten under sina normala uppgifter, kan du [skapa och tilldela en anpassad roll](../articles/active-directory/roles/quickstart-app-registration-limits.md) med behörighet att skapa ett obegränsat antal registrerade appar.</li></ul> |
+| Domains | Du kan inte lägga till fler än 5000 hanterade domän namn. Om du konfigurerar alla domäner för federation med lokala Active Directory kan du inte lägga till fler än 2500 domän namn i varje klient organisation. |
+|Resurser |<ul><li>Högst 50 000 Azure AD-resurser kan skapas i en enda klient organisation av användare av den kostnads fria versionen av Azure Active Directory som standard. Om du har minst en verifierad domän utökas standard kvoten för Azure AD-tjänsten för din organisation till 300 000 Azure AD-resurser. Azure AD-tjänstens kvot för organisationer som skapats av självbetjänings registrering förblir 50 000 Azure AD-resurser även efter att du utfört en intern administratörs övertag ande och organisationen har konverterats till en hanterad klient med minst en verifierad domän. Den här tjänst gränsen är inte relaterad till pris nivå gränsen på 500 000 resurser på prissättnings sidan för Azure AD. Om du vill gå bortom standard kvoten måste du kontakta Microsoft Support.</li><li>En användare som inte är administratör kan inte skapa mer än 250 Azure AD-resurser. Både aktiva resurser och borttagna resurser som är tillgängliga för att återställas mot den här kvoten. Endast Azure AD-resurser som har tagits bort under 30 dagar sedan är tillgängliga för återställning. Tog bort Azure AD-resurser som inte längre är tillgängliga för återställning till den här kvoten till ett värde av ett kvartal i 30 dagar. Om du har utvecklare som troligen ofta överskrider den här kvoten under sina normala uppgifter, kan du [skapa och tilldela en anpassad roll](../articles/active-directory/roles/quickstart-app-registration-limits.md) med behörighet att skapa ett obegränsat antal registrerade appar.</li></ul> |
 | Schemautökningar |<ul><li>Tillägg av strängtyp får maximalt innehålla 256 tecken. </li><li>Tillägg av binär typ är begränsade till 256 byte.</li><li>Endast 100 tilläggs värden, för *alla* typer och *alla* program, kan skrivas till en enda Azure AD-resurs.</li><li>Endast entiteter av typen User, Group, TenantDetail, Device, Application och ServicePrincipal kan utökas med strängtypen eller enkelvärdesattribut av den binära typen.</li><li>Schematillägg är bara tillgängliga i förhandsversionen av Graph API-version 1.21. Programmet måste beviljas skrivbehörighet för att det ska vara möjligt att registrera ett tillägg.</li></ul> |
 | Program | <ul><li>Som mest kan 100 användare vara ägare av ett enda program.</li><li>Lösenordsbaserade SSO-appar har en gräns på 48 användare, vilket innebär att det finns en gräns på 48 nycklar för användar namn/lösen ord par per app. Om du vill lägga till ytterligare användare kan du läsa fel söknings anvisningarna i [Felsöka lösenordsbaserad enkel inloggning i Azure AD](../articles/active-directory/manage-apps/troubleshoot-password-based-sso.md#i-cant-add-another-user-to-my-password-based-sso-app).</li></ul> |
 |Program manifest |Högst 1200 poster kan läggas till i applikations manifestet. |
