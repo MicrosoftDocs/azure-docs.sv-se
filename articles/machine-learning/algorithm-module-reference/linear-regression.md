@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 809b1be4f9f12e1963ff5caeaacd109c84db154f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323662"
 ---
 # <a name="linear-regression-module"></a>Linjär Regressions modul
@@ -63,7 +63,7 @@ Den här modulen stöder två metoder för att anpassa en Regressions modell med
 
 1. Lägg till modulen **linjär Regressions modell** i din pipeline i designern.
 
-    Du hittar den här modulen i kategorin **Machine Learning** . Expandera **initiera modell** , expandera **regression** och dra sedan modulen **linjär Regressions modell** till din pipeline.
+    Du hittar den här modulen i kategorin **Machine Learning** . Expandera **initiera modell**, expandera **regression** och dra sedan modulen **linjär Regressions modell** till din pipeline.
 
 2. I rutan **Egenskaper** går du till List rutan **lösnings metod** och väljer **vanliga minsta kvadratmetoden**. Det här alternativet anger den beräknings metod som används för att hitta Regressions linjen.
 
@@ -71,7 +71,7 @@ Den här modulen stöder två metoder för att anpassa en Regressions modell med
 
      Mer information om hur regulariseringshastigheten påverkar modell anpassning finns i den här artikeln: [L1-och L2-regulariseringshastigheten för Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)
 
-4. Välj alternativet, **Inkludera spärr villkor** , om du vill visa villkoret för skärningen.
+4. Välj alternativet, **Inkludera spärr villkor**, om du vill visa villkoret för skärningen.
 
     Avmarkera det här alternativet om du inte behöver granska Regressions formeln.
 
@@ -96,22 +96,22 @@ När utbildningen är klar:
 
 1. Lägg till modulen **linjär Regressions modell** i din pipeline i designern.
 
-    Du hittar den här modulen i kategorin **Machine Learning** . Expandera **initiera modell** , expandera **regression** och dra modulen **linjär Regressions modell** till din pipeline
+    Du hittar den här modulen i kategorin **Machine Learning** . Expandera **initiera modell**, expandera **regression** och dra modulen **linjär Regressions modell** till din pipeline
 
 2. I rutan **Egenskaper** i list rutan **lösnings metod** väljer du brantaste för **online-toning** som den beräknings metod som används för att hitta Regressions linjen.
 
 3. För **skapa utbildare-läge** anger du om du vill träna modellen med en fördefinierad uppsättning parametrar, eller om du vill optimera modellen med hjälp av en parameter rensning.
 
-    + **Enskild parameter** : om du vet hur du vill konfigurera ett linjärt Regressions nätverk kan du ange en viss uppsättning värden som argument.
+    + **Enskild parameter**: om du vet hur du vill konfigurera ett linjärt Regressions nätverk kan du ange en viss uppsättning värden som argument.
     
-    + **Parameter intervall** : Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.  
+    + **Parameter intervall**: Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.  
 
    
 4. För **inlärnings frekvens** anger du den inledande inlärnings takten för Stochastic gradient brantaste optimering.
 
 5. Ange ett värde som anger hur många gånger algoritmen ska iterera genom exempel i **antal utbildnings epoker**. För data uppsättningar med ett litet antal exempel bör det här talet vara stort för att uppnå konvergens.
 
-6. **Normaliserings funktioner** : om du redan har normaliserat numeriska data som används för att träna modellen kan du avmarkera det här alternativet. Som standard normaliserar modulen alla numeriska indata till ett intervall mellan 0 och 1.
+6. **Normaliserings funktioner**: om du redan har normaliserat numeriska data som används för att träna modellen kan du avmarkera det här alternativet. Som standard normaliserar modulen alla numeriska indata till ett intervall mellan 0 och 1.
 
     > [!NOTE]
     > 

@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218025"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felsök användardefinierad C#-kod för misslyckade U-SQL-jobb
@@ -103,7 +103,7 @@ Så här skickar du om det misslyckade jobbet:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Programmerings guide för U-SQL](data-lake-analytics-u-sql-programmability-guide.md)
+- [U-SQL-programmeringsguide](data-lake-analytics-u-sql-programmability-guide.md)
 - [Utveckla användardefinierade U-SQL-operatörer för Azure Data Lake Analytics jobb](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 - [Testa och felsöka U-SQL-jobb med lokal körning och Azure Data Lake U-SQL SDK](data-lake-analytics-data-lake-tools-local-run.md)
 - [Så här felsöker du ett onormalt återkommande jobb](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

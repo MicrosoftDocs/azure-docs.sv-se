@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: e096de5eea9bf5bbd47b976976192e62eb6aa33e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096420"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Använda Robo 3T med Azure Cosmos DB-API:et för MongoDB
@@ -36,17 +36,17 @@ Gör så här om du vill lägga till ditt Cosmos-konto i Robo 3T Connection Mana
 
 3. Klicka på knappen anslutning under **fil** för att hantera dina anslutningar. Klicka sedan på **skapa** i fönstret **MongoDB-anslutningar** , som öppnar fönstret **anslutnings inställningar** .
 
-4. I fönstret **anslutnings inställningar** väljer du ett namn. Leta sedan upp **värden** och **porten** från anslutnings informationen i steg 1 och ange dem i **adress** respektive **port** .
+4. I fönstret **anslutnings inställningar** väljer du ett namn. Leta sedan upp **värden** och **porten** från anslutnings informationen i steg 1 och ange dem i **adress** respektive **port**.
 
-    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Skärm bild av bladet anslutnings sträng":::
-5. På fliken **autentisering** klickar du på **utför autentisering** . Ange sedan din databas (standard är *administratör* ), **användar namn** och **lösen ord** .
+    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Skärm bild av Robomongo hantera anslutningar":::
+5. På fliken **autentisering** klickar du på **utför autentisering**. Ange sedan din databas (standard är *administratör*), **användar namn** och **lösen ord**.
 Du hittar både **användar namn** och **lösen ord** i anslutnings informationen i steg 1.
 
-    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Skärm bild av bladet anslutnings sträng":::
-6. På fliken **SSL** kontrollerar du **Använd SSL-protokoll** och ändrar sedan **autentiseringsmetoden** till ett **självsignerat certifikat** .
+    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Skärm bild av fliken Robomongo-autentisering":::
+6. På fliken **SSL** kontrollerar du **Använd SSL-protokoll** och ändrar sedan **autentiseringsmetoden** till ett **självsignerat certifikat**.
 
-    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Skärm bild av bladet anslutnings sträng":::
-7. Klicka slutligen på **test** för att kontrol lera att du kan ansluta och **Spara** .
+    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Skärm bild av Robomongo SSL-fliken":::
+7. Klicka slutligen på **test** för att kontrol lera att du kan ansluta och **Spara**.
 
 ## <a name="next-steps"></a>Nästa steg
 

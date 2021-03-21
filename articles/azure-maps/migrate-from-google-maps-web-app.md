@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680881"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>Självstudier: Migrera en webbapp från Google Maps
@@ -53,7 +53,7 @@ Om du utvecklar med ett JavaScript-ramverk kan något av följande projekt med �
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -75,7 +75,7 @@ Tabellen innehåller nyckel-API-funktioner i Google Maps v3 JavaScript SDK och A
 | Netencoder-tjänst        | ✓                          |
 | Vägbeskrivnings tjänst      | ✓                          |
 | Distans mat ris tjänst | ✓                          |
-| Höjnings tjänst       | ✓                          |
+| Tjänsten Elevation       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Viktiga skillnader i webb-SDK: er
 

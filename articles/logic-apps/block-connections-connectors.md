@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310040"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Blockera anslutningar som skapats av anslutningar i Azure Logic Apps
@@ -115,24 +115,24 @@ Följ dessa steg om du vill blockera skapandet av en anslutning helt i en Logic 
 
    ![I Azure Portal, leta upp och välj "princip"](./media/block-connections-connectors/find-select-azure-policy.png)
 
-1. Välj **definitioner** **Policy** **Authoring**  >  **+ princip definition**under redigering i menyn princip.
+1. Välj **definitioner**    >  **+ princip definition** under redigering i menyn princip.
 
    ![Välj "definitioner" > "+ princip definition"](./media/block-connections-connectors/add-new-policy-definition.png)
 
-1. Under **princip definition**anger du informationen för princip definitionen, baserat på de egenskaper som beskrivs i exemplet:
+1. Under **princip definition** anger du informationen för princip definitionen, baserat på de egenskaper som beskrivs i exemplet:
 
    ![Skärm bild som visar egenskaperna för "princip definition".](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Definitions plats** | Ja | <*Azure-prenumeration-namn*> | Azure-prenumerationen som ska användas för princip definitionen <p><p>1. om du vill hitta din prenumeration väljer du knappen med tre punkter (**...**). <br>2. i **prenumerations** listan letar du reda på och väljer din prenumeration. <br>3. Välj **Välj**när du är klar. |
+   | **Definitions plats** | Ja | <*Azure-prenumeration-namn*> | Azure-prenumerationen som ska användas för princip definitionen <p><p>1. om du vill hitta din prenumeration väljer du knappen med tre punkter (**...**). <br>2. i **prenumerations** listan letar du reda på och väljer din prenumeration. <br>3. Välj **Välj** när du är klar. |
    | **Namn** | Ja | <*princip-definition-namn*> | Namnet som ska användas för princip definitionen |
-   | **Beskrivning** | Nej | <*princip-definition-namn*> | En beskrivning av princip definitionen |
+   | **Beskrivning** | Inga | <*princip-definition-namn*> | En beskrivning av princip definitionen |
    | **Kategori** | Ja | **Logic Apps** | Namnet på en befintlig kategori eller ny kategori för princip definitionen |
    | **Principframtvingande** | Ja | **Aktiverad** | Den här inställningen anger om du vill aktivera eller inaktivera princip definitionen när du sparar ditt arbete. |
    ||||
 
-1. Under **princip regel**fylls JSON-redigerings rutan i förväg med en princip definitions mall. Ersätt den här mallen med din [princip definition](../governance/policy/concepts/definition-structure.md) baserat på de egenskaper som beskrivs i tabellen nedan och genom att följa den här syntaxen:
+1. Under **princip regel** fylls JSON-redigerings rutan i förväg med en princip definitions mall. Ersätt den här mallen med din [princip definition](../governance/policy/concepts/definition-structure.md) baserat på de egenskaper som beskrivs i tabellen nedan och genom att följa den här syntaxen:
 
    ```json
    {
@@ -236,24 +236,24 @@ När du skapar en anslutning i en Logic app, finns anslutningen som separat Azur
 
    ![I Azure Portal, leta upp och välj "princip"](./media/block-connections-connectors/find-select-azure-policy.png)
 
-1. Välj **definitioner** **Policy** **Authoring**  >  **+ princip definition**under redigering i menyn princip.
+1. Välj **definitioner**    >  **+ princip definition** under redigering i menyn princip.
 
    ![Välj "definitioner" > "+ princip definition"](./media/block-connections-connectors/add-new-policy-definition.png)
 
-1. Under **princip definition**anger du informationen för princip definitionen baserat på de egenskaper som beskrivs i exemplet och fortsätter med Instagram som exempel:
+1. Under **princip definition** anger du informationen för princip definitionen baserat på de egenskaper som beskrivs i exemplet och fortsätter med Instagram som exempel:
 
    ![Egenskaper för princip definition](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Definitions plats** | Ja | <*Azure-prenumeration-namn*> | Azure-prenumerationen som ska användas för princip definitionen <p><p>1. om du vill hitta din prenumeration väljer du knappen med tre punkter (**...**). <br>2. i **prenumerations** listan letar du reda på och väljer din prenumeration. <br>3. Välj **Välj**när du är klar. |
+   | **Definitions plats** | Ja | <*Azure-prenumeration-namn*> | Azure-prenumerationen som ska användas för princip definitionen <p><p>1. om du vill hitta din prenumeration väljer du knappen med tre punkter (**...**). <br>2. i **prenumerations** listan letar du reda på och väljer din prenumeration. <br>3. Välj **Välj** när du är klar. |
    | **Namn** | Ja | <*princip-definition-namn*> | Namnet som ska användas för princip definitionen |
-   | **Beskrivning** | Nej | <*princip-definition-namn*> | En beskrivning av princip definitionen |
+   | **Beskrivning** | Inga | <*princip-definition-namn*> | En beskrivning av princip definitionen |
    | **Kategori** | Ja | **Logic Apps** | Namnet på en befintlig kategori eller ny kategori för princip definitionen |
    | **Principframtvingande** | Ja | **Aktiverad** | Den här inställningen anger om du vill aktivera eller inaktivera princip definitionen när du sparar ditt arbete. |
    ||||
 
-1. Under **princip regel**fylls JSON-redigerings rutan i förväg med en princip definitions mall. Ersätt den här mallen med din [princip definition](../governance/policy/concepts/definition-structure.md) baserat på de egenskaper som beskrivs i tabellen nedan och genom att följa den här syntaxen:
+1. Under **princip regel** fylls JSON-redigerings rutan i förväg med en princip definitions mall. Ersätt den här mallen med din [princip definition](../governance/policy/concepts/definition-structure.md) baserat på de egenskaper som beskrivs i tabellen nedan och genom att följa den här syntaxen:
 
    ```json
    {
@@ -327,18 +327,18 @@ Därefter måste du tilldela den princip definition där du vill genomdriva prin
 
    ![Välj tilldelningar > tilldela](./media/block-connections-connectors/add-new-policy-assignment.png)
 
-1. Under **grunderna**anger du den här informationen för princip tilldelningen:
+1. Under **grunderna** anger du den här informationen för princip tilldelningen:
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
    | **Omfång** | Ja | De resurser där du vill genomdriva princip tilldelningen. <p><p>1. Klicka på knappen med tre punkter (**...**) bredvid rutan **omfång** . <br>2. Välj Azure-prenumerationen i listan **prenumeration** . <br>3. du kan också välja resurs gruppen från listan **resurs grupp** . <br>4. När du är klar väljer du **Välj**. |
-   | **Undantag** | Nej | Alla Azure-resurser som ska undantas från princip tilldelningen. <p><p>1. Klicka på knappen med tre punkter (**...**) bredvid rutan **undantag** . <br>2. Välj resurs > **Lägg till i det valda omfånget**i **resurs** listan. <br>3. När du är klar väljer du **Spara**. |
-   | **Principdefinition** | Ja | Namnet på den princip definition som du vill tilldela och tillämpa. Det här exemplet fortsätter med exempel Instagram-principen "blockera Instagram-anslutningar". <p><p>1. Klicka på knappen med tre punkter (**...**) bredvid rutan **princip definition** . <br>2 **. Sök efter** och välj princip definitionen med hjälp av **typ** filtret eller sökrutan. <br>3. Välj **Välj**när du är klar. |
+   | **Undantag** | Inga | Alla Azure-resurser som ska undantas från princip tilldelningen. <p><p>1. Klicka på knappen med tre punkter (**...**) bredvid rutan **undantag** . <br>2. Välj resurs > **Lägg till i det valda omfånget** i **resurs** listan. <br>3. När du är klar väljer du **Spara**. |
+   | **Principdefinition** | Ja | Namnet på den princip definition som du vill tilldela och tillämpa. Det här exemplet fortsätter med exempel Instagram-principen "blockera Instagram-anslutningar". <p><p>1. Klicka på knappen med tre punkter (**...**) bredvid rutan **princip definition** . <br>2 **. Sök efter** och välj princip definitionen med hjälp av **typ** filtret eller sökrutan. <br>3. Välj **Välj** när du är klar. |
    | **Namn på tilldelning** | Ja | Namnet som ska användas för princip tilldelningen, om det skiljer sig från princip definitionen |
    | **Tilldelnings-ID** | Ja | Automatiskt genererat ID för princip tilldelningen |
-   | **Beskrivning** | Nej | En beskrivning av princip tilldelningen |
+   | **Beskrivning** | Inga | En beskrivning av princip tilldelningen |
    | **Principframtvingande** | Ja | Inställningen som aktiverar eller inaktiverar princip tilldelningen |
-   | **Tilldelad av** | Nej | Namnet på den person som skapade och tillämpade princip tilldelningen |
+   | **Tilldelad av** | Inga | Namnet på den person som skapade och tillämpade princip tilldelningen |
    ||||
 
    Om du till exempel vill tilldela principen till en Azure-resurs grupp med hjälp av Instagram-exemplet:
@@ -366,7 +366,7 @@ Meddelandet innehåller följande information:
 | Beskrivning | Innehåll |
 |-------------|---------|
 | Orsak till det här problemet | `"Resource 'instagram' was disallowed by policy."` |
-| Tilldelnings namn | `"Block Instagram connections"` |
+| Namn på tilldelning | `"Block Instagram connections"` |
 | Tilldelnings-ID | `"/subscriptions/xxxxxXXXXXxxxxxXXXXXxxxxxXXXXX/resourceGroups/MyLogicApp-RG/providers/Microsoft.Authorization/policyAssignments/4231890fc3bd4352acb0b673"` |
 | ID för princip definition | `"/subscriptions/xxxxxXXXXXxxxxxXXXXXxxxxxXXXXX/providers/Microsoft.Authorization/policyDefinitions/b5ddcfec-1b24-4cac-a353-360846a59f24"` |
 |||

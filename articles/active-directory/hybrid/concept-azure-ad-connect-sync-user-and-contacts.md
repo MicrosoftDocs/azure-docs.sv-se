@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861790"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect synkronisering: förstå användare, grupper och kontakter
@@ -47,7 +47,7 @@ Viktiga saker att tänka på när du synkroniserar grupper från Active Director
 
     * Om gruppens *proxyAddress* -attribut är tomt måste dess *e-* postattribut ha ett värde
 
-    * Om gruppens *proxyAddress* -attribut inte är tomt måste det innehålla minst ett SMTP-proxy-adress värde. Här följer några exempel:
+    * Om gruppens *proxyAddress* -attribut inte är tomt måste det innehålla minst ett SMTP-proxy-adress värde. Här är några exempel:
     
       * En Active Directory grupp vars proxyAddress-attribut har värdet *{"X500:/0 = contoso. com/ou = Users/CN = testgroup"}* kommer inte att vara e-postaktiverade i Azure AD. Den har ingen SMTP-adress.
       

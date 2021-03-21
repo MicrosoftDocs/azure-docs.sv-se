@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90531567"
 ---
 # <a name="symmetric-key-attestation"></a>Symmetrisk nyckelattestering
@@ -53,7 +53,7 @@ Här är komponenterna i varje token:
 | ResourceURI |URI för den registrerings slut punkt som kan nås med denna token, med start med scope-ID för enhets etablerings tjänst instansen. Till exempel `{Scope ID}/registrations/{Registration ID}` |
 | förfallo |UTF8-strängar för antalet sekunder sedan 00:00:00 UTC på 1 januari 1970. |
 | {URL-kodad – resourceURI} |Gemen URL – kodning för den nedre fall resurs-URI: n |
-| PolicyName |Namnet på den princip för delad åtkomst som denna token refererar till. Princip **namnet som används**när etableringen med symmetrisk nyckel attestering registreras. |
+| PolicyName |Namnet på den princip för delad åtkomst som denna token refererar till. Princip **namnet som används** när etableringen med symmetrisk nyckel attestering registreras. |
 
 När en enhet besvaras med en enskild registrering använder enheten den symmetriska nyckel som definierats i den enskilda registrerings posten för att skapa den hashade signaturen för SAS-token.
 

@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a10c4c0e6e40636e4803e054155d6fdaa12a9366
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96858560"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrera från Federation till direktautentisering för Azure Active Directory
@@ -160,7 +160,7 @@ För Windows 8-och Windows 7-dator konton använder hybrid anslutning sömlös S
 
 Mer information finns i [Konfigurera hybrid Azure AD-anslutna enheter](../devices/hybrid-azuread-join-plan.md).
 
-#### <a name="branding"></a>Varumärke
+#### <a name="branding"></a>Anpassning
 
 Om din organisation har [anpassat dina AD FS inloggnings sidor](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) för att visa information som är mer relevant för organisationen, kan du överväga att göra liknande [anpassningar till inloggnings sidan för Azure AD](../fundamentals/customize-branding.md).
 

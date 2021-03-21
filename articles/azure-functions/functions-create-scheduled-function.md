@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035197"
 ---
 # <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>Skapa en funktion i Azure Portal som körs enligt ett schema
@@ -48,7 +48,7 @@ Din nya Function-app är redo att användas. Därefter skapar du en funktion i a
     
     | Inställning | Föreslaget värde | Beskrivning |
     |---|---|---|
-    | **Namn** | Standard | Det här är namnet på den timerutlösta funktionen. |
+    | **Namn** | Standardvärde | Det här är namnet på den timerutlösta funktionen. |
     | **Schema** | 0 \* /1 \* \* \*\* | Ett [CRON-uttryck](functions-bindings-timer.md#ncrontab-expressions) med sex fält som schemalägger att funktionen ska köras varje minut. |
 
 ## <a name="test-the-function"></a>Testa funktionen

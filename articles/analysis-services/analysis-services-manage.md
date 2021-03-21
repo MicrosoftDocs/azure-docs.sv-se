@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93078908"
 ---
 # <a name="manage-analysis-services"></a>Manage Analysis Services
@@ -39,10 +39,10 @@ Se till att du använder den senaste versionen av SSMS för att få alla de sena
 1. Innan du ansluter måste du hämta server namnet. Välj **Azure Portal** > server > **Översikt** > **Servernamn** och kopiera servernamnet.
    
     ![Hämta servernamnet i Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. I SSMS > **Object Explorer** klickar du på **Anslut** > **Analysis Services** .
-3. I dialog rutan **Anslut till Server** klistrar du in namnet på servern och väljer sedan någon av följande autentiseringstyper i **autentisering** :   
+2. I SSMS > **Object Explorer** klickar du på **Anslut** > **Analysis Services**.
+3. I dialog rutan **Anslut till Server** klistrar du in namnet på servern och väljer sedan någon av följande autentiseringstyper i **autentisering**:   
     > [!NOTE]
-    > Autentiseringstypen, **Active Directory-Universal med MFA-support** , rekommenderas.
+    > Autentiseringstypen, **Active Directory-Universal med MFA-support**, rekommenderas.
 
     > [!NOTE]
     > Om du loggar in med ett Microsoft-konto, Live ID, Yahoo, Gmail osv. lämnar du fältet lösen ord tomt. Du uppmanas att ange ett lösen ord när du har klickat på Anslut.

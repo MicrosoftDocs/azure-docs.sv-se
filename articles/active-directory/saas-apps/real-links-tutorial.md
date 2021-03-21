@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 800ce9d6603f60f7328525a964565bb233c04a5e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-real-links"></a>Självstudie: Azure Active Directory integrering med riktiga länkar
@@ -144,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till riktiga länkar.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **riktiga länkar**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **riktiga länkar**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

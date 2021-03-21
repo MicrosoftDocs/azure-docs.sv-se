@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b260e51321e14a6ea1d1ee75f88ca7564b83d492
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Självstudie: Azure Active Directory integrering med N2F-utgifts rapporter
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning för Azure AD med N2F-utgifts rapporter:
 
-1. På sidan [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **N2F-utgifts rapporter** för program integrering.
+1. På sidan [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **N2F-utgifts rapporter** för program integrering.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -180,7 +180,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till N2F-utgifts rapporter.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **N2F-utgifts rapporter**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **N2F-utgifts rapporter**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

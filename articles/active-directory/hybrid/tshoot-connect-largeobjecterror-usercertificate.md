@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861756"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synkronisering: hantera LargeObject-fel som orsakas av userCertificate-attribut
@@ -107,7 +107,7 @@ Det bör finnas en befintlig Synkroniseringsregel som är aktive rad och konfigu
 
     | Attribut | Operator | Värde |
     | --- | --- | --- |
-    | sourceObjectType | SKEPPNINGSKVANTITETEN | Användare |
+    | sourceObjectType | SKEPPNINGSKVANTITETEN | User |
     | cloudMastered | NOTEQUAL | Sant |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>Steg 3. Skapa regeln för utgående synkronisering krävs
@@ -117,7 +117,7 @@ Den nya synkroniseringsregeln måste ha samma **omfattnings filter** och **högr
 
     | Attribut | Värde | Information |
     | --- | --- | --- |
-    | Namn | *Ange ett namn* | T. ex. *"ut till AAD – anpassad åsidosättning för userCertificate"* |
+    | Name | *Ange ett namn* | T. ex. *"ut till AAD – anpassad åsidosättning för userCertificate"* |
     | Beskrivning | *Ange en beskrivning* | T. ex. *"If userCertificate-attribut har fler än 15 värden, exportera null".* |
     | Anslutet system | *Välj Azure AD-anslutning* |
     | Ansluten system objekt typ | **användarvänlig** | |

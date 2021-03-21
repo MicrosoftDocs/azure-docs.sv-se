@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.openlocfilehash: b9dda384e2ef30808559d10012dea2909b2af0fd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206942"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Självstudie: ansluta ett virtuellt nätverk till en ExpressRoute-krets med CLI
@@ -26,7 +26,7 @@ Den här självstudien visar hur du länkar virtuella nätverk (virtuella nätve
 > * [PowerShell (klassisk)](expressroute-howto-linkvnet-classic.md)
 > 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Anslut ett virtuellt nätverk i samma prenumeration till en krets
 > - Anslut ett virtuellt nätverk i en annan prenumeration till en krets
@@ -36,7 +36,7 @@ I de här självstudierna får du lära dig att
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Du behöver den senaste versionen av kommando rads gränssnittet (CLI). Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
-* Granska kraven [prerequisites](expressroute-prerequisites.md), kraven för [routning](expressroute-routing.md)och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
+* Granska kraven [](expressroute-prerequisites.md), kraven för [routning](expressroute-routing.md)och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
 * Du måste ha en aktiv ExpressRoute-krets. 
   * Följ anvisningarna för att [skapa en ExpressRoute-krets](howto-circuit-cli.md) och ha den krets som Aktiver ATS av anslutnings leverantören. 
   * Se till att du har konfigurerat Azures privata peering för din krets. Mer information finns i artikeln [om konfigurering av routning](howto-routing-cli.md) . 

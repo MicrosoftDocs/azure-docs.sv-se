@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324539"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Distributions steg i livs cykeln för team data science process
@@ -39,7 +39,7 @@ Distribuera modeller med en datapipeline till en produktions-eller produktions m
 ## <a name="how-to-do-it"></a>Gör så här
 Huvud uppgiften adresseras i det här steget:
 
-**Operationalisera-modellen** : Distribuera modellen och pipelinen till en produktions-eller produktions miljö för program förbrukning.
+**Operationalisera-modellen**: Distribuera modellen och pipelinen till en produktions-eller produktions miljö för program förbrukning.
 
 ### <a name="operationalize-a-model"></a>Operationalisera en modell
 När du har en uppsättning modeller som fungerar bra kan du operationalisera dem för andra program att använda. Beroende på affärs kraven görs förutsägelserna antingen i real tid eller på grund av en batch. För att distribuera modeller exponerar du dem med ett öppet API-gränssnitt. Gränssnittet gör att modellen lätt kan användas från olika program, t. ex.:

@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077650"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Felsöka med hjälp av What If-verktyget i Villkorsstyrd åtkomst
 
-[Villkorlig åtkomst](./overview.md) är en funktion i Azure Active Directory (Azure AD) som gör att du kan styra hur auktoriserade användare får åtkomst till dina molnappar. Hur vet du vad du kan förväntar dig från principer för villkorlig åtkomst i din miljö? Om du vill besvara den här frågan kan du använda **verktyget för villkorlig åtkomst what if** .
+[Villkorlig åtkomst](./overview.md) är en funktion i Azure Active Directory (Azure AD) som gör att du kan styra hur auktoriserade användare får åtkomst till dina molnappar. Hur vet du vad du kan förväntar dig från principer för villkorlig åtkomst i din miljö? Om du vill besvara den här frågan kan du använda **verktyget för villkorlig åtkomst what if**.
 
 Den här artikeln förklarar hur du kan använda det här verktyget för att testa dina principer för villkorlig åtkomst.
 
@@ -56,15 +56,15 @@ Innan du kan köra en utvärdering måste du konfigurera inställningarna.
 
 Det här avsnittet innehåller information om inställningarna för simulerings körning.
 
-:::image type="content" source="./media/what-if-tool/02.png" alt-text="Skärm bild av sidan villkorlig åtkomst – principer i Azure Portal. I verktygsfältet visas vad om-objektet är markerat." border="false":::
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Skärm bild av sidan Azure Portal What If med fält för en användare, molnappar, en I P-adress, en enhets plattform, en klient-app och en inloggnings risk." border="false":::
 
-### <a name="user"></a>Användare
+### <a name="user"></a>User
 
 Du kan bara välja en användare. Detta är det enda obligatoriska fältet.
 
 ### <a name="cloud-apps"></a>Molnappar
 
-Standardinställningen för den här inställningen är **alla molnappar** . Standardinställningen utför en utvärdering av alla tillgängliga principer i din miljö. Du kan begränsa omfattningen till principer som påverkar specifika molnappar.
+Standardinställningen för den här inställningen är **alla molnappar**. Standardinställningen utför en utvärdering av alla tillgängliga principer i din miljö. Du kan begränsa omfattningen till principer som påverkar specifika molnappar.
 
 ### <a name="ip-address"></a>IP-adress
 
@@ -72,12 +72,12 @@ IP-adressen är en enskild IPv4-adress för att efterlikna [plats villkoret](loc
 
 ### <a name="device-platforms"></a>Enhetsplattformar
 
-Den här inställningen imiterar [villkoret för enhets plattformar](concept-conditional-access-conditions.md#device-platforms) och motsvarar **alla plattformar (inklusive ej stödda)** . 
+Den här inställningen imiterar [villkoret för enhets plattformar](concept-conditional-access-conditions.md#device-platforms) och motsvarar **alla plattformar (inklusive ej stödda)**. 
 
 ### <a name="client-apps"></a>Klientappar
 
 Med den här inställningen imiteras [villkoret för klient program](concept-conditional-access-conditions.md#client-apps).
-Som standard gör den här inställningen en utvärdering av alla principer som har **webbläsare** eller **mobilappar och skriv bords klienter,** antingen individuellt eller båda markerade. Den identifierar också principer som tillämpar **Exchange ActiveSync (EAS)** . Du kan begränsa den här inställningen genom att välja:
+Som standard gör den här inställningen en utvärdering av alla principer som har **webbläsare** eller **mobilappar och skriv bords klienter,** antingen individuellt eller båda markerade. Den identifierar också principer som tillämpar **Exchange ActiveSync (EAS)**. Du kan begränsa den här inställningen genom att välja:
 
 - **Webbläsare** för att utvärdera alla principer som har minst **webbläsare** vald. 
 - **Mobilappar och skriv bords klienter** för att utvärdera alla principer som har minst **mobila appar och skriv bords klienter** valda. 
@@ -88,9 +88,9 @@ Den här inställningen imiterar [inloggnings risk villkoret](concept-conditiona
 
 ## <a name="evaluation"></a>Utvärdering 
 
-Du startar en utvärdering genom att klicka på **What If** . Utvärderings resultatet ger dig en rapport som består av: 
+Du startar en utvärdering genom att klicka på **What If**. Utvärderings resultatet ger dig en rapport som består av: 
 
-:::image type="content" source="./media/what-if-tool/03.png" alt-text="Skärm bild av sidan villkorlig åtkomst – principer i Azure Portal. I verktygsfältet visas vad om-objektet är markerat." border="false":::
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Skärm bild av en utvärderings rapport. Text anger att minst en klassisk princip har kon figurer ATS. Flikarna är tillgängliga för att visa principer." border="false":::
 
 - En indikator om de klassiska principerna finns i din miljö
 - Principer som gäller för din användare

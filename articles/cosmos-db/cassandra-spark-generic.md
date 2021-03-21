@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090519"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Ansluta till Azure Cosmos DB Cassandra-API:et från Spark
@@ -41,7 +41,7 @@ Den här artikeln är en serie artiklar om Azure Cosmos DB API för Cassandra-in
 
 I följande tabell visas Azure Cosmos DB API för Cassandra-specificerade data flödes konfigurations parametrar som tillhandahålls av anslutningen. En detaljerad lista över alla konfigurations parametrar finns i sidan [konfigurations referens](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) för Spark Cassandra Connector GitHub-lagringsplatsen.
 
-| **Egenskaps namn** | **Standardvärde** | **Beskrivning** |
+| **Egenskapens namn** | **Standardvärde** | **Beskrivning** |
 |---------|---------|---------|
 | spark.cassandra.output.batCH. size. Rows |  1 |Antal rader per enskild batch. Ange den här parametern till 1. Den här parametern används för att uppnå högre data flöde för stora arbets belastningar. |
 | spark.cassandra.connection.connections_per_executor_max  | Inget | Maximalt antal anslutningar per nod per utförar. 10 * n motsvarar 10 anslutningar per nod i ett Cassandra-kluster med n-nod. Så om du kräver 5 anslutningar per nod per utförar för ett Cassandra-kluster med fem noder, bör du ange den här konfigurationen till 25. Ändra det här värdet baserat på graden av parallellitet eller antalet körningar som dina Spark-jobb har kon figurer ATS för.   |

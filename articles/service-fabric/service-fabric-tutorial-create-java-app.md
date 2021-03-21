@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/01/2018
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-js
 ms.openlocfilehash: d1f66177b1939d612a5ee80c99109c397b56cb37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91532201"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Självstudie: skapa ett program med en Java API-frontend-tjänst och en tillstånds känslig Server dels tjänst på Azure Service Fabric
@@ -34,7 +34,7 @@ I del ett i den här serien lärde du dig att:
 > * fjärrkommunicera med den tillståndskänsliga tjänsten
 > * Distribuera program till ett lokalt Service Fabric-kluster
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 
@@ -47,7 +47,7 @@ Skapa först webbklientdelen för röstningsprogrammet. Ett webbgränssnitt som 
 
 1. Öppna Eclipse.
 
-2. Skapa ett projekt med **File**  >  **ny**fil  >  **Other**  >  **Service Fabric**  >  **Service Fabric projekt**.
+2. Skapa ett projekt med   >  **ny** fil  >    >  **Service Fabric**  >  **Service Fabric projekt**.
 
     ![Nytt Service Fabric projekt i Sol förmörkelse](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
@@ -55,7 +55,7 @@ Skapa först webbklientdelen för röstningsprogrammet. Ett webbgränssnitt som 
 
     ![Välja den tillståndslösa Java-tjänsten i dialogrutan Ny tjänst](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
-4. På sidan **Lägg till tjänst** väljer du **tillstånds lös tjänst**och namnger din tjänst **VotingWeb**. Klicka på **Slutför** för att skapa projektet.
+4. På sidan **Lägg till tjänst** väljer du **tillstånds lös tjänst** och namnger din tjänst **VotingWeb**. Klicka på **Slutför** för att skapa projektet.
 
     ![Skapa en tillstånds lös tjänst för ditt Service Fabric-projekt]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 

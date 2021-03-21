@@ -10,10 +10,10 @@ ms.author: cgronlun
 author: cjgronlund
 ms.date: 11/12/2019
 ms.openlocfilehash: 37cb70bdbd1e3c87eeb994e0959c6214822d22ad
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322975"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Metod tips för säker kod med Azure Machine Learning
@@ -29,8 +29,8 @@ Utveckling med Azure Machine Learning ofta involverar webbaserade utvecklings mi
 
 * [Cross Site Scripting (XSS)](https://owasp.org/www-community/attacks/xss/)
 
-    * __Dom-inmatning__ : den här typen av attack kan ändra gränssnittet som visas i webbläsaren. Till exempel genom att ändra hur körnings knappen fungerar i en Jupyter Notebook.
-    * Åtkomsttoken __/cookies__ : XSS-attacker kan också komma åt lokala lagrings enheter och webb läsar cookies. Din Azure Active Directory-autentiseringstoken (AAD) lagras i lokal lagring. Ett XSS-angrepp kan använda denna token för att skapa API-anrop för din räkning och sedan skicka data till ett externt system eller API.
+    * __Dom-inmatning__: den här typen av attack kan ändra gränssnittet som visas i webbläsaren. Till exempel genom att ändra hur körnings knappen fungerar i en Jupyter Notebook.
+    * Åtkomsttoken __/cookies__: XSS-attacker kan också komma åt lokala lagrings enheter och webb läsar cookies. Din Azure Active Directory-autentiseringstoken (AAD) lagras i lokal lagring. Ett XSS-angrepp kan använda denna token för att skapa API-anrop för din räkning och sedan skicka data till ett externt system eller API.
 
 * [CSRF (Cross Site request förfalskning)](https://owasp.org/www-community/attacks/csrf): det här angreppet kan ersätta URL: en för en bild eller länk med URL: en för ett skadligt skript eller API. När bilden läses in eller när du klickar på länken, görs ett anrop till URL: en.
 
@@ -38,16 +38,16 @@ Utveckling med Azure Machine Learning ofta involverar webbaserade utvecklings mi
 
 Azure Machine Learning Studio tillhandahåller en miljö för en värdbaserad bärbar dator i webbläsaren. Celler i en bärbar dator kan skriva ut HTML-dokument eller fragment som innehåller skadlig kod.  När utdata återges kan koden köras.
 
-__Möjliga hot__ :
+__Möjliga hot__:
 * Cross Site Scripting (XSS)
 * Förfalskning av begäran mellan webbplatser (CSRF)
 
-Åtgärder __som tillhandahålls av Azure Machine Learning__ :
+Åtgärder __som tillhandahålls av Azure Machine Learning__:
 * __Kod cellens utdata__ är i begränsat läge i en iframe. Iframe hindrar skriptet från att komma åt den överordnade DOM, cookies eller session Storage.
 * __Markdown cell__ innehåll rensas med hjälp av dompurify-biblioteket. Detta blockerar skadliga skript från att köras med markdown-celler återges.
 * __Bild-URL__ och __markdown-länkar__ skickas till en Microsoft-ägda slut punkt, som söker efter skadliga värden. Om ett skadligt värde identifieras avvisar slut punkten begäran.
 
-__Rekommenderade åtgärder__ :
+__Rekommenderade åtgärder__:
 * Kontrol lera att innehållet i filerna är tillförlitligt innan du laddar upp till Studio. När du laddar upp måste du bekräfta att du överför betrodda filer.
 * När du väljer en länk för att öppna ett externt program uppmanas du att lita på programmet.
 
@@ -55,14 +55,14 @@ __Rekommenderade åtgärder__ :
 
 Azure Machine Learning Compute instance är värd för __Jupyter__ och __Jupyter Lab__. När du använder någon av cellerna i en bärbar dator eller kod i kan du skriva HTML-dokument eller fragment som innehåller skadlig kod. När utdata återges kan koden köras. Samma hot gäller även när du använder __RStudio__ som finns på en beräknings instans.
 
-__Möjliga hot__ :
+__Möjliga hot__:
 * Cross Site Scripting (XSS)
 * Förfalskning av begäran mellan webbplatser (CSRF)
 
-Åtgärder __som tillhandahålls av Azure Machine Learning__ :
+Åtgärder __som tillhandahålls av Azure Machine Learning__:
 * Inga. Jupyter-och Jupyter-labb är program med öppen källkod som finns på Azure Machine Learning Compute-instansen.
 
-__Rekommenderade åtgärder__ :
+__Rekommenderade åtgärder__:
 * Kontrol lera att innehållet i filerna är tillförlitligt innan du laddar upp till Studio. När du laddar upp måste du bekräfta att du överför betrodda filer.
 
 ## <a name="report-security-issues-or-concerns"></a>Rapportera säkerhets problem eller problem 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: tomfitz
 ms.openlocfilehash: 1ac6fd5a3f1e581fc9a676fe7f8f27b9742e1581
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101229"
 ---
 # <a name="microsoftkeyvaultkeyvaultcertificateselector-ui-element"></a>GRÄNSSNITTs element för Microsoft. nyckel valv. KeyVaultCertificateSelector
@@ -24,11 +24,11 @@ Användaren visas med alternativet att välja ett tillgängligt certifikat.
 
 När du har valt **Välj ett certifikat** kan användaren ange ett nyckel valv och certifikat från nyckel valvet.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-certificate.png" alt-text="Microsoft. KeyVaultCertificateSelector":::
+:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-certificate.png" alt-text="Microsoft. KeyVaultCertificateSelector Välj certifikat":::
 
 Kontrollen uppdateras för att visa det valda nyckel valvet och certifikat namnet.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-result.png" alt-text="Microsoft. KeyVaultCertificateSelector":::
+:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-result.png" alt-text="Microsoft. KeyVaultCertificateSelector. Visa markerat certifikat":::
 
 ## <a name="schema"></a>Schema
 

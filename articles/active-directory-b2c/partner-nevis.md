@@ -12,10 +12,10 @@ ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98675001"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Självstudie för att konfigurera Nevis med Azure Active Directory B2C för lösen ords lös autentisering
@@ -46,7 +46,7 @@ I diagrammet visas implementeringen.
 
 ![Inloggnings flöde för lösen ord på hög nivå med Azure AD B2C och Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Steg | Description |
+|Steg | Beskrivning |
 |:-----| :-----------|
 | 1. | En användare försöker logga in eller registrera sig för ett program via Azure AD B2C inloggnings-och registrerings princip.
 | 2. | Under registreringen registreras Nevis-appen till användar enheten med hjälp av en QR-kod. En privat nyckel genereras på användarens enhet och används för att signera användar förfrågningar.

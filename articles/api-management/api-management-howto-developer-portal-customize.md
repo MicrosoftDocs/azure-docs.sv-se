@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
 ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012995"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Självstudie: åtkomst och anpassning av Developer-portalen
 
 *Developer-portalen* är en automatiskt genererad, helt anpassningsbar webbplats med dokumentationen för dina API: er. Det är där API-konsumenter kan identifiera dina API: er, lära sig hur de används och begära åtkomst.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Öppna den hanterade versionen av Developer-portalen
@@ -144,5 +144,5 @@ Om du vill låta besökare i portalen testa API: erna via den inbyggda interakti
 
 Läs mer om Developer-portalen:
 
-- [Översikt över Azure API Management Developer-portalen](api-management-howto-developer-portal.md)
+- [Översikt över Azure API Management-utvecklarportalen](api-management-howto-developer-portal.md)
 - [Migrera till den nya Developer-portalen](developer-portal-deprecated-migration.md) från den föråldrade gamla portalen.

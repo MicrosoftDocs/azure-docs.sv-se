@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: a3097fa539f460ef5e8ffe73598fa5d55516717e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097812"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Skapa en Angular-app med Azure Cosmos DB:s API för MongoDB – Ansluta till Cosmos DB med hjälp av Mongoose
@@ -51,9 +51,9 @@ Mongoose är ett bibliotek för modellering av objektdata (ODM) för MongoDB och
     npm i mongoose --save
     ```
 
-1. I mappen **server** skapar du en fil med namnet **mongo.js** . Du lägger till anslutningsinformationen för Azure Cosmos DB-kontot i den här filen.
+1. I mappen **server** skapar du en fil med namnet **mongo.js**. Du lägger till anslutningsinformationen för Azure Cosmos DB-kontot i den här filen.
 
-1. Kopiera följande kod till filen **mongo.js** . Koden innehåller följande funktioner:
+1. Kopiera följande kod till filen **mongo.js**. Koden innehåller följande funktioner:
 
    * Kräver Mongoose.
    * Åsidosätter Mongo-löftet att använda det grundläggande löftet som är inbyggt i ES6/ES2015 och senare versioner.
@@ -85,9 +85,9 @@ Mongoose är ett bibliotek för modellering av objektdata (ODM) för MongoDB och
      };
      ```
     
-1. I Explorer-fönstret, under **server** , skapar du en mapp med namnet **environment** . I mappen **environment** skapar du en fil med namnet **environment.js** .
+1. I Explorer-fönstret, under **server**, skapar du en mapp med namnet **environment**. I mappen **environment** skapar du en fil med namnet **environment.js**.
 
-1. Från filen mongo.js måste vi inkludera värden för parametrarna `dbName`, `key` och `cosmosPort`. Kopiera följande kod i filen **environment.js** :
+1. Från filen mongo.js måste vi inkludera värden för parametrarna `dbName`, `key` och `cosmosPort`. Kopiera följande kod i filen **environment.js**:
 
     ```javascript
     // TODO: replace if yours are different
@@ -129,15 +129,15 @@ Nu har appen all nödvändig information för att ansluta till Azure Cosmos DB.
 
 Som nästa steg måste du definiera schemat för data som ska lagras i Azure Cosmos DB genom att definiera en modellfil. Skapa med hjälpa av följande steg en _Hero-modell_ som definierar schemat för data:
 
-1. I Explorer-fönstret, under mappen **server** skapar du en fil med namnet **hero.model.js** .
+1. I Explorer-fönstret, under mappen **server** skapar du en fil med namnet **hero.model.js**.
 
-1. Kopiera följande kod till filen **hero.model.js** . Koden innehåller följande funktioner:
+1. Kopiera följande kod till filen **hero.model.js**. Koden innehåller följande funktioner:
 
    * Kräver Mongoose.
    * Skapar ett nytt schema med ett id, ett namn och en fras.
    * Skapar en modell med hjälp av schemat.
    * Exporterar modellen. 
-   * Ge samlingen namnet **Heroes** (i stället för **Heros** , som är standardnamnet för samlingen baserat på reglerna för namn i plural i Mongoose).
+   * Ge samlingen namnet **Heroes** (i stället för **Heros**, som är standardnamnet för samlingen baserat på reglerna för namn i plural i Mongoose).
 
    ```javascript
    const mongoose = require('mongoose');
@@ -164,9 +164,9 @@ Som nästa steg måste du definiera schemat för data som ska lagras i Azure Cos
 
 När du har skapat Hero-modellen måste du definiera en tjänst för att läsa data och utföra åtgärderna list, create, delete och update. Skapa med hjälp av följande steg en _Hero-tjänst_ som frågar efter data från Azure Cosmos DB:
 
-1. I Explorer-fönstret, under mappen **server** skapar du en fil med namnet **hero.service.js** .
+1. I Explorer-fönstret, under mappen **server** skapar du en fil med namnet **hero.service.js**.
 
-1. Kopiera följande kod till filen **hero.service.js** . Koden innehåller följande funktioner:
+1. Kopiera följande kod till filen **hero.service.js**. Koden innehåller följande funktioner:
 
    * Hämtar modellen du har skapat.
    * Ansluter till databasen.
@@ -200,9 +200,9 @@ När du har skapat Hero-modellen måste du definiera en tjänst för att läsa d
 
 ## <a name="configure-routes"></a>Konfigurera vägar
 
-Som nästa steg måste du konfigurera väger för att hantera URL:erna för begärandena get, create, read och delete. Routningsmetoderna anger återanropsfunktioner (s.k. _hanterarfunktioner_ ). Dessa funktioner anropas när appen tar emot en begäran till den angivna slutpunkten och HTTP-metoden. Lägg till Hero-tjänsten och definiera vägarna med hjälp av följande steg:
+Som nästa steg måste du konfigurera väger för att hantera URL:erna för begärandena get, create, read och delete. Routningsmetoderna anger återanropsfunktioner (s.k. _hanterarfunktioner_). Dessa funktioner anropas när appen tar emot en begäran till den angivna slutpunkten och HTTP-metoden. Lägg till Hero-tjänsten och definiera vägarna med hjälp av följande steg:
 
-1. I Visual Studio Code, i filen **routes.js** , kommenterar du ut funktionen `res.send` som skickar exemplen på hero-data. Lägg till en rad för att istället anropa funktionen `heroService.getHeroes`.
+1. I Visual Studio Code, i filen **routes.js**, kommenterar du ut funktionen `res.send` som skickar exemplen på hero-data. Lägg till en rad för att istället anropa funktionen `heroService.getHeroes`.
 
     ```javascript
     router.get('/heroes', (req, res) => {
@@ -225,7 +225,7 @@ Som nästa steg måste du konfigurera väger för att hantera URL:erna för beg�
     function getHeroes(req, res) {
     ```
 
-Nu ska vi ägna en minut åt att gå igenom den tidigare koden. Först kommer vi till filen index.js, som konfigurerar nodservern. Observera att den konfigurerar och definierar vägarna. Sedan kommunicerar routes.js-filen med hero-tjänsten och beordrar den att hämta dina funktioner, som **getHeroes** , och att skicka begäran och svaret. Filen hero.service.js hämtar modellen och ansluter till Mongo. Sedan körs **getHeroes** när vi anropar den och returnerar svaret 200. 
+Nu ska vi ägna en minut åt att gå igenom den tidigare koden. Först kommer vi till filen index.js, som konfigurerar nodservern. Observera att den konfigurerar och definierar vägarna. Sedan kommunicerar routes.js-filen med hero-tjänsten och beordrar den att hämta dina funktioner, som **getHeroes**, och att skicka begäran och svaret. Filen hero.service.js hämtar modellen och ansluter till Mongo. Sedan körs **getHeroes** när vi anropar den och returnerar svaret 200. 
 
 ## <a name="run-the-app"></a>Kör appen
 
@@ -233,7 +233,7 @@ Kör sedan appen med hjälp av följande steg:
 
 1. Spara alla ändringar i Visual Studio Code. Välj knappen **Felsök** till vänster :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png"::: och välj sedan knappen **Starta fel sökning** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png"::: .
 
-1. Byt nu till webbläsaren. Öppna **utvecklarverktyg** och **fliken nätverk** . Gå till så `http://localhost:3000` ser du vårt program.
+1. Byt nu till webbläsaren. Öppna **utvecklarverktyg** och **fliken nätverk**. Gå till så `http://localhost:3000` ser du vårt program.
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Nytt Azure Cosmos DB-konto på Azure-portalen":::
 
@@ -244,8 +244,8 @@ Det finns ännu inga heroes-komponenter lagrade i appen. I nästa del av den hä
 Du kan ta bort resursgruppen, Azure Cosmos DB-kontot och alla relaterade resurser när de inte längre behövs. Ta bort resursgruppen med hjälp av följande steg:
 
  1. Gå till den resursgrupp där du har skapat Azure Cosmos DB-kontot.
- 1. Välj **Ta bort resursgrupp** .
- 1. Bekräfta namnet på den resursgrupp som ska tas bort och välj sedan **Ta bort** .
+ 1. Välj **Ta bort resursgrupp**.
+ 1. Bekräfta namnet på den resursgrupp som ska tas bort och välj sedan **Ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 

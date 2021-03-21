@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308229"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Så här väljer du algoritmer för Azure Machine Learning
@@ -30,7 +30,7 @@ En vanlig fråga är "vilken Machine Learning-algoritm ska jag använda?" Vilken
 
 ## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Affärs scenarier och lathund-bladet för Machine Learning algorithm
 
-I [lathund-bladet Azure Machine Learning algorithm](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) får du den första överväganden: **vad du vill göra med dina data** ? Leta upp den uppgift som du vill göra Machine Learning i lathund-och leta reda på en [Azure Machine Learning designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) -algoritm för lösningen för förutsägelse analys. 
+I [lathund-bladet Azure Machine Learning algorithm](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) får du den första överväganden: **vad du vill göra med dina data**? Leta upp den uppgift som du vill göra Machine Learning i lathund-och leta reda på en [Azure Machine Learning designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) -algoritm för lösningen för förutsägelse analys. 
 
 Machine Learning designer innehåller en omfattande portfölj med algoritmer som [besluts skog](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri)i flera klasser [, rekommendations system](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri), [neurala Network regression](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri), [neurala nätverk](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)för flera klasser och [K-innebär klustring](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri). Varje algoritm är utformad för att hantera en annan typ av Machine Learning-problem. Se [algoritmen för Machine Learning designer och module](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri) för en fullständig lista tillsammans med dokumentation om hur varje algoritm fungerar och hur du kan finjustera parametrarna för att optimera algoritmen.
 
@@ -51,21 +51,21 @@ I följande tabell sammanfattas några av de viktigaste egenskaperna för algori
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Klassificerings familj** | | | | | |
 | [Logistik regression med två klasser](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Bra  |Snabb |Ja |4 | |
-| [Besluts skog med två klasser](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Nej |5 |Visar långsamma Poäng tider. Föreslå att inte arbeta med En-mot-alla – multiklass, på grund av långsammare poängsättnings tider som orsakas av Trappstegs låsning i ackumulerade träd förutsägelser |
-| [Besluts träd med två klasser](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Nej |6 |Stor minnes storlek |
-| [Neurala nätverk med två klasser](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Nej |8 | |
+| [Besluts skog med två klasser](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Inga |5 |Visar långsamma Poäng tider. Föreslå att inte arbeta med En-mot-alla – multiklass, på grund av långsammare poängsättnings tider som orsakas av Trappstegs låsning i ackumulerade träd förutsägelser |
+| [Besluts träd med två klasser](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Inga |6 |Stor minnes storlek |
+| [Neurala nätverk med två klasser](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Inga |8 | |
 | [Genomsnittlig Perceptron i två klasser](./algorithm-module-reference/two-class-averaged-perceptron.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Ja |4 | |
 | [Dubbelriktad Vector-dator](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) |Bra |Snabb |Ja |5 |Lämpligt för stora funktions uppsättningar |
 | [Logistik regression med multiklass](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Bra |Snabb |Ja |4 | |
-| [Besluts skog med flera klasser](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Nej |5 |Visar långsamma Poäng tider |
-| [Besluts träd med djup klass](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Nej |6 | Vi vill förbättra noggrannheten med liten risk för mindre täckning |
-| [Neurala nätverk i multiklass](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Nej |8 | |
+| [Besluts skog med flera klasser](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Inga |5 |Visar långsamma Poäng tider |
+| [Besluts träd med djup klass](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Inga |6 | Vi vill förbättra noggrannheten med liten risk för mindre täckning |
+| [Neurala nätverk i multiklass](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Inga |8 | |
 | [En-vs-all multiklass](./algorithm-module-reference/one-vs-all-multiclass.md?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Se egenskaperna för den två klass metoden som valts |
 | **Regressions familj** | | | | | |
 | [Linjär regression](./algorithm-module-reference/linear-regression.md?WT.mc_id=docs-article-lazzeri) |Bra |Snabb |Ja |4 | |
-| [Besluts skogs regression](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Utmärkt |Medel |Nej |5 | |
-| [Regressions analys av besluts träd](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Nej |6 |Stor minnes storlek |
-| [Neurala nätverks regression](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Nej |8 | |
+| [Besluts skogs regression](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Utmärkt |Medel |Inga |5 | |
+| [Regressions analys av besluts träd](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Inga |6 |Stor minnes storlek |
+| [Neurala nätverks regression](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Bra |Medel |Inga |8 | |
 | **Kluster serie** | | | | | |
 | [K-innebär klustring](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri) |Utmärkt |Medel |Ja |8 |En klustrad algoritm |
 
@@ -123,11 +123,11 @@ Algoritmer för linjär regression förutsätter att data trender följer en rak
 
 ![Streckad klass-gränser](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-*Streckad *_klass_* : _Relying på en algoritm för linjär klassificering skulle resultera i låg exakthet. *
+*Streckad **klass**: _Relying på en algoritm för linjär klassificering skulle resultera i låg exakthet. *
 
 ![Data med en linjär trend](./media/how-to-select-algorithms/nonlinear-trend.png)
 
-***Data med en linjär trend** : _Using en linjär Regressions metod genererar mycket större fel än vad som behövs. *
+***Data med en linjär trend**: _Using en linjär Regressions metod genererar mycket större fel än vad som behövs. *
 
 ## <a name="number-of-parameters"></a>Antal parametrar
 

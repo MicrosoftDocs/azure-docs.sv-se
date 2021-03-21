@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 1312a995589b0408edc56a0883cc9fd899fc9e6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515448"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Självstudie: Azure Active Directory integrering med Powerschool prestanda frågor
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Powerschool prestanda i Azure AD:
 
-1. Välj **enkel inloggning**på sidan för program integrering i [Azure Portal](https://portal.azure.com/)på **Powerschool prestanda angelägenhet** .
+1. Välj **enkel inloggning** på sidan för program integrering i [Azure Portal](https://portal.azure.com/)på **Powerschool prestanda angelägenhet** .
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -158,7 +158,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att ge åtkomst till Powerschool prestanda.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Powerschool prestanda frågor**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Powerschool prestanda frågor**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

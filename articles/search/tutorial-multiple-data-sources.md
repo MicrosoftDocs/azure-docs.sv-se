@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99509510"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Självstudie: index från flera data källor med hjälp av .NET SDK
@@ -174,8 +174,8 @@ Den här enkla/.NET-distribution.-konsolen i C# utför följande uppgifter:
 
  Innan du kör programmet ska du ta en minut för att undersöka koden och definitionerna index och Indexer för det här exemplet. Den relevanta koden finns i två filer:
 
-  + **Hotel.cs** innehåller det schema som definierar indexet
-  + **Program.cs** innehåller funktioner som skapar Azure kognitiv sökning-index, data källor och indexerare och läser in de kombinerade resultaten i indexet.
+  + **Hotell. cs** innehåller det schema som definierar indexet
+  + **Program. cs** innehåller funktioner som skapar Azure kognitiv sökning-index, data källor och indexerare och läser in de kombinerade resultaten i indexet.
 
 ### <a name="create-an-index"></a>Skapa ett index
 
@@ -185,7 +185,7 @@ Data modellen definieras av hotell klassen, som också innehåller referenser ti
 
 Ett befintligt index av samma namn tas bort innan det nya skapas, om du vill köra det här exemplet mer än en gång.
 
-Följande kodfragment från **Hotel.cs** -filen visar enskilda fält, följt av en referens till en annan data modell klass, room [], som i sin tur har definierats i **Room.cs** -filen (visas inte).
+Följande kodfragment från filen **hotell. cs** visar enskilda fält, följt av en referens till en annan data modell klass, room [], som i sin tur har definierats i **Room. cs** -filen (visas inte).
 
 ```csharp
 . . .
@@ -199,7 +199,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-I **program.cs** -filen definieras en [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) med ett namn och en fält samling som genereras av `FieldBuilder.Build` metoden, och sedan skapas följande:
+I filen **program. cs** definieras en [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) med ett namn och en fält samling som genereras av `FieldBuilder.Build` metoden. därefter skapas följande:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)

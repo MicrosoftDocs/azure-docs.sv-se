@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: d81e529d7073e8200c5a1d1fa8f51504b1dc9259
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218450"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Utöka U-SQL-skript med python-kod i Azure Data Lake Analytics

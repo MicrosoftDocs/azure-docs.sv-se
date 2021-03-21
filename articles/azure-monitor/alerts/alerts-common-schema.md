@@ -4,10 +4,10 @@ description: Förstå det vanliga aviserings schemat, varför du bör använda d
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 39ea469b4109f4715db0d0a73ad069121058a46f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038265"
 ---
 # <a name="common-alert-schema"></a>Vanligt aviseringsschema

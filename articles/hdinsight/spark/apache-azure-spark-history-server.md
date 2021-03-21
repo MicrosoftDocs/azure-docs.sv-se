@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: 1d53d9e9ee2a7fa6588ea0993b3bebdb2a287351
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98941053"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Använd de utökade funktionerna i Apache Spark historik servern för att felsöka och diagnostisera Spark-program
@@ -94,7 +94,7 @@ Välj jobb-ID och välj sedan **data** på verktygs menyn för att Visa datavyn.
    ![Värme kartan på sidan Spark-program & jobb diagram.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Färg |Description |
+    |Färg |Beskrivning |
     |---|---|
     |Green|Jobbet har slutförts.|
     |Orange|Uppgiften misslyckades, men detta påverkar inte det slutliga resultatet av jobbet. Dessa aktiviteter har dubbletter eller nya försök som kan utföras senare.|

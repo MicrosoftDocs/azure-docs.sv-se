@@ -4,10 +4,10 @@ description: Förstå hur Azure-Lighthouse och Azure-hanterade program kan anvä
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693964"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse och Azure Managed Applications
@@ -27,7 +27,7 @@ I den här tabellen beskrivs några skillnader på hög nivå som kan påverka o
 |Omfång för åtkomst mellan klienter     |Prenumeration (er) eller resurs grupp (er)         |Resurs grupp (begränsat till ett enda program)         |
 |Köpbara på Azure Marketplace     |Nej (erbjudanden kan publiceras på Azure Marketplace, men kunder faktureras separat)        |Ja         |
 |IP-skydd     |Ja (IP kan finnas kvar hos tjänst leverantörens klient organisation)        |Ja (enligt design är resurs gruppen låst till kunder)         |
-|Avvisa tilldelning     |Nej         |Ja        |
+|Avvisa tilldelning     |Inga         |Ja        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
