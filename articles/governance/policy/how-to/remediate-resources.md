@@ -4,10 +4,10 @@ description: Den här guiden vägleder dig genom reparationen av resurser som in
 ms.date: 02/17/2021
 ms.topic: how-to
 ms.openlocfilehash: e567bedf48393a36215c1ac3f3d11f467ae7badd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101742236"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Åtgärda icke-kompatibla resurser med Azure Policy

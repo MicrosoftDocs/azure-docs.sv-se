@@ -10,13 +10,13 @@ ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: 81d4527817d637e7b764cc83160153d974ced5c0
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 01/14/2021
+ms.openlocfilehash: dca4d699ac1253753c82949cb480d95a1dde26e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600971"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594112"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Vad är en hanterad Azure SQL-instans?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Följande diagram beskriver viktiga funktioner i SQL-hanterad instans:
 Den hanterade Azure SQL-instansen är utformad för kunder som vill migrera ett stort antal appar från en lokal eller IaaS, självbyggd eller ISV-baserad miljö till en helt hanterad PaaS-moln miljö med så liten migrering som möjligt. Med den helt automatiserade [tjänsten Azure Data Migration](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)kan kunder lyfta och byta sin befintliga SQL Server instans till SQL-hanterad instans, vilket ger kompatibilitet med SQL Server och fullständig isolering av kund instanser med inbyggt VNet-stöd. Mer information om alternativ och verktyg för migrering finns i [Översikt över migrering: SQL Server till Azure SQL-hanterad instans](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> Med Software Assurance kan du byta ut dina befintliga licenser för rabatterade priser på SQL-hanterad instans med hjälp av [Azure Hybrid-förmån för SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). SQL-hanterad instans är det bästa migrerings målet i molnet för SQL Server instanser som kräver hög säkerhet och en omfattande programmerings yta.
 
 > [!TIP]
-> Hur kan vi göra Azure SQL bättre? [Ta undersökningen](https://aka.ms/AzureSQLSurvey).
+> Hur kan vi göra Azure SQL bättre? [Ta undersökningen](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456).
 
 ## <a name="key-features-and-capabilities"></a>Viktiga funktioner och funktioner
 
@@ -79,8 +79,8 @@ Den [vCore-baserade inköps modellen](../database/service-tiers-vcore.md) för S
 
 I vCore-modellen kan du välja mellan generationens maskin vara.
 
-- **Gen4** logiska CPU: er baseras på Intel® E5-2673 v3 (Haswell) 2,4 GHz-processorer, anslutna SSD, fysiska kärnor, 7 GB RAM-minne per kärna och beräknings storlekar mellan 8 och 24 virtuella kärnor.
-- **Gen5** logiska CPU: er baseras på Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) och Intel® 8272CL (överlappande sjö) 2,5 GHz-processorer, snabbt NVMe SSD, Hyper-threaded Logical Core och beräknings storlekar mellan 4 och 80 kärnor.
+- **Gen4** logiska CPU: er baseras på Intel &reg; E5-2673 v3 (Haswell) 2,4 GHz-processorer, anslutna SSD, fysiska kärnor, 7 GB RAM-minne per kärna och beräknings storlekar mellan 8 och 24 virtuella kärnor.
+- **Gen5** logiska CPU: er baseras på Intel &reg; E5-2673 v4 (Broadwell) 2,3 GHz, Intel &reg; SP-8160 (Skylake) och Intel &reg; 8272CL (Cascade Lake) 2,5 GHz-processorer, snabbt NVMe SSD, Hyper-threadad logisk kärna och beräknings storlekar mellan 4 och 80 kärnor.
 
 Hitta mer information om skillnaden mellan maskin varu generationer i [resurs gränser för SQL-hanterade instanser](resource-limits.md#hardware-generation-characteristics).
 

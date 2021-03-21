@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jingwang
 ms.openlocfilehash: 2a9e19f24c4889a194c85e33317860db1d3a68d2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101736567"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiera data från en Azure-blob till Azure SQL Database med Data Factory
@@ -112,7 +112,7 @@ Installera sedan de biblioteks paket som krävs med hjälp av NuGet Package Mana
 
 Följ de här stegen för att skapa en Data Factory-klient.
 
-1. Öppna *program.cs* och skriv sedan över de befintliga `using` instruktionerna med följande kod för att lägga till referenser till namn områden.
+1. Öppna *program. cs* och skriv sedan över de befintliga `using` instruktionerna med följande kod för att lägga till referenser till namn områden.
 
     ```csharp
     using System;

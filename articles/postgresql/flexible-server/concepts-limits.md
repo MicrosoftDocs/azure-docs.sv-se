@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 58f71ddc470c06e17ff73dd5681cd343bcf8ac7b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9039bbf006d5e5a677247771346a3a6b43781da2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102451905"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594945"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Gränser i Azure Database for PostgreSQL-flexibel Server
 
@@ -68,7 +68,7 @@ En PostgreSQL-anslutning, även inaktiv, kan uppta cirka 10 MB minne. Det tar oc
 
 ### <a name="storage"></a>Storage
 
-- Det går inte att minska lagrings storleken när den har kon figurer ATS. Du skulle behöva skapa en ny server med önskad lagrings storlek och utföra manuella dumpnings-och återställnings processer för att migrera dina databaser.
+- Det går inte att minska lagrings storleken när den har kon figurer ATS. Du måste skapa en ny server med önskad lagrings storlek, utföra manuell [dumpning och återställa](../howto-migrate-using-dump-and-restore.md) och migrera dina databaser till den nya servern.
 - För närvarande är inte funktionen för automatisk storleks ökning tillgänglig. Övervaka användningen och öka lagrings utrymmet till en högre storlek. 
 - När lagrings användningen når 95% eller om den tillgängliga kapaciteten är mindre än 5 GiB växlas servern automatiskt till **skrivskyddat läge** för att undvika fel som är kopplade till disk-fulla situationer. 
 - Vi rekommenderar att du ställer in varnings regler för `storage used` eller `storage percent` när de överskrider vissa tröskelvärden, så att du proaktivt kan vidta åtgärder som att öka lagrings storleken. Du kan till exempel ange en avisering om lagrings procenten överstiger 80% användning.

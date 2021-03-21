@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88117744"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Tjänst-till-tjänst-anrop som använder delegerad användar identitet i flödets räkning
@@ -77,7 +77,7 @@ Registrera både mellan nivå tjänsten och klient programmet i Azure AD.
 1. Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
 1. Ange omdirigerings-URI: n till bas-URL: en.
 1. Välj **Registrera** för att skapa programmet.
-1. Konfigurera behörigheter för ditt program. I **API-behörigheter**väljer du **Lägg till en behörighet** och sedan **Mina API: er**.
+1. Konfigurera behörigheter för ditt program. I **API-behörigheter** väljer du **Lägg till en behörighet** och sedan **Mina API: er**.
 1. Skriv namnet på mellan nivå tjänsten i textfältet.
 1. Välj **Välj behörigheter** och välj sedan den omfattning som du skapade i det sista steget för att registrera den mittersta nivån.
 
@@ -111,7 +111,7 @@ När du använder en delad hemlighet innehåller en begäran om tjänst-till-tj�
 | Assertion |krävs | Värdet för den åtkomsttoken som används i begäran. |
 | client_id |krävs | App-ID som tilldelats den anropande tjänsten under registreringen med Azure AD. Om du vill hitta app-ID: t i Azure Portal väljer du **Active Directory**, väljer katalogen och väljer sedan program namnet. |
 | client_secret |krävs | Nyckeln som registrerats för den anropande tjänsten i Azure AD. Det här värdet bör ha noterats vid tidpunkten för registreringen. |
-| resource |krävs | App-ID-URI för den mottagande tjänsten (skyddad resurs). Om du vill hitta app-ID-URI: n i Azure Portal väljer du **Active Directory** och väljer katalogen. Välj program namnet, Välj **alla inställningar**och välj sedan **Egenskaper**. |
+| resource |krävs | App-ID-URI för den mottagande tjänsten (skyddad resurs). Om du vill hitta app-ID-URI: n i Azure Portal väljer du **Active Directory** och väljer katalogen. Välj program namnet, Välj **alla inställningar** och välj sedan **Egenskaper**. |
 | requested_token_use |krävs | Anger hur begäran ska bearbetas. I flödets räkning måste värdet vara **on_behalf_of**. |
 | omfång |krävs | En blankstegsavgränsad lista över omfång för Tokenbegäran. För OpenID Connect måste omfångs- **OpenID** anges.|
 
@@ -146,7 +146,7 @@ En Tokenbegäran för tjänst-till-tjänst-begäran med ett certifikat innehåll
 | client_id |krävs | App-ID som tilldelats den anropande tjänsten under registreringen med Azure AD. Om du vill hitta app-ID: t i Azure Portal väljer du **Active Directory**, väljer katalogen och väljer sedan program namnet. |
 | client_assertion_type |krävs |Värdet måste vara `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |krävs | En JSON Web Token som du skapar och signerar med det certifikat som du har registrerat som autentiseringsuppgifter för ditt program. Se  [autentiseringsuppgifter för certifikat](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) för att lära dig om intygs format och om hur du registrerar ditt certifikat.|
-| resource |krävs | App-ID-URI för den mottagande tjänsten (skyddad resurs). Om du vill hitta app-ID-URI: n i Azure Portal väljer du **Active Directory** och väljer katalogen. Välj program namnet, Välj **alla inställningar**och välj sedan **Egenskaper**. |
+| resource |krävs | App-ID-URI för den mottagande tjänsten (skyddad resurs). Om du vill hitta app-ID-URI: n i Azure Portal väljer du **Active Directory** och väljer katalogen. Välj program namnet, Välj **alla inställningar** och välj sedan **Egenskaper**. |
 | requested_token_use |krävs | Anger hur begäran ska bearbetas. I flödets räkning måste värdet vara **on_behalf_of**. |
 | omfång |krävs | En blankstegsavgränsad lista över omfång för Tokenbegäran. För OpenID Connect måste omfångs- **OpenID** anges.|
 
@@ -255,13 +255,13 @@ En tjänst-till-tjänst-begäran för en SAML-kontroll innehåller följande par
 | Assertion |krävs | Värdet för den åtkomsttoken som används i begäran.|
 | client_id |krävs | App-ID som tilldelats den anropande tjänsten under registreringen med Azure AD. Om du vill hitta app-ID: t i Azure Portal väljer du **Active Directory**, väljer katalogen och väljer sedan program namnet. |
 | client_secret |krävs | Nyckeln som registrerats för den anropande tjänsten i Azure AD. Det här värdet bör ha noterats vid tidpunkten för registreringen. |
-| resource |krävs | App-ID-URI för den mottagande tjänsten (skyddad resurs). Detta är den resurs som ska vara mål gruppen för SAML-token. Om du vill hitta app-ID-URI: n i Azure Portal väljer du **Active Directory** och väljer katalogen. Välj program namnet, Välj **alla inställningar**och välj sedan **Egenskaper**. |
+| resource |krävs | App-ID-URI för den mottagande tjänsten (skyddad resurs). Detta är den resurs som ska vara mål gruppen för SAML-token. Om du vill hitta app-ID-URI: n i Azure Portal väljer du **Active Directory** och väljer katalogen. Välj program namnet, Välj **alla inställningar** och välj sedan **Egenskaper**. |
 | requested_token_use |krävs | Anger hur begäran ska bearbetas. I flödets räkning måste värdet vara **on_behalf_of**. |
 | requested_token_type | krävs | Anger vilken typ av token som begärdes. Värdet kan vara **urn: IETF: params: OAuth: token-Type: SAML2** eller **urn: IETF: params: OAuth: token-Type: saml1** beroende på kraven för den åtkomst resursen. |
 
 Svaret innehåller en SAML-token som är kodad i UTF8 och Base64url.
 
-- **SubjectConfirmationData för en SAML-kontroll från ett OBO-anrop**: om mål programmet kräver ett mottagar värde i **SubjectConfirmationData**måste värdet vara en svars-URL som inte är jokertecken i resurs programmets konfiguration.
+- **SubjectConfirmationData för en SAML-kontroll från ett OBO-anrop**: om mål programmet kräver ett mottagar värde i **SubjectConfirmationData** måste värdet vara en svars-URL som inte är jokertecken i resurs programmets konfiguration.
 - **SubjectConfirmationData-noden**: noden får inte innehålla ett **InResponseTo** -attribut eftersom den inte är en del av ett SAML-svar. Programmet som tar emot SAML-token måste kunna acceptera SAML-kontrollen utan ett **InResponseTo** -attribut.
 
 - **Medgivande**: medgivande måste ha beviljats för att ta emot en SAML-token som innehåller användar data i ett OAuth-flöde. Information om behörigheter och hur du får administratörs tillstånd finns [i behörigheter och medgivande i Azure Active Directory v 1.0-slutpunkten](./v1-permissions-consent.md).

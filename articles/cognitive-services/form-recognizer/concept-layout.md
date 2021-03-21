@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467025"
 ---
 # <a name="form-recognizer-layout-service"></a>Formulär tolkens layout-tjänst
@@ -95,7 +95,7 @@ JSON-utdata består av två delar:
 
 Layout-API extraherar text från dokument (PDF, TIFF) och bilder (JPG, PNG, BMP) med flera text vinklar och färger. Den accepterar foton av dokument, Fax, skrivna och/eller handskrivna (endast engelska) text och blandade lägen. Texten extraheras med information som finns på rader, ord, avgränsnings rutor, konfidens resultat och stil (handskriven eller annat). All text information ingår i `readResults` avsnittet i JSON-utdata. 
 
-### <a name="tables"></a>Tabeller
+### <a name="tables"></a>Tables
 
 Layout-API extraherar tabeller från dokument (PDF, TIFF) och bilder (JPG, PNG, BMP). Dokument kan skannas, fotograferas eller digitaliseras. Tabeller kan vara komplexa med sammanfogade celler eller kolumner, med eller utan kant linjer och med udda vinklar. Extraherad tabell information omfattar antalet kolumner och rader, rad omfång och kolumn intervall. Varje cell extraheras med dess avgränsnings ruta och referens till den text som extraheras i `readResults` avsnittet. Tabell information finns i `pageResults` avsnittet i JSON-utdata. 
 

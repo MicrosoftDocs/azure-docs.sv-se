@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619754"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Använd In-Memory OLTP för att förbättra program prestandan i Azure SQL Database och Azure SQL-hanterad instans
@@ -44,7 +44,7 @@ SSMS innehåller en **översikts rapport över transaktions prestanda analys** s
 För att generera rapporten i SSMS:
 
 * Högerklicka på noden databas i **Object Explorer**.
-* Klicka på **rapporter**  >  **Standard Reports**  >  **Översikt över prestanda analys av transaktioner**i standard rapporter.
+* Klicka på **rapporter**  >    >  **Översikt över prestanda analys av transaktioner** i standard rapporter.
 
 Mer information finns i [bestämma om en tabell eller lagrad procedur ska hamna i In-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
 
@@ -77,7 +77,7 @@ Du måste skapa och fylla i en minnesoptimerade kopia av den tabell som du vill 
 Använd detta alternativ för migrering:
 
 1. Anslut till test databasen med SSMS.
-2. Högerklicka på tabellen i **Object Explorer**och klicka sedan på **guiden för minnes optimering**.
+2. Högerklicka på tabellen i **Object Explorer** och klicka sedan på **guiden för minnes optimering**.
 
    Guiden för **tabell minnes optimerings** guide visas.
 3. I guiden klickar du på **migrerings verifiering** (eller **Nästa** ) för att se om tabellen har funktioner som inte stöds i minnesoptimerade tabeller. Mer information finns i:

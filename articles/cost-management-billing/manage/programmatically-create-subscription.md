@@ -1,20 +1,20 @@
 ---
-title: Skapa Azure-prenumerationer programmatiskt
+title: Skapa Azure-prenumerationer program mässigt
 description: I den här artikeln beskrivs de alternativ som finns tillgängliga för att skapa Azure-prenumerationer programmatiskt.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9ec0ffeb930fd9285f34ad9ba9e6aa606b15b5a2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493896"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593896"
 ---
 # <a name="create-azure-subscriptions-programmatically"></a>Skapa Azure-prenumerationer program mässigt
 
@@ -26,7 +26,7 @@ Med hjälp av olika REST-API: er kan du skapa en prenumeration för följande ty
 - Microsoft-kundavtal (MCA)
 - Microsoft-partneravtal (MPA)
 
-Du kan inte programmässigt skapa ytterligare prenumerationer för andra avtalstyper med REST-API:er.
+Du kan inte program mässigt skapa ytterligare prenumerationer för andra avtals typer med REST API: er.
 
 Krav och information för att skapa prenumerationer skiljer sig mellan olika avtal och API-versioner. Se följande artiklar som gäller din situation:
 
@@ -36,9 +36,9 @@ Senaste API:er:
 - [Skapa MCA-prenumerationer](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [Skapa MPA-prenumerationer](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-Om du fortfarande använder [förhandsversioner av API:er](programmatically-create-subscription-preview.md) kan du fortsätta skapa prenumerationer med dem. 
+De här artiklarna visar också hur du skapar prenumerationer med en Azure Resource Manager-mall (ARM-mall). En ARM-mall hjälper till att automatisera processen med att skapa prenumerationer.
 
-Du kan också [skapa prenumerationer med en ARM-mall](create-subscription-template.md). En ARM-mall bidrar till att automatisera processen för att skapa prenumerationer med REST-API:er. 
+Om du fortfarande använder för [hands versions-API: er](programmatically-create-subscription-preview.md)kan du fortsätta att skapa prenumerationer med dem. 
 
 ## <a name="next-steps"></a>Nästa steg
 

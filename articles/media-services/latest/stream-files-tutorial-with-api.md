@@ -2,7 +2,7 @@
 title: Ladda upp, koda och strömma med Media Services v3: Azure Media Services Beskrivning: självstudie som visar hur du laddar upp en fil, koda video och strömma innehåll med Azure Media Services v3.
 tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. service: Media-Services MS. arbets belastning: MS. topic: självstudie MS. Custom: MVC MS. Date: 08/31/2020 MS. author: inhenkel
+MS. service: Media-Services MS. arbets belastning: MS. topic: självstudie MS. Custom: MVC MS. Date: 03/17/2021 MS. author: inhenkel
 ---
 
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Självstudie: Ladda upp, koda och strömma videor med Media Services v3
@@ -113,7 +113,7 @@ I det här exemplet har indatavideon laddats upp från din lokala dator. Om du v
 
 Jobbet tar en stund att slutföra och du meddelas när detta sker. Kod exemplet nedan visar hur du avsöker tjänsten för [jobbets](/rest/api/media/jobs)status. Avsökningen är inte en rekommenderad metod för produktion av appar på grund av potentiell latens. Avsökningen kan begränsas om den överanvänds på ett konto. Utvecklare bör i stället använda Event Grid.
 
-Event Grid är utformat för hög tillgänglighet, konsekvent prestanda och dynamisk skalning. Med Event Grid kan dina appar lyssna efter och reagera på händelser från i princip alla Azure-tjänster, samt även från anpassade källor. Med enkel och HTTP-baserad reaktiv händelsehantering blir det lättare att skapa effektiva lösningar med hjälp av intelligent filtrering och dirigering av händelser.  Se [Dirigera händelser till en anpassad webbslutpunkt](job-state-events-cli-how-to.md).
+Event Grid är utformat för hög tillgänglighet, konsekvent prestanda och dynamisk skalning. Med Event Grid kan dina appar lyssna efter och reagera på händelser från i princip alla Azure-tjänster, samt även från anpassade källor. Med enkel och HTTP-baserad reaktiv händelsehantering blir det lättare att skapa effektiva lösningar med hjälp av intelligent filtrering och dirigering av händelser.  Se [Dirigera händelser till en anpassad webbslutpunkt](monitoring/job-state-events-cli-how-to.md).
 
 **Jobb** har vanligtvis följande tillstånd: **Schemalagd**, **I kö**, **Bearbetas**, **Slutförd** (slutlig status). Om jobbet har påträffat ett fel visas tillståndet **Fel**. Om jobbet håller på att avbrytas **avbryts du och** **annulleras** när det är färdigt.
 

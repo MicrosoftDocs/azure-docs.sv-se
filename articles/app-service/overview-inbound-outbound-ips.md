@@ -3,13 +3,13 @@ title: Inkommande/utgående IP-adresser
 description: Lär dig hur inkommande och utgående IP-adresser används i Azure App Service när de ändras och hur du hittar adresserna för din app.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746158"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591375"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Inkommande och utgående IP-adresser i Azure App Service
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746158"
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>Hur IP-adresser fungerar i App Service
 
-En App Service App körs i en App Service plan och App Service planer distribueras till en av distributions enheterna i Azure-infrastrukturen (internt kallat ett webb utrymme). Varje distributions enhet tilldelas upp till fem virtuella IP-adresser, som innehåller en offentlig inkommande IP-adress och fyra utgående IP-adresser. Alla App Service planer i samma distributions enhet och App-instanser som körs i dem, delar samma uppsättning virtuella IP-adresser. För en App Service-miljön (en App Service plan på [isolerad nivå](https://azure.microsoft.com/pricing/details/app-service/)) är App Service plan själva distributions enheten, så de virtuella IP-adresserna är avsedda som ett resultat.
+En App Service App körs i en App Service plan och App Service planer distribueras till en av distributions enheterna i Azure-infrastrukturen (internt kallat ett webb utrymme). Varje distributions enhet tilldelas en uppsättning virtuella IP-adresser, som innehåller en offentlig inkommande IP-adress och en uppsättning [utgående IP-adresser](#find-outbound-ips). Alla App Service planer i samma distributions enhet och App-instanser som körs i dem, delar samma uppsättning virtuella IP-adresser. För en App Service-miljön (en App Service plan på [isolerad nivå](https://azure.microsoft.com/pricing/details/app-service/)) är App Service plan själva distributions enheten, så de virtuella IP-adresserna är avsedda som ett resultat.
 
 Eftersom du inte har behörighet att flytta en App Service plan mellan distributions enheter, förblir de virtuella IP-adresserna som tilldelas till din app samma, men det finns undantag.
 
@@ -51,7 +51,7 @@ Uppsättningen utgående IP-adresser för din app ändras när du utför någon 
 
 - Ta bort en app och återskapa den i en annan resurs grupp (distributions enhet kan ändras).
 - Ta bort den sista appen i en resurs grupp _och_ regions kombination och återskapa den (distributions enheten kan ändras).
-- Skala din app mellan de lägre nivåerna ( **Basic** , **standard** och **Premium** ) och **Premium v2** -nivån (IP-adresser kan läggas till i eller subtraheras från uppsättningen).
+- Skala din app mellan de lägre nivåerna (**Basic**, **standard** och **Premium**) och **Premium v2** -nivån (IP-adresser kan läggas till i eller subtraheras från uppsättningen).
 
 Du hittar uppsättningen med alla möjliga utgående IP-adresser som din app kan använda, oavsett pris nivå, genom att söka efter `possibleOutboundIpAddresses` egenskapen eller i fältet **ytterligare utgående IP-adresser** på bladet **Egenskaper** i Azure Portal. Se [hitta utgående IP-adresser](#find-outbound-ips).
 

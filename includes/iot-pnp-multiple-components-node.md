@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1d54429d901ca6caeadabfa7580e7270ceabcf45
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834187"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611937"
 ---
 I den här självstudien får du lära dig hur du skapar ett exempel på IoT Plug and Play enhets program med komponenter, ansluter det till din IoT-hubb och använder Azure IoT Explorer-verktyget för att visa den information som skickas till hubben. Exempel programmet är skrivet för Node.js och ingår i Azure IoT Hub Device SDK för Node.js. Ett Solution Builder kan använda Azure IoT Explorer-verktyget för att förstå funktionerna i en IoT Plug and Play-enhet utan att behöva visa någon enhets kod.
 
@@ -60,7 +60,7 @@ Navigera till mappen *Azure-IoT-SDK-node\device\samples\pnp*
 
 Mappen *Azure-IoT-SDK-node\device\samples\pnp* innehåller exempel koden för IoT plug and Play temperatur styrenhets enheten.
 
-Koden i *pnpTemperatureController.js* -filen implementerar en IoT plug and Play-enhet för temperatur styrenhet. Modellen som det här exemplet implementerar använder [flera komponenter](../articles/iot-pnp/concepts-components.md). [DTDL-modell filen (Digital Definition Language) för temperatur enheten](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) definierar telemetri, egenskaper och kommandon som enheten implementerar.
+Koden i *pnpTemperatureController.js* -filen implementerar en IoT plug and Play-enhet för temperatur styrenhet. Modellen som det här exemplet implementerar använder [flera komponenter](../articles/iot-pnp/concepts-modeling-guide.md). [DTDL-modell filen (Digital Definition Language) för temperatur enheten](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) definierar telemetri, egenskaper och kommandon som enheten implementerar.
 
 Öppna *pnpTemperatureController.js* -filen i valfri kod redigerare. Exempel koden visar hur du:
 

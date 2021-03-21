@@ -8,29 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 62417b575e142d044e599249a529328a41c9b8d7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a2167d573871481c99b755fc713e18543d74c5bf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102639166"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602690"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Ange Azure Resource Manager lösen ord på Azure Stack Edge Pro GPU-enhet
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-I den här artikeln beskrivs hur du ställer in Azure Resource Manager lösen ordet. Du måste ange det här lösen ordet när du ansluter till lokala enhets-API: er via Azure Resource Manager.
+I den här artikeln beskrivs hur du ställer in Azure Resource Manager lösen ordet. Du måste ange det här lösen ordet när du [ansluter till lokala enhets-API: er via Azure Resource Manager](azure-stack-edge-gpu-connect-resource-manager.md). 
 
 <!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Återställ lösen ord via Azure Portal
 
-1. Gå till den Azure Stack Edge-resurs som du skapade för att hantera enheten i Azure Portal. Gå till **Edge services > Cloud Storage Gateway**.
+1. Gå till den Azure Stack Edge-resurs som du skapade för att hantera enheten i Azure Portal. 
 
-    ![Återställ EdgeARM User Password 1](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-1.png)
-
-2. Välj **Återställ Edge ARM-lösenord** från kommandoraden i den högra rutan. 
+2. Gå till **Egenskaper**. Välj **Återställ Edge ARM-lösenord** från kommandoraden i den högra rutan. 
 
     ![Återställ EdgeARM User Password 2](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-2.png)
 

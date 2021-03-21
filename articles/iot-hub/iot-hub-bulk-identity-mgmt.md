@@ -10,10 +10,10 @@ ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536087"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Massimportera och massexportera IoT Hub-enhetsidentiteter
@@ -21,7 +21,7 @@ ms.locfileid: "92536087"
 Varje IoT-hubb har ett identitets register som du kan använda för att skapa resurser per enhet i tjänsten. I identitets registret kan du också kontrol lera åtkomsten till de enhets riktade slut punkterna. I den här artikeln beskrivs hur du importerar och exporterar enhets identiteter i bulk till och från ett identitets register. Om du vill se ett fungerande exempel i C# och lära dig hur du kan använda den här funktionen när du klonar en hubb till en annan region, se [hur du klonar en IoT Hub](iot-hub-how-to-clone.md).
 
 > [!NOTE]
-> IoT Hub har nyligen lagt till stöd för virtuellt nätverk i ett begränsat antal regioner. Den här funktionen skyddar import-och export åtgärder och eliminerar behovet av att skicka nycklar för autentisering.  I början är stödet för virtuellt nätverk endast tillgängligt i följande regioner: *WestUS2* , *öster* och *usasödracentrala* . Mer information om stöd för virtuella nätverk och API-anrop för att implementera det finns i [IoT Hub stöd för virtuella nätverk](virtual-network-support.md).
+> IoT Hub har nyligen lagt till stöd för virtuellt nätverk i ett begränsat antal regioner. Den här funktionen skyddar import-och export åtgärder och eliminerar behovet av att skicka nycklar för autentisering.  I början är stödet för virtuellt nätverk endast tillgängligt i följande regioner: *WestUS2*, *öster* och *usasödracentrala*. Mer information om stöd för virtuella nätverk och API-anrop för att implementera det finns i [IoT Hub stöd för virtuella nätverk](virtual-network-support.md).
 
 Import-och export åtgärder sker i samband med *jobb* som gör att du kan köra Mass åtgärder mot en IoT-hubb.
 
@@ -61,7 +61,7 @@ Om du vill hitta anslutnings strängen för din IoT-hubb går du till Azure Port
 
 - Gå till IoT-hubben.
 
-- Välj **principer för delad åtkomst** .
+- Välj **principer för delad åtkomst**.
 
 - Välj en princip med hänsyn till de behörigheter som du behöver.
 
@@ -109,7 +109,7 @@ Metoden **ExportDevicesAsync** kräver två parametrar:
      | SharedAccessBlobPermissions.Delete
    ```
 
-* Ett *booleskt värde* som anger om du vill utesluta autentiseringsinställningar från dina export data. Om **värdet är false** inkluderas autentiseringsinställningar i Exportera utdata. Annars exporteras nycklar som **Null** .
+* Ett *booleskt värde* som anger om du vill utesluta autentiseringsinställningar från dina export data. Om **värdet är false** inkluderas autentiseringsinställningar i Exportera utdata. Annars exporteras nycklar som **Null**.
 
 Följande C#-kodfragment visar hur du startar ett export jobb som innehåller nycklar för enhetsautentisering i exportera data och sedan söker efter slut för ande:
 
@@ -134,7 +134,7 @@ while(true)
 }
 ```
 
-I jobbet lagras utdata i den tillhandahållna BLOB-behållaren som en Block-Blob med namnet **devices.txt** . Utdatan består av JSON-serialiserade enhets data, med en enhet per rad.
+I jobbet lagras utdata i den tillhandahållna BLOB-behållaren som en Block-Blob med namnet **devices.txt**. Utdatan består av JSON-serialiserade enhets data, med en enhet per rad.
 
 I följande exempel visas utdata-data:
 
@@ -226,7 +226,7 @@ Metoden **ImportDevicesAsync** tar två parametrar:
    SharedAccessBlobPermissions.Read
    ```
 
-* En *sträng* som innehåller en URI för en [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB-behållare som ska användas som *utdata* från jobbet. Jobbet skapar en block-BLOB i den här behållaren för att lagra fel information från det slutförda import **jobbet** . SAS-token måste innehålla följande behörigheter:
+* En *sträng* som innehåller en URI för en [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB-behållare som ska användas som *utdata* från jobbet. Jobbet skapar en block-BLOB i den här behållaren för att lagra fel information från det slutförda import **jobbet**. SAS-token måste innehålla följande behörigheter:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 

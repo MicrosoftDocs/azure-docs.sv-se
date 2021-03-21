@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
 ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91617714"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Skapa ett virtuellt nätverk för Azure SQL Managed Instance
@@ -43,7 +43,7 @@ Azure SQL-hanterad instans måste distribueras i ett [virtuellt](../../virtual-n
 
 Det enklaste sättet att skapa och konfigurera ett virtuellt nätverk är att använda en mall för Azure Resource Manager distribution.
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 
 2. Välj knappen **distribuera till Azure** :
 
@@ -52,7 +52,7 @@ Det enklaste sättet att skapa och konfigurera ett virtuellt nätverk är att an
    Den här knappen öppnar ett formulär som du kan använda för att konfigurera nätverks miljön där du kan distribuera SQL-hanterad instans.
 
    > [!Note]
-   > Den här Azure Resource Manager mallen distribuerar ett virtuellt nätverk med två undernät. Ett undernät, som kallas **ManagedInstances**, är reserverat för SQL-hanterad instans och har en förkonfigurerad routningstabell. Det andra under nätet som kallas **standard**används för andra resurser som ska komma åt SQL-hanterad instans (till exempel Azure Virtual Machines).
+   > Den här Azure Resource Manager mallen distribuerar ett virtuellt nätverk med två undernät. Ett undernät, som kallas **ManagedInstances**, är reserverat för SQL-hanterad instans och har en förkonfigurerad routningstabell. Det andra under nätet som kallas **standard** används för andra resurser som ska komma åt SQL-hanterad instans (till exempel Azure Virtual Machines).
 
 3. Konfigurera nätverks miljön. I följande formulär kan du konfigurera parametrar för din nätverks miljö:
 

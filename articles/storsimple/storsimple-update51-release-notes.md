@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: a6a359888e782751892f2a034a8d92a014fd3a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb971851ba678ce18f5a1c7954e5620740f3a4c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055851"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657577"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000-serien uppdatering 5,1 viktig information
 
@@ -34,7 +34,11 @@ Granska informationen i versions anteckningarna innan du distribuerar uppdaterin
 
 Följande viktiga förbättringar och fel korrigeringar har gjorts i uppdatering 5,1:
 
-* **Tls 1,2** – den här StorSimple-uppdateringen kommer att verkställa TLS 1,2 på alla klienter. Detta är en obligatorisk uppdatering för alla enheter med StorSimple 8000-serien.
+* **Tls 1,2** – den här StorSimple-uppdateringen kommer att verkställa TLS 1,2 på alla klienter. Uppdateringen är obligatorisk för alla enheter i StorSimple 8000-serien.
+
+   Om du ser följande varning måste du uppdatera program varan på enheten innan du fortsätter:
+
+   En eller flera StorSimple-enheter kör en äldre program varu version. Den senaste tillgängliga uppdateringen för TLS 1,2 är en obligatorisk uppdatering och installeras omedelbart på dessa enheter. TLS 1,2 används för all Azure Portal kommunikation och utan den här uppdateringen kommer enheten inte att kunna kommunicera med StorSimple-tjänsten.
 
 ## <a name="known-issues-in-update-51-from-previous-releases"></a>Kända problem i uppdatering 5,1 från tidigare versioner
 

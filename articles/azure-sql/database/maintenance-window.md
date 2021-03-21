@@ -11,10 +11,10 @@ ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/11/2021
 ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149757"
 ---
 # <a name="maintenance-window-preview"></a>Underhålls period (för hands version)

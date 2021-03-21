@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
 ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382811"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Felsöka Azure Data Factory
@@ -439,7 +439,7 @@ Följande tabell gäller för U-SQL.
 
 - **Rekommendation**: kontrol lera att slut punkten som du försöker trycka på svarar på begär Anden. Du kan använda verktyg som Fiddler/Postman.
 
-## <a name="custom"></a>Anpassat
+## <a name="custom"></a>Anpassad
 
 Följande tabell gäller för Azure Batch.
  

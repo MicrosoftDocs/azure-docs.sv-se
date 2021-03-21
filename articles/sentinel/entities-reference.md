@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456342"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Referens för Azure Sentinel-enhets typer
@@ -50,7 +50,7 @@ För bästa resultat – du bör använda identifierare från kolumnen **starkas
 | [**URL**](#url) | URL | URL | |
 | [**IoT-enhet**](#iot-device) | IoTHub<br>DeviceId<br>DeviceName<br>IoTSecurityAgentId<br>DeviceType<br>Källa<br>SourceRef<br>Tillverkare<br>Modell<br>OperatingSystem<br>Adresser<br>MacAddress<br>Protokoll<br>Serienummer | IoTHub<br>DeviceId | IoTHub + DeviceId |
 | [**Kvoter**](#mailbox) | MailboxPrimaryAddress<br>DisplayName<br>UPN<br>ExternalDirectoryObjectId<br>RiskLevel | MailboxPrimaryAddress | |
-| [**E-postkluster**](#mail-cluster) | NetworkMessageIds<br>CountByDeliveryStatus<br>CountByThreatType<br>CountByProtectionStatus<br>Hot<br>Söka i data<br>QueryTime<br>Antal återförsök<br>IsVolumeAnomaly<br>Källa<br>ClusterSourceIdentifier<br>ClusterSourceType<br>ClusterQueryStartTime<br>ClusterQueryEndTime<br>ClusterGroup | Söka i data<br>Källa | Fråga + källa |
+| [**E-postkluster**](#mail-cluster) | NetworkMessageIds<br>CountByDeliveryStatus<br>CountByThreatType<br>CountByProtectionStatus<br>Hot<br>Fråga<br>QueryTime<br>Antal återförsök<br>IsVolumeAnomaly<br>Källa<br>ClusterSourceIdentifier<br>ClusterSourceType<br>ClusterQueryStartTime<br>ClusterQueryEndTime<br>ClusterGroup | Fråga<br>Källa | Fråga + källa |
 | [**E-postmeddelande**](#mail-message) | Mottagare<br>Er<br>Hot<br>Avsändare<br>P1Sender<br>P1SenderDisplayName<br>P1SenderDomain<br>SenderIP<br>P2Sender<br>P2SenderDisplayName<br>P2SenderDomain<br>ReceivedDate<br>NetworkMessageId<br>InternetMessageId<br>Ämne<br>BodyFingerprintBin1<br>BodyFingerprintBin2<br>BodyFingerprintBin3<br>BodyFingerprintBin4<br>BodyFingerprintBin5<br>AntispamDirection<br>DeliveryAction<br>DeliveryLocation<br>Språk<br>ThreatDetectionMethods | NetworkMessageId<br>Mottagare | NetworkMessageId + mottagare |
 | [**Skicka e-post**](#submission-mail) | SubmissionId<br>SubmissionDate<br>Jobbets avsändare<br>NetworkMessageId<br>Timestamp<br>Mottagare<br>Avsändare<br>SenderIp<br>Ämne<br>ReportType | SubmissionId<br>NetworkMessageId<br>Mottagare<br>Jobbets avsändare |  |
 |
@@ -70,7 +70,7 @@ Följande är en mer ingående titt på de fullständiga scheman för varje enti
 | ----- | ---- | ----------- |
 | Typ | Sträng | redovisning |
 | Name | Sträng | Namnet på kontot. Det här fältet ska bara innehålla namnet utan att någon domän har lagts till. |
-| *FullName* | *Ej tillämpligt* | *Ingår inte i schemat, ingår för bakåtkompatibilitet med en gammal version av enhets mappning.*
+| *FullName* | *EJ TILLÄMPLIGT* | *Ingår inte i schemat, ingår för bakåtkompatibilitet med en gammal version av enhets mappning.*
 | NTDomain | Sträng | NETBIOS-domännamnet som det visas i aviserings formatet – domain\username. Exempel: ekonomi, NT-auktoritet |
 | DnsDomain | Sträng | Det fullständigt kvalificerade domänens DNS-namn. Exempel: finance.contoso.com |
 | UPNSuffix | Sträng | User Principal Name suffix för kontot. I vissa fall är detta även domän namnet. Exempel: contoso.com |
@@ -108,7 +108,7 @@ Svaga identifierare för en konto enhet:
 | DnsDomain | Sträng | Den DNS-domän som den här värden tillhör. Ska innehålla det fullständiga DNS-suffixet för domänen, om det är känt. |
 | NTDomain | Sträng | Den NT-domän som denna värd tillhör. |
 | HostName | Sträng | Värdnamn utan domänsuffix. |
-| *FullName* | *Ej tillämpligt* | *Ingår inte i schemat, ingår för bakåtkompatibilitet med en gammal version av enhets mappning.*
+| *FullName* | *EJ TILLÄMPLIGT* | *Ingår inte i schemat, ingår för bakåtkompatibilitet med en gammal version av enhets mappning.*
 | NetBiosNamn | Sträng | Värd namnet (före Windows 2000). |
 | IoTDevice | Entitet | IoT Device-entiteten (om denna värd representerar en IoT-enhet). |
 | AzureID | Sträng | Azure-resurs-ID för den virtuella datorn, om det är känt. |
@@ -393,7 +393,7 @@ Starka identifierare för en e-postentitet:
 | CountByThreatType | IDictionary &lt; -sträng, int&gt; | Antal e-postmeddelanden per ThreatType-sträng representation. |
 | CountByProtectionStatus | IDictionary &lt; -sträng, lång&gt; | Antal e-postmeddelanden efter hot skydds status. |
 | Hot | IList- &lt; sträng&gt; | Hot från e-postmeddelanden som ingår i e-postklustret. |
-| Söka i data | Sträng | Frågan som användes för att identifiera e-postklustrets meddelanden. |
+| Fråga | Sträng | Frågan som användes för att identifiera e-postklustrets meddelanden. |
 | QueryTime | DateTime? | Frågans tid. |
 | Antal återförsök | Int? | Antalet e-postmeddelanden som ingår i e-postklustret. |
 | IsVolumeAnomaly | Booleska? | Avgör om detta är ett volym avvikande e-postkluster. |

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 09/30/2020
-ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592700"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592142"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Övervakning och prestandajustering för Azure SQL Database och Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,6 +35,10 @@ Azure SQL Database och Azure SQL-hanterad instans tillhandahåller övervakning 
 
 > [!NOTE]
 > Databaser med mycket låg användning kan visas i portalen med mindre än faktisk användning. På grund av hur telemetri genereras när ett Double-värde konverteras till närmaste heltal, avrundas vissa användnings belopp mindre än 0,5 till 0, vilket leder till att den utgivna telemetri förloras. Mer information finns i [mått för låg databas och elastisk pool till noll](#low-database-and-elastic-pool-metrics-rounding-to-zero).
+
+### <a name="monitor-with-sql-insights"></a>Övervaka med SQL Insights
+
+[Azure Monitor SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) är ett verktyg för att övervaka Azure SQL-hanterade instanser, Azure SQL-databaser och SQL Server instanser i virtuella Azure SQL-datorer. Den här tjänsten använder en fjärragent för att samla in data från DMV: er (Dynamic Management views) och dirigera data till Azure Log Analytics, där de kan övervakas och analyseras. Du kan visa dessa data från [Azure Monitor](../../azure-monitor/overview.md) i angivna vyer eller komma åt loggdata direkt för att köra frågor och analysera trender. Om du vill börja använda Azure Monitor SQL Insights, se [Aktivera SQL Insights](../../azure-monitor/insights/sql-insights-enable.md).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Resurs övervakning av Azure SQL Database och Azure SQL-hanterad instans
 

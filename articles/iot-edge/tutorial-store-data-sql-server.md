@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461121"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Självstudie: Lagra data på gränsen med SQL Server-databaser
@@ -107,7 +107,7 @@ Du måste välja vilken arkitektur du vill använda för varje lösning, efterso
 
 3. Spara filen **sqlFunction.csproj**.
 
-4. Öppna filen **sqlFunction.cs** .
+4. Öppna filen **sqlFunction. cs** .
 
 5. Ersätt hela innehållet i filen med följande kod:
 
@@ -221,7 +221,7 @@ Ett [distributionsmanifest](module-composition.md) deklarerar vilka moduler IoT 
 
 3. I Azure IoT Edge module Marketplace söker du efter och väljer **SQL Server modul**.
 
-4. Ändra modulnamnet till **SQL**, alla gemener. Det här namnet matchar behållar namnet som deklareras i anslutnings strängen i sqlFunction.cs-filen.
+4. Ändra modulnamnet till **SQL**, alla gemener. Det här namnet matchar behållar namnet som deklareras i anslutnings strängen i filen sqlFunction. cs.
 
 5. Välj **Importera** för att lägga till modulen i din lösning.
 
