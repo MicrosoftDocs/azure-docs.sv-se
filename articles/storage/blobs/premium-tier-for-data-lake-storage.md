@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
 ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324228"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Premium-nivå för Azure Data Lake Storage
@@ -86,7 +86,7 @@ Premium-nivån för Azure Data Lake Storage är tillgänglig i följande regione
 |USA, södra centrala|LRS|
 |Kanada, centrala|LRS|
 |Kanada, östra|LRS|
-|Norra Europa|LRS, ZRS|
+|Europa, norra|LRS, ZRS|
 |Europa, västra|LRS, ZRS|
 |Storbritannien, södra|LRS|
 |Storbritannien, västra|LRS|

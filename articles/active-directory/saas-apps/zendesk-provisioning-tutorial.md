@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 620dd8fd586352ebeaf097a8f870a606f8e06c01
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359722"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zendesk för automatisk användar etablering
@@ -102,7 +102,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
    * I rutan **domän** fyller du i under domänen för din Zendesk-klient. Till exempel för ett konto med en klient-URL för `https://my-tenant.zendesk.com` är din under domän **min-klient**.
 
-6. Den hemliga token för ditt Zendesk-konto finns i **Administration**  >  **API** -  >  **Inställningar**. Kontrol lera att **token-åtkomst** är **aktive rad**.
+6. Den hemliga token för ditt Zendesk-konto finns i **Administration**  >  **API**-  >  **Inställningar**. Kontrol lera att **token-åtkomst** är **aktive rad**.
 
     ![Zendesk administratörs inställningar](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 

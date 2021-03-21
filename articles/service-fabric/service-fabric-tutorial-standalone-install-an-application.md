@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96485368"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Självstudie: Distribuera ett program i ett fristående Service Fabric-kluster
@@ -44,13 +44,13 @@ När programmet har laddats ned kan du distribuera det till ett kluster direkt f
 
 1. Öppna Visual Studio
 
-2. Välj **File**  >  **Öppna** fil
+2. Välj   >  **Öppna** fil
 
 3. Gå till den mapp som du klonade git-lagringsplatsen till och välj Voting.sln
 
 4. Högerklicka på programprojektet `Voting` i Solution Explorer och välj **Publicera**
 
-5. Välj listrutan för **Anslutningsslutpunkt** och ange det offentliga DNS-namnet på en av noderna i klustret.  Exempelvis `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. I Azure anges inte ett fullständigt kvalificerat domän namn (FQDN) automatiskt, men det kan enkelt [anges i översikts sidan för den virtuella datorn.](../virtual-machines/create-fqdn.md)
+5. Välj listrutan för **Anslutningsslutpunkt** och ange det offentliga DNS-namnet på en av noderna i klustret.  Till exempel `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. I Azure anges inte ett fullständigt kvalificerat domän namn (FQDN) automatiskt, men det kan enkelt [anges i översikts sidan för den virtuella datorn.](../virtual-machines/create-fqdn.md)
 
 6. Öppna en webbläsare och ange klusteradressen (anslutningsslutpunkten – den här appen distribuerar på port 8080, till exempel ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

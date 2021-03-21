@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96484829"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Självstudie: Anslut till ett lagrings konto med hjälp av en privat Azure-slutpunkt
@@ -146,8 +146,8 @@ I det här avsnittet ska du skapa ett lagrings konto och konfigurera den privata
     | Prenumeration | Välj din Azure-prenumeration |
     | Resursgrupp | Välj **myResourceGroup** |
     | **Instansinformation** |  |
-    | Namn på lagringskonto | Ange **mystorageaccount**. Om namnet inte är tillgängligt anger du ett unikt namn. |
-    | Plats | Välj **USA, östra** |
+    | Lagringskontonamn | Ange **mystorageaccount**. Om namnet inte är tillgängligt anger du ett unikt namn. |
+    | Location | Välj **USA, östra** |
     | Prestanda | Lämna **standard standard** |
     | Typ av konto | Lämna standard **lagrings utrymmet (generell användning v2)** |
     | Replikering| Lämna standard **Geo-redundant lagring med Läs behörighet (RA-GRS)** |
@@ -164,7 +164,7 @@ I det här avsnittet ska du skapa ett lagrings konto och konfigurera den privata
     |-----------------------|----------------------------------|
     | Prenumeration | Välj din Azure-prenumeration |
     | Resursgrupp | Välj **myResourceGroup** |
-    | Plats | Välj **USA, östra** |
+    | Location | Välj **USA, östra** |
     | Name | Ange **myPrivateEndpoint** |
     | Lagrings under resurs | Lämna standard- **bloben** |
     | **Nätverk** |  |

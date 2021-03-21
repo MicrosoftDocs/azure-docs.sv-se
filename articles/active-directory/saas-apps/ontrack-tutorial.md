@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 8470455f3d72ea101336e8368b420a9340aac317
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Självstudie: Azure Active Directory integrering med OnTrack
@@ -122,7 +122,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med On
 
 6. Förutom ovan förväntar sig OnTrack-program att fler attribut skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | -------------- | ----------------|    
     | User-Role      | "42F432" |
     | Hyperion-Code  | "12345" |
@@ -195,11 +195,11 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till OnTrack.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Ontrack**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Ontrack**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. Välj **Ontrack**i listan program.
+2. Välj **Ontrack** i listan program.
 
     ![Länken OnTrack i listan program](common/all-applications.png)
 

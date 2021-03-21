@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100383950"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrera normaliserat databasschema från Azure SQL Database till avnormaliserad Azure CosmosDB-container
@@ -68,7 +68,7 @@ Den resulterande CosmosDB-containern kommer att bädda in den inre frågan i ett
 
 10. Klicka på fliken Data förhands granskning i den nya koppling som du har lagt till så att du kan se resultatet fram till den här punkten. Du bör se alla rubrik rader som är kopplade till detalj raderna. Detta är resultatet av kopplingen som skapas från ```SalesOrderID``` . Härnäst ska vi kombinera detaljerna från vanliga rader i detalj strukturen och aggregera vanliga rader.
 
-![Slå ihop](media/data-flow/cosmosb4.png)
+![Anslut](media/data-flow/cosmosb4.png)
 
 11. Innan vi kan skapa matriser för att avnormalisera dessa rader måste du först ta bort oönskade kolumner och se till att datavärdena stämmer överens med CosmosDB data typer.
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: a88ad3930e114bdf9f3c3c340f92f164215d59c1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101671986"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor för SAP-lösningar (för hands version)
@@ -107,7 +107,7 @@ Följande är de viktigaste höjd punkterna i arkitekturen:
  - **Öppen källkod** – käll koden för Azure Monitor för SAP-lösningar finns i [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions). Kunder kan referera till leverantörs koden och lära sig mer om produkten, bidra eller dela feedback.
  - **Extensible Query Framework** -SQL-frågor för att samla in telemetridata skrivs i [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json). Det går enkelt att lägga till fler SQL-frågor för att samla in mer telemetridata. Kunder kan begära särskilda telemetridata som ska läggas till Azure Monitor för SAP-lösningar genom att lämna feedback via länken i slutet av det här dokumentet eller kontakta sitt konto team.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Azure Monitor för SAP-lösningar är en kostnads fri produkt (ingen licens avgift). Kunderna ansvarar för att betala kostnaden för de underliggande komponenterna i den hanterade resurs gruppen.
 
 ## <a name="next-steps"></a>Nästa steg

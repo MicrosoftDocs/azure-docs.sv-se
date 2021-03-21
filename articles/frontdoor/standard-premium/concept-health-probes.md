@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 30a8208babab2991c9d9e86cc419ac50e1530d7b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101100533"
 ---
 # <a name="azure-front-door-standardpremium-preview-health-probe-monitoring"></a>Azure front dörr standard/Premium (för hands version) övervakning av hälso avsökning
@@ -41,7 +41,7 @@ Frontend-dörren stöder följande HTTP-metoder för att skicka hälso avsöknin
 
 ## <a name="health-probe-responses"></a>Svar på hälso avsökning
 
-| Svar  | Description | 
+| Svar  | Beskrivning | 
 | ------------- | ------------- |
 | Fastställa hälsa  |  En status på 200 OK anger att Server delen är felfri. Allt annat anses vara ett haveri. Om ett giltigt HTTP-svar inte tas emot för en avsökning räknas inte avsökningen som ett fel (inklusive nätverks fel).|
 | Mäta svars tid  | Svars tiden är den tid i väggen som mäts från tiden omedelbart innan vi skickar en avsöknings förfrågan till den tidpunkt då vi får de sista byten av svaret. Vi använder en ny TCP-anslutning för varje begäran, så denna mätning är inte prioriterad mot Server delar med befintliga varma anslutningar.  |

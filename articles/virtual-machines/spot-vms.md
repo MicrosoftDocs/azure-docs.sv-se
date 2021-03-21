@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
 ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673943"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Använd Virtual Machines för Azure-plats 
@@ -64,7 +64,7 @@ Följande [typer av erbjudanden](https://azure.microsoft.com/support/legal/offer
 - För Cloud Service Provider (CSP) kontaktar du din partner
 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Priser för Azure-Virtual Machines är varierande, baserat på region och SKU. Mer information finns i prissättning för virtuella datorer för [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) och [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 

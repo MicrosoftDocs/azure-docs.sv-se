@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038551"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Ett webb-API som anropar webb-API: er: anropa ett API
@@ -35,7 +35,7 @@ När du använder *Microsoft. Identity. Web* har du tre användnings scenarier:
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Alternativ 1: anropa Microsoft Graph med SDK: n
 
-I det här scenariot har du lagt till `.AddMicrosoftGraph()` i *startup.cs* som det anges i [kod konfigurationen](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)och du kan mata in direkt `GraphServiceClient` i din styrenhet eller sidlayout för användning i åtgärderna. I följande exempel på kniv-sidan visas en bild av den inloggade användaren.
+I det här scenariot har du lagt till `.AddMicrosoftGraph()` i *Start. cs* som det anges i [kod konfigurationen](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)och du kan mata in direkt `GraphServiceClient` i din styrenhet eller sidlayout för användning i åtgärderna. I följande exempel på kniv-sidan visas en bild av den inloggade användaren.
 
 ```CSharp
  [Authorize]
@@ -71,7 +71,7 @@ I det här scenariot har du lagt till `.AddMicrosoftGraph()` i *startup.cs* som 
 
 #### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Alternativ 2: anropa ett underordnat webb-API med hjälp av klassen
 
-I det här scenariot har du lagt till `.AddDownstreamWebApi()` i *startup.cs* som det anges i [kod konfigurationen](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)och du kan mata in en `IDownstreamWebApi` tjänst direkt i din styrenhet eller sidlayout och använda den i åtgärder:
+I det här scenariot har du lagt till `.AddDownstreamWebApi()` i *Start. cs* som det anges i [kod konfigurationen](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)och du kan mata in en `IDownstreamWebApi` tjänst direkt i din styrenhet eller sidlayout och använda den i åtgärder:
 
 ```CSharp
  [Authorize]

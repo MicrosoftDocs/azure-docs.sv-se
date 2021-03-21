@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324428"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Konfigurera Runbook-utdata och meddelande strömmar
@@ -18,10 +18,10 @@ De flesta Azure Automation runbooks har någon form av utdata. Utdata kan vara e
 
 I följande tabell beskrivs en kort beskrivning av varje data ström med dess beteende i Azure Portal för publicerade Runbooks och vid [testning av en Runbook](./manage-runbooks.md). Utdataströmmen är den huvud data ström som används för kommunikation mellan Runbooks. De andra strömmarna klassificeras som meddelande strömmar som är avsedda att kommunicera information till användaren.
 
-| Dataström | Beskrivning | Publicerad | Testa |
+| Stream | Beskrivning | Publicerad | Test |
 |:--- |:--- |:--- |:--- |
 | Fel |Felmeddelande avsett för användaren. Till skillnad från ett undantag fortsätter Runbook efter ett fel meddelande som standard. |Skrivs till jobb historik |Visas i fönstret Testa utdata |
-| Felsökning |Meddelanden avsedda för en interaktiv användare. Bör inte användas i Runbooks. |Skrivs inte till jobb historik |Visas inte i fönstret Testa utdata |
+| Felsöka |Meddelanden avsedda för en interaktiv användare. Bör inte användas i Runbooks. |Skrivs inte till jobb historik |Visas inte i fönstret Testa utdata |
 | Utdata |Objekt som ska användas av andra Runbooks. |Skrivs till jobb historik |Visas i fönstret Testa utdata |
 | Förlopp |Poster som genereras automatiskt före och efter varje aktivitet i Runbooken. Runbooken bör inte försöka skapa egna status poster eftersom de är avsedda för en interaktiv användare. |Skrivs till jobb historiken endast om förlopps loggning har Aktiver ATS för Runbook |Visas inte i fönstret Testa utdata |
 | Verbose |Meddelanden som ger allmän eller felsöknings information. |Skrivs till jobb historiken endast om utförlig loggning har Aktiver ATS för Runbook |Visas endast i fönstret för att testa utdata om `VerbosePreference` variabeln är inställd på Fortsätt i Runbook |
@@ -117,9 +117,9 @@ Runbooken innehåller utdatatypen `Microsoft.Azure.Commands.Profile.Models.PSAzu
 
 Även om denna Runbook är enkel, finns det ett konfigurations objekt som kan anropas här. Den senaste aktiviteten kör `Write-Output` cmdleten för att skriva profil data till en variabel med hjälp av ett PowerShell-uttryck för `Inputobject` parametern. Den här parametern krävs för `Write-Output` .
 
-Den andra runbooken i det här exemplet, med namnet **test-ChildOutputType** , definierar bara två aktiviteter.<br> ![Exempel på underordnad Utdatatyp Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
+Den andra runbooken i det här exemplet, med namnet **test-ChildOutputType**, definierar bara två aktiviteter.<br> ![Exempel på underordnad Utdatatyp Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-Den första aktiviteten anropar **AuthenticateTo-Azure-** runbooken. Den andra aktiviteten kör `Write-Verbose` cmdleten med **data källa** inställt på **aktivitets utdata**. Dessutom anges **fält Sök vägen** till **context. Subscription. SubscriptionName** , kontext resultatet från **AuthenticateTo-Azure-** runbooken.<br> ![Data källa för Write-utförlig cmdlet-parameter](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+Den första aktiviteten anropar **AuthenticateTo-Azure-** runbooken. Den andra aktiviteten kör `Write-Verbose` cmdleten med **data källa** inställt på **aktivitets utdata**. Dessutom anges **fält Sök vägen** till **context. Subscription. SubscriptionName**, kontext resultatet från **AuthenticateTo-Azure-** runbooken.<br> ![Data källa för Write-utförlig cmdlet-parameter](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 Resultatet är namnet på prenumerationen.<br> ![Test-ChildOutputType Runbook-resultat](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
@@ -279,7 +279,7 @@ Men om du inte behöver den här informationen för att följa förloppet för e
 3. På sidan Runbooks väljer du en grafisk Runbook från listan över Runbooks.
 4. Under **Inställningar** klickar du på **loggning och spårning**.
 5. På sidan loggning och spårning under **logg utförliga poster** klickar du på **på** för att aktivera utförlig loggning.
-6. Under **spårning på aktivitets nivå** ändrar du spårnings nivån till **Basic** eller **detaljerad** , baserat på den spårnings nivå som du behöver.<br>
+6. Under **spårning på aktivitets nivå** ändrar du spårnings nivån till **Basic** eller **detaljerad**, baserat på den spårnings nivå som du behöver.<br>
 
    ![Grafisk redigering av loggnings-och spårnings sida](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 

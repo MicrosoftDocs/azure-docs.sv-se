@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041985"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Förhands gransknings funktioner i Azure Kognitiv sökning
@@ -24,7 +24,7 @@ Förhands gransknings funktioner som övergår till allmän tillgänglighet tas 
 |Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Beskrivning | Tillgänglighet  |
 |---------|------------------|-------------|---------------|
 | [**Semantisk sökning**](semantic-search-overview.md) | Relevans (Poängsättning) | En semantisk ranknings algoritm, frågetyp och svar på frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
-| [**stavningskontroll**](cognitive-search-aml-skill.md) | Söka i data | Valfri stavnings korrigering för frågeterm-indata för enkla, fullständiga och semantiska frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
+| [**stavningskontroll**](cognitive-search-aml-skill.md) | Fråga | Valfri stavnings korrigering för frågeterm-indata för enkla, fullständiga och semantiska frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
 | [**SharePoint Online-indexerare**](search-howto-index-sharepoint-online.md) | Indexerare data Källa | Ny data källa för indexerad indexering av SharePoint-innehåll. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
 | [**Azure Machine Learning (AML) kunskap**](cognitive-search-aml-skill.md) | AI-berikning| En ny färdighets typ som integrerar en inferencing-slutpunkt från Azure Machine Learning. Kom igång med [den här självstudien](cognitive-search-tutorial-aml-custom-skill.md). | Använd [sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) eller 2019-05-06 – för hands version. Det finns även i portalen, i färdigheter design, förutsatt att Kognitiv sökning och Azure ML-tjänster distribueras i samma prenumeration. |
 | [**featuresMode-parameter**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | Relevans (Poängsättning) | Utökning av relevans för att inkludera information: per fält likhets poäng, per fält villkors frekvens och per fält antal unika tokens matchade. Du kan använda dessa data punkter i [anpassade bedömnings lösningar](https://github.com/Azure-Samples/search-ranking-tutorial). | Lägg till den här Frågeparametern med [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) med API-version = 2020-06 -30-preview eller 2019-05-06-Preview. |
@@ -35,7 +35,7 @@ Förhands gransknings funktioner som övergår till allmän tillgänglighet tas 
 | [**Inkrementellt berikande**](cognitive-search-incremental-indexing-conceptual.md) | Indexerings konfiguration| Lägger till cachelagring i en anriknings pipeline, så att du kan återanvända befintliga utdata om en viss ändring, till exempel en uppdatering av en färdigheter eller ett annat objekt, inte ändrar innehållet. Cachelagring gäller endast för berikade dokument som produceras av en färdigheter.| Lägg till den här konfigurations inställningen med hjälp av [skapa indexerare (rest)](/rest/api/searchservice/create-indexer) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |
 | [**Cosmos DB indexerare: MongoDB-API, Gremlin-API, API för Cassandra**](search-howto-index-cosmosdb.md) | Indexerare data Källa | För Cosmos DB är SQL API allmänt tillgängligt, men MongoDB-, Gremlin-och Cassandra-API: er är i för hands version. | [Registrera först](https://aka.ms/azure-cognitive-search/indexer-preview) för Gremlin och Cassandra så att stöd kan aktive ras för din prenumeration på Server delen. MongoDB data källor kan konfigureras i portalen. Annars stöds konfigurationen av data källan för alla tre API: er med hjälp av [skapa data källa (rest)](/rest/api/searchservice/create-data-source) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06 – för hands version. |
 |  [**Azure Data Lake Storage Gen2 indexerare**](search-howto-index-azure-data-lake-storage.md) | Indexerare data Källa | Indexera innehåll och metadata från Data Lake Storage Gen2.| [Registrering](https://aka.ms/azure-cognitive-search/indexer-preview) krävs för att stöd ska kunna aktive ras för din prenumeration på Server delen. Åtkomst till den här data källan med hjälp av [skapa data källa (rest)](/rest/api/searchservice/create-data-source) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |
-| [**moreLikeThis**](search-more-like-this.md) | Söka i data | Söker efter dokument som är relevanta för ett enskilt dokument. Den här funktionen finns i tidigare för hands versioner. | Lägg till den här frågeparametern i [search Documents (rest)-](/rest/api/searchservice/search-documents) anrop med API-version = 2020-06 -30 – för hands version, 2019-05-06-för hands version, 2016-09-01-för hands version eller 2017-11-11-för hands version. |
+| [**moreLikeThis**](search-more-like-this.md) | Fråga | Söker efter dokument som är relevanta för ett enskilt dokument. Den här funktionen finns i tidigare för hands versioner. | Lägg till den här frågeparametern i [search Documents (rest)-](/rest/api/searchservice/search-documents) anrop med API-version = 2020-06 -30 – för hands version, 2019-05-06-för hands version, 2016-09-01-för hands version eller 2017-11-11-för hands version. |
 
 ## <a name="how-to-call-a-preview-rest-api"></a>Så här anropar du en förhands granskning REST API
 

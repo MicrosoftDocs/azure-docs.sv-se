@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 08c5b5d8351105744f7a912b352a940df3b4baa7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462135"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Rikt linjer för Azure Marketplace-lista
@@ -82,7 +82,7 @@ I den här artikeln beskrivs kraven och rikt linjerna för att lista nya erbjuda
 | 6 | Lösnings support och hjälp  | Support och hjälp behöver inte anges.  | | 
 | 7 | Sekretess policy och användnings villkor  |  Principer eller villkor är inte obligatoriska.  | | 
 | 8 | Tjänst typer | Se till att tjänst typen matchar titeln. | |
-| 9 | Kompetenser | Måste ha kompetens i minst ett av följande:<ul><li>Apputveckling</li><li>Programintegrering</li><li>Hantering av programlivscykel</li><li>Moln plattform<li>Dataanalys</li><li>Datacenter</li><li>Data plattform</li><li>DevOps |
+| 9 | Kompetenser | Måste ha kompetens i minst ett av följande:<ul><li>Apputveckling</li><li>Programintegrering</li><li>Hantering av programlivscykel</li><li>Molnplattform<li>Dataanalys</li><li>Datacenter</li><li>Dataplattform</li><li>DevOps |
 | 10 | Produkter | Måste vara Azure-produkter. | |
 | 11 | Land/region | Se till att landet/regionen stämmer överens med den valda valutan. | |
 | 12 | Läs mer  | <ul><li>Länkar längst ned (under beskrivningen, inte Azure Marketplace-länkarna till vänster) leder till mer information om lösningen och är allmänt tillgängliga och visas korrekt.</li><li>Länkar måste ha ett eget namn och visas inte som fil namn för några hämtningar. | |
