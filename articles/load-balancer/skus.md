@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
 ms.openlocfilehash: 874ecfc8c1c50816916fb0b04975477a1cbe0a71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698095"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU: er
@@ -36,7 +36,7 @@ Fristående virtuella datorer, tillgänglighetsuppsättningar och VM-skalningsup
 | --- | --- | --- |
 | **[Storlek på serverdelspool](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Stöder upp till 1000 instanser. | Har stöd för upp till 300 instanser. |
 | **Slutpunkter för serverdelspool** | Virtuella datorer eller skalnings uppsättningar för virtuella datorer i ett enda virtuellt nätverk. | Virtuella datorer i en enskild tillgänglighetsuppsättning eller en VM-skalningsuppsättning. |
-| **[Hälsoavsökningar](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Hälsotillståndsavsökningar](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
 | **[Beteende för hälso avsökning](./load-balancer-custom-probe-overview.md#probedown)** | TCP-anslutningar är aktiva vid en instans avsökning __och__ i alla avsökningar. | TCP-anslutningar är vilande vid en instans avsökning. Alla TCP-anslutningar slutar när alla avsökningar är nere. |
 | **Tillgänglighetszoner** | Zoner-redundanta och zonindelade-frontend-klienter för inkommande och utgående trafik. | Inte tillgängligt |
 | **Diagnostik** | [Azure Monitor flerdimensionella mått](./load-balancer-standard-diagnostics.md) | [Azure Monitor-loggar](./load-balancer-monitor-log.md) |
@@ -45,7 +45,7 @@ Fristående virtuella datorer, tillgänglighetsuppsättningar och VM-skalningsup
 | **Utgående regler** | [Deklarativ utgående NAT-konfiguration](./load-balancer-outbound-connections.md#outboundrules) | Inte tillgängligt |
 | **TCP-återställning vid inaktivitet** | [Tillgängligt för någon regel](./load-balancer-tcp-reset.md) | Inte tillgängligt |
 | **[Flera frontend-sidor](./load-balancer-multivip-overview.md)** | Inkommande och [utgående](./load-balancer-outbound-connections.md) | Endast inkommande |
-| **Hanterings åtgärder** | De flesta åtgärder < 30 sekunder | 60-90 + sekunders standard |
+| **Hanteringsåtgärder** | De flesta åtgärder < 30 sekunder | 60-90 + sekunders standard |
 | **Serviceavtal** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Inte tillgängligt | 
 
 Mer information finns i [gränser för belastnings utjämning](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Information om Standard Load Balancer finns i [översikt](./load-balancer-overview.md), [prissättning](https://aka.ms/lbpricing) och [serviceantal](https://aka.ms/lbsla).

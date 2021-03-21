@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97725028"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning suveräna moln paritet
@@ -150,77 +150,77 @@ Vi strävar efter att tillhandahålla maximal paritet mellan våra offentliga mo
 | Funktion                                       | Status för offentligt moln | CH-öst-2 | CH-Nord-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatiserad maskininlärning** |    | | |
-| Skapa och köra experiment i antecknings böcker                                    | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Skapa och köra experiment i Studio Web Experience                        | Offentlig för hands version   | JA       | Saknas        |
-| Branschledande prognos funktioner                                  | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Stöd för djup inlärning och andra avancerade lärare                      | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Stöd för stora data mängder (upp till 100 GB)                                          | Offentlig för hands version   | JA       | Saknas        |
-| Azure Databricks-integrering                                              | Allmän tillgänglighet (GA)               | NO        | Saknas        |
-| SQL-, CosmosDB-och HDInsight-integreringar                                   | Allmän tillgänglighet (GA)               | JA       | Saknas        |
+| Skapa och köra experiment i antecknings böcker                                    | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Skapa och köra experiment i Studio Web Experience                        | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Branschledande prognos funktioner                                  | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Stöd för djup inlärning och andra avancerade lärare                      | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Stöd för stora data mängder (upp till 100 GB)                                          | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Azure Databricks-integrering                                              | Allmän tillgänglighet (GA)               | NO        | Ej tillämpligt        |
+| SQL-, CosmosDB-och HDInsight-integreringar                                   | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
 | **Machine Learning pipelines** |    | | |
-| Skapa, köra och publicera pipelines med Azure ML SDK                   | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Skapa pipeline-slutpunkter med Azure ML SDK                           | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Skapa, redigera och ta bort schemalagda körningar av pipelines med Azure ML SDK | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Visa körnings information för pipeline i Studio                                        | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Skapa, köra, visualisera och publicera pipeliner i Azure ML designer          | Allmän tillgänglighet (GA)  | JA       | Saknas        |
-| Azure Databricks integrering med ML pipeline                             | Allmän tillgänglighet (GA)               | NO        | Saknas        |
-| Skapa pipeline-slutpunkter i Azure ML-designer                             | Allmän tillgänglighet (GA)   | JA       | Saknas        |
+| Skapa, köra och publicera pipelines med Azure ML SDK                   | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Skapa pipeline-slutpunkter med Azure ML SDK                           | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Skapa, redigera och ta bort schemalagda körningar av pipelines med Azure ML SDK | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Visa körnings information för pipeline i Studio                                        | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Skapa, köra, visualisera och publicera pipeliner i Azure ML designer          | Allmän tillgänglighet (GA)  | JA       | Ej tillämpligt        |
+| Azure Databricks integrering med ML pipeline                             | Allmän tillgänglighet (GA)               | NO        | Ej tillämpligt        |
+| Skapa pipeline-slutpunkter i Azure ML-designer                             | Allmän tillgänglighet (GA)   | JA       | Ej tillämpligt        |
 | **Integrerade antecknings böcker** |   | | |
-| Arbets ytans bärbara och fildelning                                        | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| R-och python-stöd                                                       | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Stöd för virtuellt nätverk                                                    | Offentlig för hands version   | NO        | Saknas        |
+| Arbets ytans bärbara och fildelning                                        | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| R-och python-stöd                                                       | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Stöd för virtuellt nätverk                                                    | Offentlig för hands version   | NO        | Ej tillämpligt        |
 | **Beräknings instans** |    | | |
-| Hanterade beräknings instanser för integrerade antecknings böcker                         | Allmän tillgänglighet (GA)               | NO        | Saknas        |
-| Jupyter, JupyterLab-integrering                                            | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Stöd för Virtual Network (VNet)                                             | Offentlig för hands version   | JA       | Saknas        |
+| Hanterade beräknings instanser för integrerade antecknings böcker                         | Allmän tillgänglighet (GA)               | NO        | Ej tillämpligt        |
+| Jupyter, JupyterLab-integrering                                            | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Stöd för Virtual Network (VNet)                                             | Offentlig för hands version   | JA       | Ej tillämpligt        |
 | **SDK-support** |    | | |
-| Stöd för R SDK                                                              | Offentlig för hands version   | JA       | Saknas        |
-| Stöd för python SDK                                                         | Allmän tillgänglighet (GA)               | JA       | Saknas        |
+| Stöd för R SDK                                                              | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Stöd för python SDK                                                         | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
 | **Säkerhet** |   | | |
-| Stöd för Virtual Network (VNet) för utbildning                                | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Stöd för Virtual Network (VNet) för härledning                               | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Beräknings slut punktens autentisering                                            | Offentlig för hands version   | JA       | Saknas        |
-| Privat arbets plats länk                                                     | Offentlig för hands version   | NO        | Saknas        |
-| ACI bakom VNet                                                            | Offentlig för hands version   | NO        | Saknas        |
-| ACR bakom VNet                                                            | Offentlig för hands version   | NO        | Saknas        |
-| Privat IP för AKS-kluster                                                  | Offentlig för hands version   | NO        | Saknas        |
+| Stöd för Virtual Network (VNet) för utbildning                                | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Stöd för Virtual Network (VNet) för härledning                               | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Beräknings slut punktens autentisering                                            | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Privat arbets plats länk                                                     | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| ACI bakom VNet                                                            | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| ACR bakom VNet                                                            | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| Privat IP för AKS-kluster                                                  | Offentlig för hands version   | NO        | Ej tillämpligt        |
 | **Beräkning** |   | | |
-| kvot hantering över arbets ytor                                         | Allmän tillgänglighet (GA)               | JA       | Saknas        |
+| kvot hantering över arbets ytor                                         | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
 | **Data för Machine Learning** | | | |
-| Skapa, Visa eller redigera data uppsättningar och data lager från SDK: n                  | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Skapa, Visa eller redigera data uppsättningar och data lager från användar gränssnittet                   | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Visa, redigera eller ta bort data uppsättnings drift övervakare från SDK                   | Offentlig för hands version   | JA       | Saknas        |
-| Visa, redigera eller ta bort data uppsättnings avvikelse övervakare från användar gränssnittet                    | Offentlig för hands version   | JA       | Saknas        |
+| Skapa, Visa eller redigera data uppsättningar och data lager från SDK: n                  | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Skapa, Visa eller redigera data uppsättningar och data lager från användar gränssnittet                   | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Visa, redigera eller ta bort data uppsättnings drift övervakare från SDK                   | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Visa, redigera eller ta bort data uppsättnings avvikelse övervakare från användar gränssnittet                    | Offentlig för hands version   | JA       | Ej tillämpligt        |
 | **Machine Learning-livscykel** |    | | |
-| Modell profilering                                                            | Allmän tillgänglighet (GA)               | SIGNATUR   | Saknas        |
-| Azure DevOps-tillägget för Machine Learning & Azure ML CLI         | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| FPGA-baserade Maskinvaruaccelererade modeller                                     | Allmän tillgänglighet (GA)               | NO        | Saknas        |
-| Visual Studio-kod integrering                                             | Offentlig för hands version   | NO        | Saknas        |
-| Event Grid-integrering                                                     | Offentlig för hands version   | JA       | Saknas        |
-| Integrera Azure Stream Analytics med Azure Machine Learning               | Offentlig för hands version   | NO        | Saknas        |
+| Modell profilering                                                            | Allmän tillgänglighet (GA)               | SIGNATUR   | Ej tillämpligt        |
+| Azure DevOps-tillägget för Machine Learning & Azure ML CLI         | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| FPGA-baserade Maskinvaruaccelererade modeller                                     | Allmän tillgänglighet (GA)               | NO        | Ej tillämpligt        |
+| Visual Studio-kod integrering                                             | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| Event Grid-integrering                                                     | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Integrera Azure Stream Analytics med Azure Machine Learning               | Offentlig för hands version   | NO        | Ej tillämpligt        |
 | **Märkning** |    | | |
-| Märka projekt Hanteringsportal                                        | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Labeler-portalen                                                            | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Etikettera med privat personal styrka                                          | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| ML assisterad märkning (bild klassificering och objekt identifiering)           | Offentlig för hands version   | JA       | Saknas        |
+| Märka projekt Hanteringsportal                                        | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Labeler-portalen                                                            | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Etikettera med privat personal styrka                                          | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| ML assisterad märkning (bild klassificering och objekt identifiering)           | Offentlig för hands version   | JA       | Ej tillämpligt        |
 | **Ansvarsfull ML** |    | | |
-| Förklaring i användar gränssnittet                                                       | Offentlig för hands version   | NO        | Saknas        |
-| SmartNoise Toolkit för differentiell sekretess                                    | OSS              | NO        | Saknas        |
-| anpassade taggar i Azure Machine Learning för att implementera datablad              | Allmän tillgänglighet (GA)               | NO        | Saknas        |
-| Skälighet AzureML-integrering                                               | Offentlig för hands version   | NO        | Saknas        |
-| Tolknings-SDK                                                      | Allmän tillgänglighet (GA)               | JA       | Saknas        |
+| Förklaring i användar gränssnittet                                                       | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| SmartNoise Toolkit för differentiell sekretess                                    | OSS              | NO        | Ej tillämpligt        |
+| anpassade taggar i Azure Machine Learning för att implementera datablad              | Allmän tillgänglighet (GA)               | NO        | Ej tillämpligt        |
+| Skälighet AzureML-integrering                                               | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| Tolknings-SDK                                                      | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
 | **Utbildning** |    | | |
-| Strömning i experiment loggen                                              | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Förstärka inlärning                                                     | Offentlig för hands version   | NO        | Saknas        |
-| Experimentering gränssnitt                                                         | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| .NET-integrering ML.NET 1,0                                                | Allmän tillgänglighet (GA)               | JA       | Saknas        |
+| Strömning i experiment loggen                                              | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Förstärka inlärning                                                     | Offentlig för hands version   | NO        | Ej tillämpligt        |
+| Experimentering gränssnitt                                                         | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| .NET-integrering ML.NET 1,0                                                | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
 | **Störningar** |   | | |
-| Batch-inferencing                                                          | Allmän tillgänglighet (GA)               | JA       | Saknas        |
-| Data Box Edge med FPGA                                                    | Offentlig för hands version   | NO        | Saknas        |
+| Batch-inferencing                                                          | Allmän tillgänglighet (GA)               | JA       | Ej tillämpligt        |
+| Data Box Edge med FPGA                                                    | Offentlig för hands version   | NO        | Ej tillämpligt        |
 | **Övrigt** |    | | |
-| Open Datasets                                                              | Offentlig för hands version   | JA       | Saknas        |
-| Anpassad Kognitiv sökning                                                    | Offentlig för hands version   | JA       | Saknas        |
-| Många modeller                                                                | Offentlig för hands version   | NO        | Saknas        |
+| Open Datasets                                                              | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Anpassad Kognitiv sökning                                                    | Offentlig för hands version   | JA       | Ej tillämpligt        |
+| Många modeller                                                                | Offentlig för hands version   | NO        | Ej tillämpligt        |
 
 
 

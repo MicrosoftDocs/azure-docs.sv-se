@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100585413"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Säkerhets tjänster och tekniker som är tillgängliga i Azure
@@ -92,4 +92,4 @@ Med tiden kommer den här listan att ändras och växa, precis som Azure gör. S
 | [Azure Application Proxy](../../active-directory/manage-apps/application-proxy.md)| En autentiserande klient del som används för att skydda fjärråtkomst för webb program som finns lokalt. |
 |[Azure Firewall](../../firewall/overview.md)|En hanterad, molnbaserad nätverks säkerhets tjänst som skyddar dina Azure Virtual Network-resurser.|
 |[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|Kombinerat med bästa praxis för program design, ger skydd mot DDoS-attacker.|
-|[Virtual Network tjänst slut punkter](../../virtual-network/virtual-network-service-endpoints-overview.md)|Utökar det virtuella nätverkets privata adress utrymme och identiteten för ditt VNet till Azure-tjänsterna, via en direkt anslutning.|
+|[Tjänstslutpunkter för virtuellt nätverk](../../virtual-network/virtual-network-service-endpoints-overview.md)|Utökar det virtuella nätverkets privata adress utrymme och identiteten för ditt VNet till Azure-tjänsterna, via en direkt anslutning.|

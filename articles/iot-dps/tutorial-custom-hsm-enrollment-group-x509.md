@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052371"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Självstudie: etablera flera X. 509-enheter med hjälp av registrerings grupper
@@ -235,7 +235,7 @@ Så här skapar du enhets certifikaten som signerats av mellanliggande certifika
 
 4. Upprepa steg 1-3 för en andra enhet med enhets-ID `custom-hsm-device-02` . Använd följande värden för enheten:
 
-    |   Description                 |  Värde  |
+    |   Beskrivning                 |  Värde  |
     | :---------------------------- | :--------- |
     | Ämnesnamn                  | `custom-hsm-device-02` |
     | Fullständig certifikat kedje fil   | *./certs/new-device-02-full-chain.cert.pem* |
@@ -477,7 +477,7 @@ Utför följande steg för att uppdatera den anpassade HSM stub-koden för att s
 
 8. Upprepa steg 1-7 för en andra enhet med enhets-ID `custom-hsm-device-02` . Använd följande värden för enheten:
 
-    |   Description                 |  Värde  |
+    |   Beskrivning                 |  Värde  |
     | :---------------------------- | :--------- |
     | `COMMON_NAME`                 | `"custom-hsm-device-02"` |
     | Fullständig certifikat kedja        | Generera texten med `input="./certs/new-device-02-full-chain.cert.pem"` |

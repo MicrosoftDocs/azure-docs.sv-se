@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054101"
 ---
 # <a name="manage-database-roles-and-users"></a>Hantera databas roller och användare
@@ -44,7 +44,7 @@ När du lägger till en **tjänst huvud namns** användning `app:appid@tenantid`
   
 4.  Välj en av följande behörigheter:  
   
-    |Behörighet|Description|  
+    |Behörighet|Beskrivning|  
     |----------------|-----------------|  
     |**Ingen**|Medlemmar kan inte läsa eller ändra modell schemat och kan inte fråga efter data.|  
     |**Läs**|Medlemmar kan fråga data (baserat på rad filter) men inte ändra modell schema.|  
@@ -73,7 +73,7 @@ Om du vill lägga till roller och användare i en distribuerad modell databas m�
 
 3. Välj en behörighet.
 
-   |Behörighet|Description|  
+   |Behörighet|Beskrivning|  
    |----------------|-----------------|  
    |**Fullständig behörighet (administratör)**|Medlemmar kan ändra modell schema, bearbeta och kan fråga alla data.| 
    |**Behandla databas**|Medlemmar kan köra process och bearbeta alla åtgärder. Det går inte att ändra modell schema och kan inte fråga efter data.|  

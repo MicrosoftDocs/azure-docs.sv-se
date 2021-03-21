@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: lajanuar
 ms.openlocfilehash: 88a76a16de43853a001f5db895d6ad418940de0f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895500"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Translator 3,0: Sök efter ord
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Parametrarna för begäran som skickades till frågesträngen är:
 
-| Frågeparameter  | Description |
+| Frågeparameter  | Beskrivning |
 | ------ | ----------- |
 | api-version <img width=200/>   | **Obligatorisk parameter**.<br/>Den version av API: t som klienten begär. Värdet måste vara `3.0` |
 | Från | **Obligatorisk parameter**.<br/>Anger språket för inmatad text. Käll språket måste vara ett av de [språk som stöds](./v3-0-languages.md) som ingår i `dictionary` omfånget. |
@@ -42,7 +42,7 @@ Parametrarna för begäran som skickades till frågesträngen är:
 
 Begärandehuvuden innehåller:
 
-| Sidhuvuden  | Description |
+| Sidhuvuden  | Beskrivning |
 | ------ | ----------- |
 | Authentication-huvud (er) <img width=200/>  | **Begär ande huvud för begäran**.<br/>Se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">tillgängliga alternativ för autentisering</a>. |
 | Content-Type | **Begär ande huvud för begäran**.<br/>Anger nytto lastens innehålls typ. Möjliga värden är: `application/json` . |
@@ -80,7 +80,7 @@ Ett lyckat svar är en JSON-matris med ett resultat för varje sträng i den ang
 
     * `posTag`: En sträng som kopplar den här termen med en del av tal-taggen.
 
-        | Taggnamn | Description  |
+        | Taggnamn | Beskrivning  |
         |----------|--------------|
         | JUST      | Adjektiv   |
         | ADV      | Adverb      |

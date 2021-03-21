@@ -7,10 +7,10 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389524"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Skapa och konfigurera lokalt installerad integrationskörning
@@ -19,7 +19,7 @@ ms.locfileid: "100389524"
 
 Integrerings körningen (IR) är den beräknings infrastruktur som Azure Data Factory använder för att tillhandahålla funktioner för data integrering i olika nätverks miljöer. Mer information om IR finns i [Översikt över integration runtime](concepts-integration-runtime.md).
 
-En integration runtime med egen värd kan köra kopierings aktiviteter mellan ett moln data lager och ett data lager i ett privat nätverk. Det kan också skicka Transform-aktiviteter mot beräknings resurser i ett lokalt nätverk eller ett virtuellt Azure-nätverk. Installationen av en lokal integration runtime kräver en lokal dator eller en virtuell dator i ett privat nätverk.  
+En lokalt installerad IR kan köra kopieringsaktiviteter mellan ett molndatalager och ett datalager i ett privat nätverk. Den kan också skicka transformeringsaktiviteter mot beräkningsresurser i ett lokalt nätverk eller ett virtuellt Azure-nätverk. För installation av en lokalt installerad IR krävs en lokal dator eller en virtuell dator i ett privat nätverk.  
 
 Den här artikeln beskriver hur du kan skapa och konfigurera en lokal IR-anslutning.
 

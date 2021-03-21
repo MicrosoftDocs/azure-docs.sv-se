@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896350"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilera DSC-konfigurationer i Azure Automation tillstånds konfiguration
@@ -31,7 +31,7 @@ Du kan också använda Azure Resource Manager mallar med Azures Desired State Co
 
 ## <a name="compile-a-dsc-configuration-in-azure-state-configuration"></a>Kompilera en DSC-konfiguration i Azure State Configuration
 
-### <a name="portal"></a>Portalen
+### <a name="portal"></a>Portal
 
 1. I ditt Automation-konto klickar du på **tillstånds konfiguration (DSC)**.
 1. Klicka på fliken **konfigurationer** och klicka sedan på konfigurations namnet som ska kompileras.
@@ -97,7 +97,7 @@ Configuration ParametersExample
 
 Du kan kompilera DSC-konfigurationer som använder grundläggande parametrar i konfigurations portalen för Azure Automation tillstånd eller med Azure PowerShell.
 
-#### <a name="portal"></a>Portalen
+#### <a name="portal"></a>Portal
 
 I portalen kan du ange parameter värden efter att du klickat på **kompilera**.
 

@@ -4,10 +4,10 @@ description: Azure Policy är en tjänst i Azure som används för att skapa, ti
 ms.date: 01/14/2021
 ms.topic: overview
 ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220736"
 ---
 # <a name="what-is-azure-policy"></a>Vad är Azure Policy?
@@ -57,7 +57,7 @@ Följande översikt över Azure Policy är från Build 2018. För nedladdning av
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Policy och Azure RBAC
 
@@ -103,7 +103,7 @@ Här följer några råd och tips att tänka på:
 
 ## <a name="azure-policy-objects"></a>Azure Policy objekt
 
-### <a name="policy-definition"></a>Principdefinition
+### <a name="policy-definition"></a>Definition av princip
 
 Resan med att skapa och implementera en princip i Azure Policy börjar med skapandet av en principdefinition. Varje principdefinition har villkor för när den ska tillämpas. Och den har en definierad effekt som träder ikraft om villkoren är uppfyllda.
 

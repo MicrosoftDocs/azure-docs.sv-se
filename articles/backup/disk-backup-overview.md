@@ -4,10 +4,10 @@ description: Lär dig mer om Azure disk backup-lösningen.
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98915516"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Översikt över säkerhets kopiering av Azure-diskar (i för hands version)
@@ -69,7 +69,7 @@ Lösning för säkerhets kopiering av Azure-disk är användbar i följande scen
 
 - För närvarande har Azure disk backup stöd för drift säkerhets kopiering av hanterade diskar och kopierar inte säkerhets kopior till lagring med säkerhets kopierings valv. I [support mat ris](disk-backup-support-matrix.md)finns en detaljerad lista över scenarier som stöds och som inte stöds och regions tillgänglighet.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Azure Backup erbjuder en hanterings lösning för ögonblicks bilder för att skydda Azure-diskar. Disk ögonblicks bilderna som skapats av Azure Backup lagras i resurs gruppen i din Azure-prenumeration och debiterar **lagrings avgifter för ögonblicks bilder** . Du kan gå till [priser för Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/) om du vill ha mer information om priserna för ögonblicks bilder. Eftersom ögonblicks bilderna inte kopieras till säkerhets kopierings valvet debiteras Azure Backup inte en **skyddad instans** avgift och kostnaden för **lagring av säkerhets kopior** gäller inte. Stegvisa ögonblicks bilder upptar delta ändringar sedan den senaste ögonblicks bilden och lagras alltid i standard lagring oavsett lagrings typ för de överordnade hanterade diskarna och debiteras enligt priserna för standard lagring. Detta gör Azure disk backup till en kostnads effektiv lösning.
 

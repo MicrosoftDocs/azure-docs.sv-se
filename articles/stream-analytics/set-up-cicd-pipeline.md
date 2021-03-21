@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466430"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Använd Azure-DevOps för att skapa en CI/CD-pipeline för ett Stream Analytics jobb
@@ -100,7 +100,7 @@ Använd följande steg om du behöver använda värdbaserad-Linux-Agent:
 
    |Variabelnamn|Värde|
    |-|-|
-   |testPath|Testa|
+   |testPath|Test|
 
    :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Lägg till pipeline-variabler":::
 
@@ -188,7 +188,7 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
    |Mall| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.jspå |
    |Mallparametrar|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.parameters.jspå |
    |Åsidosätt mallparametrar|-<arm_template_parameter> "ditt värde". Du kan definiera parametrar med hjälp av **variabler**.|
-   |Distributions läge|Inkrementellt|
+   |Distributionsläge|Inkrementellt|
 
 3. I list rutan aktiviteter väljer **du distribuera jobb till produktions miljön**.
 
@@ -205,7 +205,7 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
    |Mall| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.jspå |
    |Mallparametrar|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.parameters.jspå |
    |Åsidosätt mallparametrar|-<arm_template_parameter> "ditt värde"|
-   |Distributions läge|Inkrementellt|
+   |Distributionsläge|Inkrementellt|
 
 ### <a name="create-a-release"></a>Skapa en version
 

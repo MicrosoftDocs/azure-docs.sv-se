@@ -4,10 +4,10 @@ description: Den här artikeln förklarar hur du använder Service Fabric KeyVau
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: a0e4ef0decae8cc9ab4dc5f8c69dfef854af81f3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98898604"
 ---
 # <a name="keyvaultreference-support-for-azure-deployed-service-fabric-applications"></a>KeyVaultReference-stöd för Azure-distribuerade Service Fabric program

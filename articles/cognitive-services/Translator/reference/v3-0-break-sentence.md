@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: 2da614fe829d0aa82bfa57337baf44491993c68f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895551"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3,0: BreakSentence
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Parametrarna för begäran som skickades till frågesträngen är:
 
-| Frågeparameter | Description |
+| Frågeparameter | Beskrivning |
 | -------| ----------- |
 | api-version <img width=200/>   | **Parameter för obligatorisk fråga**.<br/>Den version av API: t som klienten begär. Värdet måste vara `3.0` . |
 | language | **Valfri frågeparameter**.<br/>Språk tag gen som identifierar språk för inmatad text. Om ingen kod anges används automatisk språk identifiering. |
@@ -41,7 +41,7 @@ Parametrarna för begäran som skickades till frågesträngen är:
 
 Begärandehuvuden innehåller:
 
-| Sidhuvuden | Description |
+| Sidhuvuden | Beskrivning |
 | ------- | ----------- |
 | Authentication-huvud (er) <img width=200/>  | **Begär ande huvud för begäran**.<br/>Se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">tillgängliga alternativ för autentisering</a>. |
 | Content-Type | **Begär ande huvud för begäran**.<br/>Anger nytto lastens innehålls typ. Möjliga värden är: `application/json` . |
@@ -97,7 +97,7 @@ Ett exempel på JSON-svar är:
 
 <table width="100%">
   <th width="20%">Sidhuvuden</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>X-RequestId</td>
     <td>Värde som genereras av tjänsten för att identifiera begäran. Den används i fel söknings syfte.</td>
@@ -110,7 +110,7 @@ Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
 <table width="100%">
   <th width="20%">Statuskod</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>200</td>
     <td>Åtgärden lyckades.</td>

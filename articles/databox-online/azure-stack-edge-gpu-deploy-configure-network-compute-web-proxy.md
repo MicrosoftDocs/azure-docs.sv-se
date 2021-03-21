@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594610"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Självstudie: Konfigurera nätverk för Azure Stack Edge Pro med GPU
@@ -131,7 +131,7 @@ Detta är en valfri konfiguration.
 > [!IMPORTANT]
 > * Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge Pro-enhet rekommenderar vi att du anger webbproxy-autentisering som **ingen**. NTLM stöds inte.
 > * PAC-filer (Proxy-Auto config) stöds inte. En PAC-fil definierar hur webbläsare och andra användar agenter automatiskt kan välja rätt proxyserver (åtkomst metod) för att hämta en viss URL. 
-> * Transparenta proxyservrar fungerar bra med Azure Stack Edge Pro. För icke-transparenta proxyservrar som fångar upp och läser all trafik (via sina egna certifikat som är installerade på proxyservern) laddar du upp den offentliga nyckeln för proxyns certifikat som signerings kedja på din Azure Stack Edge Pro-enhet. Sedan kan du konfigurera inställningarna för proxyservern på Azure Stack Edge-enheten. Mer information finns i [ta med dina egna certifikat och ladda upp via det lokala användar gränssnittet](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).  
+> * Transparenta proxyservrar fungerar bra med Azure Stack Edge. För icke-transparenta proxyservrar som fångar upp och läser all trafik (via sina egna certifikat som är installerade på proxyservern) laddar du upp den offentliga nyckeln för proxyns certifikat som signerings kedja på din Azure Stack Edge Pro-enhet. Sedan kan du konfigurera proxyserverinställningarna på din Azure Stack Edge-enhet. Mer information finns i [ta med dina egna certifikat och ladda upp via det lokala användar gränssnittet](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.
@@ -142,7 +142,7 @@ Detta är en valfri konfiguration.
 
     1. I rutan **webbproxy-URL** anger du webb adressen i följande format: `http://host-IP address or FQDN:Port number` . Du kan inte använda HTTPS-adresser.
 
-    2. Under **autentisering** väljer du **ingen** eller **NTLM**. Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge Pro-enhet rekommenderar vi att du ställer in webbproxy-autentisering på **ingen**. **NTLM** stöds inte.
+    2. Välj **Ingen** eller **NTLM** under **Autentisering**. Om du aktiverar beräknings-och användnings IoT Edge modul på din Azure Stack Edge Pro-enhet rekommenderar vi att du ställer in webbproxy-autentisering på **ingen**. **NTLM** stöds inte.
 
     3. Om du använder autentisering anger du ett användar namn och lösen ord.
 

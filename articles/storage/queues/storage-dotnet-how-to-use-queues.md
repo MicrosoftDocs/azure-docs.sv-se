@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d54b8f15c90aa8f6ffcc04453fee0349e501f47d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97585759"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Komma igång med Azure Queue Storage med hjälp av .NET
@@ -30,7 +30,7 @@ Den här självstudien visar hur du skriver .NET-kod för några vanliga scenari
 
 **Uppskattad tidsåtgång:** 45 minuter
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - Ett [Azure Storage konto](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
@@ -69,7 +69,7 @@ Du måste referera till följande fyra paket i projektet för att slutföra den 
 - [Azure. Storage. Queues-klient bibliotek för .net](https://www.nuget.org/packages/azure.storage.queues/): det här paketet gör det möjligt att arbeta med Azure-Queue Storage för att lagra meddelanden som kan kommas åt av en klient.
 - [System.Configuration.ConfigurationManager-bibliotek för .net](https://www.nuget.org/packages/system.configuration.configurationmanager/): det här paketet ger till gång till konfigurationsfiler för klient program.
 
-Du kan använda NuGet för att hämta paketen. Gör så här:
+Du kan använda NuGet för att hämta paketen. Följ de här stegen:
 
 1. Högerklicka på ditt projekt i **Solution Explorer** och välj **Hantera NuGet-paket**.
 1. Välj **Bläddra**
@@ -84,7 +84,7 @@ Du måste referera till följande tre paket i projektet för att slutföra den h
 - [Microsoft Azure Queue Storage klient bibliotek för .net](https://www.nuget.org/packages/microsoft.azure.storage.queue/): det här klient biblioteket gör det möjligt att arbeta med Azure-Queue Storage för att lagra meddelanden som kan nås av en klient.
 - [Microsoft Azure Configuration Manager-biblioteket för .NET](https://www.nuget.org/packages/microsoft.azure.configurationmanager/): det här paketet tillhandahåller en klass för parsning av en anslutningssträng i en konfigurationsfil, oavsett var ditt program körs.
 
-Du kan använda NuGet för att hämta paketen. Gör så här:
+Du kan använda NuGet för att hämta paketen. Följ de här stegen:
 
 1. Högerklicka på ditt projekt i **Solution Explorer** och välj **Hantera NuGet-paket**.
 1. Välj **Bläddra**
