@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du kan sluta övervaka ditt hybrid 
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101713702"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Så här stoppar du övervakning av ditt hybrid kluster

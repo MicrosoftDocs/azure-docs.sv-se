@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: 2f446df95c795eaac378340ed0d5de7b31dfcfee
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102219053"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Använda hanterade identiteter för att få åtkomst till App Configuration
@@ -96,7 +96,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     }
     ```
 
-1. Öppna *program.cs* och Lägg till en referens till `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` namn områdena och:
+1. Öppna *program. cs* och Lägg till en referens till `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` namn områdena och:
 
     ```csharp-interactive
     using Azure.Identity;
@@ -148,7 +148,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     >Som förklaras i [vanliga frågor och svar om hanterade identiteter för Azure-resurser](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), finns det ett standard sätt att matcha vilken hanterad identitet som används. I det här fallet tvingar Azure Identity Library dig att ange den önskade identiteten för att undvika möjliga körnings problem i framtiden (till exempel om en ny användardefinierad hanterad identitet läggs till eller om den systemtilldelade hanterade identiteten har Aktiver ATS). Så du måste ange clientId även om endast en användardefinierad hanterad identitet definieras och det inte finns någon systemtilldelad hanterad identitet.
 
 
-1. Uppdatera *program.cs* så som visas nedan om du vill använda både konfigurations värden för appen och Key Vault referenser. Den här koden anropas `SetCredential` som en del av `ConfigureKeyVault` för att tala om för konfigurations leverantören vilka autentiseringsuppgifter som ska användas vid autentisering till Key Vault.
+1. Om du vill använda både konfigurations värden för appen och Key Vault referenser uppdaterar du *programmet. cs* enligt nedan. Den här koden anropas `SetCredential` som en del av `ConfigureKeyVault` för att tala om för konfigurations leverantören vilka autentiseringsuppgifter som ska användas vid autentisering till Key Vault.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 231d3ab81c2376aa8a2a4bf182e1b5e9799e51d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649299"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669788"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Vad är gästanvändaråtkomst i Azure Active Directory B2B?
 
@@ -80,7 +80,7 @@ Ta med dina externa partner på ett sätt som anpassas efter din organisations b
 
 ## <a name="integrate-with-identity-providers"></a>Integrera med identitets leverantörer
 
-Azure AD stöder externa identitets leverantörer som Facebook, Microsoft-konton, Google-eller Enterprise Identity-leverantörer. Du kan konfigurera Federation med identitets leverantörer så att dina externa användare kan logga in med sina befintliga sociala konton eller företags konton i stället för att skapa ett nytt konto för ditt program. Läs mer om identitets leverantörer för externa identiteter.
+Azure AD stöder externa identitets leverantörer som Facebook, Microsoft-konton, Google-eller Enterprise Identity-leverantörer. Du kan konfigurera Federation med identitets leverantörer så att dina externa användare kan logga in med sina befintliga sociala konton eller företags konton i stället för att skapa ett nytt konto för ditt program. Läs mer om [identitets leverantörer för externa identiteter](identity-providers.md).
 
 ![Skärm bild som visar sidan med identitets leverantörer](media/what-is-b2b/identity-providers.png)
 

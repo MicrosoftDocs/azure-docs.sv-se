@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: d1d0da70dc1e47d0a1ddb90abbed2eaea83919cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040183"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referens guide för att Visa designer-paneler i Azure Monitor
@@ -44,14 +44,14 @@ Panelen **tal** visar både antalet poster från en logg fråga och en etikett.
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Namn |Den text som visas överst i panelen. |
+| Name |Den text som visas överst i panelen. |
 | Beskrivning |Texten som visas under panel namnet. |
 | **Panel** | |
 | Förklaring |Texten som visas under värdet. |
-| Söka i data |Den fråga som körs. Antalet poster som returneras av frågan visas. |
+| Fråga |Den fråga som körs. Antalet poster som returneras av frågan visas. |
 | **Avancerat** |**> data flödes verifiering** |
 | Enabled |Välj den här länken om data flödes verifiering ska aktive ras för panelen. Den här metoden ger ett alternativt meddelande om data inte är tillgängliga. Du använder vanligt vis metoden för att tillhandahålla ett meddelande under den tillfälliga perioden när vyn installeras och data blir tillgängliga. |
-| Söka i data |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
+| Fråga |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
 | Meddelande |Det meddelande som visas om verifierings frågan för data flödet inte returnerar några data. Om du inte anger något meddelande visas ett status meddelande om att *utföra utvärderingen* . |
 
 
@@ -62,17 +62,17 @@ Den här panelen visar antalet poster från två olika logg frågor och en etike
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Namn |Den text som visas överst i panelen. |
+| Name |Den text som visas överst i panelen. |
 | Beskrivning |Texten som visas under panel namnet. |
 | **Första panelen** | |
 | Förklaring |Texten som visas under värdet. |
-| Söka i data |Den fråga som körs. Antalet poster som returneras av frågan visas. |
+| Fråga |Den fråga som körs. Antalet poster som returneras av frågan visas. |
 | **Andra panelen** | |
 | Förklaring |Texten som visas under värdet. |
-| Söka i data |Den fråga som körs. Antalet poster som returneras av frågan visas. |
+| Fråga |Den fråga som körs. Antalet poster som returneras av frågan visas. |
 | **Avancerat** |**> data flödes verifiering** |
 | Enabled |Välj den här länken om data flödes verifiering ska aktive ras för panelen. Den här metoden ger ett alternativt meddelande om data inte är tillgängliga. Du använder vanligt vis metoden för att tillhandahålla ett meddelande under den tillfälliga perioden när vyn installeras och data blir tillgängliga. |
-| Söka i data |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
+| Fråga |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
 | Meddelande |Det meddelande som visas om verifierings frågan för data flödet inte returnerar några data. Om du inte anger något meddelande visas ett status meddelande om att *utföra utvärderingen* . |
 
 
@@ -83,10 +83,10 @@ Den här panelen visar antalet poster från två olika logg frågor och en etike
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Namn |Den text som visas överst i panelen. |
+| Name |Den text som visas överst i panelen. |
 | Beskrivning |Texten som visas under panel namnet. |
 | **Ring** | |
-| Söka i data |Den fråga som körs för ringen. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. |
+| Fråga |Den fråga som körs för ringen. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. |
 | **Ring** |**> Center** |
 | Text |Texten som visas under värdet i ring diagrammet. |
 | Åtgärd |Åtgärden som utförs på egenskap svärdet för att sammanfattas som ett enda värde.<ul><li>Sum: Lägg till värdena för alla poster med egenskap svärdet.</li><li>Procent andel: procent andelen av summerade värden från poster med egenskap svärdet jämfört med de summerade värdena för alla poster.</li></ul> |
@@ -96,7 +96,7 @@ Den här panelen visar antalet poster från två olika logg frågor och en etike
 | Avancerad färg mappning |Visar en färg som representerar vissa egenskaps värden. Om värdet du anger är i de tre översta visas den alternativa färgen i stället för standard färgen. Om egenskapen inte finns i de tre översta, visas inte färgen. |
 | **Avancerat** |**> data flödes verifiering** |
 | Enabled |Välj den här länken om data flödes verifiering ska aktive ras för panelen. Den här metoden ger ett alternativt meddelande om data inte är tillgängliga. Du använder vanligt vis metoden för att tillhandahålla ett meddelande under den tillfälliga perioden när vyn installeras och data blir tillgängliga. |
-| Söka i data |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
+| Fråga |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
 | Meddelande |Det meddelande som visas om verifierings frågan för data flödet inte returnerar några data. Om du inte anger något meddelande visas ett status meddelande om att *utföra utvärderingen* . |
 
 
@@ -107,17 +107,17 @@ Den här panelen är ett linje diagram som visar flera serier från en logg frå
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Namn |Den text som visas överst i panelen. |
+| Name |Den text som visas överst i panelen. |
 | Beskrivning |Texten som visas under panel namnet. |
 | **Linje diagram** | |
-| Söka i data |Frågan som körs för linje diagrammet. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. Om frågan använder *intervall* nyckelordet använder x-axeln det här tidsintervallet. Om frågan inte använder *intervall* nyckelordet använder x-axeln Tim intervall. |
+| Fråga |Frågan som körs för linje diagrammet. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. Om frågan använder *intervall* nyckelordet använder x-axeln det här tidsintervallet. Om frågan inte använder *intervall* nyckelordet använder x-axeln Tim intervall. |
 | **Linje diagram** |**> Y-axel** |
 | Använd logaritmisk skala |Välj den här länken om du vill använda en logaritmisk skala för y-axeln. |
 | Enheter |Ange enheterna för värdena som returneras av frågan. Den här informationen används för att visa etiketter i diagrammet som visar värde typerna och eventuellt för att konvertera värdena. **Enhets typen** anger enhets kategorin och definierar de aktuella värdena för **enhets typen** som är tillgängliga. Om du väljer ett värde i **Convert så** konverteras de numeriska värdena från den **aktuella enhets** typen till typen **konvertera till** . |
 | Anpassad etikett |Den text som visas för y-axeln bredvid *enhets* typens etikett. Om ingen etikett har angetts visas endast *enhets* typen. |
 | **Avancerat** |**> data flödes verifiering** |
 | Enabled |Välj den här länken om data flödes verifiering ska aktive ras för panelen. Den här metoden ger ett alternativt meddelande om data inte är tillgängliga. Du använder vanligt vis metoden för att tillhandahålla ett meddelande under den tillfälliga perioden när vyn installeras och data blir tillgängliga. |
-| Söka i data |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
+| Fråga |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
 | Meddelande |Det meddelande som visas om verifierings frågan för data flödet inte returnerar några data. Om du inte anger något meddelande visas ett status meddelande om att *utföra utvärderingen* . |
 
 
@@ -128,10 +128,10 @@ Den här panelen innehåller både ett linje diagram som visar flera serier frå
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Namn |Den text som visas överst i panelen. |
+| Name |Den text som visas överst i panelen. |
 | Beskrivning |Texten som visas under panel namnet. |
 | **Linje diagram** | |
-| Söka i data |Frågan som körs för linje diagrammet. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. Om frågan använder *intervall* nyckelordet använder x-axeln det här tidsintervallet. Om frågan inte använder *intervall* nyckelordet använder x-axeln Tim intervall. |
+| Fråga |Frågan som körs för linje diagrammet. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. Om frågan använder *intervall* nyckelordet använder x-axeln det här tidsintervallet. Om frågan inte använder *intervall* nyckelordet använder x-axeln Tim intervall. |
 | **Linje diagram** |**> prat bubbla** |
 | Rubrik för bildtext | Texten som visas ovanför bild text svärdet. |
 | Serie namn |Egenskap svärdet för serien som ska användas som bild text värde. Om ingen serie anges används alla poster från frågan. |
@@ -142,7 +142,7 @@ Den här panelen innehåller både ett linje diagram som visar flera serier frå
 | Anpassad etikett |Den text som visas för y-axeln bredvid *enhets* typens etikett. Om ingen etikett har angetts visas endast *enhets* typen. |
 | **Avancerat** |**> data flödes verifiering** |
 | Enabled |Välj den här länken om data flödes verifiering ska aktive ras för panelen. Den här metoden ger ett alternativt meddelande om data inte är tillgängliga. Du använder vanligt vis metoden för att tillhandahålla ett meddelande under den tillfälliga perioden när vyn installeras och data blir tillgängliga. |
-| Söka i data |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
+| Fråga |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
 | Meddelande |Det meddelande som visas om verifierings frågan för data flödet inte returnerar några data. Om du inte anger något meddelande visas ett status meddelande om att *utföra utvärderingen* . |
 
 
@@ -153,7 +153,7 @@ I panelen **två tids linjer** visas resultaten av två logg frågor med tiden s
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Namn |Den text som visas överst i panelen. |
+| Name |Den text som visas överst i panelen. |
 | Beskrivning |Texten som visas under panel namnet. |
 | Första diagrammet | |
 | Förklaring |Texten som visas under bild texten för den första serien. |
@@ -167,7 +167,7 @@ I panelen **två tids linjer** visas resultaten av två logg frågor med tiden s
 | Åtgärd |Den åtgärd som utförs på egenskap svärdet som ska sammanfattas som ett enda värde för kommentaren.<ul><li>Genomsnitt: medelvärdet av värden från alla poster.</li><li>Count: antalet poster som returneras av frågan.</li><li>Senaste exempel: värdet för det sista intervallet som ingår i diagrammet.</li><li>Max: det högsta värdet för de intervall som ingår i diagrammet. |
 | **Avancerat** |**> data flödes verifiering** |
 | Enabled |Välj den här länken om data flödes verifiering ska aktive ras för panelen. Den här metoden ger ett alternativt meddelande om data inte är tillgängliga. Du använder vanligt vis metoden för att tillhandahålla ett meddelande under den tillfälliga perioden när vyn installeras och data blir tillgängliga. |
-| Söka i data |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
+| Fråga |Frågan som körs för att avgöra om data är tillgängliga för vyn. Om frågan inte returnerar några resultat visas ett meddelande i stället för huvud frågans värde. |
 | Meddelande |Det meddelande som visas om verifierings frågan för data flödet inte returnerar några data. Om du inte anger något meddelande visas ett status meddelande om att *utföra utvärderingen* . |
 
 

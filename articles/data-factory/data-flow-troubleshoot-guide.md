@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.date: 03/18/2021
+ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467739"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593865"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 
@@ -26,12 +26,6 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 - **Meddelande**: det gick inte att köra data flöde för förhands granskning, fel sökning och pipeline-data flöde eftersom behållaren inte finns
 - **Orsak**: en data uppsättning innehåller en behållare som inte finns i lagrings utrymmet.
 - **Rekommendation**: kontrol lera att behållaren som refereras till i data uppsättningen finns och att den kan nås.
-
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>Felkod: DF-utförar-SystemImplicitCartesian
-
-- **Meddelande**: implicit kartesiska-produkt för inre koppling stöds inte, Använd kors koppling i stället. Kolumner som används i Join ska skapa en unik nyckel för rader.
-- **Orsak**: implicita kartesiska-produkter för inre kopplingar mellan logiska planer stöds inte. Om du använder kolumner i kopplingen skapar du en unik nyckel med minst en kolumn från båda sidor i relationen.
-- **Rekommendation**: Använd anpassad kors koppling för icke-jämlikhetbaserade kopplingar.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Felkod: DF-utförar-SystemInvalidJson
 
@@ -82,11 +76,6 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 - **Orsak**: data typen för den deklarerade typen är inte kompatibel med det faktiska parametervärdet.
 - **Rekommendation**: kontrol lera att de parameter värden som skickas till data flödet matchar den deklarerade typen.
 
-### <a name="error-code-df-executor-columnunavailable"></a>Felkod: DF-utförar-ColumnUnavailable
-- **Meddelande**: kolumn namnet som används i uttrycket är inte tillgängligt eller ogiltigt
-- **Orsak**: ett ogiltigt eller inte tillgängligt kolumn namn som används i ett uttryck.
-- **Rekommendation**: kontrol lera kolumn namn i uttryck.
-
 ### <a name="error-code-df-executor-parseerror"></a>Felkod: DF-utförar-ParseError
 - **Meddelande**: det går inte att parsa uttrycket
 - **Orsak**: ett uttryck genererade tolknings fel på grund av felaktig formatering.
@@ -96,29 +85,6 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 - **Meddelande**: implicit kartesiska-produkt för inre koppling stöds inte, Använd kors koppling i stället. Kolumner som används i Join ska skapa en unik nyckel för rader.
 - **Orsak**: implicita kartesiska-produkter för inre kopplingar mellan logiska planer stöds inte. Om du använder kolumner i kopplingen skapar du en unik nyckel.
 - **Rekommendation**: Använd kors koppling för icke-jämlikhetbaserade kopplingar.
-
-### <a name="error-code-df-executor-systeminvalidjson"></a>Felkod: DF-utförar-SystemInvalidJson
-- **Meddelande**: JSON-parsningsfel, kodning eller Multiline stöds inte
-- **Orsak**: möjliga problem med JSON-filen: kodning som inte stöds, skadade byte eller med JSON-källa som ett enda dokument på flera kapslade rader.
-- **Rekommendation**: kontrol lera att JSON-filens kodning stöds. I käll omvandlingen som använder en JSON-datauppsättning expanderar du **JSON-inställningar** och aktiverar **enstaka dokument**.
-
-
-
-### <a name="error-code-df-executor-conversion"></a>Felkod: DF-utförar-Conversion
-- **Meddelande**: det gick inte att konvertera till ett datum eller en tid på grund av ett ogiltigt Character
-- **Orsak**: data har inte det förväntade formatet.
-- **Rekommendation**: Använd rätt datatyp.
-
-
-### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Felkod: DF-utförar-BlockCountExceedsLimitError
-- **Meddelande**: antalet icke-allokerade block får inte överskrida Max gränsen på 100 000 block. Kontrol lera BLOB-konfigurationen.
-- **Orsak**: det maximala antalet icke allokerade block i en blob är 100 000.
-- **Rekommendation**: kontakta Microsofts produkt team om du vill ha mer information om det här problemet.
-
-### <a name="error-code-df-executor-partitiondirectoryerror"></a>Felkod: DF-utförar-PartitionDirectoryError
-- **Meddelande**: den angivna käll Sök vägen har antingen flera partitionerade kataloger (t. ex. *<Source Path> /<partitionens rot Katalog 1>/a = 10/b = 20, <Source Path> /<partitionens rot Katalog 2>/c = 10/d = 30*) eller partitionerad katalog med andra fil-eller icke-partitionerade kataloger (t. ex. *<Source Path> /<partition rot Katalog 1>/A = 10/b = 20, <Source Path> /katalog 2/fil1*), ta bort partitionens rot Katalog från käll Sök vägen och Läs den via separata käll omvandling.
-- **Orsak**: käll Sök vägen har antingen flera partitionerade kataloger eller en partitionerad katalog som har en annan fil eller en icke-partitionerad katalog. 
-- **Rekommendation**: ta bort den partitionerade rot katalogen från käll Sök vägen och Läs den via separat käll omvandling.
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Felkod: GetCommand OutputAsync misslyckades
 - **Meddelande**: vid fel sökning av data flöde och data förhands granskning: GetCommand OutputAsync misslyckades med...
@@ -137,22 +103,10 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 - **Orsak**: konto namnet eller åtkomst nyckeln är felaktig.
 - **Rekommendation**: kontrol lera att konto namnet eller åtkomst nyckeln som anges i den länkade tjänsten är korrekt. 
 
-### <a name="error-code-df-executor-invalidtype"></a>Felkod: DF-utförar-InvalidType
-- **Meddelande**: kontrol lera att den typ av parameter som matchar typen av värde har överförts. Det finns för närvarande inte stöd för att skicka flytt ALS parametrar från pipeliner.
-- **Orsak**: data typen för den deklarerade typen är inte kompatibel med det faktiska parametervärdet. 
-- **Rekommendation**: ange rätt data typer.
-
 ### <a name="error-code-df-executor-columnunavailable"></a>Felkod: DF-utförar-ColumnUnavailable
 - **Meddelande**: kolumn namnet som används i uttrycket är inte tillgängligt eller ogiltigt.
 - **Orsak**: ett ogiltigt eller otillgängligt kolumn namn används i ett uttryck.
 - **Rekommendation**: kontrol lera kolumn namnen som används i uttryck.
-
-
-### <a name="error-code-df-executor-parseerror"></a>Felkod: DF-utförar-ParseError
-- **Meddelande**: det går inte att parsa uttrycket.
-- **Orsak**: ett uttryck genererade tolknings fel på grund av felaktig formatering. 
-- **Rekommendation**: kontrol lera formateringen i uttrycket.
-
 
  ### <a name="error-code-df-executor-outofdiskspaceerror"></a>Felkod: DF-utförar-OutOfDiskSpaceError
 - **Meddelande**: internt Server fel

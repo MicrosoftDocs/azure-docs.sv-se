@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037701"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Logg aviseringar i Azure Monitor
@@ -82,7 +82,7 @@ För arbets ytor och Application Insights anropas det **baserat på** med urvals
 
 Du vill veta när ditt program svarar med felkoden 500 (internt Server fel). Du skapar en varnings regel med följande information:
 
-- **Frågeterm** 
+- **Fråga:** 
 
 ```Kusto
 requests
@@ -128,7 +128,7 @@ I arbets ytor och Application Insights stöds det bara i mått mått typen **må
 
 Du vill till exempel övervaka fel för flera virtuella datorer som kör webbplatsen/appen i en speciell resurs grupp. Du kan göra det med en logg aviserings regel på följande sätt:
 
-- **Frågeterm** 
+- **Fråga:** 
 
     ```Kusto
     // Reported errors
