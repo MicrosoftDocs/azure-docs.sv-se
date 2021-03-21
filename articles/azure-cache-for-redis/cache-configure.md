@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100581071"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Så här konfigurerar du Azure cache för Redis
@@ -162,7 +162,7 @@ Meddelanden om Redis-meddelanden har kon figurer ATS på bladet **Avancerade ins
 >
 >
 
-Mer information finns i [meddelanden om Redis-meddelanden](https://redis.io/topics/notifications). Exempel kod finns i [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) -filen i [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) -exemplet.
+Mer information finns i [meddelanden om Redis-meddelanden](https://redis.io/topics/notifications). Exempel kod finns i filen [KeySpaceNotifications. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) i [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) -exemplet.
 
 
 <a name="recommendations"></a>

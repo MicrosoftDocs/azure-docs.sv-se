@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 5a59f5910d44f2a2b4cd75e7a1d51c2ed5dd51a4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932514"
 ---
 # <a name="labels"></a>Etiketter
@@ -31,7 +31,7 @@ Stöder följande åtgärder:
 
 För alla åtgärder ``name`` är en valfri filter parameter. Om detta utelämnas **förutsätts** etiketten.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Alla HTTP-begäranden måste autentiseras. Se avsnittet [Authentication](./rest-api-authentication-index.md) .
 - Alla HTTP-begäranden måste innehålla explicit `api-version` . Se avsnittet [versions hantering](./rest-api-versioning.md) .

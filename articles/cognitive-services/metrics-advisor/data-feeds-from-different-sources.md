@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
 ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348627"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Lägg till datafeeds från olika data källor i mått Advisor
@@ -37,23 +37,23 @@ Använd den här artikeln för att hitta inställningar och krav för att anslut
 
 | Datakällor | Autentiseringstyper |
 |-------------| ---------------------|
-|[**Azure Application Insights**](#appinsights)|  Basic |
-|[**Azure Blob Storage (JSON)**](#blob) | Basic<br>ManagedIdentity|
-|[**Azure Cosmos DB (SQL)**](#cosmosdb) | Basic |
-|[**Azure Datautforskaren (Kusto)**](#kusto) | Basic<br>ManagedIdentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>Tjänstens huvudnamn<br>Tjänstens huvud namn från Key Vault<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | Basic<br>ManagedIdentity<br>Tjänstens huvudnamn<br>Tjänstens huvud namn från Key Vault<br>AzureSQLConnectionString
-|[**Azure-Table Storage**](#table) | Basic | 
-|[**ElasticSearch**](#es) | Basic |
-|[**Http-begäran**](#http) | Basic | 
-|[**InfluxDB (InfluxQL)**](#influxdb) | Basic |
-|[**MongoDB**](#mongodb) | Basic |
-|[**MySQL**](#mysql) | Basic |
-|[**PostgreSQL**](#pgsql)| Basic|
+|[**Azure Application insikter**](#appinsights)|  Grundläggande |
+|[**Azure Blob Storage (JSON)**](#blob) | Grundläggande<br>ManagedIdentity|
+|[**Azure Cosmos DB (SQL)**](#cosmosdb) | Grundläggande |
+|[**Azure Data Explorer (Kusto)**](#kusto) | Grundläggande<br>ManagedIdentity|
+|[**Azure Data Lake Storage Gen2**](#adl) | Grundläggande<br>DataLakeGen2SharedKey<br>Tjänstens huvudnamn<br>Tjänstens huvud namn från Key Vault<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | Grundläggande<br>ManagedIdentity<br>Tjänstens huvudnamn<br>Tjänstens huvud namn från Key Vault<br>AzureSQLConnectionString
+|[**Azure Table Storage**](#table) | Grundläggande | 
+|[**ElasticSearch**](#es) | Grundläggande |
+|[**Http-begäran**](#http) | Grundläggande | 
+|[**InfluxDB (InfluxQL)**](#influxdb) | Grundläggande |
+|[**MongoDB**](#mongodb) | Grundläggande |
+|[**MySQL**](#mysql) | Grundläggande |
+|[**PostgreSQL**](#pgsql)| Grundläggande|
 
 Skapa en **entitet för autentiseringsuppgifter** och Använd den för autentisering till dina data källor. I följande avsnitt anges de parametrar som krävs för *grundläggande* autentisering. 
 
-## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
+## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application insikter</span>
 
 * **Program-ID**: används för att identifiera det här programmet när du använder Application Insights-API: et. Hämta program-ID: t genom att göra följande:
 
@@ -131,7 +131,7 @@ Endast en tidstämpel tillåts per JSON-fil.
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Datautforskaren (Kusto)</span>
+## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
 * **Anslutnings sträng**: mått översikten har stöd för åtkomst till Azure datautforskaren (Kusto) med hjälp av Azure AD Application Authentication. Du måste skapa och registrera ett Azure AD-program och sedan auktorisera det för att få åtkomst till en Azure Datautforskaren-databas. Information om hur du hämtar anslutnings strängen finns i [Azure datautforskaren](/azure/data-explorer/provision-azure-ad-app) -dokumentationen.
 

@@ -7,10 +7,10 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895925"
 ---
 # <a name="manage-role-permissions-and-security"></a>Hantera rollbehörigheter och säkerhet
@@ -176,7 +176,7 @@ En övervaknings deltagare kan läsa alla övervaknings data och uppdatera över
 |Microsoft. AlertsManagement/alertsSummary/*|Hantera aviserings instrument panelen.|
 |Microsoft. Insights/AlertRules/*|Hantera aviserings regler.|
 |Microsoft. Insights/komponenter/*|Hantera Application Insights-komponenter.|
-|Microsoft. Insights/DiagnosticSettings/*|Hantera diagnostikinställningar.|
+|Microsoft.Insights/DiagnosticSettings/*|Hantera diagnostikinställningar.|
 |Microsoft. Insights/eventtypes/*|Visa lista över aktivitets logg händelser (hanterings händelser) i en prenumeration. Den här behörigheten gäller för både program mässig och Portal åtkomst till aktivitets loggen.|
 |Microsoft. Insights/LogDefinitions/*|Den här behörigheten krävs för användare som behöver åtkomst till aktivitets loggar via portalen. Lista logg kategorier i aktivitets loggen.|
 |Microsoft. Insights/MetricDefinitions/*|Läs mått definitioner (lista över tillgängliga mått typer för en resurs).|

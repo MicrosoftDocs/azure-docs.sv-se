@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708491"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurera inställningar för Azure AD-roller i Privileged Identity Management
@@ -131,7 +131,7 @@ Följ de här stegen för att öppna inställningarna för en Azure AD-roll.
 
 1. Välj **Azure AD-roller**.
 
-1. Välj **Inställningar**.
+1. Välj **inställningar**.
 
     ![Azure AD-roller – inställningar](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -147,7 +147,7 @@ Följ de här stegen för att öppna inställningarna för en Azure AD-roll.
 
 Använd skjutreglaget **aktiveringar** för att ange den maximala tiden, i timmar, som en roll förblir aktiv innan den upphör att gälla. Värdet kan vara mellan 1 och 72 timmar.
 
-## <a name="notifications"></a>Aviseringar
+## <a name="notifications"></a>Meddelanden
 
 Använd växeln **meddelanden** för att ange om administratörer ska få e-postaviseringar när roller aktive ras. Det här meddelandet kan vara användbart för att upptäcka otillåtna eller illegitimatea aktiveringar.
 

@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: apimpm
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97027925"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Skydda en webb-API-Server del i Azure API Management med hjälp av OAuth 2,0-auktorisering med Azure AD 
@@ -165,7 +165,7 @@ Nästa steg är att aktivera OAuth 2,0-användarauktorisering för ditt API. På
 
 1. Bläddra till API Management-instansen och gå till **API: er**.
 
-1. Välj det API som du vill skydda. Exempelvis `Echo API`.
+1. Välj det API som du vill skydda. Till exempel `Echo API`.
 
 1. Gå till **Inställningar**.
 

@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996550"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synkronisering: Konfigurera filtrering
 Genom att använda filtrering kan du styra vilka objekt som visas i Azure Active Directory (Azure AD) från din lokala katalog. Standard konfigurationen tar alla objekt i alla domäner i de konfigurerade skogarna. I allmänhet är detta den rekommenderade konfigurationen. Användare som använder Microsoft 365 arbets belastningar, till exempel Exchange Online och Skype för företag, drar nytta av en fullständig global adress lista så att de kan skicka e-post och ringa alla. Med standard konfigurationen har de samma erfarenhet som de skulle ha med en lokal implementering av Exchange eller Lync.
 
-I vissa fall är det dock nödvändigt att göra vissa ändringar i standard konfigurationen. Här följer några exempel:
+I vissa fall är det dock nödvändigt att göra vissa ändringar i standard konfigurationen. Här är några exempel:
 
 * Du planerar att använda Active [Directory-topologin för flera Azure](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Sedan måste du använda ett filter för att styra vilka objekt som ska synkroniseras till en viss Azure AD-katalog.
 * Du kör en pilot för Azure eller Microsoft 365 och du vill bara ha en delmängd av användarna i Azure AD. I den lilla piloten är det inte viktigt att ha en fullständig global adress lista för att demonstrera funktionerna.
@@ -285,7 +285,7 @@ I det här exemplet ska du ändra filtreringen så att endast användare som har
 ## <a name="apply-and-verify-changes"></a>Tillämpa och verifiera ändringar
 När du har gjort dina konfigurations ändringar måste du tillämpa dem på de objekt som redan finns i systemet. Det kan också vara att de objekt som inte finns i Synkroniseringsmotorn ska bearbetas (och Synkroniseringsmotorn måste läsa käll systemet igen för att verifiera innehållet).
 
-Om du har ändrat konfigurationen med hjälp **domain** av domän **-eller organisations enhets** filtrering, måste du göra en **fullständig import**, följt av **delta-synkronisering**.
+Om du har ändrat konfigurationen med hjälp  av domän **-eller organisations enhets** filtrering, måste du göra en **fullständig import**, följt av **delta-synkronisering**.
 
 Om du har ändrat konfigurationen med hjälp av **attribut** filtrering måste du göra en **fullständig synkronisering**.
 

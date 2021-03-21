@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du publicerar en händelse i ett an
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681625"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Publicera till anpassat avsnitt för Azure Event Grid

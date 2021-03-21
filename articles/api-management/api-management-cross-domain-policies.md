@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688424"
 ---
 # <a name="api-management-cross-domain-policies"></a>Korsdomänprinciper för API Management
@@ -138,7 +138,7 @@ I det här exemplet visas hur du stöder för-flygnings begär Anden, t. ex. de 
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standardvärde|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
 |Tillåt-autentiseringsuppgifter|`Access-Control-Allow-Credentials`Rubriken i preflight-svaret anges till värdet för det här attributet och påverkar klientens möjlighet att skicka autentiseringsuppgifter i kors domän begär Anden.|Inga|falskt|
 |avsluta-omatchad-begäran|Det här attributet styr bearbetningen av frågor över olika ursprung som inte matchar CORS-principinställningar. När OPTIONs-begäran bearbetas som en för hands begäran och inte matchar CORS-princip inställningarna: om attributet är inställt på `true` avslutar du omedelbart begäran med ett tomt 200 OK-svar. Om attributet är inställt på `false` kontrollerar du inkommande för andra WEBBPLATSOMFATTANDE CORS-principer som är direkt underordnade till det inkommande elementet och tillämpar dem.  Om inga CORS-principer hittas avslutar du begäran med ett tomt 200 OK-svar. När GET-eller HEAD-begäran innehåller ursprungs huvudet (och därför bearbetas som en begäran om cross-origin) och inte matchar CORS-princip inställningarna: om attributet är inställt på `true` , avslutar du omedelbart begäran med ett tomt 200-svar. Om attributet är inställt på `false` , tillåter du att begäran fortsätter normalt och lägger inte till CORS-huvuden i svaret.|Inga|true|
@@ -177,7 +177,7 @@ Om du lägger till en callback `?cb=XXX` -parameter returnerar den ett JSONP-res
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standardvärde|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
 |motanrop-parameter-Name|JavaScript-funktionen för Cross-Domain anropas med det fullständigt kvalificerade domän namnet där funktionen finns.|Ja|Ej tillämpligt|
 

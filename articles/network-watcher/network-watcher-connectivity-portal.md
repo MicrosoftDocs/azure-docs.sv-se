@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898121"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Felsöka anslutningar med Azure Network Watcher med hjälp av Azure Portal
@@ -49,7 +49,7 @@ När du klickar på **kontrol lera kontrol** leras anslutningen mellan de virtue
 
 ![Kontrol lera anslutnings resultatet för en virtuell dator][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Kontrol lera anslutningen till fjärrslutpunkten
+## <a name="check-remote-endpoint-connectivity"></a>Kontrollera anslutningen till fjärrslutpunkten
 
 Om du vill kontrol lera anslutningen och svars tiden för en fjärrslutpunkt väljer du alternativ knappen **ange manuellt** i **mål** avsnittet, anger URL och port och klickar på **kontrol lera**.  Detta används för Fjärrslutpunkter som webbplatser och lagrings slut punkter.
 

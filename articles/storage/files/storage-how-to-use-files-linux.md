@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98673695"
 ---
 # <a name="use-azure-files-with-linux"></a>Använda Azure Files med Linux
@@ -250,22 +250,22 @@ Från och med linux kernel 4,18, anropar SMB-kernel-modulen, som kallas `cifs` f
 
 | Distribution | Kan inaktivera SMB 1 |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE skottår 15,0 | No |
-| openSUSE skottår 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15,1 | No |
+| Ubuntu 14.04-16.04 | Inga |
+| Ubuntu 18.04 | Ja |
+| Ubuntu 19.04 + | Ja |
+| Debian 8-9 | Inga |
+| Debian 10 + | Ja |
+| Fedora 29 + | Ja |
+| CentOS 7 | Inga | 
+| CentOS 8 + | Ja |
+| Red Hat Enterprise Linux 6. x-7. x | Inga |
+| Red Hat Enterprise Linux 8 + | Ja |
+| openSUSE skottår 15,0 | Inga |
+| openSUSE skottår 15.1 + | Ja |
+| openSUSE Tumbleweed | Ja |
+| SUSE Linux Enterprise 11. x-12. x | Inga |
+| SUSE Linux Enterprise 15 | Inga |
+| SUSE Linux Enterprise 15,1 | Inga |
 
 Du kan kontrol lera om din Linux-distribution stöder `disable_legacy_dialects` modulen modul via följande kommando.
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/11/2021
 ms.author: yelevin
 ms.openlocfilehash: ea571f9b033ba82709a13c6d32649f3228ee04b1
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98798500"
 ---
 # <a name="manage-watchlists-in-azure-sentinel-using-rest-api"></a>Hantera watchlists i Azure Sentinel med REST API
@@ -33,7 +33,7 @@ Azure Sentinel, som bygger delvis på Azure Monitor Log Analytics, gör att du k
 
 Följande är de vanliga URI-parametrarna för alla visnings lista API-kommandon:
 
-| Name | I | Krävs | Typ | Description |
+| Name | I | Krävs | Typ | Beskrivning |
 |-|-|-|-|-|
 | **SubscriptionId** | path | ja | GUID | ID för Azure-prenumeration |
 | **ResourceGroupName** | path | ja | sträng | namnet på resurs gruppen i prenumerationen |
@@ -58,7 +58,7 @@ Det här kommandot hämtar alla watchlists som är kopplade till en arbets yta, 
 
 ### <a name="responses"></a>Svar
 
-| Statuskod | Själva svaret | Description |
+| Statuskod | Själva svaret | Beskrivning |
 |-|-|-|
 | 200/OK | Lista över befintliga watchlists eller tomt om inga visnings lista hittades |  |
 | 400/Felaktig begäran |  | Felaktig syntax för begäran, ogiltig parameter för begäran... |
@@ -78,7 +78,7 @@ Det här kommandot hämtar en speciell visnings lista som är associerad med en 
 
 ### <a name="responses"></a>Svar
 
-| Statuskod | Själva svaret | Description |
+| Statuskod | Själva svaret | Beskrivning |
 |-|-|-|
 | 200/OK | Den begärda visnings lista |  |
 | 400/Felaktig begäran |  | Felaktig syntax för begäran, ogiltig parameter för begäran... |
@@ -116,7 +116,7 @@ Här är ett exempel på en begär ande text för en visnings lista Create-begä
 
 ### <a name="responses"></a>Svar
 
-| Statuskod | Själva svaret | Description |
+| Statuskod | Själva svaret | Beskrivning |
 |-|-|-|
 | 200/OK | Visnings lista som skapats av begäran, utan objekt |  |
 | 400/Felaktig begäran |  | Felaktig syntax för begäran, ogiltig parameter för begäran... |
@@ -137,7 +137,7 @@ Det här kommandot tar bort en visnings lista och dess objekt.
 
 ### <a name="responses"></a>Svar
 
-| Statuskod | Själva svaret | Description |
+| Statuskod | Själva svaret | Beskrivning |
 |-|-|-|
 | 200/OK | Tomt svars text |  |
 | 204/inget innehåll | Tomt svars text | Inget borttaget |
@@ -176,7 +176,7 @@ Här är ett exempel på en begär ande text för en visnings lista-artikel beg�
 
 ### <a name="responses"></a>Svar
 
-| Statuskod | Själva svaret | Description |
+| Statuskod | Själva svaret | Beskrivning |
 |-|-|-|
 | 200/OK | Visnings lista-objektet som skapades eller uppdaterades av begäran |  |
 | 400/Felaktig begäran |  | Felaktig syntax för begäran, ogiltig parameter för begäran... |
@@ -197,7 +197,7 @@ Det här kommandot tar bort ett befintligt visnings lista-objekt.
 
 ### <a name="responses"></a>Svar
 
-| Statuskod | Själva svaret | Description |
+| Statuskod | Själva svaret | Beskrivning |
 |-|-|-|
 | 200/OK | Tomt svars text |  |
 | 204/inget innehåll | Tomt svars text | Inget borttaget |

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789810"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Självstudie: Lägg till en fasett-navigering med .NET SDK
@@ -35,7 +35,7 @@ En färdig version av koden i den här självstudien finns i följande projekt:
 
 * [4 – Lägg till aspekt – navigering (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/4-add-facet-navigation)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [GitHub-lösning (2a-Add-Siding)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) . Projektet kan antingen vara din egen version som skapats från den föregående själv studie kursen eller en kopia från GitHub.
 
@@ -87,7 +87,7 @@ För att en modell egenskap ska finnas i en aspekt-sökning måste den märkas m
     }
     ```
 
-1. Vi kommer inte att ändra några taggar som en del av den här självstudien, så Stäng hotel.cs-filen utan ändringar.
+1. Vi kommer inte att ändra några taggar som en del av den här självstudien, så Stäng filen hotell. cs oförändrad.
 
     > [!Note]
     > En aspekts ökning genererar ett fel om ett fält som begärs i sökningen inte är korrekt taggat.
@@ -102,7 +102,7 @@ Det är kontrollantens jobb att skicka listor över ansikte till vyn. Om du vill
 
 ### <a name="add-filter-strings-to-the-searchdata-model"></a>Lägg till filter strängar i SearchData-modellen
 
-1. Öppna filen SearchData.cs och Lägg till sträng egenskaper till **SearchData** -klassen för att innehålla fasett filter strängarna.
+1. Öppna filen SearchData. CS och Lägg till sträng egenskaper till **SearchData** -klassen för att innehålla fasett filter strängarna.
 
     ```cs
     public string categoryFilter { get; set; }

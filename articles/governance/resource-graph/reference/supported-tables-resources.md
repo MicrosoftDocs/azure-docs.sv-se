@@ -5,10 +5,10 @@ ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: generated
 ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102633775"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Resurs diagram tabell och referens för resurs typ i Azure
@@ -91,7 +91,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Hive. strömma/tjänster (Hive-direktuppspelning)
 - Incapsula. WAF/konton
 - LiveArena. broadcast/tjänster (LiveArena broadcast)
-- MailJet. email/Services (MailJet e-posttjänst)
+- Mailjet.Email/services (MailJet email service)
 - Microsoft. AAD/domainServices (Azure AD Domain Services)
 - Microsoft. aadiam/azureadmetrics
 - Microsoft. aadiam/privateLinkForAzureAD (privat länk för Azure AD)
@@ -639,7 +639,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - providers. test/statelessresources
 - RavenHq. db/databaser (RavenHQ)
 - Raygun. CrashReporting/Apps (Raygun)
-- SendGrid. e-post/konton (SendGrid-konton)
+- Sendgrid.Email/accounts (SendGrid-konton)
 - Spark post. Basic/Services (Spark post)
 - Stackify. retrace/service (Stackify)
 - test. sko/testresources

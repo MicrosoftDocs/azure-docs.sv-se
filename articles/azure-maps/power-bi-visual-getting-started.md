@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904711"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Komma igång med Azure Maps Power BI visuella objektet
 
-<Token>**gäller för:** ![ Grön bock markering. ](media/power-bi-visual/yes.png) Power BI-tjänst för **_konsumenter_* _ ![ grön bock markering. ](media/power-bi-visual/yes.png) Power BI-tjänst för designers & utvecklare ![ grön bock markering. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X som anger Nej. ](media/power-bi-visual/no.png) Kräver Pro-eller Premium-licens</Token>
+<Token>**gäller för:** ![ Grön bock markering. ](media/power-bi-visual/yes.png) Power BI-tjänst för **_konsumenter_** ![ grön bock markering. ](media/power-bi-visual/yes.png) Power BI-tjänst för designers & utvecklare ![ grön bock markering. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X som anger Nej. ](media/power-bi-visual/no.png) Kräver Pro-eller Premium-licens</Token>
 
 Den här artikeln visar hur du använder Microsoft Azure Maps-visualisering för Power BI.
 
@@ -47,9 +47,9 @@ Mer information om sekretess och användnings villkor som rör Azure Maps visuel
 
 ## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Funktioner och krav för Azure Maps Visual (för hands version)
 
-Det finns några överväganden och krav för _ *Azure Maps** visualisering. :
+Det finns några överväganden och krav för **Azure Maps** visualisering. :
 
--   **Azure Maps** visualiseringen (för hands version) måste vara aktive rad i Power BI Desktop. Om du vill aktivera **Azure Maps** visualisering väljer du alternativ för **fil** &gt; **och inställningar** för &gt; **Options** &gt; för **hands versions funktioner** och markerar sedan kryss rutan **Azure Maps visuella** objekt. Om Azure Maps visualiseringen inte är tillgänglig när du har gjort det, är det troligt att en klient administratörs växel i administrations portalen måste vara aktive rad.
+-   **Azure Maps** visualiseringen (för hands version) måste vara aktive rad i Power BI Desktop. Om du vill aktivera **Azure Maps** visualisering väljer du alternativ för **fil** &gt; **och inställningar** för &gt;  &gt; för **hands versions funktioner** och markerar sedan kryss rutan **Azure Maps visuella** objekt. Om Azure Maps visualiseringen inte är tillgänglig när du har gjort det, är det troligt att en klient administratörs växel i administrations portalen måste vara aktive rad.
 -   Data uppsättningen måste innehålla fält som innehåller information om **latitud** och **longitud** . Den här koden kommer att läggas till i en framtida uppdatering.
 -   Den inbyggda förklarings kontrollen för Power BI visas inte i den här för hands versionen. Den kommer att läggas till i en framtida uppdatering.
 

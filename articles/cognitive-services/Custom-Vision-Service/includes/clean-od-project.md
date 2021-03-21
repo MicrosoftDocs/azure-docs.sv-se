@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 179e283b1640b49487c38f900de7651226794c65
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97582617"
 ---
 Om du vill implementera ett eget objektidentifieringsprojekt (eller prova ett projekt för [bildklassificering](../quickstarts/image-classification.md) istället) kan du vilja ta bort projektet för gaffel-/saxidentifiering (fork/scissors) från det här exemplet. Med en kostnads fri prenumeration kan du använda två Custom Vision projekt.

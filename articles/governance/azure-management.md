@@ -4,10 +4,10 @@ description: Översikt över hanterings områden för Azure-program och-resurser
 ms.date: 02/05/2021
 ms.topic: overview
 ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99593933"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Vad är Azures hanterings områden?
@@ -42,7 +42,7 @@ Styrning i Azure implementeras främst genom två tjänster. Med [Azure policy](
 Den här funktionen håller resurserna i överensstämmelse med företagets standarder.
 Med [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) kan du spåra moln användning och utgifter för dina Azure-resurser och andra moln leverantörer.
 
-## <a name="secure"></a>Skydda
+## <a name="secure"></a>Säkerhet
 
 Hantera säkerheten för dina resurser och data. Ett säkerhets program omfattar att utvärdera hot, samla in och analysera data och efterlevnad av dina program och resurser. Säkerhets övervakning och hot analys tillhandahålls av [Azure Security Center](../security-center/security-center-introduction.md), som innehåller enhetlig säkerhets hantering och Avancerat skydd för arbets belastningar i hybrid moln. Mer information och vägledning om hur du skyddar Azure-resurser finns i [Introduktion till Azure-säkerhet](../security/fundamentals/overview.md) .
 

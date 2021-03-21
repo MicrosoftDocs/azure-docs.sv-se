@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98805300"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Autentisera en hanterad identitet med Azure Active Directory för att få åtkomst till Event Hubs resurser
@@ -57,8 +57,8 @@ Om du vill tilldela en roll till Event Hubs resurser navigerar du till resursen 
 1. I Azure Portal navigerar du till Event Hubs namn området och visar **översikten** för namn området. 
 1. Välj **Access Control (IAM)** på den vänstra menyn för att Visa inställningar för åtkomst kontroll för händelsehubben.
 1.  Välj fliken **roll tilldelningar** om du vill se en lista över roll tilldelningar.
-3.  Välj **Lägg till** och välj sedan **Lägg till roll tilldelning** _.
-4.  På sidan _ *Lägg till roll tilldelning** följer du dessa steg:
+3.  Välj **Lägg till** och välj sedan * * Lägg till roll tilldelning * * *.
+4.  På sidan **Lägg till roll tilldelning** följer du dessa steg:
     1. För **roll** väljer du den Event Hubs roll som du vill tilldela. I det här exemplet är det **Azure Event Hubs data ägare**.
     1. I fältet **tilldela åtkomst till väljer du** **App Service** under **systemtilldelad hanterad identitet**. 
     1. Välj den **prenumeration** där den hanterade identiteten för webbappen skapades.
