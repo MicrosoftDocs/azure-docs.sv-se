@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 869f46207b940521ee0b66b5afa9c6e2718ab04f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012484"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594486"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Ändra storlek på en kapacitetspool eller en volym
 Du kan ändra storleken på en kapacitets uppsättning eller en volym om det behövs. 
@@ -39,6 +39,21 @@ Du kan ändra storlek på en volym om det behövs. En volyms kapacitetsförbrukn
 1. Från bladet hantera NetApp-konton klickar du på **volymer**. 
 2. Högerklicka på namnet på den volym som du vill ändra storlek på eller klicka på "..." ikonen i slutet av volymens rad för att Visa snabb menyn.
 3. Använd snabb meny alternativen för att ändra storlek på eller ta bort volymen.
+
+## <a name="resize-a-cross-region-replication-destination-volume"></a>Ändra storlek på en mål volym för replikering mellan regioner 
+
+I en replikeringsrelation [mellan regioner](cross-region-replication-introduction.md) ändras storleken på mål volymen automatiskt baserat på käll volymens storlek. Därför behöver du inte ändra storlek på mål volymen separat. Det här beteendet för automatisk storleks ändring är tillämpligt när volymerna finns i en aktiv replikeringsrelation, eller när replikeringen är bruten vid [omsynkroniseringen](cross-region-replication-manage-disaster-recovery.md#resync-replication). 
+
+I följande tabell beskrivs hur du ändrar storlek på mål volymen baserat på [speglings status](cross-region-replication-display-health-status.md):
+
+|  Speglings tillstånd  | Storleks ändrings beteende för mål volym |
+|-|-|
+| *Speglad* | När mål volymen har initierats och är redo att ta emot speglings uppdateringar ändrar storleken på käll volymen automatiskt storlek på mål volymerna. |
+| *Brutit* | När du ändrar storlek på käll volymen och speglings statusen är *bruten* ändras storleken på mål volymen automatiskt med [omsynkroniseringen](cross-region-replication-manage-disaster-recovery.md#resync-replication).  |
+| *Avinitierad* | När du ändrar storlek på käll volymen och speglings statusen fortfarande är *avinitierad* måste du göra en ändring av mål volymens storlek manuellt. Därför rekommenderar vi att du väntar tills initieringen har slutförts (det vill säga när speglings statusen blir *speglad*) för att ändra storlek på käll volymen. | 
+
+> [!IMPORTANT]
+> Se till att du har tillräckligt med utrymme i poolerna för kapacitet för både käll-och mål volymerna för replikering över flera regioner. När du ändrar storlek på käll volymen ändras storleken på mål volymen automatiskt. Men om den kapacitets pool som är värd för mål volymen inte har tillräckligt med utrymme, går det inte att ändra storlek på både käll-och mål volymerna.
 
 ## <a name="next-steps"></a>Nästa steg
 

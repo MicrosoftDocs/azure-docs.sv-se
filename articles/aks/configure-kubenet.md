@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 639bed3dcd8f3f443b73f51efb60e7c8aeaa00a0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a32b06163f446fe0df7f1f1581d741d889cf8e9f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504226"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583521"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Använda Kubernetes-nätverk med dina egna IP-adressintervall i Azure Kubernetes service (AKS)
 
@@ -128,10 +128,6 @@ az ad sp create-for-rbac --skip-assignment
 ```
 
 Följande exempel på utdata visar programmets ID och lösen ord för tjänstens huvud namn. Dessa värden används i ytterligare steg för att tilldela en roll till tjänstens huvud namn och sedan skapa AKS-klustret:
-
-```azurecli
-az ad sp create-for-rbac --skip-assignment
-```
 
 ```output
 {

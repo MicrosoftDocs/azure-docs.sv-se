@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93e9d9a552ab1bff16ca15d6bb11faeb5d47a503
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c27916afb0d199bcb32db9d43202e552a4a04f53
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204451"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593143"
 ---
 # <a name="monitor-cloud-tiering"></a>Övervaka moln nivåer
 Det finns två sätt som du kan använda för att övervaka din princip för moln nivåer: bladet egenskaper för Server slut punkt och Azure Monitor.
@@ -55,7 +55,7 @@ Om du vill ha mer information om vad du vill att diagrammen ska visa, kan du öv
  
 Mer information om olika typer av mått för Azure File Sync och hur du använder dem finns i [övervaka Azure File Sync](storage-sync-files-monitoring.md).
 
-Mer information om hur du använder mått finns i [komma igång med Azure Metrics Explorer.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started).
+Mer information om hur du använder mått finns i [komma igång med Azure Metrics Explorer.](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Om du vill ändra din princip för moln nivåer, se [Välj principer för moln nivåer](storage-sync-choose-cloud-tiering-policies.md).
 

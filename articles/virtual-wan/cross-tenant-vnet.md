@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: c49a85c71c9b877be7e143f5caf27dc307fe0c12
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381277"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585425"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Anslut virtuella nätverk för flera innehavare till en virtuell WAN-hubb
 
@@ -90,7 +90,7 @@ I följande steg växlar du mellan kontexten för de två prenumerationerna när
 1. Anslut VNet till hubben.
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $remote
    ```
 
 1. Du kan visa den nya anslutningen antingen i PowerShell eller i Azure Portal.
@@ -98,7 +98,7 @@ I följande steg växlar du mellan kontexten för de två prenumerationerna när
    * **PowerShell:** Metadata från den nyligen utformade anslutningen visas i PowerShell-konsolen om anslutningen har skapats.
    * **Azure Portal:** Navigera till den virtuella hubben, **anslutnings > Virtual Network anslutningar**. Du kan visa pekaren för anslutningen. Om du vill se den faktiska resursen behöver du rätt behörighet.
    
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Felsökning
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Telefonbaserad
 
 * Kontrol lera att metadata i $remote (från föregående [avsnitt](#connect)) matchar informationen från Azure Portal.
 * Du kan kontrol lera behörigheter med hjälp av IAM-inställningarna i resurs gruppen för fjärran sluten klient eller använda Azure PowerShell kommandon (Get-AzSubscription).

@@ -7,10 +7,10 @@ ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
 ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705168"
 ---
 # <a name="system-requirements"></a>Systemkrav
@@ -67,7 +67,7 @@ Information om fel sökning av nätverks problem finns i [fel söknings guiden](
 
 Virtuella datorer för fjärrrendering använder delade IP-adresser från följande IP-intervall:
 
-| Namn             | Region         | IP-prefix         |
+| Name             | Region         | IP-prefix         |
 |------------------|:---------------|:------------------|
 | Australien, östra   | australienöstra  | 20.53.44.240/28   |
 | East US          | USA, östra         | 20.62.129.224/28  |

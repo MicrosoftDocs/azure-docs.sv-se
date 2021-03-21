@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712223"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Beräknings-och lagrings alternativ i Azure Database for PostgreSQL-flexibel Server
@@ -178,7 +178,7 @@ När du ändrar antalet virtuella kärnor eller beräknings nivån startas serve
 
 Att ändra kvarhållningsperioden för säkerhets kopior är en online-åtgärd.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/PostgreSQL/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) månads kostnaden på fliken **pris nivå** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer du **Lägg till objekt**, expanderar kategorin **databaser** och väljer **Azure Database for PostgreSQL** för att anpassa alternativen.
 

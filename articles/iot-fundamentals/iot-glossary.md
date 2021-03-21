@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 3e8a2ac93e9fea6ad045030759be894617557658
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103022121"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670264"
 ---
 # <a name="glossary-of-iot-terms"></a>Ord lista med IoT-termer
 
@@ -24,13 +24,35 @@ Den här artikeln innehåller några av de vanliga termer som används i IoT-art
 
 [Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) är ett av de meddelande protokoll som [IoT Hub](#iot-hub) stöder för att kommunicera med enheter. Mer information om de meddelande protokoll som IoT Hub stöder finns i [skicka och ta emot meddelanden med IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
 
+### <a name="allocation-policy"></a>Resursallokeringsprincip
+
+I [enhets etablerings tjänsten](#device-provisioning-service)avgör allokeringsregeln hur tjänsten tilldelar enheter till [länkade IoT-hubbar](#linked-iot-hub).
+
+### <a name="attestation-mechanism"></a>Mekanism för attestering
+
+I [Device Provisioning-tjänsten](#device-provisioning-service)är mekanismen för attestering den metod som används för att bekräfta en enhets identitet. Mekanismen för attestering har kon figurer ATS vid [registrering](#enrollment).
+
+Mekanismer för attestering inkluderar 509-certifikat, betrodda plattformar och symmetriska nycklar.
+
+### <a name="automatic-deployment"></a>Automatisk distribution
+
+I IoT Edge konfigurerar en automatisk distribution en mål uppsättning med IoT Edge enheter för att köra en uppsättning IoT Edge-moduler. Varje distribution säkerställer kontinuerligt att alla enheter som matchar dess mål villkor kör den angivna uppsättningen moduler, även när nya enheter skapas eller ändras för att matcha mål villkoret. Varje IoT Edge enhet tar bara emot den högsta prioritets distributionen vars mål villkor är uppfyllda. Läs mer om [IoT Edge automatisk distribution](../iot-edge/module-deployment-monitoring.md).
+
+### <a name="automatic-device-configuration"></a>Automatisk enhets konfiguration
+
+Server delen av lösningen kan använda [automatiska enhets konfigurationer](../iot-hub/iot-hub-automatic-device-management.md) för att tilldela önskade egenskaper till en uppsättning [enheter, dubbla](#device-twin) och rapportera status med hjälp av system mått och anpassade mått.
+
 ### <a name="automatic-device-management"></a>Automatisk enhets hantering
 
 Automatisk enhets hantering i Azure IoT Hub automatiserar många av de repetitiva och komplexa uppgifterna i hanteringen av stora enhets flottor över hela livs cykeln. Med automatisk enhets hantering kan du rikta en uppsättning enheter baserat på deras egenskaper, definiera en önskad konfiguration och låta IoT Hub uppdatera enheter när de kommer till omfånget.  Består av [Automatisk enhets konfiguration](../iot-hub/iot-hub-automatic-device-management.md) och [IoT Edge automatiska distributioner](../iot-edge/how-to-deploy-at-scale.md).
 
-### <a name="automatic-device-configuration"></a>Automatisk enhets konfiguration
+### <a name="azure-digital-twins"></a>Azure Digital Twins
 
-Server delen av lösningen kan använda [automatiska enhets konfigurationer](../iot-hub/iot-hub-automatic-device-management.md) för att tilldela önskade egenskaper till en uppsättning [enheter, dubbla](#device-twin) och rapportera status med hjälp av system mått och anpassade mått. 
+Azure Digitals är ett PaaS-erbjudande (Platform as a Service) för att skapa digitala representationer av verkliga saker, platser, affärs processer och människor. Skapa kunskaps diagram som representerar hela miljöer och Använd dem för att få insikter om bättre produkter, optimera drift och kostnader och skapa revolutionerande kund upplevelser. Mer information finns i [Azure Digital-dubbla](../digital-twins/index.yml).
+
+### <a name="azure-digital-twins-instance"></a>Azure Digitals dubbla instanser
+
+En enda instans av Azure Digitals dubbla tjänster i en kunds prenumeration. Även om [Azures digitala dubbla](#azure-digital-twins) är en helhet, är din Azure Digital- **instansen** av Azure Digitals dubblare-resurs.
 
 ### <a name="azure-iot-device-sdks"></a>SDK: er för Azure IoT-enheter
 
@@ -56,7 +78,7 @@ I samband med [IoT Hub](#iot-hub)är en backend-app en app som ansluter till en 
 
 ### <a name="built-in-endpoints"></a>Inbyggda slut punkter
 
-Varje IoT-hubb innehåller en inbyggd [slut punkt](../iot-hub/iot-hub-devguide-endpoints.md) som är kompatibel med Event Hub. Du kan använda valfri mekanism som fungerar med Event Hubs för att läsa meddelanden från enheten till molnet från den här slut punkten.
+En typ av [slut punkt](#endpoint) som är inbyggd i IoT Hub. Varje IoT-hubb innehåller en inbyggd [slut punkt](../iot-hub/iot-hub-devguide-endpoints.md) som är kompatibel med Event Hub. Du kan använda valfri mekanism som fungerar med Event Hubs för att läsa meddelanden från enheten till molnet från den här slut punkten.
 
 ## <a name="c"></a>C
 
@@ -74,7 +96,7 @@ I IoT Plug and Play representerar kommandon som definierats i ett [gränssnitt](
 
 ### <a name="component"></a>Komponent
 
-I IoT Plug and Play kan du med komponenter bygga ett modell [gränssnitt](#interface) som en sammansättning av andra gränssnitt. En [enhets modell](#device-model) kan kombinera flera gränssnitt som komponenter. En modell kan till exempel innehålla en växel komponent och en termostat-komponent. Flera komponenter i en modell kan också använda samma gränssnitts typ. En modell kan till exempel innehålla två termostat-komponenter.
+I IoT Plug and Play och Azure Digitals dubbla delar kan du med komponenter bygga ett modell [gränssnitt](#interface) som en sammansättning av andra gränssnitt. En [enhets modell](#device-model) kan kombinera flera gränssnitt som komponenter. En modell kan till exempel innehålla en växel komponent och en termostat-komponent. Flera komponenter i en modell kan också använda samma gränssnitts typ. En modell kan till exempel innehålla två termostat-komponenter.
 
 ### <a name="configuration"></a>Konfiguration
 
@@ -106,21 +128,9 @@ Ett data punkts meddelande är ett [enhets-till-moln-](#device-to-cloud) meddela
 
 I IoT Plug and Play har alla [enhets modeller](#device-model) en standard komponent. En enkel enhets modell har bara en standard komponent – sådan en modell kallas även ingen komponent enhet. En mer komplex modell har flera komponenter som är kapslade under standard komponenten.
 
-### <a name="device-certification"></a>Enhetscertifiering
+### <a name="deployment-manifest"></a>Distributionsmanifest
 
-IoT Plug and Play enhets certifierings programmet verifierar att en enhet uppfyller IoT-Plug and Play certifierings krav. Du kan lägga till en certifierad enhet i [katalogen för offentlig certifierad för Azure IoT-enheter](https://aka.ms/devicecatalog).
-
-### <a name="device-model"></a>Enhetsmodell
-
-En enhets modell använder det [digitala dubbla definitions språket](#digital-twins-definition-language) för att beskriva funktionerna i en IoT plug and Play-enhet. En enkel enhets modell använder ett enda gränssnitt för att beskriva enhetens funktioner. En mer komplex enhets modell innehåller flera komponenter, som var och en beskriver en uppsättning funktioner. Läs mer i [IoT plug and Play-komponenter i modeller](../iot-pnp/concepts-components.md).
-
-### <a name="device-builder"></a>Enhets verktyg
-
-En Device Builder använder en [enhets modell](#device-model) och [gränssnitt](#interface) när du implementerar kod som ska köras på en [IoT plug and Play-enhet](#iot-plug-and-play-device). Enhets byggare använder vanligt vis en av [Azure IoT-enhetens SDK](#azure-iot-device-sdks) : er för att implementera enhets klienten.
-
-### <a name="device-modeling"></a>Enhets modellering
-
-Ett [Device Builder](#device-builder) -eller [modul Builder](#module-builder)använder det [digitala dubbla definitions språket](#digital-twins-definition-language) för att modellera funktionerna i en [IoT plug and Play-enhet](#iot-plug-and-play-device). Ett [Solution Builder](#solution-builder) kan konfigurera en IoT-lösning från modellen.
+I [IoT Edge](#iot-edge)är distributions manifestet ett JSON-dokument som innehåller den information som ska kopieras i en eller flera IoT Edge enheters modul dubbla (s) för att distribuera en uppsättning moduler, vägar och önskade egenskaper för associerade moduler.
 
 ### <a name="desired-configuration"></a>Önskad konfiguration
 
@@ -130,10 +140,6 @@ I kontexten för en [enhet](../iot-hub/iot-hub-devguide-device-twins.md), refere
 
 I kontexten för en [enhet](../iot-hub/iot-hub-devguide-device-twins.md), är önskade egenskaper ett underavsnitt av den enhet som används med [rapporterade egenskaper](#reported-properties) för att synkronisera enhetens konfiguration eller villkor. Önskade egenskaper kan bara ställas in av en [backend-app](#back-end-app) och observeras av [enhets appen](#device-app).
 
-### <a name="device-to-cloud"></a>Enhet till moln
-
-Avser meddelanden som skickas från en ansluten enhet till [IoT Hub](#iot-hub). Dessa meddelanden kan vara [data punkts-](#data-point-message) eller [interaktiva](#interactive-message) meddelanden. Mer information finns i [skicka och ta emot meddelanden med IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
-
 ### <a name="device"></a>Enhet
 
 I IoT-kontexten är en enhet vanligt vis en småskalig, fristående data behandlings enhet som kan samla in data eller styra andra enheter. En enhet kan till exempel vara en miljö övervaknings enhet eller en kontrollant för vatten-och ventilations system i en växthus. [Enhets katalogen](https://catalog.azureiotsolutions.com/) innehåller en lista över maskin varu enheter som är certifierade för att fungera med [IoT Hub](#iot-hub).
@@ -141,6 +147,14 @@ I IoT-kontexten är en enhet vanligt vis en småskalig, fristående data behandl
 ### <a name="device-app"></a>Enhetsapp
 
 En enhets App körs på [enheten](#device) och hanterar kommunikationen med [IoT Hub](#iot-hub). Normalt använder du en av [Azure IoT-enhetens SDK](#azure-iot-device-sdks) : er när du implementerar en enhets app. I många av IoT-självstudierna använder du en [simulerad enhet](#simulated-device) för bekvämlighet.
+
+### <a name="device-builder"></a>Enhets verktyg
+
+En Device Builder använder en [enhets modell](#device-model) och [gränssnitt](#interface) när du implementerar kod som ska köras på en [IoT plug and Play-enhet](#iot-plug-and-play-device). Enhets byggare använder vanligt vis en av [Azure IoT-enhetens SDK](#azure-iot-device-sdks) : er för att implementera enhets klienten.
+
+### <a name="device-certification"></a>Enhetscertifiering
+
+IoT Plug and Play enhets certifierings programmet verifierar att en enhet uppfyller IoT-Plug and Play certifierings krav. Du kan lägga till en certifierad enhet i [katalogen för offentlig certifierad för Azure IoT-enheter](https://aka.ms/devicecatalog).
 
 ### <a name="device-condition"></a>Enhets villkor
 
@@ -152,7 +166,7 @@ Enhets data refererar till de enhets data som lagras i IoT Hub [identitets regis
 
 ### <a name="device-identity"></a>Enhetsidentitet
 
-Enhets identiteten är den unika identifierare som tilldelats varje enhet som är registrerad i [identitets registret](#identity-registry).
+Enhets identiteten (eller enhets-ID) är den unika identifierare som tilldelats varje enhet som är registrerad i IoT Hub [identitets registret](#identity-registry).
 
 ### <a name="device-management"></a>Enhetshantering
 
@@ -162,47 +176,87 @@ Enhets hantering omfattar hela livs cykeln som är kopplad till hanteringen av e
 
 [IoT Hub](#iot-hub) möjliggör vanliga enhets hanterings mönster, inklusive omstart, återställning av fabriks uppdateringar och uppdatering av inbyggd program vara på dina enheter.
 
-### <a name="device-rest-api"></a>Enhets REST API
+### <a name="device-model"></a>Enhetsmodell
 
-Du kan använda [enhets REST API](/rest/api/iothub/device) från en enhet för att skicka meddelanden från enheten till molnet till en IoT-hubb och ta emot meddelanden från [molnet till enheten](#cloud-to-device) från en IoT-hubb. Normalt bör du använda en av de högre [enhets-SDK: erna](#azure-iot-device-sdks) som visas i självstudierna för IoT Hub.
+En enhets modell är en typ av [modell](#model) som använder det [digitala dubbla definitions språket](#digital-twins-definition-language-dtdl) för att beskriva funktionerna i en IoT plug and Play-enhet. En enkel enhets modell använder ett enda gränssnitt för att beskriva enhetens funktioner. En mer komplex enhets modell innehåller flera komponenter, som var och en beskriver en uppsättning funktioner. Läs mer i [IoT plug and Play-komponenter i modeller](../iot-pnp/concepts-components.md).
+
+### <a name="device-modeling"></a>Enhets modellering
+
+Ett [Device Builder](#device-builder) -eller [modul Builder](#module-builder)använder det [digitala dubbla definitions språket](#digital-twins-definition-language-dtdl) för att modellera funktionerna i en [IoT plug and Play-enhet](#iot-plug-and-play-device). Ett [Solution Builder](#solution-builder) kan konfigurera en IoT-lösning från modellen.
 
 ### <a name="device-provisioning"></a>Enhets etablering
 
 Enhets etablering är en process för att lägga till den ursprungliga [enhets informationen](#device-data) i butikerna i din lösning. Om du vill aktivera en ny enhet för att ansluta till navet måste du lägga till ett enhets-ID och nycklar i IoT Hub [identitets registret](#identity-registry). Som en del av etablerings processen kan du behöva initiera enhetsspecifika data i andra lösnings lager.
 
+### <a name="device-provisioning-service"></a>Device Provisioning Service
+
+IoT Hub Device Provisioning Service (DPS) är en hjälp tjänst för [IoT Hub](#iot-hub) som du använder för att konfigurera enhets etablering med noll touch till en angiven IoT Hub. Med DPS kan du etablera miljon tals enheter på ett säkert och skalbart sätt.
+
+### <a name="device-rest-api"></a>Enhets REST API
+
+Du kan använda [enhets REST API](/rest/api/iothub/device) från en enhet för att skicka meddelanden från enheten till molnet till en IoT-hubb och ta emot meddelanden från [molnet till enheten](#cloud-to-device) från en IoT-hubb. Normalt bör du använda en av de högre [enhets-SDK: erna](#azure-iot-device-sdks) som visas i självstudierna för IoT Hub.
+
 ### <a name="device-twin"></a>Enhetstvilling
 
 En enhet med dubbla är JSON-dokument som lagrar information om enhets tillstånd, till exempel metadata, konfigurationer och villkor. IoT Hub sparar en enhet för varje enhet som du etablerar i IoT Hub. Med enhets dubbla kan du synkronisera enhets villkor och konfigurationer mellan enheten och Server delen för lösningen. Du kan köra en fråga på enheten för att hitta vissa enheter och för att köra långvariga åtgärder.
 
-### <a name="direct-method"></a>Direkt metod
+### <a name="device-to-cloud"></a>Enhet till moln
 
-En [direkt metod](../iot-hub/iot-hub-devguide-direct-methods.md) är ett sätt för dig att utlösa en metod som ska köras på en enhet genom att anropa ett API i IoT Hub.
+Avser meddelanden som skickas från en ansluten enhet till [IoT Hub](#iot-hub). Dessa meddelanden kan vara [data punkts-](#data-point-message) eller [interaktiva](#interactive-message) meddelanden. Mer information finns i [skicka och ta emot meddelanden med IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
 
 ### <a name="digital-twin"></a>Digital, dubbel
 
-En digital, dubbla är en samling digitala data som representerar ett fysiskt objekt. Ändringar i det fysiska objektet visas i den digitala dubbla. I vissa fall kan du använda digitala dubbla för att ändra det fysiska objektet. [Azure Digitals dubbla tjänster](../digital-twins/index.yml) använder modeller som uttrycks i det [digitala utrymmet definitions språk](#digital-twins-definition-language) för att möjliggöra ett brett utbud av molnbaserade lösningar som använder digitala dubbla. En [IoT plug and Play](../iot-pnp/index.yml) -enhet har en digital, som beskrivs av en DTDL [enhets modell](#device-model).
+En digital, dubbla är en samling digitala data som representerar ett fysiskt objekt. Ändringar i det fysiska objektet visas i den digitala dubbla. I vissa fall kan du använda digitala dubbla för att ändra det fysiska objektet. [Azure Digitals dubbla tjänster](../digital-twins/index.yml) använder [modeller](#model) som uttrycks i [DTDL (Digitals definitions språk)](#digital-twins-definition-language-dtdl) för att representera digitala enheter av fysiska enheter eller abstrakta affärs koncept på högre nivå, vilket möjliggör en mängd olika molnbaserade digitala dubbla lösningar. En [IoT plug and Play](../iot-pnp/index.yml) -enhet har en digital, som beskrivs av en DTDL [enhets modell](#device-model).
 
 ### <a name="digital-twin-change-events"></a>Ändringshändelser för digitala tvillingar
 
 När en [iot plug and Play-enhet](#iot-plug-and-play-device) är ansluten till en IoT-hubb kan hubben använda sin routningsfunktioner för att skicka meddelanden om digitala dubbla ändringar. När ett [egenskaps](#properties) värde ändras på en enhet kan IoT Hub till exempel skicka ett meddelande till en slut punkt, till exempel en Event Hub.
 
-### <a name="digital-twins-definition-language"></a>Digitalt flätat definitions språk
-
-Ett språk för att beskriva modeller och gränssnitt för [IoT plug and Play-enheter](#iot-plug-and-play-device). Använd det [digitala flätade definitions språket version 2](https://github.com/Azure/opendigitaltwins-dtdl) för att beskriva [digitala dubbla](#digital-twin) funktioner och aktivera IoT-plattform och IoT-lösningar för att använda entiteternas semantik.
-
 ### <a name="digital-twin-route"></a>Digital, dubbel väg
 
-En väg som kon figurer ATS i en IoT-hubb för att leverera [digitala dubbla ändrings händelser](#digital-twin-change-events) till och slut punkt, till exempel en Event Hub.
+En väg som kon figurer ATS i en IoT-hubb för att leverera [digitala dubbla ändrings händelser](#digital-twin-change-events) till en slut punkt, till exempel en Event Hub.
+
+### <a name="digital-twins-definition-language-dtdl"></a>Digital Twins Definition Language (DTDL)
+
+Ett JSON-LD-språk för att beskriva [modeller](#model) och [gränssnitt](#interface) för [IoT plug and Play-enheter](#iot-plug-and-play-device) och [Azure Digitals dubbla](../digital-twins/index.yml) entiteter. Använd det [digitala flätade definitions språket version 2](https://github.com/Azure/opendigitaltwins-dtdl) för att beskriva [digitala dubbla](#digital-twin) funktioner och aktivera IoT-plattform och IoT-lösningar för att använda entiteternas semantik. Digital enformat definitions språk är ofta förkortat som DTDL.
+
+### <a name="direct-method"></a>Direkt metod
+
+En [direkt metod](../iot-hub/iot-hub-devguide-direct-methods.md) är ett sätt för dig att utlösa en metod som ska köras på en enhet genom att anropa ett API i IoT Hub.
+
+### <a name="downstream-services"></a>Underordnade tjänster
+
+En relativ term som beskriver tjänster som tar emot data från den aktuella kontexten. Om du till exempel tänker på Azures digitala dubbla, skulle [Time Series Insights](../time-series-insights/index.yml) anses vara en underordnad tjänst om du konfigurerar dina data till att flöda från Azure Digital-strömmar till Time Series Insights.
 
 ## <a name="e"></a>E
 
 ### <a name="endpoint"></a>Slutpunkt
 
+En namngiven representation av en data Dirigerings tjänst som kan ta emot data från andra tjänster.
+
 En IoT-hubb visar flera [slut punkter](../iot-hub/iot-hub-devguide-endpoints.md) som gör det möjligt för dina appar att ansluta till IoT Hub. Det finns enhets slut punkter som gör det möjligt för enheter att utföra åtgärder som att skicka meddelanden [från enheten till molnet](#device-to-cloud) och ta emot meddelanden från [molnet till enheten](#cloud-to-device) . Det finns slut punkter för hantering av tjänster som gör att [backend-appar](#back-end-app) kan utföra åtgärder som hantering av [enhetens identitet](#device-identity) och enhetens dubbla hantering. Det finns tjänstbaserade [inbyggda slut punkter](#built-in-endpoints) för att läsa meddelanden från enheten till molnet. Du kan skapa [anpassade slut punkter](#custom-endpoints) för att ta emot meddelanden från enheten till molnet som skickas av en [regel för routning](#routing-rules).
+
+### <a name="enrollment"></a>Registrering
+
+I [enhets etablerings tjänsten](#device-provisioning-service)är en registrering posten för enskilda enheter eller grupper av enheter som kan registreras med en [länkad IoT-hubb](#linked-iot-hub) genom autoetablering.
+
+### <a name="enrollment-group"></a>Registrerings grupp
+
+I [enhets etablerings tjänsten](#device-provisioning-service)identifierar en registrerings grupp en grupp av enheter som delar en mekanism för X. 509 eller symmetrisk nyckel [attestering](#attestation-mechanism).
+
+### <a name="event-handlers"></a>Händelsehanterare
+
+Detta kan referera till alla processer som utlöses av en händelses ankomst och utför vissa bearbetnings åtgärder. Ett sätt att skapa händelse hanterare är genom att lägga till händelse bearbetnings kod i en Azure-funktion och skicka data genom att använda [slut punkter](#endpoint) och [händelse dirigering](#event-routing).
 
 ### <a name="event-hub-compatible-endpoint"></a>Event Hub – kompatibel slut punkt
 
 Om du vill läsa meddelanden från [enheten till molnet](#device-to-cloud) som skickas till din IoT-hubb kan du ansluta till en slut punkt på hubben och använda valfri Event Hub-kompatibel metod för att läsa dessa meddelanden. Event Hub-kompatibla metoder omfattar användning av [Event Hubs SDK](../event-hubs/event-hubs-programming-guide.md) : er och [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
+
+### <a name="event-routing"></a>Händelsedirigering
+
+Processen för att skicka händelser och deras data från en enhet eller tjänst till [slut punkten](#endpoint) för en annan. 
+
+I IoT Hub kan du definiera [regler för routning](#routing-rules) som beskriver hur meddelanden ska skickas. I Azure Digitals dubbla, är händelse vägar entiteter som skapas för det här ändamålet. Azure Digitals sammanställda händelse vägar kan innehålla filter för att begränsa vilka typer av händelser som skickas till varje slut punkt.
 
 ## <a name="f"></a>F
 
@@ -216,11 +270,33 @@ Med en fält-Gateway kan du ansluta till enheter som inte kan ansluta direkt til
 
 En Gateway möjliggör anslutning för enheter som inte kan ansluta direkt till [IoT Hub](#iot-hub). Se även [Field Gateway](#field-gateway), [Cloud Gateway](#cloud-gateway)och [anpassad Gateway](#custom-gateway).
 
+### <a name="gateway-device"></a>Gateway-enhet
+
+En enhet är ett exempel på en [fält-Gateway](#field-gateway). En gateway-enhet kan vara en standard IoT- [enhet](#device) eller en [IoT Edge enhet](#iot-edge-device).
+
+En gateway-enhet möjliggör anslutning för underordnade enheter som inte kan ansluta direkt till [IoT Hub](#iot-hub).
+
+## <a name="h"></a>H
+
+### <a name="hardware-security-module"></a>Modul för maskin varu säkerhet
+
+En modul för maskin varu säkerhet (HSM) används för säker, maskinvarubaserad lagring av enhets hemligheter. Det är den säkraste formen av Secret Storage för en enhet. Både X. 509-certifikat och symmetriska nycklar kan lagras i en HSM. I [enhets etablerings tjänsten](#device-provisioning-service)kan en [mekanism för attestering](#attestation-mechanism) använda en HSM.
+
 ## <a name="i"></a>I
+
+### <a name="id-scope"></a>ID-omfång
+
+ID-omfånget är unikt som tilldelas en [tjänst för enhets etablerings tjänsten (DPS)](#device-provisioning-service) när den skapas.
+
+IoT Central program använder DPS-instanser och gör ID-omfånget tillgängligt via IoT Central gränssnittet.
 
 ### <a name="identity-registry"></a>Identitets register
 
 [Identitets registret](../iot-hub/iot-hub-devguide-identity-registry.md) är den inbyggda komponenten i en IoT-hubb som lagrar information om de enskilda enheter som tillåts att ansluta till en IoT-hubb.
+
+### <a name="individual-enrollment"></a>Individuell registrering
+
+I [enhets etablerings tjänsten](#device-provisioning-service)identifierar en enskild enhet som använder ett löv certifikat för X. 509 eller symmetrisk nyckel som en [mekanism för attestering](#attestation-mechanism).
 
 ### <a name="interactive-message"></a>Interaktivt meddelande
 
@@ -229,6 +305,8 @@ Ett interaktivt meddelande är ett [moln-till-enhet-](#cloud-to-device) meddelan
 ### <a name="interface"></a>Gränssnitt
 
 I IoT Plug and Play beskriver ett gränssnitt relaterade funktioner som implementeras av en [IoT plug and Play-enhet](#iot-plug-and-play-device) eller [digital](#digital-twin). Du kan återanvända gränssnitt mellan olika [enhets modeller](#device-model). När ett gränssnitt används i en enhets modell definierar den en [komponent](#component) i enheten. En enkel enhet innehåller bara ett standard gränssnitt.
+
+I Azure Digitals, kan *gränssnittet* användas för att referera till det översta kod objektet i en [DTDL](#digital-twins-definition-language-dtdl) -modell definition.
 
 ### <a name="iot-edge"></a>IoT Edge
 
@@ -240,59 +318,19 @@ Den del av IoT Edge runtime som ansvarar för att distribuera och övervaka modu
 
 ### <a name="iot-edge-device"></a>IoT Edge-enhet
 
-En IoT Edge enhet använder behållare [IoT Edge moduler](#iot-edge-module) för att köra Azure-tjänster, tjänster från tredje part eller din egen kod. [IoT Edge runtime](#iot-edge-runtime) hanterar modulerna på den IoT Edge enheten. Du kan fjärrövervaka och hantera en IoT Edge-enhet från molnet.
-
-### <a name="iot-edge-automatic-deployment"></a>IoT Edge automatisk distribution
-
-En IoT Edge automatisk distribution konfigurerar en uppsättning IoT Edge moduler som ska köras på en mål uppsättning IoT Edge enheter. Varje distribution säkerställer kontinuerligt att alla enheter som matchar dess mål villkor kör den angivna uppsättningen moduler, även när nya enheter skapas eller ändras för att matcha mål villkoret. Varje IoT Edge enhet tar bara emot den högsta prioritets distributionen vars mål villkor är uppfyllda. Läs mer om [IoT Edge automatisk distribution](../iot-edge/module-deployment-monitoring.md).
-
-### <a name="iot-edge-deployment-manifest"></a>Distributions manifest för IoT Edge
-
-Ett JSON-dokument som innehåller den information som ska kopieras i en eller flera IoT Edge enheters modul dubbla (s) för att distribuera en uppsättning moduler, vägar och önskade egenskaper för associerade moduler.
-
-### <a name="iot-edge-gateway-device"></a>IoT Edge gateway-enhet
-
-En IoT Edge enhet med underordnad enhet. Den underordnade enheten kan vara antingen IoT Edge eller inte IoT Edge enhet.
+En IoT Edge enhet använder behållare IoT Edge [moduler](#modules) för att köra Azure-tjänster, tjänster från tredje part eller din egen kod. [IoT Edge runtime](#iot-edge-runtime) hanterar modulerna på den IoT Edge enheten. Du kan fjärrövervaka och hantera en IoT Edge-enhet från molnet.
 
 ### <a name="iot-edge-hub"></a>IoT Edge hubb
 
 Den del av IoT Edge runtime som är ansvarig för att modulerna ska kunna kommunicera, strömmas (mot IoT Hub) och underordnad (från IoT Hub) kommunikation.
 
-### <a name="iot-edge-leaf-device"></a>IoT Edge löv enhet
-
-En IoT Edge enhet utan någon underordnad enhet.
-
-### <a name="iot-edge-module"></a>IoT Edge modul
-
-En IoT Edge modul är en Docker-behållare som du kan distribuera till IoT Edge enheter. Den utför en speciell uppgift, t. ex. inmatning av ett meddelande från en enhet, omvandling av ett meddelande eller att skicka ett meddelande till en IoT-hubb. Den kommunicerar med andra moduler och skickar data till IoT Edge Runtime. [Lär dig mer om krav och verktyg för att utveckla IoT Edge moduler](../iot-edge/module-development.md).
-
-### <a name="iot-edge-module-identity"></a>IoT Edge modulens identitet
-
-En post i IoT Hub modul identitets registret som innehåller information om de existenss-och säkerhets referenser som ska användas av en modul för att autentisera med en Edge Hub eller IoT Hub.
-
-### <a name="iot-edge-module-image"></a>Avbildning av IoT Edge modul
-
-Docker-avbildningen som används av IoT Edge runtime för att instansiera modul instanser.
-
-### <a name="iot-edge-module-twin"></a>IoT Edge modul, dubbla
-
-Ett JSON-dokument sparat i IoT Hub som lagrar Tillståndsinformation för en modul-instans.
-
-### <a name="iot-edge-priority"></a>IoT Edge prioritet
-
-När två IoT Edge distributioner riktar sig till samma enhet tillämpas distributionen med högre prioritet. Om två distributioner har samma prioritet tillämpas distributionen med det senare skapande datumet. Läs mer om [prioritet](../iot-edge/module-deployment-monitoring.md#priority).
-
 ### <a name="iot-edge-runtime"></a>IoT Edge-körning
 
 IoT Edge runtime innehåller allt som Microsoft distribuerar för att installeras på en IoT Edge enhet. Den innehåller Edge-agent, Edge Hub och IoT Edge Security daemon.
 
-### <a name="iot-edge-set-modules-to-a-single-device"></a>IoT Edge att ange moduler till en enda enhet
+### <a name="iot-extension-for-azure-cli"></a>IoT-tillägg för Azure CLI
 
-En åtgärd som kopierar innehållet i ett IoT Edge-manifest på en enhets modul, dubbel. Det underliggande API: t är en generisk tillämpnings konfiguration som bara tar ett IoT Edge manifest som inmatade.
-
-### <a name="iot-edge-target-condition"></a>IoT Edge mål villkor
-
-I en IoT Edge distribution är mål villkor alla booleska villkor på enhetens dubbla taggar för att välja mål enheter för distributionen, till exempel **tagg. Environment = Prod**. Mål villkoret utvärderas kontinuerligt för att omfatta alla nya enheter som uppfyller kraven eller tar bort enheter som inte längre fungerar. Läs mer om [mål villkor](../iot-edge/module-deployment-monitoring.md#target-condition)
+[IoT-tillägget för Azure CLI](https://github.com/Azure/azure-iot-cli-extension) är ett kommando rads verktyg för flera plattformar. Med verktyget kan du hantera dina enheter i [identitets registret](#identity-registry), skicka och ta emot meddelanden och filer från dina enheter och övervaka dina IoT Hub-åtgärder.
 
 ### <a name="iot-hub"></a>IoT Hub
 
@@ -310,25 +348,21 @@ Det [IoT Hub frågespråket](../iot-hub/iot-hub-devguide-query-language.md) är 
 
 Du kan använda [IoT Hub resurs REST API](/rest/api/iothub/iothubresource) för att hantera IoT-hubbar i din Azure-prenumeration som utför åtgärder som att skapa, uppdatera och ta bort hubbar.
 
-### <a name="iot-solution-accelerators"></a>IoT-lösningsacceleratorer
-
-Azure IoT Solution Accelerators-paket tillsammans med flera Azure-tjänster i lösningar. Med dessa lösningar kan du snabbt komma igång med implementeringar från slut punkt till slut punkt av vanliga IoT-scenarier. Mer information finns i [Vad är acceleratorer för Azure IoT-lösningar?](../iot-accelerators/about-iot-accelerators.md)
-
-### <a name="the-iot-extension-for-azure-cli"></a>IoT-tillägget för Azure CLI 
-
-[IoT-tillägget för Azure CLI](https://github.com/Azure/azure-iot-cli-extension) är ett kommando rads verktyg för flera plattformar. Med verktyget kan du hantera dina enheter i [identitets registret](#identity-registry), skicka och ta emot meddelanden och filer från dina enheter och övervaka dina IoT Hub-åtgärder.
-
 ### <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-brygga
 
 IoT Plug and Play Bridge är ett program med öppen källkod som gör att befintliga sensorer och kring utrustning som är anslutna till Windows-eller Linux-gatewayer kan anslutas som [IoT plug and Play-enheter](#iot-plug-and-play-device).
+
+### <a name="iot-plug-and-play-conventions"></a>Konventioner för IoT Plug and Play
+
+IoT Plug and Play- [enheter](#iot-plug-and-play-device) förväntas följa en uppsättning konventioner när de utbyter data med en lösning.
 
 ### <a name="iot-plug-and-play-device"></a>IoT Plug and Play-enhet
 
 En IoT Plug and Play-enhet är vanligt vis en småskalig, fristående data behandlings enhet som samlar in data eller styr andra enheter och som kör program vara eller inbyggd program vara som implementerar en [enhets modell](#device-model).  En IoT Plug and Play-enhet kan till exempel vara en miljö övervaknings enhet eller en kontrollant för ett bevattnings system med Smart-jordbruk. En IoT Plug and Play-enhet kan implementeras direkt eller som en IoT Edge modul. Du kan skriva en molnbaserad IoT-lösning i molnet för att kommando, kontrol lera och ta emot data från IoT Plug and Play-enheter.
 
-### <a name="iot-plug-and-play-conventions"></a>Konventioner för IoT Plug and Play
+### <a name="iot-solution-accelerators"></a>IoT-lösningsacceleratorer
 
-IoT Plug and Play- [enheter](#iot-plug-and-play-device) förväntas följa en uppsättning konventioner när de utbyter data med en lösning.
+Azure IoT Solution Accelerators-paket tillsammans med flera Azure-tjänster i lösningar. Med dessa lösningar kan du snabbt komma igång med implementeringar från slut punkt till slut punkt av vanliga IoT-scenarier. Mer information finns i [Vad är acceleratorer för Azure IoT-lösningar?](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="j"></a>J
 
@@ -336,11 +370,31 @@ IoT Plug and Play- [enheter](#iot-plug-and-play-device) förväntas följa en up
 
 Server delen av lösningen kan använda [jobb](../iot-hub/iot-hub-devguide-jobs.md) för att schemalägga och spåra aktiviteter på en uppsättning enheter som är registrerade i IoT Hub. Aktiviteterna omfattar att uppdatera enhetens dubbla [önskade egenskaper](#desired-properties), uppdatera enhetens dubbla [taggar](#tags)och anropa [direkta metoder](#direct-method). [IoT Hub](#iot-hub) använder också för att [Importera till och exportera](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities) från [identitets registret](#identity-registry).
 
+## <a name="l"></a>L
+
+### <a name="leaf-device"></a>Löv enhet
+
+I [IoT Edge](#iot-edge)är en löv enhet en enhet utan någon underordnad enhet.
+
+### <a name="lifecycle-event"></a>Livs cykel händelse
+
+I Azure Digitals, utlöses den här typen av händelse när ett data objekt, till exempel en digital, en relation eller en händelse hanterare, skapas eller tas bort från din Azure Digital-instansen.
+
+### <a name="linked-iot-hub"></a>Länkad IoT Hub
+
+[Enhets etablerings tjänsten (DPS)](#device-provisioning-service)kan etablera enheter till IoT-hubbar som har länkats till den. Genom att länka en IoT-hubb till en DPS-instans kan tjänsten registrera ett enhets-ID och ange den inledande konfigurationen på enheten.
+
 ## <a name="m"></a>M
+
+### <a name="model"></a>Modell
+
+En modell definierar en typ av entitet i din fysiska miljö, inklusive dess egenskaper, telemetrivärden, komponenter och ibland annan information. Modeller används för att skapa [digitala dubbla](#digital-twin) grupper som representerar fysiska objekt av den här typen. Modeller skrivs i det [digitala, dubbla definitions språket](#digital-twins-definition-language-dtdl).
+
+I [Azure Digitals dubbla tjänster](../digital-twins/index.yml)kan modeller definiera enheter eller abstrakta affärs koncept på högre nivå. I [IoT plug and Play](../iot-pnp/index.yml)används [enhets modeller](#device-model) för att beskriva enheter specifikt.
 
 ### <a name="model-id"></a>Modell-ID
 
-När en IoT Plug and Play-enhet ansluter till en IoT Hub skickas **modell-ID: t** för den [DTDL](#digital-twins-definition-language) -modell som den implementerar. Detta ID gör att lösningen kan hitta enhets modellen.
+När en IoT Plug and Play-enhet ansluter till en IoT Hub skickas **modell-ID: t** för den [DTDL](#digital-twins-definition-language-dtdl) -modell som den implementerar. Detta ID gör att lösningen kan hitta enhets modellen.
 
 ### <a name="model-repository"></a>Modelldatabas
 
@@ -354,19 +408,27 @@ Ett API för att hantera och interagera med modell databasen. Du kan till exempe
 
 En modul Builder använder en [enhets modell](#device-model) och [gränssnitt](#interface) när de implementerar kod som ska köras på en [IoT plug and Play-enhet](#iot-plug-and-play-device). Modul Builder implementerar koden som en modul eller en IoT Edge-modul som ska distribueras till IoT Edge runtime på en enhet.
 
+### <a name="module-identity"></a>Modulens identitet
+
+Modulens identitet är den unika identifierare som tilldelats varje modul som tillhör en enhet. Modulens identitet registreras också i [identitets registret](#identity-registry).
+
+Modulen identifierar information de säkerhets referenser som modulen använder för att autentisera med [IoT Hub](#iot-hub) eller, om det finns en IoT Edge-modul till [IoT Edge Hub](#iot-edge-hub).
+
+### <a name="module-image"></a>Modul avbildning
+
+Docker-avbildningen som [IoT Edge körning](#iot-edge-runtime) använder för att instansiera modul instanser.
+
+### <a name="module-twin"></a>Modul, delad
+
+På samma sätt som enhets dubbla är en modul i ett JSON-dokument som lagrar information om modulens tillstånd, till exempel metadata, konfigurationer och villkor. IoT Hub behåller en modul som är sammanflätad för varje modul identitet som du etablerar under en enhets identitet i din IoT-hubb. I modulen är det möjligt att synkronisera modulens villkor och konfigurationer mellan modulen och Server delen för lösningen. Du kan köra en fråga om modulerna för att hitta vissa moduler och fråga efter statusen för långvariga åtgärder.
+
 ### <a name="modules"></a>Moduler
 
 På enhets sidan kan du med IoT Hub enhets-SDK: er skapa [moduler](../iot-hub/iot-hub-devguide-module-twins.md) där var och en öppnar en oberoende anslutning till IoT Hub. Med den här funktionen kan du använda separata namn rymder för olika komponenter på enheten.
 
 Modul identitet och modul dubbla ger samma funktioner som [enhets identitet](#device-identity) och [enhet](#device-twin) , men med en bättre precision. Med den här bättre precisionen kan enheter, till exempel operativ systembaserade enheter eller inbyggda enheter hantera flera komponenter, för att isolera konfiguration och villkor för var och en av dessa komponenter.
 
-### <a name="module-identity"></a>Modulens identitet
-
-Modulens identitet är den unika identifierare som tilldelats varje modul som tillhör en enhet. Modulens identitet registreras också i [identitets registret](#identity-registry).
-
-### <a name="module-twin"></a>Modul, delad
-
-På samma sätt som enhets dubbla är en modul i ett JSON-dokument som lagrar information om modulens tillstånd, till exempel metadata, konfigurationer och villkor. IoT Hub behåller en modul som är sammanflätad för varje modul identitet som du etablerar under en enhets identitet i din IoT-hubb. I modulen är det möjligt att synkronisera modulens villkor och konfigurationer mellan modulen och Server delen för lösningen. Du kan köra en fråga om modulerna för att hitta vissa moduler och fråga efter statusen för långvariga åtgärder.
+I [IoT Edge](#iot-edge)är en modul en Docker-behållare som du kan distribuera till IoT Edge enheter. Den utför en speciell uppgift, t. ex. inmatning av ett meddelande från en enhet, omvandling av ett meddelande eller att skicka ett meddelande till en IoT-hubb. Den kommunicerar med andra moduler och skickar data till [IoT Edge runtime](#iot-edge-runtime).
 
 ### <a name="mqtt"></a>MQTT
 
@@ -390,13 +452,29 @@ När du ansluter till en enhets riktad eller riktad slut punkt på en IoT-hubb i
 
 ### <a name="properties"></a>Egenskaper
 
-Egenskaper är data fält som definierats i ett [gränssnitt](#interface) och som representerar status för en digital, dubbel. Du kan deklarera egenskaper som skrivskyddade eller skrivbara. Skrivskyddade egenskaper, till exempel serie nummer, anges med kod som körs på [IoT plug and Play själva enheten](#iot-plug-and-play-device) .  Skrivbara egenskaper, till exempel ett larm tröskelvärde, anges vanligt vis från den molnbaserade IoT-lösningen.
+Egenskaper är data fält som definierats i ett [gränssnitt](#interface) som representerar ett beständigt tillstånd för en [digital, dubbel](#digital-twin). Du kan deklarera egenskaper som skrivskyddade eller skrivbara. Skrivskyddade egenskaper, till exempel serie nummer, anges med kod som körs på [IoT plug and Play själva enheten](#iot-plug-and-play-device) . Skrivbara egenskaper, till exempel ett larm tröskelvärde, anges vanligt vis från den molnbaserade IoT-lösningen.
+
+### <a name="property-change-event"></a>Egenskaps ändrings händelse
+
+En händelse som resulterar i en egenskaps ändring i en [digital, dubbel](#digital-twin).
 
 ### <a name="protocol-gateway"></a>Protokollgateway
 
 En protokoll-Gateway distribueras vanligt vis i molnet och tillhandahåller protokoll översättnings tjänster för enheter som ansluter till [IoT Hub](#iot-hub). Mer information finns i [Vad är Azure IoT Hub?](../iot-hub/about-iot-hub.md).
 
 ## <a name="r"></a>R
+
+### <a name="registration"></a>Registrering
+
+En registrering är en enhets post i IoT Hub [identitets registret](#identity-registry). Du kan registrera enheten direkt eller använda [enhets etablerings tjänsten](#device-provisioning-service) för att automatisera enhets registreringen.
+
+### <a name="registration-id"></a>Registrerings-ID
+
+Registrerings-ID: t används för att unikt identifiera en enhets [registrering](#registration) med [enhets etablerings tjänsten](#device-provisioning-service). Registrerings-ID: t kan vara samma värde som [enhets identiteten](#device-identity).
+
+### <a name="relationship"></a>Relation
+
+I [Azure Digitals dubbla](../digital-twins/index.yml) tjänster används relationer för att ansluta [digitala](#digital-twin) delar till kunskaps diagram som digitalt representerar hela den fysiska miljön. De typer av relationer som dina delar kan ha definierats som en del av modell definitionerna för dubbla [modeller](#model) – [DTDL](#digital-twins-definition-language-dtdl) -modellen för en viss typ av dubbla innehåller information om vilka relationer den kan ha till andra.
 
 ### <a name="reported-configuration"></a>Rapporterad konfiguration
 
@@ -420,17 +498,21 @@ Du konfigurerar [regler för routning](../iot-hub/iot-hub-devguide-messages-read
 
 SASL PLAIN är ett protokoll som används av AMQP-protokollet för att överföra säkerhetstoken.
 
+### <a name="service-operations-endpoint"></a>Slut punkt för tjänst åtgärder
+
+En [slut punkt](#endpoint) för att hantera tjänst inställningar som används av en tjänst administratör. I [enhets etablerings tjänsten](#device-provisioning-service) använder du exempelvis tjänst slut punkten för att hantera registreringar.
+
 ### <a name="service-rest-api"></a>Tjänsten REST API
 
 Du kan använda [tjänst REST API](/rest/api/iothub/service/configuration) från lösningens Server del för att hantera dina enheter. Med API: et kan du hämta och uppdatera [enhetens dubbla](#device-twin) egenskaper, anropa [direkta metoder](#direct-method)och schemalägga [jobb](#job). Normalt bör du använda en av de högre [service SDK: erna](#azure-iot-service-sdks) som visas i självstudierna för IoT Hub.
 
-### <a name="shared-access-signature"></a>Signatur för delad åtkomst
-
-Signaturer för delad åtkomst (SAS) är en autentiseringsmekanism baserad på SHA-256-säkra hash-värden eller URI: er. SAS-autentisering har två komponenter: en _delad åtkomst princip_ och en _signatur för delad åtkomst_ (kallas ofta för en token). En enhet använder SAS för att autentisera med en IoT-hubb. [Backend-appar](#back-end-app) använder också SAS för att autentisera med tjänstens slut punkter på en IoT-hubb. Normalt inkluderar du SAS-token i [anslutnings strängen](#connection-string) som en app använder för att upprätta en anslutning till en IoT-hubb.
-
 ### <a name="shared-access-policy"></a>Princip för delad åtkomst
 
 En princip för delad åtkomst definierar de behörigheter som beviljats för alla som har en giltig [primär eller sekundär nyckel](#primary-and-secondary-keys) som är associerad med principen. Du kan hantera principer och nycklar för delad åtkomst för hubben i portalen.
+
+### <a name="shared-access-signature"></a>Signatur för delad åtkomst
+
+Signaturer för delad åtkomst (SAS) är en autentiseringsmekanism baserad på SHA-256-säkra hash-värden eller URI: er. SAS-autentisering har två komponenter: en _delad åtkomst princip_ och en _signatur för delad åtkomst_ (kallas ofta för en token). En enhet använder SAS för att autentisera med en IoT-hubb. [Backend-appar](#back-end-app) använder också SAS för att autentisera med tjänstens slut punkter på en IoT-hubb. Normalt inkluderar du SAS-token i [anslutnings strängen](#connection-string) som en app använder för att upprätta en anslutning till en IoT-hubb.
 
 ### <a name="simulated-device"></a>Simulerad enhet
 
@@ -454,15 +536,29 @@ I en [enhets](../iot-hub/iot-hub-devguide-device-twins.md)kontext är system ege
 
 I en [enhets](../iot-hub/iot-hub-devguide-device-twins.md)kontext är Taggar enhetens metadata som lagras och hämtas av lösningens Server del i form av ett JSON-dokument. Taggarna är inte synliga för appar på en enhet.
 
+### <a name="target-condition"></a>Mål villkor
+
+I en IoT Edge-distribution väljer mål villkoret mål enheter för distributionen, till exempel **tagg. Environment = Prod**. Mål villkoret utvärderas kontinuerligt för att omfatta alla nya enheter som uppfyller kraven eller tar bort enheter som inte längre fungerar.
+
 ### <a name="telemetry"></a>Telemetri
 
 Enheter samlar in telemetridata, till exempel vridnings hastighet eller temperatur, och använder data punkt meddelanden för att skicka telemetri till en IoT-hubb.
 
-I IoT Plug and Play representerar telemetri-fält som definierats i ett [gränssnitt](#interface) mått. Dessa mått är vanligt vis värden, till exempel sensor avläsningar som skickas av [IoT plug and Play-enheten](#iot-plug-and-play-device) som en data ström.
+I IoT Plug and Play och Azure Digitals dubbla, representerar telemetridata i ett [gränssnitt](#interface) mått. Dessa mått är vanligt vis värden, till exempel sensor avläsningar som skickas av enheter, som [IoT plug and Play-enheter](#iot-plug-and-play-device), som en data ström.
+
+Till skillnad från [Egenskaper](#properties)lagras inte telemetri på ett [digitalt](#digital-twin), Det är en data ström med tidsbegränsade data händelser som måste hanteras när de inträffar.
+
+### <a name="telemetry-event"></a>Telemetri-händelse
+
+En händelse som anger att telemetri-data har kommit.
 
 ### <a name="token-service"></a>Token service
 
 Du kan använda en token-tjänst för att implementera en autentiseringsmekanism för dina enheter. Den använder en IoT Hub [princip för delad åtkomst](#shared-access-policy) med **DeviceConnect** -behörigheter för att skapa *enhets omfång* . Dessa token gör det möjligt för en enhet att ansluta till IoT Hub. En enhet använder en anpassad autentiseringsmekanism för att autentisera med token-tjänsten. Om enheten autentiseras, utfärdar token-tjänsten en SAS-token för enheten som ska användas för att få åtkomst till din IoT-hubb.
+
+### <a name="twin-graph-or-digital-twin-graph"></a>Två diagram (eller elektroniskt flätat diagram)
+
+I [Azure Digitals dubbla](../digital-twins/index.yml) tjänster kan du ansluta [digitala](#digital-twin) fogar med [relationer](#relationship) för att skapa kunskaps diagram som digitalt representerar hela den fysiska miljön. En enda [digital Azure Digital-instans](#azure-digital-twins-instance) kan vara värd för många frånkopplade diagram eller ett enda sammankopplat diagram.
 
 ### <a name="twin-queries"></a>Dubbla frågor
 
@@ -471,6 +567,12 @@ Du kan använda en token-tjänst för att implementera en autentiseringsmekanism
 ### <a name="twin-synchronization"></a>Dubbel synkronisering
 
 Den dubbla synkroniseringen använder de [önskade egenskaperna](#desired-properties) i enheten, med dubbla eller moduler, så att du kan konfigurera enheter eller moduler och hämta [rapporterade egenskaper](#reported-properties) från dem till Store i den dubbla.
+
+## <a name="u"></a>U
+
+### <a name="upstream-services"></a>Överordnade tjänster
+
+En relativ term som beskriver tjänster som matar in data i den aktuella kontexten. Om du till exempel tänker på Azure Digitals dubbla är IoT Hub betraktas som en uppströms tjänst eftersom data flödar från IoT Hub till digitala Digital-objekt i Azure.
 
 ## <a name="x"></a>X
 

@@ -3,12 +3,12 @@ title: Ta bort ett Microsoft Azure Recovery Services-valv
 description: I den här artikeln lär du dig hur du tar bort beroenden och sedan tar bort ett Azure Backup Recovery Services-valv.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 8df2528edebbb654e501b8aaaac91c24d932604c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520467"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670570"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Ta bort ett Azure Backup Recovery Services-valv
 
@@ -73,6 +73,7 @@ Utför följande steg för att stoppa skyddet och ta bort säkerhetskopierade da
 
          ![Rutan ta bort säkerhets kopierings data.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
+   Det här alternativet tar bort schemalagda säkerhets kopieringar, tar även bort säkerhets kopior på begäran.
 3. Kontrol lera **meddelande** ikonen: ![ meddelande ikonen.](./media/backup-azure-delete-vault/messages.png) När processen har slutförts visar tjänsten följande meddelande: *stoppar säkerhets kopiering och tar bort säkerhetskopierade data för* säkerhets kopierings *objekt.* *Åtgärden har slutförts*.
 4. Välj **Uppdatera** på menyn **säkerhets kopierings objekt** för att se till att säkerhets kopierings objekt har tagits bort.
 

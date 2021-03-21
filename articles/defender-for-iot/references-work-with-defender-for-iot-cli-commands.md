@@ -8,10 +8,10 @@ ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100636568"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Arbeta med Defender for IoT-CLI-kommandon
@@ -258,7 +258,7 @@ Du kan använda följande attribut med `directions` kommandot:
 ## <a name="system-actions"></a>System åtgärder
 I följande tabell beskrivs de kommandon som är tillgängliga för att utföra olika system åtgärder i Defender för IoT:
 
-|Name|Kod|Description|
+|Name|Kod|Beskrivning|
 |----|----|-----------|
 |Visa datum|`date`|Returnerar aktuellt datum på värden i GMT-format.|
 |Starta om värden|`system reboot`|Startar om värd enheten.|

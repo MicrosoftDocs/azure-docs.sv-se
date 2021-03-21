@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8526d7c1c436074fbf6f838caf232e1abee06339
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201564"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670383"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Använda planerat underhåll för att schemalägga underhålls perioder för ditt Azure Kubernetes service (AKS)-kluster (för hands version)
 
-Ditt AKS-kluster har regelbundet underhåll som utförs automatiskt. Som standard kan det här arbetet ske när som helst. Planerat underhåll gör att du kan schemalägga varje veckas underhålls fönster som kommer att uppdatera ditt kontroll plan och minimera arbets belastnings påverkan. När du har schemalagt det utförs allt underhåll under det valda fönstret. Du kan schemalägga ett eller flera vecko Visa fönster i klustret genom att ange ett dags-eller tidsintervall på en angiven dag. Underhålls fönster konfigureras med hjälp av Azure CLI.
+Ditt AKS-kluster har regelbundet underhåll som utförs automatiskt. Som standard kan det här arbetet ske när som helst. Med planerat underhåll kan du schemalägga veckovis underhålls fönster som kommer att uppdatera ditt kontroll plan samt din Kube-poddar på en VMSS-instans och minimera arbets belastnings påverkan. När du har schemalagt det utförs allt underhåll under det valda fönstret. Du kan schemalägga ett eller flera vecko Visa fönster i klustret genom att ange ett dags-eller tidsintervall på en angiven dag. Underhålls fönster konfigureras med hjälp av Azure CLI.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -107,7 +107,7 @@ Du kan också använda en JSON-fil för att skapa en underhålls period i ställ
         "notAllowedTime": [
           {
             "start": "2021-05-26T03:00:00Z",
-            "end": "2021-05-30T012:00:00Z"
+            "end": "2021-05-30T12:00:00Z"
           }
         ]
 }

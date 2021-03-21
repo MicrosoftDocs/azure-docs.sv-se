@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
 ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707179"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Snabb start: ansluta till en virtuell dator på ett säkert sätt via en webbläsare via privat IP-adress
 
 Du kan ansluta till en virtuell dator (VM) via webbläsaren med hjälp av Azure Portal och Azure-skydds. Den här snabb starts artikeln visar hur du konfigurerar Azure-skydds baserat på dina VM-inställningar och sedan ansluter till den virtuella datorn via portalen. Den virtuella datorn behöver inte ha någon offentlig IP-adress, klient program vara, agent eller en särskild konfiguration. När tjänsten har tillhandahållits är RDP/SSH-upplevelsen tillgänglig för alla virtuella datorer i samma virtuella nätverk. Mer information om Azure skydds finns i [Vad är Azure skydds?](bastion-overview.md).
 
-## <a name="prerequisites"></a><a name="prereq"></a>Krav
+## <a name="prerequisites"></a><a name="prereq"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. Om du inte har ett kan du [skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). För att kunna ansluta till en virtuell dator via webbläsaren med skydds måste du kunna logga in på den Azure Portal.
 
@@ -56,7 +56,7 @@ Du kan använda följande exempel värden när du skapar den här konfiguratione
 
 |**Namn** | **Värde** |
 | --- | --- |
-| Namn | VNet1 – skydds |
+| Name | VNet1 – skydds |
 | + Under näts namn | AzureBastionSubnet |
 | AzureBastionSubnet-adresser | Ett undernät inom ditt VNet-adressutrymme med en/27-nätmask. Till exempel 10.1.1.0/27.  |
 | Offentlig IP-adress |  Skapa ny |
@@ -100,7 +100,7 @@ Det finns flera olika sätt att konfigurera en skydds-värd. I följande steg sk
    :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="Skärm bild av steg 3.":::
 1. När du har fyllt i värdena väljer du **Skapa Azure-skydds med standardinställningar**. Azure verifierar inställningarna och skapar sedan värden. Värden och dess resurser tar ungefär 5 minuter att skapa och distribuera.
 
-## <a name="connect"></a><a name="connect"></a>Gå
+## <a name="connect"></a><a name="connect"></a>Ansluta
 
 När skydds har distribuerats till det virtuella nätverket ändras skärmen till sidan Anslut.
 

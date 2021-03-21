@@ -143,12 +143,6 @@
         - name: Azure PowerShell
           displayName: 'open,delete,deploy,move,lock,tag'
           href: manage-resources-powershell.md
-    - name: EA-prenumerationer
-      items:
-        - name: Skapa
-          href: ../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md?toc=/azure/azure-resource-manager/management/toc.json
-        - name: Bevilja åtkomst för att skapa
-          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Resursprovidrar och resurstyper
       href: resource-providers-and-types.md
     - name: Ta bort resurser och resursgrupper

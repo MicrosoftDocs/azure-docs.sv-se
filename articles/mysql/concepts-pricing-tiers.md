@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: be7f15b5221be8b3acb7f64c4435e40f40f21f8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720927"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL pris nivåer
@@ -95,7 +95,7 @@ När du ändrar antalet virtuella kärnor, maskin varu genereringen eller pris n
 
 Skalning av lagring och ändring av kvarhållning av säkerhets kopior är true online-åtgärder. Det finns ingen nedtid och ditt program påverkas inte. Som IOPS-skala med storleken på den allokerade lagringen kan du öka tillgängligheten för IOPS för servern genom att skala upp lagringen.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/mysql/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) månads kostnaden på fliken **pris nivå** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer du **Lägg till objekt**, expanderar kategorin **databaser** och väljer **Azure Database for MySQL** för att anpassa alternativen.
 

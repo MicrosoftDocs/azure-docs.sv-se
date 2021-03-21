@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 1552dfedc4510ba22e58d166d12a356ba546c092
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103472"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658517"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Snabbstart: Anropa Microsoft Graph API från en UWP-app (Universell Windows-plattform)
 
@@ -78,6 +78,8 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Ladda ned kod exemplet](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras
 > Vi har konfigurerat ditt projekt med värdena för appens egenskaper och är redo att köras.
@@ -91,7 +93,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > 1. Extrahera. zip-arkivet till en lokal mapp nära enhetens rot. Till exempel i **C:\Azure-samples**.
 > 1. Öppna projektet i Visual Studio. Installera arbets belastningen **universell Windows-plattform utveckling** och eventuella enskilda SDK-komponenter om du uppmanas att göra det.
-> 1. I *mainpage.XAML.cs* ändrar du värdet för `ClientId` variabeln till **program-ID: t** för programmet som du registrerade tidigare.
+> 1. I *mainpage. XAML. cs* ändrar du värdet för `ClientId` variabeln till **program-ID: t** för programmet som du registrerade tidigare.
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";

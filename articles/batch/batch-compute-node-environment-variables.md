@@ -3,12 +3,12 @@ title: Miljövariabler för uppgiftens körtid
 description: Vägledning för aktivitetens körnings miljö och referens för Azure Batch analys.
 ms.topic: conceptual
 ms.date: 12/30/2020
-ms.openlocfilehash: c1d9ffb3fe6775b061863656adcb7f45f8840997
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: dbdc13e28a3a0c772480d2602f147e0d3354ff48
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830895"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669992"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Variabler för Azure Batch körnings miljö
 
@@ -61,6 +61,8 @@ Kommando raderna som körs av aktiviteter på datornoderna körs inte under ett 
 | AZ_BATCH_TASK_ID                | ID:t för den aktuella aktiviteten. | Alla aktiviteter förutom start aktivitet. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | En katalog Sök väg som är identisk för den primära aktiviteten och alla under aktiviteter i en [aktivitet med flera instanser](batch-mpi.md). Sökvägen finns på varje nod där aktiviteten kör flera instanser körs, och är Läs-/skriv åtkomst till de aktivitets kommandon som körs på noden (både [koordinations kommandot](batch-mpi.md#coordination-command) och [program kommandot](batch-mpi.md#application-command). Under aktiviteter eller en primär aktivitet som körs på andra noder har inte fjärråtkomst till den här katalogen (den är inte en delad nätverks katalog). | Primär-och under aktiviteter med flera instanser. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Den fullständiga sökvägen till [arbets katalogen för aktiviteten](files-and-directories.md) på noden. Den pågående aktiviteten har Läs-/Skriv behörighet till den här katalogen. | Alla aktiviteter. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_WORKING_DIR       | Den fullständiga sökvägen till [arbets katalogen för aktiviteten](files-and-directories.md) på noden. Den pågående aktiviteten har Läs-/Skriv behörighet till den här katalogen. | Alla aktiviteter. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_RESERVED_EPHEMERAL_DISK_SPACE_BYTES | Det aktuella tröskelvärdet för disk utrymme då den virtuella datorn ska markeras som `DiskFull` . | Alla aktiviteter. | 1000000 |
 | CCP_NODES                       | Listan över noder och antalet kärnor per nod som har tilldelats en [aktivitet med flera instanser](batch-mpi.md). Noder och kärnor visas i formatet `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, där antalet noder följs av en eller flera nod-IP-adresser och antalet kärnor för var och en. |  Primär-och under aktiviteter med flera instanser. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 ## <a name="next-steps"></a>Nästa steg

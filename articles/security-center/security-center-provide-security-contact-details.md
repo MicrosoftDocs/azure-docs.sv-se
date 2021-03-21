@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 02/09/2021
 ms.author: memildin
 ms.openlocfilehash: 342904a3ae996fe8c2eeddf2edfbc4283a3d03eb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439450"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurera e-postaviseringar för säkerhets aviseringar 
@@ -38,7 +38,7 @@ För att undvika aviserings utmattning begränsar Security Center volymen utgåe
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|**Säkerhetsadministratör**<br>**Prenumerations ägare** |
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 
@@ -50,7 +50,7 @@ Du kan skicka e-postmeddelanden till enskilda användare eller till alla använd
 1. Definiera mottagarna för dina meddelanden med ett eller båda av dessa alternativ:
 
     - Välj från de tillgängliga rollerna i list rutan.
-    - Ange vissa e-postadresser avgränsade med kommatecken. Det finns ingen gräns för antalet e-postadresser som du kan ange.
+    - Ange e-postadresserna avgränsade med kommatecken. Det finns ingen gräns för antalet e-postadresser som du kan ange.
 
 1. Om du vill använda säkerhets kontakt information för din prenumeration väljer du **Spara**.
 

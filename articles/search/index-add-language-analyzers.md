@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/17/2021
+ms.openlocfilehash: ac11b7bc7e53c214f872d400565d50009479afcb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934177"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604431"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Lägga till språk analys verktyg i sträng fält i ett Azure Kognitiv sökning-index
 
@@ -46,91 +46,114 @@ Indexering med Microsoft-analyser är i genomsnitt två till tre gånger långsa
 
 ### <a name="english-analyzers"></a>Engelska analys verktyg
 
-Standard analys verktyget är standard Lucene, som fungerar bra för engelska, men kanske inte som Lucene, engelska Analyzer eller Microsofts engelska analys. 
- 
+Standard analys verktyget är standard Lucene, som fungerar bra för engelska, men kanske inte som Lucene, engelska Analyzer eller Microsofts engelska analys.
+
 + Den engelska analysen i Lucene utökar standard analys verktyget. Den tar bort possessives (efterföljande) från ord, tillämpar det som följer av algoritmen för Porter och tar bort engelska stoppord.  
 
 + Microsofts engelska Analyzer utför lemmatisering i stället för att det finns. Det innebär att den kan hantera inflected och oregelbundna ord former mycket bättre, vilket resulterar i mer relevanta Sök Resultat 
 
-## <a name="configuring-analyzers"></a>Konfigurera analys verktyg
+## <a name="how-to-specify-a-language-analyzer"></a>Så här anger du en språk analys
 
-Språk analys verktyg används i befintligt skick. För varje fält i index definitionen kan du ställa in **Analyzer** -egenskapen till ett analys namn som anger den språk-och språkstapel (Microsoft eller Lucene). Samma analys verktyg kommer att användas vid indexering och sökning efter fältet. Du kan till exempel ha separata fält för de engelska, franska och spanska hotell beskrivningar som finns sida vid sida i samma index.
+Ange en språk analys för "sökbara" fält av typen EDM. String under fält definitionen.
 
-> [!NOTE]
-> Det går inte att använda en annan språk analys vid indexerings tiden än vid frågans tid för ett fält. Den funktionen är reserverad för [anpassade analys](index-add-custom-analyzers.md)verktyg. Av den anledningen, om du försöker ange **searchAnalyzer** -eller **indexAnalyzer** -egenskaperna till namnet på en språk analys, returnerar REST API ett fel svar. Du måste använda **Analyzer** -egenskapen i stället.
+Även om fält definitioner har flera Analyzer-relaterade egenskaper, kan endast egenskapen "Analyzer" användas för språk analys verktyg. Värdet för "Analyzer" måste vara ett av språk analys verktyg från listan med support listor.
 
-Använd Frågeparametern **searchFields** för att ange vilket språkspecifika fält som ska genomsökas i dina frågor. Du kan granska exempel på frågor som innehåller analys egenskapen i [Sök dokument](/rest/api/searchservice/search-documents). 
+```json
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+```
 
-Mer information om index egenskaper finns i [skapa index &#40;Azure Kognitiv sökning REST API&#41;](/rest/api/searchservice/create-index). Mer information om analyser i Azure Kognitiv sökning finns i [analyserare i azure kognitiv sökning](./search-analyzers.md).
+Mer information om hur du skapar ett index och anger fält egenskaper finns i [skapa index (rest)](/rest/api/searchservice/create-index). Mer information om text analys finns [i analyserare i Azure kognitiv sökning](search-analyzers.md).
 
 <a name="language-analyzer-list"></a>
 
-## <a name="language-analyzer-list"></a>Språk analys lista 
- Nedan visas en lista över språk som stöds tillsammans med Lucene och Microsoft Analyzer-namn.  
+## <a name="supported-language-analyzers"></a>Språk analyser som stöds
+
+ Nedan visas en lista över språk som stöds, med Lucene-och Microsoft Analyzer-namn.  
 
 | Språk | Microsoft Analyzer-namn | Namn på Lucene Analyzer |
-|--|--|--|
-| Arabiska | ar. Microsoft | ar. Lucene |
-| Armeniska |  | hy. Lucene |  |
-| Bangla | BN. Microsoft |  |  |
-| Baskiska |  | EU. Lucene |  |
-| Bulgariska | BG. Microsoft | BG. Lucene |  |
-| Katalanska | ca. Microsoft | ca. Lucene |  |
-| Kinesiska, förenklad | zh-hans. Microsoft | zh-hans. Lucene |  |
-| Kinesiska, traditionell | zh-Hant. Microsoft | zh-Hant. Lucene |  |
-| Kroatiska | HR. Microsoft |  |  |
-| Tjeckiska | CS. Microsoft | CS. Lucene |  |
-| Danska | da. Microsoft | da. Lucene |  |
-| Nederländska | nl. Microsoft | nl. Lucene |  |
-| Engelska | en. Microsoft | en. Lucene |  |
-| Estniska | et. Microsoft |  |  |
-| Finska | Fi. Microsoft | Fi. Lucene |  |
-| Franska | fr. Microsoft | fr. Lucene |  |
-| Galiciska |  | GL. Lucene |  |
-| Tyska | de. Microsoft | de. Lucene |  |
-| Grekiska | El. Microsoft | El. Lucene |  |
-| Gujarati | gu. Microsoft |  |  |
-| Hebreiska | he. Microsoft |  |  |
-| Hindi | Hej. Microsoft | Hej. Lucene |  |
-| Ungerska | HU. Microsoft | HU. Lucene |  |
-| Isländska | är. Microsoft |  |  |
-| Indonesiska (Bahasa) | ID. Microsoft | ID. Lucene |  |
-| Iriska |  | ga. Lucene |  |
-| Italienska | den. Microsoft | IT. Lucene |  |
-| Japanska | Ja. Microsoft | Ja. Lucene |  |
-| Kannada | KN. Microsoft |  |  |
-| Koreanska | Ko. Microsoft | Ko. Lucene |  |
-| Lettiska | LV. Microsoft | LV. Lucene |  |
-| Litauiska | lt. Microsoft |  |  |
-| Malayalam | ml. Microsoft |  |  |
-| Malajiska (latinsk) | MS. Microsoft |  |  |
-| Marathi | Mr. Microsoft |  |  |
-| Norska | Obs! Microsoft | Nej. Lucene |  |
-| Persiska |  | FA. Lucene |  |
-| Polska | pl. Microsoft | pl. Lucene |  |
-| Portugisiska (Brasilien) | pt-br. Microsoft | pt-br. Lucene |  |
-| Portugisiska (Portugal) | pt-pt. Microsoft | pt-pt. Lucene |  |
-| Punjabi | PA. Microsoft |  |  |
-| Rumänska | ro. Microsoft | ro. Lucene |  |
-| Ryska | ru. Microsoft | ru. Lucene |  |
-| Serbiska (kyrillisk) | SR-kyrilliska. Microsoft |  |  |
-| Serbiska (latinsk) (Serbien) | SR-Latin. Microsoft |  |  |
-| Slovakiska | sk. Microsoft |  |  |
-| Slovenska | SL. Microsoft |  |  |
-| Spanska | ES. Microsoft | ES. Lucene |  |
-| Svenska | sa. Microsoft | sa. Lucene |  |
-| Tamilska | ta. Microsoft |  |  |
-| Telugu | te. Microsoft |  |  |
-| Thailändska | Microsoft | th. Lucene |  |
-| Turkiska | TR. Microsoft | TR. Lucene |  |
-| Ukrainska | Storbritannien. Microsoft |  |  |
-| Urdu | ditt. Microsoft |  |  |
-| Vietnamesiska | Vi. Microsoft |  |  |
+|----------|-------------------------|----------------------|
+| Arabiska   | ar. Microsoft | ar. Lucene |
+| Armeniska |           | hy. Lucene |
+| Bangla   | BN. Microsoft |  |
+| Baskiska   |  | EU. Lucene |
+| Bulgariska | BG. Microsoft | BG. Lucene |
+| Katalanska  | ca. Microsoft | ca. Lucene |
+| Kinesiska, förenklad | zh-hans. Microsoft | zh-hans. Lucene |
+| Kinesiska, traditionell | zh-Hant. Microsoft | zh-Hant. Lucene |
+| Kroatiska | HR. Microsoft |  |
+| Tjeckiska | CS. Microsoft | CS. Lucene |
+| Danska | da. Microsoft | da. Lucene |
+| Nederländska | nl. Microsoft | nl. Lucene |
+| Engelska | en. Microsoft | en. Lucene |
+| Estniska | et. Microsoft |  |
+| Finska | Fi. Microsoft | Fi. Lucene |
+| Franska | fr. Microsoft | fr. Lucene |
+| Galiciska |  | GL. Lucene |
+| Tyska | de. Microsoft | de. Lucene |
+| Grekiska | El. Microsoft | El. Lucene |
+| Gujarati | gu. Microsoft |  |
+| Hebreiska | he. Microsoft |  |
+| Hindi | Hej. Microsoft | Hej. Lucene |
+| Ungerska | HU. Microsoft | HU. Lucene |
+| Isländska | är. Microsoft |  |
+| Indonesiska (Bahasa) | ID. Microsoft | ID. Lucene |
+| Iriska |  | ga. Lucene |
+| Italienska | den. Microsoft | IT. Lucene |
+| Japanska | Ja. Microsoft | Ja. Lucene |
+| Kannada | KN. Microsoft |  |
+| Koreanska | Ko. Microsoft | Ko. Lucene |
+| Lettiska | LV. Microsoft | LV. Lucene |
+| Litauiska | lt. Microsoft |  |
+| Malayalam | ml. Microsoft |  |
+| Malajiska (latinsk) | MS. Microsoft |  |
+| Marathi | Mr. Microsoft |  |
+| Norska | Obs! Microsoft | Nej. Lucene |
+| Persiska |  | FA. Lucene |
+| Polska | pl. Microsoft | pl. Lucene |
+| Portugisiska (Brasilien) | pt-br. Microsoft | pt-br. Lucene |
+| Portugisiska (Portugal) | pt-pt. Microsoft | pt-pt. Lucene |
+| Punjabi | PA. Microsoft |  |
+| Rumänska | ro. Microsoft | ro. Lucene |
+| Ryska | ru. Microsoft | ru. Lucene |
+| Serbiska (kyrillisk) | SR-kyrilliska. Microsoft |  |
+| Serbiska (latinsk) (Serbien) | SR-Latin. Microsoft |  |
+| Slovakiska | sk. Microsoft |  |
+| Slovenska | SL. Microsoft |  |
+| Spanska | ES. Microsoft | ES. Lucene |
+| Svenska | sa. Microsoft | sa. Lucene |
+| Tamilska | ta. Microsoft |  |
+| Telugu | te. Microsoft |  |
+| Thailändska | Microsoft | th. Lucene |
+| Turkiska | TR. Microsoft | TR. Lucene |
+| Ukrainska | Storbritannien. Microsoft |  |
+| Urdu | ditt. Microsoft |  |
+| Vietnamesiska | Vi. Microsoft |  |
 
  Alla analyser med namn som är kommenterade med **Lucene** drivs av [Apache Lucenes språk analys verktyg](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
 ## <a name="see-also"></a>Se även  
 
-+ [Skapa index &#40;Azure Kognitiv sökning REST API&#41;](/rest/api/searchservice/create-index)  
-
-+ [LexicalAnalyzerName-klass](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)
++ [Skapa ett index](search-what-is-an-index.md)
++ [Skapa ett index för flera språk](search-language-support.md)
++ [Skapa index (REST API)](/rest/api/searchservice/create-index)  
++ [LexicalAnalyzerName-klass (Azure SDK för .NET)](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)
