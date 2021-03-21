@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
 ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788459"
 ---
 # <a name="testing-for-luis-devops"></a>Testa för LUIS-DevOps
@@ -42,7 +42,7 @@ När du skriver en uppsättning tester måste du för varje test definiera:
 * Förväntad avsikt
 * Förväntade entiteter.
 
-Använd LUIS [batch File-syntax](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) för att definiera en grupp av tester i en JSON-formaterad fil. Ett exempel:
+Använd LUIS [batch File-syntax](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) för att definiera en grupp av tester i en JSON-formaterad fil. Exempel:
 
 ```JSON
 [

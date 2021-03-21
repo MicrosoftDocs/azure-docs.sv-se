@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96493669"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Uppgradera PostgreSQL-databasen med hjälp av dumpa och Återställ
@@ -115,9 +115,9 @@ Om du inte har en PostgreSQL-klient eller om du vill använda Azure Cloud Shell 
 
 | **Databas storlek** | **Uppskattad tids åtgång** | 
 | ----- | ------ |
-| 1 GB  | 1-2 minuter |
+| 1 GB  | 1-2 minuter |
 | 5 GB | 8-10 minuter |
-| 10 GB | 15-20 minuter |
+| 10 GB | 15-20 minuter |
 | 50 GB | 1 – 1,5 timmar |
 | 100 GB | 2,5 – 3 timmar|
    

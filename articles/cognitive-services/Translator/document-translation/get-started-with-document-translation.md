@@ -7,10 +7,10 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102486666"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
@@ -91,8 +91,8 @@ Du måste  [**skapa behållare**](../../../storage/blobs/storage-quickstart-blob
 ### <a name="c"></a>[C#](#tab/csharp)
 
 * Skapa ett nytt projekt.
-* Ersätt Program.cs med C#-koden som visas nedan.
-* Ange din slut punkt. prenumerations nyckel och URL-värden för container i Program.cs.
+* Ersätt program. CS med C#-koden som visas nedan.
+* Ange din slut punkt. prenumerations nyckel och URL-värden för container i program. cs.
 * Om du vill bearbeta JSON-data lägger du till [Newtonsoft.Jspå paketet med .net CLI](https://www.nuget.org/packages/Newtonsoft.Json/).
 * Kör programmet från projekt katalogen.
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96903895"
 ---
 # <a name="create-human-reviews"></a>Skapa mänsklig granskning
 
 I den här guiden får du lära dig hur du konfigurerar [granskningar](../review-api.md#reviews) på webbplatsen för gransknings verktyget. Granskar lagring och visning av innehåll för de mänskliga moderatorerna att utvärdera. Moderatorer kan ändra de tillämpade taggarna och tillämpa egna anpassade taggar efter behov. När en användare slutför en granskning skickas resultatet till en angiven slut punkt för återanrop och innehållet tas bort från platsen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Logga in eller skapa ett konto på webbplatsen för Content Moderator [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com/) .
 
@@ -34,7 +34,7 @@ I den här guiden får du lära dig hur du konfigurerar [granskningar](../review
 
     Bilderna visas med etiketter som har tilldelats av den automatiska moderator processen. De avbildningar som du har skickat via gransknings verktyget är inte synliga för andra granskare.
 
-1. Du kan också flytta **granskningarna för att Visa** skjutreglaget (1) för att justera antalet bilder som visas på skärmen. Klicka på de **märkta** eller **untagged** omärkta knapparna (2) för att sortera avbildningarna efter behov. Klicka på en etikett panel (3) om du vill aktivera eller inaktivera den.
+1. Du kan också flytta **granskningarna för att Visa** skjutreglaget (1) för att justera antalet bilder som visas på skärmen. Klicka på de **märkta** eller  omärkta knapparna (2) för att sortera avbildningarna efter behov. Klicka på en etikett panel (3) om du vill aktivera eller inaktivera den.
 
     ![Chrome-webbläsare som visar gransknings verktyget med taggade bilder för granskning](images/review-images-2.png)
 

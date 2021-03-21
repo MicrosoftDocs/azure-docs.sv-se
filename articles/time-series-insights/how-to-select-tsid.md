@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95016759"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Metodtips för att välja Time Series ID-värde
@@ -32,11 +32,11 @@ Att välja ett lämpligt tids serie-ID är kritiskt. Att välja ett Time Series-
 > * En *oföränderlig* egenskap: när den har skapats kan den inte ändras.
 
 > [!TIP]
-> Om din händelse källa är en IoT-hubb kommer ditt Time Series-ID sannolikt att vara ***iothub-Connection-Device-ID** _.
+> Om din händelse källa är en IoT-hubb kommer ditt Time Series-ID sannolikt att ***iothub-Connection-Device-ID***.
 
 Viktiga metod tips för att följa är:
 
-_ Välj en partitionsnyckel med många distinkta värden (till exempel hundratals eller tusentals). I många fall kan detta vara enhets-ID, sensor-ID eller tagg-ID i din JSON.
+* Välj en partitionsnyckel med många distinkta värden (till exempel hundratals eller tusentals). I många fall kan detta vara enhets-ID, sensor-ID eller tagg-ID i din JSON.
 * Time Series-ID: t ska vara unikt på lövnivå för din [tids serie modell](./concepts-model-overview.md).
 * Tecken gränsen för tids serie-ID: t för egenskaps namn strängen är 128. Tecken gränsen är 1 024 för Time Series ID: s egenskaps värde.
 * Om ett unikt egenskaps värde för Time Series ID saknas, behandlas det som ett null-värde och följer samma regel för unikhetsvillkor.

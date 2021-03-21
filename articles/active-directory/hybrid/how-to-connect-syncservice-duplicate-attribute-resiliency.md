@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e09dd6a127bd04ae698cb6cad2ffd7f35e3b51c3
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413436"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitetssynkronisering och duplicerad attributåterhämtning
 Återhämtning av duplicerat attribut är en funktion i Azure Active Directory som eliminerar friktion som orsakas av **userPrincipalName** och SMTP- **proxyAddress** konflikter vid körning av ett av Microsofts verktyg för synkronisering.
 
-Dessa två attribut krävs vanligt vis för att vara unika för alla **användare** , **grupper** eller **kontakt** objekt i en specifik Azure Active Directory klient.
+Dessa två attribut krävs vanligt vis för att vara unika för alla **användare**, **grupper** eller **kontakt** objekt i en specifik Azure Active Directory klient.
 
 > [!NOTE]
 > Endast användare kan ha UPN-användare.
@@ -44,7 +44,7 @@ _**\<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.c
 
 Återhämtnings processen för attribut hanterar endast UPN-och SMTP- **proxyAddress** -värden.
 
-Om attributet inte krävs, t. ex. en  **proxyAddress** , kommer Azure Active Directory att helt enkelt placera det konfliktskapande attributet och fortsätter med att skapa eller uppdatera objektet.
+Om attributet inte krävs, t. ex. en  **proxyAddress**, kommer Azure Active Directory att helt enkelt placera det konfliktskapande attributet och fortsätter med att skapa eller uppdatera objektet.
 
 Vid sätta av attributet skickas information om konflikten i samma fel rapport-e-postmeddelande som används i det gamla beteendet. Den här informationen visas dock bara i fel rapporten en gång när karantänen inträffar, men den fortsätter inte att loggas i framtida e-postmeddelanden. Eftersom exporten för det här objektet har slutförts, loggar inte synkroniseringsklienten ett fel och försöker inte att skapa/uppdatera igen vid efterföljande synkroniseringar.
 
@@ -75,7 +75,7 @@ Det finns för närvarande två metoder för att identifiera objekt som har dess
 För PowerShell-cmdlets i det här avsnittet är följande sant:
 
 * Alla följande cmdlet: ar är Skift läges känsliga.
-* - **ErrorCategory-PropertyConflict** måste alltid inkluderas. Det finns för närvarande inga andra typer av **ErrorCategory** , men det kan utökas i framtiden.
+* - **ErrorCategory-PropertyConflict** måste alltid inkluderas. Det finns för närvarande inga andra typer av **ErrorCategory**, men det kan utökas i framtiden.
 
 Kom först igång genom att köra **Connect-MSOLService** och ange autentiseringsuppgifter för en klient administratör.
 
@@ -106,12 +106,12 @@ Eller
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>Efter motstridigt värde
-Om du vill se fel som rör en speciell egenskap lägger du till flaggan **-PropertyValue** ( **-PropertyName** måste användas också när du lägger till den här flaggan):
+Om du vill se fel som rör en speciell egenskap lägger du till flaggan **-PropertyValue** (**-PropertyName** måste användas också när du lägger till den här flaggan):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
 #### <a name="using-a-string-search"></a>Använda en strängs ökning
-Om du vill göra en bred Strängs sökning använder du flaggan **-searchString** . Detta kan användas oberoende av alla flaggorna ovan, med undantag för **-ErrorCategory PropertyConflict** , vilket alltid krävs:
+Om du vill göra en bred Strängs sökning använder du flaggan **-searchString** . Detta kan användas oberoende av alla flaggorna ovan, med undantag för **-ErrorCategory PropertyConflict**, vilket alltid krävs:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
@@ -140,12 +140,12 @@ Fel sökning av strategi-och lösnings taktiker för dessa fel bör inte skilja 
 Följande artikel beskriver olika fel söknings-och lösnings strategier: [dubbletter eller ogiltiga attribut förhindrar katalog synkronisering i Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Kända problem
-Inga av dessa kända problem medför data förlust eller tjänst försämring. Flera av dem är attributnamn, andra orsakar standard " *för återhämtning* " av duplicerade attributändringar som ska utlösas i stället för att sätta i det orsakade attributet, och ett annat leder till att vissa fel kräver extra Manuell korrigering.
+Inga av dessa kända problem medför data förlust eller tjänst försämring. Flera av dem är attributnamn, andra orsakar standard "*för återhämtning*" av duplicerade attributändringar som ska utlösas i stället för att sätta i det orsakade attributet, och ett annat leder till att vissa fel kräver extra Manuell korrigering.
 
 **Core-beteende:**
 
 1. Objekt med Specific Attribute-konfigurationer fortsätter att ta emot export fel i stället för de duplicerade attributen i karantän.  
-   Till exempel:
+   Exempel:
    
     a. En ny användare skapas i AD med ett UPN för **Joe \@ contoso.com** och proxyAddress **SMTP: Johan \@ contoso.com**
    
@@ -154,10 +154,10 @@ Inga av dessa kända problem medför data förlust eller tjänst försämring. F
     c. Vid export genereras ett **konflikt** fel i proxyAddress i stället för att de hamnar i konflikt i karantän. Åtgärden provas på nytt vid varje efterföljande synkronisering, eftersom den skulle ha varit innan återhämtnings funktionen var aktive rad.
 2. Om två grupper skapas lokalt med samma SMTP-adress, går det inte att etablera vid det första försöket med ett duplicerat standard **proxyAddress** -fel. Det duplicerade värdet är dock i karantän vid nästa synkronisering.
 
-**Office-Portal-rapport** :
+**Office-Portal-rapport**:
 
 1. Det detaljerade fel meddelandet för två objekt i en UPN-konflikt har angetts. Detta anger att de båda har ändrat UPN-värde/i karantän, om bara en av dem hade ändrats.
-2. Det detaljerade fel meddelandet för en UPN-konflikt visar fel displayName för en användare som har ändrat UPN-namnet/i karantän. Till exempel:
+2. Det detaljerade fel meddelandet för en UPN-konflikt visar fel displayName för en användare som har ändrat UPN-namnet/i karantän. Exempel:
    
     a. **Användare A** synkroniseras först med **UPN = User \@ contoso.com**.
    
@@ -167,7 +167,7 @@ Inga av dessa kända problem medför data förlust eller tjänst försämring. F
    
     d. Fel meddelandet för **användare B** bör ange att **användaren** redan har **\@ contoso.com** som ett UPN, men det visar **användarens** eget DisplayName.
 
-**Identitetssynkronisering fel rapport** :
+**Identitetssynkronisering fel rapport**:
 
 Länken för *steg om hur du löser det här problemet* är felaktigt:  
     ![Aktiva användare](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktiva användare")  

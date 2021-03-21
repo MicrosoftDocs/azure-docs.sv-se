@@ -4,10 +4,10 @@ description: Visar vilka typer av Azure-resurs typer som stöder taggar. Innehå
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: b1f9e61b409c395a13cc6a18d21d17530f38ac7e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722899"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagga stöd för Azure-resurser
@@ -916,7 +916,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | BillingAccounts | Inga | Inga |
 > | Budgetar | Inga | Inga |
 > | CloudConnectors | Inga | Inga |
-> | Anslutningar | Ja | Ja |
+> | Anslutningsappar | Ja | Ja |
 > | costAllocationRules | Inga | Inga |
 > | Avdelningar | Inga | Inga |
 > | Dimensioner | Inga | Inga |
@@ -934,7 +934,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | ExternalSubscriptions/fråga | Inga | Inga |
 > | Prognos | Inga | Inga |
 > | Insikter | Inga | Inga |
-> | Söka i data | Inga | Inga |
+> | Fråga | Inga | Inga |
 > | registrera | Inga | Inga |
 > | Reportconfigs | Inga | Inga |
 > | Rapporter | Inga | Inga |

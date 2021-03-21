@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
 ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498293"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>Självstudie: använda Kundhanterade nycklar eller BYOK med Media Services REST API
@@ -84,7 +84,7 @@ Samlingen ger följande REST API begär Anden.
 >- De flesta förfrågningar har test skript som dynamiskt skapar globala variabler för nästa begäran i sekvensen.
 >- Du behöver inte skapa globala variabler manuellt.
 
-I Postman visas dessa variabler inom hakparenteser. Exempelvis `{{bearerToken}}`.
+I Postman visas dessa variabler inom hakparenteser. Till exempel `{{bearerToken}}`.
 
 1. Hämta en Azure AD-token: testet ställer in den globala variabeln **bearerToken**.
 2. Hämta en Microsoft Graph token: testet ställer in den globala variabeln **graphToken**.
@@ -99,7 +99,7 @@ I Postman visas dessa variabler inom hakparenteser. Exempelvis `{{bearerToken}}`
 ## <a name="define-environment-variables"></a>Definiera miljövariabler
 
 1. Välj den nedrullningsbara listan i miljön för att växla till den miljö som du laddade ned.
-1. Upprätta miljövariabler i Postman. De används också som variabler i hakparenteser. Exempelvis `{{tenantId}}`.
+1. Upprätta miljövariabler i Postman. De används också som variabler i hakparenteser. Till exempel `{{tenantId}}`.
 
     - **tenantId**: ditt klient-ID.
     - **servicePrincipalId**: ID för tjänstens huvud namn som du upprättar med din favorit metod, till exempel portal eller cli.

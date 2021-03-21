@@ -9,10 +9,10 @@ ms.date: 11/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 998b52a23894dcb7fa08b2c0fd42e4ef8e3678ae
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102554997"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Självstudie: ansluta till en Azure SQL-Server med en privat Azure-slutpunkt – Azure CLI
