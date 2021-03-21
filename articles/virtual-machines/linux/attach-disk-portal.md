@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556833"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601843"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Använd portalen för att koppla en datadisk till en virtuell Linux-dator 
 Den här artikeln visar hur du ansluter både nya och befintliga diskar till en virtuell Linux-dator via Azure Portal. Du kan också [ansluta en datadisk till en virtuell Windows-dator i Azure Portal](../windows/attach-managed-disk-portal.md). 
@@ -81,7 +81,7 @@ I det här exemplet är den disk som jag har lagt till `sdc` . Det är en LUN 0 
 
 Ett mer avancerat exempel är hur flera data diskar ser ut i portalen:
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="Granska disk inställningar.":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="Skärm bild av flera diskar som visas i portalen.":::
 
 I avbildningen kan du se att det finns tre data diskar: 4 GB på LUN 0, 16 GB vid LUN 1 och 32G vid LUN 2.
 
@@ -227,6 +227,6 @@ Det finns två sätt att aktivera TRIMNINGs stöd i din virtuella Linux-dator. S
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information och hjälp med fel sökning av disk problem finns i [FELSÖKA virtuella Linux-enheters enhets namn ändringar](../troubleshooting/troubleshoot-device-names-problems.md).
+Mer information och hjälp med fel sökning av disk problem finns i [FELSÖKA virtuella Linux-enheters enhets namn ändringar](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
 
 Du kan också [ansluta en datadisk](add-disk.md) med hjälp av Azure CLI.

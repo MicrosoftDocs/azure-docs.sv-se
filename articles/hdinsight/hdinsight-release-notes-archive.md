@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
 ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705661"
 ---
 # <a name="archived-release-notes"></a>Arkiverad viktig information
@@ -1886,11 +1886,11 @@ Fasta problem representerar valda problem som tidigare har loggats via Hortonwor
 
 |**Apache-komponent**|**Apache JIRA**|**Sammanfattning**|**Information**|
 |--|--|--|--|
-|**Spark 2,3** |**Ej tillämpligt** |**Ändringar som dokumenteras i Apache Spark viktig information** |– Det finns ett "utfasnings dokument" och en "ändring av beteende"-guiden. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– För SQL-delen finns en annan detaljerad guide för migrering (från 2,2 till 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**EJ TILLÄMPLIGT** |**Ändringar som dokumenteras i Apache Spark viktig information** |– Det finns ett "utfasnings dokument" och en "ändring av beteende"-guiden. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– För SQL-delen finns en annan detaljerad guide för migrering (från 2,2 till 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-jobbet har slutförts, men det finns en HDFS disk kvot med ett fullständigt fel |**Scenario:** Om du kör **Infoga överskrivning** när en kvot anges i mappen pappers korg för den användare som kör kommandot.<br /><br />**Föregående beteende:** Jobbet lyckas även om det inte går att flytta data till pappers korgen. Resultatet kan felaktigt innehålla några av de data som tidigare fanns i tabellen.<br /><br />**Nytt beteende:** När det inte går att flytta mappen till pappers korgen tas filerna bort permanent.|
-|**Kafka 1,0**|**Ej tillämpligt**|**Ändringar som dokumenteras i Apache Spark viktig information** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**EJ TILLÄMPLIGT**|**Ändringar som dokumenteras i Apache Spark viktig information** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |Ytterligare Ranger Hive-principer krävs för att infoga överskrivning |**Scenario:** Ytterligare Ranger Hive-principer krävs för att **Infoga ÖVERskrivning**<br /><br />**Föregående beteende:** **Skriv över skrivnings** frågor för Hive lyckades som vanligt.<br /><br />**Nytt beteende:** **Skriv över skrivnings** frågor för Hive kraschar inte om du har uppgraderat till HDP-2.6. x med felet:<br /><br />Ett fel uppstod vid kompilering av instruktionen: HiveAccessControlException-behörighet nekad: användar jdoe har inte Skriv behörighet för/tmp/ \* (State = 42000, Code = 40000)<br /><br />Från och med HDP-2.6.0 krävs en Ranger-URI-princip för att tillåta Skriv åtgärder, även om användaren har behörigheten **Skriv som** beviljats via HDFS-principen.<br /><br />**Lösning/förväntad kund åtgärd:**<br /><br />1. skapa en ny princip under Hive-lagringsplatsen.<br />2. i list rutan där du ser databas väljer du URI.<br />3. uppdatera sökvägen (exempel:/TMP/*)<br />4. Lägg till användarna och gruppen och spara.<br />5. försök att infoga frågan igen.|
-|**HDFS**|**Ej tillämpligt** |HDFS bör ha stöd för flera KMS-URI: er |**Föregående beteende:** DFS. encryption. Key. Provider. URI-egenskapen användes för att konfigurera sökvägen till KMS-providern.<br /><br />**Nytt beteende:** DFS. encryption. Key. Provider. URI har nu ersatts av Hadoop. Security. Key. Provider. Path för att konfigurera sökvägen till KMS-providern.|
+|**HDFS**|**EJ TILLÄMPLIGT** |HDFS bör ha stöd för flera KMS-URI: er |**Föregående beteende:** DFS. encryption. Key. Provider. URI-egenskapen användes för att konfigurera sökvägen till KMS-providern.<br /><br />**Nytt beteende:** DFS. encryption. Key. Provider. URI har nu ersatts av Hadoop. Security. Key. Provider. Path för att konfigurera sökvägen till KMS-providern.|
 |**Zeppelin**|[**ZEPPELIN – 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Alternativ för att inaktivera Scheduler |**Komponent som påverkas:** Zeppelin-Server<br /><br />**Föregående beteende:** I tidigare versioner av Zeppelin fanns det inget alternativ för att inaktivera Scheduler.<br /><br />**Nytt beteende:** Som standard kan användarna inte längre se Scheduler, eftersom den är inaktive rad som standard.<br /><br />**Lösning/förväntad kund åtgärd:** Om du vill aktivera Scheduler måste du lägga till azeppelin. Notebook. cron. enable med värdet True under anpassad Zeppelin-plats i Zeppelin inställningar från Ambari.|
 
 ### <a name="known-issues"></a>Kända problem

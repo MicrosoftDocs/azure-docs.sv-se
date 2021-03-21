@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200809"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592531"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Cisco WebEx
 
@@ -38,7 +38,7 @@ För att komma igång behöver du följande objekt:
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
 * Cisco WebEx stöder **SP** -initierad SSO.
-* Cisco WebEx har stöd för [**Automatisk användar etablering**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
+* Cisco WebEx har stöd för [**Automatisk användar etablering**](./cisco-webex-provisioning-tutorial.md).
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Lägga till Cisco Webex från galleriet
 
@@ -93,7 +93,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar Cisco WebEx-programmet fler attribut som ska skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
   
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
@@ -159,7 +159,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ### <a name="create-cisco-webex-test-user"></a>Skapa en testanvändare i Cisco Webex
 
-I det här avsnittet skapas en användare som heter B. Simon i Cisco WebEx. det här programmet har stöd för automatisk användar etablering, vilket möjliggör automatisk etablering och avetablering baserat på dina affärs regler.  Microsoft rekommenderar att du använder automatisk etablering närhelst det är möjligt. Se Aktivera automatisk etablering för [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
+I det här avsnittet skapas en användare som heter B. Simon i Cisco WebEx. det här programmet har stöd för automatisk användar etablering, vilket möjliggör automatisk etablering och avetablering baserat på dina affärs regler.  Microsoft rekommenderar att du använder automatisk etablering närhelst det är möjligt. Se Aktivera automatisk etablering för [Cisco WebEx](./cisco-webex-provisioning-tutorial.md).
 
 Utför följande steg om du behöver skapa en användare manuellt:
 
@@ -195,7 +195,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Cisco WebEx-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Cisco WebEx i Mina appar omdirigeras det till Cisco WebEx-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Cisco WebEx i Mina appar omdirigeras det till Cisco WebEx-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

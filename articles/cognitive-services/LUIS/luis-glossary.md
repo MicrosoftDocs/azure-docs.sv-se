@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786952"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Ord lista för språk förståelse för vanliga ord listor och koncept
@@ -287,13 +287,13 @@ I LUIS [lista entiteter](reference-entity-list.md)kan du skapa ett normaliserat 
 |Nomalized-värde| Synonymer|
 |--|--|
 |Liten| den lilla en, 8 gram|
-|Medium| Regular, 12 ounce|
+|Medel| Regular, 12 ounce|
 |Stor| stor, 16 ounce|
 |Xtra stor| den största, 24 ounce|
 
 Modellen returnerar det normaliserade värdet för entiteten när någon av synonymerna visas i indatamängden.
 
-## <a name="test"></a>Testa
+## <a name="test"></a>Test
 
 Att [testa](luis-concept-test.md) en Luis app innebär att Visa modell förutsägelser.
 

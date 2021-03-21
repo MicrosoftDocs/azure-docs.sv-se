@@ -15,10 +15,10 @@ ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979937"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Självstudie: Använd dynamisk konfiguration i en ASP.NET Core app
@@ -66,7 +66,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Öppna *program.cs* och uppdatera `CreateWebHostBuilder` metoden för att lägga till- `config.AddAzureAppConfiguration()` metoden.
+1. Öppna *program. cs* och uppdatera `CreateWebHostBuilder` metoden för att lägga till- `config.AddAzureAppConfiguration()` metoden.
 
    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -142,7 +142,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
     Om du vill utlösa en uppdaterings åtgärd måste du konfigurera en uppdatering mellanprogram för programmet för att uppdatera konfigurations data när någon ändring sker. Du får se hur du gör detta i ett senare steg.
 
-2. Lägg till en *Settings.cs* -fil i katalogen controllers som definierar och implementerar en ny `Settings` klass. Ersätt namn området med namnet på ditt projekt. 
+2. Lägg till filen *Settings. cs* i katalogen controllers som definierar och implementerar en ny `Settings` klass. Ersätt namn området med namnet på ditt projekt. 
 
     ```csharp
     namespace TestAppConfig
@@ -157,7 +157,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     }
     ```
 
-3. Öppna *startup.cs* och Använd `IServiceCollection.Configure<T>` i- `ConfigureServices` metoden för att binda konfigurations data till `Settings` klassen.
+3. Öppna *startup. cs* och Använd `IServiceCollection.Configure<T>` i- `ConfigureServices` metoden för att binda konfigurations data till `Settings` klassen.
 
     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -291,7 +291,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
 ## <a name="use-the-latest-configuration-data"></a>Använda senaste konfigurationsdata
 
-1. Öppna *HomeController.cs* i katalogen controllers och Lägg till en referens i `Microsoft.Extensions.Options` paketet.
+1. Öppna *HomeController. cs* i katalogen controllers och Lägg till en referens i `Microsoft.Extensions.Options` paketet.
 
     ```csharp
     using Microsoft.Extensions.Options;

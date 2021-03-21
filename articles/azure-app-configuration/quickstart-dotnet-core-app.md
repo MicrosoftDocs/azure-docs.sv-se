@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 0ff80287971365b1477be319dc7a04760687f6a9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98663408"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Snabb start: skapa en .NET Core-app med app-konfiguration
@@ -64,7 +64,7 @@ Du använder [.net Core kommando rads gränssnitt (CLI)](/dotnet/core/tools/) f�
     dotnet restore
     ```
 
-3. Öppna *program.cs* och Lägg till en referens till .net Core app Configuration-providern.
+3. Öppna *program. cs* och Lägg till en referens till .net Core app Configuration-providern.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

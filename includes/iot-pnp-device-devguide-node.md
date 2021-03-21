@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: dea63ba4939579f3f227d2eac05eb124ada1e4ec
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 0aa13d8d23f4f18004131a25f8eb42388d79834b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616406"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582809"
 ---
 ## <a name="model-id-announcement"></a>Meddelande om modell-ID
 
@@ -40,7 +40,7 @@ Enheter som använder [enhets etablerings tjänsten (DPS)](../articles/iot-dps/a
 
 ## <a name="implement-telemetry-properties-and-commands"></a>Implementera telemetri, egenskaper och kommandon
 
-Som beskrivs i [förstå komponenter i IoT plug and Play-modeller](../articles/iot-pnp/concepts-components.md)måste enhets byggare bestämma om de vill använda komponenter för att beskriva sina enheter. När du använder komponenter måste enheterna följa reglerna som beskrivs i det här avsnittet.
+Som beskrivs i [förstå komponenter i IoT plug and Play-modeller](../articles/iot-pnp/concepts-modeling-guide.md)måste enhets byggare bestämma om de vill använda komponenter för att beskriva sina enheter. När du använder komponenter måste enheterna följa reglerna som beskrivs i det här avsnittet.
 
 ### <a name="telemetry"></a>Telemetri
 

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: 82cad7fc68d650e5f525a8722d3e2f3e9865f456
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936746"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scenario: lagrings undantag efter återställning av anslutningen i Azure HDInsight
@@ -29,7 +29,7 @@ Vid en tabell trunkering uppstod ett problem med lagrings anslutningen. Tabell p
 
 1. Starta om den aktiva HMaster från Apache Ambari UI. På så sätt kan en av de två vänte läges HMaster bli den aktiva och den nya aktiva HMaster kommer att läsa in informationen om metadata-tabellen. Därför visas inte `already-deleted` tabellen i HMaster-användargränssnittet.
 
-1. Du kan hitta den överblivna BLOB-filen från UI-verktyg som Cloud Explorer eller köra kommandot som `hdfs dfs -ls /xxxxxx/yyyyy` . Kör `hdfs dfs -rmr /xxxxx/yyyy` för att ta bort denna blob. Ett exempel är `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. Du kan hitta den överblivna BLOB-filen från UI-verktyg som Cloud Explorer eller köra kommandot som `hdfs dfs -ls /xxxxxx/yyyyy` . Kör `hdfs dfs -rmr /xxxxx/yyyy` för att ta bort denna blob. Till exempel `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
 Nu kan du skapa en ny tabell med samma namn i HBase.
 

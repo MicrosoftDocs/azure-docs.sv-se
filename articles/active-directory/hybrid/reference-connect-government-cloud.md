@@ -11,11 +11,11 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504363"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hybrid identitets överväganden för Azure Government molnet
@@ -24,9 +24,6 @@ I den här artikeln beskrivs överväganden för att integrera en hybrid miljö 
 
 > [!NOTE]
 > För att integrera en Microsoft Active Directory-miljö (antingen lokalt eller värdbaserad i en IaaS som är en del av samma moln instans) med Azure Government molnet måste du uppgradera till den senaste versionen av [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 En fullständig lista över USA myndighets departementets slut punkter finns i [dokumentationen](/office365/enterprise/office-365-u-s-government-dod-endpoints).
 

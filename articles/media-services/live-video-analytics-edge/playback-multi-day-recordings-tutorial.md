@@ -4,10 +4,10 @@ description: 'I den här självstudien får du lära dig hur du använder Azure 
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492796"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Självstudie: uppspelning av flera dagars inspelningar  
@@ -95,7 +95,7 @@ AMS till gångs spelaren anger att du anger namnet på en medie tjänst till gå
 
 När du skriver in till gångs namnet och sedan klickar på Skicka, laddar Player-koden in den strömmande URL: en. Mer information finns i [instruktions guiden: uppspelning av inspelningar](playback-recordings-how-to.md). Om du som det rekommenderar att du fortfarande registrerar till gången, identifierar spelaren att och försöker att stacka uppspelningen till den senaste delen av den inspelade videon. Du kan se tidsstämpeln (i UTC) längst upp till vänster i spelaren. I skärm bilden nedan noterar du hur knappen "Live" är markerad.
 
-![Dataström](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
+![Stream](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  
 På höger sida av spelaren kan du se kontrollerna för att bläddra i arkivet. Åren, månaderna och datumen i den här kontrollen fylls med hjälp av availableMedia-API: t som dokumenteras i [instruktions boken: uppspelning av inspelningar](playback-recordings-how-to.md).
 Om du har till gång till CVR-självstudierna i flera timmar när du utökar dagen visas ett resultat som detta:

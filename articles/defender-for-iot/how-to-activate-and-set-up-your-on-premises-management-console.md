@@ -1,18 +1,18 @@
 ---
 title: Aktivera och konfigurera den lokala hanteringskonsolen
-description: Aktivering och konfiguration av hanterings konsolen säkerställer att sensorer registreras med Azure och skickar information till den lokala hanterings konsolen och att den lokala hanterings konsolen utför hanterings uppgifter på anslutna sensorer.
+description: Genom att aktivera hanterings konsolen ser du till att sensorer registreras med Azure och skickar information till den lokala hanterings konsolen och att den lokala hanterings konsolen utför hanterings aktiviteter på anslutna sensorer.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.service: defender-for-iot
+ms.openlocfilehash: f659b25abbbad5f2150ed44766d30dc1f64dd3bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522588"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602764"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
@@ -30,24 +30,32 @@ Aktivering och installation av den lokala hanterings konsolen säkerställer att
 
 Logga in i hanterings konsolen:
 
-- Öppna en webbläsare och ange IP-adressen och lösen ordet som du fick för den lokala hanterings konsolen under systeminstallationen. Om du har glömt ditt lösen ord väljer du **Återställ lösen ord** och se [lösen ords återställning](how-to-manage-the-on-premises-management-console.md#password-recovery).
+1. Gå till den IP-adress som du fick för den lokala hanterings konsolen under systeminstallationen.
+ 
+1. Ange det användar namn och lösen ord som du fick för den lokala hanterings konsolen under systeminstallationen. 
 
-## <a name="upload-an-activation-file"></a>Ladda upp en aktiverings fil
 
-När du har loggat in första gången aktiverar du den lokala hanterings konsolen genom att hämta en aktiverings fil från sidan **prissättning** i Azure Defender för IoT-portalen. Den här filen innehåller de aggregerade allokerade enheter som definierats under onboarding-processen. **Allokerade enheter** anger hur många enheter som Defender för IoT ska övervaka per prenumeration.
+Om du har glömt ditt lösen ord väljer du alternativet för att **återställa lösen ord**  och se [lösen ords återställning](how-to-manage-the-on-premises-management-console.md#password-recovery) för instruktioner om hur du återställer ditt lösen ord.
 
-Ladda upp en aktiverings fil:
+## <a name="get-and-upload-an-activation-file"></a>Hämta och ladda upp en aktiverings fil
 
-1. Gå till **pris** sidan för Defender för IoT.
+När du har loggat in för första gången måste du aktivera den lokala hanterings konsolen genom att hämta och ladda upp en aktiverings fil. 
+
+Så här hämtar du en aktiverings fil:
+
+1. Gå till sidan **prissättning** i Azure Defender för IoT-portalen. 
+1. Välj den prenumeration som den lokala hanterings konsolen ska kopplas till.
 1. Välj fliken **Ladda ned aktiverings filen för hanterings konsolen** . Aktiverings filen har laddats ned.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Hämta aktiverings filen.":::
 
-1. Välj **system inställningar** från hanterings konsolen.
-1. Välj **aktivering**.
-1. Välj **Välj en fil** och välj den fil som du sparade.
+Ladda upp en aktiverings fil:
 
-Efter den första aktiveringen kan antalet övervakade enheter överstiga antalet allokerade enheter som definierats under onboarding. Detta kan inträffa, till exempel om du ansluter fler sensorer till hanterings konsolen. Om det finns en avvikelse mellan antalet övervakade enheter och antalet allokerade enheter visas en varning i hanterings konsolen. Om detta inträffar ska du ladda upp en ny aktiverings fil.
+1. Gå till sidan **system inställningar** i den lokala hanterings konsolen.
+1. Välj **aktiverings** ikonen :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
+1. Välj **Välj en fil** och välj den fil som hämtades.
+
+Efter den första aktiveringen kan antalet övervakade enheter överstiga antalet allokerade enheter som definierats under onboarding. Detta inträffar om du ansluter fler sensorer till hanterings konsolen. Om det finns en avvikelse mellan antalet övervakade enheter och antalet allokerade enheter visas en varning i hanterings konsolen. Om detta händer laddar du upp en ny aktiverings fil.
 
 ## <a name="set-up-a-certificate"></a>Konfigurera ett certifikat
 
@@ -225,10 +233,10 @@ I följande tabell beskrivs parametrarna i fönstret **plats hantering** .
 
 | Parameter | Beskrivning |
 |--|--|
-| Namn | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
+| Name | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
 | IP-adress | Sensorns IP-adress. |
 | Version | Sensor versionen. |
-| Anslutning | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
+| Anslutningsmöjlighet | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
 | Senaste uppgradering | Datumet för den senaste uppgraderingen. |
 | Uppgraderings förlopp | Förlopps indikatorn visar status för uppgraderings processen, enligt följande:<br />– Laddar upp paket<br />– Förbereder installation<br />– Stoppa processer<br />-Säkerhetskopiera data<br />-Tar ögonblicks bild<br />– Uppdaterar konfigurationen<br />– Uppdatering av beroenden<br />– Uppdaterar bibliotek<br />– Korrigera databaser<br />– Startar processer<br />-Verifierar systemets Sanity<br />– Verifieringen lyckades<br />-Lyckades<br />-Failure<br />-Uppgraderingen har startat<br />-Startar installationenogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Mer information om hur du uppgraderar finns i [Microsoft Support](https://support.microsoft.com/) för hjälp. |
 | Enheter | Antalet enhets enheter som sensorn övervakar. |
@@ -316,6 +324,6 @@ Ta bort tilldelning och ta bort en sensor:
 
 3. Om du vill ta bort den ej tilldelade sensorn från platsen väljer du sensorn från listan över ej tilldelade sensorer och väljer :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Felsöka sensorn och den lokala hanteringskonsolen](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 4d2b0fbb377beacdb75a1a5552855936bee2b205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041319"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-server-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: Server utvärdering
@@ -47,7 +47,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 **Servrar** | Alla Windows-och Linux OS-versioner stöds för identifiering av konfigurations-och prestanda-metadata. <br/><br/> Alla Windows-och Linux OS-versioner stöds för att utföra program identifiering på servrar. Sök efter de OS- [versioner som stöds](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) för analys av beroende analyser.<br/><br/> Om du vill utföra identifiering av installerade program och en agent lös beroende analys, måste VMware-verktyg (senare än 10.2.0) installeras och köras på servrar. Windows-servrar måste ha PowerShell version 2,0 eller senare installerat.<br/><br/> Om du vill identifiera SQL Server instanser och databaser kan [du söka efter](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) de SQL Server versioner och versioner som stöds, de Windows OS-versioner och autentiseringsmekanismer som stöds.
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
@@ -274,7 +274,7 @@ I **steg 3: ange autentiseringsuppgifter för servern för att utföra program v
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 på installation Configuration Manager för Server information":::
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 Om du vill utnyttja dessa funktioner kan du ange autentiseringsuppgifter för servern genom att följa stegen nedan. Installations programmet försöker automatiskt mappa autentiseringsuppgifterna till servrarna för att utföra identifierings funktionerna.
 

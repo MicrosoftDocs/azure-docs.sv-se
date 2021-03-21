@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
 ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979084"
 ---
 # <a name="working-with-p2s-vpn-client-profile-files"></a>Arbeta med P2S VPN-klient profil filer
@@ -22,7 +22,7 @@ Profilmappar innehåller information som krävs för att konfigurera en VPN-ansl
 
 Du kan generera konfigurationsfiler för klienter med hjälp av PowerShell, eller med hjälp av Azure Portal. Båda metoderna returnerar samma zip-fil.
 
-### <a name="portal"></a>Portalen
+### <a name="portal"></a>Portal
 
 1. I Azure Portal navigerar du till den virtuella Nätverksgatewayen för det virtuella nätverk som du vill ansluta till.
 1. På sidan virtuell nätverksgateway väljer du **punkt-till-plats-konfiguration**.

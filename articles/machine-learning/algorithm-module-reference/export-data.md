@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421319"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656914"
 ---
 # <a name="export-data-module"></a>Exportera datamodul
 
@@ -51,7 +51,10 @@ Innan du exporterar dina data måste du först registrera ett data lager på din
 
     Om den är markerad kommer systemet att köra modulen igen för att återskapa utdata.
 
-1. Definiera sökvägen i data lagret där datan finns. Sökvägen är en relativ sökväg. Tomma sökvägar eller URL-sökvägar är inte tillåtna.
+1. Definiera sökvägen i data lagret där datan finns. Sökvägen är en relativ sökväg. Ta `data/testoutput` ett exempel, vilket innebär att indata för **export data** exporteras till `data/testoutput` i det data lager som du angett i **utmatnings inställningarna** för modulen.
+
+    > [!NOTE]
+    > Tomma sökvägar eller **URL-sökvägar** är inte tillåtna.
 
 
 1. I **fil format** väljer du det format som data ska lagras i.

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3e6c7dd0a75a05f15fe6d59bbf5fa47b2940d86a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96919925"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>Använd PowerShell för att synkronisera data mellan flera databaser i Azure SQL Database
@@ -35,7 +35,7 @@ En översikt över SQL Data Sync finns i [synkronisera data i flera moln-och lok
 > [!IMPORTANT]
 > SQL Data Sync stöder inte Azure SQL-hanterad instans för tillfället.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa en databas i Azure SQL Database från en AdventureWorksLT-exempel databas som en nav-databas.
 - Skapa en databas i Azure SQL Database i samma region som Sync-databasen.
