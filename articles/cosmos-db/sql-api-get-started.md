@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102423963"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Självstudie: Bygg en .NET-konsol-app för att hantera data i Azure Cosmos DB SQL API-konto
@@ -79,7 +79,7 @@ Toppen! Konfigurationen är slutförd, så vi kan börja skriva kod. Ett slutfö
 
 ## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Steg 3: Ansluta till ett Azure Cosmos DB-konto
 
-1. Ersätt referenserna i början av ditt C#-program i filen *program.cs* med följande referenser:
+1. Ersätt referenserna i början av ditt C#-program i filen *program. cs* med följande referenser:
 
    ```csharp
    using System;
@@ -124,7 +124,7 @@ Toppen! Konfigurationen är slutförd, så vi kan börja skriva kod. Ett slutfö
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Hämta Azure Cosmos DB nycklar från Azure Portal":::
 
-1. Ersätt  `<your endpoint URL>` med värdet för **URI** i program.cs. Ersätt `<your primary key>` med värdet för **primär nyckel**.
+1. Ersätt med värdet för URI i *program. cs* `<your endpoint URL>` .  Ersätt `<your primary key>` med värdet för **primär nyckel**.
 
 1. Under **main** -metoden lägger du till en ny asynkron aktivitet som heter **GetStartedDemoAsync**, som skapar en instans av vår nya `CosmosClient` .
 
@@ -179,7 +179,7 @@ En databas är en logisk container med objekt som är partitionerade över conta
     }
     ```
 
-    Din *program.cs* bör nu se ut så här, med din slut punkt och primär nyckel ifylld.
+    Ditt *program. cs* bör nu se ut så här, med din slut punkt och primär nyckel ifylld.
 
     ```csharp
     using System;
@@ -311,14 +311,14 @@ Först ska vi skapa en `Family` klass som representerar objekt som lagras i Azur
 
 1. Välj Ctrl + Skift + A för att öppna **Lägg till nytt objekt**. Lägg till en ny klass `Family.cs` i projektet.
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Skärm bild som visar hur du lägger till en ny Family.cs-klass i projektet":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Skärm bild som visar hur du lägger till en ny Family. cs-klass i projektet":::
 
 1. Kopiera och klistra in `Family` `Parent` klassen,,, `Child` `Pet` och `Address` i `Family.cs` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. Gå tillbaka till *program.cs* och Lägg till `AddItemsToContainerAsync` metoden efter din `CreateContainerAsync` metod.
+1. Tillbaka i *program. cs*, Lägg till `AddItemsToContainerAsync` metoden efter din `CreateContainerAsync` metod.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 

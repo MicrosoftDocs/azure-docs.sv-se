@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/18/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365471"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655707"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egenskaper för en Azure Active Directory B2B-samarbets användare
 
@@ -106,7 +106,7 @@ Det går att inaktivera standard begränsningarna så att en gäst användare i 
 ![Skärm bild som visar alternativet externa användare i användar inställningarna](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan jag göra gäst användare synliga i den globala adress listan i Exchange?
-Ja. Gäst objekt visas som standard inte i din organisations globala adress lista, men du kan använda Azure Active Directory PowerShell för att göra dem synliga. Mer information finns i **kan jag göra gäst objekt synliga i den globala adress listan?** i [Hantera gäst åtkomst i Microsoft 365 grupper](/office365/admin/create-groups/manage-guest-access-in-groups).
+Ja. Gäst objekt visas som standard inte i din organisations globala adress lista, men du kan använda Azure Active Directory PowerShell för att göra dem synliga. Mer information finns i avsnittet "lägga till gäster i den globala adress listan" i [artikeln Microsoft 365 per grupp gäst åtkomst](/microsoft-365/solutions/per-group-guest-access).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kan jag uppdatera en gäst användares e-postadress?
 

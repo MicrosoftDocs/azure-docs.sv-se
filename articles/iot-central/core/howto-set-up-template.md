@@ -11,10 +11,10 @@ ms.custom:
 - contperf-fy21q1
 - device-developer
 ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363210"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definiera en ny IoT-enhetstyp i Azure IoT Central-programmet
@@ -130,7 +130,7 @@ I följande tabell visas konfigurations inställningarna för en telemetri-funkt
 | Fält | Beskrivning |
 | ----- | ----------- |
 | Visningsnamn | Visnings namnet för telemetri-värdet som används i vyer och formulär. |
-| Namn | Namnet på fältet i telemetri meddelandet. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
+| Name | Namnet på fältet i telemetri meddelandet. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
 | Typ av kapacitet | Telemetridata. |
 | Semantisk typ | Den semantiska typen av telemetri, till exempel temperatur, tillstånd eller händelse. Valet av semantisk typ avgör vilka av följande fält som är tillgängliga. |
 | Schema | Data typen telemetri, till exempel Double, String eller Vector. De tillgängliga alternativen bestäms av semantisk typ. Schemat är inte tillgängligt för semantiska typer av händelse och tillstånd. |
@@ -150,7 +150,7 @@ I följande tabell visas konfigurations inställningarna för en egenskaps funkt
 | Fält | Beskrivning |
 | ----- | ----------- |
 | Visningsnamn | Visnings namnet för egenskap svärdet som används i vyer och formulär. |
-| Namn | Egenskapens namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
+| Name | Egenskapens namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
 | Typ av kapacitet | Immaterialrätt. |
 | Semantisk typ | Den semantiska typen för egenskapen, till exempel temperatur, tillstånd eller händelse. Valet av semantisk typ avgör vilka av följande fält som är tillgängliga. |
 | Schema | Egenskaps data typen, t. ex. Double, String eller Vector. De tillgängliga alternativen bestäms av semantisk typ. Schemat är inte tillgängligt för semantiska typer av händelse och tillstånd. |
@@ -171,7 +171,7 @@ I följande tabell visas konfigurations inställningarna för en kommando funkti
 | Fält | Beskrivning |
 | ----- | ----------- |
 | Visningsnamn | Visnings namnet för kommandot som används i vyer och formulär. |
-| Namn | Kommandots namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
+| Name | Kommandots namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
 | Typ av kapacitet | Kommandoprompt. |
 | Kommentar | Eventuella kommentarer om kommando funktionen. |
 | Beskrivning | En beskrivning av kommando funktionen. |
@@ -210,7 +210,7 @@ I följande tabell visas konfigurations inställningarna för en moln egenskap:
 | Fält | Beskrivning |
 | ----- | ----------- |
 | Visningsnamn | Visnings namnet för moln egenskap svärdet som används i vyer och formulär. |
-| Namn | Namnet på moln egenskapen. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. |
+| Name | Namnet på moln egenskapen. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. |
 | Semantisk typ | Den semantiska typen för egenskapen, till exempel temperatur, tillstånd eller händelse. Valet av semantisk typ avgör vilka av följande fält som är tillgängliga. |
 | Schema | Data typen Cloud Property, till exempel Double, String eller Vector. De tillgängliga alternativen bestäms av semantisk typ. |
 

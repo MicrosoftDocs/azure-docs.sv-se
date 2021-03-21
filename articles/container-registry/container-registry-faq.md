@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
 ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606291"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Vanliga frågor och svar om Azure Container Registry
@@ -19,7 +19,7 @@ Den här artikeln handlar om vanliga frågor och kända problem med Azure Contai
 Fel söknings vägledning för registret finns i:
 * [Felsöka inloggning av registret](container-registry-troubleshoot-login.md)
 * [Felsöka nätverks problem med registret](container-registry-troubleshoot-access.md)
-* [Felsöka registerprestanda](container-registry-troubleshoot-performance.md)
+* [Felsöka register prestanda](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Resurshantering
 
@@ -485,7 +485,7 @@ För fullständiga namngivnings regler för databaser, se [distributions specifi
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hur gör jag för att samla in http-spårningar i Windows?
 
-#### <a name="prerequisites"></a>Krav
+#### <a name="prerequisites"></a>Förutsättningar
 
 - Aktivera dekryptering av https i Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Aktivera Docker att använda en proxy via Docker-gränssnittet: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -505,7 +505,7 @@ Hitta IP-adressen för den virtuella växeln Docker VM:
 
 Konfigurera Docker-proxyn till utdata från föregående kommando och port 8888 (till exempel 10.0.75.1:8888)
 
-## <a name="tasks"></a>Aktiviteter
+## <a name="tasks"></a>Uppgifter
 
 - [Vill du avbryta körningen av batch Hur gör jag för att batch?](#how-do-i-batch-cancel-runs)
 - [Hur gör jag för att inkludera mappen. git i AZ ACR build-kommandot?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
@@ -539,8 +539,8 @@ Vi stöder för närvarande inte GitLab för käll utlösare.
 |---|---|---|---|
 | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Ja |
 | Azure-lagringsplatser | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ja | Ja |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Nej |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ja | Nej |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Inga |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ja | Inga |
 
 ## <a name="run-error-message-troubleshooting"></a>Köra fel meddelande fel sökning
 

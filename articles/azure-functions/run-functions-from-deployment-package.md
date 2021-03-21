@@ -3,12 +3,12 @@ title: Köra Azure Functions från ett paket
 description: Kör den Azure Functions körningen av dina funktioner genom att montera en distributions paket fil som innehåller dina projektfiler för Function-appen.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad6991d0ddd5c439d03e41adec63837a21db87b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639893"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581600"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Köra Azure Functions från en paketfil
 
@@ -63,6 +63,7 @@ Följande visar en Function-app som kon figurer ATS för att köras från en. zi
 
 - Kör från paket gör `wwwroot` skrivskyddat så att du får ett fel meddelande när du skriver filer till den här katalogen.
 - Tar-och gzip-format stöds inte.
+- ZIP-filen kan bara vara 1 GB.
 - Den här funktionen skapar inte lokal cache.
 - För förbättrade kall start prestanda använder du det lokala zip-alternativet ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 - Kör från paket är inkompatibelt med alternativet för distributions anpassning ( `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ), build-steget kommer att ignoreras under distributionen.

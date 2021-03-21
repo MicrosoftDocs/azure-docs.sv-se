@@ -4,10 +4,10 @@ description: I den här snabb starten följer du stegen för att köra din förs
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920108"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Snabb start: kör din första resurs diagram fråga med Azure Resource Graph Explorer

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
 ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494299"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender-IoT-Micro-agent för Azure återställnings tider-API (för hands version)
@@ -40,7 +40,7 @@ Den här rutinen aktiverar under systemet Azure IoT Defender-IoT-Micro-agent. En
 
 ### <a name="parameters"></a>Parametrar
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 |---------|---------|
 | nx_azure_iot_ptr [i]    | En pekare till en `NX_AZURE_IOT` .  |
 
@@ -73,7 +73,7 @@ Den här rutinen inaktiverar under systemet Azure IoT Defender-IoT-Micro-agent.
 
 ### <a name="parameters"></a>Parametrar
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 |---------|---------|
 | nx_azure_iot_ptr [i]    | En pekare till `NX_AZURE_IOT` . Om NULL är inaktive rad singleton-instansen. |
 

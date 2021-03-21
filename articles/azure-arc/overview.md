@@ -4,10 +4,10 @@ description: Lär dig mer om vad Azure-bågen är och hur den hjälper kunderna 
 ms.date: 03/02/2021
 ms.topic: overview
 ms.openlocfilehash: 33c9d6ca87c3d8d2d8920ff429902f5876bbdc59
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101650200"
 ---
 # <a name="azure-arc-overview"></a>Översikt över Azure Arc

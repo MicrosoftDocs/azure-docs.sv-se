@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
 ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96601619"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Förstå priser för Azure Application Gateway och brand vägg för webbaserade program
@@ -57,7 +57,7 @@ I följande tabell visas exempel priser baserade på en ögonblicks bild av pris
 |              Application Gateway typ             |  Kostnader ($/timme)  |
 | ------------------------------------------------- | ---------------|
 |                     Liten                         |    $0,025      |
-|                     Medium                        |    $0,07       |
+|                     Medel                        |    $0,07       |
 |                     Stor                         |    $0,32       |
 
 De beräknade månads priserna baseras på 730 timmars användning per månad.
@@ -83,7 +83,7 @@ I följande tabell visas exempel priser baserade på en ögonblicks bild av pris
 |              Application Gateway typ             |  Kostnader ($/timme)  |
 | ------------------------------------------------- | ---------------|
 |                     Liten                         |       NA       |
-|                     Medium                        |     $0,126     |
+|                     Medel                        |     $0,126     |
 |                     Stor                         |     $0,448     |
 
 De beräknade månads priserna baseras på 730 timmars användning per månad.

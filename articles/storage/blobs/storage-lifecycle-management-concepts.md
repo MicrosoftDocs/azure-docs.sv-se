@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005290"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer
@@ -53,7 +53,7 @@ Du kan lägga till, redigera eller ta bort en princip med någon av följande me
 En princip kan läsas eller skrivas fullständigt. Del uppdateringar stöds inte. 
 
 > [!NOTE]
-> Om du aktiverar brand Väggs regler för ditt lagrings konto kan begäran om livs cykel hantering blockeras. Du kan avblockera dessa förfrågningar genom att tillhandahålla undantag för betrodda Microsoft-tjänster. Mer information finns i avsnittet undantag i [Konfigurera brand väggar och virtuella nätverk](../common/storage-network-security.md#exceptions).
+> Om du aktiverar brand Väggs regler för ditt lagrings konto kan begäran om livs cykel hantering blockeras. Du kan avblockera dessa begäranden genom att tillhandahålla undantag för betrodda Microsoft-tjänster. Mer information finns i avsnittet undantag i [Konfigurera brand väggar och virtuella nätverk](../common/storage-network-security.md#exceptions).
 
 Den här artikeln visar hur du hanterar principer med hjälp av Portal-och PowerShell-metoder.
 
@@ -239,13 +239,13 @@ En princip för livs cykel hantering är en samling regler i ett JSON-dokument:
 
 En princip är en samling regler:
 
-| Parameternamn | Parameter typ | Kommentarer |
+| Parameternamn | Parametertyp | Kommentarer |
 |----------------|----------------|-------|
 | `rules`        | En matris med regel objekt | Minst en regel krävs i en princip. Du kan definiera upp till 100 regler i en princip.|
 
 Varje regel i principen har flera parametrar:
 
-| Parameternamn | Parameter typ | Kommentarer | Obligatorisk |
+| Parameternamn | Parametertyp | Kommentarer | Obligatorisk |
 |----------------|----------------|-------|----------|
 | `name`         | Sträng |Ett regel namn kan innehålla upp till 256 alfanumeriska tecken. Regel namnet är Skift läges känsligt. Det måste vara unikt inom en princip. | Sant |
 | `enabled`      | Boolesk | En valfri boolesk för att tillåta att en regel är tillfälligt inaktive rad. Standardvärdet är true om det inte har angetts. | Falskt | 
@@ -317,9 +317,9 @@ Filtren är:
 
 | Filternamn | Filtertyp | Kommentarer | Krävs |
 |-------------|-------------|-------|-------------|
-| blobTypes   | En matris med fördefinierade uppräknings värden. | Den aktuella versionen stöder `blockBlob` och `appendBlob` . Endast borttagning stöds för `appendBlob` , Set-nivån stöds inte. | Yes |
-| prefixMatch | En matris med strängar för prefix som ska matchas. Varje regel kan definiera upp till tio prefix. En prefixlängd måste börja med ett behållar namn. Om du till exempel vill matcha alla blobbar under `https://myaccount.blob.core.windows.net/container1/foo/...` för en regel är prefixMatch `container1/foo` . | Om du inte definierar prefixMatch gäller regeln för alla blobbar i lagrings kontot. | No |
-| blobIndexMatch | En matris med ordboks värden som består av BLOB index tag gen nyckel och värde villkor som ska matchas. Varje regel kan definiera upp till 10 tagg villkor för BLOB-index. Om du till exempel vill matcha alla blobbar med `Project = Contoso` under `https://myaccount.blob.core.windows.net/` för en regel är blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Om du inte definierar blobIndexMatch gäller regeln för alla blobbar i lagrings kontot. | No |
+| blobTypes   | En matris med fördefinierade uppräknings värden. | Den aktuella versionen stöder `blockBlob` och `appendBlob` . Endast borttagning stöds för `appendBlob` , Set-nivån stöds inte. | Ja |
+| prefixMatch | En matris med strängar för prefix som ska matchas. Varje regel kan definiera upp till tio prefix. En prefixlängd måste börja med ett behållar namn. Om du till exempel vill matcha alla blobbar under `https://myaccount.blob.core.windows.net/container1/foo/...` för en regel är prefixMatch `container1/foo` . | Om du inte definierar prefixMatch gäller regeln för alla blobbar i lagrings kontot. | Inga |
+| blobIndexMatch | En matris med ordboks värden som består av BLOB index tag gen nyckel och värde villkor som ska matchas. Varje regel kan definiera upp till 10 tagg villkor för BLOB-index. Om du till exempel vill matcha alla blobbar med `Project = Contoso` under `https://myaccount.blob.core.windows.net/` för en regel är blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Om du inte definierar blobIndexMatch gäller regeln för alla blobbar i lagrings kontot. | Inga |
 
 > [!NOTE]
 > BLOB-indexet finns i en offentlig för hands version och är tillgängligt i regionerna **Kanada**, **östra**, **centrala Frankrike** och **södra Frankrike** . Mer information om den här funktionen tillsammans med kända problem och begränsningar finns i [Hantera och hitta data på Azure Blob Storage med BLOB index (för hands version)](storage-manage-find-blobs.md).
@@ -330,7 +330,7 @@ Filtren är:
 
 Livs cykel hantering stöder nivåer och borttagning av blobbar, tidigare BLOB-versioner och blob-ögonblicksbilder. Definiera minst en åtgärd för varje regel på bas-blobbar, tidigare BLOB-versioner eller BLOB-ögonblicksbilder.
 
-| Åtgärd                      | Bas-BLOB                                  | Ögonblicksbild      | Version
+| Action                      | Bas-BLOB                                  | Ögonblicksbild      | Version
 |-----------------------------|--------------------------------------------|---------------|---------------|
 | tierToCool                  | Stöds för `blockBlob`                  | Stöds     | Stöds     |
 | enableAutoTierToHotFromCool | Stöds för `blockBlob`                  | Stöds inte | Stöds inte |
@@ -342,7 +342,7 @@ Livs cykel hantering stöder nivåer och borttagning av blobbar, tidigare BLOB-v
 
 Körnings villkoren baseras på ålder. Bas-blobbar använder den senast ändrade tiden, BLOB-versioner använder skapande tid för version och blob-ögonblicksbilder använder ögonblicks bilds skapande tiden för att spåra ålder.
 
-| Åtgärds körnings villkor               | Villkors värde                          | Description                                                                      |
+| Åtgärds körnings villkor               | Villkors värde                          | Beskrivning                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Heltals värde som anger ålder i dagar | Villkoret för bas-BLOB-åtgärder                                              |
 | daysAfterCreationGreaterThan       | Heltals värde som anger ålder i dagar | Villkoret för blob-version och åtgärder för BLOB-ögonblicksbilder                         |
@@ -596,4 +596,4 @@ Lär dig hur du återställer data efter en oavsiktlig borttagning:
 
 Lär dig hur du hanterar och hittar data med BLOB-index:
 
-- [Hantera och hitta data på Azure Blob Storage med BLOB-index](storage-manage-find-blobs.md)
+- [Hantera och hitta data på Azure Blob Storage med blobindex](storage-manage-find-blobs.md)

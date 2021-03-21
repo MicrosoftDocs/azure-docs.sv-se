@@ -10,26 +10,36 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423721"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655350"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysera med Apache Spark
 
 I den här självstudien får du lära dig de grundläggande stegen för att läsa in och analysera data med Apache Spark för Azure-Synapse.
 
+## <a name="create-a-serverless-apache-spark-pool"></a>Skapa en server lös Apache Spark-pool
+
+1. I Synapse Studio väljer du **Hantera**  >  **Apache Spark pooler** i det vänstra fönstret.
+1. Välj **nytt** 
+1. Ange **Spark1** som **namn på Apache Spark pool** .
+1. För **Node-storlek** anger du **liten**.
+1. För **antal noder** ställer du in minst 3 och maximalt 3
+1. Välj **Granska + skapa** > **Skapa**. Apache Spark-poolen är klar efter några sekunder.
+
+## <a name="understanding-serverless-apache-spark-pools"></a>Förstå Server lös Apache Spark pooler
+
+En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta med Spark. När du börjar använda en pool skapas en spark-session vid behov. Poolen styr hur många Spark-resurser som kommer att användas av den sessionen och hur länge sessionen är bra sist innan den pausas automatiskt. Du betalar för Spark-resurser som används under den sessionen, inte för själva poolen. På så sätt kan du arbeta med Spark i en spark-pool utan att behöva oroa dig för att hantera kluster. Detta liknar hur en server lös SQL-pool fungerar.
+
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analysera NYC taxi-data i Blob Storage med Spark
 
-1. I **data** hubben klickar du på **+** knappen för att **lägga till en ny resurs** och klickar sedan på >> **Bläddra i galleriet**. 
-1. Hitta **NYC taxi & limousine provision-Yellow taxi resor** och klicka på den. 
-1. Klicka på **Fortsätt** längst ned på sidan och Lägg sedan **till data uppsättning**. 
-1. Högerklicka på **Azure Blob Storage >> exempel data uppsättningar >> nyc_tlc_yellow** och välj **ny antecknings bok**, i **data** hubb under **länkad**, och Läs sedan **in till data ram**.
-1. Då skapas en ny antecknings bok med följande kod:
+1. Gå till **utveckla** hubben i Synapse Studio
+2. Skapa en newnNotebook med standard språket inställt på **PySpark (python)**.
+3. Skapa en ny Code-cell och klistra in följande kod i cellen.
     ```
-
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
@@ -38,40 +48,26 @@ I den här självstudien får du lära dig de grundläggande stegen för att lä
     display(df.limit(10))
     ```
 1. I antecknings boken, på menyn **Anslut till** , väljer du den **Spark1** -server som vi skapade tidigare.
-1. Välj **Kör** i cellen. Synapse kommer att starta en ny Spark-session för att köra den här cellen om det behövs. Om en ny Spark-session behövs, tar intially det att ta ungefär två sekunder att skapa. 
+1. Välj **Kör** i cellen. Synapse kommer att starta en ny Spark-session för att köra den här cellen om det behövs. Om en ny Spark-session behövs tar det en första sekund att skapa två sekunder. 
 1. Om du bara vill se schemat för dataframe kör du en cell med följande kod:
-    ```
 
+    ```py
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Läs in NYC taxi-data till Spark nyctaxi-databasen
 
-Data är tillgängliga i en tabell i **SQLPOOL1**. Läs in den i en spark-databas med namnet **nyctaxi**.
+Data är tillgängliga via dataframe med namnet **data**. Läs in den i en spark-databas med namnet **nyctaxi**.
 
-1. Gå till **utveckla** hubben i Synapse Studio.
-1. Välj **+**  >  **antecknings bok**.
-1. Ange värdet **koppla till** värde till **Spark1** överst i antecknings boken.
-1. I den nya antecknings bokens första kod cell och ange sedan följande kod:
+1. Lägg till en ny till antecknings boken och ange sedan följande kod:
 
-
-    ```scala
-    %%spark
-    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
-    val df = spark.read.sqlanalytics("SQLPOOL1.dbo.Trip") 
+    ```py
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
-
-
-1. Kör skriptet. Det kan ta 2-3 minuter.
-1. I **data** hubben på fliken **arbets yta** högerklickar du på **databaser** och väljer sedan **Uppdatera**. Nu bör du se databasen **nyctaxi (Spark)** i listan.
-
-
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analysera NYC taxi-data med Spark och Notebooks
 
 1. Återgå till din bärbara dator.
 1. Skapa en ny kod cell och ange följande kod. 
-
 
    ```py
    %%pyspark
@@ -81,7 +77,6 @@ Data är tillgängliga i en tabell i **SQLPOOL1**. Läs in den i en spark-databa
 
 1. Kör cellen för att visa de NYC taxi-data som vi läste in i **nyctaxi** Spark-databasen.
 1. Skapa en ny kod cell och ange följande kod. Kör sedan cellen för att utföra samma analys som vi gjorde tidigare med den dedikerade SQL-poolen **SQLPOOL1**. Den här koden sparar och visar resultatet av analysen i en tabell med namnet **nyctaxi. passengercountstats**.
-
 
    ```py
    %%pyspark
@@ -100,19 +95,8 @@ Data är tillgängliga i en tabell i **SQLPOOL1**. Läs in den i en spark-databa
 
 1. I cell resultaten väljer du **diagram** för att visa data som visualiseras.
 
-## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>Läsa in data från en spark-tabell till en dedikerad SQL-adresspool
-
-Tidigare kopierade data från den dedikerade SQL-adresspoolen **SQLPOOL1. dbo. resan** till Spark-tabellen **nyctaxi. resan**. Sedan aggregerade du data till Spark-tabellen **nyctaxi. passengercountstats**. Nu ska du kopiera data från **nyctaxi. passengercountstats** till en särskild SQL-pool med namnet **SQLPOOL1. dbo. passengercountstats**.
-
-1. Skapa en ny kod cell och ange följande kod. Kör cellen i din bärbara dator. Den sammanställda Spark-tabellen kopieras till den dedikerade tabellen för SQL-poolen.
-
-```scala
-%%spark
-val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
-df.write.sqlanalytics("SQLPOOL1.dbo.PassengerCountStats", Constants.INTERNAL )
-```
 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Analysera data med Server lös SQL-pool](get-started-analyze-sql-on-demand.md)
+> [Analysera data med dedikerad SQL-pool](get-started-analyze-sql-pool.md)

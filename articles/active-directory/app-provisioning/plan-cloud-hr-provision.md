@@ -12,10 +12,10 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99256719"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planera molnet HR Application för att Azure Active Directory användar etablering
@@ -92,11 +92,11 @@ Du måste också ha en giltig Azure AD Premium P1 eller högre prenumerations li
 
 | **Resurser** | **Länk och beskrivning** |
 |:-|:-|
-| Video | [Vad är användar etablering i Active Azure-katalogen?](https://youtu.be/_ZjARPpI6NI) |
+| Videoklipp | [Vad är användar etablering i Active Azure-katalogen?](https://youtu.be/_ZjARPpI6NI) |
 | | [Så här distribuerar du användar etablering i Active Azure-katalogen](https://youtu.be/pKzyts6kfrw) |
 | Självstudier | [Lista över självstudier om hur du integrerar SaaS-appar med Azure AD](../saas-apps/tutorial-list.md) |
 | | [Självstudie: Konfigurera arbets dag för automatisk användar etablering](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| VANLIGA FRÅGOR OCH SVAR | [Automatiserad användar etablering](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| Vanliga frågor | [Automatiserad användar etablering](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Etablering från Workday till Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Lösningsarkitektur

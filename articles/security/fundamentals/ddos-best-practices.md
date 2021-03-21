@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498939"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – utforma elastiska lösningar
@@ -135,13 +135,13 @@ Det är en bra idé att testa dina antaganden om hur dina tjänster kommer att s
 
 Vi samarbetar med [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) för att skapa ett gränssnitt där Azure-kunder kan generera trafik mot DDoS Protection-aktiverade offentliga slut punkter för simuleringar. Du kan använda [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) simulering för att:
 
-- Verifiera hur Azure DDoS Protection hjälper till att skydda dina Azure-resurser från DDoS-attacker.
+- Validera hur Azure DDoS Protection hjälper till att skydda dina Azure-resurser från DDoS-attacker.
 
-- Optimera incident svars processen under DDoS-angrepp.
+- Optimera incidenthanteringsprocessen under DDoS-angrepp.
 
 - Dokumentera DDoS-efterlevnad.
 
-- Träna dina nätverks säkerhets team.
+- Träna dina nätverkssäkerhetsgrupper.
 
 Cybersäkerhet kräver ständig innovation i försvars verksamhet. Azure DDoS standard Protection är ett bra erbjudande med en effektiv lösning för att minimera ökande komplexa DDoS-attacker.
 
@@ -189,7 +189,7 @@ Azure DDoS Protection standard identifierar och minimerar DDoS-attacker utan att
 
   Den DDoS Protection tjänsten startar bara en minskning om mått värde **principen för att utlösa DDoS-minskning (TCP/TCP syn/UDP)** är lägre än den trafik som tas emot på den skyddade offentliga IP-resursen.
 
-- Du planerar en virus händelse som ökar nätverks trafiken markant.
+- Du planerar ett viralt evenemang som kommer att öka nätverkstrafiken markant.
 
 - En aktör har hotat att starta en DDoS-attack mot dina resurser.
 
@@ -264,7 +264,7 @@ Mer information om den här referens arkitekturen finns i [utöka Azure HDInsigh
 
 
 > [!NOTE]
-> Azure App Service-miljön för PowerApps eller API Management i ett virtuellt nätverk med en offentlig IP-adress stöds inte internt.
+> Azure App Service Environment för PowerApps eller API Management i ett virtuellt nätverk med en offentlig IP-adress stöds inte internt.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: 6d93b6d024fc966f3b260602f4798a2d77669a35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501166"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Språk-och region stöd för API för visuell sökning i Bing

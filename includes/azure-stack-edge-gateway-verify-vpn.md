@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: efa9e996cbfbc8954c294b4da8900b1d5bcbeeed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96467388"
 ---
 Du kan skapa ett lagrings konto som bara kan nås av det virtuella nätverk som du har skapat för att kontrol lera VPN. Följ de här stegen för att skapa och associera det här lagrings kontot med det virtuella nätverk som du skapade:

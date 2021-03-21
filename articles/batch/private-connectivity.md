@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920011"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Använd privata slutpunkter med Azure Batch-konton
@@ -24,7 +24,7 @@ Med privat länk kan användare komma åt ett Azure Batch konto inifrån det vir
 
 I den här artikeln beskrivs stegen för att skapa ett privat batch-konto och komma åt det med en privat slut punkt.
 
-## <a name="azure-portal"></a>Azure-portalen
+## <a name="azure-portal"></a>Azure Portal
 
 Använd följande steg för att skapa ett privat batch-konto med hjälp av Azure Portal:
 
@@ -95,7 +95,7 @@ Använd en [privat DNS-zon](../dns/private-dns-privatednszone.md) i det undernä
 
 När du skapar den privata slut punkten kan du integrera den med en [privat DNS-zon](../dns/private-dns-privatednszone.md) i Azure. Om du väljer att använda en [anpassad domän](../dns/dns-custom-domain.md)i stället måste du konfigurera den för att lägga till DNS-poster för alla privata IP-adresser som reserver ATS för den privata slut punkten.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Mer information om kostnader som rör privata slut punkter finns i [priser för privata Azure-länkar](https://azure.microsoft.com/pricing/details/private-link/).
 

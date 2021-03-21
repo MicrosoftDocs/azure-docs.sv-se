@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 53df5f0601ec567b20ced5b3bdbfa8af845b39ed
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 69c600384a7877f3534bae0b57f862187feb32ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574364"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581515"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partners och peeringplatser
 
@@ -88,11 +88,11 @@ Följande tabell innehåller anslutningsplatser och tjänstleverantörerna för 
 | **Canberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Australien, centrala | 10G, 100G | CDC |
 | **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Australien, centrala 2| 10G, 100G | CDC, Equinix |
 | **Kapstaden** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Sydafrika, västra | 10 G | BCX, Internet-lösningar – moln anslutning, flytande telekom, Teraco |
-| **Chennai** | Tata Communications | 2 | Indien, södra | 10 G | Global CloudXchange (GCX), SIFY, Tata Communications, VodafoneIdea |
+| **Chennai** | Tata Communications | 2 | Indien, södra | 10 G | BSNL, global CloudXchange (GCX), SIFY, Tata Communications, VodafoneIdea |
 | **Chennai2** | Airtel | 2 | Indien, södra | 10 G | Airtel |
 | **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | USA, norra centrala | 10G, 100G | Aryaka Networks, på&T netobligation, British Telecom, CenturyLink Cloud Connect, Cologix, Colt, Comcast, Coresite, Equinix, intercloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW global Limited, Sprint, Telia Carrier, Verizon, Zayo |
 | **Hamn** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | saknas | 10 G | Interxion |
-| **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | saknas | 10G, 100G | Aryaka-nätverk, på&T netobligation, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex uninet, Telia Carrier, Transtelco, Verizon, Zayo|
+| **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | saknas | 10G, 100G | Aryaka-nätverk, på&T netobligation, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, PacketFabric, Telmex uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | USA, västra centrala | saknas | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | Förenade Arabemiraten, norra | saknas | Etisalat Förenade Arabemiraten |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Förenade Arabemiraten, norra | saknas | DE CIX, du datamena, Equinix, Megaport, orange, Orixcom |
@@ -117,7 +117,7 @@ Följande tabell innehåller anslutningsplatser och tjänstleverantörerna för 
 | **Milano** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | saknas | 10 G | Colt, Equinix, Fastweb, IRIDEOS, Retelit |
 | **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | saknas | 10G, 100G | Cologix, Megaport |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | saknas | 10G, 100G | Bell Canada, Cologix, Fibrenoire, Megaport, Telus, Zayo |
-| **Mumbai** | Tata Communications | 2 | Indien, västra | 10 G | CIX, global CloudXchange (GCX), förlitande jio, sify, Tata kommunikation, Verizon |
+| **Mumbai** | Tata Communications | 2 | Indien, västra | 10 G | BSNL, CIX, global CloudXchange (GCX), förlitande jio, sify, Tata kommunikation, Verizon |
 | **Mumbai2** | Airtel | 2 | Indien, västra | 10 G | Airtel, Sify, Vodafone Idea |
 | **München** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | saknas | 10 G | DE-CIX |
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | saknas | 10G, 100G | CenturyLink Cloud Connect, Colt, Coresite, L'-CIX, Equinix, intercloud, Megaport, Packet, Zayo |

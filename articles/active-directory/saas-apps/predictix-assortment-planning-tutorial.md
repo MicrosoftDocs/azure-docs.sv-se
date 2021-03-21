@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: adf00d24c05deab149edb95b8087b8522dbda99a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Självstudie: Azure Active Directory integrering med Predictix sortiment
@@ -48,7 +48,7 @@ I den här självstudien konfigurerar och testar du enkel inloggning i Azure AD 
 
 Om du vill ställa in integreringen av Predictix sortiments planering i Azure AD måste du lägga till Predictix sortiments planering från galleriet till listan över hanterade SaaS-appar.
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory**i den vänstra rutan:
+1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory** i den vänstra rutan:
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
@@ -60,7 +60,7 @@ Om du vill ställa in integreringen av Predictix sortiments planering i Azure AD
 
     ![Välj nytt program](common/add-new-app.png)
 
-4. Skriv **Predictix sortiments planering**i sökrutan. Välj **Predictix sortiment planering** i Sök resultaten och välj sedan **Lägg till**.
+4. Skriv **Predictix sortiments planering** i sökrutan. Välj **Predictix sortiment planering** i Sök resultaten och välj sedan **Lägg till**.
 
      ![Sökresultat](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ I det här avsnittet ska du aktivera enkel inloggning med Azure AD i Azure Porta
 
 Följ dessa steg för att konfigurera enkel inloggning för Azure AD med Predictix sortiment:
 
-1. På sidan [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **Predictix sortiments planerings** program integrering:
+1. På sidan [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **Predictix sortiments planerings** program integrering:
 
     ![Välj enkel inloggning](common/select-sso.png)
 
@@ -139,7 +139,7 @@ Om du vill konfigurera enkel inloggning på Predictix sortiments planerings sida
 
 I det här avsnittet ska du skapa en test användare med namnet Britta Simon i Azure Portal.
 
-1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare**och väljer sedan **alla användare**:
+1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare** och väljer sedan **alla användare**:
 
     ![Välj alla användare](common/users.png)
 
@@ -153,9 +153,9 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Till exempel BrittaSimon@contoso.com .)
 
-    1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
+    1. Välj **Visa lösen ord** och skriv sedan ned värdet i rutan **lösen ord** .
 
     1. Välj **Skapa**.
 
@@ -163,11 +163,11 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure AD genom att ge henne till gång till Predictix sortiment-planering.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Predictix sortiment planering**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Predictix sortiment planering**.
 
     ![Företagsprogram](common/enterprise-applications.png)
 
-2. Välj **Predictix sortiments planering**i listan med program.
+2. Välj **Predictix sortiments planering** i listan med program.
 
     ![Lista över program](common/all-applications.png)
 

@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004967"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Skapa, ändra eller ta bort tjänstens slut punkts princip med hjälp av Azure Portal
 
 Med tjänst slut punkts principer kan du filtrera virtuell nätverks trafik till vissa Azure-resurser, över tjänst slut punkter. Om du inte är bekant med tjänstens slut punkts principer kan du läsa mer i [Översikt över tjänst slut punkts principer](virtual-network-service-endpoint-policies-overview.md) .
 
- I de här självstudierna får du lära dig att
+ I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en princip för tjänst slut punkt
@@ -31,7 +31,7 @@ Med tjänst slut punkts principer kan du filtrera virtuell nätverks trafik till
 > * Skapa ett virtuellt nätverk med ett undernät
 > * Koppla en tjänst slut punkts princip till ett undernät
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure 
 

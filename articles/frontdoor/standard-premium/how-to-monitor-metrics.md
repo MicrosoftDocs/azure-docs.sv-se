@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: bb10fb337972db2696960b530f2d7538bd36a2fb
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101099385"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Real tids övervakning i Azures främre dörr standard/Premium
@@ -35,7 +35,7 @@ Du kan konfigurera aviseringar för varje mått, till exempel ett tröskelvärde
 
 ## <a name="metrics-supported-in-azure-front-door-standardpremium"></a>Mått som stöds i Azures främre dörr standard/Premium
 
-| Mått  | Description | Dimensioner |
+| Mått  | Beskrivning | Dimensioner |
 | ------------- | ------------- | ------------- |
 | Träff grad för byte | Procent andelen utgående från AFD-cache, beräknad mot total utgående. </br> **Förhållandet mellan byte träff** = (utgångs punkt från Edge-utgång från ursprung)/egress från gräns. </br> **Scenarier som exkluderas i beräkningen av byte-träffar**:</br> 1. du konfigurerar inget cacheminne antingen via regel motor eller cachelagring av frågesträngar. </br> 2. du konfigurerar inte Cache-Control-direktivet utan lagring eller privat cache. </br>3. byte träff-förhållandet kan vara lågt om större delen av trafiken vidarebefordras till ursprung i stället för att hanteras från cachen baserat på dina konfigurationer eller scenarier. | Slutpunkt |
 | RequestCount | Antalet klient begär Anden som hanteras av CDN. | Slut punkt, klient land, klient region, HTTP-status, HTTP-status grupp |

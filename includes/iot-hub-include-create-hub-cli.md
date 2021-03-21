@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
 ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102244877"
 ---
 I följande avsnitt ställer du in en Terminal och använder Azure CLI för att skapa en IoT-hubb. Om du vill konfigurera en Terminal som kör Azure CLI-kommandon kan du antingen använda den webbläsarbaserade Azure Cloud Shell eller använda en lokal Terminal.

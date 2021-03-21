@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96519067"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Data kryptering för Azure Database for MySQL med hjälp av Azure Portal
@@ -41,11 +41,11 @@ Lär dig hur du använder Azure Portal för att konfigurera och hantera data kry
     ```
 
 * Nyckeln måste ha följande attribut för att användas som en kundhanterad nyckel:
-  * Inget förfallo datum
-  * Inte inaktiverat
+  * Inget förfallodatum
+  * Inte aktiverat
   * Utföra **Get**-, **wrap**-och **unwrap** -åtgärder
   * recoverylevel-attributet har angetts till **återställnings** Bart (Detta kräver att mjuk borttagning är aktiverat med kvarhållningsperioden inställt på 90 dagar)
-  * Rensnings skydd aktiverat
+  * Rensningsskydd aktiverat
 
 Du kan kontrol lera attributen ovan i nyckeln med hjälp av följande kommando:
 
@@ -95,7 +95,7 @@ När Azure Database for MySQL har krypterats med en kunds hanterade nyckel som l
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Skärm bild av Azure Database for MySQL med otillgänglig status markerad":::
 
-3. Om du vill göra servern tillgänglig igen, verifierar du nyckeln på den återställda servern. Välj nyckel för att verifiera **data kryptering**  >  **Revalidate key**.
+3. Om du vill göra servern tillgänglig igen, verifierar du nyckeln på den återställda servern. Välj nyckel för att verifiera **data kryptering**  >  .
 
    > [!NOTE]
    > Det första försöket att validera kommer att Miss lyckas eftersom den nya serverns tjänst huvud namn måste ges åtkomst till nyckel valvet. Om du vill generera tjänstens huvud namn väljer du **revalidate Key**, som visar ett fel, men som genererar tjänstens huvud namn. Därefter kan du se [de här stegen](#set-the-right-permissions-for-key-operations) tidigare i den här artikeln.

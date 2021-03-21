@@ -12,10 +12,10 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2ce552a13592c9d26ef70575f98b0b76ecc454ff
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97592000"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Återställa en befintlig dedikerad SQL-pool (tidigare SQL DW)

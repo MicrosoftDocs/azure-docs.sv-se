@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96518676"
 ---
 # <a name="msix-app-attach-glossary"></a>Ord lista för MSIX-appen
@@ -108,11 +108,11 @@ Destaging meddelar det operativ system att ett MSIX-paket eller program som för
 
 ## <a name="cim"></a>OBJEKTHANTERAREN
 
-. CIM är ett nytt fil namns tillägg som är associerat med CimFS (Composite Image File System). Det går snabbare att montera och demontera CIM-filer på en VHD-fil. CIM förbrukar också mindre processor och minne än VHD.
+. CIM är ett nytt fil namns tillägg som är associerat med sammansatta avbildningsfiler system (CimFS). Det går snabbare att montera och demontera CIM-filer på en VHD-fil. CIM förbrukar också mindre processor och minne än VHD.
 
 En CIM-fil är en fil med en. CIM-tillägg som innehåller metadata och minst sex ytterligare filer som innehåller faktiska data. Filerna i CIM-filen har inte tillägg. Följande tabell är en lista över exempel-filer som du hittar i en CIM:
 
-| Filnamn | Filnamnstillägg | Storlek |
+| Filnamn | Anknytning | Storlek |
 |-----------|-----------|------|
 | VSC | OBJEKTHANTERAREN | 1 kB |
 | objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |

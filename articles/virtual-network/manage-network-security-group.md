@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694265"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Skapa, ändra eller ta bort en nätverkssäkerhetsgrupp
@@ -355,7 +355,7 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 
 ### <a name="network-security-group"></a>Nätverkssäkerhetsgrupp
 
-| Action                                                        |   Namn                                                                |
+| Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Read                  |   Hämta nätverks säkerhets grupp                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Skapa eller uppdatera nätverks säkerhets grupp                             |
@@ -369,7 +369,7 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 
 ### <a name="network-security-group-rule"></a>Regel för nätverks säkerhets grupp
 
-| Action                                                        |   Namn                                                                |
+| Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Hämta regel                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Skapa eller uppdatera regel                                               |
@@ -377,7 +377,7 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 
 ### <a name="application-security-group"></a>Programsäkerhetsgrupp
 
-| Action                                                                     | Namn                                                     |
+| Action                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | Koppla en IP-konfiguration till en program säkerhets grupp|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Koppla en säkerhets regel till en program säkerhets grupp    |

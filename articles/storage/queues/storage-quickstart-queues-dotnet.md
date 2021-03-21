@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589533"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Snabb start: Azure Queue Storage V12 för klient bibliotek för .NET
@@ -36,7 +36,7 @@ Ytterligare resurser:
 - [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
 - [Exempel](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - Azure Storage konto – [skapa ett lagrings konto](../common/storage-account-create.md)

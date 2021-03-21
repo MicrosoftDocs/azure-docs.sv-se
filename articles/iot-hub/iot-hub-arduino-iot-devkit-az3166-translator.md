@@ -10,10 +10,10 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96024171"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Använda IoT DevKit-AZ3166 med Azure Functions och Cognitive Services för att göra en språk översättare
@@ -31,7 +31,7 @@ Utför stegen i den här självstudien genom att först utföra följande uppgif
 ## <a name="create-azure-cognitive-service"></a>Skapa Azure-tjänsten för inlärning
 
 1. Klicka på **skapa en resurs** i Azure Portal och Sök efter **tal**. Fyll i formuläret för att skapa Speech Service.
-  ![Tjänst för taligenkänning](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
+  ![Tal tjänst](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Gå till den Speech-tjänst som du precis har skapat och klicka på avsnittet **nycklar** för att kopiera och anteckna **KEY1** för DevKit som har åtkomst till den.
   ![Kopiera nycklar](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)

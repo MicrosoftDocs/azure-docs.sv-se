@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Självstudie: Azure Active Directory integrering med LoginRadius
@@ -32,7 +32,7 @@ Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsn
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med LoginRadius behöver du följande objekt:
 
@@ -188,7 +188,7 @@ Syftet med det här avsnittet är att skapa en test användare som kallas Britta
 
    1. I fältet **namn** anger du **BrittaSimon**.
   
-   1. I fältet **användar namn** anger du `brittasimon@yourcompanydomain.extension` . Ett exempel är BrittaSimon@contoso.com.
+   1. I fältet **användar namn** anger du `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com.
 
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 
