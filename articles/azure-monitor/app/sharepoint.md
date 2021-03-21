@@ -4,10 +4,10 @@ description: Börja övervaka ett nytt program med en ny instrumentationsnyckel
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 74f0eeecb303d68af8aaa48b5c1806ceeef4d318
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102486377"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Övervaka en SharePoint-webbplats med Application Insights

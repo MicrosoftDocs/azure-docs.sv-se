@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905169"
 ---
 # <a name="create-human-reviews-api-console"></a>Skapa mänsklig granskningar (API-konsol)
 
 [Granskar](./review-api.md#reviews) lagring och visning av innehåll för de mänskliga moderatorerna att utvärdera. När en användare slutför en granskning skickas resultatet till en angiven slut punkt för motringning. I den här guiden får du lära dig hur du ställer in granskningar med hjälp av API-konsolen för att granska REST-API: er. När du förstår API: ernas struktur kan du enkelt Porta dessa anrop till alla REST-kompatibla plattformar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Logga in eller skapa ett konto på webbplatsen för Content Moderator [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com/) .
 

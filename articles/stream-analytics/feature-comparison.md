@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020544"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Jämförelse av Azure Stream Analyticss funktion
@@ -23,7 +23,7 @@ Med Azure Stream Analytics kan du skapa strömmande lösningar i molnet och på 
 ## <a name="cloud-job-features"></a>Funktioner i moln jobb
 
 
-|Funktion  |Portalen  |Visual Studio  |Visual Studio-koden  |
+|Funktion  |Portal  |Visual Studio  |Visual Studio-koden  |
 |---------|---------|---------|---------|
 |Plattforms oberoende     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |Skript redigering     |Ja         |Ja         |Ja         |
@@ -45,7 +45,7 @@ Med Azure Stream Analytics kan du skapa strömmande lösningar i molnet och på 
 |JavaScript UDF och UDA     |Ja         |Ja         |Endast Windows         |
 |Machine Learning Service     |Ja        |Ja         |Inga         |
 |Azure Machine Learning Studio (klassisk)|Ja, men det går inte att testa frågan        |Ja |Inga         |
-|Efterlevnadsnivå     |1,0</br>1,1</br>1,2 (standard)         |1,0</br>1,1</br>1,2 (standard)           |1,0</br>1,1</br>1,2 (standard)           |
+|Efterlevnadsnivå     |1.0</br>1.1</br>1,2 (standard)         |1.0</br>1.1</br>1,2 (standard)           |1.0</br>1.1</br>1,2 (standard)           |
 |Inbyggda ML-baserade avvikelse identifierings funktioner     |Ja         |Ja         |Ja         |
 |Inbyggda GeoSpatiala funktioner     |Ja         |Ja         |Ja         |
 
@@ -53,7 +53,7 @@ Med Azure Stream Analytics kan du skapa strömmande lösningar i molnet och på 
 
 ## <a name="iot-edge-job-features"></a>IoT Edge jobb funktioner
 
-|Funktion  |Portalen  |Visual Studio  |Visual Studio-koden  |
+|Funktion  |Portal  |Visual Studio  |Visual Studio-koden  |
 |---------|---------|---------|---------|
 |Jobb redigering     |Ja         |Ja         |Inga         |
 |Källkontroll     |Inga         |Ja         |Inga         |

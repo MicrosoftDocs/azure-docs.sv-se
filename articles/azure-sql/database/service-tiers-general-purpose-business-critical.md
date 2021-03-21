@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
 ms.openlocfilehash: 95e11e98be8a58611a435de533ffcc16ec5ce357
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048564"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database-och Azure SQL-hanterade instans tjänst nivåer
@@ -55,7 +55,7 @@ I följande tabell beskrivs viktiga skillnader mellan tjänst nivåer för den s
 | | SQL-hanterad instans | [3 MB/s per vCore (högst 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | Ej tillämpligt | [4 MB/s per vCore (max 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**Tillgänglighet**|Alla| 99,99 % |  [99,95% med en sekundär replik, 99,99% med fler repliker](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% med redundant zon i en enskild databas](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Säkerhetskopior**|Alla|RA-GRS, 7-35 dagar (7 dagar som standard). Maximal kvarhållning för Basic-nivån är 7 dagar. | RA-GRS, 7 dagar, konstant tidpunkts återställning (PITR) | RA-GRS, 7-35 dagar (7 dagar som standard) |
-|**Minnesintern OLTP** | | Saknas | Saknas | Tillgänglig |
+|**Minnes intern OLTP** | | Saknas | Saknas | Tillgänglig |
 |**Skrivskyddade repliker**| | 0 inbyggd <br> 0-4 med [geo-replikering](active-geo-replication-overview.md) | 0-4 inbyggd | 1 inbyggd, ingår i priset <br> 0-4 med [geo-replikering](active-geo-replication-overview.md) |
 |**Priser/fakturering** | SQL Database | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/single/) debiteras. <br/>IOPS debiteras inte. | [vCore för varje replik och använt lagrings utrymme](https://azure.microsoft.com/pricing/details/sql-database/single/) debiteras. <br/>IOPS har ännu inte debiterats. | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/single/) debiteras. <br/>IOPS debiteras inte. |
 || SQL-hanterad instans | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/managed/) debiteras. <br/>IOPS debiteras inte| Ej tillämpligt | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/managed/) debiteras. <br/>IOPS debiteras inte.| 

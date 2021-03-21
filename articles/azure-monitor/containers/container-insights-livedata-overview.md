@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: references_regions
 ms.openlocfilehash: 5277f5051e291e9058255d8920ac0be950389704
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203206"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Så här visar du Kubernetes-loggar, händelser och Pod-mått i real tid

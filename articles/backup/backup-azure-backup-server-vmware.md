@@ -4,10 +4,10 @@ description: I den här artikeln lär du dig hur du använder Azure Backup Serve
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002961"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Säkerhetskopiera virtuella VMware-datorer med Azure Backup Server
@@ -213,7 +213,7 @@ I följande tabell visas de privilegier som du måste tilldela till det använda
 | Global. Hantera anpassade attribut | Data lager. AllocateSpace |
 | Globalt. Ange anpassat attribut | VirtualMachine.Config. ChangeTracking |
 | Värd. local-åtgärder. Skapa virtuell dator | VirtualMachine. State. RemoveSnapshot |
-| Nätverks. Tilldela nätverk | VirtualMachine. State. CreateSnapshot |
+| Nätverk. Tilldela nätverk | VirtualMachine. State. CreateSnapshot |
 | Klusterresursen. Tilldela en virtuell dator till en resurspool | VirtualMachine. Provisioning. DiskRandomRead |
 | Virtuell machine.Configuration. Lägg till ny disk | VirtualMachine. interagera. avstängnings läge |
 | Virtuell machine.Configuration. Erfar | VirtualMachine. Inventory. Create |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 3c9679f3d66d58c7a6c847b54c84438c979ecd39
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936874"
 ---
 [Azure privat slutpunkt](../articles/private-link/private-endpoint-overview.md) är ett nätverksgränssnitt som ansluter dig privat och säkert till en tjänst som drivs av Azure Private Link.  Privat slutpunkt använder en privat IP-adress från ditt virtuella nätverk, vilket effektivt tar in tjänsten i ditt virtuella nätverk.

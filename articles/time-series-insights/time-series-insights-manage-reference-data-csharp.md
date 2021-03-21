@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020086"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Hantera referens data för en Azure Time Series Insights gen 1-miljö med C Sharp
@@ -61,10 +61,10 @@ Slutför följande steg innan du kompilerar och kör exempel koden:
 
 ## <a name="project-dependencies"></a>Projektberoenden
 
-Vi rekommenderar att du använder den senaste versionen av Visual Studio och **NetCore. app**:
+Vi rekommenderar att du använder den senaste versionen av Visual Studio och **NETCore.app**:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -version 16.4.2 +
-* [NetCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -version 2.2.8
+* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -version 2.2.8
 
 Exempel koden har två nödvändiga beroenden:
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97563134"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begränsning av Resource Manager-förfrågningar
@@ -87,7 +87,7 @@ Vissa resurs leverantörer returnerar 429 för att rapportera ett tillfälligt p
 
 Du kan fastställa antalet återstående förfrågningar genom att undersöka svarshuvuden. Läs begär Anden returnerar ett värde i rubriken för antalet återstående Läs begär Anden. Skriv förfrågningar innehåller ett värde för antalet återstående Skriv förfrågningar. I följande tabell beskrivs de svarshuvuden som du kan undersöka för dessa värden:
 
-| Svars huvud | Description |
+| Svars huvud | Beskrivning |
 | --- | --- |
 | x-MS-ratelimit-återstående-prenumeration-läsningar |Återstående läsning av prenumerations omfång. Det här värdet returneras vid Läs åtgärder. |
 | x-MS-ratelimit-återstående – prenumeration-skrivningar |Prenumerationens omfångs skrivningar är kvar. Det här värdet returneras vid Skriv åtgärder. |

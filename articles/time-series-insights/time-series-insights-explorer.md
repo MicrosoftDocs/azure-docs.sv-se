@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020120"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights gen1 Explorer
@@ -111,7 +111,7 @@ I minuter när du ansluter din händelse källa till din Azure Time Series Insig
 
 1. Använd **termisk karta** för att snabbt hitta unika eller avvikande data serier i en specifik fråga. Endast en sökterm kan visualiseras som en termisk karta.
 
-    [Time Series Insights Explorer termisk karta diagram](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (Media/Time-Series-Insights-Explorer/tsi-ga-example-heatmap-charting.png # Lightbox)
+    [Time Series Insights Explorer termisk karta diagram](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (Media/Time-Series-Insights-Explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. När du utforskar händelser genom att markera eller högerklicka på panelen **händelser** blir panelen händelser tillgänglig. Här kan du granska alla dina obehandlade händelser och exportera dina händelser som JSON-eller CSV-filer. Azure Time Series Insights lagrar alla rå data.
 

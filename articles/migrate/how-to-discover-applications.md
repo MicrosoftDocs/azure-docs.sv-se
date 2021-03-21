@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 8266b585881546b37bbb21b82780ab26d85dada7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048088"
 ---
 # <a name="discover-installed-applications-roles-and-features-software-inventory-and-sql-server-instances-and-databases"></a>Identifiera installerade program, roller och funktioner (program varu inventering) och SQL Server instanser och databaser
@@ -20,7 +20,7 @@ Den här artikeln beskriver hur du identifierar installerade program, roller och
 Genom att utföra program varu inventering kan du identifiera och skräddarsy en sökväg för migrering till Azure för dina arbets belastningar. Program varu inventeringen använder Azure Migrate-installationen för att utföra identifieringen med hjälp av autentiseringsuppgifter för servern. Den är helt agent lös – inga agenter är installerade på servrarna för att samla in dessa data.
 
 > [!NOTE]
-> Program varu inventering är för närvarande endast i för hands version för servrar som körs i VMware-miljön och är begränsat till enbart identifiering. För närvarande erbjuder vi inte programbaserad utvärdering.<br/> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+> Program varu inventering är för närvarande endast i för hands version för servrar som körs i VMware-miljön och är begränsat till enbart identifiering. För närvarande erbjuder vi inte programbaserad utvärdering.<br/> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 ## <a name="before-you-start"></a>Innan du börjar
 

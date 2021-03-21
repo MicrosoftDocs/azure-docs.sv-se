@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar ett säkert Service Fabric kluster i A
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791819"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Skapa ett Service Fabric kluster med Azure Resource Manager 
@@ -26,7 +26,7 @@ Om du skapar ett produktions kluster för att köra produktions arbets belastnin
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 I den här artikeln använder du modulerna Service Fabric RM PowerShell eller Azure CLI för att distribuera ett kluster:
 
 * [Azure PowerShell 4,1 och uppåt][azure-powershell]

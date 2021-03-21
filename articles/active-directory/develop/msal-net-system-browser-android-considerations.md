@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 4230a194fb18587a209c100a39b0924e6170502d
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98063475"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin för Android-systemet för att använda MSAL.NET

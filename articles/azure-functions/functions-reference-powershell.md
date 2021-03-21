@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936795"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell-guide för utvecklare
@@ -236,7 +236,7 @@ Loggning i PowerShell-funktioner fungerar som vanlig PowerShell-loggning. Du kan
 | Fel | **`Write-Error`** |
 | Varning | **`Write-Warning`**  | 
 | Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Skriver till loggning på _informations_ nivå. |
-| Felsökning | **`Write-Debug`** |
+| Felsöka | **`Write-Debug`** |
 | Spårning | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Förutom dessa cmdlets omdirigeras allt som skrivs till pipelinen till `Information` logg nivån och visas med standardvärdet för PowerShell.
@@ -388,7 +388,7 @@ I följande tabell visas de PowerShell-versioner som är tillgängliga för varj
 
 | Funktions version | PowerShell-version                               | .NET-version  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (rekommenderas) | PowerShell 7 (rekommenderas)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
+| 3. x (rekommenderas) | PowerShell 7 (rekommenderas)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Du kan se den aktuella versionen genom att skriva ut `$PSVersionTable` från vilken funktion som helst.

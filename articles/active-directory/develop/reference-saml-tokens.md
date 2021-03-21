@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
 ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348390"
 ---
 # <a name="saml-token-claims-reference"></a>Referens för SAML-token anspråk
@@ -43,7 +43,7 @@ Microsoft Identity Platform genererar flera typer av säkerhetstoken vid bearbet
 > |Objekt-ID | `oid` |Innehåller en unik identifierare för ett objekt i Azure AD. Värdet är oföränderligt och kan inte tilldelas om eller återanvändas. Använd objekt-ID: t för att identifiera ett objekt i frågor till Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Roller | `roles` |Representerar alla program roller som ämnet har beviljats både direkt och indirekt genom grupp medlemskap och kan användas för att genomdriva rollbaserad åtkomst kontroll. Program roller definieras per program, via `appRoles` egenskapen för applikations manifestet. `value`Egenskapen för varje program roll är det värde som visas i roll anspråket. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |Ämne | `sub` |Identifierar huvudobjektet som token kontrollerar information om, till exempel användaren av ett program. Värdet är oföränderligt och kan inte omtilldelas eller återanvändas, så det kan användas för att utföra verifierings kontroller på ett säkert sätt. Eftersom ämnet alltid finns i token i Azure AD-problemen rekommenderar vi att du använder det här värdet i ett system för generell behörighets kontroll. <br> `SubjectConfirmation` är inte ett anspråk. Den beskriver hur ämnet för token verifieras. `Bearer` anger att ämnet bekräftas av deras besittning av token. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
-> |Klientorganisations-ID | `tid` |En oföränderlig identifierare som inte kan återanvändas och som identifierar den katalog klient som utfärdade token. Du kan använda det här värdet för att få åtkomst till klient organisations specifika katalog resurser i ett program med flera innehavare. Du kan till exempel använda det här värdet för att identifiera klienten i ett anrop till Graph API. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
+> |Klient-ID:t | `tid` |En oföränderlig identifierare som inte kan återanvändas och som identifierar den katalog klient som utfärdade token. Du kan använda det här värdet för att få åtkomst till klient organisations specifika katalog resurser i ett program med flera innehavare. Du kan till exempel använda det här värdet för att identifiera klienten i ett anrop till Graph API. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Tokenlivstid | `nbf`, `exp` |Definierar tidsintervallet då token är giltig. Tjänsten som verifierar token ska verifiera att det aktuella datumet ligger inom token för token, annars ska den avvisa token. Tjänsten kan tillåta upp till fem minuter bortom livs längd intervallet för token för att beräkna eventuella skillnader i klock tiden ("tids skevning") mellan Azure AD och tjänsten. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
 ## <a name="sample-saml-token"></a>Exempel på SAML-token

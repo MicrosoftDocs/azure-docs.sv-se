@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
 ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791535"
 ---
 # <a name="get-started-with-reliable-services"></a>Kom igång med Reliable Services
@@ -47,7 +47,7 @@ Din lösning innehåller nu två projekt:
 
 ## <a name="implement-the-service"></a>Implementera tjänsten
 
-Öppna **HelloWorldStateless.cs** -filen i tjänste projektet. I Service Fabric kan en tjänst köra vilken affärs logik som helst. Tjänst-API: et tillhandahåller två start punkter för din kod:
+Öppna filen **HelloWorldStateless. cs** i tjänste projektet. I Service Fabric kan en tjänst köra vilken affärs logik som helst. Tjänst-API: et tillhandahåller två start punkter för din kod:
 
 * En öppen start punkt metod som kallas *RunAsync*, där du kan börja köra alla arbets belastningar, inklusive tids krävande beräknings arbets belastningar.
 
@@ -127,7 +127,7 @@ Ditt program bör nu ha två tjänster: den tillstånds lösa tjänsten *HelloWo
 
 En tillstånds känslig tjänst har samma start punkter som en tillstånds lös tjänst. Den största skillnaden är tillgängligheten för en *tillstånds leverantör* som kan lagra tillstånd på ett tillförlitligt sätt. Service Fabric levereras med en tillstånds leverantörs implementering som kallas [Reliable Collections](service-fabric-reliable-services-reliable-collections.md), vilket gör att du kan skapa replikerade data strukturer via den pålitliga tillstånds hanteraren. En tillstånds känslig tillförlitlig tjänst använder denna tillstånds leverantör som standard.
 
-Öppna **HelloWorldStateful.cs** i *HelloWorldStateful*, som innehåller följande RunAsync-metod:
+Öppna **HelloWorldStateful. cs** i *HelloWorldStateful*, som innehåller följande RunAsync-metod:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
