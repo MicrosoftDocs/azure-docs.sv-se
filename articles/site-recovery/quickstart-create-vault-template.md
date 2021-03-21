@@ -2,13 +2,13 @@
 title: Snabb start för att skapa ett Azure Recovery Services-valv med en Azure Resource Manager-mall.
 description: I den här snabb starten får du lära dig hur du skapar ett Azure Recovery Services-valv med en Azure Resource Manager-mall (ARM-mall).
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92745886"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Snabb start: skapa ett Recovery Services valv med en ARM-mall
@@ -17,7 +17,7 @@ I den här snabb starten beskrivs hur du konfigurerar ett Recovery Services valv
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
@@ -42,7 +42,7 @@ Mer information om Azure Recovery Services-mallar finns i [Azure snabb starts ma
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-För att distribuera mallen krävs **prenumeration** , **resurs grupp** och **valv namn** .
+För att distribuera mallen krävs **prenumeration**, **resurs grupp** och **valv namn** .
 
 1. Om du vill logga in på Azure och öppna mallen väljer du avbildningen **distribuera till Azure** .
 
@@ -52,18 +52,18 @@ För att distribuera mallen krävs **prenumeration** , **resurs grupp** och **va
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Mall för att skapa ett Recovery Services-valv.":::
 
-   - **Prenumeration** : Välj din Azure-prenumeration.
-   - **Resurs grupp** : Välj en befintlig grupp eller Välj **Skapa ny** för att lägga till en grupp.
-   - **Plats** : standardvärdet för resurs gruppens plats och blir otillgänglig när en resurs grupp har valts.
-   - **Valv namn** : Ange ett namn för valvet.
-   - **Ändra lagrings typ** : standardvärdet är **false** . Välj endast **True** om du behöver ändra valvets lagrings typ.
-   - **Valv lagrings typ** : standardvärdet är **GloballyRedundant** . Om lagrings typen har angetts till **True** väljer du **LocallyRedundant** .
-   - **Plats** : funktionen `[resourceGroup().location]` används som standard för resurs gruppens plats. Ange ett värde som **väst** för att ändra plats.
-   - Markera kryss rutan **Jag godkänner villkoren som anges ovan** .
+   - **Prenumeration**: Välj din Azure-prenumeration.
+   - **Resurs grupp**: Välj en befintlig grupp eller Välj **Skapa ny** för att lägga till en grupp.
+   - **Plats**: standardvärdet för resurs gruppens plats och blir otillgänglig när en resurs grupp har valts.
+   - **Valv namn**: Ange ett namn för valvet.
+   - **Ändra lagrings typ**: standardvärdet är **false**. Välj endast **True** om du behöver ändra valvets lagrings typ.
+   - **Valv lagrings typ**: standardvärdet är **GloballyRedundant**. Om lagrings typen har angetts till **True** väljer du **LocallyRedundant**.
+   - **Plats**: funktionen `[resourceGroup().location]` används som standard för resurs gruppens plats. Ange ett värde som **väst** för att ändra plats.
+   - Markera kryss rutan **Jag godkänner villkoren som anges ovan**.
 
 1. Starta valv distributionen genom att välja knappen **köp** . När distributionen har slutförts visas ett meddelande.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Mall för att skapa ett Recovery Services-valv.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Valv distributionen lyckades.":::
 
 ## <a name="validate-the-deployment"></a>Verifiera distributionen
 

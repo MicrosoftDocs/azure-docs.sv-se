@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96929851"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Använda privata slut punkter för Azure App konfiguration
@@ -57,7 +57,7 @@ Om du använder en anpassad DNS-server i ditt nätverk måste klienterna kunna m
 > [!TIP]
 > När du använder en anpassad eller lokal DNS-server bör du konfigurera DNS-servern för att matcha Arkiv namnet i under `privatelink` domänen med IP-adressen för den privata slut punkten. Du kan göra detta genom att delegera under `privatelink` domänen till det virtuella nätverkets privata DNS-zon, eller konfigurera DNS-zonen på DNS-servern och lägga till DNS-posterna.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Att aktivera privata slut punkter kräver ett konfigurations lager för [Standard-nivå](https://azure.microsoft.com/pricing/details/app-configuration/) .  Läs mer om pris information om privata länkar i [Azures priser för privata länkar](https://azure.microsoft.com/pricing/details/private-link).
 

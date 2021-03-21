@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
 ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033382"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Snabb start: skapa och hantera Logic Apps med Azure CLI
@@ -91,7 +91,7 @@ Kommandot måste innehålla följande [obligatoriska parametrar](/cli/azure/ext/
 | Parameter | Värde | Beskrivning |
 | --------- | ----- | ----------- |
 | Arbetsflödesdefinition | `--definition` | En JSON-fil med din Logic Apps [arbets flödes definition](#workflow-definition). |
-| Plats | `--location -l` | Den Azure-region där din Logic app finns. |
+| Location | `--location -l` | Den Azure-region där din Logic app finns. |
 | Name | `--name -n` | Namnet på din Logic app. Namnet får bara innehålla bokstäver, siffror, bindestreck ( `-` ), under streck ( `_` ), parenteser ( `()` ) och punkter ( `.` ). Namnet måste också vara unikt i flera regioner. |
 | Namn på resursgrupp | `--resource-group -g` | Den [Azure-resurs grupp](../azure-resource-manager/management/overview.md) som du vill skapa din Logic app i. [Skapa en resurs grupp](#example---create-resource-group) innan du börjar om du inte redan har en för din Logic app. |
 
@@ -270,9 +270,9 @@ Du kan använda följande valfria globala Azure CLI-parametrar med dina `az logi
 | Utdataformat | `--output -o` | Ändra [utdataformatet](/cli/azure/format-output-azure-cli) från standard-JSON. |
 | Visa endast fel | `--only-show-errors` | Ignorera varningar och Visa bara fel. |
 | Verbose | `--verbose` | Visa utförliga loggar. |
-| Felsökning | `--debug` | Visar alla fel söknings loggar. |
+| Felsöka | `--debug` | Visar alla fel söknings loggar. |
 | Hjälp meddelande | `--help -h` | Visa hjälp dialog ruta. |
-| Söka i data | `--query` | Ange en JMESPath-frågesträng för JSON-utdata. |
+| Fråga | `--query` | Ange en JMESPath-frågesträng för JSON-utdata. |
 
 ## <a name="next-steps"></a>Nästa steg
 

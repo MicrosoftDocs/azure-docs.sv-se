@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835908"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Simulera risk identifieringar i identitets skydd
@@ -131,4 +131,4 @@ Gör så här för att testa en princip för inloggnings risk:
 
 - [Gör så här: Konfigurera och aktivera risk principer](howto-identity-protection-configure-risk-policies.md)
 
-- [Identitetsskydd för Azure Active Directory](overview-identity-protection.md)
+- [Azure Active Directory Identity Protection](overview-identity-protection.md)

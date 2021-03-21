@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 55a66f3f287ffb50d932263e407772efffa839ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453543"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med fält-iD
@@ -96,8 +96,8 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. Som **namn**anger du `B.Simon` .  
-   1. För **användar namn**anger du username@companydomain.extension (till exempel `B.Simon@contoso.com` ).
+   1. Som **namn** anger du `B.Simon` .  
+   1. För **användar namn** anger du username@companydomain.extension (till exempel `B.Simon@contoso.com` ).
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 

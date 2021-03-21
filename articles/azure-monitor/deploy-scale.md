@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
 ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044076"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Distribuera Azure Monitor i skala med Azure Policy
@@ -129,7 +129,7 @@ Initiativet kommer att gälla för varje virtuell dator när den skapas. En [rep
 
 VM Insights innehåller följande inbyggda initiativ som installerar båda agenterna för att aktivera fullständig övervakning. 
 
-|Namn |Beskrivning |
+|Name |Beskrivning |
 |:---|:---|
 |Aktivera VM Insights | Installerar Log Analytics agent och beroende agent på virtuella Azure-datorer och hybrid virtuella datorer som är anslutna till Azure Arc. |
 |Aktivera Azure Monitor för skalnings uppsättningar för virtuella datorer | Installerar den Log Analytics agenten och beroende agenten på skalnings uppsättningen för den virtuella Azure-datorn. |
@@ -162,7 +162,7 @@ Du kan ha scenarier där du vill installera Log Analytics agenten men inte beroe
 > Det kan inte finnas någon anledning att distribuera beroende agenten på egen hand eftersom den kräver att den Log Analytics agenten levererar sina data till Azure Monitor.
 
 
-|Namn |Beskrivning |
+|Name |Beskrivning |
 |-----|------------|
 |Granska Log Analytics agent distribution – VM-avbildningen (OS) har inte listats |Rapporterar virtuella datorer som icke-kompatibla om VM-avbildningen (OS) inte är definierad i listan och agenten inte är installerad. |
 |Distribuera Log Analytics agent för virtuella Linux-datorer |Distribuera Log Analytics agent för virtuella Linux-datorer om VM-avbildningen (OS) definieras i listan och agenten inte är installerad. |

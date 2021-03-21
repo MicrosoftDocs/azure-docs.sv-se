@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032974"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Anpassade under domän namn för Cognitive Services
@@ -83,7 +83,7 @@ Ja. Det här är en lista över regionala slut punkter som du kan använda med A
 | | Japan, östra | `https://japaneast.api.cognitive.microsoft.com` |
 | | Sydkorea, centrala | `https://koreacentral.api.cognitive.microsoft.com` |
 | | USA, norra centrala | `https://northcentralus.api.cognitive.microsoft.com` |
-| | Norra Europa | `https://northeurope.api.cognitive.microsoft.com` |
+| | Europa, norra | `https://northeurope.api.cognitive.microsoft.com` |
 | | Sydafrika, norra | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | USA, södra centrala | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Sydostasien | `https://southeastasia.api.cognitive.microsoft.com` |

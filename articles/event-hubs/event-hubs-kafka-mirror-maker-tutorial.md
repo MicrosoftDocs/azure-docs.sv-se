@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om hur du använder Kafka
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97860995"
 ---
 # <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Använd Apache Kafka MirrorMaker med Event Hubs
@@ -22,7 +22,7 @@ Den här självstudien visar hur du speglar en Kafka-koordinator i en Azure Even
 > [!NOTE]
 > Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Skapa ett Event Hubs-namnområde
 > * Klona exempelprojektet

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94653172"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrera Azure Firewall med Azure Standard Load Balancer
@@ -53,7 +53,7 @@ I följande exempel översätter en NAT-regel RDP-trafik till brand väggen vid 
 > [!div class="mx-imgBorder"]
 > ![NAT-regel](media/integrate-lb/nat-rule-02.png)
 
-### <a name="health-probes"></a>Hälsoavsökningar
+### <a name="health-probes"></a>Hälsotillståndsavsökningar
 
 Kom ihåg att du behöver en webb tjänst som körs på värdarna i belastningsutjämnaren om du använder TCP-hälsosökningar till port 80 eller HTTP/HTTPS-avsökningar.
 

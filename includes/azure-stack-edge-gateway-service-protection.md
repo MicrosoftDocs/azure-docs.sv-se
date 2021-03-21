@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96467809"
 ---
 - För att få åtkomst till tjänsten Data Box Edge måste din organisation ha en prenumeration på Enterprise-avtal (EA) eller moln lösnings leverantör (CSP). Mer information finns i [Registrera dig för en Azure-prenumeration](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).

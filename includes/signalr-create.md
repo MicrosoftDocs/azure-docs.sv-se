@@ -9,10 +9,10 @@ ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93406776"
 ---
 1. Om du vill skapa en Azure SignalR service-resurs måste du först logga in på [Azure Portal](https://portal.azure.com). I den övre vänstra sidan av sidan väljer du **+ skapa en resurs**. I text rutan **Sök på Marketplace anger du** **SignalR-tjänsten**.
@@ -21,12 +21,12 @@ ms.locfileid: "93406776"
 
 3. På sidan nya **signal** inställningar lägger du till följande inställningar för din nya signalerar-resurs:
 
-    | Name | Rekommenderat värde | Description |
+    | Name | Rekommenderat värde | Beskrivning |
     | ---- | ----------------- | ----------- |
     | Resursnamn | *testsignalr* | Ange ett unikt resursnamn för SignalR-resursen. Namnet måste vara en sträng med 1 till 63 tecken och får bara innehålla siffror, bokstäver och bindestreck ( `-` ). Namnet får inte börja eller sluta med bindestrecket, och de efterföljande bindestrecken är inte giltiga.|
     | Prenumeration | Välj din prenumeration |  Välj den Azure-prenumeration du vill använda när du testar SignalR. Om ditt konto bara har en prenumeration väljs den automatiskt och list rutan **prenumeration** visas inte.|
     | Resursgrupp | Skapa en resurs grupp med namnet *SignalRTestResources*| Välj eller skapa en resursgrupp för SignalR-resursen. Den här gruppen är användbar för att organisera flera resurser som du kanske vill ta bort samtidigt genom att ta bort resurs gruppen. Mer information finns i [Using resource groups to manage your Azure resources](../articles/azure-resource-manager/management/overview.md) (Hantera dina Azure-resurser med hjälp av resursgrupper). |
-    | Plats | *USA, östra* | Använd **Plats** till att ange den geografiska plats där SignalR-resursen finns. Du får bästa prestanda om du skapar resursen i samma region som de andra komponenterna i appen. |
+    | Location | *USA, östra* | Använd **Plats** till att ange den geografiska plats där SignalR-resursen finns. Du får bästa prestanda om du skapar resursen i samma region som de andra komponenterna i appen. |
     | Prisnivå | *Kostnadsfri* | För närvarande finns det **kostnads fria** och **standard** alternativ. |
     | Fäst vid instrumentpanelen | ✔ | Markera den här rutan om du vill att resursen ska fästa på instrument panelen så att den blir lättare att hitta. |
 

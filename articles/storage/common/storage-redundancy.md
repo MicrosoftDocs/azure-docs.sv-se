@@ -10,10 +10,10 @@ ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726844"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
@@ -70,7 +70,7 @@ Följande tabell visar vilka typer av lagrings konton som stöder ZRS i vilka re
 
 | Typ av lagringskonto | Regioner som stöds | Tjänster som stöds |
 |--|--|--|
-| Allmänt-syfte v2<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br />  Västeuropa<br /> Frankrike, centrala<br /> Japan, östra<br /> Sydafrika, norra<br /> Storbritannien, södra<br /> USA, centrala<br /> USA, Östra<br /> USA, östra 2<br /> USA, västra 2 | Blockblobar<br /> Page blobbar<sup>2</sup><br /> Fil resurser (standard)<br /> Tabeller<br /> Köer<br /> |
+| Allmänt-syfte v2<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br />  Västeuropa<br /> Frankrike, centrala<br /> Japan, östra<br /> Sydafrika, norra<br /> Storbritannien, södra<br /> USA, centrala<br /> USA, Östra<br /> USA, östra 2<br /> USA, västra 2 | Blockblobar<br /> Page blobbar<sup>2</sup><br /> Fil resurser (standard)<br /> Tables<br /> Köer<br /> |
 | BlockBlobStorage<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Frankrike, centrala <br /> Japan, östra<br /> Storbritannien, södra <br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2| Endast Premium block-blobbar |
 | FileStorage | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Frankrike, centrala <br /> Japan, östra<br /> Storbritannien, södra <br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2 | Premium-filer endast resurser |
 

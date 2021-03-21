@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Lenses.io DataOps-portalen
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera [lenses.io](https://len
 
 Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure AD](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -53,7 +53,7 @@ Om du vill konfigurera integreringen av Lenses.io i Azure AD lägger du till Len
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
 1. Välj **Nytt program**.
 1. I avsnittet **Lägg till från galleriet** , ange **lenses.io** i sökrutan.
-1. Från panelen resultat väljer du **lenses.io**och lägger sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
+1. Från panelen resultat väljer du **lenses.io** och lägger sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Konfigurera och testa Azure AD SSO för Lenses.io
 
@@ -89,7 +89,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dem med den faktiska inloggnings-URL: en, svars-URL: en och ID för bas-URL: en för din linser-Portal instans. Mer information finns i [dokumentationen om LENSES.io SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0) .
 
-1. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** . Hitta **XML för federationsmetadata**och välj sedan **Ladda ned** för att ladda ned och spara certifikatet på datorn.
+1. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** . Hitta **XML för federationsmetadata** och välj sedan **Ladda ned** för att ladda ned och spara certifikatet på datorn.
 
     ![Skärm bild som visar länken Hämta certifikat.](common/metadataxml.png)
 
@@ -103,7 +103,7 @@ Du kan ta reda på hur linser använder mappning av grupp medlemskap för auktor
 
 **Så här skapar du test användaren:**
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Överst på skärmen väljer du **ny användare**.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I rutan **namn** anger du **B. Simon**.  
@@ -113,9 +113,9 @@ Du kan ta reda på hur linser använder mappning av grupp medlemskap för auktor
 
 **Så här skapar du gruppen:**
 
-1. Gå till **Azure Active Directory**och välj sedan **grupper**.
+1. Gå till **Azure Active Directory** och välj sedan **grupper**.
 1. Överst på skärmen väljer du **ny grupp**.
-1. I **grupp egenskaperna**följer du dessa steg:
+1. I **grupp egenskaperna** följer du dessa steg:
    1. I rutan **typ av grupp** väljer du **säkerhet**.
    1. I rutan **grupp namn** anger du **LensesUsers**.
    1. Välj **Skapa**.
@@ -123,7 +123,7 @@ Du kan ta reda på hur linser använder mappning av grupp medlemskap för auktor
 
 **Så här tilldelar du gruppen till test användaren:**
 
-1. Gå till **Azure Active Directory**och välj sedan **användare**.
+1. Gå till **Azure Active Directory** och välj sedan **användare**.
 1. Välj test användare **B. Simon**.
 1. Välj **grupper**.
 1. Överst på skärmen väljer du **Lägg till medlemskap**.
@@ -134,7 +134,7 @@ Du kan ta reda på hur linser använder mappning av grupp medlemskap för auktor
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Lenses.io.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **lenses.io**.
 1. På sidan Översikt för appen i avsnittet **Hantera** väljer du **användare och grupper**.
 

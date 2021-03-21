@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93041908"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scener, klipp och nyckelbilder
@@ -46,7 +46,7 @@ Om du vill extrahera nyckel bild rutor med hög upplösning för videon måste d
 
 #### <a name="with-the-video-indexer-website"></a>Med Video Indexer webbplats
 
-Om du vill extrahera nyckel rutor med Video Indexer webbplats laddar du upp och indexerar videon. När indexerings jobbet är klart klickar du på **nedladdnings** knappen och väljer **artefakter (zip)** . Då hämtas mappen artefakter till datorn. 
+Om du vill extrahera nyckel rutor med Video Indexer webbplats laddar du upp och indexerar videon. När indexerings jobbet är klart klickar du på **nedladdnings** knappen och väljer **artefakter (zip)**. Då hämtas mappen artefakter till datorn. 
 
 ![Skärm bild som visar List rutan "Ladda ned" med "artefakter" valda.](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  

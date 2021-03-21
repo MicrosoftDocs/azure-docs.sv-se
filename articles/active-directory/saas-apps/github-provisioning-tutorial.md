@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
 ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359270"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Självstudie: Konfigurera GitHub för automatisk användar etablering
@@ -71,7 +71,7 @@ Det här avsnittet vägleder dig genom att ansluta din Azure AD till GitHub-API 
 
     ![Skärm bild som visar inloggnings sidan för GitHub.](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. I Azure Portal, ingångs **klientens URL** och klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till din GitHub-app. Om anslutningen Miss lyckas kontrollerar du att GitHub-kontot har administratörs behörighet och **klient-URL: en** är felaktigt angiven och försöker sedan igen. försök sedan igen (du kan utgöra **klient webb adress** per regel: `https://api.github.com/scim/v2/organizations/<Organization_name>` , du kan hitta dina organisationer under ditt GitHub-konto: **inställnings**  >  **organisationer** ).
+7. I Azure Portal, ingångs **klientens URL** och klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till din GitHub-app. Om anslutningen Miss lyckas kontrollerar du att GitHub-kontot har administratörs behörighet och **klient-URL: en** är felaktigt angiven och försöker sedan igen. försök sedan igen (du kan utgöra **klient webb adress** per regel: `https://api.github.com/scim/v2/organizations/<Organization_name>` , du kan hitta dina organisationer under ditt GitHub-konto: **inställnings**  >  **organisationer**).
 
     ![Skärm bild som visar sidan organisationer i GitHub.](./media/github-provisioning-tutorial/GitHub3.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a2f6560a3828672bfafc46bb793c21060d52d71b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92669453"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>Självstudie: Azure Active Directory integrering med Schoox
@@ -41,7 +41,7 @@ För att konfigurera Azure AD-integrering med Schoox behöver du följande:
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Schoox har stöd för **SP- och IDP** -initierad enkel inloggning
+* Schoox har stöd för **SP- och IDP**-initierad enkel inloggning
 
 ## <a name="adding-schoox-from-the-gallery"></a>Lägga till Schoox från galleriet
 
@@ -49,11 +49,11 @@ När du konfigurerar integreringen av Schoox i Azure AD, måste du lägga till S
 
 **Utför följande steg för att lägga till Schoox från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ När du konfigurerar integreringen av Schoox i Azure AD, måste du lägga till S
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan skriver du **Schoox** , väljer **Schoox** i resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **Schoox**, väljer **Schoox** i resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
 
      ![Schoox i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet ska du konfigurera och testa enkel inloggning i Azure AD med Schoox baserat på testanvändaren **Britta Simon** .
+I det här avsnittet ska du konfigurera och testa enkel inloggning i Azure AD med Schoox baserat på testanvändaren **Britta Simon**.
 För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Schoox upprättas.
 
 Om du vill konfigurera och testa enkel inloggning i Azure AD med Schoox, måste du slutföra följande byggblock:
@@ -93,17 +93,17 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Schoo
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
-4. Om du vill konfigurera appen i **IDP** -initierat läge gör du följande i avsnittet **Grundläggande SAML-konfiguration** :
+4. Om du vill konfigurera appen i **IDP**-initierat läge gör du följande i avsnittet **Grundläggande SAML-konfiguration**:
 
     ![Information om Schoox-domän och URL:er med enkel inloggning](common/idp-identifier.png)
 
     I textrutan **Identifierare** skriver du en URL: `https://saml.schoox.com/saml/adfsmetadata`
 
-5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -112,7 +112,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Schoo
     > [!NOTE]
     > `<entityID>` är det SAML entitets-ID som kopieras från avsnittet Snabbreferens, vilket beskrivs senare i självstudien.
 
-6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** , klickar på **Ladda ned** för att ladda ned **XML-federationsmetadata** från de angivna alternativen enligt dina behov och sparar dem på datorn.
+6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar på **Ladda ned** för att ladda ned **XML-federationsmetadata** från de angivna alternativen enligt dina behov och sparar dem på datorn.
 
     ![Länk för nedladdning av certifikatet](common/metadataxml.png)
 
@@ -128,13 +128,13 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Schoo
 
 ### <a name="configure-schoox-single-sign-on"></a>Konfigurera enkel inloggning i Schoox
 
-För att konfigurera enkel inloggning på **Schoox** -sidan behöver du skicka nedladdad **federationsmetadata-XML** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Schoox](https://www.schoox.com/help/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+För att konfigurera enkel inloggning på **Schoox**-sidan behöver du skicka nedladdad **federationsmetadata-XML** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Schoox](https://www.schoox.com/help/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -146,32 +146,32 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **namn** anger du **BrittaSimon** .
+    a. I fältet **namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet låter du Britta Simon använda enkel inloggning i Azure genom att ge henne åtkomst till Schoox.
 
-1. På Azure-portalen väljer du **Företagsprogram** , **Alla program** och sedan **Schoox** .
+1. På Azure-portalen väljer du **Företagsprogram**, **Alla program** och sedan **Schoox**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan med program väljer du **Schoox** .
+2. I listan med program väljer du **Schoox**.
 
     ![Schoox-länken i programlistan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 

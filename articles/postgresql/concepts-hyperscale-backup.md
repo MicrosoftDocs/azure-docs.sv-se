@@ -8,15 +8,15 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485383"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Säkerhets kopiering och återställning i Azure Database for PostgreSQL-storskalig (citus)
 
-Azure Database for PostgreSQL – storskalig (citus) skapar automatiskt säkerhets kopior av varje nod och lagrar dem i lokalt redundant lagring. Säkerhets kopieringar kan användas för att återställa ditt citus-kluster till en angiven tid. Säkerhets kopiering och återställning är en viktig del av en strategi för affärs kontinuitet eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
+Azure Database for PostgreSQL – storskalig (citus) skapar automatiskt säkerhets kopior av varje nod och lagrar dem i lokalt redundant lagring. Säkerhets kopieringar kan användas för att återställa ditt citus-kluster till en angiven tid. Säkerhetskopiering och återställning är en viktig del i strategin för affärskontinuitet, eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
 
 ## <a name="backups"></a>Säkerhetskopior
 
@@ -44,7 +44,7 @@ I Azure Database for PostgreSQL skapar återställer ett citus-kluster ett nytt 
 ### <a name="point-in-time-restore-pitr"></a>Återställning av tidpunkt (PITR)
 
 Du kan återställa ett kluster till en viss tidpunkt inom de senaste 35 dagarna.
-Återställning av tidpunkt är användbart i flera scenarier. Till exempel när en användare oavsiktligt tar bort data, släpper en viktig tabell eller databas, eller om ett program av misstag skriver över bra data med felaktiga data.
+Återställning av tidpunkt är användbart i flera scenarier. Till exempel om en användare oavsiktligt raderar data, tar bort en viktig tabell eller databas, eller om en app av misstag skriver över korrekta data med felaktiga data.
 
 Återställnings processen skapar ett nytt kluster i samma Azure-region, prenumeration och resurs grupp som originalet. Klustret har den ursprungliga konfigurationen: samma antal noder, antal virtuella kärnor, lagrings storlek, användar roller, PostgreSQL-version och version av citus-tillägget.
 

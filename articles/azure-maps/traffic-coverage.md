@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896879"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps trafik täckning
 
-Azure Maps ger omfattande trafik information i form av **trafikflöde** och **incidenter** . Dessa data kan visualiseras på kartor eller användas för att generera smartare vägar som faktorr i verkliga kör förhållanden.
+Azure Maps ger omfattande trafik information i form av **trafikflöde** och **incidenter**. Dessa data kan visualiseras på kartor eller användas för att generera smartare vägar som faktorr i verkliga kör förhållanden.
 
 Maps har dock inte samma nivå av information och noggrannhet för alla länder eller regioner. Följande tabell innehåller information om vilken typ av trafik information som du kan begära från varje land eller region: 
 
@@ -57,7 +57,7 @@ Maps har dock inte samma nivå av information och noggrannhet för alla länder 
 |Vietnam   |✓         |✓         |
 
 
-## <a name="europe"></a>Europe
+## <a name="europe"></a>Europa
 
 |Land/region   |Incidenter  |Flöden  |
 |---------|:---------:|:---------:|

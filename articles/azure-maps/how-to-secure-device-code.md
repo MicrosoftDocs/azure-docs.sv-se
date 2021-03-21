@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895638"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Skydda en inmatad begränsad enhet med Azure AD och Azure Maps REST-API: er
@@ -30,27 +30,27 @@ Den här guiden beskriver hur du skyddar offentliga program eller enheter som in
 
 Skapa ett enhets baserat program i Azure AD för att aktivera Azure AD-inloggning. Det här programmet kommer att beviljas åtkomst till Azure Maps REST-API: er.
 
-1. I listan med Azure-tjänster i Azure Portal väljer du **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering** .  
+1. I listan med Azure-tjänster i Azure Portal väljer du **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering**.  
 
     > [!div class="mx-imgBorder"]
     > ![Appregistrering](./media/how-to-manage-authentication/app-registration.png)
 
-2. Ange ett **namn** , Välj **konton i den här organisations katalogen endast** som den **typ av konto som stöds** . I **omdirigerings-URI: er** anger du **offentlig klient/ursprunglig (mobil & Desktop)** och lägger sedan till i `https://login.microsoftonline.com/common/oauth2/nativeclient` värdet. Mer information finns i Azure AD [Desktop-appen som anropar webb-API: er för registrering av appar](../active-directory/develop/scenario-desktop-app-registration.md). **Registrera** sedan programmet.
+2. Ange ett **namn**, Välj **konton i den här organisations katalogen endast** som den **typ av konto som stöds**. I **omdirigerings-URI: er** anger du **offentlig klient/ursprunglig (mobil & Desktop)** och lägger sedan till i `https://login.microsoftonline.com/common/oauth2/nativeclient` värdet. Mer information finns i Azure AD [Desktop-appen som anropar webb-API: er för registrering av appar](../active-directory/develop/scenario-desktop-app-registration.md). **Registrera** sedan programmet.
 
     > [!div class="mx-imgBorder"]
     > ![Lägg till registrerings information för namn och omdirigerings-URI](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Navigera till **autentisering** och aktivera **behandla program som en offentlig klient** . Detta aktiverar autentisering med enhets kod med Azure AD.
+3. Navigera till **autentisering** och aktivera **behandla program som en offentlig klient**. Detta aktiverar autentisering med enhets kod med Azure AD.
     
     > [!div class="mx-imgBorder"]
     > ![Aktivera app-registrering som offentlig klient](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Om du vill tilldela delegerade API-behörigheter till Azure Maps går du till programmet. Välj sedan **API-behörigheter**  >  **Lägg till en behörighet** . Sök efter och välj **Azure Maps** under **API: er som används i organisationen** .
+4.  Om du vill tilldela delegerade API-behörigheter till Azure Maps går du till programmet. Välj sedan **API-behörigheter**  >  **Lägg till en behörighet**. Sök efter och välj **Azure Maps** under **API: er som används i organisationen**.
 
     > [!div class="mx-imgBorder"]
     > ![Lägg till API-behörigheter för app](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Markera kryss rutan bredvid **åtkomst Azure Maps** och välj sedan **Lägg till behörigheter** .
+5. Markera kryss rutan bredvid **åtkomst Azure Maps** och välj sedan **Lägg till behörigheter**.
 
     > [!div class="mx-imgBorder"]
     > ![Välj API-behörigheter för app](./media/how-to-manage-authentication/select-app-permissions.png)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: c143a5af40097039c70c58adba4cb21f687d3fa6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Självstudie: Azure Active Directory integrering med PlanMyLeave
@@ -51,11 +51,11 @@ Om du vill konfigurera integreringen av PlanMyLeave i Azure AD måste du lägga 
 
 **Utför följande steg för att lägga till PlanMyLeave från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -63,13 +63,13 @@ Om du vill konfigurera integreringen av PlanMyLeave i Azure AD måste du lägga 
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **PlanMyLeave** , väljer **PlanMyLeave** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **PlanMyLeave**, väljer **PlanMyLeave** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![PlanMyLeave i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med PlanMyLeave baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med PlanMyLeave baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i PlanMyLeave upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med PlanMyLeave i Azure AD måste du slutföra följande Bygg stenar:
@@ -95,7 +95,7 @@ Utför följande steg för att konfigurera enkel inloggning med PlanMyLeave i Az
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -128,7 +128,7 @@ Utför följande steg för att konfigurera enkel inloggning med PlanMyLeave i Az
 
 1. Logga in på din PlanMyLeave-klient som administratör i ett annat webbläsarfönster.
 
-2. Gå till **systeminställningarna** . Klicka sedan på **företagets SAML-inställningar** i avsnittet **säkerhets hantering** .
+2. Gå till **systeminställningarna**. Klicka sedan på **företagets SAML-inställningar** i avsnittet **säkerhets hantering** .
 
     ![Skärm bild som visar sidan "system konfiguration" med avsnittet "säkerhets hantering" markerat och åtgärden "företag S A M L" har valts.](./media/planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
@@ -144,15 +144,15 @@ Utför följande steg för att konfigurera enkel inloggning med PlanMyLeave i Az
 
     b.  Öppna dina hämtade metadata, kopiera  **X509Certificate** -värdet och klistra in det i text rutan **certifikat** .
 
-    c. Set " **är Enable** " till " **Yes** ".
+    c. Set "**är Enable**" till "**Yes**".
 
-    d. Klicka på **Spara** . 
+    d. Klicka på **Spara**. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -164,32 +164,32 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
     Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till PlanMyLeave.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **PlanMyLeave** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **PlanMyLeave**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **PlanMyLeave** .
+2. I listan program väljer du **PlanMyLeave**.
 
     ![PlanMyLeave-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -197,7 +197,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-planmyleave-test-user"></a>Skapa PlanMyLeave test användare
 

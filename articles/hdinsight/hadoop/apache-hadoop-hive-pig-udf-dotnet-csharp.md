@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946549"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Använd C#-användardefinierade funktioner med Apache Hive och Apache gris på Apache Hadoop i HDInsight
@@ -57,7 +57,7 @@ Så här skapar du ett C#-projekt för en Apache Hive UDF:
 
 4. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** för *HiveCSharp* och navigerar till eller skapar en **plats där** du vill spara det nya projektet i. Välj sedan **Skapa**.
 
-5. I Visual Studio IDE ersätter du innehållet i *program.cs* med följande kod:
+5. I Visual Studio IDE ersätter du innehållet i *program. cs* med följande kod:
 
     ```csharp
     using System;
@@ -124,7 +124,7 @@ Så här skapar du ett C#-projekt för en Apache Hive UDF:
 
 4. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** för *PigUDF* och går till eller skapar en **plats där** du sparar det nya projektet i. Välj sedan **Skapa**.
 
-5. I Visual Studio IDE ersätter du innehållet i *program.cs* med följande kod:
+5. I Visual Studio IDE ersätter du innehållet i *program. cs* med följande kod:
 
     ```csharp
     using System;

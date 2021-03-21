@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 23ae1a2c1371cda9435ea76f02cebc79c141c904
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522248"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Självstudie: Azure Active Directory integrering med Proxyclick
@@ -48,7 +48,7 @@ I den här självstudien konfigurerar och testar du enkel inloggning i Azure AD 
 
 Om du vill ställa in integreringen av Proxyclick i Azure AD måste du lägga till Proxyclick från galleriet i listan över hanterade SaaS-appar.
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory**i den vänstra rutan:
+1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory** i den vänstra rutan:
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
@@ -60,7 +60,7 @@ Om du vill ställa in integreringen av Proxyclick i Azure AD måste du lägga ti
 
     ![Välj nytt program](common/add-new-app.png)
 
-4. Skriv **Proxyclick**i rutan Sök. Välj **Proxyclick** i Sök resultaten och välj sedan **Lägg till**.
+4. Skriv **Proxyclick** i rutan Sök. Välj **Proxyclick** i Sök resultaten och välj sedan **Lägg till**.
 
      ![Sökresultat](common/search-new-app.png)
 
@@ -167,7 +167,7 @@ Utför följande steg för att konfigurera enkel inloggning med Proxyclick i Azu
 
 I det här avsnittet ska du skapa en test användare med namnet Britta Simon i Azure Portal.
 
-1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare**och väljer sedan **alla användare**:
+1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare** och väljer sedan **alla användare**:
 
     ![Välj alla användare](common/users.png)
 
@@ -181,9 +181,9 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Till exempel BrittaSimon@contoso.com .)
 
-    1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
+    1. Välj **Visa lösen ord** och skriv sedan ned värdet i rutan **lösen ord** .
 
     1. Välj **Skapa**.
 
@@ -191,7 +191,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure genom att ge hennes åtkomst till Proxyclick.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Proxyclick**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Proxyclick**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

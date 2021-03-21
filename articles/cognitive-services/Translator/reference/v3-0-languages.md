@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
 ms.openlocfilehash: 8471983d24cfed39e6521e19366f6023e519adaf
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895483"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: språk
@@ -49,7 +49,7 @@ Begärandehuvuden är:
 
 <table width="100%">
   <th width="20%">Sidhuvuden</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>Accept-Language</td>
     <td>*Valfritt huvud för begäran*.<br/>Språket som ska användas för användargränssnittssträngar. Några av fälten i svaret är namn på språk eller namn på regioner. Använd den här parametern för att definiera språket som namnen returneras i. Språket anges genom att tillhandahålla en välformulerad BCP 47-språktagg. Använd exempelvis värdet `fr` för att begära namn på franska eller Använd värdet `zh-Hant` för att begära namn på traditionell kinesiska.<br/>Namn anges på det engelska språket när ett mål språk inte anges eller när lokalisering inte är tillgängligt.
@@ -230,7 +230,7 @@ Listan över språk som stöds kommer inte att ändras ofta. Om du vill spara n�
 
 <table width="100%">
   <th width="20%">Sidhuvuden</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>ETag</td>
     <td>Aktuellt värde för enhets tag gen för de begärda språken som stöds. För att göra efterföljande begär Anden mer effektiva kan klienten skicka `ETag` värdet i ett `If-None-Match` rubrik fält.
@@ -248,7 +248,7 @@ Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
 <table width="100%">
   <th width="20%">Statuskod</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>200</td>
     <td>Åtgärden lyckades.</td>

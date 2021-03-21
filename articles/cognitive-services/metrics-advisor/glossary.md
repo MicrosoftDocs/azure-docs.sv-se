@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893428"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Ord lista för mått rådgivare i vanliga ord listor och koncept
@@ -31,9 +31,9 @@ En datafeed är vilka mått som rådgivare matar in från din data källa, till 
 * noll eller flera dimensioner
 * en eller flera mått. 
 
-## <a name="metric"></a>Mått
+## <a name="metric"></a>Metric
 
-Ett mått är ett mätbart mått som används för att övervaka och utvärdera status för en enskild affärs process. Det kan vara en kombination av flera tids serie värden indelade i dimensioner. Till exempel kan ett *webb hälso* mått innehålla dimensioner för *antal användare* och en *-US-marknad* .
+Ett mått är ett mätbart mått som används för att övervaka och utvärdera status för en enskild affärs process. Det kan vara en kombination av flera tids serie värden indelade i dimensioner. Till exempel kan ett *webb hälso* mått innehålla dimensioner för *antal användare* och en *-US-marknad*.
 
 ## <a name="dimension"></a>Dimension
 
@@ -69,7 +69,7 @@ Anta att du har data för antalet fel som loggats i ett program. Tids serie data
 
 I det här exemplet är *program komponent* och *region* dimensioner. *Antal fel* är KPI: n som kan segmenteras i olika kategorier och/eller marknader och kan också aggregeras. Till exempel antalet fel i *meddelande kön* i alla regioner.
 
-## <a name="measure"></a>Åtgärd
+## <a name="measure"></a>Mått
 
 Ett mått är ett grundläggande eller enhetsspecifika villkor och ett kvantifierbart värde för måttet.
 
@@ -139,29 +139,29 @@ Metrics Advisor innehåller flera [identifierings metoder](how-tos/configure-met
 
 Avvikelse identifiering med hjälp av flera Machine Learning-algoritmer.
 
-**Känslighet** : ett numeriskt värde för att justera toleransen för avvikelse identifiering. Ett visuellt värde är ju högre värde, desto smalare är de övre och nedre gränserna runt tids serien.
+**Känslighet**: ett numeriskt värde för att justera toleransen för avvikelse identifiering. Ett visuellt värde är ju högre värde, desto smalare är de övre och nedre gränserna runt tids serien.
 
 ### <a name="hard-threshold"></a>Hård tröskel
 
 Värden utanför övre eller nedre gränser är avvikelser.
 
-**Min** : den nedre kanten
+**Min**: den nedre kanten
 
-**Max** : den övre gränser
+**Max**: den övre gränser
 
 ### <a name="change-threshold"></a>Ändra tröskel
 
 Använd föregående punkt värde för att avgöra om den här punkten är en avvikelse.
 
-**Ändrings procent** : jämfört med föregående punkt är den aktuella punkten en avvikelse om procent andelen av ändring är mer än den här parametern.
+**Ändrings procent**: jämfört med föregående punkt är den aktuella punkten en avvikelse om procent andelen av ändring är mer än den här parametern.
 
-**Ändra över punkter** : hur många punkter du vill se tillbaka.
+**Ändra över punkter**: hur många punkter du vill se tillbaka.
 
 ### <a name="common-parameters"></a>Vanliga parametrar
 
-**Riktning** : en punkt är en avvikelse endast när avvikelsen inträffar i riktningen *upp* , *ned* eller *både* och.
+**Riktning**: en punkt är en avvikelse endast när avvikelsen inträffar i riktningen *upp*, *ned* eller *både* och.
 
-**Ogiltig avvikelse tills** : en data punkt är bara en avvikelse om en angiven procent andel av föregående punkter också är avvikelser.
+**Ogiltig avvikelse tills**: en data punkt är bara en avvikelse om en angiven procent andel av föregående punkter också är avvikelser.
 
 ## <a name="alert-settings"></a>Aviserings inställningar
 
@@ -173,17 +173,17 @@ Du kan också skapa en avisering över mått. Till exempel en avisering som bara
 
 Aviserings omfånget avser den omfattning som aviseringen gäller. Det finns fyra alternativ:
 
-**Avvikelser i alla serier** : aviseringar utlöses för avvikelser i alla serier i måttet.
+**Avvikelser i alla serier**: aviseringar utlöses för avvikelser i alla serier i måttet.
 
-**Avvikelser i serie grupp** : aviseringar aktive ras endast för avvikelser i vissa dimensioner i serie gruppen. Antalet angivna dimensioner måste vara mindre än det totala antalet dimensioner.
+**Avvikelser i serie grupp**: aviseringar aktive ras endast för avvikelser i vissa dimensioner i serie gruppen. Antalet angivna dimensioner måste vara mindre än det totala antalet dimensioner.
 
-**Avvikelser i favorit serien** : aviseringar aktive ras endast för avvikelser som läggs till som favoriter. Du kan välja en grupp med serier som favorit för varje identifierings konfiguration.
+**Avvikelser i favorit serien**: aviseringar aktive ras endast för avvikelser som läggs till som favoriter. Du kan välja en grupp med serier som favorit för varje identifierings konfiguration.
 
-**Avvikelser i översta n i alla serier** : aviseringar utlöses bara för avvikelser i den översta n-serien. Du kan ange parametrar för att ange antalet tidsstämplar som ska tas med i beräkningen och hur många avvikelser som måste finnas i dem för att skicka aviseringen.
+**Avvikelser i översta n i alla serier**: aviseringar utlöses bara för avvikelser i den översta n-serien. Du kan ange parametrar för att ange antalet tidsstämplar som ska tas med i beräkningen och hur många avvikelser som måste finnas i dem för att skicka aviseringen.
 
 ### <a name="severity"></a>Allvarlighetsgrad
 
-Allvarlighets grad är en klass som Metrics Advisor använder för att beskriva allvarlighets graden för incidenten, inklusive *hög* , *medel* och *låg* .
+Allvarlighets grad är en klass som Metrics Advisor använder för att beskriva allvarlighets graden för incidenten, inklusive *hög*, *medel* och *låg*.
 
 För närvarande använder Metric Advisor följande faktorer för att mäta allvarlighets graden för aviseringen:
 1. Värdets andel och kvantitetens andel avvikelser i måttet.
@@ -200,7 +200,7 @@ Beteendet för vilo läge kan anges antingen på mått-eller serie nivå.
 
 ### <a name="ingestion-time-offset"></a>Tids förskjutning för inmatning
 
-Som standard matas data in enligt granularitet (till exempel *dagligen* ). Genom att använda ett positivt heltal kan du fördröj inmatning av data med det angivna värdet. Genom att använda ett negativt tal kan du gå vidare med det angivna värdet.
+Som standard matas data in enligt granularitet (till exempel *dagligen*). Genom att använda ett positivt heltal kan du fördröj inmatning av data med det angivna värdet. Genom att använda ett negativt tal kan du gå vidare med det angivna värdet.
 
 ### <a name="max-ingestion-per-minute"></a>Maximal inmatning per minut
 
@@ -238,7 +238,7 @@ När det här alternativet är inställt på noll utlöser varje tidsstämpel me
 
 ## <a name="data-feed-permissions"></a>Behörigheter för data feed
 
-Det finns två roller för att hantera feed-behörigheter: *administratör* och *visnings program* . 
+Det finns två roller för att hantera feed-behörigheter: *administratör* och *visnings program*. 
 
 * En *administratör* har fullständig kontroll över datafeeden och måtten i den. De kan aktivera, pausa, ta bort datafeeden och göra uppdateringar av feeds och konfigurationer. En *administratör* är vanligt vis ägare till måtten.
 

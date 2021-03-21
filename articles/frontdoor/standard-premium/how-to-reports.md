@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: 9670d8204d04fc770bf3fe98a270a3f6ccbf234b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101100593"
 ---
 # <a name="azure-front-door-standardpremium-preview-reports"></a>Azure frontend-rapporter, standard/Premium (för hands version)
@@ -247,7 +247,7 @@ Ett rutnät visar antalet begär Anden, begäran%, överförda data och överfö
 
 Med den här rapporten kan du Visa grafisk och statistisk visning av WAF mönster efter olika dimensioner.
 
-| Dimensioner | Description |
+| Dimensioner | Beskrivning |
 |---------|---------|
 | Översikts mått – matchade WAF-regler | Begär Anden som matchar anpassade WAF-regler, hanterade WAF-regler och robot Manager. |
 | Översikts mått – blockerade begär Anden | Procent andelen begär Anden som blockeras av WAF-regler bland alla begär Anden som matchade WAF-regler. |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
 ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95811634"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurera nätverksmappning och IP-adressering för virtuella nätverk
@@ -73,7 +73,7 @@ IP-adressen för varje nätverkskort på en virtuell mål dator konfigureras enl
 
 ## <a name="ip-address-assignment-during-failover"></a>IP-adresstilldelning under redundans
 
-**Käll-och mål under nät** | **Detaljer**
+**Käll-och mål under nät** | **Information**
 --- | ---
 Samma adress utrymme | IP-adressen för den virtuella käll datorn NIC har angetts som mål-IP-adress för VM-nätverkskort.<br/><br/> Om adressen inte är tillgänglig anges nästa tillgängliga IP-adress som mål.
 Annat adress utrymme | Nästa tillgängliga IP-adress i mål under nätet har angetts som den virtuella mål datorns NIC-adress.
@@ -82,7 +82,7 @@ Annat adress utrymme | Nästa tillgängliga IP-adress i mål under nätet har an
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Tilldelning av IP-adress vid redundanstest
 
-**Mål nätverk** | **Detaljer**
+**Mål nätverk** | **Information**
 --- | ---
 Mål nätverket är det virtuella nätverket med redundans | -Mål-IP-adressen kommer att vara statisk med samma IP-adress. <br/><br/>  -Om samma IP-adress redan har tilldelats är IP-adressen nästa som är tillgänglig i slutet av under nätets intervall. Exempel: om käll-IP-adressen är 10.0.0.19 och redundansväxlingen använder intervallet 10.0.0.0/24, är nästa IP-adress som tilldelats den virtuella mål datorn 10.0.0.254.
 Mål nätverket är inte det virtuella nätverkets VNet | -Mål-IP-adressen kommer att vara statisk med samma IP-adress.<br/><br/>  -Om samma IP-adress redan har tilldelats är IP-adressen nästa som är tillgänglig i slutet av under nätets intervall.<br/><br/> Exempel: om den statiska käll-IP-adressen är 10.0.0.19 och redundansväxlingen finns i ett nätverk som inte är redundansklustret, med intervallet 10.0.0.0/24, blir den statiska IP-adressen 10.0.0.19 om den är tillgänglig och annars kommer den att vara 10.0.0.254.

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726418"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Begränsningar för Orchestrator-funktions kod
@@ -65,7 +65,7 @@ Aktiviteterna körs synkront med en enda tråd tills alla historiken har spelats
 
 Det här avsnittet beskriver körnings beteendet för att hjälpa dig att förstå varför en Orchestrator-funktion inte kan använda `await` eller `yield` i en inhållbar uppgift. Det finns två orsaker: dispatcher-tråden kan inte vänta på att uppgiften slutförs och alla återanrop från den aktiviteten kan eventuellt skada spårnings läget för Orchestrator-funktionen. Vissa körnings kontroller är på plats för att hjälpa till att identifiera dessa överträdelser.
 
-Om du vill veta mer om hur det varaktiga aktivitets ramverket Kör Orchestrator-funktioner kan du läsa den [varaktiga aktivitets käll koden på GitHub](https://github.com/Azure/durabletask). I synnerhet, se [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) och [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+Om du vill veta mer om hur det varaktiga aktivitets ramverket Kör Orchestrator-funktioner kan du läsa den [varaktiga aktivitets käll koden på GitHub](https://github.com/Azure/durabletask). I synnerhet, se [TaskOrchestrationExecutor. cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) och [TaskOrchestrationContext. cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
 ## <a name="next-steps"></a>Nästa steg
 

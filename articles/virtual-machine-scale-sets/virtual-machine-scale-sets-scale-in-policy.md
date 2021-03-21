@@ -11,10 +11,10 @@ ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: 9ca6310705d54d563aae746ab2dbfe6cb412e6a9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747798"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Använd anpassade skalnings principer med skalnings uppsättningar för virtuella Azure-datorer
@@ -23,7 +23,7 @@ En distribution av skalnings uppsättningar för virtuella datorer kan skalas up
 
 Funktionen för skalnings-i-princip ger användarna möjlighet att konfigurera i vilken ordning de virtuella datorerna ska skalas – i, med tre skalnings-konfigurationer: 
 
-1. Standard
+1. Standardvärde
 2. NewestVM
 3. OldestVM
 
@@ -57,7 +57,7 @@ En skalnings princip kan definieras i modellen för skalnings uppsättningar fö
  
 I följande steg definieras en skalnings princip när du skapar en ny skalnings uppsättning. 
  
-1. Gå till **skalnings uppsättningar för virtuella datorer** .
+1. Gå till **skalnings uppsättningar för virtuella datorer**.
 1. Välj **+ Lägg** till för att skapa en ny skalnings uppsättning.
 1. Gå till fliken **skalning** . 
 1. Leta upp avsnittet **Scale-in-princip** .
@@ -83,7 +83,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Skapa en resurs grupp och skapa sedan en ny skalnings uppsättning med skalnings princip uppsättning som *OldestVM* .
+Skapa en resurs grupp och skapa sedan en ny skalnings uppsättning med skalnings princip uppsättning som *OldestVM*.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
@@ -96,7 +96,7 @@ New-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-I följande exempel läggs en skalnings princip till när du skapar en ny skalnings uppsättning. Skapa först en resurs grupp och skapa sedan en ny skalnings uppsättning med Scale-in-princip som *OldestVM* . 
+I följande exempel läggs en skalnings princip till när du skapar en ny skalnings uppsättning. Skapa först en resurs grupp och skapa sedan en ny skalnings uppsättning med Scale-in-princip som *OldestVM*. 
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -138,7 +138,7 @@ Du kan ändra en skalnings princip för en befintlig skalnings uppsättning via 
 1. I en befintlig skalnings uppsättning för virtuell dator väljer du **skalning** från menyn till vänster.
 1. Välj fliken **Scale-in-princip** .
 1. Välj en skalnings princip i list rutan.
-1. När du är klar väljer du **Spara** . 
+1. När du är klar väljer du **Spara**. 
 
 ### <a name="using-api"></a>Med API:et
 
@@ -211,12 +211,12 @@ I exemplen nedan visas hur en skalnings uppsättning för virtuella datorer väl
 | Händelse                 | Instans-ID: n i zon 1  | Instans-ID: n i 1  | Instans-ID: n i zon 3  | Skalning – i markering                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Inledande               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Skala in              | 3, 4, 5, 10            | **_2_* _, 6, 9, 11      | 1, 7, 8                | Välj mellan Zon 1 och 2, även om Zon 3 har den äldsta virtuella datorn. Ta bort VM2 från Zon 2 eftersom det är den äldsta virtuella datorn i zonen.   |
-| Skala in              | _*_3_*_ , 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Välj Zon 1 även om Zon 3 har den äldsta virtuella datorn. Ta bort VM3 från Zon 1 eftersom det är den äldsta virtuella datorn i zonen.                  |
-| Skala in              | 4, 5, 10               | 6, 9, 11               | _*_1_*_ , 7, 8          | Zoner är balanserade. Ta bort VM1 i Zon 3 eftersom det är den äldsta virtuella datorn i skalnings uppsättningen.                                               |
-| Skala in              | _*_4_*_ , 5, 10         | 6, 9, 11               | 7, 8                   | Välj mellan Zon 1 och Zon 2. Ta bort VM4 i Zon 1 eftersom det är den äldsta virtuella datorn i de två zonerna.                              |
-| Skala in              | 5, 10                  | _*_6_*_ , 9, 11         | 7, 8                   | Välj Zon 2 även om Zon 1 har den äldsta virtuella datorn. Ta bort VM6 i Zon 1 eftersom det är den äldsta virtuella datorn i zonen.                    |
-| Skala in              | _*_5_*_ , 10            | 9, 11                  | 7, 8                   | Zoner är balanserade. Ta bort VM5 i Zon 1 eftersom det är den äldsta virtuella datorn i skalnings uppsättningen.                                                |
+| Skala in              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Välj mellan Zon 1 och 2, även om Zon 3 har den äldsta virtuella datorn. Ta bort VM2 från Zon 2 eftersom det är den äldsta virtuella datorn i zonen.   |
+| Skala in              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Välj Zon 1 även om Zon 3 har den äldsta virtuella datorn. Ta bort VM3 från Zon 1 eftersom det är den äldsta virtuella datorn i zonen.                  |
+| Skala in              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Zoner är balanserade. Ta bort VM1 i Zon 3 eftersom det är den äldsta virtuella datorn i skalnings uppsättningen.                                               |
+| Skala in              | ***4***, 5, 10         | 6, 9, 11               | 7, 8                   | Välj mellan Zon 1 och Zon 2. Ta bort VM4 i Zon 1 eftersom det är den äldsta virtuella datorn i de två zonerna.                              |
+| Skala in              | 5, 10                  | ***6***, 9, 11         | 7, 8                   | Välj Zon 2 även om Zon 1 har den äldsta virtuella datorn. Ta bort VM6 i Zon 1 eftersom det är den äldsta virtuella datorn i zonen.                    |
+| Skala in              | ***5***, 10            | 9, 11                  | 7, 8                   | Zoner är balanserade. Ta bort VM5 i Zon 1 eftersom det är den äldsta virtuella datorn i skalnings uppsättningen.                                                |
 
 För icke-zonindelade virtuella datorers skalnings uppsättningar väljer principen den äldsta virtuella datorn över den skalnings uppsättning som ska tas bort. En "skyddad" virtuell dator kommer att hoppas över för borttagning.
 
@@ -225,12 +225,12 @@ För icke-zonindelade virtuella datorers skalnings uppsättningar väljer princi
 | Händelse                 | Instans-ID: n i zon 1  | Instans-ID: n i 1  | Instans-ID: n i zon 3  | Skalning – i markering                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Inledande               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Skala in              | 3, 4, 5, 10            | 2, 6, 9, _*_11_*_      | 1, 7, 8                | Välj mellan Zon 1 och 2. Ta bort VM11 – från Zon 2 eftersom det är den senaste virtuella datorn i de två zonerna.                                |
-| Skala in              | 3, 4, 5, _*_10_*_      | 2, 6, 9                | 1, 7, 8                | Välj Zon 1 som har fler virtuella datorer än de andra två zonerna. Ta bort VM10 från Zon 1 som den senaste virtuella datorn i zonen.          |
-| Skala in              | 3, 4, 5                | 2, 6, _*_9_*_          | 1, 7, 8                | Zoner är balanserade. Ta bort VM9 i Zon 2 eftersom det är den nyaste virtuella datorn i skalnings uppsättningen.                                                |
-| Skala in              | 3, 4, 5                | 2, 6                   | 1, 7, _*_8_*_          | Välj mellan Zon 1 och Zon 3. Ta bort VM8 i Zon 3 eftersom det är den senaste virtuella datorn i zonen.                                      |
-| Skala in              | 3, 4, _*_5_*_          | 2, 6                   | 1, 7                   | Välj Zon 1 även om Zon 3 har den senaste virtuella datorn. Ta bort VM5 i Zon 1 eftersom det är den senaste virtuella datorn i zonen.                    |
-| Skala in              | 3, 4                   | 2, 6                   | 1, _ *_7_**             | Zoner är balanserade. Ta bort VM7 i Zon 3 eftersom det är den nyaste virtuella datorn i skalnings uppsättningen.                                                |
+| Skala in              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Välj mellan Zon 1 och 2. Ta bort VM11 – från Zon 2 eftersom det är den senaste virtuella datorn i de två zonerna.                                |
+| Skala in              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Välj Zon 1 som har fler virtuella datorer än de andra två zonerna. Ta bort VM10 från Zon 1 som den senaste virtuella datorn i zonen.          |
+| Skala in              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Zoner är balanserade. Ta bort VM9 i Zon 2 eftersom det är den nyaste virtuella datorn i skalnings uppsättningen.                                                |
+| Skala in              | 3, 4, 5                | 2, 6                   | 1, 7, ***8***          | Välj mellan Zon 1 och Zon 3. Ta bort VM8 i Zon 3 eftersom det är den senaste virtuella datorn i zonen.                                      |
+| Skala in              | 3, 4, ***5***          | 2, 6                   | 1, 7                   | Välj Zon 1 även om Zon 3 har den senaste virtuella datorn. Ta bort VM5 i Zon 1 eftersom det är den senaste virtuella datorn i zonen.                    |
+| Skala in              | 3, 4                   | 2, 6                   | 1, ***7***             | Zoner är balanserade. Ta bort VM7 i Zon 3 eftersom det är den nyaste virtuella datorn i skalnings uppsättningen.                                                |
 
 För icke-zonindelade virtuella datorers skalnings uppsättningar väljer principen den senaste virtuella datorn över den skalnings uppsättning som ska tas bort. En "skyddad" virtuell dator kommer att hoppas över för borttagning. 
 

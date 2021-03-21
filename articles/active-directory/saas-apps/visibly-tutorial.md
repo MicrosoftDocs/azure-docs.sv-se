@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
 ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92637946"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med synlig
@@ -49,7 +49,7 @@ Om du vill konfigurera integreringen av synligt i Azure AD måste du lägga till
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du in **synligt** i sökrutan.
 1. Välj **synligt** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
@@ -57,7 +57,7 @@ Om du vill konfigurera integreringen av synligt i Azure AD måste du lägga till
 
 ## <a name="configure-and-test-azure-ad-sso-for-visibly"></a>Konfigurera och testa Azure AD SSO för synligt
 
-Konfigurera och testa Azure AD SSO med synligt med en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i synligt.
+Konfigurera och testa Azure AD SSO med synligt med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i synligt.
 
 Om du vill konfigurera och testa Azure AD SSO med synligt, slutför du följande Bygg stenar:
 
@@ -72,8 +72,8 @@ Om du vill konfigurera och testa Azure AD SSO med synligt, slutför du följande
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan **synlig** program integrering och letar upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. I [Azure Portal](https://portal.azure.com/)går du till sidan **synlig** program integrering och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -91,7 +91,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Förutom över, förväntar sig ett synligt program att få fler attribut att skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | ----------- | --------- |
     | city | User. City |
     | lastName | user.surname |
@@ -110,21 +110,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till synligt.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. Välj **synlig** i listan program.
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -148,7 +148,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Skärm bild som visar de integreringar som valts på menyn Inställningar.](./media/visibly-tutorial/integrations.png)
 
-1. I **integreringarna** väljer du **SSO** .
+1. I **integreringarna** väljer du **SSO**.
 
     ![Skärm bild som visar S O valt från Integreringarna.](./media/visibly-tutorial/sso.png)
 
@@ -162,7 +162,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     c. Ange ett giltigt namn i text rutan för **SSO-namn** .
 
-    d. Öppna det nedladdade **certifikatet (base64)** från Azure Portal i anteckningar och klistra in innehållet i text rutan **certifikat** eller också kan du ladda upp **certifikatet** genom att välja **Ladda upp certifikatet** .
+    d. Öppna det nedladdade **certifikatet (base64)** från Azure Portal i anteckningar och klistra in innehållet i text rutan **certifikat** eller också kan du ladda upp **certifikatet** genom att välja **Ladda upp certifikatet**.
 
     e. Klicka på **Spara**
 

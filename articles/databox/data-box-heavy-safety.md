@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021545"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Installera och använda din Azure Data Box Heavy på ett säkert sätt
@@ -27,14 +27,14 @@ Läs all säkerhets information i den här artikeln innan du använder din Azure
 ## <a name="safety-icon-conventions"></a>Säkerhets ikon konventioner
 Här följer de ikoner som du hittar när du granskar de säkerhets åtgärder som ska observeras när du konfigurerar och kör din Data Box-enhet.
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Varnings ikon ](./media/data-box-heavy-safety/warning-icon.png) **!** |Indikerar en farlig situation som, om de inte undviks, leder till dödsfall eller allvarlig skada. Den här signalen är begränsad till de mest extrema situationerna. |
 | ![Varnings ikon ](./media/data-box-heavy-safety/warning-icon.png) **Varning!** |Indikerar en farlig situation som, om de inte undviks, kan leda till dödsfall eller allvarlig skada. |
 | ![Varnings ikon varning ](./media/data-box-heavy-safety/warning-icon.png) **!** |Indikerar en farlig situation som, om de inte undviks, kan leda till mindre eller måttlig skada. |
 | ![Meddelande Ikons ](./media/data-box-heavy-safety/notice-icon.png) **meddelande:** |Anger information som anses viktig, men inte risk relaterad. |
 | ![Elektrisk stötande stöt vid ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **fara** |Hög spänning. |
-| ![](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **Heavy weight** Extrafet vikt ikon | |
+| ![](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png)  Extrafet vikt ikon | |
 | ![Ingen User serviceable parts-ikon ](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **saknar användar tjänst delar** |Få inte åtkomst om den inte är korrekt utbildad. |
 | ![Läs säkerhets meddelande ikonen ](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **Läs alla instruktioner först** | |
 | ![Tips risk ikon ](./media/data-box-heavy-safety/tip-hazard-icon.png) **tips** | |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
 ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019250"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Konfigurera en Linux-huvudmålserver för återställning efter fel
@@ -154,7 +154,7 @@ För att hämta ID för varje SCSI-hårddisk på en virtuell Linux-dator, **disk
 
 3. Välj fliken **alternativ** .
 
-4. Välj **Avancerad** allmän i den vänstra rutan  >  **General** och välj sedan knappen **konfigurations parametrar** på den nedre högra delen av skärmen.
+4. Välj **Avancerad** allmän i den vänstra rutan  >  och välj sedan knappen **konfigurations parametrar** på den nedre högra delen av skärmen.
 
     ![Öppna konfigurations parameter](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
