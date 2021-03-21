@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: b09587d90024a8c376be8b0d93f7ef7b6cc51a1e
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008492"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-kodexempel
@@ -93,7 +93,7 @@ Följande tabeller innehåller länkar till kod exempel för att använda webb-A
 | [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Det här exemplet visar hur du verifierar en användar identitet som en del av dina registrerings flöden genom att använda en API-anslutning för att integrera med Experian:. |
 
 
-### <a name="other"></a>Annat
+### <a name="other"></a>Övrigt
 
 | Exempel                                                                                                            | Beskrivning                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |

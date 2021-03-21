@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102445517"
 ---
 Kom igång med ansikts igenkänning med ansikts klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Ansikts tjänsten ger dig till gång till avancerade algoritmer för att identifiera och identifiera mänskliga ansikten i bilder.
@@ -50,7 +50,7 @@ När du har skapat ett nytt projekt installerar du klient biblioteket genom att 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `face-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*. 
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `face-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*. 
 
 ```console
 dotnet new console -n face-quickstart
@@ -86,7 +86,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs), som innehåller kod exemplen i den här snabb starten.
 
 
-Från projekt katalogen öppnar du filen *program.cs* och lägger till följande `using` direktiv:
+Från projekt katalogen öppnar du filen *program. cs* och lägger till följande `using` direktiv:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_using)]
 

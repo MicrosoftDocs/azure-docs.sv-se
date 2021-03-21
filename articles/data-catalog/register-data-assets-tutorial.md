@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de85cad8232d76706358c36806ce19a7c1df893f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88135886"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675013"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Självstudie: registrera data till gångar i Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 I den här självstudien använder du registrerings verktyget för att registrera data till gångar från databas exemplet med katalogen. Registreringen är den process där du extraherar viktiga strukturella metadata, t.ex. namn, typer och platser, från datakällan och dess tillgångar och kopierar dem till katalogen. Datakällan och datatillgångarna blir kvar där de är, men katalogen använder deras metadata för att göra det lättare att identifiera dem och förstå hur de kan användas.
 
@@ -26,7 +28,7 @@ I den här guiden får du lära dig att:
 > * Hantera datatillgångar
 > * Ta bort data till gångar
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång måste du slutföra [snabb](register-data-assets-tutorial.md)starten.
 
@@ -57,7 +59,7 @@ Du kan nu registrera data till gångar från databas exemplet genom att använda
 
     ![Azure Data Catalog – välkomstsida](media/register-data-assets-tutorial/data-catalog-welcome-dialog.png)
 
-4. Välj **SQL Server** och **nästa**på sidan **Microsoft Azure Data Catalog** .
+4. Välj **SQL Server** och **nästa** på sidan **Microsoft Azure Data Catalog** .
 
     ![Azure Data Catalog – datakällor](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
@@ -69,7 +71,7 @@ Du kan nu registrera data till gångar från databas exemplet genom att använda
 
    1. I trädet för **mapphierarkin** expanderar du ditt databas exempel och väljer **SalesLT**.
 
-   2. Välj **produkt**, **ProductCategory**, **ProductDescription**och **ProductModel** genom att trycka på CTRL + Select.
+   2. Välj **produkt**, **ProductCategory**, **ProductDescription** och **ProductModel** genom att trycka på CTRL + Select.
 
    3. Välj pilen för den **flyttade-markerade pilen** ( **>** ). Denna åtgärd flyttar alla markerade objekt till listan **Objekt som ska registreras**.
 
@@ -89,7 +91,7 @@ Du kan nu registrera data till gångar från databas exemplet genom att använda
 
       ![Azure Data Catalog – registrerade objekt](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
-    9. Välj **Visa Portal**om du vill se dina registrerade data käll objekt. I Azure Data Catalog-portalen bekräftar du att du ser alla fyra tabeller och databasen i diagramvyn (kontrol lera att Sök fältet är tydligt).
+    9. Välj **Visa Portal** om du vill se dina registrerade data käll objekt. I Azure Data Catalog-portalen bekräftar du att du ser alla fyra tabeller och databasen i diagramvyn (kontrol lera att Sök fältet är tydligt).
 
        ![Objekt på Azure Data Catalog-portalen](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
@@ -127,7 +129,7 @@ Du kan använda en enkel sökning för att söka igenom en katalog med hjälp av
 
    Panelen **Sökningar** visas till vänster och panelen **Egenskaper** till höger. På panelen **Sökningar** kan du ändra sökvillkoren och filtrera resultatet. Panelen **Egenskaper** innehåller egenskaperna för ett valt objekt i listan eller rutnätet.
 
-4. Välj **produkt** i Sök resultaten. Välj flikarna för för **hands version**, **kolumner**, **data profil**och **dokumentation** eller Välj pilen för att expandera det nedre fönstret.  
+4. Välj **produkt** i Sök resultaten. Välj flikarna för för **hands version**, **kolumner**, **data profil** och **dokumentation** eller Välj pilen för att expandera det nedre fönstret.  
 
    ![Azure Data Catalog – det nedre fönstret](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
@@ -179,7 +181,7 @@ Med jämförelseoperatorer kan du använda andra jämförelser än ”lika med�
 
 3. Tryck på **RETUR**.
 
-4. Bekräfta att du ser tabellerna **Product**, **ProductCategory**och **ProductDescription** och den SQL-databas som du registrerade i Sök resultaten.
+4. Bekräfta att du ser tabellerna **Product**, **ProductCategory** och **ProductDescription** och den SQL-databas som du registrerade i Sök resultaten.
 
    ![Azure Data Catalog – resultat från en jämförelsesökning](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -276,7 +278,7 @@ Med Data Catalog kan du identifiera datakällor och visa metadata relaterade til
 
 ### <a name="take-ownership-of-data-assets-and-restrict-visibility"></a>Bli ägare av datatillgångar och begränsa synligheten
 
-1. Gå till [startsidan för Azure Data Catalog](https://www.azuredatacatalog.com). I **sökrutan** skriver du `tags:cycles` och trycker på **Retur**.
+1. Gå till [startsidan för Azure Data Catalog](https://www.azuredatacatalog.com). I text rutan **Sök** skriver du `tags:cycles` och trycker på **RETUR**.
 
 2. Markera ett objekt i resultat listan och välj **bli ägare** i verktygsfältet.
 

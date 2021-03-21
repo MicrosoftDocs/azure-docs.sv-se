@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/28/2020
 ms.author: tamram
 ms.openlocfilehash: a9d7f4f77d91abc88ea348e71a3d9c471b26a273
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622024"
 ---
 Emulatorn har stöd för ett enda fast konto och en välkänd autentiseringsnyckel för autentisering med delad nyckel. Det här kontot och nyckeln är de enda autentiseringsuppgifterna för delad nyckel som tillåts för användning med emulatorn. De är:

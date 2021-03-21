@@ -11,75 +11,100 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fb23d79caa6964c3f61fbb84c8b8f229f475b8ab
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94410903"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722165"
 ---
 # <a name="adsync-service-account"></a>ADSync-tjänstkonto
 Azure AD Connect installerar en lokal tjänst som dirigerar synkronisering mellan Active Directory och Azure Active Directory.  Microsoft Azure AD Sync-synkroniseringstjänsten (ADSync) körs på en server i din lokala miljö.  Autentiseringsuppgifterna för tjänsten ställs in som standard i Express installationer, men kan anpassas för att uppfylla organisationens säkerhets krav.  Dessa autentiseringsuppgifter används inte för att ansluta till dina lokala skogar eller Azure Active Directory.
 
 Att välja ADSync-tjänstkontot är ett viktigt planerings beslut att fatta innan du installerar Azure AD Connect.  Om du försöker ändra autentiseringsuppgifterna efter installationen leder det till att tjänsten inte startar, att förlora åtkomsten till databasen och att det inte går att autentisera med dina anslutna kataloger (Azure och AD DS).  Ingen synkronisering sker förrän de ursprungliga autentiseringsuppgifterna har återställts.
 
-## <a name="the-default-adsync-service-account"></a>Standard kontot för ADSync-tjänsten
+Synkroniseringstjänsten kan köras under olika konton. Den kan köras under ett virtuellt tjänst konto (VSA), ett hanterat tjänst konto (gMSA/sMSA) eller ett vanligt användar konto. De alternativ som stöds har ändrats med 2017 april release och 2021 mars Azure AD Connect när du gör en ny installation. Om du uppgraderar från en tidigare version av Azure AD Connect är dessa ytterligare alternativ inte tillgängliga. 
 
-När körs på en medlems Server körs AdSync-tjänsten i kontexten för ett virtuellt tjänst konto (VSA).  På grund av en produkt begränsning skapas ett anpassat tjänst konto när det installeras på en domänkontrollant.  Om kontot Express-inställningar inte uppfyller organisationens säkerhets krav distribuerar du Azure AD Connect genom att välja alternativet Anpassa.  Välj sedan alternativet tjänst konto som uppfyller organisationens krav.
 
->[!NOTE]
->Standard tjänst kontot när det installeras på en domänkontrollant har formatet domän \ AAD_InstallationIdentifier.  Lösen ordet för det här kontot genereras slumpmässigt och ger stora utmaningar för återställning och lösen ords rotation.  Microsoft rekommenderar att du anpassar tjänst kontot under den första installationen på en domänkontrollant för att använda antingen ett fristående eller grupphanterat tjänst konto (sMSA/gMSA)
+|Typ av konto|Installations alternativ|Beskrivning| 
+|-----|------|-----|
+|Virtuellt tjänst konto|Express och anpassad, 2017 april och senare| Ett virtuellt tjänst konto används för alla Express installationer, förutom för installationer på en domänkontrollant. När du använder anpassad installation är det standard alternativet om inte ett annat alternativ används.| 
+|Hanterat tjänstkonto|Anpassad, 2017 april och senare|Om du använder en fjärran sluten SQL Server rekommenderar vi att du använder ett grupphanterat tjänst konto. |
+|Hanterat tjänstkonto|Express och anpassad, 2021 mars och senare|Ett fristående hanterat tjänst konto med ADSyncMSA_ skapas under installationen av Express installationer när de installeras på en domänkontrollant. När du använder anpassad installation är det standard alternativet om inte ett annat alternativ används.|
+|Användarkonto|Express och anpassad, 2017 april till 2021 mars|Ett användar konto som har prefixet AAD_ skapas under installationen för Express installationer när de installeras på en domänkontrollant. När du använder anpassad installation är det standard alternativet om inte ett annat alternativ används.|
+|Användarkonto|Express och anpassad, 2017 mars och tidigare|Ett användar konto som har prefixet AAD_ skapas under installationen för Express installationer. När du använder anpassad installation kan du ange ett annat konto.| 
 
-|Azure AD Connect plats|Tjänst konto skapat|
-|-----|-----|
-|Medlems Server|NT-SERVICE\ADSync|
-|Domänkontrollant|Domän \ AAD_74dc30c01e80 (se OBS!)|
+>[!IMPORTANT]
+> Om du använder Connect med en version från 2017 mars eller tidigare bör du inte återställa lösen ordet för tjänst kontot eftersom Windows förstör krypterings nycklarna av säkerhets skäl. Du kan inte ändra kontot till något annat konto utan att installera om Azure AD Connect. Om du uppgraderar till en version från 2017 april eller senare, stöds det att ändra lösen ordet för tjänst kontot, men du kan inte ändra det konto som används. 
 
-## <a name="custom-adsync-service-accounts"></a>Anpassade ADSync-tjänstekonton
-Microsoft rekommenderar att du kör ADSync-tjänsten i kontexten för antingen ett virtuellt tjänst konto eller ett fristående eller grupphanterat tjänst konto.  Domän administratören kan också välja att skapa ett tjänst konto som tillhandahålls för att uppfylla dina särskilda organisations säkerhets krav.   Om du vill anpassa det tjänst konto som används under installationen väljer du alternativet Anpassa på sidan Express inställningar nedan.   Följande alternativ är tillgängliga:
+> [!IMPORTANT]
+> Du kan bara ange tjänst kontot vid första installationen. Det finns inte stöd för att ändra tjänst kontot när installationen har slutförts. Om du behöver ändra lösen ordet för tjänst kontot, stöds detta och du hittar anvisningar [här](how-to-connect-sync-change-serviceacct-pass.md).
 
-- Standard konto – Azure AD Connect etablerar tjänst kontot enligt beskrivningen ovan
-- hanterat tjänst konto – Använd en fristående eller grupp MSA som tillhandahålls av administratören
-- domän konto – Använd ett domän tjänst konto som tillhandahålls av administratören
+Följande är en tabell med alternativen standard, Recommended och Supported för kontot Sync service. 
 
-![Skärm bild av alternativ knapparna "anpassa" eller "Använd Express inställningar" på sidan Azure AD Connect Express-inställningar.](media/concept-adsync-service-account/adsync1.png)
+Förklaring: 
 
-![Skärm bild av sidan för Azure AD Connect installera nödvändiga komponenter med alternativet att använda ett befintligt hanterat tjänst konto valt.](media/concept-adsync-service-account/adsync2.png)
+- **Fet** anger standard alternativet och det rekommenderade alternativet i de flesta fall. 
+- *Kursiv* anger det rekommenderade alternativet när det inte är standard alternativet. 
+- Alternativ som inte stöds av fet stil 
+- Lokalt konto – lokalt användar konto på servern 
+- Domän konto – domän användar konto 
+- sMSA- [fristående hanterat tjänst konto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA- [grupphanterat tjänst konto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
-## <a name="diagnosing-adsync-service-account-changes"></a>Diagnostisera ändringar i ADSync-tjänstkontot
-Om du ändrar autentiseringsuppgifterna för ADSync-tjänsten efter installationen leder det till att tjänsten inte startar, förlorar åtkomst till databasen för synkronisering och att den inte kan autentiseras med dina anslutna kataloger (Azure och AD DS).  Det räcker inte att bevilja databas åtkomst till det nya ADSync-tjänstkontot för att kunna återställas från det här problemet. Ingen synkronisering sker förrän de ursprungliga autentiseringsuppgifterna har återställts.
+ ||**LocalDB </br> Express**|**LocalDB/LocalSQL </br> Custom**|**Fjärr-SQL </br> anpassad**|
+|-----|-----|-----|-----|
+|**domänansluten dator**|**ATTRIBUTET**|**ATTRIBUTET**</br> *sMSA*</br> *gMSA*</br> Lokalt konto</br> Domänkonto| *gMSA* </br>Domänkonto|
+|Domänkontrollant| **sMSA**|**sMSA** </br>*gMSA*</br> Domänkonto|*gMSA*</br>Domänkonto| 
 
-ADSync-tjänsten utfärdar ett meddelande om fel nivå till händelse loggen när det inte går att starta.  Innehållet i meddelandet varierar beroende på om den inbyggda databasen (LocalDB) eller en fullständig SQL används.  Följande är exempel på de händelse logg poster som kan finnas.
+## <a name="virtual-service-account"></a>Virtuellt tjänst konto 
 
-### <a name="example-1"></a>Exempel 1
+Ett virtuellt tjänst konto är en särskild typ av hanterat lokalt konto som inte har ett lösen ord och som hanteras automatiskt av Windows. 
 
-Det gick inte att hitta krypterings nycklarna för AdSync-tjänsten och den har återskapats.  Synkroniseringen utförs inte förrän problemet har åtgärd ATS.
+ ![Virtuellt tjänst konto](media/concept-adsync-service-account/account-1.png)
 
-Genom att felsöka det här problemet blir Microsoft Azure AD synkrona krypterings nycklar otillgängliga om autentiseringsuppgifterna för AdSync-tjänstens inloggning har ändrats.  Om autentiseringsuppgifterna har ändrats använder du tjänst programmet för att ändra inloggnings kontot till det ursprungligen konfigurerade värdet (t. ex. NT SERVICE\AdSync) och startar om tjänsten.  Detta kommer omedelbart att återställa korrekt drift av AdSync-tjänsten.
+Det virtuella tjänst kontot är avsett att användas med scenarier där Synkroniseringsmotorn och SQL finns på samma server. Om du använder fjärr-SQL rekommenderar vi att du använder ett grupphanterat tjänst konto i stället. 
 
-Mer information finns i följande [artikel](./whatis-hybrid-identity.md) .
+Det går inte att använda det virtuella tjänst kontot på en domänkontrollant på grund av problem med [Windows Data Protection API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) . 
 
-### <a name="example-2"></a>Exempel 2
+## <a name="managed-service-account"></a>Hanterat tjänstkonto 
 
-Det gick inte att starta tjänsten eftersom det inte gick att upprätta en anslutning till den lokala databasen (LocalDB).
+Om du använder en fjärran sluten SQL Server rekommenderar vi att du använder ett grupphanterat tjänst konto. Mer information om hur du förbereder din Active Directory för grupphanterade tjänst konton finns i [Översikt över grupphanterade tjänst konton](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)). 
 
-Felsöka det här problemet. Microsoft Azure AD Sync-tjänsten kommer att förlora behörighet att komma åt den lokala databas leverantören om autentiseringsuppgifterna för AdSync-tjänstens inloggnings information har ändrats.  Om autentiseringsuppgifterna har ändrats använder du tjänst programmet för att ändra inloggnings kontot till det ursprungligen konfigurerade värdet (t. ex. NT SERVICE\AdSync) och startar om tjänsten.  Detta kommer omedelbart att återställa korrekt drift av AdSync-tjänsten.
+Om du vill använda det här alternativet väljer du **Använd ett befintligt tjänst konto** på sidan [installera nödvändiga komponenter](how-to-connect-install-custom.md#install-required-components) och väljer **hanterat tjänst konto**. 
 
-Mer information finns i följande [artikel](./whatis-hybrid-identity.md) .
+ ![hanterat tjänst konto](media/concept-adsync-service-account/account-2.png)
 
-Ytterligare information följande fel information returnerades av providern:
- 
+Det finns också stöd för att använda ett fristående hanterat tjänst konto. Dessa kan dock endast användas på den lokala datorn och det finns ingen förmån att använda dem över det virtuella standard kontot. 
 
-``` 
-OriginalError=0x80004005 OLEDB Provider error(s): 
-Description  = 'Login timeout expired'
-Failure Code = 0x80004005
-Minor Number = 0 
-Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
-```
+### <a name="auto-generated-standalone-managed-service-account"></a>Automatiskt genererat fristående hanterat tjänst konto 
+
+Om du installerar Azure AD Connect på en domänkontrollant skapas ett fristående hanterat tjänst konto av installations guiden (om du inte anger det konto som ska användas i anpassade inställningar). Kontot har prefix **ADSyncMSA_** och används för den faktiska synkroniseringstjänsten som ska köras som. 
+
+Det här kontot är ett hanterat domän konto som inte har ett lösen ord och som hanteras automatiskt av Windows. 
+
+Det här kontot är avsett att användas med scenarier där Synkroniseringsmotorn och SQL finns på domänkontrollanten. 
+
+## <a name="user-account"></a>Användarkonto 
+
+Ett lokalt tjänst konto skapas av installations guiden (om du inte anger vilket konto som ska användas i anpassade inställningar). Kontot har prefix AAD_ och används för den faktiska synkroniseringstjänsten som ska köras som. Om du installerar Azure AD Connect på en domänkontrollant skapas kontot i domänen. AAD_ tjänst kontot måste finnas i domänen om: 
+- du använder en fjärrserver som kör SQL Server 
+- du använder en proxy som kräver autentisering 
+
+ ![användar konto](media/concept-adsync-service-account/account-3.png)
+
+Kontot skapas med ett långt komplext lösen ord som inte upphör att gälla. 
+
+Det här kontot används för att lagra lösen ord för andra konton på ett säkert sätt. De andra konto lösen orden lagras krypterade i-databasen. De privata nycklarna för krypterings nycklarna skyddas med kryptering av kryptografiska tjänsters hemliga nycklar med hjälp av Windows Data Protection API (DPAPI). 
+
+Om du använder en fullständig SQL Server är tjänst kontot DBO för den skapade databasen för Synkroniseringsmotorn. Tjänsten fungerar inte som avsedd för andra behörigheter. En SQL-inloggning skapas också. 
+
+Kontot beviljas också behörighet till filer, register nycklar och andra objekt som är relaterade till Synkroniseringsmotorn. 
+
+
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om hur du [integrerar dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md).

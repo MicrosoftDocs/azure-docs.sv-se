@@ -15,10 +15,10 @@ ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
 ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034905"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Förstå och lösa Azure SQL Database spärrnings problem

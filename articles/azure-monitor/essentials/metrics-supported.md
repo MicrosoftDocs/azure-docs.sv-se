@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.openlocfilehash: 2437ab80a23ffc39c180bcdf72921fdf13768541
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033511"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Mått som stöds med Azure Monitor
@@ -2327,9 +2327,9 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |BytesDroppedDDoS|Ja|Ignorerade inkommande byte DDoS|BytesPerSecond|Maximal|Ignorerade inkommande byte DDoS|Inga dimensioner|
 |BytesForwardedDDoS|Ja|Inkommande byte, vidarebefordrade DDoS|BytesPerSecond|Maximal|Inkommande byte, vidarebefordrade DDoS|Inga dimensioner|
 |BytesInDDoS|Ja|DDoS för inkommande byte|BytesPerSecond|Maximal|DDoS för inkommande byte|Inga dimensioner|
-|DDoSTriggerSYNPackets|Ja|Inkommande SYN paket för att utlösa DDoS-minskning|CountPerSecond|Maximal|Inkommande SYN paket för att utlösa DDoS-minskning|Inga dimensioner|
-|DDoSTriggerTCPPackets|Ja|Inkommande TCP-paket för att utlösa DDoS-minskning|CountPerSecond|Maximal|Inkommande TCP-paket för att utlösa DDoS-minskning|Inga dimensioner|
-|DDoSTriggerUDPPackets|Ja|Ingående UDP-paket för att utlösa DDoS-minskning|CountPerSecond|Maximal|Ingående UDP-paket för att utlösa DDoS-minskning|Inga dimensioner|
+|DDoSTriggerSYNPackets|Ja|Inkommande SYN-paket som ska utlösa DDoS-åtgärd|CountPerSecond|Maximal|Inkommande SYN-paket som ska utlösa DDoS-åtgärd|Inga dimensioner|
+|DDoSTriggerTCPPackets|Ja|Inkommande TCP-paket som ska utlösa DDoS-åtgärd|CountPerSecond|Maximal|Inkommande TCP-paket som ska utlösa DDoS-åtgärd|Inga dimensioner|
+|DDoSTriggerUDPPackets|Ja|Inkommande UDP-paket som ska utlösa DDoS-åtgärd|CountPerSecond|Maximal|Inkommande UDP-paket som ska utlösa DDoS-åtgärd|Inga dimensioner|
 |IfUnderDDoSAttack|Ja|Under DDoS-attack eller inte|Antal|Maximal|Under DDoS-attack eller inte|Inga dimensioner|
 |PacketCount|Ja|Antal paket|Antal|Totalt|Totalt antal överförda paket inom tids perioden|Port, riktning|
 |PacketsDroppedDDoS|Ja|Inkommande paket som släppts DDoS|CountPerSecond|Maximal|Inkommande paket som släppts DDoS|Inga dimensioner|

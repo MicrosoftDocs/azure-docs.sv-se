@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: 34c7df2b0e61536c0b5f0bc1e4a97d58d0d9c6a4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490524"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
@@ -39,13 +39,13 @@ Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signatur
 - Värd
 - x-MS-Content-SHA256
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Följande steg beskriver hur du skapar ett Authorization-huvud.
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-I ett konsol fönster, till exempel cmd, PowerShell eller bash, använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `SignHmacTutorial` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: **program.cs**.
+I ett konsol fönster, till exempel cmd, PowerShell eller bash, använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `SignHmacTutorial` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: **program. cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial

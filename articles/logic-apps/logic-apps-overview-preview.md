@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102636343"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
@@ -69,7 +69,7 @@ Under tiden kan du fortfarande skapa Logic app-typen multi-apps i Azure Portal o
 
 Med den här typen av Logic-appar kan du skapa de här arbets flödes typerna i samma Logic-app:
 
-* *Tillståndskänsliga*
+* *Tillstånds känsliga*
 
   Skapa tillstånds känsliga arbets flöden när du behöver behålla, granska eller referera data från tidigare händelser. Dessa arbets flöden sparar indata och utdata för varje åtgärd och deras tillstånd i extern lagring, som gör det möjligt att granska körnings informationen och historiken när varje körning har slutförts. Tillstånds känsliga arbets flöden ger hög återhämtning om avbrott inträffar. När tjänster och system har återställts kan du rekonstruera avbrutna körningar från det sparade läget och köra arbets flödena igen för att slutföras. Tillstånds känsliga arbets flöden kan fortsätta att köras i upp till ett år.
 

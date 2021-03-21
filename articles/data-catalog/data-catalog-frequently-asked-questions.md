@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98854a4588b59cf0c19877da870e6124fa7c3b9a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151958"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674690"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Den här artikeln innehåller svar på vanliga frågor som rör tjänsten Azure Data Catalog.
 
 ## <a name="what-is-azure-data-catalog"></a>Vad är Azure Data Catalog?
@@ -36,7 +39,7 @@ Data Catalog-tjänster är för närvarande tillgängliga i följande data Cente
 * USA, västra
 * East US
 * Europa, västra
-* Norra Europa
+* Europa, norra
 * Australien, östra
 * Sydostasien
 

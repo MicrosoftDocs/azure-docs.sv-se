@@ -2,7 +2,7 @@
 title: kryptera video med AES-128: Azure Media Services Beskrivning: Lär dig hur du krypterar video med AES 128-bitars kryptering och hur du använder Key Delivery Service i Azure Media Services.
 tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: självstudie MS. Date: 08/31/2020 MS. author: inhenkel
+MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: självstudie MS. Date: 03/17/2021 MS. author: inhenkel
 
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Självstudie: kryptera video med AES-128 och Använd Key Delivery Service
@@ -89,7 +89,7 @@ I den här självstudien skapar vi jobbets indata baserat på en fil som matas i
 
 ## <a name="wait-for-the-job-to-complete"></a>Vänta tills jobbet är klart
 
-Det tar lite tid att slutföra jobbet. När du gör det, vill du bli meddelad. Kod exemplet nedan visar hur du avsöker tjänsten för [jobbets](/rest/api/media/jobs)status. Avsökningen är inte en rekommenderad metod för produktion av appar på grund av potentiell latens. Avsökningen kan begränsas om den överanvänds på ett konto. Utvecklare bör i stället använda Event Grid. Mer information finns i [dirigera händelser till en anpassad webb slut punkt](job-state-events-cli-how-to.md).
+Det tar lite tid att slutföra jobbet. När du gör det, vill du bli meddelad. Kod exemplet nedan visar hur du avsöker tjänsten för [jobbets](/rest/api/media/jobs)status. Avsökningen är inte en rekommenderad metod för produktion av appar på grund av potentiell latens. Avsökningen kan begränsas om den överanvänds på ett konto. Utvecklare bör i stället använda Event Grid. Mer information finns i [dirigera händelser till en anpassad webb slut punkt](monitoring/job-state-events-cli-how-to.md).
 
 **Jobb** har vanligtvis följande tillstånd: **Schemalagd**, **I kö**, **Bearbetas**, **Slutförd** (slutlig status). Om jobbet har kommit över ett fel visas **fel** tillstånd. Om jobbet håller på att avbrytas **avbryts du och** **annulleras** när det är färdigt.
 

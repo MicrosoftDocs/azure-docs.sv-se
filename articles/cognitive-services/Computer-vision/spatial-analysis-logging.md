@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98186030"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722709"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri och fel sökning
 
@@ -60,7 +60,7 @@ När du har konfigurerat Azure Monitor måste du skapa autentiseringsuppgifter s
 
 ```bash
 # Find your Azure IoT Hub resource ID by running this command. The resource ID  should start with something like 
-# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/...”
+# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/..."
 az iot hub list
 
 # Create a Service Principal with `Monitoring Metrics Publisher` role in the IoTHub resource:
@@ -105,16 +105,16 @@ När modulen teleympkvistar har distribuerats kan de rapporterade måtten nås v
 
 | Händelsenamn | Beskrivning|
 |------|---------|
-|archon_exit    |Skickas när en användare ändrar status för spatial Analysis-modulen från att *köras* till *stoppad*.  |
-|archon_error   |Skickas när någon av processerna i behållarens krasch. Detta är ett kritiskt fel.  |
-|InputRate  |Den hastighet med vilken grafen bearbetar video ingångar. Rapporteras var 5: e minut. | 
+|archon_exit     |Skickas när en användare ändrar status för spatial Analysis-modulen från att *köras* till *stoppad*.  |
+|archon_error     |Skickas när någon av processerna i behållarens krasch. Detta är ett kritiskt fel.  |
+|InputRate     |Den hastighet med vilken grafen bearbetar video ingångar. Rapporteras var 5: e minut. | 
 |OutputRate     |Den hastighet med vilken diagrammet matar ut AI-insikter. Rapporteras var 5: e minut. |
 |archon_allGraphsStarted | Skickas när alla grafer har startats. |
-|archon_configchange    | Skickas när en diagram konfiguration har ändrats. |
+|archon_configchange     | Skickas när en diagram konfiguration har ändrats. |
 |archon_graphCreationFailed     |Skickas när grafen med det rapporterade problemet `graphId` inte startar. |
-|archon_graphCreationSuccess    |Skickas när grafen med rapporterade `graphId` Starter har slutförts. |
-|archon_graphCleanup    | Skickas när grafen med rapporterade `graphId` rensningar och avslut. |
-|archon_graphHeartbeat  |Pulsslag skickas varje minut för varje graf i en färdighet. |
+|archon_graphCreationSuccess     |Skickas när grafen med rapporterade `graphId` Starter har slutförts. |
+|archon_graphCleanup     | Skickas när grafen med rapporterade `graphId` rensningar och avslut. |
+|archon_graphHeartbeat     |Pulsslag skickas varje minut för varje graf i en färdighet. |
 |archon_apiKeyAuthFail |Skickas när Visuellt innehåll resurs nyckeln inte kan autentisera behållaren i mer än 24 timmar på grund av följande orsaker: kvoten är ogiltig, offline. |
 |VideoIngesterHeartbeat     |Skickas varje timme för att indikera att videon strömmas från video källan, med antalet fel i den timmen. Rapporteras för varje diagram. |
 |VideoIngesterState | Rapporter har *stoppats* eller *startats* för video strömning. Rapporteras för varje diagram. |
@@ -363,7 +363,7 @@ När Kubernetes-klustret har skapats kan du använda `kubectl` kommando rads ver
     New-HcsKubernetesUser -UserName
     ```
 
-3. Lägg till *konfigurations* filen i mappen *. Kube* i din användar profil på den lokala datorn.   
+3. Lägg till *konfigurations* filen i mappen *. Kube* i din användar profil på den lokala datorn.    
 
 4. Koppla namn området till den användare som du skapade.
 
@@ -400,6 +400,34 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 |`Get-HcsKubernetesUserConfig -AseUser`     | Genererar en konfigurations fil för Kubernetes. När du använder kommandot kopierar du informationen till en fil med namnet *config*. Spara inte filen med ett fil namns tillägg.        |
 | `Get-HcsApplianceInfo` | Returnerar information om enheten. |
 | `Enable-HcsSupportAccess` | Genererar autentiseringsuppgifter för att starta en support-session. |
+
+
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>Så här arkiverar du ett support ärende för rums analys 
+
+Om du behöver mer support för att hitta en lösning på ett problem som du har med behållaren för rums analys följer du stegen nedan för att fylla i och skicka in ett support ärende. Vårt team kommer att gå tillbaka till dig med ytterligare vägledning. 
+
+### <a name="fill-out-the-basics"></a>Fyll i grunderna 
+Skapa ett nytt support ärende på sidan [ny support förfrågan](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) . Följ anvisningarna för att fylla i följande parametrar:
+
+![Grundläggande support](./media/support-ticket-page-1-final.png)
+
+1. Ange **typ av ärende** `Technical` .
+2. Välj den prenumeration som du använder för att distribuera behållaren för rums analys.
+3. Välj `My services` och välj `Cognitive Services` som tjänst.
+4. Välj den resurs som du använder för att distribuera behållaren för rums analys.
+5. Skriv en kort beskrivning som beskriver problemet som du är riktad mot. 
+6. Välj `Spatial Analysis` som problem typ.
+7. Välj lämplig undertyp i list rutan.
+8. Välj **Nästa: lösningar** att gå vidare till nästa sida.
+
+### <a name="recommended-solutions"></a>Rekommenderade lösningar
+Nästa steg kommer att erbjuda rekommenderade lösningar för den problem typ som du har valt. Dessa lösningar kommer att lösa de vanligaste problemen, men om de inte är användbara för din lösning väljer du **Nästa: information** att gå till nästa steg.
+
+### <a name="details"></a>Information
+På den här sidan lägger du till ytterligare information om problemet som du har. Se till att det finns så mycket information som möjligt, eftersom det hjälper våra tekniker att bättre begränsa problemet. Ta med den kontakt metod du föredrar och allvarlighets graden för problemet så att vi kan kontakta dig på rätt sätt och välja **Nästa: granska + skapa** för att gå vidare till nästa steg. 
+
+### <a name="review-and-create"></a>Granska och skapa 
+Granska informationen om din supportbegäran för att se till att allt är korrekt och representerar problemet effektivt. När du är klar väljer du **skapa** för att skicka biljetten till vårt team! Du får en bekräftelse via e-post när biljetten tas emot och vårt team kommer att fungera så snart som möjligt. Du kan visa statusen för din biljett i Azure Portal.
 
 ## <a name="next-steps"></a>Nästa steg
 

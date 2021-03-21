@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604312"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722437"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Returnera ett semantiskt svar i Azure Kognitiv sökning
 
 > [!IMPORTANT]
-> Semantiska Sök funktioner finns i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick, under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)och är inte garanterade att ha samma implementering vid allmän tillgänglighet. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
+> Semantisk sökning är i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick, under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)och är inte garanterade att ha samma implementering vid allmän tillgänglighet. Dessa funktioner är fakturerbara. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
 När du utvinner en [semantisk fråga](semantic-how-to-query-request.md)kan du välja att extrahera innehåll från de översta matchande dokumenten som "svarar" på frågan direkt. Ett eller flera svar kan inkluderas i svaret, som du sedan kan återge på en Sök sida för att förbättra appens användar upplevelse.
 
@@ -28,27 +28,27 @@ I den här artikeln får du lära dig hur du begär ett semantiskt svar, packar 
 
 Alla krav som gäller för [semantiska frågor](semantic-how-to-query-request.md) gäller även för svar, inklusive tjänst nivå och region.
 
-+ Frågor som formuleras med parametrarna för semantisk fråga och innehåller parametern "svar". Obligatoriska parametrar beskrivs i den här artikeln.
++ Frågans logik måste innehålla parametrarna för semantisk fråga, plus parametern "svar". Obligatoriska parametrar beskrivs i den här artikeln.
 
-+ Frågesträngar måste formuleras på ett språk som har en frågas egenskaper (vad, var, när, hur).
++ Frågesträngar som anges av användaren måste formuleras i språk som har egenskaperna för en fråga (vad, var, när, hur).
 
-+ Sök efter dokument måste innehålla text med egenskaperna för ett svar och texten måste finnas i något av fälten som anges i "searchFields".
++ Sök efter dokument måste innehålla text med egenskaperna för ett svar och texten måste finnas i något av fälten som anges i "searchFields". Till exempel kan en fråga "Vad är en hash-tabell", om ingen av searchFields innehåller passager som innehåller "en hash-tabell är...", så är det osannolikt att ett svar returneras.
 
 ## <a name="what-is-a-semantic-answer"></a>Vad är ett semantiskt svar?
 
-Ett semantiskt svar är en artefakt av en [semantisk fråga](semantic-how-to-query-request.md). Det består av en eller flera orda Grant-passager från ett sökdokument, formulerat som ett svar på en fråga som ser ut som en fråga. För att ett svar ska returneras måste det finnas fraser eller meningar i ett sökdokument som har språk egenskaperna för ett svar, och själva frågan måste vara en fråga.
+Ett semantiskt svar är en under struktur till ett [semantiskt fråge svar](semantic-how-to-query-request.md). Det består av en eller flera orda Grant-passager från ett sökdokument, formulerat som ett svar på en fråga som ser ut som en fråga. För att ett svar ska returneras måste det finnas fraser eller meningar i ett sökdokument som har språk egenskaperna för ett svar, och själva frågan måste vara en fråga.
 
-Kognitiv sökning använder en dator som läser förståelse-modellen för att formulera svar. Modellen ger en uppsättning möjliga svar från tillgängliga dokument, och när den når en hög tillräckligt konfidensnivå, kommer den att föreslå ett svar.
+Kognitiv sökning använder en maskin läsnings förståelse modell för att välja det bästa svaret. Modellen skapar en uppsättning möjliga svar från det tillgängliga innehållet och när den når en hög tillräckligt konfidensnivå, föreslår den ett svar.
 
-Svar returneras som ett oberoende objekt på den översta nivån i svars nytto lasten för frågan som du kan välja att återge på Sök sidor, samtidigt som Sök Resultat från sida. Strukturellt är det ett mat ris element i ett svar som innehåller text, en dokument nyckel och en säkerhets poäng.
+Svar returneras som ett oberoende objekt på den översta nivån i svars nytto lasten för frågan som du kan välja att återge på Sök sidor, samtidigt som Sök Resultat från sida. Strukturellt är det ett mat ris element i svaret som består av text, en dokument nyckel och en säkerhets poäng.
 
 <a name="query-params"></a>
 
 ## <a name="how-to-request-semantic-answers-in-a-query"></a>Så här begär du semantiska svar i en fråga
 
-Om du vill returnera ett semantiskt svar måste frågan ha semantisk frågetyp, språk, Sök fält och parametern "svar". Att ange parametern "svar" garanterar inte att du får ett svar, men begäran måste innehålla den här parametern om svars bearbetningen ska anropas alls.
+Om du vill returnera ett semantiskt svar måste frågan ha semantisk "queryType", "queryLanguage", "searchFields" och parametern "Answers". Att ange parametern "svar" garanterar inte att du får ett svar, men begäran måste innehålla den här parametern om svars bearbetningen ska anropas alls.
 
-Parametern "searchFields" är viktig för att returnera ett svar med hög kvalitet, både i termer av innehåll och ordning. 
+Parametern "searchFields" är avgörande för att returnera ett svar med hög kvalitet, både i termer av innehåll och ordning (se nedan). 
 
 ```json
 {
@@ -63,9 +63,9 @@ Parametern "searchFields" är viktig för att returnera ett svar med hög kvalit
 
 + En frågesträng får inte vara null och bör formuleras som fråga. I den här för hands versionen måste "queryType" och "queryLanguage" anges exakt som visas i exemplet.
 
-+ Parametern "searchFields" avgör vilka fält som tillhandahåller token till extraherings modellen. Se till att du anger den här parametern. Du måste ha minst ett sträng fält, men inkludera alla sträng fält som du tror är användbara när du tillhandahåller ett svar. Sammantaget i alla fält i searchFields, endast ca 8 000-token per dokument skickas till modellen. Starta fält listan med kortfattade fält och fortsätt sedan till text rika fält. Mer detaljerad information om hur du ställer in det här fältet finns i [set searchFields](semantic-how-to-query-request.md#searchfields).
++ Parametern "searchFields" avgör vilka sträng fält som tillhandahåller token till extraherings modellen. Samma fält som skapar under texter ger också svar. Mer information om hur du ställer in det här fältet så att det fungerar för både bild texter och svar finns i [set searchFields](semantic-how-to-query-request.md#searchfields). 
 
-+ För "svar" är den grundläggande parameter konstruktionen `"answers": "extractive"` , där standard antalet returnerade svar är ett. Du kan öka antalet svar genom att lägga till ett antal, högst fem.  Om du behöver mer än ett svar beror på användarens upplevelse av appen och hur du vill återge resultaten.
++ För "svar" är parameter konstruktion `"answers": "extractive"` , där standard antalet returnerade svar är ett. Du kan öka antalet svar genom att lägga till ett antal som visas i exemplet ovan, högst fem.  Om du behöver mer än ett svar beror på användarens upplevelse av appen och hur du vill återge resultaten.
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>Dekonstruera ett svar från svaret
 

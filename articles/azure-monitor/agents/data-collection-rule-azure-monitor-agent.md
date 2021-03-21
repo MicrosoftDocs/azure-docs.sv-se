@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586377"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721536"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurera data insamling för Azure Monitor agenten (för hands version)
 
@@ -73,6 +73,8 @@ Eftersom du debiteras för data som samlas in i en Log Analytics arbets yta bör
 
 Om du vill ange ytterligare filter måste du använda Anpassad konfiguration och ange en XPath som filtrerar bort händelser som du inte vill. XPath-poster skrivs i formuläret `LogName!XPathQuery` . Du kanske till exempel bara vill returnera händelser från program händelse loggen med händelse-ID 1035. XPathQuery för dessa händelser är `*[System[EventID=1035]]` . Eftersom du vill hämta händelserna från program händelse loggen skulle XPath vara `Application!*[System[EventID=1035]]`
 
+Se [xpath 1,0-begränsningar](/windows/win32/wes/consuming-events#xpath-10-limitations) för en lista över begränsningar i XPath som stöds av Windows händelse logg.
+
 > [!TIP]
 > Använd PowerShell-cmdleten `Get-WinEvent` med `FilterXPath` parametern för att testa giltigheten för en XPathQuery. Följande skript visar ett exempel.
 > 
@@ -87,7 +89,7 @@ Om du vill ange ytterligare filter måste du använda Anpassad konfiguration och
 
 I följande tabell visas exempel för att filtrera händelser med hjälp av en anpassad XPath.
 
-| Description |  XPath |
+| Beskrivning |  XPath |
 |:---|:---|
 | Samla endast in system händelser med händelse-ID = 4648 |  `System!*[System[EventID=4648]]`
 | Samla endast in system händelser med händelse-ID = 4648 och process namnet consent.exe |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`

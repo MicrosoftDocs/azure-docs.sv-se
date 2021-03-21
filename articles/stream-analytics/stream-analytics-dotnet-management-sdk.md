@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103232893"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Hantering av .NET SDK: Konfigurera och kör analys jobb med hjälp av Azure Stream Analytics API för .NET
@@ -81,7 +81,7 @@ Om du vill skapa ett analys jobb använder du Stream Analytics API för .NET, f�
    <Reference Include="System.Configuration" />
    ```
 
-5. Lägg till följande **using** -instruktioner till käll filen (program.CS) i projektet:
+5. Lägg till följande **using** -instruktioner till käll filen (program. CS) i projektet:
    
    ```csharp
    using System;

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b1d18982a4f2a9ee8ba585af56a5e9ded7c1c62
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036834"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Distribuera Azure AD Privileged Identity Management (PIM)
@@ -78,7 +78,7 @@ I följande avsnitt får du hjälp att identifiera alla intressenter som ingår 
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Intressenter: Privileged Identity Management för Azure AD-roller
 
-| Namn | Roll | Action |
+| Name | Roll | Action |
 | --- | --- | --- |
 | Namn och e-postadress | **Identitets arkitekt eller Global Azure-administratör**<br/>En representant från identitets hanterings teamet som är ansvarig för att definiera hur den här ändringen ska justeras med infrastrukturen för kärn identitets hantering i din organisation. | SÅ/R/I |
 | Namn och e-postadress | **Tjänst ägare/rads hanterare**<br/>En representant från IT-ägare till en tjänst eller en grupp av tjänster. De är viktiga för att fatta beslut och hjälpa till att distribuera Privileged Identity Management för sitt team. | SÅ/R/I |
@@ -88,7 +88,7 @@ I följande avsnitt får du hjälp att identifiera alla intressenter som ingår 
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Intressenter: Privileged Identity Management för Azure-roller
 
-| Namn | Roll | Action |
+| Name | Roll | Action |
 | --- | --- | --- |
 | Namn och e-postadress | **Prenumeration/resurs ägare**<br/>En representant från IT-ägarna till varje prenumeration eller resurs som du vill distribuera Privileged Identity Management för | SÅ/R/I |
 | Namn och e-postadress | **Säkerhets ägare**<br/>En representant från säkerhets teamet som kan signera att planen uppfyller organisationens säkerhets krav. | SÅ/R |

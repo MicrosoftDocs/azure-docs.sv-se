@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 4d75e60d0e497dcdd2aa121f8da73f11a7e2af5b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103015224"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2
@@ -206,7 +206,7 @@ För en ny Data Lake Storage Gen2-behållare är masken för åtkomst-ACL: en f�
 |--|--|--|
 |Ägande användare|`rwx`|`r-w`|
 |Ägande grupp|`r-x`|`r--`|
-|Annat|`---`|`---`|
+|Övrigt|`---`|`---`|
 
 Filerna tar inte emot X-biten eftersom det är irrelevant för filer i ett system för endast lagring. 
 

@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs de infrastruktur inställningar och de
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103232060"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassa Service Fabric-klusterinställningar
@@ -761,7 +761,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |PropertyWriteBatch |sträng, standardvärdet är "admin" |Dynamisk|Säkerhetskonfigurationer för namngivning av egenskaps Skriv åtgärder. |
 |ProvisionApplicationType |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för etablering av program typ. |
 |ProvisionFabric |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för MSI och/eller kluster manifest etablering. |
-|Söka i data |sträng är standard "administratörs \| \| användare" |Dynamisk| Säkerhets konfiguration för frågor. |
+|Fråga |sträng är standard "administratörs \| \| användare" |Dynamisk| Säkerhets konfiguration för frågor. |
 |RecoverPartition |sträng, standardvärdet är "admin" | Dynamisk|Säkerhets konfiguration för återställning av en partition. |
 |RecoverPartitions |sträng, standardvärdet är "admin" | Dynamisk|Säkerhets konfiguration för återställning av partitioner. |
 |RecoverServicePartitions |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för återställning av tjänst partitioner. |
@@ -835,7 +835,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, standard är ingen|Dynamisk|Det här är en lista med paret "namn" och "värde". Varje "namn" är av certifikatets gemensamma namn eller DnsName för X509-certifikat som är auktoriserade för Server åtgärder. För ett angivet "namn" är "värde" en kommaavgränsad lista över certifikat tumavtrycken för utfärdande av utfärdare, om den inte är tom, måste den direkta utfärdaren av Server certifikat finnas i listan.|
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 | **Parameter** | **Tillåtna värden** | **Uppgradera princip** | **Vägledning eller kort beskrivning** |
 | --- | --- | --- | --- |

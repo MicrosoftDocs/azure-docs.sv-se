@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: 2e52bc8e6e41165da2f274d3613337fe603ccc39
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a709f82b04ed5c1fe70f6927b33605cfff20ed6b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444408"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761239"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -79,7 +79,7 @@ dependencies {
 ```
 
 > [!NOTE]
-> Formulär tolken 3.1.0 SDK visar API version 2,1 Preview
+> Formulär tolken 3.1.0 SDK visar _API version 2,1 Preview. 2_. Använd [**REST API**](../../quickstarts/client-library.md) för för _hands versionen av API version 2,1.3_.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 

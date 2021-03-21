@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 0837c0a23c837065dc2214f947912ee25e4f1d2d
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008014"
 ---
 | Språk/ramverk | Projekt på<br/>GitHub                                                                 | Paket                                                                                | Komma<br/>igång                           | Logga in användare                                            | Få åtkomst till webb-API: er                                                 | Allmänt tillgänglig (GA) *eller*<br/>Offentlig för hands version<sup>1</sup> |

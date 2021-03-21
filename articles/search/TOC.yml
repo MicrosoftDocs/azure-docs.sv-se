@@ -44,6 +44,16 @@
       href: search-get-started-arm.md
 - name: Självstudier
   items:
+    - name: Lägg till sökning på webbplatsen
+      items:
+        - name: Översikt över 1 – webbplats
+          href: tutorial-javascript-overview.md
+        - name: 2 – Skapa ett Sök index
+          href: tutorial-javascript-create-load-index.md
+        - name: 3 – distribuera en statisk webbapp
+          href: tutorial-javascript-deploy-static-web-app.md
+        - name: 4 – förstå Sök integrering
+          href: tutorial-javascript-search-query-integration.md
     - name: Skapa en C#-app
       items:
         - name: 1 – Grundläggande söksida
@@ -580,5 +590,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Video
+    - name: Videoklipp
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

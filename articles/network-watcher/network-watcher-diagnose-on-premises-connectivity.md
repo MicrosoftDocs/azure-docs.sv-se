@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3b8b53446799eec3473d63c89672393a35f9787a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016719"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670963"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostisera lokal anslutning via VPN-gatewayer
 
@@ -34,11 +34,11 @@ Med Azure Network Watcher fel söknings funktionen kan du diagnostisera eventuel
 Du vill konfigurera en plats-till-plats-anslutning mellan Azure och lokalt med FortiGate som lokal VPN Gateway. För att uppnå det här scenariot behöver du följande konfiguration:
 
 1. Virtual Network Gateway – VPN Gateway på Azure
-1. Lokal nätverksgateway – den lokala Nätverksgatewayen [(Fortigate) VPN gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) representation i Azure-molnet
-1. Plats-till-plats-anslutning (Route-baserad) – [anslutning mellan VPN gateway och den lokala routern](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. Lokal nätverksgateway – den lokala Nätverksgatewayen [(Fortigate) VPN gateway](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway) representation i Azure-molnet
+1. Plats-till-plats-anslutning (Route-baserad) – [anslutning mellan VPN gateway och den lokala routern](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [Konfigurera FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Detaljerade anvisningar för hur du konfigurerar en plats-till-plats-konfiguration finns på: [skapa ett VNet med en plats-till-plats-anslutning med hjälp av Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Detaljerade anvisningar för hur du konfigurerar en plats-till-plats-konfiguration finns på: [skapa ett VNet med en plats-till-plats-anslutning med hjälp av Azure Portal](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 Ett av de viktiga konfigurations stegen är att konfigurera IPsec-kommunikations parametrarna, eventuella felkonfigurationer leder till förlust av anslutning mellan det lokala nätverket och Azure. För närvarande har Azure VPN-gatewayer kon figurer ATS för att stödja följande IPsec-parametrar för fas 1. Som du kan se i tabellen nedan är de krypteringsalgoritmer som stöds av Azure VPN Gateway AES256, AES128 och 3DES.
 
