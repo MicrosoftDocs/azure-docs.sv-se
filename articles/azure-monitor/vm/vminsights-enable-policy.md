@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031964"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Aktivera VM-insikter med hjälp av Azure Policy
@@ -47,7 +47,7 @@ På sidan **parametrar** väljer du en **Log Analytics arbets yta** som ska anv�
    > [!NOTE]
    > Om arbets ytan överskrider tilldelningens omfattning beviljar du *Log Analytics deltagar* behörighet till princip tilldelningens huvud-ID. Om du inte gör det kan du se ett distributions haveri som `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
-[![Platsen](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
+[![Arbetsyta](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
 
 Klicka på **Granska + skapa** för att granska informationen om tilldelningen innan du klickar på **skapa** för att skapa den. Skapa inte en reparations uppgift just nu eftersom du förmodligen behöver flera åtgärder för att aktivera befintliga virtuella datorer. Se [åtgärda efterföljande resultat](#remediate-compliance-results) nedan.
 

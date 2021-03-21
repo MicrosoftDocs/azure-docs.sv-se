@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f595766d49d6c00c313990717d8fd241ddfc8f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367919"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593874"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Översikt över mappning av data flödes omvandling
 
@@ -19,7 +19,7 @@ ms.locfileid: "100367919"
 
 Nedan visas en lista över de omvandlingar som stöds för närvarande i mappnings data flödet. Klicka på varje omvandling för att lära dig mer om konfigurationen.
 
-| Namn | Kategori | Beskrivning |
+| Name | Kategori | Beskrivning |
 | ---- | -------- | ----------- |
 | [Aggregera](data-flow-aggregate.md) | Schema modifierare | Definiera olika typer av agg regeringar som SUM, MIN, MAX och COUNT grupperade efter befintliga eller beräknade kolumner. | 
 | [Ändra rad](data-flow-alter-row.md) | Rads modifierare | Ange INSERT-, DELETE-, Update-och upsert-principer på rader. |
@@ -31,6 +31,7 @@ Nedan visas en lista över de omvandlingar som stöds för närvarande i mappnin
 | [Join](data-flow-join.md) | Flera indata/utdata |  Kombinera data från två källor eller strömmar. |
 | [Sökning](data-flow-lookup.md) | Flera indata/utdata | Referens data från en annan källa. |
 | [Ny gren](data-flow-new-branch.md) | Flera indata/utdata | Tillämpa flera uppsättningar av åtgärder och omvandlingar mot samma data ström. |
+| [Parse](data-flow-new-branch.md) | Formatering | Parsa text kolumner i data strömmen som är strängar för JSON, avgränsad text eller XML-formaterad text. |
 | [Pivotera](data-flow-pivot.md) | Schema modifierare | En agg regering där en eller flera grupperade kolumner har sina distinkta rad värden omvandlade till enskilda kolumner. |
 | [Rangordning](data-flow-rank.md) | Schema modifierare | Generera en ordnad rangordning baserat på sorterings villkor |
 | [Välj](data-flow-select.md) | Schema modifierare | Alias-kolumner och strömmande namn, och släpp eller ordna om kolumner |

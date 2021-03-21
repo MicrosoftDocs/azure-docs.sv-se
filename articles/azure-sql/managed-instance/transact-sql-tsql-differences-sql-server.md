@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103601380"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
@@ -281,7 +281,7 @@ Vissa `ALTER DATABASE` instruktioner (till exempel [UPPSÄTTNINGS inne slutning]
 
 Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="sql-server-agent"></a>SQL Server Agent
+### <a name="sql-server-agent"></a>SQL Server-agent
 
 - Det finns för närvarande inte stöd för att aktivera och inaktivera SQL Server Agent i SQL-hanterad instans. SQL Agent körs alltid.
 - Jobb schema utlösare baserat på en inaktiv processor stöds inte.
@@ -311,7 +311,7 @@ Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-tr
 
 Information om SQL Server Agent finns i [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 
-### <a name="tables"></a>Tabeller
+### <a name="tables"></a>Tables
 
 Följande tabell typer stöds inte:
 

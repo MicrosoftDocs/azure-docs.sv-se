@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 4e2bbe6f0c3b9ff1ffd913365ce21e534208123b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 075778e2650d3b1f67447078eb6cb130849bbb35
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699733"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593789"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Läs in data i Azure Data Lake Storage Gen2 med Azure Data Factory
 
@@ -53,7 +53,7 @@ Den här artikeln visar hur du använder verktyget Data Factory Kopiera data fö
 
 4. När du har skapat filen går du till din data fabrik. Du ser **Data Factory** start sida så som visas i följande bild: 
    
-   ![Datafabrikens startsida](./media/doc-common-process/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Start sidan för Azure Data Factory, med panel för författar & övervakning.":::
 
    Välj panelen **Författare och övervakare** för att starta dataintegreringsprogrammet på en separat flik.
 

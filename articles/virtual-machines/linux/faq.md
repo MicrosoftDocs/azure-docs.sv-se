@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 22be45403a7863328c5f6f2c883886296b734914
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: d510fa35163a4c4a79352f5f35af9c384bf85304
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596322"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Vanliga frågor om Virtuella Linux-datorer
 Den här artikeln beskriver några vanliga frågor om virtuella Linux-datorer som skapats i Azure med hjälp av distributions modellen Resource Manager. För Windows-versionen av det här avsnittet, se [vanliga frågor och svar om virtuella Windows-datorer](../windows/faq.md)
@@ -31,7 +31,7 @@ Azure Storage-konton kan också tillhandahålla lagring för operativ system dis
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hur får jag åtkomst till min virtuella dator?
 Upprätta en fjärr anslutning för att logga in på den virtuella datorn med hjälp av SSH (Secure Shell). Se anvisningarna för hur du ansluter [från Windows](ssh-from-windows.md) eller [från Linux och Mac](mac-create-ssh-keys.md). Som standard tillåter SSH högst 10 samtidiga anslutningar. Du kan öka detta antal genom att redigera konfigurationsfilen.
 
-Om du har problem kan du läsa [FELSÖK SSH-anslutningar (Secure Shell)](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+Om du har problem kan du läsa [FELSÖK SSH-anslutningar (Secure Shell)](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Kan jag använda den temporära disken (/dev/sdb1) för att lagra data?
 Använd inte den temporära disken (/dev/sdb1) för att lagra data. Det finns bara för tillfällig lagring. Du riskerar att förlora data som inte kan återställas.

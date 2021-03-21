@@ -3,13 +3,13 @@ title: Skapa en Azure Portal instrument panel med hjälp av en Azure Resource Ma
 description: Lär dig hur du skapar en Azure Portal instrument panel med hjälp av en Azure Resource Manager mall.
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745734"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658337"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Snabb start: skapa en instrument panel i Azure Portal med en ARM-mall
 
@@ -30,9 +30,13 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 Den instrument panel som du skapar i nästa del av den här snabb starten kräver en befintlig virtuell dator. Skapa en virtuell dator genom att följa dessa steg.
 
-1. I Azure Portal väljer du Cloud Shell.
+1. I Azure Portal väljer du **Cloud Shell**.
 
     ![Välj Cloud Shell från menyfliksområdet Azure Portal](media/quick-create-template/cloud-shell.png)
+
+1. I fönstret **Cloud Shell** väljer du **PowerShell**.
+
+    ![Välj PowerShell i terminalfönstret](media/quick-create-template/powershell.png)
 
 1. Kopiera följande kommando och ange det i kommando tolken för att skapa en resurs grupp.
 
@@ -85,19 +89,7 @@ Azure Portal användes för att distribuera mallen. Utöver Azure-portalen kan d
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
-Kontrol lera att instrument panelen har skapats och att du kan se data från den virtuella datorn.
-
-1. Öppna Azure-portalen och välj **Instrumentpanel**.
-
-    ![Azure Portal navigering till instrument panelen](media/quick-create-template/navigate-to-dashboards.png)
-
-1. På instrument panels sidan väljer du **enkel instrument panel för virtuell dator**.
-
-    ![Navigera till en enkel instrument panel för virtuell dator](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. Granska den instrument panel som ARM-mallen skapade. Du kan se att en del av innehållet är statiskt, men det finns även diagram som visar prestanda för den virtuella dator som du skapade i början.
-
-    ![Granska enkel instrument panel för virtuell dator](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: willzhan
 ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103017060"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Använd castLabs för att leverera Widevine-licenser till Azure Media Services
@@ -89,10 +89,10 @@ Så här använder du konsol programmet:
 
 1. Ändra app.config till att konfigurera AMS-autentiseringsuppgifter, castLabs-autentiseringsuppgifter, STS-konfiguration och delad nyckel.
 2. Ladda upp en till gång i AMS.
-3. Hämta UUID från den överförda till gången och ändra rad 32 i filen Program.cs:
+3. Hämta UUID från den överförda till gången och ändra rad 32 i filen program. CS:
    
       var objIAsset = _context. Till gångar. där (x => x.Id = = "OBS: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
-4. Använd en AssetId för att namnge till gången i castLabs-systemet (rad 44 i Program.cs-filen).
+4. Använd en AssetId för att namnge till gången i castLabs-systemet (rad 44 i filen program. CS).
    
    Du måste ange AssetId för **castLabs**; Det måste vara en unik alfanumerisk sträng.
 5. Kör programmet.

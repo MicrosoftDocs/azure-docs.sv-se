@@ -11,17 +11,17 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174673"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Användar resan anger explicita sökvägar genom vilka en princip tillåter ett förlitande parts program att hämta önskade anspråk för en användare. Användaren tas via dessa sökvägar för att hämta de anspråk som ska visas för den förlitande parten. Med andra ord definierar användar resan affärs logiken för vad en användare går igenom när ramverket för Azure AD B2C Identity Experience bearbetar begäran.
+Användarresor anger explicita sökvägar genom vilka en princip tillåter att ett anspråksbaserat program hämtar önskade anspråk för en användare. Via dessa sökvägar kan användaren hämta de anspråk som ska presenteras för den förlitande parten. Med andra ord definierar användar resan affärs logiken för vad en användare går igenom när ramverket för Azure AD B2C Identity Experience bearbetar begäran.
 
 Dessa användar resor kan betraktas som mallar som är tillgängliga för att tillgodose de olika förlitande parternas viktigaste behov av intresse för de olika förlitande parterna i intresset. Användar resor underlättar definitionen av den förlitande part delen av en princip. En princip kan definiera flera användar resor. Varje användar resa är en sekvens av Orchestration-steg.
 

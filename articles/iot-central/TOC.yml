@@ -131,10 +131,10 @@
       href: core/concepts-architecture.md
     - name: Guide för enhetsutvecklare
       href: core/overview-iot-central-developer.md
-    - name: Operatörs guide
-      href: core/overview-iot-central-operator.md
     - name: Guide för Solution Builder
       href: core/overview-iot-central-solution-builder.md
+    - name: Operatörs guide
+      href: core/overview-iot-central-operator.md
     - name: Vad är programmallar?
       href: core/concepts-app-templates.md
     - name: Branschspecifika programmallar

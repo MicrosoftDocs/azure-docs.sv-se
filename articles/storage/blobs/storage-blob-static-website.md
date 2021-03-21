@@ -10,10 +10,10 @@ ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
 ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008458"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hantering av statisk webbplats i Azure Storage
@@ -47,7 +47,7 @@ Du kan använda något av dessa verktyg för att ladda upp innehåll till **$Web
 > * [Azure PowerShell-modul](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Lagringsutforskaren](https://azure.microsoft.com/features/storage-explorer/)
-> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
+> * [Azure-pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code-tillägg](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>Visa innehåll
@@ -109,7 +109,7 @@ Om du vill använda huvuden för att styra cachelagring, se [kontroll Azure CDN 
 Om du planerar att vara värd för en webbplats i flera geografiska områden rekommenderar vi att du använder en [Content Delivery Network](../../cdn/index.yml) för regional cachelagring. Använd [Azures front dörr](../../frontdoor/index.yml) om du vill hantera olika innehåll i varje region. Den innehåller också funktioner för redundans. [Azure Traffic Manager](../../traffic-manager/index.yml) rekommenderas inte om du planerar att använda en anpassad domän. Problem kan uppstå på grund av hur Azure Storage verifierar anpassade domän namn.
 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Du kan aktivera statisk webbplats värd utan kostnad. Du faktureras bara för den blob-lagring som webbplatsen använder och drifts kostnader. Mer information om priser för Azure-Blob Storage finns på sidan med [priser för azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 

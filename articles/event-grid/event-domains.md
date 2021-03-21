@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du använder händelse domäner fö
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198684"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Förstå händelse domäner för att hantera Event Grid ämnen
@@ -96,7 +96,7 @@ Här följer de gränser och kvoter som rör händelse domäner:
 
 Om dessa begränsningar inte passar dig kan du kontakta produkt teamet genom att öppna ett support ärende eller genom att skicka ett e-postmeddelande till [askgrid@microsoft.com](mailto:askgrid@microsoft.com) . 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Händelse domäner använder samma [Operations-prissättning](https://azure.microsoft.com/pricing/details/event-grid/) som alla andra funktioner i Event Grid använda.
 
 Åtgärder fungerar på samma sätt i händelse domäner som i anpassade ämnen. Varje ingress av en händelse till en händelse domän är en åtgärd, och varje leverans försök för en händelse är en åtgärd.
