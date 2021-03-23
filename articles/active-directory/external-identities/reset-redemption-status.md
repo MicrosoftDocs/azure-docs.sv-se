@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dea13444a6bd18bd67f05d93a38af70b3b7a2368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2998c3ea0d65bd3c96bd1ac5bdfa8ff148c6c4cc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556323"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780437"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>Återställ inlösen status för en gäst användare
 
@@ -28,9 +28,20 @@ När en gäst användare har löst din inbjudan om B2B-samarbete kan det finnas 
 
 Om du vill hantera de här scenarierna tidigare var du tvungen att manuellt ta bort gäst användarens konto från katalogen och ombjuda användaren. Nu kan du använda PowerShell eller Microsoft Graph Inbjudnings-API för att återställa användarens inlösnings status och ombjuda användaren samtidigt som användarens objekt-ID, grupp medlemskap och app-tilldelningar behålls. När användaren löser in den nya inbjudan ändras inte UPN-namnet för användaren, men användarens inloggnings namn ändras till det nya e-postmeddelandet. Användaren kan sedan logga in med det nya e-postmeddelandet eller ett e-postmeddelande som du har lagt till i `otherMails` egenskapen för objektet användare.
 
+## <a name="reset-the-email-address-used-for-sign-in"></a>Återställa e-postadressen som används för inloggning
+
+Om en användare vill logga in med ett annat e-postmeddelande:
+
+1. Kontrol lera att den nya e-postadressen har lagts till i `mail` `otherMails` egenskapen eller för objektet User. 
+2.  Ersätt e-postadressen i `InvitedUserEmailAddress` egenskapen med den nya e-postadressen.
+3. Använd någon av metoderna nedan för att återställa användarens inlösnings status.
+
+> [!NOTE]
+>När du återställer användarens e-postadress i den offentliga för hands versionen rekommenderar vi att du ställer in `mail` egenskapen till den nya e-postadressen. På så sätt kan användaren lösa in inbjudan genom att logga in i din katalog, förutom att använda länken inlösen i inbjudan.
+>
 ## <a name="use-powershell-to-reset-redemption-status"></a>Använd PowerShell för att återställa inlösen status
 
-Installera den senaste AzureADPreview PowerShell-modulen och skapa en ny inbjudan med `InvitedUserEMailAddress` inställt på den nya e-postadressen och `ResetRedemption` Ange till `true` .
+Installera den senaste AzureADPreview PowerShell-modulen och skapa en ny inbjudan med `InvitedUserEmailAddress` inställt på den nya e-postadressen och `ResetRedemption` Ange till `true` .
 
 ```powershell  
 Uninstall-Module AzureADPreview 
@@ -43,7 +54,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Använd Microsoft Graph-API för att återställa inlösen status
 
-Använd [Microsoft Graph Inbjudnings-API: et](/graph/api/resources/invitation)och ange `resetRedemption` egenskapen till `true` och ange den nya e-postadressen i `invitedUserEmailAddress` egenskapen.
+Använd [Microsoft Graph Inbjudnings-API: et](/graph/api/resources/invitation?view=graph-rest-1.0)och ange `resetRedemption` egenskapen till `true` och ange den nya e-postadressen i `invitedUserEmailAddress` egenskapen.
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1406f865d60e6715b5f6a974225dc48958e8da6d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720516"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775178"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Semantisk rangordning i Azure Kognitiv sökning
 
@@ -51,7 +51,7 @@ Indata till sammanfattning är den långa strängen från förberedelse fasen. F
 
 Output är en [semantisk text Beskrivning](semantic-how-to-query-request.md), i klartext och med högdagrar. Texten är mindre än den långa strängen, vanligt vis färre än 200 ord per dokument, och det anses vara det mest representativa dokumentet. 
 
-Ett [semantiskt svar](semantic-answers.md) kommer också att returneras om du har angett parametern "svar", om frågan befann sig som en fråga och om en passage kan hittas i den långa strängen som ser ut som ett plausible svar på frågan.
+Ett [semantiskt svar](semantic-answers.md) kommer också att returneras om du har angett parametern "svar", om frågan befann sig som en fråga, och om en passage finns i den långa strängen som kan ge ett svar på frågan.
 
 ## <a name="scoring-and-ranking"></a>Poängsättning och rangordning
 

@@ -2,13 +2,13 @@
 title: Visa och filtrera information om Azure-resurser
 description: Filtrera informationen och Använd olika vyer för att bättre förstå dina Azure-resurser.
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738641"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771642"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Visa och filtrera information om Azure-resurser
 
@@ -48,7 +48,7 @@ Ta bort en vy:
 
 1. Välj **Hantera vy** och **Bläddra sedan till alla vyer**.
 
-1. I fönstret **sparade vyer för alla resurser** väljer du vyn och sedan **ta bort** ikonen ![ ta bort vy ](media/manage-filter-resource-views/icon-delete.png) .
+1. I fönstret **sparade vyer** väljer du vyn och väljer sedan ikonen **ta bort** ![ Visa ](media/manage-filter-resource-views/icon-delete.png) .
 
 ## <a name="export-information-from-a-view"></a>Exportera information från en vy
 
@@ -64,7 +64,7 @@ När du flyttar runt portalen ser du andra områden där du kan exportera inform
 
 ## <a name="summarize-resources-with-visuals"></a>Sammanfatta resurser med visuella objekt
 
-Vyerna som vi har tittat på hittills har varit _listvyer_, men det finns också _sammanfattnings vyer_ som innehåller visuella objekt. Du kan spara och använda dessa vyer precis som du kan visa vyer. Filtren är kvar mellan de två typerna av vyer. Det finns standardvyer, som vyn **plats** som visas nedan, samt vyer som är relevanta för vissa tjänster, till exempel vyn **status** för Azure Storage.
+Vyerna som vi har tittat på hittills har varit _listvyer_, men det finns också _sammanfattnings vyer_ som innehåller visuella objekt. Du kan spara och använda dessa vyer precis som du kan med listvyer. Filtren är kvar mellan de två typerna av vyer. Det finns standardvyer, som vyn **plats** som visas nedan, samt vyer som är relevanta för vissa tjänster, till exempel vyn **status** för Azure Storage.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Sammanfattning av resurser i en kart visning":::
 

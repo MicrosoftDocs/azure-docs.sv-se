@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 6ec629629fc774ddb5423db91fe0d71a49305ca1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 43f8b6efd7c4cc510dac8fcbe84ab38f59008ed9
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566047"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773544"
 ---
 # <a name="hc-series"></a>HC-serien
 
@@ -29,14 +29,16 @@ Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtue
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds ([Läs mer](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965) om prestanda och potentiella problem)<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
-
 <br>
 
 | Storlek | Virtuell processor | Processor | Minne (GiB) | Minnes bandbredd GB/s | Bas processor frekvens (GHz) | Frekvens för alla kärnor (GHz, högsta) | Frekvens för enkla kärnor (GHz, hög) | RDMA-prestanda (GB/s) | MPI-stöd | Temp-lagring (GiB) | Maximalt antal datadiskar | Högsta Ethernet-virtuella nätverkskort |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon platina 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Alla | 700 | 4 | 8 |
 
-Läs mer om den underliggande [arkitekturen, VM-topologin](./workloads/hpc/hc-series-overview.md) och förväntade [prestanda](./workloads/hpc/hc-series-performance.md) för den virtuella HC-serien.
+Läs mer om:
+- [arkitektur och VM-topologi](./workloads/hpc/hc-series-overview.md),
+- [program varu stack](./workloads/hpc/hc-series-overview.md#software-specifications) som stöds, inklusive operativ system som stöds och
+- förväntad [prestanda](./workloads/hpc/hc-series-performance.md) för den virtuella datorns HC-serien.
 
 [!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 

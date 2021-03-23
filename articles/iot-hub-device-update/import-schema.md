@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 13044b8f087b403f83516a32a490d2dee8db700f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 989535d0bd6f514e63c7cea9e5fd71912f8fb08b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055011"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780165"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importera uppdateringar till enhets uppdatering för IoT Hub-schema och annan information
 Om du vill importera en uppdatering till enhets uppdateringen för IoT Hub, se till att du har granskat [begreppen](import-concepts.md) och [instruktions guiden](import-update.md) först. Om du är intresse rad av informationen om det schema som används för att skapa ett import manifest, samt information om relaterade objekt, se nedan.
@@ -22,8 +22,8 @@ Om du vill importera en uppdatering till enhets uppdateringen för IoT Hub, se t
 | --------- | --------- | --------- | --------- |
 | UpdateId | `UpdateId` jobbobjektet | Uppdatera identitet. |
 | Uppdateringstyp | sträng | Uppdateringstyp: <br/><br/> * Ange `microsoft/apt:1` när en Package-baserad uppdatering ska utföras med hjälp av referens agent.<br/> * Ange `microsoft/swupdate:1` när du utför en avbildningsbaserad uppdatering med hjälp av referens agent.<br/> * Ange `microsoft/simulator:1` när du använder exempel agent Simulator.<br/> * Ange en anpassad typ om du utvecklar en anpassad agent. | Format: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> Maximalt 32 tecken totalt |
-| InstalledCriteria | sträng | Sträng som tolkas av agenten för att avgöra om uppdateringen har genomförts:  <br/> * Ange **värdet** för SWVersion för uppdaterings typen `microsoft/swupdate:1` .<br/> * Ange `{name}-{version}` för uppdaterings typ `microsoft/apt:1` , vars namn och version hämtas från apt-filen.<br/> * Ange hash för uppdaterings filen för uppdaterings typ `microsoft/simulator:1` .<br/> * Ange en anpassad sträng om du utvecklar en anpassad agent.<br/> | Högst 64 tecken |
-| Kompatibilitet | Objekt mat ris `CompatibilityInfo` | Kompatibilitetsinformation för enhet som är kompatibel med den här uppdateringen. | Högst 10 objekt |
+| InstalledCriteria | sträng | Sträng som tolkas av agenten för att avgöra om uppdateringen har genomförts:  <br/> * Ange **värdet** för SWVersion för uppdaterings typen `microsoft/swupdate:1` .<br/> * Ange `{name}-{version}` för uppdaterings typ `microsoft/apt:1` , vars namn och version hämtas från apt-filen.<br/> * Ange en anpassad sträng om du utvecklar en anpassad agent.<br/> | Högst 64 tecken |
+| Kompatibilitet | `CompatibilityInfo` [Objekt](#compatibilityinfo-object) mat ris | Kompatibilitetsinformation för enhet som är kompatibel med den här uppdateringen. | Högst 10 objekt |
 | CreatedDateTime | datum/tid | Datum och tid då uppdateringen skapades. | Avgränsat ISO 8601 datum-och tids format, i UTC |
 | ManifestVersion | sträng | Importera manifest schema version. Ange `2.0` , som är kompatibel med `urn:azureiot:AzureDeviceUpdateCore:1` gränssnittet och `urn:azureiot:AzureDeviceUpdateCore:4` gränssnittet. | Måste vara `2.0` |
 | Filer | Objekt mat ris `File` | Uppdatera nytto Last filer | Högst 5 filer |

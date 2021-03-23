@@ -3,12 +3,12 @@ title: Begränsa åtkomst med hjälp av en tjänst slut punkt
 description: Begränsa åtkomsten till ett Azure Container Registry med hjälp av en tjänst slut punkt i ett virtuellt Azure-nätverk. Åtkomst till tjänst slut punkten är en funktion i Premium service-nivån.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c49595ee4ee79aef264a87dd48bccd03f3d4f5a5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93026232"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773903"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Begränsa åtkomsten till ett behållar register med hjälp av en tjänst slut punkt i ett virtuellt Azure-nätverk
 
@@ -26,7 +26,6 @@ Konfiguration av en slut punkt för en Registry-tjänst är tillgänglig i tjän
 * Framtida utveckling av tjänst slut punkter för Azure Container Registry planeras inte för tillfället. Vi rekommenderar att du använder [privata slut punkter](container-registry-private-link.md) i stället.
 * Du kan inte använda Azure Portal för att konfigurera tjänstens slut punkter i ett register.
 * Endast ett [Azure Kubernetes service-](../aks/intro-kubernetes.md) kluster eller en virtuell Azure- [dator](../virtual-machines/linux/overview.md) kan användas som en värd för att få åtkomst till ett behållar register med hjälp av en tjänst slut punkt. *Andra Azure-tjänster, inklusive Azure Container Instances, stöds inte.*
-* Varje register stöder högst 100 nätverks åtkomst regler.
 * Tjänst slut punkter för Azure Container Registry stöds inte i Azure-molnet för amerikanska myndigheter eller Azure Kina.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]

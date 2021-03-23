@@ -1,31 +1,31 @@
 ---
-title: 'Identifiera servrar som körs i VMware-miljön med Azure Migrate: Server utvärdering'
-description: Lär dig att identifiera lokala virtuella VMware-datorer med verktyget för Azure Migrate Server bedömning
-author: vikram1988
-ms.author: vibansa
+title: Identifiera servrar som körs i VMware-miljön med Azure Migrate identifiering och utvärdering
+description: Lär dig hur du identifierar lokala servrar som körs i VMware-miljön med verktyget för Azure Migrate identifiering och bedömning
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 9/14/2020
+ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: 4d2b0fbb377beacdb75a1a5552855936bee2b205
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d0acf83ddfb0d2a3aff0db0f3d151869bce1c710
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041319"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771744"
 ---
-# <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-server-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: Server utvärdering
+# <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: identifiering och utvärdering
 
 Som en del av migreringen till Azure identifierar du din lokala inventering och dina arbets belastningar.
 
-I den här självstudien lär du dig att identifiera servrar som körs i VMware-miljön med Azure Migrate: Server utvärderings verktyg med en förenklad Azure Migrate-enhet. Du distribuerar installationen som en server som körs i vCenter Server, för att kontinuerligt identifiera servrar och deras prestanda-metadata, program som körs på servrar, Server beroenden och SQL Server instanser och databaser.
+Den här självstudien visar hur du identifierar servrar som körs i VMware-miljön med Azure Migrate: identifierings-och utvärderings verktyg med hjälp av en förenklad Azure Migrate-enhet. Du distribuerar installationen som en server som körs i vCenter Server, för att kontinuerligt identifiera servrar och deras prestanda-metadata, program som körs på servrar, Server beroenden och SQL Server instanser och databaser.
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera ett Azure-konto.
 > * Förbered VMware-miljön för identifiering.
-> * Skapa ett Azure Migrate-projekt.
+> * Skapa ett projekt.
 > * Konfigurera Azure Migrate-enheten.
 > * Starta kontinuerlig identifiering.
 
@@ -51,7 +51,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
-Om du vill skapa ett Azure Migrate-projekt och registrera Azure Migrate-enheten måste du ha ett konto med:
+Om du vill skapa ett projekt och registrera Azure Migrate-enheten behöver du ett konto med:
 - Deltagar-eller ägar behörigheter för Azure-prenumerationen
 - Behörigheter för att registrera Azure Active Directory-appar (AAD)
 - Ägare eller deltagare plus administratörs behörighet för användar åtkomst på Azure-prenumerationen för att skapa en Key Vault som används vid migrering av en server utan Server
@@ -63,7 +63,7 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
     :::image type="content" source="./media/tutorial-discover-vmware/search-subscription.png" alt-text="Sök i rutan för att söka efter Azure-prenumerationen":::
 
 
-2. På sidan **prenumerationer** väljer du den prenumeration där du vill skapa ett Azure Migrate-projekt.
+2. På sidan **prenumerationer** väljer du den prenumeration där du vill skapa ett projekt.
 3. I prenumerationen väljer du **åtkomst kontroll (IAM)**  >  **kontrol lera åtkomst**.
 4. I **kontrol lera åtkomst** söker du efter det relevanta användar kontot.
 5. I **Lägg till en roll tilldelning** klickar du på **Lägg till**.
@@ -117,7 +117,7 @@ Du behöver ett användar konto med de behörigheter som krävs på servrarna f�
 
 ## <a name="set-up-a-project"></a>Konfigurera ett projekt
 
-Skapa ett nytt Azure Migrate-projekt.
+Skapa ett nytt projekt.
 
 1. I Azure-portalen > **Alla tjänster** söker du efter **Azure Migrate**.
 2. Under **Tjänster** väljer du **Azure Migrate**.
@@ -128,14 +128,14 @@ Skapa ett nytt Azure Migrate-projekt.
     :::image type="content" source="./media/tutorial-discover-vmware/new-project.png" alt-text="Rutor för projekt namn och region":::
 
 7. Välj **Skapa**.
-8. Vänta några minuter innan det Azure Migrate projektet distribueras. Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
+8. Vänta några minuter tills projektet har distribuerats. Verktyget **Azure Migrate: identifiering och bedömning** läggs till som standard i det nya projektet.
 
 > [!NOTE]
 > Om du redan har skapat ett projekt kan du använda samma projekt för att registrera ytterligare enheter för att identifiera och utvärdera fler. av servrar. [ **Läs mer**](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Konfigurera installationen
 
-Azure Migrate: Server utvärderingen använder en förenklad Azure Migrate-apparat. Installationen utför Server identifiering och skickar metadata för Server konfiguration och prestanda till Azure Migrate. Installationen kan konfigureras genom att distribuera en mall för ägg som kan laddas ned från projektet.
+Azure Migrate: identifiering och bedömning använder en förenklad Azure Migrate-apparat. Installationen utför Server identifiering och skickar metadata för Server konfiguration och prestanda till Azure Migrate. Installationen kan konfigureras genom att distribuera en mall för ägg som kan laddas ned från projektet.
 
 > [!NOTE]
 > Om du av någon anledning inte kan konfigurera installationen med hjälp av mallen kan du konfigurera den med hjälp av ett PowerShell-skript på en befintlig Windows Server 2016-Server. [**Läs mer**](deploy-appliance-script.md#set-up-the-appliance-for-vmware).
@@ -143,18 +143,19 @@ Azure Migrate: Server utvärderingen använder en förenklad Azure Migrate-appar
 ### <a name="deploy-with-ova"></a>Distribuera med ägg
 
 Så här konfigurerar du installationen av en tjänstmall:
-1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+
+1. Ange ett namn på apparaten och generera en projekt nyckel i portalen.
 1. Hämta en mall för en embryo-fil och importera den till vCenter Server. Kontrol lera att EMBRYOna är säkra.
-1. Skapa den virtuella dator enheten från den ägg filen och kontrol lera att den kan ansluta till Azure Migrate.
-1. Konfigurera enheten för första gången och registrera den med projektet med hjälp av Azure Migrate projekt nyckel.
+1. Skapa installationen från ägg filen och kontrol lera att den kan ansluta till Azure Migrate.
+1. Konfigurera enheten för första gången och registrera den med projektet med hjälp av projekt nyckeln.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
+### <a name="1-generate-the-project-key"></a>1. generera projekt nyckeln
 
-1. I **Migreringsmål** > **Servrar** > **Azure Migrate: Serverutvärdering** väljer du **Identifiera**.
-2. I **identifiera datorer**  >  **är dina datorer virtualiserade?** väljer du **Ja, med VMware vSphere hypervisor**.
-3. I **1: generera Azure Migrate projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar i VMware-miljön. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
+1. I **mål för migrering**  >  **fönster, Linux-och SQL-servrar**  >  **Azure Migrate: identifiering och bedömning**, Välj **identifiera**.
+2. I **Discover-servrar**  >  **är servrarna virtualiserade?** väljer du **Ja, med VMware vSphere hypervisor**.
+3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar i VMware-miljön. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
 1. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera när du skapar resurser.
-1. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
+1. När Azure-resurserna har skapats skapas en **projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
 ### <a name="2-download-the-ova-template"></a>2. Hämta embryo-mallen
@@ -214,13 +215,13 @@ Konfigurera enheten för första gången.
 
 1. I klient konsolen för vSphere högerklickar du på servern och väljer sedan **Öppna konsol**.
 2. Ange språk, tidszon och lösen ord för enheten.
-3. Öppna en webbläsare på vilken dator som helst som kan ansluta till installations servern och öppna URL: en för installationens konfigurations hanterare: `https://appliance name or IP address: 44368` .
+3. Öppna en webbläsare på vilken dator som helst som kan ansluta till installationen och öppna URL: en för installations hanteraren för installationen: `https://appliance name or IP address: 44368` .
 
    Alternativt kan du öppna Configuration Manager från apparatens server Skriv bord genom att välja genvägen för Configuration Manager.
 1. Godkänn **licens villkoren** och Läs informationen från tredje part.
 1. I Configuration Manager > **Konfigurera krav**, gör du följande:
    - **Anslutning**: installationen kontrollerar att servern är ansluten till Internet. Om servern använder en proxyserver:
-     - Klicka på **Konfigurera proxy** för att ange proxy-adressen `http://ProxyIPAddress` eller `http://ProxyFQDN` och lyssnings porten.
+     - Klicka på **Installera Proxy** för att ange proxyservern `http://ProxyIPAddress` eller `http://ProxyFQDN` och lyssnings porten.
      - Ange autentiseringsuppgifter om proxyn kräver autentisering.
      - Endast HTTP-proxy stöds.
      - Om du har lagt till proxyinformation eller inaktiverat proxyn och/eller autentiseringen, klickar du på **Spara** för att utlösa anslutnings kontrollen igen.
@@ -236,7 +237,7 @@ Konfigurera enheten för första gången.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
-1. Klistra in **Azure Migrate projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Server utvärdering> identifiera> hantera befintliga apparater**, väljer det installations namn som du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
+1. Klistra in **projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Azure Migrate: identifierings-och utvärderings> identifiera> hantera befintliga apparater**, Välj det installations namn som du angav vid tidpunkten för att generera nyckeln och kopiera motsvarande nyckel.
 1. Du behöver en enhets kod för att autentisera med Azure. När du klickar på **Logga in** öppnas en modal enhets kod som visas nedan.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Modal visar enhets koden":::
@@ -260,10 +261,10 @@ Installationen måste ansluta till vCenter Server för att identifiera serverns 
 
 1. I **steg 1: ange vCenter Server autentiseringsuppgifter** klickar du på **Lägg till autentiseringsuppgifter** för att ange ett eget namn för autentiseringsuppgifter, Lägg till **användar namn** och **lösen ord** för det vCenter servers konto som ska användas för att identifiera servrar som körs på vCenter Server.
     - Du bör ha skapat ett konto med de behörigheter som krävs, enligt vad som beskrivs i den här artikeln ovan.
-    - Om du vill begränsa identifieringen till specifika VMware-objekt (vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda virtuella datorer) läser du anvisningarna i [den här artikeln](set-discovery-scope.md) för att begränsa det konto som används av Azure Migrate.
+    - Om du vill begränsa identifieringen till specifika VMware-objekt (vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda servrar) läser du anvisningarna i [den här artikeln](set-discovery-scope.md) för att begränsa det konto som används av Azure Migrate.
 1. I **steg 2: ange vCenter Server information** klickar du på **Lägg till identifierings källa** och väljer det egna namnet för autentiseringsuppgifter i list rutan. Ange **IP-adressen/FQDN** för vCenter Server. Du kan lämna **porten** till standard (443) eller ange en anpassad Port där vCenter Server lyssnar och klicka på **Spara**.
 1. När du klickar på **Spara** kommer installations programmet att försöka verifiera anslutningen till vCenter Server med de angivna autentiseringsuppgifterna och visa **verifierings status** i tabellen mot vCenter Server IP-adress/FQDN.
-1. Du kan **omverifiera** anslutningen till vCenter Server när som helst innan du påbörjar identifieringen.
+1. Du kan **Verifiera** anslutningen till vCenter Server när som helst innan du påbörjar identifieringen.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="Panel 3 på installationens konfigurations hanterare för vCenter Server information":::
 
@@ -276,7 +277,7 @@ I **steg 3: ange autentiseringsuppgifter för servern för att utföra program v
 > [!Note]
 > Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
-Om du vill utnyttja dessa funktioner kan du ange autentiseringsuppgifter för servern genom att följa stegen nedan. Installations programmet försöker automatiskt mappa autentiseringsuppgifterna till servrarna för att utföra identifierings funktionerna.
+Om du vill använda dessa funktioner kan du ange autentiseringsuppgifter för servern genom att följa stegen nedan. Installations programmet försöker automatiskt mappa autentiseringsuppgifterna till servrarna för att utföra identifierings funktionerna.
 
 - Du kan lägga till autentiseringsuppgifter för servern genom att klicka på knappen **Lägg till autentiseringsuppgifter** . Då öppnas en spärr ande där du kan välja **typ av autentiseringsuppgifter** i list rutan.
 - Du kan ange domän-/Windows-(icke-domän)/Linux-eller SQL Server autentiseringsuppgifter för autentisering. [Lär dig mer](add-server-credentials.md) om hur du anger autentiseringsuppgifter och hur vi hanterar dem.
@@ -301,6 +302,7 @@ Om du vill utnyttja dessa funktioner kan du ange autentiseringsuppgifter för se
 Om inget certifikat har etablerats på servern när det startas, genererar SQL Server ett självsignerat certifikat som används för att kryptera inloggnings paket. [**Läs mer**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 Identifiering fungerar på följande sätt:
+
 - Det tar ungefär 15 minuter för identifierade Server lager att visas i portalen.
 - Det kan ta en stund att identifiera installerade program. Varaktigheten beror på antalet identifierade servrar. För 500-servrar tar det cirka en timme innan den identifierade inventeringen visas i Azure Migrate portalen.
 - När identifieringen av-servrarna är klar kan du aktivera agentens beroende analys på servrarna från portalen.

@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: dukek
-ms.openlocfilehash: 0771249e94d3e00cbeaff00406a0dbf33777a14d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490338"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772356"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Skapa och hantera åtgärdsgrupper i Azure-portalen
 En åtgärds grupp är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration. Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Olika aviseringar kan använda samma åtgärds grupp eller olika åtgärds grupper beroende på användarens krav. 
@@ -149,7 +149,7 @@ Om du inte får meddelanden på ditt *primära e-postmeddelande* kan du prova f�
 Du kan ha ett begränsat antal e-poståtgärder i en åtgärds grupp. Se artikeln [rate relimiting information](./alerts-rate-limiting.md) .
 
 ### <a name="function"></a>Funktion
-Anropar en befintlig HTTP trigger-slutpunkt i [Azure Functions](../../azure-functions/functions-get-started.md).
+Anropar en befintlig HTTP trigger-slutpunkt i [Azure Functions](../../azure-functions/functions-get-started.md). För att hantera en begäran måste slut punkten hantera HTTP POST-verbet.
 
 Du kan ha ett begränsat antal funktions åtgärder i en åtgärds grupp.
 

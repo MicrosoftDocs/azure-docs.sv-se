@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102486666"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773053"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486666"
 ## <a name="prerequisites"></a>Förutsättningar
 
 > [!NOTE]
-> När du skapar en kognitiv tjänst resurs i Azure Portal har du vanligt vis möjlighet att skapa en prenumerations nyckel för flera tjänster eller en prenumerations nyckel för en enskild tjänst. Dokument översättning stöds dock för närvarande endast i Translator-resursen (Single-service) och ingår **inte** i Cognitive Services-resursen (Multi-service).
+>
+> 1. När du skapar en kognitiv tjänst resurs i Azure Portal har du vanligt vis möjlighet att skapa en prenumerations nyckel för flera tjänster eller en prenumerations nyckel för en enskild tjänst. Dokument översättning stöds dock för närvarande endast i Translator-resursen (Single-service) och ingår **inte** i Cognitive Services-resursen (Multi-service).
+> 2. Dokument översättning är för närvarande tillgängligt i **service planen för S1-standard**. _Se_ [Cognitive Services prissättning – översättare](https://azure.microsoft.com/pricing/details/cognitive-services/translator/).
+>
 
 För att komma igång behöver du:
 
@@ -29,8 +32,6 @@ För att komma igång behöver du:
 * En [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) -tjänst resurs (**inte** en Cognitive Services resurs).
 
 * Ett [**Azure Blob Storage-konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Du skapar behållare för att lagra och organisera dina BLOB-data i ditt lagrings konto.
-
-* En slutförd [**dokument översättning (för hands version)**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) för att aktivera Azure-prenumerationen för att använda den nya dokument översättnings funktionen.
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Hämta ditt anpassade domän namn och din prenumerations nyckel
 

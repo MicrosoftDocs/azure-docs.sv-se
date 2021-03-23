@@ -3,12 +3,12 @@ title: Förstå villkoren i Azure BareMetal-infrastrukturen
 description: Förstå villkoren i Azure BareMetal-infrastrukturen.
 ms.topic: conceptual
 ms.date: 1/4/2021
-ms.openlocfilehash: fd7a39854c86f728ef152f8e7d858157e1ad26f4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b22a6cecb2647df3878cb8fd4ade93d9a7d963fd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97861917"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770894"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>Känna till villkoren för BareMetal-infrastrukturen
 
@@ -23,4 +23,4 @@ I den här artikeln kommer vi att gå igenom viktiga BareMetal-termer.
 - **Klient organisation**: en kund som distribueras i BareMetal instance-stämplar isoleras i en *klient.* En klient är isolerad i nätverk, lagring och beräknings lager från andra klienter. Lagrings-och beräknings enheter som är tilldelade till olika klienter kan inte se varandra eller kommunicera med varandra på BareMetal-instansens Stamp-nivå. En kund kan välja att distribuera olika klienter. Det finns inte heller någon kommunikation mellan klienter på BareMetal-instansens Stamp-nivå.
 
 ## <a name="next-steps"></a>Nästa steg
-Lär dig mer om [BareMetal-infrastrukturen](workloads/sap/baremetal-overview-architecture.md) eller hur du [identifierar och interagerar med BareMetal instans enheter](workloads/sap/baremetal-infrastructure-portal.md). 
+Lär dig mer om [BareMetal-infrastrukturen](concepts-baremetal-infrastructure-overview.md) eller hur du [identifierar och interagerar med BareMetal instans enheter](connect-baremetal-infrastructure.md). 

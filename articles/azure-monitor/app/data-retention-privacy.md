@@ -4,12 +4,12 @@ description: Policy för kvarhållning och sekretess policy
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579580"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774923"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datainsamling, kvarhållning och lagring i Application Insights
 
@@ -294,6 +294,10 @@ Du kan [stänga av vissa data genom att redigera ApplicationInsights.config][con
 
 > [!NOTE]
 > Klientens IP-adress används för att härleda geografisk plats, men som standard är IP-data inte längre lagrade och alla nollor skrivs till det associerade fältet. Om du vill veta mer om personlig data hantering rekommenderar vi den här [artikeln](../logs/personal-data-mgmt.md#application-data). Om du behöver lagra IP-Datadata kommer vår [artikel för IP-adresser](./ip-collection.md) att vägleda dig genom dina alternativ.
+
+## <a name="can-i-modify-or-update-data-after-it-has-been-collected"></a>Kan jag ändra eller uppdatera data när de har samlats in?
+
+Nej, data är skrivskyddade och kan bara tas bort via rensnings funktionen. Mer information finns [i rikt linjer för person uppgifter som lagras i Log Analytics och Application Insights](../logs/personal-data-mgmt.md#delete).
 
 ## <a name="credits"></a>Krediter
 Den här produkten innehåller GeoLite2-data som skapats av MaxMind, som är tillgängliga från [https://www.maxmind.com](https://www.maxmind.com) .

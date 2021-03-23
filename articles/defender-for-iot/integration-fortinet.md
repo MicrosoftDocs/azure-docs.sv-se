@@ -1,19 +1,14 @@
 ---
 title: Om Fortinet-integrering
-titleSuffix: Azure Defender for IoT
 description: Defender för IoT och Fortinet har upprättat ett teknik partnerskap för att upptäcka och stoppa attacker i IoT-och ICS-nätverk.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 313db90d4c9be30ef588b00caf1d6e4ce32b113b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e2119a9e01a4e58cd9d2ca1b9b3384ec9629784c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558552"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784024"
 ---
 # <a name="defender-for-iot-and-fortinet-iiot-and-ics-threat-detection--prevention"></a>Defender för IoT och Fortinet IIoT och hot identifiering för ICS & skydd
 

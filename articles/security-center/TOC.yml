@@ -144,7 +144,7 @@
               displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Använda den integrerade licensen för Microsoft Defender för slutpunkter
-          displayName: 'ATP, mdatp, wdatp'
+          displayName: 'ATP, mdatp, wdatp, mde, mdfe'
           href: security-center-wdatp.md
         - name: Definiera listor över säkra program för datorer
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'

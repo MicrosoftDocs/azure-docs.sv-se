@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601771"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775518"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
@@ -141,7 +141,6 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 
 ### <a name="new-articles"></a>Nya artiklar
 - [Konfigurera SAML-baserad enkel inloggning](configure-saml-single-sign-on.md)
-- [Använda Azure AD för program som inte finns med i app-galleriet](non-gallery-apps.md)
 - [Hämta nu – Lägg till en app från Azure Marketplace](get-it-now-azure-marketplace.md)
 - [Snabb start: konfigurera egenskaper för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-configure.md)
 - [Snabb start: Konfigurera enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-setup-sso.md)

@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: chrande
-ms.openlocfilehash: 1818838a68c2712336a3515b2a82b5fdd518d237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8865a16c2840b65f432de679c6dd63b285b1f760
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101661179"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771841"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>Uppgradera API-versionen av din Azure Cosmos DB API för MongoDB-kontot
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -67,42 +67,35 @@ Om du uppgraderar från version 3,2 måste du ersätta den befintliga slut punkt
 
 ## <a name="how-to-upgrade"></a>Så här uppgraderar du
 
-1. Gå till Azure Portal och navigera till bladet för ditt Azure Cosmos DB-API för MongoDB-konto. Kontrol lera att den aktuella Server versionen är det du förväntar dig.
+1. Logga in på [Azure Portal.](https://portal.azure.com/)
 
-    :::image type="content" source="./media/mongodb-version-upgrade/1.png" alt-text="Översikt över Azure Portal med MongoDB-konto" border="false":::
+1. Navigera till ditt Azure Cosmos DB-API för MongoDB-konto. Öppna **översikts** fönstret och kontrol lera att den aktuella **Server versionen** är antingen 3,2 eller 3,6.
 
-2. Välj bladet från alternativen till vänster `Features` . Då visas de kontonivåfunktioner som är tillgängliga för ditt databaskonto.
+    :::image type="content" source="./media/mongodb-version-upgrade/check-current-version.png" alt-text="Kontrol lera den aktuella versionen av ditt MongoDB-konto från Azure Portal." border="true":::
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal med MongoDB konto översikt med bladet funktioner markerat" border="false":::
+1. Öppna fönstret på den vänstra menyn `Features` . I den här rutan visas de funktioner på konto nivå som är tillgängliga för ditt databas konto.
 
-3. Klicka på `Upgrade Mongo server version` raden. Om du inte ser det här alternativet kanske kontot inte är kvalificerat för den här uppgraderingen. Ange [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om så är fallet.
+1. Välj raden `Upgrade MongoDB server version`. Om du inte ser det här alternativet kanske kontot inte är kvalificerat för den här uppgraderingen. Ange [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om så är fallet.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Funktions blad med alternativ." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/upgrade-server-version.png" alt-text="Öppna bladet funktioner och uppgradera ditt konto." border="true":::
 
-4. Granska informationen som visas om uppgraderingen. Klicka på `Enable` så snart du är redo att starta processen.
+1. Granska informationen som visas om uppgraderingen. Välj `Set server version to 4.0` (eller 3,6 beroende på din aktuella version).
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Utökad uppgraderings vägledning." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/select-upgrade.png" alt-text="Granska uppgraderings vägledningen och välj uppgradera." border="true":::
 
-5. När processen har startats visas `Features` uppgraderingens status i menyn. Statusen går från `Pending` (Väntande) till `In Progress` (Pågår) till `Upgraded` (Uppgraderad). Den här processen påverkar inte befintliga funktioner eller åtgärder för databaskontot.
+1. När du har startat uppgraderingen är **funktions** menyn nedtonad och statusen är inställd på *väntar*. Uppgraderingen tar cirka 15 minuter att slutföra. Den här processen påverkar inte befintliga funktioner eller åtgärder för ditt databas konto. När den är klar visas den uppgraderade versionen av status för **uppdateringen av MongoDB-serverns version** . [Kontakta supporten](https://azure.microsoft.com/en-us/support/create-ticket/) om du har problem med att bearbeta din begäran.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Uppgraderings status efter initiering." border="false":::
+1. Följande är några saker du behöver tänka på när du har uppgraderat ditt konto:
 
-6. När uppgraderingen har slutförts visas statusen som `Upgraded` . Klicka på den för att lära dig mer om nästa steg och åtgärder som du behöver utföra för att slutföra processen. [Kontakta supporten](https://azure.microsoft.com/en-us/support/create-ticket/) om du har problem med att bearbeta din begäran.
+    1. Om du har uppgraderat från 3,2 går du tillbaka till **översikts** fönstret och kopierar den nya anslutnings strängen som ska användas i ditt program. Den gamla anslutningssträngen som kör 3.2 avbryts inte. För att säkerställa en konsekvent upplevelse måste alla program använda den nya slutpunkten.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Status för uppgraderat konto." border="false":::
-
-7. 
-    1. Om du har uppgraderat från 3,2 går du tillbaka till `Overview` bladet och kopierar den nya anslutnings strängen som ska användas i ditt program. Den gamla anslutningssträngen som kör 3.2 avbryts inte. För att säkerställa en konsekvent upplevelse måste alla program använda den nya slutpunkten.
-    2. Om du har uppgraderat från 3.6 uppgraderas den befintliga anslutningssträngen till den angivna versionen och ska fortsätta att användas.
-
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Bladet ny översikt." border="false":::
-
+    1. Om du har uppgraderat från 3.6 uppgraderas den befintliga anslutningssträngen till den angivna versionen och ska fortsätta att användas.
 
 ## <a name="how-to-downgrade"></a>Så här nedgraderar du
-Du kan också nedgradera ditt konto från 4,0 till 3,6 via samma steg i avsnittet "så här uppgraderar". 
+
+Du kan också nedgradera ditt konto från 4,0 till 3,6 via samma steg i avsnittet "så här uppgraderar".
 
 Om du har uppgraderat från 3,2 till (4,0 eller 3,6) och vill nedgradera tillbaka till 3,2, kan du helt enkelt växla tillbaka till att använda din tidigare (3,2) anslutnings sträng med värden `accountname.documents.azure.com` som fortfarande är aktiv efter uppgradering som kör version 3,2.
-
 
 ## <a name="next-steps"></a>Nästa steg
 

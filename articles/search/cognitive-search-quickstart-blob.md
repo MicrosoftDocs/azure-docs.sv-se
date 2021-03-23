@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98179273"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770979"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Snabb start: skapa en färdigheter för Azure Kognitiv sökning kognitivt i Azure Portal
 
-En färdigheter är en AI-baserad funktion som använder djup inlärnings modeller för att extrahera information och struktur från stora, ej differentierade text-eller bildfiler, vilket gör innehållet både indexerat och sökbart i Azure Kognitiv sökning. 
+Den här snabb starten visar färdigheter-stöd i portalen som visar hur optisk tecken läsning (OCR) och enhets igenkänning kan användas för att skapa sökbart text innehåll från bilder och programfiler.
 
-I den här snabb starten ska du kombinera tjänster och data i Azure-molnet för att skapa färdigheter. När allt är på plats kör du guiden **Importera data** i Azure Portal för att hämta allt tillsammans. Slut resultatet är ett sökbart index som är ifyllt med data som skapats av AI-bearbetning som du kan fråga i portalen ([Sök Utforskaren](search-explorer.md)).
+För att förbereda dig skapar du några resurser och laddar upp exempel bilder och filer för program innehåll. När allt är på plats kör du guiden **Importera data** i Azure Portal för att hämta allt tillsammans. Slut resultatet är ett sökbart index som är ifyllt med data som skapats av AI-bearbetning som du kan fråga i portalen ([Sök Utforskaren](search-explorer.md)).
+
+Vill du börja med kod? Se [självstudie: Använd rest och AI för att generera sökbart innehåll från Azure-blobbar](cognitive-search-tutorial-blob.md) eller en [självstudie: Använd .net och AI för att generera sökbart innehåll från Azure-blobar](cognitive-search-tutorial-blob-dotnet.md) i stället.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -44,7 +46,7 @@ I följande steg konfigurerar du en BLOB-behållare i Azure Storage att lagra he
 
    + Välj samma region som Azure Kognitiv sökning för att undvika avgifter för bandbredd. 
 
-   + Välj konto typen StorageV2 (General Purpose v2) om du vill testa kunskaps lagrings funktionen senare i en annan genom gång. Annars väljer du vilken typ som helst.
+   + Välj StorageV2 (generell användning v2).
 
 1. Öppna BLOB Services-sidorna och skapa en behållare. Du kan använda standard nivån för offentlig åtkomst. 
 

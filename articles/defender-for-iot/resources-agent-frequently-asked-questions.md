@@ -1,24 +1,14 @@
 ---
 title: Vanliga frågor och svar om Azure Defender för IoT-agent
 description: Hitta svar på vanliga frågor om Azure Defender för IoT-agenten.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4bd7d3c9b76dfb37e53cc51e5e16b660545cb7f0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97835065"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778669"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Defender för IoT-agent
 

@@ -3,16 +3,16 @@ title: 'Data Factory självstudie: första data pipelinen '
 description: Den här Azure Data Factory själv studie kursen visar hur du skapar och schemalägger en data fabrik som bearbetar data med hjälp av Hive-skript i ett Hadoop-kluster.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7f1de53e20614ca66c91735ce462da5a194d1836
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e7114dae2a9cfef4a9b710831beb63a65c862643
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100377235"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785384"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Självstudie: Bygg din första pipeline för att transformera data med Hadoop-kluster
 > [!div class="op_single_selector"]

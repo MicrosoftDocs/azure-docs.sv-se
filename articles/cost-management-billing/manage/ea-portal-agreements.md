@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598004"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778227"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-avtal och ändringar
 
@@ -145,7 +145,7 @@ Eventuella kvoter som beskrivs ovan utgör inte en förskottsbetalning för tjä
 
 ## <a name="requesting-a-quota-increase"></a>Begära en kvotökning
 
-Du kan begära en kvotökning när som helst genom att skicka en [onlinebegäran](https://g.microsoftonline.com/0WAEP00en/6). Ange följande information för att bearbeta din begäran:
+Du kan begära en kvotökning när som helst genom att skicka en [onlinebegäran](https://ms.portal.azure.com/). Ange följande information för att bearbeta din begäran:
 
 - Microsoft-kontot eller arbets- eller skolkontot som är associerat med kontoinnehavaren för din prenumeration. Det här är e-postadressen som används för att logga in på Microsoft Azure-portalen för att hantera dina prenumerationer. Identifiera även att det här är kontot som är associerat med en EA-registrering.
 - Resurserna och beloppet som du vill ha en kvotökning för.

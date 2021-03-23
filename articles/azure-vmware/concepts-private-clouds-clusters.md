@@ -3,12 +3,12 @@ title: Koncept – privata moln och kluster
 description: Lär dig mer om de viktigaste funktionerna i Azure VMware-lösningen program varu definierade Data Center och vSphere-kluster.
 ms.topic: conceptual
 ms.date: 03/13/2021
-ms.openlocfilehash: d1837ae7cf01fcb9642e0cafe4e0430e403b9899
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aff66e01ae4b056eb082d2000611718b1a5cf66a
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462531"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773936"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-lösning, privata moln och kluster koncept
 
@@ -48,6 +48,9 @@ Värdar som används för att bygga eller skala kluster kommer från en isolerad
 
 [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
+## <a name="update-frequency"></a>Uppdaterings frekvens
+
+[!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Underhåll av värd och livs cykel hantering
 

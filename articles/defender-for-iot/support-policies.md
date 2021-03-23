@@ -1,19 +1,14 @@
 ---
 title: Support principer för Azure Defender för IoT
-titleSuffix: Azure Defender for IoT
 description: I den här artikeln beskrivs stöd för, brytande ändrings principer för Defender för IoT och de versioner av Azure Defender för IoT som är tillgängliga för närvarande.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 2/8/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 17ef357ebc78b63cbaf473cb6449cb89ccf0963e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b1a01a02155bb1443542892ed9d00d1c6b221f64
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100568"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782613"
 ---
 # <a name="versioning-and-support-for-azure-defender-for-iot"></a>Versions hantering och support för Azure Defender för IoT 
 

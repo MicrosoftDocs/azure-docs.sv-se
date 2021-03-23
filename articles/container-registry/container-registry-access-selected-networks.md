@@ -2,13 +2,13 @@
 title: Konfigurera offentlig registeråtkomst
 description: Konfigurera IP-regler för att aktivera åtkomst till ett Azure Container Registry från valda offentliga IP-adresser eller adress intervall.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/08/2021
+ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89488770"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773070"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurera regler för offentliga IP-nätverk
 
@@ -17,6 +17,8 @@ Ett Azure Container Registry som standard accepterar anslutningar via Internet f
 IP-nätverks regler konfigureras i den offentliga slut punkten för registret. IP-nätverks regler gäller inte för privata slut punkter som kon figurer ATS med [privat länk](container-registry-private-link.md)
 
 Det finns en konfigurering av reglerna för IP-åtkomst i tjänst nivån **Premium** container Registry. Information om nivåer och gränser för register tjänster finns i [Azure Container Registry-nivåer](container-registry-skus.md).
+
+Varje register stöder högst 100 nätverks åtkomst regler.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 

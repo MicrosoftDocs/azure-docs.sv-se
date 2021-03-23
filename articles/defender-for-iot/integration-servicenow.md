@@ -1,19 +1,14 @@
 ---
 title: Om ServiceNow-integrering
-titleSuffix: Azure Defender for IoT
 description: Hanterings applikationen Defender för IoT-anslutningsdelning för ServiceNow ger SOC-analytiker med flerdimensionell insyn i specialiserade protokoll och IoT-enheter som distribueras i industriella miljöer, tillsammans med ICS-medvetna beteende analys för att snabbt upptäcka misstänkta eller avvikande beteenden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558732"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786013"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>Hanterings programmet Defender för IoT-anslutningsdelning för ServiceNow
 

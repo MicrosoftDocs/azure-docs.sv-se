@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720499"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771319"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantisk sökning i Azure Kognitiv sökning
 
 > [!IMPORTANT]
 > Semantisk sökning är i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick, under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)och är inte garanterade att ha samma implementering vid allmän tillgänglighet. Dessa funktioner är fakturerbara. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
-Semantisk sökning är en samling frågor som är relaterade till funktioner som stöder en bättre, mer naturlig fråge upplevelse. 
+Semantisk sökning är en samling fråge relaterade funktioner som lägger till semantisk relevans och språk förståelse för Sök resultat. *Semantisk rangordning* söker efter kontext och relateradhet bland termer och höjer matchningar som är mer begripliga för frågan. Med språk förståelse hittar du under *texter* och *svar* i ditt innehåll som sammanfattar det matchande dokumentet eller besvarar en fråga, som sedan kan återges på en Sök resultat sida för en mer produktiv Sök upplevelse.
 
-Dessa funktioner omfattar en semantisk rerangering av Sök resultat, samt beskrivning och extrahering av svar, med semantisk markering över relevanta termer och fraser. Avancerade förtränade modeller används för extrahering och rankning. För att upprätthålla den snabba prestanda som användarna förväntar sig att söka, tillämpas semantisk Sammanfattning och rangordning enbart på de översta 50-resultaten, vilket visas i [standard algoritmen för likhets](index-similarity-and-scoring.md#similarity-ranking-algorithms)bedömning. Genom att använda dessa resultat som dokument sökkorpus, kommer semantisk rangordning att omvärdera dessa resultat baserat på matchningens semantiska styrka.
+Avancerade förtränade modeller används för sammanfattning och rankning. För att upprätthålla den snabba prestanda som användarna förväntar sig att söka, tillämpas semantisk Sammanfattning och rangordning enbart på de översta 50-resultaten, vilket visas i [standard algoritmen för likhets](index-similarity-and-scoring.md#similarity-ranking-algorithms)bedömning. Genom att använda dessa resultat som dokument sökkorpus, kommer semantisk rangordning att omvärdera dessa resultat baserat på matchningens semantiska styrka.
 
 Den underliggande tekniken är från Bing och Microsoft Research och integreras i Kognitiv sökning-infrastrukturen som en tilläggs funktion. Mer information om forskning och AI-investeringar som backar semantisk sökning finns i [hur AI från Bing fungerar med Azure kognitiv sökning (Microsoft Research blogg)](https://www.microsoft.com/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/).
 

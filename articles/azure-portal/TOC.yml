@@ -35,11 +35,11 @@
           href: azure-portal-dashboards.md
         - name: Dela en Azure-instrumentpanel
           href: azure-portal-dashboard-share-access.md
+        - name: Använda en anpassad Markdown-panel
+          href: azure-portal-markdown-tile.md
         - name: Skapa en Azure-instrumentpanel program mässigt
           href: azure-portal-dashboards-create-programmatically.md
           displayName: 'Azure CLI, az portal dashboard, az portal'
-        - name: Använda en anpassad Markdown-panel
-          href: azure-portal-markdown-tile.md
     - name: Instruktionsvideoserie om Azure-portalen
       href: azure-portal-video-series.md
     - name: Skapa och hantera supportförfrågningar
