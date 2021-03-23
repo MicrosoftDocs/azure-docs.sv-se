@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773376"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865595"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
@@ -141,7 +141,7 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
     ```
  
 
-4. Lägg till nyckel valvs referensen i  `OsProfile`   avsnittet i arm-mallen. Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen (. cscfg). Du måste också aktivera Key Vault för lämpliga behörigheter så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Nyckel valvet måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Cloud Services (utökad support)](certificates-and-key-vault.md).
+4. Lägg till nyckel valvs referensen i  `OsProfile`   avsnittet i arm-mallen. Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen (. cscfg). Du måste också aktivera Key Vault "åtkomst principer" för "Azure Virtual Machines for Deployment" (på portalen) så att Cloud Services (utökad support)-resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Nyckel valvet måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Cloud Services (utökad support)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 

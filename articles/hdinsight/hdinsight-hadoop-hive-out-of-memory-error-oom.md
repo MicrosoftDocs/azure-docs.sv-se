@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d1e8f596ee022a59baa89e7f78648c98420eb44b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945718"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868876"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Åtgärda ett Apache Hive slut på minnes fel i Azure HDInsight
 
@@ -104,7 +104,7 @@ Våra support-och teknik team hittade ett av de problem som orsakade att minnet 
 
 Det är troligt att kopplings koppling var orsaken till minnes felet i Java-heap. Som förklaras i blogg inlägget [Hadoop garn Memory Settings i HDInsight](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight), när Tez körnings motor används, hör det heap-utrymme som används faktiskt till Tez-behållaren. Se följande avbildning som beskriver Tez container Memory.
 
-![Minnes diagram för Tez container: Hive-slut på minnes fel](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+:::image type="content" source="./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png" alt-text="Minnes diagram för Tez container: Hive-slut på minnes fel" border="false":::
 
 I blogg inlägget föreslår följande två minnes inställningar att behållar minnet för heap: **Hive. Tez. container. size** och **Hive. Tez. java. |. väljer**. Från vår erfarenhet innebär det inte att behållarens storlek är för litet. Det innebär att Java-heap-storleken (Hive. Tez. java. önskad) är för liten. Så när du ser slut på minne kan du försöka öka **Hive. Tez. java.** Välj. Om det behövs kan du behöva öka **Hive. Tez. container. size**. Inställningen **Java.** den ska vara runt 80% av **container. size**.
 

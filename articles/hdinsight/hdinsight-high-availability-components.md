@@ -4,12 +4,12 @@ description: Översikt över de olika komponenter med hög tillgänglighet som a
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945314"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863725"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Tjänster med hög tillgänglighet som stöds av Azure HDInsight
 
@@ -34,7 +34,7 @@ Den här infrastrukturen består av ett antal tjänster och program varu kompone
 - Slav tjänst för hög tillgänglighet
 - Huvud tjänst för hög tillgänglighet
 
-![infrastruktur med hög tillgänglighet](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="infrastruktur med hög tillgänglighet" border="false":::
 
 Det finns även andra tjänster med hög tillgänglighet som stöds av Apache-pålitliga komponenter med öppen källkod. Dessa komponenter finns också i HDInsight-kluster:
 
@@ -91,7 +91,7 @@ Master-ha-tjänsten körs bara på den aktiva huvudnoden, den stoppar HDInsight 
 
 ### <a name="the-failover-process"></a>Redundansväxlingen
 
-![redundansväxling](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="redundansväxling" border="false":::
 
 En hälso övervakning körs på varje huvudnoden tillsammans med huvud fel kontrollen för huvud servern för att skicka pulsslags meddelanden till Zookeeper-kvorumet. Huvudnoden betraktas som en HA-tjänst i det här scenariot. Hälso övervakaren kontrollerar om varje tjänst för hög tillgänglighet är felfri och om den är redo att ansluta till det ledarskapde valet. Om ja, kommer den här huvudnoden att konkurrera i valet. Om inte, stängs valet tills det blir klart igen.
 

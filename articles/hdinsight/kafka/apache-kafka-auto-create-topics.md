@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3766d41959383d802e50aafbf59b9841d1c8d74e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933215"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870695"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Så här konfigurerar du Apache Kafka på HDInsight för att automatiskt skapa ämnen
 
@@ -25,31 +25,31 @@ Gör så här om du vill aktivera automatisk generering av ämnen i ett befintli
 
 1. Välj **Ambari start** från **kluster instrument paneler**.
 
-    ![Bild av portalen med valt kluster instrument panel](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png" alt-text="Bild av portalen med valt kluster instrument panel" border="true":::
 
     När du uppmanas autentiserar du med inloggnings uppgifterna (admin) för klustret. I stället kan du ansluta till Amabri direkt från `https://CLUSTERNAME.azurehdinsight.net/` där `CLUSTERNAME` är namnet på ditt Kafka-kluster.
 
 1. Välj Kafka-tjänsten i listan till vänster på sidan.
 
-    ![Flik för Apache Ambari service list](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-service-list.png" alt-text="Flik för Apache Ambari service list" border="true":::
 
 1. Välj config i mitten av sidan.
 
-    ![Fliken Konfiguration av Apache Ambari-tjänst](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-service-config.png" alt-text="Fliken Konfiguration av Apache Ambari-tjänst" border="true":::
 
 1. Ange ett värde i fältet filter `auto.create` .
 
-    ![Sök filter fält för Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png" alt-text="Sök filter fält för Apache Ambari" border="true":::
 
     Den här inställningen filtrerar listan med egenskaper och visar `auto.create.topics.enable` inställningen.
 
 1. Ändra värdet för `auto.create.topics.enable` till `true` och välj sedan **Spara**. Lägg till en anteckning och välj sedan **Spara** igen.
 
-    ![Bild av filen Auto. Create. topics. enable Entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png" alt-text="Bild av filen Auto. Create. topics. enable Entry" border="true":::
 
 1. Välj Kafka-tjänsten, Välj __starta om__ och välj sedan __starta om alla berörda__. När du uppmanas väljer du __Bekräfta omstart av alla__.
 
-    !["Apache Ambari restart all berörs"](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/restart-all-affected.png" alt-text="&quot;Apache Ambari restart all berörs&quot;" border="true":::
 
 > [!NOTE]  
 > Du kan också ange Ambari-värden via Ambari-REST API. Detta är i allmänhet svårare eftersom du måste göra flera REST-anrop för att hämta den aktuella konfigurationen, ändra den osv. Mer information finns i [Hantera HDInsight-kluster med hjälp av Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md) Document.

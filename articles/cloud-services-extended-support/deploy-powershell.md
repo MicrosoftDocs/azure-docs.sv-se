@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 08a8dde815a6dea5d69e5e2a385cbaa03fba681a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832702"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865629"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Distribuera en moln tjänst (utökad support) med Azure PowerShell
 
@@ -88,7 +88,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Skapa ett nyckelvalv. Den här Key Vault kommer att användas för att lagra certifikat som är associerade med moln tjänsten (utökade stöd) roller. Se till att du har aktiverat "åtkomst principer" (i portalen) för åtkomst till "Azure Virtual Machines for Deployment" och "Azure Resource Manager for Template Deployment". Key Vault måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+9. Skapa ett nyckelvalv. Den här Key Vault kommer att användas för att lagra certifikat som är associerade med moln tjänsten (utökade stöd) roller. Key Vault måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosOrg” -Location “East US” 
@@ -97,6 +97,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
 10. Uppdatera Key Vault åtkomst princip och bevilja certifikat behörigheter till ditt användar konto. 
 
     ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -EnabledForDeployment
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
     ```
 

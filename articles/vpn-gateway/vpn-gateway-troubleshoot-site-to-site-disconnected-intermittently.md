@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100369347"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867261"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Felsökning: Azure plats-till-plats-VPN-anslutningen kopplas från periodvis
 
@@ -56,9 +56,7 @@ Den principbaserad virtuella Nätverksgatewayen har en gräns på 200 under nät
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Steg 6 kontrol lera den lokala VPN-enhetens externa gränssnitts adress
 
-- Om VPN-enhetens IP-adress på Internet ingår i definitionen för den **lokala** Nätverksgatewayen i Azure kan det uppstå sporadiska från kopplingar.
-- Enhetens externa gränssnitt måste vara direkt på Internet. Det får inte finnas någon NAT (Network Address Translation) eller brand vägg mellan Internet och enheten.
--  Om du konfigurerar brand Väggs kluster att ha en virtuell IP-adress måste du bryta klustret och exponera VPN-enheten direkt till ett offentligt gränssnitt som gatewayen kan använda.
+Om VPN-enhetens IP-adress på Internet ingår i definitionen för den **lokala** Nätverksgatewayen i Azure kan det uppstå sporadiska från kopplingar.
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Steg 7 kontrol lera om den lokala VPN-enheten har Perfect Forward Secrecy aktiverat
 

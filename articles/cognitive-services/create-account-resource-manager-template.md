@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 161c5779926acad8814ec057f24e36f371738483
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928654"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864371"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Snabb start: skapa en Cognitive Services resurs med en ARM-mall
 
@@ -137,9 +137,10 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
-* [Autentisera begär anden till Azure Cognitive Services](authentication.md)
-* [Vad är Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Stöd för naturligt språk](language-support.md)
-* [Stöd för Docker-behållare](cognitive-services-container-support.md)
+* Se **[autentisera begär anden till Azure Cognitive Services](authentication.md)** om hur du säkert arbetar med Cognitive Services.
+* Se **[Vad är Azure Cognitive Services?](./what-are-cognitive-services.md)** för att hämta en lista över olika kategorier i Cognitive Services.
+* Se den **[naturliga språk supporten](language-support.md)** om du vill se en lista över naturliga språk som Cognitive Services stöder.
+* Se **[använda Cognitive Services som behållare](cognitive-services-container-support.md)** för att förstå hur du använder Cognitive Services lokal.
+* Se **[planera och hantera kostnader för Cognitive Services](plan-manage-costs.md)** för att beräkna kostnaden för att använda Cognitive Services.

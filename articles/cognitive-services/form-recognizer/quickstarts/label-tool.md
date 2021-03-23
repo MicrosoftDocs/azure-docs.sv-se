@@ -11,18 +11,18 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokument bearbetning
-ms.openlocfilehash: 89de0752b3015fb8132bfa50c7dbdce174061bcc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: f83e13155fa851a06c8b7d36b87c3038257c0b3a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467301"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864388"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
-# <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter
+# <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>Träna en anpassad modell med hjälp av verktyget för att märka med exempel
 
 I den här snabb starten använder du formulär tolken REST API med verktyget för att träna en anpassad dokument bearbetnings modell med manuellt märkta data. Se avsnittet [träna med etiketter](../overview.md#train-with-labels) i översikten om du vill veta mer om övervakad inlärning med formulär igenkänning.
 

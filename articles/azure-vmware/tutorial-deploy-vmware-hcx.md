@@ -3,12 +3,12 @@ title: Självstudie – distribuera och konfigurera VMware HCX
 description: Lär dig hur du distribuerar och konfigurerar en VMware HCX-lösning för ditt privata moln i Azure VMware-lösningen.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d4607483e64e6b7daa45f576f70ce3f5eeef65ca
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801119"
+ms.locfileid: "104869097"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Distribuera och konfigurera VMware HCX
 
@@ -265,7 +265,7 @@ En översikt över slut punkt till slut punkt av den här proceduren finns i [Az
 1. Från **Välj distribuerade växlar för nätverks tillägg** väljer du de växlar som innehåller de virtuella datorer som ska migreras till Azure VMware-lösningen i ett utökat nätverk på nivå 2. Välj sedan **Fortsätt**.
 
    > [!NOTE]
-   > Om du inte migrerar virtuella datorer i Layer-2 utökade nätverk kan du hoppa över det här steget.
+   > Om du inte migrerar virtuella datorer i Layer-2 (L2) utökade nätverk kan du hoppa över det här steget.
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Skärm bild som visar valet av distribuerade virtuella växlar och knappen Fortsätt." lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,4 +376,4 @@ Mer information om hur du använder HCX finns i den tekniska dokumentationen fö
 * [VMware HCX-dokumentation](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [Migrera Virtual Machines med VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX nödvändiga portar](https://ports.vmware.com/home/VMware-HCX)
-* [Konfigurera en HCX proxy-service innan du godkänner licens nyckeln](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)
+* [Konfigurera en HCX proxyserver innan du godkänner licens nyckeln](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)

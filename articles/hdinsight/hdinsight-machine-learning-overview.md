@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 18be3fa8851c2dbaab622c770d02f4db252a231c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 492663ca35ed04da09e7f0d198444a4d40178e2b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945263"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867533"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Maskin inlärning på HDInsight
 
@@ -26,7 +26,7 @@ Microsoft Machine Learning-biblioteket för Apache Spark är [MMLSpark](https://
 
 [R](https://www.r-project.org/) är för närvarande det vanligaste statistiska programmeringsspråket i världen. Det är ett data visualiserings verktyg med öppen källkod med en community över 2 500 000 användare och växer. Med sin blomstrande-användar bas och över 8 000-paket är R ett sannolikt val för många företag som behöver maskin inlärning. Du kan skapa ett HDInsight-kluster med ML-tjänster som är klara att användas med enorma data uppsättningar och modeller. Den här funktionen ger data vetenskaps-och statistiker med ett välbekant R-gränssnitt som kan skalas på begäran via HDInsight, utan att det går att konfigurera och underhålla kluster.
 
-![Utbildning för förutsägelse med R Server](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
+:::image type="content" source="./media/hdinsight-machine-learning-overview/training-for-prediction.png" alt-text="Utbildning för förutsägelse med R Server" border="false":::
 
 Edge-noden i ett kluster är en praktisk plats för att ansluta till klustret och köra R-skript.  Du kan också köra R-skript över noderna i klustret med hjälp av skalnings programmets Hadoop-karta minska eller Spark Compute-kontexter.
 
@@ -36,7 +36,7 @@ Med ML-tjänster i HDInsight med Spark kan du parallellisera utbildning över no
 
 Azure Machine Learning innehåller verktyg för att modellera förutsägelse analyser och en fullständigt hanterad tjänst som du kan använda för att distribuera förutsägelse modeller som färdiga webb tjänster. Azure Machine Learning är en komplett lösning för förutsägelse analys i molnet som du kan använda för att skapa, testa, operationalisera och hantera förutsägelse modeller. Välj från ett bibliotek med stora algoritmer, Använd en webbaserad Studio för att skapa modeller och enkelt distribuera din modell som en webb tjänst.
 
-![Översikt över Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+:::image type="content" source="./media/hdinsight-machine-learning-overview/azure-machine-learning.png" alt-text="Översikt över Microsoft Azure Machine Learning" border="false":::
 
 Skapa funktioner för data i ett HDInsight Hadoop-kluster med [Hive-frågor](../machine-learning/team-data-science-process/create-features-hive.md). *Funktions teknikerna* försöker öka förutsägelse kraften hos Learning-algoritmer genom att skapa funktioner från rå data som underlättar inlärnings processen. Du kan köra HiveQL-frågor från Azure Machine Learning Studio (klassisk) och komma åt data som bearbetas i Hive och lagras i Blob Storage med hjälp av [modulen importera data](../machine-learning/classic/import-data.md).
 

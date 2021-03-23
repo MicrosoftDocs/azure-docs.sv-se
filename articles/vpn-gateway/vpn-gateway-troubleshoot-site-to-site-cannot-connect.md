@@ -5,14 +5,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670895"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867295"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Fel sökning: en Azure plats-till-plats-VPN-anslutning kan inte ansluta och sluta fungera
 
@@ -81,9 +81,7 @@ Sök efter och ta bort användardefinierad routning (UDR) eller nätverks säker
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>Steg 5. Kontrol lera den lokala VPN-enhetens externa gränssnitts adress
 
-- Om VPN-enhetens IP-adress på Internet ingår i den **lokala nätverks** definitionen i Azure kan det uppstå sporadiska från kopplingar.
-- Enhetens externa gränssnitt måste vara direkt på Internet. Det får inte finnas någon Network Address Translation eller brand vägg mellan Internet och enheten.
-- Om du vill konfigurera brand Väggs kluster att ha en virtuell IP-adress måste du bryta klustret och exponera VPN-installationen direkt till ett offentligt gränssnitt som gatewayen kan gränssnitts Visa.
+Om VPN-enhetens IP-adress på Internet ingår i den **lokala nätverks** definitionen i Azure kan det uppstå sporadiska från kopplingar.
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>Steg 6. Kontrol lera att undernät matchar exakt (Azure policy-baserade gatewayer)
 

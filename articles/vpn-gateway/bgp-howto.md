@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878892"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863589"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Så här konfigurerar du BGP på Azure VPN-gatewayer
 
@@ -79,13 +79,15 @@ I det här steget skapar du en VPN-gateway med motsvarande BGP-parametrar.
 
    * Fältet **Azure APIPA BGP IP-adress** är valfritt. Om dina lokala VPN-enheter använder APIPA-adressen för BGP måste du välja en adress från det reserverade adress intervallet för Azure-reserverade APIPA för VPN, som kommer från **169.254.21.0** till **169.254.22.255**. I det här exemplet används 169.254.21.11.
 
-   * Om du skapar en aktiv-aktiv VPN-gateway visar BGP-avsnittet ytterligare en **anpassad Azure APIPA BGP-IP-adress**. Ange en annan adress än det tillåtna APIPA-intervallet (**169.254.21.0** till **169.254.22.255**).
+   * Om du skapar en aktiv-aktiv VPN-gateway visar BGP-avsnittet ytterligare en **anpassad Azure APIPA BGP-IP-adress**. Från det tillåtna APIPA-intervallet (**169.254.21.0** till **169.254.22.255**) väljer du en annan IP-adress. Den andra IP-adressen måste vara en annan än den första adressen.
 
    > [!IMPORTANT]
    >
    > * Som standard tilldelar Azure en privat IP-adress från GatewaySubnet-prefixet automatiskt som Azure BGP IP-adress på Azure VPN-gatewayen. Den anpassade Azure APIPA BGP-adressen krävs när dina lokala VPN-enheter använder en APIPA-adress (169.254.0.1 till 169.254.255.254) som BGP IP. Azure VPN Gateway väljer den anpassade APIPA-adressen om motsvarande lokala nätverks-gateway-resurs (lokalt nätverk) har en APIPA-adress som BGP-peer-IP. Om den lokala Nätverksgatewayen använder en vanlig IP-adress (inte APIPA) kommer Azure VPN Gateway att återgå till den privata IP-adressen från GatewaySubnet-intervallet.
    >
    > * APIPA BGP-adresserna får inte överlappa mellan de lokala VPN-enheterna och alla anslutna Azure VPN-gatewayer.
+   >
+   > * När APIPA-adresser används på Azure VPN-gatewayer initierar inte gatewayerna BGP-peering-sessioner med APIPA-Källans IP-adresser. Den lokala VPN-enheten måste initiera BGP-peering-anslutningar.
    >
 
 1. Välj **Granska + skapa** för att köra verifieringen. När verifieringen har godkänts väljer du **skapa** för att distribuera VPN-gatewayen. Det kan ta upp till 45 minuter för en gateway att skapa och distribuera fullständigt. Du kan se distributions status på översikts sidan för din gateway.

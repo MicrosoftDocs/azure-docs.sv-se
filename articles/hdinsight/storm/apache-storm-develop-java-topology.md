@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e51f99496514e40d6c3f85000384a14baf84946
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929130"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865374"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Skapa en Apache Storm-topologi i Java
 
@@ -482,7 +482,7 @@ Topologin kopplar ihop kanaler och bultarna i ett diagram. Diagrammet definierar
 
 Följande bild är ett grundläggande diagram över komponenterna i den här topologin.
 
-![diagram över arrangemanget kanaler och bultar](./media/apache-storm-develop-java-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-java-topology/word-count-topology1.png" alt-text="diagram över arrangemanget kanaler och bultar" border="false":::
 
 Implementera topologin genom att ange kommandot nedan för att skapa och öppna en ny fil `WordCountTopology.java` :
 

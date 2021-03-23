@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 253fce7d47d694c03d470fefdf81318a6bff77b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e893216eb8e2d7e44e3f272f6b965b84c6253f7f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123062"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870338"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Lägg till stöd för IPv6 för privat peering med Azure PowerShell (för hands version)
 
@@ -177,6 +177,7 @@ Följ stegen nedan om du planerar att ansluta till en ny uppsättning Azure-resu
 * Global Reach anslutningar mellan ExpressRoute-kretsar
 * Användning av ExpressRoute med virtuellt WAN
 * FastPath med icke-ExpressRoute Direct-kretsar
+* FastPath med kretsar på följande peering-platser: Dubai
 * Samexistens med VPN Gateway
 
 ## <a name="next-steps"></a>Nästa steg

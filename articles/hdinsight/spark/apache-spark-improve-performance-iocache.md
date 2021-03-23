@@ -4,12 +4,12 @@ description: Lär dig mer om Azure HDInsight IO-cache och hur du använder den f
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940127"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866309"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Förbättra prestanda för Apache Spark arbets belastningar med Azure HDInsight IO-cache
 
@@ -37,7 +37,7 @@ Azure HDInsight IO-cachen inaktive ras som standard i för hands versionen. I/o-
 
 1. Välj **åtgärder** (**tjänst åtgärder** i HDI 3,6) och **Aktivera**.
 
-    ![Aktivera IO-Cache-tjänsten i Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Aktivera IO-Cache-tjänsten i Ambari")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="Aktivera IO-Cache-tjänsten i Ambari" border="true":::
 
 1. Bekräfta omstart av alla berörda tjänster i klustret.
 
@@ -52,7 +52,7 @@ Du kan få disk utrymmes fel som kör Spark-jobb när du har aktiverat IO-cache.
 
 1. Välj flikarna **configs** och **Avancerat** .
 
-    ![Redigera HDFS, Avancerad konfiguration](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Redigera HDFS, Avancerad konfiguration")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="Redigera HDFS, Avancerad konfiguration" border="true":::
 
 1. Rulla nedåt och expandera området för **anpassad kärn webbplats** .
 
@@ -60,13 +60,13 @@ Du kan få disk utrymmes fel som kör Spark-jobb när du har aktiverat IO-cache.
 
 1. Ändra värdet i rutan.
 
-    ![Redigera full procent andel av IO-cachen](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "Redigera full procent andel av IO-cachen")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="Redigera full procent andel av IO-cachen" border="true":::
 
 1. Välj **Spara** längst upp till höger.
 
 1. Välj **Starta** om  >  **omstart alla påverkade**.
 
-    ![Apache Ambari startar om alla berörda](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Starta om alla berörda")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Apache Ambari startar om alla berörda" border="true":::
 
 1. Välj **Bekräfta omstart av alla**.
 

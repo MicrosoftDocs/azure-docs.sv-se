@@ -4,12 +4,12 @@ description: Olika OutOfMemoryError-undantag för Apache Spark kluster i Azure H
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946342"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868672"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-undantag för Apache Spark i Azure HDInsight
 
@@ -59,7 +59,7 @@ Den mest sannolika orsaken till det här undantaget är att inte tillräckligt m
 
 1. Se till att HDInsight-klustret som ska användas har tillräckligt med resurser när det gäller minne och tillräckligt med kärnor för Spark-programmet. Detta kan bestämmas genom att visa avsnittet kluster mått i garn gränssnittet för klustret för värden för **använt minne** jämfört med **minne totalt** och **virtuella kärnor som används** jämfört med **virtuella kärnor totalt**.
 
-    ![kärn minnes visning för garn](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="kärn minnes visning för garn" border="true":::
 
 1. Ställ in följande Spark-konfigurationer på lämpliga värden. Balansera program kraven med de tillgängliga resurserna i klustret. Dessa värden får inte överstiga 90% av tillgängligt minne och kärnor som visas av garn, och det bör också uppfylla det lägsta minnes kravet för Spark-programmet:
 
@@ -117,11 +117,11 @@ Du kan öka Spark historik serverns minne genom att redigera `SPARK_DAEMON_MEMOR
 
 Det kan du göra i Ambari webb läsar gränssnitt genom att välja avsnittet Spark2/config/Advanced Spark2-miljö.
 
-![Avsnittet avancerad spark2-miljö](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Avsnittet avancerad spark2-miljö" border="true":::
 
 Lägg till följande egenskap för att ändra server minnet för Spark-historik från 1G till 4G: `SPARK_DAEMON_MEMORY=4g` .
 
-![Spark-egenskap](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark-egenskap" border="true":::
 
 Se till att starta om alla berörda tjänster från Ambari.
 

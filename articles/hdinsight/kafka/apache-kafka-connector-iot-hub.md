@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: feada70c7a461bb4a9cd621c76b5606a7f0e19d5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932883"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865289"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Använda Apache Kafka på HDInsight med Azure IoT Hub
 
@@ -22,7 +22,7 @@ När du hämtar från IoT Hub använder du en __käll__ koppling. När du skicka
 
 I följande diagram visas data flödet mellan Azure IoT Hub och Kafka i HDInsight när du använder anslutnings tjänsten.
 
-![Bild som visar data som flödar från IoT Hub till Kafka via kopplingen](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
+:::image type="content" source="./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png" alt-text="Bild som visar data som flödar från IoT Hub till Kafka via kopplingen" border="false":::
 
 Mer information om Connect API finns i [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect) .
 

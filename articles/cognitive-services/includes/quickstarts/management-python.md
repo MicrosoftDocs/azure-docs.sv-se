@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 521f6c39a10259b09d741a61dcd8e81d8a0c35b2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fb908cdcf3e235654effc043de29e599a48179d4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947551"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879601"
 ---
 [Referens dokumentation](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices)  |  [Paket (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
@@ -100,7 +100,9 @@ python <your-script-name>.py
 
 ## <a name="see-also"></a>Se även
 
-* [Dokumentation om Azure Management SDK-referens](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)
-* [Vad är Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Autentisera begär anden till Azure Cognitive Services](../../authentication.md)
-* [Skapa en ny resurs med Azure Portal](../../cognitive-services-apis-create-account.md)
+* Se **[autentisera begär anden till Azure Cognitive Services](../../authentication.md)** om hur du säkert arbetar med Cognitive Services.
+* Se **[Vad är Azure Cognitive Services?](../../what-are-cognitive-services.md)** för att hämta en lista över olika kategorier i Cognitive Services.
+* Se den **[naturliga språk supporten](../../language-support.md)** om du vill se en lista över naturliga språk som Cognitive Services stöder.
+* Se **[använda Cognitive Services som behållare](../../cognitive-services-container-support.md)** för att förstå hur du använder Cognitive Services lokal.
+* Se **[planera och hantera kostnader för Cognitive Services](../../plan-manage-costs.md)** för att beräkna kostnaden för att använda Cognitive Services.
+* Mer information om hanterings-SDK finns i **[referens dokumentationen för Azure Management SDK](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)** .

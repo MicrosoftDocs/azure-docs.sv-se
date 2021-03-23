@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737175"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869199"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Installera Azure Application enhetligt ögonblicks bild verktyget (förhands granskning)
 
@@ -239,71 +239,6 @@ databas, ändra IP-adress, användar namn och lösen ord efter behov:
     ENV : <IP_address_of_host>:
     USER: AZACSNAP
     ```
-
-### <a name="additional-instructions-for-using-the-log-trimmer-sap-hana-20-and-later"></a>Ytterligare instruktioner för att använda logg trimmern (SAP HANA 2,0 och senare)
-
-Om du använder logg trimmern kan du använda följande exempel kommandon för att skapa en användare (AZACSNAP) i klient databaserna på ett databas system för SAP HANA 2,0. Kom ihåg att ändra IP-adress, användar namn och lösen ord efter behov:
-
-1. Anslut till klient databasen för att skapa användaren, klient information är `<IP_address_of_host>` och `<SYSTEM_USER_PASSWORD>` .  Observera också den port ( `30015` ) som krävs för att kommunicera med klient databasen.
-
-    ```bash
-    hdbsql -n <IP_address_of_host>:30015 - i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD>
-    ```
-
-    ```output  
-    Welcome to the SAP HANA Database interactive terminal.
-
-    Type: \h for help with commands
-    \q to quit
-
-    hdbsql TENANTDB=>
-    ```
-
-1. Skapa användaren
-
-    I det här exemplet skapas AZACSNAP-användaren i SYSTEMDB.
-
-    ```sql
-    hdbsql TENANTDB=> CREATE USER AZACSNAP PASSWORD <AZACSNAP_PASSWORD_CHANGE_ME> NO FORCE_FIRST_PASSWORD_CHANGE;
-    ```
-
-1. Bevilja användar behörighet
-
-    I det här exemplet anges behörigheten för AZACSNAP-användaren för att utföra en databas konsekvent lagrings ögonblicks bild.
-
-    ```sql
-    hdbsql TENANTDB=> GRANT BACKUP ADMIN, CATALOG READ, MONITORING TO AZACSNAP;
-    ```
-
-1. *Valfri* – förhindra att användarens lösen ord upphör att gälla
-
-    > [!NOTE]
-    > Kontrol lera med företags principen innan du gör den här ändringen.
-
-   I det här exemplet inaktive ras lösen ordets giltighets tid för AZACSNAP-användaren, utan den här ändringen kommer användarens lösen ord att upphöra att fungera korrekt.  
-
-   ```sql
-   hdbsql TENANTDB=> ALTER USER AZACSNAP DISABLE PASSWORD LIFETIME;
-   ```
-
-> [!NOTE]  
-> Upprepa de här stegen för alla klient databaser. Det går att hämta anslutnings information för alla klienter som använder följande SQL-fråga mot SYSTEMDB.
-
-```sql
-SELECT HOST, SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%'
-```
-
-Se följande exempel fråga och utdata.
-
-```bash
-hdbsql -jaxC -n 10.90.0.31:30013 -i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD> " SELECT HOST,SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%' "
-```
-
-```output
-sapprdhdb80,30013,SYSTEMDB
-sapprdhdb80,30015,H81
-sapprdhdb80,30041,H82
-```
 
 ### <a name="using-ssl-for-communication-with-sap-hana"></a>Använda SSL för kommunikation med SAP HANA
 

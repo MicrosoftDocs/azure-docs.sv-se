@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
 ms.date: 03/12/2021
-ms.openlocfilehash: 8093b61213c3e26b93df2a3f495e7efe0a61d523
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1414a7b0f17918caa16ccf854d70ea199fb42a47
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103420042"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870202"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referens guide för att använda funktioner i uttryck för Azure Logic Apps och energi automatisering
 
@@ -690,10 +690,10 @@ addProperty(<object>, '<property>', <value>)
 | <*uppdaterat – objekt*> | Objekt | Det uppdaterade JSON-objektet med den angivna egenskapen |
 ||||
 
-Använd följande syntax om du vill lägga till en underordnad egenskap i en befintlig egenskap:
+Om du vill lägga till en överordnad egenskap i en befintlig egenskap använder du `setProperty()` funktionen, inte `addProperty()` funktionen. Annars returnerar funktionen bara det underordnade objektet som utdata.
 
 ```
-addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+setProperty(<object>['<parent-property>'], '<parent-property>', addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 ```
 
 | Parameter | Krävs | Typ | Beskrivning |
@@ -741,7 +741,7 @@ Här är det uppdaterade JSON-objektet:
 Det här exemplet lägger till den `middleName` underordnade egenskapen till den befintliga `customerName` egenskapen i ett JSON-objekt, som konverteras från en sträng till JSON med hjälp av [JSON ()-](#json) funktionen. Funktionen tilldelar det angivna värdet till den nya egenskapen och returnerar det uppdaterade objektet:
 
 ```
-addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne'))
 ```
 
 Här är det aktuella JSON-objektet:

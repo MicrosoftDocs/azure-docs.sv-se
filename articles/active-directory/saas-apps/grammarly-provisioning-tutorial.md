@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: acfe74577f58cbdc0b1fe235e7fc1f661543fd90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ca01289ce66afe642081e5be17373e640dd1e46d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609983"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864830"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>Självstudie: Konfigurera grammatik för automatisk användar etablering
 
@@ -85,7 +85,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Skärm bild som visar etablerings läget inställt på automatiskt.](common/provisioning-automatic.png)
 
-1. I avsnittet **admin-autentiseringsuppgifter** anger du din **webb adress** för grammatik och information om **hemliga token** . Välj **Testa anslutning** för att säkerställa att Azure AD kan ansluta till grammatik. Om anslutningen Miss lyckas kontrollerar du att ditt konto för grammatik har administratörs behörighet och försöker igen.
+1. Under avsnittet **admin-autentiseringsuppgifter** i fältet ange **klient-URL** anger `https://sso.grammarly.com/scim/v2` och i fältet **hemligt token** anger du den token som tillhandahålls av grammatikkontrollen (se steg 2 ovan). Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till grammatik. Om anslutningen Miss lyckas ser du till att ditt konto för grammatik har administratörs behörighet och försöker igen.
 
     ![Skärm bild som visar rutorna för klient-URL och hemlig token.](common/provisioning-testconnection-tenanturltoken.png)
 

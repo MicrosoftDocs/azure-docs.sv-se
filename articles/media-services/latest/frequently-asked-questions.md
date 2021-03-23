@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581124"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871409"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Vanliga frågor och svar om Media Services v3
 
@@ -47,12 +47,6 @@ Se [Azure-rollbaserad åtkomst kontroll (Azure RBAC) för Media Services-konton]
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Vill du Hur gör jag för att Stream till Apple iOS-enheter?
 
 Kontrol lera att du har **(format = M3U8-AAPL)** i slutet av din sökväg (efter **/manifest** -delen av URL: en) för att meddela att den strömmande ursprungs servern returnerar HTTP Live Streaming (HLS) innehåll för användning på Apple iOS-enheter. Mer information finns i avsnittet om att [leverera innehåll](dynamic-packaging-overview.md).
-
-### <a name="how-do-i-configure-media-reserved-units"></a>Hur gör jag för att konfigurerar du reserverade enheter?
-
-För ljud analys-och video analys jobb som utlöses av Media Services v3 eller Video Indexer, rekommenderar vi att du etablerar ditt konto med 10 MRUs (S3 Media reserverad Unit). Om du behöver fler än 10 S3-MRUs öppnar du ett support ärende med hjälp av [Azure Portal](https://portal.azure.com/).
-
-Mer information finns i [skala medie bearbetning](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Vad är den rekommenderade metoden för att bearbeta videor?
 

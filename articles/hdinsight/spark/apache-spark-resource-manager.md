@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/12/2021
-ms.openlocfilehash: ff7cfe8ad09201df20db89e14f8c175e678e5107
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7027e4af9c11db628990d42430c6877340de3534
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929794"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868451"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Hantera resurser för Apache Spark kluster i Azure HDInsight
 
@@ -28,7 +28,7 @@ Du kan använda garn gränssnittet för att övervaka program som för närvaran
 
 2. Välj **garn** från **kluster instrument paneler**. När du uppmanas till det anger du administratörs behörighet för Spark-klustret.
 
-    ![Starta garn gränssnitt](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png" alt-text="Starta garn gränssnitt" border="true":::
 
    > [!TIP]  
    > Du kan också starta garn gränssnittet från Ambari-ANVÄNDARGRÄNSSNITTET. I Ambari-användargränssnittet navigerar du till snabb länkar till **garn**  >  **länkar**  >  **Active**  >  **Resource Manager UI**.
@@ -43,15 +43,15 @@ De tre konfigurations parametrarna kan konfigureras på kluster nivå (för alla
 
 1. Från Ambari-användargränssnittet navigerar du till **Spark2**  >  **configs**  >  **anpassade Spark2-defaults**.
 
-    ![Ange parametrar med anpassad Ambari](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Ange parametrar med anpassad Ambari")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png " alt-text="Ange parametrar med anpassad Ambari" border="true":::
 
 1. Standardvärdena är lämpliga för att köra fyra Spark-program samtidigt i klustret. Du kan ändra dessa värden från användar gränssnittet, som visas på följande skärm bild:
 
-    ![Ange parametrar med Ambari](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "Ange parametrar med Ambari")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png " alt-text="Ange parametrar med Ambari" border="true":::
 
 1. Välj **Spara** för att spara konfigurations ändringarna. Längst upp på sidan uppmanas du att starta om alla berörda tjänster. Välj **starta om**.
 
-    ![Starta om tjänster](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-services.png" alt-text="Starta om tjänster" border="true":::
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Ändra parametrarna för ett program som körs i Jupyter Notebook
 
@@ -93,11 +93,11 @@ Spark Thrift-servern använder Spark Dynamic utförar-allokering och därför `s
 
 * Expandera kategorin **Advanced spark2-Thrift-sparkconf** för att uppdatera parametrarna `spark.dynamicAllocation.maxExecutors` och `spark.dynamicAllocation.minExecutors` .
 
-    ![Konfigurera Spark Thrift-Server](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Konfigurera Spark Thrift-Server")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png " alt-text="Konfigurera Spark Thrift-Server" border="true":::
 
 * Expandera kategorin **Custom spark2-Thrift-sparkconf** för att uppdatera parametrarna `spark.executor.cores` och `spark.executor.memory` .
 
-    ![Konfigurera Spark Thrift Server parameter](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Konfigurera Spark Thrift Server parameter")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png " alt-text="Konfigurera Spark Thrift Server parameter" border="true":::
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Ändra driv rutins minnet för Spark Thrift-servern
 
@@ -113,38 +113,38 @@ På grund av Spark Dynamic Allocation är de enda resurserna som används av Thr
 
 2. På nästa sida väljer du **Spark2 Thrift-servrar**.
 
-    ![Starta om Thrift server1](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "Starta om Thrift server1")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png " alt-text="Starta om Thrift server1" border="true":::
 
 3. Du bör se de två huvudnoderna som Spark2 Thrift-servern körs på. Välj en av huvudnoderna.
 
-    ![Starta om Thrift server2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Starta om Thrift server2")
+    :::image type="content" source="./media/apache-spark-resource-manager/restart-thrift-server-2.png " alt-text="Starta om Thrift server2" border="true":::
 
 4. Nästa sida visar en lista över alla tjänster som körs på den huvudnoden. Välj den nedrullningsbara knappen bredvid Spark2 Thrift server i listan och välj sedan **stoppa**.
 
-    ![Starta om Thrift Server3](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "Starta om Thrift Server3")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png " alt-text="Starta om Thrift Server3" border="true":::
 5. Upprepa de här stegen även på andra huvudnoden.
 
 ## <a name="restart-the-jupyter-service"></a>Starta om Jupyter-tjänsten
 
 Starta Ambari-webbgränssnittet som visas i början av artikeln. Välj **Jupyter** i det vänstra navigerings fönstret, Välj **tjänst åtgärder** och välj sedan **starta om alla**. Detta startar Jupyter-tjänsten på alla huvudnoderna.
 
-![Starta om Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Starta om Jupyter")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png " alt-text="Starta om Jupyter" border="true":::
 
 ## <a name="monitor-resources"></a>Övervaka resurser
 
 Starta det garn användar gränssnitt som visas i början av artikeln. I tabellen kluster mått överst på skärmen, kontrol lera värdena för **använt minne** och kolumner i **Total** mängd minne. Om de två värdena stängs kanske det inte finns tillräckligt med resurser för att starta nästa program. Detsamma gäller för de **virtuella kärnor som används** och **virtuella kärnor totala** kolumner. I huvudvyn kan det också vara en indikation på att det inte finns tillräckligt med resurser för att starta, om ett program finns i ett **godkänt** tillstånd och inte går över till att **köras** eller inte är i **fel** tillstånd.
 
-![Resurs gräns](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Resurs gräns")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-resource-limit.png " alt-text="Resurs gräns" border="true":::
 
 ## <a name="kill-running-applications"></a>Avsluta program som körs
 
 1. Välj **Kör** i den vänstra panelen i garn gränssnittet. I listan över program som körs anger du vilket program som ska avlivas och väljer **ID**.
 
-    ![Kill-APP1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Kill-APP1")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app1.png " alt-text="Kill-APP1" border="true":::
 
 2. Välj **Avsluta program** i det övre högra hörnet och välj sedan **OK**.
 
-    ![Kill-APP2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Kill-APP2")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app2.png " alt-text="Kill-APP2" border="true":::
 
 ## <a name="see-also"></a>Se även
 

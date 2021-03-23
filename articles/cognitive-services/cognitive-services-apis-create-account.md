@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 115457180efab719b406c4e1e021234fa99736ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670515"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868230"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Snabb start: skapa en Cognitive Services resurs med hjälp av Azure Portal
 
@@ -117,8 +117,8 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 
 ## <a name="see-also"></a>Se även
 
-* [Autentisera begär anden till Azure Cognitive Services](authentication.md)
-* [Vad är Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Skapa en ny resurs med hjälp av klient biblioteket för Azure-hantering](.\cognitive-services-apis-create-account-client-library.md)
-* [Stöd för naturligt språk](language-support.md)
-* [Stöd för Docker-behållare](cognitive-services-container-support.md)
+* Se **[autentisera begär anden till Azure Cognitive Services](authentication.md)** om hur du säkert arbetar med Cognitive Services.
+* Se **[Vad är Azure Cognitive Services?](./what-are-cognitive-services.md)** för att hämta en lista över olika kategorier i Cognitive Services.
+* Se den **[naturliga språk supporten](language-support.md)** om du vill se en lista över naturliga språk som Cognitive Services stöder.
+* Se **[använda Cognitive Services som behållare](cognitive-services-container-support.md)** för att förstå hur du använder Cognitive Services lokal.
+* Se **[planera och hantera kostnader för Cognitive Services](plan-manage-costs.md)** för att beräkna kostnaden för att använda Cognitive Services.

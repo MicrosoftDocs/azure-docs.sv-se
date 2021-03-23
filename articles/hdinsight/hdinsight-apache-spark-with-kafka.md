@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6ef11e9c7907f57b3b8de0a042e1035bce638cf4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942762"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863283"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream)-exempel med Apache Kafka på HDInsight
 
@@ -28,7 +28,7 @@ Lär dig hur du använder [Apache Spark](https://spark.apache.org/) för att str
 
 Apache Kafka i HDInsight ger inte åtkomst till Kafka-utjämnare via det offentliga Internet. Allt som pratar med Kafka måste finnas i samma virtuella Azure-nätverk som noderna i Kafka-klustret. I det här exemplet finns både Kafka-och Spark-klustren i ett virtuellt Azure-nätverk. Följande diagram visar hur kommunikations flöden mellan klustren:
 
-![Diagram över Apache Spark- och Kafka-kluster i ett virtuellt Azure-nätverk](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png" alt-text="Diagram över Apache Spark- och Kafka-kluster i ett virtuellt Azure-nätverk" border="false":::
 
 > [!NOTE]  
 > Även om Kafka är begränsad till kommunikation inom det virtuella nätverket kan andra tjänster i klustret, till exempel SSH och Ambari, nås via Internet. Mer information om de offentliga portar som är tillgängliga med HDInsight finns i [Portar och URI:er som används av HDInsight](hdinsight-hadoop-port-settings-for-services.md).
@@ -37,28 +37,28 @@ Apache Kafka i HDInsight ger inte åtkomst till Kafka-utjämnare via det offentl
 
 1. Använd följande knapp för att logga in på Azure och öppna mallen i Azure Portal.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Mallen Azure Resource Manager finns på **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
+   Mallen Azure Resource Manager finns på **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
 
-    > [!WARNING]  
-    > Klustret måste innehålla minst tre arbetsnoder för att garantera tillgängligheten för Kafka i HDInsight. Den här mallen skapar ett Kafka-kluster som innehåller tre arbetarnoder.
+   > [!WARNING]
+   > Klustret måste innehålla minst tre arbetsnoder för att garantera tillgängligheten för Kafka i HDInsight. Den här mallen skapar ett Kafka-kluster som innehåller tre arbetarnoder.
 
-    Den här mallen skapar ett HDInsight 3,6-kluster för både Kafka och Spark.
+   Den här mallen skapar ett HDInsight 3,6-kluster för både Kafka och Spark.
 
 1. Använd följande information för att fylla i posterna i avsnittet **Anpassad distribution** :
 
-    |Egenskap |Värde |
-    |---|---|
-    |Resursgrupp|Skapa en grupp eller Välj en befintlig.|
-    |Location|Välj en plats geografiskt nära dig.|
-    |Bas kluster namn|Det här värdet används som grund namn för Spark-och Kafka-klustren. Om du till exempel anger **hdistreaming** skapas ett Spark-kluster med namnet __Spark-Hdistreaming__ och ett Kafka-kluster med namnet **Kafka-hdistreaming**.|
-    |Användarnamn för klusterinloggning|Administratörs användar namnet för Spark-och Kafka-klustren.|
-    |Lösenord för klusterinloggning|Administratörs användarens lösen ord för Spark-och Kafka-kluster.|
-    |SSH-användarnamn|SSH-användaren som ska skapas för Spark-och Kafka-kluster.|
-    |SSH-lösenord|Lösen ordet för SSH-användaren för Spark-och Kafka-klustren.|
+   |Egenskap |Värde |
+   |---|---|
+   |Resursgrupp|Skapa en grupp eller Välj en befintlig.|
+   |Location|Välj en plats geografiskt nära dig.|
+   |Bas kluster namn|Det här värdet används som grund namn för Spark-och Kafka-klustren. Om du till exempel anger **hdistreaming** skapas ett Spark-kluster med namnet __Spark-Hdistreaming__ och ett Kafka-kluster med namnet **Kafka-hdistreaming**.|
+   |Användarnamn för klusterinloggning|Administratörs användar namnet för Spark-och Kafka-klustren.|
+   |Lösenord för klusterinloggning|Administratörs användarens lösen ord för Spark-och Kafka-kluster.|
+   |SSH-användarnamn|SSH-användaren som ska skapas för Spark-och Kafka-kluster.|
+   |SSH-lösenord|Lösen ordet för SSH-användaren för Spark-och Kafka-klustren.|
 
-    ![Anpassade parametrar för HDInsight-distribution](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+   :::image type="content" source="./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png" alt-text="Anpassade parametrar för HDInsight-distribution":::
 
 1. Granska **villkoren** och välj sedan **Jag godkänner villkoren ovan**.
 
@@ -66,7 +66,7 @@ Apache Kafka i HDInsight ger inte åtkomst till Kafka-utjämnare via det offentl
 
 När resurserna har skapats visas en sammanfattnings sida.
 
-![Resurs grupps Sammanfattning för VNet och kluster](./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png)
+:::image type="content" source="./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png" alt-text="Resurs grupps Sammanfattning för VNet och kluster":::
 
 > [!IMPORTANT]  
 > Observera att namnen på HDInsight-klustren är **Spark-BASENAME** och **Kafka-BASENAME**, där BASENAME är det namn som du angav för mallen. Du kan använda dessa namn i senare steg när du ansluter till klustren.

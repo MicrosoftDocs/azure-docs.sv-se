@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7a04d65d5032e37433fb61c73e5f64fe89bb2d2c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d4a8df4cb6ba47b7772e2ab3b3247d36622dcb6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930502"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865969"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Snabb start: skapa Apache Spark kluster i Azure HDInsight med hjälp av PowerShell
 
@@ -139,19 +139,19 @@ Om du stöter på ett problem med att skapa HDInsight-kluster kan det bero på a
 
 1. Sök efter och välj **HDInsight-kluster** i [Azure Portal](https://portal.azure.com).
    
-   ![Skärm bild som visar Azure Portal Sök för H D insikter.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png" alt-text="Skärm bild som visar Azure Portal Sök för H D insikter." border="true":::
    
 1. I listan väljer du det kluster som du skapade.
    
-   ![Skärm bild som visar H D Insight-kluster med det kluster som du har skapat.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png" alt-text="Skärm bild som visar H D Insight-kluster med det kluster som du har skapat." border="true":::
    
 1. På sidan kluster **Översikt** väljer du **kluster instrument paneler** och väljer sedan **Jupyter Notebook**. Ange autentiseringsuppgifterna för klustret om du uppmanas att göra det.
 
-   ![Öppna Jupyter Notebook för att köra interaktiv Spark SQL-fråga](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Öppna Jupyter Notebook för att köra interaktiv Spark SQL-fråga")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Öppna Jupyter Notebook för att köra interaktiv Spark SQL-fråga" border="true":::
 
 1. Välj **ny**  >  **PySpark** för att skapa en antecknings bok.
 
-   ![Skapa en Jupyter Notebook för att köra interaktiv Spark SQL-fråga](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Skapa en Jupyter Notebook för att köra interaktiv Spark SQL-fråga")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Skapa en Jupyter Notebook för att köra interaktiv Spark SQL-fråga" border="true":::
 
    En ny anteckningsbok skapas och öppnas med namnet Untitled(Untitled.pynb).
 
@@ -161,7 +161,7 @@ SQL (Structured Query Language) är det vanligaste språket för frågor och def
 
 1. Verifiera att kerneln är klar. Kerneln är klar när du ser en tom cirkel bredvid kernelnamnet i den bärbara datorn. En fylld cirkel anger att kerneln är upptagen.
 
-    ![kernel-status](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "kernel-status")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="kernel-status" border="true":::
 
     När du startar den bärbara datorn för första gången utför kerneln några uppgifter i bakgrunden. Vänta tills kerneln är klar. 
 1. Klistra in följande kod i en tom cell och tryck sedan på **SKIFT+RETUR** för att köra koden. Kommandot listar Hive-tabellerna i klustret:
@@ -173,7 +173,7 @@ SQL (Structured Query Language) är det vanligaste språket för frågor och def
 
     När du använder en Jupyter Notebook med ditt Spark-kluster i HDInsight får du en `sqlContext` för inställning som du kan använda för att köra Hive-frågor med Spark SQL. `%%sql` anger att Jupyter Notebook ska använda den förinställda `sqlContext` när Hive-frågan ska köras. Frågan hämtar de översta 10 raderna från en Hive-tabell (**hivesampletable**) som medföljer alla HDInsight-kluster som standard. Det tar ungefär 30 sekunder att få resultatet. Utdata ser ut så här:
 
-    ![Apache Hive fråga i Spark på HDInsight](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "Hive-fråga i HDInsight Spark")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png " alt-text="Apache Hive fråga i Spark på HDInsight" border="true":::
 
     Varje gång du kör en fråga i Jupyter visar fönsterrubriken i webbläsaren statusen **(Upptagen)** tillsammans med anteckningsbokens titel. Du ser även en fylld cirkel bredvid **PySpark**-texten i det övre högra hörnet.
 
@@ -186,7 +186,7 @@ SQL (Structured Query Language) är det vanligaste språket för frågor och def
 
     Skärmen bör uppdateras så att frågeresultatet visas.
 
-    ![Utdata från Hive-fråga i HDInsight](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "Utdata från Hive-fråga i HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png " alt-text="Utdata från Hive-fråga i HDInsight" border="true":::
 
 1. Välj **Stäng och stoppa** på anteckningsbokens **Arkiv**-meny. När du stänger anteckningsboken frigörs klusterresurserna.
 
@@ -196,7 +196,7 @@ HDInsight sparar dina data i Azure Storage eller Azure Data Lake Storage så att
 
 Växla tillbaka till Azure Portal och välj **Ta bort**.
 
-![Azure Portal ta bort ett HDInsight-kluster](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png "Ta bort HDInsight-kluster")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure Portal ta bort ett HDInsight-kluster" border="true":::
 
 Du kan också välja resursgruppnamnet för att öppna resursgruppsidan. Välj sedan **Ta bort resursgrupp**. Genom att ta bort resurs gruppen tar du bort både HDInsight-klustret och standard lagrings kontot.
 

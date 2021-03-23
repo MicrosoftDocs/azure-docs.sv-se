@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 943223ee99838b2b6d6de7eecb3c3b8c06d3562c
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 520aedd9dbb618788107bc83c5d72ad237acea22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773597"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870746"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Support mat ris för VMware-utvärdering 
 
-Den här artikeln sammanfattar krav och support när du identifierar och utvärderar servrar som körs i VMware-miljön för migrering till Azure med hjälp av verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool) . Du kan utvärdera servrar genom att skapa ett projekt som lägger till verktyget Azure Migrate: identifiering och bedömning i projektet. När du har lagt till verktyget distribuerar du Azure Migrate-enheten. Enheten identifierar kontinuerligt lokala servrar och skickar konfigurations-och prestanda-metadata till Azure. När identifieringen är klar samlar du in identifierade servrar i grupper och kör en utvärdering för en grupp.
+Den här artikeln sammanfattar krav och support när du identifierar och utvärderar servrar som körs i VMware-miljön för migrering till Azure med hjälp av verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) . Du kan utvärdera servrar genom att skapa ett projekt som lägger till verktyget Azure Migrate: identifiering och bedömning i projektet. När du har lagt till verktyget distribuerar du Azure Migrate-enheten. Enheten identifierar kontinuerligt lokala servrar och skickar konfigurations-och prestanda-metadata till Azure. När identifieringen är klar samlar du in identifierade servrar i grupper och kör en utvärdering för en grupp.
 
 Om du vill migrera VMware-servrar till Azure läser du [matrisen migration support](migrate-support-matrix-vmware-migration.md).
 
@@ -25,7 +25,7 @@ Om du vill migrera VMware-servrar till Azure läser du [matrisen migration suppo
 
 **Krav** | **Information**
 --- | ---
-**Projekt gränser** | Du kan skapa flera projekt i en Azure-prenumeration.<br/><br/> Du kan identifiera och utvärdera upp till 50 000 servrar från VMware-miljön i ett enda [projekt](migrate-support-matrix.md#azure-migrate-projects). Ett projekt kan också innehålla fysiska servrar och servrar från Hyper-V-miljön upp till utvärderings gränserna.
+**Projekt gränser** | Du kan skapa flera projekt i en Azure-prenumeration.<br/><br/> Du kan identifiera och utvärdera upp till 50 000 servrar från VMware-miljön i ett enda [projekt](migrate-support-matrix.md#project). Ett projekt kan också innehålla fysiska servrar och servrar från Hyper-V-miljön upp till utvärderings gränserna.
 **Identifiering** | Azure Migrates apparaten kan identifiera upp till 10 000 servrar på en vCenter Server.
 **Utvärdering** | Du kan lägga till upp till 35 000-servrar i en enda grupp.<br/><br/> Du kan utvärdera upp till 35 000-servrar i en enda utvärdering.
 
@@ -78,9 +78,6 @@ Förutom att identifiera servrar, Azure Migrate: identifiering och utvärdering 
 **Port åtkomst** | Azure Migrate-installationen måste kunna ansluta till TCP-port 443 på ESXi-värdar som kör servrar där du vill utföra program identifiering. VCenter Server returnerar en ESXi-värd anslutning för att ladda ned filen som innehåller information om program varu inventeringen.
 
 ## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>Krav för identifiering av SQL Server instanser och databaser
-
-> [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 [Program identifieringen](how-to-discover-applications.md) identifierar SQL Server instanser. Med hjälp av den här informationen försöker installations programmet ansluta till respektive SQL Server instanser via Windows-autentisering eller SQL Server autentiseringsuppgifter som anges på enheten. När enheten är ansluten samlar den in konfigurations-och prestanda data för SQL Server instanser och databaser. SQL Server konfigurations data uppdateras en gång var 24: e timme och prestanda data samlas in var 30: e sekund.
 

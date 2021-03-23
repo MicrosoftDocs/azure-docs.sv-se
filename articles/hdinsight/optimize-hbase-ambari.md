@@ -4,12 +4,12 @@ description: Använd webb gränssnittet Apache Ambari för att konfigurera och o
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/01/2021
-ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e54b1347e4c67b99ba87b15c2c15d9d28244ce7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99428208"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864779"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Optimera Apache HBase med Apache Ambari i Azure HDInsight
 
@@ -28,7 +28,7 @@ HBase-heap-storleken anger den maximala mängd heap som ska användas i megabyte
 
 1. Ändra standardvärdet till 5 000 MB.
 
-    !["Apache Ambari HBase Memory heapsize"](./media/optimize-hbase-ambari/ambari-hbase-heapsize.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/ambari-hbase-heapsize.png" alt-text="&quot;Apache Ambari HBase Memory heapsize&quot;" border="true":::
 
 ## <a name="optimize-read-heavy-workloads"></a>Optimera Läs frekventa arbets belastningar
 
@@ -40,7 +40,7 @@ Block-cachen är Read cache. Dess storlek styrs av `hfile.block.cache.size` para
 
 1. Om du vill ändra den här parametern går du till fliken **Inställningar** på fliken HBase **configs** och letar sedan upp **% av RegionServer som har allokerats för att läsa buffertar**.
 
-    ![Cachestorlek för Apache HBase-minnes block](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/hbase-block-cache-size.png" alt-text="Cachestorlek för Apache HBase-minnes block" border="true":::
 
 1. Om du vill ändra värdet väljer du **redigerings** ikonen.
 
@@ -58,7 +58,7 @@ Om du vill optimera för slumpmässiga läsningar kan du minska Memstores övre 
 
 `hbase.client.scanner.caching`Inställningen definierar antalet rader som läses från disken när `next` metoden anropas på en skanner.  Standardvärdet är 100. Ju högre siffra, desto färre fjärran rop som görs från klienten till region servern, vilket resulterade i snabbare genomsökningar. Den här inställningen kommer dock även att öka minnes belastningen på klienten.
 
-![Apache HBase antal hämtade rader](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-num-rows-fetched.png" alt-text="Apache HBase antal hämtade rader" border="true":::
 
 > [!IMPORTANT]  
 > Ange inte värdet så att tiden mellan anrop av nästa metod på en skanner är större än tids gränsen för skannern. Tids gränsen för skannerns varaktighet definieras av `hbase.regionserver.lease.period` egenskapen.
@@ -71,7 +71,7 @@ Följande konfigurationer är viktiga för att förbättra prestandan för Skriv
 
 HBase lagrar data i ett internt fil format som kallas *HFile*. Egenskapen `hbase.hregion.max.filesize` definierar storleken på en enskild HFile för en region.  En region delas upp i två regioner om summan av alla HFiles i en region är större än den här inställningen.
 
-![' Apache HBase HRegion Max FILESIZE '](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png" alt-text="' Apache HBase HRegion Max FILESIZE '" border="true":::
 
 Ju större region fil storlek, desto mindre är antalet delningar. Du kan öka fil storleken för att fastställa ett värde som resulterar i maximal skriv prestanda.
 
@@ -85,7 +85,7 @@ Ju större region fil storlek, desto mindre är antalet delningar. Du kan öka f
 
     Med standardvärdet för tömnings storlek och block multiplikatorer blockeras uppdateringar när Memstores är 128 * 4 = 512 MB i storlek. Öka värdet för om du vill minska antalet blockerade uppdateringar `hbase.hregion.memstore.block.multiplier` .
 
-![Apache HBase region block multiplikator](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png" alt-text="Apache HBase region block multiplikator" border="true":::
 
 ## <a name="define-memstore-size"></a>Definiera Memstores-storlek
 
@@ -95,7 +95,7 @@ Memstores-storlek definieras av `hbase.regionserver.global.memstore.upperLimit` 
 
 Memstores för lokal allokering bestäms av egenskapen `hbase.hregion.memstore.mslab.enabled` . När aktive rad (true) förhindrar den här inställningen en heap-fragmentering under tung Skriv åtgärd. Standardvärdet är True.
 
-![HBase. hregion. memstores. mslab. Enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png" alt-text="HBase. hregion. memstores. mslab. Enabled" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 903cb3323b9441ec8bb382054f065760875e3e89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ba5a05515284612e17d5aba4cc673c7e78f7ba1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632830"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869930"
 ---
 # <a name="troubleshoot-azure-application-consistent-snapshot-tool-preview"></a>Felsöka Azure Application enhetligt ögonblicks bild verktyget (förhands granskning)
 
@@ -54,6 +54,13 @@ Exempel på utdata från `/var/log/messages` fil.
 ```output
 Dec 17 09:01:13 azacsnap-rhel azacsnap: Database # 1 (PR1) : completed ok
 ```
+
+## <a name="failed-communication-with-azure-netapp-files"></a>Det gick inte att kommunicera med Azure NetApp Files
+
+När du verifierar kommunikation med Azure NetApp Files kan kommunikationen Miss förfalla eller timeouta.  Kontrol lera att brand Väggs reglerna inte blockerar utgående trafik från systemet som kör AzAcSnap till följande adresser och TCP/IP-portar:-
+
+- (https://) hantering. Azure. com: 443
+- (https://) Login. microsoftonline. com: 443 
 
 ## <a name="failed-communication-with-sap-hana"></a>Det gick inte att kommunicera med SAP HANA
 

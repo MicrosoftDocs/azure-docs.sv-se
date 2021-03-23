@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946620"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866683"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Kom igång med en Apache Hadoop sandbox, en emulator på en virtuell dator
 
@@ -39,7 +39,7 @@ Om du vill ladda ned en äldre version sandbox av HDP, se länkarna under **äld
 1. I menyn **Arkiv** klickar du på **Importera** installation och anger sedan Hortonworks sandbox-avbildningen.
 1. Välj sandbox-Hortonworks, klicka på **Start** och sedan på **Normal start**. När den virtuella datorn har avslutat start processen visas inloggnings anvisningar.
 
-    ![VirtualBox Manager normal start](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    :::image type="content" source="./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png" alt-text="VirtualBox Manager normal start" border="true":::
 
 1. Öppna en webbläsare och gå till den URL som visas (vanligt vis `http://127.0.0.1:8888` ).
 

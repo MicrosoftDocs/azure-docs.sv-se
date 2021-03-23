@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: e21361b6d491f53f41754831d2bdf896ef2719db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33171527f03b0cc386f683f55f6cf9a70913abdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101091440"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871222"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hantera Apache Hadoop kluster i HDInsight med hjälp av Azure Portal
 
@@ -36,7 +36,7 @@ Sidan **HDInsight-kluster** visar dina befintliga kluster.  Från portalen:
 
 Välj ditt kluster namn på sidan [**HDInsight-kluster**](#showClusters) .  Vyn **Översikt** öppnas, som ser ut ungefär som på följande bild:
 
-![Azure Portal HDInsight-kluster Essentials](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
+:::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png" alt-text="Azure Portal HDInsight-kluster Essentials":::
 
 **Översta menyn:**  
 
@@ -173,7 +173,7 @@ Från [klustrets start sida](#homePage):
 
 1. Välj **kluster instrument paneler**.
 
-    ![HDInsight Apache Hadoop kluster meny](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    :::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png" alt-text="HDInsight Apache Hadoop kluster meny":::
 
 1. Välj **Ambari start** från den nya sidan.
 1. Ange användar namn och lösen ord för klustret.  Standard namnet för kluster är _admin_.

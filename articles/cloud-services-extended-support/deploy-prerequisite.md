@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d85aad16049dee6496cb1eaf9def5451625ab876
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 21433e1a0441ef458dd5f8ea4b968211ef82cd46
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773478"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865612"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
@@ -133,7 +133,7 @@ Distributioner som använder gamla plugin-program för diagnostik behöver inst�
 
 ## <a name="key-vault-creation"></a>Skapa Key Vault 
 
-Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault "åtkomst principer" (i portalen) för åtkomst till Azure Virtual Machines för distribution och Azure Resource Manager för mall distribution, så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Du kan skapa ett nyckel valv i [Azure Portal](../key-vault/general/quick-create-portal.md) eller genom att använda [PowerShell](../key-vault/general/quick-create-powershell.md). Nyckel valvet måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault "åtkomst principer" (i portalen) för "Azure Virtual Machines for Deployment" så att Cloud Services (utökad support)-resursen kan hämta certifikat som lagras som hemligheter från Key Vault. Du kan skapa ett nyckel valv i [Azure Portal](../key-vault/general/quick-create-portal.md) eller genom att använda [PowerShell](../key-vault/general/quick-create-powershell.md). Nyckel valvet måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Nästa steg 
 - Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).

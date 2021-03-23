@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f69917b574c0be8fdacf05934b05544a4f491a9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945898"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864201"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-arkitektur i HDInsight
 
@@ -42,7 +42,7 @@ När en användare skickar ett MapReduce-program för att köras i klustret skic
 
 Alla typer av HDInsight-kluster distribuerar garn. ResourceManager distribueras för hög tillgänglighet med en primär och sekundär instans, som körs på de första och andra Head-noderna i klustret. Endast den enda instansen av ResourceManager är aktiv i taget. NodeManager-instanserna körs över tillgängliga arbetsnoder i klustret.
 
-![Apache-garn på Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+:::image type="content" source="./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png" alt-text="Apache-garn på Azure HDInsight" border="false":::
 
 ## <a name="soft-delete"></a>Mjuk borttagning
 

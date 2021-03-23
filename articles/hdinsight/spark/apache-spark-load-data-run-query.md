@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de17bf02392f0bb05820fabba3f9057e067391cf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930086"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865918"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Självstudie: Läsa in data och köra frågor i ett Apache Spark-kluster i Azure HDInsight
 
@@ -33,7 +33,7 @@ Jupyter Notebook är en interaktiv anteckningsboksmiljö som stöder flera olika
 
 2. På webb sidan Jupyter väljer du **ny**  >  **PySpark** för att skapa en antecknings bok.
 
-   ![Skapa en Jupyter Notebook för att köra interaktiv Spark SQL-fråga](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Skapa en Jupyter Notebook för att köra interaktiv Spark SQL-fråga")
+   :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Skapa en Jupyter Notebook för att köra interaktiv Spark SQL-fråga" border="true":::
 
    En ny antecknings bok skapas och öppnas med namnet namnlös ( `Untitled.ipynb` ).
 
@@ -44,7 +44,7 @@ Jupyter Notebook är en interaktiv anteckningsboksmiljö som stöder flera olika
 
 Program kan skapa dataframes direkt från filer eller mappar på fjärrlagringen, till exempel Azure Storage eller Azure Data Lake Storage. från en Hive-tabell; eller från andra data källor som stöds av Spark, till exempel Cosmos DB, Azure SQL DB, DW och så vidare. Följande skärmbild visar en ögonblicksbild av den HVAC.csv-fil som används i självstudien. Csv-filen finns i alla HDInsight Spark-kluster. Datan visar temperaturvariationer i vissa byggnader.
 
-![Ögonblicks bild av data för interaktiv Spark SQL-fråga](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Ögonblicks bild av data för interaktiv Spark SQL-fråga")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png " alt-text="Ögonblicks bild av data för interaktiv Spark SQL-fråga" border="true":::
 
 1. Klistra in följande kod i en tom cell i Jupyter Notebook och tryck sedan på **SKIFT + RETUR** för att köra koden. Koden importerar de typer som krävs för det här scenariot:
 
@@ -55,7 +55,7 @@ Program kan skapa dataframes direkt från filer eller mappar på fjärrlagringen
 
     När du kör en interaktiv fråga i Jupyter visar fönstret i webbläsaren eller fliktiteln statusen **(Upptagen)** tillsammans med anteckningsbokens titel. Du ser även en fylld cirkel bredvid **PySpark**-texten i det övre högra hörnet. När jobbet har slutförts ändras detta till en tom cirkel.
 
-    ![Status för interaktiv Spark SQL-fråga](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Status för interaktiv Spark SQL-fråga")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png " alt-text="Status för interaktiv Spark SQL-fråga" border="true":::
 
 1. Observera att sessions-ID: t returnerades. Från bilden ovan är sessions-ID: t 0. Om du vill kan du hämta sessionsinformation genom att gå till `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` där kluster namn är namnet på ditt Spark-kluster och ID-numret för din sessions-ID.
 
@@ -80,11 +80,11 @@ När tabellen har skapats kan du köra en interaktiv fråga på datan.
 
    Följande tabellutdata visas.
 
-     ![Tabell resultatet av interaktivt Spark-frågeresultat](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabell resultatet av interaktivt Spark-frågeresultat")
+     :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png " alt-text="Tabell resultatet av interaktivt Spark-frågeresultat" border="true":::
 
 2. Du kan också visa resultaten i andra visualiseringar. Om du vill se ett ytdiagram för samma utdata väljer du **Yta** och anger sedan de andra värden som visas.
 
-    ![Ytdiagram i interaktivt Spark-frågeresultat](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Ytdiagram i interaktivt Spark-frågeresultat")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png " alt-text="Ytdiagram i interaktivt Spark-frågeresultat" border="true":::
 
 3. Från meny raden i anteckningsbokslayout navigerar du till **filen**  >  **Save och Checkpoint**.
 
@@ -96,7 +96,7 @@ Med HDInsight lagras dina data och Jupyter antecknings böcker i Azure Storage e
 
 Öppna klustret i Azure Portal och välj **Ta bort**.
 
-![Ta bort HDInsight-kluster](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Ta bort HDInsight-kluster")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png " alt-text="Ta bort HDInsight-kluster" border="true":::
 
 Du kan också välja resursgruppnamnet för att öppna resursgruppsidan. Välj sedan **Ta bort resursgrupp**. När resursgruppen tas bort, tas även HDInsight Spark-klustret och standardkontot för lagring bort.
 

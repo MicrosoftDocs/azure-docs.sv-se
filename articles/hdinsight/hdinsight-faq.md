@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 47f0ea34fa650371d39252ce6b0ee6a15f3124d6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699308"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871188"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Vanliga frågor och svar
 
@@ -78,11 +78,11 @@ Nej, det går inte att köra Apache Kafka och Apache Spark i samma HDInsight-klu
 1. Öppna Ambari-webbgränssnittet på `https://CLUSTERNAME.azurehdinsight.net` , där kluster namn är namnet på klustret.
 2. I det övre högra hörnet väljer du admin | Autentiseringsinställningar. 
 
-   ![Ambari-inställningar](media/hdinsight-faq/ambari-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-settings.png" alt-text="Ambari-inställningar":::
 
 3. I fönstret användar inställningar väljer du den nya tids zonen från List rutan tidszon och klickar sedan på Spara.
 
-   ![Ambari användar inställningar](media/hdinsight-faq/ambari-user-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-user-settings.png" alt-text="Ambari användar inställningar":::
 
 ## <a name="metastore"></a>Metaarkiv
 

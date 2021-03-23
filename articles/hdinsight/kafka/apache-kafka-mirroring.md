@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940839"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870508"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Använd MirrorMaker för att replikera Apache Kafka-ämnen med Kafka i HDInsight
 
@@ -34,7 +34,7 @@ Den mest användbara speglings inställningen för haveri beredskap använder Ka
 
 Följande diagram illustrerar speglings processen och hur kommunikationen flödar mellan kluster:
 
-![Diagram över speglings processen](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+:::image type="content" source="./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png" alt-text="Diagram över speglings processen" border="false":::
 
 De primära och sekundära klustren kan vara olika i antalet noder och partitioner, och förskjutningarna i ämnena skiljer sig också. Spegling upprätthåller det nyckel värde som används för partitionering, så post ordningen bevaras per nyckel.
 
@@ -84,14 +84,14 @@ Den här arkitekturen innehåller två kluster i olika resurs grupper och virtue
     1. Välj **Lägg till**.
     1. På sidan **Lägg till peering (Lägg till peering** ) anger du informationen som visas på skärm bilden nedan.
 
-        ![HDInsight-Kafka Lägg till VNet-peering](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/hdi-add-vnet-peering.png" alt-text="HDInsight-Kafka Lägg till VNet-peering" border="true":::
 
 ### <a name="configure-ip-advertising"></a>Konfigurera IP-annonsering
 
 Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adresser för Broker i stället för domän namn.
 
 1. Gå till Ambari-instrumentpanelen för det primära klustret: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
-1. Välj **tjänster**  >  **Kafka**. CliSelectck fliken **configs** .
+1. Välj **tjänster**  >  **Kafka**. Välj fliken **konfigurationer** .
 1. Lägg till följande konfigurations rader i det nedre **Kafka-avsnittet mall** . Välj **Spara**.
 
     ```
@@ -107,7 +107,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
 1. Välj **OK** i **ändringarna Spara konfigurationen**.
 1. Välj **Starta** om  >  **omstart allt påverkat** i meddelandet **omstart krävs** . Välj **Bekräfta omstart av alla**.
 
-    ![Apache Ambari-omstart alla påverkade](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/ambari-restart-notification.png" alt-text="Apache Ambari-omstart alla påverkade" border="true":::
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Konfigurera Kafka för att lyssna på alla nätverks gränssnitt.
     
@@ -120,7 +120,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
 1. Välj **värdar** på Ambari-instrumentpanelen.
 1. Anteckna IP-adresserna för utjämnare och Zookeepers. Service Broker-noderna har dubbelt **så många** de två första bokstäverna i värd namnet och Zookeeper-noderna har **ZK** som de första två bokstäverna i värd namnet.
 
-    ![Apache Ambari View Node IP-adresser](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/view-node-ip-addresses2.png" alt-text="Apache Ambari View Node IP-adresser" border="true":::
 
 1. Upprepa föregående tre steg för det andra klustret **Kafka – sekundärt kluster**: Konfigurera IP-annonsering, ange lyssnare och anteckna IP-adresserna för Broker och Zookeeper.
 
@@ -256,7 +256,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
         1. Ändra värdet `auto.create.topics.enable` till sant och välj sedan __Spara__. Lägg till en anteckning och välj sedan __Spara__ igen.
         1. Välj __Kafka__ -tjänsten, Välj __starta om__ och välj sedan __starta om alla berörda__. När du uppmanas väljer du __Bekräfta omstart av alla__.
 
-        ![Kafka aktivera automatisk skapande av ämnen](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png" alt-text="Kafka aktivera automatisk skapande av ämnen" border="true":::
 
 ## <a name="start-mirrormaker"></a>Starta MirrorMaker
 

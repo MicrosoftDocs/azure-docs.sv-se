@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 969dda4b57deb35d745cf7c7d263b78e6fe577d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928478"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867550"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Använda Apache Zeppelin-anteckningsböcker med Apache Spark-kluster i Azure HDInsight
 
@@ -32,13 +32,13 @@ HDInsight Spark-kluster innehåller [Apache Zeppelin](https://zeppelin.apache.or
 
 2. Skapa en ny anteckningsbok. I fönstret sidhuvud navigerar du till **anteckningsbok**  >  **Skapa ny anteckning**.
 
-    ![Skapa en ny Zeppelin-anteckningsbok](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Skapa en ny Zeppelin-anteckningsbok")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png " alt-text="Skapa en ny Zeppelin-anteckningsbok" border="true":::
 
     Ange ett namn för antecknings boken och välj sedan **Skapa anteckning**.
 
 3. Se till att antecknings bokens huvud visar en ansluten status. Den betecknas av en grön prick i det övre högra hörnet.
 
-    ![Status för Zeppelin Notebook](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Status för Zeppelin Notebook")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png " alt-text="Status för Zeppelin Notebook" border="true":::
 
 4. Läs in exempeldata i en tillfällig tabell. När du skapar ett Spark-kluster i HDInsight kopieras exempel data filen `hvac.csv` till det associerade lagrings kontot under `\HdiSamples\SensorSampleData\hvac` .
 
@@ -70,7 +70,7 @@ HDInsight Spark-kluster innehåller [Apache Zeppelin](https://zeppelin.apache.or
 
     Tryck på **SKIFT + RETUR** eller Välj **uppspelnings** knappen för stycket för att köra kodfragmentet. Status i det högra hörnet av stycket bör förloppet från klart, väntar, som körs till SLUTFÖRt. Utdata visas längst ned i samma stycke. Skärm bilden ser ut ungefär så här:
 
-    ![Skapa en tillfällig tabell från rå data](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Skapa en tillfällig tabell från rå data")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png " alt-text="Skapa en tillfällig tabell från rå data" border="true":::
 
     Du kan också ange en rubrik för varje stycke. I det högra hörnet av stycket väljer du **inställnings** ikonen (Sprocket) och väljer sedan **Visa rubrik**.  
 
@@ -88,7 +88,7 @@ HDInsight Spark-kluster innehåller [Apache Zeppelin](https://zeppelin.apache.or
 
 6. Välj **stapeldiagrammet** för att ändra visningen.  **inställningarna** visas när du har valt **stapeldiagram**, som du kan använda för att välja **nycklar** och **värden**.  På följande skärm bild visas utdata.
 
-    ![Köra ett Spark SQL-uttryck med hjälp av notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Köra ett Spark SQL-uttryck med hjälp av notebook1")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png " alt-text="Köra ett Spark SQL-uttryck med hjälp av notebook1" border="true":::
 
 7. Du kan också köra Spark SQL-uttryck med variabler i frågan. Nästa fragment visar hur du definierar en variabel, `Temp` , i frågan med de möjliga värden som du vill fråga efter. Första gången du kör frågan fylls en listruta automatiskt med de värden som du har angett för variabeln.
 
@@ -106,7 +106,7 @@ HDInsight Spark-kluster innehåller [Apache Zeppelin](https://zeppelin.apache.or
 
      På följande skärm bild visas utdata.
 
-     ![Köra ett Spark SQL-uttryck med hjälp av notebook2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Köra ett Spark SQL-uttryck med hjälp av notebook2")
+     :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png " alt-text="Köra ett Spark SQL-uttryck med hjälp av notebook2" border="true":::
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Hur gör jag för att använda externa paket med antecknings boken?
 
@@ -116,15 +116,15 @@ I den här artikeln får du se hur du använder [Spark-CSV-](https://search.mave
 
 1. Öppna tolknings inställningar. Välj det inloggade användar namnet i det övre högra hörnet och välj sedan **tolkar**.
 
-    ![Starta tolken](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-utdata")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="Starta tolken" border="true":::
 
 2. Bläddra till **livy2** och välj sedan **Redigera**.
 
-    ![Ändra tolknings settings1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Ändra tolknings settings1")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png " alt-text="Ändra tolknings settings1" border="true":::
 
 3. Navigera till nyckel `livy.spark.jars.packages` och ange dess värde i formatet `group:id:version` . Så om du vill använda [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketet måste du ange värdet för nyckeln till `com.databricks:spark-csv_2.10:1.4.0` .
 
-    ![Ändra tolknings settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Ändra tolknings settings2")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png " alt-text="Ändra tolknings settings2" border="true":::
 
     Välj **Spara** och sedan **OK** för att starta om livy-tolken.
 
@@ -134,7 +134,7 @@ I den här artikeln får du se hur du använder [Spark-CSV-](https://search.mave
 
     b. Samla in **värdena för** **ArtifactId** och **version** från databasen.
 
-    ![Använda externa paket med Jupyter Notebook](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Använda externa paket med Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png " alt-text="Använda externa paket med Jupyter Notebook" border="true":::
 
     c. Sammanfoga de tre värdena, avgränsade med kolon (**:**).
 
@@ -146,7 +146,7 @@ I den här artikeln får du se hur du använder [Spark-CSV-](https://search.mave
 
 Antecknings böckerna för Zeppelin sparas i klustrets huvudnoderna. Så om du tar bort klustret tas antecknings böckerna också bort. Om du vill bevara dina antecknings böcker för senare användning i andra kluster måste du exportera dem när du är färdig med jobb körningen. Om du vill exportera en antecknings bok väljer du **export** ikonen som visas på bilden nedan.
 
-![Hämta antecknings bok](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Ladda ned antecknings boken")
+:::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png " alt-text="Hämta antecknings bok" border="true":::
 
 Den här åtgärden sparar antecknings boken som en JSON-fil på nedladdnings platsen.
 
@@ -178,11 +178,11 @@ I sådana fall måste du utföra följande steg innan du kan börja köra jobb f
 
 1. Starta om livy-tolken från Zeppelin Notebook. Det gör du genom att öppna tolknings inställningar genom att välja det inloggade användar namnet i det övre högra hörnet och sedan välja **tolkaren**.
 
-    ![Starta tolken](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-utdata")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="Starta tolken" border="true":::
 
 2. Bläddra till **livy2** och välj **starta om**.
 
-    ![Starta om livy-tolken](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Starta om Zeppelin-tolken")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png " alt-text="Starta om livy-tolken" border="true":::
 
 3. Kör en Code-cell från en befintlig Zeppelin Notebook. Den här koden skapar en ny livy-session i HDInsight-klustret.
 

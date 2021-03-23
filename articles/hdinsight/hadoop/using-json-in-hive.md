@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d3c5077450dd4ec59f5ea7bc8f37879f9aa775bf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943068"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868944"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Bearbeta och analysera JSON-dokument med hjälp av Apache Hive i Azure HDInsight
 
@@ -93,7 +93,7 @@ Instruktionen **insert** fyller i **StudentOneLine** -tabellen med de sammanslag
 
 Här är resultatet av **Select** -instruktionen:
 
-![HDInsight förenkla JSON-dokumentet](./media/using-json-in-hive/hdinsight-flatten-json.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-flatten-json.png" alt-text="HDInsight förenkla JSON-dokumentet" border="true":::
 
 ## <a name="analyze-json-documents-in-hive"></a>Analysera JSON-dokument i Hive
 
@@ -119,7 +119,7 @@ FROM StudentsOneLine;
 
 Här är utdata när du kör den här frågan i konsol fönstret:
 
-![Apache Hive får UDF-objekt UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-get-json-object.png" alt-text="Apache Hive får UDF-objekt UDF" border="true":::
 
 Det finns begränsningar för get_json_object UDF:
 
@@ -141,7 +141,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Utdata från det här skriptet i Hive-konsolen:
 
-![Apache Hive JSON-frågeresultat](./media/using-json-in-hive/hdinsight-json-tuple.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-json-tuple.png" alt-text="Apache Hive JSON-frågeresultat" border="true":::
 
 `json_tuple`UDF använder syntaxen för [sido visning](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) i Hive, som gör att JSON- \_ tupel kan skapa en virtuell tabell genom att använda UDT-funktionen på varje rad i den ursprungliga tabellen. Komplexa JSON blir för svårhanterligt på grund av den upprepade användningen av **sido visning**. Dessutom går det inte att hantera kapslade JSON- **JSON_TUPLE** .
 

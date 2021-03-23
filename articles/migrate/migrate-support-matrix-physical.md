@@ -1,21 +1,21 @@
 ---
-title: Stöd för fysisk server utvärdering i Azure Migrate
-description: Läs mer om stöd för fysisk server-utvärdering med Azure Migrate identifiering och utvärdering
+title: Stöd för fysisk identifiering och utvärdering i Azure Migrate
+description: Läs om stöd för fysisk identifiering och utvärdering med Azure Migrate identifiering och utvärdering
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 18176c5a79eda080c72b387781e6c7c9b0c66673
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773206"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869454"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Stöd mat ris för identifiering och utvärdering av fysiska servrar 
 
-I den här artikeln sammanfattas krav och support när du bedömer fysiska servrar för migrering till Azure med hjälp av verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool) . Om du vill migrera fysiska servrar till Azure läser du [matrisen migration support](migrate-support-matrix-physical-migration.md).
+I den här artikeln sammanfattas krav och support när du bedömer fysiska servrar för migrering till Azure med hjälp av verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) . Om du vill migrera fysiska servrar till Azure läser du [matrisen migration support](migrate-support-matrix-physical-migration.md).
 
 Om du vill utvärdera fysiska servrar skapar du ett projekt och lägger till verktyget Azure Migrate: identifiering och bedömning i projektet. När du har lagt till verktyget distribuerar du [Azure Migrate-enheten](migrate-appliance.md). Enheten identifierar kontinuerligt lokala servrar och skickar metadata för servrar och prestanda data till Azure. När identifieringen är klar samlar du in identifierade servrar i grupper och kör en utvärdering för en grupp.
 
@@ -23,7 +23,7 @@ Om du vill utvärdera fysiska servrar skapar du ett projekt och lägger till ver
 
 **Support** | **Information**
 --- | ---
-**Utvärderings gränser** | Du kan identifiera och utvärdera upp till 35 000 fysiska servrar i ett enda [projekt](migrate-support-matrix.md#azure-migrate-projects).
+**Utvärderings gränser** | Du kan identifiera och utvärdera upp till 35 000 fysiska servrar i ett enda [projekt](migrate-support-matrix.md#project).
 **Projekt gränser** | Du kan skapa flera projekt i en Azure-prenumeration. Förutom fysiska servrar kan ett projekt innehålla servrar i VMware och Hyper-V upp till utvärderings gränserna för var och en.
 **Identifiering** | Azure Migrates apparaten kan identifiera upp till 1000 fysiska servrar.
 **Utvärdering** | Du kan lägga till upp till 35 000-servrar i en enda grupp.<br/><br/> Du kan utvärdera upp till 35 000-servrar i en enda utvärdering.
@@ -84,4 +84,4 @@ Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identif
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Förbered för utvärdering av fysisk server](./tutorial-discover-physical.md).
+[Förbered för fysisk identifiering och utvärdering](./tutorial-discover-physical.md).
