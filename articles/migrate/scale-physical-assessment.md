@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96753696"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780318"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Utvärdera ett stort antal fysiska servrar för migrering till Azure
 
-Den här artikeln beskriver hur du bedömer ett stort antal lokala fysiska servrar för migrering till Azure med hjälp av verktyget för Azure Migrate Server bedömning.
+Den här artikeln beskriver hur du bedömer ett stort antal lokala fysiska servrar för migrering till Azure med hjälp av verktyget Azure Migrate identifiering och bedömning.
 
 [Azure Migrate](migrate-services-overview.md) innehåller en hubb med verktyg som hjälper dig att identifiera, utvärdera och migrera appar, infrastruktur och arbets belastningar till Microsoft Azure. Hubben omfattar Azure Migrate-verktyg och oberoende program varu leverantörer från tredje part (ISV). 
 
@@ -36,7 +36,7 @@ I den här artikeln kan du se hur du:
 När du planerar för utvärdering av ett stort antal fysiska servrar finns det några saker att tänka på:
 
 - **Planera Azure Migrate projekt**: ta reda på hur du distribuerar Azure Migrate-projekt. Om dina data Center till exempel finns i olika geografiska områden, eller om du behöver lagra identifierings-, utvärderings-eller migrerings-relaterade metadata i en annan geografi, kan du behöva flera projekt.
-- **Plan utrustning**: Azure Migrate använder en lokal Azure Migrate-enhet som distribueras på en Windows-dator för att kontinuerligt identifiera servrar för utvärdering och migrering. Enheten övervakar miljö ändringar, till exempel att lägga till virtuella datorer, diskar eller nätverkskort. Den skickar även metadata-och prestanda information om dem till Azure. Du måste ta reda på hur många enheter som ska distribueras.
+- **Plan utrustning**: Azure Migrate använder en lokal Azure Migrate-enhet som distribueras på en Windows-Server för att kontinuerligt identifiera servrar för utvärdering och migrering. Enheten övervakar miljö ändringar, till exempel att lägga till servrar, diskar eller nätverkskort. Den skickar även metadata-och prestanda information om dem till Azure. Du måste ta reda på hur många enheter som ska distribueras.
 
 
 ## <a name="planning-limits"></a>Planerings gränser
@@ -57,7 +57,7 @@ Använd de gränser som sammanfattas i den här tabellen för planering.
 
 ## <a name="prepare-for-assessment"></a>Förbered för utvärdering
 
-Förbered Azure och fysiska servrar för Server utvärdering. 
+Förbereda Azure och fysiska servrar för identifierings-och utvärderings verktyg:  
 
 1. Kontrol lera [krav och begränsningar för den fysiska serverns support](migrate-support-matrix-physical.md).
 2. Konfigurera behörigheter för ditt Azure-konto för att interagera med Azure Migrate.
@@ -70,7 +70,7 @@ Följ anvisningarna i [den här självstudien](./tutorial-discover-physical.md) 
 I enlighet med dina planerings krav gör du följande:
 
 1. Skapa ett Azure Migrate-projekt.
-2. Lägg till verktyget Azure Migrate Server Assessment i projekten.
+2. Lägg till verktyget för identifiering och utvärdering av Azure Migrate i projekten.
 
 [Läs mer](./create-manage-projects.md)
 

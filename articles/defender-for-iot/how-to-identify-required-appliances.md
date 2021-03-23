@@ -1,18 +1,14 @@
 ---
 title: Identifiera apparater som krävs
 description: Läs mer om maskin vara och virtuella enheter för Certified Defender för IoT-sensorer och den lokala hanterings konsolen.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149313"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782766"
 ---
 # <a name="identify-required-appliances"></a>Identifiera apparater som krävs
 
@@ -272,27 +268,6 @@ I det här avsnittet beskrivs ytterligare enheter som certifierats av Microsoft 
 När du har köpt installationen går du till **Defender för IoT**  >  **Network-sensorer ISO**-  >  **installation** för att ladda ned program varan.
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="Nätverks sensorer ISO.":::
-
-## <a name="enterprise-deployment-dell-poweredge-r340-xl"></a>Företags distribution: Dell PowerEdge R340 XL
-
-| Komponent | Tekniska specifikationer |
-|--|--|
-| Chassi | 1U rack Server
-| Dimensioner | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(i) |
-| Vikt | Max 29,98 lb/13,6 kg |
-| Processor | Intel Xeon E-2144G 3,6 GHz, 8 M cache, lands-8T, Turbo (71 W) |
-| 855 | Intel-C246 |
-| Minne | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
-| Storage | 3 x 2 – TB 7,2 KB RPM SATA 6-Gbit/s 512n 3,5 – Hot-Plug hård disk-RAID 5 |
-| Nätverks styrenhet | Fordonsbaserad: 2 x 1 GB Broadcom BCM5720<br>LOM på kort: iDRAC port Card 1 – GB Broadcom BCM5720 <br><br>Externt: 1 x Intel Ethernet i350 QP 1 – GB serveradapter, låg profil |
-| Hantering | iDRAC 9 Enterprise |
-| Enhets åtkomst | Två baktill USB 3,0 <br> En första USB 3,0 |
-| Ström | Dual hot plug-nätaggregat 350 W |
-| Rack support | ReadyRails II Glide-räler för verktygs lös montering i 4-post-rack med kvadratiska eller flertrådiga hål eller monterings montering i 4 – efter gängade hål-rack, med stöd för valfritt verktyg som är mindre kabel hanterings arm. |
-
-## <a name="dell-r340-bom"></a>Dell R340-struktur
-
-:::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340-struktur.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

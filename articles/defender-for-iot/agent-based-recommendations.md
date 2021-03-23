@@ -1,25 +1,14 @@
 ---
 title: Agentbaserade rekommendationer
-titleSuffix: Azure Defender for IoT
 description: Lär dig mer om begreppet säkerhets rekommendationer och hur de används för Defender för IoT-enheter.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/16/2021
-ms.author: shhazam
-ms.openlocfilehash: e746f37fdf3b67467c1844ebea9191679d52d6d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a29957f459edad8b768daea7bc4567d77c80b165
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491273"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784993"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>Säkerhets rekommendationer för IoT-enheter
 
@@ -46,9 +35,9 @@ Drift rekommendationer ger insikter och förslag för att förbättra konfigurat
 
 | Allvarlighetsgrad | Name | Datakälla | Beskrivning |
 |--|--|--|--|
-| Låg | Agent skickar meddelanden som inte används | Klassisk Defender-IoT-Micro-agent| 10% eller flera säkerhets meddelanden var mindre än 4 KB under de senaste 24 timmarna. |
-| Låg | Säkerhet, dubbel konfiguration inte optimal | Klassisk Defender-IoT-Micro-agent| En dubbel säkerhets konfiguration är inte optimalt. |
-| Låg | Konflikt vid dubbel konfiguration av säkerhet | Klassisk Defender-IoT-Micro-agent| Konflikter identifierades i den dubbla säkerheten. |  |
+| Låg | Agent skickar meddelanden som inte används | Klassisk Defender-IoT-Micro-agent | 10% eller flera säkerhets meddelanden var mindre än 4 KB under de senaste 24 timmarna. |
+| Låg | Säkerhet, dubbel konfiguration inte optimal | Klassisk Defender-IoT-Micro-agent | En dubbel säkerhets konfiguration är inte optimalt. |
+| Låg | Konflikt vid dubbel konfiguration av säkerhet | Klassisk Defender-IoT-Micro-agent | Konflikter identifierades i den dubbla säkerheten. |
 
 ## <a name="next-steps"></a>Nästa steg
 

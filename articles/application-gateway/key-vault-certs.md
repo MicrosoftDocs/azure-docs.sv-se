@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185945"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775754"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-avslutning med Key Vault-certifikat
 
@@ -47,10 +47,19 @@ Application Gateway-integrering med Key Vault kräver en konfigurations process 
 
 1. **Konfigurera nyckel valvet**
 
-   Du kan antingen importera ett befintligt certifikat eller skapa ett nytt i ditt nyckel valv. Certifikatet kommer att användas av program som körs via programgatewayen. I det här steget kan du också använda en nyckel valvs hemlighet som lagras som en lösen ords fri, bas-64-kodad PFX-fil. Vi rekommenderar att du använder en certifikat typ på grund av den funktion för förnyad förnyelse som är tillgänglig med certifikat typs objekt i nyckel valvet. När du har skapat ett certifikat eller en hemlighet definierar du åtkomst principer i nyckel valvet för att ge identiteten behörighet att *få* åtkomst till hemligheten.
+   Du kan antingen importera ett befintligt certifikat eller skapa ett nytt i ditt nyckel valv. Certifikatet kommer att användas av program som körs via programgatewayen. I det här steget kan du också använda en Key Vault hemlighet som också tillåter lagring av en lösen ords fri, Base-64-kodad PFX-fil. Vi rekommenderar att du använder en "certifikat"-typ på grund av den funktion för förnyad förnyelse som är tillgänglig för den här typen av objekt i Key Vault. När du har skapat ett certifikat eller en hemlighet måste du definiera åtkomst principer i Key Vault så att identiteten kan beviljas åtkomst till hemligheten.
    
    > [!IMPORTANT]
-   > Application Gateway kräver för närvarande Key Vault för att tillåta åtkomst från alla nätverk, för att kunna utnyttja integrationen. Den har inte stöd för Key Vault-integration när Key Vault har angetts att endast tillåta privata slut punkter och välj nätverks åtkomst. Stöd för privata och utvalda nätverk är i arbetet för fullständig integrering av Key Vault med Application Gateway. 
+   > Från den 15 mars 2021 känner Key Vault igen Azure Application Gateway som en av de betrodda tjänsterna, så att du kan bygga en säker nätverks gränser i Azure. På så sätt kan du neka åtkomst till trafik från alla nätverk (inklusive Internet trafik) till Key Vault men ändå göra den tillgänglig för Application Gateway resurs under din prenumeration. 
+
+   > Du kan konfigurera Application Gateway i ett begränsat nätverk av Key Vault på följande sätt. <br />
+   > a) under Key Vaultens nätverks blad <br />
+   > b) Välj privat slut punkt och valda nätverk på fliken "brand väggar och virtuella nätverk" <br/>
+   > c) sedan använder du virtuella nätverk och lägger till din Application Gateways virtuella nätverk och undernät. Under processen konfigurerar du också tjänst slut punkten Microsoft. nyckel valv genom att markera dess kryss ruta. <br/>
+   > d) Slutligen väljer du "Ja" om du vill tillåta att betrodda tjänster kringgår Key Vaults brand vägg. <br/>
+   > 
+   > ![Key Vault brand vägg](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > Om du distribuerar programgatewayen via en ARM-mall, antingen med hjälp av Azure CLI eller PowerShell eller via ett Azure-program som distribueras från Azure Portal, lagras SSL-certifikatet i nyckel valvet som en Base64-kodad PFX-fil. Du måste slutföra stegen i [använda Azure Key Vault för att skicka ett säkert parameter värde under distributionen](../azure-resource-manager/templates/key-vault-parameter.md). 

@@ -1,19 +1,19 @@
 ---
 title: H-serien – Azure Virtual Machines
 description: Specifikationer för virtuella datorer i H-serien.
-author: ju-shim
+author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 7a5ff47bb5de6d54564a86c0700ad69aa450887d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566149"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774787"
 ---
 # <a name="h-series"></a>H-serien
 
@@ -40,10 +40,21 @@ Virtuella datorer i H-serien är optimerade för program som drivs av höga CPU-
 
 <sup>1</sup> för MPI-program aktive ras dedicerade RDMA-backend-nätverk av FDR Infiniband-nätverket.
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 > [!NOTE]
-> Bland de [virtuella](sizes-hpc.md#rdma-capable-instances)datorerna med RDMA-kapacitet är H-serien inte SR-IOV-aktiverad. Därför skiljer sig de [virtuella dator avbildningarna](./workloads/hpc/configure.md#vm-images), [InfiniBand-skrivardrivrutiner](./workloads/hpc/enable-infiniband.md) och [MPI-bibliotek](./workloads/hpc/setup-mpi.md) som stöds från SR-IOV-aktiverade virtuella datorer.
+> I de [virtuella](sizes-hpc.md#rdma-capable-instances)datorerna med RDMA-kapacitet är H-serien inte SR-IOV-aktiverad. Därför skiljer sig de [virtuella dator avbildningarna](./workloads/hpc/configure.md#vm-images), [InfiniBand-skrivardrivrutiner](./workloads/hpc/enable-infiniband.md) och [MPI-bibliotek](./workloads/hpc/setup-mpi.md) som stöds från SR-IOV-aktiverade virtuella datorer.
+
+## <a name="software-specifications"></a>Programspecifikationer
+
+| Programspecifikationer     |Virtuell dator i HC-serien           |
+|-----------------------------|-----------------------|
+| Maximal jobb storlek för MPI            | 4800 kärnor (300 virtuella datorer i en skalnings uppsättning för en virtuell dator med singlePlacementGroup = true)  |
+| MPI-stöd                 | Intel MPI 5. x, MS-MPI  |
+| OS-stöd för icke-IOV RDMA   | CentOS/RHEL 6,5-7,4, SLES 12 SP4 +, WinServer 2012-2016  |
+| Stöd för Orchestrator        | CycleCloud, batch, AKS  |
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>Andra storlekar
 
@@ -56,7 +67,6 @@ Virtuella datorer i H-serien är optimerade för program som drivs av höga CPU-
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [att konfigurera virtuella datorer](./workloads/hpc/configure.md), [Aktivera INFINIBAND](./workloads/hpc/enable-infiniband.md), konfigurera [MPI](./workloads/hpc/setup-mpi.md) och optimera HPC-program för Azure i [HPC-arbetsbelastningar](./workloads/hpc/overview.md).
-- Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).
 - Lär dig mer om hur [Azure Compute Units (ACU)](acu.md) kan hjälpa dig att jämföra beräknings prestanda i Azure SKU: er.

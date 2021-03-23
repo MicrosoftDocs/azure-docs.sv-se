@@ -5,16 +5,16 @@ ms.service: data-factory
 tags: azure-resource-manager
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan, jingwang
+ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c579b6d723533e751e08a80a578195c03e945607
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100373852"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783344"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Snabb start: skapa en Azure Data Factory med ARM-mall
 
@@ -108,7 +108,7 @@ Du hittar fler Azure Data Factory mal sampel i [galleriet snabb starts mal len](
     1. På sidan **behållare** väljer du den BLOB-behållare som du skapade.
         1. BLOB container-namnet är i formatet-BLOB \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="BLOB-behållare":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blobcontainer":::
 
 ### <a name="upload-a-file"></a>Ladda upp en fil
 

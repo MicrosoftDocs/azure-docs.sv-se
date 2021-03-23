@@ -4,7 +4,7 @@ description: Den här artikeln beskriver metod tips som du bör tänka på under
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,15 +13,16 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548452"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782409"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Utveckla säkra program på Azure
-I den här artikeln presenterar vi säkerhets aktiviteter och kontroller för att tänka på när du utvecklar program för molnet. Säkerhets frågor och koncept som du bör tänka på under implementerings-och verifierings faserna i Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) omfattas. Målet är att hjälpa dig att definiera aktiviteter och Azure-tjänster som du kan använda för att utveckla ett säkrare program.
+
+I den här artikeln presenterar vi säkerhets aktiviteter och kontroller att tänka på när du utvecklar program för molnet. Säkerhets frågor och koncept som du bör tänka på under implementerings-och verifierings faserna i Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) omfattas. Målet är att hjälpa dig att definiera aktiviteter och Azure-tjänster som du kan använda för att utveckla ett säkrare program.
 
 Följande SDL-faser beskrivs i den här artikeln:
 
@@ -29,6 +30,7 @@ Följande SDL-faser beskrivs i den här artikeln:
 - Verifiering
 
 ## <a name="implementation"></a>Implementering
+
 Fokus i implementerings fasen är att upprätta bästa praxis för tidig förebyggande skydd och identifiera och ta bort säkerhets problem från koden.
 Anta att ditt program kommer att användas på sätt som du inte avsåg att använda. Detta hjälper dig att skydda mot oavsiktlig eller avsiktlig missbruk av ditt program.
 
@@ -89,11 +91,11 @@ Det innebär att färre personer har till gång till dina verkliga data, vilket 
 
 Du måste implementera en stark lösen ords princip för att säkerställa att användarna skapar ett komplext lösen ord (till exempel 12 tecken och som kräver alfanumeriska tecken och specialtecken) för att skydda dig mot brute-och ordbaserade gissning.
 
-Du kan använda ett identitets ramverk för att skapa och genomdriva lösen ords principer. Azure AD B2C hjälper dig med lösen ords hantering genom att tillhandahålla [inbyggda principer](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [återställning av lösen ord med självbetjäning](../../active-directory-b2c/user-flow-self-service-password-reset.md)och mycket mer.
+Azure Active Directory B2C hjälper dig med lösen ords hantering genom att tillhandahålla lösen [ords återställning via självbetjäning](../../active-directory-b2c/add-password-reset-policy.md), [Framtvinga lösen ords återställning](../../active-directory-b2c/force-password-reset.md)och mycket mer.
 
 Kontrol lera att alla nycklar och lösen ord är utbytbara och att de genereras eller ersätts när du har installerat resurser för att skydda mot attacker på standard konton.
 
-Om programmet måste generera lösen ord automatiskt måste du se till att de genererade lösen orden är slumpmässiga och att de har hög entropi.
+Om programmet måste skapa lösen ord automatiskt måste du se till att de genererade lösen orden är slumpmässiga och att de har hög entropi.
 
 ### <a name="validate-file-uploads"></a>Verifiera fil överföringar
 
@@ -108,6 +110,7 @@ Skydd mot skadlig kod hjälper till att identifiera och ta bort virus, spionprog
 Cachelagra inte känsligt innehåll i webbläsaren. Webbläsare kan lagra information för cachelagring och historik. Cachelagrade filer lagras i en mapp, t. ex. mappen Temporary Internet Files, i Internet Explorer. När dessa sidor refereras igen, visar webbläsaren sidorna från cacheminnet. Om känslig information (adress, kreditkorts information, person nummer, användar namn) visas för användaren, kan informationen lagras i webbläsarens cacheminne och kunna hämtas genom att undersöka webbläsarens cacheminne eller genom att helt enkelt trycka på webbläsarens **bak** -knapp.
 
 ## <a name="verification"></a>Verifiering
+
 I verifierings fasen ingår en omfattande ansträngning för att säkerställa att koden uppfyller Tenets för säkerhet och sekretess som har fastställts i föregående faser.
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Hitta och åtgärda säkerhets risker i dina program beroenden
@@ -151,6 +154,7 @@ Att se till att ditt program är säkert är lika viktigt som att testa andra fu
 [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) innehåller SVTs för flera tjänster i Azure-plattformen. Du kör dessa SVTs regelbundet för att se till att din Azure-prenumeration och de olika resurser som utgör ditt program är i säkert tillstånd. Du kan också automatisera de här testerna med hjälp av funktionen för att använda funktionen för kontinuerlig integrering/-distribution (CI/CD) i AzSK, vilket gör SVTs tillgängligt som ett Visual Studio-tillägg.
 
 ## <a name="next-steps"></a>Nästa steg
+
 I följande artiklar rekommenderar vi säkerhets kontroller och aktiviteter som kan hjälpa dig att utforma och distribuera säkra program.
 
 - [Utforma säkra program](secure-design.md)

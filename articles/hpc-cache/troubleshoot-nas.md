@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb17918774d23dbeb2747fa55eefc4956812e254
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471714"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775705"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Felsök problem med NAS-konfiguration och NFS-lagring
 
@@ -91,16 +91,15 @@ Server dels lagrings systemet behåller interna alias för fil referenser, men A
 
 För att undvika den här möjliga filkollisionen för filer i flera exporter monterar Azure HPC cache automatiskt den mest tillgängliga exporten i sökvägen ( ``/ifs`` i exemplet) och använder fil referensen från den exporten. Om flera exporter använder samma bas Sök väg behöver Azure HPC-cache rot åtkomst till den sökvägen.
 
-## <a name="enable-export-listing"></a>Aktivera export av lista
-<!-- link in prereqs article -->
+<!-- ## Enable export listing
 
-NAS: en måste ange sin export när Azure HPC-cachen efterfrågar den.
+The NAS must list its exports when the Azure HPC Cache queries it.
 
-På de flesta NFS-lagrings system kan du testa detta genom att skicka följande fråga från en Linux-klient: ``showmount -e <storage IP address>``
+On most NFS storage systems, you can test this by sending the following query from a Linux client: ``showmount -e <storage IP address>``
 
-Använd en Linux-klient från samma virtuella nätverk som din cache, om möjligt.
+Use a Linux client from the same virtual network as your cache, if possible.
 
-Om kommandot inte visar en lista över exporten, har cachen problem med att ansluta till lagrings systemet. Arbeta med din NAS-leverantör för att aktivera export av listor.
+If that command doesn't list the exports, the cache will have trouble connecting to your storage system. Work with your NAS vendor to enable export listing.  -->
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>Ändra storleks begränsningar för VPN-paket
 <!-- link in prereqs article and configuration article -->

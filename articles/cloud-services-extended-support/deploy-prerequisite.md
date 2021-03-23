@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 79d6fecddf060909a74664ff29e08301f45d7042
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d85aad16049dee6496cb1eaf9def5451625ab876
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472315"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773478"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
@@ -86,6 +86,9 @@ Ta bort gamla diagnostikinställningar för varje roll i tjänst konfigurations 
 
 ## <a name="required-service-definition-file-csdef-updates"></a>Nödvändiga uppdateringar för tjänst definitions filen (. csdef)
 
+> [!NOTE]
+> Ändringar i tjänst definitions filen (. csdef) kräver att paket filen (. cspkg) genereras igen. Skapa och paketera om. cspkg-post gör följande ändringar i. csdef-filen för att hämta de senaste inställningarna för din moln tjänst
+
 ### <a name="1-virtual-machine-sizes"></a>1) storlekar för virtuella datorer
 Följande storlekar är föråldrade i Azure Resource Manager. Men om du vill fortsätta att använda dem uppdaterar du `vmsize` namnet med tillhör ande Azure Resource Manager namngivnings konvention.  
 
@@ -130,7 +133,7 @@ Distributioner som använder gamla plugin-program för diagnostik behöver inst�
 
 ## <a name="key-vault-creation"></a>Skapa Key Vault 
 
-Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault för lämpliga behörigheter så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Du kan skapa ett nyckel valv i [Azure Portal](../key-vault/general/quick-create-portal.md) eller genom att använda [PowerShell](../key-vault/general/quick-create-powershell.md). Nyckel valvet måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault "åtkomst principer" (i portalen) för åtkomst till Azure Virtual Machines för distribution och Azure Resource Manager för mall distribution, så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Du kan skapa ett nyckel valv i [Azure Portal](../key-vault/general/quick-create-portal.md) eller genom att använda [PowerShell](../key-vault/general/quick-create-powershell.md). Nyckel valvet måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Nästa steg 
 - Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).

@@ -4,14 +4,14 @@ description: Lär dig mer om att övervaka körningen av kopierings aktiviteten 
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 03/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4aefeea33e61b6ee2541e929dbeb3fc36343cac5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100388302"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771387"
 ---
 # <a name="monitor-copy-activity"></a>Övervaka kopieringsaktivitet
 
@@ -59,7 +59,7 @@ Information om körningen av kopierings aktiviteten och prestanda egenskaperna r
 | rowsCopied | Antal rader som kopierats till Sink. Måttet gäller inte när du kopierar filer som-är utan att parsa dem, till exempel när data uppsättningarna källa och mottagare är binärformat, eller annan format typ med identiska inställningar.  | Int64-värde (ingen enhet) |
 | rowsSkipped | Antal inkompatibla rader som hoppades över. Du kan aktivera inkompatibla rader som ska hoppas över genom att ange `enableSkipIncompatibleRow` true. | Int64-värde (ingen enhet) |
 | copyDuration | Kopierings körningens längd. | Int32-värde, i sekunder |
-| dataflöde | Hastighet för data överföring. | Flytt ALS nummer, i kbit/s |
+| dataflöde | Data överförings hastighet, beräknad av `dataRead` dividerat med `copyDuration` . | Flytt ALS nummer, i kbit/s |
 | sourcePeakConnections | Det högsta antalet samtidiga anslutningar som upprättats till käll data lagret under kopierings aktivitets körningen. | Int32-värde (ingen enhet) |
 | sinkPeakConnections| Det högsta antalet samtidiga anslutningar som upprättats till mottagar data lagret under kopierings aktiviteten.| Int32-värde (ingen enhet) |
 | sqlDwPolyBase | Om PolyBase används när data kopieras till Azure Synapse Analytics. | Boolesk |

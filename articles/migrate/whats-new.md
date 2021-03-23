@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cca4612d3b22296209b4adfc6be97cbe95477aa3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614640"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786676"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Vad är nytt i Azure Migrate
 
@@ -20,7 +20,7 @@ ms.locfileid: "102614640"
 
 ## <a name="update-march-2021"></a>Uppdatering (mars 2021)
 - Stöd för att tillhandahålla flera autentiseringsuppgifter för servern på Azure Migrate-enheten för att identifiera installerade program (program varu inventering), agent lös beroende analys och identifiera SQL Server instanser och databaser i VMware-miljön. [Läs mer](tutorial-discover-vmware.md#provide-server-credentials)
-- Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. [Läs mer](concepts-azure-sql-assessment-calculation.md)<br/>Om du vill testa funktionen använder du [den här länken](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Se självstudierna för [Identifiering](tutorial-discover-vmware.md) och [utvärdering](tutorial-assess-sql.md) för att komma igång.
+- Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. [Läs mer](concepts-azure-sql-assessment-calculation.md) Gå till vägledningen för [identifiering](tutorial-discover-vmware.md) och [utvärdering](tutorial-assess-sql.md) för att komma igång.
 - Utan agent för VMware-migrering stöder nu samtidig replikering av 500 VM: ar per vCenter.
 - Azure Migrate installerar nu automatiskt Azure VM-agenten på de virtuella VMware-datorerna samtidigt som de migrerar dem till Azure med hjälp av metoden för att VMware-migreringen ska gå
 

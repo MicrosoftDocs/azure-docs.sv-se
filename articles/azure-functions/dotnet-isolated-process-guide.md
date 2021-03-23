@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584711"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774940"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Guide för att köra funktioner på .NET 5,0 i Azure
 
@@ -68,37 +68,36 @@ Du hittar dessa tilläggs paket under [Microsoft. Azure. functions. Worker. Exte
 
 ## <a name="start-up-and-configuration"></a>Start och konfiguration 
 
-När du använder de isolerade .NET-funktionerna har du åtkomst till start av din Function-app, som vanligt vis finns i program. cs. Du är ansvarig för att skapa och starta en egen värd instans. Därför har du också direkt åtkomst till konfigurations pipelinen för din app. Du kan enkelt mata in beroenden och köra mellanprogram när du kör processen utanför processen. 
+När du använder de isolerade .NET-funktionerna har du åtkomst till start av din Function-app, som vanligt vis finns i program. cs. Du är ansvarig för att skapa och starta en egen värd instans. Därför har du också direkt åtkomst till konfigurations pipelinen för din app. När processen körs utanför processen kan du enkelt lägga till konfigurationer, mata in beroenden och köra egna mellanprogram. 
 
-Följande kod visar ett exempel på en `HostBuilder` pipeline:
+Följande kod visar ett exempel på en [HostBuilder] -pipeline:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
-En `HostBuilder` används för att skapa och returnera en fullständigt initierad `IHost` instans, som du kör asynkront för att starta din Function-app. 
+En [HostBuilder] används för att skapa och returnera en fullständigt initierad [IHost] -instans, som du kör asynkront för att starta din Function-app. 
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
 
 ### <a name="configuration"></a>Konfiguration
 
-När du har åtkomst till Host Builder-pipeline innebär det att du kan ställa in alla appar som är speciella för initiering under initieringen. Dessa konfigurationer gäller för din Function-app som körs i en separat process. Om du vill göra ändringar i functions-värden eller Utlösar-och bindnings konfigurationen måste du fortfarande använda [host.jspå filen](functions-host-json.md).      
+Metoden [ConfigureFunctionsWorkerDefaults] används för att lägga till de inställningar som krävs för att Function-appen ska köras utanför processen, vilket omfattar följande funktioner:
 
-<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
- 
-:::code language="csharp" 
-                .ConfigureAppConfiguration(c =>
-                {
-                    c.AddCommandLine(args);
-                })
-                :::
++ Standard uppsättning konverterare.
++ Ange standard [JsonSerializerOptions] för att ignorera Skift läge för egenskaps namn.
++ Integrera med Azure Functions loggning.
++ Utgående bindning mellanprogram och funktioner.
++ Mellanprogramvara för funktions körning.
++ Standard stöd för gRPC. 
 
-The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
-Du kan komma åt hela uppsättningen konfigurationer från både [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) och [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_defaults" :::   
 
-Mer information om konfiguration finns [i konfiguration i ASP.net Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
+När du har åtkomst till Host Builder-pipeline innebär det att du även kan ställa in appar-/regionsspecifika konfigurationer under initieringen. Du kan anropa metoden [ConfigureAppConfiguration] på [HostBuilder] en eller flera gånger för att lägga till de konfigurationer som krävs av din Function-app. Mer information om konfiguration av appar finns [i konfiguration i ASP.net Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
+
+Dessa konfigurationer gäller för din Function-app som körs i en separat process. Om du vill göra ändringar i functions-värden eller Utlösar-och bindnings konfigurationen måste du fortfarande använda [host.jspå filen](functions-host-json.md).   
 
 ### <a name="dependency-injection"></a>Beroendeinmatning
 
-Beroende inmatning är förenklad, jämfört med .NET-klass bibliotek. I stället för att skapa en start klass för att registrera tjänster, behöver du bara anropa `ConfigureServices` verktyget Host Builder och använda tilläggs metoderna för [`IServiceCollection`](/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true) att injicera vissa tjänster. 
+Beroende inmatning är förenklad, jämfört med .NET-klass bibliotek. I stället för att skapa en start klass för att registrera tjänster, behöver du bara anropa [ConfigureServices] på värd Builder och använda tilläggs metoderna på [IServiceCollection] för att mata in vissa tjänster. 
 
 I följande exempel matas ett singleton-tjänst beroende:  
  
@@ -106,21 +105,23 @@ I följande exempel matas ett singleton-tjänst beroende:
 
 Läs mer i [beroende inmatning i ASP.net Core](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-<!--### Middleware
+### <a name="middleware"></a>Mellanprogram
 
-.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
+.NET, isolerat stöder även mellanprogram registrering, igen med hjälp av en modell som liknar den som finns i ASP.NET. Den här modellen ger dig möjlighet att mata in logik i pipelinen för anrop, och innan och efter att funktionerna körs.
 
-While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
+[ConfigureFunctionsWorkerDefaults] -tilläggs metoden har en överlagring som gör att du kan registrera dina egna mellanprogram, som du ser i följande exempel.  
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/CustomMiddleware/Program.cs" id="docsnippet_middleware_register" :::
+
+Ett mer komplett exempel på hur du använder anpassade mellanprogram i din Function-app finns i det [anpassade exemplet för mellanprogram](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/CustomMiddleware).
 
 ## <a name="execution-context"></a>Körningskontext
 
-.NET isolerat skickar ett `FunctionContext` objekt till funktions metoderna. Med det här objektet kan du få en [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) instans att skriva till loggarna genom att anropa- `GetLogger` metoden och ange en `categoryName` sträng. Mer information finns i [Logga](#logging). 
+.NET isolerat skickar ett [FunctionContext] -objekt till dina funktions metoder. Med det här objektet kan du få en [ILogger] -instans att skriva till loggarna genom att anropa metoden [GetLogger] och tillhandahålla en `categoryName` sträng. Mer information finns i [Logga](#logging). 
 
 ## <a name="bindings"></a>Bindningar 
 
-Bindningar definieras genom att använda attribut för metoder, parametrar och retur typer. En funktions metod är en metod med `Function` attributet och ett utlösare som tillämpas på en indataparameter, som du ser i följande exempel:
+Bindningar definieras genom att använda attribut för metoder, parametrar och retur typer. En funktions metod är en metod med ett `Function` attribut och ett Utlös ande attribut som tillämpas på en indataparameter, som visas i följande exempel:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
@@ -128,9 +129,11 @@ Attributet trigger anger utlösarens typ och binder indata till en metod paramet
 
 `Function`Attributet markerar metoden som en funktions start punkt. Namnet måste vara unikt inom ett projekt, börja med en bokstav och får bara innehålla bokstäver, siffror, `_` och `-` upp till 127 tecken. I Project-mallar skapas ofta en metod med namnet `Run` , men metod namnet kan vara ett giltigt C#-metod namn.
 
-Eftersom de isolerade .NET-projekten körs i en separat arbets process kan bindningar inte dra nytta av omfattande bindnings klasser som `ICollector<T>` , `IAsyncCollector<T>` och `CloudBlockBlob` . Det finns inget direkt stöd för typer som ärvts från underliggande tjänst-SDK: er, till exempel [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) och [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). I stället förlitar sig bindningar på strängar, matriser och serialiserbara typer, till exempel rena gamla klass objekt (POCOs). 
+Eftersom de isolerade .NET-projekten körs i en separat arbets process kan bindningar inte dra nytta av omfattande bindnings klasser som `ICollector<T>` , `IAsyncCollector<T>` och `CloudBlockBlob` . Det finns inget direkt stöd för typer som ärvts från underliggande tjänst-SDK: er, till exempel [DocumentClient] och [BrokeredMessage]. I stället förlitar sig bindningar på strängar, matriser och serialiserbara typer, till exempel rena gamla klass objekt (POCOs). 
 
-För HTTP-utlösare måste du använda `HttpRequestData` och `HttpResponseData` för att komma åt begär ande-och svars data. Detta beror på att du inte har åtkomst till de ursprungliga HTTP-begärandena och svars objekt när processen körs utanför processen. 
+För HTTP-utlösare måste du använda [HttpRequestData] och [HttpResponseData] för att få åtkomst till begär ande-och svars data. Detta beror på att du inte har åtkomst till de ursprungliga HTTP-begärandena och svars objekt när processen körs utanför processen.
+
+En fullständig uppsättning referens exempel för att använda utlösare och bindningar när processen körs utanför processen finns i [referens exemplet bindnings tillägg](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/Extensions). 
 
 ### <a name="input-bindings"></a>Indatabindningar
 
@@ -146,13 +149,13 @@ Om du vill skriva till en utgående bindning måste du använda attributet utgå
 
 Data som skrivs till en utgående bindning är alltid returvärdet för funktionen. Om du behöver skriva till fler än en utgående bindning måste du skapa en anpassad returtyp. Den här retur typen måste ha attributet utgående bindning tillämpat på en eller flera egenskaper för klassen. I följande exempel skrivs både ett HTTP-svar och en utgående bindning för kö:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" id="docsnippet_multiple_outputs":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
 
 ### <a name="http-trigger"></a>HTTP-utlösare
 
-HTTP-utlösare översätter meddelandet inkommande HTTP-begäran till ett `HttpRequestData` objekt som skickas till funktionen. Det här objektet tillhandahåller data från begäran, inklusive `Headers` ,,, `Cookies` `Identities` `URL` och valfritt meddelande `Body` . Det här objektet är en representation av HTTP Request-objektet och inte själva begäran. 
+HTTP-utlösare översätter meddelandet inkommande HTTP-begäran till ett [HttpRequestData] -objekt som skickas till funktionen. Det här objektet tillhandahåller data från begäran, inklusive `Headers` ,,, `Cookies` `Identities` `URL` och valfritt meddelande `Body` . Det här objektet är en representation av HTTP Request-objektet och inte själva begäran. 
 
-På samma sätt returnerar funktionen ett `HttpReponseData` objekt, som innehåller data som används för att skapa HTTP-svaret, inklusive meddelande `StatusCode` , `Headers` och eventuellt ett meddelande `Body` .  
+På samma sätt returnerar funktionen ett [HttpReponseData]-objekt, som innehåller data som används för att skapa HTTP-svaret, inklusive meddelande `StatusCode` , `Headers` och eventuellt ett meddelande `Body` .  
 
 Följande kod är en HTTP-utlösare 
 
@@ -160,15 +163,15 @@ Följande kod är en HTTP-utlösare
 
 ## <a name="logging"></a>Loggning
 
-I .NET som är isolerade kan du skriva till loggar genom att använda en [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) instans som hämtats från ett `FunctionContext` objekt som skickats till din funktion. Anropa `GetLogger` metoden och skicka ett sträng värde som är namnet på kategorin där loggarna skrivs. Kategorin är vanligt vis namnet på den speciella funktion som loggarna skrivs ifrån. Mer information om kategorier finns i [övervaknings artikeln](functions-monitoring.md#log-levels-and-categories). 
+I .NET, kan du skriva till loggar med hjälp av en [ILogger] -instans som hämtats från ett [FunctionContext] -objekt som skickats till din funktion. Anropa metoden [GetLogger] och skicka ett sträng värde som är namnet på kategorin där loggarna skrivs. Kategorin är vanligt vis namnet på den speciella funktion som loggarna skrivs ifrån. Mer information om kategorier finns i [övervaknings artikeln](functions-monitoring.md#log-levels-and-categories). 
 
-I följande exempel visas hur du hämtar `ILogger` och skriver loggar i en funktion:
+I följande exempel visas hur du hämtar en [ILogger] och skriver loggar i en funktion:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
-Använd olika metoder för `ILogger` att skriva olika logg nivåer, till exempel `LogWarning` eller `LogError` . Mer information om loggnings nivåer finns i [övervaknings artikeln](functions-monitoring.md#log-levels-and-categories).
+Använd olika metoder för [ILogger] för att skriva olika logg nivåer, till exempel `LogWarning` eller `LogError` . Mer information om loggnings nivåer finns i [övervaknings artikeln](functions-monitoring.md#log-levels-and-categories).
 
-En [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) ingår också när du använder [beroende inmatning](#dependency-injection).
+En [ILogger] anges också när du använder [beroende inmatning](#dependency-injection).
 
 ## <a name="differences-with-net-class-library-functions"></a>Skillnader med funktioner i .NET-klass bibliotek
 
@@ -178,13 +181,13 @@ I det här avsnittet beskrivs det aktuella läget för funktionella och beteende
 | ---- | ---- | ---- |
 | .NET-versioner | LTS (.NET Core 3,1) | Aktuell (.NET 5,0) |
 | Kärn paket | [Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft. Azure. functions. Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft. Azure. functions. Worker. SDK](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
-| Paket för bindnings tillägg | [`Microsoft.Azure.WebJobs.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | Ramen [`Microsoft.Azure.Functions.Worker.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
-| Loggning | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) skickades till funktionen | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) hämtas från `FunctionContext` |
+| Paket för bindnings tillägg | [Microsoft. Azure. WebJobs. Extensions. *](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | Under [Microsoft. Azure. functions. Worker. Extensions. *](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
+| Loggning | [ILogger] skickades till funktionen | [ILogger] hämtades från [FunctionContext] |
 | Token för avbrytande | [Stöds](functions-dotnet-class-library.md#cancellation-tokens) | Stöds inte |
 | Utdatabindningar | Out-parametrar | Returvärden |
-| Typer av utdatabindningar |  `IAsyncCollector`, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true), [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true)och andra klient-/regionsspecifika typer | Enkla typer, JSON-serialiserbara typer och matriser. |
+| Typer av utdatabindningar |  `IAsyncCollector`, [DocumentClient], [BrokeredMessage]och andra klient-/regionsspecifika typer | Enkla typer, JSON-serialiserbara typer och matriser. |
 | Flera utgående bindningar | Stöds | [Stöds](#multiple-output-bindings) |
-| HTTP-utlösare | [`HttpRequest`](/dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true)/[`ObjectResult`](/dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true) | `HttpRequestData`/`HttpResponseData` |
+| HTTP-utlösare | [HttpRequest] / [ObjectResult] | [HttpRequestData] / [HttpResponseData] |
 | Bestående funktioner | [Stöds](durable/durable-functions-overview.md) | Stöds inte | 
 | Tvingande bindningar | [Stöds](functions-dotnet-class-library.md#binding-at-runtime) | Stöds inte |
 | function.jspå artefakt | Ges | Inte genererad |
@@ -202,3 +205,21 @@ Information om hur du löser problem med att köra process funktioner som kör .
 
 + [Läs mer om utlösare och bindningar](functions-triggers-bindings.md)
 + [Läs mer om metod tips för Azure Functions](functions-best-practices.md)
+
+
+[HostBuilder]: /dotnet/api/microsoft.extensions.hosting.hostbuilder?view=dotnet-plat-ext-5.0&preserve-view=true
+[IHost]: /dotnet/api/microsoft.extensions.hosting.ihost?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureFunctionsWorkerDefaults]: /dotnet/api/microsoft.extensions.hosting.workerhostbuilderextensions.configurefunctionsworkerdefaults?view=azure-dotnet&preserve-view=true#Microsoft_Extensions_Hosting_WorkerHostBuilderExtensions_ConfigureFunctionsWorkerDefaults_Microsoft_Extensions_Hosting_IHostBuilder_
+[ConfigureAppConfiguration]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureappconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true
+[IServiceCollection]: /dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureservices?view=dotnet-plat-ext-5.0&preserve-view=true
+[FunctionContext]: /dotnet/api/microsoft.azure.functions.worker.functioncontext?view=azure-dotnet&preserve-view=true
+[ILogger]: /dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true
+[GetLogger]: /dotnet/api/microsoft.azure.functions.worker.functioncontextloggerextensions.getlogger?view=azure-dotnet&preserve-view=true
+[DocumentClient]: /dotnet/api/microsoft.azure.documents.client.documentclient
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[HttpRequestData]: /dotnet/api/microsoft.azure.functions.worker.http.httprequestdata?view=azure-dotnet&preserve-view=true
+[HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
+[HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
+[ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
+[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

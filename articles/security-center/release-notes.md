@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/11/2021
+ms.date: 03/22/2021
 ms.author: memildin
-ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149650"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786113"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -26,7 +26,6 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 > Om du söker efter objekt som är äldre än sex månader hittar du dem i [arkivet för vad som är nytt i Azure Security Center](release-notes-archive.md).
 
 
-
 ## <a name="march-2021"></a>Mars 2021
 
 Uppdateringar i mars inkluderar:
@@ -38,6 +37,7 @@ Uppdateringar i mars inkluderar:
 - [Rekommendations data kan visas i Azure Resource Graph med "utforska i ARG"](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [Uppdateringar av principerna för distribution av arbets flödes automatisering](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Två tidigare rekommendationer skriver inte längre data direkt till Azure aktivitets loggen](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [Förbättringar av sidan för rekommendationer](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall Management är integrerad i Security Center
@@ -140,6 +140,22 @@ De två tidigare rekommendationerna är:
 
 Om du har åtkomst till information för dessa två rekommendationer i aktivitets loggens "rekommendation av typen TaskDiscovery", är detta inte längre tillgängligt.
 
+
+### <a name="recommendations-page-enhancements"></a>Förbättringar av sidan för rekommendationer 
+
+Vi har lanserat en förbättrad version av listan över rekommendationer för att presentera mer information på ett ögonblick.
+
+Nu kan du se följande på sidan:
+
+1. Högsta poäng och aktuell Poäng för varje säkerhets kontroll.
+1. Ikoner ersätter taggar som **snabb korrigering** och för **hands version**.
+1. En ny kolumn som visar [princip initiativet](security-policy-concept.md) för varje rekommendation – synlig när "Gruppera efter kontroller" är inaktive rad.
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Förbättringar av Azure Security Center sidan rekommendationer – mars 2021" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Förbättringar av Azure Security Center rekommendationer från &quot;flat&quot;-lista – mars 2021" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+Läs mer i [säkerhets rekommendationer i Azure Security Center](security-center-recommendations.md).
 
 
 ## <a name="february-2021"></a>Februari 2021

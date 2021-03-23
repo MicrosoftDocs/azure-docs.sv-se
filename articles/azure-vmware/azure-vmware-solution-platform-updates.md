@@ -3,12 +3,12 @@ title: Plattforms uppdateringar för Azure VMware-lösning
 description: Lär dig mer om plattforms uppdateringar för Azure VMware-lösningen.
 ms.topic: reference
 ms.date: 03/16/2021
-ms.openlocfilehash: 73bd1d088f9055ebd80a28c6247ea9dfa6229093
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce25df2cb221c032f6dd430f292522fe86e69ceb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586241"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771778"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Plattforms uppdateringar för Azure VMware-lösning
 
@@ -16,7 +16,7 @@ Viktiga uppdateringar av Azure VMware-lösningen tillämpas från och med 2021 m
 
 ## <a name="march-15-2021"></a>15 mars 2021 
 
-- Azure VMware Solution service utför underhålls arbetet till den 19 mars 20201, för att uppdatera vCenter-Server i ditt privata moln till vCenter Server 6,7 uppdatering 3L-version.
+- Azure VMware Solution service utför underhålls arbetet till den 19 mars 2021, för att uppdatera vCenter-Server i ditt privata moln till vCenter Server 6,7 uppdatering 3L-version.
 
 - Under den här tiden är VMware vCenter otillgänglig och du kan inte hantera virtuella datorer (stoppa, starta, skapa, ta bort). Skalning av privata moln (tillägg/borttagning av servrar och kluster) kommer inte heller att vara tillgängligt. VMware hög tillgänglighet (HA) fortsätter att fungera för att ge skydd för befintliga virtuella datorer. 
  

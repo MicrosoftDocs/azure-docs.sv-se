@@ -1,18 +1,14 @@
 ---
 title: Arbeta med enhetsmeddelanden
 description: Meddelanden innehåller information om nätverks aktivitet som kräver din uppmärksamhet, tillsammans med rekommendationer för att hantera den här aktiviteten.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523574"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781338"
 ---
 # <a name="work-with-device-notifications"></a>Arbeta med enhetsmeddelanden
 
@@ -24,11 +20,7 @@ Meddelanden innehåller information om nätverks aktivitet som kräver din uppm�
 
 Att svara på meddelanden förbättrar informationen i enhets kartan, enhets inventeringen och frågor och rapporter om Data utvinning. Det ger också insikter om legitima nätverks ändringar och potentiella nätverks konfigurationer.
 
-För att få åtkomst till meddelanden:
-
-- Välj **Systeminställningar** och välj sedan **data förbättring**.
-
-## <a name="notifications-vs-alerts"></a>Meddelanden kontra aviseringar
+**Meddelanden kontra aviseringar**
 
 Förutom att ta emot meddelanden om nätverks aktivitet kan du få *aviseringar*. Meddelanden innehåller information om nätverks ändringar eller olösta enhets egenskaper som inte utgör ett hot. Aviseringar ger information om nätverks avvikelser och ändringar som kan utgöra ett hot mot nätverket.
 
@@ -85,18 +77,6 @@ Visa meddelanden och hantera meddelanden:
 2. Instruera sensorn att tillämpa nyligen identifierad information på valda enheter genom att välja **Lär dig**. Eller så instruerar du sensorn att ignorera nyligen identifierad information genom att välja **Stäng**. Antalet meddelanden som du samtidigt kan lära dig och stänga, tillsammans med antalet meddelanden som du måste hantera individuellt, visas.
 
 **Nya IP-adresser** och **inga undernät** konfigurerade händelser kan inte hanteras samtidigt. De kräver manuell bekräftelse.
-
-## <a name="improve-device-os-classification-data-enhancement"></a>Förbättra enhetens OS-klassificering: data förbättring 
-
-Sensorn identifierar kontinuerligt nya enheter automatiskt. Den identifierar också ändringar till tidigare identifierade enheter, inklusive operativ system typer.
-
-Under vissa omständigheter kan konflikter identifieras i identifierade operativ system. Detta kan inträffa eftersom du har en OS-version som refererar till antingen Skriv bords-eller server system. Om det inträffar får du ett meddelande med valfria system klassificeringar.
-
-:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Förbättra data.":::
-
-Undersök rekommendationerna för att utöka OS-klassificeringen. Den här informationen visas i enhets inventeringen, rapporter om Data utvinning och andra skärmar. Det kan också förbättra precisionen för aviseringar, hot och risk analyser.
-
-När du godkänner en rekommendation kommer operativ systemets typ information att uppdateras i sensorn.
 
 ## <a name="see-also"></a>Se även
 

@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 7c9b4032346e61eb3bfd21c0c4067e2364bc28af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670858"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780743"
 ---
 # <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>Använd ASP.NET-program och migrera till Azure Kubernetes service
 
@@ -59,7 +59,7 @@ Innan du börjar de här självstudierna bör du:
 
 **Krav** | **Information**
 --- | ---
-**Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> Windows-datorn som kör verktyget bör ha nätverks anslutning till de servrar/virtuella datorer som är värd för de ASP.NET-program som ska behållas.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn ska ha Internet åtkomst, direkt eller via en proxyserver. <br/> <br/>Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
+**Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> När verktyget körs på en Windows-dator måste den ha en nätverksanslutning till servern/den virtuella datorn som ska vara värd för de ASP.NET-program som ska inkapslas i en container.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn måste ha åtkomst till Internet, antingen direkt eller via en proxy. <br/> <br/>Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
 **Programservrar** | Aktivera PowerShell-fjärrkommunikation på program servrarna: Logga in på program servern och följ [dessa](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) instruktioner för att aktivera PowerShell-fjärrkommunikation. <br/><br/> Om program servern kör Windows Server 2008 R2 kontrollerar du att PowerShell 5,1 är installerat på program servern. Följ anvisningarna [här](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) för att ladda ned och installera PowerShell 5,1 på program servern. <br/><br/> Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
 **ASP.NET-program** | Verktyget stöder för närvarande <br/><br/> -ASP.NET program som använder Microsoft .NET Framework 3,5 eller senare.<br/> – Program servrar som kör Windows Server 2008 R2 eller senare (program servrar ska köra PowerShell-version 5,1). <br/> – Program som körs på Internet Information Services (IIS) 7,5 eller senare. <br/><br/> Verktyget stöder för närvarande inte <br/><br/> – Program som kräver Windows-autentisering (AKS stöder inte gMSA för närvarande). <br/> – Program som är beroende av andra Windows-tjänster som finns utanför IIS.
 
@@ -105,7 +105,7 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 3. Kör installations skriptet med kommandot
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Starta verktyget app skapa behållare
@@ -152,7 +152,7 @@ Klicka på **Logga** in för att logga in på ditt Azure-konto.
 Verktyget app skapa behållare Helper ansluter via fjärr anslutning till program servrarna med de angivna autentiseringsuppgifterna och försöker identifiera ASP.NET program som finns på program servrarna.
 
 1. Ange **IP-adressen/FQDN och autentiseringsuppgifterna** för servern som kör ASP.net-programmet som ska användas för att fjärrans luta till servern för program identifiering.
-    - De autentiseringsuppgifter som anges måste vara för en lokal administratör (Windows) på program servern.
+    - De autentiseringsuppgifter som anges måste vara för en lokal administratör (Windows) på programservern.
     - För domän konton (användaren måste vara administratör på program servern) ska du använda prefixet username med domän namnet i formatet *<domän \ användar namn>*.
     - Du kan köra program identifieringen för upp till fem servrar i taget.
 

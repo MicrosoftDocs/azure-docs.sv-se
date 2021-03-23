@@ -4,14 +4,14 @@ description: Förklarar hur du konfigurerar ytterligare inställningar för cach
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563392"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773240"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurera ytterligare inställningar för Azure HPC cache
 
@@ -75,6 +75,8 @@ Om du behöver ange en anpassad DNS-server för cacheminnet använder du de angi
   > [!NOTE]
   > The cache will use only the first DNS server it successfully finds. -->
 
+Överväg att använda ett testcache för att kontrol lera och förfina DNS-konfigurationen innan du använder den i en produktions miljö.
+
 ### <a name="refresh-storage-target-dns"></a>Uppdatera lagrings målets DNS
 
 Om DNS-servern uppdaterar IP-adresser blir de tillhör ande NFS-målen tillfälligt otillgängliga. Läs hur du uppdaterar dina anpassade DNS-systemip-adresser i [Redigera lagrings mål](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only).
@@ -94,10 +96,10 @@ Den här funktionen är endast tillgänglig för Azure Blob Storage-mål och des
 
 Ögonblicks bilder tas var åttonde timme, kl. UTC 0:00, 08:00 och 16:00.
 
-Azure HPC-cache lagrar dagliga, veckovis och månatliga ögonblicks bilder tills de ersätts av nya. Gränserna är:
+Azure HPC-cache lagrar dagliga, veckovis och månatliga ögonblicks bilder tills de ersätts av nya. Gränsen för ögonblicks bilder kvarhålls:
 
 * Upp till 20 dagliga ögonblicks bilder
 * Upp till 8 veckors ögonblicks bilder
 * Upp till tre månatliga ögonblicks bilder
 
-Få åtkomst till ögonblicks bilderna från `.snapshot` katalogen i Blob Storage-målets namnrymd.
+Få åtkomst till ögonblicks bilderna från `.snapshot` katalogen i roten för det monterade Blob Storage-målet.

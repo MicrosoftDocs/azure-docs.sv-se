@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557141"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781304"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Självstudie: skapa användar flöden i Azure Active Directory B2C
 
@@ -25,8 +25,9 @@ I den här artikeln kan du se hur du:
 
 > [!div class="checklist"]
 > * Skapa ett användar flöde för registrering och inloggning
+> * Aktivera lösenordsåterställning via självbetjäning
 > * Skapa ett användarflöde för profilredigering
-> * Skapa ett användarflöde för återställning av lösenord
+
 
 Den här självstudien visar hur du skapar vissa rekommenderade användar flöden med hjälp av Azure Portal. Om du vill ha information om hur du konfigurerar ett ROPC-flöde (Resource Owner Password Credential) i programmet, se [Konfigurera flödet för autentiseringsuppgifter för resurs ägare i Azure AD B2C](add-ropc-policy.md).
 
@@ -85,6 +86,24 @@ Användar flödet för registrering och inloggning hanterar både registrering o
 > [!NOTE]
 > Upplevelsen "kör användar flöde" är för närvarande inte kompatibel med URL-typen SPA-svar med hjälp av Authorization Code Flow. Om du vill använda upplevelsen "kör användar flöde" med dessa typer av appar registrerar du en svars-URL av typen "Web" och aktiverar det implicita flödet enligt beskrivningen [här](tutorial-register-spa.md).
 
+## <a name="enable-self-service-password-reset"></a>Aktivera lösenordsåterställning via självbetjäning
+
+Aktivera [självbetjäning för återställning av lösen ord](add-password-reset-policy.md) för registrerings-eller inloggnings användar flödet:
+
+1. Välj det användar flöde för registrering eller inloggning som du skapade.
+1. Under **Inställningar** i den vänstra menyn väljer du **Egenskaper**.
+1. Under **lösen ords komplexitet** väljer du **självbetjäning för återställning av lösen ord**.
+1. Välj **Spara**.
+
+### <a name="test-the-user-flow"></a>Testa användar flödet
+
+1. Välj det användar flöde som du skapade för att öppna sidan Översikt och välj sedan **Kör användar flöde**.
+1. För **program** väljer du det webb program som heter *webapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj **Kör användar flöde**.
+1. På sidan registrering eller inloggning väljer du **glömt lösen ordet?**.
+1. Kontrol lera e-postadressen för det konto som du skapade tidigare och välj sedan **Fortsätt**.
+1. Nu har du möjlighet att ändra lösen ordet för användaren. Ändra lösen ordet och välj **Fortsätt**. Token returneras till `https://jwt.ms` och ska visas för dig.
+
 ## <a name="create-a-profile-editing-user-flow"></a>Skapa ett användarflöde för profilredigering
 
 Om du vill att användarna ska kunna redigera sin profil i ditt program använder du en profil som redigerar användar flöde.
@@ -103,26 +122,6 @@ Om du vill att användarna ska kunna redigera sin profil i ditt program använde
 1. För **program** väljer du det webb program som heter *webapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Klicka på **Kör användar flöde** och logga sedan in med det konto som du skapade tidigare.
 1. Nu har du möjlighet att ändra visnings namn och befattning för användaren. Klicka på **Fortsätt**. Token returneras till `https://jwt.ms` och ska visas för dig.
-
-## <a name="create-a-password-reset-user-flow"></a>Skapa ett användarflöde för återställning av lösenord
-
-Om du vill göra det möjligt för användare av ditt program att återställa sitt lösen ord använder du ett användar flöde för återställning av lösen ord.
-
-1. I menyn Azure AD B2C klient översikt väljer du **användar flöden** och väljer sedan **nytt användar flöde**.
-1. På sidan **skapa ett användar flöde** väljer du **lösen ords återställning** användar flöde. 
-1. Under **Välj en version** väljer du **rekommenderas** och väljer sedan **skapa**.
-1. Ange ett **Namn** för användarflödet. Till exempel *passwordreset1*.
-1. För **identitets leverantörer** aktiverar du **Återställ lösen ord med e-postadress**.
-2. Under program anspråk klickar du på **Visa fler** och väljer de anspråk som du vill ska returneras i de autentiseringstoken som skickas tillbaka till programmet. Välj till exempel **Användarobjekt-id**.
-3. Klicka på **OK**.
-4. Klicka på **skapa** för att lägga till användar flödet. Ett prefix för *B2C_1* läggs automatiskt till i namnet.
-
-### <a name="test-the-user-flow"></a>Testa användar flödet
-
-1. Välj det användar flöde som du skapade för att öppna sidan Översikt och välj sedan **Kör användar flöde**.
-1. För **program** väljer du det webb program som heter *webapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**, verifiera e-postadressen för det konto som du skapade tidigare och välj **Fortsätt**.
-1. Nu har du möjlighet att ändra lösen ordet för användaren. Ändra lösen ordet och välj **Fortsätt**. Token returneras till `https://jwt.ms` och ska visas för dig.
 
 ## <a name="next-steps"></a>Nästa steg
 

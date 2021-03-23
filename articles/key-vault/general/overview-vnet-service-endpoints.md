@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 36a94f780fa5c196e28730c051e161633ed3ee3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 148f67fb87072a8ffd25f0fe1dfdb444be052173
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431065"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771625"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault
 
@@ -59,6 +59,7 @@ Här är en lista över betrodda tjänster som har behörighet att komma åt ett
 |Azure Service Bus|[Tillåt åtkomst till ett nyckel valv för kund hanterade nyckel scenarier](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure Import/Export| [Använda Kundhanterade nycklar i Azure Key Vault för import/export-tjänsten](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Register kryptering med Kundhanterade nycklar](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Application Gateway |[Använda Key Vault certifikat för HTTPS-aktiverade lyssnare](../../application-gateway/key-vault-certs.md)
 
 > [!NOTE]
 > Du måste ställa in relevanta Key Vault åtkomst principer så att motsvarande tjänster får åtkomst till Key Vault.

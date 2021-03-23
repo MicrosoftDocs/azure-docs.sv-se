@@ -1,24 +1,24 @@
 ---
-title: Konfigurera beroende analys utan agent i Azure Migrate Server bedömning
-description: Konfigurera en agent lös beroende analys i Azure Migrate Server bedömning.
+title: Konfigurera en agent utan beroende analys i Azure Migrate
+description: Konfigurera en agent utan beroende analys i Azure Migrate.
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: c3aa2aea764af8469152b007e60427724fea398a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045861"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786591"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>Analysera Server beroenden (utan agent)
 
-Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med hjälp av Azure Migrate: Server bedömning. Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identifiera och förstå beroenden mellan servrar för utvärdering och migrering till Azure.
+Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med hjälp av Azure Migrate: verktyget för identifiering och bedömning. Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identifiera och förstå beroenden mellan servrar för utvärdering och migrering till Azure.
 
 > [!IMPORTANT]
-> En för hands version av en beroende analys är för närvarande en för hands version för servrar som körs i din VMware-miljö, som identifieras med verktyget Azure Migrate: Server bedömning.
+> En för hands version av en agent utan agent är för närvarande en för hands version för servrar som körs i din VMware-miljö, identifierat med verktyget Azure Migrate: identifiering och bedömning.
 > Den här för hands versionen täcks av kund support och kan användas för produktions arbets belastningar.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -30,7 +30,7 @@ Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med
 
 ## <a name="before-you-start"></a>Innan du börjar
 
-- Se till att du har [skapat ett Azure Migrate-projekt](./create-manage-projects.md) med verktyget Azure Migrate: Server bedömning har lagts till.
+- Se till att du har [skapat ett projekt](./create-manage-projects.md) med verktyget Azure Migrate: identifiering och bedömning har lagts till i det.
 - Granska [VMware-kraven](migrate-support-matrix-vmware.md#vmware-requirements) för att utföra beroende analyser.
 - Granska installations [kraven](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) innan du konfigurerar installationen.
 - [Granska kraven för beroende analys](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) innan du aktiverar beroende analys på servrar.
@@ -41,7 +41,7 @@ Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med
 2. Granska de Azure-URL: er som krävs för att få åtkomst till [molnet](migrate-appliance.md#government-cloud-urls) [offentliga](migrate-appliance.md#public-cloud-urls) och myndigheter.
 3. [Granska data](migrate-appliance.md#collected-data---vmware) som samlas in under identifiering och bedömning.
 4. [Antecknings](migrate-support-matrix-vmware.md#port-access-requirements) portens åtkomst krav för produkten.
-5. [Distribuera Azure Migrate-apparaten](how-to-set-up-appliance-vmware.md) för att starta identifieringen. För att distribuera installationen kan du hämta och importera en ägg-mall till VMware för att skapa en server som körs i din vCenter Server. När du har distribuerat installationen måste du registrera den med Azure Migrate-projektet och konfigurera den för att initiera identifieringen.
+5. [Distribuera Azure Migrate-apparaten](how-to-set-up-appliance-vmware.md) för att starta identifieringen. För att distribuera installationen kan du hämta och importera en ägg-mall till VMware för att skapa en server som körs i din vCenter Server. När du har distribuerat enheten måste du registrera den med projektet och konfigurera den för att initiera identifieringen.
 6. När du konfigurerar installationen måste du ange följande i Konfigurations hanteraren för installationen:
     - Information om de vCenter Server som du vill ansluta till.
     - vCenter Server autentiseringsuppgifter som är begränsade för att identifiera servrarna i VMware-miljön.
@@ -50,7 +50,7 @@ Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med
 ## <a name="verify-permissions"></a>Kontrollera behörigheter
 
 - Du måste [skapa ett vCenter Server skrivskyddat konto](./tutorial-discover-vmware.md#prepare-vmware) för identifiering och utvärdering. Det skrivskyddade kontot måste ha behörighet för **Virtual Machines**  >  **gäst åtgärder** för att kunna samverka med servrarna för att samla in beroende data.
-- Du behöver ett användar konto så att Server utvärderingen kan få åtkomst till servern för att samla in beroende data. [Lär dig](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) mer om konto krav för Windows-och Linux-servrar.
+- Du behöver ett användar konto så att Azure Migrate kan komma åt servern för att samla in beroende data. [Lär dig](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) mer om konto krav för Windows-och Linux-servrar.
 
 ### <a name="add-credentials-and-initiate-discovery"></a>Lägg till autentiseringsuppgifter och initiera identifiering
 
@@ -67,7 +67,7 @@ Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med
 
 Välj de servrar som du vill aktivera beroende identifiering för.
 
-1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
+1. I **Azure Migrate: identifiering och bedömning** klickar du på **identifierade servrar**.
 2. Välj **namnet** på den enhet vars identifiering du vill granska.
 1. Du kan se validerings statusen för servrarna under **beroenden (utan agent)** .
 1. Klicka på list rutan **beroende analys** .
@@ -81,7 +81,7 @@ Du kan visualisera beroenden runt sex timmar efter aktivering av beroende analys
 
 ## <a name="visualize-dependencies"></a>Visualisera beroenden
 
-1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
+1. I **Azure Migrate: identifiering och bedömning** klickar du på **identifierade servrar**.
 1. Välj **namnet** på den enhet vars identifiering du vill granska.
 1. Sök efter den server vars beroenden som du vill granska.
 1. Under kolumnen **beroenden (utan agent)** klickar du på **Visa beroenden**
@@ -100,7 +100,7 @@ Du kan visualisera beroenden runt sex timmar efter aktivering av beroende analys
 
 ## <a name="export-dependency-data"></a>Exportera beroende data
 
-1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
+1. I **Azure Migrate: identifiering och bedömning** klickar du på **identifierade servrar**.
 2. Klicka på list rutan **beroende analys** .
 3. Klicka på **Exportera program beroenden**.
 4. På sidan **Exportera program beroenden** väljer du namnet på den apparat som identifierar önskade servrar.
@@ -132,7 +132,7 @@ Målport | Port nummer på mål servern
 
 Välj de servrar som du vill stoppa beroende identifiering för.
 
-1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
+1. I **Azure Migrate: identifiering och bedömning** klickar du på **identifierade servrar**.
 1. Välj **namnet** på den enhet vars identifiering du vill granska.
 1. Klicka på list rutan **beroende analys** .
 1. Klicka på **ta bort servrar**.
@@ -157,7 +157,7 @@ Ladda ned PowerShell-modulen från [Azure PowerShell samples](https://github.com
     Connect-AzAccount -EnvironmentName AzureUSGovernment
     ```
 
-2. Välj den prenumeration där du har skapat Azure Migrate-projektet 
+2. Välj den prenumeration där du har skapat projektet 
 
     ```PowerShell
     select-azsubscription -subscription "Fabrikam Demo Subscription"
@@ -171,7 +171,7 @@ Ladda ned PowerShell-modulen från [Azure PowerShell samples](https://github.com
 
 ### <a name="enable-or-disable-dependency-data-collection"></a>Aktivera eller inaktivera insamling av beroende data
 
-1. Hämta listan över identifierade servrar i ditt Azure Migrate-projekt med hjälp av följande kommandon. I exemplet nedan är projekt namnet FabrikamDemoProject och den resurs grupp som det tillhör är FabrikamDemoRG. Listan över servrar kommer att sparas i FabrikamDemo_VMs.csv
+1. Hämta listan över identifierade servrar i projektet med följande kommandon. I exemplet nedan är projekt namnet FabrikamDemoProject och den resurs grupp som det tillhör är FabrikamDemoRG. Listan över servrar kommer att sparas i FabrikamDemo_VMs.csv
 
     ```PowerShell
     Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
@@ -212,7 +212,7 @@ Azure Migrate erbjuder en Power BI mall som du kan använda för att visualisera
         Connect-AzAccount -EnvironmentName AzureUSGovernment
         ```
 
-    - Välj den prenumeration där du har skapat Azure Migrate-projektet
+    - Välj den prenumeration där du har skapat projektet
 
         ```PowerShell
         select-azsubscription -subscription "Fabrikam Demo Subscription"

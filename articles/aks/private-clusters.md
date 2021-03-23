@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster 
 services: container-service
 ms.topic: article
 ms.date: 3/5/2021
-ms.openlocfilehash: 190658e23ee02651e64c3718824315c0265c0f04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556544"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771863"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
 
@@ -72,7 +72,7 @@ Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
 
 - "System" är standardvärdet. Om argumentet--Private-DNS-Zone utelämnas, kommer AKS att skapa en Privat DNS zon i resurs gruppen för noden.
 - "Ingen" innebär att AKS inte skapar någon Privat DNS zon.  Detta kräver att du tar med din egen DNS-server och konfigurerar DNS-matchning för det privata fullständiga domän namnet.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas inom agentens noder och kan orsaka kluster problem efter distributionen. 
-- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" kräver att du skapar en Privat DNS zon i det här formatet för Azure Global Cloud: `privatelink.<region>.azmk8s.io` . Du behöver resurs-ID för den Privat DNS zon som går framåt.  Dessutom behöver du en användare som tilldelats identiteten eller tjänstens huvud namn med minst `private dns zone contributor` rollen.
+- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" kräver att du skapar en Privat DNS zon i det här formatet för Azure Global Cloud: `privatelink.<region>.azmk8s.io` . Du behöver resurs-ID för den Privat DNS zon som går framåt.  Dessutom behöver du en tilldelad identitet eller tjänstens huvud namn med minst- `private dns zone contributor`  och- `vnet contributor` rollerna.
 - "FQDN-underdomänen" kan användas med "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" endast för att ge under domän funktioner till `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Förutsättningar

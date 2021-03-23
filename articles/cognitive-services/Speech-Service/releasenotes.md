@@ -11,18 +11,22 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8f3e8d72db6679a766991160c303948557719bb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bd91ca63034f77553abb00f4fbf05431a45bd55
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657747"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773393"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
 
 ## <a name="speech-sdk-1160-2021-march-release"></a>Speech SDK-1.16.0:2021 – mars release
 
 **Obs!** Speech SDK i Windows är beroende av den delade Microsoft Visual C++ Redistributable för Visual Studio 2015, 2017 och 2019. Ladda ned den [här](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+
+**Kända problem**
+
+**C++/c #/Java**: `DialogServiceConnector` det går inte `CustomCommandsConfig` att använda en för att komma åt ett program med anpassade kommandon och kommer i stället att ha ett anslutnings fel. Detta kan du arbeta runt genom att manuellt lägga till ditt program-ID i begäran med `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . Det förväntade beteendet i `CustomCommandsConfig` kommer att återställas i nästa version.
 
 **Sammanfattning av högdagrar**
 - Mindre minne och disk utrymme gör SDK: n mer effektiv – den här gången var på Android.

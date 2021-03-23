@@ -1,18 +1,14 @@
 ---
 title: Påskynda aviserings arbets flöden
 description: Förbättra aviseringar och incident arbets flöden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 0a445abe0f448c28742282aedd1a886fae0f5a43
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526297"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779128"
 ---
 # <a name="accelerate-alert-workflows"></a>Påskynda aviserings arbets flöden
 
@@ -81,16 +77,29 @@ Dessa fält ska konfigureras i partner lösningen för att Visa aviserings grupp
 ### <a name="default-alert-groups"></a>Standard aviserings grupper
 
 Följande aviserings grupper definieras automatiskt:
-|  |  |  |
-|--|--|--|
-| Onormalt kommunikations beteende | Anpassade aviseringar | Fjärråtkomst |
-| Onormalt HTTP-kommunikations beteende | Identifiering | Starta om och stoppa kommandon |
-| Autentisering | Ändring av inbyggd program vara | Genomsöka |
-| Obehörigt kommunikations beteende | Ogiltiga kommandon | Sensor trafik |
-| Bandbredds avvikelser | Internetåtkomst | Misstanke om skadlig kod |
-| Buffertspill | Åtgärds problem | Misstanke om skadlig aktivitet |
-| Kommando felen | Driftsproblem |  |
-| Konfigurations ändringar | Programmeringsspråk |  |
+
+- Onormalt kommunikations beteende
+- Anpassade aviseringar
+- Fjärråtkomst
+- Onormalt HTTP-kommunikations beteende
+- Identifiering
+- Starta om och stoppa kommandon
+- Autentisering
+- Ändring av inbyggd program vara
+- Genomsöka
+- Obehörigt kommunikations beteende
+- Ogiltiga kommandon
+- Sensor trafik
+- Bandbredds avvikelser
+- Internetåtkomst
+- Misstanke om skadlig kod
+- Buffertspill 
+- Åtgärds problem
+- Misstanke om skadlig aktivitet
+- Kommando felen
+- Driftsproblem
+- Konfigurations ändringar
+- Programmeringsspråk
 
 Aviserings grupper är fördefinierade. Kontakta [Microsoft Support](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099)om du vill ha mer information om aviseringar som är kopplade till aviserings grupper och om att skapa anpassade aviserings grupper.
 

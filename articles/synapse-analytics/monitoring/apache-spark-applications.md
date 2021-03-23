@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584532"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775901"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Använd Synapse Studio för att övervaka dina Apache Spark-program
 
@@ -157,9 +157,16 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
    ![jobb information misslyckades](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
 ## <a name="compare-apache-spark-applications"></a>Jämför Apache Spark program
-Klicka på knappen **Jämför program** och välj ett program för att jämföra prestanda. användarna kan intuitivt se skillnaden mellan de två programmen.
+
+Det finns två sätt att jämföra program. Du kan jämföra genom att välja ett **Jämför program**, eller klicka på knappen **Jämför i antecknings boken** för att visa den i antecknings boken.
+
+### <a name="compare-by-choose-an-application"></a>Jämför med Välj ett program
+
+Klicka på knappen **Jämför program** och välj ett program för att jämföra prestanda. du kan intuitivt se skillnaden mellan de två programmen.
 
 ![Jämför program](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+![information jämför program](./media/how-to-monitor-spark-applications/details-compare-applications.png)
 
 1. Använd musen för att hovra ett program och sedan visas ikonen **Jämför program** .
 
@@ -167,7 +174,7 @@ Klicka på knappen **Jämför program** och välj ett program för att jämföra
 
 3. Klicka på knappen **Välj program** för att öppna sidan **Välj jämförelse program** .
 
-4. När du väljer jämförelse programmet måste användarna antingen ange programmets URL eller välja från listan återkommande. Klicka sedan på knappen **OK** . 
+4. När du väljer jämförelse programmet måste du antingen ange programmets URL eller välja från listan återkommande. Klicka sedan på knappen **OK** . 
 
    ![Välj jämförelse program](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
 
@@ -175,6 +182,15 @@ Klicka på knappen **Jämför program** och välj ett program för att jämföra
 
    ![jämförelse resultat](./media/how-to-monitor-spark-applications/comparison-result.png)
 
+### <a name="compare-by-compare-in-notebook"></a>Jämför med jämför i Notebook
+
+Klicka på knappen **Jämför i antecknings boken** på sidan **Jämför program** för att öppna antecknings boken. Standard namnet för. ipynb-filen är **återkommande program analys**.
+
+![Jämför i Notebook](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
+
+I den bärbara datorn: den återkommande Application Analytics-filen kan du köra den direkt efter att du har angett Spark-poolen och-språket.
+
+![återkommande program analys](./media/how-to-monitor-spark-applications/recurrent-application-analytics.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

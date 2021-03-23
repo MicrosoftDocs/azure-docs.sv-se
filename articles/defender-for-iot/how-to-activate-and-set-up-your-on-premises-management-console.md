@@ -1,18 +1,14 @@
 ---
 title: Aktivera och konfigurera den lokala hanteringskonsolen
 description: Genom att aktivera hanterings konsolen ser du till att sensorer registreras med Azure och skickar information till den lokala hanterings konsolen och att den lokala hanterings konsolen utför hanterings aktiviteter på anslutna sensorer.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: defender-for-iot
-ms.openlocfilehash: f659b25abbbad5f2150ed44766d30dc1f64dd3bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 89ce6da3521248ff7373e23ae8831106cbee74de
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602764"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784636"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
@@ -236,7 +232,7 @@ I följande tabell beskrivs parametrarna i fönstret **plats hantering** .
 | Name | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
 | IP-adress | Sensorns IP-adress. |
 | Version | Sensor versionen. |
-| Anslutningsmöjlighet | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
+| Anslutning | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
 | Senaste uppgradering | Datumet för den senaste uppgraderingen. |
 | Uppgraderings förlopp | Förlopps indikatorn visar status för uppgraderings processen, enligt följande:<br />– Laddar upp paket<br />– Förbereder installation<br />– Stoppa processer<br />-Säkerhetskopiera data<br />-Tar ögonblicks bild<br />– Uppdaterar konfigurationen<br />– Uppdatering av beroenden<br />– Uppdaterar bibliotek<br />– Korrigera databaser<br />– Startar processer<br />-Verifierar systemets Sanity<br />– Verifieringen lyckades<br />-Lyckades<br />-Failure<br />-Uppgraderingen har startat<br />-Startar installationenogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Mer information om hur du uppgraderar finns i [Microsoft Support](https://support.microsoft.com/) för hjälp. |
 | Enheter | Antalet enhets enheter som sensorn övervakar. |

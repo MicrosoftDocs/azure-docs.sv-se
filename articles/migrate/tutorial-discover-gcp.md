@@ -1,31 +1,31 @@
 ---
-title: Identifiera GCP VM-instanser med Azure Migrate Server-utvärdering
-description: Lär dig hur du identifierar GCP VM-instanser med Azure Migrate Server-utvärdering.
+title: Identifiera servrar på GCP-instanser med Azure Migrate identifiering och utvärdering
+description: Lär dig hur du identifierar servrar på GCP med Azure Migrate identifiering och utvärdering.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5d57705ca0d49db1fb1d67e20beb609f21b1d5b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98541435"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771438"
 ---
-# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Självstudie: identifiera Google Cloud Platform-instanser (GCP) med Server utvärdering
+# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera Google Cloud Platform-instanser (GCP) med Azure Migrate: identifiering och utvärdering
 
 Som en del av migreringen till Azure identifierar du dina servrar för utvärdering och migrering.
 
-Den här självstudien visar hur du identifierar Google Cloud Platform-instanser (GCP) med verktyget Azure Migrate: Server bedömning med en förenklad Azure Migrate-installation. Du distribuerar installationen på en GCP VM-instans för att kontinuerligt identifiera dator-och prestanda-metadata.
+Den här självstudien visar hur du identifierar Google Cloud Platform-instanser (GCP) med verktyget Azure Migrate: identifiering och bedömning med en förenklad Azure Migrate-installation. Du distribuerar installationen på en server på GCP för att kontinuerligt identifiera metadata för dator och prestanda.
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera ett Azure-konto.
-> * Förbered GCP VM-instanser för identifiering.
-> * Skapa ett Azure Migrate-projekt.
+> * Förbered server på GCP för identifiering.
+> * Skapa ett projekt.
 > * Konfigurera Azure Migrate-enheten.
 > * Starta kontinuerlig identifiering.
 
@@ -40,15 +40,16 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 **Krav** | **Information**
 --- | ---
-**Enhet** | Du behöver en GCP VM-instans där Azure Migrates apparaten ska köras. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat.<br/> _Det finns inte stöd för att köra installationen på en dator med Windows Server 2019_.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
-**Instanser av Windows VM** | Tillåt inkommande anslutningar på WinRM-port 5985 (HTTP), så att enheten kan hämta konfigurations-och prestanda-metadata.
-**VIRTUELLA Linux-instanser** | Tillåt inkommande anslutningar på port 22 (TCP).
+**Enhet** | Du behöver en server på GCP där du kan köra Azure Migrate-enheten. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat.<br/> _Det finns inte stöd för att köra installationen på en dator med Windows Server 2019_.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
+**Windows Server-instanser** | Tillåt inkommande anslutningar på WinRM-port 5985 (HTTP), så att enheten kan hämta konfigurations-och prestanda-metadata.
+**Linux Server-instanser** | Tillåt inkommande anslutningar på port 22 (TCP).
 
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
-Om du vill skapa ett Azure Migrate-projekt och registrera Azure Migrate-enheten måste du ha ett konto med:
-- Deltagar-eller ägar behörigheter för en Azure-prenumeration.
-- Behörighet att registrera Azure Active Directory-appar (AAD).
+Om du vill skapa ett projekt och registrera Azure Migrate-enheten behöver du ett konto med:
+
+* Deltagar-eller ägar behörigheter för en Azure-prenumeration.
+* Behörighet att registrera Azure Active Directory-appar (AAD).
 
 Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerationen. Om du inte är prenumerations ägare kan du arbeta med ägaren för att tilldela behörigheterna på följande sätt:
 
@@ -56,7 +57,7 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
     ![Sök i rutan för att söka efter Azure-prenumerationen](./media/tutorial-discover-gcp/search-subscription.png)
 
-2. På sidan **prenumerationer** väljer du den prenumeration där du vill skapa ett Azure Migrate-projekt. 
+2. På sidan **prenumerationer** väljer du den prenumeration där du vill skapa ett projekt.
 3. I prenumerationen väljer du **åtkomst kontroll (IAM)**  >  **kontrol lera åtkomst**.
 4. I **kontrol lera åtkomst** söker du efter det relevanta användar kontot.
 5. I **Lägg till en roll tilldelning** klickar du på **Lägg till**.
@@ -77,21 +78,21 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
 ## <a name="prepare-gcp-instances"></a>Förbereda GCP-instanser
 
-Konfigurera ett konto som kan användas av enheten för att komma åt GCP VM-instanser.
+Konfigurera ett konto som kan användas av enheten för åtkomst till servrar på GCP.
 
-- För **Windows-servrar**:
-    - Konfigurera ett lokalt användar konto på datorer som inte är domänanslutna och ett domän konto på icke-domänanslutna datorer som du vill ska ingå i identifieringen. Lägg till användar kontot i följande grupper: 
-        - Fjärrhanteringsanvändare
-        - Användare av prestanda övervakning
-        - Prestanda loggar användare.
-- För **Linux-servrar**:
-    - Du behöver ett rot konto på de Linux-servrar som du vill identifiera. Om du inte kan ange ett rot konto läser du instruktionerna i [support mat ris](migrate-support-matrix-physical.md#physical-server-requirements) för ett alternativ.
-    - Azure Migrate använder lösenordsautentisering vid identifiering av AWS-instanser. AWS-instanser har inte stöd för lösenordsautentisering som standard. Innan du kan identifiera instansen måste du aktivera lösenordsautentisering.
+* För **Windows-servrar**:
+    * Konfigurera ett lokalt användar konto på icke-domänanslutna servrar och ett domän konto på domänanslutna servrar som du vill inkludera i identifieringen. Lägg till användar kontot i följande grupper: 
+        * Fjärrhanteringsanvändare
+        * Användare av prestanda övervakning
+        * Prestanda loggar användare.
+* För **Linux-servrar**:
+    * Du behöver ett rot konto på de Linux-servrar som du vill identifiera. Om du inte kan ange ett rot konto läser du instruktionerna i [support mat ris](migrate-support-matrix-physical.md#physical-server-requirements) för ett alternativ.
+    * Azure Migrate använder lösenordsautentisering vid identifiering av AWS-instanser. AWS-instanser har inte stöd för lösenordsautentisering som standard. Innan du kan identifiera instansen måste du aktivera lösenordsautentisering.
         1. Logga in på varje Linux-dator.
         2. Öppna filen sshd_config: vi/etc/ssh/sshd_config
         3. Leta upp raden **PasswordAuthentication** i filen och ändra värdet till **Ja**.
         4. Spara filen och Stäng den. Starta om SSH-tjänsten.
-    - Om du använder en rot användare för att identifiera dina virtuella Linux-datorer, måste du kontrol lera att rot inloggningen är tillåten på de virtuella datorerna.
+    * Om du använder en rot användare för att upptäcka Linux-servrar måste du kontrol lera att rot inloggningen är tillåten på servrarna.
         1. Logga in på varje Linux-dator
         2. Öppna filen sshd_config: vi/etc/ssh/sshd_config
         3. Leta upp raden **PermitRootLogin** i filen och ändra värdet till **Ja**.
@@ -99,18 +100,18 @@ Konfigurera ett konto som kan användas av enheten för att komma åt GCP VM-ins
 
 ## <a name="set-up-a-project"></a>Konfigurera ett projekt
 
-Skapa ett nytt Azure Migrate-projekt.
+Skapa ett nytt projekt.
 
 1. I Azure-portalen > **Alla tjänster** söker du efter **Azure Migrate**.
 2. Under **Tjänster** väljer du **Azure Migrate**.
 3. I **Översikt** väljer du **skapa projekt**.
-5. I **skapa projekt** väljer du din Azure-prenumeration och resurs grupp. Skapa en resurs grupp om du inte har någon.
-6. I **projekt information** anger du projekt namnet och geografin som du vill skapa projektet i. Granska stödda geografiska områden för [offentliga](migrate-support-matrix.md#supported-geographies-public-cloud) och [offentliga moln](migrate-support-matrix.md#supported-geographies-azure-government).
+4. I **skapa projekt** väljer du din Azure-prenumeration och resurs grupp. Skapa en resurs grupp om du inte har någon.
+5. I **projekt information** anger du projekt namnet och geografin som du vill skapa projektet i. Granska stödda geografiska områden för [offentliga](migrate-support-matrix.md#supported-geographies-public-cloud) och [offentliga moln](migrate-support-matrix.md#supported-geographies-azure-government).
 
    ![Rutor för projekt namn och region](./media/tutorial-discover-gcp/new-project.png)
 
-7. Välj **Skapa**.
-8. Vänta några minuter innan det Azure Migrate projektet distribueras. Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
+6. Välj **Skapa**.
+7. Vänta några minuter tills projektet har distribuerats. Verktyget **Azure Migrate: identifiering och bedömning** läggs till som standard i det nya projektet.
 
 ![Sida som visar verktyget för Server bedömning som har lagts till som standard](./media/tutorial-discover-gcp/added-tool.png)
 
@@ -119,27 +120,28 @@ Skapa ett nytt Azure Migrate-projekt.
 
 ## <a name="set-up-the-appliance"></a>Konfigurera installationen
 
-Azure Migrate-installationen är en förenklad installation som används av Azure Migrate Server bedömning för att göra följande:
+Azure Migrate-installationen är en förenklad utrustning som används av Azure Migrate: identifiering och utvärdering för att göra följande:
 
-- Identifiera lokala servrar.
-- Skicka metadata och prestanda data för identifierade servrar till Azure Migrate Server bedömning.
+* Identifiera lokala servrar.
+* Skicka metadata och prestanda data för identifierade servrar till Azure Migrate: identifiering och bedömning.
 
 [Läs mer](migrate-appliance.md) om Azure Migrate-enheten.
 
 Så här konfigurerar du den apparat som du:
-1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+
+1. Ange ett namn på apparaten och generera en projekt nyckel i portalen.
 1. Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
 1. Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
 1. Kör PowerShell-skriptet för att starta webb programmet för installationen.
-1. Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
+1. Konfigurera enheten för första gången och registrera den med projektet med hjälp av projekt nyckeln.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
+### <a name="1-generate-the-project-key"></a>1. generera projekt nyckeln
 
-1. I **Migreringsmål** > **Servrar** > **Azure Migrate: Serverutvärdering** väljer du **Identifiera**.
-2. I **identifiera datorer**  >  **är dina datorer virtualiserade?**, Välj **fysiska eller andra (AWS, GCP, Xen osv.)**.
-3. I **1: generera Azure Migrate projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av dina virtuella GCP-servrar. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
-4. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera datorer när du skapar resurser.
-5. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
+1. I **mål för migrering**  >  **fönster, Linux-och SQL-servrar**  >  **Azure Migrate: identifiering och bedömning**, Välj **identifiera**.
+2. I **identifiera servrar**  >  **är dina servrar virtualiserade?**, Välj **fysiska eller andra (AWS, GCP, Xen osv.)**.
+3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av dina virtuella GCP-servrar. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
+4. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera servrar när du skapar resurser.
+5. När Azure-resurserna har skapats skapas en **projekt nyckel** .
 6. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
 ### <a name="2-download-the-installer-script"></a>2. Ladda ned installations skriptet
@@ -200,7 +202,7 @@ Om du kommer över alla problem kan du komma åt skript loggarna på C:\ProgramD
 
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
-Se till att den virtuella datorns virtuella datorer kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
+Kontrol lera att enheten kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
 
 ### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 
@@ -212,16 +214,16 @@ Konfigurera enheten för första gången.
 2. Godkänn **licens villkoren** och Läs informationen från tredje part.
 1. I webbappen > **Konfigurera krav** gör du följande:
     - **Anslutning**: appen kontrollerar att servern är ansluten till Internet. Om servern använder en proxyserver:
-        - Klicka på **Konfigurera proxy** till och ange proxyadress (i formuläret http://ProxyIPAddress eller http://ProxyFQDN) lyssnande port.
+        - Klicka på **Installera Proxy** och ange proxyadress (i formuläret http://ProxyIPAddress eller http://ProxyFQDN) lyssnande port.
         - Ange autentiseringsuppgifter om proxyn kräver autentisering.
         - Endast HTTP-proxy stöds.
         - Om du har lagt till proxyinformation eller inaktiverat proxyn och/eller autentiseringen, klickar du på **Spara** för att utlösa anslutnings kontrollen igen.
     - **Tidssynkronisering**: tiden har verifierats. Tiden för installationen bör vara synkroniserad med Internet tid för att Server identifieringen ska fungera korrekt.
-    - **Installera uppdateringar**: Azure Migrate Server Assessment kontrollerar att installations programmet har de senaste uppdateringarna installerade. När kontrollen är klar kan du klicka på **Visa apparat-tjänster** för att se status och versioner för komponenterna som körs på produkten.
+    - **Installera uppdateringar**: Azure Migrate: identifiering och bedömning kontrollerar att installationen har de senaste uppdateringarna installerade. När kontrollen är klar kan du klicka på **Visa apparat-tjänster** för att se status och versioner för komponenterna som körs på produkten.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
-1. Klistra in **Azure Migrate projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Server utvärdering> identifiera> hantera befintliga apparater**, väljer det installations namn som du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
+1. Klistra in **projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Azure Migrate: identifierings-och utvärderings> identifiera> hantera befintliga apparater**, Välj det installations namn som du angav vid tidpunkten för att generera nyckeln och kopiera motsvarande nyckel.
 1. Du behöver en enhets kod för att autentisera med Azure. När du klickar på **Logga in** öppnas en modal enhets kod som visas nedan.
 
     ![Modal visar enhets koden](./media/tutorial-discover-vmware/device-code.png)
@@ -244,7 +246,7 @@ Anslut nu från installationen till GCP-servrarna och starta identifieringen.
 1. Om du använder lösenordsbaserad autentisering för Linux-server väljer du käll typen som **Linux-server (lösenordsbaserad)**, anger ett eget namn för autentiseringsuppgifter, lägger till användar namn och lösen ord. Klicka på **Spara**.
 1. Om du använder SSH-baserad autentisering för Linux-server kan du välja källtyp som **Linux-server (SSH-nyckelbaserad)**, ange ett eget namn för autentiseringsuppgifter, lägga till användar namnet, bläddra och välja filen med den privata SSH-nyckeln. Klicka på **Spara**.
 
-    - Azure Migrate stöder den privata SSH-nyckeln som genereras av ssh-keygen-kommandot med RSA-, DSA-, ECDSA-och ed25519-algoritmer.
+    - Azure Migrate stöder den privata SSH-nyckeln som genereras av ssh-keygen-kommandot med hjälp av RSA-, DSA-, ECDSA-och ed25519-algoritmer.
     - För närvarande har Azure Migrate inte stöd för en lösen fras baserad SSH-nyckel. Använd en SSH-nyckel utan lösen fras.
     - För närvarande stöder Azure Migrate inte den privata SSH-nyckelfilen som genereras av SparaTillFil.
     - Azure Migrate stöder OpenSSH-formatet för den privata SSH-nyckelfilen som visas nedan:
@@ -257,13 +259,13 @@ Anslut nu från installationen till GCP-servrarna och starta identifieringen.
 4. Du kan antingen **lägga till ett enskilt objekt** i taget eller **lägga till flera objekt** i taget. Det finns också ett alternativ för att tillhandahålla Server information via **importera CSV**.
 
     - Om du väljer **Lägg till enstaka objekt** kan du välja typ av operativ system, ange ett eget namn för autentiseringsuppgifter, lägga till serverns **IP-adress/FQDN** och klicka på **Spara**.
-    - Om du väljer **Lägg till flera objekt** kan du lägga till flera poster samtidigt genom att ange serverns **IP-adress/FQDN** med det egna namnet för autentiseringsuppgifter i text rutan. **Verifiera** de tillagda posterna och klicka på **Spara**.
+    - Om du väljer **Lägg till flera objekt** kan du lägga till flera poster samtidigt genom att ange serverns **IP-adress/FQDN** med det egna namnet för autentiseringsuppgifter i text rutan. Verifiera * * de tillagda posterna och klicka på **Spara**.
     - Om du väljer **importera CSV** _(vald som standard)_ kan du ladda ned en CSV-mallfil, fylla i filen med serverns **IP-adress/FQDN** och eget namn för autentiseringsuppgifter. Sedan kan du importera filen till enheten, **Verifiera** posterna i filen och klicka på **Spara**.
 
 5. När du klickar på Spara kommer installations programmet att försöka verifiera anslutningen till de servrar som lagts till och visa **verifierings status** i tabellen mot varje server.
     - Om verifieringen Miss lyckas för en server kan du granska felet genom att klicka på **verifieringen misslyckades** i kolumnen Status i tabellen. Åtgärda problemet och verifiera igen.
     - Klicka på **ta bort** om du vill ta bort en server.
-6. Du kan **validera** anslutningen till servrar varje gång innan du påbörjar identifieringen.
+6. Du kan **validera** anslutningen till servrarna när som helst innan du påbörjar identifieringen.
 7. Klicka på **Starta identifiering** för att starta identifiering av verifierade servrar. När identifieringen har påbörjats kan du kontrol lera identifierings statusen mot varje server i tabellen.
 
 
@@ -274,9 +276,9 @@ Detta startar identifieringen. Det tar ungefär 2 minuter per server för metada
 När identifieringen är klar kan du kontrol lera att servrarna visas i portalen.
 
 1. Öppna instrumentpanelen för Azure Migrate.
-2. På sidan **Azure Migrate-servrar**  >  **Azure Migrate: Server utvärdering** klickar du på ikonen som visar antalet för **identifierade servrar**.
+2. På sidan **Azure Migrate-Windows-, Linux-och SQL-servrar**  >  **Azure Migrate: identifiering och utvärdering** klickar du på ikonen som visar antalet för **identifierade servrar**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Utvärdera GCP-servrar](tutorial-assess-gcp.md) för migrering till virtuella Azure-datorer.
-- [Granska de data](migrate-appliance.md#collected-data---physical) som enheten samlar in under identifieringen.
+* [Utvärdera GCP-servrar](tutorial-assess-gcp.md) för migrering till virtuella Azure-datorer.
+* [Granska de data](migrate-appliance.md#collected-data---physical) som enheten samlar in under identifieringen.

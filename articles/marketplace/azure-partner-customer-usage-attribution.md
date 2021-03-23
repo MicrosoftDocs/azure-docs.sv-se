@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/09/2021
+ms.date: 03/19/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 8f84d77b5a424d5f7273c7e748c35c52882819c6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 79f3276347aa64655f0c9086db5f152c4ff5fbcf
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608401"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771098"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azures kund användnings behörighet
 
@@ -30,7 +30,7 @@ Det finns sekundära användnings fall för kund användnings behörighet utanf�
 >[!IMPORTANT]
 >- Kund användnings behörighet är inte avsedd att spåra arbetet med system integrators, hanterade tjänst leverantörer eller verktyg som främst utformats för att distribuera och hantera Azure-resurser.
 >- Kund användnings behörighet är för nya distributioner och stöder inte spårning av resurser som redan har distribuerats.
->- Alla Azure-tjänster är inte kompatibla med kund användnings behörighet. Azure Kubernetes Services (AKS) och VM Scale Sets har kända problem som orsakar rapportering av användning.
+>- Alla Azure-tjänster är inte kompatibla med kund användnings behörighet. Azure Kubernetes Services (AKS), VM Scale Sets och Azure Batch har kända problem som orsakar rapportering av användning.
 
 ## <a name="commercial-marketplace-azure-apps"></a>Azure-appar på kommersiella platser
 

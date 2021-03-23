@@ -1,17 +1,17 @@
 ---
 title: Frågor om identifiering, utvärdering och beroende analys i Azure Migrate
 description: Få svar på vanliga frågor om identifiering, utvärdering och beroende analys i Azure Migrate.
-author: vineetvikram
-ms.author: vivikram
+author: rashijoshi
+ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032576"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782358"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -28,18 +28,15 @@ I den här artikeln besvaras vanliga frågor om identifiering, utvärdering och 
 Granska de geografiska områden som stöds för [offentliga moln](migrate-support-matrix.md#supported-geographies-public-cloud) och [myndighetsmoln](migrate-support-matrix.md#supported-geographies-azure-government).
 
 
-## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hur många virtuella datorer kan jag identifiera med en apparat?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Hur många servrar kan jag identifiera med en apparat?
 
-Du kan identifiera upp till 10 000 virtuella VMware-datorer, upp till 5 000 virtuella Hyper-V-datorer och upp till 1000 fysiska servrar med hjälp av en enda apparat. Om du har fler datorer läser du om [skalning av en Hyper-V-utvärdering](scale-hyper-v-assessment.md), [skalning av en VMware-utvärdering](scale-vmware-assessment.md)eller [skalning av en fysisk server-utvärdering](scale-physical-assessment.md).
+Du kan identifiera upp till 10 000 servrar från VMware-miljön, upp till 5 000-servrar från Hyper-V-miljön och upp till 1000 fysiska servrar med hjälp av en enda apparat. Om du har fler servrar läser du om [skalning av en Hyper-V-utvärdering](scale-hyper-v-assessment.md), [skalning av en VMware-utvärdering](scale-vmware-assessment.md)eller [skalning av en fysisk server-utvärdering](scale-physical-assessment.md).
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>Hur väljer jag utvärderingstyp?
 
-- Använd **Azure VM-utvärderingar** när du vill utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md), [virtuella Hyper-V-datorer](how-to-set-up-appliance-hyper-v.md)och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer. [Läs mer](concepts-assessment-calculation.md)
+- Använd **Azure VM-utvärderingar** när du vill utvärdera servrar från din lokala [VMware](how-to-set-up-appliance-vmware.md) [-och Hyper-V-](how-to-set-up-appliance-hyper-v.md) miljö och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer. [Läs mer](concepts-assessment-calculation.md)
 
 - Använd utvärderings typ **Azure SQL** när du vill utvärdera din lokala SQL Server från VMware-miljön för migrering till Azure SQL Database eller Azure SQL-hanterad instans. [Läs mer](concepts-assessment-calculation.md)
-
-    > [!Note]
-    > Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 - Använd **Azure VMware Solution (AVS)-** utvärderingar när du vill utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till [Azure VMware-lösningen (AVS)](../azure-vmware/introduction.md) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -48,10 +45,10 @@ Du kan identifiera upp till 10 000 virtuella VMware-datorer, upp till 5 000 virt
 
 ## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Varför saknas prestanda data för vissa/alla servrar i min Azure VM-och/eller AVS-bedömnings rapport?
 
-Det står PercentageOfCoresUtilizedMissing eller PercentageOfMemoryUtilizedMissing för prestandabaserad utvärdering i utvärderingsrapporten när Azure Migrate-installationen inte kan samla in prestandadata för lokala virtuella datorer. Kontrollera följande:
+För "prestandabaserade" utvärdering är exporten av bedömnings rapporten "PercentageOfCoresUtilizedMissing" eller "PercentageOfMemoryUtilizedMissing" när Azure Migrate-enheten inte kan samla in prestanda data för lokala servrar. Kontrollera följande:
 
-- Om de virtuella datorerna är påslagna under hela den varaktighet för vilken du skapar utvärderingen
-- Om endast minnes räknare saknas och du försöker utvärdera virtuella Hyper-V-datorer. I det här scenariot aktiverar du dynamiskt minne på de virtuella datorerna och omberäknar utvärderingen för att avspegla de senaste ändringarna. Enheten kan samla in minnes användnings värden för virtuella Hyper-V-datorer endast när den virtuella datorn har dynamiskt minne aktiverat.
+- Om servrarna är påslagna under den tid som du skapar utvärderingen
+- Om endast minnes räknare saknas och du försöker utvärdera servrar i Hyper-V-miljön. I det här scenariot aktiverar du dynamiskt minne på servrarna och omberäknar utvärderingen för att avspegla de senaste ändringarna. Det går bara att samla in minnes användnings värden för servrar i Hyper-V-miljön när servern har dynamiskt minne aktiverat.
 
 - Om alla prestanda räknare saknas kontrollerar du att utgående anslutningar på portarna 443 (HTTPS) är tillåtna.
 
@@ -89,11 +86,6 @@ Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat
 
 - Vid Azure SQL-utvärderingar skapades några SQL-instanser eller databaser efter att identifieringen hade startats. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några SQL-instanser eller databaser har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Jag vill prova den nya funktionen för Azure SQL-utvärdering i Azure Migrate
-Om du vill testa funktionen använder du [den här länken](https://go.microsoft.com/fwlink/?linkid=2155668L) till att skapa ett projekt i regionen **Australien, östra**.
-- Se självstudierna för [Identifiering](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) och [utvärdering](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) för att komma igång.
-- Observera att identifiering och utvärdering av SQL Server-instanser och databaser som körs i din VMware-miljö för närvarande är i en förhandsversion.
-
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Jag kan inte se vissa servrar när jag skapar en Azure SQL-utvärdering
 
 - Azure SQL-utvärderingen kan bara utföras på servrar som körs där SQL-instanser identifierades. Om du inte ser de servrar och SQL-instanser som du vill utvärdera, väntar du en stund tills identifieringen har slutförts och skapar sedan utvärderingen. 
@@ -117,7 +109,7 @@ SQL-identifieringen utförs en gång var 24: e timme och du kan behöva vänta u
 ## <a name="my-assessment-is-in-outdated-state"></a>Min utvärdering har statusen Inaktuell
 
 ### <a name="azure-vmavs-assessment"></a>Azure VM/AVS-utvärdering
-Om det finns lokala ändringar av virtuella datorer som finns i en grupp som har bedömts, markeras utvärderingen som föråldrad. En utvärdering kan markeras som "inaktuell" på grund av en eller flera ändringar i nedanstående egenskaper:
+Om det finns lokala ändringar av servrar i en grupp som har bedömts, markeras utvärderingen som föråldrad. En utvärdering kan markeras som "inaktuell" på grund av en eller flera ändringar i nedanstående egenskaper:
 - Antal processor kärnor
 - Allokerat minne
 - Start typ eller inbyggd program vara
@@ -166,18 +158,18 @@ För Azure SQL-hanterad instans finns ingen lagrings kostnad tillagd för den f�
 - En AVS-utvärdering kan göras för grupper som endast innehåller VMware-datorer. Ta bort alla datorer som inte är VMware-datorer från gruppen om du tänker köra en AVS-utvärdering.
 - Om du kör AVS-utvärderingar i Azure Migrate för första gången rekommenderar vi att du skapar en ny grupp med VMware-datorer.
 
-## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Jag kan inte se vissa typer av virtuella datorer i Azure Government
+## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>Jag kan inte se vissa VM-typer och storlekar i Azure Government
 
-VM-typer som stöds för utvärdering och migrering är beroende av tillgängligheten på Azure Government plats. Du kan [Granska och jämföra](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) VM-typer i Azure Government.
+VM-typer och storlekar som stöds för utvärdering och migrering är beroende av tillgängligheten på Azure Government plats. Du kan [Granska och jämföra](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) VM-typer i Azure Government.
 
-## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Storleken på den virtuella datorn ändrades. Kan jag köra en utvärdering igen?
+## <a name="the-size-of-my-server-changed-can-i-run-an-assessment-again"></a>Storleken på servern har ändrats. Kan jag köra en utvärdering igen?
 
-Azure Migrates enheten samlar kontinuerligt in information om den lokala miljön.  En utvärdering är en tidpunkts ögonblicks bild av lokala virtuella datorer. Om du ändrar inställningarna för en virtuell dator som du vill utvärdera använder du alternativet beräkna om du vill uppdatera utvärderingen med de senaste ändringarna.
+Azure Migrates enheten samlar kontinuerligt in information om den lokala miljön.  En utvärdering är en tidpunkts ögonblicks bild av lokala servrar. Om du ändrar inställningarna på en server som du vill utvärdera, använder du alternativet beräkna om för att uppdatera utvärderingen med de senaste ändringarna.
 
-## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Hur gör jag för att identifiera virtuella datorer i en miljö med flera organisationer?
+## <a name="how-do-i-discover-servers-in-a-multitenant-environment"></a>Hur gör jag för att identifiera servrar i en miljö med flera organisationer?
 
-- **VMware**: om en miljö delas mellan klienter och du inte vill identifiera en innehavares virtuella datorer i en annan klient prenumeration, skapar du VMware vCenter Server autentiseringsuppgifter som bara kan komma åt de virtuella datorer som du vill identifiera. Använd sedan autentiseringsuppgifterna när du startar identifiering i Azure Migrate-installationen.
-- **Hyper-v**: identifiering använder autentiseringsuppgifter för Hyper-v-värden. Om virtuella datorer delar samma Hyper-V-värd finns det för närvarande inget sätt att separera identifieringen.  
+- **VMware**: om en miljö delas mellan klienter och du inte vill identifiera en klients servrar i en annan klient organisations prenumeration skapar du VMware vCenter Server autentiseringsuppgifter som bara har åtkomst till de servrar som du vill identifiera. Använd sedan autentiseringsuppgifterna när du startar identifiering i Azure Migrate-installationen.
+- **Hyper-v**: identifiering använder autentiseringsuppgifter för Hyper-v-värden. Om servrar delar samma Hyper-V-värd finns det för närvarande inget sätt att separera identifieringen.  
 
 ## <a name="do-i-need-vcenter-server"></a>Behöver jag vCenter Server?
 
@@ -185,9 +177,9 @@ Ja, Azure Migrate kräver vCenter Server i en VMware-miljö för att utföra ide
 
 ## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Vilka storleks alternativ finns i en Azure VM-utvärdering?
 
-Vid samma storlek som lokal storlek kan Azure Migrate inte beakta prestanda data för virtuella datorer för utvärdering. Azure Migrate bedömer VM-storlekar baserat på den lokala konfigurationen. Med prestanda-baserad storleks ändring baseras storleken på användnings data.
+Med den lokala storleks ändringen kan Azure Migrate inte beakta Server prestanda data för utvärdering. Azure Migrate bedömer VM-storlekar baserat på den lokala konfigurationen. Med prestanda-baserad storleks ändring baseras storleken på användnings data.
 
-Till exempel om en lokal virtuell dator har fyra kärnor och 8 GB minne med 50% processor användning och 50% minnes användning:
+Om till exempel en lokal server har fyra kärnor och 8 GB minne med 50% processor användning och 50% minnes användning:
 - Som lokal storlek rekommenderar vi en Azure VM-SKU som har fyra kärnor och 8 GB minne.
 - Prestandabaserade storleks ändringar kommer att rekommendera en VM-SKU som har två kärnor och 4 GB minne, eftersom användnings procenten beaktas.
 
@@ -230,7 +222,7 @@ För datorer som importeras via en CSV-fil är standard verktyget för migrering
 
 ## <a name="what-is-dependency-visualization"></a>Vad är beroende visualisering?
 
-Beroende visualisering kan hjälpa dig att utvärdera grupper av virtuella datorer för att migrera med större tillförlitlighet. Beroende visualisering mellan kontroller av dator beroenden innan du kör en utvärdering. Det hjälper till att se till att inget är kvar bakom och hjälper till att undvika oväntade avbrott när du migrerar till Azure. Azure Migrate använder Tjänstkarta-lösningen i Azure Monitor för att aktivera beroende visualisering. [Läs mer](concepts-dependency-visualization.md).
+Beroende visualisering kan hjälpa dig att utvärdera grupper av servrar för att migrera med större tillförlitlighet. Beroende visualisering mellan kontroller av dator beroenden innan du kör en utvärdering. Det hjälper till att se till att inget är kvar bakom och hjälper till att undvika oväntade avbrott när du migrerar till Azure. Azure Migrate använder Tjänstkarta-lösningen i Azure Monitor för att aktivera beroende visualisering. [Läs mer](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Agent-baserad beroende analys är inte tillgänglig i Azure Government. Du kan använda agentens beroende analys
@@ -241,7 +233,7 @@ Skillnaderna mellan agent utan visualisering och agentbaserade visualiseringar s
 
 **Krav** | **Utan agent** | **Agent-baserad**
 --- | --- | ---
-Support | Det här alternativet är för närvarande en för hands version och är bara tillgängligt för virtuella VMware-datorer. [Granska](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) operativ system som stöds. | Allmän tillgänglighet (GA).
+Support | Det här alternativet är för närvarande en för hands version och är bara tillgängligt för servrar i VMware-miljön. [Granska](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) operativ system som stöds. | Allmän tillgänglighet (GA).
 Agent | Du behöver inte installera agenter på datorer som du vill kryssa för. | Agenter som ska installeras på varje lokal dator som du vill analysera: [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)och [beroende agenten](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Förutsättningar | [Granska](concepts-dependency-visualization.md#agentless-analysis) kraven och distributions kraven. | [Granska](concepts-dependency-visualization.md#agent-based-analysis) kraven och distributions kraven.
 Log Analytics | Krävs inte. | Azure Migrate använder [tjänstkarta](../azure-monitor/vm/service-map.md) -lösningen i [Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md) för beroende visualisering. [Läs mer](concepts-dependency-visualization.md#agent-based-analysis).
@@ -296,9 +288,9 @@ För en agent-baserad visualisering kan du visualisera beroenden i upp till en t
 
 För övervakning utan agent kan du Visa beroende kartan för en enskild server från en varaktighet på mellan en timme och 30 dagar.
 
-## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Kan jag visualisera beroenden för grupper med fler än 10 virtuella datorer?
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-servers"></a>Kan jag visualisera beroenden för grupper med fler än 10 servrar?
 
-Du kan [visualisera beroenden](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) för grupper som har upp till 10 virtuella datorer. Om du har en grupp som har fler än 10 virtuella datorer rekommenderar vi att du delar upp gruppen i mindre grupper och sedan visualiserar beroendena.
+Du kan [visualisera beroenden](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) för grupper som har upp till 10 servrar. Om du har en grupp som har fler än 10 servrar, rekommenderar vi att du delar upp gruppen i mindre grupper och sedan visualiserar beroendena.
 
 ## <a name="next-steps"></a>Nästa steg
 

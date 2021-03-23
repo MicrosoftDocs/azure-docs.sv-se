@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580716"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772560"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Behörigheter i Azure Sentinel
 
@@ -56,7 +56,7 @@ Användare med särskilda jobb krav kan behöva tilldelas ytterligare roller ell
 
 - Arbeta med spel böcker för att automatisera svar på hot
 
-    Azure Sentinel använder **spel böcker** för automatiserat hot svar. Spel böcker bygger på **Azure Logic Apps** och är en separat Azure-resurs. Du kanske vill tilldela till vissa medlemmar i säkerhets åtgärds teamet möjligheten att använda Logic Apps för åtgärder för säkerhets dirigering, automation och Response (SOAR). Du kan använda [Logic app Contributor](../role-based-access-control/built-in-roles.md#logic-app-contributor) -rollen eller [Logic app-operatören](../role-based-access-control/built-in-roles.md#logic-app-operator) för att tilldela uttrycklig behörighet för att använda spel böcker.
+    Azure Sentinel använder **spel böcker** för automatiserat hot svar. Spel böcker bygger på **Azure Logic Apps** och är en separat Azure-resurs. Du kanske vill tilldela till vissa medlemmar i säkerhets åtgärds teamet möjligheten att använda Logic Apps för åtgärder för säkerhets dirigering, automation och Response (SOAR). Du kan använda [Logic app Contributor](../role-based-access-control/built-in-roles.md#logic-app-contributor) -rollen för att tilldela uttrycklig behörighet för att använda spel böcker.
 
 - Ansluta data källor till Azure Sentinel
 

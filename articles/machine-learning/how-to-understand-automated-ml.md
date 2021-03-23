@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520786"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773121"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Utvärdera resultat från automatiska maskin inlärnings experiment
 
@@ -91,6 +91,8 @@ weighted_accuracy|Viktad noggrannhet är exakthet där varje prov viktas av det 
 Automatisk ML särskiljer inte mellan binära och multiklassiga mått. Samma verifierings mått rapporteras om en data uppsättning har två klasser eller fler än två klasser. Vissa mått är dock avsedda för klassificering av flera klasser. När dessa mått används i en binär data uppsättning, kommer dessa mått inte att behandla någon klass som `true` klass, vilket kan förväntas. Mått som är tydligt avsedda för multiklassen är suffix till `micro` , `macro` eller `weighted` . Exempel:,,, `average_precision_score` `f1_score` `precision_score` `recall_score` och `AUC` .
 
 Till exempel, i stället för att beräkna återkalla som, Genomsnittligt `tp / (tp + fn)` återställnings genomsnitt för flera `micro` `macro` `weighted` klasser över båda klasserna av en binär klassificerings data uppsättning. Detta motsvarar att beräkna återkallningen för `true` klassen och `false` klassen separat, och sedan ta medelvärdet av de två.
+
+Automatiserad ML beräknar inte binära mått som är mått för data uppsättningar med binära klassificeringar. Dessa mått kan dock beräknas manuellt med hjälp av den [Förväxlings mat ris](#confusion-matrix) som automatiserad ml genererat för den specifika körningen. Du kan t. ex. beräkna precision, `tp / (tp + fp)` med sanna positiva och falskt positiva värden som visas i ett 2x2-diagram med en förvirring.
 
 ## <a name="confusion-matrix"></a>Förvirringsmatris
 

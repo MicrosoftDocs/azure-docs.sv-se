@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: aeecdcddaeba385c6dc0773356bcd0e36231e1e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f018f591052050431996e3017335ab003973d25a
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607474"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771013"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Använda SSH-nycklar med Windows på Azure
 
@@ -68,7 +68,7 @@ az vm create \
    --name myVM \
    --image UbuntuLTS\
    --admin-username azureuser \
-   --ssh-key-value ~/.ssh/id_rsa.pub
+   --ssh-key-value ~/.ssh/id_rsa
 ```
 
 Med PowerShell använder `New-AzVM` du och lägger till SSH-nyckeln i VM-konfigurationen med hjälp av. Ett exempel finns i [snabb start: skapa en virtuell Linux-dator i Azure med PowerShell](quick-create-powershell.md).
