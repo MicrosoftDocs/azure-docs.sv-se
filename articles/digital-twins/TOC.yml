@@ -255,8 +255,8 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Verktyg och exempelprojekt
       items:
-        - name: Enhetssimuleringstjänst
-          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Azure Digitals dubblare Postman-samling
+          href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Exempel på slutpunkt till slutpunkt för Azure Digital Twins
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins-utforskare (exempel)
@@ -275,6 +275,8 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Anpassade swaggers för Logic Apps-anslutningsprogram
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+        - name: Enhetssimuleringstjänst
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
     - name: DTDL
       items:
         - name: DTDL-tillägg för VS Code

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c65825a6d8d2d7f9059e91a1f248367fa1788e1a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721845"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799504"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-routningskrav
 För att kunna ansluta till Microsofts molntjänster med ExpressRoute måste du konfigurera och hantera routning. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av routning som en hanterad tjänst. Fråga din anslutningsleverantör om de erbjuder denna tjänst. Om inte måste du uppfylla följande krav:
@@ -106,7 +106,7 @@ Kontrollera att din IP-adress och ditt AS-nummer är registrerade på dig i någ
 
 Om dina prefixer och AS-nummer inte har tilldelats till dig i registren ovan måste du öppna ett supportärende för manuell validering av dina prefixer och ASN:er. Supporten behöver den dokumentation, som ett auktoriseringsdokument, som bevisar att du har behörighet att använda resurserna.
 
-Ett privat AS-nummer tillåts med Microsoft-peering men kommer också att kräva manuell verifiering. Dessutom tar vi bort privata AS-nummer i AS PATH för de mottagna prefixen. Som ett resultat av detta kan du inte lägga till privata AS-nummer i AS PATH som [påverkar routningen för Microsoft-peering](expressroute-optimize-routing.md). 
+Ett privat AS-nummer tillåts med Microsoft-peering men kommer också att kräva manuell verifiering. Dessutom tar vi bort privata AS-nummer i AS PATH för de mottagna prefixen. Som ett resultat av detta kan du inte lägga till privata AS-nummer i AS PATH som [påverkar routningen för Microsoft-peering](expressroute-optimize-routing.md). SOM nummer 64496-64511 reserverat av IANA för dokumentations syfte tillåts inte heller i sökvägen.
 
 > [!IMPORTANT]
 > Annonsera inte samma offentliga IP-väg till det offentliga Internet och över ExpressRoute. För att minska risken för felaktig konfiguration som orsakar asymmetrisk routning, rekommenderar vi starkt att [NAT-IP-adresserna](expressroute-nat.md) som annonseras till Microsoft via ExpressRoute kommer från ett intervall som inte annonseras till Internet alls. Om detta inte är möjligt är det viktigt att se till att du annonserar ett mer särskilt intervall över ExpressRoute än det som finns på Internet-anslutningen. Förutom den offentliga vägen för NAT kan du även annonsera över ExpressRoute de offentliga IP-adresser som används av servrarna i ditt lokala nätverk som kommunicerar med Microsoft 365 slut punkter inom Microsoft. 

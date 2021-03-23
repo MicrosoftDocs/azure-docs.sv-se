@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: ''
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 03/22/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b2ec3289d187997763ee0d9280a777d4fa1f396
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98602469"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801765"
 ---
 # <a name="understand-azure-role-definitions"></a>Förstå roll definitioner för Azure
 
@@ -63,7 +59,7 @@ I följande tabell beskrivs vad roll egenskaperna innebär.
 | Egenskap | Beskrivning |
 | --- | --- |
 | `Name`</br>`roleName` | Visnings namnet för rollen. |
-| `Id`</br>`name` | Rollens unika ID. |
+| `Id`</br>`name` | Rollens unika ID. Inbyggda roller har samma roll-ID i molnet. |
 | `IsCustom`</br>`roleType` | Anger om det här är en anpassad roll. Ange till `true` eller `CustomRole` för anpassade roller. Ange till `false` eller `BuiltInRole` för inbyggda roller. |
 | `Description`</br>`description` | Rollens beskrivning. |
 | `Actions`</br>`actions` | En sträng mat ris som anger vilka hanterings åtgärder som rollen kan utföra. |

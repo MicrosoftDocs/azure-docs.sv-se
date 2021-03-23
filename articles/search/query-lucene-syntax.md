@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97516602"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801595"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-frågesyntax i Azure Kognitiv sökning
 
 När du skapar frågor kan du välja metoden [Lucene Query parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) för specialiserade fråge formulär: jokertecken, fuzzy search, närhets sökning, reguljära uttryck. En stor del av den här syntaxen för en Lucene-fråga [implementeras intakt i Azure kognitiv sökning](search-lucene-query-architecture.md), med undantag för *intervalls ökningar* som är konstruerade genom **`$filter`** uttryck. 
 
-Den fullständiga Lucene-syntaxen används för frågeuttryck som skickas i **`search`** parametern för en [söknings dokument (REST API)](/rest/api/searchservice/search-documents) -begäran, och ska inte förväxlas med [OData-syntaxen](query-odata-filter-orderby-syntax.md) som används för [**`$filter`**](search-filters.md) och- [**`$orderby`**](search-query-odata-orderby.md) uttryck i samma begäran. OData-parametrar har olika syntax och regler för att konstruera frågor, undantags strängar och så vidare.
+Om du vill använda fullständig Lucene-syntax ställer du in frågetyp till "fullständig" och skickar ett frågeuttryck mönster för jokertecken, en suddig sökning eller något av de andra fråge formulären som stöds av den fullständiga syntaxen. I REST finns frågeuttryck i **`search`** -parametern för en [söknings dokument-(REST API)](/rest/api/searchservice/search-documents) förfrågan.
 
 ## <a name="example-full-syntax"></a>Exempel (fullständig syntax)
 
-Ange **`queryType`** parametern för att ange fullständig Lucene. I följande exempel anropas sökning och term ökning i fält. Den här frågan söker efter hotell där kategori fältet innehåller termen "budget". Alla dokument som innehåller frasen "nyligen renovated" rangordnas högre upp till följd av termen förstärknings värde (3).  
+I följande exempel är en Sök förfrågan konstruerad med fullständig syntax. Det här exemplet visar sökning efter fält och term förstärkning. Det letar efter hotell där fältet kategori innehåller termen "budget". Alla dokument som innehåller frasen "nyligen renovated" rangordnas högre upp till följd av termen förstärknings värde (3).  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-**`searchMode`** Parametern är relevant i det här exemplet. När operatörer finns i frågan bör du vanligt vis ange att `searchMode=all` *alla* villkor matchas.  
+Även om det inte är särskilt för någon frågetyp **`searchMode`** är parametern relevant i det här exemplet. När operatörer finns i frågan bör du vanligt vis ange att `searchMode=all` *alla* villkor matchas.  
 
-Fler exempel finns i [exempel på Lucene](search-query-lucene-examples.md)-frågesyntax. Mer information om fråge förfrågningen och parametrarna finns i [Sök efter dokument (REST API)](/rest/api/searchservice/Search-Documents).
+Fler exempel finns i [exempel på Lucene](search-query-lucene-examples.md)-frågesyntax. Mer information om fråge förfrågningen och parametrarna, inklusive searchMode, finns i [Sök efter dokument (REST API)](/rest/api/searchservice/Search-Documents).
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Grundläggande syntax  
 

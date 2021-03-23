@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88648572"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774974"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Design överväganden för skalnings uppsättningar
 I den här artikeln beskrivs design överväganden för Virtual Machine Scale Sets. Information om vad Virtual Machine Scale Sets finns i [Översikt över Virtual Machine Scale Sets](./overview.md).
@@ -67,4 +67,4 @@ En skalnings uppsättning som kon figurer ATS med användar hanterade lagrings k
 
 En skalnings uppsättning som bygger på en anpassad avbildning (en som skapats av dig) kan ha en kapacitet på upp till 600 virtuella datorer när den har kon figurer ATS med Azure Managed disks. Om skalnings uppsättningen har kon figurer ATS med användar hanterade lagrings konton måste den skapa alla OS-diskar för virtuella hård diskar i ett lagrings konto. Därför är det högsta rekommenderade antalet virtuella datorer i en skalnings uppsättning som bygger på en anpassad avbildning och ett användar hanterat lagrings utrymme 20. Om du inaktiverar överetablering kan du gå upp till 40.
 
-För fler virtuella datorer än dessa gränser måste du distribuera flera skalnings uppsättningar som visas i [den här mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+För fler virtuella datorer än dessa gränser måste du distribuera flera skalnings uppsättningar som visas i [den här mallen](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/).

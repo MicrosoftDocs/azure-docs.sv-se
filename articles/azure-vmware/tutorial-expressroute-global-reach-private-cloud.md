@@ -3,12 +3,12 @@ title: Självstudie – lokala peer-miljöer i ett privat moln
 description: Lär dig hur du skapar ExpressRoute Global Reach peering till ett privat moln i en Azure VMware-lösning.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ae92bf89a08c5fade8757e3ee596c4ed4a5e6389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494193"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786914"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Självstudie: peer-lokala miljöer till ett privat moln
 
@@ -37,7 +37,7 @@ Innan du aktiverar anslutning mellan två ExpressRoute-kretsar med ExpressRoute 
 >[!IMPORTANT]
 >I samband med dessa förutsättningar är din lokala ExpressRoute-krets _krets 1_, och din privata moln ExpressRoute-krets är i en annan prenumeration och har märkt _krets 2_.
 
-## <a name="create-an-expressroute-authorization-key-in-the-on-premises-circuit"></a>Skapa en ExpressRoute-auktoriseringsregel i den lokala kretsen
+## <a name="create-an-expressroute-authorization-key-in-the-private-cloud-expressroute-circuit"></a>Skapa en ExpressRoute-auktoriseringsregel i ExpressRoute-kretsen för privata moln
 
 [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
  

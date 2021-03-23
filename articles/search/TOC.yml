@@ -366,8 +366,6 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Förstå samlingsfilter
           href: search-query-understand-collection-filters.md
-        - name: Filtrera efter språk
-          href: search-filters-language.md
         - name: Normalisera text
           href: search-normalizers.md
     - name: Relevans
@@ -590,5 +588,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Videoklipp
+    - name: Video
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

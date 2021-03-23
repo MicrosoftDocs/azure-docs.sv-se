@@ -1,19 +1,14 @@
 ---
 title: Om Splunk-integrering
-titleSuffix: Azure Defender for IoT
 description: För att kunna åtgärda bristande insyn i säkerhet och återhämtning i nätverk med olika funktioner, har Defender för IoT utvecklat programmet Defender for IoT, IIoT och ICS Threat Monitoring för Splunk, en inbyggd integrering mellan Defender för IoT och Splunk som möjliggör en enhetlig metod för IT-och säkerhets inställningar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/4/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 91d877d644b4b5ca7231f5f81f9163a0fd3cbe25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558572"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785928"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Defender för IoT och ICS Threat Monitoring Application för Splunk
 
@@ -158,7 +153,7 @@ Så här skapar du en vidarebefordrings regel:
     | **Välj allvarlighets grad** | Den lägsta säkerhets nivå som incidenten ska vidarebefordra. Om t. ex. minor väljs, vidarebefordras mindre aviseringar och aviseringar över den här allvarlighets graden. |
     | **Protokoll** | Som standard väljs alla protokoll. Om du vill välja ett särskilt protokoll väljer du **Specific** och väljer det protokoll som regeln tillämpas på. |
     | **Motor** | Som standard ingår alla säkerhets motorer. Om du vill välja en speciell säkerhetsmotor som regeln tillämpas på väljer du **speciell** och väljer motorn. |
-    | **System meddelanden** | Vidarebefordra sensor online/offline-status. Det här alternativet är bara tillgängligt om du har loggat in på Central Manager. |                                            |
+    | **System meddelanden** | Vidarebefordra sensor online/offline-status. Det här alternativet är bara tillgängligt om du har loggat in på Central Manager. |
 
 1. Om du vill att Defender för IoT ska skicka till gångs information till Splunk väljer du **åtgärd** och väljer sedan **Skicka till Splunk-Server**.
 

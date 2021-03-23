@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 03c4babc8fa70c951d80b720c4d4693968011532
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040268"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772271"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Riktlinjer för personliga data som lagras i Log Analytics och Application Insights
 
 Log Analytics är ett data lager där personliga data troligt vis hittas. Application Insights lagrar data i en Log Analytics partition. Den här artikeln beskriver var i Log Analytics och Application Insights sådana data vanligt vis hittas, samt de funktioner som är tillgängliga för att hantera sådana data.
 
 > [!NOTE]
-> I den här artikeln refererar _data_ till data som skickas till en Log Analytics-arbetsyta, medan _program data_ refererar till data som samlas in av Application Insights.
+> I den här artikeln refererar _data_ till data som skickas till en Log Analytics-arbetsyta, medan _program data_ refererar till data som samlas in av Application Insights. Om du använder en arbets yta-baserad Application Insights resurs, kommer informationen om loggdata att gälla, men om du använder den klassiska Application Insights-resursen tillämpas program data.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="strategy-for-personal-data-handling"></a>Strategi för personlig data hantering
 
@@ -27,7 +28,7 @@ Log Analytics är ett data lager där personliga data troligt vis hittas. Applic
 
 * Stoppa, om möjligt, stoppa insamling av, obfuscate, maskera eller på annat sätt justera data som samlas in för att utesluta att de betraktas som "privata". Detta är _av_ den bästa metoden, vilket innebär att du slipper skapa en mycket kostsam och påverkan på data hanterings strategin.
 * Om det inte är möjligt försöker du normalisera data för att minska påverkan på data plattformen och prestandan. I stället för att logga ett explicit användar-ID ska du till exempel skapa en uppslags data som korrelerar användar namnet och deras information till ett internt ID som sedan kan loggas någon annan stans. På så sätt kan en av dina användare be dig att ta bort sin personliga information, men det är möjligt att bara ta bort raden i uppslags tabellen som motsvarar användaren. 
-* Slutligen, om privata data måste samlas in, skapar du en process runt rensnings-API-sökvägen och den befintliga API-sökvägen för frågor för att uppfylla alla skyldigheter som du kan ha vid export och borttagning av privata data som är associerade med en användare. 
+* Slutligen, om privata data måste samlas in, skapar du en process runt rensnings-API-sökvägen och den befintliga API-sökvägen för frågor för att uppfylla alla skyldigheter som du kan ha vid export och borttagning av privata data som är associerade med en användare.
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>Var ska du söka efter privata data i Log Analytics?
 

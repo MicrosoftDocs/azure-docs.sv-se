@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: e2f6fb167ec8b1ea15f7f08cf77720e705b2e4a3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c251634710811820ba920b72c1759938758f5d2e
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721382"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802834"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Översikt över virtuell dator i HC-serien
 
@@ -31,7 +31,7 @@ Intel Xeon platina-, guld-och silver-CPU: er introducerar också ett interaktivt
 
 Följande diagram visar ansvars fördelning av kärnor som är reserverade för Azure hypervisor och virtuell HC-serien.
 
-![Uppdelning av kärnor som har reserver ATS för Azure hypervisor och HC-seriens virtuella datorer](./media/hc-series-overview/segregation-cores.png)
+![Uppdelning av kärnor som har reserver ATS för Azure hypervisor och HC-seriens virtuella datorer](./media/architecture/hc-segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Maskinvaruspecifikationer
 

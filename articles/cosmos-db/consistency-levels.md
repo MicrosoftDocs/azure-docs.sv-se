@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/22/2021
+ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97347820"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800150"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsekvensnivåer i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,15 +51,19 @@ Du kan när som helst konfigurera standard konsekvens nivån för ditt Azure Cos
 
 Azure Cosmos DB garanterar att 100 procent av Läs begär Anden uppfyller konsekvens garantin för den valda konsekvens nivån. De exakta definitionerna av fem konsekvens nivåer i Azure Cosmos DB med språket TLA + Specification finns i [Azure-Cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub lagrings platsen.
 
-Semantiken för de fem konsekvens nivåerna beskrivs här:
+Semantiken för de fem konsekvens nivåerna beskrivs i följande avsnitt.
 
-- **Stark**: stark konsekvens erbjuder en linearizability-garanti. Linearizability refererar till att betjäna begär Anden samtidigt. Läsningarna garanterar att du returnerar den senaste allokerade versionen av ett objekt. En klient ser aldrig en obekräftad eller delvis skrivning. Användare är alltid garanterade att läsa den senaste dedikerade skrivningen.
+### <a name="strong-consistency"></a>Stark konsekvens
+
+Stark konsekvens erbjuder en linjärbarhetsgaranti. Linearizability refererar till att betjäna begär Anden samtidigt. Läsningarna garanterar att du returnerar den senaste allokerade versionen av ett objekt. En klient ser aldrig en obekräftad eller delvis skrivning. Användare är alltid garanterade att läsa den senaste dedikerade skrivningen.
 
   Följande bild illustrerar en stark konsekvens med noter. När data har skrivits till regionen "USA, västra 2" och du läser data från andra regioner får du det senaste värdet:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Bild av stark konsekvens nivå":::
 
-- **Begränsad föråldrad**: läsningarna garanteras för att respektera den konsekventa prefix-garantin. Läsningarna kan vara sena efter skrivningar med de flesta *"K"* -versioner (det vill säga "uppdateringar") för ett objekt eller med *"T"* tidsintervall, beroende på vilken som uppnås först. Med andra ord kan "föråldrad" konfigureras på två sätt när du väljer begränsat inaktuellitet:
+### <a name="bounded-staleness-consistency"></a>Konsekvens med begränsad föråldring
+
+Vid begränsade inaktuella konsekvens är läsningarna garanterat att respektera den konsekventa prefix-garantin. Läsningarna kan vara sena efter skrivningar med de flesta *"K"* -versioner (det vill säga "uppdateringar") för ett objekt eller med *"T"* tidsintervall, beroende på vilken som uppnås först. Med andra ord kan "föråldrad" konfigureras på två sätt när du väljer begränsat inaktuellitet:
 
 - Antalet versioner (*KB*) av objektet
 - Tidsintervallet (*T*) läsningar kan vara fördröjningar bakom skrivningar
@@ -79,7 +83,9 @@ I inaktuella fönster har den begränsade inaktuellaheten följande konsekvens g
 
   :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Bild av den begränsade inaktuella konsekvens nivån":::
 
-- **Session**: inom ett enda klient-sessions-läsningar garanteras att det följer konsekventa prefix, enkla och enkla Skriv åtgärder, enkla Skriv åtgärder, säkerhets garantier för Skriv åtgärder. Detta förutsätter en enskild "skribent"-session eller delar sessionstoken för flera skrivare.
+### <a name="session-consistency"></a>Sessionskonsekvens
+
+I en konsekvens Åtgärd i en enskild klient session är läsningar garanterade att respektera konsekventa prefix, enkla och högpresterande läsningar, högpresterande skrivningar, Läs-och skriv åtgärder och läsnings garantier. Detta förutsätter en enskild "skribent"-session eller delar sessionstoken för flera skrivare.
 
 Klienter utanför sessionen som utför skrivningar får följande garantier:
 
@@ -92,7 +98,9 @@ Klienter utanför sessionen som utför skrivningar får följande garantier:
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Bild av konsekvens nivå för session":::
 
-- **Konsekvent prefix**: uppdateringar som returneras innehåller vissa prefix för alla uppdateringar, utan luckor. Konsekvent konsekvens nivå för prefix garanterar att läsning aldrig ser inloggade skrivningar.
+### <a name="consistent-prefix-consistency"></a>Konsekvens med konsekvent prefix
+
+I ett enhetligt prefix-alternativ innehåller uppdateringar som returneras vissa prefix för alla uppdateringar, utan luckor. Konsekvent konsekvens nivå för prefix garanterar att läsning aldrig ser inloggade skrivningar.
 
 Om skrivningar utfördes i beställningen `A, B, C` ser en klient antingen `A` , `A,B` , eller `A,B,C` , men inte i ordning-permutationer som `A,C` eller `B,A,C` . Konsekvent prefix ger Skriv fördröjningar, tillgänglighet och Läs data flöde som är jämförbara med den slutliga konsekvensen, men ger även order garantier som uppfyller behoven i scenarier där ordningen är viktig.
 
@@ -107,7 +115,9 @@ Följande bild illustrerar konsekvens för konsekvens med noter. I alla regioner
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Illustration av konsekvent prefix":::
 
-- **Eventuell**: det finns ingen beställnings garanti för läsningar. Om det inte finns fler skrivningar slås replikerna samman till slut.  
+### <a name="eventual-consistency"></a>Slutlig konsekvens
+
+Vid eventuell konsekvens är det ingen beställnings garanti för läsningar. Om det inte finns fler skrivningar slås replikerna samman till slut.  
 Eventuell konsekvens är den svagaste typen av konsekvens eftersom en klient kan läsa värdena som är äldre än de som har lästs tidigare. Eventuell konsekvens är idealisk där programmet inte kräver några ordnings garantier. I exemplen ingår antalet retweetar, gillar eller icke-trådade kommentarer. Följande bild illustrerar den slutliga konsekvensen med noter.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="viIllustration av eventuell konsekvens":::

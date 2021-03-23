@@ -3,16 +3,16 @@ title: Systemvariabler i Azure Data Factory
 description: I den här artikeln beskrivs systemvariabler som stöds av Azure Data Factory. Du kan använda dessa variabler i uttryck när du definierar Data Factory entiteter.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: a5d2043c29db87876cc0d5ddb5b3708abad033c5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b85efa7ac4481ab9eb2b2637aee7d9e5e76e8f3f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591989"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786064"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systemvariabler som stöds av Azure Data Factory
 
@@ -24,7 +24,7 @@ I den här artikeln beskrivs systemvariabler som stöds av Azure Data Factory. D
 
 Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 
-| Variabelnamn | Description |
+| Variabelnamn | Beskrivning |
 | --- | --- |
 | @pipeline(). DataFactory |Namnet på den data fabrik som pipelinen körs i |
 | @pipeline(). Pipeline |Namn på pipelinen |
@@ -41,7 +41,7 @@ Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
-| Variabelnamn | Description |
+| Variabelnamn | Beskrivning |
 | --- | --- |
 | @trigger().scheduledTime |Tiden då utlösaren schemalades för att anropa pipeline-körningen. |
 | @trigger(). StartTime |Tiden då utlösaren **faktiskt** startade för att anropa pipeline-körningen. Detta kan skilja sig något från den schemalagda tiden för utlösaren. |
@@ -50,7 +50,7 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
-| Variabelnamn | Description |
+| Variabelnamn | Beskrivning |
 | --- | --- |
 | @trigger(). outputs. windowStartTime |Början av fönstret som är associerat med utlösarens körning. |
 | @trigger(). outputs. windowEndTime |Slutet av fönstret som är kopplat till utlösarens körning. |
@@ -61,7 +61,7 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
 
-| Variabelnamn | Description |
+| Variabelnamn | Beskrivning |
 | --- | --- |
 | @triggerBody(). fileName  |Namnet på filen vars skapande eller borttagning orsakade utlösaren för brand.   |
 | @triggerBody(). mappnamn  |Sökväg till den mapp som innehåller filen som anges av `@triggerBody().fileName` . Det första segmentet i mappsökvägen är namnet på Azure Blob Storage-behållaren.  |
@@ -74,7 +74,7 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 >[!NOTE]
 >Azure Data Factory förväntar sig att anpassad händelse ska formateras med [Azure Event Grid-händelse schema](../event-grid/event-schema.md).
 
-| Variabelnamn | Description
+| Variabelnamn | Beskrivning
 | --- | --- |
 | @triggerBody(). event. eventType | Typ av händelser som utlöste körningen av den anpassade händelse utlösaren. Händelse typ är kunddefinierat fält och kan ta med värden av sträng typ. |
 | @triggerBody(). event. Subject | Ämne för den anpassade händelse som orsakade utlösaren att utlösa. |

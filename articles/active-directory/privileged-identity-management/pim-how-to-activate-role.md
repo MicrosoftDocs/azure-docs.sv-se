@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/18/2020
+ms.date: 03/22/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fa9861dd1ffbdd33f59abe76c7ebbd1befe3e7a6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96511347"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799436"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivera mina Azure AD-roller i PIM
 
@@ -110,11 +110,7 @@ Om du inte behöver aktivera en roll som kräver godkännande kan du när som he
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Behörigheter beviljas inte efter att en roll har aktiverats
 
-När du aktiverar en roll i Privileged Identity Management kan aktiveringen inte genast spridas till alla portaler som kräver den privilegierade rollen. Ibland kan webbcachelagringen i en portal resultera i att ändringen inte börjar gälla omedelbart, även om ändringen har spridits. Om aktiveringen fördröjs, är det vad du ska göra.
-
-1. Logga ut från Azure-portalen och logga sedan in igen.
-
-1. I Privileged Identity Management kontrollerar du att du är listad som medlem i rollen.
+När du aktiverar en roll i Privileged Identity Management kan aktiveringen inte genast spridas till alla portaler som kräver den privilegierade rollen. Ibland kan webbcachelagringen i en portal resultera i att ändringen inte börjar gälla omedelbart, även om ändringen har spridits. Om aktiveringen fördröjs loggar du ut från portalen som du försöker utföra åtgärden och loggar sedan in igen. I Azure Portal loggar PIM dig och tillbaka automatiskt.
 
 # <a name="previous-version"></a>[Tidigare version](#tab/previous)
 
@@ -216,13 +212,7 @@ Om du inte behöver aktivera en roll som kräver godkännande kan du när som he
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Behörigheter beviljas inte efter att en roll har aktiverats
 
-När du aktiverar en roll i Privileged Identity Management kan aktiveringen inte genast spridas till alla portaler som kräver den privilegierade rollen. Ibland kan webbcachelagringen i en portal resultera i att ändringen inte börjar gälla omedelbart, även om ändringen har spridits. Om aktiveringen fördröjs, är det vad du ska göra.
-
-1. Logga ut från Azure-portalen och logga sedan in igen.
-
-    När du aktiverar en Azure AD-roll visas stegen i aktiveringen. När alla steg har slutförts visas länken **Logga ut**. Du kan använda den här länken för att logga ut. Detta kommer att lösa de flesta fall för aktiverings fördröjning.
-
-1. I Privileged Identity Management kontrollerar du att du är listad som medlem i rollen.
+När du aktiverar en roll i Privileged Identity Management kan aktiveringen fördröjas i administrations portarna förutom Azure Portal, till exempel Office 365-portalen. Om aktiveringen är fördröjd loggar du ut från portalen som du är i och loggar sedan in igen. Använd Privileged Identity Management för att kontrol lera att du visas som medlem i rollen.
 
  ---
 

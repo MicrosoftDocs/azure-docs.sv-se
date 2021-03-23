@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 3db4999f1cb6185f02a40395842c30b9d77072b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cccfd6b74acf26aeed3ad06ac6dcdb39c2ae6bef
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489029"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802241"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -55,8 +55,9 @@ Det här avsnittet innehåller referenser för Windows-program och SQL Server-l�
 ### <a name="sql-server"></a>SQL Server
 
 * [Distribuera SQL Server över SMB med Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
-<!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
-<!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
+* [Distribuera SQL Server Always-On redundanskluster via SMB med Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
+* [Distribuera Always-On tillgänglighets grupper med Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
+* [Fördelar med att använda Azure NetApp Files för SQL Server distribution](solutions-benefits-azure-netapp-files-sql-server.md)
 
 ## <a name="sap-on-azure-solutions"></a>SAP på Azure-lösningar
 

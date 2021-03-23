@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c03d3f9769aec0736d23f18372701e08ad93dac
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631888"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802802"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Vanliga frågor och svar om flera sessioner för Windows 10 Enterprise
 
@@ -33,9 +33,13 @@ Windows 10 Enterprise multi-session är en virtuell utgåva av Windows 10 Enterp
 
 Windows 10 Enterprise multi-session kan inte köras i lokala produktions miljöer eftersom den är optimerad för Windows Virtual Desktop-tjänsten för Azure. Det är gentemot licens avtalet att köra Windows 10 Enterprise multi-session utanför Azure i produktions syfte. Windows 10 Enterprise multi-session aktive ras inte mot lokala nyckel hanterings tjänster (KMS).
 
+## <a name="can-i-upgrade-a-windows-10-vm-to-windows-10-enterprise-multi-session"></a>Kan jag uppgradera en virtuell Windows 10-dator till Windows 10 Enterprise multi-session?
+
+Nej. Det går för närvarande inte att uppgradera en befintlig virtuell dator (VM) som kör Windows 10 Professional eller Enterprise till Windows 10 Enterprise multi-session. Om du distribuerar en virtuell dator med Windows 10 Enterprise för flera sessioner och sedan uppdaterar produkt nyckeln till en annan version kan du inte byta tillbaka den virtuella datorn till Windows 10 Enterprise multi-session och behöver distribuera om den virtuella datorn.
+
 ## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>Hur gör jag för att anpassa Windows 10 Enterprise-avbildningen för flera sessioner för min organisation?
 
-Du kan starta en virtuell dator (VM) i Azure med Windows 10 Windows 10 Enterprise multi-session och anpassa den genom att installera LOB-program, sysprep/generalize och sedan skapa en avbildning med hjälp av Azure Portal.
+Du kan starta en virtuell dator i Azure med Windows 10 Windows 10 Enterprise multi-session och anpassa den genom att installera LOB-program, sysprep/generalize och sedan skapa en avbildning med hjälp av Azure Portal.
 
 Kom igång genom att skapa en virtuell dator i Azure med Windows 10 Enterprise multi-session. I stället för att starta den virtuella datorn i Azure kan du ladda ned den virtuella hård disken direkt. Därefter kan du använda den virtuella hård disk som du laddade ned för att skapa en ny virtuell dator i generation 1 på en Windows 10-dator med Hyper-V aktiverat.
 

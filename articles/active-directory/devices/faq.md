@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eb468dba1156087bdeb6086f5bc24b214e576e18
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199718"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773308"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Vanliga frågor och svar om Azure Active Directory enhets hantering
 
@@ -267,7 +267,7 @@ Detta beteende:
 
 **A:** När användarna lägger till sina konton i appar på en domänansluten enhet kan de uppmanas att **lägga till kontot i Windows?** Om de anger **Ja** i frågan registreras enheten med Azure AD. Förtroende typen är markerad som Azure AD registrerad. När du har aktiverat hybrid Azure AD Join i din organisation får enheten även hybrid Azure AD-anslutning. Sedan visas två enhets tillstånd för samma enhet. 
 
-Hybrid Azure AD Join prioriteras över Azure AD-registrerat tillstånd. Enheten betraktas som hybrid Azure AD-ansluten för all autentisering och utvärdering av villkorlig åtkomst. Du kan på ett säkert sätt ta bort den registrerade enhets posten i Azure AD från Azure AD-portalen. Lär dig att [undvika eller rensa upp det här dubbla läget på Windows 10-datorn](hybrid-azuread-join-plan.md#review-things-you-should-know). 
+I de flesta fall har hybrid Azure AD-anslutning företräde framför Azure AD-registrerat tillstånd, vilket leder till att din enhet anses vara hybrid Azure AD-ansluten för all autentisering och utvärdering av villkorlig åtkomst. Men ibland kan detta dubbla tillstånd leda till en icke-deterministisk utvärdering av enheten och orsaka åtkomst problem. Vi rekommenderar starkt att du uppgraderar till Windows 10 version 1803 och senare där vi automatiskt rensar den registrerade Azure AD-statusen. Lär dig hur du [undviker eller rensar upp det här dubbla läget på Windows 10-datorn](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 

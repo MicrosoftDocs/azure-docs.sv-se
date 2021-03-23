@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 03/19/2021
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: e488d1acfe116409caf571e7878e454628a9dea9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b2944c1d29849ea44b5afd878d5b0e030358cc5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201333"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801833"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>Sök efter begär ande enhets avgiften för åtgärder som körs i Azure Cosmos DB API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -34,13 +34,17 @@ Avgiften för RU visas med ett anpassat [databas kommando](https://docs.mongodb.
 
 1. Gå till fönstret **datautforskaren** och välj den behållare som du vill arbeta med.
 
-1. Välj **Ny fråga**.
+1. Välj **...** bredvid behållar namnet och välj **ny fråga**.
 
 1. Ange en giltig fråga och välj sedan **Kör fråga**.
 
-1. Välj **fråga statistik** för att visa den faktiska begär ande avgiften för den begäran du utförde.
+1. Välj **fråga statistik** för att visa den faktiska begär ande avgiften för den begäran du utförde. Med den här Frågeredigeraren kan du köra och Visa avgifter för begär ande enheter för endast frågeuttryck. Du kan inte använda den här redigeraren för data behandlings kommandon som INSERT-instruktioner.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Skärm bild av en MongoDB för förfrågningar om begär anden i Azure Portal":::
+   :::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Skärm bild av en MongoDB för förfrågningar om begär anden i Azure Portal":::
+
+1. Om du vill hämta begär ande avgifter för kommandon för att manipulera data kan du köra `getLastRequestStatistics` kommandot från ett gränssnitt baserat användar gränssnitt, till exempel Mongo Shell, [Robo 3T](mongodb-robomongo.md), [MONGODB kompass](mongodb-compass.md)eller ett vs Code-tillägg med Shell-skript.
+
+   `db.runCommand({getLastRequestStatistics: 1})`
 
 ## <a name="use-the-mongodb-net-driver"></a>Använda MongoDB .NET-driv rutinen
 

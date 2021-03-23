@@ -10,12 +10,12 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 12ee827f297729682b0a5e1b1808afe312c657a4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 847e100dfaa922c359b321f17d77d2d0c67afc9b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499075"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802870"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Komma igång med Azure Table Storage och Azure Cosmos DB Table-API:et med hjälp av Python
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -41,9 +41,9 @@ Vi rekommenderar att du använder [referensen för Azure Cosmos DB SDK för Pyth
 
 Du behöver följande för att kunna följa med i det här exemplet:
 
-* [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 eller 3.6
+* [Python](https://www.python.org/downloads/) 2,7 eller 3.6 +.
 * [Azure Cosmos DB Table SDK för python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Detta SDK fungerar med både Azure Table Storage och Azure Cosmos DB Table-API:et.
-* Ett [Azure Storage-konto](../storage/common/storage-account-create.md) eller [Azure Cosmos DB-konto](https://azure.microsoft.com/try/cosmosdb/)
+* [Azure Storage konto](../storage/common/storage-account-create.md) eller [Azure Cosmos DB konto](https://azure.microsoft.com/try/cosmosdb/).
 
 ## <a name="create-an-azure-service-account"></a>Skapa ett Azure-tjänstkonto
 

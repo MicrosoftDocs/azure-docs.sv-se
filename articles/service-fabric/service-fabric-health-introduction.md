@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96008284"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800167"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Introduktion till Service Fabric-hälsoövervakning
 Azure Service Fabric introducerar en hälso modell som ger omfattande, flexibel och utöknings bar hälso utvärdering och rapportering. Modellen möjliggör real tids övervakning av klustrets tillstånd och de tjänster som körs i den. Du kan enkelt få hälso information och åtgärda eventuella problem innan de överlappar varandra och orsakar enorma avbrott. I den typiska modellen skickar tjänster rapporter baserat på deras lokala vyer och den informationen aggregeras för att ge en övergripande vy på kluster nivå.
@@ -79,6 +79,7 @@ Som standard tillämpar Service Fabric strikta regler (allting måste vara felfr
 
 ### <a name="cluster-health-policy"></a>Kluster hälso princip
 [Kluster hälso principen](/dotnet/api/system.fabric.health.clusterhealthpolicy) används för att utvärdera hälso tillståndet för klustret och nodens hälso tillstånd. Principen kan definieras i kluster manifestet. Om den inte finns används standard principen (noll tolererade Miss lyckas).
+
 Kluster hälso principen innehåller:
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Anger om varnings hälso rapporter ska behandlas som fel under hälso utvärderingen. Standard: falskt.
@@ -87,18 +88,33 @@ Kluster hälso principen innehåller:
 * [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Princip mappningen för program typens hälso princip kan användas vid utvärdering av kluster hälsa för att beskriva särskilda program typer. Som standard placeras alla program i en pool och utvärderas med MaxPercentUnhealthyApplications. Om vissa program typer ska behandlas annorlunda kan de tas bort från den globala poolen. I stället utvärderas de mot procent andelen som är kopplade till deras program typs namn i kartan. I ett kluster finns det till exempel tusentals program av olika typer och några kontroll program instanser av en särskild program typ. Kontroll programmen ska aldrig ha fel. Du kan ange globala MaxPercentUnhealthyApplications till 20% för att tolerera vissa problem, men för program typen "ControlApplicationType" anger du MaxPercentUnhealthyApplications till 0. På så sätt kommer klustret att utvärderas som varning om några av de många programmen inte är felfria, men lägre än den globala procent andelen. En varnings hälso tillstånd påverkar inte kluster uppgraderingen eller annan övervakning som utlöses av fel hälso tillstånd. Men till och med ett kontroll program i fel skulle klustret vara skadat, vilket utlöser återställnings-eller pausar kluster uppgraderingen, beroende på uppgraderings konfigurationen.
   För de program typer som definierats i kartan tas alla program instanser bort från den globala poolen med program. De utvärderas baserat på det totala antalet program av program typen, med hjälp av den specifika MaxPercentUnhealthyApplications från kartan. Alla resten av programmen finns kvar i den globala poolen och utvärderas med MaxPercentUnhealthyApplications.
 
-Följande exempel är ett utdrag från ett kluster manifest. Om du vill definiera poster i program typs mappningen, anger du parameter namnet med "ApplicationTypeMaxPercentUnhealthyApplications-", följt av programmets typ namn.
+  Följande exempel är ett utdrag från ett kluster manifest. Om du vill definiera poster i program typs mappningen, anger du parameter namnet med "ApplicationTypeMaxPercentUnhealthyApplications-", följt av programmets typ namn.
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Typ av hälso princip för nodtyp kan användas under utvärdering av kluster hälsa för att beskriva särskilda nodtyper. Nodtypen utvärderas mot procent andelen som är kopplade till deras nodnamn i kartan. Att ange det här värdet har ingen påverkan på den globala poolen med noder som används för `MaxPercentUnhealthyNodes` . Ett kluster har till exempel hundratals noder av olika typer och några nodtyper som är värdar för viktiga arbeten. Inga noder i den typen bör vara nere. Du kan ange globala `MaxPercentUnhealthyNodes` till 20% för att tolerera vissa problem för alla noder, men för nodtypen `SpecialNodeType` anger `MaxPercentUnhealthyNodes` du till 0. På så sätt kommer klustret att utvärderas som varnings hälso tillstånd om några av de många noderna inte är felfria men lägre än den globala nivån i procent. En varnings hälso tillstånd påverkar inte kluster uppgraderingen eller också utlöses den andra övervakningen av ett fel hälso tillstånd. Men även en nod av typen `SpecialNodeType` i ett fel hälso tillstånd gör att klustret inte är felfritt och utlöser återställningen eller pausar kluster uppgraderingen, beroende på uppgraderings konfigurationen. Om du ställer in globala `MaxPercentUnhealthyNodes` till 0 och anger `SpecialNodeType` Max procent Felaktiga noder till 100 med en nod av typen `SpecialNodeType` i ett fel tillstånd, kommer klustret fortfarande att placeras i ett fel tillstånd eftersom den globala begränsningen är mer strikt i det här fallet. 
+
+  Följande exempel är ett utdrag från ett kluster manifest. Om du vill definiera poster i mappningen av nodtypen anger du parameter namnet med "NodeTypeMaxPercentUnhealthyNodes-", följt av namnet på nodtypen.
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>Program hälso princip
 [Program hälso principen](/dotnet/api/system.fabric.health.applicationhealthpolicy) beskriver hur utvärderingen av händelser och sammansättning av underordnade tillstånd görs för program och deras underordnade. Den kan definieras i applikations manifestet **ApplicationManifest.xml** i programpaketet. Om inga principer anges förutsätter Service Fabric att enheten inte är felfri om den har en hälso rapport eller en underordnad i varnings-eller fel hälso tillståndet.

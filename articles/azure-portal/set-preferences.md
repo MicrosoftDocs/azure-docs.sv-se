@@ -2,14 +2,14 @@
 title: Hantera dina inställningar i Microsoft Azure-portalen
 description: Du kan ändra Azure Portal standardinställningarna så att de passar dina egna inställningar. Inställningarna omfattar tids gräns för inaktiv session, standardvy, Meny läge, kontrast, tema, meddelanden och språk och nationella format
 keywords: inställningar, tids gräns, språk, regional
-ms.date: 08/05/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 067b9808a91b8e5e22fb940095779b099bad0d58
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100588803"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775107"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Hantera dina inställningar i Microsoft Azure-portalen
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5df0a5fc054a12e3fa2ef1e352645c57c357b01
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94353112"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798739"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Salesforce för automatisk användar etablering
 
@@ -27,6 +27,9 @@ Det scenario som beskrivs i självstudien förutsätter att du redan har följan
 
 * En Azure Active Directory-klient
 * En Salesforce.com-klient
+
+> [!Note]
+> Roller ska inte redige ras manuellt i Azure Active Directory när roll importer utförs.
 
 > [!IMPORTANT]
 > Om du använder ett Salesforce.com utvärderings konto kan du inte konfigurera automatisk användar etablering. Utvärderings kontona har inte den nödvändiga API-åtkomsten aktiverat förrän de har köpts. Du kan komma runt den här begränsningen genom att använda ett kostnads fritt [utvecklare](https://developer.salesforce.com/signup) för att slutföra den här kursen.

@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b975b129f4384c09006a22b1ab124b1906a869d3
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622225"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803205"
 ---
 Kom igång med Azure Communication Services med hjälp av tjänsten python SMS-klient bibliotek för kommunikations tjänster för att skicka SMS-meddelanden.
 
@@ -28,7 +28,7 @@ Att slutföra den här snabb starten innebär en låg kostnad av några USD cent
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- [Python](https://www.python.org/downloads/) 2,7, 3,5 eller senare.
+- [Python](https://www.python.org/downloads/) 2,7 eller 3.6 +.
 - En aktiv kommunikations tjänst resurs och anslutnings sträng. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
 - Ett SMS-aktiverat telefonnummer. [Hämta ett telefonnummer](../get-phone-number.md).
 

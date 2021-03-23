@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590916"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802938"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Vad är nytt i Azure NetApp Files
 
 Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en översikt över de senaste nya funktionerna och förbättringarna. 
 
-## <a name="march-2021"></a>Mars 2021 
+## <a name="march-2021"></a>Mars 2021
+
+* SMB-resurser för kontinuerlig tillgänglighet (för hands version)  
+
+    SMB transparent redundans möjliggör underhålls åtgärder på tjänsten Azure NetApp Files utan att avbryta anslutningen till serverprogram som lagrar och använder data på SMB-volymer. För att ha stöd för transparent SMB-redundans stöder Azure NetApp Files nu alternativet SMB-resurser med kontinuerlig tillgänglighet för användning med SQL Server program över SMB som körs på virtuella Azure-datorer. Den här funktionen stöds för närvarande på Windows SQL Server. Linux-SQL Server stöds inte för närvarande. Att aktivera den här funktionen ger betydande SQL Server prestanda förbättringar och skalnings-och kostnads förmåner för [en enskild instans, Always-On redundanskluster och Always-On tillgänglighets grupps distributioner](azure-netapp-files-solution-architectures.md#sql-server). Se [fördelarna med att använda Azure NetApp Files för SQL Server-distribution](solutions-benefits-azure-netapp-files-sql-server.md).
 
 * [Automatisk storleks ändring av en mål volym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 
@@ -33,7 +37,7 @@ Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en öve
 
 ## <a name="december-2020"></a>December 2020
 
-* [Azure Application enhetligt ögonblicks bild verktyget](azacsnap-introduction.md) (offentlig för hands version)    
+* [Azure Application enhetligt ögonblicks bild verktyget](azacsnap-introduction.md) (förhands granskning)    
 
     Azure Application enhetligt ögonblicks bild verktyget (AzAcSnap) är ett kommando rads verktyg som gör det möjligt att förenkla data skyddet för databaser från tredje part (SAP HANA) i Linux-miljöer (till exempel SUSE och RHEL).   
 
@@ -53,7 +57,7 @@ Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en öve
 
 ## <a name="september-2020"></a>September 2020
 
-* [Azure NetApp Files replikering över flera regioner](cross-region-replication-introduction.md) (offentlig för hands version)
+* [Azure NetApp Files replikering mellan regioner](cross-region-replication-introduction.md) (för hands version)
 
   Azure NetApp Files stöder nu replikering över flera regioner. Med den här nya funktionen för haveri beredskap kan du replikera dina Azure NetApp Files volymer från en Azure-region till en annan på ett snabbt och kostnads effektivt sätt och skydda dina data från oförutsedda regionala haverier. Azure NetApp Files replikering mellan regioner utnyttjar NetApp SnapMirror® Technology; endast ändrade block skickas över nätverket i ett komprimerat, effektivt format. Den här tillverkarspecifika tekniken minimerar mängden data som krävs för att replikera över regionerna, och därför sparar kostnader för data överföring. Den förkortar också replikerings tiden, så att du kan få ett mindre återställnings punkt mål (återställnings punkt mål).
 

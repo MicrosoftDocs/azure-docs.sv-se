@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726844"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802207"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -32,6 +32,9 @@ Data i ett Azure Storage-konto replikeras alltid tre gånger i den primära regi
 
 - **Lokalt Redundant lagring (LRS)** kopierar dina data synkront tre gånger inom en enda fysisk plats i den primära regionen. LRS är det minst dyra replikeringsalternativ, men det rekommenderas inte för program som kräver hög tillgänglighet.
 - **Zone-redundant lagring (ZRS)** kopierar dina data synkront över tre tillgänglighets zoner i Azure i den primära regionen. För program som kräver hög tillgänglighet rekommenderar Microsoft att du använder ZRS i den primära regionen och även replikerar till en sekundär region.
+
+> [!NOTE]
+> Microsoft rekommenderar att du använder ZRS i den primära regionen för Azure Data Lake Storage Gen2 arbets belastningar.
 
 ### <a name="locally-redundant-storage"></a>Lokalt redundant lagring
 

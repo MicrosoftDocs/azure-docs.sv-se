@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 03/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 3f91ca21512b8cddcac7fe71fa3eec07e1a8745a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1a835d26b4c41c92b9849856a2f31b3550947bd8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720091"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801901"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>API Management principer för att validera begär Anden och svar
 
@@ -115,7 +115,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 `validate-parameters`Principen verifierar parametrarna för sidhuvud, fråga eller sökväg i begär Anden mot API-schemat.
 
 > [!IMPORTANT]
-> Om du har importerat ett API med hjälp av en hanterings-API-version tidigare än `2021-01-01-preview` , `validate-parameters` kanske principen inte fungerar. Du kan behöva importera ditt API igen med hjälp av hanterings-API-versionen `2021-01-01-preview` eller senare.
+> Om du har importerat ett API med hjälp av en hanterings-API-version tidigare än `2021-01-01-preview` , `validate-parameters` kanske principen inte fungerar. Du kan behöva [Importera ditt API](/rest/api/apimanagement/2021-01-01-preview/apis/createorupdate) igen med hjälp av hanterings-API-versionen `2021-01-01-preview` eller senare.
 
 
 ### <a name="policy-statement"></a>Princip kommentar
@@ -145,6 +145,7 @@ I det här exemplet verifieras alla frågor och Sök vägs parametrar i skydds l
         <parameter name="User-Agent" action="ignore" />
         <parameter name="Host" action="ignore" />
         <parameter name="Referrer" action="ignore" />
+    </headers>   
 </validate-parameters>
 ```
 

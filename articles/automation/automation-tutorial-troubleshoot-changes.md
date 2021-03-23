@@ -4,15 +4,15 @@ description: Den här artikeln beskriver hur du felsöker ändringar på en virt
 services: automation
 ms.subservice: change-inventory-management
 keywords: ändring, spårning, ändrings spårning, inventering, automatisering
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100587930"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775822"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Felsöka ändringar på en virtuell Azure-dator
 
@@ -208,15 +208,15 @@ Det kan vara användbart att granska ändringar i Azure-portalen, men det är b�
 
 14. För **åtgärder** anger du ett namn för åtgärden, t. ex. **e-postadministratörer**. 
 
-15. För **Åtgärds typ** väljer du **e-post/SMS/push/röst**. 
+15. För **Åtgärds typ** väljer du **e-post/SMS-meddelande/push/röst**. 
 
 16. Välj **Redigera information** om du vill ha mer **information**.
 
-    ![Lägg till åtgärdsgrupp](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="Användning och uppskattade kostnader." lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. I fönstret e-post/SMS/push/Voice anger du ett namn, markerar kryss rutan **e-** postadress och anger sedan en giltig e-postadress. När du är färdig klickar du på **OK** i fönstret och sedan på **OK** på sidan Lägg till åtgärds grupp.
+17. I fönstret **e-post/SMS/push/Voice** anger du ett namn, markerar kryss rutan **e-postadress** och anger sedan en giltig e-postadress. När du är färdig klickar du på **OK** i fönstret och sedan på **OK** på sidan **Lägg till åtgärds grupp** .
 
-18. Om du vill anpassa ämnet för aviserings meddelandet väljer du **Anpassa åtgärder**. 
+18. Om du vill anpassa ämnet för aviserings meddelandet väljer du **Anpassa åtgärder**.
 
 19. Välj **e-postämne** för **Skapa regel** och välj sedan **skapa aviserings regel**. Varningen berättar när en distribution lyckas och vilka datorer som var en del av denna uppdaterade distributionskörning. Följande bild är ett exempel på ett e-postmeddelande som tas emot när W3SVC-tjänsten stoppas.
 

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096453"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802751"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Distribuera Azure-Virtual Machines med Azure PowerShell
 
@@ -76,20 +76,53 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>Simulera en avtagning
 
-Du kan [simulera en avlägsnande](/rest/api/compute/virtualmachines/simulateeviction) av en virtuell Azure-dator för att testa hur bra ditt program kommer att återdamma till en plötslig avlägsning. 
+Du kan simulera en avlägsnande av en virtuell Azure-dator med hjälp av REST, PowerShell eller CLI för att testa hur bra ditt program kommer att reagera på en plötslig avlägsning.
 
-Ersätt följande med din information: 
+I de flesta fall ska du använda REST API [Virtual Machines-simulera avlägsnande](/rest/api/compute/virtualmachines/simulateeviction) för att hjälpa till med automatiserad testning av program. För REST `Response Code: 204` innebär det att den simulerade avtagningen lyckades. Du kan kombinera simulerade avvisningar med den [schemalagda händelse tjänsten](scheduled-events.md)för att automatisera hur appen kommer att svara när den virtuella datorn avlägsnas.
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+Om du vill se schemalagda händelser i praktiken kan du titta på [Azure fredag – använda azure schemalagda händelser för att förbereda för underhåll av virtuella datorer](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance).
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>Kort guide
+
+För ett snabb test för att visa hur en simulerad avlägsnande kommer att fungera, ska vi gå igenom den schemalagda händelse tjänsten och se hur den ser ut när du simulerar en avtagning med PowerShell.
+
+Tjänsten schemalagd händelse tjänst är aktive rad för din tjänst första gången du gör en begäran om händelser. 
+
+Fjärranslut till den virtuella datorn och öppna en kommando tolk. 
+
+Från kommando tolken på den virtuella datorn skriver du:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` innebär att den simulerade avtagningen lyckades. 
+Det här första svaret kan ta upp till 2 minuter. Från och med nu bör de visa utdata nästan omedelbart.
+
+Från en dator där AZ PowerShell-modulen är installerad (till exempel din lokala dator) simulerar du en avtagning med [set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). Ersätt resurs gruppens namn och namnet på den virtuella datorn med dina egna. 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+Svarets utdata kommer att ha `Status: Succeeded` om begäran har gjorts.
+
+Gå snabbt tillbaka till din fjärr anslutning till din virtuella dator och fråga Schemalagda händelser slut punkten igen. Upprepa följande kommando tills du får ett utdata som innehåller mer information:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+När den schemalagda händelse tjänsten får meddelandet om borttagning, får du ett svar som ser ut ungefär så här:
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+Du kan se att `"EventType":"Preempt"` och resursen är den virtuella dator resursen `"Resources":["myspotvm"]` . 
+
+Du kan också se när den virtuella datorn kommer att avlägsnas genom att kontrol lera `"NotBefore"` värdet. Den virtuella datorn tas inte bort före den tid som anges i `NotBefore` , så det är ditt fönster för ditt program att stängas av korrekt.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

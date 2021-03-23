@@ -4,12 +4,12 @@ description: Använd Azure Container Registry för att skapa, importera, lagra o
 ms.topic: article
 ms.date: 02/07/2021
 ms.custom: ''
-ms.openlocfilehash: f8467cd3108ae4faea9ecb4c9d9ae339f476c311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 520518a275e0a9d191ae770e560a0e6e8278eae2
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100012338"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802462"
 ---
 # <a name="multi-architecture-images-in-your-azure-container-registry"></a>Avbildningar med flera arkitekturer i Azure Container Registry
 
@@ -165,7 +165,7 @@ steps:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Använd [Azure-pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) för att bygga behållar avbildningar för olika arkitekturer.
+* Använd [Azure-pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) för att bygga behållar avbildningar för olika arkitekturer.
 * Lär dig mer om att skapa avbildningar med flera plattformar med hjälp av experimentell Docker [buildx](https://docs.docker.com/buildx/working-with-buildx/) -plugin-programmet.
 
 <!-- LINKS - external -->

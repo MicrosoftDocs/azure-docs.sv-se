@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a8de9b373a14eab45df28b28bb3f94314c1d89a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100635497"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801095"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Skapa en SMB-volym för Azure NetApp Files
 
@@ -89,8 +89,32 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory anslutning. Om 
     * Välj **SMB** som protokoll typ för volymen. 
     * Välj din **Active Directory** anslutning i list rutan.
     * Ange namnet på den delade volymen i  **resurs namn**.
+    * Om du vill aktivera kontinuerlig tillgänglighet för SMB-volymen väljer du **aktivera kontinuerlig tillgänglighet**.    
 
-    ![Ange SMB-protokoll](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+        > [!IMPORTANT]   
+        > Funktionen SMB kontinuerlig tillgänglighet är för närvarande en offentlig för hands version. Du måste skicka in en Waitlist-begäran för att få åtkomst till funktionen via Azure NetApp Files SMB-resurs med **[kontinuerlig tillgänglighet resurser för Waitlist sändning](https://aka.ms/anfsmbcasharespreviewsignup)**. Vänta en officiell bekräftelse via e-post från Azure NetApp Files-teamet innan du använder funktionen för kontinuerlig tillgänglighet.   
+        > 
+        > Du bör endast aktivera kontinuerlig tillgänglighet för SQL-arbetsbelastningar. Det finns *inte* stöd för att använda SMB-resurser med kontinuerlig tillgänglighet för andra arbets belastningar än SQL Server. Den här funktionen stöds för närvarande på Windows SQL Server. Linux-SQL Server stöds inte för närvarande. Om du använder ett konto som inte är administratörs konto för att installera SQL Server måste du kontrol lera att kontot har tilldelats den säkerhets behörighet som krävs. Om domän kontot inte har det säkerhets privilegium som krävs ( `SeSecurityPrivilege` ) och behörigheten inte kan ställas in på domän nivå, kan du bevilja kontot behörighet genom att använda fältet **säkerhets privilegier användare** i Active Directory anslutningar. Se [skapa en Active Directory anslutning](create-active-directory-connections.md#create-an-active-directory-connection).
+
+    <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
+    <!-- 
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+
+        Check the status of the feature registration: 
+
+        > [!NOTE]
+        > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is `Registered` before continuing.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+        
+        You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
+    --> 
+
+    ![Skärm bild som beskriver fliken protokoll för att skapa en SMB-volym.](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
 5. Granska volym informationen genom att klicka på **Granska + skapa** .  Klicka sedan på **skapa** för att skapa SMB-volymen.
 

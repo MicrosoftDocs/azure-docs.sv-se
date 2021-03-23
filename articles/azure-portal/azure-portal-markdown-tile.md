@@ -1,15 +1,15 @@
 ---
 title: Använd en anpassad markdown-panel på Azure-instrumentpaneler
 description: Lär dig hur du lägger till en markdown-panel på en Azure-instrumentpanel för att Visa statiskt innehåll
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745765"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774464"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Använd en markdown-panel på Azure-instrumentpaneler för att visa anpassat innehåll
 
@@ -21,7 +21,7 @@ Du kan lägga till en markdown-panel till dina Azure-instrumentpaneler för att 
 
    ![Skärm bild som visar portalens sid panelen](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Om du har skapat anpassade instrument paneler, i vyn instrument panel, använder du List rutan för att välja den instrument panel där den anpassade markdown-panelen ska visas. Välj redigerings ikonen för att öppna **panel galleriet**.
+1. I vyn instrument panel väljer du den instrument panel där rutan för anpassade markdown ska visas och väljer sedan **Redigera**.
 
    ![Skärm bild som visar Redigeraren för instrument panelen](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 

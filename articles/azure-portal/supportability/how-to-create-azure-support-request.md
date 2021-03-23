@@ -3,13 +3,13 @@ title: Skapa en supportbegäran för Azure
 description: Kunder som behöver hjälp kan använda Azure Portal för att hitta självbetjänings lösningar och för att skapa och hantera support förfrågningar.
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100652402"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774887"
 ---
 # <a name="create-an-azure-support-request"></a>Skapa en Azure-supportbegäran
 
@@ -42,7 +42,7 @@ Om du vill skapa en supportbegäran måste du vara [ägare](../../role-based-acc
 
 Så här startar du en supportbegäran var som helst i Azure Portal:
 
-1. Välj **?** i den globala rubriken. Välj sedan **Hjälp + Support**.
+1. Välj **?** i den globala rubriken väljer du **Hjälp + Support**.
 
    ![Hjälp och support](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -52,7 +52,7 @@ Så här startar du en supportbegäran var som helst i Azure Portal:
 
 ### <a name="go-to-help--support-from-a-resource-menu"></a>Gå till hjälp + support från en resurs meny
 
-För att starta en support förfrågan i kontexten för resursen arbetar du för närvarande med:
+Så här startar du en supportbegäran i kontexten för den resurs som du arbetar med för närvarande:
 
 1. På resurs-menyn i avsnittet **support och fel sökning** väljer du **ny supportbegäran**.
 

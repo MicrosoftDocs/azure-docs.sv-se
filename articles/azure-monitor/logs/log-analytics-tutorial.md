@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041152"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799300"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-självstudie
 Log Analytics är ett verktyg i Azure Portal för att redigera och köra logg frågor från data som samlas in av Azure Monitor loggar och interaktivt analysera resultaten. Du kan använda Log Analytics frågor för att hämta poster som matchar vissa villkor, identifiera trender, analysera mönster och tillhandahålla en mängd olika insikter om dina data. 
@@ -72,7 +72,7 @@ En **WHERE** -instruktion läggs till i frågan med det värde som du har valt. 
 ## <a name="time-range"></a>Tidsintervall
 Alla tabeller i en Log Analytics-arbetsyta har en kolumn med namnet **TimeGenerated** som är den tidpunkt då posten skapades. Alla frågor har ett tidsintervall som begränsar resultatet till poster med ett **TimeGenerated** -värde inom intervallet. Tidsintervallet kan antingen anges i frågan eller med väljaren överst på skärmen.
 
-Frågan returnerar som standard poster Formulär de senaste 24 timmarna. Välj List rutan **tidsintervall** och ändra den till **7 dagar**. Returnera resultaten genom att klicka på **Kör** igen. Du kan se att resultaten returneras, men vi har ett meddelande som visar att vi inte ser alla resultat. Detta beror på att Log Analytics kan returnera högst 10 000 poster och frågan returnerade fler poster än den. 
+Frågan returnerar som standard poster Formulär de senaste 24 timmarna. Välj List rutan **tidsintervall** och ändra den till **7 dagar**. Returnera resultaten genom att klicka på **Kör** igen. Du kan se att resultaten returneras, men vi har ett meddelande som visar att vi inte ser alla resultat. Detta beror på att Log Analytics kan returnera högst 30 000 poster och frågan returnerade fler poster än den. 
 
 [![Tidsintervall](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

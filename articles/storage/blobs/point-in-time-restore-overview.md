@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618091"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802275"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Återställning av tidpunkter för block-blobar
 
@@ -53,9 +53,11 @@ Endast en återställnings åtgärd kan köras på ett lagrings konto i taget. E
 
 Vid återställning från tidpunkt krävs att följande Azure Storage funktioner aktive ras innan du kan aktivera återställning vid tidpunkter:
 
-- [Mjuk borttagning](./soft-delete-blob-overview.md)
+- [Mjuk borttagning](soft-delete-blob-overview.md)
 - [Ändra feed](storage-blob-change-feed.md)
 - [BLOB-versioner](versioning-overview.md)
+
+Om du aktiverar dessa funktioner kan ytterligare kostnader uppstå. Se till att du förstår fakturerings konsekvenserna innan du aktiverar återställning av punkt-till-tid och de nödvändiga funktionerna.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Kvarhållningsperiod för återställning av tidpunkt
 
@@ -88,6 +90,8 @@ För att initiera en återställnings åtgärd måste klienten ha Skriv behörig
 > Om du återställer block blobbar till en punkt som är tidigare än den 22 september 2020 kommer för hands versions begränsningar för återställning av punkt-i-tid att tillämpas. Microsoft rekommenderar att du väljer en återställnings punkt som är lika med eller senare än den 22 september 2020 för att dra nytta av den allmänt tillgängliga funktionen för återställning av en viss tidpunkt.
 
 ## <a name="pricing-and-billing"></a>Priser och fakturering
+
+Det kostar inget att aktivera återställning av tidpunkter. Men om du aktiverar återställning av punkt-i-tid aktive ras även BLOB-versioner, mjuk borttagning och ändrings flöden som kan resultera i ytterligare kostnader.
 
 Fakturering för tidpunkts återställning beror på mängden data som bearbetas för att utföra återställnings åtgärden. Mängden data som bearbetas baseras på antalet ändringar som inträffat mellan återställnings punkten och aktuell tidpunkt. Om du till exempel antar en relativt konstant ändrings takt för att blockera BLOB-data i ett lagrings konto skulle en återställnings åtgärd som går tillbaka i tid 1 dag kosta 1/10 av en återställning som går tillbaka om 10 dagar.
 

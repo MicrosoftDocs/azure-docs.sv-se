@@ -3,17 +3,17 @@ title: Vad är nytt i det virtuella Windows-skrivbordet? – Azure
 description: Nya funktioner och produkt uppdateringar för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: overview
-ms.date: 02/23/2021
+ms.date: 03/20/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb9b6d9d2080c63243ec4b924d07a927d6ccdfd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499891"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774447"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -35,6 +35,15 @@ Ta en titt på de här artiklarna om du vill veta mer om uppdateringar för vår
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Webb](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="windows-virtual-desktop-agent-updates"></a>Uppdateringar av Windows Virtual Desktop agent
+
+Windows-agenten för virtuella Skriv bords uppdateringar minst en gång per månad.
+
+Här är what's ändrat i Windows Virtual Desktop-agenten:
+
+- Version 1.0.2800.2800: den här uppdateringen släpptes i mars 2021 och korrigerade ett problem med omvänd anslutning.
+- Version 1.0.2800.2700: den här uppdateringen släpptes i februari 2021 och åtgärdades problem vid nekad åtkomst.
 
 ## <a name="fslogix-updates"></a>FSLogix uppdateringar
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b435547d7cd3b0fab781cc6cf3b617b13ac1120a
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: a03eac3969e8918c8da20b90d0dcf8b60b39b8ee
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774702"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800847"
 ---
 # <a name="hbv3-series"></a>HBv3-serien
 
@@ -39,9 +39,9 @@ Alla VM-funktioner i HBv3 200 GB/SEK HDR InfiniBand från NVIDIA-nätverk för a
 |Standard_HB120-16rs_v3 |16  |AMD EPYC-7V13 |448 |350 |2.45 |3.1 |3,675 |200 |Alla |2 * 960 |32 |8 |
 
 Läs mer om:
-- [arkitektur och VM-topologi](./workloads/hpc/hbv3-series-overview.md),
-- [program varu stack](./workloads/hpc/hbv3-series-overview.md#software-specifications) som stöds, inklusive operativ system som stöds och
-- förväntad [prestanda](./workloads/hpc/hbv3-performance.md) för den virtuella datorn med HBv3-serien.
+- [Arkitektur och topologi för virtuella datorer](./workloads/hpc/hbv3-series-overview.md)
+- [Program varu stack](./workloads/hpc/hbv3-series-overview.md#software-specifications) som stöds, inklusive operativ system som stöds
+- Förväntad [prestanda](./workloads/hpc/hbv3-performance.md) för den virtuella datorn med HBv3-serien
 
 [!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181496"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802309"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Självstudie: Konfigurera SolarWinds Service Desk (tidigare Samanage) för automatisk användar etablering
 
@@ -57,6 +57,9 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 * Ett användar konto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etablering (till exempel program administratör, moln program administratör, program ägare eller global administratör). 
 * En [SolarWinds Service Desk-klient](https://www.samanage.com/pricing/) med Professional-paketet.
 * Ett användar konto i SolarWinds Service Desk med administratörs behörighet.
+
+> [!Note]
+> Roller ska inte redige ras manuellt i Azure Active Directory när roll importer utförs.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Steg 1. Planera etablering av distributionen
 1. Lär dig mer om [hur etableringstjänsten fungerar](../app-provisioning/user-provisioning.md).

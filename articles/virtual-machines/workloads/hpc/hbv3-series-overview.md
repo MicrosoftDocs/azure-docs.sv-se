@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b1f2800c3787cd28437afa70b78ef8388461e413
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1abd03f517f9e0b13a2994418cbae5cfbe22454
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721171"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801882"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Översikt över virtuell dator i HBv3-serien 
 
@@ -32,6 +32,9 @@ Därför startas servern med 4 NUMA-domäner (2 per socket) varje 32 kärnor i s
 För att ge plats för Azure-hypervisorn att fungera utan att störa den virtuella datorn, reservera vi 8 fysiska kärnor per server. 
 
 Observera att begränsade kärnor i VM-storlekar bara minskar antalet fysiska kärnor som exponeras för den virtuella datorn. Alla globala delade till gångar (RAM, minnes bandbredd, L3-cache, GMI och xGMI-anslutning, InfiniBand, Azure Ethernet-nätverk, lokal SSD) förblir konstant. Detta gör det möjligt för en kund att välja en virtuell dator storlek som är bäst anpassad till en specifik uppsättning arbets belastnings-eller program varu licensierings behov.
+
+Följande diagram visar ansvars fördelning av kärnor som är reserverade för Azure hypervisor (gult) och den virtuella HBv3-serien (grönt).
+![Uppdelning av kärnor som är reserverade för Azure hypervisor och HBv3-serien VM](./media/architecture/hbv3-segregation-cores.png)
 
 ## <a name="infiniband-networking"></a>InfiniBand-nätverk
 Virtuella HBv3-datorer fungerar också NVIDIA Mellanox HDR InfiniBand-nätverkskort (ConnectX-6) som körs på upp till 200 Gigabit/s. NÄTVERKSKORTet skickas till den virtuella datorn via IOV, vilket gör att nätverks trafiken kringgår hypervisor-modulen. Därför laddar kunderna standard Mellanox OFED-drivrutiner på HBv3-VM: ar som en Bare Metal-miljö.
