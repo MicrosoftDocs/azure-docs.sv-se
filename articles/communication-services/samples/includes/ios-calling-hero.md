@@ -10,16 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1318c47bcded47159006977db09604bb53674973
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487960"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104783622"
 ---
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure Communication Services- **gruppen som anropar ett hjälte exempel för iOS** visar hur kommunikations tjänsterna som anropar iOS-klientcertifikatet kan användas för att bygga en grupp anrops upplevelse som innehåller röst och video. I den här snabb starten får du lära dig hur du konfigurerar och kör exemplet. En översikt över exemplet finns för kontext.
+
+## <a name="download-code"></a>Ladda ned kod
+
+Hitta den färdiga koden för den här snabb starten på [GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero).
 
 ## <a name="overview"></a>Översikt
 
@@ -29,7 +33,7 @@ Exemplet ser ut så här:
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="Skärm bild som visar landnings sidan för exempel programmet.":::
 
-När du trycker på knappen "Starta nytt samtal" skapar iOS-programmet ett nytt anrop och kopplar det. Programmet låter dig också ansluta till ett befintligt Azure Communication Services-samtal genom att ange det befintliga anropets ID.
+När du trycker på knappen "Starta nytt samtal" skapar iOS-programmet ett nytt anrop och kopplar det. Med programmet kan du ansluta till ett befintligt Azure Communication Services-samtal genom att ange det befintliga anropets ID. Du kan också ansluta till ett team möte genom att tillhandahålla länken koppling som finns i mötets inbjudan.  (Länken koppling har följande format: `https://teams.microsoft.com/l/meetup-join/` ). Mer information om lag-interop finns i [dokumentationen för lags interop konceptuelle](../../concepts/teams-interop.md).
 
 När du har anslutit till ett samtal uppmanas du att ge programmet behörighet att få åtkomst till din kamera och mikrofon. Du uppmanas också att ange ett visnings namn.
 
@@ -51,7 +55,7 @@ Nedan hittar du mer information om förutsättningar och steg för att konfigure
 - Ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - En Mac som kör [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532), tillsammans med ett giltigt certifikat för utvecklare som installerats i din nyckel Ring.
 - En Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../quickstarts/create-communication-resource.md).
-- En Azure-funktion som kör [betrodd tjänst logik](../../tutorials/trusted-service-tutorial.md) för att hämta åtkomsttoken.
+- En Azure-funktion som kör [autentiseringens slut punkt](../../tutorials/trusted-service-tutorial.md) för att hämta åtkomsttoken.
 
 ## <a name="running-sample-locally"></a>Kör exempel lokalt
 
@@ -60,8 +64,8 @@ Den grupp som anropar samplet kan köras lokalt med XCode. Utvecklare kan anting
 ### <a name="before-running-the-sample-for-the-first-time"></a>Innan du kör exemplet för första gången
 
 1. Installera beroenden genom att köra `pod install` .
-2. Öppna `ACSCall.xcworkspace` i Xcode.
-3. Uppdatera `AppSettings.plist` . Ange värdet för `acsTokenFetchUrl` nyckeln som URL för din autentiserings slut punkt.
+2. Öppna `AzureCalling.xcworkspace` i Xcode.
+3. Uppdatera `AppSettings.plist` . Ange värdet för `communicationTokenFetchUrl` nyckeln som URL för din autentiserings slut punkt.
 
 ### <a name="run-sample"></a>Kör exempel
 
@@ -69,9 +73,9 @@ Skapa och kör exemplet i XCode.
 
 ## <a name="optional-securing-an-authentication-endpoint"></a>Valfritt Skydda en autentiserings slut punkt
 
-I demonstrations syfte använder det här exemplet en offentligt tillgänglig slut punkt som standard för att hämta en Azure Communication Services-token. För produktions scenarier rekommenderar vi att du använder din egen säkrade slut punkt för att tillhandahålla dina egna tokens.
+I demonstrations syfte använder det här exemplet en offentligt tillgänglig slut punkt som standard för att hämta en Azure Communication Services-åtkomsttoken. För produktions scenarier rekommenderar vi att du använder din egen säkrade slut punkt för att tillhandahålla dina egna tokens.
 
-Med ytterligare konfiguration har det här exemplet stöd för anslutning till en skyddad **Azure Active Directory** -slutpunkt (Azure AD) så att användaren måste logga in för att appen ska kunna hämta en Azure Communication Services-token. Se stegen nedan:
+Med ytterligare konfiguration har det här exemplet stöd för anslutning till en skyddad **Azure Active Directory** -slutpunkt (Azure AD) så att användaren måste logga in för att appen ska kunna hämta en Azure Communication Services-åtkomsttoken. Se stegen nedan:
 
 1. Aktivera Azure Active Directory autentisering i din app.  
    - [Registrera din app under Azure Active Directory (med iOS/macOS-plattforms inställningar)](../../../active-directory/develop/tutorial-v2-ios.md) 
@@ -81,7 +85,7 @@ Med ytterligare konfiguration har det här exemplet stöd för anslutning till e
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure Active Directory konfiguration på Azure Portal.":::
 
 3. Öppna `AppSettings.plist` i Xcode och Lägg till följande nyckel värden:
-   - `acsTokenFetchUrl`: URL: en som begär Azure Communication Services-token 
+   - `communicationTokenFetchUrl`: URL: en som begär Azure Communication Services-token 
    - `isAADAuthEnabled`: Ett booleskt värde som anger om Azure Communication Services-token-autentisering krävs eller inte
    - `aadClientId`: Ditt program (klient) ID
    - `aadTenantId`: Din katalog (klient) ID
@@ -94,6 +98,9 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 ## <a name="next-steps"></a>Nästa steg
 
+>[!div class="nextstepaction"]
+>[Hämta exemplet från GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero)
+
 Mer information finns i följande artiklar:
 
 - Bekanta dig med [att använda det anropande klient biblioteket](../../quickstarts/voice-video-calling/calling-client-samples.md)
@@ -101,4 +108,6 @@ Mer information finns i följande artiklar:
 
 ### <a name="additional-reading"></a>Mer att läsa
 
+- [Azure Communication-GitHub](https://github.com/Azure/communication) – Hitta fler exempel och information på den officiella GitHub-Sidan
 - [Exempel](./../overview.md) – Hitta fler exempel och exempel på översikts sidan exempel.
+- [Azure-kommunikation som anropar funktioner](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) – för att lära dig mer om det anropande iOS SDK –[Azure Communication iOS-anrop SDK](https://github.com/Azure/Communication/releases/)

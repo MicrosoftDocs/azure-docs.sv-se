@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a19babffa63667b0d2deb954d432421a2b7868b8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722148"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772118"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Versionshistorik för Azure AD Connect
 Gruppen Azure Active Directory (Azure AD) uppdaterar regelbundet Azure AD Connect med nya funktioner. Alla tillägg gäller inte för alla mål grupper.
@@ -58,7 +58,7 @@ Använd den här länken för att läsa mer om [automatisk uppgradering](how-to-
 >Information om versions historiken på återkallade versioner finns i [Azure AD Connect versions historik Arkiv](reference-connect-version-history-archive.md)
 
 
-## <a name="1623"></a>1.6.2.3
+## <a name="1624"></a>1.6.2.4
 
 >[!NOTE]
 > - Den här versionen kommer endast att göras tillgänglig för hämtning.
@@ -66,7 +66,7 @@ Använd den här länken för att läsa mer om [automatisk uppgradering](how-to-
 > - Den här versionen är som standard AADConnect-servern för den nya v2-slut punkten. Observera att den här slut punkten inte stöds i det tyska nationella molnet, det kinesiska nationella molnet och det amerikanska myndighets molnet och om du behöver distribuera den här versionen i dessa moln måste du följa [dessa instruktioner](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) för att gå tillbaka till v1-slutpunkten. Om du inte gör det leder det till att det uppstår fel i synkroniseringen.
 
 ### <a name="release-status"></a>Versionsstatus
-3/17/2021: har släppts för nedladdning
+3/19/2021: har släppts för nedladdning
 
 ### <a name="functional-changes"></a>Funktionella ändringar
 

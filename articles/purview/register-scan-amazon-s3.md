@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 03/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438736"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773461"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure avdelningens kontroll-anslutning för Amazon S3
 
@@ -49,29 +49,30 @@ I följande tabell mappas de regioner där du lagrar data i den region där det 
 | Lagrings region | Skannar region |
 | ------------------------------- | ------------------------------------- |
 | Östra USA (Ohio)                  | Östra USA (Ohio)                        |
-| Östra USA (N. Virginia           | Östra USA (Ohio)                        |
+| Östra USA (N. Virginia           | Östra USA (Ohio) eller östra USA (N. Virginia                       |
 | Västra USA (N. Kalifornien         | Östra USA (Ohio)                        |
 | USA, västra (Oregon)                | Östra USA (Ohio)                        |
 | Afrika (kap stadens)              | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Hongkong)        | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Mumbai)           | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Osaka-Local)      | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Söul)            | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Singapore)        | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Sydney)           | Europa (Frankfurt)                    |
-| Asien och stillahavsområdet (Tokyo)            | Europa (Frankfurt)                    |
+| Asien och stillahavsområdet (Hongkong)        | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                   |
+| Asien och stillahavsområdet (Mumbai)           | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                   |
+| Asien och stillahavsområdet (Osaka-Local)      | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                   |
+| Asien och stillahavsområdet (Söul)            | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                   |
+| Asien och stillahavsområdet (Singapore)        | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                   |
+| Asien och stillahavsområdet (Sydney)           | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                  |
+| Asien och stillahavsområdet (Tokyo)            | Europa (Frankfurt) eller Asien och stillahavsområdet (Sydney)                 |
 | Kanada (Central)                | Östra USA (Ohio)                        |
 | Kina (Beijing)                 | Stöds inte                    |
 | Kina (NingXia)                 | Stöds inte                   |
 | Europa (Frankfurt)              | Europa (Frankfurt)                    |
-| Europa (Irland)                | Europa (Frankfurt)                    |
-| Europa (London)                 | Europa (Frankfurt)                    |
+| Europa (Irland)                | Europa (Frankfurt) eller Europa (Irland)                   |
+| Europa (London)                 | Europa (Frankfurt) eller Europa (Irland)                   |
 | Europa (Milano)                  | Europa (Frankfurt)                    |
 | Europa (Paris)                  | Europa (Frankfurt)                    |
 | Europa (Stockholm)              | Europa (Frankfurt)                    |
 | Mellanöstern (Bahrain)           | Europa (Frankfurt)                    |
 | Sydamerika (São Paulo)       | Östra USA (Ohio)                        |
 | | |
+
 ## <a name="prerequisites"></a>Förutsättningar
 
 Se till att du har utfört följande förutsättningar innan du lägger till dina Amazon S3-buckets som avdelningens kontroll-datakällor och skannar dina S3-data.

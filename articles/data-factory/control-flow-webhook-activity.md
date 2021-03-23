@@ -3,16 +3,16 @@ title: Webhook-aktivitet i Azure Data Factory
 description: Webhook-aktiviteten fortsätter inte att köra pipelinen förrän den verifierar den bifogade data uppsättningen med vissa villkor som användaren anger.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 59aa395db27c26a7c94eebdc0e3b34d7776ee75f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592004"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785945"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-aktivitet i Azure Data Factory
 
@@ -55,15 +55,15 @@ En webhook-aktivitet kan styra körningen av pipeliner via din anpassade kod. Me
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-**name** | Namnet på webhook-aktiviteten. | Sträng | Yes |
-**bastyp** | Måste vara inställt på "webhook". | Sträng | Yes |
-**metodsignatur** | REST API metod för mål slut punkten. | Sträng. Den typ som stöds är "POST". | Yes |
-**adresser** | Mål slut punkten och sökvägen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Yes |
+**name** | Namnet på webhook-aktiviteten. | Sträng | Ja |
+**bastyp** | Måste vara inställt på "webhook". | Sträng | Ja |
+**metodsignatur** | REST API metod för mål slut punkten. | Sträng. Den typ som stöds är "POST". | Ja |
+**adresser** | Mål slut punkten och sökvägen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Ja |
 **sidhuvud** | Huvuden som skickas till begäran. Här är ett exempel som anger språk och typ på en begäran: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Ja. En `Content-Type` rubrik som `"headers":{ "Content-Type":"application/json"}` är obligatorisk. |
-**brödtext** | Representerar den nytto last som skickas till slut punkten. | Giltigt JSON eller ett uttryck med **resultType** -värdet för JSON. Se [nytto Last schema för begäran](./control-flow-web-activity.md#request-payload-schema) om schemat för nytto lasten för begäran. | Yes |
-**autentisering** | Autentiseringsmetoden som används för att anropa slut punkten. De typer som stöds är "grundläggande" och "ClientCertificate". Mer information finns i [Autentisering](./control-flow-web-activity.md#authentication). Om autentisering inte krävs utelämnar du den här egenskapen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | No |
-**timeout** | Hur länge aktiviteten väntar på att återanropet som anges av **callBackUri** ska anropas. Standardvärdet är 10 minuter ("00:10:00"). Värdena har formatet TimeSpan *d*. *HH*:*mm*:*SS*. | Sträng | No |
-**Rapportera status vid motringning** | Låter en användare rapportera den misslyckade statusen för en webhook-aktivitet. | Boolesk | No |
+**brödtext** | Representerar den nytto last som skickas till slut punkten. | Giltigt JSON eller ett uttryck med **resultType** -värdet för JSON. Se [nytto Last schema för begäran](./control-flow-web-activity.md#request-payload-schema) om schemat för nytto lasten för begäran. | Ja |
+**anspråksautentisering** | Autentiseringsmetoden som används för att anropa slut punkten. De typer som stöds är "grundläggande" och "ClientCertificate". Mer information finns i [Autentisering](./control-flow-web-activity.md#authentication). Om autentisering inte krävs utelämnar du den här egenskapen. | En sträng eller ett uttryck med **resultType** -värdet för en sträng. | Inga |
+**timeout** | Hur länge aktiviteten väntar på att återanropet som anges av **callBackUri** ska anropas. Standardvärdet är 10 minuter ("00:10:00"). Värdena har formatet TimeSpan *d*. *HH*:*mm*:*SS*. | Sträng | Inga |
+**Rapportera status vid motringning** | Låter en användare rapportera den misslyckade statusen för en webhook-aktivitet. | Boolesk | Inga |
 
 ## <a name="authentication"></a>Autentisering
 

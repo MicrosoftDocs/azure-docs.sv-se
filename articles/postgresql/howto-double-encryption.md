@@ -1,17 +1,17 @@
 ---
 title: Infrastruktur dubbel kryptering – Azure Portal – Azure Database for PostgreSQL
 description: Lär dig hur du konfigurerar och hanterar infrastruktur Double Encryption för din Azure Database for PostgreSQL.
-author: mksuni
-ms.author: sumuth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/14/2021
+ms.openlocfilehash: 0b1079a084072556ae79a18a12f6b35f74c92775
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93242236"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771659"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infrastruktur dubbel kryptering för Azure Database for PostgreSQL
 
@@ -23,7 +23,7 @@ Lär dig hur du använder den här inställningen för att konfigurera och hante
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---portal"></a>Skapa en Azure Database for PostgreSQL-server med Double Infrastructure Encryption – Portal
 
-Följ dessa steg om du vill skapa en Azure Database for MySQL-server med Double Infrastructure Encryption från Azure Portal:
+Följ dessa steg om du vill skapa en Azure Database for PostgreSQL-server med Double Infrastructure Encryption från Azure Portal:
 
 1. Välj **skapa en resurs** (+) i det övre vänstra hörnet i portalen.
 
@@ -45,7 +45,7 @@ Följ dessa steg om du vill skapa en Azure Database for MySQL-server med Double 
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Skapa en Azure Database for PostgreSQL-server med dubbel kryptering med infrastruktur – CLI
 
-Följ dessa steg om du vill skapa en Azure Database for MySQL-server med Double Infrastructure Encryption från CLI:
+Följ dessa steg om du vill skapa en Azure Database for PostgreSQL-server med Double Infrastructure Encryption från CLI:
 
 I det här exemplet skapas en resurs grupp med namnet `myresourcegroup` på `westus` platsen.
 

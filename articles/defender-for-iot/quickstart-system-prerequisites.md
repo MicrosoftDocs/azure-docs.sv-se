@@ -1,18 +1,14 @@
 ---
 title: Systemkrav
 description: Hämta de system krav som krävs för att köra Azure Defender för IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: 4b5db049e6d1cfe76bdd0d5cd6d7360e0b98bad0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78d5948554ae531c4b2f77d67bb916d5290db943
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489819"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780947"
 ---
 # <a name="system-prerequisites"></a>Systemkrav
 Den här artikeln innehåller en lista över system krav för att köra Azure Defender för IoT.

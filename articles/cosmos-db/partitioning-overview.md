@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627786"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772475"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionering och horisontell skalning i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,8 +63,6 @@ Azure Cosmos DB transparent och automatiskt hanterar placeringen av logiska part
 Azure Cosmos DB använder hash-baserad partitionering för att sprida logiska partitioner över fysiska partitioner. Azure Cosmos DB hash-värden för ett objekts partitionsnyckel. Det hashade resultatet avgör den fysiska partitionen. Sedan allokerar Azure Cosmos DB nyckel utrymmet för partitionens nyckel-hashar jämnt över de fysiska partitionerna.
 
 Transaktioner (i lagrade procedurer eller utlösare) tillåts bara för objekt i en enda logisk partition.
-
-Du kan lära dig mer om [hur Azure Cosmos DB hanterar partitioner](partitioning-overview.md). (Det är inte nödvändigt att förstå den interna informationen för att skapa eller köra dina program, men de läggs till här för en nyfiken läsare.)
 
 ## <a name="replica-sets"></a>Replikuppsättningar
 

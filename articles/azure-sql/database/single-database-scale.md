@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101658562"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773257"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skala enkla databasresurser i Azure SQL Database
 
@@ -112,7 +112,7 @@ else {
 - Vid nedgradering av en databas med [geo-replikering](active-geo-replication-configure-portal.md) aktiverat, nedgradera dess primära databaser till önskad tjänste nivå och beräknings storlek innan du degraderar den sekundära databasen (allmän vägledning för bästa prestanda). Vid nedgradering till en annan utgåva är det ett krav att den primära databasen nedgraderas först.
 - Erbjudandena för återställningstjänsterna är olika för de olika tjänstnivåerna. Om du nedgraderar nivån **Basic** finns det en lägre kvarhållningsperiod för säkerhets kopior. Se [Azure SQL Database säkerhets kopieringar](automated-backups-overview.md).
 - De nya egenskaperna för databasen tillämpas inte förrän ändringarna har slutförts.
-- När data kopiering krävs för att skala en databas (se [svars tid](#latency)) när du ändrar tjänst nivån kan hög resursutnyttjande som är samtidig till skalnings åtgärden orsaka längre skalnings tider. Med [accelererad databas återställning (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts.md)är återställningen av tids krävande transaktioner inte en betydande fördröjning, men hög samtidiga resursanvändning kan medföra mindre beräknings-, lagrings-och nätverks bandbredds resurser för skalning, särskilt för mindre beräknings storlekar.
+- När data kopiering krävs för att skala en databas (se [svars tid](#latency)) när du ändrar tjänst nivån kan hög resursutnyttjande som är samtidig till skalnings åtgärden orsaka längre skalnings tider. Med [accelererad databas återställning (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts)är återställningen av tids krävande transaktioner inte en betydande fördröjning, men hög samtidiga resursanvändning kan medföra mindre beräknings-, lagrings-och nätverks bandbredds resurser för skalning, särskilt för mindre beräknings storlekar.
 
 ## <a name="billing"></a>Fakturering
 

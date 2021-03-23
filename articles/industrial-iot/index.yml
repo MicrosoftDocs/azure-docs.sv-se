@@ -1,0 +1,23 @@
+### YamlMime:Landing
+title: Dokumentation om Azures industriella IoT-plattform
+summary: Azures industriella IoT-plattform är en Microsoft-Svit med moduler och tjänster som distribueras i Azure.
+metadata:
+  description: Läs mer om
+  ms.service: industrial-iot
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 12/7/2020
+  ms.openlocfilehash: 236cbb059919646910b2cacd53da3f9311225d69
+  ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104787063"
+landingContent:
+- title: Om Azures industriella IoT-plattform
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är IIoT-plattformen (industriella IoT)?
+      url: overview-what-is-industrial-iot-platform.md

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98747499"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772067"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ansluta din externa lösning med hjälp av vanligt händelse format
 
@@ -99,5 +99,7 @@ I det här dokumentet har du lärt dig hur Azure Sentinel samlar in CEF-loggar f
 - STEG 3: [kontrol lera anslutningen](connect-cef-verify.md)
 
 Mer information om vad du kan göra med de data som du har samlat in i Azure Sentinel finns i följande artiklar:
+
+- Lär dig mer om [fält mappning för CEF och CommonSecurityLog](cef-name-mapping.md).
 - Lär dig hur du [får insyn i dina data och potentiella hot](quickstart-get-visibility.md).
 - Kom igång [med att identifiera hot med Azure Sentinel](./tutorial-detect-threats-built-in.md).

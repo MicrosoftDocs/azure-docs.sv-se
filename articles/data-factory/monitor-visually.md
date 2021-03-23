@@ -3,16 +3,16 @@ title: Övervaka Azure-datafabriker visuellt
 description: Lär dig att visuellt övervaka Azures data fabriker
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 4248969a5de384810f9718648ef8ac8f5f6d4129
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d177513af9f0ee4fcadb1ea316edf1ad8cb89e5a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100373172"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783667"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Övervaka Azure-datafabriker visuellt
 

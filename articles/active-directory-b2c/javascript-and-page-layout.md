@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/22/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592814"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781372"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Java Script och versioner av sidlayouten i Azure Active Directory B2C
 
@@ -155,7 +155,7 @@ Följ dessa rikt linjer när du anpassar gränssnittet för ditt program med hj�
     - Använd inte Java Script direkt för att anropa Azure AD B2C slut punkter.
 - Du kan bädda in Java Script eller länka till externa JavaScript-filer. När du använder en extern JavaScript-fil ska du se till att använda den absoluta URL: en och inte en relativ URL.
 - JavaScript-ramverk:
-    - Azure AD B2C använder en angiven version av jQuery. Ta inte med en annan version av jQuery. Om du använder mer än en version på samma sida uppstår problem.
+    - Azure AD B2C använder en [angiven version av jQuery](page-layout.md#jquery-version). Ta inte med en annan version av jQuery. Om du använder mer än en version på samma sida uppstår problem.
     - Användning av RequireJS stöds inte.
     - De flesta JavaScript-ramverk stöds inte av Azure AD B2C.
 - Azure AD B2C inställningar kan läsas genom att anropa `window.SETTINGS` , `window.CONTENT` objekt, till exempel det aktuella gränssnitts språket. Ändra inte värdet för dessa objekt.

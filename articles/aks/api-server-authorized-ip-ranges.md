@@ -4,12 +4,12 @@ description: Lär dig hur du skyddar klustret med hjälp av ett IP-adressinterva
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98890652"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771931"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Säker åtkomst till API-servern med behöriga IP-adressintervall i Azure Kubernetes service (AKS)
 
@@ -27,7 +27,7 @@ Du behöver Azure CLI-versionen 2.0.76 eller senare installerad och konfigurerad
 
 Funktionen för auktoriserade IP-adressintervall i API-servern har följande begränsningar:
 - På kluster som skapats efter att de IP-adressintervall som har auktoriserats av API-servern har flyttats bort från för hands versionen i oktober 2019, stöds endast API-serverns auktoriserade IP-adressintervall på *standard* -SKU: n. Befintliga kluster med den *grundläggande* SKU-belastningsutjämnaren och den API-server som har kon figurer ATS, fortsätter att fungera som det är men kan inte migreras till en *standard* -SKU. De befintliga klustren kommer också att fortsätta fungera om deras Kubernetes-version eller kontroll plan uppgraderas. Auktoriserade IP-adressintervall stöds inte för privata kluster i API-servern.
-- Den här funktionen är inte kompatibel med kluster som använder för [hands versions funktionen för förhands visning av Node-noder i offentlig IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview).
+- Den här funktionen är inte kompatibel med kluster som använder [offentlig IP per nod](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools).
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Översikt över tillåtna IP-intervall för API-Server
 
