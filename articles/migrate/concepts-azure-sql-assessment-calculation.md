@@ -5,19 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4e726f742d46a4b63563f55c191cf21e49d06fc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054990"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778329"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Översikt över utvärdering (migrera till Azure SQL)
 
 Den här artikeln innehåller en översikt över utvärderingar för migrering av lokala SQL Server instanser från en VMware-miljö till Azure SQL-databaser eller hanterade instanser med hjälp av [verktyget Azure Migrate: identifiering och bedömning](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool).
-
-> [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 ## <a name="whats-an-assessment"></a>Vad är en utvärdering?
 En utvärdering med identifierings-och utvärderings verktyget är en tidpunkt för ögonblicks bilder av data och mäter den beredskap och uppskattar effekterna av att migrera lokala servrar till Azure.
@@ -28,9 +25,9 @@ Det finns tre typer av utvärderingar som du kan skapa med hjälp av verktyget A
 
 **Utvärderingstyp** | **Information**
 --- | --- 
-**Azure VM** | Utvärderingar som migrerar dina lokala servrar till virtuella Azure-datorer. Du kan utvärdera dina lokala servrar i [VMware](how-to-set-up-appliance-vmware.md) [-och Hyper-V-](how-to-set-up-appliance-hyper-v.md) miljön och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer med den här utvärderings typen.
+**Azure VM** | Utvärderingar som migrerar dina lokala servrar till virtuella Azure-datorer. <br/><br/> Du kan utvärdera dina lokala servrar i [VMware](how-to-set-up-appliance-vmware.md) [-och Hyper-V-](how-to-set-up-appliance-hyper-v.md) miljön och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer med den här utvärderings typen.
 **Azure SQL** | Utvärderingar för att migrera dina lokala SQL-servrar från din VMware-miljö till Azure SQL Database eller Azure SQL-hanterad instans.
-**Azure VMware Solution (AVS)** | Utvärderingar för att migrera dina lokala servrar till [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Du kan utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till Azure VMware-lösningen (AVS) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Utvärderingar för att migrera dina lokala servrar till [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Du kan utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till Azure VMware-lösningen (AVS) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
 
 En Azure SQL-utvärdering ger ett storleks villkor:
 
@@ -76,34 +73,34 @@ Här är what's som ingår i utvärderings egenskaperna för Azure SQL:
 **Egenskap** | **Information**
 --- | ---
 **Målplats** | Den Azure-region som du vill migrera till. Azure SQL-konfigurationen och kostnads rekommendationerna baseras på den plats som du anger.
-**Mål distributions typ** | Den mål distributions typ som du vill köra utvärderingen på: Välj **rekommenderas** om du vill Azure Migrate utvärdera beredskap för dina SQL-servrar för att migrera till Azure SQL mi och Azure SQL DB, och rekommendera det bästa anpassade distributions alternativet, mål nivån, Azure SQL-konfigurationen och månads uppskattningar. Välj **Azure SQL DB** om du vill utvärdera dina SQL-servrar för att migrera till enbart Azure SQL-databaser och granska mål nivån, Azure SQL DB-konfigurationen och månads uppskattningar. Välj **Azure SQL mi**, om du vill utvärdera dina SQL-servrar för att migrera till enbart Azure SQL-databaser och granska mål nivån, Azure SQL mi-konfiguration och månads uppskattningar.
-**Reserverad kapacitet** | Anger reserverad kapacitet så att kostnads uppskattningar i utvärderingen tar dem i beaktande. Om du väljer alternativet reserverad kapacitet kan du inte ange "rabatt (%)".
-**Storlekskriterier** | Den här egenskapen används för att anpassa Azure SQL-konfigurationen till rätt storlek. Standardvärdet är " **prestanda** ", vilket innebär att utvärderingen samlar in SQL Server instanser och databas prestanda mått för att rekommendera en optimal storlek för Azure SQL-hanterad instans och/eller Azure SQL Database nivå/konfigurations rekommendation.
+**Mål distributions typ** | Den mål distributions typ som du vill köra utvärderingen på: <br/><br/> Välj **rekommenderas** om du vill Azure Migrate utvärdera beredskap för dina SQL-servrar för att migrera till Azure SQL mi och Azure SQL DB, och rekommendera det bästa anpassade distributions alternativet, mål nivån, Azure SQL-konfigurationen och månads uppskattningar.<br/><br/>Välj **Azure SQL DB** om du vill utvärdera dina SQL-servrar för att migrera till enbart Azure SQL-databaser och granska mål nivån, Azure SQL DB-konfigurationen och månads uppskattningar.<br/><br/>Välj **Azure SQL mi**, om du vill utvärdera dina SQL-servrar för att migrera till enbart Azure SQL-databaser och granska mål nivån, Azure SQL mi-konfiguration och månads uppskattningar.
+**Reserverad kapacitet** | Anger reserverad kapacitet så att kostnads uppskattningar i utvärderingen tar dem i beaktande.<br/><br/> Om du väljer alternativet reserverad kapacitet kan du inte ange "rabatt (%)".
+**Storlekskriterier** | Den här egenskapen används för att anpassa Azure SQL-konfigurationen till rätt storlek. <br/><br/> Standardvärdet är " **prestanda** ", vilket innebär att utvärderingen samlar in SQL Server instanser och databas prestanda mått för att rekommendera en optimal storlek för Azure SQL-hanterad instans och/eller Azure SQL Database nivå/konfigurations rekommendation.
 **Prestandahistorik** | Prestanda historik anger den varaktighet som används när prestanda data utvärderas.
 **Percentilutnyttjande** | Percentils användning anger percentilvärdet för det prestanda exempel som används för att ha behörighet.
-**Komfortfaktor** | Den buffert som användes under utvärderingen. IT-konton för problem som säsongs användning, kort prestanda historik och sannolika ökningar i framtida användning. Till exempel resulterar en 10-Core-instans med 20% belastning vanligt vis i en instans med två kärnor. Med en bekvämlighets faktor på 2,0 är resultatet en fyra kärnor-instans i stället.
+**Komfortfaktor** | Den buffert som användes under utvärderingen. IT-konton för problem som säsongs användning, kort prestanda historik och sannolika ökningar i framtida användning.<br/><br/> Till exempel resulterar en 10-Core-instans med 20% belastning vanligt vis i en instans med två kärnor. Med en bekvämlighets faktor på 2,0 är resultatet en fyra kärnor-instans i stället.
 **Erbjudande/licensierings program** | Det [Azure-erbjudande](https://azure.microsoft.com/support/legal/offer-details/) som du har registrerat i. För närvarande kan du bara välja från "betala per användning" och "betala per användning"-utveckling/-test. Observera att du kan utnyttja ytterligare rabatt genom att använda reserverad kapacitet och Azure Hybrid-förmån ovanpå erbjudandet betala per användning.
-**Tjänstenivå** | Det lämpligaste tjänst nivå alternativet för att hantera dina verksamhets behov för migrering till Azure SQL Database och/eller Azure SQL-hanterad instans: Välj alternativet **rekommenderas** om du vill Azure Migrate för att rekommendera den bästa lämpliga tjänst nivån för dina servrar. Detta kan vara generell användning eller affärs kritisk. Välj **generell användning** om du vill att en Azure SQL-konfiguration ska vara utformad för budgetorienterade arbets belastningar. [Läs mer](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) Välj **affärskritisk** om du vill att en Azure SQL-konfiguration är utformad för arbets belastningar med låg latens med hög återhämtnings kapacitet till fel och snabba redundanser. [Läs mer](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Tjänstenivå** | Det lämpligaste tjänst nivå alternativet för att tillgodose ditt företags behov av migrering till Azure SQL Database och/eller Azure SQL-hanterad instans:<br/><br/>**Rekommenderas** om du vill Azure Migrate rekommendera den bästa lämpliga tjänst nivån för dina servrar. Detta kan vara generell användning eller affärs kritisk. <br/><br/> **Generell användning** Om du vill ha en Azure SQL-konfiguration som är utformad för budgetorienterade arbets belastningar. [Läs mer](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **Affärskritisk** Om du vill ha en Azure SQL-konfiguration som är utformad för arbets belastningar med låg latens med hög återhämtnings förmåga till fel och snabba redundanser. [Läs mer](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
 **Valuta** | Fakturerings valutan för ditt konto.
 **Rabatt (%)** | Eventuella prenumerations rabatter som du får ovanpå Azure-erbjudandet. Standardinställningen är 0%.
-**Azure Hybrid-förmån** | Anger om du redan har en SQL Server-licens. Om du gör det, och de omfattas med aktiv Software Assurance för SQL Server prenumerationer, kan du ansöka om Azure Hybrid-förmån när du gör licenser till Azure.
+**Azure Hybrid-förmån** | Anger om du redan har en SQL Server-licens. <br/><br/> Om du gör det, och de omfattas med aktiv Software Assurance för SQL Server prenumerationer, kan du ansöka om Azure Hybrid-förmån när du gör licenser till Azure.
 
 [Granska de bästa metoderna](best-practices-assessment.md) för att skapa en utvärdering med Azure Migrate.
 
 ## <a name="calculate-readiness"></a>Beräkna beredskap
 
 > [!NOTE]
-> Utvärderingen inkluderar bara databaser som har statusen online. Om det finns databaser med någon annan status, ignorerar utvärderingen beredskapen, storleken och kostnadsberäkningen för dessa databaser. Om du vill utvärdera dessa databaser ändrar du databasens status och beräknar om utvärderingen efter ett tag.
+Utvärderingen inkluderar bara databaser som har statusen online. Om det finns databaser med någon annan status, ignorerar utvärderingen beredskapen, storleken och kostnadsberäkningen för dessa databaser. Om du vill utvärdera dessa databaser ändrar du databasens status och beräknar om utvärderingen efter ett tag.
 
 ### <a name="azure-sql-readiness"></a>Azure SQL-beredskap
 
 Azure SQL-beredskap för SQL-instanser och databaser baseras på en funktions kompatibilitetskontroll med Azure SQL Database och Azure SQL-hanterad instans:
-- Azure SQL-utvärderingen betraktar de SQL Server instans funktioner som för närvarande används av käll SQL Server arbets belastningar (SQL Agent-jobb, länkade servrar osv.) och användar databas scheman (tabeller, vyer, utlösare, lagrade procedurer osv.) för att identifiera kompatibilitetsproblem.
-- Om det inte finns några kompatibilitetsproblem markeras beredskapen som **klar** för mål distributions typen (Azure SQL Database eller Azure SQL-hanterad instans)
-- Om det finns icke-kritiska kompatibilitetsproblem, till exempel degraderade eller icke-stödda funktioner som inte blockerar migreringen till en speciell mål distributions typ, markeras beredskapen som **klar** (ikon ikonen hyperlänkad och blå) med **varnings** information och rekommendationer om rekommenderade reparationer.
-- Om det finns kompatibilitetsproblem som kan blockera migreringen till en speciell mål distributions typ, markeras beredskapen som **ej klar** med **problem** information och Rekommenderad reparations vägledning.
+1. Azure SQL-utvärderingen betraktar de SQL Server instans funktioner som för närvarande används av käll SQL Server arbets belastningar (SQL Agent-jobb, länkade servrar osv.) och användar databas scheman (tabeller, vyer, utlösare, lagrade procedurer osv.) för att identifiera kompatibilitetsproblem.
+1. Om det inte finns några kompatibilitetsproblem markeras beredskapen som **klar** för mål distributions typen (Azure SQL Database eller Azure SQL-hanterad instans)
+1. Om det finns icke-kritiska kompatibilitetsproblem, till exempel degraderade eller icke-stödda funktioner som inte blockerar migreringen till en speciell mål distributions typ, markeras beredskapen som **klar** (ikon ikonen hyperlänkad och blå) med **varnings** information och rekommendationer om rekommenderade reparationer.
+1. Om det finns kompatibilitetsproblem som kan blockera migreringen till en speciell mål distributions typ, markeras beredskapen som **ej klar** med **problem** information och Rekommenderad reparations vägledning.
     - Om det finns en databas i en SQL-instans som inte är redo för en viss mål distributions typ markeras instansen som **ej klar** för den distributions typen.
-- Om identifieringen fortfarande pågår eller det förekommer några identifierings problem för en SQL-instans eller databas, markeras beredskapen som **okänd** eftersom utvärderingen inte kunde beräkna beredskap för den SQL-instansen.
+1. Om identifieringen fortfarande pågår eller det förekommer några identifierings problem för en SQL-instans eller databas, markeras beredskapen som **okänd** eftersom utvärderingen inte kunde beräkna beredskap för den SQL-instansen.
 
 ### <a name="recommended-deployment-type"></a>Rekommenderad distributions typ
 
@@ -113,11 +110,11 @@ Om du väljer mål distributions typen som **rekommenderas** i Azure SQL Assessm
 
  **Beredskap för Azure SQL DB** | **Azure SQL MI-beredskap** | **Rekommenderad distributions typ** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
  --- | --- | --- | --- |
- Redo | Redo | Azure SQL DB eller Azure SQL MI | Ja
- Redo | Inte klar eller okänd | Azure SQL-databas | Ja
- Inte klar eller okänd | Redo | Azure SQL MI | Ja
+ Redo | Redo | Azure SQL DB eller <br/>Azure SQL MI | Ja
+ Redo | Inte klar eller<br/> Okänt | Azure SQL-databas | Ja
+ Inte klar eller<br/>Okänt | Redo | Azure SQL MI | Ja
  Inte klar | Inte klar | Potentiellt redo för virtuell Azure-dator | Inga
- Inte klar eller okänd | Inte klar eller okänd | Okänt | Inga
+ Inte klar eller<br/>Okänt | Inte klar eller<br/>Okänt | Okänt | Inga
 
 > [!NOTE]
 > Om den rekommenderade distributions typen väljs som **rekommenderat** i bedömnings egenskaper, och om käll SQL Server passar bra för både Azure SQL DB-databasen och den hanterade Azure SQL-instansen, rekommenderar utvärderingen ett särskilt alternativ som optimerar kostnaden och passar i storlek och prestanda gränser.
@@ -171,7 +168,7 @@ I den här tabellen visas klassificeringen av bedömning av säkerhet, vilket be
 
 #### <a name="low-confidence-ratings"></a>Värderingar med låg exakthet
 Här följer några skäl till varför en utvärdering kan få en låg exakthet:
-- Du har inte profilerat din miljö under den tid som du skapar utvärderingen. Om du till exempel skapar utvärderingen med varaktigheten inställd på en dag måste du vänta minst en dag efter att du har startat identifieringen för alla data punkter som ska samlas in.
+- Du profilerade inte din miljö för hela den varaktighet för vilken du skapar utvärderingen. Om du till exempel skapar utvärderingen med varaktigheten inställd på en dag måste du vänta minst en dag efter att du har startat identifieringen för alla data punkter som ska samlas in.
 - Utvärderingen kan inte samla in prestandadata för vissa eller alla servrar under utvärderingsperioden. För en hög exakthet bör du se till att:
     - Servrarna är påslagna under utvärderings perioden
     - Utgående anslutningar på portarna 443 tillåts

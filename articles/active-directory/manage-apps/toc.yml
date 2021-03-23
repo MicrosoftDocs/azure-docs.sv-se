@@ -290,8 +290,10 @@
               href: application-proxy-understand-cors-issues.md
 - name: Referens
   items:
-    - name: Vanliga frågor och svar om programproxy
+    - name: Vanliga frågor om App proxy
       href: application-proxy-faq.md
+    - name: Vanliga frågor och svar om app Management-certifikat
+      href: application-management-certs-faq.md
     - name: Versionshistorik för programproxy
       href: application-proxy-release-version-history.md
     - name: Anledningar till att appar visas i Företagsprogram

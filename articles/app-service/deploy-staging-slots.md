@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100594246"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802972"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurera mellanlagringsmiljöer i Azure App Service
 <a name="Overview"></a>
@@ -214,6 +214,7 @@ Du kan också anpassa det varmaste sättet med en eller båda av följande [appi
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Sökvägen till ping för att värma upp platsen. Lägg till den här appens inställningen genom att ange en anpassad sökväg som börjar med ett snedstreck som värde. Ett exempel är `/statuscheck`. Standardvärdet är `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Giltiga HTTP-svars koder för den varmande åtgärden. Lägg till den här appens inställningen med en kommaavgränsad lista över HTTP-koder. Ett exempel är `200,202` . Om den returnerade status koden inte finns i listan stoppas uppvärmnings och växlings åtgärder. Som standard är alla svars koder giltiga.
+- `WEBSITE_WARMUP_PATH`: En relativ sökväg på platsen som ska pingas varje gång platsen startas om (inte bara vid fack växlingar). Exempel värden är `/statuscheck` eller rot Sök vägen `/` .
 
 > [!NOTE]
 > `<applicationInitialization>`Konfigurations elementet är en del av varje app-Start, medan de två app-inställningarna för att värma upp gäller endast för fack växlingar.

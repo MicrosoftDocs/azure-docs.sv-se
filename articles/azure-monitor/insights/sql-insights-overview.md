@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d01f80a803c5b0f9da067dd23ab8cdb4cc591a79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610122"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798297"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Övervaka SQL-distributioner med SQL Insights (förhands granskning)
 SQL Insights övervakar prestanda och hälsa för SQL-distributionerna.  Det kan hjälpa till att leverera förutsägbar prestanda och tillgänglighet för viktiga arbets belastningar som du har skapat runt en SQL-Server genom att identifiera Flask halsar och problem med prestanda. SQL Insights lagrar data i [Azure Monitor loggar](../logs/data-platform-logs.md), vilket gör det möjligt att leverera kraftfull agg regering och filtrering och analysera data trender över tid. Du kan visa dessa data från Azure Monitor i de vyer vi levererar som en del av det här erbjudandet och du kan gå direkt till loggdata för att köra frågor och analysera trender.
 
 SQL Insights installerar inte något på dina SQL IaaS-distributioner. I stället används dedikerade virtuella datorer för att samla in data för både SQL-PaaS och SQL IaaS-distributioner.  Med SQL Insights Monitoring-profilen kan du hantera de data uppsättningar som ska samlas in baserat på typen av SQL, inklusive Azure SQL DB, Azure SQL-hanterad instans och SQL Server som körs på en virtuell Azure-dator.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Det finns ingen direkt kostnad för SQL Insights, men du debiteras för aktiviteten i Log Analytics-arbetsytan. SQL insikter debiteras enligt priserna som publiceras på [sidan Azure Monitor priser](https://azure.microsoft.com/pricing/details/monitor/):
 
@@ -59,7 +59,7 @@ Se [Aktivera SQL Insights](sql-insights-enable.md) för den detaljerade procedur
 
 
 ## <a name="data-collected-by-sql-insights"></a>Data som samlas in av SQL Insights
-I den offentliga för hands versionen stöder SQL Insights endast fjärrmetoden för övervakning. Teleympkvistar-agenten är inte installerad på SQL Server. Den använder plugin-programmet SQL Server plugin för teleympkvistar och använder de tre grupp frågorna för de olika typerna av SQL-IT-Övervakare: Azure SQL DB, Azure SQL-hanterad instans, SQL Server som körs på en virtuell Azure-dator. 
+I den offentliga för hands versionen stöder SQL Insights endast fjärrmetoden för övervakning. Teleympkvistar- [agenten](https://www.influxdata.com/time-series-platform/telegraf/) är inte installerad på SQL Server. Den använder [plugin-programmet SQL Server plugin för teleympkvistar](https://www.influxdata.com/integration/microsoft-sql-server/) och använder de tre grupp frågorna för de olika typerna av SQL-IT-Övervakare: Azure SQL DB, Azure SQL-hanterad instans, SQL Server som körs på en virtuell Azure-dator. 
 
 Följande tabeller sammanfattar följande:
 
@@ -75,44 +75,44 @@ Du kan ändra vilka frågor som ska köras och data insamlings frekvens när du 
 
 | Frågenamn | DMV | Namnområde | Aktive rad som standard | Standard frekvens för samling |
 |:---|:---|:---|:---|:---|
-| AzureSQLDBWaitStats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | No | NA |
-| AzureSQLDBResourceStats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 sekunder |
-| AzureSQLDBResourceGovernance | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Yes | 60 sekunder |
-| AzureSQLDBDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Yes | 60 sekunder |
-| AzureSQLDBServerProperties | sys.dm_os_job_object<br>sys.database_files<br>sys. samling<br>sys. [database_service_objectives] | sqlserver_server_properties | Yes | 60 sekunder |
-| AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 sekunder |
-| AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 sekunder |
-| AzureSQLDBPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 sekunder |
-| AzureSQLDBRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA  |
+| AzureSQLDBWaitStats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | Inga | NA |
+| AzureSQLDBResourceStats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Ja | 60 sekunder |
+| AzureSQLDBResourceGovernance | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Ja | 60 sekunder |
+| AzureSQLDBDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Ja | 60 sekunder |
+| AzureSQLDBServerProperties | sys.dm_os_job_object<br>sys.database_files<br>sys. samling<br>sys. [database_service_objectives] | sqlserver_server_properties | Ja | 60 sekunder |
+| AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Ja | 60 sekunder |
+| AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ja | 60 sekunder |
+| AzureSQLDBPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Ja | 60 sekunder |
+| AzureSQLDBRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Inga | NA |
+| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Inga | NA  |
 
 ### <a name="azure-sql-managed-instance-data"></a>Azure SQL-hanterade instans data 
 
 | Frågenamn | DMV | Namnområde | Aktive rad som standard | Standard frekvens för samling |
 |:---|:---|:---|:---|:---|
-| AzureSQLMIResourceStats | sys.server_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 sekunder |
-| AzureSQLMIResourceGovernance | sys.dm_instance_resource_governance | sqlserver_instance_resource_governance | Yes | 60 sekunder |
-| AzureSQLMIDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 sekunder |
-| AzureSQLMIServerProperties | sys.server_resource_stats | sqlserver_server_properties | Yes | 60 sekunder |
-| AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 sekunder |
-| AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 sekunder |
-| AzureSQLMIPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 sekunder |
-| AzureSQLMIRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| AzureSQLMISchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA |
+| AzureSQLMIResourceStats | sys.server_resource_stats | sqlserver_azure_db_resource_stats | Ja | 60 sekunder |
+| AzureSQLMIResourceGovernance | sys.dm_instance_resource_governance | sqlserver_instance_resource_governance | Ja | 60 sekunder |
+| AzureSQLMIDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Ja | 60 sekunder |
+| AzureSQLMIServerProperties | sys.server_resource_stats | sqlserver_server_properties | Ja | 60 sekunder |
+| AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Ja | 60 sekunder |
+| AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ja | 60 sekunder |
+| AzureSQLMIPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Ja | 60 sekunder |
+| AzureSQLMIRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Inga | NA |
+| AzureSQLMISchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Inga | NA |
 
 ### <a name="sql-server-data"></a>SQL Server data
 
 | Frågenamn | DMV | Namnområde | Aktive rad som standard | Standard frekvens för samling |
 |:---|:---|:---|:---|:---|
-| SQLServerPerformanceCounters | sys.dm_os_performance_counters | sqlserver_performance | Yes | 60 sekunder |
-| SQLServerWaitStatsCategorized | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 sekunder | 
-| SQLServerDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 sekunder |
-| SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Yes | 60 sekunder |
-| SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 sekunder |
-| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA |
-| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Yes | 60 sekunder |
-| SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Yes | 60 sekunder |
+| SQLServerPerformanceCounters | sys.dm_os_performance_counters | sqlserver_performance | Ja | 60 sekunder |
+| SQLServerWaitStatsCategorized | sys.dm_os_wait_stats | sqlserver_waitstats | Ja | 60 sekunder | 
+| SQLServerDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Ja | 60 sekunder |
+| SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Ja | 60 sekunder |
+| SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ja | 60 sekunder |
+| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Inga | NA |
+| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Inga | NA |
+| SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Ja | 60 sekunder |
+| SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Ja | 60 sekunder |
 | SQLServerAvailabilityReplicaStates | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | sqlserver_hadr_replica_states | | 60 sekunder |
 | SQLServerDatabaseReplicaStates | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | sqlserver_hadr_dbreplica_states | | 60 sekunder |
 

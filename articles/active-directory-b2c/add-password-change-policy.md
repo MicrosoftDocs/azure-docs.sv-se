@@ -8,20 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21da8f79772d9648836bedec89cb5d7014486dc6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629140"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798367"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurera ändring av lösen ord med anpassade principer i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+I Azure Active Directory B2C (Azure AD B2C) kan du aktivera användare som är inloggade med ett lokalt konto för att ändra sina lösen ord utan att behöva bevisa sin identitet via e-postverifiering. Flödet för lösen ords ändring omfattar följande steg:
+
+1. Användaren loggar in på sitt lokala konto. Om sessionen fortfarande är aktiv, Azure AD B2C auktorisera användaren och gå vidare till nästa steg.
+1. Användaren verifierar det **gamla lösen ordet** och skapar och bekräftar sedan det **nya lösen ordet**.
+
+![Flöde för lösen ords ändring](./media/add-password-change-policy/password-change-flow.png)  
+
+> [!TIP]
+> Med lösen ords ändrings flödet kan användarna bara ändra sitt lösen ord när användaren känner till sitt lösen ord och vill ändra det. Vi rekommenderar att du även aktiverar [lösen ords återställning via självbetjäning](add-password-reset-policy.md) till stöd för de fall där användaren glömmer sitt lösen ord.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -30,15 +40,6 @@ ms.locfileid: "97629140"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för användare som är inloggade med ett lokalt konto att ändra sina lösen ord utan att behöva bevisa sin äkthet via e-postverifiering. Flödet för lösen ords ändring omfattar följande steg:
-
-1. Logga in med ett lokalt konto. Om sessionen fortfarande är aktiv, Azure AD B2C auktorisera användaren och gå vidare till nästa steg.
-1. Användare måste verifiera det **gamla lösen ordet**, skapa och bekräfta det **nya lösen ordet**.
-
-![Flöde för lösen ords ändring](./media/add-password-change-policy/password-change-flow.png)
 
 ## <a name="prerequisites"></a>Förutsättningar
 

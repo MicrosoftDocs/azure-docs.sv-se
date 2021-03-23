@@ -46,8 +46,6 @@
       href: concepts-storage.md
     - name: Åtkomst och identitet för privata moln
       href: concepts-identity.md
-    - name: vSphere – rollbaserad åtkomstkontroll
-      href: concepts-role-based-access-control.md
     - name: Övervaka och reparera privata moln
       href: concepts-monitor-repair-private-cloud.md
     - name: Uppgraderingar för privata moln

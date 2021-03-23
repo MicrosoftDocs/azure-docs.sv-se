@@ -3,16 +3,16 @@ title: 'Data omvandling: bearbeta & transformera data '
 description: Lär dig hur du omformar data eller bearbetar data i Azure Data Factory att använda Hadoop, Azure Machine Learning Studio (klassisk) eller Azure Data Lake Analytics.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c9818bfd2a9519cd14d34ecc810179d66aa57e52
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 422acbaab097182b800e3bad35b0121284db9cd8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100363992"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782936"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Transformera data i Azure Data Factory version 1
 > [!div class="op_single_selector"]

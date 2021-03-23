@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97845463"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799335"
 ---
 # <a name="language-and-region-support-for-luis"></a>Språk-och region stöd för LUIS
 
@@ -44,7 +44,7 @@ LUIS förstår yttranden på följande språk:
 | Koreanska |`ko-KR` |✔|-|-|Endast nyckel fras|
 | Marathi | `mr-IN`|-|-|-|-|
 | Portugisiska (Brasilien) |`pt-BR` |✔| ✔ |✔ |alla under kulturer|
-| Spanska (Mexiko)|`es-MX` |-|-|✔|✔|
+| Spanska (Mexiko)|`es-MX` |-|✔|✔|✔|
 | Spanska (Spanien) |`es-ES` |✔| ✔ |✔|✔|
 | Tamilska | `ta-IN`|-|-|-|-|
 | Telugu | `te-IN`|-|-|-|-|

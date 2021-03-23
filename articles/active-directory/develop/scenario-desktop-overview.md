@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98753730"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798960"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: Skriv bords program som anropar webb-API: er
 
@@ -30,6 +30,7 @@ Om du inte redan har gjort det kan du skapa ditt första program genom att slutf
 - [Snabbstart: Hämta en token och anropa Microsoft Graph API från en Windows-skrivbordsapp](./quickstart-v2-windows-desktop.md)
 - [Snabb start: Hämta en token och anropa Microsoft Graph API från en UWP-app](./quickstart-v2-uwp.md)
 - [Snabb start: Hämta en token och anropa Microsoft Graph API från en macOS-inbyggd app](./quickstart-v2-ios.md)
+- [Snabb start: Hämta en token och anropa Microsoft Graph API från en Node.js & Electron-app](./quickstart-v2-nodejs-desktop.md)
 
 ## <a name="overview"></a>Översikt
 
@@ -39,6 +40,7 @@ Du skriver ett Skriv bords program och vill logga in användare i ditt program o
 
   - Om ditt Skriv bords program stöder grafiska kontroller, till exempel, om det är ett Windows. Forms-program, ett WPF-program eller ett internt macOS-program.
   - Eller, om det är ett .NET Core-program och du samtycker till att ha autentiseringen med Azure Active Directory (Azure AD) i system läsaren.
+  - Eller, om det är ett Node.js Electron-program, som körs på en krom-instans.
 
 - För Windows-värdbaserade program är det också möjligt för program som körs på datorer som är anslutna till en Windows-domän eller Azure AD-ansluten för att hämta en token i tysthet med hjälp av integrerad Windows-autentisering.
 - Slutligen, och även om det inte rekommenderas, kan du använda ett användar namn och ett lösen ord i offentliga klient program. Det behövs fortfarande i vissa scenarier som DevOps. Användning av IT-begränsningar i ditt program. Den kan till exempel inte logga in en användare som behöver utföra [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (villkorlig åtkomst). Programmet kommer också inte att dra nytta av enkel inloggning (SSO).

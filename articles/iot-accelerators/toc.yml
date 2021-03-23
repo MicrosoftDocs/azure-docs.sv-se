@@ -7,22 +7,10 @@
     - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
     - name: Branschanpassat IoT
-      href: overview-iot-industrial.md
-      items:
-        - name: Vad är OPC-tvilling
-          href: overview-opc-twin.md
-        - name: Vad är OPC-valv
-          href: overview-opc-vault.md
-        - name: Vad är OPC Publisher?
-          href: overview-opc-publisher.md
-        - name: Vad är Ansluten fabrik
-          href: iot-accelerators-connected-factory-features.md
     - name: Enhetssimulering
       href: iot-accelerators-device-simulation-overview.md
 - name: Snabbstarter
   items:
-    - name: Testa en lösning för ansluten fabrik
-      href: quickstart-connected-factory-deploy.md
     - name: Distribuera lösningsaccelerator för enhetssimulering
       href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
   expanded: true
@@ -37,47 +25,14 @@
 - name: Begrepp
   items:
     - name: Branschanpassat IoT
-      items:
-        - name: Arkitektur för OPC-tvilling
-          href: overview-opc-twin-architecture.md
-        - name: Arkitektur för OPC-valv
-          href: overview-opc-vault-architecture.md
 - name: Anvisningar
   items:
     - name: Branschanpassat IoT
       items:
         - name: Ansluten fabrik
-          items:
-            - name: Använd instrumentpanelen
-              href: iot-accelerators-connected-factory-dashboard.md
-            - name: Konfigurera lösningsacceleratorn
-              href: iot-accelerators-connected-factory-configure.md
-            - name: Anpassa lösningsacceleratorn
-              href: iot-accelerators-connected-factory-customize.md
         - name: OPC-tvilling
-          items:
-            - name: Distribuera tjänster för OPC-tvilling
-              href: howto-opc-twin-deploy-existing.md
-            - name: Distribuera en modul för OPC-tvilling till IoT Edge
-              href: howto-opc-twin-deploy-modules.md
-            - name: Distribuera endast beroenden för OPC-tvilling
-              href: howto-opc-twin-deploy-dependencies.md
         - name: OPC-valv
-          items:
-            - name: Distribuera OPC-valvstjänst
-              href: howto-opc-vault-deploy.md
-            - name: Hantera OPC-valvstjänst
-              href: howto-opc-vault-manage.md
-            - name: Säkra OPC UA-enhetskommunikation med OPC-valvet
-              href: howto-opc-vault-secure.md
-            - name: Använda OPC-valvstjänsten på ett säkert sätt
-              href: howto-opc-vault-secure-ca.md
         - name: OPC Publisher
-          items:
-            - name: Konfigurera OPC Publisher
-              href: howto-opc-publisher-configure.md
-            - name: Köra OPC Publisher
-              href: howto-opc-publisher-run.md
     - name: Enhetssimulering
       items:
         - name: Använd en befintlig IoT Hub
@@ -122,8 +77,6 @@
       items:
         - name: GitHub-lagringsplats
           href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Vanliga frågor och svar om ansluten fabrik
-          href: iot-accelerators-faq-cf.md
     - name: Enhetssimulering
       items:
         - name: Referensguide för utvecklare

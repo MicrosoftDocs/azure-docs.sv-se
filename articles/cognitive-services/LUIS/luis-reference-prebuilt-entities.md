@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91542010"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798807"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteter per kultur i din LUIS-modell
 
@@ -40,7 +40,7 @@ Om inget annat anges är fördefinierade entiteter tillgängliga i alla LUIS pro
 |Koreanska|[ko-KR](#korean-entity-support)||
 |Portugisiska|[pt-BR (Brasilien)](#portuguese-brazil-entity-support)||
 |Spanska|[es-es (Spanien)](#spanish-spain-entity-support), [es-MX (Mexiko)](#spanish-mexico-entity-support)||
-|Turkiska|[Turkiska](#turkish-entity-support)|Inga fördefinierade entiteter stöds i turkiska|
+|Turkiska|[Turkiska](#turkish-entity-support)||
 
 ## <a name="prediction-endpoint-runtime"></a>Körning av förutsägelse slut punkt
 
@@ -268,6 +268,8 @@ Följande entiteter stöds:
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
+En fras är inte tillgänglig i alla under odlingar av portugisiska (Brasilien)- ```pt-BR``` .
+
 ## <a name="spanish-spain-entity-support"></a>Stöd för spanska (Spanien) entitet
 
 Följande entiteter stöds:
@@ -314,34 +316,25 @@ Följande entiteter stöds:
 
 Se kommentarer om [inaktuella förbyggda entiteter](luis-reference-prebuilt-deprecated.md)
 
-En fras är inte tillgänglig i alla under odlingar av portugisiska (Brasilien)- ```pt-BR``` .
-
 ## <a name="turkish-entity-support"></a>Stöd för turkiska entiteter
 
-**Det finns inga färdiga entiteter som stöds i turkiska.**
-
-<!--
-
-| Prebuilt entity | tr-tr |
+| Fördefinierad entitet | tr-tr |
 | --------------- | :---: |
-[Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
+[Ålder](luis-reference-prebuilt-age.md):<br>år<br>månad<br>vecka<br>day   |    -   |
+[Valuta (belopp)](luis-reference-prebuilt-currency.md):<br>pengarna<br>fraktions enhet (t. ex.: öres)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
-[Dimension](luis-reference-prebuilt-dimension.md):<br>volume<br>area<br>weight<br>information (ex: bit/byte)<br>length (ex: meter)<br>speed (ex: mile per hour)  |    -   |
-[Email](luis-reference-prebuilt-email.md)   |    -   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Number](luis-reference-prebuilt-number.md)   |    -   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
-[Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
-[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
+[Dimension](luis-reference-prebuilt-dimension.md):<br>volym<br>område<br>vikt<br>information (t. ex. bit/byte)<br>längd (t. ex. mätar)<br>hastighet (t. ex.: mil per timme)  |    -   |
+[E-post](luis-reference-prebuilt-email.md)   |    -   |
+[Riskfras](luis-reference-prebuilt-keyphrase.md)   |    -   |
+[Nummer](luis-reference-prebuilt-number.md)   |    -   |
+[Ordningstal](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    -   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
+[Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    -   |
 
+<!---
 See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)
-
-
 KeyPhrase is not available.
 -->
 

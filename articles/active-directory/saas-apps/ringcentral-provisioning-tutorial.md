@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181636"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800777"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Självstudie: Konfigurera RingCentral för automatisk användar etablering
 
@@ -46,15 +46,7 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera RingCentral för att ge stöd för etablering med Azure AD
 
-1. Logga in på din [RingCentral-administratörs konsol](https://login.ringcentral.com/sw.html). Navigera till **verktyg > katalog integrering**.
-
-    ![RingCentral-administratörskonsolen](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  Välj **scim** under **Välj katalog leverantör**. (I framtiden kommer det att finnas ett alternativ som kallas Azure Active Directory). Klicka på **Aktivera scim-tjänst**.
-
-    ![RingCentral Lägg till SCIM](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  Kontakta RingCentral support team på matthew.hunt@ringcentral.com för en **scim-autentiseringstoken**. Det här värdet anges i fältet Hemlig token på fliken etablering i ditt RingCentral-program i Azure Portal.
+Ett [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) -administratörskonto krävs för att auktorisera i avsnittet admin credentials i steg 5.
 
 > [!NOTE]
 > Information om hur du tilldelar licenser till användare finns i video länken [här](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language).
@@ -94,9 +86,13 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Skärm bild av list rutan etablerings läge med det automatiska alternativet inringat.](common/provisioning-automatic.png)
 
-5. Under avsnittet **admin credentials** , inmatat `https://platform.ringcentral.com/scim/v2` i **klient-URL**. Mata in **scim-autentiseringstoken** som hämtades tidigare i **hemlig token**. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till RingCentral. Om anslutningen Miss lyckas kontrollerar du att RingCentral-kontot har administratörs behörighet och försöker igen.
+5. Under avsnittet **admin credentials** klickar du på **auktorisera**. Du kommer att omdirigeras till RingCentral inloggnings sida. Mata in e-post/telefonnummer och lösen ord och klicka på knappen **Logga in** . Klicka på **auktorisera** på sidan för RingCentral- **åtkomstbegäran** . Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till RingCentral. Om anslutningen Miss lyckas kontrollerar du att RingCentral-kontot har administratörs behörighet och försöker igen.
 
-    ![Skärm bild av text fälten för klient-URL och hemlig token med alternativet Testa anslutning som kallas out.](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![Auktorisera](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. I fältet **E-postavisering** anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etableringsfel. Markera sedan kryssrutan **Skicka ett e-postmeddelande när ett fel uppstår**.
 
@@ -151,6 +147,7 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 ## <a name="change-log"></a>Ändringslogg
 
 * 09/10/2020 – stöd för attributen "displayName" och "Manager" har tagits bort.
+* 03/15/2021 – uppdaterad Authorization-metod från permanent Bearer-token till OAuth Code Grant-flöde.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

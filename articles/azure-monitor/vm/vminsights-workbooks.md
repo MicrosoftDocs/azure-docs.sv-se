@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046524"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798858"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Skapa interaktiva rapporter VM Insights med arbets böcker
 
@@ -27,15 +27,15 @@ I följande tabell sammanfattas de arbets böcker som ingår i VM-insikter för 
 
 | Arbetsbok | Beskrivning | Omfång |
 |----------|-------------|-------|
-| Prestanda | Innehåller en anpassningsbar version av vår översta N-lista och diagram-vy i en enda arbets bok som utnyttjar alla Log Analytics prestanda räknare som du har aktiverat.| I skala |
-| Prestandaräknare | En översta N-diagramvy över en stor uppsättning prestanda räknare. | I skala |
-| Anslutningar | Anslutningar är en djupgående vy över inkommande och utgående anslutningar från dina övervakade virtuella datorer. | I skala |
-| Aktiva portar | Innehåller en lista över de processer som har bundits till portarna på de övervakade virtuella datorerna och deras aktivitet inom den valda tids ramen. | I skala |
-| Öppna portar | Visar antalet portar som är öppna på de övervakade virtuella datorerna och information om de öppna portarna. | I skala |
-| Misslyckade anslutningar | Visa antalet misslyckade anslutningar på de övervakade virtuella datorerna, fel trenden och om procent andelen fel ökar med tiden. | I skala |
-| Säkerhet och granskning | En analys av TCP/IP-trafik som rapporterar om övergripande anslutningar, skadliga anslutningar, där IP-slutpunkterna finns globalt.  Om du vill aktivera alla funktioner måste du aktivera säkerhets identifiering. | I skala |
-| TCP-trafik | En rangordnad rapport för dina övervakade virtuella datorer och deras skickade, mottagna och totala nätverks trafik i ett rutnät och visas som en trend linje. | I skala |
-| Jämförelse av trafik | Med den här arbets boken kan du jämföra trender för nätverks trafik för en enskild dator eller en grupp av datorer. | I skala |
+| Prestanda | Innehåller en anpassningsbar version av vår översta N-lista och diagram-vy i en enda arbets bok som utnyttjar alla Log Analytics prestanda räknare som du har aktiverat.| Flera virtuella datorer |
+| Prestandaräknare | En översta N-diagramvy över en stor uppsättning prestanda räknare. | Flera virtuella datorer |
+| Anslutningar | Anslutningar är en djupgående vy över inkommande och utgående anslutningar från dina övervakade virtuella datorer. | Flera virtuella datorer |
+| Aktiva portar | Innehåller en lista över de processer som har bundits till portarna på de övervakade virtuella datorerna och deras aktivitet inom den valda tids ramen. | Flera virtuella datorer |
+| Öppna portar | Visar antalet portar som är öppna på de övervakade virtuella datorerna och information om de öppna portarna. | Flera virtuella datorer |
+| Misslyckade anslutningar | Visa antalet misslyckade anslutningar på de övervakade virtuella datorerna, fel trenden och om procent andelen fel ökar med tiden. | Flera virtuella datorer |
+| Säkerhet och granskning | En analys av TCP/IP-trafik som rapporterar om övergripande anslutningar, skadliga anslutningar, där IP-slutpunkterna finns globalt.  Om du vill aktivera alla funktioner måste du aktivera säkerhets identifiering. | Flera virtuella datorer |
+| TCP-trafik | En rangordnad rapport för dina övervakade virtuella datorer och deras skickade, mottagna och totala nätverks trafik i ett rutnät och visas som en trend linje. | Flera virtuella datorer |
+| Jämförelse av trafik | Med den här arbets boken kan du jämföra trender för nätverks trafik för en enskild dator eller en grupp av datorer. | Flera virtuella datorer |
 | Prestanda | Ger en anpassningsbar version av vår prestanda vy som utnyttjar alla Log Analytics prestanda räknare som du har aktiverat. | Enstaka virtuell dator | 
 | Anslutningar | Anslutningar är en djupgående vy över inkommande och utgående anslutningar från den virtuella datorn. | Enstaka virtuell dator |
  

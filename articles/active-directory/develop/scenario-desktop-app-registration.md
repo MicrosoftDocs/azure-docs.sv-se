@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578353"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798943"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Skriv bords app som anropar webb-API: registrera appar
 
@@ -50,6 +50,7 @@ Ange omdirigerings-URI för appen genom [att konfigurera plattforms inställning
   > Av säkerhets skäl rekommenderar vi att du uttryckligen ställer in `https://login.microsoftonline.com/common/oauth2/nativeclient` eller `http://localhost` som omdirigerings-URI. Vissa autentiseringsscheman som MSAL.NET använder ett standardvärde för `urn:ietf:wg:oauth:2.0:oob` när ingen annan omdirigerings-URI anges, vilket inte rekommenderas. Det här standardvärdet kommer att uppdateras som en viktig ändring i nästa större version.
 
 - Om du skapar en ursprunglig mål-C-eller Swift-app för macOS registrerar du omdirigerings-URI: n baserat på programmets paket identifierare i följande format: `msauth.<your.app.bundle.id>://auth` . Ersätt `<your.app.bundle.id>` med programmets paket-ID.
+- Om du skapar en Node.js Electron-app använder du ett anpassat fil protokoll i stället för en vanlig webb (https://) omdirigerings-URI för att hantera omdirigerings steget i auktoriseringsarkivet, till exempel `msal://redirect` . Namnet på det anpassade fil protokollet bör inte vara uppenbart för gissning och bör följa förslagen i [OAuth 2.0-specifikationen för interna appar](https://tools.ietf.org/html/rfc8252#section-7.1).
 - Om din app endast använder integrerad Windows-autentisering eller ett användar namn och ett lösen ord, behöver du inte registrera en omdirigerings-URI för programmet. Dessa flöden gör en tur och retur till Microsoft Identity Platform v 2.0-slutpunkten. Programmet kommer inte att anropas igen på någon specifik URI.
 - För att skilja [enhets kod flödet](scenario-desktop-acquire-token.md#device-code-flow), [integrerad Windows-autentisering](scenario-desktop-acquire-token.md#integrated-windows-authentication)och ett [användar namn och ett lösen ord](scenario-desktop-acquire-token.md#username-and-password) från ett konfidentiellt klient program med hjälp av ett flöde för autentiseringsuppgifter för klient som används i [daemon-program](scenario-daemon-overview.md), ingen som kräver en omdirigerings-URI, konfigurera den som ett offentligt klient program. För att uppnå den här konfigurationen:
 

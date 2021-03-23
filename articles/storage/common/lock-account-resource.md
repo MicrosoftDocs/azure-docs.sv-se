@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9d80c0b8d4d913322c47d1ad278d6dbc033d2409
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 79b88ad58a2eb95a48a140b3b98d606af495cb94
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102620152"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799793"
 ---
 # <a name="apply-an-azure-resource-manager-lock-to-a-storage-account"></a>Använd ett Azure Resource Manager lås till ett lagrings konto
 
@@ -25,8 +25,8 @@ Microsoft rekommenderar att du låser alla dina lagrings konton med ett Azure Re
 
 Mer information om Azure Resource Manager lås finns i [låsa resurser för att förhindra ändringar](../../azure-resource-manager/management/lock-resources.md).
 
-> [!IMPORTANT]
-> Att låsa ett lagrings konto skyddar inte data i det kontot från att uppdateras eller tas bort.
+> [!CAUTION]
+> Genom att låsa ett lagrings konto skyddas inte behållare eller blobbar i kontot från att tas bort eller skrivas över. Mer information om hur du skyddar BLOB-data finns i [Översikt över data skydd](../blobs/data-protection-overview.md).
 
 ## <a name="configure-an-azure-resource-manager-lock"></a>Konfigurera ett Azure Resource Manager lås
 
@@ -83,4 +83,5 @@ Data i Azure Files eller Table service kan bli otillgängliga för klienter som 
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Lås resurser för att förhindra ändringar](../../azure-resource-manager/management/lock-resources.md)
+- [Översikt över dataskydd](../blobs/data-protection-overview.md)
+- [Lås resurser för att förhindra ändringar](../../azure-resource-manager/management/lock-resources.md)

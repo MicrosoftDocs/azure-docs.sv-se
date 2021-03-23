@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595986"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773087"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -186,22 +186,24 @@ Anger det maximala antalet språk arbets processer, med standardvärdet `1` . De
 |---|------------|
 |FUNKTIONER \_ arbets \_ process \_ antal|2|
 
-## <a name="python_threadpool_thread_count"></a>antal PYTHON- \_ trådar för trådpool \_ \_
-
-Anger det maximala antalet trådar som en python-språk arbetare använder för att köra funktions anrop, med standardvärdet `1` för python-version `3.8` och nedan. För python `3.9` -version och högre är värdet inställt på `None` . Observera att den här inställningen inte garanterar antalet trådar som skulle anges under körningarna. Inställningen tillåter python att expandera antalet trådar till det angivna värdet. Inställningen gäller endast python Function-appar. Inställningen gäller även för synkrona funktioner-anrop och inte för-rutiner.
-
-|Nyckel|Exempelvärde|Maxvärde|
-|---|------------|---------|
-|antal PYTHON- \_ trådar för trådpool \_ \_|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNKTIONER \_ Worker \_ runtime
 
-Språk arbets körningen som ska läsas in i Function-appen.  Detta motsvarar det språk som används i ditt program (till exempel "dotNet"). För funktioner på flera språk måste du publicera dem till flera appar, var och en med motsvarande arbetares körnings värde.  Giltiga värden är `dotnet` (C#/f #), `node` (Java Script/typescript), `java` (Java), `powershell` (PowerShell) och `python` (python).
+Språk arbets körningen som ska läsas in i Function-appen.  Detta motsvarar det språk som används i ditt program (till exempel `dotnet` ). Från och med version 2. x av Azure Functions runtime kan en viss Function-app bara stödja ett enda språk.   
 
 |Nyckel|Exempelvärde|
 |---|------------|
-|FUNKTIONER \_ Worker \_ runtime|dotnet|
+|FUNKTIONER \_ Worker \_ runtime|node|
+
+Giltiga värden:
+
+| Värde | Språk |
+|---|---|
+| `dotnet` | [C# (klassbibliotek)](functions-dotnet-class-library.md)<br/>[C# (skript)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (isolerad process)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>\_URL för extra \_ index \_ för pip
 
@@ -212,6 +214,14 @@ Värdet för den här inställningen indikerar en anpassad URL för paket index 
 |\_URL för extra \_ index \_ för pip|http://my.custom.package.repo/simple |
 
 Mer information finns i [anpassade beroenden](functions-reference-python.md#remote-build-with-extra-index-url) i python Developer reference.
+
+## <a name="python_threadpool_thread_count"></a>antal PYTHON- \_ trådar för trådpool \_ \_
+
+Anger det maximala antalet trådar som en python-språk arbetare använder för att köra funktions anrop, med standardvärdet `1` för python-version `3.8` och nedan. För python `3.9` -version och högre är värdet inställt på `None` . Observera att den här inställningen inte garanterar antalet trådar som skulle anges under körningarna. Inställningen tillåter python att expandera antalet trådar till det angivna värdet. Inställningen gäller endast python Function-appar. Inställningen gäller även för synkrona funktioner-anrop och inte för-rutiner.
+
+|Nyckel|Exempelvärde|Maxvärde|
+|---|------------|---------|
+|antal PYTHON- \_ trådar för trådpool \_ \_|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>\_ \_ Aktivera loggning av skalnings styrenhet \_
 

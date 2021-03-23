@@ -1,26 +1,26 @@
 ---
-title: Använd Java Script för att hantera data i Azure Data Lake Storage Gen2
+title: Använd Java Script (Node.js) för att hantera data i Azure Data Lake Storage Gen2
 description: Använd Azure Storage Data Lake klient bibliotek för Java Script för att hantera kataloger och filer i lagrings konton med hierarkiskt namn område aktiverat.
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 678af3e2fb4111593ece0cc2cdf3811cf0e793a8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100650175"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774770"
 ---
-# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Använd Java Script för att hantera kataloger och filer i Azure Data Lake Storage Gen2
+# <a name="use-javascript-sdk-in-nodejs-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Använd JavaScript SDK i Node.js för att hantera kataloger och filer i Azure Data Lake Storage Gen2
 
-Den här artikeln visar hur du använder Java Script för att skapa och hantera kataloger och filer i lagrings konton som har ett hierarkiskt namn område.
+Den här artikeln visar hur du använder Node.js för att skapa och hantera kataloger och filer i lagrings konton som har ett hierarkiskt namn område.
 
-Information om hur du hämtar, anger och uppdaterar åtkomst kontrol listorna (ACL) för kataloger och filer finns i [använda Java Script för att hantera ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-javascript.md).
+Information om hur du hämtar, anger och uppdaterar åtkomst kontrol listorna (ACL) för kataloger och filer finns i [använda JavaScript SDK i Node.js för att hantera ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-javascript.md).
 
 [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Ge feedback](https://github.com/Azure/azure-sdk-for-java/issues)
 
@@ -43,7 +43,11 @@ npm install @azure/storage-file-datalake
 Importera `storage-file-datalake` paketet genom att placera den här instruktionen överst i din kod fil. 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>Anslut till kontot 
@@ -259,4 +263,4 @@ async function ListFilesInDirectory(fileSystemClient) {
 
 - [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 - [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-- [Lämna feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+- [Ge feedback](https://github.com/Azure/azure-sdk-for-java/issues)

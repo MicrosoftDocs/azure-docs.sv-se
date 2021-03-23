@@ -2,14 +2,14 @@
 title: Välj VM-storlekar och avbildningar för pooler
 description: Hur du väljer mellan tillgängliga VM-storlekar och OS-versioner för datornoderna i Azure Batch pooler
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455203"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800490"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Välj en VM-storlek och avbildning för Compute-noder i en Azure Batch pool
 
@@ -35,11 +35,13 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | DC | Stöds inte |
 | Dv2, DSv2 | Alla storlekar |
 | Dv3, Dsv3 | Alla storlekar |
-| Dav4, Dasv4 | Alla storlekar |
+| Dav4 | Alla storlekar |
+| Dasv4 | Alla storlekar |
 | Ddv4, Ddsv4 |  Alla storlekar |
 | Dv4, Dsv4 | Stöds inte |
 | Ev3, Esv3 | Alla storlekar, förutom E64is_v3 |
-| Eav4, Easv4 | Alla storlekar |
+| Eav4 | Alla storlekar |
+| Easv4 | Alla storlekar |
 | Edv4, Edsv4 |  Alla storlekar |
 | Ev4, Esv4 | Stöds inte |
 | F, FS | Alla storlekar |
@@ -56,7 +58,7 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | NC | Alla storlekar |
 | NCv2 | Alla storlekar |
 | NCv3 | Alla storlekar |
-| NCasT4_v3 | Alla storlekar |
+| NCasT4_v3 | Ingen – ännu inte tillgänglig |
 | ND | Alla storlekar |
 | NDv2 | Ingen – ännu inte tillgänglig |
 | NV | Alla storlekar |
@@ -100,6 +102,8 @@ Använd något av följande API: er för att returnera en lista med virtuella Wi
 - Batch-tjänst REST API: [lista över avbildningar som stöds](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [AZ batch pool som stöds – avbildningar](/cli/azure/batch/pool/supported-images)
+
+Vi rekommenderar starkt att du undviker avbildningar med förestående batch-support för EOL-datum. Dessa datum kan identifieras via [ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)eller [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images). Mer information om val av virtuella datorer i batch-avbildning finns i [Best Practices guide](best-practices.md) .
 
 ## <a name="next-steps"></a>Nästa steg
 

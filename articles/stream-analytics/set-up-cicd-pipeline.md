@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466430"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775943"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Använd Azure-DevOps för att skapa en CI/CD-pipeline för ett Stream Analytics jobb
 
@@ -20,13 +20,13 @@ I den här artikeln får du lära dig att skapa en pipeline för att [bygga](/az
 
 ## <a name="commit-your-stream-analytics-project"></a>Bekräfta Stream Analytics-projektet
 
-Innan du börjar ska du spara dina fullständiga Stream Analytics-projekt som källfiler till en [Azure DevOps](/azure/devops/user-guide/source-control) -lagringsplats. Du kan referera till den här [exempel lagrings platsen](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) och [Stream Analytics projekt käll kod](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) i Azure-pipeliner.
+Innan du börjar ska du spara dina fullständiga Stream Analytics-projekt som källfiler till en [Azure DevOps](/azure/devops/user-guide/source-control) -lagringsplats. Du kan referera till den här [exempel lagrings platsen](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo) och [Stream Analytics projekt käll kod](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo) i Azure-pipeliner.
 
 Stegen i den här artikeln använder ett Stream Analytics Visual Studio Code-projekt. Om du använder ett Visual Studio-projekt följer du stegen i [Automatisera versioner, tester och distributioner av ett Azure Stream Analytics jobb med hjälp av CI/CD-verktyg](cicd-tools.md).
 
 ## <a name="create-a-build-pipeline"></a>Skapa en bygg-pipeline
 
-I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du kan referera till det här exemplet [Auto build and test pipeline](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) i Azure DevOps.
+I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du kan referera till det här exemplet [Auto build and test pipeline](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) i Azure DevOps.
 
 1. Öppna en webbläsare och navigera till projektet i Azure DevOps.  
 
@@ -155,7 +155,7 @@ Du hittar test sammanfattnings filen och Azure Resource Manager mallfiler i den 
 
 ## <a name="release-with-azure-pipelines"></a>Version med Azure-pipeline
 
-I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du kan referera till den här exempel [lanserings pipelinen](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) i Azure DevOps.
+I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du kan referera till den här exempel [lanserings pipelinen](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) i Azure DevOps.
 
 Öppna en webbläsare och gå till ditt Azure Stream Analytics Visual Studio Code-projekt.
 

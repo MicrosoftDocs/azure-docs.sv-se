@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8b3224333a3915b7827242004d1dec0f4695f479
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581923"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798401"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Konfigurera ett flöde för återställning av lösen ord i Azure Active Directory B2C
 
@@ -35,6 +35,9 @@ Med [inloggnings-och inloggnings resan](add-sign-up-and-sign-in-policy.md) kan a
 ![Flöde för lösen ords återställning](./media/add-password-reset-policy/password-reset-flow.png)
 
 Flödet för lösen ords återställning gäller lokala konton i Azure AD B2C som använder en [e-postadress](identity-provider-local.md#email-sign-in) eller ett [användar namn](identity-provider-local.md#username-sign-in) med ett lösen ord för inloggning.
+
+> [!TIP]
+> Flödet för lösen ords återställning via självbetjäning gör att användarna kan ändra sina lösen ord när användaren glömmer bort sitt lösen ord och vill återställa det. Överväg att konfigurera ett [lösen ord för lösen ords ändring](add-password-change-policy.md) för att ge stöd för fall där en användare känner till sitt lösen ord och vill ändra det.
 
 En vanlig metod när du migrerar användare till Azure AD B2C med slumpmässiga lösen ord är att användarna ska verifiera sina e-postadresser och återställa sina lösen ord under den första inloggningen. Det är också vanligt att tvinga användaren att återställa sitt lösen ord när en administratör har ändrat sitt lösen ord. Se [Framtvinga lösen ords återställning](force-password-reset.md) för att aktivera den här funktionen.
 

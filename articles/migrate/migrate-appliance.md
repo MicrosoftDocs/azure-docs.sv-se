@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate-installation
 description: Innehåller en sammanfattning av stödet för den Azure Migrate-enheten.
-author: vikram1988
-ms.author: vibansa
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 08cd0e9d33dd88b9bdc418f3d1bbd382b2d80632
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/18/2021
+ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038772"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778346"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-installation
 
@@ -23,10 +23,10 @@ Azure Migrates apparaten används i följande scenarier.
 
 **Scenario** | **Verktyg** | **Används för att**
 --- | --- | ---
-**Identifiering och utvärdering av servrar som körs i VMware-miljön** | Azure Migrate: Server utvärdering | Identifiera servrar som körs i VMware-miljön<br/><br/> Utför identifiering av installerade program, en agent utan agent analys och identifiera SQL Server instanser och databaser.<br/><br/> Samla in Server konfiguration och prestanda-metadata för utvärderingar.
+**Identifiering och utvärdering av servrar som körs i VMware-miljön** | Azure Migrate: identifiering och utvärdering | Identifiera servrar som körs i VMware-miljön<br/><br/> Utför identifiering av installerad program varu inventering, agent beroende analys och identifiering SQL Server instanser och databaser.<br/><br/> Samla in Server konfiguration och prestanda-metadata för utvärderingar.
 **Migrering utan agent för servrar som körs i VMware-miljön** | Azure Migrate: Server-migrering | Identifiera servrar som körs i VMware-miljön. <br/><br/> Replikera servrar utan att installera några agenter på dem.
-**Identifiering och utvärdering av servrar som körs i Hyper-V-miljön** | Azure Migrate: Server utvärdering | Identifiera servrar som körs i din Hyper-V-miljö.<br/><br/> Samla in Server konfiguration och prestanda-metadata för utvärderingar.
-**Identifiering och utvärdering av fysiska eller virtualiserade servrar lokalt** |  Azure Migrate: Server utvärdering |  Identifiera fysiska eller virtualiserade servrar lokalt.<br/><br/> Samla in Server konfiguration och prestanda-metadata för utvärderingar.
+**Identifiering och utvärdering av servrar som körs i Hyper-V-miljön** | Azure Migrate: identifiering och utvärdering | Identifiera servrar som körs i din Hyper-V-miljö.<br/><br/> Samla in Server konfiguration och prestanda-metadata för utvärderingar.
+**Identifiering och utvärdering av fysiska eller virtualiserade servrar lokalt** |  Azure Migrate: identifiering och utvärdering |  Identifiera fysiska eller virtualiserade servrar lokalt.<br/><br/> Samla in Server konfiguration och prestanda-metadata för utvärderingar.
 
 ## <a name="deployment-methods"></a>Distributions metoder
 
@@ -38,7 +38,6 @@ Installationen kan distribueras med ett par olika metoder:
 - För fysiska eller virtualiserade servrar lokalt eller i andra moln distribuerar du alltid installationen med hjälp av ett PowerShell-skript. Se distributions stegen [här](how-to-set-up-appliance-physical.md).
 - Nedladdnings länkarna är tillgängliga i tabellerna nedan.
 
-
 ## <a name="appliance---vmware"></a>Utrustning – VMware
 
 I följande tabell sammanfattas kraven för Azure Migrate-installationen för VMware.
@@ -46,7 +45,7 @@ I följande tabell sammanfattas kraven för Azure Migrate-installationen för VM
 > [!Note]
 > Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
-**Krav** | **VMware** 
+**Krav** | **VMware**
 --- | ---
 **Behörigheter** | Om du vill få åtkomst till Configuration Manager lokalt eller via fjärr anslutning måste du ha ett lokalt eller domän användar konto med administratörs behörighet på installations servern.
 **Apparat tjänster** | Enheten har följande tjänster:<br/><br/> - Installation av **Configuration Manager**: det här är ett webb program som kan konfigureras med käll information för att starta identifieringen och utvärderingen av servrar.<br/> - **VMware Discovery agent**: agenten samlar in metadata för Server konfigurationen som kan användas för att skapa som lokala utvärderingar.<br/>- **VMware Assessment agent**: agenten samlar in metadata för Server prestanda som kan användas för att skapa prestandabaserade utvärderingar.<br/>- **Tjänsten automatisk uppdatering**: tjänsten håller alla agenter som körs på enheten uppdaterade. Den körs automatiskt en gång var 24: e timme.<br/>- **Dra-agent**: dirigerar Server replikering och koordinerar kommunikationen mellan replikerade servrar och Azure. Används endast när du replikerar servrar till Azure med hjälp av en agent lös migrering.<br/>- **Gateway**: skickar replikerade data till Azure. Används endast när du replikerar servrar till Azure med hjälp av en agent lös migrering.<br/>- **SQL-identifiering och utvärderings agent**: skickar metadata för konfiguration och prestanda för SQL Server instanser och databaser till Azure.
@@ -62,7 +61,7 @@ I följande tabell sammanfattas kraven för Azure Migrate-installationen för VM
 
 ## <a name="appliance---hyper-v"></a>Apparat-Hyper-V
 
-**Krav** | **Hyper-V** 
+**Krav** | **Hyper-V**
 --- | ---
 **Behörigheter** | Om du vill få åtkomst till Configuration Manager lokalt eller via fjärr anslutning måste du ha ett lokalt eller domän användar konto med administratörs behörighet på installations servern.
 **Apparat tjänster** | Enheten har följande tjänster:<br/><br/> - Installation av **Configuration Manager**: det här är ett webb program som kan konfigureras med käll information för att starta identifieringen och utvärderingen av servrar.<br/> - **Identifierings agent**: agenten samlar in metadata för Server konfigurationen som kan användas för att skapa som lokala utvärderingar.<br/>- **Bedömnings agent**: agenten samlar in metadata för Server prestanda som kan användas för att skapa prestandabaserade utvärderingar.<br/>- **Tjänsten automatisk uppdatering**: tjänsten håller alla agenter som körs på enheten uppdaterade. Den körs automatiskt en gång var 24: e timme.
@@ -77,17 +76,16 @@ I följande tabell sammanfattas kraven för Azure Migrate-installationen för VM
 
 ## <a name="appliance---physical"></a>Apparat-fysisk
 
-**Krav** | **Fysisk** 
+**Krav** | **Fysisk**
 --- | ---
 **Behörigheter** | Om du vill få åtkomst till Configuration Manager lokalt eller via fjärr anslutning måste du ha ett lokalt eller domän användar konto med administratörs behörighet på installations servern.
 **Apparat tjänster** | Enheten har följande tjänster:<br/><br/> - Installation av **Configuration Manager**: det här är ett webb program som kan konfigureras med käll information för att starta identifieringen och utvärderingen av servrar.<br/> - **Identifierings agent**: agenten samlar in metadata för Server konfigurationen som kan användas för att skapa som lokala utvärderingar.<br/>- **Bedömnings agent**: agenten samlar in metadata för Server prestanda som kan användas för att skapa prestandabaserade utvärderingar.<br/>- **Tjänsten automatisk uppdatering**: tjänsten håller alla agenter som körs på enheten uppdaterade. Den körs automatiskt en gång var 24: e timme.
-**Projekt gränser** |  En installation kan bara registreras med ett enda projekt.<br/> Ett enda projekt kan ha flera registrerade apparater.<br/> 
+**Projekt gränser** |  En installation kan bara registreras med ett enda projekt.<br/> Ett enda projekt kan ha flera registrerade apparater.<br/>
 **Identifierings gränser** | En apparat kan identifiera upp till 1000 fysiska servrar.
 **Distribution som stöds** | Distribuera på en befintlig server som kör Windows Server 2016 med PowerShell Installer-skript.
 **PowerShell-skript** | Hämta skriptet (AzureMigrateInstaller.ps1) i en zip- [fil från projektet eller härifrån.](https://go.microsoft.com/fwlink/?linkid=2140334) [Läs mer](tutorial-discover-physical.md).<br/><br/> Hämtnings storleken är 85,8 MB.
 **Skript verifiering** | [Kontrol lera](tutorial-discover-physical.md#verify-security) att PowerShell-installationsprogrammet som hämtats från projektet genom att kontrol lera hash-värdena.
 **Maskin-och nätverks krav** |  Installationen ska köras på server med Windows Server 2016, 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring.<br/> Installationen behöver en statisk eller dynamisk IP-adress och kräver Internet åtkomst, antingen direkt eller via en proxyserver.<br/><br/> Om du kör-installationen på en befintlig server kontrollerar du att den kör Windows Server 2016 och uppfyller maskin varu kraven.<br/>_(För närvarande stöds endast distributionen av installations programmet på Windows Server 2016.)_
-
 
 ## <a name="url-access"></a>URL-åtkomst
 
@@ -95,7 +93,7 @@ Azure Migrate-utrustningen behöver anslutning till Internet.
 
 - När du distribuerar installationen kontrollerar Azure Migrate en anslutning till de begärda URL: erna.
 - Du måste tillåta åtkomst till alla webb adresser i listan. Om du bara utför utvärderingen kan du hoppa över de URL: er som marker ATS som obligatoriska för migrering av VMware-agenten.
--  Om du använder en URL-baserad proxy för att ansluta till Internet, måste du kontrol lera att proxyn matchar eventuella CNAME-poster som tas emot vid sökning av URL: erna.
+- Om du använder en URL-baserad proxy för att ansluta till Internet, måste du kontrol lera att proxyn matchar eventuella CNAME-poster som tas emot vid sökning av URL: erna.
 
 ### <a name="public-cloud-urls"></a>Offentliga moln-URL: er
 
@@ -132,7 +130,6 @@ download.microsoft.com/download | Tillåt hämtning från Microsoft Download Cen
 *. blob.core.usgovcloudapi.net  |  **Används för migrering av VMware-agent**<br/><br/>Överför data till lagring för migrering.
 *. applicationinsights.us | Ladda upp installations loggar som används för intern övervakning.
 
-
 ## <a name="collected-data---vmware"></a>Insamlade data – VMware
 
 Installations programmet samlar in konfigurations metadata, prestanda-metadata och Server beroende data (om agenten beroende [analys](concepts-dependency-visualization.md) används).
@@ -144,12 +141,12 @@ Metadata som identifieras av Azure Migrate-enheten hjälper dig att ta reda på 
 Här är en fullständig lista över de Server-metadata som enheten samlar in och skickar till Azure.
 
 **DATA** | **MEDELVÄRDE**
---- | --- 
-**Serverinformation** | 
-Server-ID | vm.Config. InstanceUuid 
+--- | ---
+**Serverinformation** |
+Server-ID | vm.Config. InstanceUuid
 Servernamn | vm.Config. Namn
 vCenter Server-ID | VMwareClient. instance. uuid
-Beskrivning av virtuell dator | vm.Summary.Config. Antecknings
+Server Beskrivning | vm.Summary.Config. Antecknings
 Licens produkt namn | VM. client. ServiceContent. about. LicenseProductName
 Typ av operativsystem | VM. SummaryConfig. GuestFullName
 Start typ | vm.Config. Inbyggd program vara
@@ -160,7 +157,7 @@ Lista över disk storlekar | vm.Config. Maskin vara. Device. ToList (). FindAll 
 Lista med nätverkskort | vm.Config. Maskin vara. Device. ToList (). FindAll (x => är VirtualEthernet). Count
 CPU-användning | processor. Usage. genomsnitt
 Minnes användning |minnes användning. genomsnitt
-**Per disk information** | 
+**Per disk information** |
 Disk nyckel värde | diskdefragmenter. Knapp
 Dikunit-nummer | diskdefragmenter. UnitNumber
 Nyckel värde för disk styrenhet | diskdefragmenter. ControllerKey. Value
@@ -170,53 +167,51 @@ Läs åtgärder per sekund | virtualDisk. numberReadAveraged. Average
 Skriv åtgärder per sekund | virtualDisk. numberWriteAveraged. Average
 Läs data flöde (MB per sekund) | virtualDisk. Read. Average
 Skriv data flöde (MB per sekund) | virtualDisk. Write. Average
-**Per NIC-information** | 
+**Per NIC-information** |
 Nätverkskortets namn | NIC. Knapp
 MAC-adress | ((VirtualEthernetCard) NIC). MacAddress
 IPv4-adresser | vm.Guest.Net
 IPv6-adresser | vm.Guest.Net
 Läs data flöde (MB per sekund) | net. Received. Average
 Skriv data flöde (MB per sekund) | net. överföring. genomsnitt
-**Information om lager Sök väg** | 
+**Information om lager Sök väg** |
 Name | fönster. GetType (). Namn
 Typ av underordnat objekt | fönster. ChildType
 Referens information | fönster. MoRef
 Överordnad information | Container. parent
-Information om mappar per virtuell dator | ((Mapp)-behållare). ChildEntity. Type
-Data Center information per virtuell dator | ((Data Center)-behållare). VmFolder
+Information om mappar per server | ((Mapp)-behållare). ChildEntity. Type
+Data Center information per server | ((Data Center)-behållare). VmFolder
 Data Center information per värd-mapp | ((Data Center)-behållare). HostFolder
 Kluster information per värd | ((ClusterComputeResource) container). Värd
-Värd information per virtuell dator | ((HostSystem) container). DATORN
+Värd information per server | ((HostSystem) container). DATORN
 
 ### <a name="performance-data"></a>Prestandadata
 
-
-Här är de prestanda data för VMware VM som enheten samlar in och skickar till Azure.
+Här är de prestanda data som en apparat samlar in för en server som körs på VMware och skickar till Azure.
 
 **Data** | **Räknare** | **Utvärderings påverkan**
 --- | --- | ---
-CPU-användning | processor. Usage. genomsnitt | Rekommenderad storlek/kostnad för virtuell dator
-Minnes användning | minnes användning. genomsnitt | Rekommenderad storlek/kostnad för virtuell dator
-Disk läsnings data flöde (MB per sekund) | virtualDisk. Read. Average | Beräkning för disk storlek, lagrings kostnad, VM-storlek
-Disk skrivnings data flöde (MB per sekund) | virtualDisk. Write. Average | Beräkning för disk storlek, lagrings kostnad, VM-storlek
-Disk läsnings åtgärder per sekund | virtualDisk. numberReadAveraged. Average | Beräkning för disk storlek, lagrings kostnad, VM-storlek
-Disk skrivnings åtgärder per sekund | virtualDisk. numberWriteAveraged. Average  | Beräkning för disk storlek, lagrings kostnad, VM-storlek
-NIC-läst data flöde (MB per sekund) | net. Received. Average | Beräkning för VM-storlek
-NÄTVERKSKORT skriver data flöde (MB per sekund) | net. överföring. genomsnitt  |Beräkning för VM-storlek
+CPU-användning | processor. Usage. genomsnitt | Rekommenderad Server storlek/kostnad
+Minnes användning | minnes användning. genomsnitt | Rekommenderad Server storlek/kostnad
+Disk läsnings data flöde (MB per sekund) | virtualDisk. Read. Average | Beräkning för disk storlek, lagrings kostnad, Server storlek
+Disk skrivnings data flöde (MB per sekund) | virtualDisk. Write. Average | Beräkning för disk storlek, lagrings kostnad, Server storlek
+Disk läsnings åtgärder per sekund | virtualDisk. numberReadAveraged. Average | Beräkning för disk storlek, lagrings kostnad, Server storlek
+Disk skrivnings åtgärder per sekund | virtualDisk. numberWriteAveraged. Average  | Beräkning för disk storlek, lagrings kostnad, Server storlek
+NIC-läst data flöde (MB per sekund) | net. Received. Average | Beräkning för Server storlek
+NÄTVERKSKORT skriver data flöde (MB per sekund) | net. överföring. genomsnitt  |Beräkning för Server storlek
 
+### <a name="installed-software-inventory"></a>Installerad program varu inventering
 
-### <a name="installed-applications-data"></a>Installerade program data
+Enheten samlar in data om installerad program varu inventering på servrar.
 
-Enheten samlar in data om installerade program, roller och funktioner på servrar.
+#### <a name="windows-server-software-inventory-data"></a>Inventerings data för Windows Server-programvara
 
-#### <a name="windows-server-application-data"></a>Windows Server-programdata
-
-Här är de program data som enheten samlar in från varje Windows Server som identifieras i VMware-miljön.
+Här är program varu inventerings data som installationen samlar in från varje Windows Server som identifieras i VMware-miljön.
 
 **Data** | **Registerplats** | **Nyckel**
 --- | --- | ---
 Programnamn  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-Version  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Version  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion
 Leverantör  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-server-features-data"></a>Windows Server-funktioner-data
@@ -236,9 +231,9 @@ Här är de SQL Server data som enheten samlar in från varje Windows Server som
 **Data**  | **Registerplats**  | **Nyckel**
 --- | --- | ---
 Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
-Utgåva  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Utgåva 
+Utgåva  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Utgåva
 Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
-Version  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Version 
+Version  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Version
 
 #### <a name="windows-server-operating-system-data"></a>Operativ system data för Windows Server
 
@@ -250,12 +245,12 @@ Name  | Win32_operatingsystem  | Caption
 Version  | Win32_operatingsystem  | Version
 Arkitektur  | Win32_operatingsystem  | OSArchitecture
 
-#### <a name="linux-server-application-data"></a>Program data för Linux-Server
+#### <a name="linux-server-software-inventory-data"></a>Inventerings data för Linux server-programvara
 
-Här är de program data som enheten samlar in från varje Linux-server som identifieras i VMware-miljön. Ett eller flera av kommandona körs baserat på serverns operativ system.
+Här är de program varu inventerings data som enheten samlar in från varje Linux-server som identifieras i VMware-miljön. Ett eller flera av kommandona körs baserat på serverns operativ system.
 
 **Data**  | **Kommandon**
---- | --- 
+--- | ---
 Name | RPM, dpkg-fråga, fäst
 Version | RPM, dpkg-fråga, fäst
 Leverantör | RPM, dpkg-fråga, fäst
@@ -265,8 +260,8 @@ Leverantör | RPM, dpkg-fråga, fäst
 Här är de operativ Systems data som enheten samlar in från varje Linux-server som identifieras i VMware-miljön.
 
 **Data**  | **Kommandon**
---- | --- 
-Name <br/> version | Samlas in från en eller flera av följande filer:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+--- | ---
+Name <br/> version | Samlas in från en eller flera av följande filer:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version
 Arkitektur | uname
 
 ### <a name="sql-server-instances-and-databases-data"></a>SQL Server instanser och databas data
@@ -296,13 +291,13 @@ Databasen har Aktiver ATS för registrering av ändrings data | sys.databases
 
 **Serverns metadata** | **Vyer/SQL Server-egenskaper**
 --- | ---
-Servernamn |SERVERPROPERTY 
+Servernamn |SERVERPROPERTY
 FQDN | Anslutnings sträng härledd från identifiering av installerade program
 Installations-ID | sys.dm_server_registry
 Serverversion | SERVERPROPERTY
 Server Edition | SERVERPROPERTY
 Server värd plattform (Windows/Linux) | SERVERPROPERTY
-Serverns produkt nivå (RTM SP CTP) | SERVERPROPERTY 
+Serverns produkt nivå (RTM SP CTP) | SERVERPROPERTY
 Standard Sök väg för säkerhets kopiering | SERVERPROPERTY
 Standard Sök väg för datafilerna | SERVERPROPERTY och Software\Microsoft\MSSQLServer\MSSQLServer
 Standard Sök väg för loggfilerna | SERVERPROPERTY och Software\Microsoft\MSSQLServer\MSSQLServer
@@ -313,8 +308,8 @@ Unikt server-ID | sys.dm_server_registry
 HA aktiverat eller inte | SERVERPROPERTY
 Buffertpooltillägget är aktiverat eller inte | sys.dm_os_buffer_pool_extension_configuration
 Redundanskluster har kon figurer ATS eller inte | SERVERPROPERTY
-Server som endast använder Windows-autentiseringsläge | SERVERPROPERTY 
-Server installerar PolyBase | SERVERPROPERTY 
+Server som endast använder Windows-autentiseringsläge | SERVERPROPERTY
+Server installerar PolyBase | SERVERPROPERTY
 Nej. av logiska processorer i systemet | sys.dm_server_registry sys.dm_os_sys_info
 Förhållandet mellan antalet logiska eller fysiska kärnor som exponeras av ett fysiskt processor paket | sys.dm_os_schedulers sys.dm_os_sys_info
 Inga fysiska processorer i systemet | sys.dm_os_schedulers sys.dm_os_sys_info
@@ -351,8 +346,8 @@ Beroende analys av agent samlar in anslutningen och bearbeta data.
 
 Här är de anslutnings data som enheten samlar in från varje Windows Server, aktive rad för en agent lös beroende analys.
 
-**Data** | **Kommandon** 
---- | --- 
+**Data** | **Kommandon**
+--- | ---
 Lokal port | Netstat
 Lokal IP-adress | Netstat
 Fjärr-IP-adress | Netstat
@@ -373,19 +368,18 @@ Programnamn | Win32_Process | VersionInfo. ProductName-parameter för egenskapen
 
 Här är de anslutnings data som enheten samlar in från varje Linux-server, aktive rad för en agent lös beroende analys.
 
-**Data** | **Kommandon** 
+**Data** | **Kommandon**
 --- | ---
-Lokal port | Netstat 
-Lokal IP-adress | Netstat 
-Fjärr-IP-adress | Netstat 
-Fjärr-IP-adress | Netstat 
-Status för TCP-anslutning | Netstat 
+Lokal port | Netstat
+Lokal IP-adress | Netstat
+Fjärr-IP-adress | Netstat
+Fjärr-IP-adress | Netstat
+Status för TCP-anslutning | Netstat
 Antal aktiva anslutningar | Netstat
-Process-ID  | Netstat 
+Process-ID  | Netstat
 Processnamn | PS
 Process argument | PS
 Programnamn | dpkg eller rpm
-
 
 ## <a name="collected-data---hyper-v"></a>Insamlade data – Hyper-V
 
@@ -400,20 +394,20 @@ Här är en fullständig lista över de Server-metadata som enheten samlar in oc
 --- | --- | ---
 **Serverinformation** | 
 Serie nummer för BIOS | Msvm_BIOSElement | BIOSSerialNumber
-VM-typ (gen 1 eller 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
-Visnings namn för virtuell dator | Msvm_VirtualSystemSettingData | ElementName
-VM-version | Msvm_ProcessorSettingData | VirtualQuantity
+Server typ (gen 1 eller 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+Serverns visnings namn | Msvm_VirtualSystemSettingData | ElementName
+Serverversion | Msvm_ProcessorSettingData | VirtualQuantity
 Minne (byte) | Msvm_MemorySettingData | VirtualQuantity
-Maximalt minne som kan utnyttjas av VM | Msvm_MemorySettingData | Gräns
+Högsta mängd minne som kan utnyttjas av servern | Msvm_MemorySettingData | Gräns
 Dynamiskt minne aktiverat | Msvm_MemorySettingData | DynamicMemoryEnabled
 Operativ systemets namn/version/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems namn data
-Energi status för virtuell dator | Msvm_ComputerSystem | EnabledState
-**Per disk information** | 
+Serverns energi status | Msvm_ComputerSystem | EnabledState
+**Per disk information** |
 Disk-ID | Msvm_VirtualHardDiskSettingData | VirtualDiskId
 Typ av virtuell hård disk | Msvm_VirtualHardDiskSettingData | Typ
 Storlek på virtuell hård disk | Msvm_VirtualHardDiskSettingData | MaxInternalSize
 Överordnad virtuell hård disk | Msvm_VirtualHardDiskSettingData | ParentPath
-**Per NIC-information** | 
+**Per NIC-information** |
 IP-adresser (syntetiska nätverkskort) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP aktiverat (syntetiska nätverkskort) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NÄTVERKSKORT-ID (syntetiska nätverkskort) | Msvm_SyntheticEthernetPortSettingData | InstanceID
@@ -427,17 +421,16 @@ Här är Server prestanda data som enheten samlar in och skickar till Azure.
 
 **Prestanda räknar klass** | **Räknare** | **Utvärderings påverkan**
 --- | --- | ---
-Virtuell Hyper-V hypervisor-processor | % Kör tid för gäst | Rekommenderad storlek/kostnad för virtuell dator
-VIRTUELL Hyper-V-dynamiskt minne | Aktuellt tryck (%)<br/> Fysiskt synligt fysiskt minne (MB) | Rekommenderad storlek/kostnad för virtuell dator
-Virtuell lagrings enhet för Hyper-V | Lästa byte per sekund | Beräkning för disk storlek, lagrings kostnad, VM-storlek
-Virtuell lagrings enhet för Hyper-V | Skrivna byte/sekund | Beräkning för disk storlek, lagrings kostnad, VM-storlek
-Hyper-V Virtual Network Adapter | Mottagna byte per sekund | Beräkning för VM-storlek
-Hyper-V Virtual Network Adapter | Skickade byte per sekund | Beräkning för VM-storlek
+Virtuell Hyper-V hypervisor-processor | % Kör tid för gäst | Rekommenderad Server storlek/kostnad
+Dynamiskt minne Server för Hyper-V | Aktuellt tryck (%)<br/> Fysiskt synligt fysiskt minne (MB) | Rekommenderad Server storlek/kostnad
+Virtuell lagrings enhet för Hyper-V | Lästa byte per sekund | Beräkning för disk storlek, lagrings kostnad, Server storlek
+Virtuell lagrings enhet för Hyper-V | Skrivna byte/sekund | Beräkning för disk storlek, lagrings kostnad, Server storlek
+Hyper-V Virtual Network Adapter | Mottagna byte per sekund | Beräkning för Server storlek
+Hyper-V Virtual Network Adapter | Skickade byte per sekund | Beräkning för Server storlek
 
-- PROCESSOR användningen är summan av all användning, för alla virtuella processorer som är kopplade till en virtuell dator.
+- PROCESSOR användningen är summan av all användning, för alla virtuella processorer som är anslutna till en server.
 - Minnes användningen är (aktuellt tryck * fysiskt synligt minne i gäst)/100.
 - Värdena för disk-och nätverks användning samlas in från de listade Hyper-V-prestandaräknare.
-
 
 ## <a name="collected-data---physical"></a>Insamlade data-fysiska
 
@@ -472,8 +465,8 @@ MAC-adress för nätverkskort | Win32_NetworkAdapterConfiguration | MACAddress
 
 Här är en fullständig lista över Linux-serverns metadata som enheten samlar in och skickar till Azure.
 
-**Data** | **Kommandon** 
---- | --- 
+**Data** | **Kommandon**
+--- | ---
 FQDN | katt/proc/sys/kernel/hostname, hostname-f
 Antal processor kärnor |  /proc/cpuinfo \| awk '/^ processor/{print $3} ' \| WC-l
 Allokerat minne | katt/proc/Meminfo \| grep MemTotal \| awk ' {printf "%. 0f", $2/1024}
@@ -507,8 +500,8 @@ Disk information | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPer
 
 Här är de prestanda data för Linux-servern som enheten samlar in och skickar till Azure.
 
-**Data** | **Kommandon** 
---- | --- 
+**Data** | **Kommandon**
+--- | ---
 CPU-användning | katt/proc/stat/| grep ' CPU '-/proc/stat
 Minnesanvändning | gratis \| grep MEM- \| awk {Print $3/$ 2 * 100,0}
 Antal nätverkskort | lshw-klass nätverk \| grep ETH [0-60] \| WC-l
@@ -540,7 +533,7 @@ Du kan aktivera automatisk uppdatering med någon av följande metoder:
 
 Ta bort register nyckeln:
 
-1. Öppna Registereditorn på den dator som kör-enheten.
+1. Öppna Registereditorn på den server som kör-enheten.
 2. Navigera till **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Ta bort den automatiska **uppdateringen** av register nyckeln som tidigare har skapats för att inaktivera automatisk uppdatering.
 
@@ -556,7 +549,7 @@ Om du vill aktivera från installations Configuration Manager efter att identifi
 Du kan kontrol lera versionen av versions tjänsterna med någon av följande metoder:
 
 - I Konfigurations hanteraren för utrustning går du till **Konfigurera krav** panelen.
-- I   >  **program och funktioner** på kontroll panelen på datorn.
+- I   >  **program och funktioner** på kontroll panelen på enheten.
 
 För att kontrol lera installations hanteraren för installationen:
 
@@ -577,12 +570,12 @@ Så här kontrollerar du i kontroll panelen:
 Om du kör en äldre version för någon av tjänsterna, måste du avinstallera tjänsten och manuellt uppdatera till den senaste versionen.
 
 1. Om du vill söka efter de senaste versionerna av service-tjänsterna [laddar du ned](https://aka.ms/latestapplianceservices) LatestComponents.jspå filen.
-2.    När du har laddat ned öppnar du LatestComponents.jsfilen i anteckningar.
+2. När du har laddat ned öppnar du LatestComponents.jsfilen i anteckningar.
 3. Hitta den senaste tjänst versionen i filen och nedladdnings länken för den. Exempel:
 
     "Namn": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.    Hämta den senaste versionen av en föråldrad tjänst med hjälp av länken Hämta i filen.
+4. Hämta den senaste versionen av en föråldrad tjänst med hjälp av länken Hämta i filen.
 5. När du har laddat ned kör du följande kommando i ett administratörs kommando fönster för att kontrol lera integriteten för den hämtade MSI-filen.
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ``` Exempel: C: \> certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
@@ -591,11 +584,8 @@ Om du kör en äldre version för någon av tjänsterna, måste du avinstallera 
 6. Kör nu MSI för att installera tjänsten. Det är en tyst installation och installations fönstret stängs när det är färdigt.
 7. När installationen är klar kontrollerar du tjänstens version i **kontroll panelens**  >  **program och funktioner**. Tjänste versionen bör nu uppgraderas till den senaste som visas i JSON-filen.
 
-
-
 ## <a name="next-steps"></a>Nästa steg
 
 - [Lär dig hur](how-to-set-up-appliance-vmware.md) du konfigurerar-installationen för VMware.
 - [Lär dig hur](how-to-set-up-appliance-hyper-v.md) du konfigurerar-enheten för Hyper-V.
 - [Lär dig hur](how-to-set-up-appliance-physical.md) du konfigurerar installationen av fysiska servrar.
-

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2020
+ms.date: 03/19/2021
 ms.author: yelevin
-ms.openlocfilehash: b8a304d523052f1fe839f94608806df51d35fdf9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 951c616961ff68b810ca135d09a6f6253cb2b7ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589930"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773563"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Självstudie: Identifiera hot direkt
 
@@ -57,7 +57,9 @@ Följande typer av mallar är tillgängliga:
     De här mallarna baseras på tillverkarspecifika Microsoft Machine Learning-algoritmer, så du kan inte se den interna logiken för hur de fungerar och när de körs. Eftersom logiken är dold och därför inte kan anpassas, kan du bara skapa en regel med varje mall av den här typen.
 
     > [!IMPORTANT]
-    > Mallarna för att Analytics-regler för maskin inlärning är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
+    > - Mallarna för att Analytics-regler för maskin inlärning är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
+    >
+    > - Genom att skapa och aktivera regler baserade på analys funktionerna i ML, **ger du Microsoft behörighet att kopiera inmatade data utanför Azure Sentinel-arbetsytans geografi** vid behov för bearbetning av Machine Learning-motorer och-modeller.
 
 - **Schemalagd**
 

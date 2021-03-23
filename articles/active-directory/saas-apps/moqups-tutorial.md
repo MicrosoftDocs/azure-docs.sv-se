@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: jeedes
-ms.openlocfilehash: ac31323547ec2d0b6330b0b1c13dd9f219f224e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c6db83dd46d988b5e8b4122a9e89e3c36136ad89
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104726928"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799021"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moqups"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Moqups
 
@@ -127,7 +127,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-moqups-sso"></a>Konfigurera Moqups SSO
 
-Om du vill konfigurera enkel inloggning på **Moqups** sida måste du skicka **URL: en för appens Federations-metadata** till [support teamet för Moqups](mailto:support@moqups.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+1. Logga in på Moqups-webbplatsen som administratör.
+
+1.  Gå till **kontot** och välj fliken **integration** .
+
+1. I avsnittet **SAML-autentisering** klistrar du in URL-värdet för **app Federation-Metadata** , som du har kopierat från Azure Portal.
+
+    ![Skärm bild för konfigurations avsnitt.](./media/moqups-tutorial/saml-authentication.png)
+
+1. Klicka på knappen **Konfigurera** .
 
 ### <a name="create-moqups-test-user"></a>Skapa Moqups test användare
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86027451"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774498"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisera Spark – inbyggda Machine Learning-modeller
 
@@ -266,7 +266,8 @@ Tids åtgång för att köra ovanför cell: 5,37 sekunder
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Skapa RDD-objekt med funktions mat ris för inmatade modeller
 Det här avsnittet innehåller kod som visar hur du kan indexera kategoriska text data som ett RDD-objekt och en-frekvent kod så att det kan användas för att träna och testa MLlib logistik regression och trädbaserade modeller. Indexerade data lagras i [elastiska data mängds objekt (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) . RDD är den grundläggande abstraktionen i Spark. Ett RDD-objekt representerar en oföränderlig, partitionerad samling element som kan köras parallellt med Spark.
 
-Den innehåller också kod som visar hur du skalar data med `StandardScalar` MLlib för användning i linjär regression med Stochastic gradient brantaste (SGD), en populär algoritm för att träna en mängd olika Machine Learning-modeller. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) används för att skala funktionerna till enhets avvikelse. Funktions skalning, även kallat data normalisering, säkerställer att funktioner med de vanligaste värdena för uppfyllande värden inte får orimlig väg i mål funktionen. 
+Den innehåller också kod som visar hur du skalar data med `StandardScalar` MLlib för användning i linjär regression med Stochastic gradient brantaste (SGD), en populär algoritm för att träna en mängd olika Machine Learning-modeller. [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.tree.RandomForest.html#pyspark.mllib.tree.RandomForest
+) används för att skala funktionerna till enhets avvikelse. Funktions skalning, även kallat data normalisering, säkerställer att funktioner med de vanligaste värdena för uppfyllande värden inte får orimlig väg i mål funktionen. 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS

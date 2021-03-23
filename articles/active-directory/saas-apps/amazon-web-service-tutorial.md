@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: e390eb62f64c9ec55605525828790f15633e5f14
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 842ab27fe02501efbbc6c06c3d36d2218c3c17b9
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589556"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med AWS Single-Account åtkomst
 
@@ -73,6 +73,9 @@ För att komma igång behöver du följande objekt:
 
 * En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 * En AWS-aktiverad (SSO)-prenumeration med enkel inloggning.
+
+> [!Note]
+> Roller bör inte redige ras manuellt i Azure AD när du utför roll import.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 

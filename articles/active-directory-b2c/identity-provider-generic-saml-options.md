@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488881"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798246"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurera alternativ för SAML-identitetsprovider med Azure Active Directory B2C
 
@@ -85,9 +85,11 @@ Följande är ett exempel på en Azure AD-tjänst för metadata för enkel inlog
 </IDPSSODescriptor>
 ```
 
-SAML-svar överförs till Azure AD B2C via HTTP POST-bindning. Azure AD B2C-principens metadata anger `AssertionConsumerService` bindningen till `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST` .
+### <a name="assertion-consumer-service"></a>Intygs konsument tjänst
 
-Följande är ett exempel på ett försäkrat konsument tjänst element i en Azure AD B2C princip.
+Den intygande konsument tjänsten (eller ACS) är den plats där identitets leverantörens SAML-svar kan skickas och tas emot av Azure AD B2C. SAML-svar överförs till Azure AD B2C via HTTP POST-bindning. ACS-platsen pekar på den förlitande partens grundläggande princip. Om till exempel den förlitande principen är *B2C_1A_signup_signin*, är ACS den grundläggande principen för *B2C_1A_signup_signin*, till exempel *B2C_1A_TrustFrameworkBase*.
+
+Följande är ett exempel på ett försäkrat konsument tjänst element i en Azure AD B2C princip. 
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

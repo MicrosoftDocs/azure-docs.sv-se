@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715521"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799943"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Skydda ditt ursprung med privat länk i Azure front dörr standard/Premium (för hands version)
 
@@ -30,7 +30,7 @@ Med [Azures privata länk](../../private-link/private-link-overview.md) kan du f
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure front dörr Premium SKU kan ansluta till ditt ursprung bakom webbapp och lagrings konto med hjälp av den privata länk tjänsten, och ta bort behovet av att ditt ursprung är offentligt tillgängligt.
+Azure front dörr Premium SKU kan ansluta till ditt ursprung via tjänsten Private Link. Dina program kan finnas i ditt privata VNet eller bakom en PaaS-tjänst, till exempel webbapp och lagrings konto, vilket eliminerar behovet av att ditt ursprung är offentligt tillgängligt.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Arkitektur för privata slut punkter i front dörren":::
 

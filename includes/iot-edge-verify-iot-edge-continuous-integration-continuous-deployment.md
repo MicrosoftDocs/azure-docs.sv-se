@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5450e4846c3c49c89830ae65c50a95ee0c8d6eb
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89303728"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803211"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Verifiera IoT Edge CI/CD med pipelinen build och release
 
@@ -36,3 +36,5 @@ Om du vill utlösa ett build-jobb kan du antingen skicka ett genomförande till 
 6. Klicka på **dev** Stage för att se versions loggarna.
 
     ![Lanseringsloggar](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/release-logs.png)
+
+7. Om din pipeline inte fungerar börjar du med att titta på loggarna. Du kan visa loggar genom att gå till pipeline-körningen och välja jobb och aktivitet. Om en viss aktivitet inte kan utföras, kontrol lera loggarna för aktiviteten. Detaljerade anvisningar för att konfigurera och använda loggar finns i [Granska loggar för att diagnostisera problem med pipelinen](/azure/devops/pipelines/troubleshooting/review-logs).

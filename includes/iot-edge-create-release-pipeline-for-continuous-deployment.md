@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: 9572f4c663c820c76a57cdbdcecff082b150b577
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8009d98ddbfa778cf5f357248ecd943b810e06e3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761234"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803422"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Skapa en versions pipeline för kontinuerlig distribution
 
@@ -89,6 +89,9 @@ Skapa en ny pipeline och Lägg till ett nytt steg:
     | Välj en/flera enheter | Välj om du vill att versions pipelinen ska distribueras till en eller flera enheter. Om du distribuerar till en enda enhet anger du **IoT Edge enhets-ID**. Om du distribuerar till flera enheter anger du enhetens **mål villkor**. Mål villkoret är ett filter som matchar en uppsättning IoT Edge enheter i IoT Hub. Om du vill använda enhets koder som villkor måste du uppdatera motsvarande enhets koder med IoT Hub enhets-till-enhet. Uppdatera **IoT Edge distributions-ID** och **IoT Edge distributions prioritet** i de avancerade inställningarna. Mer information om hur du skapar en distribution för flera enheter finns i [förstå IoT Edge automatiska distributioner](../articles/iot-edge/module-deployment-monitoring.md). |
     | Enhets-ID eller mål villkor | Beroende på föregående val anger du ett enhets-ID eller [mål villkor](../articles/iot-edge/module-deployment-monitoring.md#target-condition) som ska distribueras till flera enheter. |
     | Avancerat | För IoT Edge distributions-ID anger du `$(System.TeamProject)-$(Release.EnvironmentName)` . Den här variabeln mappar projektet och versions namnet med ditt IoT Edge-distributions-ID. |
+    
+
+    Om din uppgift kräver att du använder en avbildning som finns i ett privat Docker-betrott register som inte är synligt för det offentliga molnet, kan du ange **SKIP_MODULE_IMAGE_VALIDATION** -miljövariabeln för `true` att hoppa över bild validering. 
 
     ![Lägg till Azure IoT Edge uppgifter i dev-fasen](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-quality-assurance-task.png)
 

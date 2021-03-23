@@ -3,12 +3,12 @@ title: Index för skissexempel
 description: Index över efterlevnads- och standardexempel för distribution av miljöer, principer och ramverket för molnimplementering med Azure Blueprints.
 ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 06dc65ca601c938f6610df3ed22b4ea0f3826208
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200993"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799470"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-exempel
 
@@ -34,6 +34,7 @@ Följande tabell innehåller länkar till exempel för Azure Blueprints. Alla ex
 | [ISO 27001 Delade tjänster](./iso27001-shared/index.md) | Tillhandahåller en uppsättning kompatibla infrastrukturmönster och principriktlinjer som hjälper dig med attesteringen för ISO 27001. |
 | [ISO 27001 App Service-miljön/SQL Database-arbetsbelastning](./iso27001-ase-sql-workload/index.md) | Ger mer infrastruktur till ISO 27001-skissen för [delade tjänster](./iso27001-shared/index.md) . |
 | [Media](./media/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa Media MPAA. |
+| [Nya Zeeland ISM-begränsad](./new-zealand-ism.md) | Tilldelar principer för att adressera vissa nya kontroller av säkerhets manuella kontroller för Zeelands information. |
 | [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | Tillhandahåller guardrails för att följa NIST SP 800-53 R4. |
 | [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | Tillhandahåller guardrails för kompatibilitet med NIST SP 800-171 R2. |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | Innehåller en uppsättning principer som hjälp för efterlevnad av PCI-DSS v3.2.1. |

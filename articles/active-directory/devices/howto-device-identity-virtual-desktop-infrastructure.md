@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96029355"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798892"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Enhets identitet och skriv bords virtualisering
 
@@ -79,6 +79,8 @@ Administratörer ska referera till följande artiklar, baserat på deras identit
 - [Konfigurera hybrid Azure Active Directory anslutning för federerad miljö](hybrid-azuread-join-federated-domains.md)
 - [Konfigurera hybrid Azure Active Directorys anslutning för hanterad miljö](hybrid-azuread-join-managed-domains.md)
 
+### <a name="non-persistent-vdi"></a>Icke-beständig VDI
+
 När du distribuerar icke-permanent VDI rekommenderar Microsoft att IT-administratörer implementerar vägledningen nedan. Om du inte gör det så kommer din katalog ha många inaktuella hybrid Azure AD-anslutna enheter som har registrerats från den icke-permanenta VDI-plattformen, vilket leder till ökat tryck på din klient kvot och risken för avbrott i tjänsten på grund av att klient kvoten har överskridits.
 
 - Om du förlitar dig på system förberedelse verktyget (sysprep.exe) och om du använder en avbildning med tidigare versioner än Windows 10 1809 för installation kontrollerar du att avbildningen inte är från en enhet som redan är registrerad i Azure AD som en hybrid Azure AD-ansluten.
@@ -92,6 +94,15 @@ När du distribuerar icke-permanent VDI rekommenderar Microsoft att IT-administr
 - Definiera och implementera process för att [Hantera inaktuella enheter](manage-stale-devices.md).
    - När du har en strategi för att identifiera dina icke-beständiga Azure AD-anslutna enheter (t. ex. genom att använda prefixet för datorns visnings namn) bör du vara mer aggressiv vid rensning av dessa enheter för att se till att din katalog inte används med massor av inaktuella enheter.
    - För icke-beständiga VDI-distributioner på aktuella och äldre Windows-nivåer, bör du ta bort enheter som har **ApproximateLastLogonTimestamp** äldre än 15 dagar.
+
+### <a name="persistent-vdi"></a>Beständig VDI
+
+När du distribuerar beständig VDI rekommenderar Microsoft att IT-administratörer implementerar vägledningen nedan. Om du inte gör det leder det till problem med distribution och autentisering. 
+
+- Om du förlitar dig på system förberedelse verktyget (sysprep.exe) och om du använder en avbildning med tidigare versioner än Windows 10 1809 för installation kontrollerar du att avbildningen inte är från en enhet som redan är registrerad i Azure AD som en hybrid Azure AD-ansluten.
+- Om du förlitar dig på en ögonblicks bild av en virtuell dator (VM) för att skapa ytterligare virtuella datorer, se till att ögonblicks bilden inte är från en virtuell dator som redan är registrerad i Azure AD som en hybrid Azure AD-anslutning.
+
+Dessutom rekommenderar vi att du implementerar processen för att [Hantera inaktuella enheter](manage-stale-devices.md). Detta säkerställer att katalogen inte förbrukas med massor av inaktuella enheter om du regelbundet återställer dina virtuella datorer.
  
 ## <a name="next-steps"></a>Nästa steg
 
