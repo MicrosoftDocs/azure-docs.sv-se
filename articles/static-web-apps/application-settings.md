@@ -61,9 +61,9 @@ Information om hur du använder miljövariabler med ditt JavaScript-ramverk elle
 
 ## <a name="about-api-app-settings"></a>Om API app-inställningar
 
-API: er i Azures statiska Web Apps drivs av Azure Functions, vilket gör att du kan definiera program inställningar i _local.settings.jsi_ filen. Den här filen definierar program inställningar i `Values` konfigurationens egenskap.
+API: er i Azures statiska Web Apps drivs av Azure Functions, vilket gör att du kan definiera program inställningar i _local.settings.json_ filen. Den här filen definierar program inställningar i `Values` konfigurationens egenskap.
 
-Följande exempel _local.settings.jspå_ visar hur du lägger till ett värde för `DATABASE_CONNECTION_STRING` .
+Följande exempel _local.settings.json_ visar hur du lägger till ett värde för `DATABASE_CONNECTION_STRING` .
 
 ```json
 {
@@ -116,7 +116,7 @@ Azure Portal tillhandahåller ett gränssnitt för att skapa, uppdatera och ta b
 
 Du kan använda `az rest` kommandot för att utföra Mass uppladdning av dina inställningar till Azure. Kommandot accepterar program inställningar som JSON-objekt i en överordnad egenskap som kallas `properties` .
 
-Det enklaste sättet att skapa en JSON-fil med lämpliga värden är att skapa en modifierad version av _local.settings.jsi_ filen.
+Det enklaste sättet att skapa en JSON-fil med lämpliga värden är att skapa en modifierad version av _local.settings.json_ filen.
 
 1. Lägg till följande post i din _. gitignore_ -fil för att se till att den nya filen med känsliga data inte visas offentligt.
 
@@ -124,7 +124,7 @@ Det enklaste sättet att skapa en JSON-fil med lämpliga värden är att skapa e
    local.settings*.json
    ```
 
-2. Skapa sedan en kopia av din _local.settings.jspå_ filen och ge den namnet _local.settings.properties.jspå_.
+2. Skapa sedan en kopia av din _local.settings.json_ filen och ge den namnet _local.settings.properties.json_.
 
 3. I den nya filen tar du bort alla andra data från filen utom program inställningarna och byter namn `Values` till `properties` .
 
@@ -153,7 +153,7 @@ Azure CLI-kommandot kräver ett antal värden som är speciella för ditt konto 
    ```
 
 > [!IMPORTANT]
-> Filen local.settings.properties.jspå måste finnas i samma katalog som kommandot körs på. Den här filen kan likna vad du vill. Namnet är inte signifikant.
+> Filen local.settings.properties.json måste finnas i samma katalog som kommandot körs på. Den här filen kan likna vad du vill. Namnet är inte signifikant.
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Visa program inställningar med Azure CLI
 
