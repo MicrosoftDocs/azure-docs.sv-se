@@ -1,24 +1,14 @@
 ---
 title: 'Snabb start: undersöka säkerhets aviseringar'
 description: Förstå, öka detalj nivån och undersök Defender för IoT-säkerhetsaviseringar på dina IoT-enheter.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/30/2020
-ms.author: mlottner
-ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2eb4a10372680348536231aa0333c43199b8d883
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90947853"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780998"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Snabb start: undersöka säkerhets aviseringar
 

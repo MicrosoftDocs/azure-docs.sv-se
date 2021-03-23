@@ -4,15 +4,15 @@ description: Lär dig hur du skapar en anpassad utlösare i Azure Data Factory s
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: e372808250b1d5b21cd5f6c5226922d5d6ad0f77
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d2f26b24e7fa10d9244de8f99d78c64a44b3d61
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610055"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785656"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-custom-event-preview"></a>Skapa en utlösare som kör en pipeline som svar på en anpassad händelse (förhands granskning)
 
@@ -92,10 +92,10 @@ Följande tabell innehåller en översikt över de schema element som är relate
 
 | **JSON-element** | **Beskrivning** | **Typ** | **Tillåtna värden** | **Obligatoriskt** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **utrymme** | Det Azure Resource Manager resurs-ID för Event Grid-ämnet. | Sträng | Azure Resource Manager-ID | Yes |
+| **utrymme** | Det Azure Resource Manager resurs-ID för Event Grid-ämnet. | Sträng | Azure Resource Manager-ID | Ja |
 | **planering** | Den typ av händelser som orsakar utlösaren att utlösa. | Strängmatris    |  | Ja, minst ett värde förväntas |
-| **subjectBeginsWith** | Ämnes fältet måste börja med det mönster som tillhandahölls för utlösaren för att utlösa. Till exempel `factories` utlöses endast utlösaren för händelse ämne som börjar med `factories` . | Sträng   | | No |
-| **subjectEndsWith** | Ämnes fältet måste sluta med det mönster som tillhandahölls för utlösaren för att utlösa. | Sträng   | | No |
+| **subjectBeginsWith** | Ämnes fältet måste börja med det mönster som tillhandahölls för utlösaren för att utlösa. Till exempel `factories` utlöses endast utlösaren för händelse ämne som börjar med `factories` . | Sträng   | | Inga |
+| **subjectEndsWith** | Ämnes fältet måste sluta med det mönster som tillhandahölls för utlösaren för att utlösa. | Sträng   | | Inga |
 
 ## <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll
 

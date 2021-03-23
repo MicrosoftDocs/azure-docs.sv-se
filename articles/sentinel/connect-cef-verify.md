@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ce83de7f876bbd67120bf511d29860b71cd2227
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98747482"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771285"
 ---
 # <a name="step-3-validate-connectivity"></a>STEG 3: verifiera anslutningen
 
@@ -246,6 +246,8 @@ Verifierings skriptet utför följande kontroller:
 ## <a name="next-steps"></a>Nästa steg
 
 I det här dokumentet har du lärt dig hur du ansluter CEF-enheter till Azure Sentinel. Mer information om Azure Sentinel finns i följande artiklar:
+
+- Lär dig mer om [fält mappning för CEF och CommonSecurityLog](cef-name-mapping.md).
 - Lär dig hur du [får insyn i dina data och potentiella hot](quickstart-get-visibility.md).
 - Kom igång [med att identifiera hot med Azure Sentinel](./tutorial-detect-threats-built-in.md).
 - [Använd arbets böcker](tutorial-monitor-your-data.md) för att övervaka dina data.

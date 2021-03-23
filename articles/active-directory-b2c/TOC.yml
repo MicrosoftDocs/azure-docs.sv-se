@@ -496,6 +496,7 @@
       href: custom-policy-developer-notes.md
     - name: Sidlayoutversioner
       href: page-layout.md
+      displayName: Page version
     - name: Regionstillgänglighet och dataplacering
       href: data-residency.md
     - name: Utveckla för motståndskraft

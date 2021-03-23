@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94827916f28c9028d46bf7b5461a4fbd941b2a96
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744675"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773410"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>Använda fjärr skrivbords tillägget till Azure Cloud Services (utökad support)
 
@@ -27,8 +27,9 @@ Azure Portal använder fjärr skrivbords tillägget för att aktivera fjärr skr
 2. Välj **Lägg till**.
 3. Välj de roller som du vill aktivera fjärr skrivbord för.
 4. Fyll i de obligatoriska fälten för användar namn, lösen ord, förfallo datum och certifikat (krävs inte).
+> Lägg Lösen ordet för fjärr skrivbord måste vara mellan 8-123 tecken och måste uppfylla minst tre krav på lösen ords komplexitet från följande: 1) innehåller ett versal tecken 2) innehåller ett gement tecken 3) innehåller en siffer siffra 4). det är inte tillåtet att kontrol lera tecken.
 
-    :::image type="content" source="media/remote-desktop-2.png" alt-text="Bilden visar information som krävs för att ansluta till fjärr skrivbordet.":::
+   :::image type="content" source="media/remote-desktop-2.png" alt-text="Bilden visar information som krävs för att ansluta till fjärr skrivbordet.":::
 
 5. När du är färdig väljer du **Spara**. Det tar en stund innan roll instanserna är redo att ta emot anslutningar.
 

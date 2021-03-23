@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 531e5cf274d40eae19075514d50aec5a6524aeec
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028095"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775348"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Datagranskning och modellering med Spark
 
@@ -40,7 +40,7 @@ Installations steg och kod beskrivs i den här genom gången av en HDInsight Spa
 > [!NOTE]
 > Beskrivningarna nedan är relaterade till användningen av Spark 1,6. För Spark 2,0-versioner ska du använda de antecknings böcker som beskrivs och länkas ovan. 
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Spark kan läsa och skriva till Azure Storage Blob (kallas även WASB). Så alla dina befintliga data som lagras kan bearbetas med Spark och resultaten lagras igen i WASB.
 
@@ -495,7 +495,8 @@ Tids åtgång för att köra ovanför cell: 0,24 sekund
 
 ### <a name="feature-scaling"></a>Funktionsskalning
 
-Funktions skalning, även kallat data normalisering, säkerställer att funktioner med de vanligaste värdena för uppfyllande värden inte får orimlig väg i mål funktionen. I koden för funktions skalning används [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) för att skala funktionerna till enhets avvikelse. Det tillhandahålls av MLlib för användning i linjär regression med Stochastic gradient brantaste (SGD), en populär algoritm för utbildning av ett brett utbud av andra maskin inlärnings modeller, till exempel regelbundna regressioner eller support vektor maskiner (SVM).
+Funktions skalning, även kallat data normalisering, säkerställer att funktioner med de vanligaste värdena för uppfyllande värden inte får orimlig väg i mål funktionen. I koden för funktions skalning används [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS
+) för att skala funktionerna till enhets avvikelse. Det tillhandahålls av MLlib för användning i linjär regression med Stochastic gradient brantaste (SGD), en populär algoritm för utbildning av ett brett utbud av andra maskin inlärnings modeller, till exempel regelbundna regressioner eller support vektor maskiner (SVM).
 
 > [!NOTE]
 > Vi har hittat LinearRegressionWithSGD-algoritmen för att vara känslig för skalning av funktioner.

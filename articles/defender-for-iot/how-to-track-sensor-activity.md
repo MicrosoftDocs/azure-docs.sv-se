@@ -1,18 +1,14 @@
 ---
 title: Spåra sensoraktivitet
 description: Händelsens tids linje visar en tids linje för aktivitet som identifierats i nätverket, inklusive aviseringar och aviserings hanterings åtgärder, nätverks händelser och användar åtgärder som användar inloggning och borttagning av användare.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523608"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781627"
 ---
 # <a name="track-sensor-activity"></a>Spåra sensoraktivitet
 

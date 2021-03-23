@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f587de4ee2ce051cb771db90d7f9ce00ce66b07f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471976"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772713"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Använd kund hanterade krypterings nycklar för Azure HPC cache
 
@@ -21,8 +21,6 @@ Du kan använda Azure Key Vault för att kontrol lera ägarskapet för de nyckla
 > Alla data som lagras i Azure, inklusive på cache-diskarna, krypteras i vila med hjälp av Microsoft-hanterade nycklar som standard. Du behöver bara följa stegen i den här artikeln om du vill hantera nycklarna som används för att kryptera dina data.
 
 Azure HPC cache skyddas också av [värd kryptering för virtuella datorer](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) på de hanterade diskar som innehåller cachelagrade data, även om du lägger till en kund nyckel för cache-diskarna. Genom att lägga till en kundhanterad nyckel för Double Encryption får du en extra säkerhets nivå för kunder med höga säkerhets krav. Mer information finns [i kryptering på Server sidan av Azure disk Storage](../virtual-machines/disk-encryption.md) .
-
-<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Det finns tre steg för att aktivera kundhanterad nyckel kryptering för Azure HPC cache:
 
@@ -69,14 +67,14 @@ När du skapar en cache måste du ange ett valv, en nyckel och en nyckel version
 Läs [Azure Key Vault-dokumentationen](../key-vault/general/overview.md) om du vill ha mer information.
 
 > [!NOTE]
-> Azure Key Vault måste använda samma prenumeration och vara i samma region som Azure HPC-cachen. Se till att den region du väljer [stöder funktionen Kundhanterade nycklar](hpc-cache-overview.md#region-availability).
+> Azure Key Vault måste använda samma prenumeration och vara i samma region som Azure HPC-cachen. Se till att den region du väljer [stöder båda produkterna](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault).
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. skapa cachen med Kundhanterade nycklar aktiverade
 
 Du måste ange krypterings nyckel källan när du skapar din Azure HPC-cache. Följ instruktionerna i [skapa en Azure HPC-cache](hpc-cache-create.md)och ange nyckel valvet och nyckeln på sidan **disk krypterings nycklar** . Du kan skapa ett nytt nyckel valv och en nyckel när du skapar cacheminnet.
 
 > [!TIP]
-> Om sidan **disk krypterings nycklar** inte visas kontrollerar du att cacheminnet finns i någon av de regioner som stöds.
+> Om sidan **disk krypterings nycklar** inte visas kontrollerar du att cacheminnet finns i någon av de regioner som [stöds](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault).
 
 Den användare som skapar cachen måste ha behörigheter som är lika med [rollen Key Vault deltagare](../role-based-access-control/built-in-roles.md#key-vault-contributor) eller högre.
 

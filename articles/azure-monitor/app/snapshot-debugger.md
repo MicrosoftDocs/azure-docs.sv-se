@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217405"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786489"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ögonblicksbilder för felsökning av undantag i .NET-appar
 När ett undantag inträffar kan du automatiskt samla in en fel söknings ögonblicks bild från Live-webbappen. I ögonblicks bilden visas statusen för käll koden och variablerna vid det tillfälle då undantaget uppstod. Snapshot Debugger i [Azure Application Insights](./app-insights-overview.md) övervakar undantags telemetri från din webbapp. Den samlar in ögonblicks bilder i de övergivna undantagen så att du har den information du behöver för att diagnostisera problem i produktionen. Ta med [Snapshot Collector NuGet-paketet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) i ditt program och konfigurera sedan samlings parametrar i [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Ögonblicks bilder visas på [undantag](./asp-net-exceptions.md) i Application Insights portalen.
@@ -24,7 +24,10 @@ Fel söknings ögonblicks bilder lagras i 15 dagar. Den här bevarande principen
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Aktivera Application Insights Snapshot Debugger för ditt program
 Ögonblicks bild samling är tillgänglig för:
 * .NET Framework-och ASP.NET-program som kör .NET Framework 4,5 eller senare.
-* .NET Core 2,0 och ASP.NET Core 2,0-program som körs på Windows.
+* .NET Core och ASP.NET Core program som kör .NET Core 2,1 (LTS) eller 3,1 (LTS) i Windows.
+* .NET 5,0-program i Windows.
+
+Vi rekommenderar inte att du använder .NET Core 2,0, 2,2 eller 3,0 eftersom de inte stöds.
 
 Följande miljöer stöds:
 

@@ -323,6 +323,8 @@
           href: /azure/azure-monitor/logs/query-optimization
     - name: UEBA-berikande
       href: ueba-enrichments.md
+    - name: CEF för logg fälts mappning
+      href: cef-name-mapping.md
 - name: Resurser
   items:
     - name: Användbara resurser

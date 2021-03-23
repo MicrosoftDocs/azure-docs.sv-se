@@ -1,18 +1,14 @@
 ---
 title: Lär dig om enheter som har identifierats av alla företags sensorer
 description: Använd enhets inventeringen i den lokala hanterings konsolen för att få en omfattande visning av enhets information från anslutna sensorer. Använd verktygen för att importera, exportera och filtrera för att hantera den här informationen.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ae59123b59cfb54cba2a2ee9bdeefb411c8793b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100524033"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782188"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Undersök alla identifieringar av företags sensor i enhets inventeringen
 
@@ -155,76 +151,6 @@ Så här filtrerar du enhets inventeringen:
 
 5. Om du vill ändra filter definitionerna ändrar du definitionerna och väljer **Spara ändringar**.
 
-## <a name="view-device-information-per-zone"></a>Visa enhets information per zon
-
-Du kan lära dig följande information om enheter i en zon.
-
-### <a name="view-a-device-map"></a>Visa en enhets karta
-
-Visa en sensor enhets karta för en vald zon:
-
-- I fönstret **plats hantering** väljer du **Visa zon karta** från fältet som innehåller zonens namn.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/default-region-to-default-business-unit-v2.png" alt-text="Standard region till standard affär senhet.":::
-
-Fönstret **enhets karta** visas. Den visar alla nätverks element som är relaterade till den valda zonen, inklusive sensorer, enheterna som är anslutna till dem och annan information.
-
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/zone-map-screenshot.png" alt-text="Skärm bild av zon kartan.":::
-
-Följande verktyg är tillgängliga för visning av enheter och enhets information från kartan. Mer information om dessa funktioner finns i *användar handboken för Defender för IoT Platform*.
-
-- **Kart zoomnings** lägena: förenklad vy, vyn anslutningar och detaljerad vy. Den visade kart visningen varierar beroende på kartans zoomnings nivå. Du växlar mellan kart visning genom att justera zoomnings nivåerna.
-
-  :::image type="icon" source="media/how-to-work-with-asset-inventory-information/zoom-icon.png" border="false":::
-
-- **Kart söknings-och layoutverktyg**: verktyg som används för att Visa varierande nätverks segment, enheter, enhets grupper eller lager.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/search-and-layout-tools.png" alt-text="Skärm bild av vyn sökverktyg och layoutverktyg.":::
-
-- **Etiketter och indikatorer på enheter:** Till exempel antalet enheter som grupperas i ett undernät i ett IT-nätverk. I det här exemplet är det 8.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/labels-and-indicators.png" alt-text="Skärm bild av etiketter och indikatorer.":::
-
-- **Visa egenskaper för enhet**: till exempel sensorn som övervakar enhetens och grundläggande enhets egenskaper. Högerklicka på enheten för att Visa enhets egenskaperna.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Skärm bild av vyn över enhets egenskaper.":::
-
-- **Avisering som är associerad med en enhet:** Högerklicka på enheten för att visa relaterade aviseringar.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/show-alerts.png" alt-text="Skärm bild av vyn Visa aviseringar.":::
-
-### <a name="view-alerts-associated-with-a-zone"></a>Visa aviseringar som är associerade med en zon
-
-Visa aviseringar som är associerade med en speciell zon:
-
-- Välj aviserings ikonen formulär fönstret **zon** . 
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/business-unit-view-v2.png" alt-text="Standard vyn för affär senheten med exempel.":::
-
-Mer information finns i [Översikt: arbeta med aviseringar](how-to-work-with-alerts-on-premises-management-console.md).
-
-### <a name="view-the-device-inventory-of-a-zone"></a>Visa enhets inventeringen för en zon
-
-Så här visar du enhets inventeringen som är associerad med en speciell zon:
-
-- Välj **Visa enhets inventering** i fönstret **zon** .
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/default-business-unit.png" alt-text="Skärmen enhets inventering visas.":::
-
-Mer information finns i [undersöka alla identifieringar av företags sensor i en enhets inventering](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md).
-
-### <a name="view-additional-zone-information"></a>Visa ytterligare zon information
-
-Följande ytterligare zon information är tillgänglig:
-
-- **Zon information**: Visa antalet enheter, aviseringar och sensorer som är kopplade till zonen.
-
-- **Sensor information**: Visa namn, IP-adress och version för varje sensor som har tilldelats zonen.
-
-- **Anslutnings status**: om en sensor är frånkopplad ansluter du från sensorn. Se [ansluta sensorer till den lokala hanterings konsolen](how-to-activate-and-set-up-your-on-premises-management-console.md#connect-sensors-to-the-on-premises-management-console). 
-
-- **Uppdaterings förlopp**: om den anslutna sensorn håller på att uppgraderas visas uppgraderings status. Under uppgraderingen tar inte den lokala hanterings konsolen emot enhets information från sensorn.
-
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Undersök identifieringar av sensorer i en enhetsinventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)

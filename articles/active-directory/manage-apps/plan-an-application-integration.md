@@ -1,22 +1,22 @@
 ---
-title: Kom igång med att integrera Azure AD med appar
+title: Kom igång med att integrera Azure Active Directory med appar
 description: Den här artikeln är en komma igång-guide för att integrera Azure Active Directory (AD) med lokala program och moln program.
 services: active-directory
 author: kenwith
 manager: daveba
 ms.service: active-directory
+ms.subservice: app-mgmt
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2018
+ms.date: 03/19/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 8b321acb00e6e9b4b6cca117afba8bf0c9432719
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258474"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775603"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Att integrera Azure Active Directory med program komma igång-guide
 
@@ -47,7 +47,7 @@ Innan du integrerar program med Azure AD är det viktigt att veta var du är och
   * Hur organiseras dina grupper?
   * Vilka är grupp medlemmarna?
   * Vilka behörigheter/roll tilldelningar har grupperna för närvarande?
-* Behöver du rensa användare/grupp-databaser innan du integrerar?  (Det här är en ganska viktig fråga. Skräp in, skräp ut.)
+* Behöver du rensa användare/grupp-databaser innan du integrerar?  (Det här är en viktig fråga. Skräp in, skräp ut.)
 
 ### <a name="access-management-inventory"></a>Åtkomst hanterings inventering
 * Hur hanterar du användar åtkomst för program? Vill du ändra?  Har du funderat på andra sätt att hantera åtkomst, t. ex. med [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) till exempel?
@@ -66,8 +66,19 @@ I följande artiklar diskuteras de olika sätten att integrera med Azure AD och 
 * [Använda program i Azures program Galleri](what-is-single-sign-on.md)
 * [Integrerings lista för integrering av SaaS-program](../saas-apps/tutorial-list.md)
 
+## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Funktioner för appar som inte visas i Azure AD-galleriet
+
+Du kan lägga till alla program som redan finns i din organisation eller program från tredje part från en leverantör som inte redan ingår i Azure AD-galleriet. Beroende på ditt [licens avtal](https://azure.microsoft.com/pricing/details/active-directory/)är följande funktioner tillgängliga:
+
+- Självbetjänings integrering av alla program som stöder [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) identitets leverantörer (SP-initierad eller IDP-initierad)
+- Självbetjänings integrering av alla webb program som har en HTML-baserad inloggnings sida med [LÖSENORDSBASERAD SSO](sso-options.md#password-based-sso)
+- Anslutning via självbetjäning för program som använder [systemet för scim-protokoll (Cross-Domain Identity Management) för användar etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+- Möjlighet att lägga till länkar till ett program i [Office 365-appen starta](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) eller [Mina appar](sso-options.md#linked-sign-on)
+
+Om du vill ha råd om utvecklare om hur du integrerar anpassade appar med Azure AD, se [autentiserings scenarier för Azure AD](../develop/authentication-vs-authorization.md). När du utvecklar en app som använder ett modernt protokoll som [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) för att autentisera användare, kan du registrera den med Microsoft Identity Platform genom att använda [Appregistreringar](../develop/quickstart-register-app.md) upplevelse i Azure Portal.
+
 ### <a name="authentication-types"></a>Autentiseringstyper
-Varje program kan ha olika autentiseringskrav. Med Azure AD kan du använda signerings certifikat med program som använder SAML 2,0, WS-Federation eller OpenID Connect-protokoll samt lösen ords enkel inloggning. Mer information om programautentiserings typer som används med Azure AD finns i [Hantera certifikat för federerade enkla Sign-On i Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) och [lösen ords baserad enkel inloggning](what-is-single-sign-on.md).
+Varje program kan ha olika autentiseringskrav. Med Azure AD kan du använda signerings certifikat med program som använder SAML 2,0, WS-Federation eller OpenID Connect-protokoll och enkel inloggning med lösen ord. Mer information om programautentiserings typer finns i [Hantera certifikat för federerade enkla Sign-On i Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) och [lösen ords baserad enkel inloggning](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Aktivera SSO med Azure AD App proxy
 Med Microsoft Azure AD Application Proxy kan du ge åtkomst till program som finns i ditt privata nätverk på ett säkert sätt, från valfri plats och på valfri enhet. När du har installerat en Application Proxy-koppling i din miljö kan den enkelt konfigureras med Azure AD.
@@ -85,11 +96,9 @@ I följande artiklar beskrivs hur du kan hantera åtkomst till program när de h
 * [Dela konton](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Nästa steg
-För detaljerad information kan du hämta Azure Active Directory distributions planer från [GitHub](../fundamentals/active-directory-deployment-plans.md). För Galleri program kan du hämta distributions planer för enkel inloggning, villkorlig åtkomst och användar etablering via [Azure Portal](https://portal.azure.com). 
+För detaljerad information kan du hämta Azure Active Directory distributions planer från [GitHub](../fundamentals/active-directory-deployment-plans.md). För Galleri program kan du hämta distributions planer för enkel inloggning, villkorlig åtkomst och användar etablering via [Azure Portal](https://portal.azure.com).
 
 Så här hämtar du en distributions plan från Azure Portal:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **företags program**  |  **Välj en app**  |  **Deployment-plan**.
-
-Ge feedback om distributions planer genom att ta [undersökningen om distributions planen](https://aka.ms/DeploymentPlanFeedback).

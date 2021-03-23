@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 37f3748b4f0f3db47bbd6fbe9bc06a307781c2f8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96752268"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786812"
 ---
 # <a name="add-assessment-tools"></a>Lägga till utvärderingsverktyg
 
@@ -25,23 +25,23 @@ Den här artikeln beskriver hur du lägger till bedömnings verktyg i [Azure Mig
 1. Klicka på **Översikt** i Azure Migrate projektet.
 2. Välj utvärderings scenario:
 
-    - Välj **utvärdera och migrera servrar** för att identifiera och utvärdera datorer och arbets belastningar för migrering till Azure.
+    - För att identifiera, utvärdera och migrera servrar (fysisk eller virtuell) från ditt data Center eller andra moln till Azure väljer du **identifiera, utvärdera och migrera**. Du kan nu även identifiera och utvärdera SQL Server från din VMware-miljö med hjälp av det här migrerings målet.
     - Välj **utvärdera och migrera databaser** för att utvärdera lokala SQL Server databaser.
     - Om du vill utvärdera eller migrera lokala webbappar väljer du **utforska fler**  >  **Web Apps**.
     - Om du vill utvärdera din infrastruktur för virtuella skriv bord väljer du **utforska mer**  >  **virtuell Skriv bords infrastruktur**.
 
     ![Alternativ för att välja ett utvärderings scenario](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>Välj ett Server bedömnings verktyg 
+## <a name="select-a-discovery-and-assessment-tool"></a>Välj ett identifierings-och utvärderings verktyg 
 
 
 1. Lägg till ett verktyg:
 
-    - Om du har skapat ett Azure Migrate-projekt med hjälp av alternativet **utvärdera och migrera servrar** i portalen läggs verktyget Azure Migrate Server Assessment automatiskt till i projektet. Om du vill lägga till ytterligare utvärderings verktyg väljer du **Lägg till fler verktyg** i **servrar** bredvid **utvärderings verktyg**.
-    
+    - Om du har skapat ett Azure Migrate-projekt med hjälp av alternativet **utvärdera och migrera servrar** i portalen läggs verktyget Azure Migrate identifiering och bedömning automatiskt till i projektet. Om du vill lägga till ytterligare utvärderings verktyg väljer du **Lägg till fler verktyg** i **Windows, Linux och SQL Server** bredvid **bedömnings verktyg**.
+
          ![Knapp för att lägga till ytterligare utvärderings verktyg](./media/how-to-assess/add-assessment-tool.png)
 
-    - Om du har skapat ett projekt med ett annat alternativ och ännu inte har några utvärderings verktyg, i verktyg för **Server**  >  **utvärdering**, väljer du **Klicka här**.
+    - Om du har skapat ett projekt med ett annat alternativ och ännu inte har några utvärderings verktyg, i **Windows, Linux och SQL Server**  >  **utvärderings verktyg**, väljer du **Klicka här**.
 
         ![Knapp för att lägga till första bedömnings verktyget](./media/how-to-assess/no-assessment-tool.png)
 
@@ -83,4 +83,4 @@ Om du har skapat ett Azure Migrate-projekt med hjälp av alternativet **utforska
 
 ## <a name="next-steps"></a>Nästa steg
 
-Identifiera lokala datorer för utvärdering med verktyget Azure Migrate Server Assessment för virtuella [VMware](./tutorial-discover-vmware.md) -datorer, [Hyper-V](./tutorial-discover-hyper-v.md)eller [fysiska servrar](./tutorial-discover-physical.md)
+Identifiera lokala servrar för utvärdering med Azure Migrate identifierings-och utvärderings verktyg för [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)eller [fysiska servrar](./tutorial-discover-physical.md)

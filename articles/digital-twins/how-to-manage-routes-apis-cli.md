@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433309"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779978"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (API: er och CLI)
 
@@ -237,6 +237,9 @@ Utan filtrering tar slut punkter emot flera olika händelser från Azures digita
 * Livs cykel händelser, utlöses när de är uppdelade eller relationer skapade eller raderas
 
 Du kan begränsa vilka händelser som ska skickas genom att lägga till ett **filter** för en slut punkt till händelse vägen.
+
+>[!NOTE]
+> Filter är **SKIFT** läges känsliga och måste matchas i nytto Last fallet (vilket kanske inte nödvändigt vis matchar modell fallet).
 
 Om du vill lägga till ett filter, kan du använda en skicka-begäran till *https://{Your-Azure-Digital-posters-hostname}/eventRoutes/{Event Route-Name}? API-version = 2020-10-31* med följande text:
 

@@ -5,13 +5,13 @@ description: Lär dig hur du snabbt kan skapa ett Kubernetes-kluster, distribuer
 services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 4763e72e3a50bd6c84f158658b7531a25e4ceec9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
+ms.openlocfilehash: 1371fb22b3474e37e50fe0eb67541d9ced69555f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492922"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771880"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure Portal
 

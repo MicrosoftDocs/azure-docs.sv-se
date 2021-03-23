@@ -3,13 +3,13 @@ title: Använda flera noder i Azure Kubernetes service (AKS)
 description: Lär dig hur du skapar och hanterar flera Node-pooler för ett kluster i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 02/11/2021
+ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218493"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773512"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Skapa och hantera flera nodpooler för ett kluster i Azure Kubernetes Service (AKS)
 
@@ -134,7 +134,7 @@ En arbets belastning kan kräva delning av ett klusters noder i separata pooler 
 * Om du expanderar ditt VNET när du har skapat klustret måste du uppdatera klustret (utför alla hanterade clster-åtgärder, men noder i noden räknas inte) innan du lägger till ett undernät utanför den ursprungliga CIDR. AKS kommer att tas bort från agenten Lägg till nu, trots att vi ursprungligen tillät den. Om du inte vet hur du ska stämma av kluster filen med ett support ärende. 
 * Calico nätverks princip stöds inte. 
 * Azure-nätverks principen stöds inte.
-* Kube-proxy förväntar sig en enda kontinuerlig CIDR och använder den för tre optmizations. Se det här [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) och--cluster-CIDR [här](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) för mer information. I Azure cni kommer din första nod i ett undernät att ges till Kube-proxy. 
+* Kube-proxy förväntar sig en enda kontinuerlig CIDR och använder den för tre optmizations. Se det här [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) och--cluster-CIDR [här](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) för mer information. I Azure cni kommer din första nod i ett undernät att ges till Kube-proxy. 
 
 Om du vill skapa en Node-pool med ett dedikerat undernät skickar du under nätets resurs-ID som en extra parameter när du skapar en Node-pool.
 
@@ -716,33 +716,11 @@ az deployment group create \
 
 Det kan ta några minuter att uppdatera ditt AKS-kluster beroende på de inställningar och åtgärder för Node-poolen som du definierar i Resource Manager-mallen.
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Tilldela en offentlig IP-adress per nod för dina Node-pooler (för hands version)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>Tilldela en offentlig IP-adress per nod för dina nodkonfigurationer
 
-> [!WARNING]
-> Du måste installera 0.4.43 för för hands versionen av CLI eller senare för att kunna använda funktionen offentlig IP-adress per nod.
+AKS-noder kräver inte sina egna offentliga IP-adresser för kommunikation. Scenarier kan dock kräva att noder i en Node-pool tar emot sina egna dedikerade offentliga IP-adresser. Ett vanligt scenario är för spel arbets belastningar, där en konsol behöver upprätta en direkt anslutning till en virtuell dator i molnet för att minimera hopp. Det här scenariot kan uppnås på AKS med hjälp av nodens offentliga IP-adress.
 
-AKS-noder kräver inte sina egna offentliga IP-adresser för kommunikation. Scenarier kan dock kräva att noder i en Node-pool tar emot sina egna dedikerade offentliga IP-adresser. Ett vanligt scenario är för spel arbets belastningar, där en konsol behöver upprätta en direkt anslutning till en virtuell dator i molnet för att minimera hopp. Det här scenariot kan uppnås på AKS genom att registrera dig för en förhands gransknings funktion, offentlig IP (för hands version)
-
-Om du vill installera och uppdatera det senaste AKS-förhands gransknings tillägget använder du följande Azure CLI-kommandon:
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-Registrera dig för nodens offentliga IP-funktion med följande Azure CLI-kommando:
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-Det kan ta flera minuter för funktionen att registreras.  Du kan kontrol lera statusen med följande kommando:
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-När registreringen är klar skapar du en ny resurs grupp.
+Börja med att skapa en ny resurs grupp.
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
@@ -760,12 +738,9 @@ För befintliga AKS-kluster kan du också lägga till en ny Node-pool och koppla
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> I för hands versionen stöder Azure Instance Metadata Service inte hämtning av offentliga IP-adresser för VM SKU: n på standard nivån. På grund av den här begränsningen kan du inte använda kubectl-kommandon för att visa de offentliga IP-adresser som tilldelats noderna. IP-adresserna är dock tilldelade och fungerar som de ska. De offentliga IP-adresserna för dina noder är kopplade till instanserna i skalnings uppsättningen för den virtuella datorn.
-
 Du kan hitta de offentliga IP-adresserna för dina noder på olika sätt:
 
-* Använda Azure CLI-kommandot [AZ VMSS List-instance-Public-IP-adresser][az-list-ips]
+* Använd Azure CLI-kommandot [AZ VMSS List-instance-Public-IP-adresser][az-list-ips].
 * Använd [PowerShell-eller bash-kommandon][vmss-commands]. 
 * Du kan också Visa offentliga IP-adresser i Azure Portal genom att Visa instanserna i den virtuella datorns skal uppsättning.
 
@@ -818,20 +793,20 @@ Använd [närhets placerings grupper][reduce-latency-ppg] för att minska svars 
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +819,5 @@ Använd [närhets placerings grupper][reduce-latency-ppg] för att minska svars 
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md

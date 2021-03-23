@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1356c896abff8c525df283251240d027123405fc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216758"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778297"
 ---
 # <a name="virtual-network-peering"></a>Virtuell nätverkspeering
 
@@ -25,8 +25,8 @@ Med peering för virtuella nätverk kan du sömlöst ansluta två eller fler [vi
 
 Azure har stöd för följande typer av peering:
 
-* Virtuell nätverks-peering: Anslut virtuella nätverk inom samma Azure-region.
-* Global peering för virtuellt nätverk: anslutning av virtuella nätverk i Azure-regioner.
+* **Virtuell nätverks-peering**: Anslut virtuella nätverk inom samma Azure-region.
+* **Global peering för virtuellt nätverk**: anslutning av virtuella nätverk i Azure-regioner.
 
 Fördelar med att använda VNET-peering (avsett om den är lokal eller global):
 

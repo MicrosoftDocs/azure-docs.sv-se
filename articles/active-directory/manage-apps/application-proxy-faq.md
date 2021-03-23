@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b76934d3f16ec5f87ed1380135d22bc5d943652c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102487754"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779775"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy
 
@@ -45,7 +45,7 @@ Detta kan bero på att uppdaterings tjänsten inte fungerar som den ska eller p�
 Uppdaterings tjänsten är felfri om den körs och inga fel registreras i händelse loggen (program-och tjänst loggar-> Microsoft-> AadApplicationProxy-> Updater-> admin). 
 
 > [!IMPORTANT]
-> Endast huvud versioner släpps för automatisk uppgradering. Vi rekommenderar att du uppdaterar din anslutning manuellt enligt ett regelbundet schema. Mer information om nya versioner finns i versions typ (hämtning, automatisk uppgradering), fel korrigeringar och nya funktioner i [Azure AD-programproxy: versions historik](application-proxy-release-version-history.md).
+> Endast huvud versioner släpps för automatisk uppgradering. Vi rekommenderar att du bara uppdaterar din anslutning manuellt om det behövs. Du kan till exempel inte vänta på en större version, eftersom du måste åtgärda ett känt problem eller så vill du använda en ny funktion. Mer information om nya versioner finns i versions typ (hämtning, automatisk uppgradering), fel korrigeringar och nya funktioner i [Azure AD-programproxy: versions historik](application-proxy-release-version-history.md).
 
 Så här uppgraderar du en anslutning manuellt:
 

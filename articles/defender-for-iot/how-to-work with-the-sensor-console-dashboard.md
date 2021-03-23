@@ -1,18 +1,14 @@
 ---
 title: Arbeta med sensor konsolens instrument panel
 description: På instrument panelen kan du snabbt se nätverkets säkerhets status. Det ger en översikt över hot på hela systemet på en tids linje tillsammans med information om relaterade enheter.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9bc650e9c306d12ef63994852816c96e1bdf40a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523642"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781542"
 ---
 # <a name="the-dashboard"></a>Instrument panelen
 

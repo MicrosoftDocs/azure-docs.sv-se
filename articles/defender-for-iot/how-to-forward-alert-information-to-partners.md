@@ -1,18 +1,14 @@
 ---
 title: Vidarebefordra aviseringsinformation
 description: Du kan skicka aviserings information till partner system genom att arbeta med regler för vidarebefordran.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522741"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778805"
 ---
 # <a name="forward-alert-information"></a>Vidarebefordra aviseringsinformation
 

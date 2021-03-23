@@ -1,19 +1,14 @@
 ---
 title: Händelse agg regering (för hands version)
-titleSuffix: Azure Defender for IoT
 description: Defender för IoT-säkerhetsagenter samlar in data-och system händelser från den lokala enheten och skickar data till Azure-molnet för bearbetning och analys.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
-ms.service: azure
-ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0280e97549009a1e4911c072a7a8ec052684b4e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120053"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779332"
 ---
 # <a name="event-aggregation-preview"></a>Händelse agg regering (för hands version)
 
