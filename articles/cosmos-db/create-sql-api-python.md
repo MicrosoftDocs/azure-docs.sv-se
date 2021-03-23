@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fee0591622c1ee07b6e954b3cadc208a300ab6a5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93078806"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798790"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snabb start: bygga ett python-program med ett Azure Cosmos DB SQL API-konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ I den här snabb starten skapar och hanterar du ett Azure Cosmos DB SQL API-kont
     * Utan en Azure-aktiv prenumeration:
         * [Prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/), en test miljö som varar i 30 dagar.
         * [Azure Cosmos DB-emulator](https://aka.ms/cosmosdb-emulator) 
-- [Python 2,7 eller 3.5.3 +](https://www.python.org/downloads/), med den `python` körbara filen i din `PATH` .
+- [Python 2,7 eller 3.6 +](https://www.python.org/downloads/), med den `python` körbara filen i din `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Python-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 

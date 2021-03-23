@@ -1,20 +1,16 @@
 ---
 title: Förbättra port- och VLAN-namnmatchning
 description: Anpassa port-och VLAN-namn på sensorer för att utöka enhets matchningen.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98803582"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784177"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>Förbättra port- och VLAN-namnmatchning
+# <a name="enhance-port-vlan-and-os-resolution"></a>Förbättra port, VLAN och OS-matchning
 
 Du kan anpassa port-och VLAN-namn på sensorer för att utöka enhets matchningen.
 
@@ -72,7 +68,7 @@ VLAN-namn kan innehålla upp till 50 ASCII-tecken.
 > VLAN-namn synkroniseras inte mellan sensorn och hanterings konsolen. Du måste även definiera namnet på hanterings konsolen.  
 För Cisco-växlar lägger du till följande rad i span-konfigurationen: `monitor session 1 destination interface XX/XX encapsulation dot1q` . I det kommandot är *XX/XX* namnet och numret på porten.
 
-Konfigurera virtuella lokala nätverk:
+Konfigurera VLAN-namn:
 
 1. På menyn på sidan väljer du **Systeminställningar**.
 
@@ -81,6 +77,21 @@ Konfigurera virtuella lokala nätverk:
     :::image type="content" source="media/how-to-enrich-asset-information/edit-vlan.png" alt-text="Använd systeminställningarna för att redigera dina VLAN.":::
 
 3. Lägg till ett unikt namn bredvid varje VLAN-ID.
+
+## <a name="improve-device-operating-system-classification-data-enhancement"></a>Förbättra klassificeringen av enhetens operativ system: data förbättring
+
+Sensorer identifierar kontinuerligt automatiskt nya enheter, samt ändringar av tidigare identifierade enheter, inklusive operativ system typer.
+
+Under vissa omständigheter kan konflikter identifieras i identifierade operativ system. Detta kan inträffa, till exempel om du har en operativ system version som refererar till antingen Skriv bords-eller server system. Om det inträffar får du ett meddelande med de valfria klassificeringarna för operativ system.
+
+:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Förbättra data.":::
+
+Undersök rekommendationerna för att utöka klassificeringen av operativ system. Den här klassificeringen visas i enhets inventeringen, rapporter om Data utvinning och andra skärmar. Att se till att den här informationen är uppdaterad kan förbättra precisionen för aviseringar, hot och risk analys rapporter.
+
+För att komma åt rekommendationer för operativ system:
+
+1. Välj **Systeminställningar**.
+1. Välj **data förbättring**.
 
 ## <a name="next-steps"></a>Nästa steg
 

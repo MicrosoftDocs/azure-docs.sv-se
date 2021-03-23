@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/22/2021
 ms.author: chrande
-ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100547289"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801697"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Introduktion till Gremlin-API i Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -26,11 +26,14 @@ Den här artikeln innehåller en översikt över API för Azure Cosmos DB Gremli
 Azure Cosmos DBens Gremlin-API kombinerar kraften i graf Database-algoritmer med en mycket skalbar, hanterad infrastruktur för att tillhandahålla en unik, flexibel lösning för de vanligaste data problemen som är kopplade till bristande flexibilitet och Relations metoder.
 
 > [!NOTE]
-> [Läget för Server lös kapacitet](serverless.md) är nu tillgängligt på Azure Cosmos DBens GREMLIN-API.
+> Azure Cosmos DB diagram motor närmar sig följande Apache TinkerPop-specifikation. Det finns dock vissa skillnader i implementerings informationen som är speciell för Azure Cosmos DB. Vissa funktioner som stöds av Apache TinkerPop är inte tillgängliga i Azure Cosmos DB. mer information om de funktioner som inte stöds finns i [kompatibilitet med Apache TinkerPop](gremlin-support.md) -artikeln.
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Funktioner i Azure Cosmos DBs Gremlin-API
- 
+
 Azure Cosmos DB är en fullständigt hanterad grafdatabas med global distribution, elastisk skalbarhet av lagring och dataflöde, automatisk indexering och frågor, justerbara konsekvensnivåer och stöd för TinkerPop-standarden.
+
+> [!NOTE]
+> [Läget för Server lös kapacitet](serverless.md) är nu tillgängligt på Azure Cosmos DBens GREMLIN-API.
 
 Följande är de differentierade funktionerna som Azure Cosmos DB Gremlin-API: er:
 

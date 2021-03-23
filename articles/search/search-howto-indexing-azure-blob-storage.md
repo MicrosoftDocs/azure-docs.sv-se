@@ -7,18 +7,20 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988727"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802904"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Så här konfigurerar du Blob-indexering i Kognitiv sökning
 
-Den här artikeln visar hur du konfigurerar en BLOB-indexerare för indexering av textbaserade dokument (till exempel PDF-filer, Microsoft Office dokument och andra) i Azure Kognitiv sökning. Om du inte är bekant med indexerings koncepten börjar du med [indexerare i Azure kognitiv sökning](search-indexer-overview.md) och [skapar en Sök indexerare](search-howto-create-indexers.md) innan simhopp till BLOB-indexering.
+En BLOB-indexerare används för att mata in innehåll från Azure Blob Storage till ett Kognitiv sökning-index. BLOB-indexerare används ofta i [AI-anrikning](cognitive-search-concept-intro.md), där en ansluten [färdigheter](cognitive-search-working-with-skillsets.md) lägger till avbildning och naturlig språk bearbetning för att skapa sökbart innehåll. Men du kan också använda BLOB-indexerare utan AI-berikning för att hämta innehåll från textbaserade dokument, till exempel PDF-filer, Microsoft Office dokument och fil format.
+
+Den här artikeln visar hur du konfigurerar en BLOB-indexerare för båda scenarierna. Om du inte är bekant med indexerings koncepten börjar du med [indexerare i Azure kognitiv sökning](search-indexer-overview.md) och [skapar en Sök indexerare](search-howto-create-indexers.md) innan simhopp till BLOB-indexering.
 
 <a name="SupportedFormats"></a>
 
@@ -30,7 +32,7 @@ Azure Kognitiv sökning BLOB-indexeraren kan extrahera text från följande doku
 
 ## <a name="data-source-definitions"></a>Definitioner av data källor
 
-Skillnaden mellan en BLOB-indexerare och en annan indexerare är den data käll definition som har tilldelats indexeraren. Data källan kapslar in alla egenskaper som anger typ, anslutning och plats för det innehåll som ska indexeras.
+Den primära skillnaden mellan en BLOB-indexerare och en annan indexerare är den data käll definition som har tilldelats indexeraren. Definitionen av data källan anger data källans typ ("typ": "azureblob"), samt andra egenskaper för autentisering och anslutning till innehållet som ska indexeras.
 
 En BLOB data source-definition ser ut ungefär som i exemplet nedan:
 
@@ -72,7 +74,7 @@ SAS ska ha listan och Läs behörigheter för behållaren. Mer information om si
 
 ## <a name="index-definitions"></a>Index definitioner
 
-Indexet anger fält i ett dokument, attribut och andra konstruktioner som formar Sök funktionen. I följande exempel skapas ett enkelt index med hjälp av [create index (REST API)](/rest/api/searchservice/create-index). 
+Indexet anger fält i ett dokument, attribut och andra konstruktioner som formar Sök funktionen. Alla indexerare kräver att du anger en Sök index definition som mål. I följande exempel skapas ett enkelt index med hjälp av [create index (REST API)](/rest/api/searchservice/create-index). 
 
 ```http
 POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -90,7 +92,7 @@ api-key: [admin key]
 
 Index definitioner kräver ett fält i `"fields"` samlingen för att fungera som dokument nyckel. Index definitioner bör även innehålla fält för innehåll och metadata.
 
-Ett **`content`** fält används för att lagra den text som extraherats från blobbar. Din definition av det här fältet kan se ut ungefär så här. Du behöver inte använda det här namnet, men om du gör det kan du utnyttja implicita fält mappningar. BLOB-indexeraren kan skicka BLOB-innehåll till ett innehålls-EDM. String-fält i indexet, inga fält mappningar krävs.
+Ett **`content`** fält är vanligt för BLOB-innehåll. Den innehåller den text som extraherats från blobbar. Din definition av det här fältet kan se ut ungefär så här. Du behöver inte använda det här namnet, men om du gör det kan du utnyttja implicita fält mappningar. BLOB-indexeraren kan skicka BLOB-innehåll till ett innehålls-EDM. String-fält i indexet, utan fält mappningar krävs.
 
 Du kan också lägga till fält för alla BLOB-metadata som du vill ha i indexet. Indexeraren kan läsa anpassade egenskaper för metadata, egenskaper för [standard-metadata](#indexing-blob-metadata) och egenskaper för [innehålls speciella metadata](search-blob-metadata-properties.md) . Mer information om index finns i [skapa ett index](search-what-is-an-index.md).
 

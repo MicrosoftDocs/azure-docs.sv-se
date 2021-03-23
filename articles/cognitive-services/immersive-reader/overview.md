@@ -12,12 +12,12 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: läsare, språk information, Visa bilder, förbättra läsning, läsa innehåll, Översätt
-ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599535"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801578"
 ---
 # <a name="what-is-immersive-reader"></a>Vad är Avancerad läsare?
 
@@ -25,8 +25,8 @@ ms.locfileid: "104599535"
 
 Den här dokumentationen innehåller följande typer av artiklar:  
 
-* **[Snabb starter](quickstarts/client-libraries.md)** är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat.
-* **[Instruktions guider](how-to-create-immersive-reader.md)** innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
+* **[Snabb starter](quickstarts/client-libraries.md)** hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.
+* **[Instruktions guider](how-to-create-immersive-reader.md)** innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Använd avancerad läsare för att förbättra läsnings hjälpmedel 
 

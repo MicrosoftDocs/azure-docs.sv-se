@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 66fa56b45e8d3cff7a8ace300a450b9c41df9bc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588723"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802921"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisk träna en tids serie prognos modell
 
@@ -128,11 +128,11 @@ Automatisk maskin inlärning försöker automatiskt med olika modeller och algor
 >[!Tip]
 > Traditionella Regressions modeller testas också som en del av rekommendations systemet för att förutse experiment. Se [tabellen modell som stöds](how-to-configure-auto-train.md#supported-models) för den fullständiga listan över modeller. 
 
-Modeller| Description | Fördelar
+Modeller| Beskrivning | Fördelar
 ----|----|---
 Prophet (för hands version)|Prophet fungerar bäst med tids serier som har starka säsongs effekter och flera säsonger av historiska data. Om du vill utnyttja den här modellen installerar du den lokalt med `pip install fbprophet` . | Korrekt & snabb, robust för att kunna avvika, saknade data och dramatiska ändringar i din tids serie.
 Auto-ARIMA (för hands version)|Autoregressiva Integrated glidande medelvärde (ARIMA) fungerar bäst när data är Station ära. Det innebär att dess statistiska egenskaper, t. ex. medelvärdet och var Ian sen är konstant över hela uppsättningen. Om du till exempel vänder en mynt är sannolikheten för att du får 50%, oavsett om du vänder idag, imorgon eller nästa år.| Perfekt för univariate-serien, eftersom de tidigare värdena används för att förutsäga framtida värden.
-ForecastTCN (för hands version)| ForecastTCN är en neurala-nätverks modell som är utformad för att ta itu med de mest krävande prognos uppgifterna, vilket fångar icke-linjära lokala och globala trender i dina data samt relationer mellan tids serier.|Kan använda komplexa trender i dina data och skalas enkelt till största av data uppsättningar.
+ForecastTCN (för hands version)| ForecastTCN är en neurala nätverks modell som är utformad för att ta itu med de mest krävande prognos uppgifterna. Den fångar upp icke-linjära lokala och globala trender i dina data och relationer mellan tids serier.|Kan använda komplexa trender i dina data och skalas enkelt till största av data uppsättningar.
 
 ### <a name="configuration-settings"></a>Konfigurationsinställningar
 
@@ -146,11 +146,12 @@ I följande tabell sammanfattas dessa ytterligare parametrar. I [ForecastingPara
 |`forecast_horizon`|Definierar hur många perioder som vidarebefordrar dig till prognos. Horisonten är i enheter av tids serie frekvensen. Enheter baseras på tidsintervallet för dina utbildnings data, till exempel varje månad, varje vecka att prognosen ska förutsäga.|✓|
 |`enable_dnn`|[Aktivera Prognosticering av hyperoptimerade]().||
 |`time_series_id_column_names`|Kolumn namn som används för att unikt identifiera tids serier i data som har flera rader med samma tidsstämpel. Om Time Series-identifierare inte har definierats antas data uppsättningen vara en tids serie. Mer information om engångs-serien finns i [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
-|`freq`| Frekvensen för Time Series-datauppsättningen. Den här parametern representerar den period med vilken händelser förväntas inträffa, till exempel varje dag, varje vecka, varje år osv. Frekvensen måste vara ett [Pandas offset-alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects).||
+|`freq`| Frekvensen för Time Series-datauppsättningen. Den här parametern representerar den period med vilken händelser förväntas inträffa, till exempel varje dag, varje vecka, varje år osv. Frekvensen måste vara ett [Pandas offset-alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects). Läs mer om [frekvens]. (#frequency--mål-data agg regering)||
 |`target_lags`|Antal rader att ange för fördröjning av målvärdena baserat på data frekvensen. Fördröjningen visas som en lista eller ett enda heltal. Fördröjning ska användas när relationen mellan oberoende variabler och beroende variabel inte matchar eller korrelerar som standard. ||
 |`feature_lags`| Funktionerna i fördröjningen väljs automatiskt av automatisk ML när `target_lags` har angetts och `feature_lags` är inställt på `auto` . Att aktivera funktionen lags kan hjälpa till att förbättra noggrannheten. Funktionen lags är inaktive rad som standard. ||
 |`target_rolling_window_size`|*n* historiska perioder som ska användas för att generera prognostiserade värden <= storlek för tränings uppsättning. Om det utelämnas är *n* den fullständiga inlärnings uppsättningens storlek. Ange den här parametern när du bara vill ta hänsyn till en viss mängd historik när du tränar modellen. Lär dig mer om [agg regerings fönster för mål](#target-rolling-window-aggregation).||
-|`short_series_handling_config`| Möjliggör kort tids serie hantering för att undvika misslyckande vid utbildning på grund av otillräckliga data. Hantering av korta serier är inställt på `auto` som standard. Läs mer om [hantering av korta serier](#short-series-handling).|
+|`short_series_handling_config`| Möjliggör kort tids serie hantering för att undvika misslyckande vid utbildning på grund av otillräckliga data. Hantering av korta serier är inställt på `auto` som standard. Läs mer om [hantering av korta serier](#short-series-handling).||
+|`target_aggregation_function`| Funktionen som ska användas för att sammanställa kolumnen för Time Series-mål för att uppfylla den frekvens som anges via `freq` parametern. `freq`Parametern måste anges för att du ska kunna använda `target_aggregation_function` . Standardvärdet `None` är för de flesta scenarier som använder `sum` räcker.<br> Lär dig mer om [agg regering av mål kolumner](#frequency--target-data-aggregation). 
 
 
 Följande kod, 
@@ -258,6 +259,30 @@ Om du använder Azure Machine Learning Studio för experimentet läser du så [h
 
 Ytterligare valfria konfigurationer är tillgängliga för prognostisering av uppgifter, t. ex. aktivering av djup inlärning och att ange en rullande åtgärds fönster agg regering. 
 
+### <a name="frequency--target-data-aggregation"></a>Frekvens & mål data agg regering
+
+Använd frekvens, `freq` parameter för att undvika fel som orsakas av oregelbundna data, det vill säga data som inte följer en Set-takt, t. ex. varje timme eller dagliga data. 
+
+För mycket oregelbunden data eller för varierande affärs behov kan användarna välja vilken prognos frekvens som önskas, `freq` och ange `target_aggregation_function` för att aggregera mål kolumnen i tids serien. Genom att utnyttja de här två inställningarna i `AutoMLConfig` objektet kan du spara tid på förberedelse av data. 
+
+När `target_aggregation_function` parametern används
+* Mål kolumnens värden aggregeras baserat på den angivna åtgärden. Är vanligt vis `sum` lämpligt för de flesta scenarier.
+
+* Numeriska kolumnerna i dina data sammanställs efter sum, medelvärde, minimivärde och Max värde. Därför genererar automatiserad ML nya kolumner med agg regerings funktions namnet och använder den valda mängd åtgärden. 
+
+* För kategoriska för förutsägande kolumner sammanställs data efter läge, den mest framträdande kategorin i fönstret.
+
+* Datum för förutsägande kolumner sammanställs efter minsta värde, högsta värde och läge. 
+
+Sammansättnings åtgärder som stöds för mål kolumn värden är:
+
+|Funktion | beskrivning
+|---|---
+|`sum`| Summan av mål värden
+|`mean`| Medelvärde eller genomsnitt för mål värden
+|`min`| Minsta värde för ett mål  
+|`max`| Högsta värde för ett mål  
+
 ### <a name="enable-deep-learning"></a>Aktivera djup inlärning
 
 > [!NOTE]
@@ -283,10 +308,10 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Om du vill aktivera DNN för ett AutoML-experiment som skapats i Azure Machine Learning Studio kan du läsa [uppgifts typ inställningarna i Studio instruktion](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Visa [Notebook Production Forecasting-anteckningsboken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) för ett detaljerat kod exempel som utnyttjar hyperoptimerade.
+Visa den [bärbara datorn för produktions prognoser för dryck](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) i ett detaljerat kod exempel med hjälp av hyperoptimerade.
 
 ### <a name="target-rolling-window-aggregation"></a>Samling av rullande fönster i mål
-Ofta är den bästa informationen som en prognosare kan ha är det senaste värdet för målet.  Med mål för rullande fönster kan du lägga till en rullande agg regering av data värden som funktioner. Att skapa och använda dessa ytterligare funktioner som extra sammanhangsbaserade data hjälper till att uppnå en bättre noggrannhet i träna-modellen.
+Ofta är den bästa informationen som en prognosare kan ha är det senaste värdet för målet.  Med mål för rullande fönster kan du lägga till en rullande agg regering av data värden som funktioner. Att skapa och använda dessa funktioner som extra sammanhangsbaserade data hjälper till att uppnå en bättre noggrannhet i träna-modellen.
 
 Anta till exempel att du vill förutse energi efter frågan. Du kanske vill lägga till en rullande fönster funktion på tre dagar för att kunna påverka termiska ändringar av upphettade utrymmen. I det här exemplet skapar du det här fönstret genom `target_rolling_window_size= 3` att ange i `AutoMLConfig` konstruktorn. 
 
@@ -294,7 +319,7 @@ Tabellen visar den resulterande funktions teknik som inträffar när Window aggr
 
 ![mål för rullande fönster](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Visa en python code-exempel som använder den angivna [mål funktionen för mängd funktions fönster](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
+Visa ett exempel på python-kod som använder den [sammanställda mål fönster mängd funktionen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
 
 ### <a name="short-series-handling"></a>Hantering av korta serier
 

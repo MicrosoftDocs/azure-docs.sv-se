@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3395afbe95b2a7f35893a0ce7f60c3871597acd0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98614708"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798722"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Pilot molnets synkronisering för en befintlig synkroniserad AD-skog 
 
@@ -208,20 +208,7 @@ Om piloten inte fungerar som förväntat kan du gå tillbaka till Azure AD Conne
 1.  Inaktivera etablerings konfiguration i Azure Portal. 
 2.  Inaktivera alla regler för anpassad synkronisering som skapats för moln etablering med hjälp av verktyget Sync Rule Editor. Om du inaktiverar, bör det orsaka fullständig synkronisering för alla anslutningar.
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Konfigurera Azure AD Connect Sync att undanta pilot-OU
-När du har verifierat att användare från pilot-ORGANISATIONSENHETen hanteras av en molnbaserad synkronisering, kan du konfigurera om Azure AD Connect för att utesluta pilot ORGANISATIONSENHETen som skapades ovan.  Moln Provisioning-agenten hanterar synkronisering för de här användarna kommer att vidarebefordra.  Använd följande steg för att omfånget Azure AD Connect.
 
- 1. Dubbelklicka på Azure AD Connect-ikonen på den server som kör Azure AD Connect.
- 2. Klicka på **Konfigurera**
- 3. Välj **Anpassa alternativ för synkronisering** och klicka på Nästa.
- 4. Logga in på Azure AD och klicka på **Nästa**.
- 5. På sidan **Anslut dina kataloger** klickar du på **Nästa**.
- 6. På skärmen **domän-och OU-filtrering** väljer du **Synkronisera valda domäner och organisationsenheter**.
- 7. Expandera din domän och **avmarkera** **CPU: er** ou.  Klicka på **Nästa**.
-![utrymme](media/tutorial-existing-forest/scope-1.png)</br>
- 9. Klicka på **Nästa** på skärmen **valfria funktioner** .
- 10. Klicka på **Konfigurera** på skärmen **redo att konfigurera** .
- 11. När den är klar klickar du på **Avsluta**. 
 
 ## <a name="next-steps"></a>Nästa steg 
 

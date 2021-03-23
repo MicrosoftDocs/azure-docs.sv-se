@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91997472"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800881"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Snabb start: skapa en python-app med Azure App konfiguration
 
@@ -22,7 +22,7 @@ I den här snabb starten ska du använda Azure App konfiguration för att centra
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
-- Python 2,7 eller 3,5 eller senare – information om hur du konfigurerar python i Windows finns i [python i Windows-dokumentationen]( https://docs.microsoft.com/windows/python/)
+- Python 2,7 eller 3,6 eller senare – information om hur du konfigurerar python i Windows finns i [python i Windows-dokumentationen]( https://docs.microsoft.com/windows/python/)
 
 ## <a name="create-an-app-configuration-store"></a>Skapa ett konfigurations Arkiv för appen
 

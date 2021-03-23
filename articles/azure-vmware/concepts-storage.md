@@ -3,12 +3,12 @@ title: Koncept – lagring
 description: Lär dig mer om nyckel lagrings funktionerna i privata moln i Azure VMware-lösningar.
 ms.topic: conceptual
 ms.date: 03/13/2021
-ms.openlocfilehash: 2551b11ada8b6118fb7524d9fe36f8b4b568aca1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83a4a52f8414e656b5bc688796db6e93a53d4d76
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462481"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801629"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Lagrings koncept för Azure VMware-lösningar
 
@@ -44,7 +44,7 @@ Du kan använda Azure Storage-tjänster i arbets belastningar som körs i ditt p
 Nu när du har täckt Azure VMware lösning lagrings koncept kan du vilja lära dig mer om:
 
 - [Identitets koncept för privata moln](concepts-identity.md).
-- [vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösning](concepts-role-based-access-control.md).
+- [vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösning](concepts-identity.md).
 - [Så här aktiverar du Azure VMware-lösnings resurser](enable-azure-vmware-solution.md).
 - [Azure NetApp Files med Azure VMware-lösning](netapp-files-with-azure-vmware-solution.md)
 

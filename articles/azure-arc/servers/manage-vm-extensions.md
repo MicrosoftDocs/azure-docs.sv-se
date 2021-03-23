@@ -1,14 +1,14 @@
 ---
 title: Hantering av VM-tillägg med Azure Arc-aktiverade servrar
 description: Azure Arc-aktiverade servrar kan hantera distribution av virtuella dator tillägg som tillhandahåller konfiguration och automatiserings uppgifter efter distributionen med icke-virtuella datorer i Azure.
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687914"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799589"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Hantera VM-tillägg med Azure Arc-aktiverade servrar
 
@@ -42,6 +42,9 @@ Funktioner för virtuella dator tillägg är bara tillgängliga i listan över [
 I den här versionen har vi stöd för följande VM-tillägg på Windows-och Linux-datorer.
 
 Mer information om paketet för Azure Connected Machine agent och information om tilläggs Agent komponenten finns i [agent översikt](agent-overview.md#agent-component-details).
+
+> [!NOTE]
+> Nyligen stöd för det virtuella DSC-tillägget har tagits bort för Arc-aktiverade servrar. Alternativt rekommenderar vi att du använder tillägget för anpassat skript för att hantera konfigurationen efter distributionen av servern eller datorn.
 
 ### <a name="windows-extensions"></a>Windows-tillägg
 

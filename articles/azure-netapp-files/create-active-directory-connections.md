@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ccc88cabfa81e2d911546fae776f581885ed8fa6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183887"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801265"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Skapa och hantera Active Directory anslutningar för Azure NetApp Files
 
@@ -206,6 +206,18 @@ Den här inställningen konfigureras i **Active Directory anslutningar** under *
         ```
         
         Du kan också använda [Azure CLI-kommandon](/cli/azure/feature) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
+
+     * **Användare av säkerhets privilegier**   <!-- SMB CA share feature -->   
+        Du kan bevilja säkerhets privilegier ( `SeSecurityPrivilege` ) till användare som kräver förhöjd behörighet för att komma åt Azure NetApp Files volymer. De angivna användar kontona kommer att kunna utföra vissa åtgärder på Azure NetApp Files SMB-resurser som kräver säkerhets privilegier som inte har tilldelats som standard för domän användare.   
+
+        Till exempel måste användar konton som används för att installera SQL Server i vissa scenarier beviljas utökade säkerhets privilegier. Om du använder ett konto som inte är administratörs konto för att installera SQL Server och kontot inte har tilldelats säkerhets privilegiet, bör du lägga till säkerhets behörighet till kontot.  
+
+        > [!IMPORTANT]
+        > Det domän konto som används för att installera SQL Server måste redan finnas innan du lägger till det i fältet **säkerhets privilegier användare** . När du lägger till kontot för SQL Server-installationsprogrammet i **säkerhets privilegiet användare** kan Azure NetApp Files-tjänsten verifiera kontot genom att kontakta domänkontrollanten. Kommandot kan Miss förfalla om det inte går att kontakta domänkontrollanten.  
+
+        Mer information om `SeSecurityPrivilege` och SQL Server finns i [SQL Server installation Miss lyckas om installations kontot inte har särskilda användar rättigheter](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
+
+        ![Skärm bild som visar rutan säkerhets privilegier användare i fönstret Active Directory-anslutningar.](../media/azure-netapp-files/security-privilege-users.png) 
 
      * **Användare av säkerhets kopierings princip**  
         Du kan inkludera ytterligare konton som kräver förhöjd behörighet för det dator konto som skapas för användning med Azure NetApp Files. De angivna kontona kommer att kunna ändra NTFS-behörigheter på fil-eller mappnivå. Du kan till exempel ange ett icke-privilegierat tjänst konto som används för att migrera data till en SMB-filresurs i Azure NetApp Files.  

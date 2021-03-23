@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: f45d5710f6feb8af2347ca298e07e8a4870d3d4f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470478"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798535"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Konfigurera sammanställd namnrymd
 
@@ -30,6 +30,8 @@ Du kan sortera tabell kolumnerna för att bättre förstå cacheminnets sammanst
 ## <a name="add-or-edit-namespace-paths"></a>Lägga till eller redigera namn områdes Sök vägar
 
 Du måste skapa minst en namn områdes Sök väg innan klienterna kan komma åt lagrings målet. (Läs genom [att montera Azure HPC cache](hpc-cache-mount.md) för mer information om klient åtkomst.)
+
+Om du nyligen har lagt till ett lagrings mål eller anpassat en åtkomst princip kan det ta en minut eller två innan du kan skapa en namn områdes Sök väg.
 
 ### <a name="blob-namespace-paths"></a>Sökväg till BLOB-namnrymd
 

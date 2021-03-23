@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 03/22/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506709"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800371"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Haveriberedskap och lagringskontoredundans
 
@@ -23,7 +23,7 @@ Microsoft strävar efter att se till att Azure-tjänster alltid är tillgänglig
 
 Azure Storage stöder redundans för geo-redundanta lagrings konton. Med konto redundans kan du initiera redundansväxlingen för ditt lagrings konto om den primära slut punkten blir otillgänglig. Redundansväxlingen uppdaterar den sekundära slut punkten för att bli den primära slut punkten för ditt lagrings konto. När redundansväxlingen är klar kan klienter börja skriva till den nya primära slut punkten.
 
-Redundansväxling är tillgängligt för konton av typen generell användning v1, generell användning v2 och bloblagring med Azure Resource Manager-distributioner. Redundansväxling av kontot stöds för alla offentliga regioner men är inte tillgänglig i suveräna eller nationella moln för tillfället.
+Redundansväxling är tillgängligt för konton av typen generell användning v1, generell användning v2 och bloblagring med Azure Resource Manager-distributioner. Redundansväxling av kontot stöds för alla offentliga regioner men är inte tillgänglig i suveräna eller nationella moln för tillfället. Redundansväxling av konton stöds inte för lagrings konton med hierarkiskt namn område aktiverat.
 
 Den här artikeln beskriver koncepten och processen som är inblandade i ett konto för redundans och beskriver hur du förbereder ditt lagrings konto för återställning med minsta möjliga mängd kund påverkan. Information om hur du startar en redundansväxling av ett konto i Azure Portal eller PowerShell finns i [initiera ett konto redundansväxling](storage-initiate-account-failover.md).
 
@@ -67,6 +67,8 @@ Microsoft rekommenderar också att du utformar ditt program för att förbereda 
 ## <a name="understand-the-account-failover-process"></a>Förstå processen för redundans av konto
 
 Med redundans för Kundhanterade konton kan du inte återställa hela lagrings kontot till den sekundära regionen om den primära inte är tillgänglig av någon anledning. När du tvingar fram en redundansväxling till den sekundära regionen kan klienterna börja skriva data till den sekundära slut punkten när redundansväxlingen är klar. Redundansväxlingen tar vanligt vis ungefär en timme.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ### <a name="how-an-account-failover-works"></a>Så här fungerar kontoredundans
 

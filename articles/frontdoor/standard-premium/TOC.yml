@@ -63,6 +63,8 @@
       href: how-to-compression.md
     - name: Aktivera privat länk
       items:
+        - name: Ansluta till en intern belastningsutjämnare
+          href: how-to-enable-private-link-internal-load-balancer.md
         - name: Ansluta till ett lagringskonto
           href: how-to-enable-private-link-storage-account.md
         - name: Ansluta till en webbapp

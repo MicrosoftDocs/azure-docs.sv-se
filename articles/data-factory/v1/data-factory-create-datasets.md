@@ -3,16 +3,16 @@ title: Skapa data uppsättningar i Azure Data Factory
 description: Lär dig hur du skapar data uppsättningar i Azure Data Factory, med exempel som använder egenskaper som offset och anchorDateTime.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4b222b387dad1c078cfe2a063ed310ef463b192e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 355d36d58935372e9d8a92599e8f810fec9ebf19
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376844"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785350"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Data uppsättningar i Azure Data Factory (version 1)
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]

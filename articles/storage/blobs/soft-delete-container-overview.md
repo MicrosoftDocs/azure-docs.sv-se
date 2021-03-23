@@ -10,16 +10,16 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 54e703b096ea4e3572a6fc00aa6b7b2b99c4bcad
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211149"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800752"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Mjuk borttagning för behållare (förhands granskning)
 
-Mjuk borttagning för behållare (för hands version) skyddar dina data från att oavsiktligt eller avsiktligt tas bort. Om mjuk borttagning av behållare är aktiverat för ett lagrings konto behålls alla borttagna behållare och deras innehåll i Azure Storage under den period som du anger. Under kvarhållningsperioden kan du återställa tidigare borttagna behållare. När du återställer en behållare återställs alla blobar i behållaren när den har tagits bort.
+Mjuk borttagning för behållare (för hands version) skyddar dina data från att oavsiktligt eller avsiktligt tas bort. När mjuk borttagning av containrar är aktiverat för ett lagringskonto behålls borttagna containrar och deras innehåll i Azure Storage under den period som du anger. Under kvarhållningsperioden kan du återställa tidigare borttagna containrar. När du återställer en container återställs alla blobar som fanns i den containern när den togs bort.
 
 För slut punkt till slut punkts skydd för dina BLOB-data rekommenderar Microsoft att du aktiverar följande funktioner för data skydd:
 
@@ -35,6 +35,9 @@ För slut punkt till slut punkts skydd för dina BLOB-data rekommenderar Microso
 När du aktiverar mjuk borttagning av behållare kan du ange en kvarhållningsperiod för borttagna behållare mellan 1 och 365 dagar. Standard kvarhållningsperioden är 7 dagar. Under kvarhållningsperioden kan du återställa en borttagen behållare genom att anropa åtgärden för att **återställa behållare** .
 
 När du återställer en behållare återställs även behållarens blobbar och alla BLOB-versioner. Du kan dock endast använda mjuk borttagning av behållare för att återställa blobbar om själva behållaren har tagits bort. Om du vill återställa en borttagen BLOB när dess överordnade behållare inte har tagits bort, måste du använda blob-version med mjuk borttagning eller BLOB-versioner.
+
+> [!WARNING]
+> Behållarens mjuka borttagning kan bara återställa hela behållare och de blobbar de hade vid tidpunkten för borttagning. Det går inte att återställa en borttagen BLOB i en behållare med hjälp av mjuk borttagning av behållare.
 
 Följande diagram visar hur en borttagen behållare kan återställas när mjuk borttagning av behållare är aktiverat:
 

@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 03/19/2021
+ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: f3e6f40833f3536bb915af74b7e0d80143fe0d13
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 92a46c7f9d7cf86787bb1707c41ae0e44c37fc60
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774804"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800915"
 ---
 # <a name="hb-series"></a>HB-serien
 
@@ -36,9 +36,9 @@ HB-serie VM-funktioner 100 GB/SEK Mellanox EDR InfiniBand. De här virtuella dat
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 228 | 263 | 2.0 | 2.55 | 2.55 | 100 | Alla | 700 | 4 | 8 |
 
 Läs mer om:
-- [arkitektur och VM-topologi](./workloads/hpc/hb-series-overview.md),
-- [program varu stack](./workloads/hpc/hb-series-overview.md#software-specifications) som stöds, inklusive operativ system som stöds och
-- förväntad [prestanda](./workloads/hpc/hb-series-performance.md) för den virtuella datorn med HB-serien.
+- [Arkitektur och topologi för virtuella datorer](./workloads/hpc/hb-series-overview.md)
+- [Program varu stack](./workloads/hpc/hb-series-overview.md#software-specifications) som stöds, inklusive operativ system som stöds
+- Förväntad [prestanda](./workloads/hpc/hb-series-performance.md) för den virtuella datorn med HB-serien
 
 [!INCLUDE [hpc-include.md](./workloads/hpc/includes/hpc-include.md)]
 

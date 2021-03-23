@@ -39,30 +39,30 @@
           href: migrate-v2-to-v3.md
         - name: Utvärdera uttal
           href: how-to-pronunciation-assessment.md
+        - name: Anpassning
+          items:
+            - name: Vad är Custom Speech?
+              href: custom-speech-overview.md
+            - name: Testa en modell med hjälp av ljudfiler i Speech Studio
+              href: quickstarts/speech-studio-test-model.md
+            - name: Förbereda data för Custom Speech
+              href: how-to-custom-speech-test-and-train.md
+            - name: Inspektera Custom Speech-data
+              href: how-to-custom-speech-inspect-data.md
+            - name: Utvärdera och förbättra noggrannhet i Custom Speech
+              href: how-to-custom-speech-evaluate-data.md
+            - name: Träna och distribuera en Custom Speech-modell
+              href: how-to-custom-speech-train-model.md
+            - name: CI/CD för Custom Speech
+              href: how-to-custom-speech-continuous-integration-continuous-deployment.md
+            - name: Skapa transkriptioner med mänsklig etikett
+              href: how-to-custom-speech-human-labeled-transcriptions.md
+            - name: Livs cykel för modell och slut punkt
+              href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Självstudier
       items:
         - name: Förbättra noggrannheten med klientmodeller
           href: tutorial-tenant-model.md
-    - name: Anpassning
-      items:
-        - name: Vad är Custom Speech?
-          href: custom-speech-overview.md
-        - name: Testa en modell med hjälp av ljudfiler i Speech Studio
-          href: quickstarts/speech-studio-test-model.md
-        - name: Förbereda data för Custom Speech
-          href: how-to-custom-speech-test-and-train.md
-        - name: Inspektera Custom Speech-data
-          href: how-to-custom-speech-inspect-data.md
-        - name: Utvärdera och förbättra noggrannhet i Custom Speech
-          href: how-to-custom-speech-evaluate-data.md
-        - name: Träna och distribuera en Custom Speech-modell
-          href: how-to-custom-speech-train-model.md
-        - name: CI/CD för Custom Speech
-          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
-        - name: Skapa transkriptioner med mänsklig etikett
-          href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Livs cykel för modell och slut punkt
-          href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Referens
       items:
         - name: C++
@@ -116,25 +116,25 @@
           href: long-audio-api.md
         - name: Hämta händelser för ansikts attityd för Lip-Sync
           href: how-to-speech-synthesis-viseme.md
-    - name: Anpassning
-      items:
-        - name: Portal för anpassad röst
+        - name: Anpassning
           items:
-            - name: Vad är anpassat neurala röst?
-              href: custom-neural-voice.md
-            - name: Komma igång med Custom Voice
-              displayName: 'custom voice, neural voice'
-              href: how-to-custom-voice.md
-            - name: Förbereda data
-              href: how-to-custom-voice-prepare-data.md
-            - name: Skapa och använda Custom Voice-modeller
-              href: how-to-custom-voice-create-voice.md
-            - name: Spela in röstexempel
-              href: record-custom-voice-samples.md
-        - name: Skapa ljudinnehåll
-          items:
+            - name: Portal för anpassad röst
+              items:
+                - name: Vad är anpassat neurala röst?
+                  href: custom-neural-voice.md
+                - name: Komma igång med Custom Voice
+                  displayName: 'custom voice, neural voice'
+                  href: how-to-custom-voice.md
+                - name: Förbereda data
+                  href: how-to-custom-voice-prepare-data.md
+                - name: Skapa och använda Custom Voice-modeller
+                  href: how-to-custom-voice-create-voice.md
+                - name: Spela in röstexempel
+                  href: record-custom-voice-samples.md
             - name: Skapa ljudinnehåll
-              href: how-to-audio-content-creation.md
+              items:
+                - name: Skapa ljudinnehåll
+                  href: how-to-audio-content-creation.md
     - name: Ansvarsfull användning av AI
       items:
         - name: Anpassad röst för neurala

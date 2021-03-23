@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010972"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803427"
 ---
 Azure Key Vault tjänst stöder två resurs typer: valv och hanterade HSM: er. I följande två avsnitt beskrivs tjänst gränserna för var och en av dem.
 
@@ -50,6 +50,17 @@ I det här avsnittet beskrivs tjänst begränsningar för resurs typ `vaults` .
 Information om hur du hanterar begränsning när gränserna överskrids finns i [Azure Key Vault begränsnings vägledning](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> en begränsning för hela prenumerationen för alla transaktions typer är fem gånger per begränsning för nyckel valvet. Till exempel är HSM-andra transaktioner per prenumeration begränsad till 5 000 transaktioner på 10 sekunder per prenumeration.
+
+#### <a name="backup-keys-secrets-certificates"></a>Säkerhets kopierings nycklar, hemligheter, certifikat
+
+När du säkerhetskopierar ett nyckel valvs objekt, t. ex. en hemlighet, nyckel eller certifikat, laddar säkerhets kopierings åtgärden objektet som en krypterad blob. Denna BLOB kan inte dekrypteras utanför Azure. Om du vill hämta användbara data från denna BLOB måste du återställa blobben till ett nyckel valv i samma Azure-prenumeration och Azure geografi
+
+| Transaktions typ | Högsta tillåtna version av Key Vault-objekt |
+| --- | --- |
+| Säkerhetskopiera individuell nyckel, hemlighet, certfiicate |500 |
+
+> [!NOTE]
+> Försök att säkerhetskopiera ett nyckel-, hemligt-eller certifikat objekt med fler versioner än över gränsen leder till ett fel. Det går inte att ta bort tidigare versioner av en nyckel, hemlighet eller certifikat. 
 
 #### <a name="azure-private-link-integration"></a>Azure Private Link-integrering
 

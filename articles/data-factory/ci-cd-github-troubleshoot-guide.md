@@ -1,5 +1,5 @@
 ---
-title: Felsök problem med CI-CD, Azure DevOps och GitHub i ADF
+title: Felsöka problem med CI-CD, Azure DevOps och GitHub i ADF
 description: Använd olika metoder för att felsöka problem med CI-CD i ADF.
 author: ssabat
 ms.author: susabat
@@ -7,14 +7,14 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/12/2021
-ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418104"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802041"
 ---
-# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Felsök problem med CI-CD, Azure DevOps och GitHub i ADF 
+# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Felsöka problem med CI-CD, Azure DevOps och GitHub i ADF 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -101,8 +101,7 @@ När du försöker publicera ändringar till en Data Factory visas följande fel
         "details": null
     }
 `
-
-#### <a name="symptom"></a>Symptom
+### <a name="cause"></a>Orsak
 
 Du har frånkopplat git-konfigurationen och konfigurerat den igen med flaggan "Importera resurser" markerad, vilket anger Data Factory som "synkroniserat". Det innebär att inga ändringar har publicerats.
 
@@ -150,11 +149,7 @@ Du har skapat en kund roll som användare och den har inte den behörighet som k
 
 För att lösa problemet måste du lägga till följande behörighet i rollen: *Microsoft. DataFactory/factors/queryFeaturesValue/Action*. Den här behörigheten ska inkluderas som standard i rollen Data Factory deltagare.
 
-###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatisk publicering för CI/CD utan att klicka på knappen publicera  
-
-#### <a name="issue"></a>Problem
-
-Manuell publicering med knapp klickning i ADF-portalen aktiverar inte automatisk CI/CD-åtgärd.
+###  <a name="cannot-automate-publishing-for-cicd"></a>Det går inte att automatisera publicering för CI/CD 
 
 #### <a name="cause"></a>Orsak
 
@@ -178,15 +173,14 @@ Azure Resource Manager begränsar storleken på mallen till 4 MB. Begränsa stor
 
 För små till medelstora lösningar är en enskild mall enklare att förstå och underhålla. Du kan se alla resurser och värden i en enda fil. I avancerade scenarier kan du använda länkade mallar till att dela upp lösningen i riktade komponenter. Följ bästa praxis vid [användning av länkade och kapslade mallar](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
 
-### <a name="cannot-connect-to-git-enterprise-cloud"></a>Det går inte att ansluta till GIT Enterprise Cloud 
+### <a name="cannot-connect-to-git-enterprise"></a>Det går inte att ansluta till GIT Enterprise  
 
 ##### <a name="issue"></a>Problem
 
-Du kan inte ansluta till GIT Enterprise-molnet på grund av behörighets problem. Du kan se felet som **422-en entitet som inte kan bearbetas.**
+Du kan inte ansluta till GIT Enterprise på grund av behörighets problem. Du kan se felet som **422-en entitet som inte kan bearbetas.**
 
 #### <a name="cause"></a>Orsak
 
-* Du använder git Enterprise på lokal-servern. 
 * Du har inte konfigurerat OAuth för ADF. 
 * URL: en är felkonfigurerad.
 
@@ -194,7 +188,7 @@ Du kan inte ansluta till GIT Enterprise-molnet på grund av behörighets problem
 
 Du beviljar OAuth-åtkomst till ADF först. Sedan måste du använda rätt URL för att ansluta till GIT Enterprise. Konfigurationen måste anges till kundens organisation (er). ADF kommer till exempel att försöka *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* vid första och misslyckad. Sedan kommer det att försöka *https://hostname/api/v3/orgs/ <org> / <repo> ...* och lyckas. 
  
-### <a name="recover-from-a-deleted-data-factory"></a>Återställa från en borttagen data fabrik
+### <a name="cannot-recover-from-a-deleted-data-factory"></a>Det går inte att återställa från en borttagen data fabrik
 
 #### <a name="issue"></a>Problem
 Kunden tog bort data fabriken eller resurs gruppen som innehåller Data Factory. Han vill veta hur du återställer en borttagen data fabrik.

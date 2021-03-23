@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 1f9169d4f3f6361e557c41a4d612cf6c439257fb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722522"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802887"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurera en anslutning från en Azure Kognitiv sökning-indexerare till SQL Server på en virtuell Azure-dator
 
@@ -87,9 +87,12 @@ Du kan ta reda på IP-adressintervallet för `AzureCognitiveSearch` [service tag
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Ta med IP-adresser för Azure Kognitiv sökning-portalen
 
-Om du använder Azure Portal för att skapa en indexerare, behöver Azure Kognitiv sökning Portal logik också åtkomst till din SQL Azure virtuella dator när den skapas. Azure Kognitiv sökning Portal IP-adresser kan hittas via Pinging `stamp2.search.ext.azure.com` , som är domänen i Traffic Manager.
+Om du använder Azure Portal för att skapa en indexerare måste du bevilja portalen inkommande åtkomst till din SQL Azure virtuella dator. En regel för inkommande trafik i brand väggen kräver att du anger portalens IP-adress.
 
-Kluster i olika regioner ansluter till den här Traffic Manager. Ping kan returnera IP-adressen och domänen för `stamp2.search.ext.azure.com` , men om tjänsten finns i en annan region är IP-och domän namnet annorlunda. Den IP-adress som returnerades från ping är rätt en för Azure Portal i din region.
+För att hämta IP-adressen till portalen, Ping `stamp2.ext.search.windows.net` , som är domänen för Traffic Manager. Tids gränsen för begäran visas, men IP-adressen visas i status meddelandet. Exempel: i meddelandet "Pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" är IP-adressen "52.252.175.48".
+
+> [!NOTE]
+> Kluster i olika regioner ansluter till olika trafik hanterare. Oavsett domän namn, är IP-adressen som returnerades från ping den rätt som ska användas för att definiera en brand Väggs regel för inkommande trafik för Azure Portal i din region.
 
 ## <a name="next-steps"></a>Nästa steg
 

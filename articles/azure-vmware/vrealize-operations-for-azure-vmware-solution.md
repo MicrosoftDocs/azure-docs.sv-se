@@ -3,12 +3,12 @@ title: Konfigurera vRealize-åtgärder för Azure VMware-lösning
 description: Lär dig hur du konfigurerar vRealize-åtgärder för ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738437"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802496"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Konfigurera vRealize-åtgärder för Azure VMware-lösning
 
@@ -61,7 +61,7 @@ När instansen har distribuerats kan du konfigurera vRealize-åtgärder för att
 
 ## <a name="known-limitations"></a>Kända begränsningar
 
-- **Cloudadmin \@ vSphere. local** User i Azure VMware-lösningen har [begränsade privilegier](concepts-role-based-access-control.md).  Virtual Machines (VM) i Azure VMware-lösningen har inte stöd för insamling av gäst minne med VMware-verktyg.  Aktiv och förbrukad minnes användning fortsätter att fungera i det här fallet.
+- **Cloudadmin \@ vSphere. local** User i Azure VMware-lösningen har [begränsade privilegier](concepts-identity.md).  Virtual Machines (VM) i Azure VMware-lösningen har inte stöd för insamling av gäst minne med VMware-verktyg.  Aktiv och förbrukad minnes användning fortsätter att fungera i det här fallet.
 - Arbets belastnings optimering för värdbaserade affärs syften fungerar inte eftersom Azure VMware-lösningar hanterar klusterkonfigurationer, inklusive DRS-inställningar.
 - Arbets belastnings optimering för kors kluster placering i SDDC med hjälp av kluster-baserad affärs avsikt stöds fullt ut med vRealize Operations Manager 8,0 och senare. Men arbets belastnings optimering känner inte till resurspooler och placerar de virtuella datorerna på kluster nivå. En användare kan korrigera den manuellt i Azure VMware-lösningen vCenter Server gränssnittet.
 - Det går inte att logga in på vRealize Operations Manager att använda din Azure VMware-lösning vCenter Server autentiseringsuppgifter. 
