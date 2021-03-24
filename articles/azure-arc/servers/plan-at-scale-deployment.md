@@ -3,12 +3,12 @@ title: Planera och Distribuera Azure Arc-aktiverade servrar
 description: Lär dig hur du aktiverar ett stort antal datorer till Azure Arc-aktiverade servrar för att förenkla konfigurationen av viktiga säkerhets-, hanterings-och övervaknings funktioner i Azure.
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591188"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023290"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Planera och distribuera Arc-aktiverade servrar
 
@@ -57,7 +57,7 @@ I den här fasen aktiverar system tekniker eller administratörer de grundlägga
 |Uppgift |Detalj |Varaktighet |
 |-----|-------|---------|
 | [Skapa en resurs grupp](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | En dedikerad resurs grupp som endast ska innehålla Arc-aktiverade servrar och centralisera hanteringen och övervakning av dessa resurser. | En timme |
-| Använd [taggar](../../azure-resource-manager/management/tag-resources.md) för att organisera datorer. | Utvärdera och utveckla en anpassad [taggnings strategi](/cloud-adoption-framework/decision-guides/resource-tagging/) som kan hjälpa till att minska komplexiteten med att hantera dina Arc-aktiverade servrar och förenkla fatta beslut om hantering. | En dag |
+| Använd [taggar](../../azure-resource-manager/management/tag-resources.md) för att organisera datorer. | Utvärdera och utveckla en anpassad [taggnings strategi](/azure/cloud-adoption-framework/decision-guides/resource-tagging/) som kan hjälpa till att minska komplexiteten med att hantera dina Arc-aktiverade servrar och förenkla fatta beslut om hantering. | En dag |
 | Utforma och distribuera [Azure Monitor loggar](../../azure-monitor/logs/data-platform-logs.md) | Utvärdera [design-och distributions överväganden](../../azure-monitor/logs/design-logs-deployment.md) för att avgöra om din organisation ska använda en befintlig eller implementera en annan Log Analytics arbets yta för att lagra insamlade loggdata från hybrid servrar och datorer. <sup>1</sup> | En dag |
 | [Utveckla en Azure policy](../../governance/policy/overview.md) styrnings plan | Bestäm hur du ska implementera styrning av hybrid servrar och datorer i prenumerations-eller resurs grupps omfånget med Azure Policy. | En dag |
 | Konfigurera [rollbaserad åtkomst kontroll](../../role-based-access-control/overview.md) (RBAC) | Utveckla en åtkomst plan för att kontrol lera vem som har åtkomst till hantering av Arc-aktiverade servrar och möjlighet att visa data från andra Azure-tjänster och-lösningar. | En dag |
@@ -71,7 +71,7 @@ Därefter lägger vi till den grund som anges i fas 1 genom att förbereda för 
 
 |Uppgift |Detalj |Varaktighet |
 |-----|-------|---------|
-| Hämta det fördefinierade installations skriptet | Granska och anpassa det fördefinierade installations skriptet för distribution av den anslutna dator agenten för att stödja de automatiserade distributions kraven.<br><br> Exempel på skalning av onboarding-resurser:<br><br> <ul><li> [Grundläggande distributions skript för skala](onboard-service-principal.md)</ul></li> <ul><li>[Vid storskalig onboarding VMware vSphere virtuella Windows Server-datorer](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Vid storskalig onboarding VMware vSphere virtuella Linux-datorer](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Vid skalnings registrering AWS EC2-instanser med Ansible](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Vid skalnings distribution med PowerShell-fjärrkommunikation](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (endast Windows)</ul></li>| En eller flera dagar beroende på kraven, organisatoriska processer (till exempel hantering av ändringar och utgåvor) och vilken Automation-metod som används. |
+| Hämta det fördefinierade installations skriptet | Granska och anpassa det fördefinierade installations skriptet för distribution av den anslutna dator agenten för att stödja de automatiserade distributions kraven.<br><br> Exempel på för inskalning av onboarding-resurser:<br><br> <ul><li> [Skript för grundläggande distribution i skala](onboard-service-principal.md)</ul></li> <ul><li>[Onboarding-VMware vSphere virtuella Windows Server-datorer](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Onboarding-VMware vSphere virtuella Linux-datorer](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Vid skalning av onboarding AWS EC2-instanser med Ansible](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Vid skalnings distribution med PowerShell-fjärrkommunikation](./onboard-powershell.md) (endast Windows)</ul></li>| En eller flera dagar beroende på kraven, organisatoriska processer (till exempel hantering av ändringar och utgåvor) och vilken Automation-metod som används. |
 | [Skapa tjänstens huvudnamn](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Skapa ett huvud namn för tjänsten för att ansluta datorer icke-interaktivt med hjälp av Azure PowerShell eller från portalen.| En timme |
 | Distribuera den anslutna dator agenten till mål servrarna och datorerna |Använd Automation-verktyget för att distribuera skripten till dina servrar och ansluta dem till Azure.| En eller flera dagar beroende på din versions plan och efter en stegvis distribution. |
 

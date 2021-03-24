@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Arc-aktiverade servrar för att han
 keywords: Azure Automation, DSC, PowerShell, önskad tillstånds konfiguration, uppdaterings hantering, ändrings spårning, inventering, Runbooks, python, grafisk, hybrid
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175982"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023341"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Vad är Azure Arc-aktiverade servrar?
 
@@ -23,7 +23,7 @@ När du ansluter datorn till Azure Arc-aktiverade servrar kan du utföra följan
 
 - Tilldela [Azure policy gäst konfigurationer](../../governance/policy/concepts/guest-configuration.md) med samma erfarenhet som princip tilldelning för virtuella Azure-datorer. I dag tillämpar de flesta principer för gäst konfiguration inte konfigurationerna, de har bara gransknings inställningar i datorn. Mer information om kostnaden för att använda Azure Policy principer för gäst konfiguration med ARC-aktiverade servrar finns i Azure Policy [prissättnings guide](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-- Rapport om konfigurations ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar med hjälp av Azure Automation [ändringsspårning och inventering](../../automation/change-tracking/overview.md) och [Azure Security Center fil integritets övervakning](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)för servrar som är aktiverade med [Azure Defender för servrar](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction).
+- Rapport om konfigurations ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar med hjälp av Azure Automation [ändringsspårning och inventering](../../automation/change-tracking/overview.md) och [Azure Security Center fil integritets övervakning](../../security-center/security-center-file-integrity-monitoring.md)för servrar som är aktiverade med [Azure Defender för servrar](../../security-center/defender-for-servers-introduction.md).
 
 - Övervaka din anslutna dators prestanda för gäst operativ system och identifiera program komponenter för att övervaka deras processer och beroenden med andra resurser som programmet kommunicerar med hjälp av [Azure Monitor for VMS](../../azure-monitor/vm/vminsights-overview.md).
 

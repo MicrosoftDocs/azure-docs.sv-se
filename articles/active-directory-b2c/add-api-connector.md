@@ -5,17 +5,17 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d1b52ed0f862b544d4b90d466ddc1d2a231ca44
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008441"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023426"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Lägga till en API-anslutning till ett användar flöde för registrering (för hands version)
 
@@ -51,14 +51,22 @@ Grundläggande HTTP-autentisering definieras i [RFC 2617](https://tools.ietf.org
 > [!IMPORTANT]
 > Den här funktionen är en för hands version och tillhandahålls utan ett service nivå avtal. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Autentisering av klient certifikat är en ömsesidigt certifikatbaserad autentisering, där klienten tillhandahåller ett klient certifikat för servern för att bevisa sin identitet. I det här fallet kommer Azure AD B2C att använda det certifikat som du överför som en del av API-kopplingens konfiguration. Detta inträffar som en del av SSL-handskakningen. Endast tjänster som har rätt certifikat kan komma åt din REST API-tjänst. Klient certifikatet är ett digitalt X. 509-certifikat. I produktions miljöer bör den signeras av en certifikat utfärdare. 
+Autentisering av klient certifikat är en metod för ömsesidigt certifikatbaserad autentisering där klienten tillhandahåller ett klient certifikat till servern för att bevisa sin identitet. I det här fallet kommer Azure AD B2C att använda det certifikat som du överför som en del av API-kopplingens konfiguration. Detta inträffar som en del av SSL-handskakningen. Din API-tjänst kan sedan begränsa åtkomsten till endast tjänster som har rätt certifikat. Klient certifikatet är ett PKCS12 (PFX) X. 509-digitalt certifikat. I produktions miljöer bör den signeras av en certifikat utfärdare. 
 
+Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../key-vault/certificates/create-certificate.md), som innehåller alternativ för självsignerade certifikat och integreringar med certifikat utfärdare för signerade certifikat. De rekommenderade inställningarna är:
+- **Ämne**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Innehålls typ**: `PKCS #12`
+- **Livs längd Acton typ**: `Email all contacts at a given percentage lifetime` eller `Email all contacts a given number of days before expiry`
+- **Privat nyckel för exportable**: `Yes` (för att kunna exportera PFX-fil)
 
-Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../key-vault/certificates/create-certificate.md), som innehåller alternativ för självsignerade certifikat och integreringar med certifikat utfärdare för signerade certifikat. Sedan kan du [Exportera certifikatet](../key-vault/certificates/how-to-export-certificate.md) och ladda upp det för användning i API Connectors-konfigurationen. Observera att lösen ord krävs endast för certifikatfiler som skyddas av ett lösen ord. Du kan också använda PowerShell [: s New-SelfSignedCertificate-cmdlet](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) för att skapa ett självsignerat certifikat.
+Sedan kan du [Exportera certifikatet](../key-vault/certificates/how-to-export-certificate.md). Du kan också använda PowerShell [: s New-SelfSignedCertificate-cmdlet](../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) för att skapa ett självsignerat certifikat.
 
-Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autentisering](../app-service/app-service-web-configure-tls-mutual-auth.md) för att lära dig hur du aktiverar och validerar certifikatet från API-slutpunkten.
+När du har ett certifikat kan du ladda upp det som en del av konfigurationen av API-anslutningen. Observera att lösen ord krävs endast för certifikatfiler som skyddas av ett lösen ord.
 
-Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Om du vill överföra ett nytt certifikat till en befintlig API-anslutning väljer du API-anslutaren under **API-kopplingar (för hands version)** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som har passerat start datumet används automatiskt av Azure AD B2C.
+Ditt API måste implementera auktoriseringen baserat på skickade klient certifikat för att skydda API-slutpunkterna. Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autentisering](../app-service/app-service-web-configure-tls-mutual-auth.md) för att lära dig hur du aktiverar och *validerar certifikatet från API-koden*.  Du kan också använda Azure API Management för att [kontrol lera egenskaper för klient certifikat](
+../api-management/api-management-howto-mutual-certificates-for-clients.md)  mot önskade värden med hjälp av princip uttryck.
+
+Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Du måste generera ett nytt certifikat och upprepa stegen ovan. Din API-tjänst kan tillfälligt fortsätta att godkänna gamla och nya certifikat medan det nya certifikatet distribueras. Om du vill överföra ett nytt certifikat till en befintlig API-koppling väljer du API-anslutningen under **API-kopplingar** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som är tidigare kommer start datumet att användas automatiskt av Azure Active Directory.
 
 ### <a name="api-key"></a>API-nyckel
 Vissa tjänster använder en API-nyckel för att obfuscate åtkomst till dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
@@ -302,7 +310,7 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | Sträng  | Ja      | Versionen av ditt API.                                                    |
 | åtgärd      | Sträng  | Ja      | Värdet måste vara `ValidationError` .                                           |
-| status      | Integer | Ja      | Måste vara `400` ett värde för ett ValidationError-svar.                        |
+| status      | Heltal/sträng | Ja      | Måste vara Value `400` eller `"400"` för ett ValidationError-svar.  |
 | userMessage | Sträng  | Ja      | Meddelande som ska visas för användaren.                                            |
 
 > [!NOTE]

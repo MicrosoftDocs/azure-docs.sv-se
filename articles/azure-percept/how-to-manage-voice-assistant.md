@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099020"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022899"
 ---
 # <a name="managing-your-voice-assistant"></a>Hantera din röst assistent
 
@@ -60,7 +60,7 @@ Ett nyckelord är ett ord eller en kort fras som används för att aktivera en r
 
 Med [tal Studio](https://speech.microsoft.com/)kan du skapa ett anpassat nyckelord för din röst assistent. Det tar upp till 30 minuter att träna en grundläggande anpassad nyckelords modell.
 
-I [tal Studio-dokumentationen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) får du vägledning om hur du skapar ett anpassat nyckelord. När det har kon figurer ATS kommer det nya nyckelordet att vara tillgängligt i Project Santa Cruz-portalen för användning med ditt röst assistent program.
+I [tal Studio-dokumentationen](../cognitive-services/speech-service/custom-keyword-basics.md) får du vägledning om hur du skapar ett anpassat nyckelord. När det har kon figurer ATS kommer det nya nyckelordet att vara tillgängligt i Project Santa Cruz-portalen för användning med ditt röst assistent program.
 
 ## <a name="commands-configuration"></a>Konfiguration av kommandon
 
@@ -88,7 +88,7 @@ Anpassade kommandon gör det enkelt att skapa många röst kommando program som 
 
 Med [tal Studio](https://speech.microsoft.com/)kan du skapa anpassade kommandon för röst assistenten som ska köras.
 
-I [dokumentationen för tal Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application) får du vägledning om hur du skapar anpassade kommandon. När de har kon figurer ATS är dina nya kommandon tillgängliga i Azure percept Studio för användning med ditt röst assistent program.
+I [dokumentationen för tal Studio](../cognitive-services/speech-service/quickstart-custom-commands-application.md) får du vägledning om hur du skapar anpassade kommandon. När de har kon figurer ATS är dina nya kommandon tillgängliga i Azure percept Studio för användning med ditt röst assistent program.
 
 ## <a name="next-steps"></a>Nästa steg
 

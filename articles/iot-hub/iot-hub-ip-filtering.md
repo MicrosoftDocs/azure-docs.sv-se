@@ -5,14 +5,14 @@ author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/22/2021
 ms.author: jlian
-ms.openlocfilehash: 2a76cede4bc72da9f30564f98ab9bb84028680f7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf9d58926c5a0fdc7c305e1d9daebfa1c8c9cf63
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581498"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023613"
 ---
 # <a name="use-ip-filters"></a>Använda IP-filter
 
@@ -32,11 +32,11 @@ Som standard är **IP-filter** rutnätet i portalen för en IoT Hub tomt. Denna 
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Lägga till eller redigera en IP-filterregel
 
-Du lägger till en IP-filterregel genom att välja **+ Lägg till IP-filterregel**.
+Du lägger till en IP-filterregel genom att välja **+ Lägg till IP-filterregel**. Om du snabbt vill lägga till datorns IP-adress klickar du på **Lägg till din klient-IP-adress**. 
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Lägga till en IP-filterlista till en IoT-hubb":::
 
-Fyll i fälten när du har valt **Lägg till IP-filterregel**.
+Fyll i fälten när du har valt **Lägg till IP-filterregel**. Dessa fält fylls i i förväg om du har valt att lägga till din klient-IP-adress.
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="När du har valt Lägg till IP-filterregel":::
 
@@ -85,6 +85,10 @@ Alla anslutnings försök från en IP-adress som inte uttryckligen tillåts får
 IP-filter regler är *tillåtna* regler och tillämpas utan sortering. Endast IP-adresser som du lägger till får ansluta till IoT Hub. 
 
 Om du till exempel vill acceptera adresser i intervallet `192.168.100.0/22` och förkasta allt annat behöver du bara lägga till en regel i rutnätet med adress intervall `192.168.100.0/22` .
+
+### <a name="azure-portal"></a>Azure Portal 
+
+IP filter regler tillämpas också när du använder IoT Hub via Azure Portal. Detta beror på att API-anrop till tjänsten IoT Hub görs direkt med din webbläsare med dina autentiseringsuppgifter, vilket är konsekvent med andra Azure-tjänster. Om du vill komma åt IoT Hub att använda Azure Portal när IP-filtret är aktiverat lägger du till datorns IP-adress i tillåten. 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Hämta och uppdatera IP-filter med Azure CLI
 
