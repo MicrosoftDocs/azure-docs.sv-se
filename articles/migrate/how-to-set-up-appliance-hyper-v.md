@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 85ab07e0b81bf258a56956f5f0f7e80bad6a32fe
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775229"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863691"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Konfigurera en installation för servrar på Hyper-V
 
-Följ den här artikeln för att konfigurera Azure Migrate-installationen för identifiering och utvärdering av servrar på Hyper-V med verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool) .
+Följ den här artikeln för att konfigurera Azure Migrate-installationen för identifiering och utvärdering av servrar på Hyper-V med verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) .
 
 [Azure Migrate](migrate-appliance.md) -installationen är en förenklad utrustning som används av Azure Migrate: identifiering och bedömning/migrering för att identifiera lokala servrar på Hyper-V och skicka Server-metadata/prestanda data till Azure.
 
@@ -24,31 +24,31 @@ Du kan distribuera installationen på ett par olika sätt:
 - Konfigurera på en server i Hyper-V med en nedladdad virtuell hård disk. Den här metoden beskrivs i den här artikeln.
 - Konfigurera på en server på Hyper-V eller fysisk server med ett PowerShell-skript för installations programmet. [Den här metoden](deploy-appliance-script.md) ska användas om du inte kan konfigurera en server med en virtuell hård disk eller om du befinner dig i Azure Government.
 
-När du har skapat installationen kontrollerar du att den kan ansluta till Azure Migrate: identifiering och bedömning, konfigurera den för första gången och registrera den med Azure Migrate projektet.
+När du har skapat installationen kontrollerar du att den kan ansluta till Azure Migrate: identifiering och bedömning, konfigurera den för första gången och registrera den med projektet.
 
 ## <a name="appliance-deployment-vhd"></a>Installation av utrustning (VHD)
 
 Så här konfigurerar du installationen med en VHD-mall:
 
-- Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+- Ange ett namn på apparaten och generera en projekt nyckel i portalen.
 - Ladda ned en komprimerad virtuell Hyper-V-hårddisk från Azure Portal.
 - Skapa enheten och kontrol lera att den kan ansluta till Azure Migrate: identifiering och bedömning.
-- Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
+- Konfigurera enheten för första gången och registrera den med projektet med hjälp av projekt nyckeln.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Generera Azure Migrate projekt nyckel
+### <a name="generate-the-project-key"></a>Generera projekt nyckeln
 
 1. I **mål för migrering**  >  **fönster, Linux-och SQL-servrar**  >  **Azure Migrate: identifiering och bedömning**, Välj **identifiera**.
 2. I **Discover-servrar**  >  **är servrarna virtualiserade?** väljer du **Ja, med Hyper-V**.
 3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar på Hyper-V. namnet ska vara alfanumeriskt med 14 tecken eller färre.
 1. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera servrar när du skapar resurser.
-1. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
+1. När Azure-resurserna har skapats skapas en **projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
 ### <a name="download-the-vhd"></a>Ladda ned den virtuella hård disken
 
 I **2: Ladda ned Azure Migrate-enheten** väljer du. VHD-fil och klicka på **Hämta**.
 
-   ![Val för identifiering av datorer](./media/tutorial-assess-hyper-v/servers-discover.png)
+   ![Val för identifiering av servrar](./media/tutorial-assess-hyper-v/servers-discover.png)
 
 
    ![Val för generera nyckel](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1ae35d1ac35dacfab2690980d57973dce050382b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 438ef806f6c59c6f23877a3d3110f22f08ca8713
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93242865"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863572"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Private Link för Azure Database for MySQL
 
@@ -84,7 +84,7 @@ När nätverks administratören skapar den privata slut punkten (PE) kan MySQL-a
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>Använd fall av privat länk för Azure Database for MySQL
 
-Klienter kan ansluta till den privata slut punkten från samma VNet, peer-kopplat VNet i samma region eller via VNet-till-VNet-anslutning mellan regioner. Dessutom kan klienter ansluta lokalt med ExpressRoute, privat peering eller VPN-tunnlar. Nedan visas ett förenklat diagram som visar vanliga användnings fall.
+Klienter kan ansluta till den privata slut punkten från samma VNet, [peer](../virtual-network/virtual-network-peering-overview.md) -kopplat VNet i samma region eller mellan regioner, eller via [VNet-till-VNET-anslutning](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) mellan regioner. Dessutom kan klienter ansluta lokalt med ExpressRoute, privat peering eller VPN-tunnlar. Nedan visas ett förenklat diagram som visar vanliga användnings fall.
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Välj översikt över privat slut punkt":::
 

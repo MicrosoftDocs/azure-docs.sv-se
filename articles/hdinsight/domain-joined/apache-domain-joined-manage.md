@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar Azure HDInsight-kluster med Enterprise Sec
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/04/2019
-ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc31c3d71590a6b8c0b324ffcb8c10129a9f8699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742219"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863249"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Hantera HDInsight-kluster med Enterprise Security Package
 
@@ -116,7 +116,7 @@ HDInsight Enterprise Security Package har följande roller:
 2. Välj **roller** på den vänstra menyn.
 3. Välj det blå frågetecknet för att se behörigheterna:
 
-    ![Behörigheter för ESP HDInsight-roller](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png" alt-text="Behörigheter för ESP HDInsight-roller" border="true":::
 
 ## <a name="open-the-ambari-management-ui"></a>Öppna hanterings gränssnittet för Ambari
 
@@ -124,25 +124,25 @@ HDInsight Enterprise Security Package har följande roller:
 1. Logga in på Ambari med hjälp av kluster administratörens domän användar namn och lösen ord.
 1. Välj List Rute menyn **administratör** i det övre högra hörnet och välj sedan **Hantera Ambari**.
 
-    ![ESP HDInsight hantera Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png" alt-text="ESP HDInsight hantera Apache Ambari" border="true":::
 
     Användar gränssnittet ser ut så här:
 
-    ![ESP HDInsight Apache Ambari management UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png" alt-text="ESP HDInsight Apache Ambari management UI" border="true":::
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Lista de domän användare som synkroniseras från din Active Directory
 
 1. Öppna hanterings gränssnittet för Ambari.  Se [Öppna hanterings gränssnittet för Ambari](#open-the-ambari-management-ui).
 2. Välj **användare** på menyn till vänster. Du ska se alla användare som har synkroniserats från Active Directory till HDInsight-klustret.
 
-    ![ESP HDInsight Ambari management UI List users](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png" alt-text="ESP HDInsight Ambari management UI List users" border="true":::
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Lista de domän grupper som synkroniserats från din Active Directory
 
 1. Öppna hanterings gränssnittet för Ambari.  Se [Öppna hanterings gränssnittet för Ambari](#open-the-ambari-management-ui).
 2. Välj **grupper** på den vänstra menyn. Du ser alla grupper som synkroniserats från Active Directory till HDInsight-klustret.
 
-    ![ESP HDInsight-Ambari hanterings gränssnitt List grupper](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png" alt-text="ESP HDInsight-Ambari hanterings gränssnitt List grupper" border="true":::
 
 ## <a name="configure-hive-views-permissions"></a>Konfigurera Hive-vyer behörigheter
 
@@ -150,12 +150,12 @@ HDInsight Enterprise Security Package har följande roller:
 2. Välj **vyer** på den vänstra menyn.
 3. Välj **HIVE** för att visa information.
 
-    ![ESP HDInsight Ambari management UI Hive views](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png" alt-text="ESP HDInsight Ambari management UI Hive views" border="true":::
 
 4. Välj länken **Hive-vy** om du vill konfigurera Hive-vyer.
 5. Rulla ned till avsnittet **behörigheter** .
 
-    ![ESP HDInsight Ambari management UI Hive views Configure Permissions](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png" alt-text="ESP HDInsight Ambari management UI Hive views Configure Permissions" border="true":::
 
 6. Välj **Lägg till användare** eller **Lägg till grupp** och ange sedan de användare eller grupper som kan använda Hive-vyer.
 

@@ -2,13 +2,13 @@
 title: Bicep-språk för Azure Resource Manager mallar
 description: Beskriver bicep-språket för att distribuera infrastruktur till Azure via Azure Resource Manager mallar.
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 6f706081d04c5337bb3def8088fe97b08c814ea2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 0edd0063ea08978b89c3ad3067f41ae743451df7
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594231"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889696"
 ---
 # <a name="what-is-bicep-preview"></a>Vad är bicep (för hands version)?
 
@@ -17,8 +17,6 @@ Bicep är ett språk för deklarativ distribution av Azure-resurser. Du kan anv�
 JSON-syntaxen för att skapa mallen kan vara utförlig och kräva ett komplicerat uttryck. Bicep förbättrar upplevelsen utan att förlora någon av funktionerna i en JSON-mall. Det är en transparent abstraktion över JSON för ARM-mallar. Varje bicep-fil kompileras till en standard ARM-mall. Resurs typer, API-versioner och egenskaper som är giltiga i en ARM-mall är giltiga i en bicep-fil. Det finns några [kända begränsningar](#known-limitations) i den aktuella versionen.
 
 Mer information om bicep finns i följande video.
-
-> [!VIDEO https://mediusprodstatic.studios.ms/asset-cccfdaf2-cdbe-49dd-9c58-91a4fe5ff0fd/OD340_1920x1080_AACAudio_5429.mp4?sv=2018-03-28&sr=b&sig=N3DuBaTrK3nt5TGwIagTbCqjVrzgwiJ9at80MXQJFwg%3D&st=2021-03-02T01%3A22%3A57Z&se=2026-03-02T01%3A27%3A57Z&sp=r&rscd=filename%3DIGFY21Q3-OD340-Learn%2Beverything%2Babout%2Bthe%2Bnext%2Bgeneration%2Bof%2BARM.mp4]
 
 ## <a name="get-started"></a>Kom igång
 

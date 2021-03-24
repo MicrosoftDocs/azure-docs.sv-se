@@ -4,15 +4,15 @@ description: Få åtkomst till en sammanfattning av Marketplace Web Analytics i 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553943"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953280"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-instrumentpanelen i Commersial Marketplace-analys
 
@@ -115,7 +115,9 @@ Den här tabellen innehåller en listvy över sid besöken och anrop till åtgä
 | Kontakta mig | Kontakta mig | Antalet klick till CENTRUMet "kontakta mig" på erbjudandets sida för ett visst datum. | ContactMe |
 | Test Drive | Test Drive | Antalet klick till CENTRUMet "Test Drive" på erbjudandets sida för ett visst datum. | TestDrive |
 | Kostnadsfri utvärdering | Kostnadsfri utvärdering | Antalet klick till CENTRUMet "kostnads fri utvärdering" på erbjudandets sida för ett visst datum. | Fri utvärdering |
-|||||
+| Kampanj | Kampanjens namn | Möjlighet att förstå webbtelemetri (besöks-och centrum-klickningar) mot kampanj namnet. | Kampanj |
+| saknas | Webbplats | Namnet på butik som sidan besök eller CENTRUMbaserade klickningar på skedde ifrån. Möjliga värden är:<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | Webbplats |
+|
 
 ## <a name="next-steps"></a>Nästa steg
 

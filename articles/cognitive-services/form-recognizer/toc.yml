@@ -7,40 +7,20 @@
       href: overview.md
     - name: Nyheter
       href: whats-new.md
-- name: Komma igång med Formigenkänning
-  expanded: true
+- name: Snabbstarter
   items:
-    - name: Använda klientbiblioteket eller REST-API
+    - name: Kom igång med klient bibliotek eller REST API
       href: quickstarts/client-library.md
-    - name: Använda exempeletikettverktyget
+    - name: Använd verktyget för exempel etiketter
       href: quickstarts/label-tool.md
-- name: Självstudier
+- name: Exempel
   items:
-    - name: Använda formigenkänning med Cognitive Search
-      href: ../../search/cognitive-search-custom-skill-form.md
-    - name: Använda Formigenkänning med AI Builder
-      href: tutorial-ai-builder.md
-    - name: Använda formulär igenkänning med Azure Functions
-      href: tutorial-azure-function.md
-    - name: Massextrahera formulärdata
-      href: tutorial-bulk-processing.md
-- name: Begrepp
-  items:
-    - name: Layout-API
-      expanded: true
-      items:
-        - name: Extrahera formulär data
-          href: concept-layout.md
-    - name: Anpassade modeller
-      href: concept-custom.md
-    - name: Kvitton
-      href: concept-receipts.md
-    - name: Visitkort
-      href: concept-business-cards.md
-    - name: Fakturor
-      href: concept-invoices.md
-    - name: Identifierings kort
-      href: concept-identification-cards.md
+    - name: 'C#/.NET-distribution.: formulär tolkens klient bibliotek SDK'
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: 'Java: formulär tolkens klient bibliotek SDK'
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: 'Python: formulär igenkännings klient bibliotek SDK'
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
 - name: Anvisningar
   items:
     - name: Skapa en träningsdatauppsättning
@@ -64,6 +44,33 @@
           href: ../containers/index.yml
     - name: Säkerhetskopiera och återställa modeller
       href: disaster-recovery.md
+- name: Begrepp
+  items:
+    - name: Layout-API
+      expanded: true
+      items:
+        - name: Extrahera formulär data
+          href: concept-layout.md
+    - name: Anpassade modeller
+      href: concept-custom.md
+    - name: Kvitton
+      href: concept-receipts.md
+    - name: Visitkort
+      href: concept-business-cards.md
+    - name: Fakturor
+      href: concept-invoices.md
+    - name: Identifierings kort
+      href: concept-identification-cards.md
+- name: Självstudier
+  items:
+    - name: Massextrahera formulärdata
+      href: tutorial-bulk-processing.md
+    - name: Använda formigenkänning med Cognitive Search
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: Använda Formigenkänning med AI Builder
+      href: tutorial-ai-builder.md
+    - name: Använda formulär igenkänning med Azure Functions
+      href: tutorial-azure-function.md
 - name: Referens
   items:
     - name: För hands version av formulär igenkännings-API v 2.1.3

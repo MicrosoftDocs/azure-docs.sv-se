@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87a4d3960937450713747fa16bd473b4c34eff0e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944872"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867873"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Använd Apache Ambari Hive-vyn med Apache Hadoop i HDInsight
 
@@ -30,11 +30,11 @@ Ett Hadoop-kluster i HDInsight. Se [Kom igång med HDInsight på Linux](./apache
 
 1. I listan med vyer väljer du __Hive-vy__.
 
-    ![Apache Ambari Välj Apache Hive vy](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png" alt-text="Apache Ambari Välj Apache Hive vy" border="true":::
 
     Sidan Hive-vy liknar följande bild:
 
-    ![Bild av fråge kalkyl bladet för Hive-vyn](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png" alt-text="Bild av fråge kalkyl bladet för Hive-vyn" border="true":::
 
 1. Från fliken __fråga__ klistrar du in följande HiveQL-instruktioner i kalkyl bladet:
 
@@ -99,19 +99,19 @@ Om du vill visa Tez-gränssnittet för frågan väljer du fliken **Tez-gränssni
 
 På fliken __jobb__ visas en historik över Hive-frågor.
 
-![Apache Hive historik på fliken jobb](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png" alt-text="Apache Hive historik på fliken jobb" border="true":::
 
 ## <a name="database-tables"></a>Databas tabeller
 
 Du kan använda fliken __tabeller__ för att arbeta med tabeller i en Hive-databas.
 
-![Bild av fliken Apache Hive tabeller](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png" alt-text="Bild av fliken Apache Hive tabeller" border="true":::
 
 ## <a name="saved-queries"></a>Sparade frågor
 
 På fliken **fråga** kan du välja att spara frågor. När du har sparat en fråga kan du återanvända den från fliken __sparade frågor__ .
 
-![Fliken sparade frågor i Apache Hive vyer](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png" alt-text="Fliken sparade frågor i Apache Hive vyer" border="true":::
 
 > [!TIP]  
 > Sparade frågor lagras i standard kluster lagringen. Du kan hitta de sparade frågorna under sökvägen `/user/<username>/hive/scripts` . Dessa lagras som oformaterade text `.hql` filer.
@@ -124,7 +124,7 @@ Du kan utöka Hive genom användardefinierade funktioner (UDF). Använd en UDF f
 
 Deklarera och spara en uppsättning UDF: er med hjälp av **UDF** -fliken överst i Hive-vyn. Dessa UDF: er kan användas med **Frågeredigeraren**.
 
-![Apache Hive visning av fliken UDF: er](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png" alt-text="Apache Hive visning av fliken UDF: er" border="true":::
 
 Knappen **Infoga UDF: er** visas längst ned i **Frågeredigeraren**. Den här posten visar en listruta för de UDF: er som definierats i Hive-vyn. Om du väljer en UDF läggs HiveQL-instruktioner till i din fråga för att aktivera UDF.
 

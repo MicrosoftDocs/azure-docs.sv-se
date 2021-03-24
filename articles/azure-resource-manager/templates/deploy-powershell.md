@@ -3,12 +3,12 @@ title: Distribuera resurser med PowerShell och mall
 description: Använd Azure Resource Manager och Azure PowerShell för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall eller en bicep-fil.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e1d2197064b94d428855bbb36aadbb5eb88d4032
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521636"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950866"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Distribuera resurser med ARM-mallar och Azure PowerShell
 
@@ -115,7 +115,7 @@ Det kan ta flera minuter att slutföra distributionen.
 ## <a name="deploy-remote-template"></a>Distribuera fjärran sluten mall
 
 > [!NOTE]
-> För närvarande stöder Azure PowerShell inte distribution av fjärranslutna bicep-filer. Om du vill distribuera en bicep-fil använder du CLI-bicep för att kompilera bicep-filen till en JSON-mall först.
+> För närvarande stöder Azure PowerShell inte distribution av fjärranslutna bicep-filer. Använd [BICEP CLI](./bicep-install.md#development-environment) för att kompilera bicep-filen till en JSON-mall och Läs sedan in JSON-filen till fjärrplatsen.
 
 I stället för att lagra ARM-mallar på den lokala datorn kanske du föredrar att lagra dem på en extern plats. Du kan lagra mallar på en lagringsplats för versionskontroll (till exempel GitHub). Eller så kan du lagra dem i ett Azure Storage-konto för delad åtkomst i din organisation.
 

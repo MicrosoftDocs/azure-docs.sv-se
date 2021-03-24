@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772118"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955456"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Versionshistorik för Azure AD Connect
 Gruppen Azure Active Directory (Azure AD) uppdaterar regelbundet Azure AD Connect med nya funktioner. Alla tillägg gäller inte för alla mål grupper.
@@ -82,6 +82,7 @@ Använd den här länken för att läsa mer om [automatisk uppgradering](how-to-
      - Om den klonade anpassade synkroniseringsregeln inte flödar för några e-post-och Exchange-attribut, lägger den nya Exchange Sync-regeln till dessa attribut.
  - Stöd har lagts till för [Lösenordssynkronisering för selektivt lösen ord](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)
  - Den nya [cmdleten för synkronisering av en enda objekt](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync)har lagts till. Använd denna cmdlet för att felsöka din Azure AD Connect Sync-konfiguration. 
+ -  Azure AD Connect stöder nu rollen som hybrid identitets administratör för att konfigurera tjänsten.
  - Uppdaterade AADConnectHealth-agenten till 3.1.83.0
  - Ny version av [ADSyncTools PowerShell-modulen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools), som har flera nya eller förbättrade cmdletar. 
  

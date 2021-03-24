@@ -3,18 +3,18 @@ title: Utöka Azure IoT Central med anpassad analys | Microsoft Docs
 description: Som en lösnings utvecklare konfigurerar du ett IoT Central program för att göra anpassade analyser och visualiseringar. Den här lösningen använder Azure Databricks.
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 02/18/2020
+ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551325"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953909"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Utöka Azure IoT Central med anpassad analys med Azure Databricks
 
@@ -82,14 +82,14 @@ Använd [Azure Portal för att skapa en Azure Databricks tjänst](https://portal
 
 När du har skapat de resurser som krävs ser **IoTCentralAnalysis** -resurs gruppen ut som följande skärm bild:
 
-![IoT Central analys resurs grupp](media/howto-create-custom-analytics/resource-group.png)
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="bild av IoT Central analys resurs grupp.":::
 
 ## <a name="create-an-event-hub"></a>Skapa en händelsehubb
 
 Du kan konfigurera ett IoT Central program för att kontinuerligt exportera telemetri till en Event Hub. I det här avsnittet skapar du en händelsehubben som tar emot telemetri från ditt IoT Central-program. Händelsehubben ger telemetri till din Stream Analytics jobb för bearbetning.
 
 1. I Azure Portal navigerar du till Event Hubs namn området och väljer **+ Event Hub**.
-1. Namnge Event Hub- **centralexport** och välj **skapa**.
+1. Namnge Event Hub- **centralexport**.
 1. I listan över händelse nav i namn området väljer du **centralexport**. Välj sedan **principer för delad åtkomst**.
 1. Välj **+ Lägg till**. Skapa en princip med namnet **Lyssna** med **lyssnings** anspråket.
 1. När principen är klar markerar du den i listan och kopierar sedan **anslutnings strängen – primär nyckel** värde.
@@ -97,26 +97,42 @@ Du kan konfigurera ett IoT Central program för att kontinuerligt exportera tele
 
 Event Hubs namn området ser ut som på följande skärm bild:
 
-![Event Hubs-namnområde](media/howto-create-custom-analytics/event-hubs-namespace.png)
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="bild av Event Hubs namn område.":::
 
-## <a name="configure-export-in-iot-central"></a>Konfigurera export i IoT Central
+## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>Konfigurera export i IoT Central och skapa ett nytt mål
 
 På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du skapade från contoso-mallen. I det här avsnittet konfigurerar du programmet för att strömma Telemetrin från dess simulerade enheter till händelsehubben. Konfigurera exporten:
 
-1. Gå till sidan **data export** , Välj **+ ny** och sedan **Azure Event Hubs**.
-1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara**:
+1. Gå till sidan **data export** och välj **+ ny export**.
+1. Innan du avslutar det första fönstret väljer du **skapa ett mål**.
+
+Fönstret kommer att se ut som nedan.  
+
+:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="bild av konfiguration av data export mål.":::
+
+3. Ange följande värden:
+
+| Inställning | Värde |
+| ------- | ----- |
+| Målnamn | Ditt mål namn |
+| Måltyp | Azure Event Hubs |
+| Connection String (Anslutningssträng)| Den Event Hub-anslutningssträng du antecknade tidigare. | 
+| Händelsehubb| Ditt Event Hub-namn|
+
+4. Klicka på **skapa** för att avsluta.
+
+5. Använd följande inställningar för att konfigurera exporten:
 
     | Inställning | Värde |
     | ------- | ----- |
-    | Visningsnamn | Exportera till Event Hubs |
+    | Ange ett export namn | eventhubexport |
     | Enabled | På |
-    | Event Hubs-namnområde | Namnet på Event Hubs namn området |
-    | Händelsehubb | centralexport |
-    | Mått | På |
-    | Enheter | Av |
-    | Enhetsmallar | Av |
+    | Data| Välj telemetri | 
+    | Mål| Skapa ett mål, som du ser nedan, för exporten och välj sedan den i list rutan mål meny. |
 
-![Konfiguration av data export](media/howto-create-custom-analytics/cde-configuration.png)
+:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Skärm bild av konfiguration av data export mål.":::
+
+6. När du är färdig väljer du **Spara**.
 
 Vänta tills export status är **igång** innan du fortsätter.
 
@@ -164,7 +180,7 @@ Följande steg visar hur du importerar biblioteket som exempel behov i klustret:
 
 1. Bibliotekets status är nu **installerad**:
 
-    ![Biblioteket är installerat](media/howto-create-custom-analytics/cluster-libraries.png)
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="Skärm bild av installerat bibliotek.":::
 
 ### <a name="import-a-databricks-notebook"></a>Importera en Databricks Notebook
 
@@ -178,9 +194,9 @@ Använd följande steg för att importera en Databricks-anteckningsbok som inneh
 
 1. Välj **arbets ytan** för att visa den importerade antecknings boken:
 
-    ![Importerad Notebook](media/howto-create-custom-analytics/import-notebook.png)
+:::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="Skärm bild av importerad Notebook.":::
 
-1. Redigera koden i den första python-cellen för att lägga till Event Hubs anslutnings strängen som du sparade tidigare:
+5. Redigera koden i den första python-cellen för att lägga till Event Hubs anslutnings strängen som du sparade tidigare:
 
     ```python
     from pyspark.sql.functions import *
@@ -206,7 +222,7 @@ Du kan se ett fel i den sista cellen. I så fall, kontrol lera att de föregåen
 
 Rulla ned till cell 14 i antecknings boken för att se ett diagram över den rullande genomsnittliga fuktighets typen per enhets typ. Den här ritningen uppdateras kontinuerligt när en strömmande telemetri tas emot:
 
-![Diagram över mjuk telemetri](media/howto-create-custom-analytics/telemetry-plot.png)
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="Skärm bild av utjämnat telemetri.":::
 
 Du kan ändra storlek på diagrammet i antecknings boken.
 
@@ -214,7 +230,7 @@ Du kan ändra storlek på diagrammet i antecknings boken.
 
 Rulla ned till cell 20 i antecknings boken för att se [rutorna](https://en.wikipedia.org/wiki/Box_plot). Rutorna baseras på statiska data så att du kan uppdatera dem du måste köra om cellen:
 
-![Låddiagram](media/howto-create-custom-analytics/box-plots.png)
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="Skärm bild av låddiagram.":::
 
 Du kan ändra storlek på ritytan i antecknings boken.
 

@@ -163,6 +163,9 @@
         - name: Konfigurera hanterade identiteter
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: Aktivera certifikat rotation
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: Montera ett virtuellt filsystem
           href: virtual-file-mount.md
         - name: Montera en Azure-filresurs

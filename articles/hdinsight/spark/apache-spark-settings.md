@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929751"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870304"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurera Apache Spark-inställningar
 
@@ -18,7 +18,7 @@ An-HDInsight Spark-kluster innehåller en installation av Apache Sparks bibliote
 
 Standard-HDInsight Apache Spark-klustret innehåller följande noder: tre Apache ZooKeeper noder, två huvudnoder och en eller flera arbetsnoder:
 
-![Spark HDInsight-arkitektur](./media/apache-spark-settings/spark-hdinsight-arch.png)
+:::image type="content" source="./media/apache-spark-settings/spark-hdinsight-arch.png" alt-text="Spark HDInsight-arkitektur" border="false":::
 
 Antalet virtuella datorer och VM-storlekar för noderna i HDInsight-klustret kan påverka din spark-konfiguration. Konfigurations värden som inte är standard för HDInsight kräver ofta konfigurations värden som inte är standard. När du skapar ett HDInsight Spark-kluster visar vi föreslagna VM-storlekar för varje komponent. För närvarande är de [minnesoptimerade virtuella Linux-VM-storlekarna](../../virtual-machines/sizes-memory.md) för Azure D12 v2 eller senare.
 
@@ -59,7 +59,7 @@ Apache Ambari Web UI visas med en instrument panel med användnings mått för n
 
 Om du vill se konfigurations värden för Apache Spark väljer du **konfigurations historik** och väljer sedan **Spark2**.  Välj fliken **konfigurationer** och välj sedan `Spark` länken (eller `Spark2` , beroende på din version) i tjänst listan.  Du ser en lista över konfigurations värden för klustret:
 
-![Spark-konfigurationer](./media/apache-spark-settings/spark-configurations.png)
+:::image type="content" source="./media/apache-spark-settings/spark-configurations.png" alt-text="Spark-konfigurationer" border="true":::
 
 Om du vill se och ändra enskilda Spark-konfigurationsinställningar väljer du en länk med "Spark" i rubriken.  Konfigurationer för Spark inkluderar både anpassade och avancerade konfigurations värden i följande kategorier:
 
@@ -78,7 +78,7 @@ Om du skapar en uppsättning konfigurations värden som inte är standard visas 
 
 Följande diagram visar viktiga Spark-objekt: driv rutins programmet och dess tillhör ande Spark-kontext samt kluster hanteraren och dess *n* Worker-noder.  Varje arbetsnoden innehåller ett utförar, ett cache-och *n* -aktivitets instanser.
 
-![Kluster objekt](./media/apache-spark-settings/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-spark-architecture.png" alt-text="Kluster objekt" border="false":::
 
 Spark-jobb använder arbets resurser, särskilt minne, så det är vanligt att justera Spark-konfigurationsinställningar för körning av arbetsnoder.
 
@@ -89,7 +89,7 @@ Tre nyckel parametrar som ofta justeras för att justera Spark-konfigurationer f
 
 En annan informations källa om resurser som används av Spark-körningar är Spark-programgränssnittet.  I användar gränssnittet visar  **körningarna** Sammanfattning och detaljer om konfigurationen och förbrukade resurser.  Bestäm om du vill ändra körnings värden för hela klustret eller en viss uppsättning jobb körningar.
 
-![Spark-körningar](./media/apache-spark-settings/apache-spark-executors.png)
+:::image type="content" source="./media/apache-spark-settings/apache-spark-executors.png" alt-text="Spark-körningar" border="true":::
 
 Du kan också använda Ambari-REST API för att program mässigt verifiera HDInsight-och Spark-klusterresursernas kluster konfigurations inställningar.  Mer information finns på [Apache AMBARI API Reference på GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -103,7 +103,7 @@ Beroende på din Spark-arbetsbelastning kan du bestämma att en icke-standardmä
 
 Här är ett exempel på två arbetsnoder med olika konfigurations värden:
 
-![Två nodkonfigurationer](./media/apache-spark-settings/executor-configuration.png)
+:::image type="content" source="./media/apache-spark-settings/executor-configuration.png" alt-text="Två nodkonfigurationer" border="false":::
 
 I följande lista visas minnes parametrarna för utförar i Key Spark.
 
@@ -116,7 +116,7 @@ I följande lista visas minnes parametrarna för utförar i Key Spark.
 
 GARN styr den maximala mängd minne som används av behållarna på varje spark-nod. Följande diagram visar relationer per nod mellan garn konfigurations objekt och Spark-objekt.
 
-![GARN Spark minnes hantering](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-yarn-spark-memory.png" alt-text="GARN Spark minnes hantering" border="false":::
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Ändra parametrar för ett program som körs i Jupyter Notebook
 

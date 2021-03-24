@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5eb6cfc7f0dbc0bc886550e1d601dc52dff66267
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945400"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866377"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Skapa ett kluster med Data Lake Storage Gen2 med hjälp av Azure Portal
 
@@ -37,7 +37,7 @@ Skapa en användardefinierad hanterad identitet om du inte redan har en.
 
 Mer information om hur hanterade identiteter fungerar i Azure HDInsight finns i [hanterade identiteter i Azure HDInsight](hdinsight-managed-identities.md).
 
-![Skapa en användartilldelad hanterad identitet](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
+:::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png" alt-text="Skapa en användartilldelad hanterad identitet":::
 
 ## <a name="create-a-storage-account-to-use-with-data-lake-storage-gen2"></a>Skapa ett lagrings konto som ska användas med Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ Skapa ett lagrings konto som ska användas med Azure Data Lake Storage Gen2.
 
 Mer information om andra alternativ när du skapar lagrings konton finns i [snabb start: skapa ett lagrings konto för Azure Data Lake Storage Gen2](../storage/blobs/create-data-lake-storage-account.md).
 
-![Skärm bild som visar hur du skapar lagrings konton i Azure Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+:::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png" alt-text="Skärm bild som visar hur du skapar lagrings konton i Azure Portal":::
 
 ## <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2"></a>Konfigurera behörigheter för den hanterade identiteten på Data Lake Storage Gen2
 
@@ -66,12 +66,12 @@ Tilldela den hanterade identiteten till rollen **Storage BLOB data-ägare** på 
 1. I [Azure Portal](https://portal.azure.com)går du till ditt lagrings konto.
 1. Välj ditt lagrings konto och välj sedan **åtkomst kontroll (IAM)** om du vill visa inställningarna för åtkomst kontroll för kontot. Välj fliken **roll tilldelningar** om du vill se en lista över roll tilldelningar.
 
-    ![Skärm bild som visar inställningar för åtkomst kontroll för lagring](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
+    :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png" alt-text="Skärm bild som visar inställningar för åtkomst kontroll för lagring":::
 
 1. Lägg till en ny roll genom att klicka på knappen **+ Lägg till roll tilldelning** .
 1. I fönstret **Lägg till roll tilldelning** väljer du rollen **Storage BLOB data-ägare** . Välj sedan den prenumeration som har den hanterade identitets-och lagrings kontot. Sedan söker du efter den användarspecifika hanterade identitet som du skapade tidigare. Välj slutligen den hanterade identiteten så visas den under **valda medlemmar**.
 
-    ![Skärm bild som visar hur du tilldelar en Azure-roll](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png" alt-text="Skärm bild som visar hur du tilldelar en Azure-roll":::
 
 1. Välj **Spara**. Den användardefinierade identitet som du har valt visas nu under den valda rollen.
 1. När den här inledande installationen är klar kan du skapa ett kluster via portalen. Klustret måste finnas i samma Azure-region som lagrings kontot. På fliken **lagring** på menyn skapa kluster väljer du följande alternativ:
@@ -81,7 +81,7 @@ Tilldela den hanterade identiteten till rollen **Storage BLOB data-ägare** på 
 
     * Under **identitet** väljer du den nyligen skapade hanterade identiteten som skapats av användaren.
 
-        ![Lagrings inställningar för att använda Data Lake Storage Gen2 med Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
+        :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png" alt-text="Lagrings inställningar för att använda Data Lake Storage Gen2 med Azure HDInsight":::
 
     > [!NOTE]
     > * Om du vill lägga till ett sekundärt lagrings konto med Data Lake Storage Gen2, på lagrings konto nivå, tilldelar du bara den hanterade identitet som skapades tidigare till den nya Data Lake Storage Gen2 som du vill lägga till. Du bör uppmanas att lägga till ett sekundärt lagrings konto med Data Lake Storage Gen2 via bladet "ytterligare lagrings konton" i HDInsight stöds inte.

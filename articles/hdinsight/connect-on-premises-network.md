@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943399"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863385"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Ansluta HDInsight till det lokala nätverket
 
@@ -37,7 +37,7 @@ Dessa konfigurationer gör följande:
 
 I följande diagram är gröna rader begär Anden om resurser som slutar med DNS-suffixet för det virtuella nätverket. Blå rader är begär Anden för resurser i det lokala nätverket eller på det offentliga Internet.
 
-![Diagram över hur DNS-begäranden löses i konfigurationen](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="Diagram över hur DNS-begäranden löses i konfigurationen" border="false":::
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -64,7 +64,7 @@ De här stegen använder [Azure Portal](https://portal.azure.com) för att skapa
   
 1. Välj **+ skapa en resurs** på den översta menyn.
 
-    ![Skapa en virtuell Ubuntu-dator](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="Skapa en virtuell Ubuntu-dator":::
 
 1. Välj den **beräknade**  >  **virtuella** datorn för att gå till sidan **skapa en virtuell dator** .
 
@@ -83,7 +83,7 @@ De här stegen använder [Azure Portal](https://portal.azure.com) för att skapa
     |Lösen ord eller offentlig SSH-nyckel | Det tillgängliga fältet avgörs av ditt val av **Autentiseringstyp**.  Ange lämpligt värde.|
     |Offentliga inkommande portar|Välj **Tillåt valda portar**. Välj sedan **SSH (22)** i list rutan **Välj inkommande portar** .|
 
-    ![Grundläggande konfiguration av virtuell dator](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="Grundläggande konfiguration av virtuell dator":::
 
     Lämna andra poster med standardvärdena och välj sedan fliken **nätverk** .
 
@@ -95,7 +95,7 @@ De här stegen använder [Azure Portal](https://portal.azure.com) för att skapa
     |Undernät | Välj standard under nätet för det virtuella nätverk som du skapade tidigare. Välj __inte__ det undernät som används av VPN-gatewayen.|
     |Offentlig IP-adress | Använd det automatiskt ifyllda värdet.  |
 
-    ![Inställningar för virtuella HDInsight-nätverk](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="Inställningar för virtuella HDInsight-nätverk":::
 
     Lämna övriga poster till standardvärdena och välj sedan **Granska + skapa**.
 
@@ -109,7 +109,7 @@ När den virtuella datorn har skapats får du ett meddelande om att **distributi
 
 2. Observera värdena för **offentlig IP-adress/DNS-namn** och **privat IP-adress** för senare användning.
 
-   ![Offentliga och privata IP-adresser](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="Offentliga och privata IP-adresser":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>Installera och konfigurera BIND (DNS-programvara)
 
@@ -245,7 +245,7 @@ Om du vill konfigurera det virtuella nätverket att använda den anpassade DNS-s
 
 5. Välj __Spara__.  <br />  
 
-    ![Ange den anpassade DNS-servern för nätverket](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="Ange den anpassade DNS-servern för nätverket":::
 
 ## <a name="configure-on-premises-dns-server"></a>Konfigurera lokal DNS-Server
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2216eb5893b77761f4d31c5819d152ceeb985abc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933021"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869658"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Använda Azure Kubernetes-tjänsten med Apache Kafka på HDInsight
 
@@ -42,7 +42,7 @@ Både HDInsight och AKS använder en Azure-Virtual Network som en behållare fö
 
 Följande diagram illustrerar nätverk sto pol Ogin som används i det här dokumentet:
 
-![HDInsight i ett virtuellt nätverk, AKS i ett annat, med peering](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+:::image type="content" source="./media/apache-kafka-azure-container-services/kafka-aks-architecture.png" alt-text="HDInsight i ett virtuellt nätverk, AKS i ett annat, med peering" border="false":::
 
 > [!IMPORTANT]  
 > Namn matchning är inte aktiverat mellan peer-kompatibla nätverk, så IP-adressering används. Som standard är Kafka på HDInsight konfigurerat att returnera värdnamn i stället för IP-adresser när klienter ansluter. Stegen i det här dokumentet ändrar Kafka för att använda IP-annonsering i stället.
@@ -109,15 +109,15 @@ Använd följande steg för att konfigurera Kafka för att annonsera IP-adresser
 
 2. Om du vill visa information om Kafka väljer du __Kafka__ i listan till vänster.
 
-    ![Tjänst lista med Kafka markerat](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-service.png" alt-text="Tjänst lista med Kafka markerat" border="true":::
 
 3. Om du vill visa Kafka-konfiguration väljer du __konfiguration__ från det översta mitten.
 
-    ![Konfiguration av Apache Ambari Services](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-config1.png" alt-text="Konfiguration av Apache Ambari Services" border="true":::
 
 4. Du hittar __Kafka-kuvert-__ konfigurationen genom att ange `kafka-env` i fältet __filter__ längst upp till höger.
 
-    ![Kafka-konfiguration, för Kafka-miljö](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/search-for-kafka-env.png" alt-text="Kafka-konfiguration, för Kafka-miljö" border="true":::
 
 5. Om du vill konfigurera Kafka för att annonsera IP-adresser lägger du till följande text längst ned i fältet __Kafka-kuvert-mall__ :
 
@@ -135,15 +135,15 @@ Använd följande steg för att konfigurera Kafka för att annonsera IP-adresser
 
 8. Använd knappen __Spara__ om du vill spara konfigurations ändringarna. Ange ett textmeddelande som beskriver ändringarna. Välj __OK__ när ändringarna har sparats.
 
-    ![Apache Ambari-Spara konfiguration](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/save-configuration-button.png" alt-text="Apache Ambari-Spara konfiguration" border="true":::
 
 9. Om du vill förhindra fel när du startar om Kafka använder du knappen __service åtgärder__ och väljer __Aktivera underhålls läge__. Klicka på OK för att slutföra åtgärden.
 
-    ![Tjänst åtgärder, med aktivera underhåll markerat](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png" alt-text="Tjänst åtgärder, med aktivera underhåll markerat" border="true":::
 
 10. Om du vill starta om Kafka använder du knappen __starta om__ och väljer __starta om alla berörda__. Bekräfta omstarten och Använd sedan __OK__ -knappen när åtgärden har slutförts.
 
-    ![Knappen starta om med starta om alla berörda markerade](./media/apache-kafka-azure-container-services/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/restart-required-button.png" alt-text="Knappen starta om med starta om alla berörda markerade" border="true":::
 
 11. Om du vill inaktivera underhålls läget använder du knappen __service åtgärder__ och väljer __inaktivera underhålls läge__. Klicka på **OK** för att slutföra åtgärden.
 
@@ -213,7 +213,7 @@ I det här läget kommunicerar Kafka och Azure Kubernetes-tjänsten via de peer-
 
 11. Öppna en webbläsare och ange den externa IP-adressen för tjänsten. Du kommer till en sida som liknar följande bild:
 
-    ![Bild av Apache Kafka-test på webb sidan](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/test-web-page-image1.png" alt-text="Bild av Apache Kafka-test på webb sidan" border="true":::
 
 12. Ange text i fältet och välj sedan knappen __Skicka__ . Data skickas till Kafka. Sedan läser Kafka-konsumenten i programmet meddelandet och lägger till det i avsnittet __meddelanden från Kafka__ .
 

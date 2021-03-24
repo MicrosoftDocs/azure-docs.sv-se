@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 383b49a7363fdca9327d419f5bed092d489a95d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181398"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951818"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Självstudie: integrera Wandera POLÄRDIAGRAM-administratör med Azure Active Directory
 
@@ -82,7 +82,8 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     Skriv en URL i text rutan **svars-URL** med följande mönster:  `https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
-    > Värdet är inte verkligt. Uppdatera värdet för med den faktiska svars-URL:en. Kontakta [WANDERA polärdiagram admin client support team](https://www.wandera.com/about-wandera/contact/#supportsection) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Värdet är inte verkligt. Uppdatera värdet för med den faktiska svars-URL:en. Kontakta [WANDERA polärdiagram admin client support team](https://www.wandera.com/about-wandera/contact/#supportsection) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen. Ersätt noggrant <tenant id> delen av URL: en med det klient-ID som visas på sidan **Inställningar**  >  **Administration**  >  **enkel inloggning** i ditt Wandera-konto.
+
 
 1. På sidan **Konfigurera en enskild Sign-On med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 

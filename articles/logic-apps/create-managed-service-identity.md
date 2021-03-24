@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 03/09/2021
-ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b038a0530d392c80fc14d09486f298657fe0da17
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556629"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889339"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Autentisera åtkomst till Azure-resurser med hjälp av hanterade identiteter i Azure Logic Apps
 
@@ -402,52 +402,54 @@ De här stegen visar hur du använder den hanterade identiteten med en utlösare
 
      Mer information finns i [exempel: autentisera Managed Connector-utlösare eller åtgärd med en hanterad identitet](#authenticate-managed-connector-managed-identity).
 
-     Anslutningar som du skapar för att använda en hanterad identitet är en särskild Anslutnings typ som endast fungerar med en hanterad identitet. Vid körning använder anslutningen den hanterade identitet som är aktive rad i Logic app. Den här konfigurationen sparas i Logic app-resursens resurs definitions `parameters` objekt, som innehåller de `$connections` objekt som innehåller pekare till anslutningens resurs-ID tillsammans med identitetens resurs-ID, om den användardefinierade identiteten är aktive rad.
+### <a name="connections-that-use-managed-identities"></a>Anslutningar som använder hanterade identiteter
 
-     Det här exemplet visar hur konfigurationen ser ut när Logic app aktiverar den hanterade identiteten som tilldelats av systemet:
+Anslutningarna som använder en hanterad identitet är en särskild Anslutnings typ som endast fungerar med en hanterad identitet. Vid körning använder anslutningen den hanterade identitet som är aktive rad i Logic app. Den här konfigurationen sparas i Logic app-resursens resurs definitions `parameters` objekt, som innehåller de `$connections` objekt som innehåller pekare till anslutningens resurs-ID tillsammans med identitetens resurs-ID, om den användardefinierade identiteten är aktive rad.
 
-     ```json
-     "parameters": {
-        "$connections": {
-           "value": {
-              "<action-name>": {
-                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
-                 "connectionName": "{connection-name}",
-                 "connectionProperties": {
-                    "authentication": {
-                       "type": "ManagedServiceIdentity"
-                    }
-                 },
-                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
-              }
-           }
-        }
-     }
-     ```
+Det här exemplet visar hur konfigurationen ser ut när Logic app aktiverar den hanterade identiteten som tilldelats av systemet:
 
-     Det här exemplet visar hur konfigurationen ser ut när Logic app aktiverar en hanterad identitet som tilldelats av användare:
+```json
+"parameters": {
+   "$connections": {
+      "value": {
+         "<action-name>": {
+            "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+            "connectionName": "{connection-name}",
+            "connectionProperties": {
+               "authentication": {
+                  "type": "ManagedServiceIdentity"
+               }
+            },
+            "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+         }
+      }
+   }
+}
+ ```
 
-     ```json
-     "parameters": {
-        "$connections": {
-           "value": {
-              "<action-name>": {
-                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
-                 "connectionName": "{connection-name}",
-                 "connectionProperties": {
-                    "authentication": {
-                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
-                       "type": "ManagedServiceIdentity"
-                    }
-                 },
-                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
-              }
-           }
-        }
-     }
-     ```
+Det här exemplet visar hur konfigurationen ser ut när Logic app aktiverar en hanterad identitet som tilldelats av användare:
 
-     Under körningen kontrollerar Logic Apps tjänsten om en utlösare och åtgärder för hanterad koppling i Logic app har ställts in för att använda den hanterade identiteten och att alla nödvändiga behörigheter är konfigurerade för att använda den hanterade identiteten för åtkomst till de mål resurser som anges av utlösaren och åtgärderna. Om det lyckas hämtar Logic Apps tjänsten Azure AD-token som är associerad med den hanterade identiteten och använder den identiteten för att autentisera åtkomsten till mål resursen och utföra den konfigurerade åtgärden i utlösare och åtgärder.
+```json
+"parameters": {
+   "$connections": {
+      "value": {
+         "<action-name>": {
+            "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+            "connectionName": "{connection-name}",
+            "connectionProperties": {
+               "authentication": {
+                  "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                  "type": "ManagedServiceIdentity"
+               }
+            },
+            "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+         }
+      }
+   }
+}
+```
+
+Under körningen kontrollerar Logic Apps tjänsten om en utlösare och åtgärder för hanterad koppling i Logic app har ställts in för att använda den hanterade identiteten och att alla nödvändiga behörigheter är konfigurerade för att använda den hanterade identiteten för åtkomst till de mål resurser som anges av utlösaren och åtgärderna. Om det lyckas hämtar Logic Apps tjänsten Azure AD-token som är associerad med den hanterade identiteten och använder den identiteten för att autentisera åtkomsten till mål resursen och utföra den konfigurerade åtgärden i utlösare och åtgärder.
 
 <a name="authenticate-built-in-managed-identity"></a>
 

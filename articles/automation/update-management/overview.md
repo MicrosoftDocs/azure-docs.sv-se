@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: e24a90f05ef52c5164ce966e905e9c27055d1bf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670621"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950067"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -22,7 +22,7 @@ Du kan använda Uppdateringshantering i Azure Automation för att hantera operat
 > [!NOTE]
 > För närvarande stöds inte aktivering av Uppdateringshantering direkt från en ARC-aktiverad server. Se [aktivera uppdateringshantering från ditt Automation-konto](../../automation/update-management/enable-from-automation-account.md) för att förstå kraven och hur du aktiverar för servern.
 
-Om du vill hämta och installera tillgängliga *kritiska* uppdateringar och *säkerhets* korrigeringar automatiskt på den virtuella Azure-datorn kan du läsa om [Automatisk uppdatering av virtuella datorer](../../virtual-machines/windows/automatic-vm-guest-patching.md) för virtuella Windows-datorer.
+Om du vill hämta och installera tillgängliga *kritiska* uppdateringar och *säkerhets* korrigeringar automatiskt på den virtuella Azure-datorn kan du läsa om [Automatisk uppdatering av virtuella datorer](../../virtual-machines/automatic-vm-guest-patching.md) för virtuella Windows-datorer.
 
 Innan du distribuerar Uppdateringshantering och aktiverar dina datorer för hantering ska du se till att du förstår informationen i följande avsnitt.  
 

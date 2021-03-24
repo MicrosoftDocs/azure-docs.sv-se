@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 551d985ea78e83397e507676c5fd7ecfce12ff7b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945558"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864252"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimera Apache Hive-frågor i Azure HDInsight
 
@@ -34,11 +34,11 @@ Om du ökar antalet arbetsnoder i ett HDInsight-kluster kan arbetet använda fle
 
 * När du skapar ett kluster kan du ange antalet arbetsnoder med hjälp av Azure Portal, Azure PowerShell eller kommando rads gränssnittet.  Mer information finns i [Skapa HDInsight-kluster](hdinsight-hadoop-provision-linux-clusters.md). Följande skärm bild visar konfigurationen för arbetsnoden på Azure Portal:
   
-    ![Noder i Azure Portal kluster storlek](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png" alt-text="Noder i Azure Portal kluster storlek":::
 
 * När du har skapat kan du också redigera antalet arbetsnoder för att skala ut ett kluster ytterligare utan att skapa ett nytt:
 
-    ![Azure Portal skalnings kluster storlek](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png " alt-text="Azure Portal skalnings kluster storlek":::
 
 Mer information om hur du skalar HDInsight finns i [skala HDInsight-kluster](hdinsight-scaling-best-practices.md)
 
@@ -46,7 +46,7 @@ Mer information om hur du skalar HDInsight finns i [skala HDInsight-kluster](hdi
 
 [Apache Tez](https://tez.apache.org/) är en alternativ körnings motor till MapReduce-motorn. Linux-baserade HDInsight-kluster har Tez aktiverat som standard.
 
-![HDInsight Apache Tez-översikt diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png" alt-text="HDInsight Apache Tez-översikt diagram":::
 
 Tez är snabbare eftersom:
 
@@ -70,7 +70,7 @@ I/O-åtgärder är den stora prestanda Flask halsen för att köra Hive-frågor.
 
 Hive-partitionering implementeras genom att organisera om rå data i nya kataloger. Varje partition har en egen fil katalog. Partitioneringen definieras av användaren. Följande diagram illustrerar partitionering av en Hive-tabell efter kolumn *året*. En ny katalog skapas för varje år.
 
-![HDInsight Apache Hive partitionering](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png" alt-text="HDInsight Apache Hive partitionering":::
 
 Några partitionering överväganden:
 

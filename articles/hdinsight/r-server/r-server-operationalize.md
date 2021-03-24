@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944015"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869487"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisera ML Services-kluster på Azure HDInsight
 
@@ -53,31 +53,31 @@ När du har använt ML Services-kluster i HDInsight för att slutföra din data 
 
 1. Du visas med alternativen för att välja bland. Välj det första alternativet, som du ser i följande skärm bild, för att **konfigurera ml Server för driftsättning**.
 
-    ![Verktyget R Server Administration Välj](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="Verktyget R Server Administration Välj" border="true":::
 
 1. Du visas nu med alternativet att välja hur du vill operationalisera ML Server. Från de visade alternativen väljer du det första genom att ange **en**.
 
-    ![R Server administrations verktyg operationalisera](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="R Server administrations verktyg operationalisera" border="true":::
 
 1. När du uppmanas till det anger du och anger lösen ordet för en lokal administratörs användare.
 
 1. Du bör se utdata som föreslår att åtgärden lyckades. Du uppmanas också att välja ett annat alternativ på menyn. Välj E för att gå tillbaka till huvud menyn.
 
-    ![R Server administrations verktyget lyckades](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="R Server administrations verktyget lyckades" border="true":::
 
 1. Du kan också utföra diagnostiska kontroller genom att köra ett diagnostiskt test på följande sätt:
 
     a. Från huvud menyn väljer du **6** för att köra diagnostiska tester.
 
-    ![Verktyget R Server Administration diagnostik](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="Verktyget R Server Administration diagnostik" border="true":::
 
     b. Välj **en** på menyn diagnostiska test. När du uppmanas till det anger du det lösen ord som du har angett för den lokala administratörs användaren.
 
-    ![Test av R Server administrations verktyg](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="Test av R Server administrations verktyg" border="true":::
 
     c. Kontrol lera att resultatet visar att den övergripande hälsan är ett pass.
 
-    ![Verktyg för R Server-Administration](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="Verktyg för R Server-Administration" border="true":::
 
     d. Från meny alternativen anger du **E** för att återgå till huvud menyn och anger sedan **8** för att avsluta administrations verktyget.
 
@@ -154,7 +154,7 @@ Följ dessa steg om du vill inaktivera arbetsnoder:
 
 1. Klicka på **åtgärder**  >  **markerade värdar**  >  **värdar**  >  **Aktivera underhålls läge**. I bilden nedan har vi till exempel valt att inaktivera wn3 och wn4.  
 
-   ![Apache Ambari aktivera underhålls läge](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Apache Ambari aktivera underhålls läge" border="true":::  
 
 * Välj **åtgärder**  >  **valda värdar**  >  **DataNodes** > Klicka på **inaktivera**.
 * Välj **åtgärder**  >  **valda värdar**  >  **) nodemanagers** > Klicka på **inaktivera**.

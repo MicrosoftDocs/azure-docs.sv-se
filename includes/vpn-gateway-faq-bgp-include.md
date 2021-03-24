@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 649c5805c600b6282be6d05fefb59cecaf249f4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3877134f8a00cd627909d7f889fd5b104ccbd8b1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92526138"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863633"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Stöds BGP på alla Azure VPN Gateway-SKU:er?
 BGP stöds på alla Azure VPN Gateway SKU: er förutom Basic SKU.
@@ -108,3 +108,8 @@ Lägg till en värd väg för Azure BGP-peer-IP-adressen på VPN-enheten. Den h�
 Nej. Upptäckt av dubbelriktad vidarebefordran (BFD) är ett protokoll som du kan använda med BGP för att identifiera intilliggande nedtid snabbare än du kan använda standard-BGP "KeepAlive". BFD använder andra timers som utformats för att fungera i LAN-miljöer, men inte över det offentliga Internet eller Wide Area Network-anslutningar.
 
 För anslutningar via det offentliga Internet är vissa paket fördröjda eller till och med borttagna inte ovanliga, så vi kan lägga till instabilitet i dessa aggressiva timers. Den här instabiliteten kan orsaka att vägar dämpas av BGP. Som ett alternativ kan du konfigurera den lokala enheten med timers som är lägre än standard intervallet, 60-andra "keepalive-intervallet" och den 180-andra Hold-timern. Detta resulterar i en snabbare konvergens tid.
+
+### <a name="do-azure-vpn-gateways-initiate-bgp-peering-sessions-or-connections"></a>Initierar Azure VPN-gatewayer BGP-peering-sessioner eller anslutningar?
+
+Gatewayen initierar BGP-peering-sessioner till de lokala BGP-peer-IP-adresserna som anges i resurserna för lokal nätverksgateway med hjälp av de privata IP-adresserna på VPN-gatewayerna. Detta är oavsett om de lokala BGP-IP-adresserna finns i APIPA-intervallet eller vanliga privata IP-adresser. Om dina lokala VPN-enheter använder APIPA-adresser som BGP-IP måste du konfigurera BGP-högtalaren för att initiera anslutningarna.
+

@@ -18,7 +18,11 @@
         - name: Skicka telemetri till IoT Hub (Node)
           href: quickstart-send-telemetry-cli-node.md
     - name: Kom igång med inbäddad utveckling
-      href: quickstart-device-development.md
+      items:
+        - name: Snabb start för inbäddad enhets utveckling
+          href: quickstart-device-development.md
+        - name: Anslut en MXCHIP-AZ3166 till IoT Central
+          href: quickstart-devkit-mxchip-az3166.md
 - name: Självstudier
   items:
     - name: Ansluta IoT-enheter på ett säkert sätt till molnet

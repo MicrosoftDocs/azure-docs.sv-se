@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: b168167ce4f44d87c396746cca3f271f95f83163
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632827"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869964"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Vad är Azure Application enhetligt ögonblicks bild verktyget (förhands granskning)
 
-Azure Application enhetligt ögonblicks bild verktyget (AzAcSnap) är ett kommando rads verktyg som gör det möjligt att förenkla data skyddet för databaser från tredje part (SAP HANA) i Linux-miljöer (till exempel SUSE och RHEL).  
+Azure Application enhetligt ögonblicks bilds verktyg (AzAcSnap) är ett kommando rads verktyg som gör det möjligt att skydda data från databaser från tredje part genom att hantera alla dirigeringar som krävs för att försätta dem i ett konsekvent tillstånd innan du tar en ögonblicks bild av lagringen.
+
+## <a name="supported-platforms-and-os"></a>Plattformar och operativ system som stöds
+
+- **Databaser**
+  - SAP HANA (mer information finns i [support mat ris](azacsnap-get-started.md#snapshot-support-matrix-from-sap) )
+
+- **Operativ system**
+  - SUSE Linux Enterprise Server 12 +
+  - Red Hat Enterprise Linux 7 +
 
 ## <a name="benefits-of-using-azacsnap"></a>Fördelar med att använda AzAcSnap
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
-ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928852"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870219"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Snabb start: skapa och övervaka en Apache Storm topologi i Azure HDInsight
 
@@ -48,7 +48,7 @@ Genomför följande för att övervaka topologin med hjälp av Storm-användargr
 
 2. Under **topologins Sammanfattning** väljer du posten **WORDCOUNT** i kolumnen **namn** . Detta visar information om topologin.
 
-    ![Storm Dashboard med storm-starter, topologisk information om WordCount.](./media/apache-storm-quickstart/hdi-topology-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-topology-summary.png" alt-text="Storm Dashboard med storm-starter, topologisk information om WordCount." border="true":::
 
     Den nya sidan innehåller följande information:
 
@@ -65,7 +65,7 @@ Genomför följande för att övervaka topologin med hjälp av Storm-användargr
 
 3. På den här sidan väljer du en post från avsnittet **Spouts** (Kanaler) eller **Bolts** (Bultar). Detta visar information om den valda komponenten.
 
-    ![Storm-instrumentpanelen med information om valda komponenter.](./media/apache-storm-quickstart/hdi-component-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-component-summary.png" alt-text="Storm-instrumentpanelen med information om valda komponenter." border="true":::
 
     Den nya sidan visar följande information:
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034667"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869386"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Server koncept i Azure Database for MySQL flexibel Server (för hands version)
 
@@ -55,7 +55,14 @@ När tids servern stoppas kan inga hanterings åtgärder utföras på servern. F
 
 ## <a name="how-do-i-manage-a-server"></a>Hur gör jag för att hantera en server?
 
-Du kan hantera Azure Database for MySQL flexibel server med hjälp av [Azure Portal](./quickstart-create-server-portal.md) eller [Azure CLI](./quickstart-create-server-cli.md).
+Du kan hantera skapande, borttagning, Server parameter konfiguration (My. cnf), skalning, nätverk, säkerhet, hög tillgänglighet, säkerhets kopiering & återställning, övervakning av Azure Database for MySQL flexibel server med hjälp av [Azure Portal](./quickstart-create-server-portal.md) eller [Azure CLI](./quickstart-create-server-cli.md). Dessutom är följande lagrade procedurer tillgängliga i Azure Database for MySQL för att utföra vissa databas administrations uppgifter som krävs eftersom behörigheten SUPER User inte stöds på servern.
+
+|**Namn på lagrad procedur**|**Indataparametrar**|**Utdataparametrar**|**Användnings notering**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|Ej tillämpligt|Motsvarande [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) kommando. Avslutar anslutningen som är associerad med den angivna processlist_id när du har avslutat en instruktion som anslutningen körs.|
+|*mysql.az_kill_query*|processlist_id|Ej tillämpligt|Motsvarande [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) kommando. Avslutar instruktionen som anslutningen körs för tillfället. Lämnar själva anslutningen.|
+|*mysql.az_load_timezone*|Saknas|Saknas|Läser in [tids zons tabeller](../howto-server-parameters.md#working-with-the-time-zone-parameter) så att `time_zone` parametern kan anges till namngivna värden (t. ex. "USA/Stilla havs området").|
+
 
 ## <a name="next-steps"></a>Nästa steg
 

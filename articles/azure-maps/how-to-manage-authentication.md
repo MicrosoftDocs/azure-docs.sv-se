@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 955b541bdb4ae38066f1eb4d2f09363ec51be1d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92895774"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864082"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hantera autentisering i Azure Maps
 
@@ -78,6 +78,31 @@ Begär en token från Azure AD-token-slutpunkten. Använd följande information 
 | Azure Government molnet | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
 Mer information om hur du begär åtkomsttoken från Azure AD för användare och tjänst huvud namn finns i [scenarier för Azure AD](../active-directory/develop/authentication-vs-authorization.md) och visa särskilda scenarier i tabellen med [scenarier](./how-to-manage-authentication.md#determine-authentication-and-authorization).
+
+## <a name="manage-and-rotate-shared-keys"></a>Hantera och rotera delade nycklar
+
+Dina Azure Maps prenumerations nycklar liknar ett rot lösen ord för ditt Azure Maps-konto. Var alltid noga med att skydda dina prenumerations nycklar. Använd Azure Key Vault för att hantera och rotera dina nycklar på ett säkert sätt. Undvik att distribuera åtkomst nycklar till andra användare, hårdkoda dem eller spara dem var som helst i oformaterad text som är tillgängliga för andra. Rotera dina nycklar om du misstänker att de kan ha komprometterats.
+
+> [!NOTE]
+> Microsoft rekommenderar att du använder Azure Active Directory (Azure AD) för att godkänna begär Anden om möjligt, i stället för delad nyckel. Azure AD ger överlägsen säkerhet och enkel användning över delad nyckel.
+
+### <a name="manually-rotate-subscription-keys"></a>Rotera prenumerations nycklar manuellt
+
+Microsoft rekommenderar att du roterar dina prenumerations nycklar regelbundet för att skydda ditt Azure Maps konto. Använd om möjligt Azure Key Vault för att hantera dina åtkomst nycklar. Om du inte använder Key Vault måste du rotera dina nycklar manuellt.
+
+Två prenumerations nycklar tilldelas så att du kan rotera dina nycklar. Att ha två nycklar säkerställer att ditt program behåller åtkomsten till Azure Maps under hela processen.
+
+Så här roterar du dina Azure Maps prenumerations nycklar i Azure Portal:
+
+1. Uppdatera program koden så att den refererar till den sekundära nyckeln för det Azure Maps kontot och distribuera.
+2. Navigera till ditt Azure Maps konto i [Azure Portal](https://portal.azure.com/).
+3. Under **Inställningar** väljer du **autentisering**.
+4. Om du vill återskapa den primära nyckeln för ditt Azure Maps-konto väljer du knappen **skapa** igen bredvid primär nyckeln.
+5. Uppdatera program koden så att den refererar till den nya primära nyckeln och distribuera.
+6. Återskapa den sekundära nyckeln på samma sätt.
+
+> [!WARNING]
+> Microsoft rekommenderar att du bara använder en av nycklarna i alla dina program på samma tidpunkt. Om du använder nyckel 1 på vissa platser och nyckel 2 i andra kommer du inte att kunna rotera dina nycklar utan att några program förlorar åtkomst.
 
 ## <a name="next-steps"></a>Nästa steg
 

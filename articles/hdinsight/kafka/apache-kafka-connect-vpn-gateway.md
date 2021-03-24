@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eb97e209bc7bb9bc1a15ecadc88593e4c0573b5c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933038"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870627"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Ansluta till Apache Kafka på HDInsight via Azure Virtual Network
 
@@ -245,15 +245,15 @@ Som standard returnerar Apache Zookeeper domän namnet för Kafka-utjämnarna ti
 
 2. Om du vill visa information om Kafka väljer du __Kafka__ i listan till vänster.
 
-    ![Tjänst lista med Kafka markerat](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png" alt-text="Tjänst lista med Kafka markerat" border="true":::
 
 3. Om du vill visa Kafka-konfiguration väljer du __konfiguration__ från det översta mitten.
 
-    ![Konfiguration av Apache Ambari Services](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png" alt-text="Konfiguration av Apache Ambari Services" border="true":::
 
 4. Du hittar __Kafka-kuvert-__ konfigurationen genom att ange `kafka-env` i fältet __filter__ längst upp till höger.
 
-    ![Kafka-konfiguration, för Kafka-miljö](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png" alt-text="Kafka-konfiguration, för Kafka-miljö" border="true":::
 
 5. Om du vill konfigurera Kafka för att annonsera IP-adresser lägger du till följande text längst ned i fältet __Kafka-kuvert-mall__ :
 
@@ -271,15 +271,15 @@ Som standard returnerar Apache Zookeeper domän namnet för Kafka-utjämnarna ti
 
 8. Använd knappen __Spara__ om du vill spara konfigurations ändringarna. Ange ett textmeddelande som beskriver ändringarna. Välj __OK__ när ändringarna har sparats.
 
-    ![Apache Ambari-Spara konfiguration](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png" alt-text="Apache Ambari-Spara konfiguration" border="true":::
 
 9. Om du vill förhindra fel när du startar om Kafka använder du knappen __service åtgärder__ och väljer __Aktivera underhålls läge__. Klicka på OK för att slutföra åtgärden.
 
-    ![Tjänst åtgärder, med aktivera underhåll markerat](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png" alt-text="Tjänst åtgärder, med aktivera underhåll markerat" border="true":::
 
 10. Om du vill starta om Kafka använder du knappen __starta om__ och väljer __starta om alla berörda__. Bekräfta omstarten och Använd sedan __OK__ -knappen när åtgärden har slutförts.
 
-    ![Knappen starta om med starta om alla berörda markerade](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/restart-required-button.png" alt-text="Knappen starta om med starta om alla berörda markerade" border="true":::
 
 11. Om du vill inaktivera underhålls läget använder du knappen __service åtgärder__ och väljer __inaktivera underhålls läge__. Klicka på **OK** för att slutföra åtgärden.
 

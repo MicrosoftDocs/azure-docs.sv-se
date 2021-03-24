@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577620"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953518"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurera en Linux python-app för Azure App Service
 
@@ -114,7 +114,7 @@ Befintliga webb program kan omdistribueras till Azure på följande sätt:
 
 1. **App-start**: Läs avsnittet, [Start processen för behållaren](#container-startup-process) senare i den här artikeln för att förstå hur App Service försöker köra appen. App Service använder webb servern Gunicorn som standard, som måste kunna hitta app-objektet eller *wsgi.py* -mappen. Om det behövs kan du [Anpassa Start kommandot](#customize-startup-command).
 
-1. **Kontinuerlig distribution**: Konfigurera kontinuerlig distribution, enligt beskrivningen i [kontinuerlig distribution till Azure App Service om du](deploy-continuous-deployment.md) använder Azure-pipeliner eller kudu-distribution, eller [distribuera till App Service med hjälp av GitHub-åtgärder om du](deploy-github-actions.md) använder GitHub åtgärder.
+1. **Kontinuerlig distribution**: Konfigurera kontinuerlig distribution, enligt beskrivningen i [kontinuerlig distribution till Azure App Service om du](deploy-continuous-deployment.md) använder Azure-pipeliner eller kudu-distribution, eller [distribuera till App Service med hjälp av GitHub-åtgärder om du](./deploy-continuous-deployment.md) använder GitHub åtgärder.
 
 1. **Anpassade åtgärder**: om du vill utföra åtgärder inom app service behållare som är värd för din app, till exempel Django, kan du [ansluta till behållaren via SSH](configure-linux-open-ssh-session.md). Ett exempel på hur du kör django Database-migreringar finns i [Självstudier: Distribuera en django-webbapp med postgresql-köra Database-migreringar](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - När du använder kontinuerlig distribution kan du utföra dessa åtgärder med hjälp av kommandon efter kompilering enligt beskrivningen ovan under [Anpassa Bygg automatisering](#customize-build-automation).

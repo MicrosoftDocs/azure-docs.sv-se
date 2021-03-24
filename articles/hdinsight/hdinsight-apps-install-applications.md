@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: cfbbc1f11a24379561df26e2fb8d9da20b249317
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46a22b78ade3d137f25b14e5cbdaff3264208228
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942749"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868400"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installera Apache Hadoop program från tredje part i Azure HDInsight
 
@@ -53,10 +53,10 @@ I följande procedur beskriver vi hur du installerar HDInsight-program i ett bef
 3. Välj ett HDInsight-kluster i listan.  Om du inte har något måste du skapa ett först.  Mer information finns i [Skapa kluster](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. Under kategorin **Inställningar** väljer du **program**. Du kan se en lista över installerade program i huvud fönstret. 
    
-    ![HDInsight-program – meny på portalen](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png" alt-text="HDInsight-program Portal meny":::
 5. Välj **+ Lägg till** på menyn. Du kan se en lista över tillgängliga program.  Om **+ Lägg till** är nedtonad, innebär det att det inte finns några program för den här versionen av HDInsight-klustret.
    
-    ![HDInsight-program – tillgängliga program](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png" alt-text="HDInsight-program tillgängliga program":::
 6. Välj ett av de tillgängliga programmen och följ sedan anvisningarna för att godkänna de juridiska villkoren.
 
 Du kan se installations status från Portal meddelanden (Välj klock ikonen överst i portalen). När programmet har installerats visas programmet i listan installerade appar.
@@ -65,7 +65,7 @@ Du kan se installations status från Portal meddelanden (Välj klock ikonen öve
 
 Du kan välja att installera HDInsight-program när du skapar ett kluster. Under processen installeras HDInsight-program när klustret har skapats och är i körläge. Om du vill installera program när du skapar klustret med hjälp av Azure Portal väljer du **+ Lägg till program** på fliken **konfiguration + prissättning** .
 
-![Azure Portal kluster konfigurations program](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
+:::image type="content" source="./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png" alt-text="Azure Portal kluster konfigurations program":::
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Visa en lista med installerade HDInsight-appar och deras egenskaper
 På portalen kan du visa en lista över de installerade HDInsight-programmen för ett kluster och egenskaperna för varje installerat program.
@@ -77,7 +77,7 @@ På portalen kan du visa en lista över de installerade HDInsight-programmen fö
 3. Välj ett HDInsight-kluster i listan.
 4. Under kategorin **Inställningar** väljer du **program**. Du kan se en lista över installerade program i huvud fönstret. 
    
-    ![HDInsight-program – installerade appar](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png" alt-text="HDInsight-program installerade appar":::
 5. Välj ett av de installerade programmen för att visa egenskapen. Egenskaps listorna:
 
     |Egenskap | Beskrivning |

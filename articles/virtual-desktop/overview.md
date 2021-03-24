@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26d6b258c1e22d5d28353486378acc9aa0bbd5d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98730793"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889645"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Vad är Windows Virtual Desktop?
 
@@ -124,7 +124,7 @@ Om du vill veta mer om webb adresser måste du häva blockeringen för att anvä
 Windows Virtual Desktop stöder följande x64-operativ system avbildningar:
 
 * Windows 10 Enterprise multi-session, version 1809 eller senare
-* Windows 10 Enterprise, version 1809 eller senare
+* Windows 10 Enterprise, version 1809 eller senare (endast halvårs kanal)
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016

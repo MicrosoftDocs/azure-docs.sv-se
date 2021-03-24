@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b74319581b4e74c63045afe73ee66b6efcf53c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585323"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955250"
 ---
 # <a name="azure-ad-built-in-roles"></a>Inbyggda roller i Azure AD
 
@@ -71,7 +71,7 @@ Som bästa praxis rekommenderar vi att du tilldelar rollen till färre än fem p
 > | [Grupp administratör](#groups-administrator) | Medlemmar i den här rollen kan skapa/hantera grupper, skapa/hantera grupper inställningar som namngivnings-och förfallo principer och Visa grupper-aktivitet och gransknings rapporter. | fdd7a751-b60b-444a-984c-02652fe8fa1c |
 > | [Gäst deltagare](#guest-inviter) | Kan bjuda in gäst användare oberoende av inställningen medlemmar kan bjuda in gäster. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Support administratör](#helpdesk-administrator) | Kan återställa lösen ord för administratörer som inte har administratörer och supportavdelningen. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
-> | [Hybrid identitets administratör](#hybrid-identity-administrator) | Kan hantera AD till moln etablering och Federations inställningar i Azure AD. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Hybrid identitets administratör](#hybrid-identity-administrator) | Kan hantera AD till moln etablering i Azure AD, Azure AD Connect och Federations inställningar. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Insights-administratör](#insights-administrator) | Har administrativ åtkomst i Microsoft 365 Insights-appen. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Affärs ledare för insikter](#insights-business-leader) | Kan visa och dela instrument paneler och insikter via M365 Insights-appen. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune-administratör](#intune-administrator) | Kan hantera alla aspekter av Intune-produkten. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
@@ -997,7 +997,7 @@ Den här rollen kallades tidigare för "lösen ords administratör" i [Azure Por
 
 ## <a name="hybrid-identity-administrator"></a>Hybrid identitets administratör
 
-Användare med den här rollen kan skapa, hantera och distribuera konfigurations konfigurations inställningar från AD till Azure AD med hjälp av moln etablering och hantera Federations inställningar. Användare kan också felsöka och övervaka loggar med den här rollen.
+Användare med den här rollen kan skapa, hantera och distribuera konfigurations konfigurations inställningar från AD till Azure AD med hjälp av moln etablering samt hantera Azure AD Connect-och Federations inställningar. Användare kan också felsöka och övervaka loggar med den här rollen.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |

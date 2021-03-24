@@ -11,18 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93077650"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952770"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Felsöka med hjälp av What If-verktyget i Villkorsstyrd åtkomst
 
 [Villkorlig åtkomst](./overview.md) är en funktion i Azure Active Directory (Azure AD) som gör att du kan styra hur auktoriserade användare får åtkomst till dina molnappar. Hur vet du vad du kan förväntar dig från principer för villkorlig åtkomst i din miljö? Om du vill besvara den här frågan kan du använda **verktyget för villkorlig åtkomst what if**.
 
 Den här artikeln förklarar hur du kan använda det här verktyget för att testa dina principer för villkorlig åtkomst.
+
+> [!VIDEO https://www.youtube.com/embed/M_iQVM-3C3E]
 
 ## <a name="what-it-is"></a>Vad det är
 

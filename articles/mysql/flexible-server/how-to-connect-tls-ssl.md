@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2e66b27f7f0c731e17bb9811e2376bbe09c1bc12
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90942045"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950152"
 ---
-# <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>Krypterad anslutning med Transport Layer Security (TLS 1,2) i Azure Database for MySQL-flexibel Server
+# <a name="connect-to-azure-database-for-mysql---flexible-server-over-tls12ssl"></a>Ansluta till Azure Database for MySQL-flexibel Server över TLS 1.2/SSL
 
 > [!IMPORTANT]
 > Azure Database for MySQL flexibel Server är för närvarande en offentlig för hands version
@@ -22,8 +22,10 @@ Azure Database for MySQL flexibla servern stöder anslutning av klient program t
 
 Azure Database for MySQL flexibla servern stöder bara krypterade anslutningar med Transport Layer Security (TLS 1,2) och alla inkommande anslutningar med TLS 1,0 och TLS 1,1 kommer att nekas. För alla flexibla servrar är tvingande av TLS-anslutningar aktiverat och du kan inte inaktivera TLS/SSL för anslutning till flexibel Server.
 
-## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>Program som kräver certifikat verifiering för TLS/SSL-anslutning
-I vissa fall kräver program en lokal certifikat fil som genereras från en certifikat utfärdare för betrodda certifikat utfärdare för att ansluta säkert. Azure Database for MySQL flexibel Server använder *DigiCert global rot certifikat utfärdare*. Hämta det här certifikatet som krävs för att kommunicera via SSL från [DigiCert global rot certifikat utfärdare](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) och spara certifikat filen på önskad plats. I den här självstudien används till exempel `c:\ssl` .
+## <a name="download-the-public-ssl-certificate"></a>Ladda ned det offentliga SSL-certifikatet
+Hämta det [offentliga SSL-certifikatet](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)om du vill använda med din appliations.
+
+Spara certifikat filen på önskad plats. I den här självstudien används till exempel `c:\ssl` eller `\var\www\html\bin` i din lokala miljö eller i den klient miljö där programmet finns. Detta gör att program kan ansluta säkert till databasen via SSL. 
 
 ### <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>Anslut med MySQL kommando rads klient med TLS/SSL
 
@@ -58,6 +60,16 @@ Vissa program ramverk som använder MySQL för sina databas tjänster aktiverar 
 Anslutnings strängar som är fördefinierade på sidan "anslutnings strängar" som är tillgängliga för servern i Azure Portal innehåller de parametrar som krävs för vanliga språk för att ansluta till din databas server med TLS/SSL. TLS/SSL-parametern varierar beroende på anslutningen. Till exempel "useSSL = true", "sslmode = required" eller "ssl_verify_cert = true" och andra variationer.
 
 För att upprätta en krypterad anslutning till din flexibla Server över TLS/SSL från programmet, se följande kod exempel:
+
+### <a name="wordpress"></a>WordPress
+Hämta det [offentliga SSL-certifikatet](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) och Lägg till följande rader i wp-config. php efter raden ```// ** MySQL settings - You can get this info from your web host ** //``` .
+
+```php
+//** Connect with SSL** //
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+//** SSL CERT **//
+define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootCA.crt.pem');
+```
 
 ### <a name="php"></a>PHP
 

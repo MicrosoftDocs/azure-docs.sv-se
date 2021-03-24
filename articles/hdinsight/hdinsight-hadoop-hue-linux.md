@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945688"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865136"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installera och använda nyans på HDInsight Hadoop-kluster
 
@@ -80,17 +80,17 @@ Du kan bara ha ett användar konto med nyans i vanliga kluster. Aktivera [Enterp
    > [!NOTE]  
    > När du loggar in för första gången uppmanas du att skapa ett konto för att logga in på nyans portalen. De autentiseringsuppgifter som du anger här kommer att begränsas till portalen och är inte relaterade till de autentiseringsuppgifter för administratörer eller SSH-användare som du angav när klustret etableras.
 
-    ![Inloggnings fönster för HDInsight nyans-portalen](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Ange autentiseringsuppgifter för nyans-portalen")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="Inloggnings fönster för HDInsight nyans-portalen":::
 
 ### <a name="run-a-hive-query"></a>Köra en Hive-fråga
 
 1. Välj **Frågeredigeraren** på nyans-portalen och välj sedan **Hive** för att öppna Hive-redigeraren.
 
-    ![HDInsight nyans-portalen använder Hive-redigeraren](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Använd Hive")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="HDInsight nyans-portalen använder Hive-redigeraren":::
 
 2. På fliken **Assist** , under **databas**, bör du se **hivesampletable**. Det här är en exempel tabell som levereras med alla Hadoop-kluster i HDInsight. Ange en exempel fråga i den högra rutan och se utdata på fliken **resultat** i fönstret nedan, som visas i skärmdumpen.
 
-    ![HDInsight nyans-portalens Hive-fråga](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Kör Hive-fråga")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="HDInsight nyans-portalens Hive-fråga":::
 
     Du kan också använda fliken **diagram** för att visa en visuell representation av resultatet.
 
@@ -99,7 +99,7 @@ Du kan bara ha ett användar konto med nyans i vanliga kluster. Aktivera [Enterp
 1. Från nyans-portalen väljer du **fil läsare** i det övre högra hörnet på Meny raden.
 2. Som standard öppnas fil läsaren i **/User/myuser** -katalogen. Välj snedstrecket direkt före användar katalogen i sökvägen för att gå till roten för Azure Storage-behållaren som är associerad med klustret.
 
-    ![Webb läsar filen för HDInsight nyans-portalen](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Använd fil webbläsare")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="Webb läsar filen för HDInsight nyans-portalen":::
 
 3. Högerklicka på en fil eller mapp för att se tillgängliga åtgärder. Använd knappen **Ladda upp** i det högra hörnet för att ladda upp filer till den aktuella katalogen. Använd knappen **nytt** för att skapa nya filer eller kataloger.
 
@@ -118,7 +118,7 @@ Du kan bara ha ett användar konto med nyans i vanliga kluster. Aktivera [Enterp
 
 1. Med Linux-kluster kan du ha ett scenario där dina tjänster körs på den primära huvudnoden medan Resource Manager kan köras på den sekundära. Ett sådant scenario kan resultera i fel (visas nedan) när du använder nyans för att visa information om jobb som körs i klustret. Du kan dock Visa jobb informationen när jobbet har slutförts.
 
-   ![Fel exempel meddelande för nyans Portal](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Fel i nyans Portal")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Fel exempel meddelande för nyans Portal":::
 
    Detta beror på ett känt problem. Som en lösning kan du ändra Ambari så att den aktiva Resource Manager också körs på den primära huvudnoden.
 
