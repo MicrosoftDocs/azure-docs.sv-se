@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86529258"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950526"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Metod tips för övervakning och diagnostik för Azure Service Fabric
 
@@ -34,7 +34,7 @@ För Linux-kluster är Azure Monitor loggar även det rekommenderade verktyget f
 
 ## <a name="watchdogs"></a>Övervaknings enhet
 
-I allmänhet är en övervaknings enhet en separat tjänst som övervakar hälsa och belastning mellan tjänster, pingar slut punkter och rapporterar oväntade hälso händelser i klustret. Detta kan hjälpa till att förhindra fel som kanske inte identifieras baserat på prestanda för en enskild tjänst. Övervaknings enheter är också en bra plats för att vara värd för kod som utför en åtgärd som inte kräver användar åtgärder, till exempel rensa loggfiler i lagring vid vissa tidsintervall. Se en exempel på övervaknings tjänst implementering i  [Service Fabric Linux-kluster händelser i syslog](https://github.com/Azure-Samples/service-fabric-watchdog-service).
+I allmänhet är en övervaknings enhet en separat tjänst som övervakar hälsa och belastning mellan tjänster, pingar slut punkter och rapporterar oväntade hälso händelser i klustret. Detta kan hjälpa till att förhindra fel som kanske inte identifieras baserat på prestanda för en enskild tjänst. Övervaknings enheter är också en bra plats för att vara värd för kod som utför åtgärder som inte kräver användar åtgärder, till exempel att rensa loggfiler i lagring vid vissa tidsintervall. Om du vill ha en fullständigt implementerad server med öppen källkod, som innehåller en lättanvänd modell med enkel användnings barhet och som körs i både Windows-och Linux-kluster, kan du läsa [FabricObserver](https://aka.ms/sf/FabricObserver) -projektet. FabricObserver är en produktions klar program vara. Vi rekommenderar att du distribuerar FabricObserver till dina test-och produktions kluster och utökar IT-behoven så att de passar dina behov genom sin plugin-modell eller genom att förgrena in den och skriva egna inbyggda observatörer. De tidigare (plugin-programmen) är den rekommenderade metoden.
 
 ## <a name="next-steps"></a>Nästa steg
 

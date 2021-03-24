@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181456"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949999"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Åtkomst och identitetsalternativ för Azure Kubernetes Service (AKS)
 
@@ -73,6 +73,7 @@ Följande ytterligare behörigheter krävs av kluster identiteten när du skapar
 | Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Krävs om du använder ett undernät i en annan resurs grupp, till exempel ett anpassat VNET. |
 | Microsoft. Network/routeTables/routes/Read <br/> Microsoft. Network/routeTables/routes/Write | Krävs om du använder ett undernät som är associerat med en routningstabell i en annan resurs grupp, till exempel ett anpassat VNET med en anpassad väg tabell. Krävs för att kontrol lera om det redan finns ett undernät för under nätet i den andra resurs gruppen. |
 | Microsoft.Network/virtualNetworks/subnets/read | Krävs om du använder en intern belastningsutjämnare i en annan resurs grupp. Krävs för att kontrol lera om det redan finns ett undernät för den interna belastnings utjämningen i resurs gruppen. |
+| Microsoft. Network/privatednszones/* | Krävs om du använder en privat DNS-zon i en annan resurs grupp, till exempel en anpassad privateDNSZone. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 20e59f134c51662f9530862790d5a47b8bb21d6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c8126c051457d740d1a5414a130b4ee3fffcd8c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101650778"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954136"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Självstudie: integrera RingCentral med Azure Active Directory
 
@@ -189,8 +189,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den RingCentral som du ställer in SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen RingCentral i Mina appar, bör du loggas in automatiskt på den RingCentral som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen RingCentral i Mina appar, bör du loggas in automatiskt på den RingCentral som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat RingCentral kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat RingCentral kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
