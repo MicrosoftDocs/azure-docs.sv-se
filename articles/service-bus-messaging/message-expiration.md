@@ -3,12 +3,12 @@ title: Azure Service Bus-förfallo datum för meddelande
 description: I den här artikeln beskrivs förfallo datum och tid för Azure Service Bus meddelanden. Efter en sådan deadline levereras meddelandet inte längre.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042835"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952328"
 ---
 # <a name="message-expiration-time-to-live"></a>Förfallodatum för meddelanden (Time to Live)
 Nytto lasten i ett meddelande, eller ett kommando eller en fråga om att ett meddelande skickas till en mottagare, är nästan alltid beroende av en viss typ av förfallo datum för program nivå. Efter en sådan tids gräns levereras inte längre innehållet eller så körs inte den begärda åtgärden längre.
@@ -46,7 +46,7 @@ Service Bus köer, ämnen och prenumerationer kan skapas som temporära entitete
  
 Automatisk rensning är användbart i utvecklings-och test scenarier där entiteter skapas dynamiskt och inte rensas efter användningen, på grund av avbrott i testet eller fel söknings körningen. Det är också användbart när ett program skapar dynamiska entiteter, t. ex. en svarskö, för att få svar tillbaka till en webb Server process, eller till ett annat relativt kort period objekt där det är svårt att rensa dessa enheter när objekt instansen försvinner.
 
-Funktionen aktive ras med egenskapen **ta bort automatiskt vid inaktivitet** i namn området. Den här egenskapen anges till den varaktighet för vilken en entitet måste vara inaktiv (oanvänd) innan den tas bort automatiskt. Det minsta värdet för den här egenskapen är 5.
+Funktionen aktive ras med egenskapen **ta bort automatiskt vid inaktivitet** i namn området. Den här egenskapen anges till den varaktighet för vilken en entitet måste vara inaktiv (oanvänd) innan den tas bort automatiskt. Det minsta värdet för den här egenskapen är 5 minuter.
  
 ## <a name="idleness"></a>Inaktivitetskrav
 

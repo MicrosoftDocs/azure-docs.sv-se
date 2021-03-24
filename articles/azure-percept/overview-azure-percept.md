@@ -5,14 +5,14 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490117"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953609"
 ---
 # <a name="introduction-to-azure-percept"></a>Introduktion till Azure percept
 
@@ -22,30 +22,30 @@ Integreringen utmaningar en ansikten när du försöker distribuera Edge AI-lös
 
 - Identifiera och välja rätt kisel för att driva lösningarna.
 - Säkerställa den samlade säkerheten för maskin vara, program vara, modeller och data.
-- Möjlighet att bygga och hantera lösningar som fungerar smidigt, i stor skala.
+- Möjlighet att bygga och hantera lösningar som fungerar smidigt i stor skala.
 
 ## <a name="components-of-azure-percept"></a>Komponenter i Azure percept
 
 Huvud komponenterna i Azure-percept är:
 
-1. AI maskin varu referens design och certifierings program.
-
-    - Innehåller ett eko system för maskin varu utvecklare med mönster och bästa metoder för att utveckla Edge AI-maskinvara som enkelt kan integreras med Azure AI-och IoT-tjänster.
-
-2. Azure percept DK (devkit).
+1. [Azure percept DK.](./overview-azure-percept-dk.md)
 
     - Ett utvecklings paket som är tillräckligt flexibelt för att stödja en mängd olika prototyp scenarier för enhets byggare, lösnings utvecklare och kunder.
 
         > [!div class="nextstepaction"]
         > [Köp nu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-3. Tjänster och arbets flöden för att påskynda utvecklingen av AI-modellen och lösningen.
+1. Tjänster och arbets flöden som påskyndar utvecklingen av AI-modellen och lösningen.
 
     - Utvecklings arbets flöden och färdiga modeller som är tillgängliga från [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).
     - Utvecklings tjänster för modeller.
     - Enhets hanterings tjänster för skalning.
     - Säkerhet från slut punkt till slut punkt.
 
+1. AI maskin varu referens design och certifierings program.
+
+    - Innehåller ett eko system för maskin varu utvecklare med mönster och bästa metoder för att utveckla Edge AI-maskinvara som enkelt kan integreras med Azure AI-och IoT-tjänster.
+
 ## <a name="next-steps"></a>Nästa steg
 
-Kom igång med [Azure PERCEPT DK](./overview-azure-percept-dk.md). 
+Lär dig mer om [Azure PERCEPT DK](./overview-azure-percept-dk.md) och [Azure percept Studio](./overview-azure-percept-studio.md).

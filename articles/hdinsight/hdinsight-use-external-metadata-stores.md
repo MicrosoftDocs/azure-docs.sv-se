@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3bfcfbe59ccc15278b30470c6a060a9c1dd609c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931358"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871752"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Använda extern metadatalagring i Azure HDInsight
 
@@ -18,7 +18,7 @@ Med HDInsight kan du ta kontroll över dina data och metadata med externa data l
 
 Apache Hive metaarkiv i HDInsight är en viktig del av Apache Hadoop arkitekturen. En metaarkiv är central schema lagrings plats. Metaarkiv används av andra Big Data Access-verktyg som Apache Spark, Interactive Query (LLAP), Presto eller Apache gris. HDInsight använder en Azure SQL Database som Hive-metaarkiv.
 
-![HDInsight Hive metadata lager arkitektur](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png" alt-text="HDInsight Hive metadata lager arkitektur" border="false":::
 
 Det finns två sätt att konfigurera en metaarkiv för dina HDInsight-kluster:
 
@@ -56,7 +56,7 @@ HDInsight har också stöd för anpassade metastores, vilket rekommenderas för 
 
 * Klustret och det externa metaarkiv måste finnas i samma region.
 
-![Användnings fall för HDInsight Hive-metadatalagret](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png" alt-text="Användnings fall för HDInsight Hive-metadatalagret" border="false":::
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Skapa och konfigurera Azure SQL Database för den anpassade metaarkiv
 
@@ -66,15 +66,15 @@ När du skapar klustret måste HDInsight-tjänsten ansluta till den externa meta
 
 Privata slut punkter för SQL-arkiv stöds endast på kluster som skapats med `outbound` ResourceProviderConnection. Mer information finns i den här [dokumentationen](./hdinsight-private-link.md).
 
-![knappen Ange server brand vägg](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png" alt-text="knappen Ange server brand vägg":::
 
-![Tillåt åtkomst till Azure-tjänster](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png" alt-text="Tillåt åtkomst till Azure-tjänster":::
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Välj en anpassad metaarkiv när klustret skapas
 
 Du kan när som helst peka klustret till en tidigare skapad Azure SQL Database. För att skapa kluster via portalen anges alternativet från **lagrings > metaarkiv inställningar**.
 
-![HDInsight Hive-metadatalagret Azure Portal](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png" alt-text="HDInsight Hive-metadatalagret Azure Portal":::
 
 ## <a name="hive-metastore-guidelines"></a>Hive-metaarkiv rikt linjer
 

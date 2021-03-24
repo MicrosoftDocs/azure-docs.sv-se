@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 05199968339329632c2e68e9604e3f5308e8b12b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941388"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871664"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Visualisera interaktiva frågor Apache Hive data med Microsoft Power BI med direkt fråga i HDInsight
 
 Den här artikeln beskriver hur du ansluter Microsoft Power BI till interaktiva Azure HDInsight-frågegrupper och visualiserar Apache Hive data med direkt fråga. Exemplet läser in data från en Hive- `hivesampletable` tabell till Power BI. `hivesampletable`Hive-tabellen innehåller vissa mobil telefon användnings data. Sedan kan du rita användnings data på en världs karta:
 
-![HDInsight Power BI kart rapporten](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png" alt-text="HDInsight Power BI kart rapporten" border="true":::
 
 Du kan utnyttja [Apache Hive ODBC-drivrutinen](../hadoop/apache-hadoop-connect-hive-power-bi.md) för att importera via den allmänna ODBC-anslutningen i Power BI Desktop. Det rekommenderas dock inte för BI-arbetsbelastningar med icke-interaktiv natur för Hive-frågemotor. [Hdinsights interaktiva Query Connector](./apache-hadoop-connect-hive-power-bi-directquery.md) och [HDInsight Apache Spark Connector](/power-bi/spark-on-hdinsight-with-direct-connect) är bättre för deras prestanda.
 
@@ -34,7 +34,7 @@ Innan du går igenom den här artikeln måste du ha följande objekt:
 
 2. I meny raden går du till **Start**  >  **Hämta data**  >  **mer.**...
 
-    ![HDInsight Power BI hämta data mer](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png" alt-text="HDInsight Power BI hämta data mer" border="true":::
 
 3. I fönstret **Hämta data** anger du **HDInsight** i sökrutan.  
 
@@ -50,7 +50,7 @@ Innan du går igenom den här artikeln måste du ha följande objekt:
     |Databas |Ange **standard** för den här artikeln.|
     |Läge för dataanslutning |Välj **DirectQuery** för den här artikeln.|
 
-    ![Interaktiv HDInsight-fråga Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png" alt-text="Interaktiv HDInsight-fråga Power BI DirectQuery Connect" border="true":::
 
 7. Ange HTTP-autentiseringsuppgifterna och välj sedan **Anslut**. Standard användar namnet är **admin**.
 
@@ -58,7 +58,7 @@ Innan du går igenom den här artikeln måste du ha följande objekt:
 
 9. Välj **Läs in** från huvud fönstret.
 
-    ![Interaktiv HDInsight-fråga Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png" alt-text="Interaktiv HDInsight-fråga Power BI hivesampletable" border="true":::
 
 ## <a name="visualize-data-on-a-map"></a>Visualisera data på en karta
 
@@ -66,7 +66,7 @@ Fortsätt från den senaste proceduren.
 
 1. I fönstret visualiseringar väljer du **karta**, ikonen jordglob. En allmän karta visas sedan i huvud fönstret.
 
-    ![Power BI anpassnings rapport för HDInsight](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png" alt-text="Power BI anpassnings rapport för HDInsight" border="true":::
 
 2. I fönstret fält väljer du **land** och **devicemake**. En världs karta med data punkter visas i huvud fönstret efter en liten stund.
 

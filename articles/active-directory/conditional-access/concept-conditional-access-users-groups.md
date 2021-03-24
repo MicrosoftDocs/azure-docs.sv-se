@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579067"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952821"
 ---
 # <a name="conditional-access-users-and-groups"></a>Villkorlig åtkomst: användare och grupper
 
@@ -38,7 +38,7 @@ Följande alternativ är tillgängliga för att ta med när du skapar en princip
    - Alla gäst-och externa användare
       - Det här valet inkluderar alla B2B-gäster och externa användare, inklusive alla användare med `user type` attributet inställt på `guest` . Det här valet gäller även för alla externa användare som är inloggade från en annan organisation som en moln lösnings leverantör (CSP). 
    - Katalogroller
-      - Administratörer kan välja särskilda inbyggda Azure AD-katalog roller som används för att fastställa princip tilldelningen. Organisationer kan till exempel skapa en mer restriktiv princip för användare som har tilldelats rollen som global administratör. Andra roll typer stöds inte, inklusive administrativa enhets omfångs katalog roller, anpassade roller.
+      - Administratörer kan välja särskilda inbyggda Azure AD-katalog roller som används för att fastställa princip tilldelningen. Organisationer kan till exempel skapa en mer restriktiv princip för användare som har tilldelats rollen som global administratör. Andra roll typer stöds inte, inklusive administrativa enhets omfattnings roller och anpassade roller.
    - Användare och grupper
       - Tillåter mål för specifika uppsättningar av användare. Organisationer kan till exempel välja en grupp som innehåller alla medlemmar i PERSONALAVDELNINGEN när en HR-app väljs som Cloud-App. En grupp kan vara vilken typ av grupp som helst i Azure AD, inklusive dynamiska eller tilldelade säkerhets-och distributions grupper. Principen kommer att tillämpas på kapslade användare och grupper.
 

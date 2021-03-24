@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 998b52a23894dcb7fa08b2c0fd42e4ef8e3678ae
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a5562c5f40a321f5737fea73f6d7964b402953cb
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102554997"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889220"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Självstudie: ansluta till en Azure SQL-Server med en privat Azure-slutpunkt – Azure CLI
 
@@ -218,9 +218,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurera den privata DNS-zonen
 
-I det här avsnittet ska du skapa och konfigurera den privata DNS-zonen med [AZ Network Private-DNS Zone Create](/cli/azure/ext/privatedns/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
+I det här avsnittet ska du skapa och konfigurera den privata DNS-zonen med [AZ Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
 
-Du använder [AZ Network Private-DNS Link VNet Create](/cli/azure/ext/privatedns/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) för att skapa den virtuella nätverks länken till DNS-zonen.
+Du använder [AZ Network Private-DNS Link VNet Create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) för att skapa den virtuella nätverks länken till DNS-zonen.
 
 Du skapar en DNS-zon grupp med [AZ Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create).
 

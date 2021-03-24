@@ -2,13 +2,13 @@
 title: Borttagning av distributionshistorik
 description: Beskriver hur Azure Resource Manager automatiskt tar bort distributioner från distributions historiken. Distributioner tas bort när historiken är nära att överskrida gränsen på 800.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91652490"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951971"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatisk borttagning från distributions historik
 
@@ -53,6 +53,12 @@ Om du vill använda Azure CLI för att ta bort ett lås kör du följande komman
 lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
 az lock delete --ids $lockid
 ```
+
+## <a name="required-permissions"></a>Behörigheter som krävs
+
+Borttagningarna begärs under identiteten för den användare som distribuerade mallen. Användaren måste ha åtkomst till åtgärden **Microsoft. Resources/distribution/Delete** för att kunna ta bort distributioner. Om användaren inte har de behörigheter som krävs raderas inte distributioner från historiken.
+
+Om den aktuella användaren inte har de behörigheter som krävs görs ett försök att utföra automatisk borttagning igen under nästa distribution.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Inaktivera automatiska borttagningar
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100574601"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872089"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurera utgående nätverks trafik för Azure HDInsight-kluster med hjälp av brand vägg
 
@@ -52,7 +52,7 @@ Skapa en program regel samling som gör det möjligt för klustret att skicka oc
 
 1. Gå till **Inställningar**  >  **regler**  >  **program regel samling**  >  **+ Lägg till program regel samling**.
 
-    ![Rubrik: Lägg till program regel samling](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png" alt-text="Rubrik: Lägg till program regel samling":::
 
 1. Ange följande information på skärmen **Lägg till program regel samling** :
 
@@ -78,7 +78,7 @@ Skapa en program regel samling som gör det möjligt för klustret att skicka oc
     | Rule_3 | * | https:443 | login.microsoftonline.com | Tillåt Windows inloggnings aktivitet |
     | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Ersätt `storage_account_name` med det faktiska lagrings konto namnet. Om du bara vill använda HTTPS-anslutningar kontrollerar du att ["säker överföring krävs"](../storage/common/storage-require-secure-transfer.md) är aktiverat på lagrings kontot. Om du använder privat slut punkt för att komma åt lagrings konton behövs inte det här steget och lagrings trafiken vidarebefordras inte till brand väggen.|
 
-   ![Rubrik: Ange information om program regel samling](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Rubrik: Ange information om program regel samling":::
 
 1. Välj **Lägg till**.
 
@@ -105,7 +105,7 @@ Skapa nätverks reglerna för att konfigurera HDInsight-klustret på rätt sätt
     | Rule_5 | TCP | * | SQL | 1433 | Om du använder standard-SQL-servrarna som tillhandahålls av HDInsight konfigurerar du en nätverks regel i avsnittet service Tags för SQL som gör att du kan logga och granska SQL-trafik. Om du inte har konfigurerat tjänst slut punkter för SQL Server i HDInsight-undernätet, vilket kringgår brand väggen. Om du använder anpassad SQL Server för Ambari, Oozie, ranger och Hive metastores behöver du bara tillåta trafiken till dina egna anpassade SQL-servrar.|
     | Rule_6 | TCP | * | Azure Monitor | * | valfritt Kunder som planerar att använda funktionen för automatisk skalning bör lägga till den här regeln. |
     
-   ![Rubrik: Ange program regel samling](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Rubrik: Ange program regel samling":::
 
 1. Välj **Lägg till**.
 

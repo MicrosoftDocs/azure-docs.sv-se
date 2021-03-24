@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cf97039983ecec44a7c3a32e178fdcf9f9c45ff
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576334"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872191"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Fråga Azure Monitor loggar för att övervaka HDInsight-kluster
 
@@ -37,13 +37,13 @@ Lär dig hur du söker efter vissa mått för ditt HDInsight-kluster.
     search *
     ```
 
-    ![Apache Ambari Analytics Sök i alla mått](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Sök alla mått")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png" alt-text="Apache Ambari Analytics Sök i alla mått":::
 
 1. På den vänstra menyn väljer du fliken **filter** .
 
 1. Under **typ** väljer du **pulsslag**. Välj **använd & kör**.
 
-    ![Sök efter vissa mått i Log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Sök efter vissa mått")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png" alt-text="Sök efter vissa mått i Log Analytics":::
 
 1. Observera att frågan i text rutan ändras till:
 
@@ -54,13 +54,13 @@ Lär dig hur du söker efter vissa mått för ditt HDInsight-kluster.
 
 1. Du kan gå djupare genom att använda alternativen som finns i den vänstra menyn. Exempel:
 
-    - Så här visar du loggar från en speciell nod:
+   - Så här visar du loggar från en speciell nod:
 
-        ![Sök efter vissa fel output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Sök efter vissa fel output1")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png" alt-text="Sök efter vissa fel output1":::
 
-    - Så här visar du loggar vid vissa tidpunkter:
+   - Så här visar du loggar vid vissa tidpunkter:
 
-        ![Sök efter vissa fel output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Sök efter vissa fel output2")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png" alt-text="Sök efter vissa fel output2":::
 
 1. Välj **tillämpa & kör** och granska resultaten. Observera också att frågan har uppdaterats till:
 
@@ -102,11 +102,11 @@ Det första steget för att skapa en avisering är att komma till en fråga base
 
 1. Välj **ny varnings regel** överst på sidan.
 
-    ![Ange fråga för att skapa en alert1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Ange fråga för att skapa en alert1")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png" alt-text="Ny varnings regel":::
 
 1. I fönstret **Skapa regel** anger du frågan och annan information för att skapa en avisering och väljer sedan **skapa aviserings regel**.
 
-    ![Ange fråga för att skapa en alert2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Ange fråga för att skapa en alert2")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png" alt-text="Definiera varnings villkor.":::
 
 ### <a name="edit-or-delete-an-existing-alert"></a>Redigera eller ta bort en befintlig avisering
 
@@ -120,7 +120,7 @@ Det första steget för att skapa en avisering är att komma till en fråga base
 
 1. Du har följande alternativ: **Spara**, **ta** bort, **inaktivera** och **ta bort**.
 
-    ![HDInsight Azure Monitor loggar varning ta bort redigera](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    :::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png" alt-text="HDInsight Azure Monitor loggar varning ta bort redigera":::
 
 Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
 

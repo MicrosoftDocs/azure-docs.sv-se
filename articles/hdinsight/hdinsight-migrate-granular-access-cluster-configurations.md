@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a30768f4904c9e5be2edc020f12260cf3a54c889
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425897"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954878"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrera till detaljerad rollbaserad åtkomst för klusterkonfigurationer
 
@@ -27,8 +27,8 @@ Vi introducerar också en ny roll för [HDInsight-kluster](../role-based-access-
 
 | Roll                                  | Tidigare                                                                                       | Gå framåt       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Läsare                                | – Läs behörighet, inklusive hemligheter.                                                                   | -Läs behörighet, **förutom** hemligheter |           |   |   |
-| HDInsight-kluster operator<br>(Ny roll) | Ej tillämpligt                                                                                              | -Läs-/Skriv behörighet, inklusive hemligheter         |   |   |
+| Läsare                                | – Läs behörighet, inklusive hemligheter.                                                                   | -Läs behörighet, **förutom** hemligheter | 
+| HDInsight-kluster operator<br>(Ny roll) | Ej tillämpligt                                                                                              | -Läs-/Skriv behörighet, inklusive hemligheter         | 
 | Deltagare                           | – Läs-/skriv åtkomst, inklusive hemligheter.<br>– Skapa och hantera alla typer av Azure-resurser.<br>-Kör skript åtgärder.     | Ingen ändring |
 | Ägare                                 | – Läs-/skriv åtkomst inklusive hemligheter.<br>-Fullständig åtkomst till alla resurser<br>– Delegera åtkomst till andra.<br>-Kör skript åtgärder. | Ingen ändring |
 

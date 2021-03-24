@@ -240,8 +240,12 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Skapa VM-avbildning
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: Använd Windows generaliserad avbildning
+              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
             - name: VM-storlekar och typer som stöds
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: Anslut till konsolen för virtuella datorer
+              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
         - name: Hantera certifikat
           items:
             - name: Krav
@@ -310,7 +314,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Delad viktig information
       items:
-        - name: 2101 – aktuell
+        - name: 2103 – aktuell
+          href: azure-stack-edge-gpu-2103-release-notes.md
+        - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2010-release-notes.md

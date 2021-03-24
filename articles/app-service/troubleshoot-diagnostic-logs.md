@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 03ef2110af2d9e642019c2b07b53fae3e32b1ea6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452262"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950186"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivera diagnostikloggning för appar i Azure App Service
 ## <a name="overview"></a>Översikt
@@ -116,7 +116,7 @@ I program koden använder du vanliga loggnings funktioner för att skicka logg m
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Som standard använder ASP.NET Core loggnings leverantören [Microsoft. Extensions. logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Mer information finns i [ASP.net Core loggning i Azure](/aspnet/core/fundamentals/logging/). Information om WebJobs SDK-loggning finns i [Kom igång med Azure WEBJOBS SDK](/azure/app-service/webjobs-sdk-get-started#enable-console-logging)
+- Som standard använder ASP.NET Core loggnings leverantören [Microsoft. Extensions. logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Mer information finns i [ASP.net Core loggning i Azure](/aspnet/core/fundamentals/logging/). Information om WebJobs SDK-loggning finns i [Kom igång med Azure WEBJOBS SDK](./webjobs-sdk-get-started.md#enable-console-logging)
 
 ## <a name="stream-logs"></a>Strömningsloggar
 

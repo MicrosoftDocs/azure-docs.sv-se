@@ -3,12 +3,12 @@ title: Länka mallar för distribution
 description: 'Beskriver hur du använder länkade mallar i en Azure Resource Manager-mall (ARM-mall) för att skapa en modulär mall-lösning. Visar hur du skickar parameter värden, anger en parameter fil och dynamiskt skapade URL: er.'
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 3636ea64227a7c013134d96647144d4f1e2ae31e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6076cbae43e420ac354b5c9d7d101a9c541c078d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211319"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889186"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Använda länkade och nästlade mallar vid distribution av Azure-resurser
 
@@ -37,7 +37,7 @@ Om du vill kapsla en mall lägger du till en [distributions resurs](/azure/templ
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -66,7 +66,7 @@ I följande exempel distribueras ett lagrings konto via en kapslad mall.
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -103,7 +103,7 @@ Du ställer in omfånget via `expressionEvaluationOptions` egenskapen. Som stand
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
+  "apiVersion": "2020-10-01",
   "name": "nestedTemplate1",
   "properties": {
     "expressionEvaluationOptions": {
@@ -130,7 +130,7 @@ Följande mall visar hur mall uttryck matchas enligt omfånget. Den innehåller 
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -214,7 +214,7 @@ I följande exempel distribueras en SQL-Server och en nyckel valvs hemlighet som
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -321,7 +321,7 @@ Följande utdrag visar vilka värden som är säkra och som inte är säkra.
     {
       "name": "outer",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "outer"
@@ -351,7 +351,7 @@ Följande utdrag visar vilka värden som är säkra och som inte är säkra.
     {
       "name": "inner",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -417,7 +417,7 @@ Om du vill länka en mall lägger du till en [distributions resurs](/azure/templ
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -453,7 +453,7 @@ Du kan ange parametrar för den länkade mallen antingen i en extern fil eller i
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -476,7 +476,7 @@ Om du vill skicka parameter värden infogat använder du `parameters` egenskapen
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -641,7 +641,7 @@ I följande exempel mall visas hur du använder `copy` med en kapslad mall.
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "[concat('nestedTemplate', copyIndex())]",
     // yes, copy works here
     "copy": {
@@ -758,7 +758,7 @@ Följande mall länkar till föregående mall. Den skapar tre offentliga IP-adre
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -828,7 +828,7 @@ I följande exempel visas hur du skickar en SAS-token vid länkning till en mall
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
