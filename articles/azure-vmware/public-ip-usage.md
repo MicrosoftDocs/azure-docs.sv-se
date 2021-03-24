@@ -3,12 +3,12 @@ title: Använda funktionen för offentliga IP-funktioner i Azure VMware-lösning
 description: Den här artikeln förklarar hur du använder funktionen för offentliga IP-funktioner i Azure Virtual WAN.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 794e24e531d464adf58d5a06b5a411ada18c4a60
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99581388"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023664"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Använda funktionen för offentliga IP-funktioner i Azure VMware-lösningen
 
@@ -47,6 +47,9 @@ Webb servern tar emot begäran och svarar med den begärda informationen eller s
 
 ## <a name="test-case"></a>Testfall
 I det här scenariot publicerar du IIS-webbservern på Internet. Använd funktionen offentlig IP i Azure VMware-lösningen för att publicera webbplatsen på en offentlig IP-adress.  Du kan också konfigurera NAT-regler i brand väggen och komma åt Azure VMware-lösningen resurs (VM: ar med en webb server) med offentlig IP-adress.
+
+>[!TIP]
+>Om du vill aktivera utgående trafik måste du ställa in säkerhets konfiguration > Internet trafik till **Azure-brandväggen**.
 
 ## <a name="deploy-virtual-wan"></a>Distribuera Virtual WAN
 
@@ -152,7 +155,7 @@ När alla komponenter har distribuerats kan du se dem i den tillagda resurs grup
 
 ## <a name="limitations"></a>Begränsningar
 
-Du kan ha 100 offentliga IP-adresser per SDDCs.
+Du kan ha 100 offentliga IP-adresser per privat moln.
 
 ## <a name="next-steps"></a>Nästa steg
 

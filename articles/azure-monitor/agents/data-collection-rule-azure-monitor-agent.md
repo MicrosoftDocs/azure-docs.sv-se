@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721536"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022984"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurera data insamling för Azure Monitor agenten (för hands version)
 
@@ -92,7 +92,7 @@ I följande tabell visas exempel för att filtrera händelser med hjälp av en a
 | Beskrivning |  XPath |
 |:---|:---|
 | Samla endast in system händelser med händelse-ID = 4648 |  `System!*[System[EventID=4648]]`
-| Samla endast in system händelser med händelse-ID = 4648 och process namnet consent.exe |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Samla endast in system händelser med händelse-ID = 4648 och process namnet consent.exe | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
 | Samla in alla kritiska händelser, fel, varnings-och informations händelser från system händelse loggen utom händelse-ID = 6 (driv rutin inläst) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
 | Samla in alla lyckade och misslyckade säkerhets händelser förutom händelse-ID 4624 (lyckad inloggning) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
 

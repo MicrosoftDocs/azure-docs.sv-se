@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 826759907bfe5ec3359bf5c9125909466372c68f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608154"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023086"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Fel sökning för Azure percept DK (dev Kit)
 
@@ -45,7 +45,7 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ```[local host file path]``` refererar till platsen på värddatorn som du vill kopiera. txt-filen till. ```[remote username]``` är SSH-användarnamnet valt under [installationen](./quickstart-percept-dk-set-up.md). Om du inte har konfigurerat en SSH-inloggning under OOBE är ditt fjärranvändarnamn ```root``` .
 
-Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentationen för Azure IoT Edge enheten](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentationen för Azure IoT Edge enheten](../iot-edge/troubleshoot.md).
 
 |Kategori:         |Kommandoprompt                    |Funktioner                  |
 |------------------|----------------------------|---------------------------|
@@ -66,9 +66,9 @@ Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentation
 |Azure IoT Edge          |```sudo journalctl -u iotedge -f``` |Visa loggarna för Azure IoT Edge Security Manager |
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Starta om Azure IoT Edge Security daemon |
 |Azure IoT Edge          |```sudo iotedge list```           |Visa en lista över distribuerade Azure IoT Edge-moduler |
-|Övrigt             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
-|Övrigt             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
-|Övrigt             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
+|Annat             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
+|Annat             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
+|Annat             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
 
 
 ```journalctl```Wi-Fi kommandon kan kombineras i följande enda kommando:
@@ -105,5 +105,3 @@ Det finns tre små indikatorer ovanpå transport örens hölje. En moln ikon skr
 |LAMPA 2 (Wi-Fi)   |Snabb blinkning |Autentiseringen lyckades, enhets associationen pågår. |
 |LAMPA 2 (Wi-Fi)   |På (heldragen) |Autentisering och Association lyckades. enheten är ansluten till ett Wi-Fi nätverk. |
 |INDIKATOR 3           |NA         |INDIKATORn används inte. |
-
-

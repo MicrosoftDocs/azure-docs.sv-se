@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bcf28fbc0d2f4ec9eeac5bcb8f0b2c9b65a62b6b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 876564934b1ccbffa19c318a2d2c8393e5dca54e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775055"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023987"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurera en Kerberos Key Distribution Center proxy (förhands granskning)
 
@@ -70,6 +70,6 @@ Så här konfigurerar du KDC-proxyn:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du hanterar den Fjärrskrivbordstjänster sidan av KDC-proxyn och tilldelar RD Gateway-rollen finns i [distribuera RD Gateway-rollen](/windows-server/remote/rd-gateway-role).
+Information om hur du hanterar den Fjärrskrivbordstjänster sidan av KDC-proxyn och tilldelar RD Gateway-rollen finns i [distribuera RD Gateway-rollen](rd-gateway-role.md).
 
 Om du är intresse rad av att skala KDC-proxyservrarna lär du dig att konfigurera hög tillgänglighet för KDC-proxy med [hög tillgänglighet till webb sidan för webb-och gateway-webbfrontend](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha).

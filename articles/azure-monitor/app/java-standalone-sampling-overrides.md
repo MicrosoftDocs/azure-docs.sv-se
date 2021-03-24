@@ -6,23 +6,22 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 03d3093f14d97b2cc64d91e0d1b7adf34204a021
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 17979bd548ca0d7b704ebdeb4d060bf35973b319
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962706"
+ms.locfileid: "105024155"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Åsidosättningar av sampling (för hands version) – Azure Monitor Application Insights för Java
 
 > [!NOTE]
-> Funktionen för åsidosättning av samplingar är i för hands version.
+> Funktionen för åsidosättning av samplingar är i för hands version, från och med 3.0.3-BETA. 2.
 
-Här är några användnings fall för åsidosättningar av sampling:
- * Förhindra insamling av telemetri för hälso kontroller.
- * Förhindra insamling av telemetri för brus beroende anrop.
- * Minska bruset från hälso kontroller eller brus beroende anrop utan att ignorera dem helt.
- * Samla in 100% av telemetri för en viktig typ av begäran (t. ex. `/login` ) även om du har konfigurerat standard sampling till något lägre.
+Med exempel på åsidosättningar kan du åsidosätta [standard samplings procenten](./java-standalone-config.md#sampling), till exempel:
+ * Ange samplings procenten till 0 (eller ett litet värde) för hälso kontroller i bruset.
+ * Ange samplings procenten till 0 (eller ett litet värde) för beroende anrop i bruset.
+ * Ange samplings procenten till 100 för en viktig typ av begäran (t. ex. `/login` ) även om du har konfigurerat standard samplingen till något lägre.
 
 ## <a name="terminology"></a>Terminologi
 
@@ -79,7 +78,7 @@ Endast den första samplings åsidosättning som matchar används.
 
 Om inga samplings åsidosättningar matchar:
 
-* Om detta är det första omfånget i spårningen används [Normal samplings procent](./java-standalone-config.md#sampling) .
+* Om detta är det första omfånget i spårningen används [standard samplings procenten](./java-standalone-config.md#sampling) .
 * Om detta inte är det första omfånget i spårningen används det överordnade samplings beslutet.
 
 > [!IMPORTANT]

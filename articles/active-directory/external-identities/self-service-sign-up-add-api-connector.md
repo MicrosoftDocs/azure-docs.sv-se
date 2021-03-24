@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3d5e25df68bbf793535b22602ad581db24a1426f
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008730"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022916"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Lägga till en API-anslutning till ett användar flöde
 
@@ -53,13 +53,22 @@ Grundläggande HTTP-autentisering definieras i [RFC 2617](https://tools.ietf.org
 > [!IMPORTANT]
 > Den här funktionen är en för hands version och tillhandahålls utan ett service nivå avtal. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Autentisering av klient certifikat är en ömsesidigt certifikatbaserad autentisering, där klienten tillhandahåller ett klient certifikat för servern för att bevisa sin identitet. I det här fallet kommer Azure Active Directory att använda det certifikat som du överför som en del av API-kopplingens konfiguration. Detta inträffar som en del av SSL-handskakningen. Endast tjänster som har rätt certifikat kan komma åt din API-tjänst. Klient certifikatet är ett digitalt X. 509-certifikat. I produktions miljöer bör den signeras av en certifikat utfärdare. 
+Autentisering av klient certifikat är en metod för ömsesidigt certifikatbaserad autentisering där klienten tillhandahåller ett klient certifikat till servern för att bevisa sin identitet. I det här fallet kommer Azure Active Directory att använda det certifikat som du överför som en del av API-kopplingens konfiguration. Detta inträffar som en del av SSL-handskakningen. Din API-tjänst kan sedan begränsa åtkomsten till endast tjänster som har rätt certifikat. Klient certifikatet är ett PKCS12 (PFX) X. 509-digitalt certifikat. I produktions miljöer bör den signeras av en certifikat utfärdare. 
 
-Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../../key-vault/certificates/create-certificate.md), som innehåller alternativ för självsignerade certifikat och integreringar med certifikat utfärdare för signerade certifikat. Sedan kan du [Exportera certifikatet](../../key-vault/certificates/how-to-export-certificate.md) och ladda upp det för användning i API Connectors-konfigurationen. Observera att lösen ord krävs endast för certifikatfiler som skyddas av ett lösen ord. Du kan också använda PowerShell [: s New-SelfSignedCertificate-cmdlet](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) för att skapa ett självsignerat certifikat.
+Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../../key-vault/certificates/create-certificate.md), som innehåller alternativ för självsignerade certifikat och integreringar med certifikat utfärdare för signerade certifikat. De rekommenderade inställningarna är:
+- **Ämne**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Innehålls typ**: `PKCS #12`
+- **Livs längd Acton typ**: `Email all contacts at a given percentage lifetime` eller `Email all contacts a given number of days before expiry`
+- **Privat nyckel för exportable**: `Yes` (för att kunna exportera PFX-fil)
 
-Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autentisering](../../app-service/app-service-web-configure-tls-mutual-auth.md) för att lära dig hur du aktiverar och validerar certifikatet från API-slutpunkten.
+Sedan kan du [Exportera certifikatet](../../key-vault/certificates/how-to-export-certificate.md). Du kan också använda PowerShell [: s New-SelfSignedCertificate-cmdlet](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) för att skapa ett självsignerat certifikat.
 
-Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Om du vill överföra ett nytt certifikat till en befintlig API-koppling väljer du API-anslutningen under **alla API-kopplingar** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som har passerat start datumet används automatiskt av Azure Active Directory.
+När du har ett certifikat kan du ladda upp det som en del av konfigurationen av API-anslutningen. Observera att lösen ord krävs endast för certifikatfiler som skyddas av ett lösen ord.
+
+Ditt API måste implementera auktoriseringen baserat på skickade klient certifikat för att skydda API-slutpunkterna. Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autentisering](../../app-service/app-service-web-configure-tls-mutual-auth.md) för att lära dig hur du aktiverar och *validerar certifikatet från API-koden*.  Du kan också använda Azure API Management för att skydda ditt API och [kontrol lera egenskaperna för klient certifikatet](
+../../api-management/api-management-howto-mutual-certificates-for-clients.md) mot önskade värden med hjälp av princip uttryck.
+ 
+Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Du måste generera ett nytt certifikat och upprepa stegen ovan. Din API-tjänst kan tillfälligt fortsätta att godkänna gamla och nya certifikat medan det nya certifikatet distribueras. Om du vill överföra ett nytt certifikat till en befintlig API-koppling väljer du API-anslutningen under **alla API-kopplingar** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som är tidigare kommer start datumet att användas automatiskt av Azure Active Directory.
 
 ### <a name="api-key"></a>API-nyckel
 Vissa tjänster använder en API-nyckel för att obfuscate åtkomst till dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 

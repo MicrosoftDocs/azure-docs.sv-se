@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server till SQL-hanterad instans: prestanda analys'
+title: 'SQL Server till Azure SQL-hanterad instans: prestanda analys'
 description: Lär dig att skapa och jämföra en bas linje för prestanda när du migrerar SQL Server-databaser till Azure SQL-hanterad instans.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: 28eedd3a22a0a5adc6e9a37c9e0f0fa0214a4e47
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a97dabe36efb252b04c1b5c8fa741d33a6c92703
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564447"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023681"
 ---
-# <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Migrerings prestanda: SQL Server till prestanda analys av SQL-hanterade instanser
+# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-analysis"></a>Migrerings prestanda: SQL Server till prestanda analys av Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Skapa en bas linje för prestanda som jämför arbets Belastningens prestanda på en SQL-hanterad instans med din ursprungliga arbets belastning som körs på SQL Server. 

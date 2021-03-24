@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466600"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023120"
 ---
-# <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Använd Java-webbprogram och migrera till Azure Kubernetes-tjänsten
+# <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Skapa behållare och migrering av Java-webbappar till Azure Kubernetes-tjänsten
 
 I den här artikeln lär du dig att Använd Java-webbappar (som körs på Apache Tomcat) och migrera dem till [Azure Kubernetes service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) med hjälp av verktyget Azure Migrate: app skapa behållare. Skapa behållare-processen kräver inte åtkomst till kodbasen och ger ett enkelt sätt att Använd befintliga program. Verktyget fungerar med körnings status för program på en server för att fastställa program komponenterna och hjälper dig att paketera dem i en behållar avbildning. Det containerbaserade programmet kan sedan distribueras i Azure Kubernetes service (AKS).
 
@@ -59,7 +59,7 @@ Innan du börjar de här självstudierna bör du:
 
 **Krav** | **Information**
 --- | ---
-**Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> Windows-datorn som kör verktyget bör ha nätverks anslutning till de servrar/virtuella datorer som är värd för de ASP.NET-program som ska behållas.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn ska ha Internet åtkomst, direkt eller via en proxyserver. <br/> <br/>Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
+**Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> När verktyget körs på en Windows-dator måste den ha en nätverksanslutning till servern/den virtuella datorn som ska vara värd för de ASP.NET-program som ska inkapslas i en container.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn måste ha åtkomst till Internet, antingen direkt eller via en proxy. <br/> <br/>Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
 **Programservrar** | – Aktivera SSH-anslutning (Secure Shell) på port 22 på de servrar som kör de Java-program som ska behållas. <br/>
 **Java-webapp** | Verktyget stöder för närvarande <br/><br/> – Program som körs på Tomcat 8 eller senare.<br/> – Program servrar på Ubuntu Linux 16.04/18.04/20.04, Debian 7/8, CentOS 6/7, Red Hat Enterprise Linux 5/6/7. <br/> – Program som använder Java version 7 eller senare.  <br/><br/> Verktyget stöder för närvarande inte <br/><br/> – Program servrar som kör flera Tomcat-instanser <br/>  
 
@@ -104,7 +104,7 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 3. Kör installations skriptet med kommandot
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Starta verktyget app skapa behållare

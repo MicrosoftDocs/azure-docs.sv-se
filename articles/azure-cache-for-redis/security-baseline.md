@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 516a66ef64512cbe4fa4c3589e651c14ddf18550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38b6251c4b464214d66f7240dab9d5d23812f946
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101647633"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023222"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azures säkerhets bas linje för Azure cache för Redis
 
@@ -34,7 +34,7 @@ Du kan också ange brand Väggs regler med start-och slut-IP-adressintervall. N�
 
 - [Så här konfigurerar du Virtual Network stöd för en Premium Azure-cache för Redis](cache-how-to-premium-vnet.md)
 
-- [Så här konfigurerar du Azure cache för brand Väggs regler för Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Så här konfigurerar du Azure cache för brand Väggs regler för Redis](./cache-configure.md#firewall)
 
 **Ansvar**: Kund
 
@@ -68,7 +68,7 @@ Aktivera DDoS Protection standard på virtuella nätverk som är kopplade till A
 
 - [Så här konfigurerar du Virtual Network stöd för en Premium Azure-cache för Redis](cache-how-to-premium-vnet.md)
 
-- [Hantera Azure DDoS Protection standard med hjälp av Azure Portal](/azure/virtual-network/manage-ddos-protection)
+- [Hantera Azure DDoS Protection standard med hjälp av Azure Portal](../ddos-protection/manage-ddos-protection.md)
 
 **Ansvar**: Kund
 
@@ -118,7 +118,7 @@ Du kan också använda program säkerhets grupper (grupperna) för att förenkla
 
 - [Tjänst taggar för virtuellt nätverk](../virtual-network/service-tags-overview.md)
 
-- [Program säkerhets grupper](/azure/virtual-network/security-overview#application-security-groups)
+- [Program säkerhets grupper](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Ansvar**: Kund
 
@@ -145,7 +145,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd taggar för nätverks resurser som är kopplade till Azure cache för Redis-distribution för att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -155,9 +155,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till Azure cache för Redis-instanser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -171,7 +171,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure-cachen för Redis-instanser på kontroll planet nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, skicka och ta bort) på kontroll Plans nivån för Azure cache för Redis-instanser.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -183,7 +183,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 Även om mått är tillgängliga genom att aktivera diagnostikinställningar, är gransknings loggning på data planet ännu inte tillgängligt för Azure cache för Redis.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -195,7 +195,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 Observera att gransknings loggning på data planet ännu inte är tillgängligt för Azure cache för Redis.
 
-- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -207,9 +207,9 @@ Observera att gransknings loggning på data planet ännu inte är tillgängligt 
 
 Observera att gransknings loggning på data planet ännu inte är tillgängligt för Azure cache för Redis.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](/azure/azure-monitor/platform/activity-log-collect)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -221,7 +221,7 @@ Observera att gransknings loggning på data planet ännu inte är tillgängligt 
 
 Även om mått är tillgängliga genom att aktivera diagnostikinställningar, är gransknings loggning på data planet ännu inte tillgängligt för Azure cache för Redis.
 
-- [Så här konfigurerar du aviseringar för Azure cache för Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts)
+- [Så här konfigurerar du aviseringar för Azure cache för Redis](./cache-how-to-monitor.md#alerts)
 
 **Ansvar**: Kund
 
@@ -235,9 +235,9 @@ Observera att gransknings loggning på data planet ännu inte är tillgängligt 
 
 **Vägledning**: Azure Active Directory (Azure AD) har inbyggda roller som måste tilldelas explicit och som kan frågas. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Ansvar**: Kund
 
@@ -251,7 +251,7 @@ Data Plans åtkomst till Azure cache för Redis kontrol leras via åtkomst nyckl
 
 Vi rekommenderar inte att du skapar standard lösen ord i ditt program. I stället kan du lagra dina lösen ord i Azure Key Vault och sedan använda Azure AD för att hämta dem.
 
-- [Återskapa Azure cache för Redis-åtkomst nycklar](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+- [Återskapa Azure cache för Redis-åtkomst nycklar](./cache-configure.md#settings)
 
 **Ansvar**: Delad
 
@@ -323,7 +323,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 - [Distribuera Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Förstå identifieringar av Azure AD-risker](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Förstå identifieringar av Azure AD-risker](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Ansvar**: Kund
 
@@ -353,7 +353,7 @@ Azure AD-autentisering kan inte användas för direkt åtkomst till Azure cache 
 
 **Vägledning**: Azure Active Directory (Azure AD) innehåller loggar för att hjälpa dig att identifiera inaktuella konton. Dessutom kan du använda Azure Identity Access-granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -367,7 +367,7 @@ Azure AD-autentisering kan inte användas för direkt åtkomst till Azure cache 
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade logg aviseringar i Log Analytics.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Aktivera Azure-kontroll på kort](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: för konto inloggning beteende avvikelse i kontroll planet använder du Azure Active Directory (Azure AD) identitets skydd och identifierings funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -397,7 +397,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -407,15 +407,15 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. Azure cache för Redis-instanser ska avgränsas av det virtuella nätverket/under nätet och taggas på lämpligt sätt. Du kan också använda Azure-cachen för Redis-brandväggen för att definiera regler så att endast klient anslutningar från angivna IP-adressintervall kan ansluta till cacheminnet.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
+- [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
 - [Så här distribuerar du Azure cache för Redis till ett VNet](cache-how-to-premium-vnet.md)
 
-- [Så här konfigurerar du Azure cache för brand Väggs regler för Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Så här konfigurerar du Azure cache för brand Väggs regler för Redis](./cache-configure.md#firewall)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -439,7 +439,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure cache för Redis
 
 - [Förstå kryptering i överföring för Azure cache för Redis](cache-best-practices.md)
 
-- [Förstå nödvändiga portar som används i scenarier med VNet-cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet#outbound-port-requirements)
+- [Förstå nödvändiga portar som används i scenarier med VNet-cache](./cache-how-to-premium-vnet.md#outbound-port-requirements)
 
 **Ansvar**: Delad
 
@@ -493,7 +493,7 @@ Data i Azure Storage krypteras och dekrypteras transparent med 256-bitars AES-kr
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure cache för Redis och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -527,7 +527,7 @@ Microsoft utför sårbarhets hantering på de underliggande systemen som stöder
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -539,7 +539,7 @@ Microsoft utför sårbarhets hantering på de underliggande systemen som stöder
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -557,11 +557,11 @@ Använd dessutom Azure Policy för att ange begränsningar för den typ av resur
 
 Läs mer i följande referenser:
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](/azure/governance/management-groups/create)
+- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda resurs etiketter](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda resurs etiketter](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -596,7 +596,7 @@ Läs mer i följande referenser:
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -624,7 +624,7 @@ Läs mer i följande referenser:
 
 Läs mer i följande referenser:
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -648,9 +648,9 @@ Läs mer i följande referenser:
 
 **Vägledning**: om du använder anpassade Azure policys definitioner eller Azure Resource Manager mallar för Azure cache för Redis-instanser och relaterade resurser använder du Azure databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -684,7 +684,7 @@ Läs mer i följande referenser:
 
 - [Så här skapar du en Key Vault](../key-vault/general/quick-create-portal.md)
 
-- [Så här autentiserar du till Key Vault](/azure/key-vault/managed-identity)
+- [Så här autentiserar du till Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 **Ansvar**: Kund
 
@@ -772,7 +772,7 @@ Testa data återställningen regelbundet för dina Azure Key Vault hemligheter.
 
 - [Så här använder du Azure cache för Redis-import](cache-how-to-import-export-data.md)
 
-- [Så här återställer du Key Vault hemligheter](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här återställer du Key Vault hemligheter](/powershell/module/az.keyvault/restore-azkeyvaultsecret?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Kund
 
@@ -868,5 +868,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)
