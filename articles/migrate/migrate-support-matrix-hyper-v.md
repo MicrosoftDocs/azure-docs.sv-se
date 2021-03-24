@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bdd8fd336da12b5549875cf53f9e221cc431c2b9
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 8531d0b2252e6ddff75509046b5a4576b99d339f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773223"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870797"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Stöd mat ris för Hyper-V-utvärdering
 
-I den här artikeln sammanfattas krav och support när du identifierar och utvärderar lokala servrar som körs i en Hyper-V-miljö för migrering till Azure med hjälp av verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool) . Om du vill migrera servrar som körs på Hyper-V till Azure läser du [matrisen migration support](migrate-support-matrix-hyper-v-migration.md).
+I den här artikeln sammanfattas krav och support när du identifierar och utvärderar lokala servrar som körs i en Hyper-V-miljö för migrering till Azure med hjälp av verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) . Om du vill migrera servrar som körs på Hyper-V till Azure läser du [matrisen migration support](migrate-support-matrix-hyper-v-migration.md).
 
 Om du vill konfigurera identifiering och utvärdering av servrar som körs på Hyper-V skapar du ett projekt och lägger till verktyget Azure Migrate: identifiering och bedömning i projektet. När du har lagt till verktyget distribuerar du [Azure Migrate-enheten](migrate-appliance.md). Enheten identifierar kontinuerligt lokala servrar och skickar Server-metadata och prestanda data till Azure. När identifieringen är klar samlar du in identifierade servrar i grupper och kör en utvärdering för en grupp.
 
@@ -23,7 +23,7 @@ Om du vill konfigurera identifiering och utvärdering av servrar som körs på H
 
 **Support** | **Information**
 --- | ---
-**Utvärderings gränser** | Du kan identifiera och utvärdera upp till 35 000 servrar i ett enda [projekt](migrate-support-matrix.md#azure-migrate-projects).
+**Utvärderings gränser** | Du kan identifiera och utvärdera upp till 35 000 servrar i ett enda [projekt](migrate-support-matrix.md#project).
 **Projekt gränser** | Du kan skapa flera projekt i en Azure-prenumeration. Förutom servrar i Hyper-V kan ett projekt innehålla servrar på VMware och fysiska servrar, upp till utvärderings gränserna för var och en.
 **Identifiering** | Azure Migrates apparaten kan identifiera upp till 5000 servrar som körs på Hyper-V.<br/><br/> Enheten kan ansluta till upp till 300 Hyper-V-värdar.
 **Utvärdering** | Du kan lägga till upp till 35 000-servrar i en enda grupp.<br/><br/> Du kan utvärdera upp till 35 000-servrar i en enda utvärderings miljö för en grupp.

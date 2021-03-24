@@ -398,16 +398,16 @@
         - name: Skapa flera instanser
           items:
             - name: Resurser
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-resources.md
             - name: Egenskaper
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-properties.md
             - name: Variabler
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-variables.md
             - name: Utdata
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-outputs.md
     - name: Distribuera mallar
       items:

@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: a625ad780d01f3d19d26f2b9626ead3ae455b86b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8310de465a6416102a7ce4e614ead7029e6be87a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631480"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950934"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Använd Azure Storage BLOB Inventory för att hantera BLOB-data (för hands version)
 
@@ -26,7 +26,7 @@ Funktionen Azure Storage BLOB Inventory ger en översikt över dina BLOB-data i 
 BLOB-inventering stöds för både generell användnings version 2 (GPv2) och Premium Block Blob Storage-konton. Den här funktionen stöds med eller utan funktionen [hierarkiskt namn område](data-lake-storage-namespace.md) aktive rad.
 
 > [!IMPORTANT]
-> Bob Inventory Inventory är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+> BLOB-inventering är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
 
 ### <a name="preview-regions"></a>Förhandsgranska regioner
 

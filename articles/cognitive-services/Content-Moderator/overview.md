@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content moderator, Azure Content moderator, online moderator, program vara för innehålls filtrering, Content moderatoring-tjänst, innehålls moderator
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a53611fdad84f06661f3b8928296b6a45851cea4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560381"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867278"
 ---
 # <a name="what-is-azure-content-moderator"></a>Vad är Azure Content Moderator?
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560381"
 Azure Content Moderator är en AI-tjänst som låter dig hantera innehåll som potentiellt stötande, riskfyllda eller på annat sätt olämpligt. Den innehåller den AI-drivna innehålls moderator tjänsten som skannar text, bilder och videor och använder innehålls flaggor automatiskt, samt gransknings verktyget, en online moderator miljö för ett team av mänskliga granskare.
 
 Du kanske vill bygga program vara för innehålls filtrering i din app för att följa regler eller underhålla användarnas avsedda miljö.
+
+Den här dokumentationen innehåller följande artikel typer:  
+
+* [**Snabb starter**](client-libraries.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.  
+* [**Instruktions guider**](try-text-api.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
+* [**Begreppen**](text-moderation-api.md) ger djupgående förklaringar av tjänst funktionerna och funktionerna.  
+* [**Självstudier**](ecommerce-retail-catalog-moderation.md) är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.  
 
 ## <a name="where-its-used"></a>Där den används
 
@@ -52,7 +59,7 @@ I tjänsten Content Moderator ingår redigerings-API: er som kontrollerar inneh�
 
 I följande tabell beskrivs de olika typerna av redigerings-API: er.
 
-| API-grupp | Description |
+| API-grupp | Beskrivning |
 | ------ | ----------- |
 |[**Textmoderering**](text-moderation-api.md)| Söker efter stötande innehåll, sexuellt stötande eller förslag på innehåll, svordomar och personliga data.|
 |[**Anpassade termlistor**](try-terms-list-api.md)| Söker igenom text mot en anpassad lista med villkor tillsammans med de inbyggda villkoren. Använd anpassade listor för att blockera eller tillåta innehåll baserat på dina egna innehållsprinciper.|  

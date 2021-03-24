@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931108"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869675"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Storleks guide för Azure HDInsight-interaktiv fråga kluster (Hive LLAP)
 
@@ -47,7 +47,7 @@ Det här dokumentet beskriver storleken på det interaktiva LLAP-klustret för H
 
 ### <a name="llap-architecturecomponents"></a>**LLAP-arkitektur/-komponenter:**  
 
-![LLAP-arkitektur/-komponenter](./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png "LLAP-arkitektur/-komponenter")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png " alt-text="LLAP-arkitektur/-komponenter" border="true":::
 
 ### <a name="llap-daemon-size-estimations"></a>**Storleks uppskattningar för LLAP daemon:** 
 
@@ -81,7 +81,7 @@ Standard-HDInsight-kluster har fyra LLAP-daemonar som körs på fyra arbetsnoder
 
 **Ambari UI-skjutreglage för Hive-konfigurations variabel `hive.server2.tez.sessions.per.default.queue` :**
 
-![' LLAP maximalt antal samtidiga frågor '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP maximalt antal samtidiga frågor")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png " alt-text="' LLAP maximalt antal samtidiga frågor '" border="true":::
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. Tez-behållare och Tez program huvud storlek**    
 Konfiguration: ***Tez. am. Resource. Memory. MB, Hive. Tez. container. size***  
@@ -165,7 +165,7 @@ För D14 v2 är det här värdet 19 x 3 GB = **57 GB**
 
 `Ambari environment variable for LLAP heap size:`
 
-![LLAP Heap-storlek](./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png "LLAP Heap-storlek")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png " alt-text="LLAP Heap-storlek" border="true":::
 
 När SSD-cachen är inaktive rad är minnet i minnet den mängd minne som är kvar efter att ha tagit slut på utrymme och Heap-storlek från LLAP daemon-behållarens storlek.
 
@@ -197,11 +197,11 @@ Ambari-miljövariabler: ***num_llap_nodes num_llap_nodes_for_llap_daemons***
 
 **num_llap_nodes** -anger antalet noder som används av Hive LLAP-tjänsten, inklusive noder som kör LLAP daemon, LLAP Service Master och Tez program Master (Tez).  
 
-![' Antal noder för LLAP-tjänsten '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "Antal noder för LLAP-tjänsten")  
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png " alt-text="' Antal noder för LLAP-tjänsten '" border="true":::  
 
 **num_llap_nodes_for_llap_daemons** -angivet antal noder som endast används för LLAP-daemonar. Storlekarna på LLAP daemon-behållare anges till max-noden, så det leder till en LLAP daemon på varje nod.
 
-![' Antal noder för LLAP daemon '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png "Antal noder för LLAP-daemon")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png " alt-text="' Antal noder för LLAP daemon '" border="true":::
 
 Vi rekommenderar att du behåller båda värdena på samma sätt som antalet arbetsnoder i det interaktiva fråga klustret.
 

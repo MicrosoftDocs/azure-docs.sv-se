@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: feb77339c9c7f36eb17b43dfe2c220dfb54efa25
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720533"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872293"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Uppdatera IoT Edge-säkerhetsdaemon och runtime
 
@@ -203,7 +203,7 @@ Några av de viktigaste skillnaderna mellan 1,2 och tidigare versioner är:
 * Paket namnet ändrades från **iotedge** till **aziot**.
 * **Libiothsm-STD-** paketet används inte längre. Om du använde standard paketet som ingår i IoT Edges versionen kan dina konfigurationer överföras till den nya versionen. Om du använde en annan implementering av libiothsm-STD, måste alla certifikat från användare som till exempel enhets identitets certifikat, enhets certifikat utfärdare och förtroende paket konfigureras om.
 * En ny identitets tjänst, **aziot-Identity-service** , introducerades som en del av 1,2-versionen. Den här tjänsten hanterar identitets etableringen och-hanteringen för IoT Edge och för andra enhets komponenter som måste kommunicera med IoT Hub, till exempel Azure IoT Hub enhets uppdatering. <!--TODO: add link to ADU when available -->
-* Standard konfigurations filen har ett nytt namn och en ny plats. Tidigare `/etc/iotedge/config.yaml` förväntas din enhets konfigurations information vara i `/etc/aziot/congig.toml` som standard. `iotedge config import`Kommandot kan användas för att migrera konfigurations information från den gamla platsen och syntaxen till den nya.
+* Standard konfigurations filen har ett nytt namn och en ny plats. Tidigare `/etc/iotedge/config.yaml` förväntas din enhets konfigurations information vara i `/etc/aziot/config.toml` som standard. `iotedge config import`Kommandot kan användas för att migrera konfigurations information från den gamla platsen och syntaxen till den nya.
 * Alla moduler som använder IoT Edge arbets belastnings-API för att kryptera eller dekryptera beständiga data kan inte dekrypteras efter uppdateringen. IoT Edge skapar en huvud identitets nyckel och en krypterings nyckel dynamiskt för intern användning. Den här nyckeln överförs inte till den nya tjänsten. IoT Edge v 1.2 kommer att generera en ny.
 
 Innan du automatiserar uppdaterings processerna kontrollerar du att den fungerar på test datorer.

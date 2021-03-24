@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100378714"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864048"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Använda kartkontrollen i Azure Maps
 
@@ -258,10 +258,10 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 Om du utvecklar med ett JavaScript-ramverk kan något av följande projekt med öppen källkod vara användbart:
 
-- [ng – Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -vinkel 10-omslutning runt Azure Maps.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – en Azure Maps blixt komponent.
-- [Azure Maps Reakta komponent](https://github.com/WiredSolutions/react-azure-maps) – ett reaktat omslutning för kontrollen Azure Maps.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – en Azure Maps komponent för Vue-program.
+* [ng – Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -vinkel 10-omslutning runt Azure Maps.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – en Azure Maps blixt komponent.
+* [Azure Maps Reakta komponent](https://github.com/WiredSolutions/react-azure-maps) – ett reaktat omslutning för kontrollen Azure Maps.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – en Azure Maps komponent för Vue-program.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -275,10 +275,10 @@ Lär dig hur du formaterar en karta:
 > [!div class="nextstepaction"]
 > [Välj ett kartformat](choose-map-style.md)
 
-Lägga till mer data i kartan:
+Lär dig metod tips och se exempel:
 
 > [!div class="nextstepaction"]
-> [Skapa en karta](map-create.md)
+> [Bästa praxis](web-sdk-best-practices.md)
 
 > [!div class="nextstepaction"]
 > [Kodexempel](/samples/browse/?products=azure-maps)

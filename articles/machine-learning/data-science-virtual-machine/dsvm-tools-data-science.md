@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100519566"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888965"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Maskin inlärnings-och data vetenskaps verktyg i Azure Data Science Virtual Machines
 Azure Data Science Virtual Machines (Dsvm) har en omfattande uppsättning verktyg och bibliotek för maskin inlärning som är tillgängligt på populära språk, till exempel python, R och Julia.
@@ -99,7 +99,7 @@ Det finns flera andra maskin inlärnings bibliotek på Dsvm, till exempel det po
 | Versioner som stöds     | Windows, Linux     |
 | Vanliga användnings områden      | Allmänt maskin inlärnings bibliotek      |
 | Hur konfigureras den eller installeras?      |  Installerat med GPU-stöd   |
-| Använda eller köra det      | Som ett Python-bibliotek (2,7 och 3,5), R-paket och kommando rads verktyget på en sökväg ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` för Windows och `/dsvm/tools/xgboost/xgboost` Linux)    |
+| Använda eller köra det      | Som ett Python-bibliotek (2,7 och 3,6 +), R-paket och kommando rads verktyget på bana ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` för Windows och `/dsvm/tools/xgboost/xgboost` Linux)    |
 | Länkar till exempel      | Exempel finns på den virtuella datorn, i `/dsvm/tools/xgboost/demo` på Linux och `C:\dsvm\tools\xgboost\demo` i Windows.   |
 | Relaterade verktyg      | LightGBM, MXNet   |
 

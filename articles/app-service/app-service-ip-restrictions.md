@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502696"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889900"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Konfigurera Azure App Service åtkomst begränsningar
 
@@ -97,26 +97,25 @@ Med tjänst slut punkter kan du konfigurera din app med programgatewayer eller a
 > [!NOTE]
 > - Tjänst slut punkter stöds för närvarande inte för webb program som använder IP-Secure Sockets Layer (SSL) virtuell IP (VIP).
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>Ange en service tag-baserad regel (förhands granskning)
+#### <a name="set-a-service-tag-based-rule"></a>Ange en service tag-baserad regel
 
-* I list rutan **typ** i steg 4 väljer du **service tag (för hands version)**.
+* I list rutan **typ** i steg 4 väljer du **service tag**.
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="Skärm bild av fönstret Lägg till begränsning med den valda service tag-typen.":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="Skärm bild av fönstret Lägg till begränsning med den valda service tag-typen.":::
 
 Varje tjänst tag representerar en lista med IP-intervall från Azure-tjänster. En lista över dessa tjänster och länkar till de olika intervallen finns i [service tag-dokumentationen][servicetags].
 
-Följande lista över service märken stöds i regler för åtkomst begränsning under för hands versions fasen:
+Alla tillgängliga Service märken stöds i regler för åtkomst begränsning. För enkelhetens skull är det bara en lista med de vanligaste taggarna som är tillgängliga via Azure Portal. Använd Azure Resource Manager mallar eller skript för att konfigurera mer avancerade regler som regionala regler för omfattning. Detta är de taggar som är tillgängliga via Azure Portal:
+
 * ActionGroup
+* ApplicationInsightsAvailability
 * AzureCloud
 * AzureCognitiveSearch
-* AzureConnectors
 * AzureEventGrid
 * AzureFrontDoor. backend
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>Redigera en regel
 
@@ -137,6 +136,31 @@ Om du vill ta bort en regel väljer du ellipsen (**...**) bredvid den regel som 
 
 ## <a name="access-restriction-advanced-scenarios"></a>Avancerade scenarier för åtkomst begränsning
 I följande avsnitt beskrivs några avancerade scenarier med åtkomst begränsningar.
+
+### <a name="filter-by-http-header"></a>Filtrera efter HTTP-huvud
+
+Som en del av en regel kan du lägga till ytterligare http-huvudfilter. Följande namn på http-huvud stöds:
+* X-vidarebefordrad – för
+* X-vidarebefordrad-värd
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+För varje rubrik namn kan du lägga till upp till 8 värden avgränsade med kommatecken. Http-huvudets filter utvärderas efter själva regeln och båda villkoren måste vara sanna för att regeln ska tillämpas.
+
+### <a name="multi-source-rules"></a>Regler för flera källor
+
+Med regler för flera källor kan du kombinera upp till åtta IP-intervall eller åtta service märken i en enda regel. Du kan använda detta om du har fler än 512 IP-intervall eller om du vill skapa logiska regler där flera IP-intervall kombineras med ett enda http-huvudfilter.
+
+Regler för flera källor definieras på samma sätt som du definierar regler för en enskild källa, men med varje intervall avgränsat med kommatecken.
+
+PowerShell-exempel:
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>Blockera en enskild IP-adress
 
 När du lägger till din första begränsnings regel för åtkomst lägger tjänsten till en explicit *Neka alla* -regel med prioritet 2147483647. I praktiken är den uttryckliga *Neka alla* -regeln att den slutgiltiga regeln körs och blockerar åtkomsten till en IP-adress som inte uttryckligen tillåts av en *Tillåt* -regel.
@@ -151,17 +175,20 @@ Förutom att kunna kontrol lera åtkomsten till din app kan du begränsa åtkoms
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="Skärm bild av sidan åtkomst begränsningar i Azure Portal, som visar att inga åtkomst begränsningar har angetts för SCM-platsen eller appen.":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>Begränsa åtkomsten till en speciell Azure frontend-instans (för hands version)
-Trafik från Azures front dörr till ditt program kommer från en välkänd uppsättning IP-intervall som definierats i taggen AzureFrontDoor. Server del. Genom att använda en begränsnings regel för service tag kan du begränsa trafiken till enbart från Azures front dörr. För att säkerställa att trafiken endast härstammar från din specifika instans, behöver du ytterligare filtrera inkommande begär Anden baserat på det unika http-huvud som Azures frontend-dörr skickar. Under för hands versionen kan du uppnå detta med PowerShell eller REST/ARM. 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Begränsa åtkomsten till en speciell instans av Azures frontend-dörr
+Trafik från Azures front dörr till ditt program kommer från en välkänd uppsättning IP-intervall som definierats i taggen AzureFrontDoor. Server del. Genom att använda en begränsnings regel för service tag kan du begränsa trafiken till enbart från Azures front dörr. För att säkerställa att trafiken endast härstammar från din specifika instans, behöver du ytterligare filtrera inkommande begär Anden baserat på det unika http-huvud som Azures frontend-dörr skickar.
 
-* PowerShell-exempel (ID för front dörren finns i Azure Portal):
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Skärm bild av sidan åtkomst begränsningar i Azure Portal, som visar hur du lägger till Azures frontend-begränsning.":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+PowerShell-exempel:
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>Hantera regler för åtkomst begränsning program mässigt
 
 Du kan lägga till åtkomst begränsningar genom programmering genom att göra något av följande: 
@@ -181,7 +208,7 @@ Du kan lägga till åtkomst begränsningar genom programmering genom att göra n
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > Att arbeta med tjänst taggar, HTTP-huvuden eller regler för flera källor kräver minst version 5.1.0. Du kan kontrol lera versionen av den installerade modulen med: **Get-InstalledModule-Name AZ**
+   > Att arbeta med tjänst taggar, HTTP-huvuden eller regler för flera källor kräver minst version 5.7.0. Du kan kontrol lera versionen av den installerade modulen med: **Get-InstalledModule-Name AZ**
 
 Du kan också ange värden manuellt genom att göra något av följande:
 

@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: deaa414a17240e8cdbdad7f4ba9b3e596b4f191f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: ae8b1eab81e3c898c25a613f552a49c8de64f49d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780335"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889135"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Skapa en utlösare som kör en pipeline som svar på en lagrings händelse
 
@@ -43,10 +43,10 @@ I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image1.png" alt-text="Skärm bild av sidan författare för att skapa en ny utlösare för lagrings händelser i Data Factory UI.":::
 
-1. Välj ditt lagrings konto i list rutan för Azure-prenumeration eller manuellt med resurs-ID för lagrings kontot. Välj den behållare som du vill att händelserna ska inträffa på. Val av behållare är valfritt, men mindful att välja alla behållare kan leda till ett stort antal händelser.
+1. Välj ditt lagrings konto i list rutan för Azure-prenumeration eller manuellt med resurs-ID för lagrings kontot. Välj den behållare som du vill att händelserna ska inträffa på. Val av behållare krävs, men mindful att välja alla behållare kan leda till ett stort antal händelser.
 
    > [!NOTE]
-   > Utlösaren för lagrings händelser stöder för närvarande endast Azure Data Lake Storage Gen2 och generella version 2-lagrings konton. På grund av en Azure Event Grid begränsning stöder Azure Data Factory bara maximalt 500 lagrings händelse utlösare per lagrings konto.
+   > Utlösaren för lagrings händelser stöder för närvarande endast Azure Data Lake Storage Gen2 och generella version 2-lagrings konton. På grund av en Azure Event Grid begränsning stöder Azure Data Factory bara maximalt 500 lagrings händelse utlösare per lagrings konto. Om du når gränsen kontaktar du supporten för rekommendationer och ökar gränsen vid utvärdering av Event Grids teamet. 
 
    > [!NOTE]
    > Om du vill skapa en ny eller ändra en befintlig utlösare för lagrings händelser, måste Azure-kontot som används för att logga in på Data Factory och publicera lagrings händelse utlösaren ha rätt rollbaserad åtkomst kontroll (Azure RBAC)-behörighet för lagrings kontot. Ingen ytterligare behörighet krävs: tjänstens huvud namn för Azure Data Factory behöver _inte_ ha särskild behörighet till antingen lagrings kontot eller event Grid. Mer information om åtkomst kontroll finns i avsnittet [rollbaserad åtkomst kontroll](#role-based-access-control) .
@@ -54,7 +54,7 @@ I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i
 1. I **BLOB-sökvägen börjar med** och **BLOB-sökvägen slutar med** egenskaper kan du ange de behållare, mappar och blob-namn som du vill ta emot händelser för. Din utlösare för lagrings händelse kräver att minst en av dessa egenskaper definieras. Du kan använda olika mönster för båda **BLOB-sökvägen börjar med** och **BLOB-sökvägen slutar med** egenskaper, som du ser i exemplen senare i den här artikeln.
 
     * **BLOB-sökvägen börjar med:** Blobb Sök vägen måste börja med en mappsökväg. Giltiga värden är `2018/` och `2018/april/shoes.csv` . Det går inte att välja det här fältet om ingen behållare är markerad.
-    * **BLOB-sökvägen slutar med:** BLOB-sökvägen måste sluta med ett fil namn eller fil namns tillägg. Giltiga värden är `shoes.csv` och `.csv` . Behållare och mappnamn är valfria, men om de anges måste de avgränsas med ett `/blobs/` segment. Till exempel kan en behållare med namnet "Orders" ha värdet `/orders/blobs/2018/april/shoes.csv` . Om du vill ange en mapp i en behållare utelämnar du det inledande "/"-tecken. Utlöser till exempel `april/shoes.csv` en händelse på en fil som heter `shoes.csv` i mapp a som kallas april i valfri behållare.
+    * **BLOB-sökvägen slutar med:** BLOB-sökvägen måste sluta med ett fil namn eller fil namns tillägg. Giltiga värden är `shoes.csv` och `.csv` . Behållare-och mappnamn som anges måste avgränsas med ett `/blobs/` segment. Till exempel kan en behållare med namnet "Orders" ha värdet `/orders/blobs/2018/april/shoes.csv` . Om du vill ange en mapp i en behållare utelämnar du det inledande "/"-tecken. Utlöser till exempel `april/shoes.csv` en händelse på en fil som heter `shoes.csv` i mapp a som kallas april i valfri behållare.
     * Observera att BLOB-sökvägen **börjar med** och **slutar med** är den enda mönster matchning som tillåts i utlösaren för lagrings händelser. Andra typer av matchning av jokertecken stöds inte för utlösnings typen.
 
 1. Välj om utlösaren ska svara på en **blob som skapats** , en **BLOB borttagen** händelse eller både och. På den angivna lagrings platsen utlöser varje händelse de Data Factory pipelines som är associerade med utlösaren.

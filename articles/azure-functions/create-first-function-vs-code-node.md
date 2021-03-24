@@ -7,12 +7,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-node_uiex
-ms.openlocfilehash: 6c32570c8ebea3c1d127fc26b0d78287dbeb817f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f22a847be5fc750cb3a3d9e6736d08940f30e4fe
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729291"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954470"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>Snabb start: skapa en JavaScript-funktion i Azure med Visual Studio Code
 
@@ -117,8 +117,10 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har använt [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) för att skapa en Function-app med en enkel http-utlöst funktion. I nästa artikel expanderar du den funktionen genom att ansluta till Azure Storage. Mer information om hur du ansluter till andra Azure-tjänster finns [i lägga till bindningar till en befintlig funktion i Azure Functions](add-bindings-existing-function.md?tabs=javascript).  
+Du har använt [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) för att skapa en Function-app med en enkel http-utlöst funktion. I nästa artikel expanderar du den funktionen genom att ansluta till antingen Azure Cosmos DB eller Azure Storage. Mer information om hur du ansluter till andra Azure-tjänster finns [i lägga till bindningar till en befintlig funktion i Azure Functions](add-bindings-existing-function.md?tabs=javascript).  
 
+> [!div class="nextstepaction"]
+> [Anslut till en databas](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-javascript)
 > [!div class="nextstepaction"]
 > [Ansluta till en Azure Storage-kö](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-javascript)
 

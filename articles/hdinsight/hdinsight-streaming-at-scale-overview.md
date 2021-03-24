@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 2b2dfe9da55548f2648f847a9d7c2cb3478e6bad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bf036ff413f720f54deef1a62b502668d1d8ac6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931708"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872004"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Direktuppspelning i skala i HDInsight
 
@@ -18,7 +18,7 @@ Real tids data lösningar i real tid fungerar på data som är i rörelse. Dessa
 
 I ett strömmande program genererar en eller flera data källor händelser (ibland i miljon tals per sekund) som måste matas in snabbt utan att du behöver släppa någon användbar information. Inkommande händelser hanteras med *Stream-buffring*, även kallat *Event Queuing*, av en tjänst som [Apache Kafka](kafka/apache-kafka-introduction.md) eller [Event Hubs](https://azure.microsoft.com/services/event-hubs/). När du har samlat in händelserna kan du analysera data med hjälp av ett real tids analys system i lager *bearbetnings* skiktet, till exempel [Apache Storm](storm/apache-storm-overview.md) eller [Apache Spark strömning](spark/apache-spark-streaming-overview.md). Bearbetade data kan lagras i långsiktiga lagrings system, t. ex. [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)och visas i real tid på en Business Intelligence instrument panel, till exempel [Power BI](https://powerbi.microsoft.com), Tableau eller en anpassad webb sida.
 
-![Återströmnings mönster i Azure HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+:::image type="content" source="./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png" alt-text="Återströmnings mönster i Azure HDInsight":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

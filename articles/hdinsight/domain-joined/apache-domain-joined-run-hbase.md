@@ -4,12 +4,12 @@ description: Självstudie – lär dig hur du konfigurerar Apache Ranger-princip
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933716"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867006"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Självstudie: Konfigurera Apache HBase-principer i HDInsight med Enterprise Security Package
 
@@ -86,7 +86,7 @@ Du kan använda SSH för att ansluta till HBase-kluster och sedan använda [Apac
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase Shell-utdata](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="HDInsight Hadoop HBase Shell-utdata" border="true":::
 
 ## <a name="create-ranger-policies"></a>Skapa Ranger-principer
 
@@ -94,11 +94,11 @@ Skapa en Ranger-princip för **sales_user1** och **marketing_user1**.
 
 1. Öppna **Ranger-administratörsanvändargränssnittet**. Klicka på **\<ClusterName> _Hbase** under **HBase**.
 
-   ![HDInsight Apache Ranger-administratörs gränssnitt](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger-administratörs gränssnitt" border="true":::
 
 2. Skärmen **Lista över principer** visar alla Ranger-principer som skapats för det här klustret. En förkonfigurerad princip kan visas. Klicka på **Lägg till ny princip**.
 
-    ![Lista över Apache Ranger HBase-principer](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Lista över Apache Ranger HBase-principer" border="true":::
 
 3. På skärmen **Skapa princip** anger du följande värden:
 
@@ -117,7 +117,7 @@ Skapa en Ranger-princip för **sales_user1** och **marketing_user1**.
    * `*` anger noll eller flera förekomster av tecken.
    * `?` anger ett enskilt tecken.
 
-   ![Apache Ranger-princip skapa försäljning](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="Apache Ranger-princip skapa försäljning" border="true":::
 
    >[!NOTE]
    >Vänta en stund medan Ranger synkroniserar med Azure AD om en domänanvändare inte automatiskt har fyllts i för **Välj användare**.
@@ -136,7 +136,7 @@ Skapa en Ranger-princip för **sales_user1** och **marketing_user1**.
    |Välj användare  | marketing_user1 |
    |Behörigheter  | Läs |
 
-   ![Apache Ranger policy skapa marknadsföring](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="Apache Ranger policy skapa marknadsföring" border="true":::  
 
 6. Klicka på **Lägg till** för att spara principen.
 
@@ -226,7 +226,7 @@ Baserat på de konfigurerade Ranger-principerna kan **sales_user1** visa alla da
 
 1. Granska åtkomsthändelserna i Ranger-användargränssnittet.
 
-   ![Granskning av GRÄNSSNITTs princip för HDInsight Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="Granskning av GRÄNSSNITTs princip för HDInsight Ranger" border="true":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

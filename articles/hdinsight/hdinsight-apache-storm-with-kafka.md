@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2078ba177d68cfaa0a91b79611d92e5c68e4e245
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942722"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868429"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Självstudie: Använda Apache Storm med Apache Kafka i HDInsight
 
@@ -377,7 +377,7 @@ Apache Kafka på HDInsight ger inte tillgång till asynkrona meddelandeköer i K
 
 Följande diagram visar hur kommunikationen flödar mellan Storm och Kafka:
 
-![Diagram över Storm- och Kafka-kluster i ett virtuellt Azure-nätverk](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png" alt-text="Diagram över Storm- och Kafka-kluster i ett virtuellt Azure-nätverk":::
 
 > [!NOTE]  
 > Andra tjänster på klustret, till exempel SSH och [Apache Ambari](https://ambari.apache.org/), kan nås via Internet. Mer information om de offentliga portar som är tillgängliga med HDInsight finns i [Portar och URI:er som används av HDInsight](hdinsight-hadoop-port-settings-for-services.md).
@@ -415,7 +415,7 @@ Om du vill skapa ett Azure Virtual Network och sedan skapa Kafka- och Storm-klus
       | SSH-användarnamn | SSH-användare som ska skapas för klustren. |
       | SSH-lösenord | Lösenord för SSH-användaren. |
    
-      ![Bild av mallparametrarna](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      :::image type="content" source="./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png" alt-text="Bild av mallparametrarna":::
 
 3. Granska **villkoren** och välj sedan **Jag godkänner villkoren ovan**.
 

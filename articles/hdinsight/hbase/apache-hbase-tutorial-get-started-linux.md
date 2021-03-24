@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705678"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866615"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Självstudie: använda Apache HBase i Azure HDInsight
 
@@ -64,11 +64,11 @@ Du kan använda SSH för att ansluta till HBase-kluster och sedan använda [Apac
 
 För de flesta visas data i tabellformat:
 
-![HDInsight Apache HBase tabell data](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png" alt-text="HDInsight Apache HBase tabell data" border="false":::
 
 I HBase (en implementering av [Cloud BigTable](https://cloud.google.com/bigtable/)) ser samma data ut så här:
 
-![HDInsight Apache HBase BigTable-data](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png" alt-text="HDInsight Apache HBase BigTable-data" border="false":::
 
 **Använda HBase-gränssnittet**
 
@@ -111,7 +111,7 @@ I HBase (en implementering av [Cloud BigTable](https://cloud.google.com/bigtable
     scan 'Contacts'
     ```
 
-    ![HDInsight Apache Hadoop HBase-gränssnitt](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png" alt-text="HDInsight Apache Hadoop HBase-gränssnitt" border="false":::
 
 1. Använd `get` kommandot för att hämta innehållet i en rad. Ange följande kommando:
 
@@ -331,7 +331,7 @@ HBase i HDInsight levereras med ett webbgränssnitt för övervakning av kluster
 
 1. Välj **snabb länkar** överst på sidan, peka på länken aktiva Zookeeper och välj sedan **HBase Master användar gränssnitt**.  Gränssnittet har öppnats i en annan webbläsarflik:
 
-   ![HDInsight Apache HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png" alt-text="HDInsight Apache HBase HMaster UI" border="false":::
 
    HBase Master UI innehåller följande avsnitt:
 

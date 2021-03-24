@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 124e3ef734e03606372dc07059841b77c3a548de
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584575"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869029"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -44,7 +44,7 @@ När du använder SSML bör du tänka på att specialtecken, till exempel citat 
 
 ## <a name="supported-ssml-elements"></a>SSML-element som stöds
 
-Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element används för att justera bredd, prosody, volym och mycket annat. Följande avsnitt innehåller information om hur varje element används och när ett element krävs eller är valfritt.  
+Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element används för att justera bredd, prosody, volym och mycket annat. Följande avsnitt innehåller information om hur varje element används och när ett element krävs eller är valfritt.
 
 > [!IMPORTANT]
 > Glöm inte att använda dubbla citat tecken runt attributvärden. Standarder för välformulerad, giltig XML kräver att attributvärden omges av dubbla citat tecken. Till exempel `<prosody volume="90">` är ett välformulerat, giltigt element, men `<prosody volume=90>` det är inte. SSML kan inte identifiera attributvärden som inte är inom citat tecken.
@@ -100,7 +100,7 @@ Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element använ
 
 ## <a name="use-multiple-voices"></a>Använd flera röster
 
-I `speak` -elementet kan du ange flera röster för text till tal-utdata. Dessa röster kan vara på olika språk. För varje röst måste texten vara figursatt i ett- `voice` element. 
+I `speak` -elementet kan du ange flera röster för text till tal-utdata. Dessa röster kan vara på olika språk. För varje röst måste texten vara figursatt i ett- `voice` element.
 
 **Attribut**
 
@@ -213,7 +213,7 @@ För närvarande stöds anpassning av format justeringar för dessa neurala-rös
 * `zh-CN-XiaoxuanNeural` Förhandsgranskningsvyn
 * `zh-CN-XiaoruiNeural` Förhandsgranskningsvyn
 
-Du kan ändra utseendet på tal formatet så att det bättre passar ditt användnings fall. Du kan ange ett starkare eller mjukare format med `styledegree` om du vill göra talet mer lättfattliga programspecifika eller subdued. 
+Du kan ändra utseendet på tal formatet så att det bättre passar ditt användnings fall. Du kan ange ett starkare eller mjukare format med `styledegree` om du vill göra talet mer lättfattliga programspecifika eller subdued.
 
 För närvarande stöds anpassning av format justeringar för dessa neurala-röster:
 * `zh-CN-XiaoxiaoNeural`
@@ -250,7 +250,7 @@ Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar
 
 Använd den här tabellen för att avgöra vilka tal format som stöds för varje neurala röst.
 
-| Röst                   | Format                     | Description                                                 |
+| Röst                   | Format                     | Beskrivning                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Uttrycker en formell, trygg och auktoritativ ton för nyhets leverans |
 |                         | `style="newscast-casual"` | Uttrycker en mångsidig och vardaglig ton för allmän nyhets leverans        |
@@ -275,11 +275,11 @@ Använd den här tabellen för att avgöra vilka tal format som stöds för varj
 |                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
 |                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
 |                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.          |
-|                         | `style="affectionate"`    | Uttrycker en varm och affectionate ton, med högre färgdjup och Vocal energi. Högtalaren är i ett tillstånd där du kan dra uppmärksamheten till lyssnaren. Den "personlighet" av högtalaren är ofta av betydelse.          |     
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |   
-|                         | `style="lyrical"`         | Uttrycker känslor i ett Melodic-och sentimental-sätt         |   
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  | 
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Uttrycker en häftig, samlad och bestående attityd när du talar. Ton, färgdjup och prosody är mycket mer enhetligt jämfört med andra typer av tal.    | 
+|                         | `style="affectionate"`    | Uttrycker en varm och affectionate ton, med högre färgdjup och Vocal energi. Högtalaren är i ett tillstånd där du kan dra uppmärksamheten till lyssnaren. Den "personlighet" av högtalaren är ofta av betydelse.          |
+|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
+|                         | `style="lyrical"`         | Uttrycker känslor i ett Melodic-och sentimental-sätt         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Uttrycker en häftig, samlad och bestående attityd när du talar. Ton, färgdjup och prosody är mycket mer enhetligt jämfört med andra typer av tal.    |
 |                         | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
 |                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
 |                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
@@ -301,22 +301,22 @@ Använd den här tabellen för att avgöra vilka tal format som stöds för varj
 |                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
 |                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
 |                         | `style="embarrassed"`     | Uttrycker en osäker och tveka ton när talare känner sig osäker   |
-|                         | `style="affectionate"`    | Uttrycker en varm och affectionate ton, med högre färgdjup och Vocal energi. Högtalaren är i ett tillstånd där du kan dra uppmärksamheten till lyssnaren. Den "personlighet" av högtalaren är ofta av betydelse.          |     
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |   
+|                         | `style="affectionate"`    | Uttrycker en varm och affectionate ton, med högre färgdjup och Vocal energi. Högtalaren är i ett tillstånd där du kan dra uppmärksamheten till lyssnaren. Den "personlighet" av högtalaren är ofta av betydelse.          |
+|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
 | `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
 |                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
 |                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
 |                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
 |                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
 |                         | `style="depressed"`       | Uttrycker en melancholic-och despondent-ton med lägre färgdjup och energi    |
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |  
+|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
 | `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
 |                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
 |                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
 |                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
 |                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
 |                         | `style="depressed"`       | Uttrycker en melancholic-och despondent-ton med lägre färgdjup och energi    |
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |   
+|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
 | `zh-CN-XiaoruiNeural`    | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
 |                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
 |                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
@@ -398,7 +398,7 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 | `strength` | Anger den relativa varaktigheten för en paus med något av följande värden:<ul><li>inget</li><li>x-svaga</li><li>svaga</li><li>medel (standard)</li><li>kraftfull</li><li>x – stark</li></ul> | Valfritt |
 | `time` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Valfritt |
 
-| Styrka                      | Description |
+| Styrka                      | Beskrivning |
 |-------------------------------|-------------|
 | Ingen, eller om inget värde anges | 0 MS        |
 | x-svaga                        | 250 MS      |
@@ -418,10 +418,10 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 ```
 ## <a name="add-silence"></a>Lägg till tystnad
 
-Använd `mstts:silence` elementet för att infoga pauser före eller efter text, eller mellan de två intilliggande meningarna. 
+Använd `mstts:silence` elementet för att infoga pauser före eller efter text, eller mellan de två intilliggande meningarna.
 
 > [!NOTE]
->Skillnaden mellan `mstts:silence` och `break` är som `break` kan läggas till var som helst i texten, men tystnad fungerar bara i början eller slutet av inmatad text, eller på gräns 2 närliggande meningar.  
+>Skillnaden mellan `mstts:silence` och `break` är som `break` kan läggas till var som helst i texten, men tystnad fungerar bara i början eller slutet av inmatad text, eller på gräns 2 närliggande meningar.
 
 
 **Syntax**
@@ -434,18 +434,18 @@ Använd `mstts:silence` elementet för att infoga pauser före eller efter text,
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `type` | Anger platsen för tystnad som ska läggas till: <ul><li>Ledande – i början av texten </li><li>Svans – i slutet av texten </li><li>Sentenceboundary – mellan intilliggande meningar </li></ul> | Obligatorisk |
+| `type` | Anger platsen för tystnad som ska läggas till: <ul><li>`Leading` – i början av texten </li><li>`Tailing` – i slutet av texten </li><li>`Sentenceboundary` – mellan intilliggande meningar </li></ul> | Obligatorisk |
 | `Value` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Obligatorisk |
 
 **Exempel** I det här exemplet `mtts:silence` används för att lägga till 200 MS av tystnaden mellan två meningar.
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
-<voice name="en-US-AriaNeural"> 
-<mstts:silence  type="Sentenceboundary" value="200ms"/> 
-If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
-A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
-</voice> 
-</speak> 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<voice name="en-US-AriaNeural">
+<mstts:silence  type="Sentenceboundary" value="200ms"/>
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way.
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time.
+</voice>
+</speak>
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Ange stycken och meningar
@@ -533,7 +533,7 @@ Fonetiska alfabet består av telefoner, som består av bokstäver, siffror eller
 Ibland kan inte text till tal-tjänsten uttala ett ord. Till exempel namnet på ett företag eller en medicinsk term. Utvecklare kan definiera hur enkla entiteter ska läsas i SSML med `phoneme` `sub` taggarna och. Men om du behöver definiera hur flera entiteter ska läsas, kan du skapa ett anpassat lexikon med `lexicon` taggen.
 
 > [!NOTE]
-> Anpassat lexikon stöder UTF-8-kodning för närvarande. 
+> Anpassat lexikon stöder UTF-8-kodning för närvarande.
 
 > [!NOTE]
 > Anpassat lexikon stöds inte för de här 5 rösterna (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural och MT-MT-GarceNeural) för tillfället.
@@ -557,18 +557,18 @@ Om du vill definiera hur flera entiteter ska läsas kan du skapa ett anpassat le
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="ipa" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias>By the way</alias> 
+    <grapheme>BTW</grapheme>
+    <alias>By the way</alias>
   </lexeme>
   <lexeme>
-    <grapheme> Benigni </grapheme> 
+    <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
 </lexicon>
@@ -580,11 +580,11 @@ Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med h
 
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>ScotlandMV</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>ScotlandMV</alias>
   </lexeme>
   <lexeme>
-    <grapheme>ScotlandMV</grapheme> 
+    <grapheme>ScotlandMV</grapheme>
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
@@ -592,8 +592,8 @@ Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med h
 Du kan också ange ett förväntat `alias` eller förkortat villkor för förkortningen. Exempel:
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>Scotland Media Wave</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>Scotland Media Wave</alias>
   </lexeme>
 ```
 
@@ -610,8 +610,8 @@ När du har publicerat ditt anpassade lexikon kan du referera till det från din
 > `lexicon`Elementet måste finnas i `voice` elementet.
 
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
-          xmlns:mstts="http://www.w3.org/2001/mstts" 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+          xmlns:mstts="http://www.w3.org/2001/mstts"
           xml:lang="en-US">
     <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
@@ -621,7 +621,7 @@ När du har publicerat ditt anpassade lexikon kan du referera till det från din
 </speak>
 ```
 
-När du använder det här anpassade lexikonet kommer "BTW" att läsas som "på väg". "Oskadligi" kommer att läsas med den tillhandahållna IPA "bɛ ˈ ni ː Nji".  
+När du använder det här anpassade lexikonet kommer "BTW" att läsas som "på väg". "Oskadligi" kommer att läsas med den tillhandahållna IPA "bɛ ˈ ni ː Nji".
 
 **Begränsningar**
 - Fil storlek: den maximala storleks gränsen för den anpassade fil storleken är 100 KB, om den överskrider den här storleken kommer syntes förfrågan att Miss förväntas.
@@ -637,7 +637,7 @@ Du kan använda `sapi` as-Vale för `alphabet` attributet med anpassade lexikon 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
@@ -681,7 +681,7 @@ Eftersom prosodic-attributvärden kan variera över ett brett intervall, tolkar 
 
 ### <a name="change-speaking-rate"></a>Ändra tal hastighet
 
-Tal frekvensen kan tillämpas på neurala-röster och standard röster på ord-eller menings nivå. 
+Tal frekvensen kan tillämpas på neurala-röster och standard röster på ord-eller menings nivå.
 
 **Exempel**
 
@@ -736,7 +736,7 @@ Du kan ändra bredden på standard-röster på ord-eller menings nivå. Föränd
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-AriaNeural">
         <prosody contour="(60%,-60%) (100%,+80%)" >
-            Were you the only person in the room? 
+            Were you the only person in the room?
         </prosody>
     </voice>
 </speak>
@@ -782,7 +782,7 @@ Följande är de innehålls typer som stöds för `interpret-as` `format` attrib
 **Exempel**
 
 Tal syntes motorn läser följande exempel som "din första förfrågan var för ett rum den Nineteenth oktober 20 10 med tidig ankomst till 12 35 PM."
- 
+
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
@@ -871,7 +871,12 @@ Endast en bakgrunds ljud fil tillåts per SSML-dokument. Du kan dock blanda `aud
 
 ## <a name="bookmark-element"></a>Bok märkes element
 
-Med- `bookmark` elementet kan du infoga bok märken i SSML och hämta ljud förskjutningen för varje bok märke för ljud strömmen för asynkrona meddelanden.
+Med bok märkes elementet kan du infoga anpassade markörer i SSML för att hämta förskjutningen för varje markör i ljud strömmen.
+Vi kommer inte att läsa bok märkes elementen.
+Bok märkes elementet kan användas för att referera till en speciell plats i text-eller taggkontrollen.
+
+> [!NOTE]
+> `bookmark` elementet fungerar bara för `en-US-AriaNeural` röst i regionen Västra USA ( `westus` ) för tillfället.
 
 **Syntax**
 
@@ -883,15 +888,16 @@ Med- `bookmark` elementet kan du infoga bok märken i SSML och hämta ljud förs
 
 | Attribut | Beskrivning                                   | Obligatorisk/valfri                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-| `mark`     | Anger bok märkets text för `bookmark` elementet. | Krävs. |
+|  `mark`   | Anger referens texten för `bookmark` elementet. | Krävs. |
 
 **Exempel**
 
+Som exempel kanske du vill veta tids förskjutningen för varje blomma ord enligt följande
+
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-GuyNeural">
-        <bookmark mark='bookmark_one'/> one.
-        <bookmark mark='bookmark_two'/> two. three. four.
+    <voice name="en-US-AriaNeural">
+        We are selling <bookmark mark='flower_1'/>roses and <bookmark mark='flower_2'/>daisies.
     </voice>
 </speak>
 ```
@@ -903,6 +909,10 @@ Du kan prenumerera på `BookmarkReached` händelsen i tal-SDK för att hämta bo
 > [!NOTE]
 > `BookmarkReached` händelsen är endast tillgänglig sedan tal SDK-versionen 1.16.0.
 
+`BookmarkReached` händelser aktive ras när ljud data för utdata blir tillgängliga, vilket är snabbare än uppspelning till en utdataenhet.
+
+* `AudioOffset` rapporterar hur lång tid det tar att mata ut ljudet mellan början av syntes och bok märkes elementet. Detta mäts i hundra-nanosekunder-enheter (HNS) med 10 000 HNS motsvarande 1 millisekunder.
+* `Text` är referens texten för Bookmark-elementet, som är den sträng som du anger i `mark` attributet.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -917,6 +927,12 @@ synthesizer.BookmarkReached += (s, e) =>
 };
 ```
 
+I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="c"></a>[C++](#tab/cpp)
 
 Mer information finns i <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
@@ -924,11 +940,17 @@ Mer information finns i <a href="https://docs.microsoft.com/cpp/cognitive-servic
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
 {
-    cout << "bookmark reached. "
+    cout << "Bookmark reached. "
         // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
         << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
-        << "Bookmark text: " << e.Text << "." << endl;
+        << "bookmark text: " << e.Text << "." << endl;
 };
+```
+
+I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -943,6 +965,12 @@ synthesizer.BookmarkReached.addEventListener((o, e) -> {
 });
 ```
 
+I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Mer information finns i <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
@@ -953,14 +981,26 @@ speech_synthesizer.bookmark_reached.connect(lambda evt: print(
     "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
 ```
 
+I exemplet ovan `bookmark_reached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+```text
+Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Mer information finns i <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>.
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
-    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text);
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms, bookmark text: " + e.text);
 }
+```
+
+I exemplet ovan `bookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+```text
+(Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
+(Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
@@ -972,6 +1012,12 @@ Mer information finns i <a href="https://docs.microsoft.com/objectivec/cognitive
     // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
     NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
 }];
+```
+
+I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="swift"></a>[Swift](#tab/swift)

@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7957041c9d445f4239b8f0100128a531d982b451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941160"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871562"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrera Apache Zeppelin med Hive Warehouse Connector i Azure HDInsight
 
@@ -97,11 +97,11 @@ Följande konfigurationer krävs för att komma åt Hive-tabeller från Zeppelin
 
     * I en webbläsare navigerar du till `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` där kluster namn är namnet på ditt interaktiva fråga-kluster. Klicka på **HiveServer2 Interactive**. Du ser det fullständigt kvalificerade domän namnet (FQDN) för Head-noden där LLAP körs som visas i skärm bilden. Ersätt `<llap-headnode>` med det här värdet.
 
-        ![Hive lager kopplings huvud nod](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hive lager kopplings huvud nod" border="true":::
 
     * Använd [SSH-kommandot](../hdinsight-hadoop-linux-use-ssh-unix.md) för att ansluta till ditt interaktiva fråga-kluster. Sök efter `default_realm` parameter i `/etc/krb5.conf` filen. Ersätt `<AAD-DOMAIN>` med det här värdet som en versal sträng, annars hittas inte autentiseringsuppgiften.
 
-        ![Hive-domän för Hive-dist.](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive-domän för Hive-dist." border="true":::
 
     * Till exempel `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
 

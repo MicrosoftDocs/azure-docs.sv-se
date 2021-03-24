@@ -4,12 +4,12 @@ description: Använd webb gränssnittet Apache Ambari för att konfigurera och o
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939251"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864825"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimera Apache Hive med Apache Ambari i Azure HDInsight
 
@@ -26,11 +26,11 @@ Hive innehåller två körnings motorer: Apache Hadoop MapReduce och Apache TEZ.
 
 1. Skriv **körnings motor** i rutan filter på fliken Hive- **konfigurationer** .
 
-    ![Ambari för att söka körnings motor för Apache](./media/optimize-hive-ambari/ambari-search-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-search-execution.png" alt-text="Ambari för att söka körnings motor för Apache" border="true":::
 
 1. Standardvärdet för egenskapen **Optimization** är **Tez**.
 
-    ![Optimering – Apache Tez-motor](./media/optimize-hive-ambari/optimization-apache-tez.png)
+    :::image type="content" source="./media/optimize-hive-ambari/optimization-apache-tez.png" alt-text="Optimering – Apache Tez-motor" border="true":::
 
 ## <a name="tune-mappers"></a>Finjustera mappningar
 
@@ -47,7 +47,7 @@ Om du till exempel vill ange fyra Mapper-uppgifter för en data storlek på 128 
 
 1. Ange båda parametrarna till **33 554 432** byte (32 MB).
 
-    ![Apache Ambari Tez-grupperingsinställningar](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-tez-grouping-size.png" alt-text="Apache Ambari Tez-grupperingsinställningar" border="true":::
 
 Dessa ändringar påverkar alla Tez-jobb på servern. Om du vill få ett optimalt resultat väljer du lämpliga parameter värden.
 
@@ -63,11 +63,11 @@ Med standardinställningarna är det här exemplet fyra reducerare.
 
 1. Om du vill ändra parametern navigerar du till fliken Hive- **konfiguration** och letar upp **data per minsknings** parameter på sidan Inställningar.
 
-    ![Apache Ambari-data per minskning](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-data-per-reducer.png" alt-text="Apache Ambari-data per minskning" border="true":::
 
 1. Välj **Redigera** för att ändra värdet till 128 MB (134 217 728 byte) och tryck sedan på **RETUR** för att spara.
 
-    ![Ambari data per minsknings-redige rad](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    :::image type="content" source="./media/optimize-hive-ambari/data-per-reducer-edited.png" alt-text="Ambari data per minsknings-redige rad" border="true":::
   
     Med en indata storlek på 1 024 MB, med 128 MB data per minskning, finns det åtta Minskare (1024/128).
 
@@ -81,7 +81,7 @@ En Hive-fråga körs i en eller flera steg. Om de oberoende faserna kan köras p
 
 1. Om du vill begränsa antalet jobb som ska köras parallellt ändrar du `hive.exec.parallel.thread.number` egenskapen. Standardvärdet är 8.
 
-    ![Parallell visning för Apache Hive exec](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-hive-exec-parallel.png" alt-text="Parallell visning för Apache Hive exec" border="true":::
 
 ## <a name="enable-vectorization"></a>Aktivera vectorization
 
@@ -91,7 +91,7 @@ Hive bearbetar data rad för rad. Vectorization dirigerar Hive för att bearbeta
 
 1. Om du vill aktivera vektorbaserad körning för frågans minsknings sida anger du `hive.vectorized.execution.reduce.enabled` parametern till true. Standardvärdet är false.
 
-    ![Apache Hive vektorbaserad körning](./media/optimize-hive-ambari/hive-vectorized-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-vectorized-execution.png" alt-text="Apache Hive vektorbaserad körning" border="true":::
 
 ## <a name="enable-cost-based-optimization-cbo"></a>Aktivera kostnads baserad optimering (CBO)
 
@@ -99,7 +99,7 @@ Som standard följer Hive en uppsättning regler för att hitta en optimal plan 
 
 Om du vill aktivera CBO navigerar du till inställningar för **Hive**-  >  **konfiguration**  >   och letar reda på **Aktivera kostnads baserad optimering** och byter sedan växlings knappen till **på**.
 
-![Kostnads baserad, HDInsight-baserad optimering](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+:::image type="content" source="./media/optimize-hive-ambari/hdinsight-cbo-config.png" alt-text="Kostnads baserad, HDInsight-baserad optimering" border="true":::
 
 Följande ytterligare konfigurations parametrar ökar prestanda för Hive-frågor när CBO är aktiverat:
 
@@ -107,19 +107,19 @@ Följande ytterligare konfigurations parametrar ökar prestanda för Hive-frågo
 
     När värdet är true använder Hive statistik som lagrats i dess metaarkiv för att besvara enkla frågor som `count(*)` .
 
-    ![Apache Hive beräknings fråga med statistik](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-compute-query-using-stats.png" alt-text="Apache Hive beräknings fråga med statistik" border="true":::
 
 * `hive.stats.fetch.column.stats`
 
     Kolumn statistik skapas när CBO är aktive rad. Hive använder kolumn statistik, som lagras i metaarkiv, för att optimera frågor. Att hämta kolumn statistik för varje kolumn tar längre tid när antalet kolumner är högt. Om värdet är false inaktiverar den här inställningen hämtning av kolumn statistik från metaarkiv.
 
-    ![Kolumn statistik för Apache Hive stats uppsättning](./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png" alt-text="Kolumn statistik för Apache Hive stats uppsättning" border="true":::
 
 * `hive.stats.fetch.partition.stats`
 
     Grundläggande standardpartitions statistik, till exempel antal rader, data storlek och fil storlek, lagras i metaarkiv. Om värdet är true hämtas partitionsstrukturen från metaarkiv. När värdet är false hämtas fil storleken från fil systemet. Antalet rader hämtas från radens schema.
 
-    ![Registrerings statistik för Hive-uppsättning](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png" alt-text="Registrerings statistik för Hive-uppsättning" border="true":::
 
 ## <a name="enable-intermediate-compression"></a>Aktivera mellanliggande komprimering
 
@@ -140,7 +140,7 @@ Som en allmän regel är det viktigt att det går att dela upp komprimerings met
 
 1. Om du vill aktivera mellanliggande komprimering navigerar du till fliken Hive- **konfigurationer** och anger sedan `hive.exec.compress.intermediate` parametern till true. Standardvärdet är false.
 
-    ![Hive exec komprimera mellanliggande](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-exec-compress-intermediate.png" alt-text="Hive exec komprimera mellanliggande" border="true":::
 
     > [!NOTE]  
     > Om du vill komprimera mellanliggande filer väljer du en komprimerings-codec med lägre CPU-kostnad, även om codecen inte har en hög komprimerings effekt.
@@ -157,7 +157,7 @@ Som en allmän regel är det viktigt att det går att dela upp komprimerings met
 
     d. Välj **Lägg till**.
 
-    ![Apache Hive anpassad egenskap Lägg till](./media/optimize-hive-ambari/hive-custom-property.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property.png" alt-text="Apache Hive anpassad egenskap Lägg till" border="true":::
 
     Den här inställningen komprimerar den mellanliggande filen med hjälp av Fästnings komprimering. När egenskapen har lagts till visas den i fönstret anpassad Hive-webbplats.
 
@@ -172,7 +172,7 @@ Den slutliga Hive-utdata kan också komprimeras.
 
 1. Om du vill välja komprimerings-codecen för utdata lägger du till den `mapred.output.compression.codec` anpassade egenskapen i fönstret anpassad Hive-plats, enligt beskrivningen i föregående avsnitt: steg 3.
 
-    ![Apache Hive anpassad egenskap ADD2](./media/optimize-hive-ambari/hive-custom-property2.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property2.png" alt-text="Apache Hive anpassad egenskap ADD2" border="true":::
 
 ## <a name="enable-speculative-execution"></a>Aktivera spekulativ körning
 
@@ -182,7 +182,7 @@ Spekulativ körning bör inte aktive ras för långvariga MapReduce-uppgifter me
 
 * Om du vill aktivera spekulativ körning navigerar du till fliken Hive- **konfiguration** och anger sedan `hive.mapred.reduce.tasks.speculative.execution` parametern till true. Standardvärdet är false.
 
-    ![Hive-mapred minskar antalet aktiviteter för spekulativ körning](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png" alt-text="Hive-mapred minskar antalet aktiviteter för spekulativ körning" border="true":::
 
 ## <a name="tune-dynamic-partitions"></a>Finjustera dynamiska partitioner
 
@@ -202,7 +202,7 @@ Lokalt läge gör det möjligt för Hive att utföra alla aktiviteter för ett j
 
 Om du vill aktivera lokalt läge lägger du till `hive.exec.mode.local.auto` parametern i den anpassade Hive-plats panelen, enligt beskrivningen i steg 3 i avsnittet [Aktivera mellanliggande komprimering](#enable-intermediate-compression) .
 
-![Apache Hive exec-läge lokalt Auto](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-exec-mode-local-auto.png" alt-text="Apache Hive exec-läge lokalt Auto" border="true":::
 
 ## <a name="set-single-mapreduce-multigroup-by"></a>Ange Single MapReduce GROUP BY
 
@@ -210,7 +210,7 @@ När den här egenskapen har angetts till True genererar en multigroup BY-fråga
 
 Om du vill aktivera det här beteendet lägger du till `hive.multigroupby.singlereducer` parametern i fönstret anpassad Hive-plats, enligt beskrivningen i steg 3 i avsnittet [Aktivera mellanliggande komprimering](#enable-intermediate-compression) .
 
-![Hive-uppsättning enkel MapReduce multigroup BY](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png" alt-text="Hive-uppsättning enkel MapReduce multigroup BY" border="true":::
 
 ## <a name="additional-hive-optimizations"></a>Ytterligare Hive-optimeringar
 

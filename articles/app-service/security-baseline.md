@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd612e7e3c54a000d989c5a2f3a633d06d6d11cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3193acf8ef19cdac97f6733a657610801d614f32
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101718360"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952311"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Azures säkerhets bas linje för App Service
 
@@ -265,9 +265,9 @@ Granska detaljerade säkerhets aviseringar och rekommendationer i Security Cente
 
 Vi rekommenderar att du skapar en process med automatiserade verktyg för att övervaka konfigurationer för nätverks resurser och snabbt identifierar ändringar.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Exportera säkerhetsaviseringar och rekommendationer](../security-center/continuous-export.md)
 
@@ -285,7 +285,7 @@ Vi rekommenderar att du skapar en process med automatiserade verktyg för att ö
 
 Använd Microsoft Azure Sentinel, en skalbar, molnbaserad, SIEM (Security information Event Management) som är tillgänglig för att ansluta till olika data källor och anslutningar, baserat på dina affärs behov. Du kan också aktivera och anskärma data till ett SIEM-system (Security information Event Management) från tredje part, till exempel Barracuda på Azure Marketplace.
 
-- [Logga ASE-aktivitet](https://docs.microsoft.com/azure/app-service/environment/using-an-ase#logging)
+- [Logga ASE-aktivitet](./environment/using-an-ase.md#logging)
 
 - [Så här aktiverar du diagnostikinställningar för Azure App Service](troubleshoot-diagnostic-logs.md)
 
@@ -305,7 +305,7 @@ Använd Microsoft Azure Sentinel, en skalbar, molnbaserad, SIEM (Security inform
 
 Dessutom tillhandahåller Azure Key Vault centraliserad hemlig hantering med åtkomst principer och gransknings historik. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure App Service](troubleshoot-diagnostic-logs.md)
 
@@ -322,7 +322,7 @@ Dessutom tillhandahåller Azure Key Vault centraliserad hemlig hantering med åt
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperioden för de Log Analytics arbets ytor som är kopplade till dina App Service resurser enligt organisationens regler för efterlevnad.
-- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -338,7 +338,7 @@ Om du har distribuerat en brand vägg för webbaserade program (WAF) kan du öve
 
 Använd Azure Sentinel, en skalbar och Cloud-ursprunglig säkerhets informations händelse hantering (SIEM) för att integrera med olika data källor och anslutningar, enligt krav. Alternativt kan du aktivera och fordonsbaserad data till en lösning för händelse hantering för säkerhets information från tredje part på Azure Marketplace.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -372,9 +372,9 @@ Använd Azure Sentinel, en skalbar och Cloud-ursprunglig säkerhets informations
 
 **Vägledning**: Azure Active Directory (Azure AD) har inbyggda roller som måste tilldelas explicit och kunna köras av frågor. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Använda hanterade identiteter för App Service och Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
+- [Använda hanterade identiteter för App Service och Azure Functions](./overview-managed-identity.md?tabs=dotnet&context=azure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context)
 
 - [Tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
@@ -390,7 +390,7 @@ Undvik vanligt vis att implementera standard lösen ord för användar åtkomst 
 
 Inaktivera anonym åtkomst om du inte behöver stöd för det. 
 
-- [Identitets leverantörer som är tillgängliga som standard i Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Identitets leverantörer som är tillgängliga som standard i Azure App Service](./overview-authentication-authorization.md#identity-providers)
 
 - [Autentisering och auktorisering i Azure App Service och Azure Functions](overview-authentication-authorization.md)
 
@@ -437,7 +437,7 @@ App Service appar använder federerade identiteter, där en tredjeparts identite
 
 När du aktiverar autentisering och auktorisering med någon av dessa leverantörer, är dess inloggnings slut punkt tillgänglig för användarautentisering och för verifiering av autentiseringstoken från providern.
 
-- [Förstå autentisering och auktorisering i Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Förstå autentisering och auktorisering i Azure App Service](./overview-authentication-authorization.md#identity-providers)
 
 - [Lär dig mer om autentisering och auktorisering i Azure App Service](overview-authentication-authorization.md)
 
@@ -451,7 +451,7 @@ När du aktiverar autentisering och auktorisering med någon av dessa leverantö
 
 Implementera multifaktorautentisering för Azure AD. Administratörer måste se till att prenumerations kontona i portalen är skyddade. Prenumerationen är sårbar för attacker eftersom den hanterar de resurser som du har skapat. 
 
-- [Azure Security multifaktorautentisering](/azure/security/develop/secure-aad-app)
+- [Azure Security multifaktorautentisering](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [Så här aktiverar du multifaktorautentisering i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -517,7 +517,7 @@ Skydd mot hot i Security Center ger omfattande försvar för din miljö, som inn
 
 **Vägledning**: identifiera inaktuella konton med loggarna som tillhandahålls av Azure Active Directory (Azure AD). Använd granskningar av Azure Identity Access för att effektivt hantera grupp medlemskap och åtkomst till företags program, samt roll tilldelningar. Granska användar åtkomsten regelbundet för att se till att endast de avsedda användarna har fortsatt åtkomst. 
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -533,7 +533,7 @@ Med åtkomst till Azure AD-inloggning, gransknings-och risk händelse logg käll
 
 - [Konfigurera dina Azure App Service-appar för att använda Azure AD-inloggning](configure-authentication-provider-aad.md)
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Aktivera Azure-kontroll på kort](../sentinel/quickstart-onboard.md)
 
@@ -561,7 +561,7 @@ Använd Azure AD Identity Protection för att konfigurera automatiserade svar p�
 
 **Vägledning**: inte tillgänglig; Customer Lockbox stöds inte för Azure App Service.
 
-- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -661,7 +661,7 @@ Kunder som har tillhandahållit hemligheter är krypterade i vila medan de lagra
 
 Observera att även om lokalt anslutna diskar kan användas av webbplatser som temporär lagring, (till exempel D:\Local och% TMP%), är de inte krypterade i vila.
 
-- [Förstå data skydds kontroller för Azure App Service](https://docs.microsoft.com/azure/app-service/security-recommendations#data-protection)
+- [Förstå data skydds kontroller för Azure App Service](./security-recommendations.md#data-protection)
 
 - [Förstå Azure Storage kryptering i vila](../storage/common/storage-service-encryption.md)
 
@@ -673,7 +673,7 @@ Observera att även om lokalt anslutna diskar kan användas av webbplatser som t
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar vid ändringar i produktions App Service appar och andra viktiga eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -689,7 +689,7 @@ Observera att även om lokalt anslutna diskar kan användas av webbplatser som t
 
 Granska och följ rekommendationer från Security Center för att skydda dina App Service appar.
 
-- [Så här lägger du till kontinuerlig säkerhets validering till din CI/CD-pipeline](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&amp;view=azure-devops)
+- [Så här lägger du till kontinuerlig säkerhets validering till din CI/CD-pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&preserve-view=true)
 
 - [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -719,7 +719,7 @@ Granska och följ rekommendationer från Security Center för att skydda dina Ap
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&amp;view=azps-4.8.0)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -840,7 +840,7 @@ Använd WebJobs i App Service för att övervaka att program som inte godkänts 
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 - [Kör bakgrunds aktiviteter med WebJobs i Azure App Service](webjobs-create.md)
 
@@ -864,7 +864,7 @@ På samma sätt använder du WebJobs i App Service för att inventera program so
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -926,7 +926,7 @@ Tillämpa inbyggda princip definitioner som:
 
 Vi rekommenderar att du dokumenterar processen för att tillämpa de inbyggda princip definitionerna för standardiserad användning.   
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&amp;view=azps-4.8.0)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&preserve-view=true)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -952,9 +952,9 @@ Vi rekommenderar att du dokumenterar processen för att tillämpa de inbyggda pr
 
 Använd din befintliga-pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för att distribuera en känd säker konfiguration.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?preserve-view=true&amp;view=azure-devops)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?preserve-view=true&amp;view=azure-devops)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?view=azure-devops&preserve-view=true)
 
 **Ansvar**: Kund
 
@@ -1060,7 +1060,7 @@ Mer information finns på de länkar som refereras till.
 
 - [Återställa en app som körs i Azure App Service](web-sites-restore.md)
 
-- [Förstå kryptering vid vila i Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-at-rest-in-microsoft-cloud-services) 
+- [Förstå kryptering vid vila i Azure](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
 - [Krypterings modell och nyckel hanterings tabell](../security/fundamentals/encryption-atrest.md)
 
@@ -1188,5 +1188,5 @@ Dessutom kan du tydligt markera prenumerationer (till exempel produktion, icke-p
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

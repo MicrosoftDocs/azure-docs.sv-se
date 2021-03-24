@@ -3,17 +3,17 @@ title: Hotpatch för Windows Server Azure Edition (för hands version)
 description: Lär dig hur Hotpatch för Windows Server Azure Edition fungerar och hur du aktiverar det
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: automanage
+ms.subservice: hotpatch
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687574"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953399"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch för nya virtuella datorer (förhands granskning)
 
@@ -129,21 +129,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Installation av korrigering
 
-Under för hands versionen aktive ras [Automatisk uppdatering av virtuella gäst datorer](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) automatiskt för alla virtuella datorer som skapats med _Windows Server 2019 Data Center: Azure Edition_. Med automatisk korrigering av VM-gäster aktiverat:
+Under för hands versionen aktive ras [Automatisk uppdatering av virtuella gäst datorer](../virtual-machines/automatic-vm-guest-patching.md) automatiskt för alla virtuella datorer som skapats med _Windows Server 2019 Data Center: Azure Edition_. Med automatisk korrigering av VM-gäster aktiverat:
 * Korrigeringar som klassificeras som kritiska eller säkerhet hämtas automatiskt och tillämpas på den virtuella datorn.
 * Uppdateringar tillämpas under låg belastnings tider i den virtuella datorns tidszon.
-* Uppdaterings dirigeringen hanteras av Azure och korrigeringarna tillämpas efter [principer för tillgänglighets första](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching).
+* Uppdaterings dirigeringen hanteras av Azure och korrigeringarna tillämpas efter [principer för tillgänglighets första](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching).
 * Hälso tillstånd för virtuella datorer, som fastställs genom plattformens hälso signaler, övervakas för att identifiera korrigerings fel.
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>Hur fungerar automatisk uppdatering av virtuella gäst datorer?
 
-När [Automatisk uppdatering av virtuella gäst datorer](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) är aktive rad på en virtuell dator laddas de tillgängliga viktiga och säkerhets korrigeringarna ned och tillämpas automatiskt. Den här processen startar automatiskt varje månad när nya korrigeringar lanseras. Korrigering av korrigering och installation sker automatiskt, och processen omfattar att starta om den virtuella datorn efter behov.
+När [Automatisk uppdatering av virtuella gäst datorer](../virtual-machines/automatic-vm-guest-patching.md) är aktive rad på en virtuell dator laddas de tillgängliga viktiga och säkerhets korrigeringarna ned och tillämpas automatiskt. Den här processen startar automatiskt varje månad när nya korrigeringar lanseras. Korrigering av korrigering och installation sker automatiskt, och processen omfattar att starta om den virtuella datorn efter behov.
 
 Med Hotpatch aktiverat på _Windows Server 2019 Data Center: virtuella Azure_ -datorer, levereras de flesta månatliga säkerhets uppdateringar som hotpatches som inte kräver omstarter. De senaste kumulativa uppdateringarna som skickats på planerade eller oplanerade bas linje månader kräver omstarter av virtuella datorer. Ytterligare kritiska uppdateringar eller säkerhets korrigeringar kan också vara tillgängliga regelbundet, vilket kan kräva omstart av virtuella datorer.
 
 Den virtuella datorn bedöms automatiskt med några dagars mellanrum och flera gånger under en 30-dagarsperiod för att fastställa de tillämpliga korrigeringarna för den virtuella datorn. Den här automatiska utvärderingen säkerställer att eventuella korrigeringar som saknas upptäcks så snart som möjligt.
 
-Korrigeringsfiler installeras inom 30 dagar från de månatliga korrigerings versionerna, efter de principer som är [tillgängliga för första](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching)gången. Korrigeringsfiler installeras bara vid låg belastnings tider för den virtuella datorn, beroende på den virtuella datorns tidszon. Den virtuella datorn måste köras under låg belastnings tid för att korrigerings program ska installeras automatiskt. Om en virtuell dator stängs av under en periodisk utvärdering, kommer den virtuella datorn att bedömas och de tillämpliga korrigeringarna installeras automatiskt vid nästa periodiska bedömning när den virtuella datorn påbörjas. Nästa periodiska bedömning sker vanligt vis inom några dagar.
+Korrigeringsfiler installeras inom 30 dagar från de månatliga korrigerings versionerna, efter de principer som är [tillgängliga för första](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)gången. Korrigeringsfiler installeras bara vid låg belastnings tider för den virtuella datorn, beroende på den virtuella datorns tidszon. Den virtuella datorn måste köras under låg belastnings tid för att korrigerings program ska installeras automatiskt. Om en virtuell dator stängs av under en periodisk utvärdering, kommer den virtuella datorn att bedömas och de tillämpliga korrigeringarna installeras automatiskt vid nästa periodiska bedömning när den virtuella datorn påbörjas. Nästa periodiska bedömning sker vanligt vis inom några dagar.
 
 Definitions uppdateringar och andra korrigeringar som inte klassificeras som kritiska eller säkerhet installeras inte via automatisk uppdatering av gäst datorer.
 
@@ -151,7 +151,7 @@ Definitions uppdateringar och andra korrigeringar som inte klassificeras som kri
 
 Om du vill visa korrigerings status för den virtuella datorn går du till avsnittet **gäst + värd uppdateringar** för den virtuella datorn i Azure Portal. Under avsnittet **uppdateringar av gäst operativ system** klickar du på på gå till Hotpatch (för hands version) om du vill visa den senaste korrigerings statusen för den virtuella datorn.
 
-På den här skärmen ser du Hotpatch-statusen för den virtuella datorn. Du kan också se om det finns några tillgängliga korrigeringsfiler för den virtuella datorn som inte har installerats. Som beskrivs i avsnittet "Installera korrigering" ovan installeras alla säkerhets-och kritiska uppdateringar automatiskt på den virtuella datorn med hjälp av [Automatisk uppdatering av virtuella gäst datorer](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) och inga extra åtgärder krävs. Korrigeringar med andra uppdaterings klassificeringar installeras inte automatiskt. De visas i stället i listan över tillgängliga korrigeringar på fliken "uppdatera efterlevnad". Du kan också visa historiken för uppdaterings distributioner på den virtuella datorn via uppdaterings historiken. Uppdaterings historiken från de senaste 30 dagarna visas, tillsammans med information om korrigerings installation.
+På den här skärmen ser du Hotpatch-statusen för den virtuella datorn. Du kan också se om det finns några tillgängliga korrigeringsfiler för den virtuella datorn som inte har installerats. Som beskrivs i avsnittet "Installera korrigering" ovan installeras alla säkerhets-och kritiska uppdateringar automatiskt på den virtuella datorn med hjälp av [Automatisk uppdatering av virtuella gäst datorer](../virtual-machines/automatic-vm-guest-patching.md) och inga extra åtgärder krävs. Korrigeringar med andra uppdaterings klassificeringar installeras inte automatiskt. De visas i stället i listan över tillgängliga korrigeringar på fliken "uppdatera efterlevnad". Du kan också visa historiken för uppdaterings distributioner på den virtuella datorn via uppdaterings historiken. Uppdaterings historiken från de senaste 30 dagarna visas, tillsammans med information om korrigerings installation.
 
 
 :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hantering av Hotpatch.":::
@@ -225,5 +225,5 @@ Det finns några viktiga överväganden för att köra en virtuell Windows Serve
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om Azure Uppdateringshantering [här](https://docs.microsoft.com/azure/automation/update-management/overview).
-* Läs mer om automatisk uppdatering av gäst datorer [här](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching)
+* Lär dig mer om Azure Uppdateringshantering [här](../automation/update-management/overview.md).
+* Läs mer om automatisk uppdatering av gäst datorer [här](../virtual-machines/automatic-vm-guest-patching.md)

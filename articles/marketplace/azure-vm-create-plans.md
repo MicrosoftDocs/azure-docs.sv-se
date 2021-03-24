@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97964441"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956262"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Skapa planer för ett erbjudande för virtuell dator
 
@@ -221,6 +221,8 @@ Data diskar (Välj **Lägg till data disk (max 16)**) är också URI: er för de
 Oavsett vilket operativ system du använder lägger du endast till det minsta antalet data diskar som krävs för lösningen. Under distributionen kan kunderna inte ta bort diskar som ingår i en avbildning, men de kan alltid lägga till diskar under eller efter distributionen.
 
 Välj **Spara utkast** och välj sedan **← plan Overview** överst till vänster för att se den plan som du nyss skapade.
+
+När din VM-avbildning har publicerats kan du ta bort avbildningen från Azure Storage.
 
 ## <a name="next-steps"></a>Nästa steg
 

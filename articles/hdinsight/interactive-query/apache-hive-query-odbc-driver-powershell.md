@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941370"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871613"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Självstudie: fråga Apache Hive med ODBC och PowerShell
 
@@ -42,7 +42,7 @@ Följande steg visar hur du skapar en ODBC-datakälla för Apache Hive.
 
 1. Från Windows navigerar du till **Starta**  >  **Windows Administration Tools**  >  **ODBC data sources (32-bitars)/(64-bitars)**.  En **Administratörs fönstret för ODBC-datakälla** öppnas.
 
-    ![OBDC data källans administratör](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurera en data källa med hjälp av administratör för ODBC-datakälla")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="OBDC data källans administratör" border="true":::
 
 1. På fliken **användar-DSN** väljer du **Lägg till** för att öppna fönstret **Skapa ny data källa** .
 
@@ -68,7 +68,7 @@ Följande steg visar hur du skapar en ODBC-datakälla för Apache Hive.
    |  Hämtade rader per block |När du hämtar ett stort antal poster kan du behöva justera den här parametern för att säkerställa optimala prestanda. |
    |  Standard sträng kolumn längd, binär kolumn längd, decimal kolumn skala |Data typens längd och precision kan påverka hur data returneras. De gör att felaktig information returneras på grund av förlust och trunkering. |
 
-    ![Avancerade konfigurations alternativ för DSN](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Avancerade konfigurations alternativ för DSN")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="Avancerade konfigurations alternativ för DSN" border="true":::
 
 1. Testa data källan genom att välja **test** . När data källan har kon figurer ATS korrekt visar test resultatet **lyckades**.  
 

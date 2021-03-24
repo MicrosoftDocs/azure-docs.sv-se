@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69a4955f28bbd42cd7bf5651bd057412e15303de
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176339"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952923"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA för Azure Kubernetes service (AKS) drift tid
 
@@ -37,9 +37,6 @@ SLA för drift tid är en betald funktion och aktive rad per kluster. SLA-priser
 * Installera [Azure CLI](/cli/azure/install-azure-cli) version 2.8.0 eller senare
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Skapa ett nytt kluster med SLA för drift tid
-
-> [!NOTE]
-> För närvarande finns det inget sätt att ta bort det från ett kluster om du aktiverar SLA för drift tid.
 
 Om du vill skapa ett nytt kluster med SLA för drift tid använder du Azure CLI.
 
@@ -106,6 +103,15 @@ Använd [`az aks update`][az-aks-update] kommandot för att uppdatera det befint
     "tier": "Paid"
   },
   ```
+
+## <a name="opt-out-of-uptime-sla"></a>Service avtal för att välja ut ur drift tid
+
+Du kan uppdatera klustret om du vill ändra till den kostnads fria nivån och välja service avtal i drift tid.
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
 
 ## <a name="clean-up"></a>Rensa
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694501"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952413"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Skapa, importera och exportera ord listans villkor
 
@@ -80,6 +80,9 @@ Observera att term namn är Skift läges känsliga. Till exempel `Sample` och `s
 4. När du har fyllt i CSV-filen väljer du den fil som ska importeras och väljer sedan **OK**.
 
 5. Systemet kommer att ladda upp filen och lägga till alla villkor i katalogen.
+ 
+   > [!Important]
+   > E-postadressen för administratörer och experter bör vara den primära adressen för användaren från AAD-gruppen. Alternativa e-postmeddelanden, User Principal Name och e-postmeddelanden som inte är AAD-e-post stöds inte ännu. 
 
 ## <a name="export-terms-from-glossary-with-custom-attributes"></a>Exportera termer från ord lista med anpassade attribut
 

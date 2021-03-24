@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 98d18044693bc6f4d23e04e9403e71686df39451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945825"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872208"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Skapa Linux-baserade kluster i HDInsight med hjälp av Azure Portal
 
@@ -32,13 +32,13 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 1. Välj **+ skapa en resurs** på den översta menyn.
 
-    ![Skapa ett nytt kluster i Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Skapa ett nytt kluster i Azure Portal")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png" alt-text="Skapa ett nytt kluster i Azure Portal":::
 
 1. Välj **Analytics**  >  **Azure HDInsight** för att gå till sidan **skapa HDInsight-kluster** .
 
 ## <a name="basics"></a>Grundläggande inställningar
 
-![Grunderna för HDInsight skapa kluster](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Skapa ett nytt kluster i Azure Portal")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png" alt-text="Grunderna för HDInsight skapa kluster":::
 
 På fliken **grundläggande** anger du följande information:
 
@@ -63,7 +63,7 @@ Välj **Nästa: lagrings >>** för att gå vidare till nästa flik.
 > [!WARNING] 
 > Från 2020 och med den 15 juni kommer kunder inte att kunna skapa ett nytt huvud namn för tjänsten med HDInsight. Se [skapa tjänstens huvud namn och certifikat](../active-directory/develop/howto-create-service-principal-portal.md) med hjälp av Azure Active Directory.
 
-![HDInsight skapa kluster lagring](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Skapa ett nytt kluster i Azure Portal-lagring")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png" alt-text="HDInsight skapa kluster lagring":::
 
 ### <a name="primary-storage"></a>Primär lagring
 
@@ -90,7 +90,7 @@ Välj **Nästa: Security + network >>** för att gå vidare till nästa flik.
 
 ## <a name="security--networking"></a>Säkerhet + nätverk
 
-![HDInsight skapa kluster säkerhets nätverk](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight skapa kluster säkerhets nätverk")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png" alt-text="HDInsight skapa kluster säkerhets nätverk":::
 
 På fliken **säkerhet + nätverk** anger du följande information:
 
@@ -107,7 +107,7 @@ Välj **Nästa: konfiguration + pris >>** för att gå vidare till nästa flik.
 
 ## <a name="configuration--pricing"></a>Konfiguration + prissättning
 
-![HDInsight skapa kluster konfiguration](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "Fliken konfiguration och prissättning")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png" alt-text="HDInsight skapa kluster konfiguration":::
 
 Ange följande information på fliken **Configuration + prissättning** :
 
@@ -123,7 +123,7 @@ Välj **Granska + skapa >>** för att verifiera kluster konfigurationen och gå 
 
 ## <a name="review--create"></a>Granska + skapa
 
-![HDInsight skapa kluster Sammanfattning](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Ange antal klusternoder")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight skapa kluster Sammanfattning":::
 
 Granska inställningarna. Välj **Skapa** så att klustret skapas.
 
@@ -133,7 +133,7 @@ Det tar lite tid att skapa klustret, normalt cirka 20 minuter. Övervaka **avise
 
 När processen har skapats väljer **du gå till resurs** från meddelandet **distributionen har slutförts** . Kluster fönstret innehåller följande information.
 
-![Översikt över HDI Azure Portal-kluster](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Kluster egenskaper")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png" alt-text="Översikt över HDI Azure Portal-kluster":::
 
 Några av ikonerna i fönstret förklaras på följande sätt:
 

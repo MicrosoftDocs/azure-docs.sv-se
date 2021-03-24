@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: bdab80725f66814b9bf6bfa9429e3eff96fbc908
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 72a468057cef5c8616cb3f88063204509aaf7fe0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505111"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863334"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Snabb start: skapa Apache Kafka kluster i Azure HDInsight med ARM-mall
 
@@ -22,7 +22,7 @@ Kafka-API:et kan endast användas av resurser i samma virtuella nätverk. I den 
 
 Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
-[![Distribuera till Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+[:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Distribuera till Azure" border="false":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Krav
 
@@ -43,7 +43,7 @@ Två Azure-resurser definieras i mallen:
 
 1. Klicka på knappen **distribuera till Azure** nedan för att logga in på Azure och öppna arm-mallen.
 
-   [![Distribuera till Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+   [:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Distribuera till Azure" border="false":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 1. Ange eller välj följande värden:
 
@@ -58,7 +58,7 @@ Två Azure-resurser definieras i mallen:
     |Användar namn för SSH|Ange användar namnet, standard är **sshuser**|
     |SSH-lösenord|Ange lösen ordet.|
 
-    ![En skärmbild av mallegenskaperna](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
+    :::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png" alt-text="En skärmbild av mallegenskaperna" border="false":::
 
 1. Granska de **allmänna** villkoren. Välj sedan **Jag accepterar villkoren som anges ovan** och **köp**. Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
 
@@ -221,7 +221,7 @@ När du har slutfört snabb starten kanske du vill ta bort klustret. Med HDInsig
 
 Från Azure Portal, navigera till klustret och välj **ta bort**.
 
-![HBase för Resource Manager-mall](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
+:::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png" alt-text="HBase för Resource Manager-mall" border="false":::
 
 Du kan också välja resursgruppnamnet för att öppna resursgruppsidan. Välj sedan **Ta bort resursgrupp**. Genom att ta bort resurs gruppen tar du bort både HDInsight-klustret och standard lagrings kontot.
 

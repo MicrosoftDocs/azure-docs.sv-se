@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 3b49177eb592906e3bf84d359699b354f8c87c6e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ac4e8d93e2e729db387b0f9cf81017b6c58b6750
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185673"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951342"
 ---
 # <a name="deployment-best-practices"></a>Metod tips för distribution
 
@@ -69,7 +69,7 @@ App Service har [inbyggd kontinuerlig leverans](deploy-continuous-deployment.md)
 
 ### <a name="use-github-actions"></a>Använda GitHub-åtgärder
 
-Du kan också automatisera behållar distributionen [med GitHub-åtgärder](deploy-container-github-action.md).  Arbets flödes filen nedan skapar och taggar behållaren med commit ID, push-överför den till ett behållar register och uppdaterar den angivna plats platsen med den nya avbildnings tag gen.
+Du kan också automatisera behållar distributionen [med GitHub-åtgärder](./deploy-ci-cd-custom-container.md).  Arbets flödes filen nedan skapar och taggar behållaren med commit ID, push-överför den till ett behållar register och uppdaterar den angivna plats platsen med den nya avbildnings tag gen.
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps

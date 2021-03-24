@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 03/23/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 253aa080b9c160141a274c57e0895291c78d2048
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198497"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887775"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Självstudie: gör det möjligt för användare att låsa upp kontot eller återställa lösen ord med hjälp av Azure Active Directory självbetjäning för återställning av lösen ord
 
@@ -138,6 +138,22 @@ Om du inte längre vill använda SSPR-funktionen som du har konfigurerat som en 
 1. Sök efter och välj **Azure Active Directory** och välj sedan **Återställ lösen ord** på menyn till vänster.
 1. Välj **ingen** på sidan **Egenskaper** under alternativet Återställning av lösen ord för självbetjäning *aktive rad*.
 1. Om du vill tillämpa ändringen av SSPR väljer du **Spara**.
+
+## <a name="faqs"></a>Vanliga frågor och svar
+
+I det här avsnittet beskrivs vanliga frågor från administratörer och slutanvändare som testar SSPR:
+
+- Varför väntar federerade användare upp till 2 minuter efter att **lösen ordet har återställts** innan de kan använda lösen ord som synkroniseras lokalt?
+
+  För federerade användare vars lösen ord synkroniseras, är källan till behörighet för lösen orden lokalt. Därför uppdaterar SSPR endast lokala lösen ord. Lösenordssynkronisering tillbaka till Azure AD är schemalagt för varje 2 minuter.
+
+- När en nyligen skapad användare som är förifylld med SSPR-data, t. ex. telefon och e-post besöker SSPR registrerings sidan, **förlorar du inte åtkomsten till ditt konto!** visas som rubrik på sidan. Varför finns det inga andra användare med SSPR data i förväg ifyllda i meddelandet?
+
+  En användare som ser **förlorar inte åtkomst till ditt konto!** är medlem i SSPR/kombinerade registrerings grupper som har kon figurer ATS för klient organisationen. Användare som inte ser **förlorar inte åtkomst till ditt konto!** ingår inte i SSPR/kombinerade registrerings grupperna.
+
+- Varför går det inte att se indikatorn för lösen ords styrka när vissa användare går igenom SSPR-processen och återställer sitt lösen ord?
+
+  Användare som inte ser svag/stark lösen ords styrka har synkroniserat tillbakaskrivning av lösen ord aktiverat. Eftersom SSPR inte kan fastställa lösen ords principen för kundens lokala miljö kan den inte verifiera lösen ords styrka eller svagheter. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 998154376895d8bcfc7cf36665a6a36f5c43e3b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b6ae6c003284b93390bb4f53345d3ba0f8d35e21
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594996"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952566"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-tillägg i Azure Database for PostgreSQL-flexibel Server
 
@@ -53,7 +53,6 @@ Följande tillägg är tillgängliga i Azure Database for PostgreSQL-flexibla se
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | datatyp för hierarkiska träd strukturer|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | granska innehållet i databas sidor på en låg nivå|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | granska cacheminnet för den delade bufferten|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Jobb schema för PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | kontrol lera kartan över ledigt utrymme (FSM)|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | Förvärm Relations data|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | spåra körnings statistik för alla SQL-instruktioner som körs|
@@ -103,7 +102,6 @@ Följande tillägg är tillgängliga i Azure Database for PostgreSQL-flexibla se
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | datatyp för hierarkiska träd strukturer|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | granska innehållet i databas sidor på en låg nivå|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | granska cacheminnet för den delade bufferten|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Jobb schema för PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | kontrol lera kartan över ledigt utrymme (FSM)|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | Förvärm Relations data|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | spåra körnings statistik för alla SQL-instruktioner som körs|
@@ -131,28 +129,6 @@ Följande tillägg är tillgängliga i Azure Database for PostgreSQL-flexibla se
 med [dbLink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) och [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) kan du ansluta från en postgresql-server till en annan, eller till en annan databas på samma server. Flexibel Server stöder både inkommande och utgående anslutningar till valfri PostgreSQL-Server. Den sändande servern måste tillåta utgående anslutningar till den mottagande servern. På samma sätt måste den mottagande servern tillåta anslutningar från den sändande servern. 
 
 Vi rekommenderar att du distribuerar dina servrar med [VNet-integrering](concepts-networking.md) om du planerar att använda dessa två tillägg. Som standard möjliggör VNet-integrering anslutningar mellan servrar i VNET. Du kan också välja att använda [VNet-nätverks säkerhets grupper](../../virtual-network/manage-network-security-group.md) för att anpassa åtkomst.
-
-## <a name="pg_cron"></a>pg_cron
-
-[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) är en enkel, cron jobb scheman för postgresql som körs inuti databasen som ett tillägg. Pg_cron-tillägget kan användas för att köra schemalagda underhålls aktiviteter i en PostgreSQL-databas. Du kan till exempel köra det periodiska vakuumet i en tabell eller ta bort gamla data jobb.
-
-`pg_cron` kan köra flera jobb parallellt, men det körs högst en instans av ett jobb åt gången. Om en andra körning ska starta innan den första är slutförd placeras den andra körningen i kö och startas så snart den första körningen har slutförts. Detta säkerställer att jobben körs exakt så många gånger som schemalagt och inte körs samtidigt med sig själva.
-
-Några exempel:
-
-Ta bort gamla data på lördag vid 3:10:30 (GMT)
-```
-SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
-```
-För att köra vakuum varje dag vid 10:10:00 (GMT)
-```
-SELECT cron.schedule('0 10 * * *', 'VACUUM');
-```
-
-Om du vill schemalägga alla aktiviteter från pg_cron
-```
-SELECT cron.unschedule(jobid) FROM cron.job;
-```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dfa89f50dedad41394cb77f1cca9b2dd3a65308
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590820"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865544"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Använda Azure Monitor-loggar för att övervaka HDInsight-kluster
 
@@ -58,7 +58,7 @@ I det här avsnittet konfigurerar du ett befintligt HDInsight Hadoop-kluster fö
 
 1. Välj **Spara**.  Det tar en stund att spara inställningen.
 
-    ![Aktivera övervakning för HDInsight-kluster](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Aktivera övervakning för HDInsight-kluster")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png" alt-text="Aktivera övervakning för HDInsight-kluster":::
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>Aktivera Azure Monitor med Azure PowerShell
 
@@ -138,7 +138,7 @@ Tillgängliga HDInsight-lösningar:
 
 Anvisningar för hanterings lösningen finns [i hanterings lösningar i Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Du kan experimentera genom att installera en HDInsight Hadoop-övervaknings lösning. När den är färdig visas en **HDInsightHadoop** -panel under **Sammanfattning**. Välj panelen **HDInsightHadoop** . HDInsightHadoop-lösningen ser ut så här:
 
-![HDInsight övervaknings lösnings vy](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+:::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png" alt-text="HDInsight övervaknings lösnings vy":::
 
 Eftersom klustret är ett helt nytt kluster visas inga aktiviteter i rapporten.
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34aaafcd03e737b1e59529f8001e0c008bd39b70
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644528"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888880"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>Integrera med SharePoint (SAML)
 
@@ -68,8 +68,8 @@ I det här steget skapar du ett program i Azure AD-klienten som använder progra
 
  1. Skapa ett nytt Azure AD-programproxy-program med en anpassad domän. Stegvisa instruktioner finns i [anpassade domäner i Azure AD-programproxy](./application-proxy-configure-custom-domain.md).
 
-    - Intern URL: https://portal.contoso.com/
-    - Extern URL: https://portal.contoso.com/
+    - Intern URL: ' https://portal.contoso.com/ '
+    - Extern URL: ' https://portal.contoso.com/ '
     - Förautentisering: Azure Active Directory
     - Översätt URL: er i huvuden: Nej
     - Översätt URL: er i program texten: Nej
@@ -84,4 +84,4 @@ I det här steget skapar du ett program i Azure AD-klienten som använder progra
  
 ## <a name="step-3-test-your-application"></a>Steg 3: testa programmet
 
-Använd en webbläsare från en dator i ett externt nätverk och navigera till URL: en ( https://portal.contoso.com/) som du konfigurerade under publicerings steget). Kontrol lera att du kan logga in med det test konto som du har konfigurerat.
+Med hjälp av en webbläsare från en dator i ett externt nätverk navigerar du till den länk som du konfigurerade under publicerings steget. Kontrol lera att du kan logga in med det test konto som du har konfigurerat.

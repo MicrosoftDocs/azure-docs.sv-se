@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e4351529fb7b6a66f554182a195bc26f79c0e2b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97655976"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889492"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Konfigurera en ASP.NET Core app för Azure App Service
 
@@ -125,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-Om du konfigurerar en app-inställning med samma namn i App Service och i *appsettings.jspå*, till exempel, har App Service värdet företräde framför *appsettings.js* svärdet. Med värdet Local *appsettings.json* kan du felsöka appen lokalt, men App Service-värdet låter appen köras i produkt med produktions inställningar. Anslutnings strängar fungerar på samma sätt. På så sätt kan du behålla dina program hemligheter utanför din kod lagrings plats och få till gång till lämpliga värden utan att ändra koden.
+Om du konfigurerar en app-inställning med samma namn i App Service och i *appsettings.jspå*, till exempel, har App Service värdet företräde framför *appsettings.js* svärdet. Med värdet Local *appsettings.json* kan du felsöka appen lokalt, men App Service-värdet låter appen köras i produktion med produktions inställningar. Anslutnings strängar fungerar på samma sätt. På så sätt kan du behålla dina program hemligheter utanför din kod lagrings plats och få till gång till lämpliga värden utan att ändra koden.
 
 > [!NOTE]
 > Observera att [hierarkiska konfigurations data](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) i *appsettings.jspå* nås med hjälp av den `:` avgränsare som är standard för .net Core. Om du vill åsidosätta en viss hierarkisk konfigurations inställning i App Service anger du namnet på appens inställning med samma avgränsat format i nyckeln. Du kan köra följande exempel i [Cloud Shell](https://shell.azure.com):

@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/22/2021
-ms.openlocfilehash: ede812dc2ce063ec38423db73f4b269a7618e00c
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.date: 03/23/2021
+ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799623"
+ms.locfileid: "104889458"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center kostnads fri vs Azure Defender aktiverat
 Azure Defender är kostnads fritt under de första 30 dagarna. Om du väljer att fortsätta använda tjänsten i slutet av 30 dagar börjar vi automatiskt att debitera för användning.
@@ -48,7 +48,8 @@ Security Center erbjuds i två lägen:
 - [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
-- [Vilka data typer ingår i gränsen på 500 MB lediga data?](#what-data-types-are-included-in-the-500-mb-free-data-limit)
+- [Vilka data typer ingår i det dagliga data traktamentet på 500 MB?](#what-data-types-are-included-in-the-500-mb-data-daily-allowance)
+
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?
 Azure-prenumerationer kan ha flera administratörer som har behörighet att ändra pris inställningarna. Om du vill ta reda på vilken användare som har gjort en ändring använder du Azure-aktivitets loggen.
@@ -116,7 +117,7 @@ Du får 500 MB kostnads fri data inmatning per dag för varje dator som är ansl
 
 Dessa data är ett dagligt genomsnitt för alla noder. Så även om vissa datorer skickar 100-MB och andra skickar 800-MB, om summan inte överstiger **[antal datorer] x 500-MB** fri gräns, debiteras du inte extra.
 
-### <a name="what-data-types-are-included-in-the-500-mb-free-data-limit"></a>Vilka data typer ingår i gränsen på 500 MB lediga data?
+### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>Vilka data typer ingår i det dagliga data traktamentet på 500 MB?
 
 Security Center faktureras är nära faktureringen för Log Analytics. Security Center ger en allokering på 500 MB/nod/dag till följande delmängd av [säkerhets data typer](/azure/azure-monitor/reference/tables/tables-category.md#security):
 - WindowsEvent

@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594442"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869896"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrera Apache Spark och Apache Hive med Hive Warehouse Connector i Azure HDInsight
 
@@ -23,7 +23,7 @@ Apache Hive erbjuder stöd för databas transaktioner som är atomiska, konsekve
 
 Apache Spark, har ett strukturerat strömnings-API som ger direkt uppspelnings funktioner som inte är tillgängliga i Apache Hive. Från och med HDInsight 4,0 är Apache Spark 2.3.1 och Apache Hive 3.1.0 separata metastores. De separata metastores kan göra det svårt att samverka. Hive-lager kopplingen gör det lättare att använda Spark och Hive tillsammans. INSTANSEN-biblioteket läser in data från LLAP-daemonar till Spark-körningar parallellt. Den här processen gör det mer effektivt och anpassningsbart än en standard JDBC-anslutning från Spark till Hive.
 
-![arkitektur för Hive-lager koppling](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+:::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png" alt-text="arkitektur för Hive-lager koppling" border="true":::
 
 Några av de åtgärder som stöds av Hive-lager kopplingen är:
 
@@ -72,7 +72,7 @@ Hive-lagerställen behöver separata kluster för Spark-och Interactive Query-ar
 
 1. Visa **anpassade spark2-standardvärden**.
 
-    ![Apache Ambari Spark2-konfiguration](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png" alt-text="Apache Ambari Spark2-konfiguration" border="true":::
 
 1. Välj **Lägg till egenskap...** för att lägga till följande konfigurationer:
 
@@ -103,11 +103,11 @@ Förutom de konfigurationer som anges i föregående avsnitt lägger du till fö
     
     * I en webbläsare navigerar du till `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` där kluster namn är namnet på ditt interaktiva fråga-kluster. Klicka på **HiveServer2 Interactive**. Du ser det fullständigt kvalificerade domän namnet (FQDN) för Head-noden där LLAP körs som visas i skärm bilden. Ersätt `<llap-headnode>` med det här värdet.
 
-        ![Hive lager kopplings huvud nod](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hive lager kopplings huvud nod" border="true":::
 
     * Använd [SSH-kommandot](../hdinsight-hadoop-linux-use-ssh-unix.md) för att ansluta till ditt interaktiva fråga-kluster. Sök efter `default_realm` parameter i `/etc/krb5.conf` filen. Ersätt `<AAD-DOMAIN>` med det här värdet som en versal sträng, annars hittas inte autentiseringsuppgiften.
 
-        ![Hive-domän för Hive-dist.](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive-domän för Hive-dist." border="true":::
 
     * Till exempel `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
     
@@ -211,21 +211,21 @@ kinit USERNAME
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![demo tabell innan du använder en Ranger-princip](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png" alt-text="demo tabell innan du använder en Ranger-princip" border="true":::
 
 1. Använd en kolumn Maskerings princip som bara visar de sista fyra tecknen i kolumnen.  
     1. Gå till gränssnittet Ranger admin på `https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/` .
     1. Klicka på Hive-tjänsten för klustret under **Hive**.
-        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png" alt-text="Ranger Service Manager" border="true":::
     1. Klicka på fliken **maskering** och **Lägg sedan till ny princip**
 
-        ![Hive-princip lista för Hive-lager kopplings Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png" alt-text="Hive-princip lista för Hive-lager kopplings Ranger" border="true":::
 
     1. Ange ett önskat princip namn. Välj databas: **standard**, Hive-tabell: **demo**, Hive-kolumn: **namn**, användare: **Rsadmin2**, åtkomst typer: **Select** och **partiell mask: Visa sista 4** från menyn **Välj masknings alternativ** . Klicka på **Lägg till**.
-                ![Skapa princip](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png" alt-text="Skapa princip" border="true":::
 1. Visa tabellens innehåll igen. När du har tillämpat Ranger-principen ser vi bara de sista fyra tecknen i kolumnen.
 
-    ![demo tabell efter användning av Ranger-policy](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png" alt-text="demo tabell efter användning av Ranger-policy" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

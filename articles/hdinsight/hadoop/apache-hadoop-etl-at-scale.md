@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f11b31ba698c193029834caada2e5c4cf3ef2902
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946575"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866649"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrahera, transformera och läsa in (ETL) i skala
 
@@ -18,7 +18,7 @@ Extrahering, transformering och inläsning (ETL) är den process som data hämta
 
 Användningen av HDInsight i ETL-processen sammanfattas av den här pipelinen:
 
-![HDInsight ETL i skalnings översikt](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+:::image type="content" source="./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png" alt-text="HDInsight ETL i skalnings översikt" border="false":::
 
 I följande avsnitt lär du dig var och en av de olika ETL-faserna och deras associerade komponenter.
 

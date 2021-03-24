@@ -3,12 +3,12 @@ title: Så här skapar du gästkonfigurationsprinciper för Windows
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99070652"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887707"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Så här skapar du gästkonfigurationsprinciper för Windows
 
@@ -214,10 +214,11 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker ./Config
+AuditBitLocker
 ```
 
-Spara filen med namnet `config.ps1` i projektmappen. Kör den i PowerShell genom att köra `./config.ps1` i terminalen. En ny MOF-fil skapas.
+Kör det här skriptet i en PowerShell-terminal eller spara filen med namnet `config.ps1` i projektmappen.
+Kör den i PowerShell genom att köra `./config.ps1` i terminalen. En ny MOF-fil skapas.
 
 `Node AuditBitlocker`Kommandot är inte tekniskt obligatoriskt, utan skapar en fil med namnet `AuditBitlocker.mof` istället för standardvärdet `localhost.mof` . Med hjälp av MOF-filnamn följer du konfigurationen och gör det enkelt att ordna många filer när de körs i stor skala.
 
@@ -234,7 +235,7 @@ Kör följande kommando för att skapa ett paket med den konfiguration som angav
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditBitlocker' `
-  -Configuration './Config/AuditBitlocker.mof'
+  -Configuration './AuditBitlocker/AuditBitlocker.mof'
 ```
 
 När du har skapat konfigurations paketet, men innan du publicerar det till Azure, kan du testa paketet från din arbets Station eller kontinuerlig integrering och distribution (CI/CD)-miljö. GuestConfiguration-cmdleten `Test-GuestConfigurationPackage` innehåller samma agent i utvecklings miljön som används i Azure-datorer. Med den här lösningen kan du utföra integrerings testning lokalt innan du släpper till fakturerade moln miljöer.
@@ -257,10 +258,16 @@ Test-GuestConfigurationPackage `
 Cmdleten stöder även inmatade från PowerShell-pipeline. Skicka utdata från `New-GuestConfigurationPackage` cmdlet till `Test-GuestConfigurationPackage` cmdleten.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Nästa steg är att publicera filen till Azure Blob Storage. Kommandot `Publish-GuestConfigurationPackage` kräver `Az.Storage` modulen.
+Nästa steg är att publicera filen till Azure Blob Storage. Det finns inga särskilda krav för lagrings kontot, men det är en bra idé att vara värd för filen i en region nära dina datorer. Om du inte har ett lagrings konto kan du använda följande exempel. Kommandona nedan, inklusive `Publish-GuestConfigurationPackage` , kräver `Az.Storage` modulen.
+
+```azurepowershell-interactive
+# Creates a new resource group, storage account, and container
+New-AzResourceGroup -name myResourceGroupName -Location WestUS
+New-AzStorageAccount -ResourceGroupName myResourceGroupName -Name myStorageAccountName -SkuName 'Standard_LRS' -Location 'WestUs' | New-AzStorageContainer -Name guestconfiguration -Permission Blob
+```
 
 Parametrar för `Publish-GuestConfigurationPackage` cmdleten:
 
@@ -416,111 +423,6 @@ Community-lösningar kan identifieras genom att söka PowerShell-galleriet efter
 > Gäst konfigurationens utöknings barhet är en "ta med din egen licens"-scenario. Se till att du uppfyller villkoren för alla verktyg från tredje part innan du använder.
 
 När DSC-resursen har installerats i utvecklings miljön använder du **FilesToInclude** -parametern för `New-GuestConfigurationPackage` att ta med innehåll för plattformen från tredje part i innehålls artefakten.
-
-### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>Steg för steg, skapa en innehålls artefakt som använder verktyg från tredje part
-
-Endast `New-GuestConfigurationPackage` cmdleten kräver en ändring från steg-för-steg-vägledningen för artefakter för DSC-innehåll. I det här exemplet använder du `gcInSpec` modulen för att utöka gäst konfigurationen till att granska Windows-datorer med hjälp av INSPEC-plattformen snarare än den inbyggda modulen som används i Linux. Community-modulen underhålls som ett [projekt med öppen källkod i GitHub](https://github.com/microsoft/gcinspec).
-
-Installera nödvändiga moduler i utvecklings miljön:
-
-```azurepowershell-interactive
-# Update PowerShellGet if needed to allow installing PreRelease versions of modules
-Install-Module PowerShellGet -Force
-
-# Install GuestConfiguration module prerelease version
-Install-Module GuestConfiguration -allowprerelease
-
-# Install commmunity supported gcInSpec module
-Install-Module gcInSpec
-```
-
-Börja med att skapa YaML-filen som används av INSPEC. Filen innehåller grundläggande information om miljön. Ett exempel anges nedan:
-
-```YaML
-name: wmi_service
-title: Verify WMI service is running
-maintainer: Microsoft Corporation
-summary: Validates that the Windows Service 'winmgmt' is running
-copyright: Microsoft Corporation
-license: MIT
-version: 1.0.0
-supports:
-  - os-family: windows
-```
-
-Spara filen `wmi_service.yml` i en mapp med namnet `wmi_service` i projekt katalogen.
-
-Skapa sedan ruby-filen med den inspeca-språkabstraktion som används för att granska datorn.
-
-```Ruby
-control 'wmi_service' do
-  impact 1.0
-  title 'Verify windows service: winmgmt'
-  desc 'Validates that the service, is installed, enabled, and running'
-
-  describe service('winmgmt') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
-  end
-end
-
-```
-
-Spara filen `wmi_service.rb` i en ny mapp som heter `controls` inuti `wmi_service` katalogen.
-
-Slutligen skapar du en konfiguration, importerar **GuestConfiguration** Resource module och använder `gcInSpec` resursen för att ange namnet på den inspeca profilen.
-
-```powershell
-# Define the configuration and import GuestConfiguration
-Configuration wmi_service
-{
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
-    node 'wmi_service'
-    {
-        gcInSpec wmi_service
-        {
-            InSpecProfileName       = 'wmi_service'
-            InSpecVersion           = '3.9.3'
-            WindowsServerVersion    = '2016'
-        }
-    }
-}
-
-# Compile the configuration to create the MOF files
-wmi_service -out ./Config
-```
-
-Nu bör du ha en projekt struktur enligt nedan:
-
-```file
-/ wmi_service
-    / Config
-        wmi_service.mof
-    / wmi_service
-        wmi_service.yml
-        / controls
-            wmi_service.rb 
-```
-
-De stödfiler som krävs måste paketeras tillsammans. Det slutförda paketet används av gäst konfigurationen för att skapa Azure Policy-definitioner.
-
-`New-GuestConfigurationPackage`Cmdleten skapar paketet. För innehåll från tredje part använder du parametern **FilesToInclude** för att lägga till INSPEC-innehåll i paketet. Du behöver inte ange **ChefProfilePath** som för Linux-paket.
-
-- **Namn**: namn på gäst konfigurations paket.
-- **Konfiguration**: kompilerad fullständig sökväg till konfigurations dokument.
-- **Sökväg**: sökväg till utmatnings katalog. Den här parametern är valfri. Om det inte anges skapas paketet i den aktuella katalogen.
-- **FilesoInclude**: fullständig sökväg till INSPEC-profil.
-
-Kör följande kommando för att skapa ett paket med den konfiguration som angavs i föregående steg:
-
-```azurepowershell-interactive
-New-GuestConfigurationPackage `
-  -Name 'wmi_service' `
-  -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'  `
-  -Path './package' 
-```
 
 ## <a name="policy-lifecycle"></a>Princip livs cykel
 

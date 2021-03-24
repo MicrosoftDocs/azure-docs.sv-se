@@ -2,21 +2,18 @@
 title: Analysera video-och ljudfiler
 description: Lär dig hur du analyserar ljud-och video innehåll med AudioAnalyzerPreset och VideoAnalyzerPreset i Azure Media Services.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 002f900f03f7bd08753313cde0e6bd46b097a858
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e062eb1ecc37a60567a6b8af0d4e0f27b1e73c36
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581158"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863351"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysera video-och ljudfiler med Azure Media Services
 
@@ -30,12 +27,9 @@ Det finns två lägen för för hands inställningen för ljud analys, Basic och
 
 Om du vill analysera ditt innehåll med Media Services v3-för inställningar skapar du en **transformering** och skickar ett **jobb** som använder någon av dessa för inställningar: [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) eller **AudioAnalyzerPreset**. En själv studie kurs som demonstrerar hur du använder **VideoAnalyzerPreset** finns i [analysera videor med Azure Media Services](analyze-videos-tutorial-with-api.md).
 
-> [!NOTE]
-> När du använder en video-eller ljud analys för hands inställningar använder du Azure Portal för att ange att ditt konto ska ha 10 S3-enheter reserverade enheter, även om detta inte krävs. Du kan använda antingen S1 eller S2 för ljud för inställningar. Mer information finns i [Skala mediebearbetning](media-reserved-units-cli-how-to.md).
-
 ## <a name="compliance-privacy-and-security"></a>Efterlevnad, sekretess och säkerhet
 
-Som en viktig påminnelse måste du följa alla tillämpliga lagar i din användning av Video Indexer och du får inte använda Video Indexer eller andra Azure-tjänster på ett sätt som strider mot andras rättigheter eller som kan vara skadliga för andra. Innan du laddar upp videor, inklusive bio metriska data, till den Video Indexer tjänsten för bearbetning och lagring, måste du ha alla lämpliga rättigheter, inklusive alla lämpliga medgivanden, från enskilda eller enskilda i videon. För att lära dig om efterlevnad, sekretess och säkerhet i Video Indexer, [villkoren](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)för Microsoft Cognitive Services. Information om Microsofts sekretess avtal och hantering av dina data finns i Microsofts [sekretess policy](https://privacy.microsoft.com/PrivacyStatement), [Online Services-villkoren](https://www.microsoft.com/licensing/product-licensing/products) ("ost") och tillägget för [data bearbetning](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Ytterligare sekretess information, inklusive information om datakvarhållning, borttagning/förstörelse, finns i OST-filen och [här](../video-indexer/faq.md). Genom att använda Video Indexer samtycker du till att vara kopplad till Cognitive Services villkor, OST, DPA och sekretess policyn.
+Som en viktig påminnelse måste du följa alla tillämpliga lagar i din användning av Video Indexer och du får inte använda Video Indexer eller andra Azure-tjänster på ett sätt som strider mot andras rättigheter eller som kan vara skadliga för andra. Innan du laddar upp videor, inklusive bio metriska data, till den Video Indexer tjänsten för bearbetning och lagring, måste du ha alla lämpliga rättigheter, inklusive alla lämpliga medgivanden, från enskilda eller enskilda i videon. För att lära dig om efterlevnad, sekretess och säkerhet i Video Indexer, [Cognitive Services villkoren](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)i Azure. Information om Microsofts sekretess avtal och hantering av dina data finns i Microsofts [sekretess policy](https://privacy.microsoft.com/PrivacyStatement), [Online Services-villkoren](https://www.microsoft.com/licensing/product-licensing/products) ("ost") och tillägget för [data bearbetning](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Ytterligare sekretess information, inklusive information om datakvarhållning, borttagning/förstörelse, finns i OST-filen och [här](../video-indexer/faq.md). Genom att använda Video Indexer samtycker du till att vara kopplad till Cognitive Services villkor, OST, DPA och sekretess policyn.
 
 ## <a name="built-in-presets"></a>Inbyggda för hands inställningar
 

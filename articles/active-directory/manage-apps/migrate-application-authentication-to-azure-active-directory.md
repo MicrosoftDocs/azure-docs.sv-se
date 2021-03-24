@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db695b55fbef16cb67dce6dc2d3c81ad177c9db6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 629f71c429d6af8583cb15b9ebc96efe6867f78b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601805"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888897"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrera programautentisering till Azure Active Directory
 
@@ -489,7 +489,7 @@ Efter migreringen kan du välja att skicka kommunikationen informerar användarn
 
 Under migreringen kanske appen redan har en test miljö som används vid vanliga distributioner. Du kan fortsätta att använda den här miljön för migrations testning. Om en test miljö inte är tillgänglig för närvarande kan du konfigurera en med Azure App Service eller Azure Virtual Machines, beroende på programmets arkitektur. Du kan välja att konfigurera en separat test-Azure AD-klient som ska användas när du utvecklar dina AppData. Den här klienten startar i ett rent tillstånd och kommer inte att konfigureras för synkronisering med några system.
 
-Du kan testa varje app genom att logga in med en test användare och se till att alla funktioner är desamma som innan migreringen. Om du bestämmer under testningen att användarna måste uppdatera sina [MFA](/active-directory/authentication/howto-mfa-userstates) -eller [SSPR](../authentication/tutorial-enable-sspr.md)-inställningar eller om du lägger till den här funktionen under migreringen ska du se till att lägga till den i din slut användar kommunikations plan. Se [MFA](https://aka.ms/mfatemplates) -och [SSPR](https://aka.ms/ssprtemplates) för slut användar kommunikation.
+Du kan testa varje app genom att logga in med en test användare och se till att alla funktioner är desamma som innan migreringen. Om du bestämmer under testningen att användarna måste uppdatera sina [MFA](/azure/active-directory/authentication/howto-mfa-userstates) -eller [SSPR](../authentication/tutorial-enable-sspr.md)-inställningar eller om du lägger till den här funktionen under migreringen ska du se till att lägga till den i din slut användar kommunikations plan. Se [MFA](https://aka.ms/mfatemplates) -och [SSPR](https://aka.ms/ssprtemplates) för slut användar kommunikation.
 
 När du har migrerat apparna går du till [Azure Portal](https://aad.portal.azure.com/) för att testa om migreringen lyckades. Följ anvisningarna nedan:
 
@@ -573,7 +573,7 @@ Du kan hjälpa dina användare att identifiera sina appar:
 
 Användare kan ladda ned en **Intune-hanterad webbläsare**:
 
-- **För Android-enheter** från [Google Play-butiken](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)
+- **För Android-enheter** från [Google Play-butiken](/azure/active-directory/authentication/howto-mfa-userstates)
 
 - **För Apple-enheter** kan du från [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) eller ladda ned [appen Mina appar-mobilapp för iOS](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7879b233bf94442de2cad83de8adfe54b6b81e0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3308c2263f80a0772a389900e08c81cfe8da32a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100365522"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952634"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Vanliga frågor och svar om Azure Active Directory B2B-samarbete
 
@@ -83,6 +83,7 @@ Ja. Multi-Factor Authentication-och konsument-e-postkonton stöds både för Azu
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Har du stöd för lösen ords återställning för Azure AD B2B Collaboration-användare?
 Om din Azure AD-klient är hem katalogen för en användare kan du [återställa användarens lösen ord](../fundamentals/active-directory-users-reset-password-azure-portal.md) från Azure Portal. Men du kan inte återställa ett lösen ord direkt för en gäst användare som loggar in med ett konto som hanteras av en annan Azure AD-katalog eller extern identitets leverantör. Endast gäst användaren eller en administratör i användarens arbets katalog kan återställa lösen ordet. Här följer några exempel på hur lösen ords återställning fungerar för gäst användare:
  
+* Gäst användare i en Azure AD-klient som har marker ATS som "gäst" (UserType = = gäst) kan inte registrera sig för SSPR via [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Den här typen av gäst användare kan bara utföra SSPR via [https://aka.ms/sspr](https://aka.ms/sspr) . 
 * Gäst användare som loggar in med en Microsoft-konto (till exempel guestuser@live.com ) kan återställa sina egna lösen ord med hjälp av Microsoft-konto självbetjäning för återställning av lösen ord (SSPR). Se [hur du återställer Microsoft-konto-lösenordet](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Gäst användare som loggar in med ett Google-konto eller en annan extern identitetsprovider kan återställa sina egna lösen ord med hjälp av identitets leverantörens SSPR-metod. Till exempel kan en gäst användare med Google-kontot guestuser@gmail.com återställa sitt lösen ord genom att följa anvisningarna i [ändra eller återställa ditt lösen ord](https://support.google.com/accounts/answer/41078).
 * Om identitets klienten är en just-in-Time-klient (JIT) eller "viral"-klient (vilket innebär att det är en separat, ohanterad Azure-klient) kan bara gäst användaren återställa sina lösen ord. Ibland tar en organisation [över hanteringen av viral-klienter](../enterprise-users/domains-admin-takeover.md) som skapas när anställda använder sina arbets-e-postadresser för att registrera sig för tjänster. När organisationen har tagit över en virus klient kan bara en administratör i organisationen återställa användarens lösen ord eller aktivera SSPR. Vid behov kan du, som bjuda in organisationen, ta bort gäst användar kontot från katalogen och skicka en inbjudan igen.

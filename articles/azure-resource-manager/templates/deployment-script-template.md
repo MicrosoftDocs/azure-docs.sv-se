@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/23/2021
 ms.author: jgao
-ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594250"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889390"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
 
@@ -131,6 +131,9 @@ Följande JSON är ett exempel. Mer information finns i det senaste [schemat](/a
 > [!NOTE]
 > Exemplet är i demonstrations syfte. Egenskaperna `scriptContent` och `primaryScriptUri` kan inte användas samtidigt i en mall.
 
+> [!NOTE]
+> _ScriptContent_ visar ett skript med flera rader.  Azure Portal-och Azure DevOps-pipelinen kan inte parsa ett distributions skript med flera rader. Du kan antingen koppla samman PowerShell-kommandona (genom att använda semikolon eller _\\ r \\ n_ eller _\\ n_) till en rad, eller använda `primaryScriptUri` egenskapen med en extern skript fil. Det finns många kostnads fria Escape/unescape-verktyg för JSON-strängar tillgängliga. Till exempel [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
+
 Information om egenskaps värde:
 
 - `identity`: För distributions skript-API version 2020-10-01 eller senare är en användardefinierad hanterad identitet valfri om du inte behöver utföra några Azure-/regionsspecifika åtgärder i skriptet.  För API-versionen 2019-10-01 – för hands version krävs en hanterad identitet som distributions skript tjänsten använder den för att köra skripten. För närvarande stöds endast användardefinierad hanterad identitet.
@@ -159,9 +162,6 @@ Information om egenskaps värde:
 
 - `environmentVariables`: Ange de miljövariabler som ska överföras till skriptet. Mer information finns i [utveckla distributions skript](#develop-deployment-scripts).
 - `scriptContent`: Ange skript innehållet. Använd i stället om du vill köra ett externt skript `primaryScriptUri` . Exempel finns i [använda infogat skript](#use-inline-scripts) och [Använd externt skript](#use-external-scripts).
-  > [!NOTE]
-  > Azure Portal kan inte parsa ett distributions skript med flera rader. Om du vill distribuera en mall med distributions skriptet från Azure Portal kan du antingen koppla PowerShell-kommandona genom att använda semikolon till en rad eller använda `primaryScriptUri` egenskapen med en extern skript fil.
-
 - `primaryScriptUri`: Ange en offentligt tillgänglig URL till det primära distributions skriptet med fil namns tillägg som stöds. Mer information finns i [använda externa skript](#use-external-scripts).
 - `supportingScriptUris`: Ange en matris med offentligt tillgängliga URL: er till stöd för filer som anropas i antingen `scriptContent` eller `primaryScriptUri` . Mer information finns i [använda externa skript](#use-external-scripts).
 - `timeout`: Ange den högsta tillåtna körnings tiden för skript som anges i [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601). Standardvärdet är **P1D**.
@@ -566,7 +566,7 @@ När skriptet har testats kan du använda det som ett distributions skript i mal
 
 ## <a name="deployment-script-error-codes"></a>Fel koder för distributions skript
 
-| Felkod | Description |
+| Felkod | Beskrivning |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Resurs definitionen för distributions skriptet i mallen innehåller ogiltiga egenskaps namn. |
 | DeploymentScriptResourceConflict | Det går inte att ta bort en distributions skript resurs som är i icke-terminal-tillstånd och körningen har inte överskridit 1 timme. Eller också kan du inte köra samma distributions skript igen med samma resurs-ID (samma prenumeration, resurs grupp namn och resurs namn), men olika skript texts innehåll på samma tid. |

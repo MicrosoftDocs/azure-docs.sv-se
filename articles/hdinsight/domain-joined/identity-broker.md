@@ -4,12 +4,12 @@ description: Lär dig mer om Azure HDInsight ID Broker för att förenkla autent
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5bc5bc702dbd54bbad43aa4e1c6c8650c18e088
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946813"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863198"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -34,7 +34,7 @@ Använd följande tabell för att fastställa det bästa alternativet för auten
 
 Följande diagram visar det moderna OAuth-baserade autentiseringsschemat för alla användare, inklusive federerade användare, efter att HDInsight ID Broker har Aktiver ATS:
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagram som visar Authentication Flow med HDInsight ID-Broker.":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagram som visar Authentication Flow med HDInsight ID-Broker." border="false":::
 
 I det här diagrammet måste klienten (dvs. en webbläsare eller app) Hämta OAuth-token först. Sedan visar den token till gatewayen i en HTTP-begäran. Om du redan har loggat in på andra Azure-tjänster, till exempel Azure Portal, kan du logga in på ditt HDInsight-kluster med enkel inloggning.
 
@@ -42,8 +42,7 @@ Det kan fortfarande finnas många äldre program som endast stöder grundläggan
 
 Följande diagram visar det grundläggande autentiseringsschemat för federerade användare. Först försöker gatewayen att slutföra autentiseringen med hjälp av [ROPC Flow](../../active-directory/develop/v2-oauth-ropc.md). Om det inte finns några hash-hashvärden som är synkroniserade med Azure AD, går det tillbaka till att identifiera AD FS slut punkten och slutför autentiseringen genom att komma åt AD FS-slutpunkten.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram som visar arkitektur med grundläggande autentisering.":::
-
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram som visar arkitektur med grundläggande autentisering." border="false":::
 
 ## <a name="enable-hdinsight-id-broker"></a>Aktivera HDInsight ID-Broker
 
@@ -55,7 +54,7 @@ Så här skapar du ett Enterprise Security Package kluster med HDInsight ID Brok
 
 HDInsight ID Broker-funktionen lägger till en extra virtuell dator i klustret. Den här virtuella datorn är noden HDInsight ID Broker och innehåller Server komponenter som stöd för autentisering. HDInsight ID Broker-noden är domän ansluten till Azure AD DS-domänen.
 
-![Diagram som visar alternativ för att aktivera HDInsight ID Broker.](./media/identity-broker/identity-broker-enable.png)
+:::image type="content" source="./media/identity-broker/identity-broker-enable.png" alt-text="Diagram som visar alternativ för att aktivera HDInsight ID Broker." border="true":::
 
 ### <a name="use-azure-resource-manager-templates"></a>Använda Azure Resource Manager-mallar
 

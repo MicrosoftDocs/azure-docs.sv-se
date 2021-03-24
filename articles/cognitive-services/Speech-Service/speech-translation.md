@@ -12,22 +12,18 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: tal Översättning
-ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95015213"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954969"
 ---
 # <a name="what-is-speech-translation"></a>Vad är talöversättning?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-I den här översikten får du lära dig mer om fördelarna och funktionerna i tal översättnings tjänsten, vilket möjliggör real tids-och tal-till-text-översättning i real tid av ljud strömmar. Med tal-SDK har dina program, verktyg och enheter åtkomst till käll avskrifter och översättnings utdata för tillhandahållen ljud. Interimistiska avskrifter och översättnings resultat returneras som tal identifieras och slutgiltiga resultat kan konverteras till syntetiskt tal.
-
-Microsofts översättnings motor drivs av två olika metoder: statistisk maskin översättning (SMT) och neurala Machine Translation (NMT). SMT använder avancerad statistisk analys för att uppskatta de bästa möjliga översättningarna med några få ord. Med NMT används neurala-nätverk för att tillhandahålla mer exakta, naturligt förekommande översättningar genom att använda den fullständiga kontexten för meningar för att översätta ord.
-
-Idag använder Microsoft NMT för översättning till de flesta populära språken. Alla [språk som är tillgängliga för översättning av tal till tal](language-support.md#speech-translation) drivs av NMT. Översättning av tal till text kan använda SMT-eller NMT beroende på språk paret. När mål språket stöds av NMT, är den fullständiga översättningen NMT. När mål språket inte stöds av NMT, är översättningen en hybrid av NMT och SMT, med engelska som en "Pivot"-lösning mellan de två språken.
+I den här översikten får du lära dig mer om fördelarna och funktionerna i tal översättnings tjänsten, vilket möjliggör real tids [-och tal-till](language-support.md#speech-translation) -text-översättning i real tid av ljud strömmar. Med tal-SDK har dina program, verktyg och enheter åtkomst till käll avskrifter och översättnings utdata för tillhandahållen ljud. Interimistiska avskrifter och översättnings resultat returneras som tal identifieras och slutgiltiga resultat kan konverteras till syntetiskt tal.
 
 ## <a name="core-features"></a>Kärn funktioner
 

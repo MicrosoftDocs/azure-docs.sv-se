@@ -3,15 +3,16 @@ title: Distribuera IBM DB2 pureScale på Azure
 description: Lär dig hur du distribuerar en exempel arkitektur som används nyligen för att migrera ett företag från dess IBM DB2-miljö som körs på z/OS till IBM DB2 pureScale på Azure.
 author: njray
 ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 481816ca0c1fecfee9396f6cc40582695b0952f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33ff6174d7e5107076dda177731c9daec7e57266
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550203"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956153"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Distribuera IBM DB2 pureScale på Azure
 

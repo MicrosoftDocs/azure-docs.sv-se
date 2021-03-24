@@ -5,24 +5,24 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bcdb87e04d90aeb3d807e43c53e74d74299091b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 754b82cb0473e13ee7fb0649ef68c70ab5abe900
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040013"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868740"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Vad är Apache Spark i Azure HDInsight
 
 Apache Spark är ett ramverk för parallellbearbetning som stöder minnesintern bearbetning för att öka prestanda i program för stordataanalys. Apache Spark i Azure HDInsight är Microsofts implementering av Apache Spark i molnet. HDInsight gör det enklare att skapa och konfigurera ett Spark-kluster i Azure. Spark-kluster i HDInsight är kompatibla med [Azure Blob Storage](../../storage/common/storage-introduction.md), [Azure Data Lake Storage gen1](../../data-lake-store/data-lake-store-overview.md)eller [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md). Så du kan använda HDInsight Spark-kluster för att bearbeta dina data som lagras i Azure. Information om komponenter och versionshantering finns i [Apache Hadoop-komponenter och versioner i Azure HDInsight](../hdinsight-component-versioning.md).
 
-![Spark: ett enhetligt ramverk](./media/apache-spark-overview/hdinsight-spark-overview.png)
+:::image type="content" source="./media/apache-spark-overview/hdinsight-spark-overview.png" alt-text="Spark: ett enhetligt ramverk" border="false":::
 
 ## <a name="what-is-apache-spark"></a>Vad är Apache Spark?
 
 Spark tillhandahåller primitiver för klusterbearbetning i minnet. Ett Spark-jobb kan läsa in och cachelagra data i minnet och köra frågor mot det upprepade gånger. Minnesintern beräkning är mycket snabbare än diskbaserade program, till exempel Hadoop, som delar data med hjälp av ett Hadoop-distribuerat filsystem (HDFS, Hadoop Distributed File System). Spark är integrerat i programmeringsspråket Scala. På så sätt kan du bearbeta distribuerade datauppsättningar på samma sätt som lokala samlingar. Det finns inget behov av att strukturera det hela i mappnings- och reduceringsåtgärder.
 
-![Traditionell MapReduce vs. Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
+:::image type="content" source="./media/apache-spark-overview/map-reduce-vs-spark1.png" alt-text="Traditionell MapReduce vs. Spark" border="false":::
 
 Med Spark-kluster HDInsight får du tillgång till en helt hanterad Spark-tjänst. Fördelarna med att skapa ett Spark-kluster i HDInsight visas här.
 
@@ -54,7 +54,7 @@ HDInsight Spark-kluster en [ODBC-drivrutin](/sql/connect/odbc/download-odbc-driv
 
 ## <a name="spark-cluster-architecture"></a>Spark-klusterarkitektur
 
-![HDInsight Sparks arkitektur](./media/apache-spark-overview/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-overview/hdi-spark-architecture.png" alt-text="HDInsight Sparks arkitektur" border="false":::
 
 Det är enkelt att förstå komponenterna i Spark genom att förstå hur Spark körs på HDInsight-kluster.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4393c6797f5a164a063b55f8994d7d37d278f3c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ee483872535c58bde521cf0a751058fdc2fecd40
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929192"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871460"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Bearbeta händelser från Azure Event Hubs med Apache Storm på HDInsight (C#)
 
@@ -126,7 +126,7 @@ Event Hubs är data källan för det här exemplet. Använd informationen i avsn
    | skrivare |Skicka |
    | Acrobat |Lyssna |
 
-    ![Skärm bild av fönstret dela åtkomst principer](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png" alt-text="Skärm bild av fönstret dela åtkomst principer" border="true":::
 
 2. Välj principer för **läsare** och **skrivare** . Kopiera och spara värdet för primär nyckel för båda principerna, eftersom dessa värden används senare.
 
@@ -168,15 +168,15 @@ Event Hubs är data källan för det här exemplet. Använd informationen i avsn
 
 1. Från **Solution Explorer** högerklickar du på projektet **EventHubReader** och väljer **Skicka till storm på HDInsight**.
 
-    ![Skärm bild av Solution Explorer, med skicka till storm på HDInsight markerat](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png" alt-text="Skärm bild av Solution Explorer, med skicka till storm på HDInsight markerat" border="true":::
 
 2. I dialog rutan **sändning Topology** väljer du ditt **Storm-kluster**. Expandera **ytterligare konfigurationer**, Välj **sökvägar för Java-fil**, Välj **...** och välj den katalog som innehåller jar-filen som du laddade ned tidigare. Klicka slutligen på **Skicka**.
 
-    ![Skärm bild av dialog rutan Skicka topologi](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png" alt-text="Skärm bild av dialog rutan Skicka topologi" border="true":::
 
 3. När topologin har skickats visas **visnings programmet Storm-topologier** . Om du vill visa information om topologin väljer du **EventHubReader** -topologin i det vänstra fönstret.
 
-    ![Skärm bild av Storm-topologi Viewer](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png" alt-text="Skärm bild av Storm-topologi Viewer" border="true":::
 
 4. Från **Solution Explorer** högerklickar du på projektet **EventHubWriter** och väljer **Skicka till storm på HDInsight**.
 
@@ -200,7 +200,7 @@ Event Hubs är data källan för det här exemplet. Använd informationen i avsn
 
 Om du vill stoppa topologierna väljer du varje topologi i **Storm Topology Viewer** och klickar sedan på **Avsluta**.
 
-![Skärm bild av storm Topology Viewer med knappen Stopp markerad](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png" alt-text="Skärm bild av storm Topology Viewer med knappen Stopp markerad" border="true":::
 
 ## <a name="delete-your-cluster"></a>Ta bort klustret
 
