@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6be70f448cec7cf6db2b8152565ad8102d3a3294
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929977"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868757"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Använd Microsoft Cognitive Toolkit djup inlärnings modell med Azure HDInsight Spark kluster
 
@@ -73,7 +73,7 @@ Om du vill använda Microsoft Cognitive Toolkit med Azure HDInsight Spark-klustr
 
 1. Från Jupyter Notebook väljer du **Ladda upp** i det övre högra hörnet och navigera sedan till Ladda ned och välj fil `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
-    ![Ladda upp Jupyter Notebook till Azure HDInsight Spark-kluster](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Ladda upp Jupyter Notebook till Azure HDInsight Spark-kluster")
+    :::image type="content" source="./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png " alt-text="Ladda upp Jupyter Notebook till Azure HDInsight Spark-kluster" border="true":::
 
 1. Välj **Ladda upp** igen.
 

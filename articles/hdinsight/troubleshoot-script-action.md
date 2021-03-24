@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b958964db2d0b308dd6dfc34024d61ce5ad8af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944689"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871443"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Felsöka skript åtgärder i Azure HDInsight
 
@@ -26,11 +26,11 @@ Du kan använda Apache Ambari Web UI för att visa information som loggats av sk
 
 1. Välj **Ops** -posten från fältet överst på sidan. En lista visar aktuella och tidigare åtgärder som utförs på klustret via Ambari.
 
-    ![Ambari Web UI-fältet med OPS valt](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    :::image type="content" source="./media/troubleshoot-script-action/hdi-apache-ambari-nav.png" alt-text="Ambari Web UI-fältet med OPS valt" border="true":::
 
 1. Hitta de poster som har **kört \_ customscriptaction** i kolumnen **åtgärder** . Dessa poster skapas när skript åtgärderna körs.
 
-    ![Åtgärds åtgärder för Apache Ambari-skript](./media/troubleshoot-script-action/ambari-script-action.png)
+    :::image type="content" source="./media/troubleshoot-script-action/ambari-script-action.png" alt-text="Åtgärds åtgärder för Apache Ambari-skript" border="true":::
 
     Om du vill visa **STDOUT** -och **stderr** -utdata väljer du posten **run\customscriptaction** och ökar detalj nivån genom länkarna. Dessa utdata skapas när skriptet körs och kan ha användbar information.
 
@@ -40,7 +40,7 @@ Om det inte går att skapa ett kluster på grund av ett skript fel sparas loggar
 
 * Lagrings loggarna är tillgängliga på `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
-    ![Skript åtgärds loggar](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    :::image type="content" source="./media/troubleshoot-script-action/script-action-logs-in-storage.png" alt-text="Skript åtgärds loggar" border="true":::
 
     Under den här katalogen ordnas loggarna separat för **huvudnoden**, **arbetsnoden** och **Zookeeper-noden**. Se följande exempel:
 

@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c950903522d42b3c279cb89f3a6031043fd49bf3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930037"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868808"
 ---
 # <a name="manage-spark-application-dependencies"></a>Hantera Spark-programberoenden
 
@@ -43,7 +43,7 @@ Du använder `%%configure` Magic för att konfigurera antecknings boken för att
 
 När du har hittat paketet från maven-lagringsplatsen samlar du in **värdena för**, **ArtifactId** och **version**. Sammanfoga de tre värdena, avgränsade med kolon (**:**).
 
-   ![Sammanfoga paket schema](./media/apache-spark-manage-dependencies/spark-package-schema.png "Sammanfoga paket schema")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="Sammanfoga paket schema schema" border="true":::vbildningspaket schema "Border =" true "::
 
 Kontrol lera att värdena som du samlar in matchar klustret. I det här fallet använder vi Spark Cosmos DB Connector-paketet för Scala 2,11 och Spark 2,3 för HDInsight 3,6 Spark-kluster. Om du inte är säker kan du köra `scala.util.Properties.versionString` i Code-cellen på Spark-kärnan för att hämta klustrets Scala-version. Kör `sc.version` för att hämta kluster Spark-version.
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>Använd Azure Toolkit for IntelliJ
 [Azure Toolkit for IntelliJ-plugin](./apache-spark-intellij-tool-plugin.md) innehåller gränssnitts upplevelse för att skicka Spark Scala-program till ett HDInsight-kluster. Den innehåller `Referenced Jars` och `Referenced Files` Egenskaper för att konfigurera jar libs-sökvägar när du skickar Spark-programmet. Se mer information om [hur du använder Azure Toolkit for IntelliJ plugin-programmet för HDInsight](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster).
 
-![Dialog rutan för Spark-sändning](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="Dialog rutan för Spark-sändning" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>Jar-libs för kluster
 I vissa fall kanske du vill konfigurera jar-beroenden på kluster nivå så att alla program kan konfigureras med samma beroenden som standard. Metoden är att lägga till jar-sökvägar till Spark-drivrutinen och utförar-klassens sökväg.
@@ -89,11 +89,11 @@ I vissa fall kanske du vill konfigurera jar-beroenden på kluster nivå så att 
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![Ändra Spark standard konfiguration](./media/apache-spark-manage-dependencies/change-spark-default-config.png "Ändra Spark standard konfiguration")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="Ändra Spark standard config" border="true":::ULT config "Border =" true "::
 
 3. Spara de ändrade konfigurationerna och starta om tjänster som påverkas.
 
-   ![Starta om tjänster som påverkas](./media/apache-spark-manage-dependencies/restart-impacted-services.png "Starta om tjänster som påverkas")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="Starta om tjänster" border="true":::valda Services "Border =" true "::
 
 Du kan automatisera stegen med [skript åtgärder](../hdinsight-hadoop-customize-cluster-linux.md). Skript åtgärder för [att lägga till anpassade Hive-bibliotek](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) är en korrekt referens. När du ändrar konfiguration av Spark-tjänsten ska du kontrol lera att du använder Ambari-API: er i stället för att ändra konfigurationsfilerna direkt. 
 

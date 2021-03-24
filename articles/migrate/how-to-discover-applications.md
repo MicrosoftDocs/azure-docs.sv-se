@@ -6,21 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 47ea06fa2143f9a5dc5808ccb98fc80c87fefd93
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d68c3729e8a63f8342cd51b62413aec3276c6165
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786710"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871018"
 ---
 # <a name="discover-installed-software-inventory-and-sql-server-instances-and-databases"></a>Identifiera installerad program varu inventering och SQL Server instanser och databaser
 
 I den här artikeln beskrivs hur du identifierar installerad program varu inventering och SQL Server instanser och databaser på servrar som kör i VMware-miljön med hjälp av Azure Migrate: identifierings-och utvärderings verktyg.
 
 Genom att utföra program varu inventering kan du identifiera och skräddarsy en sökväg för migrering till Azure för dina arbets belastningar. Program varu inventeringen använder Azure Migrate-installationen för att utföra identifieringen med hjälp av autentiseringsuppgifter för servern. Den är helt agent lös – inga agenter är installerade på servrarna för att samla in dessa data.
-
-> [!NOTE]
-> Program varu inventering är för närvarande endast i för hands version för servrar som körs i VMware-miljön och är begränsat till enbart identifiering. För närvarande erbjuder vi inte programbaserad utvärdering.<br/> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 ## <a name="before-you-start"></a>Innan du börjar
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e6bec71c44d7fbcf2841e087af9887d99c94e6f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945345"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867584"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Övervaka kluster prestanda i Azure HDInsight
 
@@ -33,11 +33,11 @@ För att få en överblick på noderna i klustret och deras inläsningar loggar 
 
 Du ser också kolumner som visar antalet kärnor och mängden RAM-minne för varje värd, samt disk användning och belastnings medelvärde.
 
-![Fliken Apache Ambari-värdar – översikt](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png" alt-text="Fliken Apache Ambari-värdar – översikt":::
 
 Välj något av värd namnen för en detaljerad titt på komponenter som körs på värden och deras mått. Måtten visas som en valbar tids linje för processor användning, belastning, disk användning, minnes användning, nätverks användning och antal processer.
 
-![Översikt över Apache Ambari-värd information](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png" alt-text="Översikt över Apache Ambari-värd information":::
 
 Se [Hantera HDInsight-kluster med hjälp av Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) för information om att ställa in aviseringar och visa mått.
 
@@ -53,19 +53,19 @@ När flera klienter delar ett stort kluster finns det konkurrens för klustrets 
 
 GARN gör att vi kan allokera resurser till dessa köer och visar om alla dina tillgängliga resurser har tilldelats. Om du vill visa information om dina köer loggar du in på Ambari-webbgränssnittet och väljer sedan **garn Queue Manager** på den översta menyn.
 
-![Apache Ambari garn Queue Manager](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png" alt-text="Apache Ambari garn Queue Manager":::
 
 Sidan garn Queue Manager visar en lista över dina köer till vänster, tillsammans med den procent andel av kapaciteten som tilldelats var och en.
 
-![Informations sida för garn Queue Manager](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png" alt-text="Informations sida för garn Queue Manager":::
 
 Om du vill ha en mer detaljerad titt på dina köer går du till Ambari-instrumentpanelen och väljer **garn** tjänsten i listan till vänster. Sedan väljer du **Resource Manager-gränssnitt** under den aktiva noden under List menyn **snabb länkar** .
 
-![Länkar till Resource Manager-webbgränssnitt](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png" alt-text="Länkar till Resource Manager-webbgränssnitt":::
 
 I Resource Manager-ANVÄNDARGRÄNSSNITTET väljer du **Scheduler** på menyn till vänster. Du ser en lista över dina köer under *program köer*. Här kan du se kapaciteten som används för var och en av dina köer, hur väl jobben distribueras mellan dem och om några jobb är resurs begränsningar.
 
-![Användar gränssnitts menyn Apache HAdoop Resource Manager](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png" alt-text="Användar gränssnitts menyn Apache HAdoop Resource Manager":::
 
 ## <a name="storage-throttling"></a>Lagringsbegränsning
 

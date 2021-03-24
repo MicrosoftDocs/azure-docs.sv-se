@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695857"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949846"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Metod tips för Azure avdelningens kontroll-distribution
 
@@ -150,7 +150,7 @@ I avdelningens kontroll finns det flera områden där katalog administratörerna
 
 ### <a name="plan-and-implement-different-integration-points-with-purview"></a>Planera och implementera olika integrerings platser med avdelningens kontroll
 
-Det är troligt att en vuxen organisation redan har en befintlig data katalog. Den viktigaste frågan är att fortsätta att använda den befintliga tekniken och synkronisera med avdelningens kontroll. Avdelningens kontroll gör det möjligt att publicera information via Atlas-API: er, men de är egentligen inte avsedda att stödja den här typen av scenario. Vissa organisationer kan börja med att starta användningen av avdelningens kontroll genom att migrera över befintliga data till gångar från andra Data Catalog-lösningar. Detta kan göras via Atlas-API: er som en enkelriktad metod. Att synkronisera mellan olika katalog tekniker bör inte beaktas i den långsiktiga designen. Det som vanligt vis hände är att varje affär senhet kan fortsätta att använda befintliga lösningar för äldre data till gångar medan avdelningens kontroll skulle användas för att söka efter nyare data källor.
+Det är troligt att en vuxen organisation redan har en befintlig data katalog. Den viktigaste frågan är att fortsätta att använda den befintliga tekniken och synkronisera med avdelningens kontroll eller inte. För att hantera synkronisering med befintliga produkter i en organisation tillhandahåller avdelningens kontroll Atlas REST-API: er. Atlas-API: er tillhandahåller en kraftfull och flexibel mekanism som hanterar både push-och pull-scenarier. Information kan publiceras till avdelningens kontroll med hjälp av Atlas-API: er för start eller för att push-överföra de senaste uppdateringarna från ett annat system till avdelningens kontroll. Informationen som är tillgänglig i avdelningens kontroll kan också läsas med hjälp av Atlas-API: er och sedan synkroniseras tillbaka till befintliga produkter. 
 
 För andra integrerings scenarier som biljetter, anpassat användar gränssnitt och dirigering kan du använda Atlas-API: er och Kafka-slutpunkter. I allmänhet finns fyra integrerings punkter med avdelningens kontroll:
 
