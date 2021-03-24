@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 09fbc97b84365cc1d6d40b8e1147e1b8e951cc1f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 78e54543c94cd6e8434023b61516242c2491f353
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780709"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863606"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Felsöka utvärdering/beroendevisualisering
 
-Den här artikeln hjälper dig att felsöka problem med utvärderings-och beroende visualisering med [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool).
+Den här artikeln hjälper dig att felsöka problem med utvärderings-och beroende visualisering med [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool).
 
 
 ## <a name="assessment-readiness-issues"></a>Problem med utvärderings beredskap
@@ -222,7 +222,7 @@ När du migrerar servrar med beroende visualisering aktive rad till Azure kan se
 I en agent utan beroende analys, fångas process namnen på bästa möjliga villkor. I vissa fall, även om käll-och mål server namnen och mål porten har fångats, är det inte möjligt att fastställa process namnen i båda ändar av beroendet. I sådana fall markeras processen som "okänd process".
 
 ## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-azure-migrate"></a>Min Log Analytics-arbetsyta visas inte när du försöker konfigurera arbets ytan i Azure Migrate
-Azure Migrate har för närvarande stöd för att skapa OMS-arbetsytor i regionerna USA, östra, Asien, sydöstra och Europa, västra. Om arbets ytan har skapats utanför Azure Migrate i någon annan region, kan den för närvarande inte associeras med ett Azure Migrate-projekt.
+Azure Migrate har för närvarande stöd för att skapa OMS-arbetsytor i regionerna USA, östra, Asien, sydöstra och Europa, västra. Om arbets ytan har skapats utanför Azure Migrate i någon annan region, kan den för närvarande inte kopplas till ett projekt.
 
 
 ## <a name="capture-network-traffic"></a>Avbilda nätverks trafik

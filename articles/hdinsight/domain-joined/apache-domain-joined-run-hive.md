@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar Apache Ranger-principer för Hive i en
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705712"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863266"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurera Apache Hive-principer i HDInsight med Enterprise Security Package
 
@@ -30,7 +30,7 @@ Lär dig hur du konfigurerar Apache Ranger-principer för Apache Hive. I den hä
 
 2. Logga in med klusteradministratörens domänanvändarnamn och lösenord:
 
-    ![Start sida för HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="Start sida för HDInsight ESP Ranger" border="true":::
 
     För närvarande fungerar Ranger bara med Yarn och Hive.
 
@@ -57,7 +57,7 @@ I det här avsnittet skapar du två Ranger-principer för att få åtkomst till 
     |Välj användare|hiveuser1|
     |Behörigheter|välj|
 
-    ![HDInsight ESP Ranger-principer för Hive konfigurera](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="HDInsight ESP Ranger-principer för Hive konfigurera" border="true":::.
 
     > [!NOTE]  
     > Om en domänanvändare inte är ifylld i Välj användare, vänta en stund för att Ranger ska synkronisera med AAD.
@@ -101,7 +101,7 @@ I det sista avsnittet har du konfigurerat två principer.  hiveuser1 har select-
 
 1. Från fliken **data** navigerar du till **Hämta data**  >  **från andra källor**  >  **från ODBC** för att starta **från ODBC-** fönstret.
 
-    ![Guiden öppna data anslutning](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="Guiden öppna data anslutning" border="true":::
 
 1. I list rutan väljer du namnet på den data källa som du skapade i det sista avsnittet och väljer sedan **OK**.
 
