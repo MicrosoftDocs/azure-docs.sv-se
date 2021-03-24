@@ -4,16 +4,17 @@ description: Lär dig mer om metod tips för Azure automanage för virtuella dat
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
+ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b4ca9a69ab56a81e192560a3a61ec90f82cbbe80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3aab43be49cb98fbe136e1f0216590785d650392
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688407"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953257"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Metod tips för Azure automanage för virtuella datorer – Linux
 

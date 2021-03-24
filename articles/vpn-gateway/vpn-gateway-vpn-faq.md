@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ca50ae77d9d9e200db3318b8e087b72697c343a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880109"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953484"
 ---
 # <a name="vpn-gateway-faq"></a>Vanliga frågor och svar om VPN Gateway
 
@@ -20,11 +20,15 @@ ms.locfileid: "98880109"
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Kan jag ansluta till virtuella nätverk i olika Azure-regioner?
 
-Ja. Faktum är att det inte finns någon regionbegränsning. Ett virtuellt nätverk kan ansluta till ett annat virtuellt nätverk i samma region eller i en annan Azure-region. 
+Ja. Faktum är att det inte finns någon regionbegränsning. Ett virtuellt nätverk kan ansluta till ett annat virtuellt nätverk i samma region eller i en annan Azure-region.
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>Kan jag ansluta till virtuella nätverk i olika prenumerationer?
 
 Ja.
+
+### <a name="can-i-specify-private-dns-servers-in-my-vnet-when-configuring-vpn-gateway"></a>Kan jag ange privata DNS-servrar i mitt VNet när jag konfigurerar VPN Gateway?
+
+Om du har angett en DNS-server eller-servrar när du skapade ditt VNet kommer VPN Gateway att använda de DNS-servrar som du har angett. Om du anger en DNS-server måste du kontrol lera att DNS-servern kan matcha de domän namn som krävs för Azure.
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>Kan jag ansluta till flera platser från en enda virtuellt nätverk?
 
@@ -32,7 +36,7 @@ Du kan ansluta till flera platser med hjälp av Windows PowerShell och Azure RES
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Finns det ytterligare kostnader för att konfigurera en VPN-gateway som aktiv-aktiv?
 
-Nej. 
+Nej.
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>Vilka alternativ finns det för min anslutning till flera platser?
 
@@ -48,7 +52,7 @@ Mer information om VPN-gatewayanslutningar finns i [Om VPN Gateway](vpn-gateway-
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Vad är skillnaden mellan en plats-till-plats-anslutning och en punkt-till-plats-anslutning?
 
-**Plats-till-plats**-konfigurationer (IPsec/IKE VPN-tunnel) sker mellan en lokal plats och Azure. Detta innebär att du kan ansluta mellan datorer i dina lokaler till valfri virtuell dator eller rollinstans i det virtuella nätverket, beroende på hur du väljer att konfigurera routning och behörigheter. Det är ett bra alternativ för att få en anslutning mellan flera platser som alltid är tillgänglig och den passar bra för hybridkonfigurationer. Den här typen av anslutning bygger på en IPsec VPN-installation (maskinvara eller programinstallation), som måste distribueras i utkanten av nätverket. Om du vill skapa den här typen av anslutning måste du ha en extern IPv4-adress.
+**Plats-till-plats**-konfigurationer (IPsec/IKE VPN-tunnel) sker mellan en lokal plats och Azure. Detta innebär att du kan ansluta mellan datorer i dina lokaler till valfri virtuell dator eller rollinstans i det virtuella nätverket, beroende på hur du väljer att konfigurera routning och behörigheter. Det är ett bra alternativ för en ständigt tillgänglig anslutning mellan platser och passar bra för Hybrid konfigurationer. Den här typen av anslutning bygger på en IPsec VPN-installation (maskinvara eller programinstallation), som måste distribueras i utkanten av nätverket. Om du vill skapa den här typen av anslutning måste du ha en extern IPv4-adress.
 
 Med **punkt-till-plats**-konfigurationer (VPN över SSTP) kan du ansluta från en enda dator varifrån som helst till något som finns i ditt virtuella nätverk. Den använder Windows som ingår i VPN-klienten. Som en del av punkt-till-plats-konfigurationen kan du installera ett certifikat och ett VPN-klientkonfigurationspaket, som innehåller inställningar för att datorn ska kunna ansluta till en virtuell dator eller rollinstans i det virtuella nätverket. Detta är användbart om du vill ansluta till ett virtuellt nätverk som inte finns lokalt. Det är också ett bra alternativ om du inte har tillgång till VPN-maskinvara eller en extern IPv4-adress. Båda krävs för en plats-till-plats-anslutning.
 
@@ -66,17 +70,20 @@ Principbaserade gateways implementerar principbaserade VPN:er. Principbaserade V
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Vad är en routningsbaserad gateway (dynamisk routning)?
 
-Routningsbaserade gateways implementerar routningsbaserade VPN:er. Routningsbaserade VPN:er använder ”vägar” i IP-vidarebefordringen eller i routningstabellen för att dirigera paket till sina respektive tunnelgränssnitt. Tunnelgränssnitten krypterar eller dekrypterar sedan paketen in och ut från tunnlarna. Principen eller trafikväljaren för routningsbaserade VPN:er konfigureras som alla-till-alla (eller jokertecken).
+Routningsbaserade gateways implementerar routningsbaserade VPN:er. Routningsbaserade VPN:er använder ”vägar” i IP-vidarebefordringen eller i routningstabellen för att dirigera paket till sina respektive tunnelgränssnitt. Tunnelgränssnitten krypterar eller dekrypterar sedan paketen in och ut från tunnlarna. Principen eller trafik väljare för vägbaserade VPN: er konfigureras som alla-till-alla (eller jokertecken).
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan jag uppdatera min principbaserade VPN-gateway till routing-based?
 
-Nej. En Azure Vnet-gatewaytyp kan inte ändras från principbaserad till routningsbaserad eller tvärtom. Gatewayen måste tas bort och återskapas, en process som tar cirka 60 minuter. IP-adressen till gatewayen bevaras inte och inte heller den i förväg delade nyckeln (PSK).
-1. Ta bort alla anslutningar som är associerade med gatewayen som ska tas bort.
-1. Ta bort gatewayen:
-   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell-klassisk](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Skapa en ny Gateway av den typ som du vill ha och slutför VPN-installationen](./tutorial-site-to-site-portal.md#VNetGateway).
+Nej. En gateway-typ kan inte ändras från principbaserad till Route-baserad eller från väg-till-principbaserad. Om du vill ändra en gateway-typ måste gatewayen tas bort och återskapas. Den här processen tar cirka 60 minuter. När du skapar den nya gatewayen kan du inte behålla den ursprungliga gatewayens IP-adress.
+
+1. Ta bort alla anslutningar som är associerade med gatewayen.
+
+1. Ta bort gatewayen med hjälp av någon av följande artiklar:
+
+   * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   * [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   * [Azure PowerShell-klassisk](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. Skapa en ny Gateway med den gateway-typ som du vill använda och slutför sedan VPN-installationen. Anvisningar finns i [själv studie kursen för Site-to-Site](./tutorial-site-to-site-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Behöver jag ett gatewayundernät?
 
@@ -102,7 +109,7 @@ För icke-zoner-redundanta och icke-zonindelade gatewayer (Gateway-SKU: er som _
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Hur blir min VPN-tunnel autentiserad?
 
-Azure VPN använder PSK-autentisering (I förväg delad nyckel). Vi kan generera en i förväg delad nyckel (PSK) när vi skapar VPN-tunneln. Du kan byta den automatiskt genererade PSK:n mot din egen med PowerShell-cmdleten Set Pre-Shared Key eller REST-API.
+Azure VPN använder PSK-autentisering (I förväg delad nyckel). Vi kan generera en i förväg delad nyckel (PSK) när vi skapar VPN-tunneln. Du kan ändra det automatiskt genererade PSK till ditt eget med PowerShell-cmdleten Set i förväg delad nyckel eller REST API.
 
 ### <a name="can-i-use-the-set-pre-shared-key-api-to-configure-my-policy-based-static-routing-gateway-vpn"></a>Kan jag använda API:n Set Pre-Shared Key till att konfigurera min principbaserade gateway-VPN (statisk routning)?
 
@@ -121,11 +128,7 @@ Vi är begränsade till att använda PSK (I förväg delad nyckel) vid autentise
 
 #### <a name="classic-deployment-model"></a>Klassisk distributionsmodell
 
-* Azure Portal: Gå till det klassiska virtuella nätverket > VPN-anslutningar > Plats-till-plats-VPN-anslutningar > Namn på lokal plats > Lokal plats > Adressutrymme för klient. 
-
-### <a name="can-i-configure-force-tunneling"></a>Kan jag konfigurera tvingad tunneltrafik?
-
-Ja. Läs avsnittet om hur du [konfigurerar tvingad tunneltrafik](vpn-gateway-about-forced-tunneling.md).
+* Azure Portal: Gå till det klassiska virtuella nätverket > VPN-anslutningar > Plats-till-plats-VPN-anslutningar > Namn på lokal plats > Lokal plats > Adressutrymme för klient.
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kan jag använda NAT-T på mina VPN-anslutningar?
 
@@ -225,10 +228,13 @@ Ja, det stöds. Mer information finns i [Konfigurera ExpressRoute och VPN-anslut
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
-
-## <a name="bgp"></a><a name="bgp"></a>BGP
+## <a name="bgp-and-routing"></a><a name="bgp"></a>BGP och routning
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
+
+### <a name="can-i-configure-forced-tunneling"></a>Kan jag konfigurera Tvingad tunnel trafik?
+
+Ja. Se [Konfigurera tvingad tunneltrafik](vpn-gateway-about-forced-tunneling.md).
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>Anslutning mellan platser och VM:ar
 
@@ -245,7 +251,6 @@ Nej. Bara den trafik som har ett mål-IP som finns i det virtuella nätverkets l
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>Hur felsöker jag en RDP-anslutning till en virtuell dator
 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
-
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>Virtual Network vanliga frågor och svar
 

@@ -236,8 +236,6 @@
               href: application-proxy-qlik.md
     - name: Felsöka
       items:
-        - name: Felsöka processen för att lägga till appar
-          href: troubleshoot-adding-apps.md
         - name: Felsöka lösenordsbaserad enkel inloggning
           href: troubleshoot-password-based-sso.md
         - name: Felsöka SAML-baserad enkel inloggning

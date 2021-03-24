@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6361a9c337f5d3897cf15d4739b0410d3e820e57
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600946"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889543"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -52,7 +52,9 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
 
    1. Hämta [installations programmet för Windows administrations Center](https://aka.ms/wacdownload).
 
-   1. Kör det nedladdade installations programmet och följ anvisningarna i installations guiden för att installera Windows administrations Center. När du har installerat öppnar du administrations Center för Windows.
+   1. Kör det nedladdade installations programmet och följ anvisningarna i installations guiden för att installera Windows administrations Center. 
+
+   1. När du har installerat kan du använda en webbläsare som stöds för att öppna administrations Center för Windows. Webbläsare som stöds är Microsoft Edge (Windows 10, version 1709 eller senare), Google Chrome och Microsoft Edge Insider.
 
    1. Vid den första användningen av Windows administrations Center uppmanas du att välja ett certifikat som ska användas. Välj **Windows administrations Center-klient** som certifikat.
 
@@ -61,12 +63,6 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
       ![Välj kugg hjuls ikonen längst upp till höger på instrument panelen för att få åtkomst till inställningarna.](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. Välj **tillägg** under **Gateway** på menyn **Inställningar** .
-
-   1. Välj fliken **feeds** och välj **Lägg till**.
-
-   1. Ange https://aka.ms/wac-insiders-feed i text rutan och välj **Lägg till**.
-
-   1. När du har lagt till feeden går du till fliken **tillgängliga tillägg** . Det kan ta en stund att uppdatera listan över tillägg.
 
    1. På fliken **tillgängliga tillägg** söker du efter **Azure IoT Edge** i listan över tillägg. Välj den och välj **installations** meddelandet ovanför listan med tillägg.
 
@@ -346,6 +342,9 @@ Kontrol lera att IoT Edge för Linux på Windows har installerats och kon figure
    ```azurepowershell-interactive
    Ssh-EflowVm
    ```
+
+   >[!NOTE]
+   >Det enda konto som tillåts för SSH till den virtuella datorn är den användare som skapade den.
 
 1. När du är inloggad kan du kontrol lera listan med att köra IoT Edge moduler med följande Linux-kommando:
 
