@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d42cedbc5dc20c929703be106e732b4806f3902
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c9c3b2d915e54cf954703c56c2087637cc80aa0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940605"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864626"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Använd HDInsight Spark-kluster för att läsa och skriva data till Azure SQL Database
 
@@ -35,7 +35,7 @@ Börja med att skapa en Jupyter Notebook som är associerad med Spark-klustret. 
 1. Öppna klustret från [Azure Portal](https://portal.azure.com/).
 1. Välj **Jupyter Notebook** under **kluster instrument paneler** på höger sida.  Om du inte ser **kluster instrument paneler** väljer du **Översikt** på den vänstra menyn. Ange administratörsautentiseringsuppgifterna för klustret om du uppmanas att göra det.
 
-    ![Jupyter Notebook på Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter Notebook i Spark")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png " alt-text="Jupyter Notebook på Apache Spark" border="true":::
 
    > [!NOTE]  
    > Du kan också komma åt Jupyter Notebook i Spark-kluster genom att öppna följande URL i webbläsaren. Ersätt **CLUSTERNAME** med namnet på klustret:
@@ -44,7 +44,7 @@ Börja med att skapa en Jupyter Notebook som är associerad med Spark-klustret. 
 
 1. I Jupyter Notebook, i det övre högra hörnet, klickar du på **nytt** och sedan på **Spark** för att skapa en Scala Notebook. Jupyter-anteckningsböcker i HDInsight Spark-kluster tillhandahåller även **PySpark** -kärnan för Python2-program och **PySpark3** -kärnan för python3-program. I den här artikeln skapar vi en Scala Notebook.
 
-    ![Kernels för Jupyter Notebook i Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernels för Jupyter Notebook i Spark")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png " alt-text="Kernels för Jupyter Notebook i Spark" border="true":::
 
     Mer information om kernelerna finns i [använda Jupyter Notebook kernels med Apache Spark kluster i HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
@@ -53,7 +53,7 @@ Börja med att skapa en Jupyter Notebook som är associerad med Spark-klustret. 
 
 1. En ny antecknings bok öppnas med ett standard namn ( **Namnlös**). Klicka på antecknings bokens namn och ange önskat namn.
 
-    ![Ange ett namn för anteckningsboken](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Ange ett namn för anteckningsboken")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png " alt-text="Ange ett namn för anteckningsboken" border="true":::
 
 Nu kan du börja skapa ditt program.
 
@@ -100,7 +100,7 @@ I det här avsnittet ska du läsa data från en tabell (till exempel **SalesLT. 
 
     Du ser utdata som liknar följande bild:
 
-    ![schemats utdata](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "schemats utdata")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png " alt-text="schemats utdata" border="true":::
 
 1. Du kan också utföra åtgärder, t. ex. Hämta de 10 översta raderna.
 
@@ -167,11 +167,11 @@ I det här avsnittet använder vi en exempel-CSV-fil som är tillgänglig i klus
 
     a. Starta SSMS och Anslut till Azure SQL Database genom att tillhandahålla anslutnings information som visas på skärm bilden nedan.
 
-    ![Ansluta till SQL Database med SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Ansluta till SQL Database med SSMS1")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png " alt-text="Ansluta till SQL Database med SSMS1" border="true":::
 
     b. Från **Object Explorer** expanderar du databasen och noden tabell för att se **dbo. hvactable** som skapats.
 
-    ![Ansluta till SQL Database med SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Ansluta till SQL Database med SSMS2")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png " alt-text="Ansluta till SQL Database med SSMS2" border="true":::
 
 1. Kör en fråga i SSMS för att se kolumnerna i tabellen.
 
@@ -209,7 +209,7 @@ I det här avsnittet strömmar vi data till den `hvactable` som du skapade i fö
 
 1. Utdata visar schemat för **HVAC.csv**. `hvactable`Har samma schema också. Utdata visar kolumnerna i tabellen.
 
-    ![HDInsight Apache Spark schema tabell](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schema för tabell")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png " alt-text="HDInsight Apache Spark schema tabell" border="true":::
 
 1. Använd slutligen följande kodfragment för att läsa data från HVAC.csv och strömma dem till `hvactable` i databasen. Klistra in kodfragmentet i en kod cell, Ersätt plats hållarnas värden med värdena för din databas och tryck sedan på **SKIFT + RETUR** för att köra.
 

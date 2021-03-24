@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929165"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865459"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Utveckla C#-topologier för Apache Storm med hjälp av Data Lake verktyg för Visual Studio
 
@@ -128,7 +128,7 @@ Så här skapar du ett C#-Topology-projekt i Visual Studio:
 
 1. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** för *WORDCOUNT*, går till eller skapar en **plats** katalog Sök väg för projektet och väljer sedan **skapa**.
 
-    ![Storm-program, konfigurera ditt nya projekt dialog ruta, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png" alt-text="Storm-program, konfigurera ditt nya projekt dialog ruta, Visual Studio" border="true":::
 
 När du har skapat projektet bör du ha följande filer:
 
@@ -333,7 +333,7 @@ Nu ska du skapa två Storm-bultar i det här exemplet:
 
 Kanaler och bultar är ordnade i ett diagram, vilket definierar hur data flödar mellan komponenter. I den här topologin är grafen följande:
 
-![Kanalen-och bult-komponent, Storm-topologi](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png" alt-text="Kanalen-och bult-komponent, Storm-topologi" border="false":::
 
 Kanalen avger meningar som distribueras till förekomster av delnings blixten. Delnings bulten delar upp meningarna i ord som distribueras till räknar bulten.
 
@@ -413,7 +413,7 @@ Du är nu redo att skicka topologin till ditt HDInsight-kluster.
 
     När topologin har skickats visas fönstret Storm- **topologier** för klustret. Välj **WORDCOUNT** -topologin i listan om du vill visa information om topologi som körs.
 
-    ![Visnings fönster för Storm-topologi, HDInsight-kluster, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png" alt-text="Visnings fönster för Storm-topologi, HDInsight-kluster, Visual Studio" border="true":::
 
     > [!NOTE]  
     > Du kan också visa **Storm-topologier** från **Server Explorer**. Expandera **Azure**  >  **HDInsight**, högerklicka på en storm i HDInsight-kluster och välj sedan **Visa Storm-topologier**.
@@ -567,7 +567,7 @@ För Linux-baserade HDInsight-kluster ser du till att ditt projekt använder bin
 
 1. I **Solution Explorer** högerklickar du på projektet och väljer **Egenskaper**. I projekt egenskaperna. Ändra sedan **utdatatypen** till **konsol programmet**.
 
-   ![HDInsight Storm-program, projekt egenskaper, Utdatatyp](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png" alt-text="HDInsight Storm-program, projekt egenskaper, Utdatatyp" border="true":::
 
    > [!NOTE]
    > Kom ihåg att ändra **utdatatypen tillbaka till** **klass biblioteket** innan du distribuerar topologin till ett kluster.

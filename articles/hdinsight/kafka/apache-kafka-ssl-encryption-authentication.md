@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d061832022b983e4d5fd55e72c1d4789b82f6633
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945191"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863232"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Konfigurera TLS-kryptering och autentisering för Apache Kafka i Azure HDInsight
 
@@ -128,11 +128,11 @@ Slutför konfigurations ändringen genom att utföra följande steg:
 1. Under **Kafka Broker** anger du egenskapen **Listeners** till `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. Under **Advanced Kafka-Broker** ställer du in egenskapen **Security. Interservice Broker. Protocol** till `SSL`
 
-    ![Redigera Kafka egenskaper för SSL-konfiguration i Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png" alt-text="Redigera Kafka egenskaper för SSL-konfiguration i Ambari" border="true":::
 
 1. Under **anpassad Kafka-Broker** anger du egenskapen **SSL. client. auth** till `required` . Det här steget krävs bara om du konfigurerar autentisering och kryptering.
 
-    ![Redigera Kafka egenskaper för SSL-konfiguration i Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png" alt-text="Redigera Kafka egenskaper för SSL-konfiguration i Ambari" border="true":::
 
 1. För HDI version 3,6 går du till Ambari UI och lägger till följande konfigurationer under **Avancerad Kafka-kuvert** och **mallen Kafka-miljö** .
 
@@ -153,11 +153,11 @@ Slutför konfigurations ändringen genom att utföra följande steg:
 
     För HDI version 3,6:
 
-    ![Redigera Kafka-miljö-mallegenskap i Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png" alt-text="Redigera Kafka-miljö-mallegenskap i Ambari" border="true":::
 
     För HDI version 4,0:
 
-     ![Redigera Kafka-miljö mal len i Ambari fyra](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+     :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png" alt-text="Redigera Kafka-miljö mal len i Ambari fyra" border="true":::
 
 1. Starta om alla Kafka-utjämnare.
 

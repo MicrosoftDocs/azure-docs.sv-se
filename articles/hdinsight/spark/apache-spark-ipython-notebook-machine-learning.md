@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13e5609c965a28405804b8a993280b13755b2d3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930552"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866075"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Självstudie: utveckla ett Apache Spark Machine Learning-program i Azure HDInsight
 
@@ -32,7 +32,7 @@ I den här guiden får du lära dig att:
 
 Programmet använder exempel **HVAC.csv** data som är tillgängliga i alla kluster som standard. Filen finns på `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Data visar måltemperaturen och den faktiska temperaturen för några byggnader som har installerade HVAC-system. Kolumnen **System** representerar system-ID:t, och kolumnen **SystemAge** representerar antalet år som HVAC-systemet har funnits i byggnaden. Du kan förutsäga om en byggnad ska vara Hotter eller kallare baserat på mål temperatur, angivet system-ID och systemets ålder.
 
-![Ögonblicks bild av data som används för Spark Machine Learning-exempel](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Ögonblicks bild av data som används för Spark Machine Learning-exempel")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png " alt-text="Ögonblicks bild av data som används för Spark Machine Learning-exempel" border="true":::
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Utveckla ett Spark-maskininlärningsprogram med Spark MLlib
 
@@ -138,7 +138,7 @@ Det här programmet använder en spark [ml-pipeline](https://spark.apache.org/do
 
     Jämföra utdata med CSV-råfilen. Den första raden i CSV-filen har dessa data till exempel:
 
-    ![Ögonblicks bild av utdata för Spark Machine Learning-exempel](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Ögonblicks bild av utdata för Spark Machine Learning-exempel")
+    :::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png " alt-text="Ögonblicks bild av utdata för Spark Machine Learning-exempel" border="true":::
 
     Lägg märke till att den faktiska temperaturen är lägre än måltemperaturen, vilket indikerar att byggnaden är kall. Värdet för **Label** på den första raden är **0,0**, vilket innebär att byggnaden inte är aktiv.
 
@@ -199,7 +199,7 @@ Om du inte kommer att fortsätta att använda det här programmet, tar du bort d
 
 1. Välj **Ta bort**. Välj **Ja**.
 
-![Azure Portal tar bort ett HDInsight-kluster](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Ta bort HDInsight-kluster")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure Portal tar bort ett HDInsight-kluster" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

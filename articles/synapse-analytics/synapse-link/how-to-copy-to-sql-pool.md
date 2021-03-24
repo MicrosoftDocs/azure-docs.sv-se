@@ -9,12 +9,13 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: cosmos-db
+ms.openlocfilehash: 755782b117ef5a5619ddde3e1573fe1805117e77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93309215"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868570"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopiera data från Azure Cosmos DB till en dedikerad SQL-pool med Apache Spark
 

@@ -101,6 +101,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: Byta värd för stordator
       href: ./workloads/mainframe-rehosting/overview.md
+    - name: Azures konfidentiella beräkning
+      href: ../confidential-computing/overview.md
     - name: SQL på Virtual Machines
       href: ../azure-sql/virtual-machines/index.yml
     - name: Databehandling med höga prestanda (HPC)

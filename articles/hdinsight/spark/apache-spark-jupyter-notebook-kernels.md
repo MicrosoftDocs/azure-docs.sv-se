@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef2bc5e00779200e5447c8829a437824657a2227
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930387"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865986"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels för Jupyter Notebook på Apache Spark kluster i Azure HDInsight
 
@@ -32,7 +32,7 @@ Ett Apache Spark kluster i HDInsight. Anvisningar finns i [Skapa Apache Spark-kl
 
 2. I vyn **Översikt** väljer du **Jupyter Notebook** i rutan **kluster instrument paneler** . Ange administratörsautentiseringsuppgifterna för klustret om du uppmanas att göra det.
 
-    ![Jupyter Notebook på Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook i Spark")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Jupyter Notebook på Apache Spark" border="true":::
   
    > [!NOTE]  
    > Du kan också komma åt Jupyter Notebook i Spark-kluster genom att öppna följande URL i webbläsaren. Ersätt **CLUSTERNAME** med namnet på klustret:
@@ -41,7 +41,7 @@ Ett Apache Spark kluster i HDInsight. Anvisningar finns i [Skapa Apache Spark-kl
 
 3. Välj **ny** och välj sedan antingen **Pyspark**, **PySpark3** eller **Spark** för att skapa en antecknings bok. Använd Spark-kärnan för Scala-program, PySpark-kernel för Python2-program och PySpark3-kernel för python3-program.
 
-    ![Kernels för Jupyter Notebook i Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernels för Jupyter Notebook i Spark")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png " alt-text="Kernels för Jupyter Notebook i Spark" border="true":::
 
 4. En antecknings bok öppnas med den kernel som du har valt.
 

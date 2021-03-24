@@ -4,12 +4,12 @@ description: Få svar på vanliga frågor om att arbeta med Apache Hadoop garn o
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0cd2571276992812327e286ba9b935fcbf6fbbaf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931409"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871817"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Felsöka Apache Hadoop YARN med Azure HDInsight
 
@@ -31,27 +31,27 @@ I det här exemplet ändras två befintliga köer (**standard** -och **thriftsvr
 
 1. Välj ikonen **Ambari views** och välj sedan rutnäts mönstret. Välj sedan **garn Queue Manager**.
 
-    ![Apache Ambari Dashboard garn Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png" alt-text="Apache Ambari Dashboard garn Queue Manager" border="false":::
 2. Välj **standard** kön.
 
-    ![Apache Ambari-garn Välj standard kön](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png" alt-text="Apache Ambari-garn Välj standard kön" border="false":::
 3. Ändra **kapaciteten** från 50% till 25% för **standard** kön. Ändra **kapaciteten** till 25% för **thriftsvr** -kön.
 
-    ![Ändra kapaciteten till 25% för standard-och thriftsvr-köerna](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png" alt-text="Ändra kapaciteten till 25% för standard-och thriftsvr-köerna" border="false":::
 4. Om du vill skapa en ny kö väljer du **Lägg till kö**.
 
-    ![Apache Ambari garn Dashboard Lägg till kö](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png" alt-text="Apache Ambari garn Dashboard Lägg till kö" border="false":::
 
 5. Namnge den nya kön.
 
-    ![Apache Ambari garn instrument panel, namn kö](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png" alt-text="Apache Ambari garn instrument panel, namn kö" border="false":::  
 
 6. Lämna **kapacitets** värden på 50% och välj sedan knappen **åtgärder** .
 
-    ![Apache Ambari-garn Välj åtgärd](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png" alt-text="Apache Ambari-garn Välj åtgärd" border="false":::  
 7. Välj **Spara och uppdatera köer**.
 
-    ![Välj Spara och uppdatera köer](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png" alt-text="Välj Spara och uppdatera köer" border="false":::  
 
 Dessa ändringar visas omedelbart i användar gränssnittet för garn Scheduler.
 

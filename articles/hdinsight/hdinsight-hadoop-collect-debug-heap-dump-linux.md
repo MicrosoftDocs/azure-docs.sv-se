@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fe5b2a1f083e246ea61854c9cbe03932e6655fdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945915"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866598"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Aktivera heap-dum par för Apache Hadoop tjänster på Linux-baserade HDInsight
 
@@ -82,15 +82,15 @@ Använd följande steg för att ändra konfigurationen för en tjänst:
 
 2. Välj det tjänst områden som du vill ändra i listan till vänster. Till exempel **HDFS**. I mitten väljer du fliken **konfigurationer** .
 
-    ![Bild av Ambari Web med HDFS configs-fliken vald](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png" alt-text="Bild av Ambari Web med HDFS configs-fliken vald":::
 
 3. Använd posten **filter...** **och skriv in**. Endast objekt som innehåller den här texten visas.
 
-    ![Filtrerad lista med Apache Ambari-konfiguration](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png" alt-text="Filtrerad lista med Apache Ambari-konfiguration":::
 
 4. Leta upp posten för den tjänst som du vill aktivera heap-dum par för och Lägg till de alternativ som du vill aktivera. **\* \_** I följande bild har jag lagt till i `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` posten **HADOOP \_ NAMENODE \_** :
 
-    ![Apache Ambari Hadoop-namenode-väljer](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png" alt-text="Apache Ambari Hadoop-namenode-väljer":::
 
    > [!NOTE]  
    > När du aktiverar heap-dum par för kartan eller minskar den underordnade processen, letar du efter fälten med namnet **MapReduce. admin. map. Children. java.** sedan och **MapReduce. admin. reduce. Child. java. väljer**.
@@ -99,15 +99,15 @@ Använd följande steg för att ändra konfigurationen för en tjänst:
 
 5. När ändringarna har tillämpats visas ikonen **starta om som krävs** bredvid en eller flera tjänster.
 
-    ![Starta om den ikon som krävs och knappen starta om](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png" alt-text="Starta om den ikon som krävs och knappen starta om":::
 
 6. Välj varje tjänst som behöver startas om och Använd knappen **tjänst åtgärder** för att **Aktivera underhålls läge**. Underhålls läget hindrar aviseringar från att genereras från tjänsten när du startar om den.
 
-    ![Aktivera menyn för HDI underhålls läge](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png" alt-text="Aktivera menyn för HDI underhålls läge":::
 
 7. När du har aktiverat underhålls läge använder du knappen **Starta** om för tjänsten för att **starta om alla effekter**
 
-    ![Apache Ambari starta om alla påverkade poster](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png" alt-text="Apache Ambari starta om alla påverkade poster":::
 
    > [!NOTE]  
    > Posterna för knappen **starta om** kan vara olika för andra tjänster.

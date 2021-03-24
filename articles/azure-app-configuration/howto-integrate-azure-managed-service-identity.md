@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 2f446df95c795eaac378340ed0d5de7b31dfcfee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219053"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955065"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Använda hanterade identiteter för att få åtkomst till App Configuration
 
@@ -140,12 +140,12 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     ---
 
     > [!NOTE]
-    > Om du vill använda en **användardefinierad hanterad identitet** måste du ange clientId när du skapar [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential).
+    > Om du vill använda en **användardefinierad hanterad identitet** måste du ange clientId när du skapar [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential).
     >```
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Som förklaras i [vanliga frågor och svar om hanterade identiteter för Azure-resurser](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), finns det ett standard sätt att matcha vilken hanterad identitet som används. I det här fallet tvingar Azure Identity Library dig att ange den önskade identiteten för att undvika möjliga körnings problem i framtiden (till exempel om en ny användardefinierad hanterad identitet läggs till eller om den systemtilldelade hanterade identiteten har Aktiver ATS). Så du måste ange clientId även om endast en användardefinierad hanterad identitet definieras och det inte finns någon systemtilldelad hanterad identitet.
+    >Som förklaras i [vanliga frågor och svar om hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), finns det ett standard sätt att matcha vilken hanterad identitet som används. I det här fallet tvingar Azure Identity Library dig att ange den önskade identiteten för att undvika möjliga körnings problem i framtiden (till exempel om en ny användardefinierad hanterad identitet läggs till eller om den systemtilldelade hanterade identiteten har Aktiver ATS). Så du måste ange clientId även om endast en användardefinierad hanterad identitet definieras och det inte finns någon systemtilldelad hanterad identitet.
 
 
 1. Om du vill använda både konfigurations värden för appen och Key Vault referenser uppdaterar du *programmet. cs* enligt nedan. Den här koden anropas `SetCredential` som en del av `ConfigureKeyVault` för att tala om för konfigurations leverantören vilka autentiseringsuppgifter som ska användas vid autentisering till Key Vault.
@@ -203,7 +203,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     > [!NOTE]
     > `ManagedIdentityCredential`Fungerar bara i Azure-miljöer med tjänster som stöder hanterad identitets autentisering. Den fungerar inte i den lokala miljön. Använd [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) för att koden ska fungera i både lokala och Azure-miljöer eftersom det kommer att gå tillbaka till några autentiseringsalternativ, inklusive hanterad identitet.
     > 
-    > Om du vill använda en **asigned hanterad identitet** med `DefaultAzureCredential` när den distribueras till Azure [anger du clientId](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential).
+    > Om du vill använda en **asigned hanterad identitet** med `DefaultAzureCredential` när den distribueras till Azure [anger du clientId](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

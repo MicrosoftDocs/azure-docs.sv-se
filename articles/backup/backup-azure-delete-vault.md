@@ -3,12 +3,12 @@ title: Ta bort ett Microsoft Azure Recovery Services-valv
 description: I den här artikeln lär du dig hur du tar bort beroenden och sedan tar bort ett Azure Backup Recovery Services-valv.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 8df2528edebbb654e501b8aaaac91c24d932604c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670570"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864966"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Ta bort ett Azure Backup Recovery Services-valv
 
@@ -48,6 +48,7 @@ Om du vill ta bort ett valv korrekt måste du följa stegen i den här ordningen
   - **Mabs-eller DPM-hanterings servrar**: gå till instrument panelen för valvet > **säkerhets kopierings**  >  **hanterings servrar** för säkerhets kopiering. Om du har DPM eller Azure Backup Server (MABS) måste alla objekt som anges här tas bort eller avregistreras tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort hanterings servrarna.
 
 - **Steg 4**: du måste se till att alla registrerade lagrings konton tas bort. Gå till instrument panelen för valv-menyn > **säkerhets kopierings infrastruktur**  >  **lagrings konton**. Om du har lagrings konton som listas här måste du avregistrera alla. Information om hur du avregistrerar kontot finns i [avregistrera ett lagrings konto](manage-afs-backup.md#unregister-a-storage-account).
+- **Steg 5**: kontrol lera att det inte finns några privata slut punkter som skapats för valvet. Gå till instrument panelen för valv-menyn > **privata slut punkts anslutningar** under "inställningar" > om valvet har några privata slut punkts anslutningar skapade eller försökte skapas, se till att de tas bort innan du fortsätter med valvet ta bort. 
 
 När du har slutfört de här stegen kan du fortsätta att [ta bort valvet](#delete-the-recovery-services-vault).
 

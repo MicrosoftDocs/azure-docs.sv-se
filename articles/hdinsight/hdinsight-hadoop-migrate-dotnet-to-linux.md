@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e626d08e7fd315ca70765477c5dae56030521c6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945597"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866411"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrera .NET-lösningar för Windows-baserade HDInsight till Linux-baserade HDInsight
 
@@ -33,7 +33,7 @@ Mer information om kompatibilitet mellan mono och .NET finns i [mono-kompatibili
 
 2. Från Visual Studio 2015 väljer du __analysera__  >  __Inställningar för portabilitet__ och kontrollerar att __4,5__ är markerat i __mono__ -avsnittet.
 
-    ![4,5 kontrollerade i mono-sektionen för analys inställningarna](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png" alt-text="4,5 kontrollerade i mono-sektionen för analys inställningarna":::
 
     Välj __OK__ för att spara konfigurationen.
 
@@ -41,7 +41,7 @@ Mer information om kompatibilitet mellan mono och .NET finns i [mono-kompatibili
 
 4. När analysen är klar väljer du __analysera__  >  __Visa analys rapporter__. I __analys resultat för portabilitet__ väljer du __Öppna rapport__ för att öppna en rapport.
 
-    ![Dialog rutan resultat för portabilitet-analys](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png" alt-text="Dialog rutan resultat för portabilitet-analys":::
 
 > [!IMPORTANT]  
 > Analys verktyget kan inte fånga varje problem med lösningen. Till exempel anses en fil Sök väg som `c:\temp\file.txt` är OK om mono körs i Windows. Samma sökväg är inte giltig på en Linux-plattform.

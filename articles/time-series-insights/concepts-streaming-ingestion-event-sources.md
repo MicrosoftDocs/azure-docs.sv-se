@@ -8,17 +8,17 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 7b7e29b6e2ebb3b229045df439848264540b59b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/18/2021
+ms.openlocfilehash: ec41f7503ec179cb1fa6172e94e613933f719c93
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461631"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953625"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights händelse källor för Gen2
 
- Din Azure Time Series Insights Gen2-miljö kan ha upp till två händelse källor för strömning. Två typer av Azure-resurser stöds som indata:
+Din Azure Time Series Insights Gen2-miljö kan ha upp till två händelse källor för strömning. Två typer av Azure-resurser stöds som indata:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
@@ -27,15 +27,37 @@ Händelser måste skickas som UTF-8-kodad JSON.
 
 ## <a name="create-or-edit-event-sources"></a>Skapa eller redigera händelse källor
 
-Dina händelse käll resurser kan finnas i samma Azure-prenumeration som din Azure Time Series Insights Gen2-miljö eller en annan prenumeration. Du kan använda [Azure Portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [arm-mallar](time-series-insights-manage-resources-using-azure-resource-manager-template.md)och [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) för att skapa, redigera eller ta bort din miljös händelse källor.
+Händelse källan är länken mellan hubben och din Azure Time Series Insights Gen2-miljö och en separat resurs av typen `Time Series Insights event source` skapas i din resurs grupp. IoT Hub-eller Händelsehubben-resurser kan finnas i samma Azure-prenumeration som din Azure Time Series Insights Gen2-miljö eller en annan prenumeration. Det är dock en bra idé att House din Azure Time Series Insights-miljö och IoT Hub eller Händelsehubben i samma Azure-region.
 
-När du ansluter en händelse källa kommer din Azure Time Series Insights Gen2-miljö läsa alla händelser som för närvarande lagras i IoT-eller Händelsehubben, med början den äldsta händelsen.
+Du kan använda [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [Azure Resource Manager mallar](time-series-insights-manage-resources-using-azure-resource-manager-template.md)och [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) för att skapa, redigera eller ta bort din miljös händelse källor.
+
+## <a name="start-options"></a>Start alternativ
+
+När du skapar en händelse källa har du möjlighet att ange vilka tidigare befintliga data som ska samlas in. Den här inställningen är valfri. Följande alternativ är tillgängliga:
+
+| Name   |  Beskrivning  |  Exempel på Azure Resource Manager mall |
+|----------|-------------|------|
+| EarliestAvailable | Mata in alla redan befintliga data som lagras i IoT-eller Händelsehubben | `"ingressStartAt": {"type": "EarliestAvailable"}` |
+| EventSourceCreationTime |  Börja mata in data som kommer efter att händelse källan har skapats. Alla tidigare data som strömmas innan händelse källan skapades ignoreras. Detta är standardinställningen i Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
+| CustomEnqueuedTime | Din miljö kommer att mata in data från din anpassade köade tid (UTC). Alla händelser som står i kö i IoT-eller Händelsehubben vid eller efter den anpassade tids perioden kommer att matas in och lagras. Alla händelser som anlänt innan din anpassade tid kommer att ignoreras. Observera att "den köade tiden" avser den tid (i UTC) som händelsen anlänt i IoT-eller Händelsehubben. Detta skiljer sig från en anpassad [timestamp-egenskap](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) som ligger inom bröd texten för din händelse. |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
 
 > [!IMPORTANT]
 >
-> - Du kan få hög första svars tid när du kopplar en händelse källa till din Azure Time Series Insights Gen2-miljö.
-> - Svars tiden för händelse källan beror på antalet händelser som för närvarande finns i IoT Hub eller Händelsehubben.
-> - Hög latens kommer att undertryckas när händelsens källdata först matas in. Skicka in ett support ärende via Azure Portal om du får en kontinuerlig hög latens.
+> - Om du väljer EarliestAvailable och har massor av redan befintliga data kan du få hög första svars tid eftersom din Azure Time Series Insights Gen2-miljö bearbetar alla dina data.
+> - Den här långa fördröjningen bör slutligen ligga under den tid då data indexeras. Skicka in ett support ärende via Azure Portal om du får en kontinuerlig hög latens.
+
+* EarliestAvailable
+
+![EarliestAvailable-diagram](media/concepts-streaming-event-sources/event-source-earliest-available.png)
+
+* EventSourceCreationTime
+
+![EventSourceCreationTime-diagram](media/concepts-streaming-event-sources/event-source-creation-time.png)
+
+* CustomEnqueuedTime
+
+![CustomEnqueuedTime-diagram](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
+
 
 ## <a name="streaming-ingestion-best-practices"></a>Metod tips för strömning
 
@@ -53,11 +75,14 @@ När du ansluter en händelse källa kommer din Azure Time Series Insights Gen2-
 
 - Följ principen om minsta behörighet när du tillhandahåller anslutnings strängar för händelse källan. För Event Hubs konfigurerar du en princip för delad åtkomst med endast *Skicka* anspråk och för IoT Hub använda endast *tjänst anslutnings* behörighet.
 
+> [!CAUTION] 
+> Om du tar bort din IoT Hub eller Händelsehubben och återskapar en ny resurs med samma namn måste du skapa en ny händelse källa och koppla den nya IoT Hub eller Händelsehubben. Data kommer inte att matas in förrän du har slutfört det här steget.
+
 ## <a name="production-workloads"></a>Produktionsarbetsbelastningar
 
 Utöver de bästa metoderna ovan rekommenderar vi att du implementerar följande för affärs kritiska arbets belastningar.
 
-- Öka din IoT Hub-eller Event Hub-datakvarhållning till maximalt 7 dagar.
+- Öka data lagrings tiden för IoT Hub-eller Händelsehubben till högst sju dagar.
 
 - Skapa miljö varningar i Azure Portal. Med aviseringar som baseras på plattforms [mått](./how-to-monitor-tsi-reference.md#metrics) kan du validera pipeline-beteendet från slut punkt till slut punkt. Anvisningar för att skapa och hantera aviseringar finns [här](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts). Föreslagna aviserings villkor:
 
@@ -76,7 +101,7 @@ Det finns för närvarande inte stöd för att använda strömnings pipelinen f�
 
 ## <a name="event-source-timestamp"></a>Tids stämpling för händelse källa
 
-När du konfigurerar en händelse källa uppmanas du att ange en egenskap för timestamp-ID. Egenskapen timestamp används för att spåra händelser över tid, detta är den tid som ska användas som $event. $ts i [fråge-API: erna](/rest/api/time-series-insights/dataaccessgen2/query/execute) och för att rita serier i Azure Time Series Insights Explorer. Om ingen egenskap anges när du skapar, eller om egenskapen timestamp saknas i en händelse, används händelsens IoT Hub-eller Event Hubs-hubbar som standard. Tidsstämpelns egenskaps värden lagras i UTC.
+När du konfigurerar en händelse källa uppmanas du att ange en egenskap för timestamp-ID. Egenskapen timestamp används för att spåra händelser över tid, detta är den tid som ska användas som tidstämpel `$ts` i [fråge-API: erna](/rest/api/time-series-insights/dataaccessgen2/query/execute) och för att rita serier i Azure Time Series Insights Explorer. Om ingen egenskap anges när du skapar, eller om egenskapen timestamp saknas i en händelse, används händelsens IoT Hub-eller Event Hubs-hubbar som standard. Tidsstämpelns egenskaps värden lagras i UTC.
 
 I allmänhet väljer användare att anpassa egenskapen timestamp och använder tiden när sensorn eller taggen genererar läsningen istället för att använda standard navets köade tid. Detta är särskilt nödvändigt när enheter har tillfälligt anslutnings avbrott och en batch med fördröjda meddelanden vidarebefordras till Azure Time Series Insights Gen2.
 

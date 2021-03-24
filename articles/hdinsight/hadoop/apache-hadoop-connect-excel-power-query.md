@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946699"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866819"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Ansluta Excel till Apache Hadoop med hjälp av Power Query
 
@@ -42,13 +42,13 @@ Med Power Query-tillägget för Excel kan du enkelt importera data från HDInsig
 
      * Välj > **data**  >  **Hämta data**  >  **från Azure**  >  **från Azure HDInsight (HDFS)**.
 
-       ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png" alt-text="HDI. PowerQuery. SelectHdiSource. 2016" border="true":::
 
    * Excel 2013/2010
 
      * Välj **Power Query**  >  **från Azure**  >  **från Microsoft Azure HDInsight**.
 
-       ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png" alt-text="HDI. PowerQuery. SelectHdiSource" border="true":::
 
        **Obs:** Om du inte ser **Power Query** menyn går du till **fil**  >  **alternativ**  >  **tillägg** och väljer **com-tillägg** i list rutan **Hantera** längst ned på sidan. Välj knappen **gå...** och kontrol lera att rutan för tillägget Power Query för Excel har marker ATS.
 
@@ -62,11 +62,11 @@ Med Power Query-tillägget för Excel kan du enkelt importera data från HDInsig
 
 1. Leta upp **HiveSampleData.txt** i kolumnen **namn** (mappsökvägen är **... /Hive/Warehouse/hivesampletable/**) och välj sedan **binär** till vänster om HiveSampleData.txt. HiveSampleData.txt levereras med alla kluster. Du kan också använda en egen fil.
 
-    ![Importera data från HDI Excel Power Query](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png" alt-text="Importera data från HDI Excel Power Query" border="true":::
 
 1. Om du vill kan du byta namn på kolumn namnen. När du är klar väljer du **stäng & belastning**.  Data har lästs in i din arbets bok:
 
-    ![HDI Excel Power Query-importerad tabell](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png" alt-text="HDI Excel Power Query-importerad tabell" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

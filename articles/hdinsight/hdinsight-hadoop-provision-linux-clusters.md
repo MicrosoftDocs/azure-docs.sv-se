@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741845"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863419"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurera kluster i HDInsight med Apache Hadoop, Apache Spark, Apache Kafka med mera
 
@@ -42,7 +42,7 @@ Den här artikeln vägleder dig genom installationen i [Azure Portal](https://po
 
 ## <a name="basics"></a>Grundläggande inställningar
 
-![snabb alternativ för HDInsight-skapande](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png" alt-text="snabb alternativ för HDInsight-skapande":::
 
 ### <a name="project-details"></a>Projektinformation
 
@@ -107,7 +107,7 @@ SSH-användarnamnet har följande begränsningar:
 
 ## <a name="storage"></a>Storage
 
-![Kluster lagrings inställningar: HDFS-kompatibla slut punkter](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png" alt-text="Kluster lagrings inställningar: HDFS-kompatibla slut punkter":::
 
 Även om en lokal installation av Hadoop använder Hadoop Distributed File System (HDFS) för lagring i klustret, i molnet använder du lagrings slut punkter som är anslutna till klustret. Med hjälp av moln lagring kan du på ett säkert sätt ta bort HDInsight-kluster som används för beräkning samtidigt som dina data fortfarande behålls.
 
@@ -165,7 +165,7 @@ Ambari används för att övervaka HDInsight-kluster, göra konfigurations ändr
 
 ## <a name="security--networking"></a>Säkerhet + nätverk
 
-![HDInsight-alternativ för skapande väljer Enterprise Security-paket](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png" alt-text="HDInsight-alternativ för skapande väljer Enterprise Security-paket":::
 
 ### <a name="enterprise-security-package"></a>Säkerhets paket för företag
 
@@ -201,7 +201,7 @@ Mer information finns i [hanterade identiteter i Azure HDInsight](./hdinsight-ma
 
 ## <a name="configuration--pricing"></a>Konfiguration + prissättning
 
-![HDInsight Välj Node-storlek](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png" alt-text="HDInsight Välj Node-storlek":::
 
 Du debiteras för användning av Node så länge klustret finns. Faktureringen startar när ett kluster skapas och stoppas när klustret tas bort. Kluster kan inte avallokeras eller spärras.
 
@@ -211,10 +211,10 @@ Varje kluster typ har sitt eget antal noder, terminologi för noder och standard
 
 | Typ | Noder | Diagram |
 | --- | --- | --- |
-| Hadoop |Head-nod (2), arbetsnoden (1 +) |![HDInsight Hadoop-klusternoder](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| HBase |Huvud server (2), region Server (1 +), Master/ZooKeeper-nod (3) |![Konfiguration av HDInsight HBase-kluster typ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus Node (2), övervaknings Server (1 +), ZooKeeper Node (3) |![Konfiguration av HDInsight Storm kluster typ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Head Node (2), arbetsnoden (1 +), ZooKeeper Node (3) (kostnads fri för a1 ZooKeeper VM-storlek) |![Konfiguration av HDInsight Spark kluster typ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Hadoop |Head-nod (2), arbetsnoden (1 +) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png" alt-text="HDInsight Hadoop-klusternoder" border="false"::: |
+| HBase |Huvud server (2), region Server (1 +), Master/ZooKeeper-nod (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png" alt-text="Konfiguration av HDInsight HBase-kluster typ" border="false"::: |
+| Storm |Nimbus Node (2), övervaknings Server (1 +), ZooKeeper Node (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png" alt-text="Konfiguration av HDInsight Storm kluster typ" border="false"::: |
+| Spark |Head Node (2), arbetsnoden (1 +), ZooKeeper Node (3) (kostnads fri för a1 ZooKeeper VM-storlek) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png" alt-text="Konfiguration av HDInsight Spark kluster typ" border="false"::: |
 
 Mer information finns i [standard konfiguration av noder och virtuella dator storlekar för kluster](hdinsight-supported-node-configuration.md) i "Vad är Hadoop-komponenter och-versioner i HDInsight?"
 
@@ -222,7 +222,7 @@ Kostnaden för HDInsight-kluster bestäms av antalet noder och storlekarna för 
 
 Olika typer av kluster har olika nodtyper, antal noder och Node-storlekar:
 * Standardvärde för Hadoop-kluster typ:
-    * Två *Head-noder*  
+    * Två *Head-noder*
     * Fyra *arbetsnoder*
 * Standard Storm kluster typ:
     * Två *Nimbus-noder*

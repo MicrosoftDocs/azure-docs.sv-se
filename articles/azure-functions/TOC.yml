@@ -55,6 +55,10 @@
         - name: ARM-mall
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
+    - name: Anslut till en databas
+      items:
+        - name: Visuell Studio-kod
+          href: functions-add-output-binding-cosmos-db-vs-code.md
     - name: Ansluta till lagring
       items:
         - name: Visual Studio-koden

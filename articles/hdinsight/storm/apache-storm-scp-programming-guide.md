@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932636"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864116"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Programmerings guide för SCP för Apache Storm i Azure HDInsight
 
@@ -28,7 +28,7 @@ Data i SCP är modellerade som kontinuerliga strömmar av tupler. Normalt är tu
 1. Hämtas och omvandlas av affärs logik som finns i en Storm-topologi.
 1. Antingen har utdata skickas som tupler till ett annat SCP-system, eller så är de allokerade till butiker som distribuerade fil system och databaser som SQL Server.
 
-![Ett diagram över att mata in data i kön för bearbetning, vilket i sin tur matar in ett data lager](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png" alt-text="Ett diagram över att mata in data i kön för bearbetning, vilket i sin tur matar in ett data lager" border="false":::
 
 I storm definierar en Programtopologi ett beräknings diagram. Varje nod i en topologi innehåller bearbetnings logik. Länkar mellan noder indikerar data flödet.
 
@@ -570,7 +570,7 @@ Här `examples\HybridTopology\java\target\` är mappen som innehåller jar-filen
 
 En SCP-komponent inkluderar Java-sidan och C#-sidan. För att interagera med ursprungliga Java-kanaler/-bultar måste serialisering och deserialisering ske mellan Java-sidan och C#-sidan, vilket visas i följande diagram:
 
-![Diagram över Java-komponenten som skickar till SCP-komponenten, som sedan skickar till en annan Java-komponent](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png" alt-text="Diagram över Java-komponenten som skickar till SCP-komponenten, som sedan skickar till en annan Java-komponent" border="false":::
 
 #### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Serialisering i Java-sidan och deserialiseringen i C#-Sidan
 

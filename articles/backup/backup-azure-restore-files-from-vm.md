@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig hur du återställer filer och mapp
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493534"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864898"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Återställa filer från en säkerhetskopia av en virtuell Azure-dator
 
@@ -35,7 +35,7 @@ Om du vill återställa filer eller mappar från återställnings punkten går d
 
 3. På instrument panelen för säkerhets kopierings menyn väljer du **fil återställning**.
 
-    ![Välj fil återställning](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Välj fil återställning](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     Menyn **fil återställning** öppnas.
 
@@ -81,6 +81,7 @@ Se krav för att återställa filer från säkerhetskopierade virtuella datorer 
 [Windows OS](#for-backed-up-vms-with-large-disks-windows)<br>
 [Linux-operativsystem](#for-backed-up-vms-with-large-disks-linux)
 
+När du har valt rätt dator för att köra ILR-skriptet, se till att det uppfyller kraven för [operativ system](#step-3-os-requirements-to-successfully-run-the-script) och [åtkomst krav](#step-4-access-requirements-to-successfully-run-the-script). 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>Steg 3: operativ system krav för att köra skriptet
 
@@ -126,6 +127,8 @@ Skriptet kräver också python-och bash-komponenter för att kunna köra och ans
 | .NET | 4.6.2 och över |
 | TLS | 1,2 bör stödjas  |
 
+Kontrol lera också att du har [rätt dator för att köra ILR-skriptet](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) och uppfyller [åtkomst kraven](#step-4-access-requirements-to-successfully-run-the-script).
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>Steg 4: åtkomst krav för att köra skriptet
 
 Om du kör skriptet på en dator med begränsad åtkomst kontrollerar du att det finns åtkomst till:
@@ -148,12 +151,13 @@ För Linux kräver skriptet "Open-iSCSI"-och ' lshw '-komponenter för att anslu
 
 Åtkomst till `download.microsoft.com` krävs för att ladda ned komponenter som används för att skapa en säker kanal mellan den dator där skriptet körs och data i återställnings punkten.
 
+Kontrol lera också att du har [rätt dator för att köra ILR-skriptet](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) och uppfyller [operativ system kraven](#step-3-os-requirements-to-successfully-run-the-script).
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>Steg 5: köra skriptet och identifiera volymer
 
 ### <a name="for-windows"></a>För Windows
 
-När du har uppfyllt alla krav som anges i steg 2, steg 3 och steg 4 kopierar du skriptet från den hämtade platsen (vanligt vis mappen Hämtade filer), högerklickar på den körbara filen eller skriptet och kör den med administratörs behörighet. När du uppmanas till det anger du lösen ordet eller klistrar in lösen ordet från minnet och trycker på RETUR. När du har angett ett giltigt lösen ord ansluter skriptet till återställnings punkten.
+När du har uppfyllt alla krav som anges i [steg 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script), [steg 3](#step-3-os-requirements-to-successfully-run-the-script) och [steg 4](#step-4-access-requirements-to-successfully-run-the-script)kopierar du skriptet från den hämtade platsen (vanligt vis mappen Hämtade filer), se [steg 1 för att lära dig hur du genererar och laddar ned skript](#step-1-generate-and-download-script-to-browse-and-recover-files). Högerklicka på den körbara filen och kör den med administratörs behörighet. När du uppmanas till det anger du lösen ordet eller klistrar in lösen ordet från minnet och trycker på RETUR. När du har angett ett giltigt lösen ord ansluter skriptet till återställnings punkten.
 
   ![Körbara utdata](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Om fil återställnings processen låser sig efter att du kört fil återställn
 
 ### <a name="for-linux"></a>För Linux
 
-För Linux-datorer genereras ett Python-skript. Hämta skriptet och kopiera det till den relevanta/kompatibla Linux-servern. Du kan behöva ändra behörigheterna för att köra den med ```chmod +x <python file name>``` . Kör sedan python-filen med ```./<python file name>``` .
+När du har uppfyllt alla krav som anges i [steg 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script), [steg 3](#step-3-os-requirements-to-successfully-run-the-script) och [steg 4](#step-4-access-requirements-to-successfully-run-the-script), genererar du ett Python-skript för Linux-datorer. Se [steg 1 för att lära dig hur du genererar och laddar ned skript](#step-1-generate-and-download-script-to-browse-and-recover-files). Hämta skriptet och kopiera det till den relevanta/kompatibla Linux-servern. Du kan behöva ändra behörigheterna för att köra den med ```chmod +x <python file name>``` . Kör sedan python-filen med ```./<python file name>``` .
 
 
 I Linux monteras volymerna för återställnings punkten på den mapp där skriptet körs. De anslutna diskarna, volymerna och motsvarande monterings Sök vägar visas i enlighet med detta. Dessa monterings Sök vägar visas för användare som har åtkomst till rot nivå. Bläddra igenom de volymer som anges i utdata för skriptet.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 2b5c053847852cc6090ee94858a5be52275d62fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 71e02ea1265a81da7dd2e85549f6d1390a46311a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101725347"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952294"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Beräknings miljöer som stöds av Azure Data Factory
 
@@ -444,7 +444,7 @@ Du skapar en Azure Machine Learning länkad tjänst för att ansluta en Azure Ma
 | mlWorkspaceName        | Namn på Azure Machine Learning arbets yta | Ja  |
 | servicePrincipalId     | Ange programmets klient-ID.     | Inga |
 | servicePrincipalKey    | Ange programmets nyckel.           | Inga |
-| tenant                 | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Du kan hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. | Krävs om updateResourceEndpoint har angetts | Inga |
+| tenant                 | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Du kan hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. | Krävs om updateResourceEndpoint har angetts |
 | connectVia             | Integration Runtime som ska användas för att skicka aktiviteter till den här länkade tjänsten. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime. Om inget värde anges används standard Azure Integration Runtime. | Inga |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics länkad tjänst

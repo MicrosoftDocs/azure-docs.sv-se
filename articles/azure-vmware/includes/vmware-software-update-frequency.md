@@ -2,17 +2,21 @@
 title: Uppdaterings frekvens för VMware-program
 description: Uppdaterings frekvens för VMware-program som stöds för Azure VMware-lösningen.
 ms.topic: include
-ms.date: 03/16/2021
-ms.openlocfilehash: a202e99efbe1232598645fed8a03ebf66a1e173b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.date: 03/22/2021
+ms.openlocfilehash: a3290ed704b493fae3e86223857ff9f1c5617f1a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773935"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869871"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
-Microsoft ansvarar för livs cykel hantering av VMware-programvara (ESXi, vCenter, PSC och NXS) i det privata molnet.
+Microsoft ansvarar för livs cykel hanteringen av VMware-programvara (ESXi, vCenter, PSC och NXS) i det privata molnet för Azure VMware-lösningen.
+
+Program varan för det privata molnet uppgraderas enligt ett schema som spårar program varu paketets version från VMware. Det privata molnet kräver ingen stillestånds tid för uppgraderingar.
+
+Den privata moln program varu paketets uppgraderingar behåller program varan i en version av den senaste versionen av program varu paket från VMware. Program varu versionerna för det privata molnet kan skilja sig från de senaste versionerna av de enskilda program varu komponenterna (ESXi, NSX-T, vCenter, virtuellt SAN).
 
 Program uppdateringar omfattar:
 

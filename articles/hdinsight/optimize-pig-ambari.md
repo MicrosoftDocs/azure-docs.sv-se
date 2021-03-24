@@ -4,12 +4,12 @@ description: Använd webb gränssnittet Apache Ambari för att konfigurera och o
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43159360342063af1682a984db037ae286721411
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939013"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871171"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Optimera Apache-gris med Apache Ambari i Azure HDInsight
 
@@ -23,7 +23,7 @@ Apache gris-egenskaper kan ändras från Ambari-webbgränssnittet för att juste
 
 1. Välj **Spara** längst upp till höger i fönstret för att spara det nya värdet. Vissa egenskaper kan kräva att tjänsten startas om.
 
-    ![Avancerade egenskaper för Apache-gris](./media/optimize-pig-ambari/advanced-pig-properties.png)
+    :::image type="content" source="./media/optimize-pig-ambari/advanced-pig-properties.png" alt-text="Avancerade egenskaper för Apache-gris" border="true":::
 
 > [!NOTE]  
 > Alla inställningar för sessionsbaserade åsidosätter egenskaps värden i `pig.properties` filen.

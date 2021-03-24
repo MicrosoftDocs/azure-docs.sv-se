@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944039"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864796"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Självstudie: Skapa Azure HDInsight-kluster med Azure Automation
 
@@ -38,16 +38,16 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 1. Skriv **AzureRM. Profile** i rutan och tryck på RETUR för att söka. Välj det tillgängliga Sök resultatet.
 1. På skärmen **AzureRM. Profile** väljer du **Importera**. Markera kryss rutan för att uppdatera Azure-moduler och välj sedan **OK**.
 
-    ![Importera AzureRM. Profile-modul](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermprofile-module.png" alt-text="Importera AzureRM. Profile-modul" border="false":::
 
 1. Gå tillbaka till modulens Galleri genom att välja **Galleri** under **delade resurser**.
 1. Skriv **HDInsight**. Välj **AzureRM. HDInsight**.
 
-    ![Bläddra bland HDInsight-moduler](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/browse-modules-hdinsight.png" alt-text="Bläddra bland HDInsight-moduler" border="true":::
 
 1. På panelen **AzureRM. HDInsight** väljer du **Importera** och **OK**.
 
-    ![Importera AzureRM. HDInsight-modul](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermhdinsight-module.png" alt-text="Importera AzureRM. HDInsight-modul" border="true":::
 
 ## <a name="create-credentials"></a>Skapa autentiseringsuppgifter
 
@@ -65,7 +65,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 1. Välj **Skapa**.
 1. Upprepa samma process för en ny autentiseringsuppgift `ssh-password` med användar namn `sshuser` och lösen ord som du själv väljer. Välj **Skapa**. Den här autentiseringsuppgiften är att lagra SSH-lösenordet för klustret.
 
-    ![skapa autentiseringsuppgift](./media/manage-clusters-runbooks/create-credentials.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="skapa autentiseringsuppgift" border="true":::
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Skapa en Runbook för att skapa ett kluster
 
@@ -74,11 +74,11 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 1. På panelen **skapa en Runbook** anger du ett namn för runbooken, till exempel `hdinsight-cluster-create` . Välj **PowerShell** i list rutan **Runbook-typ** .
 1. Välj **Skapa**.
 
-    ![Skapa Runbook](./media/manage-clusters-runbooks/create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="Skapa Runbook" border="true":::
 
 1. Ange följande kod på skärmen **Redigera PowerShell-Runbook** och välj **publicera**:
 
-    ![publicera Runbook](./media/manage-clusters-runbooks/publish-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/publish-runbook.png" alt-text="publicera Runbook" border="true":::
 
     ```powershell
     Param
@@ -154,7 +154,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 1. Välj **Starta** för att köra runbooken omedelbart. Du kan också schemalägga att Runbooks ska köras regelbundet. Se [schemaläggning av en Runbook i Azure Automation](../automation/shared-resources/schedules.md)
 1. Ange de parametrar som krävs för skriptet och välj **OK**. Då skapas ett nytt HDInsight-kluster med det namn som du angav i parametern **kluster** namn.
 
-    ![Kör skapa kluster-Runbook](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/execute-create-runbook.png" alt-text="Kör skapa kluster-Runbook" border="true":::
 
 ### <a name="delete-a-cluster"></a>Ta bort ett kluster
 

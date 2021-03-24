@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648058"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952672"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Samsung KNOX och Business Services
 
@@ -141,7 +141,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till [SamsungKnox.com](https://samsungknox.com/) direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Samsung KNOX och Business Services i Mina appar omdirigeras det till [SamsungKnox.com](https://samsungknox.com/). Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Samsung KNOX och Business Services i Mina appar omdirigeras det till [SamsungKnox.com](https://samsungknox.com/). Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

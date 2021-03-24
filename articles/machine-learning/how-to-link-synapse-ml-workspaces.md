@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520004"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889118"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Länka Azure Synapse Analytics och Azure Machine Learning-arbetsytor (för hands version)
 
@@ -102,12 +102,14 @@ Länka din Machine Learning-arbetsyta och Synapse-arbetsyta via Azure Machine Le
 1. Logga in på [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Välj **länkade tjänster** i avsnittet **Hantera** i det vänstra fönstret.
 1. Välj **Lägg till integrering**.
-1. Fyll i fälten i formuläret **länk arbets yta** 
-    Fält| Beskrivning    
-    ---|---
-    Name| Ange ett namn för den länkade tjänsten. Det här namnet är vad som ska användas för att referera till den här länkade tjänsten.
-    Prenumerationens namn | Välj namnet på din prenumeration som är kopplad till Machine Learning-arbetsytan. 
-    Synapse-arbetsyta | Välj den Synapse-arbetsyta som du vill länka till.
+1. Fyll i fälten i formuläret **länk arbets yta**
+
+    |Fält| Beskrivning    
+    |---|---
+    |Name| Ange ett namn för den länkade tjänsten. Det här namnet är vad som ska användas för att referera till den här länkade tjänsten.
+    |Prenumerationens namn | Välj namnet på din prenumeration som är kopplad till Machine Learning-arbetsytan. 
+    |Synapse-arbetsyta | Välj den Synapse-arbetsyta som du vill länka till.
+    
 1. Välj **Nästa** för att öppna formuläret **Välj Spark-pooler (valfritt)** . I det här formuläret väljer du vilken Synapse Spark-pool som ska kopplas till din arbets yta
 
 1. Välj **Nästa** för att öppna **gransknings** formuläret och kontrol lera dina val.

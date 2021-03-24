@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5682ff58ad827f5a165342f11f03fb49bbe6d2d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946549"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867890"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Använd C#-användardefinierade funktioner med Apache Hive och Apache gris på Apache Hadoop i HDInsight
 
@@ -171,7 +171,7 @@ Sedan laddar du upp Hive-och gris-UDF-programmen till lagringen i ett HDInsight-
 
 1. Expandera det HDInsight-kluster som du vill distribuera programmet till. En post med texten **(standard lagrings kontot)** visas.
 
-    ![Standard lagrings konto, HDInsight-kluster, Server Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png" alt-text="Standard lagrings konto, HDInsight-kluster, Server Explorer" border="true":::
 
     * Om du kan expandera den här posten använder du ett **Azure Storage konto** som standard lagring för klustret. Om du vill visa filerna på standard lagrings utrymmet för klustret expanderar du posten och dubbelklickar sedan på **(standard container)**.
 
@@ -181,7 +181,7 @@ Sedan laddar du upp Hive-och gris-UDF-programmen till lagringen i ett HDInsight-
 
     * Om du använder ett **Azure Storage konto** väljer du ikonen **Ladda upp BLOB** .
 
-        ![HDInsight upload-ikon för nytt projekt](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png" alt-text="HDInsight upload-ikon för nytt projekt" border="true":::
 
         Välj **Bläddra** under **fil namn** i dialog rutan **Ladda upp ny fil** . I dialog rutan **Ladda upp BLOB** går du till mappen *bin\debug* för *HiveCSharp* -projektet och väljer sedan filen *HiveCSharp.exe* . Klicka slutligen på **Öppna** och sedan på **OK** för att slutföra överföringen.
 
