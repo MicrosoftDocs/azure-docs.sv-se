@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4d546401baa7edc7725e3fdb23065009895f9c1e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772288"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027439"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -93,7 +93,7 @@ Om du vill ändra Log Analytics pris nivå för arbets ytan,
     
 3. När du har granskat de uppskattade kostnaderna baserat på de senaste 31 dagarna av användningen klickar du på **Välj** för att ändra pris nivån.  
 
-Du kan också [ställa in pris nivån via Azure Resource Manager](../samples/resource-manager-workspace.md) med hjälp av `sku` parametern ( `pricingTier` i Azure Resource Manager mal len). 
+Du kan också [ställa in pris nivån via Azure Resource Manager](./resource-manager-workspace.md) med hjälp av `sku` parametern ( `pricingTier` i Azure Resource Manager mal len). 
 
 ## <a name="legacy-pricing-tiers"></a>Äldre prisnivåer
 
@@ -145,7 +145,7 @@ Ange standard kvarhållning för din arbets yta genom att
 
 När kvarhållning sänks, finns det en tids period på flera dagar innan de data som är äldre än den nya inställningen för kvarhållning tas bort. 
 
-Sidan **datakvarhållning** tillåter inställningar för kvarhållning på 30, 31, 60, 90, 120, 180, 270, 365, 550 och 730 dagar. Om det krävs en annan inställning, kan konfigureras med hjälp av [Azure Resource Manager](../samples/resource-manager-workspace.md) med hjälp av `retentionInDays` parametern. När du ställer in data kvarhållning på 30 dagar kan du utlösa en omedelbar rensning av äldre data med hjälp av `immediatePurgeDataOn30Days` parametern (vilket eliminerar den flera dagars respitperioden). Detta kan vara användbart för kompatibilitets-relaterade scenarier där omedelbar data borttagning är tvingande. Den här funktionen för omedelbar rensning exponeras bara via Azure Resource Manager. 
+Sidan **datakvarhållning** tillåter inställningar för kvarhållning på 30, 31, 60, 90, 120, 180, 270, 365, 550 och 730 dagar. Om det krävs en annan inställning, kan konfigureras med hjälp av [Azure Resource Manager](./resource-manager-workspace.md) med hjälp av `retentionInDays` parametern. När du ställer in data kvarhållning på 30 dagar kan du utlösa en omedelbar rensning av äldre data med hjälp av `immediatePurgeDataOn30Days` parametern (vilket eliminerar den flera dagars respitperioden). Detta kan vara användbart för kompatibilitets-relaterade scenarier där omedelbar data borttagning är tvingande. Den här funktionen för omedelbar rensning exponeras bara via Azure Resource Manager. 
 
 Arbets ytor med en lagring på 30 dagar kan faktiskt behålla data i 31 dagar. Om det är absolut nödvändigt att data sparas i 30 dagar kan du använda Azure Resource Manager för att ange kvarhållning till 30 dagar och med `immediatePurgeDataOn30Days` parametern.  
 
@@ -322,7 +322,7 @@ Antalet enheter på fakturan är i antal noder * månader som representeras av `
 
 
 > [!TIP]
-> Använd dessa `find` frågor sparsamt eftersom genomsökningar över data typer är [resurs krävande](../log-query/query-optimization.md#query-performance-pane) att köra. Om du inte behöver några resultat **per dator** frågar du efter användnings data typen (se nedan).
+> Använd dessa `find` frågor sparsamt eftersom genomsökningar över data typer är [resurs krävande](./query-optimization.md#query-performance-pane) att köra. Om du inte behöver några resultat **per dator** frågar du efter användnings data typen (se nedan).
 
 ## <a name="understanding-ingested-data-volume"></a>Förstå inmatad data volym
 
@@ -406,7 +406,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> Använd dessa `find` frågor sparsamt eftersom genomsökningar över data typer är [resurs krävande](../log-query/query-optimization.md#query-performance-pane) att köra. Om du inte behöver några resultat **per dator** frågar du efter typen användnings data.
+> Använd dessa `find` frågor sparsamt eftersom genomsökningar över data typer är [resurs krävande](./query-optimization.md#query-performance-pane) att köra. Om du inte behöver några resultat **per dator** frågar du efter typen användnings data.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Data volym per Azure-resurs, resurs grupp eller prenumeration
 
@@ -445,7 +445,7 @@ Du kan också tolka det `_ResourceId` mer fullständigt om det behövs och anvä
 ```
 
 > [!TIP]
-> Använd dessa `find` frågor sparsamt eftersom genomsökningar över data typer är [resurs krävande](../log-query/query-optimization.md#query-performance-pane) att köra. Om du inte behöver resultat per prenumeration, kan du ändra resurs grupp eller resurs namn och sedan fråga efter typen användnings data.
+> Använd dessa `find` frågor sparsamt eftersom genomsökningar över data typer är [resurs krävande](./query-optimization.md#query-performance-pane) att köra. Om du inte behöver resultat per prenumeration, kan du ändra resurs grupp eller resurs namn och sedan fråga efter typen användnings data.
 
 > [!WARNING]
 > Några av fälten i användnings data typen, men fortfarande i schemat, är inaktuella och de kommer inte längre att fyllas i. Dessa är både **datorer** och fält som rör inmatning (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** och **AverageProcessingTimeMs**.
@@ -479,7 +479,7 @@ Några förslag på hur du minskar mängden loggar som samlas in är:
 
 | Källan för hög datavolym | Hur du minskar datavolym |
 | -------------------------- | ------------------------- |
-| Containerinsikter         | [Konfigurera behållar insikter](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost) för att endast samla in de data du behöver. |
+| Containerinsikter         | [Konfigurera behållar insikter](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost) för att endast samla in de data du behöver. |
 | Säkerhetshändelser            | Välj [vanliga eller minimala säkerhetshändelser](../../security-center/security-center-enable-data-collection.md#data-collection-tier) <br> Ändra principen för säkerhetsgranskning för att endast samla in händelser som behövs. Du kan särskilt se över behovet att samla in händelser för att <br> - [granska filtreringplattform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [granska register](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [granska filsystem](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [granska kernelobjekt](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [granska hantering av manipulering](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – granska flyttbara lagrings enheter |
 | Prestandaräknare       | Ändra [prestandaräknarens konfiguration](../agents/data-sources-performance-counters.md) för att: <br> - Minska insamlingsfrekvensen <br> - Minska antalet prestandaräknare |
 | Händelseloggar                 | Ändra [händelseloggens konfiguration](../agents/data-sources-windows-events.md) för att: <br> - Minska antalet händelseloggar som samlas in <br> - Endast samla in obligatoriska händelsenivåer. Till exempel, samla inte in händelser på *Informationsnivå* |
@@ -487,8 +487,8 @@ Några förslag på hur du minskar mängden loggar som samlas in är:
 | AzureDiagnostics           | Ändra [resurs logg samling](../essentials/diagnostic-settings.md#create-in-azure-portal) till: <br> – Minska antalet resursloggar som skickas till Log Analytics <br> – Endast samla in nödvändiga loggar |
 | Lösningsdata från datorer som inte behöver lösningen | Använd [lösnings mål](../insights/solution-targeting.md) om du endast vill samla in data från nödvändiga grupper av datorer. |
 | Application Insights | Granska alternativ för [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL-analys](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Använd [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) för att finjustera gransknings inställningarna. |
-| Azure Sentinel | Granska alla [Sentinel-datakällor](https://docs.microsoft.com/azure/sentinel/connect-data-sources) som du nyligen har aktiverat som källor till ytterligare data volym. |
+| [SQL-analys](../insights/azure-sql.md) | Använd [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) för att finjustera gransknings inställningarna. |
+| Azure Sentinel | Granska alla [Sentinel-datakällor](../../sentinel/connect-data-sources.md) som du nyligen har aktiverat som källor till ytterligare data volym. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Hämtar noder som faktureras i pris nivån per nod
 

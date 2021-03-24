@@ -2,14 +2,14 @@
 title: Konfigurera hanterade identiteter i batch-pooler
 description: Lär dig hur du aktiverar användarspecifika hanterade identiteter för batch-pooler och hur du använder hanterade identiteter i noderna.
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4a59383d119f88bb3ee180f629ba0a6ea6ac2f44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7fab213ac1545c0bff9b74bc46504717b6038e8e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100418068"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950169"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Konfigurera hanterade identiteter i batch-pooler
 
@@ -100,3 +100,4 @@ Mer information finns i [så här använder du hanterade identiteter för Azure-
 
 - Lär dig mer om [hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md).
 - Lär dig hur du använder [Kundhanterade nycklar med användar hanterade identiteter](batch-customer-managed-key.md).
+- Lär dig hur du [aktiverar automatisk certifikat rotation i en batch-pool](automatic-certificate-rotation.md).

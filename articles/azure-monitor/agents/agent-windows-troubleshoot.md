@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100621422"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952991"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Felsöka problem med Log Analytics-agenten för Windows 
 
@@ -19,7 +19,7 @@ Den här artikeln innehåller fel söknings fel som kan uppstå i Log Analytics-
 Om inget av dessa steg fungerar för dig, är följande Support kanaler också tillgängliga:
 
 * Kunder med Premier Support-förmåner kan öppna en support förfrågan med [Premier](https://premier.microsoft.com/).
-* Kunder med support avtal för Azure kan öppna en support förfrågan [i Azure Portal](https://manage.windowsazure.com/?getsupport=true).
+* Kunder med support avtal för Azure kan öppna en support förfrågan [i Azure Portal](https://azure.microsoft.com/support/options/).
 * Besök sidan Log Analytics feedback och granska skickade idéer och buggar [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) eller skicka en ny fil. 
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics fel söknings verktyg
@@ -89,7 +89,7 @@ Det finns flera sätt som du kan kontrol lera om agenten lyckas kommunicera med 
 
     Om datorn lyckas kommunicera med tjänsten ska frågan returnera ett resultat. Om frågan inte returnerade ett resultat ska du först kontrol lera att agenten har kon figurer ATS för att rapportera till rätt arbets yta. Om den har kon figurer ATS korrekt går du till steg 3 och söker i Windows-händelseloggen för att identifiera om agenten loggar in vilket problem som kan förhindra att den kommunicerar med Azure Monitor.
 
-- En annan metod för att identifiera ett anslutnings problem är genom att köra verktyget **TestCloudConnectivity** . Verktyget installeras som standard med agenten i mappen *%systemroot%\Program Files\Microsoft Monitoring Agent\Agent*. Från en upphöjd kommando tolk navigerar du till mappen och kör verktyget. Verktyget returnerar resultaten och högdagrar där testet misslyckades (till exempel om det var relaterat till en viss port/URL som blockerades). 
+- En annan metod för att identifiera ett anslutnings problem är genom att köra verktyget **TestCloudConnectivity** . Verktyget installeras som standard med agenten i mappen *%systemroot%\Program Files\Microsoft Monitoring Agent\Agent*. Från en upphöjd kommandotolk går du till mappen och kör verktyget. Verktyget returnerar resultaten och högdagrar där testet misslyckades (till exempel om det var relaterat till en viss port/URL som blockerades). 
 
     ![TestCloudConnection verktygs körnings resultat](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 

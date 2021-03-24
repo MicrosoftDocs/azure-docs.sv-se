@@ -2,25 +2,20 @@
 title: Välj VM-storlekar och avbildningar för pooler
 description: Hur du väljer mellan tillgängliga VM-storlekar och OS-versioner för datornoderna i Azure Batch pooler
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800490"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027388"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Välj en VM-storlek och avbildning för Compute-noder i en Azure Batch pool
 
 När du väljer en Node-storlek för en Azure Batch pool kan du välja bland nästan alla VM-storlekar som är tillgängliga i Azure. Azure erbjuder ett antal storlekar för virtuella Linux-och Windows-datorer för olika arbets belastningar.
 
 ## <a name="supported-vm-series-and-sizes"></a>VM-serien och storlekar som stöds
-
-Det finns några undantag och begränsningar för att välja storlek på en virtuell dator för batch-poolen:
-
-- Vissa VM-serier eller VM-storlekar stöds inte i batch.
-- Vissa VM-storlekar är begränsade och måste vara särskilt aktiverade innan de kan allokeras.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Pooler i konfiguration av virtuell dator
 
@@ -32,16 +27,14 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | A | Alla storlekar *utom* Standard_A0, Standard_A8, Standard_A9, Standard_A10, Standard_A11 |
 | AV2 | Alla storlekar |
 | B | Stöds inte |
-| DC | Stöds inte |
+| DCsv2 | Alla storlekar |
 | Dv2, DSv2 | Alla storlekar |
 | Dv3, Dsv3 | Alla storlekar |
-| Dav4 | Alla storlekar |
-| Dasv4 | Alla storlekar |
+| Dav4, Dasv4 | Alla storlekar |
 | Ddv4, Ddsv4 |  Alla storlekar |
 | Dv4, Dsv4 | Stöds inte |
 | Ev3, Esv3 | Alla storlekar, förutom E64is_v3 |
-| Eav4 | Alla storlekar |
-| Easv4 | Alla storlekar |
+| Eav4, Easv4 | Alla storlekar |
 | Edv4, Edsv4 |  Alla storlekar |
 | Ev4, Esv4 | Stöds inte |
 | F, FS | Alla storlekar |
@@ -50,6 +43,7 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | H | Alla storlekar |
 | HB | Alla storlekar |
 | HBv2 | Alla storlekar |
+| HBv3 | Standard_HB120rs_v3 (andra storlekar ännu inte tillgängligt) |
 | HC | Alla storlekar |
 | Ls | Alla storlekar |
 | Lsv2 | Alla storlekar |
@@ -58,7 +52,7 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | NC | Alla storlekar |
 | NCv2 | Alla storlekar |
 | NCv3 | Alla storlekar |
-| NCasT4_v3 | Ingen – ännu inte tillgänglig |
+| NCasT4_v3 | Alla storlekar |
 | ND | Alla storlekar |
 | NDv2 | Ingen – ännu inte tillgänglig |
 | NV | Alla storlekar |

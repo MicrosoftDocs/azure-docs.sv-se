@@ -4,19 +4,19 @@ description: Använd Azure IoT Edge för att skapa en transparent, ogenomskinlig
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492718"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027354"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Så kan en IoT Edge-enhet användas som gateway
 
@@ -24,12 +24,7 @@ ms.locfileid: "103492718"
 
 IoT Edge enheter kan användas som gatewayer, vilket ger en anslutning mellan andra enheter i nätverket och IoT Hub.
 
-Modulen IoT Edge Hub fungerar som IoT Hub, så kan hantera anslutningar från alla enheter som har en identitet med IoT Hub, inklusive andra IoT Edge enheter. Den här typen av Gateway-mönster anropas *transparent* eftersom meddelanden kan skickas från efterföljande enheter till IoT Hub som om det inte fanns någon gateway mellan dem.
-
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-Från och med version 1,2 av IoT Edge kan transparenta gateways hantera underordnade anslutningar från andra IoT Edge enheter.
-::: moniker-end
+Modulen IoT Edge Hub fungerar som IoT Hub, så kan hantera anslutningar från andra enheter som har en identitet med samma IoT-hubb. Den här typen av Gateway-mönster anropas *transparent* eftersom meddelanden kan skickas från efterföljande enheter till IoT Hub som om det inte fanns någon gateway mellan dem.
 
 För enheter som inte eller inte kan ansluta till IoT Hub på egen hand kan IoT Edge gateways tillhandahålla den anslutningen. Den här typen av Gateway-mönster kallas för *översättning* eftersom den IoT Edge enheten måste utföra bearbetningen på inkommande, underordnade enhets meddelanden innan de kan vidarebefordras till IoT Hub. De här scenarierna kräver ytterligare moduler på IoT Edge Gateway för att hantera bearbetnings stegen.
 
@@ -51,17 +46,19 @@ Mer information om hur IoT Edge Hub hanterar kommunikation mellan underordnade e
 
 <!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
-
-IoT Edge enheter får inte ligga bakom en IoT Edge Gateway.
-
 ![Diagram – transparent Gateway-mönster](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+>[!NOTE]
+>I IoT Edge version 1,1 och äldre kan IoT Edge-enheter inte underordnas en IoT Edge Gateway.
+>
+>Från och med version 1,2 av IoT Edge kan transparenta gateways hantera anslutningar från underordnade IoT Edge enheter. Om du vill ha mer information växlar du till [IoT Edge 1,2](?view=iotedge-2020-11&preserve-view=true) -versionen av den här artikeln.
 
 ::: moniker-end
 
-<!-- 1.2.0 -->
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-Från och med version 1.2.0 kan IoT Edge enheter ansluta via transparenta gatewayer.
+Från och med version 1,2 av IoT Edge kan transparenta gateways hantera anslutningar från underordnade IoT Edge enheter.
 
 <!-- TODO add a downstream IoT Edge device to graphic -->
 
