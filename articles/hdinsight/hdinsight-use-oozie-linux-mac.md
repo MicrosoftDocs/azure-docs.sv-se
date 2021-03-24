@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00573f01aab5e9aa86befaebb6b514c76a01b67d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702784"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871783"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Använda Apache Oozie med Apache Hadoop för att definiera och köra ett arbetsflöde på Azure HDInsight som körs på Linux
 
@@ -40,7 +40,7 @@ Du kan också använda Oozie för att schemalägga jobb som är speciella för e
 
 Arbets flödet som används i det här dokumentet innehåller två åtgärder. Åtgärder är definitioner för aktiviteter, till exempel körning av Hive, Sqoop, MapReduce eller andra processer:
 
-![HDInsight Oozie Workflow-diagram](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png" alt-text="HDInsight Oozie Workflow-diagram" border="false":::
 
 1. En Hive-åtgärd kör ett HiveQL-skript för att extrahera poster från det `hivesampletable` som ingår i HDInsight. Varje datarad beskriver ett besök från en speciell mobil enhet. Post formatet visas som följande text:
 
@@ -516,29 +516,29 @@ Utför följande steg för att få åtkomst till Oozie-webbgränssnittet:
 
 3. Från vänster sida av sidan väljer du **Oozie**  >  **Quick Links**  >  **Oozie Web UI**.
 
-    ![Apache Ambari Oozie Web UI-steg](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png" alt-text="Apache Ambari Oozie Web UI-steg" border="true":::
 
 4. Oozie webb GRÄNSSNITTets standardinställningar visar de arbets flödes jobb som körs. Om du vill se alla arbets flödes jobb väljer du **alla jobb**.
 
-    ![Arbets flödes jobb för Oozie webb konsol](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png" alt-text="Arbets flödes jobb för Oozie webb konsol" border="true":::
 
 5. Om du vill visa mer information om ett jobb väljer du jobbet.
 
-    ![HDInsight Apache Oozie-jobb information](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png" alt-text="HDInsight Apache Oozie-jobb information" border="true":::
 
 6. På fliken **jobb information** kan du se grundläggande jobb information och enskilda åtgärder i jobbet. Du kan använda flikarna längst upp för att visa **jobb definitionen**, **jobb konfigurationen**, komma åt **jobb loggen** eller visa ett dirigerat acykliska diagram (DAG) för jobbet under **jobb dag**.
 
    * **Jobb logg**: Välj knappen **Hämta loggar** för att hämta alla loggar för jobbet eller Använd fältet **Ange Sök filter** för att filtrera loggarna.
 
-       ![HDInsight Apache Oozie-jobb logg](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png" alt-text="HDInsight Apache Oozie-jobb logg" border="true":::
 
    * **Jobb dag**: dag är en grafisk översikt över data Sök vägar som tas genom arbets flödet.
 
-       !["HDInsight Apache Oozie Job dag"](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png" alt-text="&quot;HDInsight Apache Oozie Job dag&quot;" border="true":::
 
 7. Om du väljer någon av åtgärderna på fliken **jobb information** visas information för åtgärden. Välj till exempel åtgärden **RunSqoopExport** .
 
-    ![HDInsight Oozie jobb åtgärds information](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png" alt-text="HDInsight Oozie jobb åtgärds information" border="true":::
 
 8. Du kan se information om åtgärden, till exempel en länk till konsol- **URL:** en. Använd den här länken om du vill visa information om jobb Spårare för jobbet.
 
@@ -638,18 +638,18 @@ Du kan använda koordinatorn för att ange en start, en slut punkt och förekoms
 
 7. Om du går till Oozie-webbgränssnittet och väljer fliken **koordinator jobb** ser du information som i följande bild:
 
-    ![Oozie-webb konsol koordinator-fliken jobb](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png" alt-text="Oozie-webb konsol koordinator-fliken jobb" border="true":::
 
     **Nästa materialization** -post innehåller nästa gång som jobbet körs.
 
 8. Precis som det tidigare arbets flödes jobbet, om du väljer jobb posten i webb gränssnittet, visas information om jobbet:
 
-    ![Apache Oozie-koordinator jobb information](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png" alt-text="Apache Oozie-koordinator jobb information" border="true":::
 
     > [!NOTE]  
     > I den här bilden visas endast lyckade körningar av jobbet, inte de enskilda åtgärderna i det schemalagda arbets flödet. Välj en av **Åtgärds** posterna för att se de enskilda åtgärderna.
 
-    ![OOzie webb konsol jobb information fliken](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png" alt-text="OOzie webb konsol jobb information fliken" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

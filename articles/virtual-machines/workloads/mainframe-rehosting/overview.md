@@ -1,7 +1,8 @@
 ---
 title: Omvärdering av stordator på Azure Virtual Machines
 description: Revara värd för dina stordator arbets belastningar, till exempel IBM Z-baserade system med virtuella datorer (VM) på Microsoft Azure.
-services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -9,13 +10,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 7ae20b484b4c22c19b856c237d85efe31dc01407
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e4b41497a0ed49ab0b39ab2c93c0142fce6416e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553552"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951325"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Omvärdering av stordator på Azure Virtual Machines
 

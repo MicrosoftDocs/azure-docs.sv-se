@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98065328"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950492"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Server dels hälsa och diagnostikloggar för Application Gateway
 
@@ -306,7 +306,7 @@ Brand Väggs loggen skapas endast om du har aktiverat den för varje Application
 |ruleSetVersion     | Regel uppsättnings version används. Tillgängliga värden är 2.2.9 och 3,0.     |
 |ruleId     | Regel-ID för Utlös ande händelse.        |
 |meddelande     | Användarvänligt meddelande för händelsen som utlöses. Mer information finns i avsnittet information.        |
-|åtgärd     |  Åtgärd som vidtas på begäran. De tillgängliga värdena matchas och blockeras.      |
+|åtgärd     |  Åtgärd som vidtas på begäran. Tillgängliga värden blockeras och tillåts (för anpassade regler), matchas (när en regel matchar en del av begäran) och identifieras och blockeras (båda båda för obligatoriska regler, beroende på om WAF är i identifierings-eller skydds läge).      |
 |webbplats     | Platsen som loggen skapades för. För närvarande visas bara globala grupper eftersom reglerna är globala.|
 |information     | Information om händelsen som utlöses.        |
 |information. Message     | Beskrivning av regeln.        |

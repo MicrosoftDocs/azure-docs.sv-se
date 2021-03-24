@@ -722,6 +722,8 @@
                       items:
                         - name: JMX mått
                           href: app/java-jmx-metrics-configuration.md
+                        - name: Åsidosättningar för sampling
+                          href: app/java-standalone-sampling-overrides.md
                         - name: Telemetriprocessorer
                           items:
                             - name: Översikt

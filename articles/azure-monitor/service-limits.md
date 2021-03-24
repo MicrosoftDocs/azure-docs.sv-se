@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 73598c7f5733dd65222770b80e79e2cf6ec27fbf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3589aff65b24563cf21f175ccfc3a706891d699
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032015"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954011"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor tjänst gränser
 
@@ -47,5 +47,5 @@ Den här artikeln innehåller begränsningar i olika områden i Azure Monitor.
 ## <a name="next-steps"></a>Nästa steg
 
 - [Azure Monitor-priser](https://azure.microsoft.com/pricing/details/monitor/)
-- [Övervakning av användning och uppskattade kostnader i Azure Monitor](/usage-estimated-costs.md)
+- [Övervakning av användning och uppskattade kostnader i Azure Monitor](/azure/azure-monitor/usage-estimated-costs)
 - [Hantera användning och kostnader för Application Insights](app/pricing.md)

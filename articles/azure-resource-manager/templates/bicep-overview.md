@@ -3,12 +3,12 @@ title: Bicep-språk för Azure Resource Manager mallar
 description: Beskriver bicep-språket för att distribuera infrastruktur till Azure via Azure Resource Manager mallar.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 0edd0063ea08978b89c3ad3067f41ae743451df7
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889696"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955915"
 ---
 # <a name="what-is-bicep-preview"></a>Vad är bicep (för hands version)?
 
@@ -16,11 +16,15 @@ Bicep är ett språk för deklarativ distribution av Azure-resurser. Du kan anv�
 
 JSON-syntaxen för att skapa mallen kan vara utförlig och kräva ett komplicerat uttryck. Bicep förbättrar upplevelsen utan att förlora någon av funktionerna i en JSON-mall. Det är en transparent abstraktion över JSON för ARM-mallar. Varje bicep-fil kompileras till en standard ARM-mall. Resurs typer, API-versioner och egenskaper som är giltiga i en ARM-mall är giltiga i en bicep-fil. Det finns några [kända begränsningar](#known-limitations) i den aktuella versionen.
 
+Bicep är för närvarande en för hands version. Information om hur du spårar statusen för arbetet finns i [bicep-projektets lagrings plats](https://github.com/Azure/bicep).
+
 Mer information om bicep finns i följande video.
+
+> [!VIDEO https://www.youtube.com/embed/sc1kJfcRQgY]
 
 ## <a name="get-started"></a>Kom igång
 
-Börja med bicep genom att [Installera verktygen](https://github.com/Azure/bicep/blob/main/docs/installing.md).
+Börja med bicep genom att [Installera verktygen](bicep-install.md).
 
 När du har installerat verktygen kan du prova [själv studie kursen om bicep](./bicep-tutorial-create-first-bicep.md). Själv studie serien vägleder dig genom strukturen och funktionerna i bicep. Du distribuerar bicep-filer och konverterar en ARM-mall till motsvarande bicep-fil.
 
