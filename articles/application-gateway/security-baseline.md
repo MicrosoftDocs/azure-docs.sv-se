@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 75d219a207fef4f1f122799af5f4f4ef2765bca4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fc26d8e154dc0a58bb3436a8161d2e21efa2b86
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101723868"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952022"
 ---
 # <a name="azure-security-baseline-for-application-gateway"></a>Azures säkerhets bas linje för Application Gateway
 
@@ -60,7 +60,7 @@ Mer information finns i referenserna nedan.
 
 - [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [Vanliga frågor och svar om diagnostik och loggning för Azure Application Gateway](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Vanliga frågor och svar om diagnostik och loggning för Azure Application Gateway](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Ansvar**: Kund
 
@@ -118,7 +118,7 @@ Mer information finns i referenserna nedan.
 
 - [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [Vanliga frågor och svar om diagnostik och loggning för Azure Application Gateway](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Vanliga frågor och svar om diagnostik och loggning för Azure Application Gateway](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Ansvar**: Kund
 
@@ -140,7 +140,7 @@ Alternativt finns det flera Marketplace-alternativ som Barracuda-WAF för Azure 
 
 - [Så här distribuerar du Azure-WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Förstå moln tjänsten Barracuda WAF](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Förstå moln tjänsten Barracuda WAF](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Ansvar**: Kund
 
@@ -210,9 +210,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks inställningar och resurser som är relaterade till dina Azure Application Gateway-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks inställningar eller resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -230,7 +230,7 @@ Förutom aktivitets loggar kan du konfigurera diagnostikinställningar för dina
 
 Azure Application Gateway erbjuder även inbyggd integrering med Azure Application insikter. Application Insights samlar in logg-, prestanda-och fel data. Application Insights identifierar automatiskt prestanda avvikelser och innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå hur dina webb program används. Du kan aktivera kontinuerlig export för att exportera telemetri från Application Insights till en central plats för att bevara data längre än standard kvarhållningsperioden.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](application-gateway-diagnostics.md)
 
@@ -250,7 +250,7 @@ Förutom aktivitets loggar kan du konfigurera diagnostikinställningar för dina
 
 Azure Application Gateway erbjuder även inbyggd integrering med Azure Application insikter. Application Insights samlar in logg-, prestanda-och fel data. Application Insights identifierar automatiskt prestanda avvikelser och innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå hur dina webb program används. Du kan aktivera kontinuerlig export för att exportera telemetri från Application Insights till en central plats för att bevara data längre än standard kvarhållningsperioden.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](application-gateway-diagnostics.md)
 
@@ -266,7 +266,7 @@ Azure Application Gateway erbjuder även inbyggd integrering med Azure Applicati
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -280,7 +280,7 @@ Använd Azure Monitor för nätverk för en omfattande vy av hälsa och mått f�
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](application-gateway-diagnostics.md)
 
@@ -300,13 +300,13 @@ Använd Azure Monitor för nätverk för en omfattande vy av hälsa och mått f�
 
 - [Så här distribuerar du Azure-WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](application-gateway-diagnostics.md)
 
 - [Använda Azure Monitor för nätverk](../azure-monitor/insights/network-insights-overview.md)
 
-- [Så här skapar du aviseringar i Azure](/azure/azure-monitor/learn/tutorial-response)
+- [Så här skapar du aviseringar i Azure](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
@@ -334,9 +334,9 @@ Konfigurera diagnostikinställningar för dina Azure Application Gateway-distrib
 
 **Vägledning**: Azure Active Directory (Azure AD) har inbyggda roller som måste tilldelas explicit och som kan frågas. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Ansvar**: Kund
 
@@ -444,7 +444,7 @@ Mer information finns i referenserna nedan.
 
 **Vägledning**: Azure Active Directory (Azure AD) innehåller loggar som hjälper till att identifiera inaktuella konton. Dessutom kan du använda Azure Identity Access-granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -458,7 +458,7 @@ Mer information finns i referenserna nedan.
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Ansvar**: Kund
 
@@ -486,7 +486,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information. 
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -546,7 +546,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktion Azure Application Gateway-instanser samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -604,7 +604,7 @@ Underliggande plattform som genomsöks och korrigeras av Microsoft. Granska säk
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -667,7 +667,7 @@ Mer information finns i referenserna nedan.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -709,7 +709,7 @@ Mer information finns i referenserna nedan.
 
 **Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för nätverks inställningar som är relaterade till dina Azure Application Gateway-distributioner. Använd Azure Policy alias i namn området "Microsoft. Network" om du vill skapa anpassade principer för granskning eller framtvinga nätverks konfigurationen för dina Azure Application gateways, virtuella Azure-nätverk och nätverks säkerhets grupper. Du kan också använda inbyggd princip definition.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -733,9 +733,9 @@ Mer information finns i referenserna nedan.
 
 **Vägledning**: om du använder anpassade definitioner av Azure-principer använder du Azure DevOps eller Azure databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -817,7 +817,7 @@ Konfigurera diagnostikinställningar för dina Azure Application Gateway-distrib
 
 **Vägledning**: när du använder Azure WebApplication-BRANDVÄGGEN (WAF) kan du konfigurera WAF-principer. En WAF-princip består av två typer av säkerhets regler: anpassade regler som har skapats av kunden och hanterade regel uppsättningar som är en samling av Azure-hanterade förkonfigurerade uppsättningar med regler. Azure-hanterade regel uppsättningar ger ett enkelt sätt att distribuera skydd mot en gemensam uppsättning säkerhetshot. Eftersom sådana rulesets hanteras av Azure uppdateras reglerna vid behov för att skydda mot nya attack-signaturer.
 
-- [Förstå Azure-hanterade WAF regel uppsättningar](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy-and-rules)
+- [Förstå Azure-hanterade WAF regel uppsättningar](../web-application-firewall/ag/ag-overview.md#waf-policy-and-rules)
 
 **Ansvar**: Delad
 
@@ -833,11 +833,11 @@ Konfigurera diagnostikinställningar för dina Azure Application Gateway-distrib
 
 Azure DevOps Services utnyttjar många av funktionerna i Azure Storage för att säkerställa att data är tillgängliga i händelse av maskinvaruproblem, avbrott i tjänsten eller haveri. Azure DevOps-teamet följer dessutom procedurer för att skydda data från oavsiktlig eller skadlig borttagning.
 
-- [Förstå data tillgänglighet i Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Förstå data tillgänglighet i Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -963,5 +963,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

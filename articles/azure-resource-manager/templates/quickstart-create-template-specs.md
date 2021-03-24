@@ -5,12 +5,12 @@ author: tfitzmac
 ms.date: 12/14/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 1d3e7c6ee6d19d4d2cd3828d5abf95ccb5457e76
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 28987486726f5a88d20efe9fe8a766e536062c2c
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97511356"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889968"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Snabb start: skapa och distribuera mall specifikation (för hands version)
 
@@ -335,7 +335,7 @@ Om du vill distribuera en mall använder du samma distributions kommandon som du
       "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2020-10-01",
           "name": "demo",
           "properties": {
             "templateLink": {
@@ -597,7 +597,7 @@ I stället för att skapa en ny mall-specifikation för den ändrade mallen läg
       "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2020-10-01",
           "name": "demo",
           "properties": {
             "templateLink": {

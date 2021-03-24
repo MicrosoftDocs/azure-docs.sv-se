@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a1b97586eeeab1d5d1917f2d1cec9e0f71e9e329
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98665148"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867465"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privat länk för Azure Database for MariaDB
 
@@ -85,7 +85,8 @@ När nätverks administratören skapar den privata slut punkten (PE) kan adminis
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mariadb"></a>Använd fall av privat länk för Azure Database for MariaDB
 
-Klienter kan ansluta till den privata slut punkten från samma VNet, peer-kopplat VNet i samma region eller via VNet-till-VNet-anslutning mellan regioner. Dessutom kan klienter ansluta lokalt med ExpressRoute, privat peering eller VPN-tunnlar. Nedan visas ett förenklat diagram som visar vanliga användnings fall.
+
+Klienter kan ansluta till den privata slut punkten från samma VNet, [peer](../virtual-network/virtual-network-peering-overview.md) -kopplat VNet i samma region eller mellan regioner, eller via [VNet-till-VNET-anslutning](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) mellan regioner. Dessutom kan klienter ansluta lokalt med ExpressRoute, privat peering eller VPN-tunnlar. Nedan visas ett förenklat diagram som visar vanliga användnings fall.
 
 ![Välj översikt över privat slut punkt](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 

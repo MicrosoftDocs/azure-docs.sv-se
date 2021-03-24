@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fd65177fb6202b0396545043c2e63a87c7f01bbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929497"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864609"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Översikt över Apache Spark strukturerad strömning
 
@@ -20,7 +20,7 @@ Strukturerade strömmande program körs på HDInsight Spark-kluster och ansluter
 
 Strukturerad direkt uppspelning skapar en långvarig fråga där du kan tillämpa åtgärder på indata, t. ex. urval, projektion, agg regering, fönster och anslutning av strömnings DataFrame med referens DataFrames. Därefter skickar du resultaten till File Storage (Azure Storage blobbar eller Data Lake Storage) eller till alla data lager med hjälp av anpassad kod (till exempel SQL Database eller Power BI). Strukturerad direkt uppspelning ger också utdata till-konsolen för fel sökning lokalt och till en InMemory-tabell så att du kan se de data som genereras för fel sökning i HDInsight.
 
-![Strömnings bearbetning med HDInsight och Spark strukturerad strömning](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png" alt-text="Strömnings bearbetning med HDInsight och Spark strukturerad strömning" border="false":::
 
 > [!NOTE]  
 > Spark-strukturerad strömning ersätter Spark streaming (DStreams). I framtiden kommer strukturerad strömning att få förbättringar och underhåll, medan DStreams endast är i underhålls läge. Strukturerad direkt uppspelning är för närvarande inte som funktion – fullständig som DStreams för källorna och de handfat som den stöder utanför lådan, så du kan utvärdera dina krav för att välja lämpligt bearbetnings alternativ för Spark-strömmar.
@@ -29,7 +29,7 @@ Strukturerad direkt uppspelning skapar en långvarig fråga där du kan tillämp
 
 Spark-strukturerad direkt uppspelning representerar en data ström som en tabell som är obegränsad i djup, det vill säga att tabellen fortsätter att växa när nya data tas emot. Den här *inmatnings tabellen* bearbetas kontinuerligt av en lång körnings fråga och resultatet som skickas till en *utgående tabell*:
 
-![Strukturerat strömnings begrepp](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png" alt-text="Strukturerat strömnings begrepp" border="false":::
 
 I strukturerad strömning tas data emot i systemet och matas direkt in i en inmatnings tabell. Du skriver frågor (med hjälp av DataFrame och data uppsättnings-API: er) som utför åtgärder mot den här indata-tabellen. Frågeresultatet ger till gång till en annan tabell, *resultat tabellen*. Resultat tabellen innehåller resultatet från frågan, från vilken du ritar data för ett externt data lager, till exempel en Relations databas. Tiden för när data bearbetas från inmatnings tabellen styrs av *utlösarens intervall*. Som standard är utlösnings intervallet noll, så att strukturerad strömning försöker bearbeta data så fort de anländer. I praktiken innebär det att så fort Structured streaming utförs bearbetningen av den föregående frågans körning, startas en annan bearbetnings körning mot eventuella nyligen mottagna data. Du kan konfigurera utlösaren att köras med ett intervall, så att strömmande data bearbetas i tidsbaserade batchar.
 
@@ -41,7 +41,7 @@ I läget append finns bara de rader som har lagts till i resultat tabellen sedan
 
 Överväg ett scenario där du bearbetar telemetri från temperatur sensorer, till exempel en termostat. Anta att den första utlösaren bearbetade en händelse vid tiden 00:01 för enhet 1 med en temperatur läsning på 95 grader. I den första utlösaren av frågan visas bara raden med tiden 00:01 i resultat tabellen. Vid tid 00:02 när en annan händelse anländer är den enda nya raden raden med tiden 00:02 och så att tabellen result bara innehåller en rad.
 
-![Tilläggs läge för strukturerad strömning](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png" alt-text="Tilläggs läge för strukturerad strömning" border="false":::
 
 När du använder läget för tillägg skulle din fråga tillämpa projektioner (Markera de kolumner som det värnar om), filtrera (plocka bara rader som matchar vissa villkor) eller Anslut (utöka data med data från en statisk uppslags tabell). Append-läge gör det enkelt att bara skicka relevanta nya data punkter ut till extern lagring.
 
@@ -51,7 +51,7 @@ När du använder läget för tillägg skulle din fråga tillämpa projektioner 
 
 Anta att det finns fem sekunders värd för data som redan har bearbetats och det är dags att bearbeta data för den sjätte sekunden. Indatalist-tabellen innehåller händelser för tid 00:01 och tid 00:03. Målet för den här exempel frågan är att ge enhetens genomsnittliga temperatur var femte sekund. Implementeringen av den här frågan använder en agg regering som tar alla värden som ingår i varje 5-sekunders fönster, beräknar genomsnitts temperatur och genererar en rad för den genomsnittliga temperaturen under intervallet. I slutet av det första fem-andra fönstret finns det två tupler: (00:01, 1, 95) och (00:03, 1, 98). Så för Window 00:00-00:05 genererar agg regeringen en tupel med genomsnitts temperaturen på 96,5 grader. I nästa 5-Second-fönster finns det bara en data punkt vid tiden 00:06, så den resulterande genomsnitts temperaturen är 98 grader. Vid tid 00:10, med slutfört läge, innehåller resultat tabellen raderna för både Windows 00:00-00:05 och 00:05-00:10 eftersom frågan matar ut alla aggregerade rader, inte bara de nya. Därför fortsätter tabellen resultat att växa när nya fönster läggs till.
 
-![Fullständigt läge för strukturerad strömning](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png" alt-text="Fullständigt läge för strukturerad strömning" border="false":::
 
 Alla frågor som använder fullständigt läge gör att tabellen växer utan gränser.  Överväg i föregående exempel i stället för att beräkna genomsnitts perioden för temperatur per tid i stället för enhets-ID. Resultat tabellen innehåller ett fast antal rader (en per enhet) med genomsnitts temperaturen för enheten över alla data punkter som tas emot från enheten. När nya temperaturer tas emot uppdateras resultat tabellen så att medelvärdena i tabellen alltid är aktuella.
 
@@ -141,7 +141,7 @@ För att leverera återhämtnings-och fel tolerans är strukturerad strömning b
 
 Du skapar vanligt vis ett Spark streaming-program lokalt i en JAR-fil och distribuerar det sedan till Spark på HDInsight genom att kopiera JAR-filen till standard lagringen som är kopplad till ditt HDInsight-kluster. Du kan starta ditt program med de [Apache livy](https://livy.incubator.apache.org/) REST API: er som finns tillgängliga från klustret med en post-åtgärd. Innehållet i inlägget innehåller ett JSON-dokument som ger din JAR-sökväg, namnet på klassen vars huvudsakliga metod definierar och kör strömnings programmet, och eventuellt resurs kraven för jobbet (till exempel antalet körningar, minne och kärnor) och alla konfigurations inställningar som program koden kräver.
 
-![Distribuera ett Spark streaming-program](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Distribuera ett Spark streaming-program" border="false":::
 
 Status för alla program kan också kontrol leras med en GET-begäran mot en LIVY-slutpunkt. Slutligen kan du avsluta ett program som körs genom att utfärda en DELETE-begäran mot LIVY-slutpunkten. Mer information om LIVY-API: et finns i [Fjärrjobb med Apache LIVY](apache-spark-livy-rest-interface.md)
 

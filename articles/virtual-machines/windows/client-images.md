@@ -1,19 +1,19 @@
 ---
 title: Använda Windows Client-avbildningar i Azure
 description: Så här använder du fördelarna med Visual Studio-prenumerationer för att distribuera Windows 7, Windows 8 eller Windows 10 i Azure för utveckling/testnings scenarier
-author: cynthn
+author: mimckitt
 ms.subservice: imaging
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: cynthn
-ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: mimckitt
+ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200008"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869063"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Använda en Windows-klient i Azure för dev/test-scenarier
 Du kan använda Windows 7, Windows 8 eller Windows 10 Enterprise (x64) i Azure för utveckling/testning-scenarier förutsatt att du har en lämplig Visual Studio-prenumeration (tidigare MSDN). 
@@ -28,6 +28,9 @@ Vissa Windows-klient-avbildningar är tillgängliga från Azure Marketplace. Vis
 
 ## <a name="eligible-offers-and-client-images"></a>Berättigade erbjudanden och klient avbildningar
 I följande tabell visas de ID: n som är kvalificerade för att distribuera Windows-klient avbildningar via Azure Marketplace. Windows-klient avbildningarna är bara synliga för följande erbjudanden. 
+
+> [!NOTE]
+> Avbildnings erbjudanden finns under **Windows-klient** i Azure Marketplace. Använd **Windows-klienten** när du söker efter klient avbildningar som är tillgängliga för Visual Studio-prenumeranter. 
 
 | Erbjudandets namn | Erbjudande nummer | Tillgängliga klient avbildningar | 
 |:--- |:---:|:---:|

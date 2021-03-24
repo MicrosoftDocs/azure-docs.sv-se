@@ -5,3 +5,9 @@
     - name: Dokumentation om Azure Portal
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/index
+    - name: Dokumentation om Azure Portal
+      tocHref: /azure/virtual-machines/
+      topicHref: /azure/azure-portal/index
+    - name: Dokumentation om Azure Portal
+      tocHref: /power-bi
+      topicHref: /azure/azure-portal/index

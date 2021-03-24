@@ -4,15 +4,15 @@ description: Lär dig mer om nätverksfunktionerna i Azure App Service och lär 
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99593137"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889152"
 ---
 # <a name="app-service-networking-features"></a>App Service nätverksfunktioner
 
@@ -129,11 +129,15 @@ Några användnings fall för den här funktionen:
 ![Diagram som illustrerar användningen av tjänst slut punkter med Application Gateway.](media/networking-features/service-endpoints-appgw.png)
 
 Mer information om hur du konfigurerar tjänst slut punkter med din app finns i [Azure App Service åtkomst begränsningar][serviceendpoints].
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Åtkomst begränsnings regler baserade på service märken (för hands version)
+
+#### <a name="access-restriction-rules-based-on-service-tags"></a>Regler för åtkomst begränsning baserat på tjänst Taggar
+
 [Azure Service-Taggar][servicetags] är väl definierade uppsättningar IP-adresser för Azure-tjänster. Service tag-grupp de IP-intervall som används i olika Azure-tjänster och är ofta ytterligare begränsade till vissa regioner. På så sätt kan du filtrera *inkommande* trafik från vissa Azure-tjänster. 
 
 En fullständig lista över taggar och mer information finns i länken för service tag ovan. Information om hur du aktiverar den här funktionen finns i [Konfigurera åtkomst begränsningar][iprestrictions].
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Filtrering av HTTP-huvud för åtkomst begränsnings regler (för hands version)
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>Filtrering av HTTP-huvud för åtkomst begränsnings regler
+
 För varje regel för begränsning av åtkomst kan du lägga till ytterligare http-huvudfiltrering. På så sätt kan du ytterligare kontrol lera inkommande begär Anden och filtrera utifrån vissa http-huvudvärden. Varje rubrik kan innehålla upp till 8 värden per regel. Följande lista över HTTP-rubriker stöds för närvarande: 
 * X-vidarebefordrad – för
 * X-vidarebefordrad-värd
@@ -143,6 +147,7 @@ För varje regel för begränsning av åtkomst kan du lägga till ytterligare ht
 Vissa användnings fall för HTTP-huvud filtrering är:
 * Begränsa åtkomsten till trafik från proxyservrar som vidarebefordrar värd namnet
 * Begränsa åtkomsten till en speciell instans av Azures frontend-dörr med en service tag-regel och begränsning för X-FDID-huvud
+
 ### <a name="private-endpoint"></a>Privat slutpunkt
 
 Privat slut punkt är ett nätverks gränssnitt som ansluter dig privat och säkert till din webbapp via en privat Azure-länk. Privat slut punkt använder en privat IP-adress från det virtuella nätverket, vilket effektivt tar webb programmet till det virtuella nätverket. Den här funktionen är endast för *inkommande* flöden till din webbapp.

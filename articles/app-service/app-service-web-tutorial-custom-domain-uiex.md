@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216538"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954861"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Självstudie: mappa ett befintligt anpassat DNS-namn till Azure App Service
 
@@ -121,7 +121,7 @@ Om du vill lägga till en anpassad domän i din app måste du verifiera din äga
 
     <details>
         <summary>Kan jag hantera DNS från min domän leverantör med Azure?</summary>
-        Om du vill kan du använda Azure DNS för att hantera DNS-poster för din domän och konfigurera ett anpassat DNS-namn för Azure App Service. Mer information finns i <a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">Självstudier: vara värd för din domän i Azure DNS></a>.
+        Om du vill kan du använda Azure DNS för att hantera DNS-poster för din domän och konfigurera ett anpassat DNS-namn för Azure App Service. Mer information finns i <a href="/azure/dns/dns-delegate-domain-azure-dns">Självstudier: vara värd för din domän i Azure DNS></a>.
     </details>
 
 1. Sök upp sidan för hantering av DNS-poster. 
@@ -146,7 +146,7 @@ Om du vill lägga till en anpassad domän i din app måste du verifiera din äga
             <ul>
             <li>Använd en A-post för att mappa rot domänen (t. ex. <code>contoso.com</code> ). Använd inte CNAME-posten för rot posten (mer information finns i <a href="https://en.wikipedia.org/wiki/CNAME_record">posten Wikipedia</a>).</li>
             <li>Om du vill mappa en under domän (till exempel <code>www.contoso.com</code> ) använder du en CNAME-post.</li>
-            <li>Du kan mappa en under domän till appens IP-adress direkt med en A-post, men det är möjligt <a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">att IP-adressen ändras</a>. CNAME mappar till appens värdnamn istället, vilket är mindre känsligt att ändra.</li>
+            <li>Du kan mappa en under domän till appens IP-adress direkt med en A-post, men det är möjligt <a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">att IP-adressen ändras</a>. CNAME mappar till appens värdnamn istället, vilket är mindre känsligt att ändra.</li>
             <li>Om du vill mappa en <a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">domän med jokertecken</a> (till exempel <code>*.contoso.com</code> ) använder du en CNAME-post.</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ För ett jokertecken som `*` i `*.contoso.com` skapar du två poster enligt föl
 
     <details>
         <summary>Vad är med den <strong>osäkra</strong> varnings etiketten?</summary>
-        En varnings etikett för din anpassade domän innebär att den ännu inte har bundits till ett TLS/SSL-certifikat. Eventuella HTTPS-förfrågningar från en webbläsare till din anpassade domän får ett fel eller en varning, beroende på webbläsaren. Om du vill lägga till en TLS-bindning, se <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service</a>.
+        En varnings etikett för din anpassade domän innebär att den ännu inte har bundits till ett TLS/SSL-certifikat. Eventuella HTTPS-förfrågningar från en webbläsare till din anpassade domän får ett fel eller en varning, beroende på webbläsaren. Om du vill lägga till en TLS-bindning, se <a href="/azure/app-service/configure-ssl-bindings">skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service</a>.
     </details>
 
     Om du missade ett steg eller gjort ett stavfel någonstans tidigare visas ett verifierings fel längst ned på sidan.
@@ -274,7 +274,7 @@ För ett jokertecken som `*` i `*.contoso.com` skapar du två poster enligt föl
 
     <details>
         <summary>Vad är med den <strong>osäkra</strong> varnings etiketten?</summary>
-        En varnings etikett för din anpassade domän innebär att den ännu inte har bundits till ett TLS/SSL-certifikat. Eventuella HTTPS-förfrågningar från en webbläsare till din anpassade domän får ett fel eller en varning, beroende på webbläsaren. Om du vill lägga till en TLS-bindning, se <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service</a>.
+        En varnings etikett för din anpassade domän innebär att den ännu inte har bundits till ett TLS/SSL-certifikat. Eventuella HTTPS-förfrågningar från en webbläsare till din anpassade domän får ett fel eller en varning, beroende på webbläsaren. Om du vill lägga till en TLS-bindning, se <a href="/azure/app-service/configure-ssl-bindings">skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service</a>.
     </details>
     
     Om du missade ett steg eller gjort ett stavfel någonstans tidigare visas ett verifierings fel längst ned på sidan.
@@ -297,7 +297,7 @@ För ett jokertecken som `*` i `*.contoso.com` skapar du två poster enligt föl
 
     <details>
         <summary>Vad är med den <strong>osäkra</strong> varnings etiketten?</summary>
-        En varnings etikett för din anpassade domän innebär att den ännu inte har bundits till ett TLS/SSL-certifikat. Eventuella HTTPS-förfrågningar från en webbläsare till din anpassade domän får ett fel eller en varning, beroende på webbläsaren. Om du vill lägga till en TLS-bindning, se <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service</a>.
+        En varnings etikett för din anpassade domän innebär att den ännu inte har bundits till ett TLS/SSL-certifikat. Eventuella HTTPS-förfrågningar från en webbläsare till din anpassade domän får ett fel eller en varning, beroende på webbläsaren. Om du vill lägga till en TLS-bindning, se <a href="/azure/app-service/configure-ssl-bindings">skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service</a>.
     </details>
 
 -----

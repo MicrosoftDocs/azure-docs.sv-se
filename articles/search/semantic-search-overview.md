@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771319"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888914"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantisk sökning i Azure Kognitiv sökning
 
 > [!IMPORTANT]
-> Semantisk sökning är i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick, under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)och är inte garanterade att ha samma implementering vid allmän tillgänglighet. Dessa funktioner är fakturerbara. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
+> Semantisk sökning finns i en offentlig för hands version som är tillgänglig via förhands granskning REST API och portalen. För hands versions funktionerna erbjuds i befintligt skick, under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)och är inte garanterade att ha samma implementering vid allmän tillgänglighet. Dessa funktioner är fakturerbara. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
 Semantisk sökning är en samling fråge relaterade funktioner som lägger till semantisk relevans och språk förståelse för Sök resultat. *Semantisk rangordning* söker efter kontext och relateradhet bland termer och höjer matchningar som är mer begripliga för frågan. Med språk förståelse hittar du under *texter* och *svar* i ditt innehåll som sammanfattar det matchande dokumentet eller besvarar en fråga, som sedan kan återges på en Sök resultat sida för en mer produktiv Sök upplevelse.
 

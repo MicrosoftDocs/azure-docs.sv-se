@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96618866"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951948"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Inaktivera svaga chiffer och Lösenordssynkronisering för att skydda en Azure Active Directory Domain Services hanterad domän
 
@@ -34,14 +34,25 @@ För att slutföra den här artikeln behöver du följande resurser:
     * Om det behövs kan du [skapa en Azure Active Directory klient][create-azure-ad-tenant] eller [associera en Azure-prenumeration med ditt konto][associate-azure-ad-tenant].
 * En Azure Active Directory Domain Services hanterad domän aktive rad och konfigurerad i Azure AD-klienten.
     * Om det behövs kan du [skapa och konfigurera en Azure Active Directory Domain Services hanterad domän][create-azure-ad-ds-instance].
-* Installera och konfigurera Azure PowerShell.
-    * Om det behövs följer du anvisningarna för att [installera Azure PowerShell-modulen och ansluta till din Azure-prenumeration](/powershell/azure/install-az-ps).
-    * Kontrol lera att du loggar in på Azure-prenumerationen med hjälp av cmdleten [Connect-AzAccount][Connect-AzAccount] .
-* Installera och konfigurera Azure AD PowerShell.
-    * Om det behövs följer du anvisningarna för att [Installera Azure AD PowerShell-modulen och ansluta till Azure AD](/powershell/azure/active-directory/install-adv2).
-    * Kontrol lera att du loggar in på Azure AD-klienten med hjälp av cmdleten [Connect-AzureAD][Connect-AzureAD] .
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Inaktivera svaga chiffer och NTLM-lösenord för hash-synkronisering
+## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Använd säkerhets inställningar för att inaktivera svaga chiffer och NTLM-lösenord för hash-synkronisering
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Sök efter och välj **Azure AD Domain Services**.
+1. Välj din hanterade domän, till exempel *aaddscontoso.com*.
+1. På den vänstra sidan väljer du **säkerhets inställningar**.
+1. Klicka på **inaktivera** för följande inställningar:
+   - **Endast TLS 1,2-läge**
+   - **NTLM-autentisering**
+   - **NTLM-Lösenordssynkronisering från lokal plats**
+
+   ![Skärm bild av säkerhets inställningar för att inaktivera svaga chiffer och NTLM Password hash Sync](media/secure-your-domain/security-settings.png)
+
+## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Använd PowerShell för att inaktivera svaga chiffer och NTLM Password hash Sync
+
+Om det behövs [installerar och konfigurerar du Azure PowerShell](/powershell/azure/install-az-ps). Kontrol lera att du loggar in på Azure-prenumerationen med hjälp av cmdleten [Connect-AzAccount][Connect-AzAccount] . 
+
+Du kan också [Installera och konfigurera Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)vid behov. Kontrol lera att du loggar in på Azure AD-klienten med hjälp av cmdleten [Connect-AzureAD][Connect-AzureAD] .
 
 Om du vill inaktivera svaga chiffersviter och hash-autentisering för NTLM-autentiseringsuppgifter loggar du in på ditt Azure-konto och hämtar sedan Azure AD DS-resursen med hjälp av cmdleten [Get-AzResource][Get-AzResource] :
 

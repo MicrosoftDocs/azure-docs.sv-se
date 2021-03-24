@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561659"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952787"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Hantera enhetsidentiteter med hjälp av Azure-portalen
 
@@ -174,7 +174,7 @@ Du måste ha tilldelats någon av följande roller för att kunna visa eller han
 > - Vi rekommenderar att du använder [användar åtgärder "Registrera eller ansluta enheter"](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) i villkorlig åtkomst för att tvinga Multi-Factor Authentication för att ansluta till eller registrera en enhet. 
 > - Du måste ange den här inställningen till **Nej** om du använder en princip för villkorlig åtkomst för att kräva Multi-Factor authencation. 
 
-- **Maximalt antal enheter** – med den här inställningen kan du välja maximalt antal Azure AD-anslutna eller Azure AD-registrerade enheter som en användare kan ha i Azure AD. Om en användare når den här kvoten kan de inte lägga till fler enheter förrän en eller flera av de befintliga enheterna tas bort. Standardvärdet är **50**.
+- **Maximalt antal enheter** – med den här inställningen kan du välja maximalt antal Azure AD-anslutna eller Azure AD-registrerade enheter som en användare kan ha i Azure AD. Om en användare når den här kvoten kan de inte lägga till fler enheter förrän en eller flera av de befintliga enheterna tas bort. Standardvärdet är **50**. Du kan öka värdet upp till 100 och om du anger ett värde över 100, kommer Azure AD att ställa in det på 100. Du kan också använda ett obegränsat värde för att tvinga fram ingen gräns förutom befintliga kvot gränser.
 
 > [!NOTE]
 > Inställningen för **maximalt antal enheter** gäller för enheter som antingen är Azure AD-anslutna eller Azure AD registrerade. Den här inställningen gäller inte för Hybrid Azure AD-anslutna enheter.

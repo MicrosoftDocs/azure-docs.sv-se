@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 602fa1cab71a797dd25aca263e0c6a9f2aa616bb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929696"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870236"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Skapa Apache Spark strömnings jobb med hög tillgänglighet med garn
 
@@ -18,7 +18,7 @@ ms.locfileid: "98929696"
 
 Spark streaming skapar långvariga jobb där du kan tillämpa omvandlingar för data och sedan skicka ut resultatet till fil system, databaser, instrument paneler och konsolen. Spark streaming bearbetar mikrobatchar av data genom att först samla in en batch med händelser under ett definierat tidsintervall. Därefter skickas den batchen för bearbetning och utdata. Batch-tidsintervall definieras vanligt vis i bråk delar av en sekund.
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-streaming.png" alt-text="Spark-direktuppspelning" border="false":::
 
 ## <a name="dstreams"></a>DStreams
 
@@ -26,13 +26,13 @@ Spark streaming representerar en kontinuerlig data ström med hjälp av en *disk
 
 Spark-kärnan använder *elastiska distribuerade data uppsättningar* (RDD). RDD distribuerar data över flera noder i klustret, där varje nod i allmänhet behåller sina data helt i minnet för bästa prestanda. Varje RDD representerar händelser som samlas in över ett batch-intervall. När batch-intervallet förflyter skapar Spark streaming en ny RDD som innehåller alla data i intervallet. Den här kontinuerliga uppsättningen RDD samlas in i en DStream. Ett Spark streaming-program bearbetar de data som lagras i varje Batchs RDD.
 
-![Spark-DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-dstream.png" alt-text="Spark-DStream" border="false":::
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark-strukturerade strömmande jobb
 
 Spark-strukturerad strömning introducerades i Spark 2,0 som en analys motor för användning på strömmande strukturerade data. Spark-strukturerad direkt uppspelning använder API: erna för SparkSQL batching-motor. Precis som med Spark streaming kör Spark Structured streaming sina beräkningar för kontinuerlig inkommande mikrobatchar av data. Spark-strukturerad strömning representerar en data ström som en inmatnings tabell med obegränsade rader. Det vill säga att inmatnings tabellen fortsätter att växa när nya data tas emot. Den här inmatnings tabellen bearbetas kontinuerligt av en tids krävande fråga och resultatet skrivs ut till en utgående tabell.
 
-![Spark-strukturerad strömning](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/structured-streaming.png" alt-text="Spark-strukturerad strömning" border="false":::
 
 I strukturerad strömning tas data emot i systemet och matas direkt in i inmatnings tabellen. Du skriver frågor som utför åtgärder mot denna indataparameter. Frågeresultatet ger till gång till en annan tabell, som kallas resultat tabellen. Resultat tabellen innehåller resultat från din fråga, från vilken du ritar data som ska skickas till ett externt data lager som en Relations databas. *Utlösarens intervall* anger tids inställningen för när data bearbetas från inmatnings tabellen. Som standard bearbetar strukturerad strömning data så fort de anländer. Du kan dock också konfigurera utlösaren så att den körs vid ett längre intervall, så att strömmande data bearbetas i tidsbaserade batchar. Data i resultat tabellen kan uppdateras varje gång som det finns nya data så att de innehåller alla utdata sedan den strömmade frågan började (*fullständigt läge*), eller så kan den bara bara innehålla de data som är nya sedan frågan senast bearbetades (*tilläggs läge*).
 
@@ -54,7 +54,7 @@ Om du vill skapa ett program som bearbetar varje händelse en gång (och bara en
 
 I HDInsight samordnas kluster arbetet av *ännu en annan resurs Negotiator* (garn). Att designa hög tillgänglighet för Spark streaming innehåller tekniker för Spark streaming och även för garn komponenter.  En exempel konfiguration som använder garn visas nedan.
 
-![GARN arkitektur](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png" alt-text="GARN arkitektur" border="false":::
 
 I följande avsnitt beskrivs design överväganden för den här konfigurationen.
 

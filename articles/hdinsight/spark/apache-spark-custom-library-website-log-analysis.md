@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d99bf914d3ef746fe328d2447426565fc15e52b4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940305"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866326"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analysera webbplats loggar med ett anpassat python-bibliotek med Apache Spark kluster i HDInsight
 
@@ -30,11 +30,11 @@ När dina data har sparats som en Apache Hive tabell i nästa avsnitt ska vi ans
 
 1. Skapa en ny anteckningsbok. Välj **nytt** och sedan **PySpark**.
 
-    ![Skapa en ny Apache-Jupyter Notebook](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Skapa en ny Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png " alt-text="Skapa en ny Apache-Jupyter Notebook" border="true"::: Notebook "Border =" true "::
 
 1. En ny anteckningsbok skapas och öppnas med namnet Untitled.pynb. Välj antecknings bokens namn högst upp och ange ett eget namn.
 
-    ![Ange ett namn för anteckningsboken](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Ange ett namn för anteckningsboken")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png " alt-text="Ange ett namn för notebook" border="true":::-tebook "Border =" true "::
 
 1. Eftersom du har skapat en antecknings bok med PySpark-kärnan behöver du inte skapa några kontexter explicit. Spark- och Hive-kontexterna skapas automatiskt för dig när du kör den första kodcellen. Du kan börja med att importera de typer som krävs för det här scenariot. Klistra in följande kodfragment i en tom cell och tryck sedan på **SKIFT + RETUR**.
 
@@ -173,7 +173,7 @@ När dina data har sparats som en Apache Hive tabell i nästa avsnitt ska vi ans
 
    Du bör se utdata som följande bild:
 
-   ![HDInsight Jupyter SQL-fråga utdata](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-frågans utdata")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png " alt-text="HDInsight Jupyter SQL-fråga utdata" border="true":::yter SQL-fråga utdata "Border =" true "::
 
    Mer information om `%%sql` Magic finns i [parametrar som stöds med SQL-Magic%%](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
@@ -191,7 +191,7 @@ När dina data har sparats som en Apache Hive tabell i nästa avsnitt ska vi ans
 
    Du bör se utdata som följande bild:
 
-   ![analys ritning för Apache Spark-webblogg](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib-utdata")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png " alt-text="Apache Spark webb logg analys rityta" border="true":::EB logg analys ritytan "Border =" true "::
 
 1. När du har kört programmet stänger du antecknings boken för att frigöra resurserna. Du gör det genom att välja **Stäng och stoppa** i anteckningsbokens **Fil**-meny. Den här åtgärden stängs och stänger antecknings boken.
 

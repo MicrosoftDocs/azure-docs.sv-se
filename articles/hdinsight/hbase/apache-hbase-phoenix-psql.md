@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: d56c9b33d53be0e30769aef8934a2dbf43d06867
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d1ddf69acda442212500200eb6dc326dcbcb3c1b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944839"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867805"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Massinläsning av data till Apache Phoenix med psql
 
@@ -26,7 +26,7 @@ Mass inläsning med MapReduce används för mycket större data volymer, vanligt
 
 Innan du börjar läsa in data kontrollerar du att Phoenix är aktiverat och att inställningarna för tids gräns för frågor är som förväntat.  Gå till ditt HDInsight-kluster [Apache Ambari](https://ambari.apache.org/) -instrumentpanelen, Välj HBase och sedan fliken konfiguration.  Rulla nedåt för att kontrol lera att Apache Phoenix är inställt på `enabled` som visas:
 
-![Apache Phoenix inställningar för HDInsight-kluster](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
+:::image type="content" source="./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png" alt-text="Apache Phoenix inställningar för HDInsight-kluster" border="true":::
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Använd `psql` till Mass inläsnings tabeller
 

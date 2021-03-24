@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932071"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872106"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skala Azure HDInsight-kluster
 
@@ -36,7 +36,7 @@ Microsoft tillhandahåller följande verktyg för att skala kluster:
 |[Klassisk Azure CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure-portalen](https://portal.azure.com)|Öppna fönstret HDInsight-kluster, Välj **kluster storlek** på den vänstra menyn och skriv sedan antalet arbetsnoder i rutan kluster storlek och välj Spara.|  
 
-![Alternativet Azure Portal skalnings kluster](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Alternativet Azure Portal skalnings kluster":::
 
 Med någon av dessa metoder kan du skala ditt HDInsight-kluster upp eller ned på några minuter.
 
@@ -82,7 +82,7 @@ Effekten av att ändra antalet datanoder varierar för varje typ av kluster som 
 
     1. Välj den topologi du vill balansera om och välj sedan knappen **balansera** om. Ange fördröjningen innan ombalanserings åtgärden utförs.
 
-        ![Återbalansering av HDInsight Storm-skala](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="Återbalansering av HDInsight Storm-skala":::
 
   * Kommando rads gränssnitt (CLI)
 
@@ -130,13 +130,13 @@ Om du vill se en lista över väntande och pågående jobb kan du använda garn 
 3. Välj **garn** i listan över tjänster på den vänstra menyn i AMBARI-användargränssnittet.  
 4. På sidan garn väljer du **snabb länkar** och hovring över den aktiva Head-noden och väljer sedan **Resource Manager-användargränssnittet**.
 
-    ![Apache Ambari snabb länkar Resource Manager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Apache Ambari snabb länkar Resource Manager UI":::
 
 Du får direkt åtkomst till Resource Manager-ANVÄNDARGRÄNSSNITTET med `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 Du ser en lista över jobb, tillsammans med deras aktuella status. I skärm bilden finns ett jobb som körs för tillfället:
 
-![Resource Manager UI-program](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="Resource Manager UI-program":::
 
 Om du vill avsluta programmet manuellt kör du följande kommando från SSH-gränssnittet:
 

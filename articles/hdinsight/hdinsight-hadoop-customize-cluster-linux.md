@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 00ed8c26bbafeb94b1481e6157a242dad7ed84c6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102610271"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864881"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassa Azure HDInsight-kluster med hjälp av skript åtgärder
 
@@ -24,21 +24,21 @@ En skript åtgärd är Bash-skript som körs på noderna i ett HDInsight-kluster
 
 - Måste lagras på en URI som är tillgänglig från HDInsight-klustret. Följande är möjliga lagrings platser:
 
-    - För vanliga (icke-ESP)-kluster:
-      - Data Lake Storage Gen1/Gen2: HDInsight-tjänstens huvud namn använder för att få åtkomst till Data Lake Storage måste ha Läs behörighet till skriptet. URI-formatet för skript som lagras i Data Lake Storage Gen1 är `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` . 
-      - En BLOB i ett Azure Storage konto som antingen är det primära eller ytterligare lagrings kontot för HDInsight-klustret. HDInsight beviljas åtkomst till båda typerna av lagrings konton när klustret skapas.
+  - För vanliga (icke-ESP)-kluster:
+    - Data Lake Storage Gen1/Gen2: HDInsight-tjänstens huvud namn använder för att få åtkomst till Data Lake Storage måste ha Läs behörighet till skriptet. URI-formatet för skript som lagras i Data Lake Storage Gen1 är `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` .
+    - En BLOB i ett Azure Storage konto som antingen är det primära eller ytterligare lagrings kontot för HDInsight-klustret. HDInsight beviljas åtkomst till båda typerna av lagrings konton när klustret skapas.
 
-        > [!IMPORTANT]  
-        > Rotera inte lagrings nyckeln på det här Azure Storage kontot eftersom det leder till efterföljande skript åtgärder med skript som lagras där.
+    > [!IMPORTANT]  
+    > Rotera inte lagrings nyckeln på det här Azure Storage kontot eftersom det leder till efterföljande skript åtgärder med skript som lagras där.
 
-      - En offentlig fildelnings tjänst som är tillgänglig via `http://` sökvägar. Exempel är Azure Blob, GitHub eller OneDrive. Till exempel URI: er, se skript för [skript åtgärder](#example-script-action-scripts).
-    - För kluster med ESP `wasb://` `wasbs://` `http[s]://` stöds eller. URI: erna stöds.
+    - En offentlig fildelnings tjänst som är tillgänglig via `http://` sökvägar. Exempel är Azure Blob, GitHub eller OneDrive. Till exempel URI: er, se skript för [skript åtgärder](#example-script-action-scripts).
+  - För kluster med ESP `wasb://` `wasbs://` `http[s]://` stöds eller. URI: erna stöds.
 
 - Kan begränsas till att endast köras på vissa nodtyper. Exempel är Head-noder eller arbetsnoder.
 - Kan vara bestående eller *ad hoc*.
 
-    - Beständiga skript åtgärder måste ha ett unikt namn. Bestående skript används för att anpassa nya arbetsnoder som läggs till i klustret genom skalnings åtgärder. Ett bestående skript kan också tillämpa ändringar av en annan nodtyp när skalnings åtgärder sker. Ett exempel är en head-nod.
-    - *Ad hoc* -skript är inte beständiga. Skript åtgärder som används när klustret skapas sparas automatiskt. De används inte för arbetsnoder som läggs till i klustret när skriptet har körts. Sedan kan du befordra ett *ad hoc* -skript till ett beständigt skript eller nedgradera ett beständigt skript till ett *ad hoc* -skript. Skript som inte är beständiga, även om du specifikt anger att de ska vara.
+  - Beständiga skript åtgärder måste ha ett unikt namn. Bestående skript används för att anpassa nya arbetsnoder som läggs till i klustret genom skalnings åtgärder. Ett bestående skript kan också tillämpa ändringar av en annan nodtyp när skalnings åtgärder sker. Ett exempel är en head-nod.
+  - *Ad hoc* -skript är inte beständiga. Skript åtgärder som används när klustret skapas sparas automatiskt. De används inte för arbetsnoder som läggs till i klustret när skriptet har körts. Sedan kan du befordra ett *ad hoc* -skript till ett beständigt skript eller nedgradera ett beständigt skript till ett *ad hoc* -skript. Skript som inte är beständiga, även om du specifikt anger att de ska vara.
 
 - Kan acceptera parametrar som används av skriptet under körningen.
 - Kör med behörigheter på rot nivå på klusternoderna.
@@ -83,7 +83,8 @@ Skript åtgärder som används när klustret skapas skiljer sig något från skr
 
 Följande diagram illustrerar när skript åtgärder körs under skapande processen:
 
-![Anpassning och faser för HDInsight-kluster när klustret skapas][img-hdi-cluster-states]
+
+:::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png" alt-text="Steg när klustret skapas" border="false":::
 
 Skriptet körs medan HDInsight konfigureras. Skriptet körs parallellt på alla angivna noder i klustret. Den körs med rot behörigheter på noderna.
 
@@ -139,29 +140,29 @@ I det här avsnittet beskrivs de olika sätten att använda skript åtgärder n�
 
 1. Börja skapa ett kluster enligt beskrivningen i [skapa Linux-baserade kluster i HDInsight med hjälp av Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). På fliken **konfiguration och priser** väljer du **+ Lägg till skript åtgärd**.
 
-    ![Åtgärd för Azure Portal kluster skript](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png" alt-text="Åtgärd för Azure Portal kluster skript":::
 
 1. Använd posten __Välj en skript__ för att välja ett förtillverkade skript. Välj __anpassad__ om du vill använda ett anpassat skript. Ange sedan __namnet__ och __bash skript-URI__ för skriptet.
 
-    ![Lägg till ett skript i formuläret Välj skript](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="Lägg till ett skript i formuläret Välj skript":::
 
-    I följande tabell beskrivs elementen i formuläret:
+   I följande tabell beskrivs elementen i formuläret:
 
-    | Egenskap | Värde |
-    | --- | --- |
-    | Välj ett skript | Välj __anpassad__ om du vill använda ett eget skript. Annars väljer du något av de angivna skripten. |
-    | Name |Ange ett namn för skript åtgärden. |
-    | Bash-skript-URI |Ange URI: n för skriptet. |
-    | Head/Worker/ZooKeeper |Ange noderna som skriptet körs på: **Head**, **Work** eller **ZooKeeper**. |
-    | Parametrar |Ange parametrarna, om det krävs av skriptet. |
+   | Egenskap | Värde |
+   | --- | --- |
+   | Välj ett skript | Välj __anpassad__ om du vill använda ett eget skript. Annars väljer du något av de angivna skripten. |
+   | Name |Ange ett namn för skript åtgärden. |
+   | Bash-skript-URI |Ange URI: n för skriptet. |
+   | Head/Worker/ZooKeeper |Ange noderna som skriptet körs på: **Head**, **Work** eller **ZooKeeper**. |
+   | Parametrar |Ange parametrarna, om det krävs av skriptet. |
 
-    Använd posten __Behåll den här skript åtgärden__ för att kontrol lera att skriptet används vid skalnings åtgärder.
+   Använd posten __Behåll den här skript åtgärden__ för att kontrol lera att skriptet används vid skalnings åtgärder.
 
 1. Välj __skapa__ för att spara skriptet. Sedan kan du använda __+ Skicka ny__ för att lägga till ett annat skript.
 
-    ![Åtgärder för flera skript i HDInsight](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png" alt-text="Åtgärder för flera skript i HDInsight":::
 
-    När du är klar med att lägga till skript, återgår du till fliken **konfiguration + prissättning** .
+   När du är klar med att lägga till skript, återgår du till fliken **konfiguration + prissättning** .
 
 1. Slutför de återstående stegen för att skapa kluster som vanligt.
 
@@ -212,23 +213,23 @@ I det här avsnittet beskrivs hur du tillämpar skript åtgärder på ett kluste
 
 1. Överst på sidan **skript åtgärder** väljer du **+ Skicka ny**.
 
-    ![Lägga till ett skript i ett kluster som körs](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png" alt-text="Lägga till ett skript i ett kluster som körs":::
 
 1. Använd posten __Välj en skript__ för att välja ett förtillverkade skript. Välj __anpassad__ om du vill använda ett anpassat skript. Ange sedan __namnet__ och __bash skript-URI__ för skriptet.
 
-    ![Lägg till ett skript i formuläret Välj skript](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="Lägg till ett skript i formuläret Välj skript":::
 
-    I följande tabell beskrivs elementen i formuläret:
+   I följande tabell beskrivs elementen i formuläret:
 
-    | Egenskap | Värde |
-    | --- | --- |
-    | Välj ett skript | Välj __anpassad__ om du vill använda ett eget skript. Annars väljer du ett tillhandahållet skript. |
-    | Name |Ange ett namn för skript åtgärden. |
-    | Bash-skript-URI |Ange URI: n för skriptet. |
-    | Head/Worker/Zookeeper |Ange noderna som skriptet körs på: **Head**, **Work** eller **ZooKeeper**. |
-    | Parametrar |Ange parametrarna, om det krävs av skriptet. |
+   | Egenskap | Värde |
+   | --- | --- |
+   | Välj ett skript | Välj __anpassad__ om du vill använda ett eget skript. Annars väljer du ett tillhandahållet skript. |
+   | Name |Ange ett namn för skript åtgärden. |
+   | Bash-skript-URI |Ange URI: n för skriptet. |
+   | Head/Worker/Zookeeper |Ange noderna som skriptet körs på: **Head**, **Work** eller **ZooKeeper**. |
+   | Parametrar |Ange parametrarna, om det krävs av skriptet. |
 
-    Använd posten __Behåll den här skript åtgärden__ för att kontrol lera att skriptet används vid skalnings åtgärder.
+   Använd posten __Behåll den här skript åtgärden__ för att kontrol lera att skriptet används vid skalnings åtgärder.
 
 1. Slutligen väljer du knappen **skapa** för att tillämpa skriptet på klustret.
 
@@ -255,19 +256,19 @@ Innan du börjar ska du kontrol lera att du installerar och konfigurerar Azure C
 
 1. Autentisera till din Azure-prenumeration:
 
-    ```azurecli
-    az login
-    ```
+   ```azurecli
+   az login
+   ```
 
 1. Tillämpa en skript åtgärd på ett kluster som körs:
 
-    ```azurecli
-    az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
-    ```
+   ```azurecli
+   az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
+   ```
 
-    Giltiga roller är `headnode` , `workernode` , `zookeepernode` , `edgenode` . Om skriptet ska tillämpas på flera nodtyper avgränsar du rollerna med ett blank steg. Till exempel `--roles headnode workernode`.
+   Giltiga roller är `headnode` , `workernode` , `zookeepernode` , `edgenode` . Om skriptet ska tillämpas på flera nodtyper avgränsar du rollerna med ett blank steg. Till exempel `--roles headnode workernode`.
 
-    Lägg till för att spara skriptet `--persist-on-success` . Du kan också Spara skriptet senare med hjälp av `az hdinsight script-action promote` .
+   Lägg till för att spara skriptet `--persist-on-success` . Du kan också Spara skriptet senare med hjälp av `az hdinsight script-action promote` .
 
 ### <a name="apply-a-script-action-to-a-running-cluster-by-using-rest-api"></a>Tillämpa en skript åtgärd på ett kluster som körs med hjälp av REST API
 
@@ -287,15 +288,15 @@ Ett exempel på hur du använder .NET SDK för att tillämpa skript i ett kluste
 
 1. En historik över skript för det här klustret visas i avsnittet skript åtgärder. Den här informationen innehåller en lista över bestående skript. Följande skärm bild visar att solr-skriptet har körts på det här klustret. Skärm bilden visar inte några sparade skript.
 
-    ![Portal skript åtgärder skicka historik](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png" alt-text="Portal skript åtgärder skicka historik":::
 
 1. Välj ett skript från historiken för att visa avsnittet **Egenskaper** för det här skriptet. Överst på skärmen kan du köra skriptet igen eller befordra det.
 
-    ![Egenskaper för skript åtgärder befordran](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png" alt-text="Egenskaper för skript åtgärder befordran":::
 
 1. Du kan också välja ellipsen, **...**, till höger om poster i avsnittet skript åtgärder för att utföra åtgärder.
 
-    ![Borttagning av beständiga skript åtgärder](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png" alt-text="Borttagning av beständiga skript åtgärder":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -333,5 +334,3 @@ Ett exempel på hur du använder .NET SDK för att hämta skript historik från 
 * [Utveckla skript åtgärds skript för HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Lägg till ytterligare lagrings utrymme i ett HDInsight-kluster](hdinsight-hadoop-add-storage.md)
 * [Felsöka skriptåtgärder](troubleshoot-script-action.md)
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Steg när klustret skapas"

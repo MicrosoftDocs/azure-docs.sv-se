@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: b7ae2e024fa68b01d5053d58ea2a066ae681e4e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2acb234d04a0158b22b9078db903e6be562b892b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435736"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954708"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendpro-enterprise"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med SendPro Enterprise
 
@@ -128,11 +128,9 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till SendPro företags inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen SendPro Enterprise i Mina appar omdirigeras detta till SendPro Enterprise-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen SendPro Enterprise i Mina appar omdirigeras detta till SendPro Enterprise-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat SendPro Enterprise kan du framtvinga sessionshantering, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+När du har konfigurerat SendPro Enterprise kan du framtvinga sessionshantering, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

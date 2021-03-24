@@ -6,16 +6,16 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780879"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865238"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Konfigurera en installation för servrar i VMware-miljön
 
-Följ den här artikeln för att konfigurera Azure Migrate-installationen för utvärdering med verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool) , och för att migrera utan agent med hjälp av [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-migration-tool) .
+Följ den här artikeln för att konfigurera Azure Migrate-installationen för utvärdering med verktyget [Azure Migrate: identifiering och bedömning](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) , och för att migrera utan agent med hjälp av [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-migration-tool) .
 
 [Azure Migrate](migrate-appliance.md) -installationen är en förenklad utrustning som används av Azure Migrate: identifiering och utvärdering och Server migrering för att identifiera servrar som kör i vCenter Server, skicka Server konfiguration och prestanda-metadata till Azure och för replikering av servrar med hjälp av en agent lös migrering.
 
@@ -24,23 +24,23 @@ Du kan distribuera installationen på ett par olika sätt:
 - Skapa en server på vCenter Server med en Hämtad områdesmall-mall. Detta är den metod som beskrivs i den här artikeln.
 - Konfigurera installationen på en befintlig server med hjälp av ett PowerShell-skript. [Den här metoden](deploy-appliance-script.md) ska användas om du inte kan använda en mall för ägg eller om du är i Azure Government.
 
-När du har skapat installationen kontrollerar du att den kan ansluta till Azure Migrate: identifiering och utvärdering, registrera den med Azure Migrate-projektet och konfigurera installationen till att initiera identifiering.
+När du har skapat installationen kontrollerar du att den kan ansluta till Azure Migrate: identifiering och utvärdering, registrera den med projektet och konfigurera installationen till att initiera identifiering.
 
 ## <a name="deploy-with-ova"></a>Distribuera med ägg
 
 Så här konfigurerar du installationen av en tjänstmall:
-1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+1. Ange ett namn på apparaten och generera en projekt nyckel i portalen.
 1. Hämta en mall för en embryo-fil och importera den till vCenter Server. Kontrol lera att EMBRYOna är säkra.
 1. Skapa den virtuella dator enheten från den ägg filen och kontrol lera att den kan ansluta till Azure Migrate.
-1. Konfigurera enheten för första gången och registrera den med projektet med hjälp av Azure Migrate projekt nyckel.
+1. Konfigurera enheten för första gången och registrera den med projektet med hjälp av projekt nyckeln.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
+### <a name="1-generate-the-project-key"></a>1. generera projekt nyckeln
 
 1. I **mål**  >  **servrar** för migrering  >  **Azure Migrate: identifiering och bedömning**, Välj **identifiera**.
 2. I **Discover-servrar**  >  **är servrarna virtualiserade?** väljer du **Ja, med VMware vSphere hypervisor**.
-3. I **1: generera Azure Migrate projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar i VMware-miljön. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
+3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar i VMware-miljön. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
 1. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera när du skapar resurser.
-1. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
+1. När Azure-resurserna har skapats skapas en **projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
 ### <a name="2-download-the-ova-template"></a>2. Hämta embryo-mallen
@@ -117,7 +117,7 @@ Konfigurera enheten för första gången.
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
-1. Klistra in **Azure Migrate projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **identifierings-och utvärderings> identifiera> hantera befintliga apparater**, väljer det installations namn du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
+1. Klistra in **projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **identifierings-och utvärderings> identifiera> hantera befintliga apparater**, väljer det installations namn du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
 1. Du behöver en enhets kod för att autentisera med Azure. När du klickar på **Logga in** öppnas en modal enhets kod som visas nedan.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Modal visar enhets koden":::
@@ -154,8 +154,6 @@ I **steg 3: ange autentiseringsuppgifter för servern för att utföra program v
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 på installation Configuration Manager för Server information":::
 
-> [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
 
 Om du vill utnyttja dessa funktioner kan du ange autentiseringsuppgifter för servern genom att följa stegen nedan. Installations programmet försöker automatiskt mappa autentiseringsuppgifterna till servrarna för att utföra identifierings funktionerna.
 

@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f4f79725d0eda65ba00a44e9e7fc2a51c024eccf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97861958"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864065"
 ---
 # <a name="agent-based-migration-architecture"></a>Agentbaserad migreringsarkitektur
 
-Den här artikeln innehåller en översikt över arkitekturen och processerna som används för agentbaserade replikering av virtuella VMware-datorer med verktyget [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-assessment-tool) .
+Den här artikeln innehåller en översikt över arkitekturen och processerna som används för agentbaserade replikering av virtuella VMware-datorer med verktyget [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-migration-tool) .
 
 Med hjälp av Azure Migrate: Server-migrering kan du replikera virtuella VMware-datorer med ett par alternativ:
 
@@ -40,17 +40,17 @@ Tabellen sammanfattar de komponenter som används för agent-baserad migrering.
 
 **Komponent** | **Information** | **Installation**
 --- | --- | ---
-**Replikeringsfil** | Replikeringstjänsten (konfigurations Server/processerver) är en lokal dator som fungerar som en brygga mellan den lokala miljön och Server migrering. Enheten identifierar den lokala dator inventeringen så att Server migreringen kan dirigera replikering och migrering. Enheten har två komponenter:<br/><br/> **Konfigurations Server**: ansluter till Server migration och samordnar replikering.<br/> **Processerver**: hanterar datareplikering. Processervern tar emot dator data, komprimerar och krypterar den och skickar dem till Azure. I Azure skriver server migrering data till Managed disks. | Som standard installeras processervern tillsammans med konfigurations servern på replikerings enheten.
-**Mobilitetstjänsten** | Mobilitets tjänsten är en agent som är installerad på varje dator som du vill replikera och migrera. Den skickar replikeringsdata från datorn till processervern. | Installationsfiler för olika versioner av mobilitets tjänsten finns på replikerings enheten. Du kan hämta och installera den agent du behöver, i enlighet med operativ systemet och den version av datorn som du vill replikera.
+**Replikeringsfil** | Replikeringstjänsten (konfigurations Server/processerver) är en lokal server som fungerar som en brygga mellan den lokala miljön och Server migrering. Enheten identifierar den lokala server inventeringen så att Server migreringen kan dirigera replikering och migrering. Enheten har två komponenter:<br/><br/> **Konfigurations Server**: ansluter till Server migration och samordnar replikering.<br/> **Processerver**: hanterar datareplikering. Processervern tar emot Server data, komprimerar och krypterar den och skickar dem till Azure. I Azure skriver server migrering data till Managed disks. | Som standard installeras processervern tillsammans med konfigurations servern på replikerings enheten.
+**Mobilitetstjänsten** | Mobilitets tjänsten är en agent som är installerad på varje server som du vill replikera och migrera. Den skickar replikeringsdata från servern till processervern. | Installationsfiler för olika versioner av mobilitets tjänsten finns på replikerings enheten. Du kan hämta och installera den agent du behöver, i enlighet med det operativ system och den version av servern som du vill replikera.
 
 ## <a name="mobility-service-installation"></a>Installation av mobilitetstjänsten
 
 Du kan distribuera mobilitets tjänsten på följande sätt:
 
-- **Push-installation**: mobilitets tjänsten installeras av processervern när du aktiverar skydd för en dator. 
-- **Installera manuellt**: du kan installera mobilitets tjänsten manuellt på varje dator via UI eller kommando tolken.
+- **Push-installation**: mobilitets tjänsten installeras av processervern när du aktiverar skydd för en server. 
+- **Installera manuellt**: du kan installera mobilitets tjänsten manuellt på varje server via UI eller kommando tolken.
 
-Mobilitets tjänsten kommunicerar med replikerings enheten och de replikerade datorerna. Om du har antivirus program som körs på replikerings enheten, bearbetar servrar eller datorer som replikeras, ska följande mappar undantas från genomsökningen:
+Mobilitets tjänsten kommunicerar med replikerings-och replikerade servrar. Om du har antivirus program som körs på replikerings enheten, bearbetar servrar eller servrar som replikeras, ska följande mappar undantas från genomsökningen:
 
 
 - C:\Program\Microsoft Azure Recovery Services agent
@@ -60,29 +60,29 @@ Mobilitets tjänsten kommunicerar med replikerings enheten och de replikerade da
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - C:\Program Files (x86) \Microsoft Azure Site Recovery
-- C:\ProgramData\ASR\agent (på Windows-datorer med mobilitets tjänsten installerad)
+- C:\ProgramData\ASR\agent (på Windows-servrar med mobilitets tjänsten installerad)
 
 ## <a name="replication-process"></a>Replikeringsprocessen
 
-1. När du aktiverar replikering för en dator börjar inledande replikering till Azure.
-2. Under den inledande replikeringen läser mobilitets tjänsten data från dator diskarna och skickar dem till processervern.
+1. När du aktiverar replikering för en server börjar inledande replikering till Azure.
+2. Under den inledande replikeringen läser mobilitets tjänsten data från Server diskarna och skickar dem till processervern.
 3. Dessa data används för att dirigera en kopia av disken i din Azure-prenumeration. 
 4. När den inledande replikeringen har slutförts börjar replikeringen av delta ändringar till Azure. Replikering är block nivå och nästan kontinuerlig.
-4. Mobilitets tjänsten fångar upp skrivning till disk minne genom att integrera med underlag rings systemet i operativ systemet. Den här metoden undviker disk-I/O-åtgärder på den replikerande datorn för stegvis replikering. 
-5. Spårade ändringar för en dator skickas till processervern på inkommande port HTTPS 9443. Den här porten kan ändras. Processervern komprimerar och krypterar den och skickar den till Azure. 
+4. Mobilitets tjänsten fångar upp skrivning till disk minne genom att integrera med underlag rings systemet i operativ systemet. Den här metoden undviker disk-I/O-åtgärder på den replikerande servern för stegvis replikering. 
+5. Spårade ändringar för en server skickas till processervern på inkommande port HTTPS 9443. Den här porten kan ändras. Processervern komprimerar och krypterar den och skickar den till Azure. 
 
 ## <a name="ports"></a>Portar
 
 **Enhet** | **Anslutning**
 --- | --- 
-**Replikera datorer** | Mobilitets tjänsten som körs på virtuella datorer kommunicerar med den lokala replikeringstjänsten på port HTTPS 443 inkommande, för hantering av replikering.<br/><br/> Datorer skickar replikeringsdata till processervern på port HTTPS 9443 inkommande. Den här porten kan ändras.
+**Servrarna replikeras** | Mobilitets tjänsten som körs på virtuella datorer kommunicerar med den lokala replikeringstjänsten på port HTTPS 443 inkommande, för hantering av replikering.<br/><br/> Servrar skickar replikeringsdata till processervern på port HTTPS 9443 inkommande. Den här porten kan ändras.
 **Replikeringsfil** | Replikeringstjänsten dirigerar replikering med Azure över Port HTTPS 443 utgående.
 **Processerver** | Processervern tar emot replikeringsdata, optimerar och krypterar den och skickar den till Azure Storage via port 443 utgående.
 
 
 ## <a name="performance-and-scaling"></a>Prestanda och skalning
 
-Som standard distribuerar du en enda replikeringsfil som kör både konfigurations servern och processervern. Om du bara replikerar några få datorer räcker den här distributionen. Men om du replikerar och migrerar hundratals datorer kanske en enskild processerver inte kan hantera all replikeringstrafik. I det här fallet kan du distribuera ytterligare, skalbara process servrar.
+Som standard distribuerar du en enda replikeringsfil som kör både konfigurations servern och processervern. Om du bara replikerar några få servrar är distributionen tillräckligt. Men om du replikerar och migrerar hundratals servrar kanske en enskild processerver inte kan hantera all replikeringstrafik. I det här fallet kan du distribuera ytterligare, skalbara process servrar.
 
 ### <a name="plan-vmware-deployment"></a>Planera VMware-distribution
 
@@ -93,13 +93,13 @@ Om du replikerar virtuella VMware-datorer kan du använda [Site Recovery distrib
 Använd värdena i den här tabellen för att avgöra om du behöver en ytterligare processerver i distributionen.
 
 - Om den dagliga ändrings hastigheten (omsättnings takten) är över 2 TB distribuerar du en ytterligare processerver.
-- Om du replikerar fler än 200 datorer kan du distribuera en ytterligare replikeringsfil.
+- Om du replikerar fler än 200 servrar kan du distribuera en ytterligare replikeringsfil.
 
 **Processor** | **Minne** | **Ledigt utrymme – cachelagring av data** | **Omsättnings pris** | **Begränsningar för replikering**
 --- | --- | --- | --- | ---
-8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB eller mindre | < 100-datorer 
-12 virtuella processorer (2 Sockets * 6 kärnor \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB till 1 TB | 100-150-datorer.
-16 virtuella processorer (2 Sockets * 8 kärnor \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB till 2 TB | 151-200-datorer.
+8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB eller mindre | < 100-servrar 
+12 virtuella processorer (2 Sockets * 6 kärnor \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB till 1 TB | 100-150-servrar.
+16 virtuella processorer (2 Sockets * 8 kärnor \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB till 2 TB | 151-200-servrar.
 
 ### <a name="sizing-scale-out-process-servers"></a>Storleks skalbara process servrar
 
@@ -107,16 +107,16 @@ Om du behöver distribuera en skalbar processerver använder du den här tabelle
 
 **Processerver** | **Ledigt utrymme för cachelagring av data** | **Omsättnings pris** | **Begränsningar för replikering**
 --- | --- | --- | --- 
-4 virtuella processorer (2 Sockets * 2 kärnor \@ 2,5 GHz), 8 GB minne | 300 GB | 250 GB eller mindre | Upp till 85 datorer 
-8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz), 12 GB minne | 600 GB | 251 GB till 1 TB | 86-150-datorer.
-12 virtuella processorer (2 Sockets * 6 kärnor \@ 2,5 GHz), 24 GB minne | 1 TB | 1-2 TB | 151-225-datorer.
+4 virtuella processorer (2 Sockets * 2 kärnor \@ 2,5 GHz), 8 GB minne | 300 GB | 250 GB eller mindre | Upp till 85 servrar 
+8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz), 12 GB minne | 600 GB | 251 GB till 1 TB | 86-150-servrar.
+12 virtuella processorer (2 Sockets * 6 kärnor \@ 2,5 GHz), 24 GB minne | 1 TB | 1-2 TB | 151-225-servrar.
 
 ## <a name="throttle-upload-bandwidth"></a>Begränsa överförings bandbredden.
 
-VMware-trafik som replikeras till Azure går genom en speciell processerver. Du kan begränsa uppladdnings flödet genom att begränsa bandbredden på datorerna som körs som process servrar. Du kan påverka bandbredden med hjälp av den här register nyckeln:
+VMware-trafik som replikeras till Azure går genom en speciell processerver. Du kan begränsa uppladdnings flödet genom att begränsa bandbredden på de servrar som kör som process servrar. Du kan påverka bandbredden med hjälp av den här register nyckeln:
 
 - Registervärdet HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM anger antalet trådar som används för data överföring (inledande eller delta-replikering) på en disk. Ett högre värde ökar nätverks bandbredden som används för replikering. Standardvärdet är fyra. Det maximala värdet är 32. Övervaka trafiken för att optimera värdet.
-- Dessutom kan du begränsa bandbredden på processervern på följande sätt:
+- Dessutom kan du begränsa bandbredden på processervern enligt följande:
 
     1. Öppna snapin-modulen Azure Backup MMC på processervern. Det finns en genväg på Skriv bordet eller i mappen C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
     2. Välj **ändra egenskaper** i snapin-modulen.

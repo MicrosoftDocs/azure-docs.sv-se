@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a9a1788473cb31f8e78aac0bbd5979b3d681ad32
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946122"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867601"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Skapa Apache HBase-kluster på HDInsight i Azure Virtual Network
 
@@ -22,7 +22,7 @@ Med Virtual Network-integrering kan Apache HBase-kluster distribueras till samma
 * Bättre prestanda genom att inte låta trafiken gå över flera gatewayer och belastnings utjämning.
 * Möjligheten att bearbeta känslig information på ett säkrare sätt utan att exponera en offentlig slut punkt.
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Skapa Apache HBase-kluster i ett virtuellt nätverk
 
@@ -44,7 +44,7 @@ I det här avsnittet skapar du ett Linux-baserat Apache HBase-kluster med det be
 
 1. Välj följande bild för att öppna mallen i Azure Portal. Mallen finns i [snabb starts mallar för Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. Välj **Redigera mall** i dialog rutan **Anpassad distribution** .
 
@@ -104,26 +104,11 @@ När du använder ett Java-program för att fjärrans luta till HBase måste du 
 
 Leta upp posten "host_name" i de JavaScript Object Notation (JSON) som returneras. Den innehåller FQDN för noderna i klustret. Exempel:
 
-```
+```json
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
 Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Till exempel `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
-
-<!--
-3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
-
-    To make the configuration change:
-
-    1. RDP into the virtual machine.
-    2. Open **Local Group Policy Editor**. The executable is gpedit.msc.
-    3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
-    - Set **Primary DNS Suffix** to the value obtained in step 2:
-
-        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/hdi-primary-dns-suffix.png)
-    4. Click **OK**.
-    5. Reboot the virtual machine.
--->
 
 ### <a name="verify-communication-inside-virtual-network"></a>Verifiera kommunikation i virtuellt nätverk
 

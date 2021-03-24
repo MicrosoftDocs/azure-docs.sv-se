@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98625206"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889605"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Självstudie: Konfigurera och Använd mått och loggar med en IoT-hubb
 
@@ -219,7 +219,7 @@ Så här ställer du in mått aviseringar:
 
 1. Konfigurera först villkoret som aviseringen ska utlösa.
 
-    1. Under **villkor** väljer du **Välj villkor**. Skriv "telemetri" i rutan Sök i rutan **Konfigurera signal logik** i sökrutan och välj **telemetri meddelanden som skickats**.
+    1. Under **villkor** väljer du **Lägg till villkor**. Skriv "telemetri" i rutan Sök i rutan **Konfigurera signal logik** i sökrutan och välj **telemetri meddelanden som skickats**.
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Skärm bild som visar valet av mått.":::
 
@@ -245,7 +245,7 @@ Så här ställer du in mått aviseringar:
 
 1. Nu ska du konfigurera åtgärden för aviseringen.
 
-    1. Gå tillbaka till fönstret **skapa aviserings regel** under **åtgärder** och välj **Välj åtgärds grupp**. I fönstret **Välj en åtgärds grupp som ska kopplas till den här varnings regeln** väljer du **skapa åtgärds grupp**.
+    1. Gå tillbaka till fönstret **skapa aviserings regel** under **åtgärder** och välj **Lägg till åtgärds grupper**. I fönstret **Välj en åtgärds grupp som ska kopplas till den här varnings regeln** väljer du **skapa åtgärds grupp**.
 
     1. Ge åtgärds gruppen ett namn och ett visnings namn under fliken **grundläggande** i fönstret **skapa åtgärds grupp** .
 
@@ -313,7 +313,7 @@ Med de här inställningarna utlöses en avisering och du får ett e-postmeddela
 
 ## <a name="run-the-simulated-device-app"></a>Kör den simulerade Device-appen
 
-I avsnittet [Konfigurera resurser](#set-up-resources) registrerade du en enhets identitet som ska användas för att simulera användning av en IoT-enhet. I det här avsnittet kan du ladda ned en .NET-konsol app som simulerar en enhet som skickar enhets-till-moln-meddelanden till en IoT Hub, konfigurera den för att skicka dessa meddelanden till IoT-hubben och sedan köra det. 
+I avsnittet [Konfigurera resurser](#set-up-resources) registrerade du en enhets identitet som ska användas för att simulera användning av en IoT-enhet. I det här avsnittet kan du ladda ned en .NET-konsol app som simulerar en enhet som skickar enhets-till-moln-meddelanden till en IoT Hub, konfigurera den för att skicka dessa meddelanden till IoT-hubben och sedan köra det.
 
 > [!IMPORTANT]
 >

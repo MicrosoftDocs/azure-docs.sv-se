@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 7da10fbdff0b6771fcffb6cc303d5ab183df190a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1ecfd58e961e70182bfc2e0cc8eaf77f5053eb77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948096"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879786"
 ---
 [Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/management)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -28,7 +28,7 @@ ms.locfileid: "98948096"
 
 ## <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-Skapa ett nytt .NET Core-program. I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `azure-management-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*. 
+Skapa ett nytt .NET Core-program. I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `azure-management-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*. 
 
 ```console
 dotnet new console -n azure-management-quickstart
@@ -64,13 +64,13 @@ Om du använder Visual Studio IDE är klient biblioteket tillgängligt som ett n
 
 ### <a name="import-libraries"></a>Importera bibliotek
 
-Öppna *program.cs* och Lägg till följande- `using` instruktioner överst i filen:
+Öppna *program. cs* och Lägg till följande- `using` uttryck överst i filen:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_using)]
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Lägg till följande fält i roten av *program.cs* och fyll i deras värden med hjälp av tjänstens huvud namn som du skapade och din Azure konto information.
+Lägg till följande fält i roten av *programmet. cs* och fyll i deras värden med hjälp av tjänstens huvud namn som du skapade och din Azure konto information.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_constants)]
 
@@ -122,7 +122,9 @@ dotnet run
 
 ## <a name="see-also"></a>Se även
 
-* [Dokumentation om Azure Management SDK-referens](/dotnet/api/overview/azure/cognitiveservices/management)
-* [Vad är Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Autentisera begär anden till Azure Cognitive Services](../../authentication.md)
-* [Skapa en ny resurs med Azure Portal](../../cognitive-services-apis-create-account.md)
+* Se **[autentisera begär anden till Azure Cognitive Services](../../authentication.md)** om hur du säkert arbetar med Cognitive Services.
+* Se **[Vad är Azure Cognitive Services?](../../what-are-cognitive-services.md)** för att hämta en lista över olika kategorier i Cognitive Services.
+* Se den **[naturliga språk supporten](../../language-support.md)** om du vill se en lista över naturliga språk som Cognitive Services stöder.
+* Se **[använda Cognitive Services som behållare](../../cognitive-services-container-support.md)** för att förstå hur du använder Cognitive Services lokal.
+* Se **[planera och hantera kostnader för Cognitive Services](../../plan-manage-costs.md)** för att beräkna kostnaden för att använda Cognitive Services.
+* Mer information om hanterings-SDK finns i **[referens dokumentationen för Cognitive Services Management SDK](/dotnet/api/overview/azure/cognitiveservices/management)** .

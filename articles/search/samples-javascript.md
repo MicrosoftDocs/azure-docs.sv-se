@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955028"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955949"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>JavaScript-kod exempel för Azure Kognitiv sökning
 
@@ -39,7 +39,6 @@ Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hi
 | [indexerare](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  Visar hur du skapar, uppdaterar, hämtar, listar, återställer och tar bort [indexerare](search-indexer-overview.md).|
 | [Färdigheter](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [färdighetsuppsättningar](cognitive-search-working-with-skillsets.md) som är kopplade till indexerare och som utför AI-baserad anrikning under indexering. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [synonym Maps](search-synonyms.md).  |
-| [Frågor](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | Visar frågekörningen mot ett skrivskyddat offentligt index som Microsoft är värd för.  |
 
 ### <a name="typescript-samples"></a>TypeScript-exempel
 
@@ -50,7 +49,6 @@ Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hi
 | [indexerare](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  Visar hur du skapar, uppdaterar, hämtar, listar, återställer och tar bort [indexerare](search-indexer-overview.md).|
 | [Färdigheter](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [färdighetsuppsättningar](cognitive-search-working-with-skillsets.md) som är kopplade till indexerare och som utför AI-baserad anrikning under indexering. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | Visar hur du skapar, uppdaterar, hämtar, visar och tar bort [synonym Maps](search-synonyms.md).  |
-| [Frågor](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | Visar frågekörningen mot ett skrivskyddat offentligt index som Microsoft är värd för.  |
 
 ## <a name="doc-samples"></a>Doc-exempel
 

@@ -4,155 +4,153 @@
 - name: Översikt
   items:
     - name: Vad är Azure Spring Cloud?
-      href: spring-cloud-overview.md
+      href: overview.md
 - name: Snabbstarter
   expanded: true
   items:
     - name: Lansera din första app
-      href: spring-cloud-quickstart.md
+      href: quickstart.md
     - name: Skapa och kör mikrotjänster
       expanded: true
       items:
         - name: Introduktion till exempelappen
-          href: spring-cloud-quickstart-sample-app-introduction.md
+          href: quickstart-sample-app-introduction.md
         - name: Tillhandahålla Azure Spring Cloud-tjänsten
-          href: spring-cloud-quickstart-provision-service-instance.md
+          href: quickstart-provision-service-instance.md
         - name: Konfigurera konfigurationsserver
-          href: spring-cloud-quickstart-setup-config-server.md
+          href: quickstart-setup-config-server.md
         - name: Skapa och distribuera appar
-          href: spring-cloud-quickstart-deploy-apps.md
+          href: quickstart-deploy-apps.md
         - name: 'Använda loggar, mått och spårning'
-          href: spring-cloud-quickstart-logs-metrics-tracing.md
+          href: quickstart-logs-metrics-tracing.md
 - name: Självstudier
   items:
     - name: Aviseringar och åtgärdsgrupper
-      href: spring-cloud-tutorial-alerts-action-groups.md
+      href: tutorial-alerts-action-groups.md
     - name: Circuit Breaker Dashboard
-      href: spring-cloud-tutorial-circuit-breaker.md
+      href: tutorial-circuit-breaker.md
     - name: Anpassat DNS-namn
-      href: spring-cloud-tutorial-custom-domain.md
-    - name: Använda en hanterad identitet för att ansluta Key Vault till en Azure Spring Cloud-app
-      href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Använda en hanterad identitet för anropa Azure Functions från en Azure Spring Cloud-app
-      href: spring-cloud-tutorial-managed-identities-functions.md
+      href: tutorial-custom-domain.md
+    - name: Hanterad identitet för att ansluta Key Vault
+      href: tutorial-managed-identities-key-vault.md
+    - name: Hanterad identitet för att anropa Azure Functions
+      href: tutorial-managed-identities-functions.md
 - name: Begrepp
   items:
-    - name: Förstå appar och distribution
-      href: spring-cloud-concept-understand-app-and-deployment.md
-    - name: Förstå kvoter och gränser
-      href: spring-cloud-quotas.md
-    - name: Förstå mått
-      href: spring-cloud-concept-metrics.md
+    - name: App och distribution
+      href: concept-understand-app-and-deployment.md
+    - name: Kvoter och begränsningar
+      href: quotas.md
+    - name: Mått
+      href: concept-metrics.md
     - name: Azure Spring Boot Actuator
-      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Säkerhet
-      items:
-        - name: Säkerhetskontroller
-          href: spring-cloud-concept-security-controls.md
-        - name: Säkerhetskontroller av Azure Policy
-          href: ./security-controls-policy.md
+      href: concept-manage-monitor-app-spring-boot-actuator.md
+- name: Säkerhet
+  items:
+    - name: Säkerhetskontroller
+      href: concept-security-controls.md
+    - name: Azure Policy säkerhets kontroller
+      href: ./security-controls-policy.md
     - name: Förstå appstatus
-      href: spring-cloud-concept-app-status.md
+      href: concept-app-status.md
     - name: Förbereda för haveriberedskap
       href: disaster-recovery.md
 - name: Anvisningar
   items:
     - name: Utveckla
       items:
-        - name: Förbereda en app för distribution
-          href: spring-cloud-tutorial-prepare-app-deployment.md
+        - name: Förbereda en Java Spring-app för distribution
+          href: how-to-prepare-app-deployment.md
         - name: Konfigurera en konfigurationsserver
-          href: spring-cloud-tutorial-config-server.md
-        - name: Aktivera tjänst registrering
-          href: spring-cloud-service-registration.md
+          href: how-to-config-server.md
+        - name: Aktivera tjänstregistrering
+          href: how-to-service-registration.md
     - name: Distribuera
       items:
         - name: Konfigurera en mellanlagringsmiljö
-          href: spring-cloud-howto-staging-environment.md
+          href: how-to-staging-environment.md
         - name: Starta Java-appen från källkoden
-          href: spring-cloud-howto-launch-from-source.md
+          href: how-to-launch-from-source.md
         - name: Använda IntelliJ för att distribuera appar
-          href: spring-cloud-tutorial-intellij-deploy-apps.md
+          href: how-to-intellij-deploy-apps.md
         - name: Använda VS Code för att distribuera appar
           href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Distribuera Azure Spring Cloud med Azure PowerShell
-          href: spring-cloud-howto-deploy-powershell.md
+          href: how-to-deploy-powershell.md
     - name: Konfigurera
       items:
         - name: 'Starta, stoppa och ta bort en app'
-          href: spring-cloud-howto-start-stop-delete.md
+          href: how-to-start-stop-delete.md
         - name: Använda beständig lagring
-          href: spring-cloud-howto-persistent-storage.md
+          href: how-to-persistent-storage.md
     - name: Skala
       items:
         - name: Skala en app manuellt
-          href: spring-cloud-tutorial-scale-manual.md
+          href: how-to-scale-manual.md
         - name: Autoskala en app
-          href: spring-cloud-tutorial-setup-autoscale.md
+          href: how-to-setup-autoscale.md
         - name: Identifiera utgående offentliga IP-adresser
-          href: spring-cloud-howto-outbound-public-ip.md
+          href: how-to-outbound-public-ip.md
     - name: Övervaka
       items:
         - name: Distribuerad spårning och App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
+          href: how-to-distributed-tracing.md
         - name: Analysera loggar och mått
           href: diagnostic-services.md
         - name: Strömningsloggar i realtid
-          href: spring-cloud-howto-log-streaming.md
+          href: how-to-log-streaming.md
         - name: Application Insights med Java In-Process Agent
-          href: spring-cloud-howto-application-insights.md
+          href: how-to-application-insights.md
         - name: Mått för Resilience4J-kretsbrytare
-          href: spring-cloud-howto-circuit-breaker-metrics.md
+          href: how-to-circuit-breaker-metrics.md
         - name: Strukturerad program logg
-          href: spring-cloud-structured-app-log.md
+          href: structured-app-log.md
     - name: Nätverk
       items:
         - name: Distribuera Azure våren Cloud i ett virtuellt nätverk
-          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+          href: how-to-deploy-in-azure-virtual-network.md
         - name: Få åtkomst till ditt program i ett privat nätverk
-          href: spring-cloud-access-app-virtual-network.md
+          href: access-app-virtual-network.md
         - name: Exponera program på Internet
-          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+          href: expose-apps-gateway-azure-firewall.md
         - name: Kund ansvar som kör Azure våren Cloud i VNET
-          href: spring-cloud-vnet-customer-responsibilities.md
+          href: vnet-customer-responsibilities.md
         - name: Felsöka Azure våren Cloud i virtuella nätverk
-          href: spring-cloud-troubleshooting-vnet.md
+          href: troubleshooting-vnet.md
     - name: Säkerhet
       items:
         - name: Aktivera systemtilldelad hanterad identitet
-          href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+          href: how-to-enable-system-assigned-managed-identity.md
         - name: Skapa roller och behörigheter
-          href: spring-cloud-howto-permissions.md
-        - name: Kom åt data planet med Azure AD RBAC
-          href: spring-cloud-howto-access-data-plane-azure-ad-rbac.md
+          href: how-to-permissions.md
     - name: Integrera
       items:
         - name: Binda en app till Azure CosmosDB
-          href: spring-cloud-tutorial-bind-cosmos.md
+          href: how-to-bind-cosmos.md
         - name: Binda en app till Azure Cache for Redis
-          href: spring-cloud-tutorial-bind-redis.md
+          href: how-to-bind-redis.md
         - name: Binda en app till Azure MySQL
-          href: spring-cloud-tutorial-bind-mysql.md
+          href: how-to-bind-mysql.md
         - name: Integrera med Azure Load Balance Solutions
-          href: spring-cloud-howto-integrate-azure-load-balancers.md
+          href: how-to-integrate-azure-load-balancers.md
     - name: Automatisera
       items:
         - name: CI/CD med Azure DevOps
-          href: spring-cloud-howto-cicd.md
+          href: how-to-cicd.md
         - name: CI/CD med GitHub-åtgärder
-          href: spring-cloud-howto-github-actions.md
+          href: how-to-github-actions.md
         - name: Autentisering med Key Vault i GitHub Actions
-          href: spring-cloud-github-actions-key-vault.md
+          href: github-actions-key-vault.md
         - name: Etablera en Azure Spring Cloud-instans med terraform
-          href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
+          href: how-to-provision-azure-spring-cloud-instance-terraform.md
     - name: Felsöka
       items:
         - name: Diagnostisera och lösa problem på egen hand
-          href: spring-cloud-howto-self-diagnose-solve.md
+          href: how-to-self-diagnose-solve.md
         - name: Själv diagnostisering som körs i VNET
-          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
+          href: how-to-self-diagnose-running-in-vnet.md
         - name: Felsökningsguide
-          href: spring-cloud-troubleshoot.md
+          href: troubleshoot.md
     - name: Migrera
       items:
         - name: Spring Cloud
@@ -164,7 +162,7 @@
 - name: Arkitektur
   items:
     - name: Referensarkitektur
-      href: spring-cloud-reference-architecture.md
+      href: reference-architecture.md
 - name: DevOps-distribution
   items:
     - name: CI/CD med Azure DevOps
@@ -176,7 +174,7 @@
 - name: Felsöka
   items:
     - name: Felsökningsguide
-      href: spring-cloud-troubleshoot.md
+      href: troubleshoot.md
 - name: Referens
   items:
     - name: Azure CLI-plugin
@@ -184,9 +182,9 @@
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
     - name: Resurser
-      href: spring-cloud-resources.md
+      href: resources.md
     - name: Vanliga frågor och svar
-      href: spring-cloud-faq.md
+      href: faq.md
     - name: Referens för REST-API
       href: /rest/api/azurespringcloud/
     - name: Inbyggda Azure Policy-program

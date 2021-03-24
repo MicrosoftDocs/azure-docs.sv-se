@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: tilarso
+ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90705494"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952273"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Vad är identitetssäkerhetspoäng i Azure Active Directory?
 
@@ -24,7 +24,7 @@ Hur säker är din Azure AD-klientorganisation? Om du inte vet hur du ska svara 
 
 ## <a name="what-is-an-identity-secure-score"></a>Vad är identitetssäkerhetspoäng?
 
-De säkraste poängen för identiteter är mellan 1 och 223 som fungerar som en indikator för hur justerad du är med i Microsofts rekommendationer om bästa praxis för säkerhet. Varje förbättrings åtgärd i säkra Poäng för identiteter skräddarsys efter din speciella konfiguration.  
+De säkraste poängen i identiteten är procent andel som fungerar som en indikator för hur justerad du är med i Microsofts rekommendationer om bästa praxis för säkerhet. Varje förbättrings åtgärd i säkra Poäng för identiteter skräddarsys efter din speciella konfiguration.  
 
 ![Säkerhetspoäng](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -78,7 +78,7 @@ Identitetssäkerhetspoängen kan användas av följande roller:
 
 ### <a name="how-are-controls-scored"></a>Hur kommer kontrollerna att poängas?
 
-Kontrollerna kan betygas på två sätt. Vissa är i ett binärt läge – du får 100% av poängen om du har den funktion eller inställning som kon figurer ATS utifrån vår rekommendation. Andra Poäng beräknas som en procent andel av den totala konfigurationen. Om du till exempel får 30 poäng om du skyddar alla användare med MFA och du bara har 5 av 100 totalt antal användare skyddade får du en del Poäng runt 2 punkter (5 skyddade/100 totalt * 30 max punkter = 2 punkter del resultat).
+Kontrollerna kan betygas på två sätt. Vissa är i ett binärt läge – du får 100% av poängen om du har den funktion eller inställning som kon figurer ATS utifrån vår rekommendation. Andra Poäng beräknas som en procent andel av den totala konfigurationen. Om du till exempel får ett max värde på 10,71% om du skyddar alla användare med MFA och du bara har 5 av 100 användare som är skyddade, får du en del Poäng kring 0,53% (5 skyddade/100 totalt * 10,71% max = 0,53% partiella Poäng).
 
 ### <a name="what-does-not-scored-mean"></a>Vad betyder [Not Scored] ([Inte poängsatt])?
 
@@ -98,7 +98,7 @@ Det korta svaret är nej. De säkra poängen uttrycker inte ett absolut mått p�
 
 ### <a name="how-should-i-interpret-my-score"></a>Hur ska jag tolka mina poäng?
 
-Du får poäng när du konfigurerar rekommenderade säkerhetsfunktioner eller när du utför säkerhetsrelaterade uppgifter (som att läsa repporter). Vissa åtgärder poängsätts när de är delvis slutförda, som att aktivera multifaktorautentisering (MFA) för dina användare. Dina säkra poäng är direkt representativa för Microsofts säkerhets tjänster som du använder. Kom ihåg att säkerheten måste bal anse ras med användbarhet. Alla säkerhetskontroller har en komponent med användarpåverkan. Kontroller med låg användarpåverkan bör ha lite eller ingen effekt på användarnas dagliga åtgärder.
+Poängen har förbättrats för att konfigurera rekommenderade säkerhetsfunktioner eller utföra säkerhetsrelaterade uppgifter (t. ex. läsning av rapporter). Vissa åtgärder poängsätts när de är delvis slutförda, som att aktivera multifaktorautentisering (MFA) för dina användare. Dina säkra poäng är direkt representativa för Microsofts säkerhets tjänster som du använder. Kom ihåg att säkerheten måste bal anse ras med användbarhet. Alla säkerhetskontroller har en komponent med användarpåverkan. Kontroller med låg användarpåverkan bör ha lite eller ingen effekt på användarnas dagliga åtgärder.
 
 Om du vill se din resultat historik går du till [Microsoft 365 Security Center](https://security.microsoft.com/) och läser igenom dina totala säkra Microsoft-poäng. Du kan granska ändringar av den övergripande säkra poängen genom att klicka på Visa historik. Välj ett specifikt datum för att se vilka kontroller som hade aktiverats för den dagen och vilka poäng du har fått för varje kontroll.
 

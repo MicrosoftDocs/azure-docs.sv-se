@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: aa36d8522f548101ef3354237d93128b0f041eac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648969"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953688"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Självstudie: Azure Active Directory SSO-integrering med Kemp: LoadMaster Azure AD-integrering
 
@@ -371,8 +371,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal och du bör logga in automatiskt till den Kemp: LoadMaster Azure AD-integrering som du har konfigurerat SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Kemp: LoadMaster Azure AD-integration i Mina appar, bör du loggas in automatiskt på den Kemp: LoadMaster Azure AD-integration som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Kemp: LoadMaster Azure AD-integration i Mina appar, bör du loggas in automatiskt på den Kemp: LoadMaster Azure AD-integration som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Kemp: LoadMaster Azure AD-integrering kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Kemp: LoadMaster Azure AD-integrering kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

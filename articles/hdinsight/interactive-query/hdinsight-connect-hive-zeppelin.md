@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f758054f867c58dd4180fe5e728e66785e3b11
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941067"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869777"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Snabb start: köra Apache Hive frågor i Azure HDInsight med Apache Zeppelin
 
@@ -28,7 +28,7 @@ An-HDInsight interaktiv fråga-kluster. Se [skapa kluster](../hadoop/apache-hado
 
 2. Ange ditt användar namn och lösen ord för kluster inloggning. På sidan Zeppelin kan du antingen skapa en ny anteckning eller öppna befintliga anteckningar. **HiveSample** innehåller några exempel på Hive-frågor.  
 
-    ![Zeppelin för interaktiv HDInsight-fråga](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png" alt-text="Zeppelin för interaktiv HDInsight-fråga" border="true":::
 
 3. Välj **Skapa ny anteckning**.
 
@@ -46,7 +46,7 @@ An-HDInsight interaktiv fråga-kluster. Se [skapa kluster](../hadoop/apache-hado
     show tables
     ```
 
-    ![Zeppelin kör fråga för interaktiva frågor i HDInsight](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png" alt-text="Zeppelin kör fråga för interaktiva frågor i HDInsight" border="true":::
 
     **% JDBC (Hive)** -instruktionen på den första raden instruerar den bärbara datorn att använda Hive JDBC-tolken.
 

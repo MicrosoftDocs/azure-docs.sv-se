@@ -3,18 +3,18 @@ title: Beräkna benchmark-Poäng för virtuella Windows-datorer i Azure
 description: Jämför SPECint Compute benchmark Scores för virtuella Azure-datorer som kör Windows Server.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: azure-compute-unit
+ms.subservice: benchmark
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: bf809b695e8df14288c2c55e580ee76d37f487d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3cd1595f0c760ee8b749a0fedace6b55527bfab
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550781"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956204"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Beräkna benchmark-Poäng för virtuella Windows-datorer
 Följande SPECInt benchmark-resultat visar beräknings prestanda för utvalda virtuella Azure-datorer som kör Windows Server. Beräknings benchmark-resultat är också tillgängliga för [virtuella Linux-datorer](../linux/compute-benchmark-scores.md).

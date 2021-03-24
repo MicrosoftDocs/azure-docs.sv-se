@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0780f66c981f0cebebc1ab327d783954753db965
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946659"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866734"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Djupgående avancerad analys
 
@@ -20,7 +20,7 @@ HDInsight ger möjlighet att få värdefulla insikter från stora mängder struk
 
 ## <a name="advanced-analytics-process"></a>Avancerad analys process
 
-![Process flöde för avancerad analys](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png" alt-text="Process flöde för avancerad analys" border="false":::
 
 När du har identifierat affärs problemet och har börjat samla in och bearbeta dina data, måste du skapa en modell som representerar den fråga som du vill förutsäga. Din modell kommer att använda en eller flera Machine Learning-algoritmer för att göra den typ av förutsägelse som passar dina affärs behov bäst.  Majoriteten av dina data bör användas för att träna din modell, med resten som används för att testa eller utvärdera den.
 
@@ -30,7 +30,7 @@ När du har skapat, läst in, testat och utvärderat din modell är nästa steg 
 
 Avancerade analys lösningar tillhandahåller en uppsättning Machine Learning-algoritmer. Här är en sammanfattning av olika kategorier av algoritmer och associerade vanliga företags användnings fall.
 
-![Sammanfattningar av Machine Learning kategori](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png" alt-text="Sammanfattningar av Machine Learning kategori" border="false":::
 
 Tillsammans med att välja de bästa passnings algoritmerna måste du fundera över om du behöver ange data för träning. Machine Learning-algoritmer kategoriseras på följande sätt:
 
@@ -92,7 +92,7 @@ Det finns tre viktiga uppgifter i det här scenariot för avancerad analys:
 
 I det här exemplet används CIFAR-10-bilduppsättningen som kompileras och distribueras av Alex Krizhevsky, Nair och Geoffrey Hinton. CIFAR-10-datauppsättningen innehåller 60 000 32 × 32 färg bilder som tillhör 10 ömsesidigt uteslutande klasser:
 
-![Machine Learning exempel bilder](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png" alt-text="Machine Learning exempel bilder" border="false":::
 
 Mer information om data uppsättningen finns i Alex Krizhevsky s [Learning flera nivåer av funktioner från små bilder](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -105,7 +105,7 @@ Data uppsättningen har partitionerats i en tränings uppsättning på 50 000 av
 
 Hela förbearbetningen/poängen för 10 000-avbildningarna tar mindre än en minut på ett kluster med fyra arbetsnoder. Modellen förutsäger korrekt etiketter på ~ 9 100 (91%) avbildningar. En förvirring mat ris illustrerar de vanligaste klassificerings felen. Matrisen visar till exempel att fel märkning av hundar som katter och vice versa inträffar oftare än för andra etikett par.
 
-![Machine Learning resultat diagram](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png" alt-text="Machine Learning resultat diagram" border="false":::
 
 ### <a name="try-it-out"></a>Prova!
 

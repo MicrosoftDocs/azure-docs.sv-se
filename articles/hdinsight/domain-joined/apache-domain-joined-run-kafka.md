@@ -4,12 +4,12 @@ description: Självstudie – lär dig hur du konfigurerar Apache Ranger-princip
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933690"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866989"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Självstudie: Konfigurera Apache Kafka-principer i HDInsight med Enterprise Security Package (förhandsversion)
 
@@ -33,7 +33,7 @@ Ett [HDInsight Kafka-kluster med Enterprise Security Package](./apache-domain-jo
 
 2. Logga in med dina administratörsautentiseringsuppgifter för Azure Active Directory (AD). Azure AD-administratörsautentiseringsuppgifterna är inte samma som autentiseringsuppgifterna för HDInsight-kluster eller SSH-autentiseringsuppgifterna för Linux HDInsight-noder.
 
-   ![HDInsight Apache Ranger-administratörs gränssnitt](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger-administratörs gränssnitt" border="true":::
 
 ## <a name="create-domain-users"></a>Skapa domänanvändare
 
@@ -61,7 +61,7 @@ Skapa en Ranger-princip för **sales_user** och **marketing_user**.
    * ’*’ anger inga eller flera förekomster av tecken.
    * ’?’ anger ett enskilt tecken.
 
-   ![Apache Ranger admin-gränssnitt skapa Policy1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png" alt-text="Apache Ranger admin-gränssnitt skapa Policy1" border="true":::
 
    Vänta en stund medan Ranger synkroniserar med Azure AD om en domänanvändare inte automatiskt har fyllts i för **Välj användare**.
 
@@ -76,7 +76,7 @@ Skapa en Ranger-princip för **sales_user** och **marketing_user**.
    |Välj användare  |  marketing_user1 |
    |Behörigheter  | publish, consume, create |
 
-   ![Apache Ranger admin-gränssnitt skapa Policy2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png" alt-text="Apache Ranger admin-gränssnitt skapa Policy2" border="true":::  
 
 6. Välj **Lägg till** för att spara principen.
 
@@ -177,7 +177,7 @@ Baserat på Ranger-principerna som konfigurerats kan **sales_user** skapa/använ
 
 8. Granska åtkomsthändelserna i Ranger-användargränssnittet.
 
-   ![Ranger UI policy granska åtkomst händelser ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png" alt-text="Ranger UI policy granska åtkomst händelser " border="true":::
    
 ## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Skapa och använda ämnen i ESP-Kafka med hjälp av-konsolen
 

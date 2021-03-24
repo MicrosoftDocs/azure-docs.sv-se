@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/11/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802938"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955251"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Vad är nytt i Azure NetApp Files
 
@@ -27,7 +27,7 @@ Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en öve
 
 ## <a name="march-2021"></a>Mars 2021
 
-* SMB-resurser för kontinuerlig tillgänglighet (för hands version)  
+* [SMB-resurser för kontinuerlig tillgänglighet](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (för hands version)  
 
     SMB transparent redundans möjliggör underhålls åtgärder på tjänsten Azure NetApp Files utan att avbryta anslutningen till serverprogram som lagrar och använder data på SMB-volymer. För att ha stöd för transparent SMB-redundans stöder Azure NetApp Files nu alternativet SMB-resurser med kontinuerlig tillgänglighet för användning med SQL Server program över SMB som körs på virtuella Azure-datorer. Den här funktionen stöds för närvarande på Windows SQL Server. Linux-SQL Server stöds inte för närvarande. Att aktivera den här funktionen ger betydande SQL Server prestanda förbättringar och skalnings-och kostnads förmåner för [en enskild instans, Always-On redundanskluster och Always-On tillgänglighets grupps distributioner](azure-netapp-files-solution-architectures.md#sql-server). Se [fördelarna med att använda Azure NetApp Files för SQL Server-distribution](solutions-benefits-azure-netapp-files-sql-server.md).
 

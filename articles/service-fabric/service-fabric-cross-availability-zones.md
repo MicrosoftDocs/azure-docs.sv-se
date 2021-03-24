@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95ee4e5f326dd9b76645d22ff735bc36437c72fb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714960"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870132"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -35,7 +35,19 @@ Den rekommenderade topologin för den primära nodtypen kräver de resurser som 
 >[!NOTE]
 > Den virtuella datorns skal uppsättnings grupp egenskap för enskild placering måste anges till true, eftersom Service Fabric inte stöder en enskild skalnings uppsättning för virtuella datorer som omfattar zoner.
 
- ![Diagram som visar arkitekturen för Azure Service Fabric tillgänglighets zoner.][sf-architecture]
+Diagram som visar arkitektur diagrammet för Azure Service Fabric tillgänglighets zon ![ som visar Azure-Service Fabric tillgänglighets zon arkitekturen.][sf-architecture]
+
+Exempel på en Node-lista som illustrerar FD/UD-format i en virtuell dators skalnings uppsättningar zoner
+
+ ![Exempel på en Node-lista som illustrerar FD/UD-format i en skalnings zon för en virtuell dators skalnings uppsättning.][sf-multi-az-nodes]
+
+**Distribution av tjänst repliker över zoner**: när en tjänst distribueras på nodeTypes som omfattar zoner placeras replikerna för att se till att de hamnar i separata zoner. Detta är säkerställt eftersom fel domänen på noderna i var och en av dessa nodeTypes konfigureras med zon informationen (dvs. FD = fd:/zon 1/1 osv.). Till exempel: för 5 repliker eller instanser av en tjänst kommer fördelningen att bli 2-2-1 och körningen kommer att försöka se till att likvärdig distribution sker mellan AZs.
+
+**Konfiguration av användar tjänst replik**: tillstånds känsliga användar tjänster som distribuerats i nodeTypes för den globala tillgänglighets zonen ska konfigureras med den här konfigurationen: replik antal med Target = 9, min = 5. Den här konfigurationen hjälper tjänsten att fungera även när en zon slutar fungera eftersom 6 repliker fortfarande är i de andra två zonerna. En program uppgradering i ett sådant scenario kommer också att gå igenom.
+
+**Kluster ReliabilityLevel**: Detta definierar antalet startnoder i klustret och även replik storleken på system tjänsterna. När en zon för flera tillgänglighets zoner har ett högre antal noder, som är spridda över zoner för att aktivera zon återhämtning, säkerställer ett högre Tillförlitlighets värde noden fler Seed-noder och system tjänst repliker och är jämnt fördelade över zoner, så att i händelse av en zon fel i klustret och system tjänsterna förblir påverkade. "ReliabilityLevel = platina" ser till att det finns nio startnoder som sprids över zoner i klustret med 3 frön i varje zon, vilket är det rekommenderade för zonen för konfiguration av kors tillgänglighet.
+
+**Zon ned-scenario**: när en zon kraschar visas alla noder i zonen som de ska. Tjänst repliker på de här noderna visas också. Eftersom det finns repliker i de andra zonerna fortsätter tjänsten att svara med primära repliker som växlar över till de zoner som fungerar. Tjänsterna visas i varnings tillstånd eftersom antalet mål repliker ännu inte har uppnåtts och eftersom antalet virtuella datorer fortfarande är större än den minsta mål replik storleken. Därefter kommer Service Fabric belastningsutjämnare att ta upp repliker i de arbets zoner som matchar det konfigurerade antalet mål repliker. I det här läget kommer tjänsterna att visas felfria. När den zon som var nere är säkerhets kopieringen kommer belastnings utjämning att spridas igen alla tjänst repliker jämnt över alla zoner.
 
 ## <a name="networking-requirements"></a>Nätverkskrav
 ### <a name="public-ip-and-load-balancer-resource"></a>Offentlig IP-adress och Load Balancer resurs
@@ -345,7 +357,7 @@ Om du vill aktivera zoner i en skalnings uppsättning för virtuella datorer må
 
 * Det första värdet är egenskapen **zoner** , som anger Tillgänglighetszoner som finns i skalnings uppsättningen för den virtuella datorn.
 * Det andra värdet är egenskapen "singlePlacementGroup", som måste vara inställd på True. **Skalnings uppsättningen som sträcker sig över 3 AZ kan skala upp till 300 virtuella datorer även med "singlePlacementGroup = true".**
-* Det tredje värdet är "zoneBalance", vilket garanterar strikt zon utjämning. Detta bör vara "sant" för att undvika obalanserad distribution av virtuella datorer mellan zoner. Ett kluster med obalanserad VM-distribution i zoner är mindre troligt för att överleva zonen nedåt scenatio. Läs om [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* Det tredje värdet är "zoneBalance", vilket garanterar strikt zon utjämning. Detta ska vara "sant". Detta säkerställer att de virtuella dator distributionerna över zoner inte är obalanserade, vilket garanterar att när en av zonerna kraschar, har de andra två zonerna tillräckligt många virtuella datorer för att säkerställa att klustret fortsätter att köras avbrutet. Ett kluster med en obalanserad VM-distribution kanske inte överleva en zon ned-scenario eftersom zonen kan ha de flesta av de virtuella datorerna. Obalanserad VM-distribution i zoner leder också till tjänst placerings problem & infrastruktur uppdateringar blir fastnade. Läs om [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Åsidosättningar av Faulydomain och UpgradeDomain måste inte konfigureras.
 
 ```json
@@ -363,7 +375,7 @@ Om du vill aktivera zoner i en skalnings uppsättning för virtuella datorer må
 ```
 
 >[!NOTE]
-> * **SF-kluster måste ha minst en primär nodeType. DurabilityLevel för primär nodeTypes bör vara silver eller högre.**
+> * **Service Fabric kluster bör ha minst en primär nodeType. DurabilityLevel för primär nodeTypes bör vara silver eller högre.**
 > * Den AZ som sträcker sig över skalnings uppsättningen för den virtuella datorn ska konfigureras med minst tre tillgänglighets zoner oberoende av durabilityLevel.
 > * AZ som spänner över virtuell dators skalnings uppsättning med silver tålighet (eller högre) bör ha minst 15 virtuella datorer.
 > * AZ som sträcker sig över en virtuell dators skalnings uppsättning med brons hållbarhet bör ha minst 6 virtuella datorer.
@@ -373,13 +385,13 @@ Service Fabric nodeType måste vara aktive rad för att stödja flera tillgängl
 
 * Det första värdet är **multipleAvailabilityZones** som ska anges till sant för nodeType.
 * Det andra värdet är **sfZonalUpgradeMode** och är valfritt. Den här egenskapen kan inte ändras om en NodeType med flera AZ redan finns i klustret.
-      Egenskapen styr den logiska grupperingen av virtuella datorer i uppgraderings domäner.
-          Om värdet är inställt på "parallell": de virtuella datorerna under NodeType kommer att grupperas i UDs som ignorerar zon informationen i 5 UDs.
-          Om värdet utelämnas eller anges till "hierarkisk": de virtuella datorerna kommer att grupperas för att avspegla zonindelade-distributionen i upp till 15 UDs. Var och en av de tre zonerna kommer att ha 5 UDs.
-          Den här egenskapen definierar bara uppgraderings beteendet för ServiceFabric program och kod uppgraderingar. De underliggande uppgraderingarna av skalnings uppsättningen för virtuella datorer är fortfarande parallella i alla AZ.
-      Den här egenskapen påverkar inte UD-distributionen för nodtyper som inte har flera zoner aktiverade.
+  Egenskapen styr den logiska grupperingen av virtuella datorer i uppgraderings domäner.
+  **Om värdet är inställt på "parallellt":** Virtuella datorer under NodeType kommer att grupperas i UDs som ignorerar zon informationen i 5 UDs. Detta resulterar i UD0 över alla zoner för att uppgraderas på samma gång. Det här distributions läget är snabbare för uppgraderingar, men rekommenderas inte eftersom det går mot SDP-rikt linjerna, vilket innebär att uppdateringarna endast ska tillämpas en zon i taget.
+  **Om värdet utelämnas eller anges till "hierarkisk":** De virtuella datorerna kommer att grupperas för att avspegla zonindelade-distributionen i upp till 15 UDs. Var och en av de tre zonerna kommer att ha 5 UDs. Detta säkerställer att uppdateringarna går till nästa zon bara när du har slutfört 5 UDs i den första zonen, långsamt över 15 UDs (3 zoner, 5 UDs), vilket är säkrare från klustrets perspektiv och användar programmet.
+  Den här egenskapen definierar bara uppgraderings beteendet för ServiceFabric program och kod uppgraderingar. De underliggande uppgraderingarna av skalnings uppsättningen för virtuella datorer är fortfarande parallella i alla AZ.
+  Den här egenskapen påverkar inte UD-distributionen för nodtyper som inte har flera zoner aktiverade.
 * Det tredje värdet är **vmssZonalUpgradeMode = Parallel**. Detta är en *obligatorisk* egenskap som ska konfigureras i klustret, om en nodeType med flera AZS läggs till. Den här egenskapen definierar uppgraderings läget för de uppdateringar av skalnings uppsättningen för virtuella datorer som sker parallellt i alla AZ på en gång.
-      Just nu kan den här egenskapen bara ställas in på Parallel.
+  Just nu kan den här egenskapen bara ställas in på Parallel.
 * Service Fabric kluster resursens API version ska vara "2020-12-01-för hands version" eller högre.
 * Kluster kod versionen ska vara "7.2.445" eller högre.
 
@@ -408,7 +420,7 @@ Service Fabric nodeType måste vara aktive rad för att stödja flera tillgängl
 >[!NOTE]
 > * Offentliga IP-adresser och Load Balancer resurser ska använda standard-SKU: n enligt beskrivningen ovan i artikeln.
 > * Egenskapen "multipleAvailabilityZones" på nodeType kan bara definieras vid skapande av nodeType och kan inte ändras senare. Därför kan inte befintliga nodeTypes konfigureras med den här egenskapen.
-> * När "sfZonalUpgradeMode" utelämnas eller anges till "hierarkisk" kommer kluster-och program distributionen att gå långsammare eftersom det finns fler uppgraderings domäner i klustret. Det är viktigt att du ändrar tids gränsen för uppgraderings principen till att omfatta varaktigheten för uppgraderings tiden för 15 uppgraderings domäner.
+> * När "sfZonalUpgradeMode" utelämnas eller anges till "hierarkisk" kommer kluster-och program distributionen att gå långsammare eftersom det finns fler uppgraderings domäner i klustret. Det är viktigt att du ändrar tids gränsen för uppgraderings principen till att omfatta varaktigheten för uppgraderings tiden för 15 uppgraderings domäner. Uppgraderings principen för både appen och klustret bör uppdateras för att säkerställa att distributionen inte överskrider Azure-Serbice distributions-timeout för 12hours. Det innebär att distributionen inte bör ta mer än 12hours för 15UDs, dvs. bör inte ta mer än 40 min/UD.
 > * Ställ in klustret **reliabilityLevel = platina** för att se till att klustret överleva ett scenario med en zon.
 
 >[!NOTE]
@@ -426,3 +438,4 @@ Artikeln [här](./service-fabric-scale-up-primary-node-type.md) samlar in detalj
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
+[sf-multi-az-nodes]: ./media/service-fabric-cross-availability-zones/sf-multi-az-nodes.png

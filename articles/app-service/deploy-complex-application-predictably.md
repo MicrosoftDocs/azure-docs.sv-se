@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101095840"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951478"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Etablera och distribuera mikrotjänster förutsägbart i Azure
 Den här självstudien visar hur du etablerar och distribuerar ett program som består av [mikrotjänster](https://en.wikipedia.org/wiki/Microservices) i [Azure App Service](https://azure.microsoft.com/services/app-service/) som en enda enhet och på ett förutsägbart sätt med hjälp av JSON-mallar för resurs grupper och PowerShell-skript. 
@@ -45,7 +45,7 @@ Mer information finns i [använda Azure PowerShell med Azure Resource Manager](.
 Med det här för [hands versions verktyget](https://resources.azure.com) kan du utforska JSON-definitionerna för alla resurs grupper i din prenumeration och de enskilda resurserna. I verktyget kan du redigera JSON-definitionerna för en resurs, ta bort en hel hierarki med resurser och skapa nya resurser.  Den information som är tillgänglig i det här verktyget är mycket användbar för att skapa mallar, eftersom det visar vilka egenskaper du behöver ange för en viss typ av resurs, korrekta värden osv. Du kan även skapa en resurs grupp i [Azure Portal](https://portal.azure.com/)och sedan kontrol lera dess JSON-definitioner i Explorer-verktyget för att hjälpa dig att mallanpassa resurs gruppen.
 
 ### <a name="deploy-to-azure-button"></a>Distribuera till Azure (knapp)
-Om du använder GitHub för käll kontroll kan du placera en [distribuera till Azure-knapp](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) i din README. MD, som möjliggör ett användar gränssnitt för en nyckel distribution till Azure. Även om du kan göra detta för alla enkla appar kan du utöka det så att du kan distribuera en hel resurs grupp genom att placera en azuredeploy.jspå filen i lagrings platsens rot. Den här JSON-filen, som innehåller resurs grupp mal len, kommer att användas av knappen distribuera till Azure för att skapa resurs gruppen. Ett exempel finns i [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) -exemplet som du kommer att använda i den här självstudien.
+Om du använder GitHub för käll kontroll kan du placera en [distribuera till Azure-knapp](../azure-resource-manager/templates/deploy-to-azure-button.md) i din README. MD, som möjliggör ett användar gränssnitt för en nyckel distribution till Azure. Även om du kan göra detta för alla enkla appar kan du utöka det så att du kan distribuera en hel resurs grupp genom att placera en azuredeploy.jspå filen i lagrings platsens rot. Den här JSON-filen, som innehåller resurs grupp mal len, kommer att användas av knappen distribuera till Azure för att skapa resurs gruppen. Ett exempel finns i [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) -exemplet som du kommer att använda i den här självstudien.
 
 ## <a name="get-the-sample-resource-group-template"></a>Hämta mall för exempel resurs grupp
 Nu ska vi komma åt det.

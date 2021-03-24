@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 04da5d668515fe96d50d4e6a7d0f5ff1c4c48c27
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4aa25368e156ce793e969f866490352e253559fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931379"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871732"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrera HDInsight-kluster till en nyare version
 
@@ -24,7 +24,7 @@ För att kunna dra nytta av de senaste HDInsight-funktionerna rekommenderar vi a
 ## <a name="migration-tasks"></a>Migrera uppgifter
 
 Arbets flödet för att uppgradera HDInsight-kluster är följande.
-![Arbets flödes diagram för HDInsight-uppgradering](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png" alt-text="Arbets flödes diagram för HDInsight-uppgradering" border="false":::
 
 1. Läs varje avsnitt av det här dokumentet om du vill veta vilka ändringar som kan krävas när du uppgraderar ditt HDInsight-kluster.
 2. Skapa ett kluster som test/kvalitets säkrings miljö. Mer information om hur du skapar ett kluster finns i [Lär dig hur du skapar Linux-baserade HDInsight-kluster](hdinsight-hadoop-provision-linux-clusters.md)

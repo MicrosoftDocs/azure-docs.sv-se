@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: ddfffb77ca889aea9ff32c7be1ce2e4cb7fc04a7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037615"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Självstudie: Azure Active Directory integrering med LaunchDarkly
 
@@ -159,8 +159,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den LaunchDarkly som du ställer in SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen LaunchDarkly i Mina appar, bör du loggas in automatiskt på den LaunchDarkly som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen LaunchDarkly i Mina appar, bör du loggas in automatiskt på den LaunchDarkly som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat LaunchDarkly kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat LaunchDarkly kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209602"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951750"
 ---
 # <a name="managed-hsm-role-management"></a>Hantering av Managed HSM-roller
 
@@ -33,7 +33,7 @@ En lista över alla inbyggda roller för hanterad HSM och de åtgärder som de t
 Om du vill använda Azure CLI-kommandona i den här artikeln måste du ha följande objekt:
 
 * En prenumeration på Microsoft Azure. Om du inte har ett konto kan du registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial).
-* Azure CLI-versionen 2.12.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
+* Azure CLI-versionen 2.21.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
 * En hanterad HSM i din prenumeration. Se [snabb start: etablera och aktivera en hanterad HSM med Azure CLI](quick-create-cli.md) för att etablera och aktivera en hanterad HSM.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -113,6 +113,70 @@ Använd `az keyvault role definition list` kommandot för att lista alla roll de
 ```azurecli-interactive
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
+
+## <a name="create-a-new-role-definition"></a>Skapa en ny roll definition
+
+Hanterad HSM har flera inbyggda (fördefinierade) roller som är användbara för de flesta vanliga användnings scenarier. Du kan definiera en egen roll med en lista över specifika åtgärder som rollen kan utföra. Sedan kan du tilldela rollen till huvud kontona för att ge dem behörighet till de angivna åtgärderna. 
+
+Använd `az keyvault role definition create` kommandot för en roll med namnet **min anpassade roll** med hjälp av en JSON-sträng.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+    "roleName": "My Custom Role",
+    "description": "The description of the custom rule.",
+    "actions": [],
+    "notActions": [],
+    "dataActions": [
+        "Microsoft.KeyVault/managedHsm/keys/read/action"
+    ],
+    "notDataActions": []
+}'
+```
+
+Använd `az keyvault role definition create` kommandot för en roll från en fil med namnet **my-custom-role-definition.js** som innehåller JSON-strängen för en roll definition. Se exemplet ovan.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition @my-custom-role-definition.json
+```
+
+## <a name="show-details-of-a-role-definition"></a>Visa information om en roll definition
+
+Använd `az keyvault role definition show` kommandot för att se information om en speciell roll definition med hjälp av namn (en GUID).
+
+```azurecli-interactive
+az keyvault role definition show --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+## <a name="update-a-custom-role-definition"></a>Uppdatera en anpassad roll definition
+
+Använd `az keyvault role definition update` kommandot för att uppdatera en roll med namnet **min anpassade roll** med hjälp av en JSON-sträng.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+            "roleName": "My Custom Role",
+            "name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "id": "Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-
+        xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "The description of the custom rule.",
+            "actions": [],
+            "notActions": [],
+            "dataActions": [
+                "Microsoft.KeyVault/managedHsm/keys/read/action",
+                "Microsoft.KeyVault/managedHsm/keys/write/action",
+                "Microsoft.KeyVault/managedHsm/keys/backup/action",
+                "Microsoft.KeyVault/managedHsm/keys/create"
+            ],
+            "notDataActions": []
+        }'
+```
+
+## <a name="delete-custom-role-definition"></a>Ta bort anpassad roll definition
+
+Använd `az keyvault role definition delete` kommandot för att se information om en speciell roll definition med hjälp av namn (en GUID). 
+```azurecli-interactive
+az keyvault role definition delete --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+> [!NOTE]
+> Det går inte att ta bort inbyggda roller. När anpassade roller tas bort blir alla roll tilldelningar som använder den anpassade rollen felaktiga.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

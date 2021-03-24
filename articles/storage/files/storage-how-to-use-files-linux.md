@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673695"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952345"
 ---
 # <a name="use-azure-files-with-linux"></a>Använda Azure Files med Linux
 [Azure Files](storage-files-introduction.md) är Microsofts lättanvända filsystem i molnet. Azure-filresurser kan monteras i Linux-distributioner med [SMB-kernel-klienten](https://wiki.samba.org/index.php/LinuxCIFS). Den här artikeln visar två sätt att montera en Azure-fil resurs: på begäran med `mount` kommandot och i start genom att skapa en post i `/etc/fstab` .
@@ -94,7 +94,7 @@ uname -r
     Om du inte kan öppna port 445 i företagets nätverk eller om du inte är blockerad av en Internet leverantör kan du använda en VPN-anslutning eller ExpressRoute för att lösa port 445. Mer information finns i [nätverks överväganden för direkt åtkomst till Azure-filresurser](storage-files-networking-overview.md).
 
 ## <a name="mounting-azure-file-share"></a>Montera Azure-filresurs
-Om du vill använda en Azure-filresurs med din Linux-distribution måste du skapa en katalog som ska fungera som monterings punkt för Azure-filresursen. En monterings punkt kan skapas var som helst på Linux-systemet, men det är en vanlig konvention för att skapa den under/mnt. Efter monterings punkten använder du `mount` kommandot för att få åtkomst till Azure-filresursen.
+Om du vill använda en Azure-filresurs med din Linux-distribution måste du skapa en katalog som ska fungera som monterings punkt för Azure-filresursen. En monterings punkt kan skapas var som helst på Linux-systemet, men det är en vanlig konvention för att skapa den under/Mount. Efter monterings punkten använder du `mount` kommandot för att få åtkomst till Azure-filresursen.
 
 Du kan montera samma Azure-filresurs till flera monterings punkter om du vill.
 
@@ -106,7 +106,7 @@ Du kan montera samma Azure-filresurs till flera monterings punkter om du vill.
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ Du kan montera samma Azure-filresurs till flera monterings punkter om du vill.
 När du är färdig med Azure-filresursen kan du använda `sudo umount $mntPath` för att demontera resursen.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Skapa en permanent monterings punkt för Azure-filresursen med `/etc/fstab`
-1. **Skapa en mapp för monterings punkten**: en mapp för en monterings punkt kan skapas var som helst i fil systemet, men det är en vanlig konvention för att skapa den under/mnt. Följande kommando skapar till exempel en ny katalog, ersätter `<your-resource-group>` , `<your-storage-account>` och `<your-file-share>` med lämplig information för din miljö:
+1. **Skapa en mapp för monterings punkten**: en mapp för en monterings punkt kan skapas var som helst i fil systemet, men det är en vanlig konvention för att skapa den under/Mount. Följande kommando skapar till exempel en ny katalog, ersätter `<your-resource-group>` , `<your-storage-account>` och `<your-file-share>` med lämplig information för din miljö:
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```

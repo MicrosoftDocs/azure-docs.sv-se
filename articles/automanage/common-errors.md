@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 2bdf04143121e1286ffc7bfa86b4a9ee291ae6ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18165ce5f39b32fe1c5af28bc88e8e1bd0e9cb62
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561874"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955558"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Felsök vanliga fel vid autohantering av onboarding
 Den automatiska hanteringen kan Miss lyckas med att publicera en dator på tjänsten. Det här dokumentet innehåller information om hur du felsöker distributions fel, delar några vanliga orsaker till att distributioner kan Miss lyckas och beskriver potentiella nästa steg i minskningen.
@@ -38,7 +38,11 @@ Fel |  Åtgärd
 :-----|:-------------|
 Fel vid autohantering av konto för otillräcklig behörighet | Detta kan inträffa om du nyligen har flyttat en prenumeration som innehåller ett nytt konto för autohantering till en ny klient. Steg för att lösa detta finns [här](./repair-automanage-account.md).
 Området för arbets ytan matchar inte region mappnings kraven | Det gick inte att publicera datorn utan den Log Analytics arbets ytan som datorn är länkad till är inte mappad till en Automation-region som stöds. Se till att din befintliga Log Analytics arbets yta och Automation-konto finns i en [region mappning som stöds](../automation/how-to/region-mappings.md).
-"Åtkomst nekad på grund av neka-tilldelningen med namnet" system neka tilldelning skapad av det hanterade programmet " | En [roleassignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) skapades på din resurs som förhindrade autohantering från att komma åt din resurs. Detta kan ha orsakats av antingen en [skiss](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) eller ett [hanterat program](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview).
+"Åtkomst nekad på grund av neka-tilldelningen med namnet" system neka tilldelning skapad av det hanterade programmet " | En [roleassignment](../role-based-access-control/deny-assignments.md) skapades på din resurs som förhindrade autohantering från att komma åt din resurs. Detta kan ha orsakats av antingen en [skiss](../governance/blueprints/concepts/resource-locking.md) eller ett [hanterat program](../azure-resource-manager/managed-applications/overview.md).
+"OS-information: Name =" (null) ", ver =" (null) ", agent status =" inte redo ". | Kontrol lera att du kör en [agent version som stöds](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)och att agenten körs ([Linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) och [Windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) och att agenten är uppdaterad ([Linux](../virtual-machines/extensions/update-linux-agent.md) och [Windows](../virtual-machines/extensions/agent-windows.md)).
+"Den virtuella datorn rapporterade ett problem när tillägget" IaaSAntimalware "bearbetades | Se till att du inte har något annat program mot skadlig kod/antivirus som redan är installerat på den virtuella datorn. Kontakta supporten om det inte går.
+ASC-arbets yta: automanage stöder för närvarande inte Log Analytics tjänsten på _platsen_. | Kontrol lera att den virtuella datorn finns i en [region som stöds](./automanage-virtual-machines.md#supported-regions).
+Mallen kunde inte distribueras på grund av en princip överträdelse. Mer information finns i informationen. | Det finns en princip som förhindrar autohantering från att publicera den virtuella datorn. Kontrol lera de principer som tillämpas på din prenumeration eller resurs grupp som innehåller den virtuella dator som du vill publicera för att hantera.
 "Tilldelningen misslyckades; Det finns ingen ytterligare information tillgänglig " | Öppna ett ärende med Microsoft Azure support.
 
 ## <a name="next-steps"></a>Nästa steg

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7c5fbbd8cdfd75819bffcfb93fc81900feb4a612
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d965ec2f846f09dd61342b3961e7ea8106f6a19f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101652376"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954895"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azures säkerhets bas linje för API Management
 
@@ -52,7 +52,7 @@ Inkommande och utgående trafik till under nätet där API Management distribuer
 
 Varning: när du konfigurerar en NSG på API Management under nätet, finns det en uppsättning portar som måste vara öppna. Om någon av dessa portar är otillgänglig kanske API Management inte fungerar korrekt och kan bli oåtkomlig.
 
-- [Förstå NSG-konfigurationer för Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Förstå NSG-konfigurationer för Azure API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 - [Så här aktiverar du NSG Flow-loggar](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -75,7 +75,7 @@ OBS! den här funktionen är tillgänglig på nivån Premium och Developer för 
 
 - [Så här integrerar du API Management i ett internt virtuellt nätverk med Application Gateway](api-management-howto-integrate-internal-vnet-appgateway.md)
 
-- [Förstå Azure Application Gateway](/azure/application-gateway/)
+- [Förstå Azure Application Gateway](../application-gateway/index.yml)
 
 **Ansvar**: Kund
 
@@ -96,7 +96,7 @@ Använd Azure Security Center integrerad Hot information för att neka kommunika
 
 - [Så här integrerar du API Management i ett internt virtuellt nätverk med Application Gateway](api-management-howto-integrate-internal-vnet-appgateway.md)
 
-- [Förstå Azure Application Gateway](/azure/application-gateway/)
+- [Förstå Azure Application Gateway](../application-gateway/index.yml)
 
 - [Förstå Azure Security Center integrerad Hot information](../security-center/azure-defender.md)
 
@@ -110,7 +110,7 @@ Använd Azure Security Center integrerad Hot information för att neka kommunika
 
 Varning: när du konfigurerar en NSG på API Management under nätet, finns det en uppsättning portar som måste vara öppna. Om någon av dessa portar är otillgänglig kanske API Management inte fungerar korrekt och kan bli oåtkomlig.
 
-- [Förstå NSG-konfigurationer för Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Förstå NSG-konfigurationer för Azure API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 - [Så här aktiverar du NSG Flow-loggar](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -160,7 +160,7 @@ OBS! den här funktionen är tillgänglig på nivån Premium och Developer för 
 
 - [Azure Web Application-brandvägg på Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
 
-- [Förstå Azure Application Gateway](/azure/application-gateway/overview)
+- [Förstå Azure Application Gateway](../application-gateway/overview.md)
 
 **Ansvar**: Kund
 
@@ -174,7 +174,7 @@ Varning: när du konfigurerar en NSG på API Management under nätet, finns det 
 
 - [Förstå och använda service märken](../virtual-network/service-tags-overview.md)
 
-- [Portar som krävs för API Management](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Portar som krävs för API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **Ansvar**: Kund
 
@@ -198,7 +198,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd taggar för nätverks säkerhets grupper (NSG: er) och andra resurser som rör nätverks säkerhets-och trafikflödet. För enskilda NSG-regler kan du använda fältet Beskrivning för att ange affärs behov och/eller varaktighet (osv.) för alla regler som tillåter trafik till/från ett nätverk.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Så här skapar du en Virtual Network](../virtual-network/quick-create-portal.md)
 
@@ -212,9 +212,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar av nätverks resurser som är associerade med dina Azure API Management-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -232,7 +232,7 @@ Förutom Azure Monitor kan Azure API Management integreras med en eller flera Az
 
 Du kan också aktivera och inaktivera data till Azure Sentinel eller en säkerhets incident och händelse hantering (SIEM) från tredje part.
 
-- [Konfigurera diagnostikinställningar](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [Konfigurera diagnostikinställningar](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -252,9 +252,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en säkerhe
 
 För gransknings loggning av data planet ger diagnostikloggar omfattande information om åtgärder och fel som är viktiga för granskning och fel söknings syfte. Diagnostikloggar skiljer sig från aktivitetsloggar. Aktivitetsloggar ger insikt i de åtgärder som vidtogs för dina Azure-resurser. Diagnostikloggar ger information om åtgärder som din resurs har vidtagit.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure API Management](/Azure/api-management/api-management-howto-use-azure-monitor#resource-logs)
+- [Så här aktiverar du diagnostikinställningar för Azure API Management](./api-management-howto-use-azure-monitor.md#resource-logs)
 
 **Ansvar**: Kund
 
@@ -264,9 +264,9 @@ För gransknings loggning av data planet ger diagnostikloggar omfattande informa
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Så här arkiverar du loggar till ett Azure Storage konto](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [Så här arkiverar du loggar till ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Ansvar**: Kund
 
@@ -278,11 +278,11 @@ För gransknings loggning av data planet ger diagnostikloggar omfattande informa
 
 Du kan också integrera API Management med Azure Application insikter och använda den som primär eller sekundär övervaknings-, spårnings-, rapporterings-och aviserings verktyg.
 
-- [Så här övervakar och granskar du loggar för Azure API Management](/Azure/api-management/api-management-howto-use-azure-monitor)
+- [Så här övervakar och granskar du loggar för Azure API Management](./api-management-howto-use-azure-monitor.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-- [Förstå Log Analytics arbets yta](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
 - [Integrera med Azure Application Insights](api-management-howto-app-insights.md)
 
@@ -300,11 +300,11 @@ Du kan också integrera API Management med Azure Application insikter och använ
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#resource-logs)
+- [Så här aktiverar du diagnostikinställningar för Azure API Management](./api-management-howto-use-azure-monitor.md#resource-logs)
 
-- [Så här konfigurerar du en varnings regel för Azure API Management](/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+- [Så här konfigurerar du en varnings regel för Azure API Management](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 - [Visa kapacitets mått för en Azure API Management-instans](api-management-capacity.md)
 
@@ -338,7 +338,7 @@ Följ rekommendationer från Azure Security Center för hantering och underhåll
 
 - [Så här hämtar du en katalog Rolls definition i Azure AD med PowerShell](/powershell/module/az.resources/get-azroledefinition)
 
-- [Förstå identitets-och åtkomst rekommendationer från Azure Security Center](https://docs.microsoft.com/azure/security-center/recommendations-reference#identityandaccess-recommendations)
+- [Förstå identitets-och åtkomst rekommendationer från Azure Security Center](../security-center/recommendations-reference.md#identityandaccess-recommendations)
 
 **Ansvar**: Kund
 
@@ -419,7 +419,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 - [Distribuera Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Förstå identifieringar av Azure AD-risker](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Förstå identifieringar av Azure AD-risker](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Ansvar**: Kund
 
@@ -505,7 +505,7 @@ Konfigurera avancerad övervakning med API Management med hjälp av `log-to-even
 
 **Vägledning**: för konto inloggning beteende avvikelse i kontroll planet (Azure Portal) använder du Azure Active Directory (Azure AD) identitets skydd och funktioner för identifiering av risker för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -519,7 +519,7 @@ Konfigurera avancerad övervakning med API Management med hjälp av `log-to-even
 
 **Vägledning**: inte tillgänglig för närvarande. Customer Lockbox stöds för närvarande inte för Azure API Management.
 
-- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -533,7 +533,7 @@ Konfigurera avancerad övervakning med API Management med hjälp av `log-to-even
 
 **Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -543,11 +543,11 @@ Konfigurera avancerad övervakning med API Management med hjälp av `log-to-even
 
 **Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. Azure API Management-instanser ska avgränsas av Virtual Network (VNet)/Subnet och taggas på lämpligt sätt.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
 - [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Använda Azure API Management med virtuella nätverk](api-management-using-with-vnet.md)
 
@@ -571,7 +571,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure API Management o
 
 **Vägledning**: hanterings Plans anrop görs via Azure Resource Manager via TLS. En giltig JSON Web token (JWT) krävs. Data Plans anrop kan skyddas med TLS och en av de autentiseringsmekanismer som stöds (till exempel klient certifikat eller JWT).
 
-- [Förstå data skydd i Azure API Management](/azure/api-management/api-management-security-controls#data-protection)
+- [Förstå data skydd i Azure API Management](#data-protection)
 
 - [Hantera TLS-inställningar i Azure API Management](api-management-howto-manage-protocols-ciphers.md)
 
@@ -621,7 +621,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure API Management o
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions Azure Functions appar samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Använda Azure Monitor och Azure aktivitets logg i Azure API Management](api-management-howto-use-azure-monitor.md)
 
@@ -639,7 +639,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure API Management o
 
 Underliggande plattform som genomsöks och korrigeras av Microsoft. Granska säkerhets kontroller som är tillgängliga för att minska säkerhets risker för tjänst konfiguration.
 
-- [Förstå säkerhets kontroller som är tillgängliga för Azure API Management](/azure/api-management/api-management-security-controls)
+- [Förstå säkerhets kontroller som är tillgängliga för Azure API Management]()
 
 **Ansvar**: Kund
 
@@ -675,7 +675,6 @@ Underliggande plattform som genomsöks och korrigeras av Microsoft. Granska säk
 
 Underliggande plattform som genomsöks och korrigeras av Microsoft. Kunden att granska säkerhets kontroller som är tillgängliga för att minska säkerhets risker för tjänst konfigurationen.
 
-- [Förstå säkerhets kontroller som är tillgängliga för Azure API Management](/azure/api-management/api-management-security-controls)
 
 **Ansvar**: Kund
 
@@ -693,7 +692,7 @@ Underliggande plattform som genomsöks och korrigeras av Microsoft. Kunden att g
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -705,7 +704,7 @@ Underliggande plattform som genomsöks och korrigeras av Microsoft. Kunden att g
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -719,11 +718,11 @@ Använd dessutom Azure policy för att ange begränsningar för den typ av resur
 - Otillåtna resurstyper
 - Tillåtna resurstyper
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
 - [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -785,7 +784,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -835,7 +834,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: definiera och implementera standardkonfigurationer för dina Azure API Management-tjänster med Azure policy. Använd Azure Policy alias i namn området "Microsoft. API Management" om du vill skapa anpassade principer för granskning eller tillämpa konfigurationen för Azure API Management-tjänsterna.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -939,7 +938,7 @@ Definiera och implementera standard säkerhetskonfigurationer för Azure API Man
 
 - [Så här skapar du en hanterad identitet för en API Management instans](api-management-howto-use-managed-service-identity.md)
 
-- [Princip för att autentisera med hanterad identitet](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+- [Princip för att autentisera med hanterad identitet](./api-management-authentication-policies.md#ManagedIdentity)
 
 **Ansvar**: Kund
 
@@ -1001,7 +1000,7 @@ Säkerhets kopierings-och återställnings funktionerna i API Management ger nö
 
 - [Så här distribuerar du API Management data plan till flera regioner](api-management-howto-deploy-multi-region.md)
 
-- [Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 - [Så här anropar du säkerhets kopierings åtgärden för API Management](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
 
@@ -1017,9 +1016,9 @@ Säkerhets kopierings-och återställnings funktionerna i API Management ger nö
 
 Hanterade identiteter kan användas för att hämta certifikat från Azure Key Vault för API Management anpassade domän namn. Säkerhetskopiera alla certifikat som lagras i Azure Key Vault.
 
-- [Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-- [Säkerhetskopiera Azure Key Vault certifikat](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [Säkerhetskopiera Azure Key Vault certifikat](/powershell/module/az.keyvault/backup-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Kund
 
@@ -1041,7 +1040,7 @@ Hanterade identiteter kan användas för att hämta certifikat från Azure Key V
 
 **Vägledning**: Azure API Management skriver säkerhets kopior till kundägda Azure Storage-konton. Följ Azure Storage säkerhets rekommendationer för att skydda säkerhets kopian.
 
-- [Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 - [Säkerhets rekommendation för Blob Storage](../storage/blobs/security-recommendations.md)
 
@@ -1079,7 +1078,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 - [Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Använda taggar för att organisera dina Azure-resurser](/azure/azure-resource-manager/resource-group-using-tags)
+- [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -1143,5 +1142,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

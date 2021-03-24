@@ -2,13 +2,13 @@
 title: Jobb storleken överskred felet
 description: Beskriver hur du felsöker fel när jobb storleken eller mallen är för stor.
 ms.topic: troubleshooting
-ms.date: 01/19/2021
-ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/23/2021
+ms.openlocfilehash: b39a0bba15e73bab1a85cbd9e36efebf82d6cf42
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98610411"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889373"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Fel för jobb storleken har överskridits
 
@@ -24,7 +24,6 @@ Du får det här felet när distributionen överskrider en av de tillåtna grän
 
 Distributions jobbet får inte överstiga 1 MB. Jobbet innehåller metadata om förfrågan. För stora mallar kan metadata tillsammans med mallen överskrida den tillåtna storleksgränsen för jobb.
 
-
 Mallen får inte överstiga 4 MB. Gränsen på 4 MB gäller för mallens slutliga tillstånd när den har expanderats för resurs definitioner som använder [copy](copy-resources.md) för att skapa många instanser. Sluttillståndet omfattar även matchade värden för variabler och parametrar.
 
 Andra gränser för mallen är:
@@ -35,6 +34,20 @@ Andra gränser för mallen är:
 * 64-utmatnings värden
 * 24 576 tecken i ett mall uttryck
 
+När du använder kopierings slingor för att distribuera resurser ska du inte använda loop-namnet som ett beroende:
+
+```json
+dependsOn: [ "nicLoop" ]
+```
+
+Använd i stället den instans av resursen från den loop som du behöver vara beroende av. Exempel:
+
+```json
+dependsOn: [
+    "[resourceId('Microsoft.Network/networkInterfaces', concat('nic-', copyIndex()))]"
+]
+```
+
 ## <a name="solution-1---simplify-template"></a>Lösning 1 – förenkla mall
 
 Ditt första alternativ är att förenkla mallen. Det här alternativet fungerar när mallen distribuerar många olika resurs typer. Överväg att dela upp mallen i [länkade mallar](linked-templates.md). Dela dina resurs typer i logiska grupper och Lägg till en länkad mall för varje grupp. Om du till exempel behöver distribuera många nätverks resurser kan du flytta dessa resurser till en länkad mall.
@@ -44,7 +57,3 @@ Du kan ange andra resurser som beroende av den länkade mallen och [Hämta värd
 ## <a name="solution-2---reduce-name-size"></a>Lösning 2 – minska namn storlek
 
 Försök att förkorta längden på de namn du använder för [parametrar](template-parameters.md), [variabler](template-variables.md)och [utdata](template-outputs.md). När dessa värden upprepas genom kopierings slingor multipliceras ett stort namn flera gånger.
-
-## <a name="solution-3---use-serial-copy"></a>Lösning 3 – Använd serie kopia
-
-Överväg att ändra din kopierings slinga från [parallell till seriell bearbetning](copy-resources.md#serial-or-parallel). Använd bara det här alternativet när du misstänker att felet kommer från att distribuera ett stort antal resurser genom kopiering. Den här ändringen kan öka distributions tiden avsevärt eftersom resurserna inte distribueras parallellt.

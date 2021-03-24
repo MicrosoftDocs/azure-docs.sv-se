@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149711"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954657"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
@@ -129,9 +129,7 @@ Resultatet av att ringa `object result = await client.GetDigitalTwinAsync("my-mo
 
 De definierade egenskaperna för den digitala kanten returneras som toppnivå egenskaper på den digitala dubbla. Metadata-eller system information som inte ingår i DTDL-definitionen returneras med ett `$` prefix. Metadata-egenskaperna innehåller följande värden:
 * `$dtId`: ID: t för den digitala dubbla i den här Azure Digital-instansen
-* `$etag`: Ett standard-HTTP-fält som tilldelas av webb servern. Detta uppdateras till ett nytt värde varje gång den dubbla uppdateras, vilket kan vara användbart för att avgöra om den dubbla data har uppdaterats på servern sedan en tidigare kontroll. Den kan också användas i HTTP-huvuden på följande sätt:
-  - med Läs åtgärder för att undvika att hämta innehåll som inte har ändrats
-  - med Skriv åtgärder för att stödja optimistisk samtidighet
+* `$etag`: Ett standard-HTTP-fält som tilldelas av webb servern. Detta uppdateras till ett nytt värde varje gång den dubbla uppdateras, vilket kan vara användbart för att avgöra om den dubbla data har uppdaterats på servern sedan en tidigare kontroll. Du kan använda `If-Match` för att utföra uppdateringar och borttagningar som bara slutförs om entitetens etag matchar etag som anges. Mer information om dessa åtgärder finns i dokumentationen för [DigitalTwins Update](/rest/api/digital-twins/dataplane/twins/digitaltwins_update) och [DigitalTwins Delete](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete).
 * `$metadata`: En uppsättning andra egenskaper, inklusive:
   - DTMI för den digitala dubbla.
   - Synkroniseringsstatus för varje skrivbar egenskap. Detta är mest användbart för enheter, där det är möjligt att tjänsten och enheten har avvikande status (till exempel när en enhet är offline). Den här egenskapen gäller för närvarande endast för fysiska enheter som är anslutna till IoT Hub. Med data i avsnittet metadata är det möjligt att förstå fullständig status för en egenskap samt de senast ändrade tidsstämplar. Mer information om synkroniseringsstatus finns i [den här IoT Hub själv studie kursen](../iot-hub/tutorial-device-twins.md) om synkronisering av enhets status.

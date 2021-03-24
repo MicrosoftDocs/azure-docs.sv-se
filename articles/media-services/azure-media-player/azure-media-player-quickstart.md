@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879198"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956068"
 ---
 # <a name="azure-media-player-quickstart"></a>Snabbstart för Azure Media Player
 Azure Media Player är enkelt att konfigurera. Det tar bara några minuter att få en grundläggande uppspelning av medie innehåll från ditt Azure Media Services-konto. I det här avsnittet visas de grundläggande stegen utan mer detaljerad information. I avsnitten som följer får du information om hur du konfigurerar och konfigurerar Azure Media Player.  Lägg bara till följande inkluderingar i dokumentets `<head>`:
@@ -39,7 +39,7 @@ Sedan använder `<video>` du bara elementet som vanligt, men med ett ytterligare
 
 Om du inte vill använda automatisk installation kan du utelämna `data-setup` attributet och initiera ett video element manuellt.
 
-```html
+```javascript
     var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: false,
@@ -52,7 +52,7 @@ Om du inte vill använda automatisk installation kan du utelämna `data-setup` a
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

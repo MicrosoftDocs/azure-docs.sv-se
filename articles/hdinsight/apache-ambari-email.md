@@ -4,12 +4,12 @@ description: Den här artikeln beskriver hur du använder SendGrid med Apache Am
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946976"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867210"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Självstudie: Konfigurera Apache Ambari-e-postmeddelanden i Azure HDInsight
 
@@ -33,15 +33,15 @@ I den här guiden får du lära dig att:
 
 1. På sidan Översikt väljer du **Hantera** för att gå till SendGrid-webbsidan för ditt konto.
 
-    ![Översikt över SendGrid i Azure Portal](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="Översikt över SendGrid i Azure Portal":::
 
 1. I den vänstra menyn navigerar du till ditt konto namn och sedan **konto information**.
 
-    ![SendGrid instrument panels navigering](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="SendGrid instrument panels navigering":::
 
 1. På sidan **konto information** registrerar du **användar namnet**.
 
-    ![SendGrid-konto information](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="SendGrid-konto information":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>Konfigurera e-postavisering om Ambari
 
@@ -51,7 +51,7 @@ I den här guiden får du lära dig att:
 
 1. Välj ikonen i fönstret **Hantera aviserings meddelanden** **+** .
 
-    ![Skärm bild som visar dialog rutan hantera aviserings meddelanden.](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="Skärm bild som visar dialog rutan hantera aviserings meddelanden.":::
 
 1. I dialog rutan **skapa aviserings meddelande** anger du följande information:
 
@@ -72,7 +72,7 @@ I den här guiden får du lära dig att:
     |Bekräfta lösen ord|Ange lösenordet igen.|
     |Starta TLS|Markera den här kryss rutan|
 
-    ![Skärm bild som visar dialog rutan skapa aviserings meddelande.](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="Skärm bild som visar dialog rutan skapa aviserings meddelande.":::
 
     Välj **Spara**. Du kommer tillbaka till fönstret **Hantera aviserings meddelanden** .
 
