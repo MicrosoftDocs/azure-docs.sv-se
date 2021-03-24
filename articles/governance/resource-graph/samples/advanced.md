@@ -1,14 +1,14 @@
 ---
 title: Exempel på avancerade frågor
 description: Använd Azure Resource Graph för att köra vissa avancerade frågor, inklusive arbeta med kolumner, list etiketter som används och matchande resurser med reguljära uttryck.
-ms.date: 01/27/2021
+ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5a87d63e597622ae5c0d8c8f48bc37281d4fd530
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99560345"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949863"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Exempel på avancerade resurs diagram frågor
 
@@ -28,7 +28,6 @@ Vi går igenom följande avancerade frågor:
 - [Lista alla tillägg som är installerade på en virtuell dator](#join-vmextension)
 - [Hitta lagrings konton med en speciell tagg i resurs gruppen](#join-findstoragetag)
 - [Kombinera resultat från två frågor till ett enda resultat](#unionresults)
-- [Inkludera klient-och prenumerations namn med DisplayName](#displaynames)
 - [Sammanfatta virtuell dator med den utökade egenskapen energi spar läge](#vm-powerstate)
 - [Antal icke-kompatibla gäst konfigurations tilldelningar](#count-gcnoncompliant)
 - [Fråga efter information om tilldelnings rapporter för gäst konfiguration](#query-gcreports)
@@ -559,26 +558,6 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 - Azure-portalen: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com</a>
 - Azure Government Portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">Portal.Azure.us</a>
 - Azure Kina 21Vianet-portalen: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">Portal.Azure.cn</a>
-
----
-
-## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>Inkludera klient-och prenumerations namn med DisplayName
-
-Den här frågan använder parametern **include** med alternativ- _DisplayName_ för att lägga till **subscriptionDisplayName** och **tenantDisplayName** i resultatet. Den här parametern är endast tillgänglig för Azure CLI och Azure PowerShell.
-
-```azurecli-interactive
-az graph query -q "limit 1" --include displayNames
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "limit 1" -Include DisplayNames
-```
-
-Ett alternativ till att hämta prenumerations namnet är att använda `join` operatorn och ansluta till **ResourceContainers** -tabellen och `Microsoft.Resources/subscriptions` typen. `join` fungerar i Azure CLI, Azure PowerShell, Portal och alla SDK: er som stöds. Ett exempel finns i [exempel på nyckel valv med prenumerations namn](#join).
-
-> [!NOTE]
-> Om frågan inte använder **Project** för att ange de returnerade egenskaperna, inkluderas **subscriptionDisplayName** och **tenantDisplayName** automatiskt i resultaten.
-> Om frågan använder **Project** måste var och en av _DisplayName_ -fälten uttryckligen tas med i **projektet** , annars returneras de inte i resultaten, även om parametern **include** används. Parametern **include** fungerar inte med [tabeller](../concepts/query-language.md#resource-graph-tables).
 
 ---
 

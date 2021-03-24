@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95016759"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950747"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Metodtips för att välja Time Series ID-värde
 
@@ -24,6 +24,11 @@ Den här artikeln sammanfattar vikten av Time Series-ID: t för din Azure Time S
 ## <a name="choose-a-time-series-id"></a>Välj ett Time Series-ID
 
 Att välja ett lämpligt tids serie-ID är kritiskt. Att välja ett Time Series-ID är som att välja en partitionsnyckel för en databas. Det krävs när du skapar en Azure Time Series Insights Gen2-miljö.
+
+Titta på självstudien om miljö etablering för en detaljerad förklaring av Time Series-ID: t. Du kommer att se två olika exempel på JSON-telemetri och rätt tids serie-ID för var och en.</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
 
 > [!IMPORTANT]
 > Time Series-ID: n är:

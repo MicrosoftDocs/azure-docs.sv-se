@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596033"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871205"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Övervaka App Service instanser med hjälp av hälso kontroll
 
@@ -48,7 +48,7 @@ I den här artikeln används hälso kontroll i Azure Portal för att övervaka A
 
 Förutom att konfigurera hälso kontroll alternativen kan du också konfigurera följande [Inställningar för appen](configure-common.md):
 
-| Namn på App-inställning | Tillåtna värden | Description |
+| Namn på App-inställning | Tillåtna värden | Beskrivning |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximalt antal ping-försök. Om till exempel är inställt på `2` , tas instanserna bort efter `2` misslyckade ping-signaler. När du skalar upp eller ut, kommer App Service pinga till hälso kontroll Sök vägen för att se till att nya instanser är klara. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | För att undvika överbelastande av felfria instanser kommer högst hälften av instanserna att undantas. Till exempel, om en App Service plan skalas till fyra instanser och tre inte är felfria, kommer högst två att undantas. De andra två instanserna (en felfri och en skadad) fortsätter att ta emot begär Anden. I värsta fall där alla instanser är felaktiga kommer ingen att undantas. Om du vill åsidosätta det här beteendet ställer du in app-inställningen på ett värde mellan `0` och `100` . Ett högre värde innebär att fler felaktiga instanser tas bort (standard är 50). |
@@ -57,7 +57,7 @@ Förutom att konfigurera hälso kontroll alternativen kan du också konfigurera 
 
 Hälso kontrollen integreras med App Service funktioner för autentisering och auktorisering. Inga ytterligare inställningar krävs om de här säkerhetsfunktionerna är aktiverade. Om du använder ditt eget autentiseringspaket måste dock hälso kontroll Sök vägen tillåta anonym åtkomst. Om platsen bara är HTTP **s**– aktive rad skickas begäran om hälso kontroll via http **s**.
 
-Stora företags utvecklings team behöver ofta följa säkerhets kraven för exponerade API: er. Om du vill skydda hälso kontrollens slut punkt bör du först använda funktioner som [IP-begränsningar](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [klient certifikat](app-service-ip-restrictions.md#set-an-ip-address-based-rule)eller en Virtual Network för att begränsa åtkomsten till programmet. Du kan skydda hälso kontroll slut punkten genom att kräva att `User-Agent` den inkommande begäran matchar `ReadyForRequest/1.0` . User-Agent kan inte manipuleras eftersom begäran redan skyddas av tidigare säkerhetsfunktioner.
+Stora företags utvecklings team behöver ofta följa säkerhets kraven för exponerade API: er. Om du vill skydda hälso kontrollens slut punkt bör du först använda funktioner som [IP-begränsningar](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [klient certifikat](app-service-ip-restrictions.md#set-an-ip-address-based-rule)eller en Virtual Network för att begränsa åtkomsten till programmet. Du kan skydda hälso kontroll slut punkten genom att kräva att `User-Agent` den inkommande begäran matchar `HealthCheck/1.0` . User-Agent kan inte manipuleras eftersom begäran redan skyddas av tidigare säkerhetsfunktioner.
 
 ## <a name="monitoring"></a>Övervakning
 

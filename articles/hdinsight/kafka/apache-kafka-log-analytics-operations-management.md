@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 74db121c33864ee72ad984b49c8fa43afa0f598c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595292"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870525"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysera loggar för Apache Kafka i HDInsight
 
@@ -97,7 +97,7 @@ Stegen för att aktivera Azure Monitor loggar för HDInsight är desamma för al
     | Logga \_ kafkacontroller \_ cl | Kafka Broker-styrenhet. log |
     | mått \_ Kafka \_ cl | Kafka JMX-mått |
 
-    ![Apache Kafka Log Analytics CPU-användning](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+    :::image type="content" source="./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png" alt-text="Apache Kafka Log Analytics CPU-användning" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -2,13 +2,13 @@
 title: Det gick inte att hitta resursen
 description: Beskriver hur du löser fel när det inte går att hitta en resurs. Felet kan uppstå när du distribuerar en Azure Resource Manager-mall eller när du tar hanterings åtgärder.
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99526254"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950883"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Fel vid matchning av resurs hittades inte
 
@@ -133,3 +133,9 @@ När du distribuerar en mall ska du söka efter uttryck som använder [referens]
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>Lösning 6 – när resursen har tagits bort
+
+När du tar bort en resurs kan det finnas en kort tids period när resursen fortfarande visas i portalen, men inte är tillgänglig. Om du väljer resursen visas ett fel meddelande om att det inte går att hitta resursen. Uppdatera portalen för att få den senaste vyn.
+
+[Kontakta supporten](https://azure.microsoft.com/support/options/)om problemet kvarstår efter en kort vänte tid.

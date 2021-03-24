@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 03/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f270f740951b95b0d4c00cbcf9b08e20a8e0c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d332c831cc764c61a4672ea5ad1db231b68e106
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96743732"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952379"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licensierings krav för Azure Active Directory återställning av lösen ord för självbetjäning
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver de olika sätt som lösen ords återställning via s
 
 ## <a name="compare-editions-and-features"></a>Jämför versioner och funktioner
 
-SSPR är licensierat per användare. Organisationer måste tilldela rätt licens till sina användare för att upprätthålla efterlevnad.
+SSPR kräver bara en licens för klient organisationen. 
 
 I följande tabell beskrivs olika SSPR-scenarier för ändring av lösen ord, återställning eller lokala tillbakaskrivning och vilka SKU: er som tillhandahåller funktionen.
 
@@ -46,12 +46,6 @@ För ytterligare licens information, inklusive kostnader, se följande sidor:
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Företag](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
-
-## <a name="enable-group-or-user-based-licensing"></a>Aktivera grupp-eller användar baserad licensiering
-
-Azure AD stöder gruppbaserad licensiering. Administratörer kan tilldela licenser i bulk till en grupp användare i stället för att tilldela dem en i taget. Mer information finns i [tilldela, verifiera och lösa problem med licenser](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
-
-Vissa Microsoft-tjänster är inte tillgängliga på alla platser. Innan en licens kan tilldelas en användare måste administratören ange egenskapen för **användnings plats** för användaren. Tilldelning av licenser kan göras i avsnittet **användar**  >  **profils**  >  **Inställningar** i Azure Portal. *När du använder grupp licens tilldelning ärver alla användare som saknar en användnings plats platsen för katalogen.*
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622121"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987661"
 ---
 Använd IoT Edge-agentens körnings svar för att felsöka Compute-relaterade fel. Här är en lista över möjliga svar:
 
@@ -66,3 +66,43 @@ I enhetens lokala webb gränssnitt gör du följande steg:
 1. Välj **Använd**. Det ändrade IP-intervallet bör börja gälla omedelbart.
 
 Mer information finns i [ändra IP-adresser för externa tjänster för behållare](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>Konfigurera statiska IP-adresser för IoT Edge moduler
+
+#### <a name="problem-description"></a>Problembeskrivning
+
+Kubernetes tilldelar dynamiska IP-adresser till varje IoT Edge modul på din Azure Stack Edge Pro GPU-enhet. Det krävs en metod för att konfigurera statiska IP-adresser för modulerna.
+
+#### <a name="suggested-solution"></a>Föreslagen lösning
+
+Du kan ange fasta IP-adresser för dina IoT Edge-moduler via avsnittet K8s-experiment enligt beskrivningen nedan: 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>Exponera Kubernetes-tjänsten som kluster-IP-tjänst för intern kommunikation
+
+#### <a name="problem-description"></a>Problembeskrivning
+
+Som standard är IoT-tjänstetypen av typ av belastningsutjämnare och tilldelad externt riktade IP-adresser. Du kanske inte vill ha en extern IP-adress för ditt program. Du kan behöva exponera poddar i KUbernetes-klustret för att få åtkomst som andra poddar och inte som en externt exponerad belastnings Utjämnings tjänst. 
+
+#### <a name="suggested-solution"></a>Föreslagen lösning
+
+Du kan använda alternativen för att skapa via avsnittet K8s-experimentell. Följande tjänst alternativ bör fungera med port bindningar.
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

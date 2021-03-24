@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: 14268e58296554cedc9488e48b41719421797a57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2146ccb0c4d7f263c3e1a69db9b172649fcd25ea
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933276"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863504"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>Optimera kluster med Apache Ambari i Azure HDInsight
 
@@ -20,7 +20,7 @@ En introduktion till att använda Ambari-webbgränssnittet finns i [Hantera HDIn
 
 Logga in på Ambari på `https://CLUSTERNAME.azurehdidnsight.net` med dina autentiseringsuppgifter för klustret. Den första skärmen visar en översikts instrument panel.
 
-![Användarens instrument panel för Apache Ambari visas](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
+:::image type="content" source="./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png" alt-text="Användarens instrument panel för Apache Ambari visas":::
 
 Ambari-webbgränssnittet används för att hantera värdar, tjänster, aviseringar, konfigurationer och vyer. Ambari kan inte användas för att skapa ett HDInsight-kluster eller uppgradera tjänster. Det går inte heller att hantera stackar och versioner, deprovision eller reprovision Hosts eller lägga till tjänster i klustret.
 
@@ -28,7 +28,7 @@ Ambari-webbgränssnittet används för att hantera värdar, tjänster, avisering
 
 Konfigurations inställningar hjälper dig att finjustera en viss tjänst. Om du vill ändra konfigurations inställningarna för en tjänst väljer du tjänsten på sid panelen för **tjänster** (till vänster). Gå sedan till fliken **configs** på sidan tjänst information.
 
-![Apache Ambari Services-sidofält](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
+:::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png" alt-text="Apache Ambari Services-sidofält":::
 
 ## <a name="modify-namenode-java-heap-size"></a>Ändra NameNode Java-Heap-storlek
 
@@ -38,23 +38,23 @@ NameNode Java-heap-storleken beror på många faktorer, till exempel belastninge
 
 1. Välj **HDFS** från panelen tjänster och navigera till fliken **konfigurationer** .
 
-    ![Apache Ambari HDFS-konfiguration](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png" alt-text="Apache Ambari HDFS-konfiguration":::
 
 1. Hitta inställningen **NameNode Java-Heap-storlek**. Du kan också använda text rutan **filter** för att skriva och söka efter en viss inställning. Välj **Penn** ikonen bredvid inställnings namnet.
 
-    ![Apache Ambari NameNode Java-Heap-storlek](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png" alt-text="Apache Ambari NameNode Java-Heap-storlek":::
 
 1. Skriv det nya värdet i text rutan och tryck sedan på **RETUR** för att spara ändringen.
 
-    ![Ambari Edit NameNode Java heap size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png" alt-text="Ambari Edit NameNode Java heap size1":::
 
 1. Storleken på NameNode Java-heap ändras till 1 GB från 2 GB.
 
-    ![Redigerad NameNode Java-heap SIZE2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png" alt-text="Redigerad NameNode Java-heap SIZE2":::
 
 1. Spara ändringarna genom att klicka på den gröna knappen **Spara** överst på konfigurations skärmen.
 
-    ![' Apache Ambari Save Configurations '](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png" alt-text="' Apache Ambari Save Configurations '":::
 
 ## <a name="next-steps"></a>Nästa steg
 

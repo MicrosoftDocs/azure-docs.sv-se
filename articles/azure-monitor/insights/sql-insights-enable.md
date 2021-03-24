@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 5ab51fc4ea64dfd678f5c9acfc80b5e380782153
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610143"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889628"
 ---
 # <a name="enable-sql-insights-preview"></a>Aktivera SQL Insights (förhands granskning)
 I den här artikeln beskrivs hur du aktiverar [SQL](sql-insights-overview.md) Insights för att övervaka dina SQL-distributioner. Övervakning utförs från en virtuell Azure-dator som ansluter till dina SQL-distributioner och använder Dynamic Management views (DMV: er) för att samla in övervaknings data. Du kan styra vilka data uppsättningar som samlas in och hur ofta samlingar används med hjälp av en övervaknings profil.
@@ -92,13 +92,16 @@ Varje typ av SQL erbjuder metoder för övervakning av den virtuella datorn för
 
 ### <a name="azure-sql-databases"></a>Azure SQL Databases  
 
-[Självstudie – ansluta till en Azure SQL-Server med hjälp av en privat Azure-slutpunkt – Azure Portal](../../private-link/tutorial-private-endpoint-sql-portal.md) innehåller ett exempel på hur du konfigurerar en privat slut punkt som du kan använda för att få åtkomst till din databas.  Om du använder den här metoden måste du se till att de virtuella datorerna som övervakas finns i samma VNET och undernät som du kommer att använda för den privata slut punkten.  Du kan sedan skapa den privata slut punkten i databasen om du inte redan har gjort det. 
+SQL Insights har stöd för åtkomst till din Azure SQL Database via den offentliga slut punkten och från det virtuella nätverket.
 
-Om du använder en [brand Väggs inställning](../../azure-sql/database/firewall-configure.md) för att ge åtkomst till din SQL Database måste du lägga till en brand Väggs regel för att ge åtkomst från den offentliga IP-adressen för den virtuella övervakningen. Du kan komma åt brand Väggs inställningarna från sidan **Azure SQL Database översikt** i portalen. 
+För åtkomst via den offentliga slut punkten lägger du till en regel på sidan **brand Väggs inställningar** och avsnittet [Inställningar för IP-brandvägg](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules) .  Om du vill ange åtkomst från ett virtuellt nätverk kan du ange [brand Väggs regler för virtuella nätverk](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules) och ange de [tjänst koder som krävs av Azure Monitor agenten](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking).  I [den här artikeln](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules) beskrivs skillnaderna mellan de här två typerna av brand Väggs regler.
 
 :::image type="content" source="media/sql-insights-enable/set-server-firewall.png" alt-text="Konfigurera serverns brandvägg" lightbox="media/sql-insights-enable/set-server-firewall.png":::
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Brand Väggs inställningar." lightbox="media/sql-insights-enable/firewall-settings.png":::
+
+> [!NOTE]
+> SQL Insights stöder för närvarande inte Azures privata slut punkter för Azure SQL Database.  Vi rekommenderar att du använder [tjänst Taggar](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) i nätverks säkerhets gruppen eller brand Väggs inställningarna för virtuella nätverk som [Azure Monitor Agent stöder](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking).
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instance 
 

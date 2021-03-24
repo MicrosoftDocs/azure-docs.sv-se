@@ -11,7 +11,7 @@
 - name: Snabbstarter
   items:
     - name: Skapa en virtuell dator i portalen
-      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+      href: ../virtual-machines/windows/quick-create-portal.md?context=/azure/azure-portal/context/context
     - name: Skapa en instrumentpanel
       items:
         - name: Azure CLI
@@ -97,3 +97,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure-videor
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'
+    - name: Azure och Power BI
+      href: /power-bi/connect-data/service-azure-and-power-bi?context=/azure/azure-portal/context/context

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: b5add466a60bc855e08917d02fecaf60a35deeb1
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798297"
+ms.locfileid: "104889577"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Övervaka SQL-distributioner med SQL Insights (förhands granskning)
 SQL Insights övervakar prestanda och hälsa för SQL-distributionerna.  Det kan hjälpa till att leverera förutsägbar prestanda och tillgänglighet för viktiga arbets belastningar som du har skapat runt en SQL-Server genom att identifiera Flask halsar och problem med prestanda. SQL Insights lagrar data i [Azure Monitor loggar](../logs/data-platform-logs.md), vilket gör det möjligt att leverera kraftfull agg regering och filtrering och analysera data trender över tid. Du kan visa dessa data från Azure Monitor i de vyer vi levererar som en del av det här erbjudandet och du kan gå direkt till loggdata för att köra frågor och analysera trender.
@@ -59,7 +59,12 @@ Se [Aktivera SQL Insights](sql-insights-enable.md) för den detaljerade procedur
 
 
 ## <a name="data-collected-by-sql-insights"></a>Data som samlas in av SQL Insights
-I den offentliga för hands versionen stöder SQL Insights endast fjärrmetoden för övervakning. Teleympkvistar- [agenten](https://www.influxdata.com/time-series-platform/telegraf/) är inte installerad på SQL Server. Den använder [plugin-programmet SQL Server plugin för teleympkvistar](https://www.influxdata.com/integration/microsoft-sql-server/) och använder de tre grupp frågorna för de olika typerna av SQL-IT-Övervakare: Azure SQL DB, Azure SQL-hanterad instans, SQL Server som körs på en virtuell Azure-dator. 
+
+SQL Insights stöder endast fjärrmetod för övervakning av SQL. Vi installerar inga agenter på de virtuella datorer som kör SQL Server. En eller flera dedikerade övervaknings-VM: er krävs som vi använder för att fjärrsamla in data från dina SQL-resurser. 
+
+Var och en av de virtuella datorerna som övervakar de virtuella datorerna kommer att ha [Azure Monitor-agenten](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) installerad tillsammans med WLI-tillägget. 
+
+WLI-tillägget innehåller för öppen [källkod.](https://www.influxdata.com/time-series-platform/telegraf/)  Vi använder [data insamlings regler](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) för att konfigurera [SQLServer-plugin-programmet](https://www.influxdata.com/integration/microsoft-sql-server/) för att ange vilka data som ska samlas in från Azure SQL DB, Azure SQL-hanterad instans och SQL Server körs på en virtuell Azure-dator. 
 
 Följande tabeller sammanfattar följande:
 

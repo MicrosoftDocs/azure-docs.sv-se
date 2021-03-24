@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935843"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863181"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Begäran om kvot ökar för Azure HDInsight
 
@@ -34,7 +34,7 @@ Utför följande steg för att begära en kvot ökning:
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Välj **Hjälp + Support** längst ned till vänster på sidan.
 
-    ![hjälp och support-knappen](./media/quota-increase-request/help-support-button.png)
+    :::image type="content" source="./media/quota-increase-request/help-support-button.png" alt-text="hjälp och support-knappen" border="true":::
 
 1. Välj **Ny supportbegäran**.
 1. På sidan **Ny supportbegäran** går du till fliken **Grunder** och väljer följande alternativ:
@@ -43,20 +43,20 @@ Utför följande steg för att begära en kvot ökning:
    - **Prenumeration**: den prenumeration du vill ändra
    - **Typ av kvot**: **HDInsight**
 
-     ![Skapa en support förfrågan för att öka HDInsight Core-kvoten](./media/quota-increase-request/hdinsight-quota-support-request.png)
+     :::image type="content" source="./media/quota-increase-request/hdinsight-quota-support-request.png" alt-text="Skapa en support förfrågan för att öka HDInsight Core-kvoten" border="true":::
 
 1. Välj **Nästa: lösningar >>**.
 1. På sidan **information** anger du en beskrivning av problemet, väljer allvarlighets graden för problemet, önskad kontakt metod och andra obligatoriska fält. Använd mallen som anges nedan för att säkerställa att du anger nödvändig information. Kvot öknings begär Anden utvärderas av Azures kapacitets team och inte av produkt teamet för HDInsight. Den mer fullständiga informationen som du anger, desto mer sannolik kommer din begäran att godkännas.
 
-    ```
-    I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
-    
-    My current quota on this subscription is [CURRENT QUOTA AMOUNT].
-    
-    I would like to use the extra cores for [DETAIL REASON].
-    ```
+   ```text
+   I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
+   
+   My current quota on this subscription is [CURRENT QUOTA AMOUNT].
+   
+   I would like to use the extra cores for [DETAIL REASON].
+   ```
 
-    ![problem information](./media/quota-increase-request/problem-details.png)
+   :::image type="content" source="./media/quota-increase-request/problem-details.png" alt-text="problem information" border="true":::
 
 1. Välj **Nästa: granska + skapa >>**.
 1. På fliken **Granska och skapa** väljer du **skapa**.
