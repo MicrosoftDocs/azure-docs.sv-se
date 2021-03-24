@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953909"
+ms.locfileid: "105023052"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Utöka Azure IoT Central med anpassad analys med Azure Databricks
 
@@ -91,7 +91,7 @@ Du kan konfigurera ett IoT Central program för att kontinuerligt exportera tele
 1. I Azure Portal navigerar du till Event Hubs namn området och väljer **+ Event Hub**.
 1. Namnge Event Hub- **centralexport**.
 1. I listan över händelse nav i namn området väljer du **centralexport**. Välj sedan **principer för delad åtkomst**.
-1. Välj **+ Lägg till**. Skapa en princip med namnet **Lyssna** med **lyssnings** anspråket.
+1. Välj **+ Lägg till**. Skapa en princip med namnet **SendListen** med **Skicka** och **Lyssna** anspråk.
 1. När principen är klar markerar du den i listan och kopierar sedan **anslutnings strängen – primär nyckel** värde.
 1. Anteckna den här anslutnings strängen. du använder den senare när du konfigurerar din Databricks-anteckningsbok för att läsa från händelsehubben.
 
@@ -99,42 +99,46 @@ Event Hubs namn området ser ut som på följande skärm bild:
 
 :::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="bild av Event Hubs namn område.":::
 
-## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>Konfigurera export i IoT Central och skapa ett nytt mål
+## <a name="configure-export-in-iot-central"></a>Konfigurera export i IoT Central
 
-På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du skapade från contoso-mallen. I det här avsnittet konfigurerar du programmet för att strömma Telemetrin från dess simulerade enheter till händelsehubben. Konfigurera exporten:
+I det här avsnittet konfigurerar du programmet till att strömma telemetri från dess simulerade enheter till händelsehubben.
+
+På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du skapade tidigare. Konfigurera exporten genom att först skapa ett mål:
+
+1. Gå till sidan **data export** och välj sedan **destinationer**.
+1. Välj **+ nytt mål**.
+1. Använd värdena i följande tabell för att skapa ett mål:
+
+    | Inställning | Värde |
+    | ----- | ----- |
+    | Målnamn | Händelsehubben för telemetri |
+    | Måltyp | Azure Event Hubs |
+    | Anslutningssträng | Den Event Hub-anslutningssträng du antecknade tidigare |
+
+    **Händelsehubben** visas som **centralexport**.
+
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Skärm bild som visar data export målet":::
+
+1. Välj **Spara**.
+
+Skapa export definitionen:
 
 1. Gå till sidan **data export** och välj **+ ny export**.
-1. Innan du avslutar det första fönstret väljer du **skapa ett mål**.
 
-Fönstret kommer att se ut som nedan.  
-
-:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="bild av konfiguration av data export mål.":::
-
-3. Ange följande värden:
-
-| Inställning | Värde |
-| ------- | ----- |
-| Målnamn | Ditt mål namn |
-| Måltyp | Azure Event Hubs |
-| Connection String (Anslutningssträng)| Den Event Hub-anslutningssträng du antecknade tidigare. | 
-| Händelsehubb| Ditt Event Hub-namn|
-
-4. Klicka på **skapa** för att avsluta.
-
-5. Använd följande inställningar för att konfigurera exporten:
+1. Använd värdena i följande tabell för att konfigurera exporten:
 
     | Inställning | Värde |
     | ------- | ----- |
-    | Ange ett export namn | eventhubexport |
+    | Export namn | Export av Event Hub |
     | Enabled | På |
-    | Data| Välj telemetri | 
-    | Mål| Skapa ett mål, som du ser nedan, för exporten och välj sedan den i list rutan mål meny. |
+    | Typ av data som ska exporteras | Telemetri |
+    | Mål | Välj **+ mål** och välj sedan **telemetri Event Hub** |
 
-:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Skärm bild av konfiguration av data export mål.":::
+1. Välj **Spara**.
 
-6. När du är färdig väljer du **Spara**.
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Skärm bild som visar data export definition":::
 
-Vänta tills export status är **igång** innan du fortsätter.
+Vänta tills export statusen är **felfri** på **data export** sidan innan du fortsätter.
 
 ## <a name="configure-databricks-workspace"></a>Konfigurera Databricks-arbetsyta
 

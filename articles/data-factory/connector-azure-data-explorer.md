@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2020
-ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2020
+ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100379989"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027405"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopiera data till eller från Azure Datautforskaren med Azure Data Factory
 
@@ -52,7 +52,14 @@ Följande avsnitt innehåller information om egenskaper som används för att de
 
 ## <a name="linked-service-properties"></a>Egenskaper för länkad tjänst
 
-Azure Datautforskaren-anslutningen använder autentisering av tjänstens huvud namn. Följ de här stegen för att hämta ett huvud namn för tjänsten och bevilja behörigheter:
+Azure Datautforskaren-anslutningen har stöd för följande typer av autentisering. Mer information finns i motsvarande avsnitt:
+
+- [Autentisering av tjänstens huvud namn](#service-principal-authentication)
+- [Hanterade identiteter för Azure-resurser-autentisering](#managed-identity)
+
+### <a name="service-principal-authentication"></a>Autentisering av tjänstens huvudnamn
+
+Om du vill använda tjänstens huvud namns autentisering följer du dessa steg för att hämta ett huvud namn för tjänsten och bevilja behörigheter:
 
 1. Registrera en program enhet i Azure Active Directory genom att följa stegen i [Registrera ditt program med en Azure AD-klient](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Anteckna följande värden som du använder för att definiera den länkade tjänsten:
 
@@ -66,7 +73,7 @@ Azure Datautforskaren-anslutningen använder autentisering av tjänstens huvud n
     - **Som mottagare**, beviljar du minst rollen **databas** inmatnings roll till din databas
 
 >[!NOTE]
->När du använder Data Factory gränssnittet för att redigera, används ditt inloggnings användar konto för att Visa Azure Datautforskaren-kluster, databaser och tabeller. Ange namnet manuellt om du inte har behörighet för de här åtgärderna.
+>När du använder Data Factory gränssnittet för att redigera, används som standard ditt inloggnings användar konto för att Visa Azure Datautforskaren-kluster, databaser och tabeller. Du kan välja att visa objekten med hjälp av tjänstens huvud namn genom att klicka på list rutan bredvid uppdaterings knappen eller ange namnet manuellt om du inte har behörighet för dessa åtgärder.
 
 Följande egenskaper stöds för den länkade Azure Datautforskaren-tjänsten:
 
@@ -78,8 +85,9 @@ Följande egenskaper stöds för den länkade Azure Datautforskaren-tjänsten:
 | tenant | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Detta kallas "auktoritets-ID" i [Kusto anslutnings sträng](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Hämta den genom att hovra med mus pekaren i det övre högra hörnet av Azure Portal. | Ja |
 | servicePrincipalId | Ange programmets klient-ID. Detta kallas "AAD-programklient-ID" i [Kusto anslutnings sträng](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ja |
 | servicePrincipalKey | Ange programmets nyckel. Detta kallas "AAD program Key" i Kusto- [anslutningssträngen](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Markera det här fältet som **SecureString** för att lagra det på ett säkert sätt i Data Factory eller [referera till säkra data som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller en lokal integration Runtime om ditt data lager finns i ett privat nätverk. Om inget värde anges används standard Azure integration Runtime. |Inga |
 
-**Exempel på länkade tjänst egenskaper:**
+**Exempel: använda autentisering av tjänstens huvud namn**
 
 ```json
 {
@@ -95,6 +103,44 @@ Följande egenskaper stöds för den länkade Azure Datautforskaren-tjänsten:
                 "type": "SecureString",
                 "value": "<service principal key>"
             }
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Hanterade identiteter för Azure-resurser-autentisering
+
+Följ dessa steg om du vill bevilja behörigheter för att använda hanterade identiteter för Azure-autentisering:
+
+1. [Hämta data Factory hanterad identitets information](data-factory-service-identity.md#retrieve-managed-identity) genom att kopiera värdet för det **hanterade ID-objekt-ID: t** som genererats tillsammans med din fabrik.
+
+2. Ge den hanterade identiteten rätt behörigheter i Azure Datautforskaren. Mer detaljerad information om roller och behörigheter och om att hantera behörigheter finns i [Hantera behörigheter för Azure datautforskaren Database](/azure/data-explorer/manage-database-permissions) . I allmänhet måste du:
+
+    - **Som källa**, beviljar du minst rollen **databas hanterare** till din databas
+    - **Som mottagare**, beviljar du minst rollen **databas** inmatnings roll till din databas
+
+>[!NOTE]
+>När du använder Data Factory gränssnittet för att redigera, används ditt inloggnings användar konto för att Visa Azure Datautforskaren-kluster, databaser och tabeller. Ange namnet manuellt om du inte har behörighet för de här åtgärderna.
+
+Följande egenskaper stöds för den länkade Azure Datautforskaren-tjänsten:
+
+| Egenskap | Beskrivning | Krävs |
+|:--- |:--- |:--- |
+| typ | Egenskapen **Type** måste anges till **AzureDataExplorer**. | Ja |
+| slutpunkt | Slut punkts-URL för Azure Datautforskaren-klustret, med formatet `https://<clusterName>.<regionName>.kusto.windows.net` . | Ja |
+| databas | Namn på databasen. | Ja |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller en lokal integration Runtime om ditt data lager finns i ett privat nätverk. Om inget värde anges används standard Azure integration Runtime. |Inga |
+
+**Exempel: använda hanterad identitets autentisering**
+
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
         }
     }
 }

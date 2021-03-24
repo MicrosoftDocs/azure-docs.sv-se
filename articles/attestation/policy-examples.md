@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720162"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950577"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Exempel på en attesterings princip
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-Mer information om inkommande anspråk som genereras av Azure-attestering finns i [anspråks uppsättningar](/azure/attestation/claim-sets). Inkommande anspråk kan användas av princip författare för att definiera auktoriseringsregler i en anpassad princip. 
+Mer information om inkommande anspråk som genereras av Azure-attestering finns i [anspråks uppsättningar](./claim-sets.md). Inkommande anspråk kan användas av princip författare för att definiera auktoriseringsregler i en anpassad princip. 
 
-Avsnittet utfärdande regler är inte obligatoriskt. Det här avsnittet kan användas av användare för att få ytterligare utgående anspråk som genereras i attesterings-token med anpassade namn. Mer information om utgående anspråk som genereras av tjänsten i attesterings-token finns i [anspråks uppsättningar](/azure/attestation/claim-sets).
+Avsnittet utfärdande regler är inte obligatoriskt. Det här avsnittet kan användas av användare för att få ytterligare utgående anspråk som genereras i attesterings-token med anpassade namn. Mer information om utgående anspråk som genereras av tjänsten i attesterings-token finns i [anspråks uppsättningar](./claim-sets.md).
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>Standard princip för en SGX-enklaven
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-Anspråk som används i standard principen anses vara föråldrade men stöds fullt ut och kommer även fortsättnings vis att ingå i framtiden. Vi rekommenderar att du använder anspråks namnen som inte är föråldrade. Mer information om rekommenderade anspråks namn finns i [anspråks uppsättningar](/azure/attestation/claim-sets). 
+Anspråk som används i standard principen anses vara föråldrade men stöds fullt ut och kommer även fortsättnings vis att ingå i framtiden. Vi rekommenderar att du använder anspråks namnen som inte är föråldrade. Mer information om rekommenderade anspråks namn finns i [anspråks uppsättningar](./claim-sets.md). 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Exempel på anpassad princip för att stödja flera SGX-enclaves
 

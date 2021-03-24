@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 547906e3d3131483468d21623744ac243090ad84
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1b539c168deab7c1893f071a2453be28310fc132
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720244"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022933"
 ---
 # <a name="quickstart-get-a-token-and-call-the-microsoft-graph-api-by-using-a-console-apps-identity"></a>Snabb start: Hämta en token och anropa Microsoft Graph-API med hjälp av en konsols Apps identitet
 
@@ -116,12 +116,10 @@ Den här snabb starten kräver [.net core 3,1](https://www.microsoft.com/net/dow
 >    ```
 >    I den koden:
 >    - `Enter_the_Application_Id_Here` är program-ID: t (Client) för det program som du har registrerat.
+        Om du vill hitta värdena för program-ID: t och katalog-ID: t går du till appens **översikts** sida i Azure Portal.
 >    - Ersätt `Enter_the_Tenant_Id_Here` med klient-ID eller klient namn (till exempel `contoso.microsoft.com` ).
 >    - Ersätt `Enter_the_Client_Secret_Here` med den klient hemlighet som du skapade i steg 1.
-
-> [!div renderon="docs"]
-> > [!TIP]
-> > Om du vill hitta värdena för program-ID: t och katalog-ID: t går du till appens **översikts** sida i Azure Portal. Om du vill generera en ny nyckel går du till sidan **certifikat & hemligheter** .
+    Om du vill generera en ny nyckel går du till sidan **certifikat & hemligheter** .
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>Steg 3: administratörs medgivande
@@ -150,12 +148,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> I URL: en:
->> * Ersätt `Enter_the_Tenant_Id_Here` med klient-ID eller klient namn (till exempel `contoso.microsoft.com` ).
->> * `Enter_the_Application_Id_Here` är program-ID: t (Client) för det program som du har registrerat.
+> I URL: en:
+> * Ersätt `Enter_the_Tenant_Id_Here` med klient-ID eller klient namn (till exempel `contoso.microsoft.com` ).
+> * `Enter_the_Application_Id_Here` är program-ID: t (Client) för det program som du har registrerat.
 
-> [!NOTE]
-> Du kan se felet "AADSTS50011: ingen svars adress har registrerats för programmet" när du har beviljat medgivande till appen med hjälp av föregående URL. Det här felet beror på att det här programmet och URL: en inte har någon omdirigerings-URI. Du kan ignorera det.
+Du kan se felet "AADSTS50011: ingen svars adress har registrerats för programmet" när du har beviljat medgivande till appen med hjälp av föregående URL. Det här felet beror på att det här programmet och URL: en inte har någon omdirigerings-URI. Du kan ignorera det.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>Steg 4: kör programmet
@@ -169,14 +166,12 @@ Om du använder Visual Studio eller Visual Studio för Mac, trycker du på **F5*
 cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
-
-> I den koden:
-> * `{ProjectFolder}` är mappen där du extraherade. zip-filen. Ett exempel är `C:\Azure-Samples\active-directory-dotnetcore-daemon-v2`.
+I den koden:
+* `{ProjectFolder}` är mappen där du extraherade. zip-filen. Ett exempel är `C:\Azure-Samples\active-directory-dotnetcore-daemon-v2`.
 
 Du bör se en lista över användare i Azure Active Directory som resultat.
 
-> [!IMPORTANT]
-> I det här snabb starts programmet används en klient hemlighet för att identifiera sig själv som en konfidentiell klient. Klient hemligheten läggs till som en textfil med oformaterad text till dina projektfiler. Av säkerhets skäl rekommenderar vi att du använder ett certifikat i stället för en klient hemlighet innan du överväger programmet som ett produktions program. Mer information om hur du använder ett certifikat finns i [dessa instruktioner](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) på GitHub-lagringsplatsen för det här exemplet.
+I det här snabb starts programmet används en klient hemlighet för att identifiera sig själv som en konfidentiell klient. Klient hemligheten läggs till som en textfil med oformaterad text till dina projektfiler. Av säkerhets skäl rekommenderar vi att du använder ett certifikat i stället för en klient hemlighet innan du överväger programmet som ett produktions program. Mer information om hur du använder ett certifikat finns i [dessa instruktioner](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) på GitHub-lagringsplatsen för det här exemplet.
 
 ## <a name="more-information"></a>Mer information
 Det här avsnittet ger en översikt över den kod som krävs för att logga in användare. Den här översikten kan vara användbar för att förstå hur koden fungerar, vad de viktigaste argumenten är och hur du lägger till inloggning i ett befintligt .NET Core-konsolprogram.
@@ -214,11 +209,11 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Element | Beskrivning |
-> |---------|---------|
-> | `config.ClientSecret` | Klient hemligheten som skapades för programmet i Azure Portal. |
-> | `config.ClientId` | Program-ID: t (Client) för programmet som är registrerat i Azure Portal. Du hittar det här värdet på appens **översikts** sida i Azure Portal. |
-> | `config.Authority`    | Valfritt STS-slutpunkten (Security Token Service) för användaren som ska autentiseras. Det är vanligt vis `https://login.microsoftonline.com/{tenant}` för det offentliga molnet, där `{tenant}` är namnet på din klient organisation eller klient-ID.|
+ | Element | Beskrivning |
+ |---------|---------|
+ | `config.ClientSecret` | Klient hemligheten som skapades för programmet i Azure Portal. |
+ | `config.ClientId` | Program-ID: t (Client) för programmet som är registrerat i Azure Portal. Du hittar det här värdet på appens **översikts** sida i Azure Portal. |
+ | `config.Authority`    | Valfritt STS-slutpunkten (Security Token Service) för användaren som ska autentiseras. Det är vanligt vis `https://login.microsoftonline.com/{tenant}` för det offentliga molnet, där `{tenant}` är namnet på din klient organisation eller klient-ID.|
 
 Mer information finns i [referens dokumentationen för `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication).
 
@@ -231,9 +226,9 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Element| Beskrivning |
-> |---------|---------|
-> | `scopes` | Innehåller de begärda omfattningarna. För konfidentiella klienter bör det här värdet använda ett format som liknar `{Application ID URI}/.default` . Det här formatet indikerar att de begärda omfattningarna är de som definieras statiskt i app-objektet som anges i Azure Portal. För Microsoft Graph, `{Application ID URI}` pekar på `https://graph.microsoft.com` . För anpassade webb-API: er `{Application ID URI}` definieras i Azure Portal under **program registrering (för hands version)**  >  **exponeras ett API**. |
+|Element| Beskrivning |
+|---------|---------|
+| `scopes` | Innehåller de begärda omfattningarna. För konfidentiella klienter bör det här värdet använda ett format som liknar `{Application ID URI}/.default` . Det här formatet indikerar att de begärda omfattningarna är de som definieras statiskt i app-objektet som anges i Azure Portal. För Microsoft Graph, `{Application ID URI}` pekar på `https://graph.microsoft.com` . För anpassade webb-API: er `{Application ID URI}` definieras i Azure Portal under **program registrering (för hands version)**  >  **exponeras ett API**. |
 
 Mer information finns i [referens dokumentationen för `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient).
 
