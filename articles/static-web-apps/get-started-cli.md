@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 98b40218d168133193410174bcc158ab8698c381
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f3ac1c8076650a4075c33aeaa9128133b5b90296
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225395"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046087"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Snabb start: skapa din första statiska plats med Azure CLI
 
@@ -110,7 +110,7 @@ Nu när du har skapat databasen kan du skapa en statisk webbapp från Azure CLI.
 
     - `<RESOURCE_GROUP_NAME>`: Ersätt det här värdet med ett befintligt namn på en [Azure-resurs grupp](../azure-resource-manager/management/manage-resources-cli.md).
 
-      - I [AZ Group](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_list) -dokumentationen finns information om hur du registrerar resurs grupper.
+      - I [AZ Group](/cli/azure/group?view=azure-cli-latest#az_group_list) -dokumentationen finns information om hur du registrerar resurs grupper.
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Ersätt det här värdet med ditt GitHub-användarnamn.
 

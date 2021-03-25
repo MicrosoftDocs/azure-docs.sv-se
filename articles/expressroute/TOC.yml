@@ -144,6 +144,8 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: Övervakning
       items:
+        - name: Nätverksinsikter
+          href: expressroute-network-insights.md
         - name: 'Övervakning, mått och aviseringar i ExpressRoute'
           href: expressroute-monitoring-metrics-alerts.md
         - name: Konfigurera övervakare av nätverksprestanda för ExpressRoute

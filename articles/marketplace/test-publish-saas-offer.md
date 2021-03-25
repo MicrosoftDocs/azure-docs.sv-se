@@ -7,17 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: ea647591194dfd6ba0bf818f4ce4d3a2005f0bc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/25/2021
+ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630795"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045254"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Testa och publicera ett SaaS-erbjudande på den kommersiella Marketplace
 
 Den här artikeln förklarar hur du använder Partner Center för att skicka in ditt SaaS-erbjudande för publicering, för hands version av erbjudandet, testa det och sedan publicera det live på den kommersiella marknads platsen. Du måste redan ha skapat ett erbjudande som du vill publicera.
+
+> [!NOTE]
+> Vi rekommenderar att du skapar ett separat utvecklings erbjudande för testning och utveckling (DEV) som ett litet risk sätt att testa innan du publicerar produktions erbjudandet. Följ de här stegen för att skapa och testa DEV-erbjudandet innan du publicerar ditt (PROD)-erbjudande.
 
 ## <a name="submit-your-offer-for-publishing"></a>Skicka in ditt erbjudande om publicering
 
@@ -48,7 +51,7 @@ Använd följande steg för att förhandsgranska erbjudandet.
 
 1. På sidan **erbjudande översikt** väljer du en förhands gransknings länk under knappen **gå live** .
 
-1. Om du vill kontrol lera inköps-och installations flödet från slut punkt till slut punkt köper du ditt erbjudande när det är i för hands version. Meddela först Microsoft med ett [support ärende](https://aka.ms/marketplacesupport) för att se till att vi inte behandlar någon avgift.
+1. Om du vill validera inköps-och konfigurations flödet från slut punkt till slut punkt köper du planerna i erbjudandet medan de är i för hands version. Meddela först Microsoft med ett [support ärende](https://aka.ms/marketplacesupport) för att se till att vi inte behandlar någon avgift.
 
 1. Om ditt SaaS-erbjudande har stöd [för avgiftsbelagda faktureringar med hjälp av den kommersiella tjänsten för avläsning av marknads platser](./partner-center-portal/saas-metered-billing.md), kan du granska och följa de test metoder som beskrivs i [Marketplace för avgiftsbelagda fakturerings-API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices).
 
@@ -60,10 +63,10 @@ Använd följande steg för att förhandsgranska erbjudandet.
 
 ## <a name="publish-your-offer-live"></a>Publicera ditt erbjudande Live
 
-När du har slutfört alla tester i för hands versionen väljer du **Go Live** för att publicera erbjudandet Live på den kommersiella marknads platsen.
+När du har slutfört alla tester i för hands versionen väljer du **Go Live** för att publicera erbjudandet Live på den kommersiella marknads platsen. Om ditt erbjudande redan är aktivt på den kommersiella marknads platsen, kommer alla uppdateringar du gör inte att vara aktiva förrän du väljer **Go Live**.
 
-   > [!TIP]
-   > Om ditt erbjudande redan är aktivt på den kommersiella marknads platsen, kommer alla uppdateringar du gör inte att vara aktiva förrän du väljer **Go Live**.
+> [!IMPORTANT]
+> Välj aldrig **Go Live** för ett [utvecklings-/test erbjudande](create-saas-dev-test-offer.md).
 
 Nu när du har valt att göra ditt erbjudande tillgängligt på den kommersiella marknads platsen, utför vi en serie slutliga verifierings kontroller för att säkerställa att Live-erbjudandet har kon figurer ATS precis som för hands versionen av erbjudandet. Mer information om dessa verifierings kontroller finns i [publicerings fasen](review-publish-offer.md#publish-phase).
 

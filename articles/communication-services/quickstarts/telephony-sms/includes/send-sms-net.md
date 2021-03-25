@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622227"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110390"
 ---
-Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna C# SMS-klient biblioteket för att skicka SMS-meddelanden.
+Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna C# SMS SDK för att skicka SMS-meddelanden.
 
 Att slutföra den här snabb starten innebär en låg kostnad av några USD cent eller mindre i ditt Azure-konto.
 
@@ -28,13 +28,13 @@ Att slutföra den här snabb starten innebär en låg kostnad av några USD cent
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Den senaste versionen av [klient biblioteket för .net Core](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
+- Den senaste versionen [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
 - En aktiv kommunikations tjänst resurs och anslutnings sträng. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
 - Ett SMS-aktiverat telefonnummer. [Hämta ett telefonnummer](../get-phone-number.md).
 
 ### <a name="prerequisite-check"></a>Krav kontroll
 
-- Kör kommandot i ett terminalfönster-eller kommando fönster `dotnet` för att kontrol lera att .net-klient biblioteket är installerat.
+- Kör kommandot i ett terminalfönster-eller kommando fönster `dotnet` för att kontrol lera att .NET SDK är installerat.
 - Om du vill visa de telefonnummer som är associerade med kommunikations tjänst resursen loggar du in på [Azure Portal](https://portal.azure.com/), letar upp resursen för kommunikations tjänster och öppnar fliken **telefonnummer** i det vänstra navigerings fönstret.
 
 ## <a name="setting-up"></a>Konfigurera
@@ -56,7 +56,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>Installera paketet
 
-När du fortfarande är i program katalogen installerar du Azure Communication Services SMS-klient biblioteket för .NET-paketet med hjälp av `dotnet add package` kommandot.
+När du fortfarande är i program katalogen installerar du Azure Communication Services SMS SDK för .NET-paketet med hjälp av `dotnet add package` kommandot.
 
 ```console
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
@@ -77,7 +77,7 @@ using Azure.Communication.Sms;
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS-klient biblioteket för C#.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS SDK för C#.
 
 | Name                                       | Beskrivning                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |

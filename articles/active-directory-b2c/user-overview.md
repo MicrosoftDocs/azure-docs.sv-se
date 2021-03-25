@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: b2c-support
+ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652138"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043605"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Översikt över användar konton i Azure Active Directory B2C
 
@@ -36,7 +37,8 @@ Ett arbets konto skapas på samma sätt för alla klienter som baseras på Azure
 
 När du lägger till ett nytt arbets konto måste du tänka på följande konfigurations inställningar:
 
-- **Namn** och **användar namn** – egenskapen **Name** innehåller användarens tilldelade och efter namn. **Användar namnet** är det ID som användaren anger för att logga in. Användar namnet innehåller den fullständiga domänen. Domän namns delen av användar namnet måste antingen vara det initiala standard domän namnet *your-domain.onmicrosoft.com*, eller ett verifierat, icke-federerat [anpassat domän](../active-directory/fundamentals/add-custom-domain.md) namn, till exempel *contoso.com*.
+- **Namn** och **användar namn** – egenskapen **Name** innehåller användarens tilldelade och efter namn. **Användar namnet** är det ID som användaren anger för att logga in. Användar namnet innehåller den fullständiga domänen. Domän namns delen av användar namnet måste antingen vara det initiala standard domän namnet *your-domain.onmicrosoft.com*, eller ett verifierat, icke-federerat [anpassat domän](../active-directory/fundamentals/add-custom-domain.md) namn, till exempel *contoso.com*. 
+- **E-post** – den nya användaren kan också logga in med en e-postadress. Vi stöder inte specialtecken eller multibyte-tecken i e-post, till exempel japanska tecken.
 - **Profil** -kontot har kon figurer ATS med en profil med användar data. Du har möjlighet att ange förnamn, efter namn, befattning och avdelnings namn. Du kan redigera profilen när kontot har skapats.
 - **Grupper** – Använd grupper för att utföra hanterings uppgifter, till exempel tilldela licenser eller behörigheter till många användare eller enheter på samma gång. Du kan ställa in det nya kontot i en befintlig [grupp](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) i din klient organisation.
 - **Katalog roll** – du måste ange den åtkomst nivå som användar kontot måste ha för resurser i din klient organisation. Följande behörighets nivåer är tillgängliga:

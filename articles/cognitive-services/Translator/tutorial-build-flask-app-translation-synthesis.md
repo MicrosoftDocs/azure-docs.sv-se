@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172087"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043741"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Självstudie: Bygg en kolv-app med Azure Cognitive Services
 
@@ -49,7 +49,7 @@ För dem som vill ha djupet efter den här kursen är några användbara länkar
 
 Vi går igenom de program-och prenumerations nycklar som du behöver i den här kursen.
 
-* [Python-3.5.2 eller senare](https://www.python.org/downloads/)
+* [Python 3,6 eller senare](https://www.python.org/downloads/)
 * [Git-verktyg](https://git-scm.com/downloads)
 * En IDE-eller text redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/) eller [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) eller [Firefox](https://www.mozilla.org/firefox)

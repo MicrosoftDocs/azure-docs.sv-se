@@ -10,42 +10,42 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: a62c25aa5fd9d25b7330dde89c8544e79785b9d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 362c8c875ab878b23cffae45f4c653255f489c81
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495449"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107056"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>Snabb start: Lägg till chatt i appen
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Kom igång med Azure Communication Services genom att använda kommunikations tjänstens klient bibliotek för att lägga till real tids chatt i ditt program. I den här snabb starten använder vi klient biblioteket i Chat för att skapa chatt-trådar som gör det möjligt för användare att ha konversationer med varandra. Mer information om chatt-koncept finns i [dokumentationen om chatten](../../concepts/chat/concepts.md).
+Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna Chat SDK för att lägga till real tids chatt i ditt program. I den här snabb starten använder vi chatt-SDK: n för att skapa chatt-trådar som gör det möjligt för användarna att ha konversationer med varandra. Mer information om chatt-koncept finns i [dokumentationen om chatten](../../concepts/chat/concepts.md).
 
 ::: zone pivot="programming-language-javascript"
-[!INCLUDE [Chat with JavaScript client library](./includes/chat-js.md)]
+[!INCLUDE [Chat with JavaScript SDK](./includes/chat-js.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [Chat with Python client library](./includes/chat-python.md)]
+[!INCLUDE [Chat with Python SDK](./includes/chat-python.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-[!INCLUDE [Chat with Java client library](./includes/chat-java.md)]
+[!INCLUDE [Chat with Java SDK](./includes/chat-java.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-android"
-[!INCLUDE [Chat with Android client library](./includes/chat-android.md)]
+[!INCLUDE [Chat with Android SDK](./includes/chat-android.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [Chat with C# client library](./includes/chat-csharp.md)]
+[!INCLUDE [Chat with C# SDK](./includes/chat-csharp.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-swift"
-[!INCLUDE [Chat with iOS client library](./includes/chat-swift.md)]
+[!INCLUDE [Chat with iOS SDK](./includes/chat-swift.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Rensa resurser
@@ -69,4 +69,4 @@ I den här snabb starten har du lärt dig att:
 Du kanske också vill:
 
  - Lär dig mer om [chatt-koncept](../../concepts/chat/concepts.md)
- - Bekanta dig med [klient biblioteket för chat](../../concepts/chat/sdk-features.md)
+ - Bekanta dig med [chatt SDK](../../concepts/chat/sdk-features.md)

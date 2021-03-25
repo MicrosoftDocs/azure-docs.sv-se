@@ -3,12 +3,12 @@ title: Konfigurera Prometheus-integrering för container Insights | Microsoft Do
 description: I den här artikeln beskrivs hur du kan konfigurera container Insights-agenten att kassera mått från Prometheus med ditt Kubernetes-kluster.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731739"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109649"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Konfigurera kasse ring av Prometheus-mått med container Insights
 
@@ -48,7 +48,7 @@ När en URL anges kasserar behållar insikten bara slut punkten. När Kubernetes
 |------|-----|-----------|-------|-------------|
 | Hela klustret | | | | Ange en av följande tre metoder för att kassera slut punkter för mått. |
 | | `urls` | Sträng | Kommaavgränsad matris | HTTP-slutpunkt (antingen IP-adress eller giltig URL-sökväg har angetts). Exempel: `urls=[$NODE_IP/metrics]`. ($NODE _IP är en angiven container Insights-parameter och kan användas i stället för nodens IP-adress. Måste vara alla versaler.) |
-| | `kubernetes_services` | Sträng | Kommaavgränsad matris | En matris med Kubernetes-tjänster för att kassera mått från Kube-State-Metrics. Till exempel, `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `kubernetes_services` | Sträng | Kommaavgränsad matris | En matris med Kubernetes-tjänster för att kassera mått från Kube-State-Metrics. Fullständigt kvalificerade domän namn måste användas här. Till exempel, `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace.svc.cluster.local:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Boolesk | sant eller falskt | När du har angett `true` i inställningarna för hela klustret kommer container Insights-agenten att kassera Kubernetes-poddar över hela klustret för följande Prometheus-anteckningar:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boolesk | sant eller falskt | Aktiverar kassation av pod. `monitor_kubernetes_pods` måste anges till `true` . |
 | | `prometheus.io/scheme` | Sträng | http eller https | Används som standard för skrotning över HTTP. Om det behövs anger du till `https` . | 

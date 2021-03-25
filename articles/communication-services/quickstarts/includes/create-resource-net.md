@@ -4,23 +4,23 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: bf00b0829868b7099579c1a35113dbca1741cfe3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495916"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110905"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/dotnet/).
-- Den senaste versionen av [klient biblioteket för .net Core](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
-- Hämta den senaste versionen av [klient biblioteket för .NET-identitet](/dotnet/api/azure.identity).
-- Hämta den senaste versionen av [klient biblioteket för .net-hantering](../../concepts/sdk-options.md).
+- Den senaste versionen [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
+- Hämta den senaste versionen av [.net Identity SDK](/dotnet/api/azure.identity).
+- Hämta den senaste versionen av [.net Management SDK](../../concepts/sdk-options.md).
 
-## <a name="installing-the-client-library"></a>Installera klient biblioteket
+## <a name="installing-the-sdk"></a>Installera SDK
 
-Ta först med klient biblioteket för kommunikations tjänst hantering i C#-projektet:
+Börja med att inkludera kommunikations tjänst hanterings-SDK i C#-projektet:
 
 ```csharp
 using Azure.ResourceManager.Communication;
@@ -121,11 +121,11 @@ Nu när du har autentiserats kan du använda hanterings klienten för att skapa 
 
 För vart och ett av följande exempel kommer vi att tilldela våra kommunikations tjänst resurser till en befintlig resurs grupp.
 
-Om du behöver skapa en resurs grupp kan du göra det med hjälp av [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) eller [Azure Resource Manager klient biblioteket](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md).
+Om du behöver skapa en resurs grupp kan du göra det med hjälp av [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) eller [Azure Resource Manager SDK](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md).
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Skapa och hantera en kommunikations tjänst resurs
 
-Vår instans av klient biblioteks klienten () för kommunikations tjänst hantering ``Azure.ResourceManager.Communication.CommunicationManagementClient`` kan användas för att utföra åtgärder på kommunikations tjänst resurser.
+Vår instans av kommunikations tjänst hantering SDK client ( ``Azure.ResourceManager.Communication.CommunicationManagementClient`` ) kan användas för att utföra åtgärder på kommunikations tjänsternas resurser.
 
 #### <a name="create-a-communication-services-resource"></a>Skapa en Communication Services-resurs
 
@@ -173,7 +173,7 @@ await acsClient.CommunicationService.StartDeleteAsync(resourceGroupName, resourc
 
 ## <a name="managing-keys-and-connection-strings"></a>Hantera nycklar och anslutnings strängar
 
-Varje kommunikations tjänst resurs har ett par åtkomst nycklar och motsvarande anslutnings strängar. De här nycklarna kan nås med hanterings klient biblioteket och används sedan av andra klient bibliotek för kommunikations tjänster för att autentisera sig själva till Azure Communication Services.
+Varje kommunikations tjänst resurs har ett par åtkomst nycklar och motsvarande anslutnings strängar. De här nycklarna kan nås med hanterings-SDK och används sedan av andra SDK: er för kommunikations tjänster för att autentisera sig själva till Azure Communication Services.
 
 #### <a name="get-access-keys-for-a-communication-services-resource"></a>Hämta åtkomst nycklar för en kommunikations tjänst resurs
 

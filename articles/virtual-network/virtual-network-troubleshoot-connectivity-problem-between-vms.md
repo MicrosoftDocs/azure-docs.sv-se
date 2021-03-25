@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219206"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042874"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Felsökning av anslutningsproblem mellan virtuella Azure-datorer
 
@@ -49,7 +49,7 @@ Följ dessa steg för att felsöka problemet. När du har slutfört varje steg k
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>Steg 1: kontrol lera om NÄTVERKSKORTet är felkonfigurerat
 
-Följ stegen i [så här återställer du nätverks gränssnittet för Azure Windows VM](../virtual-machines/troubleshooting/reset-network-interface.md). 
+Följ stegen i [så här återställer du nätverks gränssnittet för Azure Windows VM](/troubleshoot/azure/virtual-machines/reset-network-interface). 
 
 Om problemet inträffar när du har ändrat nätverks gränssnittet (NIC) följer du dessa steg:
 
@@ -62,8 +62,8 @@ Mer information finns i [lägga till nätverks gränssnitt eller ta bort från v
 
 **Virtuell dator med en NIC** 
 
-- [Distribuera om virtuell Windows-dator](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [Distribuera virtuella Linux-datorer](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [Distribuera om virtuell Windows-dator](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [Distribuera virtuella Linux-datorer](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Steg 2: kontrol lera om nätverks trafiken är blockerad av NSG eller UDR
 
@@ -107,7 +107,7 @@ Alla virtuella datorer som du skapar i Azure med hjälp av den klassiska distrib
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Steg 8: Försök ansluta till en nätverks resurs för virtuella datorer
 
-Om du inte kan ansluta till en nätverks resurs för virtuella datorer kan problemet orsakas av otillgängliga nätverkskort på den virtuella datorn. Information om hur du tar bort otillgängliga nätverkskort finns i [ta bort otillgängliga nätverkskort](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
+Om du inte kan ansluta till en nätverks resurs för virtuella datorer kan problemet orsakas av otillgängliga nätverkskort på den virtuella datorn. Information om hur du tar bort otillgängliga nätverkskort finns i [ta bort otillgängliga nätverkskort](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics)
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>Steg 9: kontrol lera Inter-Vnet anslutningen
 

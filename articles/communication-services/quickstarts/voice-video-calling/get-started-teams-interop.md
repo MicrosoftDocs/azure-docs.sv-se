@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: a9ef74c04c1f709348ae1d6dd97558ee6bedccf3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 39c35bc90986126d099e68023e15b97c58d0ac26
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654976"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108215"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Snabb start: Anslut din anropande app till ett team möte
 
 > [!IMPORTANT]
 > Fyll i [det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)om du vill aktivera/inaktivera [team innehavarens interoperabilitet](../../concepts/teams-interop.md).
 
-Kom igång med Azure Communication Services genom att ansluta din anropande lösning till Microsoft Teams med hjälp av Java Script-klient biblioteket.
+Kom igång med Azure Communication Services genom att ansluta din anropande lösning till Microsoft Teams med hjälp av Java Script SDK.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/teams-interop-javascript.md)]
@@ -43,5 +43,5 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 Mer information finns i följande artiklar:
 
 - Ta en titt på vårt [exempel på samtals hjälte](../../samples/calling-hero-sample.md)
-- Läs om hur du [anropar klient biblioteks funktioner](./calling-client-samples.md)
+- Läs mer om hur du [anropar SDK-funktioner](./calling-client-samples.md)
 - Läs mer om [hur du anropar Works](../../concepts/voice-video-calling/about-call-types.md)

@@ -4,12 +4,12 @@ description: Tillgänglighet för beräknings-och minnes resurser för tjänsten
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b1783204ae416412579e63654ff236fbc6cf1a18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573616"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046019"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Resurs tillgänglighet för Azure Container Instances i Azure-regioner
 
@@ -88,21 +88,21 @@ Följande regioner och maximalt antal resurser är tillgängliga för behållar 
 | Brasilien, södra | 4 | 16 | 4 | 16 | 20 |
 | Kanada, centrala | 2 | 8 | 2 | 3.5 | 20 |
 | Indien, centrala | 2 | 3.5 | 2 | 3.5 | 20 |
-| Central US | 2 | 3.5 | 2 | 3.5 | 20 |
+| Central US | 2 | 8 | 2 | 3.5 | 20 |
 | Asien, östra | 2 | 3.5 | 2 | 3.5 | 20 |
-| East US | 4 | 16 | 2 | 8 | 20 |
-| USA, östra 2 | 2 | 3.5 | 4 | 16 | 20 |
+| East US | 2 | 8 | 2 | 8 | 20 |
+| USA, östra 2 | 2 | 8 | 4 | 16 | 20 |
 | Japan, östra | 4 | 16 | 4 | 16 | 20 |
 | Sydkorea, centrala | 4 | 16 | 4 | 16 | 20 |
-| USA, norra centrala | 4 | 16 | 4 | 16 | 20 |
+| USA, norra centrala | 2 | 8 | 4 | 16 | 20 |
 | Europa, norra | 2 | 8 | 2 | 8 | 20 |
-| USA, södra centrala | 2 | 3.5 | 2 | 8 | 20 |
+| USA, södra centrala | 2 | 8 | 2 | 8 | 20 |
 | Sydostasien | Saknas | Saknas | 2 | 3.5 | 20 |
 | Indien, södra | 2 | 3.5 | 2 | 3.5 | 20 |
 | Storbritannien, södra | 2 | 8 | 2 | 3.5 | 20 |
-| USA, västra centrala | 4 | 16 | 2 | 8 | 20 |
+| USA, västra centrala | 2 | 8 | 2 | 8 | 20 |
 | Europa, västra | 4 | 16 | 4 | 16 | 20 |
-| USA, västra | 4 | 16 | 2 | 8 | 20 |
+| USA, västra | 2 | 8 | 2 | 8 | 20 |
 | USA, västra 2 | 2 | 8 | 2 | 3.5 | 20 |
 
 

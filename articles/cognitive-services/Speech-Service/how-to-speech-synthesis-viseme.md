@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 7a196ff8c80a6f92e1205f5553a54913e281b52b
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: f74a242db2686eb4571ebbea80b88a75dda205d4
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025891"
+ms.locfileid: "105044075"
 ---
 # <a name="get-facial-pose-events"></a>Hämta händelser för ansikts attityd
 
@@ -31,7 +31,7 @@ Det finns ingen en-till-en-korrespondens mellan visemes och fonem.
 Flera fonem motsvarar ofta en enda viseme, eftersom flera fonem ser likadana ut på ytan när de skapas, till exempel `s` och `z` .
 Se [mappnings tabellen mellan visemes och fonem](#map-phonemes-to-visemes).
 
-Med visemes kan du skapa mer naturliga och intelligenta nyhets sändningar, mer interaktiva spel och tecknade tecken och mer intuitiva språkundervisnings videor. Förhöret kan också hämta ljud visuellt och "Lip-Read"-tal innehåll som visar visemes på ett animerat ansikte.
+Med visemes kan du skapa mer naturliga och intelligenta nyhets sändningar, mer interaktiva spel och tecknade tecken och mer intuitiva språkundervisnings videor. Personer med hörsel försämring kan också hämta ljud visuellt och "Lip-Read"-tal innehåll som visar visemes på en animerad ansikts.
 
 ## <a name="get-viseme-events-with-the-speech-sdk"></a>Hämta viseme-händelser med talet SDK
 

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025245"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107524"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Vanliga frågor och svar om Azure Cloud Services (utökad support)
 Den här artikeln beskriver vanliga frågor som rör Azure Cloud Services (utökad support).
@@ -93,7 +93,7 @@ Nej, distributioner av moln tjänster (utökad support) är knutna till ett klus
 ### <a name="when-do-i-need-to-migrate"></a>När behöver jag migrera? 
 Hur lång tid det tar och hur komplext migreringen är beror på en mängd variabler. Planering är det mest effektiva steget för att förstå omfattningen av arbete, Blocker och komplexitet vid migrering.
 
-## <a name="networking"></a>Nätverk
+## <a name="networking"></a>Nätverk 
 
 ### <a name="why-cant-i-create-a-deployment-without-virtual-network"></a>Varför kan jag inte skapa en distribution utan ett virtuellt nätverk?
 Virtuella nätverk är en resurs som krävs för distribution på Azure Resource Manager. Cloud Services (utökad support) distribution måste finnas i ett virtuellt nätverk. 
@@ -112,6 +112,9 @@ Kunder faktureras för användning av IP-adresser på Cloud Services (utökad su
 
 ### <a name="can-i-use-a-dns-name-with-cloud-services-extended-support"></a>Kan jag använda ett DNS-namn med Cloud Services (utökad support)? 
 Ja. Cloud Services (utökad support) kan också tilldelas ett DNS-namn. Med Azure Resource Manager är DNS-etiketten en valfri egenskap för den offentliga IP-adress som är tilldelad till moln tjänsten. Formatet på DNS-namnet för Azure Resource Manager baserade distributioner är `<userlabel>.<region>.cloudapp.azure.com`
+
+### <a name="can-i-update-or-change-the-virtual-network-reference-for-an-existing-cloud-service-extended-support"></a>Kan jag uppdatera eller ändra den virtuella nätverks referensen för en befintlig moln tjänst (utökad support)? 
+Nej. En virtuell nätverks referens är obligatorisk när en moln tjänst skapas. Det går inte att ändra den virtuella nätverks referensen för en befintlig moln tjänst. Det virtuella nätverkets adress utrymme kan ändras med VNet-API: er. 
 
 ## <a name="certificates--key-vault"></a>Certifikat & Key Vault
 

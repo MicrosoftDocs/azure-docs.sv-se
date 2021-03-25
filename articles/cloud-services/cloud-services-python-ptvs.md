@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2822f719928515efc70eeed3d7c182e347627418
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743295"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045526"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webb- och arbetsroller för Python med Python Tools för Visual Studio
 
@@ -28,7 +28,7 @@ I den här artikeln ges en översikt över hur du använder webb- och arbetsroll
 * [Azure SDK Tools för VS 2013][Azure SDK Tools for VS 2013] eller  
 [Azure SDK Tools för VS 2015][Azure SDK Tools for VS 2015] eller  
 [Azure SDK Tools för VS 2017][Azure SDK Tools for VS 2017]
-* [Python 2.7 32-bitars][Python 2.7 32-bit] eller [Python 3.5 32-bitars][Python 3.5 32-bit]
+* [Python 2,7 32-bitars][Python 2.7 32-bit] eller [python 3,8 32-bit][Python 3.8 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -71,7 +71,7 @@ Din molntjänst kan innehålla roller som implementeras på olika språk.  Exemp
 
 Huvudproblemet med installationsskripten är att de inte installerar Python. Definiera först två [startaktiviteter](cloud-services-startup-tasks.md) i filen [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef). Den första aktiviteten (**PrepPython.ps1**) hämtar och installerar Python-körningen. Den andra aktiviteten (**PipInstaller.ps1**) kör pip för att installera alla beroenden som du kan ha.
 
-Följande skript har skrivits för Python 3.5. Om du vill använda version 2.x av Python, ställer du in **PYTHON2**-variabelfilen till **på** för de båda startaktiviteterna och för körningsaktiviteten: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Följande skript har skrivits för python 3,8. Om du vill använda version 2.x av Python, ställer du in **PYTHON2**-variabelfilen till **på** för de båda startaktiviteterna och för körningsaktiviteten: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -167,7 +167,7 @@ Variablerna **PYTHON2** och **PYPATH** måste läggas till arbetsstartsaktivitet
 Skapa sedan filerna **PrepPython.ps1** och **PipInstaller.ps1** i din rolls **. / bin**-mapp.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Det här skriptet installerar Python. Om du anger **PYTHON2**-miljövariabeln till **på** installeras Python 2.7, annars installeras Python 3.5.
+Det här skriptet installerar Python. Om **PYTHON2** -miljövariabeln är inställd på **på**, är python 2,7 installerat, annars installeras python 3,8.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -186,12 +186,12 @@ if (-not $is_emulated){
 
     if (-not $?) {
 
-        $url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
-        $outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
+        $url = "https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe"
+        $outFile = "${env:TEMP}\python-3.8.8-amd64.exe"
 
         if ($is_python2) {
-            $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
-            $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
+            $url = "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+            $outFile = "${env:TEMP}\python-2.7.18.amd64.msi"
         }
 
         Write-Output "Not found, downloading $url to $outFile$nl"
@@ -214,7 +214,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Det här skriptet ringer upp pip och installerar alla beroenden i **requirements.txt**-filen. Om du anger **PYTHON2**-miljövariabeln till **på** används Python 2.7, annars används Python 3.5.
+Det här skriptet ringer upp pip och installerar alla beroenden i **requirements.txt**-filen. Om **PYTHON2** -miljövariabeln är inställd på **på**, används python 2,7, annars används python 3,8.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -249,7 +249,7 @@ if (-not $is_emulated){
 
 **bin\LaunchWorker.ps1** skapades ursprungligen för att göra mycket förberedande arbete men det fungerar inte riktigt som tänkt. Ersätt innehållet i filen med följande skript.
 
-Det här skriptet anropar **worker.py**-filen från python-projektet. Om du anger **PYTHON2**-miljövariabeln till **på** används Python 2.7, annars används Python 3.5.
+Det här skriptet anropar **worker.py**-filen från python-projektet. Om **PYTHON2** -miljövariabeln är inställd på **på**, används python 2,7, annars används python 3,8.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -364,4 +364,4 @@ Mer information om hur du använder Azure-tjänster från dina webb- och arbetsr
 [Azure SDK Tools for VS 2015]: https://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
-[Python 3.5 32-bit]: https://www.python.org/downloads/
+[Python 3.8 32-bit]: https://www.python.org/downloads/

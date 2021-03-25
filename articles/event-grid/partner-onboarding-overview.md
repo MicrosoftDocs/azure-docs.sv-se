@@ -3,12 +3,12 @@ title: Översikt över partner onboarding (Azure Event Grid)
 description: Innehåller en översikt över hur du kan publicera som en Event Grid-partner.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 2a2e33395cabd368d5d5d870dd0461e4cbd37e0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d16337eada829a817110abf7842f763972d0718f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93081203"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109347"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>Översikt över partner onboarding (Azure Event Grid)
 
@@ -152,7 +152,7 @@ När du har bokfört i partner namn områdets slut punkt får du ett svar. Svare
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-mall](/azure/templates/microsoft.eventgrid/allversions)
   * [Schema för ARM-mall](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API:er](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [REST API:er](/azure/templates/microsoft.eventgrid/2020-04-01-preview/partnernamespaces)
   * [CLI-tillägg](/cli/azure/ext/eventgrid/)
 
 ### <a name="sdks"></a>SDK:er

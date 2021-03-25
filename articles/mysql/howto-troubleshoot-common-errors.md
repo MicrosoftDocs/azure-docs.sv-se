@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105037554"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109803"
 ---
-# <a name="common-errors"></a>Vanliga fel
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>Ofta påträffade fel under eller efter migrering till Azure Database for MySQL-tjänsten
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Azure Database for MySQL är en fullständigt hanterad tjänst som drivs av community-versionen av MySQL. MySQL-upplevelsen i en hanterad tjänst miljö kan skilja sig från att köra MySQL i din egen miljö. I den här artikeln visas några vanliga fel som användarna kan stöta på när de migrerar till eller utvecklar Azure Database for MySQL tjänsten för första gången.
 
@@ -84,6 +86,14 @@ Ovanstående fel kan uppstå när du kör skapa vy med definar-instruktioner som
 
 > [!Tip] 
 > Använd sed eller perl för att ändra en dumpfil eller SQL-skript för att ersätta definar =-instruktionen
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>FEL 1227 (42000) på rad 18: åtkomst nekad; du behöver (minst en av) superprivilegierna för den här åtgärden
+
+Ovanstående fel kan uppstå om du använder försök att importera dumpfilen från MySQL-servern med GTID aktiverat till mål Azure Database for MySQL servern. Mysqldump lägger till SET @ @SESSION.sql_log_bin = 0-instruktionen i en dumpfil från en server där GTIDs används, vilket inaktiverar binär loggning medan dumpfilen läses in igen.
+
+**Lösning**: Lös problemet genom att importera, ta bort eller kommentera raderna nedan i mysqldump-filen och kör import igen för att säkerställa att den lyckas. 
+
+Ange @MYSQLDUMP_TEMP_LOG_BIN = @ @SESSION.SQL_LOG_BIN ; Ange @ @SESSION.SQL_LOG_BIN = 0; Ange @ @GLOBAL.GTID_PURGED = ' '; Ange @ @SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN ;
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>Vanliga anslutnings fel för inloggning för Server administratör
 

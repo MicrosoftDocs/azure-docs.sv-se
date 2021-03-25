@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 668b987dd8b367c143a91dc5adb11848321a9d5a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96339616"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044421"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Lägg till komplettera automatiskt och förslag till klient program med Azure Kognitiv sökning
 
-Sökning efter typ är en vanlig teknik för att förbättra produktiviteten för användarinitierade frågor. I Azure Kognitiv sökning stöds den här upplevelsen genom *Autoavsluta*, som avslutar en term eller fras baserat på inaktuella inleveranser (som slutförs med "Micro" med "Microsoft"). En andra användar upplevelse är *förslag* eller en kort lista med matchande dokument (som returnerar bok titlar med ett ID så att du kan länka till en informations sida om den boken). Både Autoavsluta och förslag är predikat på en matchning i indexet. Tjänsten erbjuder inte frågor som returnerar noll resultat.
+Sökning efter typ är en vanlig teknik för att förbättra produktiviteten för frågor. I Azure Kognitiv sökning stöds den här upplevelsen genom *Autoavsluta*, som avslutar en term eller fras baserat på inaktuella inleveranser (som slutförs med "Micro" med "Microsoft"). En andra användar upplevelse är *förslag* eller en kort lista med matchande dokument (som returnerar bok titlar med ett ID så att du kan länka till en informations sida om den boken). Både Autoavsluta och förslag är predikat på en matchning i indexet. Tjänsten erbjuder inte frågor som returnerar noll resultat.
 
 Om du vill implementera dessa upplevelser i Azure Kognitiv sökning behöver du:
 
@@ -63,13 +63,16 @@ Följ dessa länkar för referens sidorna REST och .NET SDK:
 
 Svar för Autoavsluta och förslag är vad du kan förväntat dig för mönstret: [Autoavsluta](/rest/api/searchservice/autocomplete#response) returnerar en lista med villkor, [förslag](/rest/api/searchservice/suggestions#response) returnerar villkor plus ett dokument-ID så att du kan hämta dokumentet (Använd sökverktygets API för att hämta det [aktuella dokumentet för](/rest/api/searchservice/lookup-document) en informations sida).
 
-Svar definieras av parametrarna på begäran. För Autoavsluta ställer du in [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) för att avgöra om text komplettering sker på en eller två villkor. För förslag bestämmer det fält du väljer innehållet i svaret.
+Svaren är formade för parametrarna på begäran:
 
-För förslag bör du ytterligare förfina svaret för att undvika dubbletter eller vad som verkar vara orelaterade resultat. Om du vill kontrol lera resultatet inkluderar du fler parametrar i begäran. Följande parametrar gäller för både Autoavsluta och förslag, men är kanske mer nödvändiga för förslag, särskilt när en förslags ställare innehåller flera fält.
++ För automatisk komplettering ställer du in [**autocompleteMode**](/rest/api/searchservice/autocomplete#query-parameters) för att avgöra om text komplettering sker på en eller två villkor. 
+
++ Ange [**$Select**](/rest/api/searchservice/suggestionse#query-parameters) för att returnera fält som innehåller unika eller särskiljande värden, t. ex. namn och beskrivning, för förslag. Undvik fält som innehåller dubblettvärden (till exempel en kategori eller stad).
+
+Följande ytterligare parametrar gäller för både Autoavsluta och förslag, men är kanske mer nödvändiga för förslag, särskilt när en förslags ställare innehåller flera fält.
 
 | Parameter | Användning |
 |-----------|-------|
-| **$select** | Om du har flera **sourceFields** i en förslags ställare använder du **$Select** för att välja vilket fält som bidrar med värden ( `$select=GameTitle` ). |
 | **searchFields** | Begränsa frågan till vissa fält. |
 | **$filter** | Använd matchnings villkor i resultat uppsättningen ( `$filter=Category eq 'ActionAdventure'` ). |
 | **$top** | Begränsa resultatet till ett angivet tal ( `$top=5` ).|

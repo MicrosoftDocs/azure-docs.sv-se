@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d5e25df68bbf793535b22602ad581db24a1426f
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022916"
+ms.locfileid: "105044557"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Lägga till en API-anslutning till ett användar flöde
 
@@ -59,6 +59,8 @@ Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../../key-vaul
 - **Ämne**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
 - **Innehålls typ**: `PKCS #12`
 - **Livs längd Acton typ**: `Email all contacts at a given percentage lifetime` eller `Email all contacts a given number of days before expiry`
+- **Nyckel typ**: `RSA`
+- **Nyckel storlek**: `2048`
 - **Privat nyckel för exportable**: `Yes` (för att kunna exportera PFX-fil)
 
 Sedan kan du [Exportera certifikatet](../../key-vault/certificates/how-to-export-certificate.md). Du kan också använda PowerShell [: s New-SelfSignedCertificate-cmdlet](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) för att skapa ett självsignerat certifikat.

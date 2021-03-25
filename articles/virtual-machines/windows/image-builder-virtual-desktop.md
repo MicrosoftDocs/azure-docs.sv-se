@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103602026"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045594"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Skapa en Windows Virtual Desktop-avbildning med Azure VM Image Builder och PowerShell
 
@@ -22,11 +22,11 @@ Den här artikeln visar hur du skapar en Windows Virtual Desktop-avbildning med 
 
 * Installerar [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1).
 * Köra ett [Windows-skript för optimering av virtuella skriv bord](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) från community-lagrings platsen.
-* Installera [Microsoft Teams](https://docs.microsoft.com/azure/virtual-desktop/teams-on-wvd).
-* [Starta om](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-restart-customizer)
-* Kör [Windows Update](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-update-customizer)
+* Installera [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md).
+* [Starta om](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
+* Kör [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
 
-Vi visar dig hur du automatiserar detta med hjälp av Azure VM Image Builder och distribuerar avbildningen till ett [delat avbildnings Galleri](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)där du kan replikera till andra regioner, styra skalan och dela avbildningen i och utanför dina organisationer.
+Vi visar dig hur du automatiserar detta med hjälp av Azure VM Image Builder och distribuerar avbildningen till ett [delat avbildnings Galleri](../shared-image-galleries.md)där du kan replikera till andra regioner, styra skalan och dela avbildningen i och utanför dina organisationer.
 
 
 I det här exemplet används en Azure Resource Manager mall med Image Builder-mallen inkapslad i det här exemplet för att förenkla distributionen av en Image Builder-konfiguration. Detta ger dig andra fördelar, till exempel variabler och parameter indata. Du kan också skicka parametrar från kommando raden.
@@ -73,7 +73,7 @@ Den här artikeln är avsedd att vara en kopierings-och Inklistrings övning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Du måste ha de Azure PowerShell senaste installations-CmdLetarna installerade, se [här](https://docs.microsoft.com/powershell/azure/overview) för att installera information.
+Du måste ha de Azure PowerShell senaste installations-CmdLetarna installerade, se [här](/powershell/azure/overview) för att installera information.
 
 ```PowerShell
 # Register for Azure Image Builder Feature
@@ -279,7 +279,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>Skapa en virtuell dator
-Nu när versionen är färdig kan du bygga en virtuell dator från avbildningen. Använd exemplen [här](https://docs.microsoft.com/powershell/module/az.compute/new-azvm#examples).
+Nu när versionen är färdig kan du bygga en virtuell dator från avbildningen. Använd exemplen [här](/powershell/module/az.compute/new-azvm#examples).
 
 ## <a name="clean-up"></a>Rensa
 

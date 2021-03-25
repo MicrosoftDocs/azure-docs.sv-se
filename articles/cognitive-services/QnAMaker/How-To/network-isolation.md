@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467552"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043367"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
 
@@ -60,7 +60,7 @@ Kognitiv sökning instans kan isoleras via en privat slut punkt efter att QnA Ma
 
 Om QnA Maker App Service är begränsat med en App Service-miljön använder du samma VNet för att skapa en privat slut punkts anslutning till Kognitiv sökning-instansen. Skapa en ny DNS-post i det virtuella nätverket för att mappa Kognitiv sökning slut punkten till den Kognitiv sökning privata slut punktens IP-adress. 
 
-Om en App Service-miljön inte används för QnAMaker App Service skapar du först en ny VNet-resurs och skapar sedan den privata slut punkts anslutningen till Kognitiv sökning-instansen. I det här fallet måste QnA Maker App Service [integreras med det virtuella](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) nätverket för att ansluta till kognitiv sökning-instansen. 
+Om en App Service-miljön inte används för QnAMaker App Service skapar du först en ny VNet-resurs och skapar sedan den privata slut punkts anslutningen till Kognitiv sökning-instansen. I det här fallet måste QnA Maker App Service [integreras med det virtuella](../../../app-service/web-sites-integrate-with-vnet.md) nätverket för att ansluta till kognitiv sökning-instansen. 
 
 #  <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 

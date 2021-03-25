@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c866629677790447d0ed730ae9cc62cb37e338e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ddc9bfeb0df32614d835e0eaef9da52e917ee91
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495512"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108442"
 ---
 # <a name="sms-concepts"></a>SMS-begrepp
 
@@ -23,9 +23,9 @@ ms.locfileid: "103495512"
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Med Azure Communication Services kan du skicka och ta emot SMS-textmeddelanden med hjälp av kommunikations tjänsterna SMS-klientcertifikat. Dessa klient bibliotek kan användas för att stödja kund tjänst scenarier, påminnelser för avtalade tider, tvåfaktorautentisering och andra real tids kommunikations behov. Med kommunikations tjänster i SMS kan du på ett tillförlitligt sätt skicka meddelanden samtidigt som du kan exponera leverans och svars takt insikter kring dina kampanjer.
+Med Azure Communication Services kan du skicka och ta emot SMS-textmeddelanden med hjälp av kommunikations tjänsterna SMS SDK: er. Dessa SDK: er kan användas för att stödja kund tjänst scenarier, påminnelser för avtalade tider, tvåfaktorautentisering och andra behov av kommunikation i real tid. Med kommunikations tjänster i SMS kan du på ett tillförlitligt sätt skicka meddelanden samtidigt som du kan exponera leverans och svars takt insikter kring dina kampanjer.
 
-Viktiga funktioner i Azure Communication Services SMS-klient bibliotek är:
+Viktiga funktioner i Azure Communication Services SMS SDK: er är:
 
 -  **Enkel** installations miljö för att lägga till SMS-funktioner i dina program.
 - **Hög hastighets** meddelande support över avgiftsfria nummer för A2P (program till person) i USA.
@@ -46,6 +46,6 @@ Viktiga funktioner i Azure Communication Services SMS-klient bibliotek är:
 
 Följande dokument kan vara intressanta för dig:
 
-- Bekanta dig med SMS- [klient biblioteket](../telephony-sms/sdk-features.md)
+- Bekanta dig med [SMS SDK](../telephony-sms/sdk-features.md)
 - Hämta ett SMS-kompatibelt [telefonnummer](../../quickstarts/telephony-sms/get-phone-number.md)
 - [Telefonnummer typer i Azure Communication Services](../telephony-sms/plan-solution.md)

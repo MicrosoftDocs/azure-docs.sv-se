@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: d0acf83ddfb0d2a3aff0db0f3d151869bce1c710
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771744"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109868"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: identifiering och utvärdering
 
@@ -46,12 +46,10 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 **Enhet** | vCenter Server behöver resurser för att allokera en server för Azure Migrates enheten:<br/><br/> – 32 GB RAM, 8 virtuella processorer och cirka 80 GB disk lagring.<br/><br/> – En extern virtuell växel och Internet åtkomst på installations servern, direkt eller via en proxyserver.
 **Servrar** | Alla Windows-och Linux OS-versioner stöds för identifiering av konfigurations-och prestanda-metadata. <br/><br/> Alla Windows-och Linux OS-versioner stöds för att utföra program identifiering på servrar. Sök efter de OS- [versioner som stöds](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) för analys av beroende analyser.<br/><br/> Om du vill utföra identifiering av installerade program och en agent lös beroende analys, måste VMware-verktyg (senare än 10.2.0) installeras och köras på servrar. Windows-servrar måste ha PowerShell version 2,0 eller senare installerat.<br/><br/> Om du vill identifiera SQL Server instanser och databaser kan [du söka efter](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) de SQL Server versioner och versioner som stöds, de Windows OS-versioner och autentiseringsmekanismer som stöds.
 
-> [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
-
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
 Om du vill skapa ett projekt och registrera Azure Migrate-enheten behöver du ett konto med:
+
 - Deltagar-eller ägar behörigheter för Azure-prenumerationen
 - Behörigheter för att registrera Azure Active Directory-appar (AAD)
 - Ägare eller deltagare plus administratörs behörighet för användar åtkomst på Azure-prenumerationen för att skapa en Key Vault som används vid migrering av en server utan Server
@@ -96,14 +94,13 @@ I vSphere-webbklient skapar du ett konto på följande sätt:
 3. I **användare lägger du** till en ny användare.
 4. I **ny användare**, anger du konto informationen. Klicka sedan på **OK**.
 5. I **globala behörigheter** väljer du användar kontot och tilldelar kontot den **skrivskyddade** rollen. Klicka sedan på **OK**.
-6.  Om du även vill utföra identifiering av installerade program och en agent lös beroende analys går du till **roller** > väljer den **skrivskyddade** rollen och väljer **gäst åtgärder** i **privilegier**. Du kan sprida privilegierna till alla objekt under vCenter Server genom att markera kryss rutan Sprid till underordnade objekt.
+6. Om du även vill utföra identifiering av installerade program och en agent lös beroende analys går du till **roller** > väljer den **skrivskyddade** rollen och väljer **gäst åtgärder** i **privilegier**. Du kan sprida privilegierna till alla objekt under vCenter Server genom att markera kryss rutan Sprid till underordnade objekt.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Kryss ruta för att tillåta gäst åtgärder på den skrivskyddade rollen":::
 
 
 > [!NOTE]
 > Du kan begränsa identifieringen till specifika vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda servrar genom att omfånget vCenter Server-kontot. [**Läs mer**](set-discovery-scope.md) om hur du omfångerar vCenter Server-användarkontot.
-
 
 ### <a name="create-an-account-to-access-servers"></a>Skapa ett konto för åtkomst till servrar
 
@@ -234,7 +231,6 @@ Konfigurera enheten för första gången.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="Panel 1 på installationens konfigurations hanterare":::
 
-
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
 1. Klistra in **projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Azure Migrate: identifierings-och utvärderings> identifiera> hantera befintliga apparater**, Välj det installations namn som du angav vid tidpunkten för att generera nyckeln och kopiera motsvarande nyckel.
@@ -274,9 +270,6 @@ I **steg 3: ange autentiseringsuppgifter för servern för att utföra program v
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 på installation Configuration Manager för Server information":::
 
-> [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i Australien, östra och vill prova den här funktionen måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
-
 Om du vill använda dessa funktioner kan du ange autentiseringsuppgifter för servern genom att följa stegen nedan. Installations programmet försöker automatiskt mappa autentiseringsuppgifterna till servrarna för att utföra identifierings funktionerna.
 
 - Du kan lägga till autentiseringsuppgifter för servern genom att klicka på knappen **Lägg till autentiseringsuppgifter** . Då öppnas en spärr ande där du kan välja **typ av autentiseringsuppgifter** i list rutan.
@@ -289,6 +282,7 @@ Om du vill använda dessa funktioner kan du ange autentiseringsuppgifter för se
 - Du kan se **verifierings status** för alla domänautentiseringsuppgifter i tabellen autentiseringsuppgifter. Endast domänautentiseringsuppgifter kommer att val IDE ras.
 - Om verifieringen Miss lyckas kan du klicka på **misslyckad** status för att se felet som påträffades och klicka på reparera **autentiseringsuppgifter** igen när du har åtgärdat problemet för att validera de misslyckade domänautentiseringsuppgifter igen.
 
+     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Panel 3 på installationens konfigurations hanterare för att ange flera autentiseringsuppgifter":::
 
 ### <a name="start-discovery"></a>Starta identifiering
 

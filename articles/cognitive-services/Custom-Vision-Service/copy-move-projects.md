@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1def60843df55a80e8b7d28d7eb61e262a560111
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501098"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044165"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopiera och flytta dina Custom Vision-projekt
 
@@ -31,7 +31,7 @@ Om din app eller ditt företag är beroende av att ett Custom Vision-projekt anv
 - Två Azure Custom Vision-resurser. Om du inte har dem går du till Azure Portal och [skapar en ny Custom vision resurs](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Utbildnings nycklar och slut punkts-URL: er för dina Custom Vision resurser. Du hittar dessa värden på resurs-fliken **Översikt** på Azure Portal.
 - Ett Custom Vision-projekt som skapats. Mer information om hur du gör detta finns i [skapa en klassificerare](./getting-started-build-a-classifier.md) .
-* [PowerShell version 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows), eller ett liknande kommando rads verktyg.
+* [PowerShell version 6.0 +](/powershell/scripting/install/installing-powershell-core-on-windows), eller ett liknande kommando rads verktyg.
 
 ## <a name="process-overview"></a>Process översikt
 

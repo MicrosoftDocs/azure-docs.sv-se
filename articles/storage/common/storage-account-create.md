@@ -10,12 +10,12 @@ ms.date: 01/11/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b8f5932985f90ce042d7b0df0d01e7c685098670
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73bef1648b08f5c1e0664ef1da15375bc44149cc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576602"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045356"
 ---
 # <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
@@ -279,7 +279,7 @@ Alternativt kan du ta bort resurs gruppen, vilket innebär att lagrings kontot o
 > [!WARNING]
 > Det går inte att återställa ett borttaget lagringskonto eller att hämta innehåll som det innehöll före borttagningen. Var noga med att säkerhetskopiera allt som du vill spara innan du tar bort kontot. Detta gäller även alla resurser i kontot. När du tar bort en blobb, tabell, kö eller fil tas den bort permanent.
 >
-> Om du försöker ta bort ett lagringskonto som är kopplat till en virtuell Azure-dator kan du få ett felmeddelande om att lagringskontot fortfarande används. Information om hur du felsöker det här felet finns i [Felsöka fel när du tar bort lagrings konton](../../virtual-machines/troubleshooting/index.yml).
+> Om du försöker ta bort ett lagringskonto som är kopplat till en virtuell Azure-dator kan du få ett felmeddelande om att lagringskontot fortfarande används. Information om hur du felsöker det här felet finns i [Felsöka fel när du tar bort lagrings konton](/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 
 ## <a name="next-steps"></a>Nästa steg
 

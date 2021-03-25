@@ -9,20 +9,20 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e71917d917491037100b4ee666cbeb030b0a4786
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656149"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110839"
 ---
 # <a name="chat-concepts"></a>Chattbegrepp 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Azure Communication Services Chat-klient bibliotek kan användas för att lägga till text i real tid i dina program. Den här sidan sammanfattar viktiga chatt-koncept och-funktioner.    
+Azure Communication Services Chat SDK: er kan användas för att lägga till text i real tid i dina program. Den här sidan sammanfattar viktiga chatt-koncept och-funktioner.    
 
-Se [Översikt över kommunikations tjänstens klient bibliotek](./sdk-features.md) för att lära dig mer om aktuella klient biblioteks språk och-funktioner.    
+Se [översikten över kommunikations tjänsterna i Chat SDK](./sdk-features.md) för att lära dig mer om de olika SDK-språken och-funktionerna.  
 
 ## <a name="chat-overview"></a>Översikt över chatt    
 
@@ -117,7 +117,7 @@ Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemge
 
 ## <a name="real-time-signaling"></a>Real tids signalering  
 
-Klient biblioteket för chat Java Script innehåller real tids signalering. Detta gör det möjligt för klienter att lyssna efter uppdateringar och inkommande meddelanden i real tid till en chatt-tråd utan att behöva avsöka API: erna. Tillgängliga händelser är:
+I Chat-JavaScript SDK ingår real tids signalering. Detta gör det möjligt för klienter att lyssna efter uppdateringar och inkommande meddelanden i real tid till en chatt-tråd utan att behöva avsöka API: erna. Tillgängliga händelser är:
 
  - `ChatMessageReceived` – När ett nytt meddelande skickas till en chatt-tråd. Den här händelsen skickas inte för automatiskt genererade system meddelanden som diskuterades i föregående avsnitt.   
  - `ChatMessageEdited` – När ett meddelande redige ras i en chatt-tråd. 
@@ -136,9 +136,9 @@ Klient biblioteket för chat Java Script innehåller real tids signalering. Dett
 Med real tids signaler kan användarna chatta i real tid. Dina tjänster kan använda Azure Event Grid för att prenumerera på chatt-relaterade händelser. Mer information finns i [begrepp för händelse hantering](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
 
 
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Använda Cognitive Services med klient biblioteket i Chat för att aktivera intelligenta funktioner 
+## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>Använda Cognitive Services med chatt SDK för att aktivera intelligenta funktioner    
 
-Du kan använda [Azure kognitiva API: er](../../../cognitive-services/index.yml) med klient biblioteket i Chat för att lägga till smarta funktioner i dina program. Du kan till exempel:  
+Du kan använda [Azure kognitiva API: er](../../../cognitive-services/index.yml) med chatt SDK för att lägga till smarta funktioner i dina program. Du kan till exempel: 
 
 - Gör det möjligt för användare att chatta med varandra på olika språk.  
 - Hjälp en support agent att prioritera biljetter genom att identifiera ett negativt sentiment av ett inkommande problem från en kund.   
@@ -156,4 +156,4 @@ På så sätt kommer meddelande historiken innehålla både original meddelanden
 > [Kom igång med chatt](../../quickstarts/chat/get-started.md)    
 
 Följande dokument kan vara intressanta för dig:  
-- Bekanta dig med [klient biblioteket för chat](sdk-features.md)
+- Bekanta dig med chatt- [SDK: n](sdk-features.md)

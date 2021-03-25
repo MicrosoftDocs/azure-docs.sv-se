@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bdfb5f65106f3f8843b4aa52b752f5e563ab03f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102620125"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045339"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>Ansluta enheter via en IoT Edge transparent Gateway
 
@@ -186,7 +186,7 @@ Din transparenta Gateway har nu kon figurer ATS och är redo att börja vidarebe
 
 ## <a name="provision-a-downstream-device"></a>Etablera en underordnad enhet
 
-IoT Edge kan för närvarande inte automatiskt etablera en underordnad enhet till ditt IoT Central-program. Följande steg visar hur du etablerar `thermostat1` enheten. För att utföra de här stegen behöver du en miljö med python 3,5 (eller högre) installerat och Internet anslutning. [Azure Cloud Shell](https://shell.azure.com/) har python 3,5 förinstallerat:
+IoT Edge kan för närvarande inte automatiskt etablera en underordnad enhet till ditt IoT Central-program. Följande steg visar hur du etablerar `thermostat1` enheten. För att utföra de här stegen behöver du en miljö med python 3,6 (eller högre) installerat och Internet anslutning. [Azure Cloud Shell](https://shell.azure.com/) har python 3,7 förinstallerat:
 
 1. Kör följande kommando för att installera `azure.iot.device` modulen:
 

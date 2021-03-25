@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18d0a24de6f0775fdb35799512f9796a323d353a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010413"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045492"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrera till anslutnings övervakaren från Övervakare av nätverksprestanda
 
@@ -31,7 +31,7 @@ Du kan migrera tester från Övervakare av nätverksprestanda (NPM) till ny, fö
 
 Migreringen hjälper till att producera följande resultat:
 
-* Lokala agenter och brand Väggs inställningar fungerar som de är. Inga ändringar krävs. Log Analytics agenter som är installerade på virtuella Azure-datorer måste ersättas med Network Watcher- [tillägget](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows).
+* Lokala agenter och brand Väggs inställningar fungerar som de är. Inga ändringar krävs. Log Analytics agenter som är installerade på virtuella Azure-datorer måste ersättas med Network Watcher- [tillägget](../virtual-machines/extensions/network-watcher-windows.md).
 * Befintliga tester mappas till anslutnings övervakaren > test grupp > test format. Genom att välja **Redigera** kan du Visa och ändra egenskaperna för den nya anslutnings övervakaren, hämta en mall för att göra ändringar i den och skicka mallen via Azure Resource Manager.
 * Agenter skickar data till både arbets ytan Log Analytics och måtten.
 * Data övervakning:

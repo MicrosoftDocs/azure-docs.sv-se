@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889543"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045679"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -370,4 +370,6 @@ Kontrol lera att IoT Edge för Linux på Windows har installerats och kon figure
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fortsätt att [distribuera IoT Edge moduler](how-to-deploy-modules-portal.md) och lär dig hur du distribuerar moduler till din enhet.
+* Fortsätt att [distribuera IoT Edge moduler](how-to-deploy-modules-portal.md) och lär dig hur du distribuerar moduler till din enhet.
+* Lär dig hur du [hanterar certifikat på IoT Edge för Linux på en virtuell Windows-dator](how-to-manage-device-certificates.md) och överför filer från värd operativ systemet till den virtuella Linux-datorn.
+* Lär dig hur du [konfigurerar IoT Edge enheter för att kommunicera via en proxyserver](how-to-configure-proxy-support.md).

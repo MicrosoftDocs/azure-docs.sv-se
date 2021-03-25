@@ -1,17 +1,17 @@
 ---
 title: Övervakning – Azure Database for MySQL – flexibel Server
 description: Den här artikeln beskriver måtten för övervakning och avisering för Azure Database for MySQL flexibel Server, inklusive CPU, lagring och anslutnings statistik.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100595165"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110482"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Övervaka Azure Database for MySQL flexibla servrar med inbyggda mått
 
@@ -31,7 +31,7 @@ Alla Azure-mått har en frekvens på en minut och varje mått ger 30 dagars hist
 ### <a name="list-of-metrics"></a>Lista över mått
 De här måtten är tillgängliga för Azure Database for MySQL:
 
-|Mått visnings namn|Metric|Enhet|Beskrivning|
+|Mått visnings namn|Metric|Enhet|Description|
 |---|---|---|---|
 |Värd processor procent|cpu_percent|Procent|Procent andelen av processor användningen på servern, inklusive processor användning från både kund arbets belastning och Azure MySQL-processer|
 |Värd nätverk i |network_bytes_ingress|Byte|Inkommande nätverks trafik på servern, inklusive trafik från både kund databas och Azure MySQL-funktioner som replikering, övervakning, loggar osv.|

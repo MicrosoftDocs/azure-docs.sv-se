@@ -47,7 +47,39 @@
         - name: Exportera hemligheter och certifikat som upphör att gälla efter det datum som krävs
           href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: PowerShell-exempel för App proxy
-      href: application-proxy-powershell-samples.md
+      items:
+        - name: Översikt över App proxy-exempel
+          href: application-proxy-powershell-samples.md
+        - name: Visa en lista med grundläggande information om appar
+          href: ./scripts/powershell-get-all-app-proxy-apps-basic.md
+        - name: Visa utökad information om appar
+          href: ./scripts/powershell-get-all-app-proxy-apps-extended.md
+        - name: Visa lista över appar efter anslutnings grupp
+          href: ./scripts/powershell-get-all-app-proxy-apps-by-connector-group.md
+        - name: Lista appar med token livs längd policy
+          href: ./scripts/powershell-get-all-app-proxy-apps-with-policy.md
+        - name: Visa anslutnings grupper och kopplingar
+          href: ./scripts/powershell-get-all-connectors.md
+        - name: Flytta appar mellan anslutnings grupper
+          href: ./scripts/powershell-move-all-apps-to-connector-group.md
+        - name: Visa lista över användare och grupper som har tilldelats till appen
+          href: ./scripts/powershell-display-users-group-of-app.md
+        - name: Tilldela användare till en app
+          href: ./scripts/powershell-assign-user-to-app.md
+        - name: Tilldela en app en grupp
+          href: ./scripts/powershell-assign-group-to-app.md
+        - name: Lista appar med hjälp av standard domäner
+          href: ./scripts/powershell-get-all-default-domain-apps.md
+        - name: Lista appar med hjälp av publicering med jokertecken
+          href: ./scripts/powershell-get-all-wildcard-apps.md
+        - name: Lista alla anpassade domäner och certifikat
+          href: ./scripts/powershell-get-all-custom-domains-and-certs.md
+        - name: Visa lista över appar utan certifikat
+          href: ./scripts/powershell-get-all-custom-domain-no-cert.md
+        - name: Visa en lista med appar med identiska certifikat
+          href: ./scripts/powershell-get-custom-domain-identical-cert.md
+        - name: Ersätt identiska certifikat
+          href: ./scripts/powershell-get-custom-domain-replace-cert.md
 - name: Begrepp
   expanded: true
   items:
