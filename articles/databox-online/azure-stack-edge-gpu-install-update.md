@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/21/2021
+ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 4590949f2feb86dc344dce87f3ff447e0e05e8ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438122"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956187"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Uppdatera Azure Stack Edge Pro GPU 
 
@@ -24,13 +24,15 @@ I den här artikeln beskrivs de steg som krävs för att installera uppdateringe
 Proceduren som beskrivs i den här artikeln har utförts med en annan version av program varan, men processen är densamma för den aktuella program versionen.
 
 > [!IMPORTANT]
-> - Uppdatering **2101** är den aktuella uppdateringen och motsvarar:
->   - Enhetens program varu version – **2.2.1473.2521**
+> - Uppdatering **2103** är den aktuella uppdateringen och motsvarar:
+>   - Enhetens program varu version – **2.2.1540.2890**
 >   - Kubernetes Server version – **v 1.17.3**
->   - IoT Edge version: **0.1.0-beta10**
+>   - IoT Edge version: **0.1.0-beta13**
+>   - Driv rutins version för GPU: **460.32.03**
+>   - CUDA-version: **11,2**
 >    
->    Information om vad som är nytt i den här uppdateringen finns i [viktig information](azure-stack-edge-gpu-2101-release-notes.md).
-> - Om du vill tillämpa 2101-uppdateringen måste enheten köra 2010.
+>    Information om vad som är nytt i den här uppdateringen finns i [viktig information](azure-stack-edge-gpu-2103-release-notes.md).
+> - Om du vill tillämpa 2103-uppdateringen måste enheten köra 2010. Om du inte kör den lägsta versionen som stöds visas följande fel: det går inte *att installera uppdaterings paketet eftersom dess beroenden inte är uppfyllda*.
 > - Kom ihåg enheten startas om när du installerar en uppdatering eller korrigering. Den här uppdateringen innehåller enhets program uppdateringar och Kubernetes-uppdateringar. Med tanke på att Azure Stack Edge Pro är en enda Node-enhet avbryts alla i/O-åtgärder och enheten upplever en stillestånds tid på upp till 1,5 timmar för uppdateringen.
 
 Om du vill installera uppdateringar på enheten måste du först konfigurera platsen för uppdaterings servern. När uppdaterings servern har kon figurer ATS kan du tillämpa uppdateringarna via Azure Portal gränssnittet eller det lokala webb gränssnittet.
@@ -111,10 +113,7 @@ Vi rekommenderar att du installerar uppdateringar via Azure Portal. Enheten sök
     
     ![Program varu version efter uppdatering 12](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-
-7. Efter omstarten placeras enheten återigen i underhålls läge och en informations avisering visas för att indikera att.
-
-    Om du väljer **Uppdatera enhet** i det övre kommando fältet kan du se förloppet för uppdateringarna.   
+7. Efter omstarten kan du se förloppet för uppdateringarna om du väljer **uppdaterings enheten** i det övre kommando fältet.   
 
 8. Enhets statusen uppdateras till **online** efter att uppdateringarna har installerats. 
 
@@ -124,23 +123,6 @@ Vi rekommenderar att du installerar uppdateringar via Azure Portal. Enheten sök
 
     ![Program varu version efter uppdatering 14](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
-<!--9. You will again see a notification that updates are available. These are the Kubernetes updates. Select the notification or select **Update device** from the top command bar.
-
-    ![Software version after update 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
-
-10. Download the Kubernetes updates. You can see that the package size is different when compared to the previous update package.
-
-    ![Software version after update 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
-
-    The process of installation is identical to that of device updates. First the updates are downloaded.
-
-    ![Software version after update 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
-    
-11. Once the updates are downloaded, you can then install the updates. 
-
-    ![Software version after update 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
-
-    As the updates are installed, the device is put into maintenance mode. The device does not restart for the Kubernetes updates. -->
 
 När enhetens program vara och Kubernetes-uppdateringar har installerats försvinner informations meddelandet. Enheten har nu den senaste versionen av enhets program och Kubernetes.
 
@@ -168,11 +150,11 @@ Utför följande steg för att ladda ned uppdateringen från Microsoft Update ka
 
 2. I rutan Sök i Microsoft Updates katalogen anger du Knowledge Base-numret för snabb korrigeringen eller villkoren för den uppdatering som du vill ladda ned. Ange till exempel **Azure Stack Edge Pro** och klicka sedan på **Sök**.
    
-    Uppdaterings listan visas som **Azure Stack Edge update 2101**.
+    Uppdaterings listan visas som **Azure Stack Edge update 2103**.
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
-4. Välj **Hämta**. Det finns två filer att ladda ned med *SoftwareUpdatePackage.exe* och *Kubernetes_Package.exe* suffix som motsvarar enhets program uppdateringar respektive Kubernetes uppdateringar. Ladda ned filerna till en mapp på det lokala systemet. Du kan också kopiera mappen till en nätverks resurs som kan kontaktas från enheten.
+4. Välj **Hämta**. Det finns två paket att ladda ned: KB 4613486 och KB 46134867 som motsvarar enhetens program uppdateringar (*SoftwareUpdatePackage.exe*) och Kubernetes-uppdateringar (*Kubernetes_Package.exe*). Ladda ned paketen till en mapp på det lokala systemet. Du kan också kopiera mappen till en nätverks resurs som kan kontaktas från enheten.
 
 ### <a name="install-the-update-or-the-hotfix"></a>Installera uppdateringen eller snabb korrigeringen
 
@@ -203,7 +185,7 @@ Den här proceduren tar cirka 20 minuter att slutföra. Utför följande steg f�
 
 5. Uppdateringen startar. När enheten har uppdaterats startas den om. Det lokala användar gränssnittet är inte tillgängligt under denna varaktighet.
    
-6. När omstarten är klar tas du till **inloggnings** sidan. Kontrol lera att enhetens program vara har uppdaterats genom att gå till **Underhåll**  >  **program uppdatering** i det lokala webb gränssnittet. Den program varu version som visas ska vara **Azure Stack Edge 2101** för den aktuella versionen. 
+6. När omstarten är klar tas du till **inloggnings** sidan. Kontrol lera att enhetens program vara har uppdaterats genom att gå till **Underhåll**  >  **program uppdatering** i det lokala webb gränssnittet. Den program varu version som visas ska vara **Azure Stack Edge 2103** för den aktuella versionen. 
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735785"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044761"
 ---
 # <a name="azure-security-technical-capabilities"></a>Tekniska funktioner för Azure-säkerhet
 Den här artikeln innehåller en introduktion till säkerhets tjänster i Azure som hjälper dig att skydda dina data, resurser och program i molnet och uppfylla verksamhetens behov av säkerhet.
@@ -278,7 +278,7 @@ Azure-nätverk stöder möjligheten att anpassa routnings beteendet för nätver
 
 Azure har stöd för dedikerad WAN-anslutning till ditt lokala nätverk och en Azure-Virtual Network med [ExpressRoute](../../expressroute/expressroute-introduction.md). Länken mellan Azure och platsen använder en dedikerad anslutning som inte går via det offentliga Internet. Om ditt Azure-program körs i flera data Center kan du använda [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) för att dirigera begär Anden från användare intelligent över instanser av programmet. Du kan också dirigera trafik till tjänster som inte körs i Azure om de är tillgängliga från Internet.
 
-Azure stöder också privat och säker anslutning till dina PaaS-resurser (till exempel Azure Storage och SQL Database) från Azure-Virtual Network med [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview). PaaS-resursen är mappad till en [privat slut punkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) i det virtuella nätverket. Länken mellan privata slut punkter i ditt virtuella nätverk och din PaaS-resurs använder Microsoft stamnät nätverk och går inte via det offentliga Internet. Det är inte längre nödvändigt att exponera tjänsten för det offentliga Internet. Du kan också använda Azures privata länk för att få åtkomst till Azure-värdbaserade kund tjänster och partner tjänster i ditt virtuella nätverk.  Dessutom kan du med Azures privata länk skapa en egen [privat länk-tjänst](https://docs.microsoft.com/azure/private-link/private-link-service-overview) i ditt virtuella nätverk och leverera den till kunderna privat i sina virtuella nätverk. Installation och användning med Azure Private Link är konsekvent i Azure PaaS, kundägda och delade partner tjänster.
+Azure stöder också privat och säker anslutning till dina PaaS-resurser (till exempel Azure Storage och SQL Database) från Azure-Virtual Network med [Azure Private Link](../../private-link/private-link-overview.md). PaaS-resursen är mappad till en [privat slut punkt](../../private-link/private-endpoint-overview.md) i det virtuella nätverket. Länken mellan privata slut punkter i ditt virtuella nätverk och din PaaS-resurs använder Microsoft stamnät nätverk och går inte via det offentliga Internet. Det är inte längre nödvändigt att exponera tjänsten för det offentliga Internet. Du kan också använda Azures privata länk för att få åtkomst till Azure-värdbaserade kund tjänster och partner tjänster i ditt virtuella nätverk.  Dessutom kan du med Azures privata länk skapa en egen [privat länk-tjänst](../../private-link/private-link-service-overview.md) i ditt virtuella nätverk och leverera den till kunderna privat i sina virtuella nätverk. Installation och användning med Azure Private Link är konsekvent i Azure PaaS, kundägda och delade partner tjänster.
 
 ## <a name="virtual-machine-security"></a>Säkerhet för virtuella datorer
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746445"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044727"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>Skapa planer för ditt SaaS-erbjudande
 
@@ -149,6 +149,10 @@ De åtgärder som är tillgängliga i kolumnen **åtgärd** på fliken **plan ö
 
 - Om plan status är **utkast**, kommer länken i kolumnen **åtgärd** att säga **ta bort utkast**.
 - Om plan status är **Live**, kommer länken i kolumnen **åtgärd** att **stoppa Sälj planen** eller **synkronisera den privata mål gruppen**. Länken **Synkronisera privat publik** kommer bara att publicera ändringar i dina privata mål grupper utan att publicera några andra uppdateringar som du har gjort i erbjudandet.
+
+## <a name="before-you-publish-your-offer"></a>Innan du publicerar erbjudandet
+
+Om du inte redan har gjort det skapar du ett utvecklings-och testnings erbjudande (DEV) för att testa ditt erbjudande innan du publicerar ditt produktions erbjudande Live. Mer information finns i [skapa ett utvecklings-och test erbjudande](create-saas-dev-test-offer.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
