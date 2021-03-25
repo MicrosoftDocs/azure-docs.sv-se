@@ -3,12 +3,12 @@ title: Fel söknings guide för Azure Service Bus | Microsoft Docs
 description: Lär dig mer om fel söknings tips och rekommendationer för några problem som kan uppstå när du använder Azure Service Bus.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179705"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031298"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Fel söknings guide för Azure Service Bus
 Den här artikeln innehåller fel söknings tips och rekommendationer för några problem som kan uppstå när du använder Azure Service Bus. 
@@ -52,7 +52,7 @@ Följande steg kan hjälpa dig med fel sökning av problem med anslutning/certif
     ```
     Du kan använda motsvarande kommandon om du använder andra verktyg som `tnc` , `ping` och så vidare. 
 - Få en nätverks spårning om föregående steg inte hjälper och analyseras med verktyg som [wireshark](https://www.wireshark.org/). Kontakta [Microsoft Support](https://support.microsoft.com/) om det behövs. 
-- Om du vill hitta rätt IP-adresser som ska läggas till i listan över tillåtna anslutningar, se [vilka IP-adresser som jag behöver lägga till i listan över tillåtna](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+- Om du vill hitta rätt IP-adresser som ska läggas till i tillåten för dina anslutningar, se [vilka IP-adresser som jag behöver lägga till i tillåten](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problem som kan uppstå med tjänst uppgraderingar/omstarter
@@ -98,6 +98,25 @@ Det finns en gräns för antalet tokens som används för att skicka och ta emot
 
 ### <a name="resolution"></a>Lösning
 Öppna en ny anslutning till Service Bus namn området om du vill skicka fler meddelanden.
+
+## <a name="adding-virtual-network-rule-using-powershell-fails"></a>Det går inte att lägga till en virtuell nätverks regel med PowerShell
+
+### <a name="symptoms"></a>Symtom
+Du har konfigurerat två undernät från ett enda virtuellt nätverk i en virtuell nätverks regel. När du försöker ta bort ett undernät med cmdleten [Remove-AzServiceBusVirtualNetworkRule](/powershell/module/az.servicebus/remove-azservicebusvirtualnetworkrule) tar det inte bort under nätet från regeln för det virtuella nätverket. 
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName $resourceGroupName -Namespace $serviceBusName -SubnetId $subnetId
+```
+
+### <a name="cause"></a>Orsak
+Det Azure Resource Manager-ID som du har angett för under nätet kan vara ogiltigt. Detta kan inträffa när det virtuella nätverket finns i en annan resurs grupp än den som har Service Bus-namnområdet. Om du inte uttryckligen anger resurs gruppen för det virtuella nätverket skapar CLI-kommandot Azure Resource Manager-ID med hjälp av resurs gruppen i namn området Service Bus. Det går därför inte att ta bort under nätet från nätverks regeln. 
+
+### <a name="resolution"></a>Lösning
+Ange det fullständiga Azure Resource Manager-ID: t för under nätet som innehåller namnet på den resurs grupp som har det virtuella nätverket. Exempel:
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName myRG -Namespace myNamespace -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/myOtherRG/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet"
+```
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande artiklar: 

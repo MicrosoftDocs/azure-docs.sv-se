@@ -3,12 +3,12 @@ title: Live video analys på IoT Edge vanliga frågor och svar – Azure
 description: Den här artikeln besvarar vanliga frågor om real tids analys av IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702257"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032810"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Vanliga video analyser på IoT Edge vanliga frågor och svar
 
@@ -129,7 +129,7 @@ Lösningarna varierar beroende på vilket kommunikations protokoll som används 
    
 *Använd gRPC-protokollet*: 
 
-* När du använder en gRPC-protokoll (Real-Purpose Remote Procedure Call) i live video analys-1,0 modulen är det enda sättet att göra detta är om gRPC-servern exponerar olika AI-modeller via olika portar. I [det här kod exemplet](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)visar en enskild port, 44000, alla Yolo-modeller. I teorin kunde Yolo gRPC-servern skrivas om för att visa vissa modeller på port 44000 och andra på port 45000. 
+* När du använder en gRPC-protokoll (Real-Purpose Remote Procedure Call) i live video analys-1,0 modulen är det enda sättet att göra detta är om gRPC-servern exponerar olika AI-modeller via olika portar. I [det här kod exemplet](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)visar en enskild port, 44000, alla Yolo-modeller. I teorin kunde Yolo gRPC-servern skrivas om för att visa vissa modeller på port 44000 och andra på port 45000. 
 
 * Med Live Video Analytics module 2,0 läggs en ny egenskap till i noden gRPC-tillägg. Den här egenskapen, **extensionConfiguration**, är en valfri sträng som kan användas som en del av gRPC-kontraktet. Om du har flera AI-modeller som paketeras i en enda härlednings server behöver du inte exponera en nod för varje AI-modell. I stället kan du, för en diagram förekomst, som tilläggs leverantör definiera hur du vill välja de olika AI-modellerna med hjälp av egenskapen **extensionConfiguration** . Under körningen skickar Live Video Analytics den här strängen till inferencing-servern, som kan använda den för att anropa den önskade AI-modellen. 
 
