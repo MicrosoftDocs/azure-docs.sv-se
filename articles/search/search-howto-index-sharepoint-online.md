@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102498905"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048875"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Så här konfigurerar du SharePoint online-indexering i Kognitiv sökning (för hands version)
 
@@ -147,7 +147,7 @@ api-key: [admin key]
 
 ```
 
-Mer information finns i [skapa index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Mer information finns i [skapa index (REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-5-create-an-indexer"></a>Steg 5: skapa en indexerare
 En indexerare ansluter en data källa med ett mål Sök index och ger ett schema för att automatisera data uppdateringen. När indexet och data källan har skapats är du redo att skapa indexeraren!
@@ -226,7 +226,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-Mer information om indexerings status finns här: [Hämta indexerings status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Mer information om indexerings status finns här: [Hämta indexerings status](/rest/api/searchservice/get-indexer-status).
 
 ## <a name="updating-the-data-source"></a>Uppdaterar data källan
 Om det inte finns några uppdateringar av datakällobjektet kan indexeraren köras enligt ett schema utan några åtgärder från användaren. Men varje gång Azure Kognitiv sökning-datakällobjektet uppdateras måste du logga in igen för att indexeraren ska kunna köras. Om du till exempel ändrar data käll frågan måste du logga in igen med hjälp av `https://microsoft.com/devicelogin` och en ny kod.
@@ -241,7 +241,7 @@ När data källan har uppdaterats följer du stegen nedan:
     api-key: [admin key]
     ```
 
-    Mer information om körnings förfrågan för indexerare hittar du här: [Kör indexerare](https://docs.microsoft.com/rest/api/searchservice/run-indexer).
+    Mer information om körnings förfrågan för indexerare hittar du här: [Kör indexerare](/rest/api/searchservice/run-indexer).
 
 1.  Kontrol lera status för indexeraren. Om den sista indexeraren körs har ett fel som säger att du går till `https://microsoft.com/devicelogin` , går du till sidan och anger den nya koden. 
 
@@ -251,7 +251,7 @@ När data källan har uppdaterats följer du stegen nedan:
     api-key: [admin key]
     ```
 
-    Mer information om indexerings status finns här: [Hämta indexerings status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+    Mer information om indexerings status finns här: [Hämta indexerings status](/rest/api/searchservice/get-indexer-status).
 
 1.  Inloggning
 
@@ -359,7 +359,7 @@ För vissa dokument går det inte att identifiera innehålls typen i Azure Kogni
 "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Kognitiv sökning begränsar storleken på dokument som indexeras. De här gränserna dokumenteras i [tjänst begränsningar i Azure kognitiv sökning](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). Överändrade dokument behandlas som standard som fel. Du kan dock fortfarande indexera lagrings metadata för överändrade dokument om du anger `indexStorageMetadataOnlyForOversizedDocuments` konfigurations parametern till True:
+Azure Kognitiv sökning begränsar storleken på dokument som indexeras. De här gränserna dokumenteras i [tjänst begränsningar i Azure kognitiv sökning](./search-limits-quotas-capacity.md). Överändrade dokument behandlas som standard som fel. Du kan dock fortfarande indexera lagrings metadata för överändrade dokument om du anger `indexStorageMetadataOnlyForOversizedDocuments` konfigurations parametern till True:
 
 ```http
 "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }

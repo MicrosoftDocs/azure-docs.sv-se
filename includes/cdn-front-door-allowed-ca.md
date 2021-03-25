@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2020
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20d9810ef5ff7380eb0df5df8a6720dcef71a6ad
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101750522"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105535"
 ---
 Följande ca: er tillåts när du skapar ett eget certifikat:
 
@@ -62,6 +62,8 @@ Följande ca: er tillåts när du skapar ett eget certifikat:
 - RootCA1 för säkerhets kommunikation
 - RootCA2 för säkerhets kommunikation
 - RootCA3 för säkerhets kommunikation
+- RSA (SSL.com Root Certificate Authority)
+- SSL.com EV-rot certifikat utfärdare RSA R2
 - Staat der Nederlanden EV Root CA
 - Symantec klass 3 EV SSL CA-G3
 - Symantec klass 3 säker server CA-G4

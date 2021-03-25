@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure våren Cloud
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure våren Cloud. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: sample
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4a75c5b6043db60e10647d8cea395721828f5a01
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 73ea918c964febbdc656b33dfb81439d082432a0
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576754"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035904"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-spring-cloud"></a>Azure Policy kontroll av efterlevnad för Azure våren Cloud
 

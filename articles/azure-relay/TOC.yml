@@ -37,7 +37,7 @@
         - name: Autentisering och auktorisering
           href: relay-authentication-and-authorization.md
         - name: Inbyggda säkerhetskontroller
-          href: service-bus-relay-security-controls.md
+          href: ../service-bus-messaging/security-baseline.md
         - name: Nätverkssäkerhet
           href: network-security.md
     - name: Hybridanslutningsprotokoll

@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server till SQL-hanterad instans: migreringsguiden'
+title: 'SQL Server till Azure SQL-hanterad instans: migreringsguiden'
 description: Den här guiden lär dig att migrera dina SQL Server-databaser till Azure SQL-hanterad instans.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1dcb72c30268dd82052e29232e79a485d86f72d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564498"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025313"
 ---
-# <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migration guide: SQL Server till SQL-hanterad instans
+# <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>Migration guide: SQL Server till Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Den här guiden hjälper dig att migrera din SQL Server-instans till en Azure SQL-hanterad instans. 
@@ -30,7 +30,7 @@ Du kan migrera SQL Server som körs lokalt eller på:
 - Beräknings motor (Google Cloud Platform-GCP)  
 - Cloud SQL för SQL Server (Google Cloud Platform – GCP) 
 
-Mer information om migrering finns i [Översikt över migrering](sql-server-to-managed-instance-overview.md). För andra scenarier, se [Guide för databas migrering](https://datamigration.microsoft.com/).
+Mer information om migrering finns i [Översikt över migrering](sql-server-to-managed-instance-overview.md). Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="Process flöde för migrering":::
 
@@ -40,6 +40,8 @@ Om du vill migrera din SQL Server till en Azure SQL-hanterad instans, se till at
 
 - Välj en [metod för migrering](sql-server-to-managed-instance-overview.md#compare-migration-options) och motsvarande verktyg som krävs för den valda metoden
 - Installera [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) på en dator som kan ansluta till din käll SQL Server
+- Anslutning och rätt behörigheter för åtkomst till både källa och mål. 
+
 
 
 ## <a name="pre-migration"></a>Före migrering

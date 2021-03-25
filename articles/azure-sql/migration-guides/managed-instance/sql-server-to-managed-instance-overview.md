@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server till SQL-hanterad instans: översikt över migrering'
+title: 'SQL Server till Azure SQL-hanterad instans: översikt över migrering'
 description: Lär dig mer om de olika verktygen och alternativen som är tillgängliga för att migrera dina SQL Server-databaser till Azure SQL-hanterad instans.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562035"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024905"
 ---
-# <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
+# <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Översikt över migrering: SQL Server till Azure SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Lär dig mer om olika flyttnings alternativ och överväganden för att migrera dina SQL Server till Azure SQL-hanterad instans. 
@@ -30,7 +30,7 @@ Du kan migrera SQL Server som körs lokalt eller på:
 - Beräknings motor (Google Cloud Platform-GCP)  
 - Cloud SQL för SQL Server (Google Cloud Platform – GCP) 
 
-För andra scenarier, se [Guide för databas migrering](https://datamigration.microsoft.com/). 
+Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Översikt
 
@@ -60,7 +60,7 @@ Några allmänna rikt linjer som hjälper dig att välja rätt tjänst nivå och
 - Använd bas linjens IO-svars fördröjning för fil under systemet för att välja mellan Generell användning (latens över 5 ms) och Affärskritisk (laten mindre än 3 MS) service nivåer. 
 - Använd baseline-genomflödet för att förallokera storleken på data-och loggfilerna för att uppnå förväntad IO-prestanda. 
 
-Du kan välja beräknings-och lagrings resurser under distributionen och sedan ändra dem när du har använt [Azure Portal](../../database/scale-resources.md) utan att det har uppstått avbrott i programmet. 
+Du kan välja beräknings-och lagrings resurser under distributionen och sedan [ändra dem när du har använt Azure Portal](../../database/scale-resources.md) utan att det har uppstått avbrott i programmet. 
 
 > [!IMPORTANT]
 > Eventuella skillnader i kraven för det [virtuella nätverket för den hanterade instansen](../../managed-instance/connectivity-architecture-overview.md#network-requirements) kan hindra dig från att skapa nya instanser eller använda befintliga. Lär dig mer om att [skapa nya](../../managed-instance/virtual-network-subnet-create-arm-template.md)   och [Konfigurera befintliga](../../managed-instance/vnet-existing-add-subnet.md)   nätverk. 
@@ -100,9 +100,9 @@ I följande tabell visas rekommenderade Migreringsverktyg:
 
 I följande tabell visas alternativa Migreringsverktyg: 
 
-|Teknik |Beskrivning  |
+|**Teknik** |**Beskrivning**  |
 |---------|---------|
-|[Transaktionsreplikering](../../managed-instance/replication-transactional-overview.md) | Replikera data från käll SQL Server databas tabeller till SQL-hanterad instans genom att tillhandahålla ett Överflyttnings alternativ för utgivarens prenumerant och upprätthålla transaktionell konsekvens. |  |
+|[Transaktionsreplikering](../../managed-instance/replication-transactional-overview.md) | Replikera data från käll SQL Server databas tabeller till SQL-hanterad instans genom att tillhandahålla ett Överflyttnings alternativ för utgivarens prenumerant och upprätthålla transaktionell konsekvens. | 
 |[Masskopiering](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [Verktyget för Mass kopierings program (BCP)](/sql/tools/bcp-utility) kopierar data från en instans av SQL Server till en data fil. Använd BCP-verktyget för att exportera data från källan och importera data filen till den mål SQL-hanterade instansen.</br></br> För Mass kopierings åtgärder med hög hastighet för att flytta data till Azure SQL Database kan [Smart Mass](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) kopierings verktyget användas för att maximera överföringshastigheten genom att använda parallella kopierings aktiviteter. | 
 |[Guiden Importera export/BACPAC](../../database/database-import.md?tabs=azure-powershell)| [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) är en Windows-fil med ett `.bacpac` tillägg som kapslar in en Databass schema och data. BACPAC kan användas för att exportera data från en käll SQL Server och för att importera filen till en hanterad Azure SQL-instans.  |  
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| [Kopierings aktiviteten](../../../data-factory/copy-activity-overview.md) i Azure Data Factory migrerar data från käll SQL Server databas (er) till SQL-hanterad instans med hjälp av inbyggda anslutningar och en [integration runtime](../../../data-factory/concepts-integration-runtime.md).</br> </br> ADF har stöd för en mängd olika [kopplingar](../../../data-factory/connector-overview.md) för att flytta data från SQL Server källor till SQL-hanterad instans. |
@@ -241,7 +241,7 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill börja migrera din SQL Server till Azure SQL-hanterad instans kan du läsa [migreringsguiden för SQL Server till SQL-hanterad instans](sql-server-to-managed-instance-guide.md).
+Information om hur du börjar migrera din SQL Server till Azure SQL-hanterad instans finns i [migreringen SQL Server till Azure SQL-hanterad instans](sql-server-to-managed-instance-guide.md).
 
 - För en matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter, se [tjänst och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
