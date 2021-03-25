@@ -602,6 +602,8 @@
               displayName: 'hyperscale, ssl'
             - name: Säkerhetsbaslinje
               href: postgresql-hyperscale-security-baseline.md
+        - name: Schemalagt underhåll
+          href: concepts-hyperscale-maintenance.md
         - name: Verksamhetskontinuitet
           items:
             - name: Säkerhetskopiering och återställning

@@ -4,12 +4,12 @@ description: Den här snabb starten visar hur du kommer igång med QnA Maker kli
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: e4f6b52a992999bd4c3ac11225ee927c8bff90d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0737d0550df6d8dd2e3bb61bb71188479d87363e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583211"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105184"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
@@ -125,10 +125,11 @@ Skapa en variabel för resursens Azure-nyckel och resurs namn.
 > [!IMPORTANT]
 > Gå till Azure Portal och hitta nyckeln och slut punkten för den QnA Maker resurs som du skapade i kraven. De kommer att finnas på resursens **nyckel-och slut punkts** sida under **resurs hantering**.
 
-- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
-- Värdet för QNA_MAKER_RUNTIME_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.azurewebsites.net` . När du har publicerat kunskaps listan i QnA Maker-portalen hittar du runtime-slutpunkten enligt nedan.
+- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till QnA Maker resursen i Azure Portal och klicka på **nycklar och slut punkt** för att hitta redigerings nyckeln och QNA Maker slut punkten.
 
-  ![QnA Maker runtime-slutpunkt](../media/endpoint.png)
+ ![QnA Maker redigerings slut punkt](../media/keys-endpoint.png)
+ 
+- Värdet för QNA_MAKER_RUNTIME_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.azurewebsites.net` . 
    
 - För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Till exempel ger [Azure Key Vault](../../../key-vault/general/overview.md) säker nyckel lagring.
 
@@ -139,7 +140,10 @@ Skapa en variabel för resursens Azure-nyckel och resurs namn.
 > [!IMPORTANT]
 > Gå till Azure Portal och hitta nyckeln och slut punkten för den QnA Maker resurs som du skapade i kraven. De kommer att finnas på resursens **nyckel-och slut punkts** sida under **resurs hantering**.
 
-- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
+- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till QnA Maker resursen i Azure Portal och klicka på **nycklar och slut punkt** för att hitta redigerings nyckeln och QNA Maker slut punkten.
+
+ ![QnA Maker redigerings slut punkt](../media/keys-endpoint.png)
+ 
 - För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Till exempel ger [Azure Key Vault](../../../key-vault/general/overview.md) säker nyckel lagring.
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=Resourcevariables)]

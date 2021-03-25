@@ -8,18 +8,18 @@ ms.author: pamistel
 ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 13aa12be5a336363bbe3bcbf3e3fb354a8fa3074
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102617411"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048484"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>Förstå klassen AnchorLocateCriteria
 I den här artikeln får du lära dig de olika alternativen som du kan använda när du frågar efter ett ankare. Vi kommer att gå över AnchorLocateCriteria-klassen, dess alternativ och giltiga alternativ kombinationer.
 
 ## <a name="anchor-locate-criteria"></a>Fäst Sök villkor
-[Klassen AnchorLocateCriteria](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) hjälper dig att fråga tjänsten för tidigare skapade ankare. Ett AnchorLocateCriteria-objekt kan användas per övervakare när som helst. Varje AnchorLocateCriteria-objekt måste innehålla **exakt en** av följande egenskaper: [identifierare](#identifiers), [NearAnchor](#nearanchor)eller [NearDevice](#neardevice). Ytterligare egenskaper som [strategi](#strategy), [BypassCache](#bypasscache)och [RequestedCategories](#requestedcategories) kan anges om du vill. 
+[Klassen AnchorLocateCriteria](/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) hjälper dig att fråga tjänsten för tidigare skapade ankare. Ett AnchorLocateCriteria-objekt kan användas per övervakare när som helst. Varje AnchorLocateCriteria-objekt måste innehålla **exakt en** av följande egenskaper: [identifierare](#identifiers), [NearAnchor](#nearanchor)eller [NearDevice](#neardevice). Ytterligare egenskaper som [strategi](#strategy), [BypassCache](#bypasscache)och [RequestedCategories](#requestedcategories) kan anges om du vill. 
 
 ### <a name="properties"></a>Egenskaper
 Definiera **exakt en** av följande egenskaper i din Övervakare:
@@ -37,7 +37,7 @@ Den här egenskapen anges med ett NearAnchorCriteria-objekt.
 #### <a name="neardevice"></a>NearDevice
 *Standardvärde: inte angivet*
 
-Med NearDevice kan du ange att AnchorLocateCriteria begränsar uppsättningen av begärda ankare till de nära enhetens fysiska plats. Alla aktiverade sensorer kommer att användas för att identifiera ankare runt enheten. Om du vill ha bästa möjliga möjlighet att hitta ankare bör du konfigurera SensorCapabilities för att ge sessionen åtkomst till alla lämpliga sensorer. Mer information om hur du konfigurerar och använder den här egenskapen finns i [grov omlokalisering – Azure spatiala ankare | Microsoft docs](https://docs.microsoft.com/azure/spatial-anchors/concepts/coarse-reloc) och *hur du skapar och hittar ankare med grov omlokalisering* i [C#](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), [mål-C](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), [Swift](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-swift), [Java](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-java), [c++/NDK](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-ndk), [c++/WinRT](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-winrt).
+Med NearDevice kan du ange att AnchorLocateCriteria begränsar uppsättningen av begärda ankare till de nära enhetens fysiska plats. Alla aktiverade sensorer kommer att användas för att identifiera ankare runt enheten. Om du vill ha bästa möjliga möjlighet att hitta ankare bör du konfigurera SensorCapabilities för att ge sessionen åtkomst till alla lämpliga sensorer. Mer information om hur du konfigurerar och använder den här egenskapen finns i [grov omlokalisering – Azure spatiala ankare | Microsoft docs](./coarse-reloc.md) och *hur du skapar och hittar ankare med grov omlokalisering* i [C#](../how-tos/set-up-coarse-reloc-unity.md), [mål-C](../how-tos/set-up-coarse-reloc-unity.md), [Swift](../how-tos/set-up-coarse-reloc-swift.md), [Java](../how-tos/set-up-coarse-reloc-java.md), [c++/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md), [c++/WinRT](../how-tos/set-up-coarse-reloc-cpp-winrt.md).
 Den här egenskapen anges med ett NearDeviceCriteria-objekt.
 
 ### <a name="additional-properties"></a>Ytterligare egenskaper
@@ -66,7 +66,7 @@ LocateStrategy Enum-värde | Beskrivning
 ---------------|------------
 AnyStrategy | Den här strategin gör det möjligt för systemet att använda kombinationer av VisualInformation och Relations strategier för att hitta ankare. 
 VisualInformation|Den här strategin försöker hitta ankare genom att matcha visuell information från den aktuella omgivningen till dem i ankarets visuella objekt. Ett Ankares visuella objekt syftar på den visuella information som för närvarande är kopplad till ankaret. Den här visuella informationen är vanligt vis men inte exklusivt insamlad under skapandet av ankare. För närvarande tillåts denna strategi bara tillsammans med egenskaperna NearDevice eller Identifiers.
-Relation|Den här strategin försöker hitta ankare genom att använda befintliga [anslutna ankare](https://docs.microsoft.com/azure/spatial-anchors/concepts/anchor-relationships-way-finding#connect-anchors). För närvarande tillåts denna strategi bara tillsammans med egenskaperna NearAnchor eller Identifiers. När det används med egenskapen identifierare, krävs det att användaren i samma session redan har hittat en eller flera ankare med redan upprättat kopplings relationer till de ankare vars ID: n har angetts i matrisen för identifierare. 
+Relation|Den här strategin försöker hitta ankare genom att använda befintliga [anslutna ankare](./anchor-relationships-way-finding.md#connect-anchors). För närvarande tillåts denna strategi bara tillsammans med egenskaperna NearAnchor eller Identifiers. När det används med egenskapen identifierare, krävs det att användaren i samma session redan har hittat en eller flera ankare med redan upprättat kopplings relationer till de ankare vars ID: n har angetts i matrisen för identifierare. 
 
 
 ### <a name="valid-combinations-of-locatestrategy-and-anchorlocatecriteria-properties"></a>Giltiga kombinationer av egenskaper för LocateStrategy och AnchorLocateCriteria 
@@ -86,4 +86,4 @@ NearDevice  | &check;    |   | &check;
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se [hur du skapar och lokaliserar ankare med hjälp av Azures spatiala ankare](https://docs.microsoft.com/azure/spatial-anchors/create-locate-anchors-overview) för några fler exempel som använder klassen AnchorLocateCriteria.
+Se [hur du skapar och lokaliserar ankare med hjälp av Azures spatiala ankare](../create-locate-anchors-overview.md) för några fler exempel som använder klassen AnchorLocateCriteria.

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705168"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032808"
 ---
 # <a name="system-requirements"></a>Systemkrav
 
@@ -111,12 +111,10 @@ Följande program vara måste vara installerad:
 
 ## <a name="unity"></a>Unity
 
-För utveckling med Unity, installera
-
-* Unity 2019.3.1 [(Hämta)](https://unity3d.com/get-unity/download)
-* Installera de här modulerna i Unity:
-  * **UWP** -stöd för Build-universell Windows-plattform
-  * **IL2CPP** – stöd för Windows-build (IL2CPP)
+För utveckling med Unity installerar du en aktuell version av Unity 2019,3 eller 2019,4 LTS [(Hämta)](https://unity3d.com/get-unity/download). Vi rekommenderar att du använder Unity Hub för att hantera installationer.
+Se till att ta med följande moduler i din Unity-installation:
+* **UWP** -stöd för Build-universell Windows-plattform
+* **IL2CPP** – stöd för Windows-build (IL2CPP)
 
 ## <a name="next-steps"></a>Nästa steg
 

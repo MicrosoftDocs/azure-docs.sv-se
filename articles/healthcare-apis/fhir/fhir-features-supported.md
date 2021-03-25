@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: a31fb48443cf760186faad705b8be21a62846a44
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020799"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048427"
 ---
 # <a name="features"></a>Funktioner
 
@@ -35,14 +35,14 @@ Tidigare versioner som också stöds är: `3.0.2`
 | uppdatera med optimistisk låsning | Ja       | Ja       | Ja       |                                                     |
 | uppdatering (villkorligt)           | Ja       | Ja       | Ja       |                                                     |
 | 9.0a                          | Inga        | Inga        | Inga        |                                                     |
-| delete                         | Ja       | Ja       | Ja       |  Se Obs! nedan                                                   |
+| delete                         | Ja       | Ja       | Ja       |  Se kommentaren nedan.                                   |
 | ta bort (villkorligt)           | Inga        | Inga        | Inga        |                                                     |
 | historik                        | Ja       | Ja       | Ja       |                                                     |
 | skapa                         | Ja       | Ja       | Ja       | Stöd för både efter-och-placering                               |
 | Skapa (villkorlig)           | Ja       | Ja       | Ja       | Problem [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| sök                         | Delvis   | Delvis   | Delvis   | Se nedan                                           |
-| kedjad sökning                 | Inga        | Ja       | Inga        |                                                     |
-| omvänd länkad sökning         | Inga        | Ja       | Inga        |                                                     |
+| sök                         | Delvis   | Delvis   | Delvis   | Se avsnittet Sök nedan.                           |
+| kedjad sökning                 | Ja       | Ja       | Delvis   | Se anmärkning 2 nedan.                                   |
+| omvänd länkad sökning         | Ja       | Ja       | Delvis   | Se anmärkning 2 nedan.                                   |
 | funktioner                   | Ja       | Ja       | Ja       |                                                     |
 | batch                          | Ja       | Ja       | Ja       |                                                     |
 | transaktionen                    | Inga        | Ja       | Inga        |                                                     |
@@ -51,6 +51,12 @@ Tidigare versioner som också stöds är: `3.0.2`
 
 > [!Note]
 > Borttagning som definieras av FHIR-specifikationen kräver att efter borttagningen, returnerar efterföljande icke-versions läsningar av en resurs en HTTP-statuskod på 410 och resursen hittas inte längre genom sökning. Med Azure API för FHIR kan du också helt ta bort (inklusive all historik) resursen. Om du vill ta bort resursen fullständigt kan du skicka en parameter inställning `hardDelete` till true ( `DELETE {server}/{resource}/{id}?hardDelete=true` ). Om du inte skickar den här parametern eller anger `hardDelete` till false är den historiska versionen av resursen fortfarande tillgänglig.
+
+
+ **Anmärkning 2**
+* Lägger till MVP-stöd för kedjad och omvänd kedjad FHIR-sökning i CosmosDB. 
+
+  I Azure API för FHIR och FHIR-servern med öppen källkod som backas upp av Cosmos, är den kedjade sökningen och den omvända länkade sökningen en MVP-implementering. Om du vill göra en kedjad sökning på Cosmos DB visar implementeringen Sök uttrycket och utfärdar under frågor för att lösa de matchade resurserna. Detta görs för varje nivå i uttrycket. Om en fråga returnerar fler än 100 resultat kommer ett fel att genereras. Som standard är den kedjade sökningen bakom en funktions flagga. Använd rubriken om du vill använda en kedjad sökning på Cosmos DB `x-ms-enable-chained-search: true` . Mer information finns i [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="search"></a>Sök
 

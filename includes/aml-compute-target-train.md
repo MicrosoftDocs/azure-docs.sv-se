@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: 081eea7842652884363603bc5ba742ba48539f85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7c89527218e34bea0819a1e2446441216cde45ae
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503629"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105054"
 ---
 **Compute-mål kan återanvändas från ett utbildnings jobb till nästa.** När du till exempel har anslutit en virtuell dator till din arbets yta kan du återanvända den för flera jobb. För maskin inlärnings pipeliner använder du lämpligt [pipeline-steg](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) för varje beräknings mål.
 
@@ -30,3 +30,6 @@ Du kan använda någon av följande resurser för ett utbildnings mål för de f
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-attach-compute-targets.md#adla) | &nbsp; | Ja | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | Ja | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | Ja | &nbsp; |
+
+> [!TIP]
+> Beräknings instansen har 120 GB OS-disk. Om disk utrymmet tar slut tar du bort tillräckligt med utrymme innan du försöker stoppa/starta om beräknings instansen.
