@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 719d89fafe57e7f5132698404bcc0a41a9f9db37
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 41bb7287aaa045e191d61abb00f470018fda9cbe
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780080"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031604"
 ---
 # <a name="national-clouds"></a>Nationella moln
 
@@ -55,7 +55,7 @@ I följande tabell visas de grundläggande URL: erna för de Azure AD-slutpunkte
 |----------------|-------------------------|
 | Azure AD för amerikanska myndigheter | `https://login.microsoftonline.us` |
 | Azure AD Germany| `https://login.microsoftonline.de` |
-| Azure AD, Kina drivs av 21Vianet | `https://login.partner.microsoftonline.cn/common` |
+| Azure AD, Kina drivs av 21Vianet | `https://login.partner.microsoftonline.cn` |
 | Azure AD (global tjänst)| `https://login.microsoftonline.com` |
 
 Du kan skapa förfrågningar till Azure AD-auktorisering eller token-slutpunkter med hjälp av lämplig region-/regionsspecifika bas-URL. Till exempel för Azure Germany:
