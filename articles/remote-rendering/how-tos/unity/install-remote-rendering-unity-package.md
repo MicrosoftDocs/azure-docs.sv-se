@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfb383a7079e98db1db1f9b5077558c187bcea96
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720836"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047736"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Installera Remote Rendering-paketet för Unity
 
@@ -22,11 +22,11 @@ Du kan välja något av följande alternativ för att installera Unity-paketet.
 
 ## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Installera Remote rendering-paket med hjälp av funktions verktyget för Mixad verklighet
 
-[Funktions verktyget för Mixad verklighet](https://aka.ms/MRFeatureToolDocs) ([hämtning](https://aka.ms/mrfeaturetool)) är ett verktyg som används för att integrera funktioner i Mixad verklighet i Unit-projekt. Paketet ingår inte i [plats för arr-exempel](https://github.com/Azure/azure-remote-rendering)och är inte tillgängligt i enhetens interna paket register.
+[Funktions verktyget för Mixad verklighet](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) ([hämtning](https://aka.ms/mrfeaturetool)) är ett verktyg som används för att integrera funktioner i Mixad verklighet i Unit-projekt. Paketet ingår inte i [plats för arr-exempel](https://github.com/Azure/azure-remote-rendering)och är inte tillgängligt i enhetens interna paket register.
 
 Om du vill lägga till paketet i ett projekt måste du:
 1. [Hämta funktions verktyget för Mixad verklighet](https://aka.ms/mrfeaturetool)
-1. Följ [fullständiga instruktioner](https://aka.ms/MRFeatureToolDocs) om hur du använder verktyget.
+1. Följ [fullständiga instruktioner](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) om hur du använder verktyget.
 1. På sidan **identifierings funktioner** avmarkerar du rutan för **Microsoft Azure Remote rendering** -paketet och väljer den version av paketet som du vill lägga till i projektet
 
 ![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)

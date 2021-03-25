@@ -1,17 +1,18 @@
 ---
 title: Hantera konfigurations servern för haveri beredskap med Azure Site Recovery
+description: Lär dig mer om vanliga aktiviteter för att hantera en lokal konfigurations Server för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure med Azure Site Recovery.
 author: Rajeswari-Mamilla
+ms.author: ramamill
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: ramamill
-ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67f25c97e0b4433ed09cb8c6337afe671424ba0b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546355"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048552"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Hantera konfigurationsservern för haveriberedskap för virtuella VMWare-datorer/fysiska servrar
 
