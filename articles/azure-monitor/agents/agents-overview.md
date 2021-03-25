@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551478"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026180"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Översikt över Azure Monitor agenter
 
@@ -97,7 +97,7 @@ Använd Azure Diagnostic Extension om du behöver:
 - Skicka data till Azure Storage för att arkivera eller analysera dem med verktyg som [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 - Skicka data till [Azure Monitor mått](../essentials/data-platform-metrics.md) för att analysera den med [Mät Utforskaren](../essentials/metrics-getting-started.md) och dra nytta av funktioner som nästan real tids [mått varningar](../alerts/alerts-metric-overview.md) och [autoskalning](../autoscale/autoscale-overview.md) (endast Windows).
 - Skicka data till tredje parts verktyg med [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
-- Samla in [startdiagnostik](../../virtual-machines/troubleshooting/boot-diagnostics.md) för att undersöka start problem för virtuella datorer.
+- Samla in [startdiagnostik](/troubleshoot/azure/virtual-machines/boot-diagnostics) för att undersöka start problem för virtuella datorer.
 
 Begränsningar för Azure Diagnostics-tillägget är:
 

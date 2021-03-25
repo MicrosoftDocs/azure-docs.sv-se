@@ -246,6 +246,8 @@
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
             - name: Anslut till konsolen för virtuella datorer
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+            - name: Hantera nätverks gränssnitt
+              href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
         - name: Hantera certifikat
           items:
             - name: Krav

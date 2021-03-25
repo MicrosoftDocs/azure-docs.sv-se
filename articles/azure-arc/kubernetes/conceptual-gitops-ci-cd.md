@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: Den här artikeln innehåller en konceptuell översikt över ett CI/CD-arbetsflöde med GitOps
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes service, behållare, CI, CD, Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121787"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025874"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>CI/CD-arbetsflöde med GitOps-Azure Arc-aktiverad Kubernetes
 
@@ -30,7 +30,7 @@ Den här konceptuella översikten förklarar GitOps som en verklighet i hela liv
 ### <a name="application-repo"></a>Program lagrings platsen
 Programmet lagrings platsen innehåller den program kod som utvecklare arbetar med under sin inre slinga. Programmets distributionsmall är Live i den här lagrings platsen i ett allmänt formulär, som Helm eller Kustomize. Miljöbaserade värden lagras inte. Ändringar i den här lagrings platsen anropar en PR-eller CI-pipeline som startar distributions processen.
 ### <a name="container-registry"></a>Container Registry
-Behållar registret innehåller alla de första och tredje parts avbildningarna som används i Kubernetes-miljöerna. Tagga program avbildningar från första part med läsliga Taggar och git-incheckning som används för att bygga avbildningen. Cachelagra avbildningar från tredje part för säkerhet, hastighet och återhämtning. Ange en plan för tids testning och integrering av säkerhets uppdateringar. Mer information finns i [ACR konsumera och underhålla offentlig innehålls](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content) guide för ett exempel.
+Behållar registret innehåller alla de första och tredje parts avbildningarna som används i Kubernetes-miljöerna. Tagga program avbildningar från första part med läsliga Taggar och git-incheckning som används för att bygga avbildningen. Cachelagra avbildningar från tredje part för säkerhet, hastighet och återhämtning. Ange en plan för tids testning och integrering av säkerhets uppdateringar. Mer information finns i [ACR konsumera och underhålla offentlig innehålls](../../container-registry/tasks-consume-public-content.md) guide för ett exempel.
 ### <a name="pr-pipeline"></a>PR pipeline
 Pull till program lagrings platsen är gated på en lyckad körning av PR-pipeline. Den här pipelinen kör de grundläggande kvalitets grindarna, t. ex. försäljnings-och enhets test på program koden. Pipelinen testar programmet och bevarar Dockerfiles-och Helm-mallar som används för distribution till en Kubernetes-miljö. Docker-avbildningar bör skapas och testas, men inte pushas. Se till att pipeline-varaktigheten är relativt kort för snabb iteration.
 ### <a name="ci-pipeline"></a>CI-pipeline

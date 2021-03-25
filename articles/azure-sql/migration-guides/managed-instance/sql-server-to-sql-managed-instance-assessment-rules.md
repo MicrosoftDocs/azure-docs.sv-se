@@ -1,5 +1,5 @@
 ---
-title: Utvärderings regler för migrering av SQL Server till SQL-hanterad instans
+title: Utvärderings regler för migrering av SQL Server till Azure SQL-hanterad instans
 description: Utvärderings regler för att identifiera problem med käll SQL Servers instansen som måste åtgärdas innan migrering till en Azure SQL-hanterad instans.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: 760a6496ff297ae6328810589f780b430d55b18a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054964"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026044"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-managed-instance-migration"></a>Utvärderings regler för migrering av SQL Server till SQL-hanterad instans
+# <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Utvärderings regler för migrering av SQL Server till Azure SQL-hanterad instans
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Migreringsverktyg verifierar din käll SQL Server instans genom att köra ett antal utvärderings regler för att identifiera problem som måste åtgärdas innan du migrerar SQL Server-databasen till en Azure SQL-hanterad instans. 

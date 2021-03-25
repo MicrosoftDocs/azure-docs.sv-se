@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 1fcc918e5b4b54a415fed0f38d210aeeaa62c008
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00e0d1afa2aa035fe27e73dae60e291ea53bd6b8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101680308"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042857"
 ---
 # <a name="what-is-routing-preference-unmetered"></a>Vad är cirkulations inställningar avlästa?
 
@@ -45,4 +45,4 @@ Du kan också aktivera inställningar för routning för ditt lagrings konto och
 
 * [Konfigurera Dirigerings inställningar för en virtuell dator med hjälp av Azure PowerShell](configure-routing-preference-virtual-machine-powershell.md)
 * [Konfigurera Dirigerings inställningar för en virtuell dator med hjälp av Azure CLI](configure-routing-preference-virtual-machine-cli.md)
-* [Konfigurera Dirigerings inställningar för ditt lagrings konto](/azure/storage/common/network-routing-preference)
+* [Konfigurera Dirigerings inställningar för ditt lagrings konto](../storage/common/network-routing-preference.md)

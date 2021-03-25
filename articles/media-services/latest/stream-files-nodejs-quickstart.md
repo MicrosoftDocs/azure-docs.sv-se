@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212764"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105038166"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Koda och strömma videofiler med Node.JS
 
@@ -71,7 +71,7 @@ Exemplet utför följande åtgärder:
 
 ## <a name="run-the-sample"></a>Kör exemplet
 
-1. Programmet laddar ned kodade filer. Skapa en mapp där du vill att utdatafilerna ska placeras och uppdatera värdet för variabeln **outputFolder** i filen [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) . Den är inställd på "temp" som standard.
+1. Programmet laddar ned kodade filer. Skapa en mapp där du vill att utdatafilerna ska placeras och uppdatera värdet för variabeln **outputFolder** i filen [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) . Den är inställd på "temp" som standard.
 1. Öppna en **kommando tolk** och bläddra till exempel katalogen.
 1. Ändra katalogen till mappen AMSv3Samples
 

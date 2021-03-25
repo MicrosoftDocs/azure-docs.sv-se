@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453775"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043027"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -74,7 +74,7 @@ När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licen
 1. Bekräfta att datorn uppfyller de nödvändiga kraven för Defender för slut punkten:
 
     - För **alla versioner av Windows**:
-        - Konfigurera de nätverks inställningar som beskrivs i [Konfigurera inställningar för enhets proxyserver och Internet anslutning](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
+        - Konfigurera de nätverks inställningar som beskrivs i [Konfigurera inställningar för enhets proxyserver och Internet anslutning](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
         - Om du distribuerar Defender till slut punkt till en lokal dator ansluter du den till Azure-bågen enligt beskrivningen i [Connect hybrid Machines med Azure Arc-aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)
     - För **Windows Server 2019-datorer** kontrollerar du dessutom att de kör en giltig agent och har MicrosoftMonitoringAgent-tillägget
 

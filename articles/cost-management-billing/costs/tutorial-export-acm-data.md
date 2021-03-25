@@ -3,18 +3,18 @@ title: Självstudie – Skapa och hantera exporterade data från Azure Cost Mana
 description: Den här artikeln visar hur du kan skapa en hantera exporterade Azure Cost Management-data så att du kan använda dem i externa system.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: HT
+ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400360"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043469"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Självstudier: Skapa och hantera exporterade data
 
@@ -80,6 +80,8 @@ Den nya exporten visas i listan över exporter. Som standard är nya exporter ak
 Först kan det ta 12–24 timmar innan exporten körs. Men det kan ta längre tid innan data visas i de exporterade filerna.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+När du skapar en export program mässigt måste du registrera `Microsoft.CostManagementExports` resurs leverantören manuellt med den prenumeration där lagrings kontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resurs leverantörer finns i [Registrera resurs leverantör](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Börja med att förbereda din miljö för Azure CLI:
 
@@ -148,6 +150,8 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+När du skapar en export program mässigt måste du registrera `Microsoft.CostManagementExports` resurs leverantören manuellt med den prenumeration där lagrings kontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resurs leverantörer finns i [Registrera resurs leverantör](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Börja med att förbereda din miljö för Azure PowerShell:
 

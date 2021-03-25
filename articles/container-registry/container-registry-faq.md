@@ -3,14 +3,14 @@ title: Vanliga frågor och svar
 description: Svar på vanliga frågor som rör Azure Container Registry tjänsten
 author: sajayantony
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d5e161a0a663542142081c61bf1ad08be1be484
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97606291"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026248"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Vanliga frågor och svar om Azure Container Registry
 
@@ -260,11 +260,23 @@ Bild karantänen är för närvarande en förhands gransknings funktion i ACR. D
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Hur gör jag för att aktivera anonym pull-åtkomst?
 
-Att konfigurera ett Azure Container Registry för anonym (offentlig) pull-åtkomst är för närvarande en för hands versions funktion. Om du har en [omfattnings karta (användare) eller tokens](./container-registry-repository-scoped-permissions.md) i registret kan du ta bort dem innan du höjer ett support ärende (system definitions kartor kan ignoreras). Om du vill aktivera offentlig åtkomst öppnar du ett support ärende på https://aka.ms/acr/support/create-ticket . Mer information finns i [Azure feedback-forumet](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Att konfigurera ett Azure Container Registry för anonym (oautentiserad) pull-åtkomst är för närvarande en för hands versions funktion som är tillgänglig på [tjänst nivåerna](container-registry-skus.md)standard och Premium. 
+
+Om du vill aktivera anonym åtkomst, uppdatera ett register med Azure CLI (version 2.21.0 eller senare) och skicka `--anonymous-pull-enabled` parametern till kommandot [AZ ACR Update](/cli/azure/acr#az_acr_update) :
+
+```azurecli
+az acr update --name myregistry --anonymous-pull-enabled
+``` 
+
+Du kan när som helst inaktivera anonym pull-åtkomst genom `--anonymous-pull-enabled` att ställa in på `false` .
 
 > [!NOTE]
-> * Det går bara att komma åt anonyma API: er som krävs för att hämta en känd bild. Inga andra API: er för åtgärder som tagg lista eller lagrings plats lista kan användas anonymt.
 > * Innan du försöker utföra en anonym pull-åtgärd `docker logout` ska du köra för att se till att du rensar eventuella befintliga Docker-autentiseringsuppgifter.
+> * Endast data Plans åtgärder är tillgängliga för oautentiserade klienter.
+> * Registret kan begränsa en hög överföringshastighet av oautentiserade begär Anden.
+
+> [!WARNING]
+> Anonym pull-åtkomst gäller för alla databaser i registret. Om du hanterar lagrings plats åtkomst med hjälp av [lagrings](container-registry-repository-scoped-permissions.md)platser för databaser bör du vara medveten om att alla användare kan hämta från dessa databaser i ett register som är aktiverat för anonym hämtning. Vi rekommenderar att du tar bort tokens när anonym åtkomst har Aktiver ATS.
 
 ### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Hur gör jag för att push-överförda ej distribuerbara lager till ett register?
 

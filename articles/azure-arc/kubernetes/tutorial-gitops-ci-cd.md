@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121617"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025823"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Självstudie: implementera CI/CD med GitOps med Azure Arc-aktiverade Kubernetes-kluster
 
@@ -37,12 +37,12 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 Den här självstudien förutsätter att Azure-DevOps, Azure-databaser och pipelines är välkända och Azure CLI.
 
 * Logga in på [Azure DevOps Services](https://dev.azure.com/).
-* Slutför den [föregående själv studie kursen](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) och lär dig hur du distribuerar GitOps för din CI/CD-miljö.
-* Förstå [fördelarna och arkitekturen](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-configurations) i den här funktionen.
+* Slutför den [föregående själv studie kursen](./tutorial-use-gitops-connected-cluster.md) och lär dig hur du distribuerar GitOps för din CI/CD-miljö.
+* Förstå [fördelarna och arkitekturen](./conceptual-configurations.md) i den här funktionen.
 * Kontrol lera att du har:
-  * Ett [anslutet Azure Arc-aktiverat Kubernetes-kluster](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#connect-an-existing-kubernetes-cluster) med namnet **Arc-cicd-Cluster**.
-  * En ansluten Azure Container Registry (ACR) med antingen [AKS-integrering](https://docs.microsoft.com/azure/aks/cluster-container-registry-integration) eller [icke-AKS](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes).
-  * Behörigheterna "Build admin" och "Project admin" för [Azure-databaser](https://docs.microsoft.com/azure/devops/repos/get-started/what-is-repos) och Azure- [pipeliner](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-get-started).
+  * Ett [anslutet Azure Arc-aktiverat Kubernetes-kluster](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster) med namnet **Arc-cicd-Cluster**.
+  * En ansluten Azure Container Registry (ACR) med antingen [AKS-integrering](../../aks/cluster-container-registry-integration.md) eller [icke-AKS](../../container-registry/container-registry-auth-kubernetes.md).
+  * Behörigheterna "Build admin" och "Project admin" för [Azure-databaser](/azure/devops/repos/get-started/what-is-repos) och Azure- [pipeliner](/azure/devops/pipelines/get-started/pipelines-get-started).
 * Installera följande Azure Arc-aktiverade Kubernetes CLI-tillägg för versioner >= 1.0.0:
 
   ```azurecli
@@ -67,7 +67,7 @@ Importera ett [program lagrings platsen](https://docs.microsoft.com/azure/azure-
    * ADRESSER https://github.com/Azure/arc-cicd-demo-gitops
    * Fungerar som en bas för dina kluster resurser som är hus till Azure röstnings-appen.
 
-Läs mer om att [Importera git-databaser](https://docs.microsoft.com/azure/devops/repos/git/import-git-repository).
+Läs mer om att [Importera git-databaser](/azure/devops/repos/git/import-git-repository).
 
 >[!NOTE]
 > Att importera och använda två separata databaser för program-och GitOps-databaser kan förbättra säkerheten och enkelheten. Program-och GitOps-databasernas behörigheter och synlighet kan justeras individuellt.
@@ -86,7 +86,7 @@ GitOps-anslutningen som du skapar kommer automatiskt att:
 CI/CD-arbetsflödet fyller i manifest katalogen med extra manifest för att distribuera appen.
 
 
-1. [Skapa en ny GitOps-anslutning](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) till den nyligen importerade **Arc-cicd-demo-GitOps-** lagrings platsen i Azure databaser.
+1. [Skapa en ny GitOps-anslutning](./tutorial-use-gitops-connected-cluster.md) till den nyligen importerade **Arc-cicd-demo-GitOps-** lagrings platsen i Azure databaser.
 
    ```azurecli
    az k8sconfiguration create \
@@ -172,7 +172,7 @@ kubectl create secret docker-registry <secret-name> \
 ## <a name="create-environment-variable-groups"></a>Skapa miljö variabel grupper
 
 ### <a name="app-repo-variable-group"></a>Lagrings platsen variabel grupp för app
-[Skapa en variabel grupp](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups) med namnet **AZ-rösta-app-dev**. Ställ in följande värden:
+[Skapa en variabel grupp](/azure/devops/pipelines/library/variable-groups) med namnet **AZ-rösta-app-dev**. Ställ in följande värden:
 
 | Variabel | Värde |
 | -------- | ----- |
@@ -182,13 +182,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | Git-anslutningssträngen för din GitOps-lagrings platsen |
-| PAT | En [skapad Pat-token](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?#create-a-pat) med käll-och Skriv behörighet. Spara den för att använda senare när du skapar `stage` variabel gruppen. |
+| PAT | En [skapad Pat-token](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat) med käll-och Skriv behörighet. Spara den för att använda senare när du skapar `stage` variabel gruppen. |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> Markera din PAT som en hemlig typ. Överväg att länka hemligheter från ett [Azure-valv](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)i dina program.
+> Markera din PAT som en hemlig typ. Överväg att länka hemligheter från ett [Azure-valv](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)i dina program.
 >
 ### <a name="stage-environment-variable-group"></a>Variabel grupp för fas miljö
 
@@ -255,7 +255,7 @@ Om dev-miljön visar ett avbrott efter distributionen kan du fortsätta att gå 
 1. Ange god kännare och ett valfritt meddelande.
 1. Välj **skapa** igen för att slutföra tillägget av kontrollen för manuellt godkännande.
 
-Mer information finns i själv studie kursen [definiera godkännande och kontroller](https://docs.microsoft.com/azure/devops/pipelines/process/approvals) .
+Mer information finns i själv studie kursen [definiera godkännande och kontroller](/azure/devops/pipelines/process/approvals) .
 
 Nästa gången som CD-pipelinen körs pausas pipelinen när GitOps PR-genereringen har skapats. Kontrol lera att ändringen har synkroniserats korrekt och att de grundläggande funktionerna skickas. Godkänn kontrollen från pipelinen för att låta ändrings flödet till nästa miljö.
 
@@ -291,7 +291,7 @@ Fel som upptäckts under körningen av pipelinen visas i avsnittet test resultat
 När pipelinen har körts klart har du garanterat kvaliteten på program koden och mallen som ska distribuera den. Nu kan du godkänna och slutföra PR. CI körs igen och återskapar mallarna och manifesten innan CD-pipelinen aktive ras.
 
 > [!TIP]
-> I en verklig miljö glömmer du inte att ange filial principer för att se till att PRen klarar dina kvalitets kontroller. Mer information finns i artikeln [Ange gren principer](https://docs.microsoft.com/azure/devops/repos/git/branch-policies) .
+> I en verklig miljö glömmer du inte att ange filial principer för att se till att PRen klarar dina kvalitets kontroller. Mer information finns i artikeln [Ange gren principer](/azure/devops/repos/git/branch-policies) .
 
 ## <a name="cd-process-approvals"></a>Godkännande av CD-process
 

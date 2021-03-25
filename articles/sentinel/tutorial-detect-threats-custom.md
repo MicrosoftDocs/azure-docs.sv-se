@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f0a94daef8c5db820a17fe8cb50eda616bcf260
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453986"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042806"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Självstudie: skapa anpassade analys regler för att identifiera hot
 
@@ -64,7 +64,7 @@ På fliken **Ange regel logik** kan du antingen skriva en fråga direkt i fälte
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1-new.png" alt-text="Konfigurera logik och inställningar för frågeregel" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1-new.png":::
 
-- Här är en exempel fråga som varnar dig när ett avvikande antal resurser skapas i [Azure Activity](../azure-monitor/platform/activity-log.md).
+- Här är en exempel fråga som varnar dig när ett avvikande antal resurser skapas i [Azure Activity](../azure-monitor/essentials/activity-log.md).
 
     ```kusto
     AzureActivity
