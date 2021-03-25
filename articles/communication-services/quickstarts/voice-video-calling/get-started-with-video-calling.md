@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: e7f74298b8bf8209a6b1473880b33d64bd17cfd9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048093"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108102"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Snabb start: lägga till 1:1 video som anropar din app (Java Script)
 
@@ -33,9 +33,11 @@ Hitta den färdiga koden för den här snabb starten på [GitHub](https://github
 mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>Installera paketet
-Använd `npm install` kommandot för att installera Azure Communication Services som anropar klient bibliotek för Java Script.
+Använd `npm install` kommandot för att installera Azure Communication Services som anropar SDK för Java Script.
 
-Den här snabb starten använde Azure-kommunikation som anropar klient biblioteket `1.0.0.beta-6` . 
+> [!IMPORTANT]
+> I den här snabb starten används Azure Communication Services som anropar SDK-versionen `1.0.0.beta-10` . 
+
 
 ```console
 npm install @azure/communication-common --save
@@ -105,7 +107,7 @@ Här är koden:
 Skapa en fil i rot katalogen i projektet `client.js` som kallas för att innehålla program logiken för den här snabb starten. Lägg till följande kod för att importera den anropande klienten och hämta referenser till DOM-elementen.
 
 ```JavaScript
-import { CallClient, CallAgent, Renderer, LocalVideoStream } from "@azure/communication-calling";
+import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -124,18 +126,18 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
 
 | Name      | Beskrivning | 
 | :---        |    :----   |
-| CallClient  | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.      |
+| CallClient  | CallClient är den huvudsakliga start punkten för den anropande SDK: n.      |
 | CallAgent  | CallAgent används för att starta och hantera samtal.        |
 | DeviceManager | DeviceManager används för att hantera medie enheter.    |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential-klassen implementerar CommunicationTokenCredential-gränssnittet som används för att instansiera CallAgent.        |
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>Autentisera klienten och komma åt DeviceManager
 
-Du måste ersätta <USER_ACCESS_TOKEN> med en giltig åtkomsttoken för din resurs. Se dokumentationen för användar åtkomst-token om du inte redan har en tillgänglig token. Med hjälp av CallClient initierar du en CallAgent-instans med en CommunicationUserCredential som gör att vi kan ringa och ta emot samtal. För att få åtkomst till DeviceManager måste du först skapa en callAgent-instans. Du kan sedan använda- `getDeviceManager` metoden på `CallClient` instansen för att hämta `DeviceManager` .
+Du måste ersätta <USER_ACCESS_TOKEN> med en giltig åtkomsttoken för din resurs. Se dokumentationen för användar åtkomst-token om du inte redan har en tillgänglig token. Med hjälp av `CallClient` initierar du en `CallAgent` instans med en som gör det `CommunicationUserCredential` möjligt för oss att ringa och ta emot samtal. För att få åtkomst till `DeviceManager` en callAgent-instans måste först skapas. Du kan sedan använda- `getDeviceManager` metoden på `CallClient` instansen för att hämta `DeviceManager` .
 
 Lägg till följande kod i `client.js`:
 
@@ -154,7 +156,7 @@ init();
 
 Lägg till en händelse lyssnare för att initiera ett anrop när `callButton` användaren klickar på den:
 
-Först måste du räkna upp lokala kameror med deviceManager getCameraList-API: et. I den här snabb starten använder vi den första kameran i samlingen. När den önskade kameran har valts skapas en LocalVideoStream-instans och skickas i videoOptions som ett objekt inom localVideoStream-matrisen till anrops metoden. När samtalet ansluter börjar den automatiskt att skicka en video ström till den andra deltagaren. 
+Först måste du räkna upp lokala kameror med deviceManager- `getCameraList` API: et. I den här snabb starten använder vi den första kameran i samlingen. När du har valt den önskade kameran skapas en LocalVideoStream-instans och skickas `videoOptions` som ett objekt inom LocalVideoStream-matrisen till anrops metoden. När samtalet ansluter börjar den automatiskt att skicka en video ström till den andra deltagaren. 
 
 ```JavaScript
 callButton.addEventListener("click", async () => {
@@ -179,40 +181,40 @@ callButton.addEventListener("click", async () => {
     callButton.disabled = true;
 });
 ```  
-Om du vill rendera en `LocalVideoStream` måste du skapa en ny instans av `Renderer` och sedan skapa en ny RendererView-instans med hjälp av den asynkrona `createView` metoden. Du kan sedan koppla `view.target` till ett gränssnitts element. 
+Om du vill rendera en `LocalVideoStream` måste du skapa en ny instans av `VideoStreamRenderer` och sedan skapa en ny `VideoStreamRendererView` instans med hjälp av den asynkrona `createView` metoden. Du kan sedan koppla `view.target` till ett gränssnitts element. 
 
 ```JavaScript
 async function localVideoView() {
-    rendererLocal = new Renderer(localVideoStream);
+    rendererLocal = new VideoStreamRenderer(localVideoStream);
     const view = await rendererLocal.createView();
     document.getElementById("myVideo").appendChild(view.target);
 }
 ```
-Alla fjärranslutna deltagare är tillgängliga via `remoteParticipants` samlingen på en samtals instans. Du måste prenumerera på de fjärranslutna deltagarna i det aktuella samtalet och lyssna på händelsen `remoteParticipantsUpdated` för att prenumerera på tillagda fjärranslutna deltagare.
+Alla fjärranslutna deltagare är tillgängliga via `remoteParticipants` samlingen på en samtals instans. Du måste lyssna på händelsen för att `remoteParticipantsUpdated` bli meddelad när en ny fjärran sluten deltagare läggs till i anropet. Du måste också iterera `remoteParticipants` samlingen för att prenumerera på var och en av dem för att kunna prenumerera på deras video strömmar. 
 
 ```JavaScript
 function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToRemoteParticipant(p);
-    })
     callInstance.on('remoteParticipantsUpdated', e => {
         e.added.forEach( p => {
-            subscribeToRemoteParticipant(p);
+            subscribeToParticipantVideoStreams(p);
         })
-    });   
+    }); 
+    callInstance.remoteParticipants.forEach( p => {
+        subscribeToParticipantVideoStreams(p);
+    })
 }
 ```
-Du kan prenumerera på `remoteParticipants` samlingen av det aktuella anropet och granska `videoStreams` samlingarna för att visa en lista över strömmar för varje deltagare. Du måste också prenumerera på remoteParticipantsUpdated-händelsen för att kunna hantera tillagda fjärranslutna deltagare. 
+Du måste prenumerera på `videoStreamsUpdated` händelsen för att kunna hantera nya video strömmar av fjärranslutna deltagare. Du kan granska `videoStreams` samlingarna för att visa en lista över strömmar för varje deltagare samtidigt som du går igenom `remoteParticipants` samlingen av det aktuella anropet.
 
 ```JavaScript
-function subscribeToRemoteParticipant(remoteParticipant) {
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
+function subscribeToParticipantVideoStreams(remoteParticipant) {
     remoteParticipant.on('videoStreamsUpdated', e => {
         e.added.forEach(v => {
             handleVideoStream(v);
         })
+    });
+    remoteParticipant.videoStreams.forEach(v => {
+        handleVideoStream(v);
     });
 }
 ```
@@ -231,11 +233,11 @@ function handleVideoStream(remoteVideoStream) {
     }
 }
 ```
-Om du vill rendera en `RemoteVideoStream` måste du skapa en ny instans av `Renderer` och sedan skapa en ny `RendererView` instans med hjälp av den asynkrona `createView` metoden. Du kan sedan koppla `view.target` till ett gränssnitts element. 
+Om du vill rendera en `RemoteVideoStream` måste du skapa en ny instans av `VideoStreamRenderer` och sedan skapa en ny `VideoStreamRendererView` instans med hjälp av den asynkrona `createView` metoden. Du kan sedan koppla `view.target` till ett gränssnitts element. 
 
 ```JavaScript
 async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new Renderer(remoteVideoStream);
+    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
     const view = await rendererRemote.createView();
     document.getElementById("remoteVideo").appendChild(view.target);
 }
@@ -259,7 +261,7 @@ callAgent.on('incomingCall', async e => {
     const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
     call = addedCall;
 
-    subscribeToRemoteParticipantInCall(addedCall);   
+    subscribeToRemoteParticipantInCall(addedCall);  
 });
 ```
 ## <a name="end-the-current-call"></a>Avsluta det aktuella anropet
@@ -334,6 +336,8 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information finns i följande artiklar:
-- Kolla i vårt [exempel på webb anrop](../../samples/web-calling-sample.md)
-- Läs om hur du [anropar klient biblioteks funktioner](./calling-client-samples.md?pivots=platform-web)
-- Läs mer om [hur du anropar Works](../../concepts/voice-video-calling/about-call-types.md)
+
+- Kolla i vårt [exempel på webb anrop](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
+- Läs mer om hur du [anropar SDK-funktioner](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
+- Läs mer om [hur du anropar Works](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)
+

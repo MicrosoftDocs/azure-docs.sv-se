@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773053"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047243"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
 
@@ -272,7 +272,7 @@ Följande rubriker ingår i varje Document Translator API-begäran:
 
 > [!IMPORTANT]
 >
-> I kod exemplen nedan kommer du att hårdkoda din nyckel och slut punkt där det anges. Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt.  Se [Azure Cognitive Services Security](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) för att på ett säkert sätt lagra och komma åt dina autentiseringsuppgifter.
+> I kod exemplen nedan kommer du att hårdkoda din nyckel och slut punkt där det anges. Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt.  Se [Azure Cognitive Services Security](../../cognitive-services-security.md?tabs=command-line%2ccsharp) för att på ett säkert sätt lagra och komma åt dina autentiseringsuppgifter.
 >
 > Du kan behöva uppdatera följande fält, beroende på åtgärd:
 >>>

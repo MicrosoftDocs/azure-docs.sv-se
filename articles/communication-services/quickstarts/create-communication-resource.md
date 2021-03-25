@@ -10,21 +10,21 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495917"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110906"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Snabb start: skapa och hantera kommunikations tjänst resurser
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med klient biblioteket för .net-hantering. Med hanterings klient biblioteket och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i klient biblioteken är tillgängliga i Azure Portal. 
+Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med .net Management SDK. Med SDK för hantering och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i SDK: erna är tillgängliga i Azure Portal. 
 
 
-Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med klient biblioteket för .net-hantering. Med hanterings klient biblioteket och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i klient biblioteken är tillgängliga i Azure Portal.
+Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med .net Management SDK. Med SDK för hantering och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i SDK: erna är tillgängliga i Azure Portal.
 
 > [!WARNING]
 > Observera att även om kommunikations tjänsterna är tillgängliga i flera geografiska områden, måste resursen ha en data plats inställd på "USA" för att få ett telefonnummer. Observera också att kommunikations resurser inte kan överföras till en annan prenumeration under den offentliga för hands versionen.
@@ -43,9 +43,9 @@ Kom igång med Azure Communication Services genom att tillhandahålla din först
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Åtkomst till anslutnings strängar och tjänst slut punkter
 
-Anslutnings strängar gör att klient biblioteken för kommunikations tjänster kan ansluta och autentisera till Azure. Du kan komma åt anslutnings tjänst anslutnings strängar och tjänst slut punkter från Azure Portal eller program mässigt med Azure Resource Manager-API: er.
+Anslutnings strängar tillåter att SDK: er för kommunikations tjänsterna ansluter och autentiserar till Azure. Du kan komma åt anslutnings tjänst anslutnings strängar och tjänst slut punkter från Azure Portal eller program mässigt med Azure Resource Manager-API: er.
 
-När du har navigerat till kommunikations tjänst resursen väljer du **nycklar** i navigerings menyn och kopierar **anslutnings strängen** eller **slut punkts** värden för användning av klient biblioteken för kommunikations tjänster. Observera att du har åtkomst till primära och sekundära nycklar. Detta kan vara användbart i scenarier där du vill ge tillfällig åtkomst till dina kommunikations tjänst resurser till en tredje part eller en utvecklings miljö.
+När du har navigerat till kommunikations tjänst resursen väljer du **nycklar** i navigerings menyn och kopierar **anslutnings strängen** eller **slut punkts** värden för användning av SDK: erna för kommunikations tjänsterna. Observera att du har åtkomst till primära och sekundära nycklar. Detta kan vara användbart i scenarier där du vill ge tillfällig åtkomst till dina kommunikations tjänst resurser till en tredje part eller en utvecklings miljö.
 
 :::image type="content" source="./media/key.png" alt-text="Skärm bild av nyckel sidan för kommunikations tjänster.":::
 
@@ -59,7 +59,7 @@ az communication list-key --name "<communicationName>" --resource-group "<resour
 
 ## <a name="store-your-connection-string"></a>Lagra anslutnings strängen
 
-Klient bibliotek för kommunikations tjänster använder anslutnings strängar för att auktorisera begär Anden som görs till kommunikations tjänster. Du har flera alternativ för att lagra anslutnings strängen:
+SDK: er för kommunikations tjänster använder anslutnings strängar för att godkänna begär Anden som görs till kommunikations tjänster. Du har flera alternativ för att lagra anslutnings strängen:
 
 * Ett program som körs på Skriv bordet eller på en enhet kan lagra anslutnings strängen i en **app.config** eller **web.config** fil. Lägg till anslutnings strängen i avsnittet **appSettings** i de här filerna.
 * Ett program som körs i en Azure App Service kan lagra anslutnings strängen i [app service program inställningar](../../app-service/configure-common.md). Lägg till anslutnings strängen i avsnittet **anslutnings strängar** på fliken program inställningar i portalen.

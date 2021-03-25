@@ -6,14 +6,15 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: a20510ee2800a54f9a51a2f498ee8ae8a3e51d55
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 939d9f5f4cafc7a08ceb99368e8ede7a81b1eac0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543157"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110533"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Använda sys_schema för prestanda justering och databas underhåll i Azure Database for MySQL
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 MySQL-performance_schema, som först är tillgängligt i MySQL 5,5, innehåller instrumentering för många viktiga server resurser, till exempel minnesallokering, lagrade program, metadata lås osv. Performance_schema innehåller dock fler än 80 tabeller och den information som krävs kräver ofta att du kopplar tabellerna i performance_schema, samt tabeller från information_schema. När du bygger på både performance_schema och information_schema ger sys_schema en kraftfull samling [användarvänliga vyer](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) i en skrivskyddad databas och är helt aktive rad i Azure Database for MySQL version 5,7.
 

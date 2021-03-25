@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b0969ffae7963d6a5f9ac249e43750444ab11baa
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: e41e33b5f30cd861ae8715e0ad7f6694f8854198
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105036058"
+ms.locfileid: "105046954"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Använda Microsoft Smooth Streaming-plugin-programmet för Adobe Open Source Media Framework
 
@@ -34,7 +34,7 @@ SS för OSMF innehåller två versioner av plugin-programmet:
 * Statiskt Smooth Streaming-plugin-program för OSMF (. SWC)
 * Dynamiskt Smooth Streaming-plugin-program för OSMF (. swf)
 
-Det här dokumentet förutsätter att läsaren har ett allmänt fungerande kunnande om OSMF-och OSMF-plugin-program. Mer information om OSMF finns i dokumentationen på den [officiella OSMF-webbplatsen](http://osmf.org/).
+Det här dokumentet förutsätter att läsaren har ett allmänt fungerande kunnande om OSMF-och OSMF-plugin-program. Mer information om OSMF finns i dokumentationen på den officiella OSMF-webbplatsen.
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>Smooth Streaming-plugin-program för OSMF 2,0
 Plugin-programmet stöder inläsning och uppspelning av Smooth Streaming innehåll på begäran med följande funktioner:
@@ -62,7 +62,7 @@ OSMF-plugin-program kan läsas in statiskt (vid kompilering) eller dynamiskt (vi
 Mer information om statisk och dynamisk inläsning finns på den officiella [OSMF-plugin-sidan](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm).
 
 ### <a name="ss-for-osmf-static-loading"></a>SS för OSMF statisk inläsning
-Kodfragmentet nedan visar hur du läser in SS-plugin-programmet för OSMF statiskt och spelar en grundläggande video med hjälp av OSMF MediaFactory-klassen. Innan du inkluderar OSMF-koden SS måste du se till att projekt referensen innehåller det statiska plugin-programmet "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC".
+Kodfragmentet nedan visar hur du läser in SS-plugin-programmet för OSMF statiskt och spelar en grundläggande video med hjälp av OSMF MediaFactory-klassen. Innan du inkluderar OSMF-koden SS måste du se till att projekt referensen innehåller det statiska plugin-programmet "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC". 
 
 ```csharp
 package 
@@ -337,7 +337,7 @@ package
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Kasta medie uppspelning med SS-ODMF dynamiskt plugin-program
 Smooth Streaming för dynamiskt plugin-program för OSMF är kompatibelt med [SMP (strobe Media uppspelning)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/). Du kan använda SS för OSMF-plugin-programmet för att lägga till Smooth Streaming innehålls uppspelning till SMP. Det gör du genom att kopiera "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" under en webb server för HTTP-belastning med hjälp av följande steg:
 
-1. Bläddra i [installations sidan för ljud uppspelnings mediet](http://osmf.org/dev/2.0gm/setup.html). 
+1. Bläddra i [installations sidan för ljud uppspelnings mediet](http://www.koopman.me/bob3/setup.html). 
 2. Ange src till en Smooth Streaming källa (t. ex. http: \/ /devplatem.VO.msecnd.net/Sintel/Sintel_H264.ISM/manifest) 
 3. Gör önskade konfigurations ändringar och klicka på Förhandsgranska och uppdatera.
    
@@ -394,7 +394,7 @@ Smooth Streaming för dynamiskt plugin-program för OSMF är kompatibelt med [SM
 2. Spara HTML-sidan och publicera på en webb server. Bläddra till den publicerade webb sidan med din favorit webbläsare i Flash &reg; Player (Internet Explorer, Chrome, Firefox, så vidare).
 3. Njut av Smooth Streaming innehåll i Adobe &reg; Flash &reg; Player.
 
-Mer information om allmän OSMF utveckling finns på den officiella OSMF- [utvecklings sidan](http://osmf.org/resources.html).
+Mer information om allmän OSMF utveckling finns på den officiella OSMF- [utvecklings sidan](https://www.adobe.com/devnet/video/articles1/osmf_overview.html).
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -9,16 +9,16 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0f456581e14f17b0ea3ebbd54d0768d419e800b3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496243"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110652"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
 
-Webb anrops exemplet är ett webb program som fungerar som en stegvis genom gång av de olika funktionerna som tillhandahålls av kommunikations tjänstens webb anrops klient bibliotek.
+Webb anrops exemplet är ett webb program som fungerar som en stegvis genom gång av de olika funktionerna i kommunikations tjänsternas webb anrops-SDK.
 
 Det här exemplet har skapats för utvecklare och gör det enkelt för dig att komma igång med kommunikations tjänster. Dess användar gränssnitt är indelat i flera avsnitt, med en knapp för att Visa kod som gör att du kan kopiera kod direkt från webbläsaren till ditt eget kommunikations tjänst program.
 
@@ -86,7 +86,7 @@ Det här exemplet innehåller också kodfragment för följande funktioner:
 
 Mer information finns i följande artiklar:
 
-- Bekanta dig med [att använda det anropande klient biblioteket](../quickstarts/voice-video-calling/calling-client-samples.md)
+- Bekanta dig med [att använda den anropande SDK: n](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Läs mer om [hur du anropar Works](../concepts/voice-video-calling/about-call-types.md)
 - Granska [API Reference-dokument](/javascript/api/azure-communication-services/@azure/communication-calling/)
 - Granska exemplet [contoso with app](https://github.com/Azure-Samples/communication-services-contoso-med-app)

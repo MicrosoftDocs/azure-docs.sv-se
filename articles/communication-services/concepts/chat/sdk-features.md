@@ -1,7 +1,7 @@
 ---
-title: Översikt över Chat-klient bibliotek för Azure Communication Services
+title: Översikt över chatt SDK för Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Lär dig mer om klient biblioteket Azure Communication Services chat.
+description: Lär dig mer om Azure Communication Services Chat SDK.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,22 +9,22 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656115"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110822"
 ---
-# <a name="chat-client-library-overview"></a>Översikt över klientbiblioteket för chatt  
+# <a name="chat-sdk-overview"></a>Översikt över chatt SDK 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Azure Communication Services Chat-klient bibliotek kan användas för att lägga till omfattande chatt i real tid till dina program.
+Azure Communication Services Chat SDK: er kan användas för att lägga till omfattande chatt i real tid till dina program.
     
-## <a name="chat-client-library-capabilities"></a>Funktioner i chatt-klient bibliotek 
+## <a name="chat-sdk-capabilities"></a>Chatta SDK-funktioner    
 
-I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i kommunikations tjänstens klient bibliotek för kommunikations tjänster.  
+I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i kommunikations tjänsterna för chatt-SDK: er.  
 
 | Grupp med funktioner | Funktion | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
@@ -51,13 +51,13 @@ I följande lista visas en uppsättning funktioner som för närvarande är till
 
 * * Det tillverkarspecifika signal paketet implementeras med hjälp av Web Sockets. Det kommer att återgå till lång avsökning om Web Sockets inte stöds.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Java Script Chat-klient bibliotek stöd av OS och webbläsare 
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>Java Script Chat SDK-stöd från OS och webbläsare    
 
 Följande tabell visar en uppsättning webbläsare och versioner som stöds och som är tillgängliga för tillfället.
     
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Klient bibliotek för chat** | Firefox *, Chrome*, ny kant | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
+| **Chatta SDK** | Firefox *, Chrome*, ny kant | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
 
 * Observera att den senaste versionen stöds utöver de tidigare två versionerna.<br/>   
 

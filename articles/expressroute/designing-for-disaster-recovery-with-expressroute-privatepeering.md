@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 05/25/2019
+ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202421"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044608"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Design för haveri beredskap med ExpressRoute privat peering
 
 ExpressRoute har utformats för att ge hög tillgänglighet för att tillhandahålla bärvåg för privat nätverks anslutning till Microsoft-resurser. Det finns med andra ord ingen enskild felpunkt i ExpressRoute-sökvägen i Microsoft-nätverket. Design överväganden för att maximera tillgängligheten för en ExpressRoute-krets finns i [utforma för hög tillgänglighet med ExpressRoute][HA].
 
-Men om du tar Murphy populärt Adage –*om något går fel, kommer det att* övervägas, i den här artikeln kan vi fokusera på lösningar som går utöver fel som kan åtgärdas med hjälp av en enda ExpressRoute-krets. I den här artikeln kan vi med andra ord titta på nätverks arkitektur för att skapa robusta Server dels nätverks anslutningar för haveri beredskap med geo-redundanta ExpressRoute-kretsar.
+Men om du tar Murphy populärt Adage –*om något går fel, kommer det att* övervägas, i den här artikeln kan vi fokusera på lösningar som går utöver fel som kan åtgärdas med hjälp av en enda ExpressRoute-krets. Vi kommer att titta på nätverks arkitektur överväganden för att skapa robusta Server dels nätverks anslutningar för haveri beredskap med hjälp av Geo-redundanta ExpressRoute-kretsar.
 
 >[!NOTE]
 >Begreppen som beskrivs i den här artikeln gäller även när en ExpressRoute-krets skapas under Virtual WAN eller utanför den.
@@ -28,7 +28,7 @@ Men om du tar Murphy populärt Adage –*om något går fel, kommer det att* öv
 
 Det finns möjligheter och instanser där en hel regional tjänst (var den Microsoft, nätverks tjänst leverantörer, kund eller andra moln tjänst leverantörer) försämras. Rotor saken till sådan regional omfattande tjänst påverkan är naturlig Calamity. Därför är det viktigt att planera för haveri beredskap för affärs kontinuitet och verksamhets kritiska program.   
 
-Oavsett om du kör dina verksamhets kritiska program i en Azure-region eller lokalt eller var du än befinner dig, kan du använda en annan Azure-region som redundans plats. Följande artiklar behandlar haveri beredskap från program och åtkomst till klient åtkomst perspektiv:
+Oavsett vad, oavsett om du kör dina verksamhets kritiska program i en Azure-region eller lokalt eller var du än befinner dig, kan du använda en annan Azure-region som redundans plats. Följande artiklar behandlar haveri beredskap från program och åtkomst till klient åtkomst perspektiv:
 
 - [Haveriberedskap i företagsskala][Enterprise DR]
 - [SMB-haveriberedskap med Azure Site Recovery][SMB DR]
@@ -39,7 +39,17 @@ Om du förlitar dig på ExpressRoute-anslutning mellan ditt lokala nätverk och 
 
 När du samman samma uppsättning nätverk med mer än en anslutning, introduceras parallella sökvägar mellan nätverken. Parallella sökvägar, om de inte är korrekt konstruerade, kan leda till asymmetrisk routning. Om du har tillstånds känsliga entiteter (till exempel NAT, brand vägg) i sökvägen kan asymmetrisk routning blockera trafikflöde.  Vanligt vis kommer du inte över tillstånds känsliga entiteter, till exempel NAT eller brand väggar, via ExpressRoute privata peering-sökvägen. Därför blockerar asymmetrisk routning via ExpressRoute privat peering inte nödvändigt vis trafikflödet.
  
-Men om du belastningsutjämna trafik över geo-redundanta parallella sökvägar, oavsett om du har tillstånds känsliga entiteter eller inte, så kommer du att uppleva inkonsekvent nätverks prestanda. I den här artikeln diskuterar vi hur du kan åtgärda de här utmaningarna.
+Men om du belastningsutjämna trafik över geo-redundanta parallella sökvägar, oavsett om du har tillstånds känsliga entiteter eller inte, så kommer du att uppleva inkonsekvent nätverks prestanda. Dessa geo-redundanta parallella sökvägar kan vara via samma tunnelbane linje eller en annan tunnelbane linje som finns på sidan [providers efter plats](expressroute-locations-providers.md#partners) . 
+
+### <a name="same-metro"></a>Samma tunnelbane
+
+När du använder samma tunnelbane linje bör du använda den sekundära platsen för den andra sökvägen för att den här konfigurationen ska fungera. Ett exempel på samma tunnelbane linje skulle vara *Amsterdam* -och *Amsterdam2*. Fördelen med att välja samma tunnelbane linje är när programredundans sker, svars tid från slut punkt till slut punkt mellan dina lokala program och Microsoft förblir oförändrade. Men om det uppstår en natur katastrof, kan det hända att anslutningarna för båda Sök vägarna inte längre är tillgängliga. 
+
+### <a name="different-metros"></a>Olika Metros
+
+När du använder olika Metros för standard-SKU-kretsar bör den sekundära platsen finnas i samma [geo-politiska region](expressroute-locations-providers.md#locations). Om du vill välja en plats utanför geo-politisk regionen måste du använda Premium SKU för båda kretsarna i de parallella Sök vägarna. Fördelen med den här konfigurationen är risken för en natur katastrof som orsakar ett avbrott i båda länkarna är mycket lägre men till kostnaden för att öka svars tiden från slut punkt till slut punkt.
+
+I den här artikeln diskuterar vi hur du kan åtgärda utmaningar som du kan stöta på när du konfigurerar geo-redundanta sökvägar.
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>Överväganden för små till medel stora nätverks platser
 
@@ -100,13 +110,13 @@ Om du använder någon av teknikerna, om du påverkar Azure för att föredra en
 
 ## <a name="large-distributed-enterprise-network"></a>Stort distribuerat företags nätverk
 
-När du har ett stort distribuerat företags nätverk har du förmodligen flera ExpressRoute-kretsar. I det här avsnittet får du se hur du kan designa haveri beredskap med aktiva ExpressRoute-kretsar, utan att behöva ytterligare driv kretsar. 
+När du har ett stort distribuerat företags nätverk har du förmodligen flera ExpressRoute-kretsar. I det här avsnittet får du se hur du kan designa haveri beredskap med hjälp av aktiva ExpressRoute-kretsar, utan att behöva en annan uppsättning kretsar. 
 
 Vi ska titta på exemplet som illustreras i följande diagram. I exemplet har contoso två lokala platser som är anslutna till två contoso IaaS-distribution i två olika Azure-regioner via ExpressRoute-kretsar på två olika peering-platser. 
 
 [![3-6]][6]
 
-Hur vi skapar haveri beredskap har en inverkan på hur trafiken mellan regionala och globala platser (Region1/Region2 till location2/location1) dirigeras. Vi tänker på två olika katastrof arkitekturer som dirigerar trafik mellan olika regioner.
+Hur vi skapar haveri beredskap har en inverkan på hur trafiken mellan regioner och över platser (Region1/Region2 till location2/location1) dirigeras. Vi tänker på två olika katastrof arkitekturer som dirigerar trafik mellan olika regioner.
 
 ### <a name="scenario-1"></a>Scenario 1
 

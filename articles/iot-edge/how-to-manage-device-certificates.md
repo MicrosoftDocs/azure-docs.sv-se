@@ -8,12 +8,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f3b6bd19d47658e5ad079f0b731cbafc866bb333
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200280"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045781"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Hantera certifikat på en IoT Edge enhet
 
@@ -67,9 +67,18 @@ Om du vill se ett exempel på dessa certifikat granskar du skripten som skapar d
 
 Installera certifikat kedjan på den IoT Edge enheten och konfigurera IoT Edge runtime så att den refererar till de nya certifikaten.
 
-Kopiera de tre certifikat-och nyckelfilerna till din IoT Edge-enhet. Du kan använda en tjänst som [Azure Key Vault](../key-vault/index.yml) eller en funktion som [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) för att flytta certifikatfiler.  Om du har genererat certifikaten på själva enheten för IoT Edge kan du hoppa över det här steget och använda sökvägen till arbets katalogen.
+Kopiera de tre certifikat-och nyckelfilerna till din IoT Edge-enhet. Du kan använda en tjänst som [Azure Key Vault](../key-vault/index.yml) eller en funktion som [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) för att flytta certifikatfiler. Om du har genererat certifikaten på själva enheten för IoT Edge kan du hoppa över det här steget och använda sökvägen till arbets katalogen.
 
-Om du till exempel använde exempel skripten för att [skapa demo certifikat](how-to-create-test-certificates.md), kopierar du följande filer till din IoT-Edge-enhet:
+Om du använder IoT Edge för Linux i Windows måste du använda SSH-nyckeln som finns i Azure IoT Edge- `id_rsa` filen för att autentisera fil överföringar mellan värd-OS och den virtuella Linux-datorn. Du kan göra en autentiserad SCP med följande kommando:
+
+   ```powershell-interactive
+   C:\WINDOWS\System32\OpenSSH\scp.exe -i 'C:\Program Files\Azure IoT Edge\id_rsa' <PATH_TO_SOURCE_FILE> iotedge-user@<VM_IP>:<PATH_TO_FILE_DESTINATION>
+   ```
+
+   >[!NOTE]
+   >Den virtuella Linux-datorns IP-adress kan frågas via `Get-EflowVmAddr` kommandot.
+
+Om du använde exempel skripten för att [skapa demo certifikat](how-to-create-test-certificates.md), kopierar du följande filer till din IoT-Edge-enhet:
 
 * Enhetens CA-certifikat: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Privat nyckel för enhets certifikat utfärdare: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -80,21 +89,13 @@ Om du till exempel använde exempel skripten för att [skapa demo certifikat](ho
 
 1. Öppna konfigurations filen för IoT Edge Security daemon.
 
-   * Windows: `C:\ProgramData\iotedge\config.yaml`
-   * Linux: `/etc/iotedge/config.yaml`
+   * Linux och IoT Edge för Linux i Windows: `/etc/iotedge/config.yaml`
+
+   * Windows med Windows-behållare: `C:\ProgramData\iotedge\config.yaml`
 
 1. Ange **certifikat** egenskaperna i config. yaml till fil-URI-sökvägen till certifikatet och nyckelfilen på den IoT Edge enheten. Ta bort tecknen innan du tar bort dem från `#` certifikat egenskaperna för att ta bort kommentarer till de fyra raderna. Se till att det inte finns några föregående blank steg i raden **certifikat:** rad och att kapslade objekt är indragna med två blank steg. Exempel:
 
-   * Windows:
-
-      ```yaml
-      certificates:
-        device_ca_cert: "file:///C:/<path>/<device CA cert>"
-        device_ca_pk: "file:///C:/<path>/<device CA key>"
-        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
-      ```
-
-   * Linux:
+   * Linux och IoT Edge för Linux i Windows:
 
       ```yaml
       certificates:
@@ -103,13 +104,23 @@ Om du till exempel använde exempel skripten för att [skapa demo certifikat](ho
         trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
+   * Windows med Windows-behållare:
+
+      ```yaml
+      certificates:
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
+      ```
+
 1. På Linux-enheter ser du till att användar **iotedge** har Läs behörighet för den katalog som innehåller certifikaten.
 
 1. Om du har använt andra certifikat för IoT Edge på enheten tidigare tar du bort filerna i följande två kataloger innan du startar eller startar om IoT Edge:
 
-   * Windows: `C:\ProgramData\iotedge\hsm\certs` och `C:\ProgramData\iotedge\hsm\cert_keys`
+   * Linux och IoT Edge för Linux i Windows: `/var/lib/iotedge/hsm/certs` och `/var/lib/iotedge/hsm/cert_keys`
 
-   * Linux: `/var/lib/iotedge/hsm/certs` och `/var/lib/iotedge/hsm/cert_keys`
+   * Windows med Windows-behållare: `C:\ProgramData\iotedge\hsm\certs` och `C:\ProgramData\iotedge\hsm\cert_keys`
+
 :::moniker-end
 <!-- end 1.1 -->
 
@@ -177,34 +188,36 @@ När det angivna antalet dagar har löpt ut måste IoT Edge startas om för att 
 
 1. Ta bort innehållet i `hsm` mappen för att ta bort eventuella tidigare genererade certifikat.
 
-   Windows: `C:\ProgramData\iotedge\hsm\certs` och `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` och `/var/lib/iotedge/hsm/cert_keys`
+   * Linux och IoT Edge för Linux i Windows: `/var/lib/iotedge/hsm/certs` och `/var/lib/iotedge/hsm/cert_keys`
+
+   * Windows med Windows-behållare: `C:\ProgramData\iotedge\hsm\certs` och `C:\ProgramData\iotedge\hsm\cert_keys`
 
 1. Starta om tjänsten IoT Edge.
 
-   Windows:
-
-   ```powershell
-   Restart-Service iotedge
-   ```
-
-   Linux:
+   * Linux och IoT Edge för Linux i Windows:
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-1. Bekräfta livs längds inställningen.
-
-   Windows:
+   * Windows med Windows-behållare:
 
    ```powershell
-   iotedge check --verbose
+   Restart-Service iotedge
    ```
 
-   Linux:
+1. Bekräfta livs längds inställningen.
+
+   * Linux och IoT Edge för Linux i Windows:
 
    ```bash
    sudo iotedge check --verbose
+   ```
+
+   * Windows med Windows-behållare:
+
+   ```powershell
+   iotedge check --verbose
    ```
 
    Kontrol lera utdata från **produktions beredskap: certifikat** kontroll, som visar antalet dagar tills de automatiskt genererade ENHETens CA-certifikat upphör att gälla.

@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ff322cb3633616e9004bc8fa25b048b6f1263008
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802156"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046342"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -58,11 +58,11 @@ Du kan installera pip och Python på din plattform på många olika sätt. Följ
 
 I Windows 10, Windows Server 2016 och Windows Server 2012 R2 använder du de officiella anvisningarna för standardinstallation. Python-installationsprogrammet installerar även pip som standard.
 
-1. Gå till den officiella [sidan för python-nedladdningar](https://www.python.org/downloads/)och ladda ned den senaste versionen av python 3,7.
+1. Gå till den officiella [sidan för python-nedladdningar](https://www.python.org/downloads/)och ladda ned den senaste versionen av python 3. x.
 
 2. Starta installationsprogrammet.
 
-3. Klicka på **Lägg till Python 3,7 i sökvägen** längst ned i prompten.
+3. Längst ned i prompten väljer du **Lägg till python 3. x i sökvägen**.
 
 4. Välj **Installera nu** och slutför installationen.
 
@@ -118,8 +118,8 @@ sudo pip3 install sfctl
 Kör följande kommandon för att installera Service Fabric CLI i Red Hat:
 
 ```bash
-sudo yum install -y python34
-sudo yum install python34-setuptools
+sudo yum install -y python38
+sudo yum install python38-setuptools
 sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
@@ -135,7 +135,7 @@ För MacOS rekommenderar vi att du använder [HomeBrew-pakethanteraren](https://
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Installera sedan python 3,7, pip och Service Fabric CLI från terminalen genom att köra följande kommandon:
+Installera sedan den senaste python 3. x, pip och Service Fabric CLI från terminalen genom att köra följande kommandon:
 
 ```bash
 brew install python3
