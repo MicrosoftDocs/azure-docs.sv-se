@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1459d4a0f15595c6f658d73fcb9cb533023f0eb8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121481"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025725"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Självstudie: distribuera konfigurationer med GitOps på ett Azure Arc-aktiverat Kubernetes-kluster 
 
@@ -141,7 +141,7 @@ Precis som med privata nycklar kan du ange known_hosts innehåll direkt eller i 
 >[!NOTE]
 >* Helm-operator diagram version 1.2.0 + har stöd för HTTPS Helm release Private auth.
 >* HTTPS Helm-versionen stöds inte för AKS-hanterade kluster.
->* Om du behöver flöden för att få åtkomst till git-lagringsplatsen via proxyservern måste du uppdatera Azure Arc-agenterna med proxyinställningarna. Mer information finns i [ansluta med en utgående proxyserver](./connect-cluster.md#connect-using-an-outbound-proxy-server).
+>* Om du behöver flöden för att få åtkomst till git-lagringsplatsen via proxyservern måste du uppdatera Azure Arc-agenterna med proxyinställningarna. Mer information finns i [ansluta med en utgående proxyserver](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 
 ## <a name="additional-parameters"></a>Ytterligare parametrar

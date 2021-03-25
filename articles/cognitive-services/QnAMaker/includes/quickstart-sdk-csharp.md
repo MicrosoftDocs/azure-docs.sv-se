@@ -3,12 +3,12 @@ title: 'Snabb start: QnA Maker klient bibliotek för .NET'
 description: Den här snabb starten visar hur du kommer igång med QnA Maker-klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter.  Med QnA Maker kan du driva en tjänst för frågor och svar från halvstrukturerat innehåll som Vanliga frågor och svar-dokument, URL:er och produkthandböcker.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 0f1e779fea0fe4f3f3a88b91091d11442e2f958b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 86c4f5c0633a2e547071cbf102d34e385391570e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803517"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104666"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
@@ -145,7 +145,7 @@ Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om d
 
 - Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till QnA Maker resursen i Azure Portal och klicka på **nycklar och slut punkt** för att hitta redigerings nyckeln och QNA Maker slut punkten.
 
- ![QnA Maker runtime-slutpunkt](../media/keys-endpoint.png)
+ ![QnA Maker redigerings slut punkt](../media/keys-endpoint.png)
 
 - Värdet för QNA_MAKER_RUNTIME_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.azurewebsites.net` .  
       
@@ -162,7 +162,7 @@ Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om d
 
 - Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till QnA Maker resursen i Azure Portal och klicka på **nycklar och slut punkt** för att hitta redigerings nyckeln och QNA Maker slut punkten.
 
- ![QnA Maker runtime-slutpunkt](../media/keys-endpoint.png)
+ ![QnA Maker redigerings slut punkt](../media/keys-endpoint.png)
 
 - För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Till exempel ger [Azure Key Vault](../../../key-vault/general/overview.md) säker nyckel lagring.
 

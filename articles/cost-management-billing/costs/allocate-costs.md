@@ -3,17 +3,17 @@ title: Allokera Azure-kostnader
 description: I den här artikeln beskrivs hur du skapar regler för kostnadsallokering för att distribuera kostnader för prenumerationer, resursgrupper eller taggar till andra.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/11/2020
+ms.date: 03/23/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131096"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025534"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Skapa och hantera regler för kostnadsallokering i Azure (för hands version)
 
@@ -37,7 +37,7 @@ Allokerade kostnader visas i en kostnadsanalys. De visas som ytterligare objekt 
 
 1. Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.com/).
 2. Gå till **Cost Management + fakturering** > **Cost Management**.
-3. Under **Inställningar** > **Konfiguration**väljer du **Kostnadsallokering (förhandsversion)** .
+3. Under **Inställningar** > **Konfiguration** väljer du **Kostnadsallokering (förhandsversion)** .
 4. Kontrollera att rätt EA-registrering eller faktureringskonto har valts.
 5. Välj **+Lägg till**.
 6. Ange beskrivande text för kostnadsallokeringsregelns namn.
@@ -58,7 +58,7 @@ När du distribuerar kostnader per beräkningskostnad, lagringskostnad och nätv
 
 När du distribuerar kostnader proportionellt mot den totala kostnaden tilldelas den proportionella procentandelen av summan eller den totala kostnaden för de valda målen för den aktuella faktureringsmånaden.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Exempel som visar ett regelnamn som skapas" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Exempel som visar allokeringsprocent" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 När du har angett de fördefinierade procentandelarna är de fasta. De används för alla pågående allokeringar. Procentandelarna ändras endast när regeln uppdateras manuellt.
 
@@ -84,7 +84,7 @@ När kostnadsallokeringsregeln är aktiv distribueras kostnader från de valda k
 
 Du visar effekten av allokeringsregeln i en kostnadsanalys. I Azure-portalen går du till [Prenumerationer](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Välj en prenumeration i listan som är riktad mot en aktiv kostnadstilldelningsregel. Välj sedan **Kostnadsanalys** på menyn. I Kostnadsanalys väljer du **Gruppera efter** och väljer sedan **Kostnadsallokering**. I vyn som visas ser du en snabb kostnadsuppdelning som genererats av prenumerationen. Kostnader som allokeras till prenumerationen visas också, som i följande bild.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Exempel som visar ett regelnamn som skapas" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Exempel som visar kostnadsuppdelning" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Visa kostnadsallokering för en resursgrupp
 
@@ -94,7 +94,12 @@ Använd en liknande process för att se påverkan av en kostnadsallokering för 
 
 I Azure Portal navigerar du till **Cost Management + fakturering** > **Cost Management** > **Kostnadsanalys**. I Kostnadsanalys väljer du **Lägg till filter**. Välj **Tagg**, välj taggnyckeln och tagga värden som har kostnader allokerade till dem.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Exempel som visar ett regelnamn som skapas" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Exempel som visar kostnader för alla kunder" lightbox="./media/allocate-costs/tagged-costs.png" :::
+
+Här är en video som visar hur du skapar en kostnads tilldelnings regel.
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Redigera en befintlig kostnadsallokeringsregel
 

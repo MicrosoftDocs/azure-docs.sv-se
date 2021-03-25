@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744816"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025245"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Vanliga frågor och svar om Azure Cloud Services (utökad support)
 Den här artikeln beskriver vanliga frågor som rör Azure Cloud Services (utökad support).
@@ -82,6 +82,8 @@ Mall-och parameter-filer används bara för distributions automatisering. Precis
 ### <a name="how-does-my-application-code-change-on-cloud-services-extended-support"></a>Hur ändras min program kod på Cloud Services (utökad support)
 Det krävs inga ändringar för program koden som paketerats i cspkg. Dina befintliga program kommer att fortsätta fungera som tidigare. 
 
+### <a name="does-cloud-services-extended-support-allow-ctp-package-format"></a>Är Cloud Services (utökad support) Tillåt CTP-paket format?
+CTP-paketets format stöds inte i Cloud Services (utökad support). Det ger dock en förbättrad paket storleks gräns på 800 MB
 
 ## <a name="migration"></a>Migrering
 
