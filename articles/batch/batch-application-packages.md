@@ -2,17 +2,17 @@
 title: Distribuera programpaket till Compute-noder
 description: Använd funktionen programpaket i Azure Batch för att enkelt hantera flera program och versioner för installation på batch Compute-noder.
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033739"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045798"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Distribuera program till Compute-noder med batch-programpaket
 
@@ -59,6 +59,9 @@ Med programpaket behöver inte poolens start uppgift ange en lång lista med ens
 ## <a name="upload-and-manage-applications"></a>Ladda upp och hantera program
 
 Du kan använda [Azure Portal](https://portal.azure.com) eller API: er för batch Management för att hantera programpaketen i batch-kontot. I följande avsnitt beskrivs hur du länkar ett lagrings konto och hur du lägger till och hanterar program och programpaket i Azure Portal.
+
+> [!NOTE]
+> Även om du kan definiera program värden i resursen [Microsoft.BatCH/batchAccounts](/templates/microsoft.batch/batchaccounts) i en [arm-mall](quick-create-template.md), är det för närvarande inte möjligt att använda en arm-mall för att ladda upp programpaket som ska användas i batch-kontot. Du måste överföra dem till det länkade lagrings kontot enligt beskrivningen [nedan](#add-a-new-application).
 
 ### <a name="link-a-storage-account"></a>Länka ett lagrings konto
 

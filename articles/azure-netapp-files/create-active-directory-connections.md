@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/24/2021
 ms.author: b-juche
-ms.openlocfilehash: add907923cc2284939acd972237fd4ec74ee2d12
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864014"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048382"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Skapa och hantera Active Directory anslutningar för Azure NetApp Files
 
@@ -86,6 +86,8 @@ Ett undernät måste delegeras till Azure NetApp Files.
 * Azure NetApp Files stöder [LDAP-signering](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), vilket möjliggör säker överföring av LDAP-trafik mellan Azure NetApp Files-tjänsten och de [Active Directory domän kontrol Lanterna](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Om du följer anvisningarna i Microsoft Advisory [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) för LDAP-signering bör du aktivera funktionen LDAP-signering i Azure NetApp Files genom att markera rutan **LDAP-signering** i fönstret [Anslut Active Directory](#create-an-active-directory-connection) . 
 
     Enbart [LDAP-kanals bindnings](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) konfiguration har ingen påverkan på den Azure NetApp Files tjänsten. Men om du använder både LDAP-kanalens bindning och säker LDAP (till exempel LDAPs eller `start_tls` ), kommer SMB-volymen att Miss sen att skapas.
+
+* För icke-AD-integrerad DNS bör du lägga till en DNS A/PTR-post för att aktivera Azure NetApp Files att fungera med hjälp av ett eget namn. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Bestäm vilka domän tjänster som ska användas 
 

@@ -3,12 +3,12 @@ title: Konfigurera PV-övervakning med container Insights | Microsoft Docs
 description: I den här artikeln beskrivs hur du kan konfigurera övervakning av Kubernetes-kluster med beständiga volymer med behållar insikter.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 578cfe128b7445f8b09771999d1e653e92c4befa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200707"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026112"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>Konfigurera PV-övervakning med container Insights
 
@@ -19,7 +19,7 @@ Behållar insikter startar automatiskt övervakning av PV-användning genom att 
 
 | Mått namn | Mått dimension (Taggar) | Mått Beskrivning | | `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, kluster namn | Använt utrymme i byte för en speciell permanent volym med ett anspråk som används av en speciell pod. `capacityBytes` är viks i som en dimension i fältet taggar för att minska kostnaderna för data inmatning och för att förenkla frågor. |
 
-Lär dig mer om att konfigurera insamlade PV-mått [här](https://aka.ms/ci/pvconfig).
+Lär dig mer om att konfigurera insamlade PV-mått [här](./container-insights-agent-config.md).
 
 ## <a name="pv-inventory"></a>PV-inventering
 
@@ -48,7 +48,7 @@ Du hittar en översikt över beständig volym inventering i arbets boken **best�
 :::image type="content" source="./media/container-insights-persistent-volumes/pv-details-workbook-example.PNG" alt-text="Exempel på kalkyl blad för Azure Monitor PV-information":::
 
 ### <a name="persistent-volume-usage-recommended-alert"></a>Avisering om beständig volym användning
-Du kan aktivera en rekommenderad avisering som varnar dig när den genomsnittliga PV-användningen för en pod är över 80%. Läs mer om avisering [här](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts) och hur du åsidosätter standard tröskelvärdet [här](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts#configure-alertable-metrics-in-configmaps).
+Du kan aktivera en rekommenderad avisering som varnar dig när den genomsnittliga PV-användningen för en pod är över 80%. Läs mer om avisering [här](./container-insights-metric-alerts.md) och hur du åsidosätter standard tröskelvärdet [här](./container-insights-metric-alerts.md#configure-alertable-metrics-in-configmaps).
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om de insamlade PV-måtten [här](./container-insights-agent-config.md).

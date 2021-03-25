@@ -8,60 +8,69 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 02/01/2021
-ms.openlocfilehash: aa0b18b701c573d4b2542359cb45b2d7694e78bd
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/16/2021
+ms.openlocfilehash: e9031dc77054a2bbac8015bbbdd7b9ed2a35e84f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019530"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043350"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Få åtkomst till Azure API för FHIR med Postman
 
-Ett klient program har åtkomst till ett FHIR-API via en [REST API](https://www.hl7.org/fhir/http.html). Du kanske också vill interagera direkt med FHIR-servern när du skapar program, till exempel för fel sökning. I den här självstudien får vi gå igenom de steg som krävs för att använda [Postman](https://www.getpostman.com/) för att få åtkomst till en FHIR-Server. Postman är ett verktyg som ofta används för fel sökning när du skapar program som har åtkomst till API: er.
+Ett klient program kan komma åt Azure-API: et för FHIR via en [REST API](https://www.hl7.org/fhir/http.html). Om du vill skicka begär Anden, Visa svar och felsöka programmet som det skapas, använder du ett verktyg för API-testning som du väljer. I den här självstudien vägleder vi dig genom stegen för att komma åt FHIR-servern med [Postman](https://www.getpostman.com/). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En FHIR-slutpunkt i Azure. Du kan ställa in detta med hjälp av det hanterade Azure-API: t för FHIR eller FHIR-servern med öppen källkod för Azure. Konfigurera det hanterade Azure-API: t för FHIR med hjälp av [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)eller [Azure CLI](fhir-paas-cli-quickstart.md).
-- Ett  [klient program](register-confidential-azure-ad-client-app.md) som du ska använda för att få åtkomst till FHIR-tjänsten.
-- Du har beviljat behörigheter, till exempel "FHIR data Contributor" till klient programmet för att få åtkomst till FHIR-tjänsten. Mer information finns i [Konfigurera Azure RBAC för FHIR](configure-azure-rbac.md)
-- Postman installerat. Du kan hämta den från [https://www.getpostman.com](https://www.getpostman.com)
+- En FHIR-slutpunkt i Azure. 
+
+   Om du vill distribuera Azure API för FHIR (en hanterad tjänst) kan du använda [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)eller [Azure CLI](fhir-paas-cli-quickstart.md).
+- Ett registrerat [konfidentiellt klient program](register-confidential-azure-ad-client-app.md) för att få åtkomst till FHIR-tjänsten.
+- Du har beviljat behörigheter till det konfidentiella klient programmet, till exempel "FHIR data Contributor", för att få åtkomst till FHIR-tjänsten. Mer information finns i [Konfigurera Azure RBAC för FHIR](./configure-azure-rbac.md).
+- Postman installerat. 
+    
+    Mer information om Postman finns i [Kom igång med Postman](https://www.getpostman.com).
 
 ## <a name="fhir-server-and-authentication-details"></a>Information om FHIR-Server och-autentisering
 
-Följande information behövs för att kunna använda Postman:
+Följande autentiseringsmetoder krävs för att använda Postman:
 
-- FHIR-serverns URL, till exempel `https://MYACCOUNT.azurehealthcareapis.com`
+- Din FHIR-server-URL, till exempel `https://MYACCOUNT.azurehealthcareapis.com`
+
 - Identitets leverantören `Authority` för FHIR-servern, till exempel `https://login.microsoftonline.com/{TENANT-ID}`
-- Den konfigurerade `audience` . Detta är vanligt vis URL: en för FHIR-servern, t. ex. `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` eller bara `https://azurehealthcareapis.com` .
-- `client_id`(Eller program-ID) för det [klient program](register-confidential-azure-ad-client-app.md) som du ska använda för att få åtkomst till FHIR-tjänsten.
-- `client_secret`(Eller program hemligheten) för klient programmet.
+
+- Den konfigurerade `audience` som vanligt vis är URL: en för FHIR-servern, till exempel `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` eller `https://azurehealthcareapis.com` .
+
+- `client_id`Program-ID: t för det [konfidentiella klient program](register-confidential-azure-ad-client-app.md) som används för att komma åt FHIR-tjänsten.
+
+- `client_secret`Eller program hemligheten för det konfidentiella klient programmet.
 
 Slutligen bör du kontrol lera att `https://www.getpostman.com/oauth2/callback` är en registrerad svars-URL för klient programmet.
 
 ## <a name="connect-to-fhir-server"></a>Anslut till FHIR-Server
 
-Använd Postman och gör en `GET` begäran till `https://fhir-server-url/metadata` :
+Öppna Postman och välj sedan **Hämta** för att göra en begäran till `https://fhir-server-url/metadata` .
 
 ![Funktions sats för Postman-metadata](media/tutorial-postman/postman-metadata.png)
 
-URL: en för metadata för Azure API för FHIR är `https://MYACCOUNT.azurehealthcareapis.com/metadata` . I det här exemplet är URL: en för FHIR-servern `https://fhirdocsmsft.azurewebsites.net` och serverns kapacitets meddelande tillgänglig på `https://fhirdocsmsft.azurewebsites.net/metadata` . Den här slut punkten bör vara tillgänglig utan autentisering.
+URL: en för metadata för Azure API för FHIR är `https://MYACCOUNT.azurehealthcareapis.com/metadata` . 
 
-Om du försöker komma åt begränsade resurser bör du få svaret "autentisering misslyckades":
+I det här exemplet är FHIR-serverns webb adress `https://fhirdocsmsft.azurewebsites.net` och serverns kapacitets meddelande tillgänglig på `https://fhirdocsmsft.azurewebsites.net/metadata` . Den här slut punkten kan nås utan autentisering.
+
+Om du försöker komma åt begränsade resurser inträffar svaret "autentisering misslyckades".
 
 ![Autentiseringen misslyckades](media/tutorial-postman/postman-authentication-failed.png)
 
 ## <a name="obtaining-an-access-token"></a>Hämta en åtkomsttoken
-
-Om du vill hämta en giltig åtkomsttoken väljer du "auktorisering" och väljer typ "OAuth 2,0":
+Om du vill hämta en giltig åtkomsttoken väljer du **auktorisering** och väljer **OAuth 2,0** på den nedrullningsbara menyn **typ** .
 
 ![Ange OAuth 2,0](media/tutorial-postman/postman-select-oauth2.png)
 
-Tryck på "Hämta ny åtkomsttoken" och en dialog ruta visas:
+Välj **Get New Access Token** (Hämta ny åtkomsttoken).
 
 ![Begär ny åtkomsttoken](media/tutorial-postman/postman-request-token.png)
 
-Du behöver lite information:
+I dialog rutan **Hämta ny** åtkomsttoken anger du följande information:
 
 | Fält                 | Exempelvärde                                                                                                   | Kommentar                    |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------|
@@ -73,24 +82,24 @@ Du behöver lite information:
 | Klient-ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | Program-ID             |
 | Client Secret (Klienthemlighet)         | `XXXXXXXX`                                                                                                        | Hemlig klient nyckel          |
 | Omfång | `<Leave Blank>` |
-| Stat                 | `1234`                                                                                                            |                            |
+| Tillstånd                |  `1234`                                                                                                           |                            |
 | Klientautentisering | Skicka klientautentiseringsuppgifter i brödtext                                                                                 |                 
 
-Besök-token för begäran och du kommer att guidas genom Azure Active Directory-autentiseringsschemat och en token returneras till Postman. Om du stöter på problem öppnar du Postman-konsolen (från meny alternativet "View->Visa Postman-konsolen").
+Välj **token för begäran** som ska guidas genom Azure Active Directory-autentiseringsschemat och en token returneras till Postman. Om det uppstår ett autentiseringsfel kan du läsa Postman-konsolen för mer information. **Obs**: Välj **Visa** på menyfliken och välj sedan **Visa Postman-konsolen**. Kortkommandot till Postman-konsolen är **Alt-Ctrl + C**.
 
-Rulla ned på skärmen returnerad token och tryck på Använd token:
+Rulla ned för att visa skärmen returnerad token och välj sedan **Använd token**.
 
 ![Använd token](media/tutorial-postman/postman-use-token.png)
 
-Token ska nu vara ifylld i fältet åtkomsttoken och du kan välja tokens från "tillgängliga tokens". Om du "skickar" igen för att upprepa `Patient` resurss ökningen, ska du få en status `200 OK` :
+Referera till fältet **åtkomsttoken** för att visa den nyligen ifyllda token. Om du väljer **Skicka** för att upprepa `Patient` resurss ökningen returneras en **status** `200 OK` . En returnerad status `200 OK` indikerar en lyckad HTTP-begäran.
 
 ![200 OK](media/tutorial-postman/postman-200-OK.png)
 
-I det här fallet finns det inga patienter i databasen och sökningen är tom.
+I Sök exemplet för *patient* finns det inga patienter i databasen, så att Sök resultatet är tomt.
 
-Om du inspekterar åtkomsttoken med ett verktyg som [https://jwt.ms](https://jwt.ms) , bör du se innehåll som:
+Du kan kontrol lera åtkomsttoken med hjälp av ett verktyg som [JWT.MS](https://jwt.ms). Ett exempel på innehållet visas nedan.
 
-```jsonc
+```json
 {
   "aud": "https://MYACCOUNT.azurehealthcareapis.com",
   "iss": "https://sts.windows.net/{TENANT-ID}/",
@@ -110,17 +119,17 @@ Om du inspekterar åtkomsttoken med ett verktyg som [https://jwt.ms](https://jwt
 }
 ```
 
-I fel söknings situationer kontrollerar du att du har rätt mål grupp ( `aud` anspråk) och är en bra plats att starta. Om din token kommer från rätt utfärdare ( `iss` anspråk) och har rätt mål grupp ( `aud` anspråk), men du fortfarande inte har åtkomst till FHIR-API: et, är det troligt att användaren eller tjänstens huvud namn ( `oid` anspråk) inte har åtkomst till FHIR-dataplanen. Vi rekommenderar att du [använder rollbaserad åtkomst kontroll i Azure (Azure RBAC)](configure-azure-rbac.md) för att tilldela användare data plan roller. Om du använder en extern, sekundär Azure Active Directory-klient för ditt data plan måste du [Konfigurera lokala RBAC-tilldelningar](configure-local-rbac.md).
+I fel söknings situationer kontrollerar du att du har rätt mål grupp ( `aud` anspråk) och är en bra plats att starta. Om din token kommer från rätt utfärdare ( `iss` anspråk) och har rätt mål grupp ( `aud` anspråk), men du fortfarande inte har åtkomst till FHIR-API: et, är det troligt att användaren eller tjänstens huvud namn `oid` inte har åtkomst till FHIR-dataplanet. Vi rekommenderar att du använder [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](configure-azure-rbac.md) för att tilldela användare data plan roller. Om du använder en extern, sekundär Azure Active Directory-klient för ditt data plan måste du [Konfigurera lokal RBAC för FHIR](configure-local-rbac.md) -tilldelningar.
 
-Det är också möjligt att [Hämta en token för Azure API för FHIR med hjälp av Azure CLI](get-healthcare-apis-access-token-cli.md). Om du använder en token som hämtats med Azure CLI bör du använda autentiseringstypen "Bearer token" och klistra in token direkt.
+Det är också möjligt att hämta en token för [Azure API för FHIR med hjälp av Azure CLI](get-healthcare-apis-access-token-cli.md). Om du använder en token som hämtats med Azure CLI bör du använda token för auktorisations typen *Bearer*. Klistra in token direkt.
 
 ## <a name="inserting-a-patient"></a>Lägga till en patient
 
-Nu när du har en giltig åtkomsttoken. Du kan infoga en ny patient. Växla till metod "POST" och Lägg till följande JSON-dokument i bröd texten i begäran:
+Med en giltig åtkomsttoken kan du nu infoga en ny patient. I Postman ändrar du metoden genom att välja **post** och sedan lägger du till följande JSON-dokument i bröd texten i begäran.
 
 [!code-json[](../samples/sample-patient.json)]
 
-Tryck på "Skicka" så bör du se att patienten har skapats:
+Välj **Skicka** för att fastställa att patienten har skapats.
 
 ![Skärm bild som visar att patienten har skapats.](media/tutorial-postman/postman-patient-created.png)
 
@@ -130,7 +139,7 @@ Om du upprepar patients ökningen bör du nu se patient posten:
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du till gång till en FHIR-API med Postman. Läs om de API-funktioner som stöds i avsnittet funktioner som stöds.
+I den här självstudien har du åtkomst till Azure-API: et för FHIR med Postman. Mer information om Azure API för FHIR-funktioner finns i
  
 >[!div class="nextstepaction"]
 >[Funktioner som stöds](fhir-features-supported.md)

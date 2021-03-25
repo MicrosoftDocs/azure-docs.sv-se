@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489845"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048773"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -125,9 +125,6 @@ Den hanterade SAP-anslutningen integreras med SAP-system via din [lokala datagat
 ### <a name="ise-prerequisites"></a>ISE-krav
 
 Dessa krav gäller om du kör din Logi Kap par på en Premium-nivå ISE. De gäller dock inte för logi Kap par som körs i en utvecklings nivå ISE. En ISE ger åtkomst till resurser som skyddas av ett virtuellt Azure-nätverk och erbjuder andra ISE-ursprungliga anslutningar som låter Logic Apps direkt komma åt lokala resurser utan att använda lokal datagateway.
-
-> [!NOTE]
-> Även om SAP ISE-anslutaren är synlig i en utvecklings nivå ISE kommer försök att installera anslutnings programmet att Miss lyckas.
 
 1. Om du inte redan har ett Azure Storage konto med en BLOB-behållare skapar du en behållare med hjälp av antingen [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) eller [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
 

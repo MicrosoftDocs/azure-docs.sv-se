@@ -1,22 +1,22 @@
 ---
 title: Snabb start – Lägg till VOIP-anrop till en Android-app med Azure Communication Services
-description: I den här självstudien får du lära dig hur du använder Azure Communication Services som anropar klient bibliotek för Android
+description: I den här självstudien får du lära dig hur du använder Azure Communication Services som anropar SDK för Android
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 094dbd090b5f2d68a9961f2fb9b8b611e486e7bc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68d3a92015a8add2dd97313f9971cf896f8e77e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719714"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108310"
 ---
-I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för Android.
+I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för Android.
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 8 av det anropande klient biblioteket.
+> Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -37,7 +37,7 @@ Välj projekt mal len "Tom aktivitet" under "telefon och surfplatta".
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Skärm bild som visar alternativet &quot;Tom aktivitet&quot; markerat på skärmen för projekt mal len.":::
 
-Välj minsta klient bibliotek för "API 26: Android 8,0 (Oreo)" eller större.
+Välj minsta SDK för "API 26: Android 8,0 (Oreo)" eller större.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Skärm bild som visar alternativet &quot;Tom aktivitet&quot; markerat i projekt mal len skärm 2.":::
 
@@ -110,8 +110,8 @@ För att kunna begära behörigheter som krävs för att ringa ett samtal måste
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--Our calling client library depends on the Apache HTTP client library.
-When targeting Android client library 28+, this library needs to be explicitly referenced.
+        <!--Our Calling SDK depends on the Apache HTTP SDK.
+When targeting Android SDK 28+, this library needs to be explicitly referenced.
 See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apache-p-->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".MainActivity">
@@ -260,11 +260,11 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.|
+| CallClient| CallClient är den huvudsakliga start punkten för den anropande SDK: n.|
 | CallAgent | CallAgent används för att starta och hantera samtal. |
 | CommunicationUserCredential | CommunicationUserCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.|
 | CommunicationIdentifier | CommunicationIdentifier används som en annan typ av deltagare som skulle kunna vara en del av ett samtal.|

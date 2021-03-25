@@ -387,23 +387,6 @@
           displayName: application
         - name: Metodtips för drift
           href: concept-operation-excellence-best-practices.md
-    - name: Felsökning
-      items:
-        - name: Felsöka frågeprestanda
-          href: howto-troubleshoot-query-performance.md
-          displayName: 'debug, performance issues, query performance'
-        - name: Använda vyer i sys-schema
-          href: howto-troubleshoot-sys-schema.md
-          displayName: 'sys schema, views'
-        - name: Felsöka datakryptering
-          href: howto-data-encryption-troubleshoot.md
-          displayName: 'encryption, security'
-        - name: Felsöka svarstid för replikering
-          href: howto-troubleshoot-replication-latency.md
-          displayName: 'replication, latency, monitor'
-        - name: Minimera skador på databaser
-          href: how-to-fix-corrupt-database.md
-          displayName: corrupt data
 - name: Flexibel server (förhandsversion)
   items:
     - name: Dokumentation om flexibel server
@@ -567,6 +550,26 @@
     - name: Felsöka vanliga fel
       href: howto-troubleshoot-common-errors.md
       displayName: 'SUPER privilege, DBA role, Access is denied'
+- name: Felsökning
+  items:
+    - name: Felsöka migrerings fel
+      href: howto-troubleshoot-common-errors.md
+      displayName: 'SUPER privilege, DBA role, Access is denied'
+    - name: Felsöka frågeprestanda
+      href: howto-troubleshoot-query-performance.md
+      displayName: 'debug, performance issues, query performance'
+    - name: Använda vyer i sys-schema
+      href: howto-troubleshoot-sys-schema.md
+      displayName: 'sys schema, views'
+    - name: Felsöka datakryptering
+      href: howto-data-encryption-troubleshoot.md
+      displayName: 'encryption, security'
+    - name: Felsöka svarstid för replikering
+      href: howto-troubleshoot-replication-latency.md
+      displayName: 'replication, latency, monitor'
+    - name: Felsöka databas fel
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
 - name: Referens
   items:
     - name: Azure CLI

@@ -3,12 +3,12 @@ title: Arbeta med aviseringar på den lokala hanteringskonsolen
 description: Använd den lokala hanterings konsolen för att få en Enterprise-vy över de senaste hoten i nätverket och bättre förstå hur sensor användare hanterar dem.
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a99c489c54b2671a463c0c3dad1909c74b4fa203
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 604650f0cb08eac4a3ab1cfd3fdcbf2e7ff0d19e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781474"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032148"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Arbeta med aviseringar på den lokala hanteringskonsolen 
 
@@ -242,6 +242,7 @@ Regler som du skapar med hjälp av API: et visas i fönstret **undantags regel**
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Skärm bild av vyn Redigera Exkluderings regel.":::
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
-[Arbeta med aviseringar på sensorn](how-to-work-with-alerts-on-your-sensor.md)
+[Arbeta med aviseringar på sensorn](how-to-work-with-alerts-on-your-sensor.md).
+Granska [Defender för IoT Engine-aviseringar](alert-engine-messages.md).

@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1ac3f2fa1ef3f1a24077064ad3ad3f3c30c5f3f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694877"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048365"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Skapa en offentlig IP-adress med hjälp av Azure Portal
 
@@ -52,7 +52,7 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
 
 > [!NOTE]
 > De här valen är giltiga i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones). </br>
-Du kan välja en zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem. </br> Mer information om tillgänglighets zoner finns i [Översikt över tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Du kan välja en zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem. </br> Mer information om tillgänglighets zoner finns i [Översikt över tillgänglighets zoner](../availability-zones/az-overview.md).
 
 \* =-Nivån relaterar till funktionen för [belastnings utjämning i flera regioner](../load-balancer/cross-region-overview.md) , för närvarande i för hands version.
 

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612665"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107070"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -43,7 +43,7 @@ npm init -y
 
 ### <a name="install-the-packages"></a>Installera paketen
 
-Använd `npm install` kommandot för att installera klient biblioteken nedan för kommunikations tjänster för Java Script.
+Använd `npm install` kommandot för att installera SDK: erna nedan kommunikations tjänster för Java Script.
 
 ```console
 npm install @azure/communication-common --save
@@ -87,7 +87,7 @@ Lägg till ett `start` skript till din `package.json` , vi använder detta för 
 }
 ```
 
-Skapa en **index.html** -fil i projektets rot Katalog. Vi använder den här filen som en mall för att lägga till chatt-funktioner med hjälp av klient biblioteket för Azure Communication Chat för Java Script.
+Skapa en **index.html** -fil i projektets rot Katalog. Vi använder den här filen som en mall för att lägga till chatt-funktioner med hjälp av Azure Communication Chat SDK för Java Script.
 
 ```html
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ Om du vill skapa en chatt-klient i din webbapp använder du SIP- **slutpunkten**
 
 Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera tokens för chatt-programmet. Se [chatt-koncept](../../../concepts/chat/concepts.md) för mer information om chatt-arkitektur och [åtkomsttoken för användar åtkomst](../../access-tokens.md) för mer information om åtkomsttoken.
 
-Inuti **client.js** använder du slut punkten och åtkomsttoken i koden nedan för att lägga till chatt-funktioner med hjälp av klient biblioteket för Azure Communication Chat för Java Script.
+Inuti **client.js** använder du slut punkten och åtkomsttoken i koden nedan för att lägga till chatt-funktioner med hjälp av Azure Communication Chat SDK för Java Script.
 
 ```JavaScript
 
@@ -144,7 +144,7 @@ Azure Communication Chat client created!
 ```
 
 ## <a name="object-model"></a>Objekt modell
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Chat SDK för Java Script.
 
 | Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

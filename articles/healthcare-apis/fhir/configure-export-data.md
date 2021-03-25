@@ -5,14 +5,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 3/5/2020
+ms.date: 3/18/2021
 ms.author: matjazl
-ms.openlocfilehash: bb728b81d4dad5d880c27d1ebe8f85f1508f8231
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: ee110420c697afb6ecad857ba823c61d03c6be6c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019759"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046999"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>Konfigurera export inställning och konfigurera lagrings kontot
 
@@ -20,41 +20,46 @@ Azure API för FHIR stöder $export kommandot som gör att du kan exportera data
 
 Det finns tre steg när du konfigurerar export i Azure API för FHIR:
 
-1. Aktivera hanterad identitet på Azure API för FHIR-tjänsten
-2. Skapa ett Azure Storage-konto (om det inte gjorts tidigare) och tilldela behörighet till Azure API för FHIR till lagrings kontot
-3. Välja lagrings kontot i Azure API för FHIR som export Storage-konto
+1. Aktivera hanterad identitet på Azure API för FHIR-tjänsten.
+2. Skapa ett Azure Storage-konto (om det inte gjorts före) och tilldela behörighet till Azure API för FHIR till lagrings kontot.
+3. Välja lagrings kontot i Azure API för FHIR som export Storage-konto.
 
 ## <a name="enabling-managed-identity-on-azure-api-for-fhir"></a>Aktivera hanterad identitet på Azure API för FHIR
 
-Det första steget i att konfigurera Azure API för FHIR för export är att aktivera systemomfattande hanterad identitet för tjänsten. Du kan läsa mer om hanterade identiteter i Azure [här](../../active-directory/managed-identities-azure-resources/overview.md).
+Det första steget i att konfigurera Azure API för FHIR för export är att aktivera systemomfattande hanterad identitet för tjänsten. Mer information om hanterade identiteter i Azure finns i [om hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Det gör du genom att gå till Azure API för FHIR-tjänsten och välja identitets blad. Genom att ändra status till på aktive ras hanterad identitet i Azure API för FHIR-tjänsten.
+Det gör du genom att gå till Azure API för FHIR-tjänsten och välja **identitet**. Genom att ändra status till **på** aktive ras hanterad identitet i Azure API för FHIR-tjänsten.
 
 ![Aktivera hanterad identitet](media/export-data/fhir-mi-enabled.png)
 
-Nu kan vi gå vidare till nästa steg och skapa ett lagrings konto och tilldela behörighet till vår tjänst.
+Nu kan du gå vidare till nästa steg genom att skapa ett lagrings konto och tilldela behörighet till vår tjänst.
 
 ## <a name="adding-permission-to-storage-account"></a>Lägger till behörighet till lagrings kontot
 
 Nästa steg i exporten är att tilldela behörighet för Azure API för FHIR-tjänsten att skriva till lagrings kontot.
 
-När vi har skapat ett lagrings konto navigerar du till bladet Access Control (IAM) i lagrings kontot och väljer Lägg till roll tilldelningar
+När du har skapat ett lagrings konto går du till **Access Control (IAM)** i lagrings kontot och väljer **Lägg till roll tilldelning**.
 
 ![Exportera roll tilldelning](media/export-data/fhir-export-role-assignment.png)
 
-Här lägger vi till roll lagrings data deltagare i vårt tjänst namn.
+Det är här du lägger till en roll **lagrings-BLOB data deltagare** i vårt tjänst namn och väljer sedan **Spara**.
 
 ![Lägg till roll](media/export-data/fhir-export-role-add.png)
 
-Nu är vi redo för nästa steg där vi kan välja lagrings kontot i Azure API för FHIR som ett standard lagrings konto för $export.
+Nu är du redo att välja lagrings kontot i Azure API för FHIR som ett standard lagrings konto för $export.
 
 ## <a name="selecting-the-storage-account-for-export"></a>Välja lagrings konto för $export
 
-Sista steget är att tilldela det Azure Storage-konto som Azure API för FHIR ska använda för att exportera data till. Det gör du genom att gå till integrations bladet i Azure API for FHIR service i Azure Portal och välja lagrings kontot
+Det sista steget är att tilldela det Azure Storage-konto som Azure API för FHIR ska använda för att exportera data till. Det gör du genom att gå till **integrering** i Azure API för FHIR-tjänsten och välja lagrings kontot.
 
 ![FHIR export Storage](media/export-data/fhir-export-storage.png)
 
-När vi är redo att exportera data med hjälp av kommandot $export.
+När du har slutfört det sista steget är du nu redo att exportera data med hjälp av kommandot $export.
+
+> [!Note]
+> Endast lagrings konton i samma prenumeration som för Azure API för FHIR kan registreras som mål för $export åtgärder.
+
+Mer information om hur du konfigurerar databas inställningar, åtkomst kontroll, aktiverar diagnostikloggning och använder anpassade rubriker för att lägga till data i gransknings loggar finns i:
 
 >[!div class="nextstepaction"]
 >[Ytterligare inställningar](azure-api-for-fhir-additional-settings.md)

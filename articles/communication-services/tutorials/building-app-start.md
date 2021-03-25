@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eb44987dca033ecdac9ef2ca63fb1da97dc9678
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490627"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109190"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Självstudie: förbereda en webbapp för Azure Communication Services (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "103490627"
 
 Du kan använda Azure Communication Services för att lägga till real tids kommunikation i dina program. I den här självstudien får du lära dig hur du konfigurerar ett webb program som stöder Azure Communication Services. Det här är en introduktion till nya utvecklare som vill komma igång med real tids kommunikation.
 
-I slutet av den här självstudien har du ett webb program för bas linje som kon figurer ATS med klient bibliotek för Azure Communication Services. Du kan sedan använda programmet för att börja skapa din real tids kommunikations lösning.
+I slutet av den här självstudien har du ett webb program för bas linje som har kon figurer ATS med SDK: er för Azure Communication Services. Du kan sedan använda programmet för att börja skapa din real tids kommunikations lösning.
 
 Gå gärna till [Azure Communication Services GitHub-sidan](https://github.com/Azure/communication) för att ge feedback.
 
@@ -37,7 +37,7 @@ I den här guiden får du lära dig att:
 - Ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Med det kostnads fria kontot får du $200 i Azure-krediter för att testa valfri kombination av tjänster.
 - [Visual Studio Code](https://code.visualstudio.com/) för att redigera kod i din lokala utvecklings miljö.
 - [WebPack](https://webpack.js.org/) för att paketera och lokalt vara värd för din kod.
-- [Node.js](https://nodejs.org/en/) för att installera och hantera beroenden som klient bibliotek och WebPack för Azure Communication Services.
+- [Node.js](https://nodejs.org/en/) för att installera och hantera beroenden som Azure Communication Services SDK: er och WebPack.
 - [NVM och NPM](/windows/nodejs/setup-on-windows) för att hantera versions kontroll.
 - [Azure Storage-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) för Visual Studio Code. Du behöver det här tillägget för att publicera ditt program i Azure Storage. [Läs mer om att vara värd för statiska webbplatser i Azure Storage](../../storage/blobs/storage-blob-static-website.md).
 - [Azure App Service-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Tillägget gör det möjligt att distribuera webbplatser med alternativet att konfigurera fullständigt hanterad kontinuerlig integrering och kontinuerlig leverans (CI/CD).
@@ -293,7 +293,7 @@ Om du vill stoppa servern kan du köra `Ctrl+C` i terminalen. Starta servern gen
 
 ## <a name="add-the-azure-communication-services-packages"></a>Lägg till Azure Communication Services-paketen
 
-Använd `npm install` kommandot för att installera Azure Communication Services som anropar klient bibliotek för Java Script.
+Använd `npm install` kommandot för att installera Azure Communication Services som anropar SDK för Java Script.
 
 ```Console
 npm install @azure/communication-common --save

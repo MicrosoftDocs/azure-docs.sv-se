@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server till SQL Database: översikt över migrering'
+title: 'SQL Server till Azure SQL Database: översikt över migrering'
 description: Lär dig mer om de olika verktygen och alternativen som är tillgängliga för att migrera dina SQL Server-databaser till Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ecb9d1e25647e197614817116921140f0d7fbdf4
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102488281"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024973"
 ---
-# <a name="migration-overview-sql-server-to-sql-database"></a>Översikt över migrering: SQL Server till SQL Database
+# <a name="migration-overview-sql-server-to-azure-sql-database"></a>Översikt över migrering: SQL Server till Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Lär dig mer om olika flyttnings alternativ och överväganden för att migrera SQL Server till Azure SQL Database. 
@@ -30,7 +30,7 @@ Du kan migrera SQL Server som körs lokalt eller på:
 - Beräknings motor (Google Cloud Platform-GCP)  
 - Cloud SQL för SQL Server (Google Cloud Platform – GCP) 
 
-För andra scenarier, se [Guide för databas migrering](https://datamigration.microsoft.com/). 
+Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Översikt
 
@@ -58,7 +58,7 @@ Olika verktyg är tillgängliga för olika arbets belastningar och användar ins
 
 ## <a name="choose-appropriate-target"></a>Välj lämpligt mål
 
-Överväg allmänna rikt linjer som hjälper dig att välja rätt distributions modell och tjänst nivå för Azure SQL Database. Du kan välja beräknings-och lagrings resurser under distributionen och sedan ändra dem senare med hjälp av  [Azure Portal](../../database/scale-resources.md)  utan att det uppstår avbrott i programmet.
+Överväg allmänna rikt linjer som hjälper dig att välja rätt distributions modell och tjänst nivå för Azure SQL Database. Du kan välja beräknings-och lagrings resurser under distributionen och sedan [ändra dem senare med hjälp av Azure Portal](../../database/scale-resources.md) utan att det uppstår avbrott i programmet.
 
 
 **Distributions modeller**: förstå programmets arbets belastning och användnings mönstret för att bestämma mellan en enskild databas eller elastisk pool. 
@@ -212,7 +212,7 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du börjar migrera SQL Server till Azure SQL Database finns i [SQL Server till SQL Database migration guide](sql-server-to-sql-database-guide.md).
+Information om hur du börjar migrera SQL Server till SQL Database finns i [SQL Server till Azure SQL Database migration guide](sql-server-to-sql-database-guide.md).
 
 - För en matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter, se [tjänst och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 

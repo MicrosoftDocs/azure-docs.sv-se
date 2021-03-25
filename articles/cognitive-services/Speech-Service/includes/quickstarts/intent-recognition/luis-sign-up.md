@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: 42dc7eb1a74bf2e376f834ee3198ad6a492226e9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: ab22ad75b5b49588bbdcedf5fc995ce65fe4e690
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444220"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105937"
 ---
 För att slutföra snabb starten för avsikts igenkänning måste du skapa ett LUIS-konto och ett projekt med hjälp av LUIS Preview Portal. Den här snabb starten kräver bara en LUIS-prenumeration. En röst tjänst prenumeration krävs *inte* .
 
@@ -18,7 +18,7 @@ Det första du behöver göra är att skapa ett LUIS-konto och en app med hjälp
 
 Följ de här anvisningarna för att skapa en LUIS-app:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Snabb start: skapa en fördefinierad domän-app </a>
+* <a href="/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Snabb start: skapa en fördefinierad domän-app </a>
 
 När du är klar behöver du fyra saker:
 

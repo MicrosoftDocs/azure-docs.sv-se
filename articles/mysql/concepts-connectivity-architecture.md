@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 0197b533f80ccb1524de2bbb9fc5c642f2626bbc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b8ee1f22429c1002ba8c3db5c41f5a186cc59451
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655265"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046478"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Anslutnings arkitektur i Azure Database for MySQL
 Den här artikeln förklarar Azure Database for MySQL anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for MySQL-instans från klienter både inom och utanför Azure.
@@ -110,7 +110,7 @@ Endast Gateway-noder tas ur bruk. När användarna ansluter till sina servrar ä
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Hur kan du verifiera om dina anslutningar kommer till gamla Gateway-noder eller nya gateway-noder?
 Pinga serverns FQDN, till exempel  ``ping xxx.mysql.database.azure.com`` . Om den returnerade IP-adressen är en av IP-adresserna som listas under gatewayens IP-adresser (inaktive ring) i dokumentet ovan innebär det att din anslutning går via den gamla gatewayen. Om den returnerade IP-adressen är en av IP-adresserna som anges under Gateway-IP-adresser, innebär det att din anslutning går via den nya gatewayen.
 
-Du kan också testa av [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) eller TCPPing databas servern från klient programmet med port 3306 och se till att RETUR-IP-adressen inte är en av IP-adresserna för inaktive ring
+Du kan också testa av [PSPing](/sysinternals/downloads/psping) eller TCPPing databas servern från klient programmet med port 3306 och se till att RETUR-IP-adressen inte är en av IP-adresserna för inaktive ring
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Hur gör jag för att veta när underhållet är över och får jag ett nytt meddelande när gamla IP-adresser tas ur bruk?
 Du får ett e-postmeddelande för att meddela dig när vi kommer igång med underhålls arbetet. Underhållet kan ta upp till en månad beroende på hur många servrar vi behöver migrera i Al-regioner. Förbered klienten för att ansluta till databas servern med hjälp av FQDN eller genom att använda den nya IP-adressen från tabellen ovan. 

@@ -4,12 +4,12 @@ description: Beskriver hur du använder begränsning med Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563134"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024633"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begränsning av Resource Manager-förfrågningar
 
@@ -58,7 +58,7 @@ Microsoft. Network Resource-providern tillämpar följande begränsningar:
 
 ### <a name="compute-throttling"></a>Beräknings begränsning
 
-Information om hur du begränsar gränserna för beräknings åtgärder finns i [FELSÖKA API begränsnings fel – beräkna](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
+Information om hur du begränsar gränserna för beräknings åtgärder finns i [FELSÖKA API begränsnings fel – beräkna](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors).
 
 Använd [Virtual Machine Scale Sets åtgärder](/rest/api/compute/virtualmachinescalesetvms)för att kontrol lera virtuella dator instanser i en skalnings uppsättning för virtuella datorer. Använd till exempel [virtuella datorer för skalnings uppsättning för virtuella datorer – lista](/rest/api/compute/virtualmachinescalesetvms/list) med parametrar för att kontrol lera energi läget för virtuella dator instanser. Detta API minskar antalet begär Anden.
 
@@ -98,7 +98,7 @@ Du kan fastställa antalet återstående förfrågningar genom att undersöka sv
 | x-MS-ratelimit-återstående-klient-resurs-begär Anden |Klient omfånget resurs typ begär Anden återstår.<br /><br />Den här rubriken läggs bara till för begär Anden på klient nivå och endast om en tjänst har åsidosatt standard gränsen. Resource Manager lägger till det här värdet i stället för klienten som läser eller skriver. |
 | x-MS-ratelimit-rest-Tenant-Resource-entities-Read |Klient delens webbprogramsomfattande resurs typ samling begär Anden återstår.<br /><br />Den här rubriken läggs bara till för begär Anden på klient nivå och endast om en tjänst har åsidosatt standard gränsen. |
 
-Resurs leverantören kan även returnera svarshuvuden med information om återstående förfrågningar. Information om svarshuvuden som returneras av Compute Resource providern finns i svarshuvuden för [anrops frekvens information](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
+Resurs leverantören kan även returnera svarshuvuden med information om återstående förfrågningar. Information om svarshuvuden som returneras av Compute Resource providern finns i svarshuvuden för [anrops frekvens information](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors#call-rate-informational-response-headers).
 
 ## <a name="retrieving-the-header-values"></a>Hämtar rubrik värden
 

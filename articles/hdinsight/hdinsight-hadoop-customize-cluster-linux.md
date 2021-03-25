@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: efd145732ecc119e2fdf9b73ca59729232a37d4c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864881"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109530"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassa Azure HDInsight-kluster med hjälp av skript åtgärder
 
@@ -22,27 +22,32 @@ Skript åtgärder kan också publiceras på Azure Marketplace som ett HDInsight-
 
 En skript åtgärd är Bash-skript som körs på noderna i ett HDInsight-kluster. Egenskaper och funktioner för skript åtgärder är följande:
 
-- Måste lagras på en URI som är tillgänglig från HDInsight-klustret. Följande är möjliga lagrings platser:
+- Bash skript-URI (platsen för att komma åt filen) måste vara tillgänglig från HDInsight-resurs leverantören och klustret.
+- Följande är möjliga lagrings platser:
 
-  - För vanliga (icke-ESP)-kluster:
-    - Data Lake Storage Gen1/Gen2: HDInsight-tjänstens huvud namn använder för att få åtkomst till Data Lake Storage måste ha Läs behörighet till skriptet. URI-formatet för skript som lagras i Data Lake Storage Gen1 är `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` .
-    - En BLOB i ett Azure Storage konto som antingen är det primära eller ytterligare lagrings kontot för HDInsight-klustret. HDInsight beviljas åtkomst till båda typerna av lagrings konton när klustret skapas.
+   - För vanliga (icke-ESP)-kluster:
+     - En BLOB i ett Azure Storage konto som antingen är det primära eller ytterligare lagrings kontot för HDInsight-klustret. HDInsight beviljas åtkomst till båda typerna av lagrings konton när klustret skapas.
+    
+       > [!IMPORTANT]  
+       > Rotera inte lagrings nyckeln på det här Azure Storage kontot eftersom det leder till efterföljande skript åtgärder med skript som lagras där.
 
-    > [!IMPORTANT]  
-    > Rotera inte lagrings nyckeln på det här Azure Storage kontot eftersom det leder till efterföljande skript åtgärder med skript som lagras där.
+     - Data Lake Storage Gen1: HDInsight-tjänstens huvud namn använder för att få åtkomst till Data Lake Storage måste ha Läs behörighet till skriptet. URI-formatet för bash-skriptet är `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` . 
 
-    - En offentlig fildelnings tjänst som är tillgänglig via `http://` sökvägar. Exempel är Azure Blob, GitHub eller OneDrive. Till exempel URI: er, se skript för [skript åtgärder](#example-script-action-scripts).
+     - Data Lake Storage Gen2 rekommenderas inte att användas för skript åtgärder. `abfs://` stöds inte för skript-URI: n för bash. `https://` URI: er är möjliga, men de fungerar för behållare som har offentlig åtkomst och brand väggen är öppen för HDInsight-resurs leverantören och rekommenderas därför inte.
+
+     - En offentlig fildelnings tjänst som är tillgänglig via `https://` sökvägar. Exempel är Azure Blob, GitHub eller OneDrive. Till exempel URI: er, se skript för [skript åtgärder](#example-script-action-scripts).
+
   - För kluster med ESP `wasb://` `wasbs://` `http[s]://` stöds eller. URI: erna stöds.
 
-- Kan begränsas till att endast köras på vissa nodtyper. Exempel är Head-noder eller arbetsnoder.
-- Kan vara bestående eller *ad hoc*.
+- Skript åtgärderna kan begränsas till att endast köras på vissa nodtyper. Exempel är Head-noder eller arbetsnoder.
+- Skript åtgärderna kan vara sparade eller *ad hoc*.
 
   - Beständiga skript åtgärder måste ha ett unikt namn. Bestående skript används för att anpassa nya arbetsnoder som läggs till i klustret genom skalnings åtgärder. Ett bestående skript kan också tillämpa ändringar av en annan nodtyp när skalnings åtgärder sker. Ett exempel är en head-nod.
   - *Ad hoc* -skript är inte beständiga. Skript åtgärder som används när klustret skapas sparas automatiskt. De används inte för arbetsnoder som läggs till i klustret när skriptet har körts. Sedan kan du befordra ett *ad hoc* -skript till ett beständigt skript eller nedgradera ett beständigt skript till ett *ad hoc* -skript. Skript som inte är beständiga, även om du specifikt anger att de ska vara.
 
-- Kan acceptera parametrar som används av skriptet under körningen.
-- Kör med behörigheter på rot nivå på klusternoderna.
-- Kan användas via Azure Portal, Azure PowerShell, Azure CLI eller HDInsight .NET SDK.
+- Skript åtgärder kan acceptera parametrar som används av skriptet under körningen.
+- Skript åtgärder körs med privilegier på rot nivå på klusternoderna.
+- Skript åtgärder kan användas via Azure Portal, Azure PowerShell, Azure CLI eller HDInsight .NET SDK.
 - Skript åtgärder som tar bort eller ändrar tjänst filer på den virtuella datorn kan påverka tjänstens hälsa och tillgänglighet.
 
 Klustret behåller en historik över alla skript som har körts. Historiken hjälper dig när du behöver hitta ID: t för ett skript för befordran eller degradering av åtgärder.
