@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705661"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872157"
 ---
 # <a name="archived-release-notes"></a>Arkiverad viktig information
 
@@ -385,7 +385,7 @@ Service märken fören klar säkerheten för virtuella Azure-datorer och virtuel
 #### <a name="custom-ambari-db"></a>Anpassad Ambari-databas
 Med HDInsight kan du nu använda din egen SQL-databas för Apache Ambari. Du kan konfigurera den här anpassade Ambari-databasen från Azure Portal eller via Resource Manager-mall.  Med den här funktionen kan du välja rätt SQL-databas för bearbetnings-och kapacitets behoven. Du kan också uppgradera enkelt för att matcha företagets tillväxt krav. Mer information finns i [Konfigurera HDInsight-kluster med en anpassad Ambari-databas](hdinsight-custom-ambari-db.md).
 
-![Anpassad Ambari-databas](./media/hdinsight-release-notes/custom-ambari-db.png)
+:::image type="content" source="./media/hdinsight-release-notes/custom-ambari-db.png" alt-text="Anpassad Ambari-databas":::
 
 ### <a name="deprecation"></a>Utfasning
 Inga utfasningar för den här versionen. För att komma igång med kommande inaktuella ändringar, se [kommande ändringar](#upcoming-changes).

@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 71d5a910e36762d096763c4f45a13cbdad47414d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e459ea1e9d8d7d51a62ba3ed1d2de8815a1b4222
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730633"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105103964"
 ---
-Innan du kan distribuera virtuella datorer på din Azure Stack Edge-enhet måste du konfigurera klienten så att den ansluter till enheten via Azure Resource Manager över Azure PowerShell. Detaljerade anvisningar finns i [Anslut till Azure Resource Manager på Azure Stack Edge-enhet](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).
+Innan du kan distribuera virtuella datorer på din Azure Stack Edge-enhet måste du konfigurera klienten så att den ansluter till enheten via Azure Resource Manager över Azure PowerShell. Detaljerade anvisningar finns i [Anslut till Azure Resource Manager på Azure Stack Edge-enhet](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).
 
 Se till att du kan använda följande steg för att komma åt enheten från klienten. Du har redan slutfört den här konfigurationen när du anslöt till Azure Resource Manager och nu verifierar du att konfigurationen lyckades. 
 
@@ -38,5 +38,3 @@ Se till att du kan använda följande steg för att komma åt enheten från klie
 
     > [!NOTE]
     > Om du skapar GPU-virtuella datorer väljer du ett nätverks gränssnitt som är anslutet till Internet. På så sätt kan du installera ett GPU-tillägg på enheten.
-
-

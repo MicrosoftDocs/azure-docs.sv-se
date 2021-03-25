@@ -3,12 +3,12 @@ title: 'Snabb start: skapa en hanterings grupp med Portal'
 description: I den här snabb starten använder du Azure Portal för att skapa en hanterings grupp för att organisera resurserna i en resurspool.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fa9b667079104fe9728ab41ecd87685c35de1b7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592440"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024731"
 ---
 # <a name="quickstart-create-a-management-group"></a>Snabb start: skapa en hanterings grupp
 
@@ -32,7 +32,7 @@ Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter
 
 1. Välj **+ Lägg till hanterings grupp**.
 
-   :::image type="content" source="./media/main.png" alt-text="Skärm bild av sidan hanterings grupper som visar underordnade hanterings grupper och prenumerationer." border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Skärm bild av sidan hanterings grupper som visar underordnade hanterings grupper och prenumerationer.":::
 
 1. Lämna **Skapa ny** markerad och fyll i fältet hanterings grupp-ID.
 

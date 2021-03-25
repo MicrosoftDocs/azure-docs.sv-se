@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91ad5a6d95c634300db83d66df8f0407b4544cde
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224664"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024174"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -122,6 +122,17 @@ Du kan också ange samplings procenten med hjälp av miljövariabeln `APPLICATIO
 > [!NOTE]
 > För samplings procenten väljer du en procents ATS som ligger nära 100/N där N är ett heltal. För närvarande stöder sampling inte andra värden.
 
+## <a name="sampling-overrides-preview"></a>Åsidosättningar för sampling (för hands version)
+
+Den här funktionen är i för hands version, från och med 3.0.3-BETA. 2.
+
+Med exempel på åsidosättningar kan du åsidosätta [standard samplings procenten](#sampling), till exempel:
+* Ange samplings procenten till 0 (eller ett litet värde) för hälso kontroller i bruset.
+* Ange samplings procenten till 0 (eller ett litet värde) för beroende anrop i bruset.
+* Ange samplings procenten till 100 för en viktig typ av begäran (t. ex. `/login` ) även om du har konfigurerat standard samplingen till något lägre.
+
+Mer information finns i dokumentationen för [åsidosättningar](./java-standalone-sampling-overrides.md) .
+
 ## <a name="jmx-metrics"></a>JMX mått
 
 Om du vill samla in ytterligare JMX-mått:
@@ -176,9 +187,13 @@ Den här funktionen är en förhandsversion.
 Det gör att du kan konfigurera regler som ska tillämpas på begäran, beroende och trace-telemetri, till exempel:
  * Maskera känsliga data
  * Lägg till anpassade dimensioner villkorligt
- * Uppdatera telemetri-namnet som används för agg regering och visning
+ * Uppdatera intervall namnet, som används för att aggregera liknande telemetri i Azure Portal.
+ * Släpp vissa span-attribut för att kontrol lera inmatnings kostnader.
 
 Mer information finns i dokumentationen om [telemetri-processorn](./java-standalone-telemetry-processors.md) .
+
+> [!NOTE]
+> Om du vill ta bort vissa (hela) omfång för att kontrol lera inmatnings kostnader, se [exempel på åsidosättningar](./java-standalone-sampling-overrides.md).
 
 ## <a name="auto-collected-logging"></a>Automatisk insamlad loggning
 

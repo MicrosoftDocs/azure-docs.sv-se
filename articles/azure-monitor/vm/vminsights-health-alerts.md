@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c4b15fa2a8be32aa7397ae425f28f1deaac6b71
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052270"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024616"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>Aviseringar om gäst hälsa för VM Insights (för hands version)
 Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. En avisering kan skapas när en virtuell dator eller övervakar ändringar i ett ohälsosamt tillstånd. Du kan visa och hantera dessa aviseringar med [de som skapats av varnings regler i Azure Monitor](../alerts/alerts-overview.md) och välja att proaktivt meddelas när en ny avisering skapas.
@@ -35,7 +35,7 @@ En [Azure-avisering](../alerts/alerts-overview.md) skapas för varje virtuell da
 Om en avisering redan har statusen **utlöst** när den virtuella datorns tillstånd ändras, skapas inte en andra avisering, men allvarlighets graden för samma avisering ändras till att matcha den virtuella datorns tillstånd. Om den virtuella datorn till exempel ändras till **kritiskt** tillstånd när en **varnings** avisering redan har statusen **utlöst** , ändras den här aviseringens allvarlighets grad till **Sev1**. Om den virtuella datorn ändras till ett **varnings** tillstånd när en **Sev1** -avisering redan har statusen **utlöst** , ändras den aviseringens allvarlighets grad till **Sev2**. Om den virtuella datorn flyttas tillbaka till **felfritt** tillstånd löses aviseringen med allvarlighets grad ändrad till **Sev4**.
 
 ## <a name="viewing-alerts"></a>Visa aviseringar
-Visa aviseringar som skapats av gäst hälsa för VM Insights med andra [aviseringar i Azure Portal](../platform/alerts-overview.md#alerts-experience). Du kan välja **aviseringar** på **Azure Monitor** -menyn om du vill visa aviseringar för alla övervakade resurser eller välja **aviseringar** från en virtuell dators meny för att visa aviseringar för just den virtuella datorn.
+Visa aviseringar som skapats av gäst hälsa för VM Insights med andra [aviseringar i Azure Portal](../alerts/alerts-overview.md#alerts-experience). Du kan välja **aviseringar** på **Azure Monitor** -menyn om du vill visa aviseringar för alla övervakade resurser eller välja **aviseringar** från en virtuell dators meny för att visa aviseringar för just den virtuella datorn.
 
 ## <a name="alert-properties"></a>Aviseringsegenskaper
 

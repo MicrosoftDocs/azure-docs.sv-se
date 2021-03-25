@@ -9,14 +9,14 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724185"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105299"
 ---
-* När du har valt lämplig plattform i steg 4 i [Konfigurera plattforms](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) inställningar konfigurerar du **omdirigerings-URI: er** och **åtkomsttoken** på sido panelen till höger om användar gränssnittet.
+* När du har valt lämplig plattform i steg 4 i [Konfigurera plattforms](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) inställningar konfigurerar du **omdirigerings-URI: er** och **åtkomsttoken** på sido panelen till höger om användar gränssnittet.
 
     * **Omdirigerings-URI: er** måste matcha adressen som anges av autentiseringsbegäran:
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724185"
 
     [![Ange vilken typ av API-behörighet som appen kräver](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* [Lägg till autentiseringsuppgifter](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials) om programmet kommer att anropa din miljös API: er som de ska. Autentiseringsuppgifterna gör att ditt program kan autentisera sig självt, vilket kräver ingen interaktion från en användare vid körning.
+* [Lägg till autentiseringsuppgifter](../articles/active-directory/develop/quickstart-register-app.md#add-credentials) om programmet kommer att anropa din miljös API: er som de ska. Autentiseringsuppgifterna gör att ditt program kan autentisera sig självt, vilket kräver ingen interaktion från en användare vid körning.
