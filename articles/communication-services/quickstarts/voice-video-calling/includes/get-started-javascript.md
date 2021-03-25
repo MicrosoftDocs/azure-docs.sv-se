@@ -1,22 +1,23 @@
 ---
 title: Snabb start – Lägg till VOIP-anrop till en webbapp med Azure Communication Services
-description: I den här självstudien får du lära dig hur du använder Azure Communication Services som anropar klient bibliotek för Java Script
+description: I den här självstudien får du lära dig hur du använder Azure Communication Services som anropar SDK för Java Script
 author: ddematheu
 ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8dc59250e3c00d161446e7361db0c085e12ab4cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0c70e01aa4f27e40a2de5cddf329cae9ffe261bc
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598851"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108316"
 ---
-I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för Java Script.
+I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för Java Script.
 
 > [!NOTE]
-> I det här dokumentet används version 1.0.0 – beta. 6 av det anropande klient biblioteket.
+> Det här dokumentet använder version 1.0.0 – beta. 10 av anrops-SDK: n.
+
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -74,11 +75,11 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
 
 | Name                             | Beskrivning                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.                                                                       |
+| CallClient                       | CallClient är den huvudsakliga start punkten för den anropande SDK: n.                                                                       |
 | CallAgent                        | CallAgent används för att starta och hantera samtal.                                                                                            |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential-klassen implementerar CommunicationTokenCredential-gränssnittet som används för att instansiera CallAgent. |
 

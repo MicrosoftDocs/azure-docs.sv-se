@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 40d9f03526e5232c0a7b33f64ff35a8501702609
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622180"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107775"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -23,9 +23,8 @@ ms.locfileid: "103622180"
 ### <a name="install-the-package"></a>Installera paketet
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 8 av det anropande klient biblioteket.
+> Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 Leta upp build. gradle på projekt nivå och se till att lägga till `mavenCentral()` i listan över databaser under `buildscript` och `allprojects`
 ```groovy
 buildscript {
@@ -59,11 +58,11 @@ dependencies {
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.|
+| CallClient| CallClient är den huvudsakliga start punkten för den anropande SDK: n.|
 | CallAgent | CallAgent används för att starta och hantera samtal. |
 | CommunicationTokenCredential | CommunicationTokenCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.|
 | CommunicationIdentifier | CommunicationIdentifier används som en annan typ av deltagare som skulle kunna vara en del av ett samtal.|
@@ -224,10 +223,10 @@ En uppsättning behörigheter krävs för att Android-programmet ska kunna ta em
 
 För att registrera för push-meddelanden måste programmet anropa `registerPushNotification()` en *CallAgent* -instans med en token för enhets registrering.
 
-Om du vill hämta token för enhets registrering lägger du till klient biblioteket Firebase i programmodulens *build. gradle* -fil genom att lägga till följande rader i `dependencies` avsnittet om den inte redan finns där:
+Du kan hämta token för enhets registrering genom att lägga till Firebase SDK i programmodulens *build. gradle* -fil genom att lägga till följande rader i `dependencies` avsnittet om den inte redan finns där:
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +243,7 @@ Lägg till följande plugin-program till början av filen om det inte redan finn
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Välj *Synkronisera nu* i verktygsfältet. Lägg till följande kodfragment för att hämta token för enhets registrering som genereras av Firebase Cloud messaging klient bibliotek för klient program instansen. se till att lägga till nedanstående import till huvud aktiviteten för instansen. De krävs för att kodfragmentet ska kunna hämta token:
+Välj *Synkronisera nu* i verktygsfältet. Lägg till följande kodfragment för att hämta token för enhets registrering som genereras av Firebase Cloud Messaging SDK för klient program instansen. se till att lägga till nedanstående import i huvud aktiviteten för instansen. De krävs för att kodfragmentet ska kunna hämta token:
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +271,7 @@ Lägg till det här kodfragmentet för att hämta token:
                     }
                 });
 ```
-Registrera token för enhets registrering med klient biblioteket för uppringnings tjänster för inkommande push-meddelanden för push-meddelanden:
+Registrera Device Registration-token med anrops tjänsterna SDK för push-meddelanden för inkommande samtal:
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +287,7 @@ catch(Exception e) {
 
 Om du vill ta emot push-meddelanden för inkommande samtal anropar du *handlePushNotification ()* på en *CallAgent* -instans med en nytto Last.
 
-Om du vill hämta nytto lasten från Firebase Cloud Messaging börjar du med att skapa en ny tjänst (fil > ny > tjänst > tjänst) som utökar *FirebaseMessagingService* Firebase-klient biblioteks klassen och åsidosätter `onMessageReceived` metoden. Den här metoden är händelse hanteraren som anropas när Firebase Cloud Messaging levererar push-meddelanden till programmet.
+Du hämtar nytto lasten från Firebase Cloud Messaging genom att börja med att skapa en ny tjänst (fil > ny > tjänst > tjänst) som utökar SDK-klassen *FirebaseMessagingService* Firebase och åsidosätter `onMessageReceived` metoden. Den här metoden är händelse hanteraren som anropas när Firebase Cloud Messaging levererar push-meddelanden till programmet.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +317,7 @@ Lägg till följande tjänst definition i `AndroidManifest.xml` filen, inuti <ap
         </service>
 ```
 
-- När nytto lasten har hämtats kan den skickas till klient biblioteket för *kommunikations tjänster* för att kunna parsas till ett internt *IncomingCallInformation* -objekt som ska hanteras genom att anropa *HandlePushNotification* -metoden på en *CallAgent* -instans. En `CallAgent` instans skapas genom att anropa- `createCallAgent(...)` metoden i `CallClient` klassen.
+- När nytto lasten har hämtats kan den skickas till *kommunikations tjänst* -SDK: n för att parsas ut till ett internt *IncomingCallInformation* -objekt som ska hanteras genom att anropa *HandlePushNotification* -metoden på en *CallAgent* -instans. En `CallAgent` instans skapas genom att anropa- `createCallAgent(...)` metoden i `CallClient` klassen.
 
 ```java
 try {

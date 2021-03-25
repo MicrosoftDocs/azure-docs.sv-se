@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 26124f8f650e1006244b4871e26962d417d90fd4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055046"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044183"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Hantera åtkomst till Azure Sentinel-data efter resurs
 
@@ -36,7 +36,7 @@ När användarna har åtkomst till Azure Sentinel-data via de resurser som de ha
 
 - **Via Azure Monitor**. Använd den här metoden när du vill skapa frågor som sträcker sig över flera resurser och/eller resurs grupper. När du navigerar till loggar och arbets böcker i Azure Monitor definierar du omfattningen för en eller flera enskilda resurs grupper eller resurser.
 
-Aktivera resurs kontexten RBAC i Azure Monitor. Mer information finns i [Hantera åtkomst till logg data och arbets ytor i Azure Monitor](/azure/azure-monitor/logs/manage-access).
+Aktivera resurs kontexten RBAC i Azure Monitor. Mer information finns i [Hantera åtkomst till logg data och arbets ytor i Azure Monitor](../azure-monitor/logs/manage-access.md).
 
 > [!NOTE]
 > Om dina data inte är en Azure-resurs, t. ex. syslog, CEF eller AAD-data eller data som samlas in av en anpassad insamlare, måste du manuellt konfigurera resurs-ID som används för att identifiera data och aktivera åtkomst.
@@ -66,7 +66,7 @@ I följande lista beskrivs scenarier där andra lösningar för data åtkomst ka
 |---------|---------|
 |**Ett dotter bolag har ett SOC-team som kräver en fullständig Azure Sentinel-upplevelse**.     |  I det här fallet använder du en arkitektur med flera arbets ytor för att avgränsa dina data behörigheter. <br><br>Mer information finns i: <br>- [Utöka Azure Sentinel över arbets ytor och innehavare](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeta med incidenter i flera arbets ytor samtidigt](multiple-workspace-view.md)          |
 |**Du vill ge åtkomst till en speciell typ av händelse**.     |  Ange till exempel en Windows-administratör med åtkomst till Windows säkerhets händelser i alla system. <br><br>I sådana fall använder du [RBAC på tabell nivå](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) för att definiera behörigheter för varje tabell.       |
-| **Begränsa åtkomsten till en mer detaljerad nivå, antingen baserat på resursen, eller endast en delmängd av fälten i en händelse**   |   Du kanske till exempel vill begränsa åtkomsten till Office 365-loggar baserat på en användares dotter bolag. <br><br>I det här fallet ger du åtkomst till data med hjälp av inbyggd integrering med [Power BI instrument paneler och rapporter](/azure/azure-monitor/platform/powerbi).      |
+| **Begränsa åtkomsten till en mer detaljerad nivå, antingen baserat på resursen, eller endast en delmängd av fälten i en händelse**   |   Du kanske till exempel vill begränsa åtkomsten till Office 365-loggar baserat på en användares dotter bolag. <br><br>I det här fallet ger du åtkomst till data med hjälp av inbyggd integrering med [Power BI instrument paneler och rapporter](../azure-monitor/visualize/powerbi.md).      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>Konfigurera manuellt resurs kontexten RBAC
@@ -77,11 +77,11 @@ Till exempel innehåller data i Azure Sentinel-arbetsytan som inte är Azure-res
 
 **För att explicit konfigurera resurs kontexten RBAC**:
 
-1. Kontrol lera att du har [aktiverat resurs kontexten RBAC](/azure/azure-monitor/platform/manage-access) i Azure Monitor. 
+1. Kontrol lera att du har [aktiverat resurs kontexten RBAC](../azure-monitor/logs/manage-access.md) i Azure Monitor. 
 
-1. [Skapa en resurs grupp](/azure/azure-resource-manager/management/manage-resource-groups-portal) för varje grupp användare som behöver komma åt dina resurser utan hela Azure Sentinel-miljön.
+1. [Skapa en resurs grupp](../azure-resource-manager/management/manage-resource-groups-portal.md) för varje grupp användare som behöver komma åt dina resurser utan hela Azure Sentinel-miljön.
 
-    Tilldela [logg läsar behörigheter](/azure/azure-monitor/platform/manage-access#resource-permissions) för varje grupp medlemmar.
+    Tilldela [logg läsar behörigheter](../azure-monitor/logs/manage-access.md#resource-permissions) för varje grupp medlemmar.
 
 1. Tilldela resurser till resurs grupps grupper som du har skapat och tagga händelser med relevanta resurs-ID: n.
 
@@ -110,7 +110,7 @@ Om du har flera team ser du till att du har separata virtuella datorer för logg
 Genom att skilja dina virtuella datorer till exempel ser du till att Syslog-händelser som tillhör Team A samlas in med hjälp av den insamlade VM A.
 
 > [!TIP]
-> - När du använder en lokal virtuell dator eller en annan virtuell dator i molnet, till exempel AWS, som logg vidarebefordrare, kontrollerar du att den har ett resurs-ID genom att implementera [Azure-bågen](/azure/azure-arc/servers/overview).
+> - När du använder en lokal virtuell dator eller en annan virtuell dator i molnet, till exempel AWS, som logg vidarebefordrare, kontrollerar du att den har ett resurs-ID genom att implementera [Azure-bågen](../azure-arc/servers/overview.md).
 > - Om du vill skala din VM-miljö för logg vidarebefordran kan du skapa en [skalnings uppsättning för virtuella datorer](https://techcommunity.microsoft.com/t5/azure-sentinel/scaling-up-syslog-cef-collection/ba-p/1185854) för att samla in dina CEF-och Sylog
 
 
@@ -145,7 +145,7 @@ Följande kod visar till exempel en exempel-Logstash konfigurations fil:
 >
 ### <a name="resource-ids-with-the-log-analytics-api-collection"></a>Resurs-ID: n med Log Analytics API-samlingen
 
-När du samlar in med hjälp av [API: et för Log Analytics data insamling](/azure/azure-monitor/platform/data-collector-api)kan du tilldela händelser med ett resurs-ID med hjälp av http [*x-MS-AzureResourceId*](/azure/azure-monitor/platform/data-collector-api#request-headers) begär ande huvudet.
+När du samlar in med hjälp av [API: et för Log Analytics data insamling](../azure-monitor/logs/data-collector-api.md)kan du tilldela händelser med ett resurs-ID med hjälp av http [*x-MS-AzureResourceId*](../azure-monitor/logs/data-collector-api.md#request-headers) begär ande huvudet.
 
 Om du använder resurs kontexten RBAC och vill att de händelser som samlas in av API ska vara tillgängliga för vissa användare använder du resurs-ID för den resurs grupp som du [skapade för användarna](#explicitly-configure-resource-context-rbac).
 

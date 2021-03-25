@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646562"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043622"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Microsoft Dynamics 365 bedrägeri skydd med Azure Active Directory B2C
 
@@ -102,8 +102,8 @@ Konfigurera program inställningarna i [App Service i Azure](../app-service/conf
 | :-------- | :------------| :-----------|
 |FraudProtectionSettings: InstanceId | Microsoft DFP-konfiguration |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | Ditt Microsoft-enhets finger avtryck kund-ID |     |
-| FraudProtectionSettings:ApiBaseUrl |  Din bas-URL från Microsoft DFP-portalen   | Ta bort-int för att anropa API: et för produktion i stället
-|  TokenProviderConfig: resurs | https://api.dfp.dynamics-int.com |   Ta bort-int för att anropa API: et för produktion i stället  |
+| FraudProtectionSettings:ApiBaseUrl |  Din bas-URL från Microsoft DFP-portalen   | Ta bort-int för att anropa API: et för produktion i stället|
+|  TokenProviderConfig: resurs  |     | Ta bort-int för att anropa API: et för produktion i stället|
 |   TokenProviderConfig: ClientId       |Ditt bedrägeri skydd för Azure AD-klientens app-ID      |       |
 | TokenProviderConfig: auktoritet | https://login.microsoftonline.com/<directory_ID> | Ditt bedrägeri skydd för Azure AD-klient organisation |
 | TokenProviderConfig: CertificateThumbprint * | Tumavtrycket för det certifikat som ska användas för att autentisera mot din Azure AD-klients app |

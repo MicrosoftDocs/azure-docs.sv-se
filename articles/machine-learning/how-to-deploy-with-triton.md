@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519205"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107847"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Högpresterande tjänster med Triton-Härlednings Server (för hands version) 
 
@@ -31,6 +31,9 @@ Triton är ett ramverk som är *optimerat för en härledning*. Den ger bättre 
 
 > [!TIP]
 > Kodfragmenten i det här dokumentet är i exempel syfte och kanske inte visar en komplett lösning. Information om hur du använder exempel kod finns i [Azure Machine Learning från slut punkt till slut punkt för Triton i](https://aka.ms/triton-aml-sample).
+
+> [!NOTE]
+> [NVIDIA Triton-härlednings Server](https://aka.ms/nvidia-triton-docs) är en tredjeparts program vara från tredje part som är integrerad i Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -97,7 +100,7 @@ models
         - model_1
             - model_version
                 - model_file
-                - config_file
+            - config_file
         - model_2
             ...
 ```
@@ -114,6 +117,11 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
 Mer information finns i `az ml model register` [referens dokumentationen](/cli/azure/ext/azure-cli-ml/ml/model).
+
+När modellen registreras i Azure Machine Learning måste värdet för `--model-path  -p` parametern vara namnet på den överordnade mappen för Triton.  
+I exemplet ovan  `--model-path` är models.
+
+Värdet för `--name  -n` parametern my_triton_model i exemplet är modell namnet som är känt för Azure Machine Learning-arbetsyta. 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -364,13 +372,17 @@ local_service.delete()
 
 
 ---
+## <a name="troubleshoot"></a>Felsöka
+
+* [Felsök en misslyckad distribution](how-to-troubleshoot-deployment.md), lär dig att felsöka och lösa eller kringgå vanliga fel som kan uppstå när du distribuerar en modell.
+
+* Om distributions loggar visar att **TritonServer inte kunde starta**, se [NVIDIA: s dokumentation om öppen källkod.](https://github.com/triton-inference-server/server)
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Se exempel från slut punkt till slut punkt på Triton i Azure Machine Learning](https://aka.ms/aml-triton-sample)
 * Kolla [Triton client-exempel](https://aka.ms/nvidia-client-examples)
 * Läs [dokumentationen om Triton-härlednings Server](https://aka.ms/nvidia-triton-docs)
-* [Felsöka en misslyckad distribution](how-to-troubleshoot-deployment.md)
 * [Distribuera till Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Uppdatera webbtjänst](how-to-deploy-update-web-service.md)
 * [Samla in data för modeller i produktion](how-to-enable-data-collection.md)

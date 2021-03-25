@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183207"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047359"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurera underhålls fönstret (förhands granskning)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Konfigurera [underhålls perioden (förhands granskning)](maintenance-window.md)
 Möjligheten att ändra till en annan underhålls period är inte tillgänglig för varje service nivå eller i varje region. Mer information om tillgänglighet finns i [tillgänglighet för underhålls fönster](maintenance-window.md#availability).
 
 > [!Important]
-> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort redundansväxling som sker i slutet av åtgärden och som vanligt vis varar i upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du utföra åtgärden utanför det högsta antalet timmar.
+> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort omkonfiguration som sker i slutet av åtgärden och som vanligt vis varar i upp till 8 sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av omkonfigurationen bör du utföra åtgärden utanför det högsta antalet timmar.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurera underhålls fönstret när databasen skapas 
 
@@ -257,7 +257,7 @@ I följande exempel skapas en ny hanterad instans och underhålls fönstret ange
 ## <a name="configure-maintenance-window-for-existing-databases"></a>Konfigurera underhålls perioden för befintliga databaser
 
 
-När du tillämpar ett val av en underhålls period i en databas, kan en kort växling (flera sekunder) uppstå i vissa fall när Azure tillämpar de nödvändiga ändringarna.
+När du tillämpar ett val av en underhålls period i en databas, kan en kort konfiguration (flera sekunder) uppstå i vissa fall när Azure tillämpar de nödvändiga ändringarna.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425302"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043888"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-säkerhet
 
@@ -29,13 +29,13 @@ Alla Cognitive Services slut punkter som exponeras via HTTP genomdriver TLS 1,2.
 * Det språk (och den plattform) som används för att göra HTTP-anropet måste ange TLS 1,2 som en del av begäran
   * Beroende på språk och plattform, är det möjligt att ange TLS antingen implicit eller explicit
 
-För .NET-användare bör du överväga <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security bästa praxis </a>.
+För .NET-användare bör du överväga <a href="/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security bästa praxis </a>.
 
 ## <a name="authentication"></a>Autentisering
 
 När du diskuterar autentisering finns det flera vanliga felbegrepp. Autentisering och auktorisering är ofta förvirrande för varandra. Identitet är också en viktig komponent i säkerheten. En identitet är en samling information om ett <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">huvud konto </a>. Identitets leverantörer (IdP) tillhandahåller identiteter för Authentication Services. Autentisering handlar om att verifiera en användares identitet. Auktorisering är specifikationen av åtkomst rättigheter och behörigheter för resurser för en specifik identitet. Flera av de Cognitive Services erbjudandena, inklusive Azure rollbaserad åtkomst kontroll (Azure RBAC). Azure RBAC kan användas för att förenkla vissa av ceremonin som arbetar med att hantera huvud konton manuellt. Mer information finns i [Azure-rollbaserad åtkomst kontroll för Azure-resurser](../role-based-access-control/overview.md).
 
-Mer information om autentisering med prenumerations nycklar, åtkomsttoken och Azure Active Directory (AAD) finns i <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">autentisera begär anden till Azure Cognitive Services</a>.
+Mer information om autentisering med prenumerations nycklar, åtkomsttoken och Azure Active Directory (AAD) finns i <a href="/azure/cognitive-services/authentication" target="_blank">autentisera begär anden till Azure Cognitive Services</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Miljövariabler och program konfiguration
 
@@ -113,7 +113,7 @@ Om du vill hämta en miljö variabel måste den läsas i minnet. Beroende på vi
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Mer information finns i <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
+Mer information finns i <a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Mer information finns i <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
+Mer information finns i <a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
 
 ```cpp
 #include <stdlib.h>

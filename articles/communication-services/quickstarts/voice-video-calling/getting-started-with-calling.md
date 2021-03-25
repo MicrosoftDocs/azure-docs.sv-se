@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 0886e3955ba58a5a8edbf3cd72b1065b1000b5b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eca80f6353240755a0670fcfa4ca9875107b0d47
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104598834"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108319"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>Snabb start: Lägg till röst samtal till din app
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar klient biblioteket för att lägga till röst-och video samtal till din app.
+Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar SDK för att lägga till röst-och video samtal till din app.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -45,5 +45,5 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 Mer information finns i följande artiklar:
 
 - Ta en titt på vårt [exempel på samtals hjälte](../../samples/calling-hero-sample.md)
-- Läs om hur du [anropar klient biblioteks funktioner](./calling-client-samples.md)
+- Läs mer om hur du [anropar SDK-funktioner](./calling-client-samples.md)
 - Läs mer om [hur du anropar Works](../../concepts/voice-video-calling/about-call-types.md)
