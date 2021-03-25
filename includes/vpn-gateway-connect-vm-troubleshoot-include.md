@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7a28757a0a5fabcd2aeac4e772cb39287fff3580
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3f689f24c80bcb49909bd28f077dc12520b4f47e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95561857"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104416"
 ---
 Om du har problem med att ansluta till en virtuell dator via VPN-anslutningen kan du kontrollera följande:
 
@@ -26,4 +26,4 @@ Kontrollera följande funktioner när du ansluter via punkt-till-plats:
 - Använd ”ipconfig” för att kontrollera vilken IPv4-adress som har tilldelats till Ethernet-adaptern på den dator som du ansluter från. Om IP-adressen ligger inom adressintervallet för det virtuella nätverk som du ansluter till eller inom adressintervallet för din VPNClientAddressPool, kallas detta för ett överlappande adressutrymme. När ditt adressutrymme överlappar på det här sättet når inte nätverkstrafiken Azure, utan stannar i det lokala nätverket.
 - Kontrollera att paketet för VPN-klientkonfiguration har skapats efter att IP-adresser för DNS-server har angetts för VNet. Om du uppdaterade IP-adresserna för DNS-servern skapar och installerar du ett nytt paket för VPN-klientkonfiguration.
 
-Mer information om att felsöka en RDP-anslutning finns i [Felsöka fjärrskrivbordsanslutningar till en virtuell dator](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+Mer information om att felsöka en RDP-anslutning finns i [Felsöka fjärrskrivbordsanslutningar till en virtuell dator](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection).

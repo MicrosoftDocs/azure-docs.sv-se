@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/19/2021
+ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130076"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047308"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Så här skapar du ett SaaS-erbjudande på den kommersiella Marketplace
 
@@ -22,6 +22,9 @@ Som en kommersiell Marketplace-utgivare kan du skapa ett SaaS-erbjudande (Softwa
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Om du inte redan har gjort det, Läs [planera ett SaaS-erbjudande för den kommersiella marknads platsen](plan-saas-offer.md). Den förklarar de tekniska kraven för din SaaS-app och den information och de till gångar du behöver när du skapar ditt erbjudande. Om du inte planerar att publicera en enkel lista (alternativ för att **kontakta mig** ) på den kommersiella Marketplace måste ditt SaaS-program uppfylla tekniska krav kring autentisering.
+
+> [!IMPORTANT]
+> Vi rekommenderar att du skapar ett separat utvecklings-och testnings erbjudande (DEV) och ett separat produktions erbjudande (PROD). Den här artikeln beskriver hur du skapar ett erbjudande för en produkt. Mer information om hur du skapar ett DEV-erbjudande finns i [skapa ett utvecklings-och test erbjudande](create-saas-dev-test-offer.md).
 
 ## <a name="create-a-new-saas-offer"></a>Skapa ett nytt SaaS-erbjudande
 

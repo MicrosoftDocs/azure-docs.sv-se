@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6bcfbc19cbaa078373d6857bdac74eaf86eca104
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712223"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048059"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Beräknings-och lagrings alternativ i Azure Database for PostgreSQL-flexibel Server
 
@@ -121,7 +121,7 @@ Du kan övervaka i/O-förbrukningen i Azure Portal eller genom att använda Azur
 När det markeras med en \* begränsas IOPS av den VM-typ som du har valt. Annars begränsas IOPS av den valda lagrings storleken.
 
 >[!NOTE]
-> Du kan se högre IOPS i måtten på grund av disk nivå överföring. Mer information finns i [dokumentationen](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) . 
+> Du kan se högre IOPS i måtten på grund av disk nivå överföring. Mer information finns i [dokumentationen](../../virtual-machines/disk-bursting.md#disk-level-bursting) . 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximal I/O-bandbredd (MiB/s) för din konfiguration
 

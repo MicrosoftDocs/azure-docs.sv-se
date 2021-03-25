@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101749084"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047583"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Vanliga frågor och svar om objekt ankare i Azure
 
@@ -78,7 +78,7 @@ Enheten representerar modellens mått enhet. Enheter som stöds kan hittas med h
  1. Utför en ögon kalibrering för att få bättre åter givning.
  2. Se till att rummet har omfattande visuell struktur och bättre belysning.
  3. Behåll objektet stationärt, utan att vara prydligt om möjligt.
- 4. Du kan också rensa cacheminnet för [spatial mappning](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping) på din HoloLens-enhet.
+ 4. Du kan också rensa cacheminnet för [spatial mappning](/windows/mixed-reality/spatial-mapping) på din HoloLens-enhet.
  5. Skanna objektet genom att gå runt det. Se till att det mesta av objektet observeras.
  6. Ange ett sökområde som är tillräckligt stort för att kunna behandla objektet.
  7. Objektet bör vara stillastående under identifieringen.

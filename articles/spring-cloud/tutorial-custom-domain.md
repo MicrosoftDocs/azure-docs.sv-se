@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1ee13a464002a2e1503541964cd96957da3c651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879228"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047090"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Självstudie: mappa en befintlig anpassad domän till Azure våren Cloud
 
@@ -156,7 +156,7 @@ Gå till DNS-providern och Lägg till en CNAME-post för att mappa din domän ti
 ![Sida för DNS-poster](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Mappa din anpassade domän till Azure våren Cloud-appen
-Om du inte har ett program i Azure våren-molnet följer du anvisningarna i [snabb start: starta ett befintligt Azure våren Cloud-program med hjälp av Azure Portal](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal).
+Om du inte har ett program i Azure våren-molnet följer du anvisningarna i [snabb start: starta ett befintligt Azure våren Cloud-program med hjälp av Azure Portal](./spring-cloud-quickstart.md).
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Gå till program sidan.
