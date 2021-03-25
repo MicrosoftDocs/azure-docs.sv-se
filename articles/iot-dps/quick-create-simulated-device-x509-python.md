@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c151f78c6164cc62aac618a141a26eb1da574e3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5db02f8ca1f0c311617a787525ee2fa5856eb5dc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99218390"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045271"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en simulerad X. 509-enhet med python-enhets-SDK för IoT Hub Device Provisioning Service
 
@@ -27,7 +27,7 @@ I den här snabb starten etablerar du en utvecklings dator som en python X. 509-
 - Bekant med [etablerings](about-iot-dps.md#provisioning-process) koncept.
 - Slut för ande av [konfigurations IoT Hub Device Provisioning service med Azure Portal](./quick-setup-auto-provision.md).
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Python-3.5.3 eller senare](https://www.python.org/downloads/)
+- [Python 3,6 eller senare](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/download/).
 
 

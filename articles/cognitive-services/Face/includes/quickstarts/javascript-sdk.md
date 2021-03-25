@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 590ad577f3648ea9214ec4dcb6b6cab59dd5a3f1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244821"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105426"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Snabb start: ansikts klient bibliotek för Java Script
 
@@ -79,7 +79,7 @@ Skapa variabler för resursens Azure-slutpunkt och nyckel.
 > [!IMPORTANT]
 > Gå till Azure-portalen. Om den ansikts resurs som du skapade i avsnittet **krav** har distribuerats, klickar du på knappen **gå till resurs** under **Nästa steg**. Du hittar din nyckel och slut punkt i resursens **nyckel och slut punkts** sida under **resurs hantering**. 
 >
-> Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt. För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Mer information finns i [säkerhets](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) artikeln Cognitive Services.
+> Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt. För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Mer information finns i [säkerhets](../../../cognitive-services-security.md) artikeln Cognitive Services.
 
 ```javascript
 key = "<paste-your-face-key-here>"
@@ -114,7 +114,7 @@ Kodfragmenten nedan visar hur du gör följande uppgifter med ansikts klient bib
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera en klient med din slut punkt och nyckel. Skapa ett **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** -objekt med din nyckel och Använd den med slut punkten för att skapa ett **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** -objekt.
+Instansiera en klient med din slut punkt och nyckel. Skapa ett **[ApiKeyCredentials](/javascript/api/@azure/ms-rest-js/apikeycredentials)** -objekt med din nyckel och Använd den med slut punkten för att skapa ett **[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient)** -objekt.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -216,7 +216,7 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 I den här snabb starten har du lärt dig hur du använder ansikts klient biblioteket för Java Script för att utföra åtgärder för ansikts igenkänning. Sedan kan du utforska referens dokumentationen och läsa mer om biblioteket.
 
 > [!div class="nextstepaction"]
-> [Ansikts-API referens (Java Script)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/)
+> [Ansikts-API referens (Java Script)](/javascript/api/@azure/cognitiveservices-face/)
 
 * [Vad är tjänsten Ansiktsigenkänning?](../../overview.md)
 * Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js).

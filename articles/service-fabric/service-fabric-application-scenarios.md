@@ -3,12 +3,12 @@ title: Program scenarier och design
 description: Översikt över kategorier av moln program i Service Fabric. Diskuterar program design som använder tillstånds känsliga och tillstånds lösa tjänster.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575677"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045764"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric program scenarier
 
@@ -68,7 +68,7 @@ Här är ett exempel program som använder tillstånds känsliga tjänster: ![ p
 
 * Kom igång med att skapa tillstånds lösa och tillstånds känsliga tjänster med Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) och [Reliable Actors](service-fabric-reliable-actors-get-started.md) programmerings modeller.
 * Besök Azure Architecture Center för att få hjälp med att [skapa mikrotjänster på Azure](/azure/architecture/microservices/).
-* Gå till [Azure Service Fabric program och kluster metod tips](service-fabric-best-practices-overview.md) för vägledning för program design.
+* Gå till [Azure Service Fabric program och kluster metod tips](./service-fabric-best-practices-security.md) för vägledning för program design.
 
 * Se även:
   * [Förstå mikrotjänster](service-fabric-overview-microservices.md)

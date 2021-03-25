@@ -1,26 +1,24 @@
 ---
-title: Lista blobbar med .NET-Azure Storage
-description: Lär dig hur du listar blobbar i en behållare i ditt Azure Storage-konto med hjälp av .NET-klient biblioteket. Kod exempel visar hur du listar blobbar i en platt lista eller hur du listar blobbar hierarkiskt, som om de var ordnade i kataloger eller mappar.
+title: 'Lista blobbar med Azure Storage-API: er'
+description: Lär dig hur du listar blobbar i ditt lagrings konto med hjälp av Azure Storage klient biblioteken. Kod exempel visar hur du listar blobbar i en platt lista eller hur du listar blobbar hierarkiskt, som om de var ordnade i kataloger eller mappar.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff20b8bd0aab94cadadddbb7a4b7b32b1db1ee85
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95543076"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046950"
 ---
-# <a name="list-blobs-with-net"></a>Lista blobbar med .NET
+# <a name="list-blobs-with-azure-storage-client-libraries"></a>Lista blobbar med Azure Storage klient bibliotek
 
 När du listar blobbar från din kod kan du ange ett antal alternativ för att hantera hur resultat returneras från Azure Storage. Du kan ange antalet resultat som ska returneras i varje uppsättning resultat och sedan hämta de efterföljande uppsättningarna. Du kan ange ett prefix för att returnera blobbar vars namn börjar med den tecken eller strängen. Du kan också lista blobbar i en plan struktur eller hierarkiskt. En hierarkisk lista returnerar blobbar som om de var ordnade i mappar.
-
-Den här artikeln visar hur du listar blobbar med hjälp av [Azure Storage klient biblioteket för .net](/dotnet/api/overview/azure/storage).  
 
 ## <a name="understand-blob-listing-options"></a>Förstå List alternativ för BLOB
 
@@ -45,7 +43,9 @@ Om du vill visa en lista över blobarna i en behållare, anropa någon av följa
 - [CloudBlobContainer. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 - [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Överlagringarna för dessa metoder ger ytterligare alternativ för att hantera hur blobbar returneras av list åtgärden. De här alternativen beskrivs i följande avsnitt.
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+- [ContainerClient.list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)
 
 ---
 
@@ -61,13 +61,25 @@ Om du vill filtrera listan över blobbar anger du en sträng för `prefix` param
 
 Du kan returnera BLOB-metadata med resultaten.
 
-- Om du använder .NET V12 SDK anger du **metadata** -värdet för [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) -uppräkningen.
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
-- Om du använder .NET V11 SDK anger du **metadata** -värdet för [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) -uppräkningen. Azure Storage innehåller metadata med varje blob som returneras, så du behöver inte anropa någon av **FetchAttributes** -metoderna i den här kontexten för att hämta BLOB-metadata.
+Ange värdet för **metadata** för [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) -uppräkningen.
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+Ange värdet för **metadata** för [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) -uppräkningen. Azure Storage innehåller metadata med varje blob som returneras, så du behöver inte anropa någon av **FetchAttributes** -metoderna i den här kontexten för att hämta BLOB-metadata.
+
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Ange `metadata` för `include=` parametern vid anrop till [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-).
+
+---
 
 ### <a name="list-blob-versions-or-snapshots"></a>Visa lista över BLOB-versioner eller ögonblicks bilder
 
-Om du vill visa BLOB-versioner eller ögonblicks bilder med klient biblioteket för .NET-V12 anger du parametern [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) med fältet **version** eller **ögonblicks bild** . Versioner och ögonblicks bilder visas från äldsta till nyaste. Mer information om List versioner finns i [list BLOB-versioner](versioning-enable.md#list-blob-versions).
+- Om du vill visa BLOB-versioner eller ögonblicks bilder med klient biblioteket för .NET-V12 anger du parametern [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) med fältet **version** eller **ögonblicks bild** . Versioner och ögonblicks bilder visas från äldsta till nyaste. Mer information om List versioner finns i [list BLOB-versioner](versioning-enable.md#list-blob-versions).
+
+- Om du vill visa antalet ögonblicks bilder med python V12-klient biblioteket anger du `num_snapshots` i `include=` parametern när du anropar [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-).
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Platt lista jämfört med hierarkisk lista
 
@@ -135,11 +147,15 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_ListBlobs":::
+
 ---
 
 Exempel resultatet ser ut ungefär så här:
 
-```
+```console
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
 Blob name: FolderA/blob3.txt
@@ -153,7 +169,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>Använda en hierarkisk lista
 
-När du anropar en List åtgärd hierarkiskt, returnerar Azure Storage virtuella kataloger och blobbar på den första nivån i hierarkin. Egenskapen [prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) för varje virtuell katalog är inställd så att du kan skicka prefixet i ett rekursivt anrop för att hämta nästa katalog.
+När du anropar en List åtgärd hierarkiskt, returnerar Azure Storage virtuella kataloger och blobbar på den första nivån i hierarkin.
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
@@ -164,6 +180,8 @@ I följande exempel visas blobarna i den angivna behållaren med hjälp av en hi
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+Egenskapen [prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) för varje virtuell katalog är inställd så att du kan skicka prefixet i ett rekursivt anrop för att hämta nästa katalog.
 
 Om du vill visa blobar hierarkiskt anger du `useFlatBlobListing` parametern för List metoden till **falsk**.
 
@@ -222,11 +240,19 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Om du vill lista blobbar hierarkiskt anropar du metoden [walk_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#walk-blobs-name-starts-with-none--include-none--delimiter--------kwargs-) .
+
+I följande exempel visas blobarna i den angivna behållaren med hjälp av en hierarkisk lista, med en valfri segment storlek angiven och skriver BLOB-namnet i konsol fönstret.
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_WalkHierarchy":::
+
 ---
 
 Exempel resultatet ser ut ungefär så här:
 
-```
+```console
 Virtual directory prefix: FolderA/
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9ae06565039e53c0096ff0541f7b28a5b041d9e8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940468"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864558"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analysera Application Insights telemetri loggar med Apache Spark på HDInsight
 
@@ -36,7 +36,7 @@ Följande resurser användes för att utveckla och testa det här dokumentet:
 
 Följande diagram illustrerar tjänst arkitekturen i det här exemplet:
 
-![Data flödar från Application Insights till Blob Storage, sedan Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+:::image type="content" source="./media/apache-spark-analyze-application-insight-logs/application-insights.png" alt-text="Data flödar från Application Insights till Blob Storage, sedan Spark" border="false":::
 
 ### <a name="azure-storage"></a>Azure Storage
 

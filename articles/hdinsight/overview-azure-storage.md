@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 419b4939c19ee03651a406db44244897e17087f2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98938942"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865476"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Översikt över Azure Storage i HDInsight
 
@@ -24,7 +24,7 @@ Om du väljer att skydda ditt lagrings konto med **brand väggar och begränsnin
 
 Följande diagram innehåller en översikt över HDInsight-arkitekturen för Azure Storage:
 
-![HDInsight Storage arkitektur](./media/overview-azure-storage/storage-architecture.png "HDInsight Storage arkitektur")
+:::image type="content" source="./media/overview-azure-storage/storage-architecture.png" alt-text="HDInsight Storage arkitektur" border="false":::
 
 HDInsight ger tillgång till det distribuerade filsystemet som är lokalt anslutet till beräkningsnoderna. Detta filsystem kan nås med hjälp av den fullständigt kvalificerade URI-strängen, till exempel:
 
@@ -40,7 +40,7 @@ Tänk på följande principer när du använder ett Azure Storage-konto med HDIn
 
 * **Offentliga behållare eller offentliga blobbar i lagrings konton som inte är anslutna till ett kluster:** Du har skrivskyddad behörighet till Blobbarna i behållarna.
   
-  > [!NOTE]  
+  > [!NOTE]
   > Med offentliga behållare kan du hämta en lista över alla blobar som är tillgängliga i behållaren och hämta metadata för behållare. Du kan endast komma åt offentliga blobar om du känner till den exakta webbadressen. Mer information finns i [Hantera anonym Läs behörighet till behållare och blobbar](../storage/blobs/anonymous-read-access-configure.md).
 
 * **Privata behållare i lagrings konton som inte är anslutna till något kluster:** Du har inte åtkomst till Blobbarna i behållarna om du inte definierar lagrings kontot när du skickar WebHCat-jobben.

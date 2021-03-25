@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e2b76fbc2afaad465773860ff45f18261edad138
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcf2f39423f033ccd5bfdb6bf51ebc89e254f802
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933439"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867822"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Använd Apache Hive som ett ETL-verktyg (Extract, Transform och Load)
 
@@ -20,7 +20,7 @@ Du måste vanligt vis rensa och transformera inkommande data innan du läser in 
 
 Följande bild visar en översikt över användnings fallet och modellen för ETL-Automation. Indata omvandlas för att generera lämpliga utdata.  Under omvandlingen ändras form, data typ och även språk.  ETL-processer kan konvertera Imperial till mått, ändra tids zoner och förbättra precisionen för att korrekt justera med befintliga data i målet. ETL-processer kan också kombinera nya data med befintliga data för att hålla rapporter aktuella, eller för att ge mer insikt i befintliga data. Program som rapporterings verktyg och tjänster kan sedan använda dessa data i det önskade formatet.
 
-![Apache Hive som ETL-arkitektur](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+:::image type="content" source="./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png" alt-text="Apache Hive som ETL-arkitektur" border="false":::
 
 Hadoop används vanligt vis i ETL-processer som importerar antingen ett massivt antal textfiler (som CSV: er). Eller en mindre men ofta ändrade antal textfiler, eller både och.  Hive är ett utmärkt verktyg som används för att förbereda data innan de läses in i data målet.  Med Hive kan du skapa ett schema över CSV och använda ett SQL-liknande språk för att generera MapReduce-program som interagerar med data.
 

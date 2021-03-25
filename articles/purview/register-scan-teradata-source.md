@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175074"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048110"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Registrera och Genomsök Teradata-källa (för hands version)
 
@@ -25,7 +25,7 @@ Teradata-källan stöder **fullständig sökning** för att extrahera metadata f
 ## <a name="prerequisites"></a>Förutsättningar
 
 1.  Konfigurera den senaste [integrerings körningen med egen värd](https://www.microsoft.com/download/details.aspx?id=39717).
-    Mer information finns i [skapa och konfigurera en integration runtime med egen värd](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    Mer information finns i [skapa och konfigurera en integration runtime med egen värd](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Kontrol lera att [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) är installerat på den virtuella datorn där integration runtime med egen värd är installerat.
 
@@ -70,7 +70,7 @@ På sidan **Registrera källor (Teradata)** gör du följande:
 
 Om du vill skapa och köra en ny genomsökning gör du följande:
 
-1.  Klicka på **integration runtime** i hanterings centret. Kontrol lera att en lokal integration Runtime har kon figurer ATS. Om den inte har kon figurer ATS kan du använda stegen som beskrivs [här](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) för att konfigurera en integration runtime med egen värd
+1.  Klicka på **integration runtime** i hanterings centret. Kontrol lera att en lokal integration Runtime har kon figurer ATS. Om den inte har kon figurer ATS kan du använda stegen som beskrivs [här](./manage-integration-runtimes.md) för att konfigurera en integration runtime med egen värd
 
 2.  Navigera till **källorna**
 
@@ -90,7 +90,7 @@ Om du vill skapa och köra en ny genomsökning gör du följande:
     -   Ange ett användar namn för att ansluta till databas servern i fältet användar namn indata
     -   Lagra lösen ordet för databas servern i den hemliga nyckeln.
 
-        Om du vill veta mer om autentiseringsuppgifter läser du länken [här](https://docs.microsoft.com/azure/purview/manage-credentials)
+        Om du vill veta mer om autentiseringsuppgifter läser du länken [här](./manage-credentials.md)
 
 6.  **Schema**: lista över en delmängd av scheman som ska importeras uttrycks som en semikolonavgränsad lista. t. ex. Schema1; schema2. Alla användar scheman importeras om listan är tom. Alla system scheman (till exempel SysAdmin) och objekt ignoreras som standard. När listan är tom importeras alla tillgängliga scheman.
 

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100654959"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047175"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>Snabb start: skicka telemetri från en enhet till Azure IoT Central (python)
 
@@ -266,5 +266,5 @@ I den här snabb starten har du lärt dig ett grundläggande Azure IoT Applicati
 I nästa steg ska du utforska Azure IoT python SDK genom program exempel.
 
 - [Asynkrona exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): den här katalogen innehåller asynkrona python-exempel för ytterligare IoT Hub scenarier.
-- [Synkrona exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): den här katalogen innehåller python-exempel som ska användas med python 2,7 eller synkrona kompatibilitetsproblem för python 3.5 +
+- [Synkrona exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): den här katalogen innehåller python-exempel som ska användas med python 2,7 eller synkrona kompatibilitetsproblem för python 3.6 +
 - [IoT Edge exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): den här katalogen innehåller python-exempel för att arbeta med Edge-moduler och underordnade enheter.

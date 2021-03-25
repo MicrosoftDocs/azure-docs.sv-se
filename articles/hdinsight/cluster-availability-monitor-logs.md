@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Monitor loggar för att övervaka k
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 299a17e23ca3eb2d954bae7335571ae1f645152e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100571901"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867159"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Övervaka kluster tillgänglighet med Azure Monitor loggar i HDInsight
 
@@ -25,7 +25,7 @@ Som en förutsättning måste du ha en Log Analytics arbets yta för att lagra i
 
 Välj **Azure Monitor** på sidan HDInsight-kluster resurs i portalen. Välj sedan **Aktivera** och välj din Log Analytics arbets yta i list rutan.
 
-![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/azure-portal-monitoring.png" alt-text="HDInsight Operations Management Suite":::
 
 Som standard installeras OMS-agenten på alla klusternoder utom för Edge-noder. Eftersom ingen OMS-agent är installerad på klustrets Edge-noder finns det ingen telemetri om Edge-noder som finns i Log Analytics som standard.
 
@@ -33,7 +33,7 @@ Som standard installeras OMS-agenten på alla klusternoder utom för Edge-noder.
 
 När Azure Monitor logg integrering har Aktiver ATS (det här kan ta några minuter) navigerar du till din **Log Analytics arbets ytans** resurs och väljer **loggar**.
 
-![Log Analytics arbets ytans loggar](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdinsight-portal-logs.png" alt-text="Log Analytics arbets ytans loggar":::
 
 Loggar visar ett antal exempel frågor, till exempel:
 
@@ -47,7 +47,7 @@ Loggar visar ett antal exempel frågor, till exempel:
 
 Du kan till exempel köra frågan **tillgänglighets frekvens** genom att välja **Kör** på den frågan, som visas i skärm bilden ovan. Då visas tillgänglighets takten för varje nod i klustret i procent. Om du har aktiverat flera HDInsight-kluster för att skicka mått till samma Log Analytics arbets yta, ser du tillgänglighets takten för alla noder (exklusive Edge-noder) i de kluster som visas.
 
-![Exempel fråga för "tillgänglighets hastighet" för Log Analytics arbets ytan](media/cluster-availability-monitor-logs/portal-availability-rate.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-availability-rate.png" alt-text="Exempel fråga för &quot;tillgänglighets hastighet&quot; för Log Analytics arbets ytan":::
 
 > [!NOTE]  
 > Tillgänglighets takten mäts under en 24-timmarsperiod, så klustret måste köras i minst 24 timmar innan du kan se korrekt tillgänglighets taxa.
@@ -60,16 +60,16 @@ Du kan också ställa in Azure Monitor aviseringar som ska utlösas när värdet
 
 Från **loggar** kör du exempel frågan **otillgängliga datorer** genom att välja **Kör** på den frågan, som visas nedan.
 
-![Exempel på Log Analytics arbets yta loggar "ej tillgängliga datorer"](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-unavailable-computers.png" alt-text="Exempel på Log Analytics arbets yta loggar &quot;ej tillgängliga datorer&quot;":::
 
 Om alla noder är tillgängliga ska den här frågan returnera noll resultat för tillfället. Klicka på **ny varnings regel** för att börja konfigurera aviseringen för den här frågan.
 
-![Log Analytics arbets ytans nya aviserings regel](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png" alt-text="Log Analytics arbets ytans nya aviserings regel":::
 
 Det finns tre komponenter i en avisering: den *resurs* för vilken du vill skapa regeln (Log Analytics arbets ytan i det här fallet), *villkoret* för att utlösa aviseringen och de *Åtgärds grupper* som avgör vad som ska hända när aviseringen utlöses.
 Klicka på **villkors rubriken** som visas nedan för att slutföra konfigurationen av signal logiken.
 
-![Portal varning Skapa regel villkor](media/cluster-availability-monitor-logs/portal-condition-title.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-condition-title.png" alt-text="Portal varning Skapa regel villkor":::
 
 Då öppnas **Konfigurera signal logik**.
 
@@ -85,11 +85,11 @@ För den här aviseringen ska du se till att **period = frekvens.** Mer informat
 
 Välj **klar** när du är klar med konfigurationen av signal logiken.
 
-![Varnings regeln konfigurerar signal logik](media/cluster-availability-monitor-logs/portal-configure-signal-logic.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-configure-signal-logic.png" alt-text="Varnings regeln konfigurerar signal logik":::
 
 Om du inte redan har en befintlig åtgärds grupp klickar du på **Skapa ny** under avsnittet **Åtgärds grupper** .
 
-![Varnings regeln skapar en ny åtgärds grupp](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-new-action-group.png" alt-text="Varnings regeln skapar en ny åtgärds grupp":::
 
 Då öppnas **Lägg till åtgärds grupp**. Välj ett **Åtgärds grupp namn**, **kort namn**, **prenumeration** och **resurs grupp.** Under avsnittet **åtgärder** väljer du ett **Åtgärds namn** och väljer **e-post/SMS/push/röst** som **Åtgärds typ.**
 
@@ -98,26 +98,26 @@ Då öppnas **Lägg till åtgärds grupp**. Välj ett **Åtgärds grupp namn**, 
 
 Då öppnas **e-post/SMS/push/röst**. Välj ett **namn** för mottagaren, **Markera** rutan **e-** postadress och skriv en e-postadress som du vill att aviseringen ska skickas till. Välj **OK** i  **e-post/SMS/push/Voice**, sedan i **Lägg till åtgärds grupp** för att slutföra konfigurationen av åtgärds gruppen.
 
-![Varnings regeln skapar Lägg till åtgärds grupp](media/cluster-availability-monitor-logs/portal-add-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-add-action-group.png" alt-text="Varnings regeln skapar Lägg till åtgärds grupp":::
 
 När bladen stängs bör du se din åtgärds grupp i avsnittet **Åtgärds grupper** . Slutligen fyller du i avsnittet **aviserings information** genom att ange ett namn och en **Beskrivning** för **varnings regeln** och välja en **allvarlighets grad**. Klicka på **skapa aviserings regel** för att slutföra.
 
-![Portalen skapar varnings regeln slutförd](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png" alt-text="Portalen skapar varnings regeln slutförd":::
 
 > [!TIP]
 > Möjligheten att ange **allvarlighets grad** är ett kraftfullt verktyg som kan användas när du skapar flera aviseringar. Du kan till exempel skapa en avisering för att utlösa en varning (allvarlighets grad 1) om en enda Head-nod går ned och en annan avisering som aktiverar kritisk (allvarlighets grad 0) i förmodad händelse att båda huvudnoderna går ned.
 
 När villkoret för den här aviseringen uppfylls, utlöses aviseringen och du får ett e-postmeddelande med aviserings informationen så här:
 
-![Exempel på Azure Monitor aviserings meddelande](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alert-email.png" alt-text="Exempel på Azure Monitor aviserings meddelande":::
 
 Du kan också Visa alla aviseringar som har utlösts, grupperade efter allvarlighets grad, genom att gå till **aviseringar** i **arbets ytan Log Analytics**.
 
-![Aviseringar för Log Analytics arbets ytan](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png" alt-text="Aviseringar för Log Analytics arbets ytan":::
 
 Om du väljer en allvarlighets GRADS gruppering (t. ex. **allvarlighets grad 1 som är** markerad ovan) visas poster för alla aviseringar med den allvarlighets grad som har utlösts som nedan:
 
-![Log Analytics arbets yta allvarlighets grad en avisering](media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png" alt-text="Log Analytics arbets yta allvarlighets grad en avisering":::
 
 ## <a name="next-steps"></a>Nästa steg
 
