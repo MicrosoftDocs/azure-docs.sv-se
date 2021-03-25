@@ -4,25 +4,20 @@ description: Innehåller en sammanfattning av support inställningar och begrän
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707225"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107286"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Support mat ris för Azure disk Backup (för hands version)
-
->[!IMPORTANT]
->Azure disk Backup är i för hands version utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
+# <a name="azure-disk-backup-support-matrix"></a>Stödmatris för säkerhetskopiering av Azure-disk
 
 Du kan använda [Azure Backup](./backup-overview.md) för att skydda Azure-diskar. Den här artikeln sammanfattar regions tillgänglighet, scenarier som stöds och begränsningar.
 
 ## <a name="supported-regions"></a>Regioner som stöds
 
-Säkerhets kopiering av Azure-diskar är tillgängligt i för hands version i följande regioner: västra USA, västra centrala USA, östra 2; USA, centrala Kanada, Storbritannien, västra, Schweiz, norra, Schweiz, västra, Australien, centrala 2, centrala Korea, södra, västra Japan, Asien, östra, Förenade Arabemiraten Nord, södra Brasilien, centrala Indien. 
+Azure disk Backup är tillgängligt i följande regioner: västra USA, västra USA 2, västra centrala USA, östra USA, östra 2; USA, centrala USA, södra centrala USA, norra centrala USA, centrala Kanada, södra Brasilien, norra, södra, Storbritannien, södra, Storbritannien, västra, Västeuropa, Nord Europa, Schweiz, norra, Schweiz, västra, Tyskland, västra centrala, Frankrike Central, Norge, östra, Australien, centrala 2 , Östra Australien, centrala Korea, södra Korea, Östra Japan, västra Japan, Asien, östra, Sydostasien, centrala Indien. 
 
 Fler regioner kommer att meddelas när de blir tillgängliga.
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
-ms.date: 02/26/2019
-ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: 4434c796a41126444b8785440427123e88e0b528
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472009"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107796"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Använd Resource Health för att felsöka anslutningar för Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,5 +76,5 @@ Omkonfigurationer betraktas som tillfälliga villkor och förväntas av tiden. D
 - Läs mer om [logik för återförsök för tillfälliga fel](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
 - [Felsöka, diagnostisera och förhindra SQL-anslutningsfel](troubleshoot-common-connectivity-issues.md).
 - Läs mer om hur du [konfigurerar Resource Health-aviseringar](../../service-health/resource-health-alert-arm-template-guide.md).
-- Få en översikt över [Resource Health](../../application-gateway/resource-health-overview.md).
+- Få en översikt över [Resource Health](../../service-health/resource-health-overview.md).
 - Läs [Resource Health vanliga frågor och svar](../../service-health/resource-health-faq.md).

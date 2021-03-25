@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70042a5c4c27ec5d163e5f05089ae50b92140c28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0969ffae7963d6a5f9ac249e43750444ab11baa
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011263"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036058"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Använda Microsoft Smooth Streaming-plugin-programmet för Adobe Open Source Media Framework
 
@@ -59,7 +59,7 @@ OSMF-plugin-program kan läsas in statiskt (vid kompilering) eller dynamiskt (vi
 * Statisk inläsning: för att läsa in en statisk biblioteks fil (SWC) krävs en statisk biblioteks fil. Statiska plugin-program läggs till som en referens till projekten och sammanfogas i den slutgiltiga utdatafilen vid kompileringen.
 * Dynamisk inläsning: för att läsa in dynamiskt krävs en förkompilerad (SWF) fil. Dynamiska plugin-program läses in i körningen och ingår inte i projektets utdata. (Kompilerade utdata) Dynamiska plugin-program kan läsas in med HTTP-och fil protokoll.
 
-Mer information om statisk och dynamisk inläsning finns på den officiella [OSMF-plugin-sidan](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+Mer information om statisk och dynamisk inläsning finns på den officiella [OSMF-plugin-sidan](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm).
 
 ### <a name="ss-for-osmf-static-loading"></a>SS för OSMF statisk inläsning
 Kodfragmentet nedan visar hur du läser in SS-plugin-programmet för OSMF statiskt och spelar en grundläggande video med hjälp av OSMF MediaFactory-klassen. Innan du inkluderar OSMF-koden SS måste du se till att projekt referensen innehåller det statiska plugin-programmet "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC".

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9aaaece7d60ceead80e51bdc2a1bb342d9a4d237
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104062"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107778"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -18,12 +18,12 @@ ms.locfileid: "105104062"
 - En token för användar åtkomst för att aktivera den anropande klienten. Mer information finns i [skapa och hantera åtkomsttoken](../../access-tokens.md).
 - Valfritt: Slutför snabb starten för att [lägga till röst samtal till ditt program](../getting-started-with-calling.md).
 
-## <a name="install-the-client-library"></a>Installera klient biblioteket
+## <a name="install-the-sdk"></a>Installera SDK:n
 
 > [!NOTE]
-> I det här dokumentet används version 1.0.0 – beta. 6 av det anropande klient biblioteket.
+> Det här dokumentet använder version 1.0.0 – beta. 6 av anrops-SDK: n.
 
-Använd `npm install` kommandot för att installera Azure Communication Services-anrop och vanliga klient bibliotek för Java Script.
+Använd `npm install` kommandot för att installera Azure Communication Services-anrop och vanliga SDK: er för Java Script.
 Det här dokumentet refererar till typer i version 1.0.0-beta. 5 av anrops bibliotek.
 
 ```console
@@ -34,11 +34,11 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
 
 | Name                             | Beskrivning                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CallClient`                      | Huvud start punkten för det anropande klient biblioteket.                                                                       |
+| `CallClient`                      | Huvud start punkten för det anropande SDK: t.                                                                       |
 | `CallAgent`                        | Används för att starta och hantera samtal.                                                                                            |
 | `DeviceManager`                    | Används för att hantera medie enheter.                                                                                           |
 | `AzureCommunicationTokenCredential` | Implementerar `CommunicationTokenCredential` gränssnittet, som används för att instansiera `callAgent` . |
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-a-call"></a>Placera ett samtal
 
-Om du vill skapa och starta ett anrop använder du ett av API: erna på `callAgent` och anger en användare som du har skapat via klient biblioteket för kommunikations tjänstens identitet.
+Om du vill skapa och starta ett anrop använder du ett av API: erna på `callAgent` och anger en användare som du har skapat via kommunikations tjänstens identitets-SDK.
 
 Skapande av anrop och start är synkront. Med anrops instansen kan du prenumerera på samtals händelser.
 

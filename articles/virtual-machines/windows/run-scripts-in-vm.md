@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ab7d20a83c4cb8cb7a36c4603a5b0b2e69b0662f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102560675"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043486"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Kör skript i din virtuella Windows-dator
 
@@ -58,7 +58,7 @@ Det [anpassade skript tillägget](../extensions/custom-script-windows.md) använ
 
 ## <a name="serial-console"></a>Seriekonsol
 
-[Seriell konsol](../troubleshooting/serial-console-windows.md) ger direkt åtkomst till en virtuell dator, på samma sätt som ett tangent bord som är anslutet till den virtuella datorn.
+[Seriell konsol](/troubleshoot/azure/virtual-machines/serial-console-windows) ger direkt åtkomst till en virtuell dator, på samma sätt som ett tangent bord som är anslutet till den virtuella datorn.
 
 * Kör kommandon i Azure Virtual Machines.
 * Kan köras med hjälp av en text-baserad konsol till datorn i Azure Portal.
@@ -72,4 +72,4 @@ Lär dig mer om de olika funktionerna som är tillgängliga för att köra skrip
 * [Anpassat skripttillägg](../extensions/custom-script-windows.md)
 * [Kör kommando](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Seriell konsol](../troubleshooting/serial-console-windows.md)
+* [Seriell konsol](/troubleshoot/azure/virtual-machines/serial-console-windows)

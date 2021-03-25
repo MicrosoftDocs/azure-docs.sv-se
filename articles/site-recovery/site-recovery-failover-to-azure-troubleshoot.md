@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8fe21ce5b92d672a2e025e0b45b8cbaea5951a8b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92371995"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043911"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Felsöka fel vid redundansväxling av virtuell VMware-dator eller fysisk dator till Azure
 
@@ -78,9 +78,9 @@ Om du vill ändra start typen för driv rutiner manuellt för **Windows gäst op
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Det går inte att ansluta/RDP/SSH till den misslyckade över virtuella datorn på grund av en nedtonad anslutnings knapp på den virtuella datorn
 
-Detaljerad information om hur du felsöker RDP-problem finns i vår dokumentation [här](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+Detaljerad information om hur du felsöker RDP-problem finns i vår dokumentation [här](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection).
 
-Detaljerad information om hur du felsöker SSH-problem finns i vår dokumentation [här](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md).
+Detaljerad information om hur du felsöker SSH-problem finns i vår dokumentation [här](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection).
 
 Om knappen **Anslut** på den misslyckade virtuella datorn i Azure är nedtonad och du inte är ansluten till Azure via en Express Route eller plats-till-plats-VPN-anslutning, sedan
 
@@ -94,7 +94,7 @@ Om knappen **Anslut** på den misslyckade virtuella datorn i Azure är nedtonad 
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Det går inte att ansluta/RDP/SSH-Connect-anslutning knappen tillgänglig
 
-Om knappen **Anslut** på den misslyckade virtuella datorn i Azure är tillgänglig (inte nedtonad) kontrollerar du **startdiagnostik** på den virtuella datorn och söker efter fel som beskrivs i [den här artikeln](../virtual-machines/troubleshooting/boot-diagnostics.md).
+Om knappen **Anslut** på den misslyckade virtuella datorn i Azure är tillgänglig (inte nedtonad) kontrollerar du **startdiagnostik** på den virtuella datorn och söker efter fel som beskrivs i [den här artikeln](/troubleshoot/azure/virtual-machines/boot-diagnostics).
 
 1. Om den virtuella datorn inte har startats kan du försöka redundansväxla till en äldre återställnings punkt.
 2. Om programmet i den virtuella datorn inte är igång kan du försöka redundansväxla till en programkonsekvent återställnings punkt.
@@ -182,7 +182,7 @@ Så här löser du problemet:
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Felsöka [RDP-anslutning till virtuell Windows-dator](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
-- Felsök [ssh-anslutning till virtuella Linux-datorer](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)
+- Felsöka [RDP-anslutning till virtuell Windows-dator](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)
+- Felsök [ssh-anslutning till virtuella Linux-datorer](/troubleshoot/azure/virtual-machines/detailed-troubleshoot-ssh-connection)
 
 Om du behöver mer hjälp kan du skicka din fråga på [sidan Microsoft Q&en fråga för Site Recovery](/answers/topics/azure-site-recovery.html) eller lämna en kommentar i slutet av det här dokumentet. Vi har en aktiv community som kan hjälpa dig.

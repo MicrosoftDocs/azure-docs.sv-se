@@ -3,12 +3,12 @@ title: Distribuera resurser till hanterings grupp
 description: Beskriver hur du distribuerar resurser i hanterings gruppens omfattning i en Azure Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 603b7e32e6f4e1181a8ef2df67382b5e21ed6715
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889815"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043316"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Distributioner av hanterings grupper med ARM-mallar
 
@@ -25,7 +25,7 @@ För Azure-ritningar använder du:
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
 * [5](/azure/templates/microsoft.blueprint/blueprints/versions)
 
-Använd följande för Azure-principer:
+För Azure Policy använder du:
 
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)

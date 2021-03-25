@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048241"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044162"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Användbara resurser för att arbeta med Azure Sentinel
 
@@ -39,7 +39,7 @@ Azure Sentinel använder Azure Monitor Log Analyticss KQL (Kusto Query Language)
 
 Skapa automatisering i Azure Sentinel med Azure Logic Apps, med ett växande galleri med inbyggda spel böcker. 
 
-Mer information finns i [Azure Logic Apps kopplingar](https://docs.microsoft.com/connectors/).
+Mer information finns i [Azure Logic Apps kopplingar](/connectors/).
 
 ## <a name="comment-on-our-blogs-and-forums"></a>Kommentera våra Bloggar och forum
 
@@ -67,4 +67,3 @@ Hämta exempel innehåll från den privata gruppen GitHub-lagringsplatsen för a
 
 > [!div class="nextstepaction"]
 > [Läsa berättelser om kund användnings fall](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
-
