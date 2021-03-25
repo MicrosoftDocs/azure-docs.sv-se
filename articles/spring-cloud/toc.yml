@@ -77,20 +77,30 @@
           href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Distribuera Azure Spring Cloud med Azure PowerShell
           href: how-to-deploy-powershell.md
-    - name: Konfigurera
+    - name: Hantera
       items:
         - name: 'Starta, stoppa och ta bort en app'
           href: how-to-start-stop-delete.md
         - name: Använda beständig lagring
           href: how-to-persistent-storage.md
+        - name: Identifiera utgående offentliga IP-adresser
+          href: how-to-outbound-public-ip.md
     - name: Skala
       items:
         - name: Skala en app manuellt
           href: how-to-scale-manual.md
         - name: Autoskala en app
           href: how-to-setup-autoscale.md
-        - name: Identifiera utgående offentliga IP-adresser
-          href: how-to-outbound-public-ip.md
+    - name: Integrera
+      items:
+        - name: Binda en app till Azure CosmosDB
+          href: how-to-bind-cosmos.md
+        - name: Binda en app till Azure Cache for Redis
+          href: how-to-bind-redis.md
+        - name: Binda en app till Azure MySQL
+          href: how-to-bind-mysql.md
+        - name: Integrera med Azure Load Balance Solutions
+          href: how-to-integrate-azure-load-balancers.md
     - name: Övervaka
       items:
         - name: Distribuerad spårning och App Insights
@@ -123,16 +133,6 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Skapa roller och behörigheter
           href: how-to-permissions.md
-    - name: Integrera
-      items:
-        - name: Binda en app till Azure CosmosDB
-          href: how-to-bind-cosmos.md
-        - name: Binda en app till Azure Cache for Redis
-          href: how-to-bind-redis.md
-        - name: Binda en app till Azure MySQL
-          href: how-to-bind-mysql.md
-        - name: Integrera med Azure Load Balance Solutions
-          href: how-to-integrate-azure-load-balancers.md
     - name: Automatisera
       items:
         - name: CI/CD med Azure DevOps

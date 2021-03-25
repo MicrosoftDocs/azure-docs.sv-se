@@ -1,15 +1,15 @@
 ---
 title: Inbyggda princip definitioner för Azure Service Fabric
 description: Visar Azure Policy inbyggda princip definitioner för Azure Service Fabric. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 969842493763b56bd9bce38c226e77a4388d12e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bd94d4763ef908a0b60955566cd513061abc551c
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602353"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031245"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Azure Policy inbyggda definitioner för Azure Service Fabric
 

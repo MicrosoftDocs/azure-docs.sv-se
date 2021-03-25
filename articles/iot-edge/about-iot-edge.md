@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: e6c8e83838240b989c8c782840d8c771a6f6b7db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9b768d7af276b8bff0db2acd00d27eca03023c5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487810"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026742"
 ---
 # <a name="what-is-azure-iot-edge"></a>Vad är Azure IoT Edge?
 
@@ -76,4 +76,19 @@ Azure IoT Edge integreras sömlöst med Azure IoT-lösningsacceleratorer för at
 
 ## <a name="next-steps"></a>Nästa steg
 
-Prova de här koncepten genom att [distribuera IoT Edge på en simulerad enhet](quickstart.md).
+Testa de här begreppen genom att distribuera din första IoT Edge-modul till en enhet:
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+* [Distribuera moduler till en Linux IoT Edge-enhet](quickstart-linux.md)
+* [Distribuera moduler till en Windows IoT Edge-enhet](quickstart.md)
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+[Distribuera moduler till en IoT Edge-enhet](quickstart-linux.md)
+
+:::moniker-end

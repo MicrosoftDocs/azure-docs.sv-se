@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 7357703af41afc913ef63dff6ecae3d230c9eca0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583300"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865711"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Använda certifikat med Azure Cloud Services (utökad support)
 
@@ -27,9 +27,8 @@ Key Vault används för att lagra certifikat som är kopplade till Cloud Service
 
     :::image type="content" source="media/certs-and-key-vault-1.png" alt-text="Bilden visar hur du väljer åtkomst principer från bladet Key Vault.":::
 
-3. Se till att åtkomst principerna innehåller följande egenskaper:
+3. Se till att åtkomst principerna innehåller följande egenskap:
     - **Aktivera åtkomst till Azure-Virtual Machines för distribution**
-    - **Aktivera åtkomst till Azure Resource Manager för mall distribution** 
 
     :::image type="content" source="media/certs-and-key-vault-2.png" alt-text="Bild som visar fönstret åtkomst principer i Azure Portal.":::
  
@@ -50,6 +49,9 @@ Key Vault används för att lagra certifikat som är kopplade till Cloud Service
     ```json
     <Certificate name="<your cert name>" thumbprint="<thumbprint in key vault" thumbprintAlgorithm="sha1" /> 
     ```
+6.  För distribution via ARM-mallen kan certificateUrl hittas genom att navigera till certifikatet i nyckel valvet som är märkt som hemligt ID
+
+    :::image type="content" source="media/certs-and-key-vault-6.png" alt-text="Bild visar fältet hemligt ID i nyckel valvet.":::
 
 ## <a name="next-steps"></a>Nästa steg 
 - Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).

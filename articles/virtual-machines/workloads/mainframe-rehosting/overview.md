@@ -10,12 +10,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.openlocfilehash: 7e4b41497a0ed49ab0b39ab2c93c0142fce6416e
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 1baba0afc08c6a4df63c38cafe9231411ecf8f1f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951325"
+ms.locfileid: "105048858"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Omvärdering av stordator på Azure Virtual Machines
 
@@ -118,7 +118,7 @@ Se även:
 
 - [Fakta blad om stordator ämnen](mainframe-white-papers.md)
 - [Stordatormigrering](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Felsökning](../../troubleshooting/index.yml)
+- [Felsökning](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [Avmystifiera-stordator till Azure-migrering](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

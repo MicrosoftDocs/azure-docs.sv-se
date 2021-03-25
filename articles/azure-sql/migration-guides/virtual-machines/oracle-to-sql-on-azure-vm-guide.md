@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 1767f1f990326e513393b8ce47e1ed8485f73849
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d24e056d397617c95a7ba301b58efc3631f40dd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656653"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026529"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Migration guide: Oracle till SQL Server på Azure VM
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Den här guiden lär dig att migrera dina Oracle-scheman till SQL Server på virtuella Azure-datorer med SQL Server Migration Assistant för Oracle. 
 
-För andra scenarier, se [Guide för databas migrering](https://datamigration.microsoft.com/).
+Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
@@ -32,6 +32,8 @@ Om du vill migrera Oracle-schemat till SQL Server på den virtuella Azure-datorn
 - För att ladda ned [SQL Server Migration Assistant (SSMA) för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
 - Ett mål [SQL Server VM](../../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 - De [behörigheter som krävs för SSMA för Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) och [Provider](/sql/ssma/oracle/connect-to-oracle-oracletosql).
+- Anslutning och tillräcklig behörighet för att få åtkomst till både källa och mål. 
+
 
 ## <a name="pre-migration"></a>Före migrering
 
@@ -46,19 +48,19 @@ Använd [kart verktyget](https://go.microsoft.com/fwlink/?LinkID=316883) för at
 Följ dessa steg om du vill använda kart verktyget för att utföra en inventerings genomsökning: 
 
 1. Öppna [kart verktyget](https://go.microsoft.com/fwlink/?LinkID=316883).
-1. Välj **skapa/Välj databas**.
+1. Välj **skapa/Välj databas**:
 
    ![Välj databas](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
 
-1. Välj **skapa en inventerings databas**, ange ett namn för den nya inventerings databasen som du skapar, ange en kort beskrivning och välj sedan **OK**. 
+1. Välj **skapa en inventerings databas**, ange ett namn för den nya inventerings databasen som du skapar, ange en kort beskrivning och välj sedan **OK**:
 
    :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Skapa en inventerings databas":::
 
-1. Välj **samla in inventerings data** för att öppna **inventerings-och utvärderings guiden**. 
+1. Välj **samla in inventerings data** för att öppna **guiden inventering och utvärdering**:
 
    :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Samla in lagerdata":::
 
-1. I **inventerings-och utvärderings guiden** väljer du **Oracle** och väljer sedan **Nästa**. 
+1. Välj **Oracle** i **inventerings-och utvärderings guiden** och välj sedan **Nästa**:
 
    ![Välj Oracle](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
 
@@ -66,25 +68,25 @@ Följ dessa steg om du vill använda kart verktyget för att utföra en inventer
 
    ![Välj det Sök alternativ för datorn som passar dina affärs behov bäst](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
 
-1. Ange antingen autentiseringsuppgifter eller skapa nya autentiseringsuppgifter för de system som du vill utforska och välj sedan **Nästa**.
+1. Ange antingen autentiseringsuppgifter eller skapa nya autentiseringsuppgifter för de system som du vill utforska och välj sedan **Nästa**:
 
     ![Ange autentiseringsuppgifter](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
 
-1. Ange ordningen för autentiseringsuppgifterna och välj sedan **Nästa**. 
+1. Ange prioritetsordningen för autentiseringsuppgifterna och välj sedan **Nästa**:
 
    ![Ange autentiseringsuppgift för autentiseringsuppgift](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
 
-1. Ange autentiseringsuppgifterna för varje dator som du vill identifiera. Du kan använda unika autentiseringsuppgifter för varje dator/dator, eller så kan du välja att använda listan **alla autentiseringsuppgifter för datorn** .  
+1. Ange autentiseringsuppgifterna för varje dator som du vill identifiera. Du kan använda unika autentiseringsuppgifter för varje dator/dator, eller så kan du välja att använda listan **alla autentiseringsuppgifter för datorn** :
 
 
    ![Ange autentiseringsuppgifterna för varje dator som du vill identifiera](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
 
 
-1. Verifiera din val Sammanfattning och välj sedan **Slutför**.
+1. Verifiera din val Sammanfattning och välj sedan **Slutför**:
 
    ![Översikt över granskning](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
 
-1. När sökningen är klar kan du Visa sammanfattnings rapporten för **data insamling** . Genomsökningen kan ta några minuter och beror på antalet databaser. Välj **Stäng** när du är färdig. 
+1. När sökningen är klar kan du Visa sammanfattnings rapporten för **data insamling** . Genomsökningen kan ta några minuter och beror på antalet databaser. Välj **Stäng** när du är färdig:
 
    ![Samlings sammanfattnings rapport](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
 
@@ -100,11 +102,11 @@ Följ dessa steg om du vill skapa en utvärdering:
 
 1. Öppna  [SQL Server Migration Assistant (SSMA) för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
 1. Välj **fil** och välj sedan **nytt projekt**. 
-1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan ett SQL Server migrerings mål från List rutan. Välj **OK**. 
+1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan ett SQL Server migrerings mål från List rutan. Välj **OK**:
 
    ![Nytt projekt](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
 
-1. Välj **Anslut till Oracle**. Ange värden för information om Oracle-anslutning i dialog rutan **Anslut till Oracle** .
+1. Välj **Anslut till Oracle**. Ange värden för anslutnings information för Oracle i dialog rutan **Anslut till Oracle** :
 
    ![Anslut till Oracle](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
 
@@ -112,22 +114,16 @@ Följ dessa steg om du vill skapa en utvärdering:
 
    ![Välj Oracle-schema](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
 
-1. Högerklicka på det Oracle-schema som du vill migrera i **Oracle metadata Explorer** och välj sedan **Skapa rapport**. Då skapas en HTML-rapport. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt databasen.
+1. Högerklicka på det Oracle-schema som du vill migrera i **Oracle metadata Explorer** och välj sedan **Skapa rapport**. Då skapas en HTML-rapport. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt databasen:
 
    ![Skapa rapport](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
 
 1. I **Oracle metadata Explorer** väljer du Oracle-schemat och väljer sedan **Skapa rapport** för att generera en HTML-rapport med konverterings statistik och fel/varningar, om det finns några.
-1. Granska HTML-rapporten för konverterings statistik, samt fel och varningar. Analysera den för att förstå konverterings problem och lösningar.
+1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av Oracle-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects. 
 
-   Den här rapporten kan också nås från mappen SSMA-projekt som har marker ATS på den första skärmen. I exemplet ovan letar du upp report.xml-filen från: 
-
-   `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
-
-    och öppna den i Excel för att få en inventering av Oracle-objekt och den insats som krävs för att utföra schema konverteringar.
-
+   Exempelvis: `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
+    
    ![Konverterings rapport](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
-
-
 
 ### <a name="validate-data-types"></a>Verifiera data typer
 
@@ -135,28 +131,30 @@ Validera standard mappningar för data typer och ändra dem baserat på krav vid
 
 1. Välj **verktyg** på menyn. 
 1. Välj **projekt inställningar**. 
-1. Välj fliken **typ mappningar** . 
+1. Välj fliken **typ mappningar** :
 
    ![Typ mappningar](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
 
 1. Du kan ändra typ mappningen för varje tabell genom att välja tabellen i **Oracle metadata Explorer**. 
-
-
 
 ### <a name="convert-schema"></a>Konvertera schema
 
 Följ dessa steg om du vill konvertera schemat: 
 
 1. Valfritt Om du vill konvertera dynamiska eller ad hoc-frågor högerklickar du på noden och väljer **Lägg till instruktion**.
-1. Välj **Anslut till SQL Server** från det övre navigerings fältet och ange anslutnings information för din SQL Server på den virtuella Azure-datorn. Du kan välja att ansluta till en befintlig databas eller ange ett nytt namn, vilket innebär att en databas skapas på mål servern.
+1. Välj **Anslut till SQL Server** från det övre navigerings fältet. 
+     1. Ange anslutnings information för din SQL Server på den virtuella Azure-datorn. 
+     1. Välj mål databas i list rutan eller ange ett nytt namn, i vilket fall en databas ska skapas på mål servern. 
+     1. Ange information om autentisering. 
+     1. Välj **Anslut**. 
 
    ![Anslut till SQL](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-1. Högerklicka på Oracle-schemat i **Oracle metadata Explorer** och välj **konvertera schema**.
+1. Högerklicka på Oracle-schemat i **Oracle metadata Explorer** och välj **konvertera schema**. Alternativt kan du välja **konvertera schema** från det övre navigerings fältet:
 
    ![Konvertera schema](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
 
-1. När schemat har konverterats kan du jämföra och granska schemats struktur för att identifiera eventuella problem.
+1. När konverteringen är klar kan du jämföra och granska de konverterade objekten till de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem utifrån rekommendationerna:
 
    ![Granska rekommendationer](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
 
@@ -166,6 +164,9 @@ Följ dessa steg om du vill konvertera schemat:
 
    Du kan spara projektet lokalt för en arbets schema reparation. Du kan göra det genom att välja **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Server.
 
+1. Välj **gransknings resultat** i fönstret utdata och granska fel i **fel listans** fönster. 
+1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Server på den virtuella Azure-datorn.
+
 
 ## <a name="migrate"></a>Migrera
 
@@ -174,29 +175,27 @@ När du har de nödvändiga förutsättningarna och har slutfört de uppgifter s
 
 Följ dessa steg om du vill publicera schemat och migrera data: 
 
-1. Högerklicka på databasen i **SQL Server metadata Explorer**  och välj **Synkronisera med databas**. Den här åtgärden publicerar Oracle-schemat till SQL Server på den virtuella Azure-datorn. 
+1. Publicera schemat: Högerklicka på databasen i **SQL Server metadata Explorer**  och välj **Synkronisera med databas**. Den här åtgärden publicerar Oracle-schemat till SQL Server på den virtuella Azure-datorn:
 
    ![Synkronisera med databas](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
 
-   Granska synkroniseringsstatus: 
+   Granska mappningen mellan käll projektet och målet:
 
    ![Granska synkroniseringsstatus](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
 
 
-1. Högerklicka på Oracle-schemat från **Oracle metadata Explorer** och välj **migrera data**. Alternativt kan du välja Migrera data från den översta navigerings raden.
+1. Migrera data: Högerklicka på databasen eller objektet som du vill migrera i **Oracle metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** från det övre navigerings fältet. Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar tabeller och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller:
 
    ![Migrera data](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
 
 1. Ange anslutnings information för Oracle och SQL Server på den virtuella Azure-datorn i dialog rutan.
-1. När migreringen är klar kan du visa data flyttnings rapporten:
+1. När migreringen är klar kan du Visa **data flyttnings rapporten**:  
 
     ![Data flyttnings rapport](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
 
-1. Anslut till din SQL Server på den virtuella Azure-datorn med [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) för att granska data och schema på din SQL Server instans. 
+1. Anslut till SQL Server på Azure VM-instansen genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema:
 
    ![Validera i SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
-
-
 
 
 Förutom att använda SSMA kan du också använda SQL Server Integration Services (SSIS) för att migrera data. Mer information finns i: 

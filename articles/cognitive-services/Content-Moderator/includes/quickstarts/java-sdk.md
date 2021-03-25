@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 17acd11b6ebb651be170135ab9789f788d4d8077
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 646b4378c887bb30bfbd945693aacc4e50c2f02c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444505"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027950"
 ---
 Kom igång med Azures Content Moderator klient bibliotek för Java. Följ dessa steg om du vill installera maven-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -232,12 +232,13 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+## <a name="source-code"></a>Källkod
+
+* Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java).
+
 ## <a name="next-steps"></a>Nästa steg
 
 I den här snabb starten har du lärt dig hur du använder Content Moderator Java-biblioteket för att utföra moderator uppgifter. Läs sedan mer om hur du använder avbildningen eller andra media genom att läsa en konceptuell guide.
 
 > [!div class="nextstepaction"]
 > [Bild moderator koncept](../../image-moderation-api.md)
-
-* [Vad är Azure Content Moderator?](../../overview.md)
-* Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java).

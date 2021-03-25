@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704420"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047430"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Konfigurera Azure Monitor för ditt python-program
 
@@ -19,7 +19,7 @@ Azure Monitor stöder distribuerad spårning, Metric-insamling och loggning av p
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
-- Python-installation. I den här artikeln används [python-3.7.0](https://www.python.org/downloads/release/python-370/), även om andra versioner sannolikt kommer att fungera med mindre ändringar. SDK: n stöder bara python v 2.7 och v 3.4 – v 3.7.
+- Python-installation. I den här artikeln används [python-3.7.0](https://www.python.org/downloads/release/python-370/), även om andra versioner sannolikt kommer att fungera med mindre ändringar. SDK: n stöder bara python-versionerna 2,7 och 3.6 +.
 - Skapa en Application Insights- [resurs](./create-new-resource.md). Du tilldelas din egen Instrumentation-nyckel (iKey) för din resurs.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrument med python SDK för openräkning för Azure Monitor

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e3073c491b251a1dbb505d4656de9c6a1e0ac7f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724157"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048501"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application-brandvägg i Azures front dörr
 
@@ -24,7 +24,7 @@ WAF förhindrar skadliga attacker nära angrepps källorna innan de anger ditt v
 
 ![Azure-brandvägg för webbaserade program](../media/overview/wafoverview.png)
 
-Azures front dörr introducerar [två nya SKU: er i för hands versionen](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview): främre dörren och den främre dörrens Premium-SKU. WAF är inbyggt integrerat med SKU: n för front dörr Premium med fullständiga funktioner. För standard-SKU: n för front dörren stöds endast [anpassade regler](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules) .
+Azures front dörr introducerar [två nya SKU: er i för hands versionen](../../frontdoor/standard-premium/overview.md): främre dörren och den främre dörrens Premium-SKU. WAF är inbyggt integrerat med SKU: n för front dörr Premium med fullständiga funktioner. För standard-SKU: n för front dörren stöds endast [anpassade regler](#custom-authored-rules) .
 
 ## <a name="waf-policy-and-rules"></a>WAF princip och regler
 

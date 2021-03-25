@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/11/2021
-ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149757"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047260"
 ---
 # <a name="maintenance-window-preview"></a>Underhålls period (för hands version)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,14 +27,14 @@ Med funktionen underhålls fönster kan du konfigurera ett underhålls schema f�
 
 ## <a name="overview"></a>Översikt
 
-Azure utför regelbundet [planerat underhåll](planned-maintenance.md) av SQL Database-och SQL-hanterade instans resurser. Under Azure SQL Maintenance-händelsen är databaser helt tillgängliga, men de kan vara underkastade korta redundans i respektive tillgänglighets service avtal för [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) -och [SQL-hanterad instans](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance), eftersom omkonfiguration av resurser krävs i vissa fall.
+Azure utför regelbundet [planerat underhåll](planned-maintenance.md) av SQL Database-och SQL-hanterade instans resurser. Under Azure SQL Maintenance-händelsen är databaser helt tillgängliga, men de kan komma att omkonfigureras i respektive tillgänglighets service avtal för [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) -och [SQL-hanterad instans](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance).
 
-Underhålls perioden är avsedd för produktions arbets belastningar som inte är elastiska för databas-eller instans växlingar och inte kan absorbera korta anslutnings avbrott som orsakas av planerade underhålls händelser. Genom att välja ett underhålls fönster som du föredrar kan du minimera effekten av planerat underhåll eftersom det sker utanför arbets tiden. Elastiska arbets belastningar och icke-produktions arbets belastningar kan förlita sig på Azure SQLs standard underhålls princip.
+Underhålls perioden är avsedd för produktions arbets belastningar som inte är elastiska för databas-eller instans omkonfigurationer och inte kan absorbera korta anslutnings avbrott som orsakas av planerade underhålls händelser. Genom att välja ett underhålls fönster som du föredrar kan du minimera effekten av planerat underhåll eftersom det sker utanför arbets tiden. Elastiska arbets belastningar och icke-produktions arbets belastningar kan förlita sig på Azure SQLs standard underhålls princip.
 
 Underhålls perioden kan konfigureras vid skapande eller för befintliga Azure SQL-resurser. Den kan konfigureras med hjälp av API: et för Azure Portal, PowerShell, CLI eller Azure.
 
 > [!Important]
-> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort redundansväxling som sker i slutet av åtgärden och som vanligt vis varar i upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du utföra åtgärden utanför det högsta antalet timmar.
+> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort omkonfiguration som sker i slutet av åtgärden och som vanligt vis varar i upp till 8 sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av omkonfigurationen bör du utföra åtgärden utanför det högsta antalet timmar.
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Få mer förutsägbart med underhålls perioden
 
@@ -98,7 +98,7 @@ Att välja ett annat underhålls fönster än standard är för närvarande till
 
 För att få maximal nytta av underhålls perioder kontrollerar du att klient programmen använder anslutnings principen för omdirigering. Omdirigera är den rekommenderade anslutnings principen, där klienter upprättar anslutningar direkt till noden som är värd för databasen, vilket leder till minskad svars tid och bättre data flöde.  
 
-* I Azure SQL Database kan alla anslutningar som använder proxy-anslutningssträngen påverkas av både det valda underhålls fönstret och en underhålls period för gateway Node. Klient anslutningar som använder den rekommenderade principen för att omdirigera anslutningar påverkas dock inte av en gateway-nod underhåll redundans. 
+* I Azure SQL Database kan alla anslutningar som använder proxy-anslutningssträngen påverkas av både det valda underhålls fönstret och en underhålls period för gateway Node. Klient anslutningar som använder den rekommenderade principen för att omdirigera anslutningar påverkas dock inte av en gateway nodens underhålls konfiguration. 
 
 * I Azure SQL-hanterad instans finns Gateway-noderna [i det virtuella klustret](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) och har samma underhålls fönster som den hanterade instansen, men att använda anslutnings principen för omdirigering rekommenderas fortfarande för att minimera antalet avbrott under underhålls händelsen.
 
@@ -115,7 +115,7 @@ Alla instanser som finns i ett virtuellt kluster delar underhålls perioden. Som
 Förväntad varaktighet för konfigurering av underhålls perioden på den hanterade instansen kan beräknas med [Beräknad varaktighet för instans hanterings åtgärder](/azure/azure-sql/managed-instance/management-operations-overview#duration).
 
 > [!Important]
-> En kort redundansväxling sker i slutet av underhålls åtgärden och tar vanligt vis upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du schemalägga åtgärden utanför det högsta antalet timmar.
+> En kort omkonfiguration sker i slutet av underhålls åtgärden och tar vanligt vis upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av omkonfigurationen bör du schemalägga åtgärden utanför det högsta antalet timmar.
 
 ### <a name="ip-address-space-requirements"></a>Krav för IP-adressutrymme
 Varje nytt virtuellt kluster i under nätet kräver ytterligare IP-adresser enligt [tilldelningen av virtuella kluster-IP](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)-adresser. Att ändra underhålls period för befintlig hanterad instans kräver också [tillfällig ytterligare IP-kapacitet](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) som vid skalning av virtuella kärnor-scenariot för motsvarande tjänst nivå.
@@ -129,7 +129,7 @@ När du konfigurerar och ändrar underhålls fönstret ändras instansens IP-adr
 ## <a name="next-steps"></a>Nästa steg
 
 * [Avancerade aviseringar](advance-notifications.md)
-* [Konfigurera underhålls period](maintenance-window-configure.md)
+* [Konfigurera underhållsperiod](maintenance-window-configure.md)
 
 ## <a name="learn-more"></a>Läs mer
 

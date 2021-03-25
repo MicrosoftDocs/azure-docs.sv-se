@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9a8ecf65426dfe92b84582ff98b567ea400c9209
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577367"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027191"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Vad är Azure Cosmos DB Analytical Store?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -110,9 +110,10 @@ Följande begränsningar gäller för användnings data i Azure Cosmos DB när d
 
 * För närvarande har vi inte stöd för att läsa kolumn namn för Azure Synapse Spark som innehåller blank steg (blank steg).
 
-* Ett annat förväntat beteende i förhållande till `NULL` värden:
-  * Spark-pooler i Azure Synapse kommer att läsa dessa värden som 0 (noll).
-  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `NULL` .
+* Ett annat förväntat beteende i förhållande till explicita `null` värden:
+  * Spark-pooler i Azure Synapse kommer att läsa dessa värden som `0` (noll).
+  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `NULL` om det första dokumentet i samlingen har, för samma egenskap, ett värde med en datatyp som skiljer sig från `integer` .
+  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `0` (noll) om det första dokumentet i samlingen har, för samma egenskap, ett värde som är ett `integer` .
 
 * Förväntar dig olika beteenden i samband med saknade kolumner:
   * Spark-pooler i Azure Synapse kommer att representera dessa kolumner som `undefined` .
@@ -144,6 +145,11 @@ Den väldefinierade schema representationen skapar en enkel tabell representatio
 
 > [!NOTE]
 > Om Azure Cosmos DB Analytical Store följer den väldefinierade schema representationen och specifikationen ovan överträds av vissa objekt, kommer dessa objekt inte att tas med i analys lagret.
+
+* Förväntar dig olika beteenden i förhållande till olika typer i väl definierat schema:
+  * Spark-pooler i Azure Synapse representerar dessa värden som `undefined` .
+  * SQL Server-pooler i Azure-Synapse representerar dessa värden som `NULL` .
+
 
 **Schema representation med fullständig åter givning**
 

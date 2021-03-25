@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/30/2020
-ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581311"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046512"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planera ett SaaS-erbjudande för den kommersiella marknaden
 
@@ -37,7 +37,7 @@ I följande tabell visas de olika List alternativen för SaaS-erbjudanden i den 
 
 Mer information om dessa List alternativ finns i [Transact-funktioner för kommersiella Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-När ditt erbjudande har publicerats visas det List alternativ som du har valt för ditt erbjudande som en knapp i det övre vänstra hörnet av ditt erbjudandes List sida. Följande skärm bild visar till exempel sidan erbjudande på Azure Marketplace med knapparna **kontakta mig** och **testa enhet** .
+När ditt erbjudande har publicerats visas det List alternativ som du har valt för ditt erbjudande som en knapp i det övre vänstra hörnet av ditt erbjudandes List sida. Följande skärm bild visar till exempel sidan erbjudande på Azure Marketplace med knapparna **Hämta nu** och **testa enhet** .
 
 ![Visar en lista med erbjudanden i onlinebutiken.](./media/listing-options.png)
 
@@ -68,9 +68,9 @@ Om du skapar ett transactable-erbjudande måste du samla in följande informatio
 
 - **Landnings sidans URL**: URL: en för SaaS (t. ex.: `https://contoso.com/signup` ) som användarna dirigeras till efter att ha skaffat ditt erbjudande från den kommersiella Marketplace, vilket utlöser konfigurations processen från den nyligen skapade SaaS-prenumerationen. URL: en får en token som kan användas för att anropa API: er för att utföra etablerings information för din interaktiva registrerings sida.
 
-  URL: en kommer att anropas med parametern Marketplace Purchase Identification Identification som unikt identifierar den specifika kundens SaaS-köp. Du måste byta denna token för motsvarande prenumerations information för SaaS med hjälp av [lösnings-API: et](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Informationen och andra som du vill samla in bör användas som en del av en kundinteraktiv webb sida som skapats i din erfarenhet av att slutföra kund registreringen och aktivera köpet. På den här sidan ska användaren registrera sig genom autentisering med ett klick genom att använda Azure Active Directory (Azure AD).
+  URL: en kommer att anropas med parametern Marketplace Purchase Identification Identification som unikt identifierar den specifika kundens SaaS-köp. Du måste byta denna token för motsvarande prenumerations information för SaaS med hjälp av [lösnings-API: et](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Informationen och alla andra som du vill samla in som en del av en kunds interaktiva webb sida kan användas för att komma igång med kundens onboarding-upplevelse, som måste ingå i ett aktiverings anrop för API: et för att starta prenumerations perioden. På den här sidan ska användaren registrera sig genom autentisering med ett klick genom att använda Azure Active Directory (Azure AD).
 
-  Den här URL: en med parametern Marketplace för inköp av Marketplace kommer också att anropas när kunden startar en hanterad SaaS-upplevelse från Azure Portal-eller M365 administrations Center. Du bör hantera båda flödena: när token anges för första gången efter ett nytt kund inköp, och när det har tillhandahållits igen för en befintlig kund som hanterar sin SaaS-lösning.
+  Den här URL: en med parametern Marketplace för inköp av Marketplace kommer också att anropas när kunden startar en hanterad SaaS-upplevelse från Azure Portal eller Microsoft 365 administrations Center. Du bör hantera båda flödena: när token anges för första gången efter ett nytt kund inköp, och när det har tillhandahållits igen för en befintlig kund som hanterar sin SaaS-lösning.
 
     Landnings sidan som du konfigurerar bör vara igång 24/7. Detta är det enda sättet du får information om nya köp av dina SaaS-erbjudanden som görs i den kommersiella marknads platsen, eller konfigurations begär Anden för en aktiv prenumeration på ett erbjudande.
 
@@ -79,7 +79,7 @@ Om du skapar ett transactable-erbjudande måste du samla in följande informatio
   Webhooken som du tillhandahåller bör vara igång 24/7. Detta är det enda sättet att få information om uppdateringar om dina kunders SaaS prenumerationer som köpts via den kommersiella Marketplace.
 
   > [!NOTE]
-  > I Azure Portal kräver vi att du skapar en app med en enda klient [Azure Active Directory (Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) för att kunna använda ett Azure App-ID för att autentisera anslutningen mellan våra två tjänster. Du hittar [klient-ID: t](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)genom att gå till din Azure Active Directory och välja **Egenskaper**. Leta sedan reda på katalog-ID-numret som visas. Till exempel `50c464d3-4930-494c-963c-1e951d15360e`.
+  > I Azure Portal kräver vi att du skapar en app-registrering för en enda klient [Azure Active Directory (Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md). Använd appens registrerings information för att autentisera din lösning när du anropar Marketplace-API: er. Du hittar [klient-ID: t](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)genom att gå till din Azure Active Directory och välja **Egenskaper**. Leta sedan reda på katalog-ID-numret som visas. Till exempel `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **Azure Active Directory klient-ID**: (kallas även katalog-ID). I Azure Portal måste du [Registrera en Azure Active Directory (AD)-app](../active-directory/develop/howto-create-service-principal-portal.md) så att vi kan lägga till den i åtkomst kontrol listan (ACL) för API: et för att kontrol lera att du har behörighet att anropa den. Du hittar klient-ID: t för din Azure Active Directory (AD)-appen genom att gå till bladet [Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) i Azure Active Directory. I kolumnen **visnings namn** väljer du appen. Leta sedan efter den **katalog (klient) ID-** nummer som anges (till exempel `50c464d3-4930-494c-963c-1e951d15360e` ).
 
@@ -88,7 +88,7 @@ Om du skapar ett transactable-erbjudande måste du samla in följande informatio
   Azure AD-programmets ID är associerat med ditt utgivar-ID i ditt partner Center-konto. Du måste använda samma program-ID för alla erbjudanden i det kontot.
 
   > [!NOTE]
-  > Om utgivaren har två eller flera olika konton i Partner Center, ska två eller flera olika Azure AD App-ID: n användas, var och en av kontona. Varje partner konto i Partner Center bör använda ett unikt Azure AD App-ID för alla SaaS-erbjudanden som publiceras via det här kontot.
+  > Om utgivaren har två eller flera olika konton i Partner Center kan du bara använda Azure AD-appens registrerings information i ett enda konto. Det finns inte stöd för att använda samma klient-ID, app-ID-par för ett erbjudande under ett annat utgivar konto.
 
 ## <a name="test-drives"></a>Provkörningar
 Du kan välja att aktivera en testen het för SaaS-appen. Test enheter ger kunderna till gång till en förkonfigurerad miljö för ett fast antal timmar. Du kan aktivera test enheter för alla publicerings alternativ, men den här funktionen har ytterligare krav. Mer information om test enheter finns i [Vad är en test enhet?](what-is-test-drive.md). Information om hur du konfigurerar olika typer av test enheter finns i [teknisk konfiguration för test enhet](test-drive-technical-configuration.md).
@@ -150,7 +150,7 @@ När du [skapar ett nytt SaaS-erbjudande](create-new-saas-offer.md) i Partner Ce
 6. Sekretesspolicy
 7. Erbjudandets namn
 8. Sammanfattning
-9. Description
+9. Beskrivning
 10. Skärm bilder/videor
 11. Dokument
 
@@ -209,9 +209,6 @@ För att hjälpa till att skapa ett erbjudande enklare kan du förbereda några 
 > [!Note]
 > Ditt erbjudande måste uppfylla de allmänna [certifierings principerna för kommersiella marknads platser](/legal/marketplace/certification-policies#100-general) och [program vara som en tjänst](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) för att publiceras på den kommersiella marknads platsen.
 
-## <a name="preview-audience"></a>Förhandsgranska mål grupp
-En förhands gransknings grupp kan komma åt ditt erbjudande innan det publiceras Live i onlinebutiker för att testa slut punkt till slut punkt innan du publicerar den Live. På sidan för **hands versions mål** kan du definiera en begränsad förhands gransknings mål grupp. Den här inställningen är inte tillgänglig om du väljer att bearbeta transaktioner oberoende i stället för att sälja erbjudandet via Microsoft. I så fall kan du hoppa över det här avsnittet och gå till [ytterligare affärs möjligheter](#additional-sales-opportunities).
-
 > [!NOTE]
 > En förhands gransknings mål skiljer sig från en privat plan. En privat plan är en som du bara gör tillgänglig för en speciell mål grupp som du väljer. På så sätt kan du förhandla fram en anpassad plan med vissa kunder. Mer information finns i nästa avsnitt: planer.
 
@@ -251,6 +248,50 @@ I följande exempel visas ett exempel på en uppdelning av kostnader och utbetal
 |||
 
 **`*` Minskad service avgift för Marketplace** – för vissa SaaS-erbjudanden som du har publicerat på den kommersiella marknaden kommer Microsoft att minska sin service avgift för Marketplace från 20% (enligt beskrivningen i Microsoft Publisher Agreement) till 10%. För dina erbjudanden som ska kvalificeras måste ditt erbjudande ha utsetts av Microsoft som Azure IP Co-Sälj-motiverade. Berättigande måste uppfyllas minst fem (5) arbets dagar före slutet av varje kalender månad för att ta emot den minskade service avgiften för Marketplace. När rätten är uppfylld tilldelas den minskade tjänste avgiften till alla transaktioner som gäller den första dagen i följande månad och fortsätter att gälla tills Azure IP-motiverade status går förlorad. Information om IP-samförsäljnings behörighet finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Den minskade service avgiften för Marketplace gäller även för Azure IP Co-Sälj motiverade VM: ar, hanterade appar och andra kvalificerade IaaS-erbjudanden som görs tillgängliga via den kommersiella marknads platsen.
+
+## <a name="preview-audience"></a>Förhandsgranska mål grupp
+
+En förhands gransknings grupp kan komma åt ditt erbjudande innan det publiceras Live i onlinebutiker. De kan se hur ditt erbjudande kommer att se ut på den kommersiella Marketplace och testa slut punkt till slut punkt innan du publicerar det Live. 
+
+På sidan för **hands versions mål** kan du definiera en begränsad förhands gransknings mål grupp. Den här inställningen är inte tillgänglig om du väljer att bearbeta transaktioner oberoende i stället för att sälja erbjudandet via Microsoft. I så fall kan du hoppa över det här avsnittet och gå till [ytterligare affärs möjligheter](#additional-sales-opportunities).
+
+## <a name="test-offer"></a>Test erbjudande
+
+Innan du publicerar erbjudandet Live bör du använda för hands versions funktionen för att utveckla teknisk implementering, testa och experimentera med olika pris modeller.
+
+För att utveckla och testa ditt SaaS-erbjudande med den lägsta risken, rekommenderar vi att du skapar ett test-och utvecklings erbjudande (DEV) för experimentering och testning. DEV-erbjudandet är skilt från produktions erbjudandet (PROD).
+
+För att förhindra oavsiktliga köp av DEV-erbjudandet ska du aldrig trycka på knappen **Go Live** för att publicera dev-erbjudandet Live.
+
+![Visar sidan erbjudande översikt för ett erbjudande i Partner Center. Knappen gå live och för hands versions länkarna visas. Länken Visa verifierings rapport visas också under automatisk verifiering.](./media/review-publish-offer/publish-status-saas.png)
+
+Här följer några orsaker till att skapa ett separat utvecklings erbjudande för utvecklings teamet som används för utveckling och testning av produktions erbjudandet:
+
+- Undvik oförutsedda kund avgifter
+- Utvärdera pris modeller
+- Lägg inte till planer som inte riktar sig till faktiska kunder
+
+### <a name="avoid-accidental-customer-charges"></a>Undvik oförutsedda kund avgifter
+
+Genom att använda ett DEV-erbjudande i stället för produkt erbjudande och behandla dem som utvecklings-och produktions miljöer kan du undvika oförutsedda kostnader för kunderna.
+
+Vi rekommenderar att du registrerar två olika Azure AD-appar för att anropa Marketplace-API: er. Utvecklare kommer att använda en Azure AD-App med inställningarna för DEV-erbjudandet, och drift teamet använder appens registrering i PROD. Genom att göra detta kan du isolera utvecklings teamet från att göra oavsiktliga misstag, till exempel anropa API: et för att avbryta en kunds prenumeration som betalar $100 000 per månad. Du kan också undvika att debitera en kund för mätnings användning som de inte förbrukade.
+
+### <a name="evaluate-pricing-models"></a>Utvärdera pris modeller
+
+Att testa pris modeller i DEV-erbjudandet minskar risken för utvecklare som experimenterar med olika pris modeller.
+
+Utgivare kan skapa de planer som de behöver i utvecklings erbjudandet för att avgöra vilken pris modell som passar bäst för erbjudandet. Utvecklare kan vilja skapa flera planer i utvecklings erbjudandet för att testa olika pris kombinationer. Du kan till exempel skapa planer med olika uppsättningar med anpassade mått för mätning. Du kan skapa en annan plan med en blandning av fasta kostnader och anpassade mätnings dimensioner.
+
+Om du vill testa flera pris alternativ måste du skapa en plan för varje unik pris modell. Mer information finns i [planer](#plans).
+
+### <a name="not-adding-plans-that-do-not-target-actual-customers"></a>Lägg inte till planer som inte riktar sig till faktiska kunder
+
+Genom att använda ett utvecklings erbjudande för utveckling och testning kan du minska onödigheten i produktions erbjudandet. Du kan till exempel inte ta bort planer som du skapar för att testa olika pris modeller eller tekniska konfigurationer (utan att arkivera ett support ärende). Så genom att skapa planer för testning i DEV-erbjudandet kan du minska det här erbjudandet i produktions erbjudandet.
+
+Ett prydligt erbjudande finns i produkt-och marknadsförings grupper, eftersom alla planer förväntas riktas mot faktiska kunder. I synnerhet med stora team som är åtskilda och som alla vill att olika sand boxar ska arbeta med, ger att du skapar två erbjudanden två olika miljöer för utveckling och PROD. I vissa fall kanske du vill skapa flera DEV-erbjudanden för att stödja ett större team som har olika personer som kör olika test scenarier. Att låta olika team medlemmar arbeta i utvecklings erbjudandet separat från produktions erbjudandet, hjälper till att hålla produktions planer så nära produktion som möjligt.
+
+Om du testar ett DEV-erbjudande kan du undvika den 30 anpassade mått gränsen per erbjudande. Utvecklare kan testa olika mätar kombinationer i DEV-erbjudandet utan att påverka den anpassade Mät dimensions gränsen i produktions erbjudandet.
 
 ## <a name="additional-sales-opportunities"></a>Ytterligare försäljnings möjligheter
 

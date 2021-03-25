@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2bcf467eea9186cc57fb4c6c3d8964632b8fec03
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90948488"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047719"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Snabb start: Använd python för att ansluta och fråga efter data i Azure Database for PostgreSQL-flexibel Server
 
@@ -28,7 +28,7 @@ Den här artikeln förutsätter att du är van att utveckla med python, men du �
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * En Azure Database for PostgreSQL-flexibel Server. För att skapa en flexibel Server, se [skapa en Azure Database for PostgreSQL-flexibel server med Azure Portal](./quickstart-create-server-portal.md).
-* [Python](https://www.python.org/downloads/) 2.7.9 + eller 3.4 +.
+* [Python](https://www.python.org/downloads/) 2,7 eller 3.6 +.
 * Senaste installations program för [pip](https://pip.pypa.io/en/stable/installing/) -paketet.
 
 ## <a name="preparing-your-client-workstation"></a>Förbereda klient arbets stationen
