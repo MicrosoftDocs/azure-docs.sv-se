@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5b3e9c944aece3b3e22ee7a5a6144751725ddf67
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3f565f456dde1d802a82faffb4a23f7a6e54d950
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729971"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031553"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Snabb start: rendera en modell med Unity
 
@@ -37,10 +37,7 @@ Följande program vara måste vara installerad:
   * **Skriv bords utveckling med C++**
   * **Universell Windows-plattform (UWP) utveckling**
 * GIT [(nedladdning)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(Hämta)](https://unity3d.com/get-unity/download)
-  * Installera de här modulerna i Unity:
-    * **UWP** -stöd för Build-universell Windows-plattform
-    * **IL2CPP** – stöd för Windows-build (IL2CPP)
+* Unity (se [system krav](../overview/system-requirements.md#unity) för versioner som stöds)
 
 ## <a name="clone-the-sample-app"></a>Klona exempelappen
 

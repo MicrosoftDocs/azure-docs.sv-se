@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ff4127e5b8733c4ef8f5d27da1bd6d9c1789875f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9d77bb3dc75c607513f9a7548ccb1061f894259b
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577501"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032062"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[För hands version \] : \[ ASC privat förhands granskning \] – Konfigurera systemtilldelad hanterad identitet för att aktivera Azure Monitor tilldelningar på virtuella datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC privat förhands granskning] Konfigurera systemtilldelad hanterad identitet till virtuella datorer som finns i Azure och som stöds av Azure Monitor som inte har en systemtilldelad hanterad identitet. En systemtilldelad hanterad identitet är en förutsättning för alla Azure Monitor tilldelningar och måste läggas till i datorer innan du använder ett Azure Monitor-tillägg. Virtuella mål datorer måste finnas på en plats som stöds. |modify |[1.2.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[Aktivitets loggen ska behållas i minst ett år](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Den här principen granskar aktivitets loggen om kvarhållning inte har angetts för 365 dagar eller för alltid (kvarhållning dagar har angetts till 0). |AuditIfNotExists, inaktiverat |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |

@@ -551,6 +551,8 @@
           href: vs-active-directory-error.md
     - name: Ta bort en appregistrering
       href: quickstart-remove-app.md
+    - name: Återställa eller ta bort en borttagen app-registrering
+      href: quickstart-restore-app.md
 - name: Referens
   items:
     - name: Ordlista

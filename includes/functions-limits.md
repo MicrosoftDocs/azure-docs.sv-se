@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f72117fdbcdbeda1d906a9760243e66404920c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934477"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105103977"
 ---
 | Resurs |[Förbrukningsplan](../articles/azure-functions/consumption-plan.md)|[Premiumplan](../articles/azure-functions/functions-premium-plan.md)|[Dedikerad plan](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ ms.locfileid: "97934477"
 | Max. URL-längd för begäran<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | Är beroende av kluster |
 |[ACU](../articles/virtual-machines/acu.md) per instans | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AKS-priser](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maximalt minne (GB per instans) | 1.5 | 3.5-14 | 1,75-14 | 3,5 – 14 | Alla noder stöds |
+| Maximalt antal instanser | 200 | 100<sup>9</sup> | varierar beroende på SKU<sup>10</sup> | 100<sup>10</sup> | Är beroende av kluster |   
 | Function-appar per plan |100 |100 |obegränsat<sup>4</sup> | unbounded | unbounded |
 | [App Service-planer](../articles/app-service/overview-hosting-plans.md) | 100 per [region](https://azure.microsoft.com/global-infrastructure/regions/) |100 per resurs grupp |100 per resurs grupp | - | - |
 | Lagring<sup>5</sup> |5 TB |250 GB |50-1000 GB | 1 TB | saknas |
@@ -34,4 +35,6 @@ ms.locfileid: "97934477"
 <sup>5</sup> lagrings gränsen är den totala innehålls storleken i tillfällig lagring över alla appar i samma app service plan. Förbruknings planen använder Azure Files för tillfällig lagring.  
 <sup>6</sup> när din Function-app finns i en [förbruknings plan](../articles/azure-functions/consumption-plan.md)stöds endast alternativet CNAME. För Function-appar i en [Premium-plan](../articles/azure-functions/functions-premium-plan.md) eller en [App Service plan](../articles/azure-functions/dedicated-plan.md)kan du mappa en anpassad domän med antingen en CNAME-eller en a-post.  
 <sup>7</sup> garanterat i upp till 60 minuter.  
-<sup>8</sup> arbetare är roller som är värdar för kund program. Arbetare är tillgängliga i tre fasta storlekar: en vCPU/3,5 GB RAM; Två vCPU/7 GB RAM-minne; Fyra vCPU/14 GB RAM-minne.
+<sup>8</sup> arbetare är roller som är värdar för kund program. Arbetare är tillgängliga i tre fasta storlekar: en vCPU/3,5 GB RAM; Två vCPU/7 GB RAM-minne; Fyra vCPU/14 GB RAM-minne.   
+<sup>9</sup> när du kör på Linux i en Premium-plan är du för närvarande begränsad till 20 instanser.  
+<sup>10</sup> se [App Service gränser](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits) för mer information.
