@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449619"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026631"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -147,6 +147,11 @@ Om du använder följande funktioner för kopierings aktivitet stöds inte härk
 - Alternativ för identifiering av källbild för filbaserade butiker.
 - Kopiera data till filbaserad Sink med inställningen Maximalt antal rader per fil.
 - Lägg till ytterligare kolumner under kopieringen.
+
+I ytterligare till härkomst rapporteras data till gångens schema (visas i fliken till gångs > schema) för följande kopplingar:
+
+- CSV-och Parquet-filer på Azure Blob, Azure File Storage, ADLS Gen1, ADLS Gen2 och Amazon S3
+- Azure Datautforskaren, Azure SQL Database, Azure SQL-hanterad instans, Azure Synapse Analytics, SQL Server, Teradata
 
 ### <a name="data-factory-data-flow-support"></a>Stöd för Data Factory data flöde
 

@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure SQL Database
 description: Visar Azure Policy inbyggda princip definitioner för Azure SQL Database och SQL-hanterad instans. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 111b8ea97486d94a97ce6603f0fccfbbbf9e13c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 058105eee2aa15baa6deb44986f7f8d68842eb81
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594139"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035734"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure Policy inbyggda definitioner för Azure SQL Database & SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

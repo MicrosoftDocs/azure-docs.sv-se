@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2a5ba6cb0778e0c013f150d787d694b23f0497bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a53db9deb07863010c792943c71eb0af5d845af8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218017"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026513"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilera Live Azure App Service-appar med Application Insights
 
@@ -58,7 +58,7 @@ Du kan ange dessa värden med hjälp av [Azure Resource Manager mallar](./azure-
 
 ## <a name="enable-profiler-for-other-clouds"></a>Aktivera profiler för andra moln
 
-För närvarande är de enda regionerna som kräver slut punkts ändringar [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) och [Azure Kina](https://docs.microsoft.com/azure/china/resources-developer-guide).
+För närvarande är de enda regionerna som kräver slut punkts ändringar [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) och [Azure Kina](/azure/china/resources-developer-guide).
 
 |Programinställning    | Moln för amerikanska myndigheter | Kina, moln |   
 |---------------|---------------------|-------------|
@@ -83,4 +83,3 @@ Profiler-filer kan tas bort när du använder WebDeploy för att distribuera än
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png
 [disable-profiler-webjob]: ./media/profiler/disable-profiler-webjob.png
-

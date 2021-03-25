@@ -3,16 +3,16 @@ title: Åtgärds regler för Azure Monitor aviseringar
 description: Att förstå vilka åtgärds regler i Azure Monitor är och hur du konfigurerar och hanterar dem.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471676"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036789"
 ---
 # <a name="action-rules-preview"></a>Åtgärds regler (förhands granskning)
 
-Med åtgärds regler kan du definiera eller ignorera åtgärder i Azure Resource Manager omfång (Azure-prenumeration, resurs grupp eller mål resurs). De har olika filter som hjälper dig att begränsa den specifika delmängd av varnings instanser som du vill vidta åtgärder för.
+Med åtgärds regler kan du lägga till eller undertrycka åtgärds grupper i dina utlösta aviseringar. En enskild regel kan omfatta olika omfång av mål resurser, till exempel en avisering på en viss resurs (till exempel en viss virtuell dator) eller en avisering som Aktiver ATS för en resurs i en prenumeration. Du kan också lägga till olika filter för att kontrol lera vilka aviseringar som täcks av en regel och definiera ett schema för den, till exempel för att den bara gäller utanför kontors tid eller under ett planerat underhålls fönster.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ Det finns många scenarier där det är praktiskt att ignorera de meddelanden so
 Med åtgärds regler kan du förenkla processen. Genom att definiera åtgärder i skala kan en åtgärds grupp aktive ras för alla aviseringar som genereras i det konfigurerade omfånget. I det tidigare exemplet kan teamet definiera en åtgärds regel på **conto sorg** som utlöser samma åtgärds grupp för alla aviseringar som genereras i den.
 
 > [!NOTE]
-> Åtgärds regler gäller för närvarande inte för Azure Service Health aviseringar.
+> Åtgärds regler gäller inte för Azure Service Health aviseringar.
 
 ## <a name="configuring-an-action-rule"></a>Konfigurera en åtgärdsregel
 
@@ -308,7 +308,7 @@ På [sidan aviserings lista](./alerts-managing-alert-instances.md)kan du välja 
 
 Under tryckning prioriteras alltid i samma omfång.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Vad händer om jag har en resurs som övervakas i två separata åtgärds regler? Får jag ett eller två meddelanden? Till exempel **VM2** i följande scenario:
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Vad händer om jag har en resurs som omfattas av två åtgärds regler? Får jag ett eller två meddelanden? Till exempel **VM2** i följande scenario:
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

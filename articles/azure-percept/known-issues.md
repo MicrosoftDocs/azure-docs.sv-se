@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 03/03/2021
-ms.openlocfilehash: a04e53c8444a01bc42f3ce71393fc842f3419e74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a3f44f3d0cdf024bca12b0023891f21175f52b47
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102193538"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026946"
 ---
 # <a name="known-issues"></a>Kända problem
 
@@ -30,7 +30,7 @@ Om du stöter på något av dessa problem är det inte nödvändigt att öppna e
 | Enhets uppdatering | Användare kan få ett meddelande om att uppdateringen misslyckades, även om den lyckades. | Bekräfta att enheten har uppdaterats genom att navigera till enheten på enheten i IoT Hub. Detta korrigeras efter den första uppdateringen. |
 | Enhets uppdatering | Användare kan förlora sina Wi-Fi anslutnings inställningar efter den första uppdateringen. | Kör genom att aktivera den här funktionen när du har uppdaterat för att konfigurera den Wi-Fi anslutningen. Detta korrigeras efter den första uppdateringen. |
 | Enhets uppdatering | När du har genomfört en OTA-uppdatering kan användarna inte längre logga in via SSH med hjälp av tidigare skapade användar konton och nya SSH-användare kan inte skapas genom den här funktionen. Det här problemet påverkar system som utför OTA-uppdateringar från följande förinstallerade avbildnings versioner: 2020.110.114.105 och 2020.109.101.105. | För att återställa dina användar profiler, utför följande steg efter OTA-uppdateringen: <br> [Ssh i din devkit](./how-to-ssh-into-percept-dk.md) med "root" som användar namn. Om du inaktiverade SSH-slutanvändarens inloggning genom att aktivera den här funktionen måste du aktivera den igen. Kör det här kommandot när du har anslutit: <br> ```mkdir -p /var/custom-configs/home; chmod 755 /var/custom-configs/home``` <br> Om du vill återställa tidigare användares hem data kör du följande kommando: <br> ```mkdir -p /tmp/prev-rootfs && mount /dev/mmcblk0p3 /tmp/prev-rootfs && [ ! -L /tmp/prev-rootfs/home ] && cp -a /tmp/prev-rootfs/home/* /var/custom-configs/home/. && echo "User home migrated!"; umount /tmp/prev-rootfs``` |
-| Enhets uppdatering | När du har tagit en OTA uppdatering försvinner uppdaterings grupper. | Uppdatera enhetens tagg genom att följa [dessa anvisningar](https://docs.microsoft.com/azure/azure-percept/how-to-update-over-the-air#create-a-device-update-group). |
+| Enhets uppdatering | När du har tagit en OTA uppdatering försvinner uppdaterings grupper. | Uppdatera enhetens tagg genom att följa [dessa anvisningar](./how-to-update-over-the-air.md#create-a-device-update-group). |
 | Installations program för dev tools Pack | Valfri Caffe-installation kan Miss lyckas om Docker inte körs på rätt sätt i systemet. | Se till att Docker är installerat och körs och försök sedan Caffe installationen igen. |
 | Installations program för dev tools Pack | Valfri CUDA-installation Miss lyckas på inkompatibla system. | Kontrol lera systemkompatibilitet med CUDA innan du kör installations programmet. |
 | Docker, nätverk IoT Edge | Om det interna nätverket använder 172. x. x. x kan Docker-behållare inte ansluta till kanten. | Lägg till ett särskilt BIP-avsnitt till/etc/Docker/-daemon.jspå filen så här: `{    "bip": "192.168.168.1/24"}` |
