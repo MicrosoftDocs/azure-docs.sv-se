@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952464"
+ms.locfileid: "105024242"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Så här massr du redigera till gångar för att tagga ord listans villkor
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>Så här massr du redigera till gångar för att kommentera klassificeringar, ord listans villkor och ändra kontakter
 
-Den här artikeln beskriver hur du tagga flera ord listor i en lista över valda till gångar i en enda åtgärd.
+Den här artikeln beskriver hur du taggar flera ord listor, klassificeringar, ägare och experter till en lista över valda till gångar i en enda åtgärd.
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>Lägg till till gångar för att visa den valda listan med Sök
 

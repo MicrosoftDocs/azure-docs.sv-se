@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87323510"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024752"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Felsöka verktyg för användar beteende analys i Application Insights
 Har du frågor om [verktyg för användar beteende analys i Application Insights](usage-overview.md): [användare, sessioner, händelser](usage-segmentation.md), [trattar](usage-funnels.md), [användarflöden](usage-flows.md), [kvarhållning](usage-retention.md)eller kohorter? Här är några svar.
@@ -23,7 +23,7 @@ Alla telemetri-händelser i Application Insights ha ett [anonymt användar-ID](.
 
 Om du övervakar en webbapp är den enklaste lösningen att lägga till [Application Insights JavaScript SDK](./javascript.md) till din app, och se till att skript kodfragmentet läses in på varje sida som du vill övervaka. Java Script SDK genererar automatiskt anonyma användar-och sessions-ID: n och fyller sedan i telemetri-händelser med dessa ID: n när de skickas från din app.
 
-Om du övervakar en webb tjänst (inget användar gränssnitt) skapar du [en telemetri-initierare som fyller i egenskaperna anonym användar-ID och sessions-ID](usage-send-user-context.md) enligt din tjänsts begrepp för unika användare och sessioner.
+Om du övervakar en webb tjänst (inget användar gränssnitt) skapar du [en telemetri-initierare som fyller i egenskaperna anonym användar-ID och sessions-ID](./usage-overview.md) enligt din tjänsts begrepp för unika användare och sessioner.
 
 Om din app skickar [autentiserade användar-ID: n](./api-custom-events-metrics.md#authenticated-users)kan du räkna utifrån autentiserade användar-ID: n i användar verktyget. Välj "autentiserade användare" i list rutan "Visa".
 
@@ -50,4 +50,3 @@ Om din app skickar för många anpassade händelse namn ändrar du namnet i kode
 
 ## <a name="get-help"></a>Få hjälp
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-

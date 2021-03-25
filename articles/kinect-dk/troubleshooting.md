@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: fel sökning, uppdatering, bugg, Kinect, feedback, återställning, loggning, tips
-ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b83e2952a9039a52aa3b905e376e5d3beccaf8c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654772"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026597"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Kända problem och fel sökning i Azure Kinect
 
@@ -189,11 +189,17 @@ Brödtext som spårar SDK C#-dokumentationen finns [här](https://microsoft.gith
 
 SDK: n för brödtext stöder processor, CUDA, DirectML (endast Windows) och TensorRT körnings miljöer för att lösa en attityd uppskattnings modell. `K4ABT_TRACKER_PROCESSING_MODE_GPU`Standardvärdet för CUDA-körning av Linux-och DirectML-körningar i Windows. Tre ytterligare lägen har lagts till för att välja vissa körnings miljöer: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` och `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
 
+> [!NOTE]  
+> ONNX-körningsmiljön visar varningar för opcode som inte är accelererade. De kan ignoreras på ett säkert sätt.
+
 ONNX runtime innehåller miljövariabler för att kontrol lera cachelagring av TensorRT-modeller. De rekommenderade värdena är:
-- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
-- ORT_TENSORRT_ENGINE_CACHE_PATH = "sökväg"
+- ORT_TENSORRT_CACHE_ENABLE = 1 
+- ORT_TENSORRT_CACHE_PATH = "sökväg"
 
 Mappen måste skapas innan du startar innehålls spårning.
+
+> [!IMPORTANT]  
+> TensorRT förbearbetar modellen före en härledning som resulterar i utökade start tider jämfört med andra körnings miljöer. Cachelagring av motorn begränsar detta till första körningen men det är bara experimentellt och är särskilt för modellen, ONNX runtime-version, TensorRT-version och GPU-modell.
 
 TensorRT-körnings miljön stöder både FP32 (standard) och FP16. FP16-handel ~ prestanda ökning i 2x för minimal precisions minskning. Ange FP16:
 - ORT_TENSORRT_FP16_ENABLE = 1

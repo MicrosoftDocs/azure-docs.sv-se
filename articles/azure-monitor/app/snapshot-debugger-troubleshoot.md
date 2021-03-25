@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217422"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026461"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Felsöka problem med att aktivera Application Insights Snapshot Debugger eller Visa ögonblicks bilder
 Om du har aktiverat Application Insights Snapshot Debugger för ditt program, men inte ser några ögonblicks bilder för undantag, kan du använda dessa instruktioner för att felsöka.
@@ -20,7 +20,7 @@ Det kan finnas många olika orsaker till att ögonblicks bilder inte genereras. 
 
 ## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Kontrol lera att du använder rätt Snapshot Debugger slut punkt
 
-För närvarande är de enda regionerna som kräver slut punkts ändringar [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) och [Azure Kina](https://docs.microsoft.com/azure/china/resources-developer-guide).
+För närvarande är de enda regionerna som kräver slut punkts ändringar [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) och [Azure Kina](/azure/china/resources-developer-guide).
 
 För App Service och program som använder Application Insights SDK måste du uppdatera anslutnings strängen med hjälp av de åsidosättningar som stöds för Snapshot Debugger enligt definitionen nedan:
 
@@ -28,7 +28,7 @@ För App Service och program som använder Application Insights SDK måste du up
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-Mer information om andra åsidosättningar av anslutningar finns i [Application Insights-dokumentationen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+Mer information om andra åsidosättningar av anslutningar finns i [Application Insights-dokumentationen](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 För Funktionsapp måste du uppdatera `host.json` med de åsidosättningar som stöds nedan:
 

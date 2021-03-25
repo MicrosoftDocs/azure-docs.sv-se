@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b8f9e6f4bc091abbd1bb08ecbd649c1411e5ab20
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2e627e582b47c5174e70f5d21d758148cde8dbdd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095399"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022864"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air"></a>Uppdatera din Azure percept DK över luften
 
@@ -66,7 +66,7 @@ Grupp märkes krav:
 
 1. Lägg till en tagg till din enhet (er).
     1. Gå till **IoT Edge** i det vänstra navigerings fönstret och leta upp din Azure percept dk och navigera till **enheten med dubbla**.
-    1. Lägg till en ny **enhets uppdatering för IoT Hub** märkes värde enligt nedan (ändra ```<CustomTagValue>``` till ditt värde, t. ex. AzurePerceptGroup1). Lär dig mer om enhets dubbla [JSON-dokument Taggar](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins#device-twins).
+    1. Lägg till en ny **enhets uppdatering för IoT Hub** märkes värde enligt nedan (ändra ```<CustomTagValue>``` till ditt värde, t. ex. AzurePerceptGroup1). Lär dig mer om enhets dubbla [JSON-dokument Taggar](../iot-hub/iot-hub-devguide-device-twins.md#device-twins).
 
     ```
     "tags": {

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a8a4f84db140ca442371cb71886bebf9214d3e43
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031489"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026546"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Avancerade funktioner i Azure Metrics Explorer
 
@@ -261,7 +261,7 @@ Genom att klicka på alternativet fel, kommer du att leda till ett anpassat fel 
 
 ### <a name="common-problems-with-drill-into-logs"></a>Vanliga problem med att öka detalj nivån i loggar
 
-* Loggen och frågorna är inaktiverade – om du vill visa rekommenderade loggar och frågor måste du dirigera diagnostikloggar till Log Analytics. Läs [det här dokumentet](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) om du vill veta hur du gör detta. 
+* Loggen och frågorna är inaktiverade – om du vill visa rekommenderade loggar och frågor måste du dirigera diagnostikloggar till Log Analytics. Läs [det här dokumentet](./diagnostic-settings.md) om du vill veta hur du gör detta. 
 * Aktivitets loggar anges bara – funktionen detaljgranska i loggar är bara tillgänglig för utvalda resurs leverantörer. Aktivitets loggar tillhandahålls som standard. 
 
  
@@ -278,4 +278,3 @@ Om du inte ser några data i diagrammet kan du läsa följande felsöknings info
 ## <a name="next-steps"></a>Nästa steg
 
 Information om hur du skapar åtgärds bara instrument paneler med hjälp av mått finns i [skapa anpassade KPI-instrumentpaneler](../app/tutorial-app-dashboards.md).
-

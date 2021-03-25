@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: d3077878dc02066b8ca5dd4441217e584f961725
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 2bdb6a085bd9fa0e9967d723db63f2310a8e02db
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782273"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023103"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Självstudie: utvärdera SQL-instanser för migrering till Azure SQL
 
@@ -32,6 +32,8 @@ I den här guiden får du lära dig att:
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar.
 
 - Innan du följer den här självstudien för att utvärdera SQL Server instanser för migrering till Azure SQL kontrollerar du att du har identifierat de SQL-instanser som du vill utvärdera med hjälp av Azure Migrate-installationen, [följer den här kursen](tutorial-discover-vmware.md)
+- Om du vill testa den här funktionen i ett befintligt projekt måste du kontrol lera att du har slutfört [kraven](how-to-discover-sql-existing-project.md) i den här artikeln.
+
 
 ## <a name="run-an-assessment"></a>Köra en utvärdering
 Kör en utvärdering på följande sätt:

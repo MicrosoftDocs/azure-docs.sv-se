@@ -1,7 +1,7 @@
 ---
-title: Snabb start – Använd Azure Communication Services som anropar klient biblioteket
+title: Snabb start – Använd Azure Communication Services som anropar SDK
 titleSuffix: An Azure Communication Services quickstart
-description: Lär dig mer om kommunikations tjänsterna som anropar klient biblioteks funktioner.
+description: Lär dig mer om kommunikations tjänsterna som anropar SDK-funktioner.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -10,19 +10,19 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5ade06e8338dd810651ccd606c7dc9a313b6fa9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488133"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107772"
 ---
-# <a name="quickstart-use-the-communication-services-calling-client-library"></a>Snabb start: Använd kommunikations tjänsterna som anropar klient biblioteket
+# <a name="quickstart-use-the-communication-services-calling-sdk"></a>Snabb start: Använd kommunikations tjänsterna som anropar SDK
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar klient biblioteket för att lägga till röst-och video samtal till din app.
+Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar SDK för att lägga till röst-och video samtal till din app.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/calling-sdk-js.md)]

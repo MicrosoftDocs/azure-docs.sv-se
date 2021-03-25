@@ -5,16 +5,17 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 03/24/2021
 ms.author: mjbrown
-ms.openlocfilehash: 32c79360606a67cc7e85a43a226bb34c105d5b7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd70e196180c68d6a498d147493411e6d1703e59
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93333400"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034052"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Hantera API-resurser för Azure Cosmos DB Core (SQL) med Azure Resource Manager-mallar
+
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 I den här artikeln får du lära dig hur du använder Azure Resource Manager mallar för att distribuera och hantera dina Azure Cosmos DB-konton, databaser och behållare.
@@ -69,6 +70,16 @@ Den här mallen skapar ett Azure Cosmos-konto, en databas och en container med e
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Distribuera till Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
+
+<a id="create-rbac"></a>
+
+## <a name="azure-cosmos-db-account-with-azure-ad-and-rbac"></a>Azure Cosmos DB konto med Azure AD och RBAC
+
+Den här mallen skapar ett SQL Cosmos-konto, en internt underhållen roll definition och en internt underhållen roll tilldelning för en AAD-identitet. Den här mallen är också tillgänglig för ett-Klicka på distribuera från galleriet för Azure snabb starts mallar.
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Distribuera till Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-rbac%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-rbac/azuredeploy.json":::
 
 <a id="free-tier"></a>
 

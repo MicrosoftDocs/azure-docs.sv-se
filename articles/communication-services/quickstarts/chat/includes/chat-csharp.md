@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 127031479d7ef414298d3096ebef814df1fe9a18
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495433"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027973"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -115,6 +115,17 @@ string threadId = "<THREAD_ID>";
 ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
+## <a name="list-all-chat-threads"></a>Lista alla chatt trådar
+Används `GetChatThreads` för att hämta alla chatt-trådar som användaren ingår i.
+
+```csharp
+AsyncPageable<ChatThreadItem> chatThreadItems = chatClient.GetChatThreadsAsync();
+await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
+{
+    Console.WriteLine($"{ chatThreadItem.Id}");
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Skicka ett meddelande till en chatt-tråd
 
 Används `SendMessage` för att skicka ett meddelande till en tråd.
@@ -125,16 +136,6 @@ Används `SendMessage` för att skicka ett meddelande till en tråd.
 
 ```csharp
 var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
-```
-## <a name="get-a-message"></a>Hämta ett meddelande
-
-Används `GetMessage` för att hämta ett meddelande från tjänsten.
-`messageId` är det unika ID: t för meddelandet.
-
-`ChatMessage` är svaret som returnerades från att hämta ett meddelande, det innehåller ett ID, som är den unika identifieraren för meddelandet, bland andra fält. Se Azure. Communication. chat. ChatMessage
-
-```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Ta emot Chat-meddelanden från en chatt-tråd
@@ -167,25 +168,6 @@ await foreach (ChatMessage message in allMessages)
 
 Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="update-a-message"></a>Uppdatera ett meddelande
-
-Du kan uppdatera ett meddelande som redan har skickats genom att anropa `UpdateMessage` `ChatThreadClient` .
-
-```csharp
-string id = "id-of-message-to-edit";
-string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
-```
-
-## <a name="deleting-a-message"></a>Ta bort ett meddelande
-
-Du kan ta bort ett meddelande genom att `DeleteMessage` anropa `ChatThreadClient` .
-
-```csharp
-string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(messageId: id);
-```
-
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
 När en tråd har skapats kan du lägga till och ta bort användare från den. Genom att lägga till användare ger du dem åtkomst till att kunna skicka meddelanden till tråden och lägga till/ta bort andra deltagare. Innan du anropar `AddParticipants` bör du se till att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
@@ -209,14 +191,6 @@ var participants = new[]
 
 await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
-## <a name="remove-user-from-a-chat-thread"></a>Ta bort användare från en chatt-tråd
-
-På samma sätt som du lägger till en användare i en tråd kan du ta bort användare från en chatt-tråd. För att göra det måste du spåra identiteten `CommunicationUser` för den deltagare som du har lagt till.
-
-```csharp
-var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
-```
 
 ## <a name="get-thread-participants"></a>Få tråd deltagare
 
@@ -230,14 +204,6 @@ await foreach (ChatParticipant participant in allParticipants)
 }
 ```
 
-## <a name="send-typing-notification"></a>Skicka meddelande vid inmatning
-
-Används `SendTypingNotification` för att ange att användaren skriver ett svar i tråden.
-
-```csharp
-await chatThreadClient.SendTypingNotificationAsync();
-```
-
 ## <a name="send-read-receipt"></a>Skicka Läs kvitto
 
 Används `SendReadReceipt` för att meddela andra deltagare att meddelandet har lästs av användaren.
@@ -246,17 +212,6 @@ Används `SendReadReceipt` för att meddela andra deltagare att meddelandet har 
 await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
-## <a name="get-read-receipts"></a>Hämta Läs kvitton
-
-Använd `GetReadReceipts` för att kontrol lera status för meddelanden för att se vilka som har lästs av andra deltagare i en chatt-tråd.
-
-```csharp
-AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
-await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
-{
-    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
-}
-```
 ## <a name="run-the-code"></a>Kör koden
 
 Kör programmet från program katalogen med `dotnet run` kommandot.

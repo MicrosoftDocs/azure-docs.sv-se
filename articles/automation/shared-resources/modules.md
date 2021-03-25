@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 57dfc388dcba926706a695c93d2afa1956432be8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503427"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953943"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Använda moduler i Azure Automation
 
@@ -142,10 +142,10 @@ Om du importerar en AZ-modul till ditt Automation-konto importeras modulen inte 
 
 * När en Runbook anropar en cmdlet från en modul.
 * När en Runbook importerar modulen explicit med cmdleten [import-module](/powershell/module/microsoft.powershell.core/import-module) .
-* När en Runbook importerar modulen uttryckligen med instruktionen [using-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) . Using-instruktionen stöds från och med Windows PowerShell 5,0 och stöder import av klasser och Enum-typ.
+* När en Runbook importerar modulen uttryckligen med instruktionen [using-module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) . Using-instruktionen stöds från och med Windows PowerShell 5,0 och stöder import av klasser och Enum-typ.
 * När en Runbook importerar en annan beroende modul.
 
-Du kan importera AZ-modulerna i Azure Portal. Kom ihåg att endast importera de AZ-moduler som du behöver, inte hela AZ. Automation-modulen. Eftersom [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) är ett beroende för de andra AZ-modulerna måste du importera den här modulen innan andra.
+Du kan importera AZ-modulerna till Automation-kontot från Azure Portal. Kom ihåg att importera endast de AZ-moduler som du behöver, inte alla AZ-moduler som är tillgängliga. Eftersom [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) är ett beroende för de andra AZ-modulerna måste du importera den här modulen innan andra.
 
 1. Från ditt Automation-konto, under **delade resurser**, väljer du **moduler**.
 2. Välj **Bläddra i galleriet**.  

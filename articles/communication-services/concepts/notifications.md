@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9bf3067737ee1f4e15deaf31677513e5ac99cbd1
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657050"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108136"
 ---
 # <a name="communication-services-notifications"></a>Meddelanden om kommunikations tjänster
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Azure Communication Services chatt och anropar klient bibliotek skapar en meddelande kanal i real tid som gör det möjligt att skicka meddelanden till anslutna klienter på ett effektivt och tillförlitligt sätt. På så sätt kan du bygga avancerade funktioner i real tid i dina program utan att behöva implementera logik för komplicerad HTTP-avsökning. Men i mobila program förblir den här signal kanalen bara ansluten när ditt program är aktivt i förgrunden. Om du vill att användarna ska kunna ta emot inkommande samtal eller chatta när ditt program är i bakgrunden, bör du använda push-meddelanden.
+Azure Communication Services chatt och anropar SDK: er skapa en meddelande kanal i real tid som gör det möjligt att skicka meddelanden till anslutna klienter på ett effektivt och tillförlitligt sätt. På så sätt kan du bygga avancerade funktioner i real tid i dina program utan att behöva implementera logik för komplicerad HTTP-avsökning. Men i mobila program förblir den här signal kanalen bara ansluten när ditt program är aktivt i förgrunden. Om du vill att användarna ska kunna ta emot inkommande samtal eller chatta när ditt program är i bakgrunden, bör du använda push-meddelanden.
 
 Med push-meddelanden kan du skicka information från ditt program till användarnas mobila enheter. Du kan använda push-meddelanden för att visa en dialog ruta, spela upp ett ljud eller visa inkommande samtals gränssnitt. Azure Communication Services ger integration med [Azure Event Grid](../../event-grid/overview.md) och [Azure-Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) som gör att du kan lägga till push-meddelanden till dina appar.
 

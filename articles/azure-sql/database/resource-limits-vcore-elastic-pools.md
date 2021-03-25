@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/23/2021
-ms.openlocfilehash: 22653b54e53e181d27c8abe966acb91cb8c84214
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023868"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107864"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resurs begränsningar för elastiska pooler med vCore inköps modell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Lagringstyp|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup>|2800|3200|3600|4000|6400|9600|
-|Högsta logg hastighet per pool (Mbit/s)|42|48|48|48|48|48|
+|Högsta logg hastighet per pool (Mbit/s)|42|48|54|60|62,5|62,5|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|1470|1 680|1890|2100|3 360|5040|
 |Maximal pool för samtidiga inloggningar (begär Anden) <sup>3</sup>|1470|1 680|1890|2100|3 360|5040|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -120,7 +120,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Lagringstyp|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|Högsta logg hastighet per pool (Mbit/s)|12|24|36|48|48|48|48|
+|Högsta logg hastighet per pool (Mbit/s)|12|24|36|48|60|62,5|62,5|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -152,7 +152,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Lagringstyp|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup> |6 400|7 200|8,000|9 600|12 800|16 000|16 000|
-|Högsta logg hastighet per pool (Mbit/s)|48|48|48|48|48|48|48|
+|Högsta logg hastighet per pool (Mbit/s)|62,5|62,5|62,5|62,5|62,5|62,5|62,5|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|1 680|1890|2100|2 520|3 360|4200|8400|
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|1 680|1890|2100|2 520|3 360|4200|8400|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -186,7 +186,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup>|2560|3200|3840|4480|5120|
-|Högsta logg hastighet per pool (Mbit/s)|48|48|48|48|48|
+|Högsta logg hastighet per pool (Mbit/s)|48|60|62,5|62,5|62,5|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|400|500|600|700|800|
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|800|1000|1200|1400|1600|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|
@@ -195,7 +195,6 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
-
 
 <sup>1</sup> se [resurs hantering i tätare elastiska pooler](elastic-pool-resource-management.md) för ytterligare överväganden.
 
@@ -219,7 +218,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup>|5760|6400|7680|10240|11520|12800|
-|Högsta logg hastighet per pool (Mbit/s)|48|48|48|48|48|48|
+|Högsta logg hastighet per pool (Mbit/s)|62,5|62,5|62,5|62,5|62,5|62,5|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -234,7 +233,6 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 <sup>2</sup> det maximala värdet för IO-storlekar mellan 8 kb och 64 kB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 <sup>3</sup> för maximalt antal samtidiga arbetare (begär Anden) för enskilda databaser, se [gränser för enskilda databas resurser](resource-limits-vcore-single-databases.md). Om den elastiska poolen exempelvis använder Gen5 och Max vCore per databas anges till 2, är värdet för Max samtidiga arbets tagare 200.  Om max vCore per databas är inställt på 0,5, är Max värdet för samtidiga arbetare 50 sedan på Gen5. det finns högst 100 samtidiga arbetare per vCore. För andra Max vCore-inställningar per databas som är mindre än 1 vCore eller mindre, skalas antalet samtidiga arbets tagare på samma sätt.
-
 
 ## <a name="general-purpose---provisioned-compute---dc-series"></a>Allmänt syfte – etablerad beräkning – DC-serien
 
@@ -252,7 +250,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Lagringstyp|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup>|800|1600|2400|3200|
-|Högsta logg hastighet per pool (Mbit/s)|9,4|18,8|28,1|32,8|
+|Högsta logg hastighet per pool (Mbit/s)|12|24|36|48|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|168|336|504|672|
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|168|336|504|672|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
@@ -446,12 +444,12 @@ Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i 
 |Beräknings generation|M-serien|M-serien|M-serien|M-serien|M-serien|
 |Virtuella kärnor|20|24|32|64|128|
 |Minne (GB)|588,6|706,3|941,8|1883,5|3767,0|
-|Max antal databaser per pool <sup>1</sup>|100|100|100|100|100|100|
+|Max antal databaser per pool <sup>1</sup>|100|100|100|100|100|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|
 |Minnes intern OLTP-lagring (GB)|172|216|304|704|1768|
 |Maximal data storlek (GB)|1280|1536|2048|4096|4096|
 |Största logg storlek (GB)|427|512|683|1024|1024|
-|Maximal data storlek för TempDB (GB)|4096|2048|1024|768|640|
+|Maximal data storlek för TempDB (GB)|640|768|1024|2048|4096|
 |Lagringstyp|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|
 |I/o-latens (ungefärligt)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|
 |Max data IOPS per pool <sup>2</sup>|31 248|37 497|49 996|99 993|160 000|
