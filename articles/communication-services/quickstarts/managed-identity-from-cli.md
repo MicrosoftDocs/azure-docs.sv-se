@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: b49ee61f3ee4ea8e8a177bca6aa566a07b7ef113
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044744"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110686"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Bevilja åtkomst med hanterad identitet till kommunikations resursen i utvecklings miljön
 
-Klient biblioteket för Azure Identity ger Azure Active Directory (Azure AD) stöd för token-autentisering för Azure SDK. De senaste versionerna av klient biblioteken för Azure Communication Services för .NET, Java, python och Java Script integreras med Azure Identity Library för att tillhandahålla ett enkelt och säkert sätt att skaffa en OAuth 2,0-token för auktorisering av Azure Communication Services-begäranden.
+Azure Identity SDK ger Azure Active Directory (Azure AD) stöd för token-autentisering för Azure SDK. De senaste versionerna av Azure Communication Services SDK: er för .NET, Java, python och Java Script integreras med Azure Identity Library för att tillhandahålla ett enkelt och säkert sätt att skaffa en OAuth 2,0-token för auktorisering av Azure Communication Services-begäranden.
 
-En fördel med klient biblioteket för Azure Identity är att du kan använda samma kod för att autentisera över flera tjänster oavsett om programmet körs i utvecklings miljön eller i Azure. Klient biblioteket för Azure Identity autentiserar ett säkerhets objekt. När din kod körs i Azure är säkerhets objekt en hanterad identitet för Azure-resurser. I utvecklings miljön finns inte den hanterade identiteten, så klient biblioteket autentiserar antingen användaren eller ett registrerat program i test syfte.
+En fördel med Azure Identity SDK är att du kan använda samma kod för att autentisera över flera tjänster oavsett om programmet körs i utvecklings miljön eller i Azure. Azure Identity SDK autentiserar ett säkerhets objekt. När din kod körs i Azure är säkerhets objekt en hanterad identitet för Azure-resurser. I utvecklings miljön finns inte den hanterade identiteten, så att SDK: n autentiserar antingen användaren eller ett registrerat program i test syfte.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -35,7 +35,7 @@ Hanterade identiteter bör vara aktiverade på de Azure-resurser som du ska aukt
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-mall](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager klient bibliotek](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager SDK: er](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [Apptjänster](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>Autentisera ett registrerat program i utvecklings miljön
@@ -68,7 +68,7 @@ az ad sp create-for-rbac --name <application-name>
 
 #### <a name="set-environment-variables"></a>Ange miljövariabler
 
-Klient biblioteket för Azure Identity läser värden från tre miljövariabler vid körning för att autentisera programmet. I följande tabell beskrivs det värde som ska anges för varje miljö variabel.
+Azure Identity SDK läser värden från tre miljövariabler vid körning för att autentisera programmet. I följande tabell beskrivs det värde som ska anges för varje miljö variabel.
 
 |Miljövariabel|Värde
 |-|-

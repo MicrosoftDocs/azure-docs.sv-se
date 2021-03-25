@@ -6,15 +6,15 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 03/27/2021
+ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 316a78f4725aa3c33a78b00c6de3b8419aea717e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a7dcd630b0d5987c796ebb5a02657af9130221e6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600215"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045628"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Vad är Azure Synapse Analytics?
 
@@ -46,7 +46,7 @@ Azure Synapse tar bort de traditionella teknik barriärerna mellan att använda 
 * SQL och Spark kan direkt utforska och analysera Parquet-, CSV-, TSV-och JSON-filer som lagras i data Lake.
 * Snabb skalbar belastning och borttagning av data som går mellan SQL-och Spark-databaser
 
-## <a name="built-in-data-integration-via-pipelines"></a>Inbyggd data integrering via pipelines
+## <a name="built-in-data-integration"></a>Inbyggd data integrering
 
 Azure Synapse innehåller samma data integrerings motor och upplevelser som Azure Data Factory, så att du kan skapa omfattande ETL-pipeliner utan att lämna Azure Synapse Analytics.
 
