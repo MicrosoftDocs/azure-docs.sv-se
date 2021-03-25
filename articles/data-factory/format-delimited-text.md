@@ -4,14 +4,14 @@ description: I det här avsnittet beskrivs hur du hanterar avgränsat text forma
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 03/23/2021
 ms.author: jingwang
-ms.openlocfilehash: 5b6367d2765277493ea34a4f7a23cae4b24c4dc4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: daf3691b48f7bf12e9ef51de7d4253dad9dbd2b1
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100386602"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026878"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Avgränsat text format i Azure Data Factory
 
@@ -183,8 +183,10 @@ I tabellen nedan visas de egenskaper som stöds av en avgränsad text mottagare.
 | Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Rensa mappen | Om målmappen rensas innan den skrivs | nej | `true` eller `false` | truncate |
-| Fil namns alternativ | Namngivnings formatet för de data som skrivits. Som standard är en fil per partition i format `part-#####-tid-<guid>` | nej | Mönster: sträng <br> Per partition: sträng [] <br> Som data i kolumnen: sträng <br> Utdata till en enskild fil: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Fil namns alternativ | Namngivnings formatet för de data som skrivits. Som standard är en fil per partition i format `part-#####-tid-<guid>` | nej | Mönster: sträng <br> Per partition: sträng [] <br> Namn fil som kolumn data: sträng <br> Utdata till en enskild fil: `['<fileName>']` <br> Namnge mapp som kolumn data: sträng | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames <br> rowFolderUrlColumn |
 | Offert alla | Omge alla värden i citat tecken | nej | `true` eller `false` | quoteAll |
+
+rowFolderUrlColumn:
 
 ### <a name="sink-example"></a>Sink-exempel
 

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 405bcd4f3839b99879f76c23060ba24062b279de
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 91b3097e465458181074d1e450e69f267d0fe556
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019807"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026793"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Snabb start: Distribuera Azure IoT Connector för FHIR (för hands version) med Azure Portal
 
@@ -169,14 +169,20 @@ Distribuera [program mal len för kontinuerlig övervakning av patienter](../../
 > När dina riktiga enheter är klara kan du använda samma IoT Central-program för att [publicera dina enheter](../../iot-central/core/howto-set-up-template.md) och ersätta enhets simulatorer. Enhets data kommer automatiskt att börja flöda till FHIR. 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Anslut dina IoT-data med Azure IoT Connector för FHIR (för hands version)
-> [!WARNING]
-> Den enhets mappnings mall som anges i den här guiden är utformad för att fungera med data export (bakåtkompatibelt) i IoT Central.
 
-När du har distribuerat ditt IoT Central-program börjar du skapa telemetri genom att använda dina två färdiga simulerade enheter. I den här självstudien tar vi in Telemetrin från *smarta viktigare korrigerings* Simulator i FHIR via Azure IoT-anslutningen för FHIR. Om du vill exportera dina IoT-data till Azure IoT-anslutningsprogrammet för FHIR ska vi [ställa in en kontinuerlig data export i IoT Central](../../iot-central/core/howto-export-data-legacy.md). På sidan kontinuerlig data export:
-- Välj *Azure-Event Hubs* som export mål.
-- Välj *Använd ett värde för anslutnings sträng* för fältet **Event Hubs namn område** .
+När du har distribuerat ditt IoT Central-program börjar du skapa telemetri genom att använda dina två färdiga simulerade enheter. I den här självstudien tar vi in Telemetrin från *smarta viktigare korrigerings* Simulator i FHIR via Azure IoT-anslutningen för FHIR. Om du vill exportera dina IoT-data till Azure IoT-anslutningsprogrammet för FHIR ska vi [ställa in en kontinuerlig data export i IoT Central](../../iot-central/core/howto-export-data.md). Vi måste först skapa en anslutning till målet och sedan ska vi skapa ett data export jobb för kontinuerlig körning: 
+
+Skapa ett nytt mål:
+- Gå till fliken **destinationer** och skapa ett nytt mål.
+- Börja med att ge ditt mål ett unikt namn.
+- Välj *Azure-Event Hubs* som typ av mål.
 - Tillhandahåll Azure IoT Connector för FHIR anslutnings sträng som hämtades i föregående steg för fältet **anslutnings sträng** .
-- Behåll **telemetri** - *alternativet* för **data att exportera** fält.
+
+Skapa en ny data export:
+- När du har skapat målet går du till fliken **Exportera** och skapar en ny data export. 
+- Börja med att ge den data exporten ett unikt namn.
+- Under **data** väljer du *telemetri* som den *typ av data som ska exporteras*.
+- Under **mål** väljer du det mål namn som du skapade i föregående namn.
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Visa enhets data i Azure API för FHIR
 

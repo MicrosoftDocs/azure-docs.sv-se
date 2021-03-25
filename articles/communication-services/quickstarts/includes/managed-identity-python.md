@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 50707b46445803ee27118ee72b90a237a3e76200
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b37ebebdb99530ab615a313d9b269b9ce937b7f1
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103021059"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110784"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution"></a>Lägg till hanterad identitet i kommunikations tjänst lösningen
 
-### <a name="install-the-client-library-packages"></a>Installera klient biblioteks paketen
+### <a name="install-the-sdk-packages"></a>Installera SDK-paketen
 
 ```console
 pip install azure-identity
@@ -16,7 +16,7 @@ pip install azure-communication-identity
 pip install azure-communication-sms
 ```
 
-### <a name="use-the-client-library-packages"></a>Använda klient biblioteks paketen
+### <a name="use-the-sdk-packages"></a>Använda SDK-paketen
 
 Lägg till följande `import` i koden för att använda Azure-identiteten.
 

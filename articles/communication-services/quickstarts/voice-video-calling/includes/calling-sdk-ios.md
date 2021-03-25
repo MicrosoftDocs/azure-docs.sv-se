@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d36bf92a1b1bdef4e45b22b934728b3e8c46c3da
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488141"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107769"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -23,7 +23,7 @@ ms.locfileid: "103488141"
 ### <a name="creating-the-xcode-project"></a>Skapa Xcode-projektet
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 8 av det anropande klient biblioteket.
+> Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.
 
 I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy** . I den här snabb starten används [SwiftUI-ramverket](https://developer.apple.com/xcode/swiftui/), så du bör ange **språket** till **Swift** och **användar gränssnittet** för **SwiftUI**. Du kommer inte att skapa enhets test eller UI-tester under den här snabb starten. Avmarkera **ta med enhets test** och avmarkera **Inkludera UI-tester**.
 
@@ -68,12 +68,12 @@ import AVFoundation
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient bibliotek för iOS.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK för iOS.
 
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.|
+| CallClient | CallClient är den huvudsakliga start punkten för den anropande SDK: n.|
 | CallAgent | CallAgent används för att starta och hantera samtal. |
 | CommunicationTokenCredential | CommunicationTokenCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.| 
 | CommunicationIdentifier | CommunicationIdentifier används för att representera identiteten för användaren som kan vara något av följande: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
@@ -131,7 +131,7 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Placera ett utgående samtal
 
-Om du vill skapa och starta ett samtal måste du anropa ett av API: erna på `CallAgent` och tillhandahålla kommunikations tjänst identiteten för en användare som du har etablerad med klient biblioteket för hantering av kommunikations tjänster.
+Om du vill skapa och starta ett anrop måste du anropa ett av API: erna på `CallAgent` och tillhandahålla kommunikations tjänst identiteten för en användare som du har etablerad med hjälp av kommunikations tjänst hantering SDK.
 
 Skapande av anrop och start är synkront. Du får en samtals instans som gör att du kan prenumerera på alla händelser på samtalet.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524676"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109020"
 ---
 # <a name="continuous-access-evaluation"></a>Utvärdering av kontinuerlig åtkomst
 
@@ -52,6 +52,9 @@ Utvärdering av kontinuerlig åtkomst implementeras genom att aktivera tjänster
 
 Den här processen gör det möjligt för användaren att förlora åtkomsten till SharePoint Online-filer, e-post, kalender eller uppgifter i organisationen, och team från Microsoft 365-klientens appar i minuter efter en av dessa kritiska händelser. 
 
+> [!NOTE] 
+> Team stöder inte användar risk händelser ännu.
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>Utvärdering av princip för villkorlig åtkomst (för hands version)
 
 Exchange och SharePoint kan synkronisera viktiga principer för villkorlig åtkomst så att de kan utvärderas i själva tjänsten.
@@ -59,11 +62,11 @@ Exchange och SharePoint kan synkronisera viktiga principer för villkorlig åtko
 Den här processen gör det möjligt för användaren att förlora åtkomst till organisatoriska filer, e-post, kalender eller uppgifter från Microsoft 365-klient program eller SharePoint Online omedelbart efter ändringar i nätverks platsen.
 
 > [!NOTE]
-> Det finns inte stöd för all kombination av appar och resurs leverantörer. Se tabellen nedan. Office refererar till Word, Excel och PowerPoint
+> Det finns inte stöd för all kombination av appar och resurs leverantörer. Se tabellen nedan. Office refererar till Word, Excel och PowerPoint.
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Stöds | Stöds | Stöds inte | Stöds inte | Stöds |
+| **SharePoint Online** | Stöds | Stöds | Stöds | Stöds | Stöds |
 | **Exchange Online** | Stöds | Stöds | Stöds | Stöds | Stöds |
 
 | | Office-webbappar | Office Win32-appar | Office för iOS | Office för Android | Office för Mac |
@@ -71,23 +74,20 @@ Den här processen gör det möjligt för användaren att förlora åtkomst till
 | **SharePoint Online** | Stöds inte | Stöds | Stöds | Stöds | Stöds |
 | **Exchange Online** | Stöds inte | Stöds | Stöds | Stöds | Stöds |
 
+| | OneDrive-webb | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive-Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **SharePoint Online** | Stöds | Stöds | Stöds | Stöds | Stöds |
+
 ### <a name="client-side-claim-challenge"></a>Anspråks kontroll på klient Sidan
 
 Innan utvärderingen av den kontinuerliga åtkomsten görs försöker klienter alltid att spela upp åtkomsttoken från sin cache så länge den inte har upphört att gälla. Med CAE presenterar vi ett nytt ärende som en resurs leverantör kan avvisa en token även när den inte har upphört att gälla. För att informera klienter om att kringgå cacheminnet även om cachelagrade token inte har gått ut, introducerar vi en mekanism som kallas **anspråks utmaning** för att indikera att token avvisades och att en ny åtkomsttoken måste utfärdas av Azure AD. CAE kräver en klient uppdatering för att förstå anspråks utmaningen. Den senaste versionen av följande program nedan stöder anspråks utmaning:
 
-- Outlook-fönster
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web App
-- Team för Windows (endast för team resurser)
-- Teams iOS (endast för team resurser)
-- Teams Android (endast för team resurser)
-- Teams Mac (endast för team resurser)
-- Word/Excel/PowerPoint för Windows
-- Word/Excel/PowerPoint för iOS
-- Word/Excel/PowerPoint för Android
-- Word/Excel/PowerPoint för Mac
+| | Webb | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | Stöds | Stöds | Stöds | Stöds | Stöds |
+| **Teams** | Stöds | Stöds | Stöds | Stöds | Stöds |
+| **Office** | Stöds inte | Stöds | Stöds | Stöds | Stöds |
+| **OneDrive** | Stöds | Stöds | Stöds | Stöds | Stöds |
 
 ### <a name="token-lifetime"></a>Livs längd för token
 
@@ -165,9 +165,9 @@ En förklaring av Office Update-kanaler finns i [Översikt över uppdaterings ka
 
 ### <a name="policy-change-timing"></a>Ändrings tid för princip
 
-På grund av risken för fördröjning mellan Azure AD och resurs leverantörer, kan det ta upp till 2 timmar för princip ändringar som görs av administratörer att bli effektiva för Exchange Online.
+Princip ändringar som görs av administratörer kan ta upp till en dag att börja gälla. En del optimeringar har gjorts för att minska fördröjningen till två timmar. Det omfattar dock inte alla scenarier än. 
 
-Exempel: Administratören lägger till en princip för att blockera ett intervall av IP-adresser från åtkomst till e-post på 11:00 AM, en användare som kommer från det IP-intervallet innan de kan komma åt e-post förrän 1:00 PM.
+Om det finns en nöd situation och du måste ha uppdaterade principer som ska tillämpas på vissa användare omedelbart, bör du använda PowerShell- [kommandot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) eller "återkalla session" på sidan användar profil för att återkalla användarnas sessioner, vilket ser till att de uppdaterade principerna kommer att tillämpas omedelbart.
 
 ### <a name="coauthoring-in-office-apps"></a>Samredigering i Office-appar
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ad88a7a6c91128bb863eeb51cc7f26c8d71b9eed
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495801"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107915"
 ---
 # <a name="pricing-scenarios"></a>Prissättnings scenarier
 
@@ -25,7 +25,7 @@ Priserna för Azure Communication Services baseras vanligt vis på en modell dä
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Röst-/video samtal och skärm delning
 
-Azure Communication Services gör det möjligt att lägga till röst-/video samtal och skärm delning till dina program. Du kan bädda in upplevelsen i dina program med hjälp av Java Script, mål-C (Apple), Java (Android) eller .NET-klient bibliotek. Se vår [fullständiga lista över tillgängliga klient bibliotek](./sdk-options.md).
+Azure Communication Services gör det möjligt att lägga till röst-/video samtal och skärm delning till dina program. Du kan bädda in upplevelsen i dina program med hjälp av Java Script, mål-C (Apple), Java (Android) eller .NET SDK: er. Se vår [fullständiga lista över tillgängliga SDK](./sdk-options.md): er.
 
 ### <a name="pricing"></a>Priser
 
@@ -33,9 +33,9 @@ Anrops-och skärm delnings tjänster debiteras per minut per deltagare vid $0,00
 
 Varje deltagare i samtalet debiteras för varje minut som de är anslutna till samtalet. Detta gäller oavsett om användaren är video samtal, röst samtal eller skärm delning.
 
-### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-client-libraries"></a>Prissättnings exempel: gruppera ljud-/video samtal med hjälp av JS-och iOS-klient bibliotek
+### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-sdks"></a>Prissättnings exempel: gruppera ljud-/video samtal med JS-och iOS-SDK: er
 
-Alice gjorde ett grupp samtal med kollegor, Bob och Kalle. Alice och Robert använde JS-klient biblioteken, Kalle-klient bibliotek för iOS.
+Alice gjorde ett grupp samtal med kollegor, Bob och Kalle. Alice och Bob använde JS SDK: er, Kalle iOS SDK: er.
 
 - Anropet varar totalt 60 minuter.
 - Alice och Bob deltog i hela anropet. Alice aktiverade videon i fem minuter och delat sin skärm i 23 minuter. Bob hade videon på hela samtalet (60 minuter) och delat sin skärm i 12 minuter.
@@ -48,9 +48,9 @@ Alice gjorde ett grupp samtal med kollegor, Bob och Kalle. Alice och Robert anv�
 
 **Total kostnad för grupp anropet**: $0,48 + $0,172 = $0,652
 
-### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Prissättnings exempel: en användare av kommunikations tjänstens JS-klient bibliotek ansluter till ett schemalagt Microsoft Teams-möte
+### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Prissättnings exempel: en användare av JavaScript SDK för kommunikations tjänsterna ansluter till ett schemalagt Microsoft Teams-möte
 
-Alice är ett läkare som är ett möte med patienten, Bob. Alice kommer att ansluta till besöket från Teams Skriv bords program. Bob får en länk till att gå med på webbplatsen för hälso vårds leverantören, som ansluter till mötet med hjälp av klient biblioteket för Communication Services JS. Bob använder sin mobil telefon för att ange mötet med en webbläsare (iPhone med Safari). Chatten kommer att vara tillgänglig under det virtuella besöket.
+Alice är ett läkare som är ett möte med patienten, Bob. Alice kommer att ansluta till besöket från Teams Skriv bords program. Bob får en länk till att gå med på webbplatsen för hälsovårds leverantören, som ansluter till mötet med hjälp av kommunikations tjänsternas JavaScript SDK. Bob använder sin mobil telefon för att ange mötet med en webbläsare (iPhone med Safari). Chatten kommer att vara tillgänglig under det virtuella besöket.
 
 - Anropet varar totalt 30 minuter.
 - Alice och Robert deltar i hela samtalet. Alice aktiverar hennes video fem minuter efter att anropet startar och delar sin skärm i 13 minuter. Bob innehåller sin video om hela samtalet.
@@ -67,13 +67,13 @@ Alice är ett läkare som är ett möte med patienten, Bob. Alice kommer att ans
 * Alices medverkan omfattas av hennes team licens. Din Azure-faktura visar de minuter och chattar som team-användare hade för att få hjälp med kommunikations tjänster, men dessa minuter och meddelanden från Team klienten kommer inte att kosta.
 
 **Total kostnad för besöket**:
-- Användare ansluter med kommunikations tjänstens JS-klient bibliotek: $0,12 + $0,0024 = $0,1224
+- Användaren ansluter med kommunikations tjänsterna Java Script SDK: $0,12 + $0,0024 = $0,1224
 - Användare som ansluter till Teams Skriv bords program: $0 (omfattas av team License)
 
 
 ## <a name="chat"></a>Chatt
 
-Med kommunikations tjänster kan du förbättra ditt program med möjligheten att skicka och ta emot chatt meddelanden mellan två eller flera användare. Chat-klient bibliotek är tillgängliga för Java Script, .NET, python och Java. Läs [mer om klient bibliotek på den här sidan](./sdk-options.md)
+Med kommunikations tjänster kan du förbättra ditt program med möjligheten att skicka och ta emot chatt meddelanden mellan två eller flera användare. Chatt-SDK: er är tillgängliga för Java Script, .NET, python och Java. På [den här sidan kan du läsa mer om SDK](./sdk-options.md) : er
 
 ### <a name="price"></a>Pris
 

@@ -10,14 +10,14 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 2739079b67d80f3e4a9f367aaa58f6dcbbb650ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4a9deded16de6b0de2ef5f88ffebd813b8e5b8c0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622314"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110387"
 ---
-Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna Java SMS-klient bibliotek för att skicka SMS-meddelanden.
+Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna Java SMS SDK för att skicka SMS-meddelanden.
 
 Att slutföra den här snabb starten innebär en låg kostnad av några USD cent eller mindre i ditt Azure-konto.
 
@@ -100,7 +100,7 @@ public class App
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS-klient biblioteket för Java.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS SDK för Java.
 
 | Name                                                             | Beskrivning                                                                                     |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
