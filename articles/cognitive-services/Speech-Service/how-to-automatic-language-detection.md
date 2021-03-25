@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185877"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025228"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatisk språk identifiering för tal till text
 
@@ -30,7 +30,7 @@ I den här artikeln får du lära dig hur du använder `AutoDetectSourceLanguage
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatisk språk identifiering med talet SDK
 
-Den automatiska språk identifieringen har för närvarande en gräns på fyra språk per identifiering för tjänster. Behåll den här begränsningen i åtanke när du har byggt ditt `AudoDetectSourceLanguageConfig` objekt. I exemplen nedan skapar du en `AutoDetectSourceLanguageConfig` och använder den sedan för att skapa en `SpeechRecognizer` .
+Den automatiska språk identifieringen har för närvarande en gräns på fyra språk per identifiering för tjänster. Behåll den här begränsningen i åtanke när du har byggt ditt `AutoDetectSourceLanguageConfig` objekt. I exemplen nedan skapar du en `AutoDetectSourceLanguageConfig` och använder den sedan för att skapa en `SpeechRecognizer` .
 
 > [!TIP]
 > Du kan också ange en anpassad modell som ska användas när du utför tal till text. Mer information finns i [använda en anpassad modell för automatisk språk identifiering](#use-a-custom-model-for-automatic-language-detection).

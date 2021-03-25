@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92777749"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034766"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Redundans över flera slut punkter med Azure Traffic Manager
 
@@ -94,7 +94,10 @@ När du har konfigurerat CDN och Traffic Manager profiler följer du dessa steg 
     > [!NOTE]
     > Om din domän är Live och inte kan avbrytas, gör du det här steget sist. Kontrol lera att CDN-slutpunkterna och Traffic Manager-domänerna är aktiva innan du uppdaterar din anpassade domän-DNS till Traffic Manager.
     >
-
+   
+    > [!NOTE]
+    > För att implemeting den här redundansväxla scenerio måste båda slut punkterna finnas i olika profiler och de olika profilerna bör vara av en annan CDN-Provider för att undvika domän namns konflikter.
+    > 
 
 2.  Välj den första CDN-slutpunkten (Akamai) från din Azure CDN profil. Välj **Lägg till anpassad domän** och **cdndemo101.dustydogpetcare.online** för indatamängd. Kontrol lera att kryss rutan kontrol lera att den anpassade domänen är grön. 
 

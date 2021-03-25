@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 52b5aca1e7de87e6decb4152f5e09c4d04988b10
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 067c81d4292f46fcc36a9a9f7033fce93ff30b4b
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585011"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034843"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kubernetes kluster behållares CPU-och minnes resurs gränser får inte överskrida de angivna gränserna](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |Framtvinga gränser för container-CPU och minnes resurser för att förhindra resurs överbelastnings attacker i ett Kubernetes-kluster. Den här principen är allmänt tillgänglig för Kubernetes service (AKS) och för hands versionen av AKS Engine och Azure Arc Enabled Kubernetes. Mer information finns i [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |granska, neka, inaktive rad |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |
 |[Kubernetes kluster behållare bör inte dela värd process-ID eller värd-IPC-namnrymd](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |Blockera Pod-behållare från att dela värd process-ID-namnrymden och värd-IPC-namnrymden i ett Kubernetes-kluster. Denna rekommendation är en del av CIS 5.2.2 och CIS 5.2.3 som är avsedda att förbättra säkerheten i dina Kubernetes-miljöer. Den här principen är allmänt tillgänglig för Kubernetes service (AKS) och för hands versionen av AKS Engine och Azure Arc Enabled Kubernetes. Mer information finns i [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |granska, neka, inaktive rad |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |

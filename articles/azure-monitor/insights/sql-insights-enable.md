@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889628"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025041"
 ---
 # <a name="enable-sql-insights-preview"></a>Aktivera SQL Insights (förhands granskning)
 I den här artikeln beskrivs hur du aktiverar [SQL](sql-insights-overview.md) Insights för att övervaka dina SQL-distributioner. Övervakning utförs från en virtuell Azure-dator som ansluter till dina SQL-distributioner och använder Dynamic Management views (DMV: er) för att samla in övervaknings data. Du kan styra vilka data uppsättningar som samlas in och hur ofta samlingar används med hjälp av en övervaknings profil.
@@ -40,7 +40,7 @@ Verifiera att användaren har skapats.
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Verifiera användar skript för teleympkvistar." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
 ### <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
-Logga in på den hanterade Azure SQL-instansen och Använd [SSMS](../../azure-sql/database/connect-query-ssms.md) eller liknande verktyg för att köra följande skript för att skapa en övervaknings användare med de behörigheter som krävs. Ersätt *User* med ett användar namn och *mystrongpassword* med ett lösen ord.
+Logga in på den hanterade Azure SQL-instansen och Använd [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) eller liknande verktyg för att köra följande skript för att skapa en övervaknings användare med de behörigheter som krävs. Ersätt *User* med ett användar namn och *mystrongpassword* med ett lösen ord.
 
  
 ```
@@ -85,7 +85,7 @@ De virtuella Azure-datorerna har följande krav.
 > [!NOTE]
 > Storleken på den virtuella datorn med Standard_B2s (2 processorer, 4 GiB minne) stöder upp till 100 anslutnings strängar. Du bör inte allokera fler än 100 anslutningar till en enda virtuell dator.
 
-De virtuella datorerna måste placeras i samma VNET som SQL-systemen så att de kan göra nätverks anslutningar för att samla in övervaknings data. Om du använder den virtuella datorn för övervakning för att övervaka SQL som körs på virtuella Azure-datorer eller som en Azure-hanterad instans, bör du överväga att placera den virtuella datorn i en program säkerhets grupp eller samma virtuella nätverk som resurserna så att du inte behöver ange en offentlig nätverks slut punkt för övervakning av SQL-servern. 
+Beroende på nätverks inställningarna för dina SQL-resurser kan de virtuella datorerna behöva placeras i samma virtuella nätverk som dina SQL-resurser så att de kan göra nätverks anslutningar för att samla in övervaknings data.  
 
 ## <a name="configure-network-settings"></a>Konfigurera nätverksinställningar
 Varje typ av SQL erbjuder metoder för övervakning av den virtuella datorn för säker åtkomst till SQL.  Avsnitten nedan beskriver alternativen baserat på typen av SQL.
@@ -100,8 +100,6 @@ För åtkomst via den offentliga slut punkten lägger du till en regel på sidan
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Brand Väggs inställningar." lightbox="media/sql-insights-enable/firewall-settings.png":::
 
-> [!NOTE]
-> SQL Insights stöder för närvarande inte Azures privata slut punkter för Azure SQL Database.  Vi rekommenderar att du använder [tjänst Taggar](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) i nätverks säkerhets gruppen eller brand Väggs inställningarna för virtuella nätverk som [Azure Monitor Agent stöder](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking).
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instance 
 
@@ -213,12 +211,16 @@ Om du vill övervaka en läsbar sekundär, inkluderar du nyckel värdet `Applica
 
 
 
-## <a name="profile-created"></a>Profilen har skapats 
-Välj **Lägg till övervakning virtuell dator** om du vill konfigurera den virtuella datorn för att samla in data från SQL-distributionerna. Gå inte tillbaka till fliken **Översikt** .  Om några minuter ska kolumnen status ändras till Säg "insamling" bör du se data för de system som du har valt att övervaka.
+## <a name="monitoring-profile-created"></a>Övervaknings profil har skapats 
+
+Välj **Lägg till övervakning virtuell dator** om du vill konfigurera den virtuella datorn för att samla in data från dina SQL-resurser. Gå inte tillbaka till fliken **Översikt** .  Om några minuter ska Status kolumnen ändras till Läs "insamling" bör du se data för de SQL-resurser som du har valt att övervaka.
 
 Om du inte ser några data läser du [FELSÖKA SQL Insights](sql-insights-troubleshoot.md) för att identifiera problemet. 
 
 :::image type="content" source="media/sql-insights-enable/profile-created.png" alt-text="Profilen har skapats" lightbox="media/sql-insights-enable/profile-created.png":::
+
+> [!NOTE]
+> Om du behöver uppdatera din övervaknings profil eller anslutnings strängarna på dina övervaknings-VM: er kan du göra det via fliken SQL Insights **Hantera profil** .  När dina uppdateringar har sparats kommer ändringarna att tillämpas på cirka 5 minuter.
 
 ## <a name="next-steps"></a>Nästa steg
 
