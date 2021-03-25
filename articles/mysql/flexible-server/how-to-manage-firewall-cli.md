@@ -1,19 +1,19 @@
 ---
 title: Hantera brand Väggs regler – Azure CLI – Azure Database for MySQL-flexibel Server
 description: Skapa och hantera brand Väggs regler för Azure Database for MySQL flexibel server med hjälp av kommando raden i Azure CLI.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c699b00ebbecdbee985babe47c036cce6e0cb4b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545080"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109972"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Skapa och hantera Azure Database for MySQL flexibla Server brand Väggs regler med hjälp av Azure CLI
 

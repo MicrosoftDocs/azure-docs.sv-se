@@ -1,19 +1,19 @@
 ---
 title: Snabb start – ansluta till ett team möte från en Android-app
-description: I den här självstudien får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar klient bibliotek för Android
+description: I den här självstudien får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för Android
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82e64af5cec8641abacf5afa323fc38382a124c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e5361b92c2080c724b872be2ad27bc5bd4554e8d
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488027"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108217"
 ---
-I den här snabb starten får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar klient bibliotek för Android.
+I den här snabb starten får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för Android.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
 ## <a name="get-the-teams-meeting-link"></a>Hämta team Mötes länken
 
 Länken Teams möte kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-Kommunikations tjänsterna som anropar klient biblioteket accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen och är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta). Du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team Mötes mötet.
+Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen och är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta). Du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team Mötes mötet.
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>Starta appen och gå med i Teams möte
 

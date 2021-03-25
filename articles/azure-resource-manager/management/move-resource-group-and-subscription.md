@@ -2,14 +2,14 @@
 title: Flytta resurser till en ny prenumeration eller resurs grupp
 description: Använd Azure Resource Manager för att flytta resurser till en ny resurs grupp eller prenumeration.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 31710354d39c5c74fcbd3ce1bfb2917d79dfd670
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670213"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108646"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Flytta resurser till en ny resursgrupp eller prenumeration
 
@@ -18,6 +18,12 @@ Den här artikeln visar hur du flyttar Azure-resurser till antingen en annan Azu
 Både käll gruppen och mål gruppen är låsta under flytt åtgärden. Skriv- och borttagningsåtgärder blockeras för resursgrupperna tills flytten är klar. Det här låset innebär att du inte kan lägga till, uppdatera eller ta bort resurser i resurs grupperna. Det innebär inte att resurserna är låsta. Om du till exempel flyttar en logisk Azure SQL-Server och dess databaser till en ny resurs grupp eller prenumeration kan program som använder databaserna uppleva ingen nedtid. De kan fortfarande läsa och skriva till databaserna. Låset kan sista i högst fyra timmar, men de flesta flyttningar slutförs på mycket kortare tid.
 
 Om du flyttar en resurs flyttas den bara till en ny resursgrupp eller prenumeration. Resursens plats ändras inte.
+
+## <a name="changed-resource-id"></a>Ändrat resurs-ID
+
+När du flyttar en resurs ändrar du dess resurs-ID. Standardformatet för ett resurs-ID är `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` . När du flyttar en resurs till en ny resurs grupp eller prenumeration ändrar du ett eller flera värden i sökvägen.
+
+Om du använder resurs-ID var som helst, måste du ändra värdet. Om du till exempel har en [anpassad instrument panel](../../azure-portal/quickstart-portal-dashboard-azure-cli.md) i portalen som refererar till ett resurs-ID måste du uppdatera värdet. Sök efter skript eller mallar som behöver uppdateras för det nya resurs-ID: t.
 
 ## <a name="checklist-before-moving-resources"></a>Checklista för att flytta resurser
 
@@ -36,7 +42,7 @@ Några viktiga steg måste utföras innan en resurs flyttas. Du kan undvika fel 
    * [Vägledning för Virtual Machines flytt](./move-limitations/virtual-machines-move-limitations.md)
    * Information om hur du flyttar en Azure-prenumeration till en ny hanterings grupp finns i [Flytta prenumerationer](../../governance/management-groups/manage.md#move-subscriptions).
 
-1. Om du flyttar en resurs som har en Azure-roll som tilldelats direkt till resursen (eller en underordnad resurs) flyttas inte roll tilldelningen och blir överbliven. När du har flyttat måste du återskapa roll tilldelningen. Slutligen tas den överblivna roll tilldelningen bort automatiskt, men det är en bra idé att ta bort roll tilldelningen innan du flyttar resursen.
+1. Om du flyttar en resurs som har en Azure-roll som tilldelats direkt till resursen (eller en underordnad resurs) flyttas roll tilldelningen inte och blir överbliven. När du har flyttat måste du återskapa roll tilldelningen. Slutligen tas den överblivna roll tilldelningen bort automatiskt, men vi rekommenderar att du tar bort roll tilldelningen innan flytten.
 
     Information om hur du hanterar roll tilldelningar finns i [lista Azure Role-tilldelningar](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) och [tilldela Azure-roller](../../role-based-access-control/role-assignments-portal.md).
 
@@ -260,7 +266,7 @@ Att flytta en resurs är en komplex åtgärd som har olika faser. Den kan omfatt
 
 **Fråga: Varför är min resurs grupp låst i fyra timmar när resursen flyttas?**
 
-En move-begäran kan vara högst fyra timmar att slutföra. För att förhindra ändringar av de resurser som flyttas, är både käll-och mål resurs grupperna låsta under hela resurs flytten.
+En move-begäran kan vara högst fyra timmar att slutföra. För att förhindra ändringar av de resurser som flyttas låses både käll-och mål resurs grupperna när resursen flyttas.
 
 Det finns två faser i en flyttnings förfrågan. I den första fasen flyttas resursen. I den andra fasen skickas meddelanden till andra resurs leverantörer som är beroende av den resurs som flyttas. En resurs grupp kan låsas i hela fyra timmar när en resurs leverantör Miss lyckas med någon av de två faserna. Under den tillåtna tiden försöker Resource Manager att försöka utföra åtgärden igen.
 
