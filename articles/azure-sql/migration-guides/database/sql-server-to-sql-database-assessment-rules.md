@@ -1,5 +1,5 @@
 ---
-title: Utvärderings regler för SQL Server att SQL Database migrering
+title: Utvärderings regler för SQL Server att Azure SQL Database migrering
 description: Utvärderings regler för att identifiera problem med käll SQL Servers instansen som måste åtgärdas innan du migrerar till Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: bf825572226bf5d7432fd3ad825f2f3a13355c53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054967"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027218"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-database-migration"></a>Utvärderings regler för SQL Server att SQL Database migrering
+# <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Utvärderings regler för SQL Server att Azure SQL Database migrering
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Migreringsverktyg verifierar din käll SQL Server instans genom att köra ett antal utvärderings regler för att identifiera problem som måste åtgärdas innan du migrerar SQL Server-databasen till Azure SQL Database. 
@@ -137,7 +137,7 @@ Kompatibilitetsnivån för databaser är ett värdefullt verktyg som hjälper di
 **Rekommenderade**   
 Utvärdera om programfunktionerna är intakta när kompatibilitetsnivån för databas uppgraderas till 100 på Azure SQL-hanterad instans. Du kan också migrera till SQL Server på en virtuell Azure-dator
 
-## <a name="database-mail"></a>Database mail<a id="DatabaseMail"></a>
+## <a name="database-mail"></a>Database-mail<a id="DatabaseMail"></a>
 
 **Title: Database Mail stöds inte i Azure SQL Database.**   
 **Kategori**: varning   
