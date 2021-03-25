@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: d5d47f097fa216d69b8ed59fdb057378724c2228
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625426"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104777"
 ---
 Använd den här snabb starten för att göra din första avbildnings sökning med hjälp av Bildsökning i Bing klient biblioteket, som är en omslutning för API: et och innehåller samma funktioner. Den här enkla Python-appen skickar en bildsökningsfråga, parsar JSON-svaret och visar webbadressen till den första bild som returneras.
 
@@ -21,7 +21,7 @@ Käll koden för det här exemplet finns [på GitHub](https://github.com/Azure-S
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Python 2.7 eller 3.4](https://www.python.org/) och högre.
+* [Python 2,7 eller 3.6 +](https://www.python.org/).
 
 * [Klient biblioteket för Azure-bildsökning](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) för python
     * Installera med `pip install azure-cognitiveservices-search-imagesearch`

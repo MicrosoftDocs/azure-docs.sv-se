@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499228"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035650"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Skala databas resurser dynamiskt med minimal stillestånds tid
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,6 +60,9 @@ Med Azure SQL Managed instance kan du skala även:
 - [SQL-hanterad instans](../managed-instance/sql-managed-instance-paas-overview.md) använder [virtuella kärnor](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) -läge och gör att du kan definiera högsta processor kärnor och maximalt lagrings utrymme som allokeras till din instans. Alla databaser i den hanterade instansen delar resurser som är allokerade till instansen.
 
 Att initiera åtgärden för att skala upp eller ned i någon av varianter startar databas motor processen och flyttar den till en annan virtuell dator om det behövs. Processen att flytta databas motorn till en ny virtuell dator är en **online process** där du kan fortsätta att använda din befintliga Azure SQL Database-tjänst medan processen pågår. När mål databas motorn är fullständigt initierad och redo att bearbeta frågorna växlar anslutningarna [från källa till mål databas motorn](single-database-scale.md#impact).
+
+> [!NOTE]
+> Vi rekommenderar inte att du skalar den hanterade instansen om en tids krävande transaktion, till exempel data import, data bearbetnings jobb, index återuppbyggnad osv., körs eller om du har en aktiv anslutning på instansen. För att förhindra att skalningen tar längre tid att slutföra än vanligt, bör du skala instansen när alla långvariga åtgärder har slutförts.
 
 > [!NOTE]
 > Du kan vänta en kort anslutnings rast när processen för att skala upp/skala ned är färdig. Om du har implementerat [omprövnings logik för vanliga tillfälliga fel](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors), ser du inte redundansväxlingen.

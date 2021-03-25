@@ -2,7 +2,7 @@
 title: Media Services-konto ARM-mall: Azure Media Services Beskrivning: den här artikeln visar hur du använder en ARM-mall för att skapa ett Media Services-konto.
 tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. service: Media-Services MS. arbets belastning: MS. topic: snabb start MS. Date: 11/24/2020 MS. author: inhenkel MS. Custom: subject-armqs
+MS. service: Media-Services MS. arbets belastning: MS. topic: snabb start MS. Date: 03/23/2021 MS. author: inhenkel MS. Custom: subject-armqs
 
 ---
 
@@ -18,10 +18,9 @@ Den här artikeln visar hur du använder en Azure Resource Manager mall (ARM-mal
 
 Läsare som har erfarenhet av ARM-mallar kan fortsätta till [distributions avsnittet](#deploy-the-template).
 
-<!-- this section will be added when the template is merged. If your environment meets the prerequisites and you're familiar with using ARM templates, select the **Deploy to Azure** button. The template will open in the Azure portal.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
-[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/<template's URI>)
--->
+[![Distribuera till Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-media-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Krav
 
@@ -31,81 +30,16 @@ Om du aldrig har distribuerat en ARM-mall tidigare är det bra att läsa om [Azu
 
 ## <a name="review-the-template"></a>Granska mallen
 
-<!-- this will be added when the template is merged. The template used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/101-media-services-account-create/).
+Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-media-services-create/).
 
-The syntax for the JSON code fence is:
+Syntaxen för JSON-kod avgränsningen är:
 
-:::code language="json" source="~/quickstart-templates/101-media-services-account-create/azuredeploy.json"::: -->
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mediaServiceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Media Services account. A Media Services account name is unique in a given region, all lowercase letters or numbers with no spaces."
-      }
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "name": "[parameters('mediaServiceName')]",
-      "type": "Microsoft.Media/mediaServices",
-      "apiVersion": "2018-07-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
-      ],
-      "properties": {
-        "storageAccounts": [
-          {
-            "id": "[resourceId('microsoft.storage/storageaccounts/', variables('storageName'))]",
-            "type": "Primary"
-          }
-        ]
-      }
-    },
-    {
-      "name": "[variables('storageName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "kind": "StorageV2",
-      "apiVersion": "2017-10-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-          "encryption": {
-              "services": {
-                  "file": {
-                      "enabled": true
-                  },
-                  "blob": {
-                      "enabled": true
-                  }
-              },
-              "keySource": "Microsoft.Storage"
-          },
-          "accessTier": "Hot"
-      }
-    }
-  ]
-}
-
-```
+:::code language="json" source="~/quickstart-templates/101-media-services-create/azuredeploy.json":::
 
 Tre resurs typer för Azure definieras i mallen:
 
-- [Microsoft. Media/Media Services](/azure/templates/microsoft.media/mediaservices): skapa ett Media Services konto
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): skapa ett lagrings konto
+- [Microsoft. Media/Media Services](/azure/templates/microsoft.media/mediaservices): skapa ett Media Services konto
 
 ## <a name="set-the-account"></a>Ange kontot
 

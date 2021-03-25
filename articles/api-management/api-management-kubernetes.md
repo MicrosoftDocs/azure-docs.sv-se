@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108406"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047940"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Använda Azure API Management med mikrotjänster som distribueras i Azure Kubernetes-tjänsten
 
@@ -95,7 +95,7 @@ En prenumeration krävs för att få en prenumerations nyckel för åtkomst till
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>Alternativ 3: Distribuera APIM i klustrets VNet
 
-I vissa fall kan kunder med reglerande villkor eller strikta säkerhets krav hitta alternativ 1 och 2 icke-lönsamma lösningar på grund av allmänt utsatta slut punkter. I andra kan AKS-klustret och de program som förbrukar mikrotjänster finnas i samma VNet, och därför finns det ingen anledning att exponera klustret som all API-trafik kommer att finnas kvar i det virtuella nätverket. I dessa scenarier kan du distribuera API Management till klustrets VNet. [API Management Premium-nivån](https://aka.ms/apimpricing) stöder VNet-distribution. 
+I vissa fall kan kunder med reglerande villkor eller strikta säkerhets krav hitta alternativ 1 och 2 icke-lönsamma lösningar på grund av allmänt utsatta slut punkter. I andra kan AKS-klustret och de program som förbrukar mikrotjänster finnas i samma VNet, och därför finns det ingen anledning att exponera klustret som all API-trafik kommer att finnas kvar i det virtuella nätverket. I dessa scenarier kan du distribuera API Management till klustrets VNet. [API Management Developer-och Premium-nivåerna](https://aka.ms/apimpricing) stöder VNet-distribution. 
 
 Det finns två lägen för att [distribuera API Management till ett VNet](./api-management-using-with-vnet.md) – externt och internt. 
 

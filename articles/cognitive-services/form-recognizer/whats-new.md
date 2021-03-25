@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 47e145c5d96ba54b02f5453ff97d16dec302eabd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 81115f5a9ed802f1d07c45ec928dc4b84ea2917b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493517"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048756"
 ---
 <!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>Vad är nytt i Formigenkänning?
@@ -117,7 +117,7 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
 * **Valuta support** – identifiering och extrahering av globala valuta symboler.
 * **Azure gov** -tolken är nu också tillgänglig i Azure gov.
 * **Förbättrade säkerhetsfunktioner**: 
-  * **Ta med din egen nyckel** igenkännings funktion krypterar dina data automatiskt när de behålls i molnet för att skydda dem och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Du kan nu även hantera din prenumeration med dina egna krypterings nycklar. [Kundhanterade nycklar, som även kallas för att ta med din egen nyckel (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), erbjuder större flexibilitet för att skapa, rotera, inaktivera och återkalla åtkomst kontroller. Du kan också granska krypteringsnycklarna som används för att skydda dina data.  
+  * **Ta med din egen nyckel** igenkännings funktion krypterar dina data automatiskt när de behålls i molnet för att skydda dem och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Du kan nu även hantera din prenumeration med dina egna krypterings nycklar. [Kundhanterade nycklar, som även kallas för att ta med din egen nyckel (BYOK)](./encrypt-data-at-rest.md), erbjuder större flexibilitet för att skapa, rotera, inaktivera och återkalla åtkomst kontroller. Du kan också granska krypteringsnycklarna som används för att skydda dina data.  
   * **Privata slut punkter** – gör att du på ett virtuellt nätverk (VNet) kan [komma åt data på ett säkert sätt via en privat länk.](../../private-link/private-link-overview.md)
 
 ## <a name="june-2020"></a>Juni 2020

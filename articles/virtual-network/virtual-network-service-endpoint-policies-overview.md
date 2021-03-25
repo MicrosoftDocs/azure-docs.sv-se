@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216656"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022270"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Principer för tjänstslutpunkt för virtuellt nätverk för Azure Storage
 
@@ -109,6 +109,8 @@ Det finns ingen centraliserad loggning för tjänstslutpunktsprinciper. För tj�
   - Se till att kontona inte är **klassiska lagrings konton** med tjänst slut punkts principer på under nätet.
 - En hanterad Azure-tjänst slutade fungera efter att ha tillämpat en tjänst slut punkts princip över under nätet
   - Hanterade tjänster stöds inte med tjänst slut punkts principer för tillfället. *Titta på det här utrymmet för uppdateringar*.
+- Åtkomst till hanterade lagrings konton slutade fungera efter att ha tillämpat en tjänst slut punkts princip över under nätet
+  - Hanterade lagrings konton stöds inte med tjänst slut punkts principer. Om den är konfigurerad nekar principer åtkomst till alla hanterade lagrings konton som standard. Om ditt program behöver åtkomst till hanterade lagrings konton bör slut punkts principerna inte användas för den här trafiken.
 
 ## <a name="provisioning"></a>Etablering
 

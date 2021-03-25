@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 56ef6563982c315d34cfeb87070b9ebfa3d27a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500435"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035701"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Inmatningstid för loggdata i Azure Monitor
 Azure Monitor är en hög skalbar data tjänst som tjänar tusentals kunder som skickar terabyte data varje månad i en växande takt. Det finns ofta frågor om hur lång tid det tar för loggdata att bli tillgängliga när de har samlats in. I den här artikeln beskrivs de olika faktorer som påverkar den här svars tiden.
@@ -81,8 +81,8 @@ Hämtnings tiden kan variera beroende på olika resurser under olika omständigh
 | Steg | Egenskap eller funktion | Kommentarer |
 |:---|:---|:---|
 | Post skapad vid data Källa | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Om data källan inte anger det här värdet, kommer den att ställas in på samma tid som _TimeReceived. |
-| Posten togs emot av Azure Monitor-inmatnings slut punkt | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
-| Post lagrad i arbets ytan och tillgänglig för frågor | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
+| Posten togs emot av Azure Monitor-inmatnings slut punkt | [_TimeReceived](./log-standard-columns.md#_timereceived) | Det här fältet är inte optimerat för Mass bearbetning och ska inte användas för att filtrera stora data mängder. |
+| Post lagrad i arbets ytan och tillgänglig för frågor | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | Vi rekommenderar att du använder ingestion_time () om det finns ett behov av att filtrera endast poster som har matats in i en viss tids period. I sådana fall rekommenderar vi att du även lägger till TimeGenerated filter med ett större intervall. |
 
 ### <a name="ingestion-latency-delays"></a>Fördröjningar vid inmatnings fördröjning
 Du kan mäta svars tiden för en speciell post genom att jämföra resultatet av funktionen [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) i egenskapen _TimeGenerated_ . Dessa data kan användas med olika agg regeringar för att ta reda på hur inmatnings fördröjningen fungerar. Granska några percentiler av Inhämtnings tiden för att få insikter om stora mängder data. 

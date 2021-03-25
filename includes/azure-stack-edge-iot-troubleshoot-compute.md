@@ -4,12 +4,12 @@ ms.service: databox
 ms.author: alkohli
 ms.topic: include
 ms.date: 03/23/2021
-ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987661"
+ms.locfileid: "105105419"
 ---
 Använd IoT Edge-agentens körnings svar för att felsöka Compute-relaterade fel. Här är en lista över möjliga svar:
 
@@ -32,7 +32,7 @@ Alla moduler på enheten visar okänd status och kan inte användas. Den okända
 
 #### <a name="suggested-solution"></a>Föreslagen lösning
 
-Ta bort IoT Edge tjänsten och distribuera sedan om modulerna. Mer information finns i [ta bort IoT Edge-tjänsten](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+Ta bort IoT Edge tjänsten och distribuera sedan om modulerna. Mer information finns i [ta bort IoT Edge-tjänsten](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#remove-iot-edge-service).
 
 
 ### <a name="modules-show-as-running-but-are-not-working"></a>Moduler visas som körs men fungerar inte
@@ -65,7 +65,7 @@ I enhetens lokala webb gränssnitt gör du följande steg:
 1. Ange ett statiskt, sammanhängande utbud av IP **-adresser för Kubernetes external service IP-adresser**. Du behöver 1 IP för `edgehub` tjänst. Dessutom behöver du en IP-adress för varje IoT Edge modul och för varje virtuell dator som du distribuerar. 
 1. Välj **Använd**. Det ändrade IP-intervallet bör börja gälla omedelbart.
 
-Mer information finns i [ändra IP-adresser för externa tjänster för behållare](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+Mer information finns i [ändra IP-adresser för externa tjänster för behållare](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#change-external-service-ips-for-containers).
 
 ### <a name="configure-static-ips-for-iot-edge-modules"></a>Konfigurera statiska IP-adresser för IoT Edge moduler
 

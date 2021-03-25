@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: aaaf9011d38e7ec02e83db63757c434329b835e0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82a2e64d27fcbbb3801e6dab347343e086a0b70f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94960299"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048229"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Snabb start: skapa ett chattrum med Azure Functions-och SignalR-tjänsten med python
 
@@ -27,7 +27,7 @@ Se till att du har en kodredigerare såsom [Visual Studio Code](https://code.vis
 
 Installera [Azure Functions Core tools](https://github.com/Azure/azure-functions-core-tools#installing) (version 2.7.1505 eller högre) för att köra python Azure Function Apps lokalt.
 
-Azure Functions kräver [Python 3,6 eller 3,7](https://www.python.org/downloads/).
+Azure Functions kräver [python 3.6 +](https://www.python.org/downloads/). (Se [python-versioner som stöds](/azure/azure-functions/functions-reference-python#python-version))
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

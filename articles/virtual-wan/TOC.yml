@@ -93,6 +93,8 @@
       href: pricing-concepts.md
     - name: Om NVA i den virtuell hubb
       href: about-nva-hub.md
+    - name: Om skyddade virtuella hubbar
+      href: ../firewall-manager/secured-virtual-hub.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Anvisningar
   items:
     - name: Uppgradera en Virtual WAN-SKU
