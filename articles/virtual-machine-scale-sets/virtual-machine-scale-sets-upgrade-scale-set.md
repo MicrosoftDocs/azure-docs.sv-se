@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684601"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023936"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Skapa en VM-skalningsuppsättning
 
@@ -350,7 +350,7 @@ Vissa egenskaper kan ändras, med undantag beroende på det aktuella värdet. Bl
 
 - **singlePlacementGroup** – om singlePlacementGroup är sant kan den ändras till false. Om singlePlacementGroup är false kan det dock **inte** ändras till sant.
 - **undernät** – under nätet för en skalnings uppsättning kan ändras så länge det ursprungliga under nätet och det nya under nätet finns i samma virtuella nätverk.
-- **imageReferenceSku** -image Reference SKU kan uppdateras för de signerade [Linux-distributioner](../virtual-machines/linux/endorsed-distros.md), Windows Server/Client-avbildningar och avbildningar utan [information om planer](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties). 
+- **imageReferenceSku** -image Reference SKU kan uppdateras för de signerade [Linux-distributioner](../virtual-machines/linux/endorsed-distros.md), Windows Server/Client-avbildningar och avbildningar utan [information om planer](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information). 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Egenskaper som kräver att tilldelningen ändras
 Vissa egenskaper kan bara ändras till vissa värden om de virtuella datorerna i skalnings uppsättningen är friallokerade. Bland dessa egenskaper finns:

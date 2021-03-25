@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb57992c8e26560061faf68443c4993801f9713d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929179"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871579"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Distribuera och hantera Apache Storm topologier på Azure HDInsight
 
@@ -43,7 +43,7 @@ Du kan använda Data Lake verktyg för Visual Studio för att skicka C#-eller hy
 
 1. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** och går till eller skapar en **plats där** du vill spara det nya projektet i. Välj sedan **Skapa**.
 
-    ![Konfigurera det nya projekt fönstret, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+    :::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png" alt-text="Konfigurera det nya projekt fönstret, Visual Studio" border="true":::
 
 1. Från **Server Explorer** högerklickar du på **Azure** och väljer **Anslut till Microsoft Azure prenumeration...** och slutför inloggnings processen.
 
@@ -83,7 +83,7 @@ Du kan distribuera en topologi program mässigt med Nimbus-tjänsten. [https://g
 
 När du skickar en topologi med Visual Studio visas **visnings fönstret Storm-topologier** . Välj topologin i listan om du vill visa information om topologi som körs.
 
-![Övervaka topologi, vyer för Storm-topologier, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png" alt-text="Övervaka topologi, vyer för Storm-topologier, Visual Studio" border="true":::
 
 > [!NOTE]  
 > Du kan också visa **Storm-topologier** från **Server Explorer**. Expandera **Azure**  >  **HDInsight**, högerklicka på en storm i HDInsight-kluster och välj sedan **Visa Storm-topologier**.
@@ -179,7 +179,7 @@ Huvud sidan i storm-ANVÄNDARGRÄNSSNITTET innehåller följande information:
 
 Huvud sidan för Storm-gränssnittet liknar den här webb sidan:
 
-![Huvud sida, Storm-användargränssnitt, Apache Storm topologier, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png" alt-text="Huvud sida, Storm-användargränssnitt, Apache Storm topologier, Azure" border="true":::
 
 #### <a name="topology-summary"></a>Översikt över topologi
 
@@ -198,7 +198,7 @@ Om du väljer en länk från avsnittet **topologi Sammanfattning** visas följan
 
 Sammanfattnings sidan för Storm-topologin liknar den här webb sidan:
 
-![Sidan Topology Summary, Storm UI, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png" alt-text="Sidan Topology Summary, Storm UI, Apache Storm, Azure" border="true":::
 
 I avsnittet **topologi åtgärder** kan du välja följande knappar för att utföra en åtgärd:
 
@@ -229,7 +229,7 @@ Om du väljer en kanalen i avsnittet **kanaler** eller **bultar** visas följand
 
 Sammanfattnings sidan för Storm-bult liknar den här webb sidan:
 
-![Sammanfattnings sida för bult, Storm UI, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png" alt-text="Sammanfattnings sida för bult, Storm UI, Apache Storm, Azure" border="true":::
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Övervaka och hantera topologin med hjälp av REST API
 

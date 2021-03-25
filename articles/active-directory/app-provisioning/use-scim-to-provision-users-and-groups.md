@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652104"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022950"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
@@ -198,6 +198,7 @@ I [SCIM 2,0-protokoll specifikationen](http://www.simplecloud.info/#Specificatio
 |Filtret [excludedAttributes = members](#get-group) när du frågar grupp resursen|avsnitt 3.4.2.5|
 |Acceptera en enda Bearer-token för autentisering och auktorisering av AAD till ditt program.||
 |Mjuk borttagning av en användare `active=false` och återställning av användaren `active=true`|Användarobjektet ska returneras i en begäran oavsett om användaren är aktiv eller inte. Den enda gång som användaren inte ska returneras är när den är hårt borttagen från programmet.|
+|Stöd för/schemas-slutpunkten|[avsnitt 7](https://tools.ietf.org/html/rfc7643#page-30) Slut punkten för schema identifiering kommer att användas för att identifiera ytterligare attribut.|
 
 Använd de allmänna rikt linjerna när du implementerar en SCIM-slutpunkt för att säkerställa kompatibilitet med AAD:
 
@@ -210,7 +211,12 @@ Använd de allmänna rikt linjerna när du implementerar en SCIM-slutpunkt för 
 * Microsoft AAD gör förfrågningar om att hämta en slumpmässig användare och grupp för att säkerställa att slut punkten och autentiseringsuppgifterna är giltiga. Det sker också som en del av **test anslutnings** flödet i [Azure Portal](https://portal.azure.com). 
 * Attributet som resurserna kan frågas om på ska anges som ett matchande attribut i programmet i [Azure Portal](https://portal.azure.com). mer information finns i [Anpassa mappningar av användar Provisioning-attribut](customize-application-attributes.md).
 * Stöd för HTTPS på din SCIM-slutpunkt
-
+* [Schema identifiering](#schema-discovery)
+  * Schema identifiering stöds inte för närvarande på det anpassade programmet, men det används i vissa Galleri program. När du går vidare används schema identifiering som primär metod för att lägga till ytterligare attribut till en anslutning. 
+  * Om det inte finns något värde skickar du inte null-värden.
+  * Egenskaps värden ska vara kamel notation bokstäver (t. ex. readWrite).
+  * Måste returnera ett List svar.
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>Användar etablering och avetablering
 
 Följande bild visar de meddelanden som AAD skickar till en SCIM-tjänst för att hantera livs cykeln för en användare i ditt programs identitets lager.  
@@ -252,6 +258,9 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har spridits av 
   - [Uppdatera grupp [Lägg till medlemmar]](#update-group-add-members) ([begär](#request-11)  /  [svar](#response-11))
   - [Uppdaterings grupp [ta bort medlemmar]](#update-group-remove-members) (svar på[begäran](#request-12)  /  [](#response-12))
   - [Ta bort grupp](#delete-group) ([begär](#request-13)  /  [svar](#response-13))
+
+[Schema identifiering](#schema-discovery)
+  - [Identifiera schema](#discover-schema) ([begär](#request-15)  /  [svar](#response-15))
 
 ### <a name="user-operations"></a>Användar åtgärder
 
@@ -749,6 +758,105 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har spridits av 
 ##### <a name="response"></a><a name="response-13"></a>Svarsåtgärder
 
 *HTTP/1.1 204 inget innehåll*
+
+### <a name="schema-discovery"></a>Schema identifiering
+#### <a name="discover-schema"></a>Identifiera schema
+
+##### <a name="request"></a><a name="request-15"></a>Förfrågan
+*Hämta/schemas* 
+##### <a name="response"></a><a name="response-15"></a>Svarsåtgärder
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
 
 ### <a name="security-requirements"></a>Säkerhetskrav
 **TLS-protokoll versioner**

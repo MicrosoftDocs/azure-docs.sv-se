@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e661dbbe31e7624cba0a3d5421b81de16d0a5363
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608205"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023137"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Skapa en lösning utan kod i Azure percept Studio
 
@@ -106,7 +106,7 @@ Lägg till etiketter till dina avbildningar innan du tränar din modell.
 
 1. Till vänster på sidan **Custom vision** klickar du på **omärkta** under **taggar** för att visa de bilder som du precis har samlat in i föregående steg. Välj en eller flera av dina otaggade bilder.
 
-1. I fönstret **bild information** klickar du på bilden för att börja tagga. Om du har valt objekt identifiering som projekt typ, måste du också rita en [avgränsnings ruta](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images) runt vissa objekt som du vill tagga. Justera avgränsnings rutan efter behov. Skriv taggen Object och klicka **+** för att använda taggen. Om du till exempel skapar en vision-lösning som meddelar dig när en butiks hylla behöver återlagerförs, lägger du till taggen "Tom hylla" till bilder av tomma hyllor och lägger till taggen "fullständig hylla" i bilder av helt lager hyllor. Upprepa för alla otaggade bilder.
+1. I fönstret **bild information** klickar du på bilden för att börja tagga. Om du har valt objekt identifiering som projekt typ, måste du också rita en [avgränsnings ruta](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images) runt vissa objekt som du vill tagga. Justera avgränsnings rutan efter behov. Skriv taggen Object och klicka **+** för att använda taggen. Om du till exempel skapar en vision-lösning som meddelar dig när en butiks hylla behöver återlagerförs, lägger du till taggen "Tom hylla" till bilder av tomma hyllor och lägger till taggen "fullständig hylla" i bilder av helt lager hyllor. Upprepa för alla otaggade bilder.
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="Skärmen bild taggning i Custom Vision.":::
 
@@ -116,7 +116,7 @@ Lägg till etiketter till dina avbildningar innan du tränar din modell.
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="Val av träna bild med träna knapp markerat.":::
 
-1. När utbildningen har slutförts visas din modell prestanda på skärmen. Mer information om hur du utvärderar dessa resultat finns i [dokumentationen för modell utvärderingen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector). Efter utbildningen kanske du också vill [testa din modell](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model) på ytterligare avbildningar och omträna vid behov. Varje gången du tränar din modell kommer den att sparas som en ny iteration. Referens till [Custom vision-dokumentationen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) innehåller mer information om hur du kan förbättra modell prestanda.
+1. När utbildningen har slutförts visas din modell prestanda på skärmen. Mer information om hur du utvärderar dessa resultat finns i [dokumentationen för modell utvärderingen](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector). Efter utbildningen kanske du också vill [testa din modell](../cognitive-services/custom-vision-service/test-your-model.md) på ytterligare avbildningar och omträna vid behov. Varje gången du tränar din modell kommer den att sparas som en ny iteration. Referens till [Custom vision-dokumentationen](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) innehåller mer information om hur du kan förbättra modell prestanda.
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="Modell inlärnings resultat.":::
 
@@ -143,7 +143,7 @@ När du har stängt det här fönstret kan du gå tillbaka och redigera ditt vis
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>Förbättra din modell genom att ställa in omträning
 
-När du har tränat din modell och distribuerat den till enheten kan du förbättra modell prestanda genom att ställa in omskolnings parametrar för att samla in fler tränings data. Den här funktionen används för att förbättra en utbildad modells prestanda genom att ge dig möjlighet att avbilda avbildningar baserat på ett sannolikhets intervall. Du kan till exempel ange att enheten bara ska fånga utbildnings bilder när sannolikheten är låg. Här följer några [ytterligare anvisningar](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) om hur du lägger till fler avbildningar och hur du balanserar utbildnings data.
+När du har tränat din modell och distribuerat den till enheten kan du förbättra modell prestanda genom att ställa in omskolnings parametrar för att samla in fler tränings data. Den här funktionen används för att förbättra en utbildad modells prestanda genom att ge dig möjlighet att avbilda avbildningar baserat på ett sannolikhets intervall. Du kan till exempel ange att enheten bara ska fånga utbildnings bilder när sannolikheten är låg. Här följer några [ytterligare anvisningar](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) om hur du lägger till fler avbildningar och hur du balanserar utbildnings data.
 
 1. Om du vill konfigurera omskolning går du tillbaka till **projektet**, sedan till **projekt Sammanfattning**
 1. På fliken **avbildnings insamling** väljer du **Automatisk avbildnings insamling** och **Konfigurera omträning**.

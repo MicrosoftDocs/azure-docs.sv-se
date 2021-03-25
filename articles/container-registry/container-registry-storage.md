@@ -1,15 +1,15 @@
 ---
 title: Lagring av container avbildning
 description: Information om hur behållar avbildningar och andra artefakter lagras i Azure Container Registry, inklusive säkerhet, redundans och kapacitet.
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183275"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047753"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Lagrings avbildnings lagring i Azure Container Registry
 
@@ -21,11 +21,9 @@ Alla behållar avbildningar och andra artefakter i registret är krypterade i vi
 
 ## <a name="regional-storage"></a>Regional lagring
 
-Azure Container Registry lagrar data i den region där registret skapas, för att hjälpa kunderna att uppfylla kraven på data placering och efterlevnad.
+Azure Container Registry lagrar data i den region där registret skapas, för att hjälpa kunderna att uppfylla kraven på data placering och efterlevnad. I alla regioner förutom södra Brasilien och Sydostasien kan Azure också lagra register data i en kopplad region i samma geografi. I södra Brasilien och Sydostasien regionerna är register data alltid begränsade till regionen, för att rymma data placering krav för dessa regioner.
 
-För att skydda dig mot data Center avbrott erbjuder vissa regioner [zon redundans](zone-redundancy.md), där data replikeras över flera data Center i en viss region.
-
-Kunder som vill ha sina data lagrade i flera regioner för bättre prestanda i olika geografiska områden eller som vill ha återhämtning i händelse av ett regionalt avbrott bör aktivera [geo-replikering](container-registry-geo-replication.md).
+Om ett regionalt avbrott inträffar kan register data bli otillgängliga och återställs inte automatiskt. Kunder som vill ha sina register data lagrade i flera regioner för att få bättre prestanda i olika geografiska områden eller som vill ha återhämtning i händelse av ett regionalt avbrott bör aktivera [geo-replikering](container-registry-geo-replication.md).
 
 ## <a name="geo-replication"></a>Geo-replikering
 
@@ -33,7 +31,7 @@ För scenarier som kräver hög tillgänglighets säkerhet kan du överväga att
 
 ## <a name="zone-redundancy"></a>Zonredundans
 
-Om du vill skapa en elastisk och hög tillgänglighet för Azure Container Registry, aktiverar du [zon redundans](zone-redundancy.md) i Välj Azure-regioner. En funktion i Premium service-nivån, zon-redundans använder Azures [tillgänglighets zoner](../availability-zones/az-overview.md) för att replikera registret till minst tre separata zoner i varje aktive rad region. Kombinera geo-replikering och zon redundans för att förbättra både tillförlitlighet och prestanda i ett register. 
+Om du vill skapa en elastisk och hög tillgänglighet för Azure Container Registry kan du också aktivera [zon redundans](zone-redundancy.md) i Välj Azure-regioner. En funktion i Premium service-nivån, zon-redundans använder Azures [tillgänglighets zoner](../availability-zones/az-overview.md) för att replikera registret till minst tre separata zoner i varje aktive rad region. Kombinera geo-replikering och zon redundans för att förbättra både tillförlitlighet och prestanda i ett register. 
 
 ## <a name="scalable-storage"></a>Skalbar lagring
 

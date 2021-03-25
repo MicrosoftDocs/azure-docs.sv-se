@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: dcb82e6cc50a2ff3291d5a900ec9367d69dcdde6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224919"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022814"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett Java Script SPA med auth Code Flow med PKCE 
 
@@ -25,7 +25,7 @@ I den här snabb starten kan du ladda ned och köra ett kod exempel som visar hu
 
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
-I den här snabb starten används MSAL.js 2,0 med Authorization Code Flow. En liknande snabb start som använder MSAL.js 1,0 med det implicita flödet finns i [snabb start: Logga in användare i Java Script-appar med en sida](./quickstart-v2-javascript.md).
+I den här snabb starten används MSAL.js v2 med Authorization Code Flow. En liknande snabb start som använder MSAL.js v1 med det implicita flödet finns i [snabb start: Logga in användare i Java Script-appar med en sida](./quickstart-v2-javascript.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

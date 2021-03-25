@@ -4,12 +4,12 @@ description: Lär dig mer om de resurser som är tillgängliga när du skapar et
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931150"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871681"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight Virtual Network-arkitektur
 
@@ -43,7 +43,7 @@ Om du bara behöver värd namnet använder du bara den första delen av FQDN: `<
 
 Följande diagram visar placeringen av HDInsight-noder och nätverks resurser i Azure.
 
-![Diagram över HDInsight-entiteter som skapats i Azure anpassat VNET](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png" alt-text="Diagram över HDInsight-entiteter som skapats i Azure anpassat VNET" border="false":::
 
 Standard resurserna i en Azure-Virtual Network omfattar de typer av klusternoder som anges i föregående tabell. Och nätverks enheter som stöder kommunikation mellan det virtuella nätverket och externa nätverk.
 
