@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774940"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023205"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Guide för att köra funktioner på .NET 5,0 i Azure
 
@@ -147,15 +147,17 @@ Om du vill skriva till en utgående bindning måste du använda attributet utgå
 
 ### <a name="multiple-output-bindings"></a>Flera utgående bindningar
 
-Data som skrivs till en utgående bindning är alltid returvärdet för funktionen. Om du behöver skriva till fler än en utgående bindning måste du skapa en anpassad returtyp. Den här retur typen måste ha attributet utgående bindning tillämpat på en eller flera egenskaper för klassen. I följande exempel skrivs både ett HTTP-svar och en utgående bindning för kö:
+Data som skrivs till en utgående bindning är alltid returvärdet för funktionen. Om du behöver skriva till fler än en utgående bindning måste du skapa en anpassad returtyp. Den här retur typen måste ha attributet utgående bindning tillämpat på en eller flera egenskaper för klassen. Följande exempel från en HTTP-utlösare skriver till både HTTP-svar och en kö-utgående bindning:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
+
+Svaret från en HTTP-utlösare betraktas alltid som utdata, så ett attribut för retur värde är inte obligatoriskt.
 
 ### <a name="http-trigger"></a>HTTP-utlösare
 
 HTTP-utlösare översätter meddelandet inkommande HTTP-begäran till ett [HttpRequestData] -objekt som skickas till funktionen. Det här objektet tillhandahåller data från begäran, inklusive `Headers` ,,, `Cookies` `Identities` `URL` och valfritt meddelande `Body` . Det här objektet är en representation av HTTP Request-objektet och inte själva begäran. 
 
-På samma sätt returnerar funktionen ett [HttpReponseData]-objekt, som innehåller data som används för att skapa HTTP-svaret, inklusive meddelande `StatusCode` , `Headers` och eventuellt ett meddelande `Body` .  
+På samma sätt returnerar funktionen ett [HttpResponseData] -objekt, som tillhandahåller data som används för att skapa http-svaret, inklusive meddelande `StatusCode` , `Headers` och eventuellt ett meddelande `Body` .  
 
 Följande kod är en HTTP-utlösare 
 

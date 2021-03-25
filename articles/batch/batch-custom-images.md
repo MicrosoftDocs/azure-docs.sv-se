@@ -3,12 +3,12 @@ title: Använd en hanterad avbildning för att skapa en anpassad avbildnings-poo
 description: Skapa en anpassad avbildnings-pool från en hanterad avbildning för att etablera datornoder med program vara och data för ditt program.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9baa65c0f1c1844ea10e3d5b4f0b48924912d233
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94916584"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023885"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Använd en hanterad avbildning för att skapa en anpassad avbildnings-pool
 
@@ -43,7 +43,7 @@ Vi rekommenderar att du skapar den hanterade avbildningen på ett tillförlitlig
 Om du skapar en ny virtuell dator för avbildningen använder du en Azure Marketplace-avbildning från första part som stöds av batch som bas avbildning för din hanterade avbildning. Endast första parts bilder kan användas som en bas avbildning. Om du vill få en fullständig lista över referens för Azure Marketplace-avbildningar som stöds av Azure Batch, se [noden List Node agent SKU: er](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) .
 
 > [!NOTE]
-> Du kan inte använda en avbildning från tredje part som har ytterligare licens-och inköps villkor som bas avbildning. Information om dessa Marketplace-avbildningar finns i rikt linjerna för virtuella [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) -eller [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) -datorer.
+> Du kan inte använda en avbildning från tredje part som har ytterligare licens-och inköps villkor som bas avbildning. Information om dessa Marketplace-avbildningar finns i rikt linjerna för virtuella [Linux](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information) -eller [Windows](../virtual-machines/windows/cli-ps-findimage.md#view-purchase-plan-properties)-datorer.
 
 - Se till att den virtuella datorn har skapats med en hanterad disk. Det här är standard lagrings inställningen när du skapar en virtuell dator.
 - Installera inte Azure-tillägg, till exempel tillägget för anpassat skript, på den virtuella datorn. Om avbildningen innehåller ett förinstallerat tillägg kan Azure drabbas av problem när du distribuerar batch-poolen.

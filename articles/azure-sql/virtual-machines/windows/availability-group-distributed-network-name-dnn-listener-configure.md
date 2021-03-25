@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c3950b1aeae2b4e90b1ae4acfb9439c2cb159ca
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026010"
+ms.locfileid: "105034715"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurera en DNN-lyssnare för en tillgänglighets grupp
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -145,7 +145,7 @@ Värdet `1` för `is_distributed_network_name` anger att lyssnaren är en DNN-ly
 
 ## <a name="update-connection-string"></a>Uppdatera anslutnings sträng
 
-Uppdatera anslutnings strängar för program så att de ansluter till DNN-lyssnaren. För att säkerställa snabb anslutning vid redundans lägger `MultiSubnetFailover=True` du till anslutnings strängen om SQL-klienten stöder det.
+Uppdatera anslutnings strängar för program så att de ansluter till DNN-lyssnaren. Anslutnings strängar för DNN-lyssnare måste ange port numret för DNN. För att säkerställa snabb anslutning vid redundans lägger `MultiSubnetFailover=True` du till anslutnings strängen om SQL-klienten stöder det.
 
 ## <a name="test-failover"></a>Redundanstest
 

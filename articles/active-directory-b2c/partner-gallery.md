@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e0125f14570e917b228c5f713e636335755581d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361776"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024276"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partner
 
@@ -26,12 +26,6 @@ Vårt ISV partner Network utökar våra lösnings funktioner som hjälper dig at
 >[Azure Active Directory B2C Community-webbplatsen på GitHub](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) innehåller också exempel på anpassade principer från communityn.
 
 ## <a name="identity-verification-and-proofing"></a>Identitets verifiering och-korrektur
-
-Med Azure AD B2C partner kan kunder aktivera identitets verifiering och att deras slutanvändare har behörighet att tillåta konto registrering eller åtkomst. Identitets verifiering och språk kontroll kan kontrol lera dokument, kunskapsbaserade uppgifter och Live.
-
-Ett arkitektur diagram med hög nivå förklarar flödet.
-
-![Diagram som visar flödet för identitets bevisning](./media/partner-gallery/third-party-identity-proofing.png)
 
 Microsoft samarbetar med följande ISV: er för identitets verifiering och språk kontroll.
 
