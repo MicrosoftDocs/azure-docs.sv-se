@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: dd3596dd7b2cd01e80d9cf4db9bbc179048e7fcf
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573123"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035973"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Självstudie: Visa en fjärrrenderad modell
 
@@ -33,10 +33,7 @@ För den här självstudien behöver du:
 * Windows SDK 10.0.18362.0 [(Hämta)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Den senaste versionen av Visual Studio 2019 [(Hämta)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT [(nedladdning)](https://git-scm.com/downloads)
-* Unity, den senaste versionen av 2019,3, vi rekommenderar att du använder Unity Hub för detta [(nedladdning)](https://unity3d.com/get-unity/download)
-  * Installera de här modulerna i Unity:
-    * **UWP** -stöd för Build-universell Windows-plattform
-    * **IL2CPP** – stöd för Windows-build (IL2CPP)
+* Unity (se [system krav](../../../overview/system-requirements.md#unity) för versioner som stöds)
 * Mellanliggande kunskap om Unit och C#-språket (till exempel: skapa skript och objekt, använda prefabs, konfigurera Unity-händelser osv.)
 
 ## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Etablera en ARR-instans (Azure Remote rendering)

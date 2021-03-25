@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948454"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105228"
 ---
 Med Webbsökning i Bing klient biblioteket är det enkelt att integrera Webbsökning i Bing i python-programmet. I den här snabbstarten lär du dig att skicka en begäran, ta emot ett JSON-svar och filtrera och parsa resultaten.
 
@@ -21,9 +21,9 @@ Vill du se koden på en gång? Exempel på [Bing-sökning klient bibliotek för 
 
 
 ## <a name="prerequisites"></a>Förutsättningar
-API för webbsökning i Bing är kompatibelt med Python 2.7, 3.3, 3.4, 3.5 och 3.6. Vi rekommenderar att du använder en virtuell miljö för den här snabbstarten.
+Webbsökning i Bing SDK är kompatibelt med python 2,7 eller 3.6 +. Vi rekommenderar att du använder en virtuell miljö för den här snabbstarten.
 
-* Python 2.7, 3.3, 3.4, 3.5 eller 3.6
+* Python 2,7 eller 3.6 +
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) för Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) för Python 3.x
 

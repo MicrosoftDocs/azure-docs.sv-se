@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 146053ffd72b24216bfa86577787727257da2516
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495430"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107059"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -48,7 +48,7 @@ Uppdatera programmets POM-fil för att använda Java 8 eller högre:
 </properties>
 ```
 
-### <a name="add-the-package-references-for-the-chat-client-library"></a>Lägg till paket referenser för klient biblioteket för chatt
+### <a name="add-the-package-references-for-the-chat-sdk"></a>Lägg till paket referenser för chatt-SDK
 
 Referera till `azure-communication-chat` paketet med chatt-API: erna i Pom-filen:
 
@@ -72,7 +72,7 @@ För autentisering måste klienten referera till `azure-communication-common` pa
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Chat SDK för Java.
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -82,7 +82,7 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 | ChatThreadAsyncClient | Den här klassen krävs för den asynkrona chatt funktionen. Du får en instans via ChatAsyncClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton. |
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
-Om du vill skapa en chatt-klient använder du SIP-slutpunkten och den åtkomsttoken som genererades som en del av de nödvändiga stegen. Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. När du har genererat dessa token på servern skickar du tillbaka dem till en klient enhet. Du måste använda klassen CommunicationTokenCredential från det vanliga klient biblioteket för att skicka token till din Chat-klient. 
+Om du vill skapa en chatt-klient använder du SIP-slutpunkten och den åtkomsttoken som genererades som en del av de nödvändiga stegen. Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. När du har genererat dessa token på servern skickar du tillbaka dem till en klient enhet. Du måste använda klassen CommunicationTokenCredential från common SDK för att skicka token till din Chat-klient. 
 
 Läs mer om [chatt-arkitekturen](../../../concepts/chat/concepts.md)
 

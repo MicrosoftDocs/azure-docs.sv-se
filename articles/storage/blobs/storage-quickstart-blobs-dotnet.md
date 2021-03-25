@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095365"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106725"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Snabb start: Azure Blob Storage V12 för klient bibliotek för .NET
 
@@ -164,7 +164,7 @@ Lägg till den här koden i slutet av `Main` metoden:
 
 ### <a name="download-blobs"></a>Ladda ned blobbar
 
-Ladda ned den tidigare skapade blobben genom att anropa [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) -metoden. Exempel koden lägger till suffixet "DOWNLOADed" till fil namnet så att du kan se båda filerna i det lokala fil systemet.
+Ladda ned den tidigare skapade blobben genom att anropa [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) -metoden. Exempel koden lägger till suffixet "DOWNLOADed" till fil namnet så att du kan se båda filerna i det lokala fil systemet.
 
 Lägg till den här koden i slutet av `Main` metoden:
 

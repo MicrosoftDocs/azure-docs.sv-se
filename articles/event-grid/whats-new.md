@@ -3,12 +3,12 @@ title: Nyheter Viktig information – Azure Event Grid
 description: Lär dig mer om vad som är nytt med Azure Event Grid, till exempel senaste versions information, kända problem, fel korrigeringar, inaktuella funktioner och kommande ändringar.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96350015"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107541"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Vad är nytt i Azure Event Grid?
 
@@ -73,14 +73,14 @@ Azure Event Grid tar emot förbättringar regelbundet. För att hålla dig uppda
 - Den här versionen motsvarar API- `2019-06-01` versionen.
 - Den lägger till stöd för följande nya funktioner:
     * [Domäner](event-domains.md)
-    * Sid brytning och Sök filter för åtgärder i resurs listan. Ett exempel finns i [avsnitten-lista efter prenumeration](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription).
+    * Sid brytning och Sök filter för åtgärder i resurs listan. Ett exempel finns i [avsnitten-lista efter prenumeration](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
     * [Service Bus kö som mål](handler-service-bus.md)
     * [Avancerad filtrering](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0 – för hands version (2019-03)
 - Den här versionen motsvarar API-versionen 2019-02-01-Preview.
 - Den lägger till stöd för följande nya funktioner:
-    * Sid brytning och Sök filter för åtgärder i resurs listan. Ett exempel finns i [avsnitten-lista efter prenumeration](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription).
+    * Sid brytning och Sök filter för åtgärder i resurs listan. Ett exempel finns i [avsnitten-lista efter prenumeration](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
     * [Manuellt skapande/borttagning av domän ämnen](how-to-event-domains.md)
     * [Service Bus kö som mål](handler-service-bus.md)
 

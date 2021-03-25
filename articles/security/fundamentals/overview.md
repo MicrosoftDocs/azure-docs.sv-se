@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: 1159736d59e15fa36c0feb7e5d5b5553953fb6b9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564519"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047787"
 ---
 # <a name="introduction-to-azure-security"></a>Introduktion till Azure-säkerhet
 
@@ -204,11 +204,11 @@ Azure-nätverk stöder olika scenarier för säker fjärråtkomst. Några av des
 
 ### <a name="azure-private-link"></a>Azure Private Link
 
-Med [Azures privata länk](https://azure.microsoft.com/services/private-link/) kan du komma åt Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade kund tjänster/partner tjänster privat i det virtuella nätverket via en [privat slut punkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview). Installation och användning med Azure Private Link är konsekvent i Azure PaaS, kundägda och delade partner tjänster. Trafik från ditt virtuella nätverk till Azure-tjänsten finns alltid kvar på Microsoft Azure stamnät nätverket.
+Med [Azures privata länk](https://azure.microsoft.com/services/private-link/) kan du komma åt Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade kund tjänster/partner tjänster privat i det virtuella nätverket via en [privat slut punkt](../../private-link/private-endpoint-overview.md). Installation och användning med Azure Private Link är konsekvent i Azure PaaS, kundägda och delade partner tjänster. Trafik från ditt virtuella nätverk till Azure-tjänsten finns alltid kvar på Microsoft Azure stamnät nätverket.
 
-Med [privata slut punkter](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) kan du skydda dina kritiska Azure-tjänsteresurser enbart till dina virtuella nätverk. Den privata Azure-slutpunkten använder en privat IP-adress från ditt VNet för att ansluta dig privat och säkert till en tjänst som drivs av en privat Azure-länk, vilket effektivt tar tjänsten i ditt VNet. Att exponera det virtuella nätverket på det offentliga Internet är inte längre nödvändigt för att använda tjänster i Azure. 
+Med [privata slut punkter](../../private-link/private-endpoint-overview.md) kan du skydda dina kritiska Azure-tjänsteresurser enbart till dina virtuella nätverk. Den privata Azure-slutpunkten använder en privat IP-adress från ditt VNet för att ansluta dig privat och säkert till en tjänst som drivs av en privat Azure-länk, vilket effektivt tar tjänsten i ditt VNet. Att exponera det virtuella nätverket på det offentliga Internet är inte längre nödvändigt för att använda tjänster i Azure. 
 
-Du kan också skapa en egen privat länk-tjänst i det virtuella nätverket. [Tjänsten Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-service-overview) är referensen till din egen tjänst som drivs av en privat Azure-länk. Din tjänst som körs bakom Azure Standard Load Balancer kan aktive ras för åtkomst till privat länk så att konsumenter till tjänsten kan komma åt den privat från sina egna virtuella nätverk. Dina kunder kan skapa en privat slut punkt i sitt virtuella nätverk och mappa den till den här tjänsten. Att exponera tjänsten för det offentliga Internet är inte längre nödvändigt för att återge tjänster på Azure. 
+Du kan också skapa en egen privat länk-tjänst i det virtuella nätverket. [Tjänsten Azure Private Link](../../private-link/private-link-service-overview.md) är referensen till din egen tjänst som drivs av en privat Azure-länk. Din tjänst som körs bakom Azure Standard Load Balancer kan aktive ras för åtkomst till privat länk så att konsumenter till tjänsten kan komma åt den privat från sina egna virtuella nätverk. Dina kunder kan skapa en privat slut punkt i sitt virtuella nätverk och mappa den till den här tjänsten. Att exponera tjänsten för det offentliga Internet är inte längre nödvändigt för att återge tjänster på Azure. 
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

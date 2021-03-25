@@ -1,17 +1,17 @@
 ---
 title: Konfigurera mått aviseringar – Azure Portal-Azure Database for MySQL – flexibel Server
 description: Den här artikeln beskriver hur du konfigurerar och får åtkomst till mått aviseringar för Azure Database for MySQL flexibel Server från Azure Portal.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 632aae766e6fd1328dc6e0135a88a942d7ad0910
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595794"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110159"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Använd Azure Portal för att ställa in aviseringar för mått för Azure Database for MySQL flexibel Server 
 

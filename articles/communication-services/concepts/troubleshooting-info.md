@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492701"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107235"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Fel sökning i Azure Communication Services
 
@@ -33,11 +33,11 @@ För att hjälpa dig att felsöka vissa typer av problem kan du bli ombedd att a
 
 ## <a name="access-your-ms-cv-id"></a>Få åtkomst till ditt MS-CV ID
 
-MS-CV ID kan nås genom att konfigurera diagnostik i `clientOptions` objekt instansen när du initierar klient biblioteken. Diagnostik kan konfigureras för alla Azure-klient bibliotek, till exempel chatt, identitet och VoIP-samtal.
+MS-CV ID kan nås genom att konfigurera diagnostik i `clientOptions` objekt instansen när du initierar dina SDK: er. Diagnostik kan konfigureras för alla Azure-SDK: er, till exempel chatt, identitet och VoIP-samtal.
 
 ### <a name="client-options-example"></a>Exempel på klient alternativ
 
-Följande kodfragment demonstrerar diagnostik-konfigurationen. När klient biblioteken används med diagnostik aktive rad kommer diagnostikinformation att skickas till den konfigurerade händelse lyssnaren:
+Följande kodfragment demonstrerar diagnostik-konfigurationen. När SDK: er används med aktive rad diagnostik skickas diagnostikinformation till den konfigurerade händelse lyssnaren:
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,7 +79,7 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Åtkomst till ditt anrops-ID
 
-När du skickar en supportbegäran via Azure Portal som rör anrop till anrop kan du bli ombedd att ange ID för det anrop som du refererar till. Detta kan nås via det anropande klient biblioteket:
+När du skickar en supportbegäran via Azure Portal som rör anrop till anrop kan du bli ombedd att ange ID för det anrop som du refererar till. Detta kan nås via anrops-SDK: n:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
@@ -127,7 +127,7 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Följande kod kan användas för att konfigurera `AzureLogger` för att spara loggar till-konsolen med hjälp av Java Script-klient biblioteket:
+Följande kod kan användas för att konfigurera `AzureLogger` för att spara loggar till-konsolen med hjälp av Java Script SDK:
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
@@ -157,16 +157,16 @@ På Android Studio navigerar du till enhetens fil Utforskaren genom att välja V
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>Anrops fel koder för klient bibliotek
+## <a name="calling-sdk-error-codes"></a>Fel koder för att anropa SDK
 
-Azure Communication Services som anropar klient biblioteket använder följande felkoder för att felsöka anrops problem. De här fel koderna exponeras genom `call.callEndReason` egenskapen när ett anrop har slutförts.
+Azure Communication Services-anropet som anropar SDK använder följande felkoder för att hjälpa dig att felsöka anrops problem. De här fel koderna exponeras genom `call.callEndReason` egenskapen när ett anrop har slutförts.
 
-| Felkod | Beskrivning | Åtgärd att vidta |
+| Felkod | Description | Åtgärd att vidta |
 | -------- | ---------------| ---------------|
 | 403 | Förbjuden/autentiseringsfel. | Se till att din token för kommunikations tjänster är giltig och inte har upphört att gälla. |
 | 404 | Anropet hittades inte. | Kontrol lera att numret du ringer (eller ring du ansluter till) finns. |
 | 408 | Tids gränsen uppnåddes för anrops kontroll. | Tids gränsen för uppringnings styrenheten nåddes i väntan på protokoll meddelanden från användar slut punkter. Se till att klienterna är anslutna och tillgängliga. |
-| 410 | Lokal medie stack eller fel i medie infrastruktur. | Se till att du använder det senaste klient biblioteket i en miljö som stöds. |
+| 410 | Lokal medie stack eller fel i medie infrastruktur. | Se till att du använder den senaste SDK: n i en miljö som stöds. |
 | 430 | Det gick inte att leverera meddelandet till klient programmet. | Kontrol lera att klient programmet körs och är tillgängligt. |
 | 480 | Fjärrklientens slut punkt har inte registrerats. | Se till att Fjärrslutpunkten är tillgänglig. |
 | 481 | Det gick inte att hantera inkommande anrop. | Skicka en support förfrågan via Azure Portal. |

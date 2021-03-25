@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 2afac0e25c394c9bf265daf1fe3ded3d763a7c61
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: fd4ad1443f466a78abfc569d5f52f6bdeff2d5be
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508511"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048892"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrera Azure Storage för meddelanden och säkerhets kopiering
 
@@ -29,7 +29,7 @@ Den här guiden visar hur du använder dessa REST API: er med hjälp av sväng. 
 
 - En Custom Vision-resurs i Azure. Om du inte har en sådan går du till Azure Portal och [skapar en ny Custom vision resurs](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Den här funktionen stöder för närvarande inte den kognitiva tjänst resursen (alla i en nyckel).
 - Ett Azure Storage konto med en BLOB-behållare. Följ [Övning 1 i Azure Storage labbet](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) om du behöver hjälp med det här steget.
-* [PowerShell version 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)eller liknande kommando rads program.
+* [PowerShell version 6.0 +](/powershell/scripting/install/installing-powershell-core-on-windows)eller liknande kommando rads program.
 
 ## <a name="set-up-azure-storage-integration"></a>Konfigurera integrering av Azure Storage
 

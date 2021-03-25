@@ -258,9 +258,11 @@
               href: create-new-saas-offer-technical.md
             - name: Skapa planer
               href: create-new-saas-offer-plans.md
+            - name: Skapa ett test erbjudande
+              href: create-saas-dev-test-offer.md
             - name: Testa och publicera ett SaaS-erbjudande
               href: test-publish-saas-offer.md
-        - name: Marknadsför ditt SaaS-erbjudande
+        - name: Sälj ditt SaaS-erbjudande
           href: create-new-saas-offer-marketing.md
     - name: Granska och publicera erbjudanden
       href: review-publish-offer.md

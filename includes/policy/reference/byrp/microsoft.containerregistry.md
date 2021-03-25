@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 05ed406d5392fab46261c57759fe3bbd1593a916
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87d254d651049d9c8519d05240c4e513a6bb3dae
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577433"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034696"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Konfigurera behållar register för att inaktivera offentlig nätverks åtkomst](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Inaktivera offentlig nätverks åtkomst för din Container Registry-resurs så att den inte är tillgänglig via det offentliga Internet. Detta kan minska risken för data läckage. Läs mer på [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) och [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |Ändra, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[Konfigurera behållar register med privata slut punkter](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd85c6833-7d33-4cf5-a915-aaa2de84405f) |Privata slut punkter ansluter ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress på källan eller målet. Genom att mappa privata slut punkter till dina Premium container Registry-resurser kan du minska risken för data läckage. Läs mer på: [https://aka.ms/privateendpoints](https://aka.ms/privateendpoints) och [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |DeployIfNotExists, inaktiverat |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateEndpoint_DeployIfNotExists.json) |
