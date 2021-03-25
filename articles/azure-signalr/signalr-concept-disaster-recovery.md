@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 996fa53aa105c0bcc27db7134c25d6d00e542a78
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90976496"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110295"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Återhämtning och haveriberedskap i Azure SignalR Service
 
@@ -44,13 +44,16 @@ Nedan visas ett diagram som illustrerar en sådan topologi:
 
 ![Diagram visar två regioner var och en med en app server och en signal tjänst där varje server är kopplad till SignalR-tjänsten i regionen som primär och med tjänsten i den andra regionen som sekundär.](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurera appservrar med flera SignalR Service-instanser
+## <a name="configure-multiple-signalr-service-instances"></a>Konfigurera flera signal tjänst instanser
 
-När du har skapat SignalR Service och appservrarna i varje region kan du konfigurera appservrarna att ansluta till alla SignalR Service-instanser.
+Det finns stöd för flera signal tjänst instanser på både App-servrar och Azure Functions.
 
+När du har skapat SignalR-och App-servrar/Azure Functions som skapats i varje region kan du konfigurera dina App-servrar/-Azure Functions att ansluta till alla signal tjänst instanser.
+
+### <a name="configure-on-app-servers"></a>Konfigurera på App-servrar
 Det finns två sätt att göra det:
 
-### <a name="through-config"></a>Med config
+#### <a name="through-config"></a>Med config
 
 Du bör redan känna till hur du ställer in anslutnings strängen för SignalR-tjänsten via miljövariabler/app-inställningar/Web. cofig i en konfigurations post med namnet `Azure:SignalR:ConnectionString` .
 Om du har flera slutpunkter kan du ange dem i flera config-poster, var och en i följande format:
@@ -62,7 +65,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 Här `<name>` är namnet på slutpunkten, och `<role>` är dess roll (primär eller sekundär).
 Namnet är valfritt men användbart om du vill anpassa routningsbeteendet mellan flera slutpunkter ytterligare.
 
-### <a name="through-code"></a>Med kod
+#### <a name="through-code"></a>Med kod
 
 Om du föredrar att lagra anslutnings strängarna någon annan stans kan du läsa dem i din kod och använda dem som parametrar vid anrop `AddAzureSignalR()` (i ASP.net Core) eller `MapAzureSignalR()` (i ASP.net).
 
@@ -93,6 +96,9 @@ Du kan konfigurera flera primära eller sekundära instanser. Om det finns flera
 
 1. Om det finns minst en primär instans online returnerar du en slumpmässig primär Online instans.
 2. Returnera en slumpmässig sekundär Online instans om alla primära instanser är nere.
+
+### <a name="configure-on-azure-functions"></a>Konfigurera på Azure Functions
+Se [den här artikeln](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md#configuration-method).
 
 ## <a name="failover-sequence-and-best-practice"></a>Redundanssekvens och bästa praxis
 
@@ -137,3 +143,5 @@ Du behöver hantera sådana fall på klientsidan för att göra det transparent 
 I den här artikeln har du lärt dig att konfigurera programmet för att uppnå återhämtningsförmåga för SignalR Service. Om du vill få mer information om server/klient-anslutning och anslutningsroutning i SignalR Service kan du läsa [den här artikeln](signalr-concept-internals.md) om hur SignalR Service fungerar på insidan.
 
 För skalnings scenarier, till exempel horisontell partitionering, som använder flera instanser för att hantera ett stort antal anslutningar läser [du skala flera instanser](signalr-howto-scale-multi-instances.md).
+
+Mer information om hur du konfigurerar Azure Functions med flera SignalR service instanser finns [i stöd för flera Azure SignalR service instances i Azure Functions](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md).

@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92109161"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108952"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Kryptering av data i Azure Data Lake Storage Gen1
 
@@ -135,4 +135,4 @@ Observera att om du använder standard alternativen för kryptering krypteras di
 Den här åtgärden tar normalt mindre än två minuter och ingen stilleståndstid förväntas på grund av nyckelrotationen. När åtgärden har slutförts används den nya versionen av nyckeln.
 
 > [!IMPORTANT]
-> När nyckelrotationen har slutförts används inte längre den äldre nyckelversionen aktivt till att kryptera data.  I sällsynta fall när ett oväntat fel inträffar och även redundanta kopior av dina data påverkas, kan dock data återställas från en säkerhetskopia som fortfarande använder den gamla nyckeln. Om du vill se till att dina data är tillgängliga i dessa sällsynta fall, behåller du en kopia av den tidigare versionen av krypteringsnyckeln. Se [rikt linjerna för haveri beredskap för data i data Lake Storage gen1](data-lake-store-disaster-recovery-guidance.md) för bästa praxis för haveri beredskaps planeringen.
+> När nyckel rotations åtgärden har slutförts används inte längre den gamla versionen av nyckeln för att kryptera nya data. Det kan dock finnas fall där åtkomst till äldre data kan behöva den gamla nyckeln. Om du vill tillåta läsning av sådana äldre data ska du inte ta bort den gamla nyckeln

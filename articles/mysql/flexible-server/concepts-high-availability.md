@@ -1,17 +1,17 @@
 ---
 title: Översikt över zonens redundant hög tillgänglighet med Azure Database for MySQL flexibel Server
 description: Lär dig mer om begreppen redundanta zoner med hög tillgänglighet med Azure Database for MySQL flexibel Server
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6629beacb5c3edc6fe1d21509051b915c0894479
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99097125"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109700"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncept med hög tillgänglighet i Azure Database for MySQL flexibel Server (för hands version)
 
@@ -45,13 +45,13 @@ De olika replikeringsstatus visas nedan:
 
 Här är några fördelar med att använda zon redundans HA-funktionen: 
 
--   Standby-repliken distribueras i en exakt VM-konfiguration som primär, till exempel virtuella kärnor, lagring, nätverks inställningar (VNET, brand vägg) osv.
--   Möjlighet att ta bort standby-replikering genom att inaktivera hög tillgänglighet.
--   Automatiska säkerhets kopieringar är ögonblicks bilder, som utförs från den primära databas servern och lagras i en zon redundant lagring.
--   I händelse av redundans redundansväxlas Azure Database for MySQL flexibla servern automatiskt till standby-repliken om hög tillgänglighet är aktive rad. Installations programmet för hög tillgänglighet övervakar den primära servern och tar den online igen.
--   Klienterna ansluter alltid till den primära databas servern.
--   Om det uppstår ett problem med databas krasch eller nod görs ett nytt försök att starta om på samma nod. Om detta Miss lyckas utlöses den automatiska redundansväxlingen.
--   Möjlighet att starta om servern för att hämta eventuella ändringar av statiska Server parametrar.
+- Standby-replikering distribueras i en exakt VM-konfiguration som primär, till exempel virtuella kärnor, lagring, nätverks inställningar (VNET, brand vägg) osv.
+- Möjlighet att ta bort standby-replikering genom att inaktivera hög tillgänglighet.
+- Automatiska säkerhets kopieringar är ögonblicks bilds, utförda från den primära databas servern och lagras i en zon redundant lagring.
+- I händelse av redundans växlar Azure Database for MySQL flexibla servern automatiskt över till vänte läge om hög tillgänglighet är aktiverat. Installations programmet för hög tillgänglighet övervakar den primära servern och ansluter den igen.
+- Klienterna ansluter alltid till den primära databas servern.
+- Om det uppstår ett databas krasch-eller nodfel görs försök att starta om först på samma nod. Om detta Miss lyckas utlöses den automatiska redundansväxlingen.
+- Möjlighet att starta om servern för att hämta eventuella ändringar av statiska Server parametrar.
 
 ## <a name="steady-state-operations"></a>Stabila tillstånds åtgärder
 
@@ -62,7 +62,7 @@ För affärs kontinuitet måste du ha en failover-process för planerade och opl
 
 ### <a name="planned-events"></a>Planerade händelser
 
-Planerade stillestånds händelser omfattar aktiviteter som schemalagts av Azure, till exempel periodiska program uppdateringar, lägre versions uppgraderingar eller som initieras av kunder, till exempel skalning av beräknings-och skalnings lagrings åtgärder. Alla dessa ändringar tillämpas först på den förväntande repliken. Under den tiden fortsätter programmen att komma åt den primära servern. När standby-repliken har uppdaterats töms de primära server anslutningarna, en redundansväxling utlöses, vilket aktiverar vänte läges repliken så att den blir primär med samma databas server namn genom att uppdatera DNS-posten. Klient anslutningarna är frånkopplade och de måste återanslutas och de kan återuppta sina åtgärder. En ny standby-server kommer att upprättas i samma zon som den gamla primära. Den totala redundansväxlingen förväntas vara 60-120 s. 
+Planerade stillestånds händelser omfattar aktiviteter som schemalagts av Azure, till exempel periodiska program uppdateringar, lägre versions uppgraderingar eller som initieras av kunder, till exempel skalning av beräknings-och skalnings lagrings åtgärder. Alla dessa ändringar tillämpas först på den förväntande repliken. Under den tiden fortsätter programmen att komma åt den primära servern. När standby-repliken har uppdaterats töms de primära server anslutningarna, en redundansväxling utlöses, vilket aktiverar vänte läges repliken så att den blir primär med samma databas server namn genom att uppdatera DNS-posten. Klient anslutningarna är frånkopplade och de måste återanslutas och de kan återuppta sina åtgärder. En ny standby-Server upprättas i samma zon som den gamla primära. Den totala redundansväxlingen förväntas vara 60-120 s. 
 
 >[!NOTE]
 > I händelse av beräknings skalnings åtgärden skalar vi den sekundära replik servern följt av den primära servern. Ingen redundans är involverad.
@@ -75,30 +75,30 @@ Oplanerade avbrott i tjänsten innefattar program varu fel som eller infrastrukt
 I flexibla servrar finns funktioner för underhålls schemaläggning där du kan välja en 30-minuters period under en dag i din preferens då Azure-underhållet fungerar, till exempel uppdatering eller lägre versions uppgraderingar. För dina flexibla servrar som kon figurer ATS med hög tillgänglighet utförs dessa underhålls aktiviteter på den förväntande repliken först. 
 
 ## <a name="point-in-time-restore"></a>Återställning från tidpunkt 
-Eftersom flexibel Server har kon figurer ATS vid hög tillgänglighet replikeras data i synkront läge, så är standby-servern aktuell med den primära. Alla användar fel i den primära, till exempel en oavsiktlig släpp av en tabell eller felaktiga uppdateringar, replikeras till vänte läge. Därför kan du inte använda standby för att återställa från sådana logiska fel. Om du vill återställa från de logiska felen måste du utföra återställning av tidpunkt till höger innan felet inträffade. När du återställer databasen som kon figurer ATS med hög tillgänglighet med hjälp av en flexibel servers funktion för återställning av en viss tidpunkt återställs en ny databas server som en ny flexibel server med ett namn som användaren anger. Sedan kan du exportera objektet från databas servern och importera det till produktions databas servern. På samma sätt kan du antingen välja den senaste återställnings punkten eller en anpassad återställnings punkt om du vill klona databas servern för testnings-och utvecklings ändamål, eller om du vill återställa i något annat syfte. Återställnings åtgärden skapar en flexibel Server för en zon.
+Eftersom flexibel Server har kon figurer ATS vid hög tillgänglighet replikeras data i synkront läge, så är standby-servern uppdaterad med den primära. Alla användar fel i den primära, till exempel en oavsiktlig släpp av en tabell eller felaktiga uppdateringar, replikeras till vänte läge. Därför kan du inte använda standby för att återställa från sådana logiska fel. Om du vill återställa från de logiska felen måste du utföra återställning av tidpunkt till höger innan felet inträffade. När du återställer databasen som kon figurer ATS med hög tillgänglighet med hjälp av en flexibel servers funktion för återställning av en viss tidpunkt återställs en ny databas server som en ny flexibel server med ett namn som användaren anger. Sedan kan du exportera objektet från databas servern och importera det till produktions databas servern. På samma sätt kan du antingen välja den senaste återställnings punkten eller en anpassad återställnings punkt om du vill klona databas servern för testnings-och utvecklings ändamål, eller om du vill återställa i något annat syfte. Återställnings åtgärden skapar en flexibel server med en zon.
 
 ## <a name="mitigate-downtime"></a>Minimera drift stopp 
 När du inte använder zon redundans måste du fortfarande kunna minimera stillestånds tiden för programmet. Planera avbrott i tjänsten, till exempel schemalagda uppdateringar, mindre versions uppgraderingar eller åtgärder som initieras av användaren kan utföras som en del av det schemalagda underhålls fönstret. Planerade avbrott i tjänsten, till exempel schemalagda uppdateringar, mindre versions uppgraderingar eller initierade åtgärder som skalnings beräkning medför drift stopp. För att minimera program påverkan för Azure initierade underhålls aktiviteter kan du välja att schemalägga dem under den veckodag och den tid som minst påverkar programmet. 
 
-Vid oplanerade stillestånds händelser, till exempel databas krasch eller Server haveri, startas den berörda servern om inom samma zon. I sällsynta fall kan du, om hela zonen påverkas, återställa databasen på en annan zon inom regionen. 
+Vid oplanerade stillestånds händelser, till exempel databas krasch eller Server haveri, startas den berörda servern om i samma zon. I sällsynta fall kan du, om hela zonen påverkas, återställa databasen på en annan zon inom regionen. 
 
 ## <a name="things-to-know-with-zone-redundancy"></a>Saker att känna till med zon redundans 
 
 Här är några saker som du bör tänka på när du använder zon-redundans hög tillgänglighet: 
 
--   Hög tillgänglighet kan **bara** ställas in under flexibel Server skapande tid.
--   Hög tillgänglighet stöds inte i en data behandlings nivå med burst.
--   På grund av synkron replikering till en annan tillgänglighets zon kan den primära databas servern uppleva förhöjda Skriv-och bekräftelse svars tider.
--   Det går inte att använda standby-repliker för skrivskyddade frågor.
--   Beroende på aktivitet på den primära servern vid redundansväxlingen kan det ta upp till 60-120 sekunder eller längre tid att slutföra redundansväxlingen.
--   Att starta om den primära databas servern för att hämta statiska parameter ändringar startar även om repliken för vänte läge.
--   Det finns inte stöd för att konfigurera Läs repliker för redundanta zoner med hög tillgänglighet.
--   Konfigurering av kundens initierade hanterings uppgifter kan inte automatiseras under hanterat underhålls fönster.
--   Planerade händelser som skalnings beräknings-och del versions uppgraderingar sker både i primär och standby på samma gång. 
+- Hög tillgänglighet kan **bara** ställas in under flexibel Server skapande tid.
+- Hög tillgänglighet stöds inte i en data behandlings nivå med burst.
+- På grund av synkron replikering till en annan tillgänglighets zon kan den primära databas servern uppleva förhöjda Skriv-och bekräftelse svars tider.
+- Det går inte att använda standby-repliker för skrivskyddade frågor.
+- Beroende på aktivitet på den primära servern vid redundansväxlingen kan det ta upp till 60-120 sekunder eller längre tid att slutföra redundansväxlingen.
+- Att starta om den primära databas servern för att hämta statiska parameter ändringar startar även om repliken för vänte läge.
+- Det finns inte stöd för att konfigurera Läs repliker för redundanta zoner med hög tillgänglighet.
+- Konfigurering av kundens initierade hanterings uppgifter kan inte automatiseras under hanterat underhålls fönster.
+- Planerade händelser som skalnings beräknings-och del versions uppgraderingar sker både i primär och standby på samma gång. 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
--   Lär dig mer om [verksamhets kontinuitet](./concepts-business-continuity.md)
--   Lär dig mer om [Zone-redundant hög tillgänglighet](./concepts-high-availability.md)
--   Läs mer om [säkerhets kopiering och återställning](./concepts-backup-restore.md)
+- Lär dig mer om [verksamhets kontinuitet](./concepts-business-continuity.md)
+- Lär dig mer om [Zone-redundant hög tillgänglighet](./concepts-high-availability.md)
+- Läs mer om [säkerhets kopiering och återställning](./concepts-backup-restore.md)

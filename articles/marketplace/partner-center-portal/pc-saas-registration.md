@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130025"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048348"
 ---
 # <a name="register-a-saas-application"></a>Registrera ett SaaS-program
 
@@ -48,7 +48,7 @@ Alla program som vill använda funktionerna i Azure AD måste först registreras
 **Azure AD App-ID: t** är associerat med ditt UTGIVAR-ID, så se till att samma *app-ID* används i alla dina erbjudanden.
 
 >[!Note]
->Om en utgivare har två olika konton i Partner Center, ska två olika Azure AD App-ID: n användas.  Varje partner konto i Partner Center bör använda ett unikt Azure AD App-ID för alla SaaS-erbjudanden som publiceras via det här kontot.
+>Om utgivaren har två eller flera olika konton i Partner Center kan du bara använda Azure AD-appens registrerings information i ett enda konto. Det finns inte stöd för att använda samma klient-ID, app-ID-par för ett erbjudande under ett annat utgivar konto.
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>Hämta utgivarens autentiseringstoken
 

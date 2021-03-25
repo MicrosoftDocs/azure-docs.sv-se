@@ -3,19 +3,19 @@ title: Planera distribution av Azure Service Fabric-kluster
 description: Lär dig mer om att planera och förbereda för en produktions Service Fabric kluster distribution till Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109631"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046325"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planera och förbereda för en kluster distribution
 
 Det är mycket viktigt att planera och förbereda för distribution av produktions kluster.  Det finns många faktorer att tänka på.  Den här artikeln vägleder dig igenom stegen för att förbereda kluster distributionen.
 
 ## <a name="read-the-best-practices-information"></a>Läs informationen om bästa praxis
-För att kunna hantera Azure Service Fabric-program och-kluster, finns det åtgärder som vi rekommenderar för att optimera tillförlitligheten i produktions miljön.  Mer information finns i [metod tips för Service Fabric program och kluster](service-fabric-best-practices-overview.md).
+För att kunna hantera Azure Service Fabric-program och-kluster, finns det åtgärder som vi rekommenderar för att optimera tillförlitligheten i produktions miljön.  Mer information finns i [metod tips för Service Fabric program och kluster](./service-fabric-best-practices-security.md).
 
 ## <a name="select-the-os-for-the-cluster"></a>Välj operativ system för klustret
 Service Fabric gör det möjligt att skapa Service Fabric-kluster på alla virtuella datorer eller datorer som kör Windows Server eller Linux.  Innan du distribuerar klustret måste du välja operativ system: Windows eller Linux.  Varje nod (virtuell dator) i klustret kör samma OS, men du kan inte blanda virtuella Windows-och Linux-datorer i samma kluster.
@@ -117,7 +117,7 @@ En viktig del av att leverera hög tillgänglighet säkerställer att tjänstern
 Är ditt program och kluster redo att ta produktions trafik? Innan du distribuerar klustret till produktion kan du köra genom [Check listan för produktions beredskap](service-fabric-production-readiness-checklist.md). Se till att ditt program och kluster fungerar smidigt genom att gå igenom objekten i den här check listan. Vi rekommenderar starkt att alla dessa objekt checkas ut innan du börjar arbeta med produktionen.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Skapa ett Service Fabric kluster som kör Windows](service-fabric-best-practices-overview.md)
+* [Skapa ett Service Fabric kluster som kör Windows](./service-fabric-best-practices-security.md)
 * [Skapa ett Service Fabric kluster som kör Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

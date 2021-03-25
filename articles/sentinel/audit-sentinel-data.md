@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a8ea32d84da521c8a1af926c6cb5e26bc2738de2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054982"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044846"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Granska Azure Sentinel-frågor och-aktiviteter
 
@@ -132,7 +132,7 @@ I följande tabell visas till exempel de valda åtgärder som finns i Azure akti
 |Uppdateringsinställningar    |Microsoft. SecurityInsights/inställningar|
 | | |
 
-Mer information finns i [händelse schema för Azure aktivitets logg](/azure/azure-monitor/essentials/activity-log-schema).
+Mer information finns i [händelse schema för Azure aktivitets logg](../azure-monitor/essentials/activity-log-schema.md).
 
 
 ## <a name="auditing-with-laquerylogs"></a>Granskning med LAQueryLogs
@@ -157,7 +157,7 @@ LAQueryLogs-data innehåller information som:
 
 1. Tabellen **LAQueryLogs** är inte aktive rad som standard i din Log Analytics-arbetsyta. Om du vill använda **LAQueryLogs** -data vid granskning i Azure Sentinel aktiverar du först **LAQueryLogs** i området för Log Analytics arbets ytans **diagnostikinställningar** .
 
-    Mer information finns i [gransknings frågor i Azure Monitor loggar](/azure/azure-monitor/logs/query-audit).
+    Mer information finns i [gransknings frågor i Azure Monitor loggar](../azure-monitor/logs/query-audit.md).
 
 
 1. Sedan kan du köra frågor mot data med KQL, precis som med andra tabeller.

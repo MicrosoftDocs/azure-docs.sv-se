@@ -11,18 +11,18 @@ ms.subservice: core
 ms.date: 03/03/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5f853c19015a70d596c32532a9c280c785b4597b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 710a860b1ed87f176b6f42b4963dad17acb323b1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609995"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954062"
 ---
 # <a name="upgrade-compute-instance-and-compute-cluster-host-os"></a>Uppgradera beräknings instans och beräknings kluster värd operativ system
 
 Azure Machine Learning __beräknings kluster__ och __beräknings instans__ är hanterad beräknings infrastruktur. Som en hanterad tjänst hanterar Microsoft värd-OS och de paket och program versioner som är installerade.
 
-Värd operativ systemet för beräknings kluster och beräknings instans har Ubuntu 16,04 LTS. Den **30 April 2021** slutar Ubuntu support för 16,04. Från och med den __15 mars 2021__ kommer Microsoft automatiskt att uppdatera värd operativ systemet till Ubuntu 18,04 LTS. Uppdatering till 18,04 säkerställer fortsatt säkerhets uppdateringar och support från Ubuntu-communityn. Mer information om Ubuntu-stöd för 16,04 finns i [Ubuntu release-bloggen](https://wiki.ubuntu.com/Releases).
+Värd operativ systemet för beräknings kluster och beräknings instans har Ubuntu 16,04 LTS. Den **30 April 2021** slutar Ubuntu support för 16,04. Från och med den __15 mars 2021__ kommer Microsoft automatiskt att uppdatera värd operativ systemet till Ubuntu 18,04 LTS. Uppdatering till 18,04 säkerställer fortsatt säkerhets uppdateringar och support från Ubuntu-communityn. Den här uppdateringen kommer att distribueras över Azure-regioner och kommer att vara tillgänglig i alla regioner senast den __9 April 2021__. Mer information om Ubuntu-stöd för 16,04 finns i [Ubuntu release-bloggen](https://wiki.ubuntu.com/Releases).
 
 > [!TIP]
 > * Värd operativ systemet är inte den OS-version som du kan ange för en [miljö](how-to-use-environments.md) när du tränar eller distribuerar en modell. Miljöer körs i Docker. Docker körs på värd operativ systemet.
@@ -30,11 +30,11 @@ Värd operativ systemet för beräknings kluster och beräknings instans har Ubu
 > * När du använder en Azure Machine Learning beräknings instans som baseras på Ubuntu 18,04, är den standardinställda python-versionen _python 3,8_.
 ## <a name="creating-new-resources"></a>Skapa nya resurser
 
-Beräknings kluster eller beräknings instanser som skapats efter den __15 mars 2021__ använder Ubuntu 18,04 LTS som värd operativ system som standard. Du kan inte välja ett annat värd-OS.
+Beräknings kluster eller beräknings instanser som skapats efter den __9 April 2021__ använd Ubuntu 18,04 LTS som värd operativ system som standard. Du kan inte välja ett annat värd-OS.
 
 ## <a name="upgrade-existing-resources"></a>Uppgradera befintliga resurser
 
-Om du har befintliga beräknings kluster eller beräknings instanser som skapats före den __15 mars 2021__ måste du vidta åtgärder för att uppgradera värd operativ systemet till Ubuntu 18,04:
+Om du har befintliga beräknings kluster eller beräknings instanser som skapats före den __15 mars 2021__ måste du vidta åtgärder för att uppgradera värd operativ systemet till Ubuntu 18,04. Beroende på vilken region du får åtkomst till Azure Machine Learning från, rekommenderar vi att du vidtar dessa åtgärder efter den __9 April 2021__ för att säkerställa att våra ändringar har distribuerats till alla regioner:
 
 * __Azure Machine Learning beräknings kluster__:
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2fd0d9d2b6e80d54bdd45b7a13fab7bfa33841c9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889475"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950605"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Mata in IoT Hub telemetri i Azure Digitals, dubbla
 
@@ -39,7 +39,7 @@ Den här instruktionen beskriver hur du skickar meddelanden från IoT Hub till A
 
 När en händelse för att utföra en termostat skickas av den enheten, bearbetar en funktion telemetri och egenskapen *temperatur* för den digitala enheten bör uppdateras. Det här scenariot beskrivs i ett diagram nedan:
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Ett diagram som visar ett flödes diagram. I diagrammet skickar en IoT Hub-enhet temperatur telemetri via IoT Hub till en funktion i Azure, som uppdaterar en temperatur egenskap på en enhet i en digital i Azure Digitals." border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Diagram över IoT Hub enhet som skickar en temperatur-telemetri via IoT Hub till en funktion i Azure, som uppdaterar en temperatur egenskap på en enhet med dubbla i Azures digitala dubbla." border="false":::
 
 ## <a name="add-a-model-and-twin"></a>Lägg till en modell och tvilling
 
@@ -47,14 +47,7 @@ I det här avsnittet ska du konfigurera en [digital](concepts-twins-graph.md) en
 
 Om du vill skapa en termostat-typ måste du först ladda upp termostat- [modellen](concepts-models.md) till din instans, som beskriver egenskaperna för en termostat och kommer att användas senare för att skapa den dubbla. 
 
-Modellen ser ut så här:
-:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
-
-Kör följande Azure CLI-kommando om du vill **överföra den här modellen till en-instansen**, som överför modellen ovan som inline-JSON. Du kan köra kommandot i [Azure Cloud Shell](/cloud-shell/overview.md) i webbläsaren eller på din dator om du har CLI [installerat lokalt](/cli/azure/install-azure-cli).
-
-```azurecli-interactive
-az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
-```
+[!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
 Sedan måste du **skapa en dubbel med den här modellen**. Använd följande kommando för att skapa en termostat med namnet **thermostat67** och ange 0,0 som första temperatur värde.
 
@@ -62,13 +55,8 @@ Sedan måste du **skapa en dubbel med den här modellen**. Använd följande kom
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
->[!NOTE]
-> Om du använder Cloud Shell i PowerShell-miljön kan du behöva undanta citat tecken i de infogade JSON-fälten för att deras värden ska kunna parsas korrekt. Här följer kommandon för att ladda upp modellen och skapa den dubbla med den här ändringen:
->
-> Överförings modell:
-> ```azurecli-interactive
-> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
-> ```
+> [!Note]
+> Om du använder Cloud Shell i PowerShell-miljön kan du behöva undanta citat tecken i de infogade JSON-fälten för att deras värden ska kunna parsas korrekt. Här är kommandot för att skapa den dubbla med den här ändringen:
 >
 > Skapa dubbla:
 > ```azurecli-interactive
@@ -117,7 +105,7 @@ Spara funktions koden.
 
 #### <a name="step-3-publish-the-function-app-to-azure"></a>Steg 3: publicera Function-appen till Azure
 
-Publicera projektet i en Function-app i Azure.
+Publicera projektet med *IoTHubtoTwins. cs* -funktionen i en Function-app i Azure.
 
 Instruktioner för hur du gör detta finns i avsnittet [**publicera Function-appen till Azure**](how-to-create-azure-function.md#publish-the-function-app-to-azure) med *instruktionen så här konfigurerar du en funktion för bearbetning av data* .
 

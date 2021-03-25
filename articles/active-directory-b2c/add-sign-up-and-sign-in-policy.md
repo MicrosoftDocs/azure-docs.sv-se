@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97618826"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043758"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Konfigurera ett registrerings-och inloggnings flöde i Azure Active Directory B2C
 
@@ -66,6 +67,7 @@ Användar flödet för registrering och inloggning hanterar både registrering o
     ![Sidan för attribut och val av anspråk med tre anspråk valda](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. Klicka på **skapa** för att lägga till användar flödet. Ett prefix för *B2C_1* anpassningsprefix automatiskt till namnet.
+2. Följ stegen för att [Hantera flödet för "glömt lösen ordet?"](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) i registrerings-eller inloggnings principen.
 
 ### <a name="test-the-user-flow"></a>Testa användar flödet
 
@@ -73,7 +75,7 @@ Användar flödet för registrering och inloggning hanterar både registrering o
 1. För **program** väljer du det webb program som heter *webapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Klicka på **Kör användar flöde** och välj sedan **Registrera dig nu**.
 
-    ![Sidan kör användar flöde i portalen med knappen Kör användar flöde markerat](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![Sidan kör användar flöde i portalen med knappen Kör användar flöde markerat](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. Ange en giltig e-postadress, klicka på **Skicka verifierings kod**, ange den verifierings kod som du får och välj sedan **verifiera kod**.
 1. Ange ett nytt lösen ord och bekräfta lösen ordet.

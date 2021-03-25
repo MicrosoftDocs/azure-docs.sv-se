@@ -1,7 +1,7 @@
 ---
 title: Starta, övervaka och avbryta inlärnings körningar i python
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du startar, status och hanterar dina Machine Learning-experiment körs med Azure Machine Learning python SDK.
+description: Lär dig hur du startar, övervakar och spårar dina Machine Learning-experiment körs med Azure Machine Learning python SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,24 +12,24 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634782"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110278"
 ---
-# <a name="start-monitor-and-track-runs"></a>Starta, övervaka och spåra körningar 
+# <a name="start-monitor-and-track-run-history"></a>Starta, övervaka och spåra körnings historik 
 
-[Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning Studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och hantera dina körningar för utbildning och experimentering.
+[Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning Studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och spåra dina körningar för utbildning och experimentering. Din ML-körning är en viktig del av en förklarad och upprepnings bar ML-utvecklings process.
 
-Den här artikeln innehåller exempel på följande uppgifter:
+Den här artikeln visar hur du utför följande uppgifter:
 
 * Övervaka körnings prestanda.
 * Övervaka körnings statusen per e-postavisering.
 * Tagga och hitta körningar.
 * Lägg till en körnings beskrivning. 
-* Kör sökningen. 
+* Kör sökningen över din körnings historik. 
 * Avbryt eller kör inte.
 * Skapa underordnade körningar.
  
@@ -134,7 +134,7 @@ Du behöver följande objekt:
         print(notebook_run.get_status())
         ```
     
-    * Använd-metoden för att hämta körnings-ID, körnings tid och ytterligare information om körningen [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) .
+    * Använd-metoden för att hämta körnings-ID, körnings tid och annan information om körningen [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) .
     
         ```python
         print(notebook_run.get_details())
@@ -225,7 +225,7 @@ Du behöver följande objekt:
 
 En körnings beskrivning kan läggas till i en körning för att ge mer kontext och information till körningen. Du kan också söka efter de här beskrivningarna i listan körningar och lägga till körnings beskrivningen som en kolumn i körnings listan. 
 
-Gå till sidan med **körnings information** för din körning och välj ikonen Redigera eller Penn för att lägga till, redigera eller ta bort beskrivningar för din körning. Spara ändringarna i den befintliga anpassade vyn eller en ny anpassad vy om du vill spara ändringarna i körnings listan. Markdown-formatet stöds för körnings beskrivningar som gör att bilder kan bäddas in och djup länkas enligt nedan.
+Gå till sidan med **körnings information** för din körning och välj ikonen Redigera eller Penn för att lägga till, redigera eller ta bort beskrivningar för din körning. Spara ändringarna i den befintliga anpassade vyn eller en ny anpassad vy om du vill spara ändringarna i körnings listan. Markdown-formatet stöds för körnings beskrivningar, vilket gör att bilder kan bäddas in och djupa länkar som visas nedan.
 
 :::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Skärm bild: skapa en körnings Beskrivning"::: 
 
@@ -285,7 +285,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Du kan lägga till, redigera eller ta bort Run-taggar från Studio. Gå till sidan med **körnings information** för din körning och välj ikonen Redigera eller Penn för att lägga till, redigera eller ta bort taggar för dina körningar. Du kan också söka efter och filtrera dessa taggar från körnings List sidan.
+    Du kan lägga till, redigera eller ta bort Run-taggar från Studio. Gå till sidan med **körnings information** för din körning och välj Redigera-eller Penn ikonen för att lägga till, redigera eller ta bort taggar för dina körningar. Du kan också söka efter och filtrera dessa taggar från körnings List sidan.
     
     :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Skärm bild: Lägg till, redigera eller ta bort körnings Taggar":::
     
@@ -405,9 +405,9 @@ Använd metoden för att skapa många underordnade körningar effektivt [`create
 
 Underordnade körningar kan också skickas från en överordnad körning. På så sätt kan du skapa hierarkier med överordnade och underordnade körningar. Det går inte att skapa en överordnad underordnad körning: även om den överordnade körningen inte gör något men starta underordnade körningar, är det fortfarande nödvändigt att skapa hierarkin. Status för alla körningar är oberoende: en överordnad kan ha `"Completed"` tillståndet lyckades även om en eller flera underordnade körningar avbröts eller misslyckades.  
 
-Du kanske vill att ditt underordnade ska köras för att använda en annan körnings konfiguration än den överordnade körningen. Till exempel kan du använda en mindre kraftfull, PROCESSORbaserade konfiguration för den överordnade, samtidigt som du använder GPU-baserade konfigurationer för dina barn. En annan vanlig önskan är att skicka alla underordnade olika argument och data. Om du vill anpassa en underordnad körning skapar du ett `ScriptRunConfig` objekt för den underordnade körningen. Följande kod gör följande:
+Du kanske vill att ditt underordnade ska köras för att använda en annan körnings konfiguration än den överordnade körningen. Till exempel kan du använda en mindre kraftfull, PROCESSORbaserade konfiguration för den överordnade, samtidigt som du använder GPU-baserade konfigurationer för dina barn. En annan vanlig önskan är att skicka alla underordnade olika argument och data. Om du vill anpassa en underordnad körning skapar du ett `ScriptRunConfig` objekt för den underordnade körningen. Koden nedan:
 
-- Hämta en beräknings resurs med namnet `"gpu-cluster"` från arbets ytan `ws`
+- Hämtar en beräknings resurs med namnet `"gpu-cluster"` från arbets ytan `ws`
 - Itererar över olika argument värden som ska skickas till underordnade `ScriptRunConfig` objekt
 - Skapar och skickar en ny underordnad körning med hjälp av den anpassade beräknings resursen och argumentet
 - Block tills alla underordnade har slutförts
@@ -455,7 +455,7 @@ print(parent_run.get_children())
 
 ### <a name="log-to-parent-or-root-run"></a>Logga till överordnad eller root-körning
 
-Du kan använda `Run.parent` fältet för att komma åt körningen som startade den aktuella underordnade körningen. Ett vanligt användnings fall för detta är när du vill konsolidera logg resultat på ett och samma ställe. Observera att underordnade körs asynkront och att det inte finns någon garanti för beställning eller synkronisering utöver det överordnade objektets förmåga att vänta på att dess underordnade körningar ska slutföras.
+Du kan använda `Run.parent` fältet för att komma åt körningen som startade den aktuella underordnade körningen. Ett vanligt användnings fall för `Run.parent` att använda är att kombinera logg resultat på ett och samma ställe. Observera att den underordnade körningen körs asynkront och att det inte finns någon garanti för beställning eller synkronisering utöver det överordnade objektets förmåga att vänta på att dess underordnade körningar ska slutföras.
 
 ```python
 # in child (or even grandchild) run

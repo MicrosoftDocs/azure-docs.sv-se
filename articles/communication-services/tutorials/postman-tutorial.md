@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492616"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044302"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Självstudie: signera och göra förfrågningar med Postman
 I den här självstudien kommer vi att konfigurera och använda Postman för att skicka en begäran till ACS-tjänster (Azure Communication Services) med HTTP. I slutet av den här självstudien har du skickat ett SMS-meddelande med ACS och Postman och kan använda Postman för att utforska andra API: er i ACS.
@@ -68,7 +68,7 @@ Du kan lära dig mer om variabler genom att läsa [Postman dokumentation om dem]
 
 ### <a name="creating-a-pre-request-script"></a>Skapa ett skript för för begäran
 
-Nästa steg är att skapa ett skript för för begäran i Postman. Ett skript för för begäran, är ett skript som körs före varje begäran i Postman och kan ändra eller ändra parametrarna för begäran för din räkning. Vi använder detta för att signera våra HTTP-begäranden så att de kan auktoriseras av ACS-tjänster. För ytterligare information om signerings kraven kan du [läsa vår guide om autentisering](https://docs.microsoft.com/rest/api/communication/authentication).
+Nästa steg är att skapa ett skript för för begäran i Postman. Ett skript för för begäran, är ett skript som körs före varje begäran i Postman och kan ändra eller ändra parametrarna för begäran för din räkning. Vi använder detta för att signera våra HTTP-begäranden så att de kan auktoriseras av ACS-tjänster. För ytterligare information om signerings kraven kan du [läsa vår guide om autentisering](/rest/api/communication/authentication).
 
 Vi skapar det här skriptet i samlingen så att det körs på alla begär anden i samlingen. Det gör du genom att klicka på underfliken "pre-Request script" i fliken samling.
 
@@ -186,7 +186,7 @@ Nu när allt har kon figurer ATS är vi redo att skapa en ACS-begäran i Postman
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Postman plus-knappen.":::
 
-Då skapas en ny flik för vår begäran i Postman. När du har skapat det måste vi konfigurera det. Vi kommer att göra en begäran mot SMS-sändnings-API: et så glöm inte att läsa [dokumentationen för det här API: et för hjälp](https://docs.microsoft.com/rest/api/communication/sms/send). Vi konfigurerar Postman-begäran.
+Då skapas en ny flik för vår begäran i Postman. När du har skapat det måste vi konfigurera det. Vi kommer att göra en begäran mot SMS-sändnings-API: et så glöm inte att läsa [dokumentationen för det här API: et för hjälp](/rest/api/communication/sms/send). Vi konfigurerar Postman-begäran.
 
 Börja med att ställa in typ av begäran till `POST` och ange i `{{endpoint}}/sms?api-version=2021-03-07` fältet fråge-URL. Den här URL: en använder vår tidigare skapade `endpoint` variabel för att automatiskt skicka den till ACS-resursen.
 
@@ -238,8 +238,8 @@ Mobil telefonen, som äger det nummer du angav i värdet "till", bör även ha f
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Utforska ACS-API: er](https://docs.microsoft.com/rest/api/communication/) 
->  [Läs mer om autentisering](https://docs.microsoft.com/rest/api/communication/authentication) 
+> [Utforska ACS-API: er](/rest/api/communication/) 
+>  [Läs mer om autentisering](/rest/api/communication/authentication) 
 >  [Läs mer om Postman](https://learning.postman.com/)
 
 Du kanske också vill:

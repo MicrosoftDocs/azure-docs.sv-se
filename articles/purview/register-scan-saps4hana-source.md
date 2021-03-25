@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 6d31bd0911b5cf765215e6a482a39b2458c4ba0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e00332eca076b55a884682240ef26ea3a4546d1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101696166"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046070"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>Registrera och skanna en SAP S/4HANA-källa (för hands version)
 
@@ -25,7 +25,7 @@ SAP S/4HANA-källan stöder **fullständig sökning** för att extrahera metadat
 ## <a name="prerequisites"></a>Förutsättningar
 
 1.  Konfigurera den senaste [integrerings körningen med egen värd](https://www.microsoft.com/download/details.aspx?id=39717).
-    Mer information finns i [skapa och konfigurera en integration runtime med egen värd](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    Mer information finns i [skapa och konfigurera en integration runtime med egen värd](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Kontrol lera att [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) är installerat på den virtuella datorn där integration runtime med egen värd är installerat.
 
@@ -78,7 +78,7 @@ Gör följande på skärmen **Registrera källor (SAP S/4HANA)** :
 
 Om du vill skapa och köra en ny genomsökning gör du följande:
 
-1.  Klicka på integration runtime i hanterings centret. Kontrol lera att en lokal integration Runtime har kon figurer ATS. Om den inte har kon figurer ATS använder du stegen [här](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) för att skapa en egen värd för integration runtime
+1.  Klicka på integration runtime i hanterings centret. Kontrol lera att en lokal integration Runtime har kon figurer ATS. Om den inte har kon figurer ATS använder du stegen [här](./manage-integration-runtimes.md) för att skapa en egen värd för integration runtime
 
 2.  Navigera till **källor.**
 

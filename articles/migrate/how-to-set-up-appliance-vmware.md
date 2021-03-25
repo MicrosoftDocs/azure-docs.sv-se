@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865238"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110516"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Konfigurera en installation för servrar i VMware-miljön
 
@@ -29,6 +29,7 @@ När du har skapat installationen kontrollerar du att den kan ansluta till Azure
 ## <a name="deploy-with-ova"></a>Distribuera med ägg
 
 Så här konfigurerar du installationen av en tjänstmall:
+
 1. Ange ett namn på apparaten och generera en projekt nyckel i portalen.
 1. Hämta en mall för en embryo-fil och importera den till vCenter Server. Kontrol lera att EMBRYOna är säkra.
 1. Skapa den virtuella dator enheten från den ägg filen och kontrol lera att den kan ansluta till Azure Migrate.
@@ -40,7 +41,7 @@ Så här konfigurerar du installationen av en tjänstmall:
 2. I **Discover-servrar**  >  **är servrarna virtualiserade?** väljer du **Ja, med VMware vSphere hypervisor**.
 3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar i VMware-miljön. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
 1. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera när du skapar resurser.
-1. När Azure-resurserna har skapats skapas en **projekt nyckel** .
+1. När Azure-resurserna har skapats genereras en projekt nyckel * *.
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
 ### <a name="2-download-the-ova-template"></a>2. Hämta embryo-mallen
@@ -101,7 +102,7 @@ Konfigurera enheten för första gången.
 1. Godkänn **licens villkoren** och Läs informationen från tredje part.
 1. I Configuration Manager > **Konfigurera krav**, gör du följande:
    - **Anslutning**: installationen kontrollerar att servern är ansluten till Internet. Om servern använder en proxyserver:
-     - Klicka på **Konfigurera proxy** för att ange proxyadress i formuläret `http://ProxyIPAddress` eller `http://ProxyFQDN` lyssnande port.
+     - Klicka på **Setup proxy** för att ange proxyadress i formuläret `http://ProxyIPAddress` eller `http://ProxyFQDN` lyssnande port.
      - Ange autentiseringsuppgifter om proxyn kräver autentisering.
      - Endast HTTP-proxy stöds.
      - Om du har lagt till proxyinformation eller inaktiverat proxyn och/eller autentiseringen, klickar du på **Spara** för att utlösa anslutnings kontrollen igen.
@@ -144,9 +145,9 @@ Installationen måste ansluta till vCenter Server för att identifiera serverns 
     - Om du vill begränsa identifieringen till specifika VMware-objekt (vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda servrar) läser du anvisningarna i [den här artikeln](set-discovery-scope.md) för att begränsa det konto som används av Azure Migrate.
 1. I **steg 2: ange vCenter Server information** klickar du på **Lägg till identifierings källa** och väljer det egna namnet för autentiseringsuppgifter i list rutan. Ange **IP-adressen/FQDN** för vCenter Server. Du kan lämna **porten** till standard (443) eller ange en anpassad Port där vCenter Server lyssnar och klicka på **Spara**.
 1. När du klickar på **Spara** kommer installations programmet att försöka verifiera anslutningen till vCenter Server med de angivna autentiseringsuppgifterna och visa **verifierings status** i tabellen mot vCenter Server IP-adress/FQDN.
-1. Du kan **omverifiera** anslutningen till vCenter Server när som helst innan du påbörjar identifieringen.
+1. Du kan **Verifiera** anslutningen till vCenter Server när som helst innan du påbörjar identifieringen.
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="Panel 3 på installationens konfigurations hanterare för vCenter Server information":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="Panel för Konfigurations hanteraren för vCenter Server information":::
 
 ### <a name="provide-server-credentials"></a>Ange autentiseringsuppgifter för servern
 
@@ -166,7 +167,7 @@ Om du vill utnyttja dessa funktioner kan du ange autentiseringsuppgifter för se
 - När du klickar på **Spara** eller **Lägg till fler**, verifierar installations programmet domänautentiseringsuppgifter med domänens Active Directory för deras äkthet. Detta görs för att undvika eventuella konto utelåsningar när installationen gör att flera iterationer mappar autentiseringsuppgifter till respektive-servrar.
 - Du kan se **verifierings status** för alla domänautentiseringsuppgifter i tabellen autentiseringsuppgifter. Endast domänautentiseringsuppgifter kommer att val IDE ras.
 - Om verifieringen Miss lyckas kan du klicka på **misslyckad** status för att se felet som påträffades och klicka på reparera **autentiseringsuppgifter** igen när du har åtgärdat problemet för att validera de misslyckade domänautentiseringsuppgifter igen.
-
+    :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Panel 3 på installationens konfigurations hanterare för att ange flera autentiseringsuppgifter":::
 
 ### <a name="start-discovery"></a>Starta identifiering
 
@@ -176,6 +177,7 @@ Om du vill utnyttja dessa funktioner kan du ange autentiseringsuppgifter för se
 1. Under program varu inventeringen upprepas de tillagda servrarnas autentiseringsuppgifter mot servrar och val IDE ras för agent avsöknings analys. Du kan aktivera agent avsöknings analys för servrar från portalen. Det går bara att välja de servrar där verifieringen lyckas, för att aktivera en agent lös beroende analys.
 
 Identifiering fungerar på följande sätt:
+
 - Det tar ungefär 15 minuter för identifierade Server lager att visas i portalen.
 - Det kan ta en stund att identifiera installerade program. Varaktigheten beror på antalet identifierade servrar. För 500-servrar tar det cirka en timme innan den identifierade inventeringen visas i Azure Migrate portalen.
 - När identifieringen av-servrarna är klar kan du aktivera agentens beroende analys på servrarna från portalen.

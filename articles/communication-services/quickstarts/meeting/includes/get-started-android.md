@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e9069b5d43044ef0d0341717a12fcce7c4a72dc7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5ac4c53550468d33e9ed533303749d29e772d766
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804069"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108491"
 ---
 I den här snabb starten får du lära dig hur du ansluter till ett team möte med hjälp av Azure Communication Services Teams Inbäddnings bibliotek för Android.
 
@@ -34,7 +34,7 @@ Välj projekt mal len "Tom aktivitet" under "telefon och surfplatta".
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Skärm bild som visar alternativet &quot;Tom aktivitet&quot; markerat på skärmen för projekt mal len.":::
 
-Namnge projektet `TeamsEmbedAndroidGettingStarted` , ange språk som Java och välj lägsta klient bibliotek för "API 21: Android 5,0 (Lollipop)" eller större.
+Namnge projektet `TeamsEmbedAndroidGettingStarted` , ange språk som Java och välj lägsta SDK för "API 21: Android 5,0 (Lollipop)" eller större.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Skärm bild som visar alternativet &quot;Tom aktivitet&quot; markerat i projekt mal len skärm 2.":::
 
@@ -299,7 +299,7 @@ public String fetchToken() {
 ## <a name="get-the-teams-meeting-link"></a>Hämta team Mötes länken
 
 Länken Teams möte kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true).
-Kommunikations tjänsterna som anropar klient biblioteket accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen, som är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) . du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team mötets inbjudan.
+Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen, som är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) . du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team mötets inbjudan.
 
 ## <a name="start-a-meeting-using-the-meeting-client"></a>Starta ett möte med hjälp av mötes klienten
 

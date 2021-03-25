@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: f2e4bf603fa4cfb93c7ca51f64029ccaedcff727
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce575a67552c89b17ff4ed9b44ab43a4bd12d67f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103021612"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110778"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Lägg till hanterad identitet i kommunikations tjänst lösningen (Java)
 
-### <a name="install-the-client-library-packages"></a>Installera klient biblioteks paketen
+### <a name="install-the-sdk-packages"></a>Installera SDK-paketen
 I pom.xml-filen lägger du till följande beroende element i gruppen med beroenden.
 
 ```xml
@@ -29,9 +29,9 @@ I pom.xml-filen lägger du till följande beroende element i gruppen med beroend
 </dependency>
 ```
 
-### <a name="use-the-client-library-packages"></a>Använda klient biblioteks paketen
+### <a name="use-the-sdk-packages"></a>Använda SDK-paketen
 
-Lägg till följande `import` direktiv i koden för att använda klient biblioteken Azure-identitet och Azure-kommunikation.
+Lägg till följande `import` direktiv i koden för att använda SDK: er för Azure Identity och Azure-kommunikation.
 
 ```java
 import com.azure.communication.common.*;

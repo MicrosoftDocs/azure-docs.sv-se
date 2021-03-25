@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 2/19/2021
+ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9ed78baed35312b9a33c71a3e49b7e9dca22eb9f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: aefb2b4a70fae4ad082243529c8eaf877fb35f22
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020309"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045320"
 ---
 # <a name="how-to-export-fhir-data"></a>Så här exporterar du FHIR-data
 
@@ -23,14 +23,19 @@ Innan du använder $export bör du se till att Azure API för FHIR är konfigure
 
 ## <a name="using-export-command"></a>Använda $export kommandot
 
-När du har konfigurerat Azure API för FHIR för export kan du använda kommandot $export för att exportera data från tjänsten. Data lagras i det lagrings konto du angav när du konfigurerade exporten. Information om hur du anropar $export kommandot i FHIR-servern finns i dokumentationen om [HL7 FHIR $export Specification](https://hl7.org/Fhir/uv/bulkdata/export/index.html). 
+När du har konfigurerat Azure API för FHIR för export kan du använda kommandot $export för att exportera data från tjänsten. Data lagras i det lagrings konto du angav när du konfigurerade exporten. Information om hur du anropar $export kommandot i FHIR-servern finns i dokumentationen om [HL7 FHIR $export Specification](https://hl7.org/Fhir/uv/bulkdata/export/index.html).
+
+
+**Jobb som fastnat i dåligt tillstånd**
+
+I vissa fall finns det en möjlighet för ett jobb att fastna i ett dåligt tillstånd. Detta kan inträffa särskilt om lagrings kontots behörigheter inte har kon figurer ATS korrekt. Ett sätt att verifiera om exporten lyckades är att kontrol lera ditt lagrings konto för att se om motsvarande behållare (dvs. ndjson)-filer finns. Om de inte finns, och det inte finns några andra export jobb, finns det en risk för att det aktuella jobbet fastnar i ett felaktigt tillstånd. Du bör avbryta export jobbet genom att skicka en begäran om att avbryta och försöka att köa jobbet igen. Standard körnings tiden för en export i dåligt tillstånd är 10 minuter innan den stoppas och flyttas till ett nytt jobb eller försöker exportera igen. 
 
 Azure API för FHIR har stöd för $export på följande nivåer:
 * [System](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---system-level-export): `GET https://<<FHIR service base URL>>/$export>>`
 * [Patient](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
 * [Grupp av patienter *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) – Azure API för FHIR exporterar alla relaterade resurser men exporterar inte egenskaperna för gruppen: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
-När data exporteras skapas en separat fil för varje resurs typ. För att säkerställa att de exporterade filerna inte blir för stora skapar vi en ny fil när storleken på en exporterad fil blir större än 64 MB. Resultatet är att du kan få flera filer för varje resurs typ, som kommer att räknas upp (t. ex. patient-1. ndjson, patient-2. ndjson). 
+När data exporteras skapas en separat fil för varje resurs typ. För att säkerställa att de exporterade filerna inte blir för stora. Vi skapar en ny fil när storleken på en enskild exporterad fil blir större än 64 MB. Resultatet är att du kan få flera filer för varje resurs typ, som kommer att räknas upp (det vill säga patient-1. ndjson, patient-2. ndjson). 
 
 
 > [!Note] 
@@ -42,7 +47,7 @@ Dessutom stöds att kontrol lera export statusen via URL: en som returnerades av
 
 För närvarande stöder vi $export för ADLS Gen2-aktiverade lagrings konton, med följande begränsning:
 
-- Användaren kan inte dra nytta av [hierarkiska namn områden](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) än; Det finns inte något sätt att rikta in på att exportera till en angiven under katalog i behållaren. Vi tillhandahåller bara möjligheten att rikta en speciell behållare (där vi skapar en ny mapp för varje export).
+- Användaren kan inte dra nytta av [hierarkiska namn områden](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace), men det finns inte något sätt att rikta in sig på att exportera till en speciell under katalog i behållaren. Vi tillhandahåller bara möjligheten att rikta en speciell behållare (där vi skapar en ny mapp för varje export).
 
 - När en export är klar exporterar vi aldrig något till den mappen igen, eftersom efterföljande exporter till samma behållare kommer att finnas i en nyligen skapad mapp.
 
@@ -65,17 +70,20 @@ Azure API för FHIR stöder följande frågeparametrar. Alla dessa parametrar ä
 | \_typefilter | Ja | Om du vill begära detaljerad filtrering kan du använda \_ typeFilter tillsammans med \_ typ parametern. Värdet för parametern _typeFilter är en kommaavgränsad lista över FHIR-frågor som ytterligare begränsar resultaten |
 | \_fönster | Inga |  Anger behållaren i det konfigurerade lagrings kontot där data ska exporteras. Om en behållare anges exporteras data till den behållaren i en ny mapp med namnet. Om behållaren inte anges exporteras den till en ny behållare med hjälp av timestamp och jobb-ID. |
 
+> [!Note]
+> Endast lagrings konton i samma prenumeration som för Azure API för FHIR kan registreras som mål för $export åtgärder.
+
 ## <a name="secure-export-to-azure-storage"></a>Säker export till Azure Storage
 
 Azure API för FHIR har stöd för en säker export åtgärd. Ett alternativ för att köra en säker export är att tillåta att vissa IP-adresser som är kopplade till Azure API för FHIR får åtkomst till Azure Storage-kontot. Konfigurationerna skiljer sig beroende på om lagrings kontot finns på samma eller en annan plats än Azure-API: t för FHIR.
 
 ### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>När Azure Storage-kontot finns i en annan region
 
-Välj bladet nätverk för Azure Storage-kontot från portalen. 
+Välj **nätverk** för Azure Storage-kontot från portalen. 
 
    :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure Storage nätverks inställningar." lightbox="media/export-data/storage-networking.png":::
    
-Välj "valda nätverk" och ange IP-adressen i rutan **adress intervall** under avsnittet i brand väggen \| Lägg till IP-intervall för att tillåta åtkomst från Internet eller dina lokala nätverk. Du hittar IP-adressen från tabellen nedan för den Azure-region där Azure API för FHIR-tjänsten är etablerad.
+Välj **Valda nätverk**. Under avsnittet brand vägg anger du IP-adressen i rutan **adress intervall** . Lägg till IP-intervall för att tillåta åtkomst från Internet eller dina lokala nätverk. Du hittar IP-adressen i tabellen nedan för den Azure-region där Azure API för FHIR-tjänsten är etablerad.
 
 |**Azure-region**         |**Offentlig IP-adress** |
 |:----------------------|:-------------------|
@@ -110,7 +118,7 @@ Konfigurations processen är samma som ovan, förutom ett särskilt IP-adressint
     
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig hur du exporterar FHIR-resurser med hjälp av kommandot $export. Sedan kan du läsa mer om hur du exporterar de data som identifieras:
+I den här artikeln har du lärt dig hur du exporterar FHIR-resurser med hjälp av kommandot $export. Sedan kan du läsa om hur du exporterar de data som har identifierats:
  
 >[!div class="nextstepaction"]
 >[Exportera de data som har identifierats](de-identified-export.md)

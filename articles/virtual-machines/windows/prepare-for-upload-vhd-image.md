@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a177fc7e17dc91a0d57fa6dee87b80921d7fd8f5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556272"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043588"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Förbereda en VHD eller VHDX i Windows för överföring till Azure
 
@@ -522,4 +522,4 @@ Följande inställningar påverkar inte VHD-uppladdning. Vi rekommenderar dock s
 ## <a name="next-steps"></a>Nästa steg
 
 - [Ladda upp en Windows VM-avbildning till Azure för Resource Manager-distributioner](upload-generalized-managed.md)
-- [Felsök problem med aktivering av virtuella Azure Windows-datorer](../troubleshooting/troubleshoot-activation-problems.md)
+- [Felsök problem med aktivering av virtuella Azure Windows-datorer](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)

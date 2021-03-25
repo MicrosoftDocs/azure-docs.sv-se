@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 58649e9a864e64ab5781cff3b663e190dac50cb6
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105050725"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110550"
 ---
 # <a name="create-a-test-offer"></a>Skapa ett test erbjudande
 
@@ -80,7 +80,7 @@ Använd DEV-erbjudandet för att experimentera med pris modeller. När du har ko
 UTVECKLINGS erbjudandet bör ha planer med noll eller mycket låga priser i planerna. PRODUKTIONS erbjudandet kommer att ha de priser som du vill debitera till kunderna.
 
 > [!NOTE]
-> Information som användaren bör märka även om skimmingPurchases som görs i för hands versionen kommer att bearbetas för både DEV-och PROD-erbjudanden. Om ett erbjudande har priset 100/Mo debiteras ditt företag $100. Om detta händer kan du öppna ett [support ärende](support.md) och vi kommer att utfärda en utbetalning för hela beloppet (och inte ta ut någon byrå avgift).
+> Köp som görs i förhands granskningen kommer att bearbetas för både utvecklings-och produktions erbjudanden. Om ett erbjudande har priset 100/Mo debiteras ditt företag $100. Om detta händer kan du öppna ett [support ärende](support.md) och vi kommer att utfärda en utbetalning för hela beloppet (och inte ta ut någon byrå avgift).
 
 #### <a name="pricing-model"></a>Prismodell
 
