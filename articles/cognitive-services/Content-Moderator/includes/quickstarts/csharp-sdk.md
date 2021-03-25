@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: d6f27ca3635ff1efb80e5261b7a5a07269304dfd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bdf49f16b003c25da9fe8972a3fb7e3837d62819
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445396"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104577"
 ---
 Kom igång med Azure Content Moderator-klient biblioteket för .NET. Följ dessa steg om du vill installera NuGet-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -52,7 +52,7 @@ När du har skapat ett nytt projekt installerar du klient biblioteket genom att 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `content-moderator-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*.
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `content-moderator-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -87,7 +87,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 > [!TIP]
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs), som innehåller kod exemplen i den här snabb starten.
 
-Från projekt katalogen öppnar du *program.cs* -filen i önskat redigerings program eller IDE. Lägg till följande `using`-uttryck:
+Från projekt katalogen öppnar du filen *program. cs* i önskat redigerings program eller IDE. Lägg till följande `using`-uttryck:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
@@ -297,6 +297,3 @@ I den här snabb starten har du lärt dig hur du använder Content Moderator .NE
 
 > [!div class="nextstepaction"]
 > [Bild moderator koncept](../../image-moderation-api.md)
-
-* [Vad är Azure Content Moderator?](../../overview.md)
-* Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs).

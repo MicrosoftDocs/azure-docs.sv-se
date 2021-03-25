@@ -146,6 +146,8 @@
               href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
         - name: Hantera Wi-Fi
           href: azure-stack-edge-mini-r-manage-wifi.md
+        - name: Använda Wi-Fi profiler
+          href: azure-stack-edge-mini-r-use-wifi-profiles.md
 - name: 'Delad Pro GPU, Pro R, Mini R'
   items:
     - name: Delade koncept

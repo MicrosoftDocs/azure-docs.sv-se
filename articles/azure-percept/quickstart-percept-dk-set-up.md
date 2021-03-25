@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 9567ec2458a01825568cb853728f71db10228ee3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608304"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023307"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Konfigurera Azure percept DK och distribuera din första AI-modell
 
@@ -30,7 +30,7 @@ Om du får problem under den här processen kan du läsa mer i [installations fe
 - En Azure percept DK (dev-paket).
 - En Windows-, Linux-eller OS X-baserad värddator med Wi-Fi funktion och en webbläsare.
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure-kontot måste ha rollen **ägare** eller **deltagare** i prenumerationen. Följ stegen nedan för att kontrol lera din roll i Azure-kontot. Mer information om roll definitioner för Azure finns i dokumentationen till [Azure Role-baserad åtkomst kontroll](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles).
+- Azure-kontot måste ha rollen **ägare** eller **deltagare** i prenumerationen. Följ stegen nedan för att kontrol lera din roll i Azure-kontot. Mer information om roll definitioner för Azure finns i dokumentationen till [Azure Role-baserad åtkomst kontroll](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
     > [!CAUTION]
     > Om du har flera Azure-konton kan din webbläsare cachelagra autentiseringsuppgifter från ett annat konto. För att undvika förvirring rekommenderar vi att du stänger alla oanvända webb läsar fönster och loggar in på [Azure Portal](https://portal.azure.com/) innan du startar installations miljön. Mer information om hur du kan se till att du är inloggad med rätt konto finns i [fel söknings guiden](./how-to-troubleshoot-setup.md) .
@@ -43,7 +43,7 @@ Följ dessa steg om du vill kontrol lera om ditt Azure-konto är "Owner" eller "
 
 1. Klicka på **prenumerations** ikonen (den ser ut som en gul nyckel).
 
-1. Välj din prenumeration i listan. Om din prenumeration inte visas kontrollerar du att du är inloggad med rätt Azure-konto. Följ [dessa steg](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)om du vill skapa en ny prenumeration.
+1. Välj din prenumeration i listan. Om din prenumeration inte visas kontrollerar du att du är inloggad med rätt Azure-konto. Följ [dessa steg](../cost-management-billing/manage/create-subscription.md)om du vill skapa en ny prenumeration.
 
 1. Från menyn prenumeration väljer du **åtkomst kontroll (IAM)**.
 1. Klicka på **Visa min åtkomst**.

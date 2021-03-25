@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: aa32083d48c868435ce77114f3a036b8bec47201
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8a76a637c4862032b100308d8b02bced76af38fe
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609999"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023409"
 ---
 # <a name="migrating-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Migrera ett informations lager till en dedikerad SQL-pool i Azure Synapse Analytics 
 I följande avsnitt får du en översikt över vad som ingår i migreringen av en befintlig data lager lösning till en dedikerad SQL-pool i Azure Synapse Analytics.
@@ -89,15 +89,14 @@ Om du utför en lyckad migrering måste du migrera tabell scheman, kod och data.
 ## <a name="migration-assets-from-real-world-engagements"></a>Migrera till gångar från verkliga ärenden
 Mer hjälp om hur du slutför det här migreringsprocessen finns i följande resurser, som har utvecklats för att ge stöd för ett verkligt migrerings projekt.
 
-| Rubrik/länk                              | Description                                                                                                                       |
+| Rubrik/länk                              | Beskrivning                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som gör det lättare att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process. |
 | [Hantera data kodnings problem vid inläsning av data till Azure Synapse Analytics](https://azure.microsoft.com/en-us/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | Den här bloggen är avsedd att ge insikt om några av de data kodnings problem som kan uppstå när PolyBase används för att läsa in data till SQL Data Warehouse. Den här artikeln innehåller också några alternativ som du kan använda för att lösa dessa problem och läsa in data. |
 | [Hämta tabell storlekar i Azure Synapse Analytics-dedikerad SQL-pool](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | En av de viktigaste uppgifterna som en arkitekt måste utföra är att hämta mått om en ny miljö efter migreringen: insamling av inläsnings tider från lokal plats till molnet, insamling av PolyBase-tider osv. Av de här uppgifterna är en av de viktigaste att fastställa lagrings storleken i SQL Data Warehouse jämfört med kundens aktuella plattform. |
 | [Verktyg för att flytta lokala SQL Server inloggningar till Azure Synapse Analytics](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | Ett PowerShell-skript som skapar ett T-SQL-kommandoskript för att återskapa inloggningar och välja databas användare från en lokal SQL Server till en Azure SQL PaaS-tjänst. Verktyget tillåter automatisk mappning av Windows AD-konton till Azure AD-konton eller kan göra UPN-sökningar för varje inloggning mot den lokala Windows-Active Directory. Verktyget kan också flytta SQL Server interna inloggningar. Anpassade Server-och databas roller är skriptade, samt roll medlemskap och databas roll och användar behörigheter. Inneslutna databaser stöds ännu inte och endast en delmängd av möjliga SQL Server behörigheter har skript ATS. t. ex. behörigheter som beviljats med Grant stöds inte (komplexa behörighets träd). Mer information finns i support dokumentet och skriptet innehåller kommentarer för att under lätta förståelsen. |
 
-> [!NOTE]
-> Dessa resurser ovan utvecklades som en del av data migration rivstart med-programmet (DM rivstart med), som sponsras av Azure Data Group Engineering-teamet. Kärn stadgan för DM rivstart med är att avblockera och påskynda komplexa modernisering och konkurrera med migreringen av data plattformar till Microsofts Azure-dataplattform. Om du tror att din organisation är intresse rad av att delta i DM rivstart med-programmet, kontakta ditt konto team och be att de skickar in en nominerare.
+Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras av Azure Data Group Engineering-teamet. Huvud stadgan för data SQL Ninja-programmet är att avblockera och påskynda komplexa modernisering och konkurrera med data plattformens migrering till Microsofts Azure-dataplattform. Om du tror att organisationen är intresse rad av att delta i data SQL Ninja-programmet, kontaktar du ditt konto team och ber dem att skicka in en nominerad.
 
 ## <a name="videos"></a>Video
 - Se hur [Walgreens migrerade sin återförsäljarversion](https://www.youtube.com/watch?v=86dhd8N1lH4) av 100 TB data från Netezza till Azure Synapse Analytics (tidigare SQL DW) i Record Time. 

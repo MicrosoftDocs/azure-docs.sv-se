@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 7f89780f2ed440898f5a28d78ec541c48a958b90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4be182b3eee59f7f9d2ef704a3d0f57c6718b45d
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700948"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044982"
 ---
 # <a name="connect-your-broadcom-symantec-data-loss-prevention-dlp-to-azure-sentinel"></a>Anslut din Broadcom Symantec data förlust skydd (DLP) till Azure Sentinel
 
@@ -35,7 +35,7 @@ Den här artikeln förklarar hur du ansluter din Broadcom Symantec DLP-installat
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
-- Du måste ha Läs behörighet till delade nycklar för arbets ytan. [Läs mer om nycklar för arbets ytor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Du måste ha Läs behörighet till delade nycklar för arbets ytan. [Läs mer om nycklar för arbets ytor](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 ## <a name="send-broadcom-symantec-dlp-logs-to-azure-sentinel"></a>Skicka Broadcom Symantec DLP-loggar till Azure Sentinel
 

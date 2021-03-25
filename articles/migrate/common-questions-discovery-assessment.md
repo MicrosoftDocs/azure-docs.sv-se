@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 0701ff53202d53131ceac8ceabb148fb5ff4f2b2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782358"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025160"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -85,6 +85,9 @@ Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat
 - För virtuella Azure-datorer och AVS-bedömningar skapades några servrar efter att identifieringen hade startats. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några servrar har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
 - Vid Azure SQL-utvärderingar skapades några SQL-instanser eller databaser efter att identifieringen hade startats. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några SQL-instanser eller databaser har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment"></a>Jag vill testa den nya Azure SQL-utvärderingen
+Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Kom igång med [den här självstudien](tutorial-discover-vmware.md). Om du vill testa den här funktionen i ett befintligt projekt måste du kontrol lera att du har slutfört [kraven](how-to-discover-sql-existing-project.md) i den här artikeln.
 
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Jag kan inte se vissa servrar när jag skapar en Azure SQL-utvärdering
 

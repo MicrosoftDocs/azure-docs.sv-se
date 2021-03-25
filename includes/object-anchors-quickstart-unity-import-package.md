@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 11/19/2020
 ms.author: crtreasu
-ms.openlocfilehash: 7aa4e244b88b3793f1b480aeb21bfec69d52591d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c740fa294fe2b3de9687a76b90d90a021d4efdbc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044804"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104400"
 ---
 # <a name="web-download"></a>[Webb hämtning](#tab/unity-package-web-ui)
 
@@ -21,12 +21,12 @@ Följ instruktionerna <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.ht
 
 # <a name="mixed-reality-feature-tool-beta"></a>[Funktions verktyg för Mixad verklighet (beta)](#tab/unity-package-mixed-reality-feature-tool)
 
-Det här steget kräver att <a href="https://aka.ms/MRFeatureToolDocs" target="_blank">funktions verktyget för Mixad verklighet</a> har laddats ned och är tillgängligt.
+Det här steget kräver att <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">funktions verktyget för Mixad verklighet</a> har laddats ned och är tillgängligt.
 
 > [!NOTE]
-> <a a href="https://aka.ms/MRFeatureToolDocs" target="_blank">Funktions verktyget för Mixad verklighet</a> stöder för närvarande endast Windows.
+> <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Funktions verktyget för Mixad verklighet</a> stöder för närvarande endast Windows.
 
-1. Följ dokumentationen för <a href="https://aka.ms/MRFeatureToolDocs" target="_blank">funktions verktyget för Mixad verklighet</a> för att ställa in verktyget och lär dig hur du använder det.
+1. Följ dokumentationen för <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">funktions verktyget för Mixad verklighet</a> för att ställa in verktyget och lär dig hur du använder det.
 2. Installera funktions paketet "Microsoft Azure objekt ankare" i mappen Unity Project.
 
 ---

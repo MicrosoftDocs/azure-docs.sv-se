@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 18b43a99eb561cbfa340e0b3f318782bef2ca17c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952787"
+ms.locfileid: "105023443"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Hantera enhetsidentiteter med hjälp av Azure-portalen
 
@@ -33,6 +33,7 @@ På sidan **alla enheter** kan du:
 - Konfigurera enhetens identitets inställningar.
 - Aktivera eller inaktivera Enterprise State Roaming.
 - Granska enhets relaterade gransknings loggar
+- Hämta enheter (förhands granskning)
 
 [![Vyn alla enheter i Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -144,6 +145,14 @@ Så här aktiverar du funktionen för för hands versions filtrering i vyn **all
 1. Välj banderollen som visas och **prova de nya förbättringarna av enhets filtreringen. Klicka om du vill aktivera förhands granskningen.**
 
 Du kommer nu att kunna **lägga till filter** i vyn **alla enheter** .
+
+### <a name="download-devices-preview"></a>Hämta enheter (förhands granskning)
+
+Moln enhets administratörer, Intune-administratörer och globala administratörer kan använda alternativet **Hämta enheter (förhands granskning)** för att exportera en CSV-fil med enheter baserat på eventuella filter som används. Om inga filter används i listan, kommer alla enheter att exporteras. En export kan köras under en period på upp till en timme beroende på 
+
+Den exporterade listan innehåller följande enhets identitets attribut:
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
 
 ## <a name="configure-device-settings"></a>Konfigurera enhetsinställningar
 

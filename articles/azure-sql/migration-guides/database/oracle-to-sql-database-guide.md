@@ -1,5 +1,5 @@
 ---
-title: 'Oracle till SQL Database: migrations guide'
+title: 'Oracle till Azure SQL Database: migrations guide'
 description: I den här guiden får du lära dig att migrera Oracle-schemat till Azure SQL Database att använda SQL Server Migration Assistant för Oracle (SSMA för Oracle).
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: f00740de5a327858fd250a0cb561b07c32f3b726
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655579"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022287"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Guide för migrering: Oracle till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 I den här guiden får du lära dig att migrera dina Oracle-scheman till Azure SQL Database att använda SQL Server Migration Assistant för Oracle.
 
-Mer information om andra biflyttnings guider finns i [databas migrering](https://datamigration.microsoft.com/). 
+Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -44,18 +44,15 @@ När du har uppfyllt kraven, är du redo att upptäcka miljön och bedöma möjl
 
 Använd SQL Server Migration Assistant (SSMA) för Oracle för att granska databas objekt och data, utvärdera databaser för migrering, migrera databas objekt till Azure SQL Database och slutligen migrera data till databasen. 
 
-
 Följ dessa steg om du vill skapa en utvärdering: 
-
 
 1. Öppna [SQL Server Migration Assistant för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
 1. Välj **fil** och välj sedan **nytt projekt**. 
-1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan Azure SQL Database som mål för migreringen från List rutan. Välj **OK**.
+1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan Azure SQL Database som mål för migreringen från List rutan. Välj **OK**:
 
    ![Nytt projekt](./media/oracle-to-sql-database-guide/new-project.png)
 
-
-1. Välj **Anslut till Oracle**. Ange värden för information om Oracle-anslutning i dialog rutan **Anslut till Oracle** .
+1. Välj **Anslut till Oracle**. Ange värden för anslutnings information för Oracle i dialog rutan **Anslut till Oracle** :
 
    ![Anslut till Oracle](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
 
@@ -63,7 +60,7 @@ Följ dessa steg om du vill skapa en utvärdering:
 
    ![Välj Oracle-schema](./media/oracle-to-sql-database-guide/select-schema.png)
 
-1. Högerklicka på det Oracle-schema som du vill migrera i **Oracle metadata Explorer** och välj sedan **Skapa rapport**. Då skapas en HTML-rapport. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt databasen.
+1. Högerklicka på det Oracle-schema som du vill migrera i **Oracle metadata Explorer** och välj sedan **Skapa rapport**. Då skapas en HTML-rapport. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt databasen:
 
    ![Skapa rapport](./media/oracle-to-sql-database-guide/create-report.png)
 
@@ -81,7 +78,7 @@ Validera standard mappningar för data typer och ändra dem baserat på krav vid
 
 1. Välj **verktyg** på menyn. 
 1. Välj **projekt inställningar**. 
-1. Välj fliken **typ mappningar** . 
+1. Välj fliken **typ mappningar** : 
 
    ![Typ mappningar](./media/oracle-to-sql-database-guide/type-mappings.png)
 
@@ -94,25 +91,27 @@ Följ dessa steg om du vill konvertera schemat:
 1. Valfritt Lägg till dynamiska eller ad-hoc-frågor till instruktioner. Högerklicka på noden och välj sedan **Lägg till instruktioner**.
 1. Välj **Anslut till Azure SQL Database**. 
     1. Ange anslutnings information för att ansluta databasen i Azure SQL Database.
-    1. Välj mål SQL Database i list rutan.
-    1. Välj **Anslut**.
+    1. Välj mål SQL Database i list rutan eller ange ett nytt namn, i vilket fall en databas ska skapas på mål servern. 
+    1. Ange information om autentisering. 
+    1. Välj **Anslut**:
 
     ![Ansluta SQL Database](./media/oracle-to-sql-database-guide/connect-to-sql-database.png)
 
 
-1. Högerklicka på Oracle-schemat i **Oracle metadata Explorer** och välj sedan **konvertera schema**. Alternativt kan du välja **konvertera schema** från det övre navigerings fältet när du har valt ditt schema.
+1. Högerklicka på Oracle-schemat i **Oracle metadata Explorer** och välj sedan **konvertera schema**. Alternativt kan du välja **konvertera schema** från det övre navigerings fältet när du har valt ditt schema:
 
    ![Konvertera schema](./media/oracle-to-sql-database-guide/convert-schema.png)
 
-1. När konverteringen är klar kan du jämföra och granska de konverterade objekten till de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem utifrån rekommendationerna.
+1. När konverteringen är klar kan du jämföra och granska de konverterade objekten till de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem utifrån rekommendationerna:
 
    ![Granska rekommendationer schema](./media/oracle-to-sql-database-guide/table-mapping.png)
 
-   Jämför konverterad Transact-SQL-text till de ursprungliga lagrade procedurerna och granska rekommendationerna. 
+   Jämför konverterad Transact-SQL-text till de ursprungliga lagrade procedurerna och granska rekommendationerna:
 
    ![Granska rekommendationer](./media/oracle-to-sql-database-guide/procedure-comparison.png)
 
-1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn.
+1. Välj **gransknings resultat** i fönstret utdata och granska fel i **fel listans** fönster. 
+1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Database.
 
 ## <a name="migrate"></a>Migrera
 
@@ -120,7 +119,7 @@ När du har slutfört utvärderingen av dina databaser och åtgärdat eventuella
 
 Följ dessa steg om du vill publicera schemat och migrera dina data:
 
-1. Publicera schemat: Högerklicka på databasen från noden **databaser** i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**.
+1. Publicera schemat: Högerklicka på databasen från noden **databaser** i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**:
 
    ![Synkronisera med databas](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
 
@@ -129,22 +128,21 @@ Följ dessa steg om du vill publicera schemat och migrera dina data:
    ![Synkronisera med databas granskning](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
 
-1. Migrera data: Högerklicka på schemat från **Oracle metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** från övre linjens navigerings fält när du har valt schemat. 
+1. Migrera data: Högerklicka på databasen eller objektet som du vill migrera i **Oracle metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** från det övre navigerings fältet. Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar tabeller och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller:
 
    ![Migrera data](./media/oracle-to-sql-database-guide/migrate-data.png)
 
 1. Ange anslutnings information för både Oracle och Azure SQL Database.
-1. Visa **data migrations rapporten**.
+1. När migreringen är klar kan du Visa **data flyttnings rapporten**:  
 
    ![Data flyttnings rapport](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
-1. Anslut till din Azure SQL Database genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema.
+1. Anslut till din Azure SQL Database genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema:
 
    ![Validera i SSMA](./media/oracle-to-sql-database-guide/validate-data.png)
 
 Du kan också använda SQL Server Integration Services (SSIS) för att utföra migreringen. Mer information finns i: 
 
-- [SQL Server Migration Assistant: så här utvärderar och migrerar du data från icke-Microsoft-dataplattformar till SQL Server](https://blogs.msdn.microsoft.com/datamigration/2016/11/16/sql-server-migration-assistant-how-to-assess-and-migrate-databases-from-non-microsoft-data-platforms-to-sql-server/)
 - [Komma igång med SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS för Azure och hybrid data förflyttning](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 

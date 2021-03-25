@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c09667e0493fc39e8a2679a698f06301bab6ba45
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583467"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024956"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Upptäck hur kunder använder ditt program med Application Insights-trattar
 
@@ -47,6 +47,5 @@ Föregående skärm bild innehåller fem markerade områden. Dessa är funktione
   * [Användare, sessioner och händelser](usage-segmentation.md)
   * [Kvarhållning](usage-retention.md)
   * [Arbetsböcker](../visualize/workbooks-overview.md)
-  * [Lägg till användar kontext](usage-send-user-context.md)
+  * [Lägg till användar kontext](./usage-overview.md)
   * [Exportera till Power BI](./export-power-bi.md)
-

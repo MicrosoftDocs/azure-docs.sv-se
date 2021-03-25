@@ -92,6 +92,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Begrepp inom röst- och videosamtal
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Nätverkskrav
+          href: concepts/voice-video-calling/network-requirements.md
         - name: Samtalsflöden
           href: concepts/call-flows.md
         - name: Topologier för anrops flöden
@@ -123,7 +125,7 @@
       href: concepts/authentication.md
     - name: Sekretess
       href: concepts/privacy.md
-    - name: Prissättning
+    - name: Priser
       href: concepts/pricing.md
     - name: Push-meddelanden
       href: concepts/notifications.md
