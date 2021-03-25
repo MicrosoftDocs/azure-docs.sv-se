@@ -3,19 +3,14 @@ title: Fel sökning av säkerhets kopierings fel i Azure disk backup
 description: Lär dig hur du felsöker säkerhets kopierings fel i Azure disk backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737735"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107252"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Fel sökning av säkerhets kopierings fel i Azure disk Backup (i för hands version)
-
->[!IMPORTANT]
->Azure disk Backup är i för hands version utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). För region tillgänglighet, se [support mat ris](disk-backup-support-matrix.md).
->
->[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Fel sökning av säkerhets kopierings fel i Azure disk backup
 
 Den här artikeln innehåller felsöknings information om säkerhets kopierings-och återställnings problem med Azure disk. Mer information om tillgänglighet för [Azure disk backup](disk-backup-overview.md) , stödda scenarier och begränsningar finns i [support mat ris](disk-backup-support-matrix.md).
 
@@ -157,7 +152,7 @@ Rekommenderad åtgärd: Använd en annan återställnings punkt för att återst
 
 Fel meddelande: disk säkerhets kopiering är inte tillgängligt ännu i den region i säkerhets kopierings valvet under vilket ett försök görs att konfigurera skydd.
 
-Rekommenderad åtgärd: säkerhets kopierings valvet måste finnas i en region som stöds för för hands versioner. För region tillgänglighet se [support mat ris](disk-backup-support-matrix.md).
+Rekommenderad åtgärd: säkerhets kopierings valvet måste finnas i en region som stöds. För region tillgänglighet se [support mat ris](disk-backup-support-matrix.md).
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Felkod: UserErrorDppDatasourceAlreadyHasBackupInstance
 

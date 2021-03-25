@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1d49aa0583f34327afff229b46d7a366202aded
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104783622"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152742"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Azure Communication Services- **gruppen som anropar ett hjälte exempel för iOS** visar hur kommunikations tjänsterna som anropar iOS-klientcertifikatet kan användas för att bygga en grupp anrops upplevelse som innehåller röst och video. I den här snabb starten får du lära dig hur du konfigurerar och kör exemplet. En översikt över exemplet finns för kontext.
+Azure Communication Services- **gruppen som anropar ett hjälte exempel för iOS** visar hur kommunikations tjänsterna som anropar iOS SDK kan användas för att bygga en grupp samtals upplevelse som innehåller röst och video. I den här snabb starten får du lära dig hur du konfigurerar och kör exemplet. En översikt över exemplet finns för kontext.
 
 ## <a name="download-code"></a>Ladda ned kod
 
@@ -27,7 +27,7 @@ Hitta den färdiga koden för den här snabb starten på [GitHub](https://github
 
 ## <a name="overview"></a>Översikt
 
-Exemplet är ett inbyggt iOS-program som använder klient biblioteken för Azure Communication Services iOS för att bygga en anrops upplevelse som har funktioner för både röst-och video samtal. Programmet använder en komponent på Server sidan för att etablera åtkomsttoken som sedan används för att initiera klient biblioteket för Azure Communication Services. Om du vill konfigurera den här komponenten på Server sidan kan du följa den [Betrodda tjänsten med Azure Functions](../../tutorials/trusted-service-tutorial.md) själv studie kursen.
+Exemplet är ett inbyggt iOS-program som använder Azure Communication Services iOS-SDK: er för att bygga en anrops upplevelse som innehåller både röst-och video samtal. Programmet använder en komponent på Server sidan för att etablera åtkomsttoken som sedan används för att initiera Azure Communication Services SDK. Om du vill konfigurera den här komponenten på Server sidan kan du följa den [Betrodda tjänsten med Azure Functions](../../tutorials/trusted-service-tutorial.md) själv studie kursen.
 
 Exemplet ser ut så här:
 
@@ -103,7 +103,7 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 Mer information finns i följande artiklar:
 
-- Bekanta dig med [att använda det anropande klient biblioteket](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- Bekanta dig med [att använda den anropande SDK: n](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - Läs mer om [hur du anropar Works](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>Mer att läsa

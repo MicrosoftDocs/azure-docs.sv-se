@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4a281e547691b7dee2f1a6d3e57b1c0030dbbd57
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 031a46f7500d26cb49e1163424acbddc870b71c2
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612120"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107087"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -167,7 +167,7 @@ ChatAsyncClient client = new ChatAsyncClient.Builder()
 3. Ersätt `<user_access_token>` med en giltig åtkomsttoken för kommunikations tjänster.
 
 ## <a name="object-model"></a>Objekt modell
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Chat SDK för Java Script.
 
 | Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

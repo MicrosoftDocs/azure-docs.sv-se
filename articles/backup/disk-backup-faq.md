@@ -3,19 +3,14 @@ title: Vanliga frågor och svar om säkerhets kopiering av Azure-diskar
 description: Få svar på vanliga frågor om säkerhets kopiering av Azure-diskar
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98734570"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107320"
 ---
-# <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Vanliga frågor om säkerhets kopiering av Azure-disk (i för hands version)
-
->[!IMPORTANT]
->Azure disk Backup är i för hands version utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). För region tillgänglighet, se [support mat ris](disk-backup-support-matrix.md).
->
->[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
+# <a name="frequently-asked-questions-about-azure-disk-backup"></a>Vanliga frågor och svar om säkerhets kopiering av Azure-diskar
 
 I den här artikeln får du svar på vanliga frågor om säkerhets kopiering av Azure-diskar. Mer information om tillgänglighet för [Azure disk backup](disk-backup-overview.md) , stödda scenarier och begränsningar finns i [support mat ris](disk-backup-support-matrix.md).
 

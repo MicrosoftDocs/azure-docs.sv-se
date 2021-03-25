@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ac90827fec65187088787971623483a96da77d7c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3f41a68feafe2f0a3eae1e0026a4c350b0959aec
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016244"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036993"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Vad är en Azure Machine Learning-beräkningsinstans?
 
@@ -178,6 +178,9 @@ En beräknings instans:
 * Stöd för distribuerade utbildnings jobb med en nod med flera noder
 
 Du kan använda Compute instance som ett lokalt inferencing distributions mål för test-/fel söknings scenarier.
+
+> [!TIP]
+> Beräknings instansen har 120 GB OS-disk. Om disk utrymmet tar slut tar du bort tillräckligt med utrymme innan du försöker stoppa/starta om beräknings instansen.
 
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Vad hände med den virtuella Notebook-datorn?

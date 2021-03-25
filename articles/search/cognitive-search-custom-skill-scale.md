@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103422207"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043078"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Skala ut en anpassad färdighet effektivt
 
@@ -42,7 +42,7 @@ Följande parametrar har angetts för den [anpassade kompetensen](cognitive-sear
 
 3. Ange `timeout` ett värde som räcker för att kunskapen ska svara med ett giltigt svar.
 
-4. I `indexer` definitionen anger [`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) du det antal dokument som ska läsas från data källan och berikas samtidigt.
+4. I `indexer` definitionen anger [`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) du det antal dokument som ska läsas från data källan och berikas samtidigt.
 
 ### <a name="considerations"></a>Överväganden
 
@@ -106,5 +106,5 @@ Grattis! Din anpassade färdighet skalas nu till höger för att maximera data f
 
 + [Energi kunskaper: ett lager med anpassade kunskaper](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Lägg till en anpassad färdighet till en AI-pipeline för anrikning](cognitive-search-custom-skill-interface.md)
-+ [Lägg till en Azure Machine Learning-kompetens](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [Testa ändringar med hjälp av fel söknings sessioner](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [Lägg till en Azure Machine Learning-kompetens](./cognitive-search-aml-skill.md)
++ [Testa ändringar med hjälp av fel söknings sessioner](./cognitive-search-debug-session.md)
