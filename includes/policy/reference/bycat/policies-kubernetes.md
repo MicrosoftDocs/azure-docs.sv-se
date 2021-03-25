@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c57db8f55eb831f2da1b839c4dc5d4a7287ac6b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b2b9bad685bc26b0da4ba6eabe0785b112ff0a20
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605707"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033622"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[\[För hands version \] : Azure Arc-aktiverade Kubernetes-kluster ska ha Azure Defender-tillägget installerat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defenders tillägg för Azure Arc ger skydd mot hot för dina Arc-aktiverade Kubernetes-kluster. Tillägget samlar in data från alla huvud-noder (Control plan) i klustret och skickar dem till Server delen Azure Defender för Kubernetes i molnet för ytterligare analys. Läs mer i [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |AuditIfNotExists, inaktiverat |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Privata kluster för Azure Kubernetes-tjänsten ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F040732e8-d947-40b8-95d6-854c95024bf8) |Aktivera funktionen för privat kluster för ditt Azure Kubernetes service-kluster och se till att nätverks trafiken mellan API-servern och noderna i noden fortfarande finns kvar i det privata nätverket. Detta är ett vanligt krav i många regler och standarder för efterlevnad av bransch. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_PrivateCluster_Deny.json) |
 |[Azure Policy tillägg för Kubernetes-tjänsten (AKS) ska installeras och aktive ras i klustren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy-tillägget för Kubernetes-tjänsten (AKS) utökar Gatekeeper v3, en webhook för en Admission Controller för Open Policy Agent (OPA) för att tillämpa i/skala-användning och skydd i klustren på ett centraliserat, konsekvent sätt. |Granskning, inaktive rad |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Både operativ system och data diskar i Azure Kubernetes service-kluster bör krypteras med Kundhanterade nycklar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Kryptering av operativ system och data diskar med Kundhanterade nycklar ger mer kontroll och större flexibilitet i hanteringen av nycklar. Detta är ett vanligt krav i många regler och standarder för efterlevnad av bransch. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |

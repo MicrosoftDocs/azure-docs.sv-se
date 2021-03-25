@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: cf5b24bb55f278d9d33916d2d54d3ee5a169c3e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8e35342bd704f662d41f676f58e2cc14b54f29a8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224409"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023392"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett Java Script SPA
 
@@ -112,7 +112,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > - `Enter_the_Application_Id_Here` är **program-ID: t (Client)** för det program som du har registrerat.
 >
 >    Du hittar värdet för **program-ID (klient)** genom att gå till appens **översikts** sida i Azure Portal.
-> - `Enter_the_Cloud_Instance_Id_Here` är instansen av Azure-molnet. För det största eller globala Azure-molnet anger du bara `https://login.microsoftonline.com` . För **nationella** moln (till exempel Kina), se [nationella moln](./authentication-national-cloud.md).
+> - `Enter_the_Cloud_Instance_Id_Here` är instansen av Azure-molnet. För det största eller globala Azure-molnet anger du bara `https://login.microsoftonline.com/` . För **nationella** moln (till exempel Kina), se [nationella moln](./authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` är inställt på något av följande alternativ:
 >    - Om ditt program har stöd *för konton i den här organisations katalogen* ersätter du värdet med **klient-ID** eller **klient namn** (till exempel `contoso.microsoft.com` ).
 >
@@ -121,7 +121,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >    - Om ditt program har stöd *för konton i en organisations katalog och personliga Microsoft-konton* ersätter du värdet med `common` . Om du bara vill begränsa stödet till *personliga Microsoft-konton* ersätter du värdet med `consumers` .
 >
 >    Du hittar värdet för **konto typer som stöds** genom att gå till sidan med registrerings **översikten** för appen i Azure Portal.
->
+> - `Enter_the_Redirect_Uri_Here` är `http://localhost:3000/`.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras
@@ -147,7 +147,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > [!div renderon="docs"]
 >
 > Plats:
-> - *\<Enter_the_Graph_Endpoint_Here>* är slut punkten som API-anrop görs mot. För huvud-eller global Microsoft Graph API-tjänsten anger du bara `https://graph.microsoft.com` . Mer information finns i [nationell moln distribution](/graph/deployments)
+> - *\<Enter_the_Graph_Endpoint_Here>* är slut punkten som API-anrop görs mot. För huvud-eller global Microsoft Graph API-tjänsten anger du bara `https://graph.microsoft.com/` . Mer information finns i [nationell moln distribution](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>Steg 4: kör projektet
 
@@ -177,8 +177,8 @@ MSAL-biblioteket loggar in användare och begär de token som används för att 
 ```html
 <script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
-> [!TIP]
-> Du kan ersätta den tidigare versionen med den senaste versionen under [MSAL.js-versioner](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+
+Du kan ersätta den tidigare versionen med den senaste versionen under [MSAL.js-versioner](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
 Om du har Node.js installerat kan du hämta den senaste versionen via Node.js Package Manager (NPM):
 
@@ -207,13 +207,13 @@ Snabb starts koden visar också hur du initierar MSAL-biblioteket:
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Var  | Beskrivning |
-> |---------|---------|
-> |`clientId`     | Program-ID för programmet som är registrerat i Azure Portal.|
-> |`authority`    | Valfritt Auktoritets-URL: en som stöder konto typer, enligt beskrivningen ovan i avsnittet konfiguration. Standard auktoriteten är `https://login.microsoftonline.com/common` . |
-> |`redirectUri`     | Program registreringens konfigurerade svars-/redirectUri. I det här fallet `http://localhost:3000/` . |
-> |`cacheLocation`  | Valfritt Anger webb läsar lagring för auth-tillstånd. Standardvärdet är sessionStorage.   |
-> |`storeAuthStateInCookie`  | Valfritt Biblioteket som lagrar det tillstånd för autentiseringsbegäran som krävs för verifiering av autentiserings flöden i webbläsarens cookies. Den här cookien är inställd för IE-och Edge-webbläsare för att minimera vissa [kända problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
+|Var  | Beskrivning |
+|---------|---------|
+|`clientId`     | Program-ID för programmet som är registrerat i Azure Portal.|
+|`authority`    | Valfritt Auktoritets-URL: en som stöder konto typer, enligt beskrivningen ovan i avsnittet konfiguration. Standard auktoriteten är `https://login.microsoftonline.com/common` . |
+|`redirectUri`     | Program registreringens konfigurerade svars-/redirectUri. I det här fallet `http://localhost:3000/` . |
+|`cacheLocation`  | Valfritt Anger webb läsar lagring för auth-tillstånd. Standardvärdet är sessionStorage.   |
+|`storeAuthStateInCookie`  | Valfritt Biblioteket som lagrar det tillstånd för autentiseringsbegäran som krävs för verifiering av autentiserings flöden i webbläsarens cookies. Den här cookien är inställd för IE-och Edge-webbläsare för att minimera vissa [kända problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
 
 Mer information om tillgängliga konfigurerbara alternativ finns i [initiera klient program](msal-js-initializing-client-applications.md).
 
@@ -235,12 +235,11 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Var  | Beskrivning |
-> |---------|---------|
-> | `scopes`   | Valfritt Innehåller omfattningar som begärs för användar medgivande vid inloggnings tillfället. Till exempel `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er (det vill säga `api://<Application ID>/access_as_user` ). |
+|Var  | Beskrivning |
+|---------|---------|
+| `scopes`   | Valfritt Innehåller omfattningar som begärs för användar medgivande vid inloggnings tillfället. Till exempel `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er (det vill säga `api://<Application ID>/access_as_user` ). |
 
-> [!TIP]
-> Du kanske vill använda `loginRedirect` metoden för att omdirigera den aktuella sidan till inloggnings sidan i stället för ett popup-fönster.
+Du kanske vill använda `loginRedirect` metoden för att omdirigera den aktuella sidan till inloggnings sidan i stället för ett popup-fönster.
 
 ### <a name="request-tokens"></a>Begära token
 
@@ -265,9 +264,9 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Var  | Beskrivning |
-> |---------|---------|
-> | `scopes`   | Innehåller omfång som begärs att returneras i åtkomsttoken för API. Till exempel `[ "mail.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er (det vill säga `api://<Application ID>/access_as_user` ).|
+|Var  | Beskrivning |
+|---------|---------|
+| `scopes`   | Innehåller omfång som begärs att returneras i åtkomsttoken för API. Till exempel `[ "mail.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er (det vill säga `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 

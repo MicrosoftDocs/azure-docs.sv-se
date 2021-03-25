@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180065"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104988163"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna igen mänskligt tal (kallas ofta tal till text). I den här snabb starten får du lära dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativt tal-till-text-konvertering.
 
@@ -62,11 +62,7 @@ Att känna igen tal från en mikrofon **stöds inte i Node.js** och stöds bara 
 
 ## <a name="recognize-from-file"></a>Identifiera från fil 
 
-Om du vill känna igen tal från en ljudfil i Node.js, måste ett alternativt design mönster som använder en push-dataström användas, eftersom JavaScript- `File` objektet inte kan användas i en Node.js Runtime. Följande kod:
-
-* Skapar en push-ström med `createPushStream()`
-* Öppnar `.wav` filen genom att skapa en Läs ström och skriver den till push-strömmen
-* Skapar en ljud konfiguration med push-strömmen
+Om du vill känna igen tal från en ljudfil skapar du en `AudioConfig` användning `fromWavFileInput()` som accepterar ett `Buffer` objekt. Initiera sedan en [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) , och skicka in `audioConfig` och `speechConfig` .
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>Identifiera från minnes intern ström
+
+För många användnings fall är det troligt att ljud data kommer från Blob Storage eller att det på annat sätt redan finns i minnet som en [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) eller liknande rå data struktur. Följande kod:
+
+* Skapar en push-ström med hjälp av `createPushStream()` .
+* Läser en `.wav` fil i `fs.createReadStream` för demonstrations syfte, men om du redan har ljuddata i en `ArrayBuffer` kan du hoppa direkt till att skriva innehållet till indataströmmen.
+* Skapar en ljud konfiguration med push-dataströmmen.
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 Om du använder en push-dataström som indata förutsätter vi att ljuddata är en RAW PCM, t. ex. om du hoppar över rubriker.

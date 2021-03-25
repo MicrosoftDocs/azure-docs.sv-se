@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 40067815ad582191606ad5a53cf06c9584d83350
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 389d3507c3406743e14324c7b4667e045cfdb3b5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618023"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048042"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Säkerhets rekommendationer för Blob Storage
 
-Den här artikeln innehåller säkerhets rekommendationer för Blob Storage. Genom att implementera dessa rekommendationer kan du uppfylla dina säkerhets skyldigheter enligt beskrivningen i vår delade ansvars modell. Mer information om hur Microsoft uppfyller ansvar för service leverantörer finns i [delat ansvar i molnet](/azure/security/fundamentals/shared-responsibility).
+Den här artikeln innehåller säkerhets rekommendationer för Blob Storage. Genom att implementera dessa rekommendationer kan du uppfylla dina säkerhets skyldigheter enligt beskrivningen i vår delade ansvars modell. Mer information om hur Microsoft uppfyller ansvar för service leverantörer finns i [delat ansvar i molnet](../../security/fundamentals/shared-responsibility.md).
 
 Några av rekommendationerna som ingår i den här artikeln kan övervakas automatiskt av Azure Security Center. Azure Security Center är den första försvars linjen i att skydda dina resurser i Azure. Mer information om Azure Security Center finns i [Azure Security Center?](../../security-center/security-center-introduction.md)
 

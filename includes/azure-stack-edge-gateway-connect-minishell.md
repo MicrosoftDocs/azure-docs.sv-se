@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 00ddc7cd806a9275de7b4ec579bdef62bdf8062d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102603209"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104050"
 ---
 Beroende på klientens operativ system är procedurerna för fjärr anslutning till enheten olika.
 
@@ -21,7 +21,7 @@ Beroende på klientens operativ system är procedurerna för fjärr anslutning t
 Innan du börjar ska du kontrollera att:
 
 - Windows-klienten kör Windows PowerShell 5,0 eller senare.
-- Din Windows-klient har den signerings kedja (rot certifikat) som motsvarar det nod-certifikat som är installerat på enheten. Detaljerade anvisningar finns i [Installera certifikat på Windows-klienten](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- Din Windows-klient har den signerings kedja (rot certifikat) som motsvarar det nod-certifikat som är installerat på enheten. Detaljerade anvisningar finns i [Installera certifikat på Windows-klienten](../articles/databox-online/azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 - `hosts`Filen som finns på `C:\Windows\System32\drivers\etc` för din Windows-klient har en post som motsvarar nodens certifikat i följande format:
 
     `<Device IP>    <Node serial number>.<DNS domain of the device>`
@@ -95,7 +95,7 @@ Följ de här stegen för att fjärrans luta från en NFS-klient.
  
 2. För att ansluta med fjärran sluten klient skriver du:
 
-    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser -UseSSL`
+    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
     Ange det lösen ord som används för att logga in på enheten när du uppmanas till det.
  

@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487878"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048093"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Snabb start: lägga till 1:1 video som anropar din app (Java Script)
 
@@ -23,8 +23,8 @@ Hitta den färdiga koden för den här snabb starten på [GitHub](https://github
 ## <a name="prerequisites"></a>Förutsättningar
 - Skaffa ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/) Aktiva LTS och underhåll LTS-versioner (8.11.1 och 10.14.1)
-- Skapa en Active Communication Services-resurs. [Skapa en kommunikations tjänst resurs](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
-- Skapa en token för användar åtkomst för att instansiera anrops klienten. [Lär dig hur du skapar och hanterar användar åtkomst-token](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
+- Skapa en Active Communication Services-resurs. [Skapa en kommunikations tjänst resurs](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
+- Skapa en token för användar åtkomst för att instansiera anrops klienten. [Lär dig hur du skapar och hanterar användar åtkomst-token](../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Konfigurera
 ### <a name="create-a-new-nodejs-application"></a>Skapa ett nytt Node.js-program
@@ -330,10 +330,10 @@ Du kan göra ett 1:1 utgående video samtal genom att ange ett användar-ID i f�
 Du kan hämta exempelappen från [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
-Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta bort resursen eller resurs gruppen. Om du tar bort resurs gruppen raderas även andra resurser som är kopplade till den. Läs mer om att [Rensa resurser](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources).
+Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta bort resursen eller resurs gruppen. Om du tar bort resurs gruppen raderas även andra resurser som är kopplade till den. Läs mer om att [Rensa resurser](../create-communication-resource.md?pivots=platform-azp&tabs=windows#clean-up-resources).
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information finns i följande artiklar:
-- Kolla i vårt [exempel på webb anrop](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
-- Läs om hur du [anropar klient biblioteks funktioner](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
-- Läs mer om [hur du anropar Works](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)
+- Kolla i vårt [exempel på webb anrop](../../samples/web-calling-sample.md)
+- Läs om hur du [anropar klient biblioteks funktioner](./calling-client-samples.md?pivots=platform-web)
+- Läs mer om [hur du anropar Works](../../concepts/voice-video-calling/about-call-types.md)

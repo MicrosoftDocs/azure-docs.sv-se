@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: dee692dc6c82ae91272b39093398eba6ad908c1c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612289"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104062"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -69,7 +69,7 @@ Skapande av anrop och start är synkront. Med anrops instansen kan du prenumerer
 
 ### <a name="place-a-1n-call-to-a-user-or-pstn"></a>Placera ett 1: n-Anrop till en användare eller PSTN
 
-Om du vill anropa en annan kommunikations tjänst användare använder du `startCall` metoden på `callAgent` och skickar mottagarens `CommunicationUserIdentifier` som du [skapade med administrations biblioteket för kommunikations tjänster](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+Om du vill anropa en annan kommunikations tjänst användare använder du `startCall` metoden på `callAgent` och skickar mottagarens `CommunicationUserIdentifier` som du [skapade med administrations biblioteket för kommunikations tjänster](../../access-tokens.md).
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }

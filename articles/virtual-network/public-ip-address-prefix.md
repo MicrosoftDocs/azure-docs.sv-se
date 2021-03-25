@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 874cb283f0076905393aa529e4ff9e1bad3ae047
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8bfc76afc1ef799be0fb29654bd341f53d1b0a8c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419685"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048467"
 ---
 # <a name="public-ip-address-prefix"></a>Prefix för offentliga IP-adresser
 
@@ -63,7 +63,7 @@ Du kan koppla följande resurser till en statisk offentlig IP-adress från ett p
 |Virtuella datorer| Att associera offentliga IP-adresser från ett prefix till dina virtuella datorer i Azure minskar hanterings kostnaderna när du lägger till IP-adresser i en lista över tillåtna i brand väggen. Du kan lägga till ett helt prefix med en enda brand Väggs regel. När du skalar med virtuella datorer i Azure kan du koppla IP-adresser från samma prefix sparar kostnad, tid och hanterings kostnader.| Koppla IP-adresser från ett prefix till den virtuella datorn: </br> 1. [skapa ett prefix.](manage-public-ip-address-prefix.md) </br> 2. [skapa en IP-adress från prefixet.](manage-public-ip-address-prefix.md) </br> 3. [koppla IP-adressen till den virtuella datorns nätverks gränssnitt.](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> Du kan också [associera IP-adresserna till en skalnings uppsättning för virtuella datorer](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Standard belastnings utjämning | Att associera offentliga IP-adresser från ett prefix till klient delens IP-konfiguration eller utgående regel för en belastningsutjämnare säkerställer förenkling av ditt offentliga IP-adressutrymme i Azure. Förenkla ditt scenario genom att rensa utgående anslutningar från en rad sammanhängande IP-adresser. | Koppla IP-adresser från ett prefix till belastningsutjämnaren: </br> 1. [skapa ett prefix.](manage-public-ip-address-prefix.md) </br> 2. [skapa en IP-adress från prefixet.](manage-public-ip-address-prefix.md) </br> 3. När du skapar belastningsutjämnaren väljer eller uppdaterar du den IP-adress som skapades i steg 2 ovan som klient delens IP-adress för belastningsutjämnaren. |
 | Azure Firewall | Du kan använda en offentlig IP-adress från ett prefix för utgående SNAT. All utgående virtuell nätverks trafik översätts till den offentliga IP-adressen i [Azure-brandväggen](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . | Koppla en IP-adress från ett prefix till din brand vägg: </br> 1. [skapa ett prefix.](manage-public-ip-address-prefix.md) </br> 2. [skapa en IP-adress från prefixet.](manage-public-ip-address-prefix.md) </br> 3. När du [distribuerar Azure-brandväggen](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)måste du se till att välja den IP-adress som du tidigare har fått från prefixet.|
-| VPN Gateway (AZ SKU) eller Application Gateway v2 | Du kan använda en offentlig IP-adress från ett prefix för zonens redundant VPN eller Application Gateway v2. | Koppla en IP-adress från ett prefix till din Gateway: </br> 1. [skapa ett prefix.](manage-public-ip-address-prefix.md) </br> 2. [skapa en IP-adress från prefixet.](manage-public-ip-address-prefix.md) </br> 3. När du distribuerar [VPN gateway](https://docs.microsoft.com/azure/vpn-gateway/tutorial-create-gateway-portal) eller [Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway)måste du välja den IP-adress som du tidigare har fått från prefixet.|
+| VPN Gateway (AZ SKU) eller Application Gateway v2 | Du kan använda en offentlig IP-adress från ett prefix för zonens redundant VPN eller Application Gateway v2. | Koppla en IP-adress från ett prefix till din Gateway: </br> 1. [skapa ett prefix.](manage-public-ip-address-prefix.md) </br> 2. [skapa en IP-adress från prefixet.](manage-public-ip-address-prefix.md) </br> 3. När du distribuerar [VPN gateway](../vpn-gateway/tutorial-create-gateway-portal.md) eller [Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway)måste du välja den IP-adress som du tidigare har fått från prefixet.|
 
 ## <a name="constraints"></a>Villkor
 
