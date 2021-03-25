@@ -3,12 +3,12 @@ title: Aktivera container Insights | Microsoft Docs
 description: I den här artikeln beskrivs hur du aktiverar och konfigurerar behållar insikter så att du kan förstå hur din behållare presterar och vilka prestandarelaterade problem som har identifierats.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708364"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109360"
 ---
 # <a name="enable-container-insights"></a>Aktivera container Insights
 
@@ -64,6 +64,7 @@ Innan du börjar kontrollerar du att du uppfyller följande krav:
 - Om du vill visa övervaknings data måste du ha [*Log Analytics läsar*](../logs/manage-access.md#manage-access-using-azure-permissions) roll på arbets ytan Log Analytics som kon figurer ATS med behållar insikter.
 
 - Prometheus-mått samlas inte in som standard. Innan du [konfigurerar agenten](container-insights-prometheus-integration.md) för att samla in måtten är det viktigt att granska [Prometheus-dokumentationen](https://prometheus.io/) för att ta reda på vilka data som kan kasseras och vilka metoder som stöds.
+- Ett AKS-kluster kan kopplas till en Log Analytics-arbetsyta i en annan Azure-prenumeration i samma Azure AD-klient. Detta kan för närvarande inte utföras med Azure-portalen, men du kan göra det med Azure CLI-eller Resource Manager-mallen.
 
 ## <a name="supported-configurations"></a>Konfigurationer som stöds
 
@@ -86,7 +87,7 @@ I följande tabell visas den konfigurations information för proxy och brand vä
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure Kina 21Vianet:
 
-|Agentresurs|Port |Beskrivning | 
+|Agentresurs|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -94,7 +95,7 @@ I följande tabell visas konfigurations information för proxy och brand vägg f
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure amerikanska myndigheter:
 
-|Agentresurs|Port |Beskrivning | 
+|Agentresurs|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |

@@ -8,18 +8,18 @@ ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: 0de4bb6424fe8fa87d1e6e8628dcfc394c6369c8
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5f173411726283b86cad7706d10743ef62943e46
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804075"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108492"
 ---
 # <a name="quickstart-add-joining-a-teams-meeting-to-your-app"></a>Snabb start: lägga till ett team som är möte i din app
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna Teams bädda in klient bibliotek för att lägga till Team möten i din app. 
+Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna Teams inbäddning SDK för att lägga till Team möten i din app. 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 

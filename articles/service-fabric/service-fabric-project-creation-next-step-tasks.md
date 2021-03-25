@@ -4,12 +4,12 @@ description: Lär dig mer om programprojektet som du nyss skapade i Visual Studi
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97760443"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044387"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Ditt Service Fabric program och nästa steg
 Ditt Azure Service Fabric-program har skapats. Den här artikeln innehåller ett antal resurser, viss mer information som du kanske är intresse rad av och potentiella [Nästa steg](#next-steps).
@@ -59,7 +59,7 @@ Ditt program kan innehålla känslig information, till exempel lagrings anslutni
 Precis som med andra plattformar går ett Service Fabric-program vanligt vis igenom följande faser: design, utveckling, testning, distribution, uppgradering, underhåll och borttagning. [Den här artikeln](service-fabric-application-lifecycle.md) innehåller en översikt över API: erna och hur de används av de olika rollerna under faserna i Service Fabric programmets livs cykel.
 
 ## <a name="learn-about-best-practices"></a>Lär dig mer om metod tips
-Service Fabric innehåller ett antal artiklar som beskriver [bästa praxis](./service-fabric-best-practices-overview.md). Dra nytta av den här informationen för att säkerställa att ditt kluster och program körs och möjligt.
+Service Fabric innehåller ett antal artiklar som beskriver [bästa praxis](./service-fabric-best-practices-security.md). Dra nytta av den här informationen för att säkerställa att ditt kluster och program körs och möjligt.
 De avsnitt som omfattas är:
 * [Säkerhet](./service-fabric-best-practices-security.md)
 * [Nätverk](./service-fabric-best-practices-networking.md)

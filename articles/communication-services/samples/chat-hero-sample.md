@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5960238893ae1e4dc307db98f9dc73889a2fa5b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487843"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108901"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Kom igång med hjälte-exemplet för grupp Chat
 
@@ -30,7 +30,7 @@ ms.locfileid: "103487843"
 > [Det här exemplet finns på GitHub.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-Hjälte exemplet Azure Communication Services **Group Chat** visar hur kommunikations tjänsternas webb klient bibliotek kan användas för att bygga en grupp som anropar.
+Hjälte exemplet Azure Communication Services **Group Chat** visar hur kommunikations tjänsterna Chat Web SDK kan användas för att bygga en grupp som anropar.
 
 I den här snabb starten ska vi lära dig hur exemplet fungerar innan vi kör exemplet på den lokala datorn. Vi distribuerar sedan exemplet till Azure med dina egna Azure Communication Services-resurser.
 
@@ -111,7 +111,7 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 Mer information finns i följande artiklar:
 
 - Lär dig mer om [chatt-koncept](../concepts/chat/concepts.md)
-- Bekanta dig med vårt [chatt klient bibliotek](../concepts/chat/sdk-features.md)
+- Bekanta dig med vår [Chat SDK](../concepts/chat/sdk-features.md)
 - Granska exemplet [contoso with app](https://github.com/Azure-Samples/communication-services-contoso-med-app)
 
 ## <a name="additional-reading"></a>Mer att läsa

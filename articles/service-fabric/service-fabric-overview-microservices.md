@@ -3,12 +3,12 @@ title: Introduktion till mikrotjänster på Azure
 description: En översikt över varför det är viktigt att skapa moln program med en mikrotjänster-metod för modern program utveckling och hur Azure Service Fabric tillhandahåller en plattform för att uppnå detta.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46d4be7321057bd7a5ee19e0aca136c8c60d43bc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575660"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044438"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Varför ska man använda en mikrotjänst metod för att skapa program
 
@@ -194,7 +194,7 @@ Målet med Service Fabric är att minska komplexiteten för att skapa mikrotjän
 
 * [Mikrotjänster: en program revolution som drivs av molnet](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 * [Azure Architecture Center: skapa mikrotjänster på Azure](/azure/architecture/microservices/)
-* [Metodtips för Azure Service Fabric-program och -kluster](service-fabric-best-practices-overview.md)
+* [Metodtips för Azure Service Fabric-program och -kluster](./service-fabric-best-practices-security.md)
 * [Översikt över Service Fabric terminologi](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

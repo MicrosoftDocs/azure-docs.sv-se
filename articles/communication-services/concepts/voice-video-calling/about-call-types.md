@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492344"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108404"
 ---
 # <a name="voice-and-video-concepts"></a>Begrepp inom röst- och videosamtal
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Du kan använda Azure Communication Services för att skapa och ta emot en till en eller grupp röst-och video samtal. Dina anrop kan göras till andra Internet-anslutna enheter och till vanliga telefoner. Du kan använda kommunikations tjänsterna Java Script, Android eller iOS klient bibliotek för att bygga program som gör att användarna kan prata med varandra i privata konversationer eller gruppera diskussioner. Azure Communication Services stöder anrop till och från tjänster eller robotar.
+Du kan använda Azure Communication Services för att skapa och ta emot en till en eller grupp röst-och video samtal. Dina anrop kan göras till andra Internet-anslutna enheter och till vanliga telefoner. Du kan använda kommunikations tjänsterna Java Script, Android eller iOS SDK: er för att bygga program som gör att användarna kan prata med varandra i privata konversationer eller gruppera diskussioner. Azure Communication Services stöder anrop till och från tjänster eller robotar.
 
 ## <a name="call-types-in-azure-communication-services"></a>Samtals typer i Azure Communication Services
 
@@ -37,7 +37,7 @@ När dina användare interagerar med ett traditionellt telefonnummer, under lät
 
 ### <a name="one-to-one-call"></a>Ett-till-ett-anrop
 
-Ett ett-till-ett-anrop i Azure Communication Services sker när en av dina användare ansluter till en annan användare med hjälp av ett av våra klient bibliotek. Anropet kan vara antingen VoIP eller PSTN.
+Ett ett-till-ett-anrop i Azure Communication Services sker när en av dina användare ansluter till en annan användare med hjälp av någon av våra SDK: er. Anropet kan vara antingen VoIP eller PSTN.
 
 ### <a name="group-call"></a>Grupp anrop
 
@@ -61,4 +61,4 @@ Under förhands granskningen kan du använda grupp-ID: t för att ansluta till s
 Mer information finns i följande artiklar:
 - Bekanta dig med allmänna [samtals flöden](../call-flows.md)
 - [Telefonnummer typer](../telephony-sms/plan-solution.md)
-- Lär dig mer om funktioner för att [anropa klient bibliotek](../voice-video-calling/calling-sdk-features.md)
+- Lär dig mer om de [anropande SDK-funktionerna](../voice-video-calling/calling-sdk-features.md)

@@ -1,5 +1,5 @@
 ---
-title: Använd Azure-brandväggen för att kontrol lera trafik som är avsedd för en privat slut punkt
+title: Använda Azure Firewall för att kontrollera trafik till en privat slutpunkt
 titleSuffix: Azure Private Link
 description: Lär dig hur du kan inspektera trafik till en privat slut punkt med hjälp av Azure-brandväggen.
 services: private-link
@@ -8,14 +8,14 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575134"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108153"
 ---
-# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Använd Azure-brandväggen för att kontrol lera trafik som är avsedd för en privat slut punkt
+# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Använda Azure Firewall för att kontrollera trafik till en privat slutpunkt
 
 Den privata Azure-slutpunkten är det grundläggande Bygg blocket för Azures privata länk. Privata slut punkter gör det möjligt för Azure-resurser som distribuerats i ett virtuellt nätverk att kommunicera privat med privata länk resurser.
 
@@ -25,8 +25,8 @@ Du kan behöva kontrol lera eller blockera trafik från klienter till de tjänst
 
 Följande begränsningar gäller:
 
-* Nätverks säkerhets grupper (NSG: er) gäller inte för privata slut punkter
-* Användardefinierade vägar (UDR) gäller inte för privata slut punkter
+* Nätverks säkerhets grupper (NSG) kringgås av trafik som kommer från privata slut punkter
+* Användardefinierade vägar (UDR) kringgås av trafik som kommer från privata slut punkter
 * En enda routningstabell kan kopplas till ett undernät
 * En routningstabell har stöd för upp till 400 vägar
 
@@ -35,7 +35,8 @@ Azure-brandväggen filtrerar trafik med hjälp av något av följande:
 * [FQDN i nätverks regler](../firewall/fqdn-filtering-network-rules.md) för TCP-och UDP-protokoll
 * [FQDN i program regler](../firewall/features.md#application-fqdn-filtering-rules) för http, https och MSSQL. 
 
-De flesta av de tjänster som exponeras via privata slut punkter använder HTTPS. Användning av program regler över nätverks regler rekommenderas när du använder Azure SQL.
+> [!IMPORTANT] 
+> Användning av program regler över nätverks regler rekommenderas när du inspekterar trafik som är avsedd för privata slut punkter för att underhålla flödes symmetrin. Om nätverks regler används eller om en NVA används i stället för Azure-brandväggen måste SNAT konfigureras för trafik som är avsedd för privata slut punkter.
 
 > [!NOTE]
 > SQL-FQDN-filtrering stöds endast i [proxy-läge](../azure-sql/database/connectivity-architecture.md#connection-policy) (port 1433). **Proxyläge** kan resultera i mer latens jämfört med *omdirigering*. Om du vill fortsätta använda omdirigeringsläge, vilket är standardinställningen för klienter som ansluter i Azure, kan du filtrera åtkomst med FQDN i brand Väggs nätverks regler.
@@ -46,12 +47,9 @@ De flesta av de tjänster som exponeras via privata slut punkter använder HTTPS
 
 Det här scenariot är den mest expanderbara arkitekturen för att ansluta privat till flera Azure-tjänster med hjälp av privata slut punkter. En väg som pekar på nätverks adress utrymmet där de privata slut punkterna distribueras skapas. Den här konfigurationen minskar den administrativa belastningen och förhindrar att den körs i gränsen på 400 vägar.
 
-Anslutningar från ett virtuellt klient nätverk till Azure-brandväggen i ett virtuellt nav nätverk debiteras om de virtuella nätverken är peer-datorer.
+Anslutningar från ett virtuellt klient nätverk till Azure-brandväggen i ett virtuellt nav nätverk debiteras om de virtuella nätverken är peer-datorer. Anslutningar från Azure-brandväggen i ett virtuellt hubb nätverk till privata slut punkter i ett peer-kopplat virtuellt nätverk debiteras inte.
 
 Mer information om avgifter som rör anslutningar med peer-kopplade virtuella nätverk finns i avsnittet Vanliga frågor och svar på sidan med [priser](https://azure.microsoft.com/pricing/details/private-link/) .
-
->[!NOTE]
-> Det här scenariot kan implementeras med hjälp av eventuella tredjeparts-NVA eller Azure Firewall-nätverks regler i stället för program regler.
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Scenario 2: hubb-och eker-arkitektur – delat virtuellt nätverk för privata slut punkter och virtuella datorer
 
@@ -69,21 +67,15 @@ Det administrativa arbetet med att underhålla routningstabellen ökar när tjä
 
 Beroende på din övergripande arkitektur är det möjligt att köra en gräns för 400-vägar. Vi rekommenderar att du använder scenario 1 när det är möjligt.
 
-Anslutningar från ett virtuellt klient nätverk till Azure-brandväggen i ett virtuellt nav nätverk debiteras om de virtuella nätverken är peer-datorer.
+Anslutningar från ett virtuellt klient nätverk till Azure-brandväggen i ett virtuellt nav nätverk debiteras om de virtuella nätverken är peer-datorer. Anslutningar från Azure-brandväggen i ett virtuellt hubb nätverk till privata slut punkter i ett peer-kopplat virtuellt nätverk debiteras inte.
 
 Mer information om avgifter som rör anslutningar med peer-kopplade virtuella nätverk finns i avsnittet Vanliga frågor och svar på sidan med [priser](https://azure.microsoft.com/pricing/details/private-link/) .
-
->[!NOTE]
-> Det här scenariot kan implementeras med hjälp av eventuella tredjeparts-NVA eller Azure Firewall-nätverks regler i stället för program regler.
 
 ## <a name="scenario-3-single-virtual-network"></a>Scenario 3: enskilt virtuellt nätverk
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Enskilt virtuellt nätverk" border="true":::
 
-Det finns vissa begränsningar för implementeringen: det går inte att migrera till en hubb och eker-arkitektur. Samma saker som i scenario 2 gäller. I det här scenariot gäller inte peering-kostnader för virtuella nätverk.
-
->[!NOTE]
-> Om du vill implementera det här scenariot med en NVA eller Azure-brandvägg från tredje part, krävs nätverks regler i stället för program regler för den SNAT-trafik som är avsedd för privata slut punkter. Det går inte att kommunicera mellan virtuella datorer och privata slut punkter.
+Använd det här mönstret när det inte går att migrera till en hubb och eker-arkitektur. Samma saker som i scenario 2 gäller. I det här scenariot gäller inte peering-kostnader för virtuella nätverk.
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Scenario 4: lokal trafik till privata slut punkter
 
@@ -97,9 +89,6 @@ Den här arkitekturen kan implementeras om du har konfigurerat anslutningen till
 Om dina säkerhets krav kräver klient trafik till tjänster som exponeras via privata slut punkter som ska dirigeras via en säkerhetsinstallation, distribuera det här scenariot.
 
 Samma överväganden som i scenario 2 gäller. I det här scenariot finns det inga kostnader för peering av virtuella nätverk. Mer information om hur du konfigurerar DNS-servrar så att lokala arbets belastningar kan komma åt privata slut punkter finns i [lokala arbets belastningar med en DNS-vidarebefordrare](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
-
->[!NOTE]
-> Om du vill implementera det här scenariot med en NVA eller Azure-brandvägg från tredje part, krävs nätverks regler i stället för program regler för den SNAT-trafik som är avsedd för privata slut punkter. Det går inte att kommunicera mellan virtuella datorer och privata slut punkter.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

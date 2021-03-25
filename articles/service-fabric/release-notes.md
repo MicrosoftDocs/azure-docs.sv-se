@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 38ec7949b5fc04852568e9e69f35f212b1edee5d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7f99c37cd9f029c7478d4102bd17c952ffd52f8c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201037"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044285"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric versioner
 
@@ -72,7 +72,7 @@ Vi har också publicerat uppdateringar till slutet av support datumet för stör
       -  Minska totalkostnaden (diskarna är kostnads fria och debiteras inga ytterligare lagrings kostnader)
 - Stöd för deklaration av [**tjänst slut punkts certifikat för Service Fabric program efter eget ämnes namn**](./service-fabric-service-manifest-resources.md).
 - [**Stöd för hälso avsökningar för containerbaserade tjänster**](./probes-codepackage.md): stöd för direktmigreringens avsöknings funktion för program i behållare. Med hjälp av direktmigreringens avsökning kan du meddela om liveheten för det behållar programmet och när de inte svarar inom rimlig tid, vilket leder till en omstart. 
-- [**Stöd för initierare kod paket**](./initializer-codepackages.md) för [behållare](/azure/service-fabric/service-fabric-containers-overview) och [körbara gäst](/azure/service-fabric/service-fabric-guest-executables-introduction) program. Detta gör det möjligt att köra kod paket (t. ex. behållare) i en angiven ordning för att utföra service paket initiering.
+- [**Stöd för initierare kod paket**](./initializer-codepackages.md) för [behållare](./service-fabric-containers-overview.md) och [körbara gäst](./service-fabric-guest-executables-introduction.md) program. Detta gör det möjligt att köra kod paket (t. ex. behållare) i en angiven ordning för att utföra service paket initiering.
 - **FabricObserver och ClusterObserver** är tillstånds lösa program som fångar Service Fabric telemetri som är relaterade till olika aspekter av ett SF-kluster. Båda programmen är klara att distribueras till Windows-produktionsanläggningar för att samla in omfattande telemetri med implementerat stöd för ApplicationInsights, EventSource och LogAnalytics.
     - [**FabricObserver (fo) 2,0**](https://github.com/microsoft/service-fabric-observer)-körs på alla noder, genererar hälso händelser och genererar telemetri när de angivna tröskelvärdena för resursanvändning nås. Den här versionen innehåller flera förbättringar i övervakning, data hantering, hälso information, strukturerad telemetri.
      - [**ClusterObserver (co) 1,1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) -körs på en nod, fångar upp hälso telemetri på kluster nivå. I den här versionen övervakar ClusterObserver också nodens status och genererar telemetri när noden är nere/inaktive rad under längre tid än den användardefinierade tids perioden.

@@ -11,12 +11,12 @@ ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e5053bd0c3d63b13b1021476a09dca39dd08f581
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798722"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108765"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Pilot molnets synkronisering för en befintlig synkroniserad AD-skog 
 
@@ -39,7 +39,7 @@ Tänk på följande innan du provar den här självstudien:
 Följande är förutsättningar som krävs för den här självstudien
 - En test miljö med Azure AD Connect Sync version 1.4.32.0 eller senare
 - En ORGANISATIONSENHET eller grupp som finns i omfånget och kan användas som pilot. Vi rekommenderar att du börjar med en liten uppsättning objekt.
-- En server som kör Windows Server 2012 R2 eller senare och som kommer att vara värd för etablerings agenten.  Detta kan inte vara samma server som Azure AD Connect servern.
+- En server som kör Windows Server 2012 R2 eller senare och som kommer att vara värd för etablerings agenten.
 - Käll fäst punkten för Azure AD Connect Sync ska vara antingen *objectGUID* eller *MS-DS-consistencyGUID*
 
 ## <a name="update-azure-ad-connect"></a>Uppdatera Azure AD Connect

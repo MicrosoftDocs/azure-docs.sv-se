@@ -1,7 +1,7 @@
 ---
-title: Översikt över Azure Communication Services som anropar klient bibliotek
+title: Översikt över Azure Communication Services som anropar SDK
 titleSuffix: An Azure Communication Services concept document
-description: Ger en översikt över det anropande klient biblioteket.
+description: 'Innehåller en översikt över den anropande SDK: n.'
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,25 +9,25 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598889"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108408"
 ---
-# <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
+# <a name="calling-sdk-overview"></a>Översikt över samtals-SDK
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Det finns två olika familjer av att anropa klient bibliotek för *klienter* och *tjänster.* För närvarande är tillgängliga klient bibliotek avsedda för slut användar upplevelser: webbplatser och inbyggda appar.
+Det finns två olika familjer av att anropa SDK: er för *klienter* och *tjänster.* För närvarande är tillgängliga SDK: er avsedda för slut användar upplevelser: webbplatser och inbyggda appar.
 
-Tjänst klient biblioteken är inte tillgängliga än och ger till gång till planerna för rå röst och video data som passar för integrering med robotar och andra tjänster.
+Tjänst-SDK: er är inte tillgängliga än och ger till gång till data planerna rå röst och video som passar för integrering med robotar och andra tjänster.
 
-## <a name="calling-client-library-capabilities"></a>Anropa klient biblioteks funktioner
+## <a name="calling-sdk-capabilities"></a>Anropa SDK-funktioner
 
-I följande lista presenteras de funktioner som för närvarande är tillgängliga i Azure Communication Services som anropar klient bibliotek.
+I följande lista presenteras de funktioner som för närvarande är tillgängliga i Azure Communication Services som anropar SDK: er.
 
 | Grupp med funktioner | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
@@ -74,7 +74,7 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 
 
 
-## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>Java script anropar klient biblioteks stöd av OS och webbläsare
+## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>Java script-anropar SDK-stöd från OS och webbläsare
 
 Följande tabell visar en uppsättning webbläsare som stöds och som är tillgängliga för tillfället. Vi stöder de senaste tre versionerna av webbläsaren om inget annat anges.
 
@@ -115,8 +115,8 @@ Denna IFRAME tillåter till exempel både kamera-och mikrofon åtkomst:
 <iframe allow="camera *; microphone *">
 ```
 
-## <a name="calling-client-library-streaming-support"></a>Anropar stöd för strömning av klient bibliotek
-Kommunikations tjänsterna som anropar klient biblioteket stöder följande strömmande konfigurationer:
+## <a name="calling-sdk-streaming-support"></a>Stöd för att anropa SDK-direktuppspelning
+Kommunikations tjänsterna som anropar SDK har stöd för följande strömmande konfigurationer:
 
 |           |Webb | Android/iOS|
 |-----------|----|------------|

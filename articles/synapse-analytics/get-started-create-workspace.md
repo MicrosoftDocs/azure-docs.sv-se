@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ee8a192bcfe20c77e47ee9c89dfc3286a979e358
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722301"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108068"
 ---
 # <a name="creating-a-synapse-workspace"></a>Skapa en Synapse-arbetsyta
 
@@ -33,24 +33,22 @@ För att slutföra den här själv studie kursen måste du ha åtkomst till en r
 1. Välj **Lägg till** för att skapa en arbets yta.
 
 ## <a name="basics-tab--project-details"></a>Fliken grundläggande > projekt information
-1. Fliken **grunder** , under **projekt information**, Fyll i följande fält:
-      1. **Prenumeration** – Välj en prenumeration.
-      2. **Resurs grupp** – Använd valfri resurs grupp.
-      3. **Resurs grupp** – lämna det här tomt.
+Fyll i följande fält:
+    1. **Prenumeration** – Välj en prenumeration.
+    1. **Resurs grupp** – Använd valfri resurs grupp.
+    1. **Resurs grupp** – lämna det här tomt.
 
 
 ## <a name="basics-tab--workspace-details"></a>Fliken grunder > information om arbets ytan
-1. På fliken **grundläggande** , under **arbets ytans information**, fyller du i följande fält:
-      1. **Namn på arbets yta** – Välj ett globalt unikt namn. I den här självstudien använder vi min **arbets yta**.
-      1. **Region** – Välj en region.
-      1. **Välj Data Lake Storage gen 2**
-        1. Klicka på knappen för **från prenumerationen**.
-        1. Efter **konto namn** klickar du på **Skapa nytt** och namnger det nya lagrings kontot **contosolake** eller liknar det här namnet måste vara unikt.
-        1. Efter **fil system namn** klickar du på **Skapa nytt** och ge den namnet **användare**. Detta skapar en lagrings behållare som heter **Users**. Arbets ytan kommer att använda det här lagrings kontot som det primära lagrings kontot för Spark-tabeller och Spark-programloggarna.
-        1. Markera rollen "tilldela själv Storage BLOB data Contributor i Data Lake Storage Gen2 konto". 
+Fyll i följande fält: 1. **Namn på arbets yta** – Välj ett globalt unikt namn. I den här självstudien använder vi min **arbets yta**.
+1. **Region** – Välj en region.
+1. **Välj Data Lake Storage gen 2** 81.1. Klicka på knappen för **från prenumerationen**.
+1. Efter **konto namn** klickar du på **Skapa nytt** och namnger det nya lagrings kontot **contosolake** eller liknar det här namnet måste vara unikt.
+1. Efter **fil system namn** klickar du på **Skapa nytt** och ge den namnet **användare**. Detta skapar en lagrings behållare som heter **Users**. Arbets ytan kommer att använda det här lagrings kontot som det primära lagrings kontot för Spark-tabeller och Spark-programloggarna.
+1. Markera rollen "tilldela själv Storage BLOB data Contributor i Data Lake Storage Gen2 konto". 
 
-### <a name="completing-the-process"></a>Processen slutförs
-5. Välj **Granska + skapa** > **Skapa**. Din arbets yta är klar på några minuter.
+## <a name="completing-the-process"></a>Processen slutförs
+Välj **Granska + skapa** > **Skapa**. Din arbets yta är klar på några minuter.
 
 > [!NOTE]
 > Om du vill aktivera arbets ytans funktioner från en befintlig dedikerad SQL-pool (tidigare SQL DW) läser du så [här aktiverar du en arbets yta för din dedikerade SQL-pool (tidigare SQL DW)](./sql-data-warehouse/workspace-connected-create.md).

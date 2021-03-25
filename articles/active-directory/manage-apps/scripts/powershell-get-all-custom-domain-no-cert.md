@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7be5732b4e8897a9bc993b4e84b781e5f39bce55
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: f4b661ee66d3fb045dfa4891f1f1c1643927167c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565622"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044081"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>Hämta alla Azure AD proxy Application-appar som publicerats utan att något certifikat laddas upp
+# <a name="get-all-application-proxy-apps-published-with-no-certificate-uploaded"></a>Hämta alla Application Proxy-appar som publicerats utan att certifikat laddas upp
 
 Det här PowerShell-skript exemplet visar en lista över alla Azure Active Directory (Azure AD) Application Proxy-appar som använder anpassade domäner, men som inte har något giltigt TLS/SSL-certifikat laddat upp.
 

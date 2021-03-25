@@ -341,13 +341,15 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Kopiera videor utan kodning med REST
           href: how-to-create-copy-video-audio-transform.md
-        - name: Skapa jobb
+        - name: Skapa jobb med .NET
           href: cli-create-jobs.md
         - name: Skapa jobbindata med en lokal fil och .NET
           displayName: upload
           href: job-input-from-local-file-how-to.md
         - name: Jobb med flera transformeringsutdata
           href: job-multiple-transform-outputs.md
+        - name: Häfta ihop två eller fler videofiler med .NET
+          href: stitch-howto.md
     - name: Koda innehåll
       items:
         - name: HTTPS som jobbindata

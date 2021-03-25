@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 1032c450ab53ed77771a2233f9cff5677f658123
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 398b4b6f1f1e1d812e4782bfb6c96870d68e0cec
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612835"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107162"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -41,7 +41,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>Installera paketet
 
-Använd `npm install` kommandot för att installera klient biblioteket för Azure Communication Services-identitet för Java Script.
+Använd `npm install` kommandot för att installera Azure Communication Services Identity SDK för Java Script.
 
 ```console
 

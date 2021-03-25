@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 1bdbfa0966f274d6c026110d7c50bf73266b1189
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 43e3463a3284f57825073888146b38fa14cbf5d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "104729472"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109052"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Förutsättningar
@@ -23,7 +23,7 @@ ms.locfileid: "104729472"
 ### <a name="prerequisite-check"></a>Krav kontroll
 
 - Om du vill visa de telefonnummer som är associerade med kommunikations tjänst resursen loggar du in på [Azure Portal](https://portal.azure.com/), letar upp resursen för kommunikations tjänster och öppnar fliken **telefonnummer** i det vänstra navigerings fönstret.
-- Du kan skapa och köra din app med Azure Communication Services som anropar klient bibliotek för iOS:
+- Du kan skapa och köra din app med Azure Communication Services som anropar SDK för iOS:
 
 ## <a name="setting-up"></a>Konfigurera
 

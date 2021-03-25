@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a861ed27414ed407d00e8e886f20fb952a8ac95e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729523"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109053"
 ---
 # <a name="quickstart-call-to-phone"></a>Snabb start: samtal till telefon
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar klient biblioteket för att lägga till PSTN-anrop till din app.
+Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar SDK för att lägga till PSTN-anrop till din app.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +42,5 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 Mer information finns i följande artiklar:
 
-- Läs om hur du [anropar klient biblioteks funktioner](./calling-client-samples.md)
+- Läs mer om hur du [anropar SDK-funktioner](./calling-client-samples.md)
 - Läs mer om [hur du anropar Works](../../concepts/voice-video-calling/about-call-types.md)
