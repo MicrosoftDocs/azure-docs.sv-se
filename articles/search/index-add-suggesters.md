@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604414"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606223"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Skapa en förslags ställare för att aktivera Autoavsluta och föreslagna resultat i en fråga
 
-I Azure Kognitiv sökning aktive ras "Sök som-du-typ" via en *förslags ställare*. En förslags ställare är en intern data struktur som består av en fält samling. Fälten genomgår ytterligare tokenisering, vilket genererar prefixvärde för att stödja matchningar på delar av villkor.
+I Azure Kognitiv sökning aktive ras typeahead eller "Sök-som-du-Type" via en *förslags ställare*. En förslags ställare är en intern data struktur som består av en fält samling. Fälten genomgår ytterligare tokenisering, vilket genererar prefixvärde för att stödja matchningar på delar av villkor. En förslags ställare som innehåller fältet stad har till exempel prefixen "Sea", "plats", "plats" och "seattl" för termen "Seattle".
 
-Om en förslags ställare t. ex. innehåller fältet stad, kommer de resulterande prefixen "Sea", "plats", "plats" och "seattl" att skapas för termen "Seattle". Prefix lagras i inverterade index, ett för varje fält som anges i en förslags fält samling.
+Matchningar på del villkor kan vara antingen en kompletterad fråga eller en föreslagen matchning. Samma förslags ställare stöder båda upplevelserna.
 
 ## <a name="typeahead-experiences-in-cognitive-search"></a>Typeahead-upplevelser i Kognitiv sökning
 
-En förslags ställare stöder två upplevelser: *komplettera automatiskt*, som slutför indatamängden för en fullständig term fråga och *förslag* som bjuder in genom att klicka igenom till en viss matchning. Funktionen Komplettera automatiskt skapar en fråga. Förslag skapar ett matchande dokument.
+Typeahead kan vara *komplettera automatiskt*, som slutför indatamängden för en fullständig term fråga eller *förslag* som bjuder in genom att klicka till en viss matchning. Funktionen Komplettera automatiskt skapar en fråga. Förslag skapar ett matchande dokument.
 
 Följande skärm bild från [skapa din första app i C#](tutorial-csharp-type-ahead-and-suggestions.md) visar båda. Autoavsluta förväntar sig en möjlig term, och avslutar "TW" med "in". Förslag är små Sök resultat, där ett fält som ett hotell namn representerar ett matchande hotell Sök dokument från indexet. För förslag kan du Visa alla fält som innehåller beskrivande information.
 
@@ -40,11 +40,11 @@ Stöd för sökning efter typ har Aktiver ATS baserat på fältet per fält för
 
 ## <a name="how-to-create-a-suggester"></a>Så här skapar du en förslags ställare
 
-Om du vill skapa en förslags pekare, lägger du till en i en [index definition](/rest/api/searchservice/create-index). En förslags ställare får ett namn och en samling fält över vilka typeahead-upplevelsen är aktive rad. och [Ange varje egenskap](#property-reference). Det bästa sättet att skapa en förslags ställare är när du även definierar det fält som ska använda det.
+Om du vill skapa en förslags pekare, lägger du till en i en [index definition](/rest/api/searchservice/create-index). En förslags ställare tar ett namn och en samling fält över vilka typeahead-upplevelsen är aktive rad. Det bästa sättet att skapa en förslags ställare är när du även definierar det fält som ska använda det.
 
 + Använd endast sträng fält.
 
-+ Om sträng fältet är en del av en komplex typ (t. ex. fältet stad i adressen) inkluderar du överordnad i fältet: `"Address/City"` (rest och C# och python) eller `["Address"]["City"]` (Java Script).
++ Om sträng fältet är en del av en komplex typ (t. ex. fältet stad i adressen) inkluderar du överordnad i fält Sök vägen: `"Address/City"` (rest och C# och python) eller `["Address"]["City"]` (Java Script).
 
 + Använd standard standard Lucene Analyzer ( `"analyzer": null` ) eller en [språk analys](index-add-language-analyzers.md) (till exempel `"analyzer": "en.Microsoft"` ) i fältet.
 
@@ -58,7 +58,7 @@ Autoavsluta-förmåner från en större pool med fält att rita från eftersom d
 
 Förslag ger å andra sidan bättre resultat när valet av fält är selektivt. Kom ihåg att förslaget är en proxy för ett Sök dokument, så att du vill att fält som bäst representerar ett enda resultat. Namn, titlar eller andra unika fält som skiljer sig mellan flera matchningar fungerar bäst. Om fälten består av upprepade värden, består förslagen av identiska resultat och en användare vet inte vilken av dem som ska klicka.
 
-Lägg till alla fält som du behöver för Komplettera automatiskt, men Använd **$Select**, **$Top**, **$filter** och **searchFields** för att kontrol lera resultaten för förslag.
+Lägg till alla fält som du behöver för Komplettera automatiskt, men Använd "$select", "$top", "$filter" och "searchFields" för att kontrol lera resultaten för förslag.
 
 ### <a name="choose-analyzers"></a>Välj analys verktyg
 
@@ -142,9 +142,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Egenskap      |Beskrivning      |
 |--------------|-----------------|
-|`name`        | Anges i förslags definitionen, men kallas även för en Autoavsluta-eller förslags förfrågan. |
-|`sourceFields`| Anges i förslags definitionen. Det är en lista över ett eller flera fält i indexet som är källan till innehållet för förslag. Fält måste vara av typen `Edm.String` och `Collection(Edm.String)` . Om en analys anges i fältet måste det vara en namngiven lexikalisk analys från [den här listan](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (inte en anpassad analys).<p/> Vi rekommenderar att du bara anger de fält som lånar ut sig till ett förväntat och lämpligt svar, oavsett om det är en slutförd sträng i ett sökfält eller i en nedrullningsbar listruta.<p/>Ett hotell namn är en bra kandidat eftersom det har precision. Utförliga fält som beskrivningar och kommentarer är för kompakta. På samma sätt är upprepade fält, till exempel kategorier och taggar, mindre effektiva. I exemplen inkluderar vi "Category" ändå för att demonstrera att du kan inkludera flera fält. |
-|`searchMode`  | En REST-parameter, men även synlig i portalen. Den här parametern är inte tillgänglig i .NET SDK. Den anger den strategi som används för att söka efter kandidat fraser. Det enda läge som stöds för närvarande är `analyzingInfixMatching` , som för närvarande matchar i början av en term.|
+| name        | Anges i förslags definitionen, men kallas även för en Autoavsluta-eller förslags förfrågan. |
+| sourceFields | Anges i förslags definitionen. Det är en lista över ett eller flera fält i indexet som är källan till innehållet för förslag. Fält måste vara av typen `Edm.String` och `Collection(Edm.String)` . Om en analys anges i fältet måste det vara en namngiven lexikalisk analys från [den här listan](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (inte en anpassad analys). </br></br>Vi rekommenderar att du bara anger de fält som lånar ut sig till ett förväntat och lämpligt svar, oavsett om det är en slutförd sträng i ett sökfält eller i en nedrullningsbar listruta. </br></br>Ett hotell namn är en bra kandidat eftersom det har precision. Utförliga fält som beskrivningar och kommentarer är för kompakta. På samma sätt är upprepade fält, till exempel kategorier och taggar, mindre effektiva. I exemplen inkluderar vi "Category" ändå för att demonstrera att du kan inkludera flera fält. |
+| searchMode  | En REST-parameter, men även synlig i portalen. Den här parametern är inte tillgänglig i .NET SDK. Den anger den strategi som används för att söka efter kandidat fraser. Det enda läge som stöds för närvarande är `analyzingInfixMatching` , som för närvarande matchar i början av en term.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -157,9 +157,9 @@ En förslags ställare används i en fråga. När en förslags ställare har ska
 + [SuggestAsync-metod](/dotnet/api/azure.search.documents.searchclient.suggestasync)
 + [AutocompleteAsync-metod](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
-I ett sökprogram bör klient koden använda ett bibliotek som [JQUERY UI komplettera automatiskt](https://jqueryui.com/autocomplete/) för att samla in den partiella frågan och ange matchningen. Mer information om den här uppgiften finns i [lägga till komplettera automatiskt eller föreslagna resultat till klient koden](search-autocomplete-tutorial.md).
+I ett sökprogram bör klient koden använda ett bibliotek som [JQUERY UI komplettera automatiskt](https://jqueryui.com/autocomplete/) för att samla in den partiella frågan och ange matchningen. Mer information om den här uppgiften finns i [lägga till komplettera automatiskt eller föreslagna resultat till klient koden](search-add-autocomplete-suggestions.md).
 
-API-användningen illustreras i följande anrop till REST API för automatisk komplettering. Det finns två takeaways i det här exemplet. För det första, som med alla frågor, är åtgärden mot dokument samlingen för ett index och frågan innehåller en **Sök** parameter, som i det här fallet innehåller den partiella frågan. Därefter måste du lägga till **suggesterName** i begäran. Om en förslags ställare inte har definierats i indexet kommer ett anrop till komplettera automatiskt eller förslag att Miss Missing.
+API-användningen illustreras i följande anrop till REST API för automatisk komplettering. Det finns två takeaways i det här exemplet. För det första, som med alla frågor, är åtgärden mot dokument samlingen för ett index och frågan innehåller en "Sök"-parameter, som i det här fallet innehåller den partiella frågan. Därefter måste du lägga till "suggesterName" i begäran. Om en förslags ställare inte har definierats i indexet kommer ett anrop till komplettera automatiskt eller förslag att Miss Missing.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
@@ -178,4 +178,4 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 Vi rekommenderar följande artikel för att lära dig mer om hur begär ande formulering.
 
 > [!div class="nextstepaction"]
-> [Lägg till komplettera automatiskt och förslag till klient kod](search-autocomplete-tutorial.md)
+> [Lägg till komplettera automatiskt och förslag till klient kod](search-add-autocomplete-suggestions.md)

@@ -6,21 +6,31 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 8b85307f01a11366a2147c947f26658f548932e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 314462517ba4e63694266b5e49231cb8536f3635
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467722"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604739"
 ---
-# <a name="supported-azure-database-for-mysql-server-versions"></a>Azure Database for MySQL Server versioner som stöds
+# <a name="supported-azure-database-for-mysql-server-versions"></a>Azure Database for MySQL-serverversioner som stöds
 
 Azure Database for MySQL har utvecklats från [MySQL Community Edition](https://www.mysql.com/products/community/)med hjälp av lagrings motorn InnoDB. Tjänsten stöder all nuvarande huvud version som stöds av communityn, nämligen MySQL 5,6, 5,7 och 8,0. MySQL använder namngivnings schemat X. Y. Z där X är huvud versionen, Y är den lägre versionen och Z är versionen av fel korrigeringen. Mer information om schemat finns i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-> [!NOTE]
-> I distributions alternativet för enskild server används en gateway för att omdirigera anslutningarna till Server instanser. När anslutningen har upprättats visar MySQL-klienten den version av MySQL som har angetts i gatewayen, inte den faktiska versionen som körs på MySQL-serverinstansen. Du kan ta reda på vilken version MySQL-serverinstansen har med hjälp av kommandot `SELECT VERSION();` i MySQL-prompten.
 
-Azure Database for MySQL stöder för närvarande följande högre och lägre versioner av MySQL:
+
+## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>Ansluta till en gateway-nod som kör en angiven MySQL-version
+
+I distributions alternativet för enskild server används en gateway för att omdirigera anslutningarna till Server instanser. När anslutningen har upprättats visar MySQL-klienten den version av MySQL som har angetts i gatewayen, inte den faktiska versionen som körs på MySQL-serverinstansen. Du kan ta reda på vilken version MySQL-serverinstansen har med hjälp av kommandot `SELECT VERSION();` i MySQL-prompten. Granska [anslutnings arkitekturen](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture#connectivity-architecture) för att lära dig mer om gatewayer i Azure Database for MySQL tjänst arkitektur.
+
+Som Azure Database for MySQL stöder huvud version v 5.6, v 5.7 och v 8.0, är standard porten 3306 för att ansluta till Azure Database for MySQL kör MySQL-klienten version 5,6 (minsta gemensamma nämnare) för att stödja anslutningar till servrar med alla tre versioner som stöds. Men om ditt program har ett krav för att ansluta till en specifik version, till exempel v 5.7 eller v 8.0, kan du göra det genom att ändra porten i Server anslutnings strängen.
+
+I Azure Database for MySQL tjänst lyssnar Gateway-noder på port 3308 för v 5.7-klienter och port 3309 för v 8.0-klienter. Om du vill ansluta till en v 5.7 Gateway-klient bör du använda det fullständigt kvalificerade Server namnet och port 3308 för att ansluta till servern från klient programmet. På samma sätt kan du, om du vill ansluta till v 8.0 Gateway-klienten, använda det fullständiga Server namnet och port 3309 för att ansluta till servern. I följande exempel finns ytterligare klarhet.
+
+:::image type="content" source="./media/concepts-supported-versions/concepts-supported-versions-gateway.png" alt-text="Exempel på anslutning via olika Gateway MySQL-versioner":::
+
+
+## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL stöder för närvarande följande högre och lägre versioner av MySQL:
 
 
 | Version | Enskild server <br/> Aktuell del version |Flexibel server (förhandsversion) <br/> Aktuell del version  |

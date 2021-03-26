@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: a4eb22320a15cc76a7543c25583003d57ea4e538
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7796b94609a9be05fdb72900d0725747440f8042
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102473898"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582409"
 ---
 Genom att använda regional VNet-integrering kan din app komma åt:
 
@@ -26,10 +26,10 @@ När du använder VNet-integrering med virtuella nätverk i samma region kan du 
 * **Nätverks säkerhets grupper (NSG: er)**: du kan blockera utgående trafik med en NSG som placeras i ditt integrations undernät. Reglerna för inkommande trafik gäller inte eftersom du inte kan använda VNet-integrering för att ge inkommande åtkomst till din app.
 * **Routningstabeller (UDR)**: du kan placera en routningstabell i integrations under nätet för att skicka utgående trafik där du vill.
 
-Som standard dirigerar din app endast RFC1918 trafik till ditt VNet. Om du vill dirigera all utgående trafik till ditt VNet använder du appens inställning WEBSITE_VNET_ROUTE_ALL till din app. Konfigurera appens inställning:
+Som standard dirigerar din app endast RFC1918 trafik till ditt VNet. Om du vill dirigera all utgående trafik till ditt VNet använder du följande steg för att lägga till `WEBSITE_VNET_ROUTE_ALL` inställningen i appen: 
 
 1. Gå till **konfigurations** gränssnittet på din app-Portal. Välj **Ny programinställning**.
-1. Ange **WEBSITE_VNET_ROUTE_ALL** i rutan **namn** och skriv **1** i rutan **värde** .
+1. Ange `WEBSITE_VNET_ROUTE_ALL` i rutan **namn** och ange `1` i rutan **värde** .
 
    ![Ange program inställning][4]
 
@@ -37,14 +37,14 @@ Som standard dirigerar din app endast RFC1918 trafik till ditt VNet. Om du vill 
 1. Välj **Spara**.
 
 > [!NOTE]
-> Om du dirigerar all utgående trafik till ditt VNet, omfattas den av NSG: er och UDR som tillämpas på ditt integrations undernät. När du dirigerar all utgående trafik till ditt VNet, är dina utgående adresser fortfarande de utgående adresser som visas i dina app-egenskaper, om du inte tillhandahåller vägar för att skicka trafiken någon annan stans.
+> När du dirigerar all utgående trafik till ditt VNet, omfattas den av NSG: er och UDR som tillämpas på ditt integrations undernät. När `WEBSITE_VNET_ROUTE_ALL` är inställt på `1` skickas utgående trafik fortfarande från de adresser som anges i dina app-egenskaper, om du inte anger vägar som dirigerar trafiken någon annan stans.
 > 
 > Regional VNet-integrering kan inte använda port 25.
 
 Det finns vissa begränsningar med att använda VNet-integrering med virtuella nätverk i samma region:
 
 * Du kan inte komma åt resurser över global peering anslutningar.
-* Funktionen är tillgänglig från alla App Service skalnings enheter i Premium v2 och Premium v3. Den är också tillgänglig i standard men endast från nyare App Service skalnings enheter. Om du använder en äldre skalnings enhet kan du bara använda funktionen från en Premium v2-App Service plan. Om du vill vara säker på att kunna använda funktionen i en standard App Service plan skapar du din app i en Premium v3-App Service plan. Dessa planer stöds endast på våra nyaste skalnings enheter. Du kan skala ned om du vill.  
+* Funktionen är tillgänglig från alla App Service skalnings enheter i Premium v2 och Premium v3. Den är också tillgänglig i standard men endast från nyare App Service skalnings enheter. Om du använder en äldre skalnings enhet kan du bara använda funktionen från en Premium v2-App Service plan. Om du vill vara säker på att du kan använda funktionen i en standard App Service plan skapar du din app i en Premium v3-App Service plan. Dessa planer stöds endast på våra nyaste skalnings enheter. Du kan skala ned om du vill.  
 * Integrations under nätet kan bara användas av en App Service plan.
 * Funktionen kan inte användas av isolerade plan-appar som finns i en App Service-miljön.
 * Funktionen kräver ett oanvänt undernät som är a/28 eller större i ett Azure Resource Manager VNet.
@@ -52,70 +52,66 @@ Det finns vissa begränsningar med att använda VNet-integrering med virtuella n
 * Du kan inte ta bort ett VNet med en integrerad app. Ta bort integrationen innan du tar bort det virtuella nätverket.
 * Du kan bara ha en regional VNet-integration per App Service plan. Flera appar i samma App Service plan kan använda samma VNet.
 * Du kan inte ändra prenumerationen på en app eller en plan när det finns en app som använder regional VNet-integrering.
-* Din app kan inte matcha adresser i Azure DNS Private Zones utan konfigurations ändringar
+* Din app kan inte matcha adresser i Azure DNS Private Zones utan konfigurations ändringar.
 
-VNet-integreringen är beroende av att ett dedikerat undernät används.  När du etablerar ett undernät förlorar Azure-undernätet 5 IP-adresser för från början. En adress används från integrations under nätet för varje plan instans. Om du skalar din app till fyra instanser används fyra adresser. Debet med 5 adresser från under näts storleken innebär att maximalt antal tillgängliga adresser per CIDR-block är:
+VNet-integreringen är beroende av ett dedikerat undernät. När du etablerar ett undernät förlorar Azure-undernätet fem IP-adresser från start. En adress används från integrations under nätet för varje plan instans. När du skalar din app till fyra instanser används fyra adresser. 
 
-- /28 har 11 adresser
-- /27 har 27 adress
-- /26 har 59 adresser
+När du skalar upp eller ned i storlek dubbleras det nödvändiga adress utrymmet under en kort tids period. Detta påverkar de verkliga, tillgängliga instanser som stöds för en specifik under näts storlek. I följande tabell visas både de maximalt tillgängliga adresserna per CIDR-block och effekten detta har i horisontell skala:
 
-Om du skalar upp eller ned i storlek måste du dubblera dina adress behov under en kort tids period. Gränserna i storlek innebär att de tillgängliga instanser som stöds per under näts storlek är tillgängliga, om ditt undernät är ett:
+| CIDR-block storlek | Maximalt antal tillgängliga adresser | Max horisontell skala (instanser)<sup>*</sup> |
+|-----------------|-------------------------|---------------------------------|
+| /28             | 11                      | 5                               |
+| /27             | 27                      | 13                              |
+| /26             | 59                      | 29                              |
 
-- /28, din maximala vågräta skala är 5 instanser
-- /27 är din maximala vågräta skala 13 instanser
-- /26 är din maximala horisontella skalning 29 instanser
+<sup>*</sup>Förutsätter att du behöver skala upp eller ned i valfri storlek eller SKU. 
 
-De gränser som anges vid maximal horisontell skala förutsätter att du behöver skala upp eller ned i antingen storlek eller SKU. 
+Eftersom under näts storleken inte kan ändras efter tilldelningen använder du ett undernät som är tillräckligt stort för att anpassa vilken skala appen kan komma åt. För att undvika eventuella problem med under näts kapaciteten bör du använda en/26 med 64-adresser.  
 
-Eftersom under näts storleken inte kan ändras efter tilldelningen använder du ett undernät som är tillräckligt stort för att anpassa vilken skala appen kan komma åt. För att undvika problem med under näts kapaciteten är en/26 med 64 adresser den rekommenderade storleken.  
-
-Om du vill att dina appar i en annan plan ska kunna komma åt ett VNet som redan är anslutet till av appar i ett annat abonnemang väljer du ett annat undernät än det som används av den befintliga VNet-integreringen.
+När du vill att dina appar i en annan plan ska komma åt ett VNet som redan är anslutet till av appar i ett annat abonnemang väljer du ett annat undernät än det som används av den befintliga VNet-integreringen.
 
 Funktionen stöds fullt ut för både Windows-och Linux-appar, inklusive [anpassade behållare](../articles/app-service/quickstart-custom-container.md). Alla beteenden fungerar på samma sätt mellan Windows-appar och Linux-appar.
 
 ### <a name="service-endpoints"></a>Tjänstslutpunkter
 
-Regional VNet-integrering gör att du kan använda tjänst slut punkter. Om du vill använda tjänstens slut punkter med din app använder du regional VNet-integrering för att ansluta till ett valt VNet och konfigurerar sedan tjänstens slut punkter med mål tjänsten på under nätet som du använde för integreringen. Om du sedan ville få åtkomst till en tjänst via tjänst slut punkter:
+Regional VNet-integrering gör att du kan använda tjänst slut punkter. De grundläggande stegen för att kunna komma åt en tjänst från din app via tjänst slut punkter är följande:
 
-1. Konfigurera regional VNet-integrering med din webbapp
-1. Gå till mål tjänsten och konfigurera tjänst slut punkter mot det undernät som används för integrering
+1. Konfigurera regional VNet-integrering med din webbapp för att ansluta till ett speciellt undernät för integrering.
+1. Gå till mål tjänsten och konfigurera tjänstens slut punkter mot integrations under nätet.
 
 ### <a name="network-security-groups"></a>Nätverkssäkerhetsgrupper
 
-Du kan använda nätverks säkerhets grupper för att blockera inkommande och utgående trafik till resurser i ett VNet. En app som använder regional VNet-integrering kan använda en [nätverks säkerhets grupp][VNETnsg] för att blockera utgående trafik till resurser i ditt VNet eller Internet. Om du vill blockera trafik till offentliga adresser måste du ha program inställningen WEBSITE_VNET_ROUTE_ALL inställd på 1. Reglerna för inkommande trafik i en NSG gäller inte för din app eftersom VNet-integrering endast påverkar utgående trafik från din app.
+Du kan använda nätverks säkerhets grupper för att blockera inkommande och utgående trafik till resurser i ett VNet. En app som använder regional VNet-integrering kan använda en [nätverks säkerhets grupp][VNETnsg] för att blockera utgående trafik till resurser i ditt VNet eller Internet. Om du vill blockera trafik till offentliga adresser måste du ange program inställningen `WEBSITE_VNET_ROUTE_ALL` till `1` . Reglerna för inkommande trafik i en NSG gäller inte för din app eftersom VNet-integrering endast påverkar utgående trafik från din app.
 
-Om du vill kontrol lera inkommande trafik till din app använder du funktionen begränsningar för åtkomst. En NSG som tillämpas på ditt integrations under nät gäller oavsett vilka vägar som tillämpas på ditt integrations under nät. Om WEBSITE_VNET_ROUTE_ALL har angetts till 1 och du inte har några vägar som påverkar offentlig adress trafik i ditt integrations undernät, omfattas all utgående trafik fortfarande till NSG: er som har tilldelats ditt integrations under nät. Om WEBSITE_VNET_ROUTE_ALL inte har angetts tillämpas NSG: er endast på RFC1918-trafik.
+Om du vill kontrol lera inkommande trafik till din app använder du funktionen begränsningar för åtkomst. En NSG som tillämpas på ditt integrations under nät gäller oavsett vilka vägar som tillämpas på ditt integrations under nät. Om `WEBSITE_VNET_ROUTE_ALL` är inställt på `1` och du inte har några vägar som påverkar offentlig adress trafik i ditt integrations undernät, omfattas all utgående trafik fortfarande till NSG: er som har tilldelats ditt integrations under nät. När `WEBSITE_VNET_ROUTE_ALL` inte är inställt tillämpas NSG: er endast på RFC1918-trafik.
 
 ### <a name="routes"></a>Vägar
 
-Du kan använda routningstabeller för att dirigera utgående trafik från din app till var du vill. Som standard påverkar routningstabeller bara din RFC1918-destinations trafik. Om du anger WEBSITE_VNET_ROUTE_ALL till 1 påverkas alla utgående samtal. Vägar som anges i ditt integrations undernät påverkar inte svar på inkommande app-begäranden. Vanliga mål kan omfatta brand Väggs enheter eller gatewayer.
+Du kan använda routningstabeller för att dirigera utgående trafik från din app till var du vill. Som standard påverkar routningstabeller bara din RFC1918-destinations trafik. När du väljer `WEBSITE_VNET_ROUTE_ALL` till `1` påverkas alla utgående samtal. Vägar som anges i ditt integrations undernät påverkar inte svar på inkommande app-begäranden. Vanliga mål kan omfatta brand Väggs enheter eller gatewayer.
 
 Om du vill dirigera all utgående trafik lokalt kan du använda en routningstabell för att skicka all utgående trafik till din ExpressRoute-Gateway. Om du dirigerar trafik till en gateway måste du ställa in vägar i det externa nätverket för att skicka svar tillbaka.
 
-Border Gateway Protocol (BGP) vägar påverkar också din app-trafik. Om du har BGP-vägar från något som liknar en ExpressRoute-gateway kommer din app utgående trafik att påverkas. BGP-vägar påverkar som standard bara din RFC1918-destinations trafik. Om WEBSITE_VNET_ROUTE_ALL är inställt på 1 kan all utgående trafik påverkas av BGP-vägar.
+Border Gateway Protocol (BGP) vägar påverkar också din app-trafik. Om du har BGP-vägar från något som liknar en ExpressRoute-Gateway påverkas din utgående trafik för appen. BGP-vägar påverkar som standard bara din RFC1918-destinations trafik. När `WEBSITE_VNET_ROUTE_ALL` är inställt på `1` kan all utgående trafik påverkas av BGP-vägarna.
 
-### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
+### <a name="azure-dns-private-zones"></a>Azure DNS privata zoner 
 
-När din app har integrerats med ditt VNet, använder den samma DNS-server som ditt VNet har kon figurer ATS med. Som standard fungerar inte appen med Azure DNS Private Zones. Om du vill arbeta med Azure DNS Private Zones måste du lägga till följande appinställningar:
+När din app har integrerats med ditt VNet, använder den samma DNS-server som ditt VNet har kon figurer ATS med. Som standard fungerar inte appen med Azure DNS privata zoner. Om du vill arbeta med Azure DNS privata zoner måste du lägga till följande appinställningar:
 
+1. `WEBSITE_DNS_SERVER` med värde `168.63.129.16`
+1. `WEBSITE_VNET_ROUTE_ALL` med värde `1`
 
-1. WEBSITE_DNS_SERVER med värdet 168.63.129.16
-1. WEBSITE_VNET_ROUTE_ALL med värdet 1
-
-
-De här inställningarna kommer att skicka alla utgående samtal från din app till ditt VNet, förutom att aktivera din app för att använda Azure DNS privata zoner.   De här inställningarna kommer att skicka alla utgående samtal från din app till ditt VNet. Dessutom kommer appen att tillåta att appen använder Azure DNS genom att fråga zonen Privat DNS på arbets nivå. Den här funktionen ska användas när en app som körs har åtkomst till en Privat DNS zon.
+De här inställningarna skickar alla utgående samtal från din app till ditt VNet och gör att din app får åtkomst till en Azure DNS privat zon. Med de här inställningarna kan din app använda Azure DNS genom att fråga den privata DNS-zonen på arbets nivå.  
 
 > [!NOTE]
->Det går inte att lägga till en anpassad domän i en webbapp som använder Privat DNS zon med VNET-integration. Anpassad domän verifiering görs på styrenhets nivå, inte på arbets nivå, vilket förhindrar att DNS-poster visas. Om du vill använda en anpassad domän från en Privat DNS zon måste verifieringen kringgås med en Application Gateway-eller ILB-App Service-miljön.
+> Det går inte att lägga till en anpassad domän i en webbapp med en privat DNS-zon med VNET-integration. Anpassad domän verifiering görs på styrenhets nivå, inte på arbets nivå, vilket förhindrar att DNS-poster visas. Om du vill använda en anpassad domän från en privat DNS-zon måste du kringgå verifieringen genom att använda en [Application Gateway](../articles/app-service/networking/app-gateway-with-service-endpoints.md) eller [ILB App Service-miljön](../articles/app-service/environment/create-ilb-ase.md).
 
 ### <a name="private-endpoints"></a>Privata slutpunkter
 
-Om du vill göra anrop till [privata slut punkter][privateendpoints]måste du kontrol lera att dina DNS-sökningar kommer att matcha den privata slut punkten. För att säkerställa att DNS-sökningarna från din app pekar på dina privata slut punkter kan du:
+Om du vill ringa till [privata slut punkter][privateendpoints]måste du kontrol lera att dina DNS-sökningar matchar den privata slut punkten. Du kan använda det här beteendet på något av följande sätt: 
 
-* integrera med Azure DNS Private Zones. Om ditt VNet inte har en anpassad DNS-server är detta automatiskt
-* hantera den privata slut punkten på den DNS-server som används av din app. Om du vill göra det måste du känna till adressen till den privata slut punkten och sedan peka den slut punkt som du försöker ansluta till adressen med en A-post.
-* Konfigurera din egen DNS-server att vidarebefordra till Azure DNS privata zoner
+* Integrera med Azure DNS privata zoner. Detta görs automatiskt när ditt VNet inte har en anpassad DNS-server.
+* Hantera den privata slut punkten på den DNS-server som används av din app. Om du vill göra det måste du känna till adressen till den privata slut punkten och sedan peka slut punkten som du försöker ansluta till adressen med en A-post.
+* Konfigurera din egen DNS-server för att vidarebefordra till Azure DNS privata zoner.
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png

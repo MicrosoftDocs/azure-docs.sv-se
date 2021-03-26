@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587856"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604710"
 ---
 # <a name="securing-service-principals"></a>Skydda tjänstens huvud namn
 
@@ -96,6 +96,7 @@ Mer information finns i [Get-AzureADServicePrincipal](/powershell/module/azuread
 För att utvärdera säkerheten för dina tjänst huvud namn, se till att du utvärderar behörigheter och lagring av autentiseringsuppgifter.
 
 Minska potentiella utmaningar med följande information.
+
 |Utmaningar | Åtgärder|
 | - | - |
 | Identifiera den användare som samtyckt till en app för flera klienter och identifiera illegala medgivande bidrag till en app med flera klient organisationer | Kör följande PowerShell för att hitta appar för flera klienter.<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>Inaktivera användar medgivande. <br>Tillåt användar medgivande från verifierade utgivare, för valda behörigheter (rekommenderas) <br> Använd villkorlig åtkomst för att blockera tjänstens huvud namn från ej betrodda platser. Konfigurera dem under användar kontexten och deras token ska användas för att aktivera tjänstens huvud namn.|

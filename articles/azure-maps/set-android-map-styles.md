@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100992"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604795"
 ---
 # <a name="set-map-style-android-sdk"></a>Ange kart stil (Android SDK)
 
@@ -83,7 +83,7 @@ Följande skärm bild visar koden ovan som visar en karta med stilen för satell
 
 ## <a name="setting-the-map-camera"></a>Ställa in kart kameran
 
-Kart kameran styr vilken del av kartan som visas i kartan. Kameran kan vara i layouten genom programmering i kod. När du anger den i kod finns det två huvudsakliga metoder för att ange placeringen av kartan. använda centrera och zooma eller skicka i en markerings ruta. Följande kod visar hur du ställer in alla valfria kamera alternativ när du använder `center` och `zoom` .
+Kart kameran styr vilken del av världen som visas i kart visnings området. Kameran kan vara i layouten genom programmering i kod. När du anger den i kod finns det två huvudsakliga metoder för att ange placeringen av kartan. använda centrera och zooma eller skicka i en markerings ruta. Följande kod visar hur du ställer in alla valfria kamera alternativ när du använder `center` och `zoom` .
 
 ::: zone pivot="programming-language-java-android"
 
@@ -104,7 +104,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -130,7 +130,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
@@ -162,7 +162,7 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -192,14 +192,14 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
 
 ::: zone-end
 
-Observera att proportionerna för en avgränsnings ruta kanske inte är samma som proportionerna för kartan, eftersom kartan ofta visar hela gräns Box-ytan, men det är ofta bara tätt lodrätt eller vågrätt.
+Proportionerna för en avgränsnings ruta får inte vara samma som proportionerna för kartan, eftersom kartan ofta visar hela gränsen, men det är ofta bara tätt lodrätt eller vågrätt.
 
 ## <a name="next-steps"></a>Nästa steg
 

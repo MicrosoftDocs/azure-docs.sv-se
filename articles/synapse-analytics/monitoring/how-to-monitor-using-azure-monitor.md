@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549863"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609266"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Använda Azure Monitor med din Azure Synapse Analytics-arbetsyta
 
@@ -103,7 +103,7 @@ Logga in på Azure Portal och välj **övervaka**  >  **aviseringar** för att s
 
 Här följer de loggar som genereras av Azure Synapse Analytics-arbetsytor:
 
-| Log Analytics tabell namn | Logg kategori namn                 | Beskrivning |
+| Log Analytics tabell namn | Logg kategori namn                 | Description |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | API-begäranden för Azure Synapse Gateway. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse-rollbaserade åtkomst kontroll åtgärder (SRBAC). |
@@ -112,7 +112,7 @@ Här följer de loggar som genereras av Azure Synapse Analytics-arbetsytor:
 
 Här följer de loggar som genereras av dedikerade SQL-pooler:
 
-| Log Analytics tabell namn        | Logg kategori namn             | Beskrivning |
+| Log Analytics tabell namn        | Logg kategori namn             | Description |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Information om SQL-begäranden/-frågor i en dedikerad Azure Synapse-pool.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Information om anställda som slutför DMS-stegen i en dedikerad Azure Synapse-pool.
@@ -131,7 +131,7 @@ Mer information om dessa loggar finns i följande information:
 
 Följande logg har avsänts av Apache Spark pooler:
 
-| Log Analytics tabell namn               | Logg kategori namn              | Beskrivning                 |
+| Log Analytics tabell namn               | Logg kategori namn              | Description                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Information om avslutade Apache Spark program |
 
@@ -171,7 +171,7 @@ Skapa eller Lägg till diagnostikinställningar för din arbets yta, dedikerad S
 1. Ange ett namn, Välj **Skicka till Log Analytics** och välj sedan en arbets yta från **Log Analytics arbets yta**.
 
     > [!NOTE]
-    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [referens för AzureDiagnostics-loggar](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
+    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [referens för AzureDiagnostics-loggar](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 1. Välj **Spara**.
 

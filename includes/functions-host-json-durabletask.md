@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719868"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607102"
 ---
 Konfigurations inställningar för [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -99,7 +99,7 @@ Konfigurations inställningar för [Durable Functions](../articles/azure-functio
 
 Namn på uppgifts hubbar måste börja med en bokstav och får bara bestå av bokstäver och siffror. Om inget värde anges är standard namnet på uppgifts navet för en Function-app **DurableFunctionsHub**. Mer information finns i [aktivitets nav](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
-|Egenskap  |Standardvärde | Beskrivning |
+|Egenskap  |Standardvärde | Description |
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|Alternativa [aktivitets Hubbs](../articles/azure-functions/durable/durable-functions-task-hubs.md) namn kan användas för att isolera flera Durable Functions program från varandra, även om de använder samma lagrings Server del.|
 |controlQueueBatchSize|32|Antalet meddelanden att hämta från kontroll kön i taget.|
@@ -121,7 +121,7 @@ Namn på uppgifts hubbar måste börja med en bokstav och får bara bestå av bo
 |eventGridPublishRetryInterval|5 minuter|Återförsöks intervallet för Event Grid publiceras i formatet *hh: mm: SS* .|
 |eventGridPublishEventTypes||En lista med händelse typer att publicera till Event Grid. Om inget värde anges kommer alla händelse typer att publiceras. Tillåtna värden är `Started` , `Completed` , `Failed` , `Terminated` .|
 |useAppLease|true|När det är inställt på måste `true` apparna förvärva ett BLOB-lån på App-nivå innan de kan bearbeta meddelanden från aktivitets hubben. Mer information finns i dokumentationen om [haveri beredskap och geo-distribution](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md) . Tillgänglig från och med v-2.3.0.
-|useLegacyPartitionManagement|true|När det är inställt på `false` , används en algoritm för partitions hantering som minskar risken för duplicerad funktions körning vid utskalning.  Tillgänglig från och med v-2.3.0. Standardvärdet kommer att ändras till `false` i en framtida version.|
+|useLegacyPartitionManagement|falskt|När det är inställt på `false` , används en algoritm för partitions hantering som minskar risken för duplicerad funktions körning vid utskalning.  Tillgänglig från och med v-2.3.0.|
 |useGracefulShutdown|falskt|Förhandsgranskningsvyn Aktivera Stäng av på ett smidigt sätt för att minska risken för att det inte går att stänga av värden i process funktionens körningar.|
 
 Många av de här inställningarna är för att optimera prestanda. Mer information finns i [prestanda och skalning](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

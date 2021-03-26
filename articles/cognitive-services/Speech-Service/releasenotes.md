@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: d3d10eb496899287e93a96f0cbb06dedf83c601d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 86a656630f6c41e2cf6682d0160cce345d1f564d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048637"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606631"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
 
@@ -711,13 +711,13 @@ Detta är en fel korrigerings version och påverkar endast det inbyggda/hanterad
 **Fel korrigeringar**
 
 - Åtgärda FromSubscription när den används med konversations avskriftering.
-- Åtgärda felet i Keyword upptäcka för röst assistenter.
+- Åtgärda fel i nyckelords igenkänning för röst assistenter.
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK-1.5.0:2019 – maj-version
 
 **Nya funktioner**
 
-- Nyckelordet upptäcka (KWS) är nu tillgängligt för Windows och Linux. KWS-funktionen kan fungera med valfri mikrofon typ, officiellt KWS-support, men är för närvarande begränsad till de mikrofoner som finns i Azure Kinect DK-maskinvara eller i tal enheter SDK.
+- Nyckelords igenkänning är nu tillgängligt för Windows och Linux. Den här funktionen kan fungera med vilken typ av mikrofon som helst, men statsstöd är för närvarande begränsad till de mikrofoner som finns i Azure Kinect DK-maskinvara eller i tal enheter SDK.
 - Funktionen för fras tips är tillgänglig via SDK. Mer information finns [här](./get-started-speech-to-text.md).
 - Konversations avskrifts funktionerna är tillgängliga via SDK: n. Se [här](./conversation-transcription.md).
 - Lägg till stöd för röst assistenter med hjälp av kanalen för direkt linje tal.

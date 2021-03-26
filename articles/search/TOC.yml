@@ -343,7 +343,7 @@
             - name: Skapa en förslagsställare
               href: index-add-suggesters.md
             - name: Lägga till automatisk komplettering och förslag
-              href: search-autocomplete-tutorial.md
+              href: search-add-autocomplete-suggestions.md
         - name: Växling och antal
           href: search-pagination-page-layout.md
         - name: Syntaxreferens

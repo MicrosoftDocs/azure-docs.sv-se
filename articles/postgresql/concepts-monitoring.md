@@ -1,17 +1,17 @@
 ---
 title: Övervaka och finjustera – Azure Database for PostgreSQL-enskild server
 description: Den här artikeln beskriver övervaknings-och justerings funktionerna i Azure Database for PostgreSQL-enskild server.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 7ccd01f8c351ac2a7326a3b893bd78d14599db50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8c4479d0892a8a6d5f613eff4592cca93e9fb179
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100588308"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605135"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Övervaka och finjustera Azure Database for PostgreSQL-enskild server
 Genom att övervaka data om dina servrar kan du felsöka och optimera för din arbets belastning. Azure Database for PostgreSQL innehåller olika övervaknings alternativ för att ge inblick i serverns beteende.
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL tillhandahåller olika mått som ger inblick i fun
 ### <a name="list-of-metrics"></a>Lista över mått
 De här måtten är tillgängliga för Azure Database for PostgreSQL:
 
-|Metric|Mått visnings namn|Enhet|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Description|
 |---|---|---|---|
 |cpu_percent|CPU-procent|Procent|Procent andelen CPU som används.|
 |memory_percent|Minnes procent|Procent|Procent andelen minne som används.|

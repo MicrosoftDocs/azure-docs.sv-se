@@ -2,35 +2,35 @@
 title: Kör uppgifter samtidigt för att maximera användningen av batch Compute-noder
 description: Öka effektiviteten och sänk kostnaderna genom att använda färre Compute-noder och köra aktiviteter parallellt på varje nod i en Azure Batch pool
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 03/25/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a8f2d6a040bee0e32359f4860d7b346ac08c48e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92102973"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607991"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Kör uppgifter samtidigt för att maximera användningen av batch Compute-noder
 
 Du kan maximera resursanvändningen på ett mindre antal datornoder i poolen genom att köra mer än en aktivitet samtidigt på varje nod.
 
-Vissa scenarier fungerar bäst med alla noders resurser som är dedikerade till en enda uppgift, men vissa arbets belastningar kan se kortare jobb tider och lägre kostnader när flera aktiviteter delar dessa resurser:
+Vissa scenarier fungerar bäst med alla noders resurser som är dedikerade till en enda uppgift, men vissa arbets belastningar kan se kortare jobb tider och lägre kostnader när flera aktiviteter delar resurserna. Beakta följande scenarier:
 
 - **Minimera data överföringen** för uppgifter som kan dela data. Du kan drastiskt minska avgifterna för data överföring genom att kopiera delade data till ett mindre antal noder och sedan köra aktiviteter parallellt på varje nod. Detta gäller särskilt om data som ska kopieras till varje nod måste överföras mellan geografiska regioner.
-- **Maximera minnes användningen** för aktiviteter som kräver stor mängd minne, men endast under korta tids perioder och vid varierande tidpunkter under körningen. Du kan använda färre, men större Compute-noder med mer minne för att effektivt hantera sådana toppar. De här noderna skulle ha flera aktiviteter som körs parallellt på varje nod, men varje aktivitet skulle dra nytta av nodernas plentiful minne vid olika tidpunkter.
+- **Maximera minnes användningen** för aktiviteter som kräver stor mängd minne, men endast under korta tids perioder och vid varierande tidpunkter under körningen. Du kan använda färre, men större Compute-noder med mer minne för att effektivt hantera sådana toppar. Dessa noder kommer att ha flera aktiviteter som körs parallellt på varje nod, men varje aktivitet kan dra nytta av nodernas plentiful minne vid olika tidpunkter.
 - **Minska antalet nodnummer** vid kommunikation mellan noder i en pool. För närvarande är pooler som kon figurer ATS för kommunikation mellan noder begränsade till 50-datornoder. Om varje nod i en sådan pool kan köra aktiviteter parallellt, kan ett större antal uppgifter köras samtidigt.
 - **Replikera ett lokalt beräknings kluster**, till exempel när du först flyttar en beräknings miljö till Azure. Om din aktuella lokala lösning kör flera aktiviteter per Compute-nod kan du öka det maximala antalet noder för att bättre kunna spegla konfigurationen.
 
 ## <a name="example-scenario"></a>Exempelscenario
 
-Ett exempel är att anta ett aktivitets program med processor-och minnes krav, så att [standard \_ D1](../cloud-services/cloud-services-sizes-specs.md) -noderna är tillräckliga. För att kunna slutföra jobbet inom den tid som krävs behövs dock 1 000 av de här noderna.
+Ett exempel är att anta ett aktivitets program med processor-och minnes krav, så att [standard \_ D1](../cloud-services/cloud-services-sizes-specs.md#d-series) -noderna är tillräckliga. För att kunna slutföra jobbet inom den tid som krävs behövs dock 1 000 av de här noderna.
 
-I stället för att använda standard \_ D1-noder som har 1 processor kärna kan du använda [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -noder som har 16 kärnor och aktivera parallell körning av aktiviteter. Det innebär att *16 gånger färre noder* kan användas – i stället för 1 000-noder krävs bara 63. Om stora programfiler eller referens data krävs för varje nod förbättras jobb varaktigheten och effektiviteten, eftersom data kopieras till endast 63 noder.
+I stället för att använda standard \_ D1-noder som har 1 processor kärna kan du använda [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md#d-series) -noder som har 16 kärnor och aktivera parallell körning av aktiviteter. Det innebär att 16 gånger färre noder kan användas – i stället för 1 000-noder krävs bara 63. Om stora programfiler eller referens data krävs för varje nod förbättras jobb varaktigheten och effektiviteten eftersom data kopieras till endast 63 noder.
 
 ## <a name="enable-parallel-task-execution"></a>Aktivera parallell körning av uppgift
 
-Du konfigurerar Compute-noder för parallell körning av aktiviteter på Poolnivå. Med batch .NET-biblioteket ställer du in egenskapen [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) när du skapar en pool. Om du använder batch-REST API anger du [taskSlotsPerNode](/rest/api/batchservice/pool/add) -elementet i begär ande texten när du skapar en pool.
+Du konfigurerar Compute-noder för parallell körning av aktiviteter på Poolnivå. Med batch .NET-biblioteket ställer du in egenskapen [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) när du skapar en pool. Om du använder batch-REST API anger du [taskSlotsPerNode](/rest/api/batchservice/pool/add) -elementet i begär ande texten när du skapar en pool.
 
 > [!NOTE]
 > Du kan endast ange `taskSlotsPerNode` element-och [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) -egenskapen när du skapar en pool. De kan inte ändras efter att en pool redan har skapats.
@@ -44,9 +44,9 @@ Med Azure Batch kan du ange aktivitets platser per nod upp till (4x) antalet Nod
 
 När du aktiverar samtidiga uppgifter är det viktigt att ange hur du vill att aktiviteterna ska distribueras mellan noderna i poolen.
 
-Genom att använda egenskapen [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) kan du ange att aktiviteterna ska tilldelas jämnt över alla noder i poolen ("spridning"). Du kan också ange att så många aktiviteter som möjligt ska tilldelas varje nod innan aktiviteter tilldelas till en annan nod i poolen ("packning").
+Genom att använda egenskapen [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) kan du ange att aktiviteterna ska tilldelas jämnt över alla noder i poolen ("spridning"). Du kan också ange att så många aktiviteter som möjligt ska tilldelas varje nod innan aktiviteter tilldelas till en annan nod i poolen ("packning").
 
-Anta till exempel poolen med [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -noder (i exemplet ovan) som är konfigurerad med ett [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) -värde på 16. Om [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) har kon figurer ATS med [ett ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) - *paket* skulle det maximera användningen av alla 16 kärnor i varje nod och tillåta att en [pool](batch-automatic-scaling.md) för automatisk skalning tar bort oanvända noder (noder utan tilldelade aktiviteter) från poolen. Detta minimerar resursanvändningen och sparar pengar.
+Anta till exempel poolen med [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md#d-series) -noder (i exemplet ovan) som är konfigurerad med ett [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) -värde på 16. Om [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) har kon figurer ATS med [ett ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) - *paket* skulle det maximera användningen av alla 16 kärnor i varje nod och tillåta att en [pool](batch-automatic-scaling.md) för automatisk skalning tar bort oanvända noder (noder utan tilldelade aktiviteter) från poolen. Detta minimerar resursanvändningen och sparar pengar.
 
 ## <a name="define-variable-slots-per-task"></a>Definiera variabla platser per uppgift
 
@@ -54,13 +54,12 @@ En uppgift kan definieras med egenskapen [CloudTask. RequiredSlots](/dotnet/api/
 
 För en pool med egenskap `taskSlotsPerNode = 8` kan du till exempel skicka nödvändiga processor intensiva uppgifter med flera kärnor `requiredSlots = 8` , medan andra aktiviteter kan ställas in på `requiredSlots = 1` . När den här blandade arbets belastningen schemaläggs körs processor intensiva aktiviteter exklusivt på sina datornoder, medan andra aktiviteter kan köras samtidigt (upp till åtta aktiviteter på en gång) på andra noder. Detta hjälper dig att balansera arbets belastningen mellan datornoder och förbättra effektiviteten för resursanvändning.
 
+Se till att du inte anger att en aktivitet ska `requiredSlots` vara större än poolens `taskSlotsPerNode` . Detta leder till att aktiviteten aldrig kan köras. Batch-tjänsten validerar för närvarande inte den här konflikten när du skickar uppgifter eftersom ett jobb inte kan ha en pool som är kopplad till överförings tiden, eller så kan den ändras till en annan pool genom att inaktivera/återaktivera.
+
 > [!TIP]
 > När du använder variabla aktivitets platser, är det möjligt att stora aktiviteter med fler begärda platser tillfälligt kan schemaläggas på grund av att det inte finns tillräckligt många platser tillgängliga på en Compute-nod, även om det fortfarande finns inaktiva platser på vissa noder. Du kan öka jobb prioriteten för dessa aktiviteter för att öka sin chans att konkurrera om tillgängliga platser på noder.
 >
 > Batch-tjänsten genererar [TaskScheduleFailEvent](batch-task-schedule-fail-event.md) när det inte går att schemalägga en aktivitet för körning och försöker att försöka schemalägga igen tills nödvändiga platser blir tillgängliga. Du kan lyssna på händelsen för att identifiera potentiella problem med aktivitets schemaläggningen och åtgärda detta.
-
-> [!NOTE]
-> Ange inte att en aktivitet ska `requiredSlots` vara större än poolens `taskSlotsPerNode` . Detta leder till att aktiviteten aldrig kan köras. Batch-tjänsten validerar för närvarande inte den här konflikten när du skickar uppgifter eftersom ett jobb inte kan ha en pool som är kopplad till överförings tiden, eller så kan den ändras till en annan pool genom att inaktivera/återaktivera.
 
 ## <a name="batch-net-example"></a>Batch .NET-exempel
 
@@ -70,7 +69,7 @@ Följande [batch .net](/dotnet/api/microsoft.azure.batch) API-kodfragment visar 
 
 Det här kodfragmentet visar en begäran om att skapa en pool som innehåller fyra noder, med fyra aktivitets platser tillåtna per nod. Den specificerar en schemaläggnings princip för aktiviteter som fyller varje nod med aktiviteter innan aktiviteter tilldelas till en annan nod i poolen.
 
-Mer information om hur du lägger till pooler med hjälp av batch .NET-API: et finns i [metoden batchclient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations).
+Mer information om hur du lägger till pooler med hjälp av batch .NET-API: et finns i [metoden batchclient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
 
 ```csharp
 CloudPool pool =
@@ -169,7 +168,7 @@ Det här kodfragmentet visar en begäran om att lägga till en aktivitet med ick
 
 ## <a name="code-sample-on-github"></a>Kod exempel på GitHub
 
-[ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) -projektet på GitHub illustrerar användningen av egenskapen [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) .
+[ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) -projektet på GitHub illustrerar användningen av egenskapen [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) .
 
 Det här C#-konsol programmet använder [batch .net](/dotnet/api/microsoft.azure.batch) -biblioteket för att skapa en pool med en eller flera Compute-noder. Den kör ett konfigurerbart antal aktiviteter på noderna för att simulera en variabel belastning. Utdata från programmet visar vilka noder som utförde varje aktivitet. Programmet innehåller också en sammanfattning av jobb parametrarna och varaktigheten.
 

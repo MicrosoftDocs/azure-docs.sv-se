@@ -4,15 +4,15 @@ description: Lär dig hur du använder beroende inmatning för att registrera oc
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955096"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608127"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Använda beroendeinmatning i .NET Azure Functions
 
@@ -21,6 +21,11 @@ Azure Functions stöder design mönstret för program beroende insprutning (DI),
 - Beroende inmatning i Azure Functions bygger på funktionerna för .NET Core-beroende inmatning. Det rekommenderas att du är bekant med [.net Core-beroende inmatning](/aspnet/core/fundamentals/dependency-injection) . Det finns skillnader i hur du åsidosätter beroenden och hur konfigurations värden läses med Azure Functions i förbruknings planen.
 
 - Stöd för beroende inmatning börjar med Azure Functions 2. x.
+
+- Mönster för beroende injektioner skiljer sig åt beroende på om C#-funktionerna körs [i processen](functions-dotnet-class-library.md) eller [utanför processen](dotnet-isolated-process-guide.md).  
+
+> [!IMPORTANT]
+> Vägledningen i den här artikeln gäller endast [C#-klass biblioteks funktioner](functions-dotnet-class-library.md)som körs i processen med körnings miljön. Den här anpassade beroende inmatnings modellen gäller inte för [.net-isolerade funktioner](dotnet-isolated-process-guide.md), vilket gör att du kan köra .net 5,0-funktioner utanför processen. Den isolerade process modellen i .NET förlitar sig på vanliga ASP.NET Core beroende inmatnings mönster. Mer information finns i [beroende inmatning](dotnet-isolated-process-guide.md#dependency-injection) i den isolerade process guiden för .net.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -190,7 +195,7 @@ Mer information om loggnings nivåer finns i [Konfigurera logg nivåer](configur
 
 Funktions värden registrerar många tjänster. Följande tjänster är säkra att ta med i ditt program:
 
-|Typ av tjänst|Giltighet|Beskrivning|
+|Typ av tjänst|Giltighet|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Körnings konfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Ansvarar för att tillhandahålla ID för värd instansen|

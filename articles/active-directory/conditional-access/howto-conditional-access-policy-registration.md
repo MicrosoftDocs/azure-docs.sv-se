@@ -5,37 +5,66 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 03/24/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 711d4bdf2be2ad3158c12e4690a70fb83fe7a846
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98599767"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559510"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Villkorsstyrd åtkomst: Säkra registrering av säkerhetsinformation
 
-Nu kan du skydda när och hur användare registrerar sig för Azure AD Multi-Factor Authentication och återställning av lösen ord för självbetjäning är nu möjligt med användar åtgärder i principen för villkorlig åtkomst. Den här förhands gransknings funktionen är tillgänglig för organisationer som har aktiverat den [kombinerade förhands granskningen](../authentication/concept-registration-mfa-sspr-combined.md). Den här funktionen kan vara aktive rad i organisationer där de vill använda villkor som betrott nätverks plats för att begränsa åtkomsten till registrering för Azure AD Multi-Factor Authentication och lösen ords återställning via självbetjäning (SSPR). Mer information om användbara villkor finns i artikeln [villkorlig åtkomst: villkor](concept-conditional-access-conditions.md).
+Att skydda när och hur användare registrerar sig för Azure AD Multi-Factor Authentication och återställning av lösen ord för självbetjäning är möjligt med användar åtgärder i en princip för villkorlig åtkomst. Den här funktionen är tillgänglig för organisationer som har aktiverat den [kombinerade registreringen](../authentication/concept-registration-mfa-sspr-combined.md). Den här funktionen gör det möjligt för organisationer att behandla registrerings processen som vilket program som helst i en princip för villkorlig åtkomst och använda den fullständiga kraften i villkorlig åtkomst för att skydda upplevelsen. 
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Skapa en princip för att kräva registrering från en betrodd plats
+Vissa organisationer tidigare kan ha använt betrott nätverks plats eller enhets efterlevnad som ett sätt att säkra registrerings upplevelsen. Med att lägga till [tillfälliga åtkomst pass](../authentication/howto-authentication-temporary-access-pass.md) i Azure AD kan administratörer etablera tidsbegränsade autentiseringsuppgifter för sina användare så att de kan registrera sig från valfri enhet eller plats. Tillfälliga åtkomst passets autentiseringsuppgifter uppfyller kraven för villkorlig åtkomst för Multi-Factor Authentication.
 
-Följande princip gäller för alla valda användare, som försöker registrera sig med den kombinerade registrerings upplevelsen och blockerar åtkomsten om de inte ansluter från en plats som har marker ATS som ett betrott nätverk.
+## <a name="create-a-policy-to-secure-registration"></a>Skapa en princip för säker registrering
+
+Följande princip gäller för de valda användarna, som försöker registrera sig med den kombinerade registrerings upplevelsen. Principen kräver att användare utför Multi-Factor Authentication eller använder tillfälliga autentiseringsuppgifter för åtkomst pass.
+
+1. I **Azure Portal** bläddrar du till **Azure Active Directory**  >  **säkerhet** för  >  **villkorlig åtkomst**.
+1. Välj **ny princip**.
+1. I namn anger du ett namn för den här principen. Till exempel **kombinerad säkerhets informations registrering med tryck**.
+1. Under **tilldelningar** väljer du **användare och grupper** och väljer de användare och grupper som du vill att den här principen ska tillämpas på.
+   1. Under **Inkludera** väljer du **alla användare**.
+
+      > [!WARNING]
+      > Användare måste aktive ras för den [kombinerade registreringen](../authentication/howto-registration-mfa-sspr-combined.md).
+
+   1. Under **undanta**.
+      1. Välj **alla gäst-och externa användare**.
+      
+         > [!NOTE]
+         > Tillfälligt åtkomst pass fungerar inte för gäst användare.
+
+      1. Välj **användare och grupper** och välj organisationens nödfalls åtkomst eller Bryt glass konton. 
+1. Under **molnappar eller åtgärder** väljer du **användar åtgärder**, markera **Registrera säkerhets information**.
+1. Under **åtkomst kontroller**  >  **beviljar**.
+   1. Välj **Bevilja åtkomst**.
+   1. Välj **Kräv multifaktorautentisering**.
+   1. Klicka på **Välj**.
+1. Ange **Aktivera princip** till **På**.
+1. Välj sedan **Skapa**.
+
+Administratörer måste nu utfärda autentiseringsuppgifter för tillfälliga åtkomst pass till nya användare så att de kan uppfylla kraven för Multi-Factor Authentication för registrering. Steg för att utföra den här uppgiften finns i avsnittet [skapa ett tillfälligt åtkomst pass i Azure AD-portalen](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass-in-the-azure-ad-portal).
+
+Organisationer kan välja att kräva andra beviljande kontroller förutom för eller i stället för att **kräva Multi-Factor Authentication** i steg 6b. När du markerar flera kontroller måste du välja lämplig alternativ knapp för att kräva att **alla** eller **någon** av de valda kontrollerna ändras när du gör den här ändringen.
+
+### <a name="guest-user-registration"></a>Registrering av gäst användare
+
+För [gäst användare](../external-identities/what-is-b2b.md) som behöver registrera sig för Multi-Factor Authentication i din katalog kan du välja att blockera registrering från utanför [betrodda nätverks platser](concept-conditional-access-conditions.md#locations) med hjälp av följande guide.
 
 1. I **Azure Portal** bläddrar du till **Azure Active Directory**  >  **säkerhet** för  >  **villkorlig åtkomst**.
 1. Välj **ny princip**.
 1. I namn anger du ett namn för den här principen. Till exempel **kombinerad säkerhets informations registrering på betrodda nätverk**.
 1. Under **tilldelningar** väljer du **användare och grupper** och väljer de användare och grupper som du vill att den här principen ska tillämpas på.
-
-   > [!WARNING]
-   > Användare måste aktive ras för den [kombinerade registreringen](../authentication/howto-registration-mfa-sspr-combined.md).
-
-   1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
-   1. Välj **Klar**.
+   1. Under **Inkludera** väljer du **alla gäst-och externa användare**.
 1. Under **molnappar eller åtgärder** väljer du **användar åtgärder**, markera **Registrera säkerhets information**.
 1. Under **villkor**  >  **platser**.
    1. Konfigurera **Ja**.
@@ -43,27 +72,11 @@ Följande princip gäller för alla valda användare, som försöker registrera 
    1. Undanta **alla betrodda platser**.
    1. Välj **gör** på bladet platser.
    1. Välj **färdig** på bladet villkor.
-1. Under **villkor**  >  **klient program (för hands version)** anger du **Konfigurera** till **Ja** och väljer **klart**.
 1. Under **åtkomst kontroller**  >  **beviljar**.
    1. Välj **blockera åtkomst**.
    1. Klicka sedan på **Välj**.
 1. Ange **Aktivera princip** till **På**.
 1. Välj sedan **Spara**.
-
-I steg 6 i den här policyn har organisationer alternativ som de kan göra. Principen ovan kräver registrering från en betrodd nätverks plats. Organisationer kan välja att använda alla tillgängliga villkor i stället för **platser**. Kom ihåg att den här principen är en spärr princip, så att allt som inkluderas blockeras och allt som inte matchar include är tillåtet. 
-
-Vissa kan välja att använda enhets tillstånd i stället för plats i steg 6 ovan:
-
-6. Under **villkor**  >  **enhets tillstånd (för hands version)**.
-   1. Konfigurera **Ja**.
-   1. Ta med **all enhets status**.
-   1. Undanta **enheten hybrid Azure AD** och/eller **enhet markerad som kompatibel**
-   1. Välj **gör** på bladet platser.
-   1. Välj **färdig** på bladet villkor.
-
-> [!WARNING]
-> Om du använder enhets tillstånd som ett villkor i principen kan det påverka gäst användare i katalogen. [Endast rapport läge](concept-conditional-access-report-only.md) kan hjälpa dig att fastställa konsekvenserna av princip beslut.
-> Observera att endast rapport läge är tillämpligt för principer för villkorlig åtkomst med "användar åtgärder"-omfattningen.
 
 ## <a name="next-steps"></a>Nästa steg
 

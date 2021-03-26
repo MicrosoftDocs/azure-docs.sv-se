@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b5115355133bdcf33825a05d4baa16408cb3fccd
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 92324d68eabfb1885a482a7f539140f93be77596
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562451"
+ms.locfileid: "105605203"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK: er och REST API: er
 
-Azure Communication Services-funktionerna organiseras konceptuellt i sex områden. De flesta områden har fullständigt klient bibliotek med öppen källkod som program mera mot publicerade REST-API: er som du kan använda direkt via Internet. Det anropande klient biblioteket använder företagsspecifika nätverks gränssnitt och är för närvarande stängd-källa. Exempel och mer teknisk information om SDK: er publiceras i [Azure Communication Services GitHub-lagrings platsen](https://github.com/Azure/communication).
+Azure Communication Services-funktionerna organiseras konceptuellt i sex områden. De flesta områden har helt program med öppen källkod som är programmerade mot publicerade REST API: er som du kan använda direkt via Internet. Den anropande SDK: n använder företagsspecifika nätverks gränssnitt och är för närvarande stängd-källa. Exempel och mer teknisk information om SDK: er publiceras i [Azure Communication Services GitHub-lagrings platsen](https://github.com/Azure/communication).
 
 ## <a name="rest-apis"></a>REST API:er
 API: er för kommunikations tjänster dokumenteras tillsammans med andra Azure REST-API: er i [docs.Microsoft.com](/rest/api/azure/). I den här dokumentationen får du lära dig hur du strukturerar dina HTTP-meddelanden och ger vägledning om hur du använder Postman. Den här dokumentationen erbjuds också i Swagger-format på [GitHub](https://github.com/Azure/azure-rest-api-specs).
@@ -29,14 +29,14 @@ API: er för kommunikations tjänster dokumenteras tillsammans med andra Azure R
 | Sammansättning | Namnrymder| Protokoll | Funktioner |
 |------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
 | Azure Resource Manager | Azure. ResourceManager.-kommunikation | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Etablera och hantera resurser för kommunikations tjänster|
-| Common | Azure. Communication. common| REST | Tillhandahåller bas typer för andra klient bibliotek |
+| Common | Azure. Communication. common| REST | Tillhandahåller bas typer för andra SDK: er |
 | Identitet | Azure. Communication. identitet| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Hantera användare, åtkomsttoken|
 | Telefonnummer _(beta)_| Azure. Communication. PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| Hämta och hantera telefonnummer |
 | Chatt | Azure. Communication. Chat| [Rest](https://docs.microsoft.com/rest/api/communication/) med tillverkarspecifik signalering | Lägg till text baserad chatt i real tid i dina program |
 | SMS| Azure. Communication. SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| Skicka och ta emot SMS-meddelanden|
 | Sänder| Azure. Communication. Call | Tillverkarspecifik transport | Använd röst, video, skärm delning och andra funktioner för data kommunikation i real tid |
 
-Klient biblioteken Azure Resource Manager, identitet och SMS fokuserar på tjänst integrering och i många fall uppstår säkerhets problem om du integrerar dessa funktioner i slutanvändarens program. Klient biblioteken common och Chat är lämpliga för tjänst-och klient program. Det anropande klient biblioteket är utformat för klient program. Ett klient bibliotek med fokus på tjänst scenarier är under utveckling.
+Azure Resource Manager-, identitet-och SMS-SDK: er fokuserar på service integration och i många fall uppstår säkerhets problem om du integrerar dessa funktioner i slutanvändarens program. Common-och chatt-SDK: erna är lämpliga för tjänst-och klient program. Anrops-SDK: n är utformad för klient program. En SDK fokuserar på tjänst scenarier är under utveckling.
 
 
 ### <a name="languages-and-publishing-locations"></a>Språk och publicerings platser
@@ -61,7 +61,7 @@ Vissa REST API: er och motsvarande SDK-metoder har begränsningar som du bör va
 | API                                                                                                                          | Begränsning            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | [Alla prenumerations-API: er för Sök samtal](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 förfrågningar per dag      |
-| [Köp telefons nummer plan](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 begäran/dag       |
+| [Köp telefons nummer plan](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 Köp en månad  |
 | [Skicka SMS](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 förfrågningar per minut |
 
 

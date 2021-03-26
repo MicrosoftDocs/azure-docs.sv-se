@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d80caf767d923ce2539ca254a8312371155a3104
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553739"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607600"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Felsöka delade avbildnings gallerier i Azure
 
@@ -52,7 +52,7 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: du har försökt att ta bort ett galleri som innehåller minst en befintlig avbildnings definition. Ett galleri måste vara tomt innan det kan tas bort.  
 **Lösning**: ta bort alla bild definitioner i galleriet och fortsätt sedan att ta bort galleriet. Om avbildnings definitionen innehåller bild versioner måste du ta bort avbildnings versionerna innan du tar bort avbildnings definitionerna.
 
-**Meddelande**: *Galleri namnet <galleryName \> är inte unikt i prenumerationen <subscriptionId> . Välj ett annat namn på galleriet.*  
+**Meddelande**: *Galleri namnet <galleryName \> är inte unikt i prenumerationen <subscriptionID> . Välj ett annat namn på galleriet.*  
 **Orsak**: du har ett befintligt galleri med samma namn och har försökt att skapa ett annat galleri med samma namn.  
 **Lösning**: Välj ett annat namn för galleriet.
 
@@ -127,7 +127,7 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: du har försökt att ta bort en avbildnings definition som innehåller bild versioner. En avbildnings definition måste vara tom innan den kan tas bort.  
 **Lösning**: ta bort alla avbildnings versioner inuti avbildnings definitionen och fortsätt sedan att ta bort avbildnings definitionen.
 
-**Meddelande**: *det går inte att binda parameter <egenskap \> . Det går inte att konvertera värdet <värde \> till typen <propertyType \> . Det går inte att matcha ID-namnet <värdet \> till ett giltigt uppräknings namn. Ange ett av följande namn uppräknings namn och försök igen: <choice1 \> <choice2 \> ...*  
+**Meddelande**: *det går inte att binda parameter <egenskap \> . Det går inte att konvertera värdet <värde \> till typen <propertyType \> . Det går inte att matcha ID-namnet <värdet \> till ett giltigt uppräknings namn. Ange ett av följande namn uppräknings namn och försök igen: <alternativ \_ 1 \> , <alternativ \_ 2 \> ,...*  
 **Orsak**: egenskapen innehåller en begränsad lista med möjliga värden och <värdet \> är inte en av dem.  
 **Lösning**: Välj ett av de möjliga <Choice- \> värdena.
 
@@ -185,7 +185,7 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: när du skapar en avbildnings version med hjälp av en lista över diskar och/eller disk ögonblicks bilder, har två eller flera diskar eller disk ögonblicks bilder samma resurs-ID.  
 **Lösning**: ta bort eller ändra dubbletter av disk käll-ID: n.
 
-**Meddelande**: *egenskaps-ID <resourceID \> vid sökväg ' properties. storageProfile. <diskImages \> . Source.ID ' är ogiltigt. Ett fullständigt kvalificerat resurs-ID som börjar med "/subscriptions/{subscriptionId}" eller "/providers/{resourceProviderNamespace}/" förväntas.*  
+**Meddelande**: *egenskaps-ID <resourceID \> vid sökväg ' properties. storageProfile. <diskImages \> . Source.ID ' är ogiltigt. Ett fullständigt kvalificerat resurs-ID som börjar med "/Subscriptions/ <subscriptionID> " eller "/providers/ <resourceProviderNamespace> /" förväntas.*  
 **Orsak**: <resourceID- \> värdet är felaktigt formaterat.  
 **Lösning**: kontrol lera att resurs-ID: t är korrekt.
 
@@ -303,7 +303,7 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: avbildnings definitionen som du använde för att distribuera den virtuella datorn innehåller inte några avbildnings versioner som ingår i senaste.  
 **Lösning**: kontrol lera att det finns minst en avbildnings version som har "exkludera från den senaste" inställt på falskt. 
 
-**Meddelande**: *klienten har behörighet att utföra åtgärden Microsoft. Compute/Galleri/images/versions/read på omfattning <resourceID \> , men den aktuella klient <tenantId1 \> har inte behörighet att komma åt den länkade prenumerationen <subscriptionId2 \> .*  
+**Meddelande**: *klienten har behörighet att utföra åtgärden Microsoft. Compute/Galleri/images/versions/read på scope <resourceID \> , men den aktuella klienten <tenantID \> har inte behörighet att komma åt den länkade prenumerationen <subscriptionID \> .*  
 **Orsak**: den virtuella datorn eller skalnings uppsättningen skapades via en sig-avbildning i en annan klient. Du har försökt göra en ändring i den virtuella datorn eller skalnings uppsättningen, men du har inte åtkomst till den prenumeration som äger avbildningen.  
 **Lösning**: kontakta ägaren till prenumerationen på avbildnings versionen för att ge Läs behörighet till avbildnings versionen.
 
@@ -327,12 +327,17 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: den aktuella käll avbildningen för skalnings uppsättningen är en generaliserad käll avbildning, men den uppdateras med en anpassad källbild. Den aktuella käll avbildningen och den nya käll avbildningen för en skalnings uppsättning måste vara i samma tillstånd.  
 **Lösning**: om du vill uppdatera skalnings uppsättningen använder du en generaliserad avbildnings version.
 
-**Meddelande**: *disk krypterings uppsättning <diskEncryptionSetId \> i det delade avbildnings galleriet <versionId \> tillhör prenumerations <subscriptionId1 \> och kan inte användas med resursen i prenumerationen <subscriptionId2 \>*  
+**Meddelande**: *disk krypterings uppsättningen <diskEncryptionSetID \> i det delade avbildnings galleriet <versionID \> tillhör prenumerationen <subscriptionID \_ 1 \> och kan inte användas med resursen i prenumerationen <subscriptionID \_ 2 \>*  
 **Orsak**: disk krypterings uppsättningen som används för att kryptera avbildnings versionen finns i en annan prenumeration än den prenumeration som är värd för avbildnings versionen.  
 **Lösning**: Använd samma prenumeration för avbildnings versionen och disk krypterings uppsättningen.
 
 **Meddelande**: *skapandet av den virtuella datorns eller virtuella datorns skalnings uppsättning tar lång tid.*  
 **Lösning**: kontrol lera att **OSType** för den avbildnings version som du försöker skapa den virtuella datorn eller den virtuella datorns skalnings uppsättning från har samma **OSType** som den källa som du använde för att skapa avbildnings versionen. 
+
+**Meddelande**: *resursen med ID <vmID \> har en annan plan [{ \" Name \" : \" <name> \" , \" Publisher \" : \" <publisher> \" , \" Product \" : \" <product> \" , \" promotionCode \" : \" <promotionCode> \" }] än det överordnade galleriets avbildnings plan [null].*  
+**Orsak**: den överordnade avbildnings definitionen för den avbildnings version som distribueras har ingen inköps Plans information.  
+**Lösning**: skapa en avbildnings definition med samma inköps Plans information från fel meddelandet och skapa avbildnings versionen i avbildnings definitionen.
+
 
 ## <a name="creating-a-disk-from-an-image-version"></a>Skapa en disk från en avbildnings version ##
 

@@ -1,17 +1,17 @@
 ---
 title: Tillägg – Azure Database for PostgreSQL-enskild server
 description: Lär dig mer om de tillgängliga postgres-tilläggen i Azure Database for PostgreSQL-enskild server
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: de395bed885804445146b01745edf5e93426cb13
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92485468"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606325"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-tillägg i Azure Database for PostgreSQL – enskild server
 PostgreSQL ger möjlighet att utöka funktionerna i databasen med hjälp av tillägg. Tillägg samlar flera SQL-objekt i ett enda paket som kan läsas in eller tas bort från databasen med ett enda kommando. När tilläggen har lästs in i databasen fungerar de som inbyggda funktioner.
@@ -62,7 +62,7 @@ Följande tillägg är tillgängliga i Azure Database for PostgreSQL servrar som
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Spatiala typer och funktioner för PostGIS-topologi|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | sekundär data omslutning för fjärranslutna PostgreSQL-servrar|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | funktioner som ändrar hela tabeller, inklusive kors|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Möjliggör skalbara infogningar och komplexa frågor för Time Series-data|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2, 1.7.4             | Möjliggör skalbara infogningar och komplexa frågor för Time Series-data|
 > |[avaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | texts öknings ord lista som tar bort accenttecken|
 > |[UUID – ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | generera globalt unika identifierare (UUID)|
 
@@ -108,7 +108,7 @@ Följande tillägg är tillgängliga i Azure Database for PostgreSQL servrar som
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | Spatiala typer och funktioner för PostGIS-topologi|
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | sekundär data omslutning för fjärranslutna PostgreSQL-servrar|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | funktioner som ändrar hela tabeller, inklusive kors|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Möjliggör skalbara infogningar och komplexa frågor för Time Series-data|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1, 1.7.4             | Möjliggör skalbara infogningar och komplexa frågor för Time Series-data|
 > |[avaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | texts öknings ord lista som tar bort accenttecken|
 > |[UUID – ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | generera globalt unika identifierare (UUID)|
 
@@ -154,11 +154,14 @@ Följande tillägg är tillgängliga i Azure Database for PostgreSQL servrar som
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | Spatiala typer och funktioner för PostGIS-topologi|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | sekundär data omslutning för fjärranslutna PostgreSQL-servrar|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | funktioner som ändrar hela tabeller, inklusive kors|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Möjliggör skalbara infogningar och komplexa frågor för Time Series-data|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1, 1.7.4             | Möjliggör skalbara infogningar och komplexa frågor för Time Series-data|
 > |[avaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | texts öknings ord lista som tar bort accenttecken|
 > |[UUID – ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | generera globalt unika identifierare (UUID)|
 
-## <a name="postgres-95-extensions"></a>Postgres 9,5-tillägg 
+## <a name="postgres-95-extensions"></a>Postgres 9,5-tillägg
+
+>[!NOTE]
+> PostgreSQL version 9,5 har dragits tillbaka.
 
 Följande tillägg är tillgängliga i Azure Database for PostgreSQL servrar som har postgres version 9,5.
 

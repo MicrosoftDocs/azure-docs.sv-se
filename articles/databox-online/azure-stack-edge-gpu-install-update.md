@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 8bb858bc29ac18d110f2679c3681fd4d27b72baa
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956187"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607789"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Uppdatera Azure Stack Edge Pro GPU 
 
@@ -33,6 +33,7 @@ Proceduren som beskrivs i den här artikeln har utförts med en annan version av
 >    
 >    Information om vad som är nytt i den här uppdateringen finns i [viktig information](azure-stack-edge-gpu-2103-release-notes.md).
 > - Om du vill tillämpa 2103-uppdateringen måste enheten köra 2010. Om du inte kör den lägsta versionen som stöds visas följande fel: det går inte *att installera uppdaterings paketet eftersom dess beroenden inte är uppfyllda*.
+> - Den här uppdateringen kräver att du installerar två uppdateringar i tur och ordning. Först installerar du enhetens program uppdateringar och sedan Kubernetes-uppdateringarna.
 > - Kom ihåg enheten startas om när du installerar en uppdatering eller korrigering. Den här uppdateringen innehåller enhets program uppdateringar och Kubernetes-uppdateringar. Med tanke på att Azure Stack Edge Pro är en enda Node-enhet avbryts alla i/O-åtgärder och enheten upplever en stillestånds tid på upp till 1,5 timmar för uppdateringen.
 
 Om du vill installera uppdateringar på enheten måste du först konfigurera platsen för uppdaterings servern. När uppdaterings servern har kon figurer ATS kan du tillämpa uppdateringarna via Azure Portal gränssnittet eller det lokala webb gränssnittet.
@@ -60,7 +61,7 @@ Vart och ett av dessa steg beskrivs i följande avsnitt.
 Vi rekommenderar att du installerar uppdateringar via Azure Portal. Enheten söker automatiskt efter uppdateringar en gång om dagen. När uppdateringarna är tillgängliga visas ett meddelande i portalen. Du kan då ladda ned och installera uppdateringarna.
 
 > [!NOTE]
-> Kontrol lera att enheten är felfri och att statusen visas som **online** innan du installerar uppdateringarna.
+> Kontrol lera att enheten är felfri och att den fungerar som **den ska när enheten är felfri!** Innan du fortsätter att installera uppdateringarna.
 
 1. När uppdateringarna är tillgängliga för din enhet visas ett meddelande. Välj meddelandet eller från det övre kommando fältet, **Uppdatera enhet**. Detta gör att du kan tillämpa enhets program uppdateringar.
 
@@ -91,17 +92,9 @@ Vi rekommenderar att du installerar uppdateringar via Azure Portal. Enheten sök
 
 4. När hämtningen är klar uppdateras meddelande banderollen för att visa att åtgärden har slutförts. Om du väljer att hämta och installera uppdateringarna startar installationen automatiskt.
 
-    ![Program varu version efter uppdatering 7](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
-
     Om du väljer att bara hämta uppdateringar väljer du meddelandet för att öppna bladet med **enhets uppdateringar** . Välj **installera**.
   
-    ![Program varu version efter uppdatering 8](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
-
-5. Du ser ett meddelande om att installationen pågår.
-
-    ![Program varu version efter uppdatering 9](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
- 
-    Portalen visar också en informations avisering som indikerar att installationen pågår. Enheten är offline och är i underhålls läge.
+5. Du ser ett meddelande om att installationen pågår. Portalen visar också en informations avisering som indikerar att installationen pågår. Enheten är offline och är i underhålls läge.
    
     ![Program varu version efter uppdatering 10](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
@@ -113,15 +106,29 @@ Vi rekommenderar att du installerar uppdateringar via Azure Portal. Enheten sök
     
     ![Program varu version efter uppdatering 12](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-7. Efter omstarten kan du se förloppet för uppdateringarna om du väljer **uppdaterings enheten** i det övre kommando fältet.   
+7. Efter omstarten slutförs uppdateringen av enhetens program vara. När uppdateringen är klar kan du kontrol lera från det lokala webb gränssnittet att enhetens program vara har uppdaterats. Kubernetes program varu version har inte uppdaterats.
 
-8. Enhets statusen uppdateras till **online** efter att uppdateringarna har installerats. 
+    ![Program varu version efter uppdatering 13](./media/azure-stack-edge-gpu-install-update/portal-update-12.png)
 
-    ![Program varu version efter uppdatering 13](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
+8. En aviserings banderoll visas som anger att enhets uppdateringar är tillgängliga. Välj den här banderollen för att starta uppdateringen av Kubernetes-programvaran på enheten. 
 
-    Välj **enhets uppdateringar** från det övre kommando fältet. Kontrol lera att uppdateringen har installerats och att enhetens program varu version återspeglar detta.
+    ![Program varu version efter uppdatering 13](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
 
-    ![Program varu version efter uppdatering 14](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    ![Program varu version efter uppdatering 14](./media/azure-stack-edge-gpu-install-update/portal-update-14-a.png) 
+
+    Om du väljer **Uppdatera enhet** i det övre kommando fältet kan du se förloppet för uppdateringarna.  
+
+    ![Program varu version efter uppdatering 15](./media/azure-stack-edge-gpu-install-update/portal-update-14-b.png) 
+
+
+8. Enhets status uppdateringar till **enheten fungerar bra** när uppdateringarna har installerats. 
+
+    ![Program varu version efter uppdatering 16](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    Gå till det lokala webb gränssnittet och gå sedan till **program uppdaterings** sidan. Kontrol lera att Kubernetes-uppdateringen har installerats och att program versionen återspeglar det.
+
+    ![Program varu version efter uppdatering 17](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 
 När enhetens program vara och Kubernetes-uppdateringar har installerats försvinner informations meddelandet. Enheten har nu den senaste versionen av enhets program och Kubernetes.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097354"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608909"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Interagera med kartan (Android SDK)
 
@@ -24,19 +24,19 @@ Den här artikeln visar hur du använder Maps Events Manager.
 
 Kartan hanterar alla händelser via dess `events` egenskap. I följande tabell visas alla mappnings händelser som stöds.
 
-| Händelse                  | Händelse hanterarens format | Beskrivning |
+| Händelse                  | Händelse hanterarens format | Description |
 |------------------------|----------------------|-------------|
 | `OnCameraIdle`         | `()`                 | <p>Utlöses efter att den sista bild rutan renderades innan kartan övergår i tillståndet "inaktive":<ul><li>Ingen kamera över gång pågår.</li><li>Alla begärda paneler har lästs in.</li><li>Alla animeringar av tona/över gångar har slutförts.</li></ul></p> |
 | `OnCameraMove`         | `()`                 | Utlöses upprepade gånger under en animerad över gång från en vy till en annan, som ett resultat av en användar interaktion eller metoder. |
 | `OnCameraMoveCanceled` | `()`                 | Utlöses när en flyttnings förfrågan till kameran har avbrutits. |
 | `OnCameraMoveStarted`  | `(int reason)`       | Utlöses precis innan kartan påbörjar en över gång från en vy till en annan, som ett resultat av en användar interaktion eller metoder. `reason`Argumentet för händelse lyssnaren returnerar ett heltals värde som innehåller information om hur kamera rörelsen initierades. I följande lista beskrivs möjliga orsaker:<ul><li>1: gest</li><li>2: Developer-animering</li><li>3: API-animering</li></ul>   |
-| `OnClick`              | `(double lat, double lon)` | Utlöses när kartan trycks ned och släpps på samma plats på kartan. |
-| `OnFeatureClick`       | `(List<Feature>)`    | Utlöses när kartan trycks ned och släpps på samma ställe i en funktion.  |
+| `OnClick`              | `(double lat, double lon): boolean` | Utlöses när kartan trycks ned och släpps på samma plats på kartan. Den här händelse hanteraren returnerar ett booleskt värde som anger om händelsen ska förbrukas eller skickas vidare till andra händelse lyssnare. |
+| `OnFeatureClick`       | `(List<Feature>): boolean`    | Utlöses när kartan trycks ned och släpps på samma ställe i en funktion. Den här händelse hanteraren returnerar ett booleskt värde som anger om händelsen ska förbrukas eller skickas vidare till andra händelse lyssnare. |
 | `OnLayerAdded` | `(Layer layer)` | Utlöses när ett lager läggs till i kartan. |
 | `OnLayerRemoved` | `(Layer layer)` | Utlöses när ett lager tas bort från kartan. |
 | `OnLoaded` | `()` | Utlöses omedelbart efter att alla nödvändiga resurser har hämtats och den första visuella åter givningen av kartan har inträffat. |
-| `OnLongClick`          | `(double lat, double lon)` | Utlöses när kartan trycks ned, hålls i ett ögonblick och släpps sedan på samma plats på kartan. |
-| `OnLongFeatureClick `  | `(List<Feature>)`    | Utlöses när kartan trycks ned, hålls i ett ögonblick och släpps sedan på samma ställe i en funktion. |
+| `OnLongClick`          | `(double lat, double lon): boolean` | Utlöses när kartan trycks ned, hålls i ett ögonblick och släpps sedan på samma plats på kartan. Den här händelse hanteraren returnerar ett booleskt värde som anger om händelsen ska förbrukas eller skickas vidare till andra händelse lyssnare. |
+| `OnLongFeatureClick `  | `(List<Feature>): boolean`    | Utlöses när kartan trycks ned, hålls i ett ögonblick och släpps sedan på samma ställe i en funktion. Den här händelse hanteraren returnerar ett booleskt värde som anger om händelsen ska förbrukas eller skickas vidare till andra händelse lyssnare. |
 | `OnReady`              | `(AzureMap map)`     | Utlöses när kartan ursprungligen läses in eller när appens orientering ändras och de lägsta obligatoriska kart resurserna läses in och kartan är klar att program mässigt interagera med. |
 | `OnSourceAdded` | `(Source source)` | Utlöses när en `DataSource` eller `VectorTileSource` läggs till i kartan. |
 | `OnSourceRemoved` | `(Source source)` | Utlöses när en `DataSource` eller tas `VectorTileSource` bort från kartan. |
@@ -49,10 +49,16 @@ Följande kod visar hur du lägger till `OnClick` -, `OnFeatureClick` -och- `OnC
 ```java
 map.events.add((OnClick) (lat, lon) -> {
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnFeatureClick) (features) -> {
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnCameraMove) () -> {
@@ -67,10 +73,16 @@ map.events.add((OnCameraMove) () -> {
 ```kotlin
 map.events.add(OnClick { lat: Double, lon: Double -> 
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnFeatureClick { features: List<Feature?>? -> 
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnCameraMove {
@@ -103,11 +115,17 @@ map.layers.add(layer);
 //Add a feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnFeatureClick) (features) -> {
     //One or more features clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 
 //Add a long feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnLongFeatureClick) (features) -> {
     //One or more features long clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 ```
 
@@ -131,6 +149,9 @@ map.layers.add(layer)
 map.events.add(
     OnFeatureClick { features: List<Feature?>? -> 
         //One or more features clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )
@@ -139,6 +160,9 @@ map.events.add(
 map.events.add(
     OnLongFeatureClick { features: List<Feature?>? -> 
          //One or more features long clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )

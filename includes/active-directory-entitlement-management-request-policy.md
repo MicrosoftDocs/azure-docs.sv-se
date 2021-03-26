@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98697901"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582427"
 ---
 ## <a name="for-users-in-your-directory"></a>För användare i din katalog
 
@@ -27,7 +27,7 @@ Följ dessa steg om du vill tillåta att användare i katalogen kan begära det 
 
 1. Välj något av följande alternativ:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Specifika användare och grupper** | Välj det här alternativet om du vill att endast de användare och grupper i din katalog som du anger ska kunna begära det här åtkomst paketet. |
     | **Alla medlemmar (exklusive gäster)** | Välj det här alternativet om du vill att alla medlems användare i din katalog ska kunna begära det här åtkomst paketet. Det här alternativet omfattar inte gäst användare som du kanske har bjudit in till din katalog. |
@@ -62,7 +62,7 @@ Följ de här stegen om du vill tillåta att användare som inte tillhör din ka
 
 1. Välj något av följande alternativ:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Vissa anslutna organisationer** | Välj det här alternativet om du vill välja från en lista över organisationer som administratören har lagt till tidigare. Alla användare från de valda organisationerna kan begära det här åtkomst paketet. |
     | **Alla anslutna organisationer** | Välj det här alternativet om alla användare från alla anslutna organisationer kan begära det här åtkomst paketet. |

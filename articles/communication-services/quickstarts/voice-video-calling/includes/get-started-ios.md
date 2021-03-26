@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 536b9a9a0d1a7b48841938eef44d181d22b87bf4
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108322"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609462"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för iOS.
 
@@ -38,7 +38,7 @@ I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy*
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installera paketet och beroenden med CocoaPods
 
 1. För att skapa en Podfile för programmet öppnar du terminalen och navigerar till projektmappen och kör ```pod init```
-3. Lägg till följande kod i Podfile och spara:
+3. Lägg till följande kod i Podfile och spara (kontrol lera att "mål" matchar namnet på projektet):
 
    ```
    platform :ios, '13.0'

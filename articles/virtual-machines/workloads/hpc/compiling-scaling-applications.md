@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721290"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606784"
 ---
 # <a name="scaling-hpc-applications"></a>Skala HPC-program
 
@@ -43,6 +43,9 @@ Följande rekommendationer gäller för optimal effektivitet, prestanda och kons
    ```bash
    Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
    ```
+
+## <a name="adaptive-routing"></a>Anpassningsbar routning
+Med anpassningsbar routning (AR) kan Azure Virtual Machines (virtuella datorer) som kör EDR och HDR InfiniBand automatiskt identifiera och undvika nätverks belastning genom att dynamiskt välja fler optimala nätverks Sök vägar. Som ett resultat erbjuder AR bättre svars tid och bandbredd i InfiniBand-nätverket, vilket i sin tur ger bättre prestanda och skalnings effektivitet. Mer information finns i [artikeln om TechCommunity](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217).
 
 ## <a name="process-pinning"></a>Process fäste
 

@@ -3,12 +3,12 @@ title: 'Snabb start: QnA Maker klient bibliotek för .NET'
 description: Den här snabb starten visar hur du kommer igång med QnA Maker-klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter.  Med QnA Maker kan du driva en tjänst för frågor och svar från halvstrukturerat innehåll som Vanliga frågor och svar-dokument, URL:er och produkthandböcker.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 292d0ee4f7462f9c49a08e35bb44822b7a317cfa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: aac57f4ca173a7ac94c64884fa1d2db4a478c3f3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582438"
+ms.locfileid: "105609500"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
@@ -138,13 +138,13 @@ I program `Main` metoden lägger du till variabler och kod, som visas i följand
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
-Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
+- Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
-- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till Azure Portal och hitta nyckeln och slut punkten för den QnA Maker resurs som du skapade i kraven. Klicka på sidan **nycklar och slut punkt** , under **resurs hantering** för att hitta redigerings nyckeln (prenumeration) och QNA Maker slut punkten.
+- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till Azure Portal och hitta den QnA Maker resurs som du skapade i kraven. Klicka på sidan **nycklar och slut punkt** , under **resurs hantering** för att hitta redigerings nyckeln (prenumeration) och QNA Maker slut punkten.
 
  ![QnA Maker redigerings slut punkt](../media/keys-endpoint.png)
 
-- Värdet för QNA_MAKER_RUNTIME_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Gå till Azure Portal och hitta den QnA Maker resurs som du skapade i kraven. Klicka på **Exportera mall** under **Automation** för att hitta körnings nyckeln.
+- Värdet för QNA_MAKER_RUNTIME_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Gå till Azure Portal och hitta den QnA Maker resurs som du skapade i kraven. Klicka på sidan **Exportera mall** under **Automation** för att hitta runtime-slutpunkten.
 
  ![QnA Maker runtime-slutpunkt](../media/runtime-endpoint.png)
       
@@ -154,12 +154,9 @@ Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om d
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/version-2)
 
-> [!IMPORTANT]
-> Gå till Azure Portal och hitta nyckeln och slut punkten för den QnA Maker resurs som du skapade i kraven. De kommer att finnas på resursens **nyckel-och slut punkts** sida under **resurs hantering**. 
+- Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
-Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
-
-- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till QnA Maker resursen i Azure Portal och klicka på **nycklar och slut punkt** för att hitta redigerings nyckeln och QNA Maker slut punkten.
+- Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Gå till Azure Portal och hitta den QnA Maker resurs som du skapade i kraven. Klicka på sidan **nycklar och slut punkt** , under **resurs hantering** för att hitta redigerings nyckeln (prenumeration) och QNA Maker slut punkten.
 
  ![QnA Maker redigerings slut punkt](../media/keys-endpoint.png)
 

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881027"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606971"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Fysisk säkerhet för Azure Dedicated HSM
 
@@ -25,7 +25,7 @@ Azure Dedicated HSM hjälper dig att uppfylla avancerade säkerhets krav för ny
 
 ## <a name="security-through-procurement"></a>Säkerhet genom inköp
 
-Microsoft följer en säker upphandlings process. Vi hanterar en kedja av vårdnaden och ser till att den enhet som beställs och levereras är enheten som kommer till våra data Center. Enheterna är i skydd mot manipulering av händelser. De lagras i ett säkert lagrings utrymme tills de har beställts i data galleriet i data centret.  Racken som innehåller HSM-enheterna betraktas som hög inverkan på företaget (HBI). Enheterna är låsta och under video övervakningen alltid fram och tillbaka.
+Microsoft följer en säker upphandlings process. Vi hanterar en kedja av vårdnaden och ser till att den enhet som beställs och levereras är enheten som kommer till våra data Center. Enheterna är i serialiserade plast säckar och behållare för manipulering av manipulering. De lagras i ett säkert lagrings utrymme tills de har beställts i data galleriet i data centret.  Racken som innehåller HSM-enheterna betraktas som hög inverkan på företaget (HBI). Enheterna är låsta och under video övervakningen alltid fram och tillbaka.
 
 ## <a name="security-through-deployment"></a>Säkerhet via distribution
 
@@ -49,7 +49,7 @@ Om en Microsoft-tekniker måste komma åt racket som används av HSM-enheter (t.
 
 ## <a name="logical-level-security-considerations"></a>Säkerhets överväganden för logiska nivåer
 
-HSM: er är etablerade i ett virtuellt nätverk som har skapats av kunden. Det här är kundens privata IUP-adressutrymme.  Den här konfigurationen ger en värdefull isolering på logiskt nätverk och garanterar endast åtkomst av kunden. Det innebär att alla säkerhets kontroller på logisk nivå är kundens ansvar.
+HSM: er är etablerade i ett virtuellt nätverk som har skapats av kunden inom kundens privata IP-adressutrymme.  Den här konfigurationen ger en värdefull isolering på logiskt nätverk och garanterar endast åtkomst av kunden. Det innebär att alla säkerhets kontroller på logisk nivå är kundens ansvar.
 
 ## <a name="next-steps"></a>Nästa steg
 

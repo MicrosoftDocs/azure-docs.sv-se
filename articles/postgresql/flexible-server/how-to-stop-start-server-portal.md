@@ -1,17 +1,17 @@
 ---
 title: Stoppa/starta – Azure Portal-Azure Database for PostgreSQL flexibel Server
 description: I den här artikeln beskrivs hur du stoppar/startar åtgärder i Azure Database for PostgreSQL via Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4c393e0048a0058ebe0fbf2b0ee65f6ae2e184c5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e28243f5919c355e6ad0d4998ff8388a56e3d0ca
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90941456"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607376"
 ---
 # <a name="stopstart-an-azure-database-for-postgresql---flexible-server-preview"></a>Stoppa/starta en Azure Database for PostgreSQL – flexibel Server (för hands version)
 

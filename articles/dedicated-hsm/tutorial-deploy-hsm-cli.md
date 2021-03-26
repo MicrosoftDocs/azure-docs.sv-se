@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200537"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606835"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Självstudie: Distribuera HSM: er till ett befintligt virtuellt nätverk med hjälp av Azure CLI
 
@@ -233,14 +233,14 @@ Utdata bör se ut som på bilden nedan:
 
 ![Skärm bilden visar utdata i PowerShell-fönstret.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-I det här skedet har du allokerat alla resurser för en distribution med hög tillgänglighet och två HSM:er samt verifierat åtkomst och driftstatus. Ytterligare konfiguration eller testning medför mer arbete med själva HSM-enheten. För detta bör du följa anvisningarna i administrations hand boken för Thales Luna Network HSM 7 kapitel 7 för att initiera HSM och skapa partitioner. All dokumentation och program vara är tillgängliga direkt från Thales för hämtning när du har registrerat dig på Thales kund support Portal och har ett kund-ID. Ladda ned klientprogramvara version 7.2 för att få alla nödvändiga komponenter.
+I det här skedet har du allokerat alla resurser för en distribution med hög tillgänglighet och två HSM:er samt verifierat åtkomst och driftstatus. Ytterligare konfiguration eller testning medför mer arbete med själva HSM-enheten. För detta bör du följa anvisningarna i Thales Luna 7 HSM Administration Guide kapitel 7 för att initiera HSM och skapa partitioner. All dokumentation och program vara är tillgängliga direkt från Thales för hämtning när du har registrerat dig på [Thales kund support Portal](https://supportportal.thalesgroup.com/csm) och har ett kund-ID. Ladda ned klientprogramvara version 7.2 för att få alla nödvändiga komponenter.
 
 ## <a name="delete-or-clean-up-resources"></a>Ta bort eller rensa resurser
 
 Om du är klar med bara HSM-enheten kan den tas bort som resurs och returneras till poolen. Det uppenbara problemet när du gör detta är eventuella känsliga kunddata som finns på enheten. Det bästa sättet att "zeroize" en enhet är att få lösen ordet för HSM-administratören fel tre gånger (Obs! det här är inte enhets administratören, det är den faktiska HSM-administratören). Som säkerhets åtgärd för att skydda nyckel material kan enheten inte tas bort som en Azure-resurs förrän den är i ett nollställt tillstånd.
 
 > [!NOTE]
-> Om du har problem med en Thales enhets konfiguration bör du kontakta [Thales kund support](https://safenet.gemalto.com/technical-support/).
+> Om du har problem med en Thales enhets konfiguration bör du kontakta [Thales kund support](https://supportportal.thalesgroup.com/csm).
 
 Om du är färdig med alla resurser i den här resurs gruppen kan du ta bort dem med följande kommando:
 

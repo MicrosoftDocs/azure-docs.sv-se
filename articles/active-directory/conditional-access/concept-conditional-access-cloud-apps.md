@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8c8024a2083d09fcbd53a37f0d391c4589748eea
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579152"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605084"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Villkorlig åtkomst: molnappar eller åtgärder
 
@@ -31,7 +31,7 @@ Molnappar eller åtgärder är en nyckel signal i en princip för villkorlig åt
 
 Många av de befintliga Microsoft Cloud-programmen ingår i listan över program som du kan välja bland. 
 
-Administratörer kan tilldela en princip för villkorlig åtkomst till följande molnappar från Microsoft. Vissa appar som Office 365 och Microsoft Azure hantering inkluderar flera relaterade underordnade appar eller tjänster. Följande lista är inte fullständig och kan komma att ändras.
+Administratörer kan tilldela en princip för villkorlig åtkomst till följande molnappar från Microsoft. Vissa appar som Office 365 och Microsoft Azure hantering inkluderar flera relaterade underordnade appar eller tjänster. Vi lägger kontinuerligt till fler appar, så följande lista är inte fullständig och kan komma att ändras.
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -61,11 +61,13 @@ Administratörer kan tilldela en princip för villkorlig åtkomst till följande
 - Office Delve
 - Office-Sway
 - Outlook Groups
-- Power BI-tjänsten
+- Power BI-tjänst
 - Project Online
 - Skype för företag – Online
 - Virtuellt privat nätverk (VPN)
 - Windows Defender ATP
+
+Program som är tillgängliga för villkorlig åtkomst har genomgått en onboarding-och validerings process. Detta omfattar inte alla Microsoft-appar, så många är Server dels tjänster och är inte avsedda att tillämpas direkt på dem. Om du letar efter ett program som saknas kan du kontakta det specifika program teamet eller göra en begäran på [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259).
 
 ### <a name="office-365"></a>Office 365
 

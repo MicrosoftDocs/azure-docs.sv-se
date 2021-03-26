@@ -2,21 +2,22 @@
 title: Kör uppgifter under användar konton
 description: Lär dig olika typer av användar konton och hur du konfigurerar dem.
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606614"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Kör uppgifter under användar konton i batch
 
 > [!NOTE]
 > Användar kontona som beskrivs i den här artikeln skiljer sig från användar konton som används för Remote Desktop Protocol (RDP) eller Secure Shell (SSH) av säkerhets skäl.
 >
-> Om du vill ansluta till en nod som kör konfigurationen för virtuella Linux-datorer via SSH, se [Använd fjärr skrivbord till en virtuell Linux-dator i Azure](../virtual-machines/linux/use-remote-desktop.md). Information om hur du ansluter till noder som kör Windows via RDP finns i [ansluta till en virtuell Windows Server-dator](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Om du vill ansluta till en nod som kör konfigurationen för virtuella Linux-datorer via SSH, se [Installera och konfigurera xrdp för att använda fjärr skrivbord med Ubuntu](../virtual-machines/linux/use-remote-desktop.md). Information om hur du ansluter till noder som kör Windows via RDP finns i [så här ansluter du och loggar in på en virtuell Azure-dator som kör Windows](../virtual-machines/windows/connect-logon.md).
+>
 > Om du vill ansluta till en nod som kör moln tjänst konfigurationen via RDP, se [aktivera anslutning till fjärrskrivbord för en roll i Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 En aktivitet i Azure Batch körs alltid under ett användar konto. Som standard körs aktiviteter under standard användar konton utan administratörs behörighet. I vissa fall kanske du vill konfigurera det användar konto som du vill att en aktivitet ska köras under. I den här artikeln beskrivs olika typer av användar konton och hur du konfigurerar dem för ditt scenario.
@@ -30,7 +31,7 @@ Azure Batch tillhandahåller två typer av användar konton för att köra aktiv
 - **Ett namngivet användar konto.** Du kan ange ett eller flera namngivna användar konton för en pool när du skapar poolen. Varje användar konto skapas på varje nod i poolen. Förutom konto namnet anger du användar kontots lösen ord, höjnings nivå och, för Linux-pooler, den privata SSH-nyckeln. När du lägger till en aktivitet kan du ange det namngivna användar konto som aktiviteten ska köras under.
 
 > [!IMPORTANT]
-> Batch service-versionen 2017 01-01.4.0 innehåller en avbrytande ändring som kräver att du uppdaterar koden för att anropa den versionen. Om du migrerar kod från en äldre version av batch, Observera att egenskapen **runElevated** inte längre stöds i REST API-eller batch-klientens bibliotek. Använd den nya **userIdentity** -egenskapen för en uppgift för att ange höjnings nivå. Mer information om hur du uppdaterar din batch-kod finns i [Uppdatera din kod till det senaste batch-klientcertifikatet](#update-your-code-to-the-latest-batch-client-library) om du använder ett av klient biblioteken.
+> Batch-tjänstens version 2017 01-01.4.0 introducerade en brytande ändring som kräver att du uppdaterar koden för att anropa den versionen eller senare. Se [Uppdatera din kod till det senaste batch-klientprogrammet](#update-your-code-to-the-latest-batch-client-library) för snabb rikt linjer för att uppdatera din batch-kod från en äldre version.
 
 ## <a name="user-account-access-to-files-and-directories"></a>Användar konto åtkomst till filer och kataloger
 
@@ -77,6 +78,7 @@ Följande kodfragment visar hur du konfigurerar den automatiska användar specif
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>Batch Java
 
 ```java
@@ -278,7 +280,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>Uppdatera koden till det senaste batch-klientprogrammet
 
-Batch-tjänstens version 2017 01-01.4.0 inför en brytande ändring, och ersätter **runElevated** -egenskapen som är tillgänglig i tidigare versioner med **userIdentity** -egenskapen. Följande tabeller innehåller en enkel mappning som du kan använda för att uppdatera din kod från tidigare versioner av klient biblioteken.
+Batch-tjänstens version 2017 01-01.4.0 introducerade en brytande ändring och ersätter **runElevated** -egenskapen som är tillgänglig i tidigare versioner med **userIdentity** -egenskapen. Följande tabeller innehåller en enkel mappning som du kan använda för att uppdatera din kod från tidigare versioner av klient biblioteken.
 
 ### <a name="batch-net"></a>.NET för Batch
 

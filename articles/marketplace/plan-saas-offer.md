@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2f12f33bf6108784b2eec252fb12d03eebd2a45c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046512"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604947"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planera ett SaaS-erbjudande för den kommersiella marknaden
 
@@ -37,9 +37,9 @@ I följande tabell visas de olika List alternativen för SaaS-erbjudanden i den 
 
 Mer information om dessa List alternativ finns i [Transact-funktioner för kommersiella Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-När ditt erbjudande har publicerats visas det List alternativ som du har valt för ditt erbjudande som en knapp i det övre vänstra hörnet av ditt erbjudandes List sida. Följande skärm bild visar till exempel sidan erbjudande på Azure Marketplace med knapparna **Hämta nu** och **testa enhet** .
+När ditt erbjudande har publicerats visas det List alternativ som du har valt för ditt erbjudande som en knapp i det övre vänstra hörnet av ditt erbjudandes List sida. Följande skärm bild visar till exempel sidan erbjudande på Azure Marketplace med knappen **Hämta nu** .
 
-![Visar en lista med erbjudanden i onlinebutiken.](./media/listing-options.png)
+![Visar en lista med erbjudanden i onlinebutiken.](./media/saas/listing-options-saas-full.png)
 
 ## <a name="technical-requirements"></a>Tekniska krav
 
@@ -138,7 +138,7 @@ Om du väljer att använda standard kontraktet har du möjlighet att lägga till
 
 När du [skapar ett nytt SaaS-erbjudande](create-new-saas-offer.md) i Partner Center kan du ange text, bilder, valfria videor och annan information på sidan med **erbjudande listan** . Detta är den information som kunderna ser när de identifierar din erbjudande lista på den kommersiella marknaden, som du ser i följande exempel.
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="Visar hur det här erbjudandet visas i Microsoft AppSource.":::
+:::image type="content" source="./media/saas/example-saas-1.png" alt-text="Visar hur det här erbjudandet visas i Microsoft AppSource.":::
 
 **Beskrivningar av anrop**
 
@@ -150,7 +150,7 @@ När du [skapar ett nytt SaaS-erbjudande](create-new-saas-offer.md) i Partner Ce
 6. Sekretesspolicy
 7. Erbjudandets namn
 8. Sammanfattning
-9. Beskrivning
+9. Description
 10. Skärm bilder/videor
 11. Dokument
 

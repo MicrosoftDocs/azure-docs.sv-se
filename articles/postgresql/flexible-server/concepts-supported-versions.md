@@ -1,17 +1,17 @@
 ---
 title: Versioner som stöds – Azure Database for PostgreSQL-flexibel Server
 description: Beskriver de PostgreSQL huvud-och del versioner som stöds i Azure Database for PostgreSQL-flexibel Server.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 474545b7c5eca64b558e5fe26e23e6800b0cab96
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5fda7ebb5a72dd9bbfab0ba72511540cf141563f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037174"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608858"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL huvud versioner som stöds i Azure Database for PostgreSQL-flexibel Server
 

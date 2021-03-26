@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600810"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609283"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
 
@@ -77,7 +77,7 @@ Om du förväntar dig kraftig användning av booleska operatorer, vilket är mer
 
 ## <a name="autocomplete-and-suggested-queries"></a>Autoavsluta och föreslagna frågor
 
-[Autoavsluta eller föreslagna resultat](search-autocomplete-tutorial.md) är alternativ för **`search`** att söka efter en lyckad fråga som baseras på partiella sträng inmatningar (efter varje tecken) i en sökning efter typ. Du kan använda **`autocomplete`** och **`suggestions`** parameter tillsammans eller separat, enligt beskrivningen i [den här självstudien](tutorial-csharp-type-ahead-and-suggestions.md), men du kan inte använda dem med **`search`** . Både slutförda villkor och föreslagna frågor härleds från index innehåll. Motorn returnerar aldrig en sträng eller ett förslag som inte finns i indexet. Mer information finns i [Autoavsluta (REST API)](/rest/api/searchservice/autocomplete) och [förslag (REST API)](/rest/api/searchservice/suggestions).
+[Autoavsluta eller föreslagna resultat](search-add-autocomplete-suggestions.md) är alternativ för **`search`** att söka efter en lyckad fråga som baseras på partiella sträng inmatningar (efter varje tecken) i en sökning efter typ. Du kan använda **`autocomplete`** och **`suggestions`** parameter tillsammans eller separat, enligt beskrivningen i [den här självstudien](tutorial-csharp-type-ahead-and-suggestions.md), men du kan inte använda dem med **`search`** . Både slutförda villkor och föreslagna frågor härleds från index innehåll. Motorn returnerar aldrig en sträng eller ett förslag som inte finns i indexet. Mer information finns i [Autoavsluta (REST API)](/rest/api/searchservice/autocomplete) och [förslag (REST API)](/rest/api/searchservice/suggestions).
 
 ## <a name="filter-search"></a>Filtrera sökning
 

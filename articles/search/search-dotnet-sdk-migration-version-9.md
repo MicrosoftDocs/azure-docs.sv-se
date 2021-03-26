@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76cb2f94c949217c36fdccb8c64a53555bab227c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89002716"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606342"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Uppgradera till Azure Search .NET SDK version 9
 
@@ -40,7 +40,7 @@ Version 9 av Azure Search .NET SDK riktar sig till 2019-05-06-versionen av Azure
 
 * [AI-anrikning](cognitive-search-concept-intro.md) är möjligheten att extrahera text från bilder, blobbar och andra ostrukturerade data källor – innehåll som gör det mer sökbart i ett Azure Search index.
 * Med stöd för [komplexa typer](search-howto-complex-data-types.md) kan du modellera nästan vilken KAPSLAd JSON-struktur som helst i ett Azure Search index.
-* [Funktionen Komplettera automatiskt](search-autocomplete-tutorial.md) innehåller ett alternativ till **föreslå** API för att implementera sökning efter typ av funktion. Autoavsluta "avslutar" ordet eller frasen som en användare skriver för närvarande.
+* [Funktionen Komplettera automatiskt](search-add-autocomplete-suggestions.md) innehåller ett alternativ till **föreslå** API för att implementera sökning efter typ av funktion. Autoavsluta "avslutar" ordet eller frasen som en användare skriver för närvarande.
 * [JsonLines tolknings läge](search-howto-index-json-blobs.md), en del av Azure Blob-indexering, skapar ett Sök dokument per JSON-entitet som skiljs åt av en ny rad.
 
 ### <a name="new-preview-features-in-version-80-preview"></a>Nya för hands versions funktioner i version 8,0 – för hands version
