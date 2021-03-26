@@ -4,16 +4,16 @@ description: Lär dig hur du aktiverar mjuk borttagning på Azure-filresurser f�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 13e6668337b82ea4be86eadcbc6f7797a72771c6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218561"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023491"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivera mjuk borttagning på Azure-filresurser
 
@@ -26,16 +26,16 @@ I följande avsnitt visas hur du aktiverar och använder mjuk borttagning för A
 ## <a name="getting-started"></a>Komma igång
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-1. Navigera till ditt lagrings konto och välj **mjuk borttagning** under **fil tjänst**.
-1. Välj **aktive rad** för **fil resurs mjuk borttagning**.
+1. Navigera till ditt lagrings konto och välj **fil resurser** under **fil tjänst**.
+1. Välj **aktive rad** för **mjuk borttagning för alla fil resurser**.
 1. Välj **fil resursens kvarhållningsperiod i dagar** och ange ett antal som du väljer.
 1. Välj **Spara** för att bekräfta dina inställningar för datakvarhållning.
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Skärm bild av fönstret inställningar för mjuk borttagning av lagrings konto. Markera avsnittet fil resurser, aktivera växling, ange en kvarhållningsperiod och spara. Detta aktiverar mjuk borttagning för alla fil resurser i ditt lagrings konto.":::
+:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Skärm bild av fönstret inställningar för mjuk borttagning av lagrings konto. Markera avsnittet fil resurser mjuk borttagning, aktivera växling, ange en kvarhållningsperiod och spara. Detta aktiverar mjuk borttagning för alla fil resurser i ditt lagrings konto.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Cmdlets för mjuk borttagning är tillgängliga i version 2.1.3 och senare av [Azure CLI-modulen](/cli/azure/install-azure-cli).
+Cmdlets för mjuk borttagning är tillgängliga i version 2.1.3 och senare av [Azure CLI-modulen](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="getting-started-with-cli"></a>Komma igång med CLI
 
@@ -125,12 +125,12 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 ## <a name="disable-soft-delete"></a>Inaktivera mjuk borttagning
 
-Om du vill sluta använda mjuk borttagning eller ta bort en fil resurs permanent, följer du dessa anvisningar:
+Följ dessa instruktioner om du vill sluta använda mjuk borttagning. Om du vill ta bort en fil resurs som har varit mjuk borttagning permanent måste du ta bort den, inaktivera mjuk borttagning och sedan ta bort den igen. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Navigera till ditt lagrings konto och välj **mjuk borttagning** under **Inställningar**.
-1. Under **fil resurser** väljer du **inaktive rad** för **mjuk borttagning av fil resurser**.
+1. Navigera till ditt lagrings konto och välj **fil resurser** under **fil tjänst**.
+1. Välj **inaktive rad** för **mjuk borttagning för alla fil resurser**.
 1. Välj **Spara** för att bekräfta dina inställningar för datakvarhållning.
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Om du inaktiverar mjuk borttagning kan du omedelbart och permanent ta bort alla fil resurser i ditt lagrings konto.":::

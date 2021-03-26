@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d23b376384262c208fed70306e62634592d0b46b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6073000f2f14f835e2bfbd91b41619101c36b10f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946765"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866853"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Fråga Apache Hive via JDBC-drivrutinen i HDInsight
 
@@ -38,7 +38,7 @@ Ersätt `CLUSTERNAME` med namnet på HDInsight-klustret.
 
 Du kan också få anslutningen via **AMBARI UI > Hive > config > Avancerat**.
 
-![Hämta JDBC-anslutningssträng via Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png" alt-text="Hämta JDBC-anslutningssträng via Ambari" border="true":::
 
 ### <a name="host-name-in-connection-string"></a>Värd namnet i anslutnings strängen
 
@@ -74,11 +74,11 @@ SQuirreL SQL är en JDBC-klient som kan användas för att fjärrköra Hive-frå
 
 3. Starta SQuirreL SQL-programmet. Välj **driv rutiner** från vänster i fönstret.
 
-    ![Fliken driv rutiner till vänster i fönstret](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png" alt-text="Fliken driv rutiner till vänster i fönstret" border="true":::
 
 4. Från ikonerna överst i dialog rutan **driv rutiner** väljer du **+** ikonen för att skapa en driv rutin.
 
-    ![Ikonen SQuirreL för SQL-programdriv rutiner](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png" alt-text="Ikonen SQuirreL för SQL-programdriv rutiner" border="true":::
 
 5. I dialog rutan Lägg till driv rutin lägger du till följande information:
 
@@ -89,13 +89,13 @@ SQuirreL SQL är en JDBC-klient som kan användas för att fjärrköra Hive-frå
     |Extra klass Sök väg|Använd knappen **Lägg** till för att lägga till alla jar-filer som hämtats tidigare.|
     |Klassnamn|org. apache. Hive. JDBC. HiveDriver|
 
-   ![dialog rutan Lägg till driv rutin med parametrar](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png" alt-text="dialog rutan Lägg till driv rutin med parametrar" border="true":::
 
    Välj **OK** för att spara inställningarna.
 
 6. Till vänster om SQL-fönstret SQuirreL väljer du **alias**. Välj sedan **+** ikonen för att skapa ett alias för anslutning.
 
-    ![SQuirreL SQL Lägg till nytt alias dialog ruta](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png" alt-text="SQuirreL SQL Lägg till nytt alias dialog ruta" border="true":::
 
 7. Använd följande värden för dialog rutan **Lägg till alias** :
 
@@ -107,7 +107,7 @@ SQuirreL SQL är en JDBC-klient som kan användas för att fjärrköra Hive-frå
     |Användarnamn|Kluster inloggnings konto namnet för ditt HDInsight-kluster. Standardvärdet är **admin**.|
     |Lösenord|Lösen ordet för klustrets inloggnings konto.|
 
-    ![dialog rutan Lägg till alias med parametrar](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png" alt-text="dialog rutan Lägg till alias med parametrar" border="true":::
 
     > [!IMPORTANT]
     > Använd **test** knappen för att kontrol lera att anslutningen fungerar. När dialog rutan **Anslut till: Hive i HDInsight** visas väljer du **Anslut** för att utföra testet. Om testet lyckas visas en dialog ruta med en **anslutning** . Om ett fel inträffar, se [fel sökning](#troubleshooting).
@@ -116,7 +116,7 @@ SQuirreL SQL är en JDBC-klient som kan användas för att fjärrköra Hive-frå
 
 8. I list rutan **Anslut till** överst i SQuirreL SQL väljer du **Hive i HDInsight**. När du uppmanas väljer du **Anslut**.
 
-    ![dialog rutan anslutning med parametrar](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png" alt-text="dialog rutan anslutning med parametrar" border="true":::
 
 9. När du är ansluten, ange följande fråga i dialog rutan SQL-fråga och välj sedan ikonen **Kör** (en person som körs). Resultat ytan bör visa resultatet av frågan.
 
@@ -124,7 +124,7 @@ SQuirreL SQL är en JDBC-klient som kan användas för att fjärrköra Hive-frå
     select * from hivesampletable limit 10;
     ```
 
-    ![dialog rutan SQL-fråga, inklusive resultat](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png" alt-text="dialog rutan SQL-fråga, inklusive resultat" border="true":::
 
 ## <a name="connect-from-an-example-java-application"></a>Ansluta från ett Java-exempel till ett Java-program
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ramamill
-ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 96c3dce17ab78e08b28bb41c0100e51a72a666e7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87416238"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110261"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Köra en återställning efter fel för virtuella Hyper-V-datorer
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver hur du återställer virtuella Azure-datorer som har
 ## <a name="before-you-start"></a>Innan du börjar
 
 1. [Granska typerna av återställning efter fel](failover-failback-overview.md#hyper-v-reprotectionfailback) du kan använda – ursprunglig plats återställning och alternativ plats återställning.
-2. Se till att de virtuella Azure-datorerna använder ett lagrings konto och inte hanterade diskar. Återställning efter fel för virtuella Hyper-V-datorer som replikeras med hanterade diskar stöds inte.
+2. Se till att de virtuella Azure-datorerna använder ett lagrings konto och inte hanterade diskar. Det finns inte stöd för återställning efter fel för virtuella Hyper-V-datorer som har redundansväxlats till Azure-datorer med hanterade diskar.
 3. Kontrol lera att den lokala Hyper-V-värden (eller System Center VMM-servern om du använder med Site Recovery) körs och är ansluten till Azure. 
 4. Se till att redundans och genomförande är slutförda för de virtuella datorerna. Du behöver inte konfigurera några enskilda Site Recoverys komponenter för återställning efter fel för virtuella Hyper-V-datorer från Azure.
 5. Tiden som krävs för att slutföra datasynkroniseringen och starta den lokala virtuella datorn beror på ett antal faktorer. För att påskynda hämtningen av data kan du konfigurera Microsoft Recovery Services-agenten att använda fler trådar för att parallellisera nedladdningen. [Läs mer](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).

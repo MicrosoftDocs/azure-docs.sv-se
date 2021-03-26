@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9575c0aec4a1b45f9099bff1dc4209c63529ddf6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616697"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025551"
 ---
 # <a name="azure-percept-security-overview"></a>Översikt över Azure percept-säkerhet
 
@@ -25,7 +25,7 @@ Azure percept DK-enheter är utformade med en maskin varu rot med förtroende: y
 
 ### <a name="azure-percept-dk"></a>Azure percept DK
 
-Azure percept DK innehåller en Trusted Platform Module (TPM) version 2,0 som kan användas för att ansluta enheten till Azure Device Provisioning-tjänster med ytterligare säkerhet. TPM är en ISO-standard som är bransch standard från Trusted Computing Group och du kan läsa mer om TPM i den [fullständiga tpm 2,0-specifikationen](https://trustedcomputinggroup.org/resource/tpm-library-specification/) eller ISO/IEC 11889-specifikationen. Mer information om hur DPS kan etablera enheter på ett säkert sätt finns i [Azure-IoT Hub Device Provisioning service – TPM-attestering](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
+Azure percept DK innehåller en Trusted Platform Module (TPM) version 2,0 som kan användas för att ansluta enheten till Azure Device Provisioning-tjänster med ytterligare säkerhet. TPM är en ISO-standard som är bransch standard från Trusted Computing Group och du kan läsa mer om TPM i den [fullständiga tpm 2,0-specifikationen](https://trustedcomputinggroup.org/resource/tpm-library-specification/) eller ISO/IEC 11889-specifikationen. Mer information om hur DPS kan etablera enheter på ett säkert sätt finns i [Azure-IoT Hub Device Provisioning service – TPM-attestering](../iot-dps/concepts-tpm-attestation.md).
 
 ### <a name="azure-percept-system-on-module-som"></a>Azure percept-system för modul (som)
 
@@ -37,7 +37,7 @@ Azure percept-enheter använder maskin varu rot förtroende för att skydda inby
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure percept DK ansluter till Azure percept Studio med ytterligare säkerhet och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager).
+Azure percept DK ansluter till Azure percept Studio med ytterligare säkerhet och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 ### <a name="device-update-for-iot-hub"></a>Enhets uppdatering för IoT Hub
 
@@ -57,7 +57,7 @@ Den här check listan är en start punkt för brand Väggs regler:
 |*. auth.azureperceptdk.azure.net|   443|    Azure DK som autentisering och auktorisering|
 |*. auth.projectsantacruz.azure.net| 443|    Azure DK som autentisering och auktorisering|
 
-Granska dessutom listan över anslutningar som [används av Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices).
+Granska dessutom listan över anslutningar som [används av Azure IoT Edge](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices).
 
 <!---
 ## Additional Recommendations for Deployment to Production

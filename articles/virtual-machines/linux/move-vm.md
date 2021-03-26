@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87291109"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889305"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Flytta en virtuell dator till en annan prenumeration eller resurs grupp
 Den här artikeln vägleder dig genom hur du flyttar en virtuell dator (VM) mellan resurs grupper eller prenumerationer. Det kan vara praktiskt att flytta en virtuell dator mellan prenumerationer om du har skapat en virtuell dator i en personlig prenumeration och nu vill flytta den till företagets prenumeration.
@@ -38,6 +38,7 @@ För att kunna flytta en virtuell dator måste du flytta den virtuella datorn oc
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
+`table`Utdata är inte tillgängliga om du använder `--interactive` . Ändra utdata till ett annat alternativ som `json` .
 
 Om du vill flytta en virtuell dator och dess resurser till en annan resurs grupp använder du [AZ resurs flytt](/cli/azure/resource). I följande exempel visas hur du flyttar en virtuell dator och de vanligaste resurserna som krävs. Använd parametern **-ID** : t och skicka en kommaavgränsad lista (utan blank steg) med ID: n för de resurser som ska flyttas.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96467293"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109173"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Tekniska specifikationer för Azure Stack Edge Pro R
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro R-enheten har följande specifikationer för beräkning och
 
 | Specifikation       | Värde                  |
 |---------------------|------------------------|
-| Processor    | 2 X 10 core CPU, Intel Xeon silver 4114 |
+| Processor    | 2 X Intel Xeon silver 4114 CPU<br>20 phsyical kärnor (10 per CPU)<br>40 logiska kärnor (virtuella processorer) (20 per CPU)  |
 | Minne              | 256 GB RAM-minne (2666 MT/s)     |
 
 
@@ -48,14 +48,14 @@ Azure Stack Edge Pro R-enheten har två 100-240 V-enheter för strömförsörjni
 | Värme avledning (max)                   | 2891 BTU/timme                |
 | Frekvens               | 50/60 Hz                   |
 | Val av spännings intervall | Automatisk mellan: 115-230 V AC |
-| Hot pluggable           | Ja                        |
+| Hot pluggable           | Yes                        |
 
 ## <a name="network-specifications"></a>Nätverks specifikationer
 
 Azure Stack Edge Pro R-enheten har fyra nätverks gränssnitt, PORT1-PORT4. 
 
 
-|Specifikation  |Beskrivning                              |
+|Specifikation  |Description                              |
 |----------------------|----------------------------------|
 |Nätverksgränssnitt    |**2 x 1 GbE RJ45** <br> PORT 1 används som hanterings gränssnitt för inledande installation och är statisk som standard. När den första installationen är klar kan du använda gränssnittet för data med valfri IP-adress. Men vid återställning återgår gränssnittet till statisk IP. <br>Den andra gränssnitts porten 2 är användaren konfigurerbar, kan användas för data överföring och är DHCP som standard.     |
 |Nätverksgränssnitt    |**2 x 25 GbE-SFP28** <br> Dessa data gränssnitt PORT 3 och PORT 4 kan konfigureras som DHCP (standard) eller statiskt.            |

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543093"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034528"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Begränsningar i Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -89,8 +89,12 @@ Följande stöds inte:
 - Med en tidpunkts återställning skapas nya servrar med samma beräknings-och lagrings konfiguration som den käll server som den baseras på. Den nyligen återställda serverns beräkning kan skalas ned när servern har skapats.
 - Det finns inte stöd för att återställa en borttagen Server.
 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>Funktioner som är tillgängliga i en enskild server men ännu inte stöds i flexibel Server 
+Alla funktioner som är tillgängliga i Azure Database for MySQL-enskild server är inte tillgängliga i den flexibla servern ännu. En fullständig lista över funktions jämförelser mellan en enskild server och flexibel Server finns [i välja rätt MySQL Server-alternativ i Azure-dokumentationen.](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure)
+
 ## <a name="next-steps"></a>Nästa steg
 
-- Förstå [vad som är tillgängligt för beräknings-och lagrings alternativ](concepts-compute-storage.md)
+- Lär dig [välja rätt MySQL Server-alternativ i Azure-dokumentationen](../select-right-deployment-type.md)
+- Förstå [vad som är tillgängligt för beräknings-och lagrings alternativ i flexibel Server](concepts-compute-storage.md)
 - Lär dig mer om [MySQL-versioner som stöds](concepts-supported-versions.md)
-- Granska [hur du säkerhetskopierar och återställer en server med hjälp av Azure Portal](how-to-restore-server-portal.md)
+- Snabb start: [använd Azure Portal för att skapa en Azure Database for MySQL flexibel Server](quickstart-create-server-portal.md)

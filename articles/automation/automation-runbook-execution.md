@@ -3,14 +3,14 @@ title: Runbook-körning i Azure Automation
 description: Den här artikeln innehåller en översikt över bearbetningen av Runbooks i Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586048"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954351"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook-körning i Azure Automation
 
@@ -34,7 +34,8 @@ Följande diagram visar livs cykeln för ett Runbook-jobb för [PowerShell-Runbo
 
 Runbooks i Azure Automation kan köras antingen i ett Azure-sandbox eller en [hybrid Runbook Worker](automation-hybrid-runbook-worker.md). 
 
-När Runbooks är utformade för att autentisera och köra mot resurser i Azure körs de i en Azure-sandbox, som är en delad miljö som flera jobb kan använda. Jobb som använder samma Sandbox är begränsade till resurs begränsningarna i sand boxen. Azure sandbox-miljön stöder inte interaktiva åtgärder. Den förhindrar åtkomst till alla out-of-process COM-servrar. Det kräver också att lokala MOF-filer används för Runbooks som gör Win32-anrop.
+När Runbooks är utformade för att autentisera och köra mot resurser i Azure körs de i en Azure-sandbox, som är en delad miljö som flera jobb kan använda. Jobb som använder samma Sandbox är begränsade till resurs begränsningarna i sand boxen. Azure sandbox-miljön stöder inte interaktiva åtgärder. Den förhindrar åtkomst till alla out-of-process-COM-servrar och har inte stöd för att göra [WMI-anrop](/windows/win32/wmisdk/wmi-architecture) till Win32-providern i din Runbook.  De här scenarierna stöds bara genom att köra en Runbook på en Windows Hybrid Runbook Worker.
+
 
 Du kan också använda en [hybrid Runbook Worker](automation-hybrid-runbook-worker.md) för att köra Runbooks direkt på den dator som är värd för rollen och mot lokala resurser i miljön. Azure Automation lagrar och hanterar Runbooks och levererar dem sedan till en eller flera tilldelade datorer.
 

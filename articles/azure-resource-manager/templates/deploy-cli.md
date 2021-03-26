@@ -3,12 +3,12 @@ title: Distribuera resurser med Azure CLI och mall
 description: Använd Azure Resource Manager och Azure CLI för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall eller en bicep-fil.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1fc3397409634f29690af05ca2a85e67c30b6d89
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521704"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954980"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Distribuera resurser med ARM-mallar och Azure CLI
 
@@ -85,7 +85,7 @@ Det kan ta några minuter att slutföra distributionen. När det är klart visas
 ## <a name="deploy-remote-template"></a>Distribuera fjärran sluten mall
 
 > [!NOTE]
-> För närvarande stöder inte Azure CLI distribution av bicep-filer. Om du vill distribuera en bicep-fil använder du CLI-bicep för att kompilera bicep-filen till en JSON-mall först.
+> För närvarande stöder inte Azure CLI distribution av bicep-filer. Använd [BICEP CLI](./bicep-install.md#development-environment) för att kompilera bicep-filen till en JSON-mall och Läs sedan in JSON-filen till fjärrplatsen.
 
 I stället för att lagra ARM-mallar på den lokala datorn kanske du föredrar att lagra dem på en extern plats. Du kan lagra mallar på en lagringsplats för versionskontroll (till exempel GitHub). Eller så kan du lagra dem i ett Azure Storage-konto för delad åtkomst i din organisation.
 

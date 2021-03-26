@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 9c6e57d45cb5647053283da687659cc5ff0217e9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 8389ce008531e8bf295b2f863dad1ab2c3eb825c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802190"
+ms.locfileid: "104870661"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Jämförelse av Azure Files och Azure NetApp Files
 
@@ -26,7 +26,7 @@ De flesta arbets belastningar som kräver moln fil lagring fungerar bra på anti
 | Kategori | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
 | Beskrivning | [Azure Files](https://azure.microsoft.com/services/storage/files/) är en fullständigt hanterad tjänst med hög tillgänglighet och är optimerad för slumpmässiga åtkomst arbets belastningar med data uppdateringar på plats.<br><br> Azure Files bygger på samma plattform för Azure Storage som andra tjänster som Azure-blobbar. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) är en fullständigt HANTERAd NAS-tjänst i företags klass som kan hantera de mest krävande arbets belastningarna med hög prestanda och låg latens som kräver avancerade data hanterings funktioner. Det möjliggör migrering av arbets belastningar som betraktas som "går migrera" utan.<br><br>  ANF bygger på NetApp Bare Metal med ONTAP Storage OS som körs i Azure-datacentret för en enhetlig Azure-upplevelse och en lokal som prestanda. |
-| Protokoll | Premium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (förhands granskning)</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> Läs mer i [tillgängliga fil resurs protokoll](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Alla nivåer<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Åtkomst till dubbla protokoll (NFSv3/SMB)</li></ul><br> Mer information finns i så här skapar du [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)-, [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)-eller [Dual-Protocol-](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) volymer. |
+| Protokoll | Premium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (förhands granskning)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> Läs mer i [tillgängliga fil resurs protokoll](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Alla nivåer<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Åtkomst till dubbla protokoll (NFSv3/SMB)</li></ul><br> Mer information finns i så här skapar du [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)-, [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)-eller [Dual-Protocol-](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) volymer. |
 | Tillgänglighet för regioner | Premium<br><ul><li>30 + regioner</li></ul><br>Standard<br><ul><li>Alla regioner</li></ul><br> Mer information finns i [Produkttillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=storage). | Alla nivåer<br><ul><li>25 + regioner</li></ul><br> Mer information finns i [Produkttillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=storage). |
 | Redundans | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> Mer information finns i [redundans](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy). | Alla nivåer<br><ul><li>Inbyggt lokalt HA</li><li>[Replikering mellan regioner](https://docs.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction)</li></ul> |
 | Service-Level avtal (SLA)<br><br> Observera att service avtal för Azure Files och Azure NetApp Files beräknas på olika sätt. | [SLA för Azure Files](https://azure.microsoft.com/support/legal/sla/storage/) | [SLA för Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp) |  

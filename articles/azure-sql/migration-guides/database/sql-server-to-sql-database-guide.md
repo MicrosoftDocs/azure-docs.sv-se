@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server till SQL Database: migration guide'
+title: 'SQL Server till Azure SQL Database: migration guide'
 description: Följ den här guiden för att migrera SQL Server-databaser till Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce155015373a096595dc61d75c876633e2e4f00a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563852"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027201"
 ---
-# <a name="migration-guide-sql-server-to-sql-database"></a>Guide för migrering: SQL Server till SQL Database
+# <a name="migration-guide-sql-server-to-azure-sql-database"></a>Guide för migrering: SQL Server till Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Den här guiden hjälper dig att migrera SQL Server-instansen till Azure SQL Database. 
@@ -30,7 +30,7 @@ Du kan migrera SQL Server som körs lokalt eller på:
 - Beräknings motor (Google Cloud Platform-GCP)  
 - Cloud SQL för SQL Server (Google Cloud Platform – GCP) 
 
-Mer information om migrering finns i [Översikt över migrering](sql-server-to-sql-database-overview.md). För andra scenarier, se [Guide för databas migrering](https://datamigration.microsoft.com/).
+Mer information om migrering finns i [Översikt över migrering](sql-server-to-sql-database-overview.md). Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Process flöde för migrering":::
 
@@ -38,9 +38,11 @@ Mer information om migrering finns i [Översikt över migrering](sql-server-to-s
 
 Kontrol lera att du har följande förutsättningar för att migrera SQL Server till Azure SQL Database: 
 
-- En vald [metod för migrering](sql-server-to-sql-database-overview.md#compare-migration-options) och motsvarande verktyg 
-- [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) installerat på en dator som kan ansluta till din käll SQL Server
-- Ett mål [Azure SQL Database](../../database/single-database-create-quickstart.md)
+- En vald [metod för migrering](sql-server-to-sql-database-overview.md#compare-migration-options) och motsvarande verktyg.
+- [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) installerat på en dator som kan ansluta till din käll SQL Server.
+- Ett mål [Azure SQL Database](../../database/single-database-create-quickstart.md). 
+- Anslutning och rätt behörigheter för åtkomst till både källa och mål. 
+
 
 
 ## <a name="pre-migration"></a>Före migrering

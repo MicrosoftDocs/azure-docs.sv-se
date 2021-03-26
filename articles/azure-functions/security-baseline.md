@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4fd53067309f83b284da25040f9f6534936cead9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f19e25e01e0c5fcdb5b2aa4db29ebe29fd7b5e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704672"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025398"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azures säkerhets bas linje för Azure Functions
 
@@ -72,7 +72,7 @@ Se också till att fjärrfelsökning har inaktiverats för produktions Azure Fun
 
 Överväg att distribuera Azure Web Application Firewall (WAF) som en del av nätverks konfigurationen för ytterligare inspektion av inkommande trafik. Aktivera diagnostikinställningar för WAF och mata in loggar till ett lagrings konto, en Event Hub-eller Log Analytics-arbetsyta. 
 
-- [Så här säkrar du Azure Functions-slutpunkter i produktion](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Så här säkrar du Azure Functions-slutpunkter i produktion](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Så här distribuerar du Azure-WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -132,7 +132,7 @@ Alternativt finns det flera Marketplace-alternativ som Barracuda-webbprograms br
 
 - [Använda privata slut punkter för Azure Functions](../app-service/networking/private-endpoint.md)
 
-- [Förstå moln tjänsten Barracuda WAF](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Förstå moln tjänsten Barracuda WAF](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Ansvar**: Kund
 
@@ -208,9 +208,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks inställningar och resurser som är relaterade till dina Azure Functions-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks inställningar eller resurser äger rum. 
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -230,7 +230,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app a
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en system informations-och händelse hanterings lösning från tredje part. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här konfigurerar du Azure Functions med Azure Application Insights](functions-monitoring.md)
 
@@ -248,7 +248,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar (användarspecifika loggar) för Azure Functions](functions-monitor-log-analytics.md)
 
@@ -272,7 +272,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app a
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är associerade med dina funktions program enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -288,7 +288,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app a
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en system informations-och händelse hanterings lösning från tredje part.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Functions](functions-monitor-log-analytics.md)
 
@@ -308,11 +308,11 @@ Aktivera Application Insights för dina funktions program för att samla in logg
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en system informations-och händelse hanterings lösning från tredje part.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Functions](functions-monitor-log-analytics.md)
 
-- [Så här aktiverar du Application Insights för Azure Functions](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#enable-application-insights-integration)
+- [Så här aktiverar du Application Insights för Azure Functions](./configure-monitoring.md#enable-application-insights-integration)
 
 **Ansvar**: Kund
 
@@ -326,9 +326,9 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 **Vägledning**: Azure Active Directory (Azure AD) har inbyggda roller som måste tilldelas explicit och som kan frågas. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Ansvar**: Kund
 
@@ -342,9 +342,9 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 Det finns flera distributions metoder för att Function-appar, varav vissa kan använda en uppsättning genererade autentiseringsuppgifter. Granska de distributions metoder som ska användas för ditt program.
 
-- [Skydda en HTTP-slutpunkt](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Skydda en HTTP-slutpunkt](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [Hämta och återskapa auktoriseringsregler](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#obtaining-keys)
+- [Hämta och återskapa auktoriseringsregler](./functions-bindings-http-webhook-trigger.md?tabs=csharp#obtaining-keys)
 
 - [Distributions tekniker i Azure Functions](functions-deployment-technologies.md)
 
@@ -378,7 +378,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 **Vägledning**: var som helst Använd Azure Active Directory (Azure AD) SSO i stället för att konfigurera enskilda fristående autentiseringsuppgifter för data åtkomst till din Function-app. Använd rekommendationer för Azure Security Center identitets-och åtkomst hantering. Implementera enkel inloggning för dina Functions-appar med hjälp av funktionen App Service autentisering/auktorisering.
 
-- [Förstå autentisering och auktorisering i Azure Functions](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Förstå autentisering och auktorisering i Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
 - [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -450,7 +450,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 **Vägledning**: Azure Active Directory (Azure AD) innehåller loggar för att hjälpa dig att identifiera inaktuella konton. Dessutom kan du använda Azure Identity Access-granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -468,7 +468,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 - [Så här konfigurerar du att din Function-app använder Azure AD-inloggning](../app-service/configure-authentication-provider-aad.md)
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Aktivera Azure-kontroll på kort](../sentinel/quickstart-onboard.md)
 
@@ -532,7 +532,7 @@ Du kan också använda privata slut punkter för att utföra nätverks isolering
 
 **Vägledning**: i Azure Portal för dina funktions program, under "plattforms funktioner: nätverk: SSL", aktiverar du inställningen "endast https" och ställer in den lägsta TLS-versionen på 1,2.
 
-- [Kräv HTTPS för Function-appar](https://docs.microsoft.com/azure/azure-functions/security-concepts#require-https)
+- [Kräv HTTPS för Function-appar](./security-concepts.md#require-https)
 
 **Ansvar**: Kund
 
@@ -592,7 +592,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Functions och ha
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets loggen för att skapa aviseringar för när ändringar sker i appar för produktions funktioner samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -608,7 +608,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Functions och ha
 
 Följ dessutom rekommendationer från Azure Security Center för att skydda dina funktions program.
 
-- [Så här lägger du till kontinuerlig säkerhets validering till din CI/CD-pipeline](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [Så här lägger du till kontinuerlig säkerhets validering till din CI/CD-pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -638,7 +638,7 @@ Följ dessutom rekommendationer från Azure Security Center för att skydda dina
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -712,7 +712,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -744,7 +744,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 Ytterligare information finns på de länkar som refereras till.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -772,9 +772,9 @@ Ytterligare information finns på de länkar som refereras till.
 
 - [Design princip som kod arbets flöden](../governance/policy/concepts/policy-as-code.md)
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -854,11 +854,11 @@ Du kan också använda en lösning för käll kontroll som Azure databaser och A
 
 - [Säkerhetskopiera din app i Azure](../app-service/manage-backup.md)
 
-- [Förstå data tillgänglighet i Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Förstå data tillgänglighet i Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -874,11 +874,11 @@ Du kan också använda en lösning för käll kontroll som Azure databaser och A
 
 - [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Förstå data tillgänglighet i Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Förstå data tillgänglighet i Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -892,7 +892,7 @@ Du kan också använda en lösning för käll kontroll som Azure databaser och A
 
 - [Återställa en app i Azure från en ögonblicks bild](../app-service/app-service-web-restore-snapshots.md)
 
-- [Återställa Key Vault-nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Kund
 
@@ -1002,5 +1002,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

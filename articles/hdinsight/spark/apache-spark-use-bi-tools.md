@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 285c6c05a1a216303ee9d8019093c963cad60aa0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a688f47e11e76f573ba2b99816e1fb402f4c50d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946478"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870559"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Självstudie: Analysera Apache Spark-data med Power BI i HDInsight
 
@@ -43,7 +43,7 @@ Den [Jupyter Notebook](https://jupyter.org/)-anteckningsbok som du skapade i [f�
 
     Utdata ser ut så här:
 
-    ![Visa tabellerna i Spark](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-show-tables.png" alt-text="Visa tabellerna i Spark" border="true":::
 
     Om du har stängt anteckningsboken innan du startar självstudien så har `hvactemptable` rensats, så den ingår inte i utdatan.  Endast Hive-tabeller som lagras i metaarkivet (anges med **False** under kolumnen **isTemporary**) kan nås från BI-verktygen. I den här självstudien kommer du ansluta till **hvac**-tabellen som du skapade.
 
@@ -56,7 +56,7 @@ Den [Jupyter Notebook](https://jupyter.org/)-anteckningsbok som du skapade i [f�
 
     Utdata ser ut så här:
 
-    ![Visa rader från hvac-tabellen i Spark](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-select-limit.png" alt-text="Visa rader från hvac-tabellen i Spark" border="true":::
 
 3. Välj **Stäng och stoppa** på anteckningsbokens **Arkiv**-meny. Stäng anteckningsboken för att frigöra resurser.
 
@@ -72,11 +72,11 @@ De första stegen i att arbeta med Spark är att ansluta till klustret i Power B
 
 2. På fliken **Start** går du till **Hämta data**  >  **mer..**.
 
-    ![Hämta data till Power BI Desktop från HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Hämta data till Power BI från Apache Spark BI")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png " alt-text="Hämta data till Power BI Desktop från HDInsight Apache Spark" border="true":::er = "true"::
 
 3. Ange `Spark` i sökrutan, välj **Azure HDInsight Spark** och välj sedan **Anslut**.
 
-    ![Hämta data till Power BI från Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Hämta data till Power BI från Apache Spark BI")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png " alt-text="Hämta data till Power BI från Apache Spark bi" border="true":::er = "true"::
 
 4. Ange din kluster-URL (i formuläret `mysparkcluster.azurehdinsight.net` ) i text rutan **Server** .
 
@@ -88,7 +88,7 @@ De första stegen i att arbeta med Spark är att ansluta till klustret i Power B
 
 7. Välj `hvac` tabellen, vänta med att visa en förhands granskning av data och välj sedan **load**.
 
-    ![Användar namn och lösen ord för Spark-kluster](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Användar namn och lösen ord för Spark-kluster")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png " alt-text="Användar namn och lösen ord för Spark-kluster" border="true":::d "Border =" true "::
 
     Power BI Desktop har den information som behövs för att ansluta till Spark-klustret och läsa in data från `hvac`-tabellen. Tabellen och dess kolumner visas i fönstret **Fält**.
 
@@ -98,21 +98,21 @@ De första stegen i att arbeta med Spark är att ansluta till klustret i Power B
 
     2. Dra fältet **BuildingID** till **Axel** och dra fälten **ActualTemp** och **TargetTemp** till **Värde**.
 
-        ![Lägg till värde kolumner](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Lägg till värde kolumner")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png " alt-text="Lägg till värde kolumner" border="true":::t = "Lägg till värde kolumner" kant = "true"::
 
         Diagrammet ser ut så här:
 
-        ![områdes diagram Summa](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "områdes diagram Summa")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png " alt-text="ytdiagram sum" border="true":::lt-text = "områdes diagram Summa" kant linje = "true"::
 
         Som standard visar visualiseringen summan för **ActualTemp** och **TargetTemp**. Välj nedpilen bredvid **ActualTemp** och **TragetTemp** i fönstret visualiseringar. du kan se **Sum** är markerat.
 
     3. Välj nedpilen bredvid **ActualTemp** och **TragetTemp** i fönstret visualiseringar och välj **genomsnitt** för att få ett genomsnitt av faktiska och mål temperatur för varje byggnad.
 
-        ![medelvärde för värden](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "medelvärde för värden")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png " alt-text="medelvärde för värden" border="true":::t = "medelvärde för värden" Border = "true"::
 
         Din datavisualisering bör likna den på skärmbilden. Flytta markören över visualiseringen för att få verktygstips med relevanta data.
 
-        ![ytdiagram](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "ytdiagram")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png " alt-text="ytdiagram" border="true":::. png "Alt-text =" ytdiagram "Border =" true "::
 
 9. Navigera till **fil**  >  **Spara**, ange namnet `BuildingTemperature` på filen och välj sedan **Spara**.
 
@@ -124,31 +124,31 @@ Med Power BI-tjänsten kan du dela rapporter och instrumentpaneler i din organis
 
 1. På fliken **Start** väljer du **publicera**.
 
-    ![Publicera från Power BI Desktop](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Publicera från Power BI Desktop")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png " alt-text="Publicera från Power BI Desktop" border="true"::: Desktop "Border =" true "::
 
 1. Välj en arbets yta att publicera din data uppsättning och rapportera till och välj sedan **Välj**. I följande bild är standardinställningen **Min arbetsyta** markerad.
 
-    ![Välj arbets yta för att publicera data uppsättning och rapportera till](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Välj arbets yta för att publicera data uppsättning och rapportera till")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png " alt-text="Välj arbets yta för att publicera data uppsättning och rapportera till" border="true":::UE "::
 
 1. När publiceringen är klar väljer du **Öppna "BuildingTemperature. pbix" i Power BI**.
 
-    ![Publicera lyckade, klicka för att ange autentiseringsuppgifter](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publicera lyckade, klicka för att ange autentiseringsuppgifter")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png " alt-text="Publicera lyckade, klicka för att ange autentiseringsuppgifterna" border="true":::er = "true"::
 
 1. I Power BI-tjänst väljer du **ange autentiseringsuppgifter**.
 
-    ![Ange autentiseringsuppgifter i Power BI-tjänst](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Ange autentiseringsuppgifter i Power BI-tjänst")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png " alt-text="Ange autentiseringsuppgifter i Power BI-tjänst" border="true":::"Border =" true "::
 
 1. Välj **Redigera autentiseringsuppgifter**.
 
-    ![Redigera autentiseringsuppgifter i Power BI-tjänst](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Redigera autentiseringsuppgifter i Power BI-tjänst")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png " alt-text="Redigera autentiseringsuppgifter i Power BI-tjänst" border="true":::e "Border =" true "::
 
 1. Ange inloggnings konto informationen för HDInsight och välj sedan **Logga in**. Standardkontonamnet är *admin*.
 
-    ![Logga in på Spark-kluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Logga in på Spark-kluster")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png " alt-text="Logga in på Spark-kluster" border="true"::: Spark-kluster "Border =" true "::
 
 1. I det vänstra fönstret går du till **arbets ytor**  >  **Mina arbets ytans**  >  **rapporter** och väljer sedan **BuildingTemperature**.
 
-    ![Rapport som visas under rapporter i vänster fönster](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Rapport som visas under rapporter i vänster fönster")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png " alt-text="Rapport som visas under rapporter i vänster fönster" border="true":::ordning = "true"::
 
     Du bör också se **BuildingTemperature** under **DATAMÄNGDER** i den vänstra rutan.
 
@@ -156,11 +156,11 @@ Med Power BI-tjänsten kan du dela rapporter och instrumentpaneler i din organis
 
 1. Håll markören över visualiseringen och välj sedan Fäst ikonen i det övre högra hörnet.
 
-    ![Rapport i Power BI-tjänst](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Rapport i Power BI-tjänst")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png " alt-text="Rapport i Power BI-tjänsts" border="true":::tjänsten "Border =" true "::
 
 1. Välj "ny instrument panel", ange namnet `Building temperature` och välj sedan **Fäst**.
 
-    ![Fäst på ny instrument panel](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Fäst på ny instrument panel")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png " alt-text="Fäst på ny instrument panel" border="true"::: till en ny instrument panel "Border =" true "::
 
 1. I rapporten väljer **du gå till instrument panel**.
 

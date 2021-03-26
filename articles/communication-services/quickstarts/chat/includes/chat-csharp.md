@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 127031479d7ef414298d3096ebef814df1fe9a18
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 7e4ffb800a65a9a1e436e50921e9c7f76f02b571
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027973"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107084"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -43,7 +43,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>Installera paketet
 
-Installera klient biblioteket för Azure Communication Chat för .NET
+Installera Azure Communication Chat SDK för .NET
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
@@ -51,7 +51,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för C#.
+Följande klasser hanterar några av de viktigaste funktionerna i Azure Communication Services Chat SDK för C#.
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -60,7 +60,7 @@ Följande klasser hanterar några av de viktigaste funktionerna i Azure Communic
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
 
-Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från identitets klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient.
+Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från Identity SDK för att skapa en användare och utfärda en token som skickas till din Chat-klient.
 
 Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 

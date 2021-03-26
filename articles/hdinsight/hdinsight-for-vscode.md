@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946142"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865799"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
 
@@ -40,7 +40,7 @@ När du uppfyller kraven kan du installera Spark & Hive-verktyg för Visual Stud
 
 4. Välj **Spark & Hive-verktyg** från Sök resultaten och välj sedan **Installera**:
 
-   ![Spark & Hive för Visual Studio Code python-installation](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-hdInsight-plugin.png" alt-text="Spark & Hive för Visual Studio Code python-installation":::
 
 5. Välj **Läs in igen** när det behövs.
 
@@ -52,7 +52,7 @@ Följ dessa steg om du vill öppna en arbetsmapp och skapa en fil i Visual Studi
 
 2. I **Utforskarvyn** väljer du mappen **HDexample** och väljer sedan ikonen **ny fil** bredvid arbetsmappen:
 
-   ![ikon för ny fil i Visual Studio-kod](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/visual-studio-code-new-file.png" alt-text="ikon för ny fil i Visual Studio-kod":::
 
 3. Namnge den nya filen genom att antingen använda `.hql` fil namns tillägget (Hive-frågor) eller `.py` (Spark-skript). I det här exemplet används **HelloWorld. HQL**.
 
@@ -64,7 +64,7 @@ För en nationell moln användare följer du de här stegen för att konfigurera
 2. Sök efter följande sträng: **Azure: Cloud**.
 3. Välj det nationella molnet i listan:
 
-   ![Ange standard konfiguration för inloggnings post](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-login-entry-configuration.png" alt-text="Ange standard konfiguration för inloggnings post":::
 
 ## <a name="connect-to-an-azure-account"></a>Ansluta till ett Azure-konto
 
@@ -72,7 +72,7 @@ Innan du kan skicka skript till dina kluster från Visual Studio Code kan använ
 
 1. I meny raden navigerar du till **Visa**  >  **kommando paletten...** och anger **Azure: Logga** in:
 
-   ![Spark & Hive-verktyg för Visual Studio Code login](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png" alt-text="Spark & Hive-verktyg för Visual Studio Code login":::
 
 2. Följ anvisningarna i inloggningen för att logga in på Azure. När du är ansluten visas namnet på ditt Azure-konto på statusfältet längst ned i Visual Studio Code-fönstret.  
 
@@ -84,7 +84,7 @@ Du kan länka ett vanligt kluster genom att använda ett [Apache Ambari](https:/
 
 1. I meny raden navigerar du till **Visa**  >  **kommando paletten...** och anger **Spark/Hive: länka ett kluster**.
 
-   ![Kommando rads verktyget länk kluster kommando](./media/hdinsight-for-vscode/link-cluster-command.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/link-cluster-command.png" alt-text="Kommando rads verktyget länk kluster kommando":::
 
 2. Välj länkat kluster typ **Azure HDInsight**.
 
@@ -127,7 +127,7 @@ Du kan länka ett vanligt kluster genom att använda ett [Apache Ambari](https:/
 
 3. Granska vyn **utdata** . I den här vyn visas de länkade klustren (eller klustren) och alla kluster i din Azure-prenumeration:
 
-   ![Ange en standard kluster konfiguration](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Ange en standard kluster konfiguration":::
 
 ## <a name="set-the-default-cluster"></a>Ange standard kluster
 
@@ -141,7 +141,7 @@ Du kan länka ett vanligt kluster genom att använda ett [Apache Ambari](https:/
 
 5. Välj ett kluster som standard kluster för den aktuella skript filen. Verktyget uppdaterar automatiskt **.VSCode\settings.jsi** konfigurations filen:
 
-   ![Ange standard kluster konfiguration](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-cluster-configuration.png" alt-text="Ange standard kluster konfiguration":::
 
 ## <a name="submit-interactive-hive-queries-and-hive-batch-scripts"></a>Skicka interaktiva Hive-frågor och Hive-batch-skript
 
@@ -163,7 +163,7 @@ Med Spark & Hive-verktyg för Visual Studio Code kan du skicka interaktiva Hive-
 
 6. Om du inte har angett ett standard kluster väljer du ett kluster. Med verktygen kan du också skicka in ett kodblock i stället för hela skript filen med hjälp av snabb menyn. Efter en liten stund visas frågeresultaten på en ny flik:
 
-   ![Frågeresultat för interaktiv Apache Hive](./media/hdinsight-for-vscode/interactive-hive-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/interactive-hive-result.png" alt-text="Frågeresultat för interaktiv Apache Hive":::
 
    - **Resultat** panel: du kan spara hela resultatet som en CSV-, JSON-eller Excel-fil till en lokal sökväg eller bara markera flera rader.
 
@@ -198,57 +198,57 @@ Använd det interaktiva kommandot PySpark för att skicka frågorna enligt följ
 
 4. Frågan om att installera PySpark/Synapse Pyspark kernel visas i det nedre högra hörnet i fönstret. Du kan klicka på knappen **Installera** om du vill fortsätta med PySpark-installationer för PySpark/Synapse. eller klicka på **hoppa över** om du vill hoppa över det här steget.
 
-   ![Skärm bild som visar ett alternativ för att hoppa över PySpark-installationen.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-the-pyspark-kernel.png" alt-text="Skärm bild som visar ett alternativ för att hoppa över PySpark-installationen.":::
 
 5. Om du behöver installera den senare kan du gå till **fil**  >  **inställnings**  >  **Inställningar** och sedan avmarkera **HDInsight: Aktivera hoppa över Pyspark-installation** i inställningarna. 
     
-    ![Skärm bild som visar alternativet att aktivera hoppa över Pyspark-installationen.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png" alt-text="Skärm bild som visar alternativet att aktivera hoppa över Pyspark-installationen.":::
 
 6. Om installationen lyckas i steg 4 visas meddelande rutan "PySpark har installerats" i det nedre högra hörnet i fönstret. Klicka på knappen **Läs in** igen för att läsa in fönstret igen.
 
-   ![pyspark har installerats](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png" alt-text="pyspark har installerats":::
 
 
 7. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **python: Välj tolk för att starta Jupyter-servern**.
 
-   ![Välj tolken för att starta Jupyter-servern](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png" alt-text="Välj tolken för att starta Jupyter-servern":::
 
 8. Välj alternativet python nedan.
 
-   ![Välj alternativet nedan](./media/hdinsight-for-vscode/choose-the-below-option.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/choose-the-below-option.png" alt-text="Välj alternativet nedan":::
     
 9. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **utvecklare: Läs in fönstret på nytt**.
 
-    ![Läs in fönstret igen](./media/hdinsight-for-vscode/reload-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/reload-window.png" alt-text="Läs in fönstret igen":::
 
 10. [Anslut](#connect-to-an-azure-account) till ditt Azure-konto eller länka ett kluster om du inte redan har gjort det.
 
 11. Markera all kod, högerklicka på skript redigeraren och välj **Spark: PySpark Interactive/Synapse: PySpark Interactive** för att skicka frågan. 
 
-    ![pyspark interaktiv snabb meny](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-right-click.png" alt-text="pyspark interaktiv snabb meny":::
 
 12. Välj klustret, om du inte har angett ett standard kluster. Efter en liten stund visas det **interaktiva python** -resultatet på en ny flik. Klicka på PySpark för att växla kernel till **PySpark/Synapse PySpark** och koden kommer att köras. Om du vill växla till Synapse Pyspark-kärnan, så uppmuntras det att inaktivera automatiska inställningar i Azure Portal. Annars kan det ta lång tid att aktivera klustret och ställa in Synapse-kärnan för första gången den används. Om verktygen också låter dig skicka in ett kodblock i stället för hela skript filen med hjälp av snabb menyn:
 
-    ![pyspark interaktiva python-fönster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png" alt-text="pyspark interaktiva python-fönster":::
 
 13. Ange **%% info** och tryck sedan på SKIFT + RETUR för att visa jobb informationen (valfritt):
 
-    ![pyspark interaktiva Visa jobb information](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png" alt-text="pyspark interaktiva Visa jobb information":::
 
 Verktyget stöder även **Spark SQL** -fr åga:
 
-  ![pyspark interaktiv vy resultat](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png" alt-text="pyspark interaktiv vy resultat":::
 
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Utför interaktiv fråga i PY-filen med en kommentar på #%%
 
 1. Lägg till **#%%** före py-koden för att få en bärbar dator upplevelse.
 
-   ![Lägg till #%%](./media/hdinsight-for-vscode/run-cell.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell.png" alt-text="Lägg till #%%":::
 
 2. Klicka på **Kör cell**. Efter en liten stund visas det interaktiva python-resultatet på en ny flik. Klicka på PySpark för att växla kernel till PySpark/Synapse PySpark, klicka sedan på **Kör cell** igen och koden kommer att köras.
 
-   ![Kör cell resultat](./media/hdinsight-for-vscode/run-cell-get-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell-get-results.png" alt-text="Kör cell resultat":::
 
 ## <a name="leverage-ipynb-support-from-python-extension"></a>Utnyttja IPYNB-stöd från python-tillägget
 
@@ -256,11 +256,11 @@ Verktyget stöder även **Spark SQL** -fr åga:
 
 2. Klicka på knappen **Kör cell** , följ anvisningarna för att **ställa in standard Spark-poolen** (starkt uppmana att ange standard kluster/-pool varje gång innan du öppnar en antecknings bok) och Läs sedan in fönstret **igen** .
 
-   ![Ange standard Spark-poolen och Läs in igen](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png" alt-text="Ange standard Spark-poolen och Läs in igen":::
 
 3. Klicka på PySpark för att växla kernel till **PySpark/Synapse PySpark** och klicka sedan på **Kör cell** efter ett tag visas resultatet.
 
-   ![Kör ipynb-resultat](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-ipynb-file-results.png" alt-text="Kör ipynb-resultat":::
 
 
 > [!NOTE]
@@ -302,7 +302,7 @@ Verktyget stöder även **Spark SQL** -fr åga:
 
 6. Välj en kluster/Spark-pool för att skicka ditt PySpark-jobb till:
 
-   ![Skicka python jobb resultat utdata](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/submit-pythonjob-result.png" alt-text="Skicka python jobb resultat utdata":::
 
 När du har skickat ett python-jobb visas sändnings loggar i fönstret **utdata** i Visual Studio Code. URL: en för Spark UI URL och garn-UI visas också. Om du skickar batch-jobbet till en Apache Spark pool visas också URL: en för Spark-historik och Spark-jobbets användar gränssnitts webb adress. Du kan öppna webb adressen i en webbläsare för att spåra jobbets status.
 
@@ -338,7 +338,7 @@ Skicka in en fil och Lägg märke till att `.vscode` mappen automatiskt läggs t
 
 - Projekt inställningarna:
 
-  ![HDInsight Apache livy-konfiguration](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/hdi-apache-livy-config.png" alt-text="HDInsight Apache livy-konfiguration":::
 
   >[!NOTE]
   >Ange värdet och enheten för inställningarna **driverMemory** och **executorMemory** . Till exempel: 1G eller 1 024.
@@ -395,11 +395,11 @@ Du kan förhandsgranska Hive-tabellen i klustren direkt via **Azure HDInsight** 
 
 5. Högerklicka på Hive-tabellen. Till exempel: **hivesampletable**. Välj för **hands version**.
 
-   ![Spark & Hive för Visual Studio Code för hands version av Hive-tabell](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png" alt-text="Spark & Hive för Visual Studio Code för hands version av Hive-tabell":::
 
 6. Fönstret för **förhands gransknings resultat** öppnas:
 
-   ![Spark & Hive för resultat fönstret för Visual Studio Code Preview](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png" alt-text="Spark & Hive för resultat fönstret för Visual Studio Code Preview":::
 
 - RESULTAT panel
 
@@ -415,7 +415,7 @@ Du kan förhandsgranska Hive-tabellen i klustren direkt via **Azure HDInsight** 
      >
      >I Linux installerar du xclip för att aktivera kopiera tabell data.
      >
-     >![Spark & Hive för Visual Studio Code i Linux](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
+     >:::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png" alt-text="Spark & Hive för Visual Studio Code i Linux":::
 
 ## <a name="additional-features"></a>Ytterligare funktioner
 
@@ -423,12 +423,12 @@ Spark & Hive för Visual Studio Code stöder också följande funktioner:
 
 - **IntelliSense-komplettering**. Förslag på popup för nyckelord, metoder, variabler och andra programmerings element. Olika ikoner representerar olika typer av objekt:
 
-    ![Spark & Hive-verktyg för Visual Studio Codes IntelliSense-objekt](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png" alt-text="Spark & Hive-verktyg för Visual Studio Codes IntelliSense-objekt":::
 
 - **IntelliSense-felmarkör**. Språk tjänsten stryker under redigering av fel i Hive-skriptet.     
 - **Egenskaper för syntax**. Språk tjänsten använder olika färger för att särskilja variabler, nyckelord, datatyp, funktioner och andra programmerings element:
 
-    ![Spark & Hive-verktyg för Visual Studio Code syntax](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png" alt-text="Spark & Hive-verktyg för Visual Studio Code syntax":::
 
 ## <a name="reader-only-role"></a>Roll som endast läsare
 
@@ -447,15 +447,15 @@ När du skickar jobb till ett HDInsight-kluster uppmanas du att länka klustret 
 1. Ange ett giltigt Ambari-användarnamn.
 2. Ange ett giltigt lösen ord.
 
-   ![Spark & Hive-verktyg för Visual Studio Code användar namn](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png" alt-text="Spark & Hive-verktyg för Visual Studio Code användar namn":::
 
-   ![Spark & Hive-verktyg för Visual Studio Code Password](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png" alt-text="Spark & Hive-verktyg för Visual Studio Code Password":::
 
    > [!NOTE]
    >
    >Du kan använda `Spark / Hive: List Cluster` för att kontrol lera det länkade klustret:
    >
-   >![Spark & Hive-verktyg för Visual Studio Code Reader](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   >:::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Spark & Hive-verktyg för Visual Studio Code Reader":::
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
@@ -467,7 +467,7 @@ Välj Azure HDInsight Explorer för att expandera ett Data Lake Storage Gen2-kon
 
 Skicka ett jobb till ett HDInsight-kluster med hjälp av Data Lake Storage Gen2. Du uppmanas att ange lagrings åtkomst nyckeln om ditt Azure-konto saknar skriv åtkomst till Gen2-lagring. När du har verifierat åtkomst nyckeln kommer jobbet att skickas.
 
-![Spark & Hive-verktyg för Visual Studio Code AccessKey](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
+:::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png" alt-text="Spark & Hive-verktyg för Visual Studio Code AccessKey":::
 
 > [!NOTE]
 >

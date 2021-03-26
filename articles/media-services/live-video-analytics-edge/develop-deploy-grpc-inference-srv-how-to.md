@@ -3,12 +3,12 @@ title: Utveckla och distribuera en gRPC-härlednings Server – Azure
 description: Den här artikeln innehåller rikt linjer för hur du utvecklar och distribuerar en gRPC-härlednings Server.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881660"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034868"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Instruktions guide – utveckla och distribuera en gRPC-härlednings Server
 
@@ -242,7 +242,7 @@ Nu när du har skapat din gRPC-utöknings modul kommer vi nu att skapa och distr
         * Under GraphInstanceSet redigerar du namnet på diagram sto pol Ogin så att den matchar värdet i föregående länk:<br/>`"topologyName": "InferencingWithGrpcExtension"`
         * Under GraphTopologyDelete redigerar du namnet:<br/>`"name": "InferencingWithGrpcExtension"`
 
-            Topologin (till exempel `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json` ) måste definiera en tilläggs adress:
+            Topologin (till exempel `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json` ) måste definiera en tilläggs adress:
     * Tilläggs adress parameter
 
         ```
@@ -308,4 +308,4 @@ I det här skedet har distributionen av Edge-moduler till din IoT Edges enhet st
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följ anvisningarna i **förbereda för övervakning av händelser** som nämns i snabb starten av [din modell](use-your-model-quickstart.md) för att köra exemplet och tolka resultatet. Kolla också våra exempel gRPC-topologier: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension och [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
+Följ anvisningarna i **förbereda för övervakning av händelser** som nämns i snabb starten av [din modell](use-your-model-quickstart.md) för att köra exemplet och tolka resultatet. Kolla också våra exempel gRPC-topologier: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension och [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589178"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048212"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Fel söknings guide för Azure SignalR service vanliga problem
 
@@ -348,7 +348,7 @@ För ASP.NET-signaler har ett känt problem åtgärd ATS i SDK-1.6.0. Uppgradera
 
 ## <a name="thread-pool-starvation"></a>Effekter för tråd-pool
 
-Om din server är svälter innebär det att inga trådar fungerar vid meddelande bearbetning. Alla trådar hänger sig i en viss metod.
+Om din server är svälter innebär det att inga trådar fungerar vid meddelande bearbetning. Alla trådar svarar inte i en viss metod.
 
 Normalt orsakas det här scenariot av asynkron över synkronisering eller av `Task.Result` / `Task.Wait()` i asynkrona metoder.
 

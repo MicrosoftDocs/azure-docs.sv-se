@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 71f8635d1cd96a6436cfc902622bf18bc608a143
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602009"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867193"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Vad är Azure Cognitive Services?
 
@@ -39,11 +39,11 @@ Följande avsnitt i den här artikeln innehåller en lista över tjänster som i
 
 |Tjänstens namn|Beskrivning av tjänst|
 |:-----------|:------------------|
-|[Visuellt innehåll](./computer-vision/index.yml "Visuellt innehåll")|Tjänsten Visuellt innehåll ger dig till gång till avancerade kognitiva algoritmer för bearbetning av bilder och information som returneras.|
-|[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Med Custom Vision Service kan du bygga anpassade bild klassificerare.|
-|[Ansiktsigenkänning](./face/index.yml "Ansikte")| Ansikts tjänsten ger till gång till avancerade ansikts algoritmer, vilket möjliggör identifiering och igenkänning av ansikts attribut.|
-|[Formigenkänning](./form-recognizer/index.yml "Formigenkänning")|Formulär tolken identifierar och extraherar nyckel/värde-par och tabell data från formulär dokument. matar sedan ut strukturerade data, inklusive relationerna i original filen.|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Med Video Indexer kan du extrahera insikter från videon.|
+|[Visuellt innehåll](./computer-vision/index.yml "Visuellt innehåll")|Tjänsten Visuellt innehåll ger dig till gång till avancerade kognitiva algoritmer för bearbetning av bilder och information som returneras. Gå till [visuellt innehåll snabb start](./computer-vision/quickstarts-sdk/client-library.md) för att komma igång med tjänsten.|
+|[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Med Custom Vision Service kan du bygga, distribuera och förbättra dina egna avbildnings klassificerare. En bild klassificerare är en AI-tjänst som tillämpar etiketter på bilder, baserat på deras visuella egenskaper. |
+|[Ansiktsigenkänning](./face/index.yml "Ansikte")| Ansikts tjänsten ger till gång till avancerade ansikts algoritmer, vilket möjliggör identifiering och igenkänning av ansikts attribut. Kom igång med tjänsten genom att se [snabb start för ansikts](./face/quickstarts/client-libraries.md) .|
+|[Formigenkänning](./form-recognizer/index.yml "Formigenkänning")|Formulär tolken identifierar och extraherar nyckel/värde-par och tabell data från formulär dokument. matar sedan ut strukturerade data, inklusive relationerna i original filen. Kom igång genom att se [formulär tolken snabb start](./form-recognizer/quickstarts/client-library.md) .|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Med Video Indexer kan du extrahera insikter från videon. Kom igång genom att se [video Indexer snabb start](/media-services/video-indexer/video-indexer-get-started.md) .|
 
 ## <a name="speech-apis"></a>Tal-API: er
 
@@ -59,20 +59,20 @@ Följande avsnitt i den här artikeln innehåller en lista över tjänster som i
 
 |Tjänstens namn|Beskrivning av tjänst|
 |:-----------|:------------------|
-|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding-tjänsten (LUIS) gör så att ditt program kan förstå vad en person vill när den använder egna ord.|
-|[QnA Maker](./qnamaker/index.yml "QnA Maker")|Med QnA Maker kan du bygga en fråge-och svars tjänst från det delvis strukturerade innehållet.|
-|[Textanalys](./text-analytics/index.yml "Textanalys")| Textanalys tillhandahåller bearbetning av naturligt språk över rå text för sentiment-analys, extrahering av nyckel fraser och språk identifiering.|
+|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) är en molnbaserad diskussions AI-tjänst som använder anpassad maskin inlärnings information till en användares konversation, naturligt språk text för att förutsäga den övergripande innebörden och hämta relevant detaljerad information. Kom igång med tjänsten genom att [Se Luis snabb start](./luis/get-started-portal-build-app.md) .|
+|[QnA Maker](./qnamaker/index.yml "QnA Maker")|Med QnA Maker kan du bygga en fråge-och svars tjänst från det delvis strukturerade innehållet. Gå till [QNA Maker snabb start](./qnamaker/quickstarts/create-publish-knowledge-base.md) för att komma igång med tjänsten.|
+|[Textanalys](./text-analytics/index.yml "Textanalys")| Textanalys tillhandahåller bearbetning av naturligt språk över rå text för sentiment-analys, extrahering av nyckel fraser och språk identifiering. Gå till [textanalys snabb start](./text-analytics/quickstarts/client-libraries-rest-api.md) för att komma igång med tjänsten.|
 |[Översättare](./translator/index.yml "Översättare")|Translator tillhandahåller datorspecifik text översättning i nära real tid.|
-| [Avancerad läsare](./immersive-reader/index.yml "Avancerad läsare") | Avancerad läsare lägger till skärm läsnings-och förståelse funktioner i dina program. |
+| [Avancerad läsare](./immersive-reader/index.yml "Avancerad läsare") | Avancerad läsare lägger till skärm läsnings-och förståelse funktioner i dina program. Se [snabb start för avancerad läsare](./immersive-reader/quickstarts/client-libraries.md) för att komma igång med tjänsten. |
 
 ## <a name="decision-apis"></a>Besluts-API: er
 
 |Tjänstens namn|Beskrivning av tjänst|
 |:-----------|:------------------|
-|[Avvikelseidentifiering](./anomaly-detector/index.yml "Avvikelseidentifiering") |Med avvikelse detektor kan du övervaka och identifiera avvikelser i dina tids serie data.|
-|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator tillhandahåller övervakning av potentiellt stötande, olämpligt och riskfylldt innehåll.|
-|[Mått rådgivare](./metrics-advisor/index.yml) (förhands granskning) | Metrics Advisor ger anpassningsbar avvikelse identifiering på variate Time Series-data och en helt aktuell webb portal som hjälper dig att använda tjänsten.|
-|[Personanpassning](./personalizer/index.yml "Personanpassning")|Med personanpassa kan du välja den bästa upplevelsen som ska visas för användarna, lära sig från deras real tids beteende.|
+|[Avvikelseidentifiering](./anomaly-detector/index.yml "Avvikelseidentifiering") |Med avvikelse detektor kan du övervaka och identifiera avvikelser i dina tids serie data. Se [snabb start för avvikelse detektor](./anomaly-detector/quickstarts/client-libraries.md) för att komma igång med tjänsten|
+|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator tillhandahåller övervakning av potentiellt stötande, olämpligt och riskfylldt innehåll. Gå till [Content moderator snabb start](./content-moderator/client-libraries.md) för att komma igång med tjänsten.|
+|[Mått rådgivare](./metrics-advisor/index.yml) (förhands granskning) | Metrics Advisor ger anpassningsbar avvikelse identifiering på variate Time Series-data och en helt aktuell webb portal som hjälper dig att använda tjänsten. Se [snabb start för Metrics Advisor](./metrics-advisor/quickstarts/rest-api-and-client-library.md) för att komma igång med tjänsten. |
+|[Personanpassning](./personalizer/index.yml "Personanpassning")|Med personanpassa kan du välja den bästa upplevelsen som ska visas för användarna, lära sig från deras real tids beteende. Kom igång med tjänsten genom att se [snabb start för personliga](./personalizer/quickstart-personalizer-sdk.md) guider.|
 
 ## <a name="search-apis"></a>Sök-API: er
 
@@ -92,7 +92,16 @@ Följande avsnitt i den här artikeln innehåller en lista över tjänster som i
 |[Bing-sökning efter lokala företag](/azure/cognitive-services/bing-local-business-search/ "Bing-sökning efter lokala företag")| Med API för lokal sökning i Bing kan dina program hitta kontakt-och plats information om lokala företag baserat på Sök frågor.|
 |[Stavningskontroll i Bing](/azure/cognitive-services/bing-spell-check/ "Stavningskontroll i Bing")|Med Stavningskontroll i Bing kan du utföra sammanhangsbaserad grammatik och stavnings kontroll.|
 
-## <a name="development-options"></a>Utvecklingsalternativ 
+## <a name="get-started-with-cognitive-services"></a>Kom igång med Cognitive Services
+
+Börja med att skapa en Cognitive Services-resurs med praktiska snabb starter med hjälp av följande metoder:
+
+* [Azure-portalen](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure Portal")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Klient bibliotek för Azure SDK](cognitive-services-apis-create-account-cli.md?tabs=windows "kognitiva tjänster-API: er-Create-Account-Client-library? pivoting = Programming-Language-csharp")
+* [Azure Resource Manager-mallar (ARM)](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager-mallar (ARM)")
+
+## <a name="using-cognitive-services-in-different-development-environments"></a>Använda Cognitive Services i olika utvecklings miljöer
 
 Med Azure och Cognitive Services har du till gång till flera utvecklings alternativ, till exempel:
 
@@ -102,15 +111,6 @@ Med Azure och Cognitive Services har du till gång till flera utvecklings altern
 * Verktyg som Apache Spark, Azure Databricks, Azure Synapse Analytics och Azure Kubernetes-tjänsten för stora data scenarier. 
 
 Läs mer i [Cognitive Services utvecklings alternativ](./cognitive-services-development-options.md).
-
-## <a name="learn-with-the-quickstarts"></a>Lär dig med snabb starter
-
-Börja med att skapa en Cognitive Services-resurs med praktiska snabb starter med hjälp av följande metoder:
-
-* [Azure-portalen](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure Portal")
-* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
-* [Klient bibliotek för Azure SDK](cognitive-services-apis-create-account-cli.md?tabs=windows "kognitiva tjänster-API: er-Create-Account-Client-library? pivoting = Programming-Language-csharp")
-* [Azure Resource Manager-mallar (ARM)](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager-mallar (ARM)")
 
 <!--
 ## Subscription management
@@ -128,7 +128,7 @@ Azure Cognitive Services tillhandahåller en skiktad säkerhets modell, inklusiv
 
 ## <a name="containers-for-cognitive-services"></a>Containrar för Cognitive Services
 
- Cognitive Services tillhandahåller behållare för distribution i Azure-molnet eller lokalt. Läs mer om [Cognitive Services behållare](cognitive-services-container-support.md "Cognitive Services-containrar").
+ Azure Cognitive Services tillhandahåller flera Docker-behållare som låter dig använda samma API: er som är tillgängliga i Azure, lokalt. Med hjälp av de här behållarna får du flexibiliteten att ta Cognitive Services närmare dina data för efterlevnad, säkerhet eller andra drift orsaker. Läs mer om [Cognitive Services behållare](cognitive-services-container-support.md "Cognitive Services-containrar").
 
 ## <a name="regional-availability"></a>Regional tillgänglighet
 
@@ -154,3 +154,4 @@ Cognitive Services innehåller flera support alternativ som hjälper dig att gå
 
 * [Skapa ett Cognitive Services-konto](cognitive-services-apis-create-account.md "Skapa ett Cognitive Services-konto")
 * [Nyheter i Cognitive Services dokument](whats-new-docs.md "Nyheter i Cognitive Services dokument")
+* [Planera och hantera kostnader för Cognitive Services](plan-manage-costs.md)

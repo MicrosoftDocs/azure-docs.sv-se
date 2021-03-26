@@ -4,16 +4,16 @@ description: Att planera för en Azure Files distribution. Du kan antingen direk
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 267b68fbdae6d894acc3222a8d74a8e15e865dbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879855"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023528"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planera för distribution av Azure Files
 [Azure Files](storage-files-introduction.md) kan distribueras på två huvudsakliga sätt: genom att montera Server lös Azure-filresurser direkt eller genom att cachelagra Azure-filresurser lokalt med hjälp av Azure File Sync. Vilket distributions alternativ du väljer ändrar de saker du behöver tänka på när du planerar för distributionen. 
@@ -65,7 +65,7 @@ Om du vill avblockera åtkomst till Azure-filresursen har du två huvud alternat
 
 - **Nätverks tunnel med ExpressRoute, plats-till-plats eller punkt-till-plats-VPN**: tunnlar till ett virtuellt nätverk tillåter åtkomst till Azure-filresurser från lokalt, även om Port 445 är blockerad.
 - **Privata slut punkter**: privata slut punkter ger ditt lagrings konto en dedikerad IP-adress i det virtuella nätverkets adress utrymme. Detta möjliggör nätverks tunnel utan att behöva öppna lokala nätverk upp till alla IP-adressintervall som ägs av Azure Storage-klustren. 
-- **DNS-vidarebefordran**: Konfigurera din lokala DNS för att matcha namnet på ditt lagrings konto (dvs. `storageaccount.file.core.windows.net` för de offentliga moln regionerna) för att matcha IP-adressen för dina privata slut punkter.
+- **DNS-vidarebefordring**: Konfigurera din lokala DNS för att matcha namnet på ditt lagrings konto ( `storageaccount.file.core.windows.net` för offentliga moln regioner) för att matcha IP-adressen för dina privata slut punkter.
 
 Information om hur du planerar för nätverk som är kopplade till att distribuera en Azure-filresurs finns [Azure Files nätverks överväganden](storage-files-networking-overview.md).
 
@@ -94,7 +94,7 @@ Azure Files har en metod med flera lager för att säkerställa att dina data s�
 ### <a name="soft-delete"></a>Mjuk borttagning
 Mjuk borttagning för fil resurser (förhands granskning) är en inställning för lagrings konto nivå som gör att du kan återställa fil resursen när den tas bort av misstag. När en fil resurs tas bort övergår den till ett mjukt borttaget tillstånd i stället för att raderas permanent. Du kan konfigurera hur lång tid det tar för mjuka borttagna data att återställas innan den tas bort permanent och ta bort resursen när den kvarhålls. 
 
-Vi rekommenderar att du aktiverar mjuk borttagning för de flesta fil resurser. Om du har ett arbets flöde där delning av delning är vanligt och förväntat, kan du välja att ha en mycket kort kvarhållningsperiod eller inte har mjuk borttagning aktive rad.
+Vi rekommenderar att du aktiverar mjuk borttagning för de flesta fil resurser. Om du har ett arbets flöde där delning av delning är vanligt och förväntat, kan du välja att ha en kortare kvarhållningsperiod eller inte har mjuk borttagning aktive rad.
 
 Mer information om mjuk borttagning finns i [förhindra oavsiktlig data borttagning](./storage-files-prevent-file-share-deletion.md).
 
@@ -107,10 +107,10 @@ Du kan utföra både återställning på objekt-och delnings nivå i Azure Porta
 
 Mer information om säkerhets kopiering finns i [om Azure File Share-säkerhetskopiering](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="advanced-threat-protection-for-azure-files-preview"></a>Avancerat skydd för Azure Files (för hands version)
-Avancerat skydd (ATP) för Azure Storage ger ytterligare ett lager med säkerhets information som ger aviseringar när avvikande aktivitet på ditt lagrings konto upptäcks, till exempel ovanliga försök att komma åt lagrings kontot. ATP kör även skadlig kod för hash-rykte och meddelar om känd skadlig kod. Du kan konfigurera ATP på en prenumeration eller lagrings konto nivå via Azure Security Center. 
+### <a name="azure-defender-for-azure-files"></a>Azure Defender för Azure Files 
+Azure Defender för Azure Storage (tidigare Avancerat skydd för Azure Storage) ger ytterligare ett lager med säkerhets information som ger aviseringar när en avvikande aktivitet identifieras på ditt lagrings konto, till exempel ovanliga åtkomst försök. Den kör även skadlig kod för hash-rykte och meddelar om känd skadlig kod. Du kan konfigurera Azure Defender på en prenumeration eller lagrings konto nivå via Azure Security Center. 
 
-Mer information finns i [Avancerat skydd mot Azure Storage](../common/azure-defender-storage-configure.md).
+Mer information finns i [Introduktion till Azure Defender för lagring](../../security-center/defender-for-storage-introduction.md).
 
 ## <a name="storage-tiers"></a>Lagringsnivåer
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
