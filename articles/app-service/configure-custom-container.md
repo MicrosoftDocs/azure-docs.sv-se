@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar en anpassad behållare i Azure App Ser
 ms.topic: article
 ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d1a1292bc7583e4934ac176c34d2768700d11c5
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704879"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036772"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurera en anpassad container för Azure App Service
 
@@ -112,6 +112,8 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 ```
 
 När din app körs, matas App Service app-inställningarna in i processen som miljövariabler automatiskt. Du kan kontrol lera variabler för container miljön med URL: en `https://<app-name>.scm.azurewebsites.net/Env)` .
+
+Om din app använder avbildningar från ett privat register eller från Docker Hub, sparas autentiseringsuppgifter för åtkomst till lagrings platsen i miljövariabler: `DOCKER_REGISTRY_SERVER_URL` , `DOCKER_REGISTRY_SERVER_USERNAME` och `DOCKER_REGISTRY_SERVER_PASSWORD` . På grund av säkerhets risker visas inget av dessa reserverade variabel namn för programmet.
 
 ::: zone pivot="container-windows"
 För IIS-eller .NET Framework (4,0 eller senare)-baserade behållare matas de in i `System.ConfigurationManager` som inställningar och anslutnings strängar för .net-appar automatiskt av App Service. För alla andra språk och ramverk är de tillgängliga som miljövariabler för processen, med något av följande motsvarande prefix:

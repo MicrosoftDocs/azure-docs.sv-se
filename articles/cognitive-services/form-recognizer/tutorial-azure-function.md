@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8c72a018f03b5284d3fc53be02d9eb526cdfcf28
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf455d9401593b5c09fa295e492368a2a5bee240
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722250"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048700"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>Självstudie: använda en Azure-funktion för att bearbeta lagrade dokument
 
@@ -40,9 +40,9 @@ I den här guiden får du lära dig att:
 * Ett lokalt PDF-dokument att analysera. Du kan hämta det här [exempel dokumentet](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout.pdf) så att det används.
 * [Python 3.8. x](https://www.python.org/downloads/) installerat.
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) installerat.
-* [Azure Functions Core tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools) installerat.
+* [Azure Functions Core tools](../../azure-functions/functions-run-local.md?tabs=windows%2ccsharp%2cbash#install-the-azure-functions-core-tools) installerat.
 * Visual Studio Code med följande tillägg installerade:
-  * [Azure Functions tillägg](https://docs.microsoft.com/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
+  * [Azure Functions tillägg](/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
   * [Python-tillägg](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension)
 
 ## <a name="create-an-azure-storage-account"></a>Skapa ett Azure Storage-konto

@@ -3,12 +3,12 @@ title: Windows Server-redundanskluster på Azure VMware-virtuellt San med intern
 description: Konfigurera WSFC (Windows Server failover Cluster) i Azure VMware-lösningen och dra nytta av lösningar som kräver WSFC-funktioner.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519001"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025976"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar
 
@@ -49,10 +49,10 @@ Följande diagram illustrerar arkitekturen för virtuella WSFC-noder i ett priva
 
 För närvarande stöds följande konfigurationer:
 
-- Microsoft Windows Server 2012 eller senare.
-- Upp till fem noder för redundanskluster per kluster.
-- Upp till fyra PVSCSI-kort per virtuell dator.
-- Upp till 64 diskar per PVSCSI-kort.
+- Microsoft Windows Server 2012 eller senare
+- Upp till fem noder i redundansklustret per kluster
+- Upp till fyra PVSCSI-kort per virtuell dator
+- Upp till 64 diskar per PVSCSI-kort
 
 ## <a name="virtual-machine-configuration-requirements"></a>Konfigurations krav för virtuell dator
 

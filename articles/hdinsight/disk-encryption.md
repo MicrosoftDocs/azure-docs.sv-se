@@ -5,12 +5,12 @@ description: Den här artikeln beskriver de två krypterings lager som är tillg
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988621"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867125"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight Double Encryption för vilande data
 
@@ -76,25 +76,25 @@ HDInsight har endast stöd för Azure Key Vault. Om du har ett eget nyckel valv 
 
 1. Från det nya nyckel valvet navigerar du till **Inställningar**  >  **nycklar**  >  **+ generera/importera**.
 
-    ![Generera en ny nyckel i Azure Key Vault](./media/disk-encryption/create-new-key.png "Generera en ny nyckel i Azure Key Vault")
+    :::image type="content" source="./media/disk-encryption/create-new-key.png" alt-text="Generera en ny nyckel i Azure Key Vault":::
 
 1. Ange ett namn och välj sedan **skapa**. Behåll standard **nyckel typen** för **RSA**.
 
-    ![genererar nyckel namn](./media/disk-encryption/create-key.png "Generera nyckel namn")
+    :::image type="content" source="./media/disk-encryption/create-key.png" alt-text="genererar nyckel namn":::
 
 1. När du kommer tillbaka till sidan **nycklar** väljer du den nyckel som du skapade.
 
-    ![nyckel lista för nyckel valv](./media/disk-encryption/key-vault-key-list.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-key-list.png" alt-text="nyckel lista för nyckel valv":::
 
 1. Välj version för att öppna sidan med **nyckel versionen** . När du använder din egen nyckel för kluster kryptering i HDInsight måste du ange nyckel-URI: n. Kopiera **nyckel identifieraren** och spara den någonstans tills du är redo att skapa klustret.
 
-    ![Hämta nyckel identifierare](./media/disk-encryption/get-key-identifier.png)
+    :::image type="content" source="./media/disk-encryption/get-key-identifier.png" alt-text="Hämta nyckel identifierare":::
 
 ### <a name="create-access-policy"></a>Skapa åtkomst princip
 
 1. Från det nya nyckel valvet navigerar du till **Inställningar**  >  **åtkomst principer**  >  **+ Lägg till åtkomst princip**.
 
-    ![Skapa ny princip för Azure Key Vault åtkomst](./media/disk-encryption/key-vault-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-access-policy.png" alt-text="Skapa ny princip för Azure Key Vault åtkomst":::
 
 1. På sidan **Lägg till åtkomst princip** anger du följande information:
 
@@ -104,13 +104,13 @@ HDInsight har endast stöd för Azure Key Vault. Om du har ett eget nyckel valv 
     |Hemliga behörigheter|Välj **Hämta**, **Ange** och **ta bort**.|
     |Välj huvud konto|Välj den användare som tilldelats den hanterade identitet som du skapade tidigare.|
 
-    ![Ange Välj huvud konto för Azure Key Vault åtkomst princip](./media/disk-encryption/azure-portal-add-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/azure-portal-add-access-policy.png" alt-text="Ange Välj huvud konto för Azure Key Vault åtkomst princip":::
 
 1. Välj **Lägg till**.
 
 1. Välj **Spara**.
 
-    ![Spara Azure Key Vault åtkomst princip](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    :::image type="content" source="./media/disk-encryption/add-key-vault-access-policy-save.png" alt-text="Spara Azure Key Vault åtkomst princip":::
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Skapa kluster med kund hanterad nyckel disk kryptering
 
@@ -129,7 +129,7 @@ När klustret skapas kan du antingen använda en versions nyckel eller en versio
 
 Du måste också tilldela den hanterade identiteten till klustret.
 
-![Skapa nytt kluster](./media/disk-encryption/create-cluster-portal.png)
+:::image type="content" source="./media/disk-encryption/create-cluster-portal.png" alt-text="Skapa nytt kluster":::
 
 #### <a name="using-azure-cli"></a>Använda Azure CLI
 
@@ -367,7 +367,7 @@ Du kan ändra de krypterings nycklar som används i det kluster som körs med hj
 
 Om du vill rotera nyckeln behöver du URI för bas nyckel valvet. När du har gjort det går du till avsnittet HDInsight-kluster egenskaper i portalen och klickar på **ändra nyckel** under **URL för disk krypterings nyckel**. Ange den nya nyckel-URL: en och skicka för att rotera nyckeln.
 
-![rotera disk krypterings nyckel](./media/disk-encryption/change-key.png)
+:::image type="content" source="./media/disk-encryption/change-key.png" alt-text="rotera disk krypterings nyckel":::
 
 #### <a name="using-azure-cli"></a>Använda Azure CLI
 
@@ -400,7 +400,7 @@ Nej, alla hanterade diskar och resurs diskar krypteras med samma nyckel.
 
 Om klustret förlorar åtkomst till nyckeln, visas varningar i Apache Ambari-portalen. I det här läget går det inte att utföra **ändrings nyckeln** . När nyckel åtkomsten har återställts försvinner Ambari-varningar och åtgärder som nyckel rotation kan utföras.
 
-![avisering om nyckel åtkomst Ambari](./media/disk-encryption/ambari-alert.png)
+:::image type="content" source="./media/disk-encryption/ambari-alert.png" alt-text="avisering om nyckel åtkomst Ambari":::
 
 **Hur kan jag återställa klustret om nycklarna tas bort?**
 

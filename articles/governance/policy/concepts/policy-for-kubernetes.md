@@ -1,14 +1,14 @@
 ---
 title: Lär dig Azure Policy för Kubernetes
 description: Lär dig hur Azure Policy använder Rego och öppna princip agenten för att hantera kluster som kör Kubernetes i Azure eller lokalt.
-ms.date: 12/01/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577101"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868162"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Förstå Azure Policy för Kubernetes-kluster
 
@@ -68,9 +68,9 @@ Följande begränsningar gäller endast för Azure Policy-tillägget för AKS:
 
 Följande är allmänna rekommendationer för att använda Azure Policy-tillägget:
 
-- Azure Policy tillägget kräver 3 Gatekeeper-komponenter för att köra: 1 audit Pod och 2 webhook Pod-repliker. Dessa komponenter förbrukar mer resurser som antalet Kubernetes-resurser och princip tilldelningar ökar i klustret som kräver gransknings-och tvångs åtgärder.
+- Azure Policy-tillägget kräver att tre Gatekeeper-komponenter körs: 1 audit Pod och 2 webhook Pod-repliker. Dessa komponenter förbrukar mer resurser som antalet Kubernetes-resurser och princip tilldelningar ökar i klustret, vilket kräver gransknings-och tvångs åtgärder.
 
-  - För mindre än 500 poddar i ett enda kluster med högst 20 begränsningar: 2 virtuella processorer och 350 MB minne per komponent.
+  - För färre än 500-poddar i ett enda kluster med högst 20 begränsningar: 2 virtuella processorer och 350 MB minne per komponent.
   - För över 500 poddar i ett enda kluster med högst 40 begränsningar: 3 virtuella processorer och 600 MB minne per komponent.
 
 - Windows-poddar [stöder inte säkerhets kontexter](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods).
@@ -85,7 +85,7 @@ Följande rekommendation gäller endast för AKS och Azure Policy-tillägget:
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Installera Azure Policy tillägg för AKS
 
-Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst funktionerna måste din prenumeration aktivera resurs leverantörerna **Microsoft. container service** och **Microsoft. PolicyInsights** .
+Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst funktionerna måste prenumerationen aktivera **Microsoft. PolicyInsights** -resurs leverantörer.
 
 1. Du behöver Azure CLI-versionen 2.12.0 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
@@ -93,15 +93,12 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
    - Azure Portal:
 
-     Registrera resurs leverantörerna **Microsoft. container service** och **Microsoft. PolicyInsights** . Anvisningar finns i [resurs leverantörer och typer](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     Registrera **Microsoft. PolicyInsights** -resurs leverantörer. Anvisningar finns i [resurs leverantörer och typer](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLI:
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-
-     # Provider register: Register the Azure Kubernetes Service provider
-     az provider register --namespace Microsoft.ContainerService
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
@@ -440,14 +437,13 @@ Några andra överväganden:
 
 - Om kluster prenumerationen har registrerats med Azure Security Center så används Azure Security Center Kubernetes-principer automatiskt på klustret.
 
-- När en princip för att neka tillämpas på klustret med befintliga Kubernetes-resurser fortsätter alla befintliga resurser som inte är kompatibla med den nya principen att köras. När den icke-kompatibla resursen blir ombokad på en annan nod, blockerar gatekeepern resurs skapandet.
+- När en princip för att neka tillämpas på kluster med befintliga Kubernetes-resurser fortsätter alla befintliga resurser som inte är kompatibla med den nya principen att köras. När den icke-kompatibla resursen blir ombokad på en annan nod, blockerar gatekeepern resurs skapandet.
 
 - När ett kluster har en princip för neka som verifierar resurser, ser inte användaren ett avvisnings meddelande när du skapar en distribution. Anta till exempel en Kubernetes-distribution som innehåller replicasets och poddar. När en användare kör `kubectl describe deployment $MY_DEPLOYMENT` , returnerar den inget avvisnings meddelande som en del av händelser. Men `kubectl describe replicasets.apps $MY_DEPLOYMENT` returnerar de händelser som är associerade med avvisande.
 
 ## <a name="logging"></a>Loggning
 
-Som en Kubernetes-styrenhet/-behållare behåller både _Azure-policyn_ och _Gatekeeper_ -poddar loggar i Kubernetes-klustret. Loggarna kan visas på sidan **Insights** i Kubernetes-klustret.
-Mer information finns i [övervaka din Kubernetes-kluster prestanda med Azure Monitor för behållare](../../../azure-monitor/containers/container-insights-analyze.md).
+Som Kubernetes-styrenhet/-behållare behåller både _Azure-policyn_ och _Gatekeeper_ -poddar loggar i Kubernetes-klustret. Loggarna kan visas på sidan **Insights** i Kubernetes-klustret. Mer information finns i [övervaka din Kubernetes-kluster prestanda med Azure Monitor för behållare](../../../azure-monitor/containers/container-insights-analyze.md).
 
 Om du vill visa tilläggs loggarna använder du `kubectl` :
 

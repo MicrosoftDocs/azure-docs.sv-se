@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496191"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106809"
 ---
 ## <a name="joining-the-meeting-chat"></a>Ansluta till mötes chatten 
 
-När team samverkan är aktiverat kan en kommunikations tjänst användare ansluta till Team anropet som en extern användare med hjälp av det anropande klient biblioteket. När du ansluter till samtalet läggs de till som deltagare till mötes chatten, där de kan skicka och ta emot meddelanden med andra användare på anropet. Användaren har inte åtkomst till chatt meddelanden som har skickats innan de anslöt till anropet. Om du vill ansluta till mötet och börja chatta kan du följa anvisningarna nedan.
+När team samverkan är aktiverat kan en kommunikations tjänst användare ansluta till Team anropet som en extern användare med hjälp av anrops-SDK. När du ansluter till samtalet läggs de till som deltagare till mötes chatten, där de kan skicka och ta emot meddelanden med andra användare på anropet. Användaren har inte åtkomst till chatt meddelanden som har skickats innan de anslöt till anropet. Om du vill ansluta till mötet och börja chatta kan du följa anvisningarna nedan.
 
 ## <a name="install-the-chat-packages"></a>Installera chatt-paketen
 
-Använd `npm install` kommandot för att installera de nödvändiga klient biblioteken för kommunikations tjänster för Java Script.
+Använd `npm install` kommandot för att installera de nödvändiga SDK: erna för kommunikations tjänster för Java Script.
 
 ```console
 npm install @azure/communication-common --save

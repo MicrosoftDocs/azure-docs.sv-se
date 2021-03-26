@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: a3d787059345b5971d99ebd7a1e26a9135b61bed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ddfdfdfe10d5b6ea7c2d5cd99d325564163c0dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930347"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866020"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Använda externa paket med Jupyter-anteckningsböcker i Apache Spark kluster i HDInsight
 
@@ -34,11 +34,11 @@ I den här artikeln får du lära dig hur du använder [Spark-CSV-](https://sear
 
 1. Skapa en ny anteckningsbok. Välj **nytt** och välj sedan **Spark**.
 
-    ![Skapa en ny Spark-Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Skapa en ny Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png " alt-text="Skapa en ny Spark-Jupyter Notebook" border="true":::
 
 1. En ny anteckningsbok skapas och öppnas med namnet Untitled.pynb. Välj antecknings bokens namn högst upp och ange ett eget namn.
 
-    ![Ange ett namn för anteckningsboken](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Ange ett namn för anteckningsboken")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png " alt-text="Ange ett namn för anteckningsboken" border="true":::
 
 1. Du använder `%%configure` Magic för att konfigurera antecknings boken för att använda ett externt paket. I antecknings böcker som använder externa paket, se till att du anropar `%%configure` Magic i den första kod cellen. Detta säkerställer att kerneln har kon figurer ATS för att använda paketet innan sessionen startar.
 
@@ -56,7 +56,7 @@ I den här artikeln får du lära dig hur du använder [Spark-CSV-](https://sear
 
     b. Samla in **värdena för** **ArtifactId** och **version** från databasen. Kontrol lera att värdena som du samlar in matchar klustret. I det här fallet använder vi ett Scala 2,11-och Spark 1.5.0-paket, men du kan behöva välja olika versioner för lämplig Scala-eller Spark-version i klustret. Du kan ta reda på Scala-versionen på klustret genom `scala.util.Properties.versionString` att köra i Spark Jupyter-kärnan eller vid Spark-sändning. Du kan ta reda på Spark-versionen i klustret genom att köra `sc.version` på Jupyter Notebooks.
 
-    ![Använda externa paket med Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Använda externa paket med Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png " alt-text="Använda externa paket med Jupyter Notebook" border="true":::
 
     c. Sammanfoga de tre värdena, avgränsade med kolon (**:**).
 

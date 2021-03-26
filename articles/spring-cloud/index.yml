@@ -11,71 +11,71 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: 7598345ca1d687b8148b41454077ab5fca91e8f1
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-  ms.translationtype: HT
+  ms.openlocfilehash: ce74f1020a064b558c647bad488ba0efa8be7620
+  ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96903955"
+  ms.lasthandoff: 03/23/2021
+  ms.locfileid: "104869080"
 landingContent:
 - title: Om Azure Spring Cloud
   linkLists:
   - linkListType: overview
     links:
     - text: Vad är Azure Spring Cloud?
-      url: spring-cloud-overview.md
+      url: overview.md
     - text: Förstå molnkvoter och begränsningar för Azure Spring Cloud
-      url: spring-cloud-quotas.md
+      url: quotas.md
 - title: Kom igång
   linkLists:
   - linkListType: quickstart
     links:
     - text: Snabbstart – distribuera ditt första Azure Spring Cloud-program
-      url: spring-cloud-quickstart.md
+      url: quickstart.md
     - text: Exempelapp med introduktion till PiggyMetrics
-      url: spring-cloud-quickstart-sample-app-introduction.md
+      url: quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
     - text: Förbered en Spring- eller Steeltoe-app för distribution
-      url: spring-cloud-tutorial-prepare-app-deployment.md
+      url: how-to-prepare-app-deployment.md
 - title: Konfigurera din tjänst
   linkLists:
   - linkListType: tutorial
     links:
     - text: Använda konfigurationsservern för att underhålla programkonfigurationen
-      url: spring-cloud-tutorial-config-server.md
+      url: how-to-config-server.md
     - text: Skala ditt program manuellt
-      url: spring-cloud-tutorial-scale-manual.md
+      url: how-to-scale-manual.md
   - linkListType: how-to-guide
     links:
     - text: Automatisera din CI/CD-pipeline i Azure Spring Cloud
-      url: spring-cloud-howto-cicd.md
+      url: how-to-cicd.md
     - text: Aktivera blå-gröna distributioner med Azure Spring Cloud
-      url: spring-cloud-howto-staging-environment.md
+      url: how-to-staging-environment.md
     - text: Använda beständig lagring i Azure Spring Cloud
-      url: spring-cloud-howto-persistent-storage.md
+      url: how-to-persistent-storage.md
 - title: Övervaka ditt program
   linkLists:
   - linkListType: tutorial
     links:
     - text: Övervaka ditt program med hjälp av distribuerad spårning och App Insights
-      url: spring-cloud-tutorial-distributed-tracing.md
+      url: how-to-distributed-tracing.md
     - text: Aktivera diagnostiska tjänster i ditt Java Spring-program
       url: diagnostic-services.md
   - linkListType: concept
     links:
     - text: Förstå Azure Monitor-mått för Spring Cloud
-      url: spring-cloud-concept-metrics.md
+      url: concept-metrics.md
 - title: Binda med andra tjänster
   linkLists:
   - linkListType: tutorial
     links:
     - text: Bind ditt program med Azure Cache for Redis
-      url: spring-cloud-tutorial-bind-redis.md
+      url: how-to-bind-redis.md
     - text: Binda ditt program till en Azure MySQL-databas
-      url: spring-cloud-tutorial-bind-mysql.md
+      url: how-to-bind-mysql.md
     - text: Binda ditt program till Azure CosmosDB
-      url: spring-cloud-tutorial-bind-cosmos.md
+      url: how-to-bind-cosmos.md
 - title: API-referens
   linkLists:
   - linkListType: reference

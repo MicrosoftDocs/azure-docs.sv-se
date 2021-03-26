@@ -238,6 +238,8 @@
               href: spatial-io-supported-data-format-details.md
         - name: Webbläsare som stöds av webb-SDK
           href: supported-browsers.md
+        - name: Bästa praxis
+          href: web-sdk-best-practices.md
     - name: Utveckla med Android SDK
       items:
         - name: Komma igång med Android-kartkontroll

@@ -3,19 +3,14 @@ title: Återställa Azure-Managed Disks
 description: Lär dig hur du återställer Azure-Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94adc8512987b50a8df07d295215ffcff873162f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101703757"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108595"
 ---
-# <a name="restore-azure-managed-disks-in-preview"></a>Återställa Azure Managed Disks (för hands version)
-
->[!IMPORTANT]
->Azure disk Backup är i för hands version utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). För region tillgänglighet, se [support mat ris](disk-backup-support-matrix.md).
->
->[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
+# <a name="restore-azure-managed-disks"></a>Återställa Azure-Managed Disks
 
 I den här artikeln förklaras hur du återställer [Azure-Managed disks](../virtual-machines/managed-disks-overview.md) från en återställnings punkt som skapats av Azure Backup.
 

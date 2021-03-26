@@ -1,9 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Obligatoriska fält. Läs mer på aka.ms/skyeye/meta.
-rubrik: transformeringar och jobb i Media Services: Azure Media Services Beskrivning: Lär dig hur du skapar en transformering för att beskriva reglerna för att bearbeta dina videor i Azure Media Services.
-tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 03/17/2021 MS. author: inhenkel
+rubrik: transformeringar och jobb i Media Services: Azure Media Services Beskrivning: transformeringar beskriver reglerna för att bearbeta dina videor i Azure Media Services.
+tjänster: Media-Services author: IngridAtMicrosoft Manager: femila MS. service: Media-Services MS. topic: konceptuell MS. Date: 03/22/2021 MS. author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Transformeringar och jobb i Media Services
@@ -90,12 +88,6 @@ Följande diagram visar **jobbobjektet** och de objekt som det refererar till, i
 Klicka på bilden för att visa den i full storlek.  
 
 [![Diagram som visar jobbobjektet och de objekt som det refererar till, inklusive klass härlednings relationer mellan objekten.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
-
-## <a name="configure-media-reserved-units"></a>Konfigurera reserverade enheter för media
-
-För ljud analys-och video analys jobb som utlöses av Media Services v3 eller Video Indexer, rekommenderar vi starkt att du etablerar ditt konto med 10 MRUs (S3 Media reservered units). Om du behöver fler än 10 S3-MRUs öppnar du ett support ärende med hjälp av [Azure Portal](https://portal.azure.com/).
-
-Mer information finns i [skala medie bearbetning med CLI](media-reserved-units-cli-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Ställ frågor, ge feedback, hämta uppdateringar
 

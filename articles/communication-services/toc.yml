@@ -42,7 +42,7 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Lägg till video som anropar din app (Java Script)
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: Använda klientbiblioteket för samtal
+        - name: Använd samtals-SDK
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Anslut din samtalsapp till ett Teams-möte
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
@@ -70,13 +70,13 @@
   items:
     - name: Chatt
       items:
-        - name: Översikt över klientbiblioteket för chatt
+        - name: Översikt över chatt SDK
           href: concepts/chat/sdk-features.md
         - name: Chattbegrepp
           href: concepts/chat/concepts.md
     - name: Telefoni och SMS
       items:
-        - name: Översikt över klientbiblioteket för SMS
+        - name: Översikt över SMS SDK
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS-begrepp
           href: concepts/telephony-sms/concepts.md
@@ -88,7 +88,7 @@
           href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: Röst- och videosamtal
       items:
-        - name: Översikt över klientbiblioteket för samtal
+        - name: Översikt över samtals-SDK
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Begrepp inom röst- och videosamtal
           href: concepts/voice-video-calling/about-call-types.md

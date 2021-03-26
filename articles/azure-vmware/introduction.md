@@ -2,13 +2,13 @@
 title: Introduktion
 description: Lär dig om funktionerna och fördelarna med Azure VMware-lösningen för att distribuera och hantera VMware-baserade arbets belastningar i Azure.
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579289"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048824"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Vad är Azure VMware Solution?
 
@@ -19,6 +19,11 @@ Azure VMware-lösningen är en VMware-verifierad lösning med pågående verifie
 Diagrammet visar sammanlänkning mellan privata moln och virtuella nätverk i Azure, Azure-tjänster och lokala miljöer. Nätverks åtkomst från privata moln till Azure-tjänster eller virtuella nätverk tillhandahåller SLA-driven integrering av Azures tjänst slut punkter. ExpressRoute Global Reach ansluter din lokala miljö till ditt privata moln i Azure VMware-lösningen. 
 
 ![Bild av Azure VMware-lösning för privat moln sammanlänkning till Azure och lokalt](./media/adjacency-overview-drawing-final.png)
+
+## <a name="customer-communication"></a>Kund kommunikation
+Tjänst problem, planerat underhåll, hälso-och sjukvårds meddelanden, säkerhets rådgivare publiceras via **service Health** i Azure Portal. Du kan vidta åtgärder när du ställer in aktivitets logg aviseringar för dessa aviseringar. Mer information finns i [Skapa service Health-aviseringar med hjälp av Azure Portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+
+:::image type="content" source="media/service-health.png" alt-text="Skärm bild av Service Health meddelanden":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Värdar, kluster och privata moln
 

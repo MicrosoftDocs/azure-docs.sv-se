@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 2d1c3d3be412f6f11f9d2e300b3a97cf5634f5e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6cdcd0add81f305a0260870da0ecd507db292499
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495462"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107098"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -39,7 +39,7 @@ Använd en text redigerare för att skapa en fil med namnet **Start-chat.py** i 
 
 ```python
 import os
-# Add required client library components from quickstart here
+# Add required SDK components from quickstart here
 
 try:
     print('Azure Communication Services - Chat Quickstart')
@@ -49,7 +49,7 @@ except Exception as ex:
     print(ex)
 ```
 
-### <a name="install-client-library"></a>Installera klient bibliotek
+### <a name="install-sdk"></a>Installera SDK
 
 ```console
 
@@ -59,7 +59,7 @@ pip install azure-communication-chat
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för python.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Chat SDK för python.
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
