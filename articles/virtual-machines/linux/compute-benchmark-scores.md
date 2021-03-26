@@ -2,17 +2,17 @@
 title: Beräkna benchmark-resultat för virtuella Azure Linux-datorer
 description: Jämför CoreMark Compute benchmark Scores för virtuella Azure-datorer som kör Linux.
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: benchmark
 ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: ef60bbfe19e10dcd98ca3691e1fdf0d03d07be24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04581e34444f929f32af647850766d4df50bf98b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102558669"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954079"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Beräkna benchmark-resultat för virtuella Linux-datorer
 Följande CoreMark benchmark-resultat visar beräknings prestanda för Azures höga prestanda i VM-serien som kör Ubuntu. Beräknings benchmark-resultat är också tillgängliga för [virtuella Windows-datorer](../windows/compute-benchmark-scores.md).

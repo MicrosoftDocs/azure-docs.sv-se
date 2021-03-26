@@ -21,7 +21,7 @@
 - name: Exempel
   items:
     - name: Exempel webbläsare
-      href: 'https://docs.microsoft.com/samples/browse/?terms=content%20moderator'
+      href: /samples/browse/?terms=content+moderator
     - name: .NET SDK-exempel
       href: samples-dotnet.md
     - name: Python SDK-exempel
@@ -119,11 +119,11 @@
     - name: Stöd för regioner
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Microsoft Learn moduler
-      href: 'https://docs.microsoft.com/learn/browse/?terms=content%20moderator'
+      href: /learn/browse/?terms=content+moderator
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
     - name: Azure Government och Global Azure
-      href: 'https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure'
+      href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Efterlevnad

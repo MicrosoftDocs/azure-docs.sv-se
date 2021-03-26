@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2a753a33e9ddf16cc277ab10c1f91049a6382066
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931623"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871953"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synkronisera Azure Active Directory-användare med ett HDInsight-kluster
 
@@ -29,11 +29,11 @@ Om du vill visa dina värdar öppnar du Ambari-webbgränssnittet. Varje nod komm
 
 2. Välj **alla användare** på menyn till vänster och välj sedan **ny användare**.
 
-    ![Azure Portal användare och grupper alla](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png" alt-text="Azure Portal användare och grupper alla":::
 
 3. Slutför det nya användar formuläret. Välj grupper som du har skapat för att tilldela kluster baserade behörigheter. I det här exemplet skapar du en grupp med namnet "HiveUsers" som du kan tilldela nya användare till. I [exempel anvisningarna](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) för att skapa ett ESP-kluster ingår att lägga till två grupper `HiveUsers` och `AAD DC Administrators` .
 
-    ![Välj grupper i fönstret Azure Portal användare](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png" alt-text="Välj grupper i fönstret Azure Portal användare":::
 
 4. Välj **Skapa**.
 
@@ -129,15 +129,15 @@ Följande metod använder POST med Ambari-REST API. Mer information finns i [Han
 
 1. Från Ambari-instrumentpanelen väljer du **Hantera Ambari** under **Administratörs** menyn.
 
-    ![Apache Ambari-instrumentpanel hantera Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png" alt-text="Apache Ambari-instrumentpanel hantera Ambari":::
 
 2. Välj **användare** under meny gruppen användar-och **grupp hantering** till vänster på sidan.
 
-    ![HDInsight-användare och grupper-menyn](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png" alt-text="HDInsight-användare och grupper-menyn":::
 
 3. Den nya användaren ska visas i tabellen användare. Typen anges till `LDAP` i stället för  `Local` .
 
-    ![Översikt över HDInsight AAD-användare](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png" alt-text="Översikt över HDInsight AAD-användare":::
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Logga in på Ambari som den nya användaren
 

@@ -5,12 +5,12 @@ description: Lär dig hur du skapar en RDP-anslutning med Windows Server-noder i
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4b6ccc05d1cb49a77a2867dfc1c5fe5f45134dd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173825"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951920"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Ansluta med RDP till Azure Kubernetes service (AKS) Cluster Windows Server-noder för underhåll eller fel sökning
 
@@ -20,7 +20,7 @@ Den här artikeln visar hur du skapar en RDP-anslutning med en AKS-nod med hjäl
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln förutsätter att du har ett befintligt AKS-kluster med en Windows Server-nod. Om du behöver ett AKS-kluster kan du läsa artikeln om att [skapa ett AKS-kluster med en Windows-behållare med hjälp av Azure CLI][aks-windows-cli]. Du behöver Windows-administratörens användar namn och lösen ord för den Windows Server-nod som du vill felsöka. Om du inte känner till dem kan du återställa dem genom att följa [Återställnings Fjärrskrivbordstjänster eller dess administratörs lösen ord på en virtuell Windows-dator ](../virtual-machines/troubleshooting/reset-rdp.md). Du behöver också en RDP-klient som [Microsoft fjärrskrivbord][rdp-mac].
+Den här artikeln förutsätter att du har ett befintligt AKS-kluster med en Windows Server-nod. Om du behöver ett AKS-kluster kan du läsa artikeln om att [skapa ett AKS-kluster med en Windows-behållare med hjälp av Azure CLI][aks-windows-cli]. Du behöver Windows-administratörens användar namn och lösen ord för den Windows Server-nod som du vill felsöka. Om du inte känner till dem kan du återställa dem genom att följa [Återställnings Fjärrskrivbordstjänster eller dess administratörs lösen ord på en virtuell Windows-dator ](/troubleshoot/azure/virtual-machines/reset-rdp). Du behöver också en RDP-klient som [Microsoft fjärrskrivbord][rdp-mac].
 
 Du måste också ha Azure CLI-versionen 2.0.61 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 

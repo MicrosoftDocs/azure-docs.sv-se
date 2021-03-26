@@ -4,12 +4,12 @@ description: Lär dig hur du navigerar till bästa praxis för att köra Hive-fr
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933118"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869794"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Gateway-djupgående och bästa praxis för Apache Hive i Azure HDInsight
 
@@ -21,7 +21,7 @@ HDInsight-gatewayen är den enda delen av ett HDInsight-kluster som är offentli
 
 Följande diagram ger en tydlig illustration av hur gatewayen ger en abstraktion framför alla olika värd upplösnings möjligheter i HDInsight.
 
-![Värd matchnings diagram](./media/gateway-best-practices/host-resolution-diagram.png "Värd matchnings diagram")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="Värd matchnings diagram" border="true":::
 
 ## <a name="motivation"></a>Motivation
 
@@ -39,7 +39,7 @@ Gatewayens prestanda försämring kring frågor med stor storlek beror på att d
 
 Följande diagram illustrerar de steg som ingår i en SELECT-fråga.
 
-![Resultat diagram](./media/gateway-best-practices/result-retrieval-diagram.png "Resultat diagram")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="Resultat diagram" border="true":::
 
 Apache Hive är en relationell abstraktion ovanpå ett HDFS-kompatibelt fil system. Den här abstraktionen innebär att **Select** -instruktioner i Hive motsvarar **Läs** åtgärder i fil systemet. **Läs** åtgärder översätts till lämpligt schema innan de rapporteras till användaren. Svars tiden för den här processen ökar med data storlek och totalt antal hopp som krävs för att komma åt slutanvändaren.
 

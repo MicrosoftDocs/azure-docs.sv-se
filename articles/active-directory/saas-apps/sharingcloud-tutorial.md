@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 3f5c189e63a8be3c9c46c406ab7bd0250dc75ec5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f663a81a86aae2fe11611aa1d6ab19f89ebcf6d1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633503"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950050"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SharingCloud
 
@@ -148,10 +148,9 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den SharingCloud som du har konfigurerat SSO för. 
 
-Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen SharingCloud i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på SharingCloud som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen SharingCloud i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på SharingCloud som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
 När du har konfigurerat SharingCloud kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
-

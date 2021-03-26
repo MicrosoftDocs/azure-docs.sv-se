@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 224ebae58a5688f81d1b64b4a9c81d5abd8a9690
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930045"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868859"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Använd Apache Spark MLlib för att bygga ett Machine Learning-program och analysera en data uppsättning
 
@@ -175,7 +175,7 @@ Vi börjar med att få en uppfattning om vad data uppsättningen innehåller.
 
     Utdata ser ut så här:
 
-    ![SQL-frågans utdata](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-frågans utdata")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png " alt-text="SQL-frågans utdata" border="true":::
 
 3. Du kan också använda matplotlib, ett bibliotek som används för att konstruera visualisering av data, för att skapa en rityta. Eftersom området måste skapas från det lokalt sparade **countResultsdf** -dataframe måste kodfragmentet börja med `%%local` Magic. Den här åtgärden säkerställer att koden körs lokalt på Jupyter-servern.
 
@@ -348,7 +348,7 @@ Nu kan du skapa en slutgiltig visualisering som hjälper dig att få en anlednin
 
     Du bör se följande utdata:
 
-    ![Spark Machine Learning Application utdata-cirkel diagram procent av misslyckade kost-kontroller.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark Machine Learning resultat utdata")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png " alt-text="Spark Machine Learning Application utdata-cirkel diagram procent av misslyckade kost-kontroller." border="true":::
 
     I det här diagrammet refererar ett "positivt" resultat till undersökningen om misslyckad livsmedel, medan ett negativt resultat refererar till en klar inspektion.
 

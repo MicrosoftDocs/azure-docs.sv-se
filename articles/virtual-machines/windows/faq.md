@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0de25b29dc1e930956c01f342ca2614d1a9082ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2dc94ea904da128be01decf36e2d36dc9510c2a5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557513"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043893"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Vanliga frågor om Virtuella Windows-datorer
 Den här artikeln behandlar några vanliga frågor om virtuella Windows-datorer som skapats i Azure med hjälp av distributions modellen Resource Manager. Linux-versionen av det här avsnittet finns i [vanliga frågor och svar om virtuella Linux-datorer](../linux/faq.md).
@@ -33,7 +33,7 @@ Azure Storage-konton kan också tillhandahålla lagring för operativ system dis
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hur får jag åtkomst till min virtuella dator?
 Upprätta en fjärr anslutning med hjälp av Anslutning till fjärrskrivbord (RDP) för en virtuell Windows-dator. Instruktioner finns i [så här ansluter du och loggar in på en virtuell Azure-dator som kör Windows](connect-logon.md). Högst två samtidiga anslutningar stöds, om inte servern har kon figurer ATS som en Fjärrskrivbordstjänster-värd för sessionen.  
 
-Om du har problem med fjärr skrivbord kan du läsa [Felsök fjärr skrivbords anslutningar till en Windows-baserad virtuell Azure-dator](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
+Om du har problem med fjärr skrivbord kan du läsa [Felsök fjärr skrivbords anslutningar till en Windows-baserad virtuell Azure-dator](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Om du är bekant med Hyper-V kan du söka efter ett verktyg som liknar VMConnect. Azure erbjuder inget liknande verktyg eftersom det inte finns stöd för konsol åtkomst till en virtuell dator.
 

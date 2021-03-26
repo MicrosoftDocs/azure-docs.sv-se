@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 2a9f0a8c943f539166f18a1e41a36136fbb63a6f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584299"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868655"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Använda Apache Spark (drivs av Azure Synapse Analytics) i din Machine Learning pipeline (för hands version)
 
@@ -92,6 +92,8 @@ Det första steget är att konfigurera `SynapseCompute` . `linked_service`Argume
 När konfigurationen har skapats skapar du en maskin inlärning `ComputeTarget` genom att skicka in `Workspace` , `ComputeTargetAttachConfiguration` och det namn som du vill referera till i beräkningen i Machine Learning-arbetsytan. Anropet till `ComputeTarget.attach()` är asynkront, så exempel blocken tills anropet har slutförts.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>Skapa en `SynapseSparkStep` som använder den länkade Apache Spark poolen
+
+Exempel jobbet för notebook [Spark på Apache Spark-poolen](https://github.com/azure/machinelearningnotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) definierar en enkel Machine Learning-pipeline. Först definierar antecknings boken ett data förberedelse steg som drivs av den som `synapse_compute` definierades i föregående steg. Antecknings boken definierar sedan ett utbildnings steg som drivs av ett beräknings mål som passar bättre för träning. I exempel antecknings boken används Titanic överlevnads databas för att demonstrera indata och utdata. den rensar egentligen inte data eller skapar en förutsägelse modell. Eftersom det inte finns någon verklig utbildning i det här exemplet använder inlärnings steget en billig, PROCESSORbaserade beräknings resurs.
 
 Data flödar till en Machine Learning-pipeline med hjälp av `DatasetConsumptionConfig` objekt, som kan innehålla tabell data eller uppsättningar av filer. Data kommer ofta från filer i Blob Storage i data lagret för en arbets yta. Följande kod visar en typisk kod för att skapa indatatyper för en Machine Learning-pipeline:
 

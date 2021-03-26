@@ -4,12 +4,12 @@ description: Lär dig mer om tekniker för att kontrol lera inkommande och utgå
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 66b078e8dfa1daa100978f04283e9bba7158bddf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943368"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867040"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Kontrol lera nätverks trafik i Azure HDInsight
 
@@ -21,7 +21,7 @@ Nätverks trafik i virtuella Azure-nätverk kan kontrol leras med hjälp av föl
 
 Som en hanterad tjänst kräver HDInsight obegränsad åtkomst till HDInsight-hälso-och hanterings tjänsterna både för inkommande och utgående trafik från det virtuella nätverket. När du använder NSG: er måste du se till att dessa tjänster fortfarande kan kommunicera med HDInsight-kluster.
 
-![Diagram över HDInsight-entiteter som skapats i Azure anpassat VNET](./media/control-network-traffic/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/control-network-traffic/hdinsight-vnet-diagram.png" alt-text="Diagram över HDInsight-entiteter som skapats i Azure anpassat VNET" border="false":::
 
 ## <a name="hdinsight-with-network-security-groups"></a>HDInsight med nätverks säkerhets grupper
 

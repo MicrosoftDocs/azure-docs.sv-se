@@ -26,7 +26,7 @@
 - name: Självstudier
   items:
     - name: Ansluta IoT-enheter på ett säkert sätt till molnet
-      href: /learn/paths/securely-connect-iot-devices/
+      href: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
 - name: Begrepp
   items:
     - name: Anslutnings alternativ för enhets utvecklare

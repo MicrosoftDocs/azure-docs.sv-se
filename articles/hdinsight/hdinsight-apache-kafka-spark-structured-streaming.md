@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: d352fc86f4451f60951b84929ad5d9450c1003d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72c82e8f425b05dde37352225dd7167b089ba48a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942792"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868468"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Självstudie: Använda Apache Spark Structured Streaming med Apache Kafka i HDInsight
 
@@ -113,7 +113,7 @@ Apache Kafka i HDInsight ger inte åtkomst till Kafka-utjämnare via det offentl
 
 Följande diagram visar hur kommunikation flödar mellan Apache Spark och Kafka:
 
-![Diagram över Apache Spark- och Kafka-kluster i ett virtuellt Azure-nätverk](./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png" alt-text="Diagram över Apache Spark- och Kafka-kluster i ett virtuellt Azure-nätverk" border="false":::
 
 > [!NOTE]  
 > Kafka-tjänsten är begränsad till kommunikation inom det virtuella nätverket. Andra tjänster på klustret, till exempel SSH och Ambari, kan nås via Internet. Mer information om de offentliga portar som är tillgängliga med HDInsight finns i [Portar och URI:er som används av HDInsight](hdinsight-hadoop-port-settings-for-services.md).
@@ -149,7 +149,7 @@ Om du vill skapa ett Azure Virtual Network och sedan skapa Kafka- och Spark-klus
     | SSH-användarnamn | SSH-användare som ska skapas för klustren. |
     | SSH-lösenord | Lösenord för SSH-användaren. |
 
-    ![Skärmbild av den anpassade mallen](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
+    :::image type="content" source="./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png" alt-text="Skärmbild av den anpassade mallen":::
 
 3. Läs de **allmänna** villkoren och välj sedan **Jag godkänner villkoren som anges ovan**.
 

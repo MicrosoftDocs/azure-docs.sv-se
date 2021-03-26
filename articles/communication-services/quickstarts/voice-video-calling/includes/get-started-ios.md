@@ -1,22 +1,22 @@
 ---
 title: Snabb start – Lägg till samtal till en iOS-app med Azure Communication Services
-description: I den här snabb starten får du lära dig hur du använder Azure Communication-tjänsterna som anropar klient biblioteket för iOS.
+description: I den här snabb starten får du lära dig hur du använder Azure Communication Services som anropar SDK för iOS.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719609"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108322"
 ---
-I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för iOS.
+I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för iOS.
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 8 av det anropande klient biblioteket.
+> Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -119,11 +119,11 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.|
+| CallClient | CallClient är den huvudsakliga start punkten för den anropande SDK: n.|
 | CallAgent | CallAgent används för att starta och hantera samtal. |
 | CommunicationTokenCredential | CommunicationTokenCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.| 
 | CommunicationUserIdentifier | CommunicationUserIdentifier används för att representera identiteten för användaren som kan vara något av följande: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |

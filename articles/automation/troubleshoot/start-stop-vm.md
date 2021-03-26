@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6d2696a68643f87de0fcaf2e723da9365d9953e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99053592"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953858"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Felsöka Starta/stoppa virtuella datorer när de inte används problem
 
@@ -149,7 +149,7 @@ Läs följande lista för möjliga lösningar:
   ```
 
 * För att starta och stoppa virtuella datorer måste kör som-kontot för Automation-kontot ha nödvändig behörighet för den virtuella datorn. Information om hur du kontrollerar behörigheter för en resurs finns i [snabb start: Visa roller tilldelade till en användare med hjälp av Azure Portal](../../role-based-access-control/check-access.md). Du måste ange program-ID för tjänstens huvud namn som används av kör som-kontot. Du kan hämta det här värdet genom att gå till ditt Automation-konto i Azure Portal. Välj **Kör som-konton** under **konto inställningar** och välj lämpligt kör som-konto.
-* Om den virtuella datorn har problem med att starta eller att allokera kan det finnas ett problem på den virtuella datorn. Exempel är en uppdatering som tillämpas när den virtuella datorn försöker stängas av, en tjänst som låser sig och mer. Gå till den virtuella dator resursen och kontrol lera **aktivitets loggarna** för att se om det finns några fel i loggarna. Du kan också försöka logga in på den virtuella datorn för att se om det finns några fel i händelse loggarna. Mer information om hur du felsöker din virtuella dator finns i [Felsöka Azure Virtual Machines](../../virtual-machines/troubleshooting/index.yml).
+* Om den virtuella datorn har problem med att starta eller att allokera kan det finnas ett problem på den virtuella datorn. Exempel är en uppdatering som tillämpas när den virtuella datorn försöker stängas av, en tjänst som låser sig och mer. Gå till den virtuella dator resursen och kontrol lera **aktivitets loggarna** för att se om det finns några fel i loggarna. Du kan också försöka logga in på den virtuella datorn för att se om det finns några fel i händelse loggarna. Mer information om hur du felsöker din virtuella dator finns i [Felsöka Azure Virtual Machines](/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 * Kontrol lera [jobb strömmarna](../automation-runbook-execution.md#job-statuses) för att leta efter eventuella fel. I portalen går du till ditt Automation-konto och väljer **jobb** under **process automatisering**.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Scenario: min anpassade Runbook kan inte starta eller stoppa mina virtuella datorer

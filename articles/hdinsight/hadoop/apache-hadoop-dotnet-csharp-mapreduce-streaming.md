@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8093db9c53d9c34014d1b315d53539b3f2cffb30
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699393"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866717"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Använda C# med MapReduce streaming på Apache Hadoop i HDInsight
 
@@ -150,7 +150,7 @@ Därefter måste du ladda upp *mapparna* och *minska* programmen till HDInsight-
 
 1. Expandera det HDInsight-kluster som du vill distribuera programmet till. En post med texten **(standard lagrings kontot)** visas.
 
-   ![Lagrings konto, HDInsight-kluster, Server Explorer, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
+   :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png" alt-text="Lagrings konto, HDInsight-kluster, Server Explorer, Visual Studio" border="true":::
 
    * Om posten **(standard lagrings konto)** kan expanderas använder du ett **Azure Storage konto** som standard lagring för klustret. Om du vill visa filerna på standard lagrings utrymmet för klustret, expanderar du posten och dubbelklickar sedan på **(standard behållare)**.
 
@@ -160,7 +160,7 @@ Därefter måste du ladda upp *mapparna* och *minska* programmen till HDInsight-
 
     * Om du använder ett **Azure Storage konto** väljer du ikonen **Ladda upp BLOB** .
 
-        ![HDInsight upload-ikon för Mapper, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png" alt-text="HDInsight upload-ikon för Mapper, Visual Studio" border="true":::
 
         Välj **Bläddra** under **fil namn** i dialog rutan **Ladda upp ny fil** . I dialog rutan **Ladda upp BLOB** går du till mappen *bin\debug* för *Mapper* -projektet och väljer sedan filen *mapper.exe* . Klicka slutligen på **Öppna** och sedan på **OK** för att slutföra överföringen.
 

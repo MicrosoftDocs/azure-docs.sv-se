@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43b46d19503856f5eae38272299f73d9c80055b8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942985"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868893"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrera ett Apache HBase-kluster till en ny version
 
@@ -49,7 +49,7 @@ Utför följande steg för att uppgradera ditt Apache HBase-kluster på Azure HD
 
 1. Skapa [ett nytt mål HDInsight-kluster](../hdinsight-hadoop-provision-linux-clusters.md) med samma lagrings konto, men med ett annat behållar namn:
 
-   ![Använd samma lagrings konto, men skapa en annan behållare](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/same-storage-different-container.png" alt-text="Använd samma lagrings konto, men skapa en annan behållare" border="true":::
 
 1. Rensa ditt käll HBase-kluster, vilket är det kluster som du uppgraderar. HBase skriver inkommande data till ett minnes intern lager, som kallas för en _memstores_. När memstores har nått en viss storlek tömmer HBase den till disk för långsiktig lagring i klustrets lagrings konto. När du tar bort det gamla klustret återvinns memstores, vilket kan förlora data. Om du vill tömma memstores manuellt för varje tabell till disk kör du följande skript. Den senaste versionen av det här skriptet finns på Azures [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh).
 
@@ -175,9 +175,9 @@ Utför följande steg för att uppgradera ditt Apache HBase-kluster på Azure HD
 
 1. Logga in på [Apache Ambari](https://ambari.apache.org/) på det gamla klustret ( `https://OLDCLUSTERNAME.azurehdidnsight.net` ) och stoppa HBase-tjänsterna. När du uppmanas att bekräfta att du vill stoppa tjänsterna ska du markera kryss rutan för att aktivera underhålls läget för HBase. Mer information om hur du ansluter till och använder Ambari finns i [Hantera HDInsight-kluster med hjälp av Ambari-WEBBgränssnittet](../hdinsight-hadoop-manage-ambari.md).
 
-    ![I Ambari klickar du på tjänster > HBase > stoppa under tjänst åtgärder](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
+    :::image type="content" source="./media/apache-hbase-migrate-new-version/stop-hbase-services1.png" alt-text="I Ambari klickar du på tjänster > HBase > stoppa under tjänst åtgärder" border="true":::
 
-    ![Markera kryss rutan Aktivera underhålls läge för HBase och bekräfta sedan](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png" alt-text="Markera kryss rutan Aktivera underhålls läge för HBase och bekräfta sedan" border="true":::
 
 1. Hoppa över det här steget om du inte använder HBase-kluster med funktionen för förbättrade skrivningar. Det behövs bara för HBase-kluster med förbättrade skrivningar.
 
@@ -190,15 +190,15 @@ Utför följande steg för att uppgradera ditt Apache HBase-kluster på Azure HD
     
 1. Logga in på Ambari på det nya HDInsight-klustret. Ändra `fs.defaultFS` HDFS-inställningen så att den pekar på det behållar namn som används av det ursprungliga klustret. Den här inställningen finns under **HDFS > configs > avancerad > Advanced Core-site**.
 
-   ![I Ambari klickar du på tjänster > HDFS > config > Avancerat](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png" alt-text="I Ambari klickar du på tjänster > HDFS > config > Avancerat" border="true":::
 
-   ![I Ambari ändrar du behållar namnet](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name.png" alt-text="I Ambari ändrar du behållar namnet" border="true":::
 
 1. Hoppa över det här steget om du inte använder HBase-kluster med funktionen för förbättrade skrivningar. Det behövs bara för HBase-kluster med förbättrade skrivningar.
 
    Ändra `hbase.rootdir` sökvägen så att den pekar på den ursprungliga klustrets behållare.
 
-   ![I Ambari ändrar du behållar namnet för HBase rootdir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png" alt-text="I Ambari ändrar du behållar namnet för HBase rootdir" border="true":::
     
 1. Hoppa över det här steget om du inte använder HBase-kluster med funktionen för förbättrade skrivningar. Det behövs bara för HBase-kluster med förbättrade skrivningar och endast i de fall där ditt ursprungliga kluster var ett HBase-kluster med förbättrade skrivningar.
 

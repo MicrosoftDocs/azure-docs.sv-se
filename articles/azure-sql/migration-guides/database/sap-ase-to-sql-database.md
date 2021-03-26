@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 81956a16142f314f54afd9d5a1b9055a559e906c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fd03ebc87a1c0ef0a55b0e6ac0be6d841fee4b0a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565336"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027303"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Migration guide: SAP ASE till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 I den här guiden får du lära dig att migrera dina SAP ASE-databaser till Azure SQL Database att använda SQL Server Migration Assistant för SAP adapter Server Enterprise.
 
-Mer information om andra biflyttnings guider finns i [databas migrering](https://datamigration.microsoft.com/). 
+Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
@@ -29,6 +29,8 @@ Om du vill migrera din SAP SE-databas till Azure SQL Database behöver du:
 
 - för att verifiera att din käll miljö stöds. 
 - [SQL Server Migration Assistant for SAP adaptiv Server Enterprise (tidigare SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256). 
+- Anslutning och tillräcklig behörighet för att få åtkomst till både källa och mål. 
+
 
 ## <a name="pre-migration"></a>Före migrering
 
@@ -44,10 +46,10 @@ Följ dessa steg om du vill skapa en utvärdering:
 1. Välj **fil** och välj sedan **nytt projekt**. 
 1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan Azure SQL Database som mål för migreringen från List rutan. Välj **OK**.
 1. Ange värden för SAP-anslutnings information i dialog rutan **Anslut till Sybase** . 
-1. Högerklicka på SAP-databasen som du vill migrera och välj sedan **Skapa rapport**. Detta genererar en HTML-rapport.
-1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av DB2-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects.
+1. Högerklicka på SAP-databasen som du vill migrera och välj sedan **Skapa rapport**. Detta genererar en HTML-rapport. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt databasen:
+1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av SAP ASE-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects.
 
-   Exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Exempel: `drive:\<username>\Documents\SSMAProjects\MySAPMigration\report\report_<date>`. 
 
 
 ### <a name="validate-type-mappings"></a>Validera typ mappningar
@@ -66,8 +68,8 @@ Följ dessa steg om du vill konvertera schemat:
 
    Efter schema konverteringen kan du spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till Azure SQL Database.
 
-Läs mer i [konvertera schema](/sql/ssma/sybase/converting-sybase-ase-database-objects-sybasetosql)
-
+1. Välj **gransknings resultat** i fönstret utdata och granska fel i **fel listans** fönster. 
+1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Database.
 
 ## <a name="migrate"></a>Migrera 
 
@@ -75,10 +77,10 @@ När du har de nödvändiga förutsättningarna och har slutfört de uppgifter s
 
 Följ dessa steg om du vill publicera schemat och migrera data: 
 
-1. Högerklicka på databasen i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**.  Den här åtgärden publicerar SAP ASE-schemat till Azure SQL Database-instansen.
-1. Högerklicka på SAP ASE-schemat i **SAP ASE metadata Explorer** och välj **migrera data**.  Alternativt kan du välja **migrera data** från det övre navigerings fältet.  
+1. Publicera schemat: Högerklicka på databasen i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**.  Den här åtgärden publicerar SAP ASE-schemat till Azure SQL Database-instansen.
+1. Migrera data: Högerklicka på databasen eller objektet som du vill migrera i **SAP ASE metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** från det övre navigerings fältet. Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar tabeller och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller: 
 1. När migreringen är klar kan du Visa **data flyttnings rapporten**: 
-1. Verifiera migreringen genom att granska data och schemat på Azure SQL Database-instansen med Azure SQL Database Management Studio (SSMS).
+1. Anslut till din Azure SQL Database genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema. 
 
 
 ## <a name="post-migration"></a>Efter migreringen 

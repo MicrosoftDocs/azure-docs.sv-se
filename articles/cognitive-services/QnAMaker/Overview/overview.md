@@ -7,18 +7,20 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA Maker, robotar med låg kod, flera konversationer
-ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 8df9daa213156fc38ed08bced44ea919da95e6a4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919569"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869216"
 ---
 # <a name="what-is-qna-maker"></a>Vad är QnA Maker?
 
 QnA Maker är en molnbaserad NLP-tjänst (Natural Language Processing) som gör att du kan skapa ett naturligt samtals lager över dina data. Den används för att hitta det lämpligaste svaret för indata från din anpassade kunskaps bas (KB) information.
 
 QnA Maker används ofta för att bygga konversations klient program, bland annat sociala medie program, chatt-robotar och talbaserade Skriv bords program.
+
+QnA Maker lagrar inte kund information. Alla kunddata (fråge svar och chatlogs) lagras i den region som kunden distribuerar de beroende tjänst instanserna i. Mer information om beroende tjänster finns [här](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/plan?tabs=v1).
 
 ## <a name="when-to-use-qna-maker"></a>När du ska använda QnA Maker
 

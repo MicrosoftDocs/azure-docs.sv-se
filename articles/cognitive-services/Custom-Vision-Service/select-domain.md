@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095671"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889356"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Välj en domän för ett Custom Vision-projekt
 
@@ -25,12 +25,17 @@ På fliken Inställningar i Custom Vision projektet kan du välja en domän för
 
 |Domain|Syfte|
 |---|---|
-|__Allmänt__| Optimerad för ett brett utbud av bild klassificerings aktiviteter. Om ingen av de andra domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du den allmänna domänen. IDENTITET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Allmänt__| Optimerad för ett brett utbud av bild klassificerings aktiviteter. Om ingen av de andra speciella domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du en av de allmänna domänerna. IDENTITET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
 |__Allmänt [a1]__| Optimerad för bättre precision med jämförbar fördröjning som allmän domän. Rekommenderas för större data uppsättningar eller svårare användar scenarier. Den här domänen kräver mer utbildnings tid. IDENTITET `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
+|__Allmänt [a2]__| Optimerad för bättre precision med snabbare svars tid än allmänna [a1] och allmänna domäner. Rekommenderas för de flesta data uppsättningar. Den här domänen kräver mindre inlärnings tid än allmänna och allmänna [a1]-domäner. IDENTITET `2e37d7fb-3a54-486a-b4d6-cfc369af0018` |
 |__Kost__|Optimerad för foton av rätter på samma sätt som du ser dem på en restaurang meny. Om du vill klassificera fotografier av enskilda frukter eller grönsaker använder du livsmedels domänen. IDENTITET `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Landmärken__|Optimerad för identifierbara landmärken, både naturliga och artificiella. Den här domänen fungerar bäst när landmärket är tydligt synligt i fotografiet. Den här domänen fungerar även om landmärken är något som är något som står framför det. IDENTITET `ca455789-012d-4b50-9fec-5bb63841c793`|
 |__Retail__|Optimerad för avbildningar som finns i en shopping katalog eller shopping webbplats. Om du vill klassificera hög precision mellan dresses, Pants och skjortor använder du den här domänen. IDENTITET `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Komprimerade domäner__| Optimerad för begränsningar i real tids klassificering av gräns enheter.|
+
+
+> [!NOTE]
+> De allmänna [a1]-och allmänna [a2]-domänerna kan användas för en rad olika scenarier och är optimerade för noggrannhet. Använd modellen allmänt [a2] för bättre hastighet och kortare utbildnings tid. För större data uppsättningar kanske du vill använda allmän [a1] för att återge bättre precision än vad som är allmänt [a2], även om det krävs mer utbildning och fördröjning. Den allmänna modellen kräver mer härlednings tid än både allmänt [a1] och allmänt [a2].
 
 ## <a name="object-detection"></a>Objektidentifiering
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929825"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868723"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Hantera Python-miljön i Azure HDInsight på ett säkert sätt med skriptåtgärd
 
@@ -104,7 +104,7 @@ HDInsight-kluster är beroende av den inbyggda python-miljön, både python 2,7 
 
     1. Öppna Ambari UI, gå till sidan Spark2, fliken konfigurationer.
 
-        ![Ändra Spark-och livy-konfiguration via Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="Ändra Spark-och livy-konfiguration via Ambari" border="true":::
 
     2. Expandera Advanced livy2-kuvert, Lägg till under uttryck i nederkant. Om du har installerat den virtuella miljön med ett annat prefix ändrar du sökvägen på motsvarande sätt.
 
@@ -113,7 +113,7 @@ HDInsight-kluster är beroende av den inbyggda python-miljön, både python 2,7 
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Ändra livy-konfiguration via Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="Ändra livy-konfiguration via Ambari" border="true":::
 
     3. Expandera Advanced spark2-kuvert, Ersätt den befintliga exporten PYSPARK_PYTHON-instruktionen längst ned. Om du har installerat den virtuella miljön med ett annat prefix ändrar du sökvägen på motsvarande sätt.
 
@@ -121,11 +121,11 @@ HDInsight-kluster är beroende av den inbyggda python-miljön, både python 2,7 
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Ändra Spark-konfiguration via Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="Ändra Spark-konfiguration via Ambari" border="true":::
 
     4. Spara ändringarna och starta om berörda tjänster. Dessa ändringar kräver en omstart av Spark2-tjänsten. Ambari UI upprättar en nödvändig omstart, klicka på Starta om för att starta om alla berörda tjänster.
 
-        ![Starta om tjänster](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="Starta om tjänster" border="true":::
 
     5. Ange två egenskaper till Spark-sessionen för att säkerställa att jobbet pekar på den uppdaterade Spark-konfigurationen: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` och `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
 
@@ -153,7 +153,7 @@ HDInsight-kluster är beroende av den inbyggda python-miljön, både python 2,7 
 
     Du kan dubbelt kontrol lera python-miljön i Jupyter Notebook genom att köra nedanstående kod:
 
-    ![Kontrol lera python-versionen i Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Kontrol lera python-versionen i Jupyter Notebook" border="true":::
 
 ## <a name="known-issue"></a>Kända problem
 

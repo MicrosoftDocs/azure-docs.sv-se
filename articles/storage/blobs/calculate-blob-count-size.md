@@ -8,12 +8,12 @@ ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 92e5b00cd655677cdc3096bc2142dfe1b704adf2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1aa91ea0f698e609e786d87a0072e6a07c143a3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102638679"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047325"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Beräkna antal blobar och Total storlek per behållare med hjälp av Azure Storage inventering
 
@@ -43,7 +43,7 @@ När du har en inventerings rapport som ska analyseras kan du ge dig till gång 
 
 ## <a name="create-an-azure-synapse-workspace"></a>Skapa en Azure Synapse-arbetsyta
 
-Skapa sedan en [Azure Synapse-arbetsyta](/azure/synapse-analytics/get-started-create-workspace) där du kan köra en SQL-fråga för att rapportera inventerings resultatet.
+Skapa sedan en [Azure Synapse-arbetsyta](../../synapse-analytics/get-started-create-workspace.md) där du kan köra en SQL-fråga för att rapportera inventerings resultatet.
 
 ## <a name="create-the-sql-query"></a>Skapa SQL-frågan
 
@@ -58,7 +58,7 @@ Utför följande steg när du har skapat din Azure dataSynapses-arbetsyta.
 
 ## <a name="run-the-sql-query"></a>Kör SQL-frågan
 
-1. Lägg till följande SQL-fråga i din Azure Synapse-arbetsyta för att [läsa lager-CSV-filen](/azure/synapse-analytics/sql/query-single-csv-file#read-a-csv-file).
+1. Lägg till följande SQL-fråga i din Azure Synapse-arbetsyta för att [läsa lager-CSV-filen](../../synapse-analytics/sql/query-single-csv-file.md#read-a-csv-file).
 
     För `bulk` parametern använder du webb adressen för den CSV-fil för inventerings rapport som du vill analysera.
 

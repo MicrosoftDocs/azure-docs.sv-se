@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 204a7ff77b4dd32ef62e1a06c66d50d7b30fcfc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e403fb8bcd25d1274eda287bc62465bacdb9b613
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496141"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045475"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Hjälp och support alternativ för Azure Communication Services
 
@@ -24,9 +24,9 @@ Med Azure finns det många [Support alternativ och tillgängliga planer](https:/
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Skicka en fråga till Microsoft Q&A
 
-För snabba och pålitliga svar på produkter eller tekniska frågor kan du ha om Azures kommunikations tjänster från Microsoft-tekniker, Azure Most Valuable profession ALS (MVP) eller vår community, engagera oss på [Microsoft Q&A](https://docs.microsoft.com/answers/products/azure). 
+För snabba och pålitliga svar på produkter eller tekniska frågor kan du ha om Azures kommunikations tjänster från Microsoft-tekniker, Azure Most Valuable profession ALS (MVP) eller vår community, engagera oss på [Microsoft Q&A](/answers/products/azure). 
 
-Om du inte kan hitta ett svar på problemet genom att söka kan du skicka en ny fråga till Microsoft Q&A. När du skapar en fråga bör du använda [Azure Communication Services-taggen](https://docs.microsoft.com/answers/topics/azure-communication-services.html).
+Om du inte kan hitta ett svar på problemet genom att söka kan du skicka en ny fråga till Microsoft Q&A. När du skapar en fråga bör du använda [Azure Communication Services-taggen](/answers/topics/azure-communication-services.html).
 
 ## <a name="post-a-question-on-stack-overflow"></a>Publicera en fråga på Stack Overflow
 
