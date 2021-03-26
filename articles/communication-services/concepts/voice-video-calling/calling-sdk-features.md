@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 31b8e2e9a8e69fd730edb2c826005104f5f82bdc
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562417"
+ms.locfileid: "105609198"
 ---
 # <a name="calling-sdk-overview"></a>Översikt över samtals-SDK
 
@@ -72,17 +72,17 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 |                   | Ange/uppdatera skalnings läge                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Rendera fjärran sluten video ström                                                                                          | ✔️   | ✔️            | ✔️
 
-## <a name="calling-client-library-streaming-support"></a>Anropar stöd för strömning av klient bibliotek
-Kommunikations tjänsterna som anropar klient biblioteket stöder följande strömmande konfigurationer:
+## <a name="calling-sdk-streaming-support"></a>Stöd för att anropa SDK-direktuppspelning
+Kommunikations tjänsterna som anropar SDK har stöd för följande strömmande konfigurationer:
 
 | Gräns          |Webb | Android/iOS|
 |-----------|----|------------|
 |**Antal utgående strömmar som kan skickas samtidigt** |1 video och en skärm delning | 1 video och en skärm delning|
 |**Antal inkommande strömmar som kan renderas samtidigt** |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
 
-## <a name="calling-client-library-timeouts"></a>Anrops tids gränser för klient bibliotek
+## <a name="calling-sdk-timeouts"></a>Anropar SDK-tidsgräns
 
-Följande tids gränser gäller för kommunikations tjänsterna som anropar klient bibliotek:
+Följande tids gränser gäller för kommunikations tjänsterna som anropar SDK: er:
 
 | Action           | Tidsgräns i sekunder |
 | -------------- | ---------- |
