@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: aefb2b4a70fae4ad082243529c8eaf877fb35f22
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: a5b3daa499546f3a30b5a4d133d77786a1916b6a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045320"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559204"
 ---
 # <a name="how-to-export-fhir-data"></a>Så här exporterar du FHIR-data
 
@@ -47,8 +47,7 @@ Dessutom stöds att kontrol lera export statusen via URL: en som returnerades av
 
 För närvarande stöder vi $export för ADLS Gen2-aktiverade lagrings konton, med följande begränsning:
 
-- Användaren kan inte dra nytta av [hierarkiska namn områden](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace), men det finns inte något sätt att rikta in sig på att exportera till en speciell under katalog i behållaren. Vi tillhandahåller bara möjligheten att rikta en speciell behållare (där vi skapar en ny mapp för varje export).
-
+- Användaren kan inte dra nytta av [hierarkiska namn områden](../../storage/blobs/data-lake-storage-namespace.md), men det finns inte något sätt att rikta in sig på att exportera till en speciell under katalog i behållaren. Vi tillhandahåller bara möjligheten att rikta en speciell behållare (där vi skapar en ny mapp för varje export).
 - När en export är klar exporterar vi aldrig något till den mappen igen, eftersom efterföljande exporter till samma behållare kommer att finnas i en nyligen skapad mapp.
 
 
@@ -62,13 +61,13 @@ Det finns två obligatoriska huvud parametrar som måste anges för $export-jobb
 ### <a name="query-parameters"></a>Frågeparametrar
 Azure API för FHIR stöder följande frågeparametrar. Alla dessa parametrar är valfria:
 
-|Frågeparameter        | Definieras av FHIR-specifikationen?    |  Beskrivning|
+|Frågeparameter        | Definieras av FHIR-specifikationen?    |  Description|
 |------------------------|---|------------|
-| \_outputFormat | Ja | Stöder för närvarande tre värden för att justeras till FHIR-specifikationen: Application/FHIR + ndjson, Application/ndjson eller bara ndjson. Alla export jobb kommer att returneras `ndjson` och det skickade värdet påverkar inte kod beteendet. |
-| \_Starta | Ja | Gör att du endast kan exportera resurser som har ändrats sedan den angivna tiden |
-| \_bastyp | Ja | Gör att du kan ange vilka typer av resurser som ska tas med. Skriv till exempel \_ = patient returnerar endast patient resurser|
-| \_typefilter | Ja | Om du vill begära detaljerad filtrering kan du använda \_ typeFilter tillsammans med \_ typ parametern. Värdet för parametern _typeFilter är en kommaavgränsad lista över FHIR-frågor som ytterligare begränsar resultaten |
-| \_fönster | Inga |  Anger behållaren i det konfigurerade lagrings kontot där data ska exporteras. Om en behållare anges exporteras data till den behållaren i en ny mapp med namnet. Om behållaren inte anges exporteras den till en ny behållare med hjälp av timestamp och jobb-ID. |
+| \_outputFormat | Yes | Stöder för närvarande tre värden för att justeras till FHIR-specifikationen: Application/FHIR + ndjson, Application/ndjson eller bara ndjson. Alla export jobb kommer att returneras `ndjson` och det skickade värdet påverkar inte kod beteendet. |
+| \_Starta | Yes | Gör att du endast kan exportera resurser som har ändrats sedan den angivna tiden |
+| \_bastyp | Yes | Gör att du kan ange vilka typer av resurser som ska tas med. Skriv till exempel \_ = patient returnerar endast patient resurser|
+| \_typefilter | Yes | Om du vill begära detaljerad filtrering kan du använda \_ typeFilter tillsammans med \_ typ parametern. Värdet för parametern _typeFilter är en kommaavgränsad lista över FHIR-frågor som ytterligare begränsar resultaten |
+| \_fönster | No |  Anger behållaren i det konfigurerade lagrings kontot där data ska exporteras. Om en behållare anges exporteras data till den behållaren i en ny mapp med namnet. Om behållaren inte anges exporteras den till en ny behållare med hjälp av timestamp och jobb-ID. |
 
 > [!Note]
 > Endast lagrings konton i samma prenumeration som för Azure API för FHIR kan registreras som mål för $export åtgärder.

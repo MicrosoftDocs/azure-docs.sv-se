@@ -4,12 +4,12 @@ description: I den här självstudien använder du en AI-modell server som tillh
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702223"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557266"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Självstudie: analysera direktsänd video med hjälp av poly™ Model Server – AI-tillägg från Intel 
 
@@ -51,7 +51,7 @@ I den här snabb starten ska du använda video analys i real tid för IoT Edge t
 
 Det här diagrammet visar hur signal flödet i den här snabb starten. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar video flödet från den här servern och skickar video ramar till noden [http-tilläggsbegäranden](media-graph-concept.md#http-extension-processor) . 
 
-Noden HTTP-tillägg spelar rollen för en proxy. Det samplar de inkommande video bild rutorna som angetts av ditt `samplingOptions` fält och konverterar även video bild rutorna till den angivna bild typen. Sedan vidarebefordrar avbildningen över REST till en annan Edge-modul som kör AI-modeller bakom en HTTP-slutpunkt. I det här exemplet är Edge-modulen Open™ modell Server – AI-tillägget från Intel. Noden för HTTP-tilläggsbegäranden samlar in identifierings resultaten och publicerar händelser till noden [IoT Hub mottagare](media-graph-concept.md#iot-hub-message-sink) . Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Noden HTTP-tillägg spelar rollen för en proxy. Det samplar de inkommande video bild rutorna som angetts av ditt `samplingOptions` fält och konverterar även video bild rutorna till den angivna bild typen. Sedan vidarebefordrar avbildningen över REST till en annan Edge-modul som kör AI-modeller bakom en HTTP-slutpunkt. I det här exemplet är Edge-modulen Open™ modell Server – AI-tillägget från Intel. Noden för HTTP-tilläggsbegäranden samlar in identifierings resultaten och publicerar händelser till noden [IoT Hub mottagare](media-graph-concept.md#iot-hub-message-sink) . Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
 I de här självstudierna får du:
 

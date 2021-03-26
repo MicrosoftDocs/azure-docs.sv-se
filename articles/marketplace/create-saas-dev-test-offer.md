@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110550"
+ms.locfileid: "105543371"
 ---
 # <a name="create-a-test-offer"></a>Skapa ett test erbjudande
 
@@ -27,7 +27,7 @@ I följande avsnitt beskrivs konfigurations skillnaderna mellan utvecklings-och 
 
 Vi rekommenderar att du använder samma alias i rutan **alias** i båda erbjudandena, men lägger till "_Test" i aliaset för dev-erbjudandet. Om t. ex. aliaset för ditt produktions erbjudande är "contososolution" ska aliaset för DEV-erbjudandet vara "contososolution_test". På så sätt kan du enkelt identifiera vilka DEV-erbjudanden som finns i ditt erbjudande.
 
-I avsnittet **kund leads** , använder du och Azure-tabellen eller en test-CRM-miljö för utvecklings erbjudandet. Använd det avsedda hanterings systemet för leads för produkt erbjudande.
+I avsnittet **kund leads** , använder du en Azure-tabell eller en test-CRM-miljö för dev-erbjudandet. Använd det avsedda hanterings systemet för leads för produkt erbjudande.
 
 ## <a name="properties-page"></a>Sidan Egenskaper
 
@@ -39,7 +39,7 @@ Konfigurera den här sidan både i utvecklings-och produktions erbjudandena.
 
 ## <a name="preview-audience"></a>Förhandsgranska mål grupp
 
-I DEV-erbjudandet inkluderar du Azure Active Directory (AAD) User Principal Name eller Microsoft-konto (MSA) e-postadress till utvecklare och testare, inklusive dig själv. Observera att User Principal Name av en användare på AAD kan vara annorlunda än e-postmeddelandet för användaren. Fungerar till exempel jane.doe@contoso.com inte, men janedoe@contoso.com kommer att fungera. Detta är de personer som har åtkomst till DEV-erbjudandet när du delar för **hands versions** länken under utvecklings-och testnings fasen.
+I DEV-erbjudandet inkluderar du Azure Active Directory (AAD) användarens huvud namn eller Microsoft-konto (MSA) e-postadresser till utvecklare och testare, inklusive dig själv. User Principal Name av en användare på AAD kan vara annorlunda än e-postmeddelandet för den användaren. Fungerar till exempel jane.doe@contoso.com inte, men janedoe@contoso.com kommer. De användare som du anger kommer att ha åtkomst till DEV-erbjudandet när du delar för **hands versions** länken under utvecklings-och testnings fasen.
 
 I produktions erbjudandet inkluderar du Azure AD-User Principal Name eller Microsoft-kontots e-postadress för de användare som ska verifiera erbjudandet innan du väljer **knappen gå live** för att publicera erbjudandet Live.
 
@@ -77,10 +77,10 @@ Välj samma marknader för utvecklings-och produktions erbjudandena.
 
 Använd DEV-erbjudandet för att experimentera med pris modeller. När du har kontrollerat vilken pris modell eller vilka modeller som fungerar bäst skapar du planerna i produktions erbjudandet med de pris modeller och priser som du vill ha.
 
-UTVECKLINGS erbjudandet bör ha planer med noll eller mycket låga priser i planerna. PRODUKTIONS erbjudandet kommer att ha de priser som du vill debitera till kunderna.
+UTVECKLINGS erbjudandet bör ha planer med noll eller låga priser i planerna. PRODUKTIONS erbjudandet kommer att ha de priser som du vill debitera till kunderna.
 
-> [!NOTE]
-> Köp som görs i förhands granskningen kommer att bearbetas för både utvecklings-och produktions erbjudanden. Om ett erbjudande har priset 100/Mo debiteras ditt företag $100. Om detta händer kan du öppna ett [support ärende](support.md) och vi kommer att utfärda en utbetalning för hela beloppet (och inte ta ut någon byrå avgift).
+> [!IMPORTANT]
+> Köp som görs i förhands granskningen kommer att bearbetas för både utvecklings-och produktions erbjudanden. Om ett erbjudande har priset 100/Mo debiteras ditt företag $100. Om detta händer kan du öppna ett [support ärende](support.md) och vi utfärdar en utbetalning för hela beloppet (och tar ingen avgift för lagrings tjänster).
 
 #### <a name="pricing-model"></a>Prismodell
 
@@ -97,7 +97,7 @@ För att minska kostnaderna för att testa pris modellerna, inklusive anpassade 
 | $50,00 och uppåt | Använd det här pris intervallet för att testa utbetalning. Information om vårt betalnings schema finns i [utbetalnings scheman och processer](/partner-center/payout-policy-details). |
 |||
 
-Öppna ett [support ärende](support.md)för att undvika att debitera en bearbetnings avgift på ditt test.
+Öppna ett [support ärende](support.md)för att undvika att debitera en lagrings tjänst avgift på ditt test.
 
 #### <a name="free-trial"></a>Kostnadsfri utvärderingsversion
 

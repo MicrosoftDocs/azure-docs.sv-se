@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439824"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568332"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Distribuera virtuella datorer på din Azure Stack Edge-enhet via Azure PowerShell
 
@@ -127,7 +127,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Genom att använda Azure Resource Manager kan du bara skapa lokala lagrings konton som lokalt redundant lagring (standard eller Premium). Information om hur du skapar skiktade lagrings konton finns i [Självstudier: överföra data via lagrings konton med Azure Stack Edge Pro med GPU](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Genom att använda Azure Resource Manager kan du bara skapa lokala lagrings konton som lokalt redundant lagring (standard eller Premium). Information om hur du skapar skiktade lagrings konton finns i [Självstudier: överföra data via lagrings konton med Azure Stack Edge Pro med GPU](./azure-stack-edge-gpu-deploy-add-storage-accounts.md).
 
 Här är några exempel på utdata:
 
@@ -179,7 +179,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>Lägg till BLOB-URI: n i värd filen
 
-Du har redan lagt till BLOB-URI: n i värd filen för den klient som du använder för att ansluta till Azure Blob Storage i "steg 5: ändra värd filen för slut punkts namn matchning" för att [distribuera virtuella datorer på din Azure Stack Edge-enhet via Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Den här posten användes för att lägga till BLOB-URI: n:
+Du har redan lagt till BLOB-URI: n i värd filen för den klient som du använder för att ansluta till Azure Blob Storage i "steg 5: ändra värd filen för slut punkts namn matchning" för att [distribuera virtuella datorer på din Azure Stack Edge-enhet via Azure PowerShell](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Den här posten användes för att lägga till BLOB-URI: n:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> .\<dnsdomain\>
 

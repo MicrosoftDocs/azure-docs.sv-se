@@ -3,12 +3,12 @@ title: Stöd för Arkiv nivå (för hands version)
 description: Lär dig mer om Arkiv nivå stöd för Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609860"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563981"
 ---
 # <a name="archive-tier-support-preview"></a>Stöd för Arkiv nivå (för hands version)
 
@@ -46,7 +46,7 @@ Klienter som stöds:
     install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
     ```
 
-1. Anslut till Azure med hjälp av cmdleten [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+1. Anslut till Azure med hjälp av cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 1. Logga in på din prenumeration:
 
    `Set-AzContext -Subscription "SubscriptionName"`
@@ -128,7 +128,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 Azure Backup tillhandahåller en integrerad Restore-metod för återställnings punkter i arkivet.
 
-Den integrerade återställningen är en två stegs process. I det första steget ingår återuppväcks de återställnings punkter som lagras i arkivet och som tillfälligt lagrar dem på nivån valv, standard under en varaktighet (kallas även ÅTERUPPVÄCKNING varaktighet) från en period av 10 till 30 dagar. Standardvärdet är 15 dagar. Det finns två olika prioriteter för ÅTERUPPVÄCKNING – standard och hög prioritet. Läs mer om [ÅTERUPPVÄCKNING-prioritet](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration#rehydrate-an-archived-blob-to-an-online-tier).
+Den integrerade återställningen är en två stegs process. I det första steget ingår återuppväcks de återställnings punkter som lagras i arkivet och som tillfälligt lagrar dem på nivån valv, standard under en varaktighet (kallas även ÅTERUPPVÄCKNING varaktighet) från en period av 10 till 30 dagar. Standardvärdet är 15 dagar. Det finns två olika prioriteter för ÅTERUPPVÄCKNING – standard och hög prioritet. Läs mer om [ÅTERUPPVÄCKNING-prioritet](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier).
 
 >[!NOTE]
 >

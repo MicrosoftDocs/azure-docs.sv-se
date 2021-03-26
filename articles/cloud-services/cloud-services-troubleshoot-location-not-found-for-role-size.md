@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746745"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558966"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Felsöka LocationNotFoundForRoleSize när du distribuerar en moln tjänst (klassisk) till Azure
 
@@ -47,7 +47,7 @@ I det här scenariot bör du välja en annan region eller SKU för att distribue
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Lista SKU: er i region med Azure CLI
 
-Du kan använda kommandot [AZ VM List-SKU: er](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) .
+Du kan använda kommandot [AZ VM List-SKU: er](/cli/azure/vm.html#az_vm_list_skus) .
 
 - Använd `--location` parametern för att filtrera utdata till den plats som du använder.
 - Använd `--size` parametern för att söka efter ett namn för en partiell storlek.
@@ -63,7 +63,7 @@ Du kan använda kommandot [AZ VM List-SKU: er](https://docs.microsoft.com/cli/az
 
 #### <a name="list-skus-in-region-using-powershell"></a>Lista SKU: er i region med PowerShell
 
-Du kan använda kommandot [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) .
+Du kan använda kommandot [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) .
 
 - Filtrera resultaten efter plats.
 - Du måste ha den senaste versionen av PowerShell för det här kommandot.
@@ -91,7 +91,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 #### <a name="list-skus-in-region-using-rest-api"></a>Lista SKU: er i region med REST API
 
-Du kan använda [Resource SKU-List](https://docs.microsoft.com/rest/api/compute/resourceskus/list) åtgärden. Den returnerar tillgängliga SKU: er och regioner i följande format:
+Du kan använda [Resource SKU-List](/rest/api/compute/resourceskus/list) åtgärden. Den returnerar tillgängliga SKU: er och regioner i följande format:
 
 ```json
 {

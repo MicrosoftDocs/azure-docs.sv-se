@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig hur du felsöker fel som påt
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831558"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559374"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Felsöka säkerhets kopierings fel på virtuella Azure-datorer
 
@@ -139,7 +139,7 @@ Kontrol lera genom att gå till ***system-och Loggboken program loggar*** och ko
 
 Lösning:
 
-* Sök efter möjligheter att distribuera belastningen på de virtuella dator diskarna. Detta minskar belastningen på enskilda diskar. Du kan [kontrol lera IOPS-begränsningen genom att aktivera diagnostiska mått på lagrings nivå](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm).
+* Sök efter möjligheter att distribuera belastningen på de virtuella dator diskarna. Detta minskar belastningen på enskilda diskar. Du kan [kontrol lera IOPS-begränsningen genom att aktivera diagnostiska mått på lagrings nivå](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
 * Ändra säkerhets kopierings policyn för att utföra säkerhets kopieringar under låg belastnings tider, när belastningen på den virtuella datorn är den lägsta.
 * Uppgradera Azure-diskarna för att stödja högre IOPs. [Läs mer här](../virtual-machines/disks-types.md)
 
@@ -371,12 +371,12 @@ Normalt finns VM-agenten redan i virtuella datorer som skapas från Azure-galler
 #### <a name="windows-vms---set-up-the-agent"></a>Virtuella Windows-datorer – Konfigurera agenten
 
 * Ladda ned och installera [agentens MSI-fil](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Du måste ha administratörs behörighet för att slutföra installationen.
-* För virtuella datorer som skapats med den klassiska distributions modellen [uppdaterar du egenskapen VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) för att ange att agenten är installerad. Det här steget krävs inte för Azure Resource Manager virtuella datorer.
+* För virtuella datorer som skapats med den klassiska distributions modellen [uppdaterar du egenskapen VM](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) för att ange att agenten är installerad. Det här steget krävs inte för Azure Resource Manager virtuella datorer.
 
 #### <a name="linux-vms---set-up-the-agent"></a>Virtuella Linux-datorer – Konfigurera agenten
 
 * Installera den senaste versionen av agenten från distributions platsen. Mer information om paket namnet finns i Linux- [agentens lagrings plats](https://github.com/Azure/WALinuxAgent).
-* För virtuella datorer som skapats med den klassiska distributions modellen [uppdaterar du egenskapen VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) och kontrollerar att agenten är installerad. Det här steget krävs inte för virtuella Resource Manager-datorer.
+* För virtuella datorer som skapats med den klassiska distributions modellen [uppdaterar du egenskapen VM](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) och kontrollerar att agenten är installerad. Det här steget krävs inte för virtuella Resource Manager-datorer.
 
 ### <a name="update-the-vm-agent"></a>Uppdatera VM-agenten
 

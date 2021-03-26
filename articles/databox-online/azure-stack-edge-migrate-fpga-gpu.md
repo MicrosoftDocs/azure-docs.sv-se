@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573292"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566412"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrera arbets belastningar från en Azure Stack Edge Pro-FPGA till en Azure Stack Edge Pro GPU
 
@@ -173,7 +173,7 @@ Följ dessa steg om du vill återställa data från lokala resurser:
 
 1. [Konfigurera beräkning på enheten](azure-stack-edge-gpu-deploy-configure-compute.md).
 1. Lägg till alla lokala resurser på mål enheten. Se de detaljerade stegen i [Lägg till en lokal resurs](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
-1. Att komma åt SMB-resurserna på käll enheten använder IP-adresserna på mål enheten, du använder enhets namnet. Se [ansluta till en SMB-resurs på Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Om du vill ansluta till NFS-resurser på mål enheten måste du använda de nya IP-adresserna som är kopplade till enheten. Se [ansluta till en NFS-resurs på Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
+1. Att komma åt SMB-resurserna på käll enheten använder IP-adresserna på mål enheten, du använder enhets namnet. Se [ansluta till en SMB-resurs på Azure Stack Edge Pro GPU](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-smb-share). Om du vill ansluta till NFS-resurser på mål enheten måste du använda de nya IP-adresserna som är kopplade till enheten. Se [ansluta till en NFS-resurs på Azure Stack Edge Pro GPU](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-nfs-share). 
 
     Om du har kopierat dina delnings data till en mellanliggande server över SMB eller NFS, kan du kopiera data från den mellanliggande servern till resurser på mål enheten. Om både käll-och mål enheten är *online* kan du också kopiera data direkt från käll enheten.
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721165"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558717"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -620,11 +620,10 @@ Information om hur du slutför publicerings processen finns i [Granska och publi
 * Python-version över 2,8 
 
 
-Mer information finns i VM- [tillägget](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+Mer information finns i VM- [tillägget](../virtual-machines/extensions/diagnostics-linux.md).
      
 ## <a name="next-steps"></a>Nästa steg
 
 - [Konfigurera egenskaper för VM-erbjudande](azure-vm-create-properties.md)
 - [Aktiva marknads förmåner](partner-center-portal/marketplace-rewards.md)
 - Kontakta [supporten för partner Center](https://aka.ms/marketplacepublishersupport)om du har frågor eller feedback om förbättringar.
- 

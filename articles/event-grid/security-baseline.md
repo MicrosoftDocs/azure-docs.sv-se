@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bc1df4582c83b093b6ed25d03cc73aef9a81483
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739151"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563947"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azures säkerhets bas linje för Event Grid
 
@@ -32,15 +32,15 @@ Om du vill se hur Azure Event Grid helt mappar till Azures säkerhets mätning, 
 
 Azure Event Grid stöder också offentliga IP-baserade åtkomst kontroller för publicering till ämnen och domäner. Med IP-baserade kontroller kan du begränsa utgivare till ett ämne eller en domän till endast en uppsättning godkända datorer och moln tjänster. Den här funktionen kompletterar de autentiseringsmekanismer som stöds av Event Grid. 
 
-- [Mer information om Event Grid privata slut punkter](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
+- [Mer information om Event Grid privata slut punkter](./network-security.md#private-endpoints)
 
-- [Mer information om Event Grid IP-brandvägg](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
+- [Mer information om Event Grid IP-brandvägg](./network-security.md#ip-firewall)
 
 - [Azure Event Grid nätverks säkerhet](network-security.md) 
 
 - [Översikt av Azure Private Link](../private-link/private-link-overview.md)
 
-- [Azure nätverks säkerhets grupp](/azure/virtual-network/security-overview)
+- [Azure nätverks säkerhets grupp](../virtual-network/network-security-groups-overview.md)
 
 **Ansvar**: Kund
 
@@ -80,7 +80,7 @@ Aktivera DDoS Protection standard på dessa virtuella nätverk för att skydda m
 
 - [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 
-- [Mer information om Azure Security Center Integrated Threat Intelligence](/azure/security-center/security-center-alerts-service-layer)
+- [Mer information om Azure Security Center Integrated Threat Intelligence](../security-center/azure-defender.md)
 
 **Ansvar**: Kund
 
@@ -132,7 +132,7 @@ Distribuera den brand Väggs lösning som du väljer för var och en av organisa
 
 **Vägledning**: för resurser i virtuella nätverk som behöver åtkomst till dina Azure Event Grid-resurser använder du Virtual Network Service-taggar för att definiera nätverks åtkomst kontroller i nätverks säkerhets grupper eller Azure-brandvägg. Du kan använda tjänsttaggar i stället för specifika IP-adresser när du skapar säkerhetsregler. Genom att ange service tag-namnet (till exempel AzureEventGrid) i lämpligt käll-eller mål fält för en regel kan du tillåta eller neka trafiken för motsvarande tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras.
 
-- [Så här använder du service tag-koden för Azure Event Grid](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
+- [Så här använder du service tag-koden för Azure Event Grid](./network-security.md#service-tags)
 
 - [Mer information om att använda service märken](../virtual-network/service-tags-overview.md)
 
@@ -149,7 +149,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till Azu
 - Azure Event Grid domäner ska använda privata länkar
 
 - Azure Event Grid ämnen ska använda privata länkar Azure
-- [inbyggda principer för Event Grid resurser](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
+- [inbyggda principer för Event Grid resurser](../governance/policy/samples/built-in-policies.md#event-grid)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -161,7 +161,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till Azu
 
 **Vägledning**: Använd taggar för nätverks resurser som är kopplade till dina Azure Event Grid-resurser för att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -171,9 +171,9 @@ Du kan också använda inbyggda princip definitioner som är relaterade till Azu
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till Azure Event Grid. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -217,7 +217,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till Azu
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperioden för Log Analytics arbets ytor som är kopplade till dina Azure Event Grid resurser enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -235,9 +235,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Komma igång med Log Analytics frågor](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Ansvar**: Kund
 
@@ -257,7 +257,7 @@ Dessutom kan du publicera din Log Analytics arbets yta till Azure Sentinel efter
 
 - [Information om Event Grid diagnostiskt logg schema](diagnostic-logs.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -329,7 +329,7 @@ Event Grid kan aktivera en hanterad tjänst identitet för Azure Event Grid-ämn
 
 - [Autentisera publicerings klienter (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [Läs mer om Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Läs mer om Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Ansvar**: Kund
 
@@ -363,7 +363,7 @@ Event Grid kan aktivera en hanterad tjänst identitet för Azure Event Grid-ämn
 
 **Vägledning**: använda Azure Active Directory (Azure AD) säkerhets rapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets-och åtkomst aktiviteter.
 
-- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här övervakar du användarnas identitets- och åtkomstrelaterade aktiviteter i Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -401,11 +401,11 @@ Event Grid kan aktivera en hanterad tjänst identitet för Azure Event Grid-ämn
 
 Använd Azure AD Privileged Identity Management (PIM) för att skapa loggar och varningar när misstänkt eller osäker aktivitet inträffar i miljön.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-- [Distribuera Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Distribuera Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Ansvar**: Kund
 
@@ -417,7 +417,7 @@ Använd Azure AD Privileged Identity Management (PIM) för att skapa loggar och 
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
 
-- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Ansvar**: Kund
 
@@ -427,7 +427,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure Active Directory (Azure AD) Identity Protection-funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -455,7 +455,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
  
  
  
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -465,11 +465,11 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: implementera isolering med separata prenumerationer och hanterings grupper för enskilda säkerhets domäner, till exempel miljö typ och data känslighets nivå. Du kan begränsa åtkomst nivån till dina Azure-resurser som dina program och företags miljöer kräver. Du kan styra åtkomsten till Azure-resurser via Azure RBAC.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](/azure/governance/management-groups/create)
+- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -519,7 +519,7 @@ För den underliggande plattformen, som hanteras av Microsoft, behandlar Microso
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure Event Grid resurser och andra viktiga eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -569,7 +569,7 @@ För den underliggande plattformen, som hanteras av Microsoft, behandlar Microso
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -581,11 +581,11 @@ För den underliggande plattformen, som hanteras av Microsoft, behandlar Microso
  
  
  
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](/azure/governance/management-groups/create)
+- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -764,7 +764,7 @@ Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON),
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Använda alias](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Använda alias](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Ansvar**: Kund
 
@@ -930,7 +930,7 @@ För närvarande stöder Event Grid inte Kundhanterade nycklar.
 
 - [Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Använda taggar för att organisera dina Azure-resurser](/azure/azure-resource-manager/resource-group-using-tags)
+- [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -1000,5 +1000,5 @@ För närvarande stöder Event Grid inte Kundhanterade nycklar.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

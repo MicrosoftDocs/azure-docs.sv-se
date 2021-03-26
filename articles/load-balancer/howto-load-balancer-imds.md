@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: 9ec217cefb05929ed6f5c7395df5e68891e823ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95d0e1ceb9e05ce58f388c3f88dc98b2cf6a0cc5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739788"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559595"
 ---
 # <a name="retrieve-load-balancer-metadata-using-the-azure-instance-metadata-service-imds"></a>Hämta metadata för belastningsutjämnare med hjälp av Azure-Instance Metadata Service (IMDS)
 
@@ -30,7 +30,7 @@ ms.locfileid: "101739788"
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254:80/metadata/loadbalancer?api-version=2020-10-01" | ConvertTo-Json
 ```
 > [!NOTE]
-> Parametern-noproxy introducerades i PowerShell 6,0. Om du använder en äldre version av PowerShell, ta bort-noproxy i begär ande texten och se till att du inte använder en proxy när du hämtar IMDS-information. Läs mer [här](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#proxies).
+> Parametern-noproxy introducerades i PowerShell 6,0. Om du använder en äldre version av PowerShell, ta bort-noproxy i begär ande texten och se till att du inte använder en proxy när du hämtar IMDS-information. Läs mer [här](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#proxies).
 > 
 ### <a name="linux"></a>[Linux](#tab/linux/)
 
@@ -89,4 +89,3 @@ Läs mer om [Azure instance metadata service](../virtual-machines/windows/instan
 [Hämta alla metadata för en instans](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#access-azure-instance-metadata-service)
 
 [Distribuera en standard Load Balancer](quickstart-load-balancer-standard-public-portal.md)
-

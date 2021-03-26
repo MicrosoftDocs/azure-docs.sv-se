@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1e1a8cb24b47277b38bd2d64b733a6f28ee8acff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 57862a450d313f5d8850b14047ecc3d25d6ba5c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742525"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563692"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azures säkerhets bas linje för Event Hubs
 
@@ -44,7 +44,7 @@ Du kan också skydda ditt Azure Event Hubs-namnområde med hjälp av brand vägg
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
 
 **Azure policy inbyggda definitioner-Microsoft. EventHub**:
 
@@ -68,7 +68,7 @@ Du kan också skydda ditt Azure Event Hubs-namnområde med hjälp av brand vägg
 
 - [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 
-- [Mer information om Azure Security Center Integrated Threat Intelligence](/azure/security-center/security-center-alerts-service-layer)
+- [Mer information om Azure Security Center Integrated Threat Intelligence](../security-center/azure-defender.md)
 
 **Ansvar**: Kund
 
@@ -112,9 +112,9 @@ Ytterligare information finns på de länkar som refereras till.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Inbyggd Azure-princip för Event Hubs namnrymd](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Inbyggd Azure-princip för Event Hubs namnrymd](../governance/policy/samples/built-in-policies.md#event-hub)
 
-- [Azure Policy exempel för nätverk](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy exempel för nätverk](../governance/policy/samples/built-in-policies.md#network)
 
 - [Så här skapar du en Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -126,7 +126,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 **Vägledning**: Använd taggar för virtuella nätverk och andra resurser som är relaterade till nätverks säkerhets-och trafikflödet som är associerade med dina Event Hub.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -136,9 +136,9 @@ Ytterligare information finns på de länkar som refereras till.
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till Azure Event Hubs. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -154,7 +154,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 - [Konfigurera diagnostikinställningar för Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Förstå Azures aktivitets logg](/azure/azure-monitor/platform/platform-logs-overview)
+- [Förstå Azures aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Ansvar**: Kund
 
@@ -168,11 +168,11 @@ Dessutom kan du aktivera diagnostiska inställningar för Azure aktivitets logg 
 
 - [Så här aktiverar du diagnostikinställningar för Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
 
 **Azure policy inbyggda definitioner-Microsoft. EventHub**:
 
@@ -182,7 +182,7 @@ Dessutom kan du aktivera diagnostiska inställningar för Azure aktivitets logg 
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad för att samla in och granska händelser som rör Event Hub.
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -192,9 +192,9 @@ Dessutom kan du aktivera diagnostiska inställningar för Azure aktivitets logg 
 
 **Vägledning**: analysera och övervaka loggar för avvikande beteende och granska regelbundet resultat som rör dina Event Hub. Använd Azure Monitor Log Analytics för att granska loggar och köra frågor om loggdata. Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en system informations-och händelse hanterings lösning från tredje part.
 
-- [Mer information om arbets ytan Log Analytics](/azure/azure-monitor/log-query/get-started-portal)
+- [Mer information om arbets ytan Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -208,11 +208,11 @@ Dessutom kan du aktivera diagnostiska inställningar för Azure aktivitets logg 
 
 Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel. 
 
-- [Förstå Azures aktivitets logg](/azure/azure-monitor/platform/platform-logs-overview)
+- [Förstå Azures aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Konfigurera diagnostikinställningar för Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Avisering om logg data för Log Analytics arbets ytor](/azure/azure-monitor/learn/tutorial-response)
+- [Avisering om logg data för Log Analytics arbets ytor](../azure-monitor/alerts/tutorial-response.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -310,9 +310,9 @@ Ytterligare information finns på de länkar som refereras till.
 
 **Vägledning**: Använd Azure Active Directory (Azure AD) Privileged Identity Management för att skapa loggar och varningar när misstänkt eller osäker aktivitet inträffar i miljön. Använd identifieringar av Azure AD-risker för att visa aviseringar och rapporter om riskfyllda användar beteenden. Om du vill ha ytterligare loggning kan du skicka aviseringar om Azure Security Center risk identifiering till Azure Monitor och konfigurera anpassade aviseringar/meddelanden med hjälp av åtgärds grupper.
 
-- [Förstå identifieringar av Azure AD-risker](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Förstå identifieringar av Azure AD-risker](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Konfigurera åtgärds grupper för anpassad avisering och avisering](/azure/azure-monitor/platform/action-groups)
+- [Konfigurera åtgärds grupper för anpassad avisering och avisering](../azure-monitor/alerts/action-groups.md)
 
 **Ansvar**: Kund
 
@@ -346,7 +346,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 Rotera dessutom regelbundet dina Event Hubs signaturer för delad åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -362,7 +362,7 @@ Rotera dessutom regelbundet dina Event Hubs signaturer för delad åtkomst.
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade logg aviseringar i Log Analytics.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Ge åtkomst till Event Hubs resurser med hjälp av Azure AD](authorize-access-azure-active-directory.md)
 
@@ -374,7 +374,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd funktioner för identitets skydd och identifiering av risker i Azure Active Directory (Azure AD) för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör dina Event Hubs-aktiverade resurser. Du bör aktivera automatiserade svar via Azure Sentinel för att implementera din organisations säkerhets svar.
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -388,7 +388,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: inte tillgänglig för tillfället. Customer Lockbox stöds ännu inte för Event Hubs.
 
-- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -402,7 +402,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd taggar för resurser som är relaterade till din Event Hubs för att hjälpa till att spåra Azure-resurser som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -414,13 +414,13 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 Du kan också skydda ditt Azure Event Hubs-namnområde med hjälp av brand väggar. Azure Event Hubs stöder IP-baserade åtkomst kontroller för inkommande brand Väggs stöd. Du kan ange brand Väggs regler med hjälp av Azure Portal, Azure Resource Manager mallar eller via Azure CLI eller Azure PowerShell.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
+- [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
 - [Konfigurera IP-brandväggens regler för Azure Event Hubs-namnområden](event-hubs-ip-filtering.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Så här skapar du en Virtual Network](../virtual-network/quick-create-portal.md)
 
@@ -440,7 +440,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Event Hubs och h
 
 - [Integrera Azure Event Hubs med Azures privata länk](private-link-service.md)
 
-- [Förstå nätverks säkerhets grupper och service märken](/azure/virtual-network/security-overview)
+- [Förstå nätverks säkerhets grupper och service märken](../virtual-network/network-security-groups-overview.md)
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -484,7 +484,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure Event Hubs och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -512,7 +512,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -522,11 +522,11 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer, vid behov, för att ordna och spåra Azure Event Hubs-namnrymder och relaterade resurser. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
+- [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -562,7 +562,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -592,7 +592,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 Ytterligare information finns på de länkar som refereras till.
 
-- [Inbyggd Azure-princip för Event Hubs namnrymd](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Inbyggd Azure-princip för Event Hubs namnrymd](../governance/policy/samples/built-in-policies.md#event-hub)
 
 - [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
@@ -639,15 +639,15 @@ Ytterligare information finns på de länkar som refereras till.
 
 **Vägledning**: för virtuella Azure-datorer eller webb program som körs på Azure App Service används för att få åtkomst till dina Event Hub, använder du hanterad tjänstidentitet tillsammans med Azure Key Vault för att förenkla och säkra hantering av signaturer för delad åtkomst för dina Azure Event Hubs-distributioner. Se till att Key Vault har kon figurer ATS med mjuk borttagning aktiverat.
 
-- [Autentisera en hanterad identitet med Azure Active Directory (Azure AD) för att få åtkomst till Event Hubs resurser](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Autentisera en hanterad identitet med Azure Active Directory (Azure AD) för att få åtkomst till Event Hubs resurser](./authenticate-managed-identity.md?tabs=latest)
 
 - [Konfigurera Kundhanterade nycklar för Event Hubs](configure-customer-managed-key.md)
 
 - [Integrera med Azure Managed Identities](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Så här skapar du en Key Vault](/azure/key-vault/quick-create-portal)
+- [Så här skapar du en Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [Så här ger Key Vault autentisering med en hanterad identitet](/azure/key-vault/managed-identity)
+- [Så här ger Key Vault autentisering med en hanterad identitet](../key-vault/general/assign-access-policy-portal.md)
 
 **Ansvar**: Kund
 
@@ -659,7 +659,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 Använd hanterade identiteter för att tillhandahålla Azure-tjänster med en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till vilken tjänst som helst som stöder Azure AD-autentisering, inklusive Azure Key Vault utan autentiseringsuppgifter i din kod.
 
-- [Autentisera en hanterad identitet med Azure AD för att få åtkomst till Event Hubs resurser](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Autentisera en hanterad identitet med Azure AD för att få åtkomst till Event Hubs resurser](./authenticate-managed-identity.md?tabs=latest)
 
 - [Konfigurera Kundhanterade nycklar för Event Hubs](configure-customer-managed-key.md)
 
@@ -703,7 +703,7 @@ Microsofts program mot skadlig kod har Aktiver ATS på den underliggande värden
 
 **Vägledning**: Konfigurera geo-katastrof återställning för Azure Event Hubs. När hela Azure-regioner eller data Center (om inga tillgänglighets zoner används) upplever drift stopp, är det viktigt att data bearbetningen fortsätter att fungera i en annan region eller data Center. Därför är geo-haveri beredskap och geo-replikering viktiga funktioner för alla företag. Azure Event Hubs stöder både geo-haveri återställning och geo-replikering på namn områdes nivå. 
 
-- [Förstå geo-katastrof återställning för Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)
+- [Förstå geo-katastrof återställning för Azure Event Hubs](./event-hubs-geo-dr.md#availability-zones)
 
 **Ansvar**: Kund
 
@@ -739,11 +739,11 @@ Säkerställ vanliga automatiserade säkerhets kopieringar av Key Vault hemlighe
 
 Konfigurera mjuk borttagning för det Azure Storage-konto som används för att samla in Event Hubs data. Observera att den här funktionen inte stöds för Azure Data Lake Storage gen 2 ännu.
 
-- [Så här aktiverar du mjuk borttagning i Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Så här aktiverar du mjuk borttagning i Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Konfigurera ett nyckel valv med nycklar](configure-customer-managed-key.md)
 
-- [Mjuk borttagning för Azure Storage-blobar](https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Mjuk borttagning för Azure Storage-blobar](//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Ansvar**: Kund
 
@@ -831,5 +831,5 @@ Konfigurera mjuk borttagning för det Azure Storage-konto som används för att 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

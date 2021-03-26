@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 795b938913dad149739c4591bc2a9c221d784c84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b3303ae04f9300025c3c42fc63abe8b2aa46a83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716385"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563726"
 ---
 # <a name="azure-security-baseline-for-container-registry"></a>Azures säkerhets bas linje för Container Registry
 
@@ -37,7 +37,7 @@ Från bakom en brand vägg konfigurerar du brand Väggs åtkomst regler och serv
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
 
 **Azure policy inbyggda definitioner – Microsoft. ContainerRegistry**:
 
@@ -62,9 +62,9 @@ Från bakom en brand vägg konfigurerar du brand Väggs åtkomst regler och serv
 Du kan använda Azure Security Center just-in-Time Network Access för att konfigurera NSG: er för att begränsa exponering av slut punkter till godkända IP-adresser under en begränsad period.
 Använd också Azure Security Center anpassad nätverks härdning för att rekommendera NSG-konfigurationer som begränsar portar och käll-IP-adresser baserat på faktisk trafik och hot information.
 
-- [Så här konfigurerar du DDoS-skydd](/azure/virtual-network/manage-ddos-protection)
+- [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 - [Så här distribuerar du Azure-brandvägg](../firewall/tutorial-firewall-deploy-portal.md)
-- [Förstå Azure Security Center integrerad Hot information](../security-center/security-center-alerts-service-layer.md)
+- [Förstå Azure Security Center integrerad Hot information](../security-center/azure-defender.md)
 - [Förstå Azure Security Center anpassad nätverks härdning](../security-center/security-center-adaptive-network-hardening.md)
 - [Azure Security Center just-in-Time-nätverket Access Control](../security-center/security-center-just-in-time.md)
 
@@ -104,7 +104,7 @@ Distribuera den brand Väggs lösning som du väljer för var och en av organisa
 
 **Vägledning**: för resurser som behöver åtkomst till ditt behållar register använder du tjänst taggar för virtuella nätverk för Azure Container Registrys tjänsten för att definiera nätverks åtkomst kontroller i nätverks säkerhets grupper eller Azure-brandvägg. Du kan använda tjänsttaggar i stället för specifika IP-adresser när du skapar säkerhetsregler. Genom att ange service tag-namnet "AzureContainerRegistry" i lämpligt käll-eller mål fält för en regel kan du tillåta eller neka trafiken för motsvarande tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras.
 
-- [Tillåt åtkomst per service tag-tagg](https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag)
+- [Tillåt åtkomst per service tag-tagg](./container-registry-firewall-access-rules.md#allow-access-by-service-tag)
 
 **Ansvar**: Kund
 
@@ -138,9 +138,9 @@ Du kan använda Azure-ritningar för att förenkla storskaliga Azure-distributio
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till dina behållar register. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -182,7 +182,7 @@ Du kan använda Azure-ritningar för att förenkla storskaliga Azure-distributio
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -194,9 +194,9 @@ Du kan använda Azure-ritningar för att förenkla storskaliga Azure-distributio
 
 - [Azure Container Registry loggar för diagnostisk utvärdering och granskning](container-registry-diagnostics-audit-logs.md)
 
-- [Förstå Log Analytics arbets yta](/azure/azure-monitor/log-query/get-started-portal)
+- [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Ansvar**: Kund
 
@@ -208,7 +208,7 @@ Du kan använda Azure-ritningar för att förenkla storskaliga Azure-distributio
 
 - [Azure Container Registry loggar för diagnostisk utvärdering och granskning](container-registry-diagnostics-audit-logs.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](/azure/azure-monitor/learn/tutorial-response)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
@@ -248,11 +248,11 @@ Du kan använda Azure-ritningar för att förenkla storskaliga Azure-distributio
 
 Spåra om det inbyggda administratörs kontot är aktiverat eller inaktiverat för varje Azure Container Registry. Inaktivera kontot när det inte används.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Azure Container Registry administratörs konto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Azure Container Registry administratörs konto](./container-registry-authentication.md#admin-account)
 
 **Ansvar**: Kund
 
@@ -264,7 +264,7 @@ Spåra om det inbyggda administratörs kontot är aktiverat eller inaktiverat f�
 
 Om standard administratörs kontot för ett Azure Container Registry är aktiverat skapas komplexa lösen ord automatiskt och bör roteras. Inaktivera kontot när det inte används.
 
-- [Azure Container Registry administratörs konto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Azure Container Registry administratörs konto](./container-registry-authentication.md#admin-account)
 
 **Ansvar**: Kund
 
@@ -278,7 +278,7 @@ Skapa också procedurer för att aktivera det inbyggda administratörs kontot f�
 
 - [Förstå Azure Security Center identitet och åtkomst](../security-center/security-center-identity-access.md)
 
-- [Azure Container Registry administratörs konto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Azure Container Registry administratörs konto](./container-registry-authentication.md#admin-account)
 
 **Ansvar**: Kund
 
@@ -292,7 +292,7 @@ Använd enskilda inloggningar som är integrerade med Azure AD för individuell 
 
 - [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-- [Individuell inloggning till ett behållar register](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Individuell inloggning till ett behållar register](./container-registry-authentication.md#admin-account)
 
 **Ansvar**: Kund
 
@@ -325,7 +325,7 @@ Använd enskilda inloggningar som är integrerade med Azure AD för individuell 
 
 **Vägledning**: använda Azure Active Directory (Azure AD) säkerhets rapporter för generering av loggar och varningar när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets-och åtkomst aktiviteter.
 
-- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här övervakar du användarnas identitets- och åtkomstrelaterade aktiviteter i Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -357,7 +357,7 @@ Använd enskilda inloggningar som är integrerade med Azure AD för individuell 
 
 **Vägledning**: Azure Active Directory (Azure AD) innehåller loggar som hjälper till att identifiera inaktuella konton. Dessutom kan du använda Azure Identity Access-granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -371,7 +371,7 @@ Använd enskilda inloggningar som är integrerade med Azure AD för individuell 
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Ansvar**: Kund
 
@@ -381,7 +381,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure Active Directory (Azure AD) risk-och identitets skydds funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. 
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -393,7 +393,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: inte tillgänglig; Customer Lockbox stöds för närvarande inte för Azure Container Registry.
 
-- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -409,7 +409,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 Tagg-och versions behållar avbildningar eller andra artefakter i ett register, och lås bilder eller databaser, för att spåra bilder som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Rekommendationer för taggning och versions behållar avbildningar](container-registry-image-tag-version.md)
 
@@ -425,11 +425,11 @@ Tagg-och versions behållar avbildningar eller andra artefakter i ett register, 
 
 Resurser bör åtskiljas av ett virtuellt nätverk eller undernät, taggas på lämpligt sätt och skyddas av en nätverks säkerhets grupp (NSG) eller Azure-brandvägg.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](/azure/governance/management-groups/create)
+- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Begränsa åtkomsten till ett Azure Container Registry med hjälp av ett virtuellt Azure-nätverk eller brand Väggs regler](container-registry-vnet.md)
 
@@ -461,7 +461,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 Följ Azure Security Center rekommendationer för kryptering i vila och kryptering under överföring, i förekommande fall.
 
-- [Förstå kryptering i överföring med Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Förstå kryptering i överföring med Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Ansvar**: Delad
 
@@ -509,7 +509,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Förstå kryptering vid vila i Azure](../security/fundamentals/encryption-atrest.md)
 
-- [Kundhanterade nycklar i Azure Container Registry](https://aka.ms/acr/cmk)
+- [Kundhanterade nycklar i Azure Container Registry](./container-registry-customer-managed-keys.md)
 
 **Ansvar**: Kund
 
@@ -533,9 +533,9 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Följ rekommendationer från Azure Security Center om att utföra sårbarhets bedömningar i behållar avbildningar. Du kan också distribuera lösningar från tredje part från Azure Marketplace för att utföra problem utvärdering av avbildningar.
 
-- [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](../security-center/deploy-vulnerability-assessment-vm.md)
 
-- [Integrering av Azure Container Registry i Security Center (förhandsversion)](/azure/security-center/azure-container-registry-integration)
+- [Integrering av Azure Container Registry i Security Center (förhandsversion)](../security-center/defender-for-container-registries-introduction.md)
 
 **Ansvar**: Kund
 
@@ -567,7 +567,7 @@ Automatisera uppdateringar av behållar avbildningar när uppdateringar av bas a
 
 **Vägledning**: integrera Azure Container Registry (ACR) med Azure Security Center för att möjliggöra regelbunden genomsökning av behållar avbildningar för sårbarheter. Du kan också distribuera lösningar från tredje part från Azure Marketplace för att utföra regelbundna avbildnings sårbarhets genomsökningar.
 
-- [Integrering av Azure Container Registry i Security Center (förhandsversion)](/azure/security-center/azure-container-registry-integration)
+- [Integrering av Azure Container Registry i Security Center (förhandsversion)](../security-center/defender-for-container-registries-introduction.md)
 
 **Ansvar**: Kund
 
@@ -577,7 +577,7 @@ Automatisera uppdateringar av behållar avbildningar när uppdateringar av bas a
 
 **Vägledning**: integrera Azure Container Registry (ACR) med Azure Security Center för att möjliggöra regelbunden genomsökning av behållar avbildningar för sårbarheter och för att klassificera risker. Du kan också distribuera lösningar från tredje part från Azure Marketplace för att utföra regelbundna avbildnings sårbarheter och risk klassificering.
 
-- [Integrering av Azure Container Registry i Security Center (förhandsversion)](/azure/security-center/azure-container-registry-integration)
+- [Integrering av Azure Container Registry i Security Center (förhandsversion)](../security-center/defender-for-container-registries-introduction.md)
 
 **Ansvar**: Kund
 
@@ -595,7 +595,7 @@ Automatisera uppdateringar av behållar avbildningar när uppdateringar av bas a
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -657,9 +657,9 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 - [Azure Container Registry loggar för diagnostisk utvärdering och granskning](container-registry-diagnostics-audit-logs.md)
 
-- [Förstå Log Analytics arbets yta](/azure/azure-monitor/log-query/get-started-portal)
+- [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Ansvar**: Kund
 
@@ -691,7 +691,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -719,7 +719,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: Använd operativ systemets speciella konfigurationer eller resurser från tredje part för att begränsa användarnas möjlighet att köra skript i Azure Compute-resurser.
 
-- [Till exempel hur du styr körning av PowerShell-skript i Windows-miljöer](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Till exempel hur du styr körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 **Ansvar**: Kund
 
@@ -791,9 +791,9 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: om du använder anpassade Azure policys definitioner använder du Azure-databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -945,7 +945,7 @@ Säkerhetskopiera Kundhanterade nycklar i Azure Key Vault med hjälp av kommando
 
 - [Importera behållar avbildningar till ett behållar register](container-registry-import-images.md)
 
-- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Kund
 
@@ -955,7 +955,7 @@ Säkerhetskopiera Kundhanterade nycklar i Azure Key Vault med hjälp av kommando
 
 **Vägledning**: testa att återställa Kundhanterade nycklar i Azure Key Vault med hjälp av Azures kommando rads verktyg eller SDK: er.
 
-- [Så här återställer du Azure Key Vault nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här återställer du Azure Key Vault nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Kund
 
@@ -965,7 +965,7 @@ Säkerhetskopiera Kundhanterade nycklar i Azure Key Vault med hjälp av kommando
 
 **Vägledning**: du kan aktivera Soft-Delete i Azure Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning.
 
-- [Så här aktiverar du Soft-Delete i Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Så här aktiverar du Soft-Delete i Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Ansvar**: Kund
 
@@ -1059,5 +1059,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

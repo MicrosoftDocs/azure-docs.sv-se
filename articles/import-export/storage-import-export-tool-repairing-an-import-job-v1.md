@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: af6234a81e8f79424cc3b1ec4178a175d9ff0146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98706709"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564576"
 ---
 # <a name="repairing-an-import-job"></a>Reparera ett importjobb
 Tjänsten Microsoft Azure Import/Export kanske inte kan kopiera några av dina filer eller delar av en fil till Windows Azure Blob Service. Några orsaker till detta fel är:  
@@ -30,7 +30,7 @@ Du kan köra Microsoft Azure Import/Export-verktyget med import jobbets Copy-log
 
 Följande parametrar kan anges med **RepairImport**: 
   
-|||  
+| Parameter | Beskrivning |  
 |-|-|  
 |**/r:**<RepairFile\>|**Kunna.** Sökväg till reparations filen som spårar förloppet för reparationen och gör att du kan återuppta en avbruten reparation. Varje enhet måste ha en och bara en reparations fil. När du startar en reparation för en specifik enhet måste du skicka sökvägen till en reparations fil som ännu inte finns. Om du vill återuppta en avbruten reparation bör du skicka namnet på en befintlig reparations fil. Ange alltid den reparations fil som motsvarar mål enheten.|  
 |**/logdir:**<LogDirectory\>|**Valfritt.** Logg katalogen. Utförliga loggfiler skrivs till den här katalogen. Om ingen logg katalog anges används den aktuella katalogen som logg katalog.|  

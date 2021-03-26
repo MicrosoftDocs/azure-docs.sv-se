@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c699cd865746bf430193eba38ec6fa79575692e
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596947"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543456"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurera, optimera och felsöka AzCopy
 
@@ -103,14 +103,16 @@ Innan du anger den här variabeln rekommenderar vi att du kör ett benchmark-tes
 
 ### <a name="optimize-memory-use"></a>Optimera minnes användning
 
-Ange `AZCOPY_BUFFER_GB` miljövariabeln för att ange den maximala mängden system minne som du vill att AzCopy ska använda när du laddar ned och laddar upp filer.
-Express detta värde i gigabyte (GB).
+Ange `AZCOPY_BUFFER_GB` miljövariabeln för att ange den maximala mängd system minne som du vill att AzCopy ska använda för buffring vid hämtning och uppladdning av filer. Express detta värde i gigabyte (GB).
 
 | Operativsystem | Kommando  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+> [!NOTE]
+> Jobb spårningen debiteras alltid ytterligare kostnader för minnes användning. Mängden varierar beroende på antalet överföringar i ett jobb. Buffertar är den största delen av minnes användningen. Du kan kontrol lera omkostnader genom `AZCOPY_BUFFER_GB` att använda så att det är så stort som möjligt, men ingen flagga för att enbart täcka den totala minnes användningen är tillgänglig.
 
 ### <a name="optimize-file-synchronization"></a>Optimera filsynkronisering
 

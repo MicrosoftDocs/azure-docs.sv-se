@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13585173b54c79158161da54f968ba66eb018f6a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27a0d5b809480b2ce4aff36c5acd43c149ed5bb3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705746"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562842"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azures säkerhets bas linje för Azure DevTest Labs
 
@@ -78,11 +78,11 @@ Distribuera Azure-brandväggen på var och en av organisationens nätverks grän
 
 - [Så här konfigurerar du ett virtuellt nätverk för Azure DevTest Labs](devtest-lab-configure-vnet.md)
 
-- [Så här konfigurerar du DDoS-skydd](/azure/virtual-network/manage-ddos-protection)
+- [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 
 - [Så här distribuerar du Azure-brandvägg](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Förstå Azure Security Center integrerad Hot information](/azure/security-center/threat-protection)
+- [Förstå Azure Security Center integrerad Hot information](../security-center/azure-defender.md)
 
 - [Förstå Azure Security Center anpassad nätverks härdning](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -144,7 +144,7 @@ Du kan också använda program säkerhets grupper för att förenkla komplex sä
 
 - [Förstå och använda service märken](../virtual-network/service-tags-overview.md)
 
-- [Förstå och använda program säkerhets grupper](/azure/virtual-network/security-overview#application-security-groups)
+- [Förstå och använda program säkerhets grupper](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Ansvar**: Kund
 
@@ -158,7 +158,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy exempel för nätverk](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy exempel för nätverk](../governance/policy/samples/built-in-policies.md#network)
 
 - [Så här skapar du en Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -188,9 +188,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka datorkonfigurationer och identifiera ändringar i dina Azure-resurser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -214,7 +214,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure DevTest Labs instanser på hanterings Plans nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, skicka och ta bort) på hanterings Plans nivå för dina DevTest Labs-instanser.
 
-- [Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser](/azure/azure-monitor/platform/diagnostic-settings)
+- [Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Ansvar**: Kund
 
@@ -224,7 +224,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure DevTest Labs instanser på hanterings Plans nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, skicka och ta bort) på hanterings Plans nivå för dina DevTest Labs-instanser.
 
-- [Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser](/azure/azure-monitor/platform/diagnostic-settings)
+- [Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Ansvar**: Kund
 
@@ -236,7 +236,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 Mer information finns i följande artiklar:
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Förstå Azure Security Center insamling av data](../security-center/security-center-enable-data-collection.md)
 
@@ -248,7 +248,7 @@ Mer information finns i följande artiklar:
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure DevTest Labs instanser enligt organisationens regler för efterlevnad.
 
-- [Mer information finns i följande artikel](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Mer information finns i följande artikel](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -260,9 +260,9 @@ Mer information finns i följande artiklar:
 
 Mer information finns i följande artiklar:
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -272,7 +272,7 @@ Mer information finns i följande artiklar:
 
 **Vägledning**: använd Azure Log Analytics-arbetsytan för att övervaka och Avisera om avvikande aktiviteter i säkerhets loggar och händelser relaterade till din Azure DevTest Labs.
 
-- [Så här aviserar du om Log Analytics-loggdata](/azure/azure-monitor/learn/tutorial-response)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
@@ -333,7 +333,7 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 - Resurs hantering: den ger till gång till Azure Portal för att hantera resurser (skapa virtuella datorer, skapa miljöer, starta, stoppa, starta om, ta bort och tillämpa artefakter och så vidare). Resurs hantering görs i Azure med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Du tilldelar roller till användare och anger behörigheter för resurs-och åtkomst nivå.
 - Virtuella datorer (nätverks nivå): i standard konfigurationen använder virtuella datorer ett lokalt administratörs konto. Om det finns en tillgänglig domän (Azure Active Directory Domain Services (Azure AD DS), en lokal domän eller en molnbaserad domän), kan datorer anslutas till domänen. Användare kan sedan använda sina domänbaserade identiteter med hjälp av domän anslutningens artefakt för att ansluta till datorerna.
 
-- [Referens arkitektur för DevTest Labs](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-reference-architecture#architecture)
+- [Referens arkitektur för DevTest Labs](./devtest-lab-reference-architecture.md#architecture)
 
 - [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -463,7 +463,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i DevTest Labs-instanser och andra viktiga eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Skapa aviseringar för DevTest Labs aktivitets logg händelser](create-alerts.md)
 
@@ -481,7 +481,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 - [Så här skapar du frågor med Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -595,7 +595,7 @@ Referensmaterial:
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -625,7 +625,7 @@ Referensmaterial:
 
 **Vägledning**: beroende på typen av skript kan du använda konfigurationer för operativ system eller resurser från tredje part för att begränsa användarnas möjlighet att köra skript på de virtuella datorer som finns i DevTest Labs. Du kan också använda Azure Security Center adaptiva program kontroller för att säkerställa att endast auktoriserad program vara körs och all obehörig program vara blockeras från att köras på de underliggande virtuella Azure-datorerna.
 
-- [Så här styr du körning av PowerShell-skript i Windows-miljöer](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 - [Använda Azure Security Center adaptiva program kontroller](../security-center/security-center-adaptive-application.md)
 
@@ -665,7 +665,7 @@ Azure Resource Manager har också möjlighet att exportera mallen i JavaScript O
 
 Du kan också använda rekommendationer från Azure Security Center som en säker konfigurations bas linje för dina Azure-resurser.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Självstudie: skapa och hantera principer för att genomdriva efterlevnad](../governance/policy/tutorials/create-and-manage.md)
 
@@ -721,7 +721,7 @@ Dessutom hanteras och underhålls avbildningar av virtuella Azure Marketplace-da
 
 - [Översikt över Azure Automation tillstånds konfiguration](../automation/automation-dsc-overview.md)
 
-- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 - [Så här skapar du en avbildnings fabrik i DevTest Labs](image-factory-create.md)
 
@@ -735,7 +735,7 @@ Dessutom hanteras och underhålls avbildningar av virtuella Azure Marketplace-da
 
 - [Azure databaser git-självstudie](/azure/devops/repos/git/gitworkflow)
 
-- [Om behörigheter och grupper](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page&amp;preserve-view=true)
+- [Om behörigheter och grupper](/azure/devops/organizations/security/about-permissions?preserve-view=true&tabs=preview-page&view=azure-devops)
 
 - [Integrering mellan Azure DevTest Labs-och Azure DevOps-arbetsflöde](devtest-lab-dev-ops.md)
 
@@ -765,7 +765,7 @@ Dessutom hanteras och underhålls avbildningar av virtuella Azure Marketplace-da
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Använda alias](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Använda alias](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Ansvar**: Kund
 
@@ -853,7 +853,7 @@ Dessutom hanteras och underhålls avbildningar av virtuella Azure Marketplace-da
 
 - [Så här konfigurerar du Microsoft Antimalware för Azure](../security/fundamentals/antimalware.md) 
 
-- [Skydd mot hot i Azure Security Center](/azure/security-center/threat-protection)
+- [Skydd mot hot i Azure Security Center](../security-center/azure-defender.md)
 
 **Ansvar**: Kund
 
@@ -869,7 +869,7 @@ Använd Azure Security Center s hot identifiering för data tjänster för att i
 
 - [Förstå Microsoft Antimalware för Azure](../security/fundamentals/antimalware.md) 
 
-- [Förstå Azure Security Centers hot identifiering för data tjänster](/azure/security-center/security-center-alerts-data-services)
+- [Förstå Azure Security Centers hot identifiering för data tjänster](../security-center/azure-defender.md)
 
 **Ansvar**: Kund
 
@@ -913,7 +913,7 @@ Aktivera Azure Backup på virtuella Azure-datorer och den önskade frekvensen oc
 
 - [En översikt över säkerhets kopiering av virtuella Azure-datorer](../backup/backup-azure-vms-introduction.md)
 
-- [Säkerhetskopiera Key Vault nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Säkerhetskopiera Key Vault nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Kund
 
@@ -929,7 +929,7 @@ Om du använder Azure Disk Encryption kan du återställa den virtuella Azure-da
 
 - [Återställa filer från Azure VM backup](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Återställa Key Vault-nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 - [Säkerhetskopiera och återställa en krypterad virtuell dator](../backup/backup-azure-vms-encryption.md)
 
@@ -975,7 +975,7 @@ Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings sy
 
 - [Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Använda taggar för att organisera dina Azure-resurser](/azure/azure-resource-manager/resource-group-using-tags)
+- [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -1041,5 +1041,5 @@ Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings sy
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

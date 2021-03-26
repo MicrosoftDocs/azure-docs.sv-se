@@ -3,7 +3,7 @@ title: Azure DDoS Protection standard rapporter och flödes loggar
 description: Lär dig hur du konfigurerar rapporter och flödes loggar.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100591880"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567686"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Visa och konfigurera diagnostisk loggning för DDoS-skydd
 
@@ -67,7 +67,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när meddelandet skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -83,7 +83,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när flödes loggen skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -102,7 +102,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när rapporten skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -130,7 +130,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 Den här [mallen](https://aka.ms/ddosdiaglogs) skapar en Azure policy-definition för att automatiskt aktivera diagnostikloggning på alla offentliga IP-loggar i ett definierat omfång.
 
-[![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+[![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>Visa loggdata i arbets böcker
 
@@ -144,7 +144,7 @@ Du kan ansluta loggar till Azure Sentinel, Visa och analysera dina data i arbets
 
 Du kan använda [den här Azure Resource Manager-mallen (arm)](https://aka.ms/ddosworkbook) för att distribuera en arbets bok för attack analys. Med den här arbets boken kan du visualisera angrepps data över flera filter bara paneler för att enkelt förstå vad som är i spel. 
 
-[![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FWorkbook%20-%20Azure%20DDOS%20monitor%20workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS Protection arbets bok](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 

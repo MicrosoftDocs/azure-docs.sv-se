@@ -4,12 +4,12 @@ description: Hämta sid visning och antal sessioner, webb klient data, enstaka s
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485494"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565273"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights för webbsidor
 
@@ -107,8 +107,8 @@ Alla konfigurations alternativ har nu flyttats till slutet av skriptet för att 
 Varje konfigurations alternativ visas på en ny rad, om du inte vill åsidosätta standardvärdet för ett objekt som anges som [valfritt], kan du ta bort raden för att minimera den resulterande storleken på din returnerade sida.
 
 De tillgängliga konfigurations alternativen är
-
-| Namn | Typ | Beskrivning
+ 
+| Namn | Typ | Description
 |------|------|----------------
 | src | sträng **[obligatoriskt]** | Den fullständiga URL: en för varifrån SDK: n ska läsas in. Det här värdet används för attributet src för ett dynamiskt tillagd &lt; skript/ &gt; tagg. Du kan använda den offentliga CDN-platsen eller en privat värd som är värd för en.
 | name | sträng *[valfritt]* | Det globala namnet för den initierade SDK: n som standard `appInsights` . Det ```window.appInsights``` kommer att vara en referens till den initierade instansen. Obs! Om du anger ett namn värde eller om en föregående instans ska tilldelas (via det globala namnet appInsightsSDK), kommer detta namn värde också att definieras i det globala namn området som ```window.appInsightsSDK=<name value>``` , detta krävs av SDK-initierings koden för att säkerställa att den initierar och uppdaterar rätt kodfragments Skeleton och proxyservrar.
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 De flesta konfigurations fälten får ett namn som är förfalskade som standard. Alla fält är valfria förutom för `instrumentationKey` .
 
-| Name | Standardvärde | Beskrivning |
-|------|---------|-------------|
-| instrumentationKey | null | **Obligatoriskt**<br>Instrumentation-nyckel som du fick från Azure Portal. |
-| accountId | null | Ett valfritt konto-ID, om din app grupperar användare till konton. Inga blank steg, kommatecken, semikolon, likheter eller lodräta staplar |
-| sessionRenewalMs | 1800000 | En session loggas om användaren är inaktiv under den här tiden i millisekunder. Standardvärdet är 30 minuter |
-| sessionExpirationMs | 86400000 | En session loggas om den fortsätter under den här tiden i millisekunder. Standardvärdet är 24 timmar |
-| maxBatchSizeInBytes | 10000 | Max storlek för telemetri batch. Om en batch överskrider den här gränsen skickas den omedelbart och en ny batch startas |
-| maxBatchInterval | 15 000 | Hur lång tid det tar att gruppera telemetri innan det skickas (millisekunder) |
-| disableExceptionTracking | falskt | Om det här värdet är sant samlas undantag inte in igen. Standardvärdet är false. |
-| disableTelemetry | falskt | Om det här värdet är sant samlas ingen telemetri in eller skickas. Standardvärdet är false. |
-| enableDebug | falskt | Om det här värdet är sant genereras **interna** fel söknings data som ett undantag **i stället** för att loggas, oavsett inställningarna för SDK-loggning. Standardvärdet är false. <br>**_Obs:_** Om du aktiverar den här inställningen tas all telemetri bort när ett internt fel inträffar. Detta kan vara användbart för att snabbt identifiera problem med konfigurationen eller användningen av SDK. Om du inte vill förlora telemetri vid fel sökning kan du överväga att använda `consoleLoggingLevel` eller `telemetryLoggingLevel` i stället för `enableDebug` . |
-| loggingLevelConsole | 0 | Loggar **interna** Application Insights fel i konsolen. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) |
-| loggingLevelTelemetry | 1 | Skickar **interna** Application Insights fel som telemetri. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) |
-| diagnosticLogInterval | 10000 | inhemska Avsöknings intervall (i MS) för intern loggnings kön |
-| samplingPercentage | 100 | Procent andel av händelser som ska skickas. Standardvärdet är 100, vilket innebär att alla händelser skickas. Ange detta om du vill bevara din data Kap för storskaliga program. |
-| autoTrackPageVisitTime | falskt | Om värdet är true, på en sid visningar, spåras och skickas den föregående instrumenterade sidans visnings tid och skickas som telemetri och en ny timer startas för den aktuella sid visningar. Standardvärdet är false. |
-| disableAjaxTracking | falskt | Om värdet är true samlas inga AJAX-anrop in. Standardvärdet är false. |
-| disableFetchTracking | true | Om det här värdet är sant samlas inga hämtnings förfrågningar in. Standardvärdet är true |
-| overridePageViewDuration | falskt | Om värdet är true ändras standard beteendet för trackPageView till post end för sid visningens varaktighets intervall när trackPageView anropas. Om värdet är false och ingen anpassad varaktighet anges för trackPageView, beräknas sid visningens prestanda med hjälp av API: t för navigering. Standardvärdet är false. |
-| maxAjaxCallsPerView | 500 | Standard 500-styr hur många AJAX-anrop som ska övervakas per sid visning. Ange till-1 om du vill övervaka alla (obegränsat) AJAX-anrop på sidan. |
-| disableDataLossAnalysis | true | Om det här värdet är falskt kontrol leras den interna telemetri-buffertarna vid start för objekt som ännu inte har skickats. |
-| disableCorrelationHeaders | falskt | Om värdet är False kommer SDK att lägga till två huvuden ("Request-ID" och "Request-context") till alla beroende begär Anden för att korrelera dem med motsvarande begär Anden på Server sidan. Standardvärdet är false. |
-| correlationHeaderExcludedDomains |  | Inaktivera korrelations rubriker för vissa domäner |
-| correlationHeaderDomains |  | Aktivera korrelations rubriker för vissa domäner |
-| disableFlushOnBeforeUnload | falskt | Standard falskt. Om värdet är true anropas inte Flush-metoden när onBeforeUnload event triggers |
-| enableSessionStorageBuffer | true | Default True. Om värdet är true lagras bufferten med all telemetri som inte har skickats i session Storage. Bufferten återställs vid sid inläsning |
-| isCookieUseDisabled | falskt | Standard falskt. Om värdet är true kommer SDK inte att lagra eller läsa data från cookies. Observera att detta inaktiverar cookies från användare och session och återger användnings blad och erfarenheter. |
-| cookieDomain | null | Anpassad cookie-domän. Detta är användbart om du vill dela Application Insights cookies över under domäner. |
-| isRetryDisabled | falskt | Standard falskt. Om det här värdet är falskt försöker du igen på 206 (delvis utfört), 408 (timeout), 429 (för många begär Anden), 500 (internt Server fel), 503 (tjänsten är inte tillgänglig) och 0 (offline, endast om det har identifierats) |
-| isStorageUseDisabled | falskt | Om värdet är true kommer SDK inte att lagra eller läsa data från lokal lagring och sessionstoken. Standardvärdet är false. |
-| isBeaconApiDisabled | true | Om det här värdet är falskt skickar SDK all telemetri med hjälp av [Beacon-API: et](https://www.w3.org/TR/beacon) |
-| onunloadDisableBeacon | falskt | Standard falskt. När fliken är stängd skickar SDK all återstående telemetri med hjälp av Beacon- [API: et](https://www.w3.org/TR/beacon) |
-| sdkExtension | null | Anger namnet på SDK-tillägget. Endast alfabetiska tecken tillåts. Tilläggs namnet läggs till som ett prefix till taggen AI. Internal. sdkVersion (till exempel ext_javascript: 2.0.0). Standardvärdet är null. |
-| isBrowserLinkTrackingEnabled | falskt | Standardvärdet är false. Om värdet är true, kommer SDK att spåra alla förfrågningar om [webb läsar länkar](/aspnet/core/client-side/using-browserlink) . |
-| appId | null | AppId används för korrelationen mellan AJAX-beroenden på klient sidan med begär Anden på Server sidan. När Beacon-API är aktiverat kan det inte användas automatiskt, men det kan ställas in manuellt i konfigurationen. Standardvärdet är null |
-| enableCorsCorrelation | falskt | Om värdet är true, kommer SDK att lägga till två huvuden ("Request-ID" och "Request-context") till alla CORS-begäranden för att korrelera utgående AJAX-beroenden med motsvarande begär Anden på Server sidan. Standardvärdet är false |
-| namePrefix | Odefinierad | Ett valfritt värde som ska användas som namn postfix för localStorage och cookie-namn.
-| enableAutoRouteTracking | falskt | Spåra automatiskt väg ändringar i en enskild sida (SPA). Om värdet är true skickar varje väg ändring en ny sid visningar till Application Insights. Ändringar av hash-vägar ( `example.com/foo#bar` ) registreras också som nya sid visningar.
-| enableRequestHeaderTracking | falskt | Om värdet är true, kommer AJAX-& Hämta begärandehuvuden att spåras, standardvärdet är false.
-| enableResponseHeaderTracking | falskt | Om värdet är true spåras svars rubriker för AJAX-& Hämta. standard är falskt.
-| distributedTracingMode | `DistributedTracingModes.AI` | Ställer in läget för distribuerad spårning. Om AI_AND_W3C läge eller W3C-läge är inställt, genereras W3C trace context-rubriker (traceparent/tracestate) och tas med i alla utgående begär Anden. AI_AND_W3C tillhandahålls för bakåtkompatibilitet med alla äldre Application Insights instrumenterade tjänster. Se exemplet [här](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
-| enableAjaxErrorStatusText | falskt | Standard falskt. Om värdet är true, inkludera data text för svars fel i beroende händelse vid misslyckade AJAX-begäranden.
-| enableAjaxPerfTracking | falskt | Standard falskt. Flagga för att aktivera sökning efter och inklusive ytterligare ett webbläsarfönster. prestanda tider i rapporterade `ajax` (XHR och Fetch) mått.
-| maxAjaxPerfLookupAttempts | 3 | Standardvärdet är 3. Det maximala antalet gånger som ska sökas efter fönstret. prestanda tider (om det är tillgängligt), krävs detta eftersom inte alla webbläsare fyller i fönstret. prestanda innan XHR-begäran rapporteras och för hämtnings begär Anden läggs till efter dess slut.
-| ajaxPerfLookupDelay | 25 | Standardvärdet är 25 MS. Vänte tiden innan ett nytt försök att hitta Windows. prestanda tids inställningarna för en `ajax` begäran visas i millisekunder och skickas direkt till setTimeout ().
-| enableUnhandledPromiseRejectionTracking | falskt | Om värdet är true, kommer ohanterade löftes avslag att samlas in automatiskt och rapporteras som ett JavaScript-fel. När disableExceptionTracking är true (spåra inte undantag) ignoreras konfiguration svärdet och ohanterade löftes avslag rapporteras inte.
+| Name | Beskrivning | Standardvärde |
+|------|-------------|---------|
+| instrumentationKey | **Obligatoriskt**<br>Instrumentation-nyckel som du fick från Azure Portal. | sträng<br/>null |
+| accountId | Ett valfritt konto-ID, om din app grupperar användare till konton. Inga blank steg, kommatecken, semikolon, likheter eller lodräta staplar | sträng<br/>null |
+| sessionRenewalMs | En session loggas om användaren är inaktiv under den här tiden i millisekunder. | numeric<br/>1800000<br/>(30 minuter) |
+| sessionExpirationMs | En session loggas om den fortsätter under den här tiden i millisekunder. | numeric<br/>86400000<br/>(24 timmar) |
+| maxBatchSizeInBytes | Max storlek för telemetri batch. Om en batch överskrider den här gränsen skickas den omedelbart och en ny batch startas | numeric<br/>10000 |
+| maxBatchInterval | Hur lång tid det tar att gruppera telemetri innan det skickas (millisekunder) | numeric<br/>15 000 |
+| Inaktivera&#8203;ExceptionTracking | Om det här värdet är sant samlas undantag inte in igen. | boolean<br/> falskt |
+| disableTelemetry | Om det här värdet är sant samlas ingen telemetri in eller skickas. | boolean<br/>falskt |
+| enableDebug | Om det här värdet är sant genereras **interna** fel söknings data som ett undantag **i stället** för att loggas, oavsett inställningarna för SDK-loggning. Standardvärdet är false. <br>**_Obs:_** Om du aktiverar den här inställningen tas all telemetri bort när ett internt fel inträffar. Detta kan vara användbart för att snabbt identifiera problem med konfigurationen eller användningen av SDK. Om du inte vill förlora telemetri vid fel sökning kan du överväga att använda `consoleLoggingLevel` eller `telemetryLoggingLevel` i stället för `enableDebug` . | boolean<br/>falskt |
+| loggingLevelConsole | Loggar **interna** Application Insights fel i konsolen. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) | numeric<br/> 0 |
+| loggingLevelTelemetry | Skickar **interna** Application Insights fel som telemetri. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) | numeric<br/> 1 |
+| diagnosticLogInterval | inhemska Avsöknings intervall (i MS) för intern loggnings kön | numeric<br/> 10000 |
+| samplingPercentage | Procent andel av händelser som ska skickas. Standardvärdet är 100, vilket innebär att alla händelser skickas. Ange detta om du vill bevara din data Kap för storskaliga program. | numeric<br/>100 |
+| autoTrackPageVisitTime | Om värdet är true, på en sid visningar, spåras och skickas den föregående instrumenterade sidans visnings tid och skickas som telemetri och en ny timer startas för den aktuella sid visningar. | boolean<br/>falskt |
+| disableAjaxTracking | Om värdet är true samlas inga AJAX-anrop in. | boolean<br/> falskt |
+| disableFetchTracking | Om det här värdet är sant samlas inga hämtnings förfrågningar in.|boolean<br/>true |
+| overridePageViewDuration | Om värdet är true ändras standard beteendet för trackPageView till post end för sid visningens varaktighets intervall när trackPageView anropas. Om värdet är false och ingen anpassad varaktighet anges för trackPageView, beräknas sid visningens prestanda med hjälp av API: t för navigering. |boolean<br/>
+| maxAjaxCallsPerView | Standard 500-styr hur många AJAX-anrop som ska övervakas per sid visning. Ange till-1 om du vill övervaka alla (obegränsat) AJAX-anrop på sidan. | numeric<br/> 500 |
+| disableDataLossAnalysis | Om det här värdet är falskt kontrol leras den interna telemetri-buffertarna vid start för objekt som ännu inte har skickats. | boolean<br/> true |
+| Inaktivera&#8203;CorrelationHeaders | Om värdet är False kommer SDK att lägga till två huvuden ("Request-ID" och "Request-context") till alla beroende begär Anden för att korrelera dem med motsvarande begär Anden på Server sidan. | boolean<br/> falskt |
+| correlationHeader&#8203;ExcludedDomains | Inaktivera korrelations rubriker för vissa domäner | sträng []<br/>Odefinierad |
+| correlationHeader&#8203;ExcludePatterns | Inaktivera korrelations rubriker med reguljära uttryck | regex []<br/>Odefinierad |
+| correlationHeader&#8203;domäner | Aktivera korrelations rubriker för vissa domäner | sträng []<br/>Odefinierad |
+| disableFlush&#8203;OnBeforeUnload | Om värdet är true anropas inte Flush-metoden när onBeforeUnload event triggers | boolean<br/> falskt |
+| enableSessionStorageBuffer | Om värdet är true lagras bufferten med all telemetri som inte har skickats i session Storage. Bufferten återställs vid sid inläsning | boolean<br />true |
+| cookieCfg | Standardinställningar för användning av cookies är aktiverat se [ICookieCfgConfig](#icookiemgrconfig) -inställningar för fullständiga standardvärden. | [ICookieCfgConfig](#icookiemgrconfig)<br>(Sedan 2.6.0)<br/>Odefinierad |
+| ~~isCookieUseDisabled~~<br>disableCookiesUsage | Om värdet är true kommer SDK inte att lagra eller läsa data från cookies. Observera att detta inaktiverar cookies från användare och session och återger användnings blad och erfarenheter. isCookieUseDisable har ersatts av disableCookiesUsage, när båda anges disableCookiesUsage prioriteras.<br>(Sedan v-2.6.0) Och om `cookieCfg.enabled` också har definierats prioriteras det för dessa värden, och användningen av cookies kan aktive ras igen efter initieringen via Core. getCookieMgr (). SetEnabled (true). | alias för [`cookieCfg.enabled`](#icookiemgrconfig)<br>falskt |
+| cookieDomain | Anpassad cookie-domän. Detta är användbart om du vill dela Application Insights cookies över under domäner.<br>(Sedan v-2.6.0) Om `cookieCfg.domain` har definierats prioriteras det här värdet. | alias för [`cookieCfg.domain`](#icookiemgrconfig)<br>null |
+| cookiePath | Anpassad cookie-sökväg. Detta är användbart om du vill dela Application Insights cookies bakom en Programgateway.<br>Om `cookieCfg.path` har definierats prioriteras det här värdet. | alias för [`cookieCfg.path`](#icookiemgrconfig)<br>(Sedan 2.6.0)<br/>null |
+| isRetryDisabled | Om det här värdet är falskt försöker du igen på 206 (delvis utfört), 408 (timeout), 429 (för många begär Anden), 500 (internt Server fel), 503 (tjänsten är inte tillgänglig) och 0 (offline, endast om det har identifierats) | boolean<br/>falskt |
+| isStorageUseDisabled | Om värdet är true kommer SDK inte att lagra eller läsa data från lokal lagring och sessionstoken. | boolean<br/> falskt |
+| isBeaconApiDisabled | Om det här värdet är falskt skickar SDK all telemetri med hjälp av [Beacon-API: et](https://www.w3.org/TR/beacon) | boolean<br/>true |
+| onunloadDisableBeacon | När fliken är stängd skickar SDK all återstående telemetri med hjälp av Beacon- [API: et](https://www.w3.org/TR/beacon) | boolean<br/> falskt |
+| sdkExtension | Anger namnet på SDK-tillägget. Endast alfabetiska tecken tillåts. Tilläggs namnet läggs till som ett prefix till taggen AI. Internal. sdkVersion (till exempel ext_javascript: 2.0.0). | sträng<br/> null |
+| isBrowserLink&#8203;TrackingEnabled | Om värdet är true, kommer SDK att spåra alla förfrågningar om [webb läsar länkar](/aspnet/core/client-side/using-browserlink) . | boolean<br/>falskt |
+| appId | AppId används för korrelationen mellan AJAX-beroenden på klient sidan med begär Anden på Server sidan. När Beacon-API är aktiverat kan det inte användas automatiskt, men det kan ställas in manuellt i konfigurationen. |sträng<br/> null |
+| Aktivera&#8203;CorsCorrelation | Om värdet är true, kommer SDK att lägga till två huvuden ("Request-ID" och "Request-context") till alla CORS-begäranden för att korrelera utgående AJAX-beroenden med motsvarande begär Anden på Server sidan. | boolean<br/>falskt |
+| namePrefix | Ett valfritt värde som ska användas som namn postfix för localStorage och cookie-namn. | sträng<br/>Odefinierad |
+| Aktivera&#8203;AutoRoute&#8203;spårning | Spåra automatiskt väg ändringar i en enskild sida (SPA). Om värdet är true skickar varje väg ändring en ny sid visningar till Application Insights. Ändringar av hash-vägar ( `example.com/foo#bar` ) registreras också som nya sid visningar.| boolean<br/>falskt |
+| enableRequest&#8203;HeaderTracking | Om värdet är true spåras AJAX-& Hämta begärandehuvuden. | boolean<br/> falskt |
+| enableResponse&#8203;HeaderTracking | Om värdet är true spåras svars rubriker för AJAX-& Hämta. | boolean<br/> falskt |
+| distributedTracingMode | Ställer in läget för distribuerad spårning. Om AI_AND_W3C läge eller W3C-läge är inställt, genereras W3C trace context-rubriker (traceparent/tracestate) och tas med i alla utgående begär Anden. AI_AND_W3C tillhandahålls för bakåtkompatibilitet med alla äldre Application Insights instrumenterade tjänster. Se exemplet [här](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).| `DistributedTracingModes`eller<br/>numeric<br/>(Sedan v-2.6.0) `DistributedTracingModes.AI_AND_W3C`<br />(v-2.5.11 eller tidigare) `DistributedTracingModes.AI` |
+| Aktivera&#8203;AjaxErrorStatusText | Om värdet är true, inkludera data text för svars fel i beroende händelse vid misslyckade AJAX-begäranden. | boolean<br/> falskt |
+| Aktivera&#8203;AjaxPerfTracking |Flagga för att aktivera sökning efter och inklusive ytterligare ett webbläsarfönster. prestanda tider i rapporterade `ajax` (XHR och Fetch) mått. | boolean<br/> falskt |
+| maxAjaxPerf&#8203;LookupAttempts | Det maximala antalet gånger som ska sökas efter fönstret. prestanda tider (om det är tillgängligt), krävs detta eftersom inte alla webbläsare fyller i fönstret. prestanda innan XHR-begäran rapporteras och för hämtnings begär Anden läggs till efter dess slut.| numeric<br/> 3 |
+| ajaxPerfLookupDelay | Vänte tiden innan ett nytt försök att hitta Windows. prestanda tids inställningarna för en `ajax` begäran visas i millisekunder och skickas direkt till setTimeout (). | numeric<br/> 25 MS |
+| enableUnhandled&#8203;PromiseRejection&#8203;spårning | Om värdet är true, kommer ohanterade löftes avslag att samlas in automatiskt och rapporteras som ett JavaScript-fel. När disableExceptionTracking är true (spåra inte undantag) ignoreras konfiguration svärdet och ohanterade löftes avslag rapporteras inte. | boolean<br/> falskt |
+| Inaktivera&#8203;InstrumentationKey&#8203;verifiering | Om värdet är true kringgås kontroll av Instrumentation-nycklar. | boolean<br/>falskt |
+| enablePerfMgr | När aktive rad (true) skapar den lokala perfEvents för kod som har instrumenterats för att generera perfEvents (via doPerf ()-hjälpen). Detta kan användas för att identifiera prestanda problem inom SDK: n baserat på din användning eller alternativt i din egen instrumenterade kod. [Mer information finns i den grundläggande dokumentationen](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md). Sedan v-2.5.7 | boolean<br/>falskt |
+| perfEvtsSendAll | När _enablePerfMgr_ är aktiverat och [IPerfManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) utlöser en [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts). perfEvent () avgör den här flaggan om en händelse utlöses (och skickas till alla lyssnare) för alla händelser (sant) eller endast för "överordnade" händelser (falskt &lt; Standardvärde &gt; ).<br />En överordnad [IPerfEvent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) är en händelse där inga andra IPerfEvent fortfarande körs vid den tidpunkt då händelsen skapas och dess _överordnade_ egenskap inte är null eller odefinierad. Sedan v-2.5.7 |  boolean<br />falskt |
+| idLength | Identifierar den standard längd som används för att generera nya slumpmässiga sessions-och användar-ID-värden. Standardvärdet är 22, föregående standardvärdet var 5 (v 2.5.8 eller mindre). om du vill behålla den tidigare maximala längden bör du ange värdet 5. |  numeric<br />22 |
+
+## <a name="cookie-handling"></a>Cookie-hantering
+
+Från version 2.6.0 är cookie-hanteringen nu tillgänglig direkt från instansen och kan inaktive ras och aktive ras igen efter initieringen.
+
+Om du har inaktiverat under initiering via `disableCookiesUsage` eller `cookieCfg.enabled` -konfigurationer kan du nu återaktivera via funktionen [ICookieMgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) `setEnabled` .
+
+Den instansbaserade cookie-hanteringen ersätter också de tidigare CoreUtils globala funktionerna `disableCookies()` i `setCookie(...)` , `getCookie(...)` och `deleteCookie(...)` . Och för att dra nytta av förbättringarna i träd skakningen lanseras också som en del av version 2.6.0. du bör inte längre använda de globala funktionerna.
+
+### <a name="icookiemgrconfig"></a>ICookieMgrConfig
+
+Cookie-konfiguration för instans baserad cookie-hantering har lagts till i version 2.6.0.
+
+| Name | Beskrivning | Typ och standard |
+|------|-------------|------------------|
+| enabled | Ett booleskt värde som anger om användningen av cookies av SDK: n har Aktiver ATS av den aktuella instansen. Om värdet är False kommer instansen av SDK som initieras av den här konfigurationen inte lagra eller läsa data från cookies | boolean<br/> true |
+| domän | Anpassad cookie-domän. Detta är användbart om du vill dela Application Insights cookies över under domäner. Om inget värde anges används värdet från root- `cookieDomain` värdet. | sträng<br/>null |
+| path | Anger den sökväg som ska användas för cookien, om den inte anges används något värde från rotobjektet `cookiePath` . | sträng <br/> / |
+| getCookie | Funktion för att hämta det namngivna cookie-värdet, om det inte anges kommer det att använda intern cookie-parsning/-cachelagring. | `(name: string) => string` <br/> null |
+| setCookie | Funktion för att ange den namngivna cookien med det angivna värdet, som endast anropas när du lägger till eller uppdaterar en cookie. | `(name: string, value: string) => void` <br/> null |
+| delCookie | Funktion för att ta bort den namngivna cookien med det angivna värdet, separerad från setCookie för att undvika att behöva parsa värdet för att avgöra om cookien läggs till eller tas bort. Om den inte anges kommer den att använda intern cookie-parsning/-cachelagring. | `(name: string, value: string) => void` <br/> null |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>Förenklad användning av den nya instansen cookie Manager
+
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). SetEnabled (sant/falskt);
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). Set ("min Cook", "% 20encoded% 20value");
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). Get ("min Cook");
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). del ("min Cook");
 
 ## <a name="enable-time-on-page-tracking"></a>Aktivera tids spårning på sidan
 

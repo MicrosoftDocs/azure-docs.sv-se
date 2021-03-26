@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b0158c3b1bbee37fdb10c8fc0131be580ad6fc0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102456019"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562621"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Hög tillgänglighet med Media Services och video på begäran (VOD)
 
@@ -59,23 +59,23 @@ Det här diagrammet på hög nivå visar arkitekturen för det exempel som tillh
 
 ### <a name="regions"></a>Regioner
 
-* [Skapa](/azure/media-services/latest/create-account-cli-how-to) två (eller fler) Azure Media Services-konton. De två kontona måste finnas i olika regioner. Mer information finns i [regioner där Azure Media Servicess tjänsten har distribuerats](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Ladda upp mediet till samma region som du planerar att skicka jobbet från. Mer information om hur du startar kodning finns i [skapa ett jobb indata från en HTTPS-URL](/azure/media-services/latest/job-input-from-http-how-to) eller [skapa ett jobb indata från en lokal fil](/azure/media-services/latest/job-input-from-local-file-how-to).
-* Om du sedan behöver skicka [jobbet](/azure/media-services/latest/transforms-jobs-concept) igen till en annan region kan du använda `JobInputHttp` eller använda `Copy-Blob` för att kopiera data från käll till gångs behållaren till en till gångs behållare i den alternativa regionen.
+* [Skapa](./create-account-howto.md) två (eller fler) Azure Media Services-konton. De två kontona måste finnas i olika regioner. Mer information finns i [regioner där Azure Media Servicess tjänsten har distribuerats](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
+* Ladda upp mediet till samma region som du planerar att skicka jobbet från. Mer information om hur du startar kodning finns i [skapa ett jobb indata från en HTTPS-URL](./job-input-from-http-how-to.md) eller [skapa ett jobb indata från en lokal fil](./job-input-from-local-file-how-to.md).
+* Om du sedan behöver skicka [jobbet](./transforms-jobs-concept.md) igen till en annan region kan du använda `JobInputHttp` eller använda `Copy-Blob` för att kopiera data från käll till gångs behållaren till en till gångs behållare i den alternativa regionen.
 
 ### <a name="monitoring"></a>Övervakning
 
 * Prenumerera på `JobStateChange` meddelanden i varje konto via Azure Event Grid.
-    * [Registrera dig för händelser](/azure/media-services/latest/reacting-to-media-services-events) via Azure Portal eller CLI (du kan också göra det med event Grid Management SDK)
+    * [Registrera dig för händelser](./reacting-to-media-services-events.md) via Azure Portal eller CLI (du kan också göra det med event Grid Management SDK)
     * Använd [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (som stöder Media Services-händelser internt).
     * Du kan också använda Event Grid händelser via Azure Functions.
 
     Mer information:
 
-    * Se [ljud analys exemplet](/azure/media-services/latest/transforms-jobs-concept) som visar hur du övervakar ett jobb med Azure Event Grid, inklusive hur du lägger till en återställning om Azure Event Grid meddelanden fördröjs av någon anledning.
-    * Ta en titt på [Azure Event Grid scheman för Media Services händelser](/azure/media-services/latest/media-services-event-schemas).
+    * Se [ljud analys exemplet](./transforms-jobs-concept.md) som visar hur du övervakar ett jobb med Azure Event Grid, inklusive hur du lägger till en återställning om Azure Event Grid meddelanden fördröjs av någon anledning.
+    * Ta en titt på [Azure Event Grid scheman för Media Services händelser](./media-services-event-schemas.md).
 
-* När du skapar ett [jobb](/azure/media-services/latest/transforms-jobs-concept):
+* När du skapar ett [jobb](./transforms-jobs-concept.md):
     * Välj slumpmässigt ett konto i listan över konton som används för närvarande (den här listan innehåller vanligt vis båda kontona, men om problem upptäcks kan det bara innehålla ett konto). Om listan är tom kan du generera en avisering så att en operatör kan undersöka den.
     * Skapa en post för att hålla reda på varje synlighetssekvensnummer-jobb och regionen/kontot som används.
 * När din `JobStateChange` hanterare får ett meddelande om att ett jobb har nått det schemalagda läget, registrerar du den tid det anger det schemalagda läget och regionen/kontot som används.

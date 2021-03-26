@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608265"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562706"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>Check lista för för certifiering för IoT Edge moduler
 
@@ -55,7 +55,7 @@ Certifierings teamet använder följande maskin vara för att verifiera avbildni
 #### <a name="steps"></a>Steg
 
 1. Se till att enheter/VM som skapats kan nås via SparaTillFil.
-1. Ladda ned [IoT Edge runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge) på enheten.
+1. Ladda ned [IoT Edge runtime](../iot-edge/how-to-install-iot-edge.md) på enheten.
 1. Uppdatera anslutnings strängen som kopierades i steg 5 till filen config. yaml.
 1. Starta om Edge-modulen med `sudo systemctl restart iotedge` .
 1. Kontrol lera om modulen har distribuerats på enheten med `sudo iotedge list` ; den ska vara i körnings läge.
@@ -78,6 +78,6 @@ Kontrollera följande:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Distribuera moduler från den kommersiella Marketplace](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [Publicera Edge-modulen i Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [Distribuera IoT Edge modul](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [Distribuera moduler från den kommersiella Marketplace](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [Publicera Edge-modulen i Partner Center](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [Distribuera IoT Edge modul](../iot-edge/quickstart-linux.md)

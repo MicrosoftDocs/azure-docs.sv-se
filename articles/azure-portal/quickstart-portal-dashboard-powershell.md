@@ -3,13 +3,13 @@ title: Skapa en Azure Portal instrument panel med PowerShell
 description: Lär dig hur du skapar en instrument panel i Azure Portal med Azure PowerShell.
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.date: 07/24/2020
-ms.openlocfilehash: 964705207b099a6b4e2d59452a8b6880fea88bad
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889101"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557453"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Snabb start: skapa en Azure Portal instrument panel med PowerShell
 

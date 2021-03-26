@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448836"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558626"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replikera data över ExpressRoute med Azure Migrate: Server-migrering
 
-I den här artikeln får du lära dig hur du konfigurerar [Azure Migrate: Server-migrering](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) för att replikera data över en ExpressRoute-krets vid migrering av servrar till Azure.
+I den här artikeln får du lära dig hur du konfigurerar [Azure Migrate: Server-migrering](./migrate-services-overview.md#azure-migrate-server-migration-tool) för att replikera data över en ExpressRoute-krets vid migrering av servrar till Azure.
 
 ## <a name="understand-azure-expressroute-circuits"></a>Förstå Azure ExpressRoute-kretsar
-En ExpressRoute-krets (ER) ansluter din lokala infrastruktur till Microsoft via en anslutnings leverantör. ExpressRoute-kretsar kan konfigureras för att använda privat peering, Microsoft-peering eller både och. Läs artikeln om [ExpressRoute-kretsar och peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare) för att lära dig mer om de olika peering-alternativ som är tillgängliga med ExpressRoute.
+En ExpressRoute-krets (ER) ansluter din lokala infrastruktur till Microsoft via en anslutnings leverantör. ExpressRoute-kretsar kan konfigureras för att använda privat peering, Microsoft-peering eller både och. Läs artikeln om [ExpressRoute-kretsar och peering](../expressroute/expressroute-circuit-peerings.md#peeringcompare) för att lära dig mer om de olika peering-alternativ som är tillgängliga med ExpressRoute.
 
 Med verktyget Migreringsverktyg för Server kan du migrera lokala servrar och servrar från andra moln till Azure Virtual Machines. Azure Migrate Verktyget fungerar genom att konfigurera en pågående replik ström för att replikera data från de servrar som ska migreras till hanterade diskar i din Azure-prenumeration. När du är redo att migrera servrarna används replikerade data i Azure för att migrera servrarna.
 
@@ -104,7 +104,7 @@ Du kan bara skapa privata slut punkter på ett Generell användning v2-lagrings 
     > [!Note]
     > Det virtuella nätverket måste innehålla ExpressRoute Gateway-slutpunkten eller vara ansluten till det virtuella nätverket med ExpressRoute-gatewayen. 
 
-    I avsnittet **privat DNS-integrering** väljer du **Ja** och integrerar med en privat DNS-zon. Att välja **Ja** länkar automatiskt DNS-zonen till det valda virtuella nätverket och lägger till de DNS-poster som krävs för DNS-matchning av nya IP-adresser och fullständiga domän namn som skapats för den privata slut punkten. Läs mer om [privata DNS-zoner.](https://docs.microsoft.com/azure/dns/private-dns-overview)
+    I avsnittet **privat DNS-integrering** väljer du **Ja** och integrerar med en privat DNS-zon. Att välja **Ja** länkar automatiskt DNS-zonen till det valda virtuella nätverket och lägger till de DNS-poster som krävs för DNS-matchning av nya IP-adresser och fullständiga domän namn som skapats för den privata slut punkten. Läs mer om [privata DNS-zoner.](../dns/private-dns-overview.md)
 
     ![privatednszone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Om du inte valde alternativet att integrera med en privat DNS-zon när den priva
     b. På sidan **Lägg till uppsättning av poster** lägger du till en post för det fullständigt kvalificerade domän namnet och den privata IP-adressen som en typ post.
 
 > [!Important]
-> Du kan behöva ytterligare DNS-inställningar för att matcha den privata IP-adressen för lagrings kontots privata slut punkt från käll miljön. [Läs den här artikeln](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder) för att förstå den DNS-konfiguration som krävs.
+> Du kan behöva ytterligare DNS-inställningar för att matcha den privata IP-adressen för lagrings kontots privata slut punkt från käll miljön. [Läs den här artikeln](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) för att förstå den DNS-konfiguration som krävs.
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>Replikera data med hjälp av en ExpressRoute-krets med Microsoft-peering
 
 Du kan använda Microsoft-peering eller en befintlig offentlig peering-domän (inaktuell för nya ExpressRoute-anslutningar) för att dirigera replikeringstrafiken genom en ExpressRoute-krets som illustreras i diagrammet nedan.
 ![replicationwithmicrosoftpeering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-Även om replikeringsdata som går över till Microsoft-peer-kretsen, behöver du fortfarande Internet anslutning från den lokala platsen för annan kommunikation (kontroll plan) med tjänsten Azure Migrate. Det finns vissa ytterligare URL: er som inte kan nås via ExpressRoute, som Replication-enheten/Hyper-V-värden behöver åtkomst till för att dirigera processen för replikering. Du kan granska URL-kraven baserat på migrerings scenariot, [VMware agent-migreringar](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls) eller [agentbaserade migreringar](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance).  
+Även om replikeringsdata som går över till Microsoft-peer-kretsen, behöver du fortfarande Internet anslutning från den lokala platsen för annan kommunikation (kontroll plan) med tjänsten Azure Migrate. Det finns vissa ytterligare URL: er som inte kan nås via ExpressRoute, som Replication-enheten/Hyper-V-värden behöver åtkomst till för att dirigera processen för replikering. Du kan granska URL-kraven baserat på migrerings scenariot, [VMware agent-migreringar](./migrate-appliance.md#public-cloud-urls) eller [agentbaserade migreringar](./migrate-replication-appliance.md).  
 
 Om du använder en proxyserver på din lokala plats och vill använda ExpressRoute för replikeringstrafiken måste du konfigurera ett kringgåt tillägg för relevanta URL: er på den lokala enheten. 
 
@@ -172,7 +172,7 @@ Om du använder en proxyserver på din lokala plats och vill använda ExpressRou
 
 Följ stegen nedan för att konfigurera listan över återanvändade proxyservrar på konfigurations servern och process servrarna:
 
-1. [Hämta PsExec-verktyget](https://docs.microsoft.com/sysinternals/downloads/psexec) för att få åtkomst till systemets användar kontext.
+1. [Hämta PsExec-verktyget](/sysinternals/downloads/psexec) för att få åtkomst till systemets användar kontext.
 2. Öppna Internet Explorer i system användar kontext genom att köra följande kommando rad PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 3. Lägg till proxyinställningar i IE.
 4. I listan över undantag lägger du till Azure Storage URL. *. blob. Core. Windows. net.  
@@ -185,10 +185,10 @@ Dessutom måste du annonsera vägar i flödes filtret för följande BGP-communi
 - Regional BGP-community för Azure-regionen (region för migrering)
 - BGP-communityn för Azure Active Directory (12076:5060)
 
-Lär dig mer om [flödes filter](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal) och listan med [BGP-communities för ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp). 
+Lär dig mer om [flödes filter](../expressroute/how-to-routefilter-portal.md) och listan med [BGP-communities för ExpressRoute](../expressroute/expressroute-routing.md#bgp). 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [ExpressRoute-kretsar](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings).
-- Läs mer om [ExpressRoute-routningsdomäner](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare).
-- Läs mer om [privata slut punkter](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+- Lär dig mer om [ExpressRoute-kretsar](../expressroute/expressroute-circuit-peerings.md).
+- Läs mer om [ExpressRoute-routningsdomäner](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+- Läs mer om [privata slut punkter](../private-link/private-endpoint-overview.md).

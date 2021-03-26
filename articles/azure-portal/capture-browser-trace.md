@@ -1,14 +1,14 @@
 ---
 title: Samla in en webbläsarspårning för felsökning
 description: Samla in nätverks information från en webb läsar spårning för att felsöka problem med Azure Portal.
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746003"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563503"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Samla in en webbläsarspårning för felsökning
 
@@ -190,13 +190,13 @@ Följande steg visar hur du använder utvecklarverktyg i Firefox. Mer informatio
 
     ![Skärm bild av webb läsar spårnings resultat](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. När du har genererat om det oväntade Portal beteendet väljer du har **export/import** och sedan **Spara alla som** har.
+1. När du har genererat om det oväntade Portal beteendet väljer du **Spara alla som** har.
 
     ![Skärm bild av "export har"](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Stoppa steg registrering på Windows eller skärm inspelningen på Mac och spara inspelningen.
 
-1. Klicka på fliken **konsol** i fönstret verktyg för utvecklare av webbläsare. Högerklicka på ett av meddelandena och välj sedan **Exportera synligt meddelande till** och spara konsolens utdata till en textfil.
+1. Klicka på fliken **konsol** i fönstret verktyg för utvecklare av webbläsare. Högerklicka på ett av meddelandena och välj sedan **Exportera synliga meddelanden till** och spara konsolens utdata till en textfil.
 
     ![Skärm bild av konsolens utdata](media/capture-browser-trace/firefox-console-select.png)
 

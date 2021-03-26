@@ -3,12 +3,12 @@ title: Övervakning och loggning – Azure
 description: Den här artikeln innehåller en översikt över övervakning och loggning i real tids analys av IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730254"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564491"
 ---
 # <a name="monitoring-and-logging"></a>Övervakning och loggning
 
@@ -208,7 +208,7 @@ Händelse typer tilldelas till ett namn område enligt schemat:
 
 #### <a name="event-classes"></a>Händelseklasser
 
-|Klassnamn|Beskrivning|
+|Klassnamn|Description|
 |---|---|
 |Analys  |Händelser som genereras som en del av innehålls analysen.|
 |Diagnostik    |Händelser som hjälper dig att diagnostisera problem och prestanda.|
@@ -230,7 +230,7 @@ Händelse tiden är formaterad i en ISO 8601-sträng. Den representerar den tidp
 
 Dessa mått rapporteras från live video analys i IoT Edge modul:  
 
-|Måttnamn|Typ|Etikett|Beskrivning|
+|Måttnamn|Typ|Etikett|Description|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Mätare|iothub, edge_device, module_name, graph_topology|Totalt antal aktiva diagram per topologi.|
 |lva_received_bytes_total|Räknare|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Totalt antal byte som tagits emot av en nod. Stöds endast för RTSP-källor.|
@@ -312,7 +312,7 @@ Följ dessa steg om du vill aktivera insamling av mått från Live Video Analyti
    I det här fallet går du till IoT-hubben i Azure Portal och väljer **mått** i det vänstra fönstret. Du bör se måtten där.
 
 ### <a name="log-analytics-metrics-collection"></a>Log Analytics mått samling
-Med hjälp av [Prometheus-slutpunkten](https://prometheus.io/docs/practices/naming/) tillsammans med [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)kan du generera och [övervaka mått](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) som använda CPUPercent, MemoryUsedPercent osv.   
+Med hjälp av [Prometheus-slutpunkten](https://prometheus.io/docs/practices/naming/) tillsammans med [Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md)kan du generera och [övervaka mått](../../azure-monitor/essentials/metrics-supported.md) som använda CPUPercent, MemoryUsedPercent osv.   
 
 > [!NOTE]
 > Konfigurationen nedan samlar inte in loggar, **endast mått**. Det är möjligt att utöka insamlarens modul så att den även samlar in och laddar upp loggar.

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865595"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564763"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
@@ -29,15 +29,15 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
 
 1. Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support) och skapa de associerade resurserna.
 
-2. Skapa en ny resurs grupp med hjälp av [Azure Portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) eller [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell). Det här steget är valfritt om du använder en befintlig resurs grupp.
+2. Skapa en ny resurs grupp med hjälp av [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) eller [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md). Det här steget är valfritt om du använder en befintlig resurs grupp.
  
-3. Skapa ett nytt lagrings konto med hjälp av [Azure Portal](/azure/storage/common/storage-account-create?tabs=azure-portal) eller [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell). Det här steget är valfritt om du använder ett befintligt lagrings konto.
+3. Skapa ett nytt lagrings konto med hjälp av [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) eller [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell). Det här steget är valfritt om du använder ett befintligt lagrings konto.
 
-4. Överför dina tjänst definitions-(. csdef) och tjänst konfigurations filer (. cscfg) till lagrings kontot med hjälp av [Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), [AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) eller [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container). Hämta SAS-URI: er för båda filerna som ska läggas till i ARM-mallen senare i den här självstudien.
+4. Överför dina tjänst definitions-(. csdef) och tjänst konfigurations filer (. cscfg) till lagrings kontot med hjälp av [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) eller [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Hämta SAS-URI: er för båda filerna som ska läggas till i ARM-mallen senare i den här självstudien.
 
 5. Valfritt Skapa ett nyckel valv och ladda upp certifikaten.
 
-    -  Certifikat kan anslutas till moln tjänster för att möjliggöra säker kommunikation till och från tjänsten. För att kunna använda certifikat måste deras tumavtrycken anges i tjänst konfigurations filen (. cscfg) och överföras till ett nyckel valv. Ett nyckel valv kan skapas via [Azure Portal](/azure/key-vault/general/quick-create-portal) eller [PowerShell](/azure/key-vault/general/quick-create-powershell).
+    -  Certifikat kan anslutas till moln tjänster för att möjliggöra säker kommunikation till och från tjänsten. För att kunna använda certifikat måste deras tumavtrycken anges i tjänst konfigurations filen (. cscfg) och överföras till ett nyckel valv. Ett nyckel valv kan skapas via [Azure Portal](../key-vault/general/quick-create-portal.md) eller [PowerShell](../key-vault/general/quick-create-powershell.md).
     - Det associerade nyckel valvet måste finnas i samma region och prenumeration som moln tjänsten.
     - Det associerade nyckel valvet för måste vara aktiverat för lämpliga behörigheter så att resursen Cloud Services (utökad support) kan hämta certifikat från Key Vault. Mer information finns i [certifikat och Key Vault](certificates-and-key-vault.md)
     - Nyckel valvet måste refereras i avsnittet OsProfile i ARM-mallen som visas i stegen nedan.

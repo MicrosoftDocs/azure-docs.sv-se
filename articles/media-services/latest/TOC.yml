@@ -329,6 +329,8 @@
           href: how-to-create-asset.md
         - name: Ladda upp media
           href: how-to-upload-media.md
+        - name: Hantera flera lagrings konton
+          href: media-services-managing-multiple-storage-accounts.md
     - name: Skapa transformeringar och jobb
       items:
         - name: Skapa transformeringar
@@ -367,6 +369,8 @@
                   href: how-to-create-overlay.md
                 - name: Skapa miniatyrer med .NET
                   href: media-services-generate-thumbnails-dotnet.md
+                - name: Beskär videor med .NET
+                  href: crop-howto.md
             - name: Med CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -417,6 +421,12 @@
           href: offline-widevine-for-android.md
         - name: Offline PlayReady för Windows 10
           href: offline-plaready-streaming-for-windows-10.md
+    - name: Använda Azure Functions
+      items:
+        - name: Med .NET
+          items:
+            - name: Använd Azure Functions .NET
+              href: media-services-dotnet-how-to-use-azure-functions.md
     - name: Skapa filter
       items:
         - name: Med .NET
@@ -440,6 +450,10 @@
           href: download-results-howto.md
         - name: Signalera beskrivande ljud
           href: signal-descriptive-audio-howto.md
+    - name: Säkerhet
+      items:
+        - name: Lagrings åtkomst nycklar för registrering
+          href: media-services-roll-storage-access-keys.md
     - name: Använd mediaspelare
       items:
         - name: Fullständig installation av Azure Media Player
@@ -448,6 +462,8 @@
           href: how-to-video-js-player.md
         - name: Använd Shaka-videospelaren
           href: how-to-shaka-player.md
+        - name: Skicka autentiseringstoken
+          href: media-services-pass-authentication-tokens.md
 - name: Referens
   items:
     - name: OpenAPI-specifikation (Swagger)

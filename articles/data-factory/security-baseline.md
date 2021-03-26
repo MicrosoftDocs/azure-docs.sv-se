@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1cbd314861a4d5079a5c8e5213f45c7164344f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a21ae2ce79c500455c5735f4d82e7852e8474ad1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204175"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559153"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azures säkerhets bas linje för Azure Data Factory
 
@@ -157,9 +157,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till dina Azure Data Factory-instanser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -175,7 +175,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en säkerhets incident och händelse hantering från tredje part (SIEM). Du kan också integrera Azure Data Factory med Git för att utnyttja flera fördelar med käll kontroll, till exempel möjlighet att spåra/granska ändringar och möjlighet att återställa ändringar som introducerar buggar.
 
-- [Konfigurera diagnostikinställningar](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [Konfigurera diagnostikinställningar](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -193,7 +193,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 Använd diagnostikinställningar för att konfigurera diagnostikloggar för ej beräknings resurser i Azure Data Factory, till exempel mått och pipeline-körnings data. Azure Data Factory lagrar pipelinen – kör data i 45 dagar. Om du vill behålla dessa data under längre tid sparar du dina diagnostikloggar till ett lagrings konto för granskning eller manuell kontroll och anger Retentions tiden i dagar.  Du kan också strömma loggarna till Azure Event Hubs eller skicka loggarna till en Log Analytics arbets yta för analys.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Förstå Azure Data Factory diagnostikloggar](monitor-using-azure-monitor.md)
 
@@ -207,9 +207,9 @@ Använd diagnostikinställningar för att konfigurera diagnostikloggar för ej b
 
 Om din organisation vill behålla säkerhets händelse logg data, kan den lagras inom en data insamlings nivå, där den kan frågas i Log Analytics.
 
-- [Samla in data från Azure Virtual Machines i Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Samla in data från Azure Virtual Machines i Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
-- [Aktivera data insamling i Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Aktivera data insamling i Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Ansvar**: Kund
 
@@ -221,7 +221,7 @@ Om din organisation vill behålla säkerhets händelse logg data, kan den lagras
 
 - [Så här aktiverar du diagnostikloggar i Azure Data Factory](monitor-using-azure-monitor.md)
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -235,9 +235,9 @@ Om du kör Integration Runtime på en virtuell Azure-dator (VM) aktiverar du äv
 
 Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM från tredje part.
 
-- [Log Analytics schema](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)
+- [Log Analytics schema](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-- [Så här samlar du in data från en virtuell Azure-dator med Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Så här samlar du in data från en virtuell Azure-dator med Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -253,11 +253,11 @@ Konfigurera diagnostikinställningar för Azure Data Factory och skicka loggar t
 
 Se dessutom till att du aktiverar diagnostikinställningar för tjänster som är relaterade till dina data lager. Du kan se varje tjänsts säkerhets bas linje för vägledning.
 
-- [Aviseringar i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)
+- [Aviseringar i Azure Data Factory](./monitor-visually.md#alerts)
 
-- [Sidan alla mått som stöds](/azure/azure-monitor/platform/metrics-supported)
+- [Sidan alla mått som stöds](../azure-monitor/essentials/metrics-supported.md)
 
-- [Så här konfigurerar du aviseringar i Log Analytics arbets yta](/azure/azure-monitor/platform/alerts-log)
+- [Så här konfigurerar du aviseringar i Log Analytics arbets yta](../azure-monitor/alerts/alerts-log.md)
 
 **Ansvar**: Kund
 
@@ -279,7 +279,7 @@ Se dessutom till att du aktiverar diagnostikinställningar för tjänster som ä
 
 **Vägledning**: om du kör integration runtime på en virtuell Azure-dator (VM) kan du aktivera loggning av kommando rads granskning. Azure Security Center tillhandahåller övervakning av säkerhets händelse logg för virtuella Azure-datorer.  Security Center etablerar Microsoft Monitoring Agent på alla virtuella Azure-datorer som stöds och eventuella nya som skapas om automatisk etablering är aktiverat eller om du kan installera agenten manuellt.  Agenten gör det möjligt för processen att skapa händelse 4688 och fältet kommandorad i händelse 4688. Nya processer som skapas på den virtuella datorn registreras av EventLog och övervakas av Security Centers identifierings tjänster.
 
-- [Datainsamling i Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Datainsamling i Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Ansvar**: Kund
 
@@ -305,7 +305,7 @@ På klient nivå har Azure Active Directory (Azure AD) Dessutom inbyggda roller 
 
 - [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-- [Information för lokala konton](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
+- [Information för lokala konton](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
 **Ansvar**: Kund
 
@@ -434,7 +434,7 @@ Om du kör din körnings integration på en virtuell Azure-dator måste du grans
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -448,7 +448,7 @@ Om du kör din körnings integration på en virtuell Azure-dator måste du grans
 
 Om du kör Integration Runtime på en virtuell Azure-dator (VM), finns det en inbyggd virtuell dator i Azure Sentinel. Microsoft Azure Sentinel är en skalbar, molnbaserad, molnbaserad, SIEM (Security information Event Management) och SOAR-lösning (Security Orchestration autoresponse). Azure Sentinel ger intelligent säkerhets analys och hot information i hela företaget, vilket ger en enda lösning för aviserings identifiering, Hot synlighet, proaktiv jakt och hot svar.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Ge åtkomst till Event Hubs resurser med hjälp av Azure AD](../event-hubs/authorize-access-azure-active-directory.md)
 
@@ -468,7 +468,7 @@ Om du kör Integration Runtime på en virtuell Azure-dator (VM), finns det en in
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Konfigurera och hantera Azure AD-autentisering med SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell)
+- [Konfigurera och hantera Azure AD-autentisering med SQL](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)
 
 - [Aktivera Azure AD-autentisering för Azure-SSIS Integration Runtime](enable-aad-authentication-azure-ssis-ir.md)
 
@@ -620,9 +620,9 @@ Du kan lagra autentiseringsuppgifter eller hemliga värden i en Azure Key Vault 
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure Data Factory och relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Analysloggning i Azure Storage](../storage/common/storage-analytics-logging.md)
 
@@ -1019,7 +1019,7 @@ Du kan också lagra autentiseringsuppgifter eller hemliga värden i en Azure Key
 
 - [Integrera med Azure Managed Identities](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Så här skapar du en Key Vault](/azure/key-vault/quick-create-portal)
+- [Så här skapar du en Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 - [Så här autentiserar du till Key Vault](../key-vault/general/authentication.md)
 
@@ -1243,5 +1243,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Se [Översikt över Azure Security benchmark v2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Se [Översikt över Azure Security benchmark v2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

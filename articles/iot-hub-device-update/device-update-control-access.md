@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca55b1df347b47a6eb82557658d59a3de666b703
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101663787"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558405"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Rollbaserad åtkomst kontroll i Azure (RBAC) och enhets uppdatering
 
@@ -21,7 +21,7 @@ Enhets uppdatering använder Azure RBAC för att tillhandahålla autentisering o
 
 För att andra användare och program ska få åtkomst till enhets uppdateringar måste användare eller program beviljas åtkomst till den här resursen. Här är de roller som stöds av enhets uppdateringen
 
-|   Rollnamn   | Beskrivning  |
+|   Rollnamn   | Description  |
 | :--------- | :---- |
 |  Administratör för enhets uppdatering | Har åtkomst till alla enhets uppdaterings resurser  |
 |  Enhets uppdaterings läsare| Kan visa alla uppdateringar och distributioner |
@@ -39,7 +39,7 @@ Enhets uppdatering använder också Azure AD för autentisering för att publice
 
 ### <a name="create-client-azure-ad-app"></a>Skapa klient Azure AD App
 
-Om du vill integrera ett program eller en tjänst med Azure AD måste du [först registrera](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) ett program med Azure AD. Klient program installationen varierar beroende på vilket flöde som används.  Konfigurationen nedan är till hjälp när du använder REST-API: er för enhets uppdatering.
+Om du vill integrera ett program eller en tjänst med Azure AD måste du [först registrera](../active-directory/develop/quickstart-register-app.md) ett program med Azure AD. Klient program installationen varierar beroende på vilket flöde som används.  Konfigurationen nedan är till hjälp när du använder REST-API: er för enhets uppdatering.
 
 * Ange klientautentisering: omdirigerings-URI: er för intern eller webb klient.
 * Ange API-behörigheter – enhets uppdatering för IoT Hub exponeras:

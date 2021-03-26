@@ -1,17 +1,17 @@
 ---
 title: Skapa en Java-funktion i Azure Functions med IntelliJ
 description: Lär dig hur du använder IntelliJ för att skapa en enkel HTTP-utlöst Java-funktion som du sedan publicerar för att köra i en miljö utan server i Azure.
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708823"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543674"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>Skapa din första Java-funktion i Azure med IntelliJ
 
@@ -104,17 +104,9 @@ I det här avsnittet använder du Azure Toolkit for IntelliJ för att skapa ett 
 
     ![Distribuera projektet till Azure](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Om du inte har några Funktionsapp än klickar du på *ingen tillgänglig funktion, klicka för att skapa en ny*.
+1. Om du inte har några Funktionsapp än klickar du på *+* *funktions* raden. Skriv in namnet på appens funktion och välj rätt plattform. Här kan vi bara acceptera standard. Klicka på *OK* så markeras den nya Function-appen som du nyss skapade automatiskt. Klicka på *Kör* för att distribuera dina funktioner.
 
     ![Skapa Function-app i Azure](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. Skriv in namnet på appens funktion och välj rätt prenumeration/plattform/resurs grupp/App Service plan. du kan också skapa resurs grupp/App Service plan här. Behåll sedan appinställningar oförändrade, klicka på *OK* och vänta några minuter tills den nya Function-appen har skapats. När du har *skapat nya Funktionsapp...* förlopps indikatorn försvinner.
-
-    ![Guiden Distribuera Function app till Azure Skapa app](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. Välj den Function-app som du vill distribuera till. (den nya Function-appen som du nyss skapade väljs automatiskt). Klicka på *Kör* för att distribuera dina funktioner.
-
-    ![Skärm bild som visar dialog rutan Distribuera Azure Functions.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Distribuera Function-appen till Azure-loggen](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

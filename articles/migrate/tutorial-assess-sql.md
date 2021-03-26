@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 2bdb6a085bd9fa0e9967d723db63f2310a8e02db
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: d4078d1403df01475c6055dded2bd012e97af98e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023103"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557997"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Självstudie: utvärdera SQL-instanser för migrering till Azure SQL
 
@@ -136,27 +136,27 @@ Uppskattningen av månads kostnaden omfattar beräknings-och lagrings kostnader 
 
         **Beredskap för Azure SQL DB** | **Azure SQL MI-beredskap** | **Rekommenderad distributions typ** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
          --- | --- | --- | --- |
-        Redo | Redo | Azure SQL DB eller Azure SQL MI [Läs mer](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Ja
-        Redo | Inte klar eller okänd | Azure SQL-databas | Ja
-        Inte klar eller okänd | Redo | Azure SQL MI | Ja
-        Inte klar | Inte klar | Potentiellt redo för Azure VM [Läs mer](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Inga
-        Inte klar eller okänd | Inte klar eller okänd | Okänt | Inga
+        Redo | Redo | Azure SQL DB eller Azure SQL MI [Läs mer](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Yes
+        Redo | Inte klar eller okänd | Azure SQL-databas | Yes
+        Inte klar eller okänd | Redo | Azure SQL MI | Yes
+        Inte klar | Inte klar | Potentiellt redo för Azure VM [Läs mer](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
+        Inte klar eller okänd | Inte klar eller okänd | Okänt | No
     
     - **Mål distributions typ** (som valts i bedömnings egenskaper): **Azure SQL DB**
     
         **Beredskap för Azure SQL DB** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
         --- | --- |
-        Redo | Ja
+        Redo | Yes
         Inte klar | Inga
-        Okänt | Inga
+        Okänt | No
     
     - **Mål distributions typ** (som valts i bedömnings egenskaper): **Azure SQL mi**
     
         **Azure SQL MI-beredskap** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
          --- | --- |
-        Redo | Ja
+        Redo | Yes
         Inte klar | Inga
-        Okänt | Inga
+        Okänt | No
 
 4. Klicka på instansen för att öka detalj nivån om du vill se antalet användar databaser, instans information inklusive instans egenskaper, beräkna (begränsat till instans) och information om käll databas lagring.
 5. Klicka på antalet användar databaser för att granska listan över databaser och deras information. Som exempel (uppskattningar och kostnader endast för exempel): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="information om SQL-instans":::
@@ -193,4 +193,4 @@ Förtroende omdömet hjälper dig att beräkna tillförlitligheten för storleks
 ## <a name="next-steps"></a>Nästa steg
 
 - [Lär dig mer](concepts-azure-sql-assessment-calculation.md) om hur Azure SQL-utvärderingar beräknas.
-- Börja migrera SQL-instanser och databaser med hjälp av [Azure Database migration service](https://docs.microsoft.com/azure/dms/dms-overview).
+- Börja migrera SQL-instanser och databaser med hjälp av [Azure Database migration service](../dms/dms-overview.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452381"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565205"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azures säkerhets bas linje för Azure Stack Edge
 
@@ -38,7 +38,7 @@ Intern trafik skyddas ytterligare av:
 
 Ytterligare information finns på de länkar som refereras till.
  
-- [Konfigurera TLS 1,2 på Windows-klienter som har åtkomst till Azure Stack Edge Pro GPU-enhet](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Konfigurera TLS 1,2 på Windows-klienter som har åtkomst till Azure Stack Edge Pro GPU-enhet](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Snabb start – kom igång med Azure Stack Edge Pro med GPU](azure-stack-edge-gpu-quickstart.md)
 
@@ -54,7 +54,7 @@ Kunder kan konfigurera ett virtuellt privat nätverk på sin Azure Stack Edge-en
 
 - [Konfigurera Azure VPN via Azure PowerShell skript för Azure Stack Edge Pro R och Azure Stack Edge Mini R](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Konfigurera TLS 1,2 på Windows-klienter som har åtkomst till Azure Stack Edge Pro GPU-enhet](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Konfigurera TLS 1,2 på Windows-klienter som har åtkomst till Azure Stack Edge Pro GPU-enhet](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Självstudie: Konfigurera certifikat för Azure Stack Edge Pro R](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -68,7 +68,7 @@ Kunder kan konfigurera ett virtuellt privat nätverk på sin Azure Stack Edge-en
 
 - [Konfigurera Azure VPN via Azure PowerShell skript för Azure Stack Edge Pro R och Azure Stack Edge Mini R](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Konfigurera TLS 1,2 på Windows-klienter som har åtkomst till Azure Stack Edge Pro GPU-enhet](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Konfigurera TLS 1,2 på Windows-klienter som har åtkomst till Azure Stack Edge Pro GPU-enhet](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Självstudie: Konfigurera certifikat för Azure Stack Edge Pro R](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -298,7 +298,7 @@ Observera att ytterligare behörigheter kan krävas för att få insyn i arbets 
 
 **Vägledning**: endast auktoriserade användare, till exempel, "EdgeArmUser" kan komma åt Azure Stack Edge-API: er via den lokala Azure Resource Manager. Lösen ord för användar konton kan bara hanteras på Azure Portal. 
 
-- [Konfigurera Azure Resource Manager-lösenord](azure-stack-edge-j-series-set-azure-resource-manager-password.md)
+- [Konfigurera Azure Resource Manager-lösenord](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

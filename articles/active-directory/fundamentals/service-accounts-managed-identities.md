@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16cd14aa447fb56af4cd9dd809696aecdc0c47a5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587839"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557844"
 ---
 # <a name="securing-managed-identities"></a>Skydda hanterade identiteter
 
@@ -38,7 +38,7 @@ Hanterade identiteter används bäst för kommunikation mellan tjänster som st�
 
 Ett käll system begär åtkomst till en mål tjänst. Alla Azure-resurser kan vara ett käll system. Till exempel har en virtuell Azure-dator, Azure Function-instans och Azure App Services-instanser stöd för hanterade identiteter.
 
-[!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+   > [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
 
 ### <a name="how-authentication-and-authorization-work"></a>Hur autentisering och auktorisering fungerar
 
@@ -86,7 +86,7 @@ Du kan hitta hanterade identiteter på flera sätt:
 
 ### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
-1. I Azure AD väljer du företags program.
+1. I Azure Active Directory väljer du företags program.
 
 2. Välj filtret för "hanterade identiteter" 
 
@@ -120,7 +120,7 @@ Du kan göra detta genom att räkna upp medlemmarna i dina privilegierade gruppe
 
 ## <a name="move-to-managed-identities"></a>Flytta till hanterade identiteter
 
-Om du använder ett huvud namn för tjänsten eller ett Azure AD-användarkonto kan du utvärdera om du i stället kan använda en hanterad för att eliminera behovet av att skydda, rotera och hantera autentiseringsuppgifter. 
+Om du använder ett huvud namn för tjänsten eller ett Azure AD-användarkonto kan du utvärdera om du i stället kan använda en hanterad identitet för att eliminera behovet av att skydda, rotera och hantera autentiseringsuppgifter. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 23f85fa69224d78d748e6fc94436fd08fa6d971f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 442fa1c76d4667a54f1c13b411b1c052c9a5b134
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586020"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566650"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB emulator – viktig information och information om hämtning
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Den här artikeln visar viktig information om Azure Cosmos DB emulator med en lista över funktions uppdateringar som har gjorts i varje version. Den visar även den senaste versionen av emulatorn för att hämta och använda.
+Den här artikeln visar viktig information om Azure Cosmos DB emulator med en lista över funktions uppdateringar som har gjorts i varje version. Den visar även den senaste versionen av emulatorn för att ladda ned och använda.
 
 ## <a name="download"></a>Ladda ned
 
-| |Länkar |
+| | Länk |
 |---------|---------|
 |**Ladda ned MSI**|[Microsoft Download Center](https://aka.ms/cosmosdb-emulator)|
 |**Komma igång**|[Utveckla lokalt med Azure Cosmos DB emulator](local-emulator.md)|

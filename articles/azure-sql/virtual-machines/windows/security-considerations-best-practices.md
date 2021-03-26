@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 54010359f226fe02336f039e3dcbb98075e9b06a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ff77a407dfa87e408170573249876bbefee0abe
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97360092"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558591"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Säkerhetsöverväganden för SQL Server på Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ Du vill inte att angripare ska kunna gissa konto namn eller lösen ord. Använd 
 
 - Skapa ett unikt lokalt administratörs konto som inte heter **administratör**.
 
-- Använd komplexa starka lösen ord för alla dina konton. Mer information om hur du skapar ett starkt lösen ord finns i artikeln [skapa ett starkt lösen ord](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) .
+- Använd komplexa starka lösen ord för alla dina konton. Mer information om hur du skapar ett starkt lösen ord finns i artikeln [skapa ett starkt lösen ord](https://support.microsoft.com/account-billing/how-to-create-a-strong-password-for-your-microsoft-account-f67e4ddd-0dbe-cd75-cebe-0cfda3cf7386) .
 
 - Som standard väljer Azure Windows-autentisering under SQL Server installation av virtuell dator. Därför är **sa** -inloggningen inaktive rad och ett lösen ord tilldelas av installations programmet. Vi rekommenderar att du inte använder eller aktiverar **sa** -inloggningen. Om du måste ha en SQL-inloggning kan du använda någon av följande strategier:
 

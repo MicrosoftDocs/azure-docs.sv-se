@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630375"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562791"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Viktig information om Azure Stack Edge 2101
 
@@ -49,7 +49,7 @@ Följande tabell innehåller en sammanfattning av kända problem i 2101-versione
 |**3.**|Kubernetes |Edge container Registry fungerar inte när webbproxy är aktiverat.|Funktionen kommer att vara tillgänglig i framtida versioner. |
 |**4.**|Kubernetes |Edge container Registry fungerar inte med IoT Edge moduler.| |
 |**5.**|Kubernetes |Kubernetes stöder inte ":" i miljö variabel namn som används av .NET-program. Detta krävs också för Event Grid IoT Edge-modulen för att fungera på Azure Stack Edge-enhet och andra program. Mer information finns i [ASP.net Core-dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersätt ":" med dubbel under streck. Mer information finns i [Kubernetes-problem](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**3-6.** |Azure-båg + Kubernetes-kluster |När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |För att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen, anges `--sync-garbage-collection` i Arc-OperatorParams. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**3-6.** |Azure-båg + Kubernetes-kluster |När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |För att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen, anges `--sync-garbage-collection` i Arc-OperatorParams. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters). |
 |**3,7.**|NFS |Program som använder NFS-resurser monteras på enheten för att skriva data ska använda exklusiv skrivning. Detta säkerställer att skrivningarna skrivs till disken.| |
 |**7,8.**|Beräknings konfiguration |Beräknings konfiguration Miss lyckas i nätverkskonfigurationer där gatewayer eller växlar eller routrar svarar på ARP-begäranden (Address Resolution Protocol) för system som inte finns i nätverket.| |
 |**1.9.**|Compute och Kubernetes |Om Kubernetes konfigureras först på din enhet anlitar den alla tillgängliga GPU: er. Därför är det inte möjligt att skapa Azure Resource Manager virtuella datorer med GPU: er när du har konfigurerat Kubernetes. |Om enheten har 2 GPU: er kan du skapa en virtuell dator som använder GPU: n och sedan konfigurera Kubernetes. I det här fallet kommer Kubernetes att använda de återstående tillgängliga 1 GPU: n. |

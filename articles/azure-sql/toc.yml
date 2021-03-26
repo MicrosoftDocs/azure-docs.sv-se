@@ -1062,18 +1062,26 @@
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: 'Tillgänglighetsgrupp (AG, Availability Group)'
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: Redundansklusterinstans
+                - name: Redundansklusterinstans (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
             - name: Bästa praxis
               items:
-                - name: Prestanda
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
                 - name: Säkerhet
                   href: virtual-machines/windows/security-considerations-best-practices.md
                 - name: Klusterkonfiguration
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                 - name: Programmönster
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: Prestanda
+                  items:
+                    - name: Snabb check lista
+                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                    - name: Storlek på virtuell dator
+                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                    - name: Storage
+                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
+                    - name: Samla in bas linje
+                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Hantering
               items:
                 - name: SQL IaaS Agent-tillägg

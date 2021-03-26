@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 3b109048be4a94990c26e31aa5bc2ad36fdd0211
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102584183"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563828"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Förutsättningar för att få åtkomst till Analytics-data via programmering
 
@@ -24,7 +24,7 @@ För att få åtkomst till kommersiella Marketplace Analytics-data program mäss
 
 ## <a name="create-azure-active-directory-application"></a>Skapa Azure Active Directory program
 
-Vanliga autentiseringsuppgifter för användare kan inte användas för programmerings åtkomst av kommersiella data för Marketplace-analys. Ett Azure Active Directory-program (Azure AD) måste skapas tillsammans med en hemlighet för att komma åt analys-API: erna. Information om hur du skapar ett Azure AD-program och en hemlighet finns i [snabb start: registrera ett program med Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+Vanliga autentiseringsuppgifter för användare kan inte användas för programmerings åtkomst av kommersiella data för Marketplace-analys. Ett Azure Active Directory-program (Azure AD) måste skapas tillsammans med en hemlighet för att komma åt analys-API: erna. Information om hur du skapar ett Azure AD-program och en hemlighet finns i [snabb start: registrera ett program med Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="associate-the-azure-ad-application-to-the-partner-center-tenant"></a>Koppla Azure AD-programmet till Partner Center-klienten
 
@@ -41,7 +41,7 @@ Azure AD-programmet som du skapade i Azure Portal måste kopplas till ditt partn
 
 ## <a name="generate-an-azure-ad-token"></a>Generera en Azure AD-token
 
-Du måste skapa en Azure AD-token med hjälp av program-ID: t (klient). Detta ID hjälper till att unikt identifiera ditt klient program i Microsoft Identity Platform och klient hemligheten från föregående steg. Anvisningar om hur du skapar en Azure AD-token finns i [tjänst-till-tjänst-anrop med klientautentiseringsuppgifterna (delad hemlighet eller certifikat)](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow).
+Du måste skapa en Azure AD-token med hjälp av program-ID: t (klient). Detta ID hjälper till att unikt identifiera ditt klient program i Microsoft Identity Platform och klient hemligheten från föregående steg. Anvisningar om hur du skapar en Azure AD-token finns i [tjänst-till-tjänst-anrop med klientautentiseringsuppgifterna (delad hemlighet eller certifikat)](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md).
 
 > [!NOTE]
 > Token är giltig i en timme.

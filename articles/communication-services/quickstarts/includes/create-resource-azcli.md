@@ -4,23 +4,29 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 6ed6544b8014e973eaf92c763ca18687ad89e5a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 22a9cf3338f422341928a77f2bf14c497aa2ba31
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495914"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563792"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/dotnet/).
+- Installera [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
 
 ## <a name="create-azure-communication-resource"></a>Skapa Azure Communication-resurs
 
-Om du vill skapa en Azure Communication Services-resurs [loggar du in på Azure CLI](/cli/azure/authenticate-azure-cli)och kör sedan följande kommando:
+[Logga in på Azure CLI](/cli/azure/authenticate-azure-cli)för att skapa en Azure Communication Services-resurs. Du kan göra detta via terminalen med hjälp av ```az login``` kommandot och ange dina autentiseringsuppgifter. Kör följande kommando för att skapa resursen:
 
 ```azurecli
 az communication create --name "<communicationName>" --location "Global" --data-location "United States" --resource-group "<resourceGroup>"
+```
+
+Om du vill välja en speciell prenumeration kan du också ange en ```--subscription``` flagga och ange prenumerations-ID: t.
+```
+az communication create --name "<communicationName>" --location "Global" --data-location "United States" --resource-group "<resourceGroup> --subscription "<subscriptionID>"
 ```
 
 Du kan konfigurera resursen för kommunikations tjänster med följande alternativ:
@@ -33,12 +39,16 @@ I nästa steg kan du tilldela-taggar till resursen. Taggar kan användas för at
 
 ## <a name="manage-your-communication-services-resource"></a>Hantera kommunikations tjänst resursen
 
-Kör följande kommandon för att lägga till taggar till kommunikations tjänst resursen:
+Kör följande kommandon för att lägga till taggar till kommunikations tjänst resursen. Du kan också rikta en speciell prenumeration.
 
 ```azurecli
-az communication update --name "<communicationName>" --tags newTag="newVal" --resource-group "<resourceGroup>"
+az communication update --name "<communicationName>" --tags newTag="newVal1" --resource-group "<resourceGroup>"
+
+az communication update --name "<communicationName>" --tags newTag="newVal2" --resource-group "<resourceGroup>" --subscription "<subscriptionID>"
 
 az communication show --name "<communicationName>" --resource-group "<resourceGroup>"
+
+az communication show --name "<communicationName>" --resource-group "<resourceGroup>" --subscription "<subscriptionID>"
 ```
 
 Mer information om ytterligare kommandon finns i [AZ-kommunikation](/cli/azure/ext/communication/communication).

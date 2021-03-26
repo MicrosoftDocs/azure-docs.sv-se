@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677478"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568723"
 ---
 # <a name="managed-disk-bursting"></a>Hanterad disk-bursting
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Dessutom [kan prestanda nivån för hanterade diskar ändras](disks-change-perfo
 
 |  |Kredit baserad burst-överföring  |Burst-överföring på begäran  |Ändra prestanda nivå  |
 |---------|---------|---------|---------|
-| Scenarier|Idealisk för kortsiktig skalning (högst 30 minuter).|Idealisk för kortsiktig skalning (inte begränsad tid).|Idealisk om din arbets belastning annars skulle kunna köras kontinuerligt i burst.|
-|Cost     |Kostnadsfri         |Kostnad är variabel, se [fakturerings](#billing) avsnittet för mer information.        |Kostnaden för varje prestanda nivå är fast, se [Managed disks priser](https://azure.microsoft.com/pricing/details/managed-disks/) för mer information.         |
-|Tillgänglighet     |Endast tillgängligt för Premium SSD 512-GiB och mindre.         |Endast tillgängligt för Premium-SSD som är större än 512 GiB.         |Tillgängligt för alla Premium SSD-storlekar.         |
-|Aktivering     |Aktive rad som standard på berättigade diskar.         |Måste aktive ras av användaren.         |Användaren måste ändra sin nivå manuellt.         |
+| **Scenarier**|Idealisk för kortsiktig skalning (högst 30 minuter).|Idealisk för kortsiktig skalning (inte begränsad tid).|Idealisk om din arbets belastning annars skulle kunna köras kontinuerligt i burst.|
+|**Kostnad**     |Kostnadsfri         |Kostnad är variabel, se [fakturerings](#billing) avsnittet för mer information.        |Kostnaden för varje prestanda nivå är fast, se [Managed disks priser](https://azure.microsoft.com/pricing/details/managed-disks/) för mer information.         |
+|**Tillgänglighet**     |Endast tillgängligt för Premium SSD 512-GiB och mindre.         |Endast tillgängligt för Premium-SSD som är större än 512 GiB.         |Tillgängligt för alla Premium SSD-storlekar.         |
+|**Aktivering**     |Aktive rad som standard på berättigade diskar.         |Måste aktive ras av användaren.         |Användaren måste ändra sin nivå manuellt.         |
 
 ## <a name="common-scenarios"></a>Vanliga scenarier
 Följande scenarier kan dra nytta av burst-överföring:

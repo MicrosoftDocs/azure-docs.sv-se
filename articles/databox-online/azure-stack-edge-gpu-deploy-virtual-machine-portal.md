@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c11a89d91693075ca54c0689223dcf2af06df521
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436540"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568519"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet via Azure Portal
 
@@ -52,7 +52,7 @@ Den här artikeln gäller Azure Stack Edge Pro GPU, Azure Stack Edge Pro R och A
 
 Innan du börjar skapa och hantera virtuella datorer på enheten via Azure Portal, se till att:
 
-1. Du har slutfört nätverks inställningarna på din Azure Stack Edge Pro-enhet enligt beskrivningen i [steg 1: konfigurera Azure Stack Edge Pro-enhet](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
+1. Du har slutfört nätverks inställningarna på din Azure Stack Edge Pro-enhet enligt beskrivningen i [steg 1: konfigurera Azure Stack Edge Pro-enhet](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
     1. Du har aktiverat ett nätverks gränssnitt för beräkning. Nätverks gränssnittets IP-adress används för att skapa en virtuell växel för VM-distributionen. I enhetens lokala användar gränssnitt går du till **Compute**. Välj det nätverks gränssnitt som du ska använda för att skapa en virtuell växel.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2021
-ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224352"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562774"
 ---
 # <a name="train-model-module"></a>Träna modell modul
 
@@ -71,7 +71,7 @@ I Azure Machine Learning är det vanligt vis en tre stegs process att skapa och 
 
 Modell tolkningen ger möjlighet att förstå ML-modellen och presentera den underliggande grunden för besluts fattande på ett sätt som kan förstås av människa.
 
-Modulen **modell modell** stöder för närvarande stöd [för att använda tolknings paket för att förklara ml-modeller](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). Följande inbyggda algoritmer stöds:
+Modulen **modell modell** stöder för närvarande stöd [för att använda tolknings paket för att förklara ml-modeller](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs). Följande inbyggda algoritmer stöds:
 
 - Linjär regression
 - Regression för Neural Network
@@ -87,7 +87,7 @@ När pipeline-körningen är klar kan du besöka **förklaringar** i den högra 
 
 ![Skärm bild som visar modell förklarings diagram](./media/module/train-model-explanations-tab.gif)
 
-Mer information om hur du använder modell förklaringar i Azure Machine Learning finns i instruktions artikeln om att [tolka ml-modeller](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
+Mer information om hur du använder modell förklaringar i Azure Machine Learning finns i instruktions artikeln om att [tolka ml-modeller](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Resultat
 
@@ -101,4 +101,4 @@ När modellen har tränats:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se en [uppsättning moduler som är tillgängliga](module-reference.md) för Azure Machine Learning. 
+Se en [uppsättning moduler som är tillgängliga](module-reference.md) för Azure Machine Learning.

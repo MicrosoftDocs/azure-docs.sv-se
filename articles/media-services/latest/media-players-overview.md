@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 3/08/2021
-ms.openlocfilehash: 1a1d415b374818d9a51c87e78e7ac422fa374bc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 47ef56a770ca9965cef3e50630be4b69342a038d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509602"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559867"
 ---
 # <a name="media-players-for-media-services"></a>Medie spelare för Media Services
 
@@ -21,7 +21,7 @@ Du kan använda flera medie spelare med Media Services.
 
 Azure Media Player är en Videos pelare för många olika webbläsare och enheter. Azure Media Player använder bransch standarder, till exempel HTML5, media source Extensions (MSE) och EME (Encrypted Media Extensions) för att tillhandahålla en omfattande anpassningsbar strömmande upplevelse. När dessa standarder inte är tillgängliga på en enhet eller i en webbläsare, använder Azure Media Player Flash och Silverlight som reserv teknik. Oavsett vilken uppspelnings teknik som används har utvecklare ett enhetligt JavaScript-gränssnitt för att få åtkomst till API: er. Innehåll som hanteras av Azure Media Services kan spelas upp över en mängd olika enheter och webbläsare utan extra ansträngning.
 
-Se [Azure Media Player-dokumentationen](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview).
+Se [Azure Media Player-dokumentationen](../azure-media-player/azure-media-player-overview.md).
 
 ## <a name="shaka"></a>Shaka
 

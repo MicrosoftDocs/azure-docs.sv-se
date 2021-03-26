@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5f9cf6dba0a1e670e3a27cb3546de9237466e7ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dead43f2e9f2e8913bcebde43d543b8df8d33ced
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101659434"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565681"
 ---
 # <a name="azure-security-baseline-for-azure-cosmos-db"></a>Azures säkerhets bas linje för Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Du kan också skydda data som lagras i ditt Azure Cosmos-konto med hjälp av IP-
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
 
 **Azure policy inbyggda definitioner – Microsoft.DocumentDB**:
 
@@ -84,9 +84,9 @@ Aktivera DDoS Protection standard på de virtuella nätverk som är kopplade til
 
 - [Så här konfigurerar du Azure Cosmos DB Avancerat skydd](cosmos-db-advanced-threat-protection.md)
 
-- [Så här konfigurerar du DDoS-skydd](/azure/virtual-network/manage-ddos-protection)
+- [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 
-- [Förstå Azure Security Center integrerad Hot information](/azure/security-center/security-center-alerts-service-layer)
+- [Förstå Azure Security Center integrerad Hot information](../security-center/azure-defender.md)
 
 **Ansvar**: Kund
 
@@ -146,7 +146,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd taggar för nätverks resurser som är associerade med din Azure Cosmos DB-distribution för att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -156,9 +156,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till dina Azure Cosmos DB-instanser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker. 
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -172,7 +172,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: mata in loggar via Azure Monitor för att samla in säkerhets data som genereras av Azure Cosmos dB. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda lagrings konton för långsiktig/lagring. Du kan också använda data på kort till Azure Sentinel eller en säkerhets incident och händelse hantering från tredje part (SIEM). 
 
-- [Så här aktiverar du diagnostikloggar för Azure Cosmos DB](/azure/cosmos-db/logging)
+- [Så här aktiverar du diagnostikloggar för Azure Cosmos DB](./monitor-cosmos-db.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -186,9 +186,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 Du kan också aktivera autentiseringsinställningar för Azure aktivitets logg och skicka loggarna till samma Log Analytics arbets yta som du använder för Azure Cosmos DB loggar.
 
-- [Så här aktiverar du diagnostikinställningar för Azure Cosmos DB](/azure/cosmos-db/logging)
+- [Så här aktiverar du diagnostikinställningar för Azure Cosmos DB](./monitor-cosmos-db.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -198,7 +198,7 @@ Du kan också aktivera autentiseringsinställningar för Azure aktivitets logg o
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperioden för Log Analytics arbets ytor som är kopplade till dina Azure Cosmos DB instanser enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -222,11 +222,11 @@ Du kan också aktivera autentiseringsinställningar för Azure aktivitets logg o
 
 Du kan också publicera din Log Analytics-arbetsyta till Azure Sentinel eftersom den tillhandahåller en SOAR-lösning (Security Orchestration autoresponse). Detta gör det möjligt för spel böcker (automatiserade lösningar) att skapas och användas för att åtgärda säkerhets problem. Dessutom kan du skapa anpassade logg aviseringar i Log Analytics arbets ytan med Azure Monitor.
 
-- [Lista med aviseringar för skydd mot hot för Azure Cosmos DB](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)
+- [Lista med aviseringar för skydd mot hot för Azure Cosmos DB](../security-center/alerts-reference.md#alerts-azurecosmos)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Ansvar**: Kund
 
@@ -248,13 +248,13 @@ Dessutom kan vissa åtgärder i Azure Cosmos DB styras med Azure AD och konto-/r
 
 - [Förstå rollbaserad åtkomst kontroll i Azure Cosmos DB](role-based-access-control.md)
 
-- [Bygg egna anpassade roller med hjälp av Azure Cosmos DB åtgärder (Microsoft.DocumentDB-namnrymd)](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb)
+- [Bygg egna anpassade roller med hjälp av Azure Cosmos DB åtgärder (Microsoft.DocumentDB-namnrymd)](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
 - [Skapa en ny roll i Azure AD](../role-based-access-control/custom-roles.md)
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Begränsa användaråtkomst till endast dataåtgärder](how-to-restrict-user-data.md)
 
@@ -268,7 +268,7 @@ Dessutom kan vissa åtgärder i Azure Cosmos DB styras med Azure AD och konto-/r
 
 - [Förstå säker åtkomst till data i Azure Cosmos DB](secure-access-to-data.md)
 
-- [Återskapa Azure Cosmos DB nycklar](https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys)
+- [Återskapa Azure Cosmos DB nycklar](./manage-with-powershell.md#regenerate-keys)
 
 - [Få åtkomst till nycklar via programmering med hjälp av Azure AD](certificate-based-authentication.md)
 
@@ -330,7 +330,7 @@ Använd identifieringar av Azure AD-risker för att visa aviseringar och rapport
 
 - [Distribuera Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Förstå identifieringar av Azure AD-risker](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Förstå identifieringar av Azure AD-risker](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Ansvar**: Kund
 
@@ -352,7 +352,7 @@ Använd identifieringar av Azure AD-risker för att visa aviseringar och rapport
 
 - [Skapa och konfigurera en Azure AD-instans](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [Så här konfigurerar och hanterar du Azure AD-autentisering med Azure SQL](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Så här konfigurerar och hanterar du Azure AD-autentisering med Azure SQL](../azure-sql/database/authentication-aad-configure.md)
 
 **Ansvar**: Kund
 
@@ -384,7 +384,7 @@ Använd identifieringar av Azure AD-risker för att visa aviseringar och rapport
 
 Du kan också använda Azure Active Directory (Azure AD) identitets skydd och risk identifierings funktion för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. Dessutom kan du mata in loggar i Azure Sentinel för ytterligare undersökning.
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -402,7 +402,7 @@ Du kan också använda Azure Active Directory (Azure AD) identitets skydd och ri
 
 **Vägledning**: Använd taggar för att under lätta spårning Azure Cosmos DB instanser som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -412,11 +412,11 @@ Du kan också använda Azure Active Directory (Azure AD) identitets skydd och ri
 
 **Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. Azure Cosmos DB instanser separeras av ett virtuellt nätverk/undernät, taggas på lämpligt sätt och skyddas inom en nätverks säkerhets grupp (NSG) eller Azure-brandvägg. Azure Cosmos DB instanser som lagrar känsliga data bör isoleras. Med hjälp av en privat Azure-länk kan du ansluta till ett Azure Cosmos DB instans konto via en privat slut punkt. Den privata slut punkten är en uppsättning privata IP-adresser i ett undernät i det virtuella nätverket. Du kan sedan begränsa åtkomsten till de valda privata IP-adresserna. 
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](/azure/governance/management-groups/create)
+- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Så här konfigurerar du en privat slut punkt för Azure Cosmos DB](how-to-configure-private-endpoints.md)
 
@@ -450,7 +450,7 @@ När du använder virtuella datorer för att komma åt dina Azure Cosmos DB-inst
 
 För den underliggande plattform som hanteras av Microsoft behandlar Microsoft allt kund innehåll som känsligt och går till fantastiska längder för att skydda mot kund data förlust och exponering. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
 
-- [Indexera Azure Cosmos DB data med Azure Kognitiv sökning](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp;bc=/azure/cosmos-db/breadcrumb/toc.json)
+- [Indexera Azure Cosmos DB data med Azure Kognitiv sökning](../search/search-howto-index-cosmosdb.md?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json)
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -476,7 +476,7 @@ Som standard hanterar Microsoft de nycklar som används för att kryptera data i
 
 - [Förstå kryptering i vila med Azure Cosmos DB](database-encryption-at-rest.md)
 
-- [Förstå nyckel hantering för kryptering i vila med Azure Cosmos DB](/azure/cosmos-db/cosmos-db-security-controls)
+- [Förstå nyckel hantering för kryptering i vila med Azure Cosmos DB]()
 
 - [Så här konfigurerar du Kundhanterade nycklar för ditt Azure Cosmos DB-konto](how-to-setup-cmk.md)
 
@@ -488,9 +488,9 @@ Som standard hanterar Microsoft de nycklar som används för att kryptera data i
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure Cosmos dB.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -506,7 +506,7 @@ Som standard hanterar Microsoft de nycklar som används för att kryptera data i
 
 Microsoft utför system korrigering och sårbarhets hantering på de underliggande värdar som har stöd för dina Azure Cosmos DB-instanser. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
 
-- [Funktioner som stöds i Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows)
+- [Funktioner som stöds i Azure Security Center](../security-center/security-center-services.md?tabs=features-windows)
 
 **Ansvar**: Delad
 
@@ -524,7 +524,7 @@ Microsoft utför system korrigering och sårbarhets hantering på de underliggan
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå rollbaserad åtkomst kontroll i Azure](../role-based-access-control/overview.md)
 
@@ -536,9 +536,9 @@ Microsoft utför system korrigering och sårbarhets hantering på de underliggan
 
 **Vägledning**: Använd taggar för Azure Cosmos DB instanser och relaterade resurser med metadata för att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-- [Vilka Azure Cosmos DB resurser stöder Taggar](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb)
+- [Vilka Azure Cosmos DB resurser stöder Taggar](../azure-resource-manager/management/tag-support.md#microsoftdocumentdb)
 
 **Ansvar**: Kund
 
@@ -548,11 +548,11 @@ Microsoft utför system korrigering och sårbarhets hantering på de underliggan
 
 **Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer, vid behov, för att organisera och spåra till gångar, inklusive men inte begränsat till Azure Cosmos DB resurser. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
+- [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
@@ -584,7 +584,7 @@ Använd dessutom Azure Resource Graph för att fråga efter och identifiera resu
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -610,7 +610,7 @@ Använd dessutom Azure Resource Graph för att fråga efter och identifiera resu
 - Distribuera Avancerat skydd för Cosmos DB-konton
 - Cosmos DB bör använda en tjänst slut punkt för virtuellt nätverk
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -668,7 +668,7 @@ Använd dessutom Azure Resource Graph för att fråga efter och identifiera resu
 
 - [Integrera med Azure Managed Identities](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Så här skapar du en Key Vault](/azure/key-vault/quick-create-portal)
+- [Så här skapar du en Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 - [Så här autentiserar du till Key Vault](../key-vault/general/authentication.md)
 
@@ -728,7 +728,7 @@ Om du använder Key Vault för att lagra autentiseringsuppgifter för dina Cosmo
 
 - [Förstå Azure Cosmos DB automatiserade säkerhets kopieringar](online-backup-and-restore.md)
 
-- [Så här återställer du data i Azure Cosmos DB](/azure/cosmos-db/how-to-backup-and-restore)
+- [Så här återställer du data i Azure Cosmos DB](./online-backup-and-restore.md)
 
 - [Säkerhetskopiera Key Vault nycklar](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
@@ -744,9 +744,9 @@ Testa återställningen av dina hemligheter lagrade i Azure Key Vault med PowerS
 
 - [Förstå Azure Cosmos DB automatiserade säkerhets kopieringar](online-backup-and-restore.md)
 
-- [Så här återställer du data i Azure Cosmos DB](/azure/cosmos-db/how-to-backup-and-restore)
+- [Så här återställer du data i Azure Cosmos DB](./online-backup-and-restore.md)
 
-- [Så här återställer du Azure Key Vault hemligheter](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här återställer du Azure Key Vault hemligheter](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Ansvar**: Delad
 
@@ -760,7 +760,7 @@ Aktivera Soft-Delete i Key Vault för att skydda nycklar mot oavsiktlig eller sk
 
 - [Förstå data kryptering i Azure Cosmos DB](database-encryption-at-rest.md)
 
-- [Så här aktiverar du Soft-Delete i Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Så här aktiverar du Soft-Delete i Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Ansvar**: Delad
 
@@ -856,5 +856,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 114635722a0a131fc146eb2ab69984effb211a88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598396"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559765"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Steg 1 – förstå fördelarna med att migrera till Media Services API v3
 
@@ -23,6 +23,8 @@ ms.locfileid: "104598396"
 <hr color="#5ea0ef" size="10">
 
 ![steg 2 i migreringen](./media/migration-guide/steps-1.svg)
+
+## <a name="use-the-latest-api"></a>Använd det senaste API: t
 
 Vi rekommenderar att du börjar använda version 2020-05-01 av Azure Media Services v3 API nu för att få fördelarna eftersom nya funktioner, funktioner och prestanda optimeringar endast är tillgängliga i det aktuella v3-API: et.
 
@@ -60,7 +62,3 @@ Det har gjorts betydande förbättringar av Media Services med v3.
 | **Övervakning** | |
 | Support för [Azure EventGrid](monitoring/reacting-to-media-services-events.md) Notification | EventGrid-meddelanden är mer omfattande. Det finns fler typer av meddelanden, bredare SDK-stöd för att ta emot meddelanden i ditt eget program och fler befintliga Azure-tjänster som kan fungera som händelse hanterare. |
 | [Azure Monitor support och integrering i Azure Portal](monitoring/monitor-events-portal-how-to.md) | Detta gör det möjligt för kunderna att visualisera Media Services konto kvot användning, real tids statistik över slut punkter för direkt uppspelning och inmatning och Arkiv statistik för live-evenemang. Kunder kan nu ställa in aviseringar och utföra nödvändiga åtgärder baserat på mått data i real tid. |
-
-## <a name="next-steps"></a>Nästa steg
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

@@ -4,27 +4,30 @@ titleSuffix: Azure Machine Learning
 description: Lär dig hur du använder Azure Policy för att använda inbyggda principer för Azure Machine Learning för att se till att dina arbets ytor är kompatibla med dina krav.
 author: aashishb
 ms.author: aashishb
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584320"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544374"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Granska och hantera Azure Machine Learning med Azure Policy
 
 [Azure policy](../governance/policy/index.yml) är ett styrnings verktyg som gör att du kan se till att Azure-resurserna är kompatibla med dina principer. Med Azure Machine Learning kan du tilldela följande principer:
 
-* **Kundhanterad nyckel**: granska eller Använd om arbets ytor måste använda en kundhanterad nyckel.
-* **Privat länk**: granska eller Använd om arbets ytor använder en privat slut punkt för att kommunicera med ett virtuellt nätverk.
-* **Privat slut punkt**: konfigurera det Azure Virtual Network-undernät där den privata slut punkten ska skapas.
-* **Privat DNS zon**: Konfigurera den privata DNS-zon som ska användas för den privata länken.
+| Policy | Description |
+| ----- | ----- |
+| **Kundhanterad nyckel** | Granska eller tillämpa om arbets ytorna måste använda en kundhanterad nyckel. |
+| **Privat länk** | Granska eller tillämpa om arbets ytor använder en privat slut punkt för att kommunicera med ett virtuellt nätverk. |
+| **Privat slut punkt** | Konfigurera Azure Virtual Network-undernätet där den privata slut punkten ska skapas. |
+| **Privat DNS zon** | Konfigurera den privata DNS-zon som ska användas för den privata länken. |
+| **Användartilldelad hanterad identitet** | Granska eller tillämpa om arbets ytor använder en användardefinierad hanterad identitet. |
 
 Principer kan ställas in i olika omfång, t. ex. på prenumerations-eller resurs grupps nivå. Mer information finns i Azure Policy- [dokumentationen](../governance/policy/overview.md).
 
@@ -68,6 +71,14 @@ Om du vill konfigurera den här principen anger du parametern __DeployIfNotExist
 Konfigurerar en arbets yta att använda en privat DNS-zon och åsidosätter standard-DNS-matchningen för en privat slut punkt.
 
 Om du vill konfigurera den här principen anger du parametern __DeployIfNotExists__. Ange __privateDnsZoneId__ till Azure Resource Manager-ID för den privata DNS-zon som ska användas. 
+
+## <a name="workspace-should-use-user-assigned-managed-identity"></a>Arbets ytan bör använda användardefinierad hanterad identitet
+
+Kontrollerar om en arbets yta skapas med en systemtilldelad hanterad identitet (standard) eller en tilldelad hanterad identitet. Den hanterade identiteten för arbets ytan används för att få åtkomst till associerade resurser som Azure Storage, Azure Container Registry, Azure Key Vault och Azure Application insikter. Mer information finns i [använda hanterade identiteter med Azure Machine Learning](how-to-use-managed-identities.md).
+
+Om du vill konfigurera den här principen anger du bedömnings parametern till __Granska__, __neka__ eller __inaktive rad__. Om det är inställt på __granskning__ kan du skapa en arbets yta utan att ange en användardefinierad hanterad identitet. En systemtilldelad identitet används och en varnings händelse skapas i aktivitets loggen.
+
+Om principen är inställd på __neka__ kan du inte skapa en arbets yta om du inte anger en tilldelad identitet under skapande processen. Försök att skapa en arbets yta utan att ange en tilldelad identitet resulterar i ett fel. Felet loggas också i aktivitets loggen. Princip identifieraren returneras som en del av det här felet.
 
 ## <a name="next-steps"></a>Nästa steg
 

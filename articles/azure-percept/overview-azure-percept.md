@@ -1,18 +1,18 @@
 ---
 title: Översikt över Azure percept
 description: Läs mer om Azure percept-plattformen
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953609"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567669"
 ---
 # <a name="introduction-to-azure-percept"></a>Introduktion till Azure percept
 
@@ -28,21 +28,21 @@ Integreringen utmaningar en ansikten när du försöker distribuera Edge AI-lös
 
 Huvud komponenterna i Azure-percept är:
 
-1. [Azure percept DK.](./overview-azure-percept-dk.md)
+- [Azure percept DK.](./overview-azure-percept-dk.md)
 
     - Ett utvecklings paket som är tillräckligt flexibelt för att stödja en mängd olika prototyp scenarier för enhets byggare, lösnings utvecklare och kunder.
 
         > [!div class="nextstepaction"]
         > [Köp nu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-1. Tjänster och arbets flöden som påskyndar utvecklingen av AI-modellen och lösningen.
+- Tjänster och arbets flöden som påskyndar utvecklingen av AI-modellen och lösningen.
 
     - Utvecklings arbets flöden och färdiga modeller som är tillgängliga från [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).
     - Utvecklings tjänster för modeller.
     - Enhets hanterings tjänster för skalning.
     - Säkerhet från slut punkt till slut punkt.
 
-1. AI maskin varu referens design och certifierings program.
+- AI maskin varu referens design och certifierings program.
 
     - Innehåller ett eko system för maskin varu utvecklare med mönster och bästa metoder för att utveckla Edge AI-maskinvara som enkelt kan integreras med Azure AI-och IoT-tjänster.
 

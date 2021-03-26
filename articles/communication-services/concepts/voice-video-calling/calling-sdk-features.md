@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108408"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562417"
 ---
 # <a name="calling-sdk-overview"></a>Översikt över samtals-SDK
 
@@ -72,13 +72,33 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 |                   | Ange/uppdatera skalnings läge                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Rendera fjärran sluten video ström                                                                                          | ✔️   | ✔️            | ✔️
 
+## <a name="calling-client-library-streaming-support"></a>Anropar stöd för strömning av klient bibliotek
+Kommunikations tjänsterna som anropar klient biblioteket stöder följande strömmande konfigurationer:
 
+| Gräns          |Webb | Android/iOS|
+|-----------|----|------------|
+|**Antal utgående strömmar som kan skickas samtidigt** |1 video och en skärm delning | 1 video och en skärm delning|
+|**Antal inkommande strömmar som kan renderas samtidigt** |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
+
+## <a name="calling-client-library-timeouts"></a>Anrops tids gränser för klient bibliotek
+
+Följande tids gränser gäller för kommunikations tjänsterna som anropar klient bibliotek:
+
+| Action           | Tidsgräns i sekunder |
+| -------------- | ---------- |
+| Deltagare för att ansluta/ta bort | 120 |
+| Lägg till eller ta bort ny spärr från ett samtal (starta/stoppa video eller skärm delning) | 40 |
+| Tids gräns för överföring av anrops åtgärd | 60 |
+| 1:1 för anrops etablering | 85 |
+| Timeout för etablering av grupp anrop | 85 |
+| Tids gräns för PSTN-anrop | 115 |
+| Befordra 1:1-anrop till en timeout för grupp anrop | 115 |
 
 ## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>Java script-anropar SDK-stöd från OS och webbläsare
 
 Följande tabell visar en uppsättning webbläsare som stöds och som är tillgängliga för tillfället. Vi stöder de senaste tre versionerna av webbläsaren om inget annat anges.
 
-|                                  | Chrome | Safari  | Edge (krom) | 
+| Plattform                         | Chrome | Safari  | Edge (krom) | 
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -114,15 +134,6 @@ Denna IFRAME tillåter till exempel både kamera-och mikrofon åtkomst:
 ```html
 <iframe allow="camera *; microphone *">
 ```
-
-## <a name="calling-sdk-streaming-support"></a>Stöd för att anropa SDK-direktuppspelning
-Kommunikations tjänsterna som anropar SDK har stöd för följande strömmande konfigurationer:
-
-|           |Webb | Android/iOS|
-|-----------|----|------------|
-|**Antal utgående strömmar som kan skickas samtidigt** |1-video-eller 1-skärm delning | 1 video och en skärm delning|
-|**Antal inkommande strömmar som kan renderas samtidigt** |1-video-eller 1-skärm delning| 6 video-och 1-bildskärms delning |
-
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/03/2021
-ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1362d8c1f15b64b9d76b28fd354cdae8919504b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042529"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558286"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivera automatisk justering i Azure Portal för att övervaka frågor och förbättra arbets Belastningens prestanda
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -120,7 +120,7 @@ I händelse av fel meddelanden om att en automatiserad rekommendations hantering
 - Frågearkivet slutade köras eftersom det använde det allokerade lagrings utrymmet.
 
 Följande steg kan övervägas för att åtgärda det här problemet:
-- Rensa Frågearkivet eller ändra data lagrings perioden till "Auto" med hjälp av T-SQL. Se [Konfigurera Rekommenderad kvarhållning och avbildnings princip för frågearkivet](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Rensa Frågearkivet eller ändra data lagrings perioden till "Auto" med hjälp av T-SQL. Se [Konfigurera Rekommenderad kvarhållning och avbildnings princip för frågearkivet](./query-performance-insight-use.md#recommended-retention-and-capture-policy).
 - Använd SQL Server Management Studio (SSMS) och följ dessa steg:
   - Anslut till Azure SQL Database
   - Högerklicka på databasen

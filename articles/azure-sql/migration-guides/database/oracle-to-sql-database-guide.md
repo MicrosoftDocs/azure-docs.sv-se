@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 62b1924a1aeb1c1e5bc06ec0783d83d6918d162c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022287"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557929"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Guide för migrering: Oracle till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -143,7 +143,7 @@ Följ dessa steg om du vill publicera schemat och migrera dina data:
 
 Du kan också använda SQL Server Integration Services (SSIS) för att utföra migreringen. Mer information finns i: 
 
-- [Komma igång med SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
+- [Komma igång med SQL Server Integration Services](/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS för Azure och hybrid data förflyttning](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 
 
@@ -196,7 +196,7 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
 - Mer information om Azure SQL Database finns i: 
   - [En översikt över Azure SQL Database](../../database/sql-database-paas-overview.md)
@@ -209,5 +209,3 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 - För video innehåll, se: 
     - [Översikt över migrerings resan och de verktyg/tjänster som rekommenderas för utvärdering och migrering](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
-
-

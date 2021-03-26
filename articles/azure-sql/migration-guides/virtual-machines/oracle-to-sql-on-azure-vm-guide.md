@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d24e056d397617c95a7ba301b58efc3631f40dd
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 4173fe34c6966514ef4f150527cd712c9d95ab7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026529"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561720"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Migration guide: Oracle till SQL Server på Azure VM
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -199,7 +199,7 @@ Följ dessa steg om du vill publicera schemat och migrera data:
 
 
 Förutom att använda SSMA kan du också använda SQL Server Integration Services (SSIS) för att migrera data. Mer information finns i: 
-- Artikeln [komma igång med SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- Artikeln [komma igång med SQL Server Integration Services](//sql/integration-services/sql-server-integration-services).
 - White paper [SQL Server Integration Services: SSIS för Azure och hybrid data förflyttning](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
@@ -271,4 +271,3 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 - Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - Mer information om hur du utför data åtkomst Layer A/B-testning finns [Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).
-

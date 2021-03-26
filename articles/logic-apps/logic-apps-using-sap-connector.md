@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048773"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564121"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -568,7 +568,7 @@ Du kan [Exportera alla gatewayens konfigurations-och tjänst loggar](/data-integ
 
 #### <a name="capture-etw-events"></a>Fånga ETW-händelser
 
-Alternativt kan avancerade användare fånga ETW-händelser direkt. Du kan sedan [använda dina data i Azure-diagnostik i Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) eller [samla in data till Azure Monitor loggar](/azure/azure-monitor/agents/diagnostics-extension-logs). Mer information finns i [metod tips för att samla in och lagra data](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Du kan använda [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) för att arbeta med de resulterande ETL-filerna, eller så kan du skriva ditt eget program. I den här genom gången används PerfView:
+Alternativt kan avancerade användare fånga ETW-händelser direkt. Du kan sedan [använda dina data i Azure-diagnostik i Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) eller [samla in data till Azure Monitor loggar](../azure-monitor/agents/diagnostics-extension-logs.md). Mer information finns i [metod tips för att samla in och lagra data](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Du kan använda [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) för att arbeta med de resulterande ETL-filerna, eller så kan du skriva ditt eget program. I den här genom gången används PerfView:
 
 1. På PerfView-menyn väljer du **samla** &gt; **in insamling** för att avbilda händelserna.
 
@@ -763,7 +763,7 @@ Här är ett exempel som visar hur du extraherar enskilda IDocs från ett paket 
 
    ![Lägg till SAP-utlösare i Logic app](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. [Lägg till en svars åtgärd i din](/azure/connectors/connectors-native-reqres#add-a-response-action) Logi Kap par för att svara omedelbart med statusen för din SAP-begäran. Det är en bra idé att lägga till den här åtgärden direkt efter utlösaren för att frigöra kommunikations kanalen med SAP-servern. Välj en av följande status koder ( `statusCode` ) som ska användas i din svars åtgärd:
+1. [Lägg till en svars åtgärd i din](../connectors/connectors-native-reqres.md#add-a-response-action) Logi Kap par för att svara omedelbart med statusen för din SAP-begäran. Det är en bra idé att lägga till den här åtgärden direkt efter utlösaren för att frigöra kommunikations kanalen med SAP-servern. Välj en av följande status koder ( `statusCode` ) som ska användas i din svars åtgärd:
 
     * **202 godtogs**, vilket innebär att begäran har godkänts för bearbetning, men att bearbetningen inte har slutförts ännu.
 

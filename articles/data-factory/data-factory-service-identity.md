@@ -4,14 +4,14 @@ description: Lär dig mer om hanterad identitet för Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 89da1a22bb3fd0eff22a7bed7ed70b72f220fbf9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 65512f8e46b5545929a798392ac5f19ddeab39ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888999"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562468"
 ---
 # <a name="managed-identity-for-data-factory"></a>Hanterad identitet för Data Factory
 
@@ -28,8 +28,7 @@ När du skapar en data fabrik kan du skapa en hanterad identitet tillsammans med
 Hanterad identitet för Data Factory fördelar följande funktioner:
 
 - [Lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md), i vilket fall Data Factory-hanterad identitet används för Azure Key Vault autentisering.
-- Anslutningar inklusive [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)och [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md).
-- [Webb aktivitet](control-flow-web-activity.md).
+- Få åtkomst till data lager eller beräkningar med hanterad identitetsautentisering, inklusive Azure Blob Storage, Azure Datautforskaren, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database, Azure SQL-hanterad instans, Azure Synapse Analytics, REST, Databricks-aktivitet, webb aktivitet med mera. Mer information finns i artikeln om koppling och aktiviteter.
 
 ## <a name="generate-managed-identity"></a>Generera hanterad identitet
 
@@ -157,11 +156,10 @@ Du kan hitta informationen om hanterad identitet från Azure Portal-> Data Facto
 
 - Objekt-ID för hanterad identitet
 - Hanterad identitet klient
-- ID för hanterad identitets program
 
 Den hanterade identitets informationen visas också när du skapar en länkad tjänst, som har stöd för hanterad identitets autentisering, t. ex. Azure Blob, Azure Data Lake Storage, Azure Key Vault osv.
 
-När du beviljar behörighet använder du objekt-ID eller data fabriks namn (som hanterad identitet) för att hitta den här identiteten.
+När du beviljar behörighet, i Azure-resursens Access Control (IAM) TABB-> Lägg till roll tilldelning-> tilldela åtkomst till-> väljer du Data Factory under systemtilldelad hanterad identitet – > väljer efter fabriks namn; i allmänhet kan du använda objekt-ID eller data fabriks namn (som namn på hanterad identitet) för att hitta den här identiteten. Om du behöver hämta program-ID: t för den hanterade identiteten kan du använda PowerShell.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Hämta hanterad identitet med PowerShell
 

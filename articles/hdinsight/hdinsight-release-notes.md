@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6addd7cffdd7001b5767a471fc9e0514749b18d1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699359"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564899"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Viktig information om Azure HDInsight
 
@@ -28,10 +28,10 @@ Den här versionen gäller både HDInsight 3,6 och HDInsight 4,0. HDInsight-vers
 
 ## <a name="new-features"></a>Nya funktioner
 ### <a name="dav4-series-support"></a>Stöd för Dav4-serien
-HDInsight har lagt till stöd för Dav4-serien i den här versionen. Läs mer om [Dav4-serien här](/azure/virtual-machines/dav4-dasv4-series).
+HDInsight har lagt till stöd för Dav4-serien i den här versionen. Läs mer om [Dav4-serien här](../virtual-machines/dav4-dasv4-series.md).
 
 ### <a name="kafka-rest-proxy-ga"></a>Kafka REST-proxy GA 
-Med Kafka REST proxy kan du interagera med ditt Kafka-kluster via en REST API över HTTPS. Kafka rest proxy är allmänt tillgänglig från den här versionen. Läs mer om [KAFKA rest proxy här](/azure/hdinsight/kafka/rest-proxy).
+Med Kafka REST proxy kan du interagera med ditt Kafka-kluster via en REST API över HTTPS. Kafka rest proxy är allmänt tillgänglig från den här versionen. Läs mer om [KAFKA rest proxy här](./kafka/rest-proxy.md).
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Flytta till skalnings uppsättningar för virtuella Azure-datorer
 HDInsight använder nu virtuella Azure-datorer för att etablera klustret. Tjänsten migreras gradvis till [skalnings uppsättningar för virtuella Azure-datorer](../virtual-machine-scale-sets/overview.md). Hela processen kan ta månader. När dina regioner och prenumerationer migreras, kommer nyligen skapade HDInsight-kluster att köras på virtuella datorers skalnings uppsättningar utan kund åtgärder. Ingen avbrytande ändring förväntas.
@@ -49,7 +49,7 @@ HDInsight migreras gradvis till skalnings uppsättningar för virtuella Azure-da
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Överändrad ändring för .NET för Apache Spark 1.0.0
-Med den senaste versionen introducerar HDInsight de första officiella version v-1.0.0 i biblioteket [".net för Apache Spark"](https://github.com/dotnet/spark) . Den ger DataFrame API-slutförande för Spark 2.4. x och Spark 3.0. x tillsammans med en värd för [andra funktioner](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). Det kommer att gå att överföra ändringar för den här huvud versionen. mer information om hur du uppdaterar din kod och dina pipelins finns i [.net for Apache Spark migration guide](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Mer information finns i detta [.net för Apache Spark v 1.0 på Azure HDInsight guide](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+Med den senaste versionen introducerar HDInsight de första officiella version v-1.0.0 i biblioteket [".net för Apache Spark"](https://github.com/dotnet/spark) . Den ger DataFrame API-slutförande för Spark 2.4. x och Spark 3.0. x tillsammans med en värd för [andra funktioner](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). Det kommer att gå att överföra ändringar för den här huvud versionen. mer information om hur du uppdaterar din kod och dina pipelins finns i [.net for Apache Spark migration guide](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Mer information finns i detta [.net för Apache Spark v 1.0 på Azure HDInsight guide](./spark/spark-dotnet-version-update.md#using-net-for-apache-spark-v10-in-hdinsight).
 
 
 ## <a name="upcoming-changes"></a>Kommande ändringar

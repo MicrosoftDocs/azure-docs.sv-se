@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a1cb71917fdb30ffccda21bedffe1c7f2a428c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175319"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557963"
 ---
 # <a name="authentication-methods-activity"></a>Aktiviteter i autentiseringsmetoder 
 
@@ -135,6 +135,7 @@ Rapporten registrerings information visar följande information för varje anvä
 
 - Data i rapporten uppdateras inte i real tid och kan avspegla en fördröjning på upp till några timmar.
 - Tillfälliga åtkomst pass-registreringar visas inte på fliken registrering i rapporten eftersom de bara är giltiga under kort tids period.
+- **PhoneAppNotification** -eller **PhoneAppOTP** -metoderna som en användare kan ha konfigurerat visas inte i instrument panelen. 
 
 ## <a name="next-steps"></a>Nästa steg
 

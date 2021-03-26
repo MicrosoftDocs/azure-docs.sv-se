@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: 80/20-integrering
       href: overview-8020-integration.md
-    - name: Uppdatera dina percept-enheter
+    - name: Enhetsuppdateringar
       href: overview-update-experience.md
 - name: Snabbstarter
   items:
@@ -44,6 +44,10 @@
       items:
         - name: LED-och knapp beteende
           href: audio-button-led-behavior.md
+    - name: Säkerhet
+      items:
+        - name: Brand Väggs konfiguration och säkerhets rekommendationer
+          href: concept-security-configuration.md
 - name: Anvisningar
   items:
     - name: Utveckling av visioner med Azure percept DK

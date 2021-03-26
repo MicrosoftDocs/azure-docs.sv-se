@@ -4,7 +4,7 @@ description: Lär dig hur Azure Hybrid-förmån kan hjälpa dig att spara pengar
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
-manager: westonh
+manager: rochakm
 ms.service: virtual-machines
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73747222b9131fa85ae6ac01c9dedd5b0bbe1d63
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695489"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543421"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Hur Azure Hybrid-förmån gäller för virtuella Linux-datorer
 
@@ -39,7 +39,7 @@ Du kan också välja att konvertera en virtuell dator där förmånen har Aktive
 
 Azure Hybrid-förmån är tillgängligt för alla RHEL-och SLES-PAYG-avbildningar från Azure Marketplace. Förmånen är ännu inte tillgänglig för RHEL-eller SLES-BYOS-avbildningar eller anpassade avbildningar från Azure Marketplace.
 
-Reserverade instanser, Azure dedikerade värd instanser och SQL hybrid-förmåner är inte berättigade till Azure Hybrid-förmån om du redan använder fördelarna med virtuella Linux-datorer.
+Azures dedikerade värd instanser och SQL hybrid-förmåner är inte berättigade till Azure Hybrid-förmån om du redan använder fördelarna med virtuella Linux-datorer.
 
 ## <a name="get-started"></a>Kom igång
 
@@ -90,11 +90,8 @@ Du kan aktivera förmånen för befintliga virtuella datorer genom att gå till 
 1. Gå till **konfigurations** alternativet till vänster. Avsnittet licens visas. Om du vill aktivera AHB-konverteringen markerar du alternativ knappen Ja och markerar kryss rutan Bekräfta.
 ![AHB konfigurations blad efter att du har skapat](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
-
 >[!NOTE]
 > Om du har skapat en **anpassad ögonblicks** bild eller en **delad avbildning (sig)** av en RHEL-eller SLES PAYG Marketplace-avbildning kan du bara använda Azure CLI för att aktivera Azure Hybrid-förmån. Detta är en känd begränsning och det finns för närvarande ingen tids linje för att tillhandahålla den här funktionen på Azure-portalen.
-
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Aktivera och inaktivera förmånen i Azure CLI
 
@@ -179,6 +176,15 @@ Mer information om kompatibilitet med Red Hat-prenumeration, program uppdatering
 
 Om du vill använda Azure Hybrid-förmån för virtuella SLES-datorer och information om hur du flyttar från SLES PAYG till BYOS eller flyttar från SLES BYOS till PAYG, se [SUSE Linux Enterprise och Azure Hybrid-förmån](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
+## <a name="azure-hybrid-benefit-on-reserved-instances-is-in-preview"></a>Azure Hybrid-förmån på reserverade instanser är i för hands version
+
+Azure Reservations (Azure Reserved Virtual Machine Instances) hjälper dig att spara pengar genom att använda ett år eller tre års planer för flera produkter. Du kan lära dig mer om [reserverade instanser här](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations). Azure Hybrid-förmån finns tillgänglig som för hands version för [reserverad virtuell dator instans (RIs)](https://review.docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation). Det innebär att om du har köpt beräknings kostnader till ett rabatterat pris med hjälp av RI kan du tillämpa AHB-förmånen på licens kostnaderna för RHEL och SUSE på den. De steg som krävs för att tillämpa AHB-förmånen för en RI-instans är exakt samma som för en vanlig virtuell dator.
+![AHB för RIs](./media/azure-hybrid-benefit/reserved-instances.png)
+
+>[!NOTE]
+>Om du redan har köpt reservationer för RHEL-eller SUSE PAYG-program på Azure Marketplace väntar du tills reservationen är klar innan du använder Azure Hybrid-förmån..
+
+
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 *F: kan jag använda en licens typ `RHEL_BYOS` med en SLES-avbildning eller vice versa?*
 
@@ -206,11 +212,11 @@ A: Ja, du kan. Du kan använda licens typen för `RHEL_BYOS` för virtuella RHEL
 
 *F: kan jag använda Azure Hybrid-förmån på skalnings uppsättningar för virtuella datorer för RHEL och SLES?*
 
-A: Nej, du kan inte. Skalnings uppsättningar för virtuella datorer ligger för närvarande inte inom omfånget för Azure Hybrid-förmån för RHEL och SLES.
+A: Ja, Azure Hybrid-förmån på skalnings uppsättningar för virtuella datorer för RHEL och SLES är i för hands version. Du kan [lära dig mer om den här förmånen och hur du använder den här](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux-vmss). 
 
 *F: kan jag använda Azure Hybrid-förmån på reserverade instanser för RHEL och SLES?*
 
-A: Nej, du kan inte. Reserverade instanser ligger för närvarande inte inom omfånget för Azure Hybrid-förmån för RHEL och SLES.
+A: Ja, Azure Hybrid-förmån på en reserverad instans för RHEL och SLES är i för hands version. Du kan [lära dig mer om den här förmånen och hur du använder den här](#azure-hybrid-benefit-on-reserved-instances-is-in-preview).
 
 *F: kan jag använda Azure Hybrid-förmån på en virtuell dator som har distribuerats för SQL Server på RHEL-avbildningar?*
 

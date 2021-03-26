@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101680103"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561244"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>Översikt av enhetsuppdatering för IoT Hub agent
 
 Enhets uppdaterings agenten består av två konceptuella lager:
 
-* Gränssnitts skiktet bygger ovanpå [Azure IoT plug and Play (PNP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) som gör det möjligt att skicka meddelanden mellan enhets uppdaterings agenten och enhets uppdaterings tjänsterna.
+* Gränssnitts skiktet bygger ovanpå [Azure IoT plug and Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) som gör det möjligt att skicka meddelanden mellan enhets uppdaterings agenten och enhets uppdaterings tjänsterna.
 * Plattforms skiktet ansvarar för uppdaterings åtgärder på hög nivå för att ladda ned, installera och tillämpa som kan vara plattform, eller enhets information.
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Agent implementeringar." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -72,8 +72,7 @@ Uppdaterings hanteraren för APT bearbetar ett APT uppdaterings manifest och anr
 
 ## <a name="self-update-device-update-agent"></a>Enhets uppdaterings agent själv uppdatering
 
-Enhets uppdaterings agenten och dess beroenden kan uppdateras genom enhets uppdateringen för IoT Hub pipelinen. Om du använder en avbildningsbaserad uppdatering inkluderar du den senaste enhets uppdaterings agenten i den nya avbildningen. Om du använder en paket-baserad uppdatering inkluderar du enhets uppdaterings agenten och den önskade versionen i apt-manifestet som ett annat paket. [Läs mer](device-update-apt-manifest.md) om apt-manifestet. Du kan kontrol lera den installerade versionen av enhets uppdaterings agenten och leverans optimerings agenten i avsnittet enhets egenskaper på din [IoT-enhet](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins). [Läs mer om enhets egenskaper under ADU Core Interface](device-update-plug-and-play.md#device-properties).
+Enhets uppdaterings agenten och dess beroenden kan uppdateras genom enhets uppdateringen för IoT Hub pipelinen. Om du använder en avbildningsbaserad uppdatering inkluderar du den senaste enhets uppdaterings agenten i den nya avbildningen. Om du använder en paket-baserad uppdatering inkluderar du enhets uppdaterings agenten och den önskade versionen i apt-manifestet som ett annat paket. [Läs mer](device-update-apt-manifest.md) om apt-manifestet. Du kan kontrol lera den installerade versionen av enhets uppdaterings agenten och leverans optimerings agenten i avsnittet enhets egenskaper på din [IoT-enhet](../iot-hub/iot-hub-devguide-device-twins.md). [Läs mer om enhets egenskaper under ADU Core Interface](device-update-plug-and-play.md#device-properties).
 
 ## <a name="next-steps"></a>Nästa steg
 [Förstå konfigurations filen för enhets uppdaterings agenten](device-update-configuration-file.md)
-

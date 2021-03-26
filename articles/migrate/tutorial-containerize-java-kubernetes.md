@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023120"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561074"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Skapa behållare och migrering av Java-webbappar till Azure Kubernetes-tjänsten
 
@@ -59,7 +59,7 @@ Innan du börjar de här självstudierna bör du:
 
 **Krav** | **Information**
 --- | ---
-**Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> När verktyget körs på en Windows-dator måste den ha en nätverksanslutning till servern/den virtuella datorn som ska vara värd för de ASP.NET-program som ska inkapslas i en container.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn måste ha åtkomst till Internet, antingen direkt eller via en proxy. <br/> <br/>Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
+**Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> Windows-datorn som kör verktyget bör ha nätverks anslutning till de servrar/virtuella datorer som är värd för Java-webbprogram som ska behållas.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn måste ha åtkomst till Internet, antingen direkt eller via en proxy.
 **Programservrar** | – Aktivera SSH-anslutning (Secure Shell) på port 22 på de servrar som kör de Java-program som ska behållas. <br/>
 **Java-webapp** | Verktyget stöder för närvarande <br/><br/> – Program som körs på Tomcat 8 eller senare.<br/> – Program servrar på Ubuntu Linux 16.04/18.04/20.04, Debian 7/8, CentOS 6/7, Red Hat Enterprise Linux 5/6/7. <br/> – Program som använder Java version 7 eller senare.  <br/><br/> Verktyget stöder för närvarande inte <br/><br/> – Program servrar som kör flera Tomcat-instanser <br/>  
 
@@ -178,7 +178,7 @@ Genom att parameterstyrda konfigurationen blir den tillgänglig som en distribut
 
 ### <a name="externalize-file-system-dependencies"></a>Externalize fil system beroenden
 
- Du kan lägga till andra mappar som används i programmet. Ange om de ska vara en del av behållar avbildningen eller ska vara expanderade genom permanenta volymer på Azure-filresursen. Användning av beständiga volymer fungerar utmärkt för tillstånds känsliga program som lagrar tillstånd utanför behållaren eller har annat statiskt innehåll som lagras i fil systemet. [Läs mer](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Du kan lägga till andra mappar som används i programmet. Ange om de ska vara en del av behållar avbildningen eller ska vara expanderade genom permanenta volymer på Azure-filresursen. Användning av beständiga volymer fungerar utmärkt för tillstånds känsliga program som lagrar tillstånd utanför behållaren eller har annat statiskt innehåll som lagras i fil systemet. [Läs mer](../aks/concepts-storage.md)
 
 1. Klicka på **redigera** under app-mappar för att granska de identifierade programmapparna. De identifierade programmapparna har identifierats som obligatoriska artefakter som krävs av programmet och kommer att kopieras till behållar avbildningen.
 
@@ -194,7 +194,7 @@ Genom att parameterstyrda konfigurationen blir den tillgänglig som en distribut
 ## <a name="build-container-image"></a>Skapa containeravbildning
 
 
-1. **Välj Azure Container Registry**: Använd List rutan för att välja en [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) som ska användas för att skapa och lagra behållar avbildningarna för apparna. Du kan använda en befintlig Azure Container Registry eller välja att skapa en ny med hjälp av alternativet för att skapa ett nytt register.
+1. **Välj Azure Container Registry**: Använd List rutan för att välja en [Azure Container Registry](../container-registry/index.yml) som ska användas för att skapa och lagra behållar avbildningarna för apparna. Du kan använda en befintlig Azure Container Registry eller välja att skapa en ny med hjälp av alternativet för att skapa ett nytt register.
 
     ![Skärm bild för val av ACR app.](./media/tutorial-containerize-apps-aks/build-java-app.png)
 

@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691237"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543524"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Resurs gränser för Azure SQL Database-och Azure Synapse Analytics-servrar
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Den här artikeln innehåller en översikt över resurs gränserna för den logiska servern som används av Azure SQL Database och Azure Synapse Analytics. Den innehåller information om vad som händer när dessa resurs gränser nåtts eller överskrids och beskriver de resurs styrnings metoder som används för att genomdriva dessa gränser.
+Den här artikeln innehåller en översikt över resurs gränserna för den [logiska servern](logical-servers.md) som används av Azure SQL Database och Azure Synapse Analytics. Den innehåller information om vad som händer när dessa resurs gränser nåtts eller överskrids och beskriver de resurs styrnings metoder som används för att genomdriva dessa gränser.
 
 > [!NOTE]
-> För Azure SQL-hanterade instans gränser, se [SQL Database resurs gränser för hanterade instanser](../managed-instance/resource-limits.md).
+> För Azure SQL-hanterade instans gränser, se [resurs gränser för hanterade instanser](../managed-instance/resource-limits.md).
 
 ## <a name="maximum-resource-limits"></a>Högsta antal resurs gränser
 
 | Resurs | Gräns |
 | :--- | :--- |
-| Databaser per server | 5000 |
-| Standard antal servrar per prenumeration i valfri region | 20 |
-| Maximalt antal servrar per prenumeration i någon region | 200 |  
-| Kvot för DTU/eDTU per server | 54 000 |  
-| vCore-kvot per Server/instans | 540 |
-| Högsta antal pooler per server | Begränsas av antalet DTU: er eller virtuella kärnor. Om varje pool till exempel är 1000 DTU: er, kan en server stödja 54-pooler.|
+| Databaser per logisk server | 5000 |
+| Standard antal logiska servrar per prenumeration i en region | 20 |
+| Högsta antal logiska servrar per prenumeration i en region | 200 |  
+| Kvot för DTU/eDTU per logisk server | 54 000 |  
+| vCore kvot per logisk server | 540 |
+| Högsta antal pooler per logisk server | Begränsas av antalet DTU: er eller virtuella kärnor. Om varje pool till exempel är 1000 DTU: er, kan en server stödja 54-pooler.|
 |||
 
 > [!IMPORTANT]
-> I takt med att antalet databaser närmar sig gränsen per server kan följande inträffa:
+> När antalet databaser närmar sig gränsen per logisk server kan följande inträffa:
 >
-> - Ökande svars tid för att köra frågor mot huvud databasen.  Detta inkluderar vyer av statistik över resursutnyttjande som sys.resource_stats.
+> - Ökande svars tid för att köra frågor mot huvud databasen.  Detta inkluderar vyer av statistik över resursutnyttjande, till exempel `sys.resource_stats` .
 > - Ökande svars tid i hanterings åtgärder och åter givning av Portal synvinklar som innefattar att räkna upp databaser på servern.
 
 > [!NOTE]
-> För att få mer DTU/eDTU-kvot, vCore kvot eller fler servrar än standard beloppet skickar du en ny supportbegäran i Azure Portal. Mer information finns i [begäran om kvot ökning för Azure SQL Database](quota-increase-request.md).
+> För att få mer DTU/eDTU-kvot, vCore kvot eller flera logiska servrar än standard beloppet skickar du en ny supportbegäran i Azure Portal. Mer information finns i [begäran om kvot ökning för Azure SQL Database](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Lagrings storlek
 
@@ -97,7 +97,7 @@ När du ska räkna ut minnes fel visas följande alternativ för minskning:
 - Öka tjänst nivån eller beräknings storleken för databasen eller den elastiska poolen. Se [skala resurser för enkel databas](single-database-scale.md) och [skala elastiska pooler](elastic-pool-scale.md).
 - Optimera frågor och konfiguration för att minska minnes användningen. Vanliga lösningar beskrivs i följande tabell.
 
-|Lösning|Beskrivning|
+|Lösning|Description|
 | :----- | :----- |
 |Minska storleken på minnes bidrag|Mer information om minnes bidrag finns i blogg inlägget om att [förstå SQL Server minnes tilldelning](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . En vanlig lösning för att undvika alltför stora minnes bidrag håller [statistiken](/sql/relational-databases/statistics/statistics) uppdaterad. Detta resulterar i mer exakta uppskattningar av minnes förbrukning av frågemotor, vilket undviker onödigt stora minnes bidrag.</br></br>I databaser som använder kompatibilitetsnivå 140 och senare, kan databas motorn automatiskt justera minnes tilldelningens storlek med hjälp av [återkoppling i batch-läge](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback). I databaser som använder kompatibilitetsnivå 150 och senare, använder databas motorn samma [återkoppling i rad läge](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)för att ge fler vanliga frågor om rad läge. Den här inbyggda funktionen hjälper till att undvika minnes brists fel på grund av onödigt stora minnes bidrag.|
 |Minska storleken på cachen för frågeplan|Databas motorn cachelagrar fråge planer i minnet för att undvika att kompilera en frågeplan för varje frågekörningen. För att undvika överdriven storlek av frågor som orsakas av programplaner som bara används en gång, aktiverar du den OPTIMIZE_FOR_AD_HOC_WORKLOADS [databas-omfångs konfigurationen](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|

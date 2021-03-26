@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025585"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561805"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET app-skapa behållare och migrering till Azure Kubernetes-tjänsten
 
@@ -60,7 +60,7 @@ Innan du börjar de här självstudierna bör du:
 **Krav** | **Information**
 --- | ---
 **Identifiera en dator för att installera verktyget** | En Windows-dator för att installera och köra verktyget Azure Migrate: app skapa behållare. Windows-datorn kan vara en server (Windows Server 2016 eller senare) eller ett klient (Windows 10)-operativ system, vilket innebär att verktyget kan köras på Skriv bordet också. <br/><br/> När verktyget körs på en Windows-dator måste den ha en nätverksanslutning till servern/den virtuella datorn som ska vara värd för de ASP.NET-program som ska inkapslas i en container.<br/><br/> Se till att det finns 6 GB ledigt utrymme på Windows-datorn som kör verktyget Azure Migrate: app skapa behållare för att lagra program artefakter. <br/><br/> Windows-datorn måste ha åtkomst till Internet, antingen direkt eller via en proxy. <br/> <br/>Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
-**Programservrar** | Aktivera PowerShell-fjärrkommunikation på program servrarna: Logga in på program servern och följ [dessa](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) instruktioner för att aktivera PowerShell-fjärrkommunikation. <br/><br/> Om program servern kör Windows Server 2008 R2 kontrollerar du att PowerShell 5,1 är installerat på program servern. Följ anvisningarna [här](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) för att ladda ned och installera PowerShell 5,1 på program servern. <br/><br/> Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
+**Programservrar** | Aktivera PowerShell-fjärrkommunikation på program servrarna: Logga in på program servern och följ [dessa](/powershell/module/microsoft.powershell.core/enable-psremoting) instruktioner för att aktivera PowerShell-fjärrkommunikation. <br/><br/> Om program servern kör Windows Server 2008 R2 kontrollerar du att PowerShell 5,1 är installerat på program servern. Följ anvisningarna [här](/powershell/scripting/windows-powershell/wmf/setup/install-configure) för att ladda ned och installera PowerShell 5,1 på program servern. <br/><br/> Installera Microsoft Web Deploy-verktyget på datorn som kör appen skapa behållare Helper Tool och program server om det inte redan är installerat. Du kan hämta [verktyget härifrån](https://aka.ms/webdeploy3.6)
 **ASP.NET-program** | Verktyget stöder för närvarande <br/><br/> -ASP.NET program som använder Microsoft .NET Framework 3,5 eller senare.<br/> – Program servrar som kör Windows Server 2008 R2 eller senare (program servrar ska köra PowerShell-version 5,1). <br/> – Program som körs på Internet Information Services (IIS) 7,5 eller senare. <br/><br/> Verktyget stöder för närvarande inte <br/><br/> – Program som kräver Windows-autentisering (AKS stöder inte gMSA för närvarande). <br/> – Program som är beroende av andra Windows-tjänster som finns utanför IIS.
 
 
@@ -180,7 +180,7 @@ Genom att parameterstyrda konfigurationen blir den tillgänglig som en distribut
 
 ### <a name="externalize-file-system-dependencies"></a>Externalize fil system beroenden
 
- Du kan lägga till andra mappar som används i programmet. Ange om de ska vara en del av behållar avbildningen eller ska vara expanderade genom permanenta volymer på Azure-filresursen. Användning av beständiga volymer fungerar utmärkt för tillstånds känsliga program som lagrar tillstånd utanför behållaren eller har annat statiskt innehåll som lagras i fil systemet. [Läs mer](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Du kan lägga till andra mappar som används i programmet. Ange om de ska vara en del av behållar avbildningen eller ska vara expanderade genom permanenta volymer på Azure-filresursen. Användning av beständiga volymer fungerar utmärkt för tillstånds känsliga program som lagrar tillstånd utanför behållaren eller har annat statiskt innehåll som lagras i fil systemet. [Läs mer](../aks/concepts-storage.md)
 
 1. Klicka på **redigera** under app-mappar för att granska de identifierade programmapparna. De identifierade programmapparna har identifierats som obligatoriska artefakter som krävs av programmet och kommer att kopieras till behållar avbildningen.
 
@@ -195,7 +195,7 @@ Genom att parameterstyrda konfigurationen blir den tillgänglig som en distribut
 ## <a name="build-container-image"></a>Skapa containeravbildning
 
 
-1. **Välj Azure Container Registry**: Använd List rutan för att välja en [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) som ska användas för att skapa och lagra behållar avbildningarna för apparna. Du kan använda en befintlig Azure Container Registry eller välja att skapa en ny med hjälp av alternativet för att skapa ett nytt register.
+1. **Välj Azure Container Registry**: Använd List rutan för att välja en [Azure Container Registry](../container-registry/index.yml) som ska användas för att skapa och lagra behållar avbildningarna för apparna. Du kan använda en befintlig Azure Container Registry eller välja att skapa en ny med hjälp av alternativet för att skapa ett nytt register.
 
     ![Skärm bild för val av ACR app.](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101692711"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558490"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>Enhetsuppdatering för IoT Hub-resurshantering
 
@@ -127,7 +127,11 @@ För att andra användare ska ha åtkomst till enhets uppdateringen måste anvä
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Importera en uppdatering med enhets uppdatering för IoT Hub.](import-update.md)
+Försök att uppdatera en enhet med någon av följande snabb Självstudier:
+
+ - [Enhets uppdatering på en simulator](device-update-simulator.md)
+ - [Enhets uppdatering på Raspberry Pi](device-update-raspberry-pi.md)
+ - [Enhets uppdatering på Ubuntu Server 18,04 x64 Package agent](device-update-ubuntu-agent.md)
 
 [Lär dig mer om enhets uppdaterings konto och instans.](device-update-resources.md) 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: b108e757ed9fe9ab7038cae4240f0f749ac19675
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a58146c2c8121f3f0e3b564caafbb09396d39672
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036052"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568553"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Självstudie: förbereda för att distribuera Azure Stack Edge Pro med GPU 
 
@@ -32,7 +32,7 @@ I den här guiden får du lära dig att:
 
 För Azure Stack Edge Pro-distribution måste du först förbereda din miljö. När miljön är klar följer du de steg som krävs och om det behövs, valfria steg och procedurer för att distribuera enheten fullständigt. Anvisningarna för steg-för-steg-distribution anger när du bör utföra var och en av dessa obligatoriska och valfria steg.
 
-| Steg | Beskrivning |
+| Steg | Description |
 | --- | --- |
 | **Tgärder** |De här stegen måste utföras i förberedelser inför den kommande distributionen. |
 | **[Check lista för distributions konfiguration](#deployment-configuration-checklist)** |Använd den här checklistan för att samla in och registrera information före och under distributionen. |
@@ -47,8 +47,8 @@ För Azure Stack Edge Pro-distribution måste du först förbereda din miljö. N
 |**[6. Konfigurera säkerhets inställningar för Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Konfigurera certifikat för din enhet. Använd enhets genererade certifikat eller ta med dina egna certifikat.   |
 |**[7. Aktivera Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |Använd aktiverings nyckeln från tjänsten för att aktivera enheten. Enheten är redo att konfigurera SMB-eller NFS-resurser eller ansluta via REST. |
 |**[8. Konfigurera Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurera beräknings rollen på enheten. Ett Kubernetes-kluster skapas också. |
-|**[9a. Överföra data med gräns resurser](azure-stack-edge-j-series-deploy-add-shares.md)** |Lägg till resurser och anslut till resurser via SMB eller NFS. |
-|**[9b. Överföra data med gräns lagrings konton](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Lägg till lagrings konton och Anslut till Blob Storage via REST-API: er. |
+|**[9a. Överföra data med gräns resurser](./azure-stack-edge-gpu-deploy-add-shares.md)** |Lägg till resurser och anslut till resurser via SMB eller NFS. |
+|**[9b. Överföra data med gräns lagrings konton](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)** |Lägg till lagrings konton och Anslut till Blob Storage via REST-API: er. |
 
 
 Nu kan du börja samla in information om program varu konfigurationen för din Azure Stack Edge Pro-enhet.

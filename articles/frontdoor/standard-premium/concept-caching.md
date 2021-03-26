@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100556"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564593"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Cachelagring med Azure front dörr standard/Premium (för hands version)
 
@@ -26,6 +26,10 @@ I den här artikeln får du lära dig hur vägar och regel uppsättningar för f
 > Azure front dörr standard/Premium (för hands version) är för närvarande en offentlig för hands version.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="request-methods"></a>Metoder för begäran
+
+Endast metoden GET Request kan generera cachelagrat innehåll i Azures frontend-dörr. Alla andra metoder för begäran är alltid via proxy via nätverket.
 
 ## <a name="delivery-of-large-files"></a>Leverans av stora filer
 

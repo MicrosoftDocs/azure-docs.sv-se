@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dec29dc92f70a3f02f3fb598659aa86477fb59bf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094564"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558252"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Katalog läsar roll i Azure Active Directory för Azure SQL
 
@@ -25,7 +25,7 @@ ms.locfileid: "99094564"
 
 Azure Active Directory (Azure AD) har introducerat [med moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)](../../active-directory/roles/groups-concept.md). Detta gör att Azure AD-roller kan tilldelas till grupper.
 
-När du aktiverar en [hanterad identitet](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) för Azure SQL Database, Azure SQL-hanterad instans eller Azure Synapse Analytics, måste rollen Azure AD [**Directory Reader**](../../active-directory/roles/permissions-reference.md#directory-readers) tilldelas identiteten för att tillåta Läs åtkomst till [Azure AD-Graph API](../../active-directory/develop/active-directory-graph-api.md). Den hanterade identiteten för SQL Database och Azure-Synapse kallas för Server identiteten. Den hanterade identiteten för SQL-hanterad instans kallas för den hanterade instans identiteten och tilldelas automatiskt när instansen skapas. Mer information om hur du tilldelar en server identitet till SQL Database eller Azure-Synapse finns i [Aktivera tjänstens huvud namn för att skapa Azure AD-användare](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
+När du aktiverar en [hanterad identitet](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) för Azure SQL Database, Azure SQL-hanterad instans eller Azure Synapse Analytics, måste rollen Azure AD [**Directory Reader**](../../active-directory/roles/permissions-reference.md#directory-readers) tilldelas identiteten för att tillåta Läs åtkomst till [Azure AD-Graph API](/graph/migrate-azure-ad-graph-planning-checklist). Den hanterade identiteten för SQL Database och Azure-Synapse kallas för Server identiteten. Den hanterade identiteten för SQL-hanterad instans kallas för den hanterade instans identiteten och tilldelas automatiskt när instansen skapas. Mer information om hur du tilldelar en server identitet till SQL Database eller Azure-Synapse finns i [Aktivera tjänstens huvud namn för att skapa Azure AD-användare](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
 Rollen **katalog läsare** är nödvändig för att:
 
