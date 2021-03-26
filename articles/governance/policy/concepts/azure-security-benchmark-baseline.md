@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e8bb4cf715c6cb8d0729399c1985376de18687b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740365"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561295"
 ---
 # <a name="azure-security-baseline-for-azure-policy"></a>Azures säkerhets bas linje för Azure Policy
 
@@ -30,9 +30,9 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 
 **Vägledning**: Azure policy använder aktivitets loggar som aktive ras automatiskt för att inkludera händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Samla in plattforms loggar och mått med Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Förstå loggning och olika logg typer i Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Ansvar**: Kund
 
@@ -48,7 +48,7 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
 
 **Azure policy inbyggda definitioner – Microsoft. GuestConfiguration**:
 
@@ -74,7 +74,7 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 
 **Vägledning**: Använd rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att kontrol lera åtkomsten till Azure policy.
 
-- [Azure RBAC-behörigheter i Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
+- [Azure RBAC-behörigheter i Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 - [Så här konfigurerar du Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
@@ -86,7 +86,7 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 
 **Vägledning**: Använd Azure monitor med aktivitets loggar för att skapa aviseringar för när ändringar sker i Azure policy.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -128,5 +128,5 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../../../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../../../security/benchmarks/security-baselines-overview.md)

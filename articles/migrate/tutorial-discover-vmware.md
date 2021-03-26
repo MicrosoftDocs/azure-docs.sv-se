@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109868"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562740"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: identifiering och utvärdering
 
@@ -106,7 +106,7 @@ I vSphere-webbklient skapar du ett konto på följande sätt:
 
 Du behöver ett användar konto med de behörigheter som krävs på servrarna för att kunna identifiera installerade program, agent lös beroende analys och identifiering av SQL Server instanser och databaser. Du kan ange användar kontot för Konfigurations hanteraren för installationen. Installations programmet installerar inte några agenter på servrarna.
 
-1. För Windows-servrar skapar du ett konto (lokal eller domän) med administratörs behörighet på-servrarna. Om du vill identifiera SQL Server instanser och databaser måste du ha Windows-eller SQL Server-kontot som medlem i Server rollen sysadmin. [Läs mer](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) om hur du tilldelar användar kontot den roll som krävs.
+1. För Windows-servrar skapar du ett konto (lokal eller domän) med administratörs behörighet på-servrarna. Om du vill identifiera SQL Server instanser och databaser måste du ha Windows-eller SQL Server-kontot som medlem i Server rollen sysadmin. [Läs mer](/sql/relational-databases/security/authentication-access/server-level-roles) om hur du tilldelar användar kontot den roll som krävs.
 2. Skapa ett konto med rot privilegier för Linux-servrar. Alternativt kan du skapa ett konto med dessa behörigheter för/bin/netstat-och/bin/ls-filer: CAP_DAC_READ_SEARCH och CAP_SYS_PTRACE.
 
 > [!NOTE]
@@ -292,8 +292,8 @@ Om du vill använda dessa funktioner kan du ange autentiseringsuppgifter för se
 1. Under program varu inventeringen upprepas de tillagda servrarnas autentiseringsuppgifter mot servrar och val IDE ras för agent avsöknings analys. Du kan aktivera agent avsöknings analys för servrar från portalen. Det går bara att välja de servrar där verifieringen lyckas, för att aktivera en agent lös beroende analys.
 
 > [!Note]
->Azure Migrate krypterar kommunikationen mellan Azure Migrates utrustning och källa SQL Server instanser (med egenskapen krypterad anslutning inställd på TRUE). Dessa anslutningar är krypterade med [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (anges till sant). transport lagret använder SSL för att kryptera kanalen och kringgå certifikat kedjan för att verifiera förtroende. Installations servern måste vara konfigurerad för att [**lita på certifikatets rot utfärdare**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
-Om inget certifikat har etablerats på servern när det startas, genererar SQL Server ett självsignerat certifikat som används för att kryptera inloggnings paket. [**Läs mer**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+>Azure Migrate krypterar kommunikationen mellan Azure Migrates utrustning och källa SQL Server instanser (med egenskapen krypterad anslutning inställd på TRUE). Dessa anslutningar är krypterade med [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (anges till sant). transport lagret använder SSL för att kryptera kanalen och kringgå certifikat kedjan för att verifiera förtroende. Installations servern måste vara konfigurerad för att [**lita på certifikatets rot utfärdare**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
+Om inget certifikat har etablerats på servern när det startas, genererar SQL Server ett självsignerat certifikat som används för att kryptera inloggnings paket. [**Läs mer**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 Identifiering fungerar på följande sätt:
 

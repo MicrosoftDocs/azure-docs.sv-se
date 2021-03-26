@@ -48,13 +48,13 @@
     - name: Analysera videor i realtid
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
     - name: Så här konfigurerar du virtuella nätverk
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Uppgradera från Read 2.x till Read 3.x
       href: upgrade-api-versions.md
     - name: Så här konfigurerar du AAD-autentisering
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Använda Kundhanterade nycklar
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Distribuera Visuellt innehåll
       items:
         - name: Containers
@@ -155,7 +155,7 @@
     - name: Stöd för regioner
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Lär dig moduler
-      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Support & hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: Efterlevnad

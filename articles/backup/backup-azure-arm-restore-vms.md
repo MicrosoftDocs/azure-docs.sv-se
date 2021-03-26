@@ -4,12 +4,12 @@ description: Återställa en virtuell Azure-dator från en återställnings punk
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016533"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568757"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Så här återställer du Azure VM-data i Azure Portal
 
@@ -249,10 +249,10 @@ Det finns några saker att tänka på när du har återställt en virtuell dator
 - Tillägg som finns under säkerhets kopierings konfigurationen installeras, men är inte aktiverade. Om du ser ett problem installerar du om tilläggen.
 - Om den säkerhetskopierade virtuella datorn har en statisk IP-adress, kommer den återställda virtuella datorn ha en dynamisk IP-adress för att undvika konflikter. Du kan [lägga till en statisk IP-adress till den återställda virtuella datorn](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description).
 - Det finns ingen tillgänglighets uppsättning för en återställd virtuell dator. Om du använder alternativet för att återställa diskar kan du [Ange en tillgänglighets uppsättning](../virtual-machines/windows/tutorial-availability-sets.md) när du skapar en virtuell dator från disken med hjälp av den angivna mallen eller PowerShell.
-- Om du använder en Cloud-Init-baserad Linux-distribution, till exempel Ubuntu, av säkerhets skäl, blockeras lösen ordet efter återställningen. Använd tillägget VMAccess på den återställda virtuella datorn för att [återställa lösen ordet](../virtual-machines/troubleshooting/reset-password.md). Vi rekommenderar att du använder SSH-nycklar på dessa distributioner, så du behöver inte återställa lösen ordet efter återställningen.
+- Om du använder en Cloud-Init-baserad Linux-distribution, till exempel Ubuntu, av säkerhets skäl, blockeras lösen ordet efter återställningen. Använd tillägget VMAccess på den återställda virtuella datorn för att [återställa lösen ordet](/troubleshoot/azure/virtual-machines/reset-password). Vi rekommenderar att du använder SSH-nycklar på dessa distributioner, så du behöver inte återställa lösen ordet efter återställningen.
 - Om du inte kan komma åt en virtuell dator när den har återställts på grund av att den virtuella datorn har en bruten relation med domänkontrollanten följer du stegen nedan för att öppna den virtuella datorn:
   - Koppla OS-disk som en data disk till en återställd virtuell dator.
-  - Installera VM-agenten manuellt om Azure-agenten inte svarar genom att följa den här [länken](../virtual-machines/troubleshooting/install-vm-agent-offline.md).
+  - Installera VM-agenten manuellt om Azure-agenten inte svarar genom att följa den här [länken](/troubleshoot/azure/virtual-machines/install-vm-agent-offline).
   - Aktivera åtkomst till seriell konsol på den virtuella datorn för att tillåta kommando rads åtkomst till den virtuella datorn
 
   ```cmd

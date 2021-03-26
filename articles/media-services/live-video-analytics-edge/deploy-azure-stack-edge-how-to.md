@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på Azure Stack Edge
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din Azure Stack Edge.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730277"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561159"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Distribuera video analys i real tid på Azure Stack Edge
 
@@ -236,7 +236,7 @@ Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägg
 
 * **Kubernetes API-åtkomst (kubectl)**
 
-    * Följ dokumentationen för att konfigurera datorn för [åtkomst till Kubernetes-klustret](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster).
+    * Följ dokumentationen för att konfigurera datorn för [åtkomst till Kubernetes-klustret](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md).
     * Alla distribuerade IoT Edge-moduler använder `iotedge` namn området. Se till att inkludera det när du använder kubectl.  
 
 * **Modul loggar**
