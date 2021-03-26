@@ -3,12 +3,12 @@ title: Windows Server-redundanskluster på Azure VMware-virtuellt San med intern
 description: Konfigurera WSFC (Windows Server failover Cluster) i Azure VMware-lösningen och dra nytta av lösningar som kräver WSFC-funktioner.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025976"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562247"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar
 
@@ -30,7 +30,7 @@ Det är viktigt att distribuera en WSFC-konfiguration som stöds. Du vill att di
 
 Den här artikeln fokuserar på WSFC på Windows Server 2016 och Windows Server 2019. Äldre versioner av Windows Server är inte av [vanlig support](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) och vi bör inte ta hänsyn till dem här.
 
-Du måste först [skapa en WSFC](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster). Mer information om WSFC finns [i kluster för växling vid fel i Windows Server](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Använd informationen i den här artikeln för att få information om en WSFC-distribution på Azure VMware-lösningen.
+Du måste först [skapa en WSFC](/windows-server/failover-clustering/create-failover-cluster). Mer information om WSFC finns [i kluster för växling vid fel i Windows Server](/windows-server/failover-clustering/failover-clustering-overview). Använd informationen i den här artikeln för att få information om en WSFC-distribution på Azure VMware-lösningen.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -150,7 +150,7 @@ Följande aktiviteter stöds inte och kan orsaka redundans av WSFC-noder:
 
 ## <a name="related-information"></a>Relaterad information
 
-- [Redundanskluster för Windows Server](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Redundanskluster för Windows Server](/windows-server/failover-clustering/failover-clustering-overview)
 - [Rikt linjer för Microsoft-klustring på vSphere (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959)
 - [Om installation av kluster för växling vid fel och Microsoft Cluster service (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html)
 - [Virtuellt San 6,7 U3-WSFC med delade diskar &amp; SCSI-3 permanenta reservationer (VMware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/)
@@ -162,5 +162,5 @@ Nu när du har täckt konfigurationen av en WSFC i Azure VMware-lösningen kansk
 
 - Konfigurera din nya WSFC genom att lägga till fler program som kräver WSFC-funktionen. Till exempel SQL Server och SAP ASCS.
 - Konfigurera en lösning för säkerhets kopiering.
-  - [Konfigurera Azure Backup Server för Azure VMware-lösning](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [Säkerhets kopierings lösningar för virtuella datorer i Azure VMware-lösningen](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [Konfigurera Azure Backup Server för Azure VMware-lösning](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [Säkerhets kopierings lösningar för virtuella datorer i Azure VMware-lösningen](./ecosystem-back-up-vms.md)

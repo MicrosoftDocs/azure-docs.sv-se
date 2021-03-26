@@ -3,12 +3,12 @@ title: 'Snabb start: skapa en skiss med PowerShell'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter med hjälp av PowerShell.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 002ba6fcf20b10bcc44fb486a85bc24bfdd12ae3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918287"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559051"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Snabb start: definiera och tilldela en Azure Blueprint med PowerShell
 
@@ -307,7 +307,7 @@ Värdet för `{BlueprintVersion}` är en sträng med bokstäver, siffror och bin
 
 När en skiss har publicerats med PowerShell kan den tilldelas en prenumeration. Tilldela skissen som du skapade till någon av prenumerationerna i din hierarki med hanteringsgrupper. Om skissen sparas till en prenumeration kan den endast tilldelas till den prenumerationen. **Skiss** parametern anger den skiss som ska tilldelas. Om du vill ange parametrar för namn, plats, identitet, lås och skiss använder du de matchande PowerShell-parametrarna i `New-AzBlueprintAssignment` cmdleten eller anger dem i **AssignmentFile** -parameterns JSON-fil.
 
-1. Kör skissdistributionen genom att tilldela den till en prenumeration. Eftersom **deltagar** -och **ägar** parametrarna kräver en matris med objectIds av de säkerhetsobjekt som ska tilldelas roll tilldelningen använder [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) för att samla in objectIds för användning i **AssignmentFile** för dina egna användare, grupper eller tjänstens huvud namn.
+1. Kör skissdistributionen genom att tilldela den till en prenumeration. Eftersom **deltagar** -och **ägar** parametrarna kräver en matris med objectIds av de säkerhetsobjekt som ska tilldelas roll tilldelningen använder [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) för att samla in objectIds för användning i **AssignmentFile** för dina egna användare, grupper eller tjänstens huvud namn.
 
    - JSON-fil – blueprintAssignment.jspå
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a05a4692bb4a09213532ed29b2501f6b8056857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63b99cdeb7606798caa1b1d997dbb9f609c033b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721998"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562196"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azures säkerhets bas linje för Azure Data Box
 
@@ -88,7 +88,7 @@ Du kan styra vem som kan komma åt din beställning när ordern först skapas. K
 
 - [Så här konfigurerar du Azure RBAC för arbets böcker](../sentinel/quickstart-get-visibility.md)
 
-- [Förstå hur du konfigurerar åtkomst kontroll på ordern](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Förstå hur du konfigurerar åtkomst kontroll på ordern](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Ansvar**: Kund
 
@@ -172,7 +172,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 Detta stöds inte i real tid för Data Box-enhet-enheten. Du kan granska loggarna i slutet av jobbet.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -190,7 +190,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 Azure Data Box tjänst loggar skrivs inte till Log Analytics-arbetsytan.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Aktivera Azure-kontroll på kort](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Azure Data Box tjänst loggar skrivs inte till Log Analytics-arbetsytan.
 
 **Vägledning**: snart tillgänglig. Customer Lockbox stöds ännu inte för Azure Data Box. 
 
-- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -254,7 +254,7 @@ Azure Data Box tjänst loggar skrivs inte till Log Analytics-arbetsytan.
 
 - [Lär dig hur du kommer igång med Azure Data Box](data-box-quickstart-portal.md)
 
-- [Förstå hur du konfigurerar åtkomst kontroll](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Förstå hur du konfigurerar åtkomst kontroll](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Ansvar**: Kund
 
@@ -281,7 +281,7 @@ Azure Data Box skyddar dessutom enhetens upplåsnings nyckel (även kallat enhet
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure Data Box samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -459,5 +459,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

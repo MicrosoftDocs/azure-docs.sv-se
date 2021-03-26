@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62767898b52ef9d8c0a61fb5025dc59d06a00bd5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438991"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568196"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Felsök problem med din Azure Stack Edge Pro GPU-enhet 
 
@@ -144,9 +144,9 @@ Här är de fel som kan visas under konfigurationen av Azure Resource Manager f�
 |------------|-----------------|
 |Allmänna frågor|<li>[Kontrol lera att gräns enheten är korrekt konfigurerad](#verify-the-device-is-configured-properly).<li> [Kontrol lera att klienten är korrekt konfigurerad](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: ett fel uppstod när begäran skickades.<br>På rad: 1 tecken: 1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe ...|Det här felet innebär att din Azure Stack Edge Pro-enhet inte kan kontaktas eller har kon figurer ATS korrekt. Kontrol lera att gräns enheten och klienten är korrekt konfigurerade. Vägledning finns i raden **allmänna problem** i den här tabellen.|
-|Tjänsten returnerade ett fel. Check InnerException för mer information: den underliggande anslutningen stängdes: det gick inte att upprätta en förtroende relation för den säkra SSL/TLS-kanalen. |   Det här felet beror troligen på en eller flera åtgärder för att utföra egna certifikat på ett felaktigt sätt. [Här](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)kan du hitta vägledning. |
+|Tjänsten returnerade ett fel. Check InnerException för mer information: den underliggande anslutningen stängdes: det gick inte att upprätta en förtroende relation för den säkra SSL/TLS-kanalen. |   Det här felet beror troligen på en eller flera åtgärder för att utföra egna certifikat på ett felaktigt sätt. [Här](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)kan du hitta vägledning. |
 |Åtgärden returnerade en ogiltig status kod ' ServiceUnavailable ' <br> Svars status koden indikerar inte lyckad: 503 (tjänsten är inte tillgänglig). | Det här felet kan vara resultatet av något av dessa villkor.<li>ArmStsPool är i stoppat läge.</li><li>Någon av webbplatserna för Azure Resource Manager/säkerhetstoken-tjänster är nere.</li><li>Kluster resursen för Azure Resource Manager är nere.</li><br><strong>Obs:</strong> Det kan lösa problemet genom att starta om enheten, men du bör samla in support paketet så att du kan felsöka det ytterligare.|
-|AADSTS50126: ogiltigt användar namn eller lösen ord.<br>Spårnings-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Tidsstämpel: 2019-11-15 09:21:57Z: fjärrservern returnerade ett fel: (400) felaktig begäran.<br>På rad: 1 tecken: 1 |Det här felet kan vara resultatet av något av dessa villkor.<li>För ett ogiltigt användar namn och lösen ord kontrollerar du att kunden har ändrat lösen ordet från Azure Portal genom att följa stegen [här](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) och sedan använda rätt lösen ord.<li>För ett ogiltigt klient-ID är klient-ID: t ett fast GUID och ska anges till `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: ogiltigt användar namn eller lösen ord.<br>Spårnings-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Tidsstämpel: 2019-11-15 09:21:57Z: fjärrservern returnerade ett fel: (400) felaktig begäran.<br>På rad: 1 tecken: 1 |Det här felet kan vara resultatet av något av dessa villkor.<li>För ett ogiltigt användar namn och lösen ord kontrollerar du att kunden har ändrat lösen ordet från Azure Portal genom att följa stegen [här](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) och sedan använda rätt lösen ord.<li>För ett ogiltigt klient-ID är klient-ID: t ett fast GUID och ska anges till `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |Connect-AzureRmAccount: AADSTS90056: resursen är inaktive rad eller finns inte. Kontrol lera appens kod för att se till att du har angett den exakta resurs-URL: en för resursen som du försöker få åtkomst till.<br>Spårnings-ID: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Korrelations-ID: 75c8ef5a-830e-48b5-b039-595a96488ff9 tidsstämpel: 2019-11-18 07:00:51Z: fjärrservern returnerade ett fel: (400) dåligt |Resurs slut punkterna som används i `Add-AzureRmEnvironment` kommandot är felaktiga.|
 |Det gick inte att hämta slut punkter från molnet.<br>Kontrol lera att du har en nätverks anslutning. Fel information: HTTPSConnectionPool (värd = ' Management. dbg-of4k6suvm.microsoftdatabox.com ', Port = 30005): högsta antal återförsök har överskridits med URL:/metadata/endpoints? API-version = 2015-01-01 (orsakas av SSLError (SSLError ("felaktig hand skakning: fel ([(" SSL-rutiner "," tls_process_server_certificate "," certifikats verifiering misslyckades ")],),)) |Det här felet förekommer oftast i en Mac/Linux-miljö och beror på följande:<li>Ett PEM-format certifikat har inte lagts till i python-certifikatarkivet.</li> |
 
@@ -154,7 +154,7 @@ Här är de fel som kan visas under konfigurationen av Azure Resource Manager f�
 
 1. I det lokala användar gränssnittet kontrollerar du att enhets nätverket är korrekt konfigurerat.
 
-2. Kontrol lera att certifikaten har uppdaterats för alla slut punkter som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
+2. Kontrol lera att certifikaten har uppdaterats för alla slut punkter som anges [här](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates).
 
 3. Hämta slut punkten för Azure Resource Manager hantering och inloggning från **enhets** sidan i lokalt användar gränssnitt.
 
@@ -163,18 +163,18 @@ Här är de fel som kan visas under konfigurationen av Azure Resource Manager f�
 
 ### <a name="verify-the-client-is-configured-properly"></a>Kontrol lera att klienten är korrekt konfigurerad
 
-1. Kontrol lera att rätt PowerShell-version är installerad som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#step-3-install-powershell-on-the-client).
+1. Kontrol lera att rätt PowerShell-version är installerad som anges [här](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client).
 
-2. Kontrol lera att rätt PowerShell-moduler är installerade som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
+2. Kontrol lera att rätt PowerShell-moduler är installerade som anges [här](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
 3. Verifiera att Azure Resource Manager-och inloggnings slut punkter kan uppnås. Du kan prova att pinga slut punkterna. Exempel:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
    
-   Om de inte går att komma åt lägger du till DNS/värd fil poster som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution).
+   Om de inte går att komma åt lägger du till DNS/värd fil poster som anges [här](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution).
    
-4. Kontrol lera att klient certifikaten installeras som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell).
+4. Kontrol lera att klient certifikaten installeras som anges [här](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell).
 
 5. Om kunden använder PowerShell bör du aktivera fel söknings inställningen för att se detaljerade meddelanden genom att köra det här PowerShell-kommandot. 
 

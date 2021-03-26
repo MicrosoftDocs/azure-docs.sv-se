@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74709d970f624f2d4cefaab77e8466361e4102cc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443462"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563437"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Enhets uppdatering för Azure IoT Hub själv studie kurs med Raspberry Pi 3 B + referens avbildning
 
@@ -30,10 +30,8 @@ I den här självstudien får du lära dig hur man
 > * Distribuera en avbildnings uppdatering
 > * Övervaka uppdaterings distributionen
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-
 ## <a name="prerequisites"></a>Förutsättningar
-* Åtkomst till en IoT Hub. Vi rekommenderar att du använder en S1-nivå (standard) eller högre.
+* Om du inte redan har gjort det skapar du ett [konto och en instans för enhets uppdatering](create-device-update-account.md), inklusive hur du konfigurerar en IoT Hub.
 
 ## <a name="download-image"></a>Ladda ned bild
 

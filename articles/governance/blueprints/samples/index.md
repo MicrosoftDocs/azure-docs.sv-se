@@ -1,14 +1,14 @@
 ---
 title: Index för skissexempel
 description: Index över efterlevnads- och standardexempel för distribution av miljöer, principer och ramverket för molnimplementering med Azure Blueprints.
-ms.date: 03/11/2021
+ms.date: 03/24/2021
 ms.topic: sample
-ms.openlocfilehash: 06dc65ca601c938f6610df3ed22b4ea0f3826208
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 1758c684dca93089c69c1a06ed77b60a09f6579c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799470"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558048"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-exempel
 
@@ -24,6 +24,7 @@ Följande tabell innehåller länkar till exempel för Azure Blueprints. Alla ex
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Tillhandahåller riktlinjer för överensstämmelse med Kanadas PBMM (Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure grunderna benchmark v 1.3.0](./cis-azure-1-3-0.md)| Innehåller en uppsättning principer som hjälper dig att följa CIS-Microsoft Azure grunderna i 1.3.0-rekommendationer för benchmark v. |
 | [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)| Innehåller en uppsättning principer som hjälper dig att följa CIS-Microsoft Azure grunderna i 1.1.0-rekommendationer för benchmark v. |
+| [CMMC nivå 3](./cmmc-l3.md)| Tillhandahåller guardrails för kompatibilitet med CMMC-nivå 3. |
 | [DoD:s effektnivå 4](./dod-impact-level-4/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa DoD:s effektnivå 4. |
 | [DoD:s effektnivå 5](./dod-impact-level-5/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa DoD:s effektnivå 5. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa FedRAMP Moderate. |

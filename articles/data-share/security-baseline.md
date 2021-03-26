@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d423a8aaf3ace78ccb4b2eb1d8424c6a1dfb61bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a804b6d6840b25993ad6e249305f531a818be32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705984"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559459"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azures säkerhets bas linje för Azure Data Share
 
@@ -34,7 +34,7 @@ Du kan också aktivera och inaktivera dessa data till Azure Sentinel eller en SI
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Samla in plattforms loggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -48,11 +48,11 @@ Du kan också aktivera och inaktivera dessa data till Azure Sentinel eller en SI
 
 Aktivera diagnostikloggar för Azure Data Share, särskilt diagnostikloggar för MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Med dessa loggar kan du samla in viktig information som synkroniseringens start tid, slut tid, status och annan information. Dessa loggar kan vara kritiska för senare utredning av säkerhets incidenter och utföra kriminal tekniska övningar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Konfigurera diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Konfigurera diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -62,9 +62,9 @@ Aktivera diagnostikloggar för Azure Data Share, särskilt diagnostikloggar för
 
 **Vägledning**: se till att alla lagrings konton eller Log Analytics arbets ytor som används för lagring av Azure Data Share-loggar har den logg kvarhållningsperiod som anges enligt organisationens regler för efterlevnad.
 
-- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](/azure/azure-monitor/platform/manage-cost-storage)
+- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Lagra resurs loggar i ett Azure Storage konto](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Ansvar**: Kund
 
@@ -78,9 +78,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Komma igång med Log Analytics frågor](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Ansvar**: Kund
 
@@ -94,7 +94,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Så här aviserar du om Log Analytics-loggdata](/azure/azure-monitor/learn/tutorial-response)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
@@ -144,7 +144,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Azure Data Share fungerar med allmänna Azure-inbyggda roller ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share fungerar med allmänna Azure-inbyggda roller ](../role-based-access-control/built-in-roles.md#general)
 
 **Ansvar**: Kund
 
@@ -154,11 +154,11 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 **Vägledning**: Azure AD innehåller loggar som hjälper till att identifiera inaktuella konton. Dessutom kan du använda Azure AD-identitets-och åtkomst granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/) 
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml) 
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md) 
 
-- [Azure Data Share fungerar med allmänna Azure-inbyggda roller ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share fungerar med allmänna Azure-inbyggda roller ](../role-based-access-control/built-in-roles.md#general)
 
 **Ansvar**: Kund
 
@@ -170,7 +170,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
 
-- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Ansvar**: Kund
 
@@ -208,7 +208,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa Azure Monitor aviseringar för när ändringar sker i kritiska Azure-resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -291,7 +291,7 @@ Använd Azure Resource Graph för att fråga och identifiera resurser inom sina 
 
 **Vägledning**: ta bort Azure-resurser när de inte längre behövs, detta kan göras via Azure Portal, POWERSHELL eller cli.
 
-- [Azure resurs grupp och borttagning av resurs](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Azure resurs grupp och borttagning av resurs](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Azure-dataresursen exponerar inte operativ systemet, eller så kan du installera program från tredje part på resurserna.
 
@@ -305,7 +305,7 @@ Azure-dataresursen exponerar inte operativ systemet, eller så kan du installera
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -343,7 +343,7 @@ Azure-dataresursen exponerar inte operativ systemet, eller så kan du installera
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Använda alias](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Använda alias](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Ansvar**: Kund
 
@@ -361,5 +361,5 @@ Azure-dataresursen exponerar inte operativ systemet, eller så kan du installera
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9c0040c0ad34b019eaa90bbd1571377ad3539578
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8853f5234cdbd5244d4624c91b7e3914948cf704
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940110"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561312"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Vägledning för innehålls skydds scenario-baserad migrering
 
@@ -58,7 +58,3 @@ Se begrepp för innehålls skydd, självstudier och hur du går till guider neda
 ## <a name="samples"></a>Exempel
 
 Du kan också [jämföra v2-och v3-koden i kod exemplen](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Nästa steg
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

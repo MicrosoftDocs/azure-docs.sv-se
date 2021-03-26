@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471756"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562230"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -56,9 +56,9 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Notebooks Experience (februari Update)
 + **Nya funktioner**
-  + [Ursprunglig Terminal (ga)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den integrerade terminalen.
+  + [Ursprunglig Terminal (ga)](./how-to-access-terminal.md). Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den integrerade terminalen.
   + [Antecknings kods tycken (för hands version)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Vanliga utdrag för Azure ML-kod är nu tillgängliga. Navigera till panelen kodfragment, som är tillgänglig via verktygsfältet eller aktivera menyn infragmentets kod avsnitt med Ctrl + blank steg.  
-  + [Kortkommandon.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys) Fullständig paritet med kortkommandon som är tillgängliga i Jupyter. 
+  + [Kortkommandon.](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts) Fullständig paritet med kortkommandon som är tillgängliga i Jupyter. 
   + Ange cell parametrar. Visar de användare som har celler i en antecknings bok som är parameter celler och kan köra parameterstyrda antecknings böcker via [Papermill](https://github.com/nteract/papermill) på beräknings instansen.
   + Terminal-och kernel-sessionshanteraren: användare kommer att kunna hantera alla kärnor och Terminal-sessioner som körs på sin beräkning.
   + Delnings knapp. Användarna kan nu dela en fil i anteckningsbok-Utforskaren genom att högerklicka på filen och använda knappen Dela.
@@ -68,7 +68,7 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
   + Förbättrade sid inläsnings tider
   + Förbättrade prestanda 
   + Förbättrad hastighet och kernel-tillförlitlighet
-  + Lagt till snurrande hjul för att visa förloppet för alla pågående [beräknings instans åtgärder](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators).
+  + Lagt till snurrande hjul för att visa förloppet för alla pågående [beräknings instans åtgärder](./how-to-run-jupyter-notebooks.md#status-indicators).
   + Högerklicka på Utforskaren. Om du högerklickar på en fil öppnas fil åtgärder nu. 
 
 
@@ -79,7 +79,7 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
   + **azureml-core**
     + [Experimentell funktion] Lägg till stöd för att länka Synapse-arbetsytan till AML som en länkad tjänst
     + [Experimentell funktion] Lägg till stöd för att koppla Synapse Spark-poolen till AML som en beräkning
-    + [Experimentell funktion] Lägg till stöd för identitets baserad data åtkomst. Användare kan registrera data lager eller data uppsättningar utan att ange autentiseringsuppgifter. I sådana fall används användarens AAD-token eller hanterad identitet för Compute Target för autentisering. Läs mer [här](https://aka.ms/data-access).
+    + [Experimentell funktion] Lägg till stöd för identitets baserad data åtkomst. Användare kan registrera data lager eller data uppsättningar utan att ange autentiseringsuppgifter. I sådana fall används användarens AAD-token eller hanterad identitet för Compute Target för autentisering. Läs mer [här](./how-to-identity-based-data-access.md).
   + **azureml-pipeline-steps**
     + [Experimentell funktion] Lägg till stöd för [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep)
   + **azureml-synapse**
@@ -1052,7 +1052,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Beskrivning  |
+| Webbaserat verktyg  |     Description  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1564,7 +1564,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Beskrivning | 
+| Webbaserat verktyg | Description | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

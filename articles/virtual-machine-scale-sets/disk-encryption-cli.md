@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215960"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565579"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kryptera OS och anslutna data diskar i en skalnings uppsättning för virtuella datorer med Azure CLI
 
@@ -61,7 +61,7 @@ Det tar några minuter att skapa och konfigurera alla skalningsuppsättningsresu
 
 Azure Key Vault kan lagra nycklar, hemligheter eller lösen ord som gör det möjligt att på ett säkert sätt implementera dem i dina program och tjänster. Krypterings nycklar lagras i Azure Key Vault med hjälp av program varu skydd, eller så kan du importera eller generera nycklar i HSM: er (Hardware Security modules) som är certifierade enligt standarden FIPS 140-2 nivå 2. Dessa kryptografiska nycklar används för att kryptera och dekryptera virtuella diskar som är anslutna till den virtuella datorn. Du behåller kontrollen över dessa kryptografiska nycklar och kan granska deras användning.
 
-Definiera egna unika *keyvault_name*. Skapa sedan ett nyckel valv med [AZ-valv skapa](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) i samma prenumeration och region som skalnings uppsättningen, och Ställ in- *-Enabled-för-Disk-Encryption* -åtkomst principen.
+Definiera egna unika *keyvault_name*. Skapa sedan ett nyckel valv med [AZ-valv skapa](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) i samma prenumeration och region som skalnings uppsättningen, och Ställ in- *-Enabled-för-Disk-Encryption* -åtkomst principen.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 Det här steget krävs endast om du har ett befintligt Key Vault som du vill använda med disk kryptering. Hoppa över det här steget om du har skapat ett Key Vault i föregående avsnitt.
 
-Definiera egna unika *keyvault_name*. Uppdatera sedan ditt nyckel valv med AZ-uppdatering av nyckel [valvet](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) och ange *--aktive rad-för-Disk-Encryption* -åtkomst princip.
+Definiera egna unika *keyvault_name*. Uppdatera sedan ditt nyckel valv med AZ-uppdatering av nyckel [valvet](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) och ange *--aktive rad-för-Disk-Encryption* -åtkomst princip.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Aktivera kryptering
 
-Om du vill kryptera VM-instanser i en skalnings uppsättning får du först lite information om Key Vault resurs-ID med [AZ-valv show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show). Dessa variabler används för att starta krypterings processen med [AZ VMSS-kryptering aktivera](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
+Om du vill kryptera VM-instanser i en skalnings uppsättning får du först lite information om Key Vault resurs-ID med [AZ-valv show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show). Dessa variabler används för att starta krypterings processen med [AZ VMSS-kryptering aktivera](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4962216612bde8adc69f332f17c35cee0ecd17e6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935507"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568162"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Självstudie: transformera data med Azure Stack Edge Pro
 
@@ -116,9 +116,9 @@ För den enkla distributionen i den här självstudien behöver du två resurser
 
 ## <a name="add-a-module"></a>Lägg till en modul
 
-Du kan lägga till en anpassad eller en fördefinierad modul. Det finns inga anpassade moduler på den här Edge-enheten. Om du vill lära dig hur du skapar en anpassad modul går du till [utveckla en C#-modul för din Azure Stack Edge Pro-enhet](azure-stack-edge-j-series-create-iot-edge-module.md).
+Du kan lägga till en anpassad eller en fördefinierad modul. Det finns inga anpassade moduler på den här Edge-enheten. Om du vill lära dig hur du skapar en anpassad modul går du till [utveckla en C#-modul för din Azure Stack Edge Pro-enhet](./azure-stack-edge-gpu-create-iot-edge-module.md).
 
-I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet som du skapade i [utveckla en C#-modul för din Azure Stack Edge Pro](azure-stack-edge-j-series-create-iot-edge-module.md). Den här anpassade modulen tar filer från en lokal Edge-resurs på gräns enheten och flyttar dem till en gräns (moln) resurs på enheten. Molnresursen pushar sedan filerna till det Azure-lagringskonto som är associerat med molnresursen.
+I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet som du skapade i [utveckla en C#-modul för din Azure Stack Edge Pro](./azure-stack-edge-gpu-create-iot-edge-module.md). Den här anpassade modulen tar filer från en lokal Edge-resurs på gräns enheten och flyttar dem till en gräns (moln) resurs på enheten. Molnresursen pushar sedan filerna till det Azure-lagringskonto som är associerat med molnresursen.
 
 1. Gå till **Edge compute > kom igång**. På panelen **Lägg till moduler** väljer du scenario typen **enkel**. Välj **Lägg till**.
 2. Ange följande värden i bladet **Konfigurera och Lägg till modul** :

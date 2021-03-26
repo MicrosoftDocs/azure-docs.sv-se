@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606964"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563386"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Monitor
 
@@ -80,7 +80,7 @@ Azure Data Explorer är en snabb och mycket skalbar datautforskningstjänst för
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hur gör jag för att hämta logg data?
 Alla data hämtas från en Log Analytics-arbetsyta med hjälp av en logg fråga som skrivits med hjälp av KQL (Kusto Query Language). Du kan skriva egna frågor eller använda lösningar och insikter som innehåller logg frågor för ett visst program eller en viss tjänst. Se [Översikt över logg frågor i Azure Monitor](logs/log-query-overview.md).
-P
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kan jag ta bort data från en Log Analytics arbets yta?
 Data tas bort från en arbets yta enligt kvarhållningsperioden [.](logs/manage-cost-storage.md#change-the-data-retention-period) Du kan ta bort vissa data för sekretess eller efterlevnad. Mer information finns i [Exportera och ta bort privata data](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
@@ -828,26 +828,27 @@ Under det här tillståndet uppmanas du att välja alternativet **prova nu** nä
 ## <a name="sql-insights-preview"></a>SQL Insights (förhands granskning)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>Vilka versioner av SQL Server stöds?
-Se [versioner](insights/sql-insights-overview.md#supported-versions) som stöds för SQL-versioner som stöds.
+Vi stöder SQL Server 2012 och alla nyare versioner. Se de [versioner som stöds](insights/sql-insights-overview.md#supported-versions) för mer information.
 
 ### <a name="what-sql-resource-types-are-supported"></a>Vilka SQL-resurs typer stöds?
+- Azure SQL Database
+- Hanterad Azure SQL-instans
+- SQL Server på Azure-Virtual Machines (SQL Server som körs på virtuella datorer som är registrerade med SQL-providern för [virtuella](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) datorer)
+- Virtuella Azure-datorer (SQL Server som körs på virtuella datorer som inte har registrerats med SQL-providern för [virtuella](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) datorer)
 
-- Azure SQL Database. Endast enkel databas, inte databaser i en Elastisk pool.
-- Azure SQL Managed Instance 
-- Virtuella Azure SQL-datorer ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) och virtuella azure-datorer som SQL Server är installerade på.
+Se de [versioner som stöds](insights/sql-insights-overview.md#supported-versions) för mer information och information om scenarier utan support eller begränsad support.
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Vilka operativ system för datorn som kör SQL Server stöds?
-Alla operativ system som stöder körning av SQL-versioner som stöds.
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>Vilka operativ system för den virtuella datorn som kör SQL Server stöds?
+Vi stöder alla operativ system som anges i [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) -och [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create) -dokumentationen för SQL Server på Azure Virtual Machines.
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Vilket operativ system har stöd för fjärr styrnings servern?
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>Vilket operativ system har stöd för den virtuella datorn för övervakning?
+Ubuntu 18,04 är för närvarande det enda operativ system som stöds för den virtuella övervaknings datorn.
 
-Ubuntu 18,04 är för närvarande det enda operativ system som stöds.
-
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Var kommer övervaknings data att lagras i Log Analytics 
-Alla övervaknings data lagras i tabellen **InsightsMetrics** . Kolumnen **Origin** har värdet *Solutions.AZM.MS/telegraf/SqlInsights*. **Namn områdes** kolumnen har värden som börjar med *sqlserver_*.
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Var lagras övervaknings data i Log Analytics?
+Alla övervaknings data lagras i tabellen **InsightsMetrics** . Kolumnen **Origin** har värdet `solutions.azm.ms/telegraf/SqlInsights` . **Namn områdes** kolumnen har värden som börjar med `sqlserver_` .
 
 ### <a name="how-often-is-data-collected"></a>Hur ofta samlas data in? 
-Se [data som samlas in av SQL Insights](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) för information om hur ofta olika data samlas in.
+Frekvensen för data insamling är anpassningsbar. Information om hur du anpassar frekvenser [finns i](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile) [data som samlas in av SQL Insights](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) . 
 
 ## <a name="next-steps"></a>Nästa steg
 Om din fråga inte besvaras här kan du referera till följande forum för ytterligare frågor och svar.

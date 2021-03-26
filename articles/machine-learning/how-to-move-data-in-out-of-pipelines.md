@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0c4f1fbc0ed27dbf3b7347e0e4c12f1926ac1377
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518712"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566259"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Flytta data till och mellan olika steg i ML-pipelinen (Python)
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Azure tar inte bort mellanliggande data som skrivs automatiskt med `OutputFileDatasetConfig` . För att undvika lagrings avgifter för stora mängder data som inte behövs bör du antingen:
 
 * Ta bort mellanliggande data program mässigt i slutet av en pipeline-körning när den inte längre behövs
-* Använd Blob Storage med en kortsiktig lagrings princip för mellanliggande data (se [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)) 
+* Använd Blob Storage med en kortsiktig lagrings princip för mellanliggande data (se [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)) 
 * Regelbundet granska och ta bort data som inte längre behövs
 
 Mer information finns i [planera och hantera kostnader för Azure Machine Learning](concept-plan-manage-cost.md).

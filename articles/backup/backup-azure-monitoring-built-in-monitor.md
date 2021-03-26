@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig mer om övervaknings-och avis
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713379"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559221"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Övervaka Azure Backup arbets belastningar
 
@@ -130,7 +130,7 @@ Den här funktionen är för närvarande tillgänglig för Azure-databaser för 
 - Säkerhets kopierings problem (för att få aviseringar om säkerhets kopierings problem, måste du registrera flaggan AFEC med namnet **EnableAzureBackupJobFailureAlertsToAzureMonitor** via Preview-portalen)
 - Återställnings problem (för att få aviseringar om återställnings problem måste du registrera flaggan AFEC med namnet **EnableAzureBackupJobFailureAlertsToAzureMonitor** via Preview Portal)
 
-Mer information om Azure Monitor aviseringar finns i [Översikt över aviseringar i Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
+Mer information om Azure Monitor aviseringar finns i [Översikt över aviseringar i Azure](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

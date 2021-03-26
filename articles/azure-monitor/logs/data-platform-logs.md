@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708007"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567298"
 ---
 # <a name="azure-monitor-logs-overview"></a>Översikt över Azure Monitor-loggar
 Azure Monitor loggar är en funktion i Azure Monitor som samlar in och ordnar logg-och prestanda data från [övervakade resurser](../monitor-reference.md). Data från olika källor, t. ex. [plattforms loggar](../essentials/platform-logs-overview.md) från Azure-tjänster, logg-och prestanda data från [virtuella datorer agenter](../agents/agents-overview.md)och användnings-och prestanda data från [program](../app/app-insights-overview.md) kan konsol IDE ras till en enda arbets yta så att de kan analyseras tillsammans med ett avancerat frågespråk som kan snabbt analysera miljon tals poster. Du kan utföra en enkel fråga som bara hämtar en bestämd uppsättning poster eller utföra avancerad data analys för att identifiera kritiska mönster i dina övervaknings data. Arbeta med logg frågor och deras resultat interaktivt med Log Analytics, Använd dem i en varnings regel för att proaktivt informera om problem eller visualisera resultaten i en arbets bok eller instrument panel.
@@ -23,7 +23,7 @@ Azure Monitor loggar är en funktion i Azure Monitor som samlar in och ordnar lo
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Vad kan du göra med Azure Monitor loggar?
 I följande tabell beskrivs några av de olika sätt som du kan använda loggar i Azure Monitor:
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Analysera** | Använd [Log Analytics](./log-analytics-tutorial.md) i Azure Portal för att skriva [logg frågor](./log-query-overview.md) och analysera logg data interaktivt med en kraftfull analys motor |
 | **Varning** | Konfigurera en [logg varnings regel](../alerts/alerts-log.md) som skickar ett meddelande eller [automatiserar en åtgärd](../alerts/action-groups.md) när resultatet av frågan matchar ett visst resultat. |

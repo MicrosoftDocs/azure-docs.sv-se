@@ -3,12 +3,12 @@ title: Självstudie – lokala peer-miljöer i ett privat moln
 description: Lär dig hur du skapar ExpressRoute Global Reach peering till ett privat moln i en Azure VMware-lösning.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786914"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564508"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Självstudie: peer-lokala miljöer till ett privat moln
 
@@ -71,7 +71,7 @@ Nu när du har skapat en auktoriseringsregel för ExpressRoute-kretsen för det 
 Vi har förstärkt CLI- [kommandona](../expressroute/expressroute-howto-set-global-reach-cli.md) med detaljerad information och exempel som hjälper dig att konfigurera ExpressRoute-Global Reach peering mellan lokala miljöer till ett privat moln i Azure VMware-lösningen.
 
 >[!TIP]
->För det kortfattat i Azure CLI-kommandot utdata kan de här instruktionerna använda ett [ `–query` argument](https://docs.microsoft.com/cli/azure/query-azure-cli) för att köra en JMESPath-fråga för att endast visa de nödvändiga resultaten.
+>För det kortfattat i Azure CLI-kommandot utdata kan de här instruktionerna använda ett [ `–query` argument](/cli/azure/query-azure-cli) för att köra en JMESPath-fråga för att endast visa de nödvändiga resultaten.
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med samma prenumeration som den lokala ExpressRoute-kretsen. 
 

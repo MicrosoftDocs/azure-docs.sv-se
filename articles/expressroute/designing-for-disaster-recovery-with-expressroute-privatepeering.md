@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044608"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562315"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Design för haveri beredskap med ExpressRoute privat peering
 
@@ -43,11 +43,11 @@ Men om du belastningsutjämna trafik över geo-redundanta parallella sökvägar,
 
 ### <a name="same-metro"></a>Samma tunnelbane
 
-När du använder samma tunnelbane linje bör du använda den sekundära platsen för den andra sökvägen för att den här konfigurationen ska fungera. Ett exempel på samma tunnelbane linje skulle vara *Amsterdam* -och *Amsterdam2*. Fördelen med att välja samma tunnelbane linje är när programredundans sker, svars tid från slut punkt till slut punkt mellan dina lokala program och Microsoft förblir oförändrade. Men om det uppstår en natur katastrof, kan det hända att anslutningarna för båda Sök vägarna inte längre är tillgängliga. 
+[Många Metros](expressroute-locations-providers.md#global-commercial-azure) har två ExpressRoute-platser. Ett exempel är *Amsterdam* -och *Amsterdam2*. När du designar redundans kan du skapa två parallella sökvägar till Azure med båda platserna i samma tunnelbane linje. Fördelen med den här designen är när programredundans sker, slut punkt till slut punkt mellan dina lokala program och Microsoft förblir ungefär samma. Men om det finns en natur katastrof, till exempel en jord bävning, kan anslutningen för båda Sök vägarna inte längre vara tillgänglig.
 
 ### <a name="different-metros"></a>Olika Metros
 
-När du använder olika Metros för standard-SKU-kretsar bör den sekundära platsen finnas i samma [geo-politiska region](expressroute-locations-providers.md#locations). Om du vill välja en plats utanför geo-politisk regionen måste du använda Premium SKU för båda kretsarna i de parallella Sök vägarna. Fördelen med den här konfigurationen är risken för en natur katastrof som orsakar ett avbrott i båda länkarna är mycket lägre men till kostnaden för att öka svars tiden från slut punkt till slut punkt.
+När du använder olika Metros för redundans ska den sekundära platsen finnas i samma [geo-politisk region](expressroute-locations-providers.md#locations). Om du vill välja en plats utanför geo-politisk regionen måste du använda Premium SKU för båda kretsarna i de parallella Sök vägarna. Fördelen med den här konfigurationen är risken för en natur katastrof som orsakar ett avbrott i båda länkarna är mycket lägre men till kostnaden för att öka svars tiden från slut punkt till slut punkt.
 
 I den här artikeln diskuterar vi hur du kan åtgärda utmaningar som du kan stöta på när du konfigurerar geo-redundanta sökvägar.
 

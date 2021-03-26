@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e78d98454ab374866f6fa18ec26a66837f749bfa
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: b0a96443e1f8596c48882bbdd92b9bb4b910beff
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046308"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567992"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -250,10 +250,11 @@ Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar
 
 Använd den här tabellen för att avgöra vilka tal format som stöds för varje neurala röst.
 
-| Röst                   | Format                     | Beskrivning                                                 |
+| Röst                   | Format                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Uttrycker en formell, trygg och auktoritativ ton för nyhets leverans |
 |                         | `style="newscast-casual"` | Uttrycker en mångsidig och vardaglig ton för allmän nyhets leverans        |
+|                         | `style="narration-professional"` | Uttrycka en professionell, objektiv ton för innehålls läsning        |
 |                         | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  |
 |                         | `style="chat"`            | Uttrycker en vardaglig och avslappnad ton                         |
 |                         | `style="cheerful"`        | Uttrycker en positiv och trevlig ton                         |
@@ -398,7 +399,7 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 | `strength` | Anger den relativa varaktigheten för en paus med något av följande värden:<ul><li>inget</li><li>x-svaga</li><li>svaga</li><li>medel (standard)</li><li>kraftfull</li><li>x – stark</li></ul> | Valfritt |
 | `time` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Valfritt |
 
-| Styrka                      | Beskrivning |
+| Styrka                      | Description |
 |-------------------------------|-------------|
 | Ingen, eller om inget värde anges | 0 MS        |
 | x-svaga                        | 250 MS      |

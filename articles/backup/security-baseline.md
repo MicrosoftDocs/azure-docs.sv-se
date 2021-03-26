@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33408c65fdc09972807aaa8afdf123f1c39cfff5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0530baf5c198b5d82527cfb02c66765ec885bd94
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700274"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566718"
 ---
 # <a name="azure-security-baseline-for-azure-backup"></a>Azures säkerhets bas linje för Azure Backup
 
@@ -30,7 +30,7 @@ Om du vill se hur Azure Backup helt mappar till Azures säkerhets mätning, se d
 
 **Vägledning**: de slut punkter som används av Azure Backup (inklusive Microsoft Azure Recovery Services agent) hanteras av Microsoft. Du ansvarar för eventuella ytterligare kontroller som du vill distribuera till dina lokala system.
 
-- [Förstå nätverks-och åtkomst stöd för MARS-agenten](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [Förstå nätverks-och åtkomst stöd för MARS-agenten](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Ansvar**: Kund
 
@@ -58,9 +58,9 @@ Om du vill se hur Azure Backup helt mappar till Azures säkerhets mätning, se d
 
 **Vägledning**: om du använder mars-agenten på en virtuell Azure-dator som skyddas av en nätverks säkerhets grupp eller Azure-brandvägg använder du Azure aktivitets logg för att övervaka konfigurationen av NSG eller brand väggen. Du kan skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av dessa resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -76,7 +76,7 @@ Om du vill se hur Azure Backup helt mappar till Azures säkerhets mätning, se d
 
 Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som genereras av Azure Backup. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda lagrings konton för långsiktig/lagring. Du kan också använda data på kort till Azure Sentinel eller en säkerhets incident och händelse hantering från tredje part (SIEM).
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Använda diagnostikinställningar till för Recovery Services valv](backup-azure-diagnostic-events.md)
 
@@ -92,7 +92,7 @@ Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som 
 
 Dessutom skickar Azure Backup diagnostiska händelser som kan samlas in och användas i syfte att analysera, Avisera och rapportera. Du kan konfigurera diagnostikinställningar för ett Recovery Services valv via Azure Portal. Du kan skicka en eller flera diagnostiska händelser till ett lagrings konto, en Event Hub-eller en Log Analytics-arbetsyta.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Använda diagnostikinställningar till för Recovery Services valv](backup-azure-diagnostic-events.md)
 
@@ -104,7 +104,7 @@ Dessutom skickar Azure Backup diagnostiska händelser som kan samlas in och anv�
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure Recovery Services-valv enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -118,9 +118,9 @@ Aktivera diagnostiska inställningar för Azure aktivitets logg och skicka logga
 
 - [Övervaka Azure Backup arbets belastningar](backup-azure-monitoring-built-in-monitor.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Ansvar**: Kund
 
@@ -138,7 +138,7 @@ Du kan också publicera en Log Analytics arbets yta till Azure Sentinel eftersom
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Ansvar**: Kund
 
@@ -268,7 +268,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 **Vägledning**: Azure Active Directory (Azure AD) innehåller loggar för att hjälpa dig att identifiera inaktuella konton. Dessutom kan du använda Azure AD åtkomst granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomsten bör granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du åtkomst granskningar för Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -284,7 +284,7 @@ Du har åtkomst till Azure AD-inloggning, gransknings-och risk händelse logg k�
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade logg aviseringar i Log Analytics.
 
-- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Aktivera Azure-kontroll på kort](../sentinel/quickstart-onboard.md)
 
@@ -310,7 +310,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: inte tillgänglig för tillfället. Customer Lockbox stöds ännu inte för Azure Backup.
 
-- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -402,7 +402,7 @@ När du säkerhetskopierar med MARS-agenten eller använder ett Recovery Service
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktion av Azure Recovery Services-valv samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -418,7 +418,7 @@ När du säkerhetskopierar med MARS-agenten eller använder ett Recovery Service
 
 Underliggande plattform som genomsöks och korrigeras av Microsoft. Granska säkerhets kontroller som är tillgängliga för Azure Backup för att minska säkerhets risker för tjänst konfigurationen.
 
-- [Förstå säkerhets kontroller som är tillgängliga för Azure Backup](/azure/backup/backup-security-controls)
+- [Förstå säkerhets kontroller som är tillgängliga för Azure Backup]()
 
 **Ansvar**: Kund
 
@@ -446,7 +446,7 @@ Underliggande plattform som genomsöks och korrigeras av Microsoft. Granska säk
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -520,7 +520,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -544,7 +544,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 **Vägledning**: definiera och implementera standardkonfigurationer för Recovery Services valvet med Azure policy. Använd Azure Policy alias i namn området "Microsoft. RecoveryServices" för att skapa anpassade principer som ska granskas eller tillämpa konfigurationen för dina Recovery Services-valv.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -656,7 +656,7 @@ Säkerhetskopiera Kundhanterade nycklar inom Azure Key Vault.
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
 
 **Azure policy inbyggda definitioner – Microsoft. RecoveryServices**:
 
@@ -676,7 +676,7 @@ Säkerhetskopiera Kundhanterade nycklar inom Azure Key Vault.
 
 **Vägledning**: för lokal säkerhets kopiering tillhandahålls kryptering vid vila med hjälp av den lösen fras som du anger när du säkerhetskopierar till Azure. För virtuella Azure-datorer krypteras data i vila med hjälp av kryptering för lagringstjänst (SSE). Du kan aktivera mjuk borttagning i Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning.
 
-- [Så här aktiverar du mjuk borttagning i Key Vault](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [Så här aktiverar du mjuk borttagning i Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Ansvar**: Kund
 
@@ -772,5 +772,5 @@ Dessutom kan du tydligt markera prenumerationer och skapa ett namngivnings syste
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

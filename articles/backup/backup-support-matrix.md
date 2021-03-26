@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av stödinställningar och begränsni
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225555"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564475"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
 
@@ -40,7 +40,7 @@ I följande tabell beskrivs funktionerna i Recovery Services-valv:
 **Flytta data mellan valv** | Det finns inte stöd för att flytta säkerhetskopierade data mellan valv.
 **Ändra lagrings typ för valv** | Du kan ändra typen av lagrings replik (antingen Geo-redundant lagring eller lokalt redundant lagring) för ett valv innan säkerhets kopiorna lagras. När säkerhetskopiering börjar i valvet går det inte att ändra replikeringstypen.
 **Zonredundant lagring (ZRS)** | Tillgängligt i regionerna Storbritannien, södra (UKS) och Asien, sydöstra (SEA).
-**Privata slut punkter** | I [det här avsnittet](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start) finns krav för att skapa privata slut punkter för ett Recovery Service-valv.  
+**Privata slut punkter** | I [det här avsnittet](./private-endpoints.md#before-you-start) finns krav för att skapa privata slut punkter för ett Recovery Service-valv.  
 
 ## <a name="on-premises-backup-support"></a>Stöd för lokal säkerhetskopiering
 
@@ -153,8 +153,8 @@ Azure Backup har lagt till funktionen för återställning av kors region för a
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | SQL-/SAP HANA | I förhandsversion                                                      | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| MARS-agent/lokalt  | Inga                                                           | Ej tillämpligt               |
-| AFS (Azure-filresurser)                 | Inga                                                           | Ej tillämpligt               |
+| MARS-agent/lokalt  | No                                                           | Ej tillämpligt               |
+| AFS (Azure-filresurser)                 | No                                                           | Ej tillämpligt               |
 
 ## <a name="next-steps"></a>Nästa steg
 

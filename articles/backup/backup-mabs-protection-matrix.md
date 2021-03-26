@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1-skydds mat ris
 description: Den här artikeln innehåller en support mat ris som visar alla arbets belastningar, data typer och installationer som Azure Backup Server skyddar.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609778"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561278"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1-skydds mat ris
 
@@ -127,7 +127,7 @@ Azure Backup Server kan skydda kluster arbets belastningar som finns i samma dom
   * Filserver
   * Hyper-V
 
-  De här arbetsbelastningarna kan köras på en enskild server eller i en klusterkonfiguration. Om du vill skydda en arbets belastning som inte finns i en betrodd domän, se [förbereda datorer i arbets grupper och ej betrodda domäner](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm) för exakt information om vad som stöds och vilken autentisering som krävs.
+  De här arbetsbelastningarna kan köras på en enskild server eller i en klusterkonfiguration. Om du vill skydda en arbets belastning som inte finns i en betrodd domän, se [förbereda datorer i arbets grupper och ej betrodda domäner](/system-center/dpm/prepare-environment-for-dpm) för exakt information om vad som stöds och vilken autentisering som krävs.
 
 ## <a name="unsupported-data-types"></a>Data typer som inte stöds
 

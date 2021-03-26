@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654991"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566034"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Använda Azure Firewall för att skydda Window Virtual Desktop-distributioner
 
@@ -54,7 +54,7 @@ De virtuella Azure-datorer som du skapar för virtuella Windows-datorer måste h
 - Skapa en regel samling för nätverk Lägg till följande regler:
 
    - Tillåt DNS – Tillåt trafik från din privata IP-adress till * för TCP-och UDP-portarna 53.
-   - Tillåt KMS – Tillåt trafik från virtuella Windows-datorer med virtuella datorer till Windows Activation Service TCP-port 1688. Mer information om mål-IP-adresser finns i [Windows-aktivering Miss lyckas i Tvingad tunnel trafik](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution).
+   - Tillåt KMS – Tillåt trafik från virtuella Windows-datorer med virtuella datorer till Windows Activation Service TCP-port 1688. Mer information om mål-IP-adresser finns i [Windows-aktivering Miss lyckas i Tvingad tunnel trafik](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution).
 
 > [!NOTE]
 > Vissa distributioner kanske inte behöver DNS-regler, till exempel Azure Active Directory domänkontrollanter vidarebefordrar DNS-frågor till Azure DNS på 168.63.129.16.

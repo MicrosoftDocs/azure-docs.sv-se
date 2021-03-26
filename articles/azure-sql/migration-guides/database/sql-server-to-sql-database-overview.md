@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ecb9d1e25647e197614817116921140f0d7fbdf4
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 54c1b8c189264fb2e127ff04b0fdd9125f4c9aeb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024973"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563148"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Översikt över migrering: SQL Server till Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -104,7 +104,7 @@ I följande tabell visas rekommenderade Migreringsverktyg:
 
 |Teknik | Beskrivning|
 |---------|---------|
-| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Med Azure Migrate för Azure SQL kan du identifiera och utvärdera din SQL data-fastighets i stor skala när du arbetar på VMware, vilket ger rekommendationer för Azure SQL-distribution, mål storlek och månads uppskattningar. | 
+| [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | Med Azure Migrate för Azure SQL kan du identifiera och utvärdera din SQL data-fastighets i stor skala när du arbetar på VMware, vilket ger rekommendationer för Azure SQL-distribution, mål storlek och månads uppskattningar. | 
 |[Data Migration Assistant (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|Data Migration Assistant är ett Skriv bords verktyg som ger sömlös utvärdering av SQL Server och migreringar till Azure SQL Database (både schema och data). Verktyget kan installeras på en server lokalt eller på den lokala datorn som har anslutning till dina käll databaser. Migreringsprocessen är en logisk data förflyttning mellan objekt i käll-och mål databasen. </br> -Migrera enskilda databaser (både schema och data)|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|En Azure-tjänst från första part som kan migrera dina SQL Server-databaser till Azure SQL Database med hjälp av Azure Portal eller automatiserad med PowerShell. Azure DMS kräver att du väljer en önskad Azure-Virtual Network (VNet) under etableringen för att säkerställa att det finns en anslutning till käll SQL Server databaserna. </br> – Migrera enskilda databaser eller skala. |
 | | |
@@ -195,7 +195,7 @@ Förutom avancerade hanterings-och säkerhetsfunktioner innehåller SQL Database
 
 Mer hjälp finns i följande resurser som har utvecklats för Real World migration-projekt.
 
-|Tillgång  |Beskrivning  |
+|Tillgång  |Description  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla en automatiserad och enhetlig mål plattforms besluts process.|
 |[DBLoader-verktyg](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader kan användas för att läsa in data från avgränsade textfiler till SQL Server. I det här Windows-konsol verktyget används SQL Server inbyggda klient Bulkload-gränssnittet, som fungerar på alla versioner av SQL Server, inklusive Azure SQL Database.|

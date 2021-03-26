@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 03/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 330131ea7e9a364a31d25a6f3f0a75b1adbeb27a
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f7d1e3bebf2fbdea3075d97e3829e38a3930909b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799895"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566140"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -191,6 +191,10 @@ Den volym storlek som rapporteras av SMB-klienten är den maximala storlek som A
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Jag har problem med att ansluta till min SMB-resurs. Vad ska jag göra?
 
 Vi rekommenderar att du anger den maximala toleransen för synkronisering av dator klockor till fem minuter. Mer information finns i [Max tolerans för synkronisering av dator klockor](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
+
+### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Hur kan jag hämta IP-adressen för en SMB-volym via portalen?
+
+Använd länken **JSON-vy** i rutan volym översikt och leta efter **startIp** -identifieraren under **Egenskaper**  ->  **mountTargets**.
 
 ## <a name="capacity-management-faqs"></a>Vanliga frågor och svar om kapacitets hantering
 

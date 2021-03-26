@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742202"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566078"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrera Azure HDInsight 3,6 Hive-arbetsbelastningar till HDInsight 4,0
 
@@ -71,7 +71,7 @@ I det här steget används [`Hive Schema Tool`](https://cwiki.apache.org/conflue
     > [!NOTE]
     > Det här verktyget använder klienten `beeline` för att köra SQL-skript i `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` .
     >
-    > SQL-syntaxen i dessa skript är inte nödvändigt vis kompatibel med andra klient verktyg. Till exempel kräver [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) och [Frågeredigeraren på Azure Portal](../../azure-sql/database/connect-query-portal.md) nyckelord `GO` efter varje kommando.
+    > SQL-syntaxen i dessa skript är inte nödvändigt vis kompatibel med andra klient verktyg. Till exempel kräver [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) och [Frågeredigeraren på Azure Portal](../../azure-sql/database/connect-query-portal.md) nyckelord `GO` efter varje kommando.
     >
     > Om ett skript Miss lyckas på grund av resurs kapacitet eller transaktions-timeout, skala upp SQL Database.
 

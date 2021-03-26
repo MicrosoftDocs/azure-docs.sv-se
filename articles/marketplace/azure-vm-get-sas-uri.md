@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: b8f5fbc076859be9f5ff5a215f92811d543ed7e4
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800116"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558014"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Så här skapar du en SAS-URI för en VM-avbildning
 
 > [!NOTE]
-> Du behöver inte en SAS-URI för att publicera den virtuella datorn. Du kan helt enkelt dela en bild i delar av centret. Se [skapa en virtuell dator med en godkänd bas](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) eller [skapa en virtuell dator med hjälp av dina egna avbildnings](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) instruktioner.
+> Du behöver inte en SAS-URI för att publicera den virtuella datorn. Du kan helt enkelt dela en bild i delar av centret. Se [skapa en virtuell dator med en godkänd bas](./azure-vm-create-using-approved-base.md) eller [skapa en virtuell dator med hjälp av dina egna avbildnings](./azure-vm-create-using-own-image.md) instruktioner.
 
 Att skapa SAS-URI: er för dina virtuella hård diskar uppfyller följande krav:
 

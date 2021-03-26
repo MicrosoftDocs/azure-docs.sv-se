@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 801d810a82e4e484ca1ab30c5c6d510860dbab6b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103017366"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566038"
 ---
 # <a name="azure-media-services-release-notes"></a>Viktig information om Azure Media Services
 
@@ -64,7 +64,7 @@ Version 3 tillhandahåller:
 
 #### <a name="action-required"></a>Åtgärd krävs:
 
-Du kan minimera störningar i arbets belastningarna genom att granska [migreringsguiden](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) för att överföra koden från version 2 API och SDK: er till version 3 API och SDK före den 29 februari 2024.
+Du kan minimera störningar i arbets belastningarna genom att granska [migreringsguiden](../latest/migrate-v-2-v-3-migration-introduction.md) för att överföra koden från version 2 API och SDK: er till version 3 API och SDK före den 29 februari 2024.
 **Efter 29 februari 2024** kommer Azure Media Services inte längre att acceptera trafik på version 2 REST API, arm-kontots hanterings-API-version 2015-10-01 eller från version 2 .net-klient-SDK: er. Detta omfattar klient-SDK: er med öppen källkod från tredje part som kan anropa API: t för version 2.  
 
 Se det officiella [uppdaterings meddelandet för Azure](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).

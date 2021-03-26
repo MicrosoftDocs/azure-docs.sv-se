@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 11a4798c0cb3bc010bbdbae1fcb709951c67781a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c4f76a02a88b91c082106566ca236abe25d4ed88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721903"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567356"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Självstudie: skapa och ändra peering för en ExpressRoute-krets med hjälp av Azure Portal
 
@@ -124,7 +124,7 @@ Du kan välja raden för peering som du vill ändra och sedan ändra peering-ege
 Det här avsnittet hjälper dig att skapa, Hämta, uppdatera och ta bort Azures konfiguration för privata peering för en ExpressRoute-krets.
 
 > [!IMPORTANT]
-> IPv6-stöd för privat peering är för närvarande en **offentlig för hands version**. Om du vill ansluta ditt virtuella nätverk till en ExpressRoute-krets med IPv6-baserad privat peering konfigurerad kontrollerar du att ditt virtuella nätverk är dubbel stack och följer rikt linjerna som beskrivs [här](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> IPv6-stöd för privat peering är för närvarande en **offentlig för hands version**. Om du vill ansluta ditt virtuella nätverk till en ExpressRoute-krets med IPv6-baserad privat peering konfigurerad kontrollerar du att ditt virtuella nätverk är dubbel stack och följer rikt linjerna som beskrivs [här](../virtual-network/ipv6-overview.md).
 > 
 > 
 

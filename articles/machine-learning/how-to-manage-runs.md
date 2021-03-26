@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110278"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566293"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Starta, övervaka och spåra körnings historik 
 
@@ -211,7 +211,7 @@ Du behöver följande objekt:
     1. I **mål informationen** väljer du **arbets ytan skicka till Log Analytics** och anger **arbets ytan** för **prenumeration** och Log Analytics. 
 
     > [!NOTE]
-    > **Azure Log Analytics-arbetsytan** är en annan typ av Azure-resurs än **Azure Machine Learning service-arbetsytan**. Om det inte finns några alternativ i listan kan du [skapa en Log Analytics-arbetsyta](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    > **Azure Log Analytics-arbetsytan** är en annan typ av Azure-resurs än **Azure Machine Learning service-arbetsytan**. Om det inte finns några alternativ i listan kan du [skapa en Log Analytics-arbetsyta](../azure-monitor/logs/quick-create-workspace.md). 
     
     ![Var du ska spara e-postavisering](./media/how-to-manage-runs/log-location.png)
 
@@ -219,7 +219,7 @@ Du behöver följande objekt:
 
     ![Ny varnings regel](./media/how-to-manage-runs/new-alert-rule.png)
 
-1. Se [hur du skapar och hanterar logg aviseringar med hjälp av Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
+1. Se [hur du skapar och hanterar logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="run-description"></a>Körnings Beskrivning 
 
