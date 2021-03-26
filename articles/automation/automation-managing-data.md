@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616124"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954681"
 ---
 # <a name="management-of-azure-automation-data"></a>Hantera Azure Automation-data
 
@@ -56,7 +56,7 @@ I följande tabell sammanfattas bevarande principen för olika resurser.
 | Node-rapporter |En Node-rapport tas bort permanent 90 dagar efter att en ny rapport har genererats för noden. |
 | Runbooks |En Runbook tas bort permanent 30 dagar efter att en användare tagit bort resursen, eller 30 dagar efter att användaren tagit bort kontot som innehåller resursen<sup>1</sup>. |
 
-<sup>1</sup> Runbooken kan återställas inom 30-dagars period genom att skicka in en support incident för Azure med Microsoft Azure support. Gå till [Support webbplatsen för Azure](/support/options) och välj **skicka en support förfrågan**.
+<sup>1</sup> Runbooken kan återställas inom 30-dagars period genom att skicka in en support incident för Azure med Microsoft Azure support. Gå till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/) och välj **skicka en support förfrågan**.
 
 ## <a name="data-backup"></a>Säkerhets kopiering av data
 

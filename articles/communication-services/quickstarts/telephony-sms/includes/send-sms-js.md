@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622308"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110393"
 ---
-Kom igång med Azure Communication Services med hjälp av Java Script SMS-klientprogrammet för kommunikations tjänster för att skicka SMS-meddelanden.
+Kom igång med Azure Communication Services med hjälp av Java Script SMS SDK för kommunikations tjänster för att skicka SMS-meddelanden.
 
 Att slutföra den här snabb starten innebär en låg kostnad av några USD cent eller mindre i ditt Azure-konto.
 
@@ -57,7 +57,7 @@ Använd en text redigerare för att skapa en fil med namnet **send-sms.js** i pr
 
 ### <a name="install-the-package"></a>Installera paketet
 
-Använd `npm install` kommandot för att installera Azure Communication Services SMS-klient biblioteket för Java Script.
+Använd `npm install` kommandot för att installera Azure Communication Services SMS SDK för Java Script.
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,7 +67,7 @@ I det här `--save` alternativet visas biblioteket som ett beroende i **package.
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS-klient biblioteket för Node.js.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS SDK för Node.js.
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Importera **SmsClient** från klient biblioteket och instansiera det med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+Importera **SmsClient** från SDK och instansiera den med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
 
 Lägg till följande kod i **send-sms.js**:
 

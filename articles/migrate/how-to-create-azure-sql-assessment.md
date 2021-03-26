@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 21553adf81d5b34813785db7cd6bbe3caf71c210
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e9243fc750843c83b7ca8c295655853d20dcd083
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780503"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024992"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Skapa en Azure SQL-utvärdering
 
@@ -18,7 +18,7 @@ Som en del av migreringen till Azure bedömer du dina lokala arbets belastningar
 Den här artikeln visar hur du bedömer identifierade SQL-instanser som förberedelse för migrering till Azure SQL med hjälp av verktyget Azure Migrate: identifiering och bedömning.
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. 
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Kom igång med [den här självstudien](tutorial-discover-vmware.md). Om du vill testa den här funktionen i ett befintligt projekt måste du kontrol lera att du har slutfört [kraven](how-to-discover-sql-existing-project.md) i den här artikeln.
 
 ## <a name="before-you-start"></a>Innan du börjar
 

@@ -3,19 +3,14 @@ title: Säkerhetskopiera Azure Managed Disks
 description: Lär dig hur du säkerhetskopierar Azure-Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98738160"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110635"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>Säkerhetskopiera Azure Managed Disks (för hands version)
-
->[!IMPORTANT]
->Azure disk Backup är i för hands version utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). För region tillgänglighet, se [support mat ris](disk-backup-support-matrix.md).
->
->[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
+# <a name="back-up-azure-managed-disks"></a>Säkerhetskopiera Azure Managed Disks
 
 Den här artikeln förklarar hur du säkerhetskopierar den [hanterade Azure-disken](../virtual-machines/managed-disks-overview.md) från Azure Portal.
 

@@ -4,15 +4,15 @@ description: Läs om flera av integrerings kraven för Microsofts kommersiella m
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88606799"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044132"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Vanliga frågor om API: er för SaaS-utförande
 
@@ -40,7 +40,10 @@ När du prenumererar på SaaS-erbjudandet har användaren enats om att betala f�
 
 När du prenumererar på ett erbjudande kan Azure-användaren identifiera och hantera alla erbjudanden i Azure. Som standard visas statusen för ett nyligen prenumererat SaaS-erbjudande som **etablering, som väntar på att utföras**. I det här läget uppmanas Azure-användaren att ange en åtgärd för att **Konfigurera kontot**, så att du kan bläddra till sin SaaS-prenumerations hanterings upplevelse i Azure Portal.
 
-När användaren väljer **Konfigurera konto** omdirigeras de till SaaS-tjänstens webbplats. Utgivaren konfigurerade URL: en vid tidpunkten för publiceringen av erbjudandet. Den här sidan kallas utgivarens landnings sida. Azure-användare loggar in på SaaS-landnings sidan baserat på deras befintliga AAD-autentiseringsuppgifter i Azure.
+När användaren väljer **Konfigurera konto** omdirigeras de till SaaS-tjänstens webbplats. Utgivaren konfigurerade URL: en vid tidpunkten för publiceringen av erbjudandet. Den här sidan kallas utgivarens landnings sida. Azure-användare loggar in på SaaS-landnings sidan baserat på befintliga Azure Active Directory-autentiseringsuppgifter (Azure AD) i Azure.
+
+> [!IMPORTANT]
+> Du måste logga in på Köp användaren med Azure Active Directory enkel inloggning (Azure AD SSO) enligt [principen](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context). `mail`Egenskapen för den användar resurs som hämtades från Microsoft Graph API ger dig kontakt information för Azure AD och `userPrincipalName` för MSA. Det är möjligt att fältet "mail" är tomt för Azure AD och att användaren inte har något registrerat e-postmeddelande. Om så är fallet rekommenderar vi att du identifierar och ber om ett e-postmeddelande för kontakter. Det här är din enda chans att få en kontakt med e-post för att nå en kund under eller efter den pågående kunden.
 
 När Azure-användaren omdirigeras till landnings sidan läggs en token till i fråge-URL: en. Den här token är kort livs längd och giltig under 24 timmar. Du kan sedan identifiera förekomsten av denna token och anropa Microsofts API för att få mer kontext som är associerad med token.
 

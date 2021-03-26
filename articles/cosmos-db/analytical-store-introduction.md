@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9a8ecf65426dfe92b84582ff98b567ea400c9209
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027191"
+ms.locfileid: "105046221"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Vad är Azure Cosmos DB Analytical Store?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -112,8 +112,8 @@ Följande begränsningar gäller för användnings data i Azure Cosmos DB när d
 
 * Ett annat förväntat beteende i förhållande till explicita `null` värden:
   * Spark-pooler i Azure Synapse kommer att läsa dessa värden som `0` (noll).
-  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `NULL` om det första dokumentet i samlingen har, för samma egenskap, ett värde med en datatyp som skiljer sig från `integer` .
-  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `0` (noll) om det första dokumentet i samlingen har, för samma egenskap, ett värde som är ett `integer` .
+  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `NULL` om det första dokumentet i samlingen har, för samma egenskap, ett värde med en `non-numeric` datatyp.
+  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `0` (noll) om det första dokumentet i samlingen har, för samma egenskap, ett värde med en `numeric` datatyp.
 
 * Förväntar dig olika beteenden i samband med saknade kolumner:
   * Spark-pooler i Azure Synapse kommer att representera dessa kolumner som `undefined` .

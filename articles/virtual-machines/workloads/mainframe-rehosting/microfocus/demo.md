@@ -7,12 +7,12 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
-ms.openlocfilehash: 7c9a9f355def492f04f47b49045fadb5afb6acd6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 9ef9dd27183b6c23762dcdc2d5a844123d35559a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950543"
+ms.locfileid: "105045968"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Konfigurera Micro Focus CICS BankDemo för Micro Focus Enterprise Developer 4,0 på Azure
 
@@ -276,5 +276,5 @@ Grattis! Nu kör du ett CICS-program i Azure med Micro Focus Enterprise Server.
 - [Kör Enterprise Server i Docker-behållare på Azure](run-enterprise-server-container.md)
 - [Stordator-migrering – Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
 - [Virtual Machines](../../../linux/overview.md)
-- [Felsökning](../../../troubleshooting/index.yml)
+- [Felsökning](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [Avmystifiera-stordator till Azure-migrering](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

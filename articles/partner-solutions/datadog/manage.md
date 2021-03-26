@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746315"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046359"
 ---
 # <a name="manage-the-datadog-resource"></a>Hantera Datadog-resursen
 
@@ -61,7 +61,7 @@ Du kan filtrera listan över resurser efter resurs typ, resurs grupp namn, plats
 Kolumn **loggarna till Datadog** anger om resursen skickar loggar till Datadog. Om resursen inte skickar loggar anger det här fältet Varför loggar inte skickas till Datadog. Orsaken kan vara:
 
 - Resursen stöder inte sändning av loggar. Endast resurs typer med övervaknings logg kategorier kan konfigureras att skicka loggar till Datadog.
-- Gränsen för fem diagnostiska inställningar har uppnåtts. Varje Azure-resurs kan ha högst fem diagnostikinställningar. Mer information finns i [diagnostikinställningar](../../azure-monitor/platform/diagnostic-settings.md).
+- Gränsen för fem diagnostiska inställningar har uppnåtts. Varje Azure-resurs kan ha högst fem diagnostikinställningar. Mer information finns i [diagnostikinställningar](../../azure-monitor/essentials/diagnostic-settings.md).
 - Fel. Resursen har kon figurer ATS för att skicka loggar till Datadog, men blockeras av ett fel.
 - Loggarna är inte konfigurerade. Endast Azure-resurser som har lämpliga resurs taggar är konfigurerade för att skicka loggar till Datadog.
 - Regionen stöds inte. Azure-resursen finns i en region som inte har stöd för att skicka loggar till Datadog.

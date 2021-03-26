@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4512c9d9fdb66713ba24fbf30278e5d5dbb2ae23
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943172"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863759"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Köra Apache Hive-frågor med hjälp av Data Lake Tools för Visual Studio
 
@@ -49,11 +49,11 @@ Ad hoc-frågor kan köras i antingen **batch** -eller **interaktivt** läge.
 
 5. Välj **Kör**. Körnings läget är som standard **interaktivt**.
 
-    ![Kör interaktiv Hive-fråga, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png" alt-text="Kör interaktiv Hive-fråga, Visual Studio" border="true":::
 
 6. Om du vill köra samma fråga i **batchläge** växlar du den nedrullningsbara listan från **interaktiv** till **batch**. Körnings knappen ändras från att **köras** till att **skickas**.
 
-    ![Skicka batch Hive-fråga, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png" alt-text="Skicka batch Hive-fråga, Visual Studio" border="true":::
 
     Hive-redigeraren stöder IntelliSense. Data Lake Tools för Visual Studio stöder inläsning av fjärrmetadata när du redigerar Hive-skript. Om du till exempel skriver visas `SELECT * FROM` alla föreslagna tabell namn i IntelliSense. När du anger ett tabellnamn visar IntelliSense en lista över kolumnnamnen. Verktygen stöder de flesta Hive DML-instruktioner, underfrågor och inbyggda UDF. IntelliSense föreslår endast metadata för kluster som valts i verktygsfältet för HDInsight.
 
@@ -61,7 +61,7 @@ Ad hoc-frågor kan köras i antingen **batch** -eller **interaktivt** läge.
 
 8. Om du har valt alternativet Avancerad överföring konfigurerar du **jobbnamn**, **argument**, **ytterligare konfigurationer** och **status katalog** i dialog rutan **Skicka skript** . Välj sedan **Skicka**.
 
-    ![Dialog rutan Skicka skript, HDInsight Hadoop Hive-fråga](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png" alt-text="Dialog rutan Skicka skript, HDInsight Hadoop Hive-fråga" border="true":::
 
 ### <a name="create-a-hive-application"></a>Skapa ett Hive-program
 
@@ -109,7 +109,7 @@ Följ dessa steg om du vill köra en Hive-fråga genom att skapa ett Hive-progra
 
    **Sammanfattningen av Hive-jobbet** visas och visar information om det jobb som körs. Använd länken **Uppdatera** för att uppdatera jobb informationen tills **jobbets status** ändras till **slutförd**.
 
-   ![Slutförd Sammanfattning av Hive-jobb, Hive-program, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
+   :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png" alt-text="Slutförd Sammanfattning av Hive-jobb, Hive-program, Visual Studio" border="true":::
 
 7. Visa utdata för jobbet genom att välja **jobbets utdata** . Den visas `[ERROR] 3` , vilket är det värde som returneras av den här frågan.
 

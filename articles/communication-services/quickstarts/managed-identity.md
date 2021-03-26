@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e4b71cc889615fd4784f11c9edd77b44ef421d9e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492361"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110781"
 ---
 # <a name="use-managed-identities"></a>Använda hanterade identiteter
-Kom igång med Azure Communication Services med hjälp av hanterade identiteter. Kommunikations tjänstens identitet och SMS-klientens bibliotek stöder Azure Active Directory (Azure AD)-autentisering med [hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md).
+Kom igång med Azure Communication Services med hjälp av hanterade identiteter. Kommunikations tjänstens identitet och SMS-SDK: er stöder Azure Active Directory (Azure AD)-autentisering med [hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Den här snabb starten visar hur du auktoriserar åtkomst till identitets-och SMS-klientcertifikat från en Azure-miljö som stöder hanterade identiteter. Det beskriver också hur du testar din kod i en utvecklings miljö.
+Den här snabb starten visar hur du auktoriserar åtkomst till identitet och SMS-SDK: er från en Azure-miljö som stöder hanterade identiteter. Det beskriver också hur du testar din kod i en utvecklings miljö.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/managed-identity-net.md)]

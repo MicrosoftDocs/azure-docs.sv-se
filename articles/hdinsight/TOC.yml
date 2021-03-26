@@ -190,6 +190,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Optimera Apache Pig
                   href: ./optimize-pig-ambari.md
+            - name: Hitta värdnamn för klusternoder
+              href: ./find-host-name.md
             - name: Starta om klusternoder
               href: ./cluster-reboot-vm.md
             - name: Använda Apache Ambari REST API

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878682"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108817"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kund ansvar för att köra Azure våren Cloud i VNET
 Det här dokumentet innehåller specifikationer för användning av Azure våren Cloud i ett virtuellt nätverk.
@@ -54,7 +54,8 @@ Azure-brandväggen tillhandahåller en fullständigt kvalificerad domän namns k
   | *. cdn.mscr.io | HTTPS: 443 | MCR-lagring som backas upp av Azure CDN. |
   | *. data.mcr.microsoft.com | HTTPS: 443 | MCR-lagring som backas upp av Azure CDN. |
   | <i>management.azure.com</i> | HTTPS: 443 | Underliggande hantering av Kubernetes-kluster. |
-  | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory autentisering. |
+  | <i>* login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory autentisering. |
+  | <i>* login.microsoft.com</i> | HTTPS: 443 | Azure Active Directory autentisering. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft-paketets lagrings plats. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Lagrings plats som krävs för att installera nödvändiga binärfiler som Kubernetes och Azure CNI. |
   | *mscrl.microsoft.com* | HTTPS: 80 | Obligatoriska sökvägar för Microsoft-certifikat kedjan. |
@@ -62,5 +63,5 @@ Azure-brandväggen tillhandahåller en fullständigt kvalificerad domän namns k
   | *crl3.digicert.com* | HTTPS: 80 | Sök vägar för SSL-certifikat från tredje part. |
 
 ## <a name="see-also"></a>Se även
-* [Få åtkomst till ditt program i ett privat nätverk](spring-cloud-access-app-virtual-network.md)
-* [Exponera appar med hjälp av Application Gateway och Azure-brandväggen](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [Få åtkomst till ditt program i ett privat nätverk](access-app-virtual-network.md)
+* [Exponera appar med hjälp av Application Gateway och Azure-brandväggen](expose-apps-gateway-azure-firewall.md)

@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511022"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046818"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Snabb start: Använd python API för att köra ett Azure Batch jobb
 
@@ -28,7 +28,7 @@ När du har slutfört den här snabb starten lär du dig viktiga begrepp i batch
 
 - Ett Batch-konto och ett länkat Azure Storage-konto. Information om hur du skapar de här kontona finns Batch-snabbstarterna som du kommer åt via [Azure-portalen](quick-create-portal.md) eller [Azure CLI](quick-create-cli.md).
 
-- [Python](https://python.org/downloads) version 2,7 eller 3,3 eller senare, inklusive [pip](https://pip.pypa.io/en/stable/installing/) -paket hanteraren
+- [Python](https://python.org/downloads) version 2,7 eller 3,6, inklusive [pip](https://pip.pypa.io/en/stable/installing/) -paket hanteraren
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
