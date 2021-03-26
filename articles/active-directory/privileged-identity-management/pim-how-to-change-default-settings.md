@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708491"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567041"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurera inställningar för Azure AD-roller i Privileged Identity Management
 
@@ -64,14 +64,14 @@ Du kan välja mellan två alternativ för tilldelnings varaktighet för varje ti
 
 Du kan välja något av följande **tillgängliga** varaktighets alternativ för tilldelning:
 
-| | |
+| | Description |
 | --- | --- |
 | **Tillåt permanent berättigad tilldelning** | Globala administratörer och administratörer för privilegierade roller kan tilldela permanent berättigad tilldelning. |
 | **Giltig tilldelning har förfallit efter** | Globala administratörer och administratörer av privilegierade roller kan kräva att alla kvalificerade tilldelningar har ett angivet start-och slutdatum. |
 
 Och du kan välja något av dessa alternativ för varaktighet för **aktiv** tilldelning:
 
-| | |
+| | Description |
 | --- | --- |
 | **Tillåt permanent aktiv tilldelning** | Globala administratörer och administratörer för privilegierade roller kan tilldela permanent aktiv tilldelning. |
 | **Aktiv tilldelning förfaller efter** | Globala administratörer och administratörer av privilegierade roller kan kräva att alla aktiva tilldelningar har ett angivet start-och slutdatum. |

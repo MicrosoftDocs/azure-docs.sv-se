@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783395"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566667"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Använda parametrar, uttryck och funktioner i Azure Data Factory
 
@@ -25,7 +25,7 @@ I det här dokumentet fokuserar vi främst på att lära dig grundläggande konc
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Användar gränssnitt och parametrar för Azure Data Factory
 
-Om du inte har använt Azure Data Factory-parametern i ADF-användargränssnittet kan du granska [Data Factory-gränssnittet för länkade tjänster med parametrar](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui)  och [Data Factory-användargränssnitt för metadata driven pipeline med parametrar](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) för visuell förklaring.
+Om du inte har använt Azure Data Factory-parametern i ADF-användargränssnittet kan du granska [Data Factory-gränssnittet för länkade tjänster med parametrar](./parameterize-linked-services.md#data-factory-ui)  och [Data Factory-användargränssnitt för metadata driven pipeline med parametrar](./how-to-use-trigger-parameterization.md#data-factory-ui) för visuell förklaring.
 
 ## <a name="parameter-and-expression-concepts"></a>Begrepp för parameter och uttryck 
 
@@ -313,11 +313,11 @@ Den här [Azure Data Factory-parametern för att skicka självstudier](https://a
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Detaljerad data flödes pipeline för mappning med parametrar 
 
-Följ [mappnings data flödet med parametrar](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) för omfattande exempel på hur du använder parametrar i data flödet.
+Följ [mappnings data flödet med parametrar](./parameters-data-flow.md) för omfattande exempel på hur du använder parametrar i data flödet.
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Detaljerade metadata drivna pipeline med parametrar
 
-Följ [de metadata drivna pipelinen med parametrar](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) för att lära dig mer om hur du använder parametrar för att utforma metadata drivna pipeliner. Detta är ett populärt användnings fall för parametrar.
+Följ [de metadata drivna pipelinen med parametrar](./how-to-use-trigger-parameterization.md) för att lära dig mer om hur du använder parametrar för att utforma metadata drivna pipeliner. Detta är ett populärt användnings fall för parametrar.
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -1,41 +1,43 @@
 ---
-title: 'Klient bibliotek och REST API: er för Azure Communication Services'
+title: 'SDK: er och REST API: er för Azure Communication Services'
 titleSuffix: An Azure Communication Services concept document
 description: 'Läs mer om SDK: er och REST API: er för Azure Communication Services.'
 author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: effd7658bbfe7359e1f99f9452857824c2c45c2f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: b5115355133bdcf33825a05d4baa16408cb3fccd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107898"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562451"
 ---
-# <a name="client-libraries-and-rest-apis"></a>Klientbibliotek och REST-API:er
+# <a name="sdks-and-rest-apis"></a>SDK: er och REST API: er
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+Azure Communication Services-funktionerna organiseras konceptuellt i sex områden. De flesta områden har fullständigt klient bibliotek med öppen källkod som program mera mot publicerade REST-API: er som du kan använda direkt via Internet. Det anropande klient biblioteket använder företagsspecifika nätverks gränssnitt och är för närvarande stängd-källa. Exempel och mer teknisk information om SDK: er publiceras i [Azure Communication Services GitHub-lagrings platsen](https://github.com/Azure/communication).
+
+## <a name="rest-apis"></a>REST API:er
+API: er för kommunikations tjänster dokumenteras tillsammans med andra Azure REST-API: er i [docs.Microsoft.com](/rest/api/azure/). I den här dokumentationen får du lära dig hur du strukturerar dina HTTP-meddelanden och ger vägledning om hur du använder Postman. Den här dokumentationen erbjuds också i Swagger-format på [GitHub](https://github.com/Azure/azure-rest-api-specs).
 
 
-Azure Communication Services-funktionerna organiseras konceptuellt i sex områden. Vissa områden har fullständigt SDK: er med öppen källkod. Den anropande SDK: n använder patentskyddade nätverks gränssnitt och är stängd-källa och chatt-biblioteket innehåller ett beroende för stängd källa. Exempel och ytterligare teknisk information för SDK: er publiceras i [Azure Communication Services GitHub-lagrings platsen](https://github.com/Azure/communication).
+## <a name="sdks"></a>SDK:er
 
-## <a name="client-libraries"></a>Klientbibliotek
+| Sammansättning | Namnrymder| Protokoll | Funktioner |
+|------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
+| Azure Resource Manager | Azure. ResourceManager.-kommunikation | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Etablera och hantera resurser för kommunikations tjänster|
+| Common | Azure. Communication. common| REST | Tillhandahåller bas typer för andra klient bibliotek |
+| Identitet | Azure. Communication. identitet| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Hantera användare, åtkomsttoken|
+| Telefonnummer _(beta)_| Azure. Communication. PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| Hämta och hantera telefonnummer |
+| Chatt | Azure. Communication. Chat| [Rest](https://docs.microsoft.com/rest/api/communication/) med tillverkarspecifik signalering | Lägg till text baserad chatt i real tid i dina program |
+| SMS| Azure. Communication. SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| Skicka och ta emot SMS-meddelanden|
+| Sänder| Azure. Communication. Call | Tillverkarspecifik transport | Använd röst, video, skärm delning och andra funktioner för data kommunikation i real tid |
 
-| Sammansättning               | Protokoll             |Öppen vs. stängd källa| Namnrymder                          | Funktioner                                                      |
-| ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
-| Azure Resource Manager | REST | Öppna            | Azure. ResourceManager.-kommunikation | Etablera och hantera resurser för kommunikations tjänster             |
-| Common                 | REST | Öppna               | Azure. Communication. common          | Tillhandahåller bas typer för andra SDK: er |
-| Identitet         | REST | Öppna               | Azure. Communication. identitet  | Hantera användare, åtkomsttoken |
-| Telefonnummer         | REST | Öppna               | Azure. Communication. PhoneNumbers  | Hantera telefonnummer |
-| Chatt                   | REST med tillverkarspecifik signalering | Öppna med signal paket för stängd källa    | Azure. Communication. Chat            | Lägg till text baserad chatt i real tid i dina program  |
-| SMS                    | REST | Öppna              | Azure. Communication. SMS             | Skicka och ta emot SMS-meddelanden |
-| Sänder                | Tillverkarspecifik transport | Stängd |Azure. Communication. Call         | Använd röst, video, skärm delning och andra funktioner för data kommunikation i real tid          |
+Klient biblioteken Azure Resource Manager, identitet och SMS fokuserar på tjänst integrering och i många fall uppstår säkerhets problem om du integrerar dessa funktioner i slutanvändarens program. Klient biblioteken common och Chat är lämpliga för tjänst-och klient program. Det anropande klient biblioteket är utformat för klient program. Ett klient bibliotek med fokus på tjänst scenarier är under utveckling.
 
-Observera att SDK: erna för Azure Resource Manager, identitet och SMS fokuserar på tjänst integrering och i många fall kan säkerhets problem uppstå om du integrerar dessa funktioner i slutanvändarens program. Common-och chatt-SDK: erna är lämpliga för tjänst-och klient program. Anrops-SDK: n är utformad för klient program. En SDK fokuserar på tjänst scenarier är under utveckling.
 
 ### <a name="languages-and-publishing-locations"></a>Språk och publicerings platser
 
@@ -52,20 +54,27 @@ Publicerings platser för enskilda SDK-paket beskrivs nedan.
 | Sänder        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
 | Referensdokumentation     | [dokumentation](https://azure.github.io/azure-sdk-for-js/communication.html)         | [dokumentation](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [dokumentation](http://azure.github.io/azure-sdk-for-java/communication.html)     | [dokumentation](/objectivec/communication-services/calling/)      | [dokumentation](/java/api/com.azure.communication.calling)            | -                              |
 
-## <a name="rest-apis"></a>REST API:er
 
-API: er för kommunikations tjänster dokumenteras tillsammans med andra Azure REST-API: er i [docs.Microsoft.com](/rest/api/azure/). I den här dokumentationen får du lära dig hur du strukturerar dina HTTP-meddelanden och ger vägledning om hur du använder Postman. Den här dokumentationen erbjuds också i Swagger-format på [GitHub](https://github.com/Azure/azure-rest-api-specs).
+## <a name="rest-api-throttles"></a>REST API begränsningar
+Vissa REST API: er och motsvarande SDK-metoder har begränsningar som du bör vara mindful. Om dessa begränsnings gränser överskrids utlöses ett  `429 - Too Many Requests` fel svar. Dessa gränser kan ökas genom [en begäran till Azure-supporten](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-## <a name="additional-support-details"></a>Ytterligare support information
+| API                                                                                                                          | Begränsning            |
+|------------------------------------------------------------------------------------------------------------------------------|---------------------|
+| [Alla prenumerations-API: er för Sök samtal](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 förfrågningar per dag      |
+| [Köp telefons nummer plan](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 begäran/dag       |
+| [Skicka SMS](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 förfrågningar per minut |
 
-### <a name="ios-and-android-support-details"></a>information om iOS och Android-support
+
+## <a name="sdk-platform-support-details"></a>Support information för SDK-plattform
+
+### <a name="ios-and-android"></a>iOS och Android 
 
 - Kommunikations tjänster iOS SDK-mål iOS version 13 + och Xcode 11 +.
 - Android Java SDK mål-Android API Level 21 + och Android Studio 4.0 +
 
-### <a name="net-support-details"></a>.NET-support information
+### <a name="net"></a>.NET 
 
-Med undantag för anrop av kommunikations tjänst paket riktar sig .NET standard 2,0 som stöder plattformarna som anges nedan.
+Förutom för anrop är kommunikations tjänst paketen riktade till .NET standard 2,0, som stöder plattformarna som anges nedan.
 
 Support via .NET Framework 4.6.1
 - Windows 10, 8,1, 8 och 7
@@ -82,21 +91,6 @@ Support via .NET Core 2,0:
 - Xamarin iOS 10,14
 - Xamarin Mac 3,8
 
-## <a name="calling-sdk-timeouts"></a>Anropar SDK-tidsgräns
-
-Följande tids gränser gäller för kommunikations tjänsterna som anropar SDK: er:
-
-| Action           | Tidsgräns i sekunder |
-| -------------- | ---------- |
-| Deltagare för att ansluta/ta bort | 120 |
-| Lägg till eller ta bort ny spärr från ett samtal (starta/stoppa video eller skärm delning) | 40 |
-| Tids gräns för överföring av anrops åtgärd | 60 |
-| 1:1 för anrops etablering | 85 |
-| Timeout för etablering av grupp anrop | 85 |
-| Tids gräns för PSTN-anrop | 115 |
-| Befordra 1:1-anrop till en timeout för grupp anrop | 115 |
-
-
 ## <a name="api-stability-expectations"></a>Förväntningar för API-stabilitet
 
 > [!IMPORTANT]
@@ -111,7 +105,7 @@ I framtiden kan vi dra tillbaka versioner av SDK: er för kommunikations tjänst
 
 **Du har integrerat v24-versionen av SMS-REST API i ditt program. Azure-kommunikation släpper v25.**
 
-Du får 3 års varning innan dessa API: er slutar fungera och tvingas att uppdateras till v25. Den här uppdateringen kan kräva en kod ändring.
+Du får tre års varning innan dessa API: er slutar fungera och tvingas att uppdateras till v25. Den här uppdateringen kan kräva en kod ändring.
 
 **Du har integrerat v 2.02-versionen av anrops-SDK: n i ditt program. Azure-kommunikation frigör v-2.05.**
 

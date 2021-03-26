@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 77007f0d9ffac39ecb6f21957dd8cd1bf7a0b945
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593865"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565715"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 
@@ -302,7 +302,7 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 
 ### <a name="error-code-df-excel-invalidrange"></a>Felkod: DF-Excel-InvalidRange
 - **Meddelande**: ogiltigt intervall har angetts.
-- **Rekommendation**: kontrol lera parametervärdet och ange det giltiga intervallet enligt följande referens: Excel- [format i Azure Data Factory-Dataset egenskaper](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+- **Rekommendation**: kontrol lera parametervärdet och ange det giltiga intervallet enligt följande referens: Excel- [format i Azure Data Factory-Dataset egenskaper](./format-excel.md#dataset-properties).
 
 ### <a name="error-code-df-excel-worksheetnotexist"></a>Felkod: DF-Excel-WorksheetNotExist
 - **Meddelande**: Excel-kalkylbladet finns inte.
@@ -369,4 +369,3 @@ Mer hjälp med fel sökning finns i följande resurser:
 *  [Azure-videor](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stack Overflow forum för Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-information om Data Factory](https://twitter.com/hashtag/DataFactory)
-

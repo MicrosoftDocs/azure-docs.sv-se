@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e893216eb8e2d7e44e3f272f6b965b84c6253f7f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7a9ac98a9566986767016720fda245712197b27f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870338"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566548"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Lägg till stöd för IPv6 för privat peering med Azure PowerShell (för hands version)
 
 Den här artikeln beskriver hur du lägger till IPv6-stöd för att ansluta via ExpressRoute till dina resurser i Azure med hjälp av Azure PowerShell.
 
 > [!Note]
-> Den här funktionen är för närvarande tillgänglig för för hands version i [Azure-regioner med Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones). ExpressRoute-kretsen kan därför skapas med valfri peering-plats, men de IPv6-baserade distributioner som den ansluter till måste finnas i en region med Tillgänglighetszoner.
+> Den här funktionen är för närvarande tillgänglig för för hands version i [Azure-regioner med Tillgänglighetszoner](../availability-zones/az-region.md#azure-regions-with-availability-zones). ExpressRoute-kretsen kan därför skapas med valfri peering-plats, men de IPv6-baserade distributioner som den ansluter till måste finnas i en region med Tillgänglighetszoner.
 
 ## <a name="working-with-azure-powershell"></a>Arbeta med Azure PowerShell
 
@@ -46,7 +46,7 @@ Din begäran kommer sedan att godkännas av ExpressRoute-teamet inom 2-3 arbets 
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>Lägg till en offentlig IPv6-peering till din ExpressRoute-krets
 
-1. [Skapa en ExpressRoute-krets](https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-arm) eller Använd en befintlig krets. Hämta kretsen genom att köra kommandot **Get-AzExpressRouteCircuit** :
+1. [Skapa en ExpressRoute-krets](./expressroute-howto-circuit-arm.md) eller Använd en befintlig krets. Hämta kretsen genom att köra kommandot **Get-AzExpressRouteCircuit** :
 
     ```azurepowershell-interactive
     $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -150,7 +150,7 @@ Följ stegen nedan om du har en befintlig miljö av Azure-resurser i en region m
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 
-4. Om du har en befintlig zon – redundant Gateway kör du följande för att aktivera IPv6-anslutning. Annars [skapar du den virtuella Nätverksgatewayen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ).
+4. Om du har en befintlig zon – redundant Gateway kör du följande för att aktivera IPv6-anslutning. Annars [skapar du den virtuella Nätverksgatewayen](./expressroute-howto-add-gateway-resource-manager.md) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ).
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -161,13 +161,13 @@ Följ stegen nedan om du har en befintlig miljö av Azure-resurser i en region m
 
 Följ stegen nedan om du planerar att ansluta till en ny uppsättning Azure-resurser i en region med Tillgänglighetszoner med din IPv6-privata peering.
 
-1. Skapa ett virtuellt nätverk med dubbla staplar med både IPv4-och IPv6-adressutrymme. Mer information finns i [skapa ett virtuellt nätverk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
+1. Skapa ett virtuellt nätverk med dubbla staplar med både IPv4-och IPv6-adressutrymme. Mer information finns i [skapa ett virtuellt nätverk](../virtual-network/quick-create-portal.md#create-a-virtual-network).
 
-2. [Skapa Gateway-undernätet med dubbla stackar](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
+2. [Skapa Gateway-undernätet med dubbla stackar](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway).
 
-3. [Skapa den virtuella Nätverksgatewayen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ (Observera att detta endast är tillgängligt för kretsar som använder ExpressRoute Direct).
+3. [Skapa den virtuella Nätverksgatewayen](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ (Observera att detta endast är tillgängligt för kretsar som använder ExpressRoute Direct).
 
-4. [Länka ditt virtuella nätverk till din ExpressRoute-krets](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm).
+4. [Länka ditt virtuella nätverk till din ExpressRoute-krets](./expressroute-howto-linkvnet-arm.md).
 
 ## <a name="limitations"></a>Begränsningar
 Även om IPv6-stöd är tillgängligt för anslutningar till distributioner i regioner med Tillgänglighetszoner, stöder den inte följande användnings fall:

@@ -3,12 +3,12 @@ title: Förstå frågespråket
 description: Beskriver resurs diagram tabeller och tillgängliga Kusto data typer, operatorer och funktioner som kan användas med Azure Resource Graph.
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e600439d54a89dd9bd2510b2e47b71b60ee93a7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633809"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557691"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Förstå frågespråket i Azure Resource Graph
 
@@ -26,23 +26,23 @@ Den här artikeln beskriver de språk komponenter som stöds av resurs diagram:
 
 Resurs diagram innehåller flera tabeller för de data som lagras om Azure Resource Manager resurs typer och deras egenskaper. Vissa tabeller kan användas med `join` eller- `union` operatörer för att hämta egenskaper från relaterade resurs typer. Här är listan över tabeller som är tillgängliga i resurs diagram:
 
-|Resurs diagram tabell |Kan `join` andra tabeller användas? |Beskrivning |
+|Resurs diagram tabell |Kan `join` andra tabeller användas? |Description |
 |---|---|---|
-|Resurser |Ja |Standard tabellen om ingen har definierats i frågan. De flesta resurs typer och egenskaper för Resource Manager finns här. |
-|ResourceContainers |Ja |Inkluderar prenumeration (i förhands granskning-- `Microsoft.Resources/subscriptions` ) och resurs typ och data för resurs grupp ( `Microsoft.Resources/subscriptions/resourcegroups` ). |
+|Resurser |Yes |Standard tabellen om ingen har definierats i frågan. De flesta resurs typer och egenskaper för Resource Manager finns här. |
+|ResourceContainers |Yes |Inkluderar prenumeration (i förhands granskning-- `Microsoft.Resources/subscriptions` ) och resurs typ och data för resurs grupp ( `Microsoft.Resources/subscriptions/resourcegroups` ). |
 |AdvisorResources |Ja (för hands version) |Innehåller resurser som är _relaterade_ till `Microsoft.Advisor` . |
 |AlertsManagementResources |Ja (för hands version) |Innehåller resurser som är _relaterade_ till `Microsoft.AlertsManagement` . |
-|ExtendedLocationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.ExtendedLocation` . |
-|GuestConfigurationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.GuestConfiguration` . |
-|KubernetesConfigurationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.KubernetesConfiguration` . |
+|ExtendedLocationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.ExtendedLocation` . |
+|GuestConfigurationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.GuestConfiguration` . |
+|KubernetesConfigurationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.KubernetesConfiguration` . |
 |MaintenanceResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser som är _relaterade_ till `Microsoft.Maintenance` . |
-|PatchAssessmentResources|Inga |Innehåller resurser som _rör_ utvärdering av Azure Virtual Machines-korrigering. |
-|PatchInstallationResources|Inga |Innehåller resurser som _rör_ installation av Azure Virtual Machines patch. |
-|PolicyResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.PolicyInsights` . (För **hands version**)|
+|PatchAssessmentResources|No |Innehåller resurser som _rör_ utvärdering av Azure Virtual Machines-korrigering. |
+|PatchInstallationResources|No |Innehåller resurser som _rör_ installation av Azure Virtual Machines patch. |
+|PolicyResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.PolicyInsights` . (För **hands version**)|
 |RecoveryServicesResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser _relaterade_ till `Microsoft.DataProtection` och `Microsoft.RecoveryServices` . |
 |SecurityResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser som är _relaterade_ till `Microsoft.Security` . |
-|ServiceHealthResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.ResourceHealth` . |
-|WorkloadMonitorResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.WorkloadMonitor` . |
+|ServiceHealthResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.ResourceHealth` . |
+|WorkloadMonitorResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.WorkloadMonitor` . |
 
 En fullständig lista, inklusive resurs typer, finns i [referens: tabeller och resurs typer som stöds](../reference/supported-tables-resources.md).
 
@@ -135,7 +135,7 @@ Här är listan över KQL tabell operatörer som stöds av resurs diagram med vi
 |[ansluta](/azure/kusto/query/joinoperator) |[Nyckel valv med prenumerations namn](../samples/advanced.md#join) |Join-varianter som stöds: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Gränsen på 3 `join` i en enskild fråga, varav 1 kan vara en kors tabell `join` . Om all `join` användning mellan tabeller är mellan _resurs_ -och _ResourceContainers_ tillåts 3 kors tabeller `join` . Anpassade kopplings strategier, till exempel sändnings anslutning, är inte tillåtna. Information om vilka tabeller som kan användas `join` finns i [resurs diagram tabeller](#resource-graph-tables). |
 |[gräns](/azure/kusto/query/limitoperator) |[Lista över alla offentliga IP-adresser](../samples/starter.md#list-publicip) |Synonymen för `take` . Fungerar inte med [Skip](./work-with-data.md#skipping-records). |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Äldre Operator, Använd `mv-expand` i stället. _ROWLIMIT_ max 400. Standardvärdet är 128. |
-|[MV-expandera](/azure/kusto/query/mvexpandoperator) |[Lista Cosmos DB med vissa Skriv platser](../samples/advanced.md#mvexpand-cosmosdb) |_ROWLIMIT_ max 400. Standardvärdet är 128. Gräns på 3 `mv-expand` i en enskild fråga.|
+|[MV-expandera](/azure/kusto/query/mvexpandoperator) |[Lista Cosmos DB med vissa Skriv platser](../samples/advanced.md#mvexpand-cosmosdb) |_ROWLIMIT_ max 400. Standardvärdet är 128. Gräns på 2 `mv-expand` i en enskild fråga.|
 |[order](/azure/kusto/query/orderoperator) |[Lista resurser sorterade efter namn](../samples/starter.md#list-resources) |Synonym `sort` |
 |[projektfilerna](/azure/kusto/query/projectoperator) |[Lista resurser sorterade efter namn](../samples/starter.md#list-resources) | |
 |[projekt bort](/azure/kusto/query/projectawayoperator) |[Ta bort kolumner från resultat](../samples/advanced.md#remove-column) | |

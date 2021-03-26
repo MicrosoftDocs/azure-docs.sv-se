@@ -1,14 +1,14 @@
 ---
 title: Återställa en borttagen instrumentpanel i Azure-portalen
 description: Om du tar bort en publicerad instrument panel i Azure Portal kan du återställa instrument panelen.
-ms.date: 01/21/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 2d0c8ad9ce93f3812dd810361e10a26232e29685
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 96d330872327f8719e7cc4287415d86fd0ae5fd4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774906"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559729"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Återställa en borttagen instrumentpanel i Azure-portalen
 

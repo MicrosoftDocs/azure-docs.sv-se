@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598413"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563279"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Vägledning för kodnings scenario-baserad migrering
 
@@ -43,7 +43,7 @@ Klicka på bilden nedan om du vill se en större version.
 
 [![Kodnings arbets flöde för v2 ](./media/migration-guide/V2-pretty.svg)](./media/migration-guide/V2-pretty.svg#lightbox)
 
-1. Installation
+1. Konfiguration
     1. Skapa en till gång eller Använd och en befintlig till gång. Om du använder en ny till gång överför du innehåll till den till gången. Om du använder en befintlig till gång bör du koda filer som redan finns i till gången.
     2. Hämta värdena för följande objekt:
         - ID eller objekt för medie processor
@@ -143,7 +143,3 @@ För kunder som använder en indexerare v1-processor i v2-API: et måste du skap
 ## <a name="samples"></a>Exempel
 
 Du kan också [jämföra v2-och v3-koden i kod exemplen](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Nästa steg
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

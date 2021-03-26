@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465767"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562859"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Självstudie: analysera direktsänd video genom att använda Intel Open™ DL-dataströmmar – Edge AI-tillägg 
 
@@ -66,7 +66,7 @@ I de här självstudierna får du:
 
 ™ DL Stream-modulen för DL-Stream är en mikrotjänst baserad på Intels video analys (VA-hantering) som hanterar pipeline för video analys som skapats med openmodulnamn™ DL Stream. Utvecklare kan skicka avkodade video bild rutor till AI-tilläggsprovider som utför identifiering, klassificering eller spårning och returnerar resultatet. Modulen AI-tillägg visar gRPC-API: er som är kompatibla med video analys plattformar som direktsända video analyser på IoT Edge från Microsoft. 
 
-För att kunna bygga komplexa video analys lösningar med höga prestanda bör live video analys på IoT Edge modul kombineras med en kraftfull härlednings motor som kan dra nytta av skalan i kanten. I den här självstudien skickas en härlednings förfrågan till [tillägget Intel open™ dl-streamer – Edge AI](https://aka.ms/lva-intel-openvino-dl-streamer), en Edge-modul som har utformats för att fungera med real tids analys på IoT Edge. 
+För att kunna bygga komplexa video analys lösningar med höga prestanda bör live video analys på IoT Edge modul kombineras med en kraftfull härlednings motor som kan dra nytta av skalan i kanten. I den här självstudien skickas en härlednings förfrågan till [tillägget Intel open™ dl-streamer – Edge AI](), en Edge-modul som har utformats för att fungera med real tids analys på IoT Edge. 
 
 I den första versionen av den här härlednings servern har du åtkomst till följande [modeller](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options):
 

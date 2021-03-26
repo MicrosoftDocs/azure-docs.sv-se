@@ -3,12 +3,12 @@ title: Hantera hybrid infrastruktur i stor skala med Azure Arc
 description: Lär dig hur du effektivt hanterar kundernas datorer och Kubernetes-kluster utanför Azure.
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419344"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563607"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Hantera hybrid infrastruktur i stor skala med Azure Arc
 
@@ -35,11 +35,11 @@ Du kan till exempel [Se till att samma uppsättning principer tillämpas på kun
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Hantera hybrid Kubernetes-kluster i stor skala med Azure Arc-aktiverad Kubernetes
 
-Du kan hantera Kubernetes-kluster som har [anslutits till en kunds prenumeration med Azure Arc](../../azure-arc/kubernetes/connect-cluster.md), precis som om de kördes i Azure.
+Du kan hantera Kubernetes-kluster som har [anslutits till en kunds prenumeration med Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md), precis som om de kördes i Azure.
 
 Om kunden har skapat ett [tjänst objekts konto för att publicera Kubernetes-kluster till Azure Arc](../../azure-arc/kubernetes/create-onboarding-service-principal.md), kan du komma åt det här tjänstens huvud konto för att publicera och hantera kluster. Detta kan göras av användare i den hanterings klient som har beviljats inbyggd Azure-Kubernetes för Azure-båge när prenumerationen som innehåller tjänstens huvud konto har registrerats [i Azure Lighthouse](onboard-customer.md).
 
-Du kan distribuera [konfigurationer](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) och [Helm-diagram](../../azure-arc/kubernetes/use-gitops-with-helm.md) med GitOps för anslutna kluster.
+Du kan distribuera [konfigurationer](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) och [Helm-diagram](../../azure-arc/kubernetes/use-gitops-with-helm.md) med GitOps för anslutna kluster.
 
 Du kan också övervaka anslutna kluster med Azure Monitor och [använda Azure policy för att tillämpa klusterkonfigurationer i stor skala](../../azure-arc/kubernetes/use-azure-policy.md).
 

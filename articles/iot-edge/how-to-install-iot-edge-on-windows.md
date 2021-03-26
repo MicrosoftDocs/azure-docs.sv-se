@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045679"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558728"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -42,8 +42,8 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
 
   * Windows 10 version 1809 eller senare; Build 17763 eller senare
   * Professional-, Enterprise-eller Server-versioner
-  * Minsta RAM: 4 GB (8 GB rekommenderas)
-  * Minsta lagrings utrymme: 10 GB
+  * Minsta lediga minne: 2 GB
+  * Minsta lediga disk utrymme: 10 GB
   * Om du skapar en ny distribution med Windows 10 kontrollerar du att du aktiverar Hyper-V. Mer information finns i så här [installerar du Hyper-V på Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md).
   * Om du skapar en ny distribution med hjälp av Windows Server måste du kontrol lera att du har installerat Hyper-V-rollen. Mer information finns i så här [installerar du Hyper-V-rollen på Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
   * Om du skapar en ny distribution med en virtuell dator kontrollerar du att du konfigurerar kapslad virtualisering på rätt sätt. Mer information finns i den [kapslade Virtualization](nested-virtualization.md) -guiden.

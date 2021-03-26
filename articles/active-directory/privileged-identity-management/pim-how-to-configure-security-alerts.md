@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 26b519ce11747ab3374d9bd286800a6c93129019
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96180497"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565239"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurera säkerhets aviseringar för Azure AD-roller i Privileged Identity Management
 
@@ -50,9 +50,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Administratörer använder inte sina privilegierade roller
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Användare som har tilldelats privilegierade roller som de inte behöver ökar risken för angrepp. Det är också enklare för angripare att befinna sig i konton som inte används aktivt. |
 | **Så här löser du?** | Granska användarna i listan och ta bort dem från privilegierade roller som de inte behöver. |
 | **Prevention (Skydd)** | Tilldela endast privilegierade roller till användare som har en affärs motivering. </br>Schemalägg vanliga [åtkomst granskningar](pim-how-to-start-security-review.md) för att kontrol lera att användarna fortfarande behöver åtkomst. |
@@ -62,9 +63,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Roller kräver inte Multi-Factor Authentication för aktivering
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Utan Multi-Factor Authentication kan komprometterade användare aktivera privilegierade roller. |
 | **Så här löser du?** | Granska listan över roller och [Kräv Multi-Factor Authentication](pim-how-to-change-default-settings.md) för varje roll. |
 | **Prevention (Skydd)** | [KRÄV MFA](pim-how-to-change-default-settings.md) för varje roll.  |
@@ -72,17 +74,19 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Organisationen har inte Azure AD Premium P2
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Den aktuella Azure AD-organisationen har inte Azure AD Premium P2. |
 | **Så här löser du?** | Läs mer om [Azure AD-versioner](../fundamentals/active-directory-whatis.md). Uppgradera till Azure AD Premium P2. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potentiella inaktuella konton i en privilegie rad roll
 
-| | |
+Allvarlighets grad: **medels Tor**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Medel |
 | **Varför får jag den här aviseringen?** | Konton i en privilegie rad roll har inte ändrat sitt lösen ord under de senaste 90 dagarna. Dessa konton kan vara tjänst eller delade konton som inte underhålls och är utsatta för angripare. |
 | **Så här löser du?** | Granska kontona i listan. Om de inte längre behöver åtkomst tar du bort dem från deras privilegierade roller. |
 | **Prevention (Skydd)** | Se till att konton som delas roterar starka lösen ord när det sker en ändring i användare som känner till lösen ordet. </br>Granska regelbundet konton med privilegierade roller med [åtkomst granskningar](pim-how-to-start-security-review.md) och ta bort roll tilldelningar som inte längre behövs. |
@@ -91,9 +95,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Roller tilldelas utanför Privileged Identity Management
 
-| | |
+Allvarlighets grad: **hög**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Högt |
 | **Varför får jag den här aviseringen?** | Privilegierade roll tilldelningar som görs utanför Privileged Identity Management övervakas inte korrekt och kan tyda på en aktiv attack. |
 | **Så här löser du?** | Granska användarna i listan och ta bort dem från privilegierade roller som tilldelats utanför Privileged Identity Management. |
 | **Prevention (Skydd)** | Undersök var användarna tilldelas privilegierade roller utanför Privileged Identity Management och förhindra framtida tilldelningar därifrån. |
@@ -101,9 +106,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="there-are-too-many-global-administrators"></a>Det finns för många globala administratörer
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Global administratör är den högsta privilegierade rollen. Om en global administratör komprometteras får angriparen åtkomst till alla deras behörigheter, vilket innebär att hela systemet är utsatt för risk. |
 | **Så här löser du?** | Granska användarna i listan och ta bort alla som inte absolut behöver rollen som global administratör. </br>Tilldela de här användarna lägre privilegierade roller i stället. |
 | **Prevention (Skydd)** | Tilldela användare den minst privilegierade rollen som de behöver. |
@@ -114,9 +120,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Roller aktive ras för ofta
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Flera aktiveringar till samma privilegierade roll av samma användare är ett tecken på ett angrepp. |
 | **Så här löser du?** | Granska användarna i listan och kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för deras privilegierade roll är tillräckligt lång för att de ska kunna utföra sina uppgifter. |
 | **Prevention (Skydd)** | Kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för privilegierade roller är tillräckligt lång för att användarna ska kunna utföra sina uppgifter.</br>[Kräv Multi-Factor Authentication](pim-how-to-change-default-settings.md) för privilegierade roller som har konton som delas av flera administratörer. |
@@ -149,9 +156,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Administratörer använder inte sina privilegierade roller
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Användare som har tilldelats privilegierade roller som de inte behöver ökar risken för angrepp. Det är också enklare för angripare att befinna sig i konton som inte används aktivt. |
 | **Så här löser du?** | Granska användarna i listan och ta bort dem från privilegierade roller som de inte behöver. |
 | **Prevention (Skydd)** | Tilldela endast privilegierade roller till användare som har en affärs motivering. </br>Schemalägg vanliga [åtkomst granskningar](pim-how-to-start-security-review.md) för att kontrol lera att användarna fortfarande behöver åtkomst. |
@@ -161,9 +169,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Roller kräver inte Multi-Factor Authentication för aktivering
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Utan Multi-Factor Authentication kan komprometterade användare aktivera privilegierade roller. |
 | **Så här löser du?** | Granska listan över roller och [Kräv Multi-Factor Authentication](pim-how-to-change-default-settings.md) för varje roll. |
 | **Prevention (Skydd)** | [KRÄV MFA](pim-how-to-change-default-settings.md) för varje roll.  |
@@ -171,17 +180,19 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Organisationen har inte Azure AD Premium P2
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Den aktuella Azure AD-organisationen har inte Azure AD Premium P2. |
 | **Så här löser du?** | Läs mer om [Azure AD-versioner](../fundamentals/active-directory-whatis.md). Uppgradera till Azure AD Premium P2. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potentiella inaktuella konton i en privilegie rad roll
 
-| | |
+Allvarlighets grad: **medels Tor**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Medel |
 | **Varför får jag den här aviseringen?** | Konton i en privilegie rad roll har inte ändrat sitt lösen ord under de senaste 90 dagarna. Dessa konton kan vara tjänst eller delade konton som inte underhålls och är utsatta för angripare. |
 | **Så här löser du?** | Granska kontona i listan. Om de inte längre behöver åtkomst tar du bort dem från deras privilegierade roller. |
 | **Prevention (Skydd)** | Se till att konton som delas roterar starka lösen ord när det sker en ändring i användare som känner till lösen ordet. </br>Granska regelbundet konton med privilegierade roller med [åtkomst granskningar](pim-how-to-start-security-review.md) och ta bort roll tilldelningar som inte längre behövs. |
@@ -190,9 +201,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Roller tilldelas utanför Privileged Identity Management
 
-| | |
+Allvarlighets grad: **hög**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Högt |
 | **Varför får jag den här aviseringen?** | Privilegierade roll tilldelningar som görs utanför Privileged Identity Management övervakas inte korrekt och kan tyda på en aktiv attack. |
 | **Så här löser du?** | Granska användarna i listan och ta bort dem från privilegierade roller som tilldelats utanför Privileged Identity Management. |
 | **Prevention (Skydd)** | Undersök var användarna tilldelas privilegierade roller utanför Privileged Identity Management och förhindra framtida tilldelningar därifrån. |
@@ -200,9 +212,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="there-are-too-many-global-administrators"></a>Det finns för många globala administratörer
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Global administratör är den högsta privilegierade rollen. Om en global administratör komprometteras får angriparen åtkomst till alla deras behörigheter, vilket innebär att hela systemet är utsatt för risk. |
 | **Så här löser du?** | Granska användarna i listan och ta bort alla som inte absolut behöver rollen som global administratör. </br>Tilldela de här användarna lägre privilegierade roller i stället. |
 | **Prevention (Skydd)** | Tilldela användare den minst privilegierade rollen som de behöver. |
@@ -213,9 +226,10 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Roller aktive ras för ofta
 
-| | |
+Allvarlighets grad: **låg**
+
+| | Description |
 | --- | --- |
-| **Allvarlighetsgrad** | Låg |
 | **Varför får jag den här aviseringen?** | Flera aktiveringar till samma privilegierade roll av samma användare är ett tecken på ett angrepp. |
 | **Så här löser du?** | Granska användarna i listan och kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för deras privilegierade roll är tillräckligt lång för att de ska kunna utföra sina uppgifter. |
 | **Prevention (Skydd)** | Kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för privilegierade roller är tillräckligt lång för att användarna ska kunna utföra sina uppgifter.</br>[Kräv Multi-Factor Authentication](pim-how-to-change-default-settings.md) för privilegierade roller som har konton som delas av flera administratörer. |

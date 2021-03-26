@@ -9,19 +9,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199857"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564525"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrera databaser från SQL Server till SQL-hanterad instans med hjälp av tjänsten logga in Replay (för hands version)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 I den här artikeln förklaras hur du manuellt konfigurerar migrering av databasen från SQL Server 2008-2019 till Azure SQL-hanterad instans med hjälp av tjänsten logg repetition (LRS), för närvarande i offentlig för hands version. LRS är en moln tjänst som är aktive rad för SQL-hanterad instans och som baseras på SQL Server logg leverans teknik. 
 
-[Azure Database migration service](/azure/dms/tutorial-sql-server-to-managed-instance) och LRS använder samma underliggande teknik för migrering och samma API: er. Genom att släppa LRS aktiverar vi ytterligare komplexa anpassade migreringar och hybrid arkitektur mellan lokala SQL Server och SQL-hanterad instans.
+[Azure Database migration service](../../dms/tutorial-sql-server-to-managed-instance.md) och LRS använder samma underliggande teknik för migrering och samma API: er. Genom att släppa LRS aktiverar vi ytterligare komplexa anpassade migreringar och hybrid arkitektur mellan lokala SQL Server och SQL-hanterad instans.
 
 ## <a name="when-to-use-log-replay-service"></a>När du ska använda logg tjänsten för repetition
 
@@ -66,7 +66,7 @@ När LRS har stoppats, antingen automatiskt genom automatisk komplettering eller
     
 | Åtgärd | Information |
 | :----------------------------- | :------------------------- |
-| **1. Kopiera säkerhets kopior av databasen från SQL Server till Blob Storage**. | Kopiera fullständiga, differentiella och logga säkerhets kopior från SQL Server till en Blob Storage-behållare med hjälp av [AzCopy](/azure/storage/common/storage-use-azcopy-v10) eller [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). <br /><br />Använd alla fil namn. LRS kräver inte en speciell fil namngivnings konvention.<br /><br />När du migrerar flera databaser behöver du en separat mapp för varje databas. |
+| **1. Kopiera säkerhets kopior av databasen från SQL Server till Blob Storage**. | Kopiera fullständiga, differentiella och logga säkerhets kopior från SQL Server till en Blob Storage-behållare med hjälp av [AzCopy](../../storage/common/storage-use-azcopy-v10.md) eller [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). <br /><br />Använd alla fil namn. LRS kräver inte en speciell fil namngivnings konvention.<br /><br />När du migrerar flera databaser behöver du en separat mapp för varje databas. |
 | **2. Starta LRS i molnet**. | Du kan starta om tjänsten med ett val av cmdlet: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) eller Azure CLI ([az_sql_midb_log_replay_start cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Starta LRS separat för varje databas som pekar på en mapp för säkerhets kopiering på Blob Storage. <br /><br /> När du har startat tjänsten kommer den att ta säkerhets kopior från Blob Storage behållare och börja återställa dem på SQL-hanterad instans.<br /><br /> Om du har startat LRS i kontinuerligt läge kommer tjänsten att se om det finns nya filer som har överförts till mappen efter att alla inhämtade säkerhets kopior har återställts. Tjänsten tillämpar kontinuerligt loggar som baseras på LSN-kedjan tills den stoppas. |
 | **2,1. övervaka åtgärdens förlopp**. | Du kan övervaka förloppet för återställnings åtgärden med ett val av cmdlet: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) eller Azure CLI ([az_sql_midb_log_replay_show cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. stoppa åtgärden om det behövs**. | Om du behöver stoppa migreringsprocessen kan du välja cmdlet: PowerShell ([Stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) eller Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Om du stoppar åtgärden tas den databas som du återställer på SQL-hanterad instans bort. När du har stoppat en åtgärd kan du inte återuppta LRS för en databas. Du måste starta om migreringsprocessen från början. |
@@ -164,7 +164,7 @@ Azure Blob Storage används som mellanlagring för säkerhets kopiering av filer
 
 När du migrerar databaser till en hanterad instans med hjälp av LRS kan du använda följande metoder för att överföra säkerhets kopior till Blob Storage:
 - Använda SQL Server inbyggd funktion [för säkerhets kopiering till URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)
-- Använda [AzCopy](/azure/storage/common/storage-use-azcopy-v10) eller [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) för att överföra säkerhets kopior till en BLOB-behållare
+- Använda [AzCopy](../../storage/common/storage-use-azcopy-v10.md) eller [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) för att överföra säkerhets kopior till en BLOB-behållare
 - Använda Storage Explorer i Azure Portal
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Gör säkerhets kopieringar från SQL Server direkt till Blob Storage

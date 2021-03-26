@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 68e947a6e13ba5195815fe966ec69ec6a2f4b8e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700982"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562978"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Översikt över Azure Monitor mått
 Azure Monitor mått är en funktion i Azure Monitor som samlar in numeriska data från [övervakade resurser](../monitor-reference.md) i en tids serie databas. Mått är numeriska värden som samlas in med jämna mellanrum och beskriver lite aspekt av ett system vid en viss tidpunkt. Mått i Azure Monitor är lätta och kan stödja scenarier i nära real tid som gör det särskilt användbart för aviseringar och snabb identifiering av problem. Du kan analysera dem interaktivt med Metrics Explorer och proaktivt meddelas via en avisering när ett värde korsar ett tröskelvärde eller visualisera dem i en arbets bok eller instrument panel.
@@ -27,7 +27,7 @@ Azure Monitor mått är en funktion i Azure Monitor som samlar in numeriska data
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Vad kan du göra med Azure Monitor mått?
 I följande tabell visas de olika sätt som du kan använda mått i Azure Monitor.
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Analysera** | Använd [Metrics Explorer](metrics-charts.md) för att analysera insamlade mått i ett diagram och jämföra mått från olika resurser. |
 | **Varning** | Konfigurera en [regel för mått varningar](../alerts/alerts-metric.md) som skickar ett meddelande eller [automatiserar en åtgärd](../alerts/action-groups.md) när mått värdet korsar ett tröskelvärde. |

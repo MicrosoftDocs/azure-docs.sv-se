@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738981"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557725"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Azures säkerhets bas linje för Azure Resource Graph
 
@@ -30,7 +30,7 @@ Om du vill se hur Azure Resource Graph fullständigt mappar till Azures säkerhe
 
 **Vägledning**: Azure Resource Graph ger till gång till resurs typer och egenskaper baserat på Azure-rollbaserade åtkomst kontroller (Azure RBAC). Granska och granska åtkomst beviljad till säkerhets objekt (användare, grupper och tjänst konton) regelbundet för att se till att frågor returnerar resultat för lämpliga resurser.
 
-- [Behörigheter i Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Behörigheter i Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
 - [Så här använder du granskningar av Azure Identity Access](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Om du vill se hur Azure Resource Graph fullständigt mappar till Azures säkerhe
 
 **Vägledning**: Använd Azure RBAC för att kontrol lera åtkomsten till data och resurser. Om du vill använda Azure Resource Graph måste du också ha nödvändig åtkomst till de resurser som du vill fråga. Den här åtkomsten bör begränsas till skrivskyddad och beviljas endast för nödvändig personal.
 
-- [Behörigheter i Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Behörigheter i Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
 - [Så här konfigurerar du Azure RBAC](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Om du vill se hur Azure Resource Graph fullständigt mappar till Azures säkerhe
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../../../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../../../security/benchmarks/security-baselines-overview.md)

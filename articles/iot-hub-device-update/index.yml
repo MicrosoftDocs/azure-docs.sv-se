@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 76678a5695fdffd5325543a28398e867ab3ab6f5
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665787"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105560394"
 landingContent:
 - title: Om enhets uppdatering
   linkLists:
@@ -24,6 +24,18 @@ landingContent:
     links:
     - text: Vad är enhets uppdatering för IoT Hub?
       url: understand-device-update.md
+- title: Läs mer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Skapa ett konto för enhets uppdatering
+      url: create-device-update-account.md
+    - text: Importera en uppdatering
+      url: import-update.md
+    - text: Skapa en uppdaterings grupp
+      url: create-update-group.md
+    - text: Distribuera en uppdatering
+      url: deploy-update.md
   - linkListType: concept
     links:
     - text: Hur enhets uppdatering använder Plug and Play
@@ -36,41 +48,19 @@ landingContent:
       url: import-concepts.md
     - text: Förstå enhets uppdaterings grupper
       url: device-update-groups.md
-- title: Utforska med självstudierna
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Enhets uppdatering på Raspberry Pi
-      url: device-update-raspberry-pi.md
-  - linkListType: tutorial
-    links:
-    - text: Enhets uppdatering på en simulator
-      url: device-update-simulator.md
-  - linkListType: tutorial
-    links:
-    - text: Enhets uppdatering på Ubuntu Server 18,04 x64 Package agent
-      url: device-update-ubuntu-agent.md
-- title: Lär dig hur du uppdaterar enheter
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Skapa ett konto för enhets uppdatering
-      url: create-device-update-account.md
-  - linkListType: how-to-guide
-    links:
-    - text: Importera en uppdatering
-      url: import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Skapa en uppdaterings grupp
-      url: create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: Distribuera en uppdatering
-      url: deploy-update.md
 - title: Utvecklarguide
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Skapa, köra och ändra enhets uppdaterings agenten
       url: device-update-agent-provisioning.md
+- title: Kom igång
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Enhets uppdatering på en simulator
+      url: device-update-simulator.md
+    - text: Enhets uppdatering på Raspberry Pi
+      url: device-update-raspberry-pi.md
+    - text: Enhets uppdatering på Ubuntu Server 18,04 x64 Package agent
+      url: device-update-ubuntu-agent.md

@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102227406"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568546"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>Självstudie – konfigurera en tre nods Always on-tillgänglighetsgrupper med DH2i DxEnterprise som körs på Linux-baserade Azure-Virtual Machines
 
@@ -39,22 +39,22 @@ I den här självstudien ska vi konfigurera ett DxEnterprise-kluster med hjälp 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Skapa fyra virtuella datorer i Azure. Följ [snabb starten: skapa en virtuell Linux-dator i Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) artikeln för att skapa Linux-baserade virtuella datorer. På samma sätt, för att skapa den Windows-baserade virtuella datorn, följer du [snabb start: skapa en virtuell Windows-dator i Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) artikeln.
-- Installera .NET 3,1 på alla Linux-baserade virtuella datorer som ska ingå i klustret. Följ anvisningarna som beskrivs [här](https://docs.microsoft.com/dotnet/core/install/linux) baserat på det Linux-operativsystem som du väljer.
+- Skapa fyra virtuella datorer i Azure. Följ [snabb starten: skapa en virtuell Linux-dator i Azure Portal](../../../virtual-machines/linux/quick-create-portal.md) artikeln för att skapa Linux-baserade virtuella datorer. På samma sätt, för att skapa den Windows-baserade virtuella datorn, följer du [snabb start: skapa en virtuell Windows-dator i Azure Portal](../../../virtual-machines/windows/quick-create-portal.md) artikeln.
+- Installera .NET 3,1 på alla Linux-baserade virtuella datorer som ska ingå i klustret. Följ anvisningarna som beskrivs [här](/dotnet/core/install/linux) baserat på det Linux-operativsystem som du väljer.
 - En giltig DxEnterprise-licens med aktiverade tillgänglighets grupp hanterings funktioner krävs. Mer information finns i [DxEnterprise kostnads fri utvärderings version](https://dh2i.com/trial/) om hur du kan få en kostnads fri utvärderings version.
 
 ## <a name="install-sql-server-on-all-the-azure-vms-that-will-be-part-of-the-availability-group"></a>Installera SQL Server på alla virtuella Azure-datorer som ska ingå i tillgänglighets gruppen
 
-I den här självstudien konfigurerar vi ett Linux-baserat kluster med tre noder som kör tillgänglighets gruppen. Följ dokumentationen för [SQL Server installation på Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview#install) baserat på valet av Linux-plattform. Vi rekommenderar också att du installerar [SQL Server verktyg](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) för den här självstudien.
+I den här självstudien konfigurerar vi ett Linux-baserat kluster med tre noder som kör tillgänglighets gruppen. Följ dokumentationen för [SQL Server installation på Linux](/sql/linux/sql-server-linux-overview#install) baserat på valet av Linux-plattform. Vi rekommenderar också att du installerar [SQL Server verktyg](/sql/linux/sql-server-linux-setup-tools) för den här självstudien.
  
 > [!NOTE]
-> Se till att det Linux-OS du väljer är en gemensam distribution som stöds av både [DH2i DxEnterprise (se avsnittet minimala system krav)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) och [Microsoft SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
+> Se till att det Linux-OS du väljer är en gemensam distribution som stöds av både [DH2i DxEnterprise (se avsnittet minimala system krav)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) och [Microsoft SQL Server](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
 >
 > I det här exemplet använder vi Ubuntu 18,04, som stöds av både DH2i DxEnterprise och Microsoft SQL Server.
 
 I den här självstudien kommer vi inte att installera SQL Server på den virtuella Windows-datorn eftersom den här noden inte kommer att ingå i klustret, och används endast för att hantera klustret med hjälp av DxAdmin.
 
-När du har slutfört det här steget bör du ha SQL Server och [SQL Server verktyg](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) (valfritt) installerat på alla tre Linux-baserade virtuella datorer som ska ingå i tillgänglighets gruppen.
+När du har slutfört det här steget bör du ha SQL Server och [SQL Server verktyg](/sql/linux/sql-server-linux-setup-tools) (valfritt) installerat på alla tre Linux-baserade virtuella datorer som ska ingå i tillgänglighets gruppen.
  
 ## <a name="install-dxenterprise-on-all-the-vms-and-configure-the-cluster"></a>Installera DxEnterprise på alla virtuella datorer och konfigurera klustret
 
@@ -84,7 +84,7 @@ Om du bara vill installera klient verktyget DxAdmin på den virtuella Windows-da
 Efter det här steget bör du ha DxEnterprise-klustret skapat på de virtuella Linux-datorerna och DxAdmin-klienten som är installerad på Windows-klientdatorn. 
 
 > [!NOTE]
-> Du kan också skapa ett kluster med tre noder där en av noden läggs till som *enbart konfigurations läge*, enligt beskrivningen [här](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) för att aktivera automatisk redundans. 
+> Du kan också skapa ett kluster med tre noder där en av noden läggs till som *enbart konfigurations läge*, enligt beskrivningen [här](/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) för att aktivera automatisk redundans. 
 
 ## <a name="create-the-virtual-hosts-to-provide-failover-support-and-high-availability"></a>Skapa virtuella värdar för att tillhandahålla stöd för redundans och hög tillgänglighet
 
@@ -100,7 +100,7 @@ Anslut till Windows-klientdatorn som kör DxAdmin för att ansluta till klustret
 
 ## <a name="create-the-internal-azure-load-balancer-for-listener-optional"></a>Skapa den interna Azure Load Balancer för lyssnare (valfritt)
 
-I det här valfria steget kan du skapa och konfigurera den Azure Load Balancer som innehåller IP-adresserna för tillgänglighets gruppens lyssnare. Mer information om Azure Load Balancer finns [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Om du vill konfigurera Azure Load Balancer och tillgänglighets gruppens lyssnare med hjälp av DxAdmin, följer du DxEnterprise [Azure Load Balancer Snabbstartsguide](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/).
+I det här valfria steget kan du skapa och konfigurera den Azure Load Balancer som innehåller IP-adresserna för tillgänglighets gruppens lyssnare. Mer information om Azure Load Balancer finns [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md). Om du vill konfigurera Azure Load Balancer och tillgänglighets gruppens lyssnare med hjälp av DxAdmin, följer du DxEnterprise [Azure Load Balancer Snabbstartsguide](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/).
 
 Efter det här steget bör du ha en lyssnare för tillgänglighets grupp skapad och mappad till den interna Azure Load Balancer.
 
@@ -121,7 +121,7 @@ Mer information om fler åtgärder inom DxEnterprise finns i [Administratörs gu
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [tillgänglighets grupper i Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-availability-group-overview)
-- [Snabb start: skapa en virtuell Linux-dator i Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
-- [Snabbstart: Skapa en virtuell Windows-dator i Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-- [Plattformar som stöds för SQL Server 2019 i Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
+- Lär dig mer om [tillgänglighets grupper i Linux](/sql/linux/sql-server-linux-availability-group-overview)
+- [Snabb start: skapa en virtuell Linux-dator i Azure Portal](../../../virtual-machines/linux/quick-create-portal.md)
+- [Snabbstart: Skapa en virtuell Windows-dator i Azure Portal](../../../virtual-machines/windows/quick-create-portal.md)
+- [Plattformar som stöds för SQL Server 2019 i Linux](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)

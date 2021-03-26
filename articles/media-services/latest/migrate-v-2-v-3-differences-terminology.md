@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705406"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559884"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminologi och enhets ändringar mellan Media Services v2 och v3
 
@@ -56,7 +56,7 @@ Granska de namngivnings konventioner som tillämpas på Media Services v3-resurs
 | `Job`<!-- row --> | `Job` | Skapa en `Transform` innan du skapar en `Job` . | Inga | Inga |
 | `JobTemplate`<!-- row --> | `Transform` | Använd en `Transform` i stället. En transformering är en separat entitet från ett jobb och kan återanvändas. | Inga | Inga |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Ja | Inga |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | I stället för att söka efter `MediaProcessor` namn använder du önskad för inställning när du definierar en transformering. Den för inställning som används avgör vilken Media processor som används av jobb systemet. Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Inga | NA (ReadOnly i v2) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | I stället för att söka efter `MediaProcessor` namn använder du önskad för inställning när du definierar en transformering. Den för inställning som används avgör vilken Media processor som används av jobb systemet. Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (ReadOnly i v2) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | Meddelanden i v3 hanteras via Azure Event Grid. `NotificationEndpoint`Ersätts av event Grid prenumerations registrering som också kapslar in konfigurationen för de typer av meddelanden som ska tas emot (som i v2 hanterades av `JobNotificationSubscription` jobbet, `TaskNotificationSubscription` för aktiviteten och telemetri `ComponentMonitoringSetting` ). Den 2: a telemetri delas mellan Azure Event Grid och Azure Monitor för att passa in i förbättringarna av det större Azure-eko systemet. | Inga | Inga |
 | `Program`<!-- row --> | `LiveOutput` | Live-utdata ersätter nu program i v3-API: et.  | Inga | Inga |
 | `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Slut punkter för direkt uppspelning förblir i huvudsak samma. De används för dynamisk paketering, kryptering och leverans av HLS-och tank streck för både Live och on-demand streaming, antingen direkt från ursprung eller via CDN. Nya funktioner är stöd för bättre Azure Monitor integrering och diagramering. |  Ja | Ja |
@@ -90,7 +90,3 @@ Granska de namngivnings konventioner som tillämpas på Media Services v3-resurs
 | Vänte läge för Live-händelse <!--new row --> | Det finns inget vänte läge för v2. | I det här läget finns en ny v3-funktion som hjälper dig att hantera frekventa pooler med Live-händelser. Kunder kan nu starta en Live-händelse i stand-by-läge till lägre kostnad innan den övergår till körnings tillstånd. Detta förbättrar kanalens start tider och minskar kostnaderna för att använda heta pooler för snabbare start av UPS. |
 | Direkt fakturering av evenemang <!--new row --> | <!-- empty-->| Faktureringen av Live-händelser baseras på Live Channel-mätare. |
 | Live-utdata <!--new row --> | Programmen måste startas när de har skapats. | Liveutdata startar när de skapas och avbryts när de tas bort. |
-
-## <a name="next-steps"></a>Nästa steg
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

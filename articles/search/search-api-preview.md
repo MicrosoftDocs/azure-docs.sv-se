@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: 2d3d1669dda4cbed1da7954558e99166faec5613
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041985"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563743"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Förhands gransknings funktioner i Azure Kognitiv sökning
 
@@ -23,13 +23,13 @@ Förhands gransknings funktioner som övergår till allmän tillgänglighet tas 
 
 |Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Beskrivning | Tillgänglighet  |
 |---------|------------------|-------------|---------------|
-| [**Semantisk sökning**](semantic-search-overview.md) | Relevans (Poängsättning) | En semantisk ranknings algoritm, frågetyp och svar på frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
-| [**stavningskontroll**](cognitive-search-aml-skill.md) | Fråga | Valfri stavnings korrigering för frågeterm-indata för enkla, fullständiga och semantiska frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
-| [**SharePoint Online-indexerare**](search-howto-index-sharepoint-online.md) | Indexerare data Källa | Ny data källa för indexerad indexering av SharePoint-innehåll. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
+| [**Semantisk sökning**](semantic-search-overview.md) | Relevans (Poängsättning) | Semantisk rangordning av resultat, under texter och svar. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/preview-api/search-documents) och Sök Utforskaren (portal). |
+| [**stavningskontroll**](cognitive-search-aml-skill.md) | Fråga | Valfri stavnings korrigering för frågeterm-indata för enkla, fullständiga och semantiska frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/preview-api/search-documents) |
+| [**SharePoint Online-indexerare**](search-howto-index-sharepoint-online.md) | Indexerare data Källa | Ny data källa för indexerad indexering av SharePoint-innehåll. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/preview-api/create-indexer) |
 | [**Azure Machine Learning (AML) kunskap**](cognitive-search-aml-skill.md) | AI-berikning| En ny färdighets typ som integrerar en inferencing-slutpunkt från Azure Machine Learning. Kom igång med [den här självstudien](cognitive-search-tutorial-aml-custom-skill.md). | Använd [sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) eller 2019-05-06 – för hands version. Det finns även i portalen, i färdigheter design, förutsatt att Kognitiv sökning och Azure ML-tjänster distribueras i samma prenumeration. |
 | [**featuresMode-parameter**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | Relevans (Poängsättning) | Utökning av relevans för att inkludera information: per fält likhets poäng, per fält villkors frekvens och per fält antal unika tokens matchade. Du kan använda dessa data punkter i [anpassade bedömnings lösningar](https://github.com/Azure-Samples/search-ranking-tutorial). | Lägg till den här Frågeparametern med [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) med API-version = 2020-06 -30-preview eller 2019-05-06-Preview. |
 | [**Felsöka sessioner**](cognitive-search-debug-session.md) | Portal, AI-anrikning (färdigheter) | Ett färdigheter-redigeringsprogram i sessionen som används för att undersöka och lösa problem med en färdigheter. Korrigeringar som tillämpas under en felsökningssession kan sparas i en färdigheter i tjänsten. | Endast Portal, med länkar mellan sidor på översikts sidan för att öppna en felsökningssession. |
-| [**Mjuk borttagning av inbyggd BLOB**](search-howto-index-changed-deleted-blobs.md) | Indexerare, Azure-blobar| Azure Blob Storage-indexeraren i Azure Kognitiv sökning identifierar blobbar som är i ett mjukt borttaget läge och tar bort motsvarande sökdokument under indexeringen. | Lägg till den här konfigurations inställningen med hjälp av [skapa indexerare (rest)](/rest/api/searchservice/create-indexer) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |
+| [**Mjuk borttagning av inbyggd BLOB**](search-howto-index-changed-deleted-blobs.md) | Indexerare, Azure-blobar| Azure Blob Storage-indexeraren i Azure Kognitiv sökning identifierar blobbar som är i ett mjukt borttaget läge och tar bort motsvarande sökdokument under indexeringen. | Lägg till den här konfigurations inställningen med hjälp av [skapa indexerare (rest)](/rest/api/searchservice/preview-api/create-indexer) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |
 | [**Anpassad Sök kompetens för entitet**](cognitive-search-skill-custom-entity-lookup.md ) | AI-anrikning (färdigheter) | En kognitiv färdighet som söker efter text från en anpassad, användardefinierad lista med ord och fraser. Med den här listan etiketteras alla dokument med matchande entiteter. Kompetensen har även stöd för en viss fuzzy-matchning som kan användas för att söka efter matchningar som liknar varandra, men som inte exakt stämmer. | Referera till förhands gransknings kunskapen med färdigheter-redigeraren i portalen eller [skapa färdigheter (rest)](/rest/api/searchservice/create-skillset) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |
 | [**Kompetens för identifiering av PII**](cognitive-search-skill-pii-detection.md) | AI-anrikning (färdigheter) | En kognitiv kunskap som används vid indexering som extraherar personlig information från en indata-text och ger dig möjlighet att maskera den från den texten på olika sätt. | Referera till förhands gransknings kunskapen med färdigheter-redigeraren i portalen eller [skapa färdigheter (rest)](/rest/api/searchservice/create-skillset) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |
 | [**Inkrementellt berikande**](cognitive-search-incremental-indexing-conceptual.md) | Indexerings konfiguration| Lägger till cachelagring i en anriknings pipeline, så att du kan återanvända befintliga utdata om en viss ändring, till exempel en uppdatering av en färdigheter eller ett annat objekt, inte ändrar innehållet. Cachelagring gäller endast för berikade dokument som produceras av en färdigheter.| Lägg till den här konfigurations inställningen med hjälp av [skapa indexerare (rest)](/rest/api/searchservice/create-indexer) med API-version = 2020-06 -30-Preview eller API-version = 2019-05 -06-Preview. |

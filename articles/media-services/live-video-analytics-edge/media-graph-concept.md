@@ -3,12 +3,12 @@ title: Media Graph-koncept – Azure
 description: Med ett medie diagram kan du definiera var mediet ska samlas in, hur det ska bearbetas och var resultatet ska levereras. Den här artikeln innehåller en detaljerad beskrivning av media Graph-konceptet.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97401108"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557674"
 ---
 # <a name="media-graph"></a>Mediegraf
 
@@ -74,7 +74,7 @@ Med en RTSP-källmapp kan du mata in media från en [RTSP](https://tools.ietf.or
 
 #### <a name="iot-hub-message-source"></a>IoT Hub meddelande källa 
 
-Precis som andra [IoT Edge moduler](../../iot-edge/iot-edge-glossary.md#iot-edge-module)kan live video analys i IoT Edge-modulen ta emot meddelanden via [IoT Edge hubben](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). Dessa meddelanden kan skickas från andra moduler eller appar som körs på gräns enheten eller från molnet. Sådana meddelanden levereras (dirigeras) till en [namngiven inmatning](../../iot-edge/module-composition.md#sink) i modulen. En nod för IoT Hub-meddelande källa tillåter att sådana meddelanden når ett medie diagram. Dessa meddelanden eller signaler kan sedan användas internt i medie diagrammet, vanligt vis för att aktivera signal portar (se [signal grindar](#signal-gate-processor) nedan). 
+Precis som andra [IoT Edge moduler](../../iot-fundamentals/iot-glossary.md#iot-edge)kan live video analys i IoT Edge-modulen ta emot meddelanden via [IoT Edge hubben](../../iot-fundamentals/iot-glossary.md#iot-edge-hub). Dessa meddelanden kan skickas från andra moduler eller appar som körs på gräns enheten eller från molnet. Sådana meddelanden levereras (dirigeras) till en [namngiven inmatning](../../iot-edge/module-composition.md#sink) i modulen. En nod för IoT Hub-meddelande källa tillåter att sådana meddelanden når ett medie diagram. Dessa meddelanden eller signaler kan sedan användas internt i medie diagrammet, vanligt vis för att aktivera signal portar (se [signal grindar](#signal-gate-processor) nedan). 
 
 Du kan till exempel ha en IoT Edge-modul som genererar ett meddelande när en dörr öppnas. Meddelandet från modulen kan dirigeras till IoT Edge Hub, där det kan dirigeras till IoT Hub-meddelande källan för ett medie diagram. I medie grafen kan IoT Hub-meddelande källan skicka händelsen till en signal grind processor, som sedan kan aktivera inspelning av videon från en RTSP-källa till en fil. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 175fb82a5fdf300915f89c3d8cdc238638a742e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100920"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565137"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Snabb start: skapa en Azure frontend-dörr standard/Premium-profil – Azure Portal
 
@@ -58,7 +58,7 @@ Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](htt
     | **Slut punkts namn** | Ange ett globalt unikt namn för din slut punkt. |
     | **Ursprungstyp** | Välj typ av resurs för ditt ursprung. I det här exemplet väljer vi en app service som det ursprung som har privat länk aktive rad. |
     | **Ursprungs värd namn** | Ange värd namnet för ditt ursprung. |
-    | **Aktivera privat länk** | Om du vill ha en privat anslutning mellan din Azure-front dörr och ditt ursprung. Mer information finns i [vägledning för privat länk](concept-private-link.md) och [aktivera privat länk](how-to-enable-private-link.md).
+    | **Aktivera privat länk** | Om du vill ha en privat anslutning mellan din Azure-front dörr och ditt ursprung. Mer information finns i [vägledning för privat länk](concept-private-link.md) och [aktivera privat länk](./how-to-enable-private-link-web-app.md).
     | **Cachelagring** | Markera kryss rutan om du vill cachelagra innehåll närmare användare som globalt använder Azures frontend-pop och Microsoft Network. |
     | **WAF-princip** | Välj **Skapa ny** eller Välj en befintlig WAF-princip i list rutan om du vill aktivera den här funktionen. |
 

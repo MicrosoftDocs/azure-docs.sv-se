@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 43853f2eba05794540a72fe64e748fcafd9073d2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 16dc95d4e32c683634aa2d96fc2af281612346e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102638666"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568315"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet med hjälp av Azure CLI och python
 
@@ -355,7 +355,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
    Ditt Azure Resource Manager-klient-ID är hårdkodat. Ditt Azure Resource Manager klient-ID och Azure Resource Manager prenumerations-ID finns både i utdata från `az login` kommandot som du körde tidigare. Den Azure Resource Manager klient hemligheten är det Azure Resource Manager lösen ord som du har angett.
 
-   Mer information finns i [Azure Resource Manager Password](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
+   Mer information finns i [Azure Resource Manager Password](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password).
 
 5. Ändra profilen till version 2019-03-01 – hybrid. Om du vill ändra profil versionen kör du följande kommando:
 

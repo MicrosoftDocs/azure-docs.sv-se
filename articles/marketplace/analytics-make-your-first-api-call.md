@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 2d0c0e7322ecb92fd371f5bf7924a370dd29fe85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 65ee0847e6a59976eec223b68b1f3e0c464674e8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102584186"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563811"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>Gör ditt första API-anrop till att få åtkomst till kommersiella Marketplace Analytics-data
 
@@ -50,7 +50,7 @@ curl --location --request POST 'https://login.microsoftonline.com/{TenantId}/oau
 }
 ```
 
-Mer information om hur du skaffar en Azure AD-token för ditt program finns i [Access Analytics-data med Store-tjänster](https://docs.microsoft.com/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token).
+Mer information om hur du skaffar en Azure AD-token för ditt program finns i [Access Analytics-data med Store-tjänster](/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token).
 
 ## <a name="programmatic-api-call"></a>API-anrop i programmering
 

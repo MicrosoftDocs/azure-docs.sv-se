@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097286"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567720"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure privat länk för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -62,7 +62,7 @@ Klienter kan ansluta till den privata slut punkten från samma virtuella nätver
 
  ![Diagram över anslutnings alternativ][1]
 
-Dessutom kan tjänster som inte körs direkt i det virtuella nätverket, men som är integrerade med det (till exempel App Service webbappar eller funktioner) också få privat anslutning till-databasen. Mer information om det här speciella användnings fallet finns i [webb programmet med en privat anslutning till arkitektur scenariot för Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) .
+Dessutom kan tjänster som inte körs direkt i det virtuella nätverket, men som är integrerade med det (till exempel App Service webbappar eller funktioner) också få privat anslutning till-databasen. Mer information om det här speciella användnings fallet finns i [webb programmet med en privat anslutning till arkitektur scenariot för Azure SQL Database](/azure/architecture/example-scenario/private-web-app/private-web-app) .
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Testa anslutningen till SQL Database från en virtuell Azure-dator i samma virtuella nätverk
 
@@ -185,7 +185,7 @@ PolyBase och KOPIERINGs instruktionen används ofta för att läsa in data i Azu
 
 - En översikt över Azure SQL Database säkerhet finns i [skydda databasen](security-overview.md)
 - En översikt över Azure SQL Database-anslutningar finns i [arkitektur för Azure SQL-anslutning](connectivity-architecture.md)
-- Du kanske också är intresse rad av [webbappen med privat anslutning till arkitektur scenario för Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , som ansluter ett webb program utanför det virtuella nätverket till den privata slut punkten för en databas.
+- Du kanske också är intresse rad av [webbappen med privat anslutning till arkitektur scenario för Azure SQL Database](/azure/architecture/example-scenario/private-web-app/private-web-app) , som ansluter ett webb program utanför det virtuella nätverket till den privata slut punkten för en databas.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

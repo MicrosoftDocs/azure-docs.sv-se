@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071382"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568667"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Felsöka replikeringsfel i VM-migrering utan agent
 
@@ -292,7 +292,7 @@ Det här problemet uppstår när vCenter Server hanterings agenter slutar funger
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Fel meddelande: ett internt fel uppstod. [Storlek på ögonblicks bild disk ogiltig]
 
-Detta är ett känt VMware-problem där disk storleken som anges av Snapshot blir noll. Följ den upplösning som angavs i [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972).
+Detta är ett känt VMware-problem där disk storleken som anges av Snapshot blir noll. Följ den upplösning som angavs i [VMware KB](https://kb.vmware.com/s/).
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fel meddelande: ett internt fel uppstod. [Det gick inte att allokera minne. Slut på minne.]
 

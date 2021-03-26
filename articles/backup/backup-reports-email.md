@@ -3,12 +3,12 @@ title: E-Azure Backup rapporter
 description: Skapa automatiserade uppgifter för att ta emot periodiska rapporter via e-post
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510570"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561346"
 ---
 # <a name="email-azure-backup-reports"></a>E-Azure Backup rapporter
 
@@ -30,7 +30,7 @@ Utför följande steg för att konfigurera e-postuppgifter via säkerhets kopier
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>Auktorisera anslutningar till Azure Monitor loggar och Office 365
 
-Logic app använder [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/) -anslutaren för att skicka frågor till de La arbets ytorna och använder [Office365 Outlook](https://docs.microsoft.com/connectors/office365connector/) Connector för att skicka e-post. Du måste utföra en engångs auktorisering för dessa två kopplingar. 
+Logic app använder [azuremonitorlogs](/connectors/azuremonitorlogs/) -anslutaren för att skicka frågor till de La arbets ytorna och använder [Office365 Outlook](/connectors/office365connector/) Connector för att skicka e-post. Du måste utföra en engångs auktorisering för dessa två kopplingar. 
  
 Följ stegen nedan för att utföra auktoriseringen:
 
@@ -79,4 +79,4 @@ Så här felsöker du problemet:
 Kontakta Microsoft-supporten om problemet kvarstår.
 
 ## <a name="next-steps"></a>Nästa steg
-[Läs mer om Backup-rapporter](https://docs.microsoft.com/azure/backup/configure-reports)
+[Läs mer om Backup-rapporter](./configure-reports.md)

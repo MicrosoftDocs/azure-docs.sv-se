@@ -7,12 +7,12 @@ ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 9ffba221625c57332cd695125651d92adc11cf60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200382"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558303"
 ---
 # <a name="test-a-virtual-machine-image"></a>Testa en avbildning av en virtuell dator
 
@@ -28,7 +28,7 @@ Så här distribuerar du en virtuell dator från avbildningen av den delade avbi
 1. Klicka på granska + skapa. När verifieringen har slutförts klickar du på skapa
 
 > [!NOTE]
-> Om du behöver skapa en virtuell dator från en VHD-fil följer du anvisningarna i följande artiklar, [förbereder en Azure Resource Manager mall](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#prepare-an-azure-resource-manager-template) eller [distribuerar en virtuell Azure-dator med hjälp av PowerShell](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#deploy-an-azure-vm-using-powershell).
+> Om du behöver skapa en virtuell dator från en VHD-fil följer du anvisningarna i följande artiklar, [förbereder en Azure Resource Manager mall](#connect-the-certification-tool-to-a-vm-image) eller [distribuerar en virtuell Azure-dator med hjälp av PowerShell](#how-to-use-powershell-to-consume-the-self-test-api).
 
 Den här artikeln beskriver hur du testar och skickar en virtuell dator avbildning (VM) på den kommersiella Marketplace för att säkerställa att den uppfyller de senaste publicerings kraven för Azure Marketplace.
 

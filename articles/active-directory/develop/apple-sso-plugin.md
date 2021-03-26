@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 24a538686e101d40daba008f30a72ffc5078047a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104674533"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559136"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-plugin-program för Apple-enheter (för hands version)
 
@@ -52,14 +52,14 @@ Använda Microsoft Enterprise SSO-plugin-programmet för Apple-enheter:
 - Enheten måste vara *registrerad i MDM*, till exempel via Microsoft Intune.
 - Konfigurationen måste skickas *till enheten* för att aktivera SSO-plugin-programmet för företag. Apple kräver denna säkerhets begränsning.
 
-iOS-krav:
+### <a name="ios-requirements"></a>iOS-krav:
 - iOS 13,0 eller senare måste vara installerat på enheten.
-- Ett Microsoft-program som tillhandahåller Microsoft Enterprise SSO-plugin-programmet för Apple-enheter måste installeras på enheten. I den offentliga för hands versionen är det här programmet [Microsoft Authenticator-appen](/intune/user-help/user-help-auth-app-overview.md).
+- Ett Microsoft-program som tillhandahåller Microsoft Enterprise SSO-plugin-programmet för Apple-enheter måste installeras på enheten. För en offentlig för hands version är de här programmen [Microsoft Authenticator-appen](/azure/active-directory/user-help/user-help-auth-app-overview).
 
 
-macOS-krav:
-- macOS 10,15 eller senare måste vara installerat på enheten. 
-- Ett Microsoft-program som tillhandahåller Microsoft Enterprise SSO-plugin-programmet för Apple-enheter måste installeras på enheten. I den offentliga för hands versionen är det här programmet [Intune-företagsportal-appen](/intune/user-help/enroll-your-device-in-intune-macos-cp.md).
+### <a name="macos-requirements"></a>macOS-krav:
+- macOS 10,15 eller högre måste vara installerat på enheten. 
+- Ett Microsoft-program som tillhandahåller Microsoft Enterprise SSO-plugin-programmet för Apple-enheter måste installeras på enheten. För den allmänt tillgängliga för hands versionen inkluderar programmen [Intune-företagsportal-appen](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp).
 
 ## <a name="enable-the-sso-plug-in"></a>Aktivera SSO-plugin-programmet
 

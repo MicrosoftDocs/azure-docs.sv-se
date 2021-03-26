@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: c3a0a8bd5805757b92e3f5b046335c8883b4ba72
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: bf311eb2b2d0ff7a9c17380d2e384bc05c6f05f3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888931"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562043"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Semantisk rangordning i Azure Kognitiv sökning
 
@@ -24,32 +24,34 @@ Semantisk rangordning är ett tillägg till pipeline för frågekörningen som f
 
 Semantisk rangordning är både resurs-och tids intensiv. För att kunna slutföra bearbetningen inom den förväntade svars tiden för en fråga konsol IDE ras och minskas indata till semantisk rangordning så att den underliggande sammanfattningen och omrangering av stegen kan slutföras så snabbt som möjligt.
 
-## <a name="preparation-for-semantic-ranking"></a>Förberedelse för semantisk rangordning
+## <a name="pre-processing"></a>För bearbetning
 
-Före en bedömning av relevans måste innehållet minskas till ett antal indata som kan hanteras effektivt av semantisk rangation. Innehålls minskning innehåller följande steg.
+Före en bedömning av relevans måste innehållet minskas till ett hanterbart antal indata som kan hanteras effektivt av semantisk rangation.
 
-1. Innehålls minskningen börjar med att använda den första resultat uppsättningen som returnerades av standard [rangordningen för likheter](index-ranking-similarity.md) som används för nyckelords sökning. Sök resultaten kan innehålla upp till 1 000 träffar, men semantisk rangordning bearbetar bara den översta 50. 
+1. För det första börjar innehålls minskningen med den första resultat uppsättningen som returnerades av standard [rangordningen för likheter](index-ranking-similarity.md) som används för nyckelords sökning. För en specifik fråga kan resultaten vara en fåtal av dokument, upp till max gränsen på 1 000. Eftersom bearbetning av ett stort antal matchningar skulle ta för lång tid tar det bara det översta 50-förloppet till semantisk rangordning.
 
-   Med tanke på frågan kan de första resultaten vara mycket mindre än 50, beroende på hur många matchningar som hittades. Oavsett antalet dokument är den första resultat uppsättningen sökkorpus för semantisk rangordning.
+   Oavsett dokument antal, anger om en eller 50 den första iterationen av dokumentet sökkorpus för semantisk rangordning.
 
-1. I dokumentet sökkorpus extraheras innehållet i varje fält i "searchFields" och kombineras till en lång sträng.
+1. Därefter extraheras innehållet i varje fält i "searchFields" och kombineras till en lång sträng i sökkorpus.
 
-1. Alla strängar som är alltför långa rensas för att säkerställa att den totala längden uppfyller ingångs kraven för sammanfattnings steget. Den här trimnings övningen är varför det är viktigt att placera koncisa fält först i "searchFields" för att se till att de ingår i strängen. Om du har mycket stora dokument med text – tungt fält, kommer allt efter den maximala gränsen att ignoreras.
+1. Efter sträng konsolideringen rensas alla strängar som är alltför långa för att säkerställa att den totala längden uppfyller de krav som infaller i sammanfattnings steget.
+
+   Den här trimnings övningen är varför det är viktigt att placera koncisa fält först i "searchFields" för att se till att de ingår i strängen. Om du har mycket stora dokument med text – tungt fält, kommer allt efter den maximala gränsen att ignoreras.
 
 Varje dokument representeras nu av en enda lång sträng.
 
 > [!NOTE]
-> Parameter indata till modeller är token, inte tecken eller ord. Tokenisering bestäms delvis av Analyzer-tilldelningen i sökbara fält. Om du vill veta mer om hur strängar är token kan du granska utdata från en analys med hjälp av [test analys REST API](/rest/api/searchservice/test-analyzer).
+> Strängen består av tokens, inte tecken eller ord. Tokenisering bestäms delvis av Analyzer-tilldelningen i sökbara fält. Om du använder specialiserad analys, till exempel nGram eller EdgeNGram, kanske du vill utesluta fältet från searchFields. Om du vill veta mer om hur strängar är token kan du granska utdata från en analys med hjälp av [test analys REST API](/rest/api/searchservice/test-analyzer).
 
-## <a name="summarization"></a>Sammanfattning
+## <a name="extraction"></a>Extrahering
 
-Efter en sträng minskning är det nu möjligt att klara de reducerade indatana genom maskin läsnings förståelse och språk representations modeller för att fastställa vilka meningar och fraser som bäst sammanfattar dokumentet, i förhållande till frågan.
+Efter en sträng minskning är det nu möjligt att klara de reducerade indatana genom maskin läsnings förståelse och språk representations modeller för att fastställa vilka meningar och fraser som bäst sammanfattar dokumentet, i förhållande till frågan. Den här fasen extraherar innehåll från den sträng som flyttas framåt till den semantiska rangordningen.
 
-Indata till sammanfattning är de långa strängar som hämtas för varje dokument i förberedelse fasen. Från en bestämd ingång hittar sammanfattnings modellen en passage som bäst representerar motsvarande dokument. Den här passageen utgör även en [semantisk Beskrivning](semantic-how-to-query-request.md) av dokumentet. Varje beskrivning är tillgänglig i oformaterad text, med högdagrar och är färre än 200 ord per dokument.
+Indata till sammanfattning är de långa strängarna som hämtas för varje dokument i förberedelse fasen. Från varje sträng hittar sammanfattnings modellen en passage som är mest representativ. Den här passageen utgör även en [semantisk Beskrivning](semantic-how-to-query-request.md) av dokumentet. Varje beskrivning är tillgänglig i en oformaterad text version och en markerings version och är ofta mindre än 200 ord per dokument.
 
 Ett [semantiskt svar](semantic-answers.md) kommer också att returneras om du har angett parametern "svar", om frågan befann sig som en fråga, och om en passage finns i den långa strängen som kan ge ett svar på frågan.
 
-## <a name="scoring-and-ranking"></a>Poängsättning och rangordning
+## <a name="semantic-ranking"></a>Semantisk rangordning
 
 1. Under texter utvärderas för konceptuell och semantisk relevans i förhållande till den angivna frågan.
 

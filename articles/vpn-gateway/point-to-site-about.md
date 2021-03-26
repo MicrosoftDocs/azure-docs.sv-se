@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654072"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543592"
 ---
 # <a name="about-point-to-site-vpn"></a>Om punkt-till-plats-VPN
 
@@ -61,9 +61,9 @@ Du måste utföra följande steg för att konfigurera Azure AD-autentisering på
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Autentisera med hjälp av Active Directory (AD) domän Server
 
 AD Domain Authentication gör att användare kan ansluta till Azure med sina organisations domän uppgifter. Den kräver en RADIUS-server som integreras med AD-servern. Organisationer kan också utnyttja sin befintliga RADIUS-distribution.
-  
-RADIUS-servern kan distribueras lokalt eller i ditt Azure VNet. Under autentiseringen fungerar Azure VPN Gateway som ett pass och vidarebefordrar autentiseringsbegäranden fram och tillbaka mellan RADIUS-servern och den anslutande enheten. Det är viktigt att gatewayens tillgänglighet till RADIUS-servern är viktigt. Om RADIUS-servern finns lokalt krävs en S2S-anslutning från Azure till den lokala platsen för nåbarhet.  
-  
+
+RADIUS-servern kan distribueras lokalt eller i ditt Azure VNet. Under autentiseringen fungerar Azure VPN Gateway som ett pass och vidarebefordrar autentiseringsbegäranden fram och tillbaka mellan RADIUS-servern och den anslutande enheten. Det är viktigt att gatewayens tillgänglighet till RADIUS-servern är viktigt. Om RADIUS-servern finns lokalt krävs en S2S-anslutning från Azure till den lokala platsen för nåbarhet.
+
 RADIUS-servern kan också integreras med AD Certificate Services. På så sätt kan du använda RADIUS-servern och distributionen av företags certifikat för P2S certifikatautentisering som ett alternativ till Azure-certifikatautentisering. Fördelen är att du inte behöver ladda upp rot certifikat och återkallade certifikat till Azure.
 
 En RADIUS-server kan också integreras med andra externa identitets system. Detta öppnar massor av autentiseringsalternativ för P2S VPN, inklusive Multi-Factor Options.

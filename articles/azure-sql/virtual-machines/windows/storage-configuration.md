@@ -1,5 +1,5 @@
 ---
-title: Lagrings konfiguration för SQL Server virtuella datorer | Microsoft Docs
+title: Konfigurera lagring för SQL Server virtuella datorer | Microsoft Docs
 description: I det här avsnittet beskrivs hur Azure konfigurerar lagring för SQL Server virtuella datorer under etablering (Azure Resource Manager distributions modell). Det förklarar också hur du kan konfigurera lagring för befintliga SQL Server virtuella datorer.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,27 +13,26 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97356739"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565434"
 ---
-# <a name="storage-configuration-for-sql-server-vms"></a>Lagringskonfiguration för SQL Server VM
+# <a name="configure-storage-for-sql-server-vms"></a>Konfigurera lagring för SQL Server virtuella datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-När du konfigurerar en SQL Server virtuell dator avbildning (VM) i Azure, kan Azure Portal automatisera lagrings konfigurationen. Detta innefattar att koppla lagring till den virtuella datorn, göra lagringen tillgänglig för SQL Server och konfigurera den för att optimera för dina särskilda prestanda krav.
+Den här artikeln lär dig hur du konfigurerar din lagring för din SQL Server på Azure Virtual Machines (VM).
 
-I det här avsnittet beskrivs hur Azure konfigurerar lagring för dina SQL Server virtuella datorer både under etablering och för befintliga virtuella datorer. Den här konfigurationen baseras på [metod tips för prestanda](performance-guidelines-best-practices.md) för virtuella Azure-datorer som kör SQL Server.
+SQL Server virtuella datorer som distribueras via Marketplace-avbildningar följer automatiskt standard [metod tips för lagring](performance-guidelines-best-practices-storage.md) som kan ändras under distributionen. Vissa av dessa konfigurations inställningar kan ändras efter distributionen. 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda de automatiserade konfigurations inställningarna för lagring måste den virtuella datorn ha följande egenskaper:
 
-* Etablerad med en [SQL Server galleri bild](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
+* Etablerad med en [SQL Server Galleri avbildning](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo) eller registrerad med [SQL IaaS-tillägget]().
 * Använder [distributions modellen för Resource Manager](../../../azure-resource-manager/management/deployment-models.md).
 * Använder [Premium-SSD](../../../virtual-machines/disks-types.md).
 
@@ -47,7 +46,9 @@ När du konfigurerar en virtuell Azure-dator med hjälp av en SQL Server Galleri
 
 ![Skärm bild som visar fliken SQL Server inställningar och alternativet ändra konfiguration.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-Välj den typ av arbets belastning som du distribuerar SQL Server för under **lagrings optimering**. Med alternativet **allmän** optimering får du som standard en datadisk med 5000 högsta IOPS och du kommer att använda samma enhet för dina data, transaktions logg och tempdb-lagring. Om du väljer antingen transaktions **bearbetning** (OLTP) eller **data lager** skapas en separat disk för data, en separat disk för transaktions loggen och Använd lokal SSD för tempdb. Det finns inga lagrings skillnader mellan **transaktions bearbetning** och **data lager** hantering, men det ändrar [stripe-konfigurationen och spårnings flaggor](#workload-optimization-settings). Om du väljer Premium Storage konfigureras cachelagringen till *ReadOnly* för data enheten, och *ingen* för logg enheten enligt [SQL Server VM bästa metoder för prestanda](performance-guidelines-best-practices.md). 
+Välj den typ av arbets belastning som du distribuerar SQL Server för under **lagrings optimering**. Med alternativet **allmän** optimering får du som standard en datadisk med 5000 högsta IOPS och du kommer att använda samma enhet för dina data, transaktions logg och tempdb-lagring. 
+
+Om du väljer antingen transaktions **bearbetning** (OLTP) eller **data lager** skapas en separat disk för data, en separat disk för transaktions loggen och Använd lokal SSD för tempdb. Det finns inga lagrings skillnader mellan **transaktions bearbetning** och **data lager** hantering, men det ändrar [stripe-konfigurationen och spårnings flaggor](#workload-optimization-settings). Om du väljer Premium Storage konfigureras cachelagringen till *ReadOnly* för data enheten, och *ingen* för logg enheten enligt [SQL Server VM bästa metoder för prestanda](performance-guidelines-best-practices.md). 
 
 ![SQL Server VM lagrings konfiguration under etableringen](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -74,7 +75,7 @@ Baserat på dina val utför Azure följande konfigurations åtgärder för lagri
 * Kopplar lagringspoolen till en ny enhet på den virtuella datorn.
 * Optimerar den här nya enheten baserat på din angivna arbets belastnings typ (data lager, transaktionell bearbetning eller allmänt).
 
-Mer information om hur Azure konfigurerar lagrings inställningar finns i [avsnittet lagrings konfiguration](#storage-configuration). En fullständig genom gång av hur du skapar en SQL Server VM i Azure Portal finns i [vägledningen för etablering](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
+En fullständig genom gång av hur du skapar en SQL Server VM i Azure Portal finns i [vägledningen för etablering](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
 ### <a name="resource-manager-templates"></a>Mallar för Resurshanteraren
 
@@ -111,7 +112,7 @@ Du kan ändra disk inställningarna för de enheter som konfigurerades under SQL
 ![Konfigurera lagring för befintliga SQL Server VM](./media/storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-## <a name="storage-configuration"></a>Storage-konfiguration
+## <a name="automated-changes"></a>Automatiserade ändringar
 
 Det här avsnittet innehåller en referens för de lagrings konfigurations ändringar som Azure utför automatiskt under SQL Server VM etablering eller konfiguration i Azure Portal.
 
@@ -137,11 +138,11 @@ Azure använder följande inställningar för att skapa lagringspoolen på SQL S
 <sup>1</sup> när lagringspoolen har skapats kan du inte ändra antalet kolumner i lagringspoolen.
 
 
-## <a name="workload-optimization-settings"></a>Inställningar för arbets belastnings optimering
+### <a name="workload-optimization-settings"></a>Inställningar för arbets belastnings optimering
 
 I följande tabell beskrivs de tre tillgängliga alternativen för arbets belastnings typer och deras motsvarande optimeringar:
 
-| Arbets belastnings typ | Beskrivning | Optimeringar |
+| Arbets belastnings typ | Description | Optimeringar |
 | --- | --- | --- |
 | **Allmänt** |Standardinställning som stöder de flesta arbets belastningar |Inget |
 | **Transaktionell bearbetning** |Optimerar lagringen för traditionella databas OLTP-arbetsbelastningar |Spårnings flagga 1117<br/>Spårnings flagga 1118 |
@@ -149,6 +150,78 @@ I följande tabell beskrivs de tre tillgängliga alternativen för arbets belast
 
 > [!NOTE]
 > Du kan bara ange arbets belastnings typen när du etablerar en SQL Server virtuell dator genom att välja den i steget lagrings konfiguration.
+
+## <a name="enable-caching"></a>Enable caching 
+
+Ändra principen för cachelagring på disk nivå. Du kan göra det med hjälp av Azure Portal, [PowerShell](/powershell/module/az.compute/set-azvmdatadisk)eller [Azure CLI](/cli/azure/vm/disk). 
+
+Följ dessa steg om du vill ändra principen för cachelagring i Azure Portal:
+
+1. Stoppa din SQL Server-tjänst. 
+1. Logga in på [Azure-portalen](https://portal.azure.com). 
+1. Navigera till den virtuella datorn och välj **diskar** under **Inställningar**. 
+   
+   ![Skärm bild som visar bladet för disk konfiguration för virtuell dator i Azure Portal.](./media/storage-configuration/disk-in-portal.png)
+
+1. Välj lämplig princip för cachelagring för disken i list rutan. 
+
+   ![Skärm bild som visar konfigureringen av diskcachelagring i Azure Portal.](./media/storage-configuration/azure-disk-config.png)
+
+1. När ändringen träder i bruk startar du om SQL Server VM och startar tjänsten SQL Server. 
+
+
+## <a name="enable-write-accelerator"></a>Aktivera Skrivningsaccelerator
+
+Skriv acceleration är en disk funktion som endast är tillgänglig för M-seriens Virtual Machines (VM). Syftet med att skriva acceleration är att förbättra I/O-svars tiden för skrivningar mot Azure Premium Storage när du behöver I/O-svars tid med enkel volym på grund av hög verksamhets kritiska OLTP-arbetsbelastningar eller data lager miljöer. 
+
+Stoppa alla SQL Server-aktiviteter och Stäng av tjänsten SQL Server innan du gör ändringar i Skriv accelerations principen. 
+
+Om diskarna är stripe aktiverar du Skriv acceleration för varje disk individuellt, och din virtuella Azure-dator bör stängas av innan du gör några ändringar. 
+
+Följ dessa steg om du vill aktivera Skriv acceleration med Azure Portal:
+
+1. Stoppa din SQL Server-tjänst. Om diskarna är stripe stänger du av den virtuella datorn. 
+1. Logga in på [Azure-portalen](https://portal.azure.com). 
+1. Navigera till den virtuella datorn och välj **diskar** under **Inställningar**. 
+   
+   ![Skärm bild som visar bladet för disk konfiguration för virtuell dator i Azure Portal.](./media/storage-configuration/disk-in-portal.png)
+
+1. Välj alternativet cache med **Skrivningsaccelerator** för disken i list rutan. 
+
+   ![Skärm bild som visar cache-principen för Write Accelerator.](./media/storage-configuration/write-accelerator.png)
+
+1. När ändringen träder i bruk startar du den virtuella datorn och SQL Server tjänsten. 
+
+## <a name="disk-striping"></a>Disk randning
+
+Du kan lägga till ytterligare data diskar och använda disk ränder för mer data flöde. Om du vill fastställa antalet data diskar analyserar du det data flöde och den bandbredd som krävs för dina SQL Server datafiler, inklusive loggen och tempdb. Data flödes-och bandbredds gränserna varierar beroende på VM-storlek. Läs mer i VM- [storlek](../../../virtual-machines/sizes.md)
+
+
+* För Windows 8/Windows Server 2012 eller senare använder du [lagrings utrymmen](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) med följande rikt linjer:
+
+  1. Ange överlagring (stripe-storlek) till 64 KB (65 536 byte) för att undvika prestanda påverkan på grund av en feljustering av partitionen. Detta måste anges med PowerShell.
+
+  2. Ange kolumn antal = antal fysiska diskar. Använd PowerShell när du konfigurerar fler än 8 diskar (inte Serverhanteraren UI).
+
+Följande PowerShell skapar till exempel en ny lagringspool med Överlagrings storleken till 64 KB och antalet kolumner som motsvarar mängden fysisk disk i lagringspoolen:
+
+  ```powershell
+  $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+  
+  New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+      -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+      -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+      –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+      -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+      -AllocationUnitSize 65536 -Confirm:$false 
+  ```
+
+  * För Windows 2008 R2 eller tidigare kan du använda dynamiska diskar (OS Striped-volymer) och stripe-storleken är alltid 64 KB. Det här alternativet är föråldrat från och med Windows 8/Windows Server 2012. Mer information finns i support policyn på [Virtual Disk Service över gång till Windows Storage Management API](https://docs.microsoft.com/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api).
+ 
+  * Om du använder [Lagringsdirigering (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) med [SQL Server kluster instanser för växling vid fel](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)måste du konfigurera en enda pool. Även om olika volymer kan skapas på samma pool, kommer alla att dela samma egenskaper, till exempel samma princip för cachelagring.
+ 
+  * Fastställ antalet diskar som är kopplade till lagringspoolen baserat på dina belastnings förväntningar. Tänk på att olika storlekar på virtuella datorer tillåter olika antal anslutna data diskar. Mer information finns i [storlekar för virtuella datorer](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json).
+
 
 ## <a name="next-steps"></a>Nästa steg
 

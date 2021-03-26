@@ -6,22 +6,22 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101663999"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561822"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Enhets uppdatering för IoT Hub-och IoT-Plug and Play
 
-Enhets uppdatering för IoT Hub använder [IoT plug and Play](https://docs.microsoft.com/azure/iot-pnp/) för att identifiera och hantera enheter som är kompatibla med den-Air-uppdateringen. Enhets uppdaterings tjänsten skickar och tar emot egenskaper och meddelanden till och från enheter som använder PnP-gränssnitt. Enhets uppdatering för IoT Hub kräver IoT-enheter för att implementera följande gränssnitt och modell-ID enligt beskrivningen nedan.
+Enhets uppdatering för IoT Hub använder [IoT plug and Play](../iot-pnp/index.yml) för att identifiera och hantera enheter som är kompatibla med den-Air-uppdateringen. Enhets uppdaterings tjänsten skickar och tar emot egenskaper och meddelanden till och från enheter som använder PnP-gränssnitt. Enhets uppdatering för IoT Hub kräver IoT-enheter för att implementera följande gränssnitt och modell-ID enligt beskrivningen nedan.
 
 ## <a name="adu-core-interface"></a>ADU Core-gränssnitt
 
 Gränssnittet "ADUCoreInterface" används för att skicka uppdaterings åtgärder och metadata till enheter och ta emot uppdaterings status från enheter. Gränssnittet "ADU Core" är uppdelat i två objekt egenskaper.
 
-Det förväntade komponent namnet i din modell är **"azureDeviceUpdateAgent"** när du implementerar det här gränssnittet. [Läs mer om Azure IoT PnP-komponenter](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+Det förväntade komponent namnet i din modell är **"azureDeviceUpdateAgent"** när du implementerar det här gränssnittet. [Läs mer om Azure IoT PnP-komponenter](../iot-pnp/concepts-components.md)
 
 ### <a name="agent-metadata"></a>Gent-metadata
 
@@ -50,7 +50,7 @@ Det är den status som rapporteras av enhets uppdaterings agenten efter att ha t
 
 Det är en uppsättning egenskaper som innehåller tillverkare och modell.
 
-|Name|Schema|Riktning|Beskrivning|
+|Name|Schema|Riktning|Description|
 |----|------|---------|-----------|
 |manufacturer|sträng|enhet till molnet|Enhetens tillverkare, som rapporteras genom `deviceProperties` . Den här egenskapen läses från en av två platser – "AzureDeviceUpdateCore"-gränssnittet försöker först läsa värdet "aduc_manufacturer" från [konfigurations fil](device-update-configuration-file.md) filen.  Om värdet inte är ifyllt i konfigurations filen, är det standard att rapportera kompileringen av kompileringen för ADUC_DEVICEPROPERTIES_MANUFACTURER. Den här egenskapen rapporteras bara vid start.|
 |modell|sträng|enhet till molnet|Enhets modellen för enheten, som rapporteras genom `deviceProperties` . Den här egenskapen läses från en av två platser – AzureDeviceUpdateCore-gränssnittet kommer först att försöka läsa värdet "aduc_model" från [konfigurations fil](device-update-configuration-file.md) filen.  Om värdet inte är ifyllt i konfigurations filen, är det standard att rapportera kompileringen av kompileringen för ADUC_DEVICEPROPERTIES_MODEL. Den här egenskapen rapporteras bara vid start.|
@@ -61,7 +61,7 @@ Det är en uppsättning egenskaper som innehåller tillverkare och modell.
 
 Metadata för tjänsten innehåller fält som enhets uppdaterings tjänsterna använder för att kommunicera åtgärder och data till enhets uppdaterings agenten.
 
-|Name|Schema|Riktning|Beskrivning|
+|Name|Schema|Riktning|Description|
 |----|------|---------|-----------|
 |åtgärd|heltal|moln till enhet|Det är ett heltal som motsvarar en åtgärd som agenten ska utföra. Värden som anges nedan.|
 |updateManifest|sträng|moln till enhet|Används för att beskriva innehållet i en uppdatering. Genererat från [import manifestet](import-update.md#create-device-update-import-manifest)|
@@ -81,9 +81,9 @@ Metadata för tjänsten innehåller fält som enhets uppdaterings tjänsterna an
 
 ## <a name="device-information-interface"></a>Enhets informations gränssnitt
 
-Enhets informations gränssnittet är ett koncept som används i [IoT plug and Play-arkitekturen](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play). Den innehåller en enhet för moln egenskaper som ger information om enhetens maskin vara och operativ system. Enhets uppdatering för IoT Hub använder egenskaperna DeviceInformation. Manufacturer och DeviceInformation. Model för telemetri och diagnostik. Läs mer om enhets informations gränssnittet i det här [exemplet](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
+Enhets informations gränssnittet är ett koncept som används i [IoT plug and Play-arkitekturen](../iot-pnp/overview-iot-plug-and-play.md). Den innehåller en enhet för moln egenskaper som ger information om enhetens maskin vara och operativ system. Enhets uppdatering för IoT Hub använder egenskaperna DeviceInformation. Manufacturer och DeviceInformation. Model för telemetri och diagnostik. Läs mer om enhets informations gränssnittet i det här [exemplet](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
 
-Det förväntade komponent namnet i din modell är **deviceInformation** när du implementerar det här gränssnittet. [Lär dig mer om Azure IoT PnP-komponenter](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+Det förväntade komponent namnet i din modell är **deviceInformation** när du implementerar det här gränssnittet. [Lär dig mer om Azure IoT PnP-komponenter](../iot-pnp/concepts-components.md)
 
 |Namn|Typ|Schema|Riktning|Beskrivning|Exempel|
 |----|----|------|---------|-----------|-----------|
@@ -98,6 +98,6 @@ Det förväntade komponent namnet i din modell är **deviceInformation** när du
 
 ## <a name="model-id"></a>Modell-ID 
 
-Modell-ID är hur smarta enheter annonserar sina funktioner till Azure IoT-program med IoT-plugin och Play.To lär dig mer om hur du skapar smarta enheter för att annonsera sina funktioner till Azure IoT-program besök [IoT plug and Play Device Developer Guide](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c).
+Modell-ID är hur smarta enheter annonserar sina funktioner till Azure IoT-program med IoT-plugin och Play.To lär dig mer om hur du skapar smarta enheter för att annonsera sina funktioner till Azure IoT-program besök [IoT plug and Play Device Developer Guide](../iot-pnp/concepts-developer-guide-device.md).
 
-Enhets uppdatering för IoT Hub kräver att IoT Plug and Play smart enhet meddelar ett modell-ID med värdet **"dtmi: AzureDeviceUpdate; 1"** som en del av enhets anslutningen. [Lär dig hur du meddelar ett modell-ID](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c#model-id-announcement).
+Enhets uppdatering för IoT Hub kräver att IoT Plug and Play smart enhet meddelar ett modell-ID med värdet **"dtmi: AzureDeviceUpdate; 1"** som en del av enhets anslutningen. [Lär dig hur du meddelar ett modell-ID](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: a1bdb1b8ac1f545933a92e78fd13b745606f1da3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110906"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563793"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Snabb start: skapa och hantera kommunikations tjänst resurser
 
@@ -49,12 +49,25 @@ När du har navigerat till kommunikations tjänst resursen väljer du **nycklar*
 
 :::image type="content" source="./media/key.png" alt-text="Skärm bild av nyckel sidan för kommunikations tjänster.":::
 
-Du kan också komma åt viktig information med Azure CLI:
+Du kan också komma åt nyckelinformation med hjälp av Azure CLI, till exempel din resurs grupp eller nycklar för en speciell resurs. 
 
+Installera [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) och Använd följande kommando för att logga in. Du måste ange dina autentiseringsuppgifter för att ansluta till ditt Azure-konto.
+```azurecli
+az login
+```
+
+Nu kan du komma åt viktig information om dina resurser.
 ```azurecli
 az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
+
+Om du vill välja en speciell prenumeration kan du också ange en ```--subscription``` flagga och ange prenumerations-ID: t.
+```
+az communication list --resource-group  "resourceGroup>"  --subscription "<subscriptionID>"
+
+az communication list-key --name "<communicationName>" --resource-group "resourceGroup>" --subscription "<subscriptionID>"
 ```
 
 ## <a name="store-your-connection-string"></a>Lagra anslutnings strängen

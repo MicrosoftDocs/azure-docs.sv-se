@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 5286362369e0c4881cdf0c56bc13d1d340056be1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889254"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562519"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-skript för IoT Edge för Linux i Windows
 
@@ -150,6 +150,6 @@ Kommandot **SSH-EflowVm** används för ssh i den virtuella datorn. Det enda kon
 
 Lär dig hur du använder dessa kommandon i följande artikel:
 
-* [Installera Azure IoT Edge för Linux på Windows](how-to-install-iot-edge-windows.md)
+* [Installera Azure IoT Edge för Linux på Windows](./how-to-install-iot-edge-windows-on-windows.md)
 
 * Se [referensen IoT Edge för Linux på Windows PowerShell-skript](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) för alla kommandon som är tillgängliga via PowerShell.

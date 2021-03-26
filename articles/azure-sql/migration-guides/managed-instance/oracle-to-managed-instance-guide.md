@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 1c2fbc90d3956ab831e6d9fac4e1e2d3540e1c6d
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 6cf6e8e3f19b11a49e91b781b1ef6d83bf647903
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025432"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563012"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>Migration guide: Oracle till Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -142,11 +142,8 @@ Följ dessa steg om du vill publicera schemat och migrera dina data:
 
 Du kan också använda SQL Server Integration Services (SSIS) för att utföra migreringen. Mer information finns i: 
 
-- [Komma igång med SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
+- [Komma igång med SQL Server Integration Services](/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS för Azure och hybrid data förflyttning](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
-
-    
-
 
 ## <a name="post-migration"></a>Efter migreringen 
 
@@ -194,7 +191,7 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
 - Mer information om Azure SQL-hanterad instans finns i: 
   - [En översikt över Azure SQL-hanterad instans](../../managed-instance/sql-managed-instance-paas-overview.md)

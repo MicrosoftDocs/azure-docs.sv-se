@@ -4,12 +4,12 @@ description: Lär dig hur du styr Pod-inåtkomster med PodSecurityPolicy i Azure
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180317"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544255"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>För hands version – skydda klustret med Pod säkerhets principer i Azure Kubernetes service (AKS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "102180317"
 > Vi rekommenderar starkt att du börjar testa scenarier med Azure Policy för AKS, som erbjuder inbyggda principer för att skydda poddar och inbyggda initiativ som mappar till Pod säkerhets principer. För att migrera från Pod säkerhets princip måste du vidta följande åtgärder i ett kluster.
 > 
 > 1. [Inaktivera Pod säkerhets princip](#clean-up-resources) på klustret
-> 1. Aktivera [Azure policy-tillägget][kubernetes-policy-reference]
+> 1. Aktivera [Azure policy-tillägget][azure-policy-add-on]
 > 1. Aktivera önskade Azure-principer från [Tillgängliga inbyggda principer][policy-samples]
 > 1. Granska [beteende ändringar mellan Pod säkerhets princip och Azure policy](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
@@ -462,7 +462,6 @@ Mer information om hur du begränsar Pod nätverks trafik finns i [skydda trafik
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -479,3 +478,4 @@ Mer information om hur du begränsar Pod nätverks trafik finns i [skydda trafik
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
+[azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020320"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557708"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivera diagnostisk loggning i Azure API för FHIR
 
@@ -42,7 +42,7 @@ Du kan visa måtten under övervakning | Mått från portalen. Måtten omfattar 
     2. **Strömma till händelsehubben** för inmatning av en tjänst från tredje part eller en anpassad analys lösning. Du måste skapa ett namn område och en Event Hub-princip innan du kan konfigurera det här steget.
     3. **Strömma till Log Analytics** arbets ytan i Azure Monitor. Du måste skapa din loggar Analytics-arbetsyta innan du kan välja det här alternativet.
 
-6. Välj **AuditLogs** och/eller **AllMetrics**. Måtten är bland annat tjänst namn, tillgänglighet, data storlek, total svars tid, totalt antal fel och tidsstämpel. Du hittar mer information om [vilka mått som stöds](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices). 
+6. Välj **AuditLogs** och/eller **AllMetrics**. Måtten är bland annat tjänst namn, tillgänglighet, data storlek, total svars tid, totalt antal fel och tidsstämpel. Du hittar mer information om [vilka mått som stöds](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices). 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Diagnostiska inställningar för Azure FHIR. Välj AuditLogs och/eller AllMetrics." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

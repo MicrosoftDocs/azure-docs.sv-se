@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008570"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565647"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
 Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub. Om du inte redan har gjort det, måste du bekanta dig med de grundläggande [import begreppen](import-concepts.md).
@@ -21,7 +21,7 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
 * [Åtkomst till en IoT Hub med enhets uppdatering för IoT Hub aktive rad](create-device-update-account.md). Vi rekommenderar att du använder en S1-nivå (standard) eller högre för IoT Hub. 
 * En IoT-enhet (eller Simulator) etablerad för enhets uppdatering i IoT Hub.
    * Om du använder en riktig enhet behöver du en uppdaterings avbildnings fil för avbildnings uppdatering eller [apt manifest fil](device-update-apt-manifest.md) för paket uppdatering.
-* [PowerShell 5](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) eller senare.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) eller senare.
 * Webbläsare som stöds:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -57,8 +57,8 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
 
     | Parameter | Beskrivning |
     | --------- | ----------- |
-    | deviceManufacturer | Tillverkaren av enheten som uppdateringen är kompatibel med, till exempel contoso. Måste matcha _tillverkarens_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
-    | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster. Måste matcha _modell_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
+    | deviceManufacturer | Tillverkaren av enheten som uppdateringen är kompatibel med, till exempel contoso. Måste matcha _tillverkarens_ [enhets egenskap](./device-update-plug-and-play.md#device-properties).
+    | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster. Måste matcha _modell_ [enhets egenskap](./device-update-plug-and-play.md#device-properties).
     | updateProvider | Entitet som skapar eller är direkt ansvarig för uppdateringen. Det är ofta ett företags namn.
     | updateName | Identifierare för en klass med uppdateringar. Den här klassen kan vara allt du väljer. Det är ofta en enhet eller ett modell namn.
     | updateVersion | Versions nummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Har inte samma version av en enskild program varu komponent på enheten (men kan även om du väljer).

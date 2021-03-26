@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c389cfd2af6fe83ec232e5f205041676ba46bd2a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731110"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558201"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azures säkerhets bas linje för Azure Cloud Services
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (klassisk) kan inte placeras i Azure Resource Man
 
 - [Översikt över nätverks säkerhets grupp](../virtual-network/network-security-groups-overview.md)
 
-- [Peering för virtuella nätverk](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Peering för virtuella nätverk](./cloud-services-connectivity-and-networking-faq.md#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Ansvar**: Kund
 
@@ -89,11 +89,11 @@ Förhindra inkommande trafik till standard-URL: en eller namnet på din Cloud Se
 
 Konfigurera en neka-tillämpa regel för administratörs tilldelningar för klassiska prenumerationer. Som standard när en intern slut punkt har definierats kan kommunikationen flöda från vilken roll som helst till den interna slut punkten för en roll utan några begränsningar. Om du vill begränsa kommunikationen måste du lägga till ett NetworkTrafficRules-element i service definition-elementet i tjänst definitions filen.
 
-- [Hur kan jag blockera/inaktivera inkommande trafik till standard-URL: en för min moln tjänst](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Hur kan jag blockera/inaktivera inkommande trafik till standard-URL: en för min moln tjänst](./cloud-services-connectivity-and-networking-faq.md#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS-skydd](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS-skydd](./cloud-services-connectivity-and-networking-faq.md#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [Blockera en speciell IP-adress](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
+- [Blockera en speciell IP-adress](./cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
 **Ansvar**: Kund
 
@@ -175,9 +175,9 @@ Samla in insikter från aktivitets loggen, en plattforms logg i Azure, i händel
 
 Skapa en diagnostisk inställning för att skicka aktivitets loggen till Azure Monitor, Azure Event Hubs att vidarebefordra utanför Azure eller till Azure Storage för arkivering. Konfigurera Azure Monitor för aviserings aviseringar när kritiska resurser i Azure-Cloud Services ändras. 
 
-- [Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
+- [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager övervakning](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -193,7 +193,7 @@ Skapa en diagnostisk inställning för att skicka aktivitets loggen till Azure M
 
 **Vägledning**: Microsoft hanterar tids källor för Azure-resurser för Azure Cloud Services. Kunder kan behöva skapa en nätverks regel för att tillåta åtkomst till en tids server som används i deras miljö, via port 123 med UDP-protokoll.
 
-- [Åtkomst till NTP-server](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [Åtkomst till NTP-server](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
 **Ansvar**: Delad
 
@@ -233,7 +233,7 @@ Azure Cloud Services kan övervakas av Application Insights för tillgänglighet
 
 - [Aktivera diagnostik i Visual Studio innan du distribuerar](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Visa ändrings historik](/azure/azure-monitor/platform/activity-log#view-change-history)
+- [Visa ändrings historik](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Application Insights för Azure Cloud Service (klassisk)](../azure-monitor/app/cloudservices.md)
 
@@ -269,7 +269,7 @@ Azure Diagnostic-tillägget samlar in och lagrar data i ett Azure Storage-konto.
 
 - [Aktivera diagnostik i Azure Cloud Services med PowerShell](cloud-services-diagnostics-powershell.md)
 
-- [Lagra och visa diagnostikdata i Azure Storage](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
+- [Lagra och visa diagnostikdata i Azure Storage](./diagnostics-extension-to-storage.md?preserve-view=)
 
 **Ansvar**: Kund
 
@@ -289,7 +289,7 @@ Azure Diagnostic-tillägget samlar in och lagrar data i ett Azure Storage-konto.
 
 **Vägledning**: Microsoft Antimalware för Azure, skyddar Azure Cloud Services och virtuella datorer. Du har möjlighet att distribuera säkerhetslösningar från tredje part, till exempel brand väggar för webb program, nätverks brand väggar, program mot skadlig kod, intrångs identifiering och skydds system (ID eller IP-adresser) med mera.
 
-- [Vilka är de funktioner och funktioner som Azure Basic IP-adresser och DDOS tillhandahåller](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Vilka är de funktioner och funktioner som Azure Basic IP-adresser och DDOS tillhandahåller](./cloud-services-configuration-and-management-faq.md#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Ansvar**: Kund
 
@@ -315,7 +315,7 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 Granska skillnaderna mellan administrativa roller i den klassiska prenumerationen. 
 
-- [Skillnader mellan tre klassiska prenumerationer administrativa roller](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Skillnader mellan tre klassiska prenumerationer administrativa roller](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Ansvar**: Kund
 
@@ -325,7 +325,7 @@ Granska skillnaderna mellan administrativa roller i den klassiska prenumeratione
 
 **Vägledning**: Vi rekommenderar att du skapar standard procedurer kring användningen av dedikerade administrativa konton, baserat på tillgängliga roller och de behörigheter som krävs för att hantera och hantera Azure Cloud Services-resurser.
 
-- [Skillnader mellan administrativa roller för den klassiska prenumerationen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Skillnader mellan administrativa roller för den klassiska prenumerationen](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Ansvar**: Kund
 
@@ -389,7 +389,7 @@ Du kan också redigera "permissionLevel" i Azure Cloud Service Certificate-eleme
 
 - [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [WebRole-schema](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
+- [WebRole-schema](./schema-csdef-webrole.md#Certificate)
 
 **Ansvar**: Kund
 
@@ -465,9 +465,9 @@ Program data som lagras på temporära diskar är inte krypterade. Kunden ansvar
 
 Dessutom kan Application Insights övervaka Azure Cloud Services-appar för tillgänglighet, prestanda, haverier och användning. Detta använder kombinerade data från Application Insights SDK: er med Azure-diagnostik data från Azure-Cloud Services.
 
-- [Skapa, Visa och hantera klassiska mått varningar med Azure Monitor](/azure/azure-monitor/platform/alerts-classic-portal)
+- [Skapa, Visa och hantera klassiska mått varningar med Azure Monitor](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Översikt över mått varningar](/azure/azure-monitor/platform/alerts-metric-overview) 
+- [Översikt över mått varningar](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Application Insights för Azure Cloud Service (klassisk)](../azure-monitor/app/cloudservices.md)
 
@@ -493,7 +493,7 @@ När en kund väljer en specifik operativ system version för sin Azure Cloud Se
 
 - [Konfigurera en moln tjänst (klassisk)](cloud-services-how-to-configure-portal.md)
 
-- [Hantera gäst operativ system version](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
+- [Hantera gäst operativ system version](./cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
 **Ansvar**: Delad
 
@@ -523,7 +523,7 @@ Vi rekommenderar att du funderar på följande scenarier:
 
 Support dokumentation:
 
-- [Riskbedömning av dina Azure-resurser](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
+- [Riskbedömning av dina Azure-resurser](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
 **Ansvar**: Kund
 
@@ -805,7 +805,7 @@ Du kan skydda hemligheter som autentiseringsuppgifter som används i Azure Cloud
 
 Dessutom rekommenderar vi att du lagrar privata nycklar för certifikat som används i Azure Cloud Services till en säker lagring.
 
-- [Konfigurera fjärr skrivbord från PowerShell](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Konfigurera fjärr skrivbord från PowerShell](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Ansvar**: Kund
 
@@ -820,7 +820,7 @@ Börja genom att ange ett lösen ord för oformaterad text, ändra det till en s
 
 Lagra privata nycklar för certifikat som används i Azure Cloud Services till en säker lagrings plats.
 
-- [Konfigurera fjärr skrivbord från PowerShell](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Konfigurera fjärr skrivbord från PowerShell](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Ansvar**: Kund
 
@@ -840,9 +840,9 @@ Aktivera tillägget för program mot skadlig kod med ett PowerShell-skript i Sta
 
 Välj funktionen adaptiva program kontroll i Azure Security Center, en intelligent, automatiserad lösning från slut punkt till slut punkt. Det hjälper dig att hindra dina datorer mot skadlig kod och gör att du kan blockera eller Varna vid försök att köra skadliga program, inklusive sådana som annars kan missas av lösningar mot skadlig kod.
 
-- [Hur kan jag lägga till ett tillägg för program mot skadlig kod för min Azure-Cloud Services på ett automatiserat sätt](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Hur kan jag lägga till ett tillägg för program mot skadlig kod för min Azure-Cloud Services på ett automatiserat sätt](./cloud-services-configuration-and-management-faq.md#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [Distributions scenarier för program mot skadlig kod](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
+- [Distributions scenarier för program mot skadlig kod](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [Anpassningsbara programkontroller](../security-center/security-center-adaptive-application.md)
 
@@ -940,5 +940,5 @@ Markera prenumerationer tydligt (till exempel produktion, icke-produktion) och s
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

@@ -3,12 +3,12 @@ title: Översikt över drift säkerhets kopiering för Azure-blobar
 description: Lär dig om drift säkerhets kopiering för Azure-blobar (i för hands version).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746123"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558762"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Översikt över drift säkerhets kopiering för Azure-blobar (i för hands version)
 
@@ -22,7 +22,7 @@ Drift säkerhets kopiering av blobbar är en **lokal säkerhets kopierings** lö
 
 Drift säkerhets kopiering använder BLOB-plattformens funktioner för att skydda dina data och tillåta återställning vid behov:
 
-- **Återställning** av tidpunkt: [blobb-](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview) till-tid-återställning gör det möjligt att återställa BLOB-data till ett tidigare tillstånd. Detta, i sin tur, använder **mjuk borttagning**, **ändring av flöde** och blob- **versioner** för att bevara data för den angivna varaktigheten. Med den operativa säkerhets kopieringen kan du aktivera återställning av tidpunkter och de underliggande funktionerna för att säkerställa att data bevaras under den angivna varaktigheten.
+- **Återställning** av tidpunkt: [blobb-](../storage/blobs/point-in-time-restore-overview.md) till-tid-återställning gör det möjligt att återställa BLOB-data till ett tidigare tillstånd. Detta, i sin tur, använder **mjuk borttagning**, **ändring av flöde** och blob- **versioner** för att bevara data för den angivna varaktigheten. Med den operativa säkerhets kopieringen kan du aktivera återställning av tidpunkter och de underliggande funktionerna för att säkerställa att data bevaras under den angivna varaktigheten.
 
 - **Ta bort lås**: borttagnings låset förhindrar att lagrings kontot tas bort av misstag eller av obehöriga användare. Den operativa säkerhets kopieringen som kon figurer ATS använder också automatiskt ett borttagnings lås för att minska risken för data förlust på grund av borttagning av lagrings kontot.
 
@@ -63,9 +63,9 @@ Med den operativa säkerhets kopian kan du återställa alla block blobbar i lag
 
 Du debiteras inga hanterings avgifter eller instans avgifter när du använder drift säkerhets kopiering för blobbar. Du kommer dock att debiteras följande avgifter:
 
-- Återställningar görs med hjälp av återställnings-och ingångs kostnader för BLOB-platser baserat på mängden bearbetade data. Mer information finns i [prissättning för tidpunkts återställning](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing).
+- Återställningar görs med hjälp av återställnings-och ingångs kostnader för BLOB-platser baserat på mängden bearbetade data. Mer information finns i [prissättning för tidpunkts återställning](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing).
 
-- Kvarhållning av data på grund av [mjuk borttagning för blobbar](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview), [ändring av feed-stöd i Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed)och [BLOB-versioner](https://docs.microsoft.com/azure/storage/blobs/versioning-overview).
+- Kvarhållning av data på grund av [mjuk borttagning för blobbar](../storage/blobs/soft-delete-blob-overview.md), [ändring av feed-stöd i Azure Blob Storage](../storage/blobs/storage-blob-change-feed.md)och [BLOB-versioner](../storage/blobs/versioning-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

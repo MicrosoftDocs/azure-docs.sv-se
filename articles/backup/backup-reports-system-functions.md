@@ -3,34 +3,34 @@ title: System funktioner på Azure Monitor loggar
 description: Skriv anpassade frågor på Azure Monitor loggar med hjälp av system funktioner
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510597"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564916"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>System funktioner på Azure Monitor loggar
 
 Azure Backup innehåller en uppsättning funktioner som kallas system funktioner eller lösnings funktioner som är tillgängliga som standard i dina Log Analytics (LA)-arbets ytor.
  
-Dessa funktioner fungerar på data i [rå Azure Backup tabeller](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model) i La och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor. Användare kan skicka parametrar till dessa funktioner för att filtrera data som returneras av de här funktionerna. 
+Dessa funktioner fungerar på data i [rå Azure Backup tabeller](./backup-azure-reports-data-model.md) i La och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor. Användare kan skicka parametrar till dessa funktioner för att filtrera data som returneras av de här funktionerna. 
 
 Vi rekommenderar att du använder system funktioner för att skicka frågor till dina säkerhets kopierings data i LA arbets ytor för att skapa anpassade rapporter, eftersom de ger ett antal fördelar, enligt beskrivningen i avsnittet nedan.
 
 ## <a name="benefits-of-using-system-functions"></a>Fördelar med att använda system funktioner
 
-* **Enklare frågor**: med hjälp av funktioner kan du minska antalet kopplingar som behövs i dina frågor. Som standard returnerar funktionerna "utplattade" scheman som inkluderar all information som hör till entiteten (säkerhets kopierings instans, jobb, valv och så vidare) efter frågas. Om du till exempel behöver hämta en lista över slutförda säkerhets kopierings jobb genom att säkerhetskopiera objekt namn och dess tillhör ande behållare, kommer ett enkelt anrop till funktionen **_AzureBackup_getJobs ()** att ge dig all den här informationen för varje jobb. Å andra sidan kräver det att du utför flera kopplingar mellan [AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) -och [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) -tabeller när du skickar frågor till RAW-tabellerna direkt.
+* **Enklare frågor**: med hjälp av funktioner kan du minska antalet kopplingar som behövs i dina frågor. Som standard returnerar funktionerna "utplattade" scheman som inkluderar all information som hör till entiteten (säkerhets kopierings instans, jobb, valv och så vidare) efter frågas. Om du till exempel behöver hämta en lista över slutförda säkerhets kopierings jobb genom att säkerhetskopiera objekt namn och dess tillhör ande behållare, kommer ett enkelt anrop till funktionen **_AzureBackup_getJobs ()** att ge dig all den här informationen för varje jobb. Å andra sidan kräver det att du utför flera kopplingar mellan [AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) -och [CoreAzureBackup](./backup-azure-reports-data-model.md#coreazurebackup) -tabeller när du skickar frågor till RAW-tabellerna direkt.
 
-* **Mjukare över gång från den äldre Diagnostics-händelsen**: med hjälp av system funktioner kan du övergå smidigt från den [bakåtkompatibla](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) AzureBackupReport (i AzureDiagnostics-läge) till de [resursbaserade händelserna](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users). Med alla systemfunktioner som tillhandahålls av Azure Backup kan du ange en parameter som låter dig välja om funktionen endast ska fråga efter data från de resursbaserade tabellerna eller fråga efter data från både den äldre tabellen och de resursbaserade tabellerna (med deduplicering av poster).
+* **Mjukare över gång från den äldre Diagnostics-händelsen**: med hjälp av system funktioner kan du övergå smidigt från den [bakåtkompatibla](./backup-azure-diagnostic-events.md#legacy-event) AzureBackupReport (i AzureDiagnostics-läge) till de [resursbaserade händelserna](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users). Med alla systemfunktioner som tillhandahålls av Azure Backup kan du ange en parameter som låter dig välja om funktionen endast ska fråga efter data från de resursbaserade tabellerna eller fråga efter data från både den äldre tabellen och de resursbaserade tabellerna (med deduplicering av poster).
     * Om du har migrerat till resurs-/regionsspecifika tabeller kan du välja att undanta den äldre tabellen från att frågas av funktionen.
     * Om du för närvarande håller på att migrera och har vissa data i de äldre tabeller som du behöver för analys, kan du välja att inkludera den äldre tabellen. När över gången är klar och du inte längre behöver data från den äldre tabellen kan du bara uppdatera värdet för den parameter som skickades till funktionen i dina frågor, för att utesluta den äldre tabellen.
-    * Om du fortfarande använder den äldre tabellen fungerar funktionerna fortfarande om du väljer att inkludera den äldre tabellen via samma parameter. Vi rekommenderar dock att du [växlar till de Resource-/regionsspecifika tabellerna](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) tidigast.
+    * Om du fortfarande använder den äldre tabellen fungerar funktionerna fortfarande om du väljer att inkludera den äldre tabellen via samma parameter. Vi rekommenderar dock att du [växlar till de Resource-/regionsspecifika tabellerna](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) tidigast.
 
 * **Minskar risken för anpassade frågor som bryts**: om Azure Backup introducerar förbättringar av schemat för de underliggande La tabellerna för att hantera framtida rapporterings scenarier, kommer definitionen av funktionerna också att uppdateras för att ta hänsyn till schema ändringarna. Om du använder system funktioner för att skapa anpassade frågor, kommer dina frågor inte att brytas, även om det finns ändringar i tabellens underliggande schema.
 
 > [!NOTE]
-> System funktionerna underhålls av Microsoft och deras definitioner kan inte redige ras av användare. Om du behöver redigerbara funktioner kan du skapa [sparade funktioner](https://docs.microsoft.com/azure/azure-monitor/logs/functions) i La.
+> System funktionerna underhålls av Microsoft och deras definitioner kan inte redige ras av användare. Om du behöver redigerbara funktioner kan du skapa [sparade funktioner](../azure-monitor/logs/functions.md) i La.
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>Typer av system funktioner som erbjuds av Azure Backup
 
@@ -390,4 +390,4 @@ Nedan visas några exempel frågor som hjälper dig att komma igång med att anv
     ````
 
 ## <a name="next-steps"></a>Nästa steg
-[Läs mer om Backup-rapporter](https://docs.microsoft.com/azure/backup/configure-reports)
+[Läs mer om Backup-rapporter](./configure-reports.md)

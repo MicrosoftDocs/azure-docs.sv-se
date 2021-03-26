@@ -3,16 +3,16 @@ title: Distribuera till en IoT Edge för Linux på Windows – Azure
 description: Den här artikeln innehåller rikt linjer för hur du distribuerar till en IoT Edge för Linux på Windows-enheter.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618142"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561091"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Distribuera till en IoT Edge för Linux på Windows-enheten (EFLOW)
 
-I den här artikeln får du lära dig hur du distribuerar direktsända video analyser på en Edge-enhet som har [IoT Edge för Linux på Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows). När du har gått igenom stegen i det här dokumentet kommer du att kunna köra ett [medie diagram](media-graph-concept.md) som identifierar rörelser i en video och avger sådana händelser till IoT Hub i molnet. Du kan sedan växla ut medie grafen för avancerade scenarier och ta kraften i direktsända video analyser till din Windows-baserade IoT Edge-enhet.
+I den här artikeln får du lära dig hur du distribuerar direktsända video analyser på en Edge-enhet som har [IoT Edge för Linux på Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md). När du har gått igenom stegen i det här dokumentet kommer du att kunna köra ett [medie diagram](media-graph-concept.md) som identifierar rörelser i en video och avger sådana händelser till IoT Hub i molnet. Du kan sedan växla ut medie grafen för avancerade scenarier och ta kraften i direktsända video analyser till din Windows-baserade IoT Edge-enhet.
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
@@ -21,7 +21,7 @@ I den här artikeln får du lära dig hur du distribuerar direktsända video ana
     > [!NOTE]
     > Du behöver en Azure-prenumeration med behörigheter för att skapa tjänstens huvud namn (**ägar rollen** ger detta). Om du inte har rätt behörigheter kan du kontakta konto administratören för att ge dig rätt behörigheter.
 * [Visual Studio Code](https://code.visualstudio.com/) på din utvecklings dator. Kontrol lera att du har [tillägget Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Läs [Vad är EFLOW](https://aka.ms/AzEFLOW-docs).
+* Läs [Vad är EFLOW](../../iot-edge/iot-edge-for-linux-on-windows.md).
 
 ## <a name="deployment-steps"></a>Distributionssteg
 
@@ -29,9 +29,9 @@ Följande visar det övergripande flödet av dokumentet och i fem enkla steg som
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="IoT Edge för Linux på Windows-diagram (EFLOW)":::
 
-1. [Installera EFLOW](https://aka.ms/AzEFLOW-install) på din Windows-enhet. 
+1. [Installera EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) på din Windows-enhet. 
 
-    1. Om du använder Windows-datorn kommer du att se en lokal värd anslutning som representerar den dator där du kör Windows administrations Center på Start sidan i [Windows administrations Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) under listan över anslutningar. 
+    1. Om du använder Windows-datorn kommer du att se en lokal värd anslutning som representerar den dator där du kör Windows administrations Center på Start sidan i [Windows administrations Center](/windows-server/manage/windows-admin-center/overview) under listan över anslutningar. 
     1. Eventuella ytterligare servrar, datorer eller kluster som du hanterar visas också här.
     1. Du kan använda Windows administrations Center för att installera och hantera Azure-EFLOW på en lokal enhet eller fjärrstyrda enheter. I den här hand boken hanteras lokal värd anslutning som mål enhet för distribution av Azure IoT Edge för Linux i Windows. Därför visas även localhost som en IoT Edge enhet.
 
@@ -110,4 +110,3 @@ Följande visar det övergripande flödet av dokumentet och i fem enkla steg som
 * Kör [AI på live video](use-your-model-quickstart.md#overview) (du kan hoppa över den nödvändiga installationen eftersom den redan har gjorts ovan)
 * Använd vårt [vs Code-tillägg](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) för att visa fler medie diagram.
 * Använd en [IP-kamera](https://en.wikipedia.org/wiki/IP_camera)  som stöder RTSP i stället för att använda RTSP-simulatorn. Du hittar IP-kameror som har stöd för RTSP på sidan [ONVIF-produkter](https://www.onvif.org/conformant-products/) . Sök efter enheter som uppfyller profilerna G, S eller T.
-

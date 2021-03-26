@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: thweiss
-ms.openlocfilehash: ec12deb5a7c77674026b849585552fd873aee5c1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f8028d69e376e2b71549be52267e2f6cbdb1f8ce
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046002"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568672"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurera rollbaserad åtkomst kontroll med Azure Active Directory för ditt Azure Cosmos DB-konto (för hands version)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -323,9 +323,9 @@ Om du vill använda Azure Cosmos DB RBAC i ditt program måste du uppdatera hur 
 
 Hur du skapar en `TokenCredential` instans ligger utanför den här artikelns omfattning. Det finns många sätt att skapa en sådan instans beroende på vilken typ av AAD-identitet du vill använda (användarens huvud namn, tjänstens huvud namn, grupp osv.). Viktigast är att din `TokenCredential` instans måste matcha den identitet (ägar-ID) som du har tilldelat rollerna till. Du hittar exempel på att skapa en `TokenCredential` klass:
 
-- [i .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [i Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
-- [i Java Script](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
+- [i .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [i Java](/java/api/overview/azure/identity-readme#credential-classes)
+- [i Java Script](/javascript/api/overview/azure/identity-readme#credential-classes)
 
 I exemplen nedan används ett huvud namn för tjänsten med en `ClientSecretCredential` instans.
 

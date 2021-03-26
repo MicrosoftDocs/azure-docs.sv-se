@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0701ff53202d53131ceac8ceabb148fb5ff4f2b2
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 629459d22b18b326307b45bb512d16622808b533
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025160"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562638"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -143,7 +143,7 @@ Om instansen är redo för både Azure SQL DB och Azure SQL MI, rekommenderar vi
 Detta kan inträffa när den måldistributionstyp som har valts i utvärderingsegenskaperna är **Rekommenderad** och SQL-instansen inte är redo för Azure SQL Database och Azure SQL Managed Instance. Användaren rekommenderas att skapa en utvärdering i Azure Migrate med utvärderingstypen **Virtuell Azure-dator** för att se om den server där instansen körs är redo att migrera till en virtuell Azure-dator.
 Användaren rekommenderas att skapa en utvärdering i Azure Migrate med utvärderings typ som **virtuell Azure-dator** för att avgöra om den server där instansen körs är redo att migrera till en virtuell Azure-dator i stället:
 - Azure VM-utvärderingar i Azure Migrate lyfts för närvarande – en-Shift-fokuserad och kommer inte att beakta de exakta prestanda måtten för att köra SQL-instanser och databaser på den virtuella Azure-datorn. 
-- När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnadsuppskattningarna att gälla för alla instanser som körs på servern och som kan migreras till en virtuell Azure-dator med hjälp av verktyget för servermigrering. Innan du migrerar bör du [gå igenom prestandariktlinjerna](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) för SQL Server på virtuella Azure-datorer.
+- När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnadsuppskattningarna att gälla för alla instanser som körs på servern och som kan migreras till en virtuell Azure-dator med hjälp av verktyget för servermigrering. Innan du migrerar bör du [gå igenom prestandariktlinjerna](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) för SQL Server på virtuella Azure-datorer.
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Jag kan inte se vissa databaser i min utvärdering, trots att instansen ingår i utvärderingen
 
@@ -151,7 +151,7 @@ Azure SQL-utvärderingen inkluderar bara databaser med en onlinestatus. Om det f
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Jag vill jämföra kostnader för att köra mina SQL-instanser på Azure VM vs Azure SQL Database/Azure SQL Managed instance
 
-Du kan skapa en utvärdering av typen **Virtuell Azure-dator** i samma grupp som användes i din **Azure SQL**-utvärdering. Du kan sedan jämföra de två rapporterna sida vid sida. Azure VM-utvärderingar i Azure Migrate är för närvarande fokuserade på Lift and Shift och kommer inte att beakta de specifika prestandamåtten för att köra SQL-instanser och databaser på den virtuella Azure-datorn. När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnadsuppskattningarna att gälla för alla instanser som körs på servern och som kan migreras till en virtuell Azure-dator med hjälp av verktyget för servermigrering. Innan du migrerar bör du [gå igenom prestandariktlinjerna](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) för SQL Server på virtuella Azure-datorer.
+Du kan skapa en utvärdering av typen **Virtuell Azure-dator** i samma grupp som användes i din **Azure SQL**-utvärdering. Du kan sedan jämföra de två rapporterna sida vid sida. Azure VM-utvärderingar i Azure Migrate är för närvarande fokuserade på Lift and Shift och kommer inte att beakta de specifika prestandamåtten för att köra SQL-instanser och databaser på den virtuella Azure-datorn. När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnadsuppskattningarna att gälla för alla instanser som körs på servern och som kan migreras till en virtuell Azure-dator med hjälp av verktyget för servermigrering. Innan du migrerar bör du [gå igenom prestandariktlinjerna](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) för SQL Server på virtuella Azure-datorer.
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Lagrings kostnaden i min Azure SQL-utvärdering är noll
 För Azure SQL-hanterad instans finns ingen lagrings kostnad tillagd för den första 32 GB/instans/månad-lagringen och ytterligare lagrings kostnader läggs till för lagring i 32 GB steg. [Läs mer](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

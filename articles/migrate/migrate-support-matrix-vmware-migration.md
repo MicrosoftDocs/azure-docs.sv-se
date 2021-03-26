@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576789"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557572"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Stödmatris för VMware-migrering
 
@@ -68,7 +68,7 @@ I tabellen sammanfattas kraven för att migrera utan agent för virtuella VMware
 **IPv6** | Stöds inte.
 **Mål disk** | Virtuella datorer kan bara migreras till Managed disks (standard-HDD, standard SSD, Premium SSD) i Azure.
 **Samtidig replikering** | Upp till 300 replikering av virtuella datorer per vCenter Server med 1-apparat. Upp till 500 samtidigt replikering av virtuella datorer per vCenter Server när ytterligare en [skalbar](./how-to-scale-out-for-migration.md) installation har distribuerats. 
-**Automatisk installation av Azure VM-agenten (Windows och Linux-agenten)** | Stöds för Windows Server 2008 R2 och senare. <br/> Stöds för RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04. Granska listan med [nödvändiga paket](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)) för dessa Linux-operativsystem.
+**Automatisk installation av Azure VM-agenten (Windows och Linux-agenten)** | Stöds för Windows Server 2008 R2 och senare. <br/> Stöds för RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04. Granska listan med [nödvändiga paket](../virtual-machines/extensions/agent-linux.md#requirements)) för dessa Linux-operativsystem.
 
 > [!TIP]
 >  Med hjälp av Azure Portal kan du välja upp till 10 virtuella datorer i taget för att konfigurera replikering. Om du vill replikera fler virtuella datorer kan du använda portalen och lägga till de virtuella datorer som ska replikeras i flera batchar med 10 virtuella datorer eller använda Azure Migrate PowerShell-gränssnittet för att konfigurera replikering. Se till att du inte konfigurerar samtidig replikering på fler än det högsta antalet virtuella datorer som stöds för samtidiga replikeringar.

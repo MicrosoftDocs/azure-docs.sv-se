@@ -7,12 +7,12 @@ ms.author: weetok
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: aa2c5801e61fb73219934c5d38e894520c41ab26
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 24aa3bc455bf716c074526d707594bd3b4170619
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784041"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564185"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuerlig integrering och leverans i Azure Data Factory
 
@@ -335,7 +335,7 @@ Här är en förklaring av hur föregående mall skapas, uppdelat efter resurs t
 * Även om typ specifik anpassning är tillgänglig för data uppsättningar kan du ange konfiguration utan att uttryckligen ha en \* -nivå-konfiguration. I föregående exempel är alla data uppsättnings egenskaper under `typeProperties` parameterstyrda.
 
 > [!NOTE]
-> **Azure-aviseringar och matriser**  som kon figurer ATS för en pipeline stöds inte för närvarande som parametrar för arm-distributioner. Om du vill tillämpa aviseringar och matriser på nytt i en ny miljö ska du följa [Data Factory övervakning, varningar och matriser.](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)
+> **Azure-aviseringar och matriser**  som kon figurer ATS för en pipeline stöds inte för närvarande som parametrar för arm-distributioner. Om du vill tillämpa aviseringar och matriser på nytt i en ny miljö ska du följa [Data Factory övervakning, varningar och matriser.](./monitor-using-azure-monitor.md#data-factory-metrics)
 > 
 
 ### <a name="default-parameterization-template"></a>Standard Parameterisering-mall

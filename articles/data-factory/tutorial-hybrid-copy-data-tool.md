@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 70905d23b61ee9fee319bae41aeb421d808fa4d0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606726"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566769"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopiera data från en SQL Server-databas till Azure Blob Storage med hjälp av Kopiera data-verktyget
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -87,21 +87,6 @@ Du använder namnet och nyckeln för lagringskontot i den här självstudien. G�
 
 
 1. I rutorna **Lagringskontonamn** och **key1** kopierar du värdena och klistrar sedan in dem i Anteckningar eller annat redigeringsprogram så att du har dem när du behöver dem senare i självstudien.
-
-#### <a name="create-the-adftutorial-container"></a>Skapa containern adftutorial
-I det här avsnittet skapar du en blobcontainer med namnet **adftutorial** i Blob Storage.
-
-1. I fönstret **Lagringskonto** växlar du till **Översikt** och klickar sedan på **Blobar**.
-
-1. I fönstret **blobbar** väljer du **+ container**.
-
-1. I fönstret **ny behållare** , under **namn**, anger du **adftutorial** och väljer sedan **OK**.
-
-1. Välj **adftutorial** i listan över containrar.
-
-
-1. Behåll fönstret **container** för **adftutorial** Open. Du använder den för att verifiera utdata i slutet av självstudien. Data Factory skapar automatiskt utdatamappen i den här containern, så du behöver inte skapa en.
-
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 

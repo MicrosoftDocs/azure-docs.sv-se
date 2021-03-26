@@ -3,12 +3,12 @@ title: Åtgärder för kontroll plan och data plan
 description: Beskriver skillnaden mellan kontroll planet och data Plans åtgärder. Kontroll Plans åtgärder hanteras av Azure Resource Manager. Data Plans åtgärder hanteras av en tjänst.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91371277"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544102"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure kontroll plan och data plan
 
@@ -52,7 +52,7 @@ Kontroll planet innehåller två scenarier för hantering av förfrågningar –
 
 ## <a name="data-plane"></a>Dataplanet
 
-Begär Anden om data Plans åtgärder skickas till en slut punkt som är speciell för din instans. Till exempel är åtgärden [identifiera språk](/rest/api/cognitiveservices/textanalytics/detect%20language/detect%20language) i Cognitive Services en data Plans åtgärd eftersom URL: en för begäran är:
+Begär Anden om data Plans åtgärder skickas till en slut punkt som är speciell för din instans. Till exempel är åtgärden [identifiera språk](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection) i Cognitive Services en data Plans åtgärd eftersom URL: en för begäran är:
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

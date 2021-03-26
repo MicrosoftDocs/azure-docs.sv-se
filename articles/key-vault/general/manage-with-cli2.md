@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289896"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557215"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Hantera Key Vault med Azure CLI 
 
@@ -147,7 +147,7 @@ Om du har en befintlig nyckel i en. PEM-fil kan du överföra den till Azure Key
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Nu kan du referera till nyckeln som du har skapat eller laddat upp till Azure Key Vault med hjälp av dess URI. Använd **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** för att alltid hämta den aktuella versionen. Använd https://[Key Vault-Name]. valv. Azure. net/Keys/[nyckel namn]/[nyckel-Unique-ID] för att hämta den här specifika versionen. Till exempel **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Nu kan du referera till nyckeln som du har skapat eller laddat upp till Azure Key Vault med hjälp av dess URI. Använd `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey` för att alltid hämta den aktuella versionen. Använd https://[Key Vault-Name]. valv. Azure. net/Keys/[nyckel namn]/[nyckel-Unique-ID] för att hämta den här specifika versionen. Till exempel `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
 
 Lägg till en hemlighet till valvet, som är ett lösen ord med namnet SQLPassword, och som har värdet "hVFkk965BuUv" till Azure Key Vault. 
 

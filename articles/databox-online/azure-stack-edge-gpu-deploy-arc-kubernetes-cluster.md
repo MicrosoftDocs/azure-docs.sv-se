@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437612"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567533"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivera Azure Arc på Kubernetes-kluster på din Azure Stack Edge Pro GPU-enhet
 
@@ -74,7 +74,7 @@ Innan du aktiverar Azure Arc i Kubernetes-klustret måste du aktivera och regist
     
     ![Registrera Kubernetes Resource providers 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-Du kan också registrera resurs leverantörer via `az cli` . Mer information finns i [registrera två providers för Azure Arc-aktiverade Kubernetes](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
+Du kan också registrera resurs leverantörer via `az cli` . Mer information finns i [registrera två providers för Azure Arc-aktiverade Kubernetes](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
 ## <a name="create-service-principal-assign-role"></a>Skapa tjänstens huvud namn, tilldela roll
 
@@ -226,7 +226,7 @@ Följ dessa steg om du vill ta bort hanteringen av Azure-bågen:
 
 
 > [!NOTE]
-> När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret. Du måste ställa in `--sync-garbage-collection`  i Arc-OperatorParams för att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)
+> När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret. Du måste ställa in `--sync-garbage-collection`  i Arc-OperatorParams för att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798858"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568808"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Skapa interaktiva rapporter VM Insights med arbets böcker
 
@@ -25,7 +25,7 @@ Arbets böcker är användbara för scenarier som:
 
 I följande tabell sammanfattas de arbets böcker som ingår i VM-insikter för att komma igång.
 
-| Arbetsbok | Beskrivning | Omfång |
+| Arbetsbok | Description | Omfång |
 |----------|-------------|-------|
 | Prestanda | Innehåller en anpassningsbar version av vår översta N-lista och diagram-vy i en enda arbets bok som utnyttjar alla Log Analytics prestanda räknare som du har aktiverat.| Flera virtuella datorer |
 | Prestandaräknare | En översta N-diagramvy över en stor uppsättning prestanda räknare. | Flera virtuella datorer |
@@ -103,13 +103,13 @@ Varje avsnitt har sina egna avancerade inställningar, som är tillgängliga via
 
 ![Skärm bild av dialog rutan Avancerade inställningar i avsnittet Virtual Machines arbets bok i Azure Monitor. Ikonen som öppnar dialog rutan är markerad.](media/vminsights-workbooks/007-settings-expanded.png)
 
-|         |          |
+| Inställning | Beskrivning |
 | ---------------- |:-----|
-| **Anpassad bredd**    | Gör ett objekt till en godtycklig storlek, så att du kan passa många objekt på en enda rad så att du bättre kan organisera dina diagram och tabeller i interaktiva interaktiva rapporter.  |
-| **Villkorligt synlig** | Ange om du vill dölja steg baserat på en parameter i läsläge. |
-| **Exportera en parameter**| Tillåt en markerad rad i rutnätet eller diagrammet för att få senare steg att ändra värden eller bli synlig.  |
-| **Visa fråga när du inte redigerar** | Visar frågan ovanför diagrammet eller tabellen även i läsläge.
-| **Visa knappen Öppna i Analytics när du inte redigerar** | Lägger till den blå analys ikonen i det högra hörnet i diagrammet för att tillåta åtkomst till ett klick.|
+| Anpassad bredd    | Gör ett objekt till en godtycklig storlek, så att du kan passa många objekt på en enda rad så att du bättre kan organisera dina diagram och tabeller i interaktiva interaktiva rapporter.  |
+| Villkorligt synlig | Ange om du vill dölja steg baserat på en parameter i läsläge. |
+| Exportera en parameter| Tillåt en markerad rad i rutnätet eller diagrammet för att få senare steg att ändra värden eller bli synlig.  |
+| Visa fråga när du inte redigerar | Visar frågan ovanför diagrammet eller tabellen även i läsläge.
+| Visa knappen Öppna i Analytics när du inte redigerar | Lägger till den blå analys ikonen i det högra hörnet i diagrammet för att tillåta åtkomst till ett klick.|
 
 De flesta av dessa inställningar är ganska intuitiva, men för att förstå **export av en parameter** är det bättre att granska en arbets bok som använder den här funktionen.
 
@@ -152,12 +152,12 @@ Parametrar är linjära, med början från början av en arbets bok och flödar 
  
 Det finns fyra olika typer av parametrar som stöds för närvarande:
 
-|                  |      |
+| Parameter | Beskrivning |
 | ---------------- |:-----|
-| **Text**    | Gör att användaren kan redigera en text ruta och du kan också ange en fråga för att fylla i standardvärdet. |
-| **Listmeny** | Tillåter användaren att välja från en uppsättning värden. |
-| **Intervall väljare**| Gör att användaren kan välja från en fördefinierad uppsättning tidsintervalls värden eller välja från ett anpassat tidsintervall.|
-| **Resurs väljare** | Gör att användaren kan välja bland de resurser som har valts för arbets boken.|
+| Text    | Gör att användaren kan redigera en text ruta och du kan också ange en fråga för att fylla i standardvärdet. |
+| Listmeny | Tillåter användaren att välja från en uppsättning värden. |
+| Intervall väljare| Gör att användaren kan välja från en fördefinierad uppsättning tidsintervalls värden eller välja från ett anpassat tidsintervall.|
+| Resurs väljare | Gör att användaren kan välja bland de resurser som har valts för arbets boken.|
 
 ### <a name="using-a-text-parameter"></a>Använda en text parameter
 

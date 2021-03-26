@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ab927c973c6a5de6f3f3f8d88c504ec572b7148
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f63fc7ae28d80707149046637cf39c60a45748fd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047600"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566582"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azures säkerhets bas linje för Container Instances
 
@@ -32,7 +32,7 @@ Om du vill se hur Container Instances helt mappar till Azures säkerhets mätnin
 
 Kontrol lera utgående nätverks åtkomst från ett undernät delegerad till Azure Container Instances med hjälp av Azure-brandväggen. 
 
-- [Distribuera containerinstanser i ett virtuellt Azure-nätverk](/azure/container-instances/container-instance-vnet)
+- [Distribuera containerinstanser i ett virtuellt Azure-nätverk](/azure/container-instances/container-instances-vnet)
 
 - [Distribuera och konfigurera Azure-brandvägg](../firewall/tutorial-firewall-deploy-portal.md)
 

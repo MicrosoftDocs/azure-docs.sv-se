@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0b68b78499aa3bf0d84d8bd0fa5ab55d1f969113
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101680095"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561176"
 ---
 # <a name="device-update-apt-manifest"></a>APT-manifest för enhets uppdatering
 
@@ -103,7 +103,7 @@ Om versionen utelämnas installeras den senaste tillgängliga versionen av det a
 > APT Package Manager ignorerar versions krav som anges av ett paket när beroende paket som ska installeras automatiskt löses. Om inte explicita versioner av beroende paket anges kommer de att använda den senaste, även om själva paketet kan ange ett strikt krav (=) i en viss version. Den här automatiska upplösningen kan leda till fel som rör ett ouppfyllda-beroende. [Läs mer](https://unix.stackexchange.com/questions/350192/apt-get-not-properly-resolving-a-dependency-on-a-fixed-version-in-a-debian-ubunt)
 
 Om du uppdaterar en version av Azure IoT Edge Security daemon bör du inkludera den önskade versionen av `iotedge` paketet och det beroende `libiothsm-std` paketet i apt-manifestet.
-[Läs mer](https://docs.microsoft.com/azure/iot-edge/how-to-update-iot-edge#update-the-security-daemon)
+[Läs mer](../iot-edge/how-to-update-iot-edge.md#update-the-security-daemon)
 
 > [!NOTE]
 > Ett apt-manifest kan användas för att uppdatera enhets uppdaterings agenten och dess beroenden. Visa en lista med namnet på enhets uppdaterings agenten och önskad version i apt-manifestet, t. ex. för alla andra paket. Detta apt-manifest kan sedan importeras och distribueras via enhets uppdateringen för IoT Hub pipelinen. 
@@ -202,4 +202,3 @@ Den här uppdateringen inkluderar foo-paketet och inkluderar även bar-paket.
 
 > [!div class="nextstepaction"]
 > [Importera ny uppdatering](import-update.md)
-

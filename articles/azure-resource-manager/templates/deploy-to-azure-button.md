@@ -2,13 +2,13 @@
 title: Distribuera till Azure (knapp)
 description: Använd knappen för att distribuera Azure Resource Manager mallar från en GitHub-lagringsplats.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: e25d49571347bb5ed27dbd52bb60c68cbeb4360d
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028751"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543794"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Använd en distributions knapp för att distribuera mallar från GitHub-lagringsplatsen
 
@@ -76,7 +76,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Du har en fullständig URL för länken.
 
-Normalt är du värd för mallen i en offentlig lagrings platsen. Om du använder en privat lagrings platsen måste du inkludera en token för att få åtkomst till mallens rå innehåll. Den token som genereras av GitHub är endast giltig för en kort tid. Du behöver uppdatera länken ofta.
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 Om du använder [git med Azure databaser](/azure/devops/repos/git/) i stället för en GitHub-lagrings platsen kan du fortfarande använda knappen **distribuera till Azure** . Kontrol lera att din lagrings platsen är offentlig. Använd [åtgärden objekt](/rest/api/azure/devops/git/items/get) för att hämta mallen. Din begäran ska ha följande format:
 

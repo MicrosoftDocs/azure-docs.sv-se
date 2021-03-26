@@ -3,12 +3,12 @@ title: Konfigurera bicep utvecklings-och distributions miljöer
 description: Så här konfigurerar du bicep utvecklings-och distributions miljöer
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd3721aca83488de61494a94826bfcd0b6acc26
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594401"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543745"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>Konfigurera bicep utvecklings-och distributions miljö
 
@@ -31,7 +31,7 @@ Du kan distribuera bicep-filer med hjälp av Azure CLI eller Azure PowerShell. F
 - [Installera Azure CLI på macOS](/cli/azure/install-azure-cli-macos)
 
 > [!NOTE]
-> För närvarande kan både Azure CLI och Azure PowerShell bara distribuera lokala bicep-filer. Mer information om hur du distribuerar bicep-filer med hjälp av Azure CLI finns i [Deploy-CLI](/deploy-cli.md#deploy-remote-template). Mer information om hur du distribuerar bicep-filer med hjälp av Azure PowerShell finns i [Deploy-PowerShell](/deploy-powershell.md#deploy-remote-template).
+> För närvarande kan både Azure CLI och Azure PowerShell bara distribuera lokala bicep-filer. Mer information om hur du distribuerar bicep-filer med hjälp av Azure CLI finns i [Deploy-CLI](./deploy-cli.md#deploy-remote-template). Mer information om hur du distribuerar bicep-filer med hjälp av Azure PowerShell finns i [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
 
 När den version av Azure PowerShell eller Azure CLI som stöds har installerats kan du distribuera en bicep-fil med:
 

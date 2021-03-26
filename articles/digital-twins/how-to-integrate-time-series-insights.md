@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199908"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564950"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrera Azure Digitals dubbla med Azure Time Series Insights
 
@@ -157,7 +157,7 @@ Därefter måste du ställa in miljövariabler i din Function-app från tidigare
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Skapa och ansluta en Time Series Insights-instans
 
-Därefter ställer du in en Time Series Insights-instans för att ta emot data från din andra (TSD) Event Hub. Följ stegen nedan och mer information om den här processen finns i [*Självstudier: Konfigurera en Azure Time Series Insights Gen2 PAYG-miljö*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+Därefter ställer du in en Time Series Insights-instans för att ta emot data från din andra (TSD) Event Hub. Följ stegen nedan och mer information om den här processen finns i [*Självstudier: Konfigurera en Azure Time Series Insights Gen2 PAYG-miljö*](../time-series-insights/tutorial-set-up-environment.md).
 
 1. I Azure Portal börjar du skapa en Time Series Insights miljö. 
     1. Välj pris nivå för **Gen2 (L1)** .
@@ -201,7 +201,7 @@ Nu bör data flöda till Time Series Insights-instansen som är redo att analyse
 
 De digitala multiplarna lagras som standard som en platt hierarki i Time Series Insights, men de kan berikas med modell information och en hierarki med flera nivåer för organisationen. Läs mer om den här processen genom att läsa: 
 
-* [*Självstudie: definiera och tillämpa en modell*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*Självstudie: definiera och tillämpa en modell*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Du kan skriva anpassad logik för att automatiskt tillhandahålla den här informationen med modell-och diagram data som redan finns lagrade i Azure Digitals. Läs mer om hur du hanterar, uppgraderar och hämtar information från diagrammet med dubbla diagram i följande referenser:
 

@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2cfb09f383d8425a644d3e2e87d190b350f5f41a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94835398"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564644"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Konfigurera inställningar för privilegierad åtkomst grupp (för hands version) i Privileged Identity Management
 
@@ -75,14 +75,14 @@ Du kan välja mellan två alternativ för tilldelnings varaktighet för varje ti
 
 Du kan välja något av följande **tillgängliga** varaktighets alternativ för tilldelning:
 
-| | |
+| | Description |
 | --- | --- |
 | **Tillåt permanent berättigad tilldelning** | Resurs administratörer kan tilldela permanent berättigad tilldelning. |
 | **Giltig tilldelning har förfallit efter** | Resurs administratörer kan kräva att alla kvalificerade tilldelningar har ett angivet start-och slutdatum. |
 
 Och du kan välja något av dessa alternativ för varaktighet för **aktiv** tilldelning:
 
-| | |
+| | Description |
 | --- | --- |
 | **Tillåt permanent aktiv tilldelning** | Resurs administratörer kan tilldela permanent aktiv tilldelning. |
 | **Aktiv tilldelning förfaller efter** | Resurs administratörer kan kräva att alla aktiva tilldelningar har ett angivet start-och slutdatum. |

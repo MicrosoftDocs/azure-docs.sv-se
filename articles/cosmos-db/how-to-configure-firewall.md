@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b94b30851a5206c2183d999a3c024351cf415c90
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122722"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568247"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurera IP-brandvägg i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -104,11 +104,11 @@ När du lägger till instanser av virtuella datorer i gruppen får de automatisk
 
 När du ansluter till ditt Azure Cosmos DB-konto från en dator på Internet måste klientens IP-adress eller IP-adressintervall läggas till i listan över tillåtna IP-adresser för ditt konto.
 
-### <a name="add-outbound-rules-to-the-firewall"></a>Lägg till utgående regler i brand väggen
+### <a name="add-outbound-rules-to-the-firewall"></a>Lägg till regler för utgående trafik i brandväggen
 
 Om du vill få åtkomst till en aktuell lista över utgående IP-intervall som ska läggas till i brand Väggs inställningarna läser du [Hämta Azure IP-intervall och service märken](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Information om hur du automatiserar listan finns i [använda service tag Discovery API (offentlig för hands version)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview).
+Information om hur du automatiserar listan finns i [använda service tag Discovery API (offentlig för hands version)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview).
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurera en IP-brandvägg med en Resource Manager-mall
 

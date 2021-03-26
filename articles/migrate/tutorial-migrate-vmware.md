@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604556"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567126"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrera virtuella VMware-datorer till Azure (utan agent)
 
@@ -91,7 +91,7 @@ Aktivera replikering på följande sätt:
     - Double Encryption med plattforms hanterade och Kundhanterade nycklar
 
    > [!NOTE]
-   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](https://go.microsoft.com/fwlink/?linkid=2151800) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
+   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
   
 10. I **Azure Hybrid-förmån**:
 
@@ -189,7 +189,7 @@ När du har kontrollerat att testmigreringen fungerar som förväntat kan du mig
 ## <a name="complete-the-migration"></a>Slutföra migreringen
 
 1. När migreringen är färdig högerklickar du på den virtuella datorn > **stoppar replikeringen**. Detta stoppar replikeringen för den lokala datorn och rensar information om replikeringstillståndet för den virtuella datorn.
-2. Vi installerar automatiskt VM-agenten för virtuella Windows-datorer och Linux under migreringen. Granska [kraven](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) för Azure VM Linux-agenten på de migrerade datorerna om datorn har Linux OS för att säkerställa att installationen av Linux VM-agenten utförs på rätt sätt. 
+2. Vi installerar automatiskt VM-agenten för virtuella Windows-datorer och Linux under migreringen. Granska [kraven](../virtual-machines/extensions/agent-linux.md#requirements) för Azure VM Linux-agenten på de migrerade datorerna om datorn har Linux OS för att säkerställa att installationen av Linux VM-agenten utförs på rätt sätt. 
 3. Utför alla finjusteringar av appen efter migreringen som att uppdatera databasanslutningssträngar och webbserverkonfigurationer.
 4. Utför slutlig program- och migreringsacceptanstestning på det migrerade programmet som nu körs i Azure.
 5. Klipp ut över trafik till den migrerade virtuella Azure-instansen.

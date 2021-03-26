@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 930594d2c1af198aba3dae936cd0ce8fcf91c336
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01c9a8b62190f3b545169bb5ba6732e6799ff9f2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214124"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559816"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Självstudie: bygga ett Java-webbprogram med Azure Cosmos DB och SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +52,7 @@ Innan du påbörjar den här självstudien om apputveckling måste du ha följan
 * [Eclipse IDE för Java EE-utvecklare.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [En Azure-webbplats med en aktiverad Java-körningsmiljö (t.ex. Tomcat eller Jetty).](../app-service/quickstart-java.md)
 
-Om du installerar de här verktygen för första gången ger coreservlets.com en genom gång av installations processen i avsnittet snabb start i [självstudierna: installerar TomCat7 och använder den med Sol förmörkelse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) -artikeln.
+Om du installerar de här verktygen för första gången ger coreservlets.com en genom gång av installations processen i avsnittet snabb start i [självstudierna: installerar TomCat7 och använder den med Sol förmörkelse](https://www.youtube.com/watch?v=jOdCfW7-ybI&t=2s) -artikeln.
 
 ## <a name="create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>Skapa ett Azure Cosmos DB-konto
 

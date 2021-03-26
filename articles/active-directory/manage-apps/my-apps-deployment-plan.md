@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645475"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543966"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planera Azure Active Directory konfiguration av mina appar
 
@@ -74,31 +74,19 @@ Administratörer kan konfigurera:
 
 ## <a name="plan-consent-configuration"></a>Planera medgivande konfiguration
 
-Det finns två typer av medgivande: användar medgivande och medgivande för appar som har åtkomst till data.
-
-![Skärm bild som visar medgivande konfigurationen](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>Användar tillstånd för program 
 
-Användare eller administratörer måste godkänna användnings villkoren och sekretess policyn för ett program. Du måste bestämma om användare eller endast administratörer ska kunna godkänna program. **Om dina affärs regler tillåter det, rekommenderar vi att du använder administratörs medgivande för att behålla kontrollen över programmen i din klient organisation**.
+Innan en användare kan logga in i ett program och programmet kan komma åt din organisations data måste en användare eller administratör bevilja program behörigheter. Du kan konfigurera om användar medgivande tillåts och under vilka omständigheter. **Microsoft rekommenderar att du endast tillåter användar medgivande för program från verifierade utgivare.**
 
-Om du vill använda administratörs medgivande måste du vara global administratör för organisationen och programmen måste vara antingen:
-
-* Registrerad i din organisation.
-
-* Registreras i en annan Azure AD-organisation och har tidigare godkänts av minst en användare.
-
-Om du vill tillåta användare att godkänna måste du bestämma om du vill att de ska godkänna en app eller bara under särskilda omständigheter.
-
-Mer information finns i Konfigurera hur slutanvändare [godkänner ett program i Azure Active Directory.](../manage-apps/configure-user-consent.md)
+Mer information finns i Konfigurera hur slutanvändare [godkänner program](../manage-apps/configure-user-consent.md)
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Grupp ägarens medgivande för appar som har åtkomst till data
 
-Ta reda på om ägare av Azure AD-säkerhetsgrupper eller M365-grupper kan godkänna program för att få åtkomst till data för de grupper som de äger. Du kan inte tillåta, tillåta alla grupp ägare eller bara tillåta en delmängd av grupp ägarna.
+Grupp-och team ägare kan auktorisera program, till exempel program som publiceras av tredjepartsleverantörer, för att komma åt din organisations data som är associerade med en grupp. Mer information finns i [Resource-Specific medgivande i Microsoft Teams](https://docs.microsoft.com/microsoftteams/resource-specific-consent) . 
+
+Du kan konfigurera om du vill tillåta eller inaktivera den här funktionen.
 
 Mer information finns i [Konfigurera grupp medgivande behörigheter](../manage-apps/configure-user-consent-groups.md).
-
-Konfigurera sedan inställningarna för [godkännande av användar-och grupp ägare](https://portal.azure.com/) i Azure Portal.
 
 ### <a name="plan-communications"></a>Planera kommunikation
 

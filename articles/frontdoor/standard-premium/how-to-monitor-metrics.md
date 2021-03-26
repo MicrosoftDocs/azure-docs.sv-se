@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: bb10fb337972db2696960b530f2d7538bd36a2fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101099385"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557334"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Real tids övervakning i Azures främre dörr standard/Premium
 
@@ -22,11 +22,11 @@ ms.locfileid: "101099385"
 
 Azure frontend standard/Premium är integrerat med Azure Monitor och har 11 mått som hjälper dig att övervaka Azures främre dörr standard/Premium i real tid för att spåra, felsöka och felsöka problem.  
 
-Azure frontend-standard/Premium-mått och skickar sina mått i intervall om 60 sekunder. Måtten kan ta upp till 3 minuter innan de visas i portalen. Mått kan visas i diagram eller rutnät som du väljer och är tillgängliga via portal, PowerShell, CLI och API. Mer information finns i [Azure Monitor mått](../../azure-monitor/platform/data-platform-metrics.md).  
+Azure frontend-standard/Premium-mått och skickar sina mått i intervall om 60 sekunder. Måtten kan ta upp till 3 minuter innan de visas i portalen. Mått kan visas i diagram eller rutnät som du väljer och är tillgängliga via portal, PowerShell, CLI och API. Mer information finns i [Azure Monitor mått](../../azure-monitor/essentials/data-platform-metrics.md).  
 
 Standard måtten är kostnads fria. Du kan aktivera ytterligare mått för en extra kostnad. 
 
-Du kan konfigurera aviseringar för varje mått, till exempel ett tröskelvärde för 4XXErrorRate eller 5XXErrorRate. När fel frekvensen överskrider tröskelvärdet utlöses en avisering som har kon figurer ATS. Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md). 
+Du kan konfigurera aviseringar för varje mått, till exempel ett tröskelvärde för 4XXErrorRate eller 5XXErrorRate. När fel frekvensen överskrider tröskelvärdet utlöses en avisering som har kon figurer ATS. Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-metric.md). 
 
 > [!IMPORTANT]
 > Azure front dörr standard/Premium (för hands version) är för närvarande en offentlig för hands version.
@@ -35,7 +35,7 @@ Du kan konfigurera aviseringar för varje mått, till exempel ett tröskelvärde
 
 ## <a name="metrics-supported-in-azure-front-door-standardpremium"></a>Mått som stöds i Azures främre dörr standard/Premium
 
-| Mått  | Beskrivning | Dimensioner |
+| Mått  | Description | Dimensioner |
 | ------------- | ------------- | ------------- |
 | Träff grad för byte | Procent andelen utgående från AFD-cache, beräknad mot total utgående. </br> **Förhållandet mellan byte träff** = (utgångs punkt från Edge-utgång från ursprung)/egress från gräns. </br> **Scenarier som exkluderas i beräkningen av byte-träffar**:</br> 1. du konfigurerar inget cacheminne antingen via regel motor eller cachelagring av frågesträngar. </br> 2. du konfigurerar inte Cache-Control-direktivet utan lagring eller privat cache. </br>3. byte träff-förhållandet kan vara lågt om större delen av trafiken vidarebefordras till ursprung i stället för att hanteras från cachen baserat på dina konfigurationer eller scenarier. | Slutpunkt |
 | RequestCount | Antalet klient begär Anden som hanteras av CDN. | Slut punkt, klient land, klient region, HTTP-status, HTTP-status grupp |
@@ -75,7 +75,7 @@ Du kan konfigurera aviseringar för varje mått, till exempel ett tröskelvärde
 
 1. Välj **ny varnings regel** för mått som anges i avsnittet mått.
 
-Aviseringen kommer att debiteras baserat på Azure Monitor. Mer information om aviseringar finns i [Azure Monitor aviseringar](../../azure-monitor/platform/alerts-overview.md).
+Aviseringen kommer att debiteras baserat på Azure Monitor. Mer information om aviseringar finns i [Azure Monitor aviseringar](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

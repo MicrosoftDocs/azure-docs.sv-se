@@ -7,23 +7,23 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: justinha
-author: inbarckms
+author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579390"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558269"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurera tillfälligt åtkomst pass i Azure AD för att registrera metoder för lösen ords lös autentisering (för hands version)
 
 Metoder för lösen ords lös autentisering, till exempel FIDO2 och lösen ords lös telefonin loggning via Microsoft Authenticator-appen, gör det möjligt för användare att logga in på ett säkert sätt utan lösen ord. Användare kan starta metoder för att använda lösen ord på något av två sätt:
 
-- Använda befintliga metoder för Azure AD Multi-Factor Authentication 
-- Använda ett tillfälligt åtkomst pass 
+- Använda befintliga metoder för Azure AD-Multi-Factor Authentication 
+- Använda ett tillfälligt åtkomst pass (KNACKa) 
 
 Ett tillfälligt åtkomst pass är ett tidsbegränsat lösen ord som utfärdats av en administratör som uppfyller kraven på starka autentisering och som kan användas för att publicera andra autentiseringsmetoder, inklusive lösen ord. Ett tillfälligt åtkomst pass gör det lättare att återställa när en användare har förlorat eller glömt sin starka autentiserings faktor, till exempel en säkerhets nyckel för FIDO2 eller Microsoft Authenticator app, men du måste logga in för att registrera nya metoder för stark autentisering.
 
@@ -49,13 +49,13 @@ Så här konfigurerar du principen för temporär åtkomst pass-autentiseringsme
    Standardvärdet och intervallet för tillåtna värden beskrivs i följande tabell.
 
 
-   | Inställning          | Standardvärden | Tillåtna värden               | Kommentarer                                                                                                                                                                                                                                                                 |   |
-   |------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    Lägsta livstid | 1 timme         | 10 – 43200 minuter (30 dagar) | Minsta antal minuter som det tillfälliga åtkomst passet är giltigt.                                                                                                                                                                                                                         |   |
-   | Högsta livstid | 24 timmar       | 10 – 43200 minuter (30 dagar) | Maximalt antal minuter som det tillfälliga åtkomst passet är giltigt.                                                                                                                                                                                                                         |   |
-   | Standard livs längd | 1 timme         | 10 – 43200 minuter (30 dagar) | Standardvärden kan åsidosättas av de enskilda stegen, inom den lägsta och högsta livstid som kon figurer ATS av principen                                                                                                                                                |   |
-   | Användning i taget     | Falskt          | True/false                 | När principen är inställd på false kan pass i klienten användas antingen en gång eller mer än en gång under giltighets tiden (högsta livstid). Genom att framtvinga användning av en gång i den tillfälliga åtkomst pass-principen skapas alla pass som skapats i klient organisationen som en engångs användning. |   |
-   | Längd           | 8              | 8-48 tecken              | Definierar längden på lösen ordet.                                                                                                                                                                                                                                      |   |
+   | Inställning | Standardvärden | Tillåtna värden | Kommentarer |
+   |---|---|---|---|
+   | Lägsta livstid | 1 timme | 10 – 43200 minuter (30 dagar) | Minsta antal minuter som det tillfälliga åtkomst passet är giltigt. |
+   | Högsta livstid | 24 timmar | 10 – 43200 minuter (30 dagar) | Maximalt antal minuter som det tillfälliga åtkomst passet är giltigt. |
+   | Standard livs längd | 1 timme | 10 – 43200 minuter (30 dagar) | Standardvärden kan åsidosättas av de enskilda stegen, inom den lägsta och högsta livstid som kon figurer ATS av principen. |
+   | Användning i taget | Falskt | True/false | När principen är inställd på false kan pass i klienten användas antingen en gång eller mer än en gång under giltighets tiden (högsta livstid). Genom att framtvinga användning av en gång i den tillfälliga åtkomst pass-principen skapas alla pass som skapats i klient organisationen som en engångs användning. |
+   | Längd | 8 | 8-48 tecken | Definierar längden på lösen ordet. |
 
 ## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Skapa ett tillfälligt åtkomst pass i Azure AD-portalen
 

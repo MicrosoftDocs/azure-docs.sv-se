@@ -3,12 +3,12 @@ title: Analysera direktsänd video med Visuellt innehåll för rums analys – A
 description: Den här självstudien visar hur du använder real tids analys tillsammans med Visuellt innehåll AI-funktionen för spatial analys från Azure Cognitive Services för att analysera en Live-videofeed från en (simulerad) IP-kamera.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698764"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561023"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysera direktsänd video med Visuellt innehåll för rums analys (för hands version)
 
@@ -56,7 +56,7 @@ Det här diagrammet visar hur signal flödet i den här självstudien. En [Edge-
 
 MediaGraphCognitiveServicesVisionExtension-noden spelar rollen för en proxy. Den konverterar video bild rutorna till den angivna bild typen. Sedan vidarebefordrar den avbildningen över **delat minne** till en annan Edge-modul som kör AI-åtgärder bakom en gRPC-slutpunkt. I det här exemplet är modulen för spatial analys. MediaGraphCognitiveServicesVisionExtension processor-noden gör två saker:
 
-* Den samlar in resultaten och publicerar händelser till noden [IoT Hub mottagare](media-graph-concept.md#iot-hub-message-sink) . Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
+* Den samlar in resultaten och publicerar händelser till noden [IoT Hub mottagare](media-graph-concept.md#iot-hub-message-sink) . Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub). 
 * Det fångar också ett 30 sekunders videoklipp från RTSP-källan med en [signal grind processor](media-graph-concept.md#signal-gate-processor) och lagrar den som en Media Services till gång.
 
 ## <a name="create-the-computer-vision-resource"></a>Skapa Visuellt innehåll resursen
