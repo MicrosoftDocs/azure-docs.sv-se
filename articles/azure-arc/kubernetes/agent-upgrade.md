@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Kontroll av agent uppgraderingar för Azure Arc-aktiverade Kubernetes
 keywords: Kubernetes, båge, Azure, K8s, behållare, agent, uppgradering
-ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121923"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954555"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Uppgradera Azure Arc-aktiverade Kubernetes-agenter
 
@@ -84,6 +84,6 @@ Utanför support innebär att de versioner som du kör ligger utanför de "N-2"-
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Gå igenom vår snabb start för att [ansluta ett Kubernetes-kluster till Azure-bågen](./connect-cluster.md).
-* Har du redan ett Kubernetes-kluster anslutet Azure Arc? [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./use-gitops-connected-cluster.md).
+* Gå igenom vår snabb start för att [ansluta ett Kubernetes-kluster till Azure-bågen](./quickstart-connect-cluster.md).
+* Har du redan ett Kubernetes-kluster anslutet Azure Arc? [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./tutorial-use-gitops-connected-cluster.md).
 * Lär dig hur du [använder Azure policy för att tillämpa konfigurationer i stor skala](./use-azure-policy.md).

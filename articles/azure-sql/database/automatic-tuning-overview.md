@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/30/2020
-ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/23/2021
+ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96500877"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951291"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatisk justering i Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +54,8 @@ En översikt över hur automatisk justering fungerar och för vanliga användnin
 
 ## <a name="enable-automatic-tuning"></a>Aktivera automatisk inställning
 
-- Du [aktiverar automatisk justering för Azure SQL Database i Azure Portal](automatic-tuning-enable.md) eller med hjälp av instruktionen [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL.
-- Du aktiverar automatisk justering för Azure SQL-hanterad instans med instruktionen [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL.
+- Du [aktiverar automatisk justering för Azure SQL Database i Azure Portal](automatic-tuning-enable.md) eller med hjälp av instruktionen [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) T-SQL.
+- Du aktiverar automatisk justering för Azure SQL-hanterad instans med instruktionen [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current&preserve-view=true) T-SQL.
 
 ## <a name="automatic-tuning-options"></a>Alternativ för automatisk justering
 
@@ -64,7 +64,7 @@ Alternativen för automatisk justering är tillgängliga i Azure SQL Database oc
 | Alternativ för automatisk justering | Stöd för enkel databas och poolad databas | Stöd för instans databas |
 | :----------------------------- | ----- | ----- |
 | **Skapa index** – identifierar index som kan förbättra prestandan för din arbets belastning, skapar index och automatiskt verifierar att prestandan för frågor har förbättrats. | Ja | Inga |
-| **Drop index** – identifierar redundanta och duplicerade index dagligen, förutom unika index och index som inte har använts under en längre tid (>90 dagar). Observera att det här alternativet inte är kompatibelt med program som använder partitions växlings-och index tips. Det går inte att släppa oanvända index för Premium-och Affärskritisk tjänst nivåer. | Ja | Inga |
+| **Drop index** som inte används (under de senaste 90 dagarna) och duplicerade index. Unika index, inklusive index som stöder primär nyckel och unika begränsningar, tas aldrig bort. Det här alternativet kan inaktive ras automatiskt när frågor med index tips finns i arbets belastningen eller när arbets belastningen utför partition växling. På Premium-och Affärskritisk-tjänst nivåerna tar det här alternativet aldrig bort oanvända index, men eventuella dubbletter av index visas. | Ja | Inga |
 | **FRAMTVINGA senaste fungerande plan** (automatisk plan korrigering) – identifierar Azure SQL-frågor med hjälp av en körnings plan som är långsammare än den tidigare fungerande planen, och frågor som använder det senaste fungerande schemat i stället för försämrat-planen. | Ja | Ja |
 
 ### <a name="automatic-tuning-for-sql-database"></a>Automatisk justering för SQL Database
@@ -90,7 +90,7 @@ Information om hur du skapar e-postaviseringar för automatiska justerings rekom
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Automatisk justering för Azure SQL-hanterad instans
 
-Automatisk justering för SQL-hanterad instans stöder endast **tvångs sista fin plan**. Mer information om hur du konfigurerar alternativ för automatisk justering via T-SQL finns i [Automatisk justering inför automatisk plan korrigering](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) och [Automatisk plan korrigering](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
+Automatisk justering för SQL-hanterad instans stöder endast **tvångs sista fin plan**. Mer information om hur du konfigurerar alternativ för automatisk justering via T-SQL finns i [Automatisk justering inför automatisk plan korrigering](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) och [Automatisk plan korrigering](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction).
 
 ## <a name="next-steps"></a>Nästa steg
 
