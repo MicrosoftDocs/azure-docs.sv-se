@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b870a0325646b01ae3a72bdd28d3ae33cba45b09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 64a93cfea9d470ba45e59a56d4855e374f7fb704
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101733133"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559935"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azures säkerhets bas linje för Azure DNS
 
@@ -34,7 +34,7 @@ Mata in loggar via Azure Monitor för att samla in säkerhets data som genererat
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Ansvar**: Kund
 
@@ -52,9 +52,9 @@ Mata in loggar via Azure Monitor för att samla in säkerhets data som genererat
 
 **Vägledning**: i Azure Monitor anger Log Analytics du arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig lagring och arkivering.
 
-- [Ändra data lagrings perioden i Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurera bevarande princip för Azure Storage konto loggar](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Ansvar**: Kund
 
@@ -68,9 +68,9 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Komma igång med Log Analytics frågor](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Ansvar**: Kund
 
@@ -86,7 +86,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel.
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](/azure/azure-monitor/learn/tutorial-response)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
@@ -102,11 +102,11 @@ Du kan också aktivera och inaktivera data till Azure Sentinel.
 
 I Azure DNS finns rollen som deltagare i DNS-zonen, samt zon nivå och post uppsättnings nivå Azure RBAC. Det är också möjligt att skapa dina egna anpassade Azure-roller för att ge en bättre och mer detaljerad kontroll. Observera att resurserna för den privata DNS-zonen använder ett annat rollnamn, Privat DNS Zone Contributor.
 
-- [Så här hämtar du en katalog roll i Azure Active Directory (Azure AD) med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Förstå Azure RBAC i Azure DNS](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Förstå Azure RBAC i Azure DNS](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Ansvar**: Kund
 
@@ -131,7 +131,7 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 Du kan också aktivera just-in-Time-åtkomst till administrativa konton med Azure Active Directory (Azure AD) Privileged Identity Management och Azure Resource Manager.
 
-- [Läs mer om Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Läs mer om Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [Använda Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -213,7 +213,7 @@ Du kan också aktivera just-in-Time-åtkomst till administrativa konton med Azur
 
 **Vägledning**: Azure Active Directory (Azure AD) innehåller loggar som hjälper till att identifiera inaktuella konton. Använd också Azure AD-identitets-och åtkomst granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,7 +227,7 @@ Du kan också aktivera just-in-Time-åtkomst till administrativa konton med Azur
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
 
-- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Ansvar**: Kund
 
@@ -271,7 +271,7 @@ Det är också möjligt att skapa dina egna anpassade Azure-roller för att ge e
 
 - [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
-- [Förstå Azure RBAC i Azure DNS](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Förstå Azure RBAC i Azure DNS](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Förstå Azure RBAC i Azure Privat DNS](dns-protect-private-zones-recordsets.md)
 
@@ -283,7 +283,7 @@ Det är också möjligt att skapa dina egna anpassade Azure-roller för att ge e
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure DNS samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
@@ -301,7 +301,7 @@ Det är också möjligt att skapa dina egna anpassade Azure-roller för att ge e
 
 - [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -368,7 +368,7 @@ Använd Azure Resource Graph för att fråga eller identifiera resurser i dina p
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Ansvar**: Kund
 
@@ -392,7 +392,7 @@ Använd Azure Resource Graph för att fråga eller identifiera resurser i dina p
 
 **Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för Azure DNS med Azure policy. Använd Azure Policy alias i namn området "Microsoft. Network" för att skapa anpassade principer som ska granskas eller tillämpa konfigurationen för dina Recovery Services-valv.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -422,9 +422,9 @@ Dessutom stöder Azure Resource Manager en annan typ av säkerhets kontroll, mö
 
 **Vägledning**: om du använder anpassade Azure policys definitioner använder du Azure DevOps eller Azure databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Ansvar**: Kund
 
@@ -566,5 +566,5 @@ Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings sy
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

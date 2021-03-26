@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 03/15/2021
 ms.author: kuthapar
 ms.custom: devx-track-java
-ms.openlocfilehash: 3c740aa00b158c7ddbca3e4f61d79e37978223c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 536c0ab78a4b7e08abb1532635aff722df9e15cd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493619"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563114"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB v3 for Core (SQL) API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,7 +65,7 @@ Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://az
 
 ## <a name="get-started-fast"></a>Kom igång snabbt
 
-  Kom igång med vår data Azure Cosmos DB genom att följa vår guide för att [Starta](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)starter. Metoden våren Boot Starter är det rekommenderade sättet att komma igång med hjälp av våren data Azure Cosmos DB Connector.
+  Kom igång med vår data Azure Cosmos DB genom att följa vår guide för att [Starta](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)starter. Metoden våren Boot Starter är det rekommenderade sättet att komma igång med hjälp av våren data Azure Cosmos DB Connector.
 
   Du kan också lägga till våren data Azure Cosmos DB beroende av `pom.xml` filen enligt nedan:
 

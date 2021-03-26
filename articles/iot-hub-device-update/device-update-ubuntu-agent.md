@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418648"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560275"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Uppdatering av enhets uppdateringar för Azure IoT Hub med paket agenten på Ubuntu Server 18,04 x64
 
@@ -32,13 +32,9 @@ I den här självstudien får du lära dig hur man
 > * Distribuera en paket uppdatering
 > * Övervaka uppdaterings distributionen
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Åtkomst till en IoT Hub. Vi rekommenderar att du använder en S1-nivå (standard) eller högre.
-* En instans av enhets uppdatering och ett konto som är länkat till IoT Hub.
-  * Följ guiden för att [skapa och länka ett enhets uppdaterings konto](create-device-update-account.md) om du inte har gjort det tidigare.
+* Om du inte redan har gjort det skapar du ett [konto och en instans för enhets uppdatering](create-device-update-account.md), inklusive hur du konfigurerar en IoT Hub.
 * [Anslutnings strängen för en IoT Edge enhet](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings).
 
 ## <a name="prepare-a-device"></a>Förbered en enhet

@@ -2,14 +2,14 @@
 title: Översikt över Azure Resource Manager
 description: Beskriver hur du använder Azure Resource Manager för distribution, hantering och åtkomstkontroll av resurser i Azure.
 ms.topic: overview
-ms.date: 09/01/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.custom: contperf-fy21q1,contperf-fy21q3-portal
+ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97858526"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608552"
 ---
 # <a name="what-is-azure-resource-manager"></a>Vad är Azure Resource Manager?
 
@@ -91,7 +91,7 @@ Det finns några viktiga faktorer att tänka på när du definierar en resursgru
 
 * När du tar bort en resurs grupp raderas även alla resurser i resurs gruppen. Information om hur Azure Resource Manager dirigerar dessa borttagningar finns i [Azure Resource Manager resurs grupp och borttagning av resurser](delete-resource-group.md).
 
-* Du kan distribuera upp till 800 instanser av en resurs typ i varje resurs grupp. Vissa resurs typer är [undantagna från gränsen på 800-instanser](resources-without-resource-group-limit.md).
+* Du kan distribuera upp till 800 instanser av en resurs typ i varje resurs grupp. Vissa resurs typer är [undantagna från gränsen på 800-instanser](resources-without-resource-group-limit.md). Mer information finns i [begränsningar för resurs grupper](azure-subscription-service-limits.md#resource-group-limits).
 
 * Vissa resurser kan finnas utanför en resurs grupp. Dessa resurser distribueras till [prenumerationen](../templates/deploy-to-subscription.md), [hanterings gruppen](../templates/deploy-to-management-group.md)eller [klient organisationen](../templates/deploy-to-tenant.md). Endast vissa resurs typer stöds i dessa omfång.
 
@@ -112,6 +112,8 @@ Tjänsten Azure Resource Manager är utformad för återhämtning och kontinuerl
 Den här återhämtningen gäller för tjänster som tar emot förfrågningar via Resource Manager. Till exempel Key Vault fördelarna med den här återhämtnings förmågan.
 
 ## <a name="next-steps"></a>Nästa steg
+
+* Mer information om begränsningar som tillämpas på Azure-tjänster finns i [Azure-prenumerationer, tjänst gränser, kvoter och begränsningar](azure-subscription-service-limits.md).
 
 * Mer information om hur du flyttar resurser finns i [Flytta resurser till en ny resurs grupp eller prenumeration](move-resource-group-and-subscription.md).
 

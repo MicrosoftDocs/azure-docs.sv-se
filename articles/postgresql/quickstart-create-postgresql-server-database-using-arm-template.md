@@ -1,18 +1,18 @@
 ---
 title: 'Snabb start: skapa en Azure-databas för PostgreSQL-ARM-mall'
 description: I den här snabb starten får du lära dig hur du skapar en Azure Database for PostgreSQL enskild server med hjälp av en Azure Resource Manager mall.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 02/11/2021
-ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: db65a4bb5137da23f125d67920a2ff9a1a801141
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382199"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606731"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Snabb start: Använd en ARM-mall för att skapa en Azure Database for PostgreSQL-enskild server
 

@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/16/2020
+ms.date: 03/25/2021
 ms.author: victorh
-ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 35bede052f06c0fcffe46460a376d10690fd4417
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94561037"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559644"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Självstudie: skapa en Programgateway med en brand vägg för webbaserade program med hjälp av Azure Portal
 
@@ -42,11 +42,9 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
 ## <a name="create-an-application-gateway"></a>Skapa en programgateway
 
-För att Azure ska kunna kommunicera mellan resurser måste det ha ett virtuellt nätverk. Du kan antingen skapa ett nytt virtuellt nätverk eller använda ett befintligt. I det här exemplet skapar du ett nytt virtuellt nätverk. Du kan skapa ett virtuellt nätverk samtidigt som du skapar programgatewayen. Application Gateway instanser skapas i separata undernät. Du skapar två undernät i det här exemplet: ett för programgatewayen och ett för backend-servrarna.
+1. Välj **Skapa en resurs** på den vänstra menyn på Azure-portalen. Fönstret **Nytt** visas.
 
-Välj **Skapa en resurs** på den vänstra menyn på Azure-portalen. Fönstret **Nytt** visas.
-
-Välj **nätverk** och välj sedan **Application Gateway** i listan **aktuella** .
+2. Välj **nätverk** och välj sedan **Application Gateway** i listan **aktuella** .
 
 ### <a name="basics-tab"></a>Fliken Grundläggande
 
@@ -60,7 +58,7 @@ Välj **nätverk** och välj sedan **Application Gateway** i listan **aktuella**
 
 2.  För att Azure ska kunna kommunicera mellan resurserna som du skapar krävs ett virtuellt nätverk. Du kan antingen skapa ett nytt virtuellt nätverk eller använda ett befintligt. I det här exemplet ska du skapa ett nytt virtuellt nätverk på samma tidpunkt som du skapar programgatewayen. Application Gateway instanser skapas i separata undernät. Du skapar två undernät i det här exemplet: ett för programgatewayen och ett för backend-servrarna.
 
-    Under **Konfigurera virtuellt nätverk** skapar du ett nytt virtuellt nätverk genom att välja **Skapa nytt**. I fönstret **Skapa virtuellt nätverk** som öppnas anger du följande värden för att skapa det virtuella nätverket och två undernät:
+    Under **Konfigurera virtuellt nätverk** väljer du **Skapa nytt** för att skapa ett nytt virtuellt nätverk. I fönstret **Skapa virtuellt nätverk** som öppnas anger du följande värden för att skapa det virtuella nätverket och två undernät:
 
     - **Namn**: ange *myVNet* som namn på det virtuella nätverket.
 
@@ -82,7 +80,7 @@ Välj **nätverk** och välj sedan **Application Gateway** i listan **aktuella**
    > [!NOTE]
    > För Application Gateway v2 SKU: n kan du bara välja **offentlig** IP-konfiguration för klient delen. Den privata klient delens IP-konfiguration är för närvarande inte aktive rad för denna v2-SKU
 
-2. Välj **Skapa ny** för den **offentliga IP-adressen** och ange *myAGPublicIPAddress* för den offentliga IP-adressen och välj sedan **OK**. 
+2. Välj **Lägg till ny** för den **offentliga IP-adressen** och ange *myAGPublicIPAddress* för den offentliga IP-adressen och välj sedan **OK**. 
 
      ![Skapa ny Application Gateway: klient delar](../media/application-gateway-web-application-firewall-portal/application-gateway-create-frontends.png)
 
@@ -90,9 +88,9 @@ Välj **nätverk** och välj sedan **Application Gateway** i listan **aktuella**
 
 ### <a name="backends-tab"></a>Fliken Server delar
 
-Backend-poolen används för att dirigera begär anden till backend-servrar som hanterar begäran. Backend-pooler kan bestå av nätverkskort, skalnings uppsättningar för virtuella datorer, offentliga IP-adresser, interna IP-adresser, fullständigt kvalificerade domän namn (FQDN) och backend-ändar för flera klienter som Azure App Service. I det här exemplet ska du skapa en tom backend-pool med din Application Gateway och sedan lägga till Server dels mål i backend-poolen.
+Backend-poolen används för att dirigera begär anden till backend-servrar som hanterar begäran. Backend-pooler kan bestå av nätverkskort, skalnings uppsättningar för virtuella datorer, offentliga IP-adresser, interna IP-adresser, fullständigt kvalificerade domän namn (FQDN) och backend-ändar för flera klienter som Azure App Service. I det här exemplet ska du skapa en tom backend-pool med programgatewayen och senare lägga till Server dels mål i backend-poolen.
 
-1. **På fliken Server** delar väljer du **+ Lägg till en backend-pool**.
+1. **På fliken Server** delar väljer du **Lägg till en backend-pool**.
 
 2. I fönstret **Lägg till en server dels grupp** som öppnas anger du följande värden för att skapa en tom backend-pool:
 
@@ -109,7 +107,7 @@ Backend-poolen används för att dirigera begär anden till backend-servrar som 
 
 På fliken **konfiguration** ansluter du klient dels-och backend-poolen som du skapade med en regel för routning.
 
-1. Välj **Lägg till en regel** i kolumnen **routningsregler** .
+1. Välj **Lägg till en regel för routning** i kolumnen **routningsregler** .
 
 2. I fönstret **Lägg till regel för routning** som öppnas anger du *myRoutingRule* som **regel namn**.
 
@@ -124,7 +122,7 @@ På fliken **konfiguration** ansluter du klient dels-och backend-poolen som du s
 
 4. På fliken **backend-mål** väljer du **MyBackendPool** för **Server dels målet**.
 
-5. För **http-inställningen** väljer du **Skapa ny** för att skapa en ny http-inställning. HTTP-inställningen avgör hur routningsregler fungerar. I fönstret **Lägg till en HTTP-inställning** som öppnas anger du *myHTTPSetting* som **namn på http-inställningen**. Acceptera standardvärdena för de andra inställningarna i fönstret **Lägg till en HTTP-inställning** och välj sedan **Lägg till** för att återgå till fönstret **Lägg till regel för routning** . 
+5. För **http-inställningen** väljer du **Lägg till ny** för att skapa en ny http-inställning. HTTP-inställningen avgör hur routningsregler fungerar. I fönstret **Lägg till en HTTP-inställning** som öppnas anger du *myHTTPSetting* som **namn på http-inställningen**. Acceptera standardvärdena för de andra inställningarna i fönstret **Lägg till en HTTP-inställning** och välj sedan **Lägg till** för att återgå till fönstret **Lägg till regel för routning** . 
 
      ![Skapa ny Application Gateway: HTTP-inställning](../media/application-gateway-web-application-firewall-portal/application-gateway-create-httpsetting.png)
 
@@ -158,12 +156,12 @@ Det gör du genom att:
 
     - **Resurs grupp**: Välj **myResourceGroupAG** som resurs grupps namn.
     - **Namn på virtuell dator**: ange *myVM* som namn på den virtuella datorn.
-    - **Användar** namn: ange *azureuser* som administratörs användar namn.
-    - **Lösen ord**: ange *Azure123456!* som administratörslösenord.
+    - **Användar** namn: Ange ett namn för administratörs användar namnet.
+    - **Lösen ord**: Ange ett lösen ord för administratörs lösen ordet.
 4. Godkänn de andra standardinställningarna och välj sedan **Nästa: diskar**.  
 5. Godkänn standardvärdena på fliken **diskar** och välj sedan **Nästa: nätverk**.
 6. På fliken **Nätverk** kontrollerar du att **myVNet** har valts för **Virtuellt nätverk** och att **Undernät** är inställt på **myBackendSubnet**. Godkänn de andra standardinställningarna och välj sedan **Nästa: hantering**.<br>Application Gateway kan kommunicera med instanser utanför det virtuella nätverk som det finns i, men du måste se till att det finns en IP-anslutning.
-7. På fliken **Hantering** anger du **Startdiagnostik** till **Av**. Acceptera de övriga standardinställningarna och välj sedan **Granska + skapa**.
+7. På fliken **hantering** ställer du in **startdiagnostik** som ska **inaktive ras**. Acceptera de övriga standardinställningarna och välj sedan **Granska + skapa**.
 8. Gå igenom inställningarna på fliken **Granska + skapa** och åtgärda eventuella verifieringsfel och välj sedan **Skapa**.
 9. Vänta på att skapandet av den virtuella datorn är klart innan du fortsätter.
 
@@ -175,7 +173,7 @@ I det här exemplet installerar du bara IIS på de virtuella datorerna för att 
 
     ![Installera anpassat tillägg](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
-2. Kör följande kommando för att installera IIS på den virtuella datorn: 
+2. Ange plats parametern för din miljö och kör sedan följande kommando för att installera IIS på den virtuella datorn: 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -199,48 +197,49 @@ I det här exemplet installerar du bara IIS på de virtuella datorerna för att 
 
 3. Välj **myBackendPool**.
 
-4. Välj **Virtuell dator** i listrutan under **Mål**.
+4. Under **måltyp** väljer du **virtuell dator** i den nedrullningsbara listan.
 
-5. Under **VIRTUELL DATOR** och **NÄTVERKSGRÄNSSNITT** väljer du de virtuella datorerna **myVM** och **myVM2** och deras associerade nätverksgränssnitt i listrutorna.
+5. Under **mål** väljer du det associerade nätverks gränssnittet för **myVM** i den nedrullningsbara listan.
+1. Upprepa för **myVM2**.
 
-    ![Lägga till serverdelsservrar](../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
+   :::image type="content" source="../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png" alt-text="Lägga till serverdelsservrar":::
+
 
 6. Välj **Spara**.
 
 7. Vänta tills distributionen har slutförts innan du fortsätter till nästa steg.
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Skapa ett lagringskonto och konfigurera diagnostik
-
-### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
-
-I den här artikeln använder Application Gateway ett lagrings konto för att lagra data för identifiering och förebyggande ändamål. Du kan även använda Azure Monitor-loggar eller Event Hub till att registrera data.
-
-1. Välj **skapa en resurs** i det övre vänstra hörnet av Azure Portal.
-1. Välj **lagring** och välj sedan **lagrings konto**.
-1. För *resurs grupp* väljer du **myResourceGroupAG** för resurs gruppen.
-1. Skriv *myagstore1* som namn på lagrings kontot.
-1. Acceptera standardvärdena för de andra inställningarna och välj sedan **Granska + skapa**.
-1. Granska inställningarna och välj sedan **Skapa**.
-
-### <a name="configure-diagnostics"></a>Konfigurera diagnostiken
-
-Konfigurera diagnostik för registrering av data i loggarna ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog och ApplicationGatewayFirewallLog.
-
-1. Välj **alla resurser** på menyn till vänster och välj sedan *myAppGateway*.
-2. Under övervakning väljer du **diagnostikinställningar**.
-3. Välj **Lägg till diagnostikinställningar**.
-4. Ange *myDiagnosticsSettings* som namn på diagnostikinställningar.
-5. Välj **arkivera till ett lagrings konto** och välj sedan **Konfigurera** för att välja det *myagstore1* lagrings konto som du skapade tidigare och välj sedan **OK**.
-6. Välj de Application Gateway-loggar som ska samlas in och behållas.
-7. Välj **Spara**.
-
-    ![Konfigurera diagnostiken](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
-
+   
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>Skapa och länka en brand Väggs princip för webb program
 
-Alla WAF-anpassningar och inställningar finns i ett separat objekt, så kallade en WAF-princip. Principen måste vara kopplad till din Application Gateway. Information om hur du skapar en WAF-princip finns i [skapa en WAF-princip](create-waf-policy-ag.md). När den har skapats kan du koppla principen till din WAF (eller en enskild lyssnare) från WAF-principen på fliken **associerade programgatewayer** . 
+Alla WAF-anpassningar och inställningar finns i ett separat objekt, så kallade en WAF-princip. Principen måste vara kopplad till din Application Gateway. 
 
-![Associerade programgatewayer](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
+Skapa en grundläggande WAF-princip med en hanterad standard regel uppsättning (DRS).
+
+1. Välj **skapa en resurs** på den övre vänstra sidan i portalen. Sök efter **WAF**, Välj **brand vägg för webbaserade program** och välj sedan **skapa**.
+2. På sidan **skapa en princip för WAF** , fliken **grundläggande** , ange eller Välj följande information, acceptera standardinställningarna för återstående inställningar och välj sedan **Granska + skapa**:
+
+   |Inställning  |Värde  |
+   |---------|---------|
+   |Princip för     |Regional WAF (Application Gateway)|
+   |Prenumeration     |Välj ditt prenumerations namn|
+   |Resursgrupp     |Välj **myResourceGroupAG**|
+   |Principnamn     |Ange ett unikt namn för WAF-principen.|
+1. Välj **Nästa: princip inställningar**.
+1. Acceptera standardvärdena och välj sedan **Nästa: hanterade regler**.
+1. Acceptera standardvärdet och välj sedan **Nästa: anpassade regler**.
+1. Välj **Nästa: Association**.
+1. Välj **Lägg till Association** och välj sedan **Application Gateway**.
+1. Markera kryss rutan för **tillämpa konfigurationen för brand Väggs principen för webb program, även om den skiljer sig från den aktuella konfigurationen**.
+1. Välj **Lägg till**.
+1. Välj **Lägg till Association** på fliken **Association** och välj **Application Gateway**.
+
+   > [!NOTE]
+   > Om du tilldelar en princip till din Application Gateway (eller lyssnare) som redan har en princip på plats skrivs den ursprungliga principen över och ersätts av den nya principen.
+4. Välj **Granska + skapa** och välj sedan **Skapa**.
+1. Välj **Nästa: Taggar**.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
 
 ## <a name="test-the-application-gateway"></a>Testa programgatewayen
 

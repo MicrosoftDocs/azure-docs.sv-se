@@ -6,13 +6,14 @@ ms.author: inhenkel
 manager: femilia
 ms.topic: how-to
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 783d9e1b4ab86f6580cf3418a0676921aef2db6a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 90ca92dc19c588d0b19adf009301cf844e0cdbde
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598209"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609060"
 ---
 # <a name="monitor-media-services"></a>Övervaka Media Services
 
@@ -37,9 +38,9 @@ robb@microsoft.com -->
 
 ## <a name="what-is-azure-monitor"></a>Vad är Azure Monitor?
 
-Media Services skapar övervaknings data med [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), som är en fullständig stack övervaknings tjänst i Azure som innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser, förutom resurser i andra moln och lokalt.
+Media Services skapar övervaknings data med [Azure Monitor](../../../azure-monitor/overview.md), som är en fullständig stack övervaknings tjänst i Azure som innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser, förutom resurser i andra moln och lokalt.
 
-Börja med att läsa artikeln [övervakning av Azure-resurser med Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource), som beskriver följande begrepp:
+Börja med att läsa artikeln [övervakning av Azure-resurser med Azure Monitor](../../../azure-monitor/essentials/monitor-azure-resource.md), som beskriver följande begrepp:
 
 - Vad är Azure Monitor?
 - Kostnader för övervakning
@@ -49,7 +50,7 @@ Börja med att läsa artikeln [övervakning av Azure-resurser med Azure Monitor]
 
 ## <a name="monitoring-data"></a>Övervaka data
 
-Media Services samlar in samma typer av övervaknings data som andra Azure-resurser som beskrivs i [övervaknings data från Azure-resurser](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources).
+Media Services samlar in samma typer av övervaknings data som andra Azure-resurser som beskrivs i [övervaknings data från Azure-resurser](../../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data).
 
 Alla data som samlas in av Azure Monitor tillhör en av två grundläggande typer: mått och loggar. Med de här två typerna kan du:
 
@@ -69,13 +70,13 @@ Se artikeln [övervaknings Media Services data referens](monitor-media-services-
 
 *Resurs loggar* samlas **inte** in och lagras förrän du skapar en diagnostisk inställning och dirigerar dem till en eller flera platser.
 
-Se artikeln [skapa diagnostikinställningar för att samla in plattforms loggar och statistik i Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) för den detaljerade processen med att skapa en diagnostisk inställning med hjälp av Azure Portal, CLI eller PowerShell.
+Se artikeln [skapa diagnostikinställningar för att samla in plattforms loggar och statistik i Azure](../../../azure-monitor/essentials/diagnostic-settings.md) för den detaljerade processen med att skapa en diagnostisk inställning med hjälp av Azure Portal, CLI eller PowerShell.
 
 När du skapar en diagnostisk inställning anger du vilka kategorier av loggar som ska samlas in. Kategorierna för Media Services anges i [Media Services övervaknings data referens](monitor-media-services-data-reference.md).
 
 ## <a name="analyzing-metrics"></a>Analyserar mått
 
-Du kan analysera mått för Media Services med mått från andra Azure-tjänster med hjälp av Metric Explorer genom att öppna **mått** från **Azure Monitor** -menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) .
+Du kan analysera mått för Media Services med mått från andra Azure-tjänster med hjälp av Metric Explorer genom att öppna **mått** från **Azure Monitor** -menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../../../azure-monitor/essentials/metrics-getting-started.md) .
 
 En lista över de mått som samlas in för Media Services finns i [övervaknings Media Services data referens](monitor-media-services-data-reference.md).
 
@@ -83,11 +84,11 @@ En lista över de mått som samlas in för Media Services finns i [övervaknings
 
 Data i Azure Monitor loggar lagras i tabeller där varje tabell har en egen uppsättning unika egenskaper.  
 
-Alla resurs loggar i Azure Monitor har samma fält följt av tjänstespecific-fält. Det gemensamma schemat beskrivs i [Azure Monitor resurs logg schema](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema).
+Alla resurs loggar i Azure Monitor har samma fält följt av tjänstespecific-fält. Det gemensamma schemat beskrivs i [Azure Monitor resurs logg schema](../../../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema).
 
 Schemat för Media Services resurs loggar finns i [övervaknings Media Services data referens](monitor-media-services-data-reference.md).
 
-[Aktivitets loggen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log) är en plattforms logg i Azure som ger inblick i händelser på prenumerations nivå. Du kan visa den oberoende av varandra eller dirigera den till Azure Monitor loggar, där du kan göra mycket mer komplexa frågor med Log Analytics.
+[Aktivitets loggen](../../../azure-monitor/essentials/activity-log.md) är en plattforms logg i Azure som ger inblick i händelser på prenumerations nivå. Du kan visa den oberoende av varandra eller dirigera den till Azure Monitor loggar, där du kan göra mycket mer komplexa frågor med Log Analytics.
 
 En lista över typer av resurs loggar som samlas in för Media Services finns i [övervaknings Media Services data referens](monitor-media-services-data-reference.md).
 
@@ -102,7 +103,7 @@ Några saker som du kan undersöka med diagnostikloggar är:
 
 ## <a name="alerts"></a>Aviseringar
 
-Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem i systemet innan kunderna märker dem. Du kan ställa in aviseringar för [mått](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [loggar](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)och [aktivitets loggen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts).
+Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem i systemet innan kunderna märker dem. Du kan ställa in aviseringar för [mått](../../../azure-monitor/alerts/alerts-metric-overview.md), [loggar](../../../azure-monitor/alerts/alerts-unified-log.md)och [aktivitets loggen](../../../azure-monitor/alerts/activity-log-alerts.md).
 
 Media Services mått samlas in med jämna mellanrum oavsett om värdet ändras eller inte. De är användbara för aviseringar eftersom de kan samplas ofta. En avisering kan utlösas snabbt med relativt enkel logik.
 

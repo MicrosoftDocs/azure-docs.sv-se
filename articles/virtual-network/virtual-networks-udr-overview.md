@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221022"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605220"
 ---
 # <a name="virtual-network-traffic-routing"></a>Trafikdirigering i virtuella nätverk
 
@@ -96,6 +96,36 @@ Du kan ange följande nästa hopptyper när du skapar en användardefinierad vä
 
 Du kan inte ange **VNet-peering** eller **VirtualNetworkServiceEndpoint** son nästa hopptyp i användardefinierade vägar. Vägar med nästa hopptyperna **VNet-peering** eller **VirtualNetworkServiceEndpoint** skapas endast av Azure när du konfigurerar en virtuell nätverkspeering eller en tjänstslutpunkt.
 
+### <a name="service-tags-for-user-defined-routes-public-preview"></a>Service märken för användardefinierade vägar (offentlig för hands version)
+
+Nu kan du ange en [service tag](service-tags-overview.md) som adressprefix för en användardefinierad väg i stället för ett explicit IP-intervall. En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket minimerar komplexiteten vid frekventa uppdateringar av användardefinierade vägar och minskar antalet vägar som du behöver skapa. Du kan för närvarande skapa 25 eller färre vägar med service märken i varje routningstabell. </br>
+
+
+#### <a name="exact-match"></a>Exakt matchning
+När det finns en exakt prefix matchning mellan en väg med ett explicit IP-prefix och en väg med en service tag, ges prioriteten till vägen med det explicita prefixet. När flera vägar med service-Taggar har matchande IP-prefix kommer vägar att utvärderas i följande ordning: 
+
+   1. Regionala Taggar (t. ex. Storage. öster, AppService. AustraliaCentral)
+   2. Taggar på översta nivån (t. ex. Lagring, AppService)
+   3. AzureCloud regionala Taggar (t. ex. AzureCloud. indiensödra, AzureCloud. asienöstra)
+   4. AzureCloud-taggen </br></br>
+
+Om du vill använda den här funktionen anger du ett service tag-namn för parametern adressprefix i Route Table-kommandon. I PowerShell kan du till exempel skapa en ny väg för att dirigera trafik som skickas till ett Azure Storage IP-prefix till en virtuell installation genom att använda: </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix “Storage” -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+Samma kommando för CLI är: </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> I offentlig för hands version finns det flera begränsningar. Funktionen stöds för närvarande inte i Azure-portalen och är bara tillgänglig via PowerShell och CLI. Det finns inget stöd för användning med behållare. 
+
 ## <a name="next-hop-types-across-azure-tools"></a>Nästa hopptyper i Azure-verktyg
 
 Namnet som visas och refereras för nästa hopptyper är olika för Azure-portalen och kommandoradsverktyg och Azure Resource Manager och klassiska distributionsmodeller. I följande tabell visas de namn som används för att referera till varje nästa hopptyp med olika verktyg och [distributionsmodeller](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
@@ -109,6 +139,8 @@ Namnet som visas och refereras för nästa hopptyper är olika för Azure-portal
 |Inga                            |Inga                                            |Null (inte tillgängligt i klassiska CLI i asm-läge)|
 |Virtuell nätverkspeering         |VNet-peering                                    |Inte tillämpligt|
 |Tjänstslutpunkt för virtuellt nätverk|VirtualNetworkServiceEndpoint                   |Inte tillämpligt|
+
+
 
 ### <a name="border-gateway-protocol"></a>BGP (Border Gateway Protocol)
 

@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/23/2021
-ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047260"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565913"
 ---
 # <a name="maintenance-window-preview"></a>Underhålls period (för hands version)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ När du har valt underhålls perioden och slutfört tjänst konfigurationen sker
 Att konfigurera och använda underhålls perioden är kostnads fritt för alla [typer](https://azure.microsoft.com/support/legal/offer-details/)av berättigade erbjudanden: betala per användning, CSP (Cloud Solution Provider), Microsoft Enterprise-avtal eller Microsofts kund avtal.
 
 > [!Note]
-> Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Till exempel är en prenumeration med [priser enligt principen betala per](https://azure.microsoft.com/offers/ms-azr-0003p/)användning, [Azure i Open](https://azure.microsoft.com/offers/ms-azr-0111p/)och [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) alla Azure-erbjudanden. Varje erbjudande eller plan har olika villkor och fördelar. Ditt erbjudande eller din plan visas i prenumerationens översikt. Mer information om hur du byter prenumeration på ett annat erbjudande finns i [ändra din Azure-prenumeration till ett annat erbjudande](/azure/cost-management-billing/manage/switch-azure-offer).
+> Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Till exempel är en prenumeration med [priser enligt principen betala per](https://azure.microsoft.com/offers/ms-azr-0003p/)användning, [Azure i Open](https://azure.microsoft.com/offers/ms-azr-0111p/)och [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) alla Azure-erbjudanden. Varje erbjudande eller plan har olika villkor och fördelar. Ditt erbjudande eller din plan visas i prenumerationens översikt. Mer information om hur du byter prenumeration på ett annat erbjudande finns i [ändra din Azure-prenumeration till ett annat erbjudande](../../cost-management-billing/manage/switch-azure-offer.md).
 
 ## <a name="advance-notifications"></a>Avancerade aviseringar
 
@@ -108,17 +108,17 @@ Mer information om klient anslutnings principen i Azure SQL-hanterad instans fin
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Överväganden för Azure SQL-hanterad instans
 
-Azure SQL-hanterad instans består av tjänst komponenter som finns på en dedikerad uppsättning isolerade virtuella datorer som körs i kundens virtuella nätverk under nät. De här virtuella datorerna utgör ett [eller flera virtuella kluster](/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture) som kan vara värdar för flera hanterade instanser. Underhålls fönstret som kon figurer ATS på instanser av ett undernät kan påverka antalet virtuella kluster i under nätet och distributionen av instanser mellan virtuella kluster. Detta kan kräva en bedömning av få effekter.
+Azure SQL-hanterad instans består av tjänst komponenter som finns på en dedikerad uppsättning isolerade virtuella datorer som körs i kundens virtuella nätverk under nät. De här virtuella datorerna utgör ett [eller flera virtuella kluster](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture) som kan vara värdar för flera hanterade instanser. Underhålls fönstret som kon figurer ATS på instanser av ett undernät kan påverka antalet virtuella kluster i under nätet och distributionen av instanser mellan virtuella kluster. Detta kan kräva en bedömning av få effekter.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>Underhålls periodens konfiguration är tids krävande åtgärd 
 Alla instanser som finns i ett virtuellt kluster delar underhålls perioden. Som standard finns alla hanterade instanser i det virtuella klustret med standard underhålls perioden. Om du anger ett annat underhålls fönster för en hanterad instans under skapandet eller efteråt, innebär det att det måste placeras i det virtuella klustret med motsvarande underhålls period. Om det inte finns något sådant virtuellt kluster i under nätet måste du först skapa ett nytt för att rymma instansen. Om du tar emot ytterligare instanser i det befintliga virtuella klustret kan du behöva ändra storlek på klustret. Båda åtgärderna bidrar till att konfigurera underhålls periodens varaktighet för en hanterad instans.
-Förväntad varaktighet för konfigurering av underhålls perioden på den hanterade instansen kan beräknas med [Beräknad varaktighet för instans hanterings åtgärder](/azure/azure-sql/managed-instance/management-operations-overview#duration).
+Förväntad varaktighet för konfigurering av underhålls perioden på den hanterade instansen kan beräknas med [Beräknad varaktighet för instans hanterings åtgärder](../managed-instance/management-operations-overview.md#duration).
 
 > [!Important]
 > En kort omkonfiguration sker i slutet av underhålls åtgärden och tar vanligt vis upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av omkonfigurationen bör du schemalägga åtgärden utanför det högsta antalet timmar.
 
 ### <a name="ip-address-space-requirements"></a>Krav för IP-adressutrymme
-Varje nytt virtuellt kluster i under nätet kräver ytterligare IP-adresser enligt [tilldelningen av virtuella kluster-IP](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)-adresser. Att ändra underhålls period för befintlig hanterad instans kräver också [tillfällig ytterligare IP-kapacitet](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) som vid skalning av virtuella kärnor-scenariot för motsvarande tjänst nivå.
+Varje nytt virtuellt kluster i under nätet kräver ytterligare IP-adresser enligt [tilldelningen av virtuella kluster-IP](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)-adresser. Att ändra underhålls period för befintlig hanterad instans kräver också [tillfällig ytterligare IP-kapacitet](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) som vid skalning av virtuella kärnor-scenariot för motsvarande tjänst nivå.
 
 ### <a name="ip-address-change"></a>Ändring av IP-adress
 När du konfigurerar och ändrar underhålls fönstret ändras instansens IP-adress inom under nätets IP-adressintervall.
@@ -137,8 +137,3 @@ När du konfigurerar och ändrar underhålls fönstret ändras instansens IP-adr
 * [Azure SQL Database](sql-database-paas-overview.md) 
 * [SQL-hanterad instans](../managed-instance/sql-managed-instance-paas-overview.md)
 * [Planera för Azures underhålls händelser i Azure SQL Database och Azure SQL-hanterad instans](planned-maintenance.md)
-
-
-
-
-

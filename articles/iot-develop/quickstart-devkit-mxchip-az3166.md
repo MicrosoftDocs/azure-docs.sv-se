@@ -7,17 +7,19 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 4926aa40831056556060cbf564022fa7f5e3aa7a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 367f527180a310f2cbc74b1ccdc1102e1e53d1cf
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962899"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605997"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Snabb start: ansluta en MXCHIP AZ3166-devkit till IoT Central
 
 **Gäller för**: [inbäddad enhets utveckling](about-iot-develop.md#embedded-device-development)<br>
 **Total slut för ande tid**: 30 minuter
+
+[![Sökkod](media/common/browse-github-code.png)](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)
 
 I den här självstudien använder du Azure-återställnings tider för att ansluta en MXCHIP AZ3166 IoT DevKit (hädanefter MXCHIP DevKit) till Azure IoT. Artikeln är en del av serien [Kom igång med utveckling av Azure IoT Embedded-enheter](quickstart-device-development.md). Serien introducerar enhets utvecklare i Azure återställnings tider och visar hur du ansluter flera enhets utvärderings paket till Azure IoT.
 
@@ -26,9 +28,6 @@ Du kommer att utföra följande uppgifter:
 * Installera en uppsättning inbäddade utvecklingsverktyg för programmering av en MXCHIP-DevKit i C
 * Bygg en bild och blinka den på MXCHIP-DevKit
 * Använd Azure IoT Central för att skapa moln komponenter, Visa egenskaper, Visa telemetri för enheter och anropa direkta kommandon
-
-> [!NOTE]
-> Om du bara vill visa koden och inte slutföra den här artikeln, se exemplet vid anslutning av [en MXCHIP-AZ3166 till Azure IoT](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166). Om du planerar att slutföra den här artikeln ska du klona GitHub-lagrings platsen i ett senare steg.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -6,13 +6,13 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 01/11/2021
-ms.openlocfilehash: 97fcff4706d6da968c93426f85569fed9af95aac
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: 047700be674dfab997b5c87f7446c19fdea9e0eb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102197817"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605968"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Snabb start: skicka telemetri från en enhet till en IoT Hub (Node.js)
 
@@ -36,7 +36,7 @@ I den här snabb starten får du lära dig ett grundläggande program utveckling
 ## <a name="use-the-nodejs-sdk-to-send-messages"></a>Använd Node.js SDK för att skicka meddelanden
 I det här avsnittet ska du använda Node.js SDK för att skicka meddelanden från din simulerade enhet till IoT Hub. 
 
-1. Öppna ett nytt terminalfönster. Du kommer att använda den här terminalen för att installera Node.js SDK och arbeta med Node.js exempel kod. Du bör nu ha två terminaler öppna: den som du nyss öppnade för att arbeta med Node.js och CLI-gränssnittet som du använde i föregående avsnitt för att ange Azure CLI-kommandon. 
+1. Öppna ett nytt terminalfönster. Du kommer att använda den här terminalen för att installera Node.js SDK och arbeta med Node.js exempel kod. Du bör nu ha två terminaler öppna: den som du nyss öppnade för att arbeta med Node.js och CLI-gränssnittet som du använde i föregående avsnitt för att ange Azure CLI-kommandon.
 
 1. Kopiera [Azure IoT Node.js SDK Device-exempel](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) till den lokala datorn:
 
@@ -44,142 +44,79 @@ I det här avsnittet ska du använda Node.js SDK för att skicka meddelanden fr�
     git clone https://github.com/Azure/azure-iot-sdk-node
     ```
 
-1. Gå till katalogen *Azure-IoT-SDK-Node/Device/samples* :
+1. Navigera till katalogen *Azure-IoT-SDK-Node/Device/samples/PnP* :
 
     ```console
-    cd azure-iot-sdk-node/device/samples
+    cd azure-iot-sdk-node/device/samples/pnp
     ```
+
 1. Installera Azure IoT Node.js SDK och nödvändiga beroenden:
 
     ```console
     npm install
     ```
+
     Det här kommandot installerar de nödvändiga beroendena som anges i *package.js* filen i katalogen enhets exempel.
 
-1. Ange enhets anslutnings strängen som en miljö variabel som kallas `DEVICE_CONNECTION_STRING` . Det sträng värde som ska användas är den sträng som du fick i föregående avsnitt när du har skapat den simulerade Node.js enheten. 
+1. Ange båda följande miljövariabler för att aktivera den simulerade enheten för att ansluta till Azure IoT.
+    * Ange en miljö variabel som kallas `IOTHUB_DEVICE_CONNECTION_STRING` . För variabelvärdet använder du den enhets anslutnings sträng som du sparade i föregående avsnitt.
+    * Ange en miljö variabel som kallas `IOTHUB_DEVICE_SECURITY_TYPE` . Använd litteralt sträng värde för variabeln `connectionString` .
 
     **Windows (cmd)**
 
     ```console
-    set DEVICE_CONNECTION_STRING=<your connection string here>
+    set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
+    ```
+    ```console
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
     ```
 
     > [!NOTE]
-    > För Windows CMD finns det inga citat tecken runt anslutnings strängen.
+    > För Windows CMD finns det inga citat tecken runt sträng värden för varje variabel.
 
-    **Linux (bash)**
+    **PowerShell**
 
-    ```bash
-    export DEVICE_CONNECTION_STRING="<your connection string here>"
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    ```
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
     ```
 
+    **Bash (Linux eller Windows)**
+
+    ```bash
+    export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
+    ```
+    ```bash
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
 1. I ditt öppna CLI-gränssnitt kör du kommandot [AZ IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelse meddelanden skrivs ut i terminalen när de tas emot.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
     ```
 
-1. I din Node.js Terminal kör du koden för den installerade exempel filen *simple_sample_device.js* . Den här koden ansluter till den simulerade IoT-enheten och skickar ett meddelande till IoT Hub.
+1. I din Node.js Terminal kör du koden för den installerade exempel filen *simple_thermostat.js* . Den här koden ansluter till den simulerade IoT-enheten och skickar ett meddelande till IoT Hub.
 
     Köra Node.js-exemplet från terminalen:
     ```console
-    node ./simple_sample_device.js
+    node ./simple_thermostat.js
     ```
-
-    Du kan också köra Node.js koden från exemplet i Java Script IDE:
-    ```javascript
-    'use strict';
-
-    const Protocol = require('azure-iot-device-mqtt').Mqtt;
-    // Uncomment one of these transports and then change it in fromConnectionString to test other transports
-    // const Protocol = require('azure-iot-device-amqp').AmqpWs;
-    // const Protocol = require('azure-iot-device-http').Http;
-    // const Protocol = require('azure-iot-device-amqp').Amqp;
-    // const Protocol = require('azure-iot-device-mqtt').MqttWs;
-    const Client = require('azure-iot-device').Client;
-    const Message = require('azure-iot-device').Message;
-
-    // String containing Hostname, Device Id & Device Key in the following formats:
-    //  "HostName=<iothub_host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
-    const deviceConnectionString = process.env.DEVICE_CONNECTION_STRING;
-    let sendInterval;
-
-    function disconnectHandler () {
-    clearInterval(sendInterval);
-    client.open().catch((err) => {
-        console.error(err.message);
-    });
-    }
-
-    // The AMQP and HTTP transports have the notion of completing, rejecting or abandoning the message.
-    // For example, this is only functional in AMQP and HTTP:
-    // client.complete(msg, printResultFor('completed'));
-    // If using MQTT calls to complete, reject, or abandon are no-ops.
-    // When completing a message, the service that sent the C2D message is notified that the message has been processed.
-    // When rejecting a message, the service that sent the C2D message is notified that the message won't be processed by the device. the method to use is client.reject(msg, callback).
-    // When abandoning the message, IoT Hub will immediately try to resend it. The method to use is client.abandon(msg, callback).
-    // MQTT is simpler: it accepts the message by default, and doesn't support rejecting or abandoning a message.
-    function messageHandler (msg) {
-    console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-    client.complete(msg, printResultFor('completed'));
-    }
-
-    function generateMessage () {
-    const windSpeed = 10 + (Math.random() * 4); // range: [10, 14]
-    const temperature = 20 + (Math.random() * 10); // range: [20, 30]
-    const humidity = 60 + (Math.random() * 20); // range: [60, 80]
-    const data = JSON.stringify({ deviceId: 'myFirstDevice', windSpeed: windSpeed, temperature: temperature, humidity: humidity });
-    const message = new Message(data);
-    message.properties.add('temperatureAlert', (temperature > 28) ? 'true' : 'false');
-    return message;
-    }
-
-    function errorCallback (err) {
-    console.error(err.message);
-    }
-
-    function connectCallback () {
-    console.log('Client connected');
-    // Create a message and send it to the IoT Hub every two seconds
-    sendInterval = setInterval(() => {
-        const message = generateMessage();
-        console.log('Sending message: ' + message.getData());
-        client.sendEvent(message, printResultFor('send'));
-    }, 2000);
-
-    }
-
-    // fromConnectionString must specify a transport constructor, coming from any transport package.
-    let client = Client.fromConnectionString(deviceConnectionString, Protocol);
-
-    client.on('connect', connectCallback);
-    client.on('error', errorCallback);
-    client.on('disconnect', disconnectHandler);
-    client.on('message', messageHandler);
-
-    client.open()
-    .catch(err => {
-    console.error('Could not connect: ' + err.message);
-    });
-
-    // Helper function to print results in the console
-    function printResultFor(op) {
-    return function printResult(err, res) {
-        if (err) console.log(op + ' error: ' + err.toString());
-        if (res) console.log(op + ' status: ' + res.constructor.name);
-    };
-    }
-    ```
+    > [!NOTE]
+    > I det här kod exemplet används Azure IoT-Plug and Play som gör att du kan integrera smarta enheter i dina lösningar utan någon manuell konfiguration.  Som standard använder de flesta exempel i den här dokumentationen IoT Plug and Play. Om du vill veta mer om fördelarna med IoT PnP och om du använder eller inte använder den, kan du läsa mer i [IoT plug and Play?](../iot-pnp/overview-iot-plug-and-play.md)
 
 När Node.js koden skickar ett simulerat telemetri från enheten till IoT Hub visas meddelandet i CLI-gränssnittet som övervakar händelser:
 
 ```output
+Starting event monitor, use ctrl-c to stop...
 event:
   component: ''
-  interface: ''
+  interface: dtmi:com:example:Thermostat;1
   module: ''
-  origin: <your device name>
-  payload: '{"deviceId":"myFirstDevice","windSpeed":11.853592092144627,"temperature":22.62484121157508,"humidity":66.17960805575937}'
+  origin: <your device ID>
+  payload:
+    temperature: 36.87027777131555
 ```
 
 Enheten är nu säker ansluten och skickar telemetri till Azure IoT Hub.

@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6ec616047a99465bace0b401f659765e4399634b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108404"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604574"
 ---
 # <a name="voice-and-video-concepts"></a>Begrepp inom röst- och videosamtal
 
@@ -44,14 +44,10 @@ Ett ett-till-ett-anrop i Azure Communication Services sker när en av dina anvä
 Ett grupp anrop i Azure Communication Services sker när tre eller fler deltagare ansluter till varandra. Alla kombinationer av VoIP-och PSTN-anslutna användare kan finnas i ett grupp anrop. Ett ett-till-ett-anrop kan konverteras till ett grupp anrop genom att lägga till fler deltagare till anropet. En av dessa deltagare kan vara en bot.
 
 ### <a name="supported-video-standards"></a>Video standarder som stöds
-Vi stöder H. 264 (MPEG-4)
+Vi stöder H. 264 (MPEG-4).
 
 ### <a name="video-quality"></a>Videokvalitet 
 Vi har stöd för upp till full HD 1080p på interna (iOS, Android) SDK: er. För Web (JS) SDK stöder vi standard HD 720p. Kvaliteten beror på den tillgängliga bandbredden.
-
-### <a name="rooms-concept"></a>Konceptet rum
-Rum är en uppsättning API: er och SDK: er som gör att du enkelt kan lägga till ljud-, video-, skärm delnings-, PSTN-och SMS-interaktioner till din webbplats eller det interna
-Under förhands granskningen kan du använda grupp-ID: t för att ansluta till samma konversation. Du kan skapa så många grupp-ID: n som du behöver och avgränsa användarna med "rum". Om du flyttar framåt introduceras fler kontroller runt "rum"
 
 ## <a name="next-steps"></a>Nästa steg
 

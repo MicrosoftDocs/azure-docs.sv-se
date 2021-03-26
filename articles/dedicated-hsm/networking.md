@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5365ba8c4fbc07c487dd40cfcdc9d566990c493c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91359162"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607055"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure Dedicated HSM-nätverk
 
@@ -84,6 +84,60 @@ För globalt distribuerade program eller för regionala failover-scenarier med h
 > Global VNet-peering är inte tillgänglig i scenarier mellan olika regioner med dedikerade HSM: er just nu och VPN-gatewayen bör användas i stället. 
 
 ![Diagrammet visar två regioner anslutna med två V P N-gatewayer. Varje region innehåller peer-kopplat virtuella nätverk.](media/networking/global-vnet.png)
+
+## <a name="networking-restrictions"></a>Nätverks begränsningar
+> [!NOTE]
+> En begränsning av den dedikerade HSM-tjänsten med hjälp av under näts delegering införs begränsningar som bör övervägas när du utformar mål nätverks arkitekturen för en HSM-distribution. Användning av under näts delegering innebär att NSG: er, UDR och global VNet-peering inte stöds för dedikerad HSM. I avsnitten nedan får du hjälp med alternativa metoder för att uppnå samma eller liknande resultat för dessa funktioner. 
+
+HSM-NÄTVERKSKORTet som finns i det dedikerade HSM VNet kan inte använda nätverks säkerhets grupper eller användardefinierade vägar. Det innebär att det inte går att ange standard-Deny-principer från den dedikerade HSM-VNet och att andra nätverks segment måste vara allowlisted för att få åtkomst till den dedikerade HSM-tjänsten. 
+
+Genom att lägga till NVA-proxyn (Network Virtual reservers) kan en NVA-brandvägg i överförings-och DMZ-navet placeras logiskt framför HSM-NÄTVERKSKORTet, vilket ger det nödvändiga alternativet till NSG: er och UDR.
+
+### <a name="solution-architecture"></a>Lösningsarkitektur
+Nätverks designen kräver följande element:
+1.  En överförings-eller DMZ Hub-VNet med en NVA-proxyadress. Det finns två eller fler NVA i idealet. 
+2.  En ExpressRoute-krets med en privat peering aktive rad och en anslutning till transport Hub VNet.
+3.  En VNet-peering mellan transport hubbens VNet och det dedikerade HSM-VNet.
+4.  En NVA-brandvägg eller Azure-brandvägg kan distribueras DMZ-tjänster i hubben som ett alternativ. 
+5.  Ytterligare virtuella nätverk för arbets belastnings ekrar kan peer-kopplas till hubb-VNet. Gemalto-klienten har åtkomst till den dedikerade HSM-tjänsten via hubbens VNet.
+
+![Diagram visar ett DMZ Hub-VNet med en NVA-proxyvärd för NSG och UDR-lösning](media/networking/network-architecture.png)
+
+Eftersom du lägger till NVA proxy-lösningen kan en NVA-brandvägg i överförings-och DMZ-navet placeras logiskt framför HSM-NÄTVERKSKORTet, vilket ger nödvändiga standard principer för neka. I vårt exempel använder vi Azure-brandväggen för detta ändamål och behöver följande element på plats:
+1. En Azure-brandvägg distribuerad till under nätet "AzureFirewallSubnet" i DMZ Hub VNet
+2. En routningstabell med en UDR som dirigerar trafik till den privata Azure ILB-slutpunkten i Azure-brandväggen. Den här routningstabellen används för den GatewaySubnet där den virtuella ExpressRoute för kunden finns
+3. Nätverks säkerhets regler inom AzureFirewall för att tillåta vidarebefordran mellan ett betrott käll intervall och den privata Azure IBL-slutpunkten som lyssnar på TCP-port 1792. Den här säkerhets logiken lägger till den nödvändiga principen "standard neka" mot den dedikerade HSM-tjänsten. Det innebär att endast betrodda käll-IP-intervall tillåts i den dedikerade HSM-tjänsten. Alla andra intervall kommer att tas bort.  
+4. En routningstabell med en UDR som dirigerar trafik till lokal i Azure-brandväggen. Den här routningstabellen används i NVA-proxy-undernätet. 
+5. En NSG som används för proxy NVA-undernätet för att endast lita på under näts intervallet för Azure-brandväggen som källa och för att endast tillåta vidarebefordran till HSM NIC IP-adress via TCP-port 1792. 
+
+> [!NOTE]
+> Eftersom NVA-UDR kommer att kräva att klientens IP-adress överförs till HSM-NÄTVERKSKORTet krävs inga mellan HSM VNet och DMZ Hub VNet.  
+
+### <a name="alternative-to-udrs"></a>Alternativ till UDR
+Den NVA nivå lösning som nämns ovan fungerar som ett alternativ till UDR. Det finns några viktiga saker att tänka på.
+1.  Översättning av nätverks adresser ska konfigureras på NVA för att tillåta att RETUR trafik dirigeras korrekt.
+2. Kunderna bör inaktivera klientens IP-check i Luna HSM-konfigurationen för att använda VNA för NAT. Följande kommandon servce som exempel.
+```
+Disable:
+[hsm01] lunash:>ntls ipcheck disable
+NTLS client source IP validation disabled
+Command Result : 0 (Success)
+
+Show:
+[hsm01] lunash:>ntls ipcheck show
+NTLS client source IP validation : Disable
+Command Result : 0 (Success)
+```
+3.  Distribuera UDR för ingress trafik till NVA-nivån. 
+4. Som enligt design kommer HSM-undernät inte att initiera en utgående anslutningsbegäran till plattforms nivån.
+
+### <a name="alternative-to-using-global-vnet-peering"></a>Alternativ till att använda globala VNET-peering
+Det finns ett par arkitekturer som du kan använda som ett alternativ till global VNet-peering.
+1.  Använda [VNet-till-Vnet VPN gateway-anslutning](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
+2.  Anslut HSM VNET med ett annat VNET med en ER-krets. Detta fungerar bäst när en direkt lokal sökväg krävs eller VPN VNET. 
+
+#### <a name="hsm-with-direct-express-route-connectivity"></a>HSM med Direct Express Route-anslutning
+![Diagrammet visar HSM med direkt Express Route-anslutning](media/networking/expressroute-connectivity.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

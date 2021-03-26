@@ -6,17 +6,18 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598192"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609096"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Övervaknings Media Services data referens
 
-Den här artikeln beskriver de data som är användbara för att övervaka Media Services. För ytterligare information om alla plattforms mått som stöds i Azure Monitor, granska de [mått som stöds med Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+Den här artikeln beskriver de data som är användbara för att övervaka Media Services. För ytterligare information om alla plattforms mått som stöds i Azure Monitor, granska de [mått som stöds med Azure Monitor](../../../azure-monitor/essentials/metrics-supported.md).
 
 ## <a name="media-services-metrics"></a>Media Services mått
 
@@ -59,7 +60,7 @@ Följande Media Services [slut punkter för direkt uppspelnings](/rest/api/media
 
 ## <a name="metric-dimensions"></a>Mått dimensioner
 
-Mer information om vilka mått dimensioner som finns i [flerdimensionella mått](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Mer information om vilka mått dimensioner som finns i [flerdimensionella mått](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 <!--**PLACEHOLDER** for dimensions table.-->
 
@@ -67,7 +68,7 @@ Mer information om vilka mått dimensioner som finns i [flerdimensionella mått]
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services diagnostikloggar
 
-Diagnostikloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i [så här samlar du in och använder loggdata från dina Azure-resurser](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md).
+Diagnostikloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i [så här samlar du in och använder loggdata från dina Azure-resurser](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 Media Services stöder följande diagnostikloggar:
 
@@ -81,7 +82,7 @@ Media Services stöder följande diagnostikloggar:
 
 ## <a name="schemas"></a>Scheman
 
-Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar finns i [tjänster, scheman och kategorier som stöds för Azure Diagnostic-loggar](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs-schema.md).
+Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar finns i [tjänster, scheman och kategorier som stöds för Azure Diagnostic-loggar](../../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema-properties"></a>Schema egenskaper för nyckel leverans logg
 

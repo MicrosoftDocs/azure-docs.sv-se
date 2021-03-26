@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 472b0d2886d9177c6507c84d5a8b6da6e99e65e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597971"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607124"
 ---
 # <a name="virtual-network-service-tags"></a>Tjänst taggar för virtuellt nätverk
 <a name="network-service-tags"></a>
 
 En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket minimerar komplexiteten vid frekventa uppdateringar av nätverks säkerhets regler.
 
-Du kan använda service märken för att definiera nätverks åtkomst kontroller för [nätverks säkerhets grupper](./network-security-groups-overview.md#security-rules) eller [Azure-brandväggen](../firewall/service-tags.md). Använd tjänst Taggar i stället för vissa IP-adresser när du skapar säkerhets regler. Genom att ange namnet på service tag-namnet, till exempel **API Management**, i lämpligt *käll* -eller *mål* fält för en regel, kan du tillåta eller neka trafiken för motsvarande tjänst.
+Du kan använda service märken för att definiera nätverks åtkomst kontroller för [nätverks säkerhets grupper](./network-security-groups-overview.md#security-rules) eller [Azure-brandväggen](../firewall/service-tags.md). Använd tjänst Taggar i stället för vissa IP-adresser när du skapar säkerhets regler. Genom att ange namnet på service tag-namnet, till exempel **API Management**, i lämpligt *käll* -eller *mål* fält för en regel, kan du tillåta eller neka trafiken för motsvarande tjänst. 
+
+> [!NOTE] 
+> Från och med mars 2021 kan du också använda service märken i stället för explicita IP-intervall i [användardefinierade vägar](./virtual-networks-udr-overview.md). Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion. 
 
 Du kan använda service märken för att uppnå nätverks isolering och skydda dina Azure-resurser från det allmänna Internet samtidigt som du får åtkomst till Azure-tjänster som har offentliga slut punkter. Skapa regler för inkommande/utgående nätverks säkerhets grupper för att neka trafik till/från **Internet** och tillåta trafik till/från **AzureCloud** eller andra [tillgängliga Service märken](#available-service-tags) för vissa Azure-tjänster.
 

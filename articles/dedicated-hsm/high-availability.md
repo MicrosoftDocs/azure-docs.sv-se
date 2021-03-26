@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567262"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608875"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM med hög tillgänglighet
 
@@ -25,7 +25,7 @@ Azure Dedicated HSM är underfixerat av Microsofts Data Center med hög tillgän
 
 ## <a name="high-availability-example"></a>Exempel på hög tillgänglighet
 
-Information om hur du konfigurerar HSM-enheter för hög tillgänglighet på program nivå finns i administrations hand boken för Thales Luna 7 HSM. Det här dokumentet är tillgängligt på  [HSM-sidan för Thales](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm).
+Information om hur du konfigurerar HSM-enheter för hög tillgänglighet på program nivå finns i administrations hand boken för Thales Luna 7 HSM. Det här dokumentet är tillgängligt på  [HSM-sidan för Thales](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms).
 
 Följande diagram visar en arkitektur med hög tillgänglighet. Den använder flera enheter i region och flera enheter länkas i en separat region. Den här arkitekturen använder minst fyra HSM-enheter och virtuella nätverks komponenter.
 
@@ -42,4 +42,4 @@ Avsnitt om ytterligare begrepps nivå:
 * [Support](supportability.md)
 * [Övervakning](monitoring.md)
 
-Detaljerad information om hur du konfigurerar HSM-enheter för hög tillgänglighet finns i Thales kund support Portal för administratörs guider och se avsnitt 6.
+Detaljerad information om hur du konfigurerar HSM-enheter för hög tillgänglighet finns i [Thales kund support Portal](https://supportportal.thalesgroup.com/csm) för administratörs guider och se avsnitt 6.

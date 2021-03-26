@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 7796b94609a9be05fdb72900d0725747440f8042
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582409"
+ms.locfileid: "105609383"
 ---
 Genom att använda regional VNet-integrering kan din app komma åt:
 
@@ -74,7 +74,7 @@ Funktionen stöds fullt ut för både Windows-och Linux-appar, inklusive [anpass
 
 ### <a name="service-endpoints"></a>Tjänstslutpunkter
 
-Regional VNet-integrering gör att du kan använda tjänst slut punkter. De grundläggande stegen för att kunna komma åt en tjänst från din app via tjänst slut punkter är följande:
+Regional VNet-integrering gör att du kan komma åt Azure-tjänster som skyddas med tjänst slut punkter. För att få åtkomst till en tjänst slut punkt – säker tjänst måste du göra följande:
 
 1. Konfigurera regional VNet-integrering med din webbapp för att ansluta till ett speciellt undernät för integrering.
 1. Gå till mål tjänsten och konfigurera tjänstens slut punkter mot integrations under nätet.
@@ -101,9 +101,6 @@ När din app har integrerats med ditt VNet, använder den samma DNS-server som d
 1. `WEBSITE_VNET_ROUTE_ALL` med värde `1`
 
 De här inställningarna skickar alla utgående samtal från din app till ditt VNet och gör att din app får åtkomst till en Azure DNS privat zon. Med de här inställningarna kan din app använda Azure DNS genom att fråga den privata DNS-zonen på arbets nivå.  
-
-> [!NOTE]
-> Det går inte att lägga till en anpassad domän i en webbapp med en privat DNS-zon med VNET-integration. Anpassad domän verifiering görs på styrenhets nivå, inte på arbets nivå, vilket förhindrar att DNS-poster visas. Om du vill använda en anpassad domän från en privat DNS-zon måste du kringgå verifieringen genom att använda en [Application Gateway](../articles/app-service/networking/app-gateway-with-service-endpoints.md) eller [ILB App Service-miljön](../articles/app-service/environment/create-ilb-ase.md).
 
 ### <a name="private-endpoints"></a>Privata slutpunkter
 

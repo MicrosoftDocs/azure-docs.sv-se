@@ -126,14 +126,14 @@
           href: concepts-supported-versions.md
         - name: PostgreSQL-tillägg
           href: concepts-extensions.md
+        - name: Gränser
+          href: concepts-limits.md
         - name: Förstå prisnivåer
           items:
             - name: Prisnivåer
               href: concepts-pricing-tiers.md
             - name: Förskottsbetalning för reserverad kapacitet
               href: concept-reserved-pricing.md
-            - name: Begränsningar
-              href: concepts-limits.md
         - name: Säkerhet
           items:
             - name: Säkerhetsöversikt

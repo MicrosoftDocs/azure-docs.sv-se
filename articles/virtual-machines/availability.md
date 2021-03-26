@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102507882"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604540"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Tillgänglighets alternativ för Azure Virtual Machines
 Den här artikeln innehåller en översikt över tillgänglighets alternativ för virtuella Azure-datorer (VM).
@@ -57,6 +57,6 @@ Site Recovery kan hantera replikering för:
 - Lokala virtuella datorer, Azure Stack virtuella datorer och fysiska servrar.
 
 ## <a name="next-steps"></a>Nästa steg
-- [Skapa en virtuell dator i en tillgänglighets zon](/linux/create-cli-availability-zone.md)
-- [Skapa en virtuell dator i en tillgänglighets uppsättning](/linux/tutorial-availability.md)
+- [Skapa en virtuell dator i en tillgänglighets zon](/azure/virtual-machines/linux/create-cli-availability-zone)
+- [Skapa en virtuell dator i en tillgänglighets uppsättning](/azure/virtual-machines/linux/tutorial-availability-sets)
 - [Skapa en VM-skalningsuppsättning](../virtual-machine-scale-sets/quick-create-portal.md)

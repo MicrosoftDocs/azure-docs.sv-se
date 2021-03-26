@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108610"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606886"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Självstudie – Distribuera HSM:er till ett befintligt virtuellt nätverk med hjälp av PowerShell
 
@@ -68,7 +68,7 @@ Kommandot ska returnera statusen "registrerad" (som visas nedan) innan du forts�
 
 ### <a name="creating-hsm-resources"></a>Skapa HSM-resurser
 
-En HSM-enhet etableras till en kunds virtuella nätverk. Detta förutsätter kravet för ett undernät. Ett beroende som krävs för att HSM ska möjliggöra kommunikation mellan det virtuella nätverket och en fysisk enhet är en ExpressRoute-Gateway. Slutligen krävs en virtuell dator för att få åtkomst till HSM-enheten med hjälp av Gemalto-klientprogrammet. Dessa resurser har samlats i en mallfil med motsvarande parameterfil för enkel användning. Du kan hämta filerna genom att kontakta Microsoft direkt på HSMrequest@Microsoft.com.
+En HSM-enhet etableras till en kunds virtuella nätverk. Detta förutsätter kravet för ett undernät. Ett beroende för HSM för att möjliggöra kommunikation mellan det virtuella nätverket och den fysiska enheten är en ExpressRoute-Gateway, och en virtuell dator krävs slutligen en virtuell dator för att få åtkomst till HSM-enheten med hjälp av Thales-klient program varan. Dessa resurser har samlats i en mallfil med motsvarande parameterfil för enkel användning. Du kan hämta filerna genom att kontakta Microsoft direkt på HSMrequest@Microsoft.com.
 
 När du har filerna behöver du redigera parameterfilen om du vill infoga dina önskade namn för resurser. Det innebär att redigera rader med ”value”: ””.
 
@@ -235,14 +235,14 @@ Utdata bör se ut som på bilden nedan:
 
 ![Skärm bild som visar utdata från kommandot HSM show.](media/tutorial-deploy-hsm-powershell/output.png)
 
-I det här skedet har du allokerat alla resurser för en distribution med hög tillgänglighet och två HSM:er samt verifierat åtkomst och driftstatus. Ytterligare konfiguration eller testning medför mer arbete med själva HSM-enheten. För detta bör du följa anvisningarna i kapitel 7 i administrationsguiden för Gemalto Luna Network HSM 7 för att initiera HSM och skapa partitioner. All dokumentation och programvara är tillgänglig direkt från Gemalto för nedladdning när du har registrerats i Gemalto Customer Support Portal och har ett kund-ID. Ladda ned klientprogramvara version 7.2 för att få alla nödvändiga komponenter.
+I det här skedet har du allokerat alla resurser för en distribution med hög tillgänglighet och två HSM:er samt verifierat åtkomst och driftstatus. Ytterligare konfiguration eller testning medför mer arbete med själva HSM-enheten. För detta bör du följa anvisningarna i Thales Luna 7 HSM Administration Guide kapitel 7 för att initiera HSM och skapa partitioner. All dokumentation och program vara är tillgängliga direkt från Thales för hämtning när du har registrerat dig på [Thales kund support Portal](https://supportportal.thalesgroup.com/csm) och har ett kund-ID. Ladda ned klientprogramvara version 7.2 för att få alla nödvändiga komponenter.
 
 ## <a name="delete-or-clean-up-resources"></a>Ta bort eller rensa resurser
 
 Om du är klar med bara HSM-enheten kan den tas bort som resurs och returneras till poolen. Det uppenbara problemet när du gör detta är eventuella känsliga kunddata som finns på enheten. Det bästa sättet att "zeroize" en enhet är att få lösen ordet för HSM-administratören fel tre gånger (Obs! det här är inte enhets administratören, det är den faktiska HSM-administratören). Som säkerhets åtgärd för att skydda nyckel material kan enheten inte tas bort som en Azure-resurs förrän den är i ett nollställt tillstånd.
 
 > [!NOTE]
-> om det är problem med någon Gemalto-enhetskonfiguration bör du kontakta [Gemaltos kundsupport](https://safenet.gemalto.com/technical-support/).
+> Om du har problem med en Thales enhets konfiguration bör du kontakta [Thales kund support](https://supportportal.thalesgroup.com/csm).
 
 Om du vill ta bort HSM-resursen i Azure kan du använda följande kommando för att ersätta "$"-variablerna med dina unika parametrar:
 

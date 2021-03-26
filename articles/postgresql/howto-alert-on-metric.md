@@ -1,17 +1,17 @@
 ---
 title: Konfigurera aviseringar – Azure Portal-Azure Database for PostgreSQL-enskild server
 description: Den här artikeln beskriver hur du konfigurerar och får åtkomst till mått aviseringar för Azure Database for PostgreSQL-enskild server från Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 1b4c10d152afba708eb176e89355ed31ec809168
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b6256dc69e65f86a8619f8647652f40ee11f325f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586735"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604251"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Använd Azure Portal för att ställa in aviseringar för mått för Azure Database for PostgreSQL-enskild server
 

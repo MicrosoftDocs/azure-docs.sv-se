@@ -1,19 +1,19 @@
 ---
 title: Konfigurera Server parametrar – Azure PowerShell-Azure Database for PostgreSQL
 description: I den här artikeln beskrivs hur du konfigurerar tjänst parametrarna i Azure Database for PostgreSQL med PowerShell.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 24106e40a78d4b5607c352ffd49a310533760a66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e9bf55aa46e2206928a5f93285a4001dc731f64
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92489956"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604302"
 ---
 # <a name="customize-azure-database-for-postgresql-server-parameters-using-powershell"></a>Anpassa Azure Database for PostgreSQL Server parametrar med PowerShell
 

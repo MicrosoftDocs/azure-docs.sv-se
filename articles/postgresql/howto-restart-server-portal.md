@@ -1,17 +1,17 @@
 ---
 title: Starta om Server-Azure Portal-Azure Database for PostgreSQL-enskild server
 description: I den här artikeln beskrivs hur du kan starta om en Azure Database for PostgreSQL-enskild server med hjälp av Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/20/2020
-ms.openlocfilehash: faa61ff477f44347755890dc59ebf4b917afda6f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1a1afabd606df70ec60cf4fa7c8530ff95a0564f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97882950"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604863"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Starta om Azure Database for PostgreSQL – en server med hjälp av Azure Portal
 I det här avsnittet beskrivs hur du kan starta om en Azure Database for PostgreSQL-Server. Du kan behöva starta om servern för underhålls orsaker, vilket orsakar ett kort avbrott eftersom servern utför åtgärden.

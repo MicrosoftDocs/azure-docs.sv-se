@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 9aaaece7d60ceead80e51bdc2a1bb342d9a4d237
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: af5ec07a8fb2db0bd4b9b8f1af556ef54199400d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107778"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609419"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -123,6 +123,12 @@ const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 När ditt samtal ansluter börjar den automatiskt att skicka en video ström från den valda kameran till den andra deltagaren. Detta gäller även `Call.Accept()` video alternativ och `CallAgent.join()` video alternativ.
 
 ### <a name="join-a-group-call"></a>Anslut till ett grupp anrop
+
+> [!NOTE]
+> `groupId`Parametern betraktas som systemmetadata och kan användas av Microsoft för åtgärder som krävs för att köra systemet. Ta inte med personliga data i `groupId` värdet. Microsoft behandlar inte den här parametern som personliga data och dess innehåll kan vara synligt för Microsoft-anställda eller lagras på lång sikt.
+>
+> `groupId`Parametern kräver att data är i GUID-format. Vi rekommenderar att du använder slumpmässigt genererade GUID som inte betraktas som personliga data i dina system.
+>
 
 Om du vill starta ett nytt grupp anrop eller ansluta ett pågående grupp anrop använder du `join` metoden och skickar ett objekt med en `groupId` egenskap. `groupId`Värdet måste vara ett GUID.
 

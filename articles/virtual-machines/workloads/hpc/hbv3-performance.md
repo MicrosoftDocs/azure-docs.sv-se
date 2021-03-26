@@ -1,25 +1,25 @@
 ---
-title: Prestanda för virtuell dator i HBv3-serien
-description: Lär dig mer om prestanda testnings resultat för VM-storlekar i HBv3 i Azure.
+title: Prestanda och skalbarhet för VM-HBv3 storlek
+description: Lär dig mer om prestanda och skalbarhet för VM-storlekar i HBv3 i Azure.
 services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 87c3e4e9b509589624a228ea2e1f4b68e86e3fa8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf64cfc8ad00fc7f761019ed2fa66089434a96ba
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721136"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604778"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>Prestanda för virtuell dator i HBv3-serien
 
-Tidig åtkomst användare av virtuella HBv3-datorer kan förväntas följa följande prestanda siffror på vanliga HPC-prestandatester
+Prestanda förväntningar med vanliga HPC-mikroprestandatester är följande:
 
 | Arbetsbelastning                                        | HBv3                                                              |
 |-------------------------------------------------|-------------------------------------------------------------------|
@@ -30,7 +30,7 @@ Tidig åtkomst användare av virtuella HBv3-datorer kan förväntas följa följ
 
 ## <a name="process-pinning"></a>Process fäste
 
-Process fäst fungerar bra på virtuella datorer i HBv3-serien eftersom vi exponerar den underliggande kiseln som-är till den virtuella gäst datorn. Vi rekommenderar starkt att du ska fästa processen för optimala prestanda och konsekvens.
+[Process fäst](compiling-scaling-applications.md#process-pinning) fungerar bra på virtuella datorer i HBv3-serien eftersom vi exponerar den underliggande kiseln som-är till den virtuella gäst datorn. Vi rekommenderar starkt att du ska fästa processen för optimala prestanda och konsekvens.
 
 ## <a name="mpi-latency"></a>MPI-svars tid
 
@@ -45,11 +45,12 @@ MPI bandbredds test från OSU-mikrobenchmark Suite kan utföras enligt nedan. Ex
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 ## <a name="mellanox-perftest"></a>Mellanox perftest
-[Mellanox perftest-paketet](https://community.mellanox.com/s/article/perftest-package) har många InfiniBand-test, till exempel latens (ib_send_lat) och bandbredd (ib_send_bw). Ett exempel kommando är nedan. 
+[Mellanox perftest-paketet](https://community.mellanox.com/s/article/perftest-package) har många InfiniBand-test, till exempel latens (ib_send_lat) och bandbredd (ib_send_bw). Ett exempel kommando är nedan.
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig mer om [skalning av MPI-program](compiling-scaling-applications.md).
+- Granska prestanda-och skalbarhets resultaten för HPC-program på de virtuella HBv3-datorerna i [TechCommunity-artikeln](https://techcommunity.microsoft.com/t5/azure-compute/hpc-performance-and-scalability-results-with-azure-hbv3-vms/bc-p/2235843).
 - Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En mer övergripande arkitektur för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

@@ -5,25 +5,22 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023086"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605645"
 ---
-# <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Fel sökning för Azure percept DK (dev Kit)
+# <a name="azure-percept-dk-troubleshooting"></a>Fel sökning av Azure percept-DK
 
 Se rikt linjerna nedan för allmänna fel söknings tips för Azure percept DK.
 
 ## <a name="general-troubleshooting-commands"></a>Allmänna fel söknings kommandon
 
-För att köra dessa kommandon, 
-1. Ansluta till [dev kits Wi-Fi AP](./quickstart-percept-dk-set-up.md)
-1. [SSH till dev-paketet](./how-to-ssh-into-percept-dk.md)
-1. Ange kommandon i SSH-terminalen
+Kör dessa kommandon genom att använda [ssh i dev-paketet](./how-to-ssh-into-percept-dk.md) och ange kommandona i SSH-klientens prompt.
 
 Om du vill omdirigera utdata till en txt-fil för ytterligare analys, använder du följande syntax:
 
@@ -43,7 +40,7 @@ När du har omdirigerat utdata till en txt-fil kopierar du filen till värddator
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-```[local host file path]``` refererar till platsen på värddatorn som du vill kopiera. txt-filen till. ```[remote username]``` är SSH-användarnamnet valt under [installationen](./quickstart-percept-dk-set-up.md). Om du inte har konfigurerat en SSH-inloggning under OOBE är ditt fjärranvändarnamn ```root``` .
+```[local host file path]``` refererar till platsen på värddatorn som du vill kopiera. txt-filen till. ```[remote username]``` är SSH-användarnamnet valt under [installationen](./quickstart-percept-dk-set-up.md).
 
 Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentationen för Azure IoT Edge enheten](../iot-edge/troubleshoot.md).
 
@@ -66,9 +63,9 @@ Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentation
 |Azure IoT Edge          |```sudo journalctl -u iotedge -f``` |Visa loggarna för Azure IoT Edge Security Manager |
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Starta om Azure IoT Edge Security daemon |
 |Azure IoT Edge          |```sudo iotedge list```           |Visa en lista över distribuerade Azure IoT Edge-moduler |
-|Annat             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
-|Annat             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
-|Annat             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
+|Övrigt             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
+|Övrigt             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
+|Övrigt             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
 
 
 ```journalctl```Wi-Fi kommandon kan kombineras i följande enda kommando:
@@ -88,11 +85,11 @@ sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u 
 |```sudo docker image prune``` |[tar bort alla Dangling-avbildningar](https://docs.docker.com/engine/reference/commandline/image_prune/) |
 |```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |kontrol lera nedladdnings status för Docker-behållare |
 
-## <a name="usb-updating"></a>USB-uppdatering
+## <a name="usb-updates"></a>USB-uppdateringar
 
 |Fel:                                    |Lösning:                                               |
 |------------------------------------------|--------------------------------------------------------|
-|LIBUSB_ERROR_XXX under USB-Flash via UUU |Det här felet är resultatet av en USB-anslutning som misslyckats under UUU-uppdateringen. Om USB-kabeln inte är korrekt ansluten till USB-portarna på datorn eller PE-10X, uppstår ett fel i det här formuläret. Försök att koppla bort och återansluta båda ändar av USB-kabeln och jiggling kabeln för att säkerställa en säker anslutning. Detta löser nästan alltid problemet. |
+|LIBUSB_ERROR_XXX under USB-Flash via UUU |Det här felet är resultatet av en USB-anslutning som misslyckats under UUU-uppdateringen. Om USB-kabeln inte är korrekt ansluten till USB-portarna på datorn eller percept DK-tavlan, så inträffar ett fel i det här formuläret. Försök att koppla från och återansluta båda ändar av USB-kabeln och jiggling kabeln för att säkerställa en säker anslutning. Detta löser nästan alltid problemet. |
 
 ## <a name="azure-percept-dk-carrier-board-led-states"></a>Indikator tillstånd för Azure percept DK-kortet
 

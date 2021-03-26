@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 03/25/2021
 ms.author: banders
-ms.openlocfilehash: 2c17b2f9dc12fa7bff2dae8603bcf95a3a8ddfa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 8bf53715b7f19c44d9114150e617f903cd05a51e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350848"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566323"
 ---
 # <a name="azure-software-plan-discount"></a>Rabatt på Azure-programvaruplan
 
@@ -63,55 +63,37 @@ I följande tabeller visas de programvaruplaner som du kan köpa en reservation 
 
 ### <a name="suse-linux-enterprise-server-for-hpc-priority"></a>SUSE Linux Enterprise Server for HPC Priority
 
-Namn på Azure-portalens marknadsplats:
-
-- SLES 12 SP3 för HPC (prioritet)
-
 |SUSE VM | MeterId| Förhållande| Exempel på VM-storlek|
 | -------| ------------------------| --- |--- |
-|SLES för HPC 1–2 vCPU:er|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
-|SLES för HPC 3–4 vCPU:er|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
-|SLES för HPC 5+ vCPU:er|4edcd5a5-8510-49a8-a9fc-c9721f501913|2,6|D8s_v3|
+|SUSE Linux Enterprise Server for HPC Priority 1-2 virtuella processorer|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
+|SUSE Linux Enterprise Server for HPC Priority 3-4 virtuella processorer|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
+|SUSE Linux Enterprise Server for HPC Priority 5 + virtuella processorer|4edcd5a5-8510-49a8-a9fc-c9721f501913|2,6|D8s_v3|
 
 ### <a name="suse-linux-enterprise-server-for-hpc-standard"></a>SUSE Linux Enterprise Server for HPC Standard
 
-Namn på Azure-portalens marknadsplats:
-
-- SLES 12 SP3 för HPC
-
 |SUSE VM | MeterId | Förhållande|Exempel på VM-storlek|
 | ------- | --- | ------------------------| --- |
-|SLES för HPC 1–2 vCPU:er |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
-|SLES för HPC 3–4 vCPU:er|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1,92308|D4s_v3|
-|SLES för HPC 5+ vCPU:er |907a85de-024f-4dd6-969c-347d47a1bdff|2,92308|D8s_v3|
+|SUSE Linux Enterprise Server for HPC Standard 1-2 virtuella processorer |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
+|SUSE Linux Enterprise Server for HPC Standard 3-4 virtuella processorer|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1,92308|D4s_v3|
+|SUSE Linux Enterprise Server for HPC Standard 5 + virtuella processorer |907a85de-024f-4dd6-969c-347d47a1bdff|2,92308|D8s_v3|
 
-### <a name="suse-linux-enterprise-server-for-sap-priority"></a>SUSE Linux Enterprise Server for SAP Priority
+### <a name="suse-linux-enterprise-server-for-sap-standard"></a>SUSE Linux Enterprise Server for SAP standard
 
-Namn på Azure-portalens marknadsplats:
-
-- SLES för SAP 15 (prioritet)
-- SLES för SAP 12 SP3 (prioritet)
-- SLES för SAP 12 SP2 (prioritet)
+Tidigare hette SUSE Linux Enterprise Server för SAP standard SUSE Linux Enterprise Server for SAP Priority.
 
 |SUSE VM | MeterId | Förhållande|Exempel på VM-storlek|
 | ------- |------------------------| --- | --- |
-|SLES for SAP Priority 1–2 vCPU:er|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
-|SLES for SAP Priority 3–4 vCPU:er |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
-|SLES for SAP Priority 5+ vCPU:er |18ae79cd-dfce-48c9-897b-ebd3053c6058|2,41176|D8s_v3|
+|SUSE Linux Enterprise Server för SAP standard 1-2-virtuella processorer|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
+|SUSE Linux Enterprise Server för SAP standard 3-4-virtuella processorer |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
+|SUSE Linux Enterprise Server för SAP standard 5 + virtuella processorer |18ae79cd-dfce-48c9-897b-ebd3053c6058|2,41176|D8s_v3|
 
 ### <a name="suse-linux-enterprise-server-standard"></a>SUSE Linux Enterprise Server Standard
 
-Namn på Azure-portalens marknadsplats:
-
-- SLES 15
-- SLES 15 (standard)
-- SLES 12 SP3 (standard)
-
 |SUSE VM | MeterId | Förhållande|Exempel på VM-storlek|
 | ------- |------------------------| --- |--- |
-|1–2-kärniga SLES-vCPU:er |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
-|3–4-kärniga SLES-vCPU:er |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1,92308|D4s_v3|
-|SLES 5+ vCPU:er |7b349b65-d906-42e5-833f-b2af38513468|2,30769| D8s_v3|
+|SUSE Linux Enterprise Server Standard 1-2 kärnor virtuella processorer |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
+|SUSE Linux Enterprise Server Standard 3-4 kärnor virtuella processorer |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1,92308|D4s_v3|
+|SUSE Linux Enterprise Server Standard 5 + virtuella processorer |7b349b65-d906-42e5-833f-b2af38513468|2,30769| D8s_v3|
 
 ## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: afba973570d75eace8cae8d1ed6ed470db21ef0e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043265"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608093"
 ---
 # <a name="about-the-speech-sdk"></a>Om Speech SDK
 
@@ -67,17 +67,17 @@ Tal-SDK: n visar många funktioner från tal tjänsten, men inte alla. Funktione
   - Java/Windows & Linux & macOS & Android (tal enheter SDK)
   - Go
 
-#### <a name="keyword-spotting"></a>Nyckelord upptäcka
+#### <a name="keyword-recognition"></a>Nyckelords igenkänning
 
-Konceptet för [nyckelordet upptäcka](./custom-keyword-basics.md) stöds i tal-SDK: n. Nyckelordet upptäcka är en handling som identifierar ett nyckelord i tal, följt av en åtgärd för att höra nyckelordet. Till exempel "Hej Cortana" aktiverar Cortana-assistenten.
+Konceptet för [nyckelords igenkänning](./custom-keyword-basics.md) stöds i tal-SDK: n. Nyckelords igenkänning är en handling som identifierar ett nyckelord i tal, följt av en åtgärd för att höra nyckelordet. Till exempel "Hej Cortana" aktiverar Cortana-assistenten.
 
-**Nyckelordet upptäcka (KWS)** är tillgängligt på följande plattformar:
+**Nyckelords igenkänning** är tillgängligt på följande plattformar:
 
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (Speech-enheter SDK)
-  - Nyckelordet upptäcka (KWS) fungerar med valfri mikrofon typ, officiell KWS support, men är för närvarande begränsad till de mikrofoner som finns i Azure Kinect DK-maskinvara eller tal enheter SDK
+  - Funktionen för nyckelords igenkänning kan fungera med valfri mikrofon typ, statsstöd för stöd för nyckelords igenkänning, men är för närvarande begränsad till de mikrofoner som finns i Azure Kinect DK-maskinvara eller i tal enheternas SDK
 
 ### <a name="meeting-scenarios"></a>Mötes scenarier
 

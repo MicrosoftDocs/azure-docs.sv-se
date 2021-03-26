@@ -37,7 +37,7 @@ Den maximala gränsen för strömnings enheter är vanligt vis 10. Kontakta oss 
 
 I tabellen beskrivs typerna:
 
-|Typ|Skalningsenheter|Beskrivning|
+|Typ|Skalningsenheter|Description|
 |--------|--------|--------|  
 |**Standard**|0|Standard slut punkten för direkt uppspelning är en **standard** typ – den kan ändras till Premium-typen genom att justera `scaleUnits` .|
 |**Premium**|> 0|**Premium** Slut punkter för direkt uppspelning passar för avancerade arbets belastningar och tillhandahåller dedikerad och skalbar bandbredds kapacitet. Du flyttar till en **Premium** typ genom att justera `scaleUnits` (enheter för strömning). `scaleUnits` ge dig dedikerad utgående kapacitet som kan köpas i steg om 200 Mbit/s. När du använder **Premium** -typen ger varje aktive rad enhet ytterligare bandbredds kapacitet till appen. |
@@ -63,6 +63,54 @@ Rekommenderad användning |Rekommenderas för de flesta strömnings scenarier.|P
 
 <sup>1</sup> används endast direkt på slut punkten för direkt uppspelning när CDN inte är aktiverat på slut punkten.<br/>
 
+### <a name="versions"></a>Versioner
+
+|Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturering|
+|--------------|----------|-----------------|-----------------|-----------------|
+|Klassisk|1.0|0|NA|Kostnadsfri|
+|Standard slut punkt för direkt uppspelning (förhands granskning)|2.0|0|Yes|Betald|
+|Premium – direktuppspelningsenheter|1.0|> 0|Yes|Betald|
+|Premium – direktuppspelningsenheter|2.0|> 0|Yes|Betald|
+
+### <a name="features"></a>Funktioner
+
+Funktion|Standard|Premium
+---|---|---
+Dataflöde |Upp till 600 Mbit/s och kan ge ett mycket mer effektivt data flöde när ett CDN används.|200 Mbit/s per strömnings enhet (SU). Kan ge ett mycket högre effektivt data flöde när ett CDN används.
+CDN|Azure CDN, CDN för tredje part eller ingen CDN.|Azure CDN, CDN för tredje part eller ingen CDN.
+Faktureringen beräknas proportionellt| Varje dag|Varje dag
+Dynamisk kryptering|Ja|Ja
+Dynamisk paketering|Ja|Ja
+Skala|Skalar upp till det riktade data flödet automatiskt.|Ytterligare enheter för strömning.
+IP-filtrering/G20/anpassad värd <sup>1</sup>|Ja|Ja
+Progressiv nedladdning|Ja|Ja
+Rekommenderad användning |Rekommenderas för de flesta strömnings scenarier.|Professional-användning. 
+
+<sup>1</sup> används endast direkt på slut punkten för direkt uppspelning när CDN inte är aktiverat på slut punkten.<br/>
+
+Information om SLA finns i [prissättning och service avtal](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="migration-between-types"></a>Migrering mellan typer
+
+Från | Om du vill | Action
+---|---|---
+Klassisk|Standard|Du måste välja
+Klassisk|Premium| Skala (ytterligare enheter för strömning)
+Standard/Premium|Klassisk|Inte tillgängligt (om version för strömnings slut punkt är 1,0. Det går att ändra till klassiskt med inställningen scaleunits till "0")
+Standard (med/utan CDN)|Premium med samma konfigurationer|Tillåts i **Start** läge. (via Azure Portal)
+Premium (med/utan CDN)|Standard med samma konfigurationer|Tillåts i **Start** tillstånd (via Azure Portal)
+Standard (med/utan CDN)|Premium med olika konfigurationer|Tillåts i **stoppat** tillstånd (via Azure Portal). Tillåts inte i körnings tillstånd.
+Premium (med/utan CDN)|Standard med olika konfigurationer|Tillåts i **stoppat** tillstånd (via Azure Portal). Tillåts inte i körnings tillstånd.
+Version 1,0 med SU >= 1 med CDN|Standard/Premium utan CDN|Tillåts i **stoppat** tillstånd. Tillåts inte i läget **Started** .
+Version 1,0 med SU >= 1 med CDN|Standard med/utan CDN|Tillåts i **stoppat** tillstånd. Tillåts inte i läget **Started** . Version 1,0 CDN tas bort och en ny skapas och startas.
+Version 1,0 med SU >= 1 med CDN|Premium med/utan CDN|Tillåts i **stoppat** tillstånd. Tillåts inte i läget **Started** . Den klassiska CDN tas bort och nya skapas och startas.
+
+
+
+
+
+
+
 ## <a name="streaming-endpoint-properties"></a>Egenskaper för strömnings slut punkt
 
 Det här avsnittet innehåller information om några av egenskaperna för strömnings slut punkten. Exempel på hur du skapar en ny slut punkt för direkt uppspelning och beskrivningar av alla egenskaper finns i [direkt uppspelnings slut punkt](/rest/api/media/streamingendpoints/create).
@@ -83,7 +131,7 @@ Det här avsnittet innehåller information om några av egenskaperna för ström
 - `crossSiteAccessPolicies`: Används för att ange åtkomst principer mellan platser för olika klienter. Mer information finns i [Specifikation över domän princip fil](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) och [göra en tjänst tillgänglig över domän gränser](/previous-versions/azure/azure-services/gg185950(v=azure.100)). Inställningarna gäller endast för Smooth Streaming.
 - `customHostNames`: Används för att konfigurera en slut punkt för direkt uppspelning för att acceptera trafik som dirigerats till ett anpassat värdnamn. Den här egenskapen är giltig för slut punkter för standard-och Premium-direktuppspelning och kan ställas in när `cdnEnabled` : false.
 
-    Ägande rätten till domän namnet måste bekräftas av Media Services. Media Services verifierar domän namnets ägarskap genom att kräva en `CName` post som innehåller Media Services-konto-ID som en komponent som ska läggas till i domänen som används. Som exempel, för att "sports.contoso.com" ska användas som ett anpassat värdnamn för strömnings slut punkten måste en post för vara `<accountId>.contoso.com` konfigurerad för att peka på ett av Media Services verifierings värd namn. Verifierings värd namnet består av verifydns. \<mediaservices-dns-zone> .
+    Ägande rätten till domän namnet måste bekräftas av Media Services. Media Services verifierar domän namnets ägarskap genom att kräva en `CName` post som innehåller Media Services-konto-ID som en komponent som ska läggas till i domänen som används. Som exempel, för att "sports.contoso.com" ska användas som ett anpassat värdnamn för strömnings slut punkten måste en post för vara `<accountId>.contoso.com` konfigurerad för att peka på ett av Media Services verifierings värd namn. Verifierings värd namnet består av verifydns. `\<mediaservices-dns-zone>` .
 
     Följande är de DNS-zoner som förväntas användas i verifiera-posten för olika Azure-regioner.
   

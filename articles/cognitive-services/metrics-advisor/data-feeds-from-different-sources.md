@@ -10,20 +10,20 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348627"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606155"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Lägg till datafeeds från olika data källor i mått Advisor
 
-Använd den här artikeln för att hitta inställningar och krav för att ansluta olika typer av data källor till mått Advisor. Läs om hur du kan [publicera dina data](how-tos/onboard-your-data.md) för att lära dig mer om viktiga begrepp för att använda dina data med mått rådgivare. 
+Använd den här artikeln för att hitta inställningar och krav för att ansluta olika typer av data källor till mått Advisor. Läs om hur du kan [publicera dina data](how-tos/onboard-your-data.md) för att lära dig mer om viktiga begrepp för att använda dina data med mått rådgivare. \
 
 ## <a name="supported-authentication-types"></a>Autentiseringstyper som stöds
 
-| Autentiseringstyper | Beskrivning |
+| Autentiseringstyper | Description |
 | ---------------------|-------------|
 |**Basic** | Du måste kunna tillhandahålla grundläggande parametrar för åtkomst till data källor. Till exempel en anslutnings sträng eller nyckel. Data flödes administratörer kan visa dessa autentiseringsuppgifter. |
 | **AzureManagedIdentity** | [Hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) för Azure-resurser är en funktion i Azure Active Directory. Den tillhandahåller Azure-tjänster med en automatiskt hanterad identitet i Azure AD. Du kan använda identiteten för att autentisera till en tjänst som stöder Azure AD-autentisering.|
@@ -51,7 +51,7 @@ Använd den här artikeln för att hitta inställningar och krav för att anslut
 |[**MySQL**](#mysql) | Grundläggande |
 |[**PostgreSQL**](#pgsql)| Grundläggande|
 
-Skapa en **entitet för autentiseringsuppgifter** och Använd den för autentisering till dina data källor. I följande avsnitt anges de parametrar som krävs för *grundläggande* autentisering. 
+Skapa en entitet för autentiseringsuppgifter * * och Använd den för autentisering till dina data källor. I följande avsnitt anges de parametrar som krävs för *grundläggande* autentisering. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application insikter</span>
 
@@ -159,7 +159,7 @@ Endast en tidstämpel tillåts per JSON-fil.
   * `%h` är timmen formaterad som `HH`
   * `%M` är minuten formaterad som `mm`
 
-För närvarande stöder Metric Advisor data schemat i JSON-filerna enligt följande. Exempel:
+För närvarande stöder Metric Advisor data schema i JSON-filerna enligt följande. Exempel:
 
 ``` JSON
 [
@@ -212,15 +212,14 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
 
-* **Anslutnings sträng**: Mer information om hur du hämtar anslutnings strängen från Azure Table Storage finns i [Visa och kopiera en anslutnings sträng](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) .
+* **Anslutnings sträng**: skapa en SAS-URL (Shared Access signatur) och fyll i här. Det enklaste sättet att skapa en SAS-URL på är att använda Azure-portalen. Med hjälp av Azure Portal kan du navigera grafiskt. Om du vill skapa en SAS-URL via Azure Portal går du först till det lagrings konto som du vill komma åt i avsnittet Inställningar och klickar sedan på signatur för delad åtkomst. Markera kryss rutorna "Tabell" och "objekt" och klicka sedan på knappen Skapa SAS och anslutnings sträng. Table service SAS-URL är vad du behöver kopiera och fylla i text rutan på arbets ytan mått rådgivare.
 
 * **Tabell namn**: Ange en tabell att fråga mot. Du hittar detta i din Azure Storage konto instans. Klicka på **tabeller** i avsnittet **tabell tjänst** .
 
-* **Fråga** Du kan använda `@StartTime` i din fråga. `@StartTime` ersätts med en ÅÅÅÅ-MM-ddTHH: mm: SS-format sträng i skriptet.
+* **Fråga** Du kan använda `@StartTime` i din fråga. `@StartTime` ersätts med en ÅÅÅÅ-MM-ddTHH: mm: SS-format sträng i skriptet. Tips: Använd Azure Storage Explorer för att skapa en fråga med ett angivet tidsintervall och se till att den körs på rätt avstånd. gör sedan ersättnings processen.
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">ElasticSearch</span>

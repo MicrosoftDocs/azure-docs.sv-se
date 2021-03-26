@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2021
-ms.openlocfilehash: 8caac0a111c3a1bdd88e0d5f43a4629ad4221496
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 2de60880b511e43ffb2949a15fec2cf2a94f62fa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888948"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567160"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>Identifiera SQL Server instanser i ett befintligt projekt 
 
@@ -41,7 +41,7 @@ Identifiering av SQL Server instanser och databaser som körs på lokala datorer
     - Kontrol lera att de tjänster som körs på installationen har uppdaterats till de senaste versionerna. Det gör du genom att starta Konfigurations hanteraren för installationen från din installations Server och välja Visa utrustnings tjänster från panelen installations krav.
         - Enheten och dess komponenter uppdateras automatiskt :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="kontrol lera version":::
     - I panelen Hantera autentiseringsuppgifter och identifierings källor i Konfigurations hanteraren för installationen lägger du till domän-eller SQL Server autentiseringsuppgifter för autentisering som har sysadmin-åtkomst på SQL Server-instansen och databaser som ska identifieras.
-    Du kan använda antingen den automatiska funktionen för autentisering av autentiseringsuppgifter i installationen eller mappa autentiseringsuppgifterna manuellt till respektive server som marker ATS [här](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery).
+    Du kan använda antingen den automatiska funktionen för autentisering av autentiseringsuppgifter i installationen eller mappa autentiseringsuppgifterna manuellt till respektive server som marker ATS [här](./tutorial-discover-vmware.md#start-continuous-discovery).
 
     Några saker att tänka på:
     - Se till att program varu inventeringen redan är aktive rad eller ange domän-eller icke-domänautentiseringsuppgifter för att aktivera samma. Program varu inventering måste utföras för att identifiera SQL Server instanser.

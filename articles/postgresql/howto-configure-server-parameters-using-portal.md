@@ -1,17 +1,17 @@
 ---
 title: Konfigurera Server parametrar – Azure Portal-Azure Database for PostgreSQL-enskild server
 description: I den här artikeln beskrivs hur du konfigurerar postgres-parametrarna i Azure Database for PostgreSQL via Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.openlocfilehash: e1b40e3116d56e87a2f397350ef2ba5510e04c0c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2e9cecc03c1240d625fa8f6bbdcd633ada978082
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91707701"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604217"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Konfigurera Server parametrar i Azure Database for PostgreSQL-enskild server via Azure Portal 
 Du kan visa, Visa och uppdatera konfigurations parametrar för en Azure Database for PostgreSQL-server via Azure Portal.
