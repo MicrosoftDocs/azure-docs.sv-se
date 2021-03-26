@@ -7,12 +7,12 @@ ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597395"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565987"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiera data från och till Dynamics 365 (Common Data Service/Microsoft Dataverse) eller Dynamics CRM genom att använda Azure Data Factory
 
@@ -370,7 +370,7 @@ Den optimala kombinationen av **writeBatchSize** och **parallelCopies** är bero
 
 Om du vill hämta data från Dynamics views måste du hämta den sparade frågan för vyn och använda frågan för att hämta data.
 
-Det finns två entiteter som lagrar olika typer av vyer: "sparad fråga" lagrar systemvyer och "användar fråga" lagrar användar visning. Om du vill hämta information om vyerna läser du följande FetchXML-fråga och ersätter "TARGETENTITY" med `savedquery` eller `userquery` . Varje entitetstyp har fler tillgängliga attribut som du kan lägga till i frågan utifrån dina behov. Lär dig mer om [entiteten entitet](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) och [UserQuery](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)i savedquery.
+Det finns två entiteter som lagrar olika typer av vyer: "sparad fråga" lagrar systemvyer och "användar fråga" lagrar användar visning. Om du vill hämta information om vyerna läser du följande FetchXML-fråga och ersätter "TARGETENTITY" med `savedquery` eller `userquery` . Varje entitetstyp har fler tillgängliga attribut som du kan lägga till i frågan utifrån dina behov. Lär dig mer om [entiteten entitet](/dynamics365/customer-engagement/web-api/savedquery) och [UserQuery](/dynamics365/customer-engagement/web-api/userquery)i savedquery.
 
 ```xml
 <fetch top="5000" >

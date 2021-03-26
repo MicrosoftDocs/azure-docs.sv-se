@@ -8,16 +8,16 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e8019a30d4f5bf24814d88fc749cefd6b529b73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610036"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563403"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurera samförsäljning för ett erbjudande för handels platser
 
-Den här artikeln beskriver hur du konfigurerar fliken **Co-Sälj med Microsoft** för ett erbjudande från en kommersiell Marketplace. Att tillhandahålla information på den här fliken är helt valfritt, men det krävs för att uppnå samförsäljnings- [och motiverade-status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Den information du anger kommer att användas av Microsoft Sales Teams för att lära dig mer om ditt erbjudande när du utvärderar den efter kund behov. Den här informationen är inte tillgänglig direkt för kunderna. Mer information om samförsäljning finns i samförsäljning [med Microsoft-säljare och partner översikt](marketplace-co-sell.md) och [samförsäljning med Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Den här artikeln beskriver hur du konfigurerar fliken **Co-Sälj med Microsoft** för ett erbjudande från en kommersiell Marketplace. Att tillhandahålla information på den här fliken är helt valfritt, men det krävs för att uppnå samförsäljnings- [och motiverade-status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Den information du anger kommer att användas av Microsoft Sales Teams för att lära dig mer om ditt erbjudande när du utvärderar den efter kund behov. Den här informationen är inte tillgänglig direkt för kunderna. Mer information om samförsäljning finns i samförsäljning [med Microsoft-säljare och partner översikt](marketplace-co-sell.md) och [samförsäljning med Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Alternativet Co-Sälj är tillgängligt för följande typer av erbjudanden.
 

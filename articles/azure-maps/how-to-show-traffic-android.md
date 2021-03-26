@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098544"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604523"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Visa trafik data på kartan (Android SDK)
 
@@ -31,7 +31,7 @@ Det finns två typer av trafik data tillgängliga i Azure Maps:
 - Incident data – består av punkt-och linjebaserade data för sådant som konstruktion, väg stängningar och olyckor.
 - Flow-data – innehåller mått för trafik flödet på vägarna. Ofta används trafikflödes data för att färga vägarna. Färgerna baseras på hur mycket trafik som saktar ned flödet, i förhållande till hastighets gränsen eller något annat mått. Det finns fyra värden som kan överföras till `flow` kartans trafik alternativ.
 
-    |Flödes värde | Beskrivning|
+    |Flödes värde | Description|
     | :-- | :-- |
     | TrafficFlow. NONE | Visar inte trafik data på kartan |
     | TrafficFlow. relativ | Visar trafik data som är relativa till vägens fria flödes hastighet |
@@ -63,7 +63,7 @@ map.setTraffic(
 
 ::: zone-end
 
-Följande skärm bild visar ovanstående kod Rending information om real tids trafik på kartan.
+Följande skärm bild visar ovanstående kod information i real tid på kartan.
 
 ![Karta som visar trafik information i real tid](media/how-to-show-traffic-android/android-show-traffic.png)
 
@@ -179,7 +179,7 @@ map.events.add(OnFeatureClick { features: List<Feature>? ->
 
 ::: zone-end
 
-Följande skärm bild visar ovanstående kod Rending information om real tids trafik på kartan med ett popup-meddelande som visar incident information.
+Följande skärm bild visar ovanstående information om kod åter givning i real tid på kartan med ett popup-meddelande som visar incident information.
 
 ![Karta som visar trafik information i real tid med ett popup-meddelande som visar incident information](media/how-to-show-traffic-android/android-traffic-details.png)
 

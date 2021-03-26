@@ -1,18 +1,18 @@
 ---
 title: Anslut med hanterad identitet – Azure Database for PostgreSQL-enskild server
 description: Lär dig mer om hur du ansluter och autentiserar med hanterad identitet för autentisering med Azure Database for PostgreSQL
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b0d6b083228ddab9d958bf3480b592f7ee0d892d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d59b449a2dbf2ed3b1177db6e543de4c34a8ecb1
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092646"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604166"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Ansluta med hanterad identitet till Azure Database for PostgreSQL
 

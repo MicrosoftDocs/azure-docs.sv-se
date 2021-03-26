@@ -7,12 +7,12 @@ ms.reviewer: ''
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: 825204fe40125a65e8e6f27c6973417813700a9e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4a0258d5e448c59baa1cd63e98058fe7116a8485
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746358"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566123"
 ---
 # <a name="migrate-default-hive-metastore-db-to-external-metastore-db"></a>Migrera standard Hive-metaarkiv DB till extern metaarkiv-databas
 
@@ -46,7 +46,7 @@ Om du använder [Azure Data Lake Storage gen1](../overview-data-lake-storage-gen
 
 An-HDInsight kluster som skapats förrän 2020-10-15 har stöd för SQL-export/import för Hive-standardmetaarkiv-databasen med hjälp av `sqlpackage` .
 
-1. Installera [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage-download#get-sqlpackage-net-core-for-linux) i klustret.
+1. Installera [sqlpackage](/sql/tools/sqlpackage-download#get-sqlpackage-net-core-for-linux) i klustret.
 
 2. Exportera standard metaarkiv DB till BACPAC-filen genom att köra följande kommando.
 

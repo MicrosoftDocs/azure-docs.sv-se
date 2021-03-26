@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7374c2727048e323ce0483dd42c574134e7315bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1d3223114e9f691bfb3802a65abea003a7aec6e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040556"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582435"
 ---
 Du kan kontrol lera länkarna i det här avsnittet om du vill ha mer information om tjänster som erbjuds av partner. Om din grenen hets partner inte visas i avsnittet nedan, måste du kontakta oss på din avdelnings enhets leverantör. De kan kontakta oss genom att skicka ett e-postmeddelande till azurevirtualwan@microsoft.com .
 
@@ -26,7 +26,7 @@ Du kan kontrol lera länkarna i det här avsnittet om du vill ha mer information
 | [Cloudgenix](https://www.cloudgenix.com/microsoft-azure/) |[Distributions guide för CloudGenix Azure Virtual WAN CloudBlade](https://sd-wan.cloudgenix.com/Q319ConfigurationGuide_Registration.html)|
 | [Fortinet](https://www.fortinet.com/azure-vwan) |[Distributions guide för Fortigate och Microsoft Azure virtuell WAN-integration](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf),[blogg om routningslänkar ](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 |[HPE Aruba]( https://www.arubanetworks.com/microsoft-vwan/)|[Aruba SD – WAN och Microsoft Azure virtuell WAN-distributions guide](https://www.arubanetworks.com/assets/tg/DG_Using-Aruba-SD-WAN-with-Microsoft-Azure-Virtual-WAN.pdf)|
-| [Netfound](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Support hubb för netfound: Azure Virtual WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
+| [Netfound](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Support hubb för netfound: Azure Virtual WAN](https://support.netfoundry.io/hc/articles/360054527871-Configure-NetFoundry-Network-for-Azure-Windows-Virtual-Desktop-Short-Path)|
 |[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Distributions guide för Nuage och Azure Virtual WAN](https://onestore.nokia.com/asset/210073)|
 |[Öppna system]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[Distributions guide för öppna system och Azure Virtual WAN](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[Palo-nätverk Azure Virtual WAN distributions guide](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|

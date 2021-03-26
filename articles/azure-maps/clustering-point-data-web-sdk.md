@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044195"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608365"
 ---
 # <a name="clustering-point-data"></a>Kluster plats data
 
@@ -26,7 +26,7 @@ Vid visualisering av många data punkter på kartan kan data punkterna överlapp
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Aktivera klustring på en data Källa
 
-Aktivera klustring i `DataSource` klassen genom att ange `cluster` alternativet till sant. Ange `clusterRadius` om du vill markera närliggande punkter och kombinera dem i ett kluster. Värdet för `clusterRadius` är i bild punkter. Använd `clusterMaxZoom` för att ange en zoomnings nivå där kluster logiken ska inaktive ras. Här är ett exempel på hur du aktiverar klustring i en data källa.
+Aktivera klustring i `DataSource` klassen genom att ställa in `cluster` alternativet på `true` . Ange `clusterRadius` om du vill markera närliggande punkter och kombinera dem i ett kluster. Värdet för `clusterRadius` är i bild punkter. Använd `clusterMaxZoom` för att ange en zoomnings nivå där kluster logiken ska inaktive ras. Här är ett exempel på hur du aktiverar klustring i en data källa.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource`Klassen tillhandahåller följande metoder för kluster även.
 
-| Metod | Returtyp | Beskrivning |
+| Metod | Returtyp | Description |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: Number) | &lt;Funktions geometri för Promise array &lt; &lt; , vilken &gt; \| form som helst&gt;&gt; | Hämtar underordnade för det aktuella klustret på nästa zoomnings nivå. Dessa underordnade kan vara en kombination av former och under kluster. Under klustren är funktioner med egenskaper som matchar ClusteredProperties. |
 | getClusterExpansionZoom (clusterId: Number) | Löftes &lt; nummer&gt; | Beräknar en zoomnings nivå där klustret börjar expandera eller dela upp. |
@@ -92,7 +92,7 @@ Se Penn <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>klustrets viktade vä
 
 När mus händelser inträffar i ett lager som innehåller grupperade data punkter, återgår den klustrade data punkten till händelsen som ett objekt av en interjson-punkt. Den här punkt funktionen kommer att ha följande egenskaper:
 
-| Egenskapsnamn             | Typ    | Beskrivning   |
+| Egenskapsnamn             | Typ    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Anger om funktionen representerar ett kluster. |
 | `cluster_id`              | sträng  | Ett unikt ID för klustret som kan användas med DataSource `getClusterExpansionZoom` -, `getClusterChildren` -och- `getClusterLeaves` metoder. |

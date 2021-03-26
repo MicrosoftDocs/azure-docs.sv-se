@@ -7,12 +7,12 @@ ms.date: 03/13/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462005"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563420"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Felsöka dirigering av pipelines och utlösare i Azure Data Factory
 
@@ -95,7 +95,7 @@ Azure Data Factory utvärderar resultatet av alla aktiviteter på lövnivå. Pip
 
 * Implementera kontroller på aktivitets nivå genom [att följa hur du hanterar pipelines fel och fel](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 * Använd Azure Logic Apps för att övervaka pipeliner med jämna mellanrum efter [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory).
-* [Övervaka pipeline visuellt](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Övervaka pipeline visuellt](./monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Så här övervakar du fel i pipelinen med jämna mellanrum
 
@@ -105,7 +105,7 @@ Du kan behöva övervaka misslyckade Data Factory pipeliner i intervall, på 5 m
 
 **Lösning**
 * Du kan konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut, enligt beskrivningen i [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory). Sedan kan du rapportera incidenter till ditt biljett system.
-* [Övervaka pipeline visuellt](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Övervaka pipeline visuellt](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Graden av Parallel-ökning resulterar inte i högre data flöde
 
@@ -146,8 +146,8 @@ Detta kan inträffa om du inte har implementerat Time to Live-funktionen för da
 
 **Lösning**
 
-* Om varje enskild kopieringsaktivitet tar upp till två minuter att starta och problemet huvudsakligen inträffar med en VNet-anslutning (kontra Azure IR) kan det röra sig om ett problem med kopieringsprestanda. Om du vill se fel söknings stegen går du till [Kopiera prestanda förbättring.](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)
-* Du kan använda Time to Live-funktionen för att minska kluster start tiden för data flödes aktiviteter. Granska [integration runtime för data flöde.](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime)
+* Om varje enskild kopieringsaktivitet tar upp till två minuter att starta och problemet huvudsakligen inträffar med en VNet-anslutning (kontra Azure IR) kan det röra sig om ett problem med kopieringsprestanda. Om du vill se fel söknings stegen går du till [Kopiera prestanda förbättring.](./copy-activity-performance-troubleshooting.md)
+* Du kan använda Time to Live-funktionen för att minska kluster start tiden för data flödes aktiviteter. Granska [integration runtime för data flöde.](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>Träffar på kapacitets problem i SHIR (egen värd Integration Runtime)
  
@@ -157,7 +157,7 @@ Detta kan inträffa om du inte har skalat upp SHIR per arbets belastning.
 
 **Lösning**
 
-* Om du stöter på ett kapacitets problem från SHIR ska du uppgradera den virtuella datorn för att öka noden för att utjämna aktiviteterna. Om du får ett fel meddelande om ett allmänt underordnat IR-fel eller fel, en IR-uppgradering med egen värd eller problem med IR-anslutning med egen värd, som kan generera en lång kö, går du till [Felsöka integration runtime med egen värd.](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide)
+* Om du stöter på ett kapacitets problem från SHIR ska du uppgradera den virtuella datorn för att öka noden för att utjämna aktiviteterna. Om du får ett fel meddelande om ett allmänt underordnat IR-fel eller fel, en IR-uppgradering med egen värd eller problem med IR-anslutning med egen värd, som kan generera en lång kö, går du till [Felsöka integration runtime med egen värd.](./self-hosted-integration-runtime-troubleshoot-guide.md)
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>Fel meddelanden på grund av långa köer för ADF-kopiering och data flöde
 
@@ -166,10 +166,10 @@ Detta kan inträffa om du inte har skalat upp SHIR per arbets belastning.
 Fel meddelanden om långa köer kan visas av olika orsaker. 
 
 **Lösning**
-* Om du får ett fel meddelande från en källa eller ett mål via kopplingar, som kan generera en lång kö, går du till [fel söknings guide för anslutning.](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide)
-* Om du får ett fel meddelande om att mappa data flödet, som kan generera en lång kö, går du till [fel söknings guide för data flöden.](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide)
-* Om du får ett fel meddelande om andra aktiviteter, till exempel Databricks, anpassade aktiviteter eller HDI, som kan generera en lång kö, går du till [fel söknings guide för aktiviteter.](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide)
-* Om du får ett fel meddelande om att köra SSIS-paket, som kan generera en lång kö, går du till [fel söknings guiden för Azure-SSIS för paket körning](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq) och [integration runtime fel söknings guide för hantering.](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)
+* Om du får ett fel meddelande från en källa eller ett mål via kopplingar, som kan generera en lång kö, går du till [fel söknings guide för anslutning.](./connector-troubleshoot-guide.md)
+* Om du får ett fel meddelande om att mappa data flödet, som kan generera en lång kö, går du till [fel söknings guide för data flöden.](./data-flow-troubleshoot-guide.md)
+* Om du får ett fel meddelande om andra aktiviteter, till exempel Databricks, anpassade aktiviteter eller HDI, som kan generera en lång kö, går du till [fel söknings guide för aktiviteter.](./data-factory-troubleshoot-guide.md)
+* Om du får ett fel meddelande om att köra SSIS-paket, som kan generera en lång kö, går du till [fel söknings guiden för Azure-SSIS för paket körning](./ssis-integration-runtime-ssis-activity-faq.md) och [integration runtime fel söknings guide för hantering.](./ssis-integration-runtime-management-troubleshoot.md)
 
 
 ## <a name="next-steps"></a>Nästa steg

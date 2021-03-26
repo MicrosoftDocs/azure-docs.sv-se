@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 37bbc8c7c2b81c22ffd8704e655805cc63cd9d45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044999"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607141"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Viktig information: tal enheter SDK
 
@@ -107,7 +107,7 @@ I följande avsnitt listas ändringar i de senaste versionerna.
 **Icke-bakåtkompatibla ändringar**
 
 - I den här versionen introduceras ett antal avbrytande ändringar. Mer information om API: erna finns i [den här sidan](https://aka.ms/csspeech/breakingchanges_1_0_0) .
-- KWS-modellens filer är inte kompatibla med tal enheter SDK-1.0.1. De befintliga nyckelorden tas bort när de nya nyckelorden skrivs till enheten.
+- Model-filerna för nyckelords igenkänning är inte kompatibla med 1.0.1 för tal enheter SDK. De befintliga nyckelorden tas bort när de nya nyckelorden skrivs till enheten.
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>Tal enheter SDK-0.5.0:2018-aug-version
 

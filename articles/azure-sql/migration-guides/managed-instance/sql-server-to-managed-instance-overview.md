@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 529bc5468c74ac9d50f64decad29fd070a7bda83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024905"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566939"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Översikt över migrering: SQL Server till Azure SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,7 +90,7 @@ I följande tabell visas rekommenderade Migreringsverktyg:
 
 |Teknik | Beskrivning|
 |---------|---------|
-| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Med Azure Migrate för Azure SQL kan du identifiera och utvärdera din SQL data-fastighets i stor skala när du arbetar på VMware, vilket ger rekommendationer för Azure SQL-distribution, mål storlek och månads uppskattningar. | 
+| [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | Med Azure Migrate för Azure SQL kan du identifiera och utvärdera din SQL data-fastighets i stor skala när du arbetar på VMware, vilket ger rekommendationer för Azure SQL-distribution, mål storlek och månads uppskattningar. | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Azure-tjänsten från första part som stöder migrering i offline-läge för program som kan ge stillestånds tid under migreringsprocessen. Till skillnad från kontinuerlig migrering i onlineläge kör offline mode-migrering en eng ång slöation av en fullständig säkerhets kopia av databasen från källan till målet. | 
 |[Inbyggd säkerhets kopiering och återställning](../../managed-instance/restore-sample-database-quickstart.md) | SQL-hanterad instans har stöd för återställning av interna SQL Server databas säkerhets kopior (. bak-filer), vilket gör det till det enklaste alternativet för migrering för kunder som kan ge fullständig databas säkerhets kopiering till Azure Storage. Fullständiga och differentiella säkerhets kopieringar stöds också och dokumenteras i [avsnittet migrerings till gångar](#migration-assets) längre fram i den här artikeln.| 
 |[Logg uppspelnings tjänsten (LRS)](../../managed-instance/log-replay-service-migrate.md) | Det här är en moln tjänst som är aktive rad för hanterad instans baserat på SQL Server logg överförings teknik, vilket gör det till ett flyttnings alternativ för kunder som kan tillhandahålla fullständiga, differentiella och logga databas säkerhets kopior till Azure Storage. LRS används för att återställa säkerhetskopierade filer från Azure Blob Storage till SQL-hanterad instans.| 
@@ -212,7 +212,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-Mer information om minnes intern teknik finns i [optimera prestanda med hjälp av minnes intern teknik i Azure SQL Database och Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
+Mer information om minnes intern teknik finns i [optimera prestanda med hjälp av minnes intern teknik i Azure SQL Database och Azure SQL-hanterad instans](../../in-memory-oltp-overview.md)
 
 ## <a name="leverage-advanced-features"></a>Utnyttja avancerade funktioner 
 
@@ -228,7 +228,7 @@ Vissa funktioner är bara tillgängliga när kompatibilitetsnivån för [databas
 
 Mer hjälp finns i följande resurser som har utvecklats för Real World migration-projekt.
 
-|Tillgång  |Beskrivning  |
+|Tillgång  |Description  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
 |[DBLoader-verktyg](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader kan användas för att läsa in data från avgränsade textfiler till SQL Server. I det här Windows-konsol verktyget används SQL Server inbyggda klient Bulkload-gränssnittet, som fungerar på alla versioner av SQL Server, inklusive Azure SQL MI.|

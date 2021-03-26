@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546559"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604149"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Översikt av anslutning och frågekörning för Azure Database for PostgreSQL – enskild server
 
@@ -20,7 +20,7 @@ Följande dokument innehåller länkar till exempel som visar hur du ansluter oc
 
 ## <a name="quickstarts"></a>Snabbstarter
 
-| Snabbstart | Beskrivning |
+| Snabbstart | Description |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Du kan använda pgAdmin för att ansluta till servern och fören klar skapandet, underhållet och användningen av databas objekt.|
 |[psql i Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Den här artikeln visar hur du kör [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) i [Azure Cloud Shell](../cloud-shell/overview.md) för att ansluta till servern och sedan köra instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. Du kan köra **psql** om det är installerat i utvecklings miljön|
@@ -44,7 +44,6 @@ PostgreSQL ger möjlighet att utöka funktionerna i databasen med hjälp av till
 - [Postgres 11-tillägg](./concepts-extensions.md#postgres-11-extensions)
 - [Postgres 10-tillägg](./concepts-extensions.md#postgres-10-extensions)
 - [Postgres 9,6-tillägg](./concepts-extensions.md#postgres-96-extensions)
-- [Postgres 9,5-tillägg](./concepts-extensions.md#postgres-95-extensions)
 
 Mer information finns i [så här använder du postgresql-tillägg på en enskild server](concepts-extensions.md).
 

@@ -2,13 +2,13 @@
 title: Azure VMware-lösnings gränser
 description: Begränsningar i Azure VMware-lösningen.
 ms.topic: include
-ms.date: 03/16/2021
-ms.openlocfilehash: 0e2359d951f5348b69e95ab7fa046981b2b7b32d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: 997a5ae96ff30226d055b7b966b128d7ec0ae5bd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622239"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582772"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md -->
 
@@ -19,7 +19,7 @@ I följande tabell beskrivs de maximala gränserna för Azure VMware-lösningen.
 | Kluster per privat moln | 12 |
 | Minsta antal noder per kluster | 3 |
 | Maximalt antal noder per kluster | 16 |
-| Noder per privat moln | 64 |
+| Noder per privat moln | 96 |
 | vCenter per privat moln | 1  |
 | HCX plats par | 3 med Advanced Edition, 10 med Enterprise Edition |
 | AVS-ExpressRoute högsta länkade SDDCs | 4 |

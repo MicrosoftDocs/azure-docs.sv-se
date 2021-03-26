@@ -3,16 +3,16 @@ title: HTTP-tillägg-protokollet – Azure
 description: I den här artikeln får du lära dig att använda HTTP-tilläggsprogram för att skicka meddelanden mellan Live Video Analytics-modulen och AI-eller CV-modulen.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: c3a9b5b70467479fdb9b1473a1f6738eaa8a7e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455898"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565749"
 ---
 # <a name="http-extension-protocol"></a>Protokoll för HTTP-tillägg
 
-Med live video analys på IoT Edge kan du utöka medie diagrammets bearbetnings funktioner via en [nod i diagram tillägget](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept). Om du använder HTTP-tilläggsbegäranden som tilläggsprovider är kommunikationen mellan Live Video Analytics-modulen och din AI-eller ka-modul över HTTP
+Med live video analys på IoT Edge kan du utöka medie diagrammets bearbetnings funktioner via en [nod i diagram tillägget](./media-graph-extension-concept.md). Om du använder HTTP-tilläggsbegäranden som tilläggsprovider är kommunikationen mellan Live Video Analytics-modulen och din AI-eller ka-modul över HTTP
 
 I den här artikeln får du lära dig att använda HTTP-tilläggsprogram för att skicka meddelanden mellan Live Video Analytics-modulen och AI-eller CV-modulen. 
 
@@ -87,11 +87,11 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-Vi rekommenderar starkt att svaren returneras med giltiga JSON-dokument efter det företablerade schemat som definierats enligt [schema objekt modellen för härledning av metadata](/azure/media-services/live-video-analytics-edge/inference-metadata-schema). Detta säkerställer bättre samverkan med andra komponenter och möjliga framtida funktioner som läggs till i modulen för video analys i real tid.
+Vi rekommenderar starkt att svaren returneras med giltiga JSON-dokument efter det företablerade schemat som definierats enligt [schema objekt modellen för härledning av metadata](./inference-metadata-schema.md). Detta säkerställer bättre samverkan med andra komponenter och möjliga framtida funktioner som läggs till i modulen för video analys i real tid.
 
 Om din modul returnerar ett svar där innehålls typen inte är "Application/JSON", kodar live video analys meddelandet som ett bas 64-innehåll och serialiserar det som en ogenomskinlig JSON-nyttolast.
 
-Om din modul returnerar ett svar med innehålls typen "Application/JSON", men JSON-schemat inte följer det schema för härlednings-metadata som beskrivs nedan, vidarebefordras meddelande nytto lasten via pipelinen, men interoperabiliteten kommer att minska. I det [här](/azure/media-services/live-video-analytics-edge/inference-metadata-schema) avsnittet finns detaljerad information om ett schema för data härlednings metadata.
+Om din modul returnerar ett svar med innehålls typen "Application/JSON", men JSON-schemat inte följer det schema för härlednings-metadata som beskrivs nedan, vidarebefordras meddelande nytto lasten via pipelinen, men interoperabiliteten kommer att minska. I det [här](./inference-metadata-schema.md) avsnittet finns detaljerad information om ett schema för data härlednings metadata.
 
 > [!NOTE]
 > Om modulen inte genererar något resultat ska den returnera HTTP 204-statuskod (inget innehåll) med en tom svars text. Live Video Analytics kommer att förstå detta som ett tomt resultat och vidarebefordrar inte händelsen i pipelinen.

@@ -6,22 +6,22 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565647"
+ms.locfileid: "105608535"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
 Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub. Om du inte redan har gjort det, måste du bekanta dig med de grundläggande [import begreppen](import-concepts.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Åtkomst till en IoT Hub med enhets uppdatering för IoT Hub aktive rad](create-device-update-account.md). Vi rekommenderar att du använder en S1-nivå (standard) eller högre för IoT Hub. 
+* [Åtkomst till en IoT Hub med enhets uppdatering för IoT Hub aktive rad](create-device-update-account.md). 
 * En IoT-enhet (eller Simulator) etablerad för enhets uppdatering i IoT Hub.
    * Om du använder en riktig enhet behöver du en uppdaterings avbildnings fil för avbildnings uppdatering eller [apt manifest fil](device-update-apt-manifest.md) för paket uppdatering.
-* [PowerShell 5](/powershell/scripting/install/installing-powershell) eller senare.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) eller senare (inklusive Linux, MacOS och Windows-installationer)
 * Webbläsare som stöds:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome

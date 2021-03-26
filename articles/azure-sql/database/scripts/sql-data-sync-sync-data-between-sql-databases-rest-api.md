@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ef2823b870f76922dd0dc157341aea9b502fb4bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565547"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565919"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>Använd REST API för att synkronisera data mellan flera databaser 
 
@@ -31,7 +31,7 @@ En översikt över SQL Data Sync finns i [synkronisera data i flera moln-och lok
 
 ## <a name="create-sync-group"></a>Skapa sync-grupp
 
-Använd mallen [skapa eller uppdatera](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) för att skapa en Sync-grupp.
+Använd mallen [skapa eller uppdatera](/rest/api/sql/syncgroups/createorupdate) för att skapa en Sync-grupp.
  
 När du skapar en Sync-grupp ska du inte skicka i Sync-schemat (table\column) och inte skicka i masterSyncMemberName, eftersom det inte finns table\column information ännu i den här tidssynkroniserings gruppen.
 
@@ -91,7 +91,7 @@ Status kod: 201
 
 ## <a name="create-sync-member"></a>Skapa synkronisera medlem
 
-Använd mallen [skapa eller uppdatera](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) för att skapa en synkroniserad medlem.
+Använd mallen [skapa eller uppdatera](/rest/api/sql/syncmembers/createorupdate) för att skapa en synkroniserad medlem.
 
 Exempel förfrågan om att skapa en synkroniserad medlem:
 
@@ -151,7 +151,7 @@ Status kod: 201
 
 Uppdatera schemat med följande mallar när synkroniseringsresursen har skapats.
 
-Använd schema mal len [Uppdatera hubb](https://docs.microsoft.com/rest/api/sql/syncgroups/refreshhubschema)  för att uppdatera schemat för Hub-databasen. 
+Använd schema mal len [Uppdatera hubb](/rest/api/sql/syncgroups/refreshhubschema)  för att uppdatera schemat för Hub-databasen. 
 
 Exempel förfrågan om att uppdatera ett Hubbs databas schema: 
 
@@ -165,17 +165,17 @@ Status kod: 200
 
 Status kod: 202
 
-Använd mallen för att visa en [lista med nav scheman](https://docs.microsoft.com/rest/api/sql/syncgroups/listhubschemas) för att Visa Hub-databasschemat. 
+Använd mallen för att visa en [lista med nav scheman](/rest/api/sql/syncgroups/listhubschemas) för att Visa Hub-databasschemat. 
 
-Använd mallen [Uppdatera medlems schema](https://docs.microsoft.com/rest/api/sql/syncmembers/refreshmemberschema) för att uppdatera medlems databasschemat. 
+Använd mallen [Uppdatera medlems schema](/rest/api/sql/syncmembers/refreshmemberschema) för att uppdatera medlems databasschemat. 
 
-Använd en [lista över medlems schema](https://docs.microsoft.com/rest/api/sql/syncmembers/listmemberschemas) mal len för att lista medlems databasschemat. 
+Använd en [lista över medlems schema](/rest/api/sql/syncmembers/listmemberschemas) mal len för att lista medlems databasschemat. 
 
 Fortsätt bara till nästa steg när schemat har uppdaterats. 
 
 ## <a name="update-sync-group"></a>Uppdatera Sync-grupp 
 
-Använd mallen [skapa eller uppdatera](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) för att uppdatera din Sync-grupp.
+Använd mallen [skapa eller uppdatera](/rest/api/sql/syncgroups/createorupdate) för att uppdatera din Sync-grupp.
 
 Uppdatera Sync-gruppen genom att ange synkroniseringsschemat. Inkludera schemat och masterSyncMemberName, vilket är det namn som innehåller det schema som du vill använda. 
 
@@ -232,7 +232,7 @@ Exempel svar för uppdatering av Sync-grupp:
 ```
 ## <a name="update-sync-member"></a>Uppdatera synkronisera medlem
 
-Använd mallen [skapa eller uppdatera](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) för att uppdatera din synkroniserade medlem.
+Använd mallen [skapa eller uppdatera](/rest/api/sql/syncmembers/createorupdate) för att uppdatera din synkroniserade medlem.
 
 Exempel förfrågan om uppdatering av en synkroniserad medlem: 
 
@@ -291,7 +291,7 @@ Status kod: 201
 
 ## <a name="trigger-sync"></a>Utlös synkronisering
 
-Använd [Sync](https://docs.microsoft.com/rest/api/sql/syncgroups/triggersync) -mallen för att utlösa en synkroniseringsåtgärd.
+Använd [Sync](/rest/api/sql/syncgroups/triggersync) -mallen för att utlösa en synkroniseringsåtgärd.
 
 Exempel förfrågan om att utlösa synkroniseringsåtgärden: 
 

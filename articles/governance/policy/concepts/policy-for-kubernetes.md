@@ -3,12 +3,12 @@ title: Lär dig Azure Policy för Kubernetes
 description: Lär dig hur Azure Policy använder Rego och öppna princip agenten för att hantera kluster som kör Kubernetes i Azure eller lokalt.
 ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 4a6ca7fb5086401cab58d4bfb6a412089c11ef05
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868162"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564313"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Förstå Azure Policy för Kubernetes-kluster
 
@@ -61,7 +61,7 @@ Följande allmänna begränsningar gäller för Azure Policy-tillägget för Kub
 
 Följande begränsningar gäller endast för Azure Policy-tillägget för AKS:
 
-- [AKS Pod-säkerhetsprincipen](../../../aks/use-pod-security-policies.md) och Azure policy-tillägget för AKS kan inte både aktive ras. Mer information finns i [säkerhets begränsning för AKS-Pod](../../../aks/use-pod-security-on-azure-policy.md#limitations).
+- [AKS Pod-säkerhetsprincipen](../../../aks/use-pod-security-policies.md) och Azure policy-tillägget för AKS kan inte både aktive ras. Mer information finns i [säkerhets begränsning för AKS-Pod](../../../aks/use-azure-policy.md).
 - Namn områden som undantas automatiskt av Azure Policy tillägg för utvärdering: _Kube-system_, _Gatekeeper-system_ och _AKS-Periscope_.
 
 ## <a name="recommendations"></a>Rekommendationer
@@ -201,7 +201,7 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
 1. Installera [Helm 3](https://v3.helm.sh/docs/intro/install/).
 
-1. Ditt Kubernetes-kluster har Aktiver ATS för Azure-bågen. Mer information finns i [onboarding a Kubernetes Cluster to Azure Arc](../../../azure-arc/kubernetes/connect-cluster.md).
+1. Ditt Kubernetes-kluster har Aktiver ATS för Azure-bågen. Mer information finns i [onboarding a Kubernetes Cluster to Azure Arc](../../../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
 1. Ha det fullständigt kvalificerade Azure-resurs-ID: t för Azure Arc-Kubernetes-klustret.
 

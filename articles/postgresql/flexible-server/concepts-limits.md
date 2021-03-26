@@ -1,17 +1,17 @@
 ---
 title: Gränser – Azure Database for PostgreSQL-flexibel Server
 description: Den här artikeln beskriver gränser i Azure Database for PostgreSQL-flexibel Server, till exempel antalet anslutnings-och lagrings motor alternativ.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 9039bbf006d5e5a677247771346a3a6b43781da2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594945"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605407"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Gränser i Azure Database for PostgreSQL-flexibel Server
 

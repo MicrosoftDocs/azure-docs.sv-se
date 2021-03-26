@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 14b2c1f98ae977548edb635b8a8a7a956b3f2dd7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 6b8d3afc214f6b78fcc11b3592cd51dadf37bf96
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023783"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564168"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Guide för migrering: MySQL till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -162,7 +162,7 @@ Mer information om de här problemen och specifika steg för att minimera dem fi
 
 Mer hjälp om hur du slutför det här migreringsprocessen finns i följande resurser, som har utvecklats för att ge stöd för ett verkligt migrerings projekt.
 
-| Rubrik/länk     | Beskrivning    |
+| Rubrik/länk     | Description    |
 | ---------------------------------------------- | ---------------------------------------------------- |
 | [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som gör det lättare att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process. |
 
@@ -172,7 +172,7 @@ Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras
 
 - Se till att ta en titt på den [totala kostnaden för total ägande kostnad (TCO) i Azure](https://aka.ms/azure-tco) för att beräkna de kostnads besparingar du kan inse genom att migrera dina arbets belastningar till Azure.
 
-- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
 - Mer information om andra biflyttnings guider finns i [databas migrering](https://datamigration.microsoft.com/). 
 

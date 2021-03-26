@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176628"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608800"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Självstudie: skapa Apache Spark jobb definition i Synapse Studio
 
@@ -25,8 +25,11 @@ Den här självstudien omfattar följande uppgifter:
 > - Skapa en Apache Spark jobb definition för PySpark (python)
 > - Skapa en Apache Spark jobb definition för Spark (Scala)
 > - Skapa en Apache Spark jobb definition för .NET Spark (C#/F #)
+> - Skapa jobb definition genom att importera en JSON-fil
+> - Exportera en Apache Spark jobb definitions fil till lokal plats
 > - Skicka in en Apache Spark jobb definition som ett batch-jobb
 > - Lägg till en Apache Spark jobb definition i pipeline
+
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -36,6 +39,7 @@ Innan du börjar med den här självstudien måste du uppfylla följande krav:
 * En server lös Apache Spark pool.
 * Ett ADLS Gen2 lagrings konto. Du måste vara **data deltagare i Storage BLOB-data** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
 * Om du inte vill använda arbets ytans standard lagring länkar du det obligatoriska ADLS Gen2 lagrings kontot i Synapse Studio. 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Skapa en Apache Spark jobb definition för PySpark (python)
 
@@ -160,6 +164,57 @@ I det här avsnittet skapar du en Apache Spark jobb definition för .NET Spark (
 
       ![publicera dotNet-definition](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>Skapa Apache Spark jobb definition genom att importera en JSON-fil
+
+ Du kan importera en befintlig lokal JSON-fil till Azure Synapse-arbetsytan från **Åtgärds** -menyn i Apache Spark jobb definitions Utforskaren för att skapa en ny Apache Spark jobb definition.
+
+ ![Skapa import definition](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ Den Spark-jobbets definition är helt kompatibel med livy-API: et. Du kan lägga till ytterligare parametrar för andra livy [-egenskaper (livy-dokument-REST API (Apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) i den lokala JSON-filen. Du kan också ange parametrarna för Spark-konfigurationen i egenskapen config som visas nedan. Sedan kan du importera JSON-filen tillbaka för att skapa en ny Apache Spark jobb definition för batch-jobbet. Exempel-JSON för import av Spark-definition:
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![andra egenskaper för livy](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>Exportera en befintlig Apache Spark jobb definitions fil
+
+ Du kan exportera befintliga Apache Spark jobb definitions filer till lokala från **åtgärder** -menyn (...) i Utforskaren. Du kan uppdatera JSON-filen för ytterligare livy-egenskaper och importera den igen för att skapa en ny jobb definition om det behövs.
+
+ ![Skapa export definition](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![Skapa export definition 2](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Skicka in en Apache Spark jobb definition som ett batch-jobb
 
 När du har skapat en Apache Spark jobb definition kan du skicka den till en Apache Spark-pool. Se till att du är **lagrings BLOB-Datadeltagaren** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
@@ -202,6 +257,7 @@ I det här avsnittet lägger du till en Apache Spark jobb definition i pipeline.
      ![Lägg till i pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![Lägg till i pipeline2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>Nästa steg
 

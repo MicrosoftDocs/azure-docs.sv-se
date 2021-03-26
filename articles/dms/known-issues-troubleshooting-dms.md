@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 785567685b77183df0f212897b923d911ac045f6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962288"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567315"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Felsök vanliga Azure Database Migration Service problem och fel
 
@@ -102,7 +102,7 @@ När du försöker ansluta till källan i guiden Azure Database Migration Servic
 
 | Orsak         | Lösning    |
 | ------------- | ------------- |
-| När du använder [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [kräver](./tutorial-sql-server-azure-sql-online.md) Azure Database migration service etablering av tre tjänst slut punkter i det Virtual Network undernät som är associerat med tjänsten:<br> --Service Bus slut punkt<br> --Lagrings slut punkt<br> --Slut punkt för mål databas (t. ex. SQL-slutpunkt, Cosmos DB slut punkt)<br><br><br><br><br> | [Aktivera](./tutorial-sql-server-azure-sql-online.md) de tjänst slut punkter som krävs för ExpressRoute-anslutning mellan källa och Azure Database migration service. <br><br><br><br><br><br><br><br> |
+| När du använder [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [kräver](./tutorial-sql-server-to-azure-sql.md) Azure Database migration service etablering av tre tjänst slut punkter i det Virtual Network undernät som är associerat med tjänsten:<br> --Service Bus slut punkt<br> --Lagrings slut punkt<br> --Slut punkt för mål databas (t. ex. SQL-slutpunkt, Cosmos DB slut punkt)<br><br><br><br><br> | [Aktivera](./tutorial-sql-server-to-azure-sql.md) de tjänst slut punkter som krävs för ExpressRoute-anslutning mellan källa och Azure Database migration service. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Timeout-fel vid låsning vid migrering av en MySQL-databas till Azure DB för MySQL
 
@@ -126,7 +126,7 @@ När du försöker ansluta Azure Database Migration Service till SQL Server käl
 
 ## <a name="additional-known-issues"></a>Ytterligare kända problem
 
-* [Kända problem/migrerings begränsningar med online-migreringar till Azure SQL Database](./known-issues-azure-sql-online.md)
+* [Kända problem/migrerings begränsningar med online-migreringar till Azure SQL Database](./index.yml)
 * [Kända problem/migrerings begränsningar med online-migreringar till Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Kända problem/migrerings begränsningar med online-migreringar till Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 

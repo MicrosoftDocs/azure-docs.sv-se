@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40fff49aa3ed46417cdd9a6190f928707e41accb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018332"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608620"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: vanliga frågor
 
@@ -58,6 +58,10 @@ Du behöver två åtkomst nycklar om du vill uppdatera (återskapa) dem utan att
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Sparar du mina lagrings konto nycklar?
 Din lagrings konto nyckel används för att skapa kortsiktiga åtkomsttoken för Microsoft Genomics tjänsten för att läsa dina indatafiler och skriva utdatafilerna. Standard varaktigheten för token är 48 timmar. Varaktigheten för token kan ändras med `-sas/--sas-duration` alternativet för kommandot Submit. värdet anges i timmar.
+
+## <a name="does-microsoft-genomics-store-customer-data"></a>Lagrar Microsoft Genomics kund information?
+
+Nej. Microsoft Genomics lagrar ingen kund information.
 
 ## <a name="what-genome-references-can-i-use"></a>Vilka användar-och användar referenser kan jag använda?
 

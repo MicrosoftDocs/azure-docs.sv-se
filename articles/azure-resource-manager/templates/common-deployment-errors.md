@@ -4,12 +4,12 @@ description: Beskriver hur du löser vanliga fel när du distribuerar resurser t
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 6cb2b611e694c6b72e063f3d8ab05b7667a34e29
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888863"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564355"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Felsöka vanliga fel i Azure-distributioner med Azure Resource Manager
 
@@ -23,7 +23,7 @@ Om du letar efter information om en felkod och informationen inte finns i den h�
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Följ namngivnings begränsningar för lagrings konton. | [Matcha lagrings konto namn](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | Kontrol lera egenskaperna för tillgängligt lagrings konto. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Det finns inga tillgängliga resurser för klustret eller regionen eller så stöds inte den begärda virtuella dator storleken. Försök igen vid ett senare tillfälle eller begär en annan VM-storlek. | [Etablerings-och tilldelnings problem för Linux](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md), [etablering och tilldelning av Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) och [fel sökning av allokeringsfel](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | Det finns inga tillgängliga resurser för klustret eller regionen eller så stöds inte den begärda virtuella dator storleken. Försök igen vid ett senare tillfälle eller begär en annan VM-storlek. | [Etablerings-och tilldelnings problem för Linux](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux), [etablering och tilldelning av Windows](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) och [fel sökning av allokeringsfel](/troubleshoot/azure/virtual-machines/allocation-failure)|
 | AnotherOperationInProgress | Vänta tills den samtidiga åtgärden har slutförts. | |
 | AuthorizationFailed | Ditt konto eller tjänstens huvud namn har inte tillräcklig åtkomst för att slutföra distributionen. Kontrol lera vilken roll ditt konto tillhör och dess åtkomst till distributions omfånget.<br><br>Du kan få det här felet när en resurs leverantör som krävs inte är registrerad. | [Azure RBAC (rollbaserad åtkomstkontroll)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Lös registrering](error-register-resource-provider.md) |
 | BadRequest | Du skickade distributions värden som inte matchar det som förväntas av Resource Manager. Kontrol lera meddelandet om inre status för att få hjälp med fel sökning. | [Referera till mallar](/azure/templates/) och [platser som stöds](resource-location.md) |

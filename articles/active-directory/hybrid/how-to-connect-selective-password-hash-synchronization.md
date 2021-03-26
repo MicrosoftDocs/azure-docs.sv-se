@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103603219"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604676"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Konfiguration av konfiguration av selektivt lösen ord för Azure AD Connect
 
@@ -36,6 +36,9 @@ För att minska den administrativa ansträngningen för konfigurationen bör du 
 
 > [!Important]
 > Med något av de valda konfigurations alternativen utförs en nödvändig inledande synkronisering (fullständig synkronisering) för att tillämpa ändringarna automatiskt under nästa synkronisering.
+
+> [!Important]
+> Konfigurera selektiv lösenordsautentisering för hash direkt påverkar tillbakaskrivning av lösen ord. Lösen ords ändringar eller lösen ords återställningar som initieras i Azure Active Directory bara skriva tillbaka till lokala Active Directory om användaren är i omfång för Lösenordssynkronisering. 
 
 ### <a name="the-admindescription-attribute"></a>Attributet adminDescription
 Båda scenarierna förlitar sig på att ange adminDescription-attributet för användare till ett angivet värde.  Detta gör att reglerna kan tillämpas och är det som gör selektiv PHS arbete.
@@ -134,6 +137,9 @@ När alla konfigurationer har slutförts måste du redigera attributet **adminDe
    
   ![Redigera attribut](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+Du kan också använda följande PowerShell-kommando för att redigera en användares **adminDescription** -attribut:
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>Exkluderade användare är större än inkluderade användare
 I följande avsnitt beskrivs hur du aktiverar det selektiva lösen ordets hash-synkronisering när antalet användare som ska **undantas** är **större** än antalet användare som ska **tas med**.
@@ -202,7 +208,9 @@ När alla konfigurationer har slutförts måste du redigera attributet **adminDe
 
   ![Redigera attribut](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ Du kan också använda följande PowerShell-kommando för att redigera en användares **adminDescription** -attribut:
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>Nästa steg
 - [Vad är synkronisering av lösenordshash?](whatis-phs.md)

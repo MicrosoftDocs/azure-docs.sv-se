@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 11118c9bd745480dc88380e718a9ab348ab1a3e3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97508279"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606954"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Felsöka Azure Dedicated HSM-tjänsten
 
-Azure Dedicated HSM-tjänsten har två distinkta facets. För det första är registreringen och distributionen i Azure av HSM-enheterna med underliggande nätverks komponenter. För det andra är konfigurationen av HSM-enheterna som förberedelse för användning/integrering med en specifik arbets belastning eller ett program. Även om Thales Luna-nätverks HSM-enheter är desamma i Azure eftersom du skulle köpa direkt från Thales, så är det faktum att de är en resurs i Azure som skapar unika överväganden. Dessa överväganden och eventuella fel söknings insikter eller bästa praxis finns dokumenterade här för att säkerställa hög insyn och åtkomst till viktig information. När tjänsten används är den slutgiltiga informationen tillgänglig via support förfrågningar till antingen Microsoft eller Thales direkt. 
+Azure Dedicated HSM-tjänsten har två distinkta facets. För det första är registreringen och distributionen i Azure av HSM-enheterna med underliggande nätverks komponenter. För det andra är konfigurationen av HSM-enheterna som förberedelse för användning/integrering med en specifik arbets belastning eller ett program. Även om [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) -enheter är desamma i Azure eftersom du skulle köpa direkt från Thales, skapar det faktum att de är en resurs i Azure som skapar unika överväganden. Dessa överväganden och eventuella fel söknings insikter eller bästa praxis finns dokumenterade här för att säkerställa hög insyn och åtkomst till viktig information. När tjänsten används är den slutgiltiga informationen tillgänglig via support förfrågningar till antingen Microsoft eller Thales direkt. 
 
 > [!NOTE]
 > Det bör noteras att innan en konfiguration utförs på en nyligen distribuerad HSM-enhet, bör den uppdateras med eventuella relevanta korrigeringar. En nödvändig korrigering är [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) i Thales support portal som åtgärdar ett problem där systemet slutar svara under omstarten.
 
 ## <a name="hsm-registration"></a>HSM-registrering
 
-Dedikerad HSM är inte tillgängligt för användning eftersom den levererar maskin varu resurser i molnet och är därför en värdefull resurs som behöver skydda sig. Vi använder därför en allowlisting-process via e-post med hjälp av HSMrequest@microsoft.com . 
+Dedikerad HSM är inte tillgängligt för användning eftersom den levererar maskin varu resurser i molnet och är därför en värdefull resurs som behöver skydda sig. Vi använder därför en allowlisiting-process via e-post med hjälp av HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Få åtkomst till dedikerad HSM
 
-Om du tror att dedikerad HSM passar dina nyckel lagrings krav kan du skicka e-post HSMrequest@microsoft.com för att begära åtkomst. Disponera ditt program, de regioner som du vill ha som HSM: er och den volym av HSM: er som du letar efter. Om du arbetar med en Microsoft-representant, till exempel en konto ansvarig eller en moln lösnings arkitekt, kan du till exempel ta med dem i alla förfrågningar.
+Först fråga dig själv vilka användnings fall du har som inte kan åtgärdas av [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) eller [Azure Managed HSM](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/overview). Om du tror att endast dedikerad HSM passar dina nyckel lagrings krav och e-post HSMrequest@microsoft.com för att begära åtkomst. Disponera dina program och användnings fall, de regioner som du vill ha HSM: er och den volym av HSM: er som du letar efter. Om du arbetar med en Microsoft-representant, till exempel en konto ansvarig eller en moln lösnings arkitekt, kan du till exempel ta med dem i alla förfrågningar.
 
 ## <a name="hsm-provisioning"></a>HSM-etablering
 
@@ -56,7 +56,7 @@ Standard ARM-mallen som tillhandahålls för distribution har HSM-och ExpressRou
 
 ### <a name="hsm-deployment-using-terraform"></a>HSM-distribution med terraform
 
-Ett fåtal kunder har använt terraform som en automatiserings miljö i stället för ARM-mallar som anges vid registrering för den här tjänsten. HSM: er kan inte distribueras på det här sättet, men beroende nätverks resurser kan. Terraform har en modul för att anropa en minimal ARM-mall som JUT har HSM-distributionen.  I den här situationen bör det vara viktigt att se till att nätverks resurserna, till exempel den begärda ExpressRoute-gatewayen, är fullständigt distribuerade innan du distribuerar HSM: er. Följande CLI-kommando kan användas för att testa slutförd distribution och integrerad som krävs. Ersätt vinkel paren och placera innehavarna för din egen namn. Du bör söka efter resultatet "provisioningState lyckades"
+Ett fåtal kunder har använt terraform som en automatiserings miljö i stället för ARM-mallar som anges vid registrering för den här tjänsten. HSM: er kan inte distribueras på det här sättet, men beroende nätverks resurser kan. Terraform har en modul för att anropa en minimal ARM-mall som bara har HSM-distributionen.  I den här situationen bör det vara viktigt att se till att nätverks resurserna, till exempel den begärda ExpressRoute-gatewayen, är fullständigt distribuerade innan du distribuerar HSM: er. Följande CLI-kommando kan användas för att testa slutförd distribution och integrerad som krävs. Ersätt vinkel paren och placera innehavarna för din egen namn. Du bör söka efter resultatet "provisioningState lyckades"
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
@@ -66,10 +66,10 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 Distributioner kan inte utföras om du överskrider 2 HSM: er per Stamp och 4 HSM: er per region. Undvik den här situationen genom att se till att du har tagit bort resurser från tidigare misslyckade distributioner innan du distribuerar igen. Se "Hur gör jag för att se HSM: er" nedan för att kontrol lera resurser. Om du tror att du behöver överskrida den här kvoten, som främst finns där, så kan du e-posta HSMrequest@microsoft.com med information.
 
 ### <a name="deployment-failure-based-on-capacity"></a>Distributions problem baserat på kapacitet
-När en viss stämpel eller region blir full, är det nästan alla kostnads fria HSM: er, vilket kan leda till distributions problem. Varje stämpel har 11 HSM: er tillgängligt för kunder, vilket innebär 22 per region. Det finns även 3 reserv delar och 1 testen het i varje stämpel. Om du tror att du har nått gränsen och sedan skickar e-post HSMrequest@microsoft.com för information om fyllnads nivån för vissa stämplar.
+När en viss stämpel eller region blir full, är det nästan alla kostnads fria HSM: er, vilket kan leda till distributions problem. Varje stämpel har 12 HSM: er tillgängliga för kunder, vilket innebär 24 per region. Det finns även 2 reserv delar och 1 testen het i varje stämpel. Om du tror att du har nått gränsen och sedan skickar e-post HSMrequest@microsoft.com för information om fyllnads nivån för vissa stämplar.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hur gör jag för att se HSM: er vid etablering?
-Eftersom en dedikerad HSM är en allowlisted-tjänst betraktas den som en "dold typ" i Azure Portal. Om du vill se HSM-resurserna måste du markera kryss rutan Visa dolda typer som visas nedan. NIC-resursen följer alltid HSM och är en bra plats för att ta reda på IP-adressen för HSM innan du använder SSH för att ansluta.
+Eftersom dedikerad HSM är en allowlisted-tjänst betraktas den som en "dold typ" i Azure Portal. Om du vill se HSM-resurserna måste du markera kryss rutan Visa dolda typer som visas nedan. NIC-resursen följer alltid HSM och är en bra plats för att ta reda på IP-adressen för HSM innan du använder SSH för att ansluta.
 
 ![Skärm bild som markerar kryss rutan Visa dolda typer](./media/troubleshoot/hsm-provisioned.png)
 
@@ -112,7 +112,7 @@ Att ange Felaktiga autentiseringsuppgifter för HSM: er kan ha skadliga konsekve
 Följande är en situation där konfigurations fel antingen är gemensamma eller har en effekt som är betrodd för att anropa:
 
 ### <a name="hsm-documentation-and-software"></a>HSM-dokumentation och program vara
-Program vara och dokumentation för Thales SafeNet Luna 7 HSM-enheter är inte tillgängliga från Microsoft och måste laddas ned från Thales direkt. Registrering krävs med det Thales-kund-ID som togs emot under registrerings processen. Enheterna, som tillhandahålls av Microsoft, har program version 7,2 och version 7.0.3 av inbyggd program vara. Tidigt i 2020 Thalese-dokumentationen offentlig och hittar den [här](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).  
+Program vara och dokumentation för [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) -enheter är inte tillgängliga från Microsoft och måste laddas ned från Thales direkt. Registrering krävs med det Thales-kund-ID som togs emot under registrerings processen. Enheterna, som tillhandahålls av Microsoft, har program version 7,2 och version 7.0.3 av inbyggd program vara. Tidigt i 2020 Thalese-dokumentationen offentlig och hittar den [här](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).  
 
 ### <a name="hsm-networking-configuration"></a>Konfiguration av HSM-nätverk
 
@@ -120,7 +120,7 @@ Var försiktig när du konfigurerar nätverk i HSM.  HSM har en anslutning via E
 
 ### <a name="hsm-device-reboot"></a>Omstart av HSM-enhet
 
-Vissa konfigurations ändringar kräver att HSM är i ström spar läge eller startas om. Microsoft-testning av HSM i Azure fastställde att det vid vissa tillfällen då omstart kan sluta svara. Indirekt är att en supportbegäran måste skapas i Azure Portal begär hård omstart och det kan ta upp till 48 timmar innan det är en manuell process i ett Azure-datacenter.  Undvik den här situationen genom att se till att du har distribuerat start korrigerings filen som är tillgänglig från Thales direkt. Se [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) i Thales Luna Network HSM 7,2 downloads för en rekommenderad korrigerings fil för ett problem där systemet slutar svara under omstarten (Obs! Du måste ha registrerat dig i Thales support Portal för att kunna ladda ned).
+Vissa konfigurations ändringar kräver att HSM är i ström spar läge eller startas om. Microsoft-testning av HSM i Azure fastställde att det vid vissa tillfällen då omstart kan sluta svara. Indirekt är att en supportbegäran måste skapas i Azure Portal begär hård omstart och det kan ta upp till 48 timmar innan det är en manuell process i ett Azure-datacenter.  Undvik den här situationen genom att se till att du har distribuerat start korrigerings filen som är tillgänglig från Thales direkt. Se [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) i Thales Luna 7 HSM 7,2-nedladdningar för en rekommenderad korrigerings fil för ett problem där systemet slutar svara under omstarten (Obs! Du måste ha registrerat dig på [Thales kund support Portal](https://supportportal.thalesgroup.com/csm) för att kunna hämta).
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS certifikat är inte synkroniserade
 En klient kan förlora anslutningen till en HSM när ett certifikat upphör att gälla eller har skrivits över genom konfigurations uppdateringar. Klient konfigurationen för certifikat utbyte bör tillämpas igen med varje HSM.

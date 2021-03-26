@@ -7,20 +7,22 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 640b9b40295ae9b9aea865f7b6159da6ff4a3251
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: feb2c83ee7edc3ab22b7b8031e6eb07ef65f9908
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98898315"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558949"
 ---
 # <a name="media-services-migration-code-sample-comparison"></a>Exempel jämförelse för Media Services migrations kod
 
 ![logo typ för migrations guide](./media/migration-guide/azure-media-services-logo-migration-guide.svg)
 
 <hr color="#5ea0ef" size="10">
+
+## <a name="compare-the-sdks"></a>Jämför SDK: er
 
 Du kan använda några av våra kod exempel för att jämföra hur saker görs mellan SDK: er.
 
@@ -34,7 +36,3 @@ Följande tabell är en lista över exempel för jämförelse mellan v2 och v3 f
 |Skicka ett jobb|[v2 .NET-exempel](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET-exempel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Visar hur du först skapar en transformering och sedan skickar ett jobb.|
 |Publicera en till gång med AES-kryptering |1. skapa `ContentKeyAuthorizationPolicyOption`<br/>2. skapa `ContentKeyAuthorizationPolicy`<br/>3. skapa `AssetDeliveryPolicy`<br/>4. skapa `Asset` och ladda upp innehåll eller skicka `Job` och Använd `OutputAsset`<br/>5. associera `AssetDeliveryPolicy` med `Asset`<br/>6. skapa `ContentKey`<br/>7. Koppla `ContentKey` till `Asset`<br/>8. skapa `AccessPolicy`<br/>9. skapa `Locator`<br/><br/>[v2 .NET-exempel](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. skapa `ContentKeyPolicy`<br/>2. skapa `Asset`<br/>3. Ladda upp innehåll eller Använd `Asset` som `JobOutput`<br/>4. skapa `StreamingLocator`<br/><br/>[v3 .NET-exempel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |Hämta jobb information och hantera jobb |[Hantera jobb med v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Hantera jobb med v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
-
-## <a name="next-steps"></a>Nästa steg
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

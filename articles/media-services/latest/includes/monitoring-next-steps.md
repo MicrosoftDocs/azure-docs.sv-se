@@ -4,17 +4,17 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9a05dcda4bec6a79941caa6e67b1ebdf61873577
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dfa1642908bbfa6f20ead0526a1a6bcd2f0180bb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103464530"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609057"
 ---
 <!-- Monitoring next steps -->
 ### <a name="concepts"></a>Begrepp
 
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource) .
+- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../../azure-monitor/essentials/monitor-azure-resource.md) .
 
 ### <a name="how-to-guides"></a>Guider
 

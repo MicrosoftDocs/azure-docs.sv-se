@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702461"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567958"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Funktions luckor mellan Azure Media Services v2 och v3
 
@@ -48,6 +48,6 @@ V3-API: et har följande funktions luckor med v2-API: et. Några av de avancerad
 
 - Lagrings kryptering på klient sidan för att skydda till gångar i rest har tagits bort i v3-API: et och ersatts av Storage Service Encryption för vilande data. V3-API: erna fortsätter att fungera med befintliga lagrings krypterade till gångar men tillåter inte att nya skapas.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="terminology-and-entity-changes"></a>Ändringar av terminologi och enhet
 
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
+Se [terminologi och enhets](migrate-v-2-v-3-differences-terminology.md) ändringar för ytterligare ändringar i API: et.

@@ -3,12 +3,12 @@ title: Konfigurera Azure Backup-rapporter
 description: Konfigurera och Visa rapporter för Azure Backup med Log Analytics och Azure-arbetsböcker
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509377"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562332"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurera Azure Backup-rapporter
 
@@ -148,7 +148,7 @@ Det finns två typer av princip för att visa tillgängliga vyer:
 
 * **Princip efter tids period**: om du använder den här vyn kan du identifiera hur många objekt som har minst en genomförd säkerhets kopiering under en viss dag och hur många som inte hade haft en lyckad säkerhets kopiering under den dagen. Du kan klicka på en rad om du vill se information om alla säkerhets kopierings jobb som har utlösts på den valda dagen. Observera att om du ökar tidsintervallet till ett större värde, till exempel de senaste 60 dagarna, återges rutnätet i veckovis vy och visar antalet objekt som har minst en genomförd säkerhets kopiering på varje dag under den givna veckan. På samma sätt finns det en månatlig vy för större tidsintervall.
 
-När det gäller objekt som har säkerhetskopierats varje vecka hjälper detta rutnät dig att identifiera alla objekt som har minst en genomförd säkerhets kopiering under den aktuella veckan. För ett större tidsintervall, till exempel de senaste 120 dagarna, återges rutnätet i månatlig vy och visar antalet objekt som har minst en genomförd säkerhets kopiering varje vecka under den månaden. Se [konventioner som används i Backup-rapporter](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) för mer information om dagliga, veckovis och månatliga vyer.
+När det gäller objekt som har säkerhetskopierats varje vecka hjälper detta rutnät dig att identifiera alla objekt som har minst en genomförd säkerhets kopiering under den aktuella veckan. För ett större tidsintervall, till exempel de senaste 120 dagarna, återges rutnätet i månatlig vy och visar antalet objekt som har minst en genomförd säkerhets kopiering varje vecka under den månaden. Se [konventioner som används i Backup-rapporter](#conventions-used-in-backup-reports) för mer information om dagliga, veckovis och månatliga vyer.
 
 ![Princip efter tids period](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ När du har skapat Logic-appen måste du auktorisera anslutningar till Azure Mon
 
 I Backup-rapporter används [system funktioner på Azure Monitor loggar](backup-reports-system-functions.md). Dessa funktioner fungerar på data i rå Azure Backup tabeller i LA och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor. 
 
-Om du vill skapa egna rapporterings arbets böcker med hjälp av säkerhets kopierings rapporter som en bas, kan du gå till säkerhets kopierings rapporter, klicka på **Redigera** överst i rapporten och Visa/redigera frågorna som används i rapporterna. Läs mer om hur du skapar anpassade rapporter i [dokumentationen för Azure-arbetsböcker](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) . 
+Om du vill skapa egna rapporterings arbets böcker med hjälp av säkerhets kopierings rapporter som en bas, kan du gå till säkerhets kopierings rapporter, klicka på **Redigera** överst i rapporten och Visa/redigera frågorna som används i rapporterna. Läs mer om hur du skapar anpassade rapporter i [dokumentationen för Azure-arbetsböcker](../azure-monitor/visualize/workbooks-overview.md) . 
 
 ## <a name="export-to-excel"></a>Exportera till Excel
 

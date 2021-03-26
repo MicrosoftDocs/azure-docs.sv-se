@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 895b9081ba7eb6d7e8b5d3304d37168e4064ed39
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101690897"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560054"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Förskotts aviseringar för planerade underhålls händelser (för hands version)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -89,5 +89,5 @@ I följande tabell visas ytterligare meddelanden som kan skickas medan underhål
 
 - [Underhålls period](maintenance-window.md)
 - [Vanliga frågor och svar om underhålls fönstret](maintenance-window-faq.yml)
-- [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)
-- [E-posta Azure Resource Manager-rollen](../../azure-monitor/platform/action-groups.md#email-azure-resource-manager-role)
+- [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md)
+- [E-posta Azure Resource Manager-rollen](../../azure-monitor/alerts/action-groups.md#email-azure-resource-manager-role)

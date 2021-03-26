@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: c952fe33b434aac972be6a1eb03b63698eb64fc6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 995914fab0e7112327ebf6ab8e32fb67181f481e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782324"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608926"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Felsöka Azure Migrate-installationen och identifieringen
 
@@ -260,6 +260,34 @@ Vanliga fel för identifiering av appar sammanfattas i tabellen.
 | 10007: det gick inte att bearbeta identifierade metadata. | Ett fel uppstod vid försök att deserialisera JSON. | Kontakta Microsoft Support för att få en lösning. |
 | 10008: det gick inte att skapa en fil på servern. | Problemet kan uppstå på grund av ett internt fel. | Kontakta Microsoft Support för att få en lösning. |
 | 10009: det gick inte att skriva identifierade metadata till en fil på servern. | Problemet kan uppstå på grund av ett internt fel. | Kontakta Microsoft Support för att få en lösning. |
+
+## <a name="common-sql-server-instances-and-database-discovery-errors"></a>Vanliga SQL Server-instanser och databas identifierings fel
+
+Azure Migrate stöder identifiering av SQL Server instanser och databaser som körs på lokala datorer med hjälp av Azure Migrate: identifiering och bedömning. SQL-identifiering stöds för närvarande endast för VMware. Kom igång genom att läsa igenom [identifierings](tutorial-discover-vmware.md) kursen.
+
+Vanliga fel i SQL-identifiering sammanfattas i tabellen.
+
+| **Fel** | **Orsak** | **Åtgärd** |
+|--|--|--|
+|30000: autentiseringsuppgifterna som är kopplade till den här SQL Server inte fungerade.|Antingen manuellt associerade autentiseringsuppgifter är ogiltiga eller automatiskt associerade autentiseringsuppgifter har inte längre åtkomst till SQL Server.|Lägg till autentiseringsuppgifter för SQL Server på installationen och vänta tills nästa SQL-identifierings cykel eller framtvinga uppdatering.|
+|30001: det går inte att ansluta till SQL Server från enheten.|1. det finns inga nätverks insikter för att SQL Server på enheten.<br/>2. brand vägg som blockerar anslutningen mellan SQL Server och-enheten.|1. gör SQL Server som kan kommas åt från enheten.<br/>2. Tillåt att inkommande anslutningar från enheten SQL Server.|
+|30003: certifikatet är inte betrott.|Ett betrott certifikat är inte installerat på den dator som kör SQL Server.|Konfigurera ett betrott certifikat på servern. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153616)|
+|30004: otillräcklig behörighet.|Det här felet kan inträffa på grund av brist på behörigheter som krävs för att skanna SQL Server instanser. |Tilldela sysadmin-rollen till de autentiseringsuppgifter/konton som anges på enheten för att identifiera SQL Server instanser och databaser. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153511)|
+|30005: SQL Server inloggningen kunde inte ansluta på grund av ett problem med standard huvud databasen.|Antingen är själva databasen ogiltig eller så har inloggningen ingen KOPPLINGs behörighet för databasen.|Använd ALTER LOGIn för att ange standard databasen till Master-databasen.<br/>Tilldela sysadmin-rollen till de autentiseringsuppgifter/konton som anges på enheten för att identifiera SQL Server instanser och databaser. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153615)|
+|30006: SQL Server inloggning kan inte användas med Windows-autentisering.|1. inloggningen kan vara en SQL Server inloggning, men servern accepterar bara Windows-autentisering.<br/>2. du försöker ansluta med SQL Server autentisering men den inloggning som används finns inte på SQL Server.<br/>3. inloggningen kan använda Windows-autentisering, men inloggningen är ett okänt Windows-huvudobjekt. Ett okänt Windows-huvud innebär att inloggningen inte kan verifieras av Windows. Detta kan bero på att Windows-inloggningen är från en obetrodd domän.|Om du försöker ansluta med SQL Server autentisering kontrollerar du att SQL Server har kon figurer ATS i blandat autentiseringsläge och att SQL Server inloggning finns.<br/>Om du försöker ansluta med Windows-autentisering kontrollerar du att du är korrekt inloggad i rätt domän. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153421)|
+|30007: lösen ordet har upphört att gälla.|Kontots lösen ord har upphört att gälla.|SQL Server inloggnings lösen ord kan ha gått ut, ange lösen ordet på nytt och/eller utöka lösen ordets förfallo datum. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153419)|
+|30008: lösen ordet måste ändras.|Kontots lösen ord måste ändras.|Ändra lösen ordet för den autentiseringsuppgift som angavs för SQL Server identifiering. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153318)|
+|30009: ett internt fel uppstod.|Ett internt fel inträffade vid identifiering av SQL Server instanser och databaser. |Kontakta Microsoft-supporten om problemet kvarstår.|
+|30010: inga databaser hittades.|Det gick inte att hitta några databaser från den valda Server instansen.|Tilldela sysadmin-rollen till de autentiseringsuppgifter/konton som anges på enheten för att identifiera SQL-databaser.|
+|30011: ett internt fel uppstod vid utvärdering av en SQL-instans eller databas.|Ett internt fel uppstod när utvärderingen utfördes.|Kontakta Microsoft-supporten om problemet kvarstår.|
+|30012: SQL-anslutning misslyckades.|1. brand väggen på servern har nekat anslutningen.<br/>2. SQL Server Browser tjänsten (tjänsten SQLBrowser) har inte startats.<br/>3. SQL Server svarade inte på klientbegäran eftersom servern förmodligen inte har startats.<br/>4. SQL Server-klienten kan inte ansluta till servern. Det här felet kan inträffa på grund av att servern inte har kon figurer ATS för att acceptera fjärr anslutningar.<br/>5. SQL Server-klienten kan inte ansluta till servern. Felet kan bero på att klienten inte kan matcha namnet på servern eller att Server namnet är felaktigt.<br/>6. TCP-eller namngivna pipe-protokollen är inte aktiverade.<br/>7. det angivna SQL Server instans namnet är inte giltigt.|Använd [den här](https://go.microsoft.com/fwlink/?linkid=2153317) interaktiva användar guiden för att felsöka anslutnings problemet. Vänta i 24 timmar efter att du har granskat guiden för de data som ska uppdateras i tjänsten. Kontakta Microsoft-supporten om problemet kvarstår.|
+|30013: ett fel uppstod när en anslutning till SQL Server-instansen upprättades.|1. SQL Server namn kan inte matchas från enheten.<br/>2. SQL Server tillåter inte fjärr anslutningar.|Om du kan pinga SQL Server från-enheten, vänta 24 timmar innan du kan kontrol lera om det här problemet löses automatiskt. Kontakta Microsoft-supporten om den inte gör det. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153316)|
+|30014: användar namn eller lösen ord är ogiltigt.| Det här felet kan inträffa på grund av ett autentiseringsfel som inbegriper ett felaktigt lösen ord eller användar namn.|Ange en autentiseringsuppgift med ett giltigt användar namn och lösen ord. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153315)|
+|30015: ett internt fel uppstod när SQL-instansen skulle identifieras.|Ett internt fel uppstod när SQL-instansen skulle identifieras.|Kontakta Microsoft-supporten om problemet kvarstår.|
+|30016: det gick inte att ansluta till instansen% instance; på grund av en tids gräns.| Detta kan inträffa om brand väggen på servern vägrar att ansluta.|Kontrol lera om brand väggen på SQL Server har kon figurer ATS för att acceptera anslutningar. Om felet kvarstår kontaktar du Microsoft-supporten. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2153611)|
+|30017: internt fel uppstod.|Ohanterat undantag.|Kontakta Microsoft-supporten om problemet kvarstår.|
+|30018: internt fel uppstod.|Ett internt fel uppstod när data samlades in, till exempel Temp DB-storlek, fil storlek osv för SQL-instansen.|Vänta 24 timmar och kontakta Microsoft-supporten om problemet kvarstår.|
+|30019: ett internt fel uppstod.|Ett internt fel inträffade vid insamling av prestanda mått som minnes användning, osv. för en databas eller instans.|Vänta 24 timmar och kontakta Microsoft-supporten om problemet kvarstår.|
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 2744d51b6d68ed494050be10a9f0e4d1f59cdc49
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204073"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566361"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>Konfigurera Azure-SSIS integration runtime för verksamhets kontinuitet och haveri beredskap (BCDR) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102204073"
 
 Azure SQL Database/Hanterad instans och SQL Server Integration Services (SSIS) i Azure Data Factory (ADF) kan kombineras som den rekommenderade lösningen all-Platform as a Service (PaaS) för SQL Server migrering. Du kan distribuera dina SSIS-projekt till SSIS Catalog-databasen (SSISDB) som hanteras av Azure SQL Database/Hanterad instans och köra dina SSIS-paket på Azure SSIS integration Runtime (IR) i ADF.
 
-För verksamhets kontinuitet och haveri beredskap (BCDR) kan Azure SQL Database/Hanterad instans konfigureras med en [grupp för geo-replikering/redundans](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)där SSISDB i en primär Azure-region med Läs-och skriv åtkomst (primär roll) kontinuerligt replikeras till en sekundär region med skrivskyddad åtkomst (sekundär roll). När en katastrof uppstår i den primära regionen utlöses en redundansväxling, där den primära och sekundära SSISDBs kommer att byta roll.
+För verksamhets kontinuitet och haveri beredskap (BCDR) kan Azure SQL Database/Hanterad instans konfigureras med en [grupp för geo-replikering/redundans](../azure-sql/database/auto-failover-group-overview.md)där SSISDB i en primär Azure-region med Läs-och skriv åtkomst (primär roll) kontinuerligt replikeras till en sekundär region med skrivskyddad åtkomst (sekundär roll). När en katastrof uppstår i den primära regionen utlöses en redundansväxling, där den primära och sekundära SSISDBs kommer att byta roll.
 
 För BCDR kan du också konfigurera ett dubbelt vänte läge för Azure SSIS-IR som fungerar i Sync med Azure SQL Database/Hanterad instans redundans grupp. På så sätt kan du ha ett par med att köra Azure-SSIS IRs som vid en specifik tidpunkt bara kan komma åt den primära SSISDB för att hämta och köra paket, samt köra loggar för Skriv paket (primär roll), medan den andra bara kan göra samma för paket som distribuerats någon annan stans, till exempel i Azure Files (sekundär roll). När SSISDB-redundans inträffar, kommer den primära och sekundära Azure-SSIS-IRs också att växla roller och om båda körs är det en stillestånds tid på nästan noll.
 
@@ -39,7 +39,7 @@ Om du vill konfigurera ett dubbelt standby Azure-SSIS IR-par som fungerar i synk
 
    När [du väljer att använda SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) på sidan **distributions inställningar** i installations fönstret för **integration runtime** , markerar du kryss rutan **Använd dubbla vänte läge Azure-SSIS integration runtime par med SSISDB redundans** . Ange ett namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRs för **dubbla standby-par**. När du har skapat den primära Azure-SSIS IR startas den och ansluts till en primär SSISDB som skapas för din räkning med Läs-och Skriv behörighet. Om du precis har konfigurerat om den måste du starta om den.
 
-1. Med hjälp av Azure Portal kan du kontrol lera om den primära SSISDB har skapats på **översikts** sidan för den primära Azure SQL Database servern. När den har skapats kan du [skapa en failover-grupp för dina primära och sekundära Azure SQL Database-servrar och lägga till SSISDB till den](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) på sidan **grupper för växling vid fel** . När du har skapat redundansväxlingen kan du kontrol lera om den primära SSISDB har repliker ATS till en sekundär med skrivskyddad åtkomst på sidan **Översikt** på den sekundära Azure SQL Database servern.
+1. Med hjälp av Azure Portal kan du kontrol lera om den primära SSISDB har skapats på **översikts** sidan för den primära Azure SQL Database servern. När den har skapats kan du [skapa en failover-grupp för dina primära och sekundära Azure SQL Database-servrar och lägga till SSISDB till den](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#2---create-the-failover-group) på sidan **grupper för växling vid fel** . När du har skapat redundansväxlingen kan du kontrol lera om den primära SSISDB har repliker ATS till en sekundär med skrivskyddad åtkomst på sidan **Översikt** på den sekundära Azure SQL Database servern.
 
 1. Med hjälp av Azure Portal/ADF UI kan du skapa en annan Azure-SSIS IR med din sekundära Azure SQL Database-Server som värd för SSISDB i den sekundära regionen. Detta är din sekundära Azure-SSIS IR. För fullständig BCDR, se till att alla resurser som den är beroende av också skapas i den sekundära regionen, till exempel Azure Storage för att lagra anpassade installations skript/-filer, ADF för Orchestration/schema körningar osv.
 
@@ -51,13 +51,13 @@ Om du vill konfigurera ett dubbelt standby Azure-SSIS IR-par som fungerar i synk
 
 1. Om du [använder ADF för Orchestration/schema körningar](./how-to-invoke-ssis-package-ssis-activity.md), se till att alla relevanta ADF-pipelines med kör SSIS-paket-aktiviteter och associerade utlösare kopieras till din sekundära ADF med utlösarna inaktiverade initialt. När SSISDB-redundansväxlingen inträffar måste du aktivera dem.
 
-1. Du kan [testa Azure SQL Database redundans-gruppen](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#3---test-failover) och kontrol lera [Azure-SSIS IR övervaknings sidan på ADF-portalen](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) om ditt primära och sekundära Azure-SSIS-IRS har växlat roller. 
+1. Du kan [testa Azure SQL Database redundans-gruppen](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#3---test-failover) och kontrol lera [Azure-SSIS IR övervaknings sidan på ADF-portalen](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) om ditt primära och sekundära Azure-SSIS-IRS har växlat roller. 
 
 ## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-managed-instance-failover-group"></a>Konfigurera ett dubbelt standby Azure-SSIS IR-par med en failover-grupp för Azure SQL-hanterad instans
 
 Följ stegen nedan om du vill konfigurera ett dubbelt standby Azure-SSIS IR-par som fungerar med synkronisering med en failover-grupp för Azure SQL-hanterad instans.
 
-1. Med hjälp av Azure Portal kan du [skapa en grupp för växling vid fel för dina primära och sekundära Azure SQL-hanterade instanser](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal) på sidan **grupper** i den primära Azure SQL-hanterade instansen.
+1. Med hjälp av Azure Portal kan du [skapa en grupp för växling vid fel för dina primära och sekundära Azure SQL-hanterade instanser](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal) på sidan **grupper** i den primära Azure SQL-hanterade instansen.
 
 1. Med hjälp av Azure Portal/ADF UI kan du skapa en ny Azure-SSIS IR med din primära Azure SQL-hanterade instans som värd för SSISDB i den primära regionen. Om du har en befintlig Azure-SSIS IR som redan är kopplad till SSIDB som finns i den primära Azure SQL-hanterade instansen och den fortfarande körs, måste du först stoppa den för att konfigurera om den. Detta är din primära Azure-SSIS IR.
 
@@ -112,7 +112,7 @@ Följ stegen nedan om du vill konfigurera ett dubbelt standby Azure-SSIS IR-par 
 
 1. Om du [använder ADF för Orchestration/schema körningar](./how-to-invoke-ssis-package-ssis-activity.md), se till att alla relevanta ADF-pipelines med kör SSIS-paket-aktiviteter och associerade utlösare kopieras till din sekundära ADF med utlösarna inaktiverade initialt. När SSISDB-redundansväxlingen inträffar måste du aktivera dem.
 
-1. Du kan [testa din Azure SQL-grupp för hanterade instanser](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal#test-failover) och kontrol lera [Azure-SSIS IR övervaknings sidan på ADF-portalen](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) om ditt primära och sekundära Azure-SSIS-IRS har bytt roll. 
+1. Du kan [testa din Azure SQL-grupp för hanterade instanser](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal#test-failover) och kontrol lera [Azure-SSIS IR övervaknings sidan på ADF-portalen](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) om ditt primära och sekundära Azure-SSIS-IRS har bytt roll. 
 
 ## <a name="attach-a-new-azure-ssis-ir-to-existing-ssisdb-hosted-by-azure-sql-databasemanaged-instance"></a>Bifoga en ny Azure-SSIS IR till befintliga SSISDB som hanteras av Azure SQL Database/hanterade instansen
 

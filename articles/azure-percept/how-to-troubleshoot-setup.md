@@ -1,28 +1,28 @@
 ---
-title: Felsök problem under den här insikts upplevelsen av Azure percept DK
-description: Få fel söknings tips för några av de vanligaste problemen som påträffas under den här insikts upplevelsen
+title: Felsöka problem i installations upplevelsen för Azure percept DK
+description: Få fel söknings tips för några av de vanligaste problemen som påträffas under installations upplevelsen
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: d71cfa6ba52052e4b68175be84934c8b4294ed25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ce13cedff9afc25900c0bf75359ae49cc29fe19
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101663815"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608501"
 ---
-# <a name="azure-percept-dk-onboarding-experience-troubleshooting-guide"></a>Fel söknings guide för Azure percept DK onboarding
+# <a name="azure-percept-dk-setup-experience-troubleshooting-guide"></a>Fel söknings guide för Azure percept DK-installation
 
-Här följer några problem som du kan stöta på när du använder Azure percept DK-onboarding. Om du har använt stegen i den här hand boken kvarstår problemet fortfarande. Kontakta Azures kund support.
+I tabellen nedan finns lösningar på vanliga problem som kan uppstå under installationen av [Azure PERCEPT DK](./quickstart-percept-dk-set-up.md). Kontakta Azures kund support om problemet kvarstår.
 
 |Problem|Anledning|Lösning|
 |:-----|:------|:----------|
-|När du ansluter till Azure-kontots registrerings sidor eller Azure Portal kan du logga in automatiskt med ett cachelagrat konto. Om detta inte är det konto du avsåg att använda kan det leda till en upplevelse som är inkonsekvent med dokumentationen.|Detta beror vanligt vis på att en inställning i webbläsaren är "kom ihåg" ett konto som du tidigare har använt.|På sidan Azure klickar du på det övre högra hörnet på sidan där det visar ditt konto namn och klickar sedan på Logga ut. Du kommer sedan att kunna logga in med rätt konto.|
-|Azure percept DK Access Point-nätverket (SCZ-xxxx) visas inte i listan över tillgängliga Wi-Fi nätverk.|Detta är vanligt vis ett tillfälligt problem som löses med en liten stund.|Vänta tills nätverket visas. Om den inte är längre än 15 minuter startar du om enheten.|
-|Anslutningen till Azure percept DK-åtkomst punkten kopplas ofta från.|Detta kan bero på en dålig anslutning mellan enheten och värddatorn. Det kan också orsakas av störningar från andra Wi-Fi anslutningar på värddatorn.|Se till att antennerna är korrekt kopplade till dev-paketet. Om dev-paketet är långt bort från värddatorn kan du försöka att flytta det närmare. Stäng av alla andra Internet anslutningar, till exempel LTE/5G, om de körs på värddatorn.|
-|Värddatorn visar en säkerhets varning om anslutningen till Azure percept DK-åtkomst punkten.|Detta är ett känt problem som kommer att åtgärdas i en senare uppdatering.|Det är säkert att gå vidare genom onboarding-upplevelsen över devkit Wi-Fi åtkomst punkt.|
-|Azure percept DK Access Point (SCZ-xxxx)-nätverket visas i listan över nätverk, men det går inte att ansluta.|Detta kan bero på ett tillfälligt fel i devkit Wi-Fi åtkomst punkt.|Starta om devkit och försök igen.|
-|Det går inte att ansluta till ett Wi-Fi nätverk under installations miljön.|Det Wi-Fi nätverket måste för närvarande ha Internet anslutning för att vi ska kunna kommunicera med Azure. EAP [PEAP/MSCHAP], inbyggda portaler och Enterprise EAP-TLS-anslutning stöds inte för närvarande.|Se till att typen Wi-Fi nätverk som du ansluter stöds och är ansluten till Internet.|
+|När du ansluter till Azure-kontots registrerings sidor eller Azure Portal kan du logga in automatiskt med ett cachelagrat konto. Om detta inte är det konto som du vill använda kan det leda till en upplevelse som är inkonsekvent med dokumentationen.|Detta beror vanligt vis på att en inställning i webbläsaren är "kom ihåg" ett konto som du tidigare har använt.|På sidan Azure klickar du på ditt konto namn i det övre högra hörnet och väljer **Logga ut**. Du kommer sedan att kunna logga in med rätt konto.|
+|Azure percept DK Wi-Fi Access Point (SCZ-xxxx eller APD-xxxx) visas inte i listan över tillgängliga Wi-Fi nätverk.|Detta är vanligt vis ett tillfälligt problem som löses inom 15 minuter.|Vänta tills nätverket visas. Om den inte visas efter mer än 15 minuter startar du om enheten.|
+|Anslutningen till Azure percept DK Wi-Fi åtkomst punkten kopplas ofta från.|Detta kan bero på en dålig anslutning mellan enheten och värddatorn. Det kan också orsakas av störningar från andra Wi-Fi anslutningar på värddatorn.|Se till att antennerna är korrekt kopplade till dev-paketet. Om dev-paketet är långt bort från värddatorn kan du försöka att flytta det närmare. Stäng av alla andra Internet anslutningar, till exempel LTE/5G, om de körs på värddatorn.|
+|Värddatorn visar en säkerhets varning om anslutningen till Azure percept DK-åtkomst punkten.|Detta är ett känt problem som kommer att åtgärdas i en senare uppdatering.|Det är säkert att gå vidare i installations miljön.|
+|Azure percept DK Wi-Fi åtkomst punkten (SCZ-xxxx eller APD-xxxx) visas i listan över nätverk, men det går inte att ansluta.|Detta kan bero på ett tillfälligt fel i dev-paketets Wi-Fi åtkomst punkt.|Starta om dev kit och försök igen.|
+|Det går inte att ansluta till ett Wi-Fi nätverk under installations miljön.|Wi-Fi nätverket måste för närvarande ha Internet anslutning för att kunna kommunicera med Azure. EAP [PEAP/MSCHAP], inbyggda portaler och Enterprise EAP-TLS-anslutning stöds inte för närvarande.|Se till att din Wi-Fi nätverks typ stöds och att den är ansluten till Internet.|

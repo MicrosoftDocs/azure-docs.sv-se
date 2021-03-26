@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 939d9f5f4cafc7a08ceb99368e8ede7a81b1eac0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 38b85748ad810002dc9cfd456ef6c138e8732ece
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110533"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605492"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Använda sys_schema för prestanda justering och databas underhåll i Azure Database for MySQL
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -84,4 +84,4 @@ Index är fantastiska verktyg för att förbättra Läs prestanda, men de medfö
 I sammanfattning är sys_schema ett utmärkt verktyg för både prestanda justering och databas underhåll. Se till att dra nytta av den här funktionen i din Azure Database for MySQL. 
 
 ## <a name="next-steps"></a>Nästa steg
-- Om du vill hitta peer-svar på dina mest aktuella frågor eller publicera en ny fråga/svar kan du besöka [Microsoft Q&en fråge sida](/answers/topics/azure-database-mysql.html) eller [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Om du vill hitta peer-svar på dina mest aktuella frågor eller publicera en ny fråga/svar går du till [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

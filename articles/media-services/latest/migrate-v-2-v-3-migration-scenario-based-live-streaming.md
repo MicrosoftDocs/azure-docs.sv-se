@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 322a599d5ad02ddcf19c61261d968d098b6c9871
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598294"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563135"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Vägledning för Live streaming-scenario-baserad migrering
 
@@ -70,7 +70,3 @@ Se begrepp för Live-händelser, självstudier och hur du vägleder dig nedan f�
 ## <a name="samples"></a>Exempel
 
 Du kan också [jämföra v2-och v3-koden i kod exemplen](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Nästa steg
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

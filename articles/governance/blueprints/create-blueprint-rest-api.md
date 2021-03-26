@@ -3,12 +3,12 @@ title: 'Snabb start: skapa en skiss med REST API'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter med hjälp av REST API.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915649"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558983"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snabb start: definiera och tilldela en Azure Blueprint med REST API
 
@@ -329,7 +329,7 @@ I varje REST API-URI finns det variabler som används och som du måste ersätta
 - `{YourMG}` – Ersätt med ID för din hanteringsgrupp
 - `{subscriptionId}` – Ersätt med ditt prenumerations-ID
 
-1. Ge Azure Blueprint-tjänstobjektet rollen **Ägare** för målprenumerationen. AppId är static ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), men tjänstens huvud namns-ID varierar av klienten. Information kan begäras för din klientorganisation med hjälp av följande REST API. Den använder [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), som har olika auktorisering.
+1. Ge Azure Blueprint-tjänstobjektet rollen **Ägare** för målprenumerationen. AppId är static ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), men tjänstens huvud namns-ID varierar av klienten. Information kan begäras för din klientorganisation med hjälp av följande REST API. Den använder [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist), som har olika auktorisering.
 
    - REST API-URI
 
@@ -337,7 +337,7 @@ I varje REST API-URI finns det variabler som används och som du måste ersätta
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. Kör skissdistributionen genom att tilldela den till en prenumeration. Eftersom parametrarna **contributors** och **owners** kräver en matris med objectIds för huvudobjekten för att rolltilldelningen ska beviljas använder du [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) för att samla in objectIds för användning i **begärandetexten** för dina egna användare, grupper eller tjänstobjekt.
+1. Kör skissdistributionen genom att tilldela den till en prenumeration. Eftersom parametrarna **contributors** och **owners** kräver en matris med objectIds för huvudobjekten för att rolltilldelningen ska beviljas använder du [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) för att samla in objectIds för användning i **begärandetexten** för dina egna användare, grupper eller tjänstobjekt.
 
    - REST API-URI
 
