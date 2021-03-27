@@ -2,15 +2,15 @@
 title: Skapa och distribuera mallspecifikationer
 description: Beskriver hur du skapar specifikationer för mallar och delar dem med andra användare i din organisation.
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043906"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626092"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Specifikationer för Azure Resource Manager mall (för hands version)
 
@@ -25,9 +25,16 @@ Om du vill distribuera en mall använder du standard Azure-verktyg som PowerShel
 
 ## <a name="why-use-template-specs"></a>Varför ska jag använda mall-specifikationer?
 
-Om du för närvarande har dina mallar i ett GitHub-lagrings platsen eller lagrings konto kan du köra flera utmaningar när du försöker dela och använda mallarna. För att en användare ska kunna distribuera den måste mallen antingen vara lokal eller URL: en för mallen måste vara offentligt tillgänglig. För att komma runt den här begränsningen kan du dela kopior av mallen med användare som behöver distribuera den, eller öppna åtkomst till lagrings platsen eller lagrings kontot. När användare äger lokala kopior av en mall kan de här kopiorna gå till och med den ursprungliga mallen. När du gör en lagrings platsen eller ett lagrings konto offentligt tillgängligt kan du tillåta oönskade användare att komma åt mallen.
+Mall-specifikationer ger följande fördelar:
 
-Fördelen med att använda mall-specifikationer är att du kan skapa kanoniska mallar och dela dem med team i din organisation. Mall-specifikationerna är säkra eftersom de är tillgängliga för att Azure Resource Manager för distribution, men inte tillgängliga för användare utan Azure RBAC-behörighet. Användare behöver bara Läs behörighet till mallen mall för att distribuera dess mall, så att du kan dela mallen utan att tillåta andra att ändra den.
+* Du använder standard ARM-mallar för din mall specifikation.
+* Du hanterar åtkomst via Azure RBAC, i stället för SAS-token.
+* Användare kan distribuera en malls specifikation utan att ha Skriv behörighet till mallen.
+* Du kan integrera mallen i den befintliga distributions processen, till exempel PowerShell-skript eller DevOps-pipeline.
+
+Med specifikationer för mallar kan du skapa kanoniska mallar och dela dem med team i din organisation. Mall-specifikationerna är säkra eftersom de är tillgängliga för att Azure Resource Manager för distribution, men inte tillgängliga för användare utan rätt behörighet. Användare behöver bara Läs behörighet till mallen mall för att distribuera dess mall, så att du kan dela mallen utan att tillåta andra att ändra den.
+
+Om du för närvarande har dina mallar i ett GitHub-lagrings platsen eller lagrings konto kan du köra flera utmaningar när du försöker dela och använda mallarna. Om du vill distribuera mallen måste du antingen göra mallen offentligt tillgänglig eller hantera åtkomst med SAS-token. För att undvika den här begränsningen kan användare skapa lokala kopior, vilket kan ta en stund från din ursprungliga mall. Mall-specifikationer fören klar delning av mallar.
 
 Mallarna som du lägger till i en mall specifikation bör verifieras av administratörer i organisationen för att följa organisationens krav och vägledning.
 

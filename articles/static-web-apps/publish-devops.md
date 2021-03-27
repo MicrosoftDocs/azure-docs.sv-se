@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: af359734ff5bfe90dedbb7f8389aecdc6e056654
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: 701f999427d743c18f5dbcadb00cf303f97a8f53
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105543574"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627339"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Självstudie: publicera Azures statiska Web Apps med Azure-DevOps
 
@@ -36,35 +36,13 @@ I de här självstudierna får du lära dig att:
 
 1. Navigera till din Azure DevOps-lagringsplats.
 
-1. Använd en befintlig databas eller _Importera en lagrings plats_ på det sätt som visas nedan.
+1. Välj **Importera** för att börja importera ett exempel program.
   
     :::image type="content" source="media/publish-devops/devops-repo.png" alt-text="DevOps lagrings platsen":::
 
-1. Skapa en ny fil för din frontend-webbapp.
+1. I **klon-URL** anger du `https://github.com/staticwebdev/vanilla-api.git` .
 
-1. Kopiera och klistra in följande HTML-kod i den nya filen:
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-  
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles.css">
-      <title>Hello World!</title>
-    </head>
-  
-    <body>
-      <main>
-        <h1>Hello World!</h1>
-      </main>
-    </body>
-  
-    </html>
-    ```
-
-1. Spara filen.
+1. Välj **Importera**.
 
 ## <a name="create-a-static-web-app"></a>Skapa en statisk webbapp
 
@@ -85,7 +63,9 @@ I de här självstudierna får du lära dig att:
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Distributions information – övrigt":::
 
-1. När distributionen är klar väljer du **Hantera distributions-token**.
+1. När distributionen har slutförts går du till den nya statiska Web Apps resursen.
+
+1. Välj **Hantera distributions-token**.
 
 1. Kopiera **distributions-token** och klistra in den i en text redigerare för användning på en annan skärm.
 
@@ -96,16 +76,17 @@ I de här självstudierna får du lära dig att:
 
 ## <a name="create-the-pipeline-task-in-azure-devops"></a>Skapa pipeline-uppgiften i Azure DevOps
 
-1. Navigera till det Azure DevOps-projekt som skapades tidigare.
+1. Navigera till den Azure DevOps-lagringsplats som skapades tidigare.
 
-2. Skapa en ny **versions pipeline** och välj **Konfigurera build**.
+1. Välj **Konfigurera build**.
 
     :::image type="content" source="media/publish-devops/azdo-build.png" alt-text="Bygg-pipeline":::
 
-3. Kopiera och klistra in följande YAML i din pipeline.
+1. På skärmen *Konfigurera din pipeline* väljer du **starter pipeline**.
 
-    > [!NOTE]
-    > Värdena som anges för _app_location_,_api_location_ och _output_location_ måste ändras för din app.  
+    :::image type="content" source="media/publish-devops/configure-pipeline.png" alt-text="Konfigurera pipeline":::
+
+1. Kopiera och klistra in följande YAML i din pipeline.
 
     ```yaml
     trigger:
@@ -117,40 +98,47 @@ I de här självstudierna får du lära dig att:
     steps:
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: frontend 
-          api_location: api
-          output_location: build
+          app_location: "/" 
+          api_location: "api"
+          output_location: ""
         env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 
-    Konfigurera Azures statiska webb program indata enligt mappstrukturen för ditt program.
+    > [!NOTE]
+    > Om du inte använder exempel appen, värdena för `app_location` , `api_location` och `output_location` måste ändras för att matcha värdena i ditt program.
 
     [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
     `azure_static_web_apps_api_token`Värdet är självhanterat och konfigureras manuellt.
 
-4. Välj **variabler**.
+1. Välj **variabler**.
 
-5. Skapa en ny variabel.
+1. Skapa en ny variabel.
 
-6. Namnge variabeln **deployment_token** (matchar namnet i arbets flödet).
+1. Namnge variabeln **deployment_token** (matchar namnet i arbets flödet).
 
-7. Kopiera den Licenstoken som du tidigare klistrade in i en text redigerare.
+1. Kopiera den Licenstoken som du tidigare klistrade in i en text redigerare.
 
-8. Klistra in i fältet för distributions-token i rutan _värde_ .
+1. Klistra in i fältet för distributions-token i rutan _värde_ .
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="Variabel-token":::
 
-9. Välj **OK**.
+1. Välj **Behåll detta värde hemlighet**.
 
-10. Välj **Spara och kör** pipelinen.
+1. Välj **OK**.
+
+1. Välj **Spara** för att återgå till pipeline-yaml.
+
+1. Välj **Spara och kör** för att öppna dialog rutan _Spara och köra_ .
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="Pipeline":::
 
-11. När distributionen har slutförts går du till **Översikt över** Azures statiska Web Apps som innehåller länkar till distributions konfigurationen.
+1. Välj **Spara och kör** för att köra pipelinen.
 
-12. Välj **URL: en** för att se din nyligen distribuerade webbplats. Observera att _käll_ länken pekar på grenen och platsen för Azure DevOps-lagringsplatsen.
+1. När distributionen har slutförts går du till **Översikt över** Azures statiska Web Apps som innehåller länkar till distributions konfigurationen. Observera att _käll_ länken pekar på grenen och platsen för Azure DevOps-lagringsplatsen.
+
+1. Välj **URL: en** för att se din nyligen distribuerade webbplats.
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="Distributions plats":::
 

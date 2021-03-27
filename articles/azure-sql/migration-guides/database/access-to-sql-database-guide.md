@@ -1,6 +1,6 @@
 ---
 title: 'Åtkomst till Azure SQL Database: migrations guide'
-description: I den här guiden får du lära dig att migrera dina Microsoft Access-databaser till Azure SQL Database att använda SQL Server Migration Assistant för åtkomst (SSMA för åtkomst).
+description: I den här guiden får du lära dig hur du migrerar dina Microsoft Access-databaser till en Azure SQL-databas med hjälp av SQL Server Migration Assistant för åtkomst (SSMA för åtkomst).
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -9,137 +9,136 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 99e0fd3665a0269710a9b0994a1340745f77236f
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 48fe734b382d661f96a86ede181a1258e38120a1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027320"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626545"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Guide för migrering: åtkomst till Azure SQL Database
 
-Den här migreringsguiden lär dig att migrera dina Microsoft Access-databaser till Azure SQL Database att använda SQL Server Migration Assistant för åtkomst.
+I den här guiden får du lära dig hur du migrerar din Microsoft Access-databas till en Azure SQL Database med hjälp av SQL Server Migration Assistant för åtkomst (SSMA för åtkomst).
 
-Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
+Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill migrera din Access-databas till Azure SQL Database behöver du:
+Innan du börjar migrera din Access-databas till en SQL-databas gör du följande:
 
-- För att verifiera att din käll miljö stöds. 
-- [SQL Server Migration Assistant för åtkomst](https://www.microsoft.com/download/details.aspx?id=54255). 
-- Anslutning och tillräcklig behörighet för att få åtkomst till både källa och mål. 
-
+- Kontrol lera att käll miljön stöds. 
+- Hämta och installera [SQL Server Migration Assistant för åtkomst](https://www.microsoft.com/download/details.aspx?id=54255).
+- Se till att du har anslutning och tillräcklig behörighet för att få åtkomst till både källa och mål.
 
 ## <a name="pre-migration"></a>Före migrering
 
-När du har uppfyllt kraven, är du redo att upptäcka miljön och bedöma möjligheten för migreringen.
+När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för migreringen.
 
 
 ### <a name="assess"></a>Utvärdera 
 
-Använd SQL Server Migration Assistant (SSMA) för att få åtkomst till granskning av databas objekt och data och utvärdera databaser för migrering. 
+Använd SSMA för åtkomst för att granska databas objekt och data och utvärdera databaser för migrering. 
 
-Följ dessa steg om du vill skapa en utvärdering: 
+Gör så här för att skapa en utvärdering: 
 
-1. Öppna [SQL Server Migration Assistant för åtkomst](https://www.microsoft.com/download/details.aspx?id=54255). 
+1. Öppna [SSMA för åtkomst](https://www.microsoft.com/download/details.aspx?id=54255). 
 1. Välj **fil** och välj sedan **nytt projekt**. 
-1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan Azure SQL Database som mål för migreringen från List rutan. Välj **OK**:
+1. Ange ett projekt namn och en plats för ditt projekt och välj sedan **Azure SQL Database** som migreringsmålet i den nedrullningsbara listan. 
+1. Välj **OK**. 
 
-   ![Välj nytt projekt](./media/access-to-sql-database-guide/new-project.png)
+   ![Skärm bild av fönstret "nytt projekt" där du anger namn och plats för ditt migreringsjobb.](./media/access-to-sql-database-guide/new-project.png)
 
-1. Välj **Lägg till databaser** och välj databaser som ska läggas till i det nya projektet:
+1. Välj **Lägg till databaser** och välj sedan de databaser som ska läggas till i det nya projektet. 
 
-   ![Välj Lägg till databaser](./media/access-to-sql-database-guide/add-databases.png)
+   ![Skärm bild av fliken "Lägg till databaser" i SSMA för åtkomst.](./media/access-to-sql-database-guide/add-databases.png)
 
-1. I **Access metadata Explorer** högerklickar du på databasen och väljer sedan **Skapa rapport**. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt schemat:
+1. I fönstret **åtkomst till metadata-Utforskaren** högerklickar du på en databas och väljer sedan **Skapa rapport**. Alternativt kan du välja fliken **Skapa rapport** längst upp till höger.
 
-   ![Högerklicka på databasen och välj Skapa rapport](./media/access-to-sql-database-guide/create-report.png)
+   ![Skärm bild av kommandot "Skapa rapport" i åtkomst till metadata Explorer.](./media/access-to-sql-database-guide/create-report.png)
 
-1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av Access-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects
+1. Granska HTML-rapporten för att förstå konverterings statistiken och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av Access-objekt och förstå vilken ansträngning som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects. Exempel:
 
-   Exempelvis: `drive:\<username>\Documents\SSMAProjects\MyAccessMigration\report\report_<date>`
+   `drive:\<username>\Documents\SSMAProjects\MyAccessMigration\report\report_<date>`
 
-   ![Granska utvärderings exempel rapporten](./media/access-to-sql-database-guide/sample-assessment.png)
+   ![Skärm bild av en exempel databas rapport utvärdering i SSMA.](./media/access-to-sql-database-guide/sample-assessment.png)
 
-### <a name="validate-data-types"></a>Verifiera data typer
+### <a name="validate-the-data-types"></a>Verifiera data typerna
 
-Validera standard mappningar för data typer och ändra dem baserat på krav vid behov. Det gör du på följande sätt:
+Validera standard mappningarna för data typ och ändra dem efter behov. Så här gör du:
 
-1. Välj **verktyg** på menyn. 
-1. Välj **projekt inställningar**. 
-1. Välj fliken **typ mappningar** :
+1. I SSMA för åtkomst väljer du **verktyg** och väljer sedan **projekt inställningar**. 
+1. Välj fliken **typ mappning** . 
 
-   ![Typ mappningar](./media/access-to-sql-database-guide/type-mappings.png)
+   ![Skärm bild av fönstret "typ mappning" i SSMA för åtkomst.](./media/access-to-sql-database-guide/type-mappings.png)
 
-1. Du kan ändra typ mappningen för varje tabell genom att välja tabellen i **Access metadata Explorer**.
+1. Du kan ändra typ mappningen för varje tabell genom att välja tabell namnet i fönstret **åtkomst till metadata Explorer** .
 
 
-### <a name="convert-schema"></a>Konvertera schema
+### <a name="convert-the-schema"></a>Konvertera schemat
 
-Följ dessa steg om du vill konvertera databas objekt: 
+Gör så här om du vill konvertera databas objekt: 
 
-1. Välj **Anslut till Azure SQL Database**. 
-    1. Ange anslutnings information för att ansluta databasen i Azure SQL Database.
-    1. Välj mål SQL Database i list rutan eller ange ett nytt namn, i vilket fall en databas ska skapas på mål servern. 
-    1. Ange information om autentisering. 
-    1. Välj **Anslut**:
+1. Välj fliken **Anslut till Azure SQL Database** och gör sedan följande:
 
-   ![Ansluta till Azure SQL Database](./media/access-to-sql-database-guide/connect-to-sqldb.png)
+   a. Ange information för att ansluta till din SQL-databas.  
+   b. Välj mål-SQL-databas i list rutan. Eller så kan du ange ett nytt namn, vilket innebär att en databas skapas på mål servern.  
+   c. Ange information om autentisering.   
+   d. Välj **Anslut**.
 
-1. Högerklicka på databasen i **Access metadata Explorer** och välj **konvertera schema**. Alternativt kan du välja **konvertera schema** från det övre navigerings fältet när du har valt databasen:
+   ![Skärm bild av fönstret "Anslut till Azure SQL Database" för att ange anslutnings information.](./media/access-to-sql-database-guide/connect-to-sqldb.png)
 
-   ![Högerklicka på databasen och välj Konvertera schema](./media/access-to-sql-database-guide/convert-schema.png)
-   
+1. I fönstret **åtkomst till metadata-Utforskaren** högerklickar du på databasen och väljer sedan **konvertera schema**. Alternativt kan du välja din databas och sedan välja fliken **konvertera schema** .
 
-1. När konverteringen är klar kan du jämföra och granska de konverterade objekten till de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem utifrån rekommendationerna:
+   ![Skärm bild av kommandot "konvertera schema" i fönstret "åtkomst till metadata Explorer".](./media/access-to-sql-database-guide/convert-schema.png)
 
-   ![Konverterade objekt kan jämföras med källa](./media/access-to-sql-database-guide/table-comparison.png)
+1. När konverteringen är klar kan du jämföra de konverterade objekten med de ursprungliga objekten för att identifiera potentiella problem och åtgärda problemen utifrån rekommendationerna.
 
-   Jämför konverterad Transact-SQL-text till den ursprungliga koden och granska rekommendationerna:
+   ![Skärm bild som visar en jämförelse av de konverterade objekten till käll objekt.](./media/access-to-sql-database-guide/table-comparison.png)
 
-   ![Konverterade frågor kan jämföras med käll koden](./media/access-to-sql-database-guide/query-comparison.png)
+    Jämför den konverterade Transact-SQL-texten med den ursprungliga koden och granska rekommendationerna.
 
-1. Valfritt Om du vill konvertera ett enskilt objekt högerklickar du på objektet och väljer **konvertera schema**. Konverterade objekt visas i fetstil i **Access metadata Explorer**: 
+   ![Skärm bild som visar en jämförelse av konverterade frågor till käll koden.](./media/access-to-sql-database-guide/query-comparison.png) 
 
-   ![Fetstilta objekt i metadata Explorer har konverterats](./media/access-to-sql-database-guide/converted-items.png)
+1. Valfritt Om du vill konvertera ett enskilt objekt högerklickar du på objektet och väljer sedan **konvertera schema**. Konverterade objekt visas i fet stil i **Access metadata Explorer**: 
+
+   ![Skärm bild som visar att objekten i Access metadata Explorer har konverterats.](./media/access-to-sql-database-guide/converted-items.png)
  
-1. Välj **gransknings resultat** i fönstret utdata och granska fel i **fel listans** fönster. 
-1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Database.
+1. I fönstret **utdata** väljer du ikonen **Granska resultat** och granskar felen i fönstret med **fel listan** . 
+1. Spara projektet lokalt för en arbets schema reparation. Det gör du genom att välja **Arkiv**  >  **Spara projekt**. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du publicerar dem i SQL-databasen.
 
+## <a name="migrate-the-databases"></a>Migrera databaserna
 
-## <a name="migrate"></a>Migrera
+När du har utvärderat dina databaser och åtgärdat eventuella avvikelser kan du köra migreringsprocessen. Migrering av data är en Mass inläsnings åtgärd som flyttar data rader till en Azure SQL-databas i transaktioner. Antalet rader som ska läsas in i din SQL-databas i varje transaktion konfigureras i projekt inställningarna.
 
-När du har slutfört utvärderingen av dina databaser och åtgärdat eventuella avvikelser är nästa steg att köra migreringsprocessen. Migrering av data är en Mass inläsnings åtgärd som flyttar rader med data till Azure SQL Database i transaktioner. Antalet rader som ska läsas in i Azure SQL Database i varje transaktion konfigureras i projekt inställningarna.
-
-Följ dessa steg om du vill publicera schemat och migrera data med hjälp av SSMA för åtkomst: 
+Om du vill publicera schemat och migrera data med hjälp av SSMA för åtkomst gör du följande: 
 
 1. Om du inte redan har gjort det väljer du **Anslut till Azure SQL Database** och anger anslutnings information. 
-1. Publicera schemat: Högerklicka på databasen i **Azure SQL Database metadata Explorer** och välj **Synkronisera med databas**. Den här åtgärden publicerar MySQL-schemat till Azure SQL Database:
 
-   ![Synkronisera med databas](./media/access-to-sql-database-guide/synchronize-with-database.png)
+1. Publicera schemat. I fönstret **Azure SQL Database metadata Explorer** högerklickar du på den databas som du arbetar med och väljer sedan **Synkronisera med databas**. Den här åtgärden publicerar MySQL-schemat till SQL-databasen.
 
-   Granska mappningen mellan käll projektet och målet:
+1. I fönstret **Synkronisera med databas** granskar du mappningen mellan käll projektet och målet:
 
-   ![Granska synkroniseringen med databasen](./media/access-to-sql-database-guide/synchronize-with-database-review.png)
+   ![Skärm bild av fönstret "synkronisera med databas" för att granska synkroniseringen med databasen.](./media/access-to-sql-database-guide/synchronize-with-database-review.png)
 
-1. Migrera data: Högerklicka på databasen eller objektet som du vill migrera i **Access metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** från det övre navigerings fältet. Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar tabeller och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller:
+1. I fönstret **Öppna metadata i Utforskaren** markerar du kryss rutorna bredvid de objekt som du vill migrera. Om du vill migrera hela databasen markerar du kryss rutan bredvid databasen. 
 
-    ![Migrera data](./media/access-to-sql-database-guide/migrate-data.png)
+1. Migrera data. Högerklicka på databasen eller objektet som du vill migrera och välj sedan **migrera data**. Alternativt kan du välja fliken **migrera data** längst upp till höger.  
 
-1. När migreringen är klar kan du Visa **data flyttnings rapporten**:  
+   Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar **tabeller** och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller.
 
-    ![Migrera data granskning](./media/access-to-sql-database-guide/migrate-data-review.png)
+    ![Skärm bild av kommandot "migrera data" i fönstret "åtkomst till metadata Explorer".](./media/access-to-sql-database-guide/migrate-data.png)
 
-1. Anslut till din Azure SQL Database genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema:
+1. När migreringen är klar kan du Visa **data flyttnings rapporten**.  
 
-   ![Validera i SSMA](./media/access-to-sql-database-guide/validate-data.png)
+    ![Skärm bild av fönstret "migrera data rapport" som visar en exempel rapport för granskning.](./media/access-to-sql-database-guide/migrate-data-review.png)
 
+1. Anslut till din Azure SQL-databas med hjälp av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)och verifiera migreringen genom att granska data och schema.
 
+   ![Skärm bild av SQL Server Management Studio Object Explorer för att verifiera migreringen i SSMA.](./media/access-to-sql-database-guide/validate-data.png)
 
 ## <a name="post-migration"></a>Efter migreringen 
 
-När du har slutfört **migreringen** måste du gå igenom en serie uppgifter efter migreringen för att se till att allt fungerar så smidigt och effektivt som möjligt.
+När du har slutfört *migreringen* måste du slutföra en serie uppgifter efter migreringen för att säkerställa att allt fungerar så smidigt som möjligt.
 
 ### <a name="remediate-applications"></a>Åtgärda program
 
@@ -147,46 +146,45 @@ När data har migrerats till mål miljön måste alla program som tidigare förb
 
 ### <a name="perform-tests"></a>Utför tester
 
-Test metoden för migrering av databasen består av att utföra följande aktiviteter:
+Test metoden för migrering av databasen består av följande aktiviteter:
 
-  1. **Utveckla verifieringstester**. Om du vill testa migreringen av databasen måste du använda SQL-frågor. Du måste skapa verifierings frågorna som ska köras mot både käll-och mål databaserna. Dina verifierings frågor ska omfatta det definitions område som du har definierat.
+1. **Utveckla verifieringstester**: om du vill testa migreringen av databasen måste du använda SQL-frågor. Du måste skapa verifierings frågorna som ska köras mot både käll-och mål databaserna. Dina verifierings frågor ska omfatta det definitions område som du har definierat.
 
-  2. **Konfigurera test miljö**. Test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
+1. **Konfigurera en test miljö**: test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
 
-  3. **Kör verifierings test**. Kör verifierings testen mot källan och målet och analysera sedan resultaten.
+1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
 
-  4. **Kör prestandatester**. Kör prestandatest mot källan och målet och analysera och jämför sedan resultaten.
+1. **Kör prestandatester**: kör prestandatester mot källan och målet och analysera och jämför sedan resultaten.
+
 
 ### <a name="optimize"></a>Optimera
 
-Fasen efter migreringen är avgörande för att kunna stämma av data precisions problem och kontrol lera att de är klara, samt att lösa prestanda problem med arbets belastningen.
+Fasen efter migreringen är avgörande för att stämma av data precisions problem, kontrol lera att de är klara och åtgärda prestanda problem med arbets belastningen.
 
-Mer information om de här problemen och specifika steg för att minimera dem finns i [guiden för validering och optimering efter migrering](/sql/relational-databases/post-migration-validation-and-optimization-guide).
+Mer information om de här problemen och stegen för att minimera dem finns i guiden för [validering och optimering efter migrering](/sql/relational-databases/post-migration-validation-and-optimization-guide).
 
 ## <a name="migration-assets"></a>Migrera till gångar 
 
-Mer hjälp om hur du slutför det här migreringsprocessen finns i följande resurser, som har utvecklats för att ge stöd för ett verkligt migrerings projekt.
+Mer hjälp om hur du slutför det här scenariot för migrering finns i följande resurs. Den har utvecklats för att ge stöd till ett verkligt projekt engagemang för migrering.
 
-| **Rubrik/länk**                                                                                                                                          | **Beskrivning**                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som gör det lättare att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process. |
+| Rubrik | Beskrivning |
+| --- | --- |
+| [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Tillhandahåller rekommenderade "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för angivna arbets belastningar. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla en automatiserad, enhetlig besluts process för mål plattform. |
 
-
-Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras av Azure Data Group Engineering-teamet. Huvud stadgan för data SQL Ninja-programmet är att avblockera och påskynda komplexa modernisering och konkurrera med data plattformens migrering till Microsofts Azure-dataplattform. Om du tror att organisationen är intresse rad av att delta i data SQL Ninja-programmet, kontaktar du ditt konto team och ber dem att skicka in en nominerad.
+Data SQL Engineering-teamet utvecklade den här resursen. Teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- För en matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter, se [tjänst och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
+- En matris med tjänster och verktyg från Microsoft och tjänster från tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering och särskilda uppgifter finns i [tjänster och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
 - Mer information om Azure SQL Database finns i:
    - [En översikt över SQL Database](../../database/sql-database-paas-overview.md)
    - [Kostnad för total ägande kostnad för Azure](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- Mer information om ramverket och implementerings cykeln för molnbaserad migrering finns i
+- Mer information om ramverket och implementerings cykeln för migrering av moln finns i:
    -  [Cloud Adoption Framework för Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Metod tips för kostnads-och storleks arbets belastningar migreras till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Metod tips för att kostnads fritt och ändra storlek på arbets belastningar för migrering till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
-- Mer information om hur du utför data åtkomst Layer A/B-testning finns [Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).
-
+- Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
+- Information om hur du utför data åtkomst Layer A/B-testning finns i [Översikt över Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

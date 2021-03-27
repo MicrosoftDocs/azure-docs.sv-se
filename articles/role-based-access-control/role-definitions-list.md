@@ -2,24 +2,19 @@
 title: Visa lista över Azure-roll definitioner – Azure RBAC
 description: Lär dig hur du visar inbyggda Azure-och anpassade roller med hjälp av Azure Portal, Azure PowerShell, Azure CLI eller REST API.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555953"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629164"
 ---
 # <a name="list-azure-role-definitions"></a>Visa lista över Azure-roll definitioner
 
@@ -33,6 +28,10 @@ En lista över administratörs roller för Azure Active Directory finns [i admin
 
 Följ dessa steg om du vill visa en lista över alla roller i Azure Portal.
 
+Om du är intresse rad av att visa en uppdaterad roll upplevelse kan du titta på fliken **roller (för hands version)** , som för närvarande finns i en offentlig för hands version. Fliken **roller (förhands granskning)** visar samma lista över roller som fliken **roller** med vissa ytterligare funktioner. Du kan använda antingen fliken roller för att arbeta med dina roller, men om du skapar eller tar bort anpassade roller kan du behöva uppdatera sidan manuellt för att se de senaste ändringarna.
+
+#### <a name="roles"></a>[Roller](#tab/roles/)
+
 1. I Azure Portal klickar du på **alla tjänster** och väljer sedan en omfattning. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
 
 1. Klicka på den aktuella resursen.
@@ -43,7 +42,29 @@ Följ dessa steg om du vill visa en lista över alla roller i Azure Portal.
 
    Du kan se hur många användare och grupper som har tilldelats varje roll i det aktuella omfånget.
 
-   ![Lista över roller](./media/role-definitions-list/roles-list.png)
+   ![Lista över roller](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[Roller (för hands version)](#tab/roles-preview/)
+
+1. I Azure Portal klickar du på **alla tjänster** och väljer sedan en omfattning. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
+
+1. Klicka på den aktuella resursen.
+
+1. Klicka på **Åtkomstkontroll (IAM)**.
+
+1. Klicka på fliken **roller (för hands version)** om du vill se en lista över alla inbyggda och anpassade roller.
+
+   ![Roll lista med hjälp av för hands versionen](./media/role-definitions-list/roles-list.png)
+
+1. Om du vill se behörigheterna för en viss roll klickar du på länken **Visa** i kolumnen **information** .
+
+    Rutan behörigheter visas.
+
+1. Klicka på fliken **behörigheter** för att visa och söka efter behörigheter för den valda rollen.
+
+   ![Roll behörigheter med hjälp av för hands versionen](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -356,7 +377,7 @@ Om du vill lista roll definitioner använder du [roll definitionerna-list](/rest
 1. Ersätt *{filter}* med villkoret som du vill använda för att filtrera roll definitions listan.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Beskrivning |
+    > | Filtrera | Description |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Visar en lista över roll definitioner för det angivna omfånget och eventuella under omfattningar. |
     > | `$filter=type+eq+'{type}'` | Visar en lista med roll definitioner av den angivna typen. Typ av roll kan vara `CustomRole` eller `BuiltInRole` . |

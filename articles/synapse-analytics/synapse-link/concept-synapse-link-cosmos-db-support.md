@@ -2,20 +2,20 @@
 title: Funktioner som stöds för Azure Synapse Link för Azure Cosmos DB
 description: Förstå den aktuella listan med åtgärder som stöds av Azure Synapse-länken för Azure Cosmos DB
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
 ms.date: 03/02/2021
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: a03a96f34861b84754de9d9ee4180100b58fcd37
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: cdc9f344e108fc58399f9bcb2a9f02a4659ecfe1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869233"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627684"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Funktioner som stöds för Azure Synapse Link för Azure Cosmos DB
 
@@ -45,7 +45,7 @@ Du kan ansluta till en Azure Cosmos DB-behållare utan att aktivera Synapse-län
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Kod genererade åtgärder som stöds för Spark
 
-| Gest              | Beskrivning |OLTP |HTAP  |
+| Gest              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Läs in till DataFrame** |Läsa in och läsa data i en spark-DataFrame |✓| ✓ |
 | **Skapa Spark-tabell** |Skapa en tabell som pekar på en Azure Cosmos DB behållare|✓| ✓ |
@@ -55,7 +55,7 @@ Du kan ansluta till en Azure Cosmos DB-behållare utan att aktivera Synapse-län
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Kod genererade åtgärder för SQL-poolen utan Server
 
-| Gest              | Beskrivning |OLTP |HTAP |
+| Gest              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Utforska data** |Utforska data från en behållare med välbekant T-SQL-syntax och automatisk schema härledning|X| ✓ |
 | **Skapa vyer och skapa BI-rapporter** |Skapa en SQL-vy för att få direkt åtkomst till en behållare för BI via server lös SQL-pool |X| ✓ |

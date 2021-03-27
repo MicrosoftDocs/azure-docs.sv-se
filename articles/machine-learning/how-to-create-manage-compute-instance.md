@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009971"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628959"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Skapa och hantera en Azure Machine Learning beräknings instans
 
@@ -127,6 +127,9 @@ Data expert kan starta, stoppa och starta om beräknings instansen. De kan anvä
 
 Starta, stoppa, starta om och ta bort en beräknings instans. En beräknings instans skalar inte automatiskt ned, så se till att stoppa resursen för att förhindra pågående kostnader.
 
+> [!TIP]
+> Beräknings instansen har 120 GB OS-disk. Om du får slut på disk utrymme kan du [använda terminalen](how-to-access-terminal.md) för att rensa minst 1-2 GB innan du stoppar eller startar om beräknings instansen.
+
 # <a name="python"></a>[Python](#tab/python)
 
 I exemplen nedan är namnet på beräknings instansen **instansen**
@@ -225,6 +228,7 @@ För varje beräknings instans i arbets ytan som du skapade (eller som har skapa
 * Hämta information om en angiven beräknings instans, till exempel IP-adress och region.
 
 ---
+
 
 Med [Azure RBAC](../role-based-access-control/overview.md) kan du styra vilka användare i arbets ytan som kan skapa, ta bort, starta, stoppa och starta om en beräknings instans. Alla användare i arbets ytans deltagare och ägar roll kan skapa, ta bort, starta, stoppa och starta om beräknings instanser i arbets ytan. Men endast skaparen av en angiven beräknings instans, eller användaren som tilldelats om den skapades för deras räkning, tillåts komma åt Jupyter, JupyterLab och RStudio på den beräknings instansen. En beräknings instans är dedikerad till en enda användare som har rot åtkomst och kan terminalen i genom Jupyter/JupyterLab/RStudio. Compute-instansen kommer att ha enkel inloggning och alla åtgärder kommer att använda användarens identitet för Azure RBAC och för att köra experiment körningar. SSH-åtkomsten styrs via mekanismen för offentlig/privat nyckel.
 

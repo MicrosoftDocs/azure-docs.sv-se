@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24fe28eafc1d1da90b6a7b7f9d41b7e645e62855
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043622"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625780"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Microsoft Dynamics 365 bedrägeri skydd med Azure Active Directory B2C
 
-I den här självstudien ger vi vägledning om hur du integrerar [Microsoft Dynamics 365 bedrägeri skydd](/dynamics365/fraud-protection/overview) (DFP) med Azure Active Directory (AD) B2C.
+I den här självstudien ger vi vägledning om hur du integrerar [Microsoft Dynamics 365 bedrägeri skydd](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) med Azure Active Directory (AD) B2C.
 
 Microsoft DFP ger klienter möjlighet att utvärdera om risken för försök att skapa nya konton och försöker logga in på klientens eko system är bedräglig. Microsoft DFP-utvärderingen kan användas av kunden för att blockera eller utmana misstänkta försök att skapa nya falska konton eller kompromettera befintliga konton. Konto skydd omfattar artificiell intelligens som har hälsostyrt enhets finger avtryck, API: er för riskbedömning, regel-och list erfarenhet i real tid för att optimera risk strategin enligt klientens affärs behov och ett styrkort för att övervaka bedrägerier och trender i klientens eko system.
 
@@ -56,7 +56,7 @@ I följande arkitektur diagram visas implementeringen.
 
 ![Bilden visar arkitektur diagrammet Microsoft dynamics365 bedrägeri skydd](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Steg | Beskrivning |
+|Steg | Description |
 |:-----| :-----------|
 | 1. | Användaren kommer till inloggnings sidan. Användare väljer registrering för att skapa ett nytt konto och ange information på sidan. Azure AD B2C samlar in användarattribut.
 | 2. | Azure AD B2C anropar API: t för mellanlager och passerar användar-attributen.
@@ -103,7 +103,7 @@ Konfigurera program inställningarna i [App Service i Azure](../app-service/conf
 |FraudProtectionSettings: InstanceId | Microsoft DFP-konfiguration |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | Ditt Microsoft-enhets finger avtryck kund-ID |     |
 | FraudProtectionSettings:ApiBaseUrl |  Din bas-URL från Microsoft DFP-portalen   | Ta bort-int för att anropa API: et för produktion i stället|
-|  TokenProviderConfig: resurs  |     | Ta bort-int för att anropa API: et för produktion i stället|
+|  TokenProviderConfig: resurs  | Din bas-URL – https://api.dfp.dynamics-int.com     | Ta bort-int för att anropa API: et för produktion i stället|
 |   TokenProviderConfig: ClientId       |Ditt bedrägeri skydd för Azure AD-klientens app-ID      |       |
 | TokenProviderConfig: auktoritet | https://login.microsoftonline.com/<directory_ID> | Ditt bedrägeri skydd för Azure AD-klient organisation |
 | TokenProviderConfig: CertificateThumbprint * | Tumavtrycket för det certifikat som ska användas för att autentisera mot din Azure AD-klients app |

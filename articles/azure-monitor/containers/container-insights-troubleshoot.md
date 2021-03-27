@@ -2,13 +2,13 @@
 title: Så här felsöker du container Insights | Microsoft Docs
 description: Den här artikeln beskriver hur du kan felsöka och lösa problem med behållar insikter.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708313"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627123"
 ---
 # <a name="troubleshooting-container-insights"></a>Felsöka behållar insikter
 
@@ -113,6 +113,54 @@ Poddar för container Insights använder cAdvisor-slutpunkten på Node-agenten f
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>Icke-Azure Kubernetes-kluster visas inte i behållar insikter
 
 Om du vill visa ett icke-Azure Kubernetes-kluster i behållar insikter krävs Läs åtkomst på Log Analytics arbets ytan som stöder den här insikten och i ContainerInsights för container Insights **-lösning (*arbets yta*)**.
+
+## <a name="metrics-arent-being-collected"></a>Måtten samlas inte in
+
+1. Kontrol lera att klustret finns i en [region som stöds för anpassade mått](../essentials/metrics-custom-overview.md#supported-regions).
+
+2. Kontrol lera att roll tilldelningen **övervaknings mått utgivaren** finns med följande CLI-kommando:
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    För kluster med MSI är användarens tilldelade klient-ID för omsagent ändringar varje gång övervakningen aktive ras och inaktive ras, så roll tilldelningen bör finnas i det aktuella MSI-klient-ID: t. 
+
+3. För kluster med Azure Active Directory Pod-identitet aktive rad och med MSI:
+
+   - Verifiera den obligatoriska etiketten **Kubernetes.Azure.com/ManagedBy: AKS**  finns på omsagent-poddar med hjälp av följande kommando:
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - Kontrol lera att undantag är aktiverade när Pod-identitet aktive ras med en av de metoder som stöds i https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity .
+
+        Verifiera genom att köra följande kommando:
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        Du bör få utdata som liknar följande:
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

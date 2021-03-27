@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9d2ffac813456398c02066c978c37bdb09501aeb
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92151668"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628993"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hög tillgänglighet och haveriberedskap för IoT Hub
 
@@ -64,7 +64,7 @@ När redundansväxlingen för IoT Hub har slutförts förväntas alla åtgärder
 >
 > - Om du använder Azure Functions eller Azure Stream Analytics för att ansluta den inbyggda slut punkten för händelser kan du behöva utföra en **omstart**. Detta beror på att under redundansväxlingen tidigare förskjutningar inte längre är giltiga.
 >
-> - Vid routning till lagring rekommenderar vi att du listar blobbar eller filer och sedan går över dem, så att alla blobbar eller filer läses utan att du behöver göra några antaganden om partitionen. Partitions intervallet kan eventuellt ändras under en Microsoft-initierad redundans eller manuell redundans. Du kan använda [list-BLOB-API: et](/rest/api/storageservices/list-blobs) för att räkna upp listan över blobbar eller [lista ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) för listan med filer. Mer information finns i [Azure Storage som en Dirigerings slut punkt](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - Vid routning till lagring rekommenderar vi att du listar blobbar eller filer och sedan går över dem, så att alla blobbar eller filer läses utan att du behöver göra några antaganden om partitionen. Partitions intervallet kan eventuellt ändras under en Microsoft-initierad redundans eller manuell redundans. Du kan använda [list-BLOB-API: et](/rest/api/storageservices/list-blobs) för att räkna upp listan över blobbar eller [lista ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/filesystem/listpaths) för listan med filer. Mer information finns i [Azure Storage som en Dirigerings slut punkt](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft-initierad redundans
 
@@ -134,9 +134,9 @@ Här är en sammanfattning av de HA/DR-alternativ som visas i den här artikeln 
 
 | HA/DR-alternativ | RTO | RPO | Krävs manuell åtgärd? | Implementerings komplexitet | Ytterligare kostnads påverkan|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft-initierad redundans |2-26 timmar|Referera till tabellen återställnings punkt ovan|Inga|Inga|Inga|
-| Manuell redundans |10 min – 2 timmar|Referera till tabellen återställnings punkt ovan|Ja|Mycket låg. Du behöver bara utlösa den här åtgärden från portalen.|Inget|
-| Flera regioner HA |< 1 min|Beror på replikeringsfrekvens för din anpassade HA-lösning|Inga|Högt|> 1x kostnaden för 1 IoT Hub|
+| Microsoft-initierad redundans |2-26 timmar|Referera till tabellen återställnings punkt ovan|No|Inga|Inga|
+| Manuell redundans |10 min – 2 timmar|Referera till tabellen återställnings punkt ovan|Yes|Mycket låg. Du behöver bara utlösa den här åtgärden från portalen.|Inget|
+| Flera regioner HA |< 1 min|Beror på replikeringsfrekvens för din anpassade HA-lösning|No|Högt|> 1x kostnaden för 1 IoT Hub|
 
 ## <a name="next-steps"></a>Nästa steg
 

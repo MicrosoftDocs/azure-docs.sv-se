@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 3/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576618"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627140"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Azure Monitor för ord listan för Windows Virtual Desktop (förhands granskning)
 
@@ -24,7 +24,7 @@ Den här artikeln innehåller en kort beskrivning av viktiga termer och begrepp 
 
 ## <a name="alerts"></a>Aviseringar
 
-Alla aktiva Azure Monitor aviseringar som du har konfigurerat för prenumerationen och klassificerats som [allvarlighets grad 1](#severity-1-alerts) visas på sidan Översikt. Information om hur du konfigurerar aviseringar finns i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/alerts/tutorial-response.md).
+Alla aktiva Azure Monitor aviseringar som du har konfigurerat för prenumerationen och klassificerats som [allvarlighets grad 0](#severity-0-alerts) visas på sidan Översikt. Information om hur du konfigurerar aviseringar finns i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Tillgängliga sessioner
 
@@ -40,7 +40,7 @@ Det totala antalet användare som har startat en session under de senaste 24 tim
 
 ## <a name="daily-alerts"></a>Dagliga aviseringar
 
-Det totala antalet [aviseringar om allvarlighets grad 1](#severity-1-alerts) som har utlösts under de senaste 24 timmarna.
+Det totala antalet aviseringar som utlösts varje dag.
 
 ## <a name="daily-connections-and-reconnections"></a>Dagliga anslutningar och återanslutningar
 
@@ -78,7 +78,7 @@ Varje problem med diagnostik eller fel innehåller ett meddelande som förklarar
 
 ## <a name="input-delay"></a>Inmatningsfördröjning
 
-"Fördröjning av inaktivitet" i Azure Monitor för virtuella Windows-datorer innebär prestanda räknaren för ingångs fördröjning per process för varje session. På sidan värd prestanda på <aka.ms/azmonwvdi> konfigureras den här prestanda räknaren att skicka en rapport till tjänsten en gång var 30: e sekund. De här 30-sekundernas intervall kallas "Samples" och rapporterar det värsta fallet i fönstret. Värdena median och P95 återspeglar median och 95 percentilen i alla exempel.
+"Fördröjning av inaktivitet" i Azure Monitor för virtuella Windows-datorer innebär prestanda räknaren för ingångs fördröjning per process för varje session. På sidan värd prestanda på [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)konfigureras den här prestanda räknaren att skicka en rapport till tjänsten en gång var 30: e sekund. De här 30-sekundernas intervall kallas "Samples" och rapporterar det värsta fallet i fönstret. Värdena median och P95 återspeglar median och 95 percentilen i alla exempel.
 
 Under **ingångs fördröjning per värd** kan du välja en värd rad för en session för att filtrera alla andra visuella objekt på sidan till den värden. Du kan också välja ett process namn för att filtrera median värdet för ingångs fördröjning över tid.
 
@@ -114,16 +114,11 @@ I följande tabell visas de rekommenderade prestanda räknarna och de tidsinterv
 |Fysisk disk ( \* ) \\ medel s/disk läsning|30 sekunder|
 |Fysisk disk ( \* ) \\ medel s/disk överföring|30 sekunder|
 |Fysisk disk ( \* ) \\ medel s/disk skrivning|30 sekunder|
-|Process ( \* ) \\ % processor tid|20 sekunder|
-|Process ( \* ) \\ % användar tid|30 sekunder|
-|Process ( \* ) \\ antal trådar|30 sekunder|
-|Process ( \* ) \\ i/o-Skriv åtgärder/SEK|30 sekunder|
-|Process ( \* ) \\ IO-Läs åtgärder/SEK|30 sekunder|
 |Processor information (_Total) \\ % processor tid|30 sekunder|
 |Terminal Services ( \* ) \\ aktiva sessioner|60 sekunder|
 |Terminal Services ( \* ) \\ inaktiva sessioner|60 sekunder|
 |Terminal Services ( \* ) \\ Totalt antal sessioner|60 sekunder|
-|\*Fördröjning av användarindata per process ( \* ) \\ Max antal indata-delat|30 sekunder|
+|\*Fördröjning av användarindata per process ( \* ) \\ Max fördröjning|30 sekunder|
 |\*Fördröjning för användarindata per session ( \* ) \\ Max fördröjning för indata|30 sekunder|
 |RemoteFX Network ( \* ) \\ aktuell TCP-förval|30 sekunder|
 |RemoteFX-nätverk ( \* ) \\ aktuell UDP-bandbredd|30 sekunder|
@@ -149,13 +144,13 @@ Du kan också välja poster för att visa ytterligare information. Du kan se vil
 
 ## <a name="round-trip-time-rtt"></a>Tur och retur-tid
 
-Tur och retur-tid är en uppskattning av anslutningens tur och retur-tid mellan slutanvändarens plats och den virtuella datorns Azure-region. Om du vill se vilka platser som har den bästa svars tiden kan du leta upp den önskade platsen i [Windows-verktyget för virtuella Skriv bords verktyg](https://azure.microsoft.com/services/virtual-desktop/assessment/).
+Tur och retur-tid (för tur och retur) är en uppskattning av anslutningens tur och retur-tid mellan slutanvändarens plats och sessionens värd Azure-region. Om du vill se vilka platser som har den bästa svars tiden kan du leta upp den önskade platsen i [Windows-verktyget för virtuella Skriv bords verktyg](https://azure.microsoft.com/services/virtual-desktop/assessment/).
 
 ## <a name="session-history"></a>Sessionshistorik
 
 **Sessions** -objektet visar status för alla sessioner, anslutna och frånkopplade. **Inaktiva sessioner** visar bara de frånkopplade sessionerna.
 
-## <a name="severity-1-alerts"></a>Allvarlighets grad 1 aviseringar
+## <a name="severity-0-alerts"></a>Allvarlighets grad 0-varningar
 
 De mest brådskande objekten som du behöver ta hand om direkt. Om du inte löser problemen kan det leda till att distributionen av Windows virtuella datorer slutar fungera.
 
@@ -171,11 +166,11 @@ På sidan användar rapport kan du Visa en enskild användares anslutnings histo
 
 Detta är antalet användare i varje virtuell dator kärna. Spårning av det maximala antalet användare per kärna över tid kan hjälpa dig att identifiera om miljön körs konsekvent med hög, låg eller variation av antal användare per kärna. Att veta hur många användare som är aktiva hjälper dig att effektivt kunna använda resurser och skala miljön.
 
-## <a name="windows-events"></a>Windows-händelser
+## <a name="windows-event-logs"></a>Windows-händelseloggar
 
 Händelse loggar i Windows är data källor som samlas in av Log Analytics agenter på virtuella Windows-datorer. Du kan samla in händelser från standard loggar som system och program samt anpassade loggar som skapats av program som du behöver övervaka.
 
-I följande tabell visas de Windows-händelser som krävs för Azure Monitor för virtuella Windows-datorer:
+I följande tabell visas de Windows-händelseloggar som krävs för Azure Monitor för virtuella Windows-datorer:
 
 |Händelse namn|Händelsetyp|
 |---|---|
@@ -186,7 +181,7 @@ I följande tabell visas de Windows-händelser som krävs för Azure Monitor fö
 | Microsoft-FSLogix – appar/drift|Fel, varning och information|
 |Microsoft-FSLogix-Apps/admin|Fel, varning och information|
 
-Mer information om Windows-händelser finns i [Egenskaper för Windows Event-poster](../azure-monitor/agents/data-sources-windows-events.md).
+Mer information om Windows-händelseloggar finns i [Egenskaper för Windows Event-poster](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs).
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -203,4 +198,4 @@ Om du behöver hjälp eller har frågor kan du titta närmare på våra communit
    
 - Information om hur du lämnar feedback finns i [fel söknings översikt, feedback och support för Windows Virtual Desktop](troubleshoot-set-up-overview.md#report-issues).
 
-- Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) eller i [vårt UserVoice-forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+- Du kan också lämna feedback för virtuella Windows-datorer i [hubben för Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)

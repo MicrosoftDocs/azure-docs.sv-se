@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 685d7f0a0aaab2f38967e0eb6c32c3fb4067dbe3
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110516"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612831"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Konfigurera en installation för servrar i VMware-miljön
 
@@ -67,7 +67,6 @@ Kontrol lera att ägg filen är säker innan du distribuerar den:
         --- | --- | ---
         VMware (11,9 GB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
-
 ### <a name="3-create-the-appliance-server"></a>3. skapa apparatens Server
 
 Importera den nedladdade filen och skapa en server i VMware-miljön
@@ -81,11 +80,9 @@ Importera den nedladdade filen och skapa en server i VMware-miljön
 8. I **nätverks mappning** anger du det nätverk som servern ska ansluta till. Nätverket måste ha Internet anslutning för att kunna skicka metadata till Azure Migrate.
 9. Granska och bekräfta inställningarna. Klicka sedan på **Slutför**.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
 Se till att installations servern kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
-
 
 ### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 
@@ -114,7 +111,6 @@ Konfigurera enheten för första gången.
 1. Om du vill kan du **köra nödvändiga komponenter** när som helst under installationen av konfigurationen för att kontrol lera om installationen uppfyller alla krav.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="Panel 1 på installationens konfigurations hanterare":::
-
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 

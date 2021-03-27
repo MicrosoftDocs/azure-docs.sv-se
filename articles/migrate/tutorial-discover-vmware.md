@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612066"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627803"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: identifiering och utvärdering
 
@@ -115,7 +115,7 @@ Skapa ett nytt projekt.
 
 1. I Azure-portalen > **Alla tjänster** söker du efter **Azure Migrate**.
 2. Under **Tjänster** väljer du **Azure Migrate**.
-3. I **Översikt** väljer du **skapa projekt**.
+3. I **översikt** > väljer du baserat på dina migrerings mål: **Windows, Linux och SQL Server** eller **SQL Server (endast)** eller **utforska fler scenarier** > Välj **skapa projekt**.
 5. I **skapa projekt** väljer du din Azure-prenumeration och resurs grupp. Skapa en resurs grupp om du inte har någon.
 6. I **projekt information** anger du projekt namnet och geografin som du vill skapa projektet i. Granska stödda geografiska områden för [offentliga](migrate-support-matrix.md#supported-geographies-public-cloud) och [offentliga moln](migrate-support-matrix.md#supported-geographies-azure-government).
 

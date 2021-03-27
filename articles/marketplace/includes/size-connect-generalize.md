@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630122"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105630252"
 ---
 ## <a name="generalize-the-image"></a>Generalisera avbildningen
 
@@ -52,7 +52,9 @@ När den virtuella datorn är klar kan du avbilda den i ett Azure-Galleri för d
 8. Välj **Granska + skapa** för att granska dina val.
 9. När verifieringen har slutförts väljer du **skapa**.
 
-För att publicera måste utgivar kontot ha en ägare till SIG. För att bevilja åtkomst:
+Azure-prenumerationen som innehåller SIG måste ligga under samma klient organisation som utgivar kontot för att kunna publicera. Utgivar kontot måste också ha en ägar åtkomst till SIG själv. 
+
+För att bevilja åtkomst:
 
 1. Gå till galleriet för delad avbildning.
 2. Välj **åtkomst kontroll** (IAM) på den vänstra panelen.

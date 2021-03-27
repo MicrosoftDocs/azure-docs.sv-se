@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: error-reference
-ms.date: 02/12/2020
+ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7c30649fe3486f812569cb51f609356a6cbfd58f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581090"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627548"
 ---
 # <a name="media-services-live-event-error-codes"></a>Fel koder för Media Services Live-händelse
 
@@ -83,7 +83,8 @@ Du kan se något av följande fel från händelsen [LiveEventEncoderDisconnected
 >| Description|Kodaren skickar data för snabbt. |
 >| Föreslagen lösning|Detta inträffar när kodaren överför en stor uppsättning fragment under en kort period.  Detta kan teoretiskt inträffa när kodaren inte kan skicka data för när det är på grund av ett nätverks problem och de överförda data burst-data när nätverket är tillgängligt. Hitta orsaken från Encoder-loggen eller system loggen. |
 >|**Okända felkoder** |
->| Description| Dessa felkoder kan vara från minnes fel till dubbla poster i hash-mappningen. |
+>| Description| Dessa felkoder kan vara från minnes fel till dubbla poster i hash-mappningen. Detta kan inträffa när kodaren skickar ut en stor uppsättning fragment under en kort period.  Detta kan också inträffa när kodaren inte kan skicka data till när den på grund av ett nätverks problem och sedan skickar alla fördröjda fragment samtidigt när nätverket blir tillgängligt. |
+>|Föreslagen lösning| Kontrol lera kodarens loggar.|
 
 ## <a name="other-error-codes"></a>Andra felkoder
 
@@ -95,13 +96,13 @@ Du kan se något av följande fel från händelsen [LiveEventEncoderDisconnected
 >|Föreslagen lösning| Inga.||
 >|**MPI_SYSTEM_MAINTENANCE** ||Yes|
 >| Description|Kodaren kopplades från på grund av tjänst uppdatering eller system underhåll. ||
->|Föreslagen lösning|Kontrol lera att kodare aktiverar "Auto Connect". Detta är en kodare funktion för att återställa den oväntade sessionen från kopplingen. ||
+>|Föreslagen lösning|Se till att kodaren aktiverar "Auto Connect". Det gör det möjligt för kodaren att återansluta till den redundanta Live-händelsens slut punkt som inte är i underhålls läge. ||
 >|**MPE_BAD_URL_SYNTAX** ||Yes|
 >| Description|Inmatnings-URL: en är felaktigt formaterad. ||
 >|Föreslagen lösning|Kontrol lera att inmatnings-URL: en är korrekt formaterad. För RTMP bör det vara `rtmp[s]://hostname:port/live/GUID_APPID/streamname` ||
 >|**MPE_CLIENT_TERMINATED_SESSION** ||Yes|
 >| Description|Kodaren kopplade från sessionen.  ||
->|Föreslagen lösning|Detta är inte ett fel. Detta är fallet där kodare initieras från koppling, inklusive en korrekt från koppling. Om det är en oväntad från koppling kontrollerar du kodare loggen eller system loggen. |
+>|Föreslagen lösning|Detta är inte ett fel. Kodaren initierade från koppling, inklusive korrekt från koppling. Om det är en oväntad från koppling kontrollerar du kodarens loggar. |
 >|**MPE_INGEST_BITRATE_NOT_MATCH** ||Inga|
 >| Beskrivning|Inkommande data hastighet matchar inte förväntad bit hastighet. ||
 >|Föreslagen lösning|Detta är en varning som inträffar när inkommande data hastighet är för långsam eller snabbt. Kontrol lera Encoder-loggen eller system loggen.||

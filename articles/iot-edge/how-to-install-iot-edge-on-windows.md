@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105558728"
+ms.locfileid: "105612132"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -117,7 +117,16 @@ Om du vill distribuera till en fjär renhet i stället för den lokala enheten o
 
    ![Välj din enhet för att kontrol lera att den stöds](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. Godkänn standardinställningarna på fliken **2,2 inställningar** .
+1. Granska konfigurations inställningarna för distributionen på fliken **2,2 inställningar** . När du är nöjd med inställningarna väljer du **Nästa**.
+
+   ![Granska konfigurations inställningarna för distributionen](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >Om du använder en virtuell Windows-dator rekommenderar vi att du använder en standard växel i stället för en extern växel för att se till att den virtuella Linux-datorn som skapas i distributionen kan erhålla en IP-adress.
+   >
+   >Med en standard växel tilldelas den virtuella Linux-datorn en intern IP-adress. Den här interna IP-adressen kan inte nås utanför den virtuella Windows-datorn, men den kan vara ansluten till lokalt när du är inloggad på den virtuella Windows-datorn.
+   >
+   >Observera att Azure IoT Edge för Linux i Windows inte automatiskt stöder standard växeln om du använder Windows Server. För en lokal virtuell Windows Server-dator kan du se till att den virtuella Linux-datorn kan erhålla en IP-adress via den externa växeln. För en virtuell Windows Server-dator i Azure konfigurerar du en intern växel innan du distribuerar IoT Edge för Linux i Windows.
 
 1. På fliken **2,3 distribution** kan du se förloppet för distributionen. Den fullständiga processen omfattar att ladda ned Azure IoT Edge för Linux på Windows-paket, installera paketet, konfigurera värd enheten och konfigurera den virtuella Linux-datorn. Det kan ta flera minuter att slutföra den här processen. En lyckad distribution visas i bilden nedan.
 
@@ -168,7 +177,7 @@ Installera IoT Edge för Linux på Windows på mål enheten om du inte redan har
    ```
 
    > [!NOTE]
-   > Du kan köra det här kommandot utan parametrar eller anpassa distributionen med parametrar om du vill. Du kan referera till [referensen IoT Edge för Linux på Windows PowerShell-skript](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) för att se deras betydelser.
+   > Du kan köra det här kommandot utan parametrar eller anpassa distributionen med parametrar om du vill. Du kan referera till [referensen IoT Edge för Linux på Windows PowerShell-skript](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) för att se parameter betydelser och standardvärden.
 
 1. Ange "Y" om du vill acceptera licens villkoren.
 

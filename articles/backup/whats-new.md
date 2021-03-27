@@ -3,12 +3,12 @@ title: Nyheter i Azure Backup
 description: Lär dig mer om nya funktioner i Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5e6734c6a962fa43d79fc90fdfaa85923b6339f
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095722"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612491"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nyheter i Azure Backup
 
@@ -19,6 +19,7 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
 ## <a name="updates-summary"></a>Uppdaterings Sammanfattning
 
 - Mars 2021
+  - [Azure disk Backup är nu allmänt tillgängligt](#azure-disk-backup-is-now-generally-available)
   - [Backup Center är nu allmänt tillgängligt](#backup-center-is-now-generally-available)
   - [Arkiv nivå stöd för Azure Backup (för hands version)](#archive-tier-support-for-azure-backup-in-preview)
 - Februari 2021
@@ -39,6 +40,12 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
   - [Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines (för hands version)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [ZRS (Zone redundant Storage) för säkerhets kopierings data (i för hands version)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Mjuk borttagning för SQL Server och SAP HANA arbets belastningar i virtuella Azure-datorer](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-is-now-generally-available"></a>Azure disk Backup är nu allmänt tillgängligt
+
+Azure Backup erbjuder livs cykel hantering av ögonblicks bilder till Azure Managed Disks genom att automatisera periodiska skapande av ögonblicks bilder och behålla dessa för konfigurerade varaktigheter med hjälp av säkerhets kopierings principen.
+
+Mer information finns i [Översikt över säkerhets kopiering av Azure-diskar](disk-backup-overview.md).
 
 ## <a name="backup-center-is-now-generally-available"></a>Backup Center är nu allmänt tillgängligt
 

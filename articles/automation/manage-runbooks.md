@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1e8df39cc836890526b0dad1885f31dc15eaa837
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122144"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629214"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Hantera Runbooks i Azure Automation
 
@@ -40,8 +40,13 @@ Använd cmdleten [New-AzAutomationRunbook](/powershell/module/az.automation/new-
 I följande exempel visas hur du skapar en ny tom Runbook.
 
 ```azurepowershell-interactive
-New-AzAutomationRunbook -AutomationAccountName MyAccount `
--Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    Name                  = 'NewRunbook'
+    ResourceGroupName     = 'MyResourceGroup'
+    Type                  = 'PowerShell'
+}
+New-AzAutomationRunbook @params
 ```
 
 ## <a name="import-a-runbook"></a>Importera en Runbook
@@ -82,14 +87,14 @@ Använd cmdleten [import-AzAutomationRunbook](/powershell/module/az.automation/i
 I följande exempel visas hur du importerar en skript fil till en Runbook.
 
 ```azurepowershell-interactive
-$automationAccountName =  "AutomationAccount"
-$runbookName = "Sample_TestRunbook"
-$scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-$RGName = "ResourceGroup"
-
-Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
--ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
--Type PowerShellWorkflow
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    Name                  = 'Sample_TestRunbook'
+    ResourceGroupName     = 'MyResourceGroup'
+    Type                  = 'PowerShell'
+    Path                  = 'C:\Runbooks\Sample_TestRunbook.ps1'
+}
+Import-AzAutomationRunbook @params
 ```
 
 ## <a name="handle-resources"></a>Hantera resurser
@@ -97,20 +102,17 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 Om din Runbook skapar en [resurs](automation-runbook-execution.md#resources), bör skriptet kontrol lera om resursen redan finns innan du försöker skapa den. Här är ett grundläggande exempel.
 
 ```powershell
-$vmName = "WindowsVM1"
-$resourceGroupName = "myResourceGroup"
-$myCred = Get-AutomationPSCredential "MyCredential"
-$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $resourceGroupName
+$vmName = 'WindowsVM1'
+$rgName = 'MyResourceGroup'
+$myCred = Get-AutomationPSCredential 'MyCredential'
 
-if(!$vmExists)
-    {
+$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $rgName
+if (-not $vmExists) {
     Write-Output "VM $vmName does not exist, creating"
-    New-AzVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
-    }
-else
-    {
+    New-AzVM -Name $vmName -ResourceGroupName $rgName -Credential $myCred
+} else {
     Write-Output "VM $vmName already exists, skipping"
-    }
+}
 ```
 
 ## <a name="retrieve-details-from-activity-log"></a>Hämta information från aktivitets loggen
@@ -118,31 +120,37 @@ else
 Du kan hämta information om Runbook, till exempel den person eller det konto som startade en Runbook, från [aktivitets loggen](automation-runbook-execution.md#activity-logging) för Automation-kontot. Följande PowerShell-exempel ger den senaste användaren att köra den angivna runbooken.
 
 ```powershell-interactive
-$SubID = "00000000-0000-0000-0000-000000000000"
-$AutomationResourceGroupName = "MyResourceGroup"
-$AutomationAccountName = "MyAutomationAccount"
-$RunbookName = "MyRunbook"
+$SubID = '00000000-0000-0000-0000-000000000000'
+$AutoRgName = 'MyResourceGroup'
+$aaName = 'MyAutomationAccount'
+$RunbookName = 'MyRunbook'
 $StartTime = (Get-Date).AddDays(-1)
-$JobActivityLogs = Get-AzLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
-                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
+
+$params = @{
+    ResourceGroupName = $AutoRgName
+    StartTime         = $StartTime
+}
+$JobActivityLogs = (Get-AzLog @params).Where( { $_.Authorization.Action -eq 'Microsoft.Automation/automationAccounts/jobs/write' })
 
 $JobInfo = @{}
-foreach ($log in $JobActivityLogs)
-{
+foreach ($log in $JobActivityLogs) {
     # Get job resource
     $JobResource = Get-AzResource -ResourceId $log.ResourceId
 
-    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
-    {
+    if ($null -eq $JobInfo[$log.SubmissionTimestamp] -and $JobResource.Properties.Runbook.Name -eq $RunbookName) {
         # Get runbook
-        $Runbook = Get-AzAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
-                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
+        $jobParams = @{
+            ResourceGroupName     = $AutoRgName
+            AutomationAccountName = $aaName
+            Id                    = $JobResource.Properties.JobId
+        }
+        $Runbook = Get-AzAutomationJob @jobParams | Where-Object RunbookName -EQ $RunbookName
 
         # Add job information to hashtable
         $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
     }
 }
-$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
+$JobInfo.GetEnumerator() | Sort-Object Key -Descending | Select-Object -First 1
 ```
 
 ## <a name="track-progress"></a>Spåra förlopp
@@ -158,9 +166,13 @@ Vissa Runbooks fungerar konstigt om de körs över flera jobb samtidigt. I det h
 ```powershell
 # Authenticate to Azure
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
-
+$cnParams = @{
+    ServicePrincipal      = $true
+    Tenant                = $connection.TenantId
+    ApplicationId         = $connection.ApplicationId
+    CertificateThumbprint = $connection.CertificateThumbprint
+}
+Connect-AzAccount @cnParams
 $AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
@@ -170,12 +182,12 @@ $aaName = "<AutomationAccountName>"
 $jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $aaName -RunbookName $runbookName -AzContext $AzureContext
 
 # Check to see if it is already running
-$runningCount = ($jobs | ? {$_.Status -eq "Running"}).count
+$runningCount = ($jobs.Where( { $_.Status -eq 'Running' })).count
 
-If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Status -eq "New")) {
+if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Status -eq 'New')) {
     # Exit code
-    Write-Output "Runbook is already running"
-    Exit 1
+    Write-Output "Runbook [$runbookName] is already running"
+    exit 1
 } else {
     # Insert Your code here
 }
@@ -197,22 +209,26 @@ Din Runbook måste kunna arbeta med [prenumerationer](automation-runbook-executi
 ```powershell
 Disable-AzContextAutosave -Scope Process
 
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-$AzureContext = Connect-AzAccount -ServicePrincipal `
--Tenant $Conn.TenantID `
--ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint `
--Subscription $Conn.SubscriptionId
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+$cnParams = @{
+    ServicePrincipal      = $true
+    Tenant                = $connection.TenantId
+    ApplicationId         = $connection.ApplicationId
+    CertificateThumbprint = $connection.CertificateThumbprint
+}
+Connect-AzAccount @cnParams
 
 $ChildRunbookName = 'ChildRunbookDemo'
-$AutomationAccountName = 'myAutomationAccount'
-$ResourceGroupName = 'myResourceGroup'
+$aaName = 'MyAutomationAccount'
+$rgName = 'MyResourceGroup'
 
-Start-AzAutomationRunbook `
--ResourceGroupName $ResourceGroupName `
--AutomationAccountName $AutomationAccountName `
--Name $ChildRunbookName `
--DefaultProfile $AzureContext
+$startParams = @{
+    ResourceGroupName     = $rgName
+    AutomationAccountName = $aaName
+    Name                  = $ChildRunbookName
+    DefaultProfile        = $AzureContext
+}
+Start-AzAutomationRunbook @startParams
 ```
 
 ## <a name="work-with-a-custom-script"></a>Arbeta med ett anpassat skript
@@ -258,12 +274,16 @@ När du skapar eller importerar en ny Runbook måste du publicera den innan du k
 Använd cmdleten [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) för att publicera din Runbook. 
 
 ```azurepowershell-interactive
-$automationAccountName =  "AutomationAccount"
-$runbookName = "Sample_TestRunbook"
-$RGName = "ResourceGroup"
+$aaName = "MyAutomationAccount"
+$RunbookName = "Sample_TestRunbook"
+$rgName = "MyResourceGroup"
 
-Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
--Name $runbookName -ResourceGroupName $RGName
+$publishParams = @{
+    AutomationAccountName = $aaName
+    ResourceGroupName     = $rgName
+    Name                  = $RunbookName
+}
+Publish-AzAutomationRunbook @publishParams
 ```
 
 ## <a name="schedule-a-runbook-in-the-azure-portal"></a>Schemalägg en runbook i Azure Portal
@@ -308,28 +328,45 @@ Använd cmdleten [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAu
 Följande exempel hämtar det senaste jobbet för en exempel-Runbook och visar dess status, de värden som har angetts för Runbook-parametrarna och jobbets utdata.
 
 ```azurepowershell-interactive
-$job = (Get-AzAutomationJob –AutomationAccountName "MyAutomationAccount" `
-–RunbookName "Test-Runbook" -ResourceGroupName "ResourceGroup01" | sort LastModifiedDate –desc)[0]
-$job.Status
-$job.JobParameters
-Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
+$getJobParams = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Runbookname           = 'Test-Runbook'
+}
+$job = (Get-AzAutomationJob @getJobParams | Sort-Object LastModifiedDate –Desc)[0]
+$job | Select-Object JobId, Status, JobParameters
+
+$getOutputParams = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Id                    = $job.JobId
+    Stream                = 'Output'
+}
+Get-AzAutomationJobOutput @getOutputParams
 ```
 
 I följande exempel hämtas utdata för ett särskilt jobb och returnerar varje post. Om det finns ett [undantag](automation-runbook-execution.md#exceptions) för en av posterna skriver skriptet detta undantag i stället för värdet. Det här beteendet är användbart eftersom undantag kan ge ytterligare information som kanske inte loggas normalt under utdata.
 
 ```azurepowershell-interactive
-$output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
-foreach($item in $output)
-{
-    $fullRecord = Get-AzAutomationJobOutputRecord -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -JobId <jobID> -Id $item.StreamRecordId
-    if ($fullRecord.Type -eq "Error")
-    {
-        $fullRecord.Value.Exception
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Stream                = 'Any'
+}
+$output = Get-AzAutomationJobOutput @params
+
+foreach ($item in $output) {
+    $jobOutParams = @{
+        AutomationAccountName = 'MyAutomationAccount'
+        ResourceGroupName     = 'MyResourceGroup'
+        Id                    = $item.StreamRecordId
     }
-    else
-    {
-    $fullRecord.Value
+    $fullRecord = Get-AzAutomationJobOutputRecord @jobOutParams
+
+    if ($fullRecord.Type -eq 'Error') {
+        $fullRecord.Value.Exception
+    } else {
+        $fullRecord.Value
     }
 }
 ```

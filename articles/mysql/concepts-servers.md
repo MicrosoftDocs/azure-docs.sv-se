@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a05037505c122bb974e6da3d11a6f25a715a6843
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: cb8394de49c2c5daeae156a9316466928eded148
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869437"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628483"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Server koncept i Azure Database for MySQL
 
@@ -38,7 +38,7 @@ Du kan skapa en eller flera databaser på en Azure Database för MySQL-server. D
 
 Följande element hjälper till att säkerställa säker åtkomst till din databas.
 
-|     |     |
+| Säkerhets koncept | Description     |
 | :-- | :-- |
 | **Autentisering och auktorisering** | Azure Database for MySQL Server stöder inbyggd MySQL-autentisering. Du kan ansluta och autentisera till en server med serverns Administratörs inloggning. |
 | **Protokoll** | Tjänsten har stöd för ett Message-baserat protokoll som används av MySQL. |

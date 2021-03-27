@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671595"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612333"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Skapa, utveckla och underhålla Synapse Studio-anteckningsböcker i Azure Synapse Analytics
 
@@ -41,9 +41,6 @@ Synapse-teamet har tilldelat den nya komponenten för bärbara datorer i Synapse
 |%% HTML| Stöds inte |&#9745;|
 |Dra och släpp för att flytta en cell| Stöds inte |&#9745;|
 |Beständig visning () utdata|&#9745;| Inte tillgängligt |
-|Avbryt alla| &#9745;| Inte tillgängligt|
-|Kör alla celler ovan|&#9745;| Inte tillgängligt |
-|Kör alla celler nedan|&#9745;| Inte tillgängligt |
 |Formatera en text cell med knappar i verktygsfältet|&#9745;| Inte tillgängligt |
 |Ångra cell åtgärd| &#9745;| Inte tillgängligt |
 
@@ -104,7 +101,7 @@ Du kan ställa in det primära språket för nya tillagda celler i list rutan i 
 
 Du kan använda flera språk i en bärbar dator genom att ange rätt språk-Magic-kommando i början av en cell. I följande tabell visas Magic-kommandon för att växla mellan cell språk.
 
-|Magiskt kommando |Språk | Beskrivning |  
+|Magiskt kommando |Språk | Description |  
 |---|------|-----|
 |%% pyspark| Python | Kör en **python** -fråga mot Spark-kontext.  |
 |%% Spark| Scala | Kör en **Scala** -fråga mot Spark-kontext.  |  
@@ -152,7 +149,7 @@ IntelliSense-funktionerna finns på olika förfallo nivåer för olika språk. A
 |PySpark (Python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (Scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET för Spark (C#)|Ja|-|-|-|-|-|-|-|
+|.NET för Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formatera en text cell med knappar i verktygsfältet
 
@@ -273,28 +270,38 @@ Välj knappen **Kör alla** för att köra alla celler i den aktuella anteckning
    ![Kör alla – celler](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[Klassisk klassiskt Notebook](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>Kör alla celler ovanför eller under
+
+# <a name="classical-notebook"></a>[Klassisk klassiskt Notebook](#tab/classical)
 
 Om du vill komma åt menyn ytterligare cell åtgärder längst till höger väljer du ellipserna (**...**). Välj sedan **Kör celler ovan** för att köra alla celler ovanför den aktuella i sekvensen. Välj **Kör celler nedan** om du vill köra alla celler under den aktuella sekvensen.
 
    ![Run-cellernas över-eller-under](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[För hands version av Notebook](#tab/preview)
+
+Expandera List rutan från knappen **Kör alla** och välj sedan **Kör celler ovan** för att köra alla celler ovanför den aktuella i sekvensen. Välj **Kör celler nedan** om du vill köra alla celler under den aktuella sekvensen.
+
+   ![Azure-Notebook-Run-layoutceller-över-eller-under](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>Avbryt alla celler som körs
+
+# <a name="classical-notebook"></a>[Klassisk klassiskt Notebook](#tab/classical)
 Välj knappen **Avbryt alla** om du vill avbryta de celler eller celler som väntar i kön. 
    ![Avbryt – alla celler](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[För hands version av Notebook](#tab/preview)
 
-Avbryt alla celler som körs är inte tillgängliga för för hands versionen av den bärbara datorn ännu. 
+Välj knappen **Avbryt alla** om du vill avbryta de celler eller celler som väntar i kön. 
+   ![Azure-Notebook-Cancel-all-Cells](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>Referens antecknings bok
+### <a name="notebook-reference"></a>Referens för Notebook
 
 # <a name="classical-notebook"></a>[Klassisk klassiskt Notebook](#tab/classical)
 
@@ -305,6 +312,11 @@ Stöds inte.
 Du kan använda ```%run <notebook path>``` kommandot Magic för att referera till en annan antecknings bok i den aktuella Notebook-kontexten. Alla variabler som definieras i referens antecknings boken är tillgängliga i den aktuella antecknings boken. ```%run``` kommandot Magic stöder kapslade anrop men har inte stöd för rekursiva anrop. Du får ett undantag om utdrags djupet är större än fem. ```%run``` kommandot har för närvarande endast stöd för att skicka en Notebook-sökväg som parameter. 
 
 Exempel: ``` %run /path/notebookA ```.
+
+> [!NOTE]
+> Notebook Reference stöds inte i Synapse pipeline.
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ Du kan också ange Spark-sessionsinställningar via ett magiskt kommando **%% Ko
     }
 }
 ```
-
+> [!NOTE]
+> Kommandot Spark session config Magic stöds inte i Synapse pipeline.
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>Hämta data till en bärbar dator
 
@@ -420,6 +435,11 @@ I egenskaperna för antecknings boken kan du konfigurera om du vill ta med celle
 ## <a name="magic-commands"></a>Magic-kommandon
 Du kan använda välkända Jupyter Magic-kommandon i Azure Synapse Studio-anteckningsböcker. Granska följande lista som de aktuella tillgängliga Magic-kommandona. Berätta för oss [dina användnings fall på GitHub](https://github.com/MicrosoftDocs/azure-docs/issues/new) så att vi kan fortsätta att bygga upp fler Magic-kommandon för att uppfylla dina behov.
 
+> [!NOTE]
+> Endast följande Magic-kommandon stöds i Synapse-pipeline:%% pyspark,%% Spark,%% csharp,%% SQL. 
+>
+>
+
 # <a name="classical-notebook"></a>[Klassisk klassiskt Notebook](#tab/classical)
 
 Tillgängliga rad Magic: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ Tillgängliga cell Magic: [%% Time](https://ipython.readthedocs.io/en/stable/int
 
 # <a name="preview-notebook"></a>[För hands version av Notebook](#tab/preview)
 
-Tillgängliga rad Magic: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% History](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [% Kör](#reference-notebook), [% load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+Tillgängliga rad Magic: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% History](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [% Kör](#notebook-reference), [% load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 Tillgängliga cell Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% csharp](#use-multiple-languages), [%% HTML](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html), [%% Konfigurera](#spark-session-config-magic-command)
 

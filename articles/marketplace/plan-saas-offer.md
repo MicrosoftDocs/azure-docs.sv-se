@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 2f12f33bf6108784b2eec252fb12d03eebd2a45c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.date: 03/26/2021
+ms.openlocfilehash: 7d421cf20aa054fb3e1e4877ee610a284eeff7c9
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105604947"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627067"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planera ett SaaS-erbjudande för den kommersiella marknaden
 
@@ -39,7 +39,7 @@ Mer information om dessa List alternativ finns i [Transact-funktioner för komme
 
 När ditt erbjudande har publicerats visas det List alternativ som du har valt för ditt erbjudande som en knapp i det övre vänstra hörnet av ditt erbjudandes List sida. Följande skärm bild visar till exempel sidan erbjudande på Azure Marketplace med knappen **Hämta nu** .
 
-![Visar en lista med erbjudanden i onlinebutiken.](./media/saas/listing-options-saas-full.png)
+![Visar en lista med erbjudanden i onlinebutiken.](./media/saas/listing-options-saas.png)
 
 ## <a name="technical-requirements"></a>Tekniska krav
 

@@ -2,14 +2,14 @@
 title: Etablera en pool i ett virtuellt nätverk
 description: Så här skapar du en batch-pool i ett virtuellt Azure-nätverk så att Compute-noder kan kommunicera säkert med andra virtuella datorer i nätverket, till exempel en fil server.
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561925"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629316"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Skapa en Azure Batch pool i ett virtuellt nätverk
 
@@ -56,6 +56,8 @@ För att säkerställa att noderna i poolen fungerar i ett VNet som har Tvingad 
 - Batch-tjänsten måste kommunicera med noder för schemaläggning av aktiviteter. Om du vill aktivera den här kommunikationen lägger du till en UDR för varje IP-adress som används av batch-tjänsten i den region där ditt batch-konto finns. Om du vill hämta en lista över IP-adresser för batch-tjänsten, se [tjänst Taggar lokalt](../virtual-network/service-tags-overview.md).
 
 - Se till att utgående trafik till Azure Storage (särskilt URL-adresser i formuläret `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` och `<account>.blob.core.windows.net` ) inte blockeras av ditt lokala nätverk.
+
+- Om du använder virtuella fil monteringar granskar du [nätverks kraven](virtual-file-mount.md#networking-requirements) och kontrollerar att ingen nödvändig trafik är blockerad.
 
 När du lägger till en UDR definierar du vägen för varje relaterat batch-IP-adressprefix och anger **nästa hopp typ** till **Internet**.
 

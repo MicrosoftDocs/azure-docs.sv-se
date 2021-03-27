@@ -100,7 +100,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
         "language": "en-US"
       }
     ],
-    "vanityUrl": false,
+    "useStaticHostname": false,
     "streamOptions": [
       "Default"
     ]
@@ -161,7 +161,7 @@ Det här är exempel anropet för att aktivera Live-avskrifter.
         "language": "en-US"
       }
     ],
-    "vanityUrl": false,
+    "useStaticHostname": false,
     "streamOptions": [
       "Default"
     ]

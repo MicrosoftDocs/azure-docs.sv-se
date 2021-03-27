@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279422"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612848"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Versionshistorik för Azure AD Connect Health
 Azure Active Directorys teamet uppdaterar regelbundet Azure AD Connect Health med nya funktioner. Den här artikeln innehåller de versioner och funktioner som har släppts.  
@@ -32,12 +32,25 @@ Azure Active Directorys teamet uppdaterar regelbundet Azure AD Connect Health me
 
 Azure AD Connect Health för synkronisering är integrerat med Azure AD Connect installationen. Läs mer om [Azure AD Connect versions historik](./reference-connect-version-history.md) för feedback, rösta på [Connect Health User Voice Channel](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="march-2021"></a>Mars 2021
+**Agent uppdatering**
+
+- Azure AD Connect Health Agent för AD FS (version 3.1.95.0)
+
+  - Korrigera för att lösa NT4-formaterade användar namn till ett UPN vid inloggnings händelser.
+  - Korrigera för att identifiera fel scenarier för program identifierare med en särskild felkod.
+  - Ändringar för att lägga till en ny egenskap för OAuth-klient-ID.
+  - Korrigera för att Visa korrekta värden i fälten **protokoll** och **AUTENTISERINGSTYP** i Azure AD Sign-In rapport för vissa inloggnings scenarier.
+  - Korrigera för att visa IP-adresser i Azure AD Sign-In rapportens IP-kedje fält i ordning för begäran.
+  - Ändringar för att införa ett nytt fält för att särskilja om den sekundära autentiseringen begärdes under en inloggning.
+  - Korrigera för egenskapen AD FS-programid som ska visas i Azure AD Sign-In-rapporten.
+
 ## <a name="april-2020"></a>April 2020
 **Agent uppdatering**
 
 - Azure AD Connect Health Agent för AD FS (version 3.1.77.0)
 
-   1.   Fel korrigering för "ogiltigt SPN-namn (Service Principal Name) för AD FS tjänst" avisering, för vilken aviseringen rapporterades felaktigt.
+   - Fel korrigering för "ogiltigt SPN-namn (Service Principal Name) för AD FS tjänst" avisering, för vilken aviseringen rapporterades felaktigt.
 
 
 ## <a name="july-2019"></a>Juli 2019

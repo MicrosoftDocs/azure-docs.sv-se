@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric Event Analysis med Azure Monitor loggar
 description: Lär dig mer om visualisering och analys av händelser med hjälp av Azure Monitor loggar för övervakning och diagnostik av Azure Service Fabric-kluster.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581545"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628976"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Händelse analys och visualisering med Azure Monitor loggar
  Azure Monitor loggar samlar in och analyserar telemetri från program och tjänster som finns i molnet och tillhandahåller analys verktyg som hjälper dig att maximera deras tillgänglighet och prestanda. Den här artikeln beskriver hur du kör frågor i Azure Monitor loggar för att få insikter och felsöka vad som händer i klustret. Följande vanliga frågor behandlas:

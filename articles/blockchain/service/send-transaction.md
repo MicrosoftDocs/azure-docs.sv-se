@@ -4,12 +4,12 @@ description: Självstudie om hur du använder Azure blockchain Development Kit f
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96763697"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628653"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Självstudie: skapa, skapa och distribuera smarta avtal i Azure blockchain-tjänsten
 
@@ -82,27 +82,104 @@ Azure blockchain Development Kit använder Truffle för att köra migrations skr
 ![Kontraktet har distribuerats](./media/send-transaction/deploy-contract.png)
 
 ## <a name="call-a-contract-function"></a>Anropa en kontrakts funktion
+**HelloBlockchain** -kontraktets **SendRequest** -funktion ändrar variabeln **RequestMessage** State. Att ändra tillstånd för ett blockchain nätverk görs via en transaktion. Du kan skapa ett skript för att köra **SendRequest** -funktionen via en transaktion.
 
-**HelloBlockchain** -kontraktets **SendRequest** -funktion ändrar variabeln **RequestMessage** State. Att ändra tillstånd för ett blockchain nätverk görs via en transaktion. Du kan använda interaktions sidan för smart kontrakt i Azure blockchain Development Kit för att anropa funktionen **SendRequest** via en transaktion.
+1. Skapa en ny fil i roten av Truffle-projektet och ge den namnet `sendrequest.js` . Lägg till följande Web3 JavaScript-kod i filen.
 
-1. Om du vill interagera med ditt smarta kontrakt högerklickar du på **HelloBlockchain. sol** och väljer **Visa interaktions sidan för smart kontrakt** på menyn.
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+        
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
+      }).then(function(result) {
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-    ![Välj Visa interaktions sidan för smart kontrakt från menyn](./media/send-transaction/contract-interaction.png)
+1. När ett projekt skapas i Azure blockchain Development Kit genereras konfigurations filen för Truffle med information om ditt konsortiums blockchain Network Endpoint. Öppna **truffle-config.js** i projektet. Konfigurations filen visar två nätverk: en namngiven utveckling och en med samma namn som konsortiet.
+1. I rutan för VS-kodens terminalfönster använder du Truffle för att köra skriptet i ditt konsortium blockchain-nätverk. I meny raden i terminalfönstret väljer du fliken **Terminal** och **PowerShell** i list rutan.
 
-1. På sidan interaktion kan du välja en distribuerad kontrakt version, anropa funktioner, Visa aktuella tillstånd och visa metadata.
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
+    ```
 
-    ![Exempel på interaktions sida för smart kontrakt](./media/send-transaction/interaction-page.png)
+    Ersätt \<blockchain network\> med namnet på blockchain-nätverket som definierats i **truffle-config.js**.
 
-1. Om du vill anropa funktionen Smart kontrakt väljer du kontrakt åtgärden och skickar argumenten. Välj **SendRequest** kontrakt åtgärd och ange **Hej, blockchain!** för parametern **requestMessage** . Välj **Kör** för att anropa funktionen **SendRequest** via en transaktion.
+Truffle kör skriptet i ditt blockchain-nätverk.
 
-    ![Kör SendRequest-åtgärd](./media/send-transaction/sendrequest-action.png)
+![Utdata som visar transaktionen har skickats](./media/send-transaction/execute-transaction.png)
 
-När transaktionen har bearbetats visar interaktions avsnittet status ändringarna.
+När du kör ett kontrakts funktion via en transaktion bearbetas inte transaktionen förrän ett block har skapats. Funktioner som är avsedda att köras via en transaktion returnerar ett transaktions-ID i stället för ett retur värde.
 
-![Kontrakt status ändringar](./media/send-transaction/contract-state.png)
+## <a name="query-contract-state"></a>Status för fråga kontrakt
 
-Funktionen SendRequest anger fälten **RequestMessage** och **State** . Det aktuella läget för **RequestMessage** är argumentet du skickade **Hej, blockchain**. Värdet för fältet **State** förblir **Request**.
+Smarta kontrakt funktioner kan returnera det aktuella värdet för State-variabler. Nu ska vi lägga till en funktion för att returnera värdet för en tillstånds variabel.
 
+1. I **HelloBlockchain. sol** lägger du till en **GetMessage** -funktion i det smarta **HelloBlockchain** -kontraktet.
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
+    ```
+
+    Funktionen returnerar meddelandet som lagras i en tillstånds variabel baserat på kontraktets aktuella status.
+
+1. Högerklicka på **HelloBlockchain. sol** och välj **Bygg kontrakt** på menyn för att kompilera ändringarna i det smarta kontraktet.
+1. Du distribuerar genom att högerklicka på **HelloBlockchain. sol** och välja **distribuera kontrakt** på menyn. När du uppmanas väljer du ditt Azure blockchain Consortium-nätverk i kommando paletten.
+1. Skapa sedan ett skript som använder för att anropa funktionen **GetMessage** . Skapa en ny fil i roten av Truffle-projektet och ge den namnet `getmessage.js` . Lägg till följande Web3 JavaScript-kod i filen.
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
+
+1. I rutan för VS-kodens terminalfönster använder du Truffle för att köra skriptet i ditt blockchain-nätverk. I meny raden i terminalfönstret väljer du fliken **Terminal** och **PowerShell** i list rutan.
+
+    ```bash
+    truffle exec getmessage.js --network <blockchain network>
+    ```
+
+    Ersätt \<blockchain network\> med namnet på blockchain-nätverket som definierats i **truffle-config.js**.
+
+Skriptet frågar det smarta kontraktet genom att anropa funktionen getMessage. Det aktuella värdet för **RequestMessage** status-variabeln returneras.
+
+![Utdata från GetMessage-frågan som visar det aktuella värdet för RequestMessage State-variabel](./media/send-transaction/execute-get.png)
+
+Observera att värdet inte är **Hej, blockchain!**. I stället är det returnerade värdet en plats hållare. När du ändrar och distribuerar kontraktet distribueras det ändrade kontraktet till en ny adress och State-variablerna tilldelas värden i konstruktorn för smarta kontrakt. Truffle-exemplet för **2_deploy_contracts.js** migreringen distribuerar det smarta kontraktet och skickar ett värde för plats hållare som ett argument. Konstruktorn anger **RequestMessage** tillstånds variabeln till värdet för plats hållaren och det som returneras.
+
+1. Om du vill ställa in **RequestMessage** tillstånds variabel och fråga efter värdet kör du **sendrequest.js** och **getmessage.js** skript igen.
+
+    ![Utdata från SendRequest-och GetMessage-skript som visar RequestMessage har angetts](./media/send-transaction/execute-set-get.png)
+
+    **sendrequest.js** anger **RequestMessage** tillstånds variabeln till **Hej, blockchain!** och **getmessage.js** frågar kontraktet efter värde för **RequestMessage** State-variabeln och returnerar **Hej, blockchain!**.
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När de inte längre behövs kan du ta bort resurserna genom att ta bort `myResourceGroup` resurs gruppen som du skapade i snabb starten för att *skapa en blockchain-medlems* krav.

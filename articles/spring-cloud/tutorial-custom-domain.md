@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 7aa1982fc880ac5733cc4453808c18956969572f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047090"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627021"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Självstudie: mappa en befintlig anpassad domän till Azure våren Cloud
 
@@ -27,6 +27,14 @@ Certifikaten krypterar webb trafik. Dessa TLS/SSL-certifikat kan lagras i Azure 
 * Ett domän namn med åtkomst till DNS-registret för domän leverantören, till exempel GoDaddy.
 * Ett privat certifikat (det vill säga ditt självsignerade certifikat) från en tredje parts leverantör. Certifikatet måste matcha domänen.
 * En distribuerad instans av [Azure Key Vault](../key-vault/general/overview.md)
+
+## <a name="keyvault-private-link-considerations"></a>Överväganden för privata länkar i nyckel valvet
+
+Azure våren Cloud Management-IP-adresser är inte en del av Azures betrodda Microsoft-tjänster. Därför måste du lägga till följande IP-adresser i Azure Key Vault brand väggen för att tillåta Azure våren-moln att läsa in certifikat från en Key Vault som skyddas med privata slut punkts anslutningar:
+
+```
+20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
+```
 
 ## <a name="import-certificate"></a>Importera certifikatet
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Förbered din certifikat fil i PFX (valfritt)
