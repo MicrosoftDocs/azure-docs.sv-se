@@ -148,6 +148,22 @@
       items:
         - name: Dokument översättnings REST API
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: Hämta dokument format
+          href: document-translation/reference/get-document-formats.md
+        - name: Hämta ord format
+          href: document-translation/reference/get-glossary-formats.md
+        - name: Hämta dokument lagrings källa
+          href: document-translation/reference/get-document-storage-source.md
+        - name: Skicka batch-begäran
+          href: document-translation/reference/submit-batch-request.md
+        - name: Hämta åtgärds dokument status
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: Hämta dokument status
+          href: document-translation/reference/get-document-status.md
+        - name: Hämta åtgärder
+          href: document-translation/reference/get-operations.md
+        - name: Avbryt åtgärd
+          href: document-translation/reference/cancel-operation.md
 - name: Translator-resurser
   items:
     - name: Alternativ för support och hjälp

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d41b06bb0c2b26776f9d9c195c3a713e4dae9f82
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572807"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626646"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestanda och skalning i Durable Functions (Azure Functions)
 
@@ -40,7 +40,7 @@ Det finns en kö för arbets objekt per aktivitets hubb i Durable Functions. Det
 
 ### <a name="control-queues"></a>Kontroll köer
 
-Det finns flera *kontroll köer* per aktivitets nav i Durable functions. En *kontroll kö* är mer avancerad än den enklare arbets objekts kön. Kontroll köer används för att utlösa tillstånds känsliga funktioner för Orchestrator och entitet. Eftersom Orchestrator-och enhets funktions instanserna är tillstånds känsliga singleton är det inte möjligt att använda en konkurrerande konsument modell för att distribuera belastningen mellan virtuella datorer. I stället är Orchestrator-och enhets meddelanden belastningsutjämnade i kontroll köerna. Mer information om det här problemet finns i följande avsnitt.
+Det finns flera *kontroll köer* per aktivitets nav i Durable functions. En *kontroll kö* är mer avancerad än den enklare arbets objekts kön. Kontroll köer används för att utlösa tillstånds känsliga funktioner för Orchestrator och entitet. Eftersom Orchestrator-och enhets funktions instanserna är tillstånds känsliga singleton är det viktigt att varje dirigering eller entitet endast bearbetas av en arbetare i taget. För att uppnå detta tilldelas varje Dirigerings instans eller entitet till en enskild kontroll kö. De här kontroll köerna är belastningsutjämnade i arbets grupper för att säkerställa att varje kö bara bearbetas av en arbets tagare i taget. Mer information om det här problemet finns i följande avsnitt.
 
 Kontroll köer innehåller olika typer av typer av Dirigerings-livs cykel meddelanden. Exempel på detta är [Orchestrator-kontrollmeddelanden](durable-functions-instance-management.md), meddelanden om aktivitets funktions *svar* och timer-meddelanden. Så många som 32 meddelanden tas i kö från en kontroll kö i en enda omröstning. Dessa meddelanden innehåller nytto Last data samt metadata, inklusive vilken Orchestration-instans den är avsedd för. Om flera meddelanden i kön är avsedda för samma Dirigerings instans kommer de att bearbetas som en batch.
 
@@ -56,7 +56,7 @@ Den maximala avsöknings fördröjningen kan konfigureras via `maxQueuePollingIn
 ### <a name="orchestration-start-delays"></a>Start fördröjningar för dirigering
 Dirigerings instanser startas genom att placera ett `ExecutionStarted` meddelande i en av aktivitets hubbens kontroll köer. Under vissa omständigheter kan du se flera sekunders fördröjningar mellan när ett dirigering är schemalagt att köras och när det faktiskt börjar köras. Under det här tidsintervallet behålls Orchestration-instansen i `Pending` status. Det finns två möjliga orsaker till den här fördröjningen:
 
-1. **Eftersläpande kontroll köer**: om kontroll kön för den här instansen innehåller ett stort antal meddelanden kan det ta tid innan `ExecutionStarted` meddelandet tas emot och bearbetas av körnings miljön. Meddelanden med loggfiler kan inträffa när dirigeringen behandlar mycket händelser samtidigt. Händelser som ingår i kontroll kön omfattar Dirigerings start händelser, aktivitetens slutdatum, varaktiga timers, avslutning och externa händelser. Om den här fördröjningen inträffar under normala omständigheter bör du överväga att skapa en ny aktivitetsvy med ett större antal partitioner. Om du konfigurerar fler partitioner kommer körningen att skapa fler kontroll köer för belastnings distribution.
+1. **Eftersläpande kontroll köer**: om kontroll kön för den här instansen innehåller ett stort antal meddelanden kan det ta tid innan `ExecutionStarted` meddelandet tas emot och bearbetas av körnings miljön. Meddelanden med loggfiler kan inträffa när dirigeringen behandlar mycket händelser samtidigt. Händelser som ingår i kontroll kön omfattar Dirigerings start händelser, aktivitetens slutdatum, varaktiga timers, avslutning och externa händelser. Om den här fördröjningen inträffar under normala omständigheter bör du överväga att skapa en ny aktivitetsvy med ett större antal partitioner. Om du konfigurerar fler partitioner kommer körningen att skapa fler kontroll köer för belastnings distribution. Varje partition motsvarar 1:1 med en kontroll kö med högst 16 partitioner.
 
 2. **Inaktivera avsöknings fördröjningar**: en annan vanlig orsak till Dirigerings fördröjningar är den [tidigare beskrivna avsöknings beteendet för kontroll köer](#queue-polling). Denna fördröjning förväntas dock bara när en app skalas ut till två eller fler instanser. Om det bara finns en app-instans eller om den app-instans som startar dirigeringen också är samma instans som avsöker mål kontroll kön, kommer det inte att finnas någon fördröjning i kön. Du kan minska avsöknings fördröjningen genom att uppdatera **host.jspå** inställningar, enligt beskrivningen ovan.
 
@@ -94,7 +94,12 @@ Om inget värde anges används standard `AzureWebJobsStorage` lagrings kontot. F
 
 ## <a name="orchestrator-scale-out"></a>Skalbarhet för Orchestrator
 
-Aktivitets funktionerna är tillstånds lösa och skalas ut automatiskt genom att lägga till virtuella datorer. Orchestrator-funktioner och entiteter, å andra sidan, *partitioneras* i en eller flera kontroll köer. Antalet kontroll köer definieras i **host.js** i filen. I följande exempel host.jsi kodfragmentet anges `durableTask/storageProvider/partitionCount` egenskapen (eller `durableTask/partitionCount` i Durable Functions 1. x) till `3` .
+Medan aktivitets funktioner kan skalas ut oändligt genom att lägga till fler virtuella datorer elastiskt, är enskilda Orchestrator-instanser och-entiteter begränsade till att inhabit en enda partition och det maximala antalet partitioner begränsas av `partitionCount` inställningen i `host.json` . 
+
+> [!NOTE]
+> I allmänhet är Orchestrator-funktioner avsedda att vara lätta att vara lätta och bör inte kräva stora mängder data behandlings kraft. Därför är det inte nödvändigt att skapa ett stort antal Control-diskpartitioner för att få ett bra data flöde för dirigering. Det mesta av det tunga arbetet bör utföras i tillstånds lösa aktivitets funktioner som kan skalas ut oändligt.
+
+Antalet kontroll köer definieras i **host.js** i filen. I följande exempel host.jsi kodfragmentet anges `durableTask/storageProvider/partitionCount` egenskapen (eller `durableTask/partitionCount` i Durable Functions 1. x) till `3` . Observera att det finns så många kontroll köer som det finns partitioner.
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -124,11 +129,25 @@ Aktivitets funktionerna är tillstånds lösa och skalas ut automatiskt genom at
 
 En aktivitets hubb kan konfigureras med mellan 1 och 16 partitioner. Om inget värde anges är standardpartitions antalet **4**.
 
-Vid skalning till flera funktions värd instanser (vanligt vis på olika virtuella datorer) får varje instans ett lås i en av kontroll köerna. Dessa lås implementeras internt som Blob Storage-lån och säkerställer att en Dirigerings instans eller entitet bara körs på en enda värd instans i taget. Om en aktivitets hubb har kon figurer ATS med tre kontroll köer kan Dirigerings instanser och entiteter vara belastningsutjämnade i upp till tre virtuella datorer. Ytterligare virtuella datorer kan läggas till för att öka kapaciteten för körning av aktivitets funktionen.
+I scenarier med låg trafik kommer ditt program att skalas, så partitioner hanteras av ett litet antal arbetare. Anta till exempel diagrammet nedan.
+
+![Skal i Orchestration-diagram](./media/durable-functions-perf-and-scale/scale-progression-1.png)
+
+I det föregående diagrammet ser vi att Dirigerings-1 till 6 är belastningsutjämnad över partitioner. På samma sätt är partitionerna, som aktiviteter, balanserade över arbets tagarna. Partitioner är belastningsutjämnade över arbetare oavsett hur många dirigeringar som kommer igång.
+
+Om du kör på Azure Functions förbruknings-eller elastiska Premium-planer, eller om du har konfigurerat den belastningsutjämnade automatiska skalningen, tilldelas fler medarbetare när trafiken ökar och partitionerna kommer att belasta alla anställda. Om vi fortsätter att skala ut, kan varje partition slutligen hanteras av en enda anställd. Aktiviteter, å andra sidan, fortsätter att vara belastningsutjämnade för alla arbetare. Detta visas i bilden nedan.
+
+![Första utskalade Orchestration-diagrammet](./media/durable-functions-perf-and-scale/scale-progression-2.png)
+
+Den övre gränsen för det maximala antalet samtidiga _aktiva_ dirigeringar vid *en bestämd tidpunkt* är lika med antalet arbets tagare som har allokerats till ditt program _gånger_ som värde för `maxConcurrentOrchestratorFunctions` . Den här övre gränsen kan göras mer exakt när partitionerna är helt skalade över arbets tagarna. När den är helt skalad, och eftersom varje arbets tagare bara kommer att ha en värd instans för en enda funktion, är det högsta antalet _aktiva_ , samtidiga Orchestrator-instanser som motsvarar ditt antal partitioner _gånger_ värdet för `maxConcurrentOrchestratorFunctions` . Bilden nedan illustrerar ett helt utskalat scenario där fler Dirigerare läggs till men vissa är inaktiva, som visas i grått.
+
+![Diagram över andra skalade Orchestration-diagram](./media/durable-functions-perf-and-scale/scale-progression-3.png)
+
+Vid utskalning kan styrning av köhanteraren omdistribueras över funktions värd instanser för att säkerställa att partitionerna är jämnt distribuerade. Dessa lås implementeras internt som Blob Storage-lån och säkerställer att varje enskild Dirigerings instans eller entitet bara körs på en enda värd instans i taget. Om en aktivitets hubb har kon figurer ATS med tre partitioner (och därför tre kontroll köer) kan Dirigerings instanser och entiteter vara belastningsutjämnade i alla tre värd instanser för leasing innehav. Ytterligare virtuella datorer kan läggas till för att öka kapaciteten för körning av aktivitets funktionen.
 
 Följande diagram illustrerar hur Azure Functions-värden interagerar med lagrings enheterna i en skalad miljö.
 
-![Skala diagram](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Skala diagram](./media/durable-functions-perf-and-scale/scale-interactions-diagram.png)
 
 Som du ser i föregående diagram konkurrerar alla virtuella datorer om meddelanden i arbets objekt kön. Men endast tre virtuella datorer kan hämta meddelanden från kontroll köer och varje virtuell dator låser en enskild kontroll kö.
 

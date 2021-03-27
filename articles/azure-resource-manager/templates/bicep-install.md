@@ -2,38 +2,42 @@
 title: Konfigurera bicep utvecklings-och distributions miljöer
 description: Så här konfigurerar du bicep utvecklings-och distributions miljöer
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 9a35355d1035943081ac58b36623af772fb8d547
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.date: 03/26/2021
+ms.openlocfilehash: 0e62e6a4633bee09fcbe8b783118cc95ccd5702e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612593"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626109"
 ---
 # <a name="install-bicep-preview"></a>Installera bicep (för hands version)
 
-Lär dig hur du ställer in bicep utvecklings-och distributions miljöer.
+Lär dig hur du konfigurerar bicep utvecklings-och distributions miljöer.
 
 ## <a name="development-environment"></a>Utvecklingsmiljö
 
 Du behöver två komponenter för att få bästa redigerings upplevelse för bicep:
 
 - **Bicep-tillägg för Visual Studio Code**. Om du vill skapa bicep-filer behöver du en lämplig bicep-redigerare. Vi rekommenderar [Visual Studio Code](https://code.visualstudio.com/) med [bicep-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Dessa verktyg ger språk stöd och slut för ande av resurser. De hjälper dig att skapa och validera bicep-filer. Mer information om hur du använder Visual Studio Code och bicep-tillägget finns i [snabb start: skapa bicep-filer med Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).
-- **BICEP CLI**. Använd bicep CLI för att kompilera bicep-filer till ARM JSON-mallar och dekompilera ARM JSON-mallar till bicep-filer. Mer information finns i [Installera BICEP CLI](#install-bicep-cli).
+- **BICEP CLI**. Använd bicep CLI för att kompilera bicep-filer till ARM JSON-mallar och dekompilera ARM JSON-mallar till bicep-filer. Installations anvisningar finns i [Installera BICEP CLI](#install-manually).
 
 ## <a name="deployment-environment"></a>Distributionsmiljö
 
-Du kan distribuera bicep-filer med hjälp av Azure CLI eller Azure PowerShell. För Azure CLI behöver du version 2.20.0 eller senare. för Azure PowerShell behöver du version 5.6.0 eller senare. Installations anvisningar finns i:
+Om du vill distribuera lokala bicep-filer behöver du två komponenter:
 
-- [Installera Azure PowerShell](/powershell/azure/install-az-ps)
-- [Installera Azure CLI på Windows](/cli/azure/install-azure-cli-windows)
-- [Installera Azure CLI på Linux](/cli/azure/install-azure-cli-linux)
-- [Installera Azure CLI på macOS](/cli/azure/install-azure-cli-macos)
+- **Azure CLI version 2.20.0 eller senare, eller Azure PowerShell version 5.6.0 eller senare**. Installations anvisningar finns i:
 
-> [!NOTE]
-> För närvarande kan både Azure CLI och Azure PowerShell bara distribuera lokala bicep-filer. Mer information om hur du distribuerar bicep-filer med hjälp av Azure CLI finns i [Deploy-CLI](./deploy-cli.md#deploy-remote-template). Mer information om hur du distribuerar bicep-filer med hjälp av Azure PowerShell finns i [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
+  - [Installera Azure PowerShell](/powershell/azure/install-az-ps)
+  - [Installera Azure CLI på Windows](/cli/azure/install-azure-cli-windows)
+  - [Installera Azure CLI på Linux](/cli/azure/install-azure-cli-linux)
+  - [Installera Azure CLI på macOS](/cli/azure/install-azure-cli-macos)
 
-När den version av Azure PowerShell eller Azure CLI som stöds har installerats kan du distribuera en bicep-fil med:
+  > [!NOTE]
+  > För närvarande kan både Azure CLI och Azure PowerShell bara distribuera lokala bicep-filer. Mer information om hur du distribuerar bicep-filer med hjälp av Azure CLI finns i [Deploy-CLI](./deploy-cli.md#deploy-remote-template). Mer information om hur du distribuerar bicep-filer med hjälp av Azure PowerShell finns i [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
+
+- **BICEP CLI**. Bicep CLI krävs för att kompilera bicep-filer till JSON-mallar före distributionen. Installations anvisningar finns i [Installera BICEP CLI](#install-bicep-cli).
+
+När komponenterna har installerats kan du distribuera en bicep-fil med:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -59,11 +63,23 @@ az deployment group create \
 
 ## <a name="install-bicep-cli"></a>Installera bicep CLI
 
-Du kan installera bicep CLI med hjälp av Azure CLI genom att använda Azure PowerShell eller manuellt.
+- Om du vill använda bicep CLI för att kompilera och dekompilera bicep-filer, se [installera manuellt](#install-manually).
+- Information om hur du använder Azure CLI för att distribuera bicep-filer finns i [använda med Azure CLI](#use-with-azure-cli).
+- Om du vill använda Azure PowerShell för att distribuera bicep-filer, se [använda med Azure PowerShell](#use-with-azure-powershell).
 
-### <a name="use-azure-cli"></a>Använda Azure CLI
+### <a name="use-with-azure-cli"></a>Använd med Azure CLI
 
-När AZ CLI version 2.20.0 eller senare installeras installeras bicep CLI automatiskt när ett kommando som är beroende av det körs. Exempel: `az deployment ... -f *.bicep` eller `az bicep ...`.
+Med Azure CLI version 2.20.0 eller senare installerat installeras bicep CLI automatiskt när ett kommando som är beroende av det körs. Exempel:
+
+```azurecli
+az deployment group create --template-file azuredeploy.bicep --resource-group myResourceGroup
+```
+
+eller
+
+```azurecli
+az bicep ...
+```
 
 Du kan också installera CLI manuellt med hjälp av de inbyggda kommandona:
 
@@ -80,17 +96,11 @@ az bicep upgrade
 Så här installerar du en angiven version:
 
 ```bash
-az bicep install --version v0.2.212
+az bicep install --version v0.3.126
 ```
 
-> [!NOTE]
-> AZ CLI installerar en separat version av bicep CLI som inte är i konflikt med andra bicep-installationer som du kan ha, och AZ CLI lägger inte till bicep till din sökväg.
-
-Så här visar du de installerade versionerna:
-
-```bash
-az bicep version
-```
+> [!IMPORTANT]
+> Azure CLI installerar en separat version av bicep CLI som inte är i konflikt med andra bicep-installationer som du kan ha, och Azure CLI lägger inte till bicep CLI i sökvägen. Om du vill använda bicep CLI för att kompilera/dekompilera bicep-filer, eller om du vill använda Azure PowerShell för att distribuera bicep-filer, se [installera manuellt](#install-manually) eller [Använd med Azure PowerShell](#use-with-azure-powershell).
 
 Visa en lista över alla tillgängliga versioner av bicep CLI:
 
@@ -98,9 +108,30 @@ Visa en lista över alla tillgängliga versioner av bicep CLI:
 az bicep list-versions
 ```
 
-### <a name="use-azure-powershell"></a>Använda Azure PowerShell
+Så här visar du de installerade versionerna:
 
-Azure PowerShell har inte möjlighet att installera bicep CLI ännu. Azure PowerShell (v 5.6.0 eller senare) förväntar sig att bicep CLI redan är installerat och tillgängligt i sökvägen. Följ någon av de [manuella installations metoderna](#install-manually). När bicep CLI har installerats anropas bicep CLI när det krävs för en distributions-cmdlet. Till exempel `New-AzResourceGroupDeployment ... -TemplateFile main.bicep`.
+```bash
+az bicep version
+```
+
+### <a name="use-with-azure-powershell"></a>Använd med Azure PowerShell
+
+Azure PowerShell har inte möjlighet att installera bicep CLI ännu. Azure PowerShell (v 5.6.0 eller senare) förväntar sig att bicep CLI redan är installerat och tillgängligt i sökvägen. Följ någon av de [manuella installations metoderna](#install-manually).
+
+För att distribuera bicep-filer krävs bicep CLI version 0.3.1 eller senare. Så här kontrollerar du bicep CLI-versionen:
+
+```cmd
+bicep --version
+```
+
+> [!IMPORTANT]
+> Azure CLI installerar sin egen självständiga version av bicep CLI. Azure PowerShell distributionen Miss lyckas även om du har de versioner som krävs installerade för Azure CLI.
+
+När bicep CLI har installerats anropas bicep CLI när det krävs för en distributions-cmdlet. Exempel:
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateFile azuredeploy.bicep
+```
 
 ### <a name="install-manually"></a>Installera manuellt
 

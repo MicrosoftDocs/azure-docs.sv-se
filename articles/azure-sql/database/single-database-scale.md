@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773257"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625279"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skala enkla databasresurser i Azure SQL Database
 
@@ -61,7 +61,10 @@ Beräknad svars tid för att ändra tjänst nivån, skala beräknings storleken 
 > Dessutom, för standard (S2-S12) och Generell användning databaser, kommer svars tiden för att flytta en databas in i och ut ur en elastisk pool eller mellan elastiska pooler att vara proportionerlig till databasens storlek om databasen använder sig av tjänsten Premium File Share ([PFS](../../storage/files/storage-files-introduction.md)).
 >
 > Du kan ta reda på om en databas använder PFS-lagring genom att köra följande fråga i databasens kontext. Om värdet i kolumnen flervärdesattribut är `PremiumFileStorage` eller `PremiumFileStorage-ZRS` , använder databasen PFS-lagring.
- 
+
+[!NOTE]
+ Zonens redundanta egenskap förblir samma som standard när du skalar från Affärskritisk till Generell användning-nivån. Svars tiden för den här nedgraderingen när zon redundans är aktive rad samt svars tid för växling till zon-redundans för Generell användning nivån är proportionell till databasens storlek.
+
 ```sql
 SELECT s.file_id,
        s.type_desc,

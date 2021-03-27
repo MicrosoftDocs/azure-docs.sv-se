@@ -16,22 +16,29 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686877"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611896"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Förnya Federations certifikat för Microsoft 365 och Azure Active Directory
 ## <a name="overview"></a>Översikt
 För lyckad federation mellan Azure Active Directory (Azure AD) och Active Directory Federation Services (AD FS) (AD FS) bör de certifikat som används av AD FS för att signera säkerhetstoken till Azure AD matcha vad som har kon figurer ATS i Azure AD. Eventuella matchnings fel kan leda till trasigt förtroende. Azure AD säkerställer att den här informationen hålls synkroniserad när du distribuerar AD FS och Webbprogramproxy (för extra nät åtkomst).
+
+> [!NOTE]
+> Den här artikeln innehåller information om manging Federations cerficates.  För inblandning vid nöd rotation, se [nöd rotation av AD FS certifikat](how-to-connect-emergency-ad-fs-certificate-rotation.md)
 
 Den här artikeln innehåller ytterligare information om hur du hanterar certifikat för tokensignering och behåller dem synkroniserade med Azure AD i följande fall:
 
 * Du distribuerar inte Webbprogramproxy, och därför är federationsmetadata inte tillgängligt i extra nätet.
 * Du använder inte standard konfigurationen för AD FS för token signerings certifikat.
 * Du använder en identitets leverantör från tredje part.
+
+> [!IMPORTANT]
+> Microsoft rekommenderar starkt att du använder en modul för maskin varu säkerhet (HSM) för att skydda och skydda certifikat.
+> Mer information finns i [modulen för maskin varu säkerhet](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) under metod tips för att skydda AD FS.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standard konfiguration av AD FS för certifikat för tokensignering
 Token signering och token dekryptering av certifikat är vanligt vis självsignerade certifikat och är lämpliga i ett år. AD FS innehåller som standard en process för automatisk förnyelse som heter **AutoCertificateRollover**. Om du använder AD FS 2,0 eller senare uppdaterar Microsoft 365 och Azure AD ditt certifikat automatiskt innan det upphör att gälla.
@@ -108,7 +115,7 @@ I utdata från antingen Get-MsolFederationProperty eller get-AdfsCertificate, s�
 |:---:|:---:|:---:|:---:|:---:|
 | Ja |Ja |Ja |- |Det behövs ingen åtgärd. Se [förnya token signerings certifikat automatiskt](#autorenew). |
 | Ja |Inga |- |Mindre än 15 dagar |Förnya omedelbart. Se [förnya token signerings certifikat manuellt](#manualrenew). |
-| Inga |- |- |Mindre än 30 dagar |Förnya omedelbart. Se [förnya token signerings certifikat manuellt](#manualrenew). |
+| No |- |- |Mindre än 30 dagar |Förnya omedelbart. Se [förnya token signerings certifikat manuellt](#manualrenew). |
 
 \[-] Spelar ingen roll
 

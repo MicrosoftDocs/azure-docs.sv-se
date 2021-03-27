@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b9ea447b0204ad91065f27d265584c8787167fc2
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: af0b8a4d3dfbce32e412f5294fb19ade61fd7661
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870729"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628177"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate support mat ris
 
@@ -44,7 +44,7 @@ Azure Migrate: Server-migrering | Ej tillämpligt | Migrera [virtuella VMware-da
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| Utvärdera virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska servrar och andra moln arbets belastningar. | Ej tillämpligt
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Utvärdera virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska server sand andra moln arbets belastningar. |  Migrera virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska servrar, offentliga moln arbets belastningar.
 [Enhet 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Utvärdera virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska servrar och andra moln arbets belastningar.| Ej tillämpligt
-[DMA](/sql/dma/dma-overview?view=sql-server-2017) | Utvärdera SQL Server-databaser. | Ej tillämpligt
+[DMA](/sql/dma/dma-overview) | Utvärdera SQL Server-databaser. | Ej tillämpligt
 [DMS](../dms/dms-overview.md) | Ej tillämpligt | Migrera SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Utvärdera VDI (Virtual Desktop Infrastructure) | Ej tillämpligt
 [Movere](https://www.movere.io/) | Utvärdera virtuella VMware-datorer, virtuella Hyper-V-datorer, virtuella Xen-datorer, fysiska servrar, arbets stationer (inklusive VDI) och andra moln arbets belastningar. | Ej tillämpligt

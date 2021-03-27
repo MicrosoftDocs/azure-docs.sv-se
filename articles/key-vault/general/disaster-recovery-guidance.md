@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27184e267bb0472dad6fc9176dfdeee68d5eae58
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518455"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611828"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Tillgänglighet och redundans för Azure Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault har flera lager av redundans för att se till att dina nycklar o
 > [!NOTE]
 > Den här guiden gäller för valv. Hanterade HSM-pooler använder en annan hög tillgänglighet och katastrof återställnings modell. Mer information finns i [Översikt över hanterad HSM-återställning](../managed-hsm/disaster-recovery-guide.md) .
 
-Innehållet i ditt nyckel valv replikeras i regionen och till en sekundär region minst 150 mil, men inom samma geografiska område för att upprätthålla hög hållbarhet för dina nycklar och hemligheter. Mer information om vissa region par finns i [Azure-kopplade regioner](../../best-practices-availability-paired-regions.md). Undantaget till de Parada regionerna är södra Brasilien, vilket innebär att endast möjligheten att förvara data som är bosatta i södra Brasilien. Södra Brasilien använder Zone redundant lagring (ZRS) för att replikera dina data tre gånger inom den enda platsen/regionen.   
+Innehållet i ditt nyckel valv replikeras i regionen och till en sekundär region minst 150 mil, men inom samma geografiska område för att upprätthålla hög hållbarhet för dina nycklar och hemligheter. Mer information om vissa region par finns i [Azure-kopplade regioner](../../best-practices-availability-paired-regions.md). Undantaget till de Parada regionerna är södra Brasilien, vilket innebär att endast möjligheten att förvara data som är bosatta i södra Brasilien. Södra Brasilien använder Zone redundant lagring (ZRS) för att replikera dina data tre gånger inom den enda platsen/regionen. För AKV Premium används bara 2 av de tre regionerna för att replikera data från HSM: s.  
 
 Om enskilda komponenter i Key Vault-tjänsten kraschar kan alternativa komponenter i regions steget i hantera din begäran för att se till att det inte finns någon försämring av funktionaliteten. Du behöver inte vidta några åtgärder för att starta den här processen, det sker automatiskt och blir transparent för dig.
 

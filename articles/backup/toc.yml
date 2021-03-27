@@ -224,10 +224,18 @@
       items:
         - name: Översikt
           href: disk-backup-overview.md
-        - name: Backup
-          href: backup-managed-disks.md
-        - name: Återställ
-          href: restore-managed-disks.md
+        - name: Från Azure-portalen
+          items:
+            - name: Backup
+              href: backup-managed-disks.md
+            - name: Återställ
+              href: restore-managed-disks.md
+        - name: Med PowerShell
+          items:
+            - name: Backup
+              href: backup-managed-disks-ps.md
+            - name: Återställ
+              href: restore-managed-disks-ps.md
     - name: Azure blobs-säkerhetskopiering
       items:
         - name: Översikt

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98121533"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627956"
 ---
 # <a name="visualize-data"></a>Visualisera data
 Azure Synapse är en integrerad analys tjänst som påskyndar tiden för insikter, över informations lager och Big data analys system. Data visualisering är en viktig komponent där du kan få inblick i dina data. Det hjälper dig att göra stora och små data enklare för människor att förstå. Det gör det också lättare att identifiera mönster, trender och avvikande värden i grupper med data. 
@@ -34,6 +34,7 @@ För att få åtkomst till diagram alternativ:
    ![inbyggda diagram](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Nu kan du anpassa visualiseringen genom att ange följande värden:
+
    | Konfiguration | Beskrivning |
    |--|--| 
    | Diagramtyp | ```display```Funktionen har stöd för en mängd olika diagram typer, inklusive stapeldiagram, punkt diagram, linje diagram med mera |
@@ -148,6 +149,37 @@ svg
 ## <a name="popular-libraries"></a>Populära bibliotek
 När den kommer till data visualisering erbjuder python flera diagram bibliotek som är förpackade med många olika funktioner. Som standard innehåller varje Apache Spark pool i Azure Synapse Analytics en uppsättning granskade och populära bibliotek med öppen källkod. Du kan också lägga till eller hantera ytterligare bibliotek & versioner med hjälp av funktionerna för hantering av Azure Synapse Analytics-bibliotek. 
 
+### <a name="matplotlib"></a>Matplotlib
+Du kan rendera standard ritnings bibliotek, som matplotlib, med hjälp av de inbyggda åter givnings funktionerna för varje bibliotek.
+
+Följande bild är ett exempel på hur du skapar ett stapeldiagram med **matplotlib**.
+   ![Linje diagram exempel.](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+
+Kör följande exempel kod för att rita bilden ovan.
+
+```python
+# Bar chart
+
+import matplotlib.pyplot as plt
+
+x1 = [1, 3, 4, 5, 6, 7, 9]
+y1 = [4, 7, 2, 4, 7, 8, 3]
+
+x2 = [2, 4, 6, 8, 10]
+y2 = [5, 6, 2, 6, 2]
+
+plt.bar(x1, y1, label="Blue Bar", color='b')
+plt.bar(x2, y2, label="Green Bar", color='g')
+plt.plot()
+
+plt.xlabel("bar number")
+plt.ylabel("bar height")
+plt.title("Bar Chart Example")
+plt.legend()
+plt.show()
+```
+
+
 ### <a name="bokeh"></a>Bokeh
 Du kan återge HTML-eller interaktiva bibliotek, som **bokeh**, med hjälp av ```displayHTML(df)``` . 
 
@@ -186,41 +218,49 @@ html = file_html(p, CDN, "my plot1")
 displayHTML(html)
 ```
 
-### <a name="matplotlib"></a>Matplotlib
-Du kan rendera standard ritnings bibliotek, som matplotlib, med hjälp av de inbyggda åter givnings funktionerna för varje bibliotek.
 
-Följande bild är ett exempel på hur du skapar ett stapeldiagram med **matplotlib**.
-   ![Linje diagram exempel.](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+### <a name="plotly"></a>Plotly
+Du kan återge HTML-eller interaktiva bibliotek som att **Rita** med hjälp av **displayHTML ()**.
 
-Kör följande exempel kod för att rita bilden ovan.
+Kör följande exempel kod för att rita bilden nedan.
+
+   ![Rita ett exempel](./media/apache-spark-development-using-notebooks/synapse-plotly-image.png#lightbox)
+
 
 ```python
-# Bar chart
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
 
-import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                   dtype={"fips": str})
 
-x1 = [1, 3, 4, 5, 6, 7, 9]
-y1 = [4, 7, 2, 4, 7, 8, 3]
+import plotly.express as px
 
-x2 = [2, 4, 6, 8, 10]
-y2 = [5, 6, 2, 6, 2]
+fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
+                           color_continuous_scale="Viridis",
+                           range_color=(0, 12),
+                           scope="usa",
+                           labels={'unemp':'unemployment rate'}
+                          )
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
-plt.bar(x1, y1, label="Blue Bar", color='b')
-plt.bar(x2, y2, label="Green Bar", color='g')
-plt.plot()
+# create an html document that embeds the Plotly plot
+h = plotly.offline.plot(fig, output_type='div')
 
-plt.xlabel("bar number")
-plt.ylabel("bar height")
-plt.title("Bar Chart Example")
-plt.legend()
-plt.show()
+# display this html
+displayHTML(h)
 ```
+
 
 ### <a name="additional-libraries"></a>Ytterligare bibliotek 
 Utöver de här biblioteken innehåller Azure Synapse Analytics-körningen även följande uppsättning bibliotek som ofta används för data visualisering:
 - [Matplotlib](https://matplotlib.org/)
 - [Bokeh](https://bokeh.org/)
 - [Seaborn](https://seaborn.pydata.org/) 
+- [Plotly](https://plotly.com/)
 
 Du kan gå till [dokumentationen](./spark/../apache-spark-version-support.md) för Azure Synapse Analytics-körningen om du vill ha den senaste informationen om tillgängliga bibliotek och versioner.
 

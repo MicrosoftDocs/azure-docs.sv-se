@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: d108774aea2d7ac7773dab06efc977dd9e501eb5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108782"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612525"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera servrar som körs på Hyper-V med Azure Migrate: identifiering och utvärdering
 
-Som en del av migreringen till Azure identifierar du din lokala inventering och dina arbets belastningar. 
+Som en del av migreringen till Azure identifierar du din lokala inventering och dina arbets belastningar.
 
 I den här självstudien lär du dig att identifiera lokala servrar på Hyper-V-värdar med Azure Migrate: identifierings-och utvärderings verktyget med en förenklad Azure Migrate-enhet. Du distribuerar installationen som en server på Hyper-V-värden för att kontinuerligt identifiera dator-och prestanda-metadata.
 
@@ -42,7 +42,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 --- | ---
 **Hyper-V-värd** | Hyper-V-värdar på vilka servrar finns kan vara fristående eller i ett kluster.<br/><br/> Värden måste köra Windows Server 2019, Windows Server 2016 eller Windows Server 2012 R2.<br/><br/> Kontrol lera att inkommande anslutningar är tillåtna på WinRM-port 5985 (HTTP), så att enheten kan ansluta till hämtning av serverns metadata och prestanda data med hjälp av en Common Information Model CIM-session.
 **Distribution av utrustning** | Hyper-V-värden behöver resurser för att allokera en server för enheten:<br/><br/> – 16 GB RAM, 8 virtuella processorer och cirka 80 GB disk lagring.<br/><br/> – En extern virtuell växel och Internet åtkomst på enheten, direkt eller via en proxyserver.
-**Servrar** | Servrar kan köra ett Windows-eller Linux-operativsystem. 
+**Servrar** | Servrar kan köra ett Windows-eller Linux-operativsystem.
 
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
@@ -56,7 +56,7 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
     ![Sök i rutan för att söka efter Azure-prenumerationen](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. På sidan **prenumerationer** väljer du den prenumeration där du vill skapa ett projekt. 
+2. På sidan **prenumerationer** väljer du den prenumeration där du vill skapa ett projekt.
 3. I prenumerationen väljer du **åtkomst kontroll (IAM)**  >  **kontrol lera åtkomst**.
 4. I **kontrol lera åtkomst** söker du efter det relevanta användar kontot.
 5. I **Lägg till en roll tilldelning** klickar du på **Lägg till**.
@@ -176,7 +176,7 @@ Kontrol lera att den zippade filen är säker innan du distribuerar den.
 
         **Scenario** | **Ladda ned** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,91 GB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8,91 GB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - För Azure Government:
 
@@ -293,5 +293,3 @@ När identifieringen är klar kan du kontrol lera att servrarna visas i portalen
 
 - [Utvärdera servrar i Hyper-V-miljön](tutorial-assess-hyper-v.md) för migrering till virtuella Azure-datorer.
 - [Granska de data](migrate-appliance.md#collected-data---hyper-v) som enheten samlar in under identifieringen.
-
-

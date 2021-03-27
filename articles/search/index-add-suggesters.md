@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a03ca4bcad9bb577db68e2728ff9dbebb5779a7a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606223"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626834"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Skapa en förslags ställare för att aktivera Autoavsluta och föreslagna resultat i en fråga
 
-I Azure Kognitiv sökning aktive ras typeahead eller "Sök-som-du-Type" via en *förslags ställare*. En förslags ställare är en intern data struktur som består av en fält samling. Fälten genomgår ytterligare tokenisering, vilket genererar prefixvärde för att stödja matchningar på delar av villkor. En förslags ställare som innehåller fältet stad har till exempel prefixen "Sea", "plats", "plats" och "seattl" för termen "Seattle".
+I Azure Kognitiv sökning aktive ras typeahead eller "Sök-som-du-Type" via en *förslags ställare*. En förslags lista innehåller en lista över fält som genomgår ytterligare tokenisering, vilket genererar prefixvärde för att stödja matchningar på delar av villkor. En förslags ställare som innehåller ett Orts fält med ett värde för "Seattle" har till exempel prefix för "Sea", "plats", "plats" och "seattl" för att stödja typeahead.
 
 Matchningar på del villkor kan vara antingen en kompletterad fråga eller en föreslagen matchning. Samma förslags ställare stöder båda upplevelserna.
 
@@ -171,11 +171,13 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Exempelkod
 
-+ [Skapa din första app i C# (Lektion 3 – Lägg till sökning efter typ) exempel på](tutorial-csharp-type-ahead-and-suggestions.md) frågor, Autoavsluta och fasett-navigering. Det här kod exemplet körs på en sandbox Azure Kognitiv sökning-tjänst och använder ett förinställt hotell index med en förslags ställare som redan har skapats, så allt du behöver göra är att trycka på F5 för att köra programmet. Ingen prenumeration eller inloggning är nödvändig.
++ Genom att [lägga till en sökning på en webbplats (Java Script)](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) används ett förslags paket med öppen källkod för ofullständig avslutning av termen i klient programmet.
+
++ [Skapa din första app i C# (Lektion 3 – Lägg till sökning efter typ) exempel på](tutorial-csharp-type-ahead-and-suggestions.md) frågor, Autoavsluta och fasett-navigering. Den här koden ger inbyggt stöd för typeahead i stället för att använda en widget.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Vi rekommenderar följande artikel för att lära dig mer om hur begär ande formulering.
+Läs mer om begär Anden \ formulering.
 
 > [!div class="nextstepaction"]
 > [Lägg till komplettera automatiskt och förslag till klient kod](search-add-autocomplete-suggestions.md)

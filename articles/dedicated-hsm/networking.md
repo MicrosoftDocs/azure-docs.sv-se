@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 5365ba8c4fbc07c487dd40cfcdc9d566990c493c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607055"
+ms.locfileid: "105611845"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure Dedicated HSM-nätverk
 
@@ -133,7 +133,7 @@ Command Result : 0 (Success)
 
 ### <a name="alternative-to-using-global-vnet-peering"></a>Alternativ till att använda globala VNET-peering
 Det finns ett par arkitekturer som du kan använda som ett alternativ till global VNet-peering.
-1.  Använda [VNet-till-Vnet VPN gateway-anslutning](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
+1.  Använda [VNet-till-Vnet VPN gateway-anslutning](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
 2.  Anslut HSM VNET med ett annat VNET med en ER-krets. Detta fungerar bäst när en direkt lokal sökväg krävs eller VPN VNET. 
 
 #### <a name="hsm-with-direct-express-route-connectivity"></a>HSM med Direct Express Route-anslutning

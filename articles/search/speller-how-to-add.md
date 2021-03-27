@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232366"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625916"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Lägg till stavnings kontroll i frågor i Kognitiv sökning
 
@@ -25,7 +25,7 @@ Du kan förbättra återkallning genom att stavnings kontrol lera villkoren för
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-+ Ett befintligt Sök index som innehåller engelskt innehåll
++ Ett befintligt Sök index som innehåller engelskt innehåll. Stavnings korrigering fungerar för närvarande inte med [synonymer](search-synonyms.md). Undvik att använda den på index som anger en synonym mappning i valfri fält definition.
 
 + En Sök klient för att skicka frågor
 

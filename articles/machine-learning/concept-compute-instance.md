@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3f41a68feafe2f0a3eae1e0026a4c350b0959aec
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 4bc9ed87a243a1efb45d7db660ccdd86a19d9801
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105036993"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628245"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Vad är en Azure Machine Learning-beräkningsinstans?
 
@@ -32,7 +32,7 @@ För att Compute instance Jupyter-funktionen ska fungera kontrollerar du att Web
 
 En beräknings instans är en fullständigt hanterad molnbaserad arbets station som är optimerad för din Machine Learning Development-miljö. Det ger följande fördelar:
 
-|Viktiga fördelar|Beskrivning|
+|Viktiga fördelar|Description|
 |----|----|
 |Produktivitet|Du kan bygga och distribuera modeller med integrerade antecknings böcker och följande verktyg i Azure Machine Learning Studio:<br/>– Jupyter<br/>- JupyterLab<br/>-RStudio (för hands version)<br/>Compute-instansen är helt integrerad med Azure Machine Learning-arbetsyta och Studio. Du kan dela antecknings böcker och data med andra data forskare på arbets ytan.<br/> Du kan också använda [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) med beräknings instanser.
 |Hanterad & säker|Minska din säkerhets storlek och Lägg till efterlevnad med företagets säkerhets krav. Beräknings instanser ger robusta hanterings principer och säkra nätverkskonfigurationer som:<br/><br/>– Autoetablering från Resource Manager-mallar eller Azure Machine Learning SDK<br/>- [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Stöd för virtuella nätverk](./how-to-secure-training-vnet.md#compute-instance)<br/>– SSH-princip för att aktivera/inaktivera SSH-åtkomst<br/>TLS 1,2 aktiverat |
@@ -180,7 +180,7 @@ En beräknings instans:
 Du kan använda Compute instance som ett lokalt inferencing distributions mål för test-/fel söknings scenarier.
 
 > [!TIP]
-> Beräknings instansen har 120 GB OS-disk. Om disk utrymmet tar slut tar du bort tillräckligt med utrymme innan du försöker stoppa/starta om beräknings instansen.
+> Beräknings instansen har 120 GB OS-disk. Om du får slut på disk utrymme kan du [använda terminalen](how-to-access-terminal.md) för att rensa minst 1-2 GB innan du [stoppar eller startar om](how-to-create-manage-compute-instance.md#manage) beräknings instansen.
 
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Vad hände med den virtuella Notebook-datorn?

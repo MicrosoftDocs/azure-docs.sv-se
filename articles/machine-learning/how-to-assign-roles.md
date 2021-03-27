@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 01/20/2020
+ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: bdd59c80408910bf8ca51bf787c8ff15dc2a4893
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889764"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612627"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Hantera åtkomst till en Azure Machine Learning-arbetsyta
 
@@ -470,6 +470,7 @@ Här är några saker som du bör känna till när du använder rollbaserad åtk
     För mer information om Azure RBAC med nätverk, se de [inbyggda nätverks rollerna](../role-based-access-control/built-in-roles.md#networking).
 
 - Det kan ibland ta upp till en timme innan dina nya roll tilldelningar börjar gälla för cachelagrade behörigheter i stacken.
+- [Villkorlig åtkomst](../role-based-access-control/conditional-access-azure-management.md) stöds inte för närvarande med Azure Machine Learning.
 
 ## <a name="next-steps"></a>Nästa steg
 

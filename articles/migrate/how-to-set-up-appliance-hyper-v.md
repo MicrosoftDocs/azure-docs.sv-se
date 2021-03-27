@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863691"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612032"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Konfigurera en installation för servrar på Hyper-V
 
@@ -39,7 +39,7 @@ Så här konfigurerar du installationen med en VHD-mall:
 
 1. I **mål för migrering**  >  **fönster, Linux-och SQL-servrar**  >  **Azure Migrate: identifiering och bedömning**, Välj **identifiera**.
 2. I **Discover-servrar**  >  **är servrarna virtualiserade?** väljer du **Ja, med Hyper-V**.
-3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar på Hyper-V. namnet ska vara alfanumeriskt med 14 tecken eller färre.
+3. I **1: generera en projekt nyckel** anger du ett namn för Azure Migrate-installationen som ska konfigureras för identifiering av servrar på Hyper-V. Namnet måste vara alfanumeriskt med 14 tecken eller färre.
 1. Klicka på **generera nyckel** för att starta skapandet av de nödvändiga Azure-resurserna. Stäng inte sidan identifiera servrar när du skapar resurser.
 1. När Azure-resurserna har skapats skapas en **projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
@@ -53,7 +53,6 @@ I **2: Ladda ned Azure Migrate-enheten** väljer du. VHD-fil och klicka på **H�
 
    ![Val för generera nyckel](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
-
 ### <a name="verify-security"></a>Verifiera säkerhet
 
 Kontrol lera att den zippade filen är säker innan du distribuerar den.
@@ -63,9 +62,7 @@ Kontrol lera att den zippade filen är säker innan du distribuerar den.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Exempel på användning: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-
-
-
+Verifiera det senaste hash-värdet genom att jämföra resultatet av kommandot ovan med det värde som dokumenteras [här](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security)
 
 ## <a name="create-the-appliance"></a>Skapa installationen
 
@@ -85,7 +82,6 @@ Importera den nedladdade filen och skapa en-apparat.
 5. I **Välj nätverk** anger du den virtuella växel som servern ska använda. Växeln behöver Internet anslutning för att skicka data till Azure.
 6. Granska inställningarna i **Sammanfattning**. Klicka sedan på **Slutför**.
 7. Starta den virtuella datorn i Hyper-V Manager > **Virtual Machines**.
-
 
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
@@ -128,8 +124,6 @@ Konfigurera enheten för första gången.
 1. När du har loggat in går du tillbaka till föregående flik med installationen av Konfigurations hanteraren.
 4. Om Azure-användarkontot som används för loggning har rätt [behörigheter](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) för de Azure-resurser som skapades under den här nyckeln, initieras registrerings enheten.
 1. När installationen av enheten har registrerats kan du se registrerings informationen genom att klicka på **Visa information**.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Delegera autentiseringsuppgifter för SMB-VHD: er
 

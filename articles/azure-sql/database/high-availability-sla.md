@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: a14f8e0ba3ae5cca75cf6518320023703a6d1700
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889067"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626392"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,22 +48,22 @@ När databas motorn eller operativ systemet uppgraderas, eller om ett problem up
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Generell användning tjänst nivå zonens redundant tillgänglighet (för hands version)
 
-Zon redundant konfiguration för tjänst nivån generell användning använder [Azure-tillgänglighetszoner](../../availability-zones/az-overview.md)   för att replikera databaser över flera fysiska platser i en Azure-region.Genom att välja zon redundans kan du göra nya och befintliga generella enkla databaser och elastiska pooler elastiska till en mycket större mängd problem, inklusive oåterkalleliga Data Center avbrott, utan några ändringar i program logiken.
+Zon redundant konfiguration för tjänst nivån generell användning erbjuds för både server lös och allokerad beräkning. Den här konfigurationen använder [Azure-tillgänglighetszoner](../../availability-zones/az-overview.md)   för att replikera databaser över flera fysiska platser inom en Azure-region.Genom att välja zon redundans kan du skapa nya och befintliga serverlesss och etablerade generella användnings databaser och elastiska pooler, som är elastiska till en mycket större uppsättning problem, inklusive oåterkalleliga Data Center avbrott, utan några ändringar i program logiken.
 
 Zon redundant konfiguration för generell användnings nivån har två nivåer:  
 
-- Ett tillstånds känsligt data lager med databasfiler (. MDF/. ldf) som lagras i ZRS-PFS (Zone-redundant [lagring Premium-filresurs](../../storage/files/storage-how-to-create-file-share.md). Med [zon-redundant lagring](../../storage/common/storage-redundancy.md) kopieras data-och loggfilerna synkront över tre fysiskt isolerade tillgänglighets zoner i Azure.
-- Ett tillstånds löst beräknings lager som kör sqlservr.exes processen och bara innehåller temporära och cachelagrade data, till exempel TempDB, modell databaser på anslutna SSD och planera cache, resurspool och columnstore-pool i minnet. Den här tillstånds lösa noden drivs av Azure-Service Fabric som initierar sqlservr.exe, kontrollerar nodens hälsa och utför redundans till en annan nod vid behov. För zoner med redundanta databaser för generell användning är noder med reserv kapacitet lättillgängliga i andra Tillgänglighetszoner för redundans.
+- Ett tillstånds känsligt data lager med databasfiler (. MDF/. ldf) som lagras i ZRS (zon-redundant lagring). Med hjälp av [ZRS](../../storage/common/storage-redundancy.md) kopieras data och loggfilerna synkront över tre fysiskt isolerade Azure-tillgänglighets zoner.
+- Ett tillstånds löst beräknings lager som kör sqlservr.exes processen och bara innehåller temporära och cachelagrade data, till exempel TempDB, modell databaser på anslutna SSD och planera cache, resurspool och columnstore-pool i minnet. Den här tillstånds lösa noden drivs av Azure-Service Fabric som initierar sqlservr.exe, kontrollerar nodens hälsa och utför redundans till en annan nod vid behov. För zoner med redundant Server lös och etablerade generella syftes databaser är det enkelt att använda noder med reserv kapacitet i andra Tillgänglighetszoner för redundans.
 
 Zonens redundanta version av hög tillgänglighets arkitektur för tjänst nivån generell användning illustreras av följande diagram:
 
 ![Zon redundant konfiguration för generell användning](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> Zon redundant konfiguration är bara tillgänglig när Gen5 Compute-maskinvaran har valts. Den här funktionen är inte tillgänglig i SQL-hanterad instans. Zon redundant konfiguration för generell användnings nivå är endast tillgängligt i följande regioner: östra USA, östra USA 2, västra USA 2, norra Europa, Västeuropa, Sydostasien, östra Australien, Östra Japan, Storbritannien, södra och Frankrike, centrala.
+> Zon redundant konfiguration är bara tillgänglig när Gen5 Compute-maskinvaran har valts. Den här funktionen är inte tillgänglig i SQL-hanterad instans. Zon redundant konfiguration för Server löst och etablerade generella användnings nivåer är bara tillgängligt i följande regioner: östra USA, östra USA 2, västra USA 2, Nord Europa, Västeuropa, Sydostasien, östra Australien, Östra Japan, Storbritannien, södra och Frankrike, centrala.
 
 > [!NOTE]
-> Generell användning-databaser med en storlek på 80 vCore kan orsaka försämrade prestanda med Zone-redundant konfiguration. Dessutom kan åtgärder som säkerhets kopiering, återställning, databas kopiering och konfiguration av Geo-DR-relationer uppleva sämre prestanda för alla enskilda databaser som är större än 1 TB. 
+> Generell användning-databaser med en storlek på 80 vCore kan orsaka försämrade prestanda med Zone-redundant konfiguration. Dessutom kan åtgärder som säkerhets kopiering, återställning, databas kopiering, konfiguration av Geo-DR-relationer och nedgradering av en redundant databas i zonen från Affärskritisk till Generell användning uppleva sämre prestanda för alla enskilda databaser som är större än 1 TB. Mer information finns i vår [latens dokumentation om skalning av en databas](single-database-scale.md) .
 > 
 > [!NOTE]
 > Förhands granskningen omfattas inte av en reserverad instans

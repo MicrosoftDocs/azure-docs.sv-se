@@ -1,17 +1,15 @@
 ---
 title: Så här visar du Azure Service Fabric entiteternas aggregerade hälso tillstånd
 description: Beskriver hur du frågar, visar och utvärderar Azure Service Fabric entiteternas samlade hälso tillstånd, via hälso frågor och allmänna frågor.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7127d9906cfe1ba87241bd3810a9567e77bf0391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 261343537b6d18c98c27c9cc9453d2a64f064216
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98785506"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628075"
 ---
 # <a name="view-service-fabric-health-reports"></a>Visa Service Fabric hälso rapporter
 Azure Service Fabric introducerar en [hälso modell](service-fabric-health-introduction.md) med hälsoentiteter där system komponenter och övervaknings enheter kan rapportera lokala villkor som de övervakar. [Hälso arkivet](service-fabric-health-introduction.md#health-store) sammanställer alla hälso data för att avgöra om entiteterna är felfria.

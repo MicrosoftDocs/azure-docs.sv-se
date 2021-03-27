@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa5ecd19863e8a37efdf533e68aeaed053c552f8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578812"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625687"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snabb start: registrera ett program med Microsoft Identity Platform
 
@@ -56,7 +56,10 @@ Följ de här stegen för att skapa appens registrering:
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Skärm bild av Azure Portal i en webbläsare, som visar fönstret registrera ett program.":::
 
-När registreringen är klar visar Azure Portal fönstret **Översikt** av appens registrering. Du ser **program-ID: t (klient)**. Även kallat *klient-ID*, identifierar det här värdet ditt program i Microsoft Identity Platform.
+När registreringen är klar visar Azure Portal fönstret **Översikt** av appens registrering. Du ser **program-ID: t (klient)**. Även kallat *klient-ID*, identifierar det här värdet ditt program i Microsoft Identity Platform. 
+
+> [!IMPORTANT]
+> Nya registrerings program är dolda för användare som standard. När du är redo för användarna att se appen på [sidan Mina appar](../user-help/my-apps-portal-end-user-access.md) kan du aktivera den. Om du vill aktivera appen går du till Azure Portal navigera till **Azure Active Director**  >  **Enterprise-program** och väljer appen. Växla visningen  av sidan Egenskaper **till användare?** till Ja.
 
 Programmets kod, eller mer vanligt vis ett autentiseringspaket som används i ditt program, använder också klient-ID: t. ID används som en del av verifieringen av säkerhetstoken som tas emot från identitets plattformen.
 
