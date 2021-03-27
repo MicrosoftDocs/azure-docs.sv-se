@@ -1,16 +1,14 @@
 ---
 title: Händelse lista för Azure Service Fabric
 description: En omfattande lista med händelser från Azure Service Fabric som hjälper dig att övervaka kluster.
-author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
-ms.author: srrengar
-ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3f65d7c3ddec8263ff6f115df9616b48814afc93
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85846646"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628891"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista över Service Fabric händelser 
 
@@ -55,6 +53,13 @@ Mer information om kluster uppgraderingar hittar du [här](service-fabric-cluste
 | 25622 | NodeOpenFailed | Malltypen statetransition |  En nod kunde inte starta och ansluta till ringen | FabricNode | Fel | 
 | 25624 | NodeClosed | Malltypen statetransition |  En nod har stängts av | FabricNode | Information | 
 | 25626 | NodeAborted | Malltypen statetransition |  En nod har avslut ATS på ett städat sätt | FabricNode | Fel | 
+
+**KTL för loggning av händelser** 
+
+| EventId | Name | Kategori | Beskrivning |Källa (aktivitet) | Nivå |
+| --- | --- | --- | --- | --- | --- | 
+| 50187 | SharedLogWriteThrottled | Hälsa | Skrivningar till den delade loggen är begränsning | KtlLoggerNode | Information | 
+| 50188 | SharedLogWriteUnthrottled | Hälsa | Skrivningar till delad logg har obegränsade | KtlLoggerNode | Information | 
 
 ## <a name="application-events"></a>Program händelser
 

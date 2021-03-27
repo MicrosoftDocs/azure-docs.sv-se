@@ -2,19 +2,21 @@
 title: Skapa bicep-filer – Visual Studio Code
 description: Använd Visual Studio Code och bicep-tillägget till bicep-filer för att distribuera Azure-resurser
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504158"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612901"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Snabb start: skapa bicep-filer med Visual Studio Code
 
 Bicep-tillägget för Visual Studio Code ger språk stöd och slut för ande av resurser. Dessa verktyg hjälper dig att skapa och validera [bicep](./bicep-overview.md) -filer. I den här snabb starten använder du tillägget för att skapa en bicep-fil från grunden. När du gör det kommer du att få tilläggets funktioner som verifiering och slut för ande.
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 För att slutföra den här snabb starten behöver du [Visual Studio Code](https://code.visualstudio.com/)med [bicep-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) installerat. Du behöver också antingen den senaste versionen av [Azure CLI](/cli/azure/) eller den senaste [Azure PowerShell modulen](/powershell/azure/new-azureps-module-az) installerad och autentiserad.
 

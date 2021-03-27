@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e3b04563b0da3255c63208b73c9ecdbd62ff0cf7
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 60edbcf97b43747246e84517cc65bb0dca4ff546
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609302"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626851"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>Servrar-Azure Database for PostgreSQL – flexibel Server
 
@@ -42,8 +42,8 @@ I en Azure Database for PostgreSQL-Server kan du skapa en eller flera databaser.
 
 Följande element hjälper till att säkerställa säker åtkomst till databasen:
 
-|||
-|:--|:--|
+| Säkerhets koncept | Description |
+| :-- | :-- |
 | **Autentisering och auktorisering** | Azure Database for PostgreSQL-server stöder ursprunglig PostgreSQL-autentisering. Du kan ansluta och autentisera till servern med serverns administratörsinloggning. |
 | **Protokoll** | Tjänsten stöder ett Message-baserat protokoll som används av PostgreSQL. |
 | **TCP/IP** | Protokollet stöds över TCP/IP och över UNIX-domänsuffix. |

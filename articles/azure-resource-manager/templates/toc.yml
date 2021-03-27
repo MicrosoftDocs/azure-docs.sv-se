@@ -8,13 +8,13 @@
       href: bicep-overview.md
 - name: Snabbstarter
   items:
-    - name: Skapa mallar – portal
-      href: quickstart-create-templates-use-the-portal.md
-    - name: Skapa mallar – VS Code
+    - name: Skapa JSON-mallar – VS-kod
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Skapa bicep-VS-kod
+    - name: Skapa bicep-mallar – VS Code
       href: quickstart-create-bicep-use-visual-studio-code.md
-    - name: Skapa och distribuera mallspecifikationer
+    - name: Skapa JSON-mallar – Portal
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Skapa mall-specifikationer
       href: quickstart-create-template-specs.md
 - name: Självstudier
   items:
@@ -43,24 +43,34 @@
     - name: Nybörjare bicep
       items:
         - name: 1 – Skapa den första mallen
+          displayName: Bicep
           href: bicep-tutorial-create-first-bicep.md
         - name: 2 – Lägg till parametrar
+          displayName: Bicep
           href: bicep-tutorial-add-parameters.md
         - name: 3 – Lägg till mall funktioner
+          displayName: Bicep
           href: bicep-tutorial-add-functions.md
         - name: 4 – Lägg till variabler
+          displayName: Bicep
           href: bicep-tutorial-add-variables.md
         - name: 5 – Lägg till utdata
+          displayName: Bicep
           href: bicep-tutorial-add-outputs.md
         - name: 6 – Använd exporterad mall
+          displayName: Bicep
           href: bicep-tutorial-export-template.md
         - name: 7 – använda snabb starts mal len
+          displayName: Bicep
           href: bicep-tutorial-quickstart-template.md
         - name: 8 – Lägg till taggar
+          displayName: Bicep
           href: bicep-tutorial-add-tags.md
         - name: 9 – Använd parameter fil
+          displayName: Bicep
           href: bicep-tutorial-use-parameter-file.md
         - name: 10 – Lägg till moduler
+          displayName: Bicep
           href: bicep-tutorial-add-modules.md
     - name: Distribution
       items:

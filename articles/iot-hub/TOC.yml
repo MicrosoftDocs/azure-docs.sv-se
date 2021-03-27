@@ -84,6 +84,22 @@
       href: tutorial-firmware-update.md
     - name: Testa enhetsanslutning
       href: tutorial-connectivity.md
+    - name: Använda X. 509-certifikat
+      items:
+        - name: Introduktion
+          href: tutorial-x509-introduction.md
+        - name: Certifikat fält
+          href: tutorial-x509-certificates.md
+        - name: Använda de angivna skripten
+          href: tutorial-x509-scripts.md
+        - name: Använda OpenSSL
+          href: tutorial-x509-openssl.md
+        - name: Skapa självsignerade certifikat
+          href: tutorial-x509-self-sign.md
+        - name: Bevisa innehav
+          href: tutorial-x509-prove-possession.md
+        - name: Testa autentisering
+          href: tutorial-x509-test-certificate.md
 - name: Begrepp
   items:
     - name: TLS-support
@@ -319,8 +335,6 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Använda Azure CLI
               href: iot-hub-configure-file-upload-cli.md
-        - name: Skydda din hubb med ett X.509-certifikat
-          href: iot-hub-security-x509-get-started.md
         - name: Uppgradera en IoT-hubb
           href: iot-hub-upgrade.md
         - name: Konfigurera IP-filtrering

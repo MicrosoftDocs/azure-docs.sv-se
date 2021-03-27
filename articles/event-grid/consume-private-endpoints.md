@@ -3,12 +3,12 @@ title: Leverera händelser med hjälp av tjänsten Private Link
 description: Den här artikeln beskriver hur du kan undvika begränsningen av att inte leverera händelser med hjälp av tjänsten Private Link.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722335"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629299"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Leverera händelser med hjälp av tjänsten Private Link
 För närvarande går det inte att leverera händelser med [privata slut punkter](../private-link/private-endpoint-overview.md). Det finns inget stöd om du har strikta krav på nätverks isolering där dina levererade händelse trafik inte får lämna det privata IP-utrymmet. 
@@ -27,7 +27,7 @@ Under den här konfigurationen går trafiken över den offentliga IP/Internet fr
 ## <a name="deliver-events-to-event-hubs-using-managed-identity"></a>Leverera händelser till Event Hubs med hjälp av hanterad identitet
 Följ dessa steg om du vill leverera händelser till händelse nav i Event Hubs namn område med hanterad identitet:
 
-1. [Aktivera systemtilldelad identitet för ett ämne eller en domän](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
+1. Aktivera systemtilldelad identitet: [system ämnen](enable-identity-system-topics.md), [anpassade ämnen och domäner](enable-identity-custom-topics-domains.md).  
 1. [Lägg till identiteten i rollen **Azure Event Hubs data Sender** i Event Hubs-namnområdet](../event-hubs/authenticate-managed-identity.md#to-assign-azure-roles-using-the-azure-portal).
 1. [Aktivera inställningen **Tillåt att betrodda Microsoft-tjänster kringgår den här brand Väggs** inställningen på din Event Hubs-namnrymd](../event-hubs/event-hubs-service-endpoints.md#trusted-microsoft-services). 
 1. [Konfigurera händelse prenumerationen](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) som använder en händelsehubben som en slut punkt för att använda den systemtilldelade identiteten.
@@ -35,16 +35,16 @@ Följ dessa steg om du vill leverera händelser till händelse nav i Event Hubs 
 ## <a name="deliver-events-to-service-bus-using-managed-identity"></a>Leverera händelser till Service Bus med hjälp av hanterad identitet
 Följ dessa steg om du vill leverera händelser till Service Bus köer eller ämnen i Service Bus-namnrymden med hanterad identitet:
 
-1. [Aktivera systemtilldelad identitet för ett ämne eller en domän](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Lägg till identiteten i rollen [Azure Service Bus data avsändare](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) i Service Bus-namnrymden
+1. Aktivera systemtilldelad identitet: [system ämnen](enable-identity-system-topics.md), [anpassade ämnen och domäner](enable-identity-custom-topics-domains.md). 
+1. [Lägg till identiteten i rollen **Azure Service Bus data avsändare**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) i Service Bus-namnrymden
 1. [Aktivera inställningen **Tillåt att betrodda Microsoft-tjänster kringgår den här brand Väggs** inställningen på din Service Bus-namnrymd](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
-1. [Konfigurera händelse prenumerationen](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) som använder en Service Bus kö eller ett ämne som en slut punkt för att använda den systemtilldelade identiteten.
+1. [Konfigurera händelse prenumerationen](managed-service-identity.md) som använder en Service Bus kö eller ett ämne som en slut punkt för att använda den systemtilldelade identiteten.
 
 ## <a name="deliver-events-to-storage"></a>Leverera händelser till lagring 
 Följ dessa steg om du vill leverera händelser till lagrings köer med hanterad identitet:
 
-1. [Aktivera systemtilldelad identitet för ett ämne eller en domän](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity).
-1. Lägg till identiteten i den [avsändare rollen för lagrings köns data meddelande](../storage/common/storage-auth-aad-rbac-portal.md) i Azure Storage kö.
+1. Aktivera systemtilldelad identitet: [system ämnen](enable-identity-system-topics.md), [anpassade ämnen och domäner](enable-identity-custom-topics-domains.md). 
+1. [Lägg till identiteten i den **avsändare rollen för lagrings köns data meddelande**](../storage/common/storage-auth-aad-rbac-portal.md) i Azure Storage kö.
 1. [Konfigurera händelse prenumerationen](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) som använder en Service Bus kö eller ett ämne som en slut punkt för att använda den systemtilldelade identiteten.
 
 

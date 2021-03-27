@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f0959ff51714e8a7e69f58a3e3abeab71e8359
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9b0cce11abe1076d26ac8d4c4dc57c9b57c4737
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99259380"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625589"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Aktivera fjärråtkomst till Power BI Mobile med Azure AD-programproxy
 
@@ -84,7 +84,7 @@ Nu är du redo att konfigurera Azure AD-programproxyn.
 1. Publicera rapport tjänster via Application Proxy med följande inställningar. Stegvisa instruktioner om hur du publicerar ett program via programproxyn finns i [Publicera program med Azure AD-programproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    - **Intern URL**: Ange URL: en till den rapport server som anslutningen kan uppnå i företags nätverket. Kontrollera att den här URL:en kan kontaktas från den server som anslutningen är installerad på. Ett bra tips är att använda en toppnivådomän som `https://servername/` för att undvika problem med undersökvägar som publicerats via programproxy. Använd till exempel `https://servername/` och inte `https://servername/reports/` eller `https://servername/reportserver/`.
      > [!NOTE]
-     > Vi rekommenderar att du använder en säker HTTPS-anslutning till rapport servern. Mer information finns i [Konfigurera SSL-anslutningar på en rapportserver i enhetligt läge](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017).
+     > Vi rekommenderar att du använder en säker HTTPS-anslutning till rapport servern. Mer information finns i [Konfigurera SSL-anslutningar på en rapportserver i enhetligt läge](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server).
    - **Extern URL**: Ange den offentliga url som Power BI mobilappen ska ansluta till. Det kan till exempel se ut som `https://reports.contoso.com` om en anpassad domän används. Om du vill använda en anpassad domän, laddar du upp ett certifikat för domänen och pekar en DNS-post till standard msappproxy.net-domänen för ditt program. Detaljerade anvisningar finns i [Arbeta med anpassade domäner i Azure AD-programproxy](application-proxy-configure-custom-domain.md).
 
    - **Metod för förautentisering**: Azure Active Directory

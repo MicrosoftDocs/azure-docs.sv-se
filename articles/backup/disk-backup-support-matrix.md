@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av support inställningar och begrän
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107286"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612865"
 ---
 # <a name="azure-disk-backup-support-matrix"></a>Stödmatris för säkerhetskopiering av Azure-disk
 
@@ -51,7 +51,7 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 
 - För närvarande är Azure Portal upplevelsen för att konfigurera säkerhets kopieringen av diskar begränsad till högst 20 diskar från samma prenumeration.
 
-- För närvarande (under för hands versionen) stöds inte användning av PowerShell och Azure CLI för att konfigurera säkerhets kopiering och återställning av diskar.
+- Azure disk Backup har stöd för PowerShell. Azure CLI stöds för närvarande inte.
 
 - När du konfigurerar säkerhets kopiering måste disken som du har valt att säkerhets kopie ras och resurs gruppen för ögonblicks bilder där ögonblicks bilderna ska lagras vara en del av samma prenumeration. Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Läs mer om [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md#restrictions) för hanterad disk. Mer information om hur du väljer en resurs grupp för ögonblicks bilder finns i  [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup).
 
@@ -61,7 +61,7 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 
 - Med stöd för [privata länkar](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) för hanterade diskar kan du begränsa exporten och importen av hanterade diskar så att det bara sker i det virtuella Azure-nätverket. Säkerhets kopiering av Azure-diskar har stöd för säkerhets kopiering av diskar som har privata slut punkter aktiverade. Detta inkluderar inte säkerhets kopierings data eller ögonblicks bilder som kan nås via den privata slut punkten.
 
-- Under för hands versionen kan du inte inaktivera säkerhets kopieringen, så alternativet **stoppa säkerhets kopiering och behåll säkerhets kopierings data** stöds inte. Du kan ta bort en säkerhets kopierings instans, som inte bara stoppar säkerhets kopian utan även ta bort alla säkerhetskopierade data.
+- Du kan ta bort en säkerhets kopierings instans, vilket stoppar säkerhets kopieringen och tar också bort alla säkerhetskopierade data. För närvarande kan du inte inaktivera en säkerhets kopia eftersom alternativet **stoppa säkerhets kopiering och behåll säkerhets kopierings data** inte stöds.
 
 ## <a name="next-steps"></a>Nästa steg
 

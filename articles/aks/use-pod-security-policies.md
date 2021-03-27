@@ -3,27 +3,20 @@ title: Använda Pod säkerhets principer i Azure Kubernetes service (AKS)
 description: Lär dig hur du styr Pod-inåtkomster med PodSecurityPolicy i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.date: 03/25/2021
+ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544255"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611777"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>För hands version – skydda klustret med Pod säkerhets principer i Azure Kubernetes service (AKS)
 
 > [!WARNING]
-> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets princip (förhands granskning) har angetts för utfasning och kommer inte längre att vara tillgänglig efter den 30 juni 2021** i [Azure policy för AKS](use-azure-policy.md). Utfasnings datumet har förlängts från föregående datum den 15 oktober 2020.
+> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets policy (för hands version), påbörjar utfasningen med Kubernetes version 1,21, med dess borttagning i version 1,25.** I takt med att Kubernetes upprättar en mil stolpe, kommer Kubernetes community att arbeta med att dokumentera livskraftiga alternativ. Föregående meddelande om utfasning gjordes vid tidpunkten eftersom det inte fanns något lämpligt alternativ för kunder. Nu när Kubernetes-communityn arbetar på ett alternativ, är det inte längre något som behöver föråldras före Kubernetes.
 >
 > När Pod säkerhets princip (förhands granskning) är föråldrad måste du inaktivera funktionen på alla befintliga kluster med hjälp av den föråldrade funktionen för att utföra framtida kluster uppgraderingar och hålla koll på Azure-supporten.
->
-> Vi rekommenderar starkt att du börjar testa scenarier med Azure Policy för AKS, som erbjuder inbyggda principer för att skydda poddar och inbyggda initiativ som mappar till Pod säkerhets principer. För att migrera från Pod säkerhets princip måste du vidta följande åtgärder i ett kluster.
-> 
-> 1. [Inaktivera Pod säkerhets princip](#clean-up-resources) på klustret
-> 1. Aktivera [Azure policy-tillägget][azure-policy-add-on]
-> 1. Aktivera önskade Azure-principer från [Tillgängliga inbyggda principer][policy-samples]
-> 1. Granska [beteende ändringar mellan Pod säkerhets princip och Azure policy](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
 För att förbättra säkerheten för ditt AKS-kluster kan du begränsa vilka poddar som kan schemaläggas. Poddar som begär resurser som du inte tillåter kan inte köras i AKS-klustret. Du definierar den här åtkomsten med Pod säkerhets principer. Den här artikeln visar hur du använder Pod säkerhets principer för att begränsa distributionen av poddar i AKS.
 

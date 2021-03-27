@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 31b8e2e9a8e69fd730edb2c826005104f5f82bdc
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 1475b8aaa4e925facb989e1c6977c4f4dacc6418
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609198"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625219"
 ---
 # <a name="calling-sdk-overview"></a>Översikt över samtals-SDK
 
@@ -77,8 +77,8 @@ Kommunikations tjänsterna som anropar SDK har stöd för följande strömmande 
 
 | Gräns          |Webb | Android/iOS|
 |-----------|----|------------|
-|**Antal utgående strömmar som kan skickas samtidigt** |1 video och en skärm delning | 1 video och en skärm delning|
-|**Antal inkommande strömmar som kan renderas samtidigt** |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
+|**Antal utgående strömmar som kan skickas samtidigt** |1-video-eller 1-skärm delning | 1 video och en skärm delning|
+|**Antal inkommande strömmar som kan renderas samtidigt** |1-video-eller 1-skärm delning| 6 video-och 1-bildskärms delning |
 
 ## <a name="calling-sdk-timeouts"></a>Anropar SDK-tidsgräns
 

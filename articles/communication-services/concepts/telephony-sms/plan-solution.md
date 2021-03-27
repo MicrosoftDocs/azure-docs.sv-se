@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7b295c6dabfce6a624d93d75991163f464cfd46e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729540"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625236"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummer typer i Azure Communication Services
 
@@ -31,7 +31,7 @@ Azure Communication Services gör att du kan använda telefonnummer för att rin
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure-prenumerationer berättigar
 
-För att skaffa ett telefonnummer måste du vara på en betald Azure-prenumeration. Det går inte att hämta telefonnummer för utvärderings konton eller kostnads fria Azure-krediter. 
+För att skaffa ett telefonnummer måste du vara på en betald Azure-prenumeration. Det går inte att hämta telefonnummer för utvärderings konton eller kostnads fria Azure-krediter.
 
 Telefonnumret för telefonnummer är för närvarande begränsat till Azure-prenumerationer som har en fakturerings adress i USA-och kommunikations tjänster resurser som har en data plats för oss.
 
@@ -59,13 +59,13 @@ I tabellen nedan sammanfattas dessa telefonnummer typer:
 | Toll-Free         | + 1 (avgiftsfrit rikt *nummer*) xxx xx xx | USA                      | Anrop (utgående), SMS (inkommande/utgående)| Tilldela telefonnummer till IVR-system/robotar-system (Interactive Voice Response), SMS-program                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services
+### <a name="phone-number-capabilities-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 För de flesta telefonnummer ger vi dig möjlighet att konfigurera en "a la carte"-uppsättning funktioner. Dessa funktioner kan väljas när du lånar dina telefonnummer i Azure Communication Services.
 
-Vilka funktioner som är tillgängliga beror på vilket land du arbetar i, ditt användnings fall och vilken typ av telefonnummer som du har valt. De här funktionerna varierar beroende på vilket land som är på grund av myndighets krav. Azure Communication Services erbjuder följande telefonnummer funktioner:
+Vilka funktioner som är tillgängliga beror på vilket land du arbetar i, ditt användnings fall och vilken typ av telefonnummer som du har valt. De här funktionerna varierar beroende på land på grund av myndighets krav. Azure Communication Services erbjuder följande telefonnummer funktioner:
 
 - **Envägs utgående SMS** Med det här alternativet kan du skicka SMS-meddelanden till dina användare. Detta kan vara användbart i meddelande-och tvåfaktorautentisering.
 - **Tvåvägs inkommande och utgående SMS** Med det här alternativet kan du skicka och ta emot meddelanden från dina användare med hjälp av telefonnummer. Detta kan vara användbart i kund tjänst scenarier.

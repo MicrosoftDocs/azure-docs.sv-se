@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047243"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612389"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
 
@@ -37,8 +37,8 @@ För att komma igång behöver du:
 
 > [!IMPORTANT]
 >
-> * Du kommer inte att använda slut punkten som finns på Azure Portal resurs _nycklar och slut punkts_ sida eller den globala Translator-slutpunkten – `api.cognitive.microsofttranslator.com` för att göra HTTP-förfrågningar till dokument översättning.
 > * **Alla API-förfrågningar till dokument översättnings tjänsten kräver en anpassad domän slut punkt**.
+> * Du kommer inte att använda slut punkten som finns på Azure Portal resurs _nycklar och slut punkts_ sida eller den globala Translator-slutpunkten – `api.cognitive.microsofttranslator.com` för att göra HTTP-förfrågningar till dokument översättning.
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>Vad är den anpassade domän slut punkten?
 
@@ -93,7 +93,7 @@ Du måste  [**skapa behållare**](../../../storage/blobs/storage-quickstart-blob
 
 * Skapa ett nytt projekt.
 * Ersätt program. CS med C#-koden som visas nedan.
-* Ange din slut punkt. prenumerations nyckel och URL-värden för container i program. cs.
+* Ange slut punkt, prenumerations nyckel och URL-värden för container i program. cs.
 * Om du vill bearbeta JSON-data lägger du till [Newtonsoft.Jspå paketet med .net CLI](https://www.nuget.org/packages/Newtonsoft.Json/).
 * Kör programmet från projekt katalogen.
 
@@ -101,7 +101,7 @@ Du måste  [**skapa behållare**](../../../storage/blobs/storage-quickstart-blob
 
 * Skapa ett nytt Node.js-projekt.
 * Installera Axios-biblioteket med `npm i axios` .
-* Kopiera klistra in koden nedan i projektet.
+* Kopiera/klistra in koden nedan i projektet.
 * Ange slut punkt, prenumerations nyckel och URL-värden för container.
 * Kör programmet.
 
@@ -174,7 +174,7 @@ gradle run
 * Ange slut punkt, prenumerations nyckel och URL-värden för container.
 * Spara filen med tillägget .go.
 * Öppna en kommandotolk på en dator där Go är installerat.
-* Bygg filen, till exempel: "gå till build-kod. go".
+* Bygg filen. Exempel: "go build-kod. go".
 * Kör filen, till exempel: "exempel kod".
 
  ---
@@ -187,7 +187,7 @@ En begäran om översättning av batch-dokument skickas till Translator-tjänste
 
 Följande rubriker ingår i varje Document Translator API-begäran:
 
-|HTTP-huvud|Beskrivning|
+|HTTP-huvud|Description|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Obligatoriskt**: värdet är Azures prenumerations nyckel för din översättare eller Cognitive Services resurs.|
 |Content-Type|**Krävs**: anger nytto lastens innehålls typ. Godkända värden är Application/JSON eller charset = UTF-8.|
@@ -207,26 +207,49 @@ Följande rubriker ingår i varje Document Translator API-begäran:
 ## <a name="post-a-translation-request"></a>PUBLICERA en översättnings förfrågan
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>PUBLICERA begär ande text utan valfria glossaryURL
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>PUBLICERA begär ande text för att översätta alla dokument i en behållare
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>PUBLICERA begär ande text för att översätta ett särskilt dokument i en behållare
+
+* Kontrol lera att du har angett "storageType": "File"
+* Se till att du har skapat käll-URL & SAS-token för angiven BLOB/dokument (inte för containern) 
+* Se till att du har angett mål fil namnet som en del av mål-URL: en, även om SAS-token fortfarande är för behållaren.
+* Exempel förfrågan nedan visar ett enda dokument som översätts till två mål språk
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -235,44 +258,10 @@ Följande rubriker ingår i varje Document Translator API-begäran:
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>Skicka begär ande text med valfri glossaryURL
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
-> I kod exemplen nedan kommer du att hårdkoda din nyckel och slut punkt där det anges. Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt.  Se [Azure Cognitive Services Security](../../cognitive-services-security.md?tabs=command-line%2ccsharp) för att på ett säkert sätt lagra och komma åt dina autentiseringsuppgifter.
+> I kod exemplen nedan kommer du att hårdkoda din nyckel och slut punkt där det anges. Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt.  Se [Azure Cognitive Services Security](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) för att på ett säkert sätt lagra och komma åt dina autentiseringsuppgifter.
 >
 > Du kan behöva uppdatera följande fält, beroende på åtgärd:
 >>>
@@ -1247,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>Innehålls gränser
 
-I tabellen nedan visas gränserna för data som du skickar till dokument översättning.
+I tabellen nedan visas begränsningarna för data som du skickar till dokument översättning (för hands version).
 
 |Attribut | Gräns|
 |---|---|

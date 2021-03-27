@@ -9,17 +9,18 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7dcd630b0d5987c796ebb5a02657af9130221e6
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 78b31cb32e3df9b0d8e198d8c2122e492e609283
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045628"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625826"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Vad är Azure Synapse Analytics?
 
 **Azure Synapse** är en Enterprise Analytics-tjänst som påskyndar tiden för att bli inblick i informations lager och stora data system. Azure Synapse kombinerar det bästa av **SQL** -teknikerna som används i företags data lager, **Spark** -tekniker som används för Big data, **pipelines** för data integrering och ETL/ELT och djupgående integrering med andra Azure-tjänster som **Power BI**, **CosmosDB** och **azureml**.
 
+![Diagram över Azure Synapse Analytics-arkitekturen.](./media/overview-what-is/synapse-architecture.png)
 
 ## <a name="industry-leading-sql"></a>Branschledande SQL
 
@@ -66,7 +67,7 @@ Azure Synapse erbjuder ett enda sätt för företag att hantera analys resurser,
 
 **Synapse Studio** är användar upplevelsen som kopplar ihop allt för data tekniker. Det gör att de kan göra varje uppgift som de behöver för att skapa en komplett analys lösning.
 
-* Viktiga data engingeer uppgifter på ett ställe: mata in, utforska, förbereda, dirigera, visualisera
+* Viktiga data ingenjörs uppgifter på en plats: mata in, utforska, förbereda, dirigera, visualisera
 * Branschledande produktivitet för att skriva SQL-eller Spark-kod: redigering, fel sökning och prestanda optimering
 * Integrera med Enterprise CI/CD process
 

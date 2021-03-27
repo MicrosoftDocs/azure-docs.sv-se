@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9a5cd55576d505114c15028cf637114f3baf7668
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664137"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627990"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Server koncept i Azure Database for MariaDB
 Den här artikeln innehåller överväganden och rikt linjer för att arbeta med Azure Database for MariaDB-servrar.
@@ -37,8 +37,8 @@ Du kan skapa en eller flera databaser på en Azure Database for MariaDB-server. 
 
 Följande element hjälper till att säkerställa säker åtkomst till din databas.
 
-|||
-| :--| :--|
+| Säkerhets koncept | Description |
+| :-- | :-- |
 | **Autentisering och auktorisering** | Azure Database for MariaDB Server stöder inbyggd MySQL-autentisering. Du kan ansluta och autentisera till en server med serverns Administratörs inloggning. |
 | **Protokoll** | Tjänsten har stöd för ett Message-baserat protokoll som används av MySQL. |
 | **TCP/IP** | Protokollet stöds över TCP/IP och över UNIX-domänsuffix. |

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454795"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625304"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-händelser och Live-utdata i Media Services
 
@@ -117,47 +117,68 @@ Se även [namn konventioner för direkt uppspelnings slut punkter](streaming-end
 När Live-händelsen har skapats kan du hämta URL: er för inmatning som du kommer att ge till den lokala kodaren i real tid. Livekodaren använder dessa URL:er för att mata in en direktsänd dataström. Mer information finns i [rekommenderade lokala direkt kodare](recommended-on-premises-live-encoders.md).
 
 >[!NOTE]
-> Från och med 2020-05-01 API-versionen kallas anpassad-URL: er som statiska värdnamn
+> Från och med 2020-05-01 API-versionen kallas "anpassad"-URL: er som statiska värdnamn (useStaticHostname: true)
 
-Du kan antingen använda icke-anpassade eller anpassade URL:er.
 
 > [!NOTE]
-> Ange "anpassad"-läget för att kunna förutsäga en URL.
+> För att en inmatnings-URL ska vara statisk och förutsägbar för användning i en maskin varu kodare ställer du in egenskapen **useStaticHostname** på True och anger egenskapen **ACCESSTOKEN** till samma GUID för varje skapande. 
 
-* Icke-anpassad URL
+### <a name="example-liveevent-and-liveeventinput-configuration-settings-for-a-static-non-random-ingest-rtmp-url"></a>Exempel på LiveEvent-och LiveEventInput-konfigurationsinställningar för en statisk (icke-slumpmässig) inhämtning av RTMP-URL.
 
-    Icke-anpassad URL är standard läget i Media Services v3. Du kan snabbt få direkt händelsen men inläsnings-URL: en är endast känd när direkt sändningen startats. URL-adressen kommer att ändras om du stoppar eller startar direkt sändningen. Icke-anpassad är användbart i scenarier när en slutanvändare vill strömma med en app där appen vill hämta en live event ASAP och ha en dynamisk inmatnings-URL inte ett problem.
+```csharp
+             LiveEvent liveEvent = new LiveEvent(
+                    location: mediaService.Location,
+                    description: "Sample LiveEvent from .NET SDK sample",
+                    // Set useStaticHostname to true to make the ingest and preview URL host name the same. 
+                    // This can slow things down a bit. 
+                    useStaticHostname: true,
+
+                    // 1) Set up the input settings for the Live event...
+                    input: new LiveEventInput(
+                        streamingProtocol: LiveEventInputProtocol.RTMP,  // options are RTMP or Smooth Streaming ingest format.
+                                                                         // This sets a static access token for use on the ingest path. 
+                                                                         // Combining this with useStaticHostname:true will give you the same ingest URL on every creation.
+                                                                         // This is helpful when you only want to enter the URL into a single encoder one time for this Live Event name
+                        accessToken: "acf7b6ef-8a37-425f-b8fc-51c2d6a5a86a",  // Use this value when you want to make sure the ingest URL is static and always the same. If omitted, the service will generate a random GUID value.
+                        accessControl: liveEventInputAccess, // controls the IP restriction for the source encoder.
+                        keyFrameIntervalDuration: "PT2S" // Set this to match the ingest encoder's settings
+                    ),
+```
+
+* Icke-statiskt värdnamn
+
+    Ett icke-statiskt värdnamn är standard läget i Media Services v3 när du skapar en **LiveEvent**. Du kan få direkt sändningen något snabbare, men den inmatnings-URL som du skulle behöva för din maskin vara eller program vara för direktsänd kodning kommer att slumpmässigt visas. URL-adressen kommer att ändras om du stoppar eller startar direkt sändningen. Icke-statiska värdnamn är bara användbara i scenarier där en användare vill strömma med hjälp av en app som behöver få en Live-händelse mycket snabbt och med en dynamisk inmatnings-URL inte är ett problem.
 
     Om en klient app inte behöver förgenerera en inmatnings-URL innan direkt sändnings händelsen skapas, kan Media Services automatiskt generera åtkomsttoken för Live-händelsen.
 
-* Anpassad-URL
+* Statiska värdnamn 
 
-    Anpassad-läget föredras av stora Media-broadcasts som använder maskinvaru-broadcast-kodare och inte vill konfigurera om sina kodare när de startar direkt sändningen. De här sändningarna vill ha en förutsägande URL-adress som inte ändras över tid.
+    Läget för statiskt värdnamn föredras av de flesta operatörer som vill förkonfigurera sin maskinvaru-eller program vara för direkt kodning med en RTMP-inmatnings-URL som aldrig ändras vid skapande eller stopp/start av en viss direkt händelse. Dessa operatörer vill ha en förutsägande RTMP-inmatnings-URL som inte ändras över tid. Detta är också användbart när du behöver skicka en statisk RTMP-inmatnings-URL till konfigurations inställningarna för en maskin varu kodnings enhet, t. ex. BlackMagic Atem Mini Pro, eller liknande maskin varu kodning och produktions verktyg. 
 
     > [!NOTE]
-    > I Azure Portal får URL: en anpassad namnet "*statiskt värdnamn*".
+    > I Azure Portal kallas den statiska hostname-URL: en "*statisk hostname*"-prefix.
 
     Om du vill ange det här läget i API: t väljer `useStaticHostName` du `true` vid skapande tid (standard är `false` ). Om `useStaticHostname` är inställt på sant, `hostnamePrefix` anger den första delen av det värdnamn som tilldelats för hands versionen av live event och matar in slut punkter. Det sista värd namnet är en kombination av det här prefixet, medie tjänstens konto namn och en kort kod för Azure Media Services data Center.
 
     För att undvika en slumpmässig token i URL: en måste du också skicka din egen åtkomsttoken ( `LiveEventInput.accessToken` ) när du skapar den.  Åtkomsttoken måste vara en giltig GUID-sträng (med eller utan bindestreck). När läget har angetts kan det inte uppdateras.
 
-    Åtkomsttoken måste vara unik i ditt data Center. Om din app behöver använda en anpassad-URL, rekommenderar vi att alltid skapa en ny GUID-instans för din åtkomsttoken (i stället för att återanvända befintliga GUID).
+    Åtkomsttoken måste vara unik i din Azure-region och Media Services konto. Om appen behöver använda en statisk URL för värdnamn, bör du alltid skapa en ny GUID-instans för användning med en viss kombination av region, Media Services-konto och Live-händelse.
 
-    Använd följande API: er för att aktivera anpassad-URL: en och ange åtkomsttoken till ett giltigt GUID (till exempel `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
+    Använd följande API: er för att aktivera den statiska hostname-URL: en och ange åtkomsttoken till ett giltigt GUID (till exempel `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
 
-    |Språk|Aktivera anpassad-URL|Ange åtkomst-token|
+    |Språk|Aktivera statisk värdnamn-URL|Ange åtkomst-token|
     |---|---|---|
-    |REST|[egenskaper. vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--anpassad-URL](/cli/azure/ams/live-event#az-ams-live-event-create)|[--åtkomsttoken](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[egenskaper. useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--Använd-static-hostname](/cli/azure/ams/live-event#az-ams-live-event-create)|[--åtkomsttoken](/cli/azure/ams/live-event#optional-parameters)|
+    |.NET|[LiveEvent.useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Namn regler för Live-inmatnings-URL
 
 * Den *slumpmässiga* strängen nedan är ett 128-bitars hexadecimalt tal (som består av 32 tecken mellan 0 och 9 och a–f).
-* *din åtkomsttoken*: den giltiga GUID-sträng som du anger när du använder anpassad-läge. Till exempel `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *din åtkomsttoken*: den giltiga GUID-sträng som du anger när du använder den statiska inställningen för värdnamn. Till exempel `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
 * *data ström namn*: anger data Ströms namnet för en speciell anslutning. Data ström namn svärdet läggs vanligt vis till av den Live-kodare som du använder. Du kan konfigurera Live-kodaren att använda ett namn som beskriver anslutningen, till exempel: "video1_audio1", "video2_audio1", "Stream".
 
-#### <a name="non-vanity-url"></a>Icke-anpassad URL
+#### <a name="non-static-hostname-ingest-url"></a>Inmatnings-URL för icke-statisk värdnamn
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -171,7 +192,7 @@ Du kan antingen använda icke-anpassade eller anpassade URL:er.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>Anpassad-URL
+#### <a name="static-hostname-ingest-url"></a>URL för inmatning av statiskt värdnamn
 
 I följande sökvägar `<live-event-name>` innebär detta antingen namnet på händelsen eller det anpassade namnet som används för att skapa Live-händelsen.
 

@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 692033e323880db1699d7265a991775d41b05f7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f84dc66828f2ebf13316b3348fd93933a2223b5a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656013"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612287"
 ---
 # <a name="what-is-document-translation-preview"></a>Vad är dokument översättning (för hands version)?
 
@@ -43,7 +43,7 @@ I vår instruktions guide får du lära dig hur du snabbt kommer igång med Docu
 
 Följande dokument fil typer stöds av dokument översättning:
 
-| Filtyp| Filnamnstillägg|Beskrivning|
+| Filtyp| Filnamnstillägg|Description|
 |---|---|--|
 |Adobe PDF|.pdf|Adobe Acrobat Portable Document Format|
 |HTML|.html|Språk för text märkning.|
@@ -52,7 +52,7 @@ Följande dokument fil typer stöds av dokument översättning:
 |Microsoft Outlook|. msg|Ett e-postmeddelande som skapats eller sparats i Microsoft Outlook.|
 |Microsoft PowerPoint|.pptx| En presentations fil som används för att visa innehåll i ett bild spels format.|
 |Microsoft Word|.docx| En text dokument fil.|
-|Tabbavgränsade värden/TAB|. tsv/. tab| en tabbavgränsad rå data fil som används av kalkyl blads program.|
+|Tabbavgränsade värden/TAB|. tsv/. tab| En tabbavgränsad rå data fil som används av kalkyl blads program.|
 |Text|.txt| Ett oformaterat text dokument.|
 |Översättning av minnes utbyte|.tmx|En öppen XML-standard som används för utbyte av översättnings minne (TM)-data som skapats av Computer Aided översättning (CAT) och lokaliserings program.|
 
@@ -60,10 +60,10 @@ Följande dokument fil typer stöds av dokument översättning:
 
 Följande ord fil typer stöds av dokument översättning:
 
-| Filtyp| Filnamnstillägg|Beskrivning|
+| Filtyp| Filnamnstillägg|Description|
 |---|---|--|
 |Lokalisering av Interchange fil format|.xlf. , XLIFF| Ett parallellt dokument format, export av översättnings minnes system. De språk som används definieras i filen.|
-|Tabbavgränsade värden/TAB|. tsv/. tab| en tabbavgränsad rå data fil som används av kalkyl blads program.|
+|Tabbavgränsade värden/TAB|. tsv/. tab| En tabbavgränsad rå data fil som används av kalkyl blads program.|
 
 ## <a name="next-steps"></a>Nästa steg
 

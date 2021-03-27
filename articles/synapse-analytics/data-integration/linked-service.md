@@ -2,19 +2,19 @@
 title: Skydda en länkad tjänst
 description: Lär dig hur du etablerar och skyddar en länkad tjänst med hanterat VNet
 services: synapse-analytics
-author: ArnoMicrosoft
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be7ee2f4b2b8472c5edeff63e143d99c958bfc5a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98220124"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627225"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Skydda en länkad tjänst med privata länkar
 

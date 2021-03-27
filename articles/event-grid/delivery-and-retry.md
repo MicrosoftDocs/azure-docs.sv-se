@@ -3,12 +3,12 @@ title: Azure Event Grid leverans och försök igen
 description: Beskriver hur Azure Event Grid levererar händelser och hur de hanterar meddelanden som inte levererats.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98247377"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629282"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid meddelande leverans och försök igen
 
@@ -67,7 +67,7 @@ Nedan visas de typer av slut punkter för vilka försök inte sker:
 | Webhook | 400 Felaktig begäran, 413 begär ande enhet för stor, 403 förbjuden, 404 hittades inte, 401 obehörig |
  
 > [!NOTE]
-> Om Dead-Letter inte har kon figurer ATS för slut punkten försvinner händelserna när ovanstående fel inträffar. Överväg att konfigurera obeställbara meddelanden om du inte vill att dessa typer av händelser ska släppas.
+> Om Dead-Letter inte har kon figurer ATS för slut punkt försvinner händelserna när ovanstående fel inträffar. Överväg att konfigurera obeställbara meddelanden om du inte vill att dessa typer av händelser ska släppas.
 
 Om felet som returnerades av den prenumererade slut punkten inte finns i listan ovan, utför EventGrid det nya försöket med principer som beskrivs nedan:
 
@@ -109,7 +109,7 @@ Om något av villkoren är uppfyllt tas händelsen bort eller tas bort från kö
 
 Event Grid skickar en händelse till platsen för obeställbara meddelanden när den har provat alla nya försök. Om Event Grid får en 400 (felaktig begäran) eller 413 (den begärda entiteten för stor) svarskod schemaläggs omedelbart händelsen för obeställbara meddelanden. Dessa svars koder indikerar att händelsen levereras aldrig.
 
-Tiden till Live-utgången kontrol leras bara vid nästa schemalagda leverans försök. Det innebär att om Time-to-Live går ut före nästa schemalagda leverans försök, kontrol leras händelsen som upphör att gälla vid nästa leverans och sedan i efterhand. 
+Tiden till Live-utgången kontrol leras bara vid nästa schemalagda leverans försök. Så även om Time-to-Live förfaller före nästa schemalagda leverans försök, kontrol leras händelsen som upphör att gälla vid nästa leverans och sedan i efterhand. 
 
 Det senaste försöket att leverera en händelse är en fördröjning på fem minuter mellan det senaste försöket att leverera en händelse och när den levereras till platsen för obeställbara meddelanden. Den här fördröjningen är avsedd att minska antalet Blob Storage-åtgärder. Om platsen för obeställbara meddelanden inte är tillgänglig i fyra timmar släpps händelsen.
 
@@ -288,6 +288,15 @@ Alla andra koder som inte finns i ovanstående uppsättning (200-204) betraktas 
 | 503 Tjänsten är inte tillgänglig | Försök igen om 30 sekunder eller mer |
 | Alla andra | Försök igen om 10 sekunder eller mer |
 
+## <a name="delivery-with-custom-headers"></a>Leverans med anpassade rubriker
+Med händelse prenumerationer kan du konfigurera HTTP-huvuden som ingår i levererade händelser. Med den här funktionen kan du ange anpassade huvuden som krävs av ett mål. Du kan ställa in upp till 10 huvuden när du skapar en händelse prenumeration. Varje rubrik värde får inte vara större än 4 096 (4K) byte. Du kan ange anpassade rubriker för de händelser som levereras till följande destinationer:
+
+- Webhooks
+- Azure Service Bus ämnen och köer
+- Azure Event Hubs
+- Relä Hybridanslutningar
+
+Mer information finns i avsnittet [om leverans med anpassade sidhuvuden](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 

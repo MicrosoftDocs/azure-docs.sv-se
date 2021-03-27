@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999169"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Självstudie: Azure Active Directory integrering med iQualify LMS
 
@@ -88,44 +88,41 @@ Utför följande steg för att konfigurera enkel inloggning med iQualify LMS i A
 
 1. Välj **enkel inloggning** på sidan **iQualify LMS** Application Integration i [Azure Portal](https://portal.azure.com/).
 
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
+   ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
 2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
 
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
+   ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
 3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
-    ![Skärm bild som visar den grundläggande SAML-konfigurationen, där du kan ange identifierare, svara U R L och välja Spara.](common/idp-intiated.png)
+   ![Skärm bild som visar den grundläggande SAML-konfigurationen, där du kan ange identifierare, svara U R L och välja Spara.](common/idp-intiated.png)
+   
+   1. I textrutan **Identifierare** skriver du en URL med följande mönster:  
 
-    a. I textrutan **Identifierare** skriver du en URL med följande mönster:  
-    | |
-    |--|--|
-    | Produktions miljö: `https://<yourorg>.iqualify.com/`|
-    | Test miljö: `https://<yourorg>.iqualify.io`|
+      * Produktions miljö: `https://<yourorg>.iqualify.com/`
+      * Test miljö: `https://<yourorg>.iqualify.io`
 
-    b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
-    | |
-    |--|--|
-    | Produktions miljö: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Test miljö: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
+   2. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
+
+      * Produktions miljö: `https://<yourorg>.iqualify.com/auth/saml2/callback` 
+      * Test miljö: `https://<yourorg>.iqualify.io/auth/saml2/callback`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    ![Skärm bild som visar ytterligare U R LS där du kan ange ett tecken på U R L.](common/metadata-upload-additional-signon.png)
+   ![Skärm bild som visar ytterligare U R LS där du kan ange ett tecken på U R L.](common/metadata-upload-additional-signon.png)
 
-    I textrutan **Inloggnings-URL** skriver du in en URL med följande mönster:
-    | |
-    |--|--|
-    | Produktions miljö: `https://<yourorg>.iqualify.com/login` |
-    | Test miljö: `https://<yourorg>.iqualify.io/login` |
+   I textrutan **Inloggnings-URL** skriver du in en URL med följande mönster:
 
-    > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [IQUALIFY LMS client support team](https://www.iqualify.com/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+      * Produktions miljö: `https://<yourorg>.iqualify.com/login`
+      * Test miljö: `https://<yourorg>.iqualify.io/login`
+
+   > [!NOTE]
+   > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [IQUALIFY LMS client support team](https://www.iqualify.com/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 6. Ditt iQualify LMS-program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på **Redigera** ikon för att öppna dialog rutan **användarattribut** .
 

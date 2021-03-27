@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5286362369e0c4881cdf0c56bc13d1d340056be1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562519"
+ms.locfileid: "105612780"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-skript för IoT Edge för Linux i Windows
 
@@ -46,12 +46,15 @@ Kommandot **Deploy-Eflow** är den huvudsakliga distributions metoden. Distribut
 | vmSizeDefintion | Högst 30 tecken | Definition av antalet kärnor och tillgängligt RAM-minne för den virtuella datorn. **Standardvärde**: Standard_K8S_v1. |
 | vmDiskSize | Mellan 8 GB och 256 GB | Maximal disk storlek för den dynamiskt expanderande virtuella hård disken. **Standardvärde**: 16 GB. |
 | vmUser | Högst 30 tecken | Användar namn för att logga in på den virtuella datorn. |
-| vnetType | **Transparent** eller **ICS** | Typ av virtuell växel. **Standardvärde**: transparent. |
+| vnetType | **Transparent** eller **ICS** | Typ av virtuell växel. **Standardvärde**: transparent. Transparent refererar till en extern växel, medan ICS refererar till en intern växel. |
 | vnetName | Inte längre än 64 tecken | Namnet på den virtuella växeln. **Standardvärde**: external. |
 | enableVtpm | Inget | **Växlings parameter**. Skapa den virtuella datorn med TPM aktiverat eller inaktiverat. |
 | mobyPackageVersion | Högst 30 tecken |  Versionen av Moby-paketet som ska verifieras eller installeras på den virtuella datorn.  **Standardvärde:** 19.03.11. |
 | iotedgePackageVersion | Högst 30 tecken | Versionen av IoT Edge-paketet som ska verifieras eller installeras på den virtuella datorn. **Standardvärde:** 1.1.0. |
 | installPackages | Inget | **Växlings parameter**. När det är växlat försöker skriptet att installera Moby och IoT Edge-paket i stället för att bara verifiera att paketen finns. |
+
+>[!NOTE]
+>Om processen inte kan hitta en extern växel med namnet `External` kommer den att söka efter en befintlig extern växel genom att hämta en IP-adress som standard. Om det inte finns någon extern växel tillgänglig söker den efter en intern växel. Om det inte finns någon intern växel tillgänglig försöker den skapa en standard-växel som en IP-adress ska hämtas till.
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 

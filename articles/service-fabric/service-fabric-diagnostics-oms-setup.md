@@ -1,16 +1,14 @@
 ---
 title: Konfigurera övervakning med Azure Monitor loggar
 description: Lär dig hur du konfigurerar Azure Monitor loggar för visualisering och analys av händelser för att övervaka dina Azure Service Fabric-kluster.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: srrengar
-ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 79dbc38f9d177bc3decf11673a68ce434f9a83bc
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100570345"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625967"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Konfigurera Azure Monitor loggar för ett kluster
 

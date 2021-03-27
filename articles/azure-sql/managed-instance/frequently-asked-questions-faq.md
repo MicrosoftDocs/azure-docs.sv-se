@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 42e263a47c6c771d2b1fef6586468cfc5a698e28
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047923"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628585"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ Den hanterade instansen ger samma prestanda nivåer per beräknings-och lagrings
 
 Ett alternativ är att [Exportera en databas till BACPAC](../database/database-export.md) och sedan [Importera BACPAC-filen](../database/database-import.md). Detta är den rekommenderade metoden om databasen är mindre än 100 GB.
 
-[Transaktionsreplikering](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kan användas om alla tabeller i databasen har *primära* nycklar och det inte finns några minnesbaserade OLTP-objekt i databasen.
+[Transaktionsreplikering](replication-two-instances-and-sql-server-configure-tutorial.md) kan användas om alla tabeller i databasen har *primära* nycklar och det inte finns några minnesbaserade OLTP-objekt i databasen.
 
 Det går inte att återställa interna COPY_ONLY säkerhets kopieringar från hanterade instanser till SQL Server eftersom den hanterade instansen har en högre databas version jämfört med SQL Server. Mer information finns i [Kopiera endast säkerhets kopiering](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
@@ -171,7 +171,7 @@ Se [viktiga orsaker till prestanda skillnader mellan SQL-hanterad instans och SQ
 
 Du kan optimera prestanda för din hanterade instans genom att:
 - [Automatisk justering](../database/automatic-tuning-overview.md) som ger högsta prestanda och stabila arbets belastningar genom kontinuerlig prestanda justering baserat på AI och maskin inlärning.
--   [Minnes intern OLTP](../in-memory-oltp-overview.md) som ger bättre data flöde och svars tid på transaktions bearbetnings arbets belastningar och ger snabbare affärs insikter. 
+-    [Minnes intern OLTP](../in-memory-oltp-overview.md) som ger bättre data flöde och svars tid på transaktions bearbetnings arbets belastningar och ger snabbare affärs insikter. 
 
 Överväg att använda några av de *rekommenderade metoderna* för [program-och databas justering](../database/performance-guidance.md#tune-your-database)för att finjustera prestanda ytterligare.
 Om din arbets belastning består av många små transaktioner bör du överväga att [byta Anslutnings typ från proxy till omdirigeringsläge](connection-types-overview.md#changing-connection-type) för kortare latens och högre data flöde.
@@ -263,9 +263,9 @@ Ja. När en hanterad instans har tillhandahållits kan du ange NSG som styr inko
 **Kan jag ange NVA eller lokal brand vägg för att filtrera utgående hanterings trafik baserat på FQDN?**
 
 Nej. Detta stöds inte av flera skäl:
--   Routnings trafik som representerar svar på inkommande hanterings begär Anden blir asymmetrisk och fungerar inte.
--   Routning av trafik som går till lagring påverkas av begränsningar och svars tider för data flödet så på det sättet att vi inte kan tillhandahålla förväntade tjänste kvalitet och tillgänglighet.
--   De här konfigurationerna är beroende av erfarenheten fel känsliga och stöds inte.
+-    Routnings trafik som representerar svar på inkommande hanterings begär Anden blir asymmetrisk och fungerar inte.
+-    Routning av trafik som går till lagring påverkas av begränsningar och svars tider för data flödet så på det sättet att vi inte kan tillhandahålla förväntade tjänste kvalitet och tillgänglighet.
+-    De här konfigurationerna är beroende av erfarenheten fel känsliga och stöds inte.
 
 **Kan jag ange NVA eller brand vägg för utgående trafik som inte hanterar hanteringen?**
 
@@ -416,9 +416,9 @@ SQL-hanterad instans erbjuder [vCore-baserad inköps modell](sql-managed-instanc
 **Vilka kostnads förmåner är tillgängliga för SQL-hanterad instans?**
 
 Du kan spara kostnader med Azure SQL-förmåner på följande sätt:
--   Maximera befintliga investeringar i lokala licenser och Spara upp till 55 procent med [Azure Hybrid-förmån](../azure-hybrid-benefit.md?tabs=azure-powershell). 
--   Genomför en reservation för beräknings resurser och Spara upp till 33 procent med [reserverad instans förmån](../database/reserved-capacity-overview.md). Kombinera detta med Azure Hybrid-förmånen och Spara upp till 82 procent. 
--   Spara upp till 55 procent jämfört med priser för [Azure dev/test-](https://azure.microsoft.com/pricing/dev-test/) priser som erbjuder rabatterade priser för dina kontinuerliga utvecklings-och testnings arbets belastningar.
+-    Maximera befintliga investeringar i lokala licenser och Spara upp till 55 procent med [Azure Hybrid-förmån](../azure-hybrid-benefit.md?tabs=azure-powershell). 
+-    Genomför en reservation för beräknings resurser och Spara upp till 33 procent med [reserverad instans förmån](../database/reserved-capacity-overview.md). Kombinera detta med Azure Hybrid-förmånen och Spara upp till 82 procent. 
+-    Spara upp till 55 procent jämfört med priser för [Azure dev/test-](https://azure.microsoft.com/pricing/dev-test/) priser som erbjuder rabatterade priser för dina kontinuerliga utvecklings-och testnings arbets belastningar.
 
 **Vem är berättigad till reserverad instans?**
 

@@ -2,15 +2,15 @@
 title: Bicep-moduler
 description: Beskriver hur du definierar och använder en modul och hur du använder modul omfattningar.
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 2edeb5c96f771867f964963b2d27768291ae2d4a
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: 7a680e8aa0fa4d5ef9cac7f9e7ba07a3aa4ee1e2
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889713"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611743"
 ---
-# <a name="use-bicep-modules"></a>Använda bicep-moduler
+# <a name="use-bicep-modules-preview"></a>Använda bicep-moduler (förhands granskning)
 
 Med bicep kan du dela upp en komplex lösning i moduler. En bicep-modul är en uppsättning av en eller flera resurser som ska distribueras tillsammans. Moduler sammanfattar komplexa detaljer om rå resurs deklarationen, vilket kan öka läsbarheten. Du kan återanvända de här modulerna och dela dem med andra personer. Kombinerat med [specifikationer för mallar](./template-specs.md), skapar det ett sätt för modulär användning och kod åter användning. En själv studie kurs finns i [Självstudier: Lägg till bicep-moduler](./bicep-tutorial-add-modules.md).
 

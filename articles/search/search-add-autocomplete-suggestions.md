@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a46c7f35e30b2dda7b4800ed553447cef5bb5d33
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609363"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626715"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Lägg till komplettera automatiskt och förslag till klient program med Azure Kognitiv sökning
 
@@ -81,13 +81,15 @@ Följande ytterligare parametrar gäller för både Autoavsluta och förslag, me
 
 Att automatiskt fylla en frågeterm eller släppa en lista över matchande länkar kräver användar interaktions kod, vanligt vis Java Script, som kan använda förfrågningar från externa källor, t. ex. Autoavsluta-eller förslags frågor mot ett Azure Search kognitivt index.
 
-Även om du kan skriva den här koden internt är det mycket enklare att använda funktioner från befintliga JavaScript-bibliotek. Den här artikeln nämner två, en för förslag och en annan för automatisk komplettering. 
+Även om du kan skriva den här koden internt är det mycket enklare att använda funktioner från befintliga JavaScript-bibliotek, till exempel något av följande. 
 
 + [Autocomplete-widgeten (JQUERY UI)](https://jqueryui.com/autocomplete/) visas i förslags kodfragmentet. Du kan skapa en sökruta och sedan referera till den i en JavaScript-funktion som använder widgeten Autoavsluta. Egenskaperna i widgeten anger källan (en Autoavsluta-eller Suggestions-funktion), minimal längd på angivna tecken innan åtgärden tas och placering.
 
 + [XDSoft-plugin-programmet för automatisk komplettering](https://xdsoft.net/jqplugins/autocomplete/) visas i kodfragmentet för automatisk komplettering.
 
-Vi använder dessa bibliotek för att bygga sökrutan som stöder både förslag och Autoavsluta. Indata som samlas in i sökrutan är kopplade till förslag och åtgärder för automatisk komplettering.
++ [förslag](https://www.npmjs.com/package/suggestions) visas i avsnittet om [JavaScript-självstudie](tutorial-javascript-overview.md) och kod exempel.
+
+Använd de här biblioteken i-klienten för att skapa en sökruta som stöder både förslag och Autoavsluta. Indata som samlas in i sökrutan kan sedan kombineras med förslag och åtgärder för automatisk komplettering på Sök tjänsten.
 
 ## <a name="suggestions"></a>Förslag
 
@@ -247,7 +249,7 @@ Funktionen Autoavsluta tar search term-indatamängden. Metoden skapar ett [AutoC
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följ dessa länkar för slut punkt till slut punkts instruktioner eller kod som demonstrerar både sökning efter typ-upplevelser. Exemplet demonstrerar hybrid implementeringar av förslag och Autoavsluta tillsammans.
+Följ dessa länkar för slut punkt till slut punkts instruktioner eller kod som demonstrerar både sökning efter typ-upplevelser. Exemplet demonstrerar hybrid implementeringen av förslag och Autoavsluta tillsammans.
 
-+ [Självstudie: skapa din första app i C# (Lektion 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C#-kod exempel: Azure-Search-dotNet-samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
++ Genom att [lägga till en sökning på en webbplats (Java Script)](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) används ett förslags paket med öppen källkod för ofullständig avslutning av termen i klient programmet.
++ [Självstudie: skapa din första app i C# (Lektion 3)](tutorial-csharp-type-ahead-and-suggestions.md) med tillhör ande  [C#-kod exempel: Azure-Search-dotNet-samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead) demonstrera inbyggt stöd för typeahead.

@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 520a36a0896cc2b4b14366350f66d365ea04a557
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879320"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612809"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Snabb start: Distribuera ditt första Azure våren Cloud-program
 
@@ -349,6 +349,7 @@ Börja med [våren Initializr](https://start.spring.io/#!type=maven-project&lang
 ```url
 https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
+Observera att det här exemplet använder Java version 8.  Om du vill använda Java version 11 ändrar du alternativet under Project- **metadata**.
 
   ![Sidan Initializr](media/spring-cloud-quickstart-java/initializr-page.png)
 
@@ -413,7 +414,7 @@ Följande procedur skapar och distribuerar programmet med hjälp av Azure CLI. K
     az extension add --name spring-cloud
     ```
     
-1. Skapa appen med en offentlig slut punkt som tilldelats:
+1. Skapa appen med en offentlig slut punkt tilldelad. Om du använder Java 11 inkluderar du `--runtime-version=Java_11` växeln.
 
     ```azurecli
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true

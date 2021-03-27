@@ -3,15 +3,15 @@ title: Felsöka Övervakare för för hands version av Windows Virtual Desktop �
 description: Fel sökning av problem med Azure Monitor för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a07d7536d3d71b121c1dde761d8c290b8be01fe7
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709180"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628466"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Felsöka Azure Monitor för Windows Virtual Desktop (för hands version)
 
@@ -25,28 +25,26 @@ Den här artikeln visar kända problem och lösningar för vanliga problem i Azu
 Om konfigurations arbets boken inte fungerar korrekt för att automatisera installationen kan du använda dessa resurser för att konfigurera din miljö manuellt:
 
 - Om du vill aktivera diagnostik manuellt eller komma åt Log Analytics-arbetsytan läser du [Skicka diagnostik för virtuella Windows-datorer till Log Analytics](diagnostics-log-analytics.md).
-- Om du vill installera Log Analytics-tillägget på en värd manuellt, se [Log Analytics tillägg för virtuell dator för Windows](../virtual-machines/extensions/oms-windows.md).
+- Om du vill installera Log Analytics-tillägget på en sessions värd manuellt, se [Log Analytics tillägget för virtuell dator för Windows](../virtual-machines/extensions/oms-windows.md).
 - Om du vill konfigurera en ny Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
-- Information om hur du lägger till eller tar bort prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md).
-- Information om hur du konfigurerar händelser för en Log Analytics arbets yta finns i [samla in Windows händelse logg data källor med Log Analytics-agenten](../azure-monitor/agents/data-sources-windows-events.md).
+- Information om hur du lägger till, tar bort eller redigerar prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md).
+- Information om hur du konfigurerar Windows-händelseloggar för en Log Analytics arbets yta finns i [samla in Windows händelse logg data källor med Log Analytics-agenten](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Mina data visas inte korrekt
 
-Om dina data inte visas korrekt kontrollerar du konfigurationen, behörigheterna och kontrollerar att de begärda IP-adresserna är avblockerade. 
+Om dina data inte visas korrekt kontrollerar du följande vanliga lösningar:
 
-- Se först till att du har fyllt i alla fält i konfigurations arbets boken enligt beskrivningen i [använda Azure Monitor för Windows Virtual Desktop för att övervaka distributionen](azure-monitor.md). Om du saknar räknare eller händelser visas inte de data som är kopplade till dem i Azure Portal.
-
+- Kontrol lera först att du har konfigurerat rätt konfigurations arbets bok enligt beskrivningen i [använda Azure Monitor för Windows Virtual Desktop för att övervaka distributionen](azure-monitor.md). Om du saknar räknare eller händelser visas inte de data som är kopplade till dem i Azure Portal.
 - Kontrol lera åtkomst behörigheterna & kontakta resurs ägarna för att begära behörigheter som saknas. alla som övervakar virtuella Windows-skrivbord kräver följande behörigheter:
-
     - Läs åtkomst till de Azure-prenumerationer som innehåller dina Windows-resurser för virtuella skriv bord
     - Läs åtkomst till prenumerationens resurs grupper som innehåller dina virtuella Windows-värdar för fjärrskrivbordssession 
-    - Läs åtkomst till arbets ytan Log Analytics
-
-- Du kan behöva öppna utgående portar i serverns brand vägg för att tillåta Azure Monitor att skicka data till portalen, se [utgående portar](../azure-monitor/app/ip-addresses.md). 
-
+    - Läs åtkomst till de Log Analytics arbets ytor som du använder
+- Du kan behöva öppna utgående portar i serverns brand vägg för att tillåta Azure Monitor och Log Analytics att skicka data till portalen. Information om hur du gör detta finns i följande artiklar:
+      - [Azure Monitor utgående portar](../azure-monitor/app/ip-addresses.md)
+      - [Log Analytics brand Väggs krav](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements). 
 - Ser du inte data från senaste aktivitet? Du kanske vill vänta i 15 minuter och uppdatera flödet. Azure Monitor har en svars tid på 15 minuter för att fylla logg data. Läs mer i logg data Inhämtnings [tid i Azure Monitor](../azure-monitor/logs/data-ingestion-time.md).
 
-Om du inte saknar någon information men dina data fortfarande inte visas korrekt, kan det finnas ett problem i frågan eller data källorna. Granska våra kända problem och begränsningar. 
+Om du inte saknar någon information men dina data fortfarande inte visas korrekt, kan det finnas ett problem i frågan eller data källorna. Granska [kända problem och begränsningar](#known-issues-and-limitations). 
 
 ## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>Jag vill anpassa Azure Monitor för virtuellt Windows-skrivbord
 
@@ -60,7 +58,7 @@ Lär dig mer om data termer på [Azure Monitor för Virtual Desktop-ordlista](az
 
 ## <a name="the-data-i-need-isnt-available"></a>De data jag behöver är inte tillgängliga
 
-Om du vill övervaka fler prestanda räknare eller händelser kan du göra det möjligt för dem att skicka till din Log Analytics arbets yta och övervaka dem i Host Diagnostics: värd webbläsare. 
+Om du vill övervaka fler prestanda räknare eller Windows-händelseloggar kan du göra det möjligt för dem att skicka diagnostikinformation till din Log Analytics arbets yta och övervaka dem i **Host Diagnostics: värd webbläsare**. 
 
 - Information om hur du lägger till prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
 - Information om hur du lägger till Windows-händelser finns i [Konfigurera händelse loggar i Windows](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
@@ -68,26 +66,19 @@ Om du vill övervaka fler prestanda räknare eller händelser kan du göra det m
 Kan du inte hitta någon data punkt för att diagnostisera ett problem? Skicka oss feedback!
 
 - Information om hur du lämnar feedback finns i [fel söknings översikt, feedback och support för Windows Virtual Desktop](troubleshoot-set-up-overview.md).
-- Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) eller i [vårt UserVoice-forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+- Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
 
 ## <a name="known-issues-and-limitations"></a>Kända problem och begränsningar
 
-Detta är problem och begränsningar som vi just nu är medvetna om och som arbetar med att åtgärda:
+Följande är problem och begränsningar vi är medvetna om och arbetar med att åtgärda:
 
 - Du kan bara övervaka en adresspool i taget. 
-
 - Om du vill spara favorit inställningarna måste du spara en anpassad mall i arbets boken. Anpassade mallar kommer inte automatiskt att införa uppdateringar från produkt gruppen.
-
-- Vissa fel meddelanden formuleras inte på ett användarvänligt sätt, och alla fel meddelanden beskrivs inte i dokumentationen.
-
+- Konfigurations arbets boken kommer ibland att visa fel när dina val lästes in. Uppdatera frågan, ange ditt val igen om det behövs och felet bör lösa sig självt. 
+- Vissa fel meddelanden är inte formulerade på ett användarvänligt sätt och alla fel meddelanden beskrivs inte i dokumentationen.
 - Prestanda räknaren Totalt antal sessioner kan överskrida sessioner med ett litet nummer och det totala antalet sessioner kan verka som om gränsen är max.
-
-- Antalet tillgängliga sessioner återspeglar inte skalnings principer för den här poolen. 
-    
-- I sällsynta fall kan en anslutnings slut för ande händelse gå förlorad och detta kan påverka vissa visuella objekt som anslutningar över tid och användarens anslutnings status.  
-    
-- Konfigurations arbets boken stöder bara konfigurering av värdar inom samma region som resurs gruppen. 
-
+- Antalet tillgängliga sessioner återspeglar inte skalnings principer för den här poolen.   
+- Ser du motstridiga eller oväntade anslutnings tider? I sällsynta fall kan en anslutnings slut för ande händelse gå förlorad och kan påverka vissa visuella objekt och mått.
 - Tid för anslutning omfattar den tid det tar för användarna att ange sina autentiseringsuppgifter. Detta motsvarar upplevelsen, men i vissa fall kan du Visa falskt-toppar. 
     
 

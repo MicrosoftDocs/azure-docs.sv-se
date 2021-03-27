@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562740"
+ms.locfileid: "105612066"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera servrar som körs i VMware-miljön med Azure Migrate: identifiering och utvärdering
 
@@ -34,11 +34,9 @@ I den här guiden får du lära dig att:
 
 Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar.
 
-
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du påbörjar den här självstudien måste du kontrol lera att du har dessa krav på plats.
-
 
 **Krav** | **Information**
 --- | ---
@@ -97,7 +95,6 @@ I vSphere-webbklient skapar du ett konto på följande sätt:
 6. Om du även vill utföra identifiering av installerade program och en agent lös beroende analys går du till **roller** > väljer den **skrivskyddade** rollen och väljer **gäst åtgärder** i **privilegier**. Du kan sprida privilegierna till alla objekt under vCenter Server genom att markera kryss rutan Sprid till underordnade objekt.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Kryss ruta för att tillåta gäst åtgärder på den skrivskyddade rollen":::
-
 
 > [!NOTE]
 > Du kan begränsa identifieringen till specifika vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda servrar genom att omfånget vCenter Server-kontot. [**Läs mer**](set-discovery-scope.md) om hur du omfångerar vCenter Server-användarkontot.
@@ -197,11 +194,9 @@ Importera den nedladdade filen och skapa en server i VMware-miljön
 8. I **nätverks mappning** anger du det nätverk som servern ska ansluta till. Nätverket måste ha Internet anslutning för att kunna skicka metadata till Azure Migrate.
 9. Granska och bekräfta inställningarna. Klicka sedan på **Slutför**.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
 Se till att installations servern kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
-
 
 ### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 

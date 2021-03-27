@@ -2,15 +2,15 @@
 title: Konfigurera bicep utvecklings-och distributions miljöer
 description: Så här konfigurerar du bicep utvecklings-och distributions miljöer
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 7cd3721aca83488de61494a94826bfcd0b6acc26
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.date: 03/25/2021
+ms.openlocfilehash: 9a35355d1035943081ac58b36623af772fb8d547
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105543745"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612593"
 ---
-# <a name="setup-bicep-development-and-deployment-environment"></a>Konfigurera bicep utvecklings-och distributions miljö
+# <a name="install-bicep-preview"></a>Installera bicep (för hands version)
 
 Lär dig hur du ställer in bicep utvecklings-och distributions miljöer.
 

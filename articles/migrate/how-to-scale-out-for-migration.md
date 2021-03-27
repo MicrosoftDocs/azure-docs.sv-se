@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 634eb2d22e3fa570ac9412d4fb8afd917b5c2eaa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564015"
+ms.locfileid: "105611981"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skala agent lös migrering av virtuella VMware-datorer till Azure
 
@@ -43,7 +43,7 @@ Läs självstudien om hur du utför ovanstående genom att [migrera virtuella VM
 
 Om du vill lägga till en skalbar installation följer du stegen som anges nedan:
 
-1. Klicka på **identifierare**  >  **datorer virtualiseras?** 
+1. Klicka på **identifiera**  >  **dina datorer virtualiserade?** 
 1. Välj **Ja, med VMware vSphere hypervisor.**
 1. Välj replikering utan agent i nästa steg.
 1. Välj **skala ut en befintlig primär apparat** på menyn Välj typ av installation.
@@ -68,8 +68,8 @@ I **Ladda ned Azure Migrate**-installationen klickar du på  **Hämta**. Du mås
 > 1. Öppna kommando tolken som administratör
 > 2. Kör följande kommando för att generera hashen för den zippade filen:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Exempel på användning för offentligt moln: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Ladda ned den senaste versionen av installations programmet för skalbar installation från portalen om det beräknade hash-värdet inte matchar den här strängen: e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+    - Exempel på användning för offentligt moln: ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
+> 3. Ladda ned den senaste versionen av installations programmet för skalbar installation från portalen om det beräknade hash-värdet inte matchar den här strängen: 1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. kör installations skriptet för Azure Migrate
 Installations skriptet gör följande:
@@ -108,7 +108,7 @@ Innan du börjar bör du se till att de [här Azure-slutpunkterna](migrate-appli
 - Godkänn **licens villkoren** och Läs informationen från tredje part.
 - I Configuration Manager > **Konfigurera krav**, gör du följande:
    - **Anslutning**: installationen kontrollerar att servern är ansluten till Internet. Om servern använder en proxyserver:
-     1. Klicka på **Konfigurera proxy** för att ange proxyadress (i formuläret http://ProxyIPAddress eller http://ProxyFQDN) lyssnande port.
+     1. Klicka på **Setup proxy** för att ange proxyadress (i formuläret http://ProxyIPAddress eller http://ProxyFQDN) lyssnande port).
      2. Ange autentiseringsuppgifter om proxyn kräver autentisering.
      3. Endast HTTP-proxy stöds.
      4. Om du har lagt till proxyinformation eller inaktiverat proxyn och/eller autentiseringen, klickar du på **Spara** för att utlösa anslutnings kontrollen igen.
