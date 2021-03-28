@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d83f6585500316515139f937a56889dfc1f8fac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459661"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642699"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Spelbok för att lösa vanliga säkerhets krav med Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Central identitets hantering ger följande fördelar:
 - Tilldela åtkomst behörigheter till resurser till Azure AD-huvudobjekt via grupp tilldelning: Skapa Azure AD-grupper, bevilja åtkomst till grupper och lägga till enskilda medlemmar i grupperna. I databasen skapar du inneslutna databas användare som mappar dina Azure AD-grupper. Om du vill tilldela behörigheter i databasen ska du placera de användare som är associerade med dina Azure AD-grupper i databas roller med rätt behörigheter.
   - Se artiklarna, [Konfigurera och hantera Azure Active Directory autentisering med SQL](authentication-aad-configure.md) och [Använd Azure AD för autentisering med SQL](authentication-aad-overview.md).
   > [!NOTE]
-  > I SQL-hanterad instans kan du också skapa inloggningar som mappar till Azure AD-huvudobjekten i huvud databasen. Se [Skapa inloggning (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+  > I SQL-hanterad instans kan du också skapa inloggningar som mappar till Azure AD-huvudobjekten i huvud databasen. Se [Skapa inloggning (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Att använda Azure AD-grupper fören klar behörighets hanteringen och både grupp ägaren och resurs ägaren kan lägga till/ta bort medlemmar till/från gruppen.
 
@@ -136,7 +136,7 @@ Azure AD Multi-Factor Authentication ger ytterligare säkerhet genom att kräva 
 
 - Använd Azure AD Interactive Authentication mode för Azure SQL Database och Azure SQL-hanterad instans där ett lösen ord begärs interaktivt, följt av Multi-Factor Authentication:
   - Använd Universal Authentication i SSMS. Se artikeln [med Multi-Factor Azure AD-autentisering med Azure SQL Database, SQL-hanterad instans, Azure Synapse (SSMS-stöd för Multi-Factor Authentication)](authentication-mfa-ssms-overview.md).
-  - Använd interaktiv autentisering som stöds i SQL Server Data Tools (SSDT). Se artikeln [Azure Active Directory support i SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?view=azuresqldb-current).
+  - Använd interaktiv autentisering som stöds i SQL Server Data Tools (SSDT). Se artikeln [Azure Active Directory support i SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true).
   - Använd andra SQL-verktyg som stöder Multi-Factor Authentication.
     - SSMS guide stöd för export/extrahera/distribuera databas  
     - [sqlpackage.exe](/sql/tools/sqlpackage): alternativ '/UA '
@@ -196,7 +196,7 @@ Om det inte går att undvika lösen ord, se till att de är skyddade.
 
 - Om du inte kan undvika lösen ord eller hemligheter kan du lagra användar lösen ord och program hemligheter i Azure Key Vault och hantera åtkomst via Key Vault åtkomst principer.
 
-- Olika ramverk för program utveckling kan också erbjuda branschspecifika mekanismer för att skydda hemligheter i appen. Till exempel: [ASP.net Core app](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1).
+- Olika ramverk för program utveckling kan också erbjuda branschspecifika mekanismer för att skydda hemligheter i appen. Till exempel: [ASP.net Core app](/aspnet/core/security/app-secrets?tabs=windows).
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>Använda SQL-autentisering för äldre program
 

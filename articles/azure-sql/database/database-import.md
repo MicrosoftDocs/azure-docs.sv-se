@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: b88c7aabe135b8e64869980b806852d92191440b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2412d3d2851d1b4d251b50ff3068b7dcafcccee8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105568689"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642041"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: importera en BACPAC-fil till en databas i Azure SQL Database eller Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ Om du vill migrera en databas till en [Azure SQL-hanterad instans](../managed-in
 
 1. Välj lagrings kontot och behållaren för BACPAC-filen och välj sedan den BACPAC-fil som du vill importera från.
 
-1. Ange den nya databas storleken (vanligt vis samma som ursprung) och ange mål SQL Server autentiseringsuppgifter. En lista över möjliga värden för en ny databas i Azure SQL Database finns i [skapa databas](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+1. Ange den nya databas storleken (vanligt vis samma som ursprung) och ange mål SQL Server autentiseringsuppgifter. En lista över möjliga värden för en ny databas i Azure SQL Database finns i [skapa databas](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
    ![Databas import2](./media/database-import/sql-server-import-database-settings.png)
 

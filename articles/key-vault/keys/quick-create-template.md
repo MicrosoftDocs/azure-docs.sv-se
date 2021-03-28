@@ -10,16 +10,19 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: daf6d90ae6b5d95c54e0e83eff4c2d606e7054fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585765"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639428"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Snabb start: skapa ett Azure Key Vault och en nyckel med hjälp av ARM-mall (för hands version)
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Snabb start: skapa ett Azure Key Vault och en nyckel med hjälp av ARM-mall 
 
 [Azure Key Vault](../general/overview.md) är en moln tjänst som ger en säker lagring för hemligheter, till exempel nycklar, lösen ord, certifikat och andra hemligheter. Den här snabb starten fokuserar på processen att distribuera en Azure Resource Manager-mall (ARM-mall) för att skapa ett nyckel valv och en nyckel.
+
+> [!NOTE]
+> Den här funktionen är inte tillgänglig för Azure Government.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521789"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640121"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Träna modeller med Azure Machine Learning data uppsättningar 
 
@@ -38,7 +38,7 @@ För att skapa och träna med data uppsättningar behöver du:
 * [Azure Machine Learning SDK för python installerat](/python/api/overview/azure/ml/install) (>= 1.13.0), som innehåller `azureml-datasets` paketet.
 
 > [!Note]
-> Vissa data uppsättnings klasser är beroende av [azureml-nu-](/python/api/azureml-dataprep/) paketet. För Linux-användare stöds dessa klasser endast för följande distributioner: Red Hat Enterprise Linux, Ubuntu, Fedora och CentOS.
+> Vissa data uppsättnings klasser är beroende av [azureml-nu-](https://pypi.org/project/azureml-dataprep/) paketet. För Linux-användare stöds dessa klasser endast för följande distributioner: Red Hat Enterprise Linux, Ubuntu, Fedora och CentOS.
 
 ## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Använda data uppsättningar i skript för Machine Learning-utbildning
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: HT
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371974"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645286"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Tilldela åtkomst till Cost Management-data
 
@@ -39,9 +39,9 @@ Du måste minst ha skrivskyddad åtkomst till ett eller flera av följande omfå
 | Faktureringskonto<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Företagsadministratör | Ingen | Alla prenumerationer från Enterprise-avtalet |
 | Avdelning | [https://ea.azure.com](https://ea.azure.com/) | Avdelningsadministratör | **Visa avgifter för DA** aktiverad | Alla prenumerationer som tillhör ett registreringskonto som är länkade till avdelningen |
 | Registreringskonto<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Kontoägare | **Visa avgifter för AO** aktiverad | Alla prenumerationer från registreringskontot |
-| Hanteringsgrupp | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-läsare (eller Läsare) | **Visa avgifter för AO** aktiverad | Alla prenumerationer under hanteringsgruppen |
-| Prenumeration | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-läsare (eller Läsare) | **Visa avgifter för AO** aktiverad | Alla resurser/resursgrupper i prenumerationen |
-| Resursgrupp | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-läsare (eller Läsare) | **Visa avgifter för AO** aktiverad | Alla resurser i resursgruppen |
+| Hanteringsgrupp | [https://portal.azure.com](https://portal.azure.com/) | Cost Management läsare (eller deltagare) | **Visa avgifter för AO** aktiverad | Alla prenumerationer under hanteringsgruppen |
+| Prenumeration | [https://portal.azure.com](https://portal.azure.com/) | Cost Management läsare (eller deltagare) | **Visa avgifter för AO** aktiverad | Alla resurser/resursgrupper i prenumerationen |
+| Resursgrupp | [https://portal.azure.com](https://portal.azure.com/) | Cost Management läsare (eller deltagare) | **Visa avgifter för AO** aktiverad | Alla resurser i resursgruppen |
 
 <sup>1</sup> Faktureringskontot kallas även för Enterprise-avtal eller registrering.
 
@@ -52,8 +52,8 @@ Du måste minst ha skrivskyddad åtkomst till ett eller flera av följande omfå
 
 Du måste minst ha skrivskyddad åtkomst till ett eller flera av följande omfång för att visa kostnadsdata för andra Azure-prenumerationer:
 
-- Azure-konto
 - Hanteringsgrupp
+- Prenumeration
 - Resursgrupp
 
 Olika omfång är tillgängliga när en partner har registrerat en kund i ett Microsoft-kundavtal. CSP-kunder kan sedan använda Cost Management-funktioner när de har aktiverats av CSP-partnern. Mer information finns i [Komma igång med Azure Cost Management för partners](get-started-partners.md).

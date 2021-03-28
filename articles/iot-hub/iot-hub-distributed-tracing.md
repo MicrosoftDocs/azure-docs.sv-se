@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581991"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643669"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Spåra Azure IoT-meddelanden från enhet till moln med distribuerad spårning (för hands version)
 
@@ -93,7 +93,7 @@ Dessa anvisningar är till för att bygga exemplet på Windows. Andra miljöer f
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klona käll koden och initiera
 
-1. Installera [arbets belastningen "Skriv bords utveckling med C++"](/cpp/build/vscpp-step-0-installation?view=vs-2019) för Visual Studio 2019. Visual Studio 2017 och 2015 stöds också.
+1. Installera [arbets belastningen "Skriv bords utveckling med C++"](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) för Visual Studio 2019. Visual Studio 2017 och 2015 stöds också.
 
 1. Installera [cmake](https://cmake.org/). Kontrol lera att det finns i `PATH` genom att skriva `cmake -version` från en kommando tolk.
 
@@ -252,7 +252,7 @@ Om du vill uppdatera den distribuerade spårnings samplings konfigurationen för
 | Elementnamn | Krävs | Typ | Beskrivning |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Integer | Två läges värden stöds för närvarande för att aktivera och inaktivera sampling. `1` är på och `2` är avstängd. |
-| `sampling_rate` | Ja | Integer | Det här värdet är en procent andel. Endast värden från `0` till `100` (inklusive) tillåts.  |
+| `sampling_rate` | Yes | Integer | Det här värdet är en procent andel. Endast värden från `0` till `100` (inklusive) tillåts.  |
 
 ## <a name="query-and-visualize"></a>Fråga och visualisera
 

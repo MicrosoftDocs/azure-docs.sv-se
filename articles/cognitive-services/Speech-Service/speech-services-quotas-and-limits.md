@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564430"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645117"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvoter och gränser för Speech-tjänster
 
@@ -39,7 +39,7 @@ För användning med [tal-SDK](speech-sdk.md) och/eller [tal-till-text REST API 
 #### <a name="batch-transcription"></a>Batch-avskrift
 | Kvot | Kostnads fri (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| REST API gräns | Batch-avskrift är inte tillgängligt för F0 | 300 förfrågningar per minut |
+| Gräns [för tal till text REST API v 2.0 och v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | Batch-avskrift är inte tillgängligt för F0 | 300 förfrågningar per minut |
 | Max fil storlek för ljud inspelning | Ej tillämpligt | 1 GB |
 | Maximal BLOB-storlek för indata (kan innehålla fler än en fil, till exempel i ett zip-arkiv, se till att observera fil storleks begränsningen ovan) | Ej tillämpligt | 2,5 GB |
 | Maximal storlek på BLOB-behållare | Ej tillämpligt | 5 GB |

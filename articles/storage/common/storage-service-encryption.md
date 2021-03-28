@@ -4,17 +4,17 @@ description: Azure Storage skyddar dina data genom att automatiskt kryptera dem 
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0688e14b77d885132d6c3fbaa44bed117cc7cf9d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180368"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641121"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-kryptering av vilande data
 
@@ -65,50 +65,9 @@ Kryptering på tjänst nivå stöder användning av antingen Microsoft-hanterade
 
 Mer information om hur du skapar ett lagrings konto som möjliggör infrastruktur kryptering finns i [skapa ett lagrings konto med infrastruktur kryptering aktiverat för dubbel kryptering av data](infrastructure-encryption-enable.md).
 
-## <a name="encryption-scopes-for-blob-storage-preview"></a>Krypterings omfång för Blob Storage (för hands version)
-
-Som standard krypteras ett lagrings konto med en nyckel som är begränsad till lagrings kontot. Du kan välja att använda antingen Microsoft-hanterade nycklar eller Kundhanterade nycklar som lagras i Azure Key Vault för att skydda och kontrol lera åtkomsten till nyckeln som krypterar dina data.
-
-Med krypterings omfång kan du välja att hantera kryptering på nivån för behållaren eller en enskild blob. Du kan använda krypterings omfång för att skapa säkra gränser mellan data som finns i samma lagrings konto men som tillhör olika kunder.
-
-Du kan skapa ett eller flera krypterings omfång för ett lagrings konto med hjälp av Azure Storage Resource Provider. När du skapar ett krypterings omfång anger du om omfattningen är skyddad med en Microsoft-hanterad nyckel eller med en kundhanterad nyckel som lagras i Azure Key Vault. Olika krypterings omfång på samma lagrings konto kan använda antingen Microsoft-hanterade eller kund hanterade nycklar.
-
-När du har skapat ett krypterings omfång kan du ange att krypterings omfång på en begäran om att skapa en behållare eller en blob. Mer information om hur du skapar en krypterings omfattning finns i [skapa och hantera krypterings omfattningar (för hands version)](../blobs/encryption-scope-manage.md).
-
-> [!NOTE]
-> Krypterings omfång stöds inte med Read-Access Geo-redundant lagring (RA-GRS) och Read-Access geo-Zone-redundant lagring (RA-GZRS)-konton under för hands versionen.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> För hands versionen av krypterings området är endast avsedd för användning utan produktion. Service nivå avtal (service avtal) för produktions tjänster är inte tillgängliga för närvarande.
->
-> Undvik oväntade kostnader genom att inaktivera eventuella krypterings omfattningar som du inte behöver.
-
-### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Skapa en behållare eller BLOB med en krypterings omfattning
-
-Blobbar som skapas under en krypterings omfattning krypteras med den nyckel som angetts för det aktuella omfånget. Du kan ange ett krypterings omfång för en enskild BLOB när du skapar blobben, eller så kan du ange en standard krypterings omfattning när du skapar en behållare. När en standard krypterings omfattning anges på nivån för en behållare krypteras alla blobbar i behållaren med den nyckel som är kopplad till standard omfånget.
-
-När du skapar en BLOB i en behållare som har ett standard krypterings omfång kan du ange en krypterings omfattning som åsidosätter standard krypterings omfånget om behållaren har kon figurer ATS för att tillåta åsidosättningar av standard krypterings omfattningen. För att förhindra åsidosättningar av standard krypterings omfånget konfigurerar du behållaren för att neka åsidosättningar för en enskild blob.
-
-Läs åtgärder på en blob som tillhör ett krypterings område sker transparent, så länge som krypterings omfånget inte är inaktiverat.
-
-### <a name="disable-an-encryption-scope"></a>Inaktivera ett krypterings omfång
-
-När du inaktiverar en krypterings omfattning kommer eventuella efterföljande Läs-eller Skriv åtgärder som görs med krypterings omfånget att Miss Missing med HTTP-felkoden 403 (tillåts inte). Om du aktiverar krypterings omfånget igen, kommer Läs-och skriv åtgärder att fortsätta normalt igen.
-
-När en krypterings omfattning är inaktive rad debiteras du inte längre. Inaktivera eventuella krypterings områden som inte behövs för att undvika onödiga kostnader.
-
-Om krypterings omfattningen är skyddad med Kundhanterade nycklar för Azure Key Vault kan du också ta bort den associerade nyckeln i nyckel valvet för att inaktivera krypterings omfånget. Tänk på att Kundhanterade nycklar i Azure Key Vault skyddas av mjuk borttagnings-och tömnings skydd, och en borttagen nyckel omfattas av det beteende som definierats för dessa egenskaper. Mer information finns i något av följande avsnitt i Azure Key Vault-dokumentationen:
-
-- [Använda mjuk borttagning med PowerShell](../../key-vault/general/key-vault-recovery.md)
-- [Använda mjuk borttagning med CLI](../../key-vault/general/key-vault-recovery.md)
-
-> [!NOTE]
-> Det går inte att ta bort en krypterings omfattning.
-
 ## <a name="next-steps"></a>Nästa steg
 
 - [Vad är Azure Key Vault?](../../key-vault/general/overview.md)
 - [Kundhanterade nycklar för Azure Storage kryptering](customer-managed-keys-overview.md)
-- [Krypterings omfång för Blob Storage (för hands version)](../blobs/encryption-scope-overview.md)
+- [Krypterings omfång för Blob Storage](../blobs/encryption-scope-overview.md)
+- [Ange en krypterings nyckel för en begäran till Blob Storage](../blobs/encryption-customer-provided-keys.md)

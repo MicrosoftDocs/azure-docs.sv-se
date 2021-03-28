@@ -10,12 +10,12 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 4a9deded16de6b0de2ef5f88ffebd813b8e5b8c0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 0a59b18fa2c09cff943dbccd2203027cd72e146a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110387"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644314"
 ---
 Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna Java SMS SDK för att skicka SMS-meddelanden.
 
@@ -106,12 +106,12 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Den här klassen skapar SmsClient. Du anger den med slut punkt, autentiseringsuppgift och en http-klient. |
 | SmsClient                    | Den här klassen krävs för alla SMS-funktioner. Du använder den för att skicka SMS-meddelanden.                |
-| SmsSendResult                | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
 | SmsSendOptions               | Den här klassen innehåller alternativ för att lägga till anpassade taggar och konfigurera leverans rapportering. Om deliveryReportEnabled har angetts till True genereras en händelse när leveransen lyckades|                           |
+| SmsSendResult                | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera en `SmsClient` med anslutnings strängen. (Autentiseringsuppgiften är `Key` från Azure Portal. Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+Instansiera en `SmsClient` med anslutnings strängen. (Autentiseringsuppgiften är `Key` från Azure Portal. Lär dig hur du [hanterar din resurs anslutnings sträng](../../create-communication-resource.md#store-your-connection-string).
 
 Lägg till följande kod i `main`-metoden:
 
@@ -160,6 +160,12 @@ System.out.println("Message Id: " + sendResult.getMessageId());
 System.out.println("Recipient Number: " + sendResult.getTo());
 System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 ```
+
+Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number>` med ett telefonnummer som du vill skicka ett meddelande till.
+
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>Skicka ett 1: N SMS-meddelande med alternativ
 Om du vill skicka ett SMS-meddelande till en lista över mottagare anropar du `send` metoden med en lista över mottagarens telefonnummer. Du kan också skicka valfria parametrar för att ange om leverans rapporten ska vara aktive rad och för att ange anpassade taggar.
 ```java
@@ -181,13 +187,14 @@ for (SmsSendResult result : sendResults) {
 }
 ```
 
-Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number>` med telefonnumret eller en lista med telefonnummer som du vill skicka ett meddelande till.
+Du bör ersätta `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number-1>` `<to-phone-number-2>` med telefonnummer som du vill skicka ett meddelande till.
 
-## <a name="optional-parameters"></a>Valfria parametrar
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
 
-`deliveryReportEnabled`Parametern är en valfri parameter som du kan använda för att konfigurera leverans rapportering. Detta är användbart för scenarier där du vill generera händelser när SMS-meddelanden levereras. Se snabb starten [Hantera SMS-händelser](../handle-sms-events.md) för att konfigurera leverans rapportering för SMS-meddelanden.
+`setDeliveryReportEnabled`Metoden används för att konfigurera leverans rapportering. Detta är användbart för scenarier där du vill generera händelser när SMS-meddelanden levereras. Se snabb starten [Hantera SMS-händelser](../handle-sms-events.md) för att konfigurera leverans rapportering för SMS-meddelanden.
 
-`tag`Parametern är en valfri parameter som du kan använda för att tillämpa en tagg i leverans rapporten.
+`setTag`Metoden används för att tillämpa en tagg för leverans rapporten.
 
 ## <a name="run-the-code"></a>Kör koden
 

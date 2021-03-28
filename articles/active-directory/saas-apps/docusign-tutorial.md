@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d8c94bfaeb3438ef54e745505e51442d6d391929
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92454702"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643006"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med DocuSign
 
@@ -45,8 +45,6 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 * DocuSign stöder **just-in-Time-** etablering av användare.
 
 * DocuSign stöder [Automatisk användar etablering](./docusign-provisioning-tutorial.md).
-
-* När du har konfigurerat DocuSign kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>Lägga till DocuSign från galleriet
 
@@ -97,8 +95,11 @@ Följ dessa steg om du vill aktivera Azure AD SSO i Azure Portal:
     
     | Svars-URL |
     |-------------|
-    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
-    |`https://<subdomain>.docusign.net/SAML/`|
+    | Produktions |
+    | `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>` |
+    | `https://<subdomain>.docusign.net/SAML/` |
+    | Frågor och svar-instans:|
+    | `https://<SUBDOMAIN>.docusign.com/organizations/saml2` |
 
     > [!NOTE]
     > Dessa hakparenteser är plats hållare. Ersätt dem med värdena i den faktiska inloggnings-URL: en, identifierare och svars-URL. Informationen beskrivs i avsnittet "Visa SAML 2,0-slutpunkter" senare i den här självstudien.
@@ -235,7 +236,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 2. Gå till DocuSign-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-3. Du kan använda Microsoft Access-panelen. När du klickar på panelen DocuSign på åtkomst panelen, bör du loggas in automatiskt på den DocuSign som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+3. Du kan använda Microsoft Mina appar. När du klickar på panelen DocuSign i Mina appar, bör du loggas in automatiskt på den DocuSign som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
@@ -244,16 +245,16 @@ När du har konfigurerat DocuSign kan du genomdriva session Control, som skyddar
 
 <!--Image references-->
 
-[50]: ./media/docusign-tutorial/tutorial_docusign_18.png
-[51]: ./media/docusign-tutorial/tutorial_docusign_21.png
-[52]: ./media/docusign-tutorial/tutorial_docusign_22.png
-[53]: ./media/docusign-tutorial/tutorial_docusign_23.png
-[54]: ./media/docusign-tutorial/tutorial_docusign_19.png
-[55]: ./media/docusign-tutorial/tutorial_docusign_20.png
-[56]: ./media/docusign-tutorial/tutorial_docusign_24.png
-[57]: ./media/docusign-tutorial/tutorial_docusign_25.png
-[58]: ./media/docusign-tutorial/tutorial_docusign_26.png
-[59]: ./media/docusign-tutorial/tutorial_docusign_27.png
-[60]: ./media/docusign-tutorial/tutorial_docusign_28.png
-[61]: ./media/docusign-tutorial/tutorial_docusign_29.png
-[62]: ./media/docusign-tutorial/tutorial_docusign_30.png
+[50]: ./media/docusign-tutorial/tutorial-docusign-18.png
+[51]: ./media/docusign-tutorial/tutorial-docusign-21.png
+[52]: ./media/docusign-tutorial/tutorial-docusign-22.png
+[53]: ./media/docusign-tutorial/tutorial-docusign-23.png
+[54]: ./media/docusign-tutorial/tutorial-docusign-19.png
+[55]: ./media/docusign-tutorial/tutorial-docusign-20.png
+[56]: ./media/docusign-tutorial/tutorial-docusign-24.png
+[57]: ./media/docusign-tutorial/tutorial-docusign-25.png
+[58]: ./media/docusign-tutorial/tutorial-docusign-26.png
+[59]: ./media/docusign-tutorial/tutorial-docusign-27.png
+[60]: ./media/docusign-tutorial/tutorial-docusign-28.png
+[61]: ./media/docusign-tutorial/tutorial-docusign-29.png
+[62]: ./media/docusign-tutorial/tutorial-docusign-30.png

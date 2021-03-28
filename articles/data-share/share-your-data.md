@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659632"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639541"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Självstudier: Dela data med Azure Data Share  
 
@@ -42,23 +42,10 @@ I den här självstudien får du lära dig att:
 Nedan visas en lista över förutsättningar för att dela data från SQL-källan. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Krav för delning från Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW)
-Du kan följa stegen i steg [för steg-demonstrationen](https://youtu.be/hIE-TjJD8Dc) för att konfigurera krav.
 
 * En Azure SQL Database-eller Azure Synapse-analys (tidigare Azure SQL DW) med tabeller och vyer som du vill dela.
 * Behörighet att skriva till databaserna på SQL Server, som finns i *Microsoft. SQL/Servers/databaser/skriva*. Den här behörigheten finns i **deltagarrollen**.
-* Behörighet för data resurs resursens hanterade identitet för att komma åt databasen. Detta kan göras genom följande steg: 
-    1. I Azure Portal går du till SQL-servern och anger dig själv som **Azure Active Directorys administratör**.
-    1. Anslut till Azure SQL Database/informations lagret med hjälp av [Frågeredigeraren](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) eller SQL Server Management Studio med Azure Active Directory autentisering. 
-    1. Kör följande skript för att lägga till den hanterade identiteten för data resursen som en db_datareader. Du måste ansluta med Active Directory och inte SQL Server autentisering. 
-    
-        ```sql
-        create user "<share_acct_name>" from external provider;     
-        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
-        ```                   
-       Observera att *<share_acc_name>* är namnet på din data resurs resurs. Om du inte har skapat någon data resurs resurs ännu kan du gå tillbaka till det här kravet senare.  
-
-* En Azure SQL Database användare med **"db_datareader"** -åtkomst för att navigera och välja de tabeller och/eller vyer som du vill dela. 
-
+* **Azure Active Directory administratör** för SQL Server
 * SQL Server brand Väggs åtkomst. Detta kan göras genom följande steg: 
     1. I Azure Portal går du till SQL Server. Välj *brand väggar och virtuella nätverk* från vänster navigering.
     1. Klicka på **Ja** om *du vill tillåta Azure-tjänster och-resurser åtkomst till den här servern*.
@@ -90,7 +77,6 @@ Du kan följa stegen i steg [för steg-demonstrationen](https://youtu.be/hIE-TjJ
 ### <a name="share-from-azure-data-explorer"></a>Dela från Azure Data Explorer
 * Ett Azure Datautforskaren-kluster med databaser som du vill dela.
 * Behörighet att skriva till Azure Datautforskaren-kluster, som finns i *Microsoft. Kusto/kluster/Write*. Den här behörigheten finns i **deltagarrollen**.
-* Behörighet att lägga till roll tilldelning till Azure Datautforskaren-klustret, som finns i *Microsoft. auktorisering/roll tilldelningar/Skriv*. Den här behörigheten finns i **ägarrollen**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -186,7 +172,7 @@ Använd följande kommandon för att skapa resursen:
 
     ![Lägg till data uppsättningar till din resurs](./media/datasets.png "Datauppsättningar")
 
-1. Välj den data uppsättnings typ som du vill lägga till. Du ser en annan lista över data uppsättnings typer beroende på vilken resurs typ (ögonblicks bild eller på plats) som du har valt i föregående steg. Om du delar från en Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW) uppmanas du att ange SQL-autentiseringsuppgifter för att visa tabeller.
+1. Välj den data uppsättnings typ som du vill lägga till. Du ser en annan lista över data uppsättnings typer beroende på vilken resurs typ (ögonblicks bild eller på plats) som du har valt i föregående steg. Om du delar från en Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW) uppmanas du att ange autentiseringsmetoden för att visa tabeller. Välj AAD-autentisering och markera kryss rutan **Tillåt att data resursen kör skriptet "skapa användare" för min räkning**. 
 
     ![AddDatasets](./media/add-datasets.png "Lägg till data uppsättningar")    
 

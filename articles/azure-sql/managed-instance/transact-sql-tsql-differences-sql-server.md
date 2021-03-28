@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601380"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644917"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -139,7 +139,7 @@ SQL-hanterad instans har inte åtkomst till filer, så det går inte att skapa k
 ### <a name="logins-and-users"></a>Inloggningar och användare
 
 - SQL-inloggningar som skapats med hjälp av `FROM CERTIFICATE` , `FROM ASYMMETRIC KEY` och `FROM SID` stöds. Se [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql).
-- Azure Active Directory (inloggnings uppgifter för Azure AD) som skapats med syntaxen [create login](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) eller [create User from login [Azure AD login]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) stöds. Dessa inloggningar skapas på server nivå.
+- Azure Active Directory (inloggnings uppgifter för Azure AD) som skapats med syntaxen [create login](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) eller [create User from login [Azure AD login]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true) stöds. Dessa inloggningar skapas på server nivå.
 
     SQL-hanterad instans stöder Azure AD Database-huvudobjekt med syntaxen `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` . Den här funktionen kallas även för Azure AD-inneslutna databas användare.
 
@@ -525,7 +525,7 @@ System databaser replikeras inte till den sekundära instansen i en failover-gru
 ### <a name="tempdb"></a>TEMPDB
 - Den maximala fil storleken på `tempdb` får inte vara större än 24 GB per kärna på en generell användning nivå. Den maximala `tempdb` storleken på en affärskritisk nivå begränsas av lagrings storleken för SQL-hanterad instans. `Tempdb` logg filens storlek är begränsad till 120 GB på Generell användning nivån. Vissa frågor kan returnera ett fel om de behöver mer än 24 GB per kärna i `tempdb` eller om de producerar mer än 120 GB loggdata.
 - `Tempdb` delas alltid upp i 12 datafiler: 1 primär, kallas även Master-, datafil-och 11 icke-primära datafiler. Fil strukturen kan inte ändras och nya filer kan inte läggas till i `tempdb` . 
-- [Minnesoptimerade `tempdb` metadata](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), en ny SQL Server 2019-databas funktion i minnet stöds inte.
+- [Minnesoptimerade `tempdb` metadata](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15&preserve-view=true#memory-optimized-tempdb-metadata), en ny SQL Server 2019-databas funktion i minnet stöds inte.
 - Objekt som skapats i modell databasen kan inte skapas automatiskt i `tempdb` efter en omstart eller redundansväxling eftersom den `tempdb` inte får den första objekt listan från modell databasen. Du måste skapa objekt i `tempdb` manuellt efter varje omstart eller redundansväxling.
 
 ### <a name="msdb"></a>MSDB
@@ -534,13 +534,13 @@ Följande MSDB-scheman i SQL-hanterad instans måste ägas av deras respektive f
 
 - Allmänna roller
   - TargetServersRole
-- [Fasta databas roller](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Fasta databas roller](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15&preserve-view=true)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail-roller](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail-roller](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15&preserve-view=true#DBProfile):
   - DatabaseMailUserRole
-- [Integration Services-roller](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Integration Services-roller](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15&preserve-view=true):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator

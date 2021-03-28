@@ -4,12 +4,12 @@ description: Lär dig hur du skalar din resurs-webbapp, moln tjänst, virtuell d
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: edc58ed4af3475a45804e3833424bec79d50ff89
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726061"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641555"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Kom igång med autoskalning i Azure
 I den här artikeln beskrivs hur du konfigurerar inställningarna för autoskalning för resursen i Microsoft Azure-portalen.
@@ -113,6 +113,10 @@ Nu kan du ange antalet instanser som du vill skala till manuellt.
 
 Du kan alltid återgå till autoskalning genom att klicka på **Aktivera autoskalning** och sedan **Spara**.
 
+### <a name="cool-down-period-effects"></a>Nedkylnings periods effekter
+
+Automatisk skalning använder en nedkylnings period för att förhindra "växlar", vilket är den snabba, repetative upp-och ned-skalningen av instanser.  Mer information finns i [utvärderings steg för autoskalning](autoscale-understanding-settings.md#autoscale-evaluation).  Annan värdefull information om växlar och förståelse för hur du övervakar autoskalning-motorn finns i [metod tips för autoskalning](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types) och [fel sökning av autoskalning](autoscale-troubleshoot.md) . 
+
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Dirigera trafik till felfria instanser (App Service)
 
 <a id="health-check-path"></a>
@@ -136,6 +140,7 @@ Mer information om hur du flyttar resurser mellan regioner och haveri beredskap 
 ## <a name="next-steps"></a>Nästa steg
 - [Skapa en aktivitets logg avisering för att övervaka alla åtgärder för autoskalning av motorn i din prenumeration](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Skapa en aktivitets logg avisering för att övervaka alla misslyckade skalnings-i/skala ut-åtgärder i din prenumeration](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+
 
 <!--Reference-->
 [1]:https://portal.azure.com

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/27/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c772b3f30b211cf83512ca2ff2f10325fb4bc1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98735104"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642870"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Equinix Federation app
 
-I den här självstudien får du lära dig hur du integrerar Equinix Federation-appen med Azure Active Directory (Azure AD). När du integrerar Equinix Federations app med Azure AD kan du:
+I den här självstudien får du lära dig hur du integrerar Equinix Federation-appen med Azure Active Directory (Azure AD). När du integrerar Equinix Federations app med Azure AD kan du göra följande:
 
 * Kontroll i Azure AD som har åtkomst till Equinix Federation-appen.
 * Gör det möjligt för användarna att logga in automatiskt till Equinix Federation-appen med sina Azure AD-konton.
@@ -37,7 +37,10 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Equinix Federations app stöder **SP** -INITIERAd SSO
+* Equinix Federations app stöder **SP** -initierad SSO.
+
+> [!NOTE]
+> ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
 
 ## <a name="adding-equinix-federation-app-from-the-gallery"></a>Lägga till Equinix Federation app från galleriet
 
@@ -70,20 +73,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal går du till sidan för integrering av program på **Equinix Federations app** och letar reda på avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
-
-    b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `Equinix:<CUSTOM_IDENTIFIER>`
-
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<customerprefix>customerportal.equinix.com`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera de här värdena med faktisk inloggnings-URL, identifierare och svars-URL. Kontakta [Equinix Federation app client support team](mailto:prodsecops@equinix.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Värdet för inloggnings-URL är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Equinix Federation app client support team](mailto:prodsecops@equinix.com) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -92,6 +91,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. I avsnittet **Konfigurera Equinix Federation app** kopierar du lämpliga URL: er baserat på ditt krav.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
@@ -128,13 +128,14 @@ I det här avsnittet skapar du en användare med namnet Britta Simon i Equinix F
 
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigerar till Equinix Federations app inloggnings-URL där du kan starta inloggnings flödet. 
+Gå till Equinix Federation app Sign-URL direkt och starta inloggnings flödet därifrån.
 
-* Gå till Equinix Federation app Sign-URL direkt och starta inloggnings flödet därifrån.
-
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Equinix Federation app i Mina appar omdirigeras den till Equinix Federation app Sign-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
+ > [!NOTE]
+ > Om du försöker testa ditt Azure-program med hjälp av länken **testa det här programmet** eller genom att klicka på panelen Equinix Federation app, fungerar det inte, eftersom det är IDP-initierad SSO, som Equinix inte stöder som standard.  Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Equinix Federation-appen kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Equinix Federation-appen kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

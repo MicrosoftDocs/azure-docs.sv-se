@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e8fb6985da5046d0a1bad171cbc9742a15baf1af
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613229"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643435"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-serien: en hybrid moln lagrings lösning
 
@@ -213,10 +213,10 @@ En sammanfattning av de StorSimple-arbetsbelastningar som stöds är tabellen ne
 
 | Scenario | Arbetsbelastning | Stöds | Begränsningar | Version |
 | --- | --- | --- | --- | --- |
-| Samarbete |Fildelning |Ja | |Alla versioner |
-| Samarbete |Delning av distribuerad fil |Ja | |Alla versioner |
+| Samarbete |Fildelning |Yes | |Alla versioner |
+| Samarbete |Delning av distribuerad fil |Yes | |Alla versioner |
 | Samarbete |SharePoint |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
-| Arkivering |Enkel filarkivering |Ja | |Alla versioner |
+| Arkivering |Enkel filarkivering |Yes | |Alla versioner |
 | Virtualisering |Virtuella datorer |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
 | Databas |SQL |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
 | Videoövervakning |Videoövervakning |Ja* |Stöds endast om StorSimple-enheten endast är dedikerad för den här arbets belastningen |Uppdatering 2 och senare |
@@ -240,7 +240,7 @@ Nedan följer en lista över de infrastruktur komponenter som stöds av StorSimp
 
 | Scenario | Arbetsbelastning | Stöds | Begränsningar | Version |
 | --- | --- | --- | --- | --- |
-| Allmänt |Express Route |Ja | |Alla versioner |
+| Allmänt |Express Route |Yes | |Alla versioner |
 | Allmänt |DataCore FC |Ja* |Stöds med DataCore SANsymphony |Alla versioner |
 | Allmänt |DFSR |Ja* |Stöds bara med lokalt fästa volymer |Alla versioner |
 | Allmänt |Indexering |Ja* |För volymer med nivåer stöds endast metadata-indexering (inga data).<br>Fullständig indexering stöds för lokalt fästa volymer. |Alla versioner |
@@ -255,13 +255,13 @@ Nedan följer en lista över annan program vara som används med StorSimple för
 | Säkerhetskopiera mål |Veeam |Veeam v 9 och senare |[StorSimple som ett säkerhets kopierings mål med Veaam](storsimple-configure-backup-target-veeam.md)|
 | Säkerhetskopiera mål |Veritas Backup Exec |Säkerhetskopiera exec 16 och senare |[StorSimple som ett säkerhets kopierings mål med Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
 | Säkerhetskopiera mål |Veritas NetBackup |NetBackup 7.7. x och senare  |[StorSimple som ett säkerhets kopierings mål med NetBackup](storsimple-configure-backuptarget-netbackup.md)|
-| Global fildelning <br></br> Samarbete |Talon  |[StorSimple med Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| Global fildelning <br></br> Samarbete |Talon  |[StorSimple med Talon](https://www.theinfostride.com/talon-and-microsoft-to-host-azure-storsimple-web-conference-with-capita/) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple-terminologi
 Innan du distribuerar din Microsoft Azure StorSimple-lösning rekommenderar vi att du läser igenom följande villkor och definitioner.
 
 ### <a name="key-terms-and-definitions"></a>Viktiga termer och definitioner
-| Term (akronym eller förkortning) | Beskrivning |
+| Term (akronym eller förkortning) | Description |
 | --- | --- |
 | åtkomst kontroll post (ACR) |En post som är kopplad till en volym på din Microsoft Azure StorSimple enhet som avgör vilka värdar som kan ansluta till den. Bestämningen baseras på iSCSI-kvalificerat namn (IQN) för värdarna (som finns i ACR) som ansluter till din StorSimple-enhet. |
 | AES-256 |En algoritm på 256-bitars Advanced Encryption Standard (AES) för kryptering av data när den flyttas till och från molnet. |

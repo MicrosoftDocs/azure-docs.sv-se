@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 03/27/2021
 ms.author: jingwang
-ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 59cd364e5568b3509d0c06d439d39b132b202df6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563512"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641749"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Snabbstart: Skapa en datafabrik och pipeline med .NET SDK
 
@@ -105,6 +105,9 @@ Skapa sedan ett C# .NET-konsol program i Visual Studio:
    string blobDatasetName = "BlobDataset";
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
+> [!NOTE]
+> För amerikanska Azure gov-konton måste du använda BaseUri i  *https://management.usgovcloudapi.net* stället för och *https://management.azure.com/* sedan skapa Data Factory-klienten för hantering. 
+> 
 
 3. Lägg till följande kod i **main** -metoden som skapar en instans av klassen **klassen datafactorymanagementclient** . Du kan använda det här objektet för att skapa en datafabrik, en länkad tjänst, datauppsättningar och en pipeline. Du kan också använda det här objektet för att övervaka information om pipelinekörning.
 
@@ -118,6 +121,7 @@ Skapa sedan ett C# .NET-konsol program i Visual Studio:
    var client = new DataFactoryManagementClient(cred) {
        SubscriptionId = subscriptionId };
    ```
+
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 

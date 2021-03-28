@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502543"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643656"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Vad är automatisk maskin inlärning (AutoML)?
 
@@ -116,7 +116,7 @@ För automatiserade maskin inlärnings experiment används funktionalisering aut
 
 I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt eller normaliseras för att hjälpa algoritmerna att fungera bra. I modell utbildningen används en av följande skalnings-eller normaliserings tekniker för varje modell. Lär dig hur AutoML bidrar till [att förhindra överanpassning och obalanserade data](concept-manage-ml-pitfalls.md) i dina modeller.
 
-|Skalnings &nbsp; & &nbsp; bearbetning| Beskrivning |
+|Skalnings &nbsp; & &nbsp; bearbetning| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardisera funktioner genom att ta bort medelvärdet och skalan till enhets avvikelse  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformerar funktioner genom att skala varje funktion efter minsta och högsta värde för kolumnen  |
@@ -263,7 +263,7 @@ Med Azure Machine Learning kan du använda automatisk ML för att bygga en pytho
 
 Se så här konverterar du till ONNX-format [i det här Jupyter Notebook-exemplet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Lär dig vilka [algoritmer som stöds i ONNX](how-to-configure-auto-train.md#select-your-experiment-type).
 
-ONNX runtime stöder också C#, så du kan använda modellen som skapats automatiskt i dina C#-appar utan att behöva koda om eller någon av nätverks fördröjningarna som REST-slutpunkter introducerar. Lär dig mer om att [använda en AUTOML ONNX-modell i ett .NET-program med ml.net](./how-to-use-automl-onnx-model-dotnet.md) -och [inferencing ONNX-modeller med API: et för ONNX runtime C#](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
+ONNX runtime stöder också C#, så du kan använda modellen som skapats automatiskt i dina C#-appar utan att behöva koda om eller någon av nätverks fördröjningarna som REST-slutpunkter introducerar. Lär dig mer om att [använda en AUTOML ONNX-modell i ett .NET-program med ml.net](./how-to-use-automl-onnx-model-dotnet.md) -och [inferencing ONNX-modeller med API: et för ONNX runtime C#](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 

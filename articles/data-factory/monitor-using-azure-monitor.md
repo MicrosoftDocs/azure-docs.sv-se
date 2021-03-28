@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 04aba71e49fedc8a4ca22aed576aaa978f733336
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 55b2fd911b32eae4f04ad9690de091e9dbd46ea4
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783650"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643970"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Övervaka och varna Data Factory med Azure Monitor
 
@@ -76,7 +76,7 @@ Skapa eller Lägg till diagnostikinställningar för din data fabrik.
    ![Namnge dina inställningar och välj en arbets yta för Log Analytics](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [referens för AzureDiagnostics-loggar](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
+    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [referens för AzureDiagnostics-loggar](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 1. Välj **Spara**.
 
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | --- | --- | --- |
 | **storageAccountId** |Sträng | Resurs-ID för det lagrings konto som du vill skicka diagnostikloggar till. |
 | **serviceBusRuleId** |Sträng | Service Bus-regelns ID för det namn område för Service Bus som du vill ha Event Hubs skapat för för strömning av diagnostikloggar. Regel-ID: t har formatet `{service bus resource ID}/authorizationrules/{key name}` .|

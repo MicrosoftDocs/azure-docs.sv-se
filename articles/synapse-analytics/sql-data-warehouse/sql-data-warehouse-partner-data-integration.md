@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ba03fe86c126c76faf91a06a96aaea6d1ffeddc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eecacef7f678001c9d65da540432154305549e2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594924"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645145"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics-data integrerings partner
 
@@ -27,6 +27,7 @@ Om du vill skapa en informations lager lösning med hjälp av den dedikerade SQL
 | Partner | Description | Länk till webbplats/produkt |
 | ------- | ----------- | -------------------- |
 | ![AB, initio](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**AB, initio**<br> Den smidiga digitala teknik plattformen i AB: s Agile hjälper dig att lösa de svåraste data bearbetnings-och data hanterings problemen i företags data behandling. Med den molnbaserade plattformen i initio kan du komma åt och använda data var som helst i ditt företags eko system, oavsett om de finns i Azure eller lokalt, inklusive data som lagras på äldre system. Kombinationen av ett intuitivt gränssnitt med kraftfulla funktioner för automatisering, data kvalitet, data styrning och aktiva metadata möjliggör snabb utveckling och riktiga data självbetjäning, vilket frigör analytiker för att snabbt och effektivt utföra sina jobb. Delta i världens största företag i att använda AB initio för att omvandla stora data till meningsfulla data. |[Produkt sida](https://www.abinitio.com/) |
+| ![Aecorsoft](./media/sql-data-warehouse-partner-data-integration/aecorsoft-logo.png) |**Aecorsoft**<br> AecorSoft erbjuder snabb, skalbar och real tids ELT/ETL-programlösning för att hjälpa SAP-kunder att få komplexa SAP-data till Azure Synapse Analytics och Azure Data Platform. Med fullständig kompatibilitet med SAP-program skikt säkerhet är AecorSoft-lösningen officiellt SAP Premium-certifierad för integrering med SAP-program. AecorSoft har unika super delta-och ändrings data insamlings funktioner som gör det möjligt för SAP-användare att strömma delta data från SAP transparent-, pool-och kluster tabeller till Azure i CSV-, Parquet-, Avro-, ORC-och GZIP-format. Förutom SAP-tabell data, stöds många andra affärs regel-tungt SAP-objekt som BW-frågor och S/4HANA-CD-vyer fullt ut. |[Produkt sida](https://www.aecorsoft.com/products/dataintegrator)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aecorsoftinc1588038796343.aecorsoftintegrationservice_adf)<br>|
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma är en lösning för extrahering, transformering och inläsning (ETL) som gör det möjligt för data team att integrera, utöka och strömma data från olika datasilor till ett Azure Synapse Data Warehouse i real tid. |[Produkt sida](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx designer innehåller ett upprepnings bara arbets flöde för självbetjänings data analys som leder till djupare insikter i timmar, inte de veckor som är typiska för traditionella metoder! Alteryx designer hjälper dataanalytiker genom att kombinera förberedelse av data, data blandning och analys – förutsägande, statistisk och spatial – med samma intuitiva användar gränssnitt. |[Produkt sida](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam innehåller en automatiserad lösning för inläsning av data i ett Azure Synapse Data Warehouse. Det fören klar satsvis inläsning och stegvis replikering av data från många källor – SQL Server, Oracle, DB2, Sybase, MySQL och mycket annat. |[Produkt sida](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |

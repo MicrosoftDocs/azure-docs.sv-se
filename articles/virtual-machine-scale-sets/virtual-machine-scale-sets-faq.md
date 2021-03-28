@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc394550cf5eb28ce3a30af4afcb3deca4223fe3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587951"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642448"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Vanliga frågor och svar om Virtual Machine Scale Sets
 
@@ -224,9 +224,9 @@ Du kan tillhandahålla offentliga SSH-nycklar i oformaterad text när du skapar 
 }
 ```
 
-linuxConfiguration element namn | Krävs | Typ | Beskrivning
+linuxConfiguration element namn | Krävs | Typ | Description
 --- | --- | --- | ---
-SSH | Inga | Samling | Anger SSH-nyckeln för ett Linux-operativsystem
+SSH | No | Samling | Anger SSH-nyckeln för ett Linux-operativsystem
 path | Ja | Sträng | Anger sökvägen till Linux-filen där SSH-nycklar eller certifikatet ska placeras
 Data | Ja | Sträng | Anger en Base64-kodad Offentlig SSH-nyckel
 
@@ -304,7 +304,7 @@ Om du skapar en virtuell dator och sedan uppdaterar din hemlighet i nyckel valve
 
 Om du vill distribuera offentliga. cer-offentliga nycklar till en skalnings uppsättning för virtuella datorer kan du generera en. pfx-fil som bara innehåller CER-filer. Använd för att göra detta `X509ContentType = Pfx` . Läs till exempel in. CER-filen som ett x509Certificate2-objekt i C# eller PowerShell och anropa sedan metoden.
 
-Mer information finns i [X509Certificate. export-metoden (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
+Mer information finns i [X509Certificate. export-metoden (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Hur gör jag för att skicka in certifikat som base64-strängar?
 

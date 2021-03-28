@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: a475441a845300d74014924415a4e48ae4de16df
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628296"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640217"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 
@@ -317,24 +317,6 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 ### <a name="error-code-df-excel-invalidfile"></a>Felkod: DF-Excel-InvalidFile
 - **Meddelande**: en ogiltig Excel-fil tillhandahålls medan endast. xlsx och. xls stöds.
 
-### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Felkod: DF-AdobeIntegration-InvalidMapToFilter
-- **Meddelande**: en anpassad resurs kan bara ha en nyckel/ID som är mappad till filter.
-
-### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Felkod: DF-AdobeIntegration-InvalidPartitionConfiguration
-- **Meddelande**: endast en enda partition stöds. Partitionsschema kan vara RoundRobin eller hash.
-- **Rekommendation**: kontrol lera att du bara har en enda partition i AdobeIntegration-inställningar. Partitionsnamnet kan vara RoundRobin eller hash.
-
-### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Felkod: DF-AdobeIntegration-KeyColumnMissed
-- **Meddelande**: nyckeln måste anges för åtgärder som inte kan infogas.
-- **Rekommendation**: Ange nyckel kolumnerna i AdobeIntegration-inställningar för åtgärder som inte går att infoga.
-
-### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Felkod: DF-AdobeIntegration-InvalidPartitionType
-- **Meddelande**: partitionstypen måste vara roundRobin.
-- **Rekommendation**: bekräfta att partitionstypen är RoundRobin i AdobeIntegration-inställningarna.
-
-### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Felkod: DF-AdobeIntegration-InvalidPrivacyRegulation
-- **Meddelande**: endast den sekretess förordning som stöds för närvarande är GDPR.
-- **Rekommendation**: bekräfta sekretess förordningen i AdobeIntegration-inställningarna är **' GDPR '**.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Övriga fel söknings tips
 - **Problem**: ett oväntat undantag inträffade och körningen misslyckades.

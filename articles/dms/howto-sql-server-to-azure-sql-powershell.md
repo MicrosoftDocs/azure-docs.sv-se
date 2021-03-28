@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3152fe0bf77b73e593ac61efb5f386827bdc96ef
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520667"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643724"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Migrera en SQL Server databas till Azure SQL Database med Azure PowerShell
 
@@ -151,7 +151,7 @@ Slutligen skapar du och startar Azure Database migration-aktiviteten. För migre
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Skapa Credential-parametrar för källa och mål
 
-Anslutnings säkerhets referenser kan skapas som ett [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) -objekt.
+Anslutnings säkerhets referenser kan skapas som ett [PSCredential](/dotnet/api/system.management.automation.pscredential) -objekt.
 
 I följande exempel visas hur du skapar *PSCredential* -objekt för både käll-och mål anslutningar som ger lösen ord som String-variabler *$sourcePassword* och *$targetPassword*.
 
@@ -195,8 +195,8 @@ Använd `New-AzDataMigrationTask` cmdleten för att skapa och starta en migrerin
 * *Aktivitets* namn. Namn på den uppgift som ska skapas. 
 * *SourceConnection*. AzDmsConnInfo-objekt som representerar käll SQL Server anslutning.
 * *TargetConnection*. AzDmsConnInfo-objekt som representerar mål Azure SQL Database anslutning.
-* *SourceCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) -objekt för att ansluta till käll servern.
-* *TargetCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) -objekt för att ansluta till mål servern.
+* *SourceCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential) -objekt för att ansluta till käll servern.
+* *TargetCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential) -objekt för att ansluta till mål servern.
 * *SelectedDatabase*. AzDataMigrationSelectedDB-objekt som representerar käll-och mål databas mappning.
 * *SchemaValidation*. (valfritt, växel parameter) Efter migreringen utför en jämförelse av schema informationen mellan källa och mål.
 * *DataIntegrityValidation*. (valfritt, växel parameter) Efter migreringen utför en kontroll summa som baseras på data integritet mellan källa och mål.

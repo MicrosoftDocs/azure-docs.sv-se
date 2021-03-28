@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6f91adf499c62fef56a30c5f2945ba7a90a0b29
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644835"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640065"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Skydda grupphanterade tjänst konton
 
@@ -41,7 +41,7 @@ gMSAs erbjuder en enda identitets lösning med större säkerhet och minskar den
 Använd gMSAs som önskad kontotyp för lokala tjänster om inte en tjänst, till exempel redundanskluster, inte stöder den.
 
 > [!IMPORTANT]
-> Du måste testa tjänsten med gMSAs innan du distribuerar till produktion. Det gör du genom att konfigurera en test miljö och se till att programmet kan använda gMSA och få åtkomst till de resurser som krävs för åtkomst. Mer information finns i [stöd för grupphanterade tjänst konton](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> Du måste testa tjänsten med gMSAs innan du distribuerar till produktion. Det gör du genom att konfigurera en test miljö och se till att programmet kan använda gMSA och få åtkomst till de resurser som krävs för åtkomst. Mer information finns i [stöd för grupphanterade tjänst konton](/system-center/scom/support-group-managed-service-accounts).
 
 
 Om en tjänst inte stöder användningen av gMSAs är ditt nästa bästa alternativ att använda ett fristående hanterat tjänst konto (sMSA). sMSAs tillhandahåller samma funktioner som en gMSA, men är endast avsedda för distribution på en enda server.
@@ -86,7 +86,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount”}
+Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>Hantera gMSAs

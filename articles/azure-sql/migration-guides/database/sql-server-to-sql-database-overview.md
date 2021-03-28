@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 54c1b8c189264fb2e127ff04b0fdd9125f4c9aeb
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ef69b8cf0e51c6248862f4cabd4f4ce3598a811
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563148"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640354"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Översikt över migrering: SQL Server till Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -207,7 +207,7 @@ Mer hjälp finns i följande resurser som har utvecklats för Real World migrati
 |[Automatisering av data insamling i PerfMon med logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Ett verktyg som samlar in PerMon-data för att förstå bas linje prestanda och hjälp vid migrering av mål rekommendationer. Det här verktyget använder logman.exe för att skapa kommandot som skapar, startar, stoppar och tar bort prestanda räknare som anges på en fjärran sluten SQL Server|
 |[Whitepaper – migrering av databasen till Azure SQL DB med BACPAC](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|Det här dokumentet innehåller vägledning och steg som hjälper dig att påskynda migreringen från SQL Server till Azure SQL Database att använda BACPAC-filer.|
 
-Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras av Azure Data Group Engineering-teamet. Huvud stadgan för data SQL Ninja-programmet är att avblockera och påskynda komplexa modernisering och konkurrera med data plattformens migrering till Microsofts Azure-dataplattform. Om du tror att organisationen är intresse rad av att delta i data SQL Ninja-programmet, kontaktar du ditt konto team och ber dem att skicka in en nominerad.
+Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
 
 
 ## <a name="next-steps"></a>Nästa steg

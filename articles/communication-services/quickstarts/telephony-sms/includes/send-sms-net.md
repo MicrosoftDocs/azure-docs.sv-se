@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: ff9d63459d0b645f14c62006a8f76f7dd4f986be
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110390"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644352"
 ---
 Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna C# SMS SDK för att skicka SMS-meddelanden.
 
@@ -82,12 +82,12 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 | Name                                       | Beskrivning                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | Den här klassen krävs för alla SMS-funktioner. Du instansierar det med din prenumerations information och använder den för att skicka SMS-meddelanden.                           |
-| SmsSendResult               | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
 | SmsSendOptions | Den här klassen innehåller alternativ för att konfigurera leverans rapportering. Om enable_delivery_report har angetts till True genereras en händelse när leveransen lyckades |
+| SmsSendResult               | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
- Öppna **program. cs** i en text redigerare och ersätt bröd texten i `Main` metoden med kod för att initiera en `SmsClient` med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+ Öppna **program. cs** i en text redigerare och ersätt bröd texten i `Main` metoden med kod för att initiera en `SmsClient` med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur du [hanterar din resurs anslutnings sträng](../../create-communication-resource.md#store-your-connection-string).
 
 
 ```csharp
@@ -104,8 +104,8 @@ Om du vill skicka ett SMS-meddelande till en enda mottagare anropar du `Send` el
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    from: "<from-phone-number>",
+    to: "<to-phone-number>",
     message: "Hello World via SMS"
 );
 
@@ -113,13 +113,16 @@ Console.WriteLine($"Sms id: {sendResult.MessageId}");
 ```
 Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till.
 
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>Skicka ett 1: N SMS-meddelande med alternativ
 Om du vill skicka ett SMS-meddelande till en lista över mottagare anropar du `Send` eller- `SendAsync` funktionen från SmsClient med en lista över mottagarens telefonnummer. Du kan också skicka valfria parametrar för att ange om leverans rapporten ska vara aktive rad och för att ange anpassade taggar.
 
 ```csharp
 Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+    from: "<from-phone-number>",
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" },
     message: "Weekly Promotion!",
     options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
     {
@@ -134,7 +137,14 @@ foreach (SmsSendResult result in results)
 }
 ```
 
+Du bör ersätta `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen `<to-phone-number-1>` och `<to-phone-number-2>` med telefonnummer som du vill skicka ett meddelande till.
+
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
+
 `enableDeliveryReport`Parametern är en valfri parameter som du kan använda för att konfigurera leverans rapportering. Detta är användbart för scenarier där du vill generera händelser när SMS-meddelanden levereras. Se snabb starten [Hantera SMS-händelser](../handle-sms-events.md) för att konfigurera leverans rapportering för SMS-meddelanden.
+
+`Tag` används för att tillämpa en tagg för leverans rapporten
 
 ## <a name="run-the-code"></a>Kör koden
 

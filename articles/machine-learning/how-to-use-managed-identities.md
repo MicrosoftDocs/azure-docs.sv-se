@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521024"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642414"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Använda hanterade identiteter med Azure Machine Learning (förhands granskning)
 
@@ -234,7 +234,7 @@ När du har konfigurerat ACR utan Administratörs användare som tidigare beskri
 
 När du skapar en arbets yta kan du ange en användardefinierad hanterad identitet som ska användas för att komma åt de associerade resurserna: ACR, nyckel valv, lagring och App Insights.
 
-[Skapa först en användardefinierad hanterad identitet](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])och anteckna arm-resurs-ID: t för den hanterade identiteten.
+[Skapa först en användardefinierad hanterad identitet](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)och anteckna arm-resurs-ID: t för den hanterade identiteten.
 
 Använd sedan Azure CLI eller python SDK för att skapa arbets ytan. När du använder CLI anger du ID: t med hjälp av `--primary-user-assigned-identity` parametern. Använd för att använda SDK `primary_user_assigned_identity` . Följande är exempel på hur du använder Azure CLI och python för att skapa en ny arbets yta med följande parametrar:
 

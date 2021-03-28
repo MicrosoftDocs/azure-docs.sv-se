@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: dca4d699ac1253753c82949cb480d95a1dde26e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d49a5b57ff4b59005461f2bb13451822723b039
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594112"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644982"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Vad är en hanterad Azure SQL-instans?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,11 +45,11 @@ SQL-hanterad instans kombinerar de bästa funktionerna som finns tillgängliga b
 > [!IMPORTANT]
 > SQL-hanterad instans körs med alla funktioner i den senaste versionen av SQL Server, inklusive online-åtgärder, automatiska plan korrigeringar och andra förbättringar i företags prestanda. En jämförelse av funktionerna som är tillgängliga förklaras i [funktions jämförelsen: Azure SQL-hanterad instans jämfört med SQL Server](../database/features-comparison.md).
 
-| **PaaS-förmåner** | **Verksamhetskontinuitet** |
+| **PaaS-förmåner** | **Affärs kontinuitet** |
 | --- | --- |
 |Ingen maskin varu inköp och-hantering <br>Ingen hanterings kostnad för hantering av underliggande infrastruktur <br>Snabb etablering och tjänst skalning <br>Automatiserad uppdatering och versions uppgradering <br>Integrering med andra PaaS Data Services |SLA för 99,99% drift tid  <br>Inbyggd [hög tillgänglighet](../database/high-availability-sla.md) <br>Data som skyddas med [automatiserade säkerhets kopieringar](../database/automated-backups-overview.md) <br>Kvarhållning av kundens bevarande period för säkerhets kopiering <br>Användarinitierad [säkerhets kopieringar](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) <br>Funktion [för återställning av databasens](../database/recovery-using-backups.md#point-in-time-restore) tidpunkt |
 |**Säkerhet och efterlevnad** | **Hantering**|
-|Isolerad miljö ([VNet-integrering](connectivity-architecture-overview.md), enskild klient tjänst, dedikerad beräkning och lagring) <br>[Transparent data kryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD)-autentisering](../database/authentication-aad-overview.md), stöd för enkel inloggning <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Azure AD server-Huvudkonton (inloggningar)</a>  <br>Följer standarderna för efterlevnad på samma sätt som Azure SQL Database <br>[SQL-granskning](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API för automatisering av tjänst etablering och skalning <br>Azure Portal funktioner för manuell tjänst etablering och skalning <br>Datamigreringstjänst
+|Isolerad miljö ([VNet-integrering](connectivity-architecture-overview.md), enskild klient tjänst, dedikerad beräkning och lagring) <br>[Transparent data kryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD)-autentisering](../database/authentication-aad-overview.md), stöd för enkel inloggning <br> [Azure AD server-Huvudkonton (inloggningar)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>Följer standarderna för efterlevnad på samma sätt som Azure SQL Database <br>[SQL-granskning](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API för automatisering av tjänst etablering och skalning <br>Azure Portal funktioner för manuell tjänst etablering och skalning <br>Datamigreringstjänst
 
 > [!IMPORTANT]
 > En hanterad Azure SQL-instans har certifierats mot ett antal efterlevnads standarder. Mer information finns i [Microsoft Azure Compliance-erbjudanden](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), där du hittar den senaste listan över certifieringar för SQL Managed instance-kompatibilitet, som visas under **SQL Database**.
@@ -161,7 +161,7 @@ Migrering av en krypterad databas till SQL-hanterad instans stöds via Azure Dat
 
 SQL-hanterad instans stöder traditionella SQL Server inloggningar och inloggningar i databas motorn som är integrerade med Azure AD. Azure AD server-Huvudkonton (inloggningar) (**offentlig för hands** version) är en Azure Cloud-version av lokala databas inloggningar som du använder i din lokala miljö. Med Azure AD server-Huvudkonton (inloggningar) kan du ange användare och grupper från din Azure AD-klient som en sann instans – begränsade huvud servrar, som kan utföra alla instanser på instans nivå, inklusive frågor över flera databaser inom samma hanterade instans.
 
-En ny syntax introduceras för att skapa Azure AD server-huvudobjekt (inloggningar), **från extern provider**. Mer information om syntaxen finns i <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Skapa inloggning</a>och granska artikeln [etablera en Azure Active Directory administratör för SQL-hanterad instans](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) .
+En ny syntax introduceras för att skapa Azure AD server-huvudobjekt (inloggningar), **från extern provider**. Mer information om syntaxen finns i [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)och granska artikeln [etablera en Azure Active Directory administratör för SQL-hanterad instans](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) .
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integrering och multifaktorautentisering
 

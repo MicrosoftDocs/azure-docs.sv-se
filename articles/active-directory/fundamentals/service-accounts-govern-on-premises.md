@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557377"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642384"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Styrande lokala tjänst konton
 
@@ -60,7 +60,7 @@ Använd följande kriterier när du skapar ett nytt tjänst konto.
 
 Använd följande inställningar med användar konton som används som tjänst konton:
 
-* [**Kontots förfallo datum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): ange att tjänst kontot automatiskt ska upphöra att gälla en angiven tid efter dess gransknings period, om det inte fastställs att det ska fortsätta
+* [**Kontots förfallo datum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): ange att tjänst kontot automatiskt ska upphöra att gälla en angiven tid efter dess gransknings period, om det inte fastställs att det ska fortsätta
 
 *  **LogonWorkstations**: begränsa behörigheter för var tjänst kontot kan logga in. Om den körs lokalt på en dator och endast har åtkomst till resurser på datorn, begränsar du den från att logga in någon annan stans.
 
@@ -149,7 +149,7 @@ Riskbedömningen, när de har genomförts och dokumenterats, kan påverka:
 
 Skapa bara tjänst konto när relevant information dokumenteras i din CMDB och du utför en riskbedömning. Konto begränsningar bör justeras mot riskbedömning. Tänk på följande begränsningar när det gäller din bedömning.:
 
-* [Kontots förfallo datum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Kontots förfallo datum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
    * För alla användar konton som används som tjänst konton definierar du ett realistiskt och visst slutdatum för användning. Ange detta med flaggan "konto Expires". Mer information finns i[ set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration). 
 
@@ -193,7 +193,7 @@ När du har tagit bort alla behörigheter använder du den här processen för a
 
 3. Ta bort tjänst kontot när den fortfarande inaktiverade principen är uppfylld. 
 
-   * För MSA: er kan du [avinstallera det](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) med PowerShell eller ta bort manuellt från den hanterade tjänst konto behållaren.
+   * För MSA: er kan du [avinstallera det](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) med PowerShell eller ta bort manuellt från den hanterade tjänst konto behållaren.
 
    * För dator-eller användar konton kan du manuellt ta bort kontot från i Active Directory.
 

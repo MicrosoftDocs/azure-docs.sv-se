@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bcd45ab1270d478b05b3929d7b8914976612294
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101669064"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645313"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>VIRTUELLA Oracle-avbildningar och deras distribution på Microsoft Azure
 
@@ -161,7 +161,7 @@ Relaterad information finns i KB-artikel **860340,1** på <https://support.oracl
 - **Begränsningar för dynamisk kluster-och belastnings utjämning.** Anta att du vill använda ett dynamiskt kluster i Oracle WebLogic-servern och exponera det genom en enda offentlig belastningsutjämnad slut punkt i Azure. Detta kan göras så länge du använder ett fast port nummer för var och en av de hanterade servrarna (inte dynamiskt tilldelade från ett intervall) och inte startar fler hanterade servrar än det finns datorer som administratören spårar. Det finns inte fler än en hanterad server per virtuell dator. Om konfigurationen leder till att fler Oracle WebLogic-servrar startas än det finns virtuella datorer (det vill säga där flera Oracle WebLogic-instanser delar samma virtuella dator), är det inte möjligt för mer än en av dessa instanser av Oracle WebLogic-servrar att binda till ett angivet port nummer. De andra på den virtuella datorn fungerar inte.
 
    Om du konfigurerar administrations servern så att den automatiskt tilldelar unika port nummer till dess hanterade servrar, är det inte möjligt att aktivera belastnings utjämning eftersom Azure inte stöder mappning från en enda offentlig port till flera privata portar, vilket krävs för den här konfigurationen.
-- **Flera instanser av Oracle WebLogic-Server på en virtuell dator.** Beroende på din distributions krav kan du överväga att köra flera instanser av Oracle WebLogic Server på samma virtuella dator, om den virtuella datorn är tillräckligt stor. Till exempel på en virtuell dator med medelhög storlek, som innehåller två kärnor, kan du välja att köra två instanser av Oracle WebLogic Server. Vi rekommenderar dock fortfarande att du undviker att införa enskilda felpunkter i din arkitektur, vilket är fallet om du bara använde en virtuell dator som kör flera instanser av Oracle WebLogic Server. Att använda minst två virtuella datorer kan vara en bättre metod och varje virtuell dator kan sedan köra flera instanser av Oracle WebLogic Server. Varje instans av Oracle WebLogic-servern kan fortfarande vara en del av samma kluster. Men det är för närvarande inte möjligt att använda Azure för att belastningsutjämna slut punkter som exponeras av sådana Oracle WebLogic Server-distributioner inom samma virtuella dator, eftersom Azure Load Balancer kräver att de belastningsutjämnade servrarna distribueras mellan unika virtuella datorer.
+- **Flera instanser av Oracle WebLogic-Server på en virtuell dator.** Beroende på din distributions krav kan du överväga att köra flera instanser av Oracle WebLogic Server på samma virtuella dator, om den virtuella datorn är tillräckligt stor. På en medels Tor virtuell dator, som innehåller två kärnor, kan du till exempel välja att köra två instanser av Oracle WebLogic Server. Vi rekommenderar dock fortfarande att du undviker att införa enskilda felpunkter i din arkitektur, vilket är fallet om du bara använde en virtuell dator som kör flera instanser av Oracle WebLogic Server. Att använda minst två virtuella datorer kan vara en bättre metod och varje virtuell dator kan sedan köra flera instanser av Oracle WebLogic Server. Varje instans av Oracle WebLogic-servern kan fortfarande vara en del av samma kluster. Men det är för närvarande inte möjligt att använda Azure för att belastningsutjämna slut punkter som exponeras av sådana Oracle WebLogic Server-distributioner inom samma virtuella dator, eftersom Azure Load Balancer kräver att de belastningsutjämnade servrarna distribueras mellan unika virtuella datorer.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Avbildningar av virtuella Oracle JDK-datorer
 

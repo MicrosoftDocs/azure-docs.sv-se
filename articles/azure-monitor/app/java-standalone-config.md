@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 91ad5a6d95c634300db83d66df8f0407b4544cde
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: f349d260fff32427712442615cabf6d3958468ac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024174"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640033"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -284,6 +284,9 @@ Från och med version 3.0.2 kan vissa automatiskt insamlade telemetri ignoreras 
   }
 }
 ```
+
+> Observera om du vill ha mer detaljerad kontroll, t. ex. för att utelämna vissa redis-anrop, men inte alla Redis-anrop, se [samplings åsidosättningar](./java-standalone-sampling-overrides.md).
+
 
 ## <a name="heartbeat"></a>Pulsslag
 

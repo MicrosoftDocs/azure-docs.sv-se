@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2641218fa9ddef65c45f2f1a9c9ce807cef35048
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505587"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642740"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Felsöka Application Insights agent (tidigare namngiven Statusövervakare v2)
 
@@ -153,7 +153,15 @@ Se [API-referensen](status-monitor-v2-api-reference.md) för en detaljerad beskr
 4. Försök att bläddra till din app.
 5. När din app har lästs in återgår du till PerfView och väljer **stoppa insamling**.
 
+### <a name="how-to-capture-full-sql-command-text"></a>Så här fångar du en fullständig SQL-kommando text
 
+Om du vill avbilda en fullständig SQL-kommando text måste du ändra applicationinsights.config-filen med följande:
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">,
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

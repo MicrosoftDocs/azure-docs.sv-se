@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: normesta
-ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c9eb1aa2e88019609f5ab26c2e995e4e43063ca
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516286"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640810"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Bloblagringsfunktioner som är tillgängliga i Azure Data Lake Storage Gen2
 
@@ -50,7 +50,7 @@ Följande tabell visar hur varje Blob Storage-funktion stöds med Data Lake Stor
 |Anonym offentlig åtkomst |Allmänt tillgänglig|Allmänt tillgänglig| Se [Konfigurera anonym offentlig Läs behörighet för behållare och blobbar](anonymous-read-access-configure.md).|
 |Redundansväxling av kund hanterat konto|Stöds inte ännu|Stöds inte ännu|[Haveri beredskap och redundansväxling av konto](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Kund-tillhandahållna nycklar|Stöds inte ännu|Stöds inte ännu|[Ange en krypterings nyckel för en begäran till Blob Storage](encryption-customer-provided-keys.md)|
-|Krypteringsomfång|Stöds inte ännu|Stöds inte ännu|[Skapa och hantera krypterings omfång (förhands granskning)](encryption-scope-manage.md)|
+|Krypteringsomfång|Stöds inte ännu|Stöds inte ännu|[Skapa och hantera krypterings omfång](encryption-scope-manage.md)|
 |Ändringsfeed|Stöds inte ännu|Stöds inte ännu|[Ändra feed-stöd i Azure Blob Storage](storage-blob-change-feed.md)|
 |Objektreplikering|Stöds inte ännu|Stöds inte ännu|[Konfigurera objekt replikering för block-blobar](object-replication-configure.md)|
 |BLOB-versioner|Stöds inte ännu|Stöds inte ännu|[Aktivera och hantera BLOB-versioner](versioning-enable.md)|

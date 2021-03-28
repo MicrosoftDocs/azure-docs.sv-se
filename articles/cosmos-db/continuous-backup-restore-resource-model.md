@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097235"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641034"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Resurs modell för Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -43,7 +43,7 @@ Den här egenskapen anger hur kontot skapades. De möjliga värdena är *standar
 
 `RestoreParameters`Resursen innehåller information om återställnings åtgärden, inklusive konto-ID, tid att återställa och vilka resurser som behöver återställas.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 |restoreMode  | Återställnings läget ska vara *PointInTime* |
 |restoreSource   |  InstanceId för det käll konto som återställningen ska initieras från.       |
@@ -52,7 +52,7 @@ Den här egenskapen anger hur kontot skapades. De möjliga värdena är *standar
 
 **DatabaseRestoreResource** – varje resurs representerar en enskild databas och alla samlingar under den databasen.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 |Databas | Namnet på databasen |
 | collectionNames| Listan över behållare under den här databasen |
@@ -128,13 +128,13 @@ Den här resursen innehåller en databas konto instans som kan återställas. Da
 | restorableLocations: creationTime | Tiden i UTC när det regionala kontot skapades.|
 | restorableLocations: deletionTime | Tiden i UTC när det regionala kontot togs bort. Det här värdet är tomt om det regionala kontot är Live.|
 
-Om du vill hämta en lista över alla återställas-konton, se [återställas Database Accounts-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/list) eller [återställas Database Accounts-List by location](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/listbylocation) artiklar.
+Om du vill hämta en lista över alla återställas-konton, se [återställas Database Accounts-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/list) eller [återställas Database Accounts-List by location](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/listbylocation) artiklar.
 
 ### <a name="restorable-sql-database"></a>Återställas SQL-databas
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat på SQL Database. Den här informationen kan hjälpa dig i scenarier där databasen har tagits bort av misstag och om du behöver ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 | eventTimestamp | Tiden i UTC när databasen skapas eller tas bort. |
 | ownerId | Namnet på SQL-databasen. |
@@ -142,13 +142,13 @@ Varje resurs innehåller information om en Mutations händelse, till exempel ska
 | operationType | Åtgärds typen för den här databas händelsen. Följande är möjliga värden:<br/><ul><li>Skapa: händelse för skapande av databas</li><li>Ta bort: händelse för borttagning av databas</li><li>Ersätt: databas ändrings händelse</li><li>SystemOperation: händelse för databas ändring som utlöses av systemet. Den här händelsen har inte initierats av användaren</li></ul> |
 | databas |Egenskaperna för SQL Database vid tidpunkten för händelsen|
 
-Om du vill hämta en lista över alla databas mutationer, se artikeln [återställas SQL-databaser-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqldatabases/list) .
+Om du vill hämta en lista över alla databas mutationer, se artikeln [återställas SQL-databaser-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqldatabases/list) .
 
 ### <a name="restorable-sql-container"></a>Återställas SQL-behållare
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat på SQL-behållaren. Den här informationen kan vara till hjälp i scenarier där behållaren har ändrats eller tagits bort, och om du behöver ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 | eventTimestamp    | Tiden i UTC när den här behållar händelsen inträffade.|
 | ownerId| SQL-behållarens namn.|
@@ -156,55 +156,55 @@ Varje resurs innehåller information om en Mutations händelse, till exempel ska
 | operationType | Åtgärds typen för den här behållar händelsen. Följande är möjliga värden: <br/><ul><li>Skapa: händelse för skapande av behållare</li><li>Ta bort: händelse för borttagning av behållare</li><li>Replace: händelse för ändring av behållare</li><li>SystemOperation: händelse för container ändring som utlöses av systemet. Den här händelsen har inte initierats av användaren</li></ul> |
 | container | Egenskaperna för SQL-behållaren vid tidpunkten för händelsen.|
 
-Om du vill hämta en lista över alla behållar mutationer under samma databas kan du läsa artikeln [återställas SQL containers-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlcontainers/list) .
+Om du vill hämta en lista över alla behållar mutationer under samma databas kan du läsa artikeln [återställas SQL containers-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlcontainers/list) .
 
 ### <a name="restorable-sql-resources"></a>Återställas SQL-resurser
 
 Varje resurs representerar en enda databas och alla behållare under den databasen.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 | Databas  | Namnet på SQL-databasen.
 | collectionNames   | Listan över SQL-behållare under den här databasen.|
 
-Om du vill hämta en lista över SQL Database-och container-kombination som finns på kontot vid den aktuella tidsstämpeln och platsen, se artikeln [återställas SQL Resources-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlresources/list) .
+Om du vill hämta en lista över SQL Database-och container-kombination som finns på kontot vid den aktuella tidsstämpeln och platsen, se artikeln [återställas SQL Resources-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlresources/list) .
 
 ### <a name="restorable-mongodb-database"></a>Återställas MongoDB-databas
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som har inträffat i MongoDB-databasen. Den här informationen kan vara till hjälp i scenariot där databasen har tagits bort av misstag och användaren måste ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 |eventTimestamp| Tiden i UTC när den här databas händelsen inträffade.|
 | ownerId| Namnet på MongoDB-databasen. |
 | ownerResourceId   | Resurs-ID för MongoDB-databasen. |
 | operationType |   Åtgärds typen för den här databas händelsen. Följande är möjliga värden:<br/><ul><li> Skapa: händelse för skapande av databas</li><li> Ta bort: händelse för borttagning av databas</li><li> Ersätt: databas ändrings händelse</li><li> SystemOperation: händelse för databas ändring som utlöses av systemet. Den här händelsen har inte initierats av användaren </li></ul> |
 
-Om du vill hämta en lista över alla databas mutationer, se artikeln [återställas MongoDB databases-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbdatabases/list) .
+Om du vill hämta en lista över alla databas mutationer, se artikeln [återställas MongoDB databases-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbdatabases/list) .
 
 ### <a name="restorable-mongodb-collection"></a>Återställas MongoDB-samling
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat i MongoDB-samlingen. Den här informationen kan hjälpa dig i scenarier där samlingen har ändrats eller tagits bort, och användaren måste ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 | eventTimestamp |Tiden i UTC när den här samlings händelsen inträffade. |
 | ownerId| Namnet på MongoDB-samlingen. |
 | ownerResourceId   | Resurs-ID för MongoDB-samlingen. |
 | operationType |Åtgärds typen för den här samlings händelsen. Följande är möjliga värden:<br/><ul><li>Skapa: händelse för skapande av samling</li><li>Ta bort: händelse för borttagning av samling</li><li>Replace: händelse för mängd ändring</li><li>SystemOperation: samlings ändrings händelse som utlöses av systemet. Den här händelsen har inte initierats av användaren</li></ul> |
 
-Om du vill hämta en lista över alla behållar mutationer under samma databas kan du läsa artikeln [återställas MongoDB Collections-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbcollections/list) .
+Om du vill hämta en lista över alla behållar mutationer under samma databas kan du läsa artikeln [återställas MongoDB Collections-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbcollections/list) .
 
 ### <a name="restorable-mongodb-resources"></a>Återställas MongoDB-resurser
 
 Varje resurs representerar en enda databas och alla samlingar under den databasen.
 
-|Egenskapens namn |Beskrivning  |
+|Egenskapens namn |Description  |
 |---------|---------|
 | Databas  |Namnet på MongoDB-databasen. |
 | collectionNames | Listan med MongoDB-samlingar under den här databasen. |
 
-Om du vill hämta en lista över alla kombinationer av MongoDB-databaser och samlingar som finns på kontot vid den aktuella tidsstämpeln och platsen, se artikeln [återställas MongoDB Resources-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbresources/list) .
+Om du vill hämta en lista över alla kombinationer av MongoDB-databaser och samlingar som finns på kontot vid den aktuella tidsstämpeln och platsen, se artikeln [återställas MongoDB Resources-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbresources/list) .
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09ae46ec6455b6998bcf4da5648d2ceaef4d5b19
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472236"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644799"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>Läsa in data från CSV till Azure SQL Database eller SQL-hanterad instans (flata filer)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ För att slutföra stegen i den här artikeln behöver du:
 * Kommandoradsverktyget bcp installerat
 * Kommandoradsverktyget sqlcmd installerat
 
-Du kan hämta BCP-och SQLCMD-verktygen från [Microsoft SQLCMD-dokumentationen] [ https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 ].
+Du kan hämta BCP-och SQLCMD-verktygen från [Microsoft SQLCMD-dokumentationen](/sql/tools/sqlcmd-utility?view=sql-server-ver15&preserve-view=true).
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data i ASCII- eller UTF-16-format
 

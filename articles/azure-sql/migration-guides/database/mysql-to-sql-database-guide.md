@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 1f1692aaa74f56c404a8fae7aa91e94baecbb7e1
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626494"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641870"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Guide för migrering: MySQL till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -167,7 +167,7 @@ Mer hjälp om hur du slutför det här scenariot för migrering finns i följand
 | --- | --- |
 | [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Tillhandahåller rekommenderade "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för angivna arbets belastningar. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla en automatiserad, enhetlig besluts process för mål plattform. |
 
-Data SQL Engineering-teamet utvecklade den här resursen. Teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
+Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
 
 ## <a name="next-steps"></a>Nästa steg 
 

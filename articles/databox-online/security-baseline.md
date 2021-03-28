@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 335056260ddea0c15db761df109e69333ef474f3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565205"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641381"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azures säkerhets bas linje för Azure Stack Edge
 
@@ -298,7 +298,7 @@ Observera att ytterligare behörigheter kan krävas för att få insyn i arbets 
 
 **Vägledning**: endast auktoriserade användare, till exempel, "EdgeArmUser" kan komma åt Azure Stack Edge-API: er via den lokala Azure Resource Manager. Lösen ord för användar konton kan bara hanteras på Azure Portal. 
 
-- [Konfigurera Azure Resource Manager-lösenord](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
+- [Konfigurera Azure Resource Manager-lösenord](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

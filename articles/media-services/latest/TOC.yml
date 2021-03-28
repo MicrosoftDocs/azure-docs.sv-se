@@ -4,11 +4,12 @@
   items:
     - name: Om Media Services
       href: media-services-overview.md
-    - name: Nyheter i Media Services
-      displayName: release notes
+    - name: Viktig information
       href: release-notes.md
     - name: Media Services-efterlevnad
       href: concept-compliance.md
+    - name: Vanliga frågor och svar
+      href: frequently-asked-questions.yml
 - name: Snabbstarter
   items:
     - name: Konfigurera din miljö
@@ -262,9 +263,8 @@
       href: architectures-concept.md
     - name: Felsökning
       items:
-        - name: Vanliga frågor och svar
-          displayName: faqs
-          href: frequently-asked-questions.md
+        - name: Frågans samling
+          href: questions-collection.md
         - name: Felkoder
           items:
             - name: Felkoder för slutpunkter för direktuppspelning
@@ -346,7 +346,7 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Kopiera videor utan kodning med REST
           href: how-to-create-copy-video-audio-transform.md
-        - name: Skapa jobb med .NET
+        - name: Skapa jobb med CLI
           href: cli-create-jobs.md
         - name: Skapa jobbindata med en lokal fil och .NET
           displayName: upload

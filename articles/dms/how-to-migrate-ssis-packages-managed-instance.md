@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e3e2aa055baf3dfb4bee0629040fc7c140844637
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6df64a66c0700f3a13a40ea5046515a2bf1a51
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101094020"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643848"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>Migrera SQL Server Integration Services-paket till en hanterad Azure SQL-instans
 Om du använder SQL Server Integration Services (SSIS) och vill migrera dina SSIS-projekt/-paket från käll-SSISDB som är värd för SQL Server till målet SSISDB som finns i en hanterad Azure SQL-instans kan du använda Azure Database Migration Service.
 
-Om den version av SSIS som du använder är tidigare än 2012 eller om du använder icke-SSISDB paket lagrings typer, innan du migrerar dina SSIS-projekt/-paket, måste du konvertera dem med hjälp av konverterings guiden för integration Services-projekt, som också kan startas från SSMS. Mer information finns i artikeln [konvertera projekt till projekt distributions modellen](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Om den version av SSIS som du använder är tidigare än 2012 eller om du använder icke-SSISDB paket lagrings typer, innan du migrerar dina SSIS-projekt/-paket, måste du konvertera dem med hjälp av konverterings guiden för integration Services-projekt, som också kan startas från SSMS. Mer information finns i artikeln [konvertera projekt till projekt distributions modellen](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
 
 > [!NOTE]
 > Azure Database Migration Service (DMS) stöder för närvarande inte Azure SQL Database som målplats för målet. Information om hur du distribuerar om SSIS-projekt/-paket till Azure SQL Database finns i artikeln [omdistribuera SQL Server Integration Services-paket till Azure SQL Database](./how-to-migrate-ssis-packages.md).
@@ -39,7 +39,7 @@ Du behöver följande för att slutföra de här stegen:
 
 * För att skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med hjälp av Azure Resource Manager distributions modell, som tillhandahåller plats-till-plats-anslutning till dina lokala käll servrar genom att använda antingen [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Mer information finns i artikeln [nätverks topologier för migrering av SQL-hanterade instanser med hjälp av Azure Database migration service]( https://aka.ms/dmsnetworkformi). Mer information om hur du skapar ett virtuellt nätverk finns i [Virtual Network-dokumentationen](../virtual-network/index.yml)och i synnerhet snabb starts artiklar med stegvisa anvisningar.
 * För att se till att dina regler för nätverks säkerhets grupper i det virtuella nätverket inte blockerar den utgående porten 443 av ServiceTag för Service Bus, Storage och AzureMonitor. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
-* Konfigurera Windows- [brandväggen för åtkomst till käll databas motor](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
+* Konfigurera Windows- [brandväggen för åtkomst till käll databas motor](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * För att öppna Windows-brandväggen så att Azure Database Migration Service får åtkomst till käll SQL Server, som standard är TCP-port 1433.
 * Om du kör flera namngivna SQL Server-instanser med dynamiska portar kan du vilja aktivera SQL Browser Service och tillåta åtkomst till UDP-port 1434 via dina brandväggar så att Azure Database Migration Service kan ansluta till en namngiven instans på källservern.
 * Om du använder en brandväggsinstallation framför dina källdatabaser kanske du måste lägga till brandväggsregler för att tillåta Azure Database Migration Service att komma åt källdatabaserna för migrering samt filer via SMB-port 445.

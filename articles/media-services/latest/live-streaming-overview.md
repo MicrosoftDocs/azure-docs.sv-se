@@ -2,23 +2,18 @@
 title: Översikt över direkt uppspelning
 description: Den här artikeln ger en översikt över direkt uppspelning med Azure Media Services v3.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b552dcc0e6766316e55e9cdda6e462b2d4abfd2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c82c646e4befef9d409bb8e59a442642913ada22
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955927"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641522"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Direktsänd strömning med Azure Media Services v3
 
@@ -123,16 +118,6 @@ Till gången som Live-utdata arkiveras till blir automatiskt en till gång på b
 - [Tillstånd och fakturering](live-event-states-billing.md)
 - [Svarstid](live-event-latency.md)
 
-## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
+## <a name="live-streaming-questions"></a>Frågor om Live-direktuppspelning
 
-Se artikeln [vanliga frågor och svar](frequently-asked-questions.md#live-streaming) .
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Ställ frågor, ge feedback, hämta uppdateringar
-
-Kolla in [Azure Media Services community](media-services-community.md) -artikeln för att se olika sätt att ställa frågor, lämna feedback och få uppdateringar om Media Services.
-
-## <a name="next-steps"></a>Nästa steg
-
-* [Snabb start för Live Streaming](live-events-wirecast-quickstart.md)
-* [Själv studie kurs om Live-direktuppspelning](stream-live-tutorial-with-api.md)
-* [Vägledning för migrering för att flytta från Media Services v2 till v3](migrate-v-2-v-3-migration-introduction.md)
+Se artikeln om [direkt uppspelnings frågor](questions-collection.md#live-streaming) .

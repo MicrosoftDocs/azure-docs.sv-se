@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100095009"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642113"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Logga in och starta appar från portalen Mina appar
 
@@ -39,11 +39,12 @@ Om du inte har åtkomst till portalen **Mina appar** kontaktar du organisationen
 
 ## <a name="supported-browsers"></a>Webbläsare som stöds
 
-Du kan gå till portalen för **Mina appar** från någon av följande webbläsare:
+Du kan gå till **Mina appar** -portalen från någon av följande webbläsare. Microsoft rekommenderar att du använder den mest aktuella webbläsaren som är kompatibel med ditt operativ system.
 
-- Microsoft Edge (den mobila versionen av Edge är för närvarande den enda mobila webbläsaren som stöds)
-- Google Chrome
-- Mozilla Firefox, version 26,0 eller senare
+- Microsoft Edge (senaste versionen, Desktop och mobil)
+- Safari (senaste versionen, Mac och iOS)
+- Chrome (senaste versionen, Desktop och Mobile)
+- Firefox (senaste versionen)
 
 Du kan komma åt och använda mina apps-portalen på datorn eller från den mobila versionen av Edge-webbläsaren på en iOS-eller Android-enhet.
 

@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108153"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641990"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Använda Azure Firewall för att kontrollera trafik till en privat slutpunkt
 
@@ -117,6 +117,7 @@ Skapa tre virtuella nätverk och deras motsvarande undernät för att:
 Ersätt följande parametrar i stegen med informationen nedan:
 
 ### <a name="azure-firewall-network"></a>Azure Firewall-nätverk
+
 | Parameter                   | Värde                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -127,6 +128,7 @@ Ersätt följande parametrar i stegen med informationen nedan:
 | **\<subnet-address-range>** | 10.0.0.0/24          |
 
 ### <a name="virtual-machine-network"></a>Nätverk för virtuell dator
+
 | Parameter                   | Värde                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -137,13 +139,14 @@ Ersätt följande parametrar i stegen med informationen nedan:
 | **\<subnet-address-range>** | 10.1.0.0/24          |
 
 ### <a name="private-endpoint-network"></a>Privat slut punkt nätverk
+
 | Parameter                   | Värde                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myPEVNet         |
 | **\<region-name>**          | USA, södra centrala      |
 | **\<IPv4-address-space>**   | 10.2.0.0/16          |
-| **\<subnet-name>**          | PrivateEndpointSubnet    |        |
+| **\<subnet-name>**          | PrivateEndpointSubnet |
 | **\<subnet-address-range>** | 10.2.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -564,7 +567,7 @@ I det här avsnittet ska du ansluta privat till SQL Database med hjälp av den p
     Address: 10.2.0.4
     ```
 
-2. Installera [SQL Server kommando rads verktyg](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools).
+2. Installera [SQL Server kommando rads verktyg](/sql/linux/quickstart-install-connect-ubuntu#tools).
 
 3. Kör följande kommando för att ansluta till SQL Server. Använd Server administratören och lösen ordet som du definierade när du skapade SQL Server i föregående steg.
 

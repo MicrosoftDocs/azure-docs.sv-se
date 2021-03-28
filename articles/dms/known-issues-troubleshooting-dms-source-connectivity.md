@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: cffa8d9a0647ff5fe970801d5da98e23be0b2aaf
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567333"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641342"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Felsöka DMS-fel vid anslutning till källdatabaser
 
@@ -31,7 +31,7 @@ Eventuella problem som är kopplade till att ansluta till en käll SQL Server da
 | ------------- | ------------- |
 | SQL-anslutning misslyckades. Ett nätverksrelaterat eller instansspecifikt fel uppstod när en anslutning upprättades till SQL Server. Servern hittades inte eller var inte tillgänglig. Kontrol lera att instans namnet är rätt och att SQL Server har kon figurer ATS för att tillåta fjärr anslutningar.<br> | Det här felet uppstår om tjänsten inte kan hitta käll servern. För att lösa problemet kan du läsa artikeln [fel vid anslutning till käll SQL Server när du använder dynamisk port eller namngiven instans](./known-issues-troubleshooting-dms.md#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance). |
 | **Fel 53** – SQL-anslutning misslyckades. (Även för felkoder 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Det här felet uppstår om tjänsten inte kan ansluta till käll servern. För att åtgärda problemet, se följande resurser och försök sedan igen. <br><br>  [Interaktiv användar guide för fel sökning av anslutnings problem](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Förutsättningar för att migrera SQL Server till Azure SQL Database](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) <br><br> [Krav för migrering av SQL Server till en hanterad Azure SQL-instans](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) |
-| **Fel 18456** -inloggningen misslyckades.<br> | Det här felet uppstår om tjänsten inte kan ansluta till käll databasen med de angivna T-SQL-autentiseringsuppgifterna. Åtgärda problemet genom att kontrol lera de angivna autentiseringsuppgifterna. Du kan också referera till [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) eller till fel söknings dokumenten som anges i anteckningen under den här tabellen och sedan försöka igen. |
+| **Fel 18456** -inloggningen misslyckades.<br> | Det här felet uppstår om tjänsten inte kan ansluta till käll databasen med de angivna T-SQL-autentiseringsuppgifterna. Åtgärda problemet genom att kontrol lera de angivna autentiseringsuppgifterna. Du kan också referera till [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) eller till fel söknings dokumenten som anges i anteckningen under den här tabellen och sedan försöka igen. |
 | Ett felaktigt AccountName-värde har {0} angetts. Förväntat format för AccountName är DomainName\UserName<br> | Det här felet uppstår om användaren väljer Windows-autentisering men anger användar namnet i ett ogiltigt format. För att åtgärda problemet anger du antingen användar namn i rätt format för Windows-autentisering eller väljer **SQL-autentisering**. |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
@@ -48,8 +48,8 @@ Potentiella problem som är kopplade till att ansluta till en källa AWS RDS MyS
 
 > [!NOTE]
 > Mer information om fel sökning av problem som rör anslutning till en källa AWS RDS MySQL-databas finns i följande resurser:
-> * [Fel sökning av problem med Amazon RDS-anslutning](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Hur gör jag för att lösa problem med att ansluta till min Amazon RDS Database-instans?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Fel sökning av problem med Amazon RDS-anslutning](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Hur gör jag för att lösa problem med att ansluta till min Amazon RDS Database-instans?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-postgresql"></a>AWS RDS-PostgreSQL
 
@@ -62,8 +62,8 @@ Potentiella problem som är kopplade till att ansluta till en källa AWS RDS Pos
 
 > [!NOTE]
 > Mer information om fel sökning av problem som rör anslutning till en AWS RDS PostgreSQL-databas finns i följande resurser:
-> * [Fel sökning av problem med Amazon RDS-anslutning](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Hur gör jag för att lösa problem med att ansluta till min Amazon RDS Database-instans?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Fel sökning av problem med Amazon RDS-anslutning](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Hur gör jag för att lösa problem med att ansluta till min Amazon RDS Database-instans?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-sql-server"></a>AWS RDS SQL Server
 
@@ -72,15 +72,15 @@ Potentiella problem som är kopplade till att ansluta till en källa AWS RDS SQL
 | Fel         | Information om orsak och fel sökning |
 | ------------- | ------------- |
 | **Fel 53** – SQL-anslutning misslyckades. Ett nätverksrelaterat eller instansspecifikt fel uppstod när en anslutning upprättades till SQL Server. Servern hittades inte eller var inte tillgänglig. Kontrol lera att instans namnet är rätt och att SQL Server har kon figurer ATS för att tillåta fjärr anslutningar. (provider: Named Pipes-Provider, fel: 40-Det gick inte att öppna en anslutning till SQL Server | Det här felet uppstår om tjänsten inte kan ansluta till käll servern. Du löser problemet genom att läsa fel söknings dokumenten som anges i anteckningen under den här tabellen och sedan försöka igen. |
-| **Fel 18456** -inloggningen misslyckades. Inloggningen misslyckades för användaren {user} | Det här felet uppstår om tjänsten inte kan ansluta till käll databasen med de T-SQL-autentiseringsuppgifter som angetts. Åtgärda problemet genom att kontrol lera de angivna autentiseringsuppgifterna. Du kan också referera till [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) eller till fel söknings dokumenten som anges i anteckningen under den här tabellen och försöka igen. |
+| **Fel 18456** -inloggningen misslyckades. Inloggningen misslyckades för användaren {user} | Det här felet uppstår om tjänsten inte kan ansluta till käll databasen med de T-SQL-autentiseringsuppgifter som angetts. Åtgärda problemet genom att kontrol lera de angivna autentiseringsuppgifterna. Du kan också referera till [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) eller till fel söknings dokumenten som anges i anteckningen under den här tabellen och försöka igen. |
 | **Fel 87** – anslutnings strängen är inte giltig. Ett nätverksrelaterat eller instansspecifikt fel uppstod när en anslutning upprättades till SQL Server. Servern hittades inte eller var inte tillgänglig. Kontrol lera att instans namnet är rätt och att SQL Server har kon figurer ATS för att tillåta fjärr anslutningar. (provider: SQL-nätverks gränssnitt, fel: 25-anslutnings strängen är inte giltig) | Det här felet uppstår om tjänsten inte kan ansluta till käll servern på grund av en ogiltig anslutnings sträng. Åtgärda problemet genom att kontrol lera den angivna anslutnings strängen. Om problemet kvarstår läser du fel söknings dokumenten som anges i kommentaren under den här tabellen och försöker sedan igen. |
 | **Fel – Server certifikatet är inte betrott.** En anslutning har upprättats till servern, men ett fel uppstod under inloggnings processen. (provider: SSL-Provider, fel: 0-certifikat kedjan utfärdades av en utfärdare som inte är betrodd.) | Det här felet uppstår om certifikatet som används inte är betrott. För att åtgärda problemet måste du hitta ett certifikat som kan vara betrott och sedan aktivera det på servern. Alternativt kan du välja alternativet förtroende certifikat när du ansluter. Använd endast den här åtgärden om du är bekant med certifikatet som används och du litar på det. <br> TLS-anslutningar som krypteras med hjälp av ett självsignerat certifikat ger inte stark säkerhet – de är mottagliga för man-in-the-middle-attacker. Förlita dig inte på TLS med självsignerade certifikat i en produktions miljö eller på servrar som är anslutna till Internet. <br> Mer information finns i [använda SSL med en Microsoft SQL Server databas instans](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) eller [Självstudier: migrera fjärr skrivbords SQL Server till Azure med hjälp av DMS](./index.yml). |
-| **Fel 300** – användaren har inte de behörigheter som krävs. Behörighet för att Visa SERVER tillstånd nekades för objektet {Server}, databasen {Database} | Det här felet uppstår om användaren inte har behörighet att utföra migreringen. Information om hur du löser problemet finns i [Granting Server Permissions – Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) eller [självstudie: migrera RDS-SQL Server till Azure med hjälp av DMS](./index.yml) för mer information. |
+| **Fel 300** – användaren har inte de behörigheter som krävs. Behörighet för att Visa SERVER tillstånd nekades för objektet {Server}, databasen {Database} | Det här felet uppstår om användaren inte har behörighet att utföra migreringen. Information om hur du löser problemet finns i [Granting Server Permissions – Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql) eller [självstudie: migrera RDS-SQL Server till Azure med hjälp av DMS](./index.yml) för mer information. |
 
 > [!NOTE]
 > Mer information om fel sökning av problem som rör anslutning till en källa AWS RDS SQL Server finns i följande resurser:
 >
-> * [Lösa anslutningsfel till SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
+> *    [Lösa anslutningsfel till SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
 > * [Hur gör jag för att lösa problem med att ansluta till min Amazon RDS Database-instans?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="known-issues"></a>Kända problem
@@ -91,7 +91,7 @@ Potentiella problem som är kopplade till att ansluta till en källa AWS RDS SQL
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Visa artikeln [Azure Database migration service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* Visa artikeln [Azure Database migration service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration).
 * Se artikeln [så här konfigurerar du Server parametrar i Azure Database for MySQL med hjälp av Azure Portal](../mysql/howto-server-parameters.md).
 * Se artikeln [Översikt över krav för att använda Azure Database migration service](./pre-reqs.md).
 * Se [vanliga frågor och svar om hur du använder Azure Database migration service](./faq.md).

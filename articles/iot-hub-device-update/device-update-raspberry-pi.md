@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 74709d970f624f2d4cefaab77e8466361e4102cc
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: b6a9fa3ac85460a46653c171198a2dfea8580f3a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563437"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644489"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Enhets uppdatering för Azure IoT Hub själv studie kurs med Raspberry Pi 3 B + referens avbildning
 
@@ -73,7 +73,7 @@ Använd ditt favorit verktyg för blinkande operativ system och installera enhet
    
 Enhets uppdatering för Azure IoT Hub-programvara omfattas av följande licens villkor:
    * [Enhets uppdatering för IoT Hub licens](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [Klient licens för leverans optimering](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [Klient licens för leverans optimering](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 Läs licens villkoren innan du använder agenten. Din installation och användning utgör ditt godkännande av dessa villkor. Om du inte accepterar licens villkoren ska du inte använda enhets uppdateringen för IoT Hub-agenten.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fecb7381786c36b077d329f68ca48ab10f65a984
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92895069"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642964"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med ScaleX Enterprise
 
@@ -87,7 +87,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://platform.rescale.com/saml2/<company id>/sso/`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [scaleX Enterprise client support team](https://info.rescale.com/contact_sales) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [scaleX Enterprise client support team](https://about.rescale.com/contactus.html) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 1. Ditt ScaleX Enterprise-program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. Följande skärm bild visar en lista över standardattribut, där as **EmailAddress** mappas med **User. mail**. ScaleX Enterprise-appen förväntar sig att **EmailAddress** mappas med **User. UserPrincipalName**, så du måste redigera mappningen av attributet genom att klicka på ikonen **Redigera** och ändra attributet mappning.
 

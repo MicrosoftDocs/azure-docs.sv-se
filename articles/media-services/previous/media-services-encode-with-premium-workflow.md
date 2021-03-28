@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8d39d54498872201afe2f705da1fc5654d8befb2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013507"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644994"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Avancerad kodning med Media Encoder Premium Workflow
 
@@ -42,7 +42,8 @@ Den här artikeln visar hur du kodar med **Media Encoder Premium Workflow** med 
 
 Kodning av aktiviteter för **Media Encoder Premium Workflow** kräver en separat konfigurations fil som kallas för en arbets flödes fil. De här filerna har fil namns tillägget. Workflow och skapas med hjälp av [arbetsflödesdesigner](media-services-workflow-designer.md) -verktyget.
 
-Du kan också hämta standard arbets flödes filerna [här](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Mappen innehåller också en beskrivning av de här filerna.
+Du kan också hämta standard arbets flödes filerna [här](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md
+). Mappen innehåller också en beskrivning av de här filerna.
 
 Arbets flödes filen måste överföras till ditt Media Services-konto som en till gång, och den här till gången ska skickas till encoding-aktiviteten.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b0a96443e1f8596c48882bbdd92b9bb4b910beff
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: c4e70c7f74c202b7de44a259b8a680f57aeaa041
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567992"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645034"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -877,7 +877,7 @@ Vi kommer inte att läsa bok märkes elementen.
 Bok märkes elementet kan användas för att referera till en speciell plats i text-eller taggkontrollen.
 
 > [!NOTE]
-> `bookmark` elementet fungerar bara för `en-US-AriaNeural` röst i regionen USA, västra 2 ( `westus2` ) för tillfället.
+> `bookmark` elementet fungerar bara för `en-US-AriaNeural` Voice för tillfället.
 
 **Syntax**
 

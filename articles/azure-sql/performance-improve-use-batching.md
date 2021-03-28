@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792607"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641390"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Använda batching för att förbättra Azure SQL Database och prestanda för Azure SQL-hanterad instans program
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transaktioner används faktiskt i båda dessa exempel. I det första exemplet är varje enskilt anrop en implicit transaktion. I det andra exemplet radbryts alla anrop i en explicit transaktion. I dokumentationen för [transaktions loggen för Skriv](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)åtgärder rensas logg posterna till disken när transaktionen genomförs. Så genom att inkludera fler anrop i en transaktion kan Skriv till transaktions loggen skjuta tills transaktionen är genomförd. I praktiken aktiverar du batching för skrivningar till serverns transaktions logg.
+Transaktioner används faktiskt i båda dessa exempel. I det första exemplet är varje enskilt anrop en implicit transaktion. I det andra exemplet radbryts alla anrop i en explicit transaktion. I dokumentationen för [transaktions loggen för Skriv](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15&preserve-view=true#WAL)åtgärder rensas logg posterna till disken när transaktionen genomförs. Så genom att inkludera fler anrop i en transaktion kan Skriv till transaktions loggen skjuta tills transaktionen är genomförd. I praktiken aktiverar du batching för skrivningar till serverns transaktions logg.
 
 I följande tabell visas några ad hoc-testnings resultat. Testerna utförde samma sekventiella infogningar med och utan transaktioner. För mer perspektiv kördes den första uppsättningen tester från en bärbar dator till databasen i Microsoft Azure. Den andra uppsättningen tester kördes från en moln tjänst och databas som båda finns i samma Microsoft Azure Data Center (västra USA). I följande tabell visas varaktigheten i millisekunder av sekventiella infogningar med och utan transaktioner.
 

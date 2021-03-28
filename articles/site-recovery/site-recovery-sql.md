@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab2eb8a43fc75eea61a03bc25b2b6afc850d30aa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96011956"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644401"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurera katastrof återställning för SQL Server
 
@@ -34,9 +34,9 @@ Ditt val av BCDR-teknik för att återställa SQL Server-instanser bör baseras 
 
 Distributions typ | BCDR-teknik | Förväntad RTO för SQL Server | Förväntad återställnings punkt för SQL Server |
 --- | --- | --- | ---
-SQL Server på en virtuell dator i Azure Infrastructure as a Service (VM) eller lokalt.| [Always On-tillgänglighetsgrupp](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | Den tid det tar att göra den sekundära repliken som primär. | Eftersom replikeringen till den sekundära repliken är asynkron finns det vissa data förluster.
-SQL Server på en virtuell Azure IaaS-dator eller lokalt.| [Kluster för växling vid fel (Always on FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | Den tid det tar att redundansväxla noderna. | Eftersom Always on FCI använder delad lagring, är samma vy av lagrings instansen tillgänglig vid redundansväxling.
-SQL Server på en virtuell Azure IaaS-dator eller lokalt.| [Databas spegling (högpresterande läge)](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | Den tid det tar att framtvinga tjänsten, som använder speglings servern som en varm standby-Server. | Replikeringen är asynkron. Speglings databasen kan vara en fördröjning bakom huvud databasen. Fördröjningen är vanligt vis liten. Men den kan bli stor om huvud-eller speglings serverns system är hårt belastat.<br/><br/>Logg överföring kan vara ett tillägg till databas spegling. Det är ett fördelaktig alternativ till asynkron databas spegling.
+SQL Server på en virtuell dator i Azure Infrastructure as a Service (VM) eller lokalt.| [Always On-tillgänglighetsgrupp](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) | Den tid det tar att göra den sekundära repliken som primär. | Eftersom replikeringen till den sekundära repliken är asynkron finns det vissa data förluster.
+SQL Server på en virtuell Azure IaaS-dator eller lokalt.| [Kluster för växling vid fel (Always on FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Den tid det tar att redundansväxla noderna. | Eftersom Always on FCI använder delad lagring, är samma vy av lagrings instansen tillgänglig vid redundansväxling.
+SQL Server på en virtuell Azure IaaS-dator eller lokalt.| [Databas spegling (högpresterande läge)](/sql/database-engine/database-mirroring/database-mirroring-sql-server) | Den tid det tar att framtvinga tjänsten, som använder speglings servern som en varm standby-Server. | Replikeringen är asynkron. Speglings databasen kan vara en fördröjning bakom huvud databasen. Fördröjningen är vanligt vis liten. Men den kan bli stor om huvud-eller speglings serverns system är hårt belastat.<br/><br/>Logg överföring kan vara ett tillägg till databas spegling. Det är ett fördelaktig alternativ till asynkron databas spegling.
 SQL as Platform as a Service (PaaS) på Azure.<br/><br/>Den här distributions typen innehåller enkla databaser och elastiska pooler. | Aktiv geo-replikering | 30 sekunder efter att redundansväxlingen har utlösts.<br/><br/>När redundans aktive ras för en av de sekundära databaserna, länkas alla andra sekundära sekundära automatiskt till den nya primära. | Återställningen av fem sekunder.<br/><br/>Aktiv geo-replikering använder alltid teknik på SQL Server. Den replikerar allokerade transaktioner asynkront på den primära databasen till en sekundär databas med hjälp av ögonblicks bild isolering.<br/><br/>Sekundär data garanteras att aldrig ha partiella transaktioner.
 SQL as-PaaS har kon figurer ATS med aktiv geo-replikering på Azure.<br/><br/>Den här distributions typen innehåller en hanterad instans, elastiska pooler och enskilda databaser. | Automatiska redundansgrupper | RTO på en timme. | Återställningen av fem sekunder.<br/><br/>Grupper för automatisk redundans ger gruppsemantiken ovanpå aktiv geo-replikering. Men samma mekanism för asynkron replikering används.
 SQL Server på en virtuell Azure IaaS-dator eller lokalt.| Replikering med Azure Site Recovery | RTO är vanligt vis mindre än 15 minuter. Läs mer i [RTO-SLA som tillhandahålls av Site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | En timme för program konsekvens och fem minuter för krasch konsekvens. Om du vill ha lägre återställnings punkt använder du andra BCDR-tekniker.
