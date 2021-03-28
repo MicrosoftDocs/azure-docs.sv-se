@@ -2,26 +2,18 @@
 title: Media Services v3 offline-FairPlay strömning för iOS
 description: Det här avsnittet innehåller en översikt och visar hur du använder Azure Media Services v3 för att dynamiskt Kryptera ditt HTTP Live Streaming (HLS)-innehåll med Apple FairPlay i offline-läge.
 services: media-services
-keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
+manager: femila
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0412ef303a301873d437e03e91c58c0a2e8e7e15
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955249"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640727"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Offline-FairPlay strömning för iOS med Media Services v3
 
@@ -205,10 +197,6 @@ Tre test exempel i Media Services som tar upp följande tre scenarier:
 Du hittar dessa exempel på [den här demo webbplatsen](https://aka.ms/poc#22), med motsvarande program certifikat som finns i en Azure-webbapp.
 Med version 3 eller version 4-exemplet på Server-SDK: n för FPS, om en Master-spelnings lista innehåller alternativ ljud, i offlineläge spelar den bara ljud. Därför måste du randig det alternativa ljudet. De andra och tredje exemplen som listas tidigare fungerar med andra ord i onlineläge och offline-läge. Exemplet som visas först spelar bara ljud i offlineläge, medan direkt uppspelningen fungerar som den ska.
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="offline-fairplay-questions"></a>Frågor om offline-Fairplay
 
-I [vanliga frågor och svar får du hjälp med fel sökning](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode).
-
-## <a name="next-steps"></a>Nästa steg
-
-Se hur du [skyddar med AES-128](protect-with-aes128.md)
+Se [Fairplay-frågor offline](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode).

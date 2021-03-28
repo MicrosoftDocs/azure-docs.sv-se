@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739270"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644654"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Dela och ta emot data från Azure Blob Storage och Azure Data Lake Storage
 
@@ -178,7 +178,7 @@ Följ stegen i det här avsnittet om du vill konfigurera en plats för att ta em
 
    ![Skärm bild som visar var du kan välja ett mål lagrings konto.](./media/map-target.png "Mål lagring.") 
 
-1. För ögonblicks bilds-baserad delning, om dataprovidern använder ett ögonblicks bild schema för att regelbundet uppdatera data, kan du aktivera schemat från fliken **ögonblicks bild schema** . Markera rutan bredvid ögonblicks bilds schemat. Välj sedan **Aktivera**.
+1. För ögonblicks bilds-baserad delning, om dataprovidern använder ett ögonblicks bild schema för att regelbundet uppdatera data, kan du aktivera schemat från fliken **ögonblicks bild schema** . Markera rutan bredvid ögonblicks bilds schemat. Välj sedan **Aktivera**. Observera att den första schemalagda ögonblicks bilden startar inom en minut av schema tiden och att efterföljande ögonblicks bilder startar inom några sekunder från den schemalagda tiden.
 
    ![Skärm bild som visar hur du aktiverar ett schema för ögonblicks bilder.](./media/enable-snapshot-schedule.png "Aktivera schema för ögonblicks bild.")
 

@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisk data bearbetning, dokument bearbetning, automatisk data inmatning, formulär bearbetning
-ms.openlocfilehash: 4465f88e3b0ccab8eace1936f426af8dd32af27b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8d6c2ea760b85e3170b26c63a28d4ac2b3a2ef5a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872259"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639460"
 ---
 # <a name="what-is-form-recognizer"></a>Vad är formigenkänning?
 
@@ -185,5 +185,5 @@ Precis som med alla kognitiva tjänster bör utvecklare som använder formulär 
 
 Prova vårt online verktyg och snabb start för att lära dig mer om formulär igenkännings tjänsten.
 
-* [**Formulär tolks verktyget**](https://fott-preview.microsoft.com/)
+* [**Formulär tolks verktyget**](https://fott-preview.azurewebsites.net/)
 * [**Klient bibliotek och REST API snabb start**](quickstarts/client-library.md)

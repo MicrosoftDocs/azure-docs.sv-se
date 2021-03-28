@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fb1b9e3458d08b8387c7f3978ff83c097fad2375
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659717"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644026"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Konfigurera ett labb för att hantera och utveckla med SQL Server
 
 Den här artikeln beskriver hur du konfigurerar ett labb för en grundläggande SQL Server hanterings-och utvecklings klass i Azure Lab Services.  Databas koncept är en av de inledande kurserna som finns i de flesta av dator vetenskaps avdelningarna på hög skola. Structured Query Language (SQL) är en internationell standard.  SQL är standard språket för Relations databas hantering, inklusive tillägg, åtkomst och hantering av innehåll i en databas.  De är mest noterade för snabb bearbetning, beprövad tillförlitlighet, enkel och flexibel användning.
 
-I den här artikeln visar vi hur du konfigurerar en mall för virtuella datorer i ett labb med [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)och [Azure Data Studio](https://github.com/microsoft/azuredatastudio).  I det här labbet ska vi använda en delad [SQL Server databas](../azure-sql/database/sql-database-paas-overview.md) för hela labbet. [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) är ett PaaS-databasmotor (Platform as a Service) från Azure.
+I den här artikeln visar vi hur du konfigurerar en mall för virtuella datorer i ett labb med [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)och [Azure Data Studio](https://github.com/microsoft/azuredatastudio).  I det här labbet ska vi använda en delad [SQL Server databas](../azure-sql/database/sql-database-paas-overview.md) för hela labbet. [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) är ett PaaS-databasmotor (Platform as a Service) från Azure.
 
 ## <a name="lab-configuration"></a>Labb konfiguration
 
@@ -82,9 +82,9 @@ Nu när vi har skapat vårt labb ska vi ändra mallen Machine med den program va
 
 ## <a name="visual-studio"></a>Visual Studio
 
-Bilden som du väljer ovan omfattar [Visual Studio 2019-community](https://visualstudio.microsoft.com/vs/community/).  Alla arbets belastningar och verktygs uppsättningar är redan installerade på avbildningen.  Använd Visual Studio-installationsprogrammet för att [Installera valfria verktyg](/visualstudio/install/modify-visual-studio?view=vs-2019) som du kanske vill använda.  [Logga in i Visual Studio](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio) för att låsa upp community-utgåvan.
+Bilden som du väljer ovan omfattar [Visual Studio 2019-community](https://visualstudio.microsoft.com/vs/community/).  Alla arbets belastningar och verktygs uppsättningar är redan installerade på avbildningen.  Använd Visual Studio-installationsprogrammet för att [Installera valfria verktyg](/visualstudio/install/modify-visual-studio?view=vs-2019&preserve-view=true) som du kanske vill använda.  [Logga in i Visual Studio](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019&preserve-view=true#how-to-sign-in-to-visual-studio) för att låsa upp community-utgåvan.
 
-Visual Studio innehåller uppsättningen **data lagring och bearbetnings** verktyg, som innehåller SQL Server Data Tools (SSDT).  Mer information om SSDT-funktionerna finns i [SQL Server Data Tools översikt](/sql/ssdt/sql-server-data-tools?view=sql-server-ver15).  Om du vill kontrol lera att anslutningen till den delade SQL Server för klassen kommer att lyckas, se [Anslut till en databas och bläddra bland befintliga objekt](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15). Om du uppmanas att lägga till mallens dator-IP i [listan över tillåtna datorer](../azure-sql/database/firewall-configure.md) som kan ansluta till din SQL Server-instans.
+Visual Studio innehåller uppsättningen **data lagring och bearbetnings** verktyg, som innehåller SQL Server Data Tools (SSDT).  Mer information om SSDT-funktionerna finns i [SQL Server Data Tools översikt](/sql/ssdt/sql-server-data-tools).  Om du vill kontrol lera att anslutningen till den delade SQL Server för klassen kommer att lyckas, se [Anslut till en databas och bläddra bland befintliga objekt](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects). Om du uppmanas att lägga till mallens dator-IP i [listan över tillåtna datorer](../azure-sql/database/firewall-configure.md) som kan ansluta till din SQL Server-instans.
 
 Visual Studio stöder flera arbets belastningar, inklusive **webb & moln-** och **skriv bords & mobila** arbets belastningar.  Båda dessa arbets belastningar stöder SQL Server som en data källa. Mer information om hur du använder ASP.NET Core för att SQL Server finns i avsnittet [bygga en ASP.net Core och SQL Database app i Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md) själv studie kurs.  Använd [system. data. SqlClient](/dotnet/api/system.data.sqlclient) -biblioteket för att ansluta till en SQL Database från en [Xamarin](/xamarin) -app.
 
@@ -113,7 +113,7 @@ Nu när vi har Azure Data Studio installerat är det dags att konfigurera anslut
 
 ## <a name="install-sql-server-management-studio"></a>Installera SQL Server Management Studio
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) är en integrerad miljö för att hantera alla SQL-infrastrukturer.  SSMS är ett verktyg som används av databas administratörer för att distribuera, övervaka och uppgradera data infrastruktur.
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) är en integrerad miljö för att hantera alla SQL-infrastrukturer.  SSMS är ett verktyg som används av databas administratörer för att distribuera, övervaka och uppgradera data infrastruktur.
 
 1. [Ladda ned SQL Server Management Studio](https://aka.ms/ssmsfullsetup). Starta installations programmet när du har laddat ned.
 2. På **välkomst** sidan klickar du på **Installera**.

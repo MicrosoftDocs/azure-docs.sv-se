@@ -3,14 +3,14 @@ title: CreateUiDefinition.jspå fil för fönstret Portal
 description: Beskriver hur du skapar användar gränssnitts definitioner för Azure Portal. Används när du definierar Azure Managed Applications.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319583"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641654"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json för Azure-upplevelsen för att skapa hanterade program
 
@@ -63,25 +63,29 @@ Du kan använda en JSON-redigerare för att skapa din createUiDefinition och sed
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,11 +107,13 @@ Du kan använda en JSON-redigerare för att skapa din createUiDefinition och sed
 },
 ```
 
+För `isValid` egenskapen skriver du ett uttryck som matchar antingen sant eller falskt. `permission`Ange en av [resurs leverantörens åtgärder](../../role-based-access-control/resource-provider-operations.md)för egenskapen.
+
 ### <a name="wizard"></a>Konfigurationsguide
 
 `isWizard`Egenskapen gör det möjligt att verifiera varje steg innan du fortsätter till nästa steg. När `isWizard` egenskapen inte anges är standardvärdet **false** och stegvis verifiering krävs inte.
 
-När `isWizard` är aktiverat, är inställt på **Sant**, är fliken **grundläggande** tillgängligt och alla andra flikar är inaktiverade. När knappen **Nästa** är markerad anger flikens ikon om en fliks verifiering lyckades eller misslyckades. När en fliks obligatoriska fält har slutförts och verifierats **Nästa** knapp kan du navigera till nästa flik. När alla flikar klarar valideringen kan du gå till sidan **Granska och skapa** och välja knappen **skapa** för att starta distributionen.
+När `isWizard` är aktiverat, är inställt på **Sant**, är fliken **grundläggande** tillgängligt och alla andra flikar är inaktiverade. När knappen **Nästa** är markerad anger flikens ikon om en fliks verifiering lyckades eller misslyckades. När en fliks obligatoriska fält har slutförts och verifierats kan **Nästa** knapp navigera till nästa flik. När alla flikar klarar valideringen kan du gå till sidan **Granska och skapa** och välja knappen **skapa** för att starta distributionen.
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Fliken guide":::
 
@@ -117,7 +123,7 @@ Med grunderna i konfigurationen kan du anpassa steget grunderna.
 
 För `description` , anger du en markdown-aktiverad sträng som beskriver din resurs. Flera rader och länkar stöds.
 
-Med `subscription` `resourceGroup` elementen och kan du ange ytterligare verifieringar. Syntaxen för att ange verifieringar är identisk med [text rutan](microsoft-common-textbox.md)anpassad verifiering för text. Du kan också ange `permission` valideringar för prenumerationen eller resurs gruppen.  
+Med `subscription` `resourceGroup` elementen och kan du ange fler verifieringar. Syntaxen för att ange verifieringar är identisk med [text rutan](microsoft-common-textbox.md)anpassad verifiering för text. Du kan också ange `permission` valideringar för prenumerationen eller resurs gruppen.  
 
 Prenumerations kontrollen accepterar en lista över resurs leverantörens namn områden. Du kan till exempel ange **Microsoft. Compute**. Ett fel meddelande visas när användaren väljer en prenumeration som inte stöder resurs leverantören. Felet uppstår när resurs leverantören inte är registrerad på den prenumerationen och användaren inte har behörighet att registrera resurs leverantören.  
 
@@ -150,7 +156,7 @@ I följande exempel visas en text ruta som har lagts till i standard elementen.
 
 ## <a name="steps"></a>Steg
 
-Egenskapen steg innehåller noll eller fler ytterligare steg att visa efter grunderna. Varje steg innehåller ett eller flera element. Överväg att lägga till steg per roll eller nivå för det program som distribueras. Du kan till exempel lägga till ett steg för indata för huvudnoder och ett steg för arbetsnoder i ett kluster.
+Egenskapen steg innehåller noll eller flera steg att visa efter grunderna. Varje steg innehåller ett eller flera element. Överväg att lägga till steg per roll eller nivå för det program som distribueras. Du kan till exempel lägga till ett steg för primära indata från en nod och ett steg för arbetsnoder i ett kluster.
 
 ```json
 "steps": [

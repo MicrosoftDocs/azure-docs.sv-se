@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472173"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643345"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Kontinuerlig distribution med anpassade behållare i Azure App Service
 
@@ -32,7 +32,7 @@ I den vänstra menyn klickar du på Inställningar för **distributions Center**
 **Välj** distributions källa beroende på ditt scenario:
 - **Container Registry** ställer in CI/CD mellan ditt behållar register och App Service.
 - Alternativet **GitHub-åtgärder** är till för dig om du behåller käll koden för behållar avbildningen i GitHub. Utlöses av nya incheckningar till din GitHub-lagringsplats, distributions åtgärden kan köras `docker build` och `docker push` direkt till behållar registret, och sedan uppdatera App Service-appen för att köra den nya avbildningen. Mer information finns i [så här fungerar CI/CD med GitHub-åtgärder](#how-cicd-works-with-github-actions).
-- Om du vill konfigurera CI/CD med **Azure-pipelines**, se [distribuera en Azure Web App-behållare från Azure-pipeliner](/devops/pipelines/targets/webapp-on-container-linux).
+- Om du vill konfigurera CI/CD med **Azure-pipelines**, se [distribuera en Azure Web App-behållare från Azure-pipeliner](/azure/devops/pipelines/targets/webapp-on-container-linux).
 
 > [!NOTE]
 > För en Docker-skapa app väljer du **container Registry**.

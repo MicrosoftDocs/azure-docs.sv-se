@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 0eff5b13a79f64de1863e82a2c9285788accf6fc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625304"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641535"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-händelser och Live-utdata i Media Services
 
@@ -225,14 +225,6 @@ När strömmen flödar in i Live-evenemanget kan du starta den strömmande händ
 
 Detaljerad information om direktsända utdata finns i [använda en moln-DVR](live-event-cloud-dvr.md).
 
-## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
+## <a name="live-event-output-questions"></a>Frågor om Live Events-utdata
 
-Se artikeln [vanliga frågor och svar](frequently-asked-questions.md#live-streaming) .
-
-## <a name="ask-questions-and-get-updates"></a>Ställ frågor och få uppdateringar
-
-Kolla in [Azure Media Services community](media-services-community.md) -artikeln för att se olika sätt att ställa frågor, lämna feedback och få uppdateringar om Media Services.
-
-## <a name="next-steps"></a>Nästa steg
-
-[Själv studie kurs om Live-direktuppspelning](stream-live-tutorial-with-api.md)
+Se artikeln vanliga [frågor och svar om live-evenemang](questions-collection.md#live-streaming) .

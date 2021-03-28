@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e6ed6bc8ba426a981b7a2390e7d00d9c3b1e785
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790131"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643452"
 ---
 # <a name="about-azure-key-vault"></a>Om Azure Key Vault
 
@@ -71,8 +71,8 @@ Dessutom kan du särskilja programhemligheter i Azure Key Vaults. Program kan d�
 
 Som säker lagring i Azure har Key Vault använts för att förenkla scenarier som:
 -  [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)
--  Funktionerna [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) och [Transparent datakryptering]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) i SQL Server och Azure SQL Database
-- [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
+-  Funktionerna [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) och [Transparent datakryptering](/sql/relational-databases/security/encryption/transparent-data-encryption) i SQL Server och Azure SQL Database
+- [Azure App Service](/azure/app-service/configure-ssl-certificate).
 
 Själva Key Vault kan integreras med lagringskonton, händelsehubbar och Log Analytics.
 

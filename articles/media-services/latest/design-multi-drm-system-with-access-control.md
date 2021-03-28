@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 057a284f99dd7c3713249b19e8fc39212d9e6003
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092433"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640269"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll
 
@@ -53,7 +53,7 @@ I följande tabell sammanfattas inbyggda DRM-stöd på olika plattformar och EME
 | **Windows 10** | PlayReady | Microsoft Edge/IE11 för PlayReady|
 | **Android-enheter (telefon, surfplatta, TV)** |Widevine |Chrome för Widevine |
 | **iOS** | FairPlay | Safari för FairPlay (sedan iOS 11,2) |
-| **macOS** | FairPlay | Safari för FairPlay (sedan Safari 9 + på Mac OS X 10.11 + El Capitan)|
+| **macOS** | FairPlay | Safari för FairPlay (sedan Safari 9 + på macOS X 10.11 + El Capitan)|
 | **tvOS** | FairPlay | |
 
 Med hänsyn till det aktuella distributions läget för varje DRM vill en tjänst normalt implementera två eller tre DRM: er för att se till att du hanterar alla typer av slut punkter på det bästa sättet.
@@ -357,9 +357,3 @@ Följande skärm bild visar ett scenario som använder en asymmetrisk nyckel via
 ![Anpassad STS med en asymmetrisk nyckel](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
 I båda de föregående fallen är användarautentisering oförändrad. Det äger rum via Azure AD. Den enda skillnaden är att JWTs utfärdas av den anpassade STS i stället för Azure AD. När du konfigurerar dynamiskt CENC-skydd anger licens leverans tjänstens begränsning typen av JWT, antingen en symmetrisk eller asymmetrisk nyckel.
-
-## <a name="next-steps"></a>Nästa steg
-
-* [Vanliga frågor och svar](frequently-asked-questions.md)
-* [Översikt över innehållsskydd](content-protection-overview.md)
-* [Skydda ditt innehåll med DRM](protect-with-drm.md)

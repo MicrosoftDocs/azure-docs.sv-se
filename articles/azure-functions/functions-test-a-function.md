@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27bc8171509e16f25c508dd71515d8cb25a11b0b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98674158"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639862"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategier för att testa din kod i Azure Functions
 
@@ -41,7 +41,7 @@ Om du vill konfigurera din miljö skapar du en funktion och testar appen. Följa
 3. [Skapa en timer-funktion från mallen](./functions-create-scheduled-function.md) och ge den namnet **MyTimerTrigger**.
 4. [Skapa en testapp för xUnit](https://xunit.net/docs/getting-started/netcore/cmdline) i lösningen och ge den namnet **functions. tests**.
 5. Använd NuGet för att lägga till en referens från testappen till [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Referera till *Functions* -appen](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) från *functions. tests* -appen.
+6. [Referera till *Functions* -appen](/visualstudio/ide/managing-references-in-a-project) från *functions. tests* -appen.
 
 ### <a name="create-test-classes"></a>Skapa test klasser
 

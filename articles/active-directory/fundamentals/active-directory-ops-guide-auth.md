@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d425111e151d60ab38a60e38cd1805cef39f606
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96859529"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641766"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referens guide för Azure Active Directory hanterings åtgärder för autentisering
 
@@ -365,8 +365,8 @@ För att få till gång till inloggnings aktivitet är granskningar och risk hä
 
 #### <a name="logs-recommended-reading"></a>Loggar Rekommenderad läsning
 
-- [Azure Active Directory gransknings-API-referens](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
-- [Rapport API-referens för Azure Active Directory inloggnings aktivitet](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory gransknings-API-referens](/graph/api/resources/directoryaudit?view=graph-rest-beta)
+- [Rapport API-referens för Azure Active Directory inloggnings aktivitet](/graph/api/resources/signin?view=graph-rest-beta)
 - [Hämta data med hjälp av Azure AD Reporting-API:et med certifikat](../reports-monitoring/tutorial-access-api-with-certificates.md)
 - [Microsoft Graph för Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)
 - [API-referens för Office 365 Management Activity](/office/office-365-management-api/office-365-management-activity-api-reference)

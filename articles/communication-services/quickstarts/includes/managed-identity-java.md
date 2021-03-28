@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce575a67552c89b17ff4ed9b44ab43a4bd12d67f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 417b6099a6b52fecf6f11e1074b346e9a63255c3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110778"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645367"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Lägg till hanterad identitet i kommunikations tjänst lösningen (Java)
 
@@ -47,7 +47,7 @@ import java.io.IOException;
 import java.util.*;
 ```
 
-Exemplen nedan använder [DefaultAzureCredential](/java/api/azure.identity.defaultazurecredential). Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer.
+Exemplen nedan använder [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential). Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer.
 
 `AZURE_CLIENT_SECRET``AZURE_CLIENT_ID`och `AZURE_TENANT_ID` miljövariabler krävs för att skapa ett `DefaultAzureCredential` objekt. Om du vill skapa ett registrerat program i utvecklings miljön och konfigurera miljövariabler, se [bevilja åtkomst med hanterad identitet](../managed-identity-from-cli.md).
 

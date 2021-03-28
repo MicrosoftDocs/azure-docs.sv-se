@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618210"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642260"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-Mellanliggande data (eller utdata från ett steg) representeras av ett [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) -objekt. `output_data1` skapas som utdata för ett steg. Du kan också registrera dessa data som en data uppsättning genom att anropa `register_on_complete` . Om du skapar ett `OutputFileDatasetConfig` i ett steg och använder det som indata till ett annat steg, skapar det data beroendet mellan stegen en implicit körnings ordning i pipelinen.
+Mellanliggande data (eller utdata från ett steg) representeras av ett [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) -objekt. `output_data1` skapas som utdata för ett steg. Du kan också registrera dessa data som en data uppsättning genom att anropa `register_on_complete` . Om du skapar ett `OutputFileDatasetConfig` i ett steg och använder det som indata till ett annat steg, skapar det data beroendet mellan stegen en implicit körnings ordning i pipelinen.
 
 `OutputFileDatasetConfig` objekt returnerar en katalog och skriver utdata som standard till arbets ytans standard data lager.
 
@@ -106,7 +106,7 @@ output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_
 > Du bör antingen program mässigt ta bort mellanliggande data i slutet av en pipeline-körning, använda ett data lager med en kort data bevarande princip eller regelbundet göra manuella rensningar.
 
 > [!TIP]
-> Ladda bara upp filer som är relevanta för det aktuella jobbet. Eventuella ändringar i filerna i data katalogen visas som en anledning till att köra om steget nästa gång pipelinen körs, även om åter användning har angetts. 
+> Ladda bara upp filer som är relevanta för det aktuella jobbet. Eventuella ändringar i filer i datakatalogen ses som anledning att köra om steget nästa gång pipelinen körs, även om du anger återanvändning. 
 
 ## <a name="set-up-a-compute-target"></a>Konfigurera ett beräknings mål
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Använd en data uppsättning 
 
-Data uppsättningar som skapats från Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database och Azure Database for PostgreSQL kan användas som indata till alla pipeline-steg. Du kan skriva utdata till en [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)eller om du vill skriva data till ett bestämt data lager använder [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig). 
+Data uppsättningar som skapats från Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database och Azure Database for PostgreSQL kan användas som indata till alla pipeline-steg. Du kan skriva utdata till en [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)eller om du vill skriva data till ett bestämt data lager använder [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig). 
 
 > [!IMPORTANT]
 > Skrivning av utdata tillbaka till ett data lager med `OutputFileDatasetConfig` stöds bara för Azure-Blob, Azure-filresurs, ADLS gen 1-och gen 2-datalager. 

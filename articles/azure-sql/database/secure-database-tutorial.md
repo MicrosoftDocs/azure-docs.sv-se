@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 306a8d78caf36291573d021ed1d814aa4f7a2164
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102563820"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642780"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Självstudie: skydda en databas i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,7 +109,7 @@ Konfigurera en brand Väggs regel på databas nivå:
 1. Välj **Kör** i verktygsfältet för att skapa brandväggsregeln.
 
 > [!NOTE]
-> Du kan också skapa en brandväggsregel på servernivå i SSMS med kommandot [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current), men du måste vara ansluten till *master*-databasen.
+> Du kan också skapa en brandväggsregel på servernivå i SSMS med kommandot [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current&preserve-view=true), men du måste vara ansluten till *master*-databasen.
 
 ## <a name="create-an-azure-ad-admin"></a>Skapa en Azure AD-administratör
 

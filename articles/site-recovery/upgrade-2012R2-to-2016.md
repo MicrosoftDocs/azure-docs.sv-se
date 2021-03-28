@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
-ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b3df487d690befadd249142c449163c2393f6df6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91250079"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640329"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Uppgradera Windows Server Server/System Center 2012 R2 VMM till Windows Server/VMM 2016 
 
@@ -54,7 +54,7 @@ Observera följande innan du uppgraderar:-
   > När du uppgraderar SCVMM 2012 R2, under hantering av distribuerad nyckel, väljer du att **lagra krypterings nycklar i Active Directory**. Välj inställningar för tjänst konto och hantering av distribuerad nyckel noggrant. Beroende på ditt val kanske krypterade data som lösen ord i mallar inte är tillgängliga efter uppgraderingen och kan påverka replikeringen med Azure Site Recovery
 
 > [!IMPORTANT]
-> Se den detaljerade SCVMM-dokumentationen för [krav](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)
+> Se den detaljerade SCVMM-dokumentationen för [krav](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#requirements-and-limitations)
 
 ## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>Windows Server 2012 R2-värdar som inte hanteras av SCVMM 
 Listan över steg som beskrivs nedan gäller användar konfigurationen från [Hyper-V-värdar till Azure](./hyper-v-azure-architecture.md) som körs genom att följa den här [självstudien](./hyper-v-prepare-on-premises-tutorial.md)
@@ -66,7 +66,7 @@ Listan över steg som beskrivs nedan gäller användar konfigurationen från [Hy
 2. Med varje ny Windows Server 2016-värd som introduceras i klustret tar du bort referensen till en Windows Server 2012 R2-värd från Azure Site Recovery genom att följa anvisningarna [här]. Detta bör vara den värd som du har valt att tömma & avlägsna från klustret.
 3. När kommandot *Update-VMVersion* har körts för alla virtuella datorer har uppgraderingen slutförts. 
 4. Använd de steg som beskrivs [här](./hyper-v-azure-tutorial.md#set-up-the-source-environment) för att registrera den nya Windows Server 2016-värden för Azure Site Recovery. Observera att Hyper-V-platsen redan är aktiv och att du bara behöver registrera den nya värden i klustret. 
-5.  Gå till Azure Portal och kontrol lera den replikerade hälso statusen i Recovery Services
+5. Gå till Azure Portal och kontrol lera den replikerade hälso statusen i Recovery Services
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>Uppgradera Windows Server 2012 R2-värdar som hanteras av fristående SCVMM 2012 R2-server
 Innan du uppgraderar dina Windows Server-2012 R2-värdar måste du uppgradera SCVMM 2012 R2 till SCVMM 2016. Följ stegen nedan:-
@@ -74,20 +74,20 @@ Innan du uppgraderar dina Windows Server-2012 R2-värdar måste du uppgradera SC
 **Uppgradera fristående SCVMM 2012 R2 till SCVMM 2016**
 
 1.  Avinstallera ASR-providern genom att gå till kontroll panelen – > program – > program och funktioner – >Microsoft Azure Site Recovery och klicka på Avinstallera
-2. [Behåll SCVMM-databasen och uppgradera operativ systemet](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
+2. [Behåll SCVMM-databasen och uppgradera operativ systemet](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#back-up-and-upgrade-the-operating-system)
 3. I **Lägg till ta bort program** väljer du **VMM**-  >  **avinstallation**. b. Välj **ta bort funktioner** och välj sedan V **mm-hanterings Server och VMM-konsol**. c. I **databas alternativ** väljer du **Kvarhåll databas**. d. Granska sammanfattningen och klicka på **Avinstallera**.
 
-4. [Installera VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
+4. [Installera VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#install-vmm-2016)
 5. Starta SCVMM och kontrol lera status för varje värd under fliken **infrastruktur** resurs. Klicka på **Uppdatera** för att få den senaste statusen. Du bör se status som "behöver åtgärdas". 
-17. Installera den senaste [Microsoft Azure Site Recovery-providern](https://aka.ms/downloaddra) på SCVMM.
-16. Installera den senaste [mars-agenten (Microsoft Azure Recovery Service)](https://aka.ms/latestmarsagent) på varje värd i klustret. Uppdatera för att se till att SCVMM kan skicka frågor till värdarna.
+17.    Installera den senaste [Microsoft Azure Site Recovery-providern](https://aka.ms/downloaddra) på SCVMM.
+16.    Installera den senaste [mars-agenten (Microsoft Azure Recovery Service)](https://aka.ms/latestmarsagent) på varje värd i klustret. Uppdatera för att se till att SCVMM kan skicka frågor till värdarna.
 
 **Uppgradera Windows Server 2012 R2-värdar till Windows Server 2016**
 
 1. Följ stegen som beskrivs [här](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) om du vill köra uppgraderingen av rullande kluster. 
 2. När du har lagt till den nya värden i klustret uppdaterar du värden från SCVMM-konsolen för att installera VMM-agenten på den här uppdaterade värden.
 3. Kör *Update-VMVersion* för att uppdatera VM-versionerna av de virtuella datorerna. 
-4.  Gå till Azure Portal och kontrol lera de virtuella datorernas replikerade hälso status i Recovery Services valvet. 
+4. Gå till Azure Portal och kontrol lera de virtuella datorernas replikerade hälso status i Recovery Services valvet. 
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-are-managed-by-highly-available-scvmm-2012-r2-server"></a>Uppgradera Windows Server 2012 R2-värdar hanteras med hög tillgängliga SCVMM 2012 R2-server
 Innan du uppgraderar dina Windows Server-2012 R2-värdar måste du uppgradera SCVMM 2012 R2 till SCVMM 2016. Följande uppgraderings lägen stöds vid uppgradering av SCVMM 2012 R2-servrar som kon figurer ATS med Azure Site Recovery blandat läge utan ytterligare VMM-servrar & blandat läge med ytterligare VMM-servrar.
@@ -95,7 +95,7 @@ Innan du uppgraderar dina Windows Server-2012 R2-värdar måste du uppgradera SC
 **Uppgradera SCVMM 2012 R2 till SCVMM 2016**
 
 1.  Avinstallera ASR-providern genom att gå till kontroll panelen – > program – > program och funktioner – >Microsoft Azure Site Recovery och klicka på Avinstallera
-2. Följ de steg som beskrivs [här](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) baserat på det uppgraderings läge du vill köra.
+2. Följ de steg som beskrivs [här](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#upgrade-a-standalone-vmm-server) baserat på det uppgraderings läge du vill köra.
 3. Starta SCVMM-konsolen och kontrol lera status för varje värd under fliken **infrastruktur** resurs. Klicka på **Uppdatera** för att få den senaste statusen. Du bör se status som "behöver åtgärdas".
 4. Installera den senaste [Microsoft Azure Site Recovery-providern](https://aka.ms/downloaddra) på SCVMM.
 5. Uppdatera den senaste [mars-agenten (Microsoft Azure Recovery Service)](https://aka.ms/latestmarsagent) på varje värd i klustret. Uppdatera för att se till att SC VMM kan skicka frågor till värdarna.
@@ -106,8 +106,7 @@ Innan du uppgraderar dina Windows Server-2012 R2-värdar måste du uppgradera SC
 1. Följ stegen som beskrivs [här](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) om du vill köra uppgraderingen av rullande kluster.
 2. När du har lagt till den nya värden i klustret uppdaterar du värden från SCVMM-konsolen för att installera VMM-agenten på den här uppdaterade värden.
 3. Kör *Update-VMVersion* för att uppdatera VM-versionerna av de virtuella datorerna. 
-4.  Gå till Azure Portal och kontrol lera de virtuella datorernas replikerade hälso status i Recovery Services valvet. 
+4. Gå till Azure Portal och kontrol lera de virtuella datorernas replikerade hälso status i Recovery Services valvet. 
 
 ## <a name="next-steps"></a>Nästa steg
 När uppgraderingen av värdarna har utförts kan du utföra en [redundanstest](tutorial-dr-drill-azure.md) för att testa hälso tillståndet för din replikering och haveri beredskap.
-

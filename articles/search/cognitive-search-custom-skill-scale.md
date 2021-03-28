@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043078"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641136"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Skala ut en anpassad färdighet effektivt
 
@@ -26,7 +26,7 @@ Anpassade kunskaper är webb-API: er som implementerar ett speciellt gränssnitt
 
 + Granska det [anpassade kunskaps gränssnittet](cognitive-search-custom-skill-interface.md) för en introduktion till gränssnittet för indata/utdata som en anpassad färdighet ska implementera.
 
-+ Konfigurera din miljö. Du kan börja med [den här självstudien från slut punkt till slut punkt](/python/tutorial-vs-code-serverless-python-01) för att konfigurera en server lös Azure-funktion med Visual Studio Code och python-tillägg.
++ Konfigurera din miljö. Du kan börja med [den här självstudien från slut punkt till slut punkt](/azure/azure-functions/create-first-function-vs-code-python) för att konfigurera en server lös Azure-funktion med Visual Studio Code och python-tillägg.
 
 ## <a name="skillset-configuration"></a>Färdigheter-konfiguration
 

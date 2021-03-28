@@ -1,37 +1,32 @@
 ---
-title: Skapa och hantera krypterings omfång (förhands granskning)
+title: Skapa och hantera krypterings omfång
 description: Lär dig hur du skapar en krypterings omfattning för att isolera BLOB-data på container-eller BLOB-nivå.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 03/26/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c29282637f6854248c98dff59f8fae46ad1a9d39
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209599"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640538"
 ---
-# <a name="create-and-manage-encryption-scopes-preview"></a>Skapa och hantera krypterings omfång (förhands granskning)
+# <a name="create-and-manage-encryption-scopes"></a>Skapa och hantera krypterings omfång
 
-Krypterings omfång (för hands version) gör att du kan hantera kryptering på nivån för en enskild BLOB eller behållare. En krypteringsomfattning isolerar blob-data i en säker enklav i ett lagringskonto. Du kan använda krypterings omfång för att skapa säkra gränser mellan data som finns i samma lagrings konto men som tillhör olika kunder. Mer information om krypterings omfång finns i [krypterings omfång för Blob Storage (för hands version)](encryption-scope-overview.md).
+Med krypteringsomfång kan du hantera kryptering på enskild blob-nivå eller behållarnivå. Du kan använda krypterings omfång för att skapa säkra gränser mellan data som finns i samma lagrings konto men som tillhör olika kunder. Mer information om krypterings omfång finns i [krypterings omfång för Blob Storage](encryption-scope-overview.md).
 
 Den här artikeln visar hur du skapar en krypterings omfattning. Det visar också hur du anger ett krypterings omfång när du skapar en BLOB eller behållare.
-
-> [!IMPORTANT]
-> Krypterings omfång är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
->
-> Undvik oväntade kostnader genom att inaktivera eventuella krypterings omfattningar som du inte behöver.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Skapa ett krypterings omfång
 
-Du kan skapa en krypterings omfattning med en Microsoft-hanterad nyckel eller med en kundhanterad nyckel som lagras i Azure Key Vault eller Azure Key Vault-hanterad maskinvarubaserad säkerhets modell (HSM) (för hands version). Om du vill skapa en krypterings omfattning med en kundhanterad nyckel måste du först skapa ett nyckel valv eller en hanterad HSM och lägga till den nyckel som du vill använda för omfånget. Nyckel valvet eller hanterad HSM måste ha rensnings skyddet aktiverat och måste finnas i samma region som lagrings kontot.
+Du kan skapa en krypterings omfattning som skyddas med en Microsoft-hanterad nyckel eller med en kundhanterad nyckel som lagras i en Azure Key Vault eller i en Azure Key Vault-hanterad maskinvaru säkerhets modell (HSM) (för hands version). Om du vill skapa en krypterings omfattning med en kundhanterad nyckel måste du först skapa ett nyckel valv eller en hanterad HSM och lägga till den nyckel som du vill använda för omfånget. Nyckel valvet eller hanterad HSM måste ha rensnings skyddet aktiverat och måste finnas i samma region som lagrings kontot.
 
 En krypterings omfattning aktive ras automatiskt när du skapar den. När du har skapat krypterings omfånget kan du ange det när du skapar en blob. Du kan också ange ett standard krypterings omfång när du skapar en behållare, som automatiskt tillämpas på alla blobar i behållaren.
 
@@ -43,22 +38,16 @@ Följ dessa steg om du vill skapa en krypterings omfattning i Azure Portal:
 1. Välj **krypterings** inställningen.
 1. Välj fliken **krypterings omfång** .
 1. Klicka på knappen **Lägg** till för att lägga till en ny krypterings omfattning.
-1. I fönstret Skapa **krypterings omfång** anger du ett namn för det nya omfånget.
-1. Välj typ av kryptering, antingen **Microsoft-hanterade nycklar** eller **Kundhanterade nycklar**.
+1. I fönstret **skapa krypterings omfång** anger du ett namn för det nya omfånget.
+1. Välj önskad typ av stöd för krypterings nyckel, antingen **Microsoft-hanterade nycklar** eller **Kundhanterade nycklar**.
     - Om du har valt **Microsoft-hanterade nycklar**, klickar du på **skapa** för att skapa krypterings omfånget.
-    - Om du har valt **Kundhanterade nycklar** anger du ett nyckel valv eller en hanterad HSM, nyckel och nyckel version som ska användas för krypterings omfånget, som visas i följande bild.
+    - Om du har valt **Kundhanterade nycklar** väljer du en prenumeration och anger ett nyckel valv eller en hanterad HSM och en nyckel som ska användas för krypterings omfånget, som visas i följande bild.
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Skärm bild som visar hur du skapar ett krypterings omfång i Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Om du vill skapa en krypterings omfattning med PowerShell installerar du först versionen av AZ. Storage Preview module. Det rekommenderas att du använder den senaste för hands versionen, men krypterings omfång stöds i version 1.13.4-Preview och senare. Ta bort alla andra versioner av modulen AZ. Storage.
-
-Följande kommando installerar AZ. Storage [2.1.1-Preview-](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) modulen:
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.1.1-preview -AllowPrerelease
-```
+Om du vill skapa en krypterings omfattning med PowerShell installerar du PowerShell-modulen [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) , version 3.4.0 eller senare.
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Skapa ett krypterings område som skyddas av Microsoft-hanterade nycklar
 
@@ -89,9 +78,8 @@ Kom ihåg att ersätta plats hållarnas värden i exemplet med dina egna värden
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 $keyVaultName = "<key-vault>"
-$keyUri = "<key-uri-with-version>"
+$keyUri = "<key-uri>"
 $scopeName2 = "customer2scope"
-
 
 # Assign a system managed identity to the storage account.
 $storageAccount = Set-AzStorageAccount -ResourceGroupName $rgName `
@@ -105,7 +93,9 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-Anropa sedan kommandot **New-AzStorageEncryptionScope** med `-KeyvaultEncryption` parametern och ange nyckel-URI: n. Se till att inkludera nyckel versionen på nyckel-URI: n. Kom ihåg att ersätta plats hållarnas värden i exemplet med dina egna värden:
+Anropa sedan kommandot **New-AzStorageEncryptionScope** med `-KeyvaultEncryption` parametern och ange nyckel-URI: n. Det är valfritt att inkludera nyckel versionen på nyckel-URI: n. Om du utelämnar nyckel versionen, kommer krypterings omfånget att använda den senaste nyckel versionen automatiskt. Om du inkluderar nyckel versionen måste du uppdatera nyckel versionen manuellt för att använda en annan version.
+
+Kom ihåg att ersätta plats hållarnas värden i exemplet med dina egna värden:
 
 ```powershell
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
@@ -117,7 +107,7 @@ New-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Om du vill skapa en krypterings omfattning med Azure CLI måste du först installera Azure CLI version 2.4.0 eller senare.
+Om du vill skapa en krypterings omfattning med Azure CLI måste du först installera Azure CLI version 2.20.0 eller senare.
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Skapa ett krypterings område som skyddas av Microsoft-hanterade nycklar
 
@@ -163,7 +153,9 @@ az keyvault set-policy \
     --key-permissions get unwrapKey wrapKey
 ```
 
-Sedan anropar du kommandot **AZ Storage Account Encryption-scope Create** med `--key-uri` parametern och anger nyckel-URI: n. Se till att inkludera nyckel versionen på nyckel-URI: n. Kom ihåg att ersätta plats hållarnas värden i exemplet med dina egna värden:
+Sedan anropar du kommandot **AZ Storage Account Encryption-scope Create** med `--key-uri` parametern och anger nyckel-URI: n. Det är valfritt att inkludera nyckel versionen på nyckel-URI: n. Om du utelämnar nyckel versionen, kommer krypterings omfånget att använda den senaste nyckel versionen automatiskt. Om du inkluderar nyckel versionen måste du uppdatera nyckel versionen manuellt för att använda en annan version.
+
+Kom ihåg att ersätta plats hållarnas värden i exemplet med dina egna värden:
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -176,7 +168,10 @@ az storage account encryption-scope create \
 
 ---
 
-Information om hur du konfigurerar Azure Storage kryptering med Kundhanterade nycklar i ett nyckel valv finns i [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault](../common/customer-managed-keys-configure-key-vault.md). Om du vill konfigurera Kundhanterade nycklar i en hanterad HSM, se [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (för hands version)](../common/customer-managed-keys-configure-key-vault-hsm.md).
+Information om hur du konfigurerar Azure Storage kryptering med Kundhanterade nycklar i ett nyckel valv eller en hanterad HSM finns i följande artiklar:
+
+- [Konfigurera kryptering med kundhanterade nycklar som lagras i Azure Key Vault](../common/customer-managed-keys-configure-key-vault.md)
+- [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (för hands version)](../common/customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="list-encryption-scopes-for-storage-account"></a>Lista krypterings omfång för lagrings konto
 
@@ -185,6 +180,10 @@ Information om hur du konfigurerar Azure Storage kryptering med Kundhanterade ny
 Om du vill visa krypterings omfång för ett lagrings konto i Azure Portal navigerar du till inställningen **krypterings omfång** för lagrings kontot. I det här fönstret kan du aktivera eller inaktivera ett krypterings omfång eller ändra nyckeln för en krypterings omfattning.
 
 :::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Skärm bild som visar en lista över krypterings områden i Azure Portal":::
+
+Om du vill visa information om en kundhanterad nyckel, inklusive nyckel-URI och version och om nyckel versionen uppdateras automatiskt, följer du länken i **nyckel** kolumnen.
+
+:::image type="content" source="media/encryption-scope-manage/customer-managed-key-details-portal.png" alt-text="Skärm bild som visar information om en nyckel som används med ett krypterings omfång":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -217,7 +216,7 @@ az storage account encryption-scope list \
 
 När du skapar en behållare kan du ange ett standard krypterings omfång. Blobbar i behållaren kommer att använda det omfånget som standard.
 
-En enskild BLOB kan skapas med sin egen krypterings omfattning, om inte behållaren är konfigurerad att kräva att alla blobbar använder sitt standard omfång.
+En enskild BLOB kan skapas med sin egen krypterings omfattning, om inte behållaren är konfigurerad att kräva att alla blobbar använder standard omfånget. Mer information finns i [krypterings omfång för behållare och blobbar](encryption-scope-overview.md#encryption-scopes-for-containers-and-blobs).
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -232,18 +231,15 @@ Om du vill skapa en behållare med en standard krypterings omfattning i Azure Po
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Om du vill skapa en behållare med en standard krypterings omfattning med PowerShell anropar du kommandot [New-AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) och anger omfånget för `-DefaultEncryptionScope` parametern. Kommandot **New-AzRmStorageContainer** skapar en behållare med hjälp av Azure Storage Resource Provider, som möjliggör konfiguration av krypterings omfattningar och andra resurs hanterings åtgärder.
-
-Om du vill tvinga alla blobbar i en behållare att använda behållarens standard omfång anger du `-PreventEncryptionScopeOverride` parametern till `true` .
+Om du vill skapa en behållare med en standard krypterings omfattning med PowerShell anropar du kommandot [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) och anger omfånget för `-DefaultEncryptionScope` parametern. Om du vill tvinga alla blobbar i en behållare att använda behållarens standard omfång anger du `-PreventEncryptionScopeOverride` parametern till `true` .
 
 ```powershell
 $containerName1 = "container1"
-$containerName2 = "container2"
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 
 # Create a container with a default encryption scope that cannot be overridden.
-New-AzRmStorageContainer -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -Name $containerName1 `
+New-AzStorageContainer -Name $containerName1 `
+    -Context $ctx `
     -DefaultEncryptionScope $scopeName1 `
     -PreventEncryptionScopeOverride $true
 ```
@@ -274,7 +270,7 @@ När du laddar upp en BLOB kan du ange ett krypterings omfång för denna BLOB, 
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Om du vill ladda upp en blob med ett krypterings omfång som anges i Azure Portal skapar du först krypterings omfånget enligt beskrivningen i [skapa en krypterings omfattning](#create-an-encryption-scope). Följ sedan de här stegen för att skapa blobben:
+Om du vill ladda upp en blob med ett krypterings omfång via Azure Portal skapar du först krypterings omfånget enligt beskrivningen i [skapa ett krypterings omfång](#create-an-encryption-scope). Följ sedan de här stegen för att skapa blobben:
 
 1. Navigera till den behållare som du vill ladda upp bloben till.
 1. Välj knappen **överför** och leta upp bloben som ska laddas upp.
@@ -286,22 +282,28 @@ Om du vill ladda upp en blob med ett krypterings omfång som anges i Azure Porta
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Om du vill ladda upp en blob med ett krypterings omfång som anges med hjälp av PowerShell anropar du kommandot [set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) och anger krypterings omfånget för blobben.
+Om du vill ladda upp en blob med ett krypterings omfång via PowerShell anropar du kommandot [set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) och anger krypterings omfånget för blobben.
 
 ```powershell
 $containerName2 = "container2"
 $localSrcFile = "C:\temp\helloworld.txt"
-$ctx = (Get-AzStorageAccount -ResourceGroupName $rgName -StorageAccountName $accountName).Context
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 
 # Create a new container with no default scope defined.
 New-AzStorageContainer -Name $containerName2 -Context $ctx
+
 # Upload a block upload with an encryption scope specified.
-Set-AzStorageBlobContent -Context $ctx -Container $containerName2 -File $localSrcFile -Blob "helloworld.txt" -BlobType Block -EncryptionScope $scopeName2
+Set-AzStorageBlobContent -Context $ctx `
+    -Container $containerName2 `
+    -File $localSrcFile `
+    -Blob "helloworld.txt" `
+    -BlobType Block `
+    -EncryptionScope $scopeName2
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Om du vill ladda upp en blob med ett krypterings omfång som anges med Azure CLI anropar du kommandot [AZ Storage BLOB upload](/cli/azure/storage/blob#az-storage-blob-upload) och anger krypterings omfånget för blobben.
+Om du vill ladda upp en blob med ett krypterings omfång via Azure CLI anropar du kommandot [AZ Storage BLOB upload](/cli/azure/storage/blob#az-storage-blob-upload) och anger krypterings omfånget för blobben.
 
 Om du använder Azure Cloud Shell följer du stegen som beskrivs i [Ladda upp en BLOB](storage-quickstart-blobs-cli.md#upload-a-blob) för att skapa en fil i rot katalogen. Du kan sedan överföra filen till en blob med hjälp av följande exempel.
 
@@ -406,10 +408,13 @@ az storage account encryption-scope update \
     --state Disabled
 ```
 
+> [!IMPORTANT]
+> Det går inte att ta bort en krypterings omfattning. Undvik oväntade kostnader genom att inaktivera eventuella krypterings omfattningar som du inte behöver.
+
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Azure Storage-kryptering av vilande data](../common/storage-service-encryption.md)
-- [Krypterings omfång för Blob Storage (för hands version)](encryption-scope-overview.md)
+- [Krypterings omfång för Blob Storage](encryption-scope-overview.md)
 - [Kundhanterade nycklar för Azure Storage kryptering](../common/customer-managed-keys-overview.md)

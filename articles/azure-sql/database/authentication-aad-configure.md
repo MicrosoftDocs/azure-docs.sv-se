@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201206"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643427"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurera och hantera Azure AD-autentisering med Azure SQL
 
@@ -115,7 +115,7 @@ Om du vill bevilja din SQL-hanterade instans Läs behörighet för Azure AD med 
 
     Processen med att ändra administratör kan ta några minuter. Sedan visas den nya administratören i rutan Active Directory-administratör.
 
-När du har skapat en Azure AD-administratör för din SQL-hanterade instans kan du börja skapa Azure AD server-huvudobjekt (inloggningar) med syntaxen för att <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Skapa inloggning</a> . Mer information finns i [Översikt över SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
+När du har skapat en Azure AD-administratör för din SQL-hanterade instans kan du börja skapa Azure AD server-huvudobjekt (inloggningar) med syntaxen för att [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . Mer information finns i [Översikt över SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
 
 > [!TIP]
 > Om du senare vill ta bort en administratör väljer du **ta bort administratör** längst upp på sidan Active Directory administratör och väljer sedan **Spara**.
@@ -190,7 +190,7 @@ Om du vill etablera en Azure AD-administratör kör du följande Azure PowerShel
 
 De cmdletar som används för att etablera och hantera Azure AD-administratör för din SQL-hanterade instans visas i följande tabell:
 
-| Cmdlet-namn | Beskrivning |
+| Cmdlet-namn | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Etablerar en Azure AD-administratör för SQL-hanterad instans i den aktuella prenumerationen. (Måste vara från den aktuella prenumerationen)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Tar bort en Azure AD-administratör för SQL-hanterad instans i den aktuella prenumerationen. |
@@ -279,7 +279,7 @@ Om du vill köra PowerShell-cmdlets måste Azure PowerShell vara installerad och
 
 Cmdletar som används för att etablera och hantera Azure AD-administratör för SQL Database och Azure-Synapse:
 
-| Cmdlet-namn | Beskrivning |
+| Cmdlet-namn | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Etablerar en Azure Active Directory administratör för servern som är värd för SQL Database eller Azure-Synapse. (Måste vara från den aktuella prenumerationen) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Tar bort en Azure Active Directory administratör för servern som är värd för SQL Database eller Azure-Synapse.|
@@ -345,8 +345,8 @@ På alla klient datorer, från vilka dina program eller användare ansluter till
 - .NET Framework 4,6 eller senare från [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
 - Azure Active Directory Authentication Library för SQL Server (*ADAL.DLL*). Nedan visas nedladdnings länkarna för att installera den senaste SSMS-, ODBC-och OLE DB-drivrutinen som innehåller *ADAL.DLL* -biblioteket.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC-drivrutin 17 för SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [OLE DB driv rutin 18 för SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [ODBC-drivrutin 17 för SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB driv rutin 18 för SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 Du kan uppfylla dessa krav genom att:
 
@@ -357,7 +357,7 @@ Du kan uppfylla dessa krav genom att:
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Skapa inneslutna användare som är mappade till Azure AD-identiteter
 
-Eftersom SQL-hanterad instans stöder Azure AD server-Huvudkonton (inloggningar) krävs det inte att använda inneslutna databas användare. Med Azure AD-serverhuvudkonton (inloggningar) kan du skapa inloggningar från Azure AD-användare, grupper eller program. Det innebär att du kan autentisera med din SQL-hanterade instans med hjälp av Azure AD server-inloggning istället för en innesluten databas användare. Mer information finns i [Översikt över SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). En syntax för att skapa Azure AD server-huvudobjekt (inloggningar) finns i <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Skapa inloggning</a>.
+Eftersom SQL-hanterad instans stöder Azure AD server-Huvudkonton (inloggningar) krävs det inte att använda inneslutna databas användare. Med Azure AD-serverhuvudkonton (inloggningar) kan du skapa inloggningar från Azure AD-användare, grupper eller program. Det innebär att du kan autentisera med din SQL-hanterade instans med hjälp av Azure AD server-inloggning istället för en innesluten databas användare. Mer information finns i [Översikt över SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). En syntax för att skapa Azure AD server-huvudobjekt (inloggningar) finns i [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 Men om du använder Azure Active Directory autentisering med SQL Database och Azure-Synapse måste du använda inneslutna databas användare baserat på en Azure AD-identitet. En innesluten databas användare har inte någon inloggning i huvud databasen och mappar till en identitet i Azure AD som är associerad med databasen. Azure AD-identiteten kan vara antingen ett enskilt användarkonto eller en grupp. Mer information om användare av oberoende databas finns i avsnittet om [användare av oberoende databas – så gör du din databas portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 

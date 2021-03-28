@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4fbb09a2687673ef96252d8bdb0523d0c5f235ae
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772033"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639924"
 ---
 # <a name="embedded-sign-in-experience"></a>Inbäddad inloggnings upplevelse
 
@@ -45,7 +45,7 @@ Det infogade ram `<iframe>` -elementet används för att bädda in ett dokument 
 Tänk på följande när du använder iframe:
 
 - Inbäddad inloggning stöder endast lokala konton. De flesta sociala identitets leverantörer (till exempel Google och Facebook) blockerar sina inloggnings sidor från att återges i infogade ramar.
-- Eftersom Azure AD B2C sessionscookies i en iframe betraktas som cookies från tredje part, kan vissa webbläsare (till exempel Safari eller Chrome i Incognito-läge) antingen blockera eller rensa dessa cookies, vilket resulterar i en oönskad användar upplevelse. Undvik det här problemet genom att kontrol lera att ditt program domän namn och din Azure AD B2C domän har *samma ursprung*. Om du vill använda samma ursprung [aktiverar du anpassade domäner](custom-domain.md) för Azure AD B2C klient och konfigurerar sedan din webbapp med samma ursprung. Till exempel har ett program som finns på https://app.contoso.com samma ursprung som Azure AD B2C körs på https://login.contoso.com .
+- Eftersom Azure AD B2C sessionscookies i en iframe betraktas som cookies från tredje part, kan vissa webbläsare (till exempel Safari eller Chrome i Incognito-läge) antingen blockera eller rensa dessa cookies, vilket resulterar i en oönskad användar upplevelse. Undvik det här problemet genom att kontrol lera att ditt program domän namn och din Azure AD B2C domän har *samma ursprung*. Om du vill använda samma ursprung [aktiverar du anpassade domäner](custom-domain.md) för Azure AD B2C klient och konfigurerar sedan din webbapp med samma ursprung. Till exempel har ett program som finns på " https://app.contoso.com " samma ursprung som Azure AD B2C körs på " https://login.contoso.com ".
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75defcf88128e1b100e403d74f76577525f0bdeb
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995292"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642121"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Skapa och hantera privat länk för Azure Database for PostgreSQL-en server med hjälp av portalen
 
@@ -222,7 +222,7 @@ När du har skapat **myVm** ansluter du till den från Internet på följande s�
     Address:  10.1.3.4
     ```
 
-3. Testa anslutningen till den privata länken för PostgreSQL-servern med valfri tillgänglig klient. I exemplet nedan har jag använt [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) för att utföra åtgärden.
+3. Testa anslutningen till den privata länken för PostgreSQL-servern med valfri tillgänglig klient. I exemplet nedan har jag använt [Azure Data Studio](/sql/azure-data-studio/download) för att utföra åtgärden.
 
 4. I **ny anslutning** anger eller väljer du den här informationen:
 

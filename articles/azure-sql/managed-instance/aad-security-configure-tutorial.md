@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788629"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639842"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Självstudie: säkerhet i Azure SQL-hanterad instans med hjälp av Azure AD server-huvudobjekt (inloggningar)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ I följande artiklar finns exempel på hur du ansluter till SQL-hanterad instans
 
     ![Skärm bild av fliken resultat i S M S Object Explorer visar namnet, principal_id, sid, typ och type_desc för den nyligen tillagda inloggningen.](./media/aad-security-configure-tutorial/native-login.png)
 
-Mer information finns i [SKAPA INLOGGNING](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+Mer information finns i [SKAPA INLOGGNING](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 ## <a name="grant-permissions-to-create-logins"></a>Bevilja behörighet att skapa inloggningar
 
@@ -182,7 +182,7 @@ När Azure AD-serverhuvudkontot (inloggning) har skapats och har getts `sysadmin
     GO
     ```
 
-1. Skapa en databas i den hanterade instansen med hjälp av syntaxen [create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) . Den här databasen används för att testa användarinloggningar i nästa avsnitt.
+1. Skapa en databas i den hanterade instansen med hjälp av syntaxen [create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . Den här databasen används för att testa användarinloggningar i nästa avsnitt.
     1. I **Object Explorer** högerklickar du på servern och väljer **Ny fråga**.
     1. Använd följande syntax i frågefönstret för att skapa en databas med namnet **MyMITestDB**.
 
@@ -264,7 +264,7 @@ Läs mer om hur du beviljar databasbehörigheter i [Getting Started with Databas
     > [!IMPORTANT]
     > När du skapar en **USER** (Användare) från ett Azure AD-serverhuvudkonto (inloggning) anger du samma user_name som login_name från **LOGIN** (Inloggning).
 
-    Mer information finns i [SKAPA ANVÄNDARE](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
+    Mer information finns i [SKAPA ANVÄNDARE](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 1. Skapa en testtabell med följande T-SQL-kommando i ett nytt frågefönster:
 

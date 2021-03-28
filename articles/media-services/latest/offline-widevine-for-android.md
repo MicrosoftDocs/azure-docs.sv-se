@@ -2,25 +2,19 @@
 title: Strömma Widevine Android offline
 description: Det här avsnittet visar hur du konfigurerar ditt Azure Media Services v3-konto för offline-strömning av Widevine-skyddat innehåll.
 services: media-services
-keywords: BINDESTRECK, DRM, Widevine offline-läge, ExoPlayer, Android
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
+manager: femila
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: c19a8dd4f9a4b715b5f81a5a349edbffc2f7dea2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955215"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640704"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline-Widevine strömning för Android med Media Services v3
 
@@ -47,7 +41,7 @@ Artikeln har också svar på några vanliga frågor om offline-strömning av Wid
 > [!NOTE]
 > Offline-DRM debiteras bara för att skapa en enskild begäran om en licens när du laddar ned innehållet. Eventuella fel faktureras inte.
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du implementerar offline DRM för Widevine på Android-enheter bör du först:
 
@@ -158,14 +152,8 @@ Den här PWA-appen med öppen källkod har skapats i Node.js. Om du vill vara v�
     - Certifikatet måste ha en betrodd certifikat utfärdare och ett självsignerat utvecklings certifikat fungerar inte
     - Certifikatet måste ha ett CN-namn som matchar DNS-namnet på webb servern eller gatewayen
 
-## <a name="faqs"></a>Vanliga frågor och svar
+## <a name="more-information"></a>Mer information
 
-Mer information finns i [vanliga frågor och svar om Widevine](frequently-asked-questions.md#widevine-streaming-for-android).
-
-## <a name="additional-notes"></a>Ytterligare information
+Mer information finns i [Widevine i samlingen frågor](questions-collection.md#widevine-streaming-for-android).
 
 Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av villkoren i tjänste-och sekretess policyn för Google, Inc.
-
-## <a name="summary"></a>Sammanfattning
-
-Den här artikeln beskrivs hur du implementerar uppspelning i offlineläge för streck innehåll som skyddas av Widevine på Android-enheter.  Det besvarade även några vanliga frågor om offline-strömning av Widevine-skyddat innehåll.

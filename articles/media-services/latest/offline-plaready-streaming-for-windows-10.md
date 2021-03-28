@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aecae72b0bea07a0d8e240b3dcae7ee9b9662f95
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955246"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640714"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offline PlayReady streaming för Windows 10 med Media Services v3
 
@@ -34,7 +34,7 @@ Azure Media Services stöd för nedladdning/uppspelning av data offline med DRM-
 > [!NOTE]
 > Offline-DRM debiteras bara för att skapa en enskild begäran om en licens när du laddar ned innehållet. Eventuella fel faktureras inte.
 
-## <a name="overview"></a>Översikt
+## <a name="background-on-offline-mode-playback"></a>Uppspelning av bakgrund i offline-läge
 
 Det här avsnittet innehåller en bakgrund i uppspelning av offline-läge, särskilt varför:
 
@@ -61,12 +61,12 @@ Du kan använda två typer av PlayReady-licens leverans:
 
 Nedan finns två typer av test till gångar, den första som använder PlayReady License Delivery i AMS medan den andra använder min PlayReady-licensserver som finns på en virtuell Azure-dator:
 
-Till gångs #1:
+## <a name="asset-1"></a>Till gångs #1
 
 * URL för progressiv nedladdning: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
-Till gångs #2:
+## <a name="asset-2"></a>Till gångs #2
 
 * URL för progressiv nedladdning: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (lokalt): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
@@ -124,7 +124,3 @@ I sammanfattning har vi uppnått offline-läge på Azure Media Services:
 * Innehållet kan finnas i Azure Media Services eller Azure Storage för progressiv nedladdning.
 * PlayReady-licensens leverans kan vara från Azure Media Services eller någon annan stans.
 * Det för beredda strömmande innehållet kan fortfarande användas för direkt uppspelning via tank streck eller smidigt med PlayReady som DRM.
-
-## <a name="next-steps"></a>Nästa steg
-
-[Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll](design-multi-drm-system-with-access-control.md)

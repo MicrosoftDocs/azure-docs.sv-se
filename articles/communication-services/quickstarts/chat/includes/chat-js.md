@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107070"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645410"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -250,7 +250,7 @@ Message sent!, message id:<number>
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Ta emot Chat-meddelanden från en chatt-tråd
 
-Med real tids signalering kan du prenumerera på att lyssna efter nya inkommande meddelanden och uppdatera aktuella meddelanden i minnet. Azure Communication Services har stöd för en [lista över händelser som du kan prenumerera på](../../../concepts/chat/concepts.md#real-time-signaling).
+Med real tids signalering kan du prenumerera på att lyssna efter nya inkommande meddelanden och uppdatera aktuella meddelanden i minnet. Azure Communication Services har stöd för en [lista över händelser som du kan prenumerera på](../../../concepts/chat/concepts.md#real-time-notifications).
 
 ```JavaScript
 // open notifications channel
@@ -286,17 +286,6 @@ Uppdatera fliken i-konsolen ska du hitta listan över meddelanden som skickas i 
 `listMessages` Returnerar den senaste versionen av meddelandet, inklusive eventuella ändringar eller borttagningar som hände i meddelandet med hjälp av `updateMessage` och `deleteMessage` .
 För borttagna meddelanden `chatMessage.deletedOn` returnerar ett datetime-värde som anger när meddelandet togs bort. För redigerade meddelanden `chatMessage.editedOn` returnerar en datetime som anger när meddelandet redigerades. Det går att få åtkomst till den ursprungliga tiden för att skapa meddelanden med `chatMessage.createdOn` som kan användas för att ordna meddelandena.
 
-`listMessages` returnerar olika typer av meddelanden som kan identifieras av `chatMessage.type` . Dessa typer är:
-
-- `Text`: Vanligt chatt-meddelande som skickas av en tråd deltagare.
-
-- `ThreadActivity/TopicUpdate`: System meddelande som anger att ämnet har uppdaterats.
-
-- `ThreadActivity/AddParticipant`: System meddelande som anger att en eller flera deltagare har lagts till i chatt-tråden.
-
-- `ThreadActivity/RemoveParticipant`: System meddelande som anger att en deltagare har tagits bort från chatt-tråden.
-
-Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 

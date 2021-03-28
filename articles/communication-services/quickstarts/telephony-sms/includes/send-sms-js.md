@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110393"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644348"
 ---
 Kom igång med Azure Communication Services med hjälp av Java Script SMS SDK för kommunikations tjänster för att skicka SMS-meddelanden.
 
@@ -72,15 +72,15 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Den här klassen krävs för alla SMS-funktioner. Du instansierar det med din prenumerations information och använder den för att skicka SMS-meddelanden. |
-| SmsSendResult               | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
-| SmsSendOptions | Det här gränssnittet innehåller alternativ för att konfigurera leverans rapportering. Om `enableDeliveryReport` är inställt på `true` , genereras en händelse när leveransen lyckas. |
 | SmsSendRequest | Det här gränssnittet är modellen för att skapa SMS-begäran (t. ex. Konfigurera till och från telefonnummer och SMS-innehåll). |
+| SmsSendOptions | Det här gränssnittet innehåller alternativ för att konfigurera leverans rapportering. Om `enableDeliveryReport` är inställt på `true` , genereras en händelse när leveransen lyckas. |
+| SmsSendResult               | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Importera **SmsClient** från SDK och instansiera den med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+Importera **SmsClient** från SDK och instansiera den med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur du [hanterar din resurs anslutnings sträng](../../create-communication-resource.md#store-your-connection-string).
 
-Lägg till följande kod i **send-sms.js**:
+Skapa och öppna en fil med namnet **send-sms.js** och Lägg till följande kod:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till.
+Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number-1>` och `<to-phone-number-2>` med de telefonnummer som du vill skicka ett meddelande till.
+
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Skicka ett 1: N SMS-meddelande med alternativ
 
@@ -127,12 +130,12 @@ Du kan också skicka ett alternativ-objekt för att ange om leverans rapporten s
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+Du bör ersätta `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen `<to-phone-number-1>` och `<to-phone-number-2>` med telefonnummer som du vill skicka ett meddelande till.
+
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
 
 `enableDeliveryReport`Parametern är en valfri parameter som du kan använda för att konfigurera leverans rapportering. Detta är användbart för scenarier där du vill generera händelser när SMS-meddelanden levereras. Se snabb starten [Hantera SMS-händelser](../handle-sms-events.md) för att konfigurera leverans rapportering för SMS-meddelanden.
 `tag` är en valfri parameter som du kan använda för att tillämpa en tagg i leverans rapporten.

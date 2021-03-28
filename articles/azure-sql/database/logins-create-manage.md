@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605781"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639475"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Auktorisera databasåtkomst till SQL Database, SQL Managed Instance och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ I det här läget konfigureras servern eller den hanterade instansen bara för �
 
   - Skapa ytterligare en SQL-inloggning i huvud databasen.
   - Lägg till inloggningen till den [fasta Server rollen sysadmin](/sql/relational-databases/security/authentication-access/server-level-roles) med hjälp av instruktionen [Alter Server Role](/sql/t-sql/statements/alter-server-role-transact-sql) . Den här inloggningen kommer att ha fullständig administratörs behörighet.
-  - Du kan också skapa en [Azure AD-inloggning](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) med hjälp av syntaxen för att [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) .
+  - Du kan också skapa en [Azure AD-inloggning](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) med hjälp av syntaxen för att [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) .
 
 - **Skapa SQL-inloggningar med begränsade administrativa behörigheter i SQL Database**
 
@@ -122,9 +122,9 @@ Du kan skapa konton för icke-administratörer på något av två sätt:
 
 Exempel som visar hur du skapar inloggningar och användare finns i:
 
-- [Skapa inloggning för Azure SQL Database](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Skapa inloggning för Azure SQL-hanterad instans](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Skapa inloggning för Azure-Synapse](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Skapa inloggning för Azure SQL Database](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [Skapa inloggning för Azure SQL-hanterad instans](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [Skapa inloggning för Azure-Synapse](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [Skapa användare](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Skapa Azure AD-inkluderade användare](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 

@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 57a417948d23d40801eb34cf10aab1e6f17037e6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786489"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644077"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ögonblicksbilder för felsökning av undantag i .NET-appar
 När ett undantag inträffar kan du automatiskt samla in en fel söknings ögonblicks bild från Live-webbappen. I ögonblicks bilden visas statusen för käll koden och variablerna vid det tillfälle då undantaget uppstod. Snapshot Debugger i [Azure Application Insights](./app-insights-overview.md) övervakar undantags telemetri från din webbapp. Den samlar in ögonblicks bilder i de övergivna undantagen så att du har den information du behöver för att diagnostisera problem i produktionen. Ta med [Snapshot Collector NuGet-paketet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) i ditt program och konfigurera sedan samlings parametrar i [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Ögonblicks bilder visas på [undantag](./asp-net-exceptions.md) i Application Insights portalen.
@@ -124,7 +124,7 @@ Version 15,2 (eller senare) av Visual Studio 2017 publicerar symboler för versi
 För Azure Compute och andra typer ser du till att symbol-filerna finns i samma mapp i huvud programmet. dll (vanligt vis `wwwroot/bin` ) eller är tillgängliga på den aktuella sökvägen.
 
 > [!NOTE]
-> Mer information om de olika symbol alternativen som är tillgängliga finns i [Visual Studio-dokumentationen](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Mer information om de olika symbol alternativen som är tillgängliga finns i [Visual Studio-dokumentationen](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output
 ). För bästa resultat rekommenderar vi att du använder "fullständig", "portabel" eller "inbäddad".
 
 ### <a name="optimized-builds"></a>Optimerade versioner

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 6a64bb2801830440dc49e72786c9c00a6e4796b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a98eed61904b580988fe34302999f3ec6a24ac9e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201625"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640915"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Installera eller avinstallera Azure IoT Edge för Linux
 
@@ -398,6 +398,8 @@ Kontrol lera att den IoT Edge system tjänsten körs.
    sudo iotedge system status
    ```
 
+Ett lyckat status svar är `Ok` .
+
 ::: moniker-end
 
 Hämta tjänstloggar om du behöver felsöka tjänsten.
@@ -491,7 +493,7 @@ Med hjälp av ett spiral kommando kan du rikta in komponentfilerna direkt från 
    2. Använd den kopierade länken i följande kommando för att installera den här versionen av identitets tjänsten:
 
       ```bash
-      curl -L <identity service link> -o aziot-identity-service.deb && sudo dpkg -i ./aziot-identity-service.deb
+      curl -L <identity service link> -o aziot-identity-service.deb && sudo apt-get install ./aziot-identity-service.deb
       ```
 
    3. Hitta den **aziot-** fil som matchar din IoT Edge enhets arkitektur. Högerklicka på fil länken och Kopiera länk adressen.
@@ -499,7 +501,7 @@ Med hjälp av ett spiral kommando kan du rikta in komponentfilerna direkt från 
    4. Använd den kopierade länken i följande kommando för att installera den versionen av IoT Edge.
 
       ```bash
-      curl -L <iotedge link> -o aziot-edge.deb && sudo dpkg -i ./aziot-edge.deb
+      curl -L <iotedge link> -o aziot-edge.deb && sudo apt-get install ./aziot-edge.deb
       ```
 
 <!-- end 1.2 -->

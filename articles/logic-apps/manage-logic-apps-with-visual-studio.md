@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56b74e440fcb09ab206bbb069517dd756221f809
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87280774"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639558"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Hantera Logic Apps i Visual Studio
 
@@ -37,7 +37,7 @@ Du kan också [Hantera dina](manage-logic-apps-with-azure-portal.md)Logi Kap par
     > När du installerar Visual Studio 2019 eller 2017 ser du till att du väljer arbets belastningen **Azure Development** .
     > Mer information finns i [Hantera resurser som är kopplade till dina Azure-konton i Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer).
 
-    Om du vill installera Cloud Explorer för Visual Studio 2015 [laddar du ned Cloud Explorer från Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Mer information finns i [Hantera resurser som är associerade med dina Azure-konton i Visual Studio Cloud Explorer (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    Om du vill installera Cloud Explorer för Visual Studio 2015 [laddar du ned Cloud Explorer från Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Mer information finns i [Hantera resurser som är associerade med dina Azure-konton i Visual Studio Cloud Explorer (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015&preserve-view=true).
 
   * [Azure SDK (2.9.1 eller senare)](https://azure.microsoft.com/downloads/)
 

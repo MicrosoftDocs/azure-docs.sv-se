@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: aba9b71ec2fbfedecf08577c7bd2eae7a28a5588
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110384"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644299"
 ---
 Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna python SMS SDK för att skicka SMS-meddelanden.
 
@@ -79,7 +79,7 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera en **SmsClient** med anslutnings strängen. Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+Instansiera en **SmsClient** med anslutnings strängen. Lär dig hur du [hanterar din resurs anslutnings sträng](../../create-communication-resource.md#store-your-connection-string).
 
 ```python
 # Create the SmsClient object which will be used to send SMS messages
@@ -107,7 +107,7 @@ sms_responses = sms_client.send(
 Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till. 
 
 > [!WARNING]
-> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 12223334444).
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
 
 ## <a name="send-a-1n-sms-message"></a>Skicka ett 1: N SMS-meddelande
 
@@ -125,13 +125,16 @@ sms_responses = sms_client.send(
 
 ```
 
-Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number-1>` `<to-phone-number-2>` med de telefonnummer som du vill skicka ett meddelande till. 
+Du bör ersätta `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number-1>` `<to-phone-number-2>` med telefonnummer (er) som du vill skicka ett meddelande till. 
+
+> [!WARNING]
+> Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
 
 ## <a name="optional-parameters"></a>Valfria parametrar
 
 `enable_delivery_report`Parametern är en valfri parameter som du kan använda för att konfigurera leverans rapportering. Detta är användbart för scenarier där du vill generera händelser när SMS-meddelanden levereras. Se snabb starten [Hantera SMS-händelser](../handle-sms-events.md) för att konfigurera leverans rapportering för SMS-meddelanden.
 
-`tag`Parametern är en valfri parameter som du kan använda för att konfigurera anpassad taggning.
+`tag`Parametern är en valfri parameter som du kan använda för att tillämpa en tagg i leverans rapporten.
 
 ## <a name="run-the-code"></a>Kör koden
 Kör programmet från program katalogen med `python` kommandot.

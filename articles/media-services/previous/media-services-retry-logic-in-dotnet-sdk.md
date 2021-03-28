@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: feda0ccfa1dc6d02153b98ad084bd775a055e9e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fe37c9f7727535a292b029c342aa0e85ce0a86ec
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103012926"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644123"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Omprövnings logik i Media Services SDK för .NET
 
@@ -52,7 +52,7 @@ I följande tabell beskrivs undantag som Media Services SDK för .NET hanterar e
 | IOException |Inga |Ja |Inga |Inga |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> Webexceptions status koder
-I följande tabell visas för vilka webexceptions-felkoder som logiken för omförsök implementeras. [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) -uppräkningen definierar status koderna.  
+I följande tabell visas för vilka webexceptions-felkoder som logiken för omförsök implementeras. [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus) -uppräkningen definierar status koderna.  
 
 | Status | Webb förfrågan | Storage | Fråga | SaveChanges |
 | --- | --- | --- | --- | --- |

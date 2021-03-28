@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5d7b512601d066000f1f64bf99d1fd4be3532b7a
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: c6b502bbc56d6c9521ec736150fbc0046ff78125
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544136"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642484"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Snabb start: Azure Blob Storage klient bibliotek V12 med Xamarin
 
@@ -40,7 +40,7 @@ Referens länkar:
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 * Azure Storage-konto – [skapa ett lagrings konto](../common/storage-account-create.md)
-* Visual Studio med [mobil utveckling för .net-arbetsbelastningar](/xamarin/get-started/installation/?pivots=windows) installerade eller [Visual Studio för Mac](/visualstudio/mac/installation?view=vsmac-2019)
+* Visual Studio med [mobil utveckling för .net-arbetsbelastningar](/xamarin/get-started/installation/?pivots=windows) installerade eller [Visual Studio för Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
 
 ## <a name="setting-up"></a>Konfigurera
     

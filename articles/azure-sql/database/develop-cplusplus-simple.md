@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92674763"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643290"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Ansluta till SQL Database med C och C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Se till att du har följande objekt:
 
 * Ett aktivt Azure-konto. Om du inte har ett kan du registrera dig för en [kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). Du måste installera C++-språk komponenterna för att kunna skapa och köra det här exemplet.
-* [Visual Studio Linux-utveckling](/cpp/linux/?view=vs-2019). Om du utvecklar på Linux måste du också installera Visual Studio Linux-tillägget.
+* [Visual Studio Linux-utveckling](/cpp/linux/). Om du utvecklar på Linux måste du också installera Visual Studio Linux-tillägget.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database och SQL Server på virtuella datorer
 

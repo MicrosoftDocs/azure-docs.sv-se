@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
-ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740383"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644678"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Dela och ta emot data från Azure SQL Database och Azure Synapse Analytics
 
@@ -36,7 +36,20 @@ När data tas emot i SQL-tabellen och om mål tabellen inte redan finns skapar A
 Nedan visas en lista över förutsättningar för att dela data från SQL-källan. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Krav för delning från Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW)
-Du kan följa stegen i steg [för steg-demonstrationen](https://youtu.be/hIE-TjJD8Dc) för att konfigurera krav.
+
+
+För att dela data med Azure Active Directory autentisering, är här en lista över förutsättningar:
+
+* En Azure SQL Database-eller Azure Synapse-analys (tidigare Azure SQL DW) med tabeller och vyer som du vill dela.
+* Behörighet att skriva till databaserna på SQL Server, som finns i *Microsoft. SQL/Servers/databaser/skriva*. Den här behörigheten finns i **deltagarrollen**.
+* SQL Server **Azure Active Directory-administratör**
+* SQL Server brand Väggs åtkomst. Detta kan göras genom följande steg: 
+    1. I Azure Portal går du till SQL Server. Välj *brand väggar och virtuella nätverk* från vänster navigering.
+    1. Klicka på **Ja** om *du vill tillåta Azure-tjänster och-resurser åtkomst till den här servern*.
+    1. Klicka på **+ Lägg till klient-IP**. Klientens IP-adress kan komma att ändras. Den här processen kan behöva upprepas nästa gång du delar SQL-data från Azure Portal. Du kan också lägga till ett IP-intervall.
+    1. Klicka på **Spara**. 
+
+Om du vill dela data med SQL-autentisering nedan är en lista över krav. Du kan följa stegen i steg [för steg-demonstrationen](https://youtu.be/hIE-TjJD8Dc) för att konfigurera krav.
 
 * En Azure SQL Database-eller Azure Synapse-analys (tidigare Azure SQL DW) med tabeller och vyer som du vill dela.
 * Behörighet att skriva till databaserna på SQL Server, som finns i *Microsoft. SQL/Servers/databaser/skriva*. Den här behörigheten finns i **deltagarrollen**.
@@ -132,7 +145,9 @@ Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
 
     ![AddDatasets](./media/add-datasets.png "Lägg till data uppsättningar")    
 
-1. Välj din SQL Server-eller Synapse-arbetsyta, ange autentiseringsuppgifter om du uppmanas att göra det och välj **Nästa** för att navigera till objektet som du vill dela och välja Lägg till data uppsättningar. Du kan välja tabeller och vyer från Azure SQL Database och Azure Synapse Analytics (tidigare Azure SQL DW) eller tabeller från en dedikerad SQL-pool för Azure Synapse Analytics (arbets yta). 
+1. Välj din SQL Server-eller Synapse-arbetsyta. Om du använder AAD-autentisering och kryss rutan **Tillåt att data resursen kör SQL-skriptet "skapa användare" för min räkning** visas markerar du kryss rutan. Om du använder SQL-autentisering anger du autentiseringsuppgifter och följer stegen i kraven för att köra skriptet på skärmen. Detta ger data resurs behörighet att läsa från din SQL-databas. 
+
+   Välj **Nästa** för att navigera till objektet som du vill dela och välj Lägg till data uppsättningar. Du kan välja tabeller och vyer från Azure SQL Database och Azure Synapse Analytics (tidigare Azure SQL DW) eller tabeller från en dedikerad SQL-pool för Azure Synapse Analytics (arbets yta). 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Välj data uppsättningar")    
 
@@ -176,7 +191,18 @@ Om du väljer att ta emot data i Azure Storage nedan visas en lista över krav.
 Om du väljer att ta emot data i Azure SQL Database, är Azure Synapse Analytics nedan listan över krav. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Krav för att ta emot data till Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW)
-Du kan följa stegen i steg [för steg-demonstrationen](https://youtu.be/aeGISgK1xro) för att konfigurera krav.
+
+Om du vill ta emot data i en SQL-Server där du är **Azure Active Directory administratör** för SQL Server, så är här en lista över förutsättningar:
+
+* En Azure SQL Database-eller Azure Synapse-analys (tidigare Azure SQL DW).
+* Behörighet att skriva till databaserna på SQL Server, som finns i *Microsoft. SQL/Servers/databaser/skriva*. Den här behörigheten finns i **deltagarrollen**.
+* SQL Server brand Väggs åtkomst. Detta kan göras genom följande steg: 
+    1. I Azure Portal går du till SQL Server. Välj *brand väggar och virtuella nätverk* från vänster navigering.
+    1. Klicka på **Ja** om *du vill tillåta Azure-tjänster och-resurser åtkomst till den här servern*.
+    1. Klicka på **+ Lägg till klient-IP**. Klientens IP-adress kan komma att ändras. Den här processen kan behöva upprepas nästa gång du delar SQL-data från Azure Portal. Du kan också lägga till ett IP-intervall.
+    1. Klicka på **Spara**. 
+    
+För att ta emot data till en SQL-Server där du inte är **Azure Active Directory-administratören**, nedan finns en lista över krav. Du kan följa stegen i steg [för steg-demonstrationen](https://youtu.be/aeGISgK1xro) för att konfigurera krav.
 
 * En Azure SQL Database-eller Azure Synapse-analys (tidigare Azure SQL DW).
 * Behörighet att skriva till databaser på SQL-servern, som finns i *Microsoft. SQL/Servers/databaser/skriva*. Den här behörigheten finns i **deltagarrollen**. 
@@ -264,11 +290,11 @@ Följ stegen nedan för att konfigurera var du vill ta emot data.
 
    ![Mappa till mål](./media/dataset-map-target.png "Mappa till mål") 
 
-1. Välj ett mål data lager som du vill att data ska hamna i. Alla datafiler eller tabeller i mål data lagret med samma sökväg och namn kommer att skrivas över. 
+1. Välj ett mål data lager som du vill att data ska hamna i. Alla datafiler eller tabeller i mål data lagret med samma sökväg och namn kommer att skrivas över. Om du tar emot data i SQL-mål, och kryss rutan **Tillåt att data resursen för att köra ovanstående SQL-skript för att skapa användare** , visas, markerar du kryss rutan. Annars följer du anvisningarna i krav för att köra skriptet på skärmen. Detta ger data resursens Skriv behörighet till mål-SQL-databasen.
 
    ![Mål lagrings konto](./media/dataset-map-target-sql.png "Mål data lager") 
 
-1. För ögonblicks bilds-baserad delning, om dataprovidern har skapat ett ögonblicks bild schema för att tillhandahålla regelbunden uppdatering av data, kan du också aktivera schema för ögonblicks bild genom att välja fliken **ögonblicks bild schema** . Markera kryss rutan bredvid schemat för ögonblicks bilder och välj **+ Aktivera**.
+1. För ögonblicks bilds-baserad delning, om dataprovidern har skapat ett ögonblicks bild schema för att tillhandahålla regelbunden uppdatering av data, kan du också aktivera schema för ögonblicks bild genom att välja fliken **ögonblicks bild schema** . Markera kryss rutan bredvid schemat för ögonblicks bilder och välj **+ Aktivera**. Observera att den första schemalagda ögonblicks bilden startar inom en minut av schema tiden och att efterföljande ögonblicks bilder startar inom några sekunder från den schemalagda tiden.
 
    ![Aktivera schema för ögonblicks bild](./media/enable-snapshot-schedule.png "Aktivera schema för ögonblicks bild")
 

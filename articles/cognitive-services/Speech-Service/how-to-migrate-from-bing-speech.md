@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6b7b298e7e4d18e68985ec3cf536c90ef773608
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499143"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644389"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrera från Taligenkänning i Bing till tal tjänsten
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver skillnaderna mellan Taligenkänning i Bing-API: er o
 En prenumerations nyckel för en enskild röst tjänst ger åtkomst till följande funktioner. Varje funktion mäts separat, så att du bara debiteras för de funktioner du använder.
 
 * [Tal till text](speech-to-text.md)
-* [Anpassat tal till text](https://cris.ai)
+* [Anpassat tal till text](/azure/cognitive-services/speech-service/custom-speech-overview)
 * [Text till tal](text-to-speech.md)
 * [Anpassad text till talade röster](./how-to-custom-voice-create-voice.md)
 * [Talöversättning](speech-translation.md) (omfattar inte [textöversättning](../translator/translator-info-overview.md))

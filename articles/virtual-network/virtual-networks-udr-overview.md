@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: c8d188c7bb7034cda450049c3d4912cc1517dae5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605220"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645271"
 ---
 # <a name="virtual-network-traffic-routing"></a>Trafikdirigering i virtuella nätverk
 
@@ -96,10 +96,12 @@ Du kan ange följande nästa hopptyper när du skapar en användardefinierad vä
 
 Du kan inte ange **VNet-peering** eller **VirtualNetworkServiceEndpoint** son nästa hopptyp i användardefinierade vägar. Vägar med nästa hopptyperna **VNet-peering** eller **VirtualNetworkServiceEndpoint** skapas endast av Azure när du konfigurerar en virtuell nätverkspeering eller en tjänstslutpunkt.
 
-### <a name="service-tags-for-user-defined-routes-public-preview"></a>Service märken för användardefinierade vägar (offentlig för hands version)
+### <a name="service-tags-for-user-defined-routes-preview"></a>Service märken för användardefinierade vägar (för hands version)
 
 Nu kan du ange en [service tag](service-tags-overview.md) som adressprefix för en användardefinierad väg i stället för ett explicit IP-intervall. En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket minimerar komplexiteten vid frekventa uppdateringar av användardefinierade vägar och minskar antalet vägar som du behöver skapa. Du kan för närvarande skapa 25 eller färre vägar med service märken i varje routningstabell. </br>
 
+> [!IMPORTANT]
+> Service märken för användardefinierade vägar är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 #### <a name="exact-match"></a>Exakt matchning
 När det finns en exakt prefix matchning mellan en väg med ett explicit IP-prefix och en väg med en service tag, ges prioriteten till vägen med det explicita prefixet. När flera vägar med service-Taggar har matchande IP-prefix kommer vägar att utvärderas i följande ordning: 

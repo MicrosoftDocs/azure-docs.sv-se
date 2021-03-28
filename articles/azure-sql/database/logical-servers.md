@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09e8ef85b6df48b6b442351135d4ae4ed55e9b45
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96445387"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641069"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Vad är en logisk SQL-Server i Azure SQL Database-och Azure-Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -147,10 +147,10 @@ Använd följande T-SQL-kommandon för att skapa och hantera servrar, databaser 
 
 | Kommando | Beskrivning |
 | --- | --- |
-|[SKAPA databas (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Skapar en ny databas i Azure SQL Database. Du måste vara ansluten till huvud databasen för att skapa en ny databas.|
-|[SKAPA databas (Azure-Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Skapar en ny informations lager databas i Azure-Synapse. Du måste vara ansluten till huvud databasen för att skapa en ny databas.|
-| [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Ändrar databas eller elastisk pool. |
-|[ALTER DATABASE (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Ändrar en informations lager databas i Azure Synapse.|
+|[SKAPA databas (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true) | Skapar en ny databas i Azure SQL Database. Du måste vara ansluten till huvud databasen för att skapa en ny databas.|
+|[SKAPA databas (Azure-Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Skapar en ny informations lager databas i Azure-Synapse. Du måste vara ansluten till huvud databasen för att skapa en ny databas.|
+| [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Ändrar databas eller elastisk pool. |
+|[ALTER DATABASE (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true&tabs=sqlpool)|Ändrar en informations lager databas i Azure Synapse.|
 |[SLÄPP databas (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Tar bort en databas.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Returnerar utgåvan (tjänst nivån), tjänst målet (pris nivån) och namnet på den elastiska poolen, om det finns någon, för en databas. Om du är inloggad på huvud databasen för en server returneras information om alla databaser. Du måste vara ansluten till huvud databasen för Azure-Synapse.|
 |[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Returnerar CPU-, IO-och minnes förbrukning för en databas i Azure SQL Database. Det finns en rad för var 15: e sekund, även om det inte finns någon aktivitet i databasen.|

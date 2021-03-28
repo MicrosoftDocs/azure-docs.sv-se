@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: af5ec07a8fb2db0bd4b9b8f1af556ef54199400d
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609419"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645369"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -21,10 +21,10 @@ ms.locfileid: "105609419"
 ## <a name="install-the-sdk"></a>Installera SDK:n
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 6 av anrops-SDK: n.
+> Det här dokumentet använder version 1.0.0 – beta. 10 av anrops-SDK: n.
 
 Använd `npm install` kommandot för att installera Azure Communication Services-anrop och vanliga SDK: er för Java Script.
-Det här dokumentet refererar till typer i version 1.0.0-beta. 5 av anrops bibliotek.
+Det här dokumentet refererar till typer i version 1.0.0-beta. 10 för det anropande biblioteket.
 
 ```console
 npm install @azure/communication-common --save
@@ -54,6 +54,10 @@ När du har en `CallClient` instans kan du skapa en `CallAgent` instans genom at
 När du har skapat en `callAgent` instans kan du använda- `getDeviceManager` metoden på `CallClient` instansen för att komma åt `deviceManager` .
 
 ```js
+// Set the logger's log level
+setLogLevel('verbose');
+// Redirect logger output to wherever desired. By default it logs to console
+AzureLogger.log = (...args) => { console.log(...args) };
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationTokenCredential(userToken);
@@ -113,8 +117,8 @@ När du har valt en kamera använder du den för att konstruera en `LocalVideoSt
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const cameras = await deviceManager.getCameras();
-videoDeviceInfo = cameras[0];
-localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const camera = cameras[0]
+localVideoStream = new LocalVideoStream(camera);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
 const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
@@ -168,14 +172,26 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-    //Get information about caller
+
+    //Get incoming call ID
+    var incomingCallId = incomingCall.id
+
+    // Get information about caller
     var callerInfo = incomingCall.callerInfo
 
-    //Accept the call
+    // Accept the call
     var call = await incomingCall.accept();
 
-    //Reject the call
+    // Reject the call
     incomingCall.reject();
+
+    // Subscribe to callEnded event and get the call end reason
+     incomingCall.on('callEnded', args => {
+        console.log(args.callEndReason);
+    });
+
+    // callEndReason is also a property of IncomingCall
+    var callEndReason = incomingCall.callEndReason;
 };
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
@@ -194,7 +210,7 @@ Hämta unikt ID (sträng) för ett anrop:
     const callId: string = call.id;
    ```
 
-Lär dig mer om andra deltagare i samtalet genom att inspektera `remoteParticipant` samlingen:
+Lär dig mer om andra deltagare i anropet genom att inspektera `remoteParticipants` samlingen på anrops instansen:
 
    ```js
    const remoteParticipants = call.remoteParticipants;
@@ -217,7 +233,6 @@ Hämta status för ett anrop:
    Detta returnerar en sträng som representerar det aktuella status för ett anrop:
 
   - `None`: Initialt anrops tillstånd.
-  - `Incoming`: Anger att ett anrop är inkommande. Det måste antingen godkännas eller avvisas.
   - `Connecting`: Ursprungligt över gångs tillstånd när ett anrop läggs till eller godkänns.
   - `Ringing`: För ett utgående samtal indikerar det att ett anrop rings upp för fjärranslutna deltagare. Det finns `Incoming` på deras sida.
   - `EarlyMedia`: Anger ett tillstånd där ett meddelande spelas innan anropet ansluts.
@@ -231,8 +246,8 @@ Ta reda på varför ett samtal avslutades genom att inspektera `callEndReason` e
 
    ```js
    const callEndReason = call.callEndReason;
-   // callEndReason.code (number) code associated with the reason
-   // callEndReason.subCode (number) subCode associated with the reason
+   const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
    ```
 
 Lär dig om det aktuella anropet är inkommande eller utgående genom att granska `direction` egenskapen. Den returnerar `CallDirection` .
@@ -245,7 +260,7 @@ Lär dig om det aktuella anropet är inkommande eller utgående genom att gransk
 Kontrol lera om den aktuella mikrofonen är avstängd. Den returnerar `Boolean` .
 
    ```js
-   const muted = call.isMicrophoneMuted;
+   const muted = call.isMuted;
    ```
 
 Ta reda på om skärm delnings strömmen skickas från en specifik slut punkt genom att kontrol lera `isScreenSharingOn` egenskapen. Den returnerar `Boolean` .
@@ -291,7 +306,10 @@ await call.unmute();
 Om du vill starta en video måste du ange kameror genom att använda- `getCameras` metoden på `deviceManager` objektet. Skapa sedan en ny instans av `LocalVideoStream` genom att skicka önskad kamera till- `startVideo` metoden som ett argument:
 
 ```js
-const localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const deviceManager = await callClient.getDeviceManager();
+const cameras = await deviceManager.getCameras();
+const camera = cameras[0]
+const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
 ```
 
@@ -311,12 +329,13 @@ Du kan växla till en annan kamera enhet medan en video skickas genom att anropa
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
-localVideoStream.switchSource(cameras[1]);
+const camera = cameras[1];
+localVideoStream.switchSource(camera);
 ```
 
 ## <a name="manage-remote-participants"></a>Hantera fjärranslutna deltagare
 
-Alla fjärranslutna deltagare representeras av `remoteParticipant` och är tillgängliga via `remoteParticipants` insamlingen på en samtals instans.
+Alla fjärranslutna deltagare representeras av `RemoteParticipant` typ och är tillgängliga via `remoteParticipants` samling på en samtals instans.
 
 ### <a name="list-the-participants-in-a-call"></a>Lista deltagarna i ett samtal
 
@@ -341,6 +360,7 @@ Fjärranslutna deltagare har en uppsättning tillhör ande egenskaper och samlin
   - `{ communicationUserId: '<ACS_USER_ID'> }`: Ett objekt som representerar ACS-användaren.
   - `{ phoneNumber: '<E.164>' }`: Ett objekt som representerar telefonnumret i E. 164-format.
   - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: Ett objekt som representerar team användaren.
+  - `{ id: string }`: Object repredenting-identifierare som inte passar någon av de andra typerna av identifierare
 
 - `state`: Hämta status för en fjärran sluten deltagare.
 
@@ -362,8 +382,8 @@ Fjärranslutna deltagare har en uppsättning tillhör ande egenskaper och samlin
 
   ```js
   const callEndReason = remoteParticipant.callEndReason;
-  // callEndReason.code (number) code associated with the reason
-  // callEndReason.subCode (number) subCode associated with the reason
+  const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+  const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
   ```
 
 - `isMuted` status: om du vill ta reda på om en fjärran sluten deltagare är avstängd, kontrollerar du `isMuted` egenskapen. Den returnerar `Boolean` .
@@ -382,6 +402,11 @@ Fjärranslutna deltagare har en uppsättning tillhör ande egenskaper och samlin
 
   ```js
   const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  ```
+- `displayName`: Om du vill hämta visnings namnet för den här fjärrdeltagaren kontrollerar du att `displayName` egenskapen retur sträng. 
+
+  ```js
+  const displayName = remoteParticipant.displayName;
   ```
 
 ### <a name="add-a-participant-to-a-call"></a>Lägg till en deltagare i ett samtal
@@ -415,22 +440,22 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-För att kunna återge måste `RemoteVideoStream` du prenumerera på en `isAvailableChanged` händelse. Om `isAvailable` egenskapen ändras till `true` skickar en fjärran sluten deltagare en ström. När detta har skett skapar du en ny instans av `Renderer` och skapar sedan en ny `RendererView` instans med hjälp av den asynkrona `createView` metoden.  Du kan sedan koppla `view.target` till ett gränssnitts element.
+För att kunna återge måste `RemoteVideoStream` du prenumerera på en `isAvailableChanged` händelse. Om `isAvailable` egenskapen ändras till `true` skickar en fjärran sluten deltagare en ström. När detta har skett skapar du en ny instans av `VideoStreamRenderer` och skapar sedan en ny `VideoStreamRendererView` instans med hjälp av den asynkrona `createView` metoden.  Du kan sedan koppla `view.target` till ett gränssnitts element.
 
-När tillgängligheten för en fjärrström ändras kan du förstöra `Renderer` , förstöra en `RendererView` instans eller behålla alla. Åter givningar som är kopplade till en otillgänglig ström leder till en tom video bild ruta.
+När tillgängligheten för en fjärrström ändras kan du välja att ta bort hela `VideoStreamRenderer` , en speciell `VideoStreamRendererView` eller behålla dem, men det leder till att tomma video rutor visas.
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
-    let renderer: Renderer = new Renderer(remoteVideoStream);
+    let videoStreamRenderer: VideoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
     const displayVideo = () => {
-        const view = await renderer.createView();
+        const view = await videoStreamRenderer.createView();
         htmlElement.appendChild(view.target);
     }
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             displayVideo();
         } else {
-            renderer.dispose();
+            videoStreamRenderer.dispose();
         }
     });
     if (remoteVideoStream.isAvailable) {
@@ -449,12 +474,6 @@ Fjärranslutna video strömmar har följande egenskaper:
   const id: number = remoteVideoStream.id;
   ```
 
-- `Stream.size`: Höjden och bredden på en fjärran sluten video ström.
-
-  ```js
-  const size: {width: number; height: number} = remoteVideoStream.size;
-  ```
-
 - `mediaStreamType`: Kan vara `Video` eller `ScreenSharing` .
 
   ```js
@@ -467,32 +486,32 @@ Fjärranslutna video strömmar har följande egenskaper:
   const type: boolean = remoteVideoStream.isAvailable;
   ```
 
-### <a name="renderer-methods-and-properties"></a>Åter givnings metoder och egenskaper
+### <a name="videostreamrenderer-methods-and-properties"></a>Metoder och egenskaper för VideoStreamRenderer
 
-Skapa en `rendererView` instans som kan kopplas till programmets användar gränssnitt för att återge den fjärranslutna video strömmen:
-
-  ```js
-  renderer.createView()
-  ```
-
-Ta bort `renderer` och alla associerade `rendererView` instanser:
+Skapa en `VideoStreamRendererView` instans som kan kopplas till program gränssnittet för att rendera fjärrvideons data ström, använda asynkron `createView()` metod, den löses när data strömmen är redo att renderas och returnerar ett objekt med en `target` egenskap som representerar `video` element som kan läggas till var som helst i dom-trädet
 
   ```js
-  renderer.dispose()
+  videoStreamRenderer.createView()
   ```
 
-### <a name="rendererview-methods-and-properties"></a>Metoder och egenskaper för RendererView
+Ta bort `videoStreamRenderer` och alla associerade `VideoStreamRendererView` instanser:
 
-När du skapar `rendererView` kan du ange `scalingMode` `isMirrored` egenskaperna och. `scalingMode` kan vara `Stretch` , `Crop` eller `Fit` . Om `isMirrored` har angetts vänds den renderade strömmen lodrätt.
+  ```js
+  videoStreamRenderer.dispose()
+  ```
+
+### <a name="videostreamrendererview-methods-and-properties"></a>Metoder och egenskaper för VideoStreamRendererView
+
+När du skapar en `VideoStreamRendererView` kan du ange `scalingMode` `isMirrored` egenskaperna och. `scalingMode` kan vara `Stretch` , `Crop` eller `Fit` . Om `isMirrored` har angetts vänds den renderade strömmen lodrätt.
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
+const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-Varje `RendererView` instans har en `target` egenskap som representerar åter givnings ytan. Bifoga den här egenskapen i programmets användar gränssnitt:
+Varje `VideoStreamRendererView` instans har en `target` egenskap som representerar åter givnings ytan. Bifoga den här egenskapen i programmets användar gränssnitt:
 
 ```js
-document.body.appendChild(rendererView.target);
+htmlElement.appendChild(view.target);
 ```
 
 Du kan uppdatera `scalingMode` genom att anropa `updateScalingMode` metoden:
@@ -506,9 +525,6 @@ view.updateScalingMode('Crop')
 I `deviceManager` kan du ange lokala enheter som kan överföra ljud-och video strömmar i ett samtal. Det hjälper dig också att begära behörighet att komma åt en annan användares mikrofon och kamera med hjälp av det inbyggda webb läsar-API: et
 
 Du kan komma åt `deviceManager` genom att anropa `callClient.getDeviceManager()` metoden:
-
-> [!IMPORTANT]
-> Du måste ha ett `callAgent` objekt innan du kan komma åt det `deviceManager` .
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -538,26 +554,26 @@ I `deviceManager` kan du ange en standardenhet som du ska använda för att star
 const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.selectMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(localMicrophones[0]);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.selectSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
 ### <a name="local-camera-preview"></a>Lokal kamera för hands version
 
-Du kan använda `deviceManager` och `Renderer` för att börja rendera strömmar från den lokala kameran. Den här data strömmen skickas inte till andra deltagare. Det är en lokal förhands gransknings matning.
+Du kan använda `deviceManager` och `VideoStreamRenderer` för att börja rendera strömmar från den lokala kameran. Den här data strömmen skickas inte till andra deltagare. Det är en lokal förhands gransknings matning.
 
 ```js
 const cameras = await deviceManager.getCameras();
-const localVideoDevice = cameras[0];
-const localCameraStream = new LocalVideoStream(localVideoDevice);
-const renderer = new Renderer(localCameraStream);
-const view = await renderer.createView();
-document.body.appendChild(view.target);
+const camera = cameras[0];
+const localCameraStream = new LocalVideoStream(camera);
+const videoStreamRenderer = new VideoStreamRenderer(localCameraStream);
+const view = await videoStreamRenderer.createView();
+htmlElement.appendChild(view.target);
 
 ```
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105560275"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644435"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Uppdatering av enhets uppdateringar för Azure IoT Hub med paket agenten på Ubuntu Server 18,04 x64
 
@@ -44,7 +44,7 @@ För enkelhetens skull använder den här självstudien en [Cloud-Init](../virtu
 
 1. Börja genom att klicka på knappen nedan:
 
-   [![Knappen Distribuera till Azure för iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0-rc4%2FedgeDeploy.json)
+   [![Knappen Distribuera till Azure för iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fdevice-update-tutorial%2FedgeDeploy.json)
 
 1. Fyll i de tillgängliga formulär fälten i fönstret nyligen startade:
 
@@ -126,9 +126,9 @@ Läs licens villkoren innan du använder ett paket. Din installation och använd
 
 1. Gå till [enhets uppdaterings utgåvor](https://github.com/Azure/iot-hub-device-update/releases) i GitHub och klicka på list rutan "till gångar".
 
-3. Hämta `apt-update-import-samples.zip` genom att klicka på den.
+3. Hämta `Edge.package.update.samples.zip` genom att klicka på den.
 
-5. Extrahera innehållet i mappen för att identifiera olika uppdaterings exempel och deras motsvarande import manifest. 
+5. Extrahera innehållet i mappen för att identifiera ett uppdaterings exempel och dess motsvarande import manifest. 
 
 2. I Azure Portal väljer du alternativet enhets uppdateringar under automatisk enhets hantering från det vänstra navigerings fältet i IoT Hub.
 
@@ -136,10 +136,8 @@ Läs licens villkoren innan du använder ett paket. Din installation och använd
 
 4. Välj "+ Importera ny uppdatering".
 
-5. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj `sample-package-update-1.0.1-importManifest.json` import manifestet från mappen som du laddade ned tidigare. Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj `sample-1.0.1-libcurl4-doc-apt-manifest.json` manifest uppdaterings filen apt från mappen som du laddade ned tidigare.
-Den här uppdateringen installerar den senaste tillgängliga versionen av `libcurl4-doc package` på enheten.
-
-   Alternativt kan du välja `sample-package-update-2-2.0.1-importManifest.json` import manifest filen och `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` apt manifest uppdaterings filen från mappen som du laddade ned tidigare. Detta kommer att installera en speciell version v-7.58.0 av på `libcurl4-doc package` enheten.
+5. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj `sample-1.0.1-aziot-edge-importManifest.json` import manifestet från mappen som du laddade ned tidigare. Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj `sample-1.0.1-aziot-edge-apt-manifest.json` manifest uppdaterings filen apt från mappen som du laddade ned tidigare.
+Den här uppdateringen kommer `aziot-identity-service` `aziot-edge` att uppdatera paketen till version 1.2.0 ~ RC4-1 på enheten.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Skärm bild som visar val av uppdaterings fil." lightbox="media/import-update/select-update-files.png":::
 
@@ -211,12 +209,6 @@ Den här uppdateringen installerar den senaste tillgängliga versionen av `libcu
 1. Välj Uppdatera för att visa den senaste statusinformationen. Fortsätt med den här processen tills statusen har ändrats till slutfört.
 
 Du har nu slutfört en lyckad paket uppdatering från slut punkt till slut punkt med enhets uppdatering för IoT Hub på en Ubuntu Server 18,04 x64-enhet. 
-
-## <a name="bonus-steps"></a>Bonus steg
-
-1. Upprepa avsnitten "Importera uppdatering" och "distribuera uppdatering"
-
-3. Under steget "Importera uppdatering" väljer du filen för `sample-package-update-1.0.2-importManifest.json` import manifest filen och `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt-manifestet från mappen som du laddade ned tidigare. Den här uppdateringen tar bort den som installeras `libcurl4-doc package` från enheten.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

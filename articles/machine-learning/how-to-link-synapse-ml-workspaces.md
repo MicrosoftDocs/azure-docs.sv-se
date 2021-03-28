@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889118"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640839"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Länka Azure Synapse Analytics och Azure Machine Learning-arbetsytor (för hands version)
 
@@ -35,9 +35,9 @@ Du kan också länka arbets ytor och koppla en Synapse Spark-pool med en enda [A
 
 * [Skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md?tabs=python).
 
-* [Skapa en Synapse-arbetsyta i Azure Portal](/synapse-analytics/quickstart-create-workspace.md).
+* [Skapa en Synapse-arbetsyta i Azure Portal](/azure/synapse-analytics/quickstart-create-workspace).
 
-* [Skapa Apache Spark pool med Azure Portal, webb verktyg eller Synapse Studio](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [Skapa Apache Spark pool med Azure Portal, webb verktyg eller Synapse Studio](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
 
 * Installera [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro)
 

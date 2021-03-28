@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 82a2c3047f851c9fbc273cd13e730572c38b6bcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775943"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640373"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Använd Azure-DevOps för att skapa en CI/CD-pipeline för ett Stream Analytics jobb
 
@@ -26,21 +26,21 @@ Stegen i den här artikeln använder ett Stream Analytics Visual Studio Code-pro
 
 ## <a name="create-a-build-pipeline"></a>Skapa en bygg-pipeline
 
-I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du kan referera till det här exemplet [Auto build and test pipeline](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) i Azure DevOps.
+I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. 
 
 1. Öppna en webbläsare och navigera till projektet i Azure DevOps.  
 
-1. Under **pipeliner** i den vänstra navigerings menyn väljer du **versioner**. Välj sedan **ny pipeline**.
+2. Under **pipeliner** i den vänstra navigerings menyn väljer du **versioner**. Välj sedan **ny pipeline**.
 
    :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="Skapa ny Azure-pipeline":::
 
-1. Välj **Använd den klassiska redigeraren** för att skapa en pipeline utan yaml.
+3. Välj **Använd den klassiska redigeraren** för att skapa en pipeline utan yaml.
 
-1. Välj käll typ, team projekt och lagrings plats. Välj sedan **Fortsätt**.
+4. Välj käll typ, team projekt och lagrings plats. Välj sedan **Fortsätt**.
 
    :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Välj Azure Stream Analytics projekt":::
 
-1. På sidan **Välj en mall** väljer du **tomt jobb**.
+5. På sidan **Välj en mall** väljer du **tomt jobb**.
 
 ## <a name="install-npm-package"></a>Installera NPM-paket
 
@@ -155,7 +155,7 @@ Du hittar test sammanfattnings filen och Azure Resource Manager mallfiler i den 
 
 ## <a name="release-with-azure-pipelines"></a>Version med Azure-pipeline
 
-I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du kan referera till den här exempel [lanserings pipelinen](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) i Azure DevOps.
+I det här avsnittet får du lära dig hur du skapar en versions pipeline. 
 
 Öppna en webbläsare och gå till ditt Azure Stream Analytics Visual Studio Code-projekt.
 

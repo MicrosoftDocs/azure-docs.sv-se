@@ -5,21 +5,20 @@ description: Innehåller en översikt över SMS SDK och dess erbjudanden.
 author: mikben
 manager: jken
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
+ms.author: prakulka
+ms.date: 03/26/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25a5befab6ef141b059caaac7b1784d47f2f93cf
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 2e9f782f0b8fa0be77e70ccdae8849caa4abb81e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108119"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643816"
 ---
 # <a name="sms-sdk-overview"></a>Översikt över SMS SDK
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
@@ -31,15 +30,16 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 
 | Grupp med funktioner | Funktion                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |
-| Kärn funktioner | Skicka och ta emot SMS-meddelanden </br> *Unicode-emojis stöds*                        | ✔️   | ✔️    | ✔️    | ✔️      |
-|                   | Ta emot leverans rapporter för skickade meddelanden                                            | ✔️   | ✔️    | ✔️    | ✔️      |
+| Kärn funktioner | Skicka och ta emot SMS-meddelanden                                                         | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Aktivera leverans rapporter för skickade meddelanden                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Alla teckenuppsättningar (språk-/Unicode-stöd)                                         | ✔️   | ✔️    | ✔️    | ✔️      |
-|                   | Stöd för långa meddelanden (upp till 2048 tecken)                                           | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Stöd för långa meddelanden (upp till 2048 byte)                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Automatisk sammanfogning av långa meddelanden                                                   | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Skicka meddelanden till flera mottagare i taget                                        | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Stöd för idempotens                                                               | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Anpassade taggar för meddelanden.                                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 | Händelser            | Använd Event Grid för att konfigurera Webhooks för att ta emot inkommande meddelanden och leverans rapporter | ✔️   | ✔️    | ✔️    | ✔️      |
 | Telefonnummer      | Toll-Free nummer                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
-| Regler        | Opt-Out hantering                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
-| Övervakning        | Övervaka användning för skickade och mottagna meddelanden                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 | PSTN-anrop      | Lägg till PSTN-anrop till det SMS-aktiverade avgiftsfria numret                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Nästa steg

@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a52931b69187d18984b9b6938832dafe64111ffe
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495716"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641060"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionstillgänglighet och datahemvist
 
@@ -58,10 +58,12 @@ Azure Communication Services underhåller en katalog med telefonnummer som är a
 
 ### <a name="chat"></a>Chatt
 
-Chatt-trådar och meddelanden behålls tills de tas bort explicit. En helt inaktiv tråd tas bort automatiskt efter 30 dagar. Använd [chatt-API: er](/rest/api/communication/chat/chatthread) för att hämta, Visa, uppdatera och ta bort meddelanden.
+Chatt-trådar och meddelanden behålls tills de tas bort explicit. En helt inaktiv tråd utan deltagare tas automatiskt bort efter 30 dagar. Använd [chatt-API: er](/rest/api/communication/chat/chatthread) för att hämta, Visa, uppdatera och ta bort meddelanden.
 
 - `Get Thread`
 - `Get Message`
+- `List Messages`
+- `Update Message`
 - `Delete Thread`
 - `Delete Message`
 

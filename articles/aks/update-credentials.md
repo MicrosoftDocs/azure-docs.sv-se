@@ -5,12 +5,12 @@ description: Läs om hur du uppdaterar eller återställer autentiseringsuppgift
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 91d40a5a738737098b0941bf3e41e4edd515e6df
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501183"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640472"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Uppdatera eller rotera autentiseringsuppgifterna för Azure Kubernetes service (AKS)
 

@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: d2fe8f32ec854e1e6db644a039e6a249cfbddcaa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103012895"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642499"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Använd IoT Hub meddelanderoutning för att skicka meddelanden från enheten till molnet till olika slut punkter
 
@@ -71,7 +71,7 @@ IoT Hub batchar meddelanden och skriver data till lagring när batchen når en v
 
 Du kan använda valfri fil namns konvention, men du måste använda alla listade tokens. IoT Hub skrivs till en tom BLOB om det inte finns några data att skriva.
 
-Vi rekommenderar att du visar blobbar eller filer och sedan söker efter dem, för att se till att alla blobbar eller filer läses utan att göra några antaganden om partitionen. Partitions intervallet kan eventuellt ändras under en [Microsoft-initierad redundansväxling](iot-hub-ha-dr.md#microsoft-initiated-failover) eller IoT Hub [manuell redundans](iot-hub-ha-dr.md#manual-failover). Du kan använda [list-BLOB-API: et](/rest/api/storageservices/list-blobs) för att räkna upp listan över blobbar eller [lista ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) för listan med filer. Se följande exempel som vägledning.
+Vi rekommenderar att du visar blobbar eller filer och sedan söker efter dem, för att se till att alla blobbar eller filer läses utan att göra några antaganden om partitionen. Partitions intervallet kan eventuellt ändras under en [Microsoft-initierad redundansväxling](iot-hub-ha-dr.md#microsoft-initiated-failover) eller IoT Hub [manuell redundans](iot-hub-ha-dr.md#manual-failover). Du kan använda [list-BLOB-API: et](/rest/api/storageservices/list-blobs) för att räkna upp listan över blobbar eller [lista ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path) för listan med filer. Se följande exempel som vägledning.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
