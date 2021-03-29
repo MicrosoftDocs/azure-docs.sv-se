@@ -1,24 +1,21 @@
 ---
-title: Övervaka Windows Virtual Desktop Preview-ordlista – Azure
+title: Övervaka ord lista för virtuella Windows-datorer – Azure
 description: En ord lista med termer och begrepp som rör Azure Monitor för virtuella Windows-datorer.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 3/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627140"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709539"
 ---
-# <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Azure Monitor för ord listan för Windows Virtual Desktop (förhands granskning)
-
->[!IMPORTANT]
->Azure Monitor för det virtuella Windows-skrivbordet är för närvarande en offentlig för hands version. Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Azure Monitor för ord lista för virtuella Windows-datorer
 
 Den här artikeln innehåller en kort beskrivning av viktiga termer och begrepp som är relaterade till Azure Monitor för Windows Virtual Desktop (för hands version).
 

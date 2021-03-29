@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcacfc8cede0ab91241fd431aace10cbbfbea916
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648629"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709692"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Lägg till Facebook som identitets leverantör för externa identiteter
 
@@ -82,7 +82,7 @@ Nu ska du ange Facebook-klient-ID och klient hemlighet, antingen genom att ange 
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Använd klient-ID och klient hemlighet från den app som du skapade ovan i Facebook Developer Console. Mer information finns i artikeln [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) . 
+   > Använd klient-ID och klient hemlighet från den app som du skapade ovan i Facebook Developer Console. Mer information finns i artikeln [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true) . 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>Hur gör jag för att ta bort Facebook-federationen?
 Du kan ta bort installationen av Facebook-federationen. Om du gör det kommer alla användare som har registrerat sig genom användar flöden med sina Facebook-konton inte längre att kunna logga in. 
@@ -103,7 +103,7 @@ Du kan ta bort installationen av Facebook-federationen. Om du gör det kommer al
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > Mer information finns i [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Mer information finns i [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview&preserve-view=true). 
 
 ## <a name="next-steps"></a>Nästa steg
 

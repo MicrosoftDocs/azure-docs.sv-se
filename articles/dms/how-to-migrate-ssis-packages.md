@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42b5ab2bbdebb2584b38531bd6458a98563ef42
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94963002"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643735"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Distribuera om SSIS-paket till Azure SQL Database med Azure Database Migration Service
 
 Om du använder SQL Server Integration Services (SSIS) och vill migrera dina SSIS-projekt/-paket från käll-SSISDB som är värd för SQL Server till målet SSISDB som är värdbaserade av Azure SQL Database kan du distribuera om dem med hjälp av distributions guiden för integrerings tjänster. Du kan starta guiden inifrån SQL Server Management Studio (SSMS).
 
-Om den version av SSIS som du använder är tidigare än 2012, innan du distribuerar om dina SSIS-projekt/-paket till projekt distributions modellen, måste du först konvertera dem med hjälp av konverterings guiden för integrerings tjänster, som också kan startas från SSMS. Mer information finns i artikeln [konvertera projekt till projekt distributions modellen](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Om den version av SSIS som du använder är tidigare än 2012, innan du distribuerar om dina SSIS-projekt/-paket till projekt distributions modellen, måste du först konvertera dem med hjälp av konverterings guiden för integrerings tjänster, som också kan startas från SSMS. Mer information finns i artikeln [konvertera projekt till projekt distributions modellen](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
 
 > [!NOTE]
 > Azure Database Migration Service (DMS) stöder för närvarande inte migrering av en käll-SSISDB till Azure SQL Database, men du kan distribuera om SSIS-projekt/-paketen med följande process.

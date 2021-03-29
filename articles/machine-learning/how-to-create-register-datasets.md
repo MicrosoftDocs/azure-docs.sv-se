@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 81779d942b31f940d579de623ecb39c35d3a8b14
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417645"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642141"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Skapa Azure Machine Learning-datamängder
 
@@ -52,7 +52,7 @@ Om du vill skapa och arbeta med data uppsättningar behöver du:
     * Arbeta med din egen Jupyter-anteckningsbok och installera SDK: n själv med [de här anvisningarna](/python/api/overview/azure/ml/install).
 
 > [!NOTE]
-> Vissa data uppsättnings klasser är beroende av [azureml-nu-](/python/api/azureml-dataprep/) paketet, som endast är kompatibelt med 64-bitars python. För Linux-användare stöds dessa klasser endast för följande distributioner: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) och CentOS (7). Om du använder distributioner som inte stöds följer du [den här guiden](/dotnet/core/install/linux) för att installera .net Core 2,1 för att gå vidare. 
+> Vissa data uppsättnings klasser är beroende av [azureml-nu-](https://pypi.org/project/azureml-dataprep/) paketet, som endast är kompatibelt med 64-bitars python. För Linux-användare stöds dessa klasser endast för följande distributioner: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) och CentOS (7). Om du använder distributioner som inte stöds följer du [den här guiden](/dotnet/core/install/linux) för att installera .net Core 2,1 för att gå vidare. 
 
 ## <a name="compute-size-guidance"></a>Vägledning för beräknings storlek
 

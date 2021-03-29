@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cf500d529eb22cdd333d796f156eedcd284ea20d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110839"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642315"
 ---
 # <a name="chat-concepts"></a>Chattbegrepp 
 
@@ -26,122 +26,73 @@ Se [översikten över kommunikations tjänsterna i Chat SDK](./sdk-features.md) 
 
 ## <a name="chat-overview"></a>Översikt över chatt    
 
-Chat-konversationer sker inom chatt-trådar. En chatt-tråd kan innehålla många meddelanden och många användare. Varje meddelande tillhör en enda tråd och en användare kan vara en del av en eller flera trådar. Varje användare i chatten kallas en deltagare. Endast tråd deltagare kan skicka och ta emot meddelanden och lägga till eller ta bort andra användare i en chatt-tråd. Kommunikations tjänsterna lagrar chatten tills du kör en borttagnings åtgärd i chatten eller meddelandet, eller tills inga deltagare är kvar i chatt-tråden, där chatt-tråden är överbliven och i kö för borttagning. 
-    
-## <a name="service-limits"></a>Tjänstbegränsningar   
+Chat-konversationer sker inom **chatt-trådar**. Chatt-trådar har följande egenskaper:
 
+- En chatt-tråd identifieras unikt av sin `ChatThreadId` . 
+- Chatt-trådar kan ha en eller många användare som deltagare som kan skicka meddelanden till den. 
+- En användare kan vara en del av en eller flera chatt-trådar. 
+- Endast tråd deltagarna har åtkomst till en specifik chatt-tråd, och endast de kan utföra åtgärder för chatt-trådar. Dessa åtgärder omfattar att skicka och ta emot meddelanden, lägga till deltagare och ta bort deltagare. 
+- Användare läggs automatiskt till som deltagare till alla chatt-trådar som de skapar.
+
+### <a name="user-access"></a>Användaråtkomst
+Vanligt vis har trådens skapare och deltagare samma åtkomst nivå till tråden och kan köra alla relaterade åtgärder som är tillgängliga i SDK, inklusive ta bort den. Deltagarna har inte skriv åtkomst till meddelanden som skickats av andra deltagare, vilket innebär att endast meddelande avsändaren kan uppdatera eller ta bort sina skickade meddelanden. Om en annan deltagare försöker göra det får de ett fel meddelande. 
+
+Om du vill begränsa åtkomsten till chatt funktioner för en uppsättning användare kan du konfigurera åtkomst som en del av din betrodda tjänst. Din betrodda tjänst är den tjänst som dirigerar autentiseringen och auktoriseringen av chatt-deltagare. Vi kommer att utforska detta i detalj nedan.  
+
+### <a name="chat-data"></a>Chat-data 
+Kommunikations tjänster lagrar Chat-historik tills den tas bort uttryckligen. Konversations deltagare i chatten kan använda `ListMessages` för att Visa meddelande historik för en viss tråd. Användare som har tagits bort från en chatt kan visa tidigare meddelande historik, men de kan inte skicka eller ta emot nya meddelanden som en del av den här chatt-tråden. En helt inaktiv tråd utan deltagare tas automatiskt bort efter 30 dagar. Mer information om data som lagras av kommunikations tjänster finns i dokumentationen om [Sekretess](../privacy.md).  
+
+### <a name="service-limits"></a>Tjänstbegränsningar  
 - Det maximala antalet deltagare som tillåts i en chatt-tråd är 250.   
 - Den största tillåtna meddelande storleken är cirka 28 KB.  
 - För chatt-trådar med fler än 20 deltagare stöds inte Läs kvitton och skriv indikator funktioner.    
-- 
+
 ## <a name="chat-architecture"></a>Chatt-arkitektur    
 
 Det finns två kärn delar för att chatta arkitektur: 1) klient program för betrodda tjänster och 2).    
 
 :::image type="content" source="../../media/chat-architecture.png" alt-text="Diagram som visar kommunikations tjänsternas Chat-arkitektur."::: 
 
- - **Betrodd tjänst:** Om du vill hantera en chatt korrekt behöver du en tjänst som hjälper dig att ansluta till kommunikations tjänster med hjälp av resurs anslutnings strängen. Den här tjänsten ansvarar för att skapa chatt-trådar, hantera tråd deltagar listor och tillhandahålla åtkomsttoken till användare. Du hittar mer information om åtkomsttoken i snabb starten för våra [åtkomsttoken](../../quickstarts/access-tokens.md) .   
- - **Klient app:**  Klient programmet ansluter till din betrodda tjänst och tar emot åtkomsttoken som används för att ansluta direkt till kommunikations tjänsterna. När anslutningen har upprättats kan klient programmet skicka och ta emot meddelanden.   
-Vi rekommenderar att du skapar åtkomsttoken med hjälp av den betrodda tjänst nivån. I det här scenariot är Server sidan ansvarig för att skapa och hantera användare och utfärda sina token.   
+ - **Betrodd tjänst:** Om du vill hantera en chatt korrekt behöver du en tjänst som hjälper dig att ansluta till kommunikations tjänster med hjälp av resurs anslutnings strängen. Den här tjänsten ansvarar för att skapa chatt-trådar, lägga till och ta bort deltagare och utfärda åtkomsttoken till användare. Du hittar mer information om åtkomsttoken i snabb starten för våra [åtkomsttoken](../../quickstarts/access-tokens.md) .  
+ - **Klient app:**  Klient programmet ansluter till din betrodda tjänst och tar emot åtkomsttoken som används av användarna för att ansluta direkt till kommunikations tjänsterna. När din betrodda tjänst har skapat chatt-tråden och lagt till användare som deltagare kan de använda-klient appen för att ansluta till chatt-tråden och skicka meddelanden. Använd funktionen för aviseringar i real tid, som vi diskuterar nedan, i din klient app för att prenumerera på meddelanden & tråd uppdateringar från andra deltagare.
+    
         
 ## <a name="message-types"></a>Meddelande typer    
 
-Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemgenererade meddelanden som kallas **tråd aktiviteter**. Tråd aktiviteter skapas när en chatt-tråd uppdateras. När du anropar `List Messages` eller `Get Messages` på en chatt-tråd innehåller resultatet de användare-genererade textmeddelandena och system meddelandena i kronologisk ordning. Detta hjälper dig att identifiera när en deltagare lades till eller togs bort eller när chatt-tråd ämnet uppdaterades. Följande meddelande typer stöds:  
-    
- - `Text`: Ett oformaterat textmeddelande som består av och skickas av en användare som en del av en chat-konversation. 
- - `RichText/HTML`: Ett formaterat textmeddelande. Observera att kommunikations tjänst användare för närvarande inte kan skicka RichText-meddelanden. Den här meddelande typen stöds av meddelanden som skickas från Team användare till kommunikations tjänster användare i team interop-scenarier.   
- - `ThreadActivity/ParticipantAdded`: Ett system meddelande som anger att en eller flera deltagare har lagts till i chatt-tråden. Exempel: 
+Som en del av meddelande historiken delar chatten användarspecifika meddelanden och meddelanden som genereras av systemet. System meddelanden genereras när en chatt-tråd uppdateras och kan hjälpa dig att identifiera när en deltagare har lagts till eller tagits bort eller när chatt-tråd ämnet uppdaterades. När du anropar `List Messages` eller `Get Messages` på en chatt-tråd kommer resultatet att innehålla båda typerna av meddelanden i kronologisk ordning.
+
+För användardefinierade meddelanden kan meddelande typen anges i `SendMessageOptions` när ett meddelande skickas till en chatt-tråd. Om inget värde anges, kommer kommunikations tjänsterna att ange det som standard `text` . Det är viktigt att ställa in det här värdet när du skickar HTML. När `html` anges används innehållet i kommunikations tjänsterna för att säkerställa att det återges säkert på klient enheter.
+ - `text`: Ett oformaterat textmeddelande som består av och skickas av en användare som en del av en chatt-tråd. 
+ - `html`: Ett formaterat meddelande med HTML, sammansatt och skickat av en användare som en del av chatt-tråden. 
+
+Typer av system meddelanden: 
+ - `participantAdded`: System meddelande som anger att en eller flera deltagare har lagts till i chatt-tråden.
+ - `participantRemoved`: System meddelande som anger att en deltagare har tagits bort från chatt-tråden.
+ - `topicUpdated`: System meddelande som anger tråd ämnet har uppdaterats.
+
+## <a name="real-time-notifications"></a>Meddelanden i real tid  
+
+Vissa SDK: er (t. ex. java script Chat SDK) stöder meddelanden i real tid. Med den här funktionen kan klienter Lyssna på kommunikations tjänster för uppdateringar och inkommande meddelanden i real tid till en chatt-tråd utan att behöva avsöka API: erna. Klient programmet kan prenumerera på följande händelser:
+ - `chatMessageReceived` – När ett nytt meddelande skickas till en chatt-tråd av en deltagare.
+ - `chatMessageEdited` – När ett meddelande redige ras i en chatt-tråd. 
+ - `chatMessageDeleted` – När ett meddelande tas bort i en chatt-tråd.   
+ - `typingIndicatorReceived` – När en annan deltagare skickar en Skriv indikator till chatt-tråden.    
+ - `readReceiptReceived` – När en annan deltagare skickar ett Läs kvitto för ett meddelande som de har läst.  
+ - `chatThreadCreated` – När en chatt-tråd skapas av en kommunikations tjänst användare.    
+ - `chatThreadDeleted` – När en chatt-tråd tas bort av en kommunikations tjänst användare.    
+ - `chatThreadPropertiesUpdated` – När egenskaper för chat-trådar uppdateras. för närvarande stöds bara uppdaterings avsnittet för tråden. 
+ - `participantsAdded` – När en användare läggs till som en deltagare i en chatt-tråd.     
+ - `participantsRemoved` – När en befintlig deltagare tas bort från chatt-tråden.
+
+Meddelanden i real tid kan användas för att tillhandahålla en chat-upplevelse i real tid för dina användare. Om du vill skicka push-meddelanden för meddelanden som missats av användarna medan de var borta, integreras kommunikations tjänsterna med Azure Event Grid för att publicera Chat-relaterade händelser (post åtgärd) som kan anslutas till din anpassade app Notification Service. Mer information finns i [Server händelser](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
 
-``` 
-{   
-            "id": "1613589626560",  
-            "type": "participantAdded", 
-            "sequenceId": "7",  
-            "version": "1613589626560", 
-            "content":  
-            {   
-                "participants": 
-                [   
-                    {   
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
-                        "displayName": "Jane",  
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
-                    }   
-                ],  
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:26Z" 
-        }   
-``` 
+## <a name="build-intelligent-ai-powered-chat-experiences"></a>Bygg intelligenta, AI-baserade chatt upplevelser   
 
-- `ThreadActivity/ParticipantRemoved`: System meddelande som anger att en deltagare har tagits bort från chatt-tråden. Exempel:  
-
-``` 
-{   
-            "id": "1613589627603",  
-            "type": "participantRemoved",   
-            "sequenceId": "8",  
-            "version": "1613589627603", 
-            "content":  
-            {   
-                "participants": 
-                [   
-                    {   
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
-                        "displayName": "Jane",  
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
-                    }   
-                ],  
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:27Z" 
-        }   
-``` 
-
-- `ThreadActivity/TopicUpdate`: System meddelande som anger tråd ämnet har uppdaterats. Exempel:   
-``` 
-{   
-            "id": "1613589623037",  
-            "type": "topicUpdated", 
-            "sequenceId": "2",  
-            "version": "1613589623037", 
-            "content":  
-            {   
-                "topic": "New topic",   
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:23Z" 
-        }   
-``` 
-
-## <a name="real-time-signaling"></a>Real tids signalering  
-
-I Chat-JavaScript SDK ingår real tids signalering. Detta gör det möjligt för klienter att lyssna efter uppdateringar och inkommande meddelanden i real tid till en chatt-tråd utan att behöva avsöka API: erna. Tillgängliga händelser är:
-
- - `ChatMessageReceived` – När ett nytt meddelande skickas till en chatt-tråd. Den här händelsen skickas inte för automatiskt genererade system meddelanden som diskuterades i föregående avsnitt.   
- - `ChatMessageEdited` – När ett meddelande redige ras i en chatt-tråd. 
- - `ChatMessageDeleted` – När ett meddelande tas bort i en chatt-tråd.   
- - `TypingIndicatorReceived` – När en annan deltagare skriver ett meddelande i en chatt-tråd.   
- - `ReadReceiptReceived` – När en annan deltagare har läst meddelandet som en användare skickat i en chatt-tråd.     
- - `ChatThreadCreated` – När en chatt-tråd skapas av en kommunikations användare. 
- - `ChatThreadDeleted` – När en chatt-tråd tas bort av en kommunikations användare. 
- - `ChatThreadPropertiesUpdated` – När egenskaper för chat-trådar uppdateras. för närvarande stöder vi bara uppdatering av avsnittet för tråden.   
- - `ParticipantsAdded` – När en användare läggs till som deltagare i en chatt-tråd.  
- - `ParticipantsRemoved` – När en befintlig deltagare tas bort från chatt-tråden.
-
-
-## <a name="chat-events"></a>Chatta händelser  
-
-Med real tids signaler kan användarna chatta i real tid. Dina tjänster kan använda Azure Event Grid för att prenumerera på chatt-relaterade händelser. Mer information finns i [begrepp för händelse hantering](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
-
-
-## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>Använda Cognitive Services med chatt SDK för att aktivera intelligenta funktioner    
-
-Du kan använda [Azure kognitiva API: er](../../../cognitive-services/index.yml) med chatt SDK för att lägga till smarta funktioner i dina program. Du kan till exempel: 
+Du kan använda [Azure kognitiva API: er](../../../cognitive-services/index.yml) med chatt SDK för att bygga användnings fall som:
 
 - Gör det möjligt för användare att chatta med varandra på olika språk.  
-- Hjälp en support agent att prioritera biljetter genom att identifiera ett negativt sentiment av ett inkommande problem från en kund.   
+- Hjälp en support agent att prioritera biljetter genom att identifiera ett negativt sentiment av ett inkommande meddelande från en kund. 
 - Analysera inkommande meddelanden för nyckel identifiering och entitets igenkänning och fråga relevant information till användaren i din app baserat på meddelandets innehåll.
 
 Ett sätt att uppnå detta är genom att låta din betrodda tjänst agera som deltagare i en chatt-tråd. Anta att du vill aktivera översättning av språk. Den här tjänsten ansvarar för att lyssna på meddelanden som utbyts av andra deltagare [1], anropar kognitiva API: er för att översätta innehållet till det önskade språket [2, 3] och skicka det översatta resultatet som ett meddelande i chatt-tråden [4].

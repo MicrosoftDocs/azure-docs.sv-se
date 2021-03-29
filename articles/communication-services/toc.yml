@@ -86,6 +86,10 @@
           href: concepts/telephony-sms/plan-solution.md
         - name: Infrastruktur krav för SIP-gränssnitt
           href: concepts/telephony-sms/sip-interface-infrastructure.md
+        - name: VANLIGA FRÅGOR OCH SVAR OM SMS
+          href: concepts/telephony-sms/sms-faq.md
+        - name: Meddelande princip
+          href: concepts/telephony-sms/messaging-policy.md
     - name: Röst- och videosamtal
       items:
         - name: Översikt över samtals-SDK

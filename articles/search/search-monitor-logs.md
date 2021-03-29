@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592470"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709947"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Samla in och analysera loggdata för Azure Kognitiv sökning
 
-Diagnostik-eller drift loggar ger inblick i de detaljerade åtgärderna i Azure Kognitiv sökning och är användbara för övervakning av tjänst-och arbets belastnings processer. Internt finns det en del system information på Server delen under en kort tids period, tillräckligt för undersökning och analys om du använder ett support ärende. Men om du vill använda självbetjäning för operativa data bör du konfigurera en diagnostisk inställning för att ange var loggnings information samlas in.
+Diagnostik-eller drift loggar ger inblick i de detaljerade åtgärderna i Azure Kognitiv sökning och är användbara för övervakning av tjänst-och arbets belastnings processer. Internt bevarar Microsoft bevarar system information på Server delen under en kort tids period (cirka 30 dagar), tillräckligt för undersökning och analys om du använder ett support ärende. Men om du vill ha ägarskap över drift data bör du konfigurera en diagnostisk inställning för att ange var loggnings information samlas in.
 
 Diagnostisk loggning aktive ras genom integrering med [Azure Monitor](../azure-monitor/index.yml). 
 
@@ -76,14 +76,14 @@ Två tabeller innehåller loggar och mått för Azure Kognitiv sökning: **Azure
 
 1. Ange följande fråga för att returnera en tabell resultat uppsättning.
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. Upprepa föregående steg, som börjar med **AzureDiagnostics** , för att returnera alla kolumner i informations syfte, följt av en mer selektiv fråga som hämtar mer intressant information.
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ Om du har aktiverat diagnostikloggning kan du fråga **AzureDiagnostics** efter 
 
 Returnera en lista över åtgärder och antal var och en.
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 Korrelera förfrågan med indexerings åtgärder och återge data punkter i ett tids diagram för att se att åtgärderna är sammanfallna.
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 Loggade händelser som registrerats av Azure Monitor inkluderar de som är relaterade till indexering och frågor. **AzureDiagnostics** -tabellen i Log Analytics samlar in drift data som rör frågor och indexering.
 
-| OperationName | Beskrivning |
+| OperationName | Description |
 |---------------|-------------|
 | ServiceStats | Den här åtgärden är ett rutin anrop för att [Hämta tjänst statistik](/rest/api/searchservice/get-service-statistics), antingen kallat direkt eller implicit för att fylla i en portal översikts sida när den läses in eller uppdateras. |
 | Fråga. search |  Fråga begär Anden mot ett index se [övervaka frågor](search-monitor-queries.md) för information om loggade frågor.|

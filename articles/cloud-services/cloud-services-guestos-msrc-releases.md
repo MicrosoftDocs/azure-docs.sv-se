@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/12/2021
+ms.date: 3/28/2021
 ms.author: gunnarc
-ms.openlocfilehash: 8cdec61b971e7028326a22ac7f7bd6046376427b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: c9a4a5229629b2a65b167a80fce8e502612dcf3c
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559119"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709913"
 ---
 # <a name="azure-guest-os"></a>Azure gäst operativ system
 Följande tabeller visar de uppdateringar av Microsoft Security Response Center (MSRC) som tillämpas på Azures gäst operativ system. Sök i den här artikeln för att avgöra om en viss uppdatering gäller det gäst operativ system som du använder. Uppdateringar överför alltid den specifika [familj][family-explain] som de introducerades i.
 
 ## <a name="march-2021-guest-os"></a>Mars 2021 gäst operativ system
 
->[!NOTE] 
-
->Den distribuerade gäst operativ systemet distribueras för närvarande till virtuella datorer i moln tjänsten som har kon figurer ATS för automatiska uppdateringar. När distributionen är klar görs den här versionen tillgänglig för manuella uppdateringar via Azure Portal-och konfigurationsfiler. Följande korrigeringsfiler ingår i mars gäst operativ systemet. Den här listan kan ändras. 
 
 | Produktkategori | Överordnad KB-artikel | Beskrivning av sårbarhet | Gästoperativsystem | Datum för första gången |
 | --- | --- | --- | --- | --- |
-|  Rel 21-03 |  [5000822]  |  Senaste kumulativa uppdateringen (LCU) | 6,29 | Mar 9, 2021 |
-|  Rel 21-03 |  [4580325]  |  Uppdatera Flash | 3,95, 4,88, 5,53, 6,29 | 13 oktober 2020 |
-|  Rel 21-03 |  [5000800]  |  Kumulativa uppdateringar för IE | 2,108, 3,95, 4,88 | Mar 9, 2021 |
-|  Rel 21-03 |  [5000803]  |  Senaste kumulativa uppdateringen (LCU) | 5,53 | Mar 9, 2021 |
-|  Rel 21-03 |  [4578952]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning  | 2,108 | 13 oktober 2020 |
-|  Rel 21-03 |  [4578955]  |  .NET Framework 4.5.2 säkerhet och kvalitet  | 2,108 | 13 oktober 2020 |
-|  Rel 21-03 |  [4578953]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning  | 4,88 | 13 oktober 2020 |
-|  Rel 21-03 |  [4578956]  |  .NET Framework 4.5.2 säkerhet och kvalitet  | 4,88 | 13 oktober 2020 |
-|  Rel 21-03 |  [4578950]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning  | 3,95 | 13 oktober 2020 |
-|  Rel 21-03 |  [4578954]  |  . NET Framework 4.5.2 säkerhet och kvalitets sammanslagning  | 3,95 | 13 oktober 2020 |
-|  Rel 21-03 |  [4601060]  |  . NET Framework 3,5 och 4.7.2 Cumulative Update  | 6,29 | Feb 9, 2021 |
-|  Rel 21-03 |  [5000841]  |  Månatlig sammanställning  | 2,108 | Mar 9, 2021 |
-|  Rel 21-03 |  [5000847]  |  Månatlig sammanställning  | 3,95 | Mar 9, 2021 |
-|  Rel 21-03 |  [5000848]  |  Månatlig sammanställning  | 4,88 | Mar 9, 2021 |
-|  Rel 21-03 |  [4566426]  |  Uppdatering av underhålls stack  | 3,95 | 14 juli 2020 |
-|  Rel 21-03 |  [4566425]  |  Uppdatering av underhålls stack  | 4,88 | 14 juli 2020 |
-|  Rel 21-03 OOB |  [4578013]  |  Fristående säkerhets uppdatering  | 4,88 | Aug 19, 2020 |
-|  Rel 21-03 |  [4592510]  |  Uppdatering av underhålls stack  | 2,108 | Dec 8, 2020 |
-|  Rel 21-03 |  [5000859]  |  Uppdatering av underhålls stack  | 6,29 | Mar 9, 2021 |
-|  Rel 21-03 |  [4494175]  |  Microcode  | 5,53 | Sep 1, 2020 |
-|  Rel 21-03 |  [4494174]  |  Microcode  | 6,29 | Sep 1, 2020 |
+|  Rel 21-03 |  [5000822]  |  Senaste kumulativa uppdateringen (LCU) | [6,29] | Mar 9, 2021 |
+|  Rel 21-03 |  [4580325]  |  Uppdatera Flash | [3,95], [4,88], [5,53], [6,29] | 13 oktober 2020 |
+|  Rel 21-03 |  [5000800]  |  Kumulativa uppdateringar för IE | [2,108], [3,95], [4,88] | Mar 9, 2021 |
+|  Rel 21-03 |  [5000803]  |  Senaste kumulativa uppdateringen (LCU) | [5,53] | Mar 9, 2021 |
+|  Rel 21-03 |  [4578952]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning  | [2,108] | 13 oktober 2020 |
+|  Rel 21-03 |  [4578955]  |  .NET Framework 4.5.2 säkerhet och kvalitet  | [2,108] | 13 oktober 2020 |
+|  Rel 21-03 |  [4578953]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning  | [4,88] | 13 oktober 2020 |
+|  Rel 21-03 |  [4578956]  |  .NET Framework 4.5.2 säkerhet och kvalitet  | [4,88] | 13 oktober 2020 |
+|  Rel 21-03 |  [4578950]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning  | [3,95] | 13 oktober 2020 |
+|  Rel 21-03 |  [4578954]  |  . NET Framework 4.5.2 säkerhet och kvalitets sammanslagning  | [3,95] | 13 oktober 2020 |
+|  Rel 21-03 |  [4601060]  |  . NET Framework 3,5 och 4.7.2 Cumulative Update  | [6,29] | Feb 9, 2021 |
+|  Rel 21-03 |  [5000841]  |  Månatlig sammanställning  | [2,108] | Mar 9, 2021 |
+|  Rel 21-03 |  [5000847]  |  Månatlig sammanställning  | [3,95] | Mar 9, 2021 |
+|  Rel 21-03 |  [5000848]  |  Månatlig sammanställning  | [4,88] | Mar 9, 2021 |
+|  Rel 21-03 |  [4566426]  |  Uppdatering av underhålls stack  | [3,95] | 14 juli 2020 |
+|  Rel 21-03 |  [4566425]  |  Uppdatering av underhålls stack  | [4,88] | 14 juli 2020 |
+|  Rel 21-03 OOB |  [4578013]  |  Fristående säkerhets uppdatering  | [4,88] | Aug 19, 2020 |
+|  Rel 21-03 |  [4592510]  |  Uppdatering av underhålls stack  | [2,108] | Dec 8, 2020 |
+|  Rel 21-03 |  [5000859]  |  Uppdatering av underhålls stack  | [6,29] | Mar 9, 2021 |
+|  Rel 21-03 |  [4494175]  |  Microcode  | [5,53] | Sep 1, 2020 |
+|  Rel 21-03 |  [4494174]  |  Microcode  | [6,29] | Sep 1, 2020 |
 
 [5000822]: https://support.microsoft.com/kb/5000822
 [4580325]: https://support.microsoft.com/kb/4580325
@@ -73,7 +70,11 @@ Följande tabeller visar de uppdateringar av Microsoft Security Response Center 
 [5000859]: https://support.microsoft.com/kb/5000859
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
-
+[2,108]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,95]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,88]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,53]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,29]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="february-2021-guest-os"></a>Gäst operativ system februari 2021
 

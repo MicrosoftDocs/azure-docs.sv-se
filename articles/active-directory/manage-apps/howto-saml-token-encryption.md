@@ -15,12 +15,12 @@ ms.date: 03/13/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32a6034f407bd81e5d2d2ab8227d08a67f034d4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: af5329f33cc4cbaa3309450165e657fc829c828b
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258650"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709505"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Gör så här: Konfigurera Azure AD SAML-token-kryptering
 
@@ -124,7 +124,7 @@ När du konfigurerar en inloggnings information med Graph, PowerShell eller i pr
 
 1. Använd den senaste Azure AD PowerShell-modulen för att ansluta till din klient organisation.
 
-1. Ange krypterings inställningarna för token med kommandot **[set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
+1. Ange krypterings inställningarna för token med kommandot **[set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview&preserve-view=true)** .
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>

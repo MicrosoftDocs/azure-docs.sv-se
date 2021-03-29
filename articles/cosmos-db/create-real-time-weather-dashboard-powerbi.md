@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73251fcbe9f149979d3fd62d14bbca86d77027f2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101657544"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640141"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Skapa en instrument panel i real tid med hjälp av Azure Cosmos DB och Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -72,7 +72,7 @@ Konfigurera en pipeline för inmatning för att läsa in [väder data](https://c
    
    |Egenskap  |Datatyp  |Filtrera  |
    |---------|---------|---------|
-   |_ts     |   Numerisk      |  [_ts] > varaktighet. TotalSeconds (rang-The-#datetime (1970, 1,0) och [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 0, 0)))       |
+   |_ts        |   Numerisk      |  [_ts] > varaktighet. TotalSeconds (rang-The-#datetime (1970, 1,0) och [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 0, 0)))       |
    |Datum (till exempel:-2019-08-19)     |   Sträng      | [Document. Date] > DateTime. ToText (rang, "åååå-MM-DD") och [Document. Date] < DateTime. ToText (RangeEnd, "åååå-MM-DD")        |
    |Datum (till exempel:-2019-08-11 12:00:00)   |  Sträng       |  [Document. Date] > DateTime. ToText (rang, "åååå-mm-dd HH: mm: SS") och [Document. Date] < DateTime. ToText (RangeEnd, "åååå-mm-dd HH: mm: SS")       |
 
@@ -100,7 +100,7 @@ Konfigurera en pipeline för inmatning för att läsa in [väder data](https://c
 
 1. **Skapa ett nytt Azure Analysis Services-kluster**  -  [Skapa en instans av Azure Analysis Services](../analysis-services/analysis-services-create-server.md) i samma region som Azure Cosmos-kontot och Databricks-klustret.
 
-1. **Skapa ett nytt Analysis Services tabell projekt i Visual Studio**  -   [Installera SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true) och skapa ett Analysis Services tabell projekt i Visual Studio.
+1. **Skapa ett nytt Analysis Services tabell projekt i Visual Studio**  -   [Installera SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) och skapa ett Analysis Services tabell projekt i Visual Studio.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Skapa Azure Analysis Services-projekt":::
 

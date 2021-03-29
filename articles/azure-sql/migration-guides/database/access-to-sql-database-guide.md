@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 48fe734b382d661f96a86ede181a1258e38120a1
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626545"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643584"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Guide för migrering: åtkomst till Azure SQL Database
 
@@ -171,7 +171,7 @@ Mer hjälp om hur du slutför det här scenariot för migrering finns i följand
 | --- | --- |
 | [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Tillhandahåller rekommenderade "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för angivna arbets belastningar. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla en automatiserad, enhetlig besluts process för mål plattform. |
 
-Data SQL Engineering-teamet utvecklade den här resursen. Teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
+Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
 
 ## <a name="next-steps"></a>Nästa steg
 

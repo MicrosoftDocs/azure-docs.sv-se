@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580055"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709760"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planera en distribution av Azure AD-programproxy
 
@@ -172,7 +172,7 @@ Stegen för att distribuera programproxyn beskrivs i den här [självstudien fö
 
 Publicerings program förutsätter att du har uppfyllt alla krav och att du har flera kopplingar som visas som registrerade och aktiva på sidan Application Proxy.
 
-Du kan också publicera program med hjälp av [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview).
+Du kan också publicera program med hjälp av [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true).
 
 Nedan följer några metod tips som du bör följa när du publicerar ett program:
 

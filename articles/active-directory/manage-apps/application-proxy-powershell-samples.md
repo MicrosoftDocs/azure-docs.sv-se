@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566659"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709488"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-exempel för Azure AD-programproxy
 
@@ -26,13 +26,13 @@ Följande tabell innehåller länkar till exempel på PowerShell-skript för Azu
 
 Mer information om de cmdlets som används i de här exemplen finns i [Application Management](/powershell/module/azuread/#application_proxy_application_management) och Application [proxy Connector Management](/powershell/module/azuread/#application_proxy_connector_management).
 
-| Länk | Beskrivning |
+| Länk | Description |
 |---|---|
 |**Application Proxy-appar**||
 | [Visa en lista med grundläggande information om alla Application Proxy-appar](scripts/powershell-get-all-app-proxy-apps-basic.md) | Visar grundläggande information (AppId, DisplayName, ObjId) om alla Application Proxy-appar i din katalog. |
 | [Visa utökad information för alla Application Proxy-appar](scripts/powershell-get-all-app-proxy-apps-extended.md) | Visar utökad information (AppId, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) om alla Application Proxy-appar i din katalog.  |
 | [Visa en lista över alla Application Proxy-appar per anslutnings grupp](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Visar information om alla Application Proxy-appar i din katalog och vilka anslutnings grupper som apparna är tilldelade till. |
-| [Hämta alla Application Proxy-appar med en livs längd princip för token](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Visar en lista över alla Application Proxy-appar i din katalog med en livs längd princip för token och dess information. Det här exemplet kräver [för hands versionen av AzureAD v2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview). |
+| [Hämta alla Application Proxy-appar med en livs längd princip för token](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Visar en lista över alla Application Proxy-appar i din katalog med en livs längd princip för token och dess information. Det här exemplet kräver [för hands versionen av AzureAD v2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true). |
 |**Anslutningsgrupper**||
 | [Hämta alla kopplings grupper och anslutningar i katalogen](scripts/powershell-get-all-connectors.md) | Visar en lista över alla kopplings grupper och anslutningar i din katalog. |
 | [Flytta alla appar som är kopplade till en anslutnings grupp till en annan anslutnings grupp](scripts/powershell-move-all-apps-to-connector-group.md) | Flyttar alla program som är kopplade till en kopplings grupp till en annan kopplings grupp. |

@@ -1,24 +1,21 @@
 ---
-title: Felsöka Övervakare för för hands version av Windows Virtual Desktop – Azure
+title: Felsöka övervakare av Windows Virtual Desktop – Azure
 description: Fel sökning av problem med Azure Monitor för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a07d7536d3d71b121c1dde761d8c290b8be01fe7
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: dda58868432248fe93a9fbc83d1e538dfc9b61ba
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628466"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709454"
 ---
-# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Felsöka Azure Monitor för Windows Virtual Desktop (för hands version)
+# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Felsöka Azure Monitor för virtuella Windows-datorer
 
->[!IMPORTANT]
->Azure Monitor för det virtuella Windows-skrivbordet är för närvarande en offentlig för hands version. Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Den här artikeln visar kända problem och lösningar för vanliga problem i Azure Monitor för Windows Virtual Desktop (för hands version).
+Den här artikeln visar kända problem och lösningar för vanliga problem i Azure Monitor för virtuella Windows-datorer.
 
 ## <a name="issues-with-configuration-and-setup"></a>Problem med konfiguration och installation
 

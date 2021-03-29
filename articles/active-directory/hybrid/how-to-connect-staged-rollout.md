@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176866"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709726"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrera till molnbaserad autentisering med stegvis distribution (för hands version)
 
@@ -98,7 +98,7 @@ Följande scenarier stöds inte för stegvis distribution:
 
 Om du vill testa inloggningen för *lösen ords-hash-synkronisering* med hjälp av stegvis distribution följer du anvisningarna i nästa avsnitt.
 
-Information om vilka PowerShell-cmdletar som ska användas finns i för [hands versionen av Azure AD 2,0](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Information om vilka PowerShell-cmdletar som ska användas finns i för [hands versionen av Azure AD 2,0](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>För arbete för synkronisering av lösen ords-hash
 
@@ -251,9 +251,9 @@ A: Nej, den här funktionen är utformad för att testa molnbaserad autentiserin
 
 **F: kan jag använda PowerShell för att utföra stegvis distribution?**
 
-S: Ja. Information om hur du använder PowerShell för att utföra stegvis distribution finns i [Azure AD Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+S: Ja. Information om hur du använder PowerShell för att utföra stegvis distribution finns i [Azure AD Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="next-steps"></a>Nästa steg
-- [Azure AD 2,0-förhandsgranskning](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0-förhandsgranskning](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [Ändra inloggnings metoden till hash-synkronisering av lösen ord](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [Ändra inloggnings metod till direktautentisering](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83bf6b6123cf7e0d57296f1f344a264c8a18ed77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3dd2a618f22036fd0826a99207d83a3add390c7d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671061"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645330"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Konfigurera hög tillgänglighet i SUSE med hjälp av STONITH
 Det här dokumentet innehåller detaljerade steg-för-steg-instruktioner för att konfigurera hög tillgänglighet på ett SUSEt operativ system med hjälp av STONITH-enheten.
@@ -540,7 +540,7 @@ Efter den föregående korrigeringen ska NOD2 läggas till i klustret
 ## <a name="10-general-documentation"></a>10. Allmän dokumentation
 Du hittar mer information om SUSE HA-installationen i följande artiklar: 
 
-- [Optimerat scenario för SAP HANA SR-prestanda](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
+- [Optimerat scenario för SAP HANA SR-prestanda](https://www.suse.com/support/kb/doc/?id=000019450 )
 - [Lagring-baserad staket](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
 - [Blogg – använda pacemaker-kluster för SAP HANA-del 1](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
 - [Blogg – använda pacemaker-kluster för SAP HANA del 2](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)

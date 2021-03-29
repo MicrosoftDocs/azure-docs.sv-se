@@ -1,24 +1,21 @@
 ---
-title: Använd Övervakare för övervakning av virtuella Windows-datorer – Azure
+title: Använd övervaka Windows Virtual Desktop Monitor – Azure
 description: Använda Azure Monitor för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1c87763cb2ca482fc8ee15588d7287f0d9275fff
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627174"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709556"
 ---
-# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Använd Azure Monitor för virtuella Windows-datorer för att övervaka distributionen (för hands version)
+# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Använd Azure Monitor för virtuella Windows-datorer för att övervaka distributionen
 
->[!IMPORTANT]
->Azure Monitor för det virtuella Windows-skrivbordet är för närvarande en offentlig för hands version. Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Azure Monitor för Windows Virtual Desktop (för hands version) är en instrument panel som bygger på Azure Monitor arbets böcker som hjälper IT-proffs att förstå sina Windows-miljöer för virtuella datorer. Den här artikeln beskriver hur du konfigurerar Azure Monitor för virtuella Windows-datorer för att övervaka dina Windows-miljöer för virtuella skriv bord.
+Azure Monitor för virtuella Windows-datorer är en instrument panel som bygger på Azure Monitor arbets böcker som hjälper IT-proffs att förstå sina Windows-miljöer för virtuella datorer. Det här avsnittet beskriver hur du konfigurerar Azure Monitor för virtuella Windows-datorer för att övervaka dina Windows-miljöer för virtuella skriv bord.
 
 ## <a name="requirements"></a>Krav
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa224a09317aafd49ae10c89ae0c50455ddd4602
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592376"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709930"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Övervaka åtgärder och aktiviteter i Azure Kognitiv sökning
 
@@ -38,9 +38,9 @@ På följande skärm bild kan du hitta övervaknings information i portalen. Dat
 
 * Fliken **övervakning** på sidan huvud översikt visar fråga volym, svars tid och om tjänsten är under tryck.
 * **Aktivitets loggen** i det vänstra navigerings fönstret är ansluten till Azure Resource Manager. Aktivitets logg rapporter om åtgärder som utförs av Resource Manager: tjänstens tillgänglighet och status, ändringar av kapacitet (repliker och partitioner) och API-relaterade aktiviteter.
-* **Övervaknings** inställningar, mer om, innehåller konfigurerbara aviseringar, mått och diagnostikloggar. Skapa dem när du behöver dem. När data har samlats in och lagrats kan du fråga eller visualisera informationen för insikter.
+* **Övervaknings** inställningar, mer om, innehåller konfigurerbara aviseringar, statistik visualisering och diagnostikloggar. Skapa dem när du behöver dem. När data har samlats in och lagrats kan du fråga eller visualisera informationen för insikter.
 
-![Azure Monitor integrering i en Sök tjänst](./media/search-monitor-usage/azure-monitor-search.png
+  ![Azure Monitor integrering i en Sök tjänst](./media/search-monitor-usage/azure-monitor-search.png
  "Azure Monitor integrering i en Sök tjänst")
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Monitor har en egen fakturerings struktur och diagnostiska loggar som refe
 
 ## <a name="monitor-user-access"></a>Övervaka användar åtkomst
 
-Eftersom Sök index är en komponent i ett större klient program finns det ingen inbyggd metod för att styra eller övervaka åtkomst till ett index per användare. Förfrågningar antas komma från ett klient program, för antingen administratörs-eller fråge förfrågningar. Administratörens Läs-och skriv åtgärder omfattar att skapa, uppdatera och ta bort objekt i hela tjänsten. Skrivskyddade åtgärder är frågor mot dokument samlingen som är begränsade till ett enda index. 
+Eftersom Sök index är en komponent i ett större klient program finns det ingen inbyggd metod för att styra eller övervaka åtkomst till ett index per användare. Begär Anden antas komma från ett klient program som visar antingen en administratör eller en förfrågan. Administratörens Läs-och skriv åtgärder omfattar att skapa, uppdatera och ta bort objekt i hela tjänsten. Skrivskyddade åtgärder är frågor mot dokument samlingen som är begränsade till ett enda index. 
 
 Det du ser i aktivitets loggarna är till exempel referenser till anrop med hjälp av administratörs nycklar eller frågeinställningar. Lämplig nyckel ingår i begär Anden som härstammar från klient koden. Tjänsten är inte utrustad för att hantera identitets-tokens eller personifiering.
 

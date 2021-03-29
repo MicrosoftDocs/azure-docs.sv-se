@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585413"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641976"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Säkerhets tjänster och tekniker som är tillgängliga i Azure
 
@@ -59,8 +59,8 @@ Med tiden kommer den här listan att ändras och växa, precis som Azure gör. S
 | [Azure &nbsp; SQL- &nbsp; brandvägg](../../azure-sql/database/firewall-configure.md)|En funktion för nätverks åtkomst kontroll som skyddar mot nätverksbaserade attacker till databasen. |
 |[Kryptering av Azure &nbsp; SQL- &nbsp; cellnivå &nbsp;](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| En databas säkerhets teknik som tillhandahåller kryptering på en detaljerad nivå.  |
 | [Kryptering av Azure &nbsp; SQL- &nbsp; anslutning](../../azure-sql/database/logins-create-manage.md)|För att erbjuda säkerhet, kontrollerar SQL Database åtkomsten med hjälp av brandväggsregler som begränsar anslutning efter IP-adress, autentiseringsmekanismer kräver att användare bevisar sin identitet och auktoriseringsmekanismer begränsar användare till specifika åtgärder och data. |
-| [Azure SQL Always Encryption](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Skyddar känsliga data, t. ex. kreditkorts nummer eller nationella identifierings nummer (t. ex. amerikanskt socialförsäkrings nummer) som lagras i Azure SQL Database-eller SQL Server-databaser.  |
-| [Azure &nbsp; SQL- &nbsp; Transparent datakryptering](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| En databas säkerhets funktion som krypterar lagringen av en hel databas. |
+| [Azure SQL Always Encryption](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|Skyddar känsliga data, t. ex. kreditkorts nummer eller nationella identifierings nummer (t. ex. amerikanskt socialförsäkrings nummer) som lagras i Azure SQL Database-eller SQL Server-databaser.  |
+| [Azure &nbsp; SQL- &nbsp; Transparent datakryptering](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)| En databas säkerhets funktion som krypterar lagringen av en hel databas. |
 | [Azure SQL Database granskning](../../azure-sql/database/auditing-overview.md)|En databas gransknings funktion som spårar databas händelser och skriver dem till en Gransknings logg på ditt Azure Storage-konto.  |
 
 

@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018349"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709471"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurera GPU-acceleration (grafikprocessoracceleration) för Windows Virtual Desktop
 
@@ -23,10 +23,10 @@ Följ anvisningarna i den här artikeln för att skapa en GPU-optimerad virtuell
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Välj en lämplig GPU-optimerad storlek för virtuell Azure-dator
 
-Välj en av Azures storlekar för [NV-serien](../virtual-machines/nv-series.md), [NVv3-serien](../virtual-machines/nvv3-series.md)eller [NVv4-serien](../virtual-machines/nvv4-series.md) . De är skräddarsydda för app-och skriv bords virtualisering och aktiverar appar och Windows-användargränssnittet för att accelerera GPU. Det rätta valet för din värd pool är beroende av ett antal faktorer, inklusive dina specifika arbets belastningar för appar, önskad kvalitet på användar upplevelsen och kostnad. I allmänhet erbjuder större och mer kompatibla GPU: er en bättre användar upplevelse vid en specifik användar täthet, medan mindre och fraktionerat GPU-storlek ger mer detaljerad kontroll över kostnader och kvalitet.
+Välj en av Azures storlekar för [NV-serien](../virtual-machines/nv-series.md), [NVv3-serien](../virtual-machines/nvv3-series.md)eller [NVv4-serien](../virtual-machines/nvv4-series.md) . De är skräddarsydda för app-och skriv bords virtualisering och gör det möjligt för de flesta appar och Windows-användargränssnittet att accelereras med GPU. Det rätta valet för din värd pool är beroende av ett antal faktorer, inklusive dina specifika arbets belastningar för appar, önskad kvalitet på användar upplevelsen och kostnad. I allmänhet erbjuder större och mer kompatibla GPU: er en bättre användar upplevelse vid en specifik användar täthet, medan mindre och fraktionerat GPU-storlek ger mer detaljerad kontroll över kostnader och kvalitet.
 
 >[!NOTE]
->De virtuella datorerna i Azures NC-, NCv2-, NCv3-, ND-och NDv2-serien är vanligt vis inte lämpliga för Windows virtuella skrivbord-värdar. De här virtuella datorerna är skräddarsydda för specialiserade, högpresterande beräknings-eller maskin inlärnings verktyg, till exempel de som skapats med NVIDIA-CUDA. Allmän app-och skriv bords acceleration med NVIDIA GPU: er kräver NVIDIA GRID-licensiering. Detta tillhandahålls av Azure för de rekommenderade VM-storlekarna men måste ordnas separat för virtuella datorer i NC/ND-serien.
+>De virtuella datorerna i Azures NC-, NCv2-, NCv3-, ND-och NDv2-serien är vanligt vis inte lämpliga för Windows virtuella skrivbord-värdar. De här virtuella datorerna är skräddarsydda för specialiserade, högpresterande beräknings-eller maskin inlärnings verktyg, till exempel de som skapats med NVIDIA-CUDA. De stöder inte GPU-acceleration för de flesta appar eller Windows-användargränssnittet.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Skapa en värdbaserad pool, etablera den virtuella datorn och konfigurera en app-grupp
 
@@ -41,9 +41,10 @@ Du måste också konfigurera en app-grupp eller använda standard gruppen för S
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Installera grafik driv rutiner som stöds på den virtuella datorn
 
-Om du vill dra nytta av GPU-funktionerna i virtuella datorer i Azure N-serien i Windows Virtual Desktop måste du installera lämpliga grafik driv rutiner. Följ instruktionerna i [operativ system och driv rutiner som stöds](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) för att installera driv rutiner från rätt grafik leverantör, antingen manuellt eller med ett tillägg för Azure VM.
+Om du vill dra nytta av GPU-funktionerna i virtuella datorer i Azure N-serien i Windows Virtual Desktop måste du installera lämpliga grafik driv rutiner. Följ instruktionerna i [operativ system och driv rutiner som stöds](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) för att installera driv rutiner. Endast driv rutiner som distribueras med Azure stöds.
 
-Endast driv rutiner som distribueras med Azure stöds för Windows Virtual Desktop. För virtuella datorer i Azure NV-serien med NVIDIA GPU: er är det bara [NVIDIA Grid-drivrutiner](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)och inte NVIDIA-Tesla (CUDA) som stöder GPU-acceleration för appar och skriv bord i generell användning.
+* För virtuella datorer i Azure NV-serien eller NVv3-serien är det bara NVIDIA GRID-drivrutiner och inte NVIDIA CUDA-drivrutiner som stöder GPU-acceleration för de flesta appar och användar gränssnittet i Windows. Om du väljer att installera driv rutiner manuellt ska du se till att installera RUTNÄTs driv rutiner. Om du väljer att installera driv rutiner med hjälp av tillägget Azure VM installeras RUTNÄTs driv rutiner automatiskt för dessa VM-storlekar.
+* För virtuella datorer i Azure NVv4-serien installerar du de AMD-drivrutiner som tillhandahålls av Azure. Du kan installera dem automatiskt med hjälp av tillägget för virtuella Azure-datorer, eller så kan du installera dem manuellt.
 
 Efter installationen av driv rutinen krävs en omstart av datorn. Använd verifierings stegen i ovanstående instruktioner för att bekräfta att grafik driv rutinerna har installerats.
 

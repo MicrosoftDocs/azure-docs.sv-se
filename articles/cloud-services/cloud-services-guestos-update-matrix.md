@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/19/2021
+ms.date: 3/28/2021
 ms.author: gunnarc
-ms.openlocfilehash: f60df0c18368af46c5f2946b5668ac404c1fae90
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0bd0257c3b99e343f1aebba31867f687b522c6fb
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124558"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709573"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure gäst operativ system versioner och SDK-kompatibilitet mat ris
 Innehåller uppdaterad information om de senaste Azure Guest OS-versionerna för Cloud Services. Den här informationen hjälper dig att planera uppgraderings vägen innan ett gäst operativ system är inaktiverat. Om du konfigurerar dina roller så att de använder *automatiska* uppdateringar av gäst operativ system enligt beskrivningen i [Azures uppdaterings inställningar för gäst operativ system][Azure Guest OS Update Settings]är det inte viktigt att du läser den här sidan.
@@ -41,6 +41,9 @@ Innehåller uppdaterad information om de senaste Azure Guest OS-versionerna för
 Är du osäker på hur du uppdaterar ditt gäst operativ system? Kolla [här][cloud updates] .
 
 ## <a name="news-updates"></a>Diskussions grupps uppdateringar
+
+###### <a name="march-28-2021"></a>**28 mars 2021**
+Gäst operativ systemet i mars har släppts. 
 
 ###### <a name="february-19-2021"></a>**19 februari 2021**
 Gäst operativ systemet i februari har släppts. 
@@ -158,8 +161,9 @@ Gäst operativ systemet i september har släppts.
 
 | Konfigurations sträng | Utgivningsdatum | Inaktive rings datum |
 | --- | --- | --- |
+|  WA – GÄST-OS-6.29 _202103-01 |  28 mars 2021  |  Publicera 6,31  |  
 |  WA – GÄST-OS-6.28 _202102-01 |  19 februari 2021  |  Publicera 6,30  |  
-|  WA – GÄST-OS-6.27 _202101-01 |  5 februari 2021  |  Publicera 6,29  |  
+|~~WA – GÄST-OS-6.27 _202101-01~~|  5 februari 2021  |  28 mars 2021  |  
 |~~WA – GÄST-OS-6.26 _202012-01~~|  15 januari 2021  |  19 februari 2021  |  
 |~~WA – GÄST-OS-6.25 _202011-01~~|  19 december 2020  |  5 februari 2021  |  
 |~~WA – GÄST-OS-6.24 _202010-02~~|  17 november 2020  |  15 januari 2021  |  
@@ -199,8 +203,9 @@ Gäst operativ systemet i september har släppts.
 
 | Konfigurations sträng | Utgivningsdatum | Inaktive rings datum |
 | --- | --- | --- |
+|  WA – GÄST-OS-5.53 _202103-01  |  28 mars 2021  |  Publicera 5,55  | 
 |  WA – GÄST-OS-5.52 _202102-01  |  19 februari 2021  |  Publicera 5,54  | 
-|  WA – GÄST-OS-5.51 _202101-01  |  5 februari 2021  |  Publicera 5,53  | 
+|~~WA – GÄST-OS-5.51 _202101-01~~|  5 februari 2021  |  28 mars 2021  | 
 |~~WA – GÄST-OS-5.50 _202012-01~~|  15 januari 2021  |  19 februari 2021  | 
 |~~WA – GÄST-OS-5.49 _202011-01~~|  19 december 2020  |  5 februari 2021  | 
 |~~WA – GÄST-OS-5.48 _202010-02~~|  17 november 2020  |  15 januari 2021  | 
@@ -237,8 +242,9 @@ Gäst operativ systemet i september har släppts.
 
 | Konfigurations sträng | Utgivningsdatum | Inaktive rings datum |
 | --- | --- | --- |
+|  WA – GÄST-OS-4.88 _202103-01  |  28 mars 2021  |  Publicera 4,90  | 
 |  WA – GÄST-OS-4.87 _202102-01  |  19 februari 2021  |  Publicera 4,89  | 
-|  WA – GÄST-OS-4.86 _202101-01  |  5 februari 2021  |  Publicera 4,88  | 
+|~~WA – GÄST-OS-4.86 _202101-01~~|  5 februari 2021  |  28 mars 2021  | 
 |~~WA – GÄST-OS-4.85 _202012-01~~|  15 januari 2021  |  19 februari 2021  | 
 |~~WA – GÄST-OS-4.84 _202011-01~~|  19 december 2020  |  5 februari 2021  | 
 |~~WA – GÄST-OS-4.83 _202010-02~~|  17 november 2020  |  15 januari 2021  | 
@@ -275,8 +281,9 @@ Gäst operativ systemet i september har släppts.
 
 | Konfigurations sträng | Utgivningsdatum | Inaktive rings datum |
 | --- | --- | --- |
+|  WA – GÄST-OS-3.95 _202103-01  |  28 mars 2021  |  Publicera 3,97  |
 |  WA – GÄST-OS-3.94 _202102-01  |  19 februari 2021  |  Publicera 3,96  |
-|  WA – GÄST-OS-3.93 _202101-01  |  5 februari 2021  |  Publicera 3,95  |
+|~~WA – GÄST-OS-3.93 _202101-01~~|  5 februari 2021  |  28 mars 2021  |
 |~~WA – GÄST-OS-3.92 _202012-01~~|  15 januari 2021  |  19 februari 2021  |  
 |~~WA – GÄST-OS-3.91 _202011-01~~|  19 december 2020  |  5 februari 2021  |  
 |~~WA – GÄST-OS-3.90 _202010-02~~|  17 november 2020  |  15 januari 2021  |  
@@ -313,8 +320,9 @@ Gäst operativ systemet i september har släppts.
 
 | Konfigurations sträng | Utgivningsdatum | Inaktive rings datum |
 | --- | --- | --- |
+|  WA – GÄST-OS-2.108 _202103-01  |  28 mars 2021  |  Publicera 2,110  |
 |  WA – GÄST-OS-2.107 _202102-01  |  19 februari 2021  |  Publicera 2,109  |  
-|  WA – GÄST-OS-2.106 _202101-01  |  5 februari 2021  |  Publicera 2,108  |  
+|~~WA – GÄST-OS-2.106 _202101-01~~|  5 februari 2021  |  28 mars 2021  |  
 |~~WA – GÄST-OS-2.105 _202012-01~~|  15 januari 2021  |  19 februari 2021  |  
 |~~WA – GÄST-OS-2.104 _202011-01~~|  19 december 2020  |  5 februari 2021  |  
 |~~WA – GÄST-OS-2.103 _202010-02~~|  17 november 2020  |  15 januari 2021  |  
