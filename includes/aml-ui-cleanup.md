@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,14 +9,14 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "75659888"
 ---
 >[!IMPORTANT]
->Du kan använda de resurser som du har skapat som krav för andra Azure Machine Learning självstudier och instruktions artiklar.
+>Du kan använda de resurser som du har skapat som förutsättningar för andra Azure Machine Learning-självstudier och instruktionsartiklar.
 
 ### <a name="delete-everything"></a>Ta bort allt
 
@@ -36,7 +36,7 @@ Om du tar bort resurs gruppen raderas även alla resurser som du skapade i desig
 
 I designern där du skapade experimentet kan du ta bort enskilda till gångar genom att markera dem och sedan välja knappen **ta bort** .
 
-Beräknings målet som du skapade här *automatiskt skalar automatiskt* till noll noder när det inte används. Den här åtgärden vidtas för att minimera kostnaderna.Gör så här om du vill ta bort beräknings målet:
+Beräknings målet som du skapade här *automatiskt skalar automatiskt* till noll noder när det inte används. Den här åtgärden vidtas för att minimera kostnaderna. Gör så här om du vill ta bort beräknings målet:
 
 ![Ta bort till gångar](./media/aml-ui-cleanup/delete-asset.png)
 
