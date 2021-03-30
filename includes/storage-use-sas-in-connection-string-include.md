@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67187561"
 ---
 Om du har en URL för signatur för delad åtkomst (SAS) som ger dig åtkomst till resurser i ett lagrings konto kan du använda SAS i en anslutnings sträng. Eftersom SAS innehåller den information som krävs för att autentisera begäran, tillhandahåller en anslutnings sträng med en SAS protokollet, tjänst slut punkten och de autentiseringsuppgifter som krävs för att få åtkomst till resursen.

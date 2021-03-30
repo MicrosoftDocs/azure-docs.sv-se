@@ -4,10 +4,10 @@ description: Den här artikeln beskriver de två klient rollerna och de behörig
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75451901"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Rollbaserad åtkomst kontroll för Service Fabric klienter
