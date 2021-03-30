@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 800acddcb3527b9ca16d7fc664c2a3c27b528c25
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107059"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105726708"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -56,7 +56,7 @@ Referera till `azure-communication-chat` paketet med chatt-API: erna i Pom-filen
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.4</version> 
+    <version>1.0.0-beta.7</version> 
 </dependency>
 ```
 
@@ -89,12 +89,17 @@ Läs mer om [chatt-arkitekturen](../../../concepts/chat/concepts.md)
 När du lägger till import instruktionerna ska du bara lägga till importer från com. Azure. Communication. Chat och com. Azure. Communication. chatt. Models-namnrymder, och inte från com. Azure. Communication. chatt. implementation-namnrymden. I app. java-filen som genererades via maven kan du använda följande kod för att börja med:
 
 ```Java
+package com.communication.quickstart;
+
 import com.azure.communication.chat.*;
 import com.azure.communication.chat.models.*;
 import com.azure.communication.common.*;
 import com.azure.core.http.HttpClient;
+import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
+import com.azure.core.http.rest.PagedIterable;
 
 import java.io.*;
+import java.util.*;
 
 public class App
 {
@@ -126,36 +131,51 @@ public class App
 }
 ```
 
-
 ## <a name="start-a-chat-thread"></a>Starta en chatt-tråd
 
 Använd `createChatThread` metoden för att skapa en chatt-tråd.
 `createChatThreadOptions` används för att beskriva tråd förfrågan.
 
-- Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen.
+- Använd `topic` parametern för konstruktorn för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen.
 - Används `participants` för att visa en lista över tråd deltagarna som ska läggas till i tråden. `ChatParticipant` tar användaren som du skapade i snabb starten av [användar åtkomst-token](../../access-tokens.md) .
 
-Svaret `chatThreadClient` används för att utföra åtgärder på den skapade chatten: lägga till deltagare i chatt-tråden, skicka ett meddelande, ta bort ett meddelande, osv. Den innehåller en `chatThreadId` egenskap som är det unika ID: t för chatt-tråden. Egenskapen kan nås av den offentliga metoden. getChatThreadId ().
+`CreateChatThreadResult` är svaret som returnerades från att skapa en chatt-tråd. Den innehåller en `getChatThread()` metod som returnerar det `ChatThread` objekt som kan användas för att hämta tråd klienten som du kan använda `ChatThreadClient` för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. `ChatThread` Objektet innehåller också `getId()` metoden som hämtar trådens unika ID.
 
 ```Java
-List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
-
 ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
-    
+
 ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions("Topic")
+    .addParticipant(firstThreadParticipant)
+    .addParticipant(secondThreadParticipant);
 
-CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
-    .setTopic("Topic")
-    .setParticipants(participants);
-ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
-String chatThreadId = chatThreadClient.getChatThreadId();
+CreateChatThreadResult result = chatClient.createChatThread(createChatThreadOptions);
+String chatThreadId = result.getChatThread().getId();
+```
+
+## <a name="list-chat-threads"></a>Visa lista över Chat-trådar
+
+Använd `listChatThreads` metoden för att hämta en lista över befintliga chatt trådar.
+
+```java
+PagedIterable<ChatThreadItem> chatThreads = chatClient.listChatThreads();
+
+chatThreads.forEach(chatThread -> {
+    System.out.printf("ChatThread id is %s.\n", chatThread.getId());
+});
+```
+
+## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
+
+`getChatThreadClient`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. `chatThreadId` är det unika ID: t för den befintliga chatt tråden.
+
+```Java
+ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Skicka ett meddelande till en chatt-tråd
@@ -179,84 +199,66 @@ SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendC
 String chatMessageId = sendChatMessageResult.getId();
 ```
 
-
-## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
-
-`getChatThreadClient`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. `chatThreadId` är det unika ID: t för den befintliga chatt tråden.
-
-```Java
-String chatThreadId = "Id";
-ChatThread chatThread = chatClient.getChatThread(chatThreadId);
-```
-
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Ta emot Chat-meddelanden från en chatt-tråd
 
 Du kan hämta Chat-meddelanden genom att avsöka `listMessages` metoden på chatt-trådens klient vid angivna intervall.
 
 ```Java
-chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
-    System.out.printf("Response headers are %s. Url %s  and status code %d %n", resp.getHeaders(),
-        resp.getRequest().getUrl(), resp.getStatusCode());
-    resp.getItems().forEach(message -> {
-        System.out.printf("Message id is %s.", message.getId());
-    });
+chatThreadClient.listMessages().forEach(message -> {
+    System.out.printf("Message id is %s.\n", message.getId());
 });
 ```
 
 `listMessages` Returnerar den senaste versionen av meddelandet, inklusive eventuella ändringar eller borttagningar som hände i meddelandet med hjälp av. editMessage () och. deleteMessage (). För borttagna meddelanden `chatMessage.getDeletedOn()` returnerar ett datetime-värde som anger när meddelandet togs bort. För redigerade meddelanden `chatMessage.getEditedOn()` returnerar en datetime som anger när meddelandet redigerades. Det går att komma åt den ursprungliga tiden för att skapa meddelanden med `chatMessage.getCreatedOn()` , och det kan användas för att ordna meddelandena.
 
-`listMessages` returnerar olika typer av meddelanden som kan identifieras av `chatMessage.getType()` . Dessa typer är:
+Läs mer om meddelande typer här: [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
-- `text`: Vanligt chatt-meddelande som skickas av en tråd deltagare.
+## <a name="send-read-receipt"></a>Skicka Läs kvitto
 
-- `html`: HTML chat-meddelande som skickats av en tråd deltagare.
+Använd `sendReadReceipt` metoden för att skicka en Läs inläsnings händelse till en chatt-tråd för en användares räkning.
+`chatMessageId` är det unika ID: t för det chatt meddelande som lästes.
 
-- `topicUpdated`: System meddelande som anger att ämnet har uppdaterats.
+```Java
+String chatMessageId = message.getId();
+chatThreadClient.sendReadReceipt(chatMessageId);
+```
 
-- `participantAdded`: System meddelande som anger att en eller flera deltagare har lagts till i chatt-tråden.
+## <a name="list-chat-participants"></a>Visa lista över Chat-deltagare
 
-- `participantRemoved`: System meddelande som anger att en deltagare har tagits bort från chatt-tråden.
+Används `listParticipants` för att hämta en sida-samling som innehåller deltagarna i den chatt-tråd som identifieras av chatThreadId.
 
-Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
+```Java
+PagedIterable<ChatParticipant> chatParticipantsResponse = chatThreadClient.listParticipants();
+chatParticipantsResponse.forEach(chatParticipant -> {
+    System.out.printf("Participant id is %s.\n", ((CommunicationUserIdentifier) chatParticipant.getCommunicationIdentifier()).getId());
+});
+```
 
 ## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
 När en chatt-tråd har skapats kan du lägga till och ta bort användare från den. Genom att lägga till användare ger du dem åtkomst till att skicka meddelanden till chatt-tråden och lägga till/ta bort andra deltagare. Du måste börja med att hämta en ny åtkomsttoken och identitet för den användaren. Innan du anropar addParticipants-metoden kontrollerar du att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
 
-Använd `addParticipants` metoden för att lägga till deltagare i tråden som identifieras av threadId.
+Använd `addParticipants` metoden för att lägga till deltagare i tråden.
 
-- Används `listParticipants` för att visa en lista över deltagare som ska läggas till i chatt-tråden.
 - `communicationIdentifier`, krävs, är den CommunicationIdentifier som du har skapat av CommunicationIdentityClient i [användar åtkomst-token](../../access-tokens.md) snabb start.
-- `display_name`, valfritt är visnings namnet för tråd deltagaren.
-- `share_history_time`, valfritt, är den tid från vilken chatt-historiken delas med deltagaren. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du vill dela ingen Historik tidigare till när deltagaren lades in, ställer du in den på det aktuella datumet. Om du vill dela del historik anger du det datum som krävs.
+- `displayName`, valfritt är visnings namnet för tråd deltagaren.
+- `shareHistoryTime`, valfritt, är den tid från vilken chatt-historiken delas med deltagaren. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du vill dela ingen Historik tidigare till när deltagaren lades in, ställer du in den på det aktuella datumet. Om du vill dela del historik anger du det datum som krävs.
 
 ```Java
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity1)
-    .setDisplayName("Display Name 1");
+ChatParticipant thirdThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user3)
+    .setDisplayName("Display Name 3");
 
-ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity2)
-    .setDisplayName("Display Name 2");
+ChatParticipant fourthThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user4)
+    .setDisplayName("Display Name 4");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+participants.add(thirdThreadParticipant);
+participants.add(fourthThreadParticipant);
 
-AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
-    .setParticipants(participants);
-chatThreadClient.addParticipants(addChatParticipantsOptions);
-```
-
-## <a name="remove-participant-from-a-chat-thread"></a>Ta bort deltagare från en chatt-tråd
-
-På samma sätt som du lägger till en deltagare i en tråd kan du ta bort deltagare från en chatt-tråd. Om du vill göra det måste du spåra identiteterna för de deltagare som du har lagt till.
-
-Använd `removeParticipant` , där `identifier` är den CommunicationIdentifier som du har skapat.
-
-```Java
-chatThreadClient.removeParticipant(identity);
+chatThreadClient.addParticipants(participants);
 ```
 
 ## <a name="run-the-code"></a>Kör koden

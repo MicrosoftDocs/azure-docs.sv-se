@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68728032"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool begränsningar
@@ -35,7 +35,7 @@ Threat Modeling Tools begränsningar kategoriseras enligt säkerhets ramen för 
 | Kategori | Beskrivning |
 | -------- | ----------- |
 | **[Granskning och loggning](threat-modeling-tool-auditing-and-logging.md)** | Vem gjorde vad och när? Granskning och loggning avser hur ditt program registrerar säkerhetsrelaterade händelser |
-| **[Anspråksautentisering](threat-modeling-tool-authentication.md)** | Vem är du? Autentisering är den process där en entitet bevisar identiteten för en annan entitet, vanligt vis via autentiseringsuppgifter, till exempel ett användar namn och lösen ord |
+| **[Autentisering](threat-modeling-tool-authentication.md)** | Vem är du? Autentisering är den process där en entitet bevisar identiteten för en annan entitet, vanligt vis via autentiseringsuppgifter, till exempel ett användar namn och lösen ord |
 | **[Auktorisering](threat-modeling-tool-authorization.md)** | Vad kan du göra? Auktorisering är hur ditt program ger åtkomst kontroller för resurser och åtgärder |
 | **[Kommunikations säkerhet](threat-modeling-tool-communication-security.md)** | Vem pratar om? Kommunikations säkerhet säkerställer att all kommunikation är så säker som möjligt |
 | **[Konfigurations hantering](threat-modeling-tool-configuration-management.md)** | Vem kör ditt program som? Vilka databaser ansluter till? Hur administreras ditt program? Hur skyddas de här inställningarna? Konfigurations hantering avser hur ditt program hanterar dessa drift problem |
