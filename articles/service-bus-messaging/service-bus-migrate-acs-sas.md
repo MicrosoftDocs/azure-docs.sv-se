@@ -4,10 +4,10 @@ description: Lär dig mer om att migrera från Azure Active Directory Access Con
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88064629"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-migrera från Azure Active Directory Access Control Service till signaturen för delad åtkomst

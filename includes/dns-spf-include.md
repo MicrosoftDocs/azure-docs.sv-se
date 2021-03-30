@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67187974"
 ---
 SPF-poster (Sender Policy Framework) används för att ange vilka e-postservrar som kan skicka e-post på uppdrag av ett domän namn. Korrekt konfiguration av SPF-poster är viktigt för att förhindra mottagare från att markera din e-post som skräp post.

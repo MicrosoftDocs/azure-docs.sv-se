@@ -4,10 +4,10 @@ description: Referens för att definiera aktiviteter i YAML för ACR-aktiviteter
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88067591"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referens för ACR-uppgifter: YAML

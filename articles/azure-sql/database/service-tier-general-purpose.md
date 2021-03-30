@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: ee218253309995e721c97f4a7f7b4547b32f7c36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85986649"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Generell användning tjänst nivå – Azure SQL Database och Azure SQL-hanterad instans

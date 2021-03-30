@@ -4,10 +4,10 @@ description: Lär dig hur du använder labb Azure DevTest Labs inom en pipeline 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85481076"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integrering av Azure DevTest Labs och Azure-DevOps
@@ -37,7 +37,7 @@ Den bygga pipelinen fokuserar på att skapa ett paket med komponenter som testas
 
 För build-agenter ökar Labbets möjlighet att begränsa åtkomsten säkerheten och minskar risken för oavsiktliga skador.  
 
-### <a name="test"></a>Testa 
+### <a name="test"></a>Test 
 Med DevTest Labs kan en CI/CD-pipeline automatisera skapandet av Azure Resource (VM, miljöer) som kan användas för automatisk och manuell testning. De virtuella datorerna skapas med artefakter eller formler som använder information från skapande processen för att skapa de olika anpassade konfigurationer som krävs för testning.   
 
 ### <a name="release"></a>Frisläpp 

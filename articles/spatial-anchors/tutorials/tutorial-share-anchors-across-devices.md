@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed9b18144bb727af751fbcbbdd5cc6631afc40f
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185465"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105727237"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Självstudie: dela spatiala ankare mellan sessioner och enheter
 
@@ -86,7 +86,7 @@ Välj **OK**.
 
 Öppna Visual Studio Code och öppna sedan projektet i *Sharing\SharingServiceSample* -mappen. 
 
-Om du vill distribuera delnings tjänsten via Visual Studio Code följer du anvisningarna i <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">publicera ett ASP.net Core-program till Azure med Visual Studio Code</a>. Börja med avsnittet "öppna med Visual Studio Code". Skapa inte ett annat ASP.NET-projekt enligt beskrivningen i föregående steg eftersom du redan har ett projekt som ska distribueras och publiceras: SharingServiceSample.
+Om du vill distribuera delnings tjänsten via Visual Studio Code följer du anvisningarna i <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2&preserve-view=true#open-it-with-visual-studio-code" target="_blank">publicera ett ASP.net Core-program till Azure med Visual Studio Code</a>. Börja med avsnittet "öppna med Visual Studio Code". Skapa inte ett annat ASP.NET-projekt enligt beskrivningen i föregående steg eftersom du redan har ett projekt som ska distribueras och publiceras: SharingServiceSample.
 
 ---
 
