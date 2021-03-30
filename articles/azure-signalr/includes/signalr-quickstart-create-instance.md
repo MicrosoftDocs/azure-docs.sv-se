@@ -8,10 +8,10 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: f738daab7ddcf0403f546e7c9ffeaeccb66bc6b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91355659"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Skapa en Azure SignalR Service-instans
@@ -30,7 +30,7 @@ Din app ansluter till en SignalR Service-instans i Azure.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Resurs namn** | Globalt unikt namn | Namn som identifierar din nya SignalR Service-instans. Giltiga tecken är `a-z`, `0-9` och `-`.  | 
     | **Prenumeration** | Din prenumeration | Prenumerationen som den här nya SignalR Service-instansen har skapats i. | 
-    | **[Resurs grupp](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Namnet på den nya resursgruppen som SignalR Service-instansen ska skapas i. | 
+    | **[Resursgrupp](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Namnet på den nya resursgruppen som SignalR Service-instansen ska skapas i. | 
     | **Plats** | USA, västra | Välj en [region](https://azure.microsoft.com/regions/) nära dig. |
     | **Prisnivå** | Kostnadsfri | Prova Azure SignalR Service kostnadsfritt. |
     | **Antal enheter** |  Inte tillämpligt | Antal enheter anger hur många anslutningar som SignalR Service-instansen kan acceptera. Det kan bara konfigureras på Standard-nivån. |

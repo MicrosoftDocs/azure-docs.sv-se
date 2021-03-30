@@ -46,6 +46,9 @@
     - name: Hantera taggstyrning
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: Tillstånds ändrings händelser för flödes princip
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./tutorials/route-state-change-events.md
     - name: Implementera Azure Policy som kod med GitHub
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./tutorials/policy-as-code-github.md
@@ -126,6 +129,9 @@
     - name: Tilldelningsstruktur
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: Reagerar på händelser för princip tillstånds ändring
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./concepts/event-overview.md
     - name: Undantagsstruktur
       displayName: 'waiver, mitigated, compliance'
       href: ./concepts/exemption-structure.md

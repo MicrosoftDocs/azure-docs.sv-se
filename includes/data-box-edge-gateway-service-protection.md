@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 727b2985711b51f1474fecb014906b08d18437cb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82562141"
 ---
 - För att få åtkomst till tjänsten Azure Stack Edge måste din organisation ha en prenumeration på Enterprise-avtal (EA) eller moln lösnings leverantör (CSP). Mer information finns i [Registrera dig för en Azure-prenumeration](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: cephalin
 ms.openlocfilehash: c3fa57dd162fbbfbf0d46f73bffc78f279ef2968
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83649122"
 ---
 * **Autentiseringsuppgifter för användar nivå**: en uppsättning autentiseringsuppgifter för hela Azure-kontot. Den kan användas för att distribuera till App Service för alla appar, i alla prenumerationer, som Azure-kontot har behörighet att komma åt. Det är den standard uppsättning som finns i portalens GUI (till exempel **Översikt** och **Egenskaper** för appens [resurs sida](../articles/azure-resource-manager/management/manage-resources-portal.md#manage-resources)). När en användare beviljas åtkomst till appen via Role-Based Access Control (RBAC) eller behörigheten administratör kan användaren använda sina egna autentiseringsuppgifter på användar nivå tills åtkomsten har återkallats. Dela inte dessa autentiseringsuppgifter med andra Azure-användare.

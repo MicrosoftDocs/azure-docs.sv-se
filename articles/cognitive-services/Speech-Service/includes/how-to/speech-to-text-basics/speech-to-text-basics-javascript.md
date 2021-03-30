@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 7649f9c13db1a10bdb48d19f1019ec3b31244f45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105592"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729891"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna igen mänskligt tal (kallas ofta tal till text). I den här snabb starten får du lära dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativt tal-till-text-konvertering.
 
@@ -62,7 +62,7 @@ Att känna igen tal från en mikrofon **stöds inte i Node.js** och stöds bara 
 
 ## <a name="recognize-from-file"></a>Identifiera från fil 
 
-Om du vill känna igen tal från en ljudfil skapar du en `AudioConfig` användning `fromWavFileInput()` som accepterar ett `Buffer` objekt. Initiera sedan en [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) , och skicka in `audioConfig` och `speechConfig` .
+Om du vill känna igen tal från en ljudfil skapar du en `AudioConfig` användning `fromWavFileInput()` som accepterar ett `Buffer` objekt. Initiera sedan en [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) , och skicka in `audioConfig` och `speechConfig` .
 
 ```javascript
 const fs = require('fs');

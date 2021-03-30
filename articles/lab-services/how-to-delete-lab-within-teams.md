@@ -4,10 +4,10 @@ description: Lär dig hur du tar bort ett Azure Lab Services labb från team.
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96433962"
 ---
 # <a name="delete-labs-within-teams"></a>Ta bort labb i team

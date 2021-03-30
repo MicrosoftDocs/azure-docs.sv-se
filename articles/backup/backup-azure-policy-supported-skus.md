@@ -4,10 +4,10 @@ description: 'En artikel som beskriver de VM-SKU: er (som stöds av Publisher, a
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82183627"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>VM-SKU:er som stöds för Azure Policy
@@ -88,4 +88,4 @@ Oracle | Oracle-Linux | 6,8, 6,9, 6,10, 7,3, 7,4, 7,5, 7,6
 OpenLogic | CentOS | 6. X, 7. X
 OpenLogic | CentOS – LVM | 6. X, 7. X
 OpenLogic | CentOS – IOV | 6. X, 7. X
-Cloudera | Cloudera-CentOS-OS | 6,9
+Cloudera | Cloudera-CentOS-OS | 7. X
