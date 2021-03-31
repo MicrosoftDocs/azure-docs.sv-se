@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: e9b980dcbe42694137c7b29ee3bddaa7802db3da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97978777"
 ---
 Om du vill konfigurera tal-SDK för att acceptera komprimerade ljud måste du skapa en `PullAudioInputStream` eller `PushAudioInputStream` . Skapa sedan en `AudioConfig` från en instans av data ström klassen och ange komprimerings formatet för data strömmen.

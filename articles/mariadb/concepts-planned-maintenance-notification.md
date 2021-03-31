@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664273"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Meddelande om planerat underhåll i Azure Database for MariaDB
@@ -23,13 +23,13 @@ Azure Database for MariaDB tjänsten utför automatisk uppdatering av underligga
 
 Ett planerat underhåll är ett underhålls fönster när de här tjänst uppdateringarna distribueras till servrar i en specifik Azure-region. Vid planerat underhåll skapas en meddelandehändelse som informerar kunderna om när tjänstuppdateringen distribueras i den Azure-region där värden för deras servrar finns. Minimi tiden mellan två planerade underhåll är 30 dagar. Du får ett meddelande om nästa underhållsperiod 72 timmar i förväg.
 
-## <a name="planned-maintenance---duration-and-customer-impact"></a>Planerat underhåll – varaktighet och kund påverkan
+## <a name="planned-maintenance---duration-and-customer-impact"></a>Planerat underhåll – varaktighet och kundpåverkan
 
-Ett planerat underhåll för en specifik Azure-region förväntas vanligt vis köras 15 timmar. I fönstret ingår även buffertstorleken för att köra en återställnings plan vid behov. Under planerat underhåll kan det ske omstarter eller redundans för databas servrar, vilket kan leda till att databas servrarna inte är tillgängliga för slutanvändarna. Azure Database for MariaDB servrar körs i behållare så att omstarter av databas servrar vanligt vis snabbt, förväntas slutföras normalt i 60-120 sekunder. Hela det planerade underhålls händelsen, inklusive varje omstart av servern, övervakas noggrant av teknik teamet. Serverns redundans tid är beroende av databasens återställnings tid, vilket kan göra att databasen blir online längre om du har tung transaktions aktivitet på servern vid redundansväxlingen. För att undvika längre omstart rekommenderar vi att du undviker tids krävande transaktioner (Mass inläsning) under planerade underhålls händelser.
+Planerat underhåll för en Azure-region förväntas vanligtvis köras i 15 timmar. I fönstret ingår även buffertstorleken för att köra en återställnings plan vid behov. Under planerat underhåll kan det ske omstarter eller redundans för databas servrar, vilket kan leda till att databas servrarna inte är tillgängliga för slutanvändarna. Azure Database for MariaDB servrar körs i behållare så att omstarter av databas servrar vanligt vis snabbt, förväntas slutföras normalt i 60-120 sekunder. Hela det planerade underhålls händelsen, inklusive varje omstart av servern, övervakas noggrant av teknik teamet. Serverns redundans tid är beroende av databasens återställnings tid, vilket kan göra att databasen blir online längre om du har tung transaktions aktivitet på servern vid redundansväxlingen. För att undvika längre omstart rekommenderar vi att du undviker tids krävande transaktioner (Mass inläsning) under planerade underhålls händelser.
 
 I sammandrag, medan händelsen planerat underhåll körs i 15 timmar, varar den enskilda Server påverkan vanligt vis 60 sekunder beroende på transaktions aktiviteten på servern. Ett meddelande skickas 72 kalender timmar innan planerat underhåll påbörjas och ett annat under underhåll pågår för en specifik region.
 
-## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Hur kan jag få ett meddelande om planerat underhåll?
+## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Hur får jag meddelande om planerat underhåll?
 
 Du kan använda funktionen för planerade underhålls meddelanden för att få aviseringar om kommande planerat underhålls händelser. Du får ett meddelande om kommande underhåll 72 kalender timmar före händelsen och en annan medan underhåll pågår för en specifik region.
 
@@ -63,11 +63,11 @@ Du kan antingen kontrol lera den planerade underhålls aviseringen på Azure Por
 
 Detaljerade anvisningar om hur du skapar **tjänstens hälso aviseringar** finns i [skapa aktivitets logg aviseringar för tjänst meddelanden](../service-health/alerts-activity-log-service-notifications-portal.md).
 
-## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Kan jag avbryta eller skjuta upp planerat underhåll?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Kan jag avbryta eller senarelägga planerat underhåll?
 
 Underhåll krävs för att hålla din server säker, stabil och uppdaterad. Det går inte att annullera eller skjuta upp händelsen planerat underhåll. När meddelandet har skickats till en viss Azure-region kan inte korrigerings schema ändringarna göras för någon enskild server i den regionen. Korrigeringen distribueras för hela regionen på samma gång. Azure Database for MariaDB-tjänsten är utformad för internt program i molnet som inte kräver detaljerad kontroll eller anpassning av tjänsten.
 
-## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>Har alla Azure-regioner korrigerats samtidigt?
+## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>Korrigeras alla Azure-regioner samtidigt?
 
 Nej, alla Azure-regioner korrigeras under tids perioden för distributionen. Fönstret för distributions fönstret sträcker sig normalt ut från 5 PM – 8, lokal tid nästa dag, i en specifik Azure-region. Geo-kopplade Azure-regioner korrigeras på olika dagar. För hög tillgänglighet och affärs kontinuitet för databas servrar rekommenderas att du använder [flera Läs repliker för flera regioner](./concepts-read-replicas.md#cross-region-replication) .
 
