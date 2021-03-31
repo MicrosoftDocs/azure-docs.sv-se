@@ -7,10 +7,10 @@ ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4d4bdc4fa15f634b36f12a650b70b9ffd89b40e0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539108"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Fel sökning – översikt, feedback och support för Windows Virtual Desktop
@@ -32,7 +32,7 @@ Innan du gör något annat måste du kontrol lera [sidan Azure-status](https://s
 
 Använd följande tabell för att identifiera och lösa problem som kan uppstå när du konfigurerar en miljö med hjälp av fjärr skrivbords klienten. När din miljö har kon figurer ATS kan du använda vår nya [diagnostik-tjänst](diagnostics-role-service.md) för att identifiera problem med vanliga scenarier.
 
-| **Ge**                                                            | **Föreslagen lösning**  |
+| **Problem**                                                            | **Föreslagen lösning**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Session Host pool Azure-Virtual Network (VNET) och Express Route-inställningar               | [Öppna en support förfrågan för Azure](https://azure.microsoft.com/support/create-ticket/)och välj lämplig tjänst (under kategorin nätverk). |
 | Skapa virtuell dator för Session Host pool (VM) när Azure Resource Manager mallar som medföljer Windows Virtual Desktop används inte | [Öppna en support förfrågan för Azure](https://azure.microsoft.com/support/create-ticket/)och välj sedan **Windows Virtual Desktop** för tjänsten. <br> <br> Om du har problem med Azure Resource Manager mallar som medföljer Windows Virtual Desktop kan du läsa avsnittet Azure Resource Manager mall fel i [skapa en Fakturapool](troubleshoot-set-up-issues.md). |
