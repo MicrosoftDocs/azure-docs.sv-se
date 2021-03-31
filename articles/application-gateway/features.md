@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91355745"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-funktioner
@@ -31,7 +31,7 @@ Application Gateway innehåller följande funktioner:
 - [URL-baserad routning](#url-based-routing)
 - [Värd för flera platser](#multiple-site-hosting)
 - [Omdirigering](#redirection)
-- [Sessionstillhörighet](#session-affinity)
+- [Tillhörighet för session](#session-affinity)
 - [Websocket- och HTTP/2-trafik](#websocket-and-http2-traffic)
 - [Anslutningstömning](#connection-draining)
 - [Anpassade felsidor](#custom-error-pages)

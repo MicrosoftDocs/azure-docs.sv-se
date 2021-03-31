@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84465068"
 ---
 Om du vill skapa en privat slut punkt för ditt lagrings konto måste du först hämta en referens till ditt lagrings konto och det virtuella nätverks under nätet där du vill lägga till den privata slut punkten. Ersätt `<storage-account-resource-group-name>` ,,,  `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` och `<vnet-subnet-name>` nedan:

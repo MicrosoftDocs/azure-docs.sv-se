@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84888715"
 ---
 # <a name="custom-reports-from-verizon"></a>Anpassade rapporter från Verizon
@@ -81,7 +81,7 @@ Du kan exportera data i Excel-format genom att klicka på Excel-symbolen till h�
 | Träffar                      | Anger det totala antalet begär anden till Edge CNAME |
 | Missar                    | Anger det totala antalet begär Anden eller överförda data (MB) för Edge CNAME som resulterar i ett cache-missar (till exempel TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS eller TCP_MISS). Ett cacheminne saknas när det begärda innehållet inte cachelagrades på gräns servern som löste begäran. | 
 | Ingen cache                  | Anger det totala antalet begär Anden eller överförda data (MB) för Edge CNAME som resulterar i en CONFIG_NOCACHE cache-statuskod.  |
-| Övrigt                     | Anger det totala antalet begär Anden eller överförda data (MB) för Edge CNAME, vilket resulterar i en HTTP-statuskod som faller utanför 2xx-5xx-intervallet. |
+| Annat                     | Anger det totala antalet begär Anden eller överförda data (MB) för Edge CNAME, vilket resulterar i en HTTP-statuskod som faller utanför 2xx-5xx-intervallet. |
 | Plattform                  | Anger den plattform som hanterar Edge CNAME-trafiken. |
 | Ej tilldelad               | Anger det totala antalet begär Anden eller överförda data (MB) för den kant-CNAME för vilken cache status kod eller HTTP-statuskod inte loggades.  |
 | Det går inte att cachelagra               | Anger det totala antalet begär Anden eller överförda data (MB) för den Edge CNAME som resulterar i en cache-statuskod.  |

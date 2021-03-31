@@ -4,10 +4,10 @@ description: Den här artikeln innehåller en genom gång som visar hur du skapa
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 4c26928d2ee53a5c76ff982b5d57b59f9a7a8ab8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85316993"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Skapa ett Relay-namnområde med Azure Portal

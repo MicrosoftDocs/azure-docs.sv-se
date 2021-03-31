@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91566830"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Vad är rapporter i Azure Active Directory?
@@ -37,7 +37,7 @@ Rapportarkitekturen förlitar sig på två huvudsakliga pelare:
 - [Säkerhetsrapporter](#security-reports)
 - [Aktivitetsrapporter](#activity-reports)
 
-![Rapportering](./media/overview-reports/01.png)
+![Rapportera](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Säkerhetsrapporter
