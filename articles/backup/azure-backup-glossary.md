@@ -4,10 +4,10 @@ description: Den här artikeln definierar termer som är användbara för använ
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102502033"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup ord lista
@@ -198,7 +198,7 @@ Med Azure Backup Server kan du skydda program arbets belastningar, till exempel 
 
 Läs mer i [dokumentationen för Managed disks](../virtual-machines/managed-disks-overview.md).
 
-## <a name="mars-agent"></a>MARS-agent
+## <a name="mars-agent"></a>MARS-agenten
 
 (Arbets belastnings bestämd term)
 
