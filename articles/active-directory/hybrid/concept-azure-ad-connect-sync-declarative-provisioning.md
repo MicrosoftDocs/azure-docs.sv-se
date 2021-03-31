@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91313628"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synkronisering: förstå deklarativ etablering
@@ -66,7 +66,7 @@ Scope-modulen stöder följande åtgärder.
 | ISBITSET, ISNOTBITSET |Utvärderar om en viss bit har angetts. Kan till exempel användas för att utvärdera bitarna i userAccountControl för att se om en användare är aktive rad eller inaktive rad. |
 | ISMEMBEROF, ISNOTMEMBEROF |Värdet ska innehålla en DN till en grupp i anslutnings utrymmet. Om objektet är medlem i den angivna gruppen är regeln i omfånget. |
 
-## <a name="join"></a>Slå ihop
+## <a name="join"></a>Anslut
 Join-modulen i den synkroniserade pipelinen ansvarar för att hitta relationen mellan objektet i källan och ett objekt i målet. I en inkommande regel skulle den här relationen vara ett objekt i ett anslutnings utrymme som söker efter en relation till ett objekt i metaversum.  
 ![Koppling mellan CS och MV](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 Målet är att se om det redan finns ett objekt i metaversum, vilket skapats av en annan koppling, det ska vara associerat med. I en konto-resurs-skog bör användaren från konto skogen kopplas till användaren från resurs skogen.

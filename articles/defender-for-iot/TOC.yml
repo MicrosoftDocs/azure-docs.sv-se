@@ -172,7 +172,7 @@
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Arbeta med aviseringar som identifierats av en sensor
           items:
-            - name: Om sensor aviseringar
+            - name: Förstå sensor aviseringar
               href: how-to-work-with-alerts-on-your-sensor.md
             - name: Filtrera och hantera aviseringar från sidan aviseringar
               href: how-to-view-alerts.md
@@ -181,11 +181,11 @@
               displayName: 'PCAP, metadata, alerts, link, device map,'
             - name: Aviserings typer och beskrivningar
               href: alert-engine-messages.md
-              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational'
-            - name: Hantera aviseringshändelsen
+              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational, severity, minor, major, critical, warning, alerts list, security alerts,'
+            - name: Hantera aviserings händelser
               href: how-to-manage-the-alert-event.md
               displayName: 'PCAP, acknowledge, learn, mute, policy'
-            - name: Påskynda incidenthantering för en avisering
+            - name: Påskynda aviserings arbets flöden
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
             - name: Vidarebefordra aviseringsinformation
