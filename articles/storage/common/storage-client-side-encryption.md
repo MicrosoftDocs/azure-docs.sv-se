@@ -11,10 +11,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588264"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side kryptering och Azure Key Vault för Microsoft Azure Storage
@@ -85,7 +85,7 @@ Under krypteringen genererar klient biblioteket ett slumpmässigt IV av 16 byte 
 
 Under dekrypteringen extraheras den omslutna nyckeln från kösystemet och packas upp. IV extraheras också från meddelandet i kön och används tillsammans med den icke-omslutna nyckeln för att dekryptera köns meddelande data. Observera att krypterings-metadata är små (under 500 byte), så om det sker mot 64 KB-gränsen för ett Queue meddelande bör påverkan vara hanterbar. Observera att det krypterade meddelandet kommer att vara Base64-kodat, vilket visas i ovanstående kodfragment, vilket även kommer att expandera storleken på meddelandet som skickas.
 
-### <a name="tables"></a>Tabeller
+### <a name="tables"></a>Tables
 
 > [!NOTE]
 > Table service stöds i Azure Storage klient biblioteket till version 9. x.
