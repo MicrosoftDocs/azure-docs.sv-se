@@ -4,10 +4,10 @@ description: Azure Service Fabric accepterar Docker-format för att göra det en
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84691296"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker skapa distributions stöd i Azure Service Fabric (för hands version)

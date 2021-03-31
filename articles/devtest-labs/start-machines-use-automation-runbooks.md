@@ -4,16 +4,16 @@ description: Lär dig hur du startar virtuella datorer i ett labb i Azure DevTes
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87282270"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starta virtuella datorer i ett labb i ordning genom att använda Azure Automation runbooks
 Med funktionen [Autostart](devtest-lab-set-lab-policy.md#set-autostart) i DevTest Labs kan du konfigurera virtuella datorer så att de startar automatiskt vid en viss tidpunkt. Den här funktionen stöder dock inte att datorer startar i en speciell ordning. Det finns flera scenarier där den här typen av automatisering skulle vara användbar.  Ett scenario är var du måste starta en virtuell dator i ett labb innan du börjar med de andra virtuella datorerna, eftersom hoppet används som åtkomst punkt till de andra virtuella datorerna.  Den här artikeln visar hur du konfigurerar ett Azure Automation-konto med en PowerShell-Runbook som kör ett skript. Skriptet använder taggar på virtuella datorer i labbet för att kontrol lera start ordningen utan att behöva ändra skriptet.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 I det här exemplet måste de virtuella datorerna i labbet ha taggen **StartupOrder** lagts till med lämpligt värde (0, 1, 2 osv.). Utse en dator som inte behöver startas som-1.
 
 ## <a name="create-an-azure-automation-account"></a>Skapa ett Azure Automation-konto

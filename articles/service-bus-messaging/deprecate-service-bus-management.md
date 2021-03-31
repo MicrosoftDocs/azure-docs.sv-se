@@ -4,10 +4,10 @@ description: Den här artikeln innehåller mappning av föråldrade Azure Servic
 ms.topic: article
 ms.date: 09/25/2020
 ms.openlocfilehash: b82772b364bbc44a898197e7fafd11b33e2e6320
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518797"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Utfasning av Azure Service Manager-stöd för Azure Service Bus, relä och Event Hubs

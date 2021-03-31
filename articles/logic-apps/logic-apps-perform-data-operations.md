@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84710379"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Utföra data åtgärder i Azure Logic Apps
@@ -34,7 +34,7 @@ Med de här åtgärderna kan du arbeta med data i matriser.
 | [**Skapa CSV-tabell**](#create-csv-table-action) | Skapa en kommaavgränsad tabell (CSV) från en matris. |
 | [**Skapa HTML-tabell**](#create-html-table-action) | Skapa en HTML-tabell från en matris. |
 | [**Filtrera matris**](#filter-array-action) | Skapa en mat ris del uppsättning från en matris baserat på det angivna filtret eller villkoret. |
-| [**Ansluta**](#join-action) | Skapa en sträng från alla objekt i en matris och avgränsa varje objekt med det angivna specialtecknet. |
+| [**Anslut**](#join-action) | Skapa en sträng från alla objekt i en matris och avgränsa varje objekt med det angivna specialtecknet. |
 | [**Välj**](#select-action) | Skapa en matris från de angivna egenskaperna för alla objekt i en annan matris. |
 ||| 
 

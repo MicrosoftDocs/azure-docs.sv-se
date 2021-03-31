@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/22/2020
 ms.author: duau
 ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89567681"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Använda Azure-ExpressRoute för att skapa hybrid anslutningar som stöder fjärran vändare

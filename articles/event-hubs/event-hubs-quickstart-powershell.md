@@ -4,10 +4,10 @@ description: Den här snabbstarten beskriver hur du skapar en händelsehubb med 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88933978"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Snabbstart: Skapa en händelsehubb med Azure PowerShell
