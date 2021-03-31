@@ -12,10 +12,10 @@ ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579509"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Program etablering i karantän status
@@ -52,7 +52,7 @@ Det finns tre sätt att kontrol lera om ett program finns i karantän:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Varför är mitt program i karantän?
 
-|Description|Rekommenderad åtgärd|
+|Beskrivning|Rekommenderad åtgärd|
 |---|---|
 |**Problem med scim-kompatibilitet:** Ett HTTP/404-svar som inte hittades returnerades i stället för det förväntade HTTP/200 OK-svaret. I det här fallet har Azure AD Provisioning-tjänsten gjort en begäran till mål programmet och fått ett oväntat svar.|Kontrol lera avsnittet admin credentials. Se om programmet kräver att du anger klient-URL: en och att webb adressen är korrekt. Om du inte ser något problem kontaktar du programutvecklaren för att säkerställa att deras tjänster är SCIM-kompatibla. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Ogiltiga autentiseringsuppgifter:** Vid försök att auktorisera åtkomst till mål programmet fick vi ett svar från mål programmet som anger att de angivna autentiseringsuppgifterna är ogiltiga.|Gå till avsnittet admin credentials i etablerings konfigurationens gränssnitt och auktorisera åtkomsten igen med giltiga autentiseringsuppgifter. Om programmet finns i galleriet läser du själv studie kursen om program konfiguration för längre nödvändiga steg.|

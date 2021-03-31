@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579203"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planera en Azure Active Directory distribution av lösen ords återställning via självbetjäning
@@ -155,14 +155,14 @@ Följande inställningar krävs för att aktivera SSPR tillsammans med rekommend
 | **Egenskaper för SSPR** | Återställning av lösen ord för självbetjäning har Aktiver ATS | **Vald** grupp för pilot/ **alla** för produktion |
 | **Autentiseringsmetoder** | Autentiseringsmetoder som krävs för registrering | Alltid 1 mer än vad som krävs för återställning |
 |   | Autentiseringsmetoder som krävs för att återställa | En eller två |
-| **Registrering** | Kräv att användare registrerar sig vid inloggning | Yes |
+| **Registrering** | Kräv att användare registrerar sig vid inloggning | Ja |
 |   | Antal dagar innan användare uppmanas att bekräfta sin autentiseringsinformation | 90 – 180 dagar |
-| **Aviseringar** | Meddela användare om lösenordsåterställning | Yes |
-|   | Meddela alla administratörer när andra administratörer återställer sina lösenord | Yes |
-| **Anpassning** | Anpassa supportavdelningen-länk | Yes |
+| **Aviseringar** | Meddela användare om lösenordsåterställning | Ja |
+|   | Meddela alla administratörer när andra administratörer återställer sina lösenord | Ja |
+| **Anpassning** | Anpassa supportavdelningen-länk | Ja |
 |   | E-post eller URL för anpassad helpdesk | Support webbplats eller e-postadress |
-| **Lokal integration** | Skriv tillbaka lösen ord till lokal AD | Yes |
-|   | Tillåt att användare låser upp kontot utan att återställa lösen ordet | Yes |
+| **Lokal integration** | Skriv tillbaka lösen ord till lokal AD | Ja |
+|   | Tillåt att användare låser upp kontot utan att återställa lösen ordet | Ja |
 
 ### <a name="sspr-properties"></a>Egenskaper för SSPR
 
@@ -255,7 +255,7 @@ Medan SSPR vanligt vis inte skapar användar problem är det viktigt att förber
 
 Om du vill göra det möjligt för support teamet att lyckas kan du skapa vanliga frågor och svar baserat på frågor som du får från användarna. Några exempel:
 
-| Scenarier| Description |
+| Scenarier| Beskrivning |
 | - | - |
 | Användaren har inga registrerade autentiseringsmetoder tillgängliga| En användare försöker återställa sitt lösen ord men har inte någon av de autentiseringsmetoder som de registrerade är tillgängliga (exempel: de lämnade sin mobil telefon hemma och har inte åtkomst till e-post) |
 | Användaren får inte någon text eller ett anrop på deras telefonnummer till kontoret eller mobil telefonen| En användare försöker verifiera sin identitet via text eller anrop, men får ingen text/ett anrop. |

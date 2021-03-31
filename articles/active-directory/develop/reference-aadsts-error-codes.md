@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104578506"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Felkoder för Azure AD-autentisering och -auktorisering
@@ -60,7 +60,7 @@ Här är ett exempel på fel svar:
 
 `error`Fältet har flera möjliga värden – granska protokoll dokumentations länkarna och OAuth 2,0-specifikationerna för att lära dig mer om vissa fel (till exempel `authorization_pending` i [enhets kod flödet](v2-oauth2-device-code.md)) och hur du kan reagera på dem.  Några vanliga visas här:
 
-| Felkod         | Description        | Klient åtgärd    |
+| Felkod         | Beskrivning        | Klient åtgärd    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokoll fel, till exempel en obligatorisk parameter som saknas. | Åtgärda och skicka begäran på nytt.|
 | `invalid_grant`    | En del av autentiserings materialet (auth Code, Refresh token, Access token, PKCE Challenge) var ogiltigt, kunde inte parsas, saknas eller på annat sätt oanvändbar | Testa en ny begäran till `/authorize` slut punkten för att få en ny auktoriseringskod.  Överväg att granska och verifiera appens användning av protokollen. |

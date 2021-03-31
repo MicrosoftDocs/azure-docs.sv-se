@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
 ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87985639"
 ---
 # <a name="what-is-azure-private-dns"></a>Vad är Azure Privat DNS?
@@ -64,7 +64,7 @@ Azure DNS har följande begränsningar:
 * Omvänd DNS för en privat IP-adress för ett länkat virtuellt nätverk returnerar *Internal.cloudapp.net* som standard suffix för den virtuella datorn. För virtuella nätverk som är länkade till en privat zon med autoregistrering aktive rad returnerar omvänd DNS för en privat IP-adress två FQDN: en med standard suffixet *Internal.cloudapp.net* och ett annat med suffixet för den privata zonen.
 * Villkorlig vidarebefordran stöds inte för närvarande. Information om hur du aktiverar matchning mellan Azure och lokala nätverk finns i [namn matchning för virtuella datorer och roll instanser](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
  
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Information om priser finns i [Azure DNS priser](https://azure.microsoft.com/pricing/details/dns/).
 
