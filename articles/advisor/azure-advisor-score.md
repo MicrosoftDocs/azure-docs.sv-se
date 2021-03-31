@@ -4,10 +4,10 @@ description: Använd Azure Advisor Poäng för att få ut mesta möjliga av Azur
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 11b20bc3b4d604d3a7ff4608cd1c21f129c1cb6d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97630130"
 ---
 # <a name="optimize-azure-workloads-by-using-advisor-score"></a>Optimera Azure-arbetsbelastningar med hjälp av Advisor-Poäng

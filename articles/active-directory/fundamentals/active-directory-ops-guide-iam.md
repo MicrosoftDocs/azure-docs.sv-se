@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92371009"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referens guide för Azure Active Directory identitets-och åtkomst hanterings åtgärder
