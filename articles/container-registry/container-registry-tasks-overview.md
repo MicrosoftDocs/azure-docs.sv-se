@@ -4,10 +4,10 @@ description: En introduktion till ACR-aktiviteter, en uppsättning funktioner i 
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104606794"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisera behållar avbildnings versioner och underhåll med ACR-uppgifter
@@ -58,8 +58,8 @@ ACR-aktiviteter stöder följande utlösare när du anger en git-lagrings platse
 
 | Utlösare | Aktiverat som standard |
 | ------- | ------------------ |
-| Checka in | Yes |
-| Pull-begäran | No |
+| Checka in | Ja |
+| Pull-begäran | Inga |
 
 Om du vill konfigurera en uppdaterings utlösare för käll koden måste du ange uppgiften en personlig åtkomsttoken (PAT) för att ställa in webhooken i den offentliga eller privata GitHub eller Azure DevOps lagrings platsen.
 

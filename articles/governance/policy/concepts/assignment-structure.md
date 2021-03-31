@@ -4,10 +4,10 @@ description: Beskriver den princip tilldelnings definition som används av Azure
 ms.date: 03/17/2021
 ms.topic: conceptual
 ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104604873"
 ---
 # <a name="azure-policy-assignment-structure"></a>Tilldelningsstruktur i Azure Policy
@@ -67,7 +67,7 @@ Egenskapen **enforcementMode** ger kunderna möjlighet att testa resultatet av e
 
 Den här egenskapen har följande värden:
 
-|Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Description |
+|Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Beskrivning |
 |-|-|-|-|-|-|
 |Enabled |Standardvärde |sträng |Ja |Ja |Princip påverkan tillämpas när en resurs skapas eller uppdateras. |
 |Inaktiverad |DoNotEnforce |sträng |Ja |Inga | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
