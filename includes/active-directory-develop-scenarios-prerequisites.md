@@ -11,10 +11,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91257085"
 ---
 Om du inte har använt identitets-och åtkomst hantering (IAM) med OAuth 2,0 och OpenID Connect, eller till och med bara nya till IAM på Microsoft Identity Platform, bör följande artiklar vara höga i din läslista.
