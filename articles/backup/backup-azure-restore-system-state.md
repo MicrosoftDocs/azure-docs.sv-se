@@ -4,10 +4,10 @@ description: Steg för steg-förklaringar för återställning av Windows Server
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 4ef23d6ff16c263e310304cc240c2090751640b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97008487"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Återställa system tillstånd till Windows Server
