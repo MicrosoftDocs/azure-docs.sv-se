@@ -4,10 +4,10 @@ description: I den här artikeln får du lära dig mer om schema för data härl
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92019502"
 ---
 # <a name="inference-metadata-schema"></a>Schema för slutsatsdragning av metadata 
@@ -29,7 +29,7 @@ Varje Härlednings objekt oavsett om du använder HTTP-baserat kontrakt eller gR
 |Händelse|Händelse upptäcktes i exemplet. När en händelse identifieras i exemplet returneras namnet på händelsen och de speciella egenskaperna för händelsen.|
 |Sig|Rörelse upptäcktes i exemplet. När motion identifieras i exemplet returneras samkoordinaterna för en rektangulär avgränsnings ruta där rörelse har identifierats.|
 |Text|Text som är associerad med exemplet tillsammans med textens start-och slut-tidstämpel returneras.|
-|Övrigt|Returnerar annan allmän nytto Last information.|
+|Annat|Returnerar annan allmän nytto Last information.|
 
 Exemplet nedan innehåller en enskild händelse med vissa typer av härlednings typer som stöds:
 

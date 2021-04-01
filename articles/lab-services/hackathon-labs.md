@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs hur du använder Azure Lab Services f�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102452738"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Använd Azure Lab Services för nästa Hackathon

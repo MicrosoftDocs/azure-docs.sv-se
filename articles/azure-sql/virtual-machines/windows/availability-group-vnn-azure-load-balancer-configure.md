@@ -1,5 +1,5 @@
 ---
-title: Konfigurera Load Balancer för AG VNN-lyssnare
+title: Konfigurera lastbalanserare för VNN-lyssnare för åtkomstgrupp
 description: Lär dig hur du konfigurerar en Azure Load Balancer för att dirigera trafik till lyssnaren för virtuella nätverks namn (VNN) för din tillgänglighets grupp med SQL Server på virtuella Azure-datorer för hög tillgänglighet och haveri beredskap (HADR).
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,13 +16,13 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359888"
 ---
-# <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurera Load Balancer för AG VNN-lyssnare
+# <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurera lastbalanserare för VNN-lyssnare för åtkomstgrupp
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 I Azure Virtual Machines använder kluster en belastningsutjämnare för att lagra en IP-adress som måste finnas på en klusternod i taget. I den här lösningen innehåller belastningsutjämnaren IP-adressen för den virtuella nätverks namn (VNN) lyssnare för Always on-tillgänglighetsgruppen (AG). 
