@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91316570"
 ---
 # <a name="extract-data-with-entities"></a>Extrahera data med entiteter
@@ -53,7 +53,7 @@ Tänk på följande fyra yttranden:
 
 |Yttrande|Förväntad avsikt|Extraherade enheter|Förklaring|
 |--|--|--|--|
-|Hjälp|Hjälp|-|Inget att extrahera.|
+|Help|Hjälp|-|Inget att extrahera.|
 |Skicka något|sendSomething|-|Inget att extrahera. Modellen har inte någon nödvändig funktion för att extrahera `something` i den här kontexten och det finns ingen mottagare angiven.|
 |Skicka Bob a present|sendSomething|`Bob`, `present`|Modellen extraheras `Bob` genom att lägga till en nödvändig funktion i en fördefinierad entitet `personName` . En enhet för maskin inlärning har använts för att extrahera `present` .|
 |Skicka Bob en ruta med choklad|sendSomething|`Bob`, `box of chocolates`|De två viktiga delarna av data `Bob` och `box of chocolates` har extraherats av Machine Learning-enheter.|
