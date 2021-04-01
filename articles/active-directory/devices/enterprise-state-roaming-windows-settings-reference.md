@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252975"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referens för Windows 10-växlingsinställningar
@@ -75,7 +75,7 @@ Inställningar som inte är roaming eller synkronisering tillhör inte någon gr
 | **Konton**: andra konto inställningar |X |X | |
 | **Avancerat mobilt bred band**: nätverks namn för Internet anslutnings delning (aktiverar automatisk identifiering av mobil Wi-Fi hotspots via Bluetooth) |X |X |Lösenord |
 | **AppData**: enskilda appar kan synkronisera data |Synkronisera säkerhets kopia |Synkronisera säkerhets kopia |inhemska |
-| **Applistan**: lista över installerade appar |X |säkerhetskopiering |Övrigt |
+| **Applistan**: lista över installerade appar |X |säkerhetskopiering |Annat |
 | **Bluetooth**: alla Bluetooth-inställningar |X |X | |
 | **Kommando tolk**: kommando tolkens standardinställningar |sync |X |inhemska |
 | **Autentiseringsuppgifter**: Lås för autentiseringsuppgifter |sync |sync |password |
