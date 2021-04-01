@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
 ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98250272"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Skrivskyddad replik i Azure Database for MySQL
@@ -209,7 +209,7 @@ GTID är inaktive rad som standard. När GTID har Aktiver ATS kan du inte aktive
 
 Om GTID har Aktiver ATS på en käll server kommer nya repliker också ha GTID aktiverat och använda GTID-replikering. Om du vill ha konsekvent replikering kan du inte uppdatera `gtid_mode` på käll-eller replik servrar.
 
-### <a name="other"></a>Övrigt
+### <a name="other"></a>Annat
 
 * Det finns inte stöd för att skapa en replik av en replik.
 * InMemory-tabeller kan orsaka att repliker blir osynkroniserade. Detta är en begränsning av MySQL-replikeringstrafiken. Mer information finns i [referens dokumentationen för MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .

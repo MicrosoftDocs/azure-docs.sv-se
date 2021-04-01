@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98234196"
 ---
 # <a name="azure-networking-services-overview"></a>Översikt över Azures nätverkstjänster
@@ -93,7 +93,7 @@ I det här avsnittet beskrivs nätverks tjänster i Azure som hjälper dig att s
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Privat Azure-länk
+### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
 Med [Azures privata länk](../private-link/private-link-overview.md) kan du få åtkomst till Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade/partner tjänster som ägs av en privat slut punkt i det virtuella nätverket.
 Trafik mellan ditt virtuella nätverk och tjänsten flyttar Microsoft stamnät nätverket. Det är inte längre nödvändigt att exponera tjänsten för det offentliga Internet. Du kan skapa en egen privat länk-tjänst i ditt virtuella nätverk och leverera den till dina kunder.
 
