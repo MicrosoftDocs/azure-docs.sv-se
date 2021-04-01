@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
 ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96499687"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Arbeta fjärran slutet: NVA (Network Virtual installation) för fjärrarbete
@@ -35,7 +35,7 @@ Alla större NVA-leverantörer i Azure Marketplace bör ha rekommendationer om s
 - **Antal instanser** – om du förväntar dig att ha ett stort antal användare och anslutningar, finns det gränser för hur stora NVA-instanser kan uppnå.  Överväg att distribuera flera virtuella dator instanser.
 - **IPSec VPN vs SSL VPN** -i allmänna IPSec-implementeringar av IPSec fungerar bättre än SSL VPN-implementeringar.  
 - **Licensiering** – kontrol lera att de program varu licenser som du har köpt för NVA-lösningen kommer att ta upp den plötsliga tillväxt som kan uppstå under COVID-19-epidemin.  Många NVA-licensierings program begränsar antalet anslutningar eller bandbredd som lösningen kan hantera.
-- **Accelererat nätverk** – Överväg en NVA-lösning som har stöd för accelererat nätverk.  Accelererat nätverk möjliggör SR-IOV (Single root I/O Virtualization) till en virtuell dator, vilket avsevärt förbättrar nätverkets prestanda. Den här högpresterande sökvägen kringgår värden från data Sök vägen, minskar svars tiden, Darr och processor belastningen för användning med de mest krävande nätverks belastningarna på VM-typer som stöds. Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimerade instans storlekar med två eller flera virtuella processorer.
+- **Accelererat nätverk** – Överväg en NVA-lösning som har stöd för accelererat nätverk.  Accelererat nätverk möjliggör Single Root I/O-virtualisering (SR-IOV) till en virtuell dator, vilket avsevärt förbättrar nätverkets prestanda. Den här högpresterande sökvägen kringgår värden från data Sök vägen, minskar svars tiden, Darr och processor belastningen för användning med de mest krävande nätverks belastningarna på VM-typer som stöds. Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimerade instans storlekar med två eller flera virtuella processorer.
 
 ## <a name="monitoring-resources"></a>Övervaka resurser
 
