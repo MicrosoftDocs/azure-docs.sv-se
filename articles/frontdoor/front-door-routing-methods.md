@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91449144"
 ---
 # <a name="front-door-routing-methods"></a>Metoder för routning av front dörr
@@ -69,7 +69,7 @@ Den viktade metoden möjliggör vissa användbara scenarier:
 * **Programmigrering till Azure**: skapa en backend-pool med både Azure och externa server delar. Justera vikten på Server delarna för att föredra de nya server delarna. Du kan gradvis konfigurera detta genom att låta de nya server delarna vara inaktiverade, och sedan tilldela dem de lägsta vikterna, så att det blir långsamt att öka det till nivåer där de tar störst trafik. Sedan inaktiverar du de mindre önskade Server delarna och tar bort dem från poolen.  
 * **Cloud-burst för ytterligare kapacitet**: utöka snabbt en lokal distribution till molnet genom att placera den bakom en front dörr. När du behöver extra kapacitet i molnet kan du lägga till eller aktivera fler server delar och ange vilken del av trafiken som går till varje server del.
 
-## <a name="session-affinity"></a><a name = "affinity"></a>Tillhörighet för session
+## <a name="session-affinity"></a><a name = "affinity"></a>Sessionstillhörighet
 Som standard, utan tillhörighet över sessioner, vidarebefordrar frontend-dörren begär Anden från samma klient till olika Server delar. Vissa tillstånds känsliga program eller i vissa scenarier som följer begär Anden från samma användare föredrar samma server del som bearbetade den ursprungliga begäran. Cookie-baserad sessionstillhörighet är användbart om du vill behålla en användarsession på samma serverdel. Med hanterade cookies kan Azures front dörr dirigera trafik från en användarsession till samma server del för bearbetning.
 
 Sessionstillhörighet kan aktiveras på nivån för klientdelsvärden, dvs. för var och en av dina konfigurerade domäner (eller underdomäner). När funktionen har aktiverats lägger Front Door till en cookie till användarens session. Med cookie-baserad sessionstillhörighet kan Front Door identifiera olika användare även bakom samma IP-adress, vilket i sin tur möjliggör en mer jämn fördelning av trafik mellan dina olika serverdelar.
