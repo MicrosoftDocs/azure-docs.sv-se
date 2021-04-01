@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f77e996e83819b78bb9ab4484b9a1d3653a97560
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88140980"
 ---
 # <a name="activity-management-overview"></a>Översikt över aktivitets hantering
@@ -28,7 +28,7 @@ Händelser spårar användar-och system aktivitet på CloudSimple-portalen. Hän
 
 Aviseringar är aviseringar om viktiga aktiviteter i din CloudSimple-miljö. Händelser som påverkar fakturerings-eller användar åtkomst visas som aviseringar.  Du kan bekräfta aviseringar från CloudSimple-portalen.
 
-## <a name="tasks"></a>Aktiviteter
+## <a name="tasks"></a>Uppgifter
 
 Uppgifter spårar alla användar åtgärder som tar mer än 30 sekunder att slutföra. Du kan övervaka förloppet för en aktivitet från CloudSimple-portalen.  För slutförda uppgifter omfattar informationen den totala tiden för slut för ande.
 
