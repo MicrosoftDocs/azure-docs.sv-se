@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 08c5b5d8351105744f7a912b352a940df3b4baa7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462135"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Rikt linjer för Azure Marketplace-lista
@@ -28,7 +28,7 @@ I den här artikeln beskrivs kraven och rikt linjerna för att lista nya erbjuda
 | 4 |  Beskrivning av erbjudande | <ul><li> Innehåller 2-3 stycken.</li><li>Lösnings erbjudandet är enkelt att förstå.</li><li>Är utan stavfel.</li><li>Är omfattande och fångar mål grupp, typ av användare och varför det är värdefullt (värde förslag).</li><li>Är i stycke form med korta meningar som är lätta att förstå.</li></ul> | <ul><li> Mål branschen anges (om det är relevant).</li><li>Teckenformatering med varje stycke rubrik som innehåller en mening eller en fras som sammanfattar det innehåll som följer och använder punkter, vid behov, för att betona viktiga fördelar. Målet är att läsaren snabbt ska förstå erbjudandet i ett lättanvänt format och inte behöver läsa långa stycken.</li><li>Det finns avstånd mellan varje stycke. Den läser som en bil broschyr. Det innebär att den är omfattande och beskriver bara erbjudandet, utan teknisk jargong. | 
 | 5 | Kategorier och branscher | <ul><li>Kategorier och under Kategorier måste matcha erbjudande funktioner </li><li>Välj inte kategorier/under kategorier som inte passar för dina erbjudande funktioner. </li></ul> | <ul><li>Välj upp till två kategorier, inklusive en primär och en sekundär kategori (valfritt).</li><li>Välj upp till två under Kategorier för varje primär och/eller sekundär kategori. Om ingen under kategori har valts kommer ditt erbjudande fortfarande att kunna identifieras i den valda kategorin.</li></ul> |
 | 6 | Avbildningar | <ul><li>Avbildnings kraven visas i Partner Center.</li><li>Texten som ingår i skärm bilden är läslig och bilden är klar. | Lösnings erbjudandet är enkelt att förstå. |
-| 7 | Videoklipp | <ul><li>Ingen video krävs, men om den anges måste den spelas upp utan fel.</li><li>Om den anges får den inte referera till konkurrent-företag *om* den inte demonstrerar en migrations lösning. |<ul><li>Vi rekommenderar att längden är 3 min. eller mer.</li><li>Lösnings erbjudandet är enkelt att förstå med video innehåll.</li><li>Tillhandahåller demo av lösnings funktioner. |
+| 7 | Video | <ul><li>Ingen video krävs, men om den anges måste den spelas upp utan fel.</li><li>Om den anges får den inte referera till konkurrent-företag *om* den inte demonstrerar en migrations lösning. |<ul><li>Vi rekommenderar att längden är 3 min. eller mer.</li><li>Lösnings erbjudandet är enkelt att förstå med video innehåll.</li><li>Tillhandahåller demo av lösnings funktioner. |
 | 8 | Lista status (list alternativ) | <ul><li>Måste vara märkt som en av följande typer: <ul><li>*Kontakta mig*</li><li>*Utvärdering* / *Hämta utvärderings version nu* / *Starta utvärdering* / *Test enhet*</li><li>*Köp nu* / *Hämta nu*</li></ul></ul> | Kunden kan enkelt förstå vad nästa steg är: <ol><li>Testa utvärderings versionen.</li><li>Köp nu.</li><li>Kontakta via e-post eller telefonnummer för att ordna för POC (proof of Concept), bedömning eller kortfattade.</li></ol> | 
 | 9 | Prissättning för lösning | Måste ha fliken prissättning/information i lösningen och priserna måste vara i den lokala valutan för partner lösnings erbjudandet. | Flera fakturerings alternativ bör vara tillgängliga med nivå priser för att ge kund alternativ. |
 | 10 | Läs mer | Länkar längst ned (under beskrivningen, inte Azure Marketplace-länkarna till vänster) leder till mer information om lösningen och är allmänt tillgängliga och visas korrekt. |    Länkar till särskilda objekt (till exempel Specifikations sidor på partner platsen) och inte bara partnerns start sida. | 

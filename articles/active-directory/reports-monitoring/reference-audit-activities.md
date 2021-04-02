@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89231154"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referens över granskningsaktiviteter i Azure AD
@@ -267,8 +267,8 @@ I den här artikeln står vilka granskningsaktiviteter som kan loggas in dina gr
 |Nyckel|Ta bort företagsinställningar|
 |Nyckel|Flytta ned partner|
 |Nyckel|Katalog borttagen|
-|Övrigt|Katalog borttagen permanent|
-|Övrigt|Katalog schemalagd för borttagning|
+|Annat|Katalog borttagen permanent|
+|Annat|Katalog schemalagd för borttagning|
 |Resurs|Flytta upp företag till partner|
 |Resurs|Rensa egenskaper för Rights Management|
 |Resurs|Ta bort partner från företag|
@@ -507,11 +507,11 @@ I den här artikeln står vilka granskningsaktiviteter som kan loggas in dina gr
 |Kataloghantering|Upphöj|
 |Kataloghantering|Borttaget|
 |Kataloghantering|Ändringar av rollinställningar|
-|Övrigt|ScanAlertsNow|
-|Övrigt|Registrera|
-|Övrigt|Ta bort behörighet|
-|Övrigt|UpdateAlertSettings|
-|Övrigt|UpdateCurrentState|
+|Annat|ScanAlertsNow|
+|Annat|Registrera|
+|Annat|Ta bort behörighet|
+|Annat|UpdateAlertSettings|
+|Annat|UpdateCurrentState|
 |Principhantering|Åtkomstgranskning avslutades|
 |Principhantering|Lägg till godkännare för begäran|
 |Principhantering|Lägg till granskare i åtkomstgranskning|
@@ -523,8 +523,8 @@ I den här artikeln står vilka granskningsaktiviteter som kan loggas in dina gr
 
 |Granskningskategori|Aktivitet|
 |---|---|
-|Övrigt|Skapa godkännande av begäran|
-|Övrigt|Ta bort åtkomstgranskning|
+|Annat|Skapa godkännande av begäran|
+|Annat|Ta bort åtkomstgranskning|
 |Användarhantering|Ta bort granskare från åtkomstgranskning|
 |Användarhantering|Begär tillämpning av granskningsresultat|
 |Användarhantering|Begär granskningsstopp|

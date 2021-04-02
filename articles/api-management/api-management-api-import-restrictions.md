@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91932642"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importbegränsningar och kända problem
@@ -31,7 +31,7 @@ När du importerar ett API kan du komma över vissa begränsningar eller identif
 
 Om du får fel när du importerar OpenAPI-dokumentet ser du till att du har validerat det i förväg. Du kan göra detta antingen med hjälp av designern i Azure Portal (design-frontend-OpenAPI specifikation) eller med ett verktyg från tredje part, till exempel <a href="https://editor.swagger.io">Swagger Editor</a>.
 
-### <a name="general"></a><a name="open-api-general"> </a>Allmänt
+### <a name="general"></a><a name="open-api-general"> </a>Allmän
 
 -   Obligatoriska parametrar i både sökväg och fråga måste ha unika namn. (I OpenAPI måste parameter namnet bara vara unikt inom en plats, till exempel sökväg, fråga, rubrik. Men i API Management tillåter vi att åtgärder diskrimineras av både sökväg och frågeparametrar (som OpenAPI inte stöder). Därför kräver vi att parameter namn är unika inom hela URL-mallen.)
 -   `\$ref` pekare kan inte referera till externa filer.
@@ -56,7 +56,7 @@ Om du får fel när du importerar OpenAPI-dokumentet ser du till att du har vali
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI-funktioner för import, uppdatering och export
 
-### <a name="general"></a><a name="open-import-export-general"> </a>Allmänt
+### <a name="general"></a><a name="open-import-export-general"> </a>Allmän
 
 -   API-definitioner som exporteras från API Management-tjänsten är främst avsedda för program som är externa för att API Management tjänster som behöver anropa API: n som finns i API Management tjänsten. Exporterade API-definitioner är inte avsedda att importeras igen till samma eller en annan API Management-tjänst. Information om konfigurations hantering av API-defiitions över olika tjänster/envionments finns i dokumentationen om hur du använder API Management tjänst med git. 
 
