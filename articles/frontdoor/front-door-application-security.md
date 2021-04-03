@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89399947"
 ---
 # <a name="application-layer-security-with-front-door"></a>Säkerhet på program nivå med front dörr
@@ -45,7 +45,7 @@ Den främre dörrens program skydd konfigureras på varje gräns miljö över he
 ## <a name="monitoring"></a>Övervakning
 Med front dörren kan du övervaka webb program mot attacker med real tids mått som är integrerade med Azure Monitor för att spåra aviseringar och enkelt övervaka trender.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Den främre dörrens säkerhet på program nivå är kostnads fri under för hands versionen.
 
 
