@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: fa65a7354112a2b220686372459b348d45832dd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96467376"
 ---
 Utför följande steg i det lokala webb gränssnittet på enheten. Det här steget tar ungefär 15 minuter, inklusive uppladdning av VPN-konfigurationsfilen (eller tjänst tag gen filen). 
