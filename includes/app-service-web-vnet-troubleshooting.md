@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999471"
 ---
 Funktionen är enkel att konfigurera, men det innebär inte att du kommer att få problem kostnads fritt. Om du stöter på problem med att komma åt den önskade slut punkten finns det vissa verktyg som du kan använda för att testa anslutningen från App-konsolen. Det finns två konsoler som du kan använda. Det ena är kudu-konsolen och den andra konsolen i Azure Portal. Om du vill komma åt kudu-konsolen från din app går du till **verktyg**  >  **kudu**. Du kan också komma åt Kudo-konsolen på [webbplats namn]. scm. azurewebsites. net. När webbplatsen har lästs in går du till fliken **fel söknings konsol** . Gå till **verktyg**-konsolen för att komma till den Azure Portal-värdbaserade konsolen från din app  >  .
