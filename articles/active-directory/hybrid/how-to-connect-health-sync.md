@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016991"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Övervaka Azure AD Connect-synkronisering med Azure AD Connect Health
@@ -88,7 +88,7 @@ Rapporten kategoriserar befintliga synkroniseringsfel i följande kategorier:
 | Verifieringsfel för data |Fel på grund av ogiltiga data, till exempel tecken som inte stöds i viktiga attribut såsom UserPrincipalName, formatfel som inte kan valideras innan de skrivs i Azure AD. |
 | Ändring av federerad domän | Fel när konton använder en annan federerad domän. |
 | Stora attribut |Fel när ett eller flera attribut är större än den tillåtna storleken, längden eller antalet. |
-| Övrigt |Alla andra fel som inte passar in i ovanstående kategorier. Baserat på feedback, kommer den här kategorin att delas upp i underkategorier. |
+| Annat |Alla andra fel som inte passar in i ovanstående kategorier. Baserat på feedback, kommer den här kategorin att delas upp i underkategorier. |
 
 ![ Rapportsammanfattning för synkroniseringsfel](./media/how-to-connect-health-sync/errorreport01.png)
 ![Rapportkategorier för synkroniseringsfel](./media/how-to-connect-health-sync/SyncErrorByTypes.PNG)

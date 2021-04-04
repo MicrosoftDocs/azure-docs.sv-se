@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92910550"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Så här lägger du till data uppsättningar till en befintlig resurs i Azure Data Share
