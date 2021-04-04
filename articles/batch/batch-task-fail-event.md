@@ -4,10 +4,10 @@ description: Referens för händelse vid misslyckad batch-aktivitet. Den här h�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: e13692b45ff5a049d0b724525ad6565d2b894a3d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91850820"
 ---
 # <a name="task-fail-event"></a>Händelse för misslyckad uppgift
