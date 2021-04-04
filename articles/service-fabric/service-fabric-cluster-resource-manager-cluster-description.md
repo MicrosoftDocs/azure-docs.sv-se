@@ -111,7 +111,7 @@ Anta att den här begränsningen ger garantin "maximal differens". Begränsninge
 
 Anta till exempel att vi har ett kluster med sex noder, konfigurerat med fem fel domäner och fem uppgraderings domäner.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+|  | FD0 | ADV | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
 | **UD1** |N6 |N2 | | | |
@@ -123,7 +123,7 @@ Anta nu att vi skapar en tjänst med en **TargetReplicaSetSize** (eller, för en
 
 Här är den layout vi fick och det totala antalet repliker per fel-och uppgraderings domän:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+|  | FD0 | ADV | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** | |R2 | | | |1 |
@@ -136,7 +136,7 @@ Den här layouten är bal anse rad för noder per fel domän och uppgraderings d
 
 Nu ska vi titta på vad som skulle hända om vi skulle använda N6 i stället för N2. Hur skulle replikerna distribueras sedan?
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+|  | FD0 | ADV | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R5 | | | | |1 |
@@ -149,7 +149,7 @@ Den här layouten strider mot vår definition av garantin "högsta differens" f�
 
 Om vi har valt N2 och N6 (i stället för N1 och N2) fick vi:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+|  | FD0 | ADV | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
@@ -164,7 +164,7 @@ Den här metoden för distribution av tillstånds känsliga repliker eller tills
 
 Å andra sidan kan den här metoden vara för strikt och inte tillåta att klustret använder alla resurser. Vissa noder kan inte användas för vissa klusterkonfigurationer. Detta kan orsaka att Service Fabric inte placerar dina tjänster, vilket resulterar i varnings meddelanden. I föregående exempel går det inte att använda några av klusternoderna (N6 i exemplet). Även om du har lagt till noder i klustret (N7-N10) placeras repliker/instanser endast på N1 – N5 på grund av begränsningar i fel-och uppgraderings domäner.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+|  | FD0 | ADV | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | |N10 |
 | **UD1** |N6 |N2 | | | |
@@ -206,7 +206,7 @@ Eftersom båda metoderna har starka sidor och svagheter har vi infört en anpass
 
 Vi går tillbaka till föregående exempel och förutsätter att ett kluster nu har åtta noder. Klustret är fortfarande konfigurerat med fem fel domäner och fem uppgraderings domäner och **TargetReplicaSetSize** -värdet för en tjänst som är värd för det klustret förblir fem.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+|  | FD0 | ADV | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
 | **UD1** |N6 |N2 | | | |
@@ -216,7 +216,7 @@ Vi går tillbaka till föregående exempel och förutsätter att ett kluster nu 
 
 Eftersom alla nödvändiga villkor är uppfyllda använder kluster resurs hanteraren logiken "kvorum" för att distribuera tjänsten. Detta aktiverar användningen av N6-N8. En möjlig tjänste distribution i det här fallet kan se ut så här:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+|  | FD0 | ADV | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R2 | | | | |1 |
@@ -229,7 +229,7 @@ Om tjänstens **TargetReplicaSetSize** -värde minskas till fyra (till exempel),
 
 I föregående layout, om värdet **TargetReplicaSetSize** är fem och N1 tas bort från klustret, blir antalet uppgraderings domäner lika med fyra. Kluster resurs hanteraren börjar med att använda "största differens"-logik eftersom antalet uppgraderings domäner inte ens delar tjänstens **TargetReplicaSetSize** -värde längre. Det innebär att repliken R1, när den skapades igen, har för att landa på N4 så att begränsningen för fel-och uppgraderings domänen inte överskrids.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+|  | FD0 | ADV | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |Saknas |Saknas |Saknas |Saknas |Saknas |Saknas |
 | **UD1** |R2 | | | | |1 |

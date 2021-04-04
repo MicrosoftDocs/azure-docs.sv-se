@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
 ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955657"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Uppgradera video analys i real tid på IoT Edge från 1,0 till 2,0
