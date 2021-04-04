@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
 ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928342"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Köra apache Sqoop-jobb med hjälp av .NET SDK för Apache Hadoop i HDInsight
