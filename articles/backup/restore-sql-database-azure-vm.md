@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du återställer SQL Server databas
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97734410"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Återställa SQL Server-databaser på virtuella Azure-datorer
