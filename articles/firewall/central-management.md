@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: victorh
 ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87084678"
 ---
 # <a name="azure-firewall-central-management"></a>Central hantering av Azure-brandvägg
@@ -31,7 +31,7 @@ En brand Väggs princip är en Azure-resurs som innehåller NAT-, nätverks-och 
  
 Du kan skapa brand Väggs principer och associationer med Azure Firewall Manager. Du kan dock också skapa och hantera en princip med hjälp av REST API, mallar, Azure PowerShell och CLI. När du har skapat en princip kan du associera den med en brand vägg i ett virtuellt WAN-nav och göra den till en *säker virtuell hubb* och/eller en brand vägg i ett virtuellt nätverk som gör det möjligt för IT- *hubben Virtual Network*.
 
-### <a name="pricing"></a>Prissättning
+### <a name="pricing"></a>Priser
 
 Principer faktureras baserat på brand Väggs associationer. En princip med noll eller en brand Väggs koppling är kostnads fri. En princip med flera brand Väggs associationer debiteras enligt ett fast pris. Mer information finns i [priser för Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/).
 

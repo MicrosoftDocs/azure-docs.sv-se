@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91443385"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>Migrera till den nya Elastic Database-jobb (förhands granskning)
@@ -93,7 +93,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 Nu när både gamla och nya jobb-cmdletar för elastiska initieras, migrerar du dina autentiseringsuppgifter, mål och jobb till den nya *jobb databasen*.
 
-### <a name="setup"></a>Installation
+### <a name="setup"></a>Konfiguration
 
 ```powershell
 $ErrorActionPreference = "Stop";
