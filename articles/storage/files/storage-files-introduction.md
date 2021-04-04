@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98070141"
 ---
 # <a name="what-is-azure-files"></a>Vad är Azure Files?
 Azure Files erbjuder fullständigt hanterade fil resurser i molnet som är tillgängliga via [SMB-protokollet (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) i branschen eller [NFS-protokollet (Network File System)](https://en.wikipedia.org/wiki/Network_File_System). Azure-filresurser kan monteras samtidigt av molnbaserade eller lokala distributioner. Azure Files SMB-filresurser är tillgängliga från Windows-, Linux-och macOS-klienter. Azure Files NFS-filresurser är tillgängliga från Linux-eller macOS-klienter. Dessutom kan Azure Files SMB-filresurser cachelagras på Windows-servrar med Azure File Sync för snabb åtkomst nära var data används.
 
-## <a name="videos"></a>Videoklipp
+## <a name="videos"></a>Video
 | Introduktion till Azure File Sync | Azure Files med Sync (antändning 2019)  |
 |-|-|
 | [![Skärm bild av introduktionen Azure File Sync Video – Klicka för att spela upp!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Skärm utsändning av Azure Files med Sync-presentation – Klicka för att spela upp!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
