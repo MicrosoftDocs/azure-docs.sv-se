@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148421"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Självstudie: Distribuera en webbapp från ett geo-replikerat Azure Container Registry
@@ -66,7 +66,7 @@ När distributionen är klar kan du visa programmet som körs genom att gå till
 
 Välj **App Services** i portalen, och sedan den webbapp som du etablerade i föregående steg. I det här exemplet får webbappen namnet *uniqueregistryname-westus*.
 
-Välj den hyperlänkade URL: en för webbappen längst upp till höger i **App Service** översikt för att visa det program som körs i webbläsaren.
+Markera webbappens hyperlänks-URL högst upp till höger i **App Service**-översikten, så att du kan se programmet som körs i din webbläsare.
 
 ![Skärm bild som visar App Service översikt med webb program-URL markerat.][deploy-app-portal-04]
 
@@ -96,7 +96,7 @@ Liksom tidigare kan du visa programmet som körs genom att gå till URL:en i web
 
 Välj **App Services** i portalen, och sedan den webbapp som du etablerade i föregående steg. I det här exemplet får webbappen namnet *uniqueregistryname-eastus*.
 
-Markera webbappens hyperlänks-URL högst upp till höger i **App Service**-översikten, så att du kan se programmet som körs i din webbläsare.
+Välj den hyperlänkade URL: en för webbappen längst upp till höger i **App Service översikt** för att visa det program som körs i webbläsaren.
 
 ![Webbappen i Linux-konfiguration i Azure Portal][deploy-app-portal-07]
 

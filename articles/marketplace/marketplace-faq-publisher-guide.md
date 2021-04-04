@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
 ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94660227"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Vanliga frågor om Microsofts kommersiella marknads plats
@@ -166,7 +166,7 @@ Den kommersiella marknaden har inte möjlighet att ange marginal för åter för
 
 Tillgängligheten för dina erbjudanden och planer definieras av kundernas fakturerings platser. Åter försäljare Välj först de kunder som de säljer till och välj sedan ditt erbjudande. Om en kund är på en plats som inte stöds är ditt erbjudande inte tillgängligt för dem.
 
-## <a name="billing-capabilities"></a>Fakturerings funktioner
+## <a name="billing-capabilities"></a>Faktureringsfunktioner
 
 ### <a name="whats-the-difference-between-transaction-and-monetization"></a>Vad är skillnaden mellan transaktion och monetarisering?
 
