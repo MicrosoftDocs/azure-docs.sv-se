@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94626902"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Använda en Azure-filresurs med Windows
@@ -202,5 +202,5 @@ När du har skapat den här registernyckeln måste du starta om servern för att
 ## <a name="next-steps"></a>Nästa steg
 Mer information om Azure Files finns på följande länkar:
 - [Planera för en Azure Files-distribution](storage-files-planning.md)
-- [VANLIGA FRÅGOR OCH SVAR](./storage-files-faq.md)
+- [Vanliga frågor och svar](./storage-files-faq.md)
 - [Felsökning i Windows](storage-troubleshoot-windows-file-connection-problems.md)

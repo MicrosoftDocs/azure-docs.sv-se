@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87420234"
 ---
 # <a name="create-or-modify-an-offer"></a>Skapa eller ändra ett erbjudande
@@ -293,7 +293,7 @@ Dessa kategorier och deras respektive nycklar gäller för Azure-appar, Virtual 
 | Stordata | Big-data | bigData | Big-data |
 | Förutsägelseanalys | förutsägande analys | förutsägande analys | förutsägande analys |
 | Real tids-/strömnings analys | Real tids strömnings analys | Real tids strömnings analys | Real tids strömnings analys |
-| Övrigt | other | annan – analys | other |
+| Annat | other | annan – analys | other |
 | ***AI + Machine Learning** _ | _*_ArtificialIntelligence_*_ | _*_AI – plus-Machine-Learning_*_ | _ *_AI-plus-Machine-Learning_** |
 | Robot tjänster | robot-tjänster | robot-tjänster | robot-tjänster |
 | Cognitive Services | kognitiva tjänster | kognitiva tjänster | kognitiva tjänster |
@@ -304,90 +304,90 @@ Dessa kategorier och deras respektive nycklar gäller för Azure-appar, Virtual 
 | Förberedelse av data | förberedelse av data | förberedelse av data | förberedelse av data |
 | Kunskaps utvinning | kunskap – gruv drift | kunskap – gruv drift | kunskap – gruv drift |
 | ML-åtgärder | ml-åtgärder | ml-åtgärder | ml-åtgärder |
-| Övrigt | övrigt-AI-plus-Machine-Learning | other | other |
+| Annat | övrigt-AI-plus-Machine-Learning | other | other |
 | ***Blockchain** _ | _*_Blockchain_*_ | _*_Blockchain_*_ | _ *_blockchain_** |
 | App-acceleratorer | app-acceleratorer | app-acceleratorer | app-acceleratorer |
 | Redovisning med en nod | Single-Node-Ledger | Single-Node-Ledger | Single-Node-Ledger |
 | Redovisning med flera noder | flera noder – redovisning | flera noder – redovisning | flera noder – redovisning |
 | Verktyg | tools | tools | tools |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Compute** _ | _*_Compute-SaaS_*_ | _*_Compute-Azure-Apps_*_ | _ *_Compute_** |
 | Program infrastruktur | appInfra | appInfrastructure | program infrastruktur |
 | Operativsystem | klientbegäran | klientbegäran | operativ system |
 | Cache | cache | cache | cache |
-| Övrigt | annan – beräkning | annan – beräkning | other |
+| Annat | annan – beräkning | annan – beräkning | other |
 | ***Behållare** _ | _*_artiklar_*_ | _*_artiklar_*_ | _ *_behållare_** |
 | Behållar appar | container – appar | container – appar | container – appar |
 | Behållar avbildningar | behållare – avbildningar | behållare – avbildningar | behållare – avbildningar |
 | Kom igång med behållare | Get-Started-with-containers | Get-Started-with-containers | Get-Started-with-containers |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Databaser** _ | _*_databaser – SaaS_*_ | _*_databas_*_ | _ *_databaser_** |
 | NoSQL-databaser | NoSQL – databaser | NoSQL – databaser | NoSQL – databaser |
 | Relationsdatabaser | Relations databaser | Relations databaser | Relations databaser |
 | Ledger/blockchain-databaser | Ledger-blockchain – databaser | Ledger-blockchain – databaser | Ledger-blockchain – databaser |
 | Data sjöar | data-sjöar | data-sjöar | data-sjöar |
 | -informationslager | data lager | data lager | data lager |
-| Övrigt | andra – databaser | andra – databaser | other |
+| Annat | andra – databaser | andra – databaser | other |
 | ***Utvecklarverktyg** _ | _*_Developer-Tools-SaaS_*_ | _*_utvecklare – verktyg – Azure-Apps_*_ | _ *_utvecklarverktyg-verktyg_** |
 | Verktyg | verktyg – utvecklare-verktyg | verktyg – utvecklare-verktyg | verktyg – utvecklare-verktyg |
 | Skript | alfabet | alfabet | alfabet |
 | Developer Service | devService | devService | Developer-Service |
-| Övrigt | övrigt-utvecklare-verktyg | övrigt-utvecklare-verktyg | other |
+| Annat | övrigt-utvecklare-verktyg | övrigt-utvecklare-verktyg | other |
 | ***DevOps** _ | _*_DevOps_*_ | _*_DevOps_*_ | _ *_DevOps_** |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Identitet** _ | _*_Autentiseringsidentitet_*_ | _*_Autentiseringsidentitet_*_ | _ *_identitet_** |
 | Åtkomsthantering | åtkomst hantering | åtkomst hantering | åtkomst hantering |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Integrering** _ | _*_samordning_*_ | _*_samordning_*_ | _ *_integration_** |
 | Meddelandefunktion | hantera | hantera | hantera |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Sakernas Internet** _ | _*_IoT_*_ | _*_Sakernas Internet – Azure-Apps_*_ | _ *_Sakernas Internet_** |
 | IoT Core-tjänster | Ej tillämpligt | IoT-Core – tjänster | IoT-Core – tjänster |
 | IoT Edge moduler | Ej tillämpligt | IoT-Edge-modules | IoT-Edge-modules |
 | IoT-lösningar | IoT-lösningar | IoT-lösningar | IoT-lösningar |
 | Visualisering av data analys & | data analys-och-visualisering | data analys-och-visualisering | data analys-och-visualisering |
 | IoT-anslutning | IoT – anslutning | IoT – anslutning | IoT – anslutning |
-| Övrigt | andra – Sakernas Internet | andra – Sakernas Internet | other |
+| Annat | andra – Sakernas Internet | andra – Sakernas Internet | other |
 | ***Den & hanterings verktyg** _ | _*_ITandAdministration_*_ | _*_IT-och-Management-tools-Azure-Apps_*_ | _ *_IT-och-Management-tools_** |
 | Hanteringslösningar | hantering – lösningar | hantering – lösningar | hantering – lösningar |
 | Företagsprogram | businessApplication | businessApplication | affärs program |
-| Övrigt | andra – IT-Management – verktyg | andra – IT-Management – verktyg | other |
+| Annat | andra – IT-Management – verktyg | andra – IT-Management – verktyg | other |
 | ***Övervaka & diagnostik** _ | _*_övervakning och diagnostik_*_ | _*_övervakning och diagnostik_*_ | _ *_övervakning-och-diagnostik_** |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Media** _ | _*_mellanhand_*_ | _*_mellanhand_*_ | _ *_medium_** |
 | Media Services | media-services | media-services | media-services |
 | Content Protection | innehålls skydd | innehålls skydd | innehålls skydd |
 | Live & strömning på begäran | Live-och-på-begäran-strömning | Live-och-på-begäran-strömning | Live-och-på-begäran-strömning |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Migrering** _ | _*_migreringsarkivet_*_ | _*_migreringsarkivet_*_ | _ *_migrering_** |
 | Datamigrering | data – migrering | data – migrering | data – migrering |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Mixad verklighet** _ | _*_Mixed-verklighet_*_ | _*_Mixed-verklighet_*_ | _ *_Mixed-verklighet_** |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Nätverk** _ | _*_nätverk_*_ | _*_nätverk_*_ | _ *_nätverk_** |
 | Utrustnings hanterare | apparat-chefer | apparat-chefer | apparat-chefer |
 | Anslutning | anslutning | anslutning | anslutning |
 | Brandväggar | brand väggar | brand väggar | brand väggar |
 | Lastbalanserare | belastnings utjämning | belastnings utjämning | belastnings utjämning |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Säkerhet** _ | _*_Bullet_*_ | _*_Bullet_*_ | _ *_säkerhet_** |
 | Identitets & åtkomst hantering | identitets-och åtkomst hantering | identitets-och åtkomst hantering | identitets-och åtkomst hantering |
 | Hotskydd | Hot-skydd | Hot-skydd | Hot-skydd |
 | Information Protection | informations skydd | informations skydd | informations skydd |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 | ***Lagring** _ | _*_lagring – SaaS_*_ | _*_lagring – Azure-Apps_*_ | _ *_lagring_** |
 | Säkerhets kopiering & återställning | säkerhetskopiering | säkerhetskopiering | säkerhets kopiering och återställning |
 | Enterprise hybrid Storage | Enterprise – hybrid-lagring | Enterprise – hybrid-lagring | Enterprise – hybrid-lagring |
 | Fildelning | fildelning | fildelning | fildelning |
 | Data livs cykel hantering | data – livs cykel – hantering | data – livs cykel – hantering | data – livs cykel – hantering |
-| Övrigt | annat – lagring | annat – lagring | other |
+| Annat | annat – lagring | annat – lagring | other |
 | ***Webb** _ | _*_World_*_ | _*_World_*_ | _ *_webb_** |
 | Bloggar & CMSs | Bloggar-och-CMSS | Bloggar-och-CMSS | Bloggar-och-CMSS |
 | Start Web Apps | Starter – Web-Apps | Starter – Web-Apps | Starter – Web-Apps |
 | ECommerce | eCommerce | eCommerce | eCommerce |
 | Web Apps ramverk | Web-Apps – ramverk | Web-Apps – ramverk | Web-Apps – ramverk |
 | Web Apps | webb-appar | webb-appar | webb-appar |
-| Övrigt | other | other | other |
+| Annat | other | other | other |
 ||||
 
 ### <a name="microsoft-appsource-categories"></a>Microsoft AppSource kategorier
@@ -399,44 +399,44 @@ Dessa kategorier och deras respektive nycklar är tillämpliga för SaaS, PowerB
 | ***Analys** _ | _*_tjänstprogrammet_*_ | _*_Analys_*_ | _ *_Analys_** |
 | Avancerad analys | avancerad – analys | avancerad – analys | avancerad – analys |
 | Rapportering av visualiserings & | visualisering – rapportering | visualisering – rapportering | visualisering – rapportering |
-| Övrigt | other | annan – analys | annan – analys |
+| Annat | other | annan – analys | annan – analys |
 | ***AI + Machine Learning** _ | _*_ArtificialIntelligence_*_ | _*_AI – plus-Machine-Learning – Dynamics_*_ | _ *_AI-plus-Machine-Learning-appsource_** |
 | AI för företag | AI – för företag | AI – för företag | AI – för företag |
 | Robot-appar | robot-appar | robot-appar | robot-appar |
-| Övrigt | övrigt-AI-plus-Machine-Learning | övrigt-AI-plus-Machine-Learning | övrigt-AI-plus-Machine-Learning |
+| Annat | övrigt-AI-plus-Machine-Learning | övrigt-AI-plus-Machine-Learning | övrigt-AI-plus-Machine-Learning |
 | ***Samarbete** _ | _*_Samarbete_*_ | _*_Samarbete_*_ | _ *_samarbete_** |
 | Kontakta & personer | kontakt – personer | kontakt – personer | kontakt och personer |
 | Mötes hantering | Mötes hantering | Mötes hantering | Mötes hantering |
 | Webbplats design & hantering | webbplats design – hantering | webbplats design – hantering | plats-design-och-hantering |
 | Aktivitet & projekt hantering | uppgift – projekt hantering | uppgift – projekt hantering | aktivitet-och-projekt-hantering |
 | Röst & video konferens | röst-video-konferenser | röst-video-konferenser | röst-och-video-konferenser |
-| Övrigt | annat samarbete | annat samarbete | other |
+| Annat | annat samarbete | annat samarbete | other |
 | ***Efterlevnad & Legal** _ | _*_Fastställ_*_ | _*_Fastställ_*_ | _ *_efterlevnad-och-Legal_** |
 | Skatte & granskning | skatte granskning | skatte granskning | skatt och-Audit |
 | Juridisk information | Juridisk information | Juridisk information | A4 |
 | Data, styrning & sekretess | data styrning – sekretess | data styrning – sekretess | data-styrning-och-sekretess |
 | Hälso & säkerhet | hälsa – säkerhet | hälsa – säkerhet | hälsa och säkerhet |
-| Övrigt | annan-efterlevnad – juridisk | annan-efterlevnad – juridisk | other |
+| Annat | annan-efterlevnad – juridisk | annan-efterlevnad – juridisk | other |
 | ***Kund tjänst** _ | _*_CustomerService_*_ | _*_CustomerService_*_ | _ *_kund-service_** |
 | Kontakta Center | Kontakta-Center | Kontakta-Center | Kontakta-Center |
 | Ansikte till ansikts tjänst | ansikts-till-ansikts-tjänst | ansikts-till-ansikts-tjänst | ansikts-till-ansikts-tjänst |
 | Säkerhetskopiera Office & Employee service | tillbaka – Office – personal-service | tillbaka – Office – personal-service | Back-Office-och-Employee-service |
 | Hantering av kunskaps & | kunskap – ärende hantering | kunskap – ärende hantering | Knowledge-och-Case-management |
 | Socialt medium & Omnichannel-engagemang | social-media – Omnichannel – engagemang | social-media – Omnichannel – engagemang | social-media-och-Omnichannel – engagemang |
-| Övrigt | annan – kund service | annan – kund service | other |
+| Annat | annan – kund service | annan – kund service | other |
 | ***Ekonomi** _ | _*_Finance_*_ | _*_Finance_*_ | _ *_ekonomi_** |
 | Redovisning | redovisning | redovisning | redovisning |
 | Tillgångshantering | till gång – hantering | till gång – hantering | till gång – hantering |
 | Analys, konsolidering & rapportering | analys – konsolidering – rapportering | analys – konsolidering – rapportering | analys – konsolidering och rapportering |
 | Kredit & samlingar | kredit – samlingar | kredit – samlingar | kredit-och-samlingar |
 | Hantering av & riskhantering | kompatibilitet – risk hantering | kompatibilitet – risk hantering | efterlevnad-och-risk-hantering |
-| Övrigt | annan – ekonomi | annan – ekonomi | other |
+| Annat | annan – ekonomi | annan – ekonomi | other |
 | ***Personal resurser** _ | _*_Personal_*_ | _*_Personal_*_ | _ *_personal – resurser_** |
 | Personal-förvärv | personal – förvärv | personal – förvärv | personal – förvärv |
 | Hantering av personal | personal – hantering | personal – hantering | personal – hantering |
 | HR-åtgärder | HR-åtgärder | HR-åtgärder | HR-åtgärder |
 | Personal planering & analys | personal planering – analys | personal planering – analys | personal – planering och analys |
-| Övrigt | andra – mänskliga resurser | andra – mänskliga resurser | other |
+| Annat | andra – mänskliga resurser | andra – mänskliga resurser | other |
 | ***Sakernas Internet** _ | _*_IoT_*_ | _*_Sakernas Internet – Dynamics_*_ | _ *_Sakernas Internet-appsource_** |
 | & åtgärder för till gångs hantering | till gång – hantering – åtgärder | till gång – hantering – åtgärder | till gång – hantering och åtgärder |
 | Anslutna produkter | anslutna – produkter | anslutna – produkter | anslutna – produkter |
@@ -446,11 +446,11 @@ Dessa kategorier och deras respektive nycklar är tillämpliga för SaaS, PowerB
 | Säkerhet & säkerhet | säkerhet – säkerhet | säkerhet – säkerhet | säkerhet och säkerhet |
 | & resurser för smart infrastruktur | Smart-infrastruktur – resurser | Smart-infrastruktur – resurser | smarta-infrastruktur-och-resurser |
 | Fordon & Mobility | fordon – mobilitet | fordon – mobilitet | fordon och mobilitet |
-| Övrigt | andra – Sakernas Internet | andra – Sakernas Internet | other |
+| Annat | andra – Sakernas Internet | andra – Sakernas Internet | other |
 | ***Den & hanterings verktyg** _ | _*_ITandAdministration_*_ | _*_ITandAdministration_*_ | _ *_IT-och-Management-tools_** |
 | Hanteringslösningar | hantering – lösningar | hantering – lösningar | hantering – lösningar |
 | Företagsprogram | businessApplication | businessApplication | affärs program |
-| Övrigt | andra – IT-Management – verktyg | andra – IT-Management – verktyg | other |
+| Annat | andra – IT-Management – verktyg | andra – IT-Management – verktyg | other |
 | ***Marknadsföring** _ | _*_Marketing_*_ | _*_Marketing_*_ | _ *_marknadsföring_** |
 | Annons | annons | annons | annons |
 | Analys | analys-marknadsföring | analys-marknadsföring | analys-marknadsföring |
@@ -459,7 +459,7 @@ Dessa kategorier och deras respektive nycklar är tillämpliga för SaaS, PowerB
 | L2-händelser & resurs hantering | händelser-resurs hantering | händelser-resurs hantering | händelser-och-resurs-hantering |
 | Analys av forsknings & | forsknings analys | forsknings analys | forskning och analys |
 | Sociala medier | sociala medier | sociala medier | sociala medier |
-| Övrigt | annan – marknadsföring | annan – marknadsföring | other |
+| Annat | annan – marknadsföring | annan – marknadsföring | other |
 | ***Åtgärder & leverans kedja** _ | _*_OperationsSupplyChain_*_ | _*_OperationsSupplyChain_*_ | _ *_drift-och-leverans-kedja_** |
 | Produktions hantering för till gång & | till gång – produktion – hantering | till gång – produktion – hantering | till gång-och-produktion-hantering |
 | Efterfrågeprognostisering | efter frågan – Prognosticering | efter frågan – Prognosticering | efter frågan – Prognosticering |
@@ -468,14 +468,14 @@ Dessa kategorier och deras respektive nycklar är tillämpliga för SaaS, PowerB
 | Hantering av Quality &-tjänster | Quality-service – hantering | Quality-service – hantering | hantering av kvalitet och tjänst |
 | Försäljning & order hantering | försäljning – order hantering | försäljning – order hantering | försäljning och beställning – hantering |
 | Transport & lager hantering | transport – lager hantering | transport – lager hantering | transport-och-lager-hantering |
-| Övrigt | andra åtgärder – leverans kedja | andra åtgärder – leverans kedja | other |
+| Annat | andra åtgärder – leverans kedja | andra åtgärder – leverans kedja | other |
 | ***Produktivitet** _ | _*_Produktivitet_*_ | _*_Produktivitet_*_ | _ *_produktivitet_** |
 | & hantering av innehålls skapande | innehålls skapande – hantering | innehålls skapande – hantering | innehålls skapande och hantering |
 | Språk & Översättning | språk översättning | språk översättning | språk-och-översättning |
 | Dokumenthantering | dokument hantering | dokument hantering | dokument hantering |
 | E-posthantering | e-posthantering | e-posthantering | e-posthantering |
 | Sök & referens | Sök referens | Sök referens | Sök-och-referens |
-| Övrigt | annan – produktivitet | annan – produktivitet | other |
+| Annat | annan – produktivitet | annan – produktivitet | other |
 | Spelifiering | Spelifiering | Spelifiering | spelifieringsprogram |
 | ***Försäljning** _ | _*_Sales_*_ | _*_Sales_*_ | _ *_Försäljning_** |
 | Telefonförsäljning | telefonförsäljning | telefonförsäljning | telefonförsäljning |
@@ -485,11 +485,11 @@ Dessa kategorier och deras respektive nycklar är tillämpliga för SaaS, PowerB
 | E-handel | e-handel | e-handel | e-handel |
 | Affärs data-anrikning | affärs data – anrikning | affärs data – anrikning | affärs data – anrikning |
 | Försäljnings aktivering | försäljning – aktivering | försäljning – aktivering | försäljning – aktivering |
-| Övrigt | annan – försäljning | annan – försäljning | annan – försäljning |
+| Annat | annan – försäljning | annan – försäljning | annan – försäljning |
 | ***Geolokalisering** _ | _*_geoplats_*_ | _*_geoplats_*_ | _ *_geolokalisering_** |
 | Maps | maps | maps | maps |
 | Nyheter & väder | Nyheter-och-väder | Nyheter-och-väder | Nyheter-och-väder |
-| Övrigt | annan – geolokalisering | annan – geolokalisering | annan – geolokalisering |
+| Annat | annan – geolokalisering | annan – geolokalisering | annan – geolokalisering |
 ||||
 
 ### <a name="microsoft-appsource-industries"></a>Microsoft AppSource branscher
