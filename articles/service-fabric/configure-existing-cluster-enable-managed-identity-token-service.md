@@ -4,10 +4,10 @@ description: Så här aktiverar du stöd för hanterade identiteter i ett befint
 ms.topic: article
 ms.date: 03/11/2019
 ms.openlocfilehash: dc341688cae6d98f53be10351e4e4572a3539e4e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98790047"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurera stöd för hanterad identitet i ett befintligt Service Fabric-kluster
