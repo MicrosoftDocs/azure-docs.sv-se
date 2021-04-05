@@ -1,5 +1,5 @@
 ---
-title: Programmerings åtkomst till vanliga frågor om analys data
+title: Vanliga frågor om programmatisk åtkomst till analysdata
 description: Vanliga frågor och svar om program mässig åtkomst till analys data i Partner Center för dina kommersiella Marketplace-erbjudanden.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 393a718632138f4ffcf26e4875eea9ba3d886897
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102584182"
 ---
-# <a name="programmatic-access-of-analytics-data-common-questions"></a>Programmerings åtkomst till vanliga frågor om analys data
+# <a name="programmatic-access-of-analytics-data-common-questions"></a>Vanliga frågor om programmatisk åtkomst till analysdata
 
 Den här artikeln innehåller vanliga frågor och svar om hur du program mässigt får åtkomst till Analytics-data i Partner Center för dina kommersiella Marketplace-erbjudanden.
 
