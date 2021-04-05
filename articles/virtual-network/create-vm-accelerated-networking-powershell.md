@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
 ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919977"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Skapa en virtuell Windows-dator med accelererat nätverk med Azure PowerShell
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur du skapar en virtuell Windows-dat
 > [!NOTE]
 > Information om hur du använder accelererat nätverk med en virtuell Linux-dator finns i [skapa en virtuell Linux-dator med accelererat nätverk](create-vm-accelerated-networking-cli.md).
 
-Accelererat nätverk möjliggör SR-IOV (Single root I/O Virtualization) till en virtuell dator, vilket avsevärt förbättrar nätverkets prestanda. Med den här högpresterande sökvägen kringgås värden från data Sök vägen, vilket minskar svars tiden, skakningarna och processor användningen för de mest krävande nätverks belastningarna på VM-typer som stöds. Följande diagram illustrerar hur två virtuella datorer kommunicerar med och utan accelererat nätverk:
+Accelererat nätverk möjliggör Single Root I/O-virtualisering (SR-IOV) till en virtuell dator, vilket avsevärt förbättrar nätverkets prestanda. Med den här högpresterande sökvägen kringgås värden från datasökvägen, vilket minskar svarstiden, jitter och processoranvändningen för de mest krävande nätverksbelastningarna på VM-typer som stöds. Följande diagram illustrerar hur två virtuella datorer kommunicerar med och utan accelererat nätverk:
 
 ![Kommunikation mellan virtuella Azure-datorer med och utan accelererat nätverk](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -57,7 +57,7 @@ Följande distributioner stöds direkt från Azure-galleriet:
 - **Windows Server 2016 Datacenter** 
 - **Windows Server 2012 R2 Datacenter**
 
-## <a name="limitations-and-constraints"></a>Begränsningar och begränsningar
+## <a name="limitations-and-constraints"></a>Begränsningar och restriktioner
 
 ### <a name="supported-vm-instances"></a>Virtuella dator instanser som stöds
 
