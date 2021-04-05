@@ -17,15 +17,15 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919960"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Skapa en virtuell Linux-dator med accelererat nätverk med Azure CLI
 
-I den här självstudien får du lära dig hur du skapar en virtuell Linux-dator (VM) med accelererat nätverk. Information om hur du skapar en virtuell Windows-dator med accelererat nätverk finns i [skapa en virtuell Windows-dator med accelererat nätverk](create-vm-accelerated-networking-powershell.md). Accelererat nätverk möjliggör SR-IOV (Single root I/O Virtualization) till en virtuell dator, vilket avsevärt förbättrar nätverkets prestanda. Den här högpresterande sökvägen kringgår värden från Datapath, minskar svars tiden, skakningarna och CPU-användningen, för användning med de mest krävande nätverks belastningarna på VM-typer som stöds. Följande bild visar kommunikationen mellan två virtuella datorer med och utan accelererat nätverk:
+I den här självstudien får du lära dig hur du skapar en virtuell Linux-dator (VM) med accelererat nätverk. Information om hur du skapar en virtuell Windows-dator med accelererat nätverk finns i [skapa en virtuell Windows-dator med accelererat nätverk](create-vm-accelerated-networking-powershell.md). Accelererat nätverk möjliggör Single Root I/O-virtualisering (SR-IOV) till en virtuell dator, vilket avsevärt förbättrar nätverkets prestanda. Den här högpresterande sökvägen kringgår värden från Datapath, minskar svars tiden, skakningarna och CPU-användningen, för användning med de mest krävande nätverks belastningarna på VM-typer som stöds. Följande bild visar kommunikationen mellan två virtuella datorer med och utan accelererat nätverk:
 
 ![Jämförelse](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
