@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94366731"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Koncept med hög tillgänglighet i Azure Database for PostgreSQL-flexibel Server
@@ -97,8 +97,8 @@ Flexibla servrar som är konfigurerade med hög tillgänglighet replikerar data 
 
 ## <a name="zone-redundant-high-availability---limitations"></a>Zon redundant hög tillgänglighet – begränsningar
 
--   Hög tillgänglighet stöds inte med burst-beräknings nivå.
--   Hög tillgänglighet stöds bara i regioner där flera zoner är tillgängliga.
+-   Hög tillgänglighet stöds inte med burstbar beräkningsnivå.
+-   Hög tillgänglighet stöds endast i regioner där flera zoner är tillgängliga.
 -   På grund av synkron replikering till en annan tillgänglighets zon kan program uppleva förhöjda Skriv-och bekräftelse svar.
 
 -   Det går inte att använda standby-repliker för Läs frågor.
