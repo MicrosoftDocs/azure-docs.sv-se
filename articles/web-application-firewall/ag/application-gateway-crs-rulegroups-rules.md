@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98746517"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Regel grupper och regler för brand vägg för webb program brand vägg
@@ -45,7 +45,7 @@ Boknings system 3,1 innehåller 13 regel grupper som visas i följande tabell. V
 
 |Regelgrupp|Beskrivning|
 |---|---|
-|**[Allmänt](#general-31)**|Allmän grupp|
+|**[Redovisningsjournalmallar](#general-31)**|Allmän grupp|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Låsnings metoder (placering, korrigering)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|Skydda mot port-och miljö skannrar|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|Skydda mot protokoll-och kodnings problem|
@@ -65,7 +65,7 @@ Boknings system 3,0 innehåller 12 regel grupper som visas i följande tabell. V
 
 |Regelgrupp|Beskrivning|
 |---|---|
-|**[Allmänt](#general-30)**|Allmän grupp|
+|**[Redovisningsjournalmallar](#general-30)**|Allmän grupp|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Låsnings metoder (placering, korrigering)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|Skydda mot port-och miljö skannrar|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|Skydda mot protokoll-och kodnings problem|

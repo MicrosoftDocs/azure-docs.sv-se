@@ -9,10 +9,10 @@ ms.date: 04/28/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 24a07109fc8f4d6ebd283dee7ee00107f0eb49b7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95553514"
 ---
 Du kan använda REST API [Hämta slut punkts hälsa](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) för att få hälso status för slut punkterna. Vi rekommenderar att du använder [IoT Hub routnings mått](../articles/iot-hub/monitor-iot-hub-reference.md#routing-metrics) som är relaterade till routnings meddelande svars tid för att identifiera och felsöka fel när slut punktens hälso tillstånd är avstängt eller dåligt Mer information om hur du använder IoT Hub mått finns i [övervaka IoT Hub](../articles/iot-hub/monitor-iot-hub.md).
