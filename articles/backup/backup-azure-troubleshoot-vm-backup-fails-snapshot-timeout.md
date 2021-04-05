@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519613"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Felsöka Azure Backup fel: problem med agenten eller tillägget
@@ -111,9 +111,9 @@ Felet uppstår när ett av de misslyckade tilläggen placerar den virtuella dato
 **Felkod**: UserErrorRpCollectionLimitReached <br>
 **Fel meddelande**: Max gränsen för återställnings punkt samlingen har uppnåtts. <br>
 
-- Det här problemet kan inträffa om en lås på återställnings punkt resurs gruppen förhindrar automatisk rensning av återställnings punkter.
-- Det här problemet kan också inträffa om flera säkerhets kopieringar utlöses per dag. För närvarande rekommenderar vi bara en säkerhets kopiering per dag, eftersom återställnings punkterna för återställnings punkten behålls i 1-5 dagar per konfigurerad kvarhållning av ögonblicks bilder och endast 18 snabb RPs kan associeras med en virtuell dator vid en viss tidpunkt. <br>
-- Antalet återställnings punkter i återställnings punkt samlingar och resurs grupper för en virtuell dator får inte överstiga 18. Ta bort befintliga återställnings punkter för att skapa en ny återställnings punkt.
+- Det här problemet kan inträffa om det finns ett lås på återställningspunktens resursgrupp som förhindrar automatisk rensning av återställningspunkter.
+- Det här problemet kan även inträffa om flera säkerhetskopieringar utlöses per dag. För närvarande rekommenderar vi bara en säkerhetskopiering per dag eftersom de omedelbara återställningspunkterna behålls i 1–5 dagar per konfigurerad kvarhållning av ögonblicksbilder och endast 18 snabba RP:er kan associeras med en virtuell dator samtidigt. <br>
+- Antalet återställnings punkter i återställnings punkt samlingar och resurs grupper för en virtuell dator får inte överstiga 18. Ta bort befintliga återställningspunkter för att skapa en ny återställningspunkt.
 
 Rekommenderad åtgärd:<br>
 Lös problemet genom att ta bort låset på den virtuella datorns resurs grupp och försök igen för att utlösa rensning.
@@ -181,7 +181,7 @@ Det senaste säkerhets kopierings jobbet misslyckades på grund av att en befint
      - Om du vill avbryta säkerhets kopierings jobbet högerklickar du på säkerhets kopierings jobbet och väljer **Avbryt** eller Använd [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Om du har konfigurerat om säkerhets kopian i ett annat valv kontrollerar du att inga säkerhets kopierings jobb körs i det gamla valvet. Avbryt säkerhets kopierings jobbet om det finns.
      - Om du vill avbryta säkerhets kopierings jobbet högerklickar du på säkerhets kopierings jobbet och väljer **Avbryt** eller Använd [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
-4. Försök säkerhetskopiera igen.
+4. Försök att säkerhetskopiera igen.
 
 Om den schemalagda säkerhets kopierings åtgärden tar längre tid, i konflikt med nästa säkerhets kopierings konfiguration, granskar du de [bästa metoderna](backup-azure-vms-introduction.md#best-practices), [säkerhets kopierings prestanda](backup-azure-vms-introduction.md#backup-performance)och [återställnings överväganden](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 

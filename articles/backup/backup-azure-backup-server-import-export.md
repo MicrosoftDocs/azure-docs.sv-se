@@ -4,10 +4,10 @@ description: Med Azure Backup kan du skicka data från nätverket med Azure impo
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 006c0fa4d67c9a85426d7a007912df65876313da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98701821"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Arbets flöde för offline-säkerhetskopiering för DPM och Azure Backup Server (MABS)
