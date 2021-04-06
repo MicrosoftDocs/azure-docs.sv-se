@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: a99d41f5f9fc9538aaf563bd3ae56075d269c94a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97584654"
 ---
 # <a name="pass-an-identity-provider-access-token-to-your-application-in-azure-active-directory-b2c"></a>Skicka en Identity Provider-åtkomsttoken till ditt program i Azure Active Directory B2C

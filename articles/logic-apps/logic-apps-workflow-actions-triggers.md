@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784316"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schema referens guide för utlösare och åtgärds typer i Azure Logic Apps
@@ -74,7 +74,7 @@ Varje utlösnings typ har ett annat gränssnitt och indata som definierar utlös
 
 | Utlösartyp | Beskrivning | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | Kontrollerar eller *avsöker* varje slut punkt. Den här slut punkten måste följa ett angivet Utlösar-kontrakt antingen genom att använda ett `202` asynkront mönster eller genom att returnera en matris. | 
+| [**INKOMMANDE**](#http-trigger) | Kontrollerar eller *avsöker* varje slut punkt. Den här slut punkten måste följa ett angivet Utlösar-kontrakt antingen genom att använda ett `202` asynkront mönster eller genom att returnera en matris. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Skapar en slut punkt som kan anropas för din Logic app, men anropar den angivna URL: en för registrering eller avregistrering. |
 | [**Upprepning**](#recurrence-trigger) | Utlöses baserat på ett definierat schema. Du kan ange ett framtida datum och tid för att lösa den här utlösaren. Utifrån frekvensen kan du också ange tider och dagar för att köra arbets flödet. | 
 | [**Förfrågan**](#request-trigger)  | Skapar en slut punkt som kan anropas för din Logic app och kallas även för en "Manuell" utlösare. Se till exempel [anrop, utlösare eller kapslade arbets flöden med HTTP-slutpunkter](../logic-apps/logic-apps-http-endpoint.md). | 
@@ -822,10 +822,10 @@ Här följer några vanliga åtgärds typer:
 | [**Compose**](#compose-action) | Skapar ett enstaka utdata från indata, vilket kan ha olika typer. | 
 | [**Kör JavaScript-kod**](#run-javascript-code) | Kör kods tycken med JavaScript-kod som passar inom vissa villkor. Kod krav och mer information finns i [lägga till och köra kodfragment med infogad kod](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Funktioner**](#function-action) | Anropar en Azure-funktion. | 
-| [**HTTP**](#http-action) | Anropar en HTTP-slutpunkt. | 
+| [**INKOMMANDE**](#http-action) | Anropar en HTTP-slutpunkt. | 
 | [**Anslut**](#join-action) | Skapar en sträng från alla objekt i en matris och avgränsar objekten med ett angivet avgränsnings tecken. | 
 | [**Parsa JSON**](#parse-json-action) | Skapar användarvänliga tokens från egenskaper i JSON-innehåll. Du kan sedan referera till dessa egenskaper genom att inkludera tokens i din Logic app. | 
-| [**Fråga**](#query-action) | Skapar en matris från objekt i en annan matris baserat på ett villkor eller filter. | 
+| [**Frågeterm**](#query-action) | Skapar en matris från objekt i en annan matris baserat på ett villkor eller filter. | 
 | [**Svarsåtgärder**](#response-action) | Skapar ett svar på ett inkommande samtal eller en begäran. | 
 | [**Välj**](#select-action) | Skapar en matris med JSON-objekt genom att transformera objekt från en annan matris baserat på den angivna kartan. | 
 | [**Tabell**](#table-action) | Skapar en CSV-eller HTML-tabell från en matris. | 
