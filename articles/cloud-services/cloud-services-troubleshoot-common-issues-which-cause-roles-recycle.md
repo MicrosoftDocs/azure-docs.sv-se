@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98741170"
 ---
 # <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>Vanliga problem som gör att Azure Cloud Service (klassiska)-roller kan återanvändas
@@ -68,4 +68,4 @@ Visa fler scenarier för roll åter användning i [Kevin Williamsons blogg serie
 [RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
 [OnStart]: /previous-versions/azure/reference/ee772851(v=azure.100)
 [OnStop]: /previous-versions/azure/reference/ee772844(v=azure.100)
-[Kör]: /previous-versions/azure/reference/ee772746(v=azure.100)
+[Fungerar]: /previous-versions/azure/reference/ee772746(v=azure.100)
