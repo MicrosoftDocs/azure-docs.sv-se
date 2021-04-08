@@ -84,7 +84,7 @@ Kör skriptet så här:
     **Exempel**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Lägg till virtuella datorer i backend-pooler för Standard Load Balancer
