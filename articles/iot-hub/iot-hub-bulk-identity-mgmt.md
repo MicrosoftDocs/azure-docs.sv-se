@@ -10,10 +10,10 @@ ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92536087"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Massimportera och massexportera IoT Hub-enhetsidentiteter
@@ -265,7 +265,7 @@ Använd den valfria egenskapen **importMode** i importens serialiserings data f�
 | importMode | Beskrivning |
 | --- | --- |
 | **createOrUpdate** |Om det inte finns någon enhet med det angivna **ID: t** är den nyligen registrerad. <br/>Om enheten redan finns skrivs befintlig information över med angivna indata utan hänsyn till **etag** -värdet. <br> Användaren kan välja att ange dubbla data tillsammans med enhets data. Dubbla etag, om det anges, bearbetas oberoende av enhetens etag. Om det finns ett matchnings fel med de befintliga dubbla etag-filerna skrivs ett fel till logg filen. |
-| **fram** |Om det inte finns någon enhet med det angivna **ID: t** är den nyligen registrerad. <br/>Om enheten redan finns skrivs ett fel till logg filen. <br> Användaren kan välja att ange dubbla data tillsammans med enhets data. Dubbla etag, om det anges, bearbetas oberoende av enhetens etag. Om det finns ett matchnings fel med de befintliga dubbla etag-filerna skrivs ett fel till logg filen. |
+| **skapa** |Om det inte finns någon enhet med det angivna **ID: t** är den nyligen registrerad. <br/>Om enheten redan finns skrivs ett fel till logg filen. <br> Användaren kan välja att ange dubbla data tillsammans med enhets data. Dubbla etag, om det anges, bearbetas oberoende av enhetens etag. Om det finns ett matchnings fel med de befintliga dubbla etag-filerna skrivs ett fel till logg filen. |
 | **uppdatera** |Om det redan finns en enhet med det angivna **ID: t** skrivs befintlig information över med de angivna indata utan hänsyn till **etag** -värdet. <br/>Om enheten inte finns skrivs ett fel till logg filen. |
 | **updateIfMatchETag** |Om det redan finns en enhet med det angivna **ID: t** skrivs befintlig information över med de angivna indata endast om det finns en **etag** -matchning. <br/>Om enheten inte finns skrivs ett fel till logg filen. <br/>Om det finns en **etag** -matchning, skrivs ett fel till logg filen. |
 | **createOrUpdateIfMatchETag** |Om det inte finns någon enhet med det angivna **ID: t** är den nyligen registrerad. <br/>Om enheten redan finns skrivs befintlig information över med angivna indata endast om det finns en **etag** -matchning. <br/>Om det finns en **etag** -matchning, skrivs ett fel till logg filen. <br> Användaren kan välja att ange dubbla data tillsammans med enhets data. Dubbla etag, om det anges, bearbetas oberoende av enhetens etag. Om det finns ett matchnings fel med de befintliga dubbla etag-filerna skrivs ett fel till logg filen. |

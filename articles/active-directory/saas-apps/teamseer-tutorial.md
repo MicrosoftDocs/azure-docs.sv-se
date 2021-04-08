@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Självstudie: Azure Active Directory integrering med TeamSeer
@@ -120,13 +120,13 @@ Utför följande steg för att konfigurera enkel inloggning med TeamSeer i Azure
 
     c. Utloggnings-URL
 
-### <a name="configure-teamseer-single-sign-on"></a>Konfigurera TeamSeer Single Sign-On
+### <a name="configure-teamseer-single-sign-on&quot;></a>Konfigurera TeamSeer Single Sign-On
 
 1. Logga in på din TeamSeer-företags webbplats som administratör i ett annat webbläsarfönster.
 
 1. Gå till **personal administration**.
 
-    ![Skärm bild som visar den H R-administratör som valts från fönstret TeamSeer.](./media/teamseer-tutorial/ic789634.png "PERSONAL administratör")
+    ![Skärm bild som visar den H R-administratör som valts från fönstret TeamSeer.](./media/teamseer-tutorial/ic789634.png &quot;PERSONAL administratör")
 
 1. Klicka på **Konfigurera**.
 
@@ -205,7 +205,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-teamseer-test-user"></a>Skapa TeamSeer test användare
+### <a name="create-teamseer-test-user&quot;></a>Skapa TeamSeer test användare
 
 Om du vill att Azure AD-användare ska kunna logga in på TeamSeer måste de tillhandahållas i ShiftPlanning. När det gäller TeamSeer är etableringen en manuell uppgift.
 
@@ -215,7 +215,7 @@ Om du vill att Azure AD-användare ska kunna logga in på TeamSeer måste de til
 
 1. Gå till **personal admin- \> användare** och klicka sedan på **Kör guiden Ny användare**.
 
-    ![Skärm bild som visar fliken H R admin där du kan välja en guide som ska köras.](./media/teamseer-tutorial/ic789640.png "PERSONAL administratör")
+    ![Skärm bild som visar fliken H R admin där du kan välja en guide som ska köras.](./media/teamseer-tutorial/ic789640.png &quot;PERSONAL administratör")
 
 1. I avsnittet **användar information** utför du följande steg:
 
