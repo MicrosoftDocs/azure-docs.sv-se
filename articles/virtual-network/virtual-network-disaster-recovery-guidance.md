@@ -16,10 +16,10 @@ ms.date: 05/16/2016
 ms.author: narayan
 ms.reviewer: aglick
 ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67876175"
 ---
 # <a name="virtual-network--business-continuity"></a>Virtual Network – affärs kontinuitet
@@ -29,7 +29,7 @@ En Virtual Network (VNet) är en logisk representation av ditt nätverk i molnet
 
 Ett VNet skapas inom en regions omfång. Du kan *skapa* virtuella nätverk med samma adress utrymme i två olika regioner (till exempel USA, östra och västra USA), men eftersom de har samma adress utrymme kan du inte ansluta dem till varandra. 
 
-## <a name="business-continuity"></a>Verksamhetskontinuitet
+## <a name="business-continuity"></a>Affärskontinuitet
 
 Det kan finnas flera olika sätt att avbryta ditt program. En region kan vara helt avhuggen på grund av en naturlig katastrof eller en delvis katastrof på grund av ett problem med flera enheter eller tjänster. Påverkan på VNet-tjänsten skiljer sig i var och en av dessa situationer.
 
