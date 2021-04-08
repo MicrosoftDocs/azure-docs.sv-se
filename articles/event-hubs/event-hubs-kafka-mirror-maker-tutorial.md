@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om hur du använder Kafka
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97860995"
 ---
 # <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Använd Apache Kafka MirrorMaker med Event Hubs

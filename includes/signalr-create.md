@@ -9,10 +9,10 @@ ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93406776"
 ---
 1. Om du vill skapa en Azure SignalR service-resurs måste du först logga in på [Azure Portal](https://portal.azure.com). I den övre vänstra sidan av sidan väljer du **+ skapa en resurs**. I text rutan **Sök på Marketplace anger du** **SignalR-tjänsten**.

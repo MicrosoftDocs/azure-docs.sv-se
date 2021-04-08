@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93376200"
 ---
 Navigera till lagrings kontot som du vill skapa en privat slut punkt för. I innehålls förteckningen för lagrings kontot väljer du **anslutningar för privata slut punkter** och sedan **+ privat slut punkt** för att skapa en ny privat slut punkt. 
