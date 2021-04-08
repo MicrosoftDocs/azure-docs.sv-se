@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97608824"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med TimeOffManager
@@ -140,13 +140,13 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-## <a name="configure-timeoffmanager-sso"></a>Konfigurera TimeOffManager SSO
+## <a name="configure-timeoffmanager-sso&quot;></a>Konfigurera TimeOffManager SSO
 
 1. Logga in på din TimeOffManager-företags webbplats som administratör i ett annat webbläsarfönster.
 
 2. Gå till **konto \> konto alternativ \> enskilda Sign-On inställningar**.
    
-    ![Skärm bild som visar enskilda Sign-On inställningar som valts från konto alternativ.](./media/timeoffmanager-tutorial/ic795917.png "Inställningar för enskilda Sign-On")
+    ![Skärm bild som visar enskilda Sign-On inställningar som valts från konto alternativ.](./media/timeoffmanager-tutorial/ic795917.png &quot;Inställningar för enskilda Sign-On")
 
 3. I avsnittet **Inställningar för enkel Sign-On** utför du följande steg:
    
