@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
 ms.openlocfilehash: c58566c628eedd1dbc3d86ae6a142156cbf31211
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585238"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Boomi
@@ -155,17 +155,17 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     f. Klicka på knappen **Spara**.
 
-### <a name="create-boomi-test-user"></a>Skapa Boomi-testanvändare
+### <a name="create-boomi-test-user&quot;></a>Skapa Boomi-testanvändare
 
 För att Azure AD-användare ska kunna logga in på Boomi måste de tillhandahållas i Boomi. När det gäller Boomi är etablering en manuell aktivitet.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Gör följande för att etablera ett användarkonto:
+### <a name=&quot;to-provision-a-user-account-perform-the-following-steps&quot;></a>Gör följande för att etablera ett användarkonto:
 
 1. Logga in på din Boomi-företags webbplats som administratör.
 
 1. När du loggat in går du till **Användarhantering** och sedan till **Användare**.
 
-    ![Skärm bild som visar sidan användar hantering med valda användare.](./media/boomi-tutorial/user.png "Användare")
+    ![Skärm bild som visar sidan användar hantering med valda användare.](./media/boomi-tutorial/user.png &quot;Användare")
 
 1. Klicka på **+**  ikonen och dialog rutan **Lägg till/underhålla användar roller** öppnas.
 
