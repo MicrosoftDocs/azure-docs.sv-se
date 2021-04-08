@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94700699"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Översikt över IPv6 för Azure Load Balancer
@@ -40,12 +40,12 @@ Följande bild illustrerar IPv6-funktionerna för Azure Load Balancer.
 
 När en IPv4-eller IPv6-aktiverad Internet-klient har distribuerats kan den kommunicera med offentliga IPv4-eller IPv6-adresser (eller värdnamn) för Azure Internet-riktade Load Balancer. Belastningsutjämnaren dirigerar IPv6-paketen till de privata IPv6-adresserna för de virtuella datorerna med hjälp av Network Address Translation (NAT). IPv6-Internet klienten kan inte kommunicera direkt med den virtuella datorns IPv6-adress.
 
-## <a name="features"></a>Funktioner
+## <a name="features&quot;></a>Funktioner
 
 Inbyggt IPv6-stöd för virtuella datorer som distribueras via Azure Resource Manager ger:
 
 1. Belastningsutjämnade IPv6-tjänster för IPv6-klienter på Internet
-2. Inbyggda IPv6-och IPv4-slutpunkter på virtuella datorer ("dubbla staplade")
+2. Inbyggda IPv6-och IPv4-slutpunkter på virtuella datorer (&quot;dubbla staplade")
 3. Inkommande och utgående initierade interna IPv6-anslutningar
 4. Protokoll som stöds som TCP, UDP och HTTP (S) aktiverar en fullständig uppsättning tjänst arkitekturer
 
