@@ -4,10 +4,10 @@ description: Översikt över skiss exemplet HIPAA HITRUST 9,2. Det här skiss ex
 ms.date: 01/27/2021
 ms.topic: sample
 ms.openlocfilehash: bd65b6113f291457096bacc02bdbcfd92d6e0f84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98915555"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>Skiss exempel för HIPAA HITRUST 9,2

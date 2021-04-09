@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103574568"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Rapporter för Azure Active Directory inloggnings aktivitet – för hands version
@@ -102,7 +102,7 @@ I rapport bladet inloggningar kan du växla mellan:
 
 
 
-## <a name="user-sign-ins"></a>Användar inloggningar
+## <a name="user-sign-ins&quot;></a>Användar inloggningar
 
 På varje flik i inloggnings bladet visas standard kolumnerna nedan. Vissa flikar har ytterligare kolumner:
 
@@ -120,7 +120,7 @@ På varje flik i inloggnings bladet visas standard kolumnerna nedan. Vissa flika
 
 
 
-### <a name="interactive-user-sign-ins"></a>Interaktiva användar inloggningar
+### <a name=&quot;interactive-user-sign-ins&quot;></a>Interaktiva användar inloggningar
 
 
 Interaktiva användar inloggningar är inloggningar där en användare tillhandahåller en autentiseringsnivå för Azure AD eller interagerar direkt med Azure AD eller en hjälp program, till exempel Microsoft Authenticator-appen. De faktorer som användarna tillhandahåller inkluderar lösen ord, svar på MFA-utmaningar, bio metriska faktorer eller QR-koder som en användare tillhandahåller för Azure AD eller till en hjälp program.
@@ -155,7 +155,7 @@ Förutom standard fälten visar rapporten över interaktiva inloggningar också:
 
 Du kan anpassa listvyn genom att klicka på **Kolumner** i verktygsfältet.
 
-![Interaktiva användares inloggnings kolumner](./media/concept-all-sign-ins/columns-interactive.png "Interaktiva användares inloggnings kolumner")
+![Interaktiva användares inloggnings kolumner](./media/concept-all-sign-ins/columns-interactive.png &quot;Interaktiva användares inloggnings kolumner")
 
 
 
