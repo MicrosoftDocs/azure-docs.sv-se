@@ -4,10 +4,10 @@ description: I den här artikeln sammanfattas Azure Backup support när du anvä
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102609761"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Support mat ris för säkerhets kopiering med Microsoft Azure Backup Server eller System Center DPM
@@ -80,7 +80,7 @@ Azure Backup kan säkerhetskopiera DPM/MABS-instanser som kör något av följan
 
 ## <a name="management-support"></a>Hanterings support
 
-**Ge** | **Information**
+**Problem** | **Information**
 --- | ---
 **Installation** | Installera DPM/MABS på en dator med ett enda syfte.<br/><br/> Installera inte DPM/MABS på en domänkontrollant på en dator med rollen som program server roll på en dator som kör Microsoft Exchange Server eller System Center Operations Manager eller på en klusternod.<br/><br/> [Granska alla system krav för DPM](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Domän** | DPM/MABS ska vara ansluten till en domän. Installera först och Anslut sedan till DPM/MABS till en domän. Det finns inte stöd för att flytta DPM/MABS till en ny domän efter distribution.

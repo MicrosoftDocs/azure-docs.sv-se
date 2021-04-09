@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100418111"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformera data i delta Lake med hjälp av att mappa data flöden
@@ -68,11 +68,11 @@ I det här steget ska du skapa en pipeline som innehåller en data flödes aktiv
 
     ![Skärm bild som visar var du namnger ditt data flöde när du skapar ett nytt data flöde.](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Bygg omvandlings logik i data flödets arbets yta
+## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Bygg omvandlings logik i data flödets arbets yta
 
 Du kommer att generera två data flöden i den här självstudien. Fist-dataflödet är en enkel källa som mottagare kan generera en ny delta Lake från CSV-filen för filmer från ovan. Slutligen skapar du den här flödes designen nedan för att uppdatera data i delta Lake.
 
-![Slutligt flöde](media/data-flow/data-flow-tutorial-6.png "Slutligt flöde")
+![Slutligt flöde](media/data-flow/data-flow-tutorial-6.png &quot;Slutligt flöde")
 
 ### <a name="tutorial-objectives"></a>Kurs mål
 

@@ -4,10 +4,10 @@ description: generera omfattande och detaljerad information om dina nätverks en
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.openlocfilehash: 99754959e7a3a08b4d763b85b0b9315476969774
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104779077"
 ---
 # <a name="sensor-data-mining-queries"></a>Frågor om sensor Data utvinning

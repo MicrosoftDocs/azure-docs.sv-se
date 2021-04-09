@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100520025"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Utvärdera modell prestanda i Azure Machine Learning Studio (klassisk)
@@ -138,8 +138,8 @@ Figur 8. Kors validering av en binär klassificerings modell.
 
 Bild 9. Kors validerings resultat för en binär klassificerare.
 
-## <a name="evaluating-a-multiclass-classification-model"></a>Utvärdera en klassificerings modell med multiklass
-I det här experimentet kommer vi att använda den populära [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") -datauppsättningen, som innehåller instanser av tre olika typer (klasser) av Iris-anläggningen. Det finns fyra funktions värden (sepal längd/bredd och blad längd/bredd) för varje instans. I föregående experiment tränade vi och testade modellerna med samma data uppsättningar. Här ska vi använda modulen [dela data][split] för att skapa två del mängder av data, träna på den första och poäng och utvärdera den andra. Iris-datauppsättningen är offentligt tillgänglig på den [Machine Learning lagrings platsen](https://archive.ics.uci.edu/ml/index.html)och kan laddas ned med en modul för att [Importera data][import-data] .
+## <a name="evaluating-a-multiclass-classification-model&quot;></a>Utvärdera en klassificerings modell med multiklass
+I det här experimentet kommer vi att använda den populära [Iris](https://archive.ics.uci.edu/ml/datasets/Iris &quot;Iris") -datauppsättningen, som innehåller instanser av tre olika typer (klasser) av Iris-anläggningen. Det finns fyra funktions värden (sepal längd/bredd och blad längd/bredd) för varje instans. I föregående experiment tränade vi och testade modellerna med samma data uppsättningar. Här ska vi använda modulen [dela data][split] för att skapa två del mängder av data, träna på den första och poäng och utvärdera den andra. Iris-datauppsättningen är offentligt tillgänglig på den [Machine Learning lagrings platsen](https://archive.ics.uci.edu/ml/index.html)och kan laddas ned med en modul för att [Importera data][import-data] .
 
 ### <a name="creating-the-experiment"></a>Skapa experimentet
 Lägg till följande moduler till din arbets yta i Azure Machine Learning Studio (klassisk):
