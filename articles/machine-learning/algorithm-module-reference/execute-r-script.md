@@ -147,7 +147,7 @@ Data uppsättningar som lagras i designern konverteras automatiskt till en R dat
 1. I text rutan **R-skript** skriver eller klistrar du in giltigt R-skript.
 
     > [!NOTE]
-    > Var försiktig när du skriver skriptet. Se till att det inte finns några syntaxfel, till exempel att använda variabler som inte har deklarerats eller ej importerade moduler eller funktioner. Betala extra uppmärksamhet för den förinstallerade paket listan i slutet av den här artikeln. Om du vill använda paket som inte finns i listan installerar du dem i skriptet. Ett exempel är `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
+    > Var försiktig när du skriver skriptet. Se till att det inte finns några syntaxfel, till exempel att använda variabler som inte har deklarerats eller ej importerade moduler eller funktioner. Betala extra uppmärksamhet för den förinstallerade paket listan i slutet av den här artikeln. Om du vill använda paket som inte finns i listan installerar du dem i skriptet. Ett exempel är `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`.
     
     För att hjälpa dig att komma igång fylls text rutan **R-skript** i förväg med exempel kod, som du kan redigera eller ersätta.
     
