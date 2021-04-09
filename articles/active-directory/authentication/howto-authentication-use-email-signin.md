@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.reviewer: calui
 ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255975"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Logga in för att Azure Active Directory med e-post som ett alternativt inloggnings-ID (för hands version)
@@ -250,7 +250,7 @@ Du måste ha *klient administratörs* behörighet för att utföra följande ste
 6. Lägg till gruppen i principen för stegvis distribution enligt följande exempel. Ersätt värdet i parametern *-ID* med det värde som returnerades för princip-ID i steg 4 och Ersätt värdet i parametern *-RefObjectId* med det *ID* som anges i steg 5. Det kan ta upp till en timme innan användarna i gruppen kan använda sina proxyservrar för att logga in.
 
    ```powershell
-   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID&quot; -RefObjectId &quot;GROUP_OBJECT_ID"
    ```
    
 För nya medlemmar som läggs till i gruppen kan det ta upp till 24 timmar innan de kan använda sina proxyadresser för att logga in.
@@ -260,7 +260,7 @@ För nya medlemmar som läggs till i gruppen kan det ta upp till 24 timmar innan
 Om du vill ta bort en grupp från en stegvis distributions princip kör du följande kommando:
 
 ```powershell
-Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID&quot; -ObjectId &quot;GROUP_OBJECT_ID" 
 ```
 
 ### <a name="removing-policies"></a>Ta bort principer

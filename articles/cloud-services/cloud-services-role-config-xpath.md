@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98741391"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Exponera roll konfigurations inställningar som en miljö variabel med XPath
