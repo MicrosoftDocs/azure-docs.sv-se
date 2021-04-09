@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: e7d6156fe5cd8ab32ff159bda64e0c06cfbac406
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100654478"
 ---
 # <a name="use-java-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Använd Java för att hantera ACL: er i Azure Data Lake Storage Gen2
@@ -215,6 +215,6 @@ I det här exemplet anges ACL-poster rekursivt. Om den här koden påträffar et
 - [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 - [Gen1 till Gen2-mappning](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 - [Kända problem](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Lämna feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+- [Ge feedback](https://github.com/Azure/azure-sdk-for-java/issues)
 - [Åtkomst kontroll modell i Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
 - [Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

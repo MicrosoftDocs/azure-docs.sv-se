@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Självstudie: Azure Active Directory integrering med Zscaler två
@@ -200,14 +200,14 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     b. Klicka på **Aktivera**.
 
-## <a name="configuring-proxy-settings"></a>Konfigurera proxyinställningar
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>För att konfigurera proxyinställningar i Internet Explorer
+## <a name="configuring-proxy-settings&quot;></a>Konfigurera proxyinställningar
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>För att konfigurera proxyinställningar i Internet Explorer
 
 1. Starta **Internet Explorer**.
 
 2. Välj **Internetalternativ** i menyn **Verktyg** för att öppna dialogrutan **Internetalternativ**.   
     
-     ![Internet alternativ](./media/zscaler-two-tutorial/ic769492.png "Internet alternativ")
+     ![Internet alternativ](./media/zscaler-two-tutorial/ic769492.png &quot;Internet alternativ")
 
 3. Klicka på fliken **Anslutningar**.   
   
