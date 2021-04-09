@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
 ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590468"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>Hantera diagrammet mappa data flöde
@@ -25,11 +25,11 @@ Mappning av data flöden skapas med en design yta som är en data flödes graf. 
 
 När dina data flödar mer komplexa använder du följande mekanismer för att effektivt navigera och hantera data flödes diagrammet. 
 
-## <a name="moving-transformations"></a>Flytta transformeringar
+## <a name="moving-transformations&quot;></a>Flytta transformeringar
 
 I mappnings data flöden kallas en uppsättning ansluten omvandlings logik som en **data ström**. Fältet **inkommande ström** avgör vilken data ström som används för att mata in den aktuella omvandlingen. Varje omvandling har en eller två inkommande strömmar beroende på dess funktion och representerar en utdataström. Utmatnings schema för inkommande strömmar avgör vilka kolumn-metadata som kan refereras av den aktuella omvandlingen.
 
-![Flytta nod](media/data-flow/move-nodes.png "flytta nod")
+![Flytta nod](media/data-flow/move-nodes.png &quot;flytta nod")
 
 Till skillnad från pipeline-arbetsytan redige ras inte data flödes omvandlingar med en dra och släpp-modell. Om du vill ändra den inkommande strömmen eller "flytta" en omvandling, väljer du ett annat värde i list rutan **inkommande Stream** . När du gör det flyttas alla efterföljande omvandlingar tillsammans med den redigerade omvandlingen. Diagrammet kommer automatiskt att uppdateras för att visa det nya logiska flödet. Om du ändrar inkommande data ström till en omvandling som redan har en underordnad omvandling, skapas en ny gren eller parallell data ström. Lär dig mer om [nya grenar i mappnings data flödet](data-flow-new-branch.md).
 

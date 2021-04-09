@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du konfigurerar åtkomst från priv
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011004"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Nätverks säkerhet för Azure Event Hubs 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Beskriver processerna för att köra din kod i Azure Kubernetes service med Azure dev Spaces
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014439"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Hur du kör din kod med Azure dev Spaces fungerar
