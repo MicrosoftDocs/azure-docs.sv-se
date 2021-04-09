@@ -13,10 +13,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104578455"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-app som anropar webb-API: er – flytta till produktion
@@ -63,7 +63,7 @@ Prova snabb starten [Hämta en token och anropa Microsoft Graph API från en Jav
 - Mer information finns i:
   - Förstå [konfiguration](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)
   - Instansiera [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md)
-  - [VANLIGA FRÅGOR OCH SVAR](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+  - [Vanliga frågor och svar](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
 - Andra exempel/Självstudier:
   - [MSAL Node Console daemon-exempel](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
 

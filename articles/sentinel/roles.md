@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104772560"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Behörigheter i Azure Sentinel
@@ -36,11 +36,11 @@ Det finns tre dedikerade inbyggda Azure Sentinel-roller.
 
 **Alla inbyggda Azure Sentinel-roller ger Läs åtkomst till data i Azure Sentinel-arbetsytan.**
 
-- [Azure Sentinel Reader](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) kan visa data, incidenter, arbets böcker och andra Azure Sentinel-resurser.
+- [Azure Sentinel-rollen Läsare](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) kan visa data, incidenter, arbetsböcker och andra Azure Sentinel-resurser.
 
-- [Azure Sentinel-svarare](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) kan, förutom ovanstående, hantera incidenter (tilldela, ignorera osv.)
+- [Azure Sentinel-rollen Svarare](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) kan, förutom ovanstående, hantera incidenter (till exempel tilldela och stänga dem)
 
-- [Azure Sentinel-deltagare](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) kan, förutom ovanstående, skapa och redigera arbets böcker, analys regler och andra Azure Sentinel-resurser.
+- [Azure Sentinel-rollen Deltagare](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) kan, förutom ovanstående, skapa och redigera arbetsböcker, analysregler och andra Azure Sentinel-resurser.
 
 - [Azure Sentinel Automation-deltagare](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) gör det möjligt för Azure Sentinel att lägga till spel böcker i Automation-regler. Det är inte avsett för användar konton.
 

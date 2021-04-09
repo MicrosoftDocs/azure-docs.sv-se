@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs några avancerade ämnen som rör uppg
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 6604300328f2d243077ba341a9028221438dce9d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98792056"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric program uppgradering: avancerade ämnen
