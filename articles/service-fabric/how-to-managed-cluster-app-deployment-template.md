@@ -3,12 +3,12 @@ title: Distribuera ett Service Fabric hanterat kluster (för hands version) med 
 description: Distribuera ett program till ett Azure Service Fabric-hanterat kluster (för hands version) med hjälp av en Azure Resource Manager-mall.
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100642575"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728019"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>Distribuera ett Service Fabric hanterat kluster (för hands version) med hjälp av ARM-mall
 
@@ -94,7 +94,7 @@ Exempel programmet innehåller [Azure Resource Manager mallar](https://github.co
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Namnet på det kluster som du distribuerar till | SF-cluster123                                                |                                                              |
 | program            | Namnet på programmet                 | Röstning                                                       |
-| version    | Resurs-ID, program typ och version av appen.       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | Måste matcha ApplicationManifest.xml                 |              |
+| version    | Resurs-ID, program typ och version av appen.       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | Måste matcha ApplicationManifest.xml                 |
 | serviceName            | Namnet på tjänsten         | VotingWeb                                             | Måste vara i formatet-ServiceType            |
 | serviceTypeName        | Typ namnet för tjänsten                | VotingWebType                                                    | Måste matcha ServiceManifest.xml                 |
 | appPackageUrl          | Blob Storage-URL: en för programmet     | https: \/ /servicefabricapps.blob.Core.Windows.net/Apps/Voting.sfpkg | URL: en för programpaketet i Blob Storage (proceduren för att ange URL beskrivs senare i artikeln) |

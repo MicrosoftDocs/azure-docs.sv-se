@@ -5,21 +5,21 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 8e6ceebc9e92dabe66baeb9aeff0ae9692e2bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101100488"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067562"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Vad är en regel uppsättning för Azure front dörr standard/Premium (för hands version)?
 
 > [!Note]
 > Den här dokumentationen gäller för Azure frontend-standard/Premium (för hands version). Letar du efter information om Azures frontend-dörr? Visa [här](../front-door-overview.md).
 
-En regel uppsättning är en anpassad regel motor som grupperar en kombination av regler i en enda uppsättning som du kan associera med flera vägar. Med regel uppsättningen kan du anpassa hur begär Anden ska bearbetas i kanten och hur Azures front dörr hanterar dessa förfrågningar.
+En regel uppsättning är en anpassad regel motor som grupperar en kombination av regler i en enda uppsättning. Du kan associera en regel uppsättning med flera vägar. Med regel uppsättningen kan du anpassa hur begär Anden ska bearbetas vid gränsen och hur Azures front dörr hanterar dessa förfrågningar.
 
 > [!IMPORTANT]
 > Azure front dörr standard/Premium (för hands version) är för närvarande en offentlig för hands version.
@@ -60,16 +60,19 @@ Med regel uppsättningen för Azures front dörr kan du skapa en kombination av 
 
 Mer kvot gräns finns i [prenumerations-och tjänst begränsningar, kvoter och begränsningar för Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-* *Regel uppsättning*: en uppsättning regler som associeras med en eller flera [vägar](concept-route.md). Varje konfiguration är begränsad till 25 regler. Du kan skapa upp till 10 konfigurationer.
+* *Regel uppsättning*: en uppsättning regler som associeras med en eller flera [vägar](concept-route.md).
 
 * *Regel uppsättnings regel*: en regel som består av upp till 10 matchnings villkor och 5 åtgärder. Regler är lokala i en regel uppsättning och kan inte exporteras för användning i regel uppsättningar. Användare kan skapa samma regel i flera regel uppsättningar.
 
-* *Matchnings villkor*: det finns många matchnings villkor som kan användas för att analysera inkommande begär Anden. En regel kan innehålla upp till 10 matchnings villkor. Matchnings villkor utvärderas med operatorn **och** . *Reguljärt uttryck stöds i villkor*. En fullständig lista över matchnings villkor finns i [villkoret regel uppsättning](concept-rule-set-match-conditions.md).
+* *Matchnings villkor*: det finns många matchnings villkor som kan användas för att analysera inkommande begär Anden. En regel kan innehålla upp till 10 matchnings villkor. Matchnings villkor utvärderas med operatorn **och** . *Reguljärt uttryck stöds i villkor*. En fullständig lista över matchnings villkor finns i [matchnings villkor för regel uppsättning](concept-rule-set-match-conditions.md).
 
 * *Åtgärd*: åtgärder styr hur AFD hanterar inkommande begär Anden utifrån matchnings villkoren. Du kan ändra cachelagring-beteenden, ändra begärandehuvuden/svarshuvuden, göra URL-omskrivning och omdirigering av URL. *Servervariabler stöds på åtgärd*. En regel kan innehålla upp till 10 matchnings villkor. En fullständig lista med åtgärder hittar du i [regel uppsättnings åtgärder](concept-rule-set-actions.md).
+
+## <a name="arm-template-support"></a>Stöd för ARM-mall
+
+Regel uppsättningar kan konfigureras med hjälp av Azure Resource Manager mallar. [Se en exempel mall](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). Du kan anpassa beteendet med hjälp av JSON-eller bicep-kodfragmenten som ingår i dokumentations exemplen för [matchnings villkor](concept-rule-set-match-conditions.md) och- [åtgärder](concept-rule-set-actions.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig hur du [skapar en front dörrs standard/Premium](create-front-door-portal.md).
 * Lär dig hur du konfigurerar din första [regel uppsättning](how-to-configure-rule-set.md).
- 

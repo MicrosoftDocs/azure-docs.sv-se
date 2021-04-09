@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: de78008a4645690cfc900f77670204bb892daf51
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24e2ba4027dc818256dc9572f697fe7ec5a5a56b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105042976"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960715"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Ansluta till Media Services v3 API – python
 
@@ -31,7 +31,7 @@ Den här artikeln visar hur du ansluter till Azure Media Services v3 python SDK 
 
 - Hämta python från [python.org](https://www.python.org/downloads/)
 - Se till att ställa in `PATH` miljövariabeln
-- [Skapa ett Media Services-konto](./create-account-howto.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
+- [Skapa ett Media Services-konto](./account-create-how-to.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
 - Följ stegen i avsnittet [åtkomst-API: er](./access-api-howto.md) och välj autentiseringsmetod för tjänstens huvud namn. Registrera prenumerations-ID ( `SubscriptionId` ), programklient-ID ( `AadClientId` ), den autentiseringsnyckel ( `AadSecret` ) och klient-ID ( `AadTenantId` ) som du behöver i de senare stegen.
 
 > [!IMPORTANT]

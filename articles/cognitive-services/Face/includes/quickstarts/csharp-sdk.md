@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445517"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958291"
 ---
 Kom igång med ansikts igenkänning med ansikts klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Ansikts tjänsten ger dig till gång till avancerade algoritmer för att identifiera och identifiera mänskliga ansikten i bilder.
 
@@ -22,7 +22,7 @@ Använd ansikts klient biblioteket för .NET för att:
 
 * [Identifiera ansikten i en bild](#detect-faces-in-an-image)
 * [Hitta liknande ansikten](#find-similar-faces)
-* [Skapa en person grupp](#create-a-person-group)
+* [Skapa en PersonGroup](#create-a-persongroup)
 * [Identifiera ett ansikte](#identify-a-face)
 
 [Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Exempel](/samples/browse/?products=azure&term=face)
@@ -124,7 +124,7 @@ Kodfragmenten nedan visar hur du gör följande uppgifter med ansikts klient bib
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera ansikten i en bild](#detect-faces-in-an-image)
 * [Hitta liknande ansikten](#find-similar-faces)
-* [Skapa en person grupp](#create-a-person-group)
+* [Skapa en PersonGroup](#create-a-persongroup)
 * [Identifiera ett ansikte](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
@@ -186,7 +186,7 @@ Följande kod skriver ut matchnings informationen i-konsolen:
 
 Identifiera-åtgärden tar en bild av en person (eller flera personer) och söker efter identiteten för varje ansikte i bilden (ansikts igenkännings sökning). Den jämför alla identifierade ansikte till en **PersonGroup**, en databas med olika **person** objekt vars ansikts funktioner är kända. Du måste först skapa och träna en **PersonGroup** för att kunna identifiera åtgärden
 
-### <a name="create-a-person-group"></a>Skapa en person grupp
+### <a name="create-a-persongroup"></a>Skapa en PersonGroup
 
 Följande kod skapar en **PersonGroup** med sex olika **person** objekt. Den associerar varje **person** med en uppsättning exempel bilder, och sedan är det tågen att identifiera varje person genom ansikts egenskaper. **Person** -och **PersonGroup** -objekt används i åtgärder för att verifiera, identifiera och gruppera.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779944"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932462"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (portal)
 
@@ -153,7 +153,9 @@ Om du vill lägga till ett händelse filter när du skapar en händelse väg anv
 Du kan antingen välja bland några grundläggande vanliga filter alternativ eller använda avancerade filter alternativ för att skriva egna anpassade filter.
 
 >[!NOTE]
-> Filter är **SKIFT** läges känsliga och måste matchas i nytto Last fallet (vilket kanske inte nödvändigt vis matchar modell fallet).
+> Filter är **SKIFT** läges känsliga och måste matcha nytto Last ärendet. 
+>
+> För telemetri filter innebär det att höljet måste matcha höljet i den telemetri som skickas av enheten, inte nödvändigt vis det Skift läge som definieras i den dubbla modellen.
 
 #### <a name="use-the-basic-filters"></a>Använd de grundläggande filtren
 

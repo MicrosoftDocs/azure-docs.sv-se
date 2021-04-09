@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216436"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960732"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Ansluta till Media Services v3 API – Node.js
 
@@ -32,7 +32,7 @@ Den här artikeln visar hur du ansluter till Azure Media Services v3-node.js SDK
 - En installation av Visual Studio Code.
 - Installera [Node.js](https://nodejs.org/en/download/).
 - Installera [typescript](https://www.typescriptlang.org/download).
-- [Skapa ett Media Services-konto](./create-account-howto.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
+- [Skapa ett Media Services-konto](./account-create-how-to.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
 - Skapa ett huvud namn för tjänsten för ditt program. Se [API: er för åtkomst](./access-api-howto.md).<br/>**Pro-tips!** Behåll fönstret öppet eller kopiera allt på JSON-fliken till anteckningar. 
 - Se till att hämta den senaste versionen av [AZUREMEDIASERVICES SDK för Java Script](https://www.npmjs.com/package/@azure/arm-mediaservices).
 

@@ -9,23 +9,20 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 12e371dd24203625ab8987018bb223b532938e16
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 58a3aa073ea114c18db0082f48ae557fb00dd137
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495733"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728444"
 ---
 # <a name="reference-documentation-overview"></a>Översikt för referensdokumentation
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Följande tabell innehåller information om de tillgängliga kommunikations tjänst paketen tillsammans med motsvarande referens dokumentation:
 
 <!--note that this table also exists here and should be synced: https://github.com/Azure/Communication/blob/master/README.md -->
 
-| Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Övrigt                          |
+| Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Annat                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Gå via GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Ej tillämpligt      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |

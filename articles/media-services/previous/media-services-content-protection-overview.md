@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016771"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067409"
 ---
 # <a name="content-protection-overview"></a>Översikt över innehållsskydd
 
@@ -36,7 +36,7 @@ Följande bild illustrerar arbets flödet för Media Services innehålls skydd:
 
 Den här artikeln förklarar begrepp och terminologi som är relevanta för att förstå innehålls skydd med Media Services. Artikeln innehåller också länkar till artiklar som diskuterar hur du skyddar innehåll. 
 
-## <a name="dynamic-encryption"></a>Dynamisk kryptering
+## <a name="dynamic-encryption&quot;></a>Dynamisk kryptering
 
 Du kan använda Media Services för att leverera innehåll som krypterats dynamiskt med AES-rensning eller DRM-kryptering med hjälp av PlayReady, Widevine eller FairPlay. Om innehållet krypteras med en AES-klar nyckel och skickas via HTTPS, är det inte i klartext förrän klienten når klienten. 
 
@@ -55,8 +55,8 @@ Du måste också konfigurera till gångens leverans princip. Om du vill strömma
 
 När en data ström begärs av en spelare, använder Media Services den angivna nyckeln för att dynamiskt Kryptera ditt innehåll med hjälp av AES Clear Key eller DRM-kryptering. För att dekryptera data strömmen begär spelaren nyckeln från Media Services Key Delivery Service. För att avgöra om användaren har behörighet att hämta nyckeln utvärderar tjänsten de Auktoriseringsprinciper som du har angett för nyckeln.
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128-rensad nyckel eller DRM
-Kunderna undrar ofta om de ska använda AES-kryptering eller ett DRM-system. Den främsta skillnaden mellan de två systemen är att med AES-kryptering överförs innehålls nyckeln till klienten i ett okrypterat format ("i klartext"). Det innebär att den nyckel som används för att kryptera innehållet kan visas i ett nätverks spår på klienten som oformaterad text. AES-128-kryptering är lämplig för användnings fall där visnings programmet är en betrodd part (till exempel kryptering av företags videor som distribueras i ett företag som kan ses av anställda).
+## <a name=&quot;aes-128-clear-key-vs-drm&quot;></a>AES-128-rensad nyckel eller DRM
+Kunderna undrar ofta om de ska använda AES-kryptering eller ett DRM-system. Den främsta skillnaden mellan de två systemen är att med AES-kryptering överförs innehålls nyckeln till klienten i ett okrypterat format (&quot;i klartext"). Det innebär att den nyckel som används för att kryptera innehållet kan visas i ett nätverks spår på klienten som oformaterad text. AES-128-kryptering är lämplig för användnings fall där visnings programmet är en betrodd part (till exempel kryptering av företags videor som distribueras i ett företag som kan ses av anställda).
 
 PlayReady, Widevine och FairPlay alla ger en högre krypterings nivå jämfört med AES-128-kryptering med tydliga nycklar. Innehålls nyckeln överförs i ett krypterat format. Dekrypteringen hanteras dessutom i en säker miljö på nivån operativ system, där det är svårare för en angripare att attackera angrepp. DRM rekommenderas för användnings fall där visnings programmet kanske inte är en betrodd part och du behöver den högsta säkerhets nivån.
 
@@ -117,7 +117,7 @@ Följande gäller:
 I följande artiklar beskrivs nästa steg som hjälper dig att komma igång med innehålls skydd:
 
 * [Skydda med lagrings kryptering](media-services-rest-storage-encryption.md)
-* [Skydda med AES-kryptering](media-services-protect-with-aes128.md)
+* [Skydda med AES-kryptering](media-services-playready-license-template-overview.md)
 * [Skydda med PlayReady och/eller Widevine](media-services-protect-with-playready-widevine.md)
 * [Skydda med FairPlay](media-services-protect-hls-with-FairPlay.md)
 
