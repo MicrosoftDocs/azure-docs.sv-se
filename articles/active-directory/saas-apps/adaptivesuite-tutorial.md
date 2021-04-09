@@ -90,7 +90,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
+### <a name="create-an-azure-ad-test-user&quot;></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
@@ -102,7 +102,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till anpassningsbara insikter.
 
@@ -111,16 +111,16 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen &quot;standard åtkomst&quot; vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-### <a name="configure-adaptive-insights-sso"></a>Konfigurera adaptiv Insights SSO
+### <a name=&quot;configure-adaptive-insights-sso&quot;></a>Konfigurera adaptiv Insights SSO
 
 1. Logga in på din anpassade Insights-företags webbplats som administratör i ett annat webbläsarfönster.
 
 2. Gå till **Administration**.
 
-    ![Skärm bild som fokuserar på Administration i navigerings fönstret.](./media/adaptivesuite-tutorial/administration.png "Administratör")
+    ![Skärm bild som fokuserar på Administration i navigerings fönstret.](./media/adaptivesuite-tutorial/administration.png &quot;Administratör")
 
 3. I avsnittet **användare och roller** klickar du på **Inställningar för SAML SSO**.
 
