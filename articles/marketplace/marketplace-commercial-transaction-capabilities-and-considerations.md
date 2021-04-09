@@ -8,10 +8,10 @@ ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98986470"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transact-funktioner för kommersiella Marketplace
@@ -46,7 +46,7 @@ Alternativet för Transact-publicering stöds för närvarande för följande er
 
 ### <a name="billing-infrastructure-costs"></a>Kostnader för fakturerings infrastruktur
 
-För **virtuella datorer** och **Azure-program** debiteras Azure Infrastructure Usage avgifter till kundens Azure-prenumeration. Avgifter för infrastruktur användning priss ätts och presenteras separat från program varu leverantörens licens avgifter på kundens faktura.
+För **virtuella datorer** och **Azure-program** debiteras Azure Infrastructure Usage avgifter till kundens Azure-prenumeration. Avgifter för infrastrukturanvändning prissätts och presenteras separat från programvaruleverantörens licensavgifter på kundens faktura.
 
 För **SaaS-appar** måste utgivaren beakta Azure-infrastrukturens användnings avgifter och program licens avgifter som ett enda kostnads objekt.  Den representeras som en fast avgift för kunden. Användningen av Azure-infrastrukturen hanteras och debiteras för utgivaren direkt. Den faktiska infrastruktur användnings avgiften ses inte av kunden. Utgivare väljer vanligt vis att paketera användnings avgifter för Azure-infrastruktur i sina priser för program varu licenser. Avgifterna för program varu licenser är inte avgiftsbelagda eller baseras på användar förbrukning.
 
