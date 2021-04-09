@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430198"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960885"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database trafikmigrering till nyare gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,6 +31,9 @@ Den senaste informationen kommer att behållas i tabellen [Azure SQL Database Ga
 # <a name="in-progress"></a>[Pågår](#tab/in-progress-ip)
 
 ## <a name="april-2021"></a>April 2021
+Nya SQL-gatewayer läggs till i följande regioner:
+- USA, östra 2:40.70.144.193 denna SQL-gateway ska börja acceptera kund trafik den 30 april 2021.
+
 Nya SQL-gatewayer läggs till i följande regioner:
 - Norge, öst: 51.120.96.33
 - Asien, sydöstra: 13.67.16.193

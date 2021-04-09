@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
 ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105559527"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
@@ -21,7 +21,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 
 ## <a name="march-2021"></a>Mars 2021
 
-|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
 |------------------------------|---------------|---------------|
 | [Semantisk sökning](semantic-search-overview.md) | En samling frågor relaterade funktioner som avsevärt förbättrar relevansen hos Sök Resultat via minimala justeringar av en fråge förfrågan. </br></br>[Semantisk rangordning](semantic-ranking.md) beräknar relevanta resultat med hjälp av den semantiska innebörden bakom ord och innehåll. </br></br>[Semantiska bild texter](semantic-how-to-query-request.md) returnerar relevanta passager från det dokument som bäst sammanfattar dokumentet, med högdagrar som visar de viktigaste termerna eller fraserna. </br></br>[Semantiska svar](semantic-answers.md) returnerar nyckel passager, extraheras från ett Sök dokument, som formuleras som ett direkt svar på en fråga som ser ut som en fråga. | Offentlig för hands version ([efter begäran](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Använd [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) API-version = 2020-06 -30 – för hands version eller [sök Utforskaren](search-explorer.md) i Azure Portal. </br></br>Begränsningar för region och nivå gäller. |
 | [Stavnings kontrol lera sökord](speller-how-to-add.md) | Innan du kan komma åt sökmotorn kan du välja att kontrol lera stavnings fel. `speller`Alternativet fungerar med valfri typ av fråga (enkel, fullständig eller semantisk). |  Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version|
@@ -30,7 +30,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 
 ## <a name="february-2021"></a>Februari 2021
 
-|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
 |------------------------------|---------------|---------------|
 | [Återställ dokument (förhands granskning)](search-howto-run-reset-indexers.md) |  Ombearbetar individuellt valda Sök dokument i Indexer-arbetsbelastningar. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/index-preview) |
 | [Tillgänglighetszoner](search-performance-optimization.md#availability-zones)| Sök tjänster med två eller fler repliker i vissa regioner, som listas i [skala för prestanda](search-performance-optimization.md#availability-zones), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i artikeln om skalning för prestanda. |
@@ -38,7 +38,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 
 ## <a name="january-2021"></a>Januari 2021
 
-|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
 |------------------------------|-------------|---------------|
 | [Solution Accelerator för Azure Kognitiv sökning och QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Hämtar frågor och svar från dokumentet och föreslår de mest relevanta svaren. Du hittar en live demo-app på [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Projekt med öppen källkod (inget service avtal) |
 

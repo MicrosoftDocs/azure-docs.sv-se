@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0231f7f3882218ef88d6151488da6aa23e4cb8e4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580189"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106695"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Övervaka Azure AD B2C med Azure Monitor
 
@@ -46,7 +46,7 @@ Följande diagram visar de komponenter som du konfigurerar i Azure AD och Azure 
 
 ![Projektion av resurs grupp](./media/azure-monitor/resource-group-projection.png)
 
-Under den här distributionen konfigurerar du både din Azure AD B2C-klient och Azure AD-klient där Log Analytics-arbetsytan kommer att vara värd. Azure AD B2C kontot bör tilldelas rollen som [Global administratör](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) på Azure AD B2C klienten. Det Azure AD-konto som används för att köra distributionen måste tilldelas [ägar](../role-based-access-control/built-in-roles.md#owner) rollen i Azure AD-prenumerationen. Det är också viktigt att se till att du är inloggad i rätt katalog när du Slutför varje steg enligt beskrivningen.
+Under den här distributionen konfigurerar du både din Azure AD B2C-klient och Azure AD-klient där Log Analytics-arbetsytan kommer att vara värd. Azure AD B2C kontot bör tilldelas rollen som [Global administratör](../active-directory/roles/permissions-reference.md#global-administrator) på Azure AD B2C klienten. Det Azure AD-konto som används för att köra distributionen måste tilldelas [ägar](../role-based-access-control/built-in-roles.md#owner) rollen i Azure AD-prenumerationen. Det är också viktigt att se till att du är inloggad i rätt katalog när du Slutför varje steg enligt beskrivningen.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. skapa eller Välj en resurs grupp
 

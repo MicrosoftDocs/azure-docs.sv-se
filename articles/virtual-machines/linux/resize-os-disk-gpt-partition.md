@@ -16,10 +16,10 @@ ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
 ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102552957"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Ändra storlek på en OS-disk som har en GPT-partition
@@ -472,7 +472,7 @@ Utför följande steg när den virtuella datorn har startats om:
    ```
     ![Rotnod och startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. Tryck på "d" för att ta bort partitionen och välj det partitionsnummer som är tilldelat till Start (i det här exemplet är det "3")
+1. Tryck på "d&quot; för att ta bort partitionen och välj det partitionsnummer som är tilldelat till Start (i det här exemplet är det &quot;3")
    ```
    d
    3

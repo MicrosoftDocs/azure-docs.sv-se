@@ -54,8 +54,8 @@
   items:
     - name: Fortanix-konfidentiell data behandlings hanterare
       href: how-to-fortanix-confidential-computing-manager.md
-    - name: Fortanix Enclave Manager
-      href: how-to-fortanix-enclave-manager.md
+    - name: Fortanix konfidentiell dator hanterare Node agent
+      href: how-to-fortanix-confidential-computing-manager-node-agent.md
 - name: Referenser
   items:
     - name: Hjälp funktion för SGX-offerter

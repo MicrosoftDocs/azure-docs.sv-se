@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
 ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104586343"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Data insamlings regler i Azure Monitor (för hands version)
@@ -39,7 +39,7 @@ Följande diagram visar komponenterna i en data insamlings regel och deras relat
 ### <a name="data-source-types"></a>Typer av datakälla
 Varje data källa har en typ av data källa. Varje typ definierar en unik uppsättning egenskaper som måste anges för varje data källa. De data käll typer som är tillgängliga visas i följande tabell.
 
-| Typ av data Källa | Description | 
+| Typ av data Källa | Beskrivning | 
 |:---|:---|
 | utöka | VM-baserad data Källa |
 | performanceCounters | Prestanda räknare för både Windows och Linux |

@@ -3,12 +3,12 @@ title: Replikera Azure Stack virtuella datorer till Azure med Azure Site Recover
 description: Lär dig hur du konfigurerar haveri beredskap till Azure för Azure Stack virtuella datorer med tjänsten Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96016920"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728393"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikera virtuella Azure Stack-datorer till Azure
 
@@ -314,7 +314,7 @@ Kör sedan en redundansväxling på följande sätt:
 
 ### <a name="fail-back-to-azure-stack"></a>Växla tillbaka till Azure Stack
 
-När den primära platsen är igång igen kan du växla tillbaka från Azure till Azure Stack. Det gör du genom att följa stegen som visas [här](/azure-stack/operator/site-recovery-failback?view=azs-2005).
+När den primära platsen är igång igen kan du växla tillbaka från Azure till Azure Stack. Det gör du genom att följa stegen som visas [här](/azure-stack/operator/site-recovery-failback).
 
 ## <a name="conclusion"></a>Slutsats
 

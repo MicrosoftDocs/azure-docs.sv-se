@@ -4,16 +4,16 @@ description: Om du vill skapa hög tillgängliga och elastiska program i Azure k
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 03/30/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601193"
+ms.locfileid: "105961310"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
@@ -50,15 +50,15 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 | Nord- och Sydamerika           | Europa               | Afrika              | Asien och stillahavsområdet   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Brasilien, södra       | Frankrike, centrala       | Södra Afrika, norra * | Japan, östra     |
-| Kanada, centrala     | Tyskland, västra centrala |                     | Sydostasien |
-| Central US         | Europa, norra         |                     | Australien, östra |
-| East US            | Storbritannien, södra             |                     |                |
+| Brasilien, södra       | Frankrike, centrala       | Södra Afrika, norra * | Australien, östra |
+| Kanada, centrala     | Tyskland, västra centrala |                     | Japan, östra     |
+| Central US         | Europa, norra         |                     | Korea, centrala * |
+| East US            | Storbritannien, södra             |                     | Sydostasien |
 | USA, östra 2          | Europa, västra          |                     |                |
 | Södra centrala USA |                      |                     |                |
-| US Gov, Virginia     |                      |                     |                |
+| US Gov, Virginia    |                      |                     |                |
 | USA, västra 2        |                      |                     |                |
-
+| Västra USA 3 *       |                      |                     |                |
 
 \* Kontakta din Microsoft-säljare eller kund representant om du vill veta mer om hur du Tillgänglighetszoner och tjänster som är tillgängliga i dessa regioner. För kommande regioner som har stöd för Tillgänglighetszoner, se [Azure-geografiska](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)områden.
 
