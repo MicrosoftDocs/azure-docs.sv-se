@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: a24b39107d8f78c049afa230fe678ec92852eeb0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612780"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959695"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-skript för IoT Edge för Linux i Windows
 
@@ -41,7 +41,7 @@ Kommandot **Deploy-Eflow** är den huvudsakliga distributions metoden. Distribut
 | registrationId | Registrerings-ID för en befintlig IoT Edge enhet | Registrerings-ID för etablering av en IoT Edge enhet (**X509** eller **symmetrisk**). |
 | identityCertLocVm | Katalog Sök väg; måste finnas i en mapp som kan ägas av `iotedge` tjänsten | Absolut mål Sök väg för identitets certifikatet på den virtuella datorn för etablering av en IoT Edge enhet (**X509** eller **symmetrisk**). |
 | identityCertLocWin | Sökväg till katalog | Absolut käll Sök väg för identitets certifikatet i Windows för etablering av en IoT Edge enhet (**X509** eller **symmetrisk**). |
-| identityPkLocVm |  | Katalog Sök väg; måste finnas i en mapp som kan ägas av `iotedge` tjänsten | Absolut mål Sök väg för den privata identiteten på den virtuella datorn för etablering av en IoT Edge enhet (**X509** eller **symmetrisk**). |
+| identityPkLocVm | Katalog Sök väg; måste finnas i en mapp som kan ägas av `iotedge` tjänsten | Absolut mål Sök väg för den privata identiteten på den virtuella datorn för etablering av en IoT Edge enhet (**X509** eller **symmetrisk**). |
 | identityPkLocWin | Sökväg till katalog | Absolut käll Sök väg för den privata identiteten i Windows för etablering av en IoT Edge enhet (**X509** eller **symmetrisk**). |
 | vmSizeDefintion | Högst 30 tecken | Definition av antalet kärnor och tillgängligt RAM-minne för den virtuella datorn. **Standardvärde**: Standard_K8S_v1. |
 | vmDiskSize | Mellan 8 GB och 256 GB | Maximal disk storlek för den dynamiskt expanderande virtuella hård disken. **Standardvärde**: 16 GB. |
@@ -74,7 +74,7 @@ Kommandot **provision-EflowVm** lägger till etablerings informationen för din 
 | registrationId | Registrerings-ID för en befintlig IoT Edge enhet | Registrerings-ID för etablering av en IoT Edge enhet (**DPS**). |
 | identityCertLocVm | Katalog Sök väg; måste finnas i en mapp som kan ägas av `iotedge` tjänsten | Absolut mål Sök väg för identitets certifikatet på den virtuella datorn för etablering av en IoT Edge enhet (**DPS**, **X509**). |
 | identityCertLocWin | Sökväg till katalog | Absolut käll Sök väg för identitets certifikatet i Windows för etablering av en IoT Edge enhet (**DPS**, **X509**). |
-| identityPkLocVm |  | Katalog Sök väg; måste finnas i en mapp som kan ägas av `iotedge` tjänsten | Absolut mål Sök väg för den privata identiteten på den virtuella datorn för etablering av en IoT Edge enhet (**DPS**, **X509**). |
+| identityPkLocVm  | Katalog Sök väg; måste finnas i en mapp som kan ägas av `iotedge` tjänsten | Absolut mål Sök väg för den privata identiteten på den virtuella datorn för etablering av en IoT Edge enhet (**DPS**, **X509**). |
 | identityPkLocWin | Sökväg till katalog | Absolut käll Sök väg för den privata identiteten i Windows för etablering av en IoT Edge enhet (**DPS**, **X509**). |
 
 ## <a name="get-eflowvmname"></a>Get-EflowVmName

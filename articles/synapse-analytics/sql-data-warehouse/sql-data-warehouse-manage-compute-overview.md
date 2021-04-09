@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 20087fbf4d5c37f1501df08cc294a10ddb9118e1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8c44e0570b08bba852d57fbb25da05d778ea8a0d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601822"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960120"
 ---
 # <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Hantera beräkning för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics
 
@@ -92,6 +92,7 @@ När du pausar en dedikerad SQL-pool (tidigare SQL DW):
 - Kostnaderna för data lagrets enheter är noll under pausens varaktighet.
 - Data lagringen påverkas inte och dina data förblir intakta.
 - Alla pågående eller köade åtgärder avbryts.
+- DMV-räknare återställs.
 
 När du återupptar en dedikerad SQL-pool (tidigare SQL DW):
 

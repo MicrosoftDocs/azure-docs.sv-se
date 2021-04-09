@@ -4,14 +4,14 @@ description: Transformera och flytta data från en delta Lake med delta formatet
 author: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 03/26/2020
 ms.author: daperlov
-ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74df809f2206a105b405ba184949ef887096ebc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100386500"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932513"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Delta format i Azure Data Factory
 
@@ -75,6 +75,8 @@ I tabellen nedan visas de egenskaper som stöds av en delta mottagare. Du kan re
 | Komprimerings nivå | Välj om komprimeringen ska slutföras så fort som möjligt eller om den resulterande filen ska komprimeras optimalt. | krävs om `compressedType` har angetts. | `Optimal` eller `Fastest` | compressionLevel |
 | Vakuum | Ange tröskelvärde för kvarhållning i timmar för äldre versioner av tabell. Värdet 0 eller lägre är 30 dagar | ja | Integer | Dammsug |
 | Uppdaterings metod | Ange vilka uppdaterings åtgärder som tillåts på delta Lake. För metoder som inte infogas krävs en föregående Alter Row-omvandling för att markera rader. | ja | `true` eller `false` | bort <br> infognings bara <br> uppdaterings bara <br> merge |
+| Optimerad skrivning | Uppnå högre data flöde för Skriv åtgärd genom att optimera intern blandning i Spark-körningar. Det innebär att du kan märka färre partitioner och filer som har större storlek | nej | `true` eller `false` | optimizedWrite: sant |
+| Komprimera automatiskt | När en Skriv åtgärd har slutförts kommer Spark automatiskt att köra ```OPTIMIZE``` kommandot för att organisera om data, vilket resulterar i fler partitioner om det behövs, för bättre Läs prestanda i framtiden | nej | `true` eller `false` |   autokomprimera: sant |
 
 ### <a name="delta-sink-script-example"></a>Skript exempel för delta mottagare
 

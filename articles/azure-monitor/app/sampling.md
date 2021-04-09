@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589549"
 ---
 # <a name="sampling-in-application-insights"></a>Sampling i Application Insights
@@ -449,13 +449,13 @@ Provtagnings samplingen fungerar inte medan adaptiv eller fast pris sampling är
 > [!WARNING]
 > Värdet som visas på Portal panelen visar det värde som du angav för inmatnings sampling. Den representerar inte den faktiska samplings frekvensen om någon form av SDK-sampling (anpassningsbar eller fast pris sampling) är i drift.
 
-## <a name="when-to-use-sampling"></a>När du ska använda sampling
+## <a name="when-to-use-sampling&quot;></a>När du ska använda sampling
 
 I allmänhet för de flesta små och medel stora program behöver du inte använda sampling. Den mest användbara diagnostikinformation och den mest exakta statistiken erhålls genom att samla in data för alla dina användar aktiviteter. 
 
 De största fördelarna med sampling är:
 
-* Application Insights tjänst släpper ("begränsning") data punkter när din app skickar en mycket hög telemetri i ett kort tidsintervall. Sampling minskar sannolikheten för att programmet ska se begränsningen.
+* Application Insights tjänst släpper (&quot;begränsning") data punkter när din app skickar en mycket hög telemetri i ett kort tidsintervall. Sampling minskar sannolikheten för att programmet ska se begränsningen.
 * För att hålla dig inom [kvoten](pricing.md) för data punkter för din pris nivå. 
 * För att minska nätverks trafiken från insamling av telemetri. 
 

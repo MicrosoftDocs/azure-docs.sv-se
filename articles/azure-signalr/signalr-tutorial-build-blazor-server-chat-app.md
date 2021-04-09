@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1423e8aaf4b50db94cda0b935a7b1658249893e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97755913"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726353"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Självstudie: bygga en app för att chatta med en blixt Server
 
@@ -361,7 +361,7 @@ Från Visual Studio 2019 version 16.2.0 är Azure Signaling-tjänsten att public
 
 ## <a name="publish-to-azure"></a>Publicera till Azure
 
-   Hittills arbetar appen blixt i den lokala signalen och när du distribuerar till Azure App Service, rekommenderar vi att du använder [Azure SignalR-tjänsten](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) , vilket gör att du kan skala upp en blixt Server-App till ett stort antal samtidiga signalers anslutningar. Dessutom kan signal tjänstens globala räckvidd och data Center med hög prestanda avsevärt hjälpa till att minska svars tiden på grund av geografi.
+   Hittills arbetar appen blixt i den lokala signalen och när du distribuerar till Azure App Service, rekommenderar vi att du använder [Azure SignalR-tjänsten](/aspnet/core/signalr/scale#azure-signalr-service) , vilket gör att du kan skala upp en blixt Server-App till ett stort antal samtidiga signalers anslutningar. Dessutom kan signal tjänstens globala räckvidd och data Center med hög prestanda avsevärt hjälpa till att minska svars tiden på grund av geografi.
 
 > [!IMPORTANT]
 > I den här program varan för en blixt Server, underhålls GRÄNSSNITTs tillstånd på Server sidan, vilket innebär att serverns fästis krävs i det här fallet. Om det finns en enda app-server är serverns fästis säkerställd av design. Men om det finns flera App-servrar, finns det en risk för att klient förhandlingen och anslutningen kan gå till olika servrar och leda till användar gränssnitts fel i den snabba appen. Så du måste aktivera serverns fästis som nedan i `appsettings.json` :
@@ -385,7 +385,7 @@ Från Visual Studio 2019 version 16.2.0 är Azure Signaling-tjänsten att public
 
    Tjänst beroendet gör saker nedan för att aktivera appen automatiskt till Azure SignalR-tjänsten när den körs på Azure.
 
-   * Uppdatera [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) för att använda Azure SignalR-tjänsten.
+   * Uppdatera [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) för att använda Azure SignalR-tjänsten.
    * Lägg till Azure SignalR service-NuGet paket referens.
    * Uppdatera profil egenskaper för att spara beroende inställningarna.
    * Att konfigurera hemligheter lagras beror på ditt val.
@@ -423,10 +423,10 @@ Från Visual Studio 2019 version 16.2.0 är Azure Signaling-tjänsten att public
    }
    ```
 
-1. Konfigurera Azure SignalR service `ConnectionString` antingen i `appsetting.json` eller med verktyget [Secret Manager](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager)
+1. Konfigurera Azure SignalR service `ConnectionString` antingen i `appsetting.json` eller med verktyget [Secret Manager](/aspnet/core/security/app-secrets?tabs=visual-studio#secret-manager)
 
 > [!NOTE]
-> Steg 2 kan ersättas med hjälp av [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) till SignalR SDK.
+> Steg 2 kan ersättas med hjälp av [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) till SignalR SDK.
 > 
 > 1. Lägg till konfiguration för att aktivera Azure SignalR service i `appsetting.json`
 >    ```js

@@ -4,10 +4,10 @@ description: Lär dig mer om fel söknings tips och rekommendationer för några
 ms.topic: article
 ms.date: 03/03/2021
 ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105031298"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Fel söknings guide för Azure Service Bus

@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466231"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958320"
 ---
-Det finns **64** rekommendationer i den här kategorin.
+Det finns **65** rekommendationer i den här kategorin.
 
 |Rekommendation |Beskrivning |Allvarlighetsgrad |
 |---|---|---|
@@ -24,6 +24,7 @@ Det finns **64** rekommendationer i den här kategorin.
 |Gransknings kvarhållning för SQL-servrar ska vara minst 90 dagar |Granska SQL-servrar som kon figurer ATS med en gransknings kvarhållningsperiod på mindre än 90 dagar.<br />(Relaterad princip: [SQL-servrar bör konfigureras med 90 dagars gransknings kvarhållning eller högre.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |Låg |
 |Granskning på SQL Server måste vara aktiverat |Aktivera granskning på SQL Server för att spåra databas aktiviteter i alla databaser på servern och spara dem i en Gransknings logg.<br />(Relaterad princip: [granskning på SQL Server måste vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)) |Låg |
 |Automatisk etablering av den Log Analytics agenten ska vara aktive rad för din prenumeration |Azure Security Center samlar in data från dina virtuella Azure-datorer för att övervaka säkerhets problem och hot. Data samlas in av Log Analytics agent, tidigare kallat Microsoft Monitoring Agent (MMA), som läser olika säkerhetsrelaterade konfigurationer och händelse loggar från datorn och kopierar data till din Log Analytics-arbetsyta för analys. Vi rekommenderar att du aktiverar automatisk etablering för att automatiskt distribuera agenten till alla virtuella Azure-datorer som stöds och eventuella nya som skapas.<br />(Relaterad princip: [Automatisk etablering av Log Analytics agent ska vara aktive rad i din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)) |Låg |
+|Azure Arc-aktiverade Kubernetes-kluster ska ha Azure Defender-tillägget installerat |Azure Defenders tillägg för Azure Arc ger skydd mot hot för dina Arc-aktiverade Kubernetes-kluster. Tillägget samlar in data från alla huvud-noder (Control plan) i klustret och skickar dem till Server delen Azure Defender för Kubernetes i molnet för ytterligare analys. Läs mer i https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc .<br />(Ingen relaterad princip) |Högt |
 |Azure cache för Redis bör finnas i ett virtuellt nätverk |Azure Virtual Network (VNet)-distribution ger förbättrad säkerhet och isolering för Azure-cache för Redis, samt undernät, åtkomst kontroll principer och andra funktioner för att ytterligare begränsa åtkomst. När en Azure-cache för Redis-instans har kon figurer ATS med ett VNet, är den inte offentligt adresserad och kan endast nås från virtuella datorer och program i VNet.<br />(Relaterad princip: [Azure cache för Redis bör finnas i ett virtuellt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)) |Medel |
 |Azure Cosmos DB konton måste ha brand Väggs regler |Brand Väggs regler ska definieras på dina Azure Cosmos DB-konton för att förhindra trafik från obehöriga källor. Konton som har minst en IP-regel som definierats med det virtuella nätverks filtret aktiverat anses vara kompatibla. Konton som inaktiverar offentlig åtkomst anses också uppfylla kraven.<br />(Relaterad princip: [Azure Cosmos DB konton måste ha brand Väggs regler](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)) |Medel |
 |Azure Cosmos DB konton ska använda Kundhanterade nycklar för att kryptera data i vila |Använd Kundhanterade nycklar för att hantera krypteringen i resten av Azure Cosmos DB. Som standard krypteras data i vila med tjänst hanterade nycklar, men Kundhanterade nycklar (CMK) krävs ofta för att uppfylla gällande regler för efterlevnad. CMKs gör det möjligt att kryptera data med en Azure Key Vault-nyckel som skapats och ägs av dig. Du har fullständig kontroll och ansvar för nyckel livs cykeln, inklusive rotation och hantering. Läs mer om CMK-kryptering på https://aka.ms/cosmosdb-cmk .<br />(Relaterad princip: [Azure Cosmos DB konton ska använda Kundhanterade nycklar för att kryptera data i vila](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)) |Högt |

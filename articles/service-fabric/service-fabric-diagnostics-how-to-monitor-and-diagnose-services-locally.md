@@ -4,10 +4,10 @@ description: Lär dig hur du övervakar och diagnostiserar dina tjänster som sk
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: a2502c24ef233c286872e2c265dcfdae6883f8ed
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105628840"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Övervaka och diagnostisera tjänster i en konfiguration för utveckling lokalt

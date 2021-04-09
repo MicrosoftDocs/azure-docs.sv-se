@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 937048ce14b9b05b55cd8d76e7a8c1fd67c63e4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95913563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933716"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Metod tips för att använda Azure Data Lake Storage Gen2
 
-I den här artikeln får du lära dig mer om bästa praxis och överväganden för att arbeta med Azure Data Lake Storage Gen2. Den här artikeln innehåller information kring säkerhet, prestanda, återhämtning och övervakning för Data Lake Storage Gen2. Innan Data Lake Storage Gen2 arbetar du med verkligt stor data i tjänster som Azure HDInsight var komplex. Du var tvungen att Shard data över flera Blob Storage-konton så att petabyte-lagring och optimala prestanda vid denna skala skulle kunna uppnås. Data Lake Storage Gen2 stöder enskilda fil storlekar så högt som 5TB och de flesta hård gränserna för prestanda har tagits bort. Det finns dock fortfarande vissa överväganden som beskrivs i den här artikeln så att du kan få bästa möjliga prestanda med Data Lake Storage Gen2.
+I den här artikeln får du lära dig mer om bästa praxis och överväganden för att arbeta med Azure Data Lake Storage Gen2. Den här artikeln innehåller information kring säkerhet, prestanda, återhämtning och övervakning för Data Lake Storage Gen2. Innan Data Lake Storage Gen2 arbetar du med verkligt stor data i tjänster som Azure HDInsight var komplex. Du var tvungen att Shard data över flera Blob Storage-konton så att petabyte-lagring och optimala prestanda vid denna skala skulle kunna uppnås. Data Lake Storage Gen2 stöder enskilda fil storlekar så högt som 190,7 TiB och de flesta hård gränserna för prestanda har tagits bort. Det finns dock fortfarande vissa överväganden som beskrivs i den här artikeln så att du kan få bästa möjliga prestanda med Data Lake Storage Gen2.
 
 ## <a name="security-considerations"></a>Säkerhetsöverväganden
 
