@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521550"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Ansluta till en virtuell Windows-dator med Azure skydds
@@ -35,7 +35,7 @@ Innan du börjar ska du kontrol lera att du har uppfyllt följande kriterier:
 * Portar: för att ansluta till den virtuella Windows-datorn måste du ha följande portar öppna på din virtuella Windows-dator:
   * Inkommande portar: RDP (3389)
 
-## <a name="connect"></a><a name="rdp"></a>Ansluta
+## <a name="connect"></a><a name="rdp"></a>Gå
 
 [!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
  

@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
 ms.openlocfilehash: f4e34e850391696506beed9f6f386f85528dff24
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92284814"
 ---
 Om du har valt en av de virtuella datorer som är förkonfigurerade med ett operativ system (och valfria ytterligare tjänster) har du redan valt en standard storlek för virtuella Azure-datorer. Den rekommenderade metoden är att starta din lösning med ett förkonfigurerat operativ system. Om du installerar ett operativ system manuellt måste du dock ändra den primära virtuella hård disken i din VM-avbildning. Se till att OS-diskens storlek ligger inom gränserna för Linux eller Windows.
