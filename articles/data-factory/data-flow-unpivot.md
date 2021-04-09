@@ -48,9 +48,9 @@ Till exempel är SumCost det kolumn namn som väljs i exemplet som delas ovan.
 
 ![Bild som visar kolumnerna PO, Vendor och frukt före och efter en unipivot-omvandling med hjälp av kolumnen frukt som unipivot-nyckeln.](media/data-flow/unpivot3.png)
 
-Om du ställer in kolumn ordningen till "normal" grupperas alla nya kolumner som inte har pivoteras från ett enda värde. Om du anger kolumnernas ordning till "lateral" grupperas nya, staplade kolumner som genereras från en befintlig kolumn.
+Om du ställer in kolumn ordningen till "normal&quot; grupperas alla nya kolumner som inte har pivoteras från ett enda värde. Om du anger kolumnernas ordning till &quot;lateral&quot; grupperas nya, staplade kolumner som genereras från en befintlig kolumn.
 
-![Skärm bild som visar resultatet av omvandlingen.](media/data-flow//unpivot7.png "Avpivotera alternativ 5")
+![Skärm bild som visar resultatet av omvandlingen.](media/data-flow//unpivot7.png &quot;Avpivotera alternativ 5")
 
 I den sista pivottabellen med nedpivoterade data visas kolumn summor nu i separata rad värden.
 

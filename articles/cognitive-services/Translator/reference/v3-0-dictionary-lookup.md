@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: lajanuar
 ms.openlocfilehash: 88a76a16de43853a001f5db895d6ad418940de0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895500"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Translator 3,0: Sök efter ord
@@ -91,7 +91,7 @@ Ett lyckat svar är en JSON-matris med ett resultat för varje sträng i den ang
         | BEREDD     | Prepositioner |
         | PRON     | Pronomen     |
         | VERB     | Verb        |
-        | ANDRA    | Övrigt        |
+        | ANDRA    | Annat        |
 
         Som en implementerings anteckning fastställdes dessa taggar av en del-av-tal-taggning av den engelska sidan och sedan den mest frekventa taggen för varje käll-/mål par. Så om människor ofta översätter ett spanskt ord till en annan del av tal-taggen på engelska kan taggarna bli fel (med avseende på det spanska ordet).
 
