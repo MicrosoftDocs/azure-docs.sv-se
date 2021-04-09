@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 3f825e247aff5c8fc53eb8610f33bd8e0b7fce3d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Självstudie: Azure Active Directory integrering med Zscaler One
@@ -189,14 +189,14 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     b. Klicka på **Aktivera**.
 
-## <a name="configuring-proxy-settings"></a>Konfigurera proxyinställningar
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>För att konfigurera proxyinställningar i Internet Explorer
+## <a name="configuring-proxy-settings&quot;></a>Konfigurera proxyinställningar
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>För att konfigurera proxyinställningar i Internet Explorer
 
 1. Starta **Internet Explorer**.
 
 2. Välj **Internetalternativ** i menyn **Verktyg** för att öppna dialogrutan **Internetalternativ**.   
 
-    ![Internet alternativ](./media/zscaler-one-tutorial/ic769492.png "Internet alternativ")
+    ![Internet alternativ](./media/zscaler-one-tutorial/ic769492.png &quot;Internet alternativ")
 
 3. Klicka på fliken **Anslutningar**.   
 
