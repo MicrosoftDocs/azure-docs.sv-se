@@ -4,10 +4,10 @@ description: Lär dig mer om livs cykeln som en skiss definition går igenom och
 ms.date: 01/27/2021
 ms.topic: conceptual
 ms.openlocfilehash: 721a198b5732af01c6712e86bc0c8e8ef543b404
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98918525"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Förstå livs cykeln för en Azure Blueprint
