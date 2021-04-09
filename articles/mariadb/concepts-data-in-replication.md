@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98662635"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikera data till Azure Database for MariaDB
@@ -39,7 +39,7 @@ Huvud scenarierna för att överväga att använda Datareplikering är:
 - Se till att den dator som är värd för käll servern tillåter både inkommande och utgående trafik på port 3306.
 - Kontrol lera att käll servern har en **offentlig IP-adress**, att DNS är offentligt tillgängligt eller har ett fullständigt kvalificerat domän namn (FQDN).
 
-### <a name="other"></a>Övrigt
+### <a name="other"></a>Annat
 - Datareplikering stöds bara i Generell användning och minnesoptimerade pris nivåer.
 
 ## <a name="next-steps"></a>Nästa steg

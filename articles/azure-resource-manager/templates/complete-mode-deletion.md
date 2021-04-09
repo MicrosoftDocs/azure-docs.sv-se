@@ -4,10 +4,10 @@ description: Visar hur resurs typer hanterar fullständig borttagning av läge i
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: e0c67bfcda81ad128e0018c4ab37c4b0cbe680f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96184033"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Borttagning av Azure-resurser för komplett läges distributioner
@@ -915,7 +915,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | BillingAccounts | Inga |
 > | Budgetar | Inga |
 > | CloudConnectors | Inga |
-> | Anslutningsappar | Ja |
+> | Anslutningar | Ja |
 > | costAllocationRules | Inga |
 > | Avdelningar | Inga |
 > | Dimensioner | Inga |
