@@ -4,12 +4,12 @@ description: Beskriver hur du tar bort resurs grupper och resurser. Det beskrive
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 244d59ffc096b5e219e27fd376b07baecde3670e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8dd6c3f9ac178a518545a662eb94d33066f7614b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587669"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932734"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager resurs grupp och borttagning av resurs
 
@@ -130,4 +130,4 @@ Om du har den åtkomst som krävs, men borttagnings förfrågan Miss lyckas, kan
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om Resource Manager-koncept finns i [Azure Resource Manager översikt](overview.md).
-* För borttagnings kommandon, se [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)och [REST API](/rest/api/resources/resourcegroups/delete).
+* För borttagnings kommandon, se [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)och [REST API](/rest/api/resources/resources/resourcegroups/delete).

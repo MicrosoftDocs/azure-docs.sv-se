@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471643"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932921"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurera inställningar för Azure AD-Multi-Factor Authentication
 
@@ -231,7 +231,7 @@ Du kan komma åt tjänst inställningar från Azure Portal genom att bläddra ti
 
 ## <a name="trusted-ips"></a>Tillförlitliga IP-adresser
 
-Funktionen _betrodda IP-adresser_ i Azure AD Multi-Factor Authentication kringgår Multi-Factor Authentication-prompter för användare som loggar in från ett definierat IP-adressintervall. Du kan ange betrodda IP-intervall för dina lokala miljöer när användarna är på någon av dessa platser, så finns det ingen Azure AD-Multi-Factor Authentication-prompt.
+Funktionen _betrodda IP-adresser_ i Azure AD Multi-Factor Authentication kringgår Multi-Factor Authentication-prompter för användare som loggar in från ett definierat IP-adressintervall. Du kan ange betrodda IP-intervall för dina lokala miljöer, så när användare finns på någon av dessa platser finns det ingen Azure AD Multi-Factor Authentication-prompt. Funktionen för _betrodda IP-adresser_ i Azure AD Multi-Factor Authentication kräver Azure AD Premium P1-utgåvan. 
 
 > [!NOTE]
 > De betrodda IP-adresserna kan bara innehålla privata IP-adressintervall när du använder MFA Server. För molnbaserad Azure AD-Multi-Factor Authentication kan du bara använda offentliga IP-adressintervall.

@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608535"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932411"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
 Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub. Om du inte redan har gjort det, måste du bekanta dig med de grundläggande [import begreppen](import-concepts.md).
@@ -35,7 +35,7 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
 
 2. Skapa en textfil med namnet **AduUpdate. psm1** i katalogen där uppdaterings avbildnings filen eller apt manifest filen finns. Öppna PowerShell-cmdleten [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) , kopiera innehållet till text filen och spara sedan text filen.
 
-3. I PowerShell navigerar du till den katalog där du skapade PowerShell-cmdleten från steg 2. Kör sedan:
+3. I PowerShell navigerar du till den katalog där du skapade PowerShell-cmdleten från steg 2. Använd kopierings alternativet nedan och klistra in i PowerShell för att köra kommandona:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -63,7 +63,7 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
     | updateName | Identifierare för en klass med uppdateringar. Den här klassen kan vara allt du väljer. Det är ofta en enhet eller ett modell namn.
     | updateVersion | Versions nummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Har inte samma version av en enskild program varu komponent på enheten (men kan även om du väljer).
     | Uppdateringstyp | <ul><li>Ange `microsoft/swupdate:1` för avbildnings uppdatering</li><li>Ange `microsoft/apt:1` för paket uppdatering</li></ul>
-    | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdaterings typ</li><li>Ange Rekommenderat värde för `microsoft/apt:1` uppdaterings typen.
+    | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdaterings typ</li><li>Ange **namn-version**, där _namn_ är namnet på apt-manifestet och _versionen_ är versionen av apt-manifestet. Till exempel contoso-IoT-Edge-1.0.0.0.
     | updateFilePath (s) | Sökväg till uppdaterings filen (-erna) på datorn
 
 

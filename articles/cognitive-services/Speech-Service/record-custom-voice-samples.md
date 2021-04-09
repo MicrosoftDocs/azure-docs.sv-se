@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101722321"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Spela in röst exempel för att skapa en anpassad röst
@@ -163,14 +163,14 @@ Spela in med 44,1 kHz 16-bitars Monophonic (CD-kvalitet) eller bättre. Nuvarand
 
 Vi rekommenderar att olika personer fungerar i rollerna chef, tekniker och personal. Försök inte helt själv. En person kan vara både Director och teknikern.
 
-### <a name="before-the-session"></a>Före sessionen
+### <a name="before-the-session&quot;></a>Före sessionen
 
 Undvik att slösa i studio-tid genom att köra skriptet med din röst personal innan du spelar in sessionen. När röst personal är bekant med texten kan de klargöra uttal av alla okända ord.
 
 > [!NOTE]
 > De flesta inspelnings Studios ger elektronisk visning av skript i registrerings hytten. I det här fallet skriver du dina körnings anteckningar direkt i skriptets dokument. Du vill fortfarande att en pappers kopia ska göra anteckningar under sessionen, även om. De flesta tekniker vill även ha en hård kopia. Och du vill ha en tredje utskrift som en säkerhets kopia för personal, om datorn inte är igång.
 
-Din röst-personal kan be dig om vilket ord du vill framhäva i en uttryck (det "fungerande ordet"). Berätta för dem att du vill ha en naturlig läsning utan särskild uppmärksamhet. Betoning kan läggas till när tal är syntetiskt. den får inte vara en del av den ursprungliga inspelningen.
+Din röst-personal kan be dig om vilket ord du vill framhäva i en uttryck (det &quot;fungerande ordet"). Berätta för dem att du vill ha en naturlig läsning utan särskild uppmärksamhet. Betoning kan läggas till när tal är syntetiskt. den får inte vara en del av den ursprungliga inspelningen.
 
 Instruera personal att uttala ord tydligt. Varje ord i skriptet bör uttalas som skrivet. Ljud får inte utelämnas eller slurreds tillsammans, som vanligt i vardagligt tal, *om de inte har skrivits på det sättet i skriptet*.
 

@@ -10,19 +10,19 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 56b411a490fe1a0c45ea4dd183d88defd61a2fde
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: f8986ef895c5766d363261ef263851ee96d9c0da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105640859"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727679"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Visualisera experiment körningar och mät värden med TensorBoard och Azure Machine Learning
 
 
 I den här artikeln får du lära dig hur du visar experiment körningar och mått i TensorBoard med hjälp av [ `tensorboard` paketet](/python/api/azureml-tensorboard/) i huvud Azure Machine Learning SDK. När du har kontrollerat att experimentet har körts kan du bättre justera och träna dina maskin inlärnings modeller.
 
-[TensorBoard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) är en uppsättning webb program för att kontrol lera och förstå din experiment struktur och prestanda.
+[TensorBoard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard) är en uppsättning webb program för att kontrol lera och förstå din experiment struktur och prestanda.
 
 Hur du startar TensorBoard med Azure Machine Learning experiment beror på typen av experiment:
 + Om experimentet sparar loggfiler som kan användas av TensorBoard, till exempel PyTorch, Kedjorer och TensorFlow experiment, kan du [Starta TensorBoard direkt](#launch-tensorboard) från experimentets körnings historik. 

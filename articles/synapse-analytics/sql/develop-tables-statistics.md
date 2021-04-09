@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104594792"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistik i Synapse SQL
@@ -443,7 +443,7 @@ Det finns flera systemvyer och funktioner som du kan använda för att hitta inf
 
 Dessa system visningar innehåller information om statistik:
 
-| Katalogvy | Description |
+| Katalogvy | Beskrivning |
 |:--- |:--- |
 | [sys. columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |En rad för varje kolumn. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |En rad för varje objekt i databasen. |
@@ -457,7 +457,7 @@ Dessa system visningar innehåller information om statistik:
 
 Dessa system funktioner är användbara när du arbetar med statistik:
 
-| System funktion | Description |
+| System funktion | Beskrivning |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Datum då statistik objekt senast uppdaterades. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Sammanfattnings nivå och detaljerad information om distributionen av värden som förstås av statistik objekt. |
@@ -825,7 +825,7 @@ Det finns flera systemvyer och funktioner som du kan använda för att hitta inf
 
 Dessa system visningar innehåller information om statistik:
 
-| Katalogvy                                                 | Description                                                  |
+| Katalogvy                                                 | Beskrivning                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [sys. columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | En rad för varje kolumn.                                     |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | En rad för varje objekt i databasen.                     |
@@ -839,7 +839,7 @@ Dessa system visningar innehåller information om statistik:
 
 Dessa system funktioner är användbara när du arbetar med statistik:
 
-| System funktion                                              | Description                                  |
+| System funktion                                              | Beskrivning                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Datum då statistik objekt senast uppdaterades. |
 

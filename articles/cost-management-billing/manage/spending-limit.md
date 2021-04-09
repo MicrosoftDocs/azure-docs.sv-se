@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: df5c5ed74a5e0a63727962fa86d261cfb588a384
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 47f1a1ed182420852682e908c7cd8b5e094bc085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690569"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932564"
 ---
 # <a name="azure-spending-limit"></a>Utgiftsgräns i Azure
 
-Utgiftsgränsen i Azure gör att du inte kan spendera mer än ditt kreditbelopp. Alla nya kunder som registrerar sig för ett kostnadsfritt Azure-konto eller prenumerationer som innefattar krediter under flera månader har utgiftsgränsen aktiverad som standard. Utgiftsgränsen är lika med kreditbeloppet och kan inte ändras. Om du till exempel har registrerat dig för ett kostnadsfritt Azure-konto är din utgiftsgräns 200 USD och du kan inte ändra den till 500 USD. Dock kan du när som helst ta bort utgiftsgränsen. Så du har antingen ingen gräns eller så har du en gräns som motsvarar kreditbeloppet. Det här spärrar dig från de flesta typer av utgifter. Utgiftsgränsen är inte tillgänglig för prenumerationer med åtagandeplaner eller prissättning enligt Betala per användning. Mer information finns i den [fullständiga listan med typer av Azure-prenumerationer och tillgänglighet för utgiftsgränsen](https://azure.microsoft.com/support/legal/offer-details/).
+Utgiftsgränsen i Azure gör att du inte kan spendera mer än ditt kreditbelopp. Alla nya kunder som registrerar sig för ett kostnadsfritt Azure-konto eller prenumerationer som innefattar krediter under flera månader har utgiftsgränsen aktiverad som standard. Utgifts gränsen är lika med kredit beloppet. Du kan inte ändra utgifts gränsen. Om du till exempel har registrerat dig för ett kostnadsfritt Azure-konto är din utgiftsgräns 200 USD och du kan inte ändra den till 500 USD. Dock kan du när som helst ta bort utgiftsgränsen. Så du har antingen ingen gräns eller så har du en gräns som motsvarar kreditbeloppet. Det här spärrar dig från de flesta typer av utgifter. Utgiftsgränsen är inte tillgänglig för prenumerationer med åtagandeplaner eller prissättning enligt Betala per användning. Mer information finns i den [fullständiga listan med typer av Azure-prenumerationer och tillgänglighet för utgiftsgränsen](https://azure.microsoft.com/support/legal/offer-details/).
 
 ## <a name="reaching-a-spending-limit"></a>Uppnå en utgiftsgräns
 
@@ -60,7 +60,7 @@ Om du har ett kostnadsfritt Azure-konto kan du läsa mer om att ta bort utgiftsg
 
       ![Skärmbild som visar bladet Ta bort utgiftsgräns](./media/spending-limit/remove-spending-limit-blade-x.png)
 
-      | Alternativ | Verkan |
+      | Alternativ | Effekt |
       | --- | --- |
       | Ta bort utgiftsgränsen på obestämd tid | Utgiftsgränsen aktiveras inte automatiskt igen vid början av nästa faktureringsperiod. Men du kan aktivera den igen när du vill. |
       | Ta bort utgiftsgränsen för den aktuella faktureringsperioden | Utgiftsgränsen aktiveras automatiskt igen vid början av nästa faktureringsperiod. |

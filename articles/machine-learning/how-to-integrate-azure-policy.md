@@ -11,17 +11,17 @@ ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105544374"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Granska och hantera Azure Machine Learning med Azure Policy
 
 [Azure policy](../governance/policy/index.yml) är ett styrnings verktyg som gör att du kan se till att Azure-resurserna är kompatibla med dina principer. Med Azure Machine Learning kan du tilldela följande principer:
 
-| Policy | Description |
+| Policy | Beskrivning |
 | ----- | ----- |
 | **Kundhanterad nyckel** | Granska eller tillämpa om arbets ytorna måste använda en kundhanterad nyckel. |
 | **Privat länk** | Granska eller tillämpa om arbets ytor använder en privat slut punkt för att kommunicera med ett virtuellt nätverk. |

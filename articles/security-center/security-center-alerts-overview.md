@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 5824457a9f2ce411a871b5e76802ecf2e2f106c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099513"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727050"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Säkerhets aviseringar och incidenter i Azure Security Center
 
@@ -73,13 +73,12 @@ Security Center tilldelar en allvarlighets grad till aviseringar, som hjälper d
 > [!NOTE]
 > Aviseringens allvarlighets grad visas på ett annat sätt i portalen och versioner av den REST API som är dagens datum 01-01-2019. Om du använder en äldre version av API: t uppgraderar du för den konsekventa upplevelsen som beskrivs nedan.
 
-| Allvarlighetsgrad          | Rekommenderat svar                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Allvarlighetsgrad          | Rekommenderat svar      |
+|---|---|
 | **Hög**          | Det finns en hög sannolikhet för att din resurs komprometteras. Du bör titta på det direkt. Security Center har hög exakthet i både den skadliga avsikten och i de resultat som används för att utfärda aviseringen. Till exempel en avisering som identifierar körningen av ett känt skadligt verktyg, till exempel Mimikatz, ett vanligt verktyg som används för stöld av autentiseringsuppgifter.                                                                                                               |
 | **Medel**        | Detta är förmodligen en misstänkt aktivitet som kan tyda på att en resurs komprometteras. Security Center tillförlitlighet i analys eller sökning är medel och säkerheten för den skadliga avsikten är medel hög till hög. Detta brukar vara maskin inlärning eller avvikande identifieringar. Till exempel ett inloggnings försök från en avvikande plats.                                                                                                                |
 | **Låg**           | Detta kan vara ett ofarligt positivt eller blockerat angrepp. Security Center är inte tillräckligt säker på att avsikten är skadlig och att aktiviteten kan vara Innocent. Logg rensning är till exempel en åtgärd som kan inträffa när en angripare försöker dölja sina spår, men i många fall är en rutin åtgärd som utförs av administratörer. Security Center meddelar dig normalt inte när attacker blockeras, om det inte är ett intressant ärende som vi föreslår att du tittar på. |
-| **Information** | Endast informations aviseringar visas när du ökar detalj nivån i en säkerhets incident, eller om du använder REST API med ett angivet aviserings-ID. En incident består vanligt vis av ett antal aviseringar, varav vissa kan visas på egen hand som endast information, men i samband med de andra aviseringarna kan det vara betrodd av en närmare titt.                                                                                                                         |  |
-|                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Information** | Endast informations aviseringar visas när du ökar detalj nivån i en säkerhets incident, eller om du använder REST API med ett angivet aviserings-ID. En incident består vanligt vis av ett antal aviseringar, varav vissa kan visas på egen hand som endast information, men i samband med de andra aviseringarna kan det vara betrodd av en närmare titt.                                                                                                                         |
 
 ## <a name="export-alerts"></a>Exportera aviseringar
 

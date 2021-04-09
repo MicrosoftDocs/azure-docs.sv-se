@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/29/2021
+ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364247"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726795"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopiera data till och från Azure Databricks delta Lake med hjälp av Azure Data Factory
 
@@ -42,7 +42,7 @@ Om du vill använda den här Azure Databricks delta Lake Connector måste du kon
 
 Databricks-klustret måste ha åtkomst till Azure Blob eller Azure Data Lake Storage Gen2 konto, både lagrings behållare/fil system som används för källa/mottagare/mellanlagring och det behållare/fil system där du vill skriva de delta Lake-tabeller.
 
-- Om du vill använda **Azure Data Lake Storage Gen2** kan du konfigurera **tjänstens huvud namn** eller **lagrings kontots åtkomst nyckel** i Databricks-klustret som en del av Apache Spark-konfigurationen. Följ stegen i [åtkomst direkt med tjänstens huvud namn](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) eller [åtkomst direkt med hjälp av lagrings kontots åtkomst nyckel](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
+- Om du vill använda **Azure Data Lake Storage Gen2** kan du konfigurera ett **huvud namn för tjänsten** i Databricks-klustret som en del av Apache Spark-konfigurationen. Följ stegen i [åtkomst direkt med tjänstens huvud namn](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20).
 
 - Om du vill använda **Azure Blob Storage** kan du konfigurera en **åtkomst nyckel för lagrings kontot** eller **SAS-token** i Databricks-klustret som en del av Apache Spark-konfigurationen. Följ stegen i [Access Azure Blob Storage med RDD-API: et](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
 
