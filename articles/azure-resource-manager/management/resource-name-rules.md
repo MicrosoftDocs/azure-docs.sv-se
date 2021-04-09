@@ -3,12 +3,12 @@ title: Begränsningar för resurs namn
 description: Visar regler och begränsningar för namngivning av Azure-resurser.
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700481"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934180"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Namngivningsregler och begränsningar för Azure-resurser
 
@@ -599,7 +599,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
 > | distributioner | Resursgrupp | 1-64 | Alfanumeriska tecken, under streck, parenteser, bindestreck och punkter. |
-> | ResourceGroups | prenumeration | 1–90 | Alfanumeriska tecken, under streck, parenteser, bindestreck, punkter och Unicode-tecken som matchar regex- [dokumentationen](/rest/api/resources/resourcegroups/createorupdate).<br><br>Kan inte sluta med punkt. |
+> | ResourceGroups | prenumeration | 1–90 | Alfanumeriska tecken, under streck, parenteser, bindestreck, punkter och Unicode-tecken som matchar regex- [dokumentationen](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Kan inte sluta med punkt. |
 > | tagNames | resource | 1-512 | Kan inte använda:<br>`<>%&\?/` |
 > | tagNames / tagValues | taggnamn | 1-256 | Alla tecken. |
 > | templateSpecs | Resursgrupp | 1–90 | Alfanumeriska tecken, under streck, parenteser, bindestreck och punkter. |

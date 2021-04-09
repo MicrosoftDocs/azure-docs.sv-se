@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 03/23/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: a774eb08989e8fc45a117d83d81a5b510e8202b4
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559918"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934333"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -77,7 +77,7 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 
 [Azure Cost Management + fakturering](../../cost-management-billing/index.yml):
 
-- Från hanterings klient organisationen kan CSP-partner Visa, hantera och analysera konsumtions kostnader (inte inklusive inköp) för kunder som följer Azure-planen. Kostnaden baseras på återförsäljarversionen och den Azure rollbaserad åtkomst kontroll (Azure RBAC) som partnern har för kundens prenumeration.
+- Från hanterings klient organisationen kan CSP-partner Visa, hantera och analysera konsumtions kostnader (inte inklusive inköp) för kunder som följer Azure-planen. Kostnaden baseras på återförsäljarversionen och den Azure rollbaserad åtkomst kontroll (Azure RBAC) som partnern har för kundens prenumeration. För närvarande kan du Visa förbruknings kostnader enligt åter försäljnings taxan för varje enskild kund prenumeration baserat på Azure RBAC-åtkomst.
 
 [Azure Key Vault](../../key-vault/general/index.yml):
 

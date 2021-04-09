@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 801d810a82e4e484ca1ab30c5c6d510860dbab6b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566038"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067290"
 ---
 # <a name="azure-media-services-release-notes"></a>Viktig information om Azure Media Services
 
@@ -252,7 +252,7 @@ Azure SDK-teamet publicerade en ny version av [Azure SDK för php](https://githu
 Mer information finns i:
 
 * Följande [kod exempel](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) hjälper dig att komma igång snabbt:
-  * **vodworkflow_aes. php**: den här php-filen visar hur du använder aes-128 dynamisk kryptering och Key Delivery Service. Det baseras på .NET-exemplet som beskrivs i [använda AES-128 dynamisk kryptering och Key Delivery Service](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes. php**: den här php-filen visar hur du använder aes-128 dynamisk kryptering och Key Delivery Service. Det baseras på .NET-exemplet som beskrivs i [använda AES-128 dynamisk kryptering och Key Delivery Service](media-services-playready-license-template-overview.md).
   * **vodworkflow_aes. php**: den här php-filen visar hur du använder PlayReady Dynamic Encryption och licens leverans tjänsten. Det baseras på .NET-exemplet som beskrivs i [använda PlayReady och/eller Widevine Dynamic common Encryption](media-services-protect-with-playready-widevine.md).
   * **scale_encoding_units. php**: den här php-filen visar hur du skalar kodade reserverade enheter.
 

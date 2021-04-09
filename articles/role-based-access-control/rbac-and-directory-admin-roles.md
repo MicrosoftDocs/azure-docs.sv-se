@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/04/2021
+ms.date: 03/31/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: c4ab8c9f4e1f9dae8c10e155729c639c089fb77a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727123"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107205"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klassiska administratörs roller för prenumeration, Azure-roller och Azure AD-roller
 
@@ -115,7 +115,7 @@ På en hög nivå kontrollerar Azure-roller behörigheter för att hantera Azure
 | --- | --- |
 | Hantera åtkomst till Azure-resurser | Hantera åtkomst till Azure Active Directory-resurser |
 | Stöder anpassade roller | Stöder anpassade roller |
-| Omfånget kan anges på flera nivåer (hanteringsgrupp, prenumeration, resursgrupp och resurs) | [Omfång](../active-directory/roles/custom-overview.md#scope) kan anges på klient nivå (hela organisationen) eller på ett enskilt objekt (till exempel ett visst program) |
+| Omfånget kan anges på flera nivåer (hanteringsgrupp, prenumeration, resursgrupp och resurs) | [Omfång](../active-directory/roles/custom-overview.md#scope) kan anges på klient nivå (hela organisationen), administrativ enhet eller på ett enskilt objekt (till exempel ett specifikt program) |
 | Rollinformation kan nås i Azure-portalen, Azure CLI, Azure PowerShell, Azure Resource Manager-mallar samt REST API | Du kan komma åt roll information i Azure Admin Portal, Microsoft 365 administrations Center, Microsoft Graph, AzureAD PowerShell |
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Överlappar Azure-roller och Azure AD-roller?

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 03/29/2021
 ms.author: chrande
 ms.custom: devx-track-python
-ms.openlocfilehash: 342b9c9aae0a523ac770ba78f298c4ba91c434e7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: cef397789d5ebcfa95c01e42dac9a80b9e1564e0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798756"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106950"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Snabb start: skapa en diagram databas i Azure Cosmos DB med python och Azure Portal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -56,16 +56,16 @@ Nu ska vi övergå till att arbeta med kod. Nu ska vi klona en Gremlin-API-app f
 1. Öppna en kommandotolk, skapa en ny mapp som heter git-samples och stäng sedan kommandotolken.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "./git-samples"
     ```
 
 2. Öppna ett git-terminalfönster, t.ex. git bash, och använd kommandot `cd` för att ändra till en mapp där du vill installera exempelappen.  
 
     ```bash
-    cd "C:\git-samples"
+    cd "./git-samples"
     ```
 
-3. Klona exempellagringsplatsen med följande kommando. Detta kommando skapar en kopia av exempelappen på din dator. 
+3. Klona exempellagringsplatsen med följande kommando. Detta kommando skapar en kopia av exempelappen på din dator.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-python-getting-started.git
@@ -73,14 +73,14 @@ Nu ska vi övergå till att arbeta med kod. Nu ska vi klona en Gremlin-API-app f
 
 ## <a name="review-the-code"></a>Granska koden
 
-Det här är valfritt. Om du vill lära dig hur databasresurserna skapas i koden kan du granska följande kodavsnitt. Alla kod avsnitt hämtas från filen *Connect.py* i mappen *C:\git-samples\azure-Cosmos-DB-Graph-python-Getting-Started \\* . Annars kan du gå vidare till [Uppdatera din anslutningssträng](#update-your-connection-information). 
+Det här är valfritt. Om du vill lära dig hur databasresurserna skapas i koden kan du granska följande kodavsnitt. Alla kod avsnitt hämtas från filen *Connect.py* i mappen *C:\git-samples\azure-Cosmos-DB-Graph-python-Getting-Started \\* . Annars kan du gå vidare till [Uppdatera din anslutningssträng](#update-your-connection-information).
 
-* Gremlin `client` initieras på rad 104 i *Connect.py*:
+* Gremlin `client` initieras på rad 155 i *Connect.py*. Se till att ersätta `<YOUR_DATABASE>` och `<YOUR_CONTAINER_OR_GRAPH>` med värdena för kontots databas namn och diagram namn:
 
     ```python
     ...
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
-        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
+        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_CONTAINER_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ...
     ```
@@ -101,7 +101,7 @@ Gå nu tillbaka till Azure Portal för att hämta anslutningsinformation och kop
 
     :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Visa och kopiera åtkomstnyckeln i Azure Portal, sidan Nycklar":::
 
-2. Öppna filen *Connect.py* och i rad 104 klistrar du in URI-värdet `<YOUR_ENDPOINT>` i här:
+2. Öppna filen *Connect.py* och i rad 155 klistrar du in URI-värdet `<YOUR_ENDPOINT>` i här:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -145,7 +145,7 @@ Gå nu tillbaka till Azure Portal för att hämta anslutningsinformation och kop
 1. I git-terminalfönstret `cd` till mappen azure-cosmos-db-graph-python-getting-started.
 
     ```git
-    cd "C:\git-samples\azure-cosmos-db-graph-python-getting-started"
+    cd "./git-samples\azure-cosmos-db-graph-python-getting-started"
     ```
 
 2. I git-terminalfönstret använder du följande kommando för att installera de Python-paket som krävs.

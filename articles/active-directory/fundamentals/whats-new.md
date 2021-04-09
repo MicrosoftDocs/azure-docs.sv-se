@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/4/2021
+ms.date: 3/31/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03e783353f65ba2017dda9f6ca21a68ae6cff4de
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: d34a6eaa653ad0d2f93db0dcd04eec0f5532a4c7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612253"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107035"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Vad är nytt i Azure Active Directory?
 
@@ -38,6 +38,205 @@ Azure AD tar emot förbättringar kontinuerligt. För att hålla dig uppdaterad 
 Den här sidan uppdateras varje månad, så du kan uppdatera den regelbundet. Om du söker efter objekt som är äldre än sex månader kan du hitta dem i [arkivera efter nyheter i Azure Active Directory](whats-new-archive.md).
 
 ---
+
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="guidance-on-how-to-enable-support-for-tls-12-in-your-environment-in-preparation-for-upcoming-azure-ad-tls-1011-deprecation"></a>Vägledning om hur du aktiverar stöd för TLS 1,2 i din miljö, som förberedelse för kommande Azure AD TLS 1.0/1.1-utfasning
+
+**Typ:** Planera för ändring  
+**Tjänste kategori:** EJ TILLÄMPLIGT  
+**Produkt kapacitet:** Standardisering
+
+Azure Active Directory kommer att föråldra följande protokoll i Azure Active Directory globala regioner som börjar den 30 juni 2021:
+
+
+- TLS 1.0
+- TLS 1.1
+- 3DES-chiffrering (TLS_RSA_WITH_3DES_EDE_CBC_SHA)
+
+Berörda miljöer är:
+
+- Azures kommersiella moln
+- Office 365 GCC och WW
+
+Ytterligare vägledning finns i [Aktivera stöd för tls 1,2 i din miljö för Azure AD TLS 1,1 och 1,0-utfasning](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment).
+
+---
+
+### <a name="public-preview---azure-ad-entitlement-management-now-supports-multi-geo-sharepoint-online"></a>Offentlig för hands version – hantering av Azure AD-berättigande stöder nu multi-geo SharePoint Online
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Andra  
+**Produkt kapacitet:** Hantering av rättigheter
+ 
+För organisationer som använder multi-geo SharePoint Online kan du nu ta med platser från vissa miljöer med flera geo-till-åtkomst-paket för rättighets hantering. [Läs mer](../governance/entitlement-management-catalog-create.md#add-a-multi-geo-sharepoint-site-preview).
+
+---
+
+### <a name="public-preview---restore-deleted-apps-from-app-registrations"></a>Offentlig för hands version – återställa borttagna appar från Appregistreringar
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Andra  
+**Produkt kapacitet:** Utvecklings miljö
+ 
+Kunder kan nu Visa, återställa och permanent ta bort borttagna app-registreringar från Azure Portal. Detta gäller endast för program som är kopplade till en katalog, inte program från en personlig Microsoft-konto. [Läs mer](../develop/quickstart-restore-app.md).
+ 
+---
+
+### <a name="public-preview---new-user-action-in-conditional-access-for-registering-or-joining-devices"></a>Offentlig för hands version – ny "användar åtgärd" i villkorlig åtkomst för registrering eller anslutning av enheter
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Villkorlig åtkomst  
+**Produkt kapacitet:** & skydd för identitets säkerhet
+ 
+ En ny användar åtgärd med namnet "Registrera eller ansluta enheter" i villkorlig åtkomst är tillgänglig. Med den här användar åtgärden kan du kontrol lera MFA-principer (Multi-Factor Authentication) för Azure AD-enhets registrering. 
+
+För närvarande kan du bara aktivera MFA som kontroll när användare registrerar eller ansluter enheter till Azure AD. Andra kontroller som är beroende av eller inte är tillämpliga för registrering av Azure AD-enheter inaktive ras med den här användar åtgärden. [Läs mer](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions). 
+ 
+---
+
+### <a name="public-preview---optimize-connector-groups-to-use-the-closest-application-proxy-cloud-service"></a>Offentlig för hands version – optimera anslutnings grupper för att använda den närmaste moln tjänsten för programproxy
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** App-proxy  
+**Produkt kapacitet:** Access Control
+ 
+Med den här nya funktionen kan anslutnings grupper tilldelas till den närmaste regionala Application Proxy-tjänsten som ett program finns i. Detta kan förbättra appens prestanda i scenarier där appar finns i andra regioner än hem innehavarens region. [Läs mer](../manage-apps/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview). 
+ 
+---
+
+### <a name="public-preview---external-identities-self-service-sign-up-in-aad-using-email-one-time-passcode-accounts"></a>Offentlig för hands version – externa identiteter Self-Service registrera sig i AAD med e-One-Time lösen ords konton
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Business  
+**Produkt kapacitet:** B2B/B2C
+
+Externa användare kommer nu att kunna använda e-postkonton för e-One-Time lösen ord för att registrera sig i Azure AD, första part och LOB-appar. [Läs mer](../external-identities/one-time-passcode.md).
+
+---
+
+### <a name="public-preview---availability-of-ad-fs-sign-ins-in-azure-ad"></a>Offentlig för hands version – tillgänglighet för AD FS Sign-Ins i Azure AD
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Autentiseringar (inloggningar)  
+**Produkt kapacitet:** Övervaka & rapportering
+ 
+AD FS inloggnings aktivitet kan nu integreras med Azure AD-aktivitets rapportering, vilket ger en enhetlig vy över hybrid identitets infrastrukturen. Med hjälp av Azure AD Sign-Ins rapport, Log Analytics och Azure Monitor arbets böcker, är det möjligt att utföra djupgående analyser för både AAD-och AD FS inloggnings scenarier, till exempel AD FS konto utelåsningar, felaktiga lösen ords försök och toppar i oväntade inloggnings försök.
+
+Mer information finns på [AD FS inloggningar i Azure AD med Connect Health](../hybrid/how-to-connect-health-ad-fs-sign-in.md).
+
+---
+
+### <a name="general-availability---staged-rollout-to-cloud-authentication"></a>Allmän tillgänglighet – stegvis distribution till molnbaserad autentisering
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** AD Connect  
+**Produkt kapacitet:** Användarautentisering
+ 
+Mellanlagrad distribution till molnbaserad autentisering är nu allmänt tillgänglig. Med funktionen för stegvis distribution kan du selektivt testa grupper av användare med metoder för molnbaserad autentisering, t. ex. genom strömnings autentisering (PTA) eller PHS (Password hash Sync). Samtidigt fortsätter alla andra användare i de federerade domänerna att använda Federations tjänster, till exempel AD FS eller andra Federations tjänster för att autentisera användare. [Läs mer](../hybrid/how-to-connect-staged-rollout.md).
+
+---
+
+### <a name="general-availability---user-type-attribute-can-now-be-updated-in-the-azure-admin-portal"></a>Allmän tillgänglighet – attribut för användar typ kan nu uppdateras i Azure admin-portalen
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Användar upplevelse och hantering  
+**Produkt kapacitet:** Användar hantering
+ 
+Kunder kan nu uppdatera användar typen för Azure AD-användare när de uppdaterar sin användar profil information från Azure admin-portalen. Användar typen kan också uppdateras från Microsoft Graph. Mer information finns i [lägga till eller uppdatera information om användar profiler](active-directory-users-profile-azure-portal.md).
+ 
+---
+
+### <a name="general-availability---replica-sets-for-azure-active-directory-domain-services"></a>Allmän tillgänglighet – replik uppsättningar för Azure Active Directory Domain Services
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Azure AD Domain Services  
+**Produkt kapacitet:** Azure AD Domain Services
+ 
+Funktionen för replik uppsättningar i Azure AD DS är nu allmänt tillgänglig. [Läs mer](https://docs.microsoft.com/azure/active-directory-domain-services/concepts-replica-sets).
+ 
+---
+
+### <a name="general-availability---collaborate-with-your-partners-using-email-one-time-passcode-in-the-azure-government-cloud"></a>Allmän tillgänglighet – samar beta med dina partner med e-post One-Time lösen ord i Azure Government molnet
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Business  
+**Produkt kapacitet:** B2B/B2C
+ 
+Organisationer i Microsoft Azure Government molnet kan nu göra det möjligt för sina gäster att lösa in inbjudningar med e-One-Time lösen ord. Detta säkerställer att alla gäst användare utan Azure AD-, Microsoft-eller Gmail-konton i Azure Government molnet fortfarande kan samar beta med sina partner genom att begära och ange en tillfällig kod för att logga in på delade resurser. [Läs mer](../external-identities/one-time-passcode.md#note-for-azure-us-government-customers).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---march-2021"></a>Nya federerade appar som är tillgängliga i Azure AD Application Gallery – mars 2021
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Företags program  
+**Produkt kapacitet:** integration från tredje part
+ 
+I mars 2021 har vi lagt till följande 37 nya program i vårt app-galleri med stöd för federation:
+
+[Bambuser live video shopping](https://lcx.bambuser.com/), [DeepDyve Inc](https://www.deepdyve.com/azure-sso), [Moqups](../saas-apps/moqups-tutorial.md), [Ricoh Spaces Mobile](https://ricohspaces.app/welcome), [Flipgrid](https://auth.flipgrid.com/), [hCaptcha Enterprise](../saas-apps/hcaptcha-enterprise-tutorial.md), [SchoolStream ASA](https://jsd.schoolstreamk12.com/ASA/ASAlogin.aspx), [Perfect GlobalLink Dashboard](../saas-apps/transperfect-globallink-dashboard-tutorial.md), [SimplificaCI](https://app.simplificaci.com.br/), [blomstra](../saas-apps/thrive-lxp-tutorial.md)LXP, Lexonis [TalentScape](../saas-apps/lexonis-talentscape-tutorial.md), [Exium](../saas-apps/exium-tutorial.md), [Sapient](../saas-apps/sapient-tutorial.md), [TrueChoice](../saas-apps/truechoice-tutorial.md), [Ricoh Spaces](https://ricohspaces.app/welcome), Saba- [moln](../saas-apps/learning-at-work-tutorial.md), [Acunetix 360](../saas-apps/acunetix-360-tutorial.md), [Exceed.AI, GitHub](../saas-apps/exceed-ai-tutorial.md) [Enterprise Managed User](../saas-apps/github-enterprise-managed-user-tutorial.md), [Enterprise Vault.Cloud för Outlook](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=openid%20profile%20User.Read&client_id=7176efe5-e954-4aed-b5c8-f5c85a980d3a&nonce=4b9e1981-1bcb-4938-a283-86f6931dc8cb) [, Smartlook, Accenture](../saas-apps/smartlook-tutorial.md) [, Academy](../saas-apps/accenture-academy-tutorial.md), [Onshape](../saas-apps/juriblox-tutorial.md) [,](../saas-apps/tradeshift-tutorial.md) [Tradeshift](../saas-apps/securitystudio-tutorial.md), [JuriBlox](https://app.clicdata.com/), [SecurityStudio](../saas-apps/evergreen-tutorial.md), ClicData [](https://patchdeck.com/ad_auth/authenticate/), Evergreen [](../saas-apps/onshape-tutorial.md) [ PLUS](../saas-apps/fax.plus-tutorial.md), [ValidSign](../saas-apps/validsign-tutorial.md), [AWS enkel inloggning](../saas-apps/aws-single-sign-on-tutorial.md), [Nura utrymme](https://dashboard.nuraspace.com/login), [Broadcom DX SaaS](../saas-apps/broadcom-dx-saas-tutorial.md), [Multiplay Learning](https://skilledtrades.interplaylearning.com/#login), [SendPro Enterprise](../saas-apps/sendpro-enterprise-tutorial.md), [FortiSASE SIA](../saas-apps/fortisase-sia-tutorial.md)
+
+Du kan också hitta dokumentationen för alla program här: https://aka.ms/AppsTutorial
+
+För att lista ditt program i Azure AD App-galleriet läser du informationen här: https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---march-2021"></a>Nya etablerings anslutningar i Azure AD Application Gallery – mars 2021
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** App-etablering  
+**Produkt kapacitet:** integration från tredje part
+
+Nu kan du automatisera att skapa, uppdatera och ta bort användar konton för dessa nyligen integrerade appar:
+
+- [AWS enkel inloggning](../saas-apps/aws-single-sign-on-provisioning-tutorial.md)
+- [Bpanda](../saas-apps/bpanda-provisioning-tutorial.md)
+- [Britive](../saas-apps/britive-provisioning-tutorial.md)
+- [GitHub Enterprise Managed User](../saas-apps/github-enterprise-managed-user-provisioning-tutorial.md)
+- [Grammarly](../saas-apps/grammarly-provisioning-tutorial.md)
+- [LogicGate](../saas-apps/logicgate-provisioning-tutorial.md)
+- [SecureLogin](../saas-apps/secure-login-provisioning-tutorial.md)
+- [TravelPerk](../saas-apps/travelperk-provisioning-tutorial.md)
+
+Mer information om hur du bättre skyddar din organisation med hjälp av automatiserad användar konto etablering finns i [Automatisera användar etablering för SaaS-program med Azure AD](../app-provisioning/user-provisioning.md).
+ 
+---
+
+### <a name="introducing-ms-graph-api-for-company-branding"></a>Introduktion till MS Graph API för företags anpassning
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** MS Graph  
+**Produkt kapacitet:** B2B/B2C
+
+[MS Graph API för företags anpassning](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties?view=graph-rest-1.0)  är tillgänglig för Azure AD eller Microsoft 365 inloggnings upplevelse som gör det möjligt att hantera anpassnings parametrarna program mässigt.
+
+---
+
+### <a name="general-availability---header-based-authentication-sso-with-application-proxy"></a>Allmän tillgänglighet – huvud-baserad autentisering via enkel inloggning med programproxy
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** App-proxy  
+**Produkt kapacitet:** Access Control
+ 
+Azure AD-programproxy inbyggd support för huvud-baserad autentisering är nu allmänt tillgänglig. Med den här funktionen kan du konfigurera de användarattribut som krävs som HTTP-huvuden för programmet utan ytterligare komponenter som behövs för att distribuera. [Läs mer](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
+
+---
+
+### <a name="two-way-sms-for-mfa-server-is-no-longer-supported"></a>Dubbelriktad SMS för MFA Server stöds inte längre
+
+**Typ:** Föråldrad  
+**Tjänste kategori:** MFA  
+**Produkt kapacitet:** & skydd för identitets säkerhet
+ 
+
+Dubbelriktad SMS för MFA Server var ursprungligen föråldrad i 2018 och kommer inte att stödjas efter den 24 februari 2021. Administratörer bör aktivera en annan metod för användare som fortfarande använder dubbelriktat SMS.
+
+E-postmeddelanden och Azure Portal Service Health-meddelanden skickades till berörda administratörer den 8 december 2020 och 28 januari 2021. Aviseringarna gick till rollerna ägare, medägare, administratör och tjänst administratör RBAC knutna till prenumerationerna. [Läs mer](../authentication/how-to-authentication-two-way-sms-unsupported.md).
+ 
+---
+ 
 ## <a name="february-2021"></a>Februari 2021
 
 ### <a name="email-one-time-passcode-authentication-on-by-default-starting-october-2021"></a>Skicka e-post med eng ång slö sen ord på som standard från och med 1 oktober 2021
@@ -557,7 +756,7 @@ Mer information finns [i ändra godkännande inställningar för ett Access-pake
 **Tjänste kategori:** Alla Azure AD-program  
 **Produkt kapacitet:** Standardisering
 
-Azure Active Directory kommer att föråldra följande protokoll i Azure Active Directory globala regioner senast den 30 juni 2021:
+Azure Active Directory kommer att föråldra följande protokoll i Azure Active Directory globala regioner som börjar den 30 juni 2021:
 
 - TLS 1.0
 - TLS 1.1
@@ -568,6 +767,8 @@ Berörda miljöer är:
 - Office 365 GCC och WW
 
 Relaterat meddelande alla kombinationer av klient-och webb läsar servrar bör använda TLS 1,2 och moderna chiffersviter för att upprätthålla en säker anslutning till Azure Active Directory för Azure, Office 365 och Microsoft 365 Services. Detta är en ändring som är relaterad till [Azure Active Directory TLS 1,0 & 1,1 och 3DES-chiffrering i US gov molnet](whats-new.md#azure-active-directory-tls-10-tls-11-and-3des-deprecation-in-us-gov-cloud).
+
+Vägledning för att ta bort inaktuella protokoll beroenden finns [i Aktivera stöd för tls 1,2 i din miljö för Azure AD TLS 1,1 och 1,0-utfasning](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment).
 
 ---
 
@@ -785,7 +986,7 @@ Om du har en miljö med brand Väggs regler som tillåter utgående samtal till 
 **Tjänste kategori:** Alla Azure AD-program  
 **Produkt kapacitet:** Standardisering
  
-Azure Active Directory kommer att föråldra följande protokoll senast den 31 mars 2021:
+Azure Active Directory kommer att föråldra följande protokoll från den 31 mars 2021:
 - TLS 1.0
 - TLS 1.1
 - 3DES-chiffrering (TLS_RSA_WITH_3DES_EDE_CBC_SHA)
@@ -795,10 +996,12 @@ Alla kombinationer av klient-och webb läsar servrar bör använda TLS 1,2 och m
 Berörda miljöer är:
 - Azure-US Gov
 - [DoD för Office 365 GCC High &](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
+
+Vägledning för att ta bort inaktuella protokoll beroenden finns [i Aktivera stöd för tls 1,2 i din miljö för Azure AD TLS 1,1 och 1,0-utfasning](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment).
  
 ---
 
-### <a name="assign-applications-to-roles-on-au-and-object-scope"></a>Tilldela program till roller i AU och objekt omfång
+### <a name="assign-applications-to-roles-on-administrative-unit-and-object-scope"></a>Tilldela program till roller för administrativ enhet och objekt omfång
 
 **Typ:** Ny funktion  
 **Tjänste kategori:** RBAC  
@@ -993,183 +1196,4 @@ Vi har nyligen uppdaterat funktionen [kom ihåg Multi-Factor Authentication (MFA
 
 För den bästa användar upplevelsen rekommenderar vi att du använder inloggnings frekvensen för villkorlig åtkomst för att förlänga livs längden för sessioner på betrodda enheter, platser eller låg riskfyllda sessioner som ett alternativ till inställningen kom ihåg MFA på en betrodd enhet. Kom igång genom att läsa vår [senaste vägledning om hur du optimerar återautentiseringen](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
----
-
-## <a name="september-2020"></a>September 2020
-
-### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---september-2020"></a>Nya etablerings anslutningar i Azure AD Application Gallery – september 2020
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** App-etablering  
-**Produkt kapacitet:** integration från tredje part
- 
-Nu kan du automatisera att skapa, uppdatera och ta bort användar konton för dessa nyligen integrerade appar:
-
-- [CODA](../saas-apps/coda-provisioning-tutorial.md)
-- [Cofense Recipient Sync](../saas-apps/cofense-provision-tutorial.md)
-- [InVision](../saas-apps/invision-provisioning-tutorial.md)
-- [myday](../saas-apps/myday-provision-tutorial.md)
-- [SAP Analytics Cloud](../saas-apps/sap-analytics-cloud-provisioning-tutorial.md)
-- [Säkerhets medvetenhet om Webroot](../saas-apps/webroot-security-awareness-training-provisioning-tutorial.md)
-
-Mer information om hur du bättre skyddar din organisation med hjälp av automatiserad användar konto etablering finns i [Automatisera användar etablering för SaaS-program med Azure AD](../app-provisioning/user-provisioning.md).
- 
----
-### <a name="cloud-provisioning-public-preview-refresh"></a>Moln etablering, offentlig för hands versions uppdatering
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** **Produkt kapacitet** för Azure AD Cloud-etablering: identitets livs cykel hantering
- 
-Azure AD Connect moln etablering offentlig för hands version uppdatera funktioner två större förbättringar som har utvecklats från kundfeedback: 
-
-- Attribut mappnings upplevelsen genom Azure Portal
-
-    Med den här funktionen kan IT-administratörer mappa användar-, grupp-eller kontakt-attribut från AD till Azure AD med olika mappnings typer som finns idag. Attributmappning är en funktion som används för att standardisera värdena för attributen som flödar från Active Directory till Azure Active Directory. En kan bestämma om attributvärdet ska mappas direkt som det är från AD till Azure AD eller om du använder uttryck för att transformera attributvärdena när du konfigurerar användare. [Läs mer](../cloud-sync/how-to-attribute-mapping.md)
-
-- Etablering på begäran eller testa användar upplevelsen
-
-    När du har konfigurerat konfigurationen kanske du vill testa för att se om användar omvandlingen fungerar som förväntat innan den tillämpas på alla användare i omfånget. Med etablering på begäran kan IT-administratörer ange unikt namn för en AD-användare och se om de synkroniseras som förväntat. Etablering på begäran är ett bra sätt att se till att de mappningar för attribut som du tidigare fungerade som förväntat. [Läs mer](../cloud-sync/how-to-on-demand-provision.md)
- 
----
-
-### <a name="audited-bitlocker-recovery-in-azure-ad---public-preview"></a>Granskad BitLocker-återställning i Azure AD – offentlig för hands version
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Enhets åtkomst hantering  
-**Produkt kapacitet:** Hantering av enhetens livs cykel
- 
-När IT-administratörer eller slutanvändare läser de BitLocker-återställnings nycklar som de har åtkomst till, skapar Azure Active Directory nu en Gransknings logg som samlar in vem som har åtkomst till återställnings nyckeln. Samma granskning ger information om enheten som BitLocker-nyckeln var kopplad till.
-
-Slutanvändare kan [komma åt sina återställnings nycklar via mitt konto](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). IT-administratörer kan komma åt återställnings nycklar via [nyckel-API: t för BitLocker-återställning i beta](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) eller via Azure AD-portalen. Mer information finns i [Visa eller kopiera BitLocker-nycklar i Azure AD-portalen](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys).
-
----
-
-### <a name="teams-devices-administrator-built-in-role"></a>Den inbyggda rollen team enheters administratör
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** RBAC  
-**Produkt kapacitet:** Access Control
- 
-Användare med rollen [team enheter administratör](../roles/permissions-reference.md#teams-devices-administrator) kan hantera [team-certifierade enheter](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) från Team administrations centret. 
-
-Med den här rollen kan användaren Visa alla enheter på ett enkelt sätt, med möjlighet att söka efter och filtrera enheter. Användaren kan också kontrol lera information om varje enhet, inklusive inloggat konto och enhetens märke och modell. Användaren kan ändra inställningarna på enheten och uppdatera program varu versionerna. Den här rollen beviljar inte behörigheter för att kontrol lera team aktiviteter och enhetens kvalitet.
- 
----
-
-### <a name="advanced-query-capabilities-for-directory-objects"></a>Avancerade fråge funktioner för katalog objekt
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** MS Graph  
-**Produkt kapacitet:** Utvecklings miljö
- 
-Alla nya fråge funktioner som introducerats för katalog objekt i Azure AD-API: er är nu tillgängliga i 5 1.0-slutpunkten och produktions klara. Utvecklare kan räkna, söka efter, filtrera och sortera katalog objekt och relaterade länkar med hjälp av standard-OData-operatörer.
-
-Mer information finns i dokumentationen [här](https://aka.ms/BlogPostMezzoGA)och du kan också skicka feedback med den här [korta undersökningen](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_yN8EPoGo5OpR1hgmCp1XxUMENJRkNQTk5RQkpWTE44NEk2U0RIV0VZRy4u).
- 
----
-
-### <a name="public-preview-continuous-access-evaluation-for-tenants-who-configured-conditional-access-policies"></a>Offentlig för hands version: utvärdering av kontinuerlig åtkomst för klienter som har konfigurerat principer för villkorlig åtkomst
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Autentiseringar (inloggningar)  
-**Produkt kapacitet:** & skydd för identitets säkerhet
- 
-En utvärdering av kontinuerlig åtkomst (CAE) är nu tillgänglig i offentlig för hands version för Azure AD-klienter med principer för villkorlig åtkomst. Med CAE utvärderas viktiga säkerhets händelser och principer i real tid. Detta inkluderar konto inaktive ring, återställning av lösen ord och plats ändring. Läs mer i utvärderingen av [kontinuerlig åtkomst](../conditional-access/concept-continuous-access-evaluation.md).
-
----
-
-### <a name="public-preview-ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>Offentlig för hands version: be användare som begär ett åtkomst paket ytterligare frågor för att förbättra godkännande beslut
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Hantering av användar åtkomst  
-**Produkt kapacitet:** Hantering av rättigheter
- 
-Administratörer kan nu kräva att användare som begär ett åtkomst paket svarar på ytterligare frågor utöver bara affärs skäl i Azure AD-hanteringens åtkomst Portal. Användarnas svar visas sedan för god kännare för att hjälpa dem att fatta ett mer exakt beslut om godkännande av åtkomst. Mer information finns i [samla in ytterligare information om begär Ande för godkännande (för hands version)](../governance/entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview).
- 
----
-
-### <a name="public-preview-enhanced-user-management"></a>Offentlig för hands version: förbättrad användar hantering
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Användar hantering  
-**Produkt kapacitet:** Användar hantering
- 
-
-Azure AD-portalen har uppdaterats för att göra det enklare att hitta användare på sidorna alla användare och borttagna användare. Ändringarna i förhands granskningen är: 
-- Mer synliga användar egenskaper, inklusive objekt-ID, status för katalog synkronisering, skapande typ och identitets utfärdare.
-- Nu kan du söka i kombinerad sökning efter namn, e-post och objekt-ID: n.
-- Utökad filtrering efter användar typ (medlem, gäst och ingen), status för katalog synkronisering, typ av katalog, företags namn och domän namn.
-- Nya sorterings funktioner för egenskaper som namn, User Principal Name och borttagnings datum.
-- Ett nytt totalt antal användare som uppdaterar med eventuella sökningar eller filter.
-
-Mer information finns i avsnittet om [förbättringar av användar hantering (för hands version) i Azure Active Directory](../enterprise-users/users-search-enhanced.md).
-
----
-
-### <a name="new-notes-field-for-enterprise-applications"></a>Nytt antecknings fält för företags program
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** **Produkt kapacitet** för företags appar: SSO
-
-Du kan lägga till kostnads fria text anteckningar i företags program. Du kan lägga till all relevant information som kan hjälpa dig att hantera program i företags program. Mer information finns i [snabb start: konfigurera egenskaper för ett program i din Azure Active Directory (Azure AD)-klient](../manage-apps/add-application-portal-configure.md). 
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-application-gallery---september-2020"></a>Nya federerade appar som är tillgängliga i Azure AD Application Gallery – september 2020
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Företags program  
-**Produkt kapacitet:** integration från tredje part
-
-I september 2020 har vi lagt till följande 34 nya program i vårt app-galleri med stöd för federation:
-
-[VMware-Horisont – enhetlig åtkomst-Gateway](), [puls säkra datorer](../saas-apps/vmware-horizon-unified-access-gateway-tutorial.md), [Inventory360](../saas-apps/pulse-secure-pcs-tutorial.md), [Frontitude](https://services.enteksystems.de/sso/microsoft/signup), [BookWidgets](https://www.bookwidgets.com/sso/office365), [ZVD_SERVER](https://zaas.zenmutech.com/user/signin), [HashData för företag](https://hashdata.app/login.xhtml), [SecureLogin](https://securelogin.securelogin.nu/sso/azure/login), [CyberSolutions MAILBASEΣ/CMSS](../saas-apps/cybersolutions-mailbase-tutorial.md), [CyberSolutions](../saas-apps/cybersolutions-cybermail-tutorial.md)CYBERMAILΣ, [LimbleCMMS](https://auth.limblecmms.com/), [glint Inc](../saas-apps/glint-inc-tutorial.md), [zeroheight](../saas-apps/zeroheight-tutorial.md), [köns lämplighet](https://app.genderfitness.com/), [Coeo-portalen](https://my.coeo.com/), [grammatik](../saas-apps/grammarly-tutorial.md), [Fivetran](../saas-apps/fivetran-tutorial.md), [Kumolus](../saas-apps/kumolus-tutorial.md), [RSA Archer Suite](../saas-apps/rsa-archer-suite-tutorial.md), [TeamzSkill](../saas-apps/teamzskill-tutorial.md), [Raumfürraum](../saas-apps/raumfurraum-tutorial.md) [, Saviynt,](../saas-apps/saviynt-tutorial.md) [BizMerlinHR](https://marketplace.bizmerlin.net/bmone/signup), [Mobile LOCKer](../saas-apps/mobile-locker-tutorial.md), [Zengine](../saas-apps/zengine-tutorial.md), [CloudCADI](https://app.cloudcadi.com/login), [Simfoni Analytics](https://simfonianalytics.com/accounts/microsoft/login/), Protected [Identity & Access Management](https://my.priva.com/), Nitro [Pro](https://www.gonitro.com/nps/product-details/downloads), [Eventfinity](../saas-apps/eventfinity-tutorial.md), [Fexa](../saas-apps/fexa-tutorial.md), [Secure Signing Enterprise Portal](https://www.securedsigning.com/aad/Auth/ExternalLogin/AdminPortal), [Secure Signing Enterprise Portal AAD setup](https://www.securedsigning.com/aad/Auth/ExternalLogin/AdminPortal), [Wistec online](https://wisteconline.com/auth/oidc), [Oracle-skydd med F5 Big-IP APM](../saas-apps/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial.md)
-
-Du kan också hitta dokumentationen för alla program härifrån: https://aka.ms/AppsTutorial .
-
-Information om hur du visar ditt program i Azure AD App-galleriet finns här: https://aka.ms/AzureADAppRequest .
-
----
-
-### <a name="new-delegation-role-in-azure-ad-entitlement-management-access-package-assignment-manager"></a>Ny Delegerings roll i hantering av Azure AD-rättighets hantering: Access Package Assignment Manager
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Hantering av användar åtkomst  
-**Produkt kapacitet:** Hantering av rättigheter
- 
-En ny Access Package Assignment Manager-roll har lagts till i hantering av Azure AD-hantering för att ge detaljerade behörigheter för att hantera tilldelningar. Nu kan du delegera uppgifter till en användare med den här rollen, som kan delegera uppdrags hanteringen av ett Access-paket till en affärs ägare. Men ett Access Package tilldelnings hanterare kan inte ändra åtkomst paket principer eller andra egenskaper som anges av administratörerna. 
-
-Med den nya rollen drar du nytta av de lägsta behörigheterna som krävs för att delegera hantering av tilldelningar och upprätthålla administrativ kontroll för alla andra paket konfigurationer för åtkomst. Läs mer i [rättighets hanterings roller](../governance/entitlement-management-delegate.md#entitlement-management-roles).
- 
----
-
-### <a name="changes-to-privileged-identity-managements-onboarding-flow"></a>Ändringar av Privileged Identity Managementns onboarding-flöde
-
-**Typ:** Ändrad funktion  
-**Tjänste kategori:** Privileged Identity Management  
-**Produkt kapacitet:** Privileged Identity Management
- 
-Tidigare krävde onboarding till Privileged Identity Management (PIM) användar medgivande och ett onboarding-flöde i PIM-bladet som inkluderade registreringen i Azure AD MFA. Med den senaste integrationen av PIM-upplevelsen i bladet Azure AD-roller och-administratörer tar vi bort den här upplevelsen. Alla innehavare med giltig P2-licens registreras automatiskt i PIM.
-
-Onboarding till PIM har ingen direkt negativ inverkan på din klient. Du kan vänta på följande ändringar:
-- Ytterligare tilldelnings alternativ, till exempel aktiva kontra berättigade med start-och slut tid när du gör en tilldelning i något av webbrollerna PIM eller Azure AD och administratörer. 
-- Ytterligare omfångs metoder, som administrativa enheter och anpassade roller, introducerades direkt i tilldelnings upplevelsen. 
-- Om du är global administratör eller administratör för privilegierade roller kan du börja få ytterligare e-postmeddelanden som PIM veckovis sammandrag. 
-- Du kan också se MS-PIM-tjänstens huvud namn i gransknings loggen som är relaterad till roll tilldelningen. Den här förväntade ändringen påverkar inte ditt vanliga arbets flöde.
-
- Mer information finns i [börja använda Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
-
----
-
-### <a name="azure-ad-entitlement-management-the-select-pane-of-access-package-resources-now-shows-by-default-the-resources-currently-in-the-selected-catalog"></a>Hantering av Azure AD-hantering: fönstret Välj för åtkomst paket resurser visas nu som standard de resurser som för närvarande finns i den valda katalogen
-
-**Typ:** Ändrad funktion  
-**Tjänste kategori:** Hantering av användar åtkomst  
-**Produkt kapacitet:** Hantering av rättigheter
- 
-
-I flödet för att skapa åtkomst paket, under fliken resurs roller, ändras beteendet för val fönster. För närvarande är standard beteendet att visa alla resurser som ägs av användaren och resurserna som läggs till i den valda katalogen. 
-
-Den här funktionen kommer att ändras så att endast de resurser som för närvarande läggs till i katalogen visas som standard, så att användarna enkelt kan välja resurser från katalogen. Uppdateringen hjälper till att identifiera resurser som ska läggas till i åtkomst paket och minskar risken för att oavsiktligt lägga till resurser som ägs av användaren som inte är en del av katalogen. Mer information finns i [skapa ett nytt Access-paket i hantering av Azure AD-behörighet](../governance/entitlement-management-access-package-create.md#resource-roles).
- 
 ---

@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e176c0399b191c7a511ea1d26388219b2cef1df8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034905"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107154"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Förstå och lösa Azure SQL Database spärrnings problem
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -429,3 +429,4 @@ Tabellen nedan mappar vanliga symtom till troliga orsaker.
 * [Leverera konsekventa prestanda med Azure SQL](/learn/modules/azure-sql-performance/)
 * [Fel sökning av anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans](troubleshoot-common-errors-issues.md)
 * [Hantering av tillfälliga fel](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)
+* [Konfigurera Max graden av parallellitet (MAXDOP) i Azure SQL Database](configure-max-degree-of-parallelism.md)

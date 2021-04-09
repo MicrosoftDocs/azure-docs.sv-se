@@ -1,5 +1,5 @@
 ---
-rubrik: inkludera fil Beskrivning: inkludera fil tjänster: Event-Hub author: spelluru MS. service: Event-Hub MS. topic: inkludera MS. Date: 02/01/2021 MS. author: spelluru MS. Custom: "include File", "FastTrack-Edit", "IoT", "Event-Hub"
+rubrik: inkludera fil Beskrivning: inkludera fil tjänster: Event-Hub author: spelluru MS. service: Event-Hub MS. topic: inkludera MS. Date: 03/31/2021 MS. author: spelluru MS. Custom: "include File", "FastTrack-Edit", "IoT", "Event-Hub"
 
 ---
 
@@ -13,13 +13,12 @@ Följande begränsningar är gemensamma för alla nivåer.
 | Antal Event Hubs namn rymder per prenumeration |- |100 |
 | Antal Event Hub per namnrymd | Efterföljande begär Anden om att skapa en ny händelsehubben avvisas. |10 |
 | Storlek på ett Event Hub-namn |- | 256 tecken |
-| Storlek på ett konsument grupp namn |- | 256 tecken |
+| Storlek på ett konsument grupp namn | Kafka-protokollet kräver inte att en konsument grupp skapas. | <p>Kafka: 256 tecken</p><p>AMQP: 50 tecken |
 | Antal icke-epok mottagare per konsument grupp |- |5 |
 | Antal auktoriseringsregler per namnrymd | Efterföljande begär Anden om att skapa auktoriseringsregler avvisas.|12 |
 | Antal anrop till GetRuntimeInformation-metoden |  - | 50 per sekund | 
 | Antal virtuella nätverk (VNet) | - | 128 | 
 | Antal IP config-regler | - | 128 | 
-
 
 ### <a name="basic-vs-standard-tiers"></a>Basic vs. standard-nivåer
 I följande tabell visas de gränser som kan vara olika för nivåerna Basic och standard. 

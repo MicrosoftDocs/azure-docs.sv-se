@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jingwang
 ms.openlocfilehash: 9e6be88af13d5dd7ddceba32ec08cab54ca5e3a0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104587295"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiera data från och till Oracle med hjälp av Azure Data Factory
@@ -66,9 +66,9 @@ Den länkade Oracle-tjänsten stöder följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till **Oracle**. | Yes |
-| Begär | Anger den information som krävs för att ansluta till Oracle Database-instansen. <br/>Du kan också ange ett lösen ord i Azure Key Vault och hämta `password` konfigurationen från anslutnings strängen. Läs följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) med mer information. <br><br>**Anslutnings typ som stöds**: du kan använda **Oracle sid** eller **Oracle-tjänstens namn** för att identifiera databasen:<br>-Om du använder SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Om du använder tjänst namn: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>För avancerade Oracle-anslutnings alternativ kan du välja att lägga till en post i [Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) -fil på Oracle-servern och i ADF Oracle-länkad tjänst väljer du att använda anslutnings typen Oracle service Name och konfigurerar motsvarande tjänst namn. | Yes |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |No |
+| typ | Egenskapen Type måste anges till **Oracle**. | Ja |
+| Begär | Anger den information som krävs för att ansluta till Oracle Database-instansen. <br/>Du kan också ange ett lösen ord i Azure Key Vault och hämta `password` konfigurationen från anslutnings strängen. Läs följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) med mer information. <br><br>**Anslutnings typ som stöds**: du kan använda **Oracle sid** eller **Oracle-tjänstens namn** för att identifiera databasen:<br>-Om du använder SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Om du använder tjänst namn: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>För avancerade Oracle-anslutnings alternativ kan du välja att lägga till en post i [Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) -fil på Oracle-servern och i ADF Oracle-länkad tjänst väljer du att använda anslutnings typen Oracle service Name och konfigurerar motsvarande tjänst namn. | Ja |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 >[!TIP]
 >Om du får ett fel meddelande, "ORA-01025: UPI-parameter utanför intervallet", och din Oracle-version är 8i, Lägg till `WireProtocolMode=1` i anslutnings strängen. Försök sedan igen.
@@ -173,7 +173,7 @@ Om du vill kopiera data från och till Oracle anger du egenskapen type för data
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type för data mängden måste anges till `OracleTable` . | Yes |
+| typ | Egenskapen Type för data mängden måste anges till `OracleTable` . | Ja |
 | schema | Schemats namn. |Nej för källa, Ja för mottagare  |
 | tabell | Namnet på tabellen/vyn. |Nej för källa, Ja för mottagare  |
 | tableName | Namnet på tabellen/vyn med schemat. Den här egenskapen stöds för bakåtkompatibilitet. Använd och för ny arbets `schema` belastning `table` . | Nej för källa, Ja för mottagare |
@@ -212,14 +212,14 @@ Om du vill kopiera data från Oracle anger du käll typen i kopierings aktivitet
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste vara inställd på `OracleSource` . | Yes |
-| oracleReaderQuery | Använd den anpassade SQL-frågan för att läsa data. Ett exempel är `"SELECT * FROM MyTable"`.<br>När du aktiverar partitionerad belastning måste du koppla alla motsvarande inbyggda partitionsalternativ i frågan. Exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | No |
-| partitionOptions | Anger de data partitionerings alternativ som används för att läsa in data från Oracle. <br>Tillåtna värden är: **ingen** (standard), **PhysicalPartitionsOfTable** och **DynamicRange**.<br>När ett partitions alternativ är aktiverat (dvs. inte `None` ), kontrol leras graden av parallellitet för att samtidigt läsa in data från en Oracle-databas med [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) inställningen på kopierings aktiviteten. | No |
-| partitionSettings | Ange gruppen med inställningar för data partitionering. <br>Använd när alternativet partition inte är det `None` . | No |
-| partitionNames | Listan över fysiska partitioner som behöver kopieras. <br>Använd när alternativet partition är `PhysicalPartitionsOfTable` . Om du använder en fråga för att hämta källdata, Hook `?AdfTabularPartitionName` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | No |
-| partitionColumnName | Ange namnet på den käll kolumn **i Integer-typ** som ska användas av intervall partitionering för parallell kopiering. Om detta inte anges identifieras primär nyckeln för tabellen automatiskt och används som partition-kolumn. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook  `?AdfRangePartitionColumnName` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | No |
-| partitionUpperBound | Det maximala värdet för partition-kolumnen för att kopiera data. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook `?AdfRangePartitionUpbound` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | No |
-| partitionLowerBound | Det minimala värdet för kolumnen partition som ut data ska kopieras. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook `?AdfRangePartitionLowbound` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | No |
+| typ | Typ egenskapen för kopierings aktivitets källan måste vara inställd på `OracleSource` . | Ja |
+| oracleReaderQuery | Använd den anpassade SQL-frågan för att läsa data. Ett exempel är `"SELECT * FROM MyTable"`.<br>När du aktiverar partitionerad belastning måste du koppla alla motsvarande inbyggda partitionsalternativ i frågan. Exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | Inga |
+| partitionOptions | Anger de data partitionerings alternativ som används för att läsa in data från Oracle. <br>Tillåtna värden är: **ingen** (standard), **PhysicalPartitionsOfTable** och **DynamicRange**.<br>När ett partitions alternativ är aktiverat (dvs. inte `None` ), kontrol leras graden av parallellitet för att samtidigt läsa in data från en Oracle-databas med [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) inställningen på kopierings aktiviteten. | Inga |
+| partitionSettings | Ange gruppen med inställningar för data partitionering. <br>Använd när alternativet partition inte är det `None` . | Inga |
+| partitionNames | Listan över fysiska partitioner som behöver kopieras. <br>Använd när alternativet partition är `PhysicalPartitionsOfTable` . Om du använder en fråga för att hämta källdata, Hook `?AdfTabularPartitionName` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | Inga |
+| partitionColumnName | Ange namnet på den käll kolumn **i Integer-typ** som ska användas av intervall partitionering för parallell kopiering. Om detta inte anges identifieras primär nyckeln för tabellen automatiskt och används som partition-kolumn. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook  `?AdfRangePartitionColumnName` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | Inga |
+| partitionUpperBound | Det maximala värdet för partition-kolumnen för att kopiera data. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook `?AdfRangePartitionUpbound` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | Inga |
+| partitionLowerBound | Det minimala värdet för kolumnen partition som ut data ska kopieras. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook `?AdfRangePartitionLowbound` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Oracle](#parallel-copy-from-oracle) . | Inga |
 
 **Exempel: kopiera data med en grundläggande fråga utan partition**
 
@@ -259,11 +259,11 @@ Om du vill kopiera data till Oracle ställer du in mottagar typen i kopierings a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till `OracleSink` . | Yes |
+| typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till `OracleSink` . | Ja |
 | writeBatchSize | Infogar data i SQL-tabellen när buffertstorleken når sig `writeBatchSize` .<br/>Tillåtna värden är heltal (antal rader). |Nej (standard är 10 000) |
-| writeBatchTimeout | Vänte tiden för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes.<br/>Tillåtna värden är TimeSpan. Ett exempel är 00:30:00 (30 minuter). | No |
-| preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan data skrivs till Oracle i varje körning. Du kan använda den här egenskapen för att rensa de förinstallerade data. | No |
-| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No |
+| writeBatchTimeout | Vänte tiden för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes.<br/>Tillåtna värden är TimeSpan. Ett exempel är 00:30:00 (30 minuter). | Inga |
+| preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan data skrivs till Oracle i varje körning. Du kan använda den här egenskapen för att rensa de förinstallerade data. | Inga |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| Inga |
 
 **Exempel:**
 

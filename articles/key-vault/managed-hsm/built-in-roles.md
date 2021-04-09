@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105557232"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Inbyggda roller för lokal RBAC för Managed HSM
@@ -23,13 +23,13 @@ Hanterad HSM lokal RBAC har flera inbyggda roller. Du kan tilldela dessa roller 
 
 |Rollnamn|Description|ID|
 |---|---|---|
-|Hanterad HSM-administratör| Ger behörighet att utföra alla åtgärder som rör säkerhets domän, fullständig säkerhets kopiering/återställning och roll hantering. Tillåts inte utföra några nyckel hanterings åtgärder.|a290e904-7015-4bba-90c8-60543313cdb4|
+|Managed HSM-administratör| Ger behörighet att utföra alla åtgärder som rör säkerhets domän, fullständig säkerhets kopiering/återställning och roll hantering. Tillåts inte utföra några nyckel hanterings åtgärder.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Hanterad HSM-kryptografisk tjänsteman|Beviljar behörigheter att utföra alla roll hantering, rensa eller återställa borttagna nycklar och exportera nycklar. Får inte utföra någon annan nyckel hanterings åtgärd.|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
 |Hanterad HSM-kryptografi användare|Ger behörighet att utföra alla nyckel hanterings åtgärder förutom rensa eller återställa borttagna nycklar och exportera nycklar.|21dbd100-6940-42c2-9190-5d6cb909625b|
 |Hanterad HSM-princip administratör| Ger behörighet att skapa och ta bort roll tilldelningar|4bd23610-CDCF-4971-bdee-bdc562cc28e4|
 |Hanterad HSM-krypto|Ger Läs behörighet att läsa (men inte använda) nyckelattribut.|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
 |Kryptering av hanterad HSM-krypto| Ger behörighet att använda en nyckel för tjänst kryptering. |33413926-3206-4cdd-b39a-83574fe37a17|
-|Hanterad HSM-säkerhetskopiering| Ger behörighet att utföra en enskild nyckel eller en hel HSM-säkerhetskopiering.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
+|Managed HSM-säkerhetskopiering| Ger behörighet att utföra en enskild nyckel eller en hel HSM-säkerhetskopiering.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>Tillåtna åtgärder
 > [!NOTE]  

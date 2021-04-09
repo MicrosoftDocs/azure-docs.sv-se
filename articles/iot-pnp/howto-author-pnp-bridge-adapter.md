@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9a7028dfaeb94e87366de7acfa8cebc4c2f4c767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac359e73ae71fd2163fb178caab4a2b5f908a008
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746835"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057464"
 ---
 # <a name="extend-the-iot-plug-and-play-bridge"></a>Utöka IoT Plug and Play-bryggan
 [Iot plug and Play Bridge](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) låter dig ansluta de befintliga enheterna som är anslutna till en gateway till IoT Hub. Du kan använda Bridge för att mappa IoT Plug and Play-gränssnitt till anslutna enheter. Ett IoT Plug and Play-gränssnitt definierar den telemetri som en enhet skickar, de egenskaper som synkroniseras mellan enheten och molnet och de kommandon som enheten svarar på. Du kan installera och konfigurera brygga applikationen med öppen källkod på Windows-eller Linux-gatewayer. Dessutom kan bryggan köras som en Azure IoT Edge runtime-modul.

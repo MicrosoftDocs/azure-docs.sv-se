@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1475b8aaa4e925facb989e1c6977c4f4dacc6418
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 8b9de4ffe3011bbb8345a6a8c4a92ef5bd1d4559
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625219"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728427"
 ---
 # <a name="calling-sdk-overview"></a>Översikt över samtals-SDK
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 
 Det finns två olika familjer av att anropa SDK: er för *klienter* och *tjänster.* För närvarande är tillgängliga SDK: er avsedda för slut användar upplevelser: webbplatser och inbyggda appar.
 

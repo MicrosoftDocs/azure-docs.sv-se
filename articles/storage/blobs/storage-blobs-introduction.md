@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 06/24/2020
+ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d71fc7931db77f0cf19a4e7ea70731ba19d1f6d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703597"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937319"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Introduktion till Azure Blob storage
 
@@ -55,7 +55,7 @@ I en container finns en uppsättning med blobbar, ungefär som i en katalog i et
 
 Azure Storage har stöd för tre typer av blobbar:
 
-- **Block-blobs** lagrar text och binära data. Blockblobbar består av datablock som kan hanteras individuellt. Block-blobs lagrar upp till cirka 4,75 TiB data. Större block blobbar är tillgängliga i för hands versionen, upp till cirka 190,7 TiB
+- **Block-blobs** lagrar text och binära data. Blockblobbar består av datablock som kan hanteras individuellt. Block-blobar kan lagra upp till cirka 190,7 TiB.
 - **Lägg till blobar** består av block som block blobbar, men är optimerade för att lägga till åtgärder. Tilläggsblobar passar utmärkt för åtgärder som att logga data från virtuella datorer.
 - **Page blobbar** lagrar slumpmässiga åtkomst filer upp till 8 TIB i storlek. Page blobbar lagrar filer för virtuella hård diskar (VHD) och fungerar som diskar för virtuella Azure-datorer. Mer information om sidblobar finns [översikten av Azure-sidblobar](storage-blob-pageblob-overview.md)
 

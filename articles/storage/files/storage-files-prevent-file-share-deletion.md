@@ -4,16 +4,16 @@ description: Lär dig mer om mjuk borttagning för Azure-filresurser och hur du 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 0fecc9fc954a1ac648e8f60badf69ad1d2e8f1cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93126948"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937302"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Förhindra oavsiktlig borttagning av Azure-filresurser
 
@@ -33,7 +33,7 @@ För mjuk borttagning av Premium-filresurser används fil resurs kvoten (den all
 
 ### <a name="enabling-or-disabling-soft-delete"></a>Aktivera eller inaktivera mjuk borttagning
 
-Mjuk borttagning för fil resurser har Aktiver ATS på lagrings konto nivå, på grund av detta gäller inställningarna för mjuk borttagning för alla fil resurser i ett lagrings konto. Du kan aktivera eller inaktivera mjuk borttagning när som helst. När du skapar ett nytt lagrings konto är mjuk borttagning av fil resurser inaktive rad som standard, så du kan aktivera det under distributionen eller när som helst efteråt. Mjuk borttagning är inaktiverat som standard för befintliga lagrings konton. Om du har konfigurerat [Azure-filresursens säkerhets kopiering](../../backup/azure-file-share-backup-overview.md) för en Azure-filresurs, aktive ras mjuk borttagning för Azure-filresurser automatiskt på den resursens lagrings konto.
+Mjuk borttagning för fil resurser har Aktiver ATS på lagrings konto nivå, på grund av detta gäller inställningarna för mjuk borttagning för alla fil resurser i ett lagrings konto. Mjuk borttagning är aktiverat som standard för nya lagrings konton och kan inaktive ras eller aktive ras när som helst. Mjuk borttagning aktive ras inte automatiskt för befintliga lagrings konton om inte [säkerhets kopiering av Azure-filresurs](../../backup/azure-file-share-backup-overview.md) har kon figurer ATS för en Azure-filresurs på lagrings kontot. Om Azure-filresursens säkerhets kopiering har kon figurer ATS aktive ras mjuk borttagning för Azure-filresurser automatiskt på den resursens lagrings konto.
 
 Om du aktiverar mjuk borttagning för fil resurser tar du bort vissa fil resurser och inaktiverar sedan mjuk borttagning, om resurserna har sparats under den tiden kan du fortfarande komma åt och återställa dessa fil resurser. När du aktiverar mjuk borttagning måste du också konfigurera kvarhållningsperioden.
 
