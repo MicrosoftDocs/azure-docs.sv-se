@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594022"
 ---
 # <a name="azure-app-service-plan-overview"></a>Översikt över Azure App Service-plan
@@ -61,7 +61,7 @@ Information om hur du skalar ut en app finns i [skala antalet instanser manuellt
 
 <a name="cost"></a>
 
-## <a name="how-much-does-my-app-service-plan-cost"></a>Hur mycket kostar mitt App Service plan?
+## <a name="how-much-does-my-app-service-plan-cost"></a>Vad kostar min App Service-plan?
 
 I det här avsnittet beskrivs hur App Service-appar faktureras. Detaljerad information om landsspecifika priser finns i [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/).
 

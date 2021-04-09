@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592939"
+ms.locfileid: "105960154"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Skapa och hantera en katalog med resurser i hantering av Azure AD-rättigheter
 
@@ -81,7 +81,7 @@ Om du vill inkludera resurser i ett Access-paket måste resurserna finnas i en k
 
     Dessa resurser kan nu inkluderas i åtkomst paket i katalogen.
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>Lägg till en SharePoint-webbplats med flera geo-platser
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>Lägg till en SharePoint-webbplats med flera geo-versioner (för hands version)
 
 1. Om du har aktiverat [multi-geo](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) för SharePoint väljer du den miljö som du vill välja platser från.
     

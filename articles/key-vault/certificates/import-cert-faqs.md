@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8a06471129f8d79e1ced150f7410392b91d498b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202173"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728036"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Vanliga frågor om import av Azure Key Vault-certifikat
 
@@ -28,7 +28,7 @@ I den här artikeln får du svar på vanliga frågor om hur du importerar Azure 
 För att importera ett certifikat kan Azure Key Vault acceptera två certifikat fil format: PEM och PFX. Även om det bara finns PEM-filer med den offentliga delen, behöver Key Vault bara godkänna en PEM-eller PFX-fil med en privat nyckel. Mer information finns i [Importera ett certifikat till Key Vault](./tutorial-import-certificate.md#import-a-certificate-to-key-vault).
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Varför kan jag inte se det lösen ord som är associerat med det när jag har importerat ett lösenordsskyddat certifikat till Key Vault och sedan laddar ned det?
-    
+     
 När ett certifikat har importer ATS och skyddats i Key Vault sparas inte det associerade lösen ordet. Lösen ordet krävs bara en gång under import åtgärden. Detta är avsiktligt, men du kan alltid få certifikatet som en hemlighet och konvertera det från base64 till PFX genom att lägga till lösen ordet via [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx).
 
 ### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>Hur kan jag lösa fel meddelandet "Felaktig parameter"? Vilka certifikat format stöds för import till Key Vault?
@@ -42,8 +42,8 @@ Mer information finns i krav på [certifikat krav](./certificate-scenarios.md#fo
 Nej, det går inte att utföra certifikat åtgärder med hjälp av en Azure Resource Manager-mall (ARM). En rekommenderad lösning är att använda certifikat import metoderna i Azure API, Azure CLI eller PowerShell. Om du har ett befintligt certifikat kan du importera det som en hemlighet.
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>När jag importerar ett certifikat via Azure Portal får jag ett fel meddelande om att något har gått fel. Hur kan jag undersöka ytterligare?
-    
-Om du vill visa ett mer beskrivande fel importerar du certifikat filen med hjälp av [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) eller [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+     
+Om du vill visa ett mer beskrivande fel importerar du certifikat filen med hjälp av [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) eller [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate).
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hur kan jag lösa "typ av fel: åtkomst nekad eller användare har inte behörighet att importera certifikat"?
     

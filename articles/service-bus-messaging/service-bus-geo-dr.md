@@ -3,12 +3,12 @@ title: Azure Service Bus geo-haveri beredskap | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och haveri beredskap i Azure Service Bus
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035402"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933763"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-haveri beredskap
 
@@ -156,7 +156,7 @@ Tänk på följande när du är i åtanke med den här versionen:
 
 4. Synkronisering av entiteter kan ta lite tid, ungefär 50-100 entiteter per minut. Prenumerationer och regler räknas också som entiteter.
 
-### <a name="availability-zones"></a>Tillgänglighetszoner
+## <a name="availability-zones"></a>Tillgänglighetszoner
 
 Service Bus Premium-SKU: n stöder [Tillgänglighetszoner](../availability-zones/az-overview.md), vilket ger felisolerade platser inom samma Azure-region. Service Bus hanterar tre kopior av meddelande arkivet (1 primär och 2 sekundär). Service Bus behåller alla tre kopior som synkroniseras för data-och hanterings åtgärder. Om den primära kopian Miss lyckas höjs en av de sekundära kopiorna till primär utan uppfattande stillestånds tid. Om programmen ser tillfälliga Service Bus från kopplingar kommer logiken för återförsök automatiskt att återansluta till Service Bus. 
 

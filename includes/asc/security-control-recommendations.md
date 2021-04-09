@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 14655abc403248e0ce22d22aeca342032b930fb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 635ce116509204726762127210923a408b62ea78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103468001"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958218"
 ---
 <table class="tg">
 <thead>
@@ -99,7 +99,7 @@ ms.locfileid: "103468001"
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0,0</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Aktivera avancerat skydd</p></strong>Azure Security Center är valfria Azure Defender Threat Protection-planer ger du omfattande försvar för din miljö. När Security Center identifierar ett hot i alla områden i miljön genererar den en avisering. De här aviseringarna beskriver information om de resurser som påverkas, föreslagna åtgärds steg och i vissa fall ett alternativ för att utlösa en logisk app som svar.<br>Varje Azure Defender-plan är ett separat, valfritt erbjudande som du kan aktivera med hjälp av rekommendationen i den här säkerhets kontrollen.<br><a href="/azure/security-center/threat-protection">Läs mer om skydd av hot i Security Center</a>.</td>
-    <td class="tg-lboi"; width=55%>- Azure Defender för App Service ska vara aktiverat<br />- Azure Defender för Azure SQL Database-servrar måste vara aktiverat<br />- Azure Defender för behållar register ska vara aktiverat<br />- Azure Defender för Key Vault ska vara aktiverat<br />- Azure Defender för Kubernetes ska vara aktiverat<br />- Azure Defender för-servrar måste vara aktiverat<br />- Azure Defender för SQL-servrar på datorer ska aktive ras<br />- Azure Defender för lagring ska vara aktiverat</td>
+    <td class="tg-lboi"; width=55%>- Azure Arc-aktiverade Kubernetes-kluster ska ha Azure Defender-tillägget installerat<br />- Azure Defender för App Service ska vara aktiverat<br />- Azure Defender för Azure SQL Database-servrar måste vara aktiverat<br />- Azure Defender för behållar register ska vara aktiverat<br />- Azure Defender för Key Vault ska vara aktiverat<br />- Azure Defender för Kubernetes ska vara aktiverat<br />- Azure Defender för-servrar måste vara aktiverat<br />- Azure Defender för SQL-servrar på datorer ska aktive ras<br />- Azure Defender för lagring ska vara aktiverat</td>
   </tr>
 </tbody>
 </table>

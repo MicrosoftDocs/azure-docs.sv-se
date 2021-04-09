@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a52931b69187d18984b9b6938832dafe64111ffe
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105641060"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728138"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionstillgänglighet och datahemvist
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services värnar om att hjälpa våra kunder att uppfylla sina sekretess-och personliga data krav. Som utvecklare som använder kommunikations tjänster med en direkt relation med människor som använder programmet, är det möjligt att du har en kontroll enhets data. Eftersom Azure Communication Services lagrar och krypterar dessa data i vila för din räkning är vi förmodligen en processor med dessa data. Den här sidan sammanfattar hur tjänsten behåller data och hur du kan identifiera, exportera och ta bort dessa data.
 

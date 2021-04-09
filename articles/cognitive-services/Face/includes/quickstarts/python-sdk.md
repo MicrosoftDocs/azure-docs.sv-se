@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 7fc1822c219c6c881e3d788f6b0e56675cecc466
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445414"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958307"
 ---
 Kom igång med ansikts igenkänning med ansikts klient biblioteket för python. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Ansikts tjänsten ger dig till gång till avancerade algoritmer för att identifiera och identifiera mänskliga ansikten i bilder.
 
@@ -22,7 +22,7 @@ Använd ansikts klient biblioteket för python för att:
 
 * [Identifiera ansikten i en bild](#detect-faces-in-an-image)
 * [Hitta liknande ansikten](#find-similar-faces)
-* [Skapa och träna en person grupp](#create-and-train-a-person-group)
+* [Skapa och träna en PersonGroup](#create-and-train-a-persongroup)
 * [Identifiera ett ansikte](#identify-a-face)
 * [Verifiera ansikten](#verify-faces)
 
@@ -86,7 +86,7 @@ De här kodfragmenten visar hur du gör följande uppgifter med ansikts klient b
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera ansikten i en bild](#detect-faces-in-an-image)
 * [Hitta liknande ansikten](#find-similar-faces)
-* [Skapa och träna en person grupp](#create-and-train-a-person-group)
+* [Skapa och träna en PersonGroup](#create-and-train-a-persongroup)
 * [Identifiera ett ansikte](#identify-a-face)
 * [Verifiera ansikten](#verify-faces)
 
@@ -133,7 +133,7 @@ Använd följande kod för att skriva ut matchnings informationen till-konsolen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Skapa och träna en person grupp
+## <a name="create-and-train-a-persongroup"></a>Skapa och träna en PersonGroup
 
 Följande kod skapar en **PersonGroup** med tre olika **person** objekt. Den associerar varje **person** med en uppsättning exempel bilder, och sedan kan IT-tågen identifiera varje person. 
 
@@ -174,7 +174,7 @@ När du har tilldelat ansikten måste du träna **PersonGroup** så att den kan 
 Identifiera-åtgärden tar en bild av en person (eller flera personer) och söker efter identiteten för varje ansikte i bilden (ansikts igenkännings sökning). Den jämför alla identifierade ansikte till en **PersonGroup**, en databas med olika **person** objekt vars ansikts funktioner är kända.
 
 > [!IMPORTANT]
-> Om du ska kunna köra det här exemplet måste du först köra koden i [skapa och träna en person grupp](#create-and-train-a-person-group).
+> Om du ska kunna köra det här exemplet måste du först köra koden i [skapa och träna en PersonGroup](#create-and-train-a-persongroup).
 
 ### <a name="get-a-test-image"></a>Hämta en test avbildning
 

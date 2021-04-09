@@ -3,32 +3,30 @@ title: Integrera Azure Service Bus med Azure Private Link service
 description: Lär dig hur du integrerar Azure Service Bus med Azure Private Link service
 author: spelluru
 ms.author: spelluru
-ms.date: 10/07/2020
+ms.date: 03/29/2021
 ms.topic: article
-ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 833d7e9fb4d517b71aab5039ae9081407eed84cd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427155"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960545"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Tillåt åtkomst till Azure Service Bus namnrum via privata slut punkter
 Azure Private Link service ger dig åtkomst till Azure-tjänster (till exempel Azure Service Bus, Azure Storage och Azure Cosmos DB) och Azure-värdbaserade kund-/partner tjänster via en **privat slut punkt** i det virtuella nätverket.
-
-> [!IMPORTANT]
-> Den här funktionen stöds med **Premium** -nivån för Azure Service Bus. Mer information om Premium-nivån finns i artikeln [Service Bus Premium-och standard meddelande nivåer](service-bus-premium-messaging.md) .
 
 En privat slut punkt är ett nätverks gränssnitt som ansluter privat och säkert till en tjänst som drivs av en privat Azure-länk. Den privata slut punkten använder en privat IP-adress från ditt virtuella nätverk, vilket effektivt ansluter tjänsten till ditt VNet. All trafik till tjänsten kan dirigeras via den privata slut punkten, så inga gatewayer, NAT-enheter, ExpressRoute-eller VPN-anslutningar eller offentliga IP-adresser krävs. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsofts stamnätverk, vilket eliminerar exponering från det offentliga Internet. Du kan ansluta till en instans av en Azure-resurs, vilket ger dig den högsta nivån av granularitet i åtkomst kontroll.
 
 Mer information finns i [Vad är en privat Azure-länk?](../private-link/private-link-overview.md)
 
->[!WARNING]
-> Implementering av privata slut punkter kan förhindra att andra Azure-tjänster interagerar med Service Bus. Som ett undantag kan du tillåta åtkomst till Service Bus resurser från vissa betrodda tjänster även när privata slut punkter är aktiverade. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services).
->
-> Följande Microsoft-tjänster måste finnas i ett virtuellt nätverk
-> - Azure App Service
-> - Azure Functions
+## <a name="important-points"></a>Viktiga punkter
+- Den här funktionen stöds med **Premium** -nivån för Azure Service Bus. Mer information om Premium-nivån finns i artikeln [Service Bus Premium-och standard meddelande nivåer](service-bus-premium-messaging.md) .
+- Implementering av privata slut punkter kan förhindra att andra Azure-tjänster interagerar med Service Bus. Som ett undantag kan du tillåta åtkomst till Service Bus resurser från vissa **betrodda tjänster** även när privata slut punkter är aktiverade. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services).
 
+    Följande Microsoft-tjänster måste finnas i ett virtuellt nätverk
+    - Azure App Service
+    - Azure Functions
+- Ange **minst en IP-regel eller en regel för virtuella nätverk** för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln). 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Lägg till en privat slut punkt med Azure Portal
@@ -51,15 +49,16 @@ Om du redan har ett befintligt namn område kan du skapa en privat slut punkt ge
 1. Logga in på [Azure-portalen](https://portal.azure.com). 
 2. I Sök fältet skriver du in **Service Bus**.
 3. Välj det **namn område** i listan som du vill lägga till en privat slut punkt för.
-2. På den vänstra menyn väljer du alternativet **nätverk** under **Inställningar**. 
-
+2. På den vänstra menyn väljer du alternativet **nätverk** under **Inställningar**.     Som standard är alternativet **valda nätverk** markerat.
+ 
     > [!NOTE]
     > Fliken **nätverk** visas endast för **Premium** -namnområden.  
-    
-    Som standard är alternativet **valda nätverk** markerat. Om du inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
-
+   
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Sidan nätverk – standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
-    
+
+    > [!WARNING]
+    > Om du inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
+   
     Om du väljer alternativet **alla nätverk** accepterar Service Bus namn området anslutningar från alla IP-adresser (med hjälp av åtkomst nyckeln). Standardvärdet motsvarar en regel som accepterar IP-adressintervallet 0.0.0.0/0. 
 
     ![Brand vägg – alternativet alla nätverk är valt](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)

@@ -8,16 +8,14 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7eb44987dca033ecdac9ef2ca63fb1da97dc9678
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: a5a23d6a06c8cdff4deabac5251597b7ffe0c833
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109190"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728053"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Självstudie: förbereda en webbapp för Azure Communication Services (Node.js)
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Du kan använda Azure Communication Services för att lägga till real tids kommunikation i dina program. I den här självstudien får du lära dig hur du konfigurerar ett webb program som stöder Azure Communication Services. Det här är en introduktion till nya utvecklare som vill komma igång med real tids kommunikation.
 

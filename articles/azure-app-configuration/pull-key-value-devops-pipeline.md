@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c01984f6a359c0fd1f5d06d26d97d4a84973f57
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979580"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056795"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Hämta inställningar till app-konfiguration med Azure-pipeline
 
@@ -33,7 +33,10 @@ Med en [tjänst anslutning](/azure/devops/pipelines/library/service-endpoints) k
 1. Under **pipelines** väljer du **tjänst anslutningar**.
 1. Om du inte har några befintliga tjänst anslutningar klickar du på knappen **skapa tjänst anslutning** mitt på skärmen. Annars klickar du på **ny tjänst anslutning** längst upp till höger på sidan.
 1. Välj **Azure Resource Manager**.
-1. Välj **tjänstens huvud namn (automatiskt)**.
+![Skärm bild som visar hur du väljer Azure Resource Manager från List rutan ny tjänst anslutning.](./media/new-service-connection.png)
+1. I dialog rutan **autentiseringsmetod** väljer du **tjänstens huvud namn (automatiskt)**.
+    > [!NOTE]
+    > **Hanterad identitets** autentisering stöds för närvarande inte för app Configuration-aktiviteten.
 1. Fyll i din prenumeration och resurs. Ge din tjänst anslutning ett namn.
 
 Nu när din tjänst anslutning har skapats hittar du namnet på tjänstens huvud namn som tilldelats den. Du lägger till en ny roll tilldelning till tjänstens huvud namn i nästa steg.
@@ -49,9 +52,11 @@ Tilldela den korrekta program konfigurations rollen till den tjänst anslutning 
 
 1. Navigera till konfigurations arkivet för mål programmet. En genom gång av hur du konfigurerar ett konfigurations lager för appar finns i [skapa ett konfigurations lager för appar](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) i en av Azure App snabb starter för konfiguration.
 1. Välj **åtkomst kontroll (IAM)** till vänster.
-1. Längst upp väljer du **+ Lägg till** och välj **Lägg till roll tilldelning**.
+1. Klicka på knappen **Lägg till roll tilldelningar** på höger sida.
+![Skärm bild som visar knappen Lägg till roll tilldelningar. ](./media/add-role-assignment-button.png) ..
 1. Välj **app Configuration Data Reader** under **roll**. Med den här rollen kan aktiviteten läsa från appens konfigurations arkiv. 
 1. Välj det tjänst huvud namn som är associerat med den tjänst anslutning som du skapade i föregående avsnitt.
+![Skärm bild som visar dialog rutan Lägg till roll tilldelning.](./media/add-role-assignment-reader.png)
 
 > [!NOTE]
 > För att lösa Azure Key Vault referenser inom appens konfiguration måste även tjänst anslutningen beviljas behörighet att läsa hemligheter i de refererade Azure Key Vault.
@@ -61,12 +66,17 @@ Tilldela den korrekta program konfigurations rollen till den tjänst anslutning 
 Det här avsnittet beskriver hur du använder Azure App konfigurations aktivitet i en pipeline för Azure DevOpss build.
 
 1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  . Om du vill bygga pipeline-dokumentation, se  [skapa din första pipeline](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
-      - Om du skapar en ny pipeline för bygge, klickar du på **ny pipeline** och väljer lagrings platsen för din pipeline. Välj **Visa assistenten** på höger sida av pipelinen och sök efter **Azure App konfigurations** uppgiften.
-      - Om du använder en befintlig versions pipeline väljer du **Redigera** för att redigera pipelinen. På fliken **aktiviteter** söker du efter aktiviteten **Azure App konfiguration** .
+      - Om du skapar en ny pipeline för build går du till det sista steget i processen och väljer **Visa assistent** på höger sida av pipelinen på fliken **Granska** .
+      ![Skärm bild som visar knappen Visa assistent för en ny pipeline.](./media/new-pipeline-show-assistant.png)
+      - Om du använder en befintlig versions pipeline klickar du på knappen **Redigera** längst upp till höger.
+      ![Skärm bild som visar knappen Redigera för en befintlig pipeline.](./media/existing-pipeline-show-assistant.png)
+1. Sök efter aktiviteten **Azure App konfiguration** .
+![Skärm bild som visar dialog rutan Lägg till uppgift med Azure App konfiguration i rutan Sök.](./media/add-azure-app-configuration-task.png)
 1. Konfigurera de nödvändiga parametrarna för uppgiften för att hämta nyckel värden från App Configuration Store. Beskrivningar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
       - Ange parametern för **Azure-prenumerationen** till namnet på den tjänst anslutning som du skapade i föregående steg.
       - Ange **namnet på appens konfiguration** till resurs namnet för appens konfigurations arkiv.
       - Lämna standardvärdena för de återstående parametrarna.
+![Skärm bild som visar aktivitets parametrarna för app Configuration.](./media/azure-app-configuration-parameters.png)
 1. Spara och köa en version. Build-loggen visar eventuella fel som uppstod under körningen av aktiviteten.
 
 ## <a name="use-in-releases"></a>Använd i versioner
@@ -76,8 +86,12 @@ Det här avsnittet beskriver hur du använder Azure App konfigurations aktivitet
 1. Gå till sidan Frisläpp pipeline genom att välja **pipelines**-  >  **versioner**. Mer information om versions pipelinen finns i [versions pipeliner](/azure/devops/pipelines/release).
 1. Välj en befintlig versions pipeline. Om du inte har en sådan, klickar du på **ny pipeline** för att skapa en ny.
 1. Klicka på knappen **Redigera** i det övre högra hörnet för att redigera lanserings pipelinen.
-1. Välj **scenen** för att lägga till aktiviteten. Mer information om steg finns i [lägga till stadier, beroenden & villkor](/azure/devops/pipelines/release/environments).
-1. Klicka **+** för på "kör på agent" och Lägg sedan till aktiviteten **Azure App konfiguration** på fliken **Lägg till aktiviteter** .
+1. I list rutan **aktiviteter** väljer du den **fas** som du vill lägga till aktiviteten i. Mer information om faser hittar du [här](/azure/devops/pipelines/release/environments).
+![Skärm bild som visar det valda steget i list rutan aktiviteter.](./media/pipeline-stage-tasks.png)
+1. Klicka på **+** bredvid det jobb som du vill lägga till en ny aktivitet till.
+![Skärm bild som visar plus knappen bredvid jobbet.](./media/add-task-to-job.png)
+1. Sök efter aktiviteten **Azure App konfiguration** .
+![Skärm bild som visar dialog rutan Lägg till uppgift med Azure App konfiguration i rutan Sök.](./media/add-azure-app-configuration-task.png)
 1. Konfigurera de nödvändiga parametrarna i uppgiften för att hämta nyckel värden från appens konfigurations lager. Beskrivningar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
       - Ange parametern för **Azure-prenumerationen** till namnet på den tjänst anslutning som du skapade i föregående steg.
       - Ange **namnet på appens konfiguration** till resurs namnet för appens konfigurations arkiv.

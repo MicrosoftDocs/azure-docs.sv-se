@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
 ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577766"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Granskning för Azure SQL Database och Azure Synapse Analytics
@@ -60,7 +60,7 @@ En gransknings princip kan definieras för en viss databas eller som en standard
 
 - När gransknings principen definieras på databas nivå till en Log Analytics arbets yta eller ett mål för Event Hub, kommer följande åtgärder inte att behålla gransknings principen på käll databas nivå:
     - [Databaskopia](database-copy.md)
-    - [Återställning av tidpunkt](recovery-using-backups.md)
+    - [Återställning från tidpunkt](recovery-using-backups.md)
     - [Geo-replikering](active-geo-replication-overview.md) (sekundär databas kommer inte att ha granskning på databas nivå)
 
 - Att aktivera granskning av databasen, förutom att aktivera den på-servern, Åsidosätt eller ändra *inte* inställningarna för Server granskning. Båda granskningarna kommer att finnas sida vid sida. Med andra ord granskas databasen två gånger parallellt. en gång av Server principen och en gång av databas principen.
