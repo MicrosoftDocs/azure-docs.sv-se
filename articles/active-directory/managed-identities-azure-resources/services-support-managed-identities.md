@@ -12,10 +12,10 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
 ms.openlocfilehash: 058873df989c444ebe06fc20a2f8a40fd2d3c594
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104594554"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
@@ -158,7 +158,7 @@ I följande lista kan du konfigurera hanterad identitet för Azure Container Reg
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
-### <a name="azure-data-explorer"></a>Azure-datautforskaren
+### <a name="azure-data-explorer"></a>Öppna Azure-datautforskaren
 
 Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -177,7 +177,7 @@ I följande lista kan du konfigurera hanterad identitet för Azure Data Factory 
 - [Azure-portalen](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [GRÄNSSNITTET](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-digital-twins"></a>Azure Digital Twins
 
@@ -434,7 +434,7 @@ Se följande lista för att konfigurera åtkomst till Azure Resource Manager:
 | Azure Tyskland | `https://database.cloudapi.de/` | ![Få][check] |
 | Azure Kina 21Vianet | `https://database.chinacloudapi.cn/` | ![Få][check] |
 
-### <a name="azure-data-explorer"></a>Azure-datautforskaren
+### <a name="azure-data-explorer"></a>Öppna Azure-datautforskaren
 
 | Moln | Resurs-ID | Status |
 |--------|------------|:-:|

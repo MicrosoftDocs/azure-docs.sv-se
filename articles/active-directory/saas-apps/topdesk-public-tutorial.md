@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520446"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Självstudie: Azure Active Directory integrering med TOPdesk-Public
@@ -137,13 +137,13 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med TO
 
     c. Utloggnings-URL
 
-### <a name="configure-topdesk---public-single-sign-on"></a>Konfigurera TOPdesk-offentliga enkla Sign-On
+### <a name="configure-topdesk---public-single-sign-on&quot;></a>Konfigurera TOPdesk-offentliga enkla Sign-On
 
 1. Logga in på din **TOPdesk-offentliga** företags webbplats som administratör.
 
 2. På menyn **TOPdesk** klickar du på **Inställningar**.
    
-    ![Inställningar](./media/topdesk-public-tutorial/ic790598.png "Inställningar")
+    ![Inställningar](./media/topdesk-public-tutorial/ic790598.png &quot;Inställningar")
 
 3. Klicka på **Inloggningsinställningar**.
    
@@ -247,17 +247,17 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-topdesk---public-test-user"></a>Skapa TOPdesk-offentlig test användare
+### <a name="create-topdesk---public-test-user&quot;></a>Skapa TOPdesk-offentlig test användare
 
 För att Azure AD-användare ska kunna logga in på TOPdesk-offentliga måste de tillhandahållas i TOPdesk-Public. Vid TOPdesk-offentlig är etableringen en manuell uppgift.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Konfigurera användaretablering genom att utföra följande steg:
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>Konfigurera användaretablering genom att utföra följande steg:
 
 1. Logga in på din **TOPdesk-offentliga** företags webbplats som administratör.
 
 2. Klicka på **TOPdesk \> nya \> stödfiler \>** på menyn högst upp.
    
-    ![Person](./media/topdesk-public-tutorial/ic790628.png "Person")
+    ![Person](./media/topdesk-public-tutorial/ic790628.png &quot;Person")
 
 3. I dialog rutan ny person utför du följande steg:
    
