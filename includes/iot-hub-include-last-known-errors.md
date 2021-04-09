@@ -9,10 +9,10 @@ ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 54f4835a904b897370cf9f075ae3c005b1114992
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95555316"
 ---
 [Hämta slut punkts hälsan](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) i REST API visar slut punkternas hälso status och det senaste kända felet för att identifiera orsaken till att en slut punkt inte är felfri. Tabellen nedan visar de vanligaste felen.

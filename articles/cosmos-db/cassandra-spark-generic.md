@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93090519"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Ansluta till Azure Cosmos DB Cassandra-API:et från Spark
@@ -54,7 +54,7 @@ I följande tabell visas Azure Cosmos DB API för Cassandra-specificerade data f
 
 Justera data flödet och graden av parallellitet för dessa parametrar baserat på den arbets belastning du förväntar dig för dina Spark-jobb och det data flöde som du har allokerat för ditt Cosmos DB-konto.
 
-## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Ansluta till Azure Cosmos DB API för Cassandra från Spark
+## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Ansluta till Azure Cosmos DB Cassandra-API:et från Spark
 
 ### <a name="cqlsh"></a>cqlsh
 Följande kommandon beskriver hur du ansluter till Azure CosmosDB API för Cassandra från cqlsh.  Detta är användbart för verifiering när du kör genom exemplen i Spark.<br>

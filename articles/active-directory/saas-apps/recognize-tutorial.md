@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7195a126938deabf542e6fa3e52b72c2efdddac2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Självstudie: Azure Active Directory integration med identifiera
@@ -219,7 +219,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-recognize-test-user"></a>Skapa identifiera test användare
+### <a name="create-recognize-test-user&quot;></a>Skapa identifiera test användare
 
 För att Azure AD-användare ska kunna logga in på identifiera måste de tillhandahållas i igenkännings syfte. När det gäller igenkänning är etableringen en manuell uppgift.
 
@@ -235,7 +235,7 @@ Den här appen har inte stöd för SCIM-etablering men har en alternativ använd
 
 4. Utför följande steg i avsnittet om **synkronisering av användare** .
    
-    ![Ny användare](./media/recognize-tutorial/tutorial_recognize_005.png "Ny användare")
+    ![Ny användare](./media/recognize-tutorial/tutorial_recognize_005.png &quot;Ny användare")
    
     a. När **synkronisering är aktiverat** väljer du **på**.
    
