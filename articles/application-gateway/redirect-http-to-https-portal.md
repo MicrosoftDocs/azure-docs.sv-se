@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397288"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Skapa en Application Gateway med HTTP till HTTPS-omdirigering med hjälp av Azure Portal
@@ -103,9 +103,9 @@ Det krävs ett virtuellt nätverk för kommunikation mellan de resurser som du s
 3. Skriv *myBackendSubnet* som namn på under nätet.
 4. Skriv *10.0.2.0/24* för adress intervallet och välj sedan **OK**.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Lägg till en regel för avlyssning och omdirigering
+## <a name="add-a-listener-and-redirection-rule&quot;></a>Lägg till en regel för avlyssning och omdirigering
 
-### <a name="add-the-listener"></a>Lägg till lyssnaren
+### <a name=&quot;add-the-listener&quot;></a>Lägg till lyssnaren
 
 Lägg först till lyssnaren med namnet min *lyssnare* för port 80.
 
@@ -115,7 +115,7 @@ Lägg först till lyssnaren med namnet min *lyssnare* för port 80.
 4. Skriv *httpPort* för det nya port namnet för klient delen och *80* för porten.
 5. Se till att protokollet är inställt på **http** och välj sedan **OK**.
 
-### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Lägg till en regel för routning med en omdirigerings konfiguration
+### <a name=&quot;add-a-routing-rule-with-a-redirection-configuration&quot;></a>Lägg till en regel för routning med en omdirigerings konfiguration
 
 1. Välj **regler** på **myAppGateway** och välj sedan **+ begär routningsregler**.
 2. Skriv *regel 2* som **regel namn**.
@@ -127,7 +127,7 @@ Lägg först till lyssnaren med namnet min *lyssnare* för port 80.
 8. För **include-frågesträngen** och **Inkludera sökväg** väljer du *Ja*.
 9. Välj **Lägg till**.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Skapa en VM-skalningsuppsättning
+## <a name=&quot;create-a-virtual-machine-scale-set&quot;></a>Skapa en VM-skalningsuppsättning
 
 I det här exemplet skapar du en VM-skalningsuppsättning som ska tillhandahålla servrar till serverdelspoolen i programgatewayen.
 
@@ -147,7 +147,7 @@ I det här exemplet skapar du en VM-skalningsuppsättning som ska tillhandahåll
 14. Se till att **under nätet** är inställt på **myBackendSubnet**.
 15. Välj **Skapa**.
 
-### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>Koppla skalnings uppsättningen till rätt backend-pool
+### <a name=&quot;associate-the-scale-set-with-the-proper-backend-pool&quot;></a>Koppla skalnings uppsättningen till rätt backend-pool
 
 Användar gränssnittet för skalnings uppsättningen för virtuell dator skapar en ny backend-pool för skalnings uppsättningen, men du vill associera den med din befintliga appGatewayBackendPool.
 
@@ -164,7 +164,7 @@ Användar gränssnittet för skalnings uppsättningen för virtuell dator skapar
 11. Under **konfigurationer för nätverks gränssnitt** väljer du **myvmssNic**.
 12. Välj **Spara**.
 
-### <a name="upgrade-the-scale-set"></a>Uppgradera skalnings uppsättningen
+### <a name=&quot;upgrade-the-scale-set&quot;></a>Uppgradera skalnings uppsättningen
 
 Slutligen måste du uppgradera skalnings uppsättningen med dessa ändringar.
 
@@ -176,14 +176,14 @@ Slutligen måste du uppgradera skalnings uppsättningen med dessa ändringar.
 6. Välj **myAppGatewaymyvmss** och välj sedan **ta bort**.
 7. Välj **Ja** för att bekräfta.
 
-### <a name="install-iis"></a>Installera IIS
+### <a name=&quot;install-iis&quot;></a>Installera IIS
 
 Ett enkelt sätt att installera IIS på skalnings uppsättningen är att använda PowerShell. I portalen klickar du på ikonen Cloud Shell och kontrollerar att **PowerShell** är markerat.
 
 Klistra in följande kod i PowerShell-fönstret och tryck på RETUR.
 
 ```azurepowershell
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
+$publicSettings = @{ &quot;fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 $vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
 Add-AzVmssExtension -VirtualMachineScaleSet $vmss `

@@ -4,10 +4,10 @@ description: Distribuera steg för DoD-effekten nivå 5-exempel, inklusive infor
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 6136136eef5d405ae0849e5ce8c8faede138fb00
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98034908"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>Distribuera skiss exemplet DoD-effekt nivå 5

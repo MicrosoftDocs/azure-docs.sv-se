@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011778"
 ---
 Alla data som lagras i Azure Files krypteras i vila med hjälp av Azure Storage Service Encryption (SSE). Kryptering av lagrings tjänst fungerar på samma sätt som BitLocker i Windows: data krypteras under fil system nivå. Eftersom data krypteras under fil systemet i Azure-filresursen, eftersom de är kodade till disk, behöver du inte ha åtkomst till den underliggande nyckeln på klienten för att läsa eller skriva till Azure-filresursen. Kryptering i vila gäller både SMB-och NFS-protokollen.

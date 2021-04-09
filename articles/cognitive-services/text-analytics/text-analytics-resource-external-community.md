@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94365016"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externt & community-innehåll för tjänsten Textanalys kognitivt
@@ -39,7 +39,7 @@ ms.locfileid: "94365016"
 
 
 
-## <a name="videos"></a>Videoklipp
+## <a name="videos"></a>Video
 
 + [Logic app för att identifiera sentiment och extrahera nyckel fraser från din text](https://www.youtube.com/watch?v=jVN9NObAzgk)
 
