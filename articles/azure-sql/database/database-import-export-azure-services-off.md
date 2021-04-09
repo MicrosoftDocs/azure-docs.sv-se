@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724177"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Importera eller exportera en Azure SQL Database utan att ge Azure-tjänster åtkomst till servern
@@ -132,7 +132,7 @@ Export hastigheten varierar på grund av många faktorer (till exempel data form
 
 För att få bästa möjliga prestanda kan du prova följande strategier:
 
-1. Kontrol lera att ingen annan arbets belastning körs på databasen. Skapa en kopia innan exporten kan vara den bästa lösningen för att se till att inga andra arbets belastningar körs.
+1. Se till att inga andra arbetsbelastningar körs på databasen. Skapa en kopia innan exporten kan vara den bästa lösningen för att se till att inga andra arbets belastningar körs.
 2. Öka service nivå målet för databasen (service nivå mål) för att bättre hantera export belastningen (I huvudsak Läs-I/O). Om databasen för närvarande GP_Gen5_4 kan en Affärskritisk nivå hjälpa till med Läs-och skriv arbets belastning.
 3. Se till att det finns grupperade index särskilt för stora tabeller.
 4. Virtual Machines (VM) måste finnas i samma region som databasen för att hjälpa till att undvika nätverks begränsningar.
