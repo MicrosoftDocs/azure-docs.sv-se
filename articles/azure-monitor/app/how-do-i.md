@@ -4,10 +4,10 @@ description: Vanliga frågor och svar i Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584164"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hur kan jag ... i Application Insights?
@@ -65,7 +65,7 @@ Du får e-postmeddelanden både när måttet hamnar ovanför och under tröskelv
 
 Några saker att tänka på:
 
-* En avisering har två tillstånd ("varning" och "felfri"). Statusen utvärderas endast när ett mått tas emot.
+* En avisering har två tillstånd ("varning&quot; och &quot;felfri"). Statusen utvärderas endast när ett mått tas emot.
 * Ett e-postmeddelande skickas endast när tillstånd ändras. Det är därför du måste skicka både höga och låga värden.
 * För att utvärdera aviseringen tar genomsnittet av de mottagna värdena under föregående period. Detta inträffar varje gång ett mått tas emot, så att e-postmeddelanden kan skickas oftare än den period som du anger.
 * Eftersom e-postmeddelanden skickas både på "varning" och "felfri", kanske du vill överväga att fundera på att titta på en händelse i två tillstånd. I stället för händelsen "jobbet har slutförts" har du till exempel ett villkor för "pågående jobb" där du får e-postmeddelanden i början och slutet av ett jobb.

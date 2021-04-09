@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222351"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight för Azure SQL Database
@@ -186,7 +186,7 @@ Så här identifierar du tids krävande frågor:
    > Vi rekommenderar att du använder det anpassade DTU-diagrammet för att jämföra med resultat diagrammet för frågor.
    >
 
-## <a name="review-top-queries-per-execution-count"></a>Granska de vanligaste frågorna per antal körningar
+## <a name="review-top-queries-per-execution-count&quot;></a>Granska de vanligaste frågorna per antal körningar
 
 Ett användar program som använder-databasen kan bli långsamt, även om ett stort antal körningar kanske inte påverkar själva databasen och resurserna har låg belastning.
 
@@ -194,7 +194,7 @@ I vissa fall kan ett högt antal körnings försök leda till fler nätverks fö
 
 Till exempel har många data drivna webbplatser stor åtkomst till databasen för varje Användarbegäran. Även om anslutningspoolen bidrar till kan den ökade nätverks trafiken och belastningen på servern sakta prestanda. I allmänhet ska du hålla tur och ordning i tur och ordning till ett minimum.
 
-Så här identifierar du vanliga frågor ("chatty"):
+Så här identifierar du vanliga frågor (&quot;chatty"):
 
 1. Öppna fliken **anpassad** i Query Performance Insight för den valda databasen.
 2. Ändra måtten till **antal körningar**.

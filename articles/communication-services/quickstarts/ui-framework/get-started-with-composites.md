@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 7356fb90914e948b6a74a478ce1e19722b224346
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7d6b0d01ec3de1cb4ce91b1c81cd8a0ccd73b1d1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488065"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105825806"
 ---
 # <a name="quickstart-get-started-with-ui-framework-composite-components"></a>Snabb start: kom igång med sammansatta UI Framework-komponenter
 
@@ -47,7 +47,7 @@ I slutet av den här processen bör du ha ett fullständigt program i mappen `my
 
 ### <a name="install-the-package"></a>Installera paketet
 
-Använd `npm install` kommandot för att installera Azure Communication Services som anropar klient bibliotek för Java Script. Flytta den angivna tarball (privat förhands granskning) till katalogen My-app.
+Använd `npm install` kommandot för att installera Azure Communication Services som anropar SDK för Java Script. Flytta den angivna tarball (privat förhands granskning) till katalogen My-app.
 
 ```console
 
@@ -71,7 +71,7 @@ npm run start
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i klient biblioteket för Azure Communication Services UI:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services UI SDK:
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864048"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Använda kartkontrollen i Azure Maps
@@ -200,9 +200,9 @@ Du kan bädda in en karta på en webb sida med hjälp av Kartkontroll JavaScript
 
    ![Kart bild som visar åter givnings resultat](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>Lokalisera kartan
+## <a name="localizing-the-map&quot;></a>Lokalisera kartan
 
-Azure Maps tillhandahåller två olika sätt att ställa in språk och regional vy för den renderade kartan. Det första alternativet är att lägga till den här informationen i det globala `atlas` namn området, vilket leder till att alla instanser av kart kontroll i appen används som standard för de här inställningarna. Följande ställer in språket på franska ("fr-FR") och den regionala vyn till "Auto":
+Azure Maps tillhandahåller två olika sätt att ställa in språk och regional vy för den renderade kartan. Det första alternativet är att lägga till den här informationen i det globala `atlas` namn området, vilket leder till att alla instanser av kart kontroll i appen används som standard för de här inställningarna. Följande ställer in språket på franska (&quot;fr-FR") och den regionala vyn till "Auto":
 
 ```javascript
 atlas.setLanguage('fr-FR');
