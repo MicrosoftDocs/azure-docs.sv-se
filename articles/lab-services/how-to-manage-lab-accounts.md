@@ -4,10 +4,10 @@ description: Lär dig hur du skapar ett labb konto, visar alla labb konton eller
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434098"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Skapa och hantera labbkonton
