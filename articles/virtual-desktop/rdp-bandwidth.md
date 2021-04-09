@@ -6,18 +6,19 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe12c985f5d9a519380d1d9b5a7d6c2820630c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932343"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>Krav för bandbredd för Remote Desktop Protocol (RDP)
 
 Remote Desktop Protocol (RDP) är en sofistikerad teknik som använder olika metoder för att perfekt leverera serverns fjärrgrafik till klient enheten. Beroende på användnings fall, tillgänglighet för dator resurser och nätverks bandbredd justerar RDP dynamiskt olika parametrar för att leverera den bästa användar upplevelsen.
 
-Remote Desktop Protocol flera Plex flera dynamiska virtuella kanaler (DVCs) till en enda data kanal som skickas över olika nätverks transporter. Det finns separata DVCs för fjärrgrafik, ininformation, omdirigering av enheter, utskrift och andra. WVD-partner kan också implementera sina tillägg som använder enheter-gränssnitt.
+Remote Desktop Protocol flera Plex flera dynamiska virtuella kanaler (DVCs) till en enda data kanal som skickas över olika nätverks transporter. Det finns separata DVCs för fjärrgrafik, ininformation, omdirigering av enheter, utskrift med mera. Windows Virtual Desktop-partner kan också använda sina tillägg som använder enheter-gränssnitt.
+
 Mängden data som skickas via RDP beror på användarens aktivitet. En användare kan till exempel arbeta med grundläggande text innehåll för merparten av sessionen och förbruka minimal bandbredd, men sedan generera en utskrift av ett dokument på 200-sidan till den lokala skrivaren. Det här utskrifts jobbet kommer att använda en stor mängd nätverks bandbredd.
 
 När du använder en fjärrsession, påverkar nätverkets tillgängliga bandbredd dramatiskt kvaliteten på din upplevelse. Olika program och visnings lösningar kräver olika nätverkskonfigurationer, så det är viktigt att se till att din nätverks konfiguration uppfyller dina behov.

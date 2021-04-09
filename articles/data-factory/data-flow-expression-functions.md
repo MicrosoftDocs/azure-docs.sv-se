@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563946"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933120"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Data omvandlings uttryck i data flöde för mappning
 
@@ -143,13 +143,6 @@ Returnerar det första värdet som inte är null från en uppsättning indata. A
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
-### <code>collect</code>
-<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-Samlar in alla värden i uttrycket i den aggregerade gruppen i en matris. Strukturer kan samlas in och omvandlas till alternativa strukturer under den här processen. Antalet objekt motsvarar antalet rader i gruppen och kan innehålla NULL-värden. Antalet insamlade objekt ska vara litet.  
-* ``collect(salesPerson)``
-* ``collect(firstName + lastName))``
-* ``collect(@(name = salesPerson, sales = salesAmount) )``
-___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
 Hämtar namnen på alla utdatakolumner för en data ström. Du kan skicka ett valfritt Stream-namn som det andra argumentet.  
@@ -277,6 +270,10 @@ ___
 <code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
 Escaperar en sträng enligt ett format. Litterala värden för acceptabelt format är JSON, XML, ECMAScript, HTML, Java.
 ___
+### <code>expr</code>
+<code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
+Resulterar i ett uttryck från en sträng. Detta är detsamma som att skriva det här uttrycket i ett format som inte är literalt. Detta kan användas för att skicka parametrar som sträng representationer.
+*   uttryck (' pris * rabatt ') => alla ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 Beräknar fakulteten för ett tal.  
@@ -856,6 +853,13 @@ ___
 Baserat på ett villkor får du medelvärdet av värdena i en kolumn.  
 * ``avgIf(region == 'West', sales)``  
 ___
+### <code>collect</code>
+<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
+Samlar in alla värden i uttrycket i den aggregerade gruppen i en matris. Strukturer kan samlas in och omvandlas till alternativa strukturer under den här processen. Antalet objekt motsvarar antalet rader i gruppen och kan innehålla NULL-värden. Antalet insamlade objekt ska vara litet.  
+* ``collect(salesPerson)``
+* ``collect(firstName + lastName))``
+* ``collect(@(name = salesPerson, sales = salesAmount) )``
+___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
 Hämtar det sammanställda antalet värden. Om valfria kolumner anges ignoreras NULL-värden i antalet.  
@@ -900,6 +904,10 @@ Hämtar det första värdet för en kolumn grupp. Om den andra parametern ignore
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+### <code>isDistinct</code>
+<code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+Söker efter om en kolumn eller kolumn uppsättning är distinkt. Värdet räknas inte som ett distinkt värde *   ``isDistinct(custId, custName) => boolean``
+*   ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Hämtar en kolumns kolumn.  
@@ -1217,6 +1225,14 @@ ___
 
 Konverterings funktioner används för att konvertera data och testa data typer
 
+### <code>isBitSet</code>
+<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+Kontrollerar om en bit position har angetts i den här Bitset * ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
+___
+### <code>setBitSet</code>
+<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+Ställer in bit positioner i den här Bitset * ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
+___  
 ### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Kontrollerar om strängvärdet är ett booleskt värde enligt reglerna för ``toBoolean()``
@@ -1431,6 +1447,11 @@ Välj en matris med kolumner efter namn i data strömmen. Du kan skicka ett valf
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
+### <code>byPath</code>
+<code><b>byPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => any</b></code><br/><br/>
+Söker efter en hierarkisk sökväg efter namn i data strömmen. Du kan skicka ett valfritt Stream-namn som det andra argumentet. Om ingen sådan sökväg hittas returnerar den null. Kolumn namn/sökvägar som är kända i design tid ska bara åtgärdas med deras namn eller punkt notation. Beräknade indata stöds inte, men du kan använda parameter ersättningar.  
+* ``byPath('grandpa.parent.child') => column`` 
+___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
 Markerar ett kolumn värde efter dess relativa position (1) i data strömmen. Om positionen ligger utanför intervallet returneras ett NULL-värde. Det returnerade värdet måste vara en typ som konverteras av typ konverterings funktionerna (TO_DATE, TO_STRING...) Beräknade indata stöds inte, men du kan använda parameter ersättningar.  
@@ -1439,6 +1460,11 @@ Markerar ett kolumn värde efter dess relativa position (1) i data strömmen. Om
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hasPath</code>
+<code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
+Kontrollerar om en viss hierarkisk sökväg finns efter namn i data strömmen. Du kan skicka ett valfritt Stream-namn som det andra argumentet. Kolumn namn/sökvägar som är kända i design tid ska bara åtgärdas med deras namn eller punkt notation. Beräknade indata stöds inte, men du kan använda parameter ersättningar.  
+* ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
 <code><b>hex(<value1>: binary) => string</b></code><br/><br/>

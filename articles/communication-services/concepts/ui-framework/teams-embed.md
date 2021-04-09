@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 99263695aa0842daf59f23cda115dcb5b27b7add
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e55cfb1a4dff7bfda2323e68777d6f50514b1608
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804133"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930242"
 ---
 # <a name="teams-embed"></a>Teams inbäddning
 
@@ -21,7 +21,7 @@ ms.locfileid: "104804133"
 
 Teams inbäddning är en funktion för Azure Communication Services som fokuserar på vanliga interaktioner mellan företag och företag som anropar. Kärnan i Teams Inbäddnings systemet är [video och röst samtal](../voice-video-calling/calling-sdk-features.md), men Teams inbäddnings systemet bygger på Azures anrops primitiver för att leverera en fullständig användar upplevelse baserat på Microsoft team-möten.
 
-Teams inbäddning av klient bibliotek är stängd-källa och gör dessa funktioner tillgängliga i ett nyckel färdigt, sammansatt format. Du släpper team bädda in i appens arbets yta så genererar klient biblioteket en fullständig användar upplevelse. Eftersom den här användar upplevelsen liknar Microsoft team-möten kan du dra nytta av:
+Teams inbäddade SDK: er är stängda – källa och gör dessa funktioner tillgängliga i ett nyckel färdigt, sammansatt format. Du kan släppa team som bäddats in i appens arbets yta och SDK: n genererar en fullständig användar upplevelse. Eftersom den här användar upplevelsen liknar Microsoft team-möten kan du dra nytta av:
 
 - Minskad utvecklings tid och teknik komplexitet
 - Slutanvändarens bekanta med team

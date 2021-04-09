@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/18/2021
-ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.date: 03/25/2021
+ms.openlocfilehash: 72ab685b58f7d940fe4d682cacba6212fe80ced8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105640217"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933091"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 
@@ -341,6 +341,110 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 1. Kontrol lera statusen för dina data uppsättnings anslutningar. I varje omvandling av källa och mottagare går du till den länkade tjänsten för varje data uppsättning som du använder och testar anslutningarna.
 2. Kontrol lera status för dina fil-och tabell anslutningar i data flödes designern. I fel söknings läge väljer du **Förhandsgranska data** på käll omvandlingarna för att se till att du har åtkomst till dina data.
 3. Om allting ser korrekt ut i data förhands granskningen, går du till pipeline-designern och sätter ditt data flöde i en pipeline-aktivitet. Felsök pipelinen för ett slut punkt till slut punkts test.
+
+### <a name="improvement-on-csvcdm-format-in-data-flow"></a>Förbättring av CSV/common data service-format i data flöde 
+
+Om du använder den **avgränsade texten eller common data service-formateringen för att mappa data flödet i Azure Data Factory v2**, kan det hända att beteendet ändras till dina befintliga pipelines på grund av förbättringen av avgränsad text/common data service i data flödet från och med **1 maj 2021**. 
+
+Du kan stöta på följande problem före förbättringen, men när du har åtgärdat problemet har problemen åtgärd ATS. Läs följande innehåll för att avgöra om den här förbättringen påverkar dig. 
+
+#### <a name="scenario-1-encounter-the-unexpected-row-delimiter-issue"></a>Scenario 1: stöter på problem med oväntad rad avgränsare
+
+ Du påverkas om du är i följande fall:
+ - Med hjälp av den avgränsade texten med Multiline-inställningen inställd på True eller common data service som källa.
+ - Den första raden innehåller fler än 128 tecken. 
+ - Rad avgränsaren i datafiler är inte `\n` .
+
+ Innan förbättringen kan standard rad avgränsaren `\n` vara oväntad för att parsa avgränsade textfiler, eftersom när Multiline-inställningen är inställd på True inaktive ras inställningen för rad avgränsare och rad avgränsaren identifieras automatiskt baserat på de första 128 tecknen. Om du inte kan identifiera den faktiska rad avgränsaren skulle den gå tillbaka till `\n` .  
+
+ Efter förbättringen bör någon av de tre rad avgränsarna: `\r` , `\n` , `\r\n` vara arbete.
+ 
+ I följande exempel visas en förloppets beteende förändring efter förbättringen:
+
+ **Exempel**:<br/>
+   För följande kolumn:<br/>
+    `C1, C2, {long first row}, C128\r\n `<br/>
+    `V1, V2, {values………………….}, V128\r\n `<br/>
+ 
+   Före förbättringen `\r` sparas värdet i kolumnvärdet. Det parsade kolumn resultatet är:<br/>
+   `C1 C2 {long first row} C128`**`\r`**<br/>
+   `V1 V2 {values………………….} V128`**`\r`**<br/> 
+
+   Efter förbättringen ska det parsade kolumn resultatet vara:<br/>
+   `C1 C2 {long first row} C128`<br/>
+   `V1 V2 {values………………….} V128`<br/>
+  
+#### <a name="scenario-2-encounter-an-issue-of-incorrectly-reading-column-values-containing-rn"></a>Scenario 2: påträffar ett problem med felaktigt lästa kolumn värden som innehåller ' \r\n '
+
+ Du påverkas om du är i följande fall:
+ - Med hjälp av den avgränsade texten med Multiline-inställningen inställd på True eller common data service som källa. 
+ - Rad avgränsaren är `\r\n` .
+
+ Före förbättringen kan i det här fallet ersättas av, vid läsning av kolumnvärdet `\r\n` `\n` . 
+
+ Efter förbättringen `\r\n` kommer värdet i kolumnvärdet inte att ersättas av `\n` .
+
+ I följande exempel visas en förloppets beteende förändring efter förbättringen:
+ 
+ **Exempel**:<br/>
+  
+ För följande kolumn:<br/>
+  **`"A\r\n"`**`, B, C\r\n`<br/>
+
+ Innan förbättringen är det parsade kolumn resultatet:<br/>
+  **`A\n`**` B C`<br/>
+
+ Efter förbättringen ska det parsade kolumn resultatet vara:<br/>
+  **`A\r\n`**` B C`<br/>  
+
+#### <a name="scenario-3-encounter-an-issue-of-incorrectly-writing-column-values-containing-n"></a>Scenario 3: stöter på problem med att skriva kolumn värden som innehåller ' \n '
+
+ Du påverkas om du är i följande fall:
+ - Använder den avgränsade texten som mottagare.
+ - Kolumnvärdet innehåller `\n` .
+ - Rad avgränsaren är inställd på `\r\n` .
+ 
+ Före förbättringen kan i det här fallet ersättas av om du skriver kolumnvärdet `\n` `\r\n` . 
+
+ Efter förbättringen `\n` kommer värdet i kolumnvärdet inte att ersättas av `\r\n` .
+ 
+ I följande exempel visas en förloppets beteende förändring efter förbättringen:
+
+ **Exempel**:<br/>
+
+ För följande kolumn:<br/>
+ **`A\n`**` B C`<br/>
+
+ Innan förbättringen är CSV-Sink:<br/>
+  **`"A\r\n"`**`, B, C\r\n` <br/>
+
+ Efter förbättringen bör CSV-sinken vara:<br/>
+  **`"A\n"`**`, B, C\r\n`<br/>
+
+#### <a name="scenario-4-encounter-an-issue-of-incorrectly-reading-empty-string-as-null"></a>Scenario 4: det uppstår ett problem med en felaktigt läst tom sträng som NULL
+ 
+ Du påverkas om du är i följande fall:
+ - Använder den avgränsade texten som källa. 
+ - NULL-värdet är inställt på ett värde som inte är tomt. 
+ - Kolumnvärdet är en tom sträng och är inte citerad. 
+ 
+ Innan förbättringen läses kolumnvärdet för den icke-citerade tomma strängen som NULL. 
+
+ Efter förbättringen kommer den tomma strängen inte att tolkas som ett NULL-värde. 
+ 
+ I följande exempel visas en förloppets beteende förändring efter förbättringen:
+
+ **Exempel**:<br/>
+
+ För följande kolumn:<br/>
+  `A, ,B, `<br/>
+
+ Innan förbättringen är det parsade kolumn resultatet:<br/>
+  `A null B null`<br/>
+
+ Efter förbättringen ska det parsade kolumn resultatet vara:<br/>
+  `A "" (empty string) B "" (empty string)`<br/>
+
 
 ## <a name="next-steps"></a>Nästa steg
 

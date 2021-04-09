@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a49c55da0bb8018b3faa7c6f70b02e79d9478603
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101666688"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Scenarier som stöds för HANA-stora instanser
@@ -406,7 +406,7 @@ Den här topologin har stöd för två noder i en konfiguration för automatisk 
 
 ![Automatisk redundans för värd (1 + 1)](media/hana-supported-scenario/scaleup-with-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Följande nätverks gränssnitt är förkonfigurerade:
 
 | Logiskt gränssnitt för nätverkskort | SKU-typ | Namn med SUSE OS | Namn med RHEL OS | Användningsfall|
@@ -420,7 +420,7 @@ Följande nätverks gränssnitt är förkonfigurerade:
 | C | TYP II | lokalt\<tenantNo+1> | team0. klient organisation + 1 | Nod-till-lagring |
 | D | TYP II | lokalt\<tenantNo+3> | team0. klient + 3 | Konfigurerad men används inte |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Följande monterings punkter är förkonfigurerade:
 
 | Monterings punkt | Användningsfall | 
@@ -433,9 +433,9 @@ Följande monterings punkter är förkonfigurerade:
 
 
 
-### <a name="key-considerations"></a>Viktiga överväganden
+### <a name=&quot;key-considerations&quot;></a>Viktiga överväganden
 - /usr/sap/SID är en symbolisk länk till/hana/shared/SID.
-- I vänte läge: volymerna och monterings punkterna konfigureras (markerade som "krävs för HANA-installation") för HANA-instansen-installationen på vänte läges enheten.
+- I vänte läge: volymerna och monterings punkterna konfigureras (markerade som &quot;krävs för HANA-installation") för HANA-instansen-installationen på vänte läges enheten.
  
 
 ## <a name="scale-out-with-standby"></a>Skala ut med vänte läge
@@ -522,7 +522,7 @@ Den här topologin stöder flera noder i en skalbarhet med en DR. Både normal o
 ![Skala ut med DR med hjälp av Storage Replication](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Följande nätverks gränssnitt är förkonfigurerade:
 
 | Logiskt gränssnitt för nätverkskort | SKU-typ | Namn med SUSE OS | Namn med RHEL OS | Användningsfall|
@@ -536,7 +536,7 @@ Följande nätverks gränssnitt är förkonfigurerade:
 | C | TYP II | lokalt\<tenantNo+1> | team0. klient organisation + 1 | Nod-till-lagring |
 | D | TYP II | lokalt\<tenantNo+3> | team0. klient + 3 | Konfigurerad men används inte |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Följande monterings punkter är förkonfigurerade:
 
 | Monterings punkt | Användningsfall | 
@@ -552,9 +552,9 @@ Följande monterings punkter är förkonfigurerade:
 |/hana/log/SID/mnt00001 | Logg fils installation för produktions-SID | 
 
 
-### <a name="key-considerations"></a>Viktiga överväganden
+### <a name=&quot;key-considerations&quot;></a>Viktiga överväganden
 - /usr/sap/SID är en symbolisk länk till/hana/shared/SID.
--  På DR-platsen: volymerna och monterings punkterna konfigureras (markerade som "krävs för HANA-installation") för produktion HANA-instansen installation på DR HLI-enheten. 
+-  På DR-platsen: volymerna och monterings punkterna konfigureras (markerade som &quot;krävs för HANA-installation") för produktion HANA-instansen installation på DR HLI-enheten. 
 - På DR-platsen: replikeras data, logg säkerhets kopior och delade volymer (markerade som "lagrings replikering") via ögonblicks bild från produktions platsen. Dessa volymer monteras endast under redundans. Mer information finns i [förfarandet vid haveri beredskap](./hana-overview-high-availability-disaster-recovery.md). 
 - Start volymen för *SKU-typ I klass* replikeras till Dr-noden.
 
@@ -658,7 +658,7 @@ Följande monterings punkter är förkonfigurerade:
 
 ![Hög tillgänglighet och haveri beredskap med HSR](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Följande nätverks gränssnitt är förkonfigurerade:
 
 | Logiskt gränssnitt för nätverkskort | SKU-typ | Namn med SUSE OS | Namn med RHEL OS | Användningsfall|
@@ -672,7 +672,7 @@ Följande nätverks gränssnitt är förkonfigurerade:
 | C | TYP II | lokalt\<tenantNo+1> | team0. klient organisation + 1 | Nod-till-lagring |
 | D | TYP II | lokalt\<tenantNo+3> | team0. klient + 3 | Konfigurerad men används inte |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Följande monterings punkter är förkonfigurerade:
 
 | Monterings punkt | Användningsfall | 
@@ -689,9 +689,9 @@ Följande monterings punkter är förkonfigurerade:
 |/hana/logbackups/SID | Gör om loggar för produktions-SID |
 
 
-### <a name="key-considerations"></a>Viktiga överväganden
+### <a name=&quot;key-considerations&quot;></a>Viktiga överväganden
 - /usr/sap/SID är en symbolisk länk till/hana/shared/SID.
-- På DR-platsen: volymerna och monterings punkterna har kon figurer ATS (markerade som "PROD. DR-instans") för produktion HANA-instansen installation på DR HLI-enheten. 
+- På DR-platsen: volymerna och monterings punkterna har kon figurer ATS (markerade som &quot;PROD. DR-instans") för produktion HANA-instansen installation på DR HLI-enheten. 
 - Noden för den primära platsen synkroniseras med DR-noden med hjälp av HANA-systemreplikering. 
 - [Global Reach](../../../expressroute/expressroute-global-reach.md) används för att länka ExpressRoute-kretsarna tillsammans för att skapa ett privat nätverk mellan dina regionala nätverk.
 
@@ -703,7 +703,7 @@ Följande monterings punkter är förkonfigurerade:
 
 ![Hög tillgänglighet och haveri beredskap med HSR (kostnads optimerad)](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Följande nätverks gränssnitt är förkonfigurerade:
 
 | Logiskt gränssnitt för nätverkskort | SKU-typ | Namn med SUSE OS | Namn med RHEL OS | Användningsfall|
@@ -717,7 +717,7 @@ Följande nätverks gränssnitt är förkonfigurerade:
 | C | TYP II | lokalt\<tenantNo+1> | team0. klient organisation + 1 | Nod-till-lagring |
 | D | TYP II | lokalt\<tenantNo+3> | team0. klient + 3 | Konfigurerad men används inte |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Följande monterings punkter är förkonfigurerade:
 
 | Monterings punkt | Användningsfall | 
@@ -737,9 +737,9 @@ Följande monterings punkter är förkonfigurerade:
 |/hana/log/QA-SID/mnt00001 | Loggfil installation för frågor och svar-SID |
 |/hana/logbackups/QA-SID | Gör om loggar för säkerhets frågor och svar |
 
-### <a name="key-considerations"></a>Viktiga överväganden
+### <a name=&quot;key-considerations&quot;></a>Viktiga överväganden
 - /usr/sap/SID är en symbolisk länk till/hana/shared/SID.
-- På DR-platsen: volymerna och monterings punkterna har kon figurer ATS (markerade som "PROD. DR-instans") för produktion HANA-instansen installation på DR HLI-enheten. 
+- På DR-platsen: volymerna och monterings punkterna har kon figurer ATS (markerade som &quot;PROD. DR-instans") för produktion HANA-instansen installation på DR HLI-enheten. 
 - På DR-platsen: konfigureras data, logg säkerhets kopior, logg och delade volymer för frågor och svar (markerade som "frågor och svar om instans installation") för instans installationen av frågor och svar.
 - Noden för den primära platsen synkroniseras med DR-noden med hjälp av HANA-systemreplikering. 
 - [Global Reach](../../../expressroute/expressroute-global-reach.md) används för att länka ExpressRoute-kretsarna tillsammans för att skapa ett privat nätverk mellan dina regionala nätverk.

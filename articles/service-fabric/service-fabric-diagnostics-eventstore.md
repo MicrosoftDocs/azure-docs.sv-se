@@ -4,10 +4,10 @@ description: Lär dig mer om Azure Service Fabrics EventStore, ett sätt att fö
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.openlocfilehash: ef5049fd934a29fa1d96514c334b13358e6600cf
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105626562"
 ---
 # <a name="eventstore-overview"></a>Översikt över EventStore

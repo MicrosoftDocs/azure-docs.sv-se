@@ -4,10 +4,10 @@ description: Lär dig mer om visualisering och analys av händelser med hjälp a
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.openlocfilehash: 0e84c3c1ab542dc4541ebdcfbc49f45e02458d9c
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105626222"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Händelse analys och visualisering med Application Insights
