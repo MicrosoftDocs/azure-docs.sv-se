@@ -4,12 +4,12 @@ description: Fånga undantag från ASP.NET-appar tillsammans med telemetri för 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 926516075c7d43e6e800403a69ff3ab8f1233fcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88936511"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726999"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostisera undantag i dina webbappar med Application Insights
 Undantag i din Live-webbapp rapporteras av [Application Insights](./app-insights-overview.md). Du kan korrelera misslyckade förfrågningar med undantag och andra händelser på både klienten och servern, så att du snabbt kan diagnostisera orsakerna.
@@ -215,7 +215,7 @@ Ohanterade undantag från kontrollanter resulterar vanligt vis i svar på 500 "i
 ### <a name="prior-versions-support"></a>Stöd för tidigare versioner
 Om du använder MVC 4 (och tidigare) av Application Insights Web SDK 2,5 (och tidigare) kan du läsa följande exempel för att spåra undantag.
 
-Om [customErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) -konfigurationen är `Off` , blir undantag tillgängliga för [http-modulen](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) att samla in. Men om det är `RemoteOnly` (standard) eller, så `On` rensas undantaget och är inte tillgängligt för Application Insights att samlas in automatiskt. Du kan åtgärda detta genom att åsidosätta [klassen system. Web. MVC. HandleErrorAttribute](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)och tillämpa den åsidosatta klassen som visas för de olika MVC-versionerna nedan ([GitHub source](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Om [customErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) -konfigurationen är `Off` , blir undantag tillgängliga för [http-modulen](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) att samla in. Men om det är `RemoteOnly` (standard) eller, så `On` rensas undantaget och är inte tillgängligt för Application Insights att samlas in automatiskt. Du kan åtgärda detta genom att åsidosätta [klassen system. Web. MVC. HandleErrorAttribute](/dotnet/api/system.web.mvc.handleerrorattribute)och tillämpa den åsidosatta klassen som visas för de olika MVC-versionerna nedan ([GitHub source](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;

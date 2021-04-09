@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
 ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104803427"
 ---
 Azure Key Vault tjänst stöder två resurs typer: valv och hanterade HSM: er. I följande två avsnitt beskrivs tjänst gränserna för var och en av dem.

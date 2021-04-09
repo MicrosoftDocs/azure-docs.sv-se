@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b3dd9ae4113c3c9fe4b0547f990dc7e912b99f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634710"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726421"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Vill du arkivera vad som är nytt i Azure Security Center?
 
@@ -298,8 +298,8 @@ För att säkerställa en konsekvent upplevelse för alla användare, oavsett vi
 
 |Enhetlig rekommendation|Ändra beskrivning|
 |----|:----|
-|**En lösning för sårbarhets bedömning ska vara aktive rad på dina virtuella datorer**|Ersätter följande två rekommendationer:<br> **•** Aktivera den inbyggda lösningen för sårbarhets bedömning på virtuella datorer (drivs av Qualys (nu föråldrad) (ingår i standard-nivån)<br> **•** Lösningen för sårbarhets bedömning bör installeras på dina virtuella datorer (nu föråldrade) (standard-och kostnads fria nivåer)|
-|**Säkerhets risker på dina virtuella datorer bör åtgärdas**|Ersätter följande två rekommendationer:<br>**•** Åtgärda säkerhets problem som finns på dina virtuella datorer (drivs av Qualys) (nu föråldrade)<br>**•** Sårbarheter bör åtgärdas av en lösning för sårbarhets bedömning (nu föråldrad)|
+|**En lösning för sårbarhets bedömning ska vara aktive rad på dina virtuella datorer**|Ersätter följande två rekommendationer:<br> Aktivera den inbyggda lösningen för sårbarhets bedömning på virtuella datorer (drivs av Qualys (nu föråldrad) (ingår i standard-nivån)<br> Lösningen för sårbarhets bedömning bör installeras på dina virtuella datorer (nu föråldrade) (standard-och kostnads fria nivåer)|
+|**Säkerhets risker på dina virtuella datorer bör åtgärdas**|Ersätter följande två rekommendationer:<br>Åtgärda säkerhets problem som finns på dina virtuella datorer (drivs av Qualys) (nu föråldrade)<br>Sårbarheter bör åtgärdas av en lösning för sårbarhets bedömning (nu föråldrad)|
 |||
 
 Nu ska du använda samma rekommendation för att distribuera Security Centers tillägg för sårbarhets bedömning eller en privat licensierad lösning ("BYOL") från en partner, till exempel Qualys eller Rapid7.
@@ -312,20 +312,20 @@ Om du har skript, frågor eller automatiseringar som refererar till föregående
 
 ##### <a name="before-august-2020"></a>Före augusti 2020
 
-|Rekommendation|Omfång|
+| Rekommendation|Omfång|
 |----|:----|
 |**Aktivera den inbyggda lösningen för sårbarhets bedömning på virtuella datorer (drivs av Qualys)**<br>Nyckel: 550e890b-e652-4D22-8274-60b3bdb24c63|Inbyggd|
 |**Åtgärda sårbarheter som finns på dina virtuella datorer (drivs av Qualys)**<br>Nyckel: 1195afff-c881-495e-9bc5-1486211ae03f|Inbyggd|
 |**Lösningen för sårbarhets bedömning bör installeras på dina virtuella datorer**<br>Nyckel: 01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
 |**Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning**<br>Nyckel: 71992a2a-D168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
+|||
 
 
 |Policy|Omfång|
 |----|:----|
 |**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Inbyggd|
 |**Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning**<br>Princip-ID: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
+|||
 
 
 ##### <a name="from-august-2020"></a>Från augusti 2020
@@ -334,12 +334,12 @@ Om du har skript, frågor eller automatiseringar som refererar till föregående
 |----|:----|
 |**En lösning för sårbarhets bedömning ska vara aktive rad på dina virtuella datorer**<br>Nyckel: ffff0522-1e88-47fc-8382-2a80ba848f5d|Inbyggda + BYOL|
 |**Säkerhets risker på dina virtuella datorer bör åtgärdas**<br>Nyckel: 1195afff-c881-495e-9bc5-1486211ae03f|Inbyggda + BYOL|
-||||
+|||
 
 |Policy|Omfång|
 |----|:----|
 |[**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Inbyggda + BYOL|
-||||
+|||
 
 
 ### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>Nya AKS säkerhets principer har lagts till i ASC_default initiativ – för användning av privata för hands kunder
@@ -899,7 +899,7 @@ Skydd mot hot för Azure Storage erbjuder nya identifieringar som drivs av Micro
 
 Organisationer med centralt hanterad säkerhet och IT/åtgärder implementerar interna arbets flödes processer för att köra nödvändig åtgärd i organisationen när avvikelser upptäcks i sina miljöer. I många fall är dessa arbets flöden upprepade processer och automatisering kan effektivisera processer i organisationen avsevärt.
 
-Idag introducerar vi en ny funktion i Security Center som gör det möjligt för kunder att skapa automatiserings konfigurationer som använder Azure Logic Apps och för att skapa principer som automatiskt aktiverar dem baserat på vissa ASC-resultat som rekommendationer eller aviseringar. Azure Logic app kan konfigureras för att utföra en anpassad åtgärd som stöds av den stora communityn med Logic app-kopplingar, eller använda en av mallarna som tillhandahålls av Security Center, till exempel att skicka ett e-postmeddelande eller öppna en ServiceNow™-biljett.
+Idag introducerar vi en ny funktion i Security Center som gör det möjligt för kunder att skapa automatiserings konfigurationer som använder Azure Logic Apps och för att skapa principer som automatiskt aktiverar dem baserat på vissa ASC-resultat som rekommendationer eller aviseringar. Azure Logic app kan konfigureras för att utföra en anpassad åtgärd som stöds av den stora communityn med Logic app-kopplingar, eller använda en av mallarna som tillhandahålls av Security Center, till exempel att skicka ett e-postmeddelande eller öppna en ServiceNow- &trade; biljett.
 
 Mer information om automatiska och manuella Security Center-funktioner för att köra arbets flöden finns i [arbets flödes automatisering](workflow-automation.md).
 

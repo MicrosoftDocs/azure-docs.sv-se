@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
 ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105026044"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Utvärderings regler för migrering av SQL Server till Azure SQL-hanterad instans
@@ -67,7 +67,7 @@ Du måste konvertera BULK INSERT-instruktioner som använder lokala filer eller 
 
 Mer information: [CLR-skillnader i Azure SQL-hanterad instans ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
-## <a name="bulk-insert"></a>Massinläsning<a id="BulkInsert"></a>
+## <a name="bulk-insert"></a>Mass infogning<a id="BulkInsert"></a>
 
 **Title: BULK INSERT med en BLOB-datakälla som inte är Azure-datakälla stöds inte i Azure SQL-hanterad instans.**   
 **Kategori**: problem   

@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100650362"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Använd Azure CLI för att hantera kataloger och filer i Azure Data Lake Storage Gen2
@@ -223,6 +223,6 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 ## <a name="see-also"></a>Se även
 
 - [Exempel](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-- [Ge feedback](https://github.com/Azure/azure-cli-extensions/issues)
+- [Lämna feedback](https://github.com/Azure/azure-cli-extensions/issues)
 - [Kända problem](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 - [Använd Azure CLI för att hantera ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)

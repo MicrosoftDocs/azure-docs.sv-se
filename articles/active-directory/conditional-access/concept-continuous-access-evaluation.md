@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 44091cda479f2c0ccbe77bb9989ee2eda4c40f9d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109020"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727101"
 ---
 # <a name="continuous-access-evaluation"></a>Utvärdering av kontinuerlig åtkomst
 
@@ -167,7 +167,7 @@ En förklaring av Office Update-kanaler finns i [Översikt över uppdaterings ka
 
 Princip ändringar som görs av administratörer kan ta upp till en dag att börja gälla. En del optimeringar har gjorts för att minska fördröjningen till två timmar. Det omfattar dock inte alla scenarier än. 
 
-Om det finns en nöd situation och du måste ha uppdaterade principer som ska tillämpas på vissa användare omedelbart, bör du använda PowerShell- [kommandot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) eller "återkalla session" på sidan användar profil för att återkalla användarnas sessioner, vilket ser till att de uppdaterade principerna kommer att tillämpas omedelbart.
+Om det finns en nöd situation och du måste ha uppdaterade principer som ska tillämpas på vissa användare omedelbart, bör du använda PowerShell- [kommandot](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) eller "återkalla session" på sidan användar profil för att återkalla användarnas sessioner, vilket ser till att de uppdaterade principerna kommer att tillämpas omedelbart.
 
 ### <a name="coauthoring-in-office-apps"></a>Samredigering i Office-appar
 
