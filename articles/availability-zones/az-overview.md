@@ -9,10 +9,10 @@ ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104596016"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regioner och Tillgänglighetszoner i Azure
@@ -23,7 +23,7 @@ Microsoft Azure-tjänster är tillgängliga globalt för att driva moln åtgärd
 
 För att bättre förstå regioner och Tillgänglighetszoner i Azure, hjälper det till att förstå viktiga termer eller begrepp.
 
-| Term eller begrepp | Description |
+| Term eller begrepp | Beskrivning |
 | --- | --- |
 | region | En uppsättning data Center som distribueras inom en latens-definierad perimeter och är anslutna via ett dedikerat regionalt nätverk med låg latens. |
 | geography | Ett område i världen som innehåller minst en Azure-region. Geografiska områden definierar en diskret marknad som bevarar data placering och kontroll gränser. Geografiska områden hjälper kunder med specifika behov kring dataplacering och regelefterlevnad att hålla sina data och program nära. De geografiska områdena är feltoleranta för att motstå ett fullständigt fel i regionen via anslutningen till vår dedikerade nätverks infrastruktur med hög kapacitet. |
@@ -110,7 +110,7 @@ Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundlägga
 > | Service Fabric                         | Azure Cognitive Services: tal tjänster         | 
 > | Lagring: frekvent/låg frekvent Blob Storage-nivåer   | Azure Cognitive Services: Textanalys          | 
 > | Lagring: Managed Disks                 | Azure Cognitive Services: Translator              | 
-> | Virtual Machine Scale Sets             | Azure-datautforskaren                               | 
+> | Virtual Machine Scale Sets             | Öppna Azure-datautforskaren                               | 
 > | Virtual Machines                       | Azure Data Share                                  | 
 > | Virtual Machines: Azure-dedikerad värd | Azure Database for MySQL                          | 
 > | Virtual Machines: Av2-Series           | Azure Database for PostgreSQL                     | 
@@ -168,7 +168,7 @@ Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundlägga
 > | Azure Cognitive Services: formulär igenkänning            |
 > | Azure Cognitive Services: Personanpassare               |
 > | Azure-Cognitive Services: QnA Maker                  |
-> | Azure-databas för MariaDB                           |
+> | Azure Database for MariaDB                           |
 > | Azure Database Migration Service                     |
 > | Dedikerad HSM i Azure                                  |
 > | Azure Digital Twins                                  |

@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733307"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -196,15 +196,15 @@ Följande skärmbild visar utdata från det serverdelsprogrammet och visar hur d
 
 ![Skärm bild som visar utdata från Server dels programmet och markerar hur den skickar en uppdatering.](./media/tutorial-device-twins/BackEnd1.png)
 
-## <a name="receive-state-information"></a>Ta emot statusinformation
+## <a name="receive-state-information&quot;></a>Ta emot statusinformation
 
 Ditt serverdelsprogram tar emot statusinformation från en enhet som rapporterade egenskaper. En enhet anger de rapporterade egenskaperna och skickar dem till din hubb. Ett serverdelsprogram kan läsa de aktuella värdena för de rapporterade egenskaperna från enhetstvillingen som lagras i din hubb.
 
-### <a name="send-reported-properties-from-a-device"></a>Skicka rapporterade egenskaper från en enhet
+### <a name=&quot;send-reported-properties-from-a-device&quot;></a>Skicka rapporterade egenskaper från en enhet
 
 Du kan skicka uppdateringar till rapporterade egenskapsvärden som en korrigeringsfil. Följande kodfragment visar en mall för korrigeringsfilen som den simulerade enheten skickar. Den simulerade enheten uppdaterar fälten i korrigeringsfilen innan den skickas till hubben:
 
-[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 "Reported properties patches")]
+[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 &quot;Reported properties patches")]
 
 Den simulerade enheten använder följande funktion för att skicka korrigeringsfilen som innehåller de rapporterade egenskaperna till hubben:
 

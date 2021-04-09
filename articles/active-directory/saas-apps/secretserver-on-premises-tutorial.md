@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
 ms.openlocfilehash: d723bf1ce82e6d443dfa55dda7d33a3a9bfc16b6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101647029"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Självstudie: integrera Secret Server (On-Premises) med Azure Active Directory
@@ -95,7 +95,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **Konfigurera en enskild Sign-On med SAML** klickar du på **Redigera** -ikonen för att öppna dialog rutan för **SAML-signerings certifikat** .
 
-    ![Skärm bild som visar avsnittet "S A M L signerings certifikat" med åtgärden "certifikat (base64") markerat.)](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
+    ![Skärm bild som visar avsnittet "S A M L signerings certifikat&quot; med åtgärden &quot;certifikat (base64") markerat.)](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
 1. Välj **signerings alternativ** som **signerat SAML-svar och kontroll**.
 

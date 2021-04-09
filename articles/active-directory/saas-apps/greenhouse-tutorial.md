@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Självstudie: Azure Active Directory integrering med växthus
@@ -146,7 +146,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     >[!NOTE]
     >Alternativt kan du också ladda upp **XML-** filen med federationsmetadata genom att klicka på alternativet **Välj fil** .
 
-### <a name="create-greenhouse-test-user"></a>Skapa Greenhouse-testanvändare
+### <a name="create-greenhouse-test-user&quot;></a>Skapa Greenhouse-testanvändare
 
 För att Azure AD-användare ska kunna logga in i Greenhouse måste de etableras till Greenhouse. I Greenhouse görs etablering manuellt.
 
@@ -159,7 +159,7 @@ För att Azure AD-användare ska kunna logga in i Greenhouse måste de etableras
 
 2. Gå till **konfigurera > användare > nya användare**
    
-    ![Användare](./media/greenhouse-tutorial/create-user-1.png "Användare")
+    ![Användare](./media/greenhouse-tutorial/create-user-1.png &quot;Användare")
 
 4. I avsnittet **Lägg till nya användare** utför du följande steg:
    
