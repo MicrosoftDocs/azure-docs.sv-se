@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 846d4a259f0fcd204bcad6c898efc999c3765fd3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4d2a345ed49fae2e1d77b3c5da44b305d069874e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962738"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729464"
 ---
 # <a name="azure-stack-edge-2103-release-notes"></a>Viktig information om Azure Stack Edge 2103
 
@@ -98,7 +98,7 @@ Följande tabell innehåller en sammanfattning av kända problem som överförs 
 |**19.3.**|Kubernetes + uppdatera |Tidigare program versioner som 2008-versioner har ett problem med en problem uppdatering som gör att uppdateringen Miss känner till ClusterConnectionException. |Att använda nya versioner bör hjälpa dig att undvika det här problemet. Om du fortfarande ser det här problemet är lösningen att försöka uppgradera igen och bör fungera.|
 |**tjugo**|Internet Explorer|Om utökade säkerhetsfunktioner är aktiverade kanske du inte kan komma åt lokala webb GRÄNSSNITTs sidor. | Inaktivera Förbättrad säkerhet och starta om webbläsaren.|
 |**30.**|Kubernetes-instrumentpanel | *Https* -slutpunkten för Kubernetes-instrumentpanelen med SSL-certifikat stöds inte. | |
-|**22.2.**|Kubernetes |Kubernetes stöder inte ":" i miljö variabel namn som används av .NET-program. Detta krävs också för Event Grid IoT Edge-modulen för att fungera på Azure Stack Edge-enhet och andra program. Mer information finns i [ASP.net Core-dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersätt ":" med dubbel under streck. Mer information finns i [Kubernetes-problem](https://github.com/kubernetes/kubernetes/issues/53201)|
+|**22.2.**|Kubernetes |Kubernetes stöder inte ":" i miljö variabel namn som används av .NET-program. Detta krävs också för Event Grid IoT Edge-modulen för att fungera på Azure Stack Edge-enhet och andra program. Mer information finns i [ASP.net Core-dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration#environment-variables).|Ersätt ":" med dubbel under streck. Mer information finns i [Kubernetes-problem](https://github.com/kubernetes/kubernetes/issues/53201)|
 |**23.** |Azure-båg + Kubernetes-kluster |När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |För att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen, anges `--sync-garbage-collection` i Arc-OperatorParams. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
 |**24.1.**|NFS |Program som använder NFS-resurser monteras på enheten för att skriva data ska använda exklusiv skrivning. Detta säkerställer att skrivningarna skrivs till disken.| |
 |**25.1.**|Beräknings konfiguration |Beräknings konfiguration Miss lyckas i nätverkskonfigurationer där gatewayer eller växlar eller routrar svarar på ARP-begäranden (Address Resolution Protocol) för system som inte finns i nätverket.| |

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123045"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166895"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Distribuera Cloud Services (utökad support) med Azure SDK
 
@@ -156,7 +156,8 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Skapa en offentlig IP-adress och (valfritt) ange egenskapen DNS-etikett för den offentliga IP-adressen. Om du använder en statisk IP-adress måste den refereras som en reserverad IP-adress i tjänst konfigurations filen.
+7. Skapa en offentlig IP-adress och ange egenskapen DNS-etikett för den offentliga IP-adressen. Cloud Services (utökad support) stöder bara [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU offentliga IP-adresser. Standard-SKU offentliga IP-adresser fungerar inte med Cloud Services.
+Om du använder en statisk IP-adress måste du referera till den som en Reserverad IP i tjänst konfigurations filen (. cscfg)
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +172,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Skapa ett nätverks profil objekt och associera en offentlig IP-adress med klient delen av den plattforms belastningsutjämnaren.
+8. Skapa ett nätverks profil objekt och koppla den offentliga IP-adressen till belastningsutjämnarens klient del. Azure-plattformen skapar automatiskt en klassisk "SKU"-belastnings Utjämnings resurs i samma prenumeration som moln tjänst resursen. Belastnings Utjämnings resursen är en skrivskyddad resurs i ARM. Alla uppdateringar av resursen stöds endast via Cloud Service-distributionspaket (. cscfg &. csdef)
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 03/13/2021
+ms.date: 03/29/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955250"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935421"
 ---
 # <a name="azure-ad-built-in-roles"></a>Inbyggda roller i Azure AD
 
@@ -241,7 +241,7 @@ Rollen [Privileged Authentication Administrator](#privileged-authentication-admi
 >* Icke-administratörer som chefer, juridiska konsulter och personal anställda som kan ha till gång till känslig eller privat information.
 
 > [!IMPORTANT]
-> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](/powershell/module/msonline/set-msoluser) kommandot.
+> Den här rollen kan inte hantera MFA-inställningar i den äldre MFA-hanteringsportalen eller OATH-token för maskin vara. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](/powershell/module/msonline/set-msoluser) kommandot.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -267,7 +267,7 @@ Administratörs rollerna för [autentisering administratör](#authentication-adm
 | Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja |
 
 > [!IMPORTANT]
-> Den här rollen kan för närvarande inte hantera MFA-inställningar i den äldre hanterings portalen för MFA.
+> Den här rollen kan inte hantera MFA-inställningar i den äldre MFA-hanteringsportalen eller OATH-token för maskin vara. 
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |

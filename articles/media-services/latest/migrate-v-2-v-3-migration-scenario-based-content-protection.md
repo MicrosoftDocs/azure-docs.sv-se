@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7ef41b76f343d8997feebc4a366deda7ce6a2afa
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644069"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729413"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Vägledning för innehålls skydds scenario-baserad migrering
 
@@ -38,11 +38,11 @@ Under migreringen till v3-API: et kommer du att se att du behöver komma åt vis
 
 Om du till exempel tidigare hade en v2-till gång med ID: t **"OBS! CID: UUID: 8cb39104-122c-496e-9ac5-7f9e2c2547b8"** kommer du att se när du registrerar de gamla v2-resurserna via v3-API: et. namnet kommer nu att vara GUID-delen i slutet (i det här fallet **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"**.)
 
-Du kan fråga de **StreamingLocators** som är kopplade till till gångarna som skapats i v2-API: et med hjälp av den nya v3-metoden [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) på till gångs enheten.  Referera också till .NET-klientens SDK-version av [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet)
+Du kan fråga de **StreamingLocators** som är kopplade till till gångarna som skapats i v2-API: et med hjälp av den nya v3-metoden [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) på till gångs enheten.  Referera också till .NET-klientens SDK-version av [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true)
 
 Resultatet av **ListStreamingLocators** -metoden ger dig **namnet** och **StreamingLocatorId** för lokaliseraren tillsammans med **StreamingPolicyName**.
 
-Om du vill hitta **ContentKeys** som används i din **StreamingLocators** för innehålls skydd kan du anropa metoden [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet) .  
+Om du vill hitta **ContentKeys** som används i din **StreamingLocators** för innehålls skydd kan du anropa metoden [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
 
 Alla **till gångar** som har skapats och publicerats med v2-API: et har både en [innehålls nyckel princip](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) och en innehålls nyckel som har definierats på dem i v3-API: n, i stället för att använda en standard princip för innehålls nycklar i [streaming-principen](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept).
 

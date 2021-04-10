@@ -128,6 +128,12 @@
       href: key-distribution-center-proxy.md
     - name: Konfigurera RD Gateway-rollen
       href: rd-gateway-role.md
+    - name: Starta virtuell dator vid anslutning
+      items:
+        - name: Konfigurera starta virtuell dator vid anslutning
+          href: start-virtual-machine-connect.md
+        - name: Vanliga frågor om att starta VM vid anslutning
+          href: start-virtual-machine-connect-faq.md
 - name: Begrepp
   items:
     - name: Inbyggda roller
@@ -163,7 +169,7 @@
     - name: Vanliga frågor och svar om Windows Virtual Desktop
       href: faq.md
     - name: Vanliga frågor och svar om flera sessioner för Windows 10 Enterprise
-      href: windows-10-multisession-faq.md
+      href: windows-10-multisession-faq.yml
     - name: MSIX-appbifogning
       items:
         - name: Vad är MSIX-appbifogningen?
@@ -236,8 +242,6 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: Teknikcommunityns supportgrupp
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: UserVoice-forumet
-      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Microsoft 365-översikt
       href: 'https://aka.ms/wvdroadmap'
     - name: Azure Resource Manager-mallar

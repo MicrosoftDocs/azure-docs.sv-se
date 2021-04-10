@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104601393"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurera data beständighet för en Premium Azure-cache för Redis-instans
@@ -63,7 +63,7 @@ Persistence skriver Redis-data till ett Azure Storage-konto som du äger och han
    | Inställning      | Föreslaget värde  | Beskrivning |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Säkerhets kopierings frekvens** | List rutan och välj ett intervall för säkerhets kopieringar, alternativ omfattar **15 minuter**, **30 minuter**, **60 minuter**, **6 timmar**, **12 timmar** och **24 timmar**. | Intervallet börjar räkna upp när den tidigare säkerhets kopieringen har slutförts och när en ny säkerhets kopia har initierats. | 
-   | **Lagringskonto** | List rutan och välj ditt lagrings konto. | Du måste välja ett lagrings konto i samma region och prenumeration som cachen, och ett **Premium Storage** konto rekommenderas eftersom Premium Storage har högre genomflöde.  | 
+   | **Lagrings konto** | List rutan och välj ditt lagrings konto. | Du måste välja ett lagrings konto i samma region och prenumeration som cachen, och ett **Premium Storage** konto rekommenderas eftersom Premium Storage har högre genomflöde.  | 
    | **Lagrings nyckel** | List rutan och välj antingen den **primära nyckeln** eller **sekundära nyckeln** som ska användas. | Om lagrings nyckeln för ditt beständiga konto återskapas måste du konfigurera om önskad nyckel i list rutan **lagrings nyckel** . | 
 
     Den första säkerhets kopieringen initieras när intervallet för säkerhets kopierings frekvensen förflutit.

@@ -3,18 +3,20 @@ title: Översikt över Azure Automation Uppdateringshantering
 description: Den här artikeln innehåller en översikt över den Uppdateringshantering funktionen som implementerar uppdateringar för dina Windows-och Linux-datorer.
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950067"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166708"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
 Du kan använda Uppdateringshantering i Azure Automation för att hantera operativ system uppdateringar för virtuella Windows-och Linux-datorer i Azure, i lokala miljöer och i andra moln miljöer. Du kan snabbt bedöma status för tillgängliga uppdateringar på alla agent datorer och hantera processen för att installera nödvändiga uppdateringar för servrar.
+
+Som tjänst leverantör kan du ha registrerat flera kund klienter i [Azure-Lighthouse](../../lighthouse/overview.md). Med Azure-Lighthouse kan du utföra åtgärder i skala över flera Azure Active Directory (Azure AD)-klienter samtidigt, och göra hanterings aktiviteter som Uppdateringshantering mer effektiva över de klienter som du är ansvarig för.
 
 > [!NOTE]
 > Du kan inte använda en dator som kon figurer ATS med Uppdateringshantering för att köra anpassade skript från Azure Automation. Den här datorn kan bara köra det Microsoft-signerade uppdaterings skriptet.
@@ -24,7 +26,7 @@ Du kan använda Uppdateringshantering i Azure Automation för att hantera operat
 
 Om du vill hämta och installera tillgängliga *kritiska* uppdateringar och *säkerhets* korrigeringar automatiskt på den virtuella Azure-datorn kan du läsa om [Automatisk uppdatering av virtuella datorer](../../virtual-machines/automatic-vm-guest-patching.md) för virtuella Windows-datorer.
 
-Innan du distribuerar Uppdateringshantering och aktiverar dina datorer för hantering ska du se till att du förstår informationen i följande avsnitt.  
+Innan du distribuerar Uppdateringshantering och aktiverar dina datorer för hantering ska du se till att du förstår informationen i följande avsnitt.
 
 ## <a name="about-update-management"></a>Om Uppdateringshantering
 
@@ -40,7 +42,7 @@ I följande diagram illustreras hur Uppdateringshantering utvärderar och tillä
 
 ![Uppdateringshantering arbets flöde](./media/overview/update-mgmt-updateworkflow.png)
 
-Uppdateringshantering kan användas för att distribuera internt till datorer i flera prenumerationer i samma klient organisation.
+Uppdateringshantering kan användas för att distribuera internt till datorer i flera prenumerationer i samma klient organisation, eller mellan klienter som använder [Azure-delegerad resurs hantering](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 När ett paket har frigjorts tar det 2 till 3 timmar innan korrigeringen visas för Linux-datorer för utvärdering. För Windows-datorer tar det 12 till 15 timmar innan korrigeringen visas för utvärderingen när den har släppts. När en dator har slutfört en genomsökning för att uppdatera kompatibilitet, vidarebefordrar agenten informationen i bulk till Azure Monitor loggar. På en Windows-dator körs kompatibilitetskontroll var 12: e timme som standard. För en Linux-dator utförs genomsökningen varje timme som standard. Om den Log Analytics agenten startas om startas en kompatibilitetskontroll inom 15 minuter.
 
@@ -131,7 +133,7 @@ Virtuella datorer som skapats från RHEL-avbildningar (på begäran Red Hat Ente
 
 ## <a name="permissions"></a>Behörigheter
 
-Om du vill skapa och hantera uppdaterings distributioner måste du ha vissa behörigheter. Mer information om dessa behörigheter finns i [rollbaserad åtkomst – uppdateringshantering](../automation-role-based-access-control.md#update-management-permissions).
+Om du vill skapa och hantera uppdaterings distributioner måste du ha vissa behörigheter. Mer information om dessa behörigheter finns i [rollbaserad åtkomst uppdateringshantering](../automation-role-based-access-control.md#update-management-permissions).
 
 ## <a name="update-management-components"></a>Uppdateringshantering-komponenter
 

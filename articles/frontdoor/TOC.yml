@@ -49,7 +49,7 @@
     - name: DDoS-skydd
       href: front-door-ddos.md
     - name: Vanliga frågor och svar om Front Door
-      href: front-door-faq.md
+      href: front-door-faq.yml
     - name: Geo-filtrering
       href: front-door-geo-filtering.md
     - name: Hälsotillståndsavsökningar

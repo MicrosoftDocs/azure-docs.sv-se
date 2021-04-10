@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99096448"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166759"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Skapa ett IoT Edge-modulerbjudande
 
@@ -172,7 +172,7 @@ Ge kompletterande online-dokument om ditt erbjudande. Du kan lägga till upp til
 - **Title** – kunder kommer att se rubriken på ditt erbjudandes informations sida.
 - **Länk (URL)** – ange en länk till kunder för att visa ditt online-dokument. Länken måste börja med `http://` eller `https://` .
 
-Se till att lägga till minst en länk till din dokumentation och en länk till de kompatibla IoT Edge enheterna från [Azure IoT-katalogen](https://catalog.azureiotsolutions.com/).
+Se till att lägga till minst en länk till din dokumentation och en länk till de kompatibla IoT Edge enheterna från [Azure IoT-katalogen](https://devicecatalog.azure.com/).
 
 ### <a name="contact-information"></a>Kontaktinformation
 

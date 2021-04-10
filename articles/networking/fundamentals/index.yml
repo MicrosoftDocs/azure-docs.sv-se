@@ -1,0 +1,133 @@
+### YamlMime:Landing
+title: Dokumentation om Azure Networks fundament ALS
+summary: Med Azures nätverks tjänster kan du få åtkomst till Anslut Azure-resurser och lokala resurser, skydda, leverera och övervaka dina program i Azure-nätverket.
+metadata:
+  title: Dokumentation om Azure Networks fundament ALS
+  description: Lär dig mer om nätverks tjänster i Azure som ger anslutning mellan Azure-resurser, anslutning från ett lokalt nätverk till Azure-resurser, hjälper dig att skydda dina nätverks resurser, skala program leverans och hjälpa till att övervaka ditt nätverk.
+  ms.service: networking
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 03/30/2021
+  ms.openlocfilehash: 69017e082491b784ada194a0d0bab7ac6ed50274
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106166589"
+landingContent:
+- title: Om Azure-nätverk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure-nätverkstjänster?
+      url: networking-overview.md
+  - linkListType: concept
+    links:
+    - text: Vad är Microsoft Global Network?
+      url: ../microsoft-global-network.md
+  - linkListType: learn
+    links:
+    - text: Bygg din nätverks infrastruktur i Azure
+      url: /learn/paths/architect-network-infrastructure/
+- title: Kom igång
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure Virtual Network?
+      url: ../../virtual-network/virtual-networks-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Skapa ett virtuellt nätverk
+      url: ../../virtual-network/quick-create-portal.md
+- title: Kommunicera med Internet
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är en offentlig IP-adress?
+      url: ../../virtual-network/virtual-networks-overview.md
+    - text: Vad är NAT-gateway för virtuella nätverk?
+      url: ../../virtual-network/nat-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Skapa en offentlig IP-adress
+      url: ../../virtual-network/create-public-ip-portal.md
+    - text: Skapa en NAT-gateway
+      url: ../../virtual-network/tutorial-create-nat-gateway-portal.md
+- title: Ansluta virtuella nätverk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Virtuell nätverkspeering
+      url: ../../virtual-network/virtual-network-peering-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Ansluta virtuella nätverk med peering för virtuellt nätverk
+      url: ../../virtual-network/tutorial-connect-virtual-networks-portal.md
+- title: Privat åtkomst till nätverks resurser
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är en privat Azure-slutpunkt?
+      url: ../../private-link/private-endpoint-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Skapa en privat slutpunkt
+      url: ../../private-link/create-private-endpoint-portal.md
+- title: Belastningsutjämna dina program
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Lastbalanserare för nätverk
+      url: ../../load-balancer/load-balancer-overview.md
+    - text: Skydda moln-CDN och global belastningsutjämnare
+      url: ../../frontdoor/front-door-overview.md
+    - text: Lastbalanserare för webbapp
+      url: ../../application-gateway/overview.md
+    - text: DNS-baserad belastningsutjämnare
+      url: ../../traffic-manager/traffic-manager-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Skapa en utjämning av nätverks belastning
+      url: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md
+    - text: Distribuera en säker moln-CDN och global belastningsutjämnare
+      url: ../../frontdoor/quickstart-create-front-door.md
+    - text: Skapa en belastningsutjämnare för webb program
+      url: ../../application-gateway/quick-create-portal.md
+    - text: Skapa en DNS-baserad belastningsutjämnare
+      url: ../../traffic-manager/quickstart-create-traffic-manager-profile.md
+- title: Skydda ditt virtuella nätverk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Nätverkssäkerhetsgrupper
+      url: ../../virtual-network/network-security-groups-overview.md
+    - text: Azure DDoS Protection Standard
+      url: ../../ddos-protection/ddos-protection-overview.md
+    - text: Azure Firewall
+      url: ../../firewall/overview.md
+  - linkListType: tutorial
+    links:
+    - text: Begränsa nätverksåtkomst till PaaS-resurser
+      url: ../../virtual-network/tutorial-restrict-network-access-to-resources.md
+    - text: Skapa och konfigurera Azure DDoS Protection standard
+      url: ../../ddos-protection/manage-ddos-protection.md
+    - text: Distribuera och konfigurera Azure Firewall
+      url: ../../firewall/tutorial-firewall-deploy-portal.md
+- title: Ansluta lokala nätverk till virtuella nätverk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: VPN-anslutningar – VPN Gateway
+      url: ../../vpn-gateway/vpn-gateway-about-vpngateways.md
+    - text: Dedikerade privata anslutningar – ExpressRoute
+      url: ../../expressroute/expressroute-introduction.md
+    - text: VPN och dedikerade privata anslutningar – virtuellt WAN
+      url: ../../virtual-wan/virtual-wan-about.md
+  - linkListType: tutorial
+    links:
+    - text: Ansluta lokalt nätverk till ett virtuellt nätverk – VPN-kryptering
+      url: ../../vpn-gateway/tutorial-site-to-site-portal.md
+    - text: Utöka det lokala nätverket till Azure med ExpressRoute
+      url: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md

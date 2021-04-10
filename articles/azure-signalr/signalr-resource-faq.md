@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3b84756f390930be5124c6bda54d07078d29053
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579310"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166929"
 ---
 # <a name="azure-signalr-service-faq"></a>Vanliga frågor och svar Azure SignalR Service
 
@@ -62,13 +62,13 @@ För nya program ska endast standard läge och Server lös läge användas. Den 
 
 Klassiskt läge är utformat för bakåtkompatibilitet för befintliga program, så bör inte användas för nya program.
 
-Mer information om tjänst läge i [det här dokumentet](concept-service-mode.md).
+Mer information om tjänst läge finns [i tjänst läge i Azure SignalR-tjänsten](concept-service-mode.md).
 
 ## <a name="can-i-send-message-from-client-in-serverless-mode"></a>Kan jag skicka ett meddelande från klienten i Server lös läge?
 
 Du kan skicka ett meddelande från klienten om du konfigurerar uppströms i signal instansen. Överordnad är en uppsättning slut punkter som kan ta emot meddelanden och anslutnings händelser från SignalR-tjänsten. Om ingen överordnad uppladdning har kon figurer ATS kommer meddelanden från klienten att ignoreras.
 
-Mer information om överordnad finns i [det här dokumentet](concept-upstream.md).
+Mer information om överordnade finns i inställningar för [överordnade strömmar](concept-upstream.md).
 
 Överström är för närvarande en offentlig för hands version.
 

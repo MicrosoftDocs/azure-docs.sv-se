@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
 ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105105880"
 ---
 1. I [Azure Portal](https://portal.azure.com/)väljer du din Azure Stack Edge-resurs och går sedan till **översikten**. Enheten bör vara online. Gå till **Cloud Storage gateway > lagrings konton**.

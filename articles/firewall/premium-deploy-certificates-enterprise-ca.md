@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/18/2021
 ms.author: victorh
 ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104590474"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Distribuera och konfigurera Enterprise CA-certifikat för för hands versionen av Azure Firewall

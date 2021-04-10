@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/26/2020
-ms.openlocfilehash: 77df97eaecc59bc9160bcf63ae5d3904cd79ec79
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 04/02/2021
+ms.openlocfilehash: e518ea83608472753d3463a980aae169b291d4de
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215195"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221304"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Självstudie: träna och distribuera en modell från CLI
 
@@ -84,20 +84,6 @@ az login
 Om CLI kan öppna din standardwebbläsare så sker det och en inloggningssida läses in. Annars måste du öppna en webbläsare och följa anvisningarna på kommando raden. Anvisningarna omfattar att bläddra till [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och ange en auktoriseringskod.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
-
-## <a name="install-the-machine-learning-extension"></a>Installera Machine Learning-tillägget
-
-Om du vill installera Machine Learning-tillägget använder du följande kommando:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-Om du får ett meddelande om att tillägget redan är installerat använder du följande kommando för att uppdatera till den senaste versionen:
-
-```azurecli-interactive
-az extension update -n azure-cli-ml
-```
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
