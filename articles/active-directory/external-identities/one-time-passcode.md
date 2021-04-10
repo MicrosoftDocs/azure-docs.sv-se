@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688475"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-postautentisering med eng ång slö sen ord
@@ -66,13 +66,13 @@ Du kan se om en gäst användare autentiseras med eng ång slö sen ord genom at
 > [!NOTE]
 > När en användare löser ett eng ång slö sen ord och senare hämtar ett MSA, ett Azure AD-konto eller ett annat federerat konto, fortsätter de att autentiseras med ett eng ång slö sen ord. Om du vill uppdatera deras autentiseringsmetod kan du ta bort deras gäst användar konto och bjuda in dem på samma sätt.
 
-### <a name="example"></a>Exempel
+### <a name="example&quot;></a>Exempel
 
 Gäst användare teri@gmail.com bjuds in till Fabrikam, som inte har konfigurerat Google Federation. Teri har inte någon Microsoft-konto. De får ett eng ång slö sen ord för autentisering.
 
-## <a name="disable-email-one-time-passcode"></a>Inaktivera e-post med eng ång slö sen ord
+## <a name=&quot;disable-email-one-time-passcode&quot;></a>Inaktivera e-post med eng ång slö sen ord
 
-Från och med 1 oktober 2021 aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vid detta tillfälle kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade ("virus" eller "just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den.
+Från och med 1 oktober 2021 aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vid detta tillfälle kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade (&quot;virus&quot; eller &quot;just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den.
 
 > [!NOTE]
 >

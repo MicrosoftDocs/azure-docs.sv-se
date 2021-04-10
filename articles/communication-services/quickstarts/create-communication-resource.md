@@ -10,16 +10,14 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: bdfd4dfef57721a24b4c6981ae653ab4f17562fa
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644726"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726779"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Snabb start: skapa och hantera kommunikations tjänst resurser
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med .net Management SDK. Med SDK för hantering och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i SDK: erna är tillgängliga i Azure Portal. 
 

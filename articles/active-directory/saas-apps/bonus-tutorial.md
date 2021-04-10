@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Självstudie: Azure Active Directory integration med bonus
@@ -124,13 +124,13 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med bon
 
     c. Utloggnings-URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Konfigurera bonus bara enkla Sign-On
+### <a name="configure-bonusly-single-sign-on&quot;></a>Konfigurera bonus bara enkla Sign-On
 
 1. Logga in på din **bonus** klient i ett annat webbläsarfönster.
 
 1. I verktygsfältet högst upp klickar du på **Inställningar** och väljer sedan **integreringar och appar**.
 
-    ![Bonus för sociala avdelningen](./media/bonus-tutorial/ic773686.png "Bonusly")
+    ![Bonus för sociala avdelningen](./media/bonus-tutorial/ic773686.png &quot;Bonusly")
 1. Under **enkel inloggning** väljer du **SAML**.
 
 1. Utför följande steg på sidan **SAML** -dialog:
@@ -197,7 +197,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-bonusly-test-user"></a>Skapa en bonus test användare
+### <a name="create-bonusly-test-user&quot;></a>Skapa en bonus test användare
 
 För att Azure AD-användare ska kunna logga in på bonus måste de tillhandahållas i bonus. När det gäller bonus är etableringen en manuell uppgift.
 
@@ -210,7 +210,7 @@ För att Azure AD-användare ska kunna logga in på bonus måste de tillhandahå
 
 1. Klicka på **Inställningar**.
 
-    ![Inställningar](./media/bonus-tutorial/ic781041.png "Inställningar")
+    ![Inställningar](./media/bonus-tutorial/ic781041.png &quot;Inställningar")
 
 1. Klicka på fliken **användare och bonusar** .
 

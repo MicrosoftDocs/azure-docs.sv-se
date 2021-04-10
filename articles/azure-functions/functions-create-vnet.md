@@ -4,10 +4,10 @@ description: Den här självstudien visar hur du ansluter en funktion till ett v
 ms.topic: article
 ms.date: 2/22/2021
 ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027422"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Självstudie: integrera Azure Functions med ett virtuellt Azure-nätverk med hjälp av privata slut punkter
@@ -87,7 +87,7 @@ Dina virtuella nätverk behöver ett lagrings konto som är skilt från det som 
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
     | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | mysecurestorage| Namnet på det lagrings konto som den privata slut punkten ska tillämpas på. |
-    | **[Nationella](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
 
 1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**.
 
@@ -104,7 +104,7 @@ Dina virtuella nätverk behöver ett lagrings konto som är skilt från det som 
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. |
     | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | myServiceBus| Namnet på den Service Bus som den privata slut punkten ska tillämpas på. |
-    | **[Nationella](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
     | **Prisnivå** | Premium | Välj den här nivån om du vill använda privata slut punkter med Azure Service Bus. |
 
 1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**.
@@ -130,7 +130,7 @@ Skapa det virtuella nätverk som Function-appen ska integreras med:
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
     | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | myVirtualNet| Namnet på det virtuella nätverk som din Function-app ska ansluta till. |
-    | **[Nationella](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade din Function-app. |
 
 1. På fliken **IP-adresser** väljer du **Lägg till undernät**. Använd följande tabell för att konfigurera under näts inställningarna.
 
@@ -162,7 +162,7 @@ Skapa privata slut punkter för Azure Files lagring och Azure Blob Storage genom
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
     | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. | |
     | **Namn** | fil slut punkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
-    | **[Nationella](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region där du skapade ditt lagrings konto. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region där du skapade ditt lagrings konto. |
 
 1. På fliken **resurs** använder du inställningarna för den privata slut punkten som visas i följande tabell.
 
@@ -203,7 +203,7 @@ Skapa den privata slut punkten för att låsa din Service Bus:
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
     | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Resurs gruppen som du skapade med din Function-app. |
     | **Namn** | SB-slutpunkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
-    | **[Nationella](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade ditt lagrings konto. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Den region där du skapade ditt lagrings konto. |
 
 1. På fliken **resurs** använder du inställningarna för den privata slut punkten som visas i följande tabell.
 
