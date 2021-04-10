@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2369a6380c7b74302d32366d0604fca616fc3ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a84ed5a6f80b038ced2077fe3c038bd9801ca033
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732949"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Felsöka Azure våren Cloud i virtuella nätverk
 
@@ -38,7 +38,6 @@ Information om hur du konfigurerar Azure våren Cloud Service-instansen med hjä
 | Felmeddelande | Så här löser du |
 |------|------|
 | Resurser som skapats av Azure våren Cloud tilläts inte av någon princip. | Nätverks resurser kommer att skapas när du distribuerar Azure våren-molnet i ditt eget virtuella nätverk. Kontrol lera om du har [Azure policy](../governance/policy/overview.md) definierat för att blockera de här genereringarna. Det gick inte att skapa de resurser som har skapats i fel meddelandet. |
-| Tillhandahållna undernät har associerats med routningstabeller. ta bort kopplingen mellan dem. | För närvarande finns det inte stöd för att distribuera Azure våren Cloud i undernät som är kopplade till befintliga routningstabeller, koppla bort dem och försöka igen. |
 | Nödvändig trafik är inte allowlisted. | Se [kund ansvar för att köra Azure våren Cloud i VNet](spring-cloud-vnet-customer-responsibilities.md) för att säkerställa att nödvändig trafik är allowlisted. |
 
 ## <a name="my-application-cant-be-registered"></a>Det går inte att registrera mitt program

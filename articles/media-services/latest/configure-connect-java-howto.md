@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06923d7c198edc324d85b726cf91694d8cf7e1ca
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94748190"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961361"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Ansluta till Media Services v3 API-Java
 
@@ -37,7 +37,7 @@ I den här artikeln används Visual Studio Code för att utveckla exempel appen.
    - Apache maven
    - Java Extension Pack
 - Se till att ställa in `JAVA_HOME` och `PATH` miljövariabler.
-- [Skapa ett Media Services-konto](./create-account-howto.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
+- [Skapa ett Media Services-konto](./account-create-how-to.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
 - Följ stegen i avsnittet [åtkomst-API: er](./access-api-howto.md) . Registrera prenumerations-ID, program-ID (klient-ID), den autentiseringsnyckel (hemlighet) och klient-ID som du behöver i ett senare steg.
 
 Granska även:

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d01e125ef3e905191d76c9f4888e790958211dff
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 37e508a0f4af940773a92271075239c204e52834
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607328"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010721"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -74,8 +74,8 @@ Följande tabell visar vilka typer av lagrings konton som stöder ZRS i vilka re
 | Typ av lagringskonto | Regioner som stöds | Tjänster som stöds |
 |--|--|--|
 | Allmänt-syfte v2<sup>1</sup> | Centralafrika Sydafrika, norra<br /> (Asien och stillahavsområdet) Asien, östra<br /> (Asien och stillahavsområdet) Sydostasien<br /> (Asien och stillahavsområdet) Östra Australien<br /> (Asien och stillahavsområdet) Centrala Indien<br /> (Asien och stillahavsområdet) Japan, östra<br /> (Asien och stillahavsområdet) Korea, centrala<br /> Kanadas Centrala Kanada<br /> Östeuropa Nord Europa<br /> Östeuropa Västeuropa<br /> Östeuropa Centrala Frankrike<br /> Östeuropa Tyskland, västra centrala<br /> Östeuropa Östra Norge<br /> Östeuropa Schweiz, norra<br /> Östeuropa Storbritannien, södra<br /> (Mellanöstern) Förenade Arabemiraten, norra<br /> (Sydamerika) Södra Brasilien<br /> USA USA, centrala<br /> (USA) USA, östra<br /> USA USA, östra 2<br /> USA Norra centrala USA<br />USA Södra centrala USA<br /> USA Västra USA<br /> USA USA, västra 2 | Blockblobar<br /> Page blobbar<sup>2</sup><br /> Fil resurser (standard)<br /> Tables<br /> Köer<br /> |
-| BlockBlobStorage<sup>1</sup> | Centralafrika Sydafrika, norra<br /> (Asien och stillahavsområdet) Asien, östra<br /> (Asien och stillahavsområdet) Sydostasien<br /> (Asien och stillahavsområdet) Östra Australien<br /> (Asien och stillahavsområdet) Centrala Indien<br /> (Asien och stillahavsområdet) Japan, östra<br /> (Asien och stillahavsområdet) Korea, centrala<br /> Kanadas Centrala Kanada<br /> Östeuropa Nord Europa<br /> Östeuropa Västeuropa<br /> Östeuropa Centrala Frankrike<br /> Östeuropa Tyskland, västra centrala<br /> Östeuropa Östra Norge<br /> Östeuropa Schweiz, norra<br /> Östeuropa Storbritannien, södra<br /> (Mellanöstern) Förenade Arabemiraten, norra<br /> (Sydamerika) Södra Brasilien<br /> USA USA, centrala<br /> (USA) USA, östra<br /> USA USA, östra 2<br /> USA Norra centrala USA<br />USA Södra centrala USA<br /> USA Västra USA<br /> USA USA, västra 2 | Endast Premium block-blobbar |
-| FileStorage | Centralafrika Sydafrika, norra<br /> (Asien och stillahavsområdet) Asien, östra<br /> (Asien och stillahavsområdet) Sydostasien<br /> (Asien och stillahavsområdet) Östra Australien<br /> (Asien och stillahavsområdet) Centrala Indien<br /> (Asien och stillahavsområdet) Japan, östra<br /> (Asien och stillahavsområdet) Korea, centrala<br /> Kanadas Centrala Kanada<br /> Östeuropa Nord Europa<br /> Östeuropa Västeuropa<br /> Östeuropa Centrala Frankrike<br /> Östeuropa Tyskland, västra centrala<br /> Östeuropa Östra Norge<br /> Östeuropa Schweiz, norra<br /> Östeuropa Storbritannien, södra<br /> (Mellanöstern) Förenade Arabemiraten, norra<br /> (Sydamerika) Södra Brasilien<br /> USA USA, centrala<br /> (USA) USA, östra<br /> USA USA, östra 2<br /> USA Norra centrala USA<br />USA Södra centrala USA<br /> USA Västra USA<br /> USA USA, västra 2 | Premium-filer endast resurser |
+| BlockBlobStorage<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Frankrike, centrala <br /> Japan, östra<br /> Storbritannien, södra <br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2| Endast Premium block-blobbar |
+| FileStorage | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Frankrike, centrala <br /> Japan, östra<br /> Storbritannien, södra <br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2 | Premium-filer endast resurser |
 
 <sup>1</sup> Arkiv nivån stöds för närvarande inte för ZRS-konton.<br />
 <sup>2</sup> lagrings konton som innehåller Azure Managed disks för virtuella datorer använder alltid LRS. Azure-ohanterade diskar bör också använda LRS. Det går att skapa ett lagrings konto för Azure unmanaged disks som använder GRS, men det rekommenderas inte på grund av potentiella problem med konsekvens över asynkron geo-replikering. Varken hanterade eller ohanterade diskar har stöd för ZRS eller GZRS. Mer information om hanterade diskar finns i [prissättning för Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -199,7 +199,7 @@ Följande tabell visar om dina data är beständiga och tillgängliga i ett spec
 | Avbrott-scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | En nod i ett Data Center blir otillgänglig | Ja | Ja | Ja | Ja |
-| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Inga | Ja | Ja<sup>1</sup> | Yes |
+| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Inga | Ja | Ja<sup>1</sup> | Ja |
 | Ett områdes omfattande avbrott uppstår i den primära regionen | Inga | Inga | Ja<sup>1</sup> | Ja<sup>1</sup> |
 | Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Inga | Inga | Ja (med RA-GRS) | Ja (med RA-GZRS) |
 

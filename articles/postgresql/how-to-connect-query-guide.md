@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
 ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604149"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Översikt av anslutning och frågekörning för Azure Database for PostgreSQL – enskild server
@@ -20,7 +20,7 @@ Följande dokument innehåller länkar till exempel som visar hur du ansluter oc
 
 ## <a name="quickstarts"></a>Snabbstarter
 
-| Snabbstart | Description |
+| Snabbstart | Beskrivning |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Du kan använda pgAdmin för att ansluta till servern och fören klar skapandet, underhållet och användningen av databas objekt.|
 |[psql i Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Den här artikeln visar hur du kör [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) i [Azure Cloud Shell](../cloud-shell/overview.md) för att ansluta till servern och sedan köra instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. Du kan köra **psql** om det är installerat i utvecklings miljön|

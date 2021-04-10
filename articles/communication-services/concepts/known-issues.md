@@ -8,15 +8,15 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: 7be40ac5f6cda7a81d68ca0b17f377891dd58480
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: b9ed71a8fc9346ecd454eba98dcbb3b13186eba2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606053"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276050"
 ---
-# <a name="known-issues-azure-communication-services-sdks"></a>Kända problem: SDK: er för Azure Communication Services
-Den här artikeln innehåller information om begränsningar och kända problem som rör SDK: er för Azure Communication Services.
+# <a name="known-issues-azure-communication-services-calling-sdks"></a>Kända problem: Azure Communication Services som anropar SDK: er
+Den här artikeln innehåller information om begränsningar och kända problem som rör Azure Communication Services som anropar SDK: er.
 
 > [!IMPORTANT]
 > Det finns flera faktorer som kan påverka kvaliteten på din anrops upplevelse. Se dokumentationen för **[nätverks krav](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)** för att lära dig mer om nätverks konfiguration för kommunikations tjänster och testa bästa praxis.
@@ -47,7 +47,10 @@ Program kan inte räkna upp/välja MIC/talare-enheter (som Bluetooth) i Safari i
 Om du använder Safari på macOS kommer din app inte att kunna räkna upp/välja högtalare via kommunikations tjänsterna Enhetshanteraren. I det här scenariot måste enheter väljas via operativ systemet. Om du använder Chrome på macOS kan appen räkna upp/välja enheter via kommunikations tjänsterna Enhetshanteraren.
 
 ### <a name="audio-connectivity-is-lost-when-receiving-sms-messages-or-calls-during-an-ongoing-voip-call"></a>Ljud anslutningen försvinner när SMS-meddelanden eller samtal tas emot under ett pågående VoIP-anrop
-Mobila webbläsare upprätthåller inte anslutningen i bakgrunds tillstånd. Detta kan leda till en försämrad anrops upplevelse om VoIP-anropet avbröts av en händelse som skickar programmet till bakgrunden.
+Det här problemet kan uppstå på grund av flera orsaker:
+
+- Vissa mobila webbläsare upprätthåller inte anslutningen i bakgrunds tillstånd. Detta kan leda till en försämrad anrops upplevelse om VoIP-anropet avbröts av en händelse som skickar programmet till bakgrunden. 
+- Ibland fångar ett SMS-eller PSTN-samtal ljud ljudet och släpper inte tillbaka ljudet till VoIP-anropet. Apple har åtgärdat det här problemet i iOS-versioner 14.4.1 +. 
 
 <br/>Klient bibliotek: anropar (Java Script)
 <br/>Webbläsare: Safari, Chrome
@@ -95,9 +98,16 @@ Om användarna bestämmer sig för att snabbt aktivera och inaktivera video samt
  - Om användaren startar med ljud och sedan startar och stoppar video medan anropet är i `Connecting` läget.
  - Om användaren startar med ljud och sedan startar och stoppar video medan anropet är i `Lobby` läget.
 
-
 #### <a name="possible-causes"></a>Möjliga orsaker
 Under undersökning.
+
+### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>Räkna upp/komma åt enheter för Safari på MacOS och iOS 
+Om åtkomst till enheter beviljas återställs enhets behörigheter efter en viss tid. Safari på MacOS och på iOS behåller inte behörigheter under lång tid om det inte finns någon data ström som förvärv ATS. Det enklaste sättet att undvika detta är att anropa API för DeviceManager. askDevicePermission () innan du anropar enhets hanterarens API: er för enhets uppräkning (DeviceManager. getCameras (), DeviceManager. getSpeakers () och DeviceManager. getMicrophones ()). Om behörigheterna finns där kommer användaren inte att se något, om inte, kommer att frågas igen.
+
+<br/>Enheter som påverkas: iPhone
+<br/>Klient bibliotek: anropar (Java Script)
+<br/>Webbläsare: Safari
+<br/>Operativ system: iOS
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>Ibland tar det lång tid att rendera deltagares videor
 Under ett pågående grupp anrop skickar _användaren en_ video och sedan ansluter _användare B_ till anropet. Ibland kan användare B inte se video från användare A, eller användarens video börjar återges efter en lång fördröjning. Det här problemet kan bero på en nätverks miljö som kräver ytterligare konfiguration. I dokumentationen för [nätverks krav](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements) hittar du vägledning för nätverks konfiguration.

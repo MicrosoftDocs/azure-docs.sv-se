@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591885"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010799"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Ansluta till Azure Database for MySQL med dbForge Studio för MySQL
 
@@ -78,9 +78,7 @@ På grund av vårt arbete med migreringen av databasen har *world_x* databasen v
 dbForge Studio för MySQL införlivar några verktyg som tillåter migrering av MySQL-databaser, MySQL-scheman och/eller data till Azure. Valet av funktioner beror på dina behov och kraven för ditt projekt. Om du behöver flytta en databas selektivt, det vill säga migrera vissa MySQL-tabeller till Azure, är det bäst att använda schema-och data jämförelse funktioner.
 I det här exemplet migrerar vi den *världs* databas som finns på MySQL-servern till Azure Database for MySQL. Logiken bakom migreringsprocessen med schema-och data jämförelse funktionen i dbForge Studio för MySQL är att skapa en tom databas i Azure Database for MySQL, synkronisera den med den nödvändiga MySQL-databasen först med schema jämförelse verktyget och sedan använda verktyget data jämförelse. På så sätt flyttas MySQL-scheman och data korrekt till Azure.
 
-### <a name="connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Anslut till Azure Database for MySQL och skapa en tom databas
-
-Anslut till en Azure Database for MySQL och skapa en tom databas.
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Steg 1. Anslut till Azure Database for MySQL och skapa en tom databas
 
 ### <a name="step-2-schema-synchronization"></a>Steg 2. Schema-synkronisering
 

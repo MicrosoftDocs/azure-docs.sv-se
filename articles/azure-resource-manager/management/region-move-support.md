@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9229fca9f98aac4ca628c0bb25c13c9ba1989626
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100094023"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962602"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Stöd för att flytta Azure-resurser mellan regioner
 
@@ -503,7 +503,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | Resurstyp | Flytta region | 
 > | ------------- | ----------- |
 > | funktioner | Inga | 
-> | domän namn | Ja | Inga |
+> | domän namn | Inga |
 > | quotas | Inga | 
 > | resourcetypes | Inga |
 > | validatesubscriptionmoveavailability | Inga | 
@@ -1061,7 +1061,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > [!div class="mx-tableFixed"]
 > | Resurstyp | Flytta region | 
 > | ------------- | ----------- |
-> | konton | Nej. [Läs mer](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region).
+> | konton | Nej. [Läs mer](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region). |
 > | actiongroups |  Inga | 
 > | activitylogalerts | Inga | 
 > | alertrules |  Inga | 
@@ -1073,12 +1073,12 @@ Hoppa till ett namn område för en resurs leverantör:
 > | diagnosticsettingscategories | Inga | 
 > | eventcategories | Inga | 
 > | eventtypes | Inga | 
-> | extendeddiagnosticsettings | Inga | |
+> | extendeddiagnosticsettings | Inga |
 > | guestdiagnosticsettings | Inga | 
 > | listmigrationdate | Inga | 
 > | logdefinitions | Inga | 
 > | logprofiles | Inga | 
-> | loggar | Inga | Inga |
+> | loggar | Inga |
 > | metricalerts | Inga | 
 > | metricbaselines | Inga | 
 > | metricbatch | Inga | 
@@ -1399,7 +1399,8 @@ Hoppa till ett namn område för en resurs leverantör:
 > | networkwatchers / pingmeshes |  Inga | 
 > | p2svpngateways | Inga | 
 > | privatednszones |  Inga |  
-> | privatednszones / virtualnetworklinks | Inga |> | privatednszonesinternal | Inga |
+> | privatednszones / virtualnetworklinks | Inga |
+> | privatednszonesinternal | Inga |
 > | privateendpointredirectmaps | Inga |
 > | privateendpoints | Inga | 
 > | privatelinkservices | Inga | 

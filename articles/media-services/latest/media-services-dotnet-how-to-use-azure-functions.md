@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e0bb8ccf3be6038c228034a55cd15cadcebddbb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 389ad34bb856675dfabd761507ed07cc722c032a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572492"
+ms.locfileid: "105961684"
 ---
 # <a name="develop-azure-functions-with-media-services-v3"></a>Utveckla Azure Functions med Media Services v3
 
@@ -29,7 +29,7 @@ Om du vill utforska och distribuera befintliga Azure Functions som använder Azu
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Innan du kan skapa din första funktion måste du ha ett aktivt Azure-konto. Om du inte redan har ett Azure-konto [finns kostnadsfria konton tillgängliga](https://azure.microsoft.com/free/).
-- Om du ska skapa Azure Functions som utför åtgärder på ditt Azure Media Services-konto (AMS) eller lyssnar på händelser som skickats av Media Services, bör du skapa ett AMS-konto enligt beskrivningen [här](create-account-howto.md).
+- Om du ska skapa Azure Functions som utför åtgärder på ditt Azure Media Services-konto (AMS) eller lyssnar på händelser som skickats av Media Services, bör du skapa ett AMS-konto enligt beskrivningen [här](account-create-how-to.md).
 
 ## <a name="create-a-function-app"></a>Skapa en funktionsapp
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e2f3296eb6d4286bb4ef7081c1459109c40915f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656846"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962313"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Åtkomst nivåer för Azure Blob Storage – frekvent, låg frekvent och Arkiv lag ring
 
@@ -86,7 +86,7 @@ Exempel på användnings scenarier för Arkiv åtkomst nivån är:
 - Efterlevnads-och arkiverings data som behöver lagras under en längre tid och som inte har kunnat nås
 
 > [!NOTE]
-> Arkiv nivån stöds inte för ZRS-, GZRS-eller RA-GZRS-konton. Migrering från LRS till GRS stöds inte om lagrings kontot innehåller blobar på Arkiv nivån.
+> Arkiv nivån stöds inte för ZRS-, GZRS-eller RA-GZRS-konton. Migrering från LRS till GRS stöds så länge inga blobbar har flyttats till Arkiv nivån medan kontot angavs till LRS. Ett konto kan flyttas tillbaka till GRS om uppdateringen görs mindre än 30 dagar från den tidpunkt då kontot blev LRS, och inga blobbar flyttades till Arkiv nivån när kontot hade angetts till LRS.
 
 ## <a name="account-level-tiering"></a>Skiktning på konto nivå
 

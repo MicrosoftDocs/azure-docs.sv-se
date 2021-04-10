@@ -6,22 +6,19 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
+adobe-target-activity: DocsExp–393165–A/B–Docs/PythonQuickstart–CLIvsPortal–FY21Q4
 adobe-target-experience: Experience B
-adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: 36c1b112127fadd5149c62a92ca469322db65edd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+adobe-target-content: ./quickstart-python-portal
+ms.openlocfilehash: e0542d47ff2c687f5f9470edb0cbb34ebc79554c
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592361"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010872"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>Snabb start: skapa en python-app med Azure App Service på Linux
 
-I den här snabb starten distribuerar du en python-webbapp till [app service på Linux](overview.md#app-service-on-linux), Azures mycket skalbara, självkorrigerande webb värd tjänst. Du använder det lokala [Azures kommando rads gränssnitt (CLI)](/cli/azure/install-azure-cli) på en Mac-, Linux-eller Windows-dator för att distribuera ett prov med antingen flaska eller django-ramverk. Webbappen som du konfigurerar använder en kostnads fri App Service nivå, så du debiteras inte några kostnader i samband med den här artikeln.
-
-> [!TIP]
-> Om du föredrar att använda Visual Studio Code i stället följer du vår **[Visual Studio code App Service snabb start](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.
+I den här snabb starten distribuerar du en python-webbapp till [app service på Linux](overview.md#app-service-on-linux), Azures mycket skalbara, självkorrigerande webb värd tjänst. Du använder det lokala [Azures kommando rads gränssnitt (CLI)](/cli/azure/install-azure-cli) på en Mac-, Linux-eller Windows-dator för att distribuera ett prov med antingen flaska eller django-ramverk. Webbappen du konfigurerar använder en Basic App Service-nivå som kostar en låg kostnad i din Azure-prenumeration.
 
 ## <a name="set-up-your-initial-environment"></a>Konfigurera din inledande miljö
 

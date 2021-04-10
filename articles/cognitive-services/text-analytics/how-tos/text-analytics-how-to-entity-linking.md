@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599008"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280572"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Använda namngiven enhets igenkänning i Textanalys
 
@@ -206,7 +206,7 @@ Version 3,0 innehåller bara synkron åtgärd. Följande JSON är ett exempel p�
 
 ## <a name="post-the-request"></a>Publicera begäran
 
-Analysen utförs när begäran har tagits emot. I avsnittet [data begränsningar](../overview.md#data-limits) i översikt finns information om storlek och antal begär Anden som du kan skicka per minut och sekund.
+Analysen utförs när begäran har tagits emot. Se artikeln [data begränsningar](../overview.md#data-limits) för information om storlek och antal begär Anden som du kan skicka per minut och sekund.
 
 API för textanalys är tillstånds lös. Inga data lagras i ditt konto och resultaten returneras omedelbart i svaret.
 

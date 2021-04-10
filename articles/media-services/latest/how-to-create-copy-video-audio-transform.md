@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/19/2020
 ms.author: inhenkel
-ms.openlocfilehash: 24dcd64ba14303c4e205ba3da610d04d4ef277d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a3d9ff9947a97182964f805d0b8da7e3abcad69
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724582"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962374"
 ---
 # <a name="create-a-copyvideo-copyaudio-transform"></a>Skapa en CopyVideo CopyAudio-transformering
 
@@ -29,7 +29,7 @@ Den här artikeln visar hur du skapar en `CopyVideo/CopyAudio` transformering.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Följ stegen i [skapa ett Media Services konto](./create-account-howto.md) för att skapa ett Media Services konto och en resurs grupp som krävs för att skapa en till gång.
+Följ stegen i [skapa ett Media Services konto](./account-create-how-to.md) för att skapa ett Media Services konto och en resurs grupp som krävs för att skapa en till gång.
 
 ## <a name="methods"></a>Metoder
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
 ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105605645"
 ---
 # <a name="azure-percept-dk-troubleshooting"></a>Fel sökning av Azure percept-DK
@@ -63,9 +63,9 @@ Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentation
 |Azure IoT Edge          |```sudo journalctl -u iotedge -f``` |Visa loggarna för Azure IoT Edge Security Manager |
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Starta om Azure IoT Edge Security daemon |
 |Azure IoT Edge          |```sudo iotedge list```           |Visa en lista över distribuerade Azure IoT Edge-moduler |
-|Övrigt             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
-|Övrigt             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
-|Övrigt             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
+|Annat             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
+|Annat             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
+|Annat             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
 
 
 ```journalctl```Wi-Fi kommandon kan kombineras i följande enda kommando:

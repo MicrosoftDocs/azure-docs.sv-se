@@ -3,16 +3,16 @@ title: Azure Defender för behållar register – fördelar och funktioner
 description: Lär dig mer om fördelarna och funktionerna i Azure Defender för behållar register.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176645"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010700"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Introduktion till Azure Defender för containerregister
 
@@ -47,7 +47,7 @@ Det finns tre utlösare för en avbildnings genomsökning:
 
 - **Vid push** -när en bild skickas till ditt register, Security Center skannar automatiskt avbildningen. Om du vill utlösa en genomsökning av en avbildning kan du skicka den till din lagrings plats.
 
-- **Nyligen hämtade** – eftersom nya sårbarheter upptäcks varje dag, genomsöker även **Azure Defender for container register** alla bilder som har hämtats under de senaste 30 dagarna. Det tillkommer ingen extra avgift för en ny genomsökning. som vi nämnt ovan faktureras du en gång per bild.
+- **Nyligen hämtade** – eftersom nya sårbarheter upptäcks varje dag genomsöks även **Azure Defender för behållar register** , varje bild som har tagits emot under de senaste 30 dagarna. Det finns ingen extra kostnad för dessa omgenomsökningar. som vi nämnt ovan faktureras du en gång per bild.
 
 - **Vid import** -Azure Container Registry har import verktyg för att hämta avbildningar till registret från Docker Hub, Microsoft container Registry eller något annat Azure Container Registry. **Azure Defender for container registers** söker igenom alla avbildningar som stöds som du importerar. Läs mer i [Importera behållar avbildningar till ett behållar register](../container-registry/container-registry-import-images.md).
  

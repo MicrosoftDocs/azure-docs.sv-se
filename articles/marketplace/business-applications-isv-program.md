@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99507544"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103393"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Introduktionsguide för Microsoft Business Applications Independent Software Vendor (ISV) Connect Program
 
@@ -25,7 +25,7 @@ För att kunna registrera och dra nytta av alla möjligheter till teknik, markna
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Konfigurera ditt Microsoft Partner Center-konto
 
-För att konfigurera och hantera ditt konto för programmet ISV Connect slutför du stegen i artikeln: [skapa ett kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md). Den här artikeln innehåller alla steg för att skapa ett nytt konto samt information om hur du lägger till nya utgivare i programmet för kommersiell marknads plats.
+För att konfigurera och hantera ditt konto för programmet ISV Connect slutför du stegen i artikeln: [skapa ett kommersiellt marknads plats konto i Partner Center](create-account.md). Den här artikeln innehåller alla steg för att skapa ett nytt konto samt information om hur du lägger till nya utgivare i programmet för kommersiell marknads plats.
 
 > [!NOTE]
 > Det här steget kräver en *ägare* eller *chefs* roll i Partner Center.

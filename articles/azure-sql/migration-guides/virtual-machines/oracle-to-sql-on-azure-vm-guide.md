@@ -1,6 +1,6 @@
 ---
-title: 'Oracle till SQL Server på Azure VM: migration guide'
-description: Den här guiden lär dig att migrera dina Oracle-scheman till SQL Server på virtuella Azure-datorer med SQL Server Migration Assistant för Oracle.
+title: 'Oracle till SQL Server på Azure Virtual Machines: migreringsguiden'
+description: I den här guiden får du lära dig att migrera dina Oracle-scheman till SQL Server på Azure Virtual Machines genom att använda SQL Server Migration Assistant för Oracle.
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,217 +10,237 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 8f034492568a7525f8f75f5f2add1a732c3ad896
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: d4fb33e8e904d12e242f7eeaf9c2dc50a02eff4d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644285"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961259"
 ---
-# <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Migration guide: Oracle till SQL Server på Azure VM
+# <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>Guide för migrering: Oracle till SQL Server på Azure Virtual Machines
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Den här guiden lär dig att migrera dina Oracle-scheman till SQL Server på virtuella Azure-datorer med SQL Server Migration Assistant för Oracle. 
+I den här guiden får du lära dig att migrera dina Oracle-scheman till SQL Server på Azure Virtual Machines genom att använda SQL Server Migration Assistant för Oracle. 
 
 Mer information om andra biflyttnings guider finns i [databas migrering](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-Om du vill migrera Oracle-schemat till SQL Server på den virtuella Azure-datorn behöver du:
+Om du vill migrera Oracle-schemat till SQL Server på Azure Virtual Machines behöver du:
 
-- För att verifiera att din käll miljö stöds.
-- För att ladda ned [SQL Server Migration Assistant (SSMA) för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
+- En käll miljö som stöds.
+- [SQL Server Migration Assistant (SSMA) för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
 - Ett mål [SQL Server VM](../../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
-- De [behörigheter som krävs för SSMA för Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) och [Provider](/sql/ssma/oracle/connect-to-oracle-oracletosql).
-- Anslutning och tillräcklig behörighet för att få åtkomst till både källa och mål. 
+- De [behörigheter som krävs för SSMA för Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) och [providern](/sql/ssma/oracle/connect-to-oracle-oracletosql).
+- Anslutning och tillräcklig behörighet för att komma åt källan och målet. 
 
 
 ## <a name="pre-migration"></a>Före migrering
 
-När du förbereder för migrering till molnet kontrollerar du att din käll miljö stöds och att du har åtgärdat eventuella krav. På så sätt kan du säkerställa en effektiv och lyckad migrering.
+För att förbereda för migrering till molnet kontrollerar du att din käll miljö stöds och att du har åtgärdat alla krav. På så sätt kan du säkerställa en effektiv och lyckad migrering.
 
-I den här delen av processen ingår att utföra en inventering av de databaser som du behöver migrera, utvärdera dessa databaser för potentiella problem med migrering eller blockerare, och sedan matcha objekt som du kanske har återställt. 
+Den här delen av processen omfattar: 
+- Utföra en inventering av de databaser som du behöver migrera.
+- Att utvärdera dessa databaser för potentiella problem med migrering eller blockerare. 
+- Lösa eventuella problem som du återställer. 
 
 ### <a name="discover"></a>Identifiera
 
-Använd [kart verktyget](https://go.microsoft.com/fwlink/?LinkID=316883) för att identifiera befintliga data källor och information om de funktioner som används av din verksamhet för att få en bättre förståelse för och planera för migreringen. Den här processen omfattar genomsökning av nätverket för att identifiera alla organisationens Oracle-instanser tillsammans med den version och de funktioner som används.
+Använd [kart verktyg](https://go.microsoft.com/fwlink/?LinkID=316883) för att identifiera befintliga data källor och information om de funktioner som din verksamhet använder. På så sätt får du en bättre förståelse för migreringen och hjälper dig att planera för den. Den här processen omfattar genomsökning av nätverket för att identifiera organisationens Oracle-instanser och de versioner och funktioner som du använder.
 
-Följ dessa steg om du vill använda kart verktyget för att utföra en inventerings genomsökning: 
+Följ dessa steg om du vill använda kart verktyg för att göra en inventerings genomsökning: 
 
-1. Öppna [kart verktyget](https://go.microsoft.com/fwlink/?LinkID=316883).
+
+1. Öppna [kart verktyg](https://go.microsoft.com/fwlink/?LinkID=316883).
+
+
 1. Välj **skapa/Välj databas**:
 
-   ![Välj databas](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
+   ![Skärm bild som visar alternativet Skapa/Välj databas.](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
 
-1. Välj **skapa en inventerings databas**, ange ett namn för den nya inventerings databasen som du skapar, ange en kort beskrivning och välj sedan **OK**:
+1. Välj **skapa en inventerings databas**. Ange ett namn för den nya inventerings databasen som du skapar, ange en kort beskrivning och välj sedan **OK**: 
 
-   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Skapa en inventerings databas":::
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Skärm bild som visar gränssnittet för att skapa en inventerings databas.":::
 
 1. Välj **samla in inventerings data** för att öppna **guiden inventering och utvärdering**:
 
-   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Samla in lagerdata":::
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Skärm bild som visar länken samla in lager data.":::
+
 
 1. Välj **Oracle** i **inventerings-och utvärderings guiden** och välj sedan **Nästa**:
 
-   ![Välj Oracle](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
+   ![Skärm bild som visar sidan inventerings scenarier i guiden inventering och utvärdering.](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
 
 1. Välj det Sök alternativ för datorn som passar dina affärs behov och din miljö och välj sedan **Nästa**: 
 
-   ![Välj det Sök alternativ för datorn som passar dina affärs behov bäst](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
+   ![Skärm bild som visar sidan identifierings metoder i inventerings-och utvärderings guiden.](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
 
 1. Ange antingen autentiseringsuppgifter eller skapa nya autentiseringsuppgifter för de system som du vill utforska och välj sedan **Nästa**:
 
-    ![Ange autentiseringsuppgifter](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
-
-1. Ange prioritetsordningen för autentiseringsuppgifterna och välj sedan **Nästa**:
-
-   ![Ange autentiseringsuppgift för autentiseringsuppgift](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
-
-1. Ange autentiseringsuppgifterna för varje dator som du vill identifiera. Du kan använda unika autentiseringsuppgifter för varje dator/dator, eller så kan du välja att använda listan **alla autentiseringsuppgifter för datorn** :
+    ![Skärm bild som visar sidan alla autentiseringsuppgifter för datorer i inventerings-och utvärderings guiden.](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
 
 
-   ![Ange autentiseringsuppgifterna för varje dator som du vill identifiera](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
+1. Ange prioritetsordningen för autentiseringsuppgifterna och välj sedan **Nästa**: 
+
+   ![Skärm bild som visar sidan för identifiering av autentiseringsuppgifter i guiden inventering och utvärdering.](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
 
 
-1. Verifiera din val Sammanfattning och välj sedan **Slutför**:
+1. Ange autentiseringsuppgifterna för varje dator som du vill identifiera. Du kan använda unika autentiseringsuppgifter för varje dator/dator, eller så kan du använda listan alla datorer som autentiseringsuppgifter.  
 
-   ![Översikt över granskning](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
-
-1. När sökningen är klar kan du Visa sammanfattnings rapporten för **data insamling** . Genomsökningen kan ta några minuter och beror på antalet databaser. Välj **Stäng** när du är färdig:
-
-   ![Samlings sammanfattnings rapport](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+   ![Skärm bild som visar sidan Ange datorer och autentiseringsuppgifter i inventerings-och utvärderings guiden.](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
 
 
-1. Välj **alternativ** för att generera en rapport om Oracle-utvärderingen och databas information. Välj båda alternativen (ett i taget) för att generera rapporten.
+1. Verifiera dina val och välj sedan **Slutför**:
+
+   ![Skärm bild som visar sidan Sammanfattning i guiden inventering och utvärdering.](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
+
+
+1. När genomsökningen är klar visar du sammanfattningen av **data insamlingen** . Genomsökningen kan ta några minuter, beroende på antalet databaser. Välj **Stäng** när du är klar: 
+
+   ![Skärm bild som visar sammanfattningen av data insamling.](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+
+
+1. Välj **alternativ** för att generera en rapport om Oracle-utvärderingen och databas information. Välj båda alternativen en i taget för att generera rapporten.
 
 
 ### <a name="assess"></a>Utvärdera
 
-När du har identifierat data källorna använder du [SQL Server Migration Assistant (SSMA) för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258) för att utvärdera de Oracle-instanser som migreras till SQL Server VM så att du förstår luckorna mellan de två. Med hjälp av Migration Assistant kan du granska databas objekt och data, utvärdera databaser för migrering, migrera databas objekt till SQL Server och sedan migrera data till SQL Server.
+När du har identifierat data källorna använder [SQL Server Migration Assistant för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258) för att utvärdera de Oracle-instanser som migreras till SQL Server VM. Assistenten hjälper dig att förstå luckorna mellan käll-och mål databaserna. Du kan granska databas objekt och data, utvärdera databaser för migrering, migrera databas objekt till SQL Server och sedan migrera data till SQL Server.
 
 Följ dessa steg om du vill skapa en utvärdering: 
 
-1. Öppna  [SQL Server Migration Assistant (SSMA) för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
-1. Välj **fil** och välj sedan **nytt projekt**. 
-1. Ange ett projekt namn, en plats där du vill spara projektet och välj sedan ett SQL Server migrerings mål från List rutan. Välj **OK**:
 
-   ![Nytt projekt](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
+1. Öppna [SQL Server Migration Assistant för Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
+1. På **Arkiv** -menyn väljer du **nytt projekt**. 
+1. Ange ett projekt namn och en plats för projektet och välj sedan ett SQL Server migrerings mål från listan. Välj **OK**: 
 
-1. Välj **Anslut till Oracle**. Ange värden för anslutnings information för Oracle i dialog rutan **Anslut till Oracle** :
+   ![Skärm bild som visar dialog rutan nytt projekt.](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
 
-   ![Anslut till Oracle](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
+
+1. Välj **Anslut till Oracle**. Ange värden för Oracle-anslutningen i dialog rutan **Anslut till Oracle** :
+
+   ![Skärm bild som visar dialog rutan Anslut till Oracle.](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
 
    Välj de Oracle-scheman som du vill migrera: 
 
-   ![Välj Oracle-schema](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
+   ![Skärm bild som visar listan över Oracle-scheman som kan migreras.](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
 
-1. Högerklicka på det Oracle-schema som du vill migrera i **Oracle metadata Explorer** och välj sedan **Skapa rapport**. Då skapas en HTML-rapport. Alternativt kan du välja **Skapa rapport** i navigerings fältet när du har valt databasen:
 
-   ![Skapa rapport](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
+1. I **Oracle metadata Explorer** högerklickar du på det Oracle-schema som du vill migrera och väljer sedan **Skapa rapport**. Om du gör det skapas en HTML-rapport. Alternativt kan du välja databasen och sedan **Skapa rapport** på den översta menyn.
 
-1. I **Oracle metadata Explorer** väljer du Oracle-schemat och väljer sedan **Skapa rapport** för att generera en HTML-rapport med konverterings statistik och fel/varningar, om det finns några.
-1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av Oracle-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects. 
+   ![Skärm bild som visar hur du skapar en rapport.](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
+
+1. Granska HTML-rapporten för konverterings statistik, fel och varningar. Analysera den för att förstå konverterings problem och lösningar.
+
+    Du kan också öppna rapporten i Excel för att få en inventering av Oracle-objekt och den insats som krävs för att slutföra schema konverteringar. Standard platsen för rapporten är rapportmappen i SSMAProjects. 
 
    Exempelvis: `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
-    
-   ![Konverterings rapport](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
+
+
+   ![Skärm bild som visar en konverterings rapport.](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
+
 
 ### <a name="validate-data-types"></a>Verifiera data typer
 
-Validera standard mappningar för data typer och ändra dem baserat på krav vid behov. Det gör du på följande sätt: 
+Validera standard mappningarna för data typ och ändra dem baserat på krav, om det behövs. Det gör du på följande sätt: 
 
-1. Välj **verktyg** på menyn. 
-1. Välj **projekt inställningar**. 
-1. Välj fliken **typ mappningar** :
 
-   ![Typ mappningar](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
+1. På menyn **verktyg** väljer du **projekt inställningar**. 
+1. Välj fliken **typ mappningar** . 
+
+   ![Skärm bild som visar fliken typ mappningar.](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
 
 1. Du kan ändra typ mappningen för varje tabell genom att välja tabellen i **Oracle metadata Explorer**. 
 
-### <a name="convert-schema"></a>Konvertera schema
+### <a name="convert-the-schema"></a>Konvertera schemat
 
 Följ dessa steg om du vill konvertera schemat: 
 
 1. Valfritt Om du vill konvertera dynamiska eller ad hoc-frågor högerklickar du på noden och väljer **Lägg till instruktion**.
-1. Välj **Anslut till SQL Server** från det övre navigerings fältet. 
+
+1. Välj **Anslut till SQL Server** på den översta menyn. 
      1. Ange anslutnings information för din SQL Server på den virtuella Azure-datorn. 
-     1. Välj mål databas i list rutan eller ange ett nytt namn, i vilket fall en databas ska skapas på mål servern. 
+     1. Välj mål databasen i listan eller ange ett nytt namn. Om du anger ett nytt namn kommer en databas att skapas på mål servern. 
      1. Ange information om autentisering. 
      1. Välj **Anslut**. 
 
-   ![Anslut till SQL](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-1. Högerklicka på Oracle-schemat i **Oracle metadata Explorer** och välj **konvertera schema**. Alternativt kan du välja **konvertera schema** från det övre navigerings fältet:
+   ![Skärm bild som visar hur du ansluter till SQL Server.](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-   ![Konvertera schema](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
+1. Högerklicka på Oracle-schemat i **Oracle metadata Explorer** och välj **konvertera schema**. Alternativt kan du välja **konvertera schema** på översta menyn:
 
-1. När konverteringen är klar kan du jämföra och granska de konverterade objekten till de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem utifrån rekommendationerna:
+   ![Skärm bild som visar hur du konverterar schemat.](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
 
-   ![Granska rekommendationer](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
+
+1. När schema konverteringen är klar granskar du de konverterade objekten och jämför dem med de ursprungliga objekten för att identifiera eventuella problem. Använd rekommendationerna för att lösa eventuella problem:
+
+   ![Skärm bild som visar en jämförelse mellan två scheman.](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
 
    Jämför konverterad Transact-SQL-text till de ursprungliga lagrade procedurerna och granska rekommendationerna: 
 
-   ![Granska rekommendationer kod](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
+   ![Skärm bild som visar Transact-SQL, lagrade procedurer och en varning.](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
 
-   Du kan spara projektet lokalt för en arbets schema reparation. Du kan göra det genom att välja **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Server.
+   Du kan spara projektet lokalt för en arbets schema reparation. Det gör du genom att välja **Spara projekt** på **Arkiv** -menyn. Genom att spara projektet lokalt kan du utvärdera käll-och mål scheman offline och utföra reparation innan du publicerar schemat till SQL Server.
 
-1. Välj **gransknings resultat** i fönstret utdata och granska fel i **fel listans** fönster. 
-1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du kan publicera schemat till SQL Server på den virtuella Azure-datorn.
+1. Välj **gransknings resultat** i fönstret **utdata** och granska sedan fel i **fel listans** fönster. 
+1. Spara projektet lokalt för en arbets schema reparation. Välj **Spara projekt** på **Arkiv** -menyn. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du publicerar schemat till SQL Server på Azure Virtual Machines.
 
 
 ## <a name="migrate"></a>Migrera
 
-När du har de nödvändiga förutsättningarna och har slutfört de uppgifter som är kopplade till fasen **innan migreringen** , är du redo att utföra schemat och datamigreringen. Migreringen består av två steg – att publicera schemat och migrera data. 
+När du har de nödvändiga förutsättningarna och har slutfört de uppgifter som är kopplade till fasen innan migreringen, är du redo att starta schemat och datamigreringen. Migreringen består av två steg: publicera schemat och migrera data. 
 
 
 Följ dessa steg om du vill publicera schemat och migrera data: 
 
-1. Publicera schemat: Högerklicka på databasen i **SQL Server metadata Explorer**  och välj **Synkronisera med databas**. Den här åtgärden publicerar Oracle-schemat till SQL Server på den virtuella Azure-datorn:
+1. Publicera schemat: Högerklicka på databasen i **SQL Server metadata Explorer** och välj **Synkronisera med databas**. Om du gör det publiceras Oracle-schemat till SQL Server på Azure Virtual Machines. 
 
-   ![Synkronisera med databas](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
+   ![Skärm bild som visar kommandot Synkronisera med databas.](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
 
    Granska mappningen mellan käll projektet och målet:
 
-   ![Granska synkroniseringsstatus](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
+   ![Skärm bild som visar synkroniseringsstatus.](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
 
 
-1. Migrera data: Högerklicka på databasen eller objektet som du vill migrera i **Oracle metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** från det övre navigerings fältet. Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar tabeller och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller:
 
-   ![Migrera data](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
+1. Migrera data: Högerklicka på databasen eller objektet som du vill migrera i **Oracle metadata Explorer** och välj **migrera data**. Alternativt kan du välja **migrera data** på den översta menyn.
 
-1. Ange anslutnings information för Oracle och SQL Server på den virtuella Azure-datorn i dialog rutan.
-1. När migreringen är klar kan du Visa **data flyttnings rapporten**:  
+   Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar **tabeller** och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutorna om du vill utelämna data från enskilda tabeller.
 
-    ![Data flyttnings rapport](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
+   ![Skärm bild som visar kommandot migrera data.](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
 
-1. Anslut till SQL Server på Azure VM-instansen genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema:
+1. Ange anslutnings information för Oracle och SQL Server på Azure Virtual Machines i dialog rutan.
+1. När migreringen är klar kan du Visa **data flyttnings rapporten**:
 
-   ![Validera i SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
+    ![Skärm bild som visar data flyttnings rapporten.](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
+
+1. Anslut till din SQL Server på Azure Virtual Machines-instansen genom att använda [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). Verifiera migreringen genom att granska data och schema:
 
 
-Förutom att använda SSMA kan du också använda SQL Server Integration Services (SSIS) för att migrera data. Mer information finns i: 
-- Artikeln [komma igång med SQL Server Integration Services](//sql/integration-services/sql-server-integration-services).
-- White paper [SQL Server Integration Services: SSIS för Azure och hybrid data förflyttning](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
+   ![Skärm bild som visar en SQL Server-instans i SSMA.](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
 
+I stället för att använda SSMA kan du använda SQL Server Integration Services (SSIS) för att migrera data. Mer information finns i: 
+- Artikeln [SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- White paper [SSIS för Azure och hybrid data förflyttning](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
 ## <a name="post-migration"></a>Efter migreringen 
 
-När du har slutfört **migreringen** måste du gå igenom en serie uppgifter efter migreringen för att se till att allt fungerar så smidigt och effektivt som möjligt.
+När du har slutfört migreringen måste du slutföra en serie uppgifter efter migreringen för att se till att allt körs så smidigt och effektivt som möjligt.
 
 ### <a name="remediate-applications"></a>Åtgärda program
 
-När data har migrerats till mål miljön måste alla program som tidigare förbrukade källan börja använda målet. Om du gör detta måste du i vissa fall göra ändringar i programmen.
+När data har migrerats till mål miljön måste alla program som tidigare har använt källan börja använda målet. Att göra dessa ändringar kan kräva ändringar i programmen.
 
-[Verktyget för migrering av data åtkomst](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) är ett tillägg för Visual Studio Code som gör att du kan analysera Java-källkoden och identifiera API-anrop och frågor för data åtkomst, vilket ger dig en vy över vad som behöver åtgärdas för att stödja den nya databasens Server del. Mer information finns i [migrera vår java-app från Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727) -bloggen. 
+[Verktyget för migrering av data åtkomst](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) är ett tillägg för Visual Studio Code. Det gör att du kan analysera Java-källkod och identifiera API-anrop och-frågor för data åtkomst. Verktyget ger en vy över vad som behöver åtgärdas för att stödja den nya databasens Server del. Mer information finns i [migrera ditt Java-program från Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727). 
 
 ### <a name="perform-tests"></a>Utför tester
 
-Test metoden för migrering av databasen består av att utföra följande aktiviteter:
+För att testa migreringen av databasen slutför du följande aktiviteter:
 
-1. **Utveckla verifieringstester**. Om du vill testa migreringen av databasen måste du använda SQL-frågor. Du måste skapa verifierings frågorna som ska köras mot både käll-och mål databaserna. Dina verifierings frågor ska omfatta det definitions område som du har definierat.
+1. **Utveckla verifieringstester**. Om du vill testa migreringen av databasen måste du använda SQL-frågor. Skapa verifierings frågorna som ska köras mot både käll-och mål databaserna. Dina verifierings frågor ska omfatta det omfång som du har definierat.
 
-2. **Konfigurera test miljö**. Test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
+2. **Konfigurera en test miljö**. Test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
 
 3. **Kör verifierings test**. Kör verifierings testen mot källan och målet och analysera sedan resultaten.
 
@@ -228,46 +248,49 @@ Test metoden för migrering av databasen består av att utföra följande aktivi
 
 ### <a name="optimize"></a>Optimera
 
-Fasen efter migreringen är avgörande för att kunna stämma av data precisions problem och kontrol lera att de är klara, samt att lösa prestanda problem med arbets belastningen.
+Fasen efter migreringen är avgörande för att kunna stämma av data precisions problem och kontrol lera om det är klart. Det är också viktigt att lösa prestanda problem med arbets belastningen.
 
 > [!Note]
-> Mer information om de här problemen och specifika steg för att minimera dem finns i [guiden för validering och optimering efter migrering](/sql/relational-databases/post-migration-validation-and-optimization-guide).
+> Mer information om de här problemen och de åtgärder som krävs för att minimera dem finns i [guiden för validering och optimering efter migrering](/sql/relational-databases/post-migration-validation-and-optimization-guide).
 
 
-## <a name="migration-assets"></a>Migrera till gångar 
+## <a name="migration-resources"></a>Migreringsresurser 
 
-Mer hjälp om hur du slutför det här migreringsprocessen finns i följande resurser, som har utvecklats för att ge stöd för ett verkligt migrerings projekt.
+Mer hjälp om hur du slutför det här migrerings scenariot finns i följande resurser som har utvecklats för att stödja ett verkligt migreringsjobb.
 
 | **Rubrik/länk**                                                                                                                                          | **Beskrivning**                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som gör det lättare att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.                                                          |
-| [Artefakter för Oracle-inventerings skript](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Den här till gången innehåller en PL/SQL-fråga som visar system tabeller i Oracle och innehåller ett antal objekt efter schema typ, objekt typ och status. Det ger också en grov uppskattning av rå data i varje schema och storleken på tabeller i varje schema, med resultat som lagras i CSV-format.                                                                                                               |
-| [Automatisera SSMA för Oracle-utvärdering & konsolidering](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Den här uppsättningen av resurser använder en. csv-fil som post (sources.csv i projektfilerna) för att skapa de XML-filer som behövs för att köra SSMA-utvärdering i konsol läge. source.csv tillhandahålls av kunden baserat på en inventering av befintliga Oracle-instanser. Utdatafilerna är AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml och VariableValueFile.xml.|
-| [SSMA för vanliga Oracle-fel och hur du åtgärdar dem](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Med Oracle kan du tilldela ett icke-skalärt villkor i WHERE-satsen. SQL Server stöder dock inte den här typen av villkor. Därför konverteras SQL Server Migration Assistant (SSMA) för Oracle inte frågor med ett icke-skalärt villkor i WHERE-satsen, i stället för att generera ett fel O2SS0001. Den här white paper innehåller mer information om problemet och hur du kan lösa det.          |
-| [Hand bok för Oracle to SQL Server-migrering](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Det här dokumentet fokuserar på de uppgifter som är kopplade till migrering av ett Oracle-schema till den senaste versionen av SQL Server. Om migreringen kräver ändringar av funktioner eller funktioner, måste den eventuella effekten av varje ändring av de program som använder-databasen betraktas noggrant.                                                     |
+| [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Det här verktyget ger förslag på bästa anpassning av målspråk, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel beräkning av beräkningar och rapportgenerering som hjälper till att påskynda en stor fastighets bedömning genom att tillhandahålla en automatiserad och enhetlig besluts process för mål plattform.                                                          |
+| [Artefakter för Oracle-inventerings skript](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Den här till gången innehåller en PL/SQL-fråga som är riktad mot Oracle system tables och innehåller ett antal objekt efter schema typ, objekt typ och status. Det ger också en grov uppskattning av rå data i varje schema och storleken på tabeller i varje schema, med resultat som lagras i CSV-format.                                                                                                               |
+| [Automatisera SSMA för Oracle-utvärdering & konsolidering](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Den här uppsättningen resurser använder en. csv-fil som post (sources.csv i projektfilerna) för att skapa XML-filerna som du behöver för att köra en SSMA-utvärdering i konsol läge. Du anger source.csv-filen genom att göra en förteckning över befintliga Oracle-instanser. Utdatafilerna är AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml och VariableValueFile.xml.|
+| [SSMA problem och möjliga lösningar vid migrering av Oracle-databaser](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Med Oracle kan du tilldela ett icke-skalärt villkor i en WHERE-sats. SQL Server stöder inte den här typen av villkor. Så SSMA för Oracle konverterar inte frågor som har ett icke-skalärt villkor i WHERE-satsen. I stället genererar det ett fel: O2SS0001. Den här white paper innehåller information om problemet och hur du kan lösa det.          |
+| [Hand bok för Oracle to SQL Server-migrering](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Det här dokumentet fokuserar på de uppgifter som är kopplade till migrering av ett Oracle-schema till den senaste versionen av SQL Server. Om migreringen kräver ändringar av funktioner eller funktioner, måste du noga överväga vilken påverkan varje ändring påverkar för programmen som använder-databasen.                                                     |
 
-Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
+
+Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för projekt med migrering av data plattformar till Microsoft Azure Data plattform.
+
 
 ## <a name="next-steps"></a>Nästa steg
 
-- För att kontrol lera tillgängligheten för tjänster som är tillämpliga på SQL Server, se [Azures globala infrastruktur Center](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
+- Om du vill kontrol lera tillgängligheten för de tjänster som är tillämpliga på SQL Server, se [Azures globala infrastruktur Center](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database).
 
-- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter finns i artikel [tjänsten och verktyg för datamigrering.](../../../dms/dms-tools-matrix.md)
+- En matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering och särskilda uppgifter finns i [tjänster och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
 - Mer information om Azure SQL finns i:
    - [Distributionsalternativ](../../azure-sql-iaas-vs-paas-what-is-overview.md)
-   - [SQL Server på virtuella Azure-datorer](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-   - [Kostnad för total ägande kostnad för Azure](https://azure.microsoft.com/pricing/tco/calculator/) 
+   - [SQL Server på Azure Virtual Machines](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+   - [Kostnad för total ägande kostnad för Azure](https://azure.microsoft.com/pricing/tco/calculator/)
 
 
-- Mer information om ramverket och implementerings cykeln för molnbaserad migrering finns i
+- Mer information om ramverket och implementerings cykeln för migrering av moln finns i:
    -  [Cloud Adoption Framework för Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Metod tips för kostnads-och storleks arbets belastningar migreras till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Metod tips för kostnader och storleks arbets belastningar som migrerats till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- Information om licensiering finns i
+- Information om licensiering finns i:
    - [Bring your own license med Azure Hybrid-förmån](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
    - [Få kostnads fri utökad support för SQL Server 2008 och SQL Server 2008 R2](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)
 
+- Om du vill utvärdera program åtkomst lagret använder du för [hands versionen av data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
+- Mer information om hur du gör data åtkomst Layer A/B-testning finns i [Översikt över Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).
 
-- Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
-- Mer information om hur du utför data åtkomst Layer A/B-testning finns [Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).
+

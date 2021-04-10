@@ -3,12 +3,12 @@ title: Aktivera och konfigurera den lokala hanteringskonsolen
 description: Genom att aktivera hanterings konsolen ser du till att sensorer registreras med Azure och skickar information till den lokala hanterings konsolen och att den lokala hanterings konsolen utför hanterings aktiviteter på anslutna sensorer.
 ms.date: 3/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 89ce6da3521248ff7373e23ae8831106cbee74de
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 86bbebb54753145e087865acd8c0d4690a53aa99
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784636"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383871"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
@@ -33,29 +33,37 @@ Logga in i hanterings konsolen:
 
 Om du har glömt ditt lösen ord väljer du alternativet för att **återställa lösen ord**  och se [lösen ords återställning](how-to-manage-the-on-premises-management-console.md#password-recovery) för instruktioner om hur du återställer ditt lösen ord.
 
-## <a name="get-and-upload-an-activation-file"></a>Hämta och ladda upp en aktiverings fil
+## <a name="activate-the-on-premises-management-console"></a>Aktivera den lokala hanterings konsolen
 
 När du har loggat in för första gången måste du aktivera den lokala hanterings konsolen genom att hämta och ladda upp en aktiverings fil. 
 
-Så här hämtar du en aktiverings fil:
+Så här aktiverar du den lokala hanterings konsolen:
 
-1. Gå till sidan **prissättning** i Azure Defender för IoT-portalen. 
-1. Välj den prenumeration som den lokala hanterings konsolen ska kopplas till.
-1. Välj fliken **Ladda ned aktiverings filen för hanterings konsolen** . Aktiverings filen har laddats ned.
+1. Logga in på den lokala hanterings konsolen.
+
+1. I aviserings meddelandet överst på skärmen väljer du länken **ta åtgärd** .
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/take-action.png" alt-text="Välj länken Ta åtgärd från aviseringen längst upp på skärmen.":::
+
+1. På popup-skärmen för aktivering väljer du länken **Azure Portal** .
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/azure-portal.png" alt-text="Välj länken Azure Portal i popup-meddelandet.":::
+ 
+1. Välj en prenumeration som du vill associera den lokala hanterings konsolen till och välj sedan knappen för att **Hämta den lokala hanterings konsolens aktiverings fil** . Aktiverings filen har laddats ned.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Hämta aktiverings filen.":::
 
-Ladda upp en aktiverings fil:
+   Om du inte redan har registrerat en prenumeration kan du [publicera en prenumeration](how-to-manage-subscriptions.md#onboard-a-subscription).
 
-1. Gå till sidan **system inställningar** i den lokala hanterings konsolen.
-1. Välj **aktiverings** ikonen :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
-1. Välj **Välj en fil** och välj den fil som hämtades.
+1. Gå tillbaka till skärmen för **aktivering** och välj **Välj fil**.
+
+1. Välj den nedladdade filen.
 
 Efter den första aktiveringen kan antalet övervakade enheter överstiga antalet allokerade enheter som definierats under onboarding. Detta inträffar om du ansluter fler sensorer till hanterings konsolen. Om det finns en avvikelse mellan antalet övervakade enheter och antalet allokerade enheter visas en varning i hanterings konsolen. Om detta händer laddar du upp en ny aktiverings fil.
 
 ## <a name="set-up-a-certificate"></a>Konfigurera ett certifikat
 
-Efter installationen av hanterings konsolen skapas ett lokalt självsignerat certifikat som används för att få åtkomst till-konsolen. När en administratör loggar in i hanterings konsolen för första gången uppmanas användaren att publicera ett SSL/TLS-certifikat. 
+När du har installerat hanterings konsolen skapas ett lokalt självsignerat certifikat. Det här certifikatet används för att få åtkomst till-konsolen. När en administratör loggar in i hanterings konsolen för första gången uppmanas användaren att publicera ett SSL/TLS-certifikat. 
 
 Det finns två säkerhets nivåer:
 
@@ -76,7 +84,9 @@ Konsolen stöder följande typer av certifikat:
 Ladda upp ett certifikat:
 
 1. När du tillfrågas efter inloggningen definierar du ett certifikat namn.
+
 1. Ladda upp CRT-och nyckelfil-filerna.
+
 1. Ange en lösen fras och ladda upp en PEM-fil om det behövs.
 
 Du kan behöva uppdatera din skärm när du har laddat upp det CA-signerade certifikatet.
@@ -84,6 +94,7 @@ Du kan behöva uppdatera din skärm när du har laddat upp det CA-signerade cert
 Så här inaktiverar du verifiering mellan hanterings konsolen och anslutna sensorer:
 
 1. Välj **Nästa**.
+
 1. Inaktivera **Aktivera systemomfattande validerings** växling.
 
 Information om hur du laddar upp ett nytt certifikat, certifikatfiler som stöds och relaterade objekt finns i [hantera den lokala hanterings konsolen](how-to-manage-the-on-premises-management-console.md).
@@ -100,21 +111,23 @@ Det finns två alternativ för att ansluta Azure Defender för IoT-sensorer till
 
 När du har anslutit måste du konfigurera en plats med dessa sensorer.
 
-### <a name="connect-sensors-from-the-sensor-console"></a>Ansluta sensorer från sensor konsolen
+### <a name="connect-sensors-to-the-on-premises-management-console-from-the-sensor-console"></a>Ansluta sensorer till den lokala hanterings konsolen från sensor konsolen
 
-Så här ansluter du vissa sensorer till den lokala hanterings konsolen från sensor konsolen:
+Du kan ansluta sensorer till den lokala hanterings konsolen från sensor konsolen:
 
-1. I den vänstra rutan i sensor konsolen väljer du **Systeminställningar**.
+1. I den lokala hanterings konsolen väljer du **Systeminställningar**.
 
-2. Välj **anslutning till hantering**.
+1. Kopiera **anslutnings strängen för kopiering**.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-not-connected.png" alt-text="Skärm bild av status fönstret för en lokal hanterings konsol som visar frånkopplade.":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-string.png" alt-text="Kopiera anslutnings strängen för sensorn.":::
 
-3. I text rutan **adress** anger du IP-adressen för den lokala hanterings konsol som du vill ansluta till.
+1. På sensorn navigerar du till **Systeminställningar** och väljer **anslutning till hanterings konsol**:::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-to-management-console.png" border="false":::
 
-4. Välj **Anslut**. Status ändras:
+1. Klistra in den kopierade anslutnings strängen från den lokala hanterings konsolen i fältet **anslutnings sträng** .
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-connected.png" alt-text="Skärm bild av status fönstret för en lokal hanterings konsol som visar anslutna.":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/paste-connection-string.png" alt-text="Klistra in den kopierade anslutnings strängen i fältet anslutnings sträng.":::
+
+1. Välj **Anslut**.
 
 ### <a name="connect-sensors-by-using-tunneling"></a>Ansluta sensorer genom att använda tunnlar
 
@@ -161,61 +174,55 @@ Med åtkomst grupper får du bättre kontroll över var användarna hanterar och
 
 ### <a name="how-it-works"></a>Så här fungerar det
 
-För varje plats kan du definiera en affär senhet och en region. Sedan kan du lägga till zoner som är logiska entiteter i nätverket. 
+Du kan definiera en affär senhet och en region för varje plats i din organisation. Du kan sedan lägga till zoner som är logiska entiteter som finns i nätverket. 
 
-Du måste tilldela minst en sensor för varje zon. Modellen på fem nivåer ger den flexibilitet och precision som krävs för att leverera det skydds system som motsvarar organisationens struktur.
-
-Du kan redigera dina webbplatser direkt från valfri kart visning. När du öppnar en plats från en Map-vy visas antalet öppna aviseringar bredvid varje zon.
-
-:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Skärm bild av en lokal hanterings konsol karta med data överlägg i Berlin.":::
+Du bör tilldela minst en sensor per zon. Modellen på fem nivåer ger den flexibilitet och precision som krävs för att leverera det skydds system som motsvarar organisationens struktur.
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/diagram-of-sensor-showing-relationships.png" alt-text="Diagram som visar sensorer och regionala relationer.":::
+
+Med hjälp av vyn Enterprise kan du redigera dina webbplatser direkt. När du väljer en plats i vyn Enterprise visas antalet öppna aviseringar bredvid varje zon.
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Skärm bild av en lokal hanterings konsol karta med data överlägg i Berlin.":::
 
 Så här konfigurerar du en webbplats:
 
 1. Lägg till nya affär senheter för att återspegla organisationens logiska struktur.
 
-2. Lägg till nya regioner som återspeglar organisationens regioner.
+   1. I vyn Enterprise väljer du **alla platser**  >  **Hantera affär senheter**.
 
-3. Lägg till en webbplats.
+      :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-business-unit.png" alt-text="Välj Hantera affär senhet från List menyn alla platser på skärmen för Enterprise-vy.":::
 
-4. Lägg till zoner till en webbplats.
+   1. Ange namnet på den nya affär senheten och välj **Lägg till**.
 
-5. Anslut sensorerna.
+1. Lägg till en ny region som motsvarar organisationens regioner.
 
-6. Tilldela sensorer till plats zoner.
+   1. I vyn Enterprise väljer du **alla regioner**  >  **Hantera regioner**.
 
-Så här lägger du till affär senheter:
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-regions.png" alt-text="Välj alla regioner och sedan hantera regioner för att hantera regionerna i företaget.":::
 
-1. I vyn Enterprise väljer du **alla platser**  >  **Hantera affär senheter**.
+   1. Ange det nya region namnet och välj **Lägg till**.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-business-unit-screen.png" alt-text="Skärm bild som visar vyn hantera affär Senheter.":::
+1. Lägg till en webbplats.
 
-2. Ange namnet på den nya affär senheten och välj **Lägg till**.
+   1. Välj :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: i det översta fältet i vyn Enterprise. Markören visas som ett plus tecken ( **+** ).
 
-Så här lägger du till en ny region:
+   1. Placera på **+** platsen för den nya platsen och markera den. Dialog rutan **Skapa ny webbplats** öppnas.
 
-1. I vyn Enterprise väljer du **alla regioner**  >  **Hantera regioner**.
+      :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="Skärm bild av vyn Skapa ny webbplats.":::
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-regions-screen.png" alt-text="Skärm bild som visar vyn hantera regioner.":::
+   1. Definiera namnet och den fysiska adressen för den nya platsen och välj **Spara**. Den nya platsen visas på webbplats kartan.
 
-2. Ange det nya region namnet och välj **Lägg till**.
+4. [Lägg till zoner till en webbplats](#create-enterprise-zones).
 
-Så här lägger du till en ny plats:
+5. [Anslut sensorerna](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console).
 
-1. Välj :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: i det översta fältet i vyn Enterprise. Markören visas som ett plus tecken ( **+** ).
-
-2. Placera på **+** platsen för den nya platsen och markera den. Dialog rutan **Skapa ny webbplats** öppnas.
-
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="Skärm bild av vyn Skapa ny webbplats.":::
-
-3. Definiera namnet och den fysiska adressen för den nya platsen och välj **Spara**. Den nya platsen visas på webbplats kartan.
+6. [Tilldela sensorer till plats zoner](#assign-sensors-to-zones).
 
 Så här tar du bort en webbplats:
 
 1. I fönstret **plats hantering** väljer du :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: från det fält som innehåller plats namnet och väljer sedan **ta bort webbplats**. Rutan bekräftelse visas och kontrollerar att du vill ta bort platsen.
 
-2. I rutan bekräftelse väljer du **Ja**. Bekräftelse rutan stängs och fönstret **plats hantering** visas utan den plats som du har tagit bort.
+2. I rutan bekräftelse väljer du **Bekräfta**.
 
 ## <a name="create-enterprise-zones"></a>Skapa företags zoner
 
@@ -250,11 +257,11 @@ Så här lägger du till en zon på en plats:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-zone-screen.png" alt-text="Skärm bild av vyn Skapa ny zon.":::
 
-2. Ange zon namnet.
+1. Ange zon namnet.
 
-3. Ange en beskrivning för den nya zonen som tydligt anger de egenskaper som du använde för att dela upp platsen i zoner.
+1. Ange en beskrivning för den nya zonen som tydligt anger de egenskaper som du använde för att dela upp platsen i zoner.
 
-4. Välj **Spara**. Den nya zonen visas i fönstret **plats hantering** under den plats som den här zonen tillhör.
+1. Välj **Spara**. Den nya zonen visas i fönstret **plats hantering** under den plats som den här zonen tillhör.
 
 Så här redigerar du en zon:
 
@@ -262,13 +269,13 @@ Så här redigerar du en zon:
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/zone-edit-screen.png" alt-text="Skärm bild som visar dialog rutan Redigera zon.":::
 
-2. Redigera zon parametrarna och välj **Spara**.
+1. Redigera zon parametrarna och välj **Spara**.
 
 Så här tar du bort en zon:
 
 1. I fönstret **plats hantering** väljer du :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: från det fält som innehåller zon namnet och väljer sedan **ta bort zon**.
 
-2. I rutan bekräftelse väljer du **Ja**.
+1. I rutan bekräftelse väljer du **Ja**.
 
 Filtrera efter anslutnings status:
 
@@ -302,23 +309,23 @@ Så här tilldelar du en sensor:
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassigned-sensors-view.png" alt-text="Skärm bild av vyn otilldelade sensorer.":::
 
-2. Kontrol lera att **anslutnings** statusen är ansluten. Om inte, se [Anslut sensorer till den lokala hanterings konsolen](#connect-sensors-to-the-on-premises-management-console) för mer information om att ansluta. 
+1. Kontrol lera att **anslutnings** statusen är ansluten. Om inte, se [Anslut sensorer till den lokala hanterings konsolen](#connect-sensors-to-the-on-premises-management-console) för mer information om att ansluta. 
 
-3. Välj :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: för den sensor som du vill tilldela.
+1. Välj :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: för den sensor som du vill tilldela.
 
-4. I dialog rutan **tilldela sensor** väljer du den affär senhet, region, plats och zon som ska tilldelas.
+1. I dialog rutan **tilldela sensor** väljer du den affär senhet, region, plats och zon som ska tilldelas.
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-sensor-screen.png" alt-text="Skärm bild av vyn tilldela sensor.":::
 
-5. Välj **tilldela**.
+1. Välj **tilldela**.
 
 Ta bort tilldelning och ta bort en sensor:
 
 1. Koppla bort sensorn från den lokala hanterings konsolen. Mer information finns i [ansluta sensorer till den lokala hanterings konsolen](#connect-sensors-to-the-on-premises-management-console) .
 
-2. I fönstret **plats hantering** väljer du sensorn och väljer :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: . Sensorn visas i listan över otilldelade sensorer efter en liten stund.
+1. I fönstret **plats hantering** väljer du sensorn och väljer :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: . Sensorn visas i listan över otilldelade sensorer efter en liten stund.
 
-3. Om du vill ta bort den ej tilldelade sensorn från platsen väljer du sensorn från listan över ej tilldelade sensorer och väljer :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
+1. Om du vill ta bort den ej tilldelade sensorn från platsen väljer du sensorn från listan över ej tilldelade sensorer och väljer :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
 ## <a name="see-also"></a>Se även
 

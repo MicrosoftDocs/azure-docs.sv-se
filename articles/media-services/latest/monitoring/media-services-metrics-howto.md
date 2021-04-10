@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 306381465919d3fde7135315b69d450a496c2898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cedadf6b6026c74e25e9c81feb7f8291058b6f69
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104610068"
+ms.locfileid: "105961667"
 ---
 # <a name="monitor-media-services-metrics"></a>Övervaka Media Services-mått
 
@@ -31,7 +31,7 @@ Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklu
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa ett Media Services-konto](../create-account-howto.md)
+- [Skapa ett Media Services-konto](../account-create-how-to.md)
 - Granska  [övervaknings Media Services mått och diagnostikloggar](monitor-media-services-data-reference.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>Visa mått i Azure Portal

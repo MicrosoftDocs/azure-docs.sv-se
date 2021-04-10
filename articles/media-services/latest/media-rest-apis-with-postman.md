@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1266e10f6d8bf69c6e72a236ecde27623ad1cf12
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98953979"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961735"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurera PostMan för Media Services v3 REST API-anrop
 
@@ -30,7 +30,7 @@ Innan du börjar utveckla bör du läsa [utveckla med Media Services v3-API: er]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa ett Media Services-konto](./create-account-howto.md). Kom ihåg att komma ihåg resurs gruppens namn och namnet på Media Services kontot. 
+- [Skapa ett Media Services-konto](./account-create-how-to.md). Kom ihåg att komma ihåg resurs gruppens namn och namnet på Media Services kontot. 
 - Hämta information som krävs för att [få åtkomst till API: er](./access-api-howto.md)
 - Installera [Postman](https://www.getpostman.com/) REST-klienten för att köra REST API:er som visas i några AMS REST-självstudierna. 
 

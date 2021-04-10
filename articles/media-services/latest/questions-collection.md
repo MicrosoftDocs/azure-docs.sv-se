@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9c4ffee437e3049f8e480375f0b1373fce09fe77
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: dc8f8f7ced1c5915c2ea54390685806cfcdd257f
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105646204"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280317"
 ---
 <!-- NOTE this file is temporary and a placeholder until the FAQ file update is completed. -->
 
@@ -34,7 +34,7 @@ Den här artikeln innehåller svar på vanliga frågor om Azure Media Services v
 - Ytterligare data som är associerade med Media Services konto (inklusive innehålls krypterings nycklar, verifierings nycklar för token, JobInputHttp-URL: er och andra entitets-metadata) lagras i Microsofts ägda lagring inom den region som valts för det Media Services kontot.
     - På grund av [placering-krav för data](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) i brasilien och Sydostasien, lagras ytterligare konto data i zoner som är redundanta och finns i en enda region. För Sydostasien lagras alla ytterligare konto data i Singapore och för södra Brasilien lagras data i Brasilien.
     - I andra regioner än Brasilien, södra och Sydostasien, kan ytterligare konto data också lagras i Microsoft-ägda lagrings utrymmen i den [kopplade regionen](../../best-practices-availability-paired-regions.md).
-- Azure Media Services är en regional tjänst och ger inte [hög tillgänglighet](media-services-high-availability-encoding.md) eller datareplikering. Kunder som behöver dessa funktioner rekommenderas att bygga en lösning med hjälp av Media Services konton i flera regioner.  Ett exempel som visar hur du skapar en lösning för hög tillgänglighet med Media Services video på begäran finns i en guide.
+- Azure Media Services är en regional tjänst och ger inte [hög tillgänglighet](architecture-high-availability-encoding-concept.md) eller datareplikering. Kunder som behöver dessa funktioner rekommenderas att bygga en lösning med hjälp av Media Services konton i flera regioner.  Ett exempel som visar hur du skapar en lösning för hög tillgänglighet med Media Services video på begäran finns i en guide.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Vilka Azure Portal begränsningar för Media Services v3?
 
@@ -44,15 +44,15 @@ Om din video tidigare har laddats upp till Media Services kontot med hjälp av M
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Vilka Azure-roller kan utföra åtgärder på Azure Media Services resurser? 
 
-Se [Azure-rollbaserad åtkomst kontroll (Azure RBAC) för Media Services-konton](rbac-overview.md).
+Se [Azure-rollbaserad åtkomst kontroll (Azure RBAC) för Media Services-konton](security-rbac-concept.md).
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Vill du Hur gör jag för att Stream till Apple iOS-enheter?
 
-Kontrol lera att du har **(format = M3U8-AAPL)** i slutet av din sökväg (efter **/manifest** -delen av URL: en) för att meddela att den strömmande ursprungs servern returnerar HTTP Live Streaming (HLS) innehåll för användning på Apple iOS-enheter. Mer information finns i avsnittet om att [leverera innehåll](dynamic-packaging-overview.md).
+Kontrol lera att du har **(format = M3U8-AAPL)** i slutet av din sökväg (efter **/manifest** -delen av URL: en) för att meddela att den strömmande ursprungs servern returnerar HTTP Live Streaming (HLS) innehåll för användning på Apple iOS-enheter. Mer information finns i avsnittet om att [leverera innehåll](encode-dynamic-packaging-concept.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Vad är den rekommenderade metoden för att bearbeta videor?
 
-Använd [transformeringar](/rest/api/media/transforms) för att konfigurera vanliga aktiviteter för kodning eller analys av videor. Varje transformering beskriver ett recept, eller ett arbets flöde för uppgifter för bearbetning av video-eller ljudfiler. Ett [jobb](/rest/api/media/jobs) är den faktiska begäran om Media Services att tillämpa transformeringen på ett indata-eller ljud innehåll. När transformeringen har skapats kan du skicka jobb genom att använda Media Services API: er eller någon av de publicerade SDK: erna. Mer information finns i [Transformeringar och jobb](transforms-jobs-concept.md).
+Använd [transformeringar](/rest/api/media/transforms) för att konfigurera vanliga aktiviteter för kodning eller analys av videor. Varje transformering beskriver ett recept, eller ett arbets flöde för uppgifter för bearbetning av video-eller ljudfiler. Ett [jobb](/rest/api/media/jobs) är den faktiska begäran om Media Services att tillämpa transformeringen på ett indata-eller ljud innehåll. När transformeringen har skapats kan du skicka jobb genom att använda Media Services API: er eller någon av de publicerade SDK: erna. Mer information finns i [Transformeringar och jobb](transform-jobs-concept.md).
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Jag har laddat upp, kodat och publicerat en video. Varför spelas inte videon upp när jag försöker strömma den?
 
@@ -60,7 +60,7 @@ En av de vanligaste orsakerna är att du inte har den slut punkt för direkt upp
 
 ### <a name="how-does-pagination-work"></a>Hur fungerar sid brytning?
 
-När du använder sid brytning bör du alltid använda nästa länk för att räkna upp samlingen och inte beroende av en viss sid storlek. Mer information och exempel finns i [filtrering, sortering, växling](entities-overview.md).
+När du använder sid brytning bör du alltid använda nästa länk för att räkna upp samlingen och inte beroende av en viss sid storlek. Mer information och exempel finns i [filtrering, sortering, växling](filter-order-page-entitites-how-to.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Vilka funktioner är inte tillgängliga än i Azure Media Services v3?
 
@@ -68,7 +68,7 @@ Mer information finns i [migreringsguiden](migrate-v-2-v-3-migration-introductio
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Vad är processen att flytta ett Media Services konto mellan prenumerationer?  
 
-Mer information finns i [Flytta ett Media Services konto mellan prenumerationer](media-services-account-concept.md).
+Mer information finns i [Flytta ett Media Services konto mellan prenumerationer](account-move-account-how-to.md).
 
 ## <a name="live-streaming"></a>Liveuppspelning 
 
@@ -93,7 +93,7 @@ Du kan antingen:
 
 Media Services v3 Live encoding stöder ännu inte infogning av video-eller bildskärmar under Live Stream. 
 
-Du kan använda en [aktiv lokal kodare](recommended-on-premises-live-encoders.md) för att växla mellan käll videon. Många appar ger möjlighet att byta källor, inklusive Wirecast för multistream, växlaren Studio (på iOS) och ONLINEBANKSYSTEM Studio (gratis app).
+Du kan använda en [aktiv lokal kodare](encode-recommended-on-premises-live-encoders.md) för att växla mellan käll videon. Många appar ger möjlighet att byta källor, inklusive Wirecast för multistream, växlaren Studio (på iOS) och ONLINEBANKSYSTEM Studio (gratis app).
 
 ## <a name="content-protection"></a>Innehållsskydd
 
@@ -109,7 +109,7 @@ Du behöver inte använda någon speciell token-provider som Azure Active Direct
 
 Se till att utfärdaren, mål gruppen och alla anspråk matchar exakt mellan vad som är i JWT och värdet som `ContentKeyPolicyRestriction` används i `ContentKeyPolicy` .
 
-Mer information finns i [skydda ditt innehåll med hjälp av Media Services dynamisk kryptering](content-protection-overview.md).
+Mer information finns i [skydda ditt innehåll med hjälp av Media Services dynamisk kryptering](drm-content-protection-concept.md).
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hur och var fick jag en JWT-token innan jag använder den för att begära en licens eller nyckel?
 
@@ -127,8 +127,8 @@ Använd Azure Media Services-API: er för att konfigurera licens-/nyckel leveran
 
 Mer information finns i:
 
-- [Översikt över innehållsskydd](content-protection-overview.md)
-- [Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll](design-multi-drm-system-with-access-control.md)
+- [Översikt över innehållsskydd](drm-content-protection-concept.md)
+- [Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll](architecture-design-multi-drm-system.md)
 
 ### <a name="should-i-use-http-or-https"></a>Ska jag använda HTTP eller HTTPS?
 ASP.NET MVC Player-programmet måste ha stöd för följande:
@@ -163,11 +163,11 @@ Kunder har ofta investerat i en licens Server grupp, antingen i ett eget Data Ce
 
 För närvarande kan du använda [Azure Portal](https://portal.azure.com/) för att:
 
-* Hantera [Live-händelser](live-events-outputs-concept.md) i Media Services v3. 
+* Hantera [Live-händelser](live-event-outputs-concept.md) i Media Services v3. 
 * Visa (inte hantera) v3- [till gångar](assets-concept.md). 
 * [Hämta information om att komma åt API: er](./access-api-howto.md). 
 
-För alla andra hanterings uppgifter (t. ex. [transformationer och jobb](transforms-jobs-concept.md) och [innehålls skydd](content-protection-overview.md)) använder du [REST API](/rest/api/media/), [Azure CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
+För alla andra hanterings uppgifter (t. ex. [transformationer och jobb](transform-jobs-concept.md) och [innehålls skydd](drm-content-protection-concept.md)) använder du [REST API](/rest/api/media/), [Azure CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Finns det ett AssetFile-koncept i v3?
 
@@ -207,7 +207,7 @@ Den nedladdade fil strukturen på en iOS-enhet ser ut som på följande skärm b
 
 Den första mappen med ett namn som slutar med ett streck följt av ett tal innehåller video innehåll. Det numeriska värdet är video åter givningarnas högsta bandbredd. Den andra mappen med ett namn som slutar med ett bindestreck följt av 0 innehåller ljud innehåll. Den tredje mappen `Data` innehåller huvud spelnings listan för innehållet i FPS. Slutligen boot.xml ger en fullständig beskrivning av innehållet i `.movpkg` mappen. 
 
-![Fil struktur offline för FairPlay iOS-exempelprogrammet](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+![Fil struktur offline för FairPlay iOS-exempelprogrammet](media/drm-offline-fairplay-for-ios-concept/offline-fairplay-file-structure.png)
 
 Här är ett exempel på en boot.xml fil:
 
@@ -253,7 +253,7 @@ Beroende på affärs logik för anpassad STS utfärdas olika anspråk i JWT-toke
 
 #### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Vad är mappningen mellan Widevine och Media Services säkerhets nivåer för DRM?
 
-Översikt över Googles "Widevine DRM-arkitektur" definierar tre säkerhets nivåer. [Azure Media Services-dokumentationen i Widevine-licensservern](widevine-license-template-overview.md) beskriver dock fem säkerhets nivåer (krav för klient stabilitet för uppspelning). I det här avsnittet beskrivs hur säkerhets nivåer kartan.
+Översikt över Googles "Widevine DRM-arkitektur" definierar tre säkerhets nivåer. [Azure Media Services-dokumentationen i Widevine-licensservern](drm-widevine-license-template-concept.md) beskriver dock fem säkerhets nivåer (krav för klient stabilitet för uppspelning). I det här avsnittet beskrivs hur säkerhets nivåer kartan.
 
 Båda uppsättningarna med säkerhets nivåer definieras av Google Widevine. Skillnaden är i användnings nivå: arkitektur eller API. De fem säkerhets nivåerna används i Widevine-API: et. `content_key_specs`Objektet som innehåller `security_level` deserialiseras och skickas till den globala Widevine-leverans tjänsten av tjänsten Azure Media Services Widevine License. I följande tabell visas mappningen mellan de två uppsättningarna med säkerhets nivåer.
 

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: bfe39020da0be245f47d0c954de7598914d6534d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 401033e210db0a9d65d138fd12c9d3365b311a62
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105051346"
+ms.locfileid: "105962160"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3-exempel
 
@@ -47,7 +47,7 @@ Du hittar en beskrivning och länkar till de exempel som du kan söka efter på 
 | [ContentProtection/OfflinePlayReadyAndWidevine](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/OfflinePlayReadyAndWidevine)|Hur du krypterar innehållet dynamiskt med PlayReady och Widevine DRM och spelar upp innehållet utan att begära en licens från licens tjänsten. Det visar hur du skapar en transformering med inbyggd AdaptiveStreaming för inställning, skickar ett jobb, skapar en ContentKeyPolicy med öppen begränsning och PlayReady/Widevine-beständig konfiguration, associerar ContentKeyPolicy med en StreamingLocator och skriver ut en URL för uppspelning.|
 | [Strömning/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|Så här skapar du en transformering med inbyggd AdaptiveStreaming för inställning, skickar ett jobb, skapar ett till gångs filter och ett konto filter, associerar filtren till strömmande positionerare och skriv ut URL: er för uppspelning.|
 | [Strömning/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|Så här skapar du en transformering med inbyggd AdaptiveStreaming för inställning, skickar ett jobb, publicerar utmatnings till gång för HLS och streck strömning.|
-| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Vägledning och bästa praxis för ett produktions system med kodning eller analys på begäran. Läsarna bör börja med den medföljande artikeln [med hög tillgänglighet med Media Services-och VOD](https://docs.microsoft.com/azure/media-services/latest/media-services-high-availability-encoding). Det finns en separat lösnings fil som tillhandahålls för [HighAvailabilityEncodingStreaming](/HighAvailabilityEncodingStreaming/Readme.md) -exemplet. |
+| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Vägledning och bästa praxis för ett produktions system med kodning eller analys på begäran. Läsarna bör börja med den medföljande artikeln [med hög tillgänglighet med Media Services-och VOD](https://docs.microsoft.com/azure/media-services/latest/architecture-high-availability-encoding-concept). Det finns en separat lösnings fil som tillhandahålls för [HighAvailabilityEncodingStreaming](/HighAvailabilityEncodingStreaming/Readme.md) -exemplet. |
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 

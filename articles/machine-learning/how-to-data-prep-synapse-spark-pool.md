@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96917b805640f0cfe38f28ba263e2e7ce55bce7f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956221"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066168"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Bifoga Apache Spark pooler (drivs av Azure Synapse Analytics) för data datatransformering (för hands version)
 
-I den här artikeln får du lära dig hur du ansluter och startar en Apache Spark pool som drivs av [Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) för data datatransformering i stor skala. 
+I den här artikeln får du lära dig hur du ansluter och startar en Apache Spark pool som drivs av [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) för data datatransformering i stor skala. 
 
 Den här artikeln innehåller rikt linjer för att utföra data datatransformering-aktiviteter interaktivt inom en dedikerad Synapse-session i en Jupyter Notebook. Om du föredrar att använda Azure Machine Learning pipelines, se [hur du använder Apache Spark (drivs av Azure Synapse Analytics) i din Machine Learning pipeline (för hands version)](how-to-use-synapsesparkstep.md).
 
@@ -310,7 +310,7 @@ input1 = train_ds.as_mount()
 
 ## <a name="example-notebook"></a>Exempelnotebook-fil
 
-I den här [slut antecknings boken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) för slutförandet finns ett detaljerat kod exempel på hur du utför förberedelse av data och modell utbildning från en enda bärbar dator med Azure Synapse Analytics och Azure Machine Learning.
+I den här [slut antecknings boken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) för slutförandet finns ett detaljerat kod exempel på hur du utför förberedelse av data och modell utbildning från en enda bärbar dator med Azure Synapse Analytics och Azure Machine Learning.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: ae8b1eab81e3c898c25a613f552a49c8de64f49d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d9012c2bb56b7936b627063be2e9c5b7aa33541e
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889135"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962738"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Skapa en utlösare som kör en pipeline som svar på en lagrings händelse
 
@@ -71,9 +71,12 @@ I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i
 
 1. Om din pipeline har parametrar, kan du ange dem i utlösaren kör parameter sidans navigerings fält. Utlösaren för lagrings händelser fångar in mappsökvägen och fil namnet för blobben i egenskaperna `@triggerBody().folderPath` och `@triggerBody().fileName` . Om du vill använda värdena för dessa egenskaper i en pipeline måste du mappa egenskaperna till pipeline-parametrar. När du har mappat egenskaperna till parametrar kan du komma åt de värden som samlas in av utlösaren genom `@pipeline().parameters.parameterName` uttrycket i hela pipelinen. Detaljerad förklaring finns i [referens utlösare metadata i pipelines](how-to-use-trigger-parameterization.md)
 
-    :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="Skärm bild av mappnings egenskaper för utlösare för lagrings händelse till pipeline-parametrar.":::
+   :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="Skärm bild av mappnings egenskaper för utlösare för lagrings händelse till pipeline-parametrar.":::
 
-    I föregående exempel är utlösaren konfigurerad att utlösa när en BLOB-sökväg slutar i. csv skapas i mappen _Event-test_ i container _-data_. Egenskaperna **folderPath** och **filename** registrerar platsen för den nya blobben. Till exempel, när MoviesDB.csv läggs till i Sök vägs exemplet-data/Event-test, `@triggerBody().folderPath` har värdet `sample-data/event-testing` och `@triggerBody().fileName` har värdet `moviesDB.csv` . Dessa värden mappas i exemplet till pipeline-parametrarna `sourceFolder` och `sourceFile` , som kan användas i hela pipelinen som respektive `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
+   I föregående exempel är utlösaren konfigurerad att utlösa när en BLOB-sökväg slutar i. csv skapas i mappen _Event-test_ i container _-data_. Egenskaperna **folderPath** och **filename** registrerar platsen för den nya blobben. Till exempel, när MoviesDB.csv läggs till i Sök vägs exemplet-data/Event-test, `@triggerBody().folderPath` har värdet `sample-data/event-testing` och `@triggerBody().fileName` har värdet `moviesDB.csv` . Dessa värden mappas i exemplet till pipeline-parametrarna `sourceFolder` och `sourceFile` , som kan användas i hela pipelinen som respektive `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
+
+   > [!NOTE]
+   > Om du skapar en pipeline och utlösare i [Azure Synapse Analytics](/synapse-analytics)måste du använda `@trigger().outputs.body.fileName` och `@trigger().outputs.body.folderPath` som parametrar. Dessa två egenskaper fångar BLOB-information. Använd dessa egenskaper i stället för att använda `@triggerBody().fileName` och `@triggerBody().folderPath` .
 
 1. Klicka på **Slutför** när du är klar.
 
