@@ -4,16 +4,16 @@ description: Lär dig hur du begränsar webb trafik med en brand vägg för webb
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 03/29/2021
 ms.author: victorh
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 967d4d4a49809c2b5fa7a344286469bb67eec6cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d53f4b640154e4d7b02115d5043b37f6bb6e89ba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217609"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731198"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Aktivera brand vägg för webbaserade program med hjälp av Azure CLI
 
@@ -109,13 +109,15 @@ Det kan ta flera minuter att skapa programgatewayen. När programgatewayen har s
 
 I det här exemplet skapar du en VM-skalningsuppsättning som tillhandahåller två servrar till serverdelspoolen i programgatewayen. De virtuella datorerna i skalningsuppsättningen är associerade med undernätet *myBackendSubnet*. Du kan skapa skalningsuppsättningen med [az vmss create](/cli/azure/vmss#az-vmss-create).
 
+Ersätt \<username> och \<password> med dina värden innan du kör det här.
+
 ```azurecli-interactive
 az vmss create \
   --name myvmss \
   --resource-group myResourceGroupAG \
   --image UbuntuLTS \
-  --admin-username azureuser \
-  --admin-password Azure123456! \
+  --admin-username <username> \
+  --admin-password <password> \
   --instance-count 2 \
   --vnet-name myVNet \
   --subnet myBackendSubnet \

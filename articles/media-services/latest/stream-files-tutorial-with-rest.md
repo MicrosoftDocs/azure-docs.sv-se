@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: c8f76c74c951de77d5d5c213be3698ec2b175ead
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 139970bb043c745d63f2ef795ae1c8aef4bda0fa
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596786"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108138"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Självstudier: Koda en fjärrfil baserat på URL och strömma videon – REST
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Med Azure Media Services kan du koda dina mediefiler till format som kan spelas upp på en mängd olika webbläsare och enheter. Du kanske vill strömma ditt innehåll i Apples HLS- eller MPEG DASH-formaten. Innan du strömmar, bör du koda dina högkvalitativa digitala mediafiler. Vägledning om kodning finns i [Kodningskoncept](encoding-concept.md).
+Med Azure Media Services kan du koda dina mediefiler till format som kan spelas upp på en mängd olika webbläsare och enheter. Du kanske vill strömma ditt innehåll i Apples HLS- eller MPEG DASH-formaten. Innan du strömmar, bör du koda dina högkvalitativa digitala mediafiler. Vägledning om kodning finns i [Kodningskoncept](encode-concept.md).
 
 I den här självstudien får du lära dig att koda en fil baserat på en URL och strömma videon med Azure Media Services med hjälp av REST. 
 
@@ -44,7 +44,7 @@ I den här självstudiekursen lär du dig att:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa ett Media Services-konto](./create-account-howto.md).
+- [Skapa ett Media Services-konto](./account-create-how-to.md).
 
     Se till att komma ihåg de värden som du använde för resursgruppens namn och namnet på Media Services-kontot
 
@@ -186,7 +186,7 @@ Utmatnings [till gången](/rest/api/media/assets) lagrar resultatet av ditt kodn
 
 När kodningen eller bearbetningen av innehåll i Media Services görs, konfigureras vanligtvis kodningsinställningarna som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video tillämpar du receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **Transformering**. Mer information finns i [Transformeringar och jobb](./transforms-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter. 
 
-När du skapar en ny instans för en [Transformering](/rest/api/media/transforms), måste du ange vilken utdata du vill att den ska skapa. Den obligatoriska parametern är ett **TransformOutput**-objekt. Varje **TransformOutput** innehåller en **Förinställning**. I **Förinställning** finns stegvisa anvisningar för den video- och/eller ljudbearbetning som ska användas för att generera önskad **TransformOutput**. Det exempel som beskrivs i artikeln använder en inbyggd förinställning som kallas **AdaptiveStreaming**. Förinställningen kodar indatavideon i en automatiskt genererad bithastighetsstege (par för bithastighetsupplösning) som baseras på indatans upplösning och bithastighet, samt producerar ISO MP4-filer med H.264-video och AAC-ljud som motsvarar varje par för bithastighetsupplösningen. Information om denna förinställning finns i [Automatisk generering av bithastighetsstege](autogen-bitrate-ladder.md).
+När du skapar en ny instans för en [Transformering](/rest/api/media/transforms), måste du ange vilken utdata du vill att den ska skapa. Den obligatoriska parametern är ett **TransformOutput**-objekt. Varje **TransformOutput** innehåller en **Förinställning**. I **Förinställning** finns stegvisa anvisningar för den video- och/eller ljudbearbetning som ska användas för att generera önskad **TransformOutput**. Det exempel som beskrivs i artikeln använder en inbyggd förinställning som kallas **AdaptiveStreaming**. Förinställningen kodar indatavideon i en automatiskt genererad bithastighetsstege (par för bithastighetsupplösning) som baseras på indatans upplösning och bithastighet, samt producerar ISO MP4-filer med H.264-video och AAC-ljud som motsvarar varje par för bithastighetsupplösningen. Information om denna förinställning finns i [Automatisk generering av bithastighetsstege](encode-autogen-bitrate-ladder.md).
 
 Du kan använda en inbyggd EncoderNamedPreset eller anpassade förinställningar. 
 
@@ -413,4 +413,4 @@ Kolla in [Azure Media Services community](media-services-community.md) -artikeln
 Nu när du vet hur du ska ladda upp, koda och strömma videon kan du läsa följande artikel: 
 
 > [!div class="nextstepaction"]
-> [Analysera videor](analyze-videos-tutorial-with-api.md)
+> [Analysera videor](analyze-videos-tutorial.md)

@@ -4,10 +4,10 @@ description: Enhets kartan ger en grafisk representation av nätverks enheter so
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.openlocfilehash: f7579cbca618baef404236556993c9831dd84bdf
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784602"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Undersök sensor identifieringar i enhets kartan

@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f71f394f190c5de1c3d64d02fd6113817ecda1ea
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
-ms.translationtype: MT
+ms.openlocfilehash: e8ef354480c69fa9b0b5407c88209b368485127d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105152740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729770"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 Azure Communication Services- **gruppen som anropar ett hjältes exempel för Android** visar hur kommunikations tjänsterna som anropar Android SDK kan användas för att bygga en grupp samtals upplevelse som innehåller röst och video. I den här snabb starten får du lära dig hur du konfigurerar och kör exemplet. En översikt över exemplet finns för kontext.
 
 ## <a name="download-code"></a>Ladda ned kod

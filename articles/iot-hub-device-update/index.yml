@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 76678a5695fdffd5325543a28398e867ab3ab6f5
-  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+  ms.openlocfilehash: 2868bc0bb8f79a217ed694a3ed1220f8beb58f7c
+  ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/26/2021
-  ms.locfileid: "105560394"
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106279603"
 landingContent:
 - title: Om enhets uppdatering
   linkLists:
@@ -64,3 +64,23 @@ landingContent:
       url: device-update-raspberry-pi.md
     - text: Enhets uppdatering på Ubuntu Server 18,04 x64 Package agent
       url: device-update-ubuntu-agent.md
+- title: API-och SDK-referens
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/deviceupdate/
+  - linkListType: reference
+    links:
+    - text: Kontroll plan – .NET
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/iot/management?view=azure-dotnet
+    - text: Kontroll plan – python
+      url: https://docs.microsoft.com/python/api/azure-mgmt-deviceupdate/?view=azure-python
+  - linkListType: reference
+    links:
+    - text: Data plan – Java Script
+      url: https://docs.microsoft.com/javascript/api/@azure/iot-device-update/?view=azure-node-preview
+    - text: Data plan – Java
+      url: https://docs.microsoft.com/java/api/com.azure.iot.deviceupdate?view=azure-java-preview
+    - text: Data plan – python
+      url: https://docs.microsoft.com/python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview

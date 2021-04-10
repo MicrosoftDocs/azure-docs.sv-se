@@ -5,24 +5,24 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: f4e900c8bcdcb5febec39421e098b19ad10b8b00
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105558898"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166417"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Vad är Azures statiska Web Apps för hands version?
 
-Azures statiska Web Apps är en tjänst som automatiskt skapar och distribuerar fullständiga stack-webbappar till Azure från en GitHub-lagringsplats.
+Azures statiska Web Apps är en tjänst som automatiskt skapar och distribuerar fullständiga stack-webbappar till Azure från en kod lagrings plats.
 
-:::image type="content" source="media/overview/static-apps-overview.png" alt-text="Översikt över statiska Web Apps":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Översikts diagram över Azures statiska Web Apps":::
 
-Arbets flödet för den statiska Azure-Web Apps är anpassat till en utvecklares dagliga arbets flöde. Appar skapas och distribueras baserat på GitHub-interaktioner.
+Arbets flödet för den statiska Azure-Web Apps är anpassat till en utvecklares dagliga arbets flöde. Appar skapas och distribueras baserat på kod ändringar.
 
-När du skapar en Azure Static Web Apps-resurs skapar Azure ett GitHub Actions-arbetsflöde på lagringsplatsen för appens källkod som övervakar den gren som du har valt. Varje gång du push-skickar eller accepterar pull-begäranden till den bevakade grenen skapar och distribuerar GitHub-åtgärden automatiskt appen och dess API till Azure.
+När du skapar en Azure static Web Apps-resurs interagerar Azure direkt med GitHub eller Azure DevOps för att övervaka en valfri gren. Varje gång du push-skickar eller accepterar pull-begäranden till den bevakade grenen körs en version automatiskt och din app och API distribueras till Azure.
 
 Statiska webbappar skapas ofta med hjälp av bibliotek och ramverk som vinkel, reagera, svelte, Vue eller blixt där rendering på Server sidan inte krävs. Dessa appar består av HTML, CSS, JavaScript och bildtillgångar. Med en traditionell webb server betjänas dessa till gångar från en enda server tillsammans med eventuella nödvändiga API-slutpunkter.
 
@@ -32,7 +32,7 @@ Med statiska Web Apps separeras statiska till gångar från en traditionell webb
 
 - **Webb värd** för statiskt innehåll som HTML, CSS, Java Script och avbildningar.
 - **Inbyggt API** -stöd som tillhandahålls av Azure Functions.
-- **GitHub-integrering i första klass** där lagrings plats ändringar utlöser versioner och distributioner.
+- Den **första klassens GitHub och Azure DevOps-integrering** där lagrings plats ändringar utlöser versioner och distributioner.
 - **Globalt distribuerat** statiskt innehåll, vilket ger innehållet närmare dina användare.
 - **Kostnads fria SSL-certifikat**, som automatiskt förnyas.
 - **Anpassade domäner** för att tillhandahålla anpassade anpassningar till din app.

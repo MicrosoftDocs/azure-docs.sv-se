@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: mimcco
   ms.date: 03/25/2021
-  ms.openlocfilehash: 61e9d784d899cb8f0741f27aee0bdb7031bb37d1
-  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+  ms.openlocfilehash: 0cf9e95897554cb51ff6837dec72700124471025
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/26/2021
-  ms.locfileid: "105562553"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106107735"
 landingContent:
 - title: Vad är Azure percept?
   linkLists:
@@ -33,13 +33,15 @@ landingContent:
       url: overview-percept-security.md
     - text: 80/20-integrering
       url: overview-8020-integration.md
+    - text: Azure percept AI-modeller
+      url: overview-ai-models.md
 - title: Kom igång med Azure percept DK
   linkLists:
   - linkListType: quickstart
     links:
     - text: Avpaketera och sätt samman din Azure percept DK
       url: quickstart-percept-dk-unboxing.md
-    - text: Anslut Azure percept DK till Azure och distribuera en vision AI-modell
+    - text: Anslut din Azure percept DK till Azure
       url: quickstart-percept-dk-set-up.md
   - linkListType: reference
     links:
@@ -47,8 +49,10 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Data blad för Azure percept vision
       url: azure-percept-vision-datasheet.md
-    - text: Felsökning
+    - text: Allmän fel sökning för Azure percept-DK
       url: troubleshoot-dev-kit.md
+    - text: Fel sökning av installations program
+      url: how-to-troubleshoot-setup.md
 - title: Kom igång med Azure percept-ljud
   linkLists:
   - linkListType: quickstart
@@ -61,9 +65,9 @@ landingContent:
       url: azure-percept-audio-datasheet.md
     - text: Fel sökning av Azure percept-ljud
       url: troubleshoot-audio-accessory-speech-module.md
-    - text: Indikator för Azure percept-ljud
+    - text: Indikator för ljud och knapp i Azure percept
       url: audio-button-led-behavior.md
-- title: Skapa en AI-prototyp utan kod vision
+- title: Bygg en lösning utan kod
   linkLists:
   - linkListType: tutorial
     links:
@@ -79,11 +83,11 @@ landingContent:
       url: how-to-capture-images.md
     - text: Visa din devkit-telemetri
       url: how-to-view-telemetry.md
-  - linkListType: concept
+  - linkListType: reference
     links:
-    - text: Arbeta med AI-lösningar
-      url: overview-ai-models.md
-- title: Bygg en no-Code-lösning för röst assistent
+    - text: Fel sökning av visioner
+      url: vision-solution-troubleshooting.md
+- title: Bygg en tal lösning med ingen kod
   linkLists:
   - linkListType: tutorial
     links:
@@ -91,9 +95,9 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: Hantera din röst assistent
+    - text: Konfigurera din röst assistent i Azure percept Studio
       url: how-to-manage-voice-assistant.md
-    - text: Konfigurera röst assistenten med IoT Hub
+    - text: Konfigurera din röst assistent i IoT Hub
       url: how-to-configure-voice-assistant.md
 - title: Avancerad utveckling med Azure percept
   linkLists:
@@ -113,9 +117,9 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurera över-Air-uppdateringar
+    - text: Konfigurera OTA-uppdateringar (över-Air)
       url: how-to-set-up-over-the-air-updates.md
-    - text: Överliggande Air-uppdateringar
+    - text: Uppdatera enheten över-Air (OTA)
       url: how-to-update-over-the-air.md
-    - text: Uppdatera via USB
+    - text: Uppdatera din enhet via USB
       url: how-to-update-via-usb.md

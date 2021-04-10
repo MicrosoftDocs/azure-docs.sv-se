@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103562169"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Hantera en Azure Stack Edge Pro GPU-enhet via Windows PowerShell
@@ -426,7 +426,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
-### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>Ändra minne, processor gränser för Kubernetes Worker-nod
+### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>Ändra gränser för minne och processorer för Kubernetes-arbetsnod
 
 Gör så här om du vill ändra minnes-eller processor gränser för Kubernetes Worker-noden:
 
@@ -573,7 +573,7 @@ BMC (Baseboard Management Controller) används för att fjärrövervaka och hant
     - Använd denna cmdlet för att konfigurera den statiska konfigurationen för BMC. Du kan ange värden för `IPv4Address` , `IPv4Gateway` och `IPv4SubnetMask` . 
     
         ```powershell
-        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>&quot; -IPv4Gateway &quot;<IPv4 address of the gateway>&quot; -IPv4SubnetMask &quot;<IPv4 address for the subnet mask>"
         ```        
         
         Här är exempel på utdata: 

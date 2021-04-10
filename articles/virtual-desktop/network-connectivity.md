@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 378d341ee867b69fac22f5eb15952d104a7bf19d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221218"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167336"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>Förstå nätverks anslutningar för virtuella Windows-datorer
 
@@ -50,7 +50,7 @@ Den sekvens för klient anslutning som beskrivs nedan:
 
 ## <a name="connection-security"></a>Anslutningssäkerhet
 
-TLS 1,2 används för alla anslutningar som initieras från klienterna och värdarna i Windows infrastruktur komponenter för virtuella datorer. Windows Virtual Desktop använder samma TLS 1,2-chiffer som i [Azures front dörr](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Det är viktigt att se till att både klient datorer och sessioner kan använda dessa chiffer.
+TLS 1,2 används för alla anslutningar som initieras från klienterna och värdarna i Windows infrastruktur komponenter för virtuella datorer. Windows Virtual Desktop använder samma TLS 1,2-chiffer som i [Azures front dörr](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Det är viktigt att se till att både klient datorer och sessioner kan använda dessa chiffer.
 För omvänd Connect-transport ansluter både klienten och sessionens värd till Windows Virtual Desktop-gatewayen. När TCP-anslutningen har upprättats verifierar klienten eller sessionen Windows Virtual Desktop Gateway-certifikatet.
 När du har upprättat bas transporten upprättar RDP en kapslad TLS-anslutning mellan klient-och sessionstoken med hjälp av sessionens värddators certifikat. Som standard genereras certifikatet som används för RDP-kryptering självt av operativ systemet under distributionen. Om du vill kan kunderna distribuera centralt hanterade certifikat som utfärdats av utfärdaren av företags certifikat utfärdaren. Mer information om hur du konfigurerar certifikat finns i [dokumentationen till Windows Server](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

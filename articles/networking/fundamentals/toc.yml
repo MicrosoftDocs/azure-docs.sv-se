@@ -1,0 +1,144 @@
+- name: Dokumentation om nätverks grundläggande
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Om Azure-nätverk
+      href: networking-overview.md
+- name: Snabbstarter
+  items:
+    - name: Skapa ett virtuellt nätverk
+      href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+- name: Självstudier
+  items:
+    - name: Begränsa nätverksåtkomst
+      href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+- name: Begrepp
+  expanded: true
+  items:
+    - name: Arkitektur
+      href: architecture-guides.md
+    - name: Planera och utforma
+      items:
+        - name: Azure för nätverkstekniker
+          href: ../azure-for-network-engineers.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Arbeta fjärran slutet
+          href: ../working-remotely-support.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Virtuella nätverk
+          href: ../../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Anslutning på flera platser – VPN
+          href: ../../vpn-gateway/design.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Anslutning på flera platser – dedikerad privat
+          href: ../../expressroute/expressroute-workflows.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Microsofts globala nätverk
+      items:
+        - name: Översikt
+          href: ../microsoft-global-network.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Svarstid för Azure-nätverk
+          href: ../azure-network-latency.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Inställningar för Internetroutning i Azure
+          href: ../../virtual-network/routing-preference-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Anslutning till moln nätverk
+      items:
+        - name: Virtuellt nätverk
+          href: ../../virtual-network/virtual-networks-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Offentlig IP-adress
+          href: ../../virtual-network/public-ip-addresses.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS
+          href: ../../dns/dns-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Dirigera nätverkstrafik
+          href: ../../virtual-network/virtual-networks-udr-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ansluta virtuella nätverk
+          href: ../../virtual-network/virtual-network-peering-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privat åtkomst till resurser
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ansluta lokalt till Azure – VPN-kryptering
+          href: ../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Utöka lokalt till Azure – privat anslutning
+          href: ../../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Endast utgående Internet anslutning
+          href: ../../virtual-network/nat-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Nätverkssäkerhet
+      items:
+        - name: Nätverkssäkerhetsgrupper
+          href: ../../virtual-network/network-security-groups-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privat slutpunkt
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Nätverksbrandvägg
+          href: ../../firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DDoS-skydd
+          href: ../../ddos-protection/ddos-protection-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Brandvägg för webbaserade program
+          href: ../../web-application-firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Säkerhetskontroller av Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+    - name: Skalbar program leverans
+      items:
+        - name: Belastnings Utjämnings alternativ i Azure
+          href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=/azure/networking/fundamentals/toc.json
+        - name: Lastbalanserare för nätverk
+          href: ../../load-balancer/load-balancer-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skydda moln-CDN och global belastningsutjämnare
+          href: ../../frontdoor/front-door-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Lastbalanserare för webbapp
+          href: ../../application-gateway/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS-baserad belastningsutjämnare
+          href: ../../traffic-manager/traffic-manager-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Nätverksövervakning
+      items:
+        - name: Övervaka nätverket med Azure Monitor
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Övervaka och reparera nätverks hälsa
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+- name: Anvisningar
+  items:
+    - name: Skapa och Anslut till moln nätverk
+      items:
+        - name: Skapa ett virtuellt nätverk
+          href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skapa en offentlig IP-adress
+          href: ../../virtual-network/create-public-ip-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Optimera kostnader för routning
+          href: ../../virtual-network/routing-preference-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skapa en NAT-gateway för utgående anslutning
+          href: ../../virtual-network/tutorial-create-nat-gateway-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skapa en Azure DNS-zon och en post
+          href: ../../dns/dns-getstarted-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Dirigera trafik med hjälp av routningstabeller
+          href: ../../virtual-network/tutorial-create-route-table-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ansluta virtuella nätverk
+          href: ../../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privat åtkomst till resurser
+          href: ../../private-link/create-private-endpoint-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ansluta lokalt nätverk till ett virtuellt nätverk – VPN-kryptering
+          href: ../../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Anslutningar mellan lokala anslutningar – dedikerade
+          href: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Skydda nätverket
+      items:
+        - name: Begränsa nätverksåtkomst
+          href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Filtrera nätverkstrafik
+          href: ../../virtual-network/tutorial-filter-network-traffic.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Distribuera en nätverks brand vägg
+          href: ../../firewall/tutorial-firewall-deploy-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skydda ditt nätverk mot DDoS-attacker
+          href: ../../ddos-protection/manage-ddos-protection.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Skala din program leverans
+      items:
+        - name: Skapa en utjämning av nätverks belastning
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Distribuera en säker moln-CDN och global belastningsutjämnare
+          href: ../../frontdoor/quickstart-create-front-door.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skapa en belastningsutjämnare för webb program
+          href: ../../application-gateway/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Skapa en DNS-baserad belastningsutjämnare
+          href: ../../traffic-manager/quickstart-create-traffic-manager-profile.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Övervaka nätverket
+      items:
+        - name: Övervaka nätverkshälsa
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Övervaka kommunikation mellan Azure-resurser
+          href: ../../network-watcher/connection-monitor-create-using-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure Monitor nätverks insikter
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json

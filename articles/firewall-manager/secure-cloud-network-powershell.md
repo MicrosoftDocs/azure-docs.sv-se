@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: 093b962bb9f42b660fb8cc5c0584ec67ebc87e48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5ef39118d16d47aeb46294658adf616515547ea6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98789169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729532"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Självstudie: skydda din virtuella hubb med Azure PowerShell
 
@@ -31,7 +31,7 @@ I den här guiden får du lära dig att:
 
 - PowerShell 7
 
-   I den här självstudien krävs att du kör Azure PowerShell lokalt på PowerShell 7. Information om hur du installerar PowerShell 7 finns i [Migrera från Windows PowerShell 5,1 till PowerShell 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
+   I den här självstudien krävs att du kör Azure PowerShell lokalt på PowerShell 7. Information om hur du installerar PowerShell 7 finns i [Migrera från Windows PowerShell 5,1 till PowerShell 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7&preserve-view=true).
 - AZ. Network-version 3.2.0
 
     Om du har AZ. Network version 3.4.0 eller senare måste du nedgradera för att kunna använda några av kommandona i den här självstudien. Du kan kontrol lera versionen av din AZ. Network-modul med kommandot `Get-InstalledModule -Name Az.Network` . Om du vill avinstallera AZ. Network-modulen kör du `Uninstall-Module -name az.network` . Om du vill installera modulen AZ. Network 3.2.0 kör du `Install-Module az.network -RequiredVersion 3.2.0 -force` .

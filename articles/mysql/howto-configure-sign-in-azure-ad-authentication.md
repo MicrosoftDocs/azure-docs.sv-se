@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 808c3589ba5b51b035ccc8165489c4d11203dd66
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612236"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728274"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Använda Azure Active Directory för autentisering med MySQL
 
@@ -78,7 +78,6 @@ Exempel (för offentligt moln):
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
-
 Resurs svärdet ovan måste anges exakt som det visas. För andra moln kan resurs värdet slås upp med:
 
 ```azurecli-interactive
@@ -90,6 +89,13 @@ För Azure CLI version 2.0.71 och senare kan kommandot anges i följande bekväm
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
+Med hjälp av PowerShell kan du använda följande kommando för att hämta åtkomsttoken:
+
+```azurepowershell-interactive
+$accessToken = Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net
+$accessToken.Token | out-file C:\temp\MySQLAccessToken.txt
+```
+
 
 När autentiseringen är klar returnerar Azure AD en åtkomsttoken:
 
@@ -105,13 +111,17 @@ När autentiseringen är klar returnerar Azure AD en åtkomsttoken:
 
 Token är en bas 64-sträng som kodar all information om den autentiserade användaren och som är avsedd för den Azure Database for MySQL tjänsten.
 
-> [!NOTE]
-> Giltighet för åtkomsttoken är mellan 5 minuter och 60 minuter. Vi rekommenderar att du hämtar åtkomsttoken precis innan du initierar inloggningen till Azure Database for MySQL.
+Giltighet för åtkomsttoken är mellan ***5 minuter och 60 minuter***. Vi rekommenderar att du hämtar åtkomsttoken precis innan du initierar inloggningen till Azure Database for MySQL. Du kan använda följande PowerShell-kommando för att se giltighets tiden för token. 
+
+```azurepowershell-interactive
+$accessToken.ExpiresOn.DateTime
+```
 
 ### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>Steg 3: Använd token som lösen ord för att logga in med MySQL
 
-När du ansluter måste du använda åtkomsttoken som MySQL-användarens lösen ord. När du använder GUI-klienter som MySQLWorkbench kan du använda metoden ovan för att hämta token. 
+När du ansluter måste du använda åtkomsttoken som MySQL-användarens lösen ord. När du använder GUI-klienter som MySQLWorkbench kan du använda metoden som beskrivs ovan för att hämta token. 
 
+#### <a name="using-mysql-cli"></a>Använda MySQL CLI
 När du använder CLI kan du använda den här kort handen för att ansluta: 
 
 **Exempel (Linux/macOS):**
@@ -121,8 +131,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+#### <a name="using-mysql-workbench"></a>Använda MySQL Workbench
+* Starta MySQL Workbench och klicka på alternativet databas och klicka sedan på Anslut till databas
+* I fältet värdnamn anger du MySQL FQDN tex. mydb.mysql.database.azure.com
+* I fältet användar namn anger du MySQL Azure Active Directory administratörs namn och lägger till detta med MySQL-servernamnet, inte FQDN, t. ex. user@tenant.onmicrosoft.com@mydb
+* I fältet lösen ord klickar du på "lagra i valv" och klistrar in åtkomsttoken från filen, t. ex. C:\temp\MySQLAccessToken.txt
+* Klicka på fliken Avancerat och kontrol lera att aktivera klartext-plugin för autentisering
+* Klicka på OK för att ansluta till databasen
 
-Viktiga överväganden vid anslutning:
+#### <a name="important-considerations-when-connecting"></a>Viktiga överväganden vid anslutning:
 
 * `user@tenant.onmicrosoft.com` är namnet på den Azure AD-användare eller-grupp som du försöker ansluta som
 * Lägg alltid till Server namnet efter namn på Azure AD-användare/grupp (t. ex. `@mydb` )

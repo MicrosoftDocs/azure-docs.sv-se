@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 03/22/2021
-  ms.openlocfilehash: 4ee35ada4e72e9a7c896514cb6616a0f9f5e27a4
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.date: 03/30/2021
+  ms.openlocfilehash: 874f0636042c592cefce5a4d3fa15b7839fbac5e
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/29/2021
-  ms.locfileid: "105731844"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106108072"
 landingContent:
 - title: Om Azure VMware Solution
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: introduction.md
     - text: Plattforms uppdateringar
       url: azure-vmware-solution-platform-updates.md
-    - text: Vanliga frågor
-      url: faq.yml
   - linkListType: concept
     links:
     - text: Privat moln och kluster
@@ -40,6 +38,26 @@ landingContent:
       url: concepts-monitor-repair-private-cloud.md
     - text: Uppgraderingar för privata moln
       url: concepts-upgrades.md
+- title: Vanliga frågor
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Allmänt
+      url: /azure/azure-vmware/faq#general
+    - text: Beräkning, nätverk, lagring och säkerhets kopiering
+      url: /azure/azure-vmware/faq#compute,-network,-storage,-and-backup
+    - text: Värdar, kluster och privata moln
+      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+    - text: Azure VMware-lösning och VMware-programvara
+      url: /azure/azure-vmware/faq#azure-vmware-solution-and-vmware-software
+    - text: Anslutning
+      url: /azure/azure-vmware/faq#connectivity
+    - text: Konton och behörigheter
+      url: /azure/azure-vmware/faq#accounts-and-privileges
+    - text: Fakturering och support
+      url: /azure/azure-vmware/faq#billing-and-support
+    - text: Kund kommunikation
+      url: /azure/azure-vmware/faq#customer-communication
 - title: Kom igång
   linkLists:
   - linkListType: deploy
@@ -72,22 +90,6 @@ landingContent:
       url: tutorial-delete-private-cloud.md
 - title: Utöka Azure VMware Solution
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Hantera DHCP
-      url: manage-dhcp.md
-    - text: Konfigurera NSX-nätverks komponenter
-      url: configure-nsx-network-components-azure-portal.md
-    - text: Distribuera haveriberedskap för virtuella datorer
-      url: disaster-recovery-for-virtual-machines.md
-    - text: Distribuera virtuell dator via innehållsbibliotek
-      url: ./deploy-vm-content-library.md
-    - text: Konfigurera GitHub Enterprise-server
-      url: github-enterprise-server.md
-    - text: Användning av offentlig IP
-      url: public-ip-usage.md
-    - text: Skapa en IPSec-tunnel
-      url: create-ipsec-tunnel.md
   - linkListType: reference
     links:
     - text: Begär värd kvot för Azure VMware-lösning
@@ -97,7 +99,21 @@ landingContent:
     - text: Spara kostnader med en reserverad instans
       url: reserved-instance.md
     - text: Migreringsutvärdering
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+  - linkListType: how-to-guide
+    links:
+    - text: Hantera DHCP
+      url: manage-dhcp.md
+    - text: Konfigurera NSX-nätverks komponenter
+      url: configure-nsx-network-components-azure-portal.md
+    - text: Distribuera haveriberedskap för virtuella datorer
+      url: disaster-recovery-for-virtual-machines.md
+    - text: Konfigurera GitHub Enterprise-server
+      url: github-enterprise-server.md
+    - text: Användning av offentlig IP
+      url: public-ip-usage.md
+    - text: Skapa en IPSec-tunnel
+      url: create-ipsec-tunnel.md
 - title: Inbyggd Azure-integrering
   linkLists:
   - linkListType: how-to-guide
@@ -116,6 +132,8 @@ landingContent:
       url: protect-azure-vmware-solution-with-application-gateway.md
     - text: Traffic Manager
       url: deploy-traffic-manager-balance-workloads.md
+    - text: Konfigurera aviseringar och arbeta med mått
+      url: configure-alerts-for-azure-vmware-solution.md
 - title: VMware-lösningar
   linkLists:
   - linkListType: how-to-guide
@@ -124,6 +142,8 @@ landingContent:
       url: vrealize-operations-for-azure-vmware-solution.md
     - text: Distribuera VMware Horizon
       url: azure-vmware-solution-horizon.md
+    - text: Distribuera virtuella datorer från innehålls biblioteket
+      url: ./deploy-vm-content-library.md
 - title: VMware-ekosystem
   linkLists:
   - linkListType: reference
@@ -154,6 +174,8 @@ landingContent:
       url: https://youtu.be/BoQYvqzb6Y8
     - text: Migrering och kapacitets planering
       url: https://youtu.be/NoNG-hkksrA
+    - text: Rotera vCenter-& NSX-T-lösenord med Azure Logic app
+      url: https://youtu.be/cK1qY3knj88
 - title: Felsökning
   linkLists:
   - linkListType: reference

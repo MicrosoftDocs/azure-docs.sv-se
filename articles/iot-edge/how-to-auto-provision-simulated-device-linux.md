@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9356da9516ea17243be8e0e5519ec4b19e06db8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200863"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166606"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Skapa och etablera en IoT Edge enhet med en TPM på Linux
 
@@ -34,7 +34,7 @@ Uppgifterna är följande:
 1. Installera IoT Edge Runtime och Anslut enheten till IoT Hub.
 
 > [!TIP]
-> Den här artikeln beskriver hur du testar DPS-etablering med hjälp av en TPM-simulator, men det är mycket som gäller för fysisk TPM-maskinvara som [INFINEON OPTIGA &trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), en Azure-certifierad för IoT-enheter.
+> Den här artikeln beskriver hur du testar DPS-etablering med hjälp av en TPM-simulator, men det är mycket som gäller för fysisk TPM-maskinvara som [INFINEON OPTIGA &trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e), en Azure-certifierad för IoT-enheter.
 >
 > Om du använder en fysisk enhet kan du gå vidare till avsnittet [Hämta etablerings information från en fysisk enhet](#retrieve-provisioning-information-from-a-physical-device) i den här artikeln.
 
