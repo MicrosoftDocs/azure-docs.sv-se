@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2021
 ms.openlocfilehash: 5d49a5b57ff4b59005461f2bb13451822723b039
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105644982"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Vad är en hanterad Azure SQL-instans?
@@ -59,15 +59,15 @@ Huvud funktionerna i SQL-hanterad instans visas i följande tabell:
 |Funktion | Beskrivning|
 |---|---|
 | SQL Server version/build | SQL Server databas motor (senaste stabila) |
-| Hanterade automatiserade säkerhets kopieringar | Yes |
-| Inbyggd instans och databas övervakning och mått | Yes |
-| Automatisk uppdatering av program vara | Yes |
-| De senaste databas motor funktionerna | Yes |
+| Hanterade automatiserade säkerhets kopieringar | Ja |
+| Inbyggd instans och databas övervakning och mått | Ja |
+| Automatisk uppdatering av program vara | Ja |
+| De senaste databas motor funktionerna | Ja |
 | Antal datafiler (rader) per databas | Flera |
 | Antal loggfiler (logg) per databas | 1 |
-| VNet – Azure Resource Manager distribution | Yes |
-| VNet – klassisk distributions modell | No |
-| Portal stöd | Yes|
+| VNet – Azure Resource Manager distribution | Ja |
+| VNet – klassisk distributions modell | Inga |
+| Portal stöd | Ja|
 | Inbyggd integrerings tjänst (SSIS) | No-SSIS är en del av [Azure Data Factory PaaS](../../data-factory/tutorial-deploy-ssis-packages-azure.md) |
 | Inbyggd Analysis Service (SSAS) | No-SSAS är separat [PaaS](../../analysis-services/analysis-services-overview.md) |
 | Inbyggd repor ting service (SSRS) | Använd [Power BI sid färdiga rapporter](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) i stället för att vara värd för SSRS på en virtuell Azure-dator. SQL-hanterad instans kan inte köra SSRS som en tjänst, men kan vara värd för [SSRS-katalog databaser](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) för en rapport server som är installerad på en virtuell Azure-dator med hjälp av SQL Server autentisering. |

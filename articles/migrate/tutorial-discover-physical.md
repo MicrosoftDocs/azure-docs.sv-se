@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 4f6dc61b0e05fcb16a03a1183518069b98aa575f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771421"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382717"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Självstudie: identifiera fysiska servrar med Azure Migrate: identifiering och utvärdering
 
@@ -80,6 +80,9 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 Konfigurera ett konto som kan användas av enheten för att få åtkomst till de fysiska servrarna.
 
 - För **Windows-servrar** använder du ett domän konto för domänanslutna servrar och ett lokalt konto för en server som inte är domänansluten. Användarkontot bör läggas till i dessa grupper: Fjärrhanteringsanvändare, Användare av prestandaövervakning och Användare av prestandaloggar.
+    > [!Note]
+    > För Windows Server 2008 och 2008 R2 kontrollerar du att WMF 3,0 är installerat på servrarna och att det domän-eller lokala konto som används för att komma åt servrarna har lagts till i dessa grupper: användare av prestanda övervakaren, prestanda loggar användare och WinRMRemoteWMIUsers.
+
 - För **Linux-servrar** behöver du ett rot konto på de Linux-servrar som du vill identifiera. Alternativt kan du ange ett icke-rot konto med de funktioner som krävs med hjälp av följande kommandon:
 
 **Kommando** | **Syfte**

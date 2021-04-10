@@ -4,12 +4,12 @@ description: Nodtyper, hållbarhet, tillförlitlighet och andra saker att tänka
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714943"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732592"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Överväganden vid planering av Service Fabric kluster kapacitet
 
@@ -111,7 +111,7 @@ Följ dessa rekommendationer för att hantera nodtyper med silver eller guld tå
 * Behåll det lägsta antalet fem noder för alla skalnings uppsättningar för virtuella datorer som har en hög grad av guld eller silver aktiverat. Klustret kommer att ange fel tillstånd om du skalar under det här tröskelvärdet och du måste manuellt rensa tillstånd ( `Remove-ServiceFabricNodeState` ) för de borttagna noderna.
 * Varje skalnings uppsättning för virtuella datorer med silver eller guld måste mappas till en egen nodtyp i Service Fabric klustret. Om du mappar flera skalnings uppsättningar för virtuella datorer till en enda nodtyp förhindrar det att samordningen mellan Service Fabric-klustret och Azure-infrastrukturen fungerar som de ska.
 * Ta inte bort slumpmässiga VM-instanser, Använd alltid skalnings uppsättning för virtuella datorer i funktionen. Borttagning av slumpmässiga VM-instanser har möjlighet att skapa obalanser i den virtuella dator instansen sprids över [uppgraderings domäner](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) och [fel domäner](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains). Den här obalansen kan negativt påverka systemets möjlighet att på ett korrekt sätt belastningsutjämna mellan tjänst instanserna/tjänst replikerna.
-* Om du använder autoskalning ställer du in reglerna så att skala i (borttagning av VM-instanser) bara utförs en nod i taget. Att skala ned fler än en instans i taget är inte säkert.
+* Om du använder autoskalning ställer du in reglerna så att skala i (borttagning av VM-instanser) bara utförs en nod i taget. Skalning i mer än en instans i taget är inte säkert.
 * Om du tar bort eller frigör virtuella datorer på den primära nodtypen, minskar du aldrig antalet allokerade virtuella datorer under vad Tillförlitlighets nivån kräver. De här åtgärderna kommer att blockeras oändligt i en skalnings uppsättning med en hållbarhets nivå på silver eller guld.
 
 ### <a name="changing-durability-levels"></a>Ändra hållbarhets nivåer

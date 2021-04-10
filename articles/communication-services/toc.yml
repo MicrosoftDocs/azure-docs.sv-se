@@ -26,8 +26,10 @@
           href: quickstarts/chat/meeting-interop.md
     - name: Telefoni och SMS
       items:
-        - name: Hantera telefonnummer
+        - name: Hämta ett telefonnummer
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Port a telefonnummer i Azure
+          href: quickstarts/telephony-sms/port-phone-number.md
         - name: Lägg till telefonsamtal till din app
           href: quickstarts/voice-video-calling/pstn-call.md
         - name: Skicka ett SMS-meddelande
@@ -92,6 +94,8 @@
           href: concepts/telephony-sms/messaging-policy.md
     - name: Röst- och videosamtal
       items:
+        - name: Kända problem
+          href: concepts/known-issues.md
         - name: Översikt över samtals-SDK
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Begrepp inom röst- och videosamtal
@@ -135,8 +139,6 @@
       href: concepts/notifications.md
     - name: Samverkan mellan team
       href: concepts/teams-interop.md
-    - name: Kända problem
-      href: concepts/known-issues.md
 - name: Exempel
   items:
     - name: Översikt
@@ -151,6 +153,8 @@
   items:
     - name: Översikt för referensdokumentation
       href: concepts/reference.md
+    - name: Azure CLI
+      href: /cli/azure/ext/communication/communication
     - name: REST API – dokumentation
       href: /rest/api/communication/
     - name: Samtalsbibliotek
@@ -158,7 +162,7 @@
         - name: Samtal (JavaScript)
           href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: Samtal (Android/Java)
-          href: /java/api/com.azure.communication.calling
+          href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
         - name: Samtal (iOS)
           href: /objectivec/communication-services/calling/
     - name: Chattbibliotek

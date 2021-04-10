@@ -4,10 +4,10 @@ description: Den här artikeln innehåller en översikt över övervakning och l
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105564491"
 ---
 # <a name="monitoring-and-logging"></a>Övervakning och loggning
@@ -208,7 +208,7 @@ Händelse typer tilldelas till ett namn område enligt schemat:
 
 #### <a name="event-classes"></a>Händelseklasser
 
-|Klassnamn|Description|
+|Klassnamn|Beskrivning|
 |---|---|
 |Analys  |Händelser som genereras som en del av innehålls analysen.|
 |Diagnostik    |Händelser som hjälper dig att diagnostisera problem och prestanda.|
@@ -230,7 +230,7 @@ Händelse tiden är formaterad i en ISO 8601-sträng. Den representerar den tidp
 
 Dessa mått rapporteras från live video analys i IoT Edge modul:  
 
-|Måttnamn|Typ|Etikett|Description|
+|Måttnamn|Typ|Etikett|Beskrivning|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Mätare|iothub, edge_device, module_name, graph_topology|Totalt antal aktiva diagram per topologi.|
 |lva_received_bytes_total|Räknare|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Totalt antal byte som tagits emot av en nod. Stöds endast för RTSP-källor.|

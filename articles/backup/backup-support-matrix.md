@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
 ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105564475"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
@@ -153,8 +153,8 @@ Azure Backup har lagt till funktionen för återställning av kors region för a
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | SQL-/SAP HANA | I förhandsversion                                                      | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| MARS-agent/lokalt  | No                                                           | Ej tillämpligt               |
-| AFS (Azure-filresurser)                 | No                                                           | Ej tillämpligt               |
+| MARS-agent/lokalt  | Inga                                                           | Ej tillämpligt               |
+| AFS (Azure-filresurser)                 | Inga                                                           | Ej tillämpligt               |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105107235"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Fel sökning i Azure Communication Services
@@ -161,7 +161,7 @@ På Android Studio navigerar du till enhetens fil Utforskaren genom att välja V
 
 Azure Communication Services-anropet som anropar SDK använder följande felkoder för att hjälpa dig att felsöka anrops problem. De här fel koderna exponeras genom `call.callEndReason` egenskapen när ett anrop har slutförts.
 
-| Felkod | Description | Åtgärd att vidta |
+| Felkod | Beskrivning | Åtgärd att vidta |
 | -------- | ---------------| ---------------|
 | 403 | Förbjuden/autentiseringsfel. | Se till att din token för kommunikations tjänster är giltig och inte har upphört att gälla. |
 | 404 | Anropet hittades inte. | Kontrol lera att numret du ringer (eller ring du ansluter till) finns. |

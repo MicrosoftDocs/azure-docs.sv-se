@@ -11,10 +11,10 @@ ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
 ms.openlocfilehash: e27e7e0bb4616508c8f137260bde68de9420f9cf
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105644967"
 ---
 # <a name="migrating-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Migrera ett informations lager till en dedikerad SQL-pool i Azure Synapse Analytics 
@@ -89,7 +89,7 @@ Om du utför en lyckad migrering måste du migrera tabell scheman, kod och data.
 ## <a name="migration-assets-from-real-world-engagements"></a>Migrera till gångar från verkliga ärenden
 Mer hjälp om hur du slutför det här migreringsprocessen finns i följande resurser, som har utvecklats för att ge stöd för ett verkligt migrerings projekt.
 
-| Rubrik/länk                              | Description                                                                                                                       |
+| Rubrik/länk                              | Beskrivning                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som gör det lättare att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process. |
 | [Hantera data kodnings problem vid inläsning av data till Azure Synapse Analytics](https://azure.microsoft.com/en-us/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | Den här bloggen är avsedd att ge insikt om några av de data kodnings problem som kan uppstå när PolyBase används för att läsa in data till SQL Data Warehouse. Den här artikeln innehåller också några alternativ som du kan använda för att lösa dessa problem och läsa in data. |

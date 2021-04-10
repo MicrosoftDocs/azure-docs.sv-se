@@ -2,21 +2,21 @@
 title: Inducera kaos i Service Fabric kluster
 description: 'Använd API: er för fel inmatning och kluster analys tjänst för att hantera kaos i klustret.'
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 759e2d1c8d2a326583625fbbbcadb4f4fa950510
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720518"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732439"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Inducera kontrollerade kaos i Service Fabric kluster
 Storskaliga distribuerade system som moln infrastrukturer är mycket otillförlitliga. Med Azure Service Fabric kan utvecklare skriva pålitliga distribuerade tjänster ovanpå en otillförlitlig infrastruktur. För att kunna skriva robusta distribuerade tjänster ovanpå en otillförlitlig infrastruktur måste utvecklare kunna testa stabiliteten hos sina tjänster medan den underliggande otillförlitliga infrastrukturen går igenom komplicerade tillstånds över gångar på grund av fel.
 
 [Fel inmatningen och kluster analys tjänsten](./service-fabric-testability-overview.md) (även kallat fel analys tjänsten) ger utvecklare möjlighet att inducera fel för att testa sina tjänster. De här riktade, simulerade felen, som att [starta om en partition](/powershell/module/servicefabric/start-servicefabricpartitionrestart), kan hjälpa de vanligaste tillstånds över gångarna. De riktade simulerade felen är dock fördelade efter definition och kan därför missa buggar som bara visar upp till en svår och komplicerad sekvens av tillstånds över gångar. För en systematisk testning kan du använda kaos.
 
-Kaos simulerar periodiska, överlagrade fel (både korrekt och oäkta) i hela klustret under en längre tid. Ett korrekt fel består av en uppsättning Service Fabric-API-anrop, till exempel om ett fel uppstår vid omstart av repliker, eftersom det här är en nära följd av en öppen på en replik. Ta bort replikering, flytta den primära repliken och flytta sekundär replik är de andra fel som genomförs av kaos. Inaktiva fel är process avslutningar, t. ex. Starta om nod och starta om kod paket. 
+Kaos simulerar periodiska, överlagrade fel (både korrekt och oäkta) i hela klustret under en längre tid. Ett korrekt fel består av en uppsättning Service Fabric-API-anrop, till exempel om ett fel uppstår vid omstart av repliker, eftersom det här är en nära följd av en öppen på en replik. Ta bort replikering, flytta primär replik, flytta sekundär replik och flytta instansen är de andra fel som genomförs av kaos. Inaktiva fel är process avslutningar, t. ex. Starta om nod och starta om kod paket.
 
 När du har konfigurerat kaos med frekvensen och typen av fel kan du starta kaos via C#, PowerShell eller REST API för att börja generera fel i klustret och i dina tjänster. Du kan konfigurera kaos så att det körs under en angiven tids period (till exempel i en timme), efter vilken kaos slutar automatiskt, eller så kan du anropa StopChaos API (C#, PowerShell eller REST) för att stoppa det när som helst.
 
@@ -37,6 +37,7 @@ Kaos inducerar fel från följande kategorier:
 * Starta om en replik
 * Flytta en primär replik (konfigurerbar)
 * Flytta en sekundär replik (kan konfigureras)
+* Flytta en instans
 
 Kaos körs i flera iterationer. Varje iteration består av fel och kluster verifiering för den angivna perioden. Du kan konfigurera den tid som krävs för att klustret ska stabiliseras och för att verifieringen ska lyckas. Om ett fel upptäcks i kluster valideringen genererar kaos och sparar en ValidationFailedEvent med UTC-tidsstämpeln och fel information. Anta till exempel att en instans av kaos som är inställd på att köras i en timme med högst tre samtidiga fel. Kaos inducerar tre fel och validerar sedan kluster hälsan. Den upprepas genom föregående steg tills den explicit stoppas genom StopChaosAsync-API: et eller en timmes pass. Om klustret blir ohälsosamt i en iteration (dvs. det inte stabiliseras eller inte skadas i den skickade MaxClusterStabilizationTimeout), genererar kaos en ValidationFailedEvent. Den här händelsen anger att något har gått fel och kan kräva ytterligare undersökning.
 
@@ -56,14 +57,14 @@ Om du vill ta reda på vilka fel kaos som induceras kan du använda GetChaosRepo
 > Oavsett hur högt ett värde *timestamputcinticks* har, kaos garantier – i avsaknad av externa fel – det finns ingen förlust av kvorum eller data förlust.
 >
 
-* **EnableMoveReplicaFaults**: aktiverar eller inaktiverar de fel som orsakar att de primära eller sekundära replikerna flyttas. Dessa fel är aktiverade som standard.
+* **EnableMoveReplicaFaults**: aktiverar eller inaktiverar de fel som orsakar att de primära, sekundära replikerna eller instanserna flyttas. Dessa fel är aktiverade som standard.
 * **WaitTimeBetweenIterations**: hur lång tid som ska förflyta mellan iterationer. Det vill säga hur lång tid som kaos pausas när du har kört en runda av fel och slutfört motsvarande verifiering av hälso tillståndet för klustret. Ju högre värde, desto lägre är den genomsnittliga frekvensen för fel inmatning.
 * **WaitTimeBetweenFaults**: hur lång tid som ska förflyta mellan två efterföljande fel i en enda iteration. Ju högre värde, desto lägre samtidighet (eller överlappande) fel.
 * **ClusterHealthPolicy**: kluster hälso princip används för att verifiera hälso tillståndet för klustret i mellan kaos-iterationer. Om kluster hälsan är ett fel eller om ett oväntat undantag uppstår under fel körningen, väntar kaos i 30 minuter innan nästa hälso kontroll-för att ge klustret en tid till recuperate.
 * **Kontext**: en samling (sträng, sträng) typ nyckel/värde-par. Kartan kan användas för att registrera information om kaos-körningen. Det får inte finnas fler än 100 sådana par och varje sträng (nyckel eller värde) får innehålla högst 4095 tecken. Den här kartan anges av Start programmet för kaos-körningen för att eventuellt lagra kontexten för den aktuella körningen.
 * **ChaosTargetFilter**: det här filtret kan endast användas för att rikta kaos-fel till vissa nodtyper eller endast till vissa program instanser. Om ChaosTargetFilter inte används, orsakar kaos fel alla kluster enheter. Om ChaosTargetFilter används, orsakar kaos bara de entiteter som uppfyller ChaosTargetFilter-specifikationen. NodeTypeInclusionList och ApplicationInclusionList tillåter endast unions semantik. Med andra ord går det inte att ange en skärning av NodeTypeInclusionList och ApplicationInclusionList. Det går till exempel inte att ange "fel det här programmet endast när det finns på den nodtypen". När en entitet ingår i antingen NodeTypeInclusionList eller ApplicationInclusionList kan den entiteten inte uteslutas med hjälp av ChaosTargetFilter. Även om applicationX inte visas i ApplicationInclusionList, kan en del kaos iteration applicationX vara fel eftersom det sker på en nod i nodeTypeY som ingår i NodeTypeInclusionList. Om både NodeTypeInclusionList och ApplicationInclusionList är null eller tomma genereras en ArgumentException.
-    * **NodeTypeInclusionList**: en lista över nodtyper som ska ingå i kaos-fel. Alla typer av fel (starta om nod, starta om codepackage, ta bort replikering, starta om replikering, flytta primär och flytta sekundär) är aktiverade för noderna i dessa nodtyper. Om en NodeType (t. ex. NodeTypeX) inte visas i NodeTypeInclusionList aktive ras inte noder på radnivå (t. ex. NodeRestart) för noderna i NodeTypeX, men kod paketet och replik felen kan fortfarande aktive ras för NodeTypeX om ett program i ApplicationInclusionList sker på en nod i NodeTypeX. Högst 100 kan inkluderas i den här listan för att öka det här antalet, en konfigurations uppgradering krävs för MaxNumberOfNodeTypesInChaosTargetFilter-konfiguration.
-    * **ApplicationInclusionList**: en lista över program-URI: er som ska ingå i kaos-fel. Alla repliker som hör till tjänster av dessa program är lämpar till replik fel (starta om replikering, ta bort replik, flytta primär och flytta sekundär) med kaos. Kaos kan bara starta om ett kod paket om kod paketet bara är värd för repliker av dessa program. Om ett program inte visas i listan kan det fortfarande uppstå fel i vissa kaos-iterationer om programmet avslutas på en nod i en nodtyp som ingår i NodeTypeInclusionList. Men om applicationX är knutet till nodeTypeY genom placerings begränsningar och applicationX saknas från ApplicationInclusionList och nodeTypeY inte finns i NodeTypeInclusionList, kommer applicationX aldrig att bli fel. Högst 1000-program namn kan inkluderas i den här listan för att öka det här antalet, så krävs en konfigurations uppgradering för MaxNumberOfApplicationsInChaosTargetFilter-konfigurationen.
+    * **NodeTypeInclusionList**: en lista över nodtyper som ska ingå i kaos-fel. Alla typer av fel (starta om nod, starta om codepackage, ta bort replikering, starta om replik, flytta primär, flytta sekundär och flytta instansen) aktive ras för noderna i dessa nodtyper. Om en NodeType (t. ex. NodeTypeX) inte visas i NodeTypeInclusionList aktive ras inte noder på radnivå (t. ex. NodeRestart) för noderna i NodeTypeX, men kod paketet och replik felen kan fortfarande aktive ras för NodeTypeX om ett program i ApplicationInclusionList sker på en nod i NodeTypeX. Högst 100 kan inkluderas i den här listan för att öka det här antalet, en konfigurations uppgradering krävs för MaxNumberOfNodeTypesInChaosTargetFilter-konfiguration.
+    * **ApplicationInclusionList**: en lista över program-URI: er som ska ingå i kaos-fel. Alla repliker som tillhör tjänster av dessa program är lämpar till replik fel (starta om replik, ta bort replik, flytta primär, flytta sekundär och flytta instans) med kaos. Kaos kan bara starta om ett kod paket om kod paketet bara är värd för repliker av dessa program. Om ett program inte visas i listan kan det fortfarande uppstå fel i vissa kaos-iterationer om programmet avslutas på en nod i en nodtyp som ingår i NodeTypeInclusionList. Men om applicationX är knutet till nodeTypeY genom placerings begränsningar och applicationX saknas från ApplicationInclusionList och nodeTypeY inte finns i NodeTypeInclusionList, kommer applicationX aldrig att bli fel. Högst 1000-program namn kan inkluderas i den här listan för att öka det här antalet, så krävs en konfigurations uppgradering för MaxNumberOfApplicationsInChaosTargetFilter-konfigurationen.
 
 ## <a name="how-to-run-chaos"></a>Så här kör du kaos
 
@@ -137,14 +138,15 @@ class Program
                 MaxPercentUnhealthyNodes = 100
             };
 
-            // All types of faults, restart node, restart code package, restart replica, move primary replica,
-            // and move secondary replica will happen for nodes of type 'FrontEndType'
+            // All types of faults, restart node, restart code package, restart replica, move primary
+            // replica, move secondary replica, and move instance will happen for nodes of type 'FrontEndType'
             var nodetypeInclusionList = new List<string> { "FrontEndType"};
 
             // In addition to the faults included by nodetypeInclusionList,
-            // restart code package, restart replica, move primary replica, move secondary replica faults will
-            // happen for 'fabric:/TestApp2' even if a replica or code package from 'fabric:/TestApp2' is residing
-            // on a node which is not of type included in nodeypeInclusionList.
+            // restart code package, restart replica, move primary replica, move secondary replica,
+            //  and move instance faults will happen for 'fabric:/TestApp2' even if a replica or code
+            // package from 'fabric:/TestApp2' is residing on a node which is not of type included
+            // in nodeypeInclusionList.
             var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
 
             // List of cluster entities to target for Chaos faults.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 4c168738c0396b83412f9ed8c27fe3b2db9918d7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 64db4de6628fcd8f3cf160bb2bde1b577219cb10
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102511085"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729855"
 ---
 Azure Disk Encryption kan aktive ras och hanteras via [Azure CLI](/cli/azure) och [Azure PowerShell](/powershell/azure/new-azureps-module-az). Om du vill göra det måste du installera verktygen lokalt och ansluta till din Azure-prenumeration.
 
@@ -61,7 +61,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 Genom att köra cmdleten [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) verifierar du att rätt prenumeration har valts.
 
-Om du vill bekräfta att Azure Disk Encryption-cmdletarna är installerade använder du cmdleten [Get-Command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) :
+Om du vill bekräfta att Azure Disk Encryption-cmdletarna är installerade använder du cmdleten [Get-Command](/powershell/module/microsoft.powershell.core/get-command) :
      
 ```powershell
 Get-command *diskencryption*

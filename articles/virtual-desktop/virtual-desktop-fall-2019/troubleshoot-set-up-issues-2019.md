@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1695e7aa0a202a5946f9038049b51c6a8fd45ad5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95014840"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934673"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Skapande av innehavare och värddator i Windows Virtual Desktop (klassisk)
 
@@ -31,11 +31,11 @@ Om du vill använda Windows 10 Enterprise-avbildningen av flera sessioner går d
 > [!div class="mx-imgBorder"]
 > ![En skärm bild av att välja Windows 10 Enterprise för virtuella skriv bord, version 1809.](../media/AzureMarketPlace.png)
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Skapar Windows Virtual Desktop-klient
+## <a name="creating-windows-virtual-desktop-tenant&quot;></a>Skapar Windows Virtual Desktop-klient
 
 I det här avsnittet beskrivs möjliga problem när du skapar Windows-klienten för virtuella skriv bord.
 
-### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Fel: AADSTS650052 appen behöver åtkomst till en tjänst.
+### <a name=&quot;error-aadsts650052-the-app-needs-access-to-a-service&quot;></a>Fel: AADSTS650052 appen behöver åtkomst till en tjänst.
 
 Exempel på RAW-fel:
 
@@ -406,7 +406,7 @@ Om du kör GitHub-mallen för Azure Resource Manager anger du värden för följ
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Fel: vmSubnet är inte tillgängligt vid konfigurering av virtuella nätverk
 
-**Orsak:** I WVD Marketplace-mallen visar användar gränssnittet bara undernät som har minst så många IP-adresser som är tillgängliga som det totala antalet virtuella datorer som anges i mallen. Det faktiska antalet tillgängliga IP-adresser i under nätet behöver bara vara lika med antalet nya virtuella datorer som distribueras, men det kan inte beräknas av det aktuella användar gränssnittet.
+**Orsak:** I Windows-mallen för virtuella Skriv bords platser visar användar gränssnittet bara undernät som har minst så många IP-adresser som är tillgängliga som det totala antalet virtuella datorer som anges i mallen. Det faktiska antalet tillgängliga IP-adresser i under nätet behöver bara vara lika med antalet nya virtuella datorer som distribueras, men det kan inte beräknas av det aktuella användar gränssnittet.
 
 **KORRIGERA:** Du kan ange ett undernät med minst så många IP-adresser som är tillgängliga som antalet virtuella datorer som läggs till genom att inte använda Marketplace-ANVÄNDARGRÄNSSNITTET, detta kan göras genom att ange under nätets namn i parametern "**existingSubnetName**" när du [distribuerar om en befintlig distribution](expand-existing-host-pool-2019.md#redeploy-from-azure) eller [distribuerar med hjälp av den underliggande arm-mallen från GitHub](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 

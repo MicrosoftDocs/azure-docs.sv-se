@@ -456,7 +456,84 @@
                   href: windows-voice-assistants-best-practices.md
                 - name: Exempel och vanliga frågor och svar
                   href: windows-voice-assistants-faq.md
-- name: Verktyg
+- name: Anvisningar
+  items:
+    - name: Aktivera loggning
+      href: how-to-use-logging.md
+    - name: Spåra minnesanvändning
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Aktivera privat slutpunkt
+      href: speech-services-private-link.md
+    - name: Konfigurera OpenSSL för Linux
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: Konfigurera RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Containers
+      items:
+        - name: Installera och köra Speech-containrar
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Konfigurera Speech-containrar
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: Batchbearbetning med Speech-containrar
+          href: speech-container-batch-processing.md
+        - name: Speech-containrar med Kubernetes och Helm
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Speech-containrar i Azure-containerinstanser
+          displayName: 'ACI,azure container instances,container instances,containers'
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Vanliga frågor och svar om containrar
+          href: speech-container-faq.md
+        - name: Dokumentation om containrar för Cognitive Services
+          href: ../containers/index.yml
+    - name: Migrering
+      items:
+        - name: Från Taligenkänning i Bing
+          href: how-to-migrate-from-bing-speech.md
+        - name: 'Från Translator Speech API:et'
+          href: how-to-migrate-from-translator-speech-api.md
+- name: Enheter
+  items:
+    - name: Dokumentation om Speech-enheter
+      href: index-devices.yml
+    - name: Översikt
+      items:
+        - name: Vad är SDK för Speech-enheter?
+          href: speech-devices-sdk.md
+        - name: Hämta SDK för Speech-enheter
+          href: get-speech-devices-sdk.md
+        - name: SDK-exempel för Speech-enheter (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Maskinvara
+      items:
+        - name: Mikrofonmatrisrekommendationer
+          href: speech-devices-sdk-microphone.md
+        - name: Roobo v1-information
+          href: speech-devices-sdk-roobo-v1.md
+        - name: Information om Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
+    - name: Anvisningar
+      items:
+        - name: Konfigurera en mikrofonmatris
+          href: how-to-devices-microphone-array-configuration.md
+    - name: Snabbstart
+      items:
+        - name: Använda SDK för Speech-enheter
+          href: speech-devices-sdk-quickstart.md
+    - name: Resurser
+      items:
+        - name: Felsöka SDK för Speech-enheter
+          href: speech-devices-sdk-troubleshooting.md
+    - name: Referens
+      items:
+        - name: Viktig information om SDK för Speech-enheter
+          href: devices-sdk-release-notes.md
+- name: Resurser
   items:
     - name: Speech SDK
       items:
@@ -505,85 +582,6 @@
           href: 'https://speech.microsoft.com'
         - name: Skapa en app för anpassade kommandon med Speech Studio
           href: ./quickstart-custom-commands-application.md
-- name: Distribuera
-  items:
-    - name: Aktivera loggning
-      href: how-to-use-logging.md
-    - name: Spåra minnesanvändning
-      href: how-to-track-speech-sdk-memory-usage.md
-    - name: Aktivera privat slutpunkt
-      href: speech-services-private-link.md
-    - name: Konfigurera OpenSSL för Linux
-      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-      href: how-to-configure-openssl-linux.md
-    - name: Konfigurera RHEL/CentOS 7
-      href: how-to-configure-rhel-centos-7.md
-      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Containers
-      items:
-        - name: Installera och köra Speech-containrar
-          displayName: 'containers,install container,run container'
-          href: speech-container-howto.md
-        - name: Konfigurera Speech-containrar
-          displayName: 'containers,configure containers,container config,configuration'
-          href: speech-container-configuration.md
-        - name: Batchbearbetning med Speech-containrar
-          href: speech-container-batch-processing.md
-        - name: Speech-containrar med Kubernetes och Helm
-          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: Speech-containrar i Azure-containerinstanser
-          displayName: 'ACI,azure container instances,container instances,containers'
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Vanliga frågor och svar om containrar
-          href: speech-container-faq.md
-        - name: Dokumentation om containrar för Cognitive Services
-          href: ../containers/index.yml
-- name: Enheter
-  items:
-    - name: Dokumentation om Speech-enheter
-      href: index-devices.yml
-    - name: Översikt
-      items:
-        - name: Vad är SDK för Speech-enheter?
-          href: speech-devices-sdk.md
-        - name: Hämta SDK för Speech-enheter
-          href: get-speech-devices-sdk.md
-        - name: SDK-exempel för Speech-enheter (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: Maskinvara
-      items:
-        - name: Mikrofonmatrisrekommendationer
-          href: speech-devices-sdk-microphone.md
-        - name: Roobo v1-information
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Information om Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-    - name: Anvisningar
-      items:
-        - name: Konfigurera en mikrofonmatris
-          href: how-to-devices-microphone-array-configuration.md
-    - name: Snabbstart
-      items:
-        - name: Använda SDK för Speech-enheter
-          href: speech-devices-sdk-quickstart.md
-    - name: Resurser
-      items:
-        - name: Felsöka SDK för Speech-enheter
-          href: speech-devices-sdk-troubleshooting.md
-    - name: Referens
-      items:
-        - name: Viktig information om SDK för Speech-enheter
-          href: devices-sdk-release-notes.md
-- name: Migrering
-  items:
-    - name: Från Taligenkänning i Bing
-      href: how-to-migrate-from-bing-speech.md
-    - name: 'Från Translator Speech API:et'
-      href: how-to-migrate-from-translator-speech-api.md
-- name: Resurser
-  items:
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Dokumentation om Swagger

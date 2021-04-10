@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/29/2021
 ms.author: victorh
-ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e955c6b760c06ce802dfae0193d34954eab99892
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731096"
 ---
 # <a name="what-are-security-partner-providers"></a>Vad är en säkerhetspartnerprovider?
 
@@ -30,17 +30,22 @@ De säkerhets partner som stöds är **Zscaler**, **[Check Point](check-point-ov
 
 Du kan använda säkerhets partner för att filtrera Internet trafik i följande scenarier:
 
-- Virtual Network (VNet) till Internet
+- Virtual Network (VNet)-till-Internet
 
    Använd avancerad användar medveten Internet skydd för dina moln arbets belastningar som körs på Azure.
 
-- Förgrena till Internet
+- Förgrening till Internet
 
-   Dra nytta av din Azure-anslutning och global distribution för att enkelt lägga till NSaaS-filtrering från tredje part för filial till Internet scenarier. Du kan bygga ditt globala överförings nätverk och säkerhets Edge med Azure Virtual WAN.
+   Använd din Azure-anslutning och global distribution för att enkelt lägga till NSaaS-filtrering från tredje part för filial till Internet scenarier. Du kan bygga ditt globala överförings nätverk och säkerhets Edge med Azure Virtual WAN.
 
 Följande scenarier stöds:
-- VNet/gren till Internet via en provider för säkerhets partner och den andra trafiken (eker till ekrar, ekrar till förgrening, gren till ekrar) via Azure-brandväggen.
-- VNet/förgrening till Internet via providern för säkerhets partner
+- Två säkerhets leverantörer i hubben
+
+   VNet/Branch-to-Internet via en provider för säkerhets partner och den andra trafiken (eker-till-eker, eker-till-gren, förgrening-till-eker) via Azure Firewall.
+- Enskild Provider i hubben
+
+   - All trafik (eker-till-ekrar, ekrar-till-gren, förgrening-till-ekrar, VNet/gren-till-Internet) som skyddas av Azure-brandväggen
+   - VNet/förgrening till Internet via providern för säkerhets partner
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Metod tips för Internet trafik filtrering i skyddade virtuella hubbar
 

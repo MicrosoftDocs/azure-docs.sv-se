@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a24b8b18dd109f1d8ed5acaa7de55ce5a3cc1eb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201115"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936299"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Använda Azure Digital Twins CLI
 
@@ -50,9 +50,13 @@ Instruktioner för hur du installerar eller uppdaterar Azure CLI till en nyare v
 
 ### <a name="get-the-extension"></a>Hämta tillägget
 
-Du kan kontrol lera att du har den senaste versionen av `azure-iot` tillägget med de här stegen. Du kan köra dessa kommandon i [Azure Cloud Shell](../cloud-shell/overview.md) eller i ett [lokalt Azure CLI](/cli/azure/install-azure-cli).
+Azure CLI kommer automatiskt att uppmana dig att installera tillägget vid den första användningen av ett kommando som kräver det.
 
-[!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
+Du kan också använda följande kommando för att installera tillägget när som helst (eller uppdatera det om det visar sig att du redan har en äldre version). Kommandot kan köras antingen i [Azure Cloud Shell](../cloud-shell/overview.md) eller i en [lokal Azure CLI](/cli/azure/install-azure-cli).
+
+```azurecli-interactive
+az extension add --upgrade -n azure-iot
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

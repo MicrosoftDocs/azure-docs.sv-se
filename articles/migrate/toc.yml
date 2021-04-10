@@ -234,6 +234,8 @@
           href: troubleshoot-changed-block-tracking-replication.md
 - name: Referens
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/offazure/offazure
     - name: Azure PowerShell
       href: /powershell/module/az.migrate/
     - name: Inbyggda Azure Policy-program

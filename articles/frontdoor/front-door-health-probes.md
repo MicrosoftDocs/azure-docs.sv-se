@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449245"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550751"
 ---
 # <a name="health-probes"></a>Hälsotillståndsavsökningar
 
@@ -24,6 +24,9 @@ För att fastställa hälso tillståndet och närheten av varje server del för 
 
 > [!WARNING]
 > Eftersom front dörren har många gräns miljöer globalt, kan hälso avsöknings volymen för dina Server delar vara ganska hög från 25 förfrågningar varje minut till så hög som 1200 begär Anden per minut, beroende på den angivna hälso avsöknings frekvensen. Med standard avsöknings frekvensen på 30 sekunder bör avsöknings volymen på Server delen vara cirka 200 förfrågningar per minut.
+
+> [!NOTE]
+> HTTP/HTTPS-avsökningar på klient sidan skickas med `User-Agent` huvud uppsättningen med värde: `Edge Health Probes` . 
 
 ## <a name="supported-protocols"></a>Protokoll som stöds
 
@@ -41,7 +44,7 @@ Frontend-dörren stöder följande HTTP-metoder för att skicka hälso avsöknin
 
 ## <a name="health-probe-responses"></a>Svar på hälso avsökning
 
-| Svar  | Beskrivning | 
+| Svar  | Description | 
 | ------------- | ------------- |
 | Fastställa hälsa  |  En status på 200 OK anger att Server delen är felfri. Allt annat anses vara ett haveri. Om ett giltigt HTTP-svar inte tas emot för en avsökning räknas inte avsökningen som ett fel (inklusive nätverks fel).|
 | Mäta svars tid  | Svars tiden är den tid i väggen som mäts från tiden omedelbart innan vi skickar en avsöknings förfrågan till den tidpunkt då vi får de sista byten av svaret. Vi använder en ny TCP-anslutning för varje begäran, så denna mätning är inte prioriterad mot Server delar med befintliga varma anslutningar.  |

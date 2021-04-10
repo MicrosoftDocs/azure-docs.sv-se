@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426798"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107919"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Förhandskrav för Azure AD Connect
 I den här artikeln beskrivs kraven och maskin varu kraven för Azure Active Directory (Azure AD) Connect.
@@ -37,7 +37,7 @@ Innan du installerar Azure AD Connect finns det några saker du behöver.
 * En Azure AD-klient tillåter som standard 50 000-objekt. När du verifierar din domän ökar gränsen till 300 000 objekt. Om du behöver ännu fler objekt i Azure AD kan du öppna ett support ärende om du vill öka gränsen ytterligare. Om du behöver fler än 500 000 objekt behöver du en licens, till exempel Microsoft 365, Azure AD Premium eller Enterprise Mobility + Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Förbered dina lokala data
-* Använd [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) för att identifiera fel som dubbletter och formateringsfel i din katalog innan du synkroniserar till Azure AD och Microsoft 365.
+* Använd [IdFix](https://github.com/Microsoft/idfix) för att identifiera fel som dubbletter och formateringsfel i din katalog innan du [synkroniserar till Azure AD och Microsoft 365](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac).
 * Granska [valfria Sync-funktioner som du kan aktivera i Azure AD](how-to-connect-syncservice-features.md)och utvärdera vilka funktioner du bör aktivera.
 
 ### <a name="on-premises-active-directory"></a>Lokalt Active Directory
@@ -142,7 +142,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 Mer information finns i MSDN om [default proxy-elementet](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Mer information om problem med anslutningen finns i [Felsöka anslutnings problem](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Övrigt
+### <a name="other"></a>Annat
 Valfritt: Använd ett test användar konto för att verifiera synkroniseringen.
 
 ## <a name="component-prerequisites"></a>Komponent krav

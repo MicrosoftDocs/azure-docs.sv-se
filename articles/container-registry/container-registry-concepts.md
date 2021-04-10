@@ -3,12 +3,12 @@ title: Om register, databaser, avbildningar och artefakter
 description: Introduktion till viktiga begrepp för Azure Container register, databaser, behållar avbildningar och andra artefakter.
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 991be79b10b6061f2034eb19e4e139af65aef3cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27c4604820dda50686b6cb3f36e69b38283750c3
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578094"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106381930"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>Om register, databaser och artefakter
 
@@ -77,17 +77,17 @@ Ett grundläggande manifest för en Linux- `hello-world` avbildning ser ut ungef
     "schemaVersion": 2,
     "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
     "config": {
-        "mediaType": "application/vnd.docker.container.image.v1+json",
-        "size": 1510,
-        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
-      },
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "size": 1510,
+      "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+    },
     "layers": [
-        {
-          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
-          "size": 977,
-          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
-        }
-      ]
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 977,
+        "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+      }
+    ]
   }
   ```
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 03/16/2021
-ms.openlocfilehash: e9031dc77054a2bbac8015bbbdd7b9ed2a35e84f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.date: 03/26/2021
+ms.openlocfilehash: 59847f745037acec47415489cdf61d119a7807af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936282"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Få åtkomst till Azure API för FHIR med Postman
 
@@ -24,12 +24,13 @@ Ett klient program kan komma åt Azure-API: et för FHIR via en [REST API](https
 
 - En FHIR-slutpunkt i Azure. 
 
-   Om du vill distribuera Azure API för FHIR (en hanterad tjänst) kan du använda [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)eller [Azure CLI](fhir-paas-cli-quickstart.md).
+  Om du vill distribuera Azure API för FHIR (en hanterad tjänst) kan du använda [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)eller [Azure CLI](fhir-paas-cli-quickstart.md).
+
 - Ett registrerat [konfidentiellt klient program](register-confidential-azure-ad-client-app.md) för att få åtkomst till FHIR-tjänsten.
 - Du har beviljat behörigheter till det konfidentiella klient programmet, till exempel "FHIR data Contributor", för att få åtkomst till FHIR-tjänsten. Mer information finns i [Konfigurera Azure RBAC för FHIR](./configure-azure-rbac.md).
 - Postman installerat. 
     
-    Mer information om Postman finns i [Kom igång med Postman](https://www.getpostman.com).
+  Mer information om Postman finns i [Kom igång med Postman](https://www.getpostman.com).
 
 ## <a name="fhir-server-and-authentication-details"></a>Information om FHIR-Server och-autentisering
 
@@ -62,6 +63,8 @@ Om du försöker komma åt begränsade resurser inträffar svaret "autentisering
 ![Autentiseringen misslyckades](media/tutorial-postman/postman-authentication-failed.png)
 
 ## <a name="obtaining-an-access-token"></a>Hämta en åtkomsttoken
+Välj **Get New Access Token** (Hämta ny åtkomsttoken).
+
 Om du vill hämta en giltig åtkomsttoken väljer du **auktorisering** och väljer **OAuth 2,0** på den nedrullningsbara menyn **typ** .
 
 ![Ange OAuth 2,0](media/tutorial-postman/postman-select-oauth2.png)
@@ -76,13 +79,13 @@ I dialog rutan **Hämta ny** åtkomsttoken anger du följande information:
 |-----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------|
 | Token Name (Tokennamn)            | TOKEn                                                                                                         | Ett namn som du väljer          |
 | Grant Type (Typ av beviljande)            | Auktoriseringskod                                                                                              |                            |
-| Callback URL (Webbadress för återanrop)          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
+| Callback URL (Webbadress för återanrop)          | `https://www.getpostman.com/oauth2/callback`                                                                    |                            |
 | Auth URL (Auktoriseringswebbadress)              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` är `https://MYACCOUNT.azurehealthcareapis.com` för Azure API för FHIR |
-| Access Token URL (Webbadress för åtkomsttoken)      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
-| Klient-ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | Program-ID             |
-| Client Secret (Klienthemlighet)         | `XXXXXXXX`                                                                                                        | Hemlig klient nyckel          |
-| Omfång | `<Leave Blank>` |
-| Tillstånd                |  `1234`                                                                                                           |                            |
+| Access Token URL (Webbadress för åtkomsttoken)      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                    |                            |
+| Klient-ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                           | Program-ID             |
+| Client Secret (Klienthemlighet)         | `XXXXXXXX`                                                                                                      | Hemlig klient nyckel          |
+| Omfång | `<Leave Blank>` | Omfånget används inte. Det kan därför lämnas tomt.  
+| Tillstånd                 | `1234`     | [State](https://learning.postman.com/docs/sending-requests/authorization/) är ett ogenomskinligt värde för att förhindra förfalskning av begäran mellan webbplatser. Det är valfritt och kan ta ett godtyckligt värde, till exempel "1234".                           |
 | Klientautentisering | Skicka klientautentiseringsuppgifter i brödtext                                                                                 |                 
 
 Välj **token för begäran** som ska guidas genom Azure Active Directory-autentiseringsschemat och en token returneras till Postman. Om det uppstår ett autentiseringsfel kan du läsa Postman-konsolen för mer information. **Obs**: Välj **Visa** på menyfliken och välj sedan **Visa Postman-konsolen**. Kortkommandot till Postman-konsolen är **Alt-Ctrl + C**.
@@ -133,7 +136,7 @@ Välj **Skicka** för att fastställa att patienten har skapats.
 
 ![Skärm bild som visar att patienten har skapats.](media/tutorial-postman/postman-patient-created.png)
 
-Om du upprepar patients ökningen bör du nu se patient posten:
+Om du upprepar patient sökningen bör du nu se patient posten.
 
 ![Patient skapad](media/tutorial-postman/postman-patient-found.png)
 
